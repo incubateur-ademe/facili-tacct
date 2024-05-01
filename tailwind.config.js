@@ -1,10 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './src/app/**/*.tsx',
-    './src/components/**/*.{html,js,jsx,ts,mdx}',
-    './src/dsfr/**/*.{html,js,jsx,ts,mdx}',
-    './src/lib/**/*.{html,js,jsx,ts,mdx}'],
+    "./src/**/*.{html, js, ts, tsx}",
+    "./src/components/**/*.{html, js, ts, tsx}",
+    "./src/app/**/*.{html, js, ts, tsx}",
+    "./src/dsfr/**/*.{html, js, ts, tsx}",
+    "./src/lib/**/*.{html, js, ts, tsx}",
+    "./src/**/*",
+  ],
   theme: {
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
@@ -12,13 +15,13 @@ module.exports = {
     },
     // align with dsfr
     screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1280px',
+      sm: "36em",
+      md: "48em",
+      lg: "62em",
+      xl: "78em",
     },
   },
-  plugins: [require("tailwindcss"), require("precss"), require("autoprefixer")],
+  plugins: [],
   corePlugins: {
     // disable preflight to avoid conflicts with dsfr
     preflight: false,
