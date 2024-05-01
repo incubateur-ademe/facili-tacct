@@ -10,15 +10,20 @@
   },
   "dependencies": {
     "@codegouvfr/react-dsfr": "^1.9.9",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.16",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
-    "sass": "^1.75.0"
+    "sass": "^1.75.0",
+    "tss-react": "^4.9.10"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.16",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",
