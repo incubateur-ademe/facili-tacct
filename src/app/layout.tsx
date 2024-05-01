@@ -20,11 +20,15 @@ import { StartDsfr } from "../StartDsfr";
 import styles from "./root.module.scss";
 import { sharedMetadata } from "./shared-metadata";
 
+import { NextAppDirEmotionCacheProvider } from "tss-react/next/appDir";
+import './global.css';
+
+
 const contentId = "content";
 const footerId = "footer";
 
 const operatorLogo: HeaderProps["operatorLogo"] = {
-  imgUrl: "/img/ademe-logo-2022-1.svg",
+  imgUrl: "/next.svg",
   alt: "ADEME",
   orientation: "vertical",
 };
@@ -65,7 +69,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
       </head>
       <body>
         <DsfrProvider lang="fr">
-          <div className={styles.app}>
+          <div>
             <Header
               brandTop={<Brand />}
               homeLinkProps={{
@@ -83,9 +87,9 @@ const RootLayout = ({ children }: PropsWithChildren) => {
               // serviceTagline={config.tagline}
               operatorLogo={operatorLogo}
             />
-            <main role="main" id={contentId} className={styles.content}>
-              {children}
-            </main>
+            <NextAppDirEmotionCacheProvider options={{ key: "css" }}>
+		          {children}
+		        </NextAppDirEmotionCacheProvider>
             {/* <Footer
               id={footerId}
               accessibility="non compliant"
