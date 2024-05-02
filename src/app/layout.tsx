@@ -58,14 +58,14 @@ const RootLayout = ({ children }: PropsWithChildren) => {
     >
       <head>
         <StartDsfr />
-        {/* <DsfrHead
+        <DsfrHead
           Link={Link}
           preloadFonts={[
             "Marianne-Regular",
             "Spectral-Regular",
             //"Spectral-ExtraBold"
           ]}
-        /> */}
+        />
       </head>
       <body>
         <DsfrProvider lang="fr">
