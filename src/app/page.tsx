@@ -15,20 +15,20 @@ export default function Home() {
 
   return (
     <>
-      <h1>First page</h1>
+      <h1>First page </h1>
       <h2>Test component</h2>
       <Button
-        linkProps={{
-          href: '#'
-        }}
-        className={css({
-          backgroundColor: fr.colors.getHex({isDark}).decisions.background.alt.redMarianne.default,
-          "&:hover": {
-            backgroundColor: fr.colors.getHex({isDark}).decisions.background.alt.redMarianne.hover
-          },
-          padding: "2em", 
-          margin: "2em",
-        })}
+        // linkProps={{
+        //   href: '#'
+        // }}
+        // className={css({
+        //   backgroundColor: fr.colors.getHex({isDark}).decisions.background.alt.redMarianne.default,
+        //   "&:hover": {
+        //     backgroundColor: fr.colors.getHex({isDark}).decisions.background.alt.redMarianne.hover
+        //   },
+        //   padding: "2em", 
+        //   margin: "2em",
+        // })}
       >
         Button
       </Button>  
