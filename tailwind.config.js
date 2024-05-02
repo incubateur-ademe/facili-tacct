@@ -6,7 +6,7 @@ module.exports = {
     "./src/app/**/*.{html, js, ts, tsx}",
     "./src/dsfr/**/*.{html, js, ts, tsx}",
     "./src/lib/**/*.{html, js, ts, tsx}",
-    "./src/**/*",
+    // "./src/**/*",
   ],
   theme: {
     fontFamily: {
