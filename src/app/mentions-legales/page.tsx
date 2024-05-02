@@ -1,7 +1,6 @@
 import { type Metadata } from "next";
 
-import { Container } from "../../../src/dsfr/server";
-
+import { Container, Grid, GridCol, Box } from "../../../src/dsfr/server";
 import { sharedMetadata } from "../shared-metadata";
 
 const title = "Mentions légales";
