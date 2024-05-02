@@ -1,7 +1,7 @@
 import Table from "@codegouvfr/react-dsfr/Table";
 import { type Metadata } from "next";
 
-import { MdxLink } from "@/components/mdx/Link";
+import { MdxLink } from "../../components/mdx/Link";
 import { Container } from "../../../src/dsfr/server";
 import { AnchorLink } from "../../../src/dsfr/client";
 
