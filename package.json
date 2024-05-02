@@ -13,13 +13,18 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.16",
+    "@next/mdx": "^14.0.3",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
     "sass": "^1.75.0",
-    "tss-react": "^4.9.10"
+    "tss-react": "^4.9.10",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.0",
+    "remark-mdx-frontmatter": "^4.0.0"
   },
   "devDependencies": {
+    "@mdx-js/loader": "^3.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
