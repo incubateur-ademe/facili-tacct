@@ -63,7 +63,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
           preloadFonts={[
             "Marianne-Regular",
             "Spectral-Regular",
-            //"Spectral-ExtraBold"
+            "Spectral-ExtraBold"
           ]}
         />
       </head>
@@ -90,7 +90,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
             <NextAppDirEmotionCacheProvider options={{ key: "css" }}>
 		          {children}
 		        </NextAppDirEmotionCacheProvider>
-            {/* <Footer
+            <Footer
               id={footerId}
               accessibility="non compliant"
               accessibilityLinkProps={{ href: "/accessibilite" }}
@@ -130,7 +130,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                   </a>
                 </>
               }
-            /> */}
+            />
           </div>
         </DsfrProvider>
       </body>
