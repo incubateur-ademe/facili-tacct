@@ -1,7 +1,7 @@
 // import CguContent from "@__content/cgu.mdx";
 import { type Metadata } from "next";
 
-import { config } from "@/config";
+import { config } from "../../config";
 import { Container } from "../../../src/dsfr/server";
 
 import { sharedMetadata } from "../shared-metadata";
