@@ -12,10 +12,10 @@ const isDeployment = !!process.env.VERCEL_URL;
 const csp = {
   "default-src": ["'none'"],
   "connect-src": [
-    "'self'",
-    "https://*.gouv.fr",
-    process.env.FACILI_TACCT_ENV === "preprod" && "https://vercel.live",
-    process.env.NODE_ENV === "development" && "http://localhost",
+    "*",
+    // "https://*.gouv.fr",
+    // process.env.FACILI_TACCT_ENV === "preprod" && "https://vercel.live",
+    // process.env.NODE_ENV === "development" && "http://localhost",
   ],
   "font-src": ["'self'"],
   "media-src": ["'self'"],
@@ -55,6 +55,7 @@ const config = {
   },
   experimental: {
     typedRoutes: true,
+    serverActions: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
