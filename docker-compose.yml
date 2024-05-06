@@ -1,0 +1,8 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - 5432:5432  # enables connecting locally via psql
+    environment:
+      POSTGRES_DB: facili-tacct
+      POSTGRES_HOST_AUTH_METHOD: trust

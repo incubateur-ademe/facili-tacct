@@ -16,11 +16,10 @@ export default function Home() {
   return (
     <>
       <h1>First page </h1>
-      <h2>Test component</h2>
       <Button
-        // linkProps={{
-        //   href: '#'
-        // }}
+        linkProps={{
+          href: '/diagnostic'
+        }}
         // className={css({
         //   backgroundColor: fr.colors.getHex({isDark}).decisions.background.alt.redMarianne.default,
         //   "&:hover": {
@@ -30,7 +29,7 @@ export default function Home() {
         //   margin: "2em",
         // })}
       >
-        Button
+        Commencer ma démarche
       </Button>  
     </>
   );
