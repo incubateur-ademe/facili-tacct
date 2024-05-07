@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@codegouvfr/react-dsfr": "^1.9.9",
+    "@codegouvfr/react-dsfr": "^1.9.10",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@faker-js/faker": "^8.4.1",
@@ -17,10 +17,13 @@
     "@mui/material": "^5.15.16",
     "@next/mdx": "^14.0.3",
     "@prisma/client": "^5.13.0",
+    "cookies-next": "^4.1.1",
     "cross-env": "^7.0.3",
     "next": "14.2.3",
+    "next-auth": "^4.24.7",
     "pg": "^8.11.5",
     "react": "^18",
+    "react-cookie": "^7.1.4",
     "react-dom": "^18",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.0",
