@@ -9,9 +9,8 @@ import "./global.css";
 export default function Home() {
 
   const { css } = useStyles();
-    
   const { isDark } = useIsDark();
-  const backColor = fr.colors.decisions.background.alt.redMarianne.default;
+  const backColor = fr.colors.decisions.background.alt.redMarianne.default;  
 
   return (
     <>
