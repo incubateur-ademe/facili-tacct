@@ -57,6 +57,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
       className={cx(styles.app)}
     >
       <head>
+        
         <StartDsfr />
         <DsfrHead
           Link={Link}
