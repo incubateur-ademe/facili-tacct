@@ -1,17 +1,29 @@
 generator client {
   provider = "prisma-client-js"
 }
-
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("SCALINGO_POSTGRESQL_URL")
 }
-
-model Post {
-  id          Int @id @default(autoincrement())
-  description String
-  createdAt   DateTime  @default(now())
-
-  @@index([createdAt])
-  @@map("posts")
+model Themes {
+  id                Int         @id @default(autoincrement())
+  theme             String?
+  code              String      @default("75000")
+  question_history  String?     @default("")
+  createdAt         DateTime    @default(now())
+  finished          Boolean     @default(false)
+  report_downloaded Boolean     @default(false)
+  questions         Questions[] 
+  @@index([id])
+  @@map("theme")
+}
+model Questions {
+  pk        Int      @id @default(autoincrement())
+  theme_pk  Themes   @relation(fields: [themeId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  themeId   Int
+  question  String?
+  answer    String?
+  createdAt DateTime @default(now())
+  @@index([pk])
+  @@map("questions")
 }

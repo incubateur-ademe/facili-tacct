@@ -1,38 +1,41 @@
 import db from '../../modules/db';
+import RadioButton from '../../dsfr/base/client/RadioButtons';
 
-export default function Test() {
+export default async function Test() {
 
-  const addPost = async (formData: FormData) => {
+  const addData = async (formData: FormData) => {
     "use server";
-    const description = formData.get("description");
-    await db.post.create({
+    const radio = formData.get("radio");
+    const theme = formData.get("theme");
+
+    await db.themes.create({
       data : {
-        description: description as string
+        theme: theme as string,
+        question_history: radio as string
       }
-    },
-  )}
+    })
+  }
 
   return (
-    <div className=" flex flex-col justify-center items-center w-full p-8 ">
-      <h1 className=" w-full text-center m-4 font-semibold text-lg ">POST Request (App Router)</h1>
-      <form action={addPost} className="flex w-full flex-col justify-center items-center ">
-        <div className=" flex w-1/2 justify-center items-center gap-4 ">
+    <div style={{margin: "2rem"}}>
+      <h1>POST Request (App Router)</h1>
+      <form action={addData}>
+        <RadioButton/>
+        <div>
           <input
             type="text"
-            name="description"
-            placeholder="Enter the description"
-            className=" border p-2 px-4 rounded outline-none "
+            name="theme"
+            placeholder="Enter the theme"
+            style={{border: "solid green 1px", margin: "1rem"}}
           />
-          <input
-            type="number"
-            name="id"
-            placeholder="Enter id"
-            className=" border p-2 px-4 rounded outline-none "
-          />
-          <button 
-          type="submit" 
-          className=" border-blue-500 bg-blue-500 text-white p-2 px-4 rounded-md " 
-          >Submit</button>
+          <div>
+            <button 
+              type="submit"
+              style={{backgroundColor:"cyan"}}
+              >
+                Submit
+            </button>
+          </div> 
         </div>
       </form>
     </div>
