@@ -20,7 +20,7 @@ export default async function Test() {
     <div style={{margin: "2rem"}}>
       <h1>POST Request (App Router)</h1>
       <form action={addData}>
-        <RadioButton/>
+        {/* <RadioButton/> */}
         <div>
           <input
             type="text"

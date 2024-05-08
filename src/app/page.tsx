@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from 'react'
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import { fr } from "@codegouvfr/react-dsfr"
 import { useStyles } from "tss-react/dsfr"
@@ -14,6 +15,7 @@ export default function Home() {
 
   return (
     <>
+    <Suspense fallback={<p>Loading feed...</p>}>
       <h1>First page </h1>
       <Button
         linkProps={{
@@ -30,6 +32,7 @@ export default function Home() {
       >
         Commencer ma démarche
       </Button>  
+    </Suspense>
     </>
   );
 }

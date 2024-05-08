@@ -1,36 +1,23 @@
 "use client" 
+
 import { useState } from "react";
 import { RadioButtons } from "@codegouvfr/react-dsfr/RadioButtons";
 
-export default function RadioButton(){
+interface Props {
+  options: Array<{ 
+    label: string, 
+    nativeInputProps: { checked: boolean, onChange: () => void; }}>;
+  legend: string;
+}
 
-    const [ value, setValue ] = useState<"one" | "two" | "three" | undefined>(undefined);
-
+const RadioButton: React.FC<Props> = ({ legend, options }) => {
     return (
         <RadioButtons
-            legend="Question 1"
+            legend={legend}
             name="radio"
-            options={[
-              {
-                  label: "Label radio",
-                  nativeInputProps: {
-                    value: "one"
-                  }
-              },
-              {
-                  label: "Label radio 2",
-                  nativeInputProps: {
-                    value: "two"
-                  }
-              },
-              {
-                  label: "Label radio 3",
-                  nativeInputProps: {
-                    value: "three"
-                  }
-              }
-          ]}
-            />
+            options={options}
+        />
     );
-
 }
+
+export default RadioButton;
