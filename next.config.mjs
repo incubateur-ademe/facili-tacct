@@ -50,7 +50,7 @@ const config = {
       test: /\.(woff2|webmanifest)$/,
       type: "asset/resource",
     })
-    config.infrastructureLogging = { debug: /PackFileCache/ };
+    //config.infrastructureLogging = { debug: /PackFileCache/ };
 
     return config;
   },
