@@ -28,7 +28,7 @@ export default function Test2() {
     <div style={{margin: "2rem"}}>
       <h1>UPDATE Request append data in question_history (App Router)</h1>
       <form action={appendData}>
-        <RadioButton/>
+        {/* <RadioButton/> */}
         <div>
             <button 
               type="submit"
