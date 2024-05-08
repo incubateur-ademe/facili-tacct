@@ -13,9 +13,9 @@ const csp = {
   "default-src": ["'none'"],
   "connect-src": [
     "*",
-    // "https://*.gouv.fr",
-    // process.env.FACILI_TACCT_ENV === "preprod" && "https://vercel.live",
-    // process.env.NODE_ENV === "development" && "http://localhost",
+    "https://*.gouv.fr",
+    process.env.FACILI_TACCT_ENV === "preprod" && "https://vercel.live",
+    process.env.NODE_ENV === "development" && "http://localhost",
   ],
   "font-src": ["'self'"],
   "media-src": ["'self'"],
@@ -49,7 +49,8 @@ const config = {
     config.module.rules.push({
       test: /\.(woff2|webmanifest)$/,
       type: "asset/resource",
-    });
+    })
+    config.infrastructureLogging = { debug: /PackFileCache/ };
 
     return config;
   },

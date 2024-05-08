@@ -14,7 +14,10 @@ const Diagnostic = async () => {
                 <p>texte</p>
             </div>
             <h3>DESIGN BUTTONS</h3>
-            <Button>
+            <Button
+                linkProps={{
+                    href: '/form'
+                  }}>
                 Approfondir le thème
             </Button>
         </Container>
