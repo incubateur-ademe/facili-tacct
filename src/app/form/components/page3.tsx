@@ -1,13 +1,21 @@
 import { Container } from "../../../dsfr/server";
 import RadioButton from '../../../dsfr/base/client/RadioButtons';
+import { Button } from "@codegouvfr/react-dsfr/Button";
 
 type Props = {
     answers3?: string;
     setAnswers3?: any;
+    setActiveTab?: any;
   }
 
-const Page3 : React.FC<Props> = ({answers3, setAnswers3}) => {
-    //console.log('answers3 in Page3', answers3)
+const Page3 : React.FC<Props> = (props) => {
+    const { answers3, setAnswers3, setActiveTab } = props;
+    const handleForward = () => {
+        setActiveTab("4");
+    }
+    const handleBackward = () => {
+        setActiveTab("2");
+    }
     return (
         <Container m="6w">
             <h1>Page3</h1>
@@ -37,6 +45,14 @@ const Page3 : React.FC<Props> = ({answers3, setAnswers3}) => {
                     },
                 ]}
             />
+            <div style={{display:"flex", flexDirection:"row", gap:"2em"}}>
+                <Button onClick={handleBackward}>
+                    Page précédente
+                </Button>
+                <Button onClick={handleForward}>
+                    Page suivante
+                </Button>
+            </div>
         </Container>  
     )
 }
