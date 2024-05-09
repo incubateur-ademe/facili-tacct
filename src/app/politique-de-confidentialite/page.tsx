@@ -27,28 +27,6 @@ const PolitiqueConfidentialite = () => {
   return (
     <Container my="4w">
       <h1>{title}</h1>
-      <AnchorLink anchor="sous-traitants" as="h2">
-        Sous-traitants
-      </AnchorLink>
-      <Table
-        bordered
-        headers={["Partenaire", "Pays destinataire", "Pays d'hébergement", "Traitement réalisé", "Garantie"]}
-        data={[
-          [
-            "Vercel",
-            "États-Unis",
-            "France (AWS cdg1)",
-            "Hébergement",
-            <MdxLink
-              key="vercel"
-              title="Déclaration de confidentialité Vercel"
-              href="https://vercel.com/legal/privacy-policy"
-            >
-              Déclaration de confidentialité Vercel
-            </MdxLink>,
-          ],
-        ]}
-      />
     </Container>
   );
 };

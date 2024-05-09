@@ -23,6 +23,11 @@ import { sharedMetadata } from "./shared-metadata";
 import { NextAppDirEmotionCacheProvider } from "tss-react/next/appDir";
 import './global.css';
 
+import {
+	ConsentBannerAndConsentManagement,
+	FooterConsentManagementItem,
+	FooterPersonalDataPolicyItem
+} from "../ui/consentManagement";
 
 const contentId = "content";
 const footerId = "footer";
@@ -70,6 +75,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
       </head>
       <body>
         <DsfrProvider lang="fr">
+          <ConsentBannerAndConsentManagement />
           <div>
             <Header
               brandTop={<Brand />}
@@ -109,12 +115,14 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                 },
                 // <FooterConsentManagementItem key="FooterConsentManagementItem" />,
                 {
-                  text: <>▲&nbsp;Propulsé par Vercel</>,
+                  text: <>▲&nbsp;Propulsé par scalingo</>,
                   linkProps: {
-                    href: "https://vercel.com/?utm_source=ademe&utm_campaign=oss",
+                    href: "",
                     className: "font-geist-sans",
                   },
                 },
+                <FooterConsentManagementItem key={0} />,
+								<FooterPersonalDataPolicyItem key={1} />
                 // {
                 //   text: `Version ${config.appVersion}.${config.appVersionCommit.slice(0, 7)}`,
                 //   linkProps: {
