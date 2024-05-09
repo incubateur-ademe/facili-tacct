@@ -8,7 +8,7 @@ export function middleware(req: NextRequest) {
   var rand = Math.random().toString(36).substring(2);
   var rand2 = Math.random().toString(36).substring(2);
 
-  console.log(res)
+  //console.log(res)
   setCookie('token', rand + rand2, { res, req });
   //hasCookie('token', { req, res });
   // deleteCookie('token', { res, req });

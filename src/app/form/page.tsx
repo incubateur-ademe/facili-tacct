@@ -74,11 +74,13 @@ const FilterForm = () => {
               <Page3
                 answers3={answers3}
                 setAnswers3={setAnswers3}
+                setActiveTab={setActiveTab}
               />
               : 
               <Page4
                 answers4={answers4}
                 setAnswers4={setAnswers4}
+                setActiveTab={setActiveTab}
               />
             }
           </div>
