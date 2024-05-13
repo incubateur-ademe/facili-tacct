@@ -1,0 +1,80 @@
+
+.form-container {
+    --cust-width: 70dvw;
+    display: flex;
+    flex-direction: row;
+}
+
+.form-page-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.thematique-card-wrapper {
+    width: var(--cust-width);
+    max-width: var(--cust-width);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.speech-bubble {
+    width: var(--cust-width);
+    margin: 2rem 0;
+    // layout
+	position: relative;
+	// looks
+	background-color: #eeeeee;
+	padding: 1.5em;
+	font-size: 1.25em;
+    box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    border-left: 3px solid #000091;
+}
+
+.speech-bubble:before {
+	// layout
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	bottom: 100%;
+	left: calc(70dvw/12); // offset should move with padding of parent 1.7 pour tile 3, 1.2 pour la 4
+	border: .75rem solid transparent;
+	border-top: none;
+
+	// looks
+	border-bottom-color: #eeeeee;
+	filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+}
+
+//REPLACE
+
+.speech-bubble2 {
+    width: var(--cust-width);
+    margin: 2rem 0;
+    // layout
+	position: relative;
+	// looks
+	background-color: #eeeeee;
+	padding: 1.5em;
+	font-size: 1.25em;
+    box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    border-left: 3px solid #000091;
+}
+
+.speech-bubble2:before {
+	// layout
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	bottom: 100%;
+	left: calc(70dvw/3); // offset should move with padding of parent
+	border: .75rem solid transparent;
+	border-top: none;
+
+	// looks
+	border-bottom-color: #eeeeee;
+	filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+}

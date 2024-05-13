@@ -1,8 +1,8 @@
-"use client"
-
-import { Container } from "../../../dsfr/server";
+import { Box } from "../../../dsfr/server";
 import RadioButton from '../../../dsfr/base/client/RadioButtons';
 import { Button } from "@codegouvfr/react-dsfr/Button";
+import Bubble from "./bubble";
+import "../../../assets/scss/form.scss"
 
 type Props = {
     answers1?: string;
@@ -10,17 +10,13 @@ type Props = {
     setActiveTab: any;
   }
 
-const Page1 : React.FC<Props> = (props) => {
-    const { answers1, setAnswers1, setActiveTab } = props;
-    const handleClick = () => {
-        setActiveTab("2");
-    }
-        
+const Page1 : React.FC<Props> = (props) => {        
     return (
-        <Container m="6w">
-            <h1>Page1</h1>
-            <RadioButton
-                legend="Question 1"
+      <Box as="div" className="speech-bubble">
+        <Bubble/>
+        {/* <h1>Page1</h1>
+        <RadioButton
+          legend="Question 1"
                 options={[
                     {
                         label: "P1 Q1 R1",
@@ -43,40 +39,14 @@ const Page1 : React.FC<Props> = (props) => {
                           onChange: ()=> setAnswers1("P1 Q1 R3")
                       }
                     },
-                ]}
-            />
-            <Button
-                onClick={handleClick}
-            >
-                Page suivante
-            </Button>
-            {/* <RadioButton
-                legend="Question 2"
-                options={[
-                    {
-                        label: "P1 Q2 R1",
-                        nativeInputProps: {
-                          checked: Q2value === "P1 Q2 R1",
-                          onChange: ()=> setQ2Value("P1 Q2 R1")
-                      }
-                    },
-                    {
-                        label: "P1 Q2 R2",
-                        nativeInputProps: {
-                          checked: Q2value === "P1 Q2 R2",
-                          onChange: ()=> setQ2Value("P1 Q2 R2")
-                      }
-                    },
-                    {
-                        label: "P1 Q2 R3",
-                        nativeInputProps: {
-                          checked: Q2value === "P1 Q2 R3",
-                          onChange: ()=> setQ2Value("P1 Q2 R3")
-                      }
-                    },
-                ]}
-            /> */}
-        </Container>  
+          ]}
+        /> 
+        <Button
+            onClick={handleClick}
+        >
+            Facteur suivant
+        </Button>*/}
+      </Box>
     )
 }
 

@@ -94,9 +94,9 @@ const RootLayout = ({ children }: PropsWithChildren) => {
               // serviceTagline={config.tagline}
               operatorLogo={operatorLogo}
             />
-            <NextAppDirEmotionCacheProvider options={{ key: "css" }}>
-		          {children}
-		        </NextAppDirEmotionCacheProvider>
+              <NextAppDirEmotionCacheProvider options={{ key: "css" }}>
+		            {children}
+		          </NextAppDirEmotionCacheProvider>
             <Footer
               id={footerId}
               accessibility="non compliant"
@@ -115,7 +115,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                 },
                 // <FooterConsentManagementItem key="FooterConsentManagementItem" />,
                 {
-                  text: <>▲&nbsp;Propulsé par scalingo</>,
+                  text: <>&nbsp;Propulsé par Scalingo</>,
                   linkProps: {
                     href: "",
                     className: "font-geist-sans",

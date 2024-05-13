@@ -1,0 +1,23 @@
+.tileComponent-unselected {
+    width: 200px;
+    height: 200px;
+    background-color: #eeeeee;
+    border: 1px dashed #eeeeee;
+    border-bottom: 5px solid #000091;
+    padding: 1.75rem;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.tileComponent-selected {
+    width: 200px;
+    height: 200px;
+    background-color: #e7e7e7;
+    border: 3px solid #000091;
+    border-bottom: 10px solid #000091;
+    padding: 1.75rem;
+    &:hover {
+        cursor: pointer;
+    }
+}
