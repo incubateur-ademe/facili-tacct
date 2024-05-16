@@ -35,7 +35,7 @@ export function SideMenuComp () {
       	  title="Vos thématiques"
       	/>
     	</div>
-			<span class="fr-icon-map-pin-2-line"> {code}</span>
+			<span className="fr-icon-map-pin-2-line"> {code}</span>
 		</div>
 
     )
