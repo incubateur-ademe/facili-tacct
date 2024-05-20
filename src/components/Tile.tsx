@@ -1,4 +1,4 @@
-import "./../assets/scss/components.scss";
+import styles from "./components.module.scss";
 
 interface Props {
 	children: string;
@@ -8,10 +8,9 @@ interface Props {
 
 export function TileComp ({children, selected, onClick}: Props) {
 	return (
-		<div className={selected ? "tileComponent-selected" : "tileComponent-unselected"}
+		<div className={selected ? styles.selected : styles.unselected}
 			onClick={onClick}>
 			<h6>{children}</h6>
     </div>
-
   )
 }
