@@ -1,29 +1,50 @@
 import { GridCol } from "../../../dsfr/layout";
-import { Box } from "../../../dsfr/server";
 import GraphExample from "../../../assets/images/Group.svg"
 import Image from "next/image";
+import { Button } from "@codegouvfr/react-dsfr/Button";
+import styles from "./../form.module.scss";
 
-const PageComp = (props: any) => {
-	const { data } = props;
+
+interface Props {
+	data: {
+		id: number;
+		titre: string;
+		facteur_sensibilite: string;
+		risque: string;
+		donnee: string;
+	}
+	activeTab: number
+	setActiveTab: React.Dispatch<React.SetStateAction<number>>
+	toggle: (tab: number) => void
+}
+
+const PageComp = (props: Props) => {
+	const { data, activeTab, setActiveTab, toggle } = props;
+	const tab = activeTab;
+	const handleForward = () => {
+    setActiveTab(tab + 1);
+		toggle(tab + 1);
+   }
   return (
 		<>
-			<Box as="div">
-				<Box as="div"  className="theme-page-titles">
+			<div>
+				<div className={styles.titles}>
     	  	<h3>{data.titre}</h3>
-    	  	<Box as="div" className="sensibilite">
+    	  	<div className={styles.sensibilite}>
 						<p>FACTEUR DE SENSIBILITÉ : <b>{data.facteur_sensibilite}</b></p>
 						<p>NIVEAU DE RISQUE : <b>{data.risque}</b></p>
-    	  	</Box>
-    		</Box>
-    		<Box as="div" className="data-bubble">
-					<div style={{display:"flex", flexDirection:"row", gap: "1em", justifyContent: "space-between", alignItems:"center"}}>
+    	  	</div>
+    		</div>
+    		<div className={styles.bubble}>
+					<div className={styles.bubbleContent}>
+						<div style={{display:"flex", flexDirection:"row", gap: "1em", justifyContent: "space-between", alignItems:"center"}}>
 						<GridCol lg={5}>
-							<Box as="div" style={{marginBottom: "2rem"}}>
+							<div>
 								<h4>Le saviez-vous ?</h4>
-								<Box as="p">
+								<p>
 									{data.donnee}
-								</Box>
-							</Box>
+								</p>
+							</div>
 						</GridCol>
 						<GridCol lg={6}>
 							<div
@@ -37,12 +58,20 @@ const PageComp = (props: any) => {
 									src={GraphExample}
 									alt=""
 								/>
-								<p>Source : Observatoire des territoires</p>
+								<p>Source : <b>Observatoire des territoires</b></p>
 							</div>
 						</GridCol>
+						</div>
 					</div>
-				</Box>
-			</Box>
+					<div className={styles.bottom}>
+						<Button
+          	  onClick={handleForward}
+          	>
+          	  Continuer
+          	</Button>
+					</div>
+				</div>
+			</div>
 		</>
 			
   )
