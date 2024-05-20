@@ -8,14 +8,20 @@ import Image from "next/image";
 const Bubble = () => {
   return (
 		<div style={{display:"flex", flexDirection:"row", gap: "1em", justifyContent: "space-between", alignItems:"center"}}>
-			<GridCol lg={6}>
+			<GridCol lg={5}>
 				<Box as="div" style={{marginBottom: "2rem"}}>
 					<h4>Le saviez-vous ?</h4>
 					<Box as="p">
-						65% de la population de votre collectivité a plus de 75 ans et court le risque d'avoir particulièrement chaud en cas de fortes chaleurs.
+					En 2019, près de 65% de la population de mon EPCI a plus de                      et 2/3 sont des femmes. 
+
+Un tiers de la surmortalité attribuable aux périodes de fortes chaleurs concerne des personnes de moins de 75 ans1​.
+En France en 2003, une surmortalité significative a été observée à partir de la classe d'âge 35-44 ans chez les hommes (+27%) et 45-54 chez les femmes (+23%)2.​
+
+L'exposition à la chaleur en dehors des périodes de canicule cause plus de décès que les vagues de chaleur extrêmes, qui sont plus dangereuses mais plus rares1.
+La culture du risque "chaleur" peut atténuer le constat en limitant les comportements à risque (temps passé à l'extérieur, habillement, conscience des besoins hydriques, pratique de la sieste).​
 					</Box>
 				</Box>
-				<div
+				{/* <div
 				  className="container"
 				  style={{
 				    width: "100%"
@@ -33,8 +39,8 @@ const Bubble = () => {
 							style: {height: "150px", backgroundColor: "#fff", maxWidth: "100%", margin: "0 0 2rem"}
 						}}
 					/>
-				</div>
-				<ButtonsGroup
+				</div> */}
+				{/* <ButtonsGroup
 			    buttons={[
 			      {
 			        children: 'Ajouter aux favoris',
@@ -53,12 +59,13 @@ const Bubble = () => {
 			      },
 			    ]}
 			    inlineLayoutWhen="always"
-			  />
+			  /> */}
 			</GridCol>
 			<GridCol lg={6}>
 				<div
       	  style={{
       	    display: "flex",
+						flexDirection: "column",
       	    justifyContent: "flex-end",
       	  }}
       	>
@@ -66,6 +73,7 @@ const Bubble = () => {
 						src={GraphExample}
 						alt=""
 					/>
+					<p>Source : Observatoire des territoires</p>
 				</div>
 			</GridCol>
 		</div>
