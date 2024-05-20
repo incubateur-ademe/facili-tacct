@@ -5,31 +5,28 @@ import { Box } from "../../../dsfr/server";
 import Bubble from "./bubble";
 
 type Props = {
-    answers2?: string;
-    setAnswers2?: any;
-    setActiveTab: any;
+
   }
 
 const Page2 : React.FC<Props> = (props) => {
-    const { setActiveTab } = props;
-    const handleForward = () => {
-        setActiveTab("3");
-    }
-    const handleBackward = () => {
-        setActiveTab("1");
-    }
+    // const handleForward = () => {
+    //     setActiveTab("3");
+    // }
+    // const handleBackward = () => {
+    //     setActiveTab("1");
+    // }
     return (
 			<>
         <Box as="div" className="speech-bubble2">
         	<Bubble/>
       	</Box>
         <div style={{display:"flex", flexDirection:"row", gap:"2em"}}>
-          <Button onClick={handleBackward}>
+          {/* <Button onClick={handleBackward}>
             Page précédente
           </Button>
           <Button onClick={handleForward}>
             Page suivante
-          </Button>
+          </Button> */}
         </div>
 			</>
     )

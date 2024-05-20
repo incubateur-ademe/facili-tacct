@@ -1,23 +1,35 @@
 .tileComponent-unselected {
-    width: 200px;
-    height: 200px;
-    background-color: #eeeeee;
+    width: fit-content;
+    max-width: 150px;
+    height: 80px;
+    background-color: #f8f8f8;
     border: 1px dashed #eeeeee;
-    border-bottom: 5px solid #000091;
-    padding: 1.75rem;
+    border-bottom: 3px solid #000091;
+    padding: 0.75rem;
+    align-content: center;
     &:hover {
         cursor: pointer;
+    }
+    h6 {
+        font-size: 0.8em;
+        font-weight: 500;
+        margin: 0;
     }
 }
 
 .tileComponent-selected {
-    width: 200px;
-    height: 200px;
+    width: fit-content;
+    max-width: 150px;
+    height: 80px;
     background-color: #e7e7e7;
     border: 3px solid #000091;
-    border-bottom: 10px solid #000091;
-    padding: 1.75rem;
+    border-bottom: 8px solid #000091;
+    padding: 0.75rem;
     &:hover {
         cursor: pointer;
+    }
+    h6 {
+        font-size: 1em;
+        margin: 0;
     }
 }
