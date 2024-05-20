@@ -7,3 +7,24 @@
 .content {
     flex-grow: 1;
 }
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.cardWrapper {
+    width: 80%; 
+    gap: 5em;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 20rem;
+    background-color: #eeeeee;
+    padding: 1rem;
+}
