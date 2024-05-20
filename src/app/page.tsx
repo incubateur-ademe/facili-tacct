@@ -10,7 +10,7 @@ import { Container, GridCol, Grid } from "../dsfr/layout";
 import DocIcon from "../assets/icons/doc_icon_lightgrey.svg";
 import MenuIcon from "../assets/icons/menu_icon_lightgrey.svg";
 import PeopleIcon from "../assets/icons/people_icon_lightgrey.svg";
-import "../assets/scss/welcome.scss";
+import styles from "./root.module.scss";
 
 export default function Home() {
 
@@ -25,14 +25,14 @@ export default function Home() {
   return (
     <>
       <Container m="4w">
-        <Grid className="welcome-wrapper">
+        <Grid className={styles.wrapper}>
           <h1>L'adaptation au premier plan</h1>
           <p>
             Embarquez vos élus et partenaires sur la base de données territoriales et grâce à des méthodes de travail testées par notre équipe
           </p>
-          <Grid align="center" className="welcome-card-wrapper">
+          <Grid align="center" className={styles.cardWrapper}>
             <GridCol lg={3}>
-            <div className="welcome-card"
+            <div className={styles.card}
               onClick={handleClick}>
               <Image
                 src={DocIcon}
@@ -43,7 +43,7 @@ export default function Home() {
             </div>
             </GridCol>
             <GridCol lg={3}>
-              <div className="welcome-card">
+              <div className={styles.card}>
                 <Image
                   src={PeopleIcon}
                   alt="icône de 3 personnages"
@@ -53,7 +53,7 @@ export default function Home() {
               </div>
             </GridCol>
             <GridCol lg={3}>
-              <div className="welcome-card">
+              <div className={styles.card}>
                 <Image
                   src={MenuIcon}
                   alt="icône d'un menu"

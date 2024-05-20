@@ -1,14 +1,13 @@
 "use client"
 
 import { useState } from "react";
-import { Container, Grid, GridCol } from "../../dsfr/server";
-import { Box } from "../../dsfr/server";
+import { Container } from "../../dsfr/server";
 import { TileComp } from "../../components/Tile";;
 import { usePathname, useSearchParams } from 'next/navigation';
 import { SideMenuComp } from "../../components/SideMenu";
 import themes from "@/lib/utils/themes";
 import PageComp from "./components/PageComp";
-import "../../assets/scss/form.scss";
+import styles from "./form.module.scss";
 
 const FilterForm = () => {
   const pathname = usePathname();
@@ -30,15 +29,13 @@ const FilterForm = () => {
 
   const theme = themes.inconfort_thermique;
 
-  console.log('theme', theme)
-  
   return (
-    <>
       <Container m="4w">
-        <Box as="div" className="form-container">
-          <SideMenuComp/>
-            <Box as="div" className="form-page-container">
-              <Box as="div" className="thematique-card-wrapper">
+        <h1>Inconfort thermique</h1>
+        <div className={styles.container}>
+          {/* <SideMenuComp/> */}
+            <div className={styles.formContainer}>
+              <div className={styles.cardWrapper}>
               {
                 theme.map((el, i) => (
                   <TileComp
@@ -51,14 +48,16 @@ const FilterForm = () => {
                   </TileComp>
                 ))
               }
-              </Box>
+              </div>
               <PageComp
                 data={theme[activeTab]}
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+                toggle={toggle}
               />
-            </Box>
-          </Box>
+            </div>
+          </div>
       </Container>
-    </>
   );
 };
 
