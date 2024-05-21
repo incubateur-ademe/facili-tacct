@@ -1,3 +1,5 @@
+"use client"
+
 import { Container, Grid, GridCol } from "../../dsfr/server";
 import Image from "next/image";
 import BookmarkIcon from "../../assets/icons/bookmark_icon_black.svg";
@@ -30,7 +32,7 @@ const Ressources = () => {
                   tag={el.tag}
                   titre={el.titre}
                   ateliers={el.ateliers}
-                  />
+                />
               ))
             }
           </div>

@@ -10,14 +10,20 @@ type Event = React.ChangeEvent<HTMLInputElement>;
 
 const Collectivite = () => {
   const router = useRouter();
-	const [code, setCode] = useState<string>();
-  
+	const [code, setCode] = useState<number>();
+  const [error, setError] = useState<"default" | "error">("default");
+
   const handleChange = (event: Event) => {
-      const input = event.target.value;
-      setCode(input);
-    };
+    const input = event.target.value;
+    const numberInput = Number(input);
+    numberInput === 0 ? setCode(undefined) : setCode(numberInput);
+  };
+
   const handleClick = () => {
+    if (code && code >= 1000) {
+      setError("default");
       router.push(`/form?code=${code}`);
+    } else setError("error");
   }
   
   return (
@@ -31,19 +37,26 @@ const Collectivite = () => {
           <div
             className="container"
             style={{
-              width: 768
+              width: "50dvw"
             }}
           >
             <Input
-              addon={<Button onClick={handleClick}>Continuer</Button>}
-              label=""
+              addon={
+                <Button 
+                  onClick={handleClick}
+                > Continuer</Button>
+              }
+              label="Code commune *"
               nativeInputProps={{
                 placeholder: '75000',
-                name: "commune",
                 value: code,
                 type: 'number',
                 onChange: handleChange,
+                pattern: "\d{10,}",
+                required: true
               }}
+              state={error}
+              stateRelatedMessage="Votre code n'est pas au bon format"
             />
           </div>
         </Grid> 
