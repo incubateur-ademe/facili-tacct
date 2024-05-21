@@ -1,0 +1,56 @@
+.wrapper {
+
+}
+
+.blocWrapper {
+    margin: 1em 0 4em;
+}
+
+.titles {
+    display: flex;
+    flex-direction: row;
+    column-gap: 2em;
+}
+
+.favoris {
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5em;
+    height: fit-content;
+    padding: 0.5em;
+    background-color: #F1F1F1;
+    align-items: center;
+    border-radius: 0.25rem;
+    &:hover {
+        cursor: pointer;
+    }
+    p {
+        margin: 0;
+    }
+}
+
+.cardWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.card {
+    background-color: #F4F4F4;
+    padding: 1.5em;
+    border-radius: 0.25rem;
+    border: 2px solid black;
+    min-width: 300px;
+}
+
+.subcard {
+    background-color: #FFF;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    border-radius: 0.25rem;
+    p {
+        margin: 0;
+    }
+}
