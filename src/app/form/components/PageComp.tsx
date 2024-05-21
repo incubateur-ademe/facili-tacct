@@ -14,8 +14,8 @@ interface Props {
 		donnee: string;
 	}
 	activeTab: number
-	setActiveTab: React.Dispatch<React.SetStateAction<number>>
-	toggle: (tab: number) => void
+	setActiveTab: React.Dispatch<React.SetStateAction<number>>;
+	toggle: (tab: number) => void;
 }
 
 const PageComp = (props: Props) => {

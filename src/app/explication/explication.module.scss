@@ -1,0 +1,20 @@
+.cardWrapper {
+  width: var(--cust-width);
+  max-width: var(--cust-width);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  column-gap: 0.5em;
+  border-bottom: 1px solid grey;
+}
+
+.constellation {
+  background-color: #f8f8f8;
+}
+
+.bottom {
+  display: flex;
+  background-color: #eeeeee;
+  padding: 1em 2em;
+  justify-content: end;
+}
