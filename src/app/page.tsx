@@ -12,17 +12,10 @@ import MenuIcon from "../assets/icons/menu_icon_lightgrey.svg";
 import PeopleIcon from "../assets/icons/people_icon_lightgrey.svg";
 import styles from "./root.module.scss";
 
-type Params = {
-  className?: string;
-};
-
-
-export default function Home(params: Params) {
+export default function Home() {
 
   const { css } = useStyles();
   const { isDark } = useIsDark();
-  const backColor = fr.colors.decisions.background.alt.redMarianne.default;
-  const { className } = params;  
 
   const [select, setSelect] = useState(false);
   const handleClick = () => {
