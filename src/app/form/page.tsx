@@ -30,34 +30,34 @@ const FilterForm = () => {
   const theme = themes.inconfort_thermique;
 
   return (
-      <Container m="4w">
-        <h1>Inconfort thermique</h1>
-        <div className={styles.container}>
-          {/* <SideMenuComp/> */}
-            <div className={styles.formContainer}>
-              <div className={styles.cardWrapper}>
-              {
-                theme.map((el, i) => (
-                  <TileComp
-                    key={i}
-                    selected={selected[el.id]}
-                    onClick={() => {
-                      toggle(el.id);
-                    }}>
-                    {el.titre}
-                  </TileComp>
-                ))
-              }
-              </div>
-              <PageComp
-                data={theme[activeTab]}
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
-                toggle={toggle}
-              />
+    <Container m="4w">
+      <h1>Inconfort thermique</h1>
+      <div className={styles.container}>
+        {/* <SideMenuComp/> */}
+          <div className={styles.formContainer}>
+            <div className={styles.cardWrapper}>
+            {
+              theme.map((el, i) => (
+                <TileComp
+                  key={i}
+                  selected={selected[el.id]}
+                  onClick={() => {
+                    toggle(el.id);
+                  }}>
+                  {el.titre}
+                </TileComp>
+              ))
+            }
             </div>
+            <PageComp
+              data={theme[activeTab]}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              toggle={toggle}
+            />
           </div>
-      </Container>
+        </div>
+    </Container>
   );
 };
 

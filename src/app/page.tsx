@@ -32,15 +32,15 @@ export default function Home() {
           </p>
           <Grid align="center" className={styles.cardWrapper}>
             <GridCol lg={3}>
-            <div className={styles.card}
-              onClick={handleClick}>
-              <Image
-                src={DocIcon}
-                alt="icône d'un document"
-              />
-              <h5>Enrichissez votre diagnostic</h5>
-              <p>Explorez les thématiques et données socio-économiques les plus pertinentes pour votre territoire.</p>
-            </div>
+              <div className={styles.card}
+                onClick={handleClick}>
+                <Image
+                  src={DocIcon}
+                  alt="icône d'un document"
+                />
+                <h5>Enrichissez votre diagnostic</h5>
+                <p>Explorez les thématiques et données socio-économiques les plus pertinentes pour votre territoire.</p>
+              </div>
             </GridCol>
             <GridCol lg={3}>
               <div className={styles.card}>
