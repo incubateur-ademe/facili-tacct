@@ -1,4 +1,6 @@
 import styles from "./ressources.module.scss";
+import { fr } from "@codegouvfr/react-dsfr";
+import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 
 interface description {
 	description: string;
@@ -11,8 +13,15 @@ interface Props {
 }
 
 const Card = ({tag, titre, ateliers}: Props) => {
+	const { isDark } = useIsDark();
+	const darkClass = {
+	 backgroundColor: fr.colors.getHex({isDark}).decisions.background.default.grey.active,
+	 "&:hover": {
+		 backgroundColor: fr.colors.getHex({isDark}).decisions.background.alt.grey.hover
+	 },
+ 	}
 	return (
-    <div className={styles.card}>
+    <div className={styles.card} style={darkClass}>
       <p>{tag}</p>
       <h5>{titre}</h5>
 			{

@@ -12,16 +12,29 @@ import MenuIcon from "../assets/icons/menu_icon_lightgrey.svg";
 import PeopleIcon from "../assets/icons/people_icon_lightgrey.svg";
 import styles from "./root.module.scss";
 
-export default function Home() {
+type Params = {
+  className?: string;
+};
+
+
+export default function Home(params: Params) {
 
   const { css } = useStyles();
-  // const { isDark } = useIsDark();
-  // const backColor = fr.colors.decisions.background.alt.redMarianne.default;
+  const { isDark } = useIsDark();
+  const backColor = fr.colors.decisions.background.alt.redMarianne.default;
+  const { className } = params;  
 
   const [select, setSelect] = useState(false);
   const handleClick = () => {
     select ? setSelect(false) : setSelect(true);
  }
+
+ const darkClass = {
+  backgroundColor: fr.colors.getHex({isDark}).decisions.background.default.grey.active,
+  "&:hover": {
+    backgroundColor: fr.colors.getHex({isDark}).decisions.background.alt.grey.hover
+  },
+}
   return (
     <>
       <Container m="4w">
@@ -30,20 +43,20 @@ export default function Home() {
           <p>
             Embarquez vos élus et partenaires sur la base de données territoriales et grâce à des méthodes de travail testées par notre équipe
           </p>
-          <Grid align="center" className={styles.cardWrapper}>
-            <GridCol lg={3}>
-              <div className={styles.card}
+          <Grid align="center" className={styles.cardWrapper} >
+            <GridCol lg={3} >
+              <div className={styles.card} style={darkClass}
                 onClick={handleClick}>
                 <Image
                   src={DocIcon}
                   alt="icône d'un document"
                 />
-                <h5>Enrichissez votre diagnostic</h5>
+                <h5 >Enrichissez votre diagnostic</h5>
                 <p>Explorez les thématiques et données socio-économiques les plus pertinentes pour votre territoire.</p>
               </div>
             </GridCol>
             <GridCol lg={3}>
-              <div className={styles.card}>
+              <div className={styles.card} style={darkClass}>
                 <Image
                   src={PeopleIcon}
                   alt="icône de 3 personnages"
@@ -53,7 +66,7 @@ export default function Home() {
               </div>
             </GridCol>
             <GridCol lg={3}>
-              <div className={styles.card}>
+              <div className={styles.card} style={darkClass}> 
                 <Image
                   src={MenuIcon}
                   alt="icône d'un menu"

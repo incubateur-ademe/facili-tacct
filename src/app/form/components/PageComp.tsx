@@ -1,5 +1,7 @@
 import { GridCol } from "../../../dsfr/layout";
-import GraphExample from "../../../assets/images/Group.svg"
+import GraphExample from "../../../assets/images/Group.svg";
+import { fr } from "@codegouvfr/react-dsfr";
+import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 import Image from "next/image";
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import styles from "./../form.module.scss";
@@ -20,6 +22,13 @@ interface Props {
 
 const PageComp = (props: Props) => {
 	const { data, activeTab, setActiveTab, toggle } = props;
+	const { isDark } = useIsDark();
+ 	const darkClass = {
+  	backgroundColor: fr.colors.getHex({isDark}).decisions.background.default.grey.active,
+  	"&:hover": {
+  	  backgroundColor: fr.colors.getHex({isDark}).decisions.background.alt.grey.hover
+  	},
+	}
 	const tab = activeTab;
 	const handleForward = () => {
     setActiveTab(tab + 1);
@@ -36,7 +45,7 @@ const PageComp = (props: Props) => {
     	  	</div>
     		</div>
     		<div className={styles.bubble}>
-					<div className={styles.bubbleContent}>
+					<div className={styles.bubbleContent} style={darkClass}>
 						<div style={{display:"flex", flexDirection:"row", gap: "1em", justifyContent: "space-between", alignItems:"center"}}>
 						<GridCol lg={5}>
 							<div>
