@@ -62,7 +62,6 @@ const RootLayout = ({ children }: PropsWithChildren) => {
       className={cx(styles.app)}
     >
       <head>
-        
         <StartDsfr />
         <DsfrHead
           Link={Link}
@@ -91,8 +90,6 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                   </Badge>
                 </>
               }
-              // serviceTagline={config.tagline}
-              operatorLogo={operatorLogo}
             />
               <NextAppDirEmotionCacheProvider options={{ key: "css" }}>
 		            {children}
@@ -102,7 +99,6 @@ const RootLayout = ({ children }: PropsWithChildren) => {
               accessibility="non compliant"
               accessibilityLinkProps={{ href: "/accessibilite" }}
               contentDescription={`${config.name} est un service développé par l'accélérateur de la transition écologique de l'ADEME.`}
-              operatorLogo={operatorLogo}
               bottomItems={[
                 {
                   text: "CGU",
@@ -112,14 +108,6 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                 {
                   ...headerFooterDisplayItem,
                   iconId: "fr-icon-theme-fill",
-                },
-                // <FooterConsentManagementItem key="FooterConsentManagementItem" />,
-                {
-                  text: <>&nbsp;Propulsé par Scalingo</>,
-                  linkProps: {
-                    href: "",
-                    className: "font-geist-sans",
-                  },
                 },
                 <FooterConsentManagementItem key={0} />,
 								<FooterPersonalDataPolicyItem key={1} />
