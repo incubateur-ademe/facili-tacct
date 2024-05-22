@@ -32,12 +32,6 @@ import {
 const contentId = "content";
 const footerId = "footer";
 
-const operatorLogo: HeaderProps["operatorLogo"] = {
-  imgUrl: "/next.svg",
-  alt: "ADEME",
-  orientation: "vertical",
-};
-
 export const metadata: Metadata = {
   metadataBase: new URL(config.host),
   ...sharedMetadata,

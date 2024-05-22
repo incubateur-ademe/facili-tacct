@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container } from "../../dsfr/server";
 import { TileComp } from "../../components/Tile";;
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -8,6 +8,7 @@ import { SideMenuComp } from "../../components/SideMenu";
 import themes from "@/lib/utils/themes";
 import PageComp from "./components/PageComp";
 import styles from "./form.module.scss";
+import Head from "next/head";
 
 const FilterForm = () => {
   const pathname = usePathname();
@@ -29,7 +30,18 @@ const FilterForm = () => {
 
   const theme = themes.inconfort_thermique;
 
+  useEffect(() => {
+    document.title = "Facili-TACCT - Données socio-économiques";
+  }, []);
+  
   return (
+    <>
+    <Head>
+      <meta
+        name="description"
+        content="Données socio-économiques"
+      />
+    </Head>
     <Container m="4w">
       <h1>Inconfort thermique</h1>
       <div className={styles.container}>
@@ -58,6 +70,7 @@ const FilterForm = () => {
           </div>
         </div>
     </Container>
+    </>
   );
 };
 

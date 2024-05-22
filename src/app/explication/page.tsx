@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container } from "../../dsfr/server";
 import { TileComp } from "../../components/Tile";
 import { Button } from "@codegouvfr/react-dsfr/Button";
@@ -11,6 +11,7 @@ import themes from "@/lib/utils/themes";
 import GridIcon from "../../assets/icons/grid_icon_grey.svg";
 import ConnexionIcon from "../../assets/icons/connexion_icon_black.svg";
 import styles from "./explication.module.scss";
+import Head from "next/head";
 
 
 const Explication = () => {
@@ -34,7 +35,18 @@ const Explication = () => {
     margin: { top: 0, right: 0, bottom: 0, left: 0 }
   };
 
+  useEffect(() => {
+    document.title = "Facili-TACCT - Actions";
+  }, []);
+  
   return (
+    <>
+    <Head>
+      <meta
+        name="description"
+        content="Actions à mettre en place"
+      />
+    </Head>
     <Container m="4w">
       <h1>Inconfort thermique</h1>
         <div>
@@ -90,6 +102,7 @@ const Explication = () => {
           </div>
         </div>
     </Container>
+    </>
   );
 };
 
