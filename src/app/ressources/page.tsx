@@ -1,15 +1,29 @@
 "use client"
 
+import { useEffect } from "react";
 import { Container, Grid, GridCol } from "../../dsfr/server";
 import Image from "next/image";
 import BookmarkIcon from "../../assets/icons/bookmark_icon_black.svg";
 import workshops from "@/lib/utils/workshops";
 import Card from "./Card";
 import styles from "./ressources.module.scss";
+import Head from "next/head";
 
 const Ressources = () => {
   
+  //change page title in client page
+  useEffect(() => {
+    document.title = "Facili-TACCT - Ressources";
+  }, []);
+  
   return (
+    <>
+    <Head>
+      <meta
+        name="description"
+        content="Ressources"
+      />
+    </Head>
     <Container m="4w">
       <h1>Inconfort thermique</h1>
       <div className={styles.wrapper}>
@@ -63,6 +77,7 @@ const Ressources = () => {
         </div>
       </div>
     </Container>
+    </>
   );
 };
 

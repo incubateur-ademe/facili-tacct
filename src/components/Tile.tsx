@@ -17,9 +17,9 @@ export function TileComp ({children, selected, onClick}: Props) {
   	},
 	}
 	return (
-		<div className={selected ? styles.selected : styles.unselected} style={darkClass}
+		<button className={selected ? styles.selected : styles.unselected} style={darkClass}
 			onClick={onClick}>
 			<h6>{children}</h6>
-    </div>
+    </button>
   )
 }
