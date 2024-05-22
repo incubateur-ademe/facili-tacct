@@ -1,6 +1,7 @@
 import { type Metadata } from "next";
-
+import MentionsLegalesContent from "../../../content/mentions-legales.mdx";
 import { Container, Grid, GridCol, Box } from "../../../src/dsfr/server";
+import { anchorHeadingMDXComponents } from "@/mdx-components";
 import { sharedMetadata } from "../shared-metadata";
 
 const title = "Mentions légales";
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
 const MentionsLegales = () => (
   <Container my="4w">
     <h1>{title}</h1>
+    <MentionsLegalesContent components={anchorHeadingMDXComponents} />
   </Container>
 );
 
