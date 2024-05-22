@@ -1,11 +1,11 @@
 import { type Metadata } from "next";
-import PolitiqueContent from "../../../content/politique-de-confidentialite/traitement.mdx";
-import { Container } from "../../../src/dsfr/server";
+import PolitiqueCookies from "../../../content/politique-de-confidentialite/cookies.mdx";
+import { Container } from "../../dsfr/server";
 import { anchorHeadingMDXComponents } from "@/mdx-components";
 import { sharedMetadata } from "../shared-metadata";
 
-const title = "Politique de confidentialité";
-const url = "/politique-de-confidentialite";
+const title = "Politique des cookies";
+const url = "/politique-des-cookies";
 
 export const metadata: Metadata = {
   ...sharedMetadata,
@@ -24,7 +24,7 @@ const PolitiqueConfidentialite = () => {
   return (
     <Container my="4w">
       <h1>{title}</h1>
-      <PolitiqueContent components={anchorHeadingMDXComponents} />
+      <PolitiqueCookies components={anchorHeadingMDXComponents} />
     </Container>
   );
 };
