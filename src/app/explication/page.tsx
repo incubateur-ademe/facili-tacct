@@ -88,7 +88,7 @@ const Explication = () => {
             </div>
           </div>
           <div className={styles.constellation}>
-            <Explications/>
+            {/* <Explications/> */}
             <Constellation
               dimensions={dimensions}
               states={selected}
