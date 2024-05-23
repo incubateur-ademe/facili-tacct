@@ -6,7 +6,8 @@ import { TileComp } from "../../components/Tile";
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import Image from "next/image";
 import { useSearchParams } from 'next/navigation';
-import Constellation from "./d3"
+import Constellation from "./constellation";
+import Explications from "./explications"
 import themes from "@/lib/utils/themes";
 import GridIcon from "../../assets/icons/grid_icon_grey.svg";
 import ConnexionIcon from "../../assets/icons/connexion_icon_black.svg";
@@ -87,6 +88,7 @@ const Explication = () => {
             </div>
           </div>
           <div className={styles.constellation}>
+            <Explication/>
             <Constellation
               dimensions={dimensions}
             />

@@ -34,6 +34,7 @@ const FilterForm = () => {
     document.title = "Facili-TACCT - Données socio-économiques";
   }, []);
   
+  console.log('theme', theme)
   return (
     <>
     <Head>
@@ -62,7 +63,7 @@ const FilterForm = () => {
             }
             </div>
             <PageComp
-              data={theme[activeTab]}
+              data={theme}
               activeTab={activeTab}
               setActiveTab={setActiveTab}
               toggle={toggle}
