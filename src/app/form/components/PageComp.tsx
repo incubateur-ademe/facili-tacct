@@ -5,6 +5,7 @@ import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 import Image from "next/image";
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import styles from "./../form.module.scss";
+import { useRouter, useSearchParams } from 'next/navigation';
 
 
 interface Props {
@@ -14,7 +15,7 @@ interface Props {
 		facteur_sensibilite: string;
 		risque: string;
 		donnee: string;
-	}
+	}[]
 	activeTab: number
 	setActiveTab: React.Dispatch<React.SetStateAction<number>>;
 	toggle: (tab: number) => void;
@@ -22,6 +23,9 @@ interface Props {
 
 const PageComp = (props: Props) => {
 	const { data, activeTab, setActiveTab, toggle } = props;
+	const router = useRouter();
+	const searchParams = useSearchParams();
+  const code = searchParams.get("code");
 	const { isDark } = useIsDark();
  	const darkClass = {
   	backgroundColor: fr.colors.getHex({isDark}).decisions.background.default.grey.active,
@@ -29,19 +33,24 @@ const PageComp = (props: Props) => {
   	  backgroundColor: fr.colors.getHex({isDark}).decisions.background.alt.grey.hover
   	},
 	}
+	console.log('data', data)
 	const tab = activeTab;
 	const handleForward = () => {
-    setActiveTab(tab + 1);
-		toggle(tab + 1);
+		if (data.length === tab + 1) {
+			router.push(`/explication?code=${code}`)
+		} else {
+			setActiveTab(tab + 1);
+			toggle(tab + 1);
+		}
    }
   return (
 		<>
 			<div>
 				<div className={styles.titles}>
-    	  	<h3>{data.titre}</h3>
+    	  	<h3>{data[activeTab].titre}</h3>
     	  	<div className={styles.sensibilite}>
-						<p>FACTEUR DE SENSIBILITÉ : <b>{data.facteur_sensibilite}</b></p>
-						<p>NIVEAU DE RISQUE : <b>{data.risque}</b></p>
+						<p>FACTEUR DE SENSIBILITÉ : <b>{data[activeTab].facteur_sensibilite}</b></p>
+						<p>NIVEAU DE RISQUE : <b>{data[activeTab].risque}</b></p>
     	  	</div>
     		</div>
     		<div className={styles.bubble}>
@@ -51,17 +60,12 @@ const PageComp = (props: Props) => {
 							<div>
 								<h4>Le saviez-vous ?</h4>
 								<p>
-									{data.donnee}
+									{data[activeTab].donnee}
 								</p>
 							</div>
 						</GridCol>
 						<GridCol lg={6}>
-							<div
-      				  style={{
-      				    display: "flex",
-									flexDirection: "column",
-      				    justifyContent: "flex-end",
-      				  }}
+							<div className="flex flex-col justify-end"
       				>
 								<Image
 									src={GraphExample}
@@ -73,10 +77,8 @@ const PageComp = (props: Props) => {
 						</div>
 					</div>
 					<div className={styles.bottom}>
-						<Button
-          	  onClick={handleForward}
-          	>
-          	  Continuer
+						<Button onClick={handleForward}>
+          	  {data.length === tab + 1 ? "Étape suivante" : "Continuer"}
           	</Button>
 					</div>
 				</div>
