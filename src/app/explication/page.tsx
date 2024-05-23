@@ -88,9 +88,11 @@ const Explication = () => {
             </div>
           </div>
           <div className={styles.constellation}>
-            <Explication/>
+            <Explications/>
             <Constellation
               dimensions={dimensions}
+              states={selected}
+              setSelected={setSelected}
             />
             <div className={styles.bottom}>
 						  <Button
