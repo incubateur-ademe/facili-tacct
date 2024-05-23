@@ -1,9 +1,30 @@
 "use client"
 /** Constellation.js */
+//TODO REPLACE types (any everywhere)
+
 import React, { useRef, useEffect, useState } from "react";
 import * as d3 from "d3";
 
-const Constellation = (props) => {
+interface Props {
+  dimensions: {
+    width: string,
+    height: number,
+    margin: {
+      top: number,
+      right: number,
+      bottom: number,
+      left: number,
+    }
+  },
+  states: boolean[],
+  setSelected: React.Dispatch<React.SetStateAction<boolean[]>>;
+}
+
+type circle = {
+  [key: string]: boolean,
+}
+
+const Constellation = (props: Props) => {
   const { dimensions, states, setSelected } = props;
   const svgRef = useRef(null);
 
@@ -15,18 +36,30 @@ const Constellation = (props) => {
     "Espaces naturels": states.at(4),
     "Gestion de l'eau": states.at(5),
   })
-  console.log('selectedCircle', selectedCircle)
+
   
-  const resetFunction = (obj) => {
+  const resetFunction = (obj: circle) => {
     Object.keys(obj).forEach(function(key){ obj[key] = false });
     return obj;
   }
+
+  const handleCircleSelect = (selectedCircle: circle, themeId: string) => {
+    if (selectedCircle[themeId] === true) {
+      const tempData = resetFunction(selectedCircle);
+      setSelected(Object.values(tempData));
+    } else {
+      const tempData = resetFunction(selectedCircle);  
+      tempData[themeId] === true ? tempData[themeId] = false : tempData[themeId] = true;
+      setSelected(Object.values(tempData));
+    }
+  }
+
   const { width, height, margin } = dimensions;
   const svgWidth = width + margin.left + margin.right;
   const svgHeight = height + margin.top + margin.bottom;
-  const mainnodes = [];
-  const childnodes = [];
-  const links = [];
+  const mainnodes: any = [];
+  const childnodes: any = [];
+  const links: any = [];
   const InconfortThermique = { id: 'Inconfort Thermique' };
   const Sante = { id: 'Santé' };
   const Tourisme = { id: 'Tourisme' };
@@ -35,7 +68,7 @@ const Constellation = (props) => {
   const GestionEau = { id: 'Gestion de l\'eau' };
   const Amenagement = { id: 'Aménagement' };
   
-  const addMainNode = (node) => {
+  const addMainNode = (node: any) => {
     node.size = 70;
     node.color = "#000091";
     node.textColor = "#d2d2d2"
@@ -43,12 +76,12 @@ const Constellation = (props) => {
   };
   
   const addChildNode = (
-    parentNode,
-    childNode,
-    size,
-    color,
-    distance = 170,
-    state
+    parentNode: any,
+    childNode: any,
+    size: number,
+    color: string,
+    distance: number,
+    state: boolean
   ) => {
     childNode.size = size;
     childNode.color = color;
@@ -63,8 +96,8 @@ const Constellation = (props) => {
     });
   };
 
-  const assembleChildNode = (parentNode, childNode, weight, color) => {
-    addChildNode(parentNode, childNode, weight, color);
+  const assembleChildNode = (parentNode: any, childNode: any, weight: number, color: string) => {
+    addChildNode(parentNode, childNode, weight, color, 170, false);
   };
 
   addMainNode(InconfortThermique);
@@ -90,10 +123,10 @@ const Constellation = (props) => {
       .force('charge', d3.forceManyBody().strength(-200))
       .force(
         'link',
-        d3.forceLink(links).distance((link) => link.distance)
+        d3.forceLink(links).distance((link: any) => link.distance)
       )
       .force('center', d3.forceCenter(centerX, centerY));
-    const dragInteraction = d3.drag().on('drag', (event, node) => {
+    const dragInteraction: any = d3.drag().on('drag', (event, node: any) => {
         node.fx = event.x;
         node.fy = event.y;
         simulation.alpha(1);
@@ -104,42 +137,31 @@ const Constellation = (props) => {
       .data(links)
       .enter()
       .append('line')
-      .attr('stroke', (link) => link.color || 'black');
+      .attr('stroke', (link: any) => link.color || 'black');
     const circles = svg
       .selectAll('circle')
       .data(nodes)
       .enter()
       .append('circle')
-      .attr("id", (node) => node.id)
-      .attr('r', (node) => node.size)
-      .attr('fill', (node) => node.color || 'gray')
+      .attr("id", (node: any) => node.id)
+      .attr('r', (node: any) => node.size)
+      .attr('fill', (node: any) => node.color || 'gray')
       .style("stroke", "black")
       .call(dragInteraction)
       .on("click", function() {
         let themeId = d3.select(this).attr("id");
-        console.log('Object.entries(selectedCircle)', Object.entries(selectedCircle))
-
-        if (selectedCircle[themeId] === true) {
-          const tempData = resetFunction(selectedCircle);
-          console.log('tempData', tempData)
-          d3.select(this).attr("fill", "#D0DDFF")
-          setSelected(Object.values(tempData));
-        } else {
-          const tempData = resetFunction(selectedCircle);  
-          tempData[themeId] === true ? tempData[themeId] = false : tempData[themeId] = true;
-          console.log('tempData', tempData)
-          d3.select(this).attr("fill", "#FF0000")
-          setSelected(Object.values(tempData));
+        handleCircleSelect(selectedCircle as circle, themeId);
+        if (this.getAttribute("id") === "Inconfort Thermique") {
+          d3.selectAll("circle").attr("fill", (node: any) => node.color);
+        } else { 
+          if (this.getAttribute("fill") === "#D0DDFF") {
+            d3.selectAll("circle").attr("fill", (node: any) => node.color);
+            d3.select(this).attr("fill", "#FF0000");
+          } else {
+            d3.selectAll("circle").attr("fill", (node: any) => node.color);
+            d3.select(this).attr("fill", "#D0DDFF")
+          }
         }
-
-
-
-
-        // if (this.getAttribute("fill") === "#D0DDFF") {
-        //   d3.select(this).attr("fill", "#FF0000");
-        // } else {
-        //   d3.select(this).attr("fill", "#D0DDFF")
-        // } 
       }
     )
 
@@ -150,17 +172,17 @@ const Constellation = (props) => {
       .append('text')
       .attr('text-anchor', 'middle')
       .attr('alignment-baseline', 'middle')
-      .attr("fill", (node) => node.textColor) 
+      .attr("fill", (node: any) => node.textColor) 
       .style('pointer-events', 'none')
-      .text((node) => node.id);
+      .text((node: any) => node.id);
     simulation.on('tick', () => {
-      circles.attr('cx', (node) => node.x).attr('cy', (node) => node.y);
-      text.attr('x', (node) => node.x).attr('y', (node) => node.y);
+      circles.attr('cx', (node: any) => node.x).attr('cy', (node: any) => node.y);
+      text.attr('x', (node: any) => node.x).attr('y', (node: any) => node.y);
       lines
-      .attr('x1', (link) => link.source.x)
-      .attr('y1', (link) => link.source.y)
-      .attr('x2', (link) => link.target.x)
-      .attr('y2', (link) => link.target.y);
+      .attr('x1', (link: any) => link.source.x)
+      .attr('y1', (link: any) => link.source.y)
+      .attr('x2', (link: any) => link.target.x)
+      .attr('y2', (link: any) => link.target.y);
     });
   }, []); // Redraw chart if data changes
 
