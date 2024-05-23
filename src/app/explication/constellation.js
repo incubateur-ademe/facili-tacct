@@ -1,10 +1,26 @@
 "use client"
 /** Constellation.js */
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import * as d3 from "d3";
 
-const Constellation = ({ dimensions }) => {
+const Constellation = (props) => {
+  const { dimensions, states, setSelected } = props;
   const svgRef = useRef(null);
+
+  const [selectedCircle, setSelectedCircle] = useState({
+    "Bâtiment": states.at(0),
+    "Tourisme": states.at(1),
+    "Santé": states.at(2),
+    "Aménagement": states.at(3),
+    "Espaces naturels": states.at(4),
+    "Gestion de l'eau": states.at(5),
+  })
+  console.log('selectedCircle', selectedCircle)
+  
+  const resetFunction = (obj) => {
+    Object.keys(obj).forEach(function(key){ obj[key] = false });
+    return obj;
+  }
   const { width, height, margin } = dimensions;
   const svgWidth = width + margin.left + margin.right;
   const svgHeight = height + margin.top + margin.bottom;
@@ -32,10 +48,12 @@ const Constellation = ({ dimensions }) => {
     size,
     color,
     distance = 170,
+    state
   ) => {
     childNode.size = size;
     childNode.color = color;
     childNode.textColor = "#black";
+    childNode.state = false
     childnodes.push(childNode);
     links.push({
       source: parentNode,
@@ -92,10 +110,39 @@ const Constellation = ({ dimensions }) => {
       .data(nodes)
       .enter()
       .append('circle')
-      .attr('fill', (node) => node.color || 'gray')
+      .attr("id", (node) => node.id)
       .attr('r', (node) => node.size)
+      .attr('fill', (node) => node.color || 'gray')
       .style("stroke", "black")
-      .call(dragInteraction);
+      .call(dragInteraction)
+      .on("click", function() {
+        let themeId = d3.select(this).attr("id");
+        console.log('Object.entries(selectedCircle)', Object.entries(selectedCircle))
+
+        if (selectedCircle[themeId] === true) {
+          const tempData = resetFunction(selectedCircle);
+          console.log('tempData', tempData)
+          d3.select(this).attr("fill", "#D0DDFF")
+          setSelected(Object.values(tempData));
+        } else {
+          const tempData = resetFunction(selectedCircle);  
+          tempData[themeId] === true ? tempData[themeId] = false : tempData[themeId] = true;
+          console.log('tempData', tempData)
+          d3.select(this).attr("fill", "#FF0000")
+          setSelected(Object.values(tempData));
+        }
+
+
+
+
+        // if (this.getAttribute("fill") === "#D0DDFF") {
+        //   d3.select(this).attr("fill", "#FF0000");
+        // } else {
+        //   d3.select(this).attr("fill", "#D0DDFF")
+        // } 
+      }
+    )
+
     const text = svg
       .selectAll('text')
       .data(nodes)
