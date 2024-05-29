@@ -8,8 +8,18 @@
   border-bottom: 1px solid grey;
 }
 
-.constellation {
+.wrapper {
   background-color: #f8f8f8;
+}
+.explication {
+  display: flex;
+  flex-direction: row;
+}
+.constellation {
+  width: 50%;
+  margin: 1em;
+  background-color: #FFFFFF;
+  border-radius: 4px;
 }
 
 .bottom {
