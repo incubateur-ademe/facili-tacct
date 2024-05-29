@@ -12,18 +12,28 @@ import themes from "@/lib/utils/themes";
 import GridIcon from "../../assets/icons/grid_icon_grey.svg";
 import ConnexionIcon from "../../assets/icons/connexion_icon_black.svg";
 import styles from "./explication.module.scss";
+import { StepperComp } from "@/components/Stepper";
 import Head from "next/head";
-
+import FilterState from "./filterState";
 
 const Explication = () => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
 
   const [activeTab, setActiveTab] = useState(0);
-  const [selected, setSelected] = useState([false, false, false, false, false, false, false]);
+  const [selected, setSelected] = useState<Array<boolean>>([false, false, false, false, false, false, false]);
   const theme = themes.inconfort_thermique;
 
-  const toggle = (tab: number) => {
+  const [selectedCircle, setSelectedCircle] = useState({
+    "Bâtiment": selected.at(0),
+    "Tourisme": selected.at(1),
+    "Santé": selected.at(2),
+    "Aménagement": selected.at(3),
+    "Espaces naturels": selected.at(4),
+    "Gestion de l'eau": selected.at(5),
+  })
+
+  const toggle = (tab: number) => {[]
     if (activeTab !== tab) {
       setActiveTab(tab);
       setSelected(selected.map((val, i) => i === tab ? true : false))
@@ -49,23 +59,14 @@ const Explication = () => {
       />
     </Head>
     <Container m="4w">
+      <StepperComp
+        title="Arguments pour convaincre"
+        stepCount={4}
+        currentStep={3}
+      />
       <h1>Inconfort thermique</h1>
         <div>
-          <div className={styles.cardWrapper}>
-          {
-            theme.map((el, i) => (
-              <TileComp
-                key={i}
-                selected={selected[el.id]}
-                onClick={() => {
-                  toggle(el.id);
-                }}>
-                {el.titre}
-              </TileComp>
-            ))
-          }
-          </div>
-          <div className="pt-8">
+          {/* <div className="pt-8">
             <h3>Services à mobiliser</h3>
             <div className="flex flex-row justify-between">
               <p>Pour lutter contre l'inconfort thermique, vous devrez travailler avec les services suivants :</p>
@@ -86,14 +87,23 @@ const Explication = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className={styles.constellation}>
+          </div> */}
+          <div className={styles.wrapper}>
+            <div className={styles.explication}>
+              <div className={styles.constellation}>
+                <Constellation
+                  dimensions={dimensions}
+                  states={selected}
+                  setSelected={setSelected}
+                />
+              </div>
+              <FilterState
+                states={selected}
+              />
+            </div>
+
             {/* <Explications/> */}
-            <Constellation
-              dimensions={dimensions}
-              states={selected}
-              setSelected={setSelected}
-            />
+            
             <div className={styles.bottom}>
 						  <Button
           	    linkProps={{

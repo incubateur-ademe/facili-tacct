@@ -46,9 +46,9 @@ const Collectivite = () => {
                   onClick={handleClick}
                 > Continuer</Button>
               }
-              label="Code commune *"
+              label="Code SIREN de votre EPCI *"
               nativeInputProps={{
-                placeholder: '75000',
+                placeholder: '200069193',
                 value: code,
                 type: 'number',
                 onChange: handleChange,

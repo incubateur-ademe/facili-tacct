@@ -70,6 +70,10 @@ const PageComp = (props: Props) => {
 								<Image
 									src={GraphExample}
 									alt=""
+									width={0}
+									height={0}
+									sizes="50vw"
+									style={{ width: '100%', height: 'auto' }}
 								/>
 								<p>Source : <b>Observatoire des territoires</b></p>
 							</div>
