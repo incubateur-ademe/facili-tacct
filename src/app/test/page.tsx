@@ -1,5 +1,7 @@
 import db from '../../modules/db';
 import RadioButton from '../../dsfr/base/client/RadioButtons';
+import { Stepper } from "@codegouvfr/react-dsfr/Stepper";
+import styles from "./test.module.scss";
 
 export default async function Test() {
 
@@ -18,6 +20,12 @@ export default async function Test() {
 
   return (
     <div style={{margin: "2rem"}}>
+      <Stepper
+        currentStep={1}
+        stepCount={3}
+        title="Titre de l’étape en cours"
+        style={{backgroundColor: 'green'}}
+      />
       <h1>POST Request (App Router)</h1>
       <form action={addData}>
         {/* <RadioButton/> */}
