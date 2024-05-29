@@ -7,6 +7,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { SideMenuComp } from "../../components/SideMenu";
 import themes from "@/lib/utils/themes";
 import PageComp from "./components/PageComp";
+import { StepperComp } from "@/components/Stepper";
 import styles from "./form.module.scss";
 import Head from "next/head";
 
@@ -44,32 +45,36 @@ const FilterForm = () => {
       />
     </Head>
     <Container m="4w">
+      <StepperComp
+        title="Découverte de la donnée territoriale"
+        stepCount={4}
+        currentStep={2}
+      />
       <h1>Inconfort thermique</h1>
       <div className={styles.container}>
-        {/* <SideMenuComp/> */}
-          <div className={styles.formContainer}>
-            <div className={styles.cardWrapper}>
-            {
-              theme.map((el, i) => (
-                <TileComp
-                  key={i}
-                  selected={selected[el.id]}
-                  onClick={() => {
-                    toggle(el.id);
-                  }}>
-                  {el.titre}
-                </TileComp>
-              ))
-            }
-            </div>
-            <PageComp
-              data={theme}
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
-              toggle={toggle}
-            />
-          </div>
+        <div className={styles.formContainer}>
+          {/* <div className={styles.cardWrapper}>
+          {
+            theme.map((el, i) => (
+              <TileComp
+                key={i}
+                selected={selected[el.id]}
+                onClick={() => {
+                  toggle(el.id);
+                }}>
+                {el.titre}
+              </TileComp>
+            ))
+          }
+          </div> */}
+          <PageComp
+            data={theme}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            toggle={toggle}
+          />
         </div>
+      </div>
     </Container>
     </>
   );

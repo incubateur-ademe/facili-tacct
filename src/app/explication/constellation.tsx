@@ -36,7 +36,6 @@ const Constellation = (props: Props) => {
     "Espaces naturels": states.at(4),
     "Gestion de l'eau": states.at(5),
   })
-
   
   const resetFunction = (obj: circle) => {
     Object.keys(obj).forEach(function(key){ obj[key] = false });
@@ -71,7 +70,7 @@ const Constellation = (props: Props) => {
   const addMainNode = (node: any) => {
     node.size = 70;
     node.color = "#000091";
-    node.textColor = "#d2d2d2"
+    node.textColor = "black"
     mainnodes.push(node);
   };
   
@@ -101,43 +100,45 @@ const Constellation = (props: Props) => {
   };
 
   addMainNode(InconfortThermique);
-  assembleChildNode(InconfortThermique, Sante, 52, "#D0DDFF");
-  assembleChildNode(InconfortThermique, Tourisme, 52, "#D0DDFF");
-  assembleChildNode(InconfortThermique, EspaceNaturel, 52, "#D0DDFF");
-  assembleChildNode(InconfortThermique, GestionEau, 52, "#D0DDFF");
-  assembleChildNode(InconfortThermique, Batiment, 52, "#D0DDFF");
-  assembleChildNode(InconfortThermique, Amenagement, 52, "#D0DDFF");
+  assembleChildNode(InconfortThermique, Sante, 40, "#D0DDFF");
+  assembleChildNode(InconfortThermique, Tourisme, 40, "#D0DDFF");
+  assembleChildNode(InconfortThermique, EspaceNaturel, 40, "#D0DDFF");
+  assembleChildNode(InconfortThermique, GestionEau, 40, "#D0DDFF");
+  assembleChildNode(InconfortThermique, Batiment, 40, "#D0DDFF");
+  assembleChildNode(InconfortThermique, Amenagement, 40, "#D0DDFF");
   const nodes = childnodes.concat(mainnodes)
-  
+
   useEffect(() => {
     const svgEl = d3.select(svgRef.current);
     svgEl.selectAll("*").remove(); // Clear svg content before adding new elements
     const svg = svgEl
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
-    const width = 1200
+    const width = 600
     const height = 450
     const centerX = width / 2;
     const centerY = height / 2;
     const simulation = d3.forceSimulation(nodes)
-      .force('charge', d3.forceManyBody().strength(-200))
+      .force('charge', d3.forceManyBody().strength(-500))
       .force(
         'link',
         d3.forceLink(links).distance((link: any) => link.distance)
       )
-      .force('center', d3.forceCenter(centerX, centerY));
-    const dragInteraction: any = d3.drag().on('drag', (event, node: any) => {
-        node.fx = event.x;
-        node.fy = event.y;
-        simulation.alpha(1);
-        simulation.restart();
-      });
+      .force('center', d3.forceCenter(centerX, centerY))
+    // const dragInteraction: any = d3.drag().on('drag', (event, node: any) => {
+    //     node.fx = event.x;
+    //     node.fy = event.y;
+    //     simulation.alpha(1);
+    //     simulation.restart();
+    //   });
     const lines = svg
       .selectAll('line')
       .data(links)
       .enter()
       .append('line')
       .attr('stroke', (link: any) => link.color || 'black');
+
+
     const circles = svg
       .selectAll('circle')
       .data(nodes)
@@ -145,9 +146,10 @@ const Constellation = (props: Props) => {
       .append('circle')
       .attr("id", (node: any) => node.id)
       .attr('r', (node: any) => node.size)
-      .attr('fill', (node: any) => node.color || 'gray')
-      .style("stroke", "black")
-      .call(dragInteraction)
+      .attr('fill', 'lightgray')
+      .style("stroke", "#D0DDFF")
+      .style("stroke-width", 20)      
+      //.call(dragInteraction)
       .on("click", function() {
         let themeId = d3.select(this).attr("id");
         handleCircleSelect(selectedCircle as circle, themeId);
