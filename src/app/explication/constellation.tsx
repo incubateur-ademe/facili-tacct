@@ -70,7 +70,7 @@ const Constellation = (props: Props) => {
   const addMainNode = (node: any) => {
     node.size = 70;
     node.color = "#000091";
-    node.textColor = "black"
+    node.textColor = "#ececfe"
     mainnodes.push(node);
   };
   
@@ -107,6 +107,7 @@ const Constellation = (props: Props) => {
   assembleChildNode(InconfortThermique, Batiment, 40, "#D0DDFF");
   assembleChildNode(InconfortThermique, Amenagement, 40, "#D0DDFF");
   const nodes = childnodes.concat(mainnodes)
+  //console.log('nodes', nodes)
 
   useEffect(() => {
     const svgEl = d3.select(svgRef.current);
@@ -138,7 +139,6 @@ const Constellation = (props: Props) => {
       .append('line')
       .attr('stroke', (link: any) => link.color || 'black');
 
-
     const circles = svg
       .selectAll('circle')
       .data(nodes)
@@ -146,9 +146,9 @@ const Constellation = (props: Props) => {
       .append('circle')
       .attr("id", (node: any) => node.id)
       .attr('r', (node: any) => node.size)
-      .attr('fill', 'lightgray')
-      .style("stroke", "#D0DDFF")
-      .style("stroke-width", 20)      
+      .attr('fill', (node: any) => node.color)
+      // .style("stroke", "#D0DDFF")
+      // .style("stroke-width", 20)      
       //.call(dragInteraction)
       .on("click", function() {
         let themeId = d3.select(this).attr("id");
@@ -158,7 +158,7 @@ const Constellation = (props: Props) => {
         } else { 
           if (this.getAttribute("fill") === "#D0DDFF") {
             d3.selectAll("circle").attr("fill", (node: any) => node.color);
-            d3.select(this).attr("fill", "#FF0000");
+            d3.select(this).attr("fill", "#FDC6BA");
           } else {
             d3.selectAll("circle").attr("fill", (node: any) => node.color);
             d3.select(this).attr("fill", "#D0DDFF")

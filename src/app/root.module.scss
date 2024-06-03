@@ -8,6 +8,10 @@
     flex-grow: 1;
 }
 
+.container {
+    margin: 3em;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -24,7 +28,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    min-height: 370px;
+    height: 100%;
     background-color: #eeeeee;
     padding: 1rem;
     h2 {
