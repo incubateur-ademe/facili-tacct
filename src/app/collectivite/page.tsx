@@ -22,7 +22,7 @@ const Collectivite = () => {
   const handleClick = () => {
     if (code && code >= 1000) {
       setError("default");
-      router.push(`/form?code=${code}`);
+      router.push(`/etape2?code=${code}`);
     } else setError("error");
   }
   

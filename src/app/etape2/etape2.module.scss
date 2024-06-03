@@ -1,0 +1,23 @@
+.body {
+    min-height: 450px;
+    background-image: url("../../assets/images/background1.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    max-width: 60%;
+}
+
+.bottom {
+    display: flex;
+    background-color: #eeeeee;
+    padding: 1em 2em;
+    justify-content: end;
+  }
