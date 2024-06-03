@@ -10,6 +10,9 @@ import { Container, GridCol, Grid } from "../dsfr/layout";
 import DocIcon from "../assets/icons/doc_icon_lightgrey.svg";
 import MenuIcon from "../assets/icons/menu_icon_lightgrey.svg";
 import PeopleIcon from "../assets/icons/people_icon_lightgrey.svg";
+import MarkerHandIcon from "../assets/icons/markerHand_icon_green.svg";
+import HandshakeIcon from "../assets/icons/handshake_icon_green.svg";
+import MeetingIcon from "../assets/icons/meeting_icon_green.svg";
 import styles from "./root.module.scss";
 
 export default function Home() {
@@ -41,31 +44,31 @@ export default function Home() {
               <div className={styles.card} style={darkClass}
                 onClick={handleClick}>
                 <Image
-                  src={DocIcon}
-                  alt="icône d'un document"
+                  src={MarkerHandIcon}
+                  alt=""
                 />
-                <h5 >Enrichissez votre diagnostic</h5>
-                <p>Explorez les thématiques et données socio-économiques les plus pertinentes pour votre territoire.</p>
+                <h2>Découvrez vos données territoriales utiles</h2>
+                <p>Mettez en valeur les caractéristiques socio-économiques de votre territoire.</p>
               </div>
             </GridCol>
             <GridCol lg={3}>
               <div className={styles.card} style={darkClass}>
                 <Image
-                  src={PeopleIcon}
-                  alt="icône de 3 personnages"
+                  src={HandshakeIcon}
+                  alt=""
                 />
-                <h5>Alignez les parties prenantes</h5>
-                <p>Mobilisez les experts thématiques et partagez une vision des enjeux d’adaptation avec vos élus et partenaires.</p>
+                <h2>Identifiez qui et comment convaincre</h2>
+                <p>Sachez qui embarquer et quels arguments utiliser pour avancer ensemble.</p>
               </div>
             </GridCol>
             <GridCol lg={3}>
               <div className={styles.card} style={darkClass}> 
                 <Image
-                  src={MenuIcon}
-                  alt="icône d'un menu"
+                  src={MeetingIcon}
+                  alt=""
                 />
-                <h5>Concevez ensemble un plan d'action</h5>
-                <p>Imaginez des actions qui prennent en compte les impacts du changement climatique et les besoins de votre territoire.</p>
+                <h2>Explorez des ressources testées pour mobiliser</h2>
+                <p>Animez des ateliers de co-construction avec vos élus, services techniques et acteurs du territoire.</p>
               </div>
             </GridCol>
           </Grid>
