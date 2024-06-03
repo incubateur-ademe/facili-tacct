@@ -5,17 +5,21 @@ import { Container, GridCol } from "../../dsfr/server";
 import { usePathname, useSearchParams } from 'next/navigation';
 import { StepperComp } from "@/components/Stepper";
 import { Button } from "@codegouvfr/react-dsfr/Button";
+import { useStyles } from "tss-react/dsfr";
+import { fr } from "@codegouvfr/react-dsfr";
 import Head from "next/head";
-import HandMarkerIcon from "../../assets/icons/markerHand_icon_green.svg";
+import HandshakeIcon from "../../assets/icons/handshake_icon_green.svg";
 import Image from "next/image";
-import styles from "./etape2.module.scss";
+import styles from "./etape3.module.scss";
+import { color } from "d3";
 
-const Step2 = () => {
+const Step3 = () => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
+  const { css } = useStyles();
 
   useEffect(() => {
-    document.title = "Facili-TACCT - Données socio-économiques";
+    document.title = "Facili-TACCT - Actions";
   }, []);
   
   return (
@@ -23,35 +27,37 @@ const Step2 = () => {
     <Head>
       <meta
         name="description"
-        content="Données territoriales"
+        content="Actions"
       />
     </Head>
-    <Container>
+    <Container my="4w">
       <GridCol lg={6}>
         <StepperComp
-          title="Découverte de la donnée territoriale"
+          title="Qui et comment convaincre ?"
           stepCount={4}
-          currentStep={2}
+          currentStep={3}
         />
       </GridCol>
       </Container>
 
       <div className={styles.body}>
         <div className={styles.wrapper}>
-          <Image src={HandMarkerIcon} alt=''/>
+          <Image src={HandshakeIcon} alt=''/>
           <h1>
-            Quelles données utiliser pour convaincre ?
+            Qui convaincre et avec quels arguments ?
           </h1>
-          <p>Pour en finir avec les diagnostics standardisés ou hors-sol, mettez en valeur les caractéristiques socio-économiques qui rendent votre territoire unique.</p>
+          <p>
+            Trop souvent, les initiatives d’adaptation n’aboutissent pas car elles sont menées “en silo” et non comme, c’est-à-dire sans vraiment convaincre et impliquer les bonnes personnes.
+          </p>
         </div>
       </div>
       <div className={styles.bottom}>
 			  <Button
           linkProps={{
-            href: `/donnees-territoriales?code=${code}`
+            href: `/explication?code=${code}`
           }}
         >
-          Explorer les données territoriales
+          Qui et comment convaincre ?
         </Button>
 			</div>
             
@@ -59,4 +65,4 @@ const Step2 = () => {
   );
 };
 
-export default Step2;
+export default Step3;

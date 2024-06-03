@@ -25,7 +25,7 @@ const PageComp = (props: Props) => {
 	const { data, activeTab, setActiveTab, toggle } = props;
 	const router = useRouter();
 	const searchParams = useSearchParams();
-  const code = searchParams.get("code");
+  	const code = searchParams.get("code");
 	const { isDark } = useIsDark();
  	const darkClass = {
   	backgroundColor: fr.colors.getHex({isDark}).decisions.background.default.grey.active,
@@ -37,7 +37,7 @@ const PageComp = (props: Props) => {
 	const tab = activeTab;
 	const handleForward = () => {
 		if (data.length === tab + 1) {
-			router.push(`/explication?code=${code}`)
+			router.push(`/etape3?code=${code}`)
 		} else {
 			setActiveTab(tab + 1);
 			toggle(tab + 1);
