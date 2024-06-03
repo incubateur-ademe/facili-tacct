@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { Container } from "../../dsfr/server";
+import { Container, GridCol } from "../../dsfr/server";
 import { TileComp } from "../../components/Tile";
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import Image from "next/image";
@@ -59,11 +59,13 @@ const Explication = () => {
       />
     </Head>
     <Container m="4w">
-      <StepperComp
-        title="Arguments pour convaincre"
-        stepCount={4}
-        currentStep={3}
-      />
+      <GridCol lg={6}>
+        <StepperComp
+          title="Arguments pour convaincre"
+          stepCount={4}
+          currentStep={3}
+        />
+      </GridCol>
       <h1>Inconfort thermique</h1>
         <div>
           {/* <div className="pt-8">

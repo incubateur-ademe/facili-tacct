@@ -16,15 +16,21 @@
 }
 
 .cardWrapper {
-    width: 80%; 
-    gap: 5em;
+    width: 100%; 
+    gap: 3em;
 }
 
 .card {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    height: 20rem;
+    min-height: 370px;
     background-color: #eeeeee;
     padding: 1rem;
+    h2 {
+        font-size: 1.5rem;
+        line-height: 1.3em;
+        font-weight: 700;
+        margin: 0;
+    }
 }
