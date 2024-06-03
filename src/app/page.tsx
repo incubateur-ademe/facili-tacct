@@ -33,7 +33,7 @@ export default function Home() {
 }
   return (
     <>
-      <Container m="4w">
+      <div className={styles.container}>
         <Grid className={styles.wrapper}>
           <h1>L'adaptation au premier plan</h1>
           <p>
@@ -81,7 +81,7 @@ export default function Home() {
           </Button>
         </Grid>
         
-      </Container>
+      </div>
       {/* <Button
         linkProps={{
           href: '/diagnostic'
