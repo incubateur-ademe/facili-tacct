@@ -150,6 +150,10 @@ const Constellation = (props: Props) => {
       // .style("stroke", "#D0DDFF")
       // .style("stroke-width", 20)      
       //.call(dragInteraction)
+      .on("mouseover", function() {
+          d3.select(this).style("cursor", "pointer");
+        }
+      )
       .on("click", function() {
         let themeId = d3.select(this).attr("id");
         handleCircleSelect(selectedCircle as circle, themeId);
