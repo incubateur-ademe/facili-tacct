@@ -3,28 +3,35 @@ import { ResponsiveBar } from '@nivo/bar';
 import { ResponsiveLine } from '@nivo/line';
 import { useEffect, useState } from 'react';
 import * as d3 from 'd3';
+import dataTest from "../../lib/utils/dataTest.json";
 
 // type dataObj = { category: string; value: number };
 // type dataType = Array<dataObj>
 
 
 const Carte = () => {
-  const [xData, setXData] = useState<Array<string>>([]);
-  const [yData, setYData] = useState<Array<string>>([]);
+  const [xData, setXData] = useState([]);
+  const [yData, setYData] = useState([]);
 
+  console.log('x', xData)
+  console.log('y', yData)
   useEffect(() => {
-    d3.csv("./evol75.csv", function(data){ processData(data) } )
+    //d3.csv("./evol75.csv", function(data){ processData(data) } )
+    processData2(dataTest);
   }, []);
 
+  console.log('coucou', dataTest.find(el => el['Libellé de commune'] === 'Corbonod'))
 
-  function processData(allRows) {
+
+  
+
+  function processData2(allRows) {
     //"Corbonod"
-
-    if (Object.values(allRows)[3] === 'Corbonod') {
+    if (allRows.find(el => el['Libellé de commune'] === 'Corbonod')) {
       console.log('allRows', allRows)
-
-      var x = Object.keys(allRows).slice(8, 16)
-      var y = Object.values(allRows).slice(8, 16)
+      let row = dataTest.find(el => el['Libellé de commune'] === 'Corbonod')
+      var x = Object.keys(row).slice(8, 16)
+      var y = Object.values(row).slice(8, 16)
       // console.log('x', x)
       // console.log('y', y)
       setXData(x)
@@ -32,6 +39,22 @@ const Carte = () => {
       return;
     }  
   }
+
+  // function processData(allRows) {
+  //   //"Corbonod"
+
+  //   if (Object.values(allRows)[3] === 'Corbonod') {
+  //     console.log('allRows', allRows)
+
+  //     var x = Object.keys(allRows).slice(8, 16)
+  //     var y = Object.values(allRows).slice(8, 16)
+  //     // console.log('x', x)
+  //     // console.log('y', y)
+  //     setXData(x)
+  //     setYData(y)
+  //     return;
+  //   }  
+  // }
 
   return (
     <div>
