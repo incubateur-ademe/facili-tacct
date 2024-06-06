@@ -48,6 +48,14 @@ const Step2 = () => {
         </div>
       </div>
       <div className={styles.bottom}>
+      <Button
+    		priority="secondary"
+     		linkProps={{
+   	      href: `/thematiques?code=${code}`
+       	}}
+	  		>
+      		Étape précédente
+    	  </Button>
 			  <Button
           linkProps={{
             href: `/donnees-territoriales?code=${code}&thematique=${themeUrl}`

@@ -11,7 +11,20 @@
 .container {
     margin: 3em;
 }
-
+.titles {
+    max-width: 50%;
+    text-align: center;
+}
+.collectiviteWrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(248, 248, 248);
+    padding: 2em;
+    margin: 0 auto;
+    max-width: 60%;
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px rgb(138, 138, 138);
+}
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -20,8 +33,10 @@
 }
 
 .cardWrapper {
-    width: 100%; 
+    width: 120%;
+    padding: 4em; 
     gap: 3em;
+    background-color: grey;
 }
 
 .card {
@@ -29,12 +44,25 @@
     flex-direction: column;
     gap: 0.5rem;
     height: 100%;
-    background-color: #eeeeee;
+
+    background-color: white !important;
     padding: 1rem;
+    border-radius: 4px;
     h2 {
         font-size: 1.5rem;
         line-height: 1.3em;
         font-weight: 700;
         margin: 0;
     }
+}
+.constellationWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.constellationText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2em;
 }

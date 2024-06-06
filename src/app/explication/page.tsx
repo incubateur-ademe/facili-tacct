@@ -110,6 +110,14 @@ const Explication = () => {
             {/* <Explications/> */}
             
             <div className={styles.bottom}>
+              <Button
+                priority="secondary"
+          	    linkProps={{
+                  href: `/etape3?code=${code}&thematique=${themeUrl}`
+                }}
+          	  >
+                Étape précédente
+          	  </Button>
 						  <Button
           	    linkProps={{
                   href: '/ressources'
