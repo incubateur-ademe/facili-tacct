@@ -4,8 +4,8 @@ import { ResponsiveLine } from '@nivo/line';
 import { useEffect, useState } from 'react';
 import * as d3 from 'd3';
 
-type dataObj = { category: string; value: number };
-type dataType = Array<dataObj>
+// type dataObj = { category: string; value: number };
+// type dataType = Array<dataObj>
 
 
 const Carte = () => {
@@ -13,11 +13,11 @@ const Carte = () => {
   const [yData, setYData] = useState<Array<string>>([]);
 
   useEffect(() => {
-    d3.csv("./evol75.csv", function(data: any){ processData(data) } )
+    d3.csv("./evol75.csv", function(data){ processData(data) } )
   }, []);
 
 
-  function processData(allRows: any) {
+  function processData(allRows) {
     //"Corbonod"
 
     if (Object.values(allRows)[3] === 'Corbonod') {
