@@ -74,7 +74,6 @@ const FilterForm = () => {
             />
           </div>
         </Tabs>
-        
       </div>
     </Container>
     </>
