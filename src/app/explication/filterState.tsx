@@ -1,6 +1,7 @@
 import { useState } from "react"
-import Sante from "./sante";
-import Tourisme from "./tourisme";
+import Sante from "./components/sante";
+import Tourisme from "./components/tourisme";
+import styles from "./explication.module.scss"
 
 interface Props {
   states: boolean[],
@@ -10,7 +11,7 @@ const FilterState = (props: Props) => {
   const { states } = props;
 
   return (
-      <div>
+      <div className={styles.explicationText}>
         {
           states[2] ?
           <Sante/>

@@ -35,9 +35,8 @@ const Carte = () => {
 
   return (
     <div>
-      <h1>Nivo Chart</h1>
       { xData && yData ? (
-        <div style={{ height: '300px', width: '1000px' }}>
+        <div style={{ height: '500px', minWidth: '600px'}}>
           <ResponsiveLine
             curve="monotoneX" data={[{
               id: 'Première courbe évolution',
