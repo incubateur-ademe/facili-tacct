@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { Container, GridCol } from "../../dsfr/server";
+import { Container, GridCol, Grid } from "../../dsfr/server";
+import { Box } from "../../dsfr/server";
 import { TileComp } from "../../components/Tile";
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import Image from "next/image";
@@ -19,6 +20,7 @@ import FilterState from "./filterState";
 const Explication = () => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
+  const themeUrl = searchParams.get("thematique");
 
   const [activeTab, setActiveTab] = useState(0);
   const [selected, setSelected] = useState<Array<boolean>>([false, false, false, false, false, false, false]);
@@ -59,14 +61,15 @@ const Explication = () => {
       />
     </Head>
     <Container m="4w">
-      <GridCol lg={6}>
-        <StepperComp
-          title="Arguments pour convaincre"
-          stepCount={4}
-          currentStep={3}
-        />
-      </GridCol>
-      <h1>Inconfort thermique</h1>
+      <Box style={{backgroundColor: "white"}}>
+        <GridCol lg={6} offset={1}>
+          <StepperComp
+            title="Arguments pour convaincre"
+            stepCount={4}
+            currentStep={3}
+          />
+        </GridCol>
+      </Box>
         <div>
           {/* <div className="pt-8">
             <h3>Services à mobiliser</h3>

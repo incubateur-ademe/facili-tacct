@@ -3,11 +3,23 @@
     --cust-width: 70dvw;
     display: flex;
     flex-direction: row;
+    margin-top: 2em;
 }
 
 .formContainer {
     display: flex;
     flex-direction: column;
+}
+
+.button {
+    background-color: #000091b4;
+    border-radius: 25px;
+    margin: 0 0.5em;
+    padding: 0.2em 1em;
+    color: #eeeeee;
+    &:hover {
+        color: black;
+    }
 }
 
 .cardWrapper {
@@ -21,7 +33,7 @@
 }
 
 .titles {
-	padding: 2em 0 0;
+	padding: 0 0 2em;
 	.sensibilite {
 		display: flex;
 		flex-direction: row;
@@ -30,11 +42,11 @@
 }
 
 .bubble {
-    width: var(--cust-width);
+    width: 100%;
     // layout
 	position: relative;
 	// looks
-    background-color: #f8f8f8;
+    //background-color: white;
 	font-size: 1.25em;
     box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
     border-left: 3px solid #000091;
@@ -42,6 +54,7 @@
 
 .bubbleContent {
 	padding: 1.5em 1.5em 0.5em;
+    background-color: white !important;
 }
 
 .bottom {

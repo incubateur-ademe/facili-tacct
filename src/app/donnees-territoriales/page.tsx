@@ -1,13 +1,15 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { Container, GridCol } from "../../dsfr/server";
+import { Box } from "../../dsfr/server";
+import { Container, GridCol, Grid } from "../../dsfr/server";
 import { usePathname, useSearchParams } from 'next/navigation';
 import themes from "@/lib/utils/themes";
 import PageComp from "./components/PageComp";
 import { StepperComp } from "@/components/Stepper";
 import styles from "./donnees.module.scss";
 import Head from "next/head";
+import { Tabs } from "@codegouvfr/react-dsfr/Tabs";
 
 const FilterForm = () => {
   const pathname = usePathname();
@@ -20,17 +22,18 @@ const FilterForm = () => {
   const [answers2, setAnswers2] = useState();
   const [answers3, setAnswers3] = useState();
   const [answers4, setAnswers4] = useState();
-  const toggle = (tab: number) => {
-    if (activeTab !== tab) {
-      setActiveTab(tab);
-      setSelected(selected.map((val, i) => i === tab ? true : false))
-    }
-  };
+  // const toggle = (tab: number) => {
+  //   if (activeTab !== tab) {
+  //     setActiveTab(tab);
+  //     setSelected(selected.map((val, i) => i === tab ? true : false))
+  //   }
+  // };
 
   const theme = themes.inconfort_thermique;
+  const [selectedTabId, setSelectedTabId] = useState("Population");
 
   useEffect(() => {
-    document.title = "Facili-TACCT - Données socio-économiques";
+    document.title = "Facili-TACCT - Données territoriales";
   }, []);
   
   //console.log('theme', theme)
@@ -39,41 +42,39 @@ const FilterForm = () => {
     <Head>
       <meta
         name="description"
-        content="Données socio-économiques"
+        content="Données territoriales"
       />
     </Head>
-    <Container m="4w">
-      <GridCol lg={6}>
-        <StepperComp
-          title="Découverte de la donnée territoriale"
-          stepCount={4}
-          currentStep={2}
-        />
-      </GridCol>
-      <h1>Inconfort thermique</h1>
-      <div className={styles.container}>
-        <div className={styles.formContainer}>
-          {/* <div className={styles.cardWrapper}>
-          {
-            theme.map((el, i) => (
-              <TileComp
-                key={i}
-                selected={selected[el.id]}
-                onClick={() => {
-                  toggle(el.id);
-                }}>
-                {el.titre}
-              </TileComp>
-            ))
-          }
-          </div> */}
-          <PageComp
-            data={theme}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            toggle={toggle}
+    <Container py="4w">
+      <Box style={{backgroundColor: "white"}}>
+        <GridCol lg={6} offset={1}>
+          <StepperComp
+            title="Découverte de la donnée territoriale"
+            stepCount={4}
+            currentStep={2}
           />
-        </div>
+        </GridCol>
+      </Box>
+      <div className={styles.container}>
+        <Tabs
+          selectedTabId={selectedTabId}
+          tabs={[
+            { tabId: "Population", label: "Population"},
+            { tabId: "Bâtiment", label: "Bâtiment"},
+            { tabId: "Urbanisme", label: "Urbanisme"},
+          ]}
+          onTabChange={setSelectedTabId}
+          >
+          <div className={styles.formContainer}>
+            <PageComp
+              data={theme}
+              activeTab={selectedTabId}
+              setActiveTab={setSelectedTabId}
+              // toggle={toggle}
+            />
+          </div>
+        </Tabs>
+        
       </div>
     </Container>
     </>
