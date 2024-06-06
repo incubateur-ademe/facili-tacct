@@ -2,12 +2,14 @@
 
 import { useEffect } from "react";
 import { Container, Grid, GridCol } from "../../dsfr/server";
+import { Box } from "../../dsfr/server";
 import Image from "next/image";
 import BookmarkIcon from "../../assets/icons/bookmark_icon_black.svg";
 import workshops from "@/lib/utils/workshops";
 import Card from "./Card";
 import styles from "./ressources.module.scss";
 import Head from "next/head";
+import { StepperComp } from "@/components/Stepper";
 
 const Ressources = () => {
   
@@ -25,8 +27,15 @@ const Ressources = () => {
       />
     </Head>
     <Container m="4w">
-      <h1>Inconfort thermique</h1>
-      <div className={styles.wrapper}>
+      <Box style={{backgroundColor: "white"}}>
+        <GridCol lg={6} offset={1}>
+          <StepperComp
+            title="Ressources"
+            stepCount={4}
+            currentStep={4}
+          />
+        </GridCol>
+      </Box>      <div className={styles.wrapper}>
         <div className={styles.blocWrapper}>
           <div className={styles.titles}>
             <h3>Formats d'ateliers</h3>
