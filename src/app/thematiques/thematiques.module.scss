@@ -1,6 +1,7 @@
 .title {
     background-color: rgb(241, 241, 241);
-    padding: 1rem 5rem;
+    padding: 2rem 5rem;
+    width: -webkit-fill-available;
 }
 .cardContainer {
     padding: 1rem 5rem;
@@ -24,6 +25,9 @@
     height: 150px;
     background-color: #00009252;
     padding: 1em;
+    &:hover {
+        cursor: pointer;
+    }
     h6 {
         margin: 0;
         color: white;
@@ -42,6 +46,9 @@
     height: 150px;
     background-color: rgb(241, 241, 241);
     padding: 1em;
+    &:hover {
+        cursor: pointer;
+    }
     h6 {
         margin: 0;
     }
@@ -52,4 +59,5 @@
     background-color: #eeeeee;
     padding: 1em 2em;
     justify-content: end;
+    width: -webkit-fill-available;
 }
