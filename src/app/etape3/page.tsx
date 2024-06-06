@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { Container, GridCol } from "../../dsfr/server";
+import { Container, GridCol, Grid } from "../../dsfr/server";
+import { Box } from "../../dsfr/server";
 import { usePathname, useSearchParams } from 'next/navigation';
 import { StepperComp } from "@/components/Stepper";
 import { Button } from "@codegouvfr/react-dsfr/Button";
@@ -16,6 +17,7 @@ import { color } from "d3";
 const Step3 = () => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
+  const themeUrl = searchParams.get("thematique");
   const { css } = useStyles();
 
   useEffect(() => {
@@ -31,14 +33,16 @@ const Step3 = () => {
       />
     </Head>
     <Container my="4w">
-      <GridCol lg={6}>
-        <StepperComp
-          title="Qui et comment convaincre ?"
-          stepCount={4}
-          currentStep={3}
-        />
-      </GridCol>
-      </Container>
+      <Box style={{backgroundColor: "white"}}>
+        <GridCol lg={6} offset={1}>
+          <StepperComp
+            title="Arguments pour convaincre"
+            stepCount={4}
+            currentStep={3}
+          />
+        </GridCol>
+      </Box>
+    </Container>
 
       <div className={styles.body}>
         <div className={styles.wrapper}>
@@ -54,7 +58,7 @@ const Step3 = () => {
       <div className={styles.bottom}>
 			  <Button
           linkProps={{
-            href: `/explication?code=${code}`
+            href: `/explication?code=${code}&thematique=${themeUrl}`
           }}
         >
           Qui et comment convaincre ?
