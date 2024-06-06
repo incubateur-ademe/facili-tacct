@@ -7,13 +7,12 @@ import { fr } from "@codegouvfr/react-dsfr"
 import { useStyles } from "tss-react/dsfr"
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark"
 import { Container, GridCol, Grid } from "../dsfr/layout";
-import DocIcon from "../assets/icons/doc_icon_lightgrey.svg";
-import MenuIcon from "../assets/icons/menu_icon_lightgrey.svg";
-import PeopleIcon from "../assets/icons/people_icon_lightgrey.svg";
 import MarkerHandIcon from "../assets/icons/markerHand_icon_green.svg";
 import HandshakeIcon from "../assets/icons/handshake_icon_green.svg";
 import MeetingIcon from "../assets/icons/meeting_icon_green.svg";
 import styles from "./root.module.scss";
+import CollectiviteComp from "./CollectiviteComp";
+import ConstellationImg from "../assets/images/landingpageConstellation.svg"
 
 export default function Home() {
 
@@ -34,11 +33,14 @@ export default function Home() {
   return (
     <>
       <div className={styles.container}>
-        <Grid className={styles.wrapper}>
-          <h1>L'adaptation au premier plan</h1>
-          <p>
-            Embarquez vos élus et partenaires sur la base de données territoriales et grâce à des méthodes de travail testées par notre équipe
-          </p>
+        <div className={styles.wrapper}>
+          <div className={styles.titles}>
+            <h1>Votre <span>aide au diagnostic</span></h1>
+            <p>
+              <b>Mettez en avant les données qui rendent votre territoire unique</b> et découvrez des arguments et ressources pour mobiliser votre collectivité sur l'adaptation au changement climatique.
+            </p>
+          </div>
+          <CollectiviteComp/>
           <Grid align="center" className={styles.cardWrapper} >
             <GridCol lg={3} >
               <div className={styles.card} style={darkClass}
@@ -72,14 +74,22 @@ export default function Home() {
               </div>
             </GridCol>
           </Grid>
-          <Button
-            linkProps={{
-              href: '/collectivite'
-            }}
-          >
-            C'est parti
-          </Button>
-        </Grid>
+          <div className={styles.constellationWrapper}>
+            <div className={styles.constellationText}>
+              <h3>L'adaptation n'est possible qu'en co-intelligence</h3>
+              <p>
+                <b>Les initiatives d'adaptation au changement climatique n'aboutissement pas lorsqu'elles sont menées "en silo". </b> 
+                Découvrez comment créer des liens utiles avec les différents services et partenaires.
+              </p>
+            </div>
+            <Image 
+              alt=''
+              src={ConstellationImg}
+              width={650}
+              />
+
+          </div>
+        </div>
         
       </div>
       {/* <Button
