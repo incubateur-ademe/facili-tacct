@@ -88,8 +88,16 @@ const PageComp = (props: Props) => {
 						</div>
 					</div>
 					<div className={styles.bottom}>
+						<Button
+          		priority="secondary"
+          		linkProps={{
+    		        href: `/etape2?code=${code}&thematique=${themeUrl}`
+        		  }}
+    	  		>
+          		Étape précédente
+    	  		</Button>
 						<Button onClick={handleForward}>
-          	  {"Découvrir qui et comment convaincre"}
+          	  Découvrir qui et comment convaincre
           	</Button>
 					</div>
 				</div>
