@@ -17,7 +17,6 @@ const LineChart1 = () => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
   const code = searchParams.get("code");
-	console.log('code LINE CHART', code)
   const themeUrl = searchParams.get("thematique");
 
   useEffect(() => {
@@ -43,6 +42,7 @@ const LineChart1 = () => {
 
   return (
     <div>
+      <p style={{margin:"0 2em 0"}}>Évolution de la population</p>
       { xData.length > 0 && yData.length > 0 ? (
         <div style={{ height: '500px', minWidth: '600px'}}>
           <ResponsiveLine
