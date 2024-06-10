@@ -7,56 +7,8 @@ import { useSearchParams } from 'next/navigation';
 
 
 const PieChart1 = () => {
-  const [data, setData] = useState([
-    // {
-    //   "id": "Agriculteurs",
-    //   "label": "Agriculteurs",
-    //   "value": 0.7,
-    //   "color": "#7AC4A5" 
-    // },
-    {
-      "id": "Artisans, commerçants, chefs d'entreprise",
-      "label": "Commerçants",
-      "value": 4,
-      "color": "#68D273"
-    },
-    {
-      "id": "Travail en extérieur (Ouvriers et agriculteurs)",
-      "label": "Travail en extérieur",
-      "value": 16.8,
-      "color": "#97e3d5"
-    },
-    {
-      "id": "Employés",
-      "label": "Employés",
-      "value": 14.3,
-      "color": "#61cdbb"
-    },
-    {
-      "id": "Professions intermédiaires",
-      "label": "Professions intermédiaires",
-      "value": 13.3,
-      "color": "#e8a838"
-    },
-    {
-      "id": "Cadres",
-      "label": "Cadres",
-      "value": 6.1,
-      "color": "#f1e15b"
-    },
-    {
-      "id": "Retraités",
-      "label": "Retraités",
-      "value": 32.7,
-      "color": "#f47560"
-    },
-    {
-      "id": "Autre",
-      "label": "Autre",
-      "value": 12.8,
-      "color": "#e8c1a0"
-    }
-  ]);
+  const [values, setValues] = useState([0, 0, 0, 0, 0, 0, 0])
+  const [data, setData] = useState([]);
 
 	const searchParams = useSearchParams();
   const code = searchParams.get("code");
@@ -68,14 +20,62 @@ const PieChart1 = () => {
 	
 
   function processData(allRows) {
-    //"Corbonod"
     if (allRows.find(el => el['Code'] === Number(code))) {
-      console.log('allRows PIECHART', allRows)
       let row = dataSocioEco.find(el => el['Code'] === Number(code))
-      var x = Object.keys(row)
+      var x = Object.keys(row).slice(3, 10)
       var y = Object.values(row).slice(3, 10)
-      console.log('x PIECHART', x)
-      console.log('y PIECHART', y)
+      setValues(y);
+      var sum = y.reduce((partialSum, a) => partialSum + a, 0);
+      setData([
+    // {
+    //   "id": "Agriculteurs",
+    //   "label": "Agriculteurs",
+    //   "value": 0.7,
+    //   "color": "#7AC4A5" 
+    // },
+    {
+      "id": "Artisans, commerçants, chefs d'entreprise",
+      "label": "Commerçants",
+      "value": y.at(1),
+      "color": "#68D273"
+    },
+    {
+      "id": "Travail en extérieur (Ouvriers et agriculteurs)",
+      "label": "Travail en extérieur",
+      "value": (y.at(0) + y.at(2)).toFixed(1),
+      "color": "#97e3d5"
+    },
+    {
+      "id": "Employés",
+      "label": "Employés",
+      "value": y.at(3),
+      "color": "#61cdbb"
+    },
+    {
+      "id": "Professions intermédiaires",
+      "label": "Professions intermédiaires",
+      "value": y.at(4),
+      "color": "#e8a838"
+    },
+    {
+      "id": "Cadres",
+      "label": "Cadres",
+      "value": y.at(5),
+      "color": "#f1e15b"
+    },
+    {
+      "id": "Retraités",
+      "label": "Retraités",
+      "value": y.at(6),
+      "color": "#f47560"
+    },
+    {
+      "id": "Autre",
+      "label": "Autre",
+      "value": (100 - sum).toFixed(1),
+      "color": "#e8c1a0"
+    }
+  ])
       return;
     }  
   }
@@ -83,7 +83,8 @@ const PieChart1 = () => {
 
   return (
     <div>
-      { data.length > 0 ? (
+      <p style={{margin:"0 2em 0"}}>Part dans la population selon les catégories socio-professionnelles</p>
+      { data.length != 0 ? (
         <div style={{ height: '500px', minWidth: '450px'}}>
           <ResponsivePie
             data={data}
