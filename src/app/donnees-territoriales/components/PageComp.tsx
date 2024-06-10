@@ -2,11 +2,12 @@ import { GridCol } from "../../../dsfr/layout";
 import GraphExample from "../../../assets/images/Group.svg";
 import { fr } from "@codegouvfr/react-dsfr";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
-import Image from "next/image";
+import dataTest from "../../../lib/utils/dataTest.json";
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import styles from "./../donnees.module.scss";
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useEffect } from "react";
+import GraphComp from "./GraphComp";
 
 interface Props {
 	data: {
@@ -24,14 +25,13 @@ interface Props {
 const PageComp = (props: Props) => {
 	const { data, activeTab, setActiveTab } = props;
 	const [activeData, setActiveData] = useState("");
-
-	useEffect(() => {
-		setActiveData(data.filter(el => el.facteur_sensibilite === activeTab)[0].titre)
-  }, [activeTab]);
+	const [xData, setXData] = useState([]);
+  const [yData, setYData] = useState([]);
 
 	const router = useRouter();
 	const searchParams = useSearchParams();
   const code = searchParams.get("code");
+	console.log('code', code)
   const themeUrl = searchParams.get("thematique");
 	const { isDark } = useIsDark();
  	const darkClass = {
@@ -40,6 +40,31 @@ const PageComp = (props: Props) => {
   		  backgroundColor: fr.colors.getHex({isDark}).decisions.background.alt.grey.hover
   	},
 	}
+	
+  console.log('x in PAGECOMP', xData)
+  console.log('y in PAGECOMP', yData)
+
+  function processData(allRows: any) {
+    //"Corbonod"
+    if (allRows.find(el => el['EPCI - Métropole'] === code)) {
+      console.log('allRows in PAGECOMP', allRows)
+      let row = dataTest.find(el => el['EPCI - Métropole'] === Number(code))
+      var x = Object.keys(row as any).slice(8, 16)
+      var y = Object.values(row as any).slice(8, 16)
+      // console.log('xPROCESS', x)
+      // console.log('yPROCESS', y)
+      setXData(x)
+      setYData(y)
+      return;
+    }  
+  }
+
+	useEffect(() => {
+		setActiveData(data.filter(el => el.facteur_sensibilite === activeTab)[0].titre)
+		processData(dataTest);
+  }, [activeTab]);
+
+
 
 	const handleForward = () => {
 			router.push(`/etape3?code=${code}&thematique=${themeUrl}`)
@@ -73,16 +98,11 @@ const PageComp = (props: Props) => {
 						<GridCol lg={6}>
 							<div className="flex flex-col justify-end"
       				>
-								{data.find(el => el.titre === activeData)?.graph}
-								{/* <Image
-									src={GraphExample}
-									alt=""
-									width={0}
-									height={0}
-									sizes="50vw"
-									style={{ width: '100%', height: 'auto' }}
-								/> */}
-								<p>Source : <b>Observatoire des territoires</b></p>
+								<GraphComp
+									data={data}
+									activeData={activeData}
+								/>
+								{/* {data.find(el => el.titre === activeData)?.graph} */}
 							</div>
 						</GridCol>
 						</div>
