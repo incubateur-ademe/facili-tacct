@@ -1,5 +1,4 @@
 import { GridCol } from "../../../dsfr/layout";
-import GraphExample from "../../../assets/images/Group.svg";
 import { fr } from "@codegouvfr/react-dsfr";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 import dataTest from "../../../lib/utils/dataTest.json";
@@ -7,7 +6,10 @@ import { Button } from "@codegouvfr/react-dsfr/Button";
 import styles from "./../donnees.module.scss";
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useEffect } from "react";
-import GraphComp from "./GraphComp";
+import GrandAgeIsolement from "@/components/themesText/inconfort-thermique/grand-age-isolement";
+import TravailExterieur from "@/components/themesText/inconfort-thermique/travail-exterieur";
+import AgeBati from "@/components/themesText/inconfort-thermique/age-bati";
+import FragiliteEconomique from "@/components/themesText/inconfort-thermique/fragilite-economique";
 
 interface Props {
 	data: {
@@ -25,13 +27,13 @@ interface Props {
 const PageComp = (props: Props) => {
 	const { data, activeTab, setActiveTab } = props;
 	const [activeData, setActiveData] = useState("");
-	const [xData, setXData] = useState([]);
-  const [yData, setYData] = useState([]);
+	const [row, setRow] = useState({});
+	// const [xData, setXData] = useState([]);
+  // const [yData, setYData] = useState([]);
 
 	const router = useRouter();
 	const searchParams = useSearchParams();
   const code = searchParams.get("code");
-	console.log('code', code)
   const themeUrl = searchParams.get("thematique");
 	const { isDark } = useIsDark();
  	const darkClass = {
@@ -41,21 +43,52 @@ const PageComp = (props: Props) => {
   	},
 	}
 	
-  console.log('x in PAGECOMP', xData)
-  console.log('y in PAGECOMP', yData)
+	const allComps = [
+		{
+			titre: "Grand âge et isolement",
+			component: <GrandAgeIsolement
+				data={data}
+				activeData={activeData}
+				row={row}
+			/>
+		},
+		{
+			titre: "Fragilité économique",
+			component: <FragiliteEconomique
+				data={data}
+				activeData={activeData}
+				row={row}
+			/>
+		},
+		{
+			titre: "Travail en extérieur",
+			component: <TravailExterieur
+				data={data}
+				activeData={activeData}
+				row={row}
+			/>
+		},
+		{
+			titre: "Age du bâtiment",
+			component: <AgeBati
+				data={data}
+				activeData={activeData}
+				row={row}
+			/>
+		},
+	]
 
   function processData(allRows: any) {
-    //"Corbonod"
-    if (allRows.find(el => el['EPCI - Métropole'] === code)) {
-      console.log('allRows in PAGECOMP', allRows)
-      let row = dataTest.find(el => el['EPCI - Métropole'] === Number(code))
-      var x = Object.keys(row as any).slice(8, 16)
-      var y = Object.values(row as any).slice(8, 16)
+    if (allRows.find((el: any) => el['EPCI - Métropole'] === Number(code))) {  //REPLACE
+      let row: any = dataTest.find(el => el['EPCI - Métropole'] === Number(code)) //REPLACE
+      var x: any = Object.keys(row as any).slice(8, 16) //REPLACE
+      var y: any = Object.values(row as any).slice(8, 16) //REPLACE
       // console.log('xPROCESS', x)
       // console.log('yPROCESS', y)
-      setXData(x)
-      setYData(y)
-      return;
+			setRow(row)
+      // setXData(x)
+      // setYData(y)
+      return ;
     }  
   }
 
@@ -64,11 +97,10 @@ const PageComp = (props: Props) => {
 		processData(dataTest);
   }, [activeTab]);
 
-
-
 	const handleForward = () => {
 			router.push(`/etape3?code=${code}&thematique=${themeUrl}`)
    }
+
   return (
 		<>
 			<div>
@@ -83,29 +115,7 @@ const PageComp = (props: Props) => {
     		</div>
     		<div className={styles.bubble}>
 					<div className={styles.bubbleContent} style={darkClass}>
-						<div style={{display:"flex", flexDirection:"row", gap: "1em", justifyContent: "space-between", alignItems:"center"}}>
-						<GridCol lg={5}>
-							<div>
-							<h4>LE CHIFFRE</h4>
-								<p>A [LOCALISATION], les personnes de plus de 75 ans représentent XX% de la population</p>
-							<h4>EXPLICATION</h4>
-								<p>
-									{data.find(el => el.titre === activeData)?.donnee}
-								</p>
-								
-							</div>
-						</GridCol>
-						<GridCol lg={6}>
-							<div className="flex flex-col justify-end"
-      				>
-								<GraphComp
-									data={data}
-									activeData={activeData}
-								/>
-								{/* {data.find(el => el.titre === activeData)?.graph} */}
-							</div>
-						</GridCol>
-						</div>
+						{allComps.find(el => el.titre === activeData)?.component}
 					</div>
 					<div className={styles.bottom}>
 						<Button

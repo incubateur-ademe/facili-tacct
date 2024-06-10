@@ -7,9 +7,6 @@ export default function Test2() {
     "use server";
     const newQuestionHistory = formData.get("radio");
 
-    console.log('formData', formData)
-    console.log('newQuestionHistory', newQuestionHistory)
-
     // Get the current value in question_history
     const { question_history } = await db.themes.findUniqueOrThrow({
       where: { id: 6 },

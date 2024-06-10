@@ -13,8 +13,6 @@ const Carte = () => {
   const [xData, setXData] = useState([]);
   const [yData, setYData] = useState([]);
 
-  console.log('x', xData)
-  console.log('y', yData)
   useEffect(() => {
     //d3.csv("./evol75.csv", function(data){ processData(data) } )
     processData2(dataTest);
@@ -24,7 +22,6 @@ const Carte = () => {
   function processData2(allRows) {
     //"Corbonod"
     if (allRows.find(el => el['Libellé de commune'] === 'Corbonod')) {
-      console.log('allRows', allRows)
       let row = dataTest.find(el => el['Libellé de commune'] === 'Corbonod')
       var x = Object.keys(row).slice(8, 16)
       var y = Object.values(row).slice(8, 16)
