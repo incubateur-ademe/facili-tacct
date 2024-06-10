@@ -16,7 +16,6 @@ const GraphComp = (props: Props) => {
 
   return (
     <div>
-      <p style={{margin:"0 2em 0"}}>Titre du graph</p>
       {data.find(el => el.titre === activeData)?.graph}
       <p>Source : <b>Observatoire des territoires</b></p>
     </div>
