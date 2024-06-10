@@ -1,4 +1,5 @@
-import Carte from "@/app/carte/page";
+import LineChart1 from "@/app/charts/lineChart1";
+import PieChart1 from "@/app/charts/pieChart1";
 
 const themes = {
   inconfort_thermique: [
@@ -18,7 +19,7 @@ const themes = {
       	constat en limitant les comportements à risque (temps passé à \
       	l'extérieur, habillement, conscience des besoins hydriques, pratique \
       	de la sieste).",
-		graph: <Carte/>,
+		graph: <LineChart1/>,
     },
 	{
 		id: 1,
@@ -26,7 +27,7 @@ const themes = {
 		facteur_sensibilite: "Population",
 		risque: "Élevé",
     	donnee: "LOREM IPSUM de la FRAGILITE ECONOMIQUE",
-		graph: <Carte/>,
+		graph: <LineChart1/>,
     },
 	{
 		id: 2,
@@ -34,7 +35,7 @@ const themes = {
 		facteur_sensibilite: "Population",
 		risque: "Moyen",
       	donnee: "LOREM IPSUM du TRAVAIL EN EXTERIEUR",
-		graph: <Carte/>,
+		graph: <PieChart1/>,
     },
 	{
 		id: 3,
@@ -42,7 +43,7 @@ const themes = {
 		facteur_sensibilite: "Bâtiment",
 		risque: "Moyen",
       	donnee: "LOREM IPSUM de L'AGE DU BATIMENT",
-		graph: <Carte/>,
+		graph: <LineChart1/>,
     },
 	{
 		id: 4,
@@ -50,7 +51,7 @@ const themes = {
 		facteur_sensibilite: "Urbanisme",
 		risque: "Moyen",
       	donnee: "LOREM IPSUM DE LA DENSITE DE BATIMENTS",
-		graph: <Carte/>,
+		graph: <LineChart1/>,
     },
 	{
 		id: 5,
@@ -58,7 +59,7 @@ const themes = {
 		facteur_sensibilite: "Urbanisme",
 		risque: "Moyen",
       	donnee: "LOREM IPSUM DE LA VEGETALISATION",
-		graph: <Carte/>,
+		graph: <LineChart1/>,
     },
   ]
 }
