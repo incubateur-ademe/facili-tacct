@@ -1,21 +1,21 @@
 
 import { GridCol } from "@/dsfr/layout";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { useSearchParams } from "next/navigation";
 import dataAgeBati from "@/lib/utils/age_bati.json";
 import Map from "@/components/maps/map";
 import Legend from "@/components/maps/legend";
 import data_epci from "@/lib/utils/maps/epci.json";
-import data_communes from "@/lib/utils/maps/commune.json";
+// import data_communes_raw from "@/lib/utils/maps/commune.json";
 
 
 type moule = {
   type: string;
   name: string;
-  features: communesTypes[]
+  features: CommunesTypes[]
 }
 
-type communesTypes = {
+type CommunesTypes = {
   type: string;  
   geometry: {
       type: string;
@@ -31,7 +31,7 @@ type communesTypes = {
     EPCI: string;
     EPCI_CODE: string;
     ratio_precarite: number;
-};
+  };
 } | {
   type: string;
   geometry: {
@@ -49,8 +49,9 @@ type communesTypes = {
     EPCI_CODE: string;
     ratio_precarite: number;
   }; 
-} | undefined
+}
 
+const data_communes = data_communes_raw as moule;
 
 interface row {
   "code_epci": number,
@@ -72,26 +73,10 @@ interface Props {
 	}[]
   activeData: string;
   row: any; //REPLACE
+  data_communes: moule;
 }
 
-const FragiliteEconomique = (props: Props) => {
-	const { data, activeData, row } = props;
-	const searchParams = useSearchParams();
-  const code = searchParams.get("code");
-
-  //haute Sarthe : 200035103
-  const epci_chosen = data_epci.features.find(el => el.properties.EPCI_CODE === Number(code))
-  console.log('epci_chosen', epci_chosen)
-
-  const commune_chosen: moule = data_communes.features.filter(el => el.properties.EPCI_CODE === code)
-  console.log('commune_chosen', commune_chosen)
-
-  useEffect(() => {
-    processData(dataAgeBati);
-  }, []);
-	
-
-  function processData(allRows: row[]) {
+function processData(allRows: row[], code: string) {
     if (allRows.find(el => el['code_epci'] === Number(code))) {
       let row: any = dataAgeBati.find(el => el['code_epci'] === Number(code)) //REPLACE
       var x = Object.keys(row).slice(3, 10)
@@ -99,6 +84,25 @@ const FragiliteEconomique = (props: Props) => {
       return;
     }  
   }
+
+const FragiliteEconomique = (props: Props) => {
+	const { data, activeData, row, data_communes } = props;
+	const searchParams = useSearchParams();
+  const code = searchParams.get("code")!;
+
+  //haute Sarthe : 200035103
+  const epci_chosen = data_epci.features.find(el => el.properties.EPCI_CODE === Number(code))
+  console.log('epci_chosen', epci_chosen)
+
+  const commune_chosen = data_communes.features.filter(el => el.properties.EPCI_CODE === code)
+  console.log('commune_chosen', commune_chosen)
+
+  useEffect(() => {
+    processData(dataAgeBati, code);
+  }, [code]);
+	
+
+  
 
   return (
     <div style={{display:"flex", flexDirection:"row", gap: "1em", justifyContent: "space-between", alignItems:"center"}}>
