@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import dataSocioEco from "@/lib/utils/cat_sociopro.json";
 
-interface row {
+interface Row {
   "Code": number,
   "Libellé": string,
   "Nombre de personnes en âge de travailler (15-64 ans) 2020": number,
@@ -37,12 +37,11 @@ interface Props {
 		donnee: string;
 		graph: any;
 	}[]
-  activeData: string;
-  row: any; //REPLACE
+  activeDataTab: string;
 }
 
 const TravailExterieur = (props: Props) => {
-	const { data, activeData, row } = props;
+	const { data, activeDataTab } = props;
 
   const [values, setValues] = useState<number[] | unknown[]>([0, 0, 0, 0, 0, 0, 0]);
   const [graphData, setGraphData] = useState<graphData[]>([]);
@@ -56,7 +55,7 @@ const TravailExterieur = (props: Props) => {
   }, []);
 	
 
-  function processData(allRows: row[]) {
+  function processData(allRows: Row[]) {
     if (allRows.find(el => el['Code'] === Number(code))) {
       let row: any = dataSocioEco.find(el => el['Code'] === Number(code)) //REPLACE
       var x = Object.keys(row).slice(3, 10)
@@ -117,10 +116,10 @@ const TravailExterieur = (props: Props) => {
     <div style={{display:"flex", flexDirection:"row", gap: "1em", justifyContent: "space-between", alignItems:"center"}}>
 			<GridCol lg={5}>
         <h4>LE CHIFFRE</h4>
-			  	<p>Dans l'EPCI {row["Libellé de l'EPCI / Métropole"]}, la part des travailleurs en extérieur représente {row["75 ans et plus 2020"]} personnes dans la population</p>
+			  	<p>Dans l'EPCI ["Libellé de l'EPCI / Métropole"], la part des travailleurs en extérieur représente {["75 ans et plus 2020"]} personnes dans la population</p>
 			  <h4>EXPLICATION</h4>
 			  <p>
-			  	{data.find(el => el.titre === activeData)?.donnee}
+			  	{data.find(el => el.titre === activeDataTab)?.donnee}
 			  </p>
 			</GridCol>
 			<GridCol lg={6}>
