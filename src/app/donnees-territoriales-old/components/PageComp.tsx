@@ -1,5 +1,4 @@
-"use client";
-
+import { GridCol } from "../../../dsfr/layout";
 import { fr } from "@codegouvfr/react-dsfr";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 import dataTest from "../../../lib/utils/dataTest.json";
@@ -7,8 +6,10 @@ import { Button } from "@codegouvfr/react-dsfr/Button";
 import styles from "./../donnees.module.scss";
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useEffect } from "react";
+import GrandAgeIsolement from "@/components/themesText/inconfort-thermique/grand-age-isolement";
+import TravailExterieur from "@/components/themesText/inconfort-thermique/travail-exterieur";
+import AgeBati from "@/components/themesText/inconfort-thermique/age-bati";
 import FragiliteEconomique from "@/components/themesText/inconfort-thermique/fragilite-economique";
-import { DataCommune } from '../type';
 
 interface Props {
 	data: {
@@ -18,46 +19,13 @@ interface Props {
 		risque: string;
 		donnee: string;
 		graph: any
-	}[],
-  dataCommune: DataCommune;
-	// activeTab: string;
-	// setActiveTab: React.Dispatch<React.SetStateAction<string>>;
+	}[]
+	activeTab: string;
+	setActiveTab: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const allComps = [
-		// {
-		// 	titre: "Grand âge et isolement",
-		// 	component: <GrandAgeIsolement
-		// 		data={data}
-		// 		activeData={activeData}
-		// 		row={row}
-		// 	/>
-		// },
-		{
-			titre: "Fragilité économique",
-			Component: (props: Props & { activeData: string, row: {} }) => <FragiliteEconomique
-				{...props}
-			/>
-		},
-		// {
-		// 	titre: "Travail en extérieur",
-		// 	component: <TravailExterieur
-		// 		data={data}
-		// 		activeData={activeData}
-		// 		row={row}
-		// 	/>
-		// },
-		// {
-		// 	titre: "Age du bâtiment",
-		// 	component: <AgeBati
-		// 		data={data}
-		// 		activeData={activeData}
-		// 		row={row}
-		// 	/>
-		// },
-	];
-
-const PageComp = ({ data, dataCommune }: Props) => {
+const PageComp = (props: Props) => {
+	const { data, activeTab, setActiveTab } = props;
 	const [activeData, setActiveData] = useState("");
 	const [row, setRow] = useState({});
 	// const [xData, setXData] = useState([]);
@@ -75,6 +43,40 @@ const PageComp = ({ data, dataCommune }: Props) => {
   	},
 	}
 	
+	const allComps = [
+		{
+			titre: "Grand âge et isolement",
+			component: <GrandAgeIsolement
+				data={data}
+				activeData={activeData}
+				row={row}
+			/>
+		},
+		{
+			titre: "Fragilité économique",
+			component: <FragiliteEconomique
+				data={data}
+				activeData={activeData}
+				row={row}
+			/>
+		},
+		{
+			titre: "Travail en extérieur",
+			component: <TravailExterieur
+				data={data}
+				activeData={activeData}
+				row={row}
+			/>
+		},
+		{
+			titre: "Age du bâtiment",
+			component: <AgeBati
+				data={data}
+				activeData={activeData}
+				row={row}
+			/>
+		},
+	]
 
   function processData(allRows: any) {
     if (allRows.find((el: any) => el['EPCI - Métropole'] === Number(code))) {  //REPLACE
@@ -90,10 +92,10 @@ const PageComp = ({ data, dataCommune }: Props) => {
     }  
   }
 
-	// useEffect(() => {
-	// 	setActiveData(data.filter(el => el.facteur_sensibilite === activeTab)[0].titre)
-	// 	processData(dataTest);
-  // }, [activeTab]);
+	useEffect(() => {
+		setActiveData(data.filter(el => el.facteur_sensibilite === activeTab)[0].titre)
+		processData(dataTest);
+  }, [activeTab]);
 
 	const handleForward = () => {
 			router.push(`/etape3?code=${code}&thematique=${themeUrl}`)
@@ -103,10 +105,8 @@ const PageComp = ({ data, dataCommune }: Props) => {
 		<>
 			<div>
 				<div className={styles.titles}>
-					{data.filter((el) => el.facteur_sensibilite === activeTab)
-          .map((element, i) => (
-						<button
-							key={i}
+					{data.filter(el => el.facteur_sensibilite === activeTab).map((element, i) => (
+						<button 
 							className={styles.button}
 							onClick={() => {
 								setActiveData(element.titre)
@@ -115,15 +115,7 @@ const PageComp = ({ data, dataCommune }: Props) => {
     		</div>
     		<div className={styles.bubble}>
 					<div className={styles.bubbleContent} style={darkClass}>
-						{(() => {
-              const Component = allComps.find((el) => el.titre === activeData)?.Component;
-              if (!Component) return null;
-              return <Component
-                data={data}
-                activeData={activeData}
-                row={row}
-                dataCommune={dataCommune} />
-            })()}
+						{allComps.find(el => el.titre === activeData)?.component}
 					</div>
 					<div className={styles.bottom}>
 						<Button
