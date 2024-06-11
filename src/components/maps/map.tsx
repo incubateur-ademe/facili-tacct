@@ -3,28 +3,68 @@ import { MapContainer, TileLayer, GeoJSON, useMapEvent, useMap } from "react-lea
 import "leaflet/dist/leaflet.css";
 
 
+type CommunesTypes = {
+  type: string;  
+  geometry: {
+      type: string;
+      coordinates: number[][][][];
+  };
+  properties: {
+    DCOE_C_COD: string;
+    DDEP_C_COD: string;
+    DCOE_L_LIB: string;
+    REGION: string;
+    REGION_COD: string;
+    DEPARTEMEN: string;
+    EPCI: string;
+    EPCI_CODE: string;
+    ratio_precarite: number;
+  };
+}
 
-const Map = (props) => {
+type EPCITypes = {
+  type: string;  
+  geometry: {
+    type: string;
+    coordinates: number[][][][];
+  };
+  properties: {
+    EPCI_CODE: number;
+    EPCI: string;
+  };
+}
+
+interface Props {
+	epci: EPCITypes | undefined
+  communes: CommunesTypes[];
+}
+
+type Style = {
+  getColor: (d: number) => string;
+  weight: number;
+  opacity: number;
+  color: string;
+  dashArray: string;
+  fillOpacity: number;
+}
+
+const Map = (props: Props) => {
   const { epci, communes } = props;
-  const mapRef = useRef(null);
+  const mapRef = useRef<any>(null); //REPLACE
   const latlng = [48.8575, 2.3514]; //paris
   const latLng_mairie1 = [48.8565, 2.3524]; //hotel de ville
 
   const [lat, setLat] = useState(2.227395691566266);
   const [lng, setLng] = useState(48.69683698795179);
 
-  // console.log('data_epci.featuresE', data_epci.features)
-  // console.log('data_epci.features[0].properties.EPCI_CODE', data_epci.features[0].properties.EPCI_CODE)
-
-  var getCentroid = function (arr) { 
-    return arr.reduce(function (x,y) {
+  var getCentroid = function (arr: any) {  //REPLACE
+    return arr.reduce(function (x: any, y: any) {
       return [x[0] + y[0]/arr.length, x[1] + y[1]/arr.length] 
     }, [0,0]) 
   }
-  const centerCoord = getCentroid(epci.geometry.coordinates[0])
+  const centerCoord: number[] = getCentroid(epci?.geometry.coordinates[0])
 
-  
-  function getColor(d) {
+  function getColor(d: number) {
     return d > 0.3  ? '#FF5E54' :
            d > 0.2  ? '#FFD054' :
            d > 0.1  ? '#D5F4A3' :
@@ -32,7 +72,7 @@ const Map = (props) => {
            '#5CFF54'
   }
 
-  function style(feature) {
+  function style(feature: Style) {
     return {
       fillColor: getColor(feature.properties.ratio_precarite),
       weight: 1.5,
@@ -44,7 +84,7 @@ const Map = (props) => {
   }
 
   //on Hover
-  function mouseOnHandler(e) {
+  function mouseOnHandler(this: any, e: any) { //REPLACE ????????
     var layer = e.target;
     var epci_name = layer.feature.properties.EPCI
     var commune_name = layer.feature.properties.DCOE_L_LIB
@@ -62,24 +102,24 @@ const Map = (props) => {
   }
 
   //make style after hover disappear
-  function mouseOutHandler(e) {
+  function mouseOutHandler(this: any, e: any) {
     mapRef.current.resetStyle(e.target);
     this.closePopup(e.target);
   }
 
-  function zoomToFeature(e) {
-    let bounds = e.target.getBounds()
-    //console.log('bounds', bounds)
-    let center = e.target.getCenter()
-    setLat(Object.values(center)[0])
-    setLng(Object.values(center)[1])
-  }
+  // function zoomToFeature(e) {
+  //   let bounds = e.target.getBounds()
+  //   //console.log('bounds', bounds)
+  //   let center = e.target.getCenter()
+  //   setLat(Object.values(center)[0])
+  //   setLng(Object.values(center)[1])
+  // }
 
-  function onEachFeature(feature, layer) {
+  function onEachFeature(feature: any, layer: any) {
     layer.on({
         mouseover: mouseOnHandler,
         mouseout: mouseOutHandler,
-        click: zoomToFeature
+        // click: zoomToFeature
     });
   }
 
