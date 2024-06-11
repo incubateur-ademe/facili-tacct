@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description: "Données territoriales",
 };
 
+// 200042497 CODE EPCI TEST
+
 const Page = async () => {
   const theme = themes.inconfort_thermique;
   const data_commune = (await import("@/lib/utils/maps/commune.json")).default as DataCommune;
