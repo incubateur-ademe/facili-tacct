@@ -19,7 +19,7 @@ const csp = {
   ],
   "font-src": ["'self'"],
   "media-src": ["'self'"],
-  "img-src": ["'self'", "data:"],
+  "img-src": ["*", "'self'", "data:", "https:"], //REPLACE (done to display map)
   "script-src": [
     "'self'",
     "'unsafe-inline'",
