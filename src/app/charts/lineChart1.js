@@ -26,7 +26,6 @@ const LineChart1 = () => {
 	
 
   function processData(allRows) {
-    //"Corbonod"
     if (allRows.find(el => el['EPCI - Métropole'] === Number(code))) {
       let row = dataTest.find(el => el['EPCI - Métropole'] === Number(code))
       var x = Object.keys(row).slice(8, 16)
