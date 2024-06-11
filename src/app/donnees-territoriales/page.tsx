@@ -1,50 +1,23 @@
-"use client"
-
-import { useState, useEffect } from "react";
 import { Box } from "../../dsfr/server";
-import { Container, GridCol, Grid } from "../../dsfr/server";
-import { usePathname, useSearchParams } from 'next/navigation';
+import { Container, GridCol } from "../../dsfr/server";
 import themes from "@/lib/utils/themes";
 import PageComp from "./components/PageComp";
 import { StepperComp } from "@/components/Stepper";
 import styles from "./donnees.module.scss";
-import Head from "next/head";
-import { Tabs } from "@codegouvfr/react-dsfr/Tabs";
+import { Metadata } from 'next';
+import { DataCommune, DataEPCI } from './type';
 
-const FilterForm = () => {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const code = searchParams.get("code");
+export const metadata: Metadata = {
+  title: "Données territoriales",
+  description: "Données territoriales",
+};
 
-  const [activeTab, setActiveTab] = useState(0);
-  const [selected, setSelected] = useState([true, false, false, false, false, false, false]);
-  const [answers1, setAnswers1] = useState();
-  const [answers2, setAnswers2] = useState();
-  const [answers3, setAnswers3] = useState();
-  const [answers4, setAnswers4] = useState();
-  // const toggle = (tab: number) => {
-  //   if (activeTab !== tab) {
-  //     setActiveTab(tab);
-  //     setSelected(selected.map((val, i) => i === tab ? true : false))
-  //   }
-  // };
-
+const Page = async () => {
   const theme = themes.inconfort_thermique;
-  const [selectedTabId, setSelectedTabId] = useState("Population");
+  const data_commune = (await import("@/lib/utils/maps/commune.json")).default as DataCommune;
+  const data_epci = (await import("@/lib/utils/maps/epci.json")).default as DataEPCI;
 
-  useEffect(() => {
-    document.title = "Facili-TACCT - Données territoriales";
-  }, []);
-  
-  //console.log('theme', theme)
   return (
-    <>
-    <Head>
-      <meta
-        name="description"
-        content="Données territoriales"
-      />
-    </Head>
     <Container py="4w">
       <Box style={{backgroundColor: "white"}}>
         <GridCol lg={6} offset={1}>
@@ -56,28 +29,14 @@ const FilterForm = () => {
         </GridCol>
       </Box>
       <div className={styles.container}>
-        <Tabs
-          selectedTabId={selectedTabId}
-          tabs={[
-            { tabId: "Population", label: "Population"},
-            { tabId: "Bâtiment", label: "Bâtiment"},
-            { tabId: "Urbanisme", label: "Urbanisme"},
-          ]}
-          onTabChange={setSelectedTabId}
-          >
-          <div className={styles.formContainer}>
-            <PageComp
-              data={theme}
-              activeTab={selectedTabId}
-              setActiveTab={setSelectedTabId}
-              // toggle={toggle}
-            />
-          </div>
-        </Tabs>
+        <PageComp
+          data={theme}
+          data_communes={data_commune}
+          data_epci={data_epci}
+        />
       </div>
     </Container>
-    </>
   );
 };
 
-export default FilterForm;
+export default Page;

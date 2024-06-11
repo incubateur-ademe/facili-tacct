@@ -1,4 +1,5 @@
-import { GridCol } from "../../../dsfr/layout";
+"use client";
+
 import { fr } from "@codegouvfr/react-dsfr";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 import dataTest from "../../../lib/utils/dataTest.json";
@@ -6,10 +7,12 @@ import { Button } from "@codegouvfr/react-dsfr/Button";
 import styles from "./../donnees.module.scss";
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useEffect } from "react";
-import GrandAgeIsolement from "@/components/themesText/inconfort-thermique/grand-age-isolement";
+import FragiliteEconomique from "@/components/themesText/inconfort-thermique/fragilite-economique";
+import { DataCommune, DataEPCI } from '../type';
+import { Tabs } from "@codegouvfr/react-dsfr/Tabs";
 import TravailExterieur from "@/components/themesText/inconfort-thermique/travail-exterieur";
 import AgeBati from "@/components/themesText/inconfort-thermique/age-bati";
-import FragiliteEconomique from "@/components/themesText/inconfort-thermique/fragilite-economique";
+import GrandAgeIsolement from "@/components/themesText/inconfort-thermique/grand-age-isolement";
 
 interface Props {
 	data: {
@@ -19,17 +22,41 @@ interface Props {
 		risque: string;
 		donnee: string;
 		graph: any
-	}[]
-	activeTab: string;
-	setActiveTab: React.Dispatch<React.SetStateAction<string>>;
+	}[],
+  data_communes: DataCommune;
+	data_epci: DataEPCI;
 }
 
-const PageComp = (props: Props) => {
-	const { data, activeTab, setActiveTab } = props;
-	const [activeData, setActiveData] = useState("");
-	const [row, setRow] = useState({});
-	// const [xData, setXData] = useState([]);
-  // const [yData, setYData] = useState([]);
+const allComps = [
+		{
+			titre: "Grand âge et isolement",
+			Component: (props: Props & { activeDataTab: string }) => <GrandAgeIsolement
+				{...props}
+			/>
+		},
+		{
+			titre: "Fragilité économique",
+			Component: (props: Props & { activeDataTab: string }) => <FragiliteEconomique
+				{...props}
+			/>
+		},
+		{
+			titre: "Travail en extérieur",
+			Component: (props: Props & { activeDataTab: string }) => <TravailExterieur
+				{...props}
+			/>
+		},
+		{
+			titre: "Age du bâtiment",
+			Component: (props: Props & { activeDataTab: string }) => <AgeBati
+				{...props}
+			/>
+		},
+	];
+
+const PageComp = ({ data, data_communes, data_epci }: Props) => {
+	const [activeDataTab, setActiveDataTab] = useState("");
+  const [selectedTabId, setSelectedTabId] = useState("Population");
 
 	const router = useRouter();
 	const searchParams = useSearchParams();
@@ -42,98 +69,67 @@ const PageComp = (props: Props) => {
   		  backgroundColor: fr.colors.getHex({isDark}).decisions.background.alt.grey.hover
   	},
 	}
-	
-	const allComps = [
-		{
-			titre: "Grand âge et isolement",
-			component: <GrandAgeIsolement
-				data={data}
-				activeData={activeData}
-				row={row}
-			/>
-		},
-		{
-			titre: "Fragilité économique",
-			component: <FragiliteEconomique
-				data={data}
-				activeData={activeData}
-				row={row}
-			/>
-		},
-		{
-			titre: "Travail en extérieur",
-			component: <TravailExterieur
-				data={data}
-				activeData={activeData}
-				row={row}
-			/>
-		},
-		{
-			titre: "Age du bâtiment",
-			component: <AgeBati
-				data={data}
-				activeData={activeData}
-				row={row}
-			/>
-		},
-	]
-
-  function processData(allRows: any) {
-    if (allRows.find((el: any) => el['EPCI - Métropole'] === Number(code))) {  //REPLACE
-      let row: any = dataTest.find(el => el['EPCI - Métropole'] === Number(code)) //REPLACE
-      var x: any = Object.keys(row as any).slice(8, 16) //REPLACE
-      var y: any = Object.values(row as any).slice(8, 16) //REPLACE
-      // console.log('xPROCESS', x)
-      // console.log('yPROCESS', y)
-			setRow(row)
-      // setXData(x)
-      // setYData(y)
-      return ;
-    }  
-  }
 
 	useEffect(() => {
-		setActiveData(data.filter(el => el.facteur_sensibilite === activeTab)[0].titre)
-		processData(dataTest);
-  }, [activeTab]);
+		setActiveDataTab(data.filter(el => el.facteur_sensibilite === selectedTabId)[0].titre)
+  }, [selectedTabId]);
 
 	const handleForward = () => {
 			router.push(`/etape3?code=${code}&thematique=${themeUrl}`)
    }
 
   return (
-		<>
-			<div>
-				<div className={styles.titles}>
-					{data.filter(el => el.facteur_sensibilite === activeTab).map((element, i) => (
-						<button 
-							className={styles.button}
-							onClick={() => {
-								setActiveData(element.titre)
-							}}>{element.titre}</button>
-					))}
-    		</div>
-    		<div className={styles.bubble}>
-					<div className={styles.bubbleContent} style={darkClass}>
-						{allComps.find(el => el.titre === activeData)?.component}
-					</div>
-					<div className={styles.bottom}>
-						<Button
-          		priority="secondary"
-          		linkProps={{
-    		        href: `/etape2?code=${code}&thematique=${themeUrl}`
-        		  }}
-    	  		>
-          		Étape précédente
-    	  		</Button>
-						<Button onClick={handleForward}>
-          	  Découvrir qui et comment convaincre
-          	</Button>
-					</div>
-				</div>
-			</div>
-		</>
-			
+			<div className={styles.container}>
+        <Tabs
+          selectedTabId={selectedTabId}
+          tabs={[
+            { tabId: "Population", label: "Population"},
+            { tabId: "Bâtiment", label: "Bâtiment"},
+            { tabId: "Urbanisme", label: "Urbanisme"},
+          ]}
+          onTabChange={setSelectedTabId}
+          >
+          <div className={styles.formContainer}>
+						<div className={styles.titles}>
+						{data.filter((el) => el.facteur_sensibilite === selectedTabId)
+          	.map((element, i) => (
+							<button
+								key={i}
+								className={styles.button}
+								onClick={() => {
+									setActiveDataTab(element.titre)
+								}}>{element.titre}</button>
+						))}
+    				</div>
+    				<div className={styles.bubble}>
+							<div className={styles.bubbleContent} style={darkClass}>
+								{(() => {
+        		      const Component = allComps.find((el) => el.titre === activeDataTab)?.Component;
+        		      if (!Component) return null;
+        		      return <Component
+        		        data={data}
+        		        activeDataTab={activeDataTab}
+        		        data_communes={data_communes}
+										data_epci={data_epci} />
+        		    })()}
+							</div>
+							<div className={styles.bottom}>
+								<Button
+        		  		priority="secondary"
+        		  		linkProps={{
+    				        href: `/etape2?code=${code}&thematique=${themeUrl}`
+        				  }}
+    	  				>
+        		  		Étape précédente
+    	  				</Button>
+								<Button onClick={handleForward}>
+        		  	  Découvrir qui et comment convaincre
+        		  	</Button>
+							</div>
+						</div>
+          </div>
+        </Tabs>
+      </div>			
   )
 }
 
