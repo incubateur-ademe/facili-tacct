@@ -1,10 +1,56 @@
 
 import { GridCol } from "@/dsfr/layout";
-import BarChart from "@/components/charts/BarChart";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import dataAgeBati from "@/lib/utils/age_bati.json";
-import Map from "@/lib/utils/maps/map";
+import Map from "@/components/maps/map";
+import Legend from "@/components/maps/legend";
+import data_epci from "@/lib/utils/maps/epci.json";
+import data_communes from "@/lib/utils/maps/commune.json";
+
+
+type moule = {
+  type: string;
+  name: string;
+  features: communesTypes[]
+}
+
+type communesTypes = {
+  type: string;  
+  geometry: {
+      type: string;
+      coordinates: number[][][][];
+  };
+  properties: {
+    DCOE_C_COD: string;
+    DDEP_C_COD: string;
+    DCOE_L_LIB: string;
+    REGION: string;
+    REGION_COD: string;
+    DEPARTEMEN: string;
+    EPCI: string;
+    EPCI_CODE: string;
+    ratio_precarite: number;
+};
+} | {
+  type: string;
+  geometry: {
+    type: string;
+    coordinates: number[][][];
+};
+  properties: {
+    DCOE_C_COD: string;
+    DDEP_C_COD: string;
+    DCOE_L_LIB: string;
+    REGION: string;
+    REGION_COD: string;
+    DEPARTEMEN: string;
+    EPCI: string;
+    EPCI_CODE: string;
+    ratio_precarite: number;
+  }; 
+} | undefined
+
 
 interface row {
   "code_epci": number,
@@ -14,7 +60,6 @@ interface row {
   "part_rp_ach1945": number,
   "part_rp_ach19": number
 }
-
 
 interface Props {
 	data: {
@@ -31,13 +76,18 @@ interface Props {
 
 const FragiliteEconomique = (props: Props) => {
 	const { data, activeData, row } = props;
-
 	const searchParams = useSearchParams();
   const code = searchParams.get("code");
 
+  //haute Sarthe : 200035103
+  const epci_chosen = data_epci.features.find(el => el.properties.EPCI_CODE === Number(code))
+  console.log('epci_chosen', epci_chosen)
+
+  const commune_chosen: moule = data_communes.features.filter(el => el.properties.EPCI_CODE === code)
+  console.log('commune_chosen', commune_chosen)
+
   useEffect(() => {
-    //d3.csv("./evol75.csv", function(data){ processData(data) } )
-    processData(dataAgeBati as any);
+    processData(dataAgeBati);
   }, []);
 	
 
@@ -46,7 +96,6 @@ const FragiliteEconomique = (props: Props) => {
       let row: any = dataAgeBati.find(el => el['code_epci'] === Number(code)) //REPLACE
       var x = Object.keys(row).slice(3, 10)
       var y = Object.values(row).slice(3, 10)
-
       return;
     }  
   }
@@ -63,7 +112,11 @@ const FragiliteEconomique = (props: Props) => {
 			</GridCol>
 			<GridCol lg={6}>
 				<div className="flex flex-col justify-end">
-          <Map/>
+          <Legend/>
+          <Map
+            epci={epci_chosen}
+            communes={commune_chosen}  
+          />
           <p>Source : <b>??????</b></p>
 				</div>
 			</GridCol>
