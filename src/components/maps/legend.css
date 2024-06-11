@@ -1,0 +1,29 @@
+.legend {
+  position: absolute;
+  z-index: 999;
+  right: 66px;
+  bottom: 138px;
+  padding: 14px 0px;
+  box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
+  font-size:12px;
+  background: rgba(0,0,0,0.8);
+  border-radius:5px;
+  width: 8%;
+}
+.legend > div {
+  color:white;
+  position: relative;
+  display: flex;
+  height: 20px;
+  padding: 0 10px;
+}
+.legend > div::before {
+  content: "";
+  background-color: var(--color);
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  
+}
