@@ -8,7 +8,7 @@
   font-size:12px;
   background: rgba(0,0,0,0.8);
   border-radius:5px;
-  width: 8%;
+  width: 11%;
 }
 .legend > div {
   color:white;
@@ -16,14 +16,4 @@
   display: flex;
   height: 20px;
   padding: 0 10px;
-}
-.legend > div::before {
-  content: "";
-  background-color: var(--color);
-  left: 0;
-  top: 0;
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  
 }
