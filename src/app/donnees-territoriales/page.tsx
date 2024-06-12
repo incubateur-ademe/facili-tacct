@@ -6,13 +6,17 @@ import styles from "./donnees.module.scss";
 import { Metadata } from 'next';
 import { DataCommune, DataEPCI } from './type';
 import dynamic from "next/dynamic";
+import Loader from "./loader";
 
 export const metadata: Metadata = {
   title: "Données territoriales",
   description: "Données territoriales",
 };
 
-const DynamicPageComp = dynamic(() => import("./components/PageComp"), { ssr: false });
+const DynamicPageComp = dynamic(() => import("./components/PageComp"), { 
+  ssr: false, 
+  loading: () => <Loader/>
+});
 
 // 200042497 CODE EPCI TEST
 
