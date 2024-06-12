@@ -2,11 +2,10 @@
 
 import { fr } from "@codegouvfr/react-dsfr";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
-import dataTest from "../../../lib/utils/dataTest.json";
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import styles from "./../donnees.module.scss";
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import FragiliteEconomique from "@/components/themesText/inconfort-thermique/fragilite-economique";
 import { DataCommune, DataEPCI } from '../type';
 import { Tabs } from "@codegouvfr/react-dsfr/Tabs";
@@ -129,7 +128,7 @@ const PageComp = ({ data, data_communes, data_epci }: Props) => {
 						</div>
           </div>
         </Tabs>
-      </div>			
+      </div>	
   )
 }
 
