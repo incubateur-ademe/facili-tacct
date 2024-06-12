@@ -1,6 +1,3 @@
-"use client"
-
-import { useEffect } from "react";
 import { Container, Grid, GridCol } from "../../dsfr/server";
 import { Box } from "../../dsfr/server";
 import Image from "next/image";
@@ -8,24 +5,17 @@ import BookmarkIcon from "../../assets/icons/bookmark_icon_black.svg";
 import workshops from "@/lib/utils/workshops";
 import Card from "./Card";
 import styles from "./ressources.module.scss";
-import Head from "next/head";
 import { StepperComp } from "@/components/Stepper";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Ressources",
+  description: "Ressources",
+};
 
 const Ressources = () => {
   
-  //change page title in client page
-  useEffect(() => {
-    document.title = "Facili-TACCT - Ressources";
-  }, []);
-  
   return (
-    <>
-    <Head>
-      <meta
-        name="description"
-        content="Ressources"
-      />
-    </Head>
     <Container m="4w">
       <Box style={{backgroundColor: "white"}}>
         <GridCol lg={6} offset={1}>
@@ -86,7 +76,6 @@ const Ressources = () => {
         </div>
       </div>
     </Container>
-    </>
   );
 };
 
