@@ -85,9 +85,6 @@ function processData(allRows: Row[], code: string, setRow: (row:any) => void) {
   }  
 }
 
-
-
-
 const FragiliteEconomique = (props: Props) => {
 	const { data, activeDataTab, data_communes, data_epci } = props;
 	const searchParams = useSearchParams();
