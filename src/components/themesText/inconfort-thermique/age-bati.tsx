@@ -59,10 +59,13 @@ const AgeBati = (props: Props) => {
     <div style={{display:"flex", flexDirection:"row", gap: "1em", justifyContent: "space-between", alignItems:"center"}}>
 			<GridCol lg={5}>
         <h4>LE CHIFFRE</h4>
-			  	<p>Dans l'EPCI {row["code_epci"]}, </p>
+			  	<p>Dans l'EPCI {row["code_epci"]}, Nb [ou %] de résidences principales construites avant 2018 selon leur période d'achèvement.</p>
 			  <h4>EXPLICATION</h4>
 			  <p>
-			  	{data.find(el => el.titre === activeDataTab)?.donnee}
+          La robustesse des logements face aux températures élevées dépend leur qualité intrinsèque (inertie thermique, présence de volets extérieurs, 
+          qualité des rénovations...). 
+          Si vous ne disposez pas d'étude spécifique sur le sujet, la période de construction, 
+          fournie par l'INSEE, vous donne une première approximation.
 			  </p>
 			</GridCol>
 			<GridCol lg={6}>
