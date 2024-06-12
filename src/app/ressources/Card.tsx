@@ -1,3 +1,5 @@
+"use client"
+
 import styles from "./ressources.module.scss";
 import { fr } from "@codegouvfr/react-dsfr";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
