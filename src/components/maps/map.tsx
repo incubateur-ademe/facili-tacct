@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import { MapContainer, TileLayer, GeoJSON, useMapEvent, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-
 type CommunesTypes = {
   type: string;  
   geometry: {
@@ -35,22 +34,32 @@ type EPCITypes = {
 }
 
 interface Props {
-	epci: EPCITypes | undefined
-  communes: CommunesTypes[];
+	epci: any;
+  communes: any;
 }
 
 type Style = {
-  getColor: (d: number) => string;
+  fillColor: GetColor;
   weight: number;
   opacity: number;
   color: string;
   dashArray: string;
   fillOpacity: number;
+  properties: {
+    ratio_precarite: number;
+  };
+  
 }
+
+type GetColor = (d: number) => string;
 
 const Map = (props: Props) => {
   const { epci, communes } = props;
   const mapRef = useRef<any>(null); //REPLACE
+
+  const data1: GeoJSON.Feature = epci;
+  const data2: GeoJSON.Feature = communes;
+
   const latlng = [48.8575, 2.3514]; //paris
   const latLng_mairie1 = [48.8565, 2.3524]; //hotel de ville
 
@@ -72,7 +81,7 @@ const Map = (props: Props) => {
            '#5CFF54'
   }
 
-  function style(feature: Style) {
+  function style(feature: any) {
     return {
       fillColor: getColor(feature.properties.ratio_precarite),
       weight: 1.5,
@@ -124,7 +133,7 @@ const Map = (props: Props) => {
   }
 
   return ( 
-    <MapContainer 
+    <MapContainer
       center={[centerCoord[1], centerCoord[0]]} 
       zoom={10} 
       ref={mapRef} 
@@ -135,13 +144,12 @@ const Map = (props: Props) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-
       <GeoJSON
-        data={epci}
+        data={data1}
       />
       <GeoJSON
         ref={mapRef}
-        data={communes}
+        data={data2}
         onEachFeature={onEachFeature}
         style={style}
       />

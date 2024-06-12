@@ -1,16 +1,18 @@
 import { Box } from "../../dsfr/server";
 import { Container, GridCol } from "../../dsfr/server";
 import themes from "@/lib/utils/themes";
-import PageComp from "./components/PageComp";
 import { StepperComp } from "@/components/Stepper";
 import styles from "./donnees.module.scss";
 import { Metadata } from 'next';
 import { DataCommune, DataEPCI } from './type';
+import dynamic from "next/dynamic";
 
 export const metadata: Metadata = {
   title: "Données territoriales",
   description: "Données territoriales",
 };
+
+const DynamicPageComp = dynamic(() => import("./components/PageComp"), { ssr: false });
 
 // 200042497 CODE EPCI TEST
 
@@ -31,7 +33,7 @@ const Page = async () => {
         </GridCol>
       </Box>
       <div className={styles.container}>
-        <PageComp
+        <DynamicPageComp
           data={theme}
           data_communes={data_commune}
           data_epci={data_epci}

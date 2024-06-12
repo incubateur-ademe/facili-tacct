@@ -93,19 +93,18 @@ const FragiliteEconomique = (props: Props) => {
 	const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
   const [rows, setRow] = useState<Row[]>([]);
-  console.log('rows', rows)
+
   //Sum of all ratio_precarite_log of municipalities in epci
   const ratio_precarite_log_epci: number = Number((rows.reduce( function(a, b) {
       return a + b['ratio_precarite_log'];
-    }, 0) / rows.length).toPrecision(3))
-  
+    }, 0) / rows.length))  
   
   //haute Sarthe : 200035103
   const epci_chosen = data_epci.features.find(el => el.properties.EPCI_CODE === Number(code))
-  console.log('epci_chosen', epci_chosen)
+  // console.log('epci_chosen', epci_chosen)
 
   const commune_chosen = data_communes.features.filter(el => el.properties.EPCI_CODE === code)
-  console.log('commune_chosen', commune_chosen)
+  // console.log('commune_chosen', commune_chosen)
 
   useEffect(() => {
     processData(dataPrecariteLogMob, code, setRow);
@@ -116,7 +115,7 @@ const FragiliteEconomique = (props: Props) => {
     <div style={{display:"flex", flexDirection:"row", gap: "1em", justifyContent: "space-between", alignItems:"center"}}>
 			<GridCol lg={5}>
         <h4>LE CHIFFRE</h4>
-			  	<p>Dans l'EPCI {epci_chosen?.properties["EPCI"]}, la part des ménages qui sont en situation de précarité énergique logement est de {100 * ratio_precarite_log_epci}%.</p>
+			  	<p>Dans l'EPCI {epci_chosen?.properties["EPCI"]}, la part des ménages qui sont en situation de précarité énergique logement est de {(100 * ratio_precarite_log_epci).toPrecision(3)}%.</p>
 			  <h4>EXPLICATION</h4>
 			  <p>
           La précarité énergétique liée au logement concerne les ménages des 3 premiers déciles qui consacrent plus de 8% de leurs
