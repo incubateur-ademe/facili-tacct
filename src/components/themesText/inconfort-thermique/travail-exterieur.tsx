@@ -38,19 +38,63 @@ interface Props {
 		graph: any;
 	}[]
   activeDataTab: string;
+  data_communes: DataCommunes;
+  data_epci: DataEPCI;
+}
+
+type DataEPCI = {
+  type: string;
+  features: EPCITypes[]
+}
+
+type EPCITypes = {
+  type: string;  
+  geometry: {
+      type: string;
+      coordinates: number[][][][];
+  };
+  properties: {
+    EPCI_CODE: number;
+    EPCI: string;
+  };
+}
+
+type DataCommunes = {
+  type: string;
+  name: string;
+  features: CommunesTypes[]
+}
+
+type CommunesTypes = {
+  type: string;  
+  geometry: {
+      type: string;
+      coordinates: number[][][][];
+  };
+  properties: {
+    DCOE_C_COD: string;
+    DDEP_C_COD: string;
+    DCOE_L_LIB: string;
+    REGION: string;
+    REGION_COD: string;
+    DEPARTEMEN: string;
+    EPCI: string;
+    EPCI_CODE: string;
+    ratio_precarite: number;
+  };
 }
 
 const TravailExterieur = (props: Props) => {
-	const { data, activeDataTab } = props;
-
+	const { data, activeDataTab, data_communes, data_epci } = props;
+  const searchParams = useSearchParams();
+  const code = searchParams.get("code");
+  const epci_chosen = data_epci.features.find(el => el.properties.EPCI_CODE === Number(code));
+  const commune_chosen = data_communes.features.filter(el => el.properties.EPCI_CODE === code);
   const [values, setValues] = useState<number[] | unknown[]>([0, 0, 0, 0, 0, 0, 0]);
   const [graphData, setGraphData] = useState<graphData[]>([]);
 
-	const searchParams = useSearchParams();
-  const code = searchParams.get("code");
 
   useEffect(() => {
-    //d3.csv("./evol75.csv", function(data){ processData(data) } )
     processData(dataSocioEco as any);
   }, []);
 	
@@ -116,7 +160,7 @@ const TravailExterieur = (props: Props) => {
     <div style={{display:"flex", flexDirection:"row", gap: "1em", justifyContent: "space-between", alignItems:"center"}}>
 			<GridCol lg={5}>
         <h4>LE CHIFFRE</h4>
-			  	<p>Dans l'EPCI ["Libellé de l'EPCI / Métropole"], la part des travailleurs en extérieur représente {["75 ans et plus 2020"]} personnes dans la population</p>
+			  	<p>Dans l'EPCI {epci_chosen?.properties.EPCI}, la part des travailleurs en extérieur représente {["75 ans et plus 2020"]} personnes dans la population</p>
 			  <h4>EXPLICATION</h4>
 			  <p>
 			  	{data.find(el => el.titre === activeDataTab)?.donnee}

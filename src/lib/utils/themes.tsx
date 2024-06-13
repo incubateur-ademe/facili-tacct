@@ -50,7 +50,7 @@ const themes = {
   	},
 		{
 			id: 4,
-			titre: "Densité",
+			titre: "Densité du bâti",
 			facteur_sensibilite: "Urbanisme",
 			risque: "Moyen",
   	  donnee: "LOREM IPSUM DE LA DENSITE DE BATIMENTS",
