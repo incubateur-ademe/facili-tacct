@@ -1,9 +1,7 @@
 
 import { GridCol } from "@/dsfr/layout";
-import BarChart from "@/components/charts/BarChart";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import dataDensiteBati from "@/lib/utils/age_bati.json";
 
 
 interface Props {

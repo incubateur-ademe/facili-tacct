@@ -15,15 +15,15 @@ const PieChart2 = (props) => {
             innerRadius={0.4}
             padAngle={0.8}
             cornerRadius={3}
-            activeOuterRadiusOffset={1}
+            activeOuterRadiusOffset={9}
             borderWidth={1}
-            colors={["#ACBBC1", "#FFD100", "#68D273", "#f1e15b", "#28D1FF"]}
+            colors={["#ACBBC1", "#FF8B00", "#68D273", "#f1e15b", "#28D1FF"]}
             borderColor={{
               from: 'color',
               modifiers: [
                   [
-                      'darker',
-                      0.3
+                    'darker',
+                    0.3
                   ]
               ]
             }}
@@ -35,6 +35,19 @@ const PieChart2 = (props) => {
                 return v
               } else return ""
             }}
+          //   tooltip={(el) => (
+          //     <div
+          //         style={{
+          //             padding: 12,
+          //             color: '#000791',
+          //             background: '#222222',
+          //         }}
+          //     >
+          //       <p>
+          //           {el.value}
+          //       </p>
+          //     </div>
+          // )}
         // arcLinkLabelsTextColor="#333333"
         // arcLinkLabelsOffset={-10}
         // arcLinkLabelsDiagonalLength={8}
