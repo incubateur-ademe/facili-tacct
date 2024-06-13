@@ -98,10 +98,10 @@ const FragiliteEconomique = (props: Props) => {
   
   //haute Sarthe : 200035103
   const epci_chosen = data_epci.features.find(el => el.properties.EPCI_CODE === Number(code))
-  // console.log('epci_chosen', epci_chosen)
+  console.log('epci_chosen', epci_chosen)
 
   const commune_chosen = data_communes.features.filter(el => el.properties.EPCI_CODE === code)
-  // console.log('commune_chosen', commune_chosen)
+  console.log('commune_chosen', commune_chosen)
 
   useEffect(() => {
     processData(dataPrecariteLogMob, code, setRow);
@@ -128,7 +128,7 @@ const FragiliteEconomique = (props: Props) => {
             epci={epci_chosen}
             communes={commune_chosen}  
           />
-          <p>Source : <b>??????</b></p>
+          <p>Source : <b>INSEE</b></p>
 				</div>
 			</GridCol>
 		</div>
