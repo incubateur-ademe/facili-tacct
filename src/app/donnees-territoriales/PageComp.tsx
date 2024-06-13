@@ -3,7 +3,7 @@
 import { fr } from "@codegouvfr/react-dsfr";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 import { Button } from "@codegouvfr/react-dsfr/Button";
-import styles from "./../donnees.module.scss";
+import styles from "./donnees.module.scss";
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useEffect, Suspense } from "react";
 import FragiliteEconomique from "@/components/themes/inconfort-thermique/fragilite-economique";
