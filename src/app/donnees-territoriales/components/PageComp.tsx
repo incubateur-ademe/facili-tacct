@@ -12,6 +12,8 @@ import { Tabs } from "@codegouvfr/react-dsfr/Tabs";
 import TravailExterieur from "@/components/themesText/inconfort-thermique/travail-exterieur";
 import AgeBati from "@/components/themesText/inconfort-thermique/age-bati";
 import GrandAgeIsolement from "@/components/themesText/inconfort-thermique/grand-age-isolement";
+import DensiteBati from "@/components/themesText/inconfort-thermique/densite-bati";
+import Vegetalisation from "@/components/themesText/inconfort-thermique/vegetalisation";
 
 interface Props {
 	data: {
@@ -51,12 +53,24 @@ const allComps = [
 				{...props}
 			/>
 		},
+		{
+			titre: "Densité du bâti",
+			Component: (props: Props & { activeDataTab: string }) => <DensiteBati
+				{...props}
+			/>
+		},
+		{
+			titre: "Végétalisation",
+			Component: (props: Props & { activeDataTab: string }) => <Vegetalisation
+				{...props}
+			/>
+		},
 	];
 
 const PageComp = ({ data, data_communes, data_epci }: Props) => {
 	const [activeDataTab, setActiveDataTab] = useState("");
   const [selectedTabId, setSelectedTabId] = useState("Population");
-
+  const [selectedSubTab, setSelectedSubTab] = useState(0);
 	const router = useRouter();
 	const searchParams = useSearchParams();
   const code = searchParams.get("code");
@@ -94,10 +108,12 @@ const PageComp = ({ data, data_communes, data_epci }: Props) => {
           	.map((element, i) => (
 							<button
 								key={i}
-								className={styles.button}
+								className={selectedSubTab === i ? styles.selectedButton : styles.button}
 								onClick={() => {
 									setActiveDataTab(element.titre)
+									setSelectedSubTab(i)
 								}}>{element.titre}</button>
+								
 						))}
     				</div>
     				<div className={styles.bubble}>
