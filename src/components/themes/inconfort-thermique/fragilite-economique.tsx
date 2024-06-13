@@ -2,7 +2,7 @@
 import { GridCol } from "@/dsfr/layout";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import dataPrecariteLogMob_raw from "@/lib/utils/precarite-log-mob.json";
+import dataPrecariteLogMob_raw from "@/lib/json-db/precarite-log-mob.json";
 import Map from "@/components/maps/map";
 import Legend from "@/components/maps/legend";
 

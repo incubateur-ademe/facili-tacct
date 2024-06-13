@@ -1,9 +1,9 @@
 
 import { useState, useEffect } from "react";
 import { GridCol } from "@/dsfr/layout";
-import LineChart1 from "@/app/charts/lineChart1";
+import LineChart1 from "@/components/charts/lineChart1";
 import { useSearchParams } from "next/navigation";
-import CustomData_raw from "@/lib/utils/age-evolution.json";
+import CustomData_raw from "@/lib/json-db/age-evolution.json";
 
 interface CustomData {
   "": number,

@@ -1,9 +1,9 @@
 
 import { GridCol } from "@/dsfr/layout";
 import { useSearchParams } from "next/navigation";
-import dataVegetalisation_raw from "@/lib/utils/vegetalisation.json";
+import dataVegetalisation_raw from "@/lib/json-db/vegetalisation.json";
 import { useState, useEffect } from "react";
-import PieChart2 from "@/app/charts/pieChart2";
+import PieChart2 from "@/components/charts/pieChart2"
 
 const dataVegetalisation = dataVegetalisation_raw as Row[]
 
@@ -87,7 +87,7 @@ function processData(allRows: Row[], code: string, setRow: (row:any) => void, se
   if (allRows.find(el => el['EPCI_x'] === Number(code))) {
     let row: any = dataVegetalisation.find(el => el['EPCI_x'] === Number(code)) //REPLACE
 		console.log('row', row)
-    //var x = Object.keys(row).slice(3, 10)
+    // var x = Object.keys(row).slice(3, 10)
     var y = Object.values(row).slice(2, 7)
 		setValues(y)
 		console.log('y', y)
@@ -103,7 +103,7 @@ function processData(allRows: Row[], code: string, setRow: (row:any) => void, se
 				"id": "Sols agricoles",
 				"label": "Agricoles",
 				"value": y.at(1),
-				"color": "#FFD100"
+				"color": "#FF8B00"
 			},
 			{
 				"id": "Forêts et sols semi-naturels",
@@ -132,11 +132,14 @@ function processData(allRows: Row[], code: string, setRow: (row:any) => void, se
 const Vegetalisation = (props: Props) => {
 	const { data, activeDataTab, data_communes, data_epci } = props;
 	const [row, setRow] = useState();
-	const [values, setValues] = useState<number[] | unknown[]>([0, 0, 0, 0, 0]);
+	const [values, setValues] = useState<any[] | unknown[]>([0, 0, 0, 0, 0]);
 	const [PieData, setPieData] = useState([]);
 	const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
 	const epci_chosen = data_epci.features.find(el => el.properties.EPCI_CODE === Number(code));
+
+	const sum_ha = values.reduce((partialSum: any, a) => partialSum + a, 0);
+	const percent_foret = (100*values.at(2)/sum_ha)
 
   useEffect(() => {
     processData(dataVegetalisation, code, setRow, setValues, setPieData);
@@ -147,7 +150,10 @@ const Vegetalisation = (props: Props) => {
     <div style={{display:"flex", flexDirection:"row", gap: "1em", justifyContent: "space-between", alignItems:"center"}}>
 			<GridCol lg={5}>
         <h4>LE CHIFFRE</h4>
-			  	<p>Dans l'EPCI{epci_chosen?.properties.EPCI}, ......... </p>
+			  <p>
+					Dans l'EPCI{epci_chosen?.properties.EPCI}, {percent_foret.toFixed(1)}% du territoire est de la forêt ou des 
+					espaces semi-naturels (SIGNIFICATION ?????) 
+				</p>
 			  <h4>EXPLICATION</h4>
 			  <p>
         	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis fermentum tortor. 

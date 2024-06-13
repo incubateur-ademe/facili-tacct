@@ -14,7 +14,6 @@ const PieChart1 = () => {
   const code = searchParams.get("code");
 
   useEffect(() => {
-    //d3.csv("./evol75.csv", function(data){ processData(data) } )
     processData(dataSocioEco);
   }, []);
 	
@@ -93,7 +92,7 @@ const PieChart1 = () => {
             innerRadius={0.4}
             padAngle={0.8}
             cornerRadius={3}
-            activeOuterRadiusOffset={1}
+            activeOuterRadiusOffset={8}
             borderWidth={1}
             colors={["#68D273", "#97e3d5", "#61cdbb", "#e8a838", "#f1e15b", "#f47560", "#e8c1a0"]}
             borderColor={{
@@ -106,6 +105,12 @@ const PieChart1 = () => {
               ]
             }}
             enableArcLinkLabels={false}
+            // arcLabel={(e) => {
+            //   let v = e.value.toFixed(0)
+            //   if (v != 0) {
+            //     return v
+            //   } else return ""
+            // }}
         // arcLinkLabelsTextColor="#333333"
         // arcLinkLabelsOffset={-10}
         // arcLinkLabelsDiagonalLength={8}

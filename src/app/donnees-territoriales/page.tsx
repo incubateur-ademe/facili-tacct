@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "Données territoriales",
 };
 
-const DynamicPageComp = dynamic(() => import("./components/PageComp"), { 
+const DynamicPageComp = dynamic(() => import("./PageComp"), { 
   ssr: false, 
   loading: () => <Loader/>
 });
@@ -22,8 +22,8 @@ const DynamicPageComp = dynamic(() => import("./components/PageComp"), {
 
 const Page = async () => {
   const theme = themes.inconfort_thermique;
-  const data_commune = (await import("@/lib/utils/maps/commune.json")).default as DataCommune;
-  const data_epci = (await import("@/lib/utils/maps/epci.json")).default as DataEPCI;
+  const data_commune = (await import("@/lib/json-db/maps/commune.json")).default as DataCommune;
+  const data_epci = (await import("@/lib/json-db/maps/epci.json")).default as DataEPCI;
 
   return (
     <Container py="4w">

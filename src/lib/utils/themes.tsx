@@ -1,5 +1,6 @@
-import LineChart1 from "@/app/charts/lineChart1";
-import PieChart1 from "@/app/charts/pieChart1";
+import LineChart1 from "@/components/charts/lineChart1";
+import PieChart1 from "@/components/charts/pieChart1"
+
 
 const themes = {
   inconfort_thermique: [
