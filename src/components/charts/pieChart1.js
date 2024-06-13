@@ -2,7 +2,7 @@
 
 import { ResponsivePie } from '@nivo/pie'
 import { useEffect, useState } from 'react';
-import dataSocioEco from "../../lib/utils/cat_sociopro.json";
+import dataSocioEco from "../../lib/json-db/cat-sociopro.json";
 import { useSearchParams } from 'next/navigation';
 
 
