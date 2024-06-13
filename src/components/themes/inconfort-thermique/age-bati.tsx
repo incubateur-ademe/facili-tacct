@@ -3,7 +3,7 @@ import { GridCol } from "@/dsfr/layout";
 import BarChart from "@/components/charts/BarChart";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import dataAgeBati from "@/lib/utils/age_bati.json";
+import dataAgeBati from "@/lib/json-db/age-bati.json";
 
 interface Row {
   "code_epci": number,
