@@ -1,68 +1,12 @@
 import React from 'react';
 import { ResponsiveBar } from '@nivo/bar';
-import dataAgeBati from "@/lib/utils/age_bati.json";
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
 
-const BarChart = () => {
-
-  const [data, setData] = useState([]);
-	const searchParams = useSearchParams();
-  const code = searchParams.get("code");
-
-  useEffect(() => {
-    processData(dataAgeBati);
-  }, []);
-	
-
-  function processData(allRows) {
-    if (allRows.find(el => el['code_epci'] === Number(code))) {
-      let row = dataAgeBati.find(el => el['code_epci'] === Number(code))
-      setData([
-        {
-          "periode": "Avant 1919",
-          "Votre EPCI": row['part_rp_ach19'].toFixed(1),
-          "Votre EPCIColor": "#ececfe",
-          "France": 21.3,
-          "FranceColor": "hsl(125, 70%, 50%)",
-        },
-        {
-          "periode": "1919-1945",
-          "Votre EPCI": row['part_rp_ach1945'].toFixed(1),
-          "Votre EPCIColor": "#ececfe",
-          "France": 5.3,
-          "FranceColor": "hsl(125, 70%, 50%)",
-        },
-        {
-          "periode": "1946-1990",
-          "Votre EPCI": row['part_rp_ach4690'].toFixed(1),
-          "Votre EPCIColor": "#ececfe",
-          "France": 38.3,
-          "FranceColor": "hsl(125, 70%, 50%)",
-        },
-        {
-          "periode": "1991-2005",
-          "Votre EPCI": row['part_rp_ach9105'].toFixed(1),
-          "Votre EPCIColor": "#ececfe",
-          "France": 20,
-          "FranceColor": "hsl(125, 70%, 50%)",
-        },
-        {
-          "periode": "Après 2006",
-          "Votre EPCI": row['part_rp_ach06p'].toFixed(1),
-          "Votre EPCIColor": "#ececfe",
-          "France": 15,
-          "FranceColor": "hsl(125, 70%, 50%)",
-        },
-      ])
-
-      return;
-    }  
-  }
+const BarChart = (props) => {
+  const { chartData } = props;
   return (
     <div style={{ height: '500px', width: '500px' }}>
       <ResponsiveBar
-        data={data}
+        data={chartData}
         keys={[
           'Votre EPCI',
           'France',
