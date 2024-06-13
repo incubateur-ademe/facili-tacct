@@ -1,9 +1,9 @@
 
 import { GridCol } from "@/dsfr/layout";
-import PieChart1 from "@/app/charts/pieChart1";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import dataSocioEco from "@/lib/utils/cat_sociopro.json";
+import dataSocioEco from "@/lib/json-db/cat-sociopro.json";
+import PieChart1 from "@/components/charts/pieChart1"
 
 interface Row {
   "Code": number,
