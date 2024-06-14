@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useRef, useEffect, useState } from "react";
-import { MapContainer, TileLayer, GeoJSON, useMapEvent, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON, useMapEvent, useMap } from "@/lib/react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 type CommunesTypes = {

@@ -1,5 +1,7 @@
+"use client";
+
 import React from 'react';
-import { ResponsiveBar } from '@nivo/bar';
+import { ResponsiveBar } from '@/lib/nivo/bar';
 
 const BarChart = (props) => {
   const { chartData } = props;

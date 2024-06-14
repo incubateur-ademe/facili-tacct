@@ -1,6 +1,6 @@
 "use client"
 
-import { ResponsivePie } from '@nivo/pie';
+import { ResponsivePie } from '@/lib/nivo/pie';
 
 const PieChart2 = (props) => {
   const { PieData, setPieData } = props;

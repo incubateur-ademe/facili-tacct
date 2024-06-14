@@ -1,6 +1,6 @@
 "use client"
 
-import { ResponsivePie } from '@nivo/pie'
+import { ResponsivePie } from '@/lib/nivo/pie';
 import { useEffect, useState } from 'react';
 import dataSocioEco from "../../lib/json-db/cat-sociopro.json";
 import { useSearchParams } from 'next/navigation';

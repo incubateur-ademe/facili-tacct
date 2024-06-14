@@ -24,8 +24,8 @@ interface Props {
 		donnee: string;
 		graph: any
 	}[],
-  data_communes: DataCommune;
-	data_epci: DataEPCI;
+  // data_communes: DataCommune;
+	// data_epci: DataEPCI;
 }
 
 const allComps = [
@@ -41,30 +41,30 @@ const allComps = [
 				{...props}
 			/>
 		},
-		{
-			titre: "Travail en extérieur",
-			Component: (props: Props & { activeDataTab: string }) => <TravailExterieur
-				{...props}
-			/>
-		},
-		{
-			titre: "Age du bâtiment",
-			Component: (props: Props & { activeDataTab: string }) => <AgeBati
-				{...props}
-			/>
-		},
-		{
-			titre: "Densité du bâti",
-			Component: (props: Props & { activeDataTab: string }) => <DensiteBati
-				{...props}
-			/>
-		},
-		{
-			titre: "Végétalisation",
-			Component: (props: Props & { activeDataTab: string }) => <Vegetalisation
-				{...props}
-			/>
-		},
+		// {
+		// 	titre: "Travail en extérieur",
+		// 	Component: (props: Props & { activeDataTab: string }) => <TravailExterieur
+		// 		{...props}
+		// 	/>
+		// },
+		// {
+		// 	titre: "Age du bâtiment",
+		// 	Component: (props: Props & { activeDataTab: string }) => <AgeBati
+		// 		{...props}
+		// 	/>
+		// },
+		// {
+		// 	titre: "Densité du bâti",
+		// 	Component: (props: Props & { activeDataTab: string }) => <DensiteBati
+		// 		{...props}
+		// 	/>
+		// },
+		// {
+		// 	titre: "Végétalisation",
+		// 	Component: (props: Props & { activeDataTab: string }) => <Vegetalisation
+		// 		{...props}
+		// 	/>
+		// },
 	];
 
 const PageComp = ({ data, data_communes, data_epci }: Props) => {
@@ -118,6 +118,7 @@ const PageComp = ({ data, data_communes, data_epci }: Props) => {
     			</div>
     			<div className={styles.bubble}>
 					<div className={styles.bubbleContent} style={darkClass}>
+          <Suspense>
 					{(() => {
       		      		const Component = allComps.find((el) => el.titre === activeDataTab)?.Component;
       		      		if (!Component) return null;
@@ -127,6 +128,7 @@ const PageComp = ({ data, data_communes, data_epci }: Props) => {
       		        	data_communes={data_communes}
 										data_epci={data_epci} />
       		    		})()}
+                  </Suspense>
 					</div>
 					<div className={styles.bottom}>
 						<Button
