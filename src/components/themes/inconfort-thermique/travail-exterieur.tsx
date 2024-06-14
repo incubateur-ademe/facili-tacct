@@ -1,27 +1,14 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import PieChart1 from "@/components/charts/pieChart1";
+import { Loader } from "@/app/donnees-territoriales/loader";
+import { PieChart1 } from "@/components/charts/pieChart1";
 import { GridCol } from "@/dsfr/layout";
-import dataSocioEco from "@/lib/json-db/cat-sociopro.json";
 
-interface Row {
-  Code: number;
-  Libellé: string;
-  "Nombre d'actifs de 15-64 ans 2020": number;
-  "Nombre d'inactifs de 15-64 ans 2020": number;
-  "Nombre de personnes en âge de travailler (15-64 ans) 2020": number;
-  'Part des "agriculteurs exploitants" dans la population 2020': number;
-  'Part des "artisans, commerçants, chefs d\'entreprise" dans la population 2020': number;
-  'Part des "cadres et professions intellectuelles supérieures" dans la population 2020': number;
-  'Part des "employés" dans la population 2020': number;
-  'Part des "ouvriers" dans la population 2020': number;
-  'Part des "professions intermédiaires" dans la population 2020': number;
-  'Part des "retraités" dans la population 2020': number;
-  "Taux d'activité des 15-64 ans 2020": number;
-}
+import { getEPCI } from "./actions/epci";
+import { getTravailExtFromEPCI } from "./actions/travail-exterieur";
 
-interface graphData {
+interface GraphData {
   color: string;
   id: string;
   label: string;
@@ -33,126 +20,75 @@ interface Props {
   data: Array<{
     donnee: string;
     facteur_sensibilite: string;
-    graph: any;
     id: number;
     risque: string;
     titre: string;
   }>;
-  data_communes: DataCommunes;
-  data_epci: DataEPCI;
 }
 
-type DataEPCI = {
-  features: EPCITypes[];
-  type: string;
-};
-
-type EPCITypes = {
-  geometry: {
-    coordinates: number[][][][];
-    type: string;
-  };
-  properties: {
-    EPCI: string;
-    EPCI_CODE: number;
-  };
-  type: string;
-};
-
-type DataCommunes = {
-  features: CommunesTypes[];
-  name: string;
-  type: string;
-};
-
-type CommunesTypes = {
-  geometry: {
-    coordinates: number[][][][];
-    type: string;
-  };
-  properties: {
-    DCOE_C_COD: string;
-    DCOE_L_LIB: string;
-    DDEP_C_COD: string;
-    DEPARTEMEN: string;
-    EPCI: string;
-    EPCI_CODE: string;
-    REGION: string;
-    REGION_COD: string;
-    ratio_precarite: number;
-  };
-  type: string;
-};
-
-const TravailExterieur = (props: Props) => {
-  const { data, activeDataTab, data_communes, data_epci } = props;
+export const TravailExterieur = (props: Props) => {
+  const { data, activeDataTab } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
-  const epci_chosen = data_epci.features.find(el => el.properties.EPCI_CODE === Number(code));
-  const commune_chosen = data_communes.features.filter(el => el.properties.EPCI_CODE === code);
-  const [values, setValues] = useState<number[] | unknown[]>([0, 0, 0, 0, 0, 0, 0]);
-  const [graphData, setGraphData] = useState<graphData[]>([]);
+  const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
+  const [graphData, setGraphData] = useState<GraphData[]>([]);
 
   useEffect(() => {
-    processData(dataSocioEco as any);
-  }, []);
-
-  function processData(allRows: Row[]) {
-    if (allRows.find(el => el["Code"] === Number(code))) {
-      const row: any = dataSocioEco.find(el => el["Code"] === Number(code)); //REPLACE
-      const x = Object.keys(row).slice(3, 10);
-      const y = Object.values(row).slice(3, 10);
-      setValues(y);
-      const sum = y.reduce((partialSum: number, a: any) => partialSum + a, 0); //REPLACE
-      const travailExt = Number(y.at(0)) + Number(y.at(2));
-
-      setGraphData([
-        {
-          id: "Artisans, commerçants, chefs d'entreprise",
-          label: "Commerçants",
-          value: Number(y.at(1)),
-          color: "#68D273",
-        },
-        {
-          id: "Travail en extérieur (Ouvriers et agriculteurs)",
-          label: "Travail en extérieur",
-          value: Number(travailExt.toFixed(1)),
-          color: "#97e3d5",
-        },
-        {
-          id: "Employés",
-          label: "Employés",
-          value: Number(y.at(3)),
-          color: "#61cdbb",
-        },
-        {
-          id: "Professions intermédiaires",
-          label: "Professions intermédiaires",
-          value: Number(y.at(4)),
-          color: "#e8a838",
-        },
-        {
-          id: "Cadres",
-          label: "Cadres",
-          value: Number(y.at(5)),
-          color: "#f1e15b",
-        },
-        {
-          id: "Retraités",
-          label: "Retraités",
-          value: Number(y.at(6)),
-          color: "#f47560",
-        },
-        {
-          id: "Autre",
-          label: "Autre",
-          value: Number((100 - sum).toFixed(1)),
-          color: "#e8c1a0",
-        },
-      ]);
-      return;
-    }
-  }
+    void (async () => {
+      const dataTravailExtRows = await getTravailExtFromEPCI(Number(code));
+      if (Object.keys(dataTravailExtRows).length) {
+        // const x = Object.keys(dataTravailExtRows).slice(3, 10);
+        const y = Object.values(dataTravailExtRows).slice(3, 10);
+        const sum: number = Number(y.reduce((partialSum: number, a: number) => partialSum + a, 0));
+        const travailExt = Number(y.at(0)) + Number(y.at(2));
+        setGraphData([
+          {
+            id: "Artisans, commerçants, chefs d'entreprise",
+            label: "Commerçants",
+            value: Number(y.at(1)),
+            color: "#68D273",
+          },
+          {
+            id: "Travail en extérieur (Ouvriers et agriculteurs)",
+            label: "Travail en extérieur",
+            value: Number(travailExt.toFixed(1)),
+            color: "#97e3d5",
+          },
+          {
+            id: "Employés",
+            label: "Employés",
+            value: Number(y.at(3)),
+            color: "#61cdbb",
+          },
+          {
+            id: "Professions intermédiaires",
+            label: "Professions intermédiaires",
+            value: Number(y.at(4)),
+            color: "#e8a838",
+          },
+          {
+            id: "Cadres",
+            label: "Cadres",
+            value: Number(y.at(5)),
+            color: "#f1e15b",
+          },
+          {
+            id: "Retraités",
+            label: "Retraités",
+            value: Number(y.at(6)),
+            color: "#f47560",
+          },
+          {
+            id: "Autre",
+            label: "Autre",
+            value: Number((100 - sum).toFixed(1)),
+            color: "#e8c1a0",
+          },
+        ]);
+      }
+      setEpci_chosen(await getEPCI(Number(code)));
+    })();
+  }, [code]);
 
   return (
     <div
@@ -167,15 +103,15 @@ const TravailExterieur = (props: Props) => {
       <GridCol lg={5}>
         <h4>LE CHIFFRE</h4>
         <p>
-          Dans l'EPCI {epci_chosen?.properties.EPCI}, la part des travailleurs en extérieur représente{" "}
-          {["75 ans et plus 2020"]} personnes dans la population
+          Dans l'EPCI {epci_chosen?.properties.EPCI}, la part des travailleurs en extérieur représente XXXX personnes
+          dans la population
         </p>
         <h4>EXPLICATION</h4>
         <p>{data.find(el => el.titre === activeDataTab)?.donnee}</p>
       </GridCol>
       <GridCol lg={6}>
         <div className="flex flex-col justify-end">
-          <PieChart1 />
+          {graphData ? <PieChart1 graphData={graphData} /> : <Loader />}
           <p>
             Source : <b>Observatoire des territoires</b>
           </p>
@@ -184,5 +120,3 @@ const TravailExterieur = (props: Props) => {
     </div>
   );
 };
-
-export default TravailExterieur;

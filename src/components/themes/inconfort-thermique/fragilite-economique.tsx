@@ -1,7 +1,7 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import Loader from "@/app/donnees-territoriales/loader";
+import { Loader } from "@/app/donnees-territoriales/loader";
 import Legend from "@/components/maps/legend";
 // import dataPrecariteLogMob_raw from "@/lib/json-db/precarite-log-mob.json";
 import Map from "@/components/maps/map";
@@ -71,7 +71,6 @@ interface Props {
   data: Array<{
     donnee: string;
     facteur_sensibilite: string;
-    graph: any;
     id: number;
     risque: string;
     titre: string;
@@ -81,7 +80,7 @@ interface Props {
 }
 // const dataPrecariteLogMob = dataPrecariteLogMob_raw as Row[];
 
-const FragiliteEconomique = (props: Props) => {
+export const FragiliteEconomique = (props: Props) => {
   const { data, activeDataTab } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
@@ -98,10 +97,10 @@ const FragiliteEconomique = (props: Props) => {
 
   //haute Sarthe : 200035103
   // const epci_chosen = data_epci.features.find(el => el.properties.EPCI_CODE === Number(code))
-  console.log("epci_chosen", epci_chosen);
+  // console.log("epci_chosen", epci_chosen);
 
   // const commune_chosen = data_communes.features.filter(el => el.properties.EPCI_CODE === code)
-  console.log("commune_chosen", communes_chosen);
+  // console.log("commune_chosen", communes_chosen);
 
   useEffect(() => {
     void (async () => {
@@ -149,5 +148,3 @@ const FragiliteEconomique = (props: Props) => {
     </div>
   );
 };
-
-export default FragiliteEconomique;

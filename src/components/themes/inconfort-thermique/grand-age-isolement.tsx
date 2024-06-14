@@ -75,7 +75,6 @@ interface Props {
   data: Array<{
     donnee: string;
     facteur_sensibilite: string;
-    graph: any;
     id: number;
     risque: string;
     titre: string;
