@@ -2,8 +2,7 @@
 import { type Metadata } from "next";
 
 import { config } from "../../config";
-import { Container } from "../../../src/dsfr/server";
-
+import { Container } from "../../dsfr/server";
 import { sharedMetadata } from "../shared-metadata";
 
 const title = "Conditions générales d'utilisation";

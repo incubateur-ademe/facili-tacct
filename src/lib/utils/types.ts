@@ -173,11 +173,12 @@ export type PartialKeys<T> = {
 export type RequiredKeys<T> = Exclude<keyof T, PartialKeys<T>>;
 /** Can also "convert" `interface` into `type` */
 export type Objectize<T> = { [K in keyof T]: Objectize<T[K]> };
-export type UnwrapObectize<T> = T extends Objectize<infer R>
-  ? {
-      [K in keyof R]: R[K];
-    }
-  : T;
+export type UnwrapObectize<T> =
+  T extends Objectize<infer R>
+    ? {
+        [K in keyof R]: R[K];
+      }
+    : T;
 export type ClearObject<T> = UnwrapObectize<Objectize<T>>;
 
 export type InvertPartial<T> = Objectize<
@@ -224,13 +225,14 @@ export type TuplifyUnion<T, L = PopUnion<T>, N = [T] extends [never] ? true : fa
 
 export type UnionLength<T> = TuplifyUnion<T>["length"];
 
-export type UnionConcat<TUnion extends string, TSep extends string = ","> = PopUnion<TUnion> extends infer Self
-  ? Self extends string
-    ? Exclude<TUnion, Self> extends never
-      ? Self
-      : Self | UnionConcat<Exclude<TUnion, Self>, TSep> | `${UnionConcat<Exclude<TUnion, Self>, TSep>}${TSep}${Self}`
-    : never
-  : never;
+export type UnionConcat<TUnion extends string, TSep extends string = ","> =
+  PopUnion<TUnion> extends infer Self
+    ? Self extends string
+      ? Exclude<TUnion, Self> extends never
+        ? Self
+        : Self | UnionConcat<Exclude<TUnion, Self>, TSep> | `${UnionConcat<Exclude<TUnion, Self>, TSep>}${TSep}${Self}`
+      : never
+    : never;
 
 /**
  * Split literal strings with optional split char and return a tuple of literals.

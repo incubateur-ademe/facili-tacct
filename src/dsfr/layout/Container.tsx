@@ -1,6 +1,6 @@
 import { cx } from "@codegouvfr/react-dsfr/tools/cx";
 
-import { Box, type BoxProps } from "../../dsfr/server";
+import { Box, type BoxProps } from "../server";
 
 export type ContainerProps = Omit<BoxProps, "ml" | "mr" | "mx" | "pl" | "pr" | "px"> & {
   fluid?: boolean;
