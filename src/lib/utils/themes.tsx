@@ -1,5 +1,3 @@
-import PieChart1 from "@/components/charts/pieChart1";
-
 const themes = {
   inconfort_thermique: [
     {
@@ -19,7 +17,6 @@ const themes = {
     	constat en limitant les comportements à risque (temps passé à \
     	l'extérieur, habillement, conscience des besoins hydriques, pratique \
     	de la sieste).",
-      graph: "",
     },
     {
       id: 1,
@@ -31,7 +28,6 @@ const themes = {
 				revenus aux dépenses énergétiques liées à leur logement (chauffage, eau chaude, et ventilation). Nb ménages [ou % des ménages] \
 				de votre territoire sont en situation de précarité énergique logement. \
 				Ce chiffre est le Nb [ou %] dans votre département.",
-      graph: "",
     },
     {
       id: 2,
@@ -39,7 +35,6 @@ const themes = {
       facteur_sensibilite: "Population",
       risque: "Moyen",
       donnee: "LOREM IPSUM du TRAVAIL EN EXTERIEUR",
-      graph: <PieChart1 />,
     },
     {
       id: 3,
@@ -47,7 +42,6 @@ const themes = {
       facteur_sensibilite: "Bâtiment",
       risque: "Moyen",
       donnee: "LOREM IPSUM de L'AGE DU BATIMENT",
-      graph: "",
     },
     {
       id: 4,
@@ -55,7 +49,6 @@ const themes = {
       facteur_sensibilite: "Urbanisme",
       risque: "Moyen",
       donnee: "LOREM IPSUM DE LA DENSITE DE BATIMENTS",
-      graph: "",
     },
     {
       id: 5,
@@ -63,7 +56,6 @@ const themes = {
       facteur_sensibilite: "Urbanisme",
       risque: "Moyen",
       donnee: "LOREM IPSUM DE LA VEGETALISATION",
-      graph: "",
     },
   ],
 };

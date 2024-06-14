@@ -2,8 +2,8 @@
 
 import { ResponsivePie } from "@/lib/nivo/pie";
 
-const PieChart2 = props => {
-  const { PieData, setPieData } = props;
+export const PieChart2 = props => {
+  const { PieData } = props;
   return (
     <div>
       {PieData ? (
@@ -80,5 +80,3 @@ const PieChart2 = props => {
     </div>
   );
 };
-
-export default PieChart2;

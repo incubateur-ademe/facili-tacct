@@ -7,8 +7,11 @@ import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
-import FragiliteEconomique from "@/components/themes/inconfort-thermique/fragilite-economique";
+import { AgeBati } from "@/components/themes/inconfort-thermique/age-bati";
+import { FragiliteEconomique } from "@/components/themes/inconfort-thermique/fragilite-economique";
 import { GrandAgeIsolement } from "@/components/themes/inconfort-thermique/grand-age-isolement";
+import { TravailExterieur } from "@/components/themes/inconfort-thermique/travail-exterieur";
+import { Vegetalisation } from "@/components/themes/inconfort-thermique/vegetalisation";
 
 import styles from "./donnees.module.scss";
 
@@ -16,7 +19,6 @@ interface Props {
   data: Array<{
     donnee: string;
     facteur_sensibilite: string;
-    graph: any;
     id: number;
     risque: string;
     titre: string;
@@ -34,30 +36,24 @@ const allComps = [
     titre: "Fragilité économique",
     Component: (props: Props & { activeDataTab: string }) => <FragiliteEconomique {...props} />,
   },
-  // {
-  // 	titre: "Travail en extérieur",
-  // 	Component: (props: Props & { activeDataTab: string }) => <TravailExterieur
-  // 		{...props}
-  // 	/>
-  // },
-  // {
-  // 	titre: "Age du bâtiment",
-  // 	Component: (props: Props & { activeDataTab: string }) => <AgeBati
-  // 		{...props}
-  // 	/>
-  // },
+  {
+    titre: "Travail en extérieur",
+    Component: (props: Props & { activeDataTab: string }) => <TravailExterieur {...props} />,
+  },
+  {
+    titre: "Age du bâtiment",
+    Component: (props: Props & { activeDataTab: string }) => <AgeBati {...props} />,
+  },
   // {
   // 	titre: "Densité du bâti",
   // 	Component: (props: Props & { activeDataTab: string }) => <DensiteBati
   // 		{...props}
   // 	/>
   // },
-  // {
-  // 	titre: "Végétalisation",
-  // 	Component: (props: Props & { activeDataTab: string }) => <Vegetalisation
-  // 		{...props}
-  // 	/>
-  // },
+  {
+    titre: "Végétalisation",
+    Component: (props: Props & { activeDataTab: string }) => <Vegetalisation {...props} />,
+  },
 ];
 
 const PageComp = ({ data }: Props) => {
@@ -118,14 +114,7 @@ const PageComp = ({ data }: Props) => {
                 {(() => {
                   const Component = allComps.find(el => el.titre === activeDataTab)?.Component;
                   if (!Component) return null;
-                  return (
-                    <Component
-                      data={data}
-                      activeDataTab={activeDataTab}
-                      data_communes={data_communes}
-                      data_epci={data_epci}
-                    />
-                  );
+                  return <Component data={data} activeDataTab={activeDataTab} />;
                 })()}
               </Suspense>
             </div>
@@ -147,4 +136,5 @@ const PageComp = ({ data }: Props) => {
   );
 };
 
+// eslint-disable-next-line import/no-default-export
 export default PageComp;
