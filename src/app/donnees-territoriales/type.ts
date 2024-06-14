@@ -1,42 +1,41 @@
 export type DataCommune = {
-  type: string;
+  features: CommunesTypes[];
   name: string;
-  features: CommunesTypes[]
-}
+  type: string;
+};
 
 type CommunesTypes = {
-  type: string;  
   geometry: {
-      type: string;
-      coordinates: number[][][][];
+    coordinates: number[][][][];
+    type: string;
   };
   properties: {
     DCOE_C_COD: string;
-    DDEP_C_COD: string;
     DCOE_L_LIB: string;
-    REGION: string;
-    REGION_COD: string;
+    DDEP_C_COD: string;
     DEPARTEMEN: string;
     EPCI: string;
     EPCI_CODE: string;
+    REGION: string;
+    REGION_COD: string;
     ratio_precarite: number;
   };
-}
-
+  type: string;
+};
 
 export type DataEPCI = {
+  features: EPCITypes[];
   type: string;
-  features: EPCITypes[]
-}
+};
 
 type EPCITypes = {
-  type: string;  
   geometry: {
-      type: string;
-      coordinates: number[][][][];
+    coordinates: number[][][][];
+    type: string;
   };
   properties: {
-    EPCI_CODE: number;
     EPCI: string;
+    EPCI_CODE: number;
   };
-}
+  type: string;
+};

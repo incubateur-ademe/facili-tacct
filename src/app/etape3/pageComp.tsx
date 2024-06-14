@@ -1,10 +1,11 @@
-"use client"
+"use client";
 
-import { useSearchParams } from 'next/navigation';
 import { Button } from "@codegouvfr/react-dsfr/Button";
-import { useStyles } from "tss-react/dsfr";
-import HandshakeIcon from "../../assets/icons/handshake_icon_green.svg";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import { useStyles } from "tss-react/dsfr";
+
+import HandshakeIcon from "../../assets/icons/handshake_icon_green.svg";
 import styles from "./etape3.module.scss";
 
 const Step3Comp = () => {
@@ -13,17 +14,15 @@ const Step3Comp = () => {
   const themeUrl = searchParams.get("thematique");
   const { css } = useStyles();
 
-  
   return (
     <>
       <div className={styles.body}>
         <div className={styles.wrapper}>
-          <Image src={HandshakeIcon} alt=''/>
-          <h1>
-            Qui convaincre et avec quels arguments ?
-          </h1>
+          <Image src={HandshakeIcon} alt="" />
+          <h1>Qui convaincre et avec quels arguments ?</h1>
           <p>
-            Trop souvent, les initiatives d’adaptation n’aboutissent pas car elles sont menées “en silo” et non comme, c’est-à-dire sans vraiment convaincre et impliquer les bonnes personnes.
+            Trop souvent, les initiatives d’adaptation n’aboutissent pas car elles sont menées “en silo” et non comme,
+            c’est-à-dire sans vraiment convaincre et impliquer les bonnes personnes.
           </p>
         </div>
       </div>
@@ -31,19 +30,19 @@ const Step3Comp = () => {
         <Button
           priority="secondary"
           linkProps={{
-            href: `/donnees-territoriales?code=${code}&thematique=${themeUrl}`
+            href: `/donnees-territoriales?code=${code}&thematique=${themeUrl}`,
           }}
-    	  >
+        >
           Étape précédente
-    	  </Button>
-			  <Button
+        </Button>
+        <Button
           linkProps={{
-            href: `/explication?code=${code}&thematique=${themeUrl}`
+            href: `/explication?code=${code}&thematique=${themeUrl}`,
           }}
         >
           Qui et comment convaincre ?
         </Button>
-			</div> 
+      </div>
     </>
   );
 };

@@ -1,8 +1,10 @@
 // import AccessibiliteContent from "@__content/accessibilite.mdx";
 import { type Metadata } from "next";
-import AccessibiliteContent from "../../../content/accessibilite.mdx";
-import { Container } from "../../../src/dsfr/server";
+
 import { anchorHeadingMDXComponents } from "@/mdx-components";
+
+import AccessibiliteContent from "../../../content/accessibilite.mdx";
+import { Container } from "../../dsfr/server";
 import { sharedMetadata } from "../shared-metadata";
 
 const title = "Déclaration d'accessibilité";

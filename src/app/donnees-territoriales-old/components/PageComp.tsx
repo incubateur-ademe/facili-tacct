@@ -42,7 +42,7 @@
 //   		  backgroundColor: fr.colors.getHex({isDark}).decisions.background.alt.grey.hover
 //   	},
 // 	}
-	
+
 // 	const allComps = [
 // 		{
 // 			titre: "Grand âge et isolement",
@@ -89,7 +89,7 @@
 //       // setXData(x)
 //       // setYData(y)
 //       return ;
-//     }  
+//     }
 //   }
 
 // 	useEffect(() => {
@@ -106,7 +106,7 @@
 // 			<div>
 // 				<div className={styles.titles}>
 // 					{data.filter(el => el.facteur_sensibilite === activeTab).map((element, i) => (
-// 						<button 
+// 						<button
 // 							className={styles.button}
 // 							onClick={() => {
 // 								setActiveData(element.titre)
@@ -133,7 +133,7 @@
 // 				</div>
 // 			</div>
 // 		</>
-			
+
 //   )
 // }
 

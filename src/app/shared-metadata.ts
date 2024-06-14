@@ -1,7 +1,5 @@
 import { type Metadata } from "next";
 
-import { config } from "../../src/config";
-
 const description = "Facili-TACCT";
 
 export const sharedMetadata: Metadata = {

@@ -1,7 +1,9 @@
 import { type Metadata } from "next";
+
+import { anchorHeadingMDXComponents } from "@/mdx-components";
+
 import PolitiqueCookies from "../../../content/politique-de-confidentialite/cookies.mdx";
 import { Container } from "../../dsfr/server";
-import { anchorHeadingMDXComponents } from "@/mdx-components";
 import { sharedMetadata } from "../shared-metadata";
 
 const title = "Politique des cookies";
