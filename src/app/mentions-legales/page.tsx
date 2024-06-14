@@ -1,7 +1,9 @@
 import { type Metadata } from "next";
-import MentionsLegalesContent from "../../../content/mentions-legales.mdx";
-import { Container, Grid, GridCol, Box } from "../../../src/dsfr/server";
+
 import { anchorHeadingMDXComponents } from "@/mdx-components";
+
+import MentionsLegalesContent from "../../../content/mentions-legales.mdx";
+import { Container } from "../../dsfr/server";
 import { sharedMetadata } from "../shared-metadata";
 
 const title = "Mentions légales";

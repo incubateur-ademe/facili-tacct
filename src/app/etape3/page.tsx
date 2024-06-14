@@ -1,7 +1,8 @@
-import { Container, GridCol, Grid } from "../../dsfr/server";
-import { Box } from "../../dsfr/server";
+import { type Metadata } from "next";
+
 import { StepperComp } from "@/components/Stepper";
-import { Metadata } from "next";
+
+import { Box, Container, GridCol } from "../../dsfr/server";
 import Step3Comp from "./pageComp";
 
 export const metadata: Metadata = {
@@ -12,18 +13,14 @@ export const metadata: Metadata = {
 const Step3 = () => {
   return (
     <>
-    <Container my="4w">
-      <Box style={{backgroundColor: "white"}}>
-        <GridCol lg={6} offset={1}>
-          <StepperComp
-            title="Arguments pour convaincre"
-            stepCount={4}
-            currentStep={3}
-          />
-        </GridCol>
-      </Box>
-    </Container>
-    <Step3Comp/>
+      <Container my="4w">
+        <Box style={{ backgroundColor: "white" }}>
+          <GridCol lg={6} offset={1}>
+            <StepperComp title="Arguments pour convaincre" stepCount={4} currentStep={3} />
+          </GridCol>
+        </Box>
+      </Container>
+      <Step3Comp />
     </>
   );
 };

@@ -1,33 +1,29 @@
+import "./global.css";
+
 import { Badge } from "@codegouvfr/react-dsfr/Badge";
 import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
 import { Footer } from "@codegouvfr/react-dsfr/Footer";
-import { Header, type HeaderProps } from "@codegouvfr/react-dsfr/Header";
+import { Header } from "@codegouvfr/react-dsfr/Header";
 import { DsfrHead } from "@codegouvfr/react-dsfr/next-appdir/DsfrHead";
 import { DsfrProvider } from "@codegouvfr/react-dsfr/next-appdir/DsfrProvider";
 import { getHtmlAttributes } from "@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes";
-import { SkipLinks } from "@codegouvfr/react-dsfr/SkipLinks";
 import { cx } from "@codegouvfr/react-dsfr/tools/cx";
 import { type Metadata } from "next";
 import Link from "next/link";
-import { type PropsWithChildren, Suspense } from "react";
+import { type PropsWithChildren } from "react";
+import { NextAppDirEmotionCacheProvider } from "tss-react/next/appDir";
 
 import { Brand } from "../components/Brand";
 import { config } from "../config";
-import { Follow } from "../dsfr/base/Follow";
-
 import { defaultColorScheme } from "../defaultColorScheme";
 import { StartDsfr } from "../StartDsfr";
+import {
+  ConsentBannerAndConsentManagement,
+  FooterConsentManagementItem,
+  FooterPersonalDataPolicyItem,
+} from "../ui/consentManagement";
 import styles from "./root.module.scss";
 import { sharedMetadata } from "./shared-metadata";
-
-import { NextAppDirEmotionCacheProvider } from "tss-react/next/appDir";
-import './global.css';
-
-import {
-	ConsentBannerAndConsentManagement,
-	FooterConsentManagementItem,
-	FooterPersonalDataPolicyItem
-} from "../ui/consentManagement";
 
 const contentId = "content";
 const footerId = "footer";
@@ -50,21 +46,10 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
-    <html
-      lang="fr"
-      {...getHtmlAttributes({ defaultColorScheme, lang: "fr" })}
-      className={cx(styles.app)}
-    >
+    <html lang="fr" {...getHtmlAttributes({ defaultColorScheme, lang: "fr" })} className={cx(styles.app)}>
       <head>
         <StartDsfr />
-        <DsfrHead
-          Link={Link}
-          preloadFonts={[
-            "Marianne-Regular",
-            "Spectral-Regular",
-            "Spectral-ExtraBold"
-          ]}
-        />
+        <DsfrHead Link={Link} preloadFonts={["Marianne-Regular", "Spectral-Regular", "Spectral-ExtraBold"]} />
       </head>
       <body>
         <DsfrProvider lang="fr">
@@ -85,9 +70,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                 </>
               }
             />
-              <NextAppDirEmotionCacheProvider options={{ key: "css" }}>
-		            {children}
-		          </NextAppDirEmotionCacheProvider>
+            <NextAppDirEmotionCacheProvider options={{ key: "css" }}>{children}</NextAppDirEmotionCacheProvider>
             <Footer
               id={footerId}
               accessibility="non compliant"
@@ -104,7 +87,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                   iconId: "fr-icon-theme-fill",
                 },
                 <FooterConsentManagementItem key={0} />,
-								<FooterPersonalDataPolicyItem key={1} />
+                <FooterPersonalDataPolicyItem key={1} />,
                 // {
                 //   text: `Version ${config.appVersion}.${config.appVersionCommit.slice(0, 7)}`,
                 //   linkProps: {
