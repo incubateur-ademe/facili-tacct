@@ -2,9 +2,8 @@ import { fr } from "@codegouvfr/react-dsfr";
 import { cx, type CxArg } from "@codegouvfr/react-dsfr/tools/cx";
 import { forwardRef, type PropsWithChildren } from "react";
 
-import { Box, BoxRef } from "../../dsfr/server";
 import { type OmitStartsWith } from "../../lib/utils/types";
-
+import { Box, BoxRef } from "../server";
 import { type MarginProps, type PaddingProps } from "../utils/spacing";
 
 type MarginPropsVertical = OmitStartsWith<MarginProps, "ml" | "mr" | "mx">;
