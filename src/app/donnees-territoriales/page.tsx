@@ -6,7 +6,7 @@ import themes from "@/lib/utils/themes";
 
 import { Box, Container, GridCol } from "../../dsfr/server";
 import styles from "./donnees.module.scss";
-import Loader from "./loader";
+import { Loader } from "./loader";
 
 export const metadata: Metadata = {
   title: "Données territoriales",
@@ -20,7 +20,7 @@ const DynamicPageComp = dynamic(() => import("./PageComp"), {
 
 // 200042497 CODE EPCI TEST
 
-const Page = async () => {
+const Page = () => {
   const theme = themes.inconfort_thermique;
   // const data_commune = (await import("@/lib/json-db/maps/commune.json")).default as DataCommune;
   // const data_epci = (await import("@/lib/json-db/maps/epci.json")).default as DataEPCI;

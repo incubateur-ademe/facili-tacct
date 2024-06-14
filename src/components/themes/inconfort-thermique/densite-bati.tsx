@@ -7,7 +7,6 @@ interface Props {
   data: Array<{
     donnee: string;
     facteur_sensibilite: string;
-    graph: any;
     id: number;
     risque: string;
     titre: string;
@@ -24,7 +23,7 @@ interface Props {
 //   }
 // }
 
-const DensiteBati = (props: Props) => {
+export const DensiteBati = (props: Props) => {
   const { data, activeDataTab } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
@@ -68,5 +67,3 @@ const DensiteBati = (props: Props) => {
     </div>
   );
 };
-
-export default DensiteBati;
