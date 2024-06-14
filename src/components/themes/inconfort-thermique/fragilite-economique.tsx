@@ -2,9 +2,13 @@
 import { GridCol } from "@/dsfr/layout";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import dataPrecariteLogMob_raw from "@/lib/json-db/precarite-log-mob.json";
+// import dataPrecariteLogMob_raw from "@/lib/json-db/precarite-log-mob.json";
 import Map from "@/components/maps/map";
 import Legend from "@/components/maps/legend";
+import { getPrecariteLogMobsFromEPCI } from './actions/precarite-log-mob';
+import { getEPCI } from './actions/epci';
+import { getCommunesFromEPCI } from './actions/commune';
+import Loader from '@/app/donnees-territoriales/loader';
 
 type DataEPCI = {
   type: string;
@@ -71,25 +75,18 @@ interface Props {
 		graph: any;
 	}[]
   activeDataTab: string;
-  data_communes: DataCommunes;
-  data_epci: DataEPCI;
+  // data_communes: DataCommunes;
+  // data_epci: DataEPCI;
 }
-const dataPrecariteLogMob = dataPrecariteLogMob_raw as Row[];
-
-function processData(allRows: Row[], code: string, setRow: (row:any) => void) { 
-  if (allRows.find(el => el.EPCI === Number(code))) {
-    //console.log('allrows', allRows)
-    let rows: any = dataPrecariteLogMob.filter(el => el["EPCI"] === Number(code)) //REPLACE
-    setRow(rows);
-    return;
-  }  
-}
+// const dataPrecariteLogMob = dataPrecariteLogMob_raw as Row[];
 
 const FragiliteEconomique = (props: Props) => {
-	const { data, activeDataTab, data_communes, data_epci } = props;
+	const { data, activeDataTab } = props;
 	const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
-  const [rows, setRow] = useState<Row[]>([]);
+  const [rows, setRows] = useState<Row[]>([]);
+  const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
+  const [communes_chosen, setCommunes_chosen] = useState<CommunesTypes[]>();
 
   //Sum of all ratio_precarite_log of municipalities in epci
   const ratio_precarite_log_epci: number = Number((rows.reduce( function(a, b) {
@@ -97,14 +94,21 @@ const FragiliteEconomique = (props: Props) => {
     }, 0) / rows.length))  
   
   //haute Sarthe : 200035103
-  const epci_chosen = data_epci.features.find(el => el.properties.EPCI_CODE === Number(code))
+  // const epci_chosen = data_epci.features.find(el => el.properties.EPCI_CODE === Number(code))
   console.log('epci_chosen', epci_chosen)
 
-  const commune_chosen = data_communes.features.filter(el => el.properties.EPCI_CODE === code)
-  console.log('commune_chosen', commune_chosen)
+  // const commune_chosen = data_communes.features.filter(el => el.properties.EPCI_CODE === code)
+  console.log('commune_chosen', communes_chosen)
 
   useEffect(() => {
-    processData(dataPrecariteLogMob, code, setRow);
+    void (async () => {
+      const dataPLBrows = await getPrecariteLogMobsFromEPCI(Number(code));
+      if (dataPLBrows.length) {
+        setRows(dataPLBrows);
+      }
+      setEpci_chosen(await getEPCI(Number(code)));
+      setCommunes_chosen(await getCommunesFromEPCI(code));
+    })();
   }, [code]);
 	
 
@@ -124,10 +128,10 @@ const FragiliteEconomique = (props: Props) => {
 				<div className="flex flex-col justify-end">
           <p>Titre de la carte</p>
           <Legend/>
-          <Map
+          {epci_chosen && communes_chosen ? <Map
             epci={epci_chosen}
-            communes={commune_chosen}  
-          />
+            communes={communes_chosen}  
+          /> : <Loader />}
           <p>Source : <b>INSEE</b></p>
 				</div>
 			</GridCol>

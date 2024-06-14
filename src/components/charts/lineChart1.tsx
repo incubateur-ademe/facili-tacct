@@ -2,7 +2,7 @@
 
 "use client"
 
-import { ResponsiveLine } from '@nivo/line';
+import { ResponsiveLine } from '@/lib/nivo/line';
 import { useEffect } from 'react';
 
 
