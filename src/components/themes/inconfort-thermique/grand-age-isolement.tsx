@@ -1,9 +1,11 @@
+"use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { GridCol } from "@/dsfr/layout";
 import LineChart1 from "@/components/charts/lineChart1";
 import { useSearchParams } from "next/navigation";
 import CustomData_raw from "@/lib/json-db/age-evolution.json";
+import { getEPCI } from './actions/epci';
 
 interface CustomData {
   "": number,
@@ -76,23 +78,24 @@ interface Props {
 		graph: any;
 	}[]
   activeDataTab: string;
-  data_communes: DataCommunes;
-  data_epci: DataEPCI;
+  // data_communes: DataCommunes;
+  // data_epci: DataEPCI;
 }
 
 
+
 const GrandAgeIsolement = (props: Props) => {
-	const { data, activeDataTab, data_communes, data_epci } = props;
+	const { data, activeDataTab } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
-  const epci_chosen = data_epci.features.find(el => el.properties.EPCI_CODE === Number(code));
-  const commune_chosen = data_communes.features.filter(el => el.properties.EPCI_CODE === code);
+  const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
+  // const commune_chosen = data_communes.features.filter(el => el.properties.EPCI_CODE === code);
   const grandAgeData = CustomData_raw as CustomData[];
   const [xData, setXData] = useState<(string | undefined)[]>([]);
   const [yData, setYData] = useState<number[]>([]);
 
-  function processData(allRows: CustomData[], code: string ) {
-    if (allRows.find(el => el['EPCI - Métropole'] === Number(code))) {
+  useEffect(() => {
+    if (grandAgeData.find(el => el['EPCI - Métropole'] === Number(code))) {
       let row: CustomData = grandAgeData.find(el => el['EPCI - Métropole'] === Number(code))! // REPLACE pourquoi !
       var x = Object.keys(row).slice(8, 16)
       var y = Object.values(row).slice(8, 16)
@@ -100,12 +103,12 @@ const GrandAgeIsolement = (props: Props) => {
       setXData(xSplit)
       setYData(y)
       return;
-    }  
-  }
+    }
 
-  useEffect(() => {
-    processData(grandAgeData, code);
-  }, []);
+    void (async () => {
+      setEpci_chosen(await getEPCI(Number(code)));
+    })();
+  }, [code, grandAgeData]);
 
   return (
     <div style={{display:"flex", flexDirection:"row", gap: "1em", justifyContent: "space-between", alignItems:"center"}}>

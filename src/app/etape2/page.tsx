@@ -3,6 +3,7 @@ import { Box } from "../../dsfr/server";
 import { StepperComp } from "@/components/Stepper";
 import { Metadata } from "next";
 import Step2Comp from "./pageComp";
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: "Données territoriales",
