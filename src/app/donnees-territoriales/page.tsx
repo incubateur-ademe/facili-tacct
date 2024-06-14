@@ -7,6 +7,7 @@ import { Metadata } from 'next';
 import { DataCommune, DataEPCI } from './type';
 import dynamic from "next/dynamic";
 import Loader from "./loader";
+import PageComp from './PageComp';
 
 export const metadata: Metadata = {
   title: "Données territoriales",
@@ -22,8 +23,8 @@ const DynamicPageComp = dynamic(() => import("./PageComp"), {
 
 const Page = async () => {
   const theme = themes.inconfort_thermique;
-  const data_commune = (await import("@/lib/json-db/maps/commune.json")).default as DataCommune;
-  const data_epci = (await import("@/lib/json-db/maps/epci.json")).default as DataEPCI;
+  // const data_commune = (await import("@/lib/json-db/maps/commune.json")).default as DataCommune;
+  // const data_epci = (await import("@/lib/json-db/maps/epci.json")).default as DataEPCI;
 
   return (
     <Container py="4w">
@@ -39,8 +40,8 @@ const Page = async () => {
       <div className={styles.container}>
         <DynamicPageComp
           data={theme}
-          data_communes={data_commune}
-          data_epci={data_epci}
+          // data_communes={data_commune}
+          // data_epci={data_epci}
         />
       </div>
     </Container>
