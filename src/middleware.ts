@@ -1,15 +1,13 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
-import { getCookie, setCookie, deleteCookie, hasCookie, getCookies } from 'cookies-next';
-import { cookies } from 'next/headers';
+import { setCookie } from "cookies-next";
+import { type NextRequest, NextResponse } from "next/server";
 
 export function middleware(req: NextRequest) {
   const res = NextResponse.next();
-  var rand = Math.random().toString(36).substring(2);
-  var rand2 = Math.random().toString(36).substring(2);
+  const rand = Math.random().toString(36).substring(2);
+  const rand2 = Math.random().toString(36).substring(2);
 
   //console.log(res)
-  setCookie('token', rand + rand2, { res, req });
+  setCookie("token", rand + rand2, { res, req });
   //hasCookie('token', { req, res });
   // deleteCookie('token', { res, req });
   //getCookie('token', { res, req });
@@ -19,5 +17,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: '/',
-}
+  matcher: "/",
+};

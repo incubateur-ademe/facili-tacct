@@ -1,7 +1,9 @@
 import { type Metadata } from "next";
-import PolitiqueContent from "../../../content/politique-de-confidentialite/traitement.mdx";
-import { Container } from "../../../src/dsfr/server";
+
 import { anchorHeadingMDXComponents } from "@/mdx-components";
+
+import PolitiqueContent from "../../../content/politique-de-confidentialite/traitement.mdx";
+import { Container } from "../../dsfr/server";
 import { sharedMetadata } from "../shared-metadata";
 
 const title = "Politique de confidentialité";

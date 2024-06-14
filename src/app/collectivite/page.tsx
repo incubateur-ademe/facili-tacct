@@ -1,16 +1,17 @@
-"use client"
+"use client";
 
-import { useState } from 'react';
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import { Input } from "@codegouvfr/react-dsfr/Input";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
 import { Container, Grid } from "../../dsfr/server";
-import { useRouter } from 'next/navigation';
 
 type Event = React.ChangeEvent<HTMLInputElement>;
 
 const Collectivite = () => {
   const router = useRouter();
-	const [code, setCode] = useState<number>();
+  const [code, setCode] = useState<number>();
   const [error, setError] = useState<"default" | "error">("default");
 
   const handleChange = (event: Event) => {
@@ -24,47 +25,39 @@ const Collectivite = () => {
       setError("default");
       router.push(`/thematiques?code=${code}`);
     } else setError("error");
-  }
-  
+  };
+
   return (
     <>
       <Container py="6w">
         <Grid align="center">
           <h5>Quelle collectivité représentez-vous ?</h5>
-          <p>
-            Cette information nous aidera à vous apporter les informations pertinentes pour votre territoire
-          </p>
+          <p>Cette information nous aidera à vous apporter les informations pertinentes pour votre territoire</p>
           <div
             className="container"
             style={{
-              width: "50dvw"
+              width: "50dvw",
             }}
           >
             <Input
-              addon={
-                <Button 
-                  onClick={handleClick}
-                > Continuer</Button>
-              }
+              addon={<Button onClick={handleClick}> Continuer</Button>}
               label="Code SIREN de votre EPCI *"
               nativeInputProps={{
-                placeholder: '200069193',
+                placeholder: "200069193",
                 value: code,
-                type: 'number',
+                type: "number",
                 onChange: handleChange,
-                pattern: "\d{10,}",
-                required: true
+                pattern: "d{10,}",
+                required: true,
               }}
               state={error}
               stateRelatedMessage="Votre code n'est pas au bon format"
             />
           </div>
-        </Grid> 
+        </Grid>
       </Container>
     </>
-  )
-}
+  );
+};
 
 export default Collectivite;
-
-

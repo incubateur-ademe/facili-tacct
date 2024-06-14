@@ -1,8 +1,6 @@
-import db from '../../modules/db';
-import RadioButton from '../../dsfr/base/client/RadioButtons';
+import db from "../../modules/db";
 
 export default function Test2() {
-
   const appendData = async (formData: FormData) => {
     "use server";
     const newQuestionHistory = formData.get("radio");
@@ -18,23 +16,19 @@ export default function Test2() {
       where: { id: 6 },
       data: { question_history: `${question_history} ${newQuestionHistory}` },
     });
-  }
-
+  };
 
   return (
-    <div style={{margin: "2rem"}}>
+    <div style={{ margin: "2rem" }}>
       <h1>UPDATE Request append data in question_history (App Router)</h1>
       <form action={appendData}>
         {/* <RadioButton/> */}
         <div>
-            <button 
-              type="submit"
-              style={{backgroundColor:"orange"}}
-              >
-                Submit
-            </button>
+          <button type="submit" style={{ backgroundColor: "orange" }}>
+            Submit
+          </button>
         </div>
       </form>
     </div>
-  )
+  );
 }

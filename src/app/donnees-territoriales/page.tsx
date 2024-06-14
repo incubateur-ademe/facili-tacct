@@ -1,22 +1,21 @@
-import { Box } from "../../dsfr/server";
-import { Container, GridCol } from "../../dsfr/server";
-import themes from "@/lib/utils/themes";
-import { StepperComp } from "@/components/Stepper";
-import styles from "./donnees.module.scss";
-import { Metadata } from 'next';
-import { DataCommune, DataEPCI } from './type';
+import { type Metadata } from "next";
 import dynamic from "next/dynamic";
+
+import { StepperComp } from "@/components/Stepper";
+import themes from "@/lib/utils/themes";
+
+import { Box, Container, GridCol } from "../../dsfr/server";
+import styles from "./donnees.module.scss";
 import Loader from "./loader";
-import PageComp from './PageComp';
 
 export const metadata: Metadata = {
   title: "Données territoriales",
   description: "Données territoriales",
 };
 
-const DynamicPageComp = dynamic(() => import("./PageComp"), { 
-  ssr: false, 
-  loading: () => <Loader/>
+const DynamicPageComp = dynamic(() => import("./PageComp"), {
+  ssr: false,
+  loading: () => <Loader />,
 });
 
 // 200042497 CODE EPCI TEST
@@ -28,13 +27,9 @@ const Page = async () => {
 
   return (
     <Container py="4w">
-      <Box style={{backgroundColor: "white"}}>
+      <Box style={{ backgroundColor: "white" }}>
         <GridCol lg={6} offset={1}>
-          <StepperComp
-            title="Découverte de la donnée territoriale"
-            stepCount={4}
-            currentStep={2}
-          />
+          <StepperComp title="Découverte de la donnée territoriale" stepCount={4} currentStep={2} />
         </GridCol>
       </Box>
       <div className={styles.container}>
