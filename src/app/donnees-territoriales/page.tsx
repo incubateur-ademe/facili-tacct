@@ -35,8 +35,6 @@ const Page = () => {
       <div className={styles.container}>
         <DynamicPageComp
           data={theme}
-          // data_communes={data_commune}
-          // data_epci={data_epci}
         />
       </div>
     </Container>
