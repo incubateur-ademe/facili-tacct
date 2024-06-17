@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { ResponsiveLine } from "@/lib/nivo/line";
 
@@ -18,29 +18,32 @@ type GraphData = {
 
 const LineChart1 = (props: Props) => {
   const { xData, yData } = props;
-  const children: GraphData[] = [];
-
+  const [children, setChildren] = useState<GraphData[]>([]);
+  const tempChildren: GraphData[] = [];
+  
+  console.log('children', children)
   useEffect(() => {
     xData.forEach((item, id) => {
       const dict: GraphData = {
-        x: item,
-        y: yData.at(id),
+        "x": item,
+        "y": yData.at(id),
       };
-      children.push(dict);
+      tempChildren.push(dict);
+      setChildren(tempChildren);
     });
   }, [xData]);
 
   return (
     <div>
       <p style={{ margin: "0 2em 0" }}>Évolution de la population</p>
-      {xData.length > 0 && yData.length > 0 ? (
         <div style={{ height: "500px", minWidth: "600px" }}>
           <ResponsiveLine
             curve="monotoneX"
             data={[
               {
-                id: "Première courbe évolution",
-                data: children,
+                "id": "Première courbe évolution",
+                "color": "hsl(284, 70%, 50%)",
+                "data": children
               },
             ]}
             yScale={{
@@ -56,9 +59,6 @@ const LineChart1 = (props: Props) => {
             }}
           />
         </div>
-      ) : (
-        <h2>...loading</h2>
-      )}
     </div>
   );
 };

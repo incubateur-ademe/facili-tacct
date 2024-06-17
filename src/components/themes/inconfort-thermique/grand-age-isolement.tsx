@@ -5,51 +5,47 @@ import { useEffect, useState } from "react";
 
 import LineChart1 from "@/components/charts/lineChart1";
 import { GridCol } from "@/dsfr/layout";
-import CustomData_raw from "@/lib/json-db/age-evolution.json";
 
 import { getEPCI } from "./actions/epci";
+import { getGrandAgeFromEPCI } from "./actions/grand-age";
+import { Loader } from "@/app/donnees-territoriales/loader";
 
-interface CustomData {
-  "": number;
-  "75 ans et plus 1968": number;
-  "75 ans et plus 1975": number;
-  "75 ans et plus 1982": number;
-  "75 ans et plus 1990": number;
-  "75 ans et plus 1999": number;
-  "75 ans et plus 2009": number;
-  "75 ans et plus 2014": number;
-  "75 ans et plus 2020": number;
-  "Code géographique": string;
-  Département: number;
-  "EPCI - Métropole": number;
-  "Libellé de commune": string;
-  "Libellé de l'EPCI / Métropole": string;
-  "Libellé géographique": string;
-  Région: number;
+import { GrandAgeAlgo } from "./algorithms/grand-age";
+
+interface GrandAge {
+  "": number,
+  "Code géographique": number,
+  "Libellé géographique": string,
+  "EPCI - Métropole": number,
+  "Libellé de l'EPCI / Métropole": string,
+  "Département": number,
+  "Région": number,
+  "Libellé de commune": string,
+  "under_4_sum_1968": number,
+  "4_to_75_sum_1968": number,
+  "over_75_sum_1968": number,
+  "under_4_sum_1975": number
+  "4_to_75_sum_1975": number,
+  "over_75_sum_1975": number,
+  "under_4_sum_1982": number
+  "4_to_75_sum_1982": number,
+  "over_75_sum_1982": number,
+  "under_4_sum_1990": number,
+  "4_to_75_sum_1990": number,
+  "over_75_sum_1990": number,
+  "under_4_sum_1999": number
+  "4_to_75_sum_1999": number,
+  "over_75_sum_1999": number,
+  "under_4_sum_2009": number
+  "4_to_75_sum_2009": number,
+  "over_75_sum_2009": number,
+  "under_4_sum_2014": number,
+  "4_to_75_sum_2014": number,
+  "over_75_sum_2014": number,
+  "under_4_sum_2020": number,
+  "4_to_75_sum_2020": number,
+  "over_75_sum_2020": number
 }
-
-type DataEPCI = {
-  features: EPCITypes[];
-  type: string;
-};
-
-type EPCITypes = {
-  geometry: {
-    coordinates: number[][][][];
-    type: string;
-  };
-  properties: {
-    EPCI: string;
-    EPCI_CODE: number;
-  };
-  type: string;
-};
-
-type DataCommunes = {
-  features: CommunesTypes[];
-  name: string;
-  type: string;
-};
 
 type CommunesTypes = {
   geometry: {
@@ -83,31 +79,54 @@ interface Props {
   // data_epci: DataEPCI;
 }
 
+function sumProperty (items: TravailExt[], prop: ("NA5AZ_sum" | "NA5BE_sum" | "NA5FZ_sum" | "NA5GU_sum" | "NA5OQ_sum")) {
+  return items.reduce(function(a, b) {
+      return a + b[prop];
+  }, 0);
+};
+
 export const GrandAgeIsolement = (props: Props) => {
   const { data, activeDataTab } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
   const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
   // const commune_chosen = data_communes.features.filter(el => el.properties.EPCI_CODE === code);
-  const grandAgeData = CustomData_raw as CustomData[];
   const [xData, setXData] = useState<Array<string | undefined>>([]);
   const [yData, setYData] = useState<number[]>([]);
 
-  useEffect(() => {
-    if (grandAgeData.find(el => el["EPCI - Métropole"] === Number(code))) {
-      const row: CustomData = grandAgeData.find(el => el["EPCI - Métropole"] === Number(code))!; // REPLACE pourquoi !
-      const x = Object.keys(row).slice(8, 16);
-      const y = Object.values(row).slice(8, 16);
-      const xSplit = x.map(el => el.split(" ").at(-1));
-      setXData(xSplit);
-      setYData(y);
-      return;
-    }
+  const selectedColumns = [
+    'over_75_sum_1968', 
+    'over_75_sum_1975',
+    'over_75_sum_1982',
+    'over_75_sum_1990',
+    'over_75_sum_1999',
+    'over_75_sum_2009',
+    'over_75_sum_2014',
+    'over_75_sum_2020',
+  ];
 
-    void (async () => {
+  useEffect(() => {
+    void (async() => {
+      const grandAgeData = await getGrandAgeFromEPCI(Number(code));
+      console.log('grandAge data', grandAgeData)
+      if (Object.keys(grandAgeData).length) {
+        const moule = GrandAgeAlgo(grandAgeData)
+        console.log('moule', moule)
+        // const x = Object.keys(row).slice(1, 26);
+        const values = grandAgeData.map(row => [...selectedColumns].reduce((acc, v) => ({ ...acc, [v]: row[v] }), {}));
+        const row = values[0]; 
+        const x = Object.keys(row);
+        const y = Object.values(row);
+        const xSplit = x.map(el => el.split("_").at(-1));
+
+        setXData(xSplit);
+        setYData(y);
+
+        return;
+      }
       setEpci_chosen(await getEPCI(Number(code)));
     })();
-  }, [code, grandAgeData]);
+  }, [code]);
 
   return (
     <div
@@ -130,7 +149,7 @@ export const GrandAgeIsolement = (props: Props) => {
       </GridCol>
       <GridCol lg={6}>
         <div className="flex flex-col justify-end">
-          <LineChart1 xData={xData} yData={yData} />
+          {xData ? <LineChart1 xData={xData} yData={yData} /> : <Loader />}
           <p>
             Source : <b>Observatoire des territoires</b>
           </p>
