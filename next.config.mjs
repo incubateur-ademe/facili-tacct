@@ -45,17 +45,18 @@ const ContentSecurityPolicy = Object.entries(csp)
 const config = {
   poweredByHeader: false,
   swcMinify: true,
-  webpack: config => {
-    config.module.rules.push({
+  webpack: (config) => {
+      config.module.rules.push({
       test: /\.(woff2|webmanifest)$/,
       type: "asset/resource",
     })
     //config.infrastructureLogging = { debug: /PackFileCache/ };
-
     return config;
   },
+  productionBrowserSourceMaps: false,
   experimental: {
     typedRoutes: true,
+    serverSourceMaps: false
   },
   eslint: {
     ignoreDuringBuilds: true,
