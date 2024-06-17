@@ -26,63 +26,89 @@ interface Props {
   }>;
 }
 
+interface TravailExt {
+  "": number,
+  "CODGEO": number,
+  "EPCI - Métropole": number,
+  "Libellé de l'EPCI / Métropole": string,
+  "LIBGEO": string,
+  "NA5AZ_sum": number,
+  "NA5BE_sum": number,
+  "NA5FZ_sum": number,
+  "NA5GU_sum": number,
+  "NA5OQ_sum": number
+}
+
+function sumProperty (items: TravailExt[], prop: ("NA5AZ_sum" | "NA5BE_sum" | "NA5FZ_sum" | "NA5GU_sum" | "NA5OQ_sum")) {
+  return items.reduce(function(a, b) {
+      return a + b[prop];
+  }, 0);
+};
+
+
 export const TravailExterieur = (props: Props) => {
   const { data, activeDataTab } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
   const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
+  const [agriculture, setAgriculture] = useState<number>();
+  const [industries, setIndustries] = useState<number>();
+  const [construction, setConstruction] = useState<number>();
+  const [commerce, setCommerce] = useState<number>();
+  const [administration, setAdministration] = useState<number>();
+  const [travailExt, setTavailExt] = useState<number>();
   const [graphData, setGraphData] = useState<GraphData[]>([]);
 
   useEffect(() => {
     void (async () => {
       const dataTravailExtRows = await getTravailExtFromEPCI(Number(code));
       if (Object.keys(dataTravailExtRows).length) {
+        const sumAgriculture = sumProperty(Object.values(dataTravailExtRows), 'NA5AZ_sum');
+        setAgriculture(sumAgriculture);
+        const sumIndustries = sumProperty(Object.values(dataTravailExtRows), 'NA5BE_sum');
+        setIndustries(sumIndustries);
+        const sumConstruction = sumProperty(Object.values(dataTravailExtRows), 'NA5FZ_sum');
+        setConstruction(sumConstruction);
+        const sumCommerce = sumProperty(Object.values(dataTravailExtRows), 'NA5GU_sum');
+        setCommerce(sumCommerce);
+        const sumAdministration = sumProperty(Object.values(dataTravailExtRows), 'NA5OQ_sum');
+        setAdministration(sumAdministration);
         // const x = Object.keys(dataTravailExtRows).slice(3, 10);
         const y = Object.values(dataTravailExtRows).slice(3, 10);
-        const sum: number = Number(y.reduce((partialSum: number, a: number) => partialSum + a, 0));
-        const travailExt = Number(y.at(0)) + Number(y.at(2));
+        //const sum: number = Number(y.reduce((partialSum: number, a: number) => partialSum + a, 0));
+
+        setTavailExt(100 * (sumAgriculture + sumConstruction) / (
+          sumAdministration + sumCommerce + sumConstruction + sumIndustries + sumAgriculture))
         setGraphData([
           {
-            id: "Artisans, commerçants, chefs d'entreprise",
-            label: "Commerçants",
-            value: Number(y.at(1)),
+            id: "Agriculture, sylviculture et pêche",
+            label: "Agriculture",
+            value: sumAgriculture,
             color: "#68D273",
           },
           {
-            id: "Travail en extérieur (Ouvriers et agriculteurs)",
-            label: "Travail en extérieur",
-            value: Number(travailExt.toFixed(1)),
+            id: "Industrie manufacturière, industries extractives et autres",
+            label: "Industries",
+            value: sumIndustries,
             color: "#97e3d5",
           },
           {
-            id: "Employés",
-            label: "Employés",
-            value: Number(y.at(3)),
-            color: "#61cdbb",
+            id: "Construction",
+            label: "Construction",
+            value: sumConstruction,
+            color: "#BD72D6",
           },
           {
-            id: "Professions intermédiaires",
-            label: "Professions intermédiaires",
-            value: Number(y.at(4)),
+            id: "Commerce, transports et services divers",
+            label: "Commerces et transports",
+            value: sumCommerce,
             color: "#e8a838",
           },
           {
-            id: "Cadres",
-            label: "Cadres",
-            value: Number(y.at(5)),
+            id: "Administration publique, enseignement, santé humaine et action sociale",
+            label: "Administations",
+            value: sumAdministration,
             color: "#f1e15b",
-          },
-          {
-            id: "Retraités",
-            label: "Retraités",
-            value: Number(y.at(6)),
-            color: "#f47560",
-          },
-          {
-            id: "Autre",
-            label: "Autre",
-            value: Number((100 - sum).toFixed(1)),
-            color: "#e8c1a0",
           },
         ]);
       }
@@ -101,11 +127,16 @@ export const TravailExterieur = (props: Props) => {
       }}
     >
       <GridCol lg={5}>
-        <h4>LE CHIFFRE</h4>
-        <p>
-          Dans l'EPCI {epci_chosen?.properties.EPCI}, la part des travailleurs en extérieur représente XXXX personnes
-          dans la population
-        </p>
+        { agriculture && construction ? 
+          <div>
+            <h4>LE CHIFFRE</h4>
+            <p>
+              Dans l'EPCI {epci_chosen?.properties.EPCI}, la part des travailleurs en extérieur est de {travailExt?.toFixed(1)}%
+              dans la population. Cela correspond à {agriculture + construction} personnes.
+            </p>
+          </div>
+          : ""
+        }
         <h4>EXPLICATION</h4>
         <p>{data.find(el => el.titre === activeDataTab)?.donnee}</p>
       </GridCol>
