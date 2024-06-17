@@ -20,8 +20,8 @@ const LineChart1 = (props: Props) => {
   const { xData, yData } = props;
   const [children, setChildren] = useState<GraphData[]>([]);
   const tempChildren: GraphData[] = [];
-  
-  console.log('children', children)
+  // console.log('xData', xData)
+  // console.log('yData', yData)
   useEffect(() => {
     xData.forEach((item, id) => {
       const dict: GraphData = {
@@ -31,11 +31,11 @@ const LineChart1 = (props: Props) => {
       tempChildren.push(dict);
       setChildren(tempChildren);
     });
-  }, [xData]);
+  }, [yData]);
 
   return (
     <div>
-      <p style={{ margin: "0 2em 0" }}>Évolution de la population</p>
+      <p style={{ margin: "0 2em 0" }}><b>Évolution de la part de population de plus de 75 ans depuis 1968</b></p>
         <div style={{ height: "500px", minWidth: "600px" }}>
           <ResponsiveLine
             curve="monotoneX"
@@ -48,14 +48,34 @@ const LineChart1 = (props: Props) => {
             ]}
             yScale={{
               type: "linear",
-              min: Math.min(...yData),
-              max: Math.max(...yData) + 5,
+              min: Math.min(...yData) - 1,
+              max: Math.max(...yData) + 1,
             }}
             margin={{
               top: 50,
               right: 130,
               bottom: 50,
               left: 60,
+            }}
+            axisTop={null}
+            axisRight={null}
+            axisBottom={{
+                tickSize: 5,
+                tickPadding: 5,
+                tickRotation: 0,
+                legend: 'Années de rencensement',
+                legendOffset: 36,
+                legendPosition: 'middle',
+                truncateTickAt: 0
+            }}
+            axisLeft={{
+                tickSize: 5,
+                tickPadding: 5,
+                tickRotation: 0,
+                legend: 'Pourcentage (%)',
+                legendOffset: -40,
+                legendPosition: 'middle',
+                truncateTickAt: 0
             }}
           />
         </div>
