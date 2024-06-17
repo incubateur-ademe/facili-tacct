@@ -60,6 +60,7 @@ const config = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  output: 'standalone',
   env: {
     NEXT_TELEMETRY_DISABLED: "1",
     NEXT_PUBLIC_APP_VERSION: version,
