@@ -68,24 +68,21 @@ declare module "@/lib/json-db/precarite-log-mob.json" {
   export = data;
 }
 
-interface CatSocioPro {
-  Code: number;
-  Libellé: string;
-  "Nombre d'actifs de 15-64 ans 2020": number;
-  "Nombre d'inactifs de 15-64 ans 2020": number;
-  "Nombre de personnes en âge de travailler (15-64 ans) 2020": number;
-  'Part des "agriculteurs exploitants" dans la population 2020': number;
-  'Part des "artisans, commerçants, chefs d\'entreprise" dans la population 2020': number;
-  'Part des "cadres et professions intellectuelles supérieures" dans la population 2020': number;
-  'Part des "employés" dans la population 2020': number;
-  'Part des "ouvriers" dans la population 2020': number;
-  'Part des "professions intermédiaires" dans la population 2020': number;
-  'Part des "retraités" dans la population 2020': number;
-  "Taux d'activité des 15-64 ans 2020": number;
+interface TravailExt {
+  "": number,
+  "CODGEO": number,
+  "EPCI - Métropole": number,
+  "Libellé de l'EPCI / Métropole": string,
+  "LIBGEO": string,
+  "NA5AZ_sum": number,
+  "NA5BE_sum": number,
+  "NA5FZ_sum": number,
+  "NA5GU_sum": number,
+  "NA5OQ_sum": number
 }
 
-declare module "@/lib/json-db/cat-sociopro.json" {
-  const data: CatSocioPro[];
+declare module "@/lib/json-db/travail-ext.json" {
+  const data: TravailExt[];
   export = data;
 }
 
@@ -125,5 +122,45 @@ interface Vegetalisation {
 
 declare module "@/lib/json-db/vegetalisation.json" {
   const data: Vegetalisation[];
+  export = data;
+}
+
+interface GrandAge {
+  "": number,
+  "Code géographique": number,
+  "Libellé géographique": string,
+  "EPCI - Métropole": number,
+  "Libellé de l'EPCI / Métropole": string,
+  "Département": number,
+  "Région": number,
+  "Libellé de commune": string,
+  "under_4_sum_1968": number,
+  "4_to_75_sum_1968": number,
+  "over_75_sum_1968": number,
+  "under_4_sum_1975": number
+  "4_to_75_sum_1975": number,
+  "over_75_sum_1975": number,
+  "under_4_sum_1982": number
+  "4_to_75_sum_1982": number,
+  "over_75_sum_1982": number,
+  "under_4_sum_1990": number,
+  "4_to_75_sum_1990": number,
+  "over_75_sum_1990": number,
+  "under_4_sum_1999": number
+  "4_to_75_sum_1999": number,
+  "over_75_sum_1999": number,
+  "under_4_sum_2009": number
+  "4_to_75_sum_2009": number,
+  "over_75_sum_2009": number,
+  "under_4_sum_2014": number,
+  "4_to_75_sum_2014": number,
+  "over_75_sum_2014": number,
+  "under_4_sum_2020": number,
+  "4_to_75_sum_2020": number,
+  "over_75_sum_2020": number
+}
+
+declare module "@/lib/json-db/age-evolution-all-ages.json" {
+  const data: GrandAge[];
   export = data;
 }
