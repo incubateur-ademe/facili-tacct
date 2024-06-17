@@ -7,7 +7,7 @@ import LineChart1 from "@/components/charts/lineChart1";
 import { GridCol } from "@/dsfr/layout";
 
 import { getEPCI } from "./actions/epci";
-import { getGrandAgeFromEPCI } from "./actions/grand-age";
+// import { getGrandAgeFromEPCI } from "./actions/grand-age";
 import { Loader } from "@/app/donnees-territoriales/loader";
 
 import { GrandAgeAlgo } from "./algorithms/grand-age";
@@ -70,24 +70,24 @@ export const GrandAgeIsolement = (props: Props) => {
   const { data, activeDataTab } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
-  const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
-  console.log('epci_chosen', epci_chosen)
-  // const commune_chosen = data_communes.features.filter(el => el.properties.EPCI_CODE === code);
-  const [xData, setXData] = useState<Array<string>>(['1968', '1975', '1982', '1990', '1999', '2009', '2014', '2020']);
-  const [yData, setYData] = useState<number[]>([]);
+  // const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
+  // console.log('epci_chosen', epci_chosen)
+  // // const commune_chosen = data_communes.features.filter(el => el.properties.EPCI_CODE === code);
+  // const [xData, setXData] = useState<Array<string>>(['1968', '1975', '1982', '1990', '1999', '2009', '2014', '2020']);
+  // const [yData, setYData] = useState<number[]>([]);
 
-  useEffect(() => {
-    void (async() => {
-      setEpci_chosen(await getEPCI(Number(code)));
-      const grandAgeData = await getGrandAgeFromEPCI(Number(code));
-      if (Object.keys(grandAgeData).length) {
-        const y_percents = GrandAgeAlgo(grandAgeData)
-        setYData(y_percents);
-        return;
-      }
+  // useEffect(() => {
+  //   void (async() => {
+  //     setEpci_chosen(await getEPCI(Number(code)));
+  //     const grandAgeData = await getGrandAgeFromEPCI(Number(code));
+  //     if (Object.keys(grandAgeData).length) {
+  //       const y_percents = GrandAgeAlgo(grandAgeData)
+  //       setYData(y_percents);
+  //       return;
+  //     }
 
-    })();
-  }, [code]);
+  //   })();
+  // }, [code]);
 
   return (
     <div
@@ -99,7 +99,7 @@ export const GrandAgeIsolement = (props: Props) => {
         alignItems: "center",
       }}
     >
-      <GridCol lg={5}>
+      {/* <GridCol lg={5}>
         <h4>LE CHIFFRE</h4>
         <p>
           Dans l'EPCI {epci_chosen?.properties["EPCI"]} les personnes de plus de 75 ans représentent {yData.at(-1)?.toFixed(1)}% de la population en 2020.
@@ -133,7 +133,7 @@ export const GrandAgeIsolement = (props: Props) => {
             Source : <b>Observatoire des territoires</b>
           </p>
         </div>
-      </GridCol>
+      </GridCol> */}
     </div>
   );
 };
