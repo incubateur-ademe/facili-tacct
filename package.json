@@ -5,8 +5,8 @@
   "scripts": {
     "predev": "only-include-used-icons",
     "prebuild": "only-include-used-icons",
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
+    "build": "cross-env NODE_OPTIONS=--inspect next build ",  
     "start": "next start",
     "lint": "next lint",
     "eslint": "eslint --fix ./src"
@@ -29,10 +29,8 @@
     "d3": "^7.9.0",
     "leaflet": "^1.9.4",
     "next": "^14.2.3",
-    "next-auth": "^4.24.7",
     "pg": "^8.11.5",
     "react": "^18",
-    "react-cookie": "^7.1.4",
     "react-dom": "^18",
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.23.1",

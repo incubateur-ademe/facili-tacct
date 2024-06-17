@@ -125,42 +125,42 @@ declare module "@/lib/json-db/vegetalisation.json" {
   export = data;
 }
 
-interface GrandAge {
-  "": number,
-  "Code géographique": number,
-  "Libellé géographique": string,
-  "EPCI - Métropole": number,
-  "Libellé de l'EPCI / Métropole": string,
-  "Département": number,
-  "Région": number,
-  "Libellé de commune": string,
-  "under_4_sum_1968": number,
-  "4_to_75_sum_1968": number,
-  "over_75_sum_1968": number,
-  "under_4_sum_1975": number
-  "4_to_75_sum_1975": number,
-  "over_75_sum_1975": number,
-  "under_4_sum_1982": number
-  "4_to_75_sum_1982": number,
-  "over_75_sum_1982": number,
-  "under_4_sum_1990": number,
-  "4_to_75_sum_1990": number,
-  "over_75_sum_1990": number,
-  "under_4_sum_1999": number
-  "4_to_75_sum_1999": number,
-  "over_75_sum_1999": number,
-  "under_4_sum_2009": number
-  "4_to_75_sum_2009": number,
-  "over_75_sum_2009": number,
-  "under_4_sum_2014": number,
-  "4_to_75_sum_2014": number,
-  "over_75_sum_2014": number,
-  "under_4_sum_2020": number,
-  "4_to_75_sum_2020": number,
-  "over_75_sum_2020": number
-}
+// interface GrandAge {
+//   "": number,
+//   "Code géographique": number,
+//   "Libellé géographique": string,
+//   "EPCI - Métropole": number,
+//   "Libellé de l'EPCI / Métropole": string,
+//   "Département": number,
+//   "Région": number,
+//   "Libellé de commune": string,
+//   "under_4_sum_1968": number,
+//   "4_to_75_sum_1968": number,
+//   "over_75_sum_1968": number,
+//   "under_4_sum_1975": number
+//   "4_to_75_sum_1975": number,
+//   "over_75_sum_1975": number,
+//   "under_4_sum_1982": number
+//   "4_to_75_sum_1982": number,
+//   "over_75_sum_1982": number,
+//   "under_4_sum_1990": number,
+//   "4_to_75_sum_1990": number,
+//   "over_75_sum_1990": number,
+//   "under_4_sum_1999": number
+//   "4_to_75_sum_1999": number,
+//   "over_75_sum_1999": number,
+//   "under_4_sum_2009": number
+//   "4_to_75_sum_2009": number,
+//   "over_75_sum_2009": number,
+//   "under_4_sum_2014": number,
+//   "4_to_75_sum_2014": number,
+//   "over_75_sum_2014": number,
+//   "under_4_sum_2020": number,
+//   "4_to_75_sum_2020": number,
+//   "over_75_sum_2020": number
+// }
 
-declare module "@/lib/json-db/age-evolution-all-ages.json" {
-  const data: GrandAge[];
-  export = data;
-}
+// declare module "@/lib/json-db/age-evolution-all-ages.json" {
+//   const data: GrandAge[];
+//   export = data;
+// }
