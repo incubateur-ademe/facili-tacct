@@ -23,8 +23,6 @@ interface Props {
     risque: string;
     titre: string;
   }>;
-  // data_communes: DataCommune;
-  // data_epci: DataEPCI;
 }
 
 const allComps = [
@@ -57,9 +55,8 @@ const allComps = [
 ];
 
 const PageComp = ({ data }: Props) => {
-  const [activeDataTab, setActiveDataTab] = useState("");
   const [selectedTabId, setSelectedTabId] = useState("Population");
-  const [selectedSubTab, setSelectedSubTab] = useState(0);
+  const [selectedSubTab, setSelectedSubTab] = useState("Grand âge et isolement");
   const router = useRouter();
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
@@ -72,8 +69,14 @@ const PageComp = ({ data }: Props) => {
     },
   };
 
+  const tabs = [
+    { tabId: "Population", label: "Population" },
+    { tabId: "Bâtiment", label: "Bâtiment" },
+    { tabId: "Urbanisme", label: "Urbanisme" },
+  ];
+
   useEffect(() => {
-    setActiveDataTab(data.filter(el => el.facteur_sensibilite === selectedTabId)[0].titre);
+    setSelectedSubTab(data.filter(el => el.facteur_sensibilite === selectedTabId)[0].titre);
   }, [selectedTabId]);
 
   const handleForward = () => {
@@ -84,11 +87,7 @@ const PageComp = ({ data }: Props) => {
     <div className={styles.container}>
       <Tabs
         selectedTabId={selectedTabId}
-        tabs={[
-          { tabId: "Population", label: "Population" },
-          { tabId: "Bâtiment", label: "Bâtiment" },
-          { tabId: "Urbanisme", label: "Urbanisme" },
-        ]}
+        tabs={tabs}
         onTabChange={setSelectedTabId}
       >
         <div className={styles.formContainer}>
@@ -98,10 +97,9 @@ const PageComp = ({ data }: Props) => {
               .map((element, i) => (
                 <button
                   key={i}
-                  className={selectedSubTab === i ? styles.selectedButton : styles.button}
+                  className={selectedSubTab === element.titre ? styles.selectedButton : styles.button}
                   onClick={() => {
-                    setActiveDataTab(element.titre);
-                    setSelectedSubTab(i);
+                    setSelectedSubTab(element.titre);
                   }}
                 >
                   {element.titre}
@@ -112,9 +110,9 @@ const PageComp = ({ data }: Props) => {
             <div className={styles.bubbleContent} style={darkClass}>
               <Suspense>
                 {(() => {
-                  const Component = allComps.find(el => el.titre === activeDataTab)?.Component;
+                  const Component = allComps.find(el => el.titre === selectedSubTab)?.Component;
                   if (!Component) return null;
-                  return <Component data={data} activeDataTab={activeDataTab} />;
+                  return <Component data={data} activeDataTab={selectedSubTab} />;
                 })()}
               </Suspense>
             </div>
