@@ -8,6 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
 import { AgeBati } from "@/components/themes/inconfort-thermique/age-bati";
+import { DensiteBati } from "@/components/themes/inconfort-thermique/densite-bati";
 import { FragiliteEconomique } from "@/components/themes/inconfort-thermique/fragilite-economique";
 import { GrandAgeIsolement } from "@/components/themes/inconfort-thermique/grand-age-isolement";
 import { TravailExterieur } from "@/components/themes/inconfort-thermique/travail-exterieur";
@@ -42,12 +43,10 @@ const allComps = [
     titre: "Age du bâtiment",
     Component: (props: Props & { activeDataTab: string }) => <AgeBati {...props} />,
   },
-  // {
-  // 	titre: "Densité du bâti",
-  // 	Component: (props: Props & { activeDataTab: string }) => <DensiteBati
-  // 		{...props}
-  // 	/>
-  // },
+  {
+    titre: "Densité du bâti",
+    Component: (props: Props & { activeDataTab: string }) => <DensiteBati {...props} />,
+  },
   {
     titre: "Végétalisation",
     Component: (props: Props & { activeDataTab: string }) => <Vegetalisation {...props} />,
@@ -85,11 +84,7 @@ const PageComp = ({ data }: Props) => {
 
   return (
     <div className={styles.container}>
-      <Tabs
-        selectedTabId={selectedTabId}
-        tabs={tabs}
-        onTabChange={setSelectedTabId}
-      >
+      <Tabs selectedTabId={selectedTabId} tabs={tabs} onTabChange={setSelectedTabId}>
         <div className={styles.formContainer}>
           <div className={styles.titles}>
             {data
