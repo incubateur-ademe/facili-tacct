@@ -41,7 +41,8 @@ export const Vegetalisation = (props: Props) => {
       const dataVegetalisationRows = await getVegetalisationFromEPCI(Number(code));
       if (Object.keys(dataVegetalisationRows).length) {
         // const x = Object.keys(dataTravailExtRows).slice(3, 10);
-        const y = Object.values(dataVegetalisationRows).slice(2, 7);
+        console.log('scdfsdf', Object.values(dataVegetalisationRows))
+        const y = Object.values(dataVegetalisationRows).slice(3);
         const sum_ha: number = Number(y.reduce((partialSum: number, a: number) => partialSum + a, 0));
         setForet((100 * y.at(2)) / sum_ha);
         setPieData([
@@ -94,8 +95,8 @@ export const Vegetalisation = (props: Props) => {
       <GridCol lg={5}>
         <h4>LE CHIFFRE</h4>
         <p>
-          Dans l'EPCI{epci_chosen?.properties.EPCI}, {foret?.toFixed(1)}% du territoire est de la forêt ou des espaces
-          semi-naturels (SIGNIFICATION ?????)
+          Dans l'EPCI {epci_chosen?.properties.EPCI}, {foret?.toFixed(1)}% du territoire est de la forêt ou des espaces
+          semi-naturels.
         </p>
         <h4>EXPLICATION</h4>
         <p>
@@ -109,7 +110,7 @@ export const Vegetalisation = (props: Props) => {
       </GridCol>
       <GridCol lg={6}>
         <div className="flex flex-col justify-end">
-          <p style={{ margin: "0 2em 0" }}>Titre</p>
+          <p style={{ margin: "0 2em 0" }}>Répartition des différents types de sols (en ha) dans l'EPCI</p>
           {PieData ? <PieChart2 PieData={PieData} /> : <Loader />}
           <p>
             Source : <b>CORINE Land Cover</b>

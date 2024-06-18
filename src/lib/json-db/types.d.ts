@@ -100,25 +100,37 @@ declare module "@/lib/json-db/age-bati.json" {
   export = data;
 }
 
+// interface Vegetalisation {
+//   "": number;
+//   "1_artificialise": number;
+//   "2_agricole": number;
+//   "3_foret_semiNaturel": number;
+//   "4_humide": number;
+//   "5_eau": number;
+//   "Code Insee de la commune": number;
+//   DEP_x: number;
+//   DEP_y: number;
+//   EPCI_x: number;
+//   EPCI_y: number;
+//   LIBEPCI_x: string;
+//   LIBEPCI_y: string;
+//   LIBGEO_x: string;
+//   LIBGEO_y: string;
+//   REG_x: number;
+//   REG_y: number;
+// }
+
 interface Vegetalisation {
   "": number;
+  "EPCI_x": number;
+  "LIBEPCI_x": string;
   "1_artificialise": number;
   "2_agricole": number;
   "3_foret_semiNaturel": number;
   "4_humide": number;
   "5_eau": number;
-  "Code Insee de la commune": number;
-  DEP_x: number;
-  DEP_y: number;
-  EPCI_x: number;
-  EPCI_y: number;
-  LIBEPCI_x: string;
-  LIBEPCI_y: string;
-  LIBGEO_x: string;
-  LIBGEO_y: string;
-  REG_x: number;
-  REG_y: number;
 }
+
 
 declare module "@/lib/json-db/vegetalisation.json" {
   const data: Vegetalisation[];
@@ -160,7 +172,23 @@ declare module "@/lib/json-db/vegetalisation.json" {
 //   "over_75_sum_2020": number
 // }
 
-// declare module "@/lib/json-db/age-evolution-all-ages.json" {
-//   const data: GrandAge[];
-//   export = data;
-// }
+interface GrandAge {
+  "": number,
+  "EPCI - Métropole": number,
+  "Libellé de l'EPCI / Métropole": string,
+  "sum_2020": number,
+  "percent_over_75_1968": number,
+  "percent_over_75_1975": number,
+  "percent_over_75_1982": number,
+  "percent_over_75_1990": number,
+  "percent_over_75_1999": number,
+  "percent_over_75_2009": number,
+  "percent_over_75_2014": number,
+  "percent_over_75_2020": number,
+}
+
+
+declare module "@/lib/json-db/age-evolution.json" {
+  const data: GrandAge[];
+  export = data;
+}
