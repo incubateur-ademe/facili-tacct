@@ -69,16 +69,16 @@ declare module "@/lib/json-db/precarite-log-mob.json" {
 }
 
 interface TravailExt {
-  "": number,
-  "CODGEO": number,
-  "EPCI - Métropole": number,
-  "Libellé de l'EPCI / Métropole": string,
-  "LIBGEO": string,
-  "NA5AZ_sum": number,
-  "NA5BE_sum": number,
-  "NA5FZ_sum": number,
-  "NA5GU_sum": number,
-  "NA5OQ_sum": number
+  "": number;
+  CODGEO: number;
+  "EPCI - Métropole": number;
+  LIBGEO: string;
+  "Libellé de l'EPCI / Métropole": string;
+  NA5AZ_sum: number;
+  NA5BE_sum: number;
+  NA5FZ_sum: number;
+  NA5GU_sum: number;
+  NA5OQ_sum: number;
 }
 
 declare module "@/lib/json-db/travail-ext.json" {
@@ -122,15 +122,14 @@ declare module "@/lib/json-db/age-bati.json" {
 
 interface Vegetalisation {
   "": number;
-  "EPCI_x": number;
-  "LIBEPCI_x": string;
   "1_artificialise": number;
   "2_agricole": number;
   "3_foret_semiNaturel": number;
   "4_humide": number;
   "5_eau": number;
+  EPCI_x: number;
+  LIBEPCI_x: string;
 }
-
 
 declare module "@/lib/json-db/vegetalisation.json" {
   const data: Vegetalisation[];
@@ -173,22 +172,36 @@ declare module "@/lib/json-db/vegetalisation.json" {
 // }
 
 interface GrandAge {
-  "": number,
-  "EPCI - Métropole": number,
-  "Libellé de l'EPCI / Métropole": string,
-  "sum_2020": number,
-  "percent_over_75_1968": number,
-  "percent_over_75_1975": number,
-  "percent_over_75_1982": number,
-  "percent_over_75_1990": number,
-  "percent_over_75_1999": number,
-  "percent_over_75_2009": number,
-  "percent_over_75_2014": number,
-  "percent_over_75_2020": number,
+  "": number;
+  "EPCI - Métropole": number;
+  "Libellé de l'EPCI / Métropole": string;
+  percent_over_75_1968: number;
+  percent_over_75_1975: number;
+  percent_over_75_1982: number;
+  percent_over_75_1990: number;
+  percent_over_75_1999: number;
+  percent_over_75_2009: number;
+  percent_over_75_2014: number;
+  percent_over_75_2020: number;
+  sum_2020: number;
 }
-
 
 declare module "@/lib/json-db/age-evolution.json" {
   const data: GrandAge[];
+  export = data;
+}
+
+interface DensiteBati {
+  "": number;
+  EPCI: number;
+  LIBEPCI: string;
+  code_commune_insee: number;
+  densite: number;
+  libgeo: string;
+  s_geom_cstr: number;
+}
+
+declare module "@/lib/json-db/densite-bati.json" {
+  const data: DensiteBati[];
   export = data;
 }
