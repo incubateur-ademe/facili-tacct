@@ -1,16 +1,18 @@
 "use client";
 
+import { Loader } from "@/app/donnees-territoriales/loader";
 import { ResponsivePie } from "@/lib/nivo/pie";
 
-// interface GraphData {
-//   color: string;
-//   id: string;
-//   label: string;
-//   value: number | undefined;
-// }
+type Props = {
+  graphData: Array<{
+    color: string;
+    id: string;
+    label: string;
+    value: number | undefined;
+  }>;
+}
 
-export const PieChart1 = props => {
-  const { graphData } = props;
+export const PieChart1 = ({ graphData }: Props) => {
   return (
     <div>
       <p style={{ margin: "0 2em 0" }}>Part dans la population selon les catégories socio-professionnelles</p>
@@ -25,7 +27,7 @@ export const PieChart1 = props => {
             cornerRadius={3}
             activeOuterRadiusOffset={8}
             borderWidth={1}
-            colors={["#68D273", "#97e3d5", "#BD72D6", "#e8a838", "#f1e15b", "#f47560", "#e8c1a0"]}
+            colors={["#68D273", "#E4FFE3", "#BD72D6", "#FFF6E3", "#E3EDFF", "#f47560", "#e8c1a0"]}
             borderColor={{
               from: "color",
               modifiers: [["darker", 0.3]],
@@ -69,7 +71,7 @@ export const PieChart1 = props => {
           />
         </div>
       ) : (
-        <h2>...loading</h2>
+        <Loader />
       )}
     </div>
   );
