@@ -34,13 +34,14 @@ type CommunesTypes = {
   properties: {
     DCOE_C_COD: string;
     DCOE_L_LIB: string;
-    DDEP_C_COD: string;
-    DEPARTEMEN: string;
+    // DDEP_C_COD: string;
+    // DEPARTEMEN: string;
     EPCI: string;
     EPCI_CODE: string;
-    REGION: string;
-    REGION_COD: string;
+    // REGION: string;
+    // REGION_COD: string;
     ratio_precarite: number;
+    densite_bati: number;
   };
   type: string;
 };
