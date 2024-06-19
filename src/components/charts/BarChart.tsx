@@ -2,8 +2,17 @@
 
 import { ResponsiveBar } from "@/lib/nivo/bar";
 
-const BarChart = props => {
-  const { chartData } = props;
+type Props = {
+  chartData: Array<{
+    France: number;
+    FranceColor: string;
+    "Votre EPCI": string;
+    "Votre EPCIColor": string;
+    periode: string;
+  }>;
+}
+
+const BarChart = ({ chartData }: Props) => {
   return (
     <div style={{ height: "500px", width: "500px" }}>
       <ResponsiveBar
