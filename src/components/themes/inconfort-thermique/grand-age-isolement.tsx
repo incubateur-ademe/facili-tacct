@@ -131,7 +131,7 @@ export const GrandAgeIsolement = (props: Props) => {
       </GridCol>
       <GridCol lg={6}>
         <div className="flex flex-col justify-end">
-          {xData ? <LineChart1 xData={xData} yData={yData} /> : <Loader />}
+          {xData && yData.length ? <LineChart1 xData={xData} yData={yData} /> : <Loader />}
           <p style={{margin: "1em 0"}}>
             Source : <b>Observatoire des territoires</b>
           </p>
