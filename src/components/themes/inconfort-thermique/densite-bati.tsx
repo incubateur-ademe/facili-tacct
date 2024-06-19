@@ -1,6 +1,13 @@
 import { useSearchParams } from "next/navigation";
 
 import { GridCol } from "@/dsfr/layout";
+import { Suspense, useEffect, useState } from "react";
+import { GraphDataNotFound } from "@/components/graph-data-not-found";
+import { getEPCI } from "./actions/epci";
+import { getCommunesFromEPCI } from "./actions/commune";
+import Legend from "@/components/maps/legend";
+import Map from "@/components/maps/map";
+import { Loader } from "@/app/donnees-territoriales/loader";
 
 interface Props {
   activeDataTab: string;
@@ -13,27 +20,28 @@ interface Props {
   }>;
 }
 
-// function processData(allRows: Row[], code: string, setRow: (row:any) => void) {
-//   if (allRows.find(el => el['code_epci'] === Number(code))) {
-//     let row: any = dataDensiteBati.find(el => el['code_epci'] === Number(code)) //REPLACE
-//     var x = Object.keys(row).slice(3, 10)
-//     var y = Object.values(row).slice(3, 10)
-//     setRow(row);
-//     return;
-//   }
-// }
-
 export const DensiteBati = (props: Props) => {
   const { data, activeDataTab } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
+  const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
+  const [communes_chosen, setCommunes_chosen] = useState<CommunesTypes[]>();
 
-  // useEffect(() => {
-  //   processData(dataDensiteBati, code, setRow);
-  // }, [code]);
+  useEffect(() => {
+    void (async () => {
+      // const dataPLBrows = await getPrecariteLogMobsFromEPCI(Number(code));
+      // if (dataPLBrows.length) {
+      //   setRows(dataPLBrows);
+      // }
+      setEpci_chosen(await getEPCI(Number(code)));
+      setCommunes_chosen(await getCommunesFromEPCI(code));
+    })();
+  }, [code]);
 
   return (
-    <div
+    <>
+    {2<3 ? 
+      <div
       style={{
         display: "flex",
         flexDirection: "row",
@@ -47,7 +55,7 @@ export const DensiteBati = (props: Props) => {
         <p>Dans l'EPCI, .................</p>
         <h4>EXPLICATION</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis fermentum tortor. Sed pellentesque ultrices
+          {epci_chosen?.properties.EPCI} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis fermentum tortor. Sed pellentesque ultrices
           justo id laoreet. Etiam dui augue, semper non eleifend eget, mollis sed erat. Praesent sollicitudin venenatis
           placerat. Vivamus dignissim lorem nec mattis varius. Ut euismod placerat lacus, rutrum molestie leo ornare
           vitae. Pellentesque at neque tristique, lobortis nisl quis, vestibulum enim. Vestibulum tempus venenatis dui
@@ -57,13 +65,17 @@ export const DensiteBati = (props: Props) => {
       </GridCol>
       <GridCol lg={6}>
         <div className="flex flex-col justify-end">
-          <p style={{ margin: "0 2em 0" }}>Titre</p>
-          <h3>GRAPH</h3>
+          <p>Titre de la carte</p>
+          <Legend />
+          {epci_chosen && communes_chosen ? <Map epci={epci_chosen} communes={communes_chosen} /> : <Loader />}
           <p>
             Source : <b>INSEE</b>
           </p>
         </div>
       </GridCol>
     </div>
+    : <GraphDataNotFound epci_chosen={epci_chosen} />
+  }</>
+
   );
 };
