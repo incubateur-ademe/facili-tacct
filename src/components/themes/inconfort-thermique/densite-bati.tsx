@@ -20,12 +20,15 @@ interface Props {
   }>;
 }
 
+const average = (array: number[]) => array.reduce((a: number, b: number) => a + b) / array.length;
+
 export const DensiteBati = (props: Props) => {
   const { data, activeDataTab } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
   const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
   const [communes_chosen, setCommunes_chosen] = useState<CommunesTypes[]>();
+  const densite_epci = communes_chosen?.map((el, i) => el.properties.densite_bati)
 
   useEffect(() => {
     void (async () => {
@@ -40,7 +43,7 @@ export const DensiteBati = (props: Props) => {
 
   return (
     <>
-    {2<3 ? 
+    {epci_chosen ? 
       <div
       style={{
         display: "flex",
@@ -52,10 +55,13 @@ export const DensiteBati = (props: Props) => {
     >
       <GridCol lg={5}>
         <h4>LE CHIFFRE</h4>
-        <p>Dans l'EPCI, .................</p>
+        {densite_epci ? 
+          <p>Dans l'EPCI {epci_chosen?.properties.EPCI}, la densité moyenne du bâtiment est de {average(densite_epci).toFixed(2)}.</p>
+          : ""
+        }
         <h4>EXPLICATION</h4>
         <p>
-          {epci_chosen?.properties.EPCI} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis fermentum tortor. Sed pellentesque ultrices
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis fermentum tortor. Sed pellentesque ultrices
           justo id laoreet. Etiam dui augue, semper non eleifend eget, mollis sed erat. Praesent sollicitudin venenatis
           placerat. Vivamus dignissim lorem nec mattis varius. Ut euismod placerat lacus, rutrum molestie leo ornare
           vitae. Pellentesque at neque tristique, lobortis nisl quis, vestibulum enim. Vestibulum tempus venenatis dui
@@ -65,9 +71,9 @@ export const DensiteBati = (props: Props) => {
       </GridCol>
       <GridCol lg={6}>
         <div className="flex flex-col justify-end">
-          <p>Titre de la carte</p>
-          <Legend />
-          {epci_chosen && communes_chosen ? <Map epci={epci_chosen} communes={communes_chosen} /> : <Loader />}
+          <p>Répartition de la densité du bâti par commune au sein de l'EPCI</p>
+          <Legend data={"densite_bati"} />
+          {epci_chosen && communes_chosen ? <Map epci={epci_chosen} communes={communes_chosen} data={"densite_bati"}/> : <Loader />}
           <p>
             Source : <b>INSEE</b>
           </p>

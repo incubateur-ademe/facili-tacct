@@ -90,7 +90,7 @@ export const TravailExterieur = (props: Props) => {
             id: "Industrie manufacturière, industries extractives et autres",
             label: "Industries",
             value: sumIndustries,
-            color: "#97e3d5",
+            color: "#E4FFE3",
           },
           {
             id: "Construction",
@@ -102,13 +102,13 @@ export const TravailExterieur = (props: Props) => {
             id: "Commerce, transports et services divers",
             label: "Commerces et transports",
             value: sumCommerce,
-            color: "#e8a838",
+            color: "#FFF6E3",
           },
           {
             id: "Administration publique, enseignement, santé humaine et action sociale",
             label: "Administations",
             value: sumAdministration,
-            color: "#f1e15b",
+            color: "#E3EDFF",
           },
         ]);
       }

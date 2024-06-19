@@ -4,7 +4,7 @@ import Image from "next/image";
 
 
 interface Props {
-  epci_chosen:{
+  epci_chosen: {
     geometry: {
       coordinates: number[][][][];
       type: string;
@@ -14,8 +14,9 @@ interface Props {
       EPCI_CODE: number;
     };
     type: string;
-  }
+  } | undefined
 }
+
 
 export function GraphDataNotFound({ epci_chosen }: Props) {
   return (

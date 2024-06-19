@@ -37,11 +37,6 @@ type EPCITypes = {
   type: string;
 };
 
-interface Props {
-  communes: any;
-  epci: any;
-}
-
 type Style = {
   color: string;
   dashArray: string;
@@ -54,10 +49,19 @@ type Style = {
   weight: number;
 };
 
+interface Props {
+  communes: any;
+  epci: any;
+  data: string
+}
+
+
+
 type GetColor = (d: number) => string;
 
 const Map = (props: Props) => {
-  const { epci, communes } = props;
+  const { epci, communes, data } = props;
+
   const mapRef = useRef<any>(null); //REPLACE
 
   const data1: GeoJSON.Feature = epci;
@@ -81,18 +85,32 @@ const Map = (props: Props) => {
   const centerCoord: number[] = getCentroid(epci?.geometry.coordinates[0]);
 
   function getColor(d: number) {
-    return d > 0.3 ? "#FF5E54" : d > 0.2 ? "#FFD054" : d > 0.1 ? "#D5F4A3" : d > 0 ? "#A3F4CA" : "#5CFF54";
+    if (data === "densite_bati") {
+      return d > 0.2 ? "#FF5E54" : d > 0.1 ? "#FFBD00" : d > 0.05 ? "#FFFA6A" : d > 0 ? "#D5F4A3" : "#5CFF54";
+    }
+    else return d > 0.3 ? "#FF5E54" : d > 0.2 ? "#FFBD00" : d > 0.1 ? "#FFFA6A" : d > 0 ? "#D5F4A3" : "#5CFF54";
   }
 
   function style(feature: any) {
-    return {
-      fillColor: getColor(feature.properties.ratio_precarite),
-      weight: 1.5,
-      opacity: 1,
-      color: "black",
-      dashArray: "3",
-      fillOpacity: 0.7,
-    };
+    if (data === "densite_bati") {
+      return {
+        fillColor: getColor(feature.properties.densite_bati),
+        weight: 1.5,
+        opacity: 1,
+        color: "black",
+        dashArray: "3",
+        fillOpacity: 0.7,
+      };
+    } else {
+      return {
+        fillColor: getColor(feature.properties.ratio_precarite),
+        weight: 1.5,
+        opacity: 1,
+        color: "black",
+        dashArray: "3",
+        fillOpacity: 0.7,
+      };
+    }
   }
 
   //on Hover
@@ -102,6 +120,7 @@ const Map = (props: Props) => {
     const epci_name = layer.feature.properties.EPCI;
     const commune_name = layer.feature.properties.DCOE_L_LIB;
     const ratio_precarite = layer.feature.properties.ratio_precarite.toFixed(2);
+    const densite_bati = layer.feature.properties.densite_bati.toFixed(2);
     layer.setStyle({
       weight: 3,
       color: "#eee",
@@ -110,8 +129,14 @@ const Map = (props: Props) => {
     });
 
     layer.bringToFront();
-    this.bindPopup(`<div>${commune_name}</div><div>ratio précarité : ${ratio_precarite}</div>`);
+    if (data === "densite_bati") {
+      this.bindPopup(`<div>${commune_name}</div><div>Densité du bâti : ${densite_bati}</div>`);
+      this.openPopup();
+    } else {
+      this.bindPopup(`<div>${commune_name}</div><div>Part des ménages en précarité : ${100 * ratio_precarite}%</div>`);
     this.openPopup();
+    }
+    
   }
 
   //make style after hover disappear
@@ -143,6 +168,7 @@ const Map = (props: Props) => {
       ref={mapRef}
       style={{ height: "500px", width: "500px" }}
       attributionControl={false}
+      zoomControl={false}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
