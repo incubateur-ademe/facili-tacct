@@ -115,7 +115,7 @@ export const AgeBati = (props: Props) => {
       </GridCol>
       <GridCol lg={6}>
         <div className="flex flex-col justify-end">
-          <p style={{ margin: "0 2em 0" }}>Titre</p>
+          <p style={{ margin: "0 2em 0" }}>Périodes de construction des bâtiments en France</p>
           {chartData ? <BarChart chartData={chartData} /> : <Loader />}
           <p>
             Source : <b>INSEE</b>

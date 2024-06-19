@@ -41,7 +41,6 @@ export const Vegetalisation = (props: Props) => {
       const dataVegetalisationRows = await getVegetalisationFromEPCI(Number(code));
       if (Object.keys(dataVegetalisationRows).length) {
         // const x = Object.keys(dataTravailExtRows).slice(3, 10);
-        console.log('scdfsdf', Object.values(dataVegetalisationRows))
         const y = Object.values(dataVegetalisationRows).slice(3);
         const sum_ha: number = Number(y.reduce((partialSum: number, a: number) => partialSum + a, 0));
         setForet((100 * y.at(2)) / sum_ha);
