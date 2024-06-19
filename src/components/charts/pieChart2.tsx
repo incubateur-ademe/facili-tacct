@@ -1,9 +1,18 @@
 "use client";
 
+import { Loader } from "@/app/donnees-territoriales/loader";
 import { ResponsivePie } from "@/lib/nivo/pie";
 
-export const PieChart2 = props => {
-  const { PieData } = props;
+type Props = {
+  PieData: Array<{
+    color: string;
+    id: string;
+    label: string;
+    value: number;
+  }>;
+}
+
+export const PieChart2 = ({ PieData }: Props) => {
   return (
     <div>
       {PieData ? (
@@ -17,7 +26,7 @@ export const PieChart2 = props => {
             cornerRadius={3}
             activeOuterRadiusOffset={9}
             borderWidth={1}
-            colors={["#ACBBC1", "#FF8B00", "#68D273", "#f1e15b", "#28D1FF"]}
+            colors={["#F2F2F2", "#FFF4E7", "#68D273", "#FCF7CD", "#EEFBFF"]}
             borderColor={{
               from: "color",
               modifiers: [["darker", 0.3]],
@@ -26,7 +35,7 @@ export const PieChart2 = props => {
             //arcLabel={d => `${d.value}`}
             arcLabel={e => {
               let v = e.value.toFixed(0);
-              if (v != 0) {
+              if (Number(v) != 0) {
                 return v;
               } else return "";
             }}
@@ -75,7 +84,7 @@ export const PieChart2 = props => {
           />
         </div>
       ) : (
-        <h2>...graph loading</h2>
+        <Loader />
       )}
     </div>
   );
