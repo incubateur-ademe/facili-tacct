@@ -80,7 +80,7 @@ export const DensiteBati = (props: Props) => {
         </div>
       </GridCol>
     </div>
-    : <GraphDataNotFound epci_chosen={epci_chosen} />
+    : <GraphDataNotFound code={code} />
   }</>
 
   );

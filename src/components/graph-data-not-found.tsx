@@ -4,21 +4,11 @@ import Image from "next/image";
 
 
 interface Props {
-  epci_chosen: {
-    geometry: {
-      coordinates: number[][][][];
-      type: string;
-    };
-    properties: {
-      EPCI: string;
-      EPCI_CODE: number;
-    };
-    type: string;
-  } | undefined
+  code: string | undefined
 }
 
 
-export function GraphDataNotFound({ epci_chosen }: Props) {
+export function GraphDataNotFound({ code }: Props) {
   return (
     <div
       style={{
@@ -30,8 +20,8 @@ export function GraphDataNotFound({ epci_chosen }: Props) {
       }}
     >
       <GridCol lg={5}>
-        <h4>Données indisponible</h4>
-        <p>Dans l'EPCI {epci_chosen?.properties.EPCI}, Nous ne disposons pas de ce type de donnée. </p>
+        <h4>Données indisponibles</h4>
+        <p>Pour l'EPCI que vous avez renseigné (code SIREN: {code}), nous ne disposons pas de ce type de donnée. </p>
       </GridCol>
       <GridCol lg={6}>
         <Image src={GraphNotFound} alt='' width={0} height={0} style={{ width: '90%', height: 'auto' }}/>

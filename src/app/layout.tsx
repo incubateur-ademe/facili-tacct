@@ -17,11 +17,11 @@ import { Brand } from "../components/Brand";
 import { config } from "../config";
 import { defaultColorScheme } from "../defaultColorScheme";
 import { StartDsfr } from "../StartDsfr";
-import {
-  ConsentBannerAndConsentManagement,
-  FooterConsentManagementItem,
-  FooterPersonalDataPolicyItem,
-} from "../ui/consentManagement";
+// import {
+//   ConsentBannerAndConsentManagement,
+//   FooterConsentManagementItem,
+//   FooterPersonalDataPolicyItem,
+// } from "../ui/consentManagement";
 import styles from "./root.module.scss";
 import { sharedMetadata } from "./shared-metadata";
 
@@ -53,7 +53,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
       </head>
       <body>
         <DsfrProvider lang="fr">
-          <ConsentBannerAndConsentManagement />
+          {/* <ConsentBannerAndConsentManagement /> */}
           <div>
             <Header
               brandTop={<Brand />}
@@ -86,8 +86,8 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                   ...headerFooterDisplayItem,
                   iconId: "fr-icon-theme-fill",
                 },
-                <FooterConsentManagementItem key={0} />,
-                <FooterPersonalDataPolicyItem key={1} />,
+                // <FooterConsentManagementItem key={0} />,
+                // <FooterPersonalDataPolicyItem key={1} />,
                 // {
                 //   text: `Version ${config.appVersion}.${config.appVersionCommit.slice(0, 7)}`,
                 //   linkProps: {
