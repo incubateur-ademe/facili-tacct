@@ -18,76 +18,94 @@ import securiteIcon from "../../assets/icons/themes/securite_icon_teal.svg";
 import tourismeIcon from "../../assets/icons/themes/tourisme_icon_teal.svg";
 
 const thematiques = {
-  Aménagement: {
+  "Aménagement": {
     id: 0,
+    category: "Cadre de vie",
     icon: amenagementIcon,
   },
-  Bâtiment: {
+  "Bâtiment": {
     id: 1,
+    category: "Cadre de vie",
     icon: batimentIcon,
   },
   "Gestion de l'eau": {
     id: 2,
+    category: "Cadre de vie",
     icon: gestionEauIcon,
   },
   "Gestion des risques": {
     id: 3,
+    category: "Cadre de vie",
     icon: gestionRisqueIcon,
   },
   "Inconfort thermique": {
     id: 4,
+    category: "Cadre de vie",
     icon: inconfortIcon,
   },
-  Infrastructures: {
+  "Infrastructures": {
     id: 5,
+    category: "Cadre de vie",
     icon: infrastructureIcon,
   },
-  Mobilité: {
+  "Mobilité": {
     id: 6,
+    category: "Cadre de vie",
     icon: mobiliteIcon,
   },
-  Paysages: {
+  "Paysages": {
     id: 7,
+    category: "Cadre de vie",
     icon: paysageIcon,
   },
   "Qualité de l'air et de l'eau": {
     id: 8,
+    category: "Cadre de vie",
     icon: qualiteAirEauIcon,
   },
-  Santé: {
+  "Santé": {
     id: 9,
+    category: "Cadre de vie",
     icon: santeIcon,
   },
   "Sécurité (sinistralité)": {
     id: 10,
+    category: "Cadre de vie",
     icon: securiteIcon,
   },
-  Agriculture: {
+  "Agriculture": {
     id: 11,
+    category: "Ressources économiques locales",
     icon: agricultureIcon,
   },
   "Filière bois": {
     id: 12,
+    category: "Ressources économiques locales",
     icon: filiereBoisIcon,
   },
-  Tourisme: {
+  "Tourisme": {
     id: 13,
+    category: "Ressources économiques locales",
     icon: tourismeIcon,
   },
   "Écosystèmes et biodiversité": {
     id: 14,
+    category: "Ressources naturelles",
     icon: biodiversiteIcon,
   },
   "Ressources en eau": {
     id: 15,
+    category: "Ressources naturelles",
     icon: ressourcesEauIcon,
   },
-  Forêt: {
+  "Forêt": {
     id: 16,
+    category: "Ressources naturelles",
     icon: foretIcon,
   },
   "Espaces naturels": {
     id: 17,
+    category: "Ressources naturelles",
     icon: espacesNaturelsIcon,
   },
 };
