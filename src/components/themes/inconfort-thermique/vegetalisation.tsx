@@ -7,6 +7,7 @@ import { GridCol } from "@/dsfr/layout";
 
 import { getEPCI } from "./actions/epci";
 import { getVegetalisationFromEPCI } from "./actions/vegetalisation";
+import { GraphDataNotFound } from "@/components/graph-data-not-found";
 
 interface PieData {
   color: string;
@@ -82,40 +83,45 @@ export const Vegetalisation = (props: Props) => {
   }, [code]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        gap: "1em",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}
-    >
-      <GridCol lg={5}>
-        <h4>LE CHIFFRE</h4>
-        <p>
-          Dans l'EPCI {epci_chosen?.properties.EPCI}, {foret?.toFixed(1)}% du territoire est de la forêt ou des espaces
-          semi-naturels.
-        </p>
-        <h4>EXPLICATION</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis fermentum tortor. Sed pellentesque ultrices
-          justo id laoreet. Etiam dui augue, semper non eleifend eget, mollis sed erat. Praesent sollicitudin venenatis
-          placerat. Vivamus dignissim lorem nec mattis varius. Ut euismod placerat lacus, rutrum molestie leo ornare
-          vitae. Pellentesque at neque tristique, lobortis nisl quis, vestibulum enim. Vestibulum tempus venenatis dui
-          volutpat dignissim. Donec sit amet ante vel enim vestibulum placerat. Nunc volutpat urna in gravida volutpat.
-          Donec cursus massa mollis mi egestas suscipit.
-        </p>
-      </GridCol>
-      <GridCol lg={6}>
-        <div className="flex flex-col justify-end">
-          <p style={{ margin: "0 2em 0" }}>Répartition des différents types de sols (en ha) dans l'EPCI</p>
-          {PieData ? <PieChart2 PieData={PieData} /> : <Loader />}
+    <>
+    { epci_chosen ? 
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "1em",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <GridCol lg={5}>
+          <h4>LE CHIFFRE</h4>
           <p>
-            Source : <b>CORINE Land Cover</b>
+            Dans l'EPCI {epci_chosen?.properties.EPCI}, {foret?.toFixed(1)}% du territoire est de la forêt ou des espaces
+            semi-naturels.
           </p>
-        </div>
-      </GridCol>
-    </div>
+          <h4>EXPLICATION</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis fermentum tortor. Sed pellentesque ultrices
+            justo id laoreet. Etiam dui augue, semper non eleifend eget, mollis sed erat. Praesent sollicitudin venenatis
+            placerat. Vivamus dignissim lorem nec mattis varius. Ut euismod placerat lacus, rutrum molestie leo ornare
+            vitae. Pellentesque at neque tristique, lobortis nisl quis, vestibulum enim. Vestibulum tempus venenatis dui
+            volutpat dignissim. Donec sit amet ante vel enim vestibulum placerat. Nunc volutpat urna in gravida volutpat.
+            Donec cursus massa mollis mi egestas suscipit.
+          </p>
+        </GridCol>
+        <GridCol lg={6}>
+          <div className="flex flex-col justify-end">
+            <p style={{ margin: "0 2em 0" }}>Répartition des différents types de sols (en ha) dans l'EPCI</p>
+            {PieData ? <PieChart2 PieData={PieData} /> : <Loader />}
+            <p>
+              Source : <b>CORINE Land Cover</b>
+            </p>
+          </div>
+        </GridCol>
+      </div>
+      : <GraphDataNotFound code={code} />
+    }
+    </>
   );
 };
