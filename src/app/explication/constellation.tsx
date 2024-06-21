@@ -61,7 +61,7 @@ const Constellation = (props: Props) => {
   const mainnodes: any = [];
   const childnodes: any = [];
   const links: any = [];
-  const InconfortThermique = { id: "Inconfort Thermique" };
+  const InconfortThermique = { id: "Inconfort thermique" };
   const Sante = { id: "Santé" };
   const Tourisme = { id: "Tourisme" };
   const EspaceNaturel = { id: "Espaces naturels" };
@@ -70,7 +70,7 @@ const Constellation = (props: Props) => {
   const Amenagement = { id: "Aménagement" };
 
   const addMainNode = (node: any) => {
-    node.size = 70;
+    node.size = 80;
     node.color = "#000091";
     node.textColor = "#ececfe";
     mainnodes.push(node);
@@ -102,12 +102,12 @@ const Constellation = (props: Props) => {
   };
 
   addMainNode(InconfortThermique);
-  assembleChildNode(InconfortThermique, Sante, 40, "#D0DDFF");
-  assembleChildNode(InconfortThermique, Tourisme, 40, "#D0DDFF");
-  assembleChildNode(InconfortThermique, EspaceNaturel, 40, "#D0DDFF");
-  assembleChildNode(InconfortThermique, GestionEau, 40, "#D0DDFF");
-  assembleChildNode(InconfortThermique, Batiment, 40, "#D0DDFF");
-  assembleChildNode(InconfortThermique, Amenagement, 40, "#D0DDFF");
+  assembleChildNode(InconfortThermique, Sante, 40, "#EBF1FF");
+  assembleChildNode(InconfortThermique, Tourisme, 40, "#EBF1FF");
+  assembleChildNode(InconfortThermique, EspaceNaturel, 40, "#EBF1FF");
+  assembleChildNode(InconfortThermique, GestionEau, 40, "#EBF1FF");
+  assembleChildNode(InconfortThermique, Batiment, 40, "#EBF1FF");
+  assembleChildNode(InconfortThermique, Amenagement, 40, "#EBF1FF");
   const nodes = childnodes.concat(mainnodes);
   //console.log('nodes', nodes)
 
@@ -148,7 +148,7 @@ const Constellation = (props: Props) => {
       .attr("id", (node: any) => node.id)
       .attr("r", (node: any) => node.size)
       .attr("fill", (node: any) => node.color)
-      // .style("stroke", "#D0DDFF")
+      // .style("stroke", "#EBF1FF")
       // .style("stroke-width", 20)
       //.call(dragInteraction)
       .on("mouseover", function () {
@@ -157,15 +157,15 @@ const Constellation = (props: Props) => {
       .on("click", function () {
         const themeId = d3.select(this).attr("id");
         handleCircleSelect(selectedCircle as circle, themeId);
-        if (this.getAttribute("id") === "Inconfort Thermique") {
+        if (this.getAttribute("id") === "Inconfort thermique") {
           d3.selectAll("circle").attr("fill", (node: any) => node.color);
         } else {
-          if (this.getAttribute("fill") === "#D0DDFF") {
+          if (this.getAttribute("fill") === "#EBF1FF") {
             d3.selectAll("circle").attr("fill", (node: any) => node.color);
-            d3.select(this).attr("fill", "#FDC6BA");
+            d3.select(this).attr("fill", "#9580FF");
           } else {
             d3.selectAll("circle").attr("fill", (node: any) => node.color);
-            d3.select(this).attr("fill", "#D0DDFF");
+            d3.select(this).attr("fill", "#EBF1FF");
           }
         }
       });

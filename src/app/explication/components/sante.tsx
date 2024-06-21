@@ -18,7 +18,7 @@ const Sante = () => {
         <p>
           Lors de l'épisode de canicule de 2003, la surmortalité a été de 40 % plus élevée dans les petites et moyennes
           villes, 80 % plus élevée à Lyon, et 141 % plus élevée à Paris que dans le reste de la France (Source :
-          Vandentorren et al., 2004). [Lien Santé / Urbanisme].
+          Vandentorren et al., 2004).
         </p>
       </div>
     </div>
