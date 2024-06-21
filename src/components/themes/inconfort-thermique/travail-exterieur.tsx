@@ -7,6 +7,7 @@ import { GridCol } from "@/dsfr/layout";
 
 import { getEPCI } from "./actions/epci";
 import { getTravailExtFromEPCI } from "./actions/travail-exterieur";
+import { GraphDataNotFound } from "@/components/graph-data-not-found";
 
 interface GraphData {
   color: string;
@@ -49,7 +50,7 @@ function sumProperty (items: TravailExt[], prop: ("NA5AZ_sum" | "NA5BE_sum" | "N
 export const TravailExterieur = (props: Props) => {
   const { data, activeDataTab } = props;
   const searchParams = useSearchParams();
-  const code = searchParams.get("code");
+  const code = searchParams.get("code")!;
   const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
   const [agriculture, setAgriculture] = useState<number>();
   const [industries, setIndustries] = useState<number>();
@@ -117,37 +118,41 @@ export const TravailExterieur = (props: Props) => {
   }, [code]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        gap: "1em",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}
-    >
-      <GridCol lg={5}>
-        { agriculture && construction ? 
-          <div>
-            <h4>LE CHIFFRE</h4>
+    <>
+    {epci_chosen ? 
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "1em",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <GridCol lg={5}>
+          { agriculture && construction ? 
+            <div>
+              <h4>LE CHIFFRE</h4>
+              <p>
+                Dans l'EPCI {epci_chosen?.properties.EPCI}, la part des travailleurs en extérieur est de {travailExt?.toFixed(1)}%
+                dans la population. Cela correspond à {agriculture + construction} personnes.
+              </p>
+            </div>
+            : ""
+          }
+          <h4>EXPLICATION</h4>
+          <p>{data.find(el => el.titre === activeDataTab)?.donnee}</p>
+        </GridCol>
+        <GridCol lg={6}>
+          <div className="flex flex-col justify-end">
+            {graphData ? <PieChart1 graphData={graphData} /> : <Loader />}
             <p>
-              Dans l'EPCI {epci_chosen?.properties.EPCI}, la part des travailleurs en extérieur est de {travailExt?.toFixed(1)}%
-              dans la population. Cela correspond à {agriculture + construction} personnes.
+              Source : <b>Observatoire des territoires</b>
             </p>
           </div>
-          : ""
-        }
-        <h4>EXPLICATION</h4>
-        <p>{data.find(el => el.titre === activeDataTab)?.donnee}</p>
-      </GridCol>
-      <GridCol lg={6}>
-        <div className="flex flex-col justify-end">
-          {graphData ? <PieChart1 graphData={graphData} /> : <Loader />}
-          <p>
-            Source : <b>Observatoire des territoires</b>
-          </p>
-        </div>
-      </GridCol>
-    </div>
+        </GridCol>
+      </div>
+      : <GraphDataNotFound code={code} />}
+    </>
   );
 };

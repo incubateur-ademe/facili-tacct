@@ -18,6 +18,7 @@ type GraphData = {
 
 const LineChart1 = (props: Props) => {
   const { xData, yData } = props;
+
   const [children, setChildren] = useState<GraphData[]>([]);
   const tempChildren: GraphData[] = [];
   // console.log('xData', xData)

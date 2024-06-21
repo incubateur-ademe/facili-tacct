@@ -6,7 +6,7 @@
     "predev": "only-include-used-icons",
     "prebuild": "only-include-used-icons",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
-    "build": "cross-env NODE_OPTIONS=--inspect next build ",  
+    "build": "cross-env NODE_OPTIONS=--inspect next build ",
     "start": "next start",
     "lint": "next lint",
     "eslint": "eslint --fix ./src"
@@ -17,6 +17,7 @@
     "@emotion/styled": "^11.11.5",
     "@faker-js/faker": "^8.4.1",
     "@formkit/auto-animate": "^0.8.1",
+    "@incubateur-ademe/legal-pages-react": "^0.2.0",
     "@mui/material": "^5.15.16",
     "@next/mdx": "^14.0.3",
     "@nivo/bar": "^0.87.0",
