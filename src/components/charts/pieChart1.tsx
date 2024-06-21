@@ -15,7 +15,7 @@ type Props = {
 export const PieChart1 = ({ graphData }: Props) => {
   return (
     <div>
-      <p style={{ margin: "0 2em 0" }}>Part dans la population selon les catégories socio-professionnelles</p>
+      <p style={{ margin: "0 2em 0" }}>Part dans la population selon l'activité économique en 5 postes</p>
       {graphData.length != 0 ? (
         <div style={{ height: "500px", minWidth: "450px" }}>
           <ResponsivePie
