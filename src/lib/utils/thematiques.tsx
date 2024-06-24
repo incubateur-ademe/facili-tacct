@@ -20,22 +20,27 @@ import tourismeIcon from "../../assets/icons/themes/tourisme_icon_teal.svg";
 const thematiques = {
   "Aménagement": {
     id: 0,
-    category: "Cadre de vie",
+    category: "Regroupement 2",
     icon: amenagementIcon,
   },
   "Bâtiment": {
     id: 1,
-    category: "Cadre de vie",
+    category: "Regroupement 2",
     icon: batimentIcon,
   },
+  // "Développement économique": {
+  //   id: ,
+  //   category: "Regroupement 2",
+  //   icon: batimentIcon,
+  // },
   "Gestion de l'eau": {
     id: 2,
-    category: "Cadre de vie",
+    category: "Regroupement 2",
     icon: gestionEauIcon,
   },
   "Gestion des risques": {
     id: 3,
-    category: "Cadre de vie",
+    category: "Regroupement 2",
     icon: gestionRisqueIcon,
   },
   "Inconfort thermique": {
@@ -48,9 +53,9 @@ const thematiques = {
     category: "Cadre de vie",
     icon: infrastructureIcon,
   },
-  "Mobilité": {
+  "Mobilité/transport": {
     id: 6,
-    category: "Cadre de vie",
+    category: "Regroupement 2",
     icon: mobiliteIcon,
   },
   "Paysages": {

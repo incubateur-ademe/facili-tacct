@@ -112,7 +112,7 @@ export const Vegetalisation = (props: Props) => {
         </GridCol>
         <GridCol lg={6}>
           <div className="flex flex-col justify-end">
-            <p style={{ margin: "0 2em 0" }}>Répartition des différents types de sols (en ha) dans l'EPCI</p>
+            <p style={{ margin: "0 2em 0" }}><b>Répartition des différents types de sols (en ha) dans l'EPCI</b></p>
             {PieData ? <PieChart2 PieData={PieData} /> : <Loader />}
             <p>
               Source : <b>CORINE Land Cover</b>
