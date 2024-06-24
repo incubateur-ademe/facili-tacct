@@ -73,6 +73,23 @@ const ThematiquesComp = () => {
           ))}
         </div>
       </div>
+      <div className={styles.cardContainer}>
+        <h4>Regroupement .....</h4>
+        <div className={styles.cardWrapper}>
+          {Object.entries(thematiques).map((el, i) => (
+            el[1].category === "Regroupement 2" ?
+            <div
+              className={selectedCard === i ? styles.selectedCard : styles.unselectedCard}
+              key={i}
+              onClick={() => setSelectedCard(el[1].id)}
+            >
+              <Image alt="" src={el[1].icon} />
+              <h6>{el[0]}</h6>
+            </div>
+            : ""
+          ))}
+        </div>
+      </div>
       <div className={styles.bottom}>
         {selectedCard === 4 ? (
           <Button
