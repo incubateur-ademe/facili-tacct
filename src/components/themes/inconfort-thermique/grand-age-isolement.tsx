@@ -133,6 +133,7 @@ export const GrandAgeIsolement = (props: Props) => {
         </GridCol>
         <GridCol lg={6}>
           <div className="flex flex-col justify-end">
+            <p style={{ margin: "0 2em 0" }}><b>Évolution de la part de population de plus de 75 ans depuis 1968</b></p>
             {xData && yData.length ? <LineChart1 xData={xData} yData={yData} /> : <Loader />}
             <p style={{margin: "1em 0"}}>
               Source : <b>Observatoire des territoires</b>

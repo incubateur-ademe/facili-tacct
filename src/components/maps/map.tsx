@@ -6,6 +6,8 @@ import React, { useRef, useState } from "react";
 
 import { GeoJSON, MapContainer, TileLayer } from "@/lib/react-leaflet";
 
+import "./maps.scss";
+
 type CommunesTypes = {
   geometry: {
     coordinates: number[][][][];
@@ -133,7 +135,7 @@ const Map = (props: Props) => {
       this.bindPopup(`<div>${commune_name}</div><div>Densité du bâti : ${densite_bati}</div>`);
       this.openPopup();
     } else {
-      this.bindPopup(`<div>${commune_name}</div><div>Part des ménages en précarité : ${100 * ratio_precarite}%</div>`);
+      this.bindPopup(`<div>${commune_name}</div><div>Part des ménages en précarité : ${(100 * ratio_precarite).toFixed(0)}%</div>`);
     this.openPopup();
     }
     

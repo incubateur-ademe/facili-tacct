@@ -71,8 +71,8 @@ export const DensiteBati = (props: Props) => {
       </GridCol>
       <GridCol lg={6}>
         <div className="flex flex-col justify-end">
-          <p>Répartition de la densité du bâti par commune au sein de l'EPCI</p>
           <Legend data={"densite_bati"} />
+          <p><b>Répartition de la densité du bâti par commune au sein de l'EPCI</b></p>
           {epci_chosen && communes_chosen ? <Map epci={epci_chosen} communes={communes_chosen} data={"densite_bati"}/> : <Loader />}
           <p>
             Source : <b>INSEE</b>
