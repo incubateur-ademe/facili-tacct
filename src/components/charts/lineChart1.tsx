@@ -36,7 +36,6 @@ const LineChart1 = (props: Props) => {
 
   return (
     <div>
-      <p style={{ margin: "0 2em 0" }}><b>Évolution de la part de population de plus de 75 ans depuis 1968</b></p>
         <div style={{ height: "500px", minWidth: "600px" }}>
           <ResponsiveLine
             curve="monotoneX"
