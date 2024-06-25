@@ -7,14 +7,14 @@ import React, { useEffect, useRef, useState } from "react";
 
 interface Props {
   dimensions: {
-    height: number;
+    height: string | number;
     margin: {
       bottom: number;
       left: number;
       right: number;
       top: number;
     };
-    width: string;
+    width: string | number;
   };
   setSelected: React.Dispatch<React.SetStateAction<boolean[]>>;
   states: boolean[];
@@ -56,8 +56,8 @@ const Constellation = (props: Props) => {
   };
 
   const { width, height, margin } = dimensions;
-  const svgWidth = width + margin.left + margin.right;
-  const svgHeight = height + margin.top + margin.bottom;
+  const svgWidth = Number(width) + margin.left + margin.right;
+  const svgHeight = Number(height) + margin.top + margin.bottom;
   const mainnodes: any = [];
   const childnodes: any = [];
   const links: any = [];
@@ -70,7 +70,7 @@ const Constellation = (props: Props) => {
   const Amenagement = { id: "Aménagement" };
 
   const addMainNode = (node: any) => {
-    node.size = 80;
+    node.size = 90;
     node.color = "#000091";
     node.textColor = "#ececfe";
     mainnodes.push(node);
@@ -115,10 +115,8 @@ const Constellation = (props: Props) => {
     const svgEl = d3.select(svgRef.current);
     svgEl.selectAll("*").remove(); // Clear svg content before adding new elements
     const svg = svgEl.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
-    const width = 600;
-    const height = 450;
-    const centerX = width / 2;
-    const centerY = height / 2;
+    const centerX = svgWidth / 2;
+    const centerY = svgHeight / 2;
     const simulation = d3
       .forceSimulation(nodes)
       .force("charge", d3.forceManyBody().strength(-500))
