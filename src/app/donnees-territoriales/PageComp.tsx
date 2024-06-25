@@ -13,7 +13,6 @@ import { FragiliteEconomique } from "@/components/themes/inconfort-thermique/fra
 import { GrandAgeIsolement } from "@/components/themes/inconfort-thermique/grand-age-isolement";
 import { TravailExterieur } from "@/components/themes/inconfort-thermique/travail-exterieur";
 import { Vegetalisation } from "@/components/themes/inconfort-thermique/vegetalisation";
-import { GraphDataNotFound } from "@/components/graph-data-not-found";
 
 import styles from "./donnees.module.scss";
 
