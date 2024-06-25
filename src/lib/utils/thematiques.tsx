@@ -18,12 +18,12 @@ import securiteIcon from "../../assets/icons/themes/securite_icon_teal.svg";
 import tourismeIcon from "../../assets/icons/themes/tourisme_icon_teal.svg";
 
 const thematiques = {
-  "Aménagement": {
+  Aménagement: {
     id: 0,
     category: "Regroupement 2",
     icon: amenagementIcon,
   },
-  "Bâtiment": {
+  Bâtiment: {
     id: 1,
     category: "Regroupement 2",
     icon: batimentIcon,
@@ -48,7 +48,7 @@ const thematiques = {
     category: "Cadre de vie",
     icon: inconfortIcon,
   },
-  "Infrastructures": {
+  Infrastructures: {
     id: 5,
     category: "Cadre de vie",
     icon: infrastructureIcon,
@@ -58,7 +58,7 @@ const thematiques = {
     category: "Regroupement 2",
     icon: mobiliteIcon,
   },
-  "Paysages": {
+  Paysages: {
     id: 7,
     category: "Cadre de vie",
     icon: paysageIcon,
@@ -68,7 +68,7 @@ const thematiques = {
     category: "Cadre de vie",
     icon: qualiteAirEauIcon,
   },
-  "Santé": {
+  Santé: {
     id: 9,
     category: "Cadre de vie",
     icon: santeIcon,
@@ -78,7 +78,7 @@ const thematiques = {
     category: "Cadre de vie",
     icon: securiteIcon,
   },
-  "Agriculture": {
+  Agriculture: {
     id: 11,
     category: "Ressources économiques locales",
     icon: agricultureIcon,
@@ -88,7 +88,7 @@ const thematiques = {
     category: "Ressources économiques locales",
     icon: filiereBoisIcon,
   },
-  "Tourisme": {
+  Tourisme: {
     id: 13,
     category: "Ressources économiques locales",
     icon: tourismeIcon,
@@ -103,7 +103,7 @@ const thematiques = {
     category: "Ressources naturelles",
     icon: ressourcesEauIcon,
   },
-  "Forêt": {
+  Forêt: {
     id: 16,
     category: "Ressources naturelles",
     icon: foretIcon,

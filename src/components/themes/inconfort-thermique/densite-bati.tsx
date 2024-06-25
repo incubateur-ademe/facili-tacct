@@ -1,13 +1,14 @@
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
-import { GridCol } from "@/dsfr/layout";
-import { Suspense, useEffect, useState } from "react";
+import { Loader } from "@/app/donnees-territoriales/loader";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
-import { getEPCI } from "./actions/epci";
-import { getCommunesFromEPCI } from "./actions/commune";
 import Legend from "@/components/maps/legend";
 import Map from "@/components/maps/map";
-import { Loader } from "@/app/donnees-territoriales/loader";
+import { GridCol } from "@/dsfr/layout";
+
+import { getCommunesFromEPCI } from "./actions/commune";
+import { getEPCI } from "./actions/epci";
 
 interface Props {
   activeDataTab: string;
@@ -28,7 +29,7 @@ export const DensiteBati = (props: Props) => {
   const code = searchParams.get("code")!;
   const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
   const [communes_chosen, setCommunes_chosen] = useState<CommunesTypes[]>();
-  const densite_epci = communes_chosen?.map((el, i) => el.properties.densite_bati)
+  const densite_epci = communes_chosen?.map((el, i) => el.properties.densite_bati);
 
   useEffect(() => {
     void (async () => {
@@ -43,45 +44,53 @@ export const DensiteBati = (props: Props) => {
 
   return (
     <>
-    {epci_chosen ? 
-      <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        gap: "1em",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}
-    >
-      <GridCol lg={5}>
-        <h4>LE CHIFFRE</h4>
-        {densite_epci ? 
-          <p>Dans l'EPCI {epci_chosen?.properties.EPCI}, la densité moyenne du bâtiment est de {average(densite_epci).toFixed(2)}.</p>
-          : ""
-        }
-        <h4>EXPLICATION</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis fermentum tortor. Sed pellentesque ultrices
-          justo id laoreet. Etiam dui augue, semper non eleifend eget, mollis sed erat. Praesent sollicitudin venenatis
-          placerat. Vivamus dignissim lorem nec mattis varius. Ut euismod placerat lacus, rutrum molestie leo ornare
-          vitae. Pellentesque at neque tristique, lobortis nisl quis, vestibulum enim. Vestibulum tempus venenatis dui
-          volutpat dignissim. Donec sit amet ante vel enim vestibulum placerat. Nunc volutpat urna in gravida volutpat.
-          Donec cursus massa mollis mi egestas suscipit.
-        </p>
-      </GridCol>
-      <GridCol lg={6}>
-        <div className="flex flex-col justify-end">
-          <Legend data={"densite_bati"} />
-          <p><b>Répartition de la densité du bâti par commune au sein de l'EPCI</b></p>
-          {epci_chosen && communes_chosen ? <Map epci={epci_chosen} communes={communes_chosen} data={"densite_bati"}/> : <Loader />}
-          <p>
-            Source : <b>INSEE</b>
-          </p>
+      {epci_chosen ? (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "1em",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <GridCol lg={4}>
+            <h4>LE CHIFFRE</h4>
+            {densite_epci ? (
+              <p>
+                Dans l'EPCI {epci_chosen?.properties.EPCI}, la densité moyenne du bâtiment est de{" "}
+                {average(densite_epci).toFixed(2)}.
+              </p>
+            ) : (
+              ""
+            )}
+            <h4>DÉFINITION</h4>
+            <p>
+              Il existe de nombreux indicateurs pour mesurer la densité du bâti.
+              La formule de calcul choisit ici est la suivante : <br></br><br></br>
+              <b>(surface au sol de la construction x hauteur du bâtiment) / surface totale de la commune</b>
+            </p>
+          </GridCol>
+          <GridCol lg={7}>
+            <div className="flex flex-col justify-end">
+              <Legend data={"densite_bati"} />
+              <p>
+                <b>Répartition de la densité du bâti par commune au sein de l'EPCI</b>
+              </p>
+              {epci_chosen && communes_chosen ? (
+                <Map epci={epci_chosen} communes={communes_chosen} data={"densite_bati"} />
+              ) : (
+                <Loader />
+              )}
+              <p>
+                Source : <b>Base de Données Nationale Des Bâtiments – BDNB</b>
+              </p>
+            </div>
+          </GridCol>
         </div>
-      </GridCol>
-    </div>
-    : <GraphDataNotFound code={code} />
-  }</>
-
+      ) : (
+        <GraphDataNotFound code={code} />
+      )}
+    </>
   );
 };

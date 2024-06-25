@@ -103,7 +103,7 @@ export const AgeBati = (props: Props) => {
             alignItems: "center",
           }}
         >
-          <GridCol lg={5}>
+          <GridCol lg={4}>
             <h4>LE CHIFFRE</h4>
             <p>
               Dans l'EPCI {epci_chosen?.properties.EPCI}, {constructionBefore2006?.toFixed(1)}% des résidences
@@ -117,7 +117,7 @@ export const AgeBati = (props: Props) => {
               approximation.
             </p>
           </GridCol>
-          <GridCol lg={6}>
+          <GridCol lg={7}>
             <div className="flex flex-col justify-end">
               <p style={{ margin: "0 2em 0" }}>
                 <b>Périodes de construction des bâtiments en France</b>
