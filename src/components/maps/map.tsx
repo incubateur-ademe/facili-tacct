@@ -1,12 +1,11 @@
 "use client";
 
 import "leaflet/dist/leaflet.css";
+import "./maps.scss";
 
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { GeoJSON, MapContainer, TileLayer } from "@/lib/react-leaflet";
-
-import "./maps.scss";
 
 type CommunesTypes = {
   geometry: {
@@ -53,18 +52,16 @@ type Style = {
 
 interface Props {
   communes: any;
+  data: string;
   epci: any;
-  data: string
 }
-
-
 
 type GetColor = (d: number) => string;
 
 const Map = (props: Props) => {
   const { epci, communes, data } = props;
 
-  const mapRef = useRef<any>(null); //REPLACE
+  const mapRef = useRef<any>(null); //REPLACE L.Map | null
 
   const data1: GeoJSON.Feature = epci;
   const data2: GeoJSON.Feature = communes;
@@ -75,6 +72,17 @@ const Map = (props: Props) => {
   const [lat, setLat] = useState(2.227395691566266);
   const [lng, setLng] = useState(48.69683698795179);
 
+  // const getCentroid = function (arr: number[][][]) {
+  //   //REPLACE
+  //   return arr.reduce(
+  //     function (x: number[], y: number[]) {
+  //       return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
+  //     },
+  //     [0, 0],
+  //   );
+  // };
+  // const centerCoord: number[][] = getCentroid(epci?.geometry.coordinates[0]);
+
   const getCentroid = function (arr: any) {
     //REPLACE
     return arr.reduce(
@@ -84,13 +92,12 @@ const Map = (props: Props) => {
       [0, 0],
     );
   };
-  const centerCoord: number[] = getCentroid(epci?.geometry.coordinates[0]);
+  const centerCoord: any = getCentroid(epci?.geometry.coordinates[0]);
 
   function getColor(d: number) {
     if (data === "densite_bati") {
       return d > 0.2 ? "#FF5E54" : d > 0.1 ? "#FFBD00" : d > 0.05 ? "#FFFA6A" : d > 0 ? "#D5F4A3" : "#5CFF54";
-    }
-    else return d > 0.3 ? "#FF5E54" : d > 0.2 ? "#FFBD00" : d > 0.1 ? "#FFFA6A" : d > 0 ? "#D5F4A3" : "#5CFF54";
+    } else return d > 0.3 ? "#FF5E54" : d > 0.2 ? "#FFBD00" : d > 0.1 ? "#FFFA6A" : d > 0 ? "#D5F4A3" : "#5CFF54";
   }
 
   function style(feature: any) {
@@ -135,15 +142,16 @@ const Map = (props: Props) => {
       this.bindPopup(`<div>${commune_name}</div><div>Densité du bâti : ${densite_bati}</div>`);
       this.openPopup();
     } else {
-      this.bindPopup(`<div>${commune_name}</div><div>Part des ménages en précarité : ${(100 * ratio_precarite).toFixed(0)}%</div>`);
-    this.openPopup();
+      this.bindPopup(
+        `<div>${commune_name}</div><div>Part des ménages en précarité : ${(100 * ratio_precarite).toFixed(0)}%</div>`,
+      );
+      this.openPopup();
     }
-    
   }
 
   //make style after hover disappear
   function mouseOutHandler(this: any, e: any) {
-    mapRef.current.resetStyle(e.target);
+    mapRef.current?.resetStyle(e.target);
     this.closePopup(e.target);
   }
 
@@ -168,7 +176,7 @@ const Map = (props: Props) => {
       center={[centerCoord[1], centerCoord[0]]}
       zoom={10}
       ref={mapRef}
-      style={{ height: "500px", width: "500px" }}
+      style={{ height: "500px", width: "100%" }}
       attributionControl={false}
       zoomControl={false}
     >
