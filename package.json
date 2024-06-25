@@ -11,6 +11,7 @@
     "lint": "next lint",
     "eslint": "eslint --fix ./src"
   },
+
   "dependencies": {
     "@codegouvfr/react-dsfr": "^1.9.10",
     "@emotion/react": "^11.11.4",

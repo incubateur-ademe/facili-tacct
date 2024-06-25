@@ -1,13 +1,14 @@
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Loader } from "@/app/donnees-territoriales/loader";
-import { PieChart2 } from "@/components/charts/pieChart2";
+// import { PieChart2 } from "@/components/charts/pieChart2";
+import VegetalisationMap from "@/assets/images/vegetalisation-map.png";
+import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { GridCol } from "@/dsfr/layout";
 
 import { getEPCI } from "./actions/epci";
 import { getVegetalisationFromEPCI } from "./actions/vegetalisation";
-import { GraphDataNotFound } from "@/components/graph-data-not-found";
 
 interface PieData {
   color: string;
@@ -28,6 +29,8 @@ interface Props {
   // data_communes: DataCommunes;
   // data_epci: DataEPCI;
 }
+
+const GraphImage = VegetalisationMap as HTMLImageElement;
 
 export const Vegetalisation = (props: Props) => {
   const { data, activeDataTab } = props;
@@ -84,44 +87,54 @@ export const Vegetalisation = (props: Props) => {
 
   return (
     <>
-    { epci_chosen ? 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: "1em",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <GridCol lg={5}>
-          <h4>LE CHIFFRE</h4>
-          <p>
-            Dans l'EPCI {epci_chosen?.properties.EPCI}, {foret?.toFixed(1)}% du territoire est de la forêt ou des espaces
-            semi-naturels.
-          </p>
-          <h4>EXPLICATION</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis fermentum tortor. Sed pellentesque ultrices
-            justo id laoreet. Etiam dui augue, semper non eleifend eget, mollis sed erat. Praesent sollicitudin venenatis
-            placerat. Vivamus dignissim lorem nec mattis varius. Ut euismod placerat lacus, rutrum molestie leo ornare
-            vitae. Pellentesque at neque tristique, lobortis nisl quis, vestibulum enim. Vestibulum tempus venenatis dui
-            volutpat dignissim. Donec sit amet ante vel enim vestibulum placerat. Nunc volutpat urna in gravida volutpat.
-            Donec cursus massa mollis mi egestas suscipit.
-          </p>
-        </GridCol>
-        <GridCol lg={6}>
-          <div className="flex flex-col justify-end">
-            <p style={{ margin: "0 2em 0" }}><b>Répartition des différents types de sols (en ha) dans l'EPCI</b></p>
-            {PieData ? <PieChart2 PieData={PieData} /> : <Loader />}
+      {epci_chosen ? (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "1em",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <GridCol lg={4}>
+            <h4>LE CHIFFRE</h4>
             <p>
-              Source : <b>CORINE Land Cover</b>
+              Dans l'EPCI {epci_chosen?.properties.EPCI}, {foret?.toFixed(1)}% du territoire est de la forêt ou des
+              espaces semi-naturels.
             </p>
-          </div>
-        </GridCol>
-      </div>
-      : <GraphDataNotFound code={code} />
-    }
+            <h4>EXPLICATION</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis fermentum tortor. Sed pellentesque
+              ultrices justo id laoreet. Etiam dui augue, semper non eleifend eget, mollis sed erat. Praesent
+              sollicitudin venenatis placerat. Vivamus dignissim lorem nec mattis varius. Ut euismod placerat lacus,
+              rutrum molestie leo ornare vitae. Pellentesque at neque tristique, lobortis nisl quis, vestibulum enim.
+              Vestibulum tempus venenatis dui volutpat dignissim. Donec sit amet ante vel enim vestibulum placerat. Nunc
+              volutpat urna in gravida volutpat. Donec cursus massa mollis mi egestas suscipit.
+            </p>
+          </GridCol>
+          <GridCol lg={7}>
+            <div className="flex flex-col justify-end">
+              <p style={{ margin: "0 0 1em", textAlign: "center" }}>
+                <b>Types de sols dans la commune de Montpellier</b>
+              </p>
+              <Image
+                src={GraphImage}
+                alt="carte de la vegatalisation de Montpellier"
+                width={0}
+                height={0}
+                style={{ width: "90%", height: "auto" }}
+              />
+              {/* {PieData ? <PieChart2 PieData={PieData} /> : <Loader />} */}
+              <p style={{ margin: "1em 0em 0em" }}>
+                Source : <b>CORINE Land Cover</b>
+              </p>
+            </div>
+          </GridCol>
+        </div>
+      ) : (
+        <GraphDataNotFound code={code} />
+      )}
     </>
   );
 };
