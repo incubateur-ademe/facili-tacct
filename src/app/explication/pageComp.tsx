@@ -37,9 +37,9 @@ const ExplicationComp = () => {
   };
 
   const dimensions = {
-    width: "100dvw",
+    width: 700,
     height: 500,
-    margin: { top: 0, right: 0, bottom: 0, left: 0 },
+    margin: { top: 16, right: 16, bottom: 16, left: 16 },
   };
 
   return (

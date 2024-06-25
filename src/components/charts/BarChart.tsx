@@ -10,11 +10,11 @@ type Props = {
     "Votre EPCIColor": string;
     periode: string;
   }>;
-}
+};
 
 const BarChart = ({ chartData }: Props) => {
   return (
-    <div style={{ height: "500px", width: "500px" }}>
+    <div style={{ height: "500px", width: "100%" }}>
       <ResponsiveBar
         data={chartData}
         keys={["Votre EPCI", "France"]}

@@ -10,7 +10,7 @@ type Props = {
     label: string;
     value: number | undefined;
   }>;
-}
+};
 
 export const PieChart1 = ({ graphData }: Props) => {
   return (
