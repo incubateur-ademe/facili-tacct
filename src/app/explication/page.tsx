@@ -4,7 +4,7 @@ import { StepperComp } from "@/components/Stepper";
 
 import { Box, GridCol } from "../../dsfr/server";
 import styles from "./explication.module.scss";
-import ExplicationComp from "./pageComp";
+import { ExplicationComp } from "./pageComp";
 
 export const metadata: Metadata = {
   title: "Actions",
