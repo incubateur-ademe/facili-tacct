@@ -25,15 +25,15 @@
     }
 }
 .button {
-    background-color: #0000913b;
+    background-color: #E3E3FD;
     border-radius: 25px;
     margin: 0 0.5em;
     padding: 0.2em 1em;
-    color: #eeeeee;
+    color: #000000;
     &:hover {
         //color: black;
-        background-color: #0000913b !important;
-        color: #eeeeee;
+        background-color: #d0d0ff !important;
+        color: #000000;
     }
 }
 

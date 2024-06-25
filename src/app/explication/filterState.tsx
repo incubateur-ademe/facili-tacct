@@ -15,15 +15,21 @@ const FilterState = (props: Props) => {
 
   return (
     <div className={styles.explicationText}>
-      {
-        states[0] ? <Batiment /> 
-        : states[1] ? <Tourisme /> 
-        : states[2] ? <Sante /> 
-        : states[3] ? <Amenagement /> 
-        : states[4] ? <EspacesNaturels /> 
-        : states[5] ? <GestionEau /> 
-        : <h3>Sélectionnez une thématique pour découvrir comment elle est liée à l'inconfort thermique</h3>
-      }
+      {states[0] ? (
+        <Batiment />
+      ) : states[1] ? (
+        <Tourisme />
+      ) : states[2] ? (
+        <Sante />
+      ) : states[3] ? (
+        <Amenagement />
+      ) : states[4] ? (
+        <EspacesNaturels />
+      ) : states[5] ? (
+        <GestionEau />
+      ) : (
+        <h3>Sélectionnez une thématique pour découvrir comment elle est liée à l'inconfort thermique</h3>
+      )}
     </div>
   );
 };
