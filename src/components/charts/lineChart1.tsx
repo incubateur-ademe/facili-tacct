@@ -26,8 +26,8 @@ const LineChart1 = (props: Props) => {
   useEffect(() => {
     xData.forEach((item, id) => {
       const dict: GraphData = {
-        "x": item,
-        "y": yData.at(id),
+        x: item,
+        y: yData.at(id),
       };
       tempChildren.push(dict);
       setChildren(tempChildren);
@@ -36,49 +36,49 @@ const LineChart1 = (props: Props) => {
 
   return (
     <div>
-        <div style={{ height: "500px", minWidth: "600px" }}>
-          <ResponsiveLine
-            curve="monotoneX"
-            data={[
-              {
-                "id": "Première courbe évolution",
-                "color": "hsl(284, 70%, 50%)",
-                "data": children
-              },
-            ]}
-            yScale={{
-              type: "linear",
-              min: Math.min(...yData) - 1,
-              max: Math.max(...yData) + 1,
-            }}
-            margin={{
-              top: 50,
-              right: 130,
-              bottom: 50,
-              left: 60,
-            }}
-            axisTop={null}
-            axisRight={null}
-            axisBottom={{
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: 'Années de rencensement',
-                legendOffset: 36,
-                legendPosition: 'middle',
-                truncateTickAt: 0
-            }}
-            axisLeft={{
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: 'Pourcentage (%)',
-                legendOffset: -40,
-                legendPosition: 'middle',
-                truncateTickAt: 0
-            }}
-          />
-        </div>
+      <div style={{ height: "500px", width: "110%" }}>
+        <ResponsiveLine
+          curve="monotoneX"
+          data={[
+            {
+              id: "Première courbe évolution",
+              color: "hsl(284, 70%, 50%)",
+              data: children,
+            },
+          ]}
+          yScale={{
+            type: "linear",
+            min: Math.min(...yData) - 1,
+            max: Math.max(...yData) + 1,
+          }}
+          margin={{
+            top: 50,
+            right: 130,
+            bottom: 50,
+            left: 60,
+          }}
+          axisTop={null}
+          axisRight={null}
+          axisBottom={{
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: "Années de rencensement",
+            legendOffset: 36,
+            legendPosition: "middle",
+            truncateTickAt: 0,
+          }}
+          axisLeft={{
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: "Pourcentage (%)",
+            legendOffset: -40,
+            legendPosition: "middle",
+            truncateTickAt: 0,
+          }}
+        />
+      </div>
     </div>
   );
 };

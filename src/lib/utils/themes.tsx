@@ -5,16 +5,14 @@ const themes = {
       titre: "Grand âge et isolement",
       facteur_sensibilite: "Population",
       risque: "Élevé",
-      donnee:
-        "",
+      donnee: "",
     },
     {
       id: 1,
       titre: "Fragilité économique",
       facteur_sensibilite: "Population",
       risque: "Élevé",
-      donnee:
-        "",
+      donnee: "",
     },
     {
       id: 2,
