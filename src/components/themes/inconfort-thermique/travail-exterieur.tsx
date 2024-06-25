@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 
 import { Loader } from "@/app/donnees-territoriales/loader";
 import { PieChart1 } from "@/components/charts/pieChart1";
+import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { GridCol } from "@/dsfr/layout";
 
 import { getEPCI } from "./actions/epci";
 import { getTravailExtFromEPCI } from "./actions/travail-exterieur";
-import { GraphDataNotFound } from "@/components/graph-data-not-found";
 
 interface GraphData {
   color: string;
@@ -28,24 +28,23 @@ interface Props {
 }
 
 interface TravailExt {
-  "": number,
-  "CODGEO": number,
-  "EPCI - Métropole": number,
-  "Libellé de l'EPCI / Métropole": string,
-  "LIBGEO": string,
-  "NA5AZ_sum": number,
-  "NA5BE_sum": number,
-  "NA5FZ_sum": number,
-  "NA5GU_sum": number,
-  "NA5OQ_sum": number
+  "": number;
+  CODGEO: number;
+  "EPCI - Métropole": number;
+  LIBGEO: string;
+  "Libellé de l'EPCI / Métropole": string;
+  NA5AZ_sum: number;
+  NA5BE_sum: number;
+  NA5FZ_sum: number;
+  NA5GU_sum: number;
+  NA5OQ_sum: number;
 }
 
-function sumProperty (items: TravailExt[], prop: ("NA5AZ_sum" | "NA5BE_sum" | "NA5FZ_sum" | "NA5GU_sum" | "NA5OQ_sum")) {
-  return items.reduce(function(a, b) {
-      return a + b[prop];
+function sumProperty(items: TravailExt[], prop: "NA5AZ_sum" | "NA5BE_sum" | "NA5FZ_sum" | "NA5GU_sum" | "NA5OQ_sum") {
+  return items.reduce(function (a, b) {
+    return a + b[prop];
   }, 0);
-};
-
+}
 
 export const TravailExterieur = (props: Props) => {
   const { data, activeDataTab } = props;
@@ -64,22 +63,24 @@ export const TravailExterieur = (props: Props) => {
     void (async () => {
       const dataTravailExtRows = await getTravailExtFromEPCI(Number(code));
       if (Object.keys(dataTravailExtRows).length) {
-        const sumAgriculture = sumProperty(Object.values(dataTravailExtRows), 'NA5AZ_sum');
+        const sumAgriculture = sumProperty(Object.values(dataTravailExtRows), "NA5AZ_sum");
         setAgriculture(sumAgriculture);
-        const sumIndustries = sumProperty(Object.values(dataTravailExtRows), 'NA5BE_sum');
+        const sumIndustries = sumProperty(Object.values(dataTravailExtRows), "NA5BE_sum");
         setIndustries(sumIndustries);
-        const sumConstruction = sumProperty(Object.values(dataTravailExtRows), 'NA5FZ_sum');
+        const sumConstruction = sumProperty(Object.values(dataTravailExtRows), "NA5FZ_sum");
         setConstruction(sumConstruction);
-        const sumCommerce = sumProperty(Object.values(dataTravailExtRows), 'NA5GU_sum');
+        const sumCommerce = sumProperty(Object.values(dataTravailExtRows), "NA5GU_sum");
         setCommerce(sumCommerce);
-        const sumAdministration = sumProperty(Object.values(dataTravailExtRows), 'NA5OQ_sum');
+        const sumAdministration = sumProperty(Object.values(dataTravailExtRows), "NA5OQ_sum");
         setAdministration(sumAdministration);
         // const x = Object.keys(dataTravailExtRows).slice(3, 10);
         const y = Object.values(dataTravailExtRows).slice(3, 10);
         //const sum: number = Number(y.reduce((partialSum: number, a: number) => partialSum + a, 0));
 
-        setTavailExt(100 * (sumAgriculture + sumConstruction) / (
-          sumAdministration + sumCommerce + sumConstruction + sumIndustries + sumAgriculture))
+        setTavailExt(
+          (100 * (sumAgriculture + sumConstruction)) /
+            (sumAdministration + sumCommerce + sumConstruction + sumIndustries + sumAgriculture),
+        );
         setGraphData([
           {
             id: "Agriculture, sylviculture et pêche",
@@ -119,41 +120,47 @@ export const TravailExterieur = (props: Props) => {
 
   return (
     <>
-    {epci_chosen ? 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: "1em",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <GridCol lg={5}>
-          { agriculture && construction ? 
-            <div>
-              <h4>LE CHIFFRE</h4>
+      {epci_chosen ? (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "1em",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <GridCol lg={5}>
+            {agriculture && construction ? (
+              <div>
+                <h4>LE CHIFFRE</h4>
+                <p>
+                  Dans l'EPCI {epci_chosen?.properties.EPCI}, la part des travailleurs en extérieur est de{" "}
+                  {travailExt?.toFixed(1)}% dans la population. Cela correspond à {agriculture + construction}{" "}
+                  personnes.
+                </p>
+              </div>
+            ) : (
+              ""
+            )}
+            <h4>EXPLICATION</h4>
+            <p>{data.find(el => el.titre === activeDataTab)?.donnee}</p>
+          </GridCol>
+          <GridCol lg={6}>
+            <div className="flex flex-col justify-end">
+              <p style={{ margin: "0 2em 0" }}>
+                <b>Part dans la population selon les catégories socio-professionnelles</b>
+              </p>
+              {graphData ? <PieChart1 graphData={graphData} /> : <Loader />}
               <p>
-                Dans l'EPCI {epci_chosen?.properties.EPCI}, la part des travailleurs en extérieur est de {travailExt?.toFixed(1)}%
-                dans la population. Cela correspond à {agriculture + construction} personnes.
+                Source : <b>Observatoire des territoires</b>
               </p>
             </div>
-            : ""
-          }
-          <h4>EXPLICATION</h4>
-          <p>{data.find(el => el.titre === activeDataTab)?.donnee}</p>
-        </GridCol>
-        <GridCol lg={6}>
-          <div className="flex flex-col justify-end">
-            <p style={{ margin: "0 2em 0" }}><b>Part dans la population selon les catégories socio-professionnelles</b></p>
-            {graphData ? <PieChart1 graphData={graphData} /> : <Loader />}
-            <p>
-              Source : <b>Observatoire des territoires</b>
-            </p>
-          </div>
-        </GridCol>
-      </div>
-      : <GraphDataNotFound code={code} />}
+          </GridCol>
+        </div>
+      ) : (
+        <GraphDataNotFound code={code} />
+      )}
     </>
   );
 };
