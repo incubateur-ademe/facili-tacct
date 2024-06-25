@@ -2,6 +2,9 @@
   "name": "dev",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "predev": "only-include-used-icons",
     "prebuild": "only-include-used-icons",
