@@ -17,7 +17,7 @@ const Explication = () => {
       <div className={styles.container}>
         <Box style={{ backgroundColor: "white" }}>
           <GridCol lg={6} offset={1}>
-            <StepperComp title="Arguments pour convaincre" stepCount={4} currentStep={3} />
+            <StepperComp title="Partenaires experts" stepCount={4} currentStep={3} />
           </GridCol>
         </Box>
         <ExplicationComp />
