@@ -32,6 +32,7 @@ const Page = () => {
           <StepperComp title="Découverte de la donnée territoriale" stepCount={4} currentStep={2} />
         </GridCol>
       </Box>
+      <p style={{margin: "1em 1em 0"}}>Explorez des leviers d'action possibles en réduisant la sensibilité de votre territoire à l'inconfort thermique</p>
       <div className={styles.container}>
         <DynamicPageComp data={theme} />
       </div>
