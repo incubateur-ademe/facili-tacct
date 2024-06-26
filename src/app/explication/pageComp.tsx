@@ -10,7 +10,7 @@ import Constellation from "./constellation";
 import styles from "./explication.module.scss";
 import FilterState from "./filterState";
 
-const ExplicationComp = () => {
+export const ExplicationComp = () => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
   const themeUrl = searchParams.get("thematique");
@@ -71,5 +71,3 @@ const ExplicationComp = () => {
     </div>
   );
 };
-
-export default ExplicationComp;
