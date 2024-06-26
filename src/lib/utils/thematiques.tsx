@@ -20,27 +20,27 @@ import tourismeIcon from "../../assets/icons/themes/tourisme_icon_teal.svg";
 const thematiques = {
   Aménagement: {
     id: 0,
-    category: "Regroupement 2",
+    category: "Compétences",
     icon: amenagementIcon,
   },
   Bâtiment: {
     id: 1,
-    category: "Regroupement 2",
+    category: "Compétences",
     icon: batimentIcon,
   },
   // "Développement économique": {
   //   id: ,
-  //   category: "Regroupement 2",
+  //   category: "Compétences",
   //   icon: batimentIcon,
   // },
   "Gestion de l'eau": {
     id: 2,
-    category: "Regroupement 2",
+    category: "Compétences",
     icon: gestionEauIcon,
   },
   "Gestion des risques": {
     id: 3,
-    category: "Regroupement 2",
+    category: "Compétences",
     icon: gestionRisqueIcon,
   },
   "Inconfort thermique": {
@@ -53,9 +53,9 @@ const thematiques = {
     category: "Cadre de vie",
     icon: infrastructureIcon,
   },
-  "Mobilité/transport": {
+  "Mobilité / transport": {
     id: 6,
-    category: "Regroupement 2",
+    category: "Compétences",
     icon: mobiliteIcon,
   },
   Paysages: {
@@ -63,20 +63,10 @@ const thematiques = {
     category: "Cadre de vie",
     icon: paysageIcon,
   },
-  "Qualité de l'air et de l'eau": {
-    id: 8,
-    category: "Cadre de vie",
-    icon: qualiteAirEauIcon,
-  },
   Santé: {
     id: 9,
     category: "Cadre de vie",
     icon: santeIcon,
-  },
-  "Sécurité (sinistralité)": {
-    id: 10,
-    category: "Cadre de vie",
-    icon: securiteIcon,
   },
   Agriculture: {
     id: 11,
