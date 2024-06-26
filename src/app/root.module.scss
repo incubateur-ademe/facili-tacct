@@ -42,14 +42,13 @@
 .card {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 2rem;
     height: 100%;
-
     background-color: white !important;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 4px;
     h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         line-height: 1.3em;
         font-weight: 700;
         margin: 0;
@@ -58,11 +57,12 @@
 .constellationWrapper {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
 }
 .constellationText{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 40%;
     padding: 2em;
 }

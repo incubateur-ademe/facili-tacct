@@ -87,19 +87,26 @@ const PageComp = ({ data }: Props) => {
       <Tabs selectedTabId={selectedTabId} tabs={tabs} onTabChange={setSelectedTabId}>
         <div className={styles.formContainer}>
           <div className={styles.titles}>
-            {data
-              .filter(el => el.facteur_sensibilite === selectedTabId)
-              .map((element, i) => (
-                <button
-                  key={i}
-                  className={selectedSubTab === element.titre ? styles.selectedButton : styles.button}
-                  onClick={() => {
-                    setSelectedSubTab(element.titre);
-                  }}
-                >
-                  {element.titre}
-                </button>
-              ))}
+            { 
+              selectedTabId === "Population" ? 
+                <p style={{margin:"0 0.5em 1em"}}>La sensibilité de la population est généralement estimée au regard de facteurs démographique, social ou culturel</p>
+              : "" 
+            }
+            {
+              data
+                .filter(el => el.facteur_sensibilite === selectedTabId)
+                .map((element, i) => (
+                  <button
+                    key={i}
+                    className={selectedSubTab === element.titre ? styles.selectedButton : styles.button}
+                    onClick={() => {
+                      setSelectedSubTab(element.titre);
+                    }}
+                  >
+                    {element.titre}
+                  </button>
+              ))
+            }                
           </div>
           <div className={styles.bubble}>
             <div className={styles.bubbleContent} style={darkClass}>

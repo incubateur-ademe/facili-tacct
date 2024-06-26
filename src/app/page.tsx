@@ -35,11 +35,11 @@ export default function Home() {
         <div className={styles.wrapper}>
           <div className={styles.titles}>
             <h1>
-              Votre <span>aide au diagnostic</span>
+              Vulnérable aux impacts du changement climatique ?
             </h1>
             <p>
-              <b>Mettez en avant les données qui rendent votre territoire unique</b> et découvrez des arguments et
-              ressources pour mobiliser votre collectivité sur l'adaptation au changement climatique.
+              <b>Objectivez votre diagnostic</b> avec les données socio-économiques qui rendent votre territoire unique et <b>découvrez 
+              des arguments et ressources pour mobiliser</b> vos collègues et partenaires externes sur l'adaptation au changement climatique
             </p>
           </div>
           <CollectiviteComp />
@@ -47,24 +47,19 @@ export default function Home() {
             <GridCol lg={3}>
               <div className={styles.card} style={darkClass} onClick={handleClick}>
                 <Image src={MarkerHandIcon} alt="" />
-                <h2>Découvrez vos données territoriales utiles</h2>
-                <p>Mettez en valeur les caractéristiques socio-économiques de votre territoire.</p>
+                <h2>Explorez des données socio-économiques territoriales</h2>
               </div>
             </GridCol>
             <GridCol lg={3}>
               <div className={styles.card} style={darkClass}>
                 <Image src={HandshakeIcon} alt="" />
-                <h2>Identifiez qui et comment convaincre</h2>
-                <p>Sachez qui embarquer et quels arguments utiliser pour avancer ensemble.</p>
+                <h2>Identifiez les experts liés à vos enjeux et comment les convaincre</h2>
               </div>
             </GridCol>
             <GridCol lg={3}>
               <div className={styles.card} style={darkClass}>
                 <Image src={MeetingIcon} alt="" />
-                <h2>Explorez des ressources testées pour mobiliser</h2>
-                <p>
-                  Animez des ateliers de co-construction avec vos élus, services techniques et acteurs du territoire.
-                </p>
+                <h2>Explorez des ressources pour mobiliser</h2>
               </div>
             </GridCol>
           </Grid>
@@ -72,11 +67,8 @@ export default function Home() {
             <div className={styles.constellationText}>
               <h3>L'adaptation n'est possible qu'en co-intelligence</h3>
               <p>
-                <b>
-                  Les initiatives d'adaptation au changement climatique n'aboutissement pas lorsqu'elles sont menées "en
-                  silo".{" "}
-                </b>
-                Découvrez comment créer des liens utiles avec les différents services et partenaires.
+                Les initiatives d'adaptation au changement climatique réussissent lorsqu'elles sont abordées de manière <b>transversale 
+                et collaborative</b> en impliquant les élus et différentes expertises thématiques.
               </p>
             </div>
             <Image alt="" src={ConstellationImg} width={650} />
