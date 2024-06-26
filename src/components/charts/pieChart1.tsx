@@ -9,6 +9,7 @@ type Props = {
     id: string;
     label: string;
     value: number | undefined;
+    count: number;
   }>;
 };
 
@@ -32,12 +33,7 @@ export const PieChart1 = ({ graphData }: Props) => {
               modifiers: [["darker", 0.3]],
             }}
             enableArcLinkLabels={false}
-            // arcLabel={(e) => {
-            //   let v = e.value.toFixed(0)
-            //   if (v != 0) {
-            //     return v
-            //   } else return ""
-            // }}
+            arcLabel={(d) => `${d.value}%`}
             // arcLinkLabelsTextColor="#333333"
             // arcLinkLabelsOffset={-10}
             // arcLinkLabelsDiagonalLength={8}

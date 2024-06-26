@@ -2,7 +2,7 @@
 
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 import thematiques from "@/lib/utils/thematiques";
@@ -12,7 +12,15 @@ import styles from "./thematiques.module.scss";
 const ThematiquesComp = () => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
+  const router = useRouter();
   const [selectedCard, setSelectedCard] = useState<number>();
+
+  const handleClick = (cardId: number) => {
+    if (cardId === 4) {
+      router.push(`/etape2?code=${code}&thematique=${"inconfort_thermique"}`);
+    }
+  }
+
   return (
     <div>
       <div className={styles.title}>
@@ -29,7 +37,7 @@ const ThematiquesComp = () => {
               <div
                 className={selectedCard === i ? styles.selectedCard : styles.unselectedCard}
                 key={i}
-                onClick={() => setSelectedCard(el[1].id)}
+                onClick={() => handleClick(el[1].id)}
               >
                 <Image alt="" src={el[1].icon} />
                 <h6>{el[0]}</h6>
@@ -48,7 +56,7 @@ const ThematiquesComp = () => {
               <div
                 className={selectedCard === i ? styles.selectedCard : styles.unselectedCard}
                 key={i}
-                onClick={() => setSelectedCard(el[1].id)}
+                onClick={() => handleClick(el[1].id)}
               >
                 <Image alt="" src={el[1].icon} />
                 <h6>{el[0]}</h6>
@@ -67,7 +75,7 @@ const ThematiquesComp = () => {
               <div
                 className={selectedCard === i ? styles.selectedCard : styles.unselectedCard}
                 key={i}
-                onClick={() => setSelectedCard(el[1].id)}
+                onClick={() => handleClick(el[1].id)}
               >
                 <Image alt="" src={el[1].icon} />
                 <h6>{el[0]}</h6>
@@ -79,14 +87,14 @@ const ThematiquesComp = () => {
         </div>
       </div>
       <div className={styles.cardContainer}>
-        <h4>Regroupement .....</h4>
+        <h4>Compétences</h4>
         <div className={styles.cardWrapper}>
           {Object.entries(thematiques).map((el, i) =>
-            el[1].category === "Regroupement 2" ? (
+            el[1].category === "Compétences" ? (
               <div
                 className={selectedCard === i ? styles.selectedCard : styles.unselectedCard}
                 key={i}
-                onClick={() => setSelectedCard(el[1].id)}
+                onClick={() => handleClick(el[1].id)}
               >
                 <Image alt="" src={el[1].icon} />
                 <h6>{el[0]}</h6>
@@ -97,7 +105,7 @@ const ThematiquesComp = () => {
           )}
         </div>
       </div>
-      <div className={styles.bottom}>
+      {/* <div className={styles.bottom}>
         {selectedCard === 4 ? (
           <Button
             linkProps={{
@@ -109,7 +117,7 @@ const ThematiquesComp = () => {
         ) : (
           <Button disabled>Explorer cette thématique</Button>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

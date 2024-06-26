@@ -14,6 +14,7 @@ interface GraphData {
   id: string;
   label: string;
   value: number | undefined;
+  count: number;
 }
 
 interface Props {
@@ -74,9 +75,9 @@ export const TravailExterieur = (props: Props) => {
         const sumAdministration = sumProperty(Object.values(dataTravailExtRows), "NA5OQ_sum");
         setAdministration(sumAdministration);
         // const x = Object.keys(dataTravailExtRows).slice(3, 10);
-        const y = Object.values(dataTravailExtRows).slice(3, 10);
-        //const sum: number = Number(y.reduce((partialSum: number, a: number) => partialSum + a, 0));
-
+        // const y = Object.values(dataTravailExtRows).slice(3, 10);
+        // const sumTest: number = Number(y.reduce((partialSum: number, a: number) => partialSum + a, 0));
+        const allSums = sumAdministration + sumCommerce + sumConstruction + sumIndustries + sumAgriculture;
         setTavailExt(
           (100 * (sumAgriculture + sumConstruction)) /
             (sumAdministration + sumCommerce + sumConstruction + sumIndustries + sumAgriculture),
@@ -85,32 +86,37 @@ export const TravailExterieur = (props: Props) => {
           {
             id: "Agriculture, sylviculture et pêche",
             label: "Agriculture",
-            value: sumAgriculture,
+            count: sumAgriculture,
             color: "#68D273",
+            value: Number((100*sumAgriculture/allSums).toFixed(1))
           },
           {
             id: "Industrie manufacturière, industries extractives et autres",
             label: "Industries",
-            value: sumIndustries,
+            count: sumIndustries,
             color: "#E4FFE3",
+            value: Number((100*sumIndustries/allSums).toFixed(1))
           },
           {
             id: "Construction",
             label: "Construction",
-            value: sumConstruction,
+            count: sumConstruction,
             color: "#BD72D6",
+            value: Number((100*sumConstruction/allSums).toFixed(1))
           },
           {
             id: "Commerce, transports et services divers",
             label: "Commerces et transports",
-            value: sumCommerce,
+            count: sumCommerce,
             color: "#FFF6E3",
+            value: Number((100*sumCommerce/allSums).toFixed(1))
           },
           {
             id: "Administration publique, enseignement, santé humaine et action sociale",
             label: "Administations",
-            value: sumAdministration,
+            count: sumAdministration,
             color: "#E3EDFF",
+            value: Number((100*sumAdministration/allSums).toFixed(1))
           },
         ]);
       }

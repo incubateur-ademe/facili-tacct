@@ -108,10 +108,6 @@ export const GrandAgeIsolement = (props: Props) => {
             </p>
             <h4>EXPLICATION</h4>
             <div>
-              <p>
-                La sensibilité de la population est généralement estimée au regard de facteurs démographique, social ou
-                culturel.
-              </p>
               <ul style={{ fontSize: "16px" }}>
                 <li>
                   Démographie : 2/3 de la surmortalité chez les + de 80 ans concerne : les personnes fragilisées sur le

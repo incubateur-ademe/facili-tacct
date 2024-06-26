@@ -70,9 +70,9 @@ const Constellation = (props: Props) => {
   const Amenagement = { id: "Aménagement" };
 
   const addMainNode = (node: any) => {
-    node.size = 90;
-    node.color = "#000091";
-    node.textColor = "#ececfe";
+    node.size = 50;
+    node.color = "#FFFFFF";
+    node.textColor = "#black";
     mainnodes.push(node);
   };
 
@@ -86,7 +86,7 @@ const Constellation = (props: Props) => {
   ) => {
     childNode.size = size;
     childNode.color = color;
-    childNode.textColor = "#black";
+    childNode.textColor = "#4F4F4F";
     childNode.state = false;
     childnodes.push(childNode);
     links.push({
@@ -102,12 +102,12 @@ const Constellation = (props: Props) => {
   };
 
   addMainNode(InconfortThermique);
-  assembleChildNode(InconfortThermique, Sante, 40, "#EBF1FF");
-  assembleChildNode(InconfortThermique, Tourisme, 40, "#EBF1FF");
-  assembleChildNode(InconfortThermique, EspaceNaturel, 40, "#EBF1FF");
-  assembleChildNode(InconfortThermique, GestionEau, 40, "#EBF1FF");
-  assembleChildNode(InconfortThermique, Batiment, 40, "#EBF1FF");
-  assembleChildNode(InconfortThermique, Amenagement, 40, "#EBF1FF");
+  assembleChildNode(InconfortThermique, Sante, 50, "#DCE6FF");
+  assembleChildNode(InconfortThermique, Tourisme, 50, "#DCE6FF");
+  assembleChildNode(InconfortThermique, EspaceNaturel, 50, "#DCE6FF");
+  assembleChildNode(InconfortThermique, GestionEau, 50, "#DCE6FF");
+  assembleChildNode(InconfortThermique, Batiment, 50, "#DCE6FF");
+  assembleChildNode(InconfortThermique, Amenagement, 50, "#DCE6FF");
   const nodes = childnodes.concat(mainnodes);
   //console.log('nodes', nodes)
 
@@ -158,12 +158,12 @@ const Constellation = (props: Props) => {
         if (this.getAttribute("id") === "Inconfort thermique") {
           d3.selectAll("circle").attr("fill", (node: any) => node.color);
         } else {
-          if (this.getAttribute("fill") === "#EBF1FF") {
+          if (this.getAttribute("fill") === "#DCE6FF") {
             d3.selectAll("circle").attr("fill", (node: any) => node.color);
             d3.select(this).attr("fill", "#9580FF");
           } else {
             d3.selectAll("circle").attr("fill", (node: any) => node.color);
-            d3.select(this).attr("fill", "#EBF1FF");
+            d3.select(this).attr("fill", "#DCE6FF");
           }
         }
       });
