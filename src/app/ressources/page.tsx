@@ -8,6 +8,7 @@ import BookmarkIcon from "../../assets/icons/bookmark_icon_black.svg";
 import { Box, Container, GridCol } from "../../dsfr/server";
 import Card from "./Card";
 import styles from "./ressources.module.scss";
+import RessourceBackground from "@/assets/images/ressources.svg";
 
 export const metadata: Metadata = {
   title: "Ressources",
@@ -16,13 +17,13 @@ export const metadata: Metadata = {
 
 const Ressources = () => {
   return (
-    <Container m="4w">
+    <div>
       <Box style={{ backgroundColor: "white" }}>
         <GridCol lg={6} offset={1}>
           <StepperComp title="Ressources" stepCount={4} currentStep={4} />
         </GridCol>
       </Box>{" "}
-      <div className={styles.wrapper}>
+      {/* <div className={styles.wrapper}>
         <div className={styles.blocWrapper}>
           <div className={styles.titles}>
             <h3>Formats d'ateliers</h3>
@@ -51,8 +52,9 @@ const Ressources = () => {
             ))}
           </div>
         </div>
-      </div>
-    </Container>
+      </div> */}
+      <Image src={RessourceBackground} alt="" width={0} height={0} style={{ width: "80%", height: "auto", margin: "-1em 4em 1em" }} />
+    </div>
   );
 };
 
