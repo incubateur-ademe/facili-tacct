@@ -5,11 +5,8 @@ const EspacesNaturels = () => {
       <div>
         <h6>QUI CONVAINCRE ET POURQUOI ?</h6>
         <div>
-          <p>...........................</p>
-          <p>...................</p>
+          <p></p>
         </div>
-
-        <p>...............</p>
       </div>
     </div>
   );
