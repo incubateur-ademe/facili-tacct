@@ -46,6 +46,7 @@ const LineChart1 = (props: Props) => {
               data: children,
             },
           ]}
+          colors={"rgba(242, 133, 2, 0.9)"}
           yScale={{
             type: "linear",
             min: Math.min(...yData) - 1,

@@ -27,7 +27,7 @@ export const PieChart1 = ({ graphData }: Props) => {
             cornerRadius={3}
             activeOuterRadiusOffset={8}
             borderWidth={1}
-            colors={["#68D273", "#E4FFE3", "#BD72D6", "#FFF6E3", "#E3EDFF", "#f47560", "#e8c1a0"]}
+            colors={["rgba(44, 170, 166, 0.7)", "#E4FFE3", "rgba(242, 133, 2, 0.9)", "#FFF6E3", "#E3EDFF", "#f47560", "#e8c1a0"]}
             borderColor={{
               from: "color",
               modifiers: [["darker", 0.3]],
