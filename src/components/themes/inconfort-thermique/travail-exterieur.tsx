@@ -141,8 +141,8 @@ export const TravailExterieur = (props: Props) => {
               <div>
                 <h4>LE CHIFFRE</h4>
                 <p>
-                  Dans l'EPCI {epci_chosen?.properties.EPCI}, la part des travailleurs en extérieur est de{" "}
-                  {travailExt?.toFixed(1)}% dans la population. Cela correspond à {agriculture + construction}{" "}
+                  Dans l'EPCI {epci_chosen?.properties.EPCI}, la part cumulée des emplois dans les secteurs à risque est de{" "}
+                  {travailExt?.toFixed(1)}%, soit {agriculture + construction}{" "}
                   personnes.
                 </p>
               </div>
@@ -150,7 +150,19 @@ export const TravailExterieur = (props: Props) => {
               ""
             )}
             <h4>EXPLICATION</h4>
-            <p>{data.find(el => el.titre === activeDataTab)?.donnee}</p>
+            <div>
+              <p>
+                Les emplois cumulés des secteurs de l’agriculture et de la construction fournissent une image grossière de la part des emplois en 
+                extérieur sur le territoire. Une partie des transports, du tourisme, voire la collecte des déchets sont aussi concernés. 
+                Bien sûr, tout emploi amenant à évoluer dans des environnements marqués par des températures élevées, en extérieur comme en intérieur, 
+                est potentiellement à risque. La difficulté physique de la tâche à accomplir sera un facteur aggravant.
+              </p>
+              <p>
+                Lors de la canicule estivale 2022 en France, sept accidents mortels au travail ayant un lien possible avec le temps chaud ont 
+                été signalés, dont trois décès dans le secteur de la construction. (Santé publique France, 2022).
+              </p>
+            </div>
+
           </GridCol>
           <GridCol lg={6}>
             <div className="flex flex-col justify-end">

@@ -106,23 +106,13 @@ export const GrandAgeIsolement = (props: Props) => {
               Dans l'EPCI {epci_chosen?.properties["EPCI"]} les personnes de plus de 75 ans représentent{" "}
               {yData.at(-1)?.toFixed(1)}% de la population en 2020.
             </p>
-            <h4>EXPLICATION</h4>
+            <h4>COMPLEMENT</h4>
             <div>
-              <ul style={{ fontSize: "16px" }}>
-                <li>
-                  Démographie : 2/3 de la surmortalité chez les + de 80 ans concerne : les personnes fragilisées sur le
-                  plan économique ou social (isolement), la précarité du logement (GEODIP ou terrystory), les SDF (se
-                  rapprocher des services sociaux), les travailleurs en extérieur (emplois dans la construction,
-                  l'agriculture, la forêt, les transport, le tourisme, voire la collecte des déchets).
-                </li>
-                <li>Culturel : culture du risque "chaleur"</li>
-                <li>Facteurs comportementaux : temps passé à l'extérieur, habillement, utilisation de ventilateurs.</li>
-                <li>socio-culturels : faire la sieste.</li>
-              </ul>
-              <p>
-                Un tiers de la surmortalité attribuable aux périodes de fortes chaleurs concerne des personnes de moins
-                de 75 ans.
+              <p>Les personnes âgées représentent les 2/3 de la surmortalité en période de fortes chaleurs.  (Source : Santé Publique France, mai 2023)</p>
+              <p>Leur vulnérabilité spécifique provient notamment de leur non-appréciation de leurs besoins d’hydratation, 
+                mais aussi, sans surprise, à leur état de santé souvent dégradé.
               </p>
+              <p>L’isolement social est un facteur de risque qui concerne toutes les populations.</p>
             </div>
           </GridCol>
           <GridCol lg={7}>

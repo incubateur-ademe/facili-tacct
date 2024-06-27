@@ -1,5 +1,5 @@
 .body {
-    min-height: 450px;
+    min-height: calc(100dvh - 530px);
     background-image: url("../../assets/images/background1.svg");
     background-size: 100%;
     background-repeat: no-repeat;
@@ -21,4 +21,5 @@
     background-color: #eeeeee;
     padding: 1em 2em;
     justify-content: space-between;
+    // position: sticky;
 }
