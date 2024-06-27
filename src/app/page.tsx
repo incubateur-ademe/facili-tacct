@@ -9,7 +9,7 @@ import { useStyles } from "tss-react/dsfr";
 import HandshakeIcon from "../assets/icons/handshake_icon_green.svg";
 import MarkerHandIcon from "../assets/icons/markerHand_icon_green.svg";
 import MeetingIcon from "../assets/icons/meeting_icon_green.svg";
-import ConstellationImg from "../assets/images/landingpageConstellation.svg";
+import ConstellationImg from "../assets/images/constellation.png";
 import { Grid, GridCol } from "../dsfr/layout";
 import CollectiviteComp from "./CollectiviteComp";
 import styles from "./root.module.scss";
@@ -65,7 +65,7 @@ export default function Home() {
           </Grid>
           <div className={styles.constellationWrapper}>
             <div className={styles.constellationText}>
-              <h3>L'adaptation n'est possible qu'en co-intelligence</h3>
+              <h3>L'adaptation n'est possible qu’en intelligence collective</h3>
               <p>
                 Les initiatives d'adaptation au changement climatique réussissent lorsqu'elles sont abordées de manière <b>transversale 
                 et collaborative</b> en impliquant les élus et différentes expertises thématiques.
@@ -73,6 +73,11 @@ export default function Home() {
             </div>
             <Image alt="" src={ConstellationImg} width={650} />
           </div>
+          {/* <div className={styles.test}></div>
+          <div className={styles.test2}></div>
+          <div className={styles.test3}></div>
+          <div className={styles.test4}></div>
+          <div className={styles.test5}></div> */}
         </div>
       </div>
       {/* <Button
@@ -90,6 +95,7 @@ export default function Home() {
       >
         Commencer ma démarche
       </Button>   */}
+
     </>
   );
 }
