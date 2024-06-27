@@ -62,7 +62,7 @@ export const ExplicationComp = () => {
         </Button>
         <Button
           linkProps={{
-            href: "/ressources",
+            href: `/ressources?code=${code}&thematique=${themeUrl}`,
           }}
         >
           Voir les ressources

@@ -135,7 +135,7 @@ export const FragiliteEconomique = (props: Props) => {
           <GridCol lg={7}>
             <div className="flex flex-col justify-end">
               <p>
-                <b>Répartition de la précarité logement par commune au sein de l'EPCI</b>
+                <b>Répartition de la précarité énergétique logement par commune au sein de l'EPCI</b>
               </p>
               <Legend data={"precarite_log"} />
               {epci_chosen && communes_chosen ? (
