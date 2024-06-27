@@ -89,7 +89,7 @@ const PageComp = ({ data }: Props) => {
           <div className={styles.titles}>
             { 
               selectedTabId === "Population" ? 
-                <p style={{margin:"0 0.5em 1em"}}>La sensibilité de la population est généralement estimée au regard de facteurs démographique, social ou culturel</p>
+                <p style={{margin:"1em 0.5em 1em"}}>La sensibilité de la population est généralement estimée au regard de facteurs démographique, social ou culturel</p>
               : "" 
             }
             {
