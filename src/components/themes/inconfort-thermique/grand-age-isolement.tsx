@@ -106,7 +106,7 @@ export const GrandAgeIsolement = (props: Props) => {
               Dans l'EPCI {epci_chosen?.properties["EPCI"]} les personnes de plus de 75 ans représentent{" "}
               {yData.at(-1)?.toFixed(1)}% de la population en 2020.
             </p>
-            <h4>COMPLEMENT</h4>
+            <h4>COMPLÉMENT</h4>
             <div>
               <p>Les personnes âgées représentent les 2/3 de la surmortalité en période de fortes chaleurs.  (Source : Santé Publique France, mai 2023)</p>
               <p>Leur vulnérabilité spécifique provient notamment de leur non-appréciation de leurs besoins d’hydratation, 
