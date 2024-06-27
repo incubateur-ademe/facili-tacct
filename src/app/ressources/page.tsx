@@ -1,3 +1,5 @@
+"use client"
+
 import { type Metadata } from "next";
 import Image from "next/image";
 
@@ -9,16 +11,21 @@ import { Box, Container, GridCol } from "../../dsfr/server";
 import Card from "./Card";
 import styles from "./ressources.module.scss";
 import RessourceBackground from "@/assets/images/ressources.svg";
+import Button from "@codegouvfr/react-dsfr/Button";
+import { useSearchParams } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Ressources",
-  description: "Ressources",
-};
+// export const metadata: Metadata = {
+//   title: "Ressources",
+//   description: "Ressources",
+// };
 
 const Ressources = () => {
+  const searchParams = useSearchParams();
+  const code = searchParams.get("code");
+  const themeUrl = searchParams.get("thematique");
   return (
     <div>
-      <Box style={{ backgroundColor: "white" }}>
+      <Box style={{ backgroundColor: "white", margin: "1em" }}>
         <GridCol lg={6} offset={1}>
           <StepperComp title="Ressources" stepCount={4} currentStep={4} />
         </GridCol>
@@ -54,6 +61,16 @@ const Ressources = () => {
         </div>
       </div> */}
       <Image src={RessourceBackground} alt="" width={0} height={0} style={{ width: "80%", height: "auto", margin: "-1em 4em 1em" }} />
+      <div className={styles.bottom}>
+        <Button
+          priority="secondary"
+          linkProps={{
+            href: `/explication?code=${code}&thematique=${themeUrl}`,
+          }}
+        >
+          Étape précédente
+        </Button>
+      </div>
     </div>
   );
 };
