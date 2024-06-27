@@ -105,12 +105,9 @@ export const Vegetalisation = (props: Props) => {
             </p>
             <h4>EXPLICATION</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis fermentum tortor. Sed pellentesque
-              ultrices justo id laoreet. Etiam dui augue, semper non eleifend eget, mollis sed erat. Praesent
-              sollicitudin venenatis placerat. Vivamus dignissim lorem nec mattis varius. Ut euismod placerat lacus,
-              rutrum molestie leo ornare vitae. Pellentesque at neque tristique, lobortis nisl quis, vestibulum enim.
-              Vestibulum tempus venenatis dui volutpat dignissim. Donec sit amet ante vel enim vestibulum placerat. Nunc
-              volutpat urna in gravida volutpat. Donec cursus massa mollis mi egestas suscipit.
+              La présence d’arbres permet d’apporter de l’ombre (en fonction de la densité du feuillage) et rafraichit l’air par évapotranspiration 
+              (fonction de la quantité d’arbres). Leur efficacité dans le rafraîchissement en milieu urbain 
+              dépend de la disponibilité en eau du sol, du revêtement et de la qualité du sol (compactage) à leurs pieds. 
             </p>
           </GridCol>
           <GridCol lg={7}>
