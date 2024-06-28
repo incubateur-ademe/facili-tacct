@@ -142,8 +142,7 @@ export const TravailExterieur = (props: Props) => {
                 <h4>LE CHIFFRE</h4>
                 <p>
                   Dans l'EPCI {epci_chosen?.properties.EPCI}, la part cumulée des emplois dans les secteurs à risque est de{" "}
-                  {travailExt?.toFixed(1)}%, soit {agriculture + construction}{" "}
-                  personnes.
+                  <b>{travailExt?.toFixed(1)}%</b>, soit {agriculture + construction} personnes.
                 </p>
               </div>
             ) : (
