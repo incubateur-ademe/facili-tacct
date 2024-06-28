@@ -54,35 +54,35 @@ export const AgeBati = (props: Props) => {
             periode: "Avant 1919",
             "Votre EPCI": dataAgeBatiRows["part_rp_ach19"].toFixed(1),
             "Votre EPCIColor": "#ececfe",
-            France: 21.3,
+            France: 20.5,
             FranceColor: "hsl(125, 70%, 50%)",
           },
           {
             periode: "1919-1945",
             "Votre EPCI": dataAgeBatiRows["part_rp_ach1945"].toFixed(1),
             "Votre EPCIColor": "#ececfe",
-            France: 5.3,
+            France: 9.2,
             FranceColor: "hsl(125, 70%, 50%)",
           },
           {
             periode: "1946-1990",
             "Votre EPCI": dataAgeBatiRows["part_rp_ach4690"].toFixed(1),
             "Votre EPCIColor": "#ececfe",
-            France: 38.3,
+            France: 43.4,
             FranceColor: "hsl(125, 70%, 50%)",
           },
           {
             periode: "1991-2005",
             "Votre EPCI": dataAgeBatiRows["part_rp_ach9105"].toFixed(1),
             "Votre EPCIColor": "#ececfe",
-            France: 20,
+            France: 15.5,
             FranceColor: "hsl(125, 70%, 50%)",
           },
           {
             periode: "Après 2006",
             "Votre EPCI": dataAgeBatiRows["part_rp_ach06p"].toFixed(1),
             "Votre EPCIColor": "#ececfe",
-            France: 15,
+            France: 11.4,
             FranceColor: "hsl(125, 70%, 50%)",
           },
         ]);
@@ -106,7 +106,7 @@ export const AgeBati = (props: Props) => {
           <GridCol lg={4}>
             <h4>LE CHIFFRE</h4>
             <p>
-              Dans l'EPCI {epci_chosen?.properties.EPCI}, {constructionBefore2006?.toFixed(1)}% des résidences
+              Dans l'EPCI {epci_chosen?.properties.EPCI}, <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
               principales sont construites avant 2006.
             </p>
             <h4>EXPLICATION</h4>

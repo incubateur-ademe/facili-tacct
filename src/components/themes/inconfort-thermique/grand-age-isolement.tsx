@@ -104,7 +104,7 @@ export const GrandAgeIsolement = (props: Props) => {
             <h4>LE CHIFFRE</h4>
             <p>
               Dans l'EPCI {epci_chosen?.properties["EPCI"]} les personnes de plus de 75 ans représentent{" "}
-              {yData.at(-1)?.toFixed(1)}% de la population en 2020.
+              <b>{yData.at(-1)?.toFixed(1)}%</b> de la population en 2020.
             </p>
             <h4>COMPLÉMENT</h4>
             <div>
