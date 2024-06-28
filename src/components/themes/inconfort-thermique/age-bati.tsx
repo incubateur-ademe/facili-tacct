@@ -120,7 +120,7 @@ export const AgeBati = (props: Props) => {
           <GridCol lg={7}>
             <div className="flex flex-col justify-end">
               <p style={{ margin: "0 2em 0" }}>
-                <b>Périodes de construction des bâtiments en France</b>
+                <b>Périodes de construction des bâtiments</b>
               </p>
               {chartData ? <BarChart chartData={chartData} /> : <Loader />}
               <p>
