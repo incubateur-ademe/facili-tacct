@@ -8,6 +8,7 @@ const Tourisme = () => {
           Appuyez-vous sur un collègue de votre collectivité qui a une expertise ou une autre entité telle que 
           l’Office de Tourisme, associations interprofessionnelles (hébergeurs, voyagistes…) ou les acteurs touristiques territoriaux.
         </p>
+        <p style={{fontSize: "1.2em"}}><b>Arguments pour convaincre</b></p>
         <div style={{backgroundColor: "white", padding:"1em", borderRadius:"5px", margin:"0.5em 0"}}>
           Les vagues de chaleur ont d'ores et déjà des conséquences sur la fréquentation touristique de certains sites
           ou de certains types d’hébergements.

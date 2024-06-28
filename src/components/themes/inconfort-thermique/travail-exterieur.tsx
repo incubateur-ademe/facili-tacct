@@ -167,11 +167,11 @@ export const TravailExterieur = (props: Props) => {
           <GridCol lg={6}>
             <div className="flex flex-col justify-end">
               <p style={{ margin: "0 2em 0" }}>
-                <b>Part dans la population selon les catégories socio-professionnelles</b>
+                <b>Part des emplois par activités économiques regroupées en 5 postes</b>
               </p>
               {graphData ? <PieChart1 graphData={graphData} /> : <Loader />}
               <p>
-                Source : <b>Observatoire des territoires</b>
+                Source : <b>INSEE (EMP3) 2018</b>
               </p>
             </div>
           </GridCol>

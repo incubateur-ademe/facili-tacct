@@ -2,7 +2,7 @@ const themes = {
   inconfort_thermique: [
     {
       id: 0,
-      titre: "Grand âge et isolement",
+      titre: "Grand âge",
       facteur_sensibilite: "Population",
       risque: "Élevé",
       donnee: "",
