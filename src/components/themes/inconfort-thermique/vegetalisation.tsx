@@ -100,7 +100,7 @@ export const Vegetalisation = (props: Props) => {
           <GridCol lg={4}>
             <h4>LE CHIFFRE</h4>
             <p>
-              Dans l'EPCI {epci_chosen?.properties.EPCI}, {foret?.toFixed(1)}% du territoire est de la forêt ou des
+              Dans l'EPCI {epci_chosen?.properties.EPCI}, <b>{foret?.toFixed(1)}%</b> du territoire est de la forêt ou des
               espaces semi-naturels.
             </p>
             <h4>EXPLICATION</h4>

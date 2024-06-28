@@ -58,8 +58,7 @@ export const DensiteBati = (props: Props) => {
             <h4>LE CHIFFRE</h4>
             {densite_epci ? (
               <p>
-                Dans l'EPCI {epci_chosen?.properties.EPCI}, la densité moyenne du bâtiment est de{" "}
-                {average(densite_epci).toFixed(2)}.
+                Dans l'EPCI {epci_chosen?.properties.EPCI}, la densité moyenne du bâtiment est de <b>{average(densite_epci).toFixed(2)}</b>.
               </p>
             ) : (
               ""
@@ -67,7 +66,7 @@ export const DensiteBati = (props: Props) => {
             <h4>DÉFINITION</h4>
             <p>
               Il existe de nombreux indicateurs pour mesurer la densité du bâti.
-              La formule de calcul choisit ici est la suivante : <br></br><br></br>
+              La formule de calcul choisie ici est la suivante : <br></br><br></br>
               <b>(surface au sol de la construction x hauteur du bâtiment) / surface totale de la commune</b>
             </p>
           </GridCol>
