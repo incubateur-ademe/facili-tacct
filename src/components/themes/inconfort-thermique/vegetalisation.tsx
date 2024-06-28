@@ -105,9 +105,11 @@ export const Vegetalisation = (props: Props) => {
             </p>
             <h4>EXPLICATION</h4>
             <p>
-              La présence d’arbres permet d’apporter de l’ombre (en fonction de la densité du feuillage) et rafraichit l’air par évapotranspiration 
-              (fonction de la quantité d’arbres). Leur efficacité dans le rafraîchissement en milieu urbain 
-              dépend de la disponibilité en eau du sol, du revêtement et de la qualité du sol (compactage) à leurs pieds. 
+              La présence d’arbres permet d’apporter de l’ombre et rafraichit l’air par évapotranspiration 
+              (lorsque plusieurs arbres sont à proximité). Leur efficacité dans le rafraîchissement en milieu urbain dépend de leur nombre, 
+              de la densité de leur feuillage, des essences, de la qualité du sol et de la disponibilité en eau.<br></br> <br></br>
+              Plus 2 à 3°C  sont les effets maximaux d'arbres isolés sur la température d’air dans les rues ou lorsqu'ils sont alignés en bordure de route. 
+              (source : <a href="https://plusfraichemaville.fr/" target="_blank">Plus fraiche ma ville</a>)
             </p>
           </GridCol>
           <GridCol lg={7}>
