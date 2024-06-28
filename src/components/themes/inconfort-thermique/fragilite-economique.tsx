@@ -123,7 +123,7 @@ export const FragiliteEconomique = (props: Props) => {
             <h4>LE CHIFFRE</h4>
             <p>
               Dans l'EPCI {epci_chosen?.properties["EPCI"]}, la part des ménages qui sont en situation de précarité
-              énergique logement est de {(100 * ratio_precarite_log_epci).toPrecision(3)}%.
+              énergique logement est de <b>{(100 * ratio_precarite_log_epci).toPrecision(3)}%.</b>
             </p>
             <h4>EXPLICATION</h4>
             <p>
