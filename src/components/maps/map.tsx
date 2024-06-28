@@ -168,8 +168,15 @@ const Map = (props: Props) => {
 
   //make style after hover disappear
   function mouseOutHandler(this: any, e: any) {
+    const layer = e.target;
     // console.log("mapref.current", mapRef.current)
     mapRef.current?.resetStyle(e.target);
+    layer.setStyle({
+      weight: 3,
+      color: "#000000",
+      dashArray: "--",
+      fillOpacity: 0.8,
+    });
     this.closePopup(e.target);
   }
 
