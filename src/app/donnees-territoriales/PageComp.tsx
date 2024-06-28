@@ -28,7 +28,7 @@ interface Props {
 
 const allComps = [
   {
-    titre: "Grand âge et isolement",
+    titre: "Grand âge",
     Component: (props: Props & { activeDataTab: string }) => <GrandAgeIsolement {...props} />,
   },
   {
@@ -55,7 +55,7 @@ const allComps = [
 
 const PageComp = ({ data }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState("Population");
-  const [selectedSubTab, setSelectedSubTab] = useState("Grand âge et isolement");
+  const [selectedSubTab, setSelectedSubTab] = useState("Grand âge");
   const router = useRouter();
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
