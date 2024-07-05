@@ -119,35 +119,37 @@ export const FragiliteEconomique = (props: Props) => {
             alignItems: "center",
           }}
         >
-          <GridCol lg={4}>
-            <h4>LE CHIFFRE</h4>
-            <p>
-              Dans l'EPCI {epci_chosen?.properties["EPCI"]}, la part des ménages qui sont en situation de précarité
-              énergique logement est de <b>{(100 * ratio_precarite_log_epci).toPrecision(3)}%.</b>
-            </p>
-            <h4>EXPLICATION</h4>
-            <p>
-              La précarité énergétique liée au logement concerne les ménages des 3 premiers déciles qui consacrent plus
-              de 8% de leurs revenus aux dépenses énergétiques liées à leur logement (chauffage, eau chaude, et
-              ventilation).
-            </p>
-          </GridCol>
-          <GridCol lg={7}>
-            <div className="flex flex-col justify-end">
+          {epci_chosen && communes_chosen ? (
+            <>
+            <GridCol lg={4}>
+              <h4>LE CHIFFRE</h4>
               <p>
-                <b>Répartition de la précarité énergétique logement par commune au sein de l'EPCI</b>
+                Dans l'EPCI {epci_chosen?.properties["EPCI"]}, la part des ménages qui sont en situation de précarité
+                énergique logement est de <b>{(100 * ratio_precarite_log_epci).toPrecision(3)}%.</b>
               </p>
-              <Legend data={"precarite_log"} />
-              {epci_chosen && communes_chosen ? (
-                <Map epci={epci_chosen} communes={communes_chosen} data={"precarite_log"} />
-              ) : (
-                <Loader />
-              )}
+              <h4>EXPLICATION</h4>
               <p>
-                Source : <b>ONPE</b>
+                La précarité énergétique liée au logement concerne les ménages des 3 premiers déciles qui consacrent plus
+                de 8% de leurs revenus aux dépenses énergétiques liées à leur logement (chauffage, eau chaude, et
+                ventilation).
               </p>
-            </div>
-          </GridCol>
+            </GridCol>
+            <GridCol lg={7}>
+              <div className="flex flex-col justify-end">
+                <p>
+                  <b>Répartition de la précarité énergétique logement par commune au sein de l'EPCI</b>
+                </p>
+                <Legend data={"precarite_log"} />
+                <Map epci={epci_chosen} communes={communes_chosen} data={"precarite_log"} />             
+                <p>
+                  Source : <b>ONPE</b>
+                </p>
+              </div>
+            </GridCol>
+            </>
+           ) : (
+            <Loader />
+          )}
         </div>
       ) : (
         <GraphDataNotFound code={code} />
