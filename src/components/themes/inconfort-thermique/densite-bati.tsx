@@ -54,38 +54,40 @@ export const DensiteBati = (props: Props) => {
             alignItems: "center",
           }}
         >
-          <GridCol lg={4}>
-            <h4>LE CHIFFRE</h4>
-            {densite_epci ? (
-              <p>
-                Dans l'EPCI {epci_chosen?.properties.EPCI}, la densité moyenne du bâtiment est de <b>{average(densite_epci).toFixed(2)}</b>.
-              </p>
-            ) : (
-              ""
-            )}
-            <h4>DÉFINITION</h4>
-            <p>
-              Il existe de nombreux indicateurs pour mesurer la densité du bâti.
-              La formule de calcul choisie ici est la suivante : <br></br><br></br>
-              <b>(surface au sol de la construction x hauteur du bâtiment) / surface totale de la commune</b>
-            </p>
-          </GridCol>
-          <GridCol lg={7}>
-            <div className="flex flex-col justify-end">
-              <Legend data={"densite_bati"} />
-              <p>
-                <b>Répartition de la densité du bâti par commune au sein de l'EPCI</b>
-              </p>
-              {epci_chosen && communes_chosen ? (
-                <Map epci={epci_chosen} communes={communes_chosen} data={"densite_bati"} />
-              ) : (
-                <Loader />
-              )}
-              <p>
-                Source : <b>Base de Données Nationale Des Bâtiments – BDNB</b>
-              </p>
-            </div>
-          </GridCol>
+          {epci_chosen && communes_chosen ? (
+            <>
+              <GridCol lg={4}>
+                <h4>LE CHIFFRE</h4>
+                {densite_epci ? (
+                  <p>
+                    Dans l'EPCI {epci_chosen?.properties.EPCI}, la densité moyenne du bâtiment est de <b>{average(densite_epci).toFixed(2)}</b>.
+                  </p>
+                ) : (
+                  ""
+                )}
+                <h4>DÉFINITION</h4>
+                <p>
+                  Il existe de nombreux indicateurs pour mesurer la densité du bâti.
+                  La formule de calcul choisie ici est la suivante : <br></br><br></br>
+                  <b>(surface au sol de la construction x hauteur du bâtiment) / surface totale de la commune</b>
+                </p>
+              </GridCol>
+              <GridCol lg={7}>
+                <div className="flex flex-col justify-end">
+                  <Legend data={"densite_bati"} />
+                  <p>
+                    <b>Répartition de la densité du bâti par commune au sein de l'EPCI</b>
+                  </p>
+                    <Map epci={epci_chosen} communes={communes_chosen} data={"densite_bati"} />
+                  <p>
+                    Source : <b>Base de Données Nationale Des Bâtiments – BDNB</b>
+                  </p>
+                </div>
+              </GridCol>
+            </>
+          ) : (
+            <Loader />
+          )}
         </div>
       ) : (
         <GraphDataNotFound code={code} />
