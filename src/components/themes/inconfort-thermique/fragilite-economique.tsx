@@ -144,7 +144,7 @@ export const FragiliteEconomique = (props: Props) => {
                 <Loader />
               )}
               <p>
-                Source : <b>INSEE</b>
+                Source : <b>ONPE</b>
               </p>
             </div>
           </GridCol>
