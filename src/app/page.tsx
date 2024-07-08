@@ -44,24 +44,24 @@ export default function Home() {
           </div>
           <CollectiviteComp />
           <Grid align="center" className={styles.cardWrapper}>
-            <GridCol lg={3}>
+            <GridCol lg={5}>
               <div className={styles.card} style={darkClass} onClick={handleClick}>
                 <Image src={MarkerHandIcon} alt="" />
-                <h2>Explorez des données socio-économiques territoriales</h2>
+                <h2>Déchiffrez les données socio-économiques de votre territoire</h2>
               </div>
             </GridCol>
-            <GridCol lg={3}>
+            <GridCol lg={5}>
               <div className={styles.card} style={darkClass}>
                 <Image src={HandshakeIcon} alt="" />
-                <h2>Identifiez les experts liés à vos enjeux et comment les convaincre</h2>
+                <h2>Découvrez des ressources pour faciliter les conditions du dialogue avec vos élus, services techniques et partenaires</h2>
               </div>
             </GridCol>
-            <GridCol lg={3}>
+            {/* <GridCol lg={3}>
               <div className={styles.card} style={darkClass}>
                 <Image src={MeetingIcon} alt="" />
                 <h2>Explorez des ressources pour mobiliser</h2>
               </div>
-            </GridCol>
+            </GridCol> */}
           </Grid>
           <div className={styles.constellationWrapper}>
             <div className={styles.constellationText}>
