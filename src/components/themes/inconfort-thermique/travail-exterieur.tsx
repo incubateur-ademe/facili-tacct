@@ -11,10 +11,10 @@ import { getTravailExtFromEPCI } from "./actions/travail-exterieur";
 
 interface GraphData {
   color: string;
+  count: number;
   id: string;
   label: string;
   value: number | undefined;
-  count: number;
 }
 
 interface Props {
@@ -88,35 +88,35 @@ export const TravailExterieur = (props: Props) => {
             label: "Agriculture",
             count: sumAgriculture,
             color: "#68D273",
-            value: Number((100*sumAgriculture/allSums).toFixed(1))
+            value: Number(((100 * sumAgriculture) / allSums).toFixed(1)),
           },
           {
             id: "Industrie manufacturière, industries extractives et autres",
             label: "Industries",
             count: sumIndustries,
             color: "#E4FFE3",
-            value: Number((100*sumIndustries/allSums).toFixed(1))
+            value: Number(((100 * sumIndustries) / allSums).toFixed(1)),
           },
           {
             id: "Construction",
             label: "Construction",
             count: sumConstruction,
             color: "#BD72D6",
-            value: Number((100*sumConstruction/allSums).toFixed(1))
+            value: Number(((100 * sumConstruction) / allSums).toFixed(1)),
           },
           {
             id: "Commerce, transports et services divers",
             label: "Commerces et transports",
             count: sumCommerce,
             color: "#FFF6E3",
-            value: Number((100*sumCommerce/allSums).toFixed(1))
+            value: Number(((100 * sumCommerce) / allSums).toFixed(1)),
           },
           {
             id: "Administration publique, enseignement, santé humaine et action sociale",
             label: "Administations",
             count: sumAdministration,
             color: "#E3EDFF",
-            value: Number((100*sumAdministration/allSums).toFixed(1))
+            value: Number(((100 * sumAdministration) / allSums).toFixed(1)),
           },
         ]);
       }
@@ -141,8 +141,8 @@ export const TravailExterieur = (props: Props) => {
               <div>
                 <h4>LE CHIFFRE</h4>
                 <p>
-                  Dans l'EPCI {epci_chosen?.properties.EPCI}, la part cumulée des emplois dans les secteurs à risque est de{" "}
-                  <b>{travailExt?.toFixed(1)}%</b>, soit {agriculture + construction} personnes.
+                  Dans l'EPCI {epci_chosen?.properties.EPCI}, la part cumulée des emplois dans les secteurs à risque est
+                  de <b>{travailExt?.toFixed(1)}%</b>, soit {agriculture + construction} personnes.
                 </p>
               </div>
             ) : (
@@ -151,17 +151,18 @@ export const TravailExterieur = (props: Props) => {
             <h4>EXPLICATION</h4>
             <div>
               <p>
-                Les emplois cumulés des secteurs de l’agriculture et de la construction fournissent une image grossière de la part des emplois en 
-                extérieur sur le territoire. Une partie des transports, du tourisme, voire la collecte des déchets sont aussi concernés. 
-                Bien sûr, tout emploi amenant à évoluer dans des environnements marqués par des températures élevées, en extérieur comme en intérieur, 
-                est potentiellement à risque. La difficulté physique de la tâche à accomplir sera un facteur aggravant.
+                Les emplois cumulés des secteurs de l’agriculture et de la construction fournissent une image grossière
+                de la part des emplois en extérieur sur le territoire. Une partie des transports, du tourisme, voire la
+                collecte des déchets sont aussi concernés. Bien sûr, tout emploi amenant à évoluer dans des
+                environnements marqués par des températures élevées, en extérieur comme en intérieur, est
+                potentiellement à risque. La difficulté physique de la tâche à accomplir sera un facteur aggravant.
               </p>
               <p>
-                Lors de la canicule estivale 2022 en France, sept accidents mortels au travail ayant un lien possible avec le temps chaud ont 
-                été signalés, dont trois décès dans le secteur de la construction. (Santé publique France, 2022).
+                Lors de la canicule estivale 2022 en France, sept accidents mortels au travail ayant un lien possible
+                avec le temps chaud ont été signalés, dont trois décès dans le secteur de la construction. (Santé
+                publique France, 2022).
               </p>
             </div>
-
           </GridCol>
           <GridCol lg={6}>
             <div className="flex flex-col justify-end">

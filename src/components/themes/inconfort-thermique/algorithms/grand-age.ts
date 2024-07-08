@@ -28,9 +28,9 @@ interface GrandAge {
   under_4_sum_1982: number;
   under_4_sum_1990: number;
   under_4_sum_1999: number;
-  under_4_sum_2020: number;
-  under_4_sum_2014: number;
   under_4_sum_2009: number;
+  under_4_sum_2014: number;
+  under_4_sum_2020: number;
 }
 
 // const sumProperty = (items: GrandAge[], prop: any) => {

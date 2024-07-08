@@ -1,4 +1,4 @@
-const GestionEau = () => {
+export const GestionEau = () => {
   return (
     <div>
       <h5>Gestion de l'eau</h5>
@@ -11,5 +11,3 @@ const GestionEau = () => {
     </div>
   );
 };
-
-export default GestionEau;

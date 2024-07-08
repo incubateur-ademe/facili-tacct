@@ -1,4 +1,4 @@
-const EspacesNaturels = () => {
+export const EspacesNaturels = () => {
   return (
     <div>
       <h5>Espaces naturels</h5>
@@ -11,5 +11,3 @@ const EspacesNaturels = () => {
     </div>
   );
 };
-
-export default EspacesNaturels;

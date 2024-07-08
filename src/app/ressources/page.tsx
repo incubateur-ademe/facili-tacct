@@ -1,18 +1,14 @@
-"use client"
+"use client";
 
-import { type Metadata } from "next";
-import Image from "next/image";
-
-import { StepperComp } from "@/components/Stepper";
-import workshops from "@/lib/utils/workshops";
-
-import BookmarkIcon from "../../assets/icons/bookmark_icon_black.svg";
-import { Box, Container, GridCol } from "../../dsfr/server";
-import Card from "./Card";
-import styles from "./ressources.module.scss";
-import RessourceBackground from "@/assets/images/ressources.svg";
 import Button from "@codegouvfr/react-dsfr/Button";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
+
+import RessourceBackground from "@/assets/images/ressources.svg";
+import { StepperComp } from "@/components/Stepper";
+
+import { Box, GridCol } from "../../dsfr/server";
+import styles from "./ressources.module.scss";
 
 // export const metadata: Metadata = {
 //   title: "Ressources",
@@ -60,7 +56,13 @@ const Ressources = () => {
           </div>
         </div>
       </div> */}
-      <Image src={RessourceBackground} alt="" width={0} height={0} style={{ width: "80%", height: "auto", margin: "-1em 4em 1em" }} />
+      <Image
+        src={RessourceBackground}
+        alt=""
+        width={0}
+        height={0}
+        style={{ width: "80%", height: "auto", margin: "-1em 4em 1em" }}
+      />
       <div className={styles.bottom}>
         <Button
           priority="secondary"

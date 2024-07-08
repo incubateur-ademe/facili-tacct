@@ -3,7 +3,7 @@ import { type Metadata } from "next";
 import { StepperComp } from "@/components/Stepper";
 
 import { Box, Container, GridCol } from "../../dsfr/server";
-import Step3Comp from "./pageComp";
+import { Step3Comp } from "./pageComp";
 
 export const metadata: Metadata = {
   title: "Actions",

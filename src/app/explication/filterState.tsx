@@ -1,4 +1,4 @@
-import Amenagement from "./components/amenagement";
+import { Amenagement } from "./components/amenagement";
 import Batiment from "./components/batiment";
 import EspacesNaturels from "./components/espaces-naturels";
 import GestionEau from "./components/gestion-eau";
@@ -10,7 +10,7 @@ interface Props {
   states: boolean[];
 }
 
-const FilterState = (props: Props) => {
+export const FilterState = (props: Props) => {
   const { states } = props;
 
   return (
@@ -33,5 +33,3 @@ const FilterState = (props: Props) => {
     </div>
   );
 };
-
-export default FilterState;
