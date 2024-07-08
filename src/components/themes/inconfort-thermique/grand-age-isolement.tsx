@@ -108,9 +108,13 @@ export const GrandAgeIsolement = (props: Props) => {
             </p>
             <h4>COMPLÉMENT</h4>
             <div>
-              <p>Les personnes âgées représentent les 2/3 de la surmortalité en période de fortes chaleurs.  (Source : Santé Publique France, mai 2023)</p>
-              <p>Leur vulnérabilité spécifique provient notamment de leur non-appréciation de leurs besoins d’hydratation, 
-                mais aussi, sans surprise, à leur état de santé souvent dégradé.
+              <p>
+                Les personnes âgées représentent les 2/3 de la surmortalité en période de fortes chaleurs. (Source :
+                Santé Publique France, mai 2023)
+              </p>
+              <p>
+                Leur vulnérabilité spécifique provient notamment de leur non-appréciation de leurs besoins
+                d’hydratation, mais aussi, sans surprise, à leur état de santé souvent dégradé.
               </p>
               <p>L’isolement social est un facteur de risque qui concerne toutes les populations.</p>
             </div>

@@ -8,7 +8,7 @@ import themes from "@/lib/utils/themes";
 
 import Constellation from "./constellation";
 import styles from "./explication.module.scss";
-import FilterState from "./filterState";
+import { FilterState } from "./filterState";
 
 export const ExplicationComp = () => {
   const searchParams = useSearchParams();
