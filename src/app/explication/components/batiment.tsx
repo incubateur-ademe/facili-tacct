@@ -1,4 +1,4 @@
-const Batiment = () => {
+export const Batiment = () => {
   return (
     <div>
       <h5>Bâtiment</h5>
@@ -27,5 +27,3 @@ const Batiment = () => {
     </div>
   );
 };
-
-export default Batiment;
