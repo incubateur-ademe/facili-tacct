@@ -7,14 +7,14 @@ import React, { useEffect, useRef, useState } from "react";
 
 interface Props {
   dimensions: {
-    height: string | number;
+    height: number | string;
     margin: {
       bottom: number;
       left: number;
       right: number;
       top: number;
     };
-    width: string | number;
+    width: number | string;
   };
   setSelected: React.Dispatch<React.SetStateAction<boolean[]>>;
   states: boolean[];

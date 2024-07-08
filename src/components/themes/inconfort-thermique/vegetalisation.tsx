@@ -100,16 +100,21 @@ export const Vegetalisation = (props: Props) => {
           <GridCol lg={4}>
             <h4>LE CHIFFRE</h4>
             <p>
-              Dans l'EPCI {epci_chosen?.properties.EPCI}, <b>{foret?.toFixed(1)}%</b> du territoire est de la forêt ou des
-              espaces semi-naturels.
+              Dans l'EPCI {epci_chosen?.properties.EPCI}, <b>{foret?.toFixed(1)}%</b> du territoire est de la forêt ou
+              des espaces semi-naturels.
             </p>
             <h4>EXPLICATION</h4>
             <p>
-              La présence d’arbres permet d’apporter de l’ombre et rafraichit l’air par évapotranspiration 
-              (lorsque plusieurs arbres sont à proximité). Leur efficacité dans le rafraîchissement en milieu urbain dépend de leur nombre, 
-              de la densité de leur feuillage, des essences, de la qualité du sol et de la disponibilité en eau.<br></br> <br></br>
-              Plus 2 à 3°C  sont les effets maximaux d'arbres isolés sur la température d’air dans les rues ou lorsqu'ils sont alignés en bordure de route. 
-              (source : <a href="https://plusfraichemaville.fr/" target="_blank">Plus fraiche ma ville</a>)
+              La présence d’arbres permet d’apporter de l’ombre et rafraichit l’air par évapotranspiration (lorsque
+              plusieurs arbres sont à proximité). Leur efficacité dans le rafraîchissement en milieu urbain dépend de
+              leur nombre, de la densité de leur feuillage, des essences, de la qualité du sol et de la disponibilité en
+              eau.<br></br> <br></br>
+              Plus 2 à 3°C sont les effets maximaux d'arbres isolés sur la température d’air dans les rues ou lorsqu'ils
+              sont alignés en bordure de route. (source :{" "}
+              <a href="https://plusfraichemaville.fr/" target="_blank">
+                Plus fraiche ma ville
+              </a>
+              )
             </p>
           </GridCol>
           <GridCol lg={7}>

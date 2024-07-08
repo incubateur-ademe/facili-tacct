@@ -8,10 +8,9 @@ import { useStyles } from "tss-react/dsfr";
 
 import HandshakeIcon from "../assets/icons/handshake_icon_green.svg";
 import MarkerHandIcon from "../assets/icons/markerHand_icon_green.svg";
-import MeetingIcon from "../assets/icons/meeting_icon_green.svg";
 import ConstellationImg from "../assets/images/constellation.png";
 import { Grid, GridCol } from "../dsfr/layout";
-import CollectiviteComp from "./CollectiviteComp";
+import { CollectiviteComp } from "./CollectiviteComp";
 import styles from "./root.module.scss";
 
 export default function Home() {
@@ -34,12 +33,11 @@ export default function Home() {
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.titles}>
-            <h1>
-              Vulnérable aux impacts du changement climatique ?
-            </h1>
+            <h1>Vulnérable aux impacts du changement climatique ?</h1>
             <p>
-              <b>Objectivez votre diagnostic</b> avec les données socio-économiques qui rendent votre territoire unique et <b>découvrez 
-              des arguments et ressources pour mobiliser</b> vos collègues et partenaires externes sur l'adaptation au changement climatique
+              <b>Objectivez votre diagnostic</b> avec les données socio-économiques qui rendent votre territoire unique
+              et <b>découvrez des arguments et ressources pour mobiliser</b> vos collègues et partenaires externes sur
+              l'adaptation au changement climatique
             </p>
           </div>
           <CollectiviteComp />
@@ -53,7 +51,10 @@ export default function Home() {
             <GridCol lg={5}>
               <div className={styles.card} style={darkClass}>
                 <Image src={HandshakeIcon} alt="" />
-                <h2>Découvrez des ressources pour faciliter les conditions du dialogue avec vos élus, services techniques et partenaires</h2>
+                <h2>
+                  Découvrez des ressources pour faciliter les conditions du dialogue avec vos élus, services techniques
+                  et partenaires
+                </h2>
               </div>
             </GridCol>
             {/* <GridCol lg={3}>
@@ -67,8 +68,8 @@ export default function Home() {
             <div className={styles.constellationText}>
               <h3>L'adaptation n'est possible qu’en intelligence collective</h3>
               <p>
-                Les initiatives d'adaptation au changement climatique réussissent lorsqu'elles sont abordées de manière <b>transversale 
-                et collaborative</b> en impliquant les élus et différentes expertises thématiques.
+                Les initiatives d'adaptation au changement climatique réussissent lorsqu'elles sont abordées de manière{" "}
+                <b>transversale et collaborative</b> en impliquant les élus et différentes expertises thématiques.
               </p>
             </div>
             <Image alt="" src={ConstellationImg} width={650} />
@@ -95,7 +96,6 @@ export default function Home() {
       >
         Commencer ma démarche
       </Button>   */}
-
     </>
   );
 }
