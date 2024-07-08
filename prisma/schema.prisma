@@ -1,29 +1,36 @@
 generator client {
   provider = "prisma-client-js"
+  output = "../src/generated/client"
 }
+
 datasource db {
   provider = "postgresql"
   url      = env("SCALINGO_POSTGRESQL_URL")
 }
-model Themes {
-  id                Int         @id @default(autoincrement())
-  theme             String?
-  code              String      @default("75000")
-  question_history  String?     @default("")
-  createdAt         DateTime    @default(now())
-  finished          Boolean     @default(false)
-  report_downloaded Boolean     @default(false)
-  questions         Questions[] 
-  @@index([id])
-  @@map("theme")
+
+model clc_paris {
+  pk           Int                      @id @default(autoincrement())
+  class_2018   String?                  @db.VarChar
+  shape_length Float?
+  shape_area   Float?
+  geometry     Unsupported("geometry")?
+
+  @@index([geometry], map: "clc_paris_geometry_geom_idx", type: Gist)
 }
-model Questions {
-  pk        Int      @id @default(autoincrement())
-  theme_pk  Themes   @relation(fields: [themeId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  themeId   Int
-  question  String?
-  answer    String?
-  createdAt DateTime @default(now())
-  @@index([pk])
-  @@map("questions")
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model test {
+  class_2018   String?                 @db.VarChar(256)
+  Shape_Length Float?
+  Shape_Area   Float?
+  pk           Int                     @id(map: "test_clc_pkey")
+  geometry     Unsupported("geometry")
+}
+
+model test2 {
+  pk           Int                     @id @default(0)
+  class_2018   String?                 @db.VarChar(256)
+  Shape_Length Float?
+  Shape_Area   Float?
+  geometry     Unsupported("polygon")?
 }
