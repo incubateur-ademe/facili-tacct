@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output = "../src/generated/client"
+  output   = "../src/generated/client"
 }
 
 datasource db {
@@ -13,7 +13,7 @@ model clc_paris {
   class_2018   String?                  @db.VarChar
   shape_length Float?
   shape_area   Float?
-  geometry     Unsupported("geometry")?
+  geometry     Unsupported("geometry (Polygon, 4326)")?
 
   @@index([geometry], map: "clc_paris_geometry_geom_idx", type: Gist)
 }

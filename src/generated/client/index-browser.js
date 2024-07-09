@@ -17,11 +17,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 5.13.0
- * Query Engine version: b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b
+ * Query Engine version: 34ace0eb2704183d2c05b60b52fba5c43c13f303
  */
 Prisma.prismaVersion = {
   client: "5.13.0",
-  engine: "b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b"
+  engine: "34ace0eb2704183d2c05b60b52fba5c43c13f303"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -123,8 +123,7 @@ exports.Prisma.Clc_parisScalarFieldEnum = {
   pk: 'pk',
   class_2018: 'class_2018',
   shape_length: 'shape_length',
-  shape_area: 'shape_area',
-  geometry: 'geometry'
+  shape_area: 'shape_area'
 };
 
 exports.Prisma.TestScalarFieldEnum = {
@@ -139,6 +138,14 @@ exports.Prisma.Test2ScalarFieldEnum = {
   class_2018: 'class_2018',
   Shape_Length: 'Shape_Length',
   Shape_Area: 'Shape_Area'
+};
+
+exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
+  srid: 'srid',
+  auth_name: 'auth_name',
+  auth_srid: 'auth_srid',
+  srtext: 'srtext',
+  proj4text: 'proj4text'
 };
 
 exports.Prisma.SortOrder = {
@@ -160,7 +167,8 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   clc_paris: 'clc_paris',
   test: 'test',
-  test2: 'test2'
+  test2: 'test2',
+  spatial_ref_sys: 'spatial_ref_sys'
 };
 
 /**
