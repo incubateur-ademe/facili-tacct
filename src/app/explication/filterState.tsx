@@ -1,9 +1,9 @@
 import { Amenagement } from "./components/amenagement";
-import Batiment from "./components/batiment";
-import EspacesNaturels from "./components/espaces-naturels";
-import GestionEau from "./components/gestion-eau";
-import Sante from "./components/sante";
-import Tourisme from "./components/tourisme";
+import { Batiment } from "./components/batiment";
+import { EspacesNaturels } from "./components/espaces-naturels";
+import { GestionEau } from "./components/gestion-eau";
+import { Sante } from "./components/sante";
+import { Tourisme } from "./components/tourisme";
 import styles from "./explication.module.scss";
 
 interface Props {

@@ -119,25 +119,11 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.Clc_parisScalarFieldEnum = {
+exports.Prisma.Clc_paris2ScalarFieldEnum = {
   pk: 'pk',
   class_2018: 'class_2018',
   shape_length: 'shape_length',
   shape_area: 'shape_area'
-};
-
-exports.Prisma.TestScalarFieldEnum = {
-  class_2018: 'class_2018',
-  Shape_Length: 'Shape_Length',
-  Shape_Area: 'Shape_Area',
-  pk: 'pk'
-};
-
-exports.Prisma.Test2ScalarFieldEnum = {
-  pk: 'pk',
-  class_2018: 'class_2018',
-  Shape_Length: 'Shape_Length',
-  Shape_Area: 'Shape_Area'
 };
 
 exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
@@ -165,9 +151,7 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  clc_paris: 'clc_paris',
-  test: 'test',
-  test2: 'test2',
+  clc_paris2: 'clc_paris2',
   spatial_ref_sys: 'spatial_ref_sys'
 };
 
