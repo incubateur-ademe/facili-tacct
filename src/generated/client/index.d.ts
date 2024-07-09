@@ -14,20 +14,10 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model clc_paris
+ * Model clc_paris2
  * 
  */
-export type clc_paris = $Result.DefaultSelection<Prisma.$clc_parisPayload>
-/**
- * Model test
- * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
- */
-export type test = $Result.DefaultSelection<Prisma.$testPayload>
-/**
- * Model test2
- * 
- */
-export type test2 = $Result.DefaultSelection<Prisma.$test2Payload>
+export type clc_paris2 = $Result.DefaultSelection<Prisma.$clc_paris2Payload>
 /**
  * Model spatial_ref_sys
  * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
@@ -41,8 +31,8 @@ export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPa
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Clc_parises
- * const clc_parises = await prisma.clc_paris.findMany()
+ * // Fetch zero or more Clc_paris2s
+ * const clc_paris2s = await prisma.clc_paris2.findMany()
  * ```
  *
  * 
@@ -62,8 +52,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Clc_parises
-   * const clc_parises = await prisma.clc_paris.findMany()
+   * // Fetch zero or more Clc_paris2s
+   * const clc_paris2s = await prisma.clc_paris2.findMany()
    * ```
    *
    * 
@@ -157,34 +147,14 @@ export class PrismaClient<
   $extends: $Extensions.ExtendsHook<'extends', Prisma.TypeMapCb, ExtArgs>
 
       /**
-   * `prisma.clc_paris`: Exposes CRUD operations for the **clc_paris** model.
+   * `prisma.clc_paris2`: Exposes CRUD operations for the **clc_paris2** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Clc_parises
-    * const clc_parises = await prisma.clc_paris.findMany()
+    * // Fetch zero or more Clc_paris2s
+    * const clc_paris2s = await prisma.clc_paris2.findMany()
     * ```
     */
-  get clc_paris(): Prisma.clc_parisDelegate<ExtArgs>;
-
-  /**
-   * `prisma.test`: Exposes CRUD operations for the **test** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Tests
-    * const tests = await prisma.test.findMany()
-    * ```
-    */
-  get test(): Prisma.testDelegate<ExtArgs>;
-
-  /**
-   * `prisma.test2`: Exposes CRUD operations for the **test2** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Test2s
-    * const test2s = await prisma.test2.findMany()
-    * ```
-    */
-  get test2(): Prisma.test2Delegate<ExtArgs>;
+  get clc_paris2(): Prisma.clc_paris2Delegate<ExtArgs>;
 
   /**
    * `prisma.spatial_ref_sys`: Exposes CRUD operations for the **spatial_ref_sys** model.
@@ -672,9 +642,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    clc_paris: 'clc_paris',
-    test: 'test',
-    test2: 'test2',
+    clc_paris2: 'clc_paris2',
     spatial_ref_sys: 'spatial_ref_sys'
   };
 
@@ -692,193 +660,73 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'clc_paris' | 'test' | 'test2' | 'spatial_ref_sys'
+      modelProps: 'clc_paris2' | 'spatial_ref_sys'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
-      clc_paris: {
-        payload: Prisma.$clc_parisPayload<ExtArgs>
-        fields: Prisma.clc_parisFieldRefs
+      clc_paris2: {
+        payload: Prisma.$clc_paris2Payload<ExtArgs>
+        fields: Prisma.clc_paris2FieldRefs
         operations: {
           findUnique: {
-            args: Prisma.clc_parisFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_parisPayload> | null
+            args: Prisma.clc_paris2FindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.clc_parisFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_parisPayload>
+            args: Prisma.clc_paris2FindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload>
           }
           findFirst: {
-            args: Prisma.clc_parisFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_parisPayload> | null
+            args: Prisma.clc_paris2FindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.clc_parisFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_parisPayload>
+            args: Prisma.clc_paris2FindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload>
           }
           findMany: {
-            args: Prisma.clc_parisFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_parisPayload>[]
+            args: Prisma.clc_paris2FindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload>[]
           }
           create: {
-            args: Prisma.clc_parisCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_parisPayload>
+            args: Prisma.clc_paris2CreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload>
           }
           createMany: {
-            args: Prisma.clc_parisCreateManyArgs<ExtArgs>,
+            args: Prisma.clc_paris2CreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.clc_parisDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_parisPayload>
+            args: Prisma.clc_paris2DeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload>
           }
           update: {
-            args: Prisma.clc_parisUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_parisPayload>
+            args: Prisma.clc_paris2UpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload>
           }
           deleteMany: {
-            args: Prisma.clc_parisDeleteManyArgs<ExtArgs>,
+            args: Prisma.clc_paris2DeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.clc_parisUpdateManyArgs<ExtArgs>,
+            args: Prisma.clc_paris2UpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.clc_parisUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_parisPayload>
+            args: Prisma.clc_paris2UpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload>
           }
           aggregate: {
-            args: Prisma.Clc_parisAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateClc_paris>
+            args: Prisma.Clc_paris2AggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateClc_paris2>
           }
           groupBy: {
-            args: Prisma.clc_parisGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<Clc_parisGroupByOutputType>[]
+            args: Prisma.clc_paris2GroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Clc_paris2GroupByOutputType>[]
           }
           count: {
-            args: Prisma.clc_parisCountArgs<ExtArgs>,
-            result: $Utils.Optional<Clc_parisCountAggregateOutputType> | number
-          }
-        }
-      }
-      test: {
-        payload: Prisma.$testPayload<ExtArgs>
-        fields: Prisma.testFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.testFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$testPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.testFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$testPayload>
-          }
-          findFirst: {
-            args: Prisma.testFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$testPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.testFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$testPayload>
-          }
-          findMany: {
-            args: Prisma.testFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$testPayload>[]
-          }
-          delete: {
-            args: Prisma.testDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$testPayload>
-          }
-          update: {
-            args: Prisma.testUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$testPayload>
-          }
-          deleteMany: {
-            args: Prisma.testDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.testUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          aggregate: {
-            args: Prisma.TestAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateTest>
-          }
-          groupBy: {
-            args: Prisma.testGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<TestGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.testCountArgs<ExtArgs>,
-            result: $Utils.Optional<TestCountAggregateOutputType> | number
-          }
-        }
-      }
-      test2: {
-        payload: Prisma.$test2Payload<ExtArgs>
-        fields: Prisma.test2FieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.test2FindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$test2Payload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.test2FindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$test2Payload>
-          }
-          findFirst: {
-            args: Prisma.test2FindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$test2Payload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.test2FindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$test2Payload>
-          }
-          findMany: {
-            args: Prisma.test2FindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$test2Payload>[]
-          }
-          create: {
-            args: Prisma.test2CreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$test2Payload>
-          }
-          createMany: {
-            args: Prisma.test2CreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          delete: {
-            args: Prisma.test2DeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$test2Payload>
-          }
-          update: {
-            args: Prisma.test2UpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$test2Payload>
-          }
-          deleteMany: {
-            args: Prisma.test2DeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.test2UpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.test2UpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$test2Payload>
-          }
-          aggregate: {
-            args: Prisma.Test2AggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateTest2>
-          }
-          groupBy: {
-            args: Prisma.test2GroupByArgs<ExtArgs>,
-            result: $Utils.Optional<Test2GroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.test2CountArgs<ExtArgs>,
-            result: $Utils.Optional<Test2CountAggregateOutputType> | number
+            args: Prisma.clc_paris2CountArgs<ExtArgs>,
+            result: $Utils.Optional<Clc_paris2CountAggregateOutputType> | number
           }
         }
       }
@@ -1108,44 +956,44 @@ export namespace Prisma {
    */
 
   /**
-   * Model clc_paris
+   * Model clc_paris2
    */
 
-  export type AggregateClc_paris = {
-    _count: Clc_parisCountAggregateOutputType | null
-    _avg: Clc_parisAvgAggregateOutputType | null
-    _sum: Clc_parisSumAggregateOutputType | null
-    _min: Clc_parisMinAggregateOutputType | null
-    _max: Clc_parisMaxAggregateOutputType | null
+  export type AggregateClc_paris2 = {
+    _count: Clc_paris2CountAggregateOutputType | null
+    _avg: Clc_paris2AvgAggregateOutputType | null
+    _sum: Clc_paris2SumAggregateOutputType | null
+    _min: Clc_paris2MinAggregateOutputType | null
+    _max: Clc_paris2MaxAggregateOutputType | null
   }
 
-  export type Clc_parisAvgAggregateOutputType = {
+  export type Clc_paris2AvgAggregateOutputType = {
     pk: number | null
     shape_length: number | null
     shape_area: number | null
   }
 
-  export type Clc_parisSumAggregateOutputType = {
+  export type Clc_paris2SumAggregateOutputType = {
     pk: number | null
     shape_length: number | null
     shape_area: number | null
   }
 
-  export type Clc_parisMinAggregateOutputType = {
-    pk: number | null
-    class_2018: string | null
-    shape_length: number | null
-    shape_area: number | null
-  }
-
-  export type Clc_parisMaxAggregateOutputType = {
+  export type Clc_paris2MinAggregateOutputType = {
     pk: number | null
     class_2018: string | null
     shape_length: number | null
     shape_area: number | null
   }
 
-  export type Clc_parisCountAggregateOutputType = {
+  export type Clc_paris2MaxAggregateOutputType = {
+    pk: number | null
+    class_2018: string | null
+    shape_length: number | null
+    shape_area: number | null
+  }
+
+  export type Clc_paris2CountAggregateOutputType = {
     pk: number
     class_2018: number
     shape_length: number
@@ -1154,33 +1002,33 @@ export namespace Prisma {
   }
 
 
-  export type Clc_parisAvgAggregateInputType = {
+  export type Clc_paris2AvgAggregateInputType = {
     pk?: true
     shape_length?: true
     shape_area?: true
   }
 
-  export type Clc_parisSumAggregateInputType = {
+  export type Clc_paris2SumAggregateInputType = {
     pk?: true
     shape_length?: true
     shape_area?: true
   }
 
-  export type Clc_parisMinAggregateInputType = {
-    pk?: true
-    class_2018?: true
-    shape_length?: true
-    shape_area?: true
-  }
-
-  export type Clc_parisMaxAggregateInputType = {
+  export type Clc_paris2MinAggregateInputType = {
     pk?: true
     class_2018?: true
     shape_length?: true
     shape_area?: true
   }
 
-  export type Clc_parisCountAggregateInputType = {
+  export type Clc_paris2MaxAggregateInputType = {
+    pk?: true
+    class_2018?: true
+    shape_length?: true
+    shape_area?: true
+  }
+
+  export type Clc_paris2CountAggregateInputType = {
     pk?: true
     class_2018?: true
     shape_length?: true
@@ -1188,126 +1036,126 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type Clc_parisAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Clc_paris2AggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which clc_paris to aggregate.
+     * Filter which clc_paris2 to aggregate.
      */
-    where?: clc_parisWhereInput
+    where?: clc_paris2WhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of clc_parises to fetch.
+     * Determine the order of clc_paris2s to fetch.
      */
-    orderBy?: clc_parisOrderByWithRelationInput | clc_parisOrderByWithRelationInput[]
+    orderBy?: clc_paris2OrderByWithRelationInput | clc_paris2OrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: clc_parisWhereUniqueInput
+    cursor?: clc_paris2WhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` clc_parises from the position of the cursor.
+     * Take `±n` clc_paris2s from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` clc_parises.
+     * Skip the first `n` clc_paris2s.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned clc_parises
+     * Count returned clc_paris2s
     **/
-    _count?: true | Clc_parisCountAggregateInputType
+    _count?: true | Clc_paris2CountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: Clc_parisAvgAggregateInputType
+    _avg?: Clc_paris2AvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: Clc_parisSumAggregateInputType
+    _sum?: Clc_paris2SumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: Clc_parisMinAggregateInputType
+    _min?: Clc_paris2MinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: Clc_parisMaxAggregateInputType
+    _max?: Clc_paris2MaxAggregateInputType
   }
 
-  export type GetClc_parisAggregateType<T extends Clc_parisAggregateArgs> = {
-        [P in keyof T & keyof AggregateClc_paris]: P extends '_count' | 'count'
+  export type GetClc_paris2AggregateType<T extends Clc_paris2AggregateArgs> = {
+        [P in keyof T & keyof AggregateClc_paris2]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateClc_paris[P]>
-      : GetScalarType<T[P], AggregateClc_paris[P]>
+        : GetScalarType<T[P], AggregateClc_paris2[P]>
+      : GetScalarType<T[P], AggregateClc_paris2[P]>
   }
 
 
 
 
-  export type clc_parisGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: clc_parisWhereInput
-    orderBy?: clc_parisOrderByWithAggregationInput | clc_parisOrderByWithAggregationInput[]
-    by: Clc_parisScalarFieldEnum[] | Clc_parisScalarFieldEnum
-    having?: clc_parisScalarWhereWithAggregatesInput
+  export type clc_paris2GroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: clc_paris2WhereInput
+    orderBy?: clc_paris2OrderByWithAggregationInput | clc_paris2OrderByWithAggregationInput[]
+    by: Clc_paris2ScalarFieldEnum[] | Clc_paris2ScalarFieldEnum
+    having?: clc_paris2ScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: Clc_parisCountAggregateInputType | true
-    _avg?: Clc_parisAvgAggregateInputType
-    _sum?: Clc_parisSumAggregateInputType
-    _min?: Clc_parisMinAggregateInputType
-    _max?: Clc_parisMaxAggregateInputType
+    _count?: Clc_paris2CountAggregateInputType | true
+    _avg?: Clc_paris2AvgAggregateInputType
+    _sum?: Clc_paris2SumAggregateInputType
+    _min?: Clc_paris2MinAggregateInputType
+    _max?: Clc_paris2MaxAggregateInputType
   }
 
-  export type Clc_parisGroupByOutputType = {
+  export type Clc_paris2GroupByOutputType = {
     pk: number
     class_2018: string | null
     shape_length: number | null
     shape_area: number | null
-    _count: Clc_parisCountAggregateOutputType | null
-    _avg: Clc_parisAvgAggregateOutputType | null
-    _sum: Clc_parisSumAggregateOutputType | null
-    _min: Clc_parisMinAggregateOutputType | null
-    _max: Clc_parisMaxAggregateOutputType | null
+    _count: Clc_paris2CountAggregateOutputType | null
+    _avg: Clc_paris2AvgAggregateOutputType | null
+    _sum: Clc_paris2SumAggregateOutputType | null
+    _min: Clc_paris2MinAggregateOutputType | null
+    _max: Clc_paris2MaxAggregateOutputType | null
   }
 
-  type GetClc_parisGroupByPayload<T extends clc_parisGroupByArgs> = Prisma.PrismaPromise<
+  type GetClc_paris2GroupByPayload<T extends clc_paris2GroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<Clc_parisGroupByOutputType, T['by']> &
+      PickEnumerable<Clc_paris2GroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof Clc_parisGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof Clc_paris2GroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], Clc_parisGroupByOutputType[P]>
-            : GetScalarType<T[P], Clc_parisGroupByOutputType[P]>
+              : GetScalarType<T[P], Clc_paris2GroupByOutputType[P]>
+            : GetScalarType<T[P], Clc_paris2GroupByOutputType[P]>
         }
       >
     >
 
 
-  export type clc_parisSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type clc_paris2Select<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     pk?: boolean
     class_2018?: boolean
     shape_length?: boolean
     shape_area?: boolean
-  }, ExtArgs["result"]["clc_paris"]>
+  }, ExtArgs["result"]["clc_paris2"]>
 
-  export type clc_parisSelectScalar = {
+  export type clc_paris2SelectScalar = {
     pk?: boolean
     class_2018?: boolean
     shape_length?: boolean
@@ -1316,168 +1164,168 @@ export namespace Prisma {
 
 
 
-  export type $clc_parisPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "clc_paris"
+  export type $clc_paris2Payload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "clc_paris2"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       pk: number
       class_2018: string | null
       shape_length: number | null
       shape_area: number | null
-    }, ExtArgs["result"]["clc_paris"]>
+    }, ExtArgs["result"]["clc_paris2"]>
     composites: {}
   }
 
 
-  type clc_parisGetPayload<S extends boolean | null | undefined | clc_parisDefaultArgs> = $Result.GetResult<Prisma.$clc_parisPayload, S>
+  type clc_paris2GetPayload<S extends boolean | null | undefined | clc_paris2DefaultArgs> = $Result.GetResult<Prisma.$clc_paris2Payload, S>
 
-  type clc_parisCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<clc_parisFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: Clc_parisCountAggregateInputType | true
+  type clc_paris2CountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<clc_paris2FindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Clc_paris2CountAggregateInputType | true
     }
 
-  export interface clc_parisDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['clc_paris'], meta: { name: 'clc_paris' } }
+  export interface clc_paris2Delegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['clc_paris2'], meta: { name: 'clc_paris2' } }
     /**
-     * Find zero or one Clc_paris that matches the filter.
-     * @param {clc_parisFindUniqueArgs} args - Arguments to find a Clc_paris
+     * Find zero or one Clc_paris2 that matches the filter.
+     * @param {clc_paris2FindUniqueArgs} args - Arguments to find a Clc_paris2
      * @example
-     * // Get one Clc_paris
-     * const clc_paris = await prisma.clc_paris.findUnique({
+     * // Get one Clc_paris2
+     * const clc_paris2 = await prisma.clc_paris2.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends clc_parisFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_parisFindUniqueArgs<ExtArgs>>
-    ): Prisma__clc_parisClient<$Result.GetResult<Prisma.$clc_parisPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends clc_paris2FindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, clc_paris2FindUniqueArgs<ExtArgs>>
+    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one Clc_paris that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one Clc_paris2 that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {clc_parisFindUniqueOrThrowArgs} args - Arguments to find a Clc_paris
+     * @param {clc_paris2FindUniqueOrThrowArgs} args - Arguments to find a Clc_paris2
      * @example
-     * // Get one Clc_paris
-     * const clc_paris = await prisma.clc_paris.findUniqueOrThrow({
+     * // Get one Clc_paris2
+     * const clc_paris2 = await prisma.clc_paris2.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends clc_parisFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_parisFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__clc_parisClient<$Result.GetResult<Prisma.$clc_parisPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends clc_paris2FindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, clc_paris2FindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first Clc_paris that matches the filter.
+     * Find the first Clc_paris2 that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_parisFindFirstArgs} args - Arguments to find a Clc_paris
+     * @param {clc_paris2FindFirstArgs} args - Arguments to find a Clc_paris2
      * @example
-     * // Get one Clc_paris
-     * const clc_paris = await prisma.clc_paris.findFirst({
+     * // Get one Clc_paris2
+     * const clc_paris2 = await prisma.clc_paris2.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends clc_parisFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_parisFindFirstArgs<ExtArgs>>
-    ): Prisma__clc_parisClient<$Result.GetResult<Prisma.$clc_parisPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends clc_paris2FindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, clc_paris2FindFirstArgs<ExtArgs>>
+    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first Clc_paris that matches the filter or
+     * Find the first Clc_paris2 that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_parisFindFirstOrThrowArgs} args - Arguments to find a Clc_paris
+     * @param {clc_paris2FindFirstOrThrowArgs} args - Arguments to find a Clc_paris2
      * @example
-     * // Get one Clc_paris
-     * const clc_paris = await prisma.clc_paris.findFirstOrThrow({
+     * // Get one Clc_paris2
+     * const clc_paris2 = await prisma.clc_paris2.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends clc_parisFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_parisFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__clc_parisClient<$Result.GetResult<Prisma.$clc_parisPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends clc_paris2FindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, clc_paris2FindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more Clc_parises that matches the filter.
+     * Find zero or more Clc_paris2s that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_parisFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {clc_paris2FindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Clc_parises
-     * const clc_parises = await prisma.clc_paris.findMany()
+     * // Get all Clc_paris2s
+     * const clc_paris2s = await prisma.clc_paris2.findMany()
      * 
-     * // Get first 10 Clc_parises
-     * const clc_parises = await prisma.clc_paris.findMany({ take: 10 })
+     * // Get first 10 Clc_paris2s
+     * const clc_paris2s = await prisma.clc_paris2.findMany({ take: 10 })
      * 
      * // Only select the `pk`
-     * const clc_parisWithPkOnly = await prisma.clc_paris.findMany({ select: { pk: true } })
+     * const clc_paris2WithPkOnly = await prisma.clc_paris2.findMany({ select: { pk: true } })
      * 
     **/
-    findMany<T extends clc_parisFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_parisFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_parisPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends clc_paris2FindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, clc_paris2FindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a Clc_paris.
-     * @param {clc_parisCreateArgs} args - Arguments to create a Clc_paris.
+     * Create a Clc_paris2.
+     * @param {clc_paris2CreateArgs} args - Arguments to create a Clc_paris2.
      * @example
-     * // Create one Clc_paris
-     * const Clc_paris = await prisma.clc_paris.create({
+     * // Create one Clc_paris2
+     * const Clc_paris2 = await prisma.clc_paris2.create({
      *   data: {
-     *     // ... data to create a Clc_paris
+     *     // ... data to create a Clc_paris2
      *   }
      * })
      * 
     **/
-    create<T extends clc_parisCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_parisCreateArgs<ExtArgs>>
-    ): Prisma__clc_parisClient<$Result.GetResult<Prisma.$clc_parisPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends clc_paris2CreateArgs<ExtArgs>>(
+      args: SelectSubset<T, clc_paris2CreateArgs<ExtArgs>>
+    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many Clc_parises.
-     *     @param {clc_parisCreateManyArgs} args - Arguments to create many Clc_parises.
+     * Create many Clc_paris2s.
+     *     @param {clc_paris2CreateManyArgs} args - Arguments to create many Clc_paris2s.
      *     @example
-     *     // Create many Clc_parises
-     *     const clc_paris = await prisma.clc_paris.createMany({
+     *     // Create many Clc_paris2s
+     *     const clc_paris2 = await prisma.clc_paris2.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends clc_parisCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_parisCreateManyArgs<ExtArgs>>
+    createMany<T extends clc_paris2CreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, clc_paris2CreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Clc_paris.
-     * @param {clc_parisDeleteArgs} args - Arguments to delete one Clc_paris.
+     * Delete a Clc_paris2.
+     * @param {clc_paris2DeleteArgs} args - Arguments to delete one Clc_paris2.
      * @example
-     * // Delete one Clc_paris
-     * const Clc_paris = await prisma.clc_paris.delete({
+     * // Delete one Clc_paris2
+     * const Clc_paris2 = await prisma.clc_paris2.delete({
      *   where: {
-     *     // ... filter to delete one Clc_paris
+     *     // ... filter to delete one Clc_paris2
      *   }
      * })
      * 
     **/
-    delete<T extends clc_parisDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_parisDeleteArgs<ExtArgs>>
-    ): Prisma__clc_parisClient<$Result.GetResult<Prisma.$clc_parisPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends clc_paris2DeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, clc_paris2DeleteArgs<ExtArgs>>
+    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one Clc_paris.
-     * @param {clc_parisUpdateArgs} args - Arguments to update one Clc_paris.
+     * Update one Clc_paris2.
+     * @param {clc_paris2UpdateArgs} args - Arguments to update one Clc_paris2.
      * @example
-     * // Update one Clc_paris
-     * const clc_paris = await prisma.clc_paris.update({
+     * // Update one Clc_paris2
+     * const clc_paris2 = await prisma.clc_paris2.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1487,34 +1335,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends clc_parisUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_parisUpdateArgs<ExtArgs>>
-    ): Prisma__clc_parisClient<$Result.GetResult<Prisma.$clc_parisPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends clc_paris2UpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, clc_paris2UpdateArgs<ExtArgs>>
+    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more Clc_parises.
-     * @param {clc_parisDeleteManyArgs} args - Arguments to filter Clc_parises to delete.
+     * Delete zero or more Clc_paris2s.
+     * @param {clc_paris2DeleteManyArgs} args - Arguments to filter Clc_paris2s to delete.
      * @example
-     * // Delete a few Clc_parises
-     * const { count } = await prisma.clc_paris.deleteMany({
+     * // Delete a few Clc_paris2s
+     * const { count } = await prisma.clc_paris2.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends clc_parisDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_parisDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends clc_paris2DeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, clc_paris2DeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Clc_parises.
+     * Update zero or more Clc_paris2s.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_parisUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {clc_paris2UpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Clc_parises
-     * const clc_paris = await prisma.clc_paris.updateMany({
+     * // Update many Clc_paris2s
+     * const clc_paris2 = await prisma.clc_paris2.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1524,59 +1372,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends clc_parisUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_parisUpdateManyArgs<ExtArgs>>
+    updateMany<T extends clc_paris2UpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, clc_paris2UpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Clc_paris.
-     * @param {clc_parisUpsertArgs} args - Arguments to update or create a Clc_paris.
+     * Create or update one Clc_paris2.
+     * @param {clc_paris2UpsertArgs} args - Arguments to update or create a Clc_paris2.
      * @example
-     * // Update or create a Clc_paris
-     * const clc_paris = await prisma.clc_paris.upsert({
+     * // Update or create a Clc_paris2
+     * const clc_paris2 = await prisma.clc_paris2.upsert({
      *   create: {
-     *     // ... data to create a Clc_paris
+     *     // ... data to create a Clc_paris2
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Clc_paris we want to update
+     *     // ... the filter for the Clc_paris2 we want to update
      *   }
      * })
     **/
-    upsert<T extends clc_parisUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_parisUpsertArgs<ExtArgs>>
-    ): Prisma__clc_parisClient<$Result.GetResult<Prisma.$clc_parisPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends clc_paris2UpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, clc_paris2UpsertArgs<ExtArgs>>
+    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of Clc_parises.
+     * Count the number of Clc_paris2s.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_parisCountArgs} args - Arguments to filter Clc_parises to count.
+     * @param {clc_paris2CountArgs} args - Arguments to filter Clc_paris2s to count.
      * @example
-     * // Count the number of Clc_parises
-     * const count = await prisma.clc_paris.count({
+     * // Count the number of Clc_paris2s
+     * const count = await prisma.clc_paris2.count({
      *   where: {
-     *     // ... the filter for the Clc_parises we want to count
+     *     // ... the filter for the Clc_paris2s we want to count
      *   }
      * })
     **/
-    count<T extends clc_parisCountArgs>(
-      args?: Subset<T, clc_parisCountArgs>,
+    count<T extends clc_paris2CountArgs>(
+      args?: Subset<T, clc_paris2CountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], Clc_parisCountAggregateOutputType>
+          : GetScalarType<T['select'], Clc_paris2CountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Clc_paris.
+     * Allows you to perform aggregations operations on a Clc_paris2.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Clc_parisAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {Clc_paris2AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -1596,13 +1444,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends Clc_parisAggregateArgs>(args: Subset<T, Clc_parisAggregateArgs>): Prisma.PrismaPromise<GetClc_parisAggregateType<T>>
+    aggregate<T extends Clc_paris2AggregateArgs>(args: Subset<T, Clc_paris2AggregateArgs>): Prisma.PrismaPromise<GetClc_paris2AggregateType<T>>
 
     /**
-     * Group by Clc_paris.
+     * Group by Clc_paris2.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_parisGroupByArgs} args - Group by arguments.
+     * @param {clc_paris2GroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1617,14 +1465,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends clc_parisGroupByArgs,
+      T extends clc_paris2GroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: clc_parisGroupByArgs['orderBy'] }
-        : { orderBy?: clc_parisGroupByArgs['orderBy'] },
+        ? { orderBy: clc_paris2GroupByArgs['orderBy'] }
+        : { orderBy?: clc_paris2GroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1673,20 +1521,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, clc_parisGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClc_parisGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, clc_paris2GroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClc_paris2GroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the clc_paris model
+   * Fields of the clc_paris2 model
    */
-  readonly fields: clc_parisFieldRefs;
+  readonly fields: clc_paris2FieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for clc_paris.
+   * The delegate class that acts as a "Promise-like" for clc_paris2.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__clc_parisClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__clc_paris2Client<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
 
@@ -1715,1959 +1563,283 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the clc_paris model
+   * Fields of the clc_paris2 model
    */ 
-  interface clc_parisFieldRefs {
-    readonly pk: FieldRef<"clc_paris", 'Int'>
-    readonly class_2018: FieldRef<"clc_paris", 'String'>
-    readonly shape_length: FieldRef<"clc_paris", 'Float'>
-    readonly shape_area: FieldRef<"clc_paris", 'Float'>
+  interface clc_paris2FieldRefs {
+    readonly pk: FieldRef<"clc_paris2", 'Int'>
+    readonly class_2018: FieldRef<"clc_paris2", 'String'>
+    readonly shape_length: FieldRef<"clc_paris2", 'Float'>
+    readonly shape_area: FieldRef<"clc_paris2", 'Float'>
   }
     
 
   // Custom InputTypes
   /**
-   * clc_paris findUnique
+   * clc_paris2 findUnique
    */
-  export type clc_parisFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type clc_paris2FindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the clc_paris
+     * Select specific fields to fetch from the clc_paris2
      */
-    select?: clc_parisSelect<ExtArgs> | null
+    select?: clc_paris2Select<ExtArgs> | null
     /**
-     * Filter, which clc_paris to fetch.
+     * Filter, which clc_paris2 to fetch.
      */
-    where: clc_parisWhereUniqueInput
+    where: clc_paris2WhereUniqueInput
   }
 
   /**
-   * clc_paris findUniqueOrThrow
+   * clc_paris2 findUniqueOrThrow
    */
-  export type clc_parisFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type clc_paris2FindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the clc_paris
+     * Select specific fields to fetch from the clc_paris2
      */
-    select?: clc_parisSelect<ExtArgs> | null
+    select?: clc_paris2Select<ExtArgs> | null
     /**
-     * Filter, which clc_paris to fetch.
+     * Filter, which clc_paris2 to fetch.
      */
-    where: clc_parisWhereUniqueInput
+    where: clc_paris2WhereUniqueInput
   }
 
   /**
-   * clc_paris findFirst
+   * clc_paris2 findFirst
    */
-  export type clc_parisFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type clc_paris2FindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the clc_paris
+     * Select specific fields to fetch from the clc_paris2
      */
-    select?: clc_parisSelect<ExtArgs> | null
+    select?: clc_paris2Select<ExtArgs> | null
     /**
-     * Filter, which clc_paris to fetch.
+     * Filter, which clc_paris2 to fetch.
      */
-    where?: clc_parisWhereInput
+    where?: clc_paris2WhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of clc_parises to fetch.
+     * Determine the order of clc_paris2s to fetch.
      */
-    orderBy?: clc_parisOrderByWithRelationInput | clc_parisOrderByWithRelationInput[]
+    orderBy?: clc_paris2OrderByWithRelationInput | clc_paris2OrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for clc_parises.
+     * Sets the position for searching for clc_paris2s.
      */
-    cursor?: clc_parisWhereUniqueInput
+    cursor?: clc_paris2WhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` clc_parises from the position of the cursor.
+     * Take `±n` clc_paris2s from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` clc_parises.
+     * Skip the first `n` clc_paris2s.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of clc_parises.
+     * Filter by unique combinations of clc_paris2s.
      */
-    distinct?: Clc_parisScalarFieldEnum | Clc_parisScalarFieldEnum[]
+    distinct?: Clc_paris2ScalarFieldEnum | Clc_paris2ScalarFieldEnum[]
   }
 
   /**
-   * clc_paris findFirstOrThrow
+   * clc_paris2 findFirstOrThrow
    */
-  export type clc_parisFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type clc_paris2FindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the clc_paris
+     * Select specific fields to fetch from the clc_paris2
      */
-    select?: clc_parisSelect<ExtArgs> | null
+    select?: clc_paris2Select<ExtArgs> | null
     /**
-     * Filter, which clc_paris to fetch.
+     * Filter, which clc_paris2 to fetch.
      */
-    where?: clc_parisWhereInput
+    where?: clc_paris2WhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of clc_parises to fetch.
+     * Determine the order of clc_paris2s to fetch.
      */
-    orderBy?: clc_parisOrderByWithRelationInput | clc_parisOrderByWithRelationInput[]
+    orderBy?: clc_paris2OrderByWithRelationInput | clc_paris2OrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for clc_parises.
+     * Sets the position for searching for clc_paris2s.
      */
-    cursor?: clc_parisWhereUniqueInput
+    cursor?: clc_paris2WhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` clc_parises from the position of the cursor.
+     * Take `±n` clc_paris2s from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` clc_parises.
+     * Skip the first `n` clc_paris2s.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of clc_parises.
+     * Filter by unique combinations of clc_paris2s.
      */
-    distinct?: Clc_parisScalarFieldEnum | Clc_parisScalarFieldEnum[]
+    distinct?: Clc_paris2ScalarFieldEnum | Clc_paris2ScalarFieldEnum[]
   }
 
   /**
-   * clc_paris findMany
+   * clc_paris2 findMany
    */
-  export type clc_parisFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type clc_paris2FindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the clc_paris
+     * Select specific fields to fetch from the clc_paris2
      */
-    select?: clc_parisSelect<ExtArgs> | null
+    select?: clc_paris2Select<ExtArgs> | null
     /**
-     * Filter, which clc_parises to fetch.
+     * Filter, which clc_paris2s to fetch.
      */
-    where?: clc_parisWhereInput
+    where?: clc_paris2WhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of clc_parises to fetch.
+     * Determine the order of clc_paris2s to fetch.
      */
-    orderBy?: clc_parisOrderByWithRelationInput | clc_parisOrderByWithRelationInput[]
+    orderBy?: clc_paris2OrderByWithRelationInput | clc_paris2OrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing clc_parises.
+     * Sets the position for listing clc_paris2s.
      */
-    cursor?: clc_parisWhereUniqueInput
+    cursor?: clc_paris2WhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` clc_parises from the position of the cursor.
+     * Take `±n` clc_paris2s from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` clc_parises.
+     * Skip the first `n` clc_paris2s.
      */
     skip?: number
-    distinct?: Clc_parisScalarFieldEnum | Clc_parisScalarFieldEnum[]
+    distinct?: Clc_paris2ScalarFieldEnum | Clc_paris2ScalarFieldEnum[]
   }
 
   /**
-   * clc_paris create
+   * clc_paris2 create
    */
-  export type clc_parisCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type clc_paris2CreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the clc_paris
+     * Select specific fields to fetch from the clc_paris2
      */
-    select?: clc_parisSelect<ExtArgs> | null
+    select?: clc_paris2Select<ExtArgs> | null
     /**
-     * The data needed to create a clc_paris.
+     * The data needed to create a clc_paris2.
      */
-    data?: XOR<clc_parisCreateInput, clc_parisUncheckedCreateInput>
+    data?: XOR<clc_paris2CreateInput, clc_paris2UncheckedCreateInput>
   }
 
   /**
-   * clc_paris createMany
+   * clc_paris2 createMany
    */
-  export type clc_parisCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type clc_paris2CreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many clc_parises.
+     * The data used to create many clc_paris2s.
      */
-    data: clc_parisCreateManyInput | clc_parisCreateManyInput[]
+    data: clc_paris2CreateManyInput | clc_paris2CreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * clc_paris update
+   * clc_paris2 update
    */
-  export type clc_parisUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type clc_paris2UpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the clc_paris
+     * Select specific fields to fetch from the clc_paris2
      */
-    select?: clc_parisSelect<ExtArgs> | null
+    select?: clc_paris2Select<ExtArgs> | null
     /**
-     * The data needed to update a clc_paris.
+     * The data needed to update a clc_paris2.
      */
-    data: XOR<clc_parisUpdateInput, clc_parisUncheckedUpdateInput>
+    data: XOR<clc_paris2UpdateInput, clc_paris2UncheckedUpdateInput>
     /**
-     * Choose, which clc_paris to update.
+     * Choose, which clc_paris2 to update.
      */
-    where: clc_parisWhereUniqueInput
+    where: clc_paris2WhereUniqueInput
   }
 
   /**
-   * clc_paris updateMany
+   * clc_paris2 updateMany
    */
-  export type clc_parisUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type clc_paris2UpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update clc_parises.
+     * The data used to update clc_paris2s.
      */
-    data: XOR<clc_parisUpdateManyMutationInput, clc_parisUncheckedUpdateManyInput>
+    data: XOR<clc_paris2UpdateManyMutationInput, clc_paris2UncheckedUpdateManyInput>
     /**
-     * Filter which clc_parises to update
+     * Filter which clc_paris2s to update
      */
-    where?: clc_parisWhereInput
+    where?: clc_paris2WhereInput
   }
 
   /**
-   * clc_paris upsert
+   * clc_paris2 upsert
    */
-  export type clc_parisUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type clc_paris2UpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the clc_paris
+     * Select specific fields to fetch from the clc_paris2
      */
-    select?: clc_parisSelect<ExtArgs> | null
+    select?: clc_paris2Select<ExtArgs> | null
     /**
-     * The filter to search for the clc_paris to update in case it exists.
+     * The filter to search for the clc_paris2 to update in case it exists.
      */
-    where: clc_parisWhereUniqueInput
+    where: clc_paris2WhereUniqueInput
     /**
-     * In case the clc_paris found by the `where` argument doesn't exist, create a new clc_paris with this data.
+     * In case the clc_paris2 found by the `where` argument doesn't exist, create a new clc_paris2 with this data.
      */
-    create: XOR<clc_parisCreateInput, clc_parisUncheckedCreateInput>
+    create: XOR<clc_paris2CreateInput, clc_paris2UncheckedCreateInput>
     /**
-     * In case the clc_paris was found with the provided `where` argument, update it with this data.
+     * In case the clc_paris2 was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<clc_parisUpdateInput, clc_parisUncheckedUpdateInput>
+    update: XOR<clc_paris2UpdateInput, clc_paris2UncheckedUpdateInput>
   }
 
   /**
-   * clc_paris delete
+   * clc_paris2 delete
    */
-  export type clc_parisDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type clc_paris2DeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the clc_paris
+     * Select specific fields to fetch from the clc_paris2
      */
-    select?: clc_parisSelect<ExtArgs> | null
+    select?: clc_paris2Select<ExtArgs> | null
     /**
-     * Filter which clc_paris to delete.
+     * Filter which clc_paris2 to delete.
      */
-    where: clc_parisWhereUniqueInput
+    where: clc_paris2WhereUniqueInput
   }
 
   /**
-   * clc_paris deleteMany
+   * clc_paris2 deleteMany
    */
-  export type clc_parisDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type clc_paris2DeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which clc_parises to delete
+     * Filter which clc_paris2s to delete
      */
-    where?: clc_parisWhereInput
+    where?: clc_paris2WhereInput
   }
 
   /**
-   * clc_paris without action
+   * clc_paris2 without action
    */
-  export type clc_parisDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type clc_paris2DefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the clc_paris
+     * Select specific fields to fetch from the clc_paris2
      */
-    select?: clc_parisSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * Model test
-   */
-
-  export type AggregateTest = {
-    _count: TestCountAggregateOutputType | null
-    _avg: TestAvgAggregateOutputType | null
-    _sum: TestSumAggregateOutputType | null
-    _min: TestMinAggregateOutputType | null
-    _max: TestMaxAggregateOutputType | null
-  }
-
-  export type TestAvgAggregateOutputType = {
-    Shape_Length: number | null
-    Shape_Area: number | null
-    pk: number | null
-  }
-
-  export type TestSumAggregateOutputType = {
-    Shape_Length: number | null
-    Shape_Area: number | null
-    pk: number | null
-  }
-
-  export type TestMinAggregateOutputType = {
-    class_2018: string | null
-    Shape_Length: number | null
-    Shape_Area: number | null
-    pk: number | null
-  }
-
-  export type TestMaxAggregateOutputType = {
-    class_2018: string | null
-    Shape_Length: number | null
-    Shape_Area: number | null
-    pk: number | null
-  }
-
-  export type TestCountAggregateOutputType = {
-    class_2018: number
-    Shape_Length: number
-    Shape_Area: number
-    pk: number
-    _all: number
-  }
-
-
-  export type TestAvgAggregateInputType = {
-    Shape_Length?: true
-    Shape_Area?: true
-    pk?: true
-  }
-
-  export type TestSumAggregateInputType = {
-    Shape_Length?: true
-    Shape_Area?: true
-    pk?: true
-  }
-
-  export type TestMinAggregateInputType = {
-    class_2018?: true
-    Shape_Length?: true
-    Shape_Area?: true
-    pk?: true
-  }
-
-  export type TestMaxAggregateInputType = {
-    class_2018?: true
-    Shape_Length?: true
-    Shape_Area?: true
-    pk?: true
-  }
-
-  export type TestCountAggregateInputType = {
-    class_2018?: true
-    Shape_Length?: true
-    Shape_Area?: true
-    pk?: true
-    _all?: true
-  }
-
-  export type TestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which test to aggregate.
-     */
-    where?: testWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tests to fetch.
-     */
-    orderBy?: testOrderByWithRelationInput | testOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: testWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tests from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tests.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned tests
-    **/
-    _count?: true | TestCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: TestAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: TestSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: TestMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: TestMaxAggregateInputType
-  }
-
-  export type GetTestAggregateType<T extends TestAggregateArgs> = {
-        [P in keyof T & keyof AggregateTest]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateTest[P]>
-      : GetScalarType<T[P], AggregateTest[P]>
-  }
-
-
-
-
-  export type testGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: testWhereInput
-    orderBy?: testOrderByWithAggregationInput | testOrderByWithAggregationInput[]
-    by: TestScalarFieldEnum[] | TestScalarFieldEnum
-    having?: testScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: TestCountAggregateInputType | true
-    _avg?: TestAvgAggregateInputType
-    _sum?: TestSumAggregateInputType
-    _min?: TestMinAggregateInputType
-    _max?: TestMaxAggregateInputType
-  }
-
-  export type TestGroupByOutputType = {
-    class_2018: string | null
-    Shape_Length: number | null
-    Shape_Area: number | null
-    pk: number
-    _count: TestCountAggregateOutputType | null
-    _avg: TestAvgAggregateOutputType | null
-    _sum: TestSumAggregateOutputType | null
-    _min: TestMinAggregateOutputType | null
-    _max: TestMaxAggregateOutputType | null
-  }
-
-  type GetTestGroupByPayload<T extends testGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<TestGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof TestGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], TestGroupByOutputType[P]>
-            : GetScalarType<T[P], TestGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type testSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    class_2018?: boolean
-    Shape_Length?: boolean
-    Shape_Area?: boolean
-    pk?: boolean
-  }, ExtArgs["result"]["test"]>
-
-  export type testSelectScalar = {
-    class_2018?: boolean
-    Shape_Length?: boolean
-    Shape_Area?: boolean
-    pk?: boolean
-  }
-
-
-
-  export type $testPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "test"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      class_2018: string | null
-      Shape_Length: number | null
-      Shape_Area: number | null
-      pk: number
-    }, ExtArgs["result"]["test"]>
-    composites: {}
-  }
-
-
-  type testGetPayload<S extends boolean | null | undefined | testDefaultArgs> = $Result.GetResult<Prisma.$testPayload, S>
-
-  type testCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<testFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: TestCountAggregateInputType | true
-    }
-
-  export interface testDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['test'], meta: { name: 'test' } }
-    /**
-     * Find zero or one Test that matches the filter.
-     * @param {testFindUniqueArgs} args - Arguments to find a Test
-     * @example
-     * // Get one Test
-     * const test = await prisma.test.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends testFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, testFindUniqueArgs<ExtArgs>>
-    ): Prisma__testClient<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one Test that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {testFindUniqueOrThrowArgs} args - Arguments to find a Test
-     * @example
-     * // Get one Test
-     * const test = await prisma.test.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends testFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, testFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__testClient<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first Test that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {testFindFirstArgs} args - Arguments to find a Test
-     * @example
-     * // Get one Test
-     * const test = await prisma.test.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends testFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, testFindFirstArgs<ExtArgs>>
-    ): Prisma__testClient<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first Test that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {testFindFirstOrThrowArgs} args - Arguments to find a Test
-     * @example
-     * // Get one Test
-     * const test = await prisma.test.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends testFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, testFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__testClient<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more Tests that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {testFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Tests
-     * const tests = await prisma.test.findMany()
-     * 
-     * // Get first 10 Tests
-     * const tests = await prisma.test.findMany({ take: 10 })
-     * 
-     * // Only select the `class_2018`
-     * const testWithClass_2018Only = await prisma.test.findMany({ select: { class_2018: true } })
-     * 
-    **/
-    findMany<T extends testFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, testFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Delete a Test.
-     * @param {testDeleteArgs} args - Arguments to delete one Test.
-     * @example
-     * // Delete one Test
-     * const Test = await prisma.test.delete({
-     *   where: {
-     *     // ... filter to delete one Test
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends testDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, testDeleteArgs<ExtArgs>>
-    ): Prisma__testClient<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one Test.
-     * @param {testUpdateArgs} args - Arguments to update one Test.
-     * @example
-     * // Update one Test
-     * const test = await prisma.test.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends testUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, testUpdateArgs<ExtArgs>>
-    ): Prisma__testClient<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Tests.
-     * @param {testDeleteManyArgs} args - Arguments to filter Tests to delete.
-     * @example
-     * // Delete a few Tests
-     * const { count } = await prisma.test.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends testDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, testDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Tests.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {testUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Tests
-     * const test = await prisma.test.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends testUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, testUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Count the number of Tests.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {testCountArgs} args - Arguments to filter Tests to count.
-     * @example
-     * // Count the number of Tests
-     * const count = await prisma.test.count({
-     *   where: {
-     *     // ... the filter for the Tests we want to count
-     *   }
-     * })
-    **/
-    count<T extends testCountArgs>(
-      args?: Subset<T, testCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], TestCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Test.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends TestAggregateArgs>(args: Subset<T, TestAggregateArgs>): Prisma.PrismaPromise<GetTestAggregateType<T>>
-
-    /**
-     * Group by Test.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {testGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends testGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: testGroupByArgs['orderBy'] }
-        : { orderBy?: testGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, testGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the test model
-   */
-  readonly fields: testFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for test.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__testClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the test model
-   */ 
-  interface testFieldRefs {
-    readonly class_2018: FieldRef<"test", 'String'>
-    readonly Shape_Length: FieldRef<"test", 'Float'>
-    readonly Shape_Area: FieldRef<"test", 'Float'>
-    readonly pk: FieldRef<"test", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * test findUnique
-   */
-  export type testFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test
-     */
-    select?: testSelect<ExtArgs> | null
-    /**
-     * Filter, which test to fetch.
-     */
-    where: testWhereUniqueInput
-  }
-
-  /**
-   * test findUniqueOrThrow
-   */
-  export type testFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test
-     */
-    select?: testSelect<ExtArgs> | null
-    /**
-     * Filter, which test to fetch.
-     */
-    where: testWhereUniqueInput
-  }
-
-  /**
-   * test findFirst
-   */
-  export type testFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test
-     */
-    select?: testSelect<ExtArgs> | null
-    /**
-     * Filter, which test to fetch.
-     */
-    where?: testWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tests to fetch.
-     */
-    orderBy?: testOrderByWithRelationInput | testOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for tests.
-     */
-    cursor?: testWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tests from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tests.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of tests.
-     */
-    distinct?: TestScalarFieldEnum | TestScalarFieldEnum[]
-  }
-
-  /**
-   * test findFirstOrThrow
-   */
-  export type testFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test
-     */
-    select?: testSelect<ExtArgs> | null
-    /**
-     * Filter, which test to fetch.
-     */
-    where?: testWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tests to fetch.
-     */
-    orderBy?: testOrderByWithRelationInput | testOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for tests.
-     */
-    cursor?: testWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tests from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tests.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of tests.
-     */
-    distinct?: TestScalarFieldEnum | TestScalarFieldEnum[]
-  }
-
-  /**
-   * test findMany
-   */
-  export type testFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test
-     */
-    select?: testSelect<ExtArgs> | null
-    /**
-     * Filter, which tests to fetch.
-     */
-    where?: testWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tests to fetch.
-     */
-    orderBy?: testOrderByWithRelationInput | testOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing tests.
-     */
-    cursor?: testWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tests from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tests.
-     */
-    skip?: number
-    distinct?: TestScalarFieldEnum | TestScalarFieldEnum[]
-  }
-
-  /**
-   * test update
-   */
-  export type testUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test
-     */
-    select?: testSelect<ExtArgs> | null
-    /**
-     * The data needed to update a test.
-     */
-    data: XOR<testUpdateInput, testUncheckedUpdateInput>
-    /**
-     * Choose, which test to update.
-     */
-    where: testWhereUniqueInput
-  }
-
-  /**
-   * test updateMany
-   */
-  export type testUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update tests.
-     */
-    data: XOR<testUpdateManyMutationInput, testUncheckedUpdateManyInput>
-    /**
-     * Filter which tests to update
-     */
-    where?: testWhereInput
-  }
-
-  /**
-   * test delete
-   */
-  export type testDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test
-     */
-    select?: testSelect<ExtArgs> | null
-    /**
-     * Filter which test to delete.
-     */
-    where: testWhereUniqueInput
-  }
-
-  /**
-   * test deleteMany
-   */
-  export type testDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which tests to delete
-     */
-    where?: testWhereInput
-  }
-
-  /**
-   * test without action
-   */
-  export type testDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test
-     */
-    select?: testSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * Model test2
-   */
-
-  export type AggregateTest2 = {
-    _count: Test2CountAggregateOutputType | null
-    _avg: Test2AvgAggregateOutputType | null
-    _sum: Test2SumAggregateOutputType | null
-    _min: Test2MinAggregateOutputType | null
-    _max: Test2MaxAggregateOutputType | null
-  }
-
-  export type Test2AvgAggregateOutputType = {
-    pk: number | null
-    Shape_Length: number | null
-    Shape_Area: number | null
-  }
-
-  export type Test2SumAggregateOutputType = {
-    pk: number | null
-    Shape_Length: number | null
-    Shape_Area: number | null
-  }
-
-  export type Test2MinAggregateOutputType = {
-    pk: number | null
-    class_2018: string | null
-    Shape_Length: number | null
-    Shape_Area: number | null
-  }
-
-  export type Test2MaxAggregateOutputType = {
-    pk: number | null
-    class_2018: string | null
-    Shape_Length: number | null
-    Shape_Area: number | null
-  }
-
-  export type Test2CountAggregateOutputType = {
-    pk: number
-    class_2018: number
-    Shape_Length: number
-    Shape_Area: number
-    _all: number
-  }
-
-
-  export type Test2AvgAggregateInputType = {
-    pk?: true
-    Shape_Length?: true
-    Shape_Area?: true
-  }
-
-  export type Test2SumAggregateInputType = {
-    pk?: true
-    Shape_Length?: true
-    Shape_Area?: true
-  }
-
-  export type Test2MinAggregateInputType = {
-    pk?: true
-    class_2018?: true
-    Shape_Length?: true
-    Shape_Area?: true
-  }
-
-  export type Test2MaxAggregateInputType = {
-    pk?: true
-    class_2018?: true
-    Shape_Length?: true
-    Shape_Area?: true
-  }
-
-  export type Test2CountAggregateInputType = {
-    pk?: true
-    class_2018?: true
-    Shape_Length?: true
-    Shape_Area?: true
-    _all?: true
-  }
-
-  export type Test2AggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which test2 to aggregate.
-     */
-    where?: test2WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of test2s to fetch.
-     */
-    orderBy?: test2OrderByWithRelationInput | test2OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: test2WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` test2s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` test2s.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned test2s
-    **/
-    _count?: true | Test2CountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Test2AvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Test2SumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Test2MinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Test2MaxAggregateInputType
-  }
-
-  export type GetTest2AggregateType<T extends Test2AggregateArgs> = {
-        [P in keyof T & keyof AggregateTest2]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateTest2[P]>
-      : GetScalarType<T[P], AggregateTest2[P]>
-  }
-
-
-
-
-  export type test2GroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: test2WhereInput
-    orderBy?: test2OrderByWithAggregationInput | test2OrderByWithAggregationInput[]
-    by: Test2ScalarFieldEnum[] | Test2ScalarFieldEnum
-    having?: test2ScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Test2CountAggregateInputType | true
-    _avg?: Test2AvgAggregateInputType
-    _sum?: Test2SumAggregateInputType
-    _min?: Test2MinAggregateInputType
-    _max?: Test2MaxAggregateInputType
-  }
-
-  export type Test2GroupByOutputType = {
-    pk: number
-    class_2018: string | null
-    Shape_Length: number | null
-    Shape_Area: number | null
-    _count: Test2CountAggregateOutputType | null
-    _avg: Test2AvgAggregateOutputType | null
-    _sum: Test2SumAggregateOutputType | null
-    _min: Test2MinAggregateOutputType | null
-    _max: Test2MaxAggregateOutputType | null
-  }
-
-  type GetTest2GroupByPayload<T extends test2GroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Test2GroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Test2GroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Test2GroupByOutputType[P]>
-            : GetScalarType<T[P], Test2GroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type test2Select<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pk?: boolean
-    class_2018?: boolean
-    Shape_Length?: boolean
-    Shape_Area?: boolean
-  }, ExtArgs["result"]["test2"]>
-
-  export type test2SelectScalar = {
-    pk?: boolean
-    class_2018?: boolean
-    Shape_Length?: boolean
-    Shape_Area?: boolean
-  }
-
-
-
-  export type $test2Payload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "test2"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      pk: number
-      class_2018: string | null
-      Shape_Length: number | null
-      Shape_Area: number | null
-    }, ExtArgs["result"]["test2"]>
-    composites: {}
-  }
-
-
-  type test2GetPayload<S extends boolean | null | undefined | test2DefaultArgs> = $Result.GetResult<Prisma.$test2Payload, S>
-
-  type test2CountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<test2FindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: Test2CountAggregateInputType | true
-    }
-
-  export interface test2Delegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['test2'], meta: { name: 'test2' } }
-    /**
-     * Find zero or one Test2 that matches the filter.
-     * @param {test2FindUniqueArgs} args - Arguments to find a Test2
-     * @example
-     * // Get one Test2
-     * const test2 = await prisma.test2.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends test2FindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, test2FindUniqueArgs<ExtArgs>>
-    ): Prisma__test2Client<$Result.GetResult<Prisma.$test2Payload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one Test2 that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {test2FindUniqueOrThrowArgs} args - Arguments to find a Test2
-     * @example
-     * // Get one Test2
-     * const test2 = await prisma.test2.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends test2FindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, test2FindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__test2Client<$Result.GetResult<Prisma.$test2Payload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first Test2 that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {test2FindFirstArgs} args - Arguments to find a Test2
-     * @example
-     * // Get one Test2
-     * const test2 = await prisma.test2.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends test2FindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, test2FindFirstArgs<ExtArgs>>
-    ): Prisma__test2Client<$Result.GetResult<Prisma.$test2Payload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first Test2 that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {test2FindFirstOrThrowArgs} args - Arguments to find a Test2
-     * @example
-     * // Get one Test2
-     * const test2 = await prisma.test2.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends test2FindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, test2FindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__test2Client<$Result.GetResult<Prisma.$test2Payload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more Test2s that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {test2FindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Test2s
-     * const test2s = await prisma.test2.findMany()
-     * 
-     * // Get first 10 Test2s
-     * const test2s = await prisma.test2.findMany({ take: 10 })
-     * 
-     * // Only select the `pk`
-     * const test2WithPkOnly = await prisma.test2.findMany({ select: { pk: true } })
-     * 
-    **/
-    findMany<T extends test2FindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, test2FindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$test2Payload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a Test2.
-     * @param {test2CreateArgs} args - Arguments to create a Test2.
-     * @example
-     * // Create one Test2
-     * const Test2 = await prisma.test2.create({
-     *   data: {
-     *     // ... data to create a Test2
-     *   }
-     * })
-     * 
-    **/
-    create<T extends test2CreateArgs<ExtArgs>>(
-      args: SelectSubset<T, test2CreateArgs<ExtArgs>>
-    ): Prisma__test2Client<$Result.GetResult<Prisma.$test2Payload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many Test2s.
-     *     @param {test2CreateManyArgs} args - Arguments to create many Test2s.
-     *     @example
-     *     // Create many Test2s
-     *     const test2 = await prisma.test2.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends test2CreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, test2CreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Test2.
-     * @param {test2DeleteArgs} args - Arguments to delete one Test2.
-     * @example
-     * // Delete one Test2
-     * const Test2 = await prisma.test2.delete({
-     *   where: {
-     *     // ... filter to delete one Test2
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends test2DeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, test2DeleteArgs<ExtArgs>>
-    ): Prisma__test2Client<$Result.GetResult<Prisma.$test2Payload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one Test2.
-     * @param {test2UpdateArgs} args - Arguments to update one Test2.
-     * @example
-     * // Update one Test2
-     * const test2 = await prisma.test2.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends test2UpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, test2UpdateArgs<ExtArgs>>
-    ): Prisma__test2Client<$Result.GetResult<Prisma.$test2Payload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Test2s.
-     * @param {test2DeleteManyArgs} args - Arguments to filter Test2s to delete.
-     * @example
-     * // Delete a few Test2s
-     * const { count } = await prisma.test2.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends test2DeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, test2DeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Test2s.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {test2UpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Test2s
-     * const test2 = await prisma.test2.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends test2UpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, test2UpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Test2.
-     * @param {test2UpsertArgs} args - Arguments to update or create a Test2.
-     * @example
-     * // Update or create a Test2
-     * const test2 = await prisma.test2.upsert({
-     *   create: {
-     *     // ... data to create a Test2
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Test2 we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends test2UpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, test2UpsertArgs<ExtArgs>>
-    ): Prisma__test2Client<$Result.GetResult<Prisma.$test2Payload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of Test2s.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {test2CountArgs} args - Arguments to filter Test2s to count.
-     * @example
-     * // Count the number of Test2s
-     * const count = await prisma.test2.count({
-     *   where: {
-     *     // ... the filter for the Test2s we want to count
-     *   }
-     * })
-    **/
-    count<T extends test2CountArgs>(
-      args?: Subset<T, test2CountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Test2CountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Test2.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Test2AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Test2AggregateArgs>(args: Subset<T, Test2AggregateArgs>): Prisma.PrismaPromise<GetTest2AggregateType<T>>
-
-    /**
-     * Group by Test2.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {test2GroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends test2GroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: test2GroupByArgs['orderBy'] }
-        : { orderBy?: test2GroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, test2GroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTest2GroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the test2 model
-   */
-  readonly fields: test2FieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for test2.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__test2Client<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the test2 model
-   */ 
-  interface test2FieldRefs {
-    readonly pk: FieldRef<"test2", 'Int'>
-    readonly class_2018: FieldRef<"test2", 'String'>
-    readonly Shape_Length: FieldRef<"test2", 'Float'>
-    readonly Shape_Area: FieldRef<"test2", 'Float'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * test2 findUnique
-   */
-  export type test2FindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test2
-     */
-    select?: test2Select<ExtArgs> | null
-    /**
-     * Filter, which test2 to fetch.
-     */
-    where: test2WhereUniqueInput
-  }
-
-  /**
-   * test2 findUniqueOrThrow
-   */
-  export type test2FindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test2
-     */
-    select?: test2Select<ExtArgs> | null
-    /**
-     * Filter, which test2 to fetch.
-     */
-    where: test2WhereUniqueInput
-  }
-
-  /**
-   * test2 findFirst
-   */
-  export type test2FindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test2
-     */
-    select?: test2Select<ExtArgs> | null
-    /**
-     * Filter, which test2 to fetch.
-     */
-    where?: test2WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of test2s to fetch.
-     */
-    orderBy?: test2OrderByWithRelationInput | test2OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for test2s.
-     */
-    cursor?: test2WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` test2s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` test2s.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of test2s.
-     */
-    distinct?: Test2ScalarFieldEnum | Test2ScalarFieldEnum[]
-  }
-
-  /**
-   * test2 findFirstOrThrow
-   */
-  export type test2FindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test2
-     */
-    select?: test2Select<ExtArgs> | null
-    /**
-     * Filter, which test2 to fetch.
-     */
-    where?: test2WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of test2s to fetch.
-     */
-    orderBy?: test2OrderByWithRelationInput | test2OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for test2s.
-     */
-    cursor?: test2WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` test2s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` test2s.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of test2s.
-     */
-    distinct?: Test2ScalarFieldEnum | Test2ScalarFieldEnum[]
-  }
-
-  /**
-   * test2 findMany
-   */
-  export type test2FindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test2
-     */
-    select?: test2Select<ExtArgs> | null
-    /**
-     * Filter, which test2s to fetch.
-     */
-    where?: test2WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of test2s to fetch.
-     */
-    orderBy?: test2OrderByWithRelationInput | test2OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing test2s.
-     */
-    cursor?: test2WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` test2s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` test2s.
-     */
-    skip?: number
-    distinct?: Test2ScalarFieldEnum | Test2ScalarFieldEnum[]
-  }
-
-  /**
-   * test2 create
-   */
-  export type test2CreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test2
-     */
-    select?: test2Select<ExtArgs> | null
-    /**
-     * The data needed to create a test2.
-     */
-    data?: XOR<test2CreateInput, test2UncheckedCreateInput>
-  }
-
-  /**
-   * test2 createMany
-   */
-  export type test2CreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many test2s.
-     */
-    data: test2CreateManyInput | test2CreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * test2 update
-   */
-  export type test2UpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test2
-     */
-    select?: test2Select<ExtArgs> | null
-    /**
-     * The data needed to update a test2.
-     */
-    data: XOR<test2UpdateInput, test2UncheckedUpdateInput>
-    /**
-     * Choose, which test2 to update.
-     */
-    where: test2WhereUniqueInput
-  }
-
-  /**
-   * test2 updateMany
-   */
-  export type test2UpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update test2s.
-     */
-    data: XOR<test2UpdateManyMutationInput, test2UncheckedUpdateManyInput>
-    /**
-     * Filter which test2s to update
-     */
-    where?: test2WhereInput
-  }
-
-  /**
-   * test2 upsert
-   */
-  export type test2UpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test2
-     */
-    select?: test2Select<ExtArgs> | null
-    /**
-     * The filter to search for the test2 to update in case it exists.
-     */
-    where: test2WhereUniqueInput
-    /**
-     * In case the test2 found by the `where` argument doesn't exist, create a new test2 with this data.
-     */
-    create: XOR<test2CreateInput, test2UncheckedCreateInput>
-    /**
-     * In case the test2 was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<test2UpdateInput, test2UncheckedUpdateInput>
-  }
-
-  /**
-   * test2 delete
-   */
-  export type test2DeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test2
-     */
-    select?: test2Select<ExtArgs> | null
-    /**
-     * Filter which test2 to delete.
-     */
-    where: test2WhereUniqueInput
-  }
-
-  /**
-   * test2 deleteMany
-   */
-  export type test2DeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which test2s to delete
-     */
-    where?: test2WhereInput
-  }
-
-  /**
-   * test2 without action
-   */
-  export type test2DefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the test2
-     */
-    select?: test2Select<ExtArgs> | null
+    select?: clc_paris2Select<ExtArgs> | null
   }
 
 
@@ -4580,34 +2752,14 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const Clc_parisScalarFieldEnum: {
+  export const Clc_paris2ScalarFieldEnum: {
     pk: 'pk',
     class_2018: 'class_2018',
     shape_length: 'shape_length',
     shape_area: 'shape_area'
   };
 
-  export type Clc_parisScalarFieldEnum = (typeof Clc_parisScalarFieldEnum)[keyof typeof Clc_parisScalarFieldEnum]
-
-
-  export const TestScalarFieldEnum: {
-    class_2018: 'class_2018',
-    Shape_Length: 'Shape_Length',
-    Shape_Area: 'Shape_Area',
-    pk: 'pk'
-  };
-
-  export type TestScalarFieldEnum = (typeof TestScalarFieldEnum)[keyof typeof TestScalarFieldEnum]
-
-
-  export const Test2ScalarFieldEnum: {
-    pk: 'pk',
-    class_2018: 'class_2018',
-    Shape_Length: 'Shape_Length',
-    Shape_Area: 'Shape_Area'
-  };
-
-  export type Test2ScalarFieldEnum = (typeof Test2ScalarFieldEnum)[keyof typeof Test2ScalarFieldEnum]
+  export type Clc_paris2ScalarFieldEnum = (typeof Clc_paris2ScalarFieldEnum)[keyof typeof Clc_paris2ScalarFieldEnum]
 
 
   export const Spatial_ref_sysScalarFieldEnum: {
@@ -4695,151 +2847,53 @@ export namespace Prisma {
    */
 
 
-  export type clc_parisWhereInput = {
-    AND?: clc_parisWhereInput | clc_parisWhereInput[]
-    OR?: clc_parisWhereInput[]
-    NOT?: clc_parisWhereInput | clc_parisWhereInput[]
-    pk?: IntFilter<"clc_paris"> | number
-    class_2018?: StringNullableFilter<"clc_paris"> | string | null
-    shape_length?: FloatNullableFilter<"clc_paris"> | number | null
-    shape_area?: FloatNullableFilter<"clc_paris"> | number | null
+  export type clc_paris2WhereInput = {
+    AND?: clc_paris2WhereInput | clc_paris2WhereInput[]
+    OR?: clc_paris2WhereInput[]
+    NOT?: clc_paris2WhereInput | clc_paris2WhereInput[]
+    pk?: IntFilter<"clc_paris2"> | number
+    class_2018?: StringNullableFilter<"clc_paris2"> | string | null
+    shape_length?: FloatNullableFilter<"clc_paris2"> | number | null
+    shape_area?: FloatNullableFilter<"clc_paris2"> | number | null
   }
 
-  export type clc_parisOrderByWithRelationInput = {
+  export type clc_paris2OrderByWithRelationInput = {
     pk?: SortOrder
     class_2018?: SortOrderInput | SortOrder
     shape_length?: SortOrderInput | SortOrder
     shape_area?: SortOrderInput | SortOrder
   }
 
-  export type clc_parisWhereUniqueInput = Prisma.AtLeast<{
+  export type clc_paris2WhereUniqueInput = Prisma.AtLeast<{
     pk?: number
-    AND?: clc_parisWhereInput | clc_parisWhereInput[]
-    OR?: clc_parisWhereInput[]
-    NOT?: clc_parisWhereInput | clc_parisWhereInput[]
-    class_2018?: StringNullableFilter<"clc_paris"> | string | null
-    shape_length?: FloatNullableFilter<"clc_paris"> | number | null
-    shape_area?: FloatNullableFilter<"clc_paris"> | number | null
+    AND?: clc_paris2WhereInput | clc_paris2WhereInput[]
+    OR?: clc_paris2WhereInput[]
+    NOT?: clc_paris2WhereInput | clc_paris2WhereInput[]
+    class_2018?: StringNullableFilter<"clc_paris2"> | string | null
+    shape_length?: FloatNullableFilter<"clc_paris2"> | number | null
+    shape_area?: FloatNullableFilter<"clc_paris2"> | number | null
   }, "pk">
 
-  export type clc_parisOrderByWithAggregationInput = {
+  export type clc_paris2OrderByWithAggregationInput = {
     pk?: SortOrder
     class_2018?: SortOrderInput | SortOrder
     shape_length?: SortOrderInput | SortOrder
     shape_area?: SortOrderInput | SortOrder
-    _count?: clc_parisCountOrderByAggregateInput
-    _avg?: clc_parisAvgOrderByAggregateInput
-    _max?: clc_parisMaxOrderByAggregateInput
-    _min?: clc_parisMinOrderByAggregateInput
-    _sum?: clc_parisSumOrderByAggregateInput
+    _count?: clc_paris2CountOrderByAggregateInput
+    _avg?: clc_paris2AvgOrderByAggregateInput
+    _max?: clc_paris2MaxOrderByAggregateInput
+    _min?: clc_paris2MinOrderByAggregateInput
+    _sum?: clc_paris2SumOrderByAggregateInput
   }
 
-  export type clc_parisScalarWhereWithAggregatesInput = {
-    AND?: clc_parisScalarWhereWithAggregatesInput | clc_parisScalarWhereWithAggregatesInput[]
-    OR?: clc_parisScalarWhereWithAggregatesInput[]
-    NOT?: clc_parisScalarWhereWithAggregatesInput | clc_parisScalarWhereWithAggregatesInput[]
-    pk?: IntWithAggregatesFilter<"clc_paris"> | number
-    class_2018?: StringNullableWithAggregatesFilter<"clc_paris"> | string | null
-    shape_length?: FloatNullableWithAggregatesFilter<"clc_paris"> | number | null
-    shape_area?: FloatNullableWithAggregatesFilter<"clc_paris"> | number | null
-  }
-
-  export type testWhereInput = {
-    AND?: testWhereInput | testWhereInput[]
-    OR?: testWhereInput[]
-    NOT?: testWhereInput | testWhereInput[]
-    class_2018?: StringNullableFilter<"test"> | string | null
-    Shape_Length?: FloatNullableFilter<"test"> | number | null
-    Shape_Area?: FloatNullableFilter<"test"> | number | null
-    pk?: IntFilter<"test"> | number
-  }
-
-  export type testOrderByWithRelationInput = {
-    class_2018?: SortOrderInput | SortOrder
-    Shape_Length?: SortOrderInput | SortOrder
-    Shape_Area?: SortOrderInput | SortOrder
-    pk?: SortOrder
-  }
-
-  export type testWhereUniqueInput = Prisma.AtLeast<{
-    pk?: number
-    AND?: testWhereInput | testWhereInput[]
-    OR?: testWhereInput[]
-    NOT?: testWhereInput | testWhereInput[]
-    class_2018?: StringNullableFilter<"test"> | string | null
-    Shape_Length?: FloatNullableFilter<"test"> | number | null
-    Shape_Area?: FloatNullableFilter<"test"> | number | null
-  }, "pk">
-
-  export type testOrderByWithAggregationInput = {
-    class_2018?: SortOrderInput | SortOrder
-    Shape_Length?: SortOrderInput | SortOrder
-    Shape_Area?: SortOrderInput | SortOrder
-    pk?: SortOrder
-    _count?: testCountOrderByAggregateInput
-    _avg?: testAvgOrderByAggregateInput
-    _max?: testMaxOrderByAggregateInput
-    _min?: testMinOrderByAggregateInput
-    _sum?: testSumOrderByAggregateInput
-  }
-
-  export type testScalarWhereWithAggregatesInput = {
-    AND?: testScalarWhereWithAggregatesInput | testScalarWhereWithAggregatesInput[]
-    OR?: testScalarWhereWithAggregatesInput[]
-    NOT?: testScalarWhereWithAggregatesInput | testScalarWhereWithAggregatesInput[]
-    class_2018?: StringNullableWithAggregatesFilter<"test"> | string | null
-    Shape_Length?: FloatNullableWithAggregatesFilter<"test"> | number | null
-    Shape_Area?: FloatNullableWithAggregatesFilter<"test"> | number | null
-    pk?: IntWithAggregatesFilter<"test"> | number
-  }
-
-  export type test2WhereInput = {
-    AND?: test2WhereInput | test2WhereInput[]
-    OR?: test2WhereInput[]
-    NOT?: test2WhereInput | test2WhereInput[]
-    pk?: IntFilter<"test2"> | number
-    class_2018?: StringNullableFilter<"test2"> | string | null
-    Shape_Length?: FloatNullableFilter<"test2"> | number | null
-    Shape_Area?: FloatNullableFilter<"test2"> | number | null
-  }
-
-  export type test2OrderByWithRelationInput = {
-    pk?: SortOrder
-    class_2018?: SortOrderInput | SortOrder
-    Shape_Length?: SortOrderInput | SortOrder
-    Shape_Area?: SortOrderInput | SortOrder
-  }
-
-  export type test2WhereUniqueInput = Prisma.AtLeast<{
-    pk?: number
-    AND?: test2WhereInput | test2WhereInput[]
-    OR?: test2WhereInput[]
-    NOT?: test2WhereInput | test2WhereInput[]
-    class_2018?: StringNullableFilter<"test2"> | string | null
-    Shape_Length?: FloatNullableFilter<"test2"> | number | null
-    Shape_Area?: FloatNullableFilter<"test2"> | number | null
-  }, "pk">
-
-  export type test2OrderByWithAggregationInput = {
-    pk?: SortOrder
-    class_2018?: SortOrderInput | SortOrder
-    Shape_Length?: SortOrderInput | SortOrder
-    Shape_Area?: SortOrderInput | SortOrder
-    _count?: test2CountOrderByAggregateInput
-    _avg?: test2AvgOrderByAggregateInput
-    _max?: test2MaxOrderByAggregateInput
-    _min?: test2MinOrderByAggregateInput
-    _sum?: test2SumOrderByAggregateInput
-  }
-
-  export type test2ScalarWhereWithAggregatesInput = {
-    AND?: test2ScalarWhereWithAggregatesInput | test2ScalarWhereWithAggregatesInput[]
-    OR?: test2ScalarWhereWithAggregatesInput[]
-    NOT?: test2ScalarWhereWithAggregatesInput | test2ScalarWhereWithAggregatesInput[]
-    pk?: IntWithAggregatesFilter<"test2"> | number
-    class_2018?: StringNullableWithAggregatesFilter<"test2"> | string | null
-    Shape_Length?: FloatNullableWithAggregatesFilter<"test2"> | number | null
-    Shape_Area?: FloatNullableWithAggregatesFilter<"test2"> | number | null
+  export type clc_paris2ScalarWhereWithAggregatesInput = {
+    AND?: clc_paris2ScalarWhereWithAggregatesInput | clc_paris2ScalarWhereWithAggregatesInput[]
+    OR?: clc_paris2ScalarWhereWithAggregatesInput[]
+    NOT?: clc_paris2ScalarWhereWithAggregatesInput | clc_paris2ScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"clc_paris2"> | number
+    class_2018?: StringNullableWithAggregatesFilter<"clc_paris2"> | string | null
+    shape_length?: FloatNullableWithAggregatesFilter<"clc_paris2"> | number | null
+    shape_area?: FloatNullableWithAggregatesFilter<"clc_paris2"> | number | null
   }
 
   export type spatial_ref_sysWhereInput = {
@@ -4896,127 +2950,50 @@ export namespace Prisma {
     proj4text?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
   }
 
-  export type clc_parisCreateInput = {
+  export type clc_paris2CreateInput = {
     class_2018?: string | null
     shape_length?: number | null
     shape_area?: number | null
   }
 
-  export type clc_parisUncheckedCreateInput = {
-    pk?: number
-    class_2018?: string | null
-    shape_length?: number | null
-    shape_area?: number | null
-  }
-
-  export type clc_parisUpdateInput = {
-    class_2018?: NullableStringFieldUpdateOperationsInput | string | null
-    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
-    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type clc_parisUncheckedUpdateInput = {
-    pk?: IntFieldUpdateOperationsInput | number
-    class_2018?: NullableStringFieldUpdateOperationsInput | string | null
-    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
-    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type clc_parisCreateManyInput = {
+  export type clc_paris2UncheckedCreateInput = {
     pk?: number
     class_2018?: string | null
     shape_length?: number | null
     shape_area?: number | null
   }
 
-  export type clc_parisUpdateManyMutationInput = {
+  export type clc_paris2UpdateInput = {
     class_2018?: NullableStringFieldUpdateOperationsInput | string | null
     shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
     shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
-  export type clc_parisUncheckedUpdateManyInput = {
+  export type clc_paris2UncheckedUpdateInput = {
     pk?: IntFieldUpdateOperationsInput | number
     class_2018?: NullableStringFieldUpdateOperationsInput | string | null
     shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
     shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
-  export type testUpdateInput = {
-    class_2018?: NullableStringFieldUpdateOperationsInput | string | null
-    Shape_Length?: NullableFloatFieldUpdateOperationsInput | number | null
-    Shape_Area?: NullableFloatFieldUpdateOperationsInput | number | null
-    pk?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type testUncheckedUpdateInput = {
-    class_2018?: NullableStringFieldUpdateOperationsInput | string | null
-    Shape_Length?: NullableFloatFieldUpdateOperationsInput | number | null
-    Shape_Area?: NullableFloatFieldUpdateOperationsInput | number | null
-    pk?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type testUpdateManyMutationInput = {
-    class_2018?: NullableStringFieldUpdateOperationsInput | string | null
-    Shape_Length?: NullableFloatFieldUpdateOperationsInput | number | null
-    Shape_Area?: NullableFloatFieldUpdateOperationsInput | number | null
-    pk?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type testUncheckedUpdateManyInput = {
-    class_2018?: NullableStringFieldUpdateOperationsInput | string | null
-    Shape_Length?: NullableFloatFieldUpdateOperationsInput | number | null
-    Shape_Area?: NullableFloatFieldUpdateOperationsInput | number | null
-    pk?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type test2CreateInput = {
+  export type clc_paris2CreateManyInput = {
     pk?: number
     class_2018?: string | null
-    Shape_Length?: number | null
-    Shape_Area?: number | null
+    shape_length?: number | null
+    shape_area?: number | null
   }
 
-  export type test2UncheckedCreateInput = {
-    pk?: number
-    class_2018?: string | null
-    Shape_Length?: number | null
-    Shape_Area?: number | null
+  export type clc_paris2UpdateManyMutationInput = {
+    class_2018?: NullableStringFieldUpdateOperationsInput | string | null
+    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
+    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
-  export type test2UpdateInput = {
+  export type clc_paris2UncheckedUpdateManyInput = {
     pk?: IntFieldUpdateOperationsInput | number
     class_2018?: NullableStringFieldUpdateOperationsInput | string | null
-    Shape_Length?: NullableFloatFieldUpdateOperationsInput | number | null
-    Shape_Area?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type test2UncheckedUpdateInput = {
-    pk?: IntFieldUpdateOperationsInput | number
-    class_2018?: NullableStringFieldUpdateOperationsInput | string | null
-    Shape_Length?: NullableFloatFieldUpdateOperationsInput | number | null
-    Shape_Area?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type test2CreateManyInput = {
-    pk?: number
-    class_2018?: string | null
-    Shape_Length?: number | null
-    Shape_Area?: number | null
-  }
-
-  export type test2UpdateManyMutationInput = {
-    pk?: IntFieldUpdateOperationsInput | number
-    class_2018?: NullableStringFieldUpdateOperationsInput | string | null
-    Shape_Length?: NullableFloatFieldUpdateOperationsInput | number | null
-    Shape_Area?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type test2UncheckedUpdateManyInput = {
-    pk?: IntFieldUpdateOperationsInput | number
-    class_2018?: NullableStringFieldUpdateOperationsInput | string | null
-    Shape_Length?: NullableFloatFieldUpdateOperationsInput | number | null
-    Shape_Area?: NullableFloatFieldUpdateOperationsInput | number | null
+    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
+    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type spatial_ref_sysCreateInput = {
@@ -5117,34 +3094,34 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type clc_parisCountOrderByAggregateInput = {
+  export type clc_paris2CountOrderByAggregateInput = {
     pk?: SortOrder
     class_2018?: SortOrder
     shape_length?: SortOrder
     shape_area?: SortOrder
   }
 
-  export type clc_parisAvgOrderByAggregateInput = {
+  export type clc_paris2AvgOrderByAggregateInput = {
     pk?: SortOrder
     shape_length?: SortOrder
     shape_area?: SortOrder
   }
 
-  export type clc_parisMaxOrderByAggregateInput = {
-    pk?: SortOrder
-    class_2018?: SortOrder
-    shape_length?: SortOrder
-    shape_area?: SortOrder
-  }
-
-  export type clc_parisMinOrderByAggregateInput = {
+  export type clc_paris2MaxOrderByAggregateInput = {
     pk?: SortOrder
     class_2018?: SortOrder
     shape_length?: SortOrder
     shape_area?: SortOrder
   }
 
-  export type clc_parisSumOrderByAggregateInput = {
+  export type clc_paris2MinOrderByAggregateInput = {
+    pk?: SortOrder
+    class_2018?: SortOrder
+    shape_length?: SortOrder
+    shape_area?: SortOrder
+  }
+
+  export type clc_paris2SumOrderByAggregateInput = {
     pk?: SortOrder
     shape_length?: SortOrder
     shape_area?: SortOrder
@@ -5198,72 +3175,6 @@ export namespace Prisma {
     _sum?: NestedFloatNullableFilter<$PrismaModel>
     _min?: NestedFloatNullableFilter<$PrismaModel>
     _max?: NestedFloatNullableFilter<$PrismaModel>
-  }
-
-  export type testCountOrderByAggregateInput = {
-    class_2018?: SortOrder
-    Shape_Length?: SortOrder
-    Shape_Area?: SortOrder
-    pk?: SortOrder
-  }
-
-  export type testAvgOrderByAggregateInput = {
-    Shape_Length?: SortOrder
-    Shape_Area?: SortOrder
-    pk?: SortOrder
-  }
-
-  export type testMaxOrderByAggregateInput = {
-    class_2018?: SortOrder
-    Shape_Length?: SortOrder
-    Shape_Area?: SortOrder
-    pk?: SortOrder
-  }
-
-  export type testMinOrderByAggregateInput = {
-    class_2018?: SortOrder
-    Shape_Length?: SortOrder
-    Shape_Area?: SortOrder
-    pk?: SortOrder
-  }
-
-  export type testSumOrderByAggregateInput = {
-    Shape_Length?: SortOrder
-    Shape_Area?: SortOrder
-    pk?: SortOrder
-  }
-
-  export type test2CountOrderByAggregateInput = {
-    pk?: SortOrder
-    class_2018?: SortOrder
-    Shape_Length?: SortOrder
-    Shape_Area?: SortOrder
-  }
-
-  export type test2AvgOrderByAggregateInput = {
-    pk?: SortOrder
-    Shape_Length?: SortOrder
-    Shape_Area?: SortOrder
-  }
-
-  export type test2MaxOrderByAggregateInput = {
-    pk?: SortOrder
-    class_2018?: SortOrder
-    Shape_Length?: SortOrder
-    Shape_Area?: SortOrder
-  }
-
-  export type test2MinOrderByAggregateInput = {
-    pk?: SortOrder
-    class_2018?: SortOrder
-    Shape_Length?: SortOrder
-    Shape_Area?: SortOrder
-  }
-
-  export type test2SumOrderByAggregateInput = {
-    pk?: SortOrder
-    Shape_Length?: SortOrder
-    Shape_Area?: SortOrder
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -5484,17 +3395,9 @@ export namespace Prisma {
    * Aliases for legacy arg types
    */
     /**
-     * @deprecated Use clc_parisDefaultArgs instead
+     * @deprecated Use clc_paris2DefaultArgs instead
      */
-    export type clc_parisArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = clc_parisDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use testDefaultArgs instead
-     */
-    export type testArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = testDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use test2DefaultArgs instead
-     */
-    export type test2Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = test2DefaultArgs<ExtArgs>
+    export type clc_paris2Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = clc_paris2DefaultArgs<ExtArgs>
     /**
      * @deprecated Use spatial_ref_sysDefaultArgs instead
      */
