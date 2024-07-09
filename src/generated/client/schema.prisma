@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output = "../src/generated/client"
+  output   = "../src/generated/client"
 }
 
 datasource db {
@@ -13,7 +13,7 @@ model clc_paris {
   class_2018   String?                  @db.VarChar
   shape_length Float?
   shape_area   Float?
-  geometry     String?
+  geometry     Unsupported("geometry (Polygon, 4326)")?
 
   @@index([geometry], map: "clc_paris_geometry_geom_idx", type: Gist)
 }
@@ -33,4 +33,13 @@ model test2 {
   Shape_Length Float?
   Shape_Area   Float?
   geometry     Unsupported("polygon")?
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model spatial_ref_sys {
+  srid      Int     @id
+  auth_name String? @db.VarChar(256)
+  auth_srid Int?
+  srtext    String? @db.VarChar(2048)
+  proj4text String? @db.VarChar(2048)
 }
