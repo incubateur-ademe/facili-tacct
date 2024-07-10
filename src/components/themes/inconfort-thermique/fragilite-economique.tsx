@@ -76,13 +76,18 @@ interface Props {
     risque: string;
     titre: string;
   }>;
+  db_filtered: Array<{
+    type: string;
+    geometry: any;
+    properties:any;
+  }>
   // data_communes: DataCommunes;
   // data_epci: DataEPCI;
 }
 // const dataPrecariteLogMob = dataPrecariteLogMob_raw as Row[];
 
 export const FragiliteEconomique = (props: Props) => {
-  const { data, activeDataTab } = props;
+  const { data, db_filtered, activeDataTab } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
   const [rows, setRows] = useState<Row[]>([]);
@@ -140,7 +145,7 @@ export const FragiliteEconomique = (props: Props) => {
                     <b>Répartition de la précarité énergétique logement par commune au sein de l'EPCI</b>
                   </p>
                   <Legend data={"precarite_log"} />
-                  <Map epci={epci_chosen} communes={communes_chosen} data={"precarite_log"} />
+                  <Map epci={epci_chosen} communes={communes_chosen} data={"precarite_log"} db_filtered={db_filtered} />
                   <p>
                     Source : <b>ONPE</b>
                   </p>

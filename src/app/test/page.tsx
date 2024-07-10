@@ -8,7 +8,7 @@ export default async function Test() {
     <div style={{ margin: "2rem" }} > 
       {db_filtered.map((el, i) => (
         <ul key={i}>
-          <li>{el.shape_area}</li>
+          <li>{el.precarite_logement}</li>
         </ul> 
       ))}
     </div> 
