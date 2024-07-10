@@ -18,7 +18,7 @@ type CommunesTypes = {
     EPCI: string;
     EPCI_CODE: string;
     densite_bati: number;
-    ratio_precarite: number;
+    precarite_logement: number;
   };
   type: string;
 };
@@ -44,7 +44,7 @@ type Style = {
   fillOpacity?: number;
   opacity?: number;
   properties: {
-    ratio_precarite: number;
+    precarite_logement: number;
     densite_bati: number;
   };
   weight?: number;
@@ -54,10 +54,11 @@ interface Props {
   communes: any;
   data: string;
   epci: any;
+  db_filtered: any;
 }
 
 const Map = (props: Props) => {
-  const { epci, communes, data } = props;
+  const { epci, communes, data, db_filtered } = props;
 
   const mapRef = useRef<any>(null);//REPLACE L.Map | null
 
@@ -126,7 +127,7 @@ const Map = (props: Props) => {
       };
     } else {
       return {
-        fillColor: getColor(feature.properties.ratio_precarite),
+        fillColor: getColor(feature.properties.precarite_logement),
         weight: 1.5,
         opacity: 1,
         color: "black",
@@ -143,8 +144,8 @@ const Map = (props: Props) => {
     const layer = e.target;
     const epci_name = layer.feature.properties.EPCI;
     const commune_name = layer.feature.properties.DCOE_L_LIB;
-    const ratio_precarite = layer.feature.properties.ratio_precarite.toFixed(2);
-    const densite_bati = layer.feature.properties.densite_bati.toFixed(2);
+    const precarite_logement = Number(layer.feature.properties.precarite_logement).toFixed(2);
+    // const densite_bati = layer.feature.properties.densite_bati.toFixed(2);
     layer.setStyle({
       weight: 3,
       color: "#eee",
@@ -155,12 +156,13 @@ const Map = (props: Props) => {
     layer.bringToFront();
     if (data === "densite_bati") {
       this.bindPopup(
-        `<div>${commune_name}</div><div>Densité du bâti : ${densite_bati}</div>`,
+        `<div>${commune_name}</div><div>Densité du bâti : </div>`,
+        // `<div>${commune_name}</div><div>Densité du bâti : ${densite_bati}</div>`,
       );
       this.openPopup();
     } else {
       this.bindPopup(
-        `<div>${commune_name}</div><div>Part des ménages en précarité : ${(100 * ratio_precarite).toFixed(0)}%</div>`,
+        `<div>${commune_name}</div><div>Part des ménages en précarité : ${(100 * Number(precarite_logement)).toFixed(0)}%</div>`,
       );
       this.openPopup();
     }
@@ -212,7 +214,7 @@ const Map = (props: Props) => {
       <GeoJSON data={data1} />
       <GeoJSON
         ref={mapRef}
-        data={data2}
+        data={db_filtered}
         onEachFeature={onEachFeature}
         style={style}
       />

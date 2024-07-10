@@ -24,6 +24,11 @@ interface Props {
     risque: string;
     titre: string;
   }>;
+  db_filtered: Array<{
+    type: string;
+    geometry: any;
+    properties:any;
+  }>
 }
 
 const allComps = [
@@ -53,7 +58,7 @@ const allComps = [
   },
 ];
 
-const PageComp = ({ data }: Props) => {
+const PageComp = ({ data, db_filtered }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState("Population");
   const [selectedSubTab, setSelectedSubTab] = useState("Grand âge");
   const router = useRouter();
@@ -115,7 +120,7 @@ const PageComp = ({ data }: Props) => {
                 {(() => {
                   const Component = allComps.find(el => el.titre === selectedSubTab)?.Component;
                   if (!Component) return null;
-                  return <Component data={data} activeDataTab={selectedSubTab} />;
+                  return <Component data={data} db_filtered={db_filtered} activeDataTab={selectedSubTab} />;
                 })()}
               </Suspense>
             </div>
