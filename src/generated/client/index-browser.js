@@ -119,19 +119,21 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.Clc_paris2ScalarFieldEnum = {
-  pk: 'pk',
-  class_2018: 'class_2018',
-  shape_length: 'shape_length',
-  shape_area: 'shape_area'
-};
-
 exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
   srid: 'srid',
   auth_name: 'auth_name',
   auth_srid: 'auth_srid',
   srtext: 'srtext',
   proj4text: 'proj4text'
+};
+
+exports.Prisma.Communes_precariteScalarFieldEnum = {
+  pk: 'pk',
+  code_commune: 'code_commune',
+  tee_log: 'tee_log',
+  tee_mob: 'tee_mob',
+  precarite_logement: 'precarite_logement',
+  epci: 'epci'
 };
 
 exports.Prisma.SortOrder = {
@@ -151,8 +153,8 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  clc_paris2: 'clc_paris2',
-  spatial_ref_sys: 'spatial_ref_sys'
+  spatial_ref_sys: 'spatial_ref_sys',
+  communes_precarite: 'communes_precarite'
 };
 
 /**

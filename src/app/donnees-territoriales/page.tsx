@@ -7,6 +7,7 @@ import themes from "@/lib/utils/themes";
 import { Box, Container, GridCol } from "../../dsfr/server";
 import styles from "./donnees.module.scss";
 import { Loader } from "./loader";
+import { Get_Prisma } from "../test/prismafunc";
 
 export const metadata: Metadata = {
   title: "Données territoriales",
@@ -18,12 +19,36 @@ const DynamicPageComp = dynamic(() => import("./PageComp"), {
   loading: () => <Loader />,
 });
 
-// 200042497 CODE EPCI TEST 200069193
+type Properties = {
+  code_commune: string;
+  epci: string;
+  precarite_logement: number;
+};
 
-const Page = () => {
+type DBType = {
+  type: string;
+  code_commune: string;
+  epci: string;
+  precarite_logement: number;
+  geometry: string;
+};
+
+// 200042497 CODE EPCI TEST 200069193 PARIS 200054781
+
+const Page = async () => {
   const theme = themes.inconfort_thermique;
-  // const data_commune = (await import("@/lib/json-db/maps/commune.json")).default as DataCommune;
-  // const data_epci = (await import("@/lib/json-db/maps/epci.json")).default as DataEPCI;
+  const db_filtered: any = await Get_Prisma(); //REPLACE
+  var db_parsed = db_filtered.map(function (elem: DBType) {
+    return {
+      type: "Feature",
+      properties: {
+        epci: elem.epci,
+        code_commune: elem.code_commune,
+        precarite_logement: elem.precarite_logement
+      },
+      geometry: JSON.parse(elem.geometry)
+    }
+  })
 
   return (
     <Container py="4w">
@@ -36,7 +61,7 @@ const Page = () => {
         Explorez des leviers d'action possibles en réduisant la sensibilité de votre territoire à l'inconfort thermique
       </p>
       <div className={styles.container}>
-        <DynamicPageComp data={theme} />
+        <DynamicPageComp data={theme} db_filtered={db_parsed}/>
       </div>
     </Container>
   );
