@@ -14,15 +14,15 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model clc_paris2
- * 
- */
-export type clc_paris2 = $Result.DefaultSelection<Prisma.$clc_paris2Payload>
-/**
  * Model spatial_ref_sys
  * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
  */
 export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPayload>
+/**
+ * Model communes_precarite
+ * 
+ */
+export type communes_precarite = $Result.DefaultSelection<Prisma.$communes_precaritePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -31,8 +31,8 @@ export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPa
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Clc_paris2s
- * const clc_paris2s = await prisma.clc_paris2.findMany()
+ * // Fetch zero or more Spatial_ref_sys
+ * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
  * ```
  *
  * 
@@ -52,8 +52,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Clc_paris2s
-   * const clc_paris2s = await prisma.clc_paris2.findMany()
+   * // Fetch zero or more Spatial_ref_sys
+   * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
    * ```
    *
    * 
@@ -147,16 +147,6 @@ export class PrismaClient<
   $extends: $Extensions.ExtendsHook<'extends', Prisma.TypeMapCb, ExtArgs>
 
       /**
-   * `prisma.clc_paris2`: Exposes CRUD operations for the **clc_paris2** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Clc_paris2s
-    * const clc_paris2s = await prisma.clc_paris2.findMany()
-    * ```
-    */
-  get clc_paris2(): Prisma.clc_paris2Delegate<ExtArgs>;
-
-  /**
    * `prisma.spatial_ref_sys`: Exposes CRUD operations for the **spatial_ref_sys** model.
     * Example usage:
     * ```ts
@@ -165,6 +155,16 @@ export class PrismaClient<
     * ```
     */
   get spatial_ref_sys(): Prisma.spatial_ref_sysDelegate<ExtArgs>;
+
+  /**
+   * `prisma.communes_precarite`: Exposes CRUD operations for the **communes_precarite** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Communes_precarites
+    * const communes_precarites = await prisma.communes_precarite.findMany()
+    * ```
+    */
+  get communes_precarite(): Prisma.communes_precariteDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -642,8 +642,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    clc_paris2: 'clc_paris2',
-    spatial_ref_sys: 'spatial_ref_sys'
+    spatial_ref_sys: 'spatial_ref_sys',
+    communes_precarite: 'communes_precarite'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,76 +660,10 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'clc_paris2' | 'spatial_ref_sys'
+      modelProps: 'spatial_ref_sys' | 'communes_precarite'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
-      clc_paris2: {
-        payload: Prisma.$clc_paris2Payload<ExtArgs>
-        fields: Prisma.clc_paris2FieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.clc_paris2FindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.clc_paris2FindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload>
-          }
-          findFirst: {
-            args: Prisma.clc_paris2FindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.clc_paris2FindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload>
-          }
-          findMany: {
-            args: Prisma.clc_paris2FindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload>[]
-          }
-          create: {
-            args: Prisma.clc_paris2CreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload>
-          }
-          createMany: {
-            args: Prisma.clc_paris2CreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          delete: {
-            args: Prisma.clc_paris2DeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload>
-          }
-          update: {
-            args: Prisma.clc_paris2UpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload>
-          }
-          deleteMany: {
-            args: Prisma.clc_paris2DeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.clc_paris2UpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.clc_paris2UpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$clc_paris2Payload>
-          }
-          aggregate: {
-            args: Prisma.Clc_paris2AggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateClc_paris2>
-          }
-          groupBy: {
-            args: Prisma.clc_paris2GroupByArgs<ExtArgs>,
-            result: $Utils.Optional<Clc_paris2GroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.clc_paris2CountArgs<ExtArgs>,
-            result: $Utils.Optional<Clc_paris2CountAggregateOutputType> | number
-          }
-        }
-      }
       spatial_ref_sys: {
         payload: Prisma.$spatial_ref_sysPayload<ExtArgs>
         fields: Prisma.spatial_ref_sysFieldRefs
@@ -793,6 +727,72 @@ export namespace Prisma {
           count: {
             args: Prisma.spatial_ref_sysCountArgs<ExtArgs>,
             result: $Utils.Optional<Spatial_ref_sysCountAggregateOutputType> | number
+          }
+        }
+      }
+      communes_precarite: {
+        payload: Prisma.$communes_precaritePayload<ExtArgs>
+        fields: Prisma.communes_precariteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.communes_precariteFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.communes_precariteFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload>
+          }
+          findFirst: {
+            args: Prisma.communes_precariteFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.communes_precariteFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload>
+          }
+          findMany: {
+            args: Prisma.communes_precariteFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload>[]
+          }
+          create: {
+            args: Prisma.communes_precariteCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload>
+          }
+          createMany: {
+            args: Prisma.communes_precariteCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.communes_precariteDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload>
+          }
+          update: {
+            args: Prisma.communes_precariteUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload>
+          }
+          deleteMany: {
+            args: Prisma.communes_precariteDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.communes_precariteUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.communes_precariteUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload>
+          }
+          aggregate: {
+            args: Prisma.Communes_precariteAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateCommunes_precarite>
+          }
+          groupBy: {
+            args: Prisma.communes_precariteGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Communes_precariteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.communes_precariteCountArgs<ExtArgs>,
+            result: $Utils.Optional<Communes_precariteCountAggregateOutputType> | number
           }
         }
       }
@@ -954,894 +954,6 @@ export namespace Prisma {
   /**
    * Models
    */
-
-  /**
-   * Model clc_paris2
-   */
-
-  export type AggregateClc_paris2 = {
-    _count: Clc_paris2CountAggregateOutputType | null
-    _avg: Clc_paris2AvgAggregateOutputType | null
-    _sum: Clc_paris2SumAggregateOutputType | null
-    _min: Clc_paris2MinAggregateOutputType | null
-    _max: Clc_paris2MaxAggregateOutputType | null
-  }
-
-  export type Clc_paris2AvgAggregateOutputType = {
-    pk: number | null
-    shape_length: number | null
-    shape_area: number | null
-  }
-
-  export type Clc_paris2SumAggregateOutputType = {
-    pk: number | null
-    shape_length: number | null
-    shape_area: number | null
-  }
-
-  export type Clc_paris2MinAggregateOutputType = {
-    pk: number | null
-    class_2018: string | null
-    shape_length: number | null
-    shape_area: number | null
-  }
-
-  export type Clc_paris2MaxAggregateOutputType = {
-    pk: number | null
-    class_2018: string | null
-    shape_length: number | null
-    shape_area: number | null
-  }
-
-  export type Clc_paris2CountAggregateOutputType = {
-    pk: number
-    class_2018: number
-    shape_length: number
-    shape_area: number
-    _all: number
-  }
-
-
-  export type Clc_paris2AvgAggregateInputType = {
-    pk?: true
-    shape_length?: true
-    shape_area?: true
-  }
-
-  export type Clc_paris2SumAggregateInputType = {
-    pk?: true
-    shape_length?: true
-    shape_area?: true
-  }
-
-  export type Clc_paris2MinAggregateInputType = {
-    pk?: true
-    class_2018?: true
-    shape_length?: true
-    shape_area?: true
-  }
-
-  export type Clc_paris2MaxAggregateInputType = {
-    pk?: true
-    class_2018?: true
-    shape_length?: true
-    shape_area?: true
-  }
-
-  export type Clc_paris2CountAggregateInputType = {
-    pk?: true
-    class_2018?: true
-    shape_length?: true
-    shape_area?: true
-    _all?: true
-  }
-
-  export type Clc_paris2AggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which clc_paris2 to aggregate.
-     */
-    where?: clc_paris2WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of clc_paris2s to fetch.
-     */
-    orderBy?: clc_paris2OrderByWithRelationInput | clc_paris2OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: clc_paris2WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` clc_paris2s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` clc_paris2s.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned clc_paris2s
-    **/
-    _count?: true | Clc_paris2CountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Clc_paris2AvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Clc_paris2SumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Clc_paris2MinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Clc_paris2MaxAggregateInputType
-  }
-
-  export type GetClc_paris2AggregateType<T extends Clc_paris2AggregateArgs> = {
-        [P in keyof T & keyof AggregateClc_paris2]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateClc_paris2[P]>
-      : GetScalarType<T[P], AggregateClc_paris2[P]>
-  }
-
-
-
-
-  export type clc_paris2GroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: clc_paris2WhereInput
-    orderBy?: clc_paris2OrderByWithAggregationInput | clc_paris2OrderByWithAggregationInput[]
-    by: Clc_paris2ScalarFieldEnum[] | Clc_paris2ScalarFieldEnum
-    having?: clc_paris2ScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Clc_paris2CountAggregateInputType | true
-    _avg?: Clc_paris2AvgAggregateInputType
-    _sum?: Clc_paris2SumAggregateInputType
-    _min?: Clc_paris2MinAggregateInputType
-    _max?: Clc_paris2MaxAggregateInputType
-  }
-
-  export type Clc_paris2GroupByOutputType = {
-    pk: number
-    class_2018: string | null
-    shape_length: number | null
-    shape_area: number | null
-    _count: Clc_paris2CountAggregateOutputType | null
-    _avg: Clc_paris2AvgAggregateOutputType | null
-    _sum: Clc_paris2SumAggregateOutputType | null
-    _min: Clc_paris2MinAggregateOutputType | null
-    _max: Clc_paris2MaxAggregateOutputType | null
-  }
-
-  type GetClc_paris2GroupByPayload<T extends clc_paris2GroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Clc_paris2GroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Clc_paris2GroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Clc_paris2GroupByOutputType[P]>
-            : GetScalarType<T[P], Clc_paris2GroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type clc_paris2Select<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pk?: boolean
-    class_2018?: boolean
-    shape_length?: boolean
-    shape_area?: boolean
-  }, ExtArgs["result"]["clc_paris2"]>
-
-  export type clc_paris2SelectScalar = {
-    pk?: boolean
-    class_2018?: boolean
-    shape_length?: boolean
-    shape_area?: boolean
-  }
-
-
-
-  export type $clc_paris2Payload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "clc_paris2"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      pk: number
-      class_2018: string | null
-      shape_length: number | null
-      shape_area: number | null
-    }, ExtArgs["result"]["clc_paris2"]>
-    composites: {}
-  }
-
-
-  type clc_paris2GetPayload<S extends boolean | null | undefined | clc_paris2DefaultArgs> = $Result.GetResult<Prisma.$clc_paris2Payload, S>
-
-  type clc_paris2CountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<clc_paris2FindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: Clc_paris2CountAggregateInputType | true
-    }
-
-  export interface clc_paris2Delegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['clc_paris2'], meta: { name: 'clc_paris2' } }
-    /**
-     * Find zero or one Clc_paris2 that matches the filter.
-     * @param {clc_paris2FindUniqueArgs} args - Arguments to find a Clc_paris2
-     * @example
-     * // Get one Clc_paris2
-     * const clc_paris2 = await prisma.clc_paris2.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends clc_paris2FindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_paris2FindUniqueArgs<ExtArgs>>
-    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one Clc_paris2 that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {clc_paris2FindUniqueOrThrowArgs} args - Arguments to find a Clc_paris2
-     * @example
-     * // Get one Clc_paris2
-     * const clc_paris2 = await prisma.clc_paris2.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends clc_paris2FindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_paris2FindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first Clc_paris2 that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_paris2FindFirstArgs} args - Arguments to find a Clc_paris2
-     * @example
-     * // Get one Clc_paris2
-     * const clc_paris2 = await prisma.clc_paris2.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends clc_paris2FindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_paris2FindFirstArgs<ExtArgs>>
-    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first Clc_paris2 that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_paris2FindFirstOrThrowArgs} args - Arguments to find a Clc_paris2
-     * @example
-     * // Get one Clc_paris2
-     * const clc_paris2 = await prisma.clc_paris2.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends clc_paris2FindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_paris2FindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more Clc_paris2s that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_paris2FindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Clc_paris2s
-     * const clc_paris2s = await prisma.clc_paris2.findMany()
-     * 
-     * // Get first 10 Clc_paris2s
-     * const clc_paris2s = await prisma.clc_paris2.findMany({ take: 10 })
-     * 
-     * // Only select the `pk`
-     * const clc_paris2WithPkOnly = await prisma.clc_paris2.findMany({ select: { pk: true } })
-     * 
-    **/
-    findMany<T extends clc_paris2FindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_paris2FindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a Clc_paris2.
-     * @param {clc_paris2CreateArgs} args - Arguments to create a Clc_paris2.
-     * @example
-     * // Create one Clc_paris2
-     * const Clc_paris2 = await prisma.clc_paris2.create({
-     *   data: {
-     *     // ... data to create a Clc_paris2
-     *   }
-     * })
-     * 
-    **/
-    create<T extends clc_paris2CreateArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_paris2CreateArgs<ExtArgs>>
-    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many Clc_paris2s.
-     *     @param {clc_paris2CreateManyArgs} args - Arguments to create many Clc_paris2s.
-     *     @example
-     *     // Create many Clc_paris2s
-     *     const clc_paris2 = await prisma.clc_paris2.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends clc_paris2CreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_paris2CreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Clc_paris2.
-     * @param {clc_paris2DeleteArgs} args - Arguments to delete one Clc_paris2.
-     * @example
-     * // Delete one Clc_paris2
-     * const Clc_paris2 = await prisma.clc_paris2.delete({
-     *   where: {
-     *     // ... filter to delete one Clc_paris2
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends clc_paris2DeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_paris2DeleteArgs<ExtArgs>>
-    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one Clc_paris2.
-     * @param {clc_paris2UpdateArgs} args - Arguments to update one Clc_paris2.
-     * @example
-     * // Update one Clc_paris2
-     * const clc_paris2 = await prisma.clc_paris2.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends clc_paris2UpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_paris2UpdateArgs<ExtArgs>>
-    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Clc_paris2s.
-     * @param {clc_paris2DeleteManyArgs} args - Arguments to filter Clc_paris2s to delete.
-     * @example
-     * // Delete a few Clc_paris2s
-     * const { count } = await prisma.clc_paris2.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends clc_paris2DeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_paris2DeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Clc_paris2s.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_paris2UpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Clc_paris2s
-     * const clc_paris2 = await prisma.clc_paris2.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends clc_paris2UpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_paris2UpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Clc_paris2.
-     * @param {clc_paris2UpsertArgs} args - Arguments to update or create a Clc_paris2.
-     * @example
-     * // Update or create a Clc_paris2
-     * const clc_paris2 = await prisma.clc_paris2.upsert({
-     *   create: {
-     *     // ... data to create a Clc_paris2
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Clc_paris2 we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends clc_paris2UpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_paris2UpsertArgs<ExtArgs>>
-    ): Prisma__clc_paris2Client<$Result.GetResult<Prisma.$clc_paris2Payload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of Clc_paris2s.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_paris2CountArgs} args - Arguments to filter Clc_paris2s to count.
-     * @example
-     * // Count the number of Clc_paris2s
-     * const count = await prisma.clc_paris2.count({
-     *   where: {
-     *     // ... the filter for the Clc_paris2s we want to count
-     *   }
-     * })
-    **/
-    count<T extends clc_paris2CountArgs>(
-      args?: Subset<T, clc_paris2CountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Clc_paris2CountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Clc_paris2.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Clc_paris2AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Clc_paris2AggregateArgs>(args: Subset<T, Clc_paris2AggregateArgs>): Prisma.PrismaPromise<GetClc_paris2AggregateType<T>>
-
-    /**
-     * Group by Clc_paris2.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_paris2GroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends clc_paris2GroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: clc_paris2GroupByArgs['orderBy'] }
-        : { orderBy?: clc_paris2GroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, clc_paris2GroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClc_paris2GroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the clc_paris2 model
-   */
-  readonly fields: clc_paris2FieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for clc_paris2.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__clc_paris2Client<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the clc_paris2 model
-   */ 
-  interface clc_paris2FieldRefs {
-    readonly pk: FieldRef<"clc_paris2", 'Int'>
-    readonly class_2018: FieldRef<"clc_paris2", 'String'>
-    readonly shape_length: FieldRef<"clc_paris2", 'Float'>
-    readonly shape_area: FieldRef<"clc_paris2", 'Float'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * clc_paris2 findUnique
-   */
-  export type clc_paris2FindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_paris2
-     */
-    select?: clc_paris2Select<ExtArgs> | null
-    /**
-     * Filter, which clc_paris2 to fetch.
-     */
-    where: clc_paris2WhereUniqueInput
-  }
-
-  /**
-   * clc_paris2 findUniqueOrThrow
-   */
-  export type clc_paris2FindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_paris2
-     */
-    select?: clc_paris2Select<ExtArgs> | null
-    /**
-     * Filter, which clc_paris2 to fetch.
-     */
-    where: clc_paris2WhereUniqueInput
-  }
-
-  /**
-   * clc_paris2 findFirst
-   */
-  export type clc_paris2FindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_paris2
-     */
-    select?: clc_paris2Select<ExtArgs> | null
-    /**
-     * Filter, which clc_paris2 to fetch.
-     */
-    where?: clc_paris2WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of clc_paris2s to fetch.
-     */
-    orderBy?: clc_paris2OrderByWithRelationInput | clc_paris2OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for clc_paris2s.
-     */
-    cursor?: clc_paris2WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` clc_paris2s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` clc_paris2s.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of clc_paris2s.
-     */
-    distinct?: Clc_paris2ScalarFieldEnum | Clc_paris2ScalarFieldEnum[]
-  }
-
-  /**
-   * clc_paris2 findFirstOrThrow
-   */
-  export type clc_paris2FindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_paris2
-     */
-    select?: clc_paris2Select<ExtArgs> | null
-    /**
-     * Filter, which clc_paris2 to fetch.
-     */
-    where?: clc_paris2WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of clc_paris2s to fetch.
-     */
-    orderBy?: clc_paris2OrderByWithRelationInput | clc_paris2OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for clc_paris2s.
-     */
-    cursor?: clc_paris2WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` clc_paris2s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` clc_paris2s.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of clc_paris2s.
-     */
-    distinct?: Clc_paris2ScalarFieldEnum | Clc_paris2ScalarFieldEnum[]
-  }
-
-  /**
-   * clc_paris2 findMany
-   */
-  export type clc_paris2FindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_paris2
-     */
-    select?: clc_paris2Select<ExtArgs> | null
-    /**
-     * Filter, which clc_paris2s to fetch.
-     */
-    where?: clc_paris2WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of clc_paris2s to fetch.
-     */
-    orderBy?: clc_paris2OrderByWithRelationInput | clc_paris2OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing clc_paris2s.
-     */
-    cursor?: clc_paris2WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` clc_paris2s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` clc_paris2s.
-     */
-    skip?: number
-    distinct?: Clc_paris2ScalarFieldEnum | Clc_paris2ScalarFieldEnum[]
-  }
-
-  /**
-   * clc_paris2 create
-   */
-  export type clc_paris2CreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_paris2
-     */
-    select?: clc_paris2Select<ExtArgs> | null
-    /**
-     * The data needed to create a clc_paris2.
-     */
-    data?: XOR<clc_paris2CreateInput, clc_paris2UncheckedCreateInput>
-  }
-
-  /**
-   * clc_paris2 createMany
-   */
-  export type clc_paris2CreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many clc_paris2s.
-     */
-    data: clc_paris2CreateManyInput | clc_paris2CreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * clc_paris2 update
-   */
-  export type clc_paris2UpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_paris2
-     */
-    select?: clc_paris2Select<ExtArgs> | null
-    /**
-     * The data needed to update a clc_paris2.
-     */
-    data: XOR<clc_paris2UpdateInput, clc_paris2UncheckedUpdateInput>
-    /**
-     * Choose, which clc_paris2 to update.
-     */
-    where: clc_paris2WhereUniqueInput
-  }
-
-  /**
-   * clc_paris2 updateMany
-   */
-  export type clc_paris2UpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update clc_paris2s.
-     */
-    data: XOR<clc_paris2UpdateManyMutationInput, clc_paris2UncheckedUpdateManyInput>
-    /**
-     * Filter which clc_paris2s to update
-     */
-    where?: clc_paris2WhereInput
-  }
-
-  /**
-   * clc_paris2 upsert
-   */
-  export type clc_paris2UpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_paris2
-     */
-    select?: clc_paris2Select<ExtArgs> | null
-    /**
-     * The filter to search for the clc_paris2 to update in case it exists.
-     */
-    where: clc_paris2WhereUniqueInput
-    /**
-     * In case the clc_paris2 found by the `where` argument doesn't exist, create a new clc_paris2 with this data.
-     */
-    create: XOR<clc_paris2CreateInput, clc_paris2UncheckedCreateInput>
-    /**
-     * In case the clc_paris2 was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<clc_paris2UpdateInput, clc_paris2UncheckedUpdateInput>
-  }
-
-  /**
-   * clc_paris2 delete
-   */
-  export type clc_paris2DeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_paris2
-     */
-    select?: clc_paris2Select<ExtArgs> | null
-    /**
-     * Filter which clc_paris2 to delete.
-     */
-    where: clc_paris2WhereUniqueInput
-  }
-
-  /**
-   * clc_paris2 deleteMany
-   */
-  export type clc_paris2DeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which clc_paris2s to delete
-     */
-    where?: clc_paris2WhereInput
-  }
-
-  /**
-   * clc_paris2 without action
-   */
-  export type clc_paris2DefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_paris2
-     */
-    select?: clc_paris2Select<ExtArgs> | null
-  }
-
 
   /**
    * Model spatial_ref_sys
@@ -2739,6 +1851,920 @@ export namespace Prisma {
 
 
   /**
+   * Model communes_precarite
+   */
+
+  export type AggregateCommunes_precarite = {
+    _count: Communes_precariteCountAggregateOutputType | null
+    _avg: Communes_precariteAvgAggregateOutputType | null
+    _sum: Communes_precariteSumAggregateOutputType | null
+    _min: Communes_precariteMinAggregateOutputType | null
+    _max: Communes_precariteMaxAggregateOutputType | null
+  }
+
+  export type Communes_precariteAvgAggregateOutputType = {
+    pk: number | null
+    tee_log: number | null
+    tee_mob: number | null
+    precarite_logement: number | null
+  }
+
+  export type Communes_precariteSumAggregateOutputType = {
+    pk: number | null
+    tee_log: number | null
+    tee_mob: number | null
+    precarite_logement: number | null
+  }
+
+  export type Communes_precariteMinAggregateOutputType = {
+    pk: number | null
+    code_commune: string | null
+    tee_log: number | null
+    tee_mob: number | null
+    precarite_logement: number | null
+    epci: string | null
+  }
+
+  export type Communes_precariteMaxAggregateOutputType = {
+    pk: number | null
+    code_commune: string | null
+    tee_log: number | null
+    tee_mob: number | null
+    precarite_logement: number | null
+    epci: string | null
+  }
+
+  export type Communes_precariteCountAggregateOutputType = {
+    pk: number
+    code_commune: number
+    tee_log: number
+    tee_mob: number
+    precarite_logement: number
+    epci: number
+    _all: number
+  }
+
+
+  export type Communes_precariteAvgAggregateInputType = {
+    pk?: true
+    tee_log?: true
+    tee_mob?: true
+    precarite_logement?: true
+  }
+
+  export type Communes_precariteSumAggregateInputType = {
+    pk?: true
+    tee_log?: true
+    tee_mob?: true
+    precarite_logement?: true
+  }
+
+  export type Communes_precariteMinAggregateInputType = {
+    pk?: true
+    code_commune?: true
+    tee_log?: true
+    tee_mob?: true
+    precarite_logement?: true
+    epci?: true
+  }
+
+  export type Communes_precariteMaxAggregateInputType = {
+    pk?: true
+    code_commune?: true
+    tee_log?: true
+    tee_mob?: true
+    precarite_logement?: true
+    epci?: true
+  }
+
+  export type Communes_precariteCountAggregateInputType = {
+    pk?: true
+    code_commune?: true
+    tee_log?: true
+    tee_mob?: true
+    precarite_logement?: true
+    epci?: true
+    _all?: true
+  }
+
+  export type Communes_precariteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which communes_precarite to aggregate.
+     */
+    where?: communes_precariteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes_precarites to fetch.
+     */
+    orderBy?: communes_precariteOrderByWithRelationInput | communes_precariteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: communes_precariteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes_precarites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes_precarites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned communes_precarites
+    **/
+    _count?: true | Communes_precariteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Communes_precariteAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Communes_precariteSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Communes_precariteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Communes_precariteMaxAggregateInputType
+  }
+
+  export type GetCommunes_precariteAggregateType<T extends Communes_precariteAggregateArgs> = {
+        [P in keyof T & keyof AggregateCommunes_precarite]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCommunes_precarite[P]>
+      : GetScalarType<T[P], AggregateCommunes_precarite[P]>
+  }
+
+
+
+
+  export type communes_precariteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: communes_precariteWhereInput
+    orderBy?: communes_precariteOrderByWithAggregationInput | communes_precariteOrderByWithAggregationInput[]
+    by: Communes_precariteScalarFieldEnum[] | Communes_precariteScalarFieldEnum
+    having?: communes_precariteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Communes_precariteCountAggregateInputType | true
+    _avg?: Communes_precariteAvgAggregateInputType
+    _sum?: Communes_precariteSumAggregateInputType
+    _min?: Communes_precariteMinAggregateInputType
+    _max?: Communes_precariteMaxAggregateInputType
+  }
+
+  export type Communes_precariteGroupByOutputType = {
+    pk: number
+    code_commune: string | null
+    tee_log: number | null
+    tee_mob: number | null
+    precarite_logement: number | null
+    epci: string | null
+    _count: Communes_precariteCountAggregateOutputType | null
+    _avg: Communes_precariteAvgAggregateOutputType | null
+    _sum: Communes_precariteSumAggregateOutputType | null
+    _min: Communes_precariteMinAggregateOutputType | null
+    _max: Communes_precariteMaxAggregateOutputType | null
+  }
+
+  type GetCommunes_precariteGroupByPayload<T extends communes_precariteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Communes_precariteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Communes_precariteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Communes_precariteGroupByOutputType[P]>
+            : GetScalarType<T[P], Communes_precariteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type communes_precariteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    code_commune?: boolean
+    tee_log?: boolean
+    tee_mob?: boolean
+    precarite_logement?: boolean
+    epci?: boolean
+  }, ExtArgs["result"]["communes_precarite"]>
+
+  export type communes_precariteSelectScalar = {
+    pk?: boolean
+    code_commune?: boolean
+    tee_log?: boolean
+    tee_mob?: boolean
+    precarite_logement?: boolean
+    epci?: boolean
+  }
+
+
+
+  export type $communes_precaritePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "communes_precarite"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      code_commune: string | null
+      tee_log: number | null
+      tee_mob: number | null
+      precarite_logement: number | null
+      epci: string | null
+    }, ExtArgs["result"]["communes_precarite"]>
+    composites: {}
+  }
+
+
+  type communes_precariteGetPayload<S extends boolean | null | undefined | communes_precariteDefaultArgs> = $Result.GetResult<Prisma.$communes_precaritePayload, S>
+
+  type communes_precariteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<communes_precariteFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Communes_precariteCountAggregateInputType | true
+    }
+
+  export interface communes_precariteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['communes_precarite'], meta: { name: 'communes_precarite' } }
+    /**
+     * Find zero or one Communes_precarite that matches the filter.
+     * @param {communes_precariteFindUniqueArgs} args - Arguments to find a Communes_precarite
+     * @example
+     * // Get one Communes_precarite
+     * const communes_precarite = await prisma.communes_precarite.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends communes_precariteFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, communes_precariteFindUniqueArgs<ExtArgs>>
+    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Communes_precarite that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {communes_precariteFindUniqueOrThrowArgs} args - Arguments to find a Communes_precarite
+     * @example
+     * // Get one Communes_precarite
+     * const communes_precarite = await prisma.communes_precarite.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends communes_precariteFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, communes_precariteFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Communes_precarite that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_precariteFindFirstArgs} args - Arguments to find a Communes_precarite
+     * @example
+     * // Get one Communes_precarite
+     * const communes_precarite = await prisma.communes_precarite.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends communes_precariteFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, communes_precariteFindFirstArgs<ExtArgs>>
+    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Communes_precarite that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_precariteFindFirstOrThrowArgs} args - Arguments to find a Communes_precarite
+     * @example
+     * // Get one Communes_precarite
+     * const communes_precarite = await prisma.communes_precarite.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends communes_precariteFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, communes_precariteFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Communes_precarites that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_precariteFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Communes_precarites
+     * const communes_precarites = await prisma.communes_precarite.findMany()
+     * 
+     * // Get first 10 Communes_precarites
+     * const communes_precarites = await prisma.communes_precarite.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const communes_precariteWithPkOnly = await prisma.communes_precarite.findMany({ select: { pk: true } })
+     * 
+    **/
+    findMany<T extends communes_precariteFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, communes_precariteFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Communes_precarite.
+     * @param {communes_precariteCreateArgs} args - Arguments to create a Communes_precarite.
+     * @example
+     * // Create one Communes_precarite
+     * const Communes_precarite = await prisma.communes_precarite.create({
+     *   data: {
+     *     // ... data to create a Communes_precarite
+     *   }
+     * })
+     * 
+    **/
+    create<T extends communes_precariteCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, communes_precariteCreateArgs<ExtArgs>>
+    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Communes_precarites.
+     *     @param {communes_precariteCreateManyArgs} args - Arguments to create many Communes_precarites.
+     *     @example
+     *     // Create many Communes_precarites
+     *     const communes_precarite = await prisma.communes_precarite.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends communes_precariteCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, communes_precariteCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Communes_precarite.
+     * @param {communes_precariteDeleteArgs} args - Arguments to delete one Communes_precarite.
+     * @example
+     * // Delete one Communes_precarite
+     * const Communes_precarite = await prisma.communes_precarite.delete({
+     *   where: {
+     *     // ... filter to delete one Communes_precarite
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends communes_precariteDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, communes_precariteDeleteArgs<ExtArgs>>
+    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Communes_precarite.
+     * @param {communes_precariteUpdateArgs} args - Arguments to update one Communes_precarite.
+     * @example
+     * // Update one Communes_precarite
+     * const communes_precarite = await prisma.communes_precarite.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends communes_precariteUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, communes_precariteUpdateArgs<ExtArgs>>
+    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Communes_precarites.
+     * @param {communes_precariteDeleteManyArgs} args - Arguments to filter Communes_precarites to delete.
+     * @example
+     * // Delete a few Communes_precarites
+     * const { count } = await prisma.communes_precarite.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends communes_precariteDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, communes_precariteDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Communes_precarites.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_precariteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Communes_precarites
+     * const communes_precarite = await prisma.communes_precarite.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends communes_precariteUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, communes_precariteUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Communes_precarite.
+     * @param {communes_precariteUpsertArgs} args - Arguments to update or create a Communes_precarite.
+     * @example
+     * // Update or create a Communes_precarite
+     * const communes_precarite = await prisma.communes_precarite.upsert({
+     *   create: {
+     *     // ... data to create a Communes_precarite
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Communes_precarite we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends communes_precariteUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, communes_precariteUpsertArgs<ExtArgs>>
+    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Communes_precarites.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_precariteCountArgs} args - Arguments to filter Communes_precarites to count.
+     * @example
+     * // Count the number of Communes_precarites
+     * const count = await prisma.communes_precarite.count({
+     *   where: {
+     *     // ... the filter for the Communes_precarites we want to count
+     *   }
+     * })
+    **/
+    count<T extends communes_precariteCountArgs>(
+      args?: Subset<T, communes_precariteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Communes_precariteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Communes_precarite.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Communes_precariteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Communes_precariteAggregateArgs>(args: Subset<T, Communes_precariteAggregateArgs>): Prisma.PrismaPromise<GetCommunes_precariteAggregateType<T>>
+
+    /**
+     * Group by Communes_precarite.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_precariteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends communes_precariteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: communes_precariteGroupByArgs['orderBy'] }
+        : { orderBy?: communes_precariteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, communes_precariteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommunes_precariteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the communes_precarite model
+   */
+  readonly fields: communes_precariteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for communes_precarite.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__communes_precariteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the communes_precarite model
+   */ 
+  interface communes_precariteFieldRefs {
+    readonly pk: FieldRef<"communes_precarite", 'Int'>
+    readonly code_commune: FieldRef<"communes_precarite", 'String'>
+    readonly tee_log: FieldRef<"communes_precarite", 'Float'>
+    readonly tee_mob: FieldRef<"communes_precarite", 'Float'>
+    readonly precarite_logement: FieldRef<"communes_precarite", 'Float'>
+    readonly epci: FieldRef<"communes_precarite", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * communes_precarite findUnique
+   */
+  export type communes_precariteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_precarite
+     */
+    select?: communes_precariteSelect<ExtArgs> | null
+    /**
+     * Filter, which communes_precarite to fetch.
+     */
+    where: communes_precariteWhereUniqueInput
+  }
+
+  /**
+   * communes_precarite findUniqueOrThrow
+   */
+  export type communes_precariteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_precarite
+     */
+    select?: communes_precariteSelect<ExtArgs> | null
+    /**
+     * Filter, which communes_precarite to fetch.
+     */
+    where: communes_precariteWhereUniqueInput
+  }
+
+  /**
+   * communes_precarite findFirst
+   */
+  export type communes_precariteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_precarite
+     */
+    select?: communes_precariteSelect<ExtArgs> | null
+    /**
+     * Filter, which communes_precarite to fetch.
+     */
+    where?: communes_precariteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes_precarites to fetch.
+     */
+    orderBy?: communes_precariteOrderByWithRelationInput | communes_precariteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for communes_precarites.
+     */
+    cursor?: communes_precariteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes_precarites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes_precarites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of communes_precarites.
+     */
+    distinct?: Communes_precariteScalarFieldEnum | Communes_precariteScalarFieldEnum[]
+  }
+
+  /**
+   * communes_precarite findFirstOrThrow
+   */
+  export type communes_precariteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_precarite
+     */
+    select?: communes_precariteSelect<ExtArgs> | null
+    /**
+     * Filter, which communes_precarite to fetch.
+     */
+    where?: communes_precariteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes_precarites to fetch.
+     */
+    orderBy?: communes_precariteOrderByWithRelationInput | communes_precariteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for communes_precarites.
+     */
+    cursor?: communes_precariteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes_precarites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes_precarites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of communes_precarites.
+     */
+    distinct?: Communes_precariteScalarFieldEnum | Communes_precariteScalarFieldEnum[]
+  }
+
+  /**
+   * communes_precarite findMany
+   */
+  export type communes_precariteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_precarite
+     */
+    select?: communes_precariteSelect<ExtArgs> | null
+    /**
+     * Filter, which communes_precarites to fetch.
+     */
+    where?: communes_precariteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes_precarites to fetch.
+     */
+    orderBy?: communes_precariteOrderByWithRelationInput | communes_precariteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing communes_precarites.
+     */
+    cursor?: communes_precariteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes_precarites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes_precarites.
+     */
+    skip?: number
+    distinct?: Communes_precariteScalarFieldEnum | Communes_precariteScalarFieldEnum[]
+  }
+
+  /**
+   * communes_precarite create
+   */
+  export type communes_precariteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_precarite
+     */
+    select?: communes_precariteSelect<ExtArgs> | null
+    /**
+     * The data needed to create a communes_precarite.
+     */
+    data?: XOR<communes_precariteCreateInput, communes_precariteUncheckedCreateInput>
+  }
+
+  /**
+   * communes_precarite createMany
+   */
+  export type communes_precariteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many communes_precarites.
+     */
+    data: communes_precariteCreateManyInput | communes_precariteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * communes_precarite update
+   */
+  export type communes_precariteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_precarite
+     */
+    select?: communes_precariteSelect<ExtArgs> | null
+    /**
+     * The data needed to update a communes_precarite.
+     */
+    data: XOR<communes_precariteUpdateInput, communes_precariteUncheckedUpdateInput>
+    /**
+     * Choose, which communes_precarite to update.
+     */
+    where: communes_precariteWhereUniqueInput
+  }
+
+  /**
+   * communes_precarite updateMany
+   */
+  export type communes_precariteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update communes_precarites.
+     */
+    data: XOR<communes_precariteUpdateManyMutationInput, communes_precariteUncheckedUpdateManyInput>
+    /**
+     * Filter which communes_precarites to update
+     */
+    where?: communes_precariteWhereInput
+  }
+
+  /**
+   * communes_precarite upsert
+   */
+  export type communes_precariteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_precarite
+     */
+    select?: communes_precariteSelect<ExtArgs> | null
+    /**
+     * The filter to search for the communes_precarite to update in case it exists.
+     */
+    where: communes_precariteWhereUniqueInput
+    /**
+     * In case the communes_precarite found by the `where` argument doesn't exist, create a new communes_precarite with this data.
+     */
+    create: XOR<communes_precariteCreateInput, communes_precariteUncheckedCreateInput>
+    /**
+     * In case the communes_precarite was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<communes_precariteUpdateInput, communes_precariteUncheckedUpdateInput>
+  }
+
+  /**
+   * communes_precarite delete
+   */
+  export type communes_precariteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_precarite
+     */
+    select?: communes_precariteSelect<ExtArgs> | null
+    /**
+     * Filter which communes_precarite to delete.
+     */
+    where: communes_precariteWhereUniqueInput
+  }
+
+  /**
+   * communes_precarite deleteMany
+   */
+  export type communes_precariteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which communes_precarites to delete
+     */
+    where?: communes_precariteWhereInput
+  }
+
+  /**
+   * communes_precarite without action
+   */
+  export type communes_precariteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_precarite
+     */
+    select?: communes_precariteSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -2752,16 +2778,6 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const Clc_paris2ScalarFieldEnum: {
-    pk: 'pk',
-    class_2018: 'class_2018',
-    shape_length: 'shape_length',
-    shape_area: 'shape_area'
-  };
-
-  export type Clc_paris2ScalarFieldEnum = (typeof Clc_paris2ScalarFieldEnum)[keyof typeof Clc_paris2ScalarFieldEnum]
-
-
   export const Spatial_ref_sysScalarFieldEnum: {
     srid: 'srid',
     auth_name: 'auth_name',
@@ -2771,6 +2787,18 @@ export namespace Prisma {
   };
 
   export type Spatial_ref_sysScalarFieldEnum = (typeof Spatial_ref_sysScalarFieldEnum)[keyof typeof Spatial_ref_sysScalarFieldEnum]
+
+
+  export const Communes_precariteScalarFieldEnum: {
+    pk: 'pk',
+    code_commune: 'code_commune',
+    tee_log: 'tee_log',
+    tee_mob: 'tee_mob',
+    precarite_logement: 'precarite_logement',
+    epci: 'epci'
+  };
+
+  export type Communes_precariteScalarFieldEnum = (typeof Communes_precariteScalarFieldEnum)[keyof typeof Communes_precariteScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -2847,55 +2875,6 @@ export namespace Prisma {
    */
 
 
-  export type clc_paris2WhereInput = {
-    AND?: clc_paris2WhereInput | clc_paris2WhereInput[]
-    OR?: clc_paris2WhereInput[]
-    NOT?: clc_paris2WhereInput | clc_paris2WhereInput[]
-    pk?: IntFilter<"clc_paris2"> | number
-    class_2018?: StringNullableFilter<"clc_paris2"> | string | null
-    shape_length?: FloatNullableFilter<"clc_paris2"> | number | null
-    shape_area?: FloatNullableFilter<"clc_paris2"> | number | null
-  }
-
-  export type clc_paris2OrderByWithRelationInput = {
-    pk?: SortOrder
-    class_2018?: SortOrderInput | SortOrder
-    shape_length?: SortOrderInput | SortOrder
-    shape_area?: SortOrderInput | SortOrder
-  }
-
-  export type clc_paris2WhereUniqueInput = Prisma.AtLeast<{
-    pk?: number
-    AND?: clc_paris2WhereInput | clc_paris2WhereInput[]
-    OR?: clc_paris2WhereInput[]
-    NOT?: clc_paris2WhereInput | clc_paris2WhereInput[]
-    class_2018?: StringNullableFilter<"clc_paris2"> | string | null
-    shape_length?: FloatNullableFilter<"clc_paris2"> | number | null
-    shape_area?: FloatNullableFilter<"clc_paris2"> | number | null
-  }, "pk">
-
-  export type clc_paris2OrderByWithAggregationInput = {
-    pk?: SortOrder
-    class_2018?: SortOrderInput | SortOrder
-    shape_length?: SortOrderInput | SortOrder
-    shape_area?: SortOrderInput | SortOrder
-    _count?: clc_paris2CountOrderByAggregateInput
-    _avg?: clc_paris2AvgOrderByAggregateInput
-    _max?: clc_paris2MaxOrderByAggregateInput
-    _min?: clc_paris2MinOrderByAggregateInput
-    _sum?: clc_paris2SumOrderByAggregateInput
-  }
-
-  export type clc_paris2ScalarWhereWithAggregatesInput = {
-    AND?: clc_paris2ScalarWhereWithAggregatesInput | clc_paris2ScalarWhereWithAggregatesInput[]
-    OR?: clc_paris2ScalarWhereWithAggregatesInput[]
-    NOT?: clc_paris2ScalarWhereWithAggregatesInput | clc_paris2ScalarWhereWithAggregatesInput[]
-    pk?: IntWithAggregatesFilter<"clc_paris2"> | number
-    class_2018?: StringNullableWithAggregatesFilter<"clc_paris2"> | string | null
-    shape_length?: FloatNullableWithAggregatesFilter<"clc_paris2"> | number | null
-    shape_area?: FloatNullableWithAggregatesFilter<"clc_paris2"> | number | null
-  }
-
   export type spatial_ref_sysWhereInput = {
     AND?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
     OR?: spatial_ref_sysWhereInput[]
@@ -2950,50 +2929,63 @@ export namespace Prisma {
     proj4text?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
   }
 
-  export type clc_paris2CreateInput = {
-    class_2018?: string | null
-    shape_length?: number | null
-    shape_area?: number | null
+  export type communes_precariteWhereInput = {
+    AND?: communes_precariteWhereInput | communes_precariteWhereInput[]
+    OR?: communes_precariteWhereInput[]
+    NOT?: communes_precariteWhereInput | communes_precariteWhereInput[]
+    pk?: IntFilter<"communes_precarite"> | number
+    code_commune?: StringNullableFilter<"communes_precarite"> | string | null
+    tee_log?: FloatNullableFilter<"communes_precarite"> | number | null
+    tee_mob?: FloatNullableFilter<"communes_precarite"> | number | null
+    precarite_logement?: FloatNullableFilter<"communes_precarite"> | number | null
+    epci?: StringNullableFilter<"communes_precarite"> | string | null
   }
 
-  export type clc_paris2UncheckedCreateInput = {
+  export type communes_precariteOrderByWithRelationInput = {
+    pk?: SortOrder
+    code_commune?: SortOrderInput | SortOrder
+    tee_log?: SortOrderInput | SortOrder
+    tee_mob?: SortOrderInput | SortOrder
+    precarite_logement?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+  }
+
+  export type communes_precariteWhereUniqueInput = Prisma.AtLeast<{
     pk?: number
-    class_2018?: string | null
-    shape_length?: number | null
-    shape_area?: number | null
+    AND?: communes_precariteWhereInput | communes_precariteWhereInput[]
+    OR?: communes_precariteWhereInput[]
+    NOT?: communes_precariteWhereInput | communes_precariteWhereInput[]
+    code_commune?: StringNullableFilter<"communes_precarite"> | string | null
+    tee_log?: FloatNullableFilter<"communes_precarite"> | number | null
+    tee_mob?: FloatNullableFilter<"communes_precarite"> | number | null
+    precarite_logement?: FloatNullableFilter<"communes_precarite"> | number | null
+    epci?: StringNullableFilter<"communes_precarite"> | string | null
+  }, "pk">
+
+  export type communes_precariteOrderByWithAggregationInput = {
+    pk?: SortOrder
+    code_commune?: SortOrderInput | SortOrder
+    tee_log?: SortOrderInput | SortOrder
+    tee_mob?: SortOrderInput | SortOrder
+    precarite_logement?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+    _count?: communes_precariteCountOrderByAggregateInput
+    _avg?: communes_precariteAvgOrderByAggregateInput
+    _max?: communes_precariteMaxOrderByAggregateInput
+    _min?: communes_precariteMinOrderByAggregateInput
+    _sum?: communes_precariteSumOrderByAggregateInput
   }
 
-  export type clc_paris2UpdateInput = {
-    class_2018?: NullableStringFieldUpdateOperationsInput | string | null
-    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
-    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type clc_paris2UncheckedUpdateInput = {
-    pk?: IntFieldUpdateOperationsInput | number
-    class_2018?: NullableStringFieldUpdateOperationsInput | string | null
-    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
-    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type clc_paris2CreateManyInput = {
-    pk?: number
-    class_2018?: string | null
-    shape_length?: number | null
-    shape_area?: number | null
-  }
-
-  export type clc_paris2UpdateManyMutationInput = {
-    class_2018?: NullableStringFieldUpdateOperationsInput | string | null
-    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
-    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type clc_paris2UncheckedUpdateManyInput = {
-    pk?: IntFieldUpdateOperationsInput | number
-    class_2018?: NullableStringFieldUpdateOperationsInput | string | null
-    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
-    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
+  export type communes_precariteScalarWhereWithAggregatesInput = {
+    AND?: communes_precariteScalarWhereWithAggregatesInput | communes_precariteScalarWhereWithAggregatesInput[]
+    OR?: communes_precariteScalarWhereWithAggregatesInput[]
+    NOT?: communes_precariteScalarWhereWithAggregatesInput | communes_precariteScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"communes_precarite"> | number
+    code_commune?: StringNullableWithAggregatesFilter<"communes_precarite"> | string | null
+    tee_log?: FloatNullableWithAggregatesFilter<"communes_precarite"> | number | null
+    tee_mob?: FloatNullableWithAggregatesFilter<"communes_precarite"> | number | null
+    precarite_logement?: FloatNullableWithAggregatesFilter<"communes_precarite"> | number | null
+    epci?: StringNullableWithAggregatesFilter<"communes_precarite"> | string | null
   }
 
   export type spatial_ref_sysCreateInput = {
@@ -3052,6 +3044,66 @@ export namespace Prisma {
     proj4text?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type communes_precariteCreateInput = {
+    code_commune?: string | null
+    tee_log?: number | null
+    tee_mob?: number | null
+    precarite_logement?: number | null
+    epci?: string | null
+  }
+
+  export type communes_precariteUncheckedCreateInput = {
+    pk?: number
+    code_commune?: string | null
+    tee_log?: number | null
+    tee_mob?: number | null
+    precarite_logement?: number | null
+    epci?: string | null
+  }
+
+  export type communes_precariteUpdateInput = {
+    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
+    tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type communes_precariteUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
+    tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type communes_precariteCreateManyInput = {
+    pk?: number
+    code_commune?: string | null
+    tee_log?: number | null
+    tee_mob?: number | null
+    precarite_logement?: number | null
+    epci?: string | null
+  }
+
+  export type communes_precariteUpdateManyMutationInput = {
+    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
+    tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type communes_precariteUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
+    tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -3078,105 +3130,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
-  export type clc_paris2CountOrderByAggregateInput = {
-    pk?: SortOrder
-    class_2018?: SortOrder
-    shape_length?: SortOrder
-    shape_area?: SortOrder
-  }
-
-  export type clc_paris2AvgOrderByAggregateInput = {
-    pk?: SortOrder
-    shape_length?: SortOrder
-    shape_area?: SortOrder
-  }
-
-  export type clc_paris2MaxOrderByAggregateInput = {
-    pk?: SortOrder
-    class_2018?: SortOrder
-    shape_length?: SortOrder
-    shape_area?: SortOrder
-  }
-
-  export type clc_paris2MinOrderByAggregateInput = {
-    pk?: SortOrder
-    class_2018?: SortOrder
-    shape_length?: SortOrder
-    shape_area?: SortOrder
-  }
-
-  export type clc_paris2SumOrderByAggregateInput = {
-    pk?: SortOrder
-    shape_length?: SortOrder
-    shape_area?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
-  }
-
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -3186,6 +3139,11 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type spatial_ref_sysCountOrderByAggregateInput = {
@@ -3222,6 +3180,40 @@ export namespace Prisma {
     auth_srid?: SortOrder
   }
 
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -3238,16 +3230,72 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NullableFloatFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type communes_precariteCountOrderByAggregateInput = {
+    pk?: SortOrder
+    code_commune?: SortOrder
+    tee_log?: SortOrder
+    tee_mob?: SortOrder
+    precarite_logement?: SortOrder
+    epci?: SortOrder
+  }
+
+  export type communes_precariteAvgOrderByAggregateInput = {
+    pk?: SortOrder
+    tee_log?: SortOrder
+    tee_mob?: SortOrder
+    precarite_logement?: SortOrder
+  }
+
+  export type communes_precariteMaxOrderByAggregateInput = {
+    pk?: SortOrder
+    code_commune?: SortOrder
+    tee_log?: SortOrder
+    tee_mob?: SortOrder
+    precarite_logement?: SortOrder
+    epci?: SortOrder
+  }
+
+  export type communes_precariteMinOrderByAggregateInput = {
+    pk?: SortOrder
+    code_commune?: SortOrder
+    tee_log?: SortOrder
+    tee_mob?: SortOrder
+    precarite_logement?: SortOrder
+    epci?: SortOrder
+  }
+
+  export type communes_precariteSumOrderByAggregateInput = {
+    pk?: SortOrder
+    tee_log?: SortOrder
+    tee_mob?: SortOrder
+    precarite_logement?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -3258,7 +3306,19 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
     decrement?: number
@@ -3291,15 +3351,15 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -3346,7 +3406,7 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -3354,7 +3414,23 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -3373,35 +3449,19 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
 
 
   /**
    * Aliases for legacy arg types
    */
     /**
-     * @deprecated Use clc_paris2DefaultArgs instead
-     */
-    export type clc_paris2Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = clc_paris2DefaultArgs<ExtArgs>
-    /**
      * @deprecated Use spatial_ref_sysDefaultArgs instead
      */
     export type spatial_ref_sysArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = spatial_ref_sysDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use communes_precariteDefaultArgs instead
+     */
+    export type communes_precariteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = communes_precariteDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
