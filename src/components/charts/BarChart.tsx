@@ -10,11 +10,11 @@ type Props = {
     "Votre EPCIColor": string;
     periode: string;
   }>;
-}
+};
 
 const BarChart = ({ chartData }: Props) => {
   return (
-    <div style={{ height: "500px", width: "500px" }}>
+    <div style={{ height: "500px", width: "100%" }}>
       <ResponsiveBar
         data={chartData}
         keys={["Votre EPCI", "France"]}
@@ -22,11 +22,24 @@ const BarChart = ({ chartData }: Props) => {
           from: "color",
           modifiers: [["darker", 1.6]],
         }}
+        label={(d) => `${d.value}%`}
+        tooltip={({ id, value, color }) => (
+          <div
+              style={{
+                  padding: 8,
+                  background: '#FFF',
+              }}
+          >
+              <strong>
+                  {id}: {value}%
+              </strong>
+          </div>
+      )}
         groupMode="grouped"
         indexBy="periode"
         margin={{ top: 50, right: 30, bottom: 50, left: 30 }}
         valueScale={{ type: "linear" }}
-        colors={["#ececfe", "#fcafaf"]}
+        colors={["rgba(242, 133, 2, 0.7)", "rgba(44, 170, 166, 0.7)"]} // F28502 "#2CAAA6"
         legends={[
           {
             dataFrom: "keys",

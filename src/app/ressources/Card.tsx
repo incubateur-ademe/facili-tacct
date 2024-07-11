@@ -15,7 +15,7 @@ interface Props {
   titre: string;
 }
 
-const Card = ({ tag, titre, ateliers }: Props) => {
+export const Card = ({ tag, titre, ateliers }: Props) => {
   const { isDark } = useIsDark();
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default.grey.active,
@@ -38,5 +38,3 @@ const Card = ({ tag, titre, ateliers }: Props) => {
     </div>
   );
 };
-
-export default Card;

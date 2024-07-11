@@ -7,7 +7,7 @@ export async function getTravailExt() {
 }
 
 export async function getTravailExtFromEPCI(code: number) {
-  const value = data.filter(el => el['EPCI - Métropole'] === code);
+  const value = data.filter(el => el["EPCI - Métropole"] === code);
 
   if (!value) {
     throw new Error("TravailExt not found");

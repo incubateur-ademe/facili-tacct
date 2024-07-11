@@ -38,10 +38,10 @@ type CommunesTypes = {
     // DEPARTEMEN: string;
     EPCI: string;
     EPCI_CODE: string;
+    densite_bati: number;
     // REGION: string;
     // REGION_COD: string;
     ratio_precarite: number;
-    densite_bati: number;
   };
   type: string;
 };

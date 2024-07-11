@@ -21,10 +21,11 @@
     align-items: center;
     text-align: center;
     border-radius: 4px;
-    width: 200px;
-    height: 150px;
-    background-color: #00009252;
+    width: 220px;
+    height: 160px;
+    background-color: rgb(107 107 107 / 32%);
     padding: 1em;
+    border: 4px solid #000092;
     &:hover {
         cursor: pointer;
     }
@@ -42,8 +43,8 @@
     align-items: center;
     text-align: center;
     border-radius: 4px;
-    width: 200px;
-    height: 150px;
+    width: 220px;
+    height: 160px;
     background-color: rgb(241, 241, 241);
     padding: 1em;
     &:hover {

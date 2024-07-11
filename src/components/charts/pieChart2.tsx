@@ -10,7 +10,7 @@ type Props = {
     label: string;
     value: number;
   }>;
-}
+};
 
 export const PieChart2 = ({ PieData }: Props) => {
   return (
@@ -34,7 +34,7 @@ export const PieChart2 = ({ PieData }: Props) => {
             enableArcLinkLabels={false}
             //arcLabel={d => `${d.value}`}
             arcLabel={e => {
-              let v = e.value.toFixed(0);
+              const v = e.value.toFixed(0);
               if (Number(v) != 0) {
                 return v;
               } else return "";

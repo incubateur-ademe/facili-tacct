@@ -1,28 +1,32 @@
-import { type Metadata } from "next";
+"use client";
+
+import Button from "@codegouvfr/react-dsfr/Button";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 
+import RessourceBackground from "@/assets/images/ressources.svg";
 import { StepperComp } from "@/components/Stepper";
-import workshops from "@/lib/utils/workshops";
 
-import BookmarkIcon from "../../assets/icons/bookmark_icon_black.svg";
-import { Box, Container, GridCol } from "../../dsfr/server";
-import Card from "./Card";
+import { Box, GridCol } from "../../dsfr/server";
 import styles from "./ressources.module.scss";
 
-export const metadata: Metadata = {
-  title: "Ressources",
-  description: "Ressources",
-};
+// export const metadata: Metadata = {
+//   title: "Ressources",
+//   description: "Ressources",
+// };
 
 const Ressources = () => {
+  const searchParams = useSearchParams();
+  const code = searchParams.get("code");
+  const themeUrl = searchParams.get("thematique");
   return (
-    <Container m="4w">
-      <Box style={{ backgroundColor: "white" }}>
+    <div>
+      <Box style={{ backgroundColor: "white", margin: "1em" }}>
         <GridCol lg={6} offset={1}>
           <StepperComp title="Ressources" stepCount={4} currentStep={4} />
         </GridCol>
       </Box>{" "}
-      <div className={styles.wrapper}>
+      {/* <div className={styles.wrapper}>
         <div className={styles.blocWrapper}>
           <div className={styles.titles}>
             <h3>Formats d'ateliers</h3>
@@ -51,8 +55,25 @@ const Ressources = () => {
             ))}
           </div>
         </div>
+      </div> */}
+      <Image
+        src={RessourceBackground}
+        alt=""
+        width={0}
+        height={0}
+        style={{ width: "80%", height: "auto", margin: "-1em 4em 1em" }}
+      />
+      <div className={styles.bottom}>
+        <Button
+          priority="secondary"
+          linkProps={{
+            href: `/explication?code=${code}&thematique=${themeUrl}`,
+          }}
+        >
+          Étape précédente
+        </Button>
       </div>
-    </Container>
+    </div>
   );
 };
 

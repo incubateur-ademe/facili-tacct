@@ -10,7 +10,7 @@ import styles from "./root.module.scss";
 
 type Event = React.ChangeEvent<HTMLInputElement>;
 
-const CollectiviteComp = () => {
+export const CollectiviteComp = () => {
   const router = useRouter();
   const [code, setCode] = useState<number>();
   const [error, setError] = useState<"default" | "error">("default");
@@ -55,5 +55,3 @@ const CollectiviteComp = () => {
     </>
   );
 };
-
-export default CollectiviteComp;

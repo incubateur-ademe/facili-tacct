@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import HandMarkerIcon from "../../assets/icons/markerHand_icon_green.svg";
 import styles from "./etape2.module.scss";
 
-const Step2Comp = () => {
+export const Step2Comp = () => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
   const themeUrl = searchParams.get("thematique");
@@ -17,11 +17,8 @@ const Step2Comp = () => {
       <div className={styles.body}>
         <div className={styles.wrapper}>
           <Image src={HandMarkerIcon} alt="" />
-          <h1>Quelles données utiliser pour convaincre ?</h1>
-          <p>
-            Pour en finir avec les diagnostics standardisés ou hors-sol, mettez en valeur les caractéristiques
-            socio-économiques qui rendent votre territoire unique.
-          </p>
+          <h1>Explorez des données socio-économiques territoriales</h1>
+          <p>Découvrez une sélection de données pertinentes pour chacun des enjeux liés à l’inconfort climatique.</p>
         </div>
       </div>
       <div className={styles.bottom}>
@@ -44,5 +41,3 @@ const Step2Comp = () => {
     </div>
   );
 };
-
-export default Step2Comp;

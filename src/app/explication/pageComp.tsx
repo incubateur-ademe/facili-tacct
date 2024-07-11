@@ -8,9 +8,9 @@ import themes from "@/lib/utils/themes";
 
 import Constellation from "./constellation";
 import styles from "./explication.module.scss";
-import FilterState from "./filterState";
+import { FilterState } from "./filterState";
 
-const ExplicationComp = () => {
+export const ExplicationComp = () => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
   const themeUrl = searchParams.get("thematique");
@@ -37,9 +37,9 @@ const ExplicationComp = () => {
   };
 
   const dimensions = {
-    width: "100dvw",
+    width: 700,
     height: 500,
-    margin: { top: 0, right: 0, bottom: 0, left: 0 },
+    margin: { top: 16, right: 16, bottom: 16, left: 16 },
   };
 
   return (
@@ -62,7 +62,7 @@ const ExplicationComp = () => {
         </Button>
         <Button
           linkProps={{
-            href: "/ressources",
+            href: `/ressources?code=${code}&thematique=${themeUrl}`,
           }}
         >
           Voir les ressources
@@ -71,5 +71,3 @@ const ExplicationComp = () => {
     </div>
   );
 };
-
-export default ExplicationComp;
