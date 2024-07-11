@@ -7,14 +7,14 @@ import React, { useEffect, useRef, useState } from "react";
 
 interface Props {
   dimensions: {
-    height: number;
+    height: number | string;
     margin: {
       bottom: number;
       left: number;
       right: number;
       top: number;
     };
-    width: string;
+    width: number | string;
   };
   setSelected: React.Dispatch<React.SetStateAction<boolean[]>>;
   states: boolean[];
@@ -56,12 +56,12 @@ const Constellation = (props: Props) => {
   };
 
   const { width, height, margin } = dimensions;
-  const svgWidth = width + margin.left + margin.right;
-  const svgHeight = height + margin.top + margin.bottom;
+  const svgWidth = Number(width) + margin.left + margin.right;
+  const svgHeight = Number(height) + margin.top + margin.bottom;
   const mainnodes: any = [];
   const childnodes: any = [];
   const links: any = [];
-  const InconfortThermique = { id: "Inconfort Thermique" };
+  const InconfortThermique = { id: "Inconfort thermique" };
   const Sante = { id: "Santé" };
   const Tourisme = { id: "Tourisme" };
   const EspaceNaturel = { id: "Espaces naturels" };
@@ -70,9 +70,9 @@ const Constellation = (props: Props) => {
   const Amenagement = { id: "Aménagement" };
 
   const addMainNode = (node: any) => {
-    node.size = 70;
-    node.color = "#000091";
-    node.textColor = "#ececfe";
+    node.size = 50;
+    node.color = "#FFFFFF";
+    node.textColor = "#black";
     mainnodes.push(node);
   };
 
@@ -86,7 +86,7 @@ const Constellation = (props: Props) => {
   ) => {
     childNode.size = size;
     childNode.color = color;
-    childNode.textColor = "#black";
+    childNode.textColor = "#4F4F4F";
     childNode.state = false;
     childnodes.push(childNode);
     links.push({
@@ -102,12 +102,12 @@ const Constellation = (props: Props) => {
   };
 
   addMainNode(InconfortThermique);
-  assembleChildNode(InconfortThermique, Sante, 40, "#D0DDFF");
-  assembleChildNode(InconfortThermique, Tourisme, 40, "#D0DDFF");
-  assembleChildNode(InconfortThermique, EspaceNaturel, 40, "#D0DDFF");
-  assembleChildNode(InconfortThermique, GestionEau, 40, "#D0DDFF");
-  assembleChildNode(InconfortThermique, Batiment, 40, "#D0DDFF");
-  assembleChildNode(InconfortThermique, Amenagement, 40, "#D0DDFF");
+  assembleChildNode(InconfortThermique, Sante, 50, "#DCE6FF");
+  assembleChildNode(InconfortThermique, Tourisme, 50, "#DCE6FF");
+  assembleChildNode(InconfortThermique, EspaceNaturel, 50, "#DCE6FF");
+  assembleChildNode(InconfortThermique, GestionEau, 50, "#DCE6FF");
+  assembleChildNode(InconfortThermique, Batiment, 50, "#DCE6FF");
+  assembleChildNode(InconfortThermique, Amenagement, 50, "#DCE6FF");
   const nodes = childnodes.concat(mainnodes);
   //console.log('nodes', nodes)
 
@@ -115,10 +115,8 @@ const Constellation = (props: Props) => {
     const svgEl = d3.select(svgRef.current);
     svgEl.selectAll("*").remove(); // Clear svg content before adding new elements
     const svg = svgEl.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
-    const width = 600;
-    const height = 450;
-    const centerX = width / 2;
-    const centerY = height / 2;
+    const centerX = svgWidth / 2;
+    const centerY = svgHeight / 2;
     const simulation = d3
       .forceSimulation(nodes)
       .force("charge", d3.forceManyBody().strength(-500))
@@ -148,7 +146,7 @@ const Constellation = (props: Props) => {
       .attr("id", (node: any) => node.id)
       .attr("r", (node: any) => node.size)
       .attr("fill", (node: any) => node.color)
-      // .style("stroke", "#D0DDFF")
+      // .style("stroke", "#EBF1FF")
       // .style("stroke-width", 20)
       //.call(dragInteraction)
       .on("mouseover", function () {
@@ -157,15 +155,15 @@ const Constellation = (props: Props) => {
       .on("click", function () {
         const themeId = d3.select(this).attr("id");
         handleCircleSelect(selectedCircle as circle, themeId);
-        if (this.getAttribute("id") === "Inconfort Thermique") {
+        if (this.getAttribute("id") === "Inconfort thermique") {
           d3.selectAll("circle").attr("fill", (node: any) => node.color);
         } else {
-          if (this.getAttribute("fill") === "#D0DDFF") {
+          if (this.getAttribute("fill") === "#DCE6FF") {
             d3.selectAll("circle").attr("fill", (node: any) => node.color);
-            d3.select(this).attr("fill", "#FDC6BA");
+            d3.select(this).attr("fill", "#9580FF");
           } else {
             d3.selectAll("circle").attr("fill", (node: any) => node.color);
-            d3.select(this).attr("fill", "#D0DDFF");
+            d3.select(this).attr("fill", "#DCE6FF");
           }
         }
       });

@@ -13,7 +13,6 @@ import { FragiliteEconomique } from "@/components/themes/inconfort-thermique/fra
 import { GrandAgeIsolement } from "@/components/themes/inconfort-thermique/grand-age-isolement";
 import { TravailExterieur } from "@/components/themes/inconfort-thermique/travail-exterieur";
 import { Vegetalisation } from "@/components/themes/inconfort-thermique/vegetalisation";
-import { GraphDataNotFound } from "@/components/graph-data-not-found";
 
 import styles from "./donnees.module.scss";
 
@@ -25,11 +24,16 @@ interface Props {
     risque: string;
     titre: string;
   }>;
+  db_filtered: Array<{
+    type: string;
+    geometry: any;
+    properties:any;
+  }>
 }
 
 const allComps = [
   {
-    titre: "Grand âge et isolement",
+    titre: "Grand âge",
     Component: (props: Props & { activeDataTab: string }) => <GrandAgeIsolement {...props} />,
   },
   {
@@ -54,9 +58,9 @@ const allComps = [
   },
 ];
 
-const PageComp = ({ data }: Props) => {
+const PageComp = ({ data, db_filtered }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState("Population");
-  const [selectedSubTab, setSelectedSubTab] = useState("Grand âge et isolement");
+  const [selectedSubTab, setSelectedSubTab] = useState("Grand âge");
   const router = useRouter();
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
@@ -88,6 +92,14 @@ const PageComp = ({ data }: Props) => {
       <Tabs selectedTabId={selectedTabId} tabs={tabs} onTabChange={setSelectedTabId}>
         <div className={styles.formContainer}>
           <div className={styles.titles}>
+            {selectedTabId === "Population" ? (
+              <p style={{ margin: "1em 0.5em 1em" }}>
+                La sensibilité de la population est généralement estimée au regard de facteurs démographique, social ou
+                culturel
+              </p>
+            ) : (
+              ""
+            )}
             {data
               .filter(el => el.facteur_sensibilite === selectedTabId)
               .map((element, i) => (
@@ -108,7 +120,7 @@ const PageComp = ({ data }: Props) => {
                 {(() => {
                   const Component = allComps.find(el => el.titre === selectedSubTab)?.Component;
                   if (!Component) return null;
-                  return <Component data={data} activeDataTab={selectedSubTab} />;
+                  return <Component data={data} db_filtered={db_filtered} activeDataTab={selectedSubTab} />;
                 })()}
               </Suspense>
             </div>
