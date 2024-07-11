@@ -7,7 +7,7 @@ import themes from "@/lib/utils/themes";
 import { Box, Container, GridCol } from "../../dsfr/server";
 import styles from "./donnees.module.scss";
 import { Loader } from "./loader";
-import { Get_Prisma } from "../_test/prismafunc";
+import { Get_Prisma } from "../test/prismafunc";
 
 export const metadata: Metadata = {
   title: "Données territoriales",
