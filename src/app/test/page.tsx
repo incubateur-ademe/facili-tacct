@@ -6,6 +6,9 @@ export default async function Test() {
   // console.log('db_filtered', db_filtered)
   return (
     <div style={{ margin: "2rem" }} > 
+      {/* {db_filtered.map((e, i) => (
+        <p key={i}>{e.label3}</p>
+      ))} */}
     </div> 
   );
 }
