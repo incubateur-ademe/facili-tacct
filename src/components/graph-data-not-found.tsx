@@ -1,12 +1,13 @@
-import { GridCol } from "@/dsfr/layout";
-import GraphNotFound from "@/assets/images/data_not_found.svg"
 import Image from "next/image";
 
+import GraphNotFound from "@/assets/images/data_not_found.svg";
+import { GridCol } from "@/dsfr/layout";
 
 interface Props {
-  code: string | undefined
+  code: string | undefined;
 }
 
+const GraphImage = GraphNotFound as HTMLImageElement;
 
 export function GraphDataNotFound({ code }: Props) {
   return (
@@ -24,7 +25,7 @@ export function GraphDataNotFound({ code }: Props) {
         <p>Pour l'EPCI que vous avez renseigné (code SIREN: {code}), nous ne disposons pas de ce type de donnée. </p>
       </GridCol>
       <GridCol lg={6}>
-        <Image src={GraphNotFound} alt='' width={0} height={0} style={{ width: '90%', height: 'auto' }}/>
+        <Image src={GraphImage} alt="" width={0} height={0} style={{ width: "90%", height: "auto" }} />
       </GridCol>
     </div>
   );

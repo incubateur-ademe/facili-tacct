@@ -9,13 +9,13 @@ type Props = {
     id: string;
     label: string;
     value: number | undefined;
+    count: number;
   }>;
-}
+};
 
 export const PieChart1 = ({ graphData }: Props) => {
   return (
     <div>
-      <p style={{ margin: "0 2em 0" }}>Part dans la population selon l'activité économique en 5 postes</p>
       {graphData.length != 0 ? (
         <div style={{ height: "500px", minWidth: "450px" }}>
           <ResponsivePie
@@ -27,18 +27,13 @@ export const PieChart1 = ({ graphData }: Props) => {
             cornerRadius={3}
             activeOuterRadiusOffset={8}
             borderWidth={1}
-            colors={["#68D273", "#E4FFE3", "#BD72D6", "#FFF6E3", "#E3EDFF", "#f47560", "#e8c1a0"]}
+            colors={["rgba(44, 170, 166, 0.7)", "#E4FFE3", "rgba(242, 133, 2, 0.9)", "#FFF6E3", "#E3EDFF", "#f47560", "#e8c1a0"]}
             borderColor={{
               from: "color",
               modifiers: [["darker", 0.3]],
             }}
             enableArcLinkLabels={false}
-            // arcLabel={(e) => {
-            //   let v = e.value.toFixed(0)
-            //   if (v != 0) {
-            //     return v
-            //   } else return ""
-            // }}
+            arcLabel={(d) => `${d.value}%`}
             // arcLinkLabelsTextColor="#333333"
             // arcLinkLabelsOffset={-10}
             // arcLinkLabelsDiagonalLength={8}
