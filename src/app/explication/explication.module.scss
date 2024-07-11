@@ -18,9 +18,12 @@
 .explication {
   display: flex;
   flex-direction: row;
+  max-height: 70dvh;
+  overflow: scroll;
 }
 .constellation {
   width: 50%;
+  height: fit-content;
   margin: 1em;
   background-color: #FFFFFF;
   border-radius: 4px;

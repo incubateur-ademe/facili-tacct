@@ -8,7 +8,7 @@ import { useStyles } from "tss-react/dsfr";
 import HandshakeIcon from "../../assets/icons/handshake_icon_green.svg";
 import styles from "./etape3.module.scss";
 
-const Step3Comp = () => {
+export const Step3Comp = () => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
   const themeUrl = searchParams.get("thematique");
@@ -19,10 +19,10 @@ const Step3Comp = () => {
       <div className={styles.body}>
         <div className={styles.wrapper}>
           <Image src={HandshakeIcon} alt="" />
-          <h1>Qui convaincre et avec quels arguments ?</h1>
+          <h1>Partenaires experts</h1>
           <p>
-            Trop souvent, les initiatives d’adaptation n’aboutissent pas car elles sont menées “en silo” et non comme,
-            c’est-à-dire sans vraiment convaincre et impliquer les bonnes personnes.
+            Identifiez les partenaires sur lesquels vous pouvez vous appuyer pour faire avancer vos initiatives
+            d’enrichissement du diagnostic et de mobilisation.
           </p>
         </div>
       </div>
@@ -46,5 +46,3 @@ const Step3Comp = () => {
     </>
   );
 };
-
-export default Step3Comp;
