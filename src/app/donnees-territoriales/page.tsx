@@ -7,7 +7,7 @@ import themes from "@/lib/utils/themes";
 import { Box, Container, GridCol } from "../../dsfr/server";
 import styles from "./donnees.module.scss";
 import { Loader } from "./loader";
-import { Get_Communes } from "./queries";
+import { Get_CLC, Get_Communes } from "./queries";
 
 export const metadata: Metadata = {
   title: "Données territoriales",
@@ -36,11 +36,29 @@ type DBType = {
   geometry: string;
 };
 
+type SearchParams = {
+  searchParams: {
+    code: string, 
+    thematique: string
+  }
+}
 // 200042497 CODE EPCI TEST 200069193 PARIS 200054781
 
-const Page = async () => {
+const Page = async ( searchParams : SearchParams) => {
   const theme = themes.inconfort_thermique;
-  const db_filtered: any = await Get_Communes(); //REPLACE
+  const code = searchParams.searchParams.code;
+  const db_filtered: any = await Get_Communes(code); //REPLACE
+  const clc_test: any = await Get_CLC(); 
+  var clc_parsed = clc_test.map(function (elem: any) {
+    return {
+      type: "Feature",
+      properties: {
+        label: elem.label3,
+        centroid: elem.centroid,
+      },
+      geometry: JSON.parse(elem.geometry)
+    }
+  })
   var db_parsed = db_filtered.map(function (elem: DBType) {
     return {
       type: "Feature",
@@ -67,7 +85,7 @@ const Page = async () => {
         Explorez des leviers d'action possibles en réduisant la sensibilité de votre territoire à l'inconfort thermique
       </p>
       <div className={styles.container}>
-        <DynamicPageComp data={theme} db_filtered={db_parsed}/>
+        <DynamicPageComp data={theme} db_filtered={db_parsed} clc={clc_parsed}/>
       </div>
     </Container>
   );

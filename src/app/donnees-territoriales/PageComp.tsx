@@ -29,6 +29,7 @@ interface Props {
     geometry: any;
     properties:any;
   }>
+  clc: any;
 }
 
 const allComps = [
@@ -58,7 +59,7 @@ const allComps = [
   },
 ];
 
-const PageComp = ({ data, db_filtered }: Props) => {
+const PageComp = ({ data, db_filtered, clc }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState("Population");
   const [selectedSubTab, setSelectedSubTab] = useState("Grand âge");
   const router = useRouter();
@@ -120,7 +121,7 @@ const PageComp = ({ data, db_filtered }: Props) => {
                 {(() => {
                   const Component = allComps.find(el => el.titre === selectedSubTab)?.Component;
                   if (!Component) return null;
-                  return <Component data={data} db_filtered={db_filtered} activeDataTab={selectedSubTab} />;
+                  return <Component data={data} db_filtered={db_filtered} activeDataTab={selectedSubTab} clc={clc} />;
                 })()}
               </Suspense>
             </div>
