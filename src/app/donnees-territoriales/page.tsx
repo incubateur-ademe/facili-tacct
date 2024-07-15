@@ -36,11 +36,19 @@ type DBType = {
   geometry: string;
 };
 
+type SearchParams = {
+  searchParams: {
+    code: string, 
+    thematique: string
+  }
+}
 // 200042497 CODE EPCI TEST 200069193 PARIS 200054781
 
-const Page = async () => {
+const Page = async ( searchParams : SearchParams) => {
   const theme = themes.inconfort_thermique;
-  const db_filtered: any = await Get_Communes(); //REPLACE
+  const code = (searchParams.searchParams.code);
+  console.log('code in page', code)
+  const db_filtered: any = await Get_Communes(code); //REPLACE
   var db_parsed = db_filtered.map(function (elem: DBType) {
     return {
       type: "Feature",
