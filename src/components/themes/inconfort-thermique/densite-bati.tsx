@@ -7,7 +7,6 @@ import Legend from "@/components/maps/legend";
 import Map from "@/components/maps/map";
 import { GridCol } from "@/dsfr/layout";
 
-import { getCommunesFromEPCI } from "./actions/commune";
 import { getEPCI } from "./actions/epci";
 
 interface Props {
@@ -19,26 +18,25 @@ interface Props {
     risque: string;
     titre: string;
   }>;
+  db_filtered: Array<{
+    type: string;
+    geometry: any;
+    properties:any;
+  }>
 }
 
 const average = (array: number[]) => array.reduce((a: number, b: number) => a + b) / array.length;
 
 export const DensiteBati = (props: Props) => {
-  const { data, activeDataTab } = props;
+  const { data, db_filtered, activeDataTab } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
   const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
-  const [communes_chosen, setCommunes_chosen] = useState<CommunesTypes[]>();
-  const densite_epci = communes_chosen?.map((el, i) => el.properties.densite_bati);
+  const densite_epci = db_filtered?.map((el, i) => el.properties.densite_bati);
 
   useEffect(() => {
     void (async () => {
-      // const dataPLBrows = await getPrecariteLogMobsFromEPCI(Number(code));
-      // if (dataPLBrows.length) {
-      //   setRows(dataPLBrows);
-      // }
       setEpci_chosen(await getEPCI(Number(code)));
-      setCommunes_chosen(await getCommunesFromEPCI(code));
     })();
   }, [code]);
 
@@ -54,7 +52,7 @@ export const DensiteBati = (props: Props) => {
             alignItems: "center",
           }}
         >
-          {epci_chosen && communes_chosen ? (
+          {epci_chosen ? (
             <>
               <GridCol lg={4}>
                 <h4>LE CHIFFRE</h4>
@@ -80,7 +78,7 @@ export const DensiteBati = (props: Props) => {
                   <p>
                     <b>Répartition de la densité du bâti par commune au sein de l'EPCI</b>
                   </p>
-                  <Map epci={epci_chosen} communes={communes_chosen} data={"densite_bati"} />
+                  <Map epci={epci_chosen} data={"densite_bati"} db_filtered={db_filtered} />
                   <p>
                     Source : <b>Base de Données Nationale Des Bâtiments – BDNB</b>
                   </p>

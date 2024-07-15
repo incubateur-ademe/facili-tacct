@@ -46,10 +46,10 @@ type CommunesTypes = {
   type: string;
 };
 
-declare module "@/lib/json-db/maps/commune.json" {
-  const data_commune: DataCommunes;
-  export = data_commune;
-}
+// declare module "@/lib/json-db/maps/commune.json" {
+//   const data_commune: DataCommunes;
+//   export = data_commune;
+// }
 
 interface PrecariteLogMob {
   "": number;

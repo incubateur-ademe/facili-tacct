@@ -51,19 +51,16 @@ type Style = {
 };
 
 interface Props {
-  communes: any;
+  // communes: any;
   data: string;
   epci: any;
   db_filtered: any;
 }
 
 const Map = (props: Props) => {
-  const { epci, communes, data, db_filtered } = props;
-
+  const { epci, data, db_filtered } = props;
   const mapRef = useRef<any>(null);//REPLACE L.Map | null
-
   const data1 = epci as GeoJSON.Feature;
-  const data2 = communes as GeoJSON.Feature;
 
   const latlng = [48.8575, 2.3514]; //paris
   const latLng_mairie1 = [48.8565, 2.3524]; //hotel de ville
@@ -142,10 +139,10 @@ const Map = (props: Props) => {
     //REPLACE ????????
 
     const layer = e.target;
-    const epci_name = layer.feature.properties.EPCI;
-    const commune_name = layer.feature.properties.DCOE_L_LIB;
+    const epci_name = layer.feature.properties.libelle_epci;
+    const commune_name = layer.feature.properties.libelle_commune;
     const precarite_logement = Number(layer.feature.properties.precarite_logement).toFixed(2);
-    // const densite_bati = layer.feature.properties.densite_bati.toFixed(2);
+    const densite_bati = layer.feature.properties.densite_bati.toFixed(2);
     layer.setStyle({
       weight: 3,
       color: "#eee",
@@ -156,8 +153,7 @@ const Map = (props: Props) => {
     layer.bringToFront();
     if (data === "densite_bati") {
       this.bindPopup(
-        `<div>${commune_name}</div><div>Densité du bâti : </div>`,
-        // `<div>${commune_name}</div><div>Densité du bâti : ${densite_bati}</div>`,
+        `<div>${commune_name}</div><div>Densité du bâti : ${densite_bati}</div>`,
       );
       this.openPopup();
     } else {
