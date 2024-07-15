@@ -53,7 +53,7 @@ const Map = (props: Props) => {
   }
    
   const centerCoord: number[] = getCoordinates(all_coordinates);
-
+  
   function getColor(d: number) {
     if (data === "densite_bati") {
       return d > 0.2
