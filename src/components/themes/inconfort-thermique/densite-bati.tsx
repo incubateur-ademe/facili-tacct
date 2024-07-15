@@ -1,13 +1,9 @@
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-
 import { Loader } from "@/app/donnees-territoriales/loader";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import Legend from "@/components/maps/legend";
 import Map from "@/components/maps/map";
 import { GridCol } from "@/dsfr/layout";
-
-import { getEPCI } from "./actions/epci";
+import { useSearchParams } from "next/navigation";
 
 interface Props {
   activeDataTab: string;
@@ -31,18 +27,11 @@ export const DensiteBati = (props: Props) => {
   const { data, db_filtered, activeDataTab } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
-  const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
   const densite_epci = db_filtered?.map((el, i) => el.properties.densite_bati);
-
-  useEffect(() => {
-    void (async () => {
-      setEpci_chosen(await getEPCI(Number(code)));
-    })();
-  }, [code]);
 
   return (
     <>
-      {epci_chosen ? (
+      {db_filtered ? (
         <div
           style={{
             display: "flex",
@@ -52,13 +41,13 @@ export const DensiteBati = (props: Props) => {
             alignItems: "center",
           }}
         >
-          {epci_chosen ? (
+          {db_filtered.length ? (
             <>
               <GridCol lg={4}>
                 <h4>LE CHIFFRE</h4>
                 {densite_epci ? (
                   <p>
-                    Dans l'EPCI {epci_chosen?.properties.EPCI}, la densité moyenne du bâtiment est de{" "}
+                    Dans l'EPCI {db_filtered[0]?.properties["libelle_epci"]}, la densité moyenne du bâtiment est de{" "}
                     <b>{average(densite_epci).toFixed(2)}</b>.
                   </p>
                 ) : (
@@ -78,7 +67,7 @@ export const DensiteBati = (props: Props) => {
                   <p>
                     <b>Répartition de la densité du bâti par commune au sein de l'EPCI</b>
                   </p>
-                  <Map epci={epci_chosen} data={"densite_bati"} db_filtered={db_filtered} />
+                  <Map data={"densite_bati"} db_filtered={db_filtered} />
                   <p>
                     Source : <b>Base de Données Nationale Des Bâtiments – BDNB</b>
                   </p>
@@ -86,11 +75,11 @@ export const DensiteBati = (props: Props) => {
               </GridCol>
             </>
           ) : (
-            <Loader />
+            <GraphDataNotFound code={code} />
           )}
         </div>
       ) : (
-        <GraphDataNotFound code={code} />
+        <Loader />
       )}
     </>
   );
