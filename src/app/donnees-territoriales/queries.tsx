@@ -1,3 +1,4 @@
+"use server"
 import { PrismaClient as PostgresClient } from "../../generated/client";
 
 const PrismaPostgres = new PostgresClient();
