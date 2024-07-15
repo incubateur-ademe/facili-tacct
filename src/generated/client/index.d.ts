@@ -23,6 +23,16 @@ export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPa
  * 
  */
 export type communes_precarite = $Result.DefaultSelection<Prisma.$communes_precaritePayload>
+/**
+ * Model clc_2018
+ * 
+ */
+export type clc_2018 = $Result.DefaultSelection<Prisma.$clc_2018Payload>
+/**
+ * Model communes
+ * 
+ */
+export type communes = $Result.DefaultSelection<Prisma.$communesPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -165,6 +175,26 @@ export class PrismaClient<
     * ```
     */
   get communes_precarite(): Prisma.communes_precariteDelegate<ExtArgs>;
+
+  /**
+   * `prisma.clc_2018`: Exposes CRUD operations for the **clc_2018** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Clc_2018s
+    * const clc_2018s = await prisma.clc_2018.findMany()
+    * ```
+    */
+  get clc_2018(): Prisma.clc_2018Delegate<ExtArgs>;
+
+  /**
+   * `prisma.communes`: Exposes CRUD operations for the **communes** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Communes
+    * const communes = await prisma.communes.findMany()
+    * ```
+    */
+  get communes(): Prisma.communesDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -643,7 +673,9 @@ export namespace Prisma {
 
   export const ModelName: {
     spatial_ref_sys: 'spatial_ref_sys',
-    communes_precarite: 'communes_precarite'
+    communes_precarite: 'communes_precarite',
+    clc_2018: 'clc_2018',
+    communes: 'communes'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +692,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'spatial_ref_sys' | 'communes_precarite'
+      modelProps: 'spatial_ref_sys' | 'communes_precarite' | 'clc_2018' | 'communes'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -793,6 +825,138 @@ export namespace Prisma {
           count: {
             args: Prisma.communes_precariteCountArgs<ExtArgs>,
             result: $Utils.Optional<Communes_precariteCountAggregateOutputType> | number
+          }
+        }
+      }
+      clc_2018: {
+        payload: Prisma.$clc_2018Payload<ExtArgs>
+        fields: Prisma.clc_2018FieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.clc_2018FindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_2018Payload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.clc_2018FindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_2018Payload>
+          }
+          findFirst: {
+            args: Prisma.clc_2018FindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_2018Payload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.clc_2018FindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_2018Payload>
+          }
+          findMany: {
+            args: Prisma.clc_2018FindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_2018Payload>[]
+          }
+          create: {
+            args: Prisma.clc_2018CreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_2018Payload>
+          }
+          createMany: {
+            args: Prisma.clc_2018CreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.clc_2018DeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_2018Payload>
+          }
+          update: {
+            args: Prisma.clc_2018UpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_2018Payload>
+          }
+          deleteMany: {
+            args: Prisma.clc_2018DeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.clc_2018UpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.clc_2018UpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$clc_2018Payload>
+          }
+          aggregate: {
+            args: Prisma.Clc_2018AggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateClc_2018>
+          }
+          groupBy: {
+            args: Prisma.clc_2018GroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Clc_2018GroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.clc_2018CountArgs<ExtArgs>,
+            result: $Utils.Optional<Clc_2018CountAggregateOutputType> | number
+          }
+        }
+      }
+      communes: {
+        payload: Prisma.$communesPayload<ExtArgs>
+        fields: Prisma.communesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.communesFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.communesFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>
+          }
+          findFirst: {
+            args: Prisma.communesFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.communesFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>
+          }
+          findMany: {
+            args: Prisma.communesFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>[]
+          }
+          create: {
+            args: Prisma.communesCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>
+          }
+          createMany: {
+            args: Prisma.communesCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.communesDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>
+          }
+          update: {
+            args: Prisma.communesUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>
+          }
+          deleteMany: {
+            args: Prisma.communesDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.communesUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.communesUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>
+          }
+          aggregate: {
+            args: Prisma.CommunesAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateCommunes>
+          }
+          groupBy: {
+            args: Prisma.communesGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<CommunesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.communesCountArgs<ExtArgs>,
+            result: $Utils.Optional<CommunesCountAggregateOutputType> | number
           }
         }
       }
@@ -2765,6 +2929,1856 @@ export namespace Prisma {
 
 
   /**
+   * Model clc_2018
+   */
+
+  export type AggregateClc_2018 = {
+    _count: Clc_2018CountAggregateOutputType | null
+    _avg: Clc_2018AvgAggregateOutputType | null
+    _sum: Clc_2018SumAggregateOutputType | null
+    _min: Clc_2018MinAggregateOutputType | null
+    _max: Clc_2018MaxAggregateOutputType | null
+  }
+
+  export type Clc_2018AvgAggregateOutputType = {
+    pk: number | null
+    area_ha: number | null
+    shape_length: number | null
+    shape_area: number | null
+  }
+
+  export type Clc_2018SumAggregateOutputType = {
+    pk: number | null
+    area_ha: number | null
+    shape_length: number | null
+    shape_area: number | null
+  }
+
+  export type Clc_2018MinAggregateOutputType = {
+    pk: number | null
+    area_ha: number | null
+    shape_length: number | null
+    shape_area: number | null
+    label3: string | null
+  }
+
+  export type Clc_2018MaxAggregateOutputType = {
+    pk: number | null
+    area_ha: number | null
+    shape_length: number | null
+    shape_area: number | null
+    label3: string | null
+  }
+
+  export type Clc_2018CountAggregateOutputType = {
+    pk: number
+    area_ha: number
+    shape_length: number
+    shape_area: number
+    label3: number
+    _all: number
+  }
+
+
+  export type Clc_2018AvgAggregateInputType = {
+    pk?: true
+    area_ha?: true
+    shape_length?: true
+    shape_area?: true
+  }
+
+  export type Clc_2018SumAggregateInputType = {
+    pk?: true
+    area_ha?: true
+    shape_length?: true
+    shape_area?: true
+  }
+
+  export type Clc_2018MinAggregateInputType = {
+    pk?: true
+    area_ha?: true
+    shape_length?: true
+    shape_area?: true
+    label3?: true
+  }
+
+  export type Clc_2018MaxAggregateInputType = {
+    pk?: true
+    area_ha?: true
+    shape_length?: true
+    shape_area?: true
+    label3?: true
+  }
+
+  export type Clc_2018CountAggregateInputType = {
+    pk?: true
+    area_ha?: true
+    shape_length?: true
+    shape_area?: true
+    label3?: true
+    _all?: true
+  }
+
+  export type Clc_2018AggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which clc_2018 to aggregate.
+     */
+    where?: clc_2018WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_2018s to fetch.
+     */
+    orderBy?: clc_2018OrderByWithRelationInput | clc_2018OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: clc_2018WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_2018s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_2018s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned clc_2018s
+    **/
+    _count?: true | Clc_2018CountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Clc_2018AvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Clc_2018SumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Clc_2018MinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Clc_2018MaxAggregateInputType
+  }
+
+  export type GetClc_2018AggregateType<T extends Clc_2018AggregateArgs> = {
+        [P in keyof T & keyof AggregateClc_2018]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateClc_2018[P]>
+      : GetScalarType<T[P], AggregateClc_2018[P]>
+  }
+
+
+
+
+  export type clc_2018GroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: clc_2018WhereInput
+    orderBy?: clc_2018OrderByWithAggregationInput | clc_2018OrderByWithAggregationInput[]
+    by: Clc_2018ScalarFieldEnum[] | Clc_2018ScalarFieldEnum
+    having?: clc_2018ScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Clc_2018CountAggregateInputType | true
+    _avg?: Clc_2018AvgAggregateInputType
+    _sum?: Clc_2018SumAggregateInputType
+    _min?: Clc_2018MinAggregateInputType
+    _max?: Clc_2018MaxAggregateInputType
+  }
+
+  export type Clc_2018GroupByOutputType = {
+    pk: number
+    area_ha: number | null
+    shape_length: number | null
+    shape_area: number | null
+    label3: string | null
+    _count: Clc_2018CountAggregateOutputType | null
+    _avg: Clc_2018AvgAggregateOutputType | null
+    _sum: Clc_2018SumAggregateOutputType | null
+    _min: Clc_2018MinAggregateOutputType | null
+    _max: Clc_2018MaxAggregateOutputType | null
+  }
+
+  type GetClc_2018GroupByPayload<T extends clc_2018GroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Clc_2018GroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Clc_2018GroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Clc_2018GroupByOutputType[P]>
+            : GetScalarType<T[P], Clc_2018GroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type clc_2018Select<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    area_ha?: boolean
+    shape_length?: boolean
+    shape_area?: boolean
+    label3?: boolean
+  }, ExtArgs["result"]["clc_2018"]>
+
+  export type clc_2018SelectScalar = {
+    pk?: boolean
+    area_ha?: boolean
+    shape_length?: boolean
+    shape_area?: boolean
+    label3?: boolean
+  }
+
+
+
+  export type $clc_2018Payload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "clc_2018"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      area_ha: number | null
+      shape_length: number | null
+      shape_area: number | null
+      label3: string | null
+    }, ExtArgs["result"]["clc_2018"]>
+    composites: {}
+  }
+
+
+  type clc_2018GetPayload<S extends boolean | null | undefined | clc_2018DefaultArgs> = $Result.GetResult<Prisma.$clc_2018Payload, S>
+
+  type clc_2018CountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<clc_2018FindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Clc_2018CountAggregateInputType | true
+    }
+
+  export interface clc_2018Delegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['clc_2018'], meta: { name: 'clc_2018' } }
+    /**
+     * Find zero or one Clc_2018 that matches the filter.
+     * @param {clc_2018FindUniqueArgs} args - Arguments to find a Clc_2018
+     * @example
+     * // Get one Clc_2018
+     * const clc_2018 = await prisma.clc_2018.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends clc_2018FindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, clc_2018FindUniqueArgs<ExtArgs>>
+    ): Prisma__clc_2018Client<$Result.GetResult<Prisma.$clc_2018Payload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Clc_2018 that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {clc_2018FindUniqueOrThrowArgs} args - Arguments to find a Clc_2018
+     * @example
+     * // Get one Clc_2018
+     * const clc_2018 = await prisma.clc_2018.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends clc_2018FindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, clc_2018FindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__clc_2018Client<$Result.GetResult<Prisma.$clc_2018Payload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Clc_2018 that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_2018FindFirstArgs} args - Arguments to find a Clc_2018
+     * @example
+     * // Get one Clc_2018
+     * const clc_2018 = await prisma.clc_2018.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends clc_2018FindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, clc_2018FindFirstArgs<ExtArgs>>
+    ): Prisma__clc_2018Client<$Result.GetResult<Prisma.$clc_2018Payload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Clc_2018 that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_2018FindFirstOrThrowArgs} args - Arguments to find a Clc_2018
+     * @example
+     * // Get one Clc_2018
+     * const clc_2018 = await prisma.clc_2018.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends clc_2018FindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, clc_2018FindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__clc_2018Client<$Result.GetResult<Prisma.$clc_2018Payload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Clc_2018s that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_2018FindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Clc_2018s
+     * const clc_2018s = await prisma.clc_2018.findMany()
+     * 
+     * // Get first 10 Clc_2018s
+     * const clc_2018s = await prisma.clc_2018.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const clc_2018WithPkOnly = await prisma.clc_2018.findMany({ select: { pk: true } })
+     * 
+    **/
+    findMany<T extends clc_2018FindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, clc_2018FindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_2018Payload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Clc_2018.
+     * @param {clc_2018CreateArgs} args - Arguments to create a Clc_2018.
+     * @example
+     * // Create one Clc_2018
+     * const Clc_2018 = await prisma.clc_2018.create({
+     *   data: {
+     *     // ... data to create a Clc_2018
+     *   }
+     * })
+     * 
+    **/
+    create<T extends clc_2018CreateArgs<ExtArgs>>(
+      args: SelectSubset<T, clc_2018CreateArgs<ExtArgs>>
+    ): Prisma__clc_2018Client<$Result.GetResult<Prisma.$clc_2018Payload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Clc_2018s.
+     *     @param {clc_2018CreateManyArgs} args - Arguments to create many Clc_2018s.
+     *     @example
+     *     // Create many Clc_2018s
+     *     const clc_2018 = await prisma.clc_2018.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends clc_2018CreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, clc_2018CreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Clc_2018.
+     * @param {clc_2018DeleteArgs} args - Arguments to delete one Clc_2018.
+     * @example
+     * // Delete one Clc_2018
+     * const Clc_2018 = await prisma.clc_2018.delete({
+     *   where: {
+     *     // ... filter to delete one Clc_2018
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends clc_2018DeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, clc_2018DeleteArgs<ExtArgs>>
+    ): Prisma__clc_2018Client<$Result.GetResult<Prisma.$clc_2018Payload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Clc_2018.
+     * @param {clc_2018UpdateArgs} args - Arguments to update one Clc_2018.
+     * @example
+     * // Update one Clc_2018
+     * const clc_2018 = await prisma.clc_2018.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends clc_2018UpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, clc_2018UpdateArgs<ExtArgs>>
+    ): Prisma__clc_2018Client<$Result.GetResult<Prisma.$clc_2018Payload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Clc_2018s.
+     * @param {clc_2018DeleteManyArgs} args - Arguments to filter Clc_2018s to delete.
+     * @example
+     * // Delete a few Clc_2018s
+     * const { count } = await prisma.clc_2018.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends clc_2018DeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, clc_2018DeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Clc_2018s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_2018UpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Clc_2018s
+     * const clc_2018 = await prisma.clc_2018.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends clc_2018UpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, clc_2018UpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Clc_2018.
+     * @param {clc_2018UpsertArgs} args - Arguments to update or create a Clc_2018.
+     * @example
+     * // Update or create a Clc_2018
+     * const clc_2018 = await prisma.clc_2018.upsert({
+     *   create: {
+     *     // ... data to create a Clc_2018
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Clc_2018 we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends clc_2018UpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, clc_2018UpsertArgs<ExtArgs>>
+    ): Prisma__clc_2018Client<$Result.GetResult<Prisma.$clc_2018Payload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Clc_2018s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_2018CountArgs} args - Arguments to filter Clc_2018s to count.
+     * @example
+     * // Count the number of Clc_2018s
+     * const count = await prisma.clc_2018.count({
+     *   where: {
+     *     // ... the filter for the Clc_2018s we want to count
+     *   }
+     * })
+    **/
+    count<T extends clc_2018CountArgs>(
+      args?: Subset<T, clc_2018CountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Clc_2018CountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Clc_2018.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Clc_2018AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Clc_2018AggregateArgs>(args: Subset<T, Clc_2018AggregateArgs>): Prisma.PrismaPromise<GetClc_2018AggregateType<T>>
+
+    /**
+     * Group by Clc_2018.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_2018GroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends clc_2018GroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: clc_2018GroupByArgs['orderBy'] }
+        : { orderBy?: clc_2018GroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, clc_2018GroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClc_2018GroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the clc_2018 model
+   */
+  readonly fields: clc_2018FieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for clc_2018.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__clc_2018Client<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the clc_2018 model
+   */ 
+  interface clc_2018FieldRefs {
+    readonly pk: FieldRef<"clc_2018", 'Int'>
+    readonly area_ha: FieldRef<"clc_2018", 'Float'>
+    readonly shape_length: FieldRef<"clc_2018", 'Float'>
+    readonly shape_area: FieldRef<"clc_2018", 'Float'>
+    readonly label3: FieldRef<"clc_2018", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * clc_2018 findUnique
+   */
+  export type clc_2018FindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_2018
+     */
+    select?: clc_2018Select<ExtArgs> | null
+    /**
+     * Filter, which clc_2018 to fetch.
+     */
+    where: clc_2018WhereUniqueInput
+  }
+
+  /**
+   * clc_2018 findUniqueOrThrow
+   */
+  export type clc_2018FindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_2018
+     */
+    select?: clc_2018Select<ExtArgs> | null
+    /**
+     * Filter, which clc_2018 to fetch.
+     */
+    where: clc_2018WhereUniqueInput
+  }
+
+  /**
+   * clc_2018 findFirst
+   */
+  export type clc_2018FindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_2018
+     */
+    select?: clc_2018Select<ExtArgs> | null
+    /**
+     * Filter, which clc_2018 to fetch.
+     */
+    where?: clc_2018WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_2018s to fetch.
+     */
+    orderBy?: clc_2018OrderByWithRelationInput | clc_2018OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for clc_2018s.
+     */
+    cursor?: clc_2018WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_2018s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_2018s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of clc_2018s.
+     */
+    distinct?: Clc_2018ScalarFieldEnum | Clc_2018ScalarFieldEnum[]
+  }
+
+  /**
+   * clc_2018 findFirstOrThrow
+   */
+  export type clc_2018FindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_2018
+     */
+    select?: clc_2018Select<ExtArgs> | null
+    /**
+     * Filter, which clc_2018 to fetch.
+     */
+    where?: clc_2018WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_2018s to fetch.
+     */
+    orderBy?: clc_2018OrderByWithRelationInput | clc_2018OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for clc_2018s.
+     */
+    cursor?: clc_2018WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_2018s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_2018s.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of clc_2018s.
+     */
+    distinct?: Clc_2018ScalarFieldEnum | Clc_2018ScalarFieldEnum[]
+  }
+
+  /**
+   * clc_2018 findMany
+   */
+  export type clc_2018FindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_2018
+     */
+    select?: clc_2018Select<ExtArgs> | null
+    /**
+     * Filter, which clc_2018s to fetch.
+     */
+    where?: clc_2018WhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_2018s to fetch.
+     */
+    orderBy?: clc_2018OrderByWithRelationInput | clc_2018OrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing clc_2018s.
+     */
+    cursor?: clc_2018WhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_2018s from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_2018s.
+     */
+    skip?: number
+    distinct?: Clc_2018ScalarFieldEnum | Clc_2018ScalarFieldEnum[]
+  }
+
+  /**
+   * clc_2018 create
+   */
+  export type clc_2018CreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_2018
+     */
+    select?: clc_2018Select<ExtArgs> | null
+    /**
+     * The data needed to create a clc_2018.
+     */
+    data?: XOR<clc_2018CreateInput, clc_2018UncheckedCreateInput>
+  }
+
+  /**
+   * clc_2018 createMany
+   */
+  export type clc_2018CreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many clc_2018s.
+     */
+    data: clc_2018CreateManyInput | clc_2018CreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * clc_2018 update
+   */
+  export type clc_2018UpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_2018
+     */
+    select?: clc_2018Select<ExtArgs> | null
+    /**
+     * The data needed to update a clc_2018.
+     */
+    data: XOR<clc_2018UpdateInput, clc_2018UncheckedUpdateInput>
+    /**
+     * Choose, which clc_2018 to update.
+     */
+    where: clc_2018WhereUniqueInput
+  }
+
+  /**
+   * clc_2018 updateMany
+   */
+  export type clc_2018UpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update clc_2018s.
+     */
+    data: XOR<clc_2018UpdateManyMutationInput, clc_2018UncheckedUpdateManyInput>
+    /**
+     * Filter which clc_2018s to update
+     */
+    where?: clc_2018WhereInput
+  }
+
+  /**
+   * clc_2018 upsert
+   */
+  export type clc_2018UpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_2018
+     */
+    select?: clc_2018Select<ExtArgs> | null
+    /**
+     * The filter to search for the clc_2018 to update in case it exists.
+     */
+    where: clc_2018WhereUniqueInput
+    /**
+     * In case the clc_2018 found by the `where` argument doesn't exist, create a new clc_2018 with this data.
+     */
+    create: XOR<clc_2018CreateInput, clc_2018UncheckedCreateInput>
+    /**
+     * In case the clc_2018 was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<clc_2018UpdateInput, clc_2018UncheckedUpdateInput>
+  }
+
+  /**
+   * clc_2018 delete
+   */
+  export type clc_2018DeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_2018
+     */
+    select?: clc_2018Select<ExtArgs> | null
+    /**
+     * Filter which clc_2018 to delete.
+     */
+    where: clc_2018WhereUniqueInput
+  }
+
+  /**
+   * clc_2018 deleteMany
+   */
+  export type clc_2018DeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which clc_2018s to delete
+     */
+    where?: clc_2018WhereInput
+  }
+
+  /**
+   * clc_2018 without action
+   */
+  export type clc_2018DefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_2018
+     */
+    select?: clc_2018Select<ExtArgs> | null
+  }
+
+
+  /**
+   * Model communes
+   */
+
+  export type AggregateCommunes = {
+    _count: CommunesCountAggregateOutputType | null
+    _avg: CommunesAvgAggregateOutputType | null
+    _sum: CommunesSumAggregateOutputType | null
+    _min: CommunesMinAggregateOutputType | null
+    _max: CommunesMaxAggregateOutputType | null
+  }
+
+  export type CommunesAvgAggregateOutputType = {
+    pk: number | null
+    reg: number | null
+    densite_bati: number | null
+    precarite_logement: number | null
+  }
+
+  export type CommunesSumAggregateOutputType = {
+    pk: number | null
+    reg: number | null
+    densite_bati: number | null
+    precarite_logement: number | null
+  }
+
+  export type CommunesMinAggregateOutputType = {
+    pk: number | null
+    code_commune: string | null
+    libelle_commune: string | null
+    reg: number | null
+    dep: string | null
+    libelle_epci: string | null
+    epci: string | null
+    densite_bati: number | null
+    precarite_logement: number | null
+  }
+
+  export type CommunesMaxAggregateOutputType = {
+    pk: number | null
+    code_commune: string | null
+    libelle_commune: string | null
+    reg: number | null
+    dep: string | null
+    libelle_epci: string | null
+    epci: string | null
+    densite_bati: number | null
+    precarite_logement: number | null
+  }
+
+  export type CommunesCountAggregateOutputType = {
+    pk: number
+    code_commune: number
+    libelle_commune: number
+    reg: number
+    dep: number
+    libelle_epci: number
+    epci: number
+    densite_bati: number
+    precarite_logement: number
+    _all: number
+  }
+
+
+  export type CommunesAvgAggregateInputType = {
+    pk?: true
+    reg?: true
+    densite_bati?: true
+    precarite_logement?: true
+  }
+
+  export type CommunesSumAggregateInputType = {
+    pk?: true
+    reg?: true
+    densite_bati?: true
+    precarite_logement?: true
+  }
+
+  export type CommunesMinAggregateInputType = {
+    pk?: true
+    code_commune?: true
+    libelle_commune?: true
+    reg?: true
+    dep?: true
+    libelle_epci?: true
+    epci?: true
+    densite_bati?: true
+    precarite_logement?: true
+  }
+
+  export type CommunesMaxAggregateInputType = {
+    pk?: true
+    code_commune?: true
+    libelle_commune?: true
+    reg?: true
+    dep?: true
+    libelle_epci?: true
+    epci?: true
+    densite_bati?: true
+    precarite_logement?: true
+  }
+
+  export type CommunesCountAggregateInputType = {
+    pk?: true
+    code_commune?: true
+    libelle_commune?: true
+    reg?: true
+    dep?: true
+    libelle_epci?: true
+    epci?: true
+    densite_bati?: true
+    precarite_logement?: true
+    _all?: true
+  }
+
+  export type CommunesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which communes to aggregate.
+     */
+    where?: communesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes to fetch.
+     */
+    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: communesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned communes
+    **/
+    _count?: true | CommunesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CommunesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CommunesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CommunesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CommunesMaxAggregateInputType
+  }
+
+  export type GetCommunesAggregateType<T extends CommunesAggregateArgs> = {
+        [P in keyof T & keyof AggregateCommunes]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCommunes[P]>
+      : GetScalarType<T[P], AggregateCommunes[P]>
+  }
+
+
+
+
+  export type communesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: communesWhereInput
+    orderBy?: communesOrderByWithAggregationInput | communesOrderByWithAggregationInput[]
+    by: CommunesScalarFieldEnum[] | CommunesScalarFieldEnum
+    having?: communesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CommunesCountAggregateInputType | true
+    _avg?: CommunesAvgAggregateInputType
+    _sum?: CommunesSumAggregateInputType
+    _min?: CommunesMinAggregateInputType
+    _max?: CommunesMaxAggregateInputType
+  }
+
+  export type CommunesGroupByOutputType = {
+    pk: number
+    code_commune: string | null
+    libelle_commune: string | null
+    reg: number | null
+    dep: string | null
+    libelle_epci: string | null
+    epci: string | null
+    densite_bati: number | null
+    precarite_logement: number | null
+    _count: CommunesCountAggregateOutputType | null
+    _avg: CommunesAvgAggregateOutputType | null
+    _sum: CommunesSumAggregateOutputType | null
+    _min: CommunesMinAggregateOutputType | null
+    _max: CommunesMaxAggregateOutputType | null
+  }
+
+  type GetCommunesGroupByPayload<T extends communesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CommunesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CommunesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CommunesGroupByOutputType[P]>
+            : GetScalarType<T[P], CommunesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type communesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    code_commune?: boolean
+    libelle_commune?: boolean
+    reg?: boolean
+    dep?: boolean
+    libelle_epci?: boolean
+    epci?: boolean
+    densite_bati?: boolean
+    precarite_logement?: boolean
+  }, ExtArgs["result"]["communes"]>
+
+  export type communesSelectScalar = {
+    pk?: boolean
+    code_commune?: boolean
+    libelle_commune?: boolean
+    reg?: boolean
+    dep?: boolean
+    libelle_epci?: boolean
+    epci?: boolean
+    densite_bati?: boolean
+    precarite_logement?: boolean
+  }
+
+
+
+  export type $communesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "communes"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      code_commune: string | null
+      libelle_commune: string | null
+      reg: number | null
+      dep: string | null
+      libelle_epci: string | null
+      epci: string | null
+      densite_bati: number | null
+      precarite_logement: number | null
+    }, ExtArgs["result"]["communes"]>
+    composites: {}
+  }
+
+
+  type communesGetPayload<S extends boolean | null | undefined | communesDefaultArgs> = $Result.GetResult<Prisma.$communesPayload, S>
+
+  type communesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<communesFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: CommunesCountAggregateInputType | true
+    }
+
+  export interface communesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['communes'], meta: { name: 'communes' } }
+    /**
+     * Find zero or one Communes that matches the filter.
+     * @param {communesFindUniqueArgs} args - Arguments to find a Communes
+     * @example
+     * // Get one Communes
+     * const communes = await prisma.communes.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends communesFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, communesFindUniqueArgs<ExtArgs>>
+    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Communes that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {communesFindUniqueOrThrowArgs} args - Arguments to find a Communes
+     * @example
+     * // Get one Communes
+     * const communes = await prisma.communes.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends communesFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, communesFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Communes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communesFindFirstArgs} args - Arguments to find a Communes
+     * @example
+     * // Get one Communes
+     * const communes = await prisma.communes.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends communesFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, communesFindFirstArgs<ExtArgs>>
+    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Communes that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communesFindFirstOrThrowArgs} args - Arguments to find a Communes
+     * @example
+     * // Get one Communes
+     * const communes = await prisma.communes.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends communesFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, communesFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Communes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communesFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Communes
+     * const communes = await prisma.communes.findMany()
+     * 
+     * // Get first 10 Communes
+     * const communes = await prisma.communes.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const communesWithPkOnly = await prisma.communes.findMany({ select: { pk: true } })
+     * 
+    **/
+    findMany<T extends communesFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, communesFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Communes.
+     * @param {communesCreateArgs} args - Arguments to create a Communes.
+     * @example
+     * // Create one Communes
+     * const Communes = await prisma.communes.create({
+     *   data: {
+     *     // ... data to create a Communes
+     *   }
+     * })
+     * 
+    **/
+    create<T extends communesCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, communesCreateArgs<ExtArgs>>
+    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Communes.
+     *     @param {communesCreateManyArgs} args - Arguments to create many Communes.
+     *     @example
+     *     // Create many Communes
+     *     const communes = await prisma.communes.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends communesCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, communesCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Communes.
+     * @param {communesDeleteArgs} args - Arguments to delete one Communes.
+     * @example
+     * // Delete one Communes
+     * const Communes = await prisma.communes.delete({
+     *   where: {
+     *     // ... filter to delete one Communes
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends communesDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, communesDeleteArgs<ExtArgs>>
+    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Communes.
+     * @param {communesUpdateArgs} args - Arguments to update one Communes.
+     * @example
+     * // Update one Communes
+     * const communes = await prisma.communes.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends communesUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, communesUpdateArgs<ExtArgs>>
+    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Communes.
+     * @param {communesDeleteManyArgs} args - Arguments to filter Communes to delete.
+     * @example
+     * // Delete a few Communes
+     * const { count } = await prisma.communes.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends communesDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, communesDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Communes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Communes
+     * const communes = await prisma.communes.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends communesUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, communesUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Communes.
+     * @param {communesUpsertArgs} args - Arguments to update or create a Communes.
+     * @example
+     * // Update or create a Communes
+     * const communes = await prisma.communes.upsert({
+     *   create: {
+     *     // ... data to create a Communes
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Communes we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends communesUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, communesUpsertArgs<ExtArgs>>
+    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Communes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communesCountArgs} args - Arguments to filter Communes to count.
+     * @example
+     * // Count the number of Communes
+     * const count = await prisma.communes.count({
+     *   where: {
+     *     // ... the filter for the Communes we want to count
+     *   }
+     * })
+    **/
+    count<T extends communesCountArgs>(
+      args?: Subset<T, communesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CommunesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Communes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CommunesAggregateArgs>(args: Subset<T, CommunesAggregateArgs>): Prisma.PrismaPromise<GetCommunesAggregateType<T>>
+
+    /**
+     * Group by Communes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends communesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: communesGroupByArgs['orderBy'] }
+        : { orderBy?: communesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, communesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommunesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the communes model
+   */
+  readonly fields: communesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for communes.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__communesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the communes model
+   */ 
+  interface communesFieldRefs {
+    readonly pk: FieldRef<"communes", 'Int'>
+    readonly code_commune: FieldRef<"communes", 'String'>
+    readonly libelle_commune: FieldRef<"communes", 'String'>
+    readonly reg: FieldRef<"communes", 'Float'>
+    readonly dep: FieldRef<"communes", 'String'>
+    readonly libelle_epci: FieldRef<"communes", 'String'>
+    readonly epci: FieldRef<"communes", 'String'>
+    readonly densite_bati: FieldRef<"communes", 'Float'>
+    readonly precarite_logement: FieldRef<"communes", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * communes findUnique
+   */
+  export type communesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Filter, which communes to fetch.
+     */
+    where: communesWhereUniqueInput
+  }
+
+  /**
+   * communes findUniqueOrThrow
+   */
+  export type communesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Filter, which communes to fetch.
+     */
+    where: communesWhereUniqueInput
+  }
+
+  /**
+   * communes findFirst
+   */
+  export type communesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Filter, which communes to fetch.
+     */
+    where?: communesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes to fetch.
+     */
+    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for communes.
+     */
+    cursor?: communesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of communes.
+     */
+    distinct?: CommunesScalarFieldEnum | CommunesScalarFieldEnum[]
+  }
+
+  /**
+   * communes findFirstOrThrow
+   */
+  export type communesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Filter, which communes to fetch.
+     */
+    where?: communesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes to fetch.
+     */
+    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for communes.
+     */
+    cursor?: communesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of communes.
+     */
+    distinct?: CommunesScalarFieldEnum | CommunesScalarFieldEnum[]
+  }
+
+  /**
+   * communes findMany
+   */
+  export type communesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Filter, which communes to fetch.
+     */
+    where?: communesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes to fetch.
+     */
+    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing communes.
+     */
+    cursor?: communesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes.
+     */
+    skip?: number
+    distinct?: CommunesScalarFieldEnum | CommunesScalarFieldEnum[]
+  }
+
+  /**
+   * communes create
+   */
+  export type communesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * The data needed to create a communes.
+     */
+    data?: XOR<communesCreateInput, communesUncheckedCreateInput>
+  }
+
+  /**
+   * communes createMany
+   */
+  export type communesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many communes.
+     */
+    data: communesCreateManyInput | communesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * communes update
+   */
+  export type communesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * The data needed to update a communes.
+     */
+    data: XOR<communesUpdateInput, communesUncheckedUpdateInput>
+    /**
+     * Choose, which communes to update.
+     */
+    where: communesWhereUniqueInput
+  }
+
+  /**
+   * communes updateMany
+   */
+  export type communesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update communes.
+     */
+    data: XOR<communesUpdateManyMutationInput, communesUncheckedUpdateManyInput>
+    /**
+     * Filter which communes to update
+     */
+    where?: communesWhereInput
+  }
+
+  /**
+   * communes upsert
+   */
+  export type communesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * The filter to search for the communes to update in case it exists.
+     */
+    where: communesWhereUniqueInput
+    /**
+     * In case the communes found by the `where` argument doesn't exist, create a new communes with this data.
+     */
+    create: XOR<communesCreateInput, communesUncheckedCreateInput>
+    /**
+     * In case the communes was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<communesUpdateInput, communesUncheckedUpdateInput>
+  }
+
+  /**
+   * communes delete
+   */
+  export type communesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Filter which communes to delete.
+     */
+    where: communesWhereUniqueInput
+  }
+
+  /**
+   * communes deleteMany
+   */
+  export type communesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which communes to delete
+     */
+    where?: communesWhereInput
+  }
+
+  /**
+   * communes without action
+   */
+  export type communesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -2799,6 +4813,32 @@ export namespace Prisma {
   };
 
   export type Communes_precariteScalarFieldEnum = (typeof Communes_precariteScalarFieldEnum)[keyof typeof Communes_precariteScalarFieldEnum]
+
+
+  export const Clc_2018ScalarFieldEnum: {
+    pk: 'pk',
+    area_ha: 'area_ha',
+    shape_length: 'shape_length',
+    shape_area: 'shape_area',
+    label3: 'label3'
+  };
+
+  export type Clc_2018ScalarFieldEnum = (typeof Clc_2018ScalarFieldEnum)[keyof typeof Clc_2018ScalarFieldEnum]
+
+
+  export const CommunesScalarFieldEnum: {
+    pk: 'pk',
+    code_commune: 'code_commune',
+    libelle_commune: 'libelle_commune',
+    reg: 'reg',
+    dep: 'dep',
+    libelle_epci: 'libelle_epci',
+    epci: 'epci',
+    densite_bati: 'densite_bati',
+    precarite_logement: 'precarite_logement'
+  };
+
+  export type CommunesScalarFieldEnum = (typeof CommunesScalarFieldEnum)[keyof typeof CommunesScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -2988,6 +5028,134 @@ export namespace Prisma {
     epci?: StringNullableWithAggregatesFilter<"communes_precarite"> | string | null
   }
 
+  export type clc_2018WhereInput = {
+    AND?: clc_2018WhereInput | clc_2018WhereInput[]
+    OR?: clc_2018WhereInput[]
+    NOT?: clc_2018WhereInput | clc_2018WhereInput[]
+    pk?: IntFilter<"clc_2018"> | number
+    area_ha?: FloatNullableFilter<"clc_2018"> | number | null
+    shape_length?: FloatNullableFilter<"clc_2018"> | number | null
+    shape_area?: FloatNullableFilter<"clc_2018"> | number | null
+    label3?: StringNullableFilter<"clc_2018"> | string | null
+  }
+
+  export type clc_2018OrderByWithRelationInput = {
+    pk?: SortOrder
+    area_ha?: SortOrderInput | SortOrder
+    shape_length?: SortOrderInput | SortOrder
+    shape_area?: SortOrderInput | SortOrder
+    label3?: SortOrderInput | SortOrder
+  }
+
+  export type clc_2018WhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: clc_2018WhereInput | clc_2018WhereInput[]
+    OR?: clc_2018WhereInput[]
+    NOT?: clc_2018WhereInput | clc_2018WhereInput[]
+    area_ha?: FloatNullableFilter<"clc_2018"> | number | null
+    shape_length?: FloatNullableFilter<"clc_2018"> | number | null
+    shape_area?: FloatNullableFilter<"clc_2018"> | number | null
+    label3?: StringNullableFilter<"clc_2018"> | string | null
+  }, "pk">
+
+  export type clc_2018OrderByWithAggregationInput = {
+    pk?: SortOrder
+    area_ha?: SortOrderInput | SortOrder
+    shape_length?: SortOrderInput | SortOrder
+    shape_area?: SortOrderInput | SortOrder
+    label3?: SortOrderInput | SortOrder
+    _count?: clc_2018CountOrderByAggregateInput
+    _avg?: clc_2018AvgOrderByAggregateInput
+    _max?: clc_2018MaxOrderByAggregateInput
+    _min?: clc_2018MinOrderByAggregateInput
+    _sum?: clc_2018SumOrderByAggregateInput
+  }
+
+  export type clc_2018ScalarWhereWithAggregatesInput = {
+    AND?: clc_2018ScalarWhereWithAggregatesInput | clc_2018ScalarWhereWithAggregatesInput[]
+    OR?: clc_2018ScalarWhereWithAggregatesInput[]
+    NOT?: clc_2018ScalarWhereWithAggregatesInput | clc_2018ScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"clc_2018"> | number
+    area_ha?: FloatNullableWithAggregatesFilter<"clc_2018"> | number | null
+    shape_length?: FloatNullableWithAggregatesFilter<"clc_2018"> | number | null
+    shape_area?: FloatNullableWithAggregatesFilter<"clc_2018"> | number | null
+    label3?: StringNullableWithAggregatesFilter<"clc_2018"> | string | null
+  }
+
+  export type communesWhereInput = {
+    AND?: communesWhereInput | communesWhereInput[]
+    OR?: communesWhereInput[]
+    NOT?: communesWhereInput | communesWhereInput[]
+    pk?: IntFilter<"communes"> | number
+    code_commune?: StringNullableFilter<"communes"> | string | null
+    libelle_commune?: StringNullableFilter<"communes"> | string | null
+    reg?: FloatNullableFilter<"communes"> | number | null
+    dep?: StringNullableFilter<"communes"> | string | null
+    libelle_epci?: StringNullableFilter<"communes"> | string | null
+    epci?: StringNullableFilter<"communes"> | string | null
+    densite_bati?: FloatNullableFilter<"communes"> | number | null
+    precarite_logement?: FloatNullableFilter<"communes"> | number | null
+  }
+
+  export type communesOrderByWithRelationInput = {
+    pk?: SortOrder
+    code_commune?: SortOrderInput | SortOrder
+    libelle_commune?: SortOrderInput | SortOrder
+    reg?: SortOrderInput | SortOrder
+    dep?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+    densite_bati?: SortOrderInput | SortOrder
+    precarite_logement?: SortOrderInput | SortOrder
+  }
+
+  export type communesWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: communesWhereInput | communesWhereInput[]
+    OR?: communesWhereInput[]
+    NOT?: communesWhereInput | communesWhereInput[]
+    code_commune?: StringNullableFilter<"communes"> | string | null
+    libelle_commune?: StringNullableFilter<"communes"> | string | null
+    reg?: FloatNullableFilter<"communes"> | number | null
+    dep?: StringNullableFilter<"communes"> | string | null
+    libelle_epci?: StringNullableFilter<"communes"> | string | null
+    epci?: StringNullableFilter<"communes"> | string | null
+    densite_bati?: FloatNullableFilter<"communes"> | number | null
+    precarite_logement?: FloatNullableFilter<"communes"> | number | null
+  }, "pk">
+
+  export type communesOrderByWithAggregationInput = {
+    pk?: SortOrder
+    code_commune?: SortOrderInput | SortOrder
+    libelle_commune?: SortOrderInput | SortOrder
+    reg?: SortOrderInput | SortOrder
+    dep?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+    densite_bati?: SortOrderInput | SortOrder
+    precarite_logement?: SortOrderInput | SortOrder
+    _count?: communesCountOrderByAggregateInput
+    _avg?: communesAvgOrderByAggregateInput
+    _max?: communesMaxOrderByAggregateInput
+    _min?: communesMinOrderByAggregateInput
+    _sum?: communesSumOrderByAggregateInput
+  }
+
+  export type communesScalarWhereWithAggregatesInput = {
+    AND?: communesScalarWhereWithAggregatesInput | communesScalarWhereWithAggregatesInput[]
+    OR?: communesScalarWhereWithAggregatesInput[]
+    NOT?: communesScalarWhereWithAggregatesInput | communesScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"communes"> | number
+    code_commune?: StringNullableWithAggregatesFilter<"communes"> | string | null
+    libelle_commune?: StringNullableWithAggregatesFilter<"communes"> | string | null
+    reg?: FloatNullableWithAggregatesFilter<"communes"> | number | null
+    dep?: StringNullableWithAggregatesFilter<"communes"> | string | null
+    libelle_epci?: StringNullableWithAggregatesFilter<"communes"> | string | null
+    epci?: StringNullableWithAggregatesFilter<"communes"> | string | null
+    densite_bati?: FloatNullableWithAggregatesFilter<"communes"> | number | null
+    precarite_logement?: FloatNullableWithAggregatesFilter<"communes"> | number | null
+  }
+
   export type spatial_ref_sysCreateInput = {
     srid: number
     auth_name?: string | null
@@ -3102,6 +5270,140 @@ export namespace Prisma {
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
     epci?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type clc_2018CreateInput = {
+    area_ha?: number | null
+    shape_length?: number | null
+    shape_area?: number | null
+    label3?: string | null
+  }
+
+  export type clc_2018UncheckedCreateInput = {
+    pk?: number
+    area_ha?: number | null
+    shape_length?: number | null
+    shape_area?: number | null
+    label3?: string | null
+  }
+
+  export type clc_2018UpdateInput = {
+    area_ha?: NullableFloatFieldUpdateOperationsInput | number | null
+    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
+    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
+    label3?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type clc_2018UncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    area_ha?: NullableFloatFieldUpdateOperationsInput | number | null
+    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
+    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
+    label3?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type clc_2018CreateManyInput = {
+    pk?: number
+    area_ha?: number | null
+    shape_length?: number | null
+    shape_area?: number | null
+    label3?: string | null
+  }
+
+  export type clc_2018UpdateManyMutationInput = {
+    area_ha?: NullableFloatFieldUpdateOperationsInput | number | null
+    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
+    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
+    label3?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type clc_2018UncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    area_ha?: NullableFloatFieldUpdateOperationsInput | number | null
+    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
+    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
+    label3?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type communesCreateInput = {
+    code_commune?: string | null
+    libelle_commune?: string | null
+    reg?: number | null
+    dep?: string | null
+    libelle_epci?: string | null
+    epci?: string | null
+    densite_bati?: number | null
+    precarite_logement?: number | null
+  }
+
+  export type communesUncheckedCreateInput = {
+    pk?: number
+    code_commune?: string | null
+    libelle_commune?: string | null
+    reg?: number | null
+    dep?: string | null
+    libelle_epci?: string | null
+    epci?: string | null
+    densite_bati?: number | null
+    precarite_logement?: number | null
+  }
+
+  export type communesUpdateInput = {
+    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    reg?: NullableFloatFieldUpdateOperationsInput | number | null
+    dep?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type communesUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    reg?: NullableFloatFieldUpdateOperationsInput | number | null
+    dep?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type communesCreateManyInput = {
+    pk?: number
+    code_commune?: string | null
+    libelle_commune?: string | null
+    reg?: number | null
+    dep?: string | null
+    libelle_epci?: string | null
+    epci?: string | null
+    densite_bati?: number | null
+    precarite_logement?: number | null
+  }
+
+  export type communesUpdateManyMutationInput = {
+    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    reg?: NullableFloatFieldUpdateOperationsInput | number | null
+    dep?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type communesUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    reg?: NullableFloatFieldUpdateOperationsInput | number | null
+    dep?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -3298,6 +5600,94 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
+  export type clc_2018CountOrderByAggregateInput = {
+    pk?: SortOrder
+    area_ha?: SortOrder
+    shape_length?: SortOrder
+    shape_area?: SortOrder
+    label3?: SortOrder
+  }
+
+  export type clc_2018AvgOrderByAggregateInput = {
+    pk?: SortOrder
+    area_ha?: SortOrder
+    shape_length?: SortOrder
+    shape_area?: SortOrder
+  }
+
+  export type clc_2018MaxOrderByAggregateInput = {
+    pk?: SortOrder
+    area_ha?: SortOrder
+    shape_length?: SortOrder
+    shape_area?: SortOrder
+    label3?: SortOrder
+  }
+
+  export type clc_2018MinOrderByAggregateInput = {
+    pk?: SortOrder
+    area_ha?: SortOrder
+    shape_length?: SortOrder
+    shape_area?: SortOrder
+    label3?: SortOrder
+  }
+
+  export type clc_2018SumOrderByAggregateInput = {
+    pk?: SortOrder
+    area_ha?: SortOrder
+    shape_length?: SortOrder
+    shape_area?: SortOrder
+  }
+
+  export type communesCountOrderByAggregateInput = {
+    pk?: SortOrder
+    code_commune?: SortOrder
+    libelle_commune?: SortOrder
+    reg?: SortOrder
+    dep?: SortOrder
+    libelle_epci?: SortOrder
+    epci?: SortOrder
+    densite_bati?: SortOrder
+    precarite_logement?: SortOrder
+  }
+
+  export type communesAvgOrderByAggregateInput = {
+    pk?: SortOrder
+    reg?: SortOrder
+    densite_bati?: SortOrder
+    precarite_logement?: SortOrder
+  }
+
+  export type communesMaxOrderByAggregateInput = {
+    pk?: SortOrder
+    code_commune?: SortOrder
+    libelle_commune?: SortOrder
+    reg?: SortOrder
+    dep?: SortOrder
+    libelle_epci?: SortOrder
+    epci?: SortOrder
+    densite_bati?: SortOrder
+    precarite_logement?: SortOrder
+  }
+
+  export type communesMinOrderByAggregateInput = {
+    pk?: SortOrder
+    code_commune?: SortOrder
+    libelle_commune?: SortOrder
+    reg?: SortOrder
+    dep?: SortOrder
+    libelle_epci?: SortOrder
+    epci?: SortOrder
+    densite_bati?: SortOrder
+    precarite_logement?: SortOrder
+  }
+
+  export type communesSumOrderByAggregateInput = {
+    pk?: SortOrder
+    reg?: SortOrder
+    densite_bati?: SortOrder
+    precarite_logement?: SortOrder
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -3462,6 +5852,14 @@ export namespace Prisma {
      * @deprecated Use communes_precariteDefaultArgs instead
      */
     export type communes_precariteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = communes_precariteDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use clc_2018DefaultArgs instead
+     */
+    export type clc_2018Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = clc_2018DefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use communesDefaultArgs instead
+     */
+    export type communesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = communesDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

@@ -8,7 +8,6 @@ import Legend from "@/components/maps/legend";
 import Map from "@/components/maps/map";
 import { GridCol } from "@/dsfr/layout";
 
-import { getCommunesFromEPCI } from "./actions/commune";
 import { getEPCI } from "./actions/epci";
 import { getPrecariteLogMobsFromEPCI } from "./actions/precarite-log-mob";
 
@@ -92,7 +91,6 @@ export const FragiliteEconomique = (props: Props) => {
   const code = searchParams.get("code")!;
   const [rows, setRows] = useState<Row[]>([]);
   const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
-  const [communes_chosen, setCommunes_chosen] = useState<CommunesTypes[]>();
 
   //Sum of all ratio_precarite_log of municipalities in epci
   const ratio_precarite_log_epci: number = Number(
@@ -108,7 +106,6 @@ export const FragiliteEconomique = (props: Props) => {
         setRows(dataPLBrows);
       }
       setEpci_chosen(await getEPCI(Number(code)));
-      setCommunes_chosen(await getCommunesFromEPCI(code));
     })();
   }, [code]);
 
@@ -124,7 +121,7 @@ export const FragiliteEconomique = (props: Props) => {
             alignItems: "center",
           }}
         >
-          {epci_chosen && communes_chosen ? (
+          {epci_chosen ? (
             <>
               <GridCol lg={4}>
                 <h4>LE CHIFFRE</h4>
@@ -145,7 +142,7 @@ export const FragiliteEconomique = (props: Props) => {
                     <b>Répartition de la précarité énergétique logement par commune au sein de l'EPCI</b>
                   </p>
                   <Legend data={"precarite_log"} />
-                  <Map epci={epci_chosen} communes={communes_chosen} data={"precarite_log"} db_filtered={db_filtered} />
+                  <Map epci={epci_chosen} data={"precarite_log"} db_filtered={db_filtered} />
                   <p>
                     Source : <b>ONPE</b>
                   </p>

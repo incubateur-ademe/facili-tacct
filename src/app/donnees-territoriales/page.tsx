@@ -7,7 +7,7 @@ import themes from "@/lib/utils/themes";
 import { Box, Container, GridCol } from "../../dsfr/server";
 import styles from "./donnees.module.scss";
 import { Loader } from "./loader";
-import { Get_Prisma } from "../test/prismafunc";
+import { Get_Communes } from "./queries";
 
 export const metadata: Metadata = {
   title: "Données territoriales",
@@ -29,7 +29,10 @@ type DBType = {
   type: string;
   code_commune: string;
   epci: string;
+  libelle_epci: string;
+  libelle_commune: string;
   precarite_logement: number;
+  densite_bati: number;
   geometry: string;
 };
 
@@ -37,14 +40,17 @@ type DBType = {
 
 const Page = async () => {
   const theme = themes.inconfort_thermique;
-  const db_filtered: any = await Get_Prisma(); //REPLACE
+  const db_filtered: any = await Get_Communes(); //REPLACE
   var db_parsed = db_filtered.map(function (elem: DBType) {
     return {
       type: "Feature",
       properties: {
         epci: elem.epci,
+        libelle_epci: elem.libelle_epci,
+        libelle_commune: elem.libelle_commune,
         code_commune: elem.code_commune,
-        precarite_logement: elem.precarite_logement
+        precarite_logement: elem.precarite_logement,
+        densite_bati: elem.densite_bati
       },
       geometry: JSON.parse(elem.geometry)
     }

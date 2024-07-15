@@ -1,30 +1,57 @@
 generator client {
-    provider = "prisma-client-js"
-    output   = "../src/generated/client"
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("SCALINGO_POSTGRESQL_URL")
+  provider = "postgresql"
+  url      = env("SCALINGO_POSTGRESQL_URL")
 }
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model spatial_ref_sys {
-    srid      Int     @id
-    auth_name String? @db.VarChar(256)
-    auth_srid Int?
-    srtext    String? @db.VarChar(2048)
-    proj4text String? @db.VarChar(2048)
+  srid      Int     @id
+  auth_name String? @db.VarChar(256)
+  auth_srid Int?
+  srtext    String? @db.VarChar(2048)
+  proj4text String? @db.VarChar(2048)
 }
 
 model communes_precarite {
-    pk                 Int                      @id @default(autoincrement())
-    code_commune       String?                  @db.VarChar
-    tee_log            Float?
-    tee_mob            Float?
-    precarite_logement Float?
-    epci               String?                  @db.VarChar
-    geometry           Unsupported("geometry")?
+  pk                 Int                      @id @default(autoincrement())
+  code_commune       String?                  @db.VarChar
+  tee_log            Float?
+  tee_mob            Float?
+  precarite_logement Float?
+  epci               String?                  @db.VarChar
+  geometry           Unsupported("geometry")?
 
-    @@index([geometry], map: "communes_precarite_geometry_geom_idx", type: Gist)
+  @@index([geometry], map: "communes_precarite_geometry_geom_idx", type: Gist)
+}
+
+model clc_2018 {
+  pk           Int                      @id @default(autoincrement())
+  area_ha      Float?
+  shape_length Float?
+  shape_area   Float?
+  label3       String?                  @db.VarChar
+  geometry     Unsupported("geometry")?
+
+  @@index([geometry], map: "clc_2018_geom_x", type: Gist)
+  @@index([geometry], map: "clc_2018_geometry_geom_idx", type: Gist)
+}
+
+model communes {
+  pk                 Int                      @id @default(autoincrement())
+  code_commune       String?                  @db.VarChar
+  libelle_commune    String?                  @db.VarChar
+  reg                Float?
+  dep                String?                  @db.VarChar
+  libelle_epci       String?                  @db.VarChar
+  epci               String?                  @db.VarChar
+  densite_bati       Float?
+  precarite_logement Float?
+  geometry           Unsupported("geometry")?
+
+  @@index([geometry], map: "communes_geometry_geom_idx", type: Gist)
 }
