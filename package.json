@@ -9,7 +9,7 @@
     "predev": "only-include-used-icons",
     "prebuild": "only-include-used-icons",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
-    "build": "cross-env NODE_OPTIONS=--inspect next build ",
+    "build": "cross-env NODE_OPTIONS=--inspect next build",
     "start": "next start",
     "lint": "next lint",
     "eslint": "eslint --fix ./src"
