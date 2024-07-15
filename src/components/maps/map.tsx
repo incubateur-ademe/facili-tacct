@@ -3,37 +3,8 @@
 import "leaflet/dist/leaflet.css";
 import "./maps.scss";
 
-import { useRef, useState } from "react";
-
 import { GeoJSON, MapContainer, TileLayer } from "@/lib/react-leaflet";
-
-type CommunesTypes = {
-  geometry: {
-    coordinates: number[][][];
-    type: string;
-  };
-  properties: {
-    DCOE_C_COD: string;
-    DCOE_L_LIB: string;
-    EPCI: string;
-    EPCI_CODE: string;
-    densite_bati: number;
-    precarite_logement: number;
-  };
-  type: string;
-};
-
-type EPCITypes = {
-  geometry: {
-    coordinates: number[][][];
-    type: string;
-  };
-  properties: {
-    EPCI: string;
-    EPCI_CODE: number;
-  };
-  type: string;
-};
+import { useRef } from "react";
 
 type GetColor = (d: number) => string;
 
@@ -51,33 +22,19 @@ type Style = {
 };
 
 interface Props {
-  // communes: any;
   data: string;
-  epci: any;
   db_filtered: any;
 }
 
 const Map = (props: Props) => {
-  const { epci, data, db_filtered } = props;
+  const { data, db_filtered } = props;
   const mapRef = useRef<any>(null);//REPLACE L.Map | null
-  const data1 = epci as GeoJSON.Feature;
+  // const data1 = epci as GeoJSON.Feature;
 
   const latlng = [48.8575, 2.3514]; //paris
   const latLng_mairie1 = [48.8565, 2.3524]; //hotel de ville
 
-  const [lat, setLat] = useState(2.227395691566266);
-  const [lng, setLng] = useState(48.69683698795179);
-
-  // const getCentroid = function (arr: number[][][]) {
-  //   //REPLACE
-  //   return arr.reduce(
-  //     function (x: number[], y: number[]) {
-  //       return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
-  //     },
-  //     [0, 0],
-  //   );
-  // };
-  // const centerCoord: number[][] = getCentroid(epci?.geometry.coordinates[0]);
+  const all_coordinates = db_filtered.map((el: any) => el.geometry.coordinates[0][0]);
 
   const getCentroid = (arr: number[][]) => {
     return (arr.reduce((x: number[], y: number[]) => {
@@ -86,8 +43,16 @@ const Map = (props: Props) => {
       [0, 0],
     ));
   };
-  
-  const centerCoord: number[] = getCentroid(epci?.geometry.coordinates[0]);
+  const getCoordinates = (coords: number[][][]) => {
+    var coords_arr = []
+    for (var i = 0; i < coords.length; i++) {
+      const center = getCentroid(coords[i]);
+      coords_arr.push(center)
+    }
+    return getCentroid(coords_arr);
+  }
+   
+  const centerCoord: number[] = getCoordinates(all_coordinates);
 
   function getColor(d: number) {
     if (data === "densite_bati") {
@@ -207,7 +172,7 @@ const Map = (props: Props) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <GeoJSON data={data1} />
+      {/* <GeoJSON data={data1} /> */}
       <GeoJSON
         ref={mapRef}
         data={db_filtered}
