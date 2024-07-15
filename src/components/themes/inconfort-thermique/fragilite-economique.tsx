@@ -1,70 +1,10 @@
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
 import { Loader } from "@/app/donnees-territoriales/loader";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import Legend from "@/components/maps/legend";
-// import dataPrecariteLogMob_raw from "@/lib/json-db/precarite-log-mob.json";
 import Map from "@/components/maps/map";
 import { GridCol } from "@/dsfr/layout";
-
-import { getEPCI } from "./actions/epci";
-import { getPrecariteLogMobsFromEPCI } from "./actions/precarite-log-mob";
-
-type DataEPCI = {
-  features: EPCITypes[];
-  type: string;
-};
-
-type EPCITypes = {
-  geometry: {
-    coordinates: number[][][][];
-    type: string;
-  };
-  properties: {
-    EPCI: string;
-    EPCI_CODE: number;
-  };
-  type: string;
-};
-
-type DataCommunes = {
-  features: CommunesTypes[];
-  name: string;
-  type: string;
-};
-
-type CommunesTypes = {
-  geometry: {
-    coordinates: number[][][][];
-    type: string;
-  };
-  properties: {
-    DCOE_C_COD: string;
-    DCOE_L_LIB: string;
-    // DDEP_C_COD: string;
-    // DEPARTEMEN: string;
-    EPCI: string;
-    EPCI_CODE: string;
-    // REGION: string;
-    // REGION_COD: string;
-    ratio_precarite: number;
-  };
-  type: string;
-};
-
-interface Row {
-  "": number;
-  COMMUNE: string;
-  EPCI: number;
-  IPONDL_POUR_PRECA: number;
-  REG: number;
-  TEE_log: number;
-  TEE_mob: number;
-  precarite_logement: number;
-  precarite_mobilite: number;
-  ratio_precarite_log: number;
-}
 
 interface Props {
   activeDataTab: string;
@@ -89,29 +29,18 @@ export const FragiliteEconomique = (props: Props) => {
   const { data, db_filtered, activeDataTab } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
-  const [rows, setRows] = useState<Row[]>([]);
-  const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
 
-  //Sum of all ratio_precarite_log of municipalities in epci
-  const ratio_precarite_log_epci: number = Number(
-    rows.reduce(function (a, b) {
-      return a + b["ratio_precarite_log"];
-    }, 0) / rows.length,
+  //Mean of all ratio_precarite_log of municipalities in epci
+  const precarite_log_epci: number = Number(
+    db_filtered.reduce(function (a, b) {
+      return a + b.properties["precarite_logement"];
+    }, 0) / db_filtered.length,
   );
-
-  useEffect(() => {
-    void (async () => {
-      const dataPLBrows = await getPrecariteLogMobsFromEPCI(Number(code));
-      if (dataPLBrows.length) {
-        setRows(dataPLBrows);
-      }
-      setEpci_chosen(await getEPCI(Number(code)));
-    })();
-  }, [code]);
+  // console.log('db_filtered', precarite_log_epci)
 
   return (
     <>
-      {epci_chosen ? (
+      {db_filtered ? (
         <div
           style={{
             display: "flex",
@@ -121,13 +50,13 @@ export const FragiliteEconomique = (props: Props) => {
             alignItems: "center",
           }}
         >
-          {epci_chosen ? (
+          {db_filtered.length ? (
             <>
               <GridCol lg={4}>
                 <h4>LE CHIFFRE</h4>
                 <p>
-                  Dans l'EPCI {epci_chosen?.properties["EPCI"]}, la part des ménages qui sont en situation de précarité
-                  énergique logement est de <b>{(100 * ratio_precarite_log_epci).toPrecision(3)}%.</b>
+                  Dans l'EPCI {db_filtered[0]?.properties["libelle_epci"]}, la part des ménages qui sont en situation de précarité
+                  énergique logement est de <b>{(100 * precarite_log_epci).toPrecision(3)}%.</b>
                 </p>
                 <h4>EXPLICATION</h4>
                 <p>
@@ -142,7 +71,7 @@ export const FragiliteEconomique = (props: Props) => {
                     <b>Répartition de la précarité énergétique logement par commune au sein de l'EPCI</b>
                   </p>
                   <Legend data={"precarite_log"} />
-                  <Map epci={epci_chosen} data={"precarite_log"} db_filtered={db_filtered} />
+                  <Map data={"precarite_log"} db_filtered={db_filtered} />
                   <p>
                     Source : <b>ONPE</b>
                   </p>
@@ -150,11 +79,11 @@ export const FragiliteEconomique = (props: Props) => {
               </GridCol>
             </>
           ) : (
-            <Loader />
+            <GraphDataNotFound code={code} />
           )}
         </div>
       ) : (
-        <GraphDataNotFound code={code} />
+        <Loader />
       )}
     </>
   );
