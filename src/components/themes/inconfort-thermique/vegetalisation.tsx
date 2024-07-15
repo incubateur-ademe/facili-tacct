@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -7,6 +6,7 @@ import VegetalisationMap from "@/assets/images/vegetalisation-map.png";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { GridCol } from "@/dsfr/layout";
 
+import Map from "@/components/maps/map2test";
 import { getEPCI } from "./actions/epci";
 import { getVegetalisationFromEPCI } from "./actions/vegetalisation";
 
@@ -26,6 +26,7 @@ interface Props {
     risque: string;
     titre: string;
   }>;
+  clc: any;
   // data_communes: DataCommunes;
   // data_epci: DataEPCI;
 }
@@ -33,7 +34,7 @@ interface Props {
 const GraphImage = VegetalisationMap as HTMLImageElement;
 
 export const Vegetalisation = (props: Props) => {
-  const { data, activeDataTab } = props;
+  const { clc } = props;
   const [PieData, setPieData] = useState<PieData[]>([]);
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
@@ -122,13 +123,15 @@ export const Vegetalisation = (props: Props) => {
               <p style={{ margin: "0 0 1em", textAlign: "center" }}>
                 <b>Types de sols dans la commune de Montpellier</b>
               </p>
-              <Image
+              {/* <Image
                 src={GraphImage}
                 alt="carte de la vegatalisation de Montpellier"
                 width={0}
                 height={0}
                 style={{ width: "90%", height: "auto" }}
-              />
+              /> */}
+              <Map data={"precarite_log"} clc={clc} />
+
               {/* {PieData ? <PieChart2 PieData={PieData} /> : <Loader />} */}
               <p style={{ margin: "1em 0em 0em" }}>
                 Source : <b>CORINE Land Cover</b>
