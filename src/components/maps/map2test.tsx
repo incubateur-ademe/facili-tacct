@@ -14,6 +14,9 @@ interface Props {
 
 const Map = (props: Props) => {
   const { clc } = props;
+  console.log('clc', clc[0].properties.centroid.split("(")[1].split(")")[0].split(" "))
+  const centroid = clc[0].properties.centroid.split("(")[1].split(")")[0].split(" ")
+  // console.log(centroid)
   const mapRef = useRef<any>(null);//REPLACE L.Map | null
 
   // const all_coordinates = clc.map((el: any) => JSON.parse(el.geometry).coordinates[0]);
@@ -65,7 +68,7 @@ const Map = (props: Props) => {
 
   return (
     <MapContainer
-      center={[48.864716, 2.349014]}
+      center={[Number(centroid[1]), Number(centroid[0])]}
       zoom={10}
       ref={mapRef}
       style={{ height: "500px", width: "100%" }}
