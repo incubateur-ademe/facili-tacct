@@ -16,11 +16,11 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.16.2
+ * Prisma Client JS version: 5.13.0
  * Query Engine version: 34ace0eb2704183d2c05b60b52fba5c43c13f303
  */
 Prisma.prismaVersion = {
-  client: "5.16.2",
+  client: "5.13.0",
   engine: "34ace0eb2704183d2c05b60b52fba5c43c13f303"
 }
 
@@ -136,14 +136,6 @@ exports.Prisma.Communes_precariteScalarFieldEnum = {
   epci: 'epci'
 };
 
-exports.Prisma.Clc_2018ScalarFieldEnum = {
-  pk: 'pk',
-  area_ha: 'area_ha',
-  shape_length: 'shape_length',
-  shape_area: 'shape_area',
-  label3: 'label3'
-};
-
 exports.Prisma.CommunesScalarFieldEnum = {
   pk: 'pk',
   code_commune: 'code_commune',
@@ -154,6 +146,28 @@ exports.Prisma.CommunesScalarFieldEnum = {
   epci: 'epci',
   densite_bati: 'densite_bati',
   precarite_logement: 'precarite_logement'
+};
+
+exports.Prisma.Clc_2018_2ScalarFieldEnum = {
+  pk: 'pk',
+  area_ha: 'area_ha',
+  shape_length: 'shape_length',
+  shape_area: 'shape_area',
+  label3: 'label3',
+  centroid: 'centroid'
+};
+
+exports.Prisma.Communes2ScalarFieldEnum = {
+  pk: 'pk',
+  code_commune: 'code_commune',
+  libelle_commune: 'libelle_commune',
+  reg: 'reg',
+  dep: 'dep',
+  libelle_epci: 'libelle_epci',
+  epci: 'epci',
+  densite_bati: 'densite_bati',
+  precarite_logement: 'precarite_logement',
+  coordinates: 'coordinates'
 };
 
 exports.Prisma.SortOrder = {
@@ -175,8 +189,9 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   spatial_ref_sys: 'spatial_ref_sys',
   communes_precarite: 'communes_precarite',
-  clc_2018: 'clc_2018',
-  communes: 'communes'
+  communes: 'communes',
+  clc_2018_2: 'clc_2018_2',
+  communes2: 'communes2'
 };
 
 /**

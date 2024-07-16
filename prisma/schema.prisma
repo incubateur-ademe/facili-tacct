@@ -29,18 +29,6 @@ model communes_precarite {
   @@index([geometry], map: "communes_precarite_geometry_geom_idx", type: Gist)
 }
 
-model clc_2018 {
-  pk           Int                      @id @default(autoincrement())
-  area_ha      Float?
-  shape_length Float?
-  shape_area   Float?
-  label3       String?                  @db.VarChar
-  geometry     Unsupported("geometry")?
-
-  @@index([geometry], map: "clc_2018_geom_x", type: Gist)
-  @@index([geometry], map: "clc_2018_geometry_geom_idx", type: Gist)
-}
-
 model communes {
   pk                 Int                      @id @default(autoincrement())
   code_commune       String?                  @db.VarChar
@@ -54,4 +42,32 @@ model communes {
   geometry           Unsupported("geometry")?
 
   @@index([geometry], map: "communes_geometry_geom_idx", type: Gist)
+}
+
+model clc_2018_2 {
+  pk           Int                      @id @default(autoincrement())
+  area_ha      Float?
+  shape_length Float?
+  shape_area   Float?
+  label3       String?                  @db.VarChar
+  centroid     String?                  @db.VarChar
+  geometry     Unsupported("geometry")?
+
+  @@index([geometry], map: "clc_2018_2_geometry_geom_idx", type: Gist)
+}
+
+model communes2 {
+  pk                 Int                      @id @default(autoincrement())
+  code_commune       String?                  @db.VarChar
+  libelle_commune    String?                  @db.VarChar
+  reg                Float?
+  dep                String?                  @db.VarChar
+  libelle_epci       String?                  @db.VarChar
+  epci               String?                  @db.VarChar
+  densite_bati       Float?
+  precarite_logement Float?
+  coordinates        String?                  @db.VarChar
+  geometry           Unsupported("geometry")?
+
+  @@index([geometry], map: "communes2_geometry_geom_idx", type: Gist)
 }
