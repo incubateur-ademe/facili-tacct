@@ -9,6 +9,7 @@ import { GridCol } from "@/dsfr/layout";
 import Map from "@/components/maps/map2test";
 import { getEPCI } from "./actions/epci";
 import { getVegetalisationFromEPCI } from "./actions/vegetalisation";
+import { Loader } from "@/app/donnees-territoriales/loader";
 
 interface PieData {
   color: string;
@@ -88,7 +89,7 @@ export const Vegetalisation = (props: Props) => {
 
   return (
     <>
-      {epci_chosen ? (
+      {clc ? (
         <div
           style={{
             display: "flex",
@@ -98,49 +99,55 @@ export const Vegetalisation = (props: Props) => {
             alignItems: "center",
           }}
         >
-          <GridCol lg={4}>
-            <h4>LE CHIFFRE</h4>
-            <p>
-              Dans l'EPCI {epci_chosen?.properties.EPCI}, <b>{foret?.toFixed(1)}%</b> du territoire est de la forêt ou
-              des espaces semi-naturels.
-            </p>
-            <h4>EXPLICATION</h4>
-            <p>
-              La présence d’arbres permet d’apporter de l’ombre et rafraichit l’air par évapotranspiration (lorsque
-              plusieurs arbres sont à proximité). Leur efficacité dans le rafraîchissement en milieu urbain dépend de
-              leur nombre, de la densité de leur feuillage, des essences, de la qualité du sol et de la disponibilité en
-              eau.<br></br> <br></br>
-              Plus 2 à 3°C sont les effets maximaux d'arbres isolés sur la température d’air dans les rues ou lorsqu'ils
-              sont alignés en bordure de route. (source :{" "}
-              <a href="https://plusfraichemaville.fr/" target="_blank">
-                Plus fraiche ma ville
-              </a>
-              )
-            </p>
-          </GridCol>
-          <GridCol lg={7}>
-            <div className="flex flex-col justify-end">
-              <p style={{ margin: "0 0 1em", textAlign: "center" }}>
-                <b>Types de sols dans la commune de Montpellier</b>
+          {clc.length ? (
+            <>
+            <GridCol lg={4}>
+              <h4>LE CHIFFRE</h4>
+              <p>
+                Dans l'EPCI {epci_chosen?.properties.EPCI}, <b>{foret?.toFixed(1)}%</b> du territoire est de la forêt ou
+                des espaces semi-naturels.
               </p>
-              {/* <Image
-                src={GraphImage}
-                alt="carte de la vegatalisation de Montpellier"
-                width={0}
-                height={0}
-                style={{ width: "90%", height: "auto" }}
-              /> */}
-              <Map data={"precarite_log"} clc={clc} />
+              <h4>EXPLICATION</h4>
+              <p>
+                La présence d’arbres permet d’apporter de l’ombre et rafraichit l’air par évapotranspiration (lorsque
+                plusieurs arbres sont à proximité). Leur efficacité dans le rafraîchissement en milieu urbain dépend de
+                leur nombre, de la densité de leur feuillage, des essences, de la qualité du sol et de la disponibilité en
+                eau.<br></br> <br></br>
+                Plus 2 à 3°C sont les effets maximaux d'arbres isolés sur la température d’air dans les rues ou lorsqu'ils
+                sont alignés en bordure de route. (source :{" "}
+                <a href="https://plusfraichemaville.fr/" target="_blank">
+                  Plus fraiche ma ville
+                </a>
+                )
+              </p>
+            </GridCol>
+            <GridCol lg={7}>
+              <div className="flex flex-col justify-end">
+                <p style={{ margin: "0 0 1em", textAlign: "center" }}>
+                  <b>Types de sols dans la commune de Montpellier</b>
+                </p>
+                {/* <Image
+                  src={GraphImage}
+                  alt="carte de la vegatalisation de Montpellier"
+                  width={0}
+                  height={0}
+                  style={{ width: "90%", height: "auto" }}
+                /> */}
+                <Map data={"precarite_log"} clc={clc} />
 
-              {/* {PieData ? <PieChart2 PieData={PieData} /> : <Loader />} */}
-              <p style={{ margin: "1em 0em 0em" }}>
-                Source : <b>CORINE Land Cover</b>
-              </p>
-            </div>
-          </GridCol>
+                {/* {PieData ? <PieChart2 PieData={PieData} /> : <Loader />} */}
+                <p style={{ margin: "1em 0em 0em" }}>
+                  Source : <b>CORINE Land Cover</b>
+                </p>
+              </div>
+            </GridCol>
+            </>
+          ) : (
+            <GraphDataNotFound code={code} />
+          )}
         </div>
       ) : (
-        <GraphDataNotFound code={code} />
+        <Loader />
       )}
     </>
   );
