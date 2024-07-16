@@ -172,6 +172,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
+      "value": "C:\\Antoine\\BetaGouv\\Code\\facili-tacct\\facili-tacct\\src\\generated\\client",
       "value": "C:\\Antoine\\Beta gouv\\Code\\facili-tacct\\src\\generated\\client",
       "fromEnvVar": null
     },
