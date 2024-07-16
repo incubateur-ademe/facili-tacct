@@ -13,11 +13,12 @@ export const Get_Communes = async (code: string) => {
       epci, 
       libelle_epci,
       libelle_commune,
-      code_commune, 
+      code_commune,
+      coordinates, 
       precarite_logement,
       densite_bati,
       ST_AsGeoJSON(geometry) geometry 
-      FROM postgis."communes" WHERE epci=${code};`
+      FROM postgis."communes2" WHERE epci=${code};`
     console.timeEnd("Query Execution Time");
     // console.log(code)
     // console.log(value)
@@ -29,19 +30,22 @@ export const Get_Communes = async (code: string) => {
    }
 };
 
-export const Get_CLC = async () => {
+export const Get_CLC = async (centerCoord: number[]) => {
   try {
     console.time("Query Execution Time Get_CLC");
     //Pour requêter seulement les coordonnées (polygon) : ST_AsText(ST_GeomFromGeoJSON(ST_AsGeoJSON(geometry))) geometry
+    const coords = centerCoord[1] + " " + centerCoord[0];
+    const point = 'POINT(' + coords + ')';
     const value = await PrismaPostgres.$queryRaw`
       SELECT 
       label3, 
       pk,
       shape_length,
-      ST_AsGeoJSON(geometry) geometry,
-      centroid,
-      ST_DWithin(geometry, ST_PointFromText('POINT(2.349014 48.864716)', 4326), 1.0)
-      FROM postgis."clc_2018_2" WHERE ST_DWithin(geometry, ST_PointFromText('POINT(2.349014 48.864716)', 4326), 0.25);`
+      ST_AsText(ST_PointFromText(centroid, 4326)) centroid,
+      ST_AsGeoJSON(geometry) geometry
+      FROM postgis."clc_2018_2" WHERE ST_DWithin(ST_PointFromText(centroid, 3857), ST_PointFromText(${point}, 3857), 0.2);`
+      //ST_AsText(ST_PointFromText(centroid, 3857)) centroid
+      //ST_DWithin(geometry, ST_PointFromText(${point}, 4326), 0.21)
       //ST_PointFromText(centroid, 4326)
       //ST_DWithin(geometry, ST_PointFromText('POINT(-0.572834 42.911196)', 4326), 1000.0)
     // console.log(value)
@@ -54,5 +58,6 @@ export const Get_CLC = async () => {
    }
 };
   
+
 
 

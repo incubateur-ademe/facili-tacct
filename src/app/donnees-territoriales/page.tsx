@@ -34,6 +34,7 @@ type DBType = {
   precarite_logement: number;
   densite_bati: number;
   geometry: string;
+  coordinates: string;
 };
 
 type SearchParams = {
@@ -48,7 +49,36 @@ const Page = async ( searchParams : SearchParams) => {
   const theme = themes.inconfort_thermique;
   const code = searchParams.searchParams.code;
   const db_filtered: any = await Get_Communes(code); //REPLACE
-  const clc_test: any = await Get_CLC(); 
+
+  var db_parsed = db_filtered.map(function (elem: DBType) {
+    return {
+      type: "Feature",
+      properties: {
+        epci: elem.epci,
+        libelle_epci: elem.libelle_epci,
+        libelle_commune: elem.libelle_commune,
+        code_commune: elem.code_commune,
+        precarite_logement: elem.precarite_logement,
+        densite_bati: elem.densite_bati,
+        coordinates: elem.coordinates
+      },
+      geometry: JSON.parse(elem.geometry)
+    }
+  })
+  // console.log(db_filtered)
+
+  const getCentroid = (arr: number[][]) => {
+    return (arr.reduce((x: number[], y: number[]) => {
+        return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
+      },
+      [0, 0],
+    ));
+  };
+  
+  const all_coordinates = db_filtered.map((el: any) => el.coordinates.split(",").map(Number));
+  const centerCoord: number[] = getCentroid(all_coordinates);
+
+  const clc_test: any = await Get_CLC(centerCoord); 
   var clc_parsed = clc_test.map(function (elem: any) {
     return {
       type: "Feature",
@@ -59,21 +89,8 @@ const Page = async ( searchParams : SearchParams) => {
       geometry: JSON.parse(elem.geometry)
     }
   })
-  var db_parsed = db_filtered.map(function (elem: DBType) {
-    return {
-      type: "Feature",
-      properties: {
-        epci: elem.epci,
-        libelle_epci: elem.libelle_epci,
-        libelle_commune: elem.libelle_commune,
-        code_commune: elem.code_commune,
-        precarite_logement: elem.precarite_logement,
-        densite_bati: elem.densite_bati
-      },
-      geometry: JSON.parse(elem.geometry)
-    }
-  })
-
+  // console.log('clc_test', clc_test)
+  // console.log(centerCoord)
   return (
     <Container py="4w">
       <Box style={{ backgroundColor: "white" }}>
