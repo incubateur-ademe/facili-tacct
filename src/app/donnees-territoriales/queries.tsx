@@ -1,19 +1,19 @@
-"use server"
+"use server";
 import { PrismaClient as PostgresClient } from "../../generated/client";
 
 const PrismaPostgres = new PostgresClient();
 
 //Paris lat : 48.864716 long : 2.349014
 type DbFiltered = {
-  epci: string;
-  libelle_epci: string;
-  libelle_commune: string;
   code_commune: string;
   coordinates: string;
-  precarite_logement: number;
   densite_bati: number;
+  epci: string;
   geometry: string;
-}
+  libelle_commune: string;
+  libelle_epci: string;
+  precarite_logement: number;
+};
 
 export const Get_Communes = async (code: string): Promise<DbFiltered[]> => {
   try {
@@ -28,31 +28,31 @@ export const Get_Communes = async (code: string): Promise<DbFiltered[]> => {
       precarite_logement,
       densite_bati,
       ST_AsGeoJSON(geometry) geometry 
-      FROM postgis."communes2" WHERE epci=${code};`
+      FROM postgis."communes2" WHERE epci=${code};`;
     console.timeEnd("Query Execution Time");
     // console.log(value)
     return value;
-   } catch(error) {
-      console.error(error);
-      await PrismaPostgres.$disconnect();
-      process.exit(1);
-   }
+  } catch (error) {
+    console.error(error);
+    await PrismaPostgres.$disconnect();
+    process.exit(1);
+  }
 };
 
 interface CLC {
-  label3: string;
   centroid: string;
+  geometry: string;
+  label3: string;
   pk: number;
   shape_length: number;
-  geometry: string;
-};
+}
 
 export const Get_CLC = async (centerCoord: number[]): Promise<CLC[]> => {
   try {
     console.time("Query Execution Time Get_CLC");
     //Pour requêter seulement les coordonnées (polygon) : ST_AsText(ST_GeomFromGeoJSON(ST_AsGeoJSON(geometry))) geometry
     const coords = centerCoord[1] + " " + centerCoord[0];
-    const point = 'POINT(' + coords + ')';
+    const point = "POINT(" + coords + ")";
     const value: Awaited<CLC[]> = await PrismaPostgres.$queryRaw`
       SELECT 
       label3, 
@@ -60,21 +60,21 @@ export const Get_CLC = async (centerCoord: number[]): Promise<CLC[]> => {
       shape_length,
       ST_AsText(ST_PointFromText(centroid, 4326)) centroid,
       ST_AsGeoJSON(geometry) geometry
-      FROM postgis."clc_2018_2" WHERE ST_DWithin(ST_PointFromText(centroid, 3857), ST_PointFromText(${point}, 3857), 0.2);`
-      //ST_AsText(ST_PointFromText(centroid, 3857)) centroid
-      //ST_DWithin(geometry, ST_PointFromText(${point}, 4326), 0.21)
-      //ST_PointFromText(centroid, 4326)
-      //ST_DWithin(geometry, ST_PointFromText('POINT(-0.572834 42.911196)', 4326), 1000.0)
+      FROM postgis."clc_2018_2" WHERE ST_DWithin(ST_PointFromText(centroid, 3857), ST_PointFromText(${point}, 3857), 0.2);`;
+    //ST_AsText(ST_PointFromText(centroid, 3857)) centroid
+    //ST_DWithin(geometry, ST_PointFromText(${point}, 4326), 0.21)
+    //ST_PointFromText(centroid, 4326)
+    //ST_DWithin(geometry, ST_PointFromText('POINT(-0.572834 42.911196)', 4326), 1000.0)
     // console.log(value)
     console.timeEnd("Query Execution Time Get_CLC");
     return value;
-   } catch(error) {
-      console.error(error);
-      await PrismaPostgres.$disconnect();
-      process.exit(1);
-   }
+  } catch (error) {
+    console.error(error);
+    await PrismaPostgres.$disconnect();
+    process.exit(1);
+  }
 };
-  
+
 type InconfortThermique = any;
 
 export const Get_Inconfort_Thermique = async (code: string): Promise<InconfortThermique[]> => {
@@ -84,13 +84,13 @@ export const Get_Inconfort_Thermique = async (code: string): Promise<InconfortTh
       SELECT 
       code_commune, 
       libelle_geographique
-      FROM databases."inconfort_thermique" WHERE epci=${code};`
+      FROM databases."inconfort_thermique" WHERE epci=${code};`;
     // console.log(value)
     console.timeEnd("Query Execution Time Get_CLC");
     return value;
-   } catch(error) {
-      console.error(error);
-      await PrismaPostgres.$disconnect();
-      process.exit(1);
-   }
+  } catch (error) {
+    console.error(error);
+    await PrismaPostgres.$disconnect();
+    process.exit(1);
+  }
 };
