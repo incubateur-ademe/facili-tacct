@@ -66,6 +66,16 @@
     padding: 2em;
 }
 
+@media screen and (max-width: 900px) {
+    .constellationWrapper {
+        flex-direction: column;
+        align-items: center
+    }
+    .constellationText{
+        max-width: 80%;
+    }
+}
+
 .test {
     height: 100px;
     width: 100px;
