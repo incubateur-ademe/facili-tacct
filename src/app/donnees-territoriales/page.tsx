@@ -87,8 +87,7 @@ const Page = async ( searchParams : SearchParams) => {
       geometry: JSON.parse(elem.geometry)
     }
   })
-  console.log(clc_2018)
-
+  
   return (
     <Container py="4w">
       <Box style={{ backgroundColor: "white" }}>

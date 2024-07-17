@@ -87,9 +87,9 @@ export const Vegetalisation = (props: Props) => {
             <GridCol lg={7}>
               <div className="flex flex-col justify-end">
                 <p style={{ margin: "0 0 1em", textAlign: "center" }}>
-                  <b>Types de sols dans la commune de Montpellier</b>
+                  <b>Cartographie des différents types de sols</b>
                 </p>
-                <Map data={"precarite_log"} clc={clc} />
+                <Map clc={clc} />
                 <p style={{ margin: "1em 0em 0em" }}>
                   Source : <b>CORINE Land Cover</b>
                 </p>
