@@ -8,42 +8,47 @@ import { useRef } from "react";
 
 
 interface Props {
-  data: string;
   clc: any;
+  // clc: Array<{
+  //   type: string;
+  //   geometry: string;
+  //   properties: {
+  //     label: string;
+  //     centroid: string;
+  //   }
+  // }>;
 }
 
 const Map = (props: Props) => {
   const { clc } = props;
-  const centroid = clc[0].properties.centroid.split("(")[1].split(")")[0].split(" ")
-  // console.log(centroid)
   const mapRef = useRef<any>(null);//REPLACE L.Map | null
   const colors = {
     "Continuous urban fabric": "#E6004D",
     "Discontinuous urban fabric": "#ff0000",
     "Industrial or commercial units": "#cc4df2",
-    "Road and rail networks and associated land": "#cc0000",
+    "Road and rail networks and associated land": "#7D7D7D", //cc0000
     "Port areas": "#e6cccc",
     "Airports": "#e6cce6",
     "Mineral extraction sites": "#a600cc",
     "Dump sites": "#a64d00",
     "Construction sites": "#ff4dff",
-    "Green urban areas": "#ffa6ff",
+    "Green urban areas": "#7EB47F", //ffa6ff
     "Sport and leisure facilities": "#ffe6ff",
-    "Non,irrigated arable land": "#ffffa8",
+    "Non-irrigated arable land": "#ffffa8",
     "Permanently irrigated land": "#ffff00",
     "Rice fields": "#e6e600",
-    "Vineyards": "#e68000",
+    "Vineyards": "#941E00", //e68000
     "Fruit trees and berry plantations": "#f2a64d",
-    "Olive groves": "#e6a600",
+    "Olive groves": "#808000", //e6a600
     "Pastures": "#e6e64d",
     "Annual crops associated with permanent crops": "#ffe6a6",
     "Complex cultivation patterns": "#ffe64d",
     "Land principally occupied by agriculture, with significant areas of natural vegetation": "#e6cc4d",
-    "Agro,forestry areas": "#f2cca6",
-    "Broad,leaved forest": "#80ff00",
-    "Coniferous forest": "#00a600",
-    "Mixed forest": "#4dff00",
-    "Natural grasslands": "#ccf24d",
+    "Agro-forestry areas": "#526E43", //f2cca6
+    "Broad-leaved forest": "#357A10", //80ff00
+    "Coniferous forest": "#ACDD4D", //00a600
+    "Mixed forest": "#7c9b39", //4dff00
+    "Natural grasslands": "#7CFC00", //ccf24d
     "Moors and heathland": "#a6ff80",
     "Sclerophyllous vegetation": "#a6e64d",
     "Transitional woodland,shrub": "#a6f200",
@@ -92,11 +97,11 @@ const Map = (props: Props) => {
   function style(feature: any) {
     return {
       fillColor: getColor(feature.properties.label),
-      weight: 1.5,
+      weight: 0.5,
       opacity: 1,
       color: "black",
       dashArray: "3",
-      fillOpacity: 0.5,
+      fillOpacity: 0.2,
     };
   }
 
@@ -104,14 +109,14 @@ const Map = (props: Props) => {
     const layer = e.target;
     const label = layer.feature.properties.label;
     layer.setStyle({
-      weight: 3,
+      weight: 1.5,
       dashArray: "",
       fillOpacity: 0.8,
     });
 
     layer.bringToFront();
       this.bindPopup(
-        `<div>Label : ${label}</div>`,
+        `<div>${label}</div>`,
       );
       this.openPopup();
   }
@@ -120,10 +125,10 @@ const Map = (props: Props) => {
   function mouseOutHandler(this: any, e: any) {
     const layer = e.target;
     layer.setStyle({
-      weight: 1.5,
+      weight: 0.5,
       color: "#000000",
       dashArray: "3",
-      fillOpacity: 0.5,
+      fillOpacity: 0.2,
     });
     this.closePopup(e.target);
   }

@@ -19,38 +19,37 @@ const DynamicPageComp = dynamic(() => import("./PageComp"), {
   loading: () => <Loader />,
 });
 
-type Properties = {
-  code_commune: string;
-  epci: string;
-  precarite_logement: number;
-};
-
-type DBType = {
-  type: string;
-  code_commune: string;
-  epci: string;
-  libelle_epci: string;
-  libelle_commune: string;
-  precarite_logement: number;
-  densite_bati: number;
-  geometry: string;
-  coordinates: string;
-};
-
 type SearchParams = {
   searchParams: {
     code: string, 
     thematique: string
   }
 }
+interface CLC {
+  label3: string;
+  centroid: string;
+  pk: number;
+  shape_length: number;
+  geometry: string;
+};
+type DbFiltered = {
+  epci: string;
+  libelle_epci: string;
+  libelle_commune: string;
+  code_commune: string;
+  coordinates: string;
+  precarite_logement: number;
+  densite_bati: number;
+  geometry: string;
+}
 // 200042497 CODE EPCI TEST 200069193 PARIS 200054781
 
 const Page = async ( searchParams : SearchParams) => {
   const theme = themes.inconfort_thermique;
   const code = searchParams.searchParams.code;
-  const db_filtered: any = await Get_Communes(code); //REPLACE
+  const db_filtered: Awaited<DbFiltered[]> = await Get_Communes(code); //REPLACE
 
-  var db_parsed = db_filtered.map(function (elem: DBType) {
+  const db_parsed = db_filtered.map(function (elem: DbFiltered) {
     return {
       type: "Feature",
       properties: {
@@ -65,7 +64,6 @@ const Page = async ( searchParams : SearchParams) => {
       geometry: JSON.parse(elem.geometry)
     }
   })
-  // console.log(db_filtered)
 
   const getCentroid = (arr: number[][]) => {
     return (arr.reduce((x: number[], y: number[]) => {
@@ -75,11 +73,11 @@ const Page = async ( searchParams : SearchParams) => {
     ));
   };
   
-  const all_coordinates = db_filtered.map((el: any) => el.coordinates.split(",").map(Number));
+  const all_coordinates = db_filtered.map((el: DbFiltered) => el.coordinates.split(",").map(Number));
   const centerCoord: number[] = getCentroid(all_coordinates);
 
-  const clc_test: any = await Get_CLC(centerCoord); 
-  var clc_parsed = clc_test.map(function (elem: any) {
+  const clc_2018: Awaited<CLC[]> = await Get_CLC(centerCoord); 
+  const clc_parsed = clc_2018.map(function (elem: CLC) {
     return {
       type: "Feature",
       properties: {
@@ -89,8 +87,8 @@ const Page = async ( searchParams : SearchParams) => {
       geometry: JSON.parse(elem.geometry)
     }
   })
-  // console.log('clc_test', clc_test)
-  // console.log(centerCoord)
+  console.log(clc_2018)
+
   return (
     <Container py="4w">
       <Box style={{ backgroundColor: "white" }}>

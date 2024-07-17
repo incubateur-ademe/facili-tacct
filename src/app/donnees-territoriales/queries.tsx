@@ -4,11 +4,21 @@ import { PrismaClient as PostgresClient } from "../../generated/client";
 const PrismaPostgres = new PostgresClient();
 
 //Paris lat : 48.864716 long : 2.349014
+type DbFiltered = {
+  epci: string;
+  libelle_epci: string;
+  libelle_commune: string;
+  code_commune: string;
+  coordinates: string;
+  precarite_logement: number;
+  densite_bati: number;
+  geometry: string;
+}
 
-export const Get_Communes = async (code: string) => {
+export const Get_Communes = async (code: string): Promise<DbFiltered[]> => {
   try {
     console.time("Query Execution Time");
-    const value = await PrismaPostgres.$queryRaw`
+    const value: Awaited<DbFiltered[]> = await PrismaPostgres.$queryRaw`
       SELECT 
       epci, 
       libelle_epci,
@@ -20,7 +30,6 @@ export const Get_Communes = async (code: string) => {
       ST_AsGeoJSON(geometry) geometry 
       FROM postgis."communes2" WHERE epci=${code};`
     console.timeEnd("Query Execution Time");
-    // console.log(code)
     // console.log(value)
     return value;
    } catch(error) {
@@ -30,13 +39,21 @@ export const Get_Communes = async (code: string) => {
    }
 };
 
-export const Get_CLC = async (centerCoord: number[]) => {
+interface CLC {
+  label3: string;
+  centroid: string;
+  pk: number;
+  shape_length: number;
+  geometry: string;
+};
+
+export const Get_CLC = async (centerCoord: number[]): Promise<CLC[]> => {
   try {
     console.time("Query Execution Time Get_CLC");
     //Pour requêter seulement les coordonnées (polygon) : ST_AsText(ST_GeomFromGeoJSON(ST_AsGeoJSON(geometry))) geometry
     const coords = centerCoord[1] + " " + centerCoord[0];
     const point = 'POINT(' + coords + ')';
-    const value = await PrismaPostgres.$queryRaw`
+    const value: Awaited<CLC[]> = await PrismaPostgres.$queryRaw`
       SELECT 
       label3, 
       pk,

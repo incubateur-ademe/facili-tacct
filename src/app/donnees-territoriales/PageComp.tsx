@@ -26,11 +26,28 @@ interface Props {
   }>;
   db_filtered: Array<{
     type: string;
-    geometry: any;
-    properties:any;
+    geometry: string;
+    properties: {
+      epci: string;
+      libelle_epci: string;
+      libelle_commune: string;
+      code_commune: string;
+      precarite_logement: number;
+      densite_bati: number;
+      coordinates: string;
+    };
   }>
-  clc: any;
+  clc: Array<{
+    type: string;
+    geometry: string;
+    properties: {
+      label: string;
+      centroid: string;
+    }
+  }>;
 }
+
+
 
 const allComps = [
   {

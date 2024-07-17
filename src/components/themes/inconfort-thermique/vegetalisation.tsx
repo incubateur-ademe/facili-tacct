@@ -6,7 +6,7 @@ import VegetalisationMap from "@/assets/images/vegetalisation-map.png";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { GridCol } from "@/dsfr/layout";
 
-import Map from "@/components/maps/map2test";
+import Map from "@/components/maps/CLC";
 import { getEPCI } from "./actions/epci";
 import { getVegetalisationFromEPCI } from "./actions/vegetalisation";
 import { Loader } from "@/app/donnees-territoriales/loader";
@@ -19,20 +19,15 @@ interface PieData {
 }
 
 interface Props {
-  activeDataTab: string;
-  data: Array<{
-    donnee: string;
-    facteur_sensibilite: string;
-    id: number;
-    risque: string;
-    titre: string;
+  clc: Array<{
+    type: string;
+    geometry: string;
+    properties: {
+      label: string;
+      centroid: string;
+    }
   }>;
-  clc: any;
-  // data_communes: DataCommunes;
-  // data_epci: DataEPCI;
 }
-
-const GraphImage = VegetalisationMap as HTMLImageElement;
 
 export const Vegetalisation = (props: Props) => {
   const { clc } = props;
@@ -50,38 +45,6 @@ export const Vegetalisation = (props: Props) => {
         const y = Object.values(dataVegetalisationRows).slice(3);
         const sum_ha: number = Number(y.reduce((partialSum: number, a: number) => partialSum + a, 0));
         setForet((100 * y.at(2)) / sum_ha);
-        setPieData([
-          {
-            id: "Sols artificiels",
-            label: "Artificiels",
-            value: Number(y.at(0)),
-            color: "#ACBBC1",
-          },
-          {
-            id: "Sols agricoles",
-            label: "Agricoles",
-            value: Number(y.at(1)),
-            color: "#FF8B00",
-          },
-          {
-            id: "Forêts et sols semi-naturels",
-            label: "Forêt",
-            value: Number(y.at(2)),
-            color: "#68D273",
-          },
-          {
-            id: "Sols humides",
-            label: "Sols humides",
-            value: Number(y.at(3)),
-            color: "#f1e15b",
-          },
-          {
-            id: "Eau",
-            label: "Eau",
-            value: Number(y.at(4)),
-            color: "#28D1FF",
-          },
-        ]);
       }
       setEpci_chosen(await getEPCI(Number(code)));
     })();
@@ -126,16 +89,7 @@ export const Vegetalisation = (props: Props) => {
                 <p style={{ margin: "0 0 1em", textAlign: "center" }}>
                   <b>Types de sols dans la commune de Montpellier</b>
                 </p>
-                {/* <Image
-                  src={GraphImage}
-                  alt="carte de la vegatalisation de Montpellier"
-                  width={0}
-                  height={0}
-                  style={{ width: "90%", height: "auto" }}
-                /> */}
                 <Map data={"precarite_log"} clc={clc} />
-
-                {/* {PieData ? <PieChart2 PieData={PieData} /> : <Loader />} */}
                 <p style={{ margin: "1em 0em 0em" }}>
                   Source : <b>CORINE Land Cover</b>
                 </p>
