@@ -75,6 +75,22 @@ export const Get_CLC = async (centerCoord: number[]): Promise<CLC[]> => {
    }
 };
   
+type InconfortThermique = any;
 
-
-
+export const Get_Inconfort_Thermique = async (code: string): Promise<InconfortThermique[]> => {
+  try {
+    console.time("Query Execution Time Get_CLC");
+    const value: Awaited<InconfortThermique[]> = await PrismaPostgres.$queryRaw`
+      SELECT 
+      code_commune, 
+      libelle_geographique
+      FROM databases."inconfort_thermique" WHERE epci=${code};`
+    // console.log(value)
+    console.timeEnd("Query Execution Time Get_CLC");
+    return value;
+   } catch(error) {
+      console.error(error);
+      await PrismaPostgres.$disconnect();
+      process.exit(1);
+   }
+};
