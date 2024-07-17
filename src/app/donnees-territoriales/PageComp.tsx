@@ -17,6 +17,14 @@ import { Vegetalisation } from "@/components/themes/inconfort-thermique/vegetali
 import styles from "./donnees.module.scss";
 
 interface Props {
+  clc: Array<{
+    geometry: string;
+    properties: {
+      centroid: string;
+      label: string;
+    };
+    type: string;
+  }>;
   data: Array<{
     donnee: string;
     facteur_sensibilite: string;
@@ -25,29 +33,19 @@ interface Props {
     titre: string;
   }>;
   db_filtered: Array<{
-    type: string;
     geometry: string;
     properties: {
-      epci: string;
-      libelle_epci: string;
-      libelle_commune: string;
       code_commune: string;
-      precarite_logement: number;
-      densite_bati: number;
       coordinates: string;
+      densite_bati: number;
+      epci: string;
+      libelle_commune: string;
+      libelle_epci: string;
+      precarite_logement: number;
     };
-  }>
-  clc: Array<{
     type: string;
-    geometry: string;
-    properties: {
-      label: string;
-      centroid: string;
-    }
   }>;
 }
-
-
 
 const allComps = [
   {
