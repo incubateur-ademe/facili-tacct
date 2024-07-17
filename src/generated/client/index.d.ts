@@ -14,20 +14,10 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model spatial_ref_sys
- * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
- */
-export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPayload>
-/**
- * Model communes_precarite
+ * Model inconfort_thermique
  * 
  */
-export type communes_precarite = $Result.DefaultSelection<Prisma.$communes_precaritePayload>
-/**
- * Model communes
- * 
- */
-export type communes = $Result.DefaultSelection<Prisma.$communesPayload>
+export type inconfort_thermique = $Result.DefaultSelection<Prisma.$inconfort_thermiquePayload>
 /**
  * Model clc_2018_2
  * 
@@ -38,6 +28,11 @@ export type clc_2018_2 = $Result.DefaultSelection<Prisma.$clc_2018_2Payload>
  * 
  */
 export type communes2 = $Result.DefaultSelection<Prisma.$communes2Payload>
+/**
+ * Model spatial_ref_sys
+ * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+ */
+export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -46,8 +41,8 @@ export type communes2 = $Result.DefaultSelection<Prisma.$communes2Payload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Spatial_ref_sys
- * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
+ * // Fetch zero or more Inconfort_thermiques
+ * const inconfort_thermiques = await prisma.inconfort_thermique.findMany()
  * ```
  *
  * 
@@ -67,8 +62,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Spatial_ref_sys
-   * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
+   * // Fetch zero or more Inconfort_thermiques
+   * const inconfort_thermiques = await prisma.inconfort_thermique.findMany()
    * ```
    *
    * 
@@ -162,34 +157,14 @@ export class PrismaClient<
   $extends: $Extensions.ExtendsHook<'extends', Prisma.TypeMapCb, ExtArgs>
 
       /**
-   * `prisma.spatial_ref_sys`: Exposes CRUD operations for the **spatial_ref_sys** model.
+   * `prisma.inconfort_thermique`: Exposes CRUD operations for the **inconfort_thermique** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Spatial_ref_sys
-    * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
+    * // Fetch zero or more Inconfort_thermiques
+    * const inconfort_thermiques = await prisma.inconfort_thermique.findMany()
     * ```
     */
-  get spatial_ref_sys(): Prisma.spatial_ref_sysDelegate<ExtArgs>;
-
-  /**
-   * `prisma.communes_precarite`: Exposes CRUD operations for the **communes_precarite** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Communes_precarites
-    * const communes_precarites = await prisma.communes_precarite.findMany()
-    * ```
-    */
-  get communes_precarite(): Prisma.communes_precariteDelegate<ExtArgs>;
-
-  /**
-   * `prisma.communes`: Exposes CRUD operations for the **communes** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Communes
-    * const communes = await prisma.communes.findMany()
-    * ```
-    */
-  get communes(): Prisma.communesDelegate<ExtArgs>;
+  get inconfort_thermique(): Prisma.inconfort_thermiqueDelegate<ExtArgs>;
 
   /**
    * `prisma.clc_2018_2`: Exposes CRUD operations for the **clc_2018_2** model.
@@ -210,6 +185,16 @@ export class PrismaClient<
     * ```
     */
   get communes2(): Prisma.communes2Delegate<ExtArgs>;
+
+  /**
+   * `prisma.spatial_ref_sys`: Exposes CRUD operations for the **spatial_ref_sys** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Spatial_ref_sys
+    * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
+    * ```
+    */
+  get spatial_ref_sys(): Prisma.spatial_ref_sysDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -687,11 +672,10 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    spatial_ref_sys: 'spatial_ref_sys',
-    communes_precarite: 'communes_precarite',
-    communes: 'communes',
+    inconfort_thermique: 'inconfort_thermique',
     clc_2018_2: 'clc_2018_2',
-    communes2: 'communes2'
+    communes2: 'communes2',
+    spatial_ref_sys: 'spatial_ref_sys'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -708,205 +692,73 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'spatial_ref_sys' | 'communes_precarite' | 'communes' | 'clc_2018_2' | 'communes2'
+      modelProps: 'inconfort_thermique' | 'clc_2018_2' | 'communes2' | 'spatial_ref_sys'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
-      spatial_ref_sys: {
-        payload: Prisma.$spatial_ref_sysPayload<ExtArgs>
-        fields: Prisma.spatial_ref_sysFieldRefs
+      inconfort_thermique: {
+        payload: Prisma.$inconfort_thermiquePayload<ExtArgs>
+        fields: Prisma.inconfort_thermiqueFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.spatial_ref_sysFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
+            args: Prisma.inconfort_thermiqueFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+            args: Prisma.inconfort_thermiqueFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>
           }
           findFirst: {
-            args: Prisma.spatial_ref_sysFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
+            args: Prisma.inconfort_thermiqueFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+            args: Prisma.inconfort_thermiqueFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>
           }
           findMany: {
-            args: Prisma.spatial_ref_sysFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[]
+            args: Prisma.inconfort_thermiqueFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>[]
           }
           create: {
-            args: Prisma.spatial_ref_sysCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+            args: Prisma.inconfort_thermiqueCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>
           }
           createMany: {
-            args: Prisma.spatial_ref_sysCreateManyArgs<ExtArgs>,
+            args: Prisma.inconfort_thermiqueCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.spatial_ref_sysDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+            args: Prisma.inconfort_thermiqueDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>
           }
           update: {
-            args: Prisma.spatial_ref_sysUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+            args: Prisma.inconfort_thermiqueUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>
           }
           deleteMany: {
-            args: Prisma.spatial_ref_sysDeleteManyArgs<ExtArgs>,
+            args: Prisma.inconfort_thermiqueDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.spatial_ref_sysUpdateManyArgs<ExtArgs>,
+            args: Prisma.inconfort_thermiqueUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.spatial_ref_sysUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+            args: Prisma.inconfort_thermiqueUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>
           }
           aggregate: {
-            args: Prisma.Spatial_ref_sysAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateSpatial_ref_sys>
+            args: Prisma.Inconfort_thermiqueAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateInconfort_thermique>
           }
           groupBy: {
-            args: Prisma.spatial_ref_sysGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<Spatial_ref_sysGroupByOutputType>[]
+            args: Prisma.inconfort_thermiqueGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Inconfort_thermiqueGroupByOutputType>[]
           }
           count: {
-            args: Prisma.spatial_ref_sysCountArgs<ExtArgs>,
-            result: $Utils.Optional<Spatial_ref_sysCountAggregateOutputType> | number
-          }
-        }
-      }
-      communes_precarite: {
-        payload: Prisma.$communes_precaritePayload<ExtArgs>
-        fields: Prisma.communes_precariteFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.communes_precariteFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.communes_precariteFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload>
-          }
-          findFirst: {
-            args: Prisma.communes_precariteFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.communes_precariteFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload>
-          }
-          findMany: {
-            args: Prisma.communes_precariteFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload>[]
-          }
-          create: {
-            args: Prisma.communes_precariteCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload>
-          }
-          createMany: {
-            args: Prisma.communes_precariteCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          delete: {
-            args: Prisma.communes_precariteDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload>
-          }
-          update: {
-            args: Prisma.communes_precariteUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload>
-          }
-          deleteMany: {
-            args: Prisma.communes_precariteDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.communes_precariteUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.communes_precariteUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communes_precaritePayload>
-          }
-          aggregate: {
-            args: Prisma.Communes_precariteAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateCommunes_precarite>
-          }
-          groupBy: {
-            args: Prisma.communes_precariteGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<Communes_precariteGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.communes_precariteCountArgs<ExtArgs>,
-            result: $Utils.Optional<Communes_precariteCountAggregateOutputType> | number
-          }
-        }
-      }
-      communes: {
-        payload: Prisma.$communesPayload<ExtArgs>
-        fields: Prisma.communesFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.communesFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communesPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.communesFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          findFirst: {
-            args: Prisma.communesFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communesPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.communesFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          findMany: {
-            args: Prisma.communesFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>[]
-          }
-          create: {
-            args: Prisma.communesCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          createMany: {
-            args: Prisma.communesCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          delete: {
-            args: Prisma.communesDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          update: {
-            args: Prisma.communesUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          deleteMany: {
-            args: Prisma.communesDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.communesUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.communesUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          aggregate: {
-            args: Prisma.CommunesAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateCommunes>
-          }
-          groupBy: {
-            args: Prisma.communesGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<CommunesGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.communesCountArgs<ExtArgs>,
-            result: $Utils.Optional<CommunesCountAggregateOutputType> | number
+            args: Prisma.inconfort_thermiqueCountArgs<ExtArgs>,
+            result: $Utils.Optional<Inconfort_thermiqueCountAggregateOutputType> | number
           }
         }
       }
@@ -1039,6 +891,72 @@ export namespace Prisma {
           count: {
             args: Prisma.communes2CountArgs<ExtArgs>,
             result: $Utils.Optional<Communes2CountAggregateOutputType> | number
+          }
+        }
+      }
+      spatial_ref_sys: {
+        payload: Prisma.$spatial_ref_sysPayload<ExtArgs>
+        fields: Prisma.spatial_ref_sysFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.spatial_ref_sysFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          findFirst: {
+            args: Prisma.spatial_ref_sysFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          findMany: {
+            args: Prisma.spatial_ref_sysFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[]
+          }
+          create: {
+            args: Prisma.spatial_ref_sysCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          createMany: {
+            args: Prisma.spatial_ref_sysCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.spatial_ref_sysDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          update: {
+            args: Prisma.spatial_ref_sysUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          deleteMany: {
+            args: Prisma.spatial_ref_sysDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.spatial_ref_sysUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.spatial_ref_sysUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          aggregate: {
+            args: Prisma.Spatial_ref_sysAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateSpatial_ref_sys>
+          }
+          groupBy: {
+            args: Prisma.spatial_ref_sysGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Spatial_ref_sysGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.spatial_ref_sysCountArgs<ExtArgs>,
+            result: $Utils.Optional<Spatial_ref_sysCountAggregateOutputType> | number
           }
         }
       }
@@ -1202,2239 +1120,976 @@ export namespace Prisma {
    */
 
   /**
-   * Model spatial_ref_sys
+   * Model inconfort_thermique
    */
 
-  export type AggregateSpatial_ref_sys = {
-    _count: Spatial_ref_sysCountAggregateOutputType | null
-    _avg: Spatial_ref_sysAvgAggregateOutputType | null
-    _sum: Spatial_ref_sysSumAggregateOutputType | null
-    _min: Spatial_ref_sysMinAggregateOutputType | null
-    _max: Spatial_ref_sysMaxAggregateOutputType | null
+  export type AggregateInconfort_thermique = {
+    _count: Inconfort_thermiqueCountAggregateOutputType | null
+    _avg: Inconfort_thermiqueAvgAggregateOutputType | null
+    _sum: Inconfort_thermiqueSumAggregateOutputType | null
+    _min: Inconfort_thermiqueMinAggregateOutputType | null
+    _max: Inconfort_thermiqueMaxAggregateOutputType | null
   }
 
-  export type Spatial_ref_sysAvgAggregateOutputType = {
-    srid: number | null
-    auth_srid: number | null
-  }
-
-  export type Spatial_ref_sysSumAggregateOutputType = {
-    srid: number | null
-    auth_srid: number | null
-  }
-
-  export type Spatial_ref_sysMinAggregateOutputType = {
-    srid: number | null
-    auth_name: string | null
-    auth_srid: number | null
-    srtext: string | null
-    proj4text: string | null
-  }
-
-  export type Spatial_ref_sysMaxAggregateOutputType = {
-    srid: number | null
-    auth_name: string | null
-    auth_srid: number | null
-    srtext: string | null
-    proj4text: string | null
-  }
-
-  export type Spatial_ref_sysCountAggregateOutputType = {
-    srid: number
-    auth_name: number
-    auth_srid: number
-    srtext: number
-    proj4text: number
-    _all: number
-  }
-
-
-  export type Spatial_ref_sysAvgAggregateInputType = {
-    srid?: true
-    auth_srid?: true
-  }
-
-  export type Spatial_ref_sysSumAggregateInputType = {
-    srid?: true
-    auth_srid?: true
-  }
-
-  export type Spatial_ref_sysMinAggregateInputType = {
-    srid?: true
-    auth_name?: true
-    auth_srid?: true
-    srtext?: true
-    proj4text?: true
-  }
-
-  export type Spatial_ref_sysMaxAggregateInputType = {
-    srid?: true
-    auth_name?: true
-    auth_srid?: true
-    srtext?: true
-    proj4text?: true
-  }
-
-  export type Spatial_ref_sysCountAggregateInputType = {
-    srid?: true
-    auth_name?: true
-    auth_srid?: true
-    srtext?: true
-    proj4text?: true
-    _all?: true
-  }
-
-  export type Spatial_ref_sysAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which spatial_ref_sys to aggregate.
-     */
-    where?: spatial_ref_sysWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of spatial_ref_sys to fetch.
-     */
-    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: spatial_ref_sysWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` spatial_ref_sys from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` spatial_ref_sys.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned spatial_ref_sys
-    **/
-    _count?: true | Spatial_ref_sysCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Spatial_ref_sysAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Spatial_ref_sysSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Spatial_ref_sysMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Spatial_ref_sysMaxAggregateInputType
-  }
-
-  export type GetSpatial_ref_sysAggregateType<T extends Spatial_ref_sysAggregateArgs> = {
-        [P in keyof T & keyof AggregateSpatial_ref_sys]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateSpatial_ref_sys[P]>
-      : GetScalarType<T[P], AggregateSpatial_ref_sys[P]>
-  }
-
-
-
-
-  export type spatial_ref_sysGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: spatial_ref_sysWhereInput
-    orderBy?: spatial_ref_sysOrderByWithAggregationInput | spatial_ref_sysOrderByWithAggregationInput[]
-    by: Spatial_ref_sysScalarFieldEnum[] | Spatial_ref_sysScalarFieldEnum
-    having?: spatial_ref_sysScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Spatial_ref_sysCountAggregateInputType | true
-    _avg?: Spatial_ref_sysAvgAggregateInputType
-    _sum?: Spatial_ref_sysSumAggregateInputType
-    _min?: Spatial_ref_sysMinAggregateInputType
-    _max?: Spatial_ref_sysMaxAggregateInputType
-  }
-
-  export type Spatial_ref_sysGroupByOutputType = {
-    srid: number
-    auth_name: string | null
-    auth_srid: number | null
-    srtext: string | null
-    proj4text: string | null
-    _count: Spatial_ref_sysCountAggregateOutputType | null
-    _avg: Spatial_ref_sysAvgAggregateOutputType | null
-    _sum: Spatial_ref_sysSumAggregateOutputType | null
-    _min: Spatial_ref_sysMinAggregateOutputType | null
-    _max: Spatial_ref_sysMaxAggregateOutputType | null
-  }
-
-  type GetSpatial_ref_sysGroupByPayload<T extends spatial_ref_sysGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Spatial_ref_sysGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Spatial_ref_sysGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Spatial_ref_sysGroupByOutputType[P]>
-            : GetScalarType<T[P], Spatial_ref_sysGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type spatial_ref_sysSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    srid?: boolean
-    auth_name?: boolean
-    auth_srid?: boolean
-    srtext?: boolean
-    proj4text?: boolean
-  }, ExtArgs["result"]["spatial_ref_sys"]>
-
-  export type spatial_ref_sysSelectScalar = {
-    srid?: boolean
-    auth_name?: boolean
-    auth_srid?: boolean
-    srtext?: boolean
-    proj4text?: boolean
-  }
-
-
-
-  export type $spatial_ref_sysPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "spatial_ref_sys"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      srid: number
-      auth_name: string | null
-      auth_srid: number | null
-      srtext: string | null
-      proj4text: string | null
-    }, ExtArgs["result"]["spatial_ref_sys"]>
-    composites: {}
-  }
-
-
-  type spatial_ref_sysGetPayload<S extends boolean | null | undefined | spatial_ref_sysDefaultArgs> = $Result.GetResult<Prisma.$spatial_ref_sysPayload, S>
-
-  type spatial_ref_sysCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<spatial_ref_sysFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: Spatial_ref_sysCountAggregateInputType | true
-    }
-
-  export interface spatial_ref_sysDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['spatial_ref_sys'], meta: { name: 'spatial_ref_sys' } }
-    /**
-     * Find zero or one Spatial_ref_sys that matches the filter.
-     * @param {spatial_ref_sysFindUniqueArgs} args - Arguments to find a Spatial_ref_sys
-     * @example
-     * // Get one Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends spatial_ref_sysFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, spatial_ref_sysFindUniqueArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one Spatial_ref_sys that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {spatial_ref_sysFindUniqueOrThrowArgs} args - Arguments to find a Spatial_ref_sys
-     * @example
-     * // Get one Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first Spatial_ref_sys that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysFindFirstArgs} args - Arguments to find a Spatial_ref_sys
-     * @example
-     * // Get one Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends spatial_ref_sysFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, spatial_ref_sysFindFirstArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first Spatial_ref_sys that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysFindFirstOrThrowArgs} args - Arguments to find a Spatial_ref_sys
-     * @example
-     * // Get one Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more Spatial_ref_sys that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
-     * 
-     * // Get first 10 Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany({ take: 10 })
-     * 
-     * // Only select the `srid`
-     * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.findMany({ select: { srid: true } })
-     * 
-    **/
-    findMany<T extends spatial_ref_sysFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, spatial_ref_sysFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a Spatial_ref_sys.
-     * @param {spatial_ref_sysCreateArgs} args - Arguments to create a Spatial_ref_sys.
-     * @example
-     * // Create one Spatial_ref_sys
-     * const Spatial_ref_sys = await prisma.spatial_ref_sys.create({
-     *   data: {
-     *     // ... data to create a Spatial_ref_sys
-     *   }
-     * })
-     * 
-    **/
-    create<T extends spatial_ref_sysCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, spatial_ref_sysCreateArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many Spatial_ref_sys.
-     *     @param {spatial_ref_sysCreateManyArgs} args - Arguments to create many Spatial_ref_sys.
-     *     @example
-     *     // Create many Spatial_ref_sys
-     *     const spatial_ref_sys = await prisma.spatial_ref_sys.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends spatial_ref_sysCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, spatial_ref_sysCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Spatial_ref_sys.
-     * @param {spatial_ref_sysDeleteArgs} args - Arguments to delete one Spatial_ref_sys.
-     * @example
-     * // Delete one Spatial_ref_sys
-     * const Spatial_ref_sys = await prisma.spatial_ref_sys.delete({
-     *   where: {
-     *     // ... filter to delete one Spatial_ref_sys
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends spatial_ref_sysDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, spatial_ref_sysDeleteArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one Spatial_ref_sys.
-     * @param {spatial_ref_sysUpdateArgs} args - Arguments to update one Spatial_ref_sys.
-     * @example
-     * // Update one Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends spatial_ref_sysUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, spatial_ref_sysUpdateArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Spatial_ref_sys.
-     * @param {spatial_ref_sysDeleteManyArgs} args - Arguments to filter Spatial_ref_sys to delete.
-     * @example
-     * // Delete a few Spatial_ref_sys
-     * const { count } = await prisma.spatial_ref_sys.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends spatial_ref_sysDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, spatial_ref_sysDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Spatial_ref_sys.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends spatial_ref_sysUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, spatial_ref_sysUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Spatial_ref_sys.
-     * @param {spatial_ref_sysUpsertArgs} args - Arguments to update or create a Spatial_ref_sys.
-     * @example
-     * // Update or create a Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.upsert({
-     *   create: {
-     *     // ... data to create a Spatial_ref_sys
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Spatial_ref_sys we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends spatial_ref_sysUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, spatial_ref_sysUpsertArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of Spatial_ref_sys.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysCountArgs} args - Arguments to filter Spatial_ref_sys to count.
-     * @example
-     * // Count the number of Spatial_ref_sys
-     * const count = await prisma.spatial_ref_sys.count({
-     *   where: {
-     *     // ... the filter for the Spatial_ref_sys we want to count
-     *   }
-     * })
-    **/
-    count<T extends spatial_ref_sysCountArgs>(
-      args?: Subset<T, spatial_ref_sysCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Spatial_ref_sysCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Spatial_ref_sys.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Spatial_ref_sysAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Spatial_ref_sysAggregateArgs>(args: Subset<T, Spatial_ref_sysAggregateArgs>): Prisma.PrismaPromise<GetSpatial_ref_sysAggregateType<T>>
-
-    /**
-     * Group by Spatial_ref_sys.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends spatial_ref_sysGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: spatial_ref_sysGroupByArgs['orderBy'] }
-        : { orderBy?: spatial_ref_sysGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, spatial_ref_sysGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSpatial_ref_sysGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the spatial_ref_sys model
-   */
-  readonly fields: spatial_ref_sysFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for spatial_ref_sys.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__spatial_ref_sysClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the spatial_ref_sys model
-   */ 
-  interface spatial_ref_sysFieldRefs {
-    readonly srid: FieldRef<"spatial_ref_sys", 'Int'>
-    readonly auth_name: FieldRef<"spatial_ref_sys", 'String'>
-    readonly auth_srid: FieldRef<"spatial_ref_sys", 'Int'>
-    readonly srtext: FieldRef<"spatial_ref_sys", 'String'>
-    readonly proj4text: FieldRef<"spatial_ref_sys", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * spatial_ref_sys findUnique
-   */
-  export type spatial_ref_sysFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter, which spatial_ref_sys to fetch.
-     */
-    where: spatial_ref_sysWhereUniqueInput
-  }
-
-  /**
-   * spatial_ref_sys findUniqueOrThrow
-   */
-  export type spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter, which spatial_ref_sys to fetch.
-     */
-    where: spatial_ref_sysWhereUniqueInput
-  }
-
-  /**
-   * spatial_ref_sys findFirst
-   */
-  export type spatial_ref_sysFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter, which spatial_ref_sys to fetch.
-     */
-    where?: spatial_ref_sysWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of spatial_ref_sys to fetch.
-     */
-    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for spatial_ref_sys.
-     */
-    cursor?: spatial_ref_sysWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` spatial_ref_sys from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` spatial_ref_sys.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of spatial_ref_sys.
-     */
-    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
-  }
-
-  /**
-   * spatial_ref_sys findFirstOrThrow
-   */
-  export type spatial_ref_sysFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter, which spatial_ref_sys to fetch.
-     */
-    where?: spatial_ref_sysWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of spatial_ref_sys to fetch.
-     */
-    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for spatial_ref_sys.
-     */
-    cursor?: spatial_ref_sysWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` spatial_ref_sys from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` spatial_ref_sys.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of spatial_ref_sys.
-     */
-    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
-  }
-
-  /**
-   * spatial_ref_sys findMany
-   */
-  export type spatial_ref_sysFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter, which spatial_ref_sys to fetch.
-     */
-    where?: spatial_ref_sysWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of spatial_ref_sys to fetch.
-     */
-    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing spatial_ref_sys.
-     */
-    cursor?: spatial_ref_sysWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` spatial_ref_sys from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` spatial_ref_sys.
-     */
-    skip?: number
-    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
-  }
-
-  /**
-   * spatial_ref_sys create
-   */
-  export type spatial_ref_sysCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * The data needed to create a spatial_ref_sys.
-     */
-    data: XOR<spatial_ref_sysCreateInput, spatial_ref_sysUncheckedCreateInput>
-  }
-
-  /**
-   * spatial_ref_sys createMany
-   */
-  export type spatial_ref_sysCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many spatial_ref_sys.
-     */
-    data: spatial_ref_sysCreateManyInput | spatial_ref_sysCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * spatial_ref_sys update
-   */
-  export type spatial_ref_sysUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * The data needed to update a spatial_ref_sys.
-     */
-    data: XOR<spatial_ref_sysUpdateInput, spatial_ref_sysUncheckedUpdateInput>
-    /**
-     * Choose, which spatial_ref_sys to update.
-     */
-    where: spatial_ref_sysWhereUniqueInput
-  }
-
-  /**
-   * spatial_ref_sys updateMany
-   */
-  export type spatial_ref_sysUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update spatial_ref_sys.
-     */
-    data: XOR<spatial_ref_sysUpdateManyMutationInput, spatial_ref_sysUncheckedUpdateManyInput>
-    /**
-     * Filter which spatial_ref_sys to update
-     */
-    where?: spatial_ref_sysWhereInput
-  }
-
-  /**
-   * spatial_ref_sys upsert
-   */
-  export type spatial_ref_sysUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * The filter to search for the spatial_ref_sys to update in case it exists.
-     */
-    where: spatial_ref_sysWhereUniqueInput
-    /**
-     * In case the spatial_ref_sys found by the `where` argument doesn't exist, create a new spatial_ref_sys with this data.
-     */
-    create: XOR<spatial_ref_sysCreateInput, spatial_ref_sysUncheckedCreateInput>
-    /**
-     * In case the spatial_ref_sys was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<spatial_ref_sysUpdateInput, spatial_ref_sysUncheckedUpdateInput>
-  }
-
-  /**
-   * spatial_ref_sys delete
-   */
-  export type spatial_ref_sysDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter which spatial_ref_sys to delete.
-     */
-    where: spatial_ref_sysWhereUniqueInput
-  }
-
-  /**
-   * spatial_ref_sys deleteMany
-   */
-  export type spatial_ref_sysDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which spatial_ref_sys to delete
-     */
-    where?: spatial_ref_sysWhereInput
-  }
-
-  /**
-   * spatial_ref_sys without action
-   */
-  export type spatial_ref_sysDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * Model communes_precarite
-   */
-
-  export type AggregateCommunes_precarite = {
-    _count: Communes_precariteCountAggregateOutputType | null
-    _avg: Communes_precariteAvgAggregateOutputType | null
-    _sum: Communes_precariteSumAggregateOutputType | null
-    _min: Communes_precariteMinAggregateOutputType | null
-    _max: Communes_precariteMaxAggregateOutputType | null
-  }
-
-  export type Communes_precariteAvgAggregateOutputType = {
-    pk: number | null
+  export type Inconfort_thermiqueAvgAggregateOutputType = {
+    index: number | null
+    region: number | null
+    age_bati_post06: number | null
+    age_bati_91_05: number | null
+    age_bati_46_90: number | null
+    age_bati_19_45: number | null
+    age_bati_pre_19: number | null
+    under_4_sum_1968: number | null
+    to_80_sum_1968: number | null
+    over_80_sum_1968: number | null
+    under_4_sum_1975: number | null
+    to_80_sum_1975: number | null
+    over_80_sum_1975: number | null
+    under_4_sum_1982: number | null
+    to_80_sum_1982: number | null
+    over_80_sum_1982: number | null
+    under_4_sum_1990: number | null
+    to_80_sum_1990: number | null
+    over_80_sum_1990: number | null
+    under_4_sum_1999: number | null
+    to_80_sum_1999: number | null
+    over_80_sum_1999: number | null
+    under_4_sum_2009: number | null
+    to_80_sum_2009: number | null
+    over_80_sum_2009: number | null
+    under_4_sum_2014: number | null
+    to_80_sum_2014: number | null
+    over_80_sum_2014: number | null
+    under_4_sum_2020: number | null
+    to_80_sum_2020: number | null
+    over_80_sum_2020: number | null
+    P20_POP80P: number | null
+    P20_POP80P_PSEUL: number | null
     tee_log: number | null
     tee_mob: number | null
     precarite_logement: number | null
+    NA5AZ_sum: number | null
+    NA5BE_sum: number | null
+    NA5FZ_sum: number | null
+    NA5GU_sum: number | null
+    NA5OQ_sum: number | null
+    s_geom_cstr_bati: number | null
+    densite_bati: number | null
   }
 
-  export type Communes_precariteSumAggregateOutputType = {
-    pk: number | null
+  export type Inconfort_thermiqueSumAggregateOutputType = {
+    index: bigint | null
+    region: number | null
+    age_bati_post06: number | null
+    age_bati_91_05: number | null
+    age_bati_46_90: number | null
+    age_bati_19_45: number | null
+    age_bati_pre_19: number | null
+    under_4_sum_1968: number | null
+    to_80_sum_1968: number | null
+    over_80_sum_1968: number | null
+    under_4_sum_1975: number | null
+    to_80_sum_1975: number | null
+    over_80_sum_1975: number | null
+    under_4_sum_1982: number | null
+    to_80_sum_1982: number | null
+    over_80_sum_1982: number | null
+    under_4_sum_1990: number | null
+    to_80_sum_1990: number | null
+    over_80_sum_1990: number | null
+    under_4_sum_1999: number | null
+    to_80_sum_1999: number | null
+    over_80_sum_1999: number | null
+    under_4_sum_2009: number | null
+    to_80_sum_2009: number | null
+    over_80_sum_2009: number | null
+    under_4_sum_2014: number | null
+    to_80_sum_2014: number | null
+    over_80_sum_2014: number | null
+    under_4_sum_2020: number | null
+    to_80_sum_2020: number | null
+    over_80_sum_2020: number | null
+    P20_POP80P: number | null
+    P20_POP80P_PSEUL: number | null
     tee_log: number | null
     tee_mob: number | null
     precarite_logement: number | null
+    NA5AZ_sum: bigint | null
+    NA5BE_sum: bigint | null
+    NA5FZ_sum: bigint | null
+    NA5GU_sum: bigint | null
+    NA5OQ_sum: bigint | null
+    s_geom_cstr_bati: number | null
+    densite_bati: number | null
   }
 
-  export type Communes_precariteMinAggregateOutputType = {
-    pk: number | null
+  export type Inconfort_thermiqueMinAggregateOutputType = {
+    index: bigint | null
     code_commune: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: number | null
+    age_bati_post06: number | null
+    age_bati_91_05: number | null
+    age_bati_46_90: number | null
+    age_bati_19_45: number | null
+    age_bati_pre_19: number | null
+    under_4_sum_1968: number | null
+    to_80_sum_1968: number | null
+    over_80_sum_1968: number | null
+    under_4_sum_1975: number | null
+    to_80_sum_1975: number | null
+    over_80_sum_1975: number | null
+    under_4_sum_1982: number | null
+    to_80_sum_1982: number | null
+    over_80_sum_1982: number | null
+    under_4_sum_1990: number | null
+    to_80_sum_1990: number | null
+    over_80_sum_1990: number | null
+    under_4_sum_1999: number | null
+    to_80_sum_1999: number | null
+    over_80_sum_1999: number | null
+    under_4_sum_2009: number | null
+    to_80_sum_2009: number | null
+    over_80_sum_2009: number | null
+    under_4_sum_2014: number | null
+    to_80_sum_2014: number | null
+    over_80_sum_2014: number | null
+    under_4_sum_2020: number | null
+    to_80_sum_2020: number | null
+    over_80_sum_2020: number | null
+    P20_POP80P: number | null
+    P20_POP80P_PSEUL: number | null
     tee_log: number | null
     tee_mob: number | null
     precarite_logement: number | null
-    epci: string | null
+    NA5AZ_sum: bigint | null
+    NA5BE_sum: bigint | null
+    NA5FZ_sum: bigint | null
+    NA5GU_sum: bigint | null
+    NA5OQ_sum: bigint | null
+    s_geom_cstr_bati: number | null
+    densite_bati: number | null
   }
 
-  export type Communes_precariteMaxAggregateOutputType = {
-    pk: number | null
+  export type Inconfort_thermiqueMaxAggregateOutputType = {
+    index: bigint | null
     code_commune: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: number | null
+    age_bati_post06: number | null
+    age_bati_91_05: number | null
+    age_bati_46_90: number | null
+    age_bati_19_45: number | null
+    age_bati_pre_19: number | null
+    under_4_sum_1968: number | null
+    to_80_sum_1968: number | null
+    over_80_sum_1968: number | null
+    under_4_sum_1975: number | null
+    to_80_sum_1975: number | null
+    over_80_sum_1975: number | null
+    under_4_sum_1982: number | null
+    to_80_sum_1982: number | null
+    over_80_sum_1982: number | null
+    under_4_sum_1990: number | null
+    to_80_sum_1990: number | null
+    over_80_sum_1990: number | null
+    under_4_sum_1999: number | null
+    to_80_sum_1999: number | null
+    over_80_sum_1999: number | null
+    under_4_sum_2009: number | null
+    to_80_sum_2009: number | null
+    over_80_sum_2009: number | null
+    under_4_sum_2014: number | null
+    to_80_sum_2014: number | null
+    over_80_sum_2014: number | null
+    under_4_sum_2020: number | null
+    to_80_sum_2020: number | null
+    over_80_sum_2020: number | null
+    P20_POP80P: number | null
+    P20_POP80P_PSEUL: number | null
     tee_log: number | null
     tee_mob: number | null
     precarite_logement: number | null
-    epci: string | null
+    NA5AZ_sum: bigint | null
+    NA5BE_sum: bigint | null
+    NA5FZ_sum: bigint | null
+    NA5GU_sum: bigint | null
+    NA5OQ_sum: bigint | null
+    s_geom_cstr_bati: number | null
+    densite_bati: number | null
   }
 
-  export type Communes_precariteCountAggregateOutputType = {
-    pk: number
+  export type Inconfort_thermiqueCountAggregateOutputType = {
+    index: number
     code_commune: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    region: number
+    age_bati_post06: number
+    age_bati_91_05: number
+    age_bati_46_90: number
+    age_bati_19_45: number
+    age_bati_pre_19: number
+    under_4_sum_1968: number
+    to_80_sum_1968: number
+    over_80_sum_1968: number
+    under_4_sum_1975: number
+    to_80_sum_1975: number
+    over_80_sum_1975: number
+    under_4_sum_1982: number
+    to_80_sum_1982: number
+    over_80_sum_1982: number
+    under_4_sum_1990: number
+    to_80_sum_1990: number
+    over_80_sum_1990: number
+    under_4_sum_1999: number
+    to_80_sum_1999: number
+    over_80_sum_1999: number
+    under_4_sum_2009: number
+    to_80_sum_2009: number
+    over_80_sum_2009: number
+    under_4_sum_2014: number
+    to_80_sum_2014: number
+    over_80_sum_2014: number
+    under_4_sum_2020: number
+    to_80_sum_2020: number
+    over_80_sum_2020: number
+    P20_POP80P: number
+    P20_POP80P_PSEUL: number
     tee_log: number
     tee_mob: number
     precarite_logement: number
-    epci: number
+    NA5AZ_sum: number
+    NA5BE_sum: number
+    NA5FZ_sum: number
+    NA5GU_sum: number
+    NA5OQ_sum: number
+    s_geom_cstr_bati: number
+    densite_bati: number
     _all: number
   }
 
 
-  export type Communes_precariteAvgAggregateInputType = {
-    pk?: true
+  export type Inconfort_thermiqueAvgAggregateInputType = {
+    index?: true
+    region?: true
+    age_bati_post06?: true
+    age_bati_91_05?: true
+    age_bati_46_90?: true
+    age_bati_19_45?: true
+    age_bati_pre_19?: true
+    under_4_sum_1968?: true
+    to_80_sum_1968?: true
+    over_80_sum_1968?: true
+    under_4_sum_1975?: true
+    to_80_sum_1975?: true
+    over_80_sum_1975?: true
+    under_4_sum_1982?: true
+    to_80_sum_1982?: true
+    over_80_sum_1982?: true
+    under_4_sum_1990?: true
+    to_80_sum_1990?: true
+    over_80_sum_1990?: true
+    under_4_sum_1999?: true
+    to_80_sum_1999?: true
+    over_80_sum_1999?: true
+    under_4_sum_2009?: true
+    to_80_sum_2009?: true
+    over_80_sum_2009?: true
+    under_4_sum_2014?: true
+    to_80_sum_2014?: true
+    over_80_sum_2014?: true
+    under_4_sum_2020?: true
+    to_80_sum_2020?: true
+    over_80_sum_2020?: true
+    P20_POP80P?: true
+    P20_POP80P_PSEUL?: true
     tee_log?: true
     tee_mob?: true
     precarite_logement?: true
+    NA5AZ_sum?: true
+    NA5BE_sum?: true
+    NA5FZ_sum?: true
+    NA5GU_sum?: true
+    NA5OQ_sum?: true
+    s_geom_cstr_bati?: true
+    densite_bati?: true
   }
 
-  export type Communes_precariteSumAggregateInputType = {
-    pk?: true
+  export type Inconfort_thermiqueSumAggregateInputType = {
+    index?: true
+    region?: true
+    age_bati_post06?: true
+    age_bati_91_05?: true
+    age_bati_46_90?: true
+    age_bati_19_45?: true
+    age_bati_pre_19?: true
+    under_4_sum_1968?: true
+    to_80_sum_1968?: true
+    over_80_sum_1968?: true
+    under_4_sum_1975?: true
+    to_80_sum_1975?: true
+    over_80_sum_1975?: true
+    under_4_sum_1982?: true
+    to_80_sum_1982?: true
+    over_80_sum_1982?: true
+    under_4_sum_1990?: true
+    to_80_sum_1990?: true
+    over_80_sum_1990?: true
+    under_4_sum_1999?: true
+    to_80_sum_1999?: true
+    over_80_sum_1999?: true
+    under_4_sum_2009?: true
+    to_80_sum_2009?: true
+    over_80_sum_2009?: true
+    under_4_sum_2014?: true
+    to_80_sum_2014?: true
+    over_80_sum_2014?: true
+    under_4_sum_2020?: true
+    to_80_sum_2020?: true
+    over_80_sum_2020?: true
+    P20_POP80P?: true
+    P20_POP80P_PSEUL?: true
     tee_log?: true
     tee_mob?: true
     precarite_logement?: true
+    NA5AZ_sum?: true
+    NA5BE_sum?: true
+    NA5FZ_sum?: true
+    NA5GU_sum?: true
+    NA5OQ_sum?: true
+    s_geom_cstr_bati?: true
+    densite_bati?: true
   }
 
-  export type Communes_precariteMinAggregateInputType = {
-    pk?: true
+  export type Inconfort_thermiqueMinAggregateInputType = {
+    index?: true
     code_commune?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+    age_bati_post06?: true
+    age_bati_91_05?: true
+    age_bati_46_90?: true
+    age_bati_19_45?: true
+    age_bati_pre_19?: true
+    under_4_sum_1968?: true
+    to_80_sum_1968?: true
+    over_80_sum_1968?: true
+    under_4_sum_1975?: true
+    to_80_sum_1975?: true
+    over_80_sum_1975?: true
+    under_4_sum_1982?: true
+    to_80_sum_1982?: true
+    over_80_sum_1982?: true
+    under_4_sum_1990?: true
+    to_80_sum_1990?: true
+    over_80_sum_1990?: true
+    under_4_sum_1999?: true
+    to_80_sum_1999?: true
+    over_80_sum_1999?: true
+    under_4_sum_2009?: true
+    to_80_sum_2009?: true
+    over_80_sum_2009?: true
+    under_4_sum_2014?: true
+    to_80_sum_2014?: true
+    over_80_sum_2014?: true
+    under_4_sum_2020?: true
+    to_80_sum_2020?: true
+    over_80_sum_2020?: true
+    P20_POP80P?: true
+    P20_POP80P_PSEUL?: true
     tee_log?: true
     tee_mob?: true
     precarite_logement?: true
-    epci?: true
+    NA5AZ_sum?: true
+    NA5BE_sum?: true
+    NA5FZ_sum?: true
+    NA5GU_sum?: true
+    NA5OQ_sum?: true
+    s_geom_cstr_bati?: true
+    densite_bati?: true
   }
 
-  export type Communes_precariteMaxAggregateInputType = {
-    pk?: true
+  export type Inconfort_thermiqueMaxAggregateInputType = {
+    index?: true
     code_commune?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+    age_bati_post06?: true
+    age_bati_91_05?: true
+    age_bati_46_90?: true
+    age_bati_19_45?: true
+    age_bati_pre_19?: true
+    under_4_sum_1968?: true
+    to_80_sum_1968?: true
+    over_80_sum_1968?: true
+    under_4_sum_1975?: true
+    to_80_sum_1975?: true
+    over_80_sum_1975?: true
+    under_4_sum_1982?: true
+    to_80_sum_1982?: true
+    over_80_sum_1982?: true
+    under_4_sum_1990?: true
+    to_80_sum_1990?: true
+    over_80_sum_1990?: true
+    under_4_sum_1999?: true
+    to_80_sum_1999?: true
+    over_80_sum_1999?: true
+    under_4_sum_2009?: true
+    to_80_sum_2009?: true
+    over_80_sum_2009?: true
+    under_4_sum_2014?: true
+    to_80_sum_2014?: true
+    over_80_sum_2014?: true
+    under_4_sum_2020?: true
+    to_80_sum_2020?: true
+    over_80_sum_2020?: true
+    P20_POP80P?: true
+    P20_POP80P_PSEUL?: true
     tee_log?: true
     tee_mob?: true
     precarite_logement?: true
-    epci?: true
+    NA5AZ_sum?: true
+    NA5BE_sum?: true
+    NA5FZ_sum?: true
+    NA5GU_sum?: true
+    NA5OQ_sum?: true
+    s_geom_cstr_bati?: true
+    densite_bati?: true
   }
 
-  export type Communes_precariteCountAggregateInputType = {
-    pk?: true
+  export type Inconfort_thermiqueCountAggregateInputType = {
+    index?: true
     code_commune?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+    age_bati_post06?: true
+    age_bati_91_05?: true
+    age_bati_46_90?: true
+    age_bati_19_45?: true
+    age_bati_pre_19?: true
+    under_4_sum_1968?: true
+    to_80_sum_1968?: true
+    over_80_sum_1968?: true
+    under_4_sum_1975?: true
+    to_80_sum_1975?: true
+    over_80_sum_1975?: true
+    under_4_sum_1982?: true
+    to_80_sum_1982?: true
+    over_80_sum_1982?: true
+    under_4_sum_1990?: true
+    to_80_sum_1990?: true
+    over_80_sum_1990?: true
+    under_4_sum_1999?: true
+    to_80_sum_1999?: true
+    over_80_sum_1999?: true
+    under_4_sum_2009?: true
+    to_80_sum_2009?: true
+    over_80_sum_2009?: true
+    under_4_sum_2014?: true
+    to_80_sum_2014?: true
+    over_80_sum_2014?: true
+    under_4_sum_2020?: true
+    to_80_sum_2020?: true
+    over_80_sum_2020?: true
+    P20_POP80P?: true
+    P20_POP80P_PSEUL?: true
     tee_log?: true
     tee_mob?: true
     precarite_logement?: true
-    epci?: true
+    NA5AZ_sum?: true
+    NA5BE_sum?: true
+    NA5FZ_sum?: true
+    NA5GU_sum?: true
+    NA5OQ_sum?: true
+    s_geom_cstr_bati?: true
+    densite_bati?: true
     _all?: true
   }
 
-  export type Communes_precariteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Inconfort_thermiqueAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which communes_precarite to aggregate.
+     * Filter which inconfort_thermique to aggregate.
      */
-    where?: communes_precariteWhereInput
+    where?: inconfort_thermiqueWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of communes_precarites to fetch.
+     * Determine the order of inconfort_thermiques to fetch.
      */
-    orderBy?: communes_precariteOrderByWithRelationInput | communes_precariteOrderByWithRelationInput[]
+    orderBy?: inconfort_thermiqueOrderByWithRelationInput | inconfort_thermiqueOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: communes_precariteWhereUniqueInput
+    cursor?: inconfort_thermiqueWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` communes_precarites from the position of the cursor.
+     * Take `±n` inconfort_thermiques from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` communes_precarites.
+     * Skip the first `n` inconfort_thermiques.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned communes_precarites
+     * Count returned inconfort_thermiques
     **/
-    _count?: true | Communes_precariteCountAggregateInputType
+    _count?: true | Inconfort_thermiqueCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: Communes_precariteAvgAggregateInputType
+    _avg?: Inconfort_thermiqueAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: Communes_precariteSumAggregateInputType
+    _sum?: Inconfort_thermiqueSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: Communes_precariteMinAggregateInputType
+    _min?: Inconfort_thermiqueMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: Communes_precariteMaxAggregateInputType
+    _max?: Inconfort_thermiqueMaxAggregateInputType
   }
 
-  export type GetCommunes_precariteAggregateType<T extends Communes_precariteAggregateArgs> = {
-        [P in keyof T & keyof AggregateCommunes_precarite]: P extends '_count' | 'count'
+  export type GetInconfort_thermiqueAggregateType<T extends Inconfort_thermiqueAggregateArgs> = {
+        [P in keyof T & keyof AggregateInconfort_thermique]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateCommunes_precarite[P]>
-      : GetScalarType<T[P], AggregateCommunes_precarite[P]>
+        : GetScalarType<T[P], AggregateInconfort_thermique[P]>
+      : GetScalarType<T[P], AggregateInconfort_thermique[P]>
   }
 
 
 
 
-  export type communes_precariteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: communes_precariteWhereInput
-    orderBy?: communes_precariteOrderByWithAggregationInput | communes_precariteOrderByWithAggregationInput[]
-    by: Communes_precariteScalarFieldEnum[] | Communes_precariteScalarFieldEnum
-    having?: communes_precariteScalarWhereWithAggregatesInput
+  export type inconfort_thermiqueGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: inconfort_thermiqueWhereInput
+    orderBy?: inconfort_thermiqueOrderByWithAggregationInput | inconfort_thermiqueOrderByWithAggregationInput[]
+    by: Inconfort_thermiqueScalarFieldEnum[] | Inconfort_thermiqueScalarFieldEnum
+    having?: inconfort_thermiqueScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: Communes_precariteCountAggregateInputType | true
-    _avg?: Communes_precariteAvgAggregateInputType
-    _sum?: Communes_precariteSumAggregateInputType
-    _min?: Communes_precariteMinAggregateInputType
-    _max?: Communes_precariteMaxAggregateInputType
+    _count?: Inconfort_thermiqueCountAggregateInputType | true
+    _avg?: Inconfort_thermiqueAvgAggregateInputType
+    _sum?: Inconfort_thermiqueSumAggregateInputType
+    _min?: Inconfort_thermiqueMinAggregateInputType
+    _max?: Inconfort_thermiqueMaxAggregateInputType
   }
 
-  export type Communes_precariteGroupByOutputType = {
-    pk: number
+  export type Inconfort_thermiqueGroupByOutputType = {
+    index: bigint
     code_commune: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: number | null
+    age_bati_post06: number | null
+    age_bati_91_05: number | null
+    age_bati_46_90: number | null
+    age_bati_19_45: number | null
+    age_bati_pre_19: number | null
+    under_4_sum_1968: number | null
+    to_80_sum_1968: number | null
+    over_80_sum_1968: number | null
+    under_4_sum_1975: number | null
+    to_80_sum_1975: number | null
+    over_80_sum_1975: number | null
+    under_4_sum_1982: number | null
+    to_80_sum_1982: number | null
+    over_80_sum_1982: number | null
+    under_4_sum_1990: number | null
+    to_80_sum_1990: number | null
+    over_80_sum_1990: number | null
+    under_4_sum_1999: number | null
+    to_80_sum_1999: number | null
+    over_80_sum_1999: number | null
+    under_4_sum_2009: number | null
+    to_80_sum_2009: number | null
+    over_80_sum_2009: number | null
+    under_4_sum_2014: number | null
+    to_80_sum_2014: number | null
+    over_80_sum_2014: number | null
+    under_4_sum_2020: number | null
+    to_80_sum_2020: number | null
+    over_80_sum_2020: number | null
+    P20_POP80P: number | null
+    P20_POP80P_PSEUL: number | null
     tee_log: number | null
     tee_mob: number | null
     precarite_logement: number | null
-    epci: string | null
-    _count: Communes_precariteCountAggregateOutputType | null
-    _avg: Communes_precariteAvgAggregateOutputType | null
-    _sum: Communes_precariteSumAggregateOutputType | null
-    _min: Communes_precariteMinAggregateOutputType | null
-    _max: Communes_precariteMaxAggregateOutputType | null
+    NA5AZ_sum: bigint | null
+    NA5BE_sum: bigint | null
+    NA5FZ_sum: bigint | null
+    NA5GU_sum: bigint | null
+    NA5OQ_sum: bigint | null
+    s_geom_cstr_bati: number | null
+    densite_bati: number | null
+    _count: Inconfort_thermiqueCountAggregateOutputType | null
+    _avg: Inconfort_thermiqueAvgAggregateOutputType | null
+    _sum: Inconfort_thermiqueSumAggregateOutputType | null
+    _min: Inconfort_thermiqueMinAggregateOutputType | null
+    _max: Inconfort_thermiqueMaxAggregateOutputType | null
   }
 
-  type GetCommunes_precariteGroupByPayload<T extends communes_precariteGroupByArgs> = Prisma.PrismaPromise<
+  type GetInconfort_thermiqueGroupByPayload<T extends inconfort_thermiqueGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<Communes_precariteGroupByOutputType, T['by']> &
+      PickEnumerable<Inconfort_thermiqueGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof Communes_precariteGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof Inconfort_thermiqueGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], Communes_precariteGroupByOutputType[P]>
-            : GetScalarType<T[P], Communes_precariteGroupByOutputType[P]>
+              : GetScalarType<T[P], Inconfort_thermiqueGroupByOutputType[P]>
+            : GetScalarType<T[P], Inconfort_thermiqueGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type communes_precariteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pk?: boolean
+  export type inconfort_thermiqueSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
     code_commune?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+    age_bati_post06?: boolean
+    age_bati_91_05?: boolean
+    age_bati_46_90?: boolean
+    age_bati_19_45?: boolean
+    age_bati_pre_19?: boolean
+    under_4_sum_1968?: boolean
+    to_80_sum_1968?: boolean
+    over_80_sum_1968?: boolean
+    under_4_sum_1975?: boolean
+    to_80_sum_1975?: boolean
+    over_80_sum_1975?: boolean
+    under_4_sum_1982?: boolean
+    to_80_sum_1982?: boolean
+    over_80_sum_1982?: boolean
+    under_4_sum_1990?: boolean
+    to_80_sum_1990?: boolean
+    over_80_sum_1990?: boolean
+    under_4_sum_1999?: boolean
+    to_80_sum_1999?: boolean
+    over_80_sum_1999?: boolean
+    under_4_sum_2009?: boolean
+    to_80_sum_2009?: boolean
+    over_80_sum_2009?: boolean
+    under_4_sum_2014?: boolean
+    to_80_sum_2014?: boolean
+    over_80_sum_2014?: boolean
+    under_4_sum_2020?: boolean
+    to_80_sum_2020?: boolean
+    over_80_sum_2020?: boolean
+    P20_POP80P?: boolean
+    P20_POP80P_PSEUL?: boolean
     tee_log?: boolean
     tee_mob?: boolean
     precarite_logement?: boolean
-    epci?: boolean
-  }, ExtArgs["result"]["communes_precarite"]>
+    NA5AZ_sum?: boolean
+    NA5BE_sum?: boolean
+    NA5FZ_sum?: boolean
+    NA5GU_sum?: boolean
+    NA5OQ_sum?: boolean
+    s_geom_cstr_bati?: boolean
+    densite_bati?: boolean
+  }, ExtArgs["result"]["inconfort_thermique"]>
 
-  export type communes_precariteSelectScalar = {
-    pk?: boolean
+  export type inconfort_thermiqueSelectScalar = {
+    index?: boolean
     code_commune?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+    age_bati_post06?: boolean
+    age_bati_91_05?: boolean
+    age_bati_46_90?: boolean
+    age_bati_19_45?: boolean
+    age_bati_pre_19?: boolean
+    under_4_sum_1968?: boolean
+    to_80_sum_1968?: boolean
+    over_80_sum_1968?: boolean
+    under_4_sum_1975?: boolean
+    to_80_sum_1975?: boolean
+    over_80_sum_1975?: boolean
+    under_4_sum_1982?: boolean
+    to_80_sum_1982?: boolean
+    over_80_sum_1982?: boolean
+    under_4_sum_1990?: boolean
+    to_80_sum_1990?: boolean
+    over_80_sum_1990?: boolean
+    under_4_sum_1999?: boolean
+    to_80_sum_1999?: boolean
+    over_80_sum_1999?: boolean
+    under_4_sum_2009?: boolean
+    to_80_sum_2009?: boolean
+    over_80_sum_2009?: boolean
+    under_4_sum_2014?: boolean
+    to_80_sum_2014?: boolean
+    over_80_sum_2014?: boolean
+    under_4_sum_2020?: boolean
+    to_80_sum_2020?: boolean
+    over_80_sum_2020?: boolean
+    P20_POP80P?: boolean
+    P20_POP80P_PSEUL?: boolean
     tee_log?: boolean
     tee_mob?: boolean
     precarite_logement?: boolean
-    epci?: boolean
+    NA5AZ_sum?: boolean
+    NA5BE_sum?: boolean
+    NA5FZ_sum?: boolean
+    NA5GU_sum?: boolean
+    NA5OQ_sum?: boolean
+    s_geom_cstr_bati?: boolean
+    densite_bati?: boolean
   }
 
 
 
-  export type $communes_precaritePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "communes_precarite"
+  export type $inconfort_thermiquePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "inconfort_thermique"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      pk: number
+      index: bigint
       code_commune: string | null
+      libelle_geographique: string | null
+      epci: string | null
+      libelle_epci: string | null
+      departement: string | null
+      region: number | null
+      age_bati_post06: number | null
+      age_bati_91_05: number | null
+      age_bati_46_90: number | null
+      age_bati_19_45: number | null
+      age_bati_pre_19: number | null
+      under_4_sum_1968: number | null
+      to_80_sum_1968: number | null
+      over_80_sum_1968: number | null
+      under_4_sum_1975: number | null
+      to_80_sum_1975: number | null
+      over_80_sum_1975: number | null
+      under_4_sum_1982: number | null
+      to_80_sum_1982: number | null
+      over_80_sum_1982: number | null
+      under_4_sum_1990: number | null
+      to_80_sum_1990: number | null
+      over_80_sum_1990: number | null
+      under_4_sum_1999: number | null
+      to_80_sum_1999: number | null
+      over_80_sum_1999: number | null
+      under_4_sum_2009: number | null
+      to_80_sum_2009: number | null
+      over_80_sum_2009: number | null
+      under_4_sum_2014: number | null
+      to_80_sum_2014: number | null
+      over_80_sum_2014: number | null
+      under_4_sum_2020: number | null
+      to_80_sum_2020: number | null
+      over_80_sum_2020: number | null
+      P20_POP80P: number | null
+      P20_POP80P_PSEUL: number | null
       tee_log: number | null
       tee_mob: number | null
       precarite_logement: number | null
-      epci: string | null
-    }, ExtArgs["result"]["communes_precarite"]>
-    composites: {}
-  }
-
-
-  type communes_precariteGetPayload<S extends boolean | null | undefined | communes_precariteDefaultArgs> = $Result.GetResult<Prisma.$communes_precaritePayload, S>
-
-  type communes_precariteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<communes_precariteFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: Communes_precariteCountAggregateInputType | true
-    }
-
-  export interface communes_precariteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['communes_precarite'], meta: { name: 'communes_precarite' } }
-    /**
-     * Find zero or one Communes_precarite that matches the filter.
-     * @param {communes_precariteFindUniqueArgs} args - Arguments to find a Communes_precarite
-     * @example
-     * // Get one Communes_precarite
-     * const communes_precarite = await prisma.communes_precarite.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends communes_precariteFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, communes_precariteFindUniqueArgs<ExtArgs>>
-    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one Communes_precarite that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {communes_precariteFindUniqueOrThrowArgs} args - Arguments to find a Communes_precarite
-     * @example
-     * // Get one Communes_precarite
-     * const communes_precarite = await prisma.communes_precarite.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends communes_precariteFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, communes_precariteFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first Communes_precarite that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communes_precariteFindFirstArgs} args - Arguments to find a Communes_precarite
-     * @example
-     * // Get one Communes_precarite
-     * const communes_precarite = await prisma.communes_precarite.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends communes_precariteFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, communes_precariteFindFirstArgs<ExtArgs>>
-    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first Communes_precarite that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communes_precariteFindFirstOrThrowArgs} args - Arguments to find a Communes_precarite
-     * @example
-     * // Get one Communes_precarite
-     * const communes_precarite = await prisma.communes_precarite.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends communes_precariteFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, communes_precariteFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more Communes_precarites that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communes_precariteFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Communes_precarites
-     * const communes_precarites = await prisma.communes_precarite.findMany()
-     * 
-     * // Get first 10 Communes_precarites
-     * const communes_precarites = await prisma.communes_precarite.findMany({ take: 10 })
-     * 
-     * // Only select the `pk`
-     * const communes_precariteWithPkOnly = await prisma.communes_precarite.findMany({ select: { pk: true } })
-     * 
-    **/
-    findMany<T extends communes_precariteFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, communes_precariteFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a Communes_precarite.
-     * @param {communes_precariteCreateArgs} args - Arguments to create a Communes_precarite.
-     * @example
-     * // Create one Communes_precarite
-     * const Communes_precarite = await prisma.communes_precarite.create({
-     *   data: {
-     *     // ... data to create a Communes_precarite
-     *   }
-     * })
-     * 
-    **/
-    create<T extends communes_precariteCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, communes_precariteCreateArgs<ExtArgs>>
-    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many Communes_precarites.
-     *     @param {communes_precariteCreateManyArgs} args - Arguments to create many Communes_precarites.
-     *     @example
-     *     // Create many Communes_precarites
-     *     const communes_precarite = await prisma.communes_precarite.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends communes_precariteCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, communes_precariteCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Communes_precarite.
-     * @param {communes_precariteDeleteArgs} args - Arguments to delete one Communes_precarite.
-     * @example
-     * // Delete one Communes_precarite
-     * const Communes_precarite = await prisma.communes_precarite.delete({
-     *   where: {
-     *     // ... filter to delete one Communes_precarite
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends communes_precariteDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, communes_precariteDeleteArgs<ExtArgs>>
-    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one Communes_precarite.
-     * @param {communes_precariteUpdateArgs} args - Arguments to update one Communes_precarite.
-     * @example
-     * // Update one Communes_precarite
-     * const communes_precarite = await prisma.communes_precarite.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends communes_precariteUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, communes_precariteUpdateArgs<ExtArgs>>
-    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Communes_precarites.
-     * @param {communes_precariteDeleteManyArgs} args - Arguments to filter Communes_precarites to delete.
-     * @example
-     * // Delete a few Communes_precarites
-     * const { count } = await prisma.communes_precarite.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends communes_precariteDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, communes_precariteDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Communes_precarites.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communes_precariteUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Communes_precarites
-     * const communes_precarite = await prisma.communes_precarite.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends communes_precariteUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, communes_precariteUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Communes_precarite.
-     * @param {communes_precariteUpsertArgs} args - Arguments to update or create a Communes_precarite.
-     * @example
-     * // Update or create a Communes_precarite
-     * const communes_precarite = await prisma.communes_precarite.upsert({
-     *   create: {
-     *     // ... data to create a Communes_precarite
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Communes_precarite we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends communes_precariteUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, communes_precariteUpsertArgs<ExtArgs>>
-    ): Prisma__communes_precariteClient<$Result.GetResult<Prisma.$communes_precaritePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of Communes_precarites.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communes_precariteCountArgs} args - Arguments to filter Communes_precarites to count.
-     * @example
-     * // Count the number of Communes_precarites
-     * const count = await prisma.communes_precarite.count({
-     *   where: {
-     *     // ... the filter for the Communes_precarites we want to count
-     *   }
-     * })
-    **/
-    count<T extends communes_precariteCountArgs>(
-      args?: Subset<T, communes_precariteCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Communes_precariteCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Communes_precarite.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Communes_precariteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Communes_precariteAggregateArgs>(args: Subset<T, Communes_precariteAggregateArgs>): Prisma.PrismaPromise<GetCommunes_precariteAggregateType<T>>
-
-    /**
-     * Group by Communes_precarite.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communes_precariteGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends communes_precariteGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: communes_precariteGroupByArgs['orderBy'] }
-        : { orderBy?: communes_precariteGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, communes_precariteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommunes_precariteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the communes_precarite model
-   */
-  readonly fields: communes_precariteFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for communes_precarite.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__communes_precariteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the communes_precarite model
-   */ 
-  interface communes_precariteFieldRefs {
-    readonly pk: FieldRef<"communes_precarite", 'Int'>
-    readonly code_commune: FieldRef<"communes_precarite", 'String'>
-    readonly tee_log: FieldRef<"communes_precarite", 'Float'>
-    readonly tee_mob: FieldRef<"communes_precarite", 'Float'>
-    readonly precarite_logement: FieldRef<"communes_precarite", 'Float'>
-    readonly epci: FieldRef<"communes_precarite", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * communes_precarite findUnique
-   */
-  export type communes_precariteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes_precarite
-     */
-    select?: communes_precariteSelect<ExtArgs> | null
-    /**
-     * Filter, which communes_precarite to fetch.
-     */
-    where: communes_precariteWhereUniqueInput
-  }
-
-  /**
-   * communes_precarite findUniqueOrThrow
-   */
-  export type communes_precariteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes_precarite
-     */
-    select?: communes_precariteSelect<ExtArgs> | null
-    /**
-     * Filter, which communes_precarite to fetch.
-     */
-    where: communes_precariteWhereUniqueInput
-  }
-
-  /**
-   * communes_precarite findFirst
-   */
-  export type communes_precariteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes_precarite
-     */
-    select?: communes_precariteSelect<ExtArgs> | null
-    /**
-     * Filter, which communes_precarite to fetch.
-     */
-    where?: communes_precariteWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of communes_precarites to fetch.
-     */
-    orderBy?: communes_precariteOrderByWithRelationInput | communes_precariteOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for communes_precarites.
-     */
-    cursor?: communes_precariteWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` communes_precarites from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` communes_precarites.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of communes_precarites.
-     */
-    distinct?: Communes_precariteScalarFieldEnum | Communes_precariteScalarFieldEnum[]
-  }
-
-  /**
-   * communes_precarite findFirstOrThrow
-   */
-  export type communes_precariteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes_precarite
-     */
-    select?: communes_precariteSelect<ExtArgs> | null
-    /**
-     * Filter, which communes_precarite to fetch.
-     */
-    where?: communes_precariteWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of communes_precarites to fetch.
-     */
-    orderBy?: communes_precariteOrderByWithRelationInput | communes_precariteOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for communes_precarites.
-     */
-    cursor?: communes_precariteWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` communes_precarites from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` communes_precarites.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of communes_precarites.
-     */
-    distinct?: Communes_precariteScalarFieldEnum | Communes_precariteScalarFieldEnum[]
-  }
-
-  /**
-   * communes_precarite findMany
-   */
-  export type communes_precariteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes_precarite
-     */
-    select?: communes_precariteSelect<ExtArgs> | null
-    /**
-     * Filter, which communes_precarites to fetch.
-     */
-    where?: communes_precariteWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of communes_precarites to fetch.
-     */
-    orderBy?: communes_precariteOrderByWithRelationInput | communes_precariteOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing communes_precarites.
-     */
-    cursor?: communes_precariteWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` communes_precarites from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` communes_precarites.
-     */
-    skip?: number
-    distinct?: Communes_precariteScalarFieldEnum | Communes_precariteScalarFieldEnum[]
-  }
-
-  /**
-   * communes_precarite create
-   */
-  export type communes_precariteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes_precarite
-     */
-    select?: communes_precariteSelect<ExtArgs> | null
-    /**
-     * The data needed to create a communes_precarite.
-     */
-    data?: XOR<communes_precariteCreateInput, communes_precariteUncheckedCreateInput>
-  }
-
-  /**
-   * communes_precarite createMany
-   */
-  export type communes_precariteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many communes_precarites.
-     */
-    data: communes_precariteCreateManyInput | communes_precariteCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * communes_precarite update
-   */
-  export type communes_precariteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes_precarite
-     */
-    select?: communes_precariteSelect<ExtArgs> | null
-    /**
-     * The data needed to update a communes_precarite.
-     */
-    data: XOR<communes_precariteUpdateInput, communes_precariteUncheckedUpdateInput>
-    /**
-     * Choose, which communes_precarite to update.
-     */
-    where: communes_precariteWhereUniqueInput
-  }
-
-  /**
-   * communes_precarite updateMany
-   */
-  export type communes_precariteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update communes_precarites.
-     */
-    data: XOR<communes_precariteUpdateManyMutationInput, communes_precariteUncheckedUpdateManyInput>
-    /**
-     * Filter which communes_precarites to update
-     */
-    where?: communes_precariteWhereInput
-  }
-
-  /**
-   * communes_precarite upsert
-   */
-  export type communes_precariteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes_precarite
-     */
-    select?: communes_precariteSelect<ExtArgs> | null
-    /**
-     * The filter to search for the communes_precarite to update in case it exists.
-     */
-    where: communes_precariteWhereUniqueInput
-    /**
-     * In case the communes_precarite found by the `where` argument doesn't exist, create a new communes_precarite with this data.
-     */
-    create: XOR<communes_precariteCreateInput, communes_precariteUncheckedCreateInput>
-    /**
-     * In case the communes_precarite was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<communes_precariteUpdateInput, communes_precariteUncheckedUpdateInput>
-  }
-
-  /**
-   * communes_precarite delete
-   */
-  export type communes_precariteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes_precarite
-     */
-    select?: communes_precariteSelect<ExtArgs> | null
-    /**
-     * Filter which communes_precarite to delete.
-     */
-    where: communes_precariteWhereUniqueInput
-  }
-
-  /**
-   * communes_precarite deleteMany
-   */
-  export type communes_precariteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which communes_precarites to delete
-     */
-    where?: communes_precariteWhereInput
-  }
-
-  /**
-   * communes_precarite without action
-   */
-  export type communes_precariteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes_precarite
-     */
-    select?: communes_precariteSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * Model communes
-   */
-
-  export type AggregateCommunes = {
-    _count: CommunesCountAggregateOutputType | null
-    _avg: CommunesAvgAggregateOutputType | null
-    _sum: CommunesSumAggregateOutputType | null
-    _min: CommunesMinAggregateOutputType | null
-    _max: CommunesMaxAggregateOutputType | null
-  }
-
-  export type CommunesAvgAggregateOutputType = {
-    pk: number | null
-    reg: number | null
-    densite_bati: number | null
-    precarite_logement: number | null
-  }
-
-  export type CommunesSumAggregateOutputType = {
-    pk: number | null
-    reg: number | null
-    densite_bati: number | null
-    precarite_logement: number | null
-  }
-
-  export type CommunesMinAggregateOutputType = {
-    pk: number | null
-    code_commune: string | null
-    libelle_commune: string | null
-    reg: number | null
-    dep: string | null
-    libelle_epci: string | null
-    epci: string | null
-    densite_bati: number | null
-    precarite_logement: number | null
-  }
-
-  export type CommunesMaxAggregateOutputType = {
-    pk: number | null
-    code_commune: string | null
-    libelle_commune: string | null
-    reg: number | null
-    dep: string | null
-    libelle_epci: string | null
-    epci: string | null
-    densite_bati: number | null
-    precarite_logement: number | null
-  }
-
-  export type CommunesCountAggregateOutputType = {
-    pk: number
-    code_commune: number
-    libelle_commune: number
-    reg: number
-    dep: number
-    libelle_epci: number
-    epci: number
-    densite_bati: number
-    precarite_logement: number
-    _all: number
-  }
-
-
-  export type CommunesAvgAggregateInputType = {
-    pk?: true
-    reg?: true
-    densite_bati?: true
-    precarite_logement?: true
-  }
-
-  export type CommunesSumAggregateInputType = {
-    pk?: true
-    reg?: true
-    densite_bati?: true
-    precarite_logement?: true
-  }
-
-  export type CommunesMinAggregateInputType = {
-    pk?: true
-    code_commune?: true
-    libelle_commune?: true
-    reg?: true
-    dep?: true
-    libelle_epci?: true
-    epci?: true
-    densite_bati?: true
-    precarite_logement?: true
-  }
-
-  export type CommunesMaxAggregateInputType = {
-    pk?: true
-    code_commune?: true
-    libelle_commune?: true
-    reg?: true
-    dep?: true
-    libelle_epci?: true
-    epci?: true
-    densite_bati?: true
-    precarite_logement?: true
-  }
-
-  export type CommunesCountAggregateInputType = {
-    pk?: true
-    code_commune?: true
-    libelle_commune?: true
-    reg?: true
-    dep?: true
-    libelle_epci?: true
-    epci?: true
-    densite_bati?: true
-    precarite_logement?: true
-    _all?: true
-  }
-
-  export type CommunesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which communes to aggregate.
-     */
-    where?: communesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of communes to fetch.
-     */
-    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: communesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` communes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` communes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned communes
-    **/
-    _count?: true | CommunesCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: CommunesAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: CommunesSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: CommunesMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: CommunesMaxAggregateInputType
-  }
-
-  export type GetCommunesAggregateType<T extends CommunesAggregateArgs> = {
-        [P in keyof T & keyof AggregateCommunes]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCommunes[P]>
-      : GetScalarType<T[P], AggregateCommunes[P]>
-  }
-
-
-
-
-  export type communesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: communesWhereInput
-    orderBy?: communesOrderByWithAggregationInput | communesOrderByWithAggregationInput[]
-    by: CommunesScalarFieldEnum[] | CommunesScalarFieldEnum
-    having?: communesScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: CommunesCountAggregateInputType | true
-    _avg?: CommunesAvgAggregateInputType
-    _sum?: CommunesSumAggregateInputType
-    _min?: CommunesMinAggregateInputType
-    _max?: CommunesMaxAggregateInputType
-  }
-
-  export type CommunesGroupByOutputType = {
-    pk: number
-    code_commune: string | null
-    libelle_commune: string | null
-    reg: number | null
-    dep: string | null
-    libelle_epci: string | null
-    epci: string | null
-    densite_bati: number | null
-    precarite_logement: number | null
-    _count: CommunesCountAggregateOutputType | null
-    _avg: CommunesAvgAggregateOutputType | null
-    _sum: CommunesSumAggregateOutputType | null
-    _min: CommunesMinAggregateOutputType | null
-    _max: CommunesMaxAggregateOutputType | null
-  }
-
-  type GetCommunesGroupByPayload<T extends communesGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<CommunesGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof CommunesGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], CommunesGroupByOutputType[P]>
-            : GetScalarType<T[P], CommunesGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type communesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pk?: boolean
-    code_commune?: boolean
-    libelle_commune?: boolean
-    reg?: boolean
-    dep?: boolean
-    libelle_epci?: boolean
-    epci?: boolean
-    densite_bati?: boolean
-    precarite_logement?: boolean
-  }, ExtArgs["result"]["communes"]>
-
-  export type communesSelectScalar = {
-    pk?: boolean
-    code_commune?: boolean
-    libelle_commune?: boolean
-    reg?: boolean
-    dep?: boolean
-    libelle_epci?: boolean
-    epci?: boolean
-    densite_bati?: boolean
-    precarite_logement?: boolean
-  }
-
-
-
-  export type $communesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "communes"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      pk: number
-      code_commune: string | null
-      libelle_commune: string | null
-      reg: number | null
-      dep: string | null
-      libelle_epci: string | null
-      epci: string | null
+      NA5AZ_sum: bigint | null
+      NA5BE_sum: bigint | null
+      NA5FZ_sum: bigint | null
+      NA5GU_sum: bigint | null
+      NA5OQ_sum: bigint | null
+      s_geom_cstr_bati: number | null
       densite_bati: number | null
-      precarite_logement: number | null
-    }, ExtArgs["result"]["communes"]>
+    }, ExtArgs["result"]["inconfort_thermique"]>
     composites: {}
   }
 
 
-  type communesGetPayload<S extends boolean | null | undefined | communesDefaultArgs> = $Result.GetResult<Prisma.$communesPayload, S>
+  type inconfort_thermiqueGetPayload<S extends boolean | null | undefined | inconfort_thermiqueDefaultArgs> = $Result.GetResult<Prisma.$inconfort_thermiquePayload, S>
 
-  type communesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<communesFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: CommunesCountAggregateInputType | true
+  type inconfort_thermiqueCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<inconfort_thermiqueFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Inconfort_thermiqueCountAggregateInputType | true
     }
 
-  export interface communesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['communes'], meta: { name: 'communes' } }
+  export interface inconfort_thermiqueDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['inconfort_thermique'], meta: { name: 'inconfort_thermique' } }
     /**
-     * Find zero or one Communes that matches the filter.
-     * @param {communesFindUniqueArgs} args - Arguments to find a Communes
+     * Find zero or one Inconfort_thermique that matches the filter.
+     * @param {inconfort_thermiqueFindUniqueArgs} args - Arguments to find a Inconfort_thermique
      * @example
-     * // Get one Communes
-     * const communes = await prisma.communes.findUnique({
+     * // Get one Inconfort_thermique
+     * const inconfort_thermique = await prisma.inconfort_thermique.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends communesFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, communesFindUniqueArgs<ExtArgs>>
-    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends inconfort_thermiqueFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, inconfort_thermiqueFindUniqueArgs<ExtArgs>>
+    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one Communes that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one Inconfort_thermique that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {communesFindUniqueOrThrowArgs} args - Arguments to find a Communes
+     * @param {inconfort_thermiqueFindUniqueOrThrowArgs} args - Arguments to find a Inconfort_thermique
      * @example
-     * // Get one Communes
-     * const communes = await prisma.communes.findUniqueOrThrow({
+     * // Get one Inconfort_thermique
+     * const inconfort_thermique = await prisma.inconfort_thermique.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends communesFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, communesFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends inconfort_thermiqueFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, inconfort_thermiqueFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first Communes that matches the filter.
+     * Find the first Inconfort_thermique that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesFindFirstArgs} args - Arguments to find a Communes
+     * @param {inconfort_thermiqueFindFirstArgs} args - Arguments to find a Inconfort_thermique
      * @example
-     * // Get one Communes
-     * const communes = await prisma.communes.findFirst({
+     * // Get one Inconfort_thermique
+     * const inconfort_thermique = await prisma.inconfort_thermique.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends communesFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, communesFindFirstArgs<ExtArgs>>
-    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends inconfort_thermiqueFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, inconfort_thermiqueFindFirstArgs<ExtArgs>>
+    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first Communes that matches the filter or
+     * Find the first Inconfort_thermique that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesFindFirstOrThrowArgs} args - Arguments to find a Communes
+     * @param {inconfort_thermiqueFindFirstOrThrowArgs} args - Arguments to find a Inconfort_thermique
      * @example
-     * // Get one Communes
-     * const communes = await prisma.communes.findFirstOrThrow({
+     * // Get one Inconfort_thermique
+     * const inconfort_thermique = await prisma.inconfort_thermique.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends communesFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, communesFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends inconfort_thermiqueFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, inconfort_thermiqueFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more Communes that matches the filter.
+     * Find zero or more Inconfort_thermiques that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {inconfort_thermiqueFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Communes
-     * const communes = await prisma.communes.findMany()
+     * // Get all Inconfort_thermiques
+     * const inconfort_thermiques = await prisma.inconfort_thermique.findMany()
      * 
-     * // Get first 10 Communes
-     * const communes = await prisma.communes.findMany({ take: 10 })
+     * // Get first 10 Inconfort_thermiques
+     * const inconfort_thermiques = await prisma.inconfort_thermique.findMany({ take: 10 })
      * 
-     * // Only select the `pk`
-     * const communesWithPkOnly = await prisma.communes.findMany({ select: { pk: true } })
+     * // Only select the `index`
+     * const inconfort_thermiqueWithIndexOnly = await prisma.inconfort_thermique.findMany({ select: { index: true } })
      * 
     **/
-    findMany<T extends communesFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, communesFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends inconfort_thermiqueFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, inconfort_thermiqueFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a Communes.
-     * @param {communesCreateArgs} args - Arguments to create a Communes.
+     * Create a Inconfort_thermique.
+     * @param {inconfort_thermiqueCreateArgs} args - Arguments to create a Inconfort_thermique.
      * @example
-     * // Create one Communes
-     * const Communes = await prisma.communes.create({
+     * // Create one Inconfort_thermique
+     * const Inconfort_thermique = await prisma.inconfort_thermique.create({
      *   data: {
-     *     // ... data to create a Communes
+     *     // ... data to create a Inconfort_thermique
      *   }
      * })
      * 
     **/
-    create<T extends communesCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, communesCreateArgs<ExtArgs>>
-    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends inconfort_thermiqueCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, inconfort_thermiqueCreateArgs<ExtArgs>>
+    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many Communes.
-     *     @param {communesCreateManyArgs} args - Arguments to create many Communes.
+     * Create many Inconfort_thermiques.
+     *     @param {inconfort_thermiqueCreateManyArgs} args - Arguments to create many Inconfort_thermiques.
      *     @example
-     *     // Create many Communes
-     *     const communes = await prisma.communes.createMany({
+     *     // Create many Inconfort_thermiques
+     *     const inconfort_thermique = await prisma.inconfort_thermique.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends communesCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, communesCreateManyArgs<ExtArgs>>
+    createMany<T extends inconfort_thermiqueCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, inconfort_thermiqueCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Communes.
-     * @param {communesDeleteArgs} args - Arguments to delete one Communes.
+     * Delete a Inconfort_thermique.
+     * @param {inconfort_thermiqueDeleteArgs} args - Arguments to delete one Inconfort_thermique.
      * @example
-     * // Delete one Communes
-     * const Communes = await prisma.communes.delete({
+     * // Delete one Inconfort_thermique
+     * const Inconfort_thermique = await prisma.inconfort_thermique.delete({
      *   where: {
-     *     // ... filter to delete one Communes
+     *     // ... filter to delete one Inconfort_thermique
      *   }
      * })
      * 
     **/
-    delete<T extends communesDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, communesDeleteArgs<ExtArgs>>
-    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends inconfort_thermiqueDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, inconfort_thermiqueDeleteArgs<ExtArgs>>
+    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one Communes.
-     * @param {communesUpdateArgs} args - Arguments to update one Communes.
+     * Update one Inconfort_thermique.
+     * @param {inconfort_thermiqueUpdateArgs} args - Arguments to update one Inconfort_thermique.
      * @example
-     * // Update one Communes
-     * const communes = await prisma.communes.update({
+     * // Update one Inconfort_thermique
+     * const inconfort_thermique = await prisma.inconfort_thermique.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3444,34 +2099,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends communesUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, communesUpdateArgs<ExtArgs>>
-    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends inconfort_thermiqueUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, inconfort_thermiqueUpdateArgs<ExtArgs>>
+    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more Communes.
-     * @param {communesDeleteManyArgs} args - Arguments to filter Communes to delete.
+     * Delete zero or more Inconfort_thermiques.
+     * @param {inconfort_thermiqueDeleteManyArgs} args - Arguments to filter Inconfort_thermiques to delete.
      * @example
-     * // Delete a few Communes
-     * const { count } = await prisma.communes.deleteMany({
+     * // Delete a few Inconfort_thermiques
+     * const { count } = await prisma.inconfort_thermique.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends communesDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, communesDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends inconfort_thermiqueDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, inconfort_thermiqueDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Communes.
+     * Update zero or more Inconfort_thermiques.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {inconfort_thermiqueUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Communes
-     * const communes = await prisma.communes.updateMany({
+     * // Update many Inconfort_thermiques
+     * const inconfort_thermique = await prisma.inconfort_thermique.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3481,59 +2136,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends communesUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, communesUpdateManyArgs<ExtArgs>>
+    updateMany<T extends inconfort_thermiqueUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, inconfort_thermiqueUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Communes.
-     * @param {communesUpsertArgs} args - Arguments to update or create a Communes.
+     * Create or update one Inconfort_thermique.
+     * @param {inconfort_thermiqueUpsertArgs} args - Arguments to update or create a Inconfort_thermique.
      * @example
-     * // Update or create a Communes
-     * const communes = await prisma.communes.upsert({
+     * // Update or create a Inconfort_thermique
+     * const inconfort_thermique = await prisma.inconfort_thermique.upsert({
      *   create: {
-     *     // ... data to create a Communes
+     *     // ... data to create a Inconfort_thermique
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Communes we want to update
+     *     // ... the filter for the Inconfort_thermique we want to update
      *   }
      * })
     **/
-    upsert<T extends communesUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, communesUpsertArgs<ExtArgs>>
-    ): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends inconfort_thermiqueUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, inconfort_thermiqueUpsertArgs<ExtArgs>>
+    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of Communes.
+     * Count the number of Inconfort_thermiques.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesCountArgs} args - Arguments to filter Communes to count.
+     * @param {inconfort_thermiqueCountArgs} args - Arguments to filter Inconfort_thermiques to count.
      * @example
-     * // Count the number of Communes
-     * const count = await prisma.communes.count({
+     * // Count the number of Inconfort_thermiques
+     * const count = await prisma.inconfort_thermique.count({
      *   where: {
-     *     // ... the filter for the Communes we want to count
+     *     // ... the filter for the Inconfort_thermiques we want to count
      *   }
      * })
     **/
-    count<T extends communesCountArgs>(
-      args?: Subset<T, communesCountArgs>,
+    count<T extends inconfort_thermiqueCountArgs>(
+      args?: Subset<T, inconfort_thermiqueCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], CommunesCountAggregateOutputType>
+          : GetScalarType<T['select'], Inconfort_thermiqueCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Communes.
+     * Allows you to perform aggregations operations on a Inconfort_thermique.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CommunesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {Inconfort_thermiqueAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -3553,13 +2208,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends CommunesAggregateArgs>(args: Subset<T, CommunesAggregateArgs>): Prisma.PrismaPromise<GetCommunesAggregateType<T>>
+    aggregate<T extends Inconfort_thermiqueAggregateArgs>(args: Subset<T, Inconfort_thermiqueAggregateArgs>): Prisma.PrismaPromise<GetInconfort_thermiqueAggregateType<T>>
 
     /**
-     * Group by Communes.
+     * Group by Inconfort_thermique.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesGroupByArgs} args - Group by arguments.
+     * @param {inconfort_thermiqueGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -3574,14 +2229,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends communesGroupByArgs,
+      T extends inconfort_thermiqueGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: communesGroupByArgs['orderBy'] }
-        : { orderBy?: communesGroupByArgs['orderBy'] },
+        ? { orderBy: inconfort_thermiqueGroupByArgs['orderBy'] }
+        : { orderBy?: inconfort_thermiqueGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -3630,20 +2285,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, communesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommunesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, inconfort_thermiqueGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInconfort_thermiqueGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the communes model
+   * Fields of the inconfort_thermique model
    */
-  readonly fields: communesFieldRefs;
+  readonly fields: inconfort_thermiqueFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for communes.
+   * The delegate class that acts as a "Promise-like" for inconfort_thermique.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__communesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__inconfort_thermiqueClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
 
@@ -3672,288 +2327,327 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the communes model
+   * Fields of the inconfort_thermique model
    */ 
-  interface communesFieldRefs {
-    readonly pk: FieldRef<"communes", 'Int'>
-    readonly code_commune: FieldRef<"communes", 'String'>
-    readonly libelle_commune: FieldRef<"communes", 'String'>
-    readonly reg: FieldRef<"communes", 'Float'>
-    readonly dep: FieldRef<"communes", 'String'>
-    readonly libelle_epci: FieldRef<"communes", 'String'>
-    readonly epci: FieldRef<"communes", 'String'>
-    readonly densite_bati: FieldRef<"communes", 'Float'>
-    readonly precarite_logement: FieldRef<"communes", 'Float'>
+  interface inconfort_thermiqueFieldRefs {
+    readonly index: FieldRef<"inconfort_thermique", 'BigInt'>
+    readonly code_commune: FieldRef<"inconfort_thermique", 'String'>
+    readonly libelle_geographique: FieldRef<"inconfort_thermique", 'String'>
+    readonly epci: FieldRef<"inconfort_thermique", 'String'>
+    readonly libelle_epci: FieldRef<"inconfort_thermique", 'String'>
+    readonly departement: FieldRef<"inconfort_thermique", 'String'>
+    readonly region: FieldRef<"inconfort_thermique", 'Int'>
+    readonly age_bati_post06: FieldRef<"inconfort_thermique", 'Float'>
+    readonly age_bati_91_05: FieldRef<"inconfort_thermique", 'Float'>
+    readonly age_bati_46_90: FieldRef<"inconfort_thermique", 'Float'>
+    readonly age_bati_19_45: FieldRef<"inconfort_thermique", 'Float'>
+    readonly age_bati_pre_19: FieldRef<"inconfort_thermique", 'Float'>
+    readonly under_4_sum_1968: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_1968: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_1968: FieldRef<"inconfort_thermique", 'Float'>
+    readonly under_4_sum_1975: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_1975: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_1975: FieldRef<"inconfort_thermique", 'Float'>
+    readonly under_4_sum_1982: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_1982: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_1982: FieldRef<"inconfort_thermique", 'Float'>
+    readonly under_4_sum_1990: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_1990: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_1990: FieldRef<"inconfort_thermique", 'Float'>
+    readonly under_4_sum_1999: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_1999: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_1999: FieldRef<"inconfort_thermique", 'Float'>
+    readonly under_4_sum_2009: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_2009: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_2009: FieldRef<"inconfort_thermique", 'Float'>
+    readonly under_4_sum_2014: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_2014: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_2014: FieldRef<"inconfort_thermique", 'Float'>
+    readonly under_4_sum_2020: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_2020: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_2020: FieldRef<"inconfort_thermique", 'Float'>
+    readonly P20_POP80P: FieldRef<"inconfort_thermique", 'Float'>
+    readonly P20_POP80P_PSEUL: FieldRef<"inconfort_thermique", 'Float'>
+    readonly tee_log: FieldRef<"inconfort_thermique", 'Float'>
+    readonly tee_mob: FieldRef<"inconfort_thermique", 'Float'>
+    readonly precarite_logement: FieldRef<"inconfort_thermique", 'Float'>
+    readonly NA5AZ_sum: FieldRef<"inconfort_thermique", 'BigInt'>
+    readonly NA5BE_sum: FieldRef<"inconfort_thermique", 'BigInt'>
+    readonly NA5FZ_sum: FieldRef<"inconfort_thermique", 'BigInt'>
+    readonly NA5GU_sum: FieldRef<"inconfort_thermique", 'BigInt'>
+    readonly NA5OQ_sum: FieldRef<"inconfort_thermique", 'BigInt'>
+    readonly s_geom_cstr_bati: FieldRef<"inconfort_thermique", 'Float'>
+    readonly densite_bati: FieldRef<"inconfort_thermique", 'Float'>
   }
     
 
   // Custom InputTypes
   /**
-   * communes findUnique
+   * inconfort_thermique findUnique
    */
-  export type communesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type inconfort_thermiqueFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the communes
+     * Select specific fields to fetch from the inconfort_thermique
      */
-    select?: communesSelect<ExtArgs> | null
+    select?: inconfort_thermiqueSelect<ExtArgs> | null
     /**
-     * Filter, which communes to fetch.
+     * Filter, which inconfort_thermique to fetch.
      */
-    where: communesWhereUniqueInput
+    where: inconfort_thermiqueWhereUniqueInput
   }
 
   /**
-   * communes findUniqueOrThrow
+   * inconfort_thermique findUniqueOrThrow
    */
-  export type communesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type inconfort_thermiqueFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the communes
+     * Select specific fields to fetch from the inconfort_thermique
      */
-    select?: communesSelect<ExtArgs> | null
+    select?: inconfort_thermiqueSelect<ExtArgs> | null
     /**
-     * Filter, which communes to fetch.
+     * Filter, which inconfort_thermique to fetch.
      */
-    where: communesWhereUniqueInput
+    where: inconfort_thermiqueWhereUniqueInput
   }
 
   /**
-   * communes findFirst
+   * inconfort_thermique findFirst
    */
-  export type communesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type inconfort_thermiqueFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the communes
+     * Select specific fields to fetch from the inconfort_thermique
      */
-    select?: communesSelect<ExtArgs> | null
+    select?: inconfort_thermiqueSelect<ExtArgs> | null
     /**
-     * Filter, which communes to fetch.
+     * Filter, which inconfort_thermique to fetch.
      */
-    where?: communesWhereInput
+    where?: inconfort_thermiqueWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of communes to fetch.
+     * Determine the order of inconfort_thermiques to fetch.
      */
-    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
+    orderBy?: inconfort_thermiqueOrderByWithRelationInput | inconfort_thermiqueOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for communes.
+     * Sets the position for searching for inconfort_thermiques.
      */
-    cursor?: communesWhereUniqueInput
+    cursor?: inconfort_thermiqueWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` communes from the position of the cursor.
+     * Take `±n` inconfort_thermiques from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` communes.
+     * Skip the first `n` inconfort_thermiques.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of communes.
+     * Filter by unique combinations of inconfort_thermiques.
      */
-    distinct?: CommunesScalarFieldEnum | CommunesScalarFieldEnum[]
+    distinct?: Inconfort_thermiqueScalarFieldEnum | Inconfort_thermiqueScalarFieldEnum[]
   }
 
   /**
-   * communes findFirstOrThrow
+   * inconfort_thermique findFirstOrThrow
    */
-  export type communesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type inconfort_thermiqueFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the communes
+     * Select specific fields to fetch from the inconfort_thermique
      */
-    select?: communesSelect<ExtArgs> | null
+    select?: inconfort_thermiqueSelect<ExtArgs> | null
     /**
-     * Filter, which communes to fetch.
+     * Filter, which inconfort_thermique to fetch.
      */
-    where?: communesWhereInput
+    where?: inconfort_thermiqueWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of communes to fetch.
+     * Determine the order of inconfort_thermiques to fetch.
      */
-    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
+    orderBy?: inconfort_thermiqueOrderByWithRelationInput | inconfort_thermiqueOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for communes.
+     * Sets the position for searching for inconfort_thermiques.
      */
-    cursor?: communesWhereUniqueInput
+    cursor?: inconfort_thermiqueWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` communes from the position of the cursor.
+     * Take `±n` inconfort_thermiques from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` communes.
+     * Skip the first `n` inconfort_thermiques.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of communes.
+     * Filter by unique combinations of inconfort_thermiques.
      */
-    distinct?: CommunesScalarFieldEnum | CommunesScalarFieldEnum[]
+    distinct?: Inconfort_thermiqueScalarFieldEnum | Inconfort_thermiqueScalarFieldEnum[]
   }
 
   /**
-   * communes findMany
+   * inconfort_thermique findMany
    */
-  export type communesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type inconfort_thermiqueFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the communes
+     * Select specific fields to fetch from the inconfort_thermique
      */
-    select?: communesSelect<ExtArgs> | null
+    select?: inconfort_thermiqueSelect<ExtArgs> | null
     /**
-     * Filter, which communes to fetch.
+     * Filter, which inconfort_thermiques to fetch.
      */
-    where?: communesWhereInput
+    where?: inconfort_thermiqueWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of communes to fetch.
+     * Determine the order of inconfort_thermiques to fetch.
      */
-    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
+    orderBy?: inconfort_thermiqueOrderByWithRelationInput | inconfort_thermiqueOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing communes.
+     * Sets the position for listing inconfort_thermiques.
      */
-    cursor?: communesWhereUniqueInput
+    cursor?: inconfort_thermiqueWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` communes from the position of the cursor.
+     * Take `±n` inconfort_thermiques from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` communes.
+     * Skip the first `n` inconfort_thermiques.
      */
     skip?: number
-    distinct?: CommunesScalarFieldEnum | CommunesScalarFieldEnum[]
+    distinct?: Inconfort_thermiqueScalarFieldEnum | Inconfort_thermiqueScalarFieldEnum[]
   }
 
   /**
-   * communes create
+   * inconfort_thermique create
    */
-  export type communesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type inconfort_thermiqueCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the communes
+     * Select specific fields to fetch from the inconfort_thermique
      */
-    select?: communesSelect<ExtArgs> | null
+    select?: inconfort_thermiqueSelect<ExtArgs> | null
     /**
-     * The data needed to create a communes.
+     * The data needed to create a inconfort_thermique.
      */
-    data?: XOR<communesCreateInput, communesUncheckedCreateInput>
+    data: XOR<inconfort_thermiqueCreateInput, inconfort_thermiqueUncheckedCreateInput>
   }
 
   /**
-   * communes createMany
+   * inconfort_thermique createMany
    */
-  export type communesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type inconfort_thermiqueCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many communes.
+     * The data used to create many inconfort_thermiques.
      */
-    data: communesCreateManyInput | communesCreateManyInput[]
+    data: inconfort_thermiqueCreateManyInput | inconfort_thermiqueCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * communes update
+   * inconfort_thermique update
    */
-  export type communesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type inconfort_thermiqueUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the communes
+     * Select specific fields to fetch from the inconfort_thermique
      */
-    select?: communesSelect<ExtArgs> | null
+    select?: inconfort_thermiqueSelect<ExtArgs> | null
     /**
-     * The data needed to update a communes.
+     * The data needed to update a inconfort_thermique.
      */
-    data: XOR<communesUpdateInput, communesUncheckedUpdateInput>
+    data: XOR<inconfort_thermiqueUpdateInput, inconfort_thermiqueUncheckedUpdateInput>
     /**
-     * Choose, which communes to update.
+     * Choose, which inconfort_thermique to update.
      */
-    where: communesWhereUniqueInput
+    where: inconfort_thermiqueWhereUniqueInput
   }
 
   /**
-   * communes updateMany
+   * inconfort_thermique updateMany
    */
-  export type communesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type inconfort_thermiqueUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update communes.
+     * The data used to update inconfort_thermiques.
      */
-    data: XOR<communesUpdateManyMutationInput, communesUncheckedUpdateManyInput>
+    data: XOR<inconfort_thermiqueUpdateManyMutationInput, inconfort_thermiqueUncheckedUpdateManyInput>
     /**
-     * Filter which communes to update
+     * Filter which inconfort_thermiques to update
      */
-    where?: communesWhereInput
+    where?: inconfort_thermiqueWhereInput
   }
 
   /**
-   * communes upsert
+   * inconfort_thermique upsert
    */
-  export type communesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type inconfort_thermiqueUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the communes
+     * Select specific fields to fetch from the inconfort_thermique
      */
-    select?: communesSelect<ExtArgs> | null
+    select?: inconfort_thermiqueSelect<ExtArgs> | null
     /**
-     * The filter to search for the communes to update in case it exists.
+     * The filter to search for the inconfort_thermique to update in case it exists.
      */
-    where: communesWhereUniqueInput
+    where: inconfort_thermiqueWhereUniqueInput
     /**
-     * In case the communes found by the `where` argument doesn't exist, create a new communes with this data.
+     * In case the inconfort_thermique found by the `where` argument doesn't exist, create a new inconfort_thermique with this data.
      */
-    create: XOR<communesCreateInput, communesUncheckedCreateInput>
+    create: XOR<inconfort_thermiqueCreateInput, inconfort_thermiqueUncheckedCreateInput>
     /**
-     * In case the communes was found with the provided `where` argument, update it with this data.
+     * In case the inconfort_thermique was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<communesUpdateInput, communesUncheckedUpdateInput>
+    update: XOR<inconfort_thermiqueUpdateInput, inconfort_thermiqueUncheckedUpdateInput>
   }
 
   /**
-   * communes delete
+   * inconfort_thermique delete
    */
-  export type communesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type inconfort_thermiqueDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the communes
+     * Select specific fields to fetch from the inconfort_thermique
      */
-    select?: communesSelect<ExtArgs> | null
+    select?: inconfort_thermiqueSelect<ExtArgs> | null
     /**
-     * Filter which communes to delete.
+     * Filter which inconfort_thermique to delete.
      */
-    where: communesWhereUniqueInput
+    where: inconfort_thermiqueWhereUniqueInput
   }
 
   /**
-   * communes deleteMany
+   * inconfort_thermique deleteMany
    */
-  export type communesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type inconfort_thermiqueDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which communes to delete
+     * Filter which inconfort_thermiques to delete
      */
-    where?: communesWhereInput
+    where?: inconfort_thermiqueWhereInput
   }
 
   /**
-   * communes without action
+   * inconfort_thermique without action
    */
-  export type communesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type inconfort_thermiqueDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the communes
+     * Select specific fields to fetch from the inconfort_thermique
      */
-    select?: communesSelect<ExtArgs> | null
+    select?: inconfort_thermiqueSelect<ExtArgs> | null
   }
 
 
@@ -5830,6 +4524,901 @@ export namespace Prisma {
 
 
   /**
+   * Model spatial_ref_sys
+   */
+
+  export type AggregateSpatial_ref_sys = {
+    _count: Spatial_ref_sysCountAggregateOutputType | null
+    _avg: Spatial_ref_sysAvgAggregateOutputType | null
+    _sum: Spatial_ref_sysSumAggregateOutputType | null
+    _min: Spatial_ref_sysMinAggregateOutputType | null
+    _max: Spatial_ref_sysMaxAggregateOutputType | null
+  }
+
+  export type Spatial_ref_sysAvgAggregateOutputType = {
+    srid: number | null
+    auth_srid: number | null
+  }
+
+  export type Spatial_ref_sysSumAggregateOutputType = {
+    srid: number | null
+    auth_srid: number | null
+  }
+
+  export type Spatial_ref_sysMinAggregateOutputType = {
+    srid: number | null
+    auth_name: string | null
+    auth_srid: number | null
+    srtext: string | null
+    proj4text: string | null
+  }
+
+  export type Spatial_ref_sysMaxAggregateOutputType = {
+    srid: number | null
+    auth_name: string | null
+    auth_srid: number | null
+    srtext: string | null
+    proj4text: string | null
+  }
+
+  export type Spatial_ref_sysCountAggregateOutputType = {
+    srid: number
+    auth_name: number
+    auth_srid: number
+    srtext: number
+    proj4text: number
+    _all: number
+  }
+
+
+  export type Spatial_ref_sysAvgAggregateInputType = {
+    srid?: true
+    auth_srid?: true
+  }
+
+  export type Spatial_ref_sysSumAggregateInputType = {
+    srid?: true
+    auth_srid?: true
+  }
+
+  export type Spatial_ref_sysMinAggregateInputType = {
+    srid?: true
+    auth_name?: true
+    auth_srid?: true
+    srtext?: true
+    proj4text?: true
+  }
+
+  export type Spatial_ref_sysMaxAggregateInputType = {
+    srid?: true
+    auth_name?: true
+    auth_srid?: true
+    srtext?: true
+    proj4text?: true
+  }
+
+  export type Spatial_ref_sysCountAggregateInputType = {
+    srid?: true
+    auth_name?: true
+    auth_srid?: true
+    srtext?: true
+    proj4text?: true
+    _all?: true
+  }
+
+  export type Spatial_ref_sysAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which spatial_ref_sys to aggregate.
+     */
+    where?: spatial_ref_sysWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of spatial_ref_sys to fetch.
+     */
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: spatial_ref_sysWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` spatial_ref_sys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` spatial_ref_sys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned spatial_ref_sys
+    **/
+    _count?: true | Spatial_ref_sysCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Spatial_ref_sysAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Spatial_ref_sysSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Spatial_ref_sysMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Spatial_ref_sysMaxAggregateInputType
+  }
+
+  export type GetSpatial_ref_sysAggregateType<T extends Spatial_ref_sysAggregateArgs> = {
+        [P in keyof T & keyof AggregateSpatial_ref_sys]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSpatial_ref_sys[P]>
+      : GetScalarType<T[P], AggregateSpatial_ref_sys[P]>
+  }
+
+
+
+
+  export type spatial_ref_sysGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: spatial_ref_sysWhereInput
+    orderBy?: spatial_ref_sysOrderByWithAggregationInput | spatial_ref_sysOrderByWithAggregationInput[]
+    by: Spatial_ref_sysScalarFieldEnum[] | Spatial_ref_sysScalarFieldEnum
+    having?: spatial_ref_sysScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Spatial_ref_sysCountAggregateInputType | true
+    _avg?: Spatial_ref_sysAvgAggregateInputType
+    _sum?: Spatial_ref_sysSumAggregateInputType
+    _min?: Spatial_ref_sysMinAggregateInputType
+    _max?: Spatial_ref_sysMaxAggregateInputType
+  }
+
+  export type Spatial_ref_sysGroupByOutputType = {
+    srid: number
+    auth_name: string | null
+    auth_srid: number | null
+    srtext: string | null
+    proj4text: string | null
+    _count: Spatial_ref_sysCountAggregateOutputType | null
+    _avg: Spatial_ref_sysAvgAggregateOutputType | null
+    _sum: Spatial_ref_sysSumAggregateOutputType | null
+    _min: Spatial_ref_sysMinAggregateOutputType | null
+    _max: Spatial_ref_sysMaxAggregateOutputType | null
+  }
+
+  type GetSpatial_ref_sysGroupByPayload<T extends spatial_ref_sysGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Spatial_ref_sysGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Spatial_ref_sysGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Spatial_ref_sysGroupByOutputType[P]>
+            : GetScalarType<T[P], Spatial_ref_sysGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type spatial_ref_sysSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    srid?: boolean
+    auth_name?: boolean
+    auth_srid?: boolean
+    srtext?: boolean
+    proj4text?: boolean
+  }, ExtArgs["result"]["spatial_ref_sys"]>
+
+  export type spatial_ref_sysSelectScalar = {
+    srid?: boolean
+    auth_name?: boolean
+    auth_srid?: boolean
+    srtext?: boolean
+    proj4text?: boolean
+  }
+
+
+
+  export type $spatial_ref_sysPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "spatial_ref_sys"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      srid: number
+      auth_name: string | null
+      auth_srid: number | null
+      srtext: string | null
+      proj4text: string | null
+    }, ExtArgs["result"]["spatial_ref_sys"]>
+    composites: {}
+  }
+
+
+  type spatial_ref_sysGetPayload<S extends boolean | null | undefined | spatial_ref_sysDefaultArgs> = $Result.GetResult<Prisma.$spatial_ref_sysPayload, S>
+
+  type spatial_ref_sysCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<spatial_ref_sysFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Spatial_ref_sysCountAggregateInputType | true
+    }
+
+  export interface spatial_ref_sysDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['spatial_ref_sys'], meta: { name: 'spatial_ref_sys' } }
+    /**
+     * Find zero or one Spatial_ref_sys that matches the filter.
+     * @param {spatial_ref_sysFindUniqueArgs} args - Arguments to find a Spatial_ref_sys
+     * @example
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends spatial_ref_sysFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, spatial_ref_sysFindUniqueArgs<ExtArgs>>
+    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Spatial_ref_sys that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {spatial_ref_sysFindUniqueOrThrowArgs} args - Arguments to find a Spatial_ref_sys
+     * @example
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Spatial_ref_sys that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysFindFirstArgs} args - Arguments to find a Spatial_ref_sys
+     * @example
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends spatial_ref_sysFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, spatial_ref_sysFindFirstArgs<ExtArgs>>
+    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Spatial_ref_sys that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysFindFirstOrThrowArgs} args - Arguments to find a Spatial_ref_sys
+     * @example
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Spatial_ref_sys that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
+     * 
+     * // Get first 10 Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany({ take: 10 })
+     * 
+     * // Only select the `srid`
+     * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.findMany({ select: { srid: true } })
+     * 
+    **/
+    findMany<T extends spatial_ref_sysFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, spatial_ref_sysFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Spatial_ref_sys.
+     * @param {spatial_ref_sysCreateArgs} args - Arguments to create a Spatial_ref_sys.
+     * @example
+     * // Create one Spatial_ref_sys
+     * const Spatial_ref_sys = await prisma.spatial_ref_sys.create({
+     *   data: {
+     *     // ... data to create a Spatial_ref_sys
+     *   }
+     * })
+     * 
+    **/
+    create<T extends spatial_ref_sysCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, spatial_ref_sysCreateArgs<ExtArgs>>
+    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Spatial_ref_sys.
+     *     @param {spatial_ref_sysCreateManyArgs} args - Arguments to create many Spatial_ref_sys.
+     *     @example
+     *     // Create many Spatial_ref_sys
+     *     const spatial_ref_sys = await prisma.spatial_ref_sys.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends spatial_ref_sysCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, spatial_ref_sysCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Spatial_ref_sys.
+     * @param {spatial_ref_sysDeleteArgs} args - Arguments to delete one Spatial_ref_sys.
+     * @example
+     * // Delete one Spatial_ref_sys
+     * const Spatial_ref_sys = await prisma.spatial_ref_sys.delete({
+     *   where: {
+     *     // ... filter to delete one Spatial_ref_sys
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends spatial_ref_sysDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, spatial_ref_sysDeleteArgs<ExtArgs>>
+    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Spatial_ref_sys.
+     * @param {spatial_ref_sysUpdateArgs} args - Arguments to update one Spatial_ref_sys.
+     * @example
+     * // Update one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends spatial_ref_sysUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, spatial_ref_sysUpdateArgs<ExtArgs>>
+    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Spatial_ref_sys.
+     * @param {spatial_ref_sysDeleteManyArgs} args - Arguments to filter Spatial_ref_sys to delete.
+     * @example
+     * // Delete a few Spatial_ref_sys
+     * const { count } = await prisma.spatial_ref_sys.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends spatial_ref_sysDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, spatial_ref_sysDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Spatial_ref_sys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends spatial_ref_sysUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, spatial_ref_sysUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Spatial_ref_sys.
+     * @param {spatial_ref_sysUpsertArgs} args - Arguments to update or create a Spatial_ref_sys.
+     * @example
+     * // Update or create a Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.upsert({
+     *   create: {
+     *     // ... data to create a Spatial_ref_sys
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Spatial_ref_sys we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends spatial_ref_sysUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, spatial_ref_sysUpsertArgs<ExtArgs>>
+    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Spatial_ref_sys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysCountArgs} args - Arguments to filter Spatial_ref_sys to count.
+     * @example
+     * // Count the number of Spatial_ref_sys
+     * const count = await prisma.spatial_ref_sys.count({
+     *   where: {
+     *     // ... the filter for the Spatial_ref_sys we want to count
+     *   }
+     * })
+    **/
+    count<T extends spatial_ref_sysCountArgs>(
+      args?: Subset<T, spatial_ref_sysCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Spatial_ref_sysCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Spatial_ref_sys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Spatial_ref_sysAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Spatial_ref_sysAggregateArgs>(args: Subset<T, Spatial_ref_sysAggregateArgs>): Prisma.PrismaPromise<GetSpatial_ref_sysAggregateType<T>>
+
+    /**
+     * Group by Spatial_ref_sys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends spatial_ref_sysGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: spatial_ref_sysGroupByArgs['orderBy'] }
+        : { orderBy?: spatial_ref_sysGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, spatial_ref_sysGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSpatial_ref_sysGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the spatial_ref_sys model
+   */
+  readonly fields: spatial_ref_sysFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for spatial_ref_sys.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__spatial_ref_sysClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the spatial_ref_sys model
+   */ 
+  interface spatial_ref_sysFieldRefs {
+    readonly srid: FieldRef<"spatial_ref_sys", 'Int'>
+    readonly auth_name: FieldRef<"spatial_ref_sys", 'String'>
+    readonly auth_srid: FieldRef<"spatial_ref_sys", 'Int'>
+    readonly srtext: FieldRef<"spatial_ref_sys", 'String'>
+    readonly proj4text: FieldRef<"spatial_ref_sys", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * spatial_ref_sys findUnique
+   */
+  export type spatial_ref_sysFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Filter, which spatial_ref_sys to fetch.
+     */
+    where: spatial_ref_sysWhereUniqueInput
+  }
+
+  /**
+   * spatial_ref_sys findUniqueOrThrow
+   */
+  export type spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Filter, which spatial_ref_sys to fetch.
+     */
+    where: spatial_ref_sysWhereUniqueInput
+  }
+
+  /**
+   * spatial_ref_sys findFirst
+   */
+  export type spatial_ref_sysFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Filter, which spatial_ref_sys to fetch.
+     */
+    where?: spatial_ref_sysWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of spatial_ref_sys to fetch.
+     */
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for spatial_ref_sys.
+     */
+    cursor?: spatial_ref_sysWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` spatial_ref_sys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` spatial_ref_sys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of spatial_ref_sys.
+     */
+    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
+  }
+
+  /**
+   * spatial_ref_sys findFirstOrThrow
+   */
+  export type spatial_ref_sysFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Filter, which spatial_ref_sys to fetch.
+     */
+    where?: spatial_ref_sysWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of spatial_ref_sys to fetch.
+     */
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for spatial_ref_sys.
+     */
+    cursor?: spatial_ref_sysWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` spatial_ref_sys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` spatial_ref_sys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of spatial_ref_sys.
+     */
+    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
+  }
+
+  /**
+   * spatial_ref_sys findMany
+   */
+  export type spatial_ref_sysFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Filter, which spatial_ref_sys to fetch.
+     */
+    where?: spatial_ref_sysWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of spatial_ref_sys to fetch.
+     */
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing spatial_ref_sys.
+     */
+    cursor?: spatial_ref_sysWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` spatial_ref_sys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` spatial_ref_sys.
+     */
+    skip?: number
+    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
+  }
+
+  /**
+   * spatial_ref_sys create
+   */
+  export type spatial_ref_sysCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * The data needed to create a spatial_ref_sys.
+     */
+    data: XOR<spatial_ref_sysCreateInput, spatial_ref_sysUncheckedCreateInput>
+  }
+
+  /**
+   * spatial_ref_sys createMany
+   */
+  export type spatial_ref_sysCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many spatial_ref_sys.
+     */
+    data: spatial_ref_sysCreateManyInput | spatial_ref_sysCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * spatial_ref_sys update
+   */
+  export type spatial_ref_sysUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * The data needed to update a spatial_ref_sys.
+     */
+    data: XOR<spatial_ref_sysUpdateInput, spatial_ref_sysUncheckedUpdateInput>
+    /**
+     * Choose, which spatial_ref_sys to update.
+     */
+    where: spatial_ref_sysWhereUniqueInput
+  }
+
+  /**
+   * spatial_ref_sys updateMany
+   */
+  export type spatial_ref_sysUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update spatial_ref_sys.
+     */
+    data: XOR<spatial_ref_sysUpdateManyMutationInput, spatial_ref_sysUncheckedUpdateManyInput>
+    /**
+     * Filter which spatial_ref_sys to update
+     */
+    where?: spatial_ref_sysWhereInput
+  }
+
+  /**
+   * spatial_ref_sys upsert
+   */
+  export type spatial_ref_sysUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * The filter to search for the spatial_ref_sys to update in case it exists.
+     */
+    where: spatial_ref_sysWhereUniqueInput
+    /**
+     * In case the spatial_ref_sys found by the `where` argument doesn't exist, create a new spatial_ref_sys with this data.
+     */
+    create: XOR<spatial_ref_sysCreateInput, spatial_ref_sysUncheckedCreateInput>
+    /**
+     * In case the spatial_ref_sys was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<spatial_ref_sysUpdateInput, spatial_ref_sysUncheckedUpdateInput>
+  }
+
+  /**
+   * spatial_ref_sys delete
+   */
+  export type spatial_ref_sysDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Filter which spatial_ref_sys to delete.
+     */
+    where: spatial_ref_sysWhereUniqueInput
+  }
+
+  /**
+   * spatial_ref_sys deleteMany
+   */
+  export type spatial_ref_sysDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which spatial_ref_sys to delete
+     */
+    where?: spatial_ref_sysWhereInput
+  }
+
+  /**
+   * spatial_ref_sys without action
+   */
+  export type spatial_ref_sysDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5843,42 +5432,58 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const Spatial_ref_sysScalarFieldEnum: {
-    srid: 'srid',
-    auth_name: 'auth_name',
-    auth_srid: 'auth_srid',
-    srtext: 'srtext',
-    proj4text: 'proj4text'
-  };
-
-  export type Spatial_ref_sysScalarFieldEnum = (typeof Spatial_ref_sysScalarFieldEnum)[keyof typeof Spatial_ref_sysScalarFieldEnum]
-
-
-  export const Communes_precariteScalarFieldEnum: {
-    pk: 'pk',
+  export const Inconfort_thermiqueScalarFieldEnum: {
+    index: 'index',
     code_commune: 'code_commune',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    region: 'region',
+    age_bati_post06: 'age_bati_post06',
+    age_bati_91_05: 'age_bati_91_05',
+    age_bati_46_90: 'age_bati_46_90',
+    age_bati_19_45: 'age_bati_19_45',
+    age_bati_pre_19: 'age_bati_pre_19',
+    under_4_sum_1968: 'under_4_sum_1968',
+    to_80_sum_1968: 'to_80_sum_1968',
+    over_80_sum_1968: 'over_80_sum_1968',
+    under_4_sum_1975: 'under_4_sum_1975',
+    to_80_sum_1975: 'to_80_sum_1975',
+    over_80_sum_1975: 'over_80_sum_1975',
+    under_4_sum_1982: 'under_4_sum_1982',
+    to_80_sum_1982: 'to_80_sum_1982',
+    over_80_sum_1982: 'over_80_sum_1982',
+    under_4_sum_1990: 'under_4_sum_1990',
+    to_80_sum_1990: 'to_80_sum_1990',
+    over_80_sum_1990: 'over_80_sum_1990',
+    under_4_sum_1999: 'under_4_sum_1999',
+    to_80_sum_1999: 'to_80_sum_1999',
+    over_80_sum_1999: 'over_80_sum_1999',
+    under_4_sum_2009: 'under_4_sum_2009',
+    to_80_sum_2009: 'to_80_sum_2009',
+    over_80_sum_2009: 'over_80_sum_2009',
+    under_4_sum_2014: 'under_4_sum_2014',
+    to_80_sum_2014: 'to_80_sum_2014',
+    over_80_sum_2014: 'over_80_sum_2014',
+    under_4_sum_2020: 'under_4_sum_2020',
+    to_80_sum_2020: 'to_80_sum_2020',
+    over_80_sum_2020: 'over_80_sum_2020',
+    P20_POP80P: 'P20_POP80P',
+    P20_POP80P_PSEUL: 'P20_POP80P_PSEUL',
     tee_log: 'tee_log',
     tee_mob: 'tee_mob',
     precarite_logement: 'precarite_logement',
-    epci: 'epci'
+    NA5AZ_sum: 'NA5AZ_sum',
+    NA5BE_sum: 'NA5BE_sum',
+    NA5FZ_sum: 'NA5FZ_sum',
+    NA5GU_sum: 'NA5GU_sum',
+    NA5OQ_sum: 'NA5OQ_sum',
+    s_geom_cstr_bati: 's_geom_cstr_bati',
+    densite_bati: 'densite_bati'
   };
 
-  export type Communes_precariteScalarFieldEnum = (typeof Communes_precariteScalarFieldEnum)[keyof typeof Communes_precariteScalarFieldEnum]
-
-
-  export const CommunesScalarFieldEnum: {
-    pk: 'pk',
-    code_commune: 'code_commune',
-    libelle_commune: 'libelle_commune',
-    reg: 'reg',
-    dep: 'dep',
-    libelle_epci: 'libelle_epci',
-    epci: 'epci',
-    densite_bati: 'densite_bati',
-    precarite_logement: 'precarite_logement'
-  };
-
-  export type CommunesScalarFieldEnum = (typeof CommunesScalarFieldEnum)[keyof typeof CommunesScalarFieldEnum]
+  export type Inconfort_thermiqueScalarFieldEnum = (typeof Inconfort_thermiqueScalarFieldEnum)[keyof typeof Inconfort_thermiqueScalarFieldEnum]
 
 
   export const Clc_2018_2ScalarFieldEnum: {
@@ -5907,6 +5512,17 @@ export namespace Prisma {
   };
 
   export type Communes2ScalarFieldEnum = (typeof Communes2ScalarFieldEnum)[keyof typeof Communes2ScalarFieldEnum]
+
+
+  export const Spatial_ref_sysScalarFieldEnum: {
+    srid: 'srid',
+    auth_name: 'auth_name',
+    auth_srid: 'auth_srid',
+    srtext: 'srtext',
+    proj4text: 'proj4text'
+  };
+
+  export type Spatial_ref_sysScalarFieldEnum = (typeof Spatial_ref_sysScalarFieldEnum)[keyof typeof Spatial_ref_sysScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5939,16 +5555,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
+   * Reference to a field of type 'BigInt'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
     
 
 
   /**
-   * Reference to a field of type 'Int[]'
+   * Reference to a field of type 'BigInt[]'
    */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
     
 
 
@@ -5963,6 +5579,20 @@ export namespace Prisma {
    * Reference to a field of type 'String[]'
    */
   export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -5983,191 +5613,273 @@ export namespace Prisma {
    */
 
 
-  export type spatial_ref_sysWhereInput = {
-    AND?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
-    OR?: spatial_ref_sysWhereInput[]
-    NOT?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
-    srid?: IntFilter<"spatial_ref_sys"> | number
-    auth_name?: StringNullableFilter<"spatial_ref_sys"> | string | null
-    auth_srid?: IntNullableFilter<"spatial_ref_sys"> | number | null
-    srtext?: StringNullableFilter<"spatial_ref_sys"> | string | null
-    proj4text?: StringNullableFilter<"spatial_ref_sys"> | string | null
+  export type inconfort_thermiqueWhereInput = {
+    AND?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[]
+    OR?: inconfort_thermiqueWhereInput[]
+    NOT?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[]
+    index?: BigIntFilter<"inconfort_thermique"> | bigint | number
+    code_commune?: StringNullableFilter<"inconfort_thermique"> | string | null
+    libelle_geographique?: StringNullableFilter<"inconfort_thermique"> | string | null
+    epci?: StringNullableFilter<"inconfort_thermique"> | string | null
+    libelle_epci?: StringNullableFilter<"inconfort_thermique"> | string | null
+    departement?: StringNullableFilter<"inconfort_thermique"> | string | null
+    region?: IntNullableFilter<"inconfort_thermique"> | number | null
+    age_bati_post06?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    age_bati_91_05?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    age_bati_46_90?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    age_bati_19_45?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    age_bati_pre_19?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1968?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1968?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1968?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1975?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1975?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1975?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1982?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1982?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1982?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1990?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1990?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1990?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1999?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1999?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1999?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2009?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2009?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2009?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2014?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2014?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2014?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2020?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2020?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2020?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    P20_POP80P?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    P20_POP80P_PSEUL?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    tee_log?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    tee_mob?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    precarite_logement?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    NA5AZ_sum?: BigIntNullableFilter<"inconfort_thermique"> | bigint | number | null
+    NA5BE_sum?: BigIntNullableFilter<"inconfort_thermique"> | bigint | number | null
+    NA5FZ_sum?: BigIntNullableFilter<"inconfort_thermique"> | bigint | number | null
+    NA5GU_sum?: BigIntNullableFilter<"inconfort_thermique"> | bigint | number | null
+    NA5OQ_sum?: BigIntNullableFilter<"inconfort_thermique"> | bigint | number | null
+    s_geom_cstr_bati?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    densite_bati?: FloatNullableFilter<"inconfort_thermique"> | number | null
   }
 
-  export type spatial_ref_sysOrderByWithRelationInput = {
-    srid?: SortOrder
-    auth_name?: SortOrderInput | SortOrder
-    auth_srid?: SortOrderInput | SortOrder
-    srtext?: SortOrderInput | SortOrder
-    proj4text?: SortOrderInput | SortOrder
-  }
-
-  export type spatial_ref_sysWhereUniqueInput = Prisma.AtLeast<{
-    srid?: number
-    AND?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
-    OR?: spatial_ref_sysWhereInput[]
-    NOT?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
-    auth_name?: StringNullableFilter<"spatial_ref_sys"> | string | null
-    auth_srid?: IntNullableFilter<"spatial_ref_sys"> | number | null
-    srtext?: StringNullableFilter<"spatial_ref_sys"> | string | null
-    proj4text?: StringNullableFilter<"spatial_ref_sys"> | string | null
-  }, "srid">
-
-  export type spatial_ref_sysOrderByWithAggregationInput = {
-    srid?: SortOrder
-    auth_name?: SortOrderInput | SortOrder
-    auth_srid?: SortOrderInput | SortOrder
-    srtext?: SortOrderInput | SortOrder
-    proj4text?: SortOrderInput | SortOrder
-    _count?: spatial_ref_sysCountOrderByAggregateInput
-    _avg?: spatial_ref_sysAvgOrderByAggregateInput
-    _max?: spatial_ref_sysMaxOrderByAggregateInput
-    _min?: spatial_ref_sysMinOrderByAggregateInput
-    _sum?: spatial_ref_sysSumOrderByAggregateInput
-  }
-
-  export type spatial_ref_sysScalarWhereWithAggregatesInput = {
-    AND?: spatial_ref_sysScalarWhereWithAggregatesInput | spatial_ref_sysScalarWhereWithAggregatesInput[]
-    OR?: spatial_ref_sysScalarWhereWithAggregatesInput[]
-    NOT?: spatial_ref_sysScalarWhereWithAggregatesInput | spatial_ref_sysScalarWhereWithAggregatesInput[]
-    srid?: IntWithAggregatesFilter<"spatial_ref_sys"> | number
-    auth_name?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
-    auth_srid?: IntNullableWithAggregatesFilter<"spatial_ref_sys"> | number | null
-    srtext?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
-    proj4text?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
-  }
-
-  export type communes_precariteWhereInput = {
-    AND?: communes_precariteWhereInput | communes_precariteWhereInput[]
-    OR?: communes_precariteWhereInput[]
-    NOT?: communes_precariteWhereInput | communes_precariteWhereInput[]
-    pk?: IntFilter<"communes_precarite"> | number
-    code_commune?: StringNullableFilter<"communes_precarite"> | string | null
-    tee_log?: FloatNullableFilter<"communes_precarite"> | number | null
-    tee_mob?: FloatNullableFilter<"communes_precarite"> | number | null
-    precarite_logement?: FloatNullableFilter<"communes_precarite"> | number | null
-    epci?: StringNullableFilter<"communes_precarite"> | string | null
-  }
-
-  export type communes_precariteOrderByWithRelationInput = {
-    pk?: SortOrder
+  export type inconfort_thermiqueOrderByWithRelationInput = {
+    index?: SortOrder
     code_commune?: SortOrderInput | SortOrder
+    libelle_geographique?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    departement?: SortOrderInput | SortOrder
+    region?: SortOrderInput | SortOrder
+    age_bati_post06?: SortOrderInput | SortOrder
+    age_bati_91_05?: SortOrderInput | SortOrder
+    age_bati_46_90?: SortOrderInput | SortOrder
+    age_bati_19_45?: SortOrderInput | SortOrder
+    age_bati_pre_19?: SortOrderInput | SortOrder
+    under_4_sum_1968?: SortOrderInput | SortOrder
+    to_80_sum_1968?: SortOrderInput | SortOrder
+    over_80_sum_1968?: SortOrderInput | SortOrder
+    under_4_sum_1975?: SortOrderInput | SortOrder
+    to_80_sum_1975?: SortOrderInput | SortOrder
+    over_80_sum_1975?: SortOrderInput | SortOrder
+    under_4_sum_1982?: SortOrderInput | SortOrder
+    to_80_sum_1982?: SortOrderInput | SortOrder
+    over_80_sum_1982?: SortOrderInput | SortOrder
+    under_4_sum_1990?: SortOrderInput | SortOrder
+    to_80_sum_1990?: SortOrderInput | SortOrder
+    over_80_sum_1990?: SortOrderInput | SortOrder
+    under_4_sum_1999?: SortOrderInput | SortOrder
+    to_80_sum_1999?: SortOrderInput | SortOrder
+    over_80_sum_1999?: SortOrderInput | SortOrder
+    under_4_sum_2009?: SortOrderInput | SortOrder
+    to_80_sum_2009?: SortOrderInput | SortOrder
+    over_80_sum_2009?: SortOrderInput | SortOrder
+    under_4_sum_2014?: SortOrderInput | SortOrder
+    to_80_sum_2014?: SortOrderInput | SortOrder
+    over_80_sum_2014?: SortOrderInput | SortOrder
+    under_4_sum_2020?: SortOrderInput | SortOrder
+    to_80_sum_2020?: SortOrderInput | SortOrder
+    over_80_sum_2020?: SortOrderInput | SortOrder
+    P20_POP80P?: SortOrderInput | SortOrder
+    P20_POP80P_PSEUL?: SortOrderInput | SortOrder
     tee_log?: SortOrderInput | SortOrder
     tee_mob?: SortOrderInput | SortOrder
     precarite_logement?: SortOrderInput | SortOrder
-    epci?: SortOrderInput | SortOrder
+    NA5AZ_sum?: SortOrderInput | SortOrder
+    NA5BE_sum?: SortOrderInput | SortOrder
+    NA5FZ_sum?: SortOrderInput | SortOrder
+    NA5GU_sum?: SortOrderInput | SortOrder
+    NA5OQ_sum?: SortOrderInput | SortOrder
+    s_geom_cstr_bati?: SortOrderInput | SortOrder
+    densite_bati?: SortOrderInput | SortOrder
   }
 
-  export type communes_precariteWhereUniqueInput = Prisma.AtLeast<{
-    pk?: number
-    AND?: communes_precariteWhereInput | communes_precariteWhereInput[]
-    OR?: communes_precariteWhereInput[]
-    NOT?: communes_precariteWhereInput | communes_precariteWhereInput[]
-    code_commune?: StringNullableFilter<"communes_precarite"> | string | null
-    tee_log?: FloatNullableFilter<"communes_precarite"> | number | null
-    tee_mob?: FloatNullableFilter<"communes_precarite"> | number | null
-    precarite_logement?: FloatNullableFilter<"communes_precarite"> | number | null
-    epci?: StringNullableFilter<"communes_precarite"> | string | null
-  }, "pk">
+  export type inconfort_thermiqueWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[]
+    OR?: inconfort_thermiqueWhereInput[]
+    NOT?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[]
+    code_commune?: StringNullableFilter<"inconfort_thermique"> | string | null
+    libelle_geographique?: StringNullableFilter<"inconfort_thermique"> | string | null
+    epci?: StringNullableFilter<"inconfort_thermique"> | string | null
+    libelle_epci?: StringNullableFilter<"inconfort_thermique"> | string | null
+    departement?: StringNullableFilter<"inconfort_thermique"> | string | null
+    region?: IntNullableFilter<"inconfort_thermique"> | number | null
+    age_bati_post06?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    age_bati_91_05?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    age_bati_46_90?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    age_bati_19_45?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    age_bati_pre_19?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1968?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1968?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1968?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1975?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1975?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1975?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1982?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1982?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1982?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1990?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1990?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1990?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1999?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1999?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1999?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2009?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2009?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2009?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2014?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2014?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2014?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2020?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2020?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2020?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    P20_POP80P?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    P20_POP80P_PSEUL?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    tee_log?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    tee_mob?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    precarite_logement?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    NA5AZ_sum?: BigIntNullableFilter<"inconfort_thermique"> | bigint | number | null
+    NA5BE_sum?: BigIntNullableFilter<"inconfort_thermique"> | bigint | number | null
+    NA5FZ_sum?: BigIntNullableFilter<"inconfort_thermique"> | bigint | number | null
+    NA5GU_sum?: BigIntNullableFilter<"inconfort_thermique"> | bigint | number | null
+    NA5OQ_sum?: BigIntNullableFilter<"inconfort_thermique"> | bigint | number | null
+    s_geom_cstr_bati?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    densite_bati?: FloatNullableFilter<"inconfort_thermique"> | number | null
+  }, "index">
 
-  export type communes_precariteOrderByWithAggregationInput = {
-    pk?: SortOrder
+  export type inconfort_thermiqueOrderByWithAggregationInput = {
+    index?: SortOrder
     code_commune?: SortOrderInput | SortOrder
+    libelle_geographique?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    departement?: SortOrderInput | SortOrder
+    region?: SortOrderInput | SortOrder
+    age_bati_post06?: SortOrderInput | SortOrder
+    age_bati_91_05?: SortOrderInput | SortOrder
+    age_bati_46_90?: SortOrderInput | SortOrder
+    age_bati_19_45?: SortOrderInput | SortOrder
+    age_bati_pre_19?: SortOrderInput | SortOrder
+    under_4_sum_1968?: SortOrderInput | SortOrder
+    to_80_sum_1968?: SortOrderInput | SortOrder
+    over_80_sum_1968?: SortOrderInput | SortOrder
+    under_4_sum_1975?: SortOrderInput | SortOrder
+    to_80_sum_1975?: SortOrderInput | SortOrder
+    over_80_sum_1975?: SortOrderInput | SortOrder
+    under_4_sum_1982?: SortOrderInput | SortOrder
+    to_80_sum_1982?: SortOrderInput | SortOrder
+    over_80_sum_1982?: SortOrderInput | SortOrder
+    under_4_sum_1990?: SortOrderInput | SortOrder
+    to_80_sum_1990?: SortOrderInput | SortOrder
+    over_80_sum_1990?: SortOrderInput | SortOrder
+    under_4_sum_1999?: SortOrderInput | SortOrder
+    to_80_sum_1999?: SortOrderInput | SortOrder
+    over_80_sum_1999?: SortOrderInput | SortOrder
+    under_4_sum_2009?: SortOrderInput | SortOrder
+    to_80_sum_2009?: SortOrderInput | SortOrder
+    over_80_sum_2009?: SortOrderInput | SortOrder
+    under_4_sum_2014?: SortOrderInput | SortOrder
+    to_80_sum_2014?: SortOrderInput | SortOrder
+    over_80_sum_2014?: SortOrderInput | SortOrder
+    under_4_sum_2020?: SortOrderInput | SortOrder
+    to_80_sum_2020?: SortOrderInput | SortOrder
+    over_80_sum_2020?: SortOrderInput | SortOrder
+    P20_POP80P?: SortOrderInput | SortOrder
+    P20_POP80P_PSEUL?: SortOrderInput | SortOrder
     tee_log?: SortOrderInput | SortOrder
     tee_mob?: SortOrderInput | SortOrder
     precarite_logement?: SortOrderInput | SortOrder
-    epci?: SortOrderInput | SortOrder
-    _count?: communes_precariteCountOrderByAggregateInput
-    _avg?: communes_precariteAvgOrderByAggregateInput
-    _max?: communes_precariteMaxOrderByAggregateInput
-    _min?: communes_precariteMinOrderByAggregateInput
-    _sum?: communes_precariteSumOrderByAggregateInput
-  }
-
-  export type communes_precariteScalarWhereWithAggregatesInput = {
-    AND?: communes_precariteScalarWhereWithAggregatesInput | communes_precariteScalarWhereWithAggregatesInput[]
-    OR?: communes_precariteScalarWhereWithAggregatesInput[]
-    NOT?: communes_precariteScalarWhereWithAggregatesInput | communes_precariteScalarWhereWithAggregatesInput[]
-    pk?: IntWithAggregatesFilter<"communes_precarite"> | number
-    code_commune?: StringNullableWithAggregatesFilter<"communes_precarite"> | string | null
-    tee_log?: FloatNullableWithAggregatesFilter<"communes_precarite"> | number | null
-    tee_mob?: FloatNullableWithAggregatesFilter<"communes_precarite"> | number | null
-    precarite_logement?: FloatNullableWithAggregatesFilter<"communes_precarite"> | number | null
-    epci?: StringNullableWithAggregatesFilter<"communes_precarite"> | string | null
-  }
-
-  export type communesWhereInput = {
-    AND?: communesWhereInput | communesWhereInput[]
-    OR?: communesWhereInput[]
-    NOT?: communesWhereInput | communesWhereInput[]
-    pk?: IntFilter<"communes"> | number
-    code_commune?: StringNullableFilter<"communes"> | string | null
-    libelle_commune?: StringNullableFilter<"communes"> | string | null
-    reg?: FloatNullableFilter<"communes"> | number | null
-    dep?: StringNullableFilter<"communes"> | string | null
-    libelle_epci?: StringNullableFilter<"communes"> | string | null
-    epci?: StringNullableFilter<"communes"> | string | null
-    densite_bati?: FloatNullableFilter<"communes"> | number | null
-    precarite_logement?: FloatNullableFilter<"communes"> | number | null
-  }
-
-  export type communesOrderByWithRelationInput = {
-    pk?: SortOrder
-    code_commune?: SortOrderInput | SortOrder
-    libelle_commune?: SortOrderInput | SortOrder
-    reg?: SortOrderInput | SortOrder
-    dep?: SortOrderInput | SortOrder
-    libelle_epci?: SortOrderInput | SortOrder
-    epci?: SortOrderInput | SortOrder
+    NA5AZ_sum?: SortOrderInput | SortOrder
+    NA5BE_sum?: SortOrderInput | SortOrder
+    NA5FZ_sum?: SortOrderInput | SortOrder
+    NA5GU_sum?: SortOrderInput | SortOrder
+    NA5OQ_sum?: SortOrderInput | SortOrder
+    s_geom_cstr_bati?: SortOrderInput | SortOrder
     densite_bati?: SortOrderInput | SortOrder
-    precarite_logement?: SortOrderInput | SortOrder
+    _count?: inconfort_thermiqueCountOrderByAggregateInput
+    _avg?: inconfort_thermiqueAvgOrderByAggregateInput
+    _max?: inconfort_thermiqueMaxOrderByAggregateInput
+    _min?: inconfort_thermiqueMinOrderByAggregateInput
+    _sum?: inconfort_thermiqueSumOrderByAggregateInput
   }
 
-  export type communesWhereUniqueInput = Prisma.AtLeast<{
-    pk?: number
-    AND?: communesWhereInput | communesWhereInput[]
-    OR?: communesWhereInput[]
-    NOT?: communesWhereInput | communesWhereInput[]
-    code_commune?: StringNullableFilter<"communes"> | string | null
-    libelle_commune?: StringNullableFilter<"communes"> | string | null
-    reg?: FloatNullableFilter<"communes"> | number | null
-    dep?: StringNullableFilter<"communes"> | string | null
-    libelle_epci?: StringNullableFilter<"communes"> | string | null
-    epci?: StringNullableFilter<"communes"> | string | null
-    densite_bati?: FloatNullableFilter<"communes"> | number | null
-    precarite_logement?: FloatNullableFilter<"communes"> | number | null
-  }, "pk">
-
-  export type communesOrderByWithAggregationInput = {
-    pk?: SortOrder
-    code_commune?: SortOrderInput | SortOrder
-    libelle_commune?: SortOrderInput | SortOrder
-    reg?: SortOrderInput | SortOrder
-    dep?: SortOrderInput | SortOrder
-    libelle_epci?: SortOrderInput | SortOrder
-    epci?: SortOrderInput | SortOrder
-    densite_bati?: SortOrderInput | SortOrder
-    precarite_logement?: SortOrderInput | SortOrder
-    _count?: communesCountOrderByAggregateInput
-    _avg?: communesAvgOrderByAggregateInput
-    _max?: communesMaxOrderByAggregateInput
-    _min?: communesMinOrderByAggregateInput
-    _sum?: communesSumOrderByAggregateInput
-  }
-
-  export type communesScalarWhereWithAggregatesInput = {
-    AND?: communesScalarWhereWithAggregatesInput | communesScalarWhereWithAggregatesInput[]
-    OR?: communesScalarWhereWithAggregatesInput[]
-    NOT?: communesScalarWhereWithAggregatesInput | communesScalarWhereWithAggregatesInput[]
-    pk?: IntWithAggregatesFilter<"communes"> | number
-    code_commune?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    libelle_commune?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    reg?: FloatNullableWithAggregatesFilter<"communes"> | number | null
-    dep?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    libelle_epci?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    epci?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    densite_bati?: FloatNullableWithAggregatesFilter<"communes"> | number | null
-    precarite_logement?: FloatNullableWithAggregatesFilter<"communes"> | number | null
+  export type inconfort_thermiqueScalarWhereWithAggregatesInput = {
+    AND?: inconfort_thermiqueScalarWhereWithAggregatesInput | inconfort_thermiqueScalarWhereWithAggregatesInput[]
+    OR?: inconfort_thermiqueScalarWhereWithAggregatesInput[]
+    NOT?: inconfort_thermiqueScalarWhereWithAggregatesInput | inconfort_thermiqueScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"inconfort_thermique"> | bigint | number
+    code_commune?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
+    libelle_geographique?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
+    epci?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
+    libelle_epci?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
+    departement?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
+    region?: IntNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    age_bati_post06?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    age_bati_91_05?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    age_bati_46_90?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    age_bati_19_45?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    age_bati_pre_19?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1968?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1968?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1968?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1975?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1975?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1975?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1982?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1982?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1982?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1990?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1990?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1990?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1999?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1999?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1999?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2009?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2009?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2009?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2014?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2014?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2014?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2020?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2020?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2020?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    P20_POP80P?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    P20_POP80P_PSEUL?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    tee_log?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    tee_mob?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    precarite_logement?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    NA5AZ_sum?: BigIntNullableWithAggregatesFilter<"inconfort_thermique"> | bigint | number | null
+    NA5BE_sum?: BigIntNullableWithAggregatesFilter<"inconfort_thermique"> | bigint | number | null
+    NA5FZ_sum?: BigIntNullableWithAggregatesFilter<"inconfort_thermique"> | bigint | number | null
+    NA5GU_sum?: BigIntNullableWithAggregatesFilter<"inconfort_thermique"> | bigint | number | null
+    NA5OQ_sum?: BigIntNullableWithAggregatesFilter<"inconfort_thermique"> | bigint | number | null
+    s_geom_cstr_bati?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    densite_bati?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
   }
 
   export type clc_2018_2WhereInput = {
@@ -6308,201 +6020,415 @@ export namespace Prisma {
     coordinates?: StringNullableWithAggregatesFilter<"communes2"> | string | null
   }
 
-  export type spatial_ref_sysCreateInput = {
-    srid: number
-    auth_name?: string | null
-    auth_srid?: number | null
-    srtext?: string | null
-    proj4text?: string | null
+  export type spatial_ref_sysWhereInput = {
+    AND?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    OR?: spatial_ref_sysWhereInput[]
+    NOT?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    srid?: IntFilter<"spatial_ref_sys"> | number
+    auth_name?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    auth_srid?: IntNullableFilter<"spatial_ref_sys"> | number | null
+    srtext?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    proj4text?: StringNullableFilter<"spatial_ref_sys"> | string | null
   }
 
-  export type spatial_ref_sysUncheckedCreateInput = {
-    srid: number
-    auth_name?: string | null
-    auth_srid?: number | null
-    srtext?: string | null
-    proj4text?: string | null
+  export type spatial_ref_sysOrderByWithRelationInput = {
+    srid?: SortOrder
+    auth_name?: SortOrderInput | SortOrder
+    auth_srid?: SortOrderInput | SortOrder
+    srtext?: SortOrderInput | SortOrder
+    proj4text?: SortOrderInput | SortOrder
   }
 
-  export type spatial_ref_sysUpdateInput = {
-    srid?: IntFieldUpdateOperationsInput | number
-    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
-    srtext?: NullableStringFieldUpdateOperationsInput | string | null
-    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  export type spatial_ref_sysWhereUniqueInput = Prisma.AtLeast<{
+    srid?: number
+    AND?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    OR?: spatial_ref_sysWhereInput[]
+    NOT?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    auth_name?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    auth_srid?: IntNullableFilter<"spatial_ref_sys"> | number | null
+    srtext?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    proj4text?: StringNullableFilter<"spatial_ref_sys"> | string | null
+  }, "srid">
+
+  export type spatial_ref_sysOrderByWithAggregationInput = {
+    srid?: SortOrder
+    auth_name?: SortOrderInput | SortOrder
+    auth_srid?: SortOrderInput | SortOrder
+    srtext?: SortOrderInput | SortOrder
+    proj4text?: SortOrderInput | SortOrder
+    _count?: spatial_ref_sysCountOrderByAggregateInput
+    _avg?: spatial_ref_sysAvgOrderByAggregateInput
+    _max?: spatial_ref_sysMaxOrderByAggregateInput
+    _min?: spatial_ref_sysMinOrderByAggregateInput
+    _sum?: spatial_ref_sysSumOrderByAggregateInput
   }
 
-  export type spatial_ref_sysUncheckedUpdateInput = {
-    srid?: IntFieldUpdateOperationsInput | number
-    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
-    srtext?: NullableStringFieldUpdateOperationsInput | string | null
-    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  export type spatial_ref_sysScalarWhereWithAggregatesInput = {
+    AND?: spatial_ref_sysScalarWhereWithAggregatesInput | spatial_ref_sysScalarWhereWithAggregatesInput[]
+    OR?: spatial_ref_sysScalarWhereWithAggregatesInput[]
+    NOT?: spatial_ref_sysScalarWhereWithAggregatesInput | spatial_ref_sysScalarWhereWithAggregatesInput[]
+    srid?: IntWithAggregatesFilter<"spatial_ref_sys"> | number
+    auth_name?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
+    auth_srid?: IntNullableWithAggregatesFilter<"spatial_ref_sys"> | number | null
+    srtext?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
+    proj4text?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
   }
 
-  export type spatial_ref_sysCreateManyInput = {
-    srid: number
-    auth_name?: string | null
-    auth_srid?: number | null
-    srtext?: string | null
-    proj4text?: string | null
-  }
-
-  export type spatial_ref_sysUpdateManyMutationInput = {
-    srid?: IntFieldUpdateOperationsInput | number
-    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
-    srtext?: NullableStringFieldUpdateOperationsInput | string | null
-    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type spatial_ref_sysUncheckedUpdateManyInput = {
-    srid?: IntFieldUpdateOperationsInput | number
-    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
-    srtext?: NullableStringFieldUpdateOperationsInput | string | null
-    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type communes_precariteCreateInput = {
+  export type inconfort_thermiqueCreateInput = {
+    index: bigint | number
     code_commune?: string | null
+    libelle_geographique?: string | null
+    epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    region?: number | null
+    age_bati_post06?: number | null
+    age_bati_91_05?: number | null
+    age_bati_46_90?: number | null
+    age_bati_19_45?: number | null
+    age_bati_pre_19?: number | null
+    under_4_sum_1968?: number | null
+    to_80_sum_1968?: number | null
+    over_80_sum_1968?: number | null
+    under_4_sum_1975?: number | null
+    to_80_sum_1975?: number | null
+    over_80_sum_1975?: number | null
+    under_4_sum_1982?: number | null
+    to_80_sum_1982?: number | null
+    over_80_sum_1982?: number | null
+    under_4_sum_1990?: number | null
+    to_80_sum_1990?: number | null
+    over_80_sum_1990?: number | null
+    under_4_sum_1999?: number | null
+    to_80_sum_1999?: number | null
+    over_80_sum_1999?: number | null
+    under_4_sum_2009?: number | null
+    to_80_sum_2009?: number | null
+    over_80_sum_2009?: number | null
+    under_4_sum_2014?: number | null
+    to_80_sum_2014?: number | null
+    over_80_sum_2014?: number | null
+    under_4_sum_2020?: number | null
+    to_80_sum_2020?: number | null
+    over_80_sum_2020?: number | null
+    P20_POP80P?: number | null
+    P20_POP80P_PSEUL?: number | null
     tee_log?: number | null
     tee_mob?: number | null
     precarite_logement?: number | null
-    epci?: string | null
+    NA5AZ_sum?: bigint | number | null
+    NA5BE_sum?: bigint | number | null
+    NA5FZ_sum?: bigint | number | null
+    NA5GU_sum?: bigint | number | null
+    NA5OQ_sum?: bigint | number | null
+    s_geom_cstr_bati?: number | null
+    densite_bati?: number | null
   }
 
-  export type communes_precariteUncheckedCreateInput = {
-    pk?: number
+  export type inconfort_thermiqueUncheckedCreateInput = {
+    index: bigint | number
     code_commune?: string | null
+    libelle_geographique?: string | null
+    epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    region?: number | null
+    age_bati_post06?: number | null
+    age_bati_91_05?: number | null
+    age_bati_46_90?: number | null
+    age_bati_19_45?: number | null
+    age_bati_pre_19?: number | null
+    under_4_sum_1968?: number | null
+    to_80_sum_1968?: number | null
+    over_80_sum_1968?: number | null
+    under_4_sum_1975?: number | null
+    to_80_sum_1975?: number | null
+    over_80_sum_1975?: number | null
+    under_4_sum_1982?: number | null
+    to_80_sum_1982?: number | null
+    over_80_sum_1982?: number | null
+    under_4_sum_1990?: number | null
+    to_80_sum_1990?: number | null
+    over_80_sum_1990?: number | null
+    under_4_sum_1999?: number | null
+    to_80_sum_1999?: number | null
+    over_80_sum_1999?: number | null
+    under_4_sum_2009?: number | null
+    to_80_sum_2009?: number | null
+    over_80_sum_2009?: number | null
+    under_4_sum_2014?: number | null
+    to_80_sum_2014?: number | null
+    over_80_sum_2014?: number | null
+    under_4_sum_2020?: number | null
+    to_80_sum_2020?: number | null
+    over_80_sum_2020?: number | null
+    P20_POP80P?: number | null
+    P20_POP80P_PSEUL?: number | null
     tee_log?: number | null
     tee_mob?: number | null
     precarite_logement?: number | null
-    epci?: string | null
+    NA5AZ_sum?: bigint | number | null
+    NA5BE_sum?: bigint | number | null
+    NA5FZ_sum?: bigint | number | null
+    NA5GU_sum?: bigint | number | null
+    NA5OQ_sum?: bigint | number | null
+    s_geom_cstr_bati?: number | null
+    densite_bati?: number | null
   }
 
-  export type communes_precariteUpdateInput = {
+  export type inconfort_thermiqueUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableIntFieldUpdateOperationsInput | number | null
+    age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P_PSEUL?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    NA5AZ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5BE_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5FZ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5GU_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5OQ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
-  export type communes_precariteUncheckedUpdateInput = {
-    pk?: IntFieldUpdateOperationsInput | number
+  export type inconfort_thermiqueUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableIntFieldUpdateOperationsInput | number | null
+    age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P_PSEUL?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    NA5AZ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5BE_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5FZ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5GU_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5OQ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
-  export type communes_precariteCreateManyInput = {
-    pk?: number
+  export type inconfort_thermiqueCreateManyInput = {
+    index: bigint | number
     code_commune?: string | null
+    libelle_geographique?: string | null
+    epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    region?: number | null
+    age_bati_post06?: number | null
+    age_bati_91_05?: number | null
+    age_bati_46_90?: number | null
+    age_bati_19_45?: number | null
+    age_bati_pre_19?: number | null
+    under_4_sum_1968?: number | null
+    to_80_sum_1968?: number | null
+    over_80_sum_1968?: number | null
+    under_4_sum_1975?: number | null
+    to_80_sum_1975?: number | null
+    over_80_sum_1975?: number | null
+    under_4_sum_1982?: number | null
+    to_80_sum_1982?: number | null
+    over_80_sum_1982?: number | null
+    under_4_sum_1990?: number | null
+    to_80_sum_1990?: number | null
+    over_80_sum_1990?: number | null
+    under_4_sum_1999?: number | null
+    to_80_sum_1999?: number | null
+    over_80_sum_1999?: number | null
+    under_4_sum_2009?: number | null
+    to_80_sum_2009?: number | null
+    over_80_sum_2009?: number | null
+    under_4_sum_2014?: number | null
+    to_80_sum_2014?: number | null
+    over_80_sum_2014?: number | null
+    under_4_sum_2020?: number | null
+    to_80_sum_2020?: number | null
+    over_80_sum_2020?: number | null
+    P20_POP80P?: number | null
+    P20_POP80P_PSEUL?: number | null
     tee_log?: number | null
     tee_mob?: number | null
     precarite_logement?: number | null
-    epci?: string | null
+    NA5AZ_sum?: bigint | number | null
+    NA5BE_sum?: bigint | number | null
+    NA5FZ_sum?: bigint | number | null
+    NA5GU_sum?: bigint | number | null
+    NA5OQ_sum?: bigint | number | null
+    s_geom_cstr_bati?: number | null
+    densite_bati?: number | null
   }
 
-  export type communes_precariteUpdateManyMutationInput = {
+  export type inconfort_thermiqueUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableIntFieldUpdateOperationsInput | number | null
+    age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P_PSEUL?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    NA5AZ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5BE_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5FZ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5GU_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5OQ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
-  export type communes_precariteUncheckedUpdateManyInput = {
-    pk?: IntFieldUpdateOperationsInput | number
+  export type inconfort_thermiqueUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableIntFieldUpdateOperationsInput | number | null
+    age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null
+    age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P_PSEUL?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type communesCreateInput = {
-    code_commune?: string | null
-    libelle_commune?: string | null
-    reg?: number | null
-    dep?: string | null
-    libelle_epci?: string | null
-    epci?: string | null
-    densite_bati?: number | null
-    precarite_logement?: number | null
-  }
-
-  export type communesUncheckedCreateInput = {
-    pk?: number
-    code_commune?: string | null
-    libelle_commune?: string | null
-    reg?: number | null
-    dep?: string | null
-    libelle_epci?: string | null
-    epci?: string | null
-    densite_bati?: number | null
-    precarite_logement?: number | null
-  }
-
-  export type communesUpdateInput = {
-    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    reg?: NullableFloatFieldUpdateOperationsInput | number | null
-    dep?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    NA5AZ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5BE_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5FZ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5GU_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    NA5OQ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
-    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type communesUncheckedUpdateInput = {
-    pk?: IntFieldUpdateOperationsInput | number
-    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    reg?: NullableFloatFieldUpdateOperationsInput | number | null
-    dep?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
-    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type communesCreateManyInput = {
-    pk?: number
-    code_commune?: string | null
-    libelle_commune?: string | null
-    reg?: number | null
-    dep?: string | null
-    libelle_epci?: string | null
-    epci?: string | null
-    densite_bati?: number | null
-    precarite_logement?: number | null
-  }
-
-  export type communesUpdateManyMutationInput = {
-    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    reg?: NullableFloatFieldUpdateOperationsInput | number | null
-    dep?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
-    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type communesUncheckedUpdateManyInput = {
-    pk?: IntFieldUpdateOperationsInput | number
-    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    reg?: NullableFloatFieldUpdateOperationsInput | number | null
-    dep?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
-    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type clc_2018_2CreateInput = {
@@ -6653,15 +6579,71 @@ export namespace Prisma {
     coordinates?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type spatial_ref_sysCreateInput = {
+    srid: number
+    auth_name?: string | null
+    auth_srid?: number | null
+    srtext?: string | null
+    proj4text?: string | null
+  }
+
+  export type spatial_ref_sysUncheckedCreateInput = {
+    srid: number
+    auth_name?: string | null
+    auth_srid?: number | null
+    srtext?: string | null
+    proj4text?: string | null
+  }
+
+  export type spatial_ref_sysUpdateInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type spatial_ref_sysUncheckedUpdateInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type spatial_ref_sysCreateManyInput = {
+    srid: number
+    auth_name?: string | null
+    auth_srid?: number | null
+    srtext?: string | null
+    proj4text?: string | null
+  }
+
+  export type spatial_ref_sysUpdateManyMutationInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type spatial_ref_sysUncheckedUpdateManyInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type BigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -6690,59 +6672,292 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type BigIntNullableFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
-  export type spatial_ref_sysCountOrderByAggregateInput = {
-    srid?: SortOrder
-    auth_name?: SortOrder
-    auth_srid?: SortOrder
-    srtext?: SortOrder
-    proj4text?: SortOrder
+  export type inconfort_thermiqueCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_commune?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    age_bati_post06?: SortOrder
+    age_bati_91_05?: SortOrder
+    age_bati_46_90?: SortOrder
+    age_bati_19_45?: SortOrder
+    age_bati_pre_19?: SortOrder
+    under_4_sum_1968?: SortOrder
+    to_80_sum_1968?: SortOrder
+    over_80_sum_1968?: SortOrder
+    under_4_sum_1975?: SortOrder
+    to_80_sum_1975?: SortOrder
+    over_80_sum_1975?: SortOrder
+    under_4_sum_1982?: SortOrder
+    to_80_sum_1982?: SortOrder
+    over_80_sum_1982?: SortOrder
+    under_4_sum_1990?: SortOrder
+    to_80_sum_1990?: SortOrder
+    over_80_sum_1990?: SortOrder
+    under_4_sum_1999?: SortOrder
+    to_80_sum_1999?: SortOrder
+    over_80_sum_1999?: SortOrder
+    under_4_sum_2009?: SortOrder
+    to_80_sum_2009?: SortOrder
+    over_80_sum_2009?: SortOrder
+    under_4_sum_2014?: SortOrder
+    to_80_sum_2014?: SortOrder
+    over_80_sum_2014?: SortOrder
+    under_4_sum_2020?: SortOrder
+    to_80_sum_2020?: SortOrder
+    over_80_sum_2020?: SortOrder
+    P20_POP80P?: SortOrder
+    P20_POP80P_PSEUL?: SortOrder
+    tee_log?: SortOrder
+    tee_mob?: SortOrder
+    precarite_logement?: SortOrder
+    NA5AZ_sum?: SortOrder
+    NA5BE_sum?: SortOrder
+    NA5FZ_sum?: SortOrder
+    NA5GU_sum?: SortOrder
+    NA5OQ_sum?: SortOrder
+    s_geom_cstr_bati?: SortOrder
+    densite_bati?: SortOrder
   }
 
-  export type spatial_ref_sysAvgOrderByAggregateInput = {
-    srid?: SortOrder
-    auth_srid?: SortOrder
+  export type inconfort_thermiqueAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    age_bati_post06?: SortOrder
+    age_bati_91_05?: SortOrder
+    age_bati_46_90?: SortOrder
+    age_bati_19_45?: SortOrder
+    age_bati_pre_19?: SortOrder
+    under_4_sum_1968?: SortOrder
+    to_80_sum_1968?: SortOrder
+    over_80_sum_1968?: SortOrder
+    under_4_sum_1975?: SortOrder
+    to_80_sum_1975?: SortOrder
+    over_80_sum_1975?: SortOrder
+    under_4_sum_1982?: SortOrder
+    to_80_sum_1982?: SortOrder
+    over_80_sum_1982?: SortOrder
+    under_4_sum_1990?: SortOrder
+    to_80_sum_1990?: SortOrder
+    over_80_sum_1990?: SortOrder
+    under_4_sum_1999?: SortOrder
+    to_80_sum_1999?: SortOrder
+    over_80_sum_1999?: SortOrder
+    under_4_sum_2009?: SortOrder
+    to_80_sum_2009?: SortOrder
+    over_80_sum_2009?: SortOrder
+    under_4_sum_2014?: SortOrder
+    to_80_sum_2014?: SortOrder
+    over_80_sum_2014?: SortOrder
+    under_4_sum_2020?: SortOrder
+    to_80_sum_2020?: SortOrder
+    over_80_sum_2020?: SortOrder
+    P20_POP80P?: SortOrder
+    P20_POP80P_PSEUL?: SortOrder
+    tee_log?: SortOrder
+    tee_mob?: SortOrder
+    precarite_logement?: SortOrder
+    NA5AZ_sum?: SortOrder
+    NA5BE_sum?: SortOrder
+    NA5FZ_sum?: SortOrder
+    NA5GU_sum?: SortOrder
+    NA5OQ_sum?: SortOrder
+    s_geom_cstr_bati?: SortOrder
+    densite_bati?: SortOrder
   }
 
-  export type spatial_ref_sysMaxOrderByAggregateInput = {
-    srid?: SortOrder
-    auth_name?: SortOrder
-    auth_srid?: SortOrder
-    srtext?: SortOrder
-    proj4text?: SortOrder
+  export type inconfort_thermiqueMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_commune?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    age_bati_post06?: SortOrder
+    age_bati_91_05?: SortOrder
+    age_bati_46_90?: SortOrder
+    age_bati_19_45?: SortOrder
+    age_bati_pre_19?: SortOrder
+    under_4_sum_1968?: SortOrder
+    to_80_sum_1968?: SortOrder
+    over_80_sum_1968?: SortOrder
+    under_4_sum_1975?: SortOrder
+    to_80_sum_1975?: SortOrder
+    over_80_sum_1975?: SortOrder
+    under_4_sum_1982?: SortOrder
+    to_80_sum_1982?: SortOrder
+    over_80_sum_1982?: SortOrder
+    under_4_sum_1990?: SortOrder
+    to_80_sum_1990?: SortOrder
+    over_80_sum_1990?: SortOrder
+    under_4_sum_1999?: SortOrder
+    to_80_sum_1999?: SortOrder
+    over_80_sum_1999?: SortOrder
+    under_4_sum_2009?: SortOrder
+    to_80_sum_2009?: SortOrder
+    over_80_sum_2009?: SortOrder
+    under_4_sum_2014?: SortOrder
+    to_80_sum_2014?: SortOrder
+    over_80_sum_2014?: SortOrder
+    under_4_sum_2020?: SortOrder
+    to_80_sum_2020?: SortOrder
+    over_80_sum_2020?: SortOrder
+    P20_POP80P?: SortOrder
+    P20_POP80P_PSEUL?: SortOrder
+    tee_log?: SortOrder
+    tee_mob?: SortOrder
+    precarite_logement?: SortOrder
+    NA5AZ_sum?: SortOrder
+    NA5BE_sum?: SortOrder
+    NA5FZ_sum?: SortOrder
+    NA5GU_sum?: SortOrder
+    NA5OQ_sum?: SortOrder
+    s_geom_cstr_bati?: SortOrder
+    densite_bati?: SortOrder
   }
 
-  export type spatial_ref_sysMinOrderByAggregateInput = {
-    srid?: SortOrder
-    auth_name?: SortOrder
-    auth_srid?: SortOrder
-    srtext?: SortOrder
-    proj4text?: SortOrder
+  export type inconfort_thermiqueMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_commune?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    age_bati_post06?: SortOrder
+    age_bati_91_05?: SortOrder
+    age_bati_46_90?: SortOrder
+    age_bati_19_45?: SortOrder
+    age_bati_pre_19?: SortOrder
+    under_4_sum_1968?: SortOrder
+    to_80_sum_1968?: SortOrder
+    over_80_sum_1968?: SortOrder
+    under_4_sum_1975?: SortOrder
+    to_80_sum_1975?: SortOrder
+    over_80_sum_1975?: SortOrder
+    under_4_sum_1982?: SortOrder
+    to_80_sum_1982?: SortOrder
+    over_80_sum_1982?: SortOrder
+    under_4_sum_1990?: SortOrder
+    to_80_sum_1990?: SortOrder
+    over_80_sum_1990?: SortOrder
+    under_4_sum_1999?: SortOrder
+    to_80_sum_1999?: SortOrder
+    over_80_sum_1999?: SortOrder
+    under_4_sum_2009?: SortOrder
+    to_80_sum_2009?: SortOrder
+    over_80_sum_2009?: SortOrder
+    under_4_sum_2014?: SortOrder
+    to_80_sum_2014?: SortOrder
+    over_80_sum_2014?: SortOrder
+    under_4_sum_2020?: SortOrder
+    to_80_sum_2020?: SortOrder
+    over_80_sum_2020?: SortOrder
+    P20_POP80P?: SortOrder
+    P20_POP80P_PSEUL?: SortOrder
+    tee_log?: SortOrder
+    tee_mob?: SortOrder
+    precarite_logement?: SortOrder
+    NA5AZ_sum?: SortOrder
+    NA5BE_sum?: SortOrder
+    NA5FZ_sum?: SortOrder
+    NA5GU_sum?: SortOrder
+    NA5OQ_sum?: SortOrder
+    s_geom_cstr_bati?: SortOrder
+    densite_bati?: SortOrder
   }
 
-  export type spatial_ref_sysSumOrderByAggregateInput = {
-    srid?: SortOrder
-    auth_srid?: SortOrder
+  export type inconfort_thermiqueSumOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    age_bati_post06?: SortOrder
+    age_bati_91_05?: SortOrder
+    age_bati_46_90?: SortOrder
+    age_bati_19_45?: SortOrder
+    age_bati_pre_19?: SortOrder
+    under_4_sum_1968?: SortOrder
+    to_80_sum_1968?: SortOrder
+    over_80_sum_1968?: SortOrder
+    under_4_sum_1975?: SortOrder
+    to_80_sum_1975?: SortOrder
+    over_80_sum_1975?: SortOrder
+    under_4_sum_1982?: SortOrder
+    to_80_sum_1982?: SortOrder
+    over_80_sum_1982?: SortOrder
+    under_4_sum_1990?: SortOrder
+    to_80_sum_1990?: SortOrder
+    over_80_sum_1990?: SortOrder
+    under_4_sum_1999?: SortOrder
+    to_80_sum_1999?: SortOrder
+    over_80_sum_1999?: SortOrder
+    under_4_sum_2009?: SortOrder
+    to_80_sum_2009?: SortOrder
+    over_80_sum_2009?: SortOrder
+    under_4_sum_2014?: SortOrder
+    to_80_sum_2014?: SortOrder
+    over_80_sum_2014?: SortOrder
+    under_4_sum_2020?: SortOrder
+    to_80_sum_2020?: SortOrder
+    over_80_sum_2020?: SortOrder
+    P20_POP80P?: SortOrder
+    P20_POP80P_PSEUL?: SortOrder
+    tee_log?: SortOrder
+    tee_mob?: SortOrder
+    precarite_logement?: SortOrder
+    NA5AZ_sum?: SortOrder
+    NA5BE_sum?: SortOrder
+    NA5FZ_sum?: SortOrder
+    NA5GU_sum?: SortOrder
+    NA5OQ_sum?: SortOrder
+    s_geom_cstr_bati?: SortOrder
+    densite_bati?: SortOrder
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
     _count?: NestedIntFilter<$PrismaModel>
     _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -6779,58 +6994,6 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type communes_precariteCountOrderByAggregateInput = {
-    pk?: SortOrder
-    code_commune?: SortOrder
-    tee_log?: SortOrder
-    tee_mob?: SortOrder
-    precarite_logement?: SortOrder
-    epci?: SortOrder
-  }
-
-  export type communes_precariteAvgOrderByAggregateInput = {
-    pk?: SortOrder
-    tee_log?: SortOrder
-    tee_mob?: SortOrder
-    precarite_logement?: SortOrder
-  }
-
-  export type communes_precariteMaxOrderByAggregateInput = {
-    pk?: SortOrder
-    code_commune?: SortOrder
-    tee_log?: SortOrder
-    tee_mob?: SortOrder
-    precarite_logement?: SortOrder
-    epci?: SortOrder
-  }
-
-  export type communes_precariteMinOrderByAggregateInput = {
-    pk?: SortOrder
-    code_commune?: SortOrder
-    tee_log?: SortOrder
-    tee_mob?: SortOrder
-    precarite_logement?: SortOrder
-    epci?: SortOrder
-  }
-
-  export type communes_precariteSumOrderByAggregateInput = {
-    pk?: SortOrder
-    tee_log?: SortOrder
-    tee_mob?: SortOrder
-    precarite_logement?: SortOrder
-  }
-
   export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -6847,54 +7010,31 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
-  export type communesCountOrderByAggregateInput = {
-    pk?: SortOrder
-    code_commune?: SortOrder
-    libelle_commune?: SortOrder
-    reg?: SortOrder
-    dep?: SortOrder
-    libelle_epci?: SortOrder
-    epci?: SortOrder
-    densite_bati?: SortOrder
-    precarite_logement?: SortOrder
+  export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedBigIntNullableFilter<$PrismaModel>
+    _min?: NestedBigIntNullableFilter<$PrismaModel>
+    _max?: NestedBigIntNullableFilter<$PrismaModel>
   }
 
-  export type communesAvgOrderByAggregateInput = {
-    pk?: SortOrder
-    reg?: SortOrder
-    densite_bati?: SortOrder
-    precarite_logement?: SortOrder
-  }
-
-  export type communesMaxOrderByAggregateInput = {
-    pk?: SortOrder
-    code_commune?: SortOrder
-    libelle_commune?: SortOrder
-    reg?: SortOrder
-    dep?: SortOrder
-    libelle_epci?: SortOrder
-    epci?: SortOrder
-    densite_bati?: SortOrder
-    precarite_logement?: SortOrder
-  }
-
-  export type communesMinOrderByAggregateInput = {
-    pk?: SortOrder
-    code_commune?: SortOrder
-    libelle_commune?: SortOrder
-    reg?: SortOrder
-    dep?: SortOrder
-    libelle_epci?: SortOrder
-    epci?: SortOrder
-    densite_bati?: SortOrder
-    precarite_logement?: SortOrder
-  }
-
-  export type communesSumOrderByAggregateInput = {
-    pk?: SortOrder
-    reg?: SortOrder
-    densite_bati?: SortOrder
-    precarite_logement?: SortOrder
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type clc_2018_2CountOrderByAggregateInput = {
@@ -6936,6 +7076,22 @@ export namespace Prisma {
     area_ha?: SortOrder
     shape_length?: SortOrder
     shape_area?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type communes2CountOrderByAggregateInput = {
@@ -6991,12 +7147,46 @@ export namespace Prisma {
     precarite_logement?: SortOrder
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type spatial_ref_sysCountOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_name?: SortOrder
+    auth_srid?: SortOrder
+    srtext?: SortOrder
+    proj4text?: SortOrder
+  }
+
+  export type spatial_ref_sysAvgOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_srid?: SortOrder
+  }
+
+  export type spatial_ref_sysMaxOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_name?: SortOrder
+    auth_srid?: SortOrder
+    srtext?: SortOrder
+    proj4text?: SortOrder
+  }
+
+  export type spatial_ref_sysMinOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_name?: SortOrder
+    auth_srid?: SortOrder
+    srtext?: SortOrder
+    proj4text?: SortOrder
+  }
+
+  export type spatial_ref_sysSumOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_srid?: SortOrder
+  }
+
+  export type BigIntFieldUpdateOperationsInput = {
+    set?: bigint | number
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -7019,15 +7209,31 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type NullableBigIntFieldUpdateOperationsInput = {
+    set?: bigint | number | null
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NestedBigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -7055,7 +7261,45 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBigIntNullableFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
+  }
+
+  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -7063,12 +7307,7 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedFloatFilter<$PrismaModel = never> = {
@@ -7115,17 +7354,6 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -7142,23 +7370,47 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
+  export type NestedBigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedBigIntNullableFilter<$PrismaModel>
+    _min?: NestedBigIntNullableFilter<$PrismaModel>
+    _max?: NestedBigIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
 
 
   /**
    * Aliases for legacy arg types
    */
     /**
-     * @deprecated Use spatial_ref_sysDefaultArgs instead
+     * @deprecated Use inconfort_thermiqueDefaultArgs instead
      */
-    export type spatial_ref_sysArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = spatial_ref_sysDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use communes_precariteDefaultArgs instead
-     */
-    export type communes_precariteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = communes_precariteDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use communesDefaultArgs instead
-     */
-    export type communesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = communesDefaultArgs<ExtArgs>
+    export type inconfort_thermiqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = inconfort_thermiqueDefaultArgs<ExtArgs>
     /**
      * @deprecated Use clc_2018_2DefaultArgs instead
      */
@@ -7167,6 +7419,10 @@ export namespace Prisma {
      * @deprecated Use communes2DefaultArgs instead
      */
     export type communes2Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = communes2DefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use spatial_ref_sysDefaultArgs instead
+     */
+    export type spatial_ref_sysArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = spatial_ref_sysDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

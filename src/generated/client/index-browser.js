@@ -119,33 +119,55 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
-  srid: 'srid',
-  auth_name: 'auth_name',
-  auth_srid: 'auth_srid',
-  srtext: 'srtext',
-  proj4text: 'proj4text'
-};
-
-exports.Prisma.Communes_precariteScalarFieldEnum = {
-  pk: 'pk',
+exports.Prisma.Inconfort_thermiqueScalarFieldEnum = {
+  index: 'index',
   code_commune: 'code_commune',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  region: 'region',
+  age_bati_post06: 'age_bati_post06',
+  age_bati_91_05: 'age_bati_91_05',
+  age_bati_46_90: 'age_bati_46_90',
+  age_bati_19_45: 'age_bati_19_45',
+  age_bati_pre_19: 'age_bati_pre_19',
+  under_4_sum_1968: 'under_4_sum_1968',
+  to_80_sum_1968: 'to_80_sum_1968',
+  over_80_sum_1968: 'over_80_sum_1968',
+  under_4_sum_1975: 'under_4_sum_1975',
+  to_80_sum_1975: 'to_80_sum_1975',
+  over_80_sum_1975: 'over_80_sum_1975',
+  under_4_sum_1982: 'under_4_sum_1982',
+  to_80_sum_1982: 'to_80_sum_1982',
+  over_80_sum_1982: 'over_80_sum_1982',
+  under_4_sum_1990: 'under_4_sum_1990',
+  to_80_sum_1990: 'to_80_sum_1990',
+  over_80_sum_1990: 'over_80_sum_1990',
+  under_4_sum_1999: 'under_4_sum_1999',
+  to_80_sum_1999: 'to_80_sum_1999',
+  over_80_sum_1999: 'over_80_sum_1999',
+  under_4_sum_2009: 'under_4_sum_2009',
+  to_80_sum_2009: 'to_80_sum_2009',
+  over_80_sum_2009: 'over_80_sum_2009',
+  under_4_sum_2014: 'under_4_sum_2014',
+  to_80_sum_2014: 'to_80_sum_2014',
+  over_80_sum_2014: 'over_80_sum_2014',
+  under_4_sum_2020: 'under_4_sum_2020',
+  to_80_sum_2020: 'to_80_sum_2020',
+  over_80_sum_2020: 'over_80_sum_2020',
+  P20_POP80P: 'P20_POP80P',
+  P20_POP80P_PSEUL: 'P20_POP80P_PSEUL',
   tee_log: 'tee_log',
   tee_mob: 'tee_mob',
   precarite_logement: 'precarite_logement',
-  epci: 'epci'
-};
-
-exports.Prisma.CommunesScalarFieldEnum = {
-  pk: 'pk',
-  code_commune: 'code_commune',
-  libelle_commune: 'libelle_commune',
-  reg: 'reg',
-  dep: 'dep',
-  libelle_epci: 'libelle_epci',
-  epci: 'epci',
-  densite_bati: 'densite_bati',
-  precarite_logement: 'precarite_logement'
+  NA5AZ_sum: 'NA5AZ_sum',
+  NA5BE_sum: 'NA5BE_sum',
+  NA5FZ_sum: 'NA5FZ_sum',
+  NA5GU_sum: 'NA5GU_sum',
+  NA5OQ_sum: 'NA5OQ_sum',
+  s_geom_cstr_bati: 's_geom_cstr_bati',
+  densite_bati: 'densite_bati'
 };
 
 exports.Prisma.Clc_2018_2ScalarFieldEnum = {
@@ -170,6 +192,14 @@ exports.Prisma.Communes2ScalarFieldEnum = {
   coordinates: 'coordinates'
 };
 
+exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
+  srid: 'srid',
+  auth_name: 'auth_name',
+  auth_srid: 'auth_srid',
+  srtext: 'srtext',
+  proj4text: 'proj4text'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -187,11 +217,10 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  spatial_ref_sys: 'spatial_ref_sys',
-  communes_precarite: 'communes_precarite',
-  communes: 'communes',
+  inconfort_thermique: 'inconfort_thermique',
   clc_2018_2: 'clc_2018_2',
-  communes2: 'communes2'
+  communes2: 'communes2',
+  spatial_ref_sys: 'spatial_ref_sys'
 };
 
 /**
