@@ -28,6 +28,7 @@ export default function Home() {
       backgroundColor: fr.colors.getHex({ isDark }).decisions.background.alt.grey.hover,
     },
   };
+
   return (
     <>
       <div className={styles.container}>
