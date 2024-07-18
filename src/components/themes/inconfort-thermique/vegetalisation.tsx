@@ -1,28 +1,17 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-// import { PieChart2 } from "@/components/charts/pieChart2";
-import VegetalisationMap from "@/assets/images/vegetalisation-map.png";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { GridCol } from "@/dsfr/layout";
 
 import Map from "@/components/maps/CLC";
-import { getEPCI } from "./actions/epci";
 import { getVegetalisationFromEPCI } from "./actions/vegetalisation";
-import { Loader } from "@/app/donnees-territoriales/loader";
+import { Loader } from "@/components/loader";
 
 import { styled } from '@mui/material/styles';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
 
 import { LegendCLC } from "./vegetalisation-legend";
-
-interface PieData {
-  color: string;
-  id: string;
-  label: string;
-  value: number;
-}
 
 interface Props {
   clc: Array<{
@@ -37,11 +26,10 @@ interface Props {
 
 export const Vegetalisation = (props: Props) => {
   const { clc } = props;
-  const [PieData, setPieData] = useState<PieData[]>([]);
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
-  const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
   const [foret, setForet] = useState<number>();
+  const [dataVegetalisation, setDataVegetalisation] = useState<any>();
 
   const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -58,11 +46,11 @@ export const Vegetalisation = (props: Props) => {
       const dataVegetalisationRows = await getVegetalisationFromEPCI(Number(code));
       if (Object.keys(dataVegetalisationRows).length) {
         // const x = Object.keys(dataTravailExtRows).slice(3, 10);
-        const y = Object.values(dataVegetalisationRows).slice(3);
+        setDataVegetalisation(dataVegetalisationRows);
+        const y: any = Object.values(dataVegetalisationRows).slice(3);
         const sum_ha: number = Number(y.reduce((partialSum: number, a: number) => partialSum + a, 0));
         setForet((100 * y.at(2)) / sum_ha);
       }
-      setEpci_chosen(await getEPCI(Number(code)));
     })();
   }, [code]);
 
@@ -78,12 +66,12 @@ export const Vegetalisation = (props: Props) => {
             alignItems: "center",
           }}
         >
-          {clc.length ? (
+          {dataVegetalisation ? (
             <>
             <GridCol lg={4}>
               <h4>LE CHIFFRE</h4>
               <p>
-                Dans l'EPCI {epci_chosen?.properties.EPCI}, <b>{foret?.toFixed(1)}%</b> du territoire est de la forêt ou
+                Dans l'EPCI {dataVegetalisation?.LIBEPCI_x}, <b>{foret?.toFixed(1)}%</b> du territoire est de la forêt ou
                 des espaces semi-naturels.
               </p>
               <h4>EXPLICATION</h4>
@@ -118,11 +106,11 @@ export const Vegetalisation = (props: Props) => {
             </GridCol>
             </>
           ) : (
-            <GraphDataNotFound code={code} />
+            <Loader />
           )}
         </div>
       ) : (
-        <Loader />
+        <GraphDataNotFound code={code} />
       )}
     </>
   );

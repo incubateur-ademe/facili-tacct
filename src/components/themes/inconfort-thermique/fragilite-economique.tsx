@@ -1,6 +1,6 @@
 import { useSearchParams } from "next/navigation";
 
-import { Loader } from "@/app/donnees-territoriales/loader";
+import { Loader } from "@/components/loader";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import Legend from "@/components/maps/legend";
 import Map from "@/components/maps/map";
@@ -26,7 +26,7 @@ interface Props {
 // const dataPrecariteLogMob = dataPrecariteLogMob_raw as Row[];
 
 export const FragiliteEconomique = (props: Props) => {
-  const { data, db_filtered, activeDataTab } = props;
+  const { db_filtered } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
 

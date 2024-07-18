@@ -6,8 +6,8 @@ type Props = {
   chartData: Array<{
     France: number;
     FranceColor: string;
-    "Votre EPCI": string;
-    "Votre EPCIColor": string;
+    "Votre EPCI"?: string;
+    "Votre EPCIColor"?: string;
     periode: string;
   }>;
 };
