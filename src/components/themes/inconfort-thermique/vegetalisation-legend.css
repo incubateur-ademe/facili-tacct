@@ -1,0 +1,30 @@
+.legendCLC {
+  position: relative;
+  width: 250px;
+  right: 5%;
+  padding: 14px 0px;
+  box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
+  font-size: 12px;
+  background: rgb(251, 252, 255);
+  border-radius: 5px;
+  border: 1px solid #dadde9;
+}
+
+.legendCLC > div {
+  position: relative;
+  display: flex;
+  height: 25px;
+  padding: 0 10px;
+  gap: 1em
+}
+
+.lengedColor-wrapper {
+    display: "flex";
+    justify-content: "space-between";
+}
+
+.legendColor {
+    width: 20px; 
+    height: 20px;
+    border-radius: 25px
+}

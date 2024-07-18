@@ -11,6 +11,12 @@ import { getEPCI } from "./actions/epci";
 import { getVegetalisationFromEPCI } from "./actions/vegetalisation";
 import { Loader } from "@/app/donnees-territoriales/loader";
 
+import { styled } from '@mui/material/styles';
+import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+
+import { LegendCLC } from "./vegetalisation-legend";
+
 interface PieData {
   color: string;
   id: string;
@@ -36,6 +42,16 @@ export const Vegetalisation = (props: Props) => {
   const code = searchParams.get("code")!;
   const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
   const [foret, setForet] = useState<number>();
+
+  const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+    ))(({ theme }) => ({
+      [`& .${tooltipClasses.tooltip}`]: {
+        backgroundColor: 'transparent',
+        color: 'rgba(0, 0, 0, 0.87)',
+        fontSize: theme.typography.pxToRem(12),
+      },
+  }));
 
   useEffect(() => {
     void (async () => {
@@ -89,7 +105,12 @@ export const Vegetalisation = (props: Props) => {
                 <p style={{ margin: "0 0 1em", textAlign: "center" }}>
                   <b>Cartographie des différents types de sols</b>
                 </p>
-                <Map clc={clc} />
+                <HtmlTooltip
+                  title={<LegendCLC />}
+                  placement="left"
+                >
+                  <div><Map clc={clc} /></div>
+                </HtmlTooltip>
                 <p style={{ margin: "1em 0em 0em" }}>
                   Source : <b>CORINE Land Cover</b>
                 </p>
