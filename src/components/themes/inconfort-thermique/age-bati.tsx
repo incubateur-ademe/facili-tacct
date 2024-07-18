@@ -1,99 +1,109 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Loader } from "@/app/donnees-territoriales/loader";
+import { Loader } from "@/components/loader";
 import BarChart from "@/components/charts/BarChart";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { GridCol } from "@/dsfr/layout";
 
-import { getAgeBatiFromEPCI } from "./actions/age-bati";
-import { getEPCI } from "./actions/epci";
+import { InconfortThermique } from "@/app/donnees-territoriales/type";
 
 interface Props {
-  activeDataTab: string;
-  data: Array<{
-    donnee: string;
-    facteur_sensibilite: string;
-    id: number;
-    risque: string;
-    titre: string;
-  }>;
-  // data_communes: DataCommunes;
-  // data_epci: DataEPCI;
+  inconfort_thermique: InconfortThermique[];
 }
 
-interface GraphData {
+interface ChartData {
   France: number;
   FranceColor: string;
-  "Votre EPCI": string;
-  "Votre EPCIColor": string;
+  "Votre EPCI"?: string;
+  "Votre EPCIColor"?: string;
   periode: string;
 }
 
-export const AgeBati = (props: Props) => {
-  const { data, activeDataTab } = props;
-  const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
-  const [chartData, setChartData] = useState<GraphData[]>([]);
-  const [constructionBefore2006, setConstructionBefore2006] = useState<number>();
+type DataAgeBati = {
+  code_commune: string | null | undefined,
+  libelle_geographique: string | null | undefined,
+  epci: string | null | undefined,
+  libelle_epci: string | null | undefined,
+  age_bati_pre_19: number | null | undefined,
+  age_bati_19_45: number | null | undefined,
+  age_bati_46_90: number | null | undefined,
+  age_bati_91_05: number | null | undefined,
+  age_bati_post06: number | null | undefined
+}
 
+function sum(arr: number[]) {
+  return arr.reduce(function (a, b) {
+     return a + b;
+  }, 0);
+}
+
+export const AgeBati = (props: Props) => {
+  const { inconfort_thermique } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
 
-  useEffect(() => {
-    void (async () => {
-      const dataAgeBatiRows = await getAgeBatiFromEPCI(Number(code));
-      if (Object.keys(dataAgeBatiRows).length) {
-        const sum: number = Number(
-          Object.values(dataAgeBatiRows)
-            .slice(2)
-            .reduce((partialSum: number, a: number) => partialSum + a, 0),
-        );
-        setConstructionBefore2006(sum);
-        setChartData([
-          {
-            periode: "Avant 1919",
-            "Votre EPCI": dataAgeBatiRows["part_rp_ach19"].toFixed(1),
-            "Votre EPCIColor": "#ececfe",
-            France: 20.5,
-            FranceColor: "hsl(125, 70%, 50%)",
-          },
-          {
-            periode: "1919-1945",
-            "Votre EPCI": dataAgeBatiRows["part_rp_ach1945"].toFixed(1),
-            "Votre EPCIColor": "#ececfe",
-            France: 9.2,
-            FranceColor: "hsl(125, 70%, 50%)",
-          },
-          {
-            periode: "1946-1990",
-            "Votre EPCI": dataAgeBatiRows["part_rp_ach4690"].toFixed(1),
-            "Votre EPCIColor": "#ececfe",
-            France: 43.4,
-            FranceColor: "hsl(125, 70%, 50%)",
-          },
-          {
-            periode: "1991-2005",
-            "Votre EPCI": dataAgeBatiRows["part_rp_ach9105"].toFixed(1),
-            "Votre EPCIColor": "#ececfe",
-            France: 15.5,
-            FranceColor: "hsl(125, 70%, 50%)",
-          },
-          {
-            periode: "Après 2006",
-            "Votre EPCI": dataAgeBatiRows["part_rp_ach06p"].toFixed(1),
-            "Votre EPCIColor": "#ececfe",
-            France: 11.4,
-            FranceColor: "hsl(125, 70%, 50%)",
-          },
-        ]);
-      }
-      setEpci_chosen(await getEPCI(Number(code)));
-    })();
-  }, [code]);
+  const temp_db: DataAgeBati[] = inconfort_thermique.map(el => {
+    return {
+      code_commune: el.code_commune,
+      libelle_geographique: el.libelle_geographique ,
+      epci: el.epci,
+      libelle_epci: el.libelle_epci,
+      age_bati_pre_19: el.age_bati_pre_19,
+      age_bati_19_45: el.age_bati_19_45,
+      age_bati_46_90: el.age_bati_46_90,
+      age_bati_91_05: el.age_bati_91_05,
+      age_bati_post06: el.age_bati_post06
+    }
+  })
+
+  const first: any = inconfort_thermique.find(el => el.epci === code)
+  const subset = (({ age_bati_pre_19, age_bati_19_45, age_bati_46_90, age_bati_91_05, age_bati_post06 }) => (
+    { age_bati_pre_19, age_bati_19_45, age_bati_46_90, age_bati_91_05, age_bati_post06 }))(first);
+  
+  const constructionBefore2006 = sum(Object.values(subset))
+
+  const chartData: ChartData[] = [
+    {
+      periode: "Avant 1919",
+      "Votre EPCI": inconfort_thermique[0]?.age_bati_pre_19?.toFixed(1),
+      "Votre EPCIColor": "#ececfe",
+      France: 20.5,
+      FranceColor: "hsl(125, 70%, 50%)",
+    },
+    {
+      periode: "1919-1945",
+      "Votre EPCI": inconfort_thermique[0]?.age_bati_19_45?.toFixed(1),
+      "Votre EPCIColor": "#ececfe",
+      France: 9.2,
+      FranceColor: "hsl(125, 70%, 50%)",
+    },
+    {
+      periode: "1946-1990",
+      "Votre EPCI": inconfort_thermique[0]?.age_bati_46_90?.toFixed(1),
+      "Votre EPCIColor": "#ececfe",
+      France: 43.4,
+      FranceColor: "hsl(125, 70%, 50%)",
+    },
+    {
+      periode: "1991-2005",
+      "Votre EPCI": inconfort_thermique[0]?.age_bati_91_05?.toFixed(1),
+      "Votre EPCIColor": "#ececfe",
+      France: 15.5,
+      FranceColor: "hsl(125, 70%, 50%)",
+    },
+    {
+      periode: "Après 2006",
+      "Votre EPCI": inconfort_thermique[0]?.age_bati_post06?.toFixed(1),
+      "Votre EPCIColor": "#ececfe",
+      France: 11.4,
+      FranceColor: "hsl(125, 70%, 50%)",
+    },
+  ]
 
   return (
     <>
-      {epci_chosen ? (
+      {inconfort_thermique.length ? (
         <div
           style={{
             display: "flex",
@@ -106,7 +116,7 @@ export const AgeBati = (props: Props) => {
           <GridCol lg={4}>
             <h4>LE CHIFFRE</h4>
             <p>
-              Dans l'EPCI {epci_chosen?.properties.EPCI}, <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
+              Dans l'EPCI {inconfort_thermique[0]?.libelle_epci}, <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
               principales sont construites avant 2006.
             </p>
             <h4>EXPLICATION</h4>
