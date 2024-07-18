@@ -6,8 +6,8 @@ import themes from "@/lib/utils/themes";
 
 import { Box, Container, GridCol } from "../../dsfr/server";
 import styles from "./donnees.module.scss";
-import { Loader } from "./loader";
-import { Get_CLC, Get_Communes } from "./queries";
+import { Loader } from "../../components/loader";
+import { Get_CLC, Get_Communes, Get_Inconfort_Thermique } from "./queries";
 
 export const metadata: Metadata = {
   title: "Données territoriales",
@@ -47,6 +47,7 @@ type DbFiltered = {
 const Page = async (searchParams: SearchParams) => {
   const theme = themes.inconfort_thermique;
   const code = searchParams.searchParams.code;
+  const db_inconfort_thermique = await Get_Inconfort_Thermique(code);
   const db_filtered: Awaited<DbFiltered[]> = await Get_Communes(code); //REPLACE
 
   const db_parsed = db_filtered.map(function (elem: DbFiltered) {
@@ -100,7 +101,7 @@ const Page = async (searchParams: SearchParams) => {
         Explorez des leviers d'action possibles en réduisant la sensibilité de votre territoire à l'inconfort thermique
       </p>
       <div className={styles.container}>
-        <DynamicPageComp data={theme} db_filtered={db_parsed} clc={clc_parsed} />
+        <DynamicPageComp data={theme} inconfort_thermique={db_inconfort_thermique} db_filtered={db_parsed} clc={clc_parsed} />
       </div>
     </Container>
   );

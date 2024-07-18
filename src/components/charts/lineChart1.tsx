@@ -1,5 +1,3 @@
-//line chart with string data on x axis and values on y axis. Used for evolution across dates
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -18,11 +16,11 @@ type GraphData = {
 
 const LineChart1 = (props: Props) => {
   const { xData, yData } = props;
-
   const [children, setChildren] = useState<GraphData[]>([]);
   const tempChildren: GraphData[] = [];
-  // console.log('xData', xData)
+  // console.log('children', children)
   // console.log('yData', yData)
+
   useEffect(() => {
     xData.forEach((item, id) => {
       const dict: GraphData = {
@@ -38,10 +36,10 @@ const LineChart1 = (props: Props) => {
     <div>
       <div style={{ height: "500px", width: "110%" }}>
         <ResponsiveLine
-          curve="monotoneX"
+          curve="linear"
           data={[
             {
-              id: "Première courbe évolution",
+              id: "Courbe évolution de l'âge",
               color: "hsl(284, 70%, 50%)",
               data: children,
             },
@@ -58,8 +56,7 @@ const LineChart1 = (props: Props) => {
             bottom: 50,
             left: 60,
           }}
-          axisTop={null}
-          axisRight={null}
+
           axisBottom={{
             tickSize: 5,
             tickPadding: 5,

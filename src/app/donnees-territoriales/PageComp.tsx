@@ -45,6 +45,7 @@ interface Props {
     };
     type: string;
   }>;
+  inconfort_thermique: any
 }
 
 const allComps = [
@@ -74,7 +75,7 @@ const allComps = [
   },
 ];
 
-const PageComp = ({ data, db_filtered, clc }: Props) => {
+const PageComp = ({ data, db_filtered, clc, inconfort_thermique }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState("Population");
   const [selectedSubTab, setSelectedSubTab] = useState("Grand âge");
   const router = useRouter();
@@ -136,8 +137,15 @@ const PageComp = ({ data, db_filtered, clc }: Props) => {
                 {(() => {
                   const Component = allComps.find(el => el.titre === selectedSubTab)?.Component;
                   if (!Component) return null;
-                  return <Component data={data} db_filtered={db_filtered} activeDataTab={selectedSubTab} clc={clc} />;
-                })()}
+                  return <Component 
+                    data={data} 
+                    inconfort_thermique={inconfort_thermique} 
+                    db_filtered={db_filtered} 
+                    activeDataTab={selectedSubTab} 
+                    clc={clc} 
+                    />;
+                  }
+                )()}
               </Suspense>
             </div>
             <div className={styles.bottom}>

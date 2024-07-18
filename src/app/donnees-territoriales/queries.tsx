@@ -1,24 +1,13 @@
 "use server";
 import { PrismaClient as PostgresClient } from "../../generated/client";
+import * as types from "./type";
 
 const PrismaPostgres = new PostgresClient();
 
-//Paris lat : 48.864716 long : 2.349014
-type DbFiltered = {
-  code_commune: string;
-  coordinates: string;
-  densite_bati: number;
-  epci: string;
-  geometry: string;
-  libelle_commune: string;
-  libelle_epci: string;
-  precarite_logement: number;
-};
-
-export const Get_Communes = async (code: string): Promise<DbFiltered[]> => {
+export const Get_Communes = async (code: string): Promise<types.DbFiltered[]> => {
   try {
     console.time("Query Execution Time");
-    const value: Awaited<DbFiltered[]> = await PrismaPostgres.$queryRaw`
+    const value: Awaited<types.DbFiltered[]> = await PrismaPostgres.$queryRaw`
       SELECT 
       epci, 
       libelle_epci,
@@ -39,21 +28,13 @@ export const Get_Communes = async (code: string): Promise<DbFiltered[]> => {
   }
 };
 
-interface CLC {
-  centroid: string;
-  geometry: string;
-  label3: string;
-  pk: number;
-  shape_length: number;
-}
-
-export const Get_CLC = async (centerCoord: number[]): Promise<CLC[]> => {
+export const Get_CLC = async (centerCoord: number[]): Promise<types.CLC[]> => {
   try {
     console.time("Query Execution Time Get_CLC");
     //Pour requêter seulement les coordonnées (polygon) : ST_AsText(ST_GeomFromGeoJSON(ST_AsGeoJSON(geometry))) geometry
     const coords = centerCoord[1] + " " + centerCoord[0];
     const point = "POINT(" + coords + ")";
-    const value: Awaited<CLC[]> = await PrismaPostgres.$queryRaw`
+    const value: Awaited<types.CLC[]> = await PrismaPostgres.$queryRaw`
       SELECT 
       label3, 
       pk,
@@ -75,18 +56,16 @@ export const Get_CLC = async (centerCoord: number[]): Promise<CLC[]> => {
   }
 };
 
-type InconfortThermique = any;
-
-export const Get_Inconfort_Thermique = async (code: string): Promise<InconfortThermique[]> => {
+export const Get_Inconfort_Thermique = async (code: string): Promise<types.InconfortThermique[]> => {
   try {
-    console.time("Query Execution Time Get_CLC");
-    const value: Awaited<InconfortThermique[]> = await PrismaPostgres.$queryRaw`
-      SELECT 
-      code_commune, 
-      libelle_geographique
-      FROM databases."inconfort_thermique" WHERE epci=${code};`;
+    console.time("Query Execution Time INCONFORT");
+    const value = await PrismaPostgres.inconfort_thermique.findMany({
+      where: {
+        epci: code,
+      },
+    })
+    console.timeEnd("Query Execution Time INCONFORT");
     // console.log(value)
-    console.timeEnd("Query Execution Time Get_CLC");
     return value;
   } catch (error) {
     console.error(error);
@@ -94,3 +73,4 @@ export const Get_Inconfort_Thermique = async (code: string): Promise<InconfortTh
     process.exit(1);
   }
 };
+
