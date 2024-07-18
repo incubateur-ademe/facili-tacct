@@ -1,6 +1,6 @@
-import styles from "./donnees.module.scss";
+import { Loader } from "../../components/loader";
 
 export default function Loading() {
   // You can add any UI inside Loading, including a Skeleton.
-  return <div className={styles.loader}></div>;
+  return <Loader/>;
 }

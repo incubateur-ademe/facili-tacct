@@ -1,96 +1,111 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
-import { Loader } from "@/app/donnees-territoriales/loader";
+import { Loader } from "@/components/loader";
 import LineChart1 from "@/components/charts/lineChart1";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { GridCol } from "@/dsfr/layout";
 
-import { getEPCI } from "./actions/epci";
-import { getGrandAgeFromEPCI } from "./actions/grand-age";
-
-interface GrandAge {
-  "": number;
-  "4_to_75_sum_1968": number;
-  "4_to_75_sum_1975": number;
-  "4_to_75_sum_1982": number;
-  "4_to_75_sum_1990": number;
-  "4_to_75_sum_1999": number;
-  "4_to_75_sum_2009": number;
-  "4_to_75_sum_2014": number;
-  "4_to_75_sum_2020": number;
-  "Code géographique": number;
-  Département: number;
-  "EPCI - Métropole": number;
-  "Libellé de commune": string;
-  "Libellé de l'EPCI / Métropole": string;
-  "Libellé géographique": string;
-  Région: number;
-  over_75_sum_1968: number;
-  over_75_sum_1975: number;
-  over_75_sum_1982: number;
-  over_75_sum_1990: number;
-  over_75_sum_1999: number;
-  over_75_sum_2009: number;
-  over_75_sum_2014: number;
-  over_75_sum_2020: number;
-  under_4_sum_1968: number;
-  under_4_sum_1975: number;
-  under_4_sum_1982: number;
-  under_4_sum_1990: number;
-  under_4_sum_1999: number;
-  under_4_sum_2009: number;
-  under_4_sum_2014: number;
-  under_4_sum_2020: number;
-}
+import { InconfortThermique } from "@/app/donnees-territoriales/type";
 
 interface Props {
-  activeDataTab: string;
-  data: Array<{
-    donnee: string;
-    facteur_sensibilite: string;
-    id: number;
-    risque: string;
-    titre: string;
-  }>;
-  // data_communes: DataCommunes;
-  // data_epci: DataEPCI;
+  inconfort_thermique: InconfortThermique[];
 }
 
-function sumProperty(items: TravailExt[], prop: "NA5AZ_sum" | "NA5BE_sum" | "NA5FZ_sum" | "NA5GU_sum" | "NA5OQ_sum") {
+type DataAge = {
+  code_commune: string | null | undefined,
+  libelle_geographique: string | null | undefined,
+  epci: string | null | undefined,
+  libelle_epci: string | null | undefined,
+  P20_POP80P : number | null | undefined,
+  P20_POP80P_PSEUL: number | null | undefined,
+  under_4_sum_1968: number | null | undefined,
+  to_80_sum_1968: number | null | undefined,
+  over_80_sum_1968: number | null | undefined,
+  under_4_sum_1975: number | null | undefined,
+  to_80_sum_1975: number | null | undefined,
+  over_80_sum_1975: number | null | undefined,
+  under_4_sum_1982: number | null | undefined,
+  to_80_sum_1982: number | null | undefined,
+  over_80_sum_1982: number | null | undefined,
+  under_4_sum_1990: number | null | undefined,
+  to_80_sum_1990: number | null | undefined,
+  over_80_sum_1990: number | null | undefined,
+  under_4_sum_1999: number | null | undefined,
+  to_80_sum_1999: number | null | undefined,
+  over_80_sum_1999: number | null | undefined,
+  under_4_sum_2009: number | null | undefined,
+  to_80_sum_2009: number | null | undefined,
+  over_80_sum_2009: number | null | undefined,
+  under_4_sum_2014: number | null | undefined,
+  to_80_sum_2014: number | null | undefined,
+  over_80_sum_2014: number | null | undefined,
+  under_4_sum_2020: number | null | undefined,
+  to_80_sum_2020: number | null | undefined,
+  over_80_sum_2020: number | null | undefined,
+}
+
+function sumProperty(items: any[], property: string) {
   return items.reduce(function (a, b) {
-    return a + b[prop];
+    return a + b[property];
   }, 0);
 }
 
 export const GrandAgeIsolement = (props: Props) => {
-  const { data, activeDataTab } = props;
+  const { inconfort_thermique } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
-  const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
-  const [xData, setXData] = useState<string[]>(["1968", "1975", "1982", "1990", "1999", "2009", "2014", "2020"]);
-  const [yData, setYData] = useState<number[]>([]);
+  const xData: string[] = ["1968", "1975", "1982", "1990", "1999", "2009", "2014", "2020"] 
+  const temp_db: DataAge[] = inconfort_thermique.map(el => {
+    return {
+      code_commune: el.code_commune,
+      libelle_geographique: el.libelle_geographique ,
+      epci: el.epci,
+      libelle_epci: el.libelle_epci,
+      P20_POP80P : el["P20_POP80P"],
+      P20_POP80P_PSEUL: el["P20_POP80P_PSEUL"],
+      under_4_sum_1968: el.under_4_sum_1968,
+      to_80_sum_1968: el.to_80_sum_1968,
+      over_80_sum_1968: el.over_80_sum_1968,
+      under_4_sum_1975: el.under_4_sum_1975,
+      to_80_sum_1975: el.to_80_sum_1975,
+      over_80_sum_1975: el.over_80_sum_1975,
+      under_4_sum_1982: el.under_4_sum_1982,
+      to_80_sum_1982: el.to_80_sum_1982,
+      over_80_sum_1982: el.over_80_sum_1982,
+      under_4_sum_1990: el.under_4_sum_1990,
+      to_80_sum_1990: el.to_80_sum_1990,
+      over_80_sum_1990: el.over_80_sum_1990,
+      under_4_sum_1999: el.under_4_sum_1999,
+      to_80_sum_1999: el.to_80_sum_1999,
+      over_80_sum_1999: el.over_80_sum_1999,
+      under_4_sum_2009: el.under_4_sum_2009,
+      to_80_sum_2009: el.to_80_sum_2009,
+      over_80_sum_2009: el.over_80_sum_2009,
+      under_4_sum_2014: el.under_4_sum_2014,
+      to_80_sum_2014: el.to_80_sum_2014,
+      over_80_sum_2014: el.over_80_sum_2014,
+      under_4_sum_2020: el.under_4_sum_2020,
+      to_80_sum_2020: el.to_80_sum_2020,
+      over_80_sum_2020: el.over_80_sum_2020
+    }
+  })
 
-  useEffect(() => {
-    void (async () => {
-      setEpci_chosen(await getEPCI(Number(code)));
-      const grandAgeData = await getGrandAgeFromEPCI(Number(code));
-      // console.log('GrandAgeData', Object.values(grandAgeData))
-      if (Object.keys(grandAgeData).length) {
-        // const y_percents = GrandAgeAlgo(grandAgeData)
-        const y_percents = Object.values(grandAgeData).slice(4);
-        // console.log('y_percent', y_percents)
-        setYData(y_percents);
-        return;
-      }
-    })();
-  }, [code]);
+  const yData = {
+    over_80_1968_percent_epci: (100 * sumProperty(temp_db, "over_80_sum_1968") / (sumProperty(temp_db, "to_80_sum_1968") + sumProperty(temp_db, "under_4_sum_1968"))).toFixed(2),
+    over_80_1975_percent_epci: (100 * sumProperty(temp_db, "over_80_sum_1975") / (sumProperty(temp_db, "to_80_sum_1975") + sumProperty(temp_db, "under_4_sum_1975"))).toFixed(2),
+    over_80_1982_percent_epci: (100 * sumProperty(temp_db, "over_80_sum_1982") / (sumProperty(temp_db, "to_80_sum_1982") + sumProperty(temp_db, "under_4_sum_1982"))).toFixed(2),
+    over_80_1990_percent_epci: (100 * sumProperty(temp_db, "over_80_sum_1990") / (sumProperty(temp_db, "to_80_sum_1990") + sumProperty(temp_db, "under_4_sum_1990"))).toFixed(2),
+    over_80_1999_percent_epci: (100 * sumProperty(temp_db, "over_80_sum_1999") / (sumProperty(temp_db, "to_80_sum_1999") + sumProperty(temp_db, "under_4_sum_1999"))).toFixed(2),
+    over_80_2009_percent_epci: (100 * sumProperty(temp_db, "over_80_sum_2009") / (sumProperty(temp_db, "to_80_sum_2009") + sumProperty(temp_db, "under_4_sum_2009"))).toFixed(2),
+    over_80_2014_percent_epci: (100 * sumProperty(temp_db, "over_80_sum_2014") / (sumProperty(temp_db, "to_80_sum_2014") + sumProperty(temp_db, "under_4_sum_2014"))).toFixed(2),
+    over_80_2020_percent_epci: (100 * sumProperty(temp_db, "over_80_sum_2020") / (sumProperty(temp_db, "to_80_sum_2020") + sumProperty(temp_db, "under_4_sum_2020"))).toFixed(2),
+  }
 
   return (
     <>
-      {epci_chosen ? (
+      {inconfort_thermique.length ? (
         <div
           style={{
             display: "flex",
@@ -103,8 +118,8 @@ export const GrandAgeIsolement = (props: Props) => {
           <GridCol lg={4}>
             <h4>LE CHIFFRE</h4>
             <p>
-              Dans l'EPCI {epci_chosen?.properties["EPCI"]} les personnes de plus de 75 ans représentent{" "}
-              <b>{yData.at(-1)?.toFixed(1)}%</b> de la population en 2020.
+              Dans l'EPCI {temp_db[0]?.libelle_epci} les personnes de plus de 80 ans représentent{" "}
+              <b>{yData.over_80_2020_percent_epci}%</b> de la population en 2020.
             </p>
             <h4>COMPLÉMENT</h4>
             <div>
@@ -124,7 +139,7 @@ export const GrandAgeIsolement = (props: Props) => {
               <p style={{ margin: "0 2em 0" }}>
                 <b>Évolution de la part de population de plus de 75 ans depuis 1968</b>
               </p>
-              {xData && yData.length ? <LineChart1 xData={xData} yData={yData} /> : <Loader />}
+              {yData.over_80_2020_percent_epci ? <LineChart1 xData={xData} yData={Object.values(yData).map(Number)} /> : <Loader />}
               <p style={{ margin: "1em 0" }}>
                 Source : <b>Observatoire des territoires</b>
               </p>

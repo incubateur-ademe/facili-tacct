@@ -1,39 +1,21 @@
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+"use client"
 
-import { Loader } from "@/app/donnees-territoriales/loader";
+import { useSearchParams } from "next/navigation";
+import { Loader } from "@/components/loader";
 import { PieChart1 } from "@/components/charts/pieChart1";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { GridCol } from "@/dsfr/layout";
-
-import { getEPCI } from "./actions/epci";
-import { getTravailExtFromEPCI } from "./actions/travail-exterieur";
-
-interface GraphData {
-  color: string;
-  count: number;
-  id: string;
-  label: string;
-  value: number | undefined;
-}
+import { InconfortThermique } from "@/app/donnees-territoriales/type";
 
 interface Props {
-  activeDataTab: string;
-  data: Array<{
-    donnee: string;
-    facteur_sensibilite: string;
-    id: number;
-    risque: string;
-    titre: string;
-  }>;
+  inconfort_thermique: InconfortThermique[];
 }
 
-interface TravailExt {
-  "": number;
-  CODGEO: number;
-  "EPCI - Métropole": number;
-  LIBGEO: string;
-  "Libellé de l'EPCI / Métropole": string;
+type DataTravailExt = {
+  code_commune: string | null | undefined,
+  libelle_geographique: string | null | undefined,
+  epci: string | null | undefined,
+  libelle_epci: string | null | undefined,
   NA5AZ_sum: number;
   NA5BE_sum: number;
   NA5FZ_sum: number;
@@ -41,92 +23,86 @@ interface TravailExt {
   NA5OQ_sum: number;
 }
 
-function sumProperty(items: TravailExt[], prop: "NA5AZ_sum" | "NA5BE_sum" | "NA5FZ_sum" | "NA5GU_sum" | "NA5OQ_sum") {
+function sumProperty(items: DataTravailExt[], prop: "NA5AZ_sum" | "NA5BE_sum" | "NA5FZ_sum" | "NA5GU_sum" | "NA5OQ_sum") {
   return items.reduce(function (a, b) {
     return a + b[prop];
   }, 0);
 }
 
+function sum(arr: number[]) {
+  return arr.reduce(function (a, b) {
+     return a + b;
+  }, 0);
+}
+
 export const TravailExterieur = (props: Props) => {
-  const { data, activeDataTab } = props;
+  const { inconfort_thermique } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
-  const [epci_chosen, setEpci_chosen] = useState<EPCITypes>();
-  const [agriculture, setAgriculture] = useState<number>();
-  const [industries, setIndustries] = useState<number>();
-  const [construction, setConstruction] = useState<number>();
-  const [commerce, setCommerce] = useState<number>();
-  const [administration, setAdministration] = useState<number>();
-  const [travailExt, setTavailExt] = useState<number>();
-  const [graphData, setGraphData] = useState<GraphData[]>([]);
+  const temp_db: DataTravailExt[] = inconfort_thermique.map(el => {
+    return {
+      code_commune: el.code_commune,
+      libelle_geographique: el.libelle_geographique ,
+      epci: el.epci,
+      libelle_epci: el.libelle_epci,
+      NA5AZ_sum: Number(el.NA5AZ_sum),
+      NA5BE_sum: Number(el.NA5BE_sum),
+      NA5FZ_sum: Number(el.NA5FZ_sum),
+      NA5GU_sum: Number(el.NA5GU_sum),
+      NA5OQ_sum: Number(el.NA5OQ_sum),
+    }
+  })
+  const sums = {
+    sumAgriculture: sumProperty(temp_db, "NA5AZ_sum"),
+    sumIndustries: sumProperty(temp_db, "NA5BE_sum"),
+    sumConstruction: sumProperty(temp_db, "NA5FZ_sum"),
+    sumCommerce: sumProperty(temp_db, "NA5GU_sum"),
+    sumAdministration: sumProperty(temp_db, "NA5OQ_sum")
+  }
 
-  useEffect(() => {
-    void (async () => {
-      const dataTravailExtRows = await getTravailExtFromEPCI(Number(code));
-      if (Object.keys(dataTravailExtRows).length) {
-        const sumAgriculture = sumProperty(Object.values(dataTravailExtRows), "NA5AZ_sum");
-        setAgriculture(sumAgriculture);
-        const sumIndustries = sumProperty(Object.values(dataTravailExtRows), "NA5BE_sum");
-        setIndustries(sumIndustries);
-        const sumConstruction = sumProperty(Object.values(dataTravailExtRows), "NA5FZ_sum");
-        setConstruction(sumConstruction);
-        const sumCommerce = sumProperty(Object.values(dataTravailExtRows), "NA5GU_sum");
-        setCommerce(sumCommerce);
-        const sumAdministration = sumProperty(Object.values(dataTravailExtRows), "NA5OQ_sum");
-        setAdministration(sumAdministration);
-        // const x = Object.keys(dataTravailExtRows).slice(3, 10);
-        // const y = Object.values(dataTravailExtRows).slice(3, 10);
-        // const sumTest: number = Number(y.reduce((partialSum: number, a: number) => partialSum + a, 0));
-        const allSums = sumAdministration + sumCommerce + sumConstruction + sumIndustries + sumAgriculture;
-        setTavailExt(
-          (100 * (sumAgriculture + sumConstruction)) /
-            (sumAdministration + sumCommerce + sumConstruction + sumIndustries + sumAgriculture),
-        );
-        setGraphData([
-          {
-            id: "Agriculture, sylviculture et pêche",
-            label: "Agriculture",
-            count: sumAgriculture,
-            color: "#68D273",
-            value: Number(((100 * sumAgriculture) / allSums).toFixed(1)),
-          },
-          {
-            id: "Industrie manufacturière, industries extractives et autres",
-            label: "Industries",
-            count: sumIndustries,
-            color: "#E4FFE3",
-            value: Number(((100 * sumIndustries) / allSums).toFixed(1)),
-          },
-          {
-            id: "Construction",
-            label: "Construction",
-            count: sumConstruction,
-            color: "#BD72D6",
-            value: Number(((100 * sumConstruction) / allSums).toFixed(1)),
-          },
-          {
-            id: "Commerce, transports et services divers",
-            label: "Commerces et transports",
-            count: sumCommerce,
-            color: "#FFF6E3",
-            value: Number(((100 * sumCommerce) / allSums).toFixed(1)),
-          },
-          {
-            id: "Administration publique, enseignement, santé humaine et action sociale",
-            label: "Administations",
-            count: sumAdministration,
-            color: "#E3EDFF",
-            value: Number(((100 * sumAdministration) / allSums).toFixed(1)),
-          },
-        ]);
-      }
-      setEpci_chosen(await getEPCI(Number(code)));
-    })();
-  }, [code]);
+  const graphData = [
+    {
+      id: "Agriculture, sylviculture et pêche",
+      label: "Agriculture",
+      count: sums.sumAgriculture,
+      color: "#68D273",
+      value: Number(((100 * sums.sumAgriculture) / sum(Object.values(sums))).toFixed(1)),
+    },
+    {
+      id: "Industrie manufacturière, industries extractives et autres",
+      label: "Industries",
+      count: sums.sumIndustries,
+      color: "#E4FFE3",
+      value: Number(((100 * sums.sumIndustries) / sum(Object.values(sums))).toFixed(1)),
+    },
+    {
+      id: "Construction",
+      label: "Construction",
+      count: sums.sumConstruction,
+      color: "#BD72D6",
+      value: Number(((100 * sums.sumConstruction) / sum(Object.values(sums))).toFixed(1)),
+    },
+    {
+      id: "Commerce, transports et services divers",
+      label: "Commerces et transports",
+      count: sums.sumCommerce,
+      color: "#FFF6E3",
+      value: Number(((100 * sums.sumCommerce) / sum(Object.values(sums))).toFixed(1)),
+    },
+    {
+      id: "Administration publique, enseignement, santé humaine et action sociale",
+      label: "Administations",
+      count: sums.sumAdministration,
+      color: "#E3EDFF",
+      value: Number(((100 * sums.sumAdministration) / sum(Object.values(sums))).toFixed(1)),
+    },
+  ]
 
+  const travailExt = Number(((100 * sums.sumConstruction) / sum(Object.values(sums))).toFixed(1)) + Number(((100 * sums.sumAgriculture) / sum(Object.values(sums))).toFixed(1))
+  
   return (
     <>
-      {epci_chosen ? (
+      {inconfort_thermique.length ? (
         <div
           style={{
             display: "flex",
@@ -137,12 +113,12 @@ export const TravailExterieur = (props: Props) => {
           }}
         >
           <GridCol lg={5}>
-            {agriculture && construction ? (
+            {sums.sumConstruction ? (
               <div>
                 <h4>LE CHIFFRE</h4>
                 <p>
-                  Dans l'EPCI {epci_chosen?.properties.EPCI}, la part cumulée des emplois dans les secteurs à risque est
-                  de <b>{travailExt?.toFixed(1)}%</b>, soit {agriculture + construction} personnes.
+                  Dans l'EPCI {temp_db[0]?.libelle_epci}, la part cumulée des emplois dans les secteurs à risque est
+                  de <b>{travailExt?.toFixed(1)}%</b>, soit {sums.sumAgriculture + sums.sumConstruction} personnes.
                 </p>
               </div>
             ) : (
