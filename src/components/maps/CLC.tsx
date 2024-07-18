@@ -34,13 +34,13 @@ const Map = (props: Props) => {
     "Construction sites": "#DE7397",
     "Green urban areas": "#7EB47F", //ffa6ff
     "Sport and leisure facilities": "#DE7397",
-    "Non-irrigated arable land": "#A6FF80",
-    "Permanently irrigated land": "#A6FF80",
+    "Non-irrigated arable land": "#7A5710",
+    "Permanently irrigated land": "#7A5710",
     "Rice fields": "#FFE6A6",
     Vineyards: "#FFE6A6", //e68000
     "Fruit trees and berry plantations": "#FFE6A6",
     "Olive groves": "#FFE6A6", //e6a600
-    Pastures: "#A6FF80",
+    Pastures: "#7A5710",
     "Annual crops associated with permanent crops": "#FFE6A6",
     "Complex cultivation patterns": "#FFE6A6",
     "Land principally occupied by agriculture, with significant areas of natural vegetation": "#FFE6A6",
@@ -48,7 +48,7 @@ const Map = (props: Props) => {
     "Broad-leaved forest": "#7C9B39", //80ff00
     "Coniferous forest": "#7C9B39", //00a600
     "Mixed forest": "#7C9B39", //4dff00
-    "Natural grasslands": "#A6FF80", //ccf24d
+    "Natural grasslands": "#7A5710", //ccf24d
     "Moors and heathland": "#CCCCFF",
     "Sclerophyllous vegetation": "#a6e64d",
     "Transitional woodland-shrub": "#a6f200",
@@ -116,10 +116,6 @@ const Map = (props: Props) => {
       dashArray: "",
       fillOpacity: 1,
     });
-
-    layer.bringToFront();
-    this.bindPopup(`<div>${label}</div>`);
-    this.openPopup();
   }
 
   //make style after hover disappear
@@ -131,7 +127,6 @@ const Map = (props: Props) => {
       dashArray: "3",
       fillOpacity: 0.5,
     });
-    this.closePopup(e.target);
   }
 
   function onEachFeature(feature: any, layer: any) {
