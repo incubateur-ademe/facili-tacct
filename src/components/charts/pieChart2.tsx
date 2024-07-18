@@ -1,6 +1,6 @@
 "use client";
 
-import { Loader } from "@/app/donnees-territoriales/loader";
+import { Loader } from "@/components/loader";
 import { ResponsivePie } from "@/lib/nivo/pie";
 
 type Props = {
