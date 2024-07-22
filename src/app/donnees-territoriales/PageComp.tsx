@@ -15,6 +15,7 @@ import { TravailExterieur } from "@/components/themes/inconfort-thermique/travai
 import { Vegetalisation } from "@/components/themes/inconfort-thermique/vegetalisation";
 
 import styles from "./donnees.module.scss";
+import { InconfortThermique } from "./type";
 
 interface Props {
   clc: Array<{
@@ -45,7 +46,7 @@ interface Props {
     };
     type: string;
   }>;
-  inconfort_thermique: any
+  inconfort_thermique: InconfortThermique[];
 }
 
 const allComps = [

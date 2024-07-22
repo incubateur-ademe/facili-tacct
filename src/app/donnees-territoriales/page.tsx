@@ -8,6 +8,7 @@ import { Box, Container, GridCol } from "../../dsfr/server";
 import styles from "./donnees.module.scss";
 import { Loader } from "../../components/loader";
 import { Get_CLC, Get_Communes, Get_Inconfort_Thermique } from "./queries";
+import { CLC, DbFiltered } from "./type";
 
 export const metadata: Metadata = {
   title: "Données territoriales",
@@ -25,23 +26,7 @@ type SearchParams = {
     thematique: string;
   };
 };
-interface CLC {
-  centroid: string;
-  geometry: string;
-  label3: string;
-  pk: number;
-  shape_length: number;
-}
-type DbFiltered = {
-  code_commune: string;
-  coordinates: string;
-  densite_bati: number;
-  epci: string;
-  geometry: string;
-  libelle_commune: string;
-  libelle_epci: string;
-  precarite_logement: number;
-};
+
 // 200042497 CODE EPCI TEST 200069193 PARIS 200054781
 
 const Page = async (searchParams: SearchParams) => {

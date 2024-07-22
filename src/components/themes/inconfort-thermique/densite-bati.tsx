@@ -6,25 +6,25 @@ import { GridCol } from "@/dsfr/layout";
 import { useSearchParams } from "next/navigation";
 
 interface Props {
-  activeDataTab: string;
-  data: Array<{
-    donnee: string;
-    facteur_sensibilite: string;
-    id: number;
-    risque: string;
-    titre: string;
-  }>;
   db_filtered: Array<{
+    geometry: string;
+    properties: {
+      code_commune: string;
+      coordinates: string;
+      densite_bati: number;
+      epci: string;
+      libelle_commune: string;
+      libelle_epci: string;
+      precarite_logement: number;
+    };
     type: string;
-    geometry: any;
-    properties:any;
   }>
 }
 
 const average = (array: number[]) => array.reduce((a: number, b: number) => a + b) / array.length;
 
 export const DensiteBati = (props: Props) => {
-  const { data, db_filtered, activeDataTab } = props;
+  const { db_filtered } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
   const densite_epci = db_filtered?.map((el, i) => el.properties.densite_bati);
