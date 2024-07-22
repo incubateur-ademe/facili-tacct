@@ -7,23 +7,20 @@ import Map from "@/components/maps/map";
 import { GridCol } from "@/dsfr/layout";
 
 interface Props {
-  activeDataTab: string;
-  data: Array<{
-    donnee: string;
-    facteur_sensibilite: string;
-    id: number;
-    risque: string;
-    titre: string;
-  }>;
   db_filtered: Array<{
+    geometry: string;
+    properties: {
+      code_commune: string;
+      coordinates: string;
+      densite_bati: number;
+      epci: string;
+      libelle_commune: string;
+      libelle_epci: string;
+      precarite_logement: number;
+    };
     type: string;
-    geometry: any;
-    properties:any;
   }>
-  // data_communes: DataCommunes;
-  // data_epci: DataEPCI;
 }
-// const dataPrecariteLogMob = dataPrecariteLogMob_raw as Row[];
 
 export const FragiliteEconomique = (props: Props) => {
   const { db_filtered } = props;
@@ -36,7 +33,7 @@ export const FragiliteEconomique = (props: Props) => {
       return a + b.properties["precarite_logement"];
     }, 0) / db_filtered.length,
   );
-  // console.log('db_filtered', precarite_log_epci)
+  // console.log('db_filtered', db_filtered)
 
   return (
     <>
