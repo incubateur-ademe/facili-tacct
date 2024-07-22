@@ -1,17 +1,16 @@
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { GridCol } from "@/dsfr/layout";
 
 import Map from "@/components/maps/CLC";
-import { getVegetalisationFromEPCI } from "./actions/vegetalisation";
 import { Loader } from "@/components/loader";
 
 import { styled } from '@mui/material/styles';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 
 import { LegendCLC } from "./vegetalisation-legend";
+import { InconfortThermique } from "@/app/donnees-territoriales/type";
 
 interface Props {
   clc: Array<{
@@ -22,14 +21,54 @@ interface Props {
       centroid: string;
     }
   }>;
+  inconfort_thermique: InconfortThermique[];
+}
+
+type Vegetalisation = {
+  code_commune: string | null | undefined,
+  libelle_geographique: string | null | undefined,
+  epci: string | null | undefined,
+  libelle_epci: string | null | undefined,
+  clc_1_artificialise: number,
+  clc_2_agricole: number,
+  clc_3_foret_semiNaturel: number,
+  clc_4_humide: number,
+  clc_5_eau: number,
+}
+
+function sumProperty(items: any[], property: string) {
+  return items.reduce(function (a, b) {
+    return a + b[property];
+  }, 0);
 }
 
 export const Vegetalisation = (props: Props) => {
-  const { clc } = props;
+  const { clc, inconfort_thermique } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
-  const [foret, setForet] = useState<number>();
-  const [dataVegetalisation, setDataVegetalisation] = useState<any>();
+
+  const temp_db: Vegetalisation[] = inconfort_thermique.map(el => {
+    return {
+      code_commune: el.code_commune,
+      libelle_geographique: el.libelle_geographique,
+      epci: el.epci,
+      libelle_epci: el.libelle_epci,
+      clc_1_artificialise: Number(el.clc_1_artificialise),
+      clc_2_agricole: Number(el.clc_2_agricole),
+      clc_3_foret_semiNaturel: Number(el.clc_3_foret_semiNaturel),
+      clc_4_humide: Number(el.clc_4_humide),
+      clc_5_eau: Number(el.clc_5_eau),
+    };
+  });
+
+  const foret_sum = sumProperty(temp_db, "clc_3_foret_semiNaturel");
+  const foret_percent = 100 * sumProperty(temp_db, "clc_3_foret_semiNaturel") / (
+    sumProperty(temp_db, "clc_1_artificialise") + 
+    sumProperty(temp_db, "clc_2_agricole") + 
+    sumProperty(temp_db, "clc_3_foret_semiNaturel") + 
+    sumProperty(temp_db, "clc_4_humide") + 
+    sumProperty(temp_db, "clc_5_eau")
+  );
 
   const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -41,22 +80,9 @@ export const Vegetalisation = (props: Props) => {
       },
   }));
 
-  useEffect(() => {
-    void (async () => {
-      const dataVegetalisationRows = await getVegetalisationFromEPCI(Number(code));
-      if (Object.keys(dataVegetalisationRows).length) {
-        // const x = Object.keys(dataTravailExtRows).slice(3, 10);
-        setDataVegetalisation(dataVegetalisationRows);
-        const y: any = Object.values(dataVegetalisationRows).slice(3);
-        const sum_ha: number = Number(y.reduce((partialSum: number, a: number) => partialSum + a, 0));
-        setForet((100 * y.at(2)) / sum_ha);
-      }
-    })();
-  }, [code]);
-
   return (
     <>
-      {clc ? (
+      {clc && temp_db ? (
         <div
           style={{
             display: "flex",
@@ -66,13 +92,13 @@ export const Vegetalisation = (props: Props) => {
             alignItems: "center",
           }}
         >
-          {dataVegetalisation ? (
+          {temp_db.length ? (
             <>
             <GridCol lg={4}>
               <h4>LE CHIFFRE</h4>
               <p>
-                Dans l'EPCI {dataVegetalisation?.LIBEPCI_x}, <b>{foret?.toFixed(1)}%</b> du territoire est de la forêt ou
-                des espaces semi-naturels.
+                Dans l'EPCI {temp_db[0]?.libelle_epci}, <b>{foret_percent?.toFixed(1)}%</b> du territoire est de la forêt ou
+                des espaces semi-naturels. Cela correspond à <b>{foret_sum?.toFixed(1)}</b> hectares.
               </p>
               <h4>EXPLICATION</h4>
               <p>
@@ -106,11 +132,11 @@ export const Vegetalisation = (props: Props) => {
             </GridCol>
             </>
           ) : (
-            <Loader />
+            <GraphDataNotFound code={code} />
           )}
         </div>
       ) : (
-        <GraphDataNotFound code={code} />
+        <Loader />
       )}
     </>
   );

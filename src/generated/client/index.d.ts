@@ -49,8 +49,8 @@ export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPa
  * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
  */
 export class PrismaClient<
-  T extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
-  U = 'log' extends keyof T ? T['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<T['log']> : never : never,
+  ClientOptions extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
+  U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
   ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
 > {
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
@@ -70,7 +70,7 @@ export class PrismaClient<
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
    */
 
-  constructor(optionsArg ?: Prisma.Subset<T, Prisma.PrismaClientOptions>);
+  constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
   $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): void;
 
   /**
@@ -154,7 +154,7 @@ export class PrismaClient<
   $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<R>
 
 
-  $extends: $Extensions.ExtendsHook<'extends', Prisma.TypeMapCb, ExtArgs>
+  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb, ExtArgs>
 
       /**
    * `prisma.inconfort_thermique`: Exposes CRUD operations for the **inconfort_thermique** model.
@@ -252,7 +252,7 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.13.0
+   * Prisma Client JS version: 5.16.2
    * Query Engine version: 34ace0eb2704183d2c05b60b52fba5c43c13f303
    */
   export type PrismaVersion = {
@@ -685,79 +685,82 @@ export namespace Prisma {
     db?: Datasource
   }
 
-
-  interface TypeMapCb extends $Utils.Fn<{extArgs: $Extensions.InternalArgs}, $Utils.Record<string, any>> {
-    returns: Prisma.TypeMap<this['params']['extArgs']>
+  interface TypeMapCb extends $Utils.Fn<{extArgs: $Extensions.InternalArgs, clientOptions: PrismaClientOptions }, $Utils.Record<string, any>> {
+    returns: Prisma.TypeMap<this['params']['extArgs'], this['params']['clientOptions']>
   }
 
-  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: 'inconfort_thermique' | 'clc_2018_2' | 'communes2' | 'spatial_ref_sys'
+      modelProps: "inconfort_thermique" | "clc_2018_2" | "communes2" | "spatial_ref_sys"
       txIsolationLevel: Prisma.TransactionIsolationLevel
-    },
+    }
     model: {
       inconfort_thermique: {
         payload: Prisma.$inconfort_thermiquePayload<ExtArgs>
         fields: Prisma.inconfort_thermiqueFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.inconfort_thermiqueFindUniqueArgs<ExtArgs>,
+            args: Prisma.inconfort_thermiqueFindUniqueArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.inconfort_thermiqueFindUniqueOrThrowArgs<ExtArgs>,
+            args: Prisma.inconfort_thermiqueFindUniqueOrThrowArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>
           }
           findFirst: {
-            args: Prisma.inconfort_thermiqueFindFirstArgs<ExtArgs>,
+            args: Prisma.inconfort_thermiqueFindFirstArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.inconfort_thermiqueFindFirstOrThrowArgs<ExtArgs>,
+            args: Prisma.inconfort_thermiqueFindFirstOrThrowArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>
           }
           findMany: {
-            args: Prisma.inconfort_thermiqueFindManyArgs<ExtArgs>,
+            args: Prisma.inconfort_thermiqueFindManyArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>[]
           }
           create: {
-            args: Prisma.inconfort_thermiqueCreateArgs<ExtArgs>,
+            args: Prisma.inconfort_thermiqueCreateArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>
           }
           createMany: {
-            args: Prisma.inconfort_thermiqueCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
+            args: Prisma.inconfort_thermiqueCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.inconfort_thermiqueCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>[]
           }
           delete: {
-            args: Prisma.inconfort_thermiqueDeleteArgs<ExtArgs>,
+            args: Prisma.inconfort_thermiqueDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>
           }
           update: {
-            args: Prisma.inconfort_thermiqueUpdateArgs<ExtArgs>,
+            args: Prisma.inconfort_thermiqueUpdateArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>
           }
           deleteMany: {
-            args: Prisma.inconfort_thermiqueDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
+            args: Prisma.inconfort_thermiqueDeleteManyArgs<ExtArgs>
+            result: BatchPayload
           }
           updateMany: {
-            args: Prisma.inconfort_thermiqueUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
+            args: Prisma.inconfort_thermiqueUpdateManyArgs<ExtArgs>
+            result: BatchPayload
           }
           upsert: {
-            args: Prisma.inconfort_thermiqueUpsertArgs<ExtArgs>,
+            args: Prisma.inconfort_thermiqueUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>
           }
           aggregate: {
-            args: Prisma.Inconfort_thermiqueAggregateArgs<ExtArgs>,
+            args: Prisma.Inconfort_thermiqueAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateInconfort_thermique>
           }
           groupBy: {
-            args: Prisma.inconfort_thermiqueGroupByArgs<ExtArgs>,
+            args: Prisma.inconfort_thermiqueGroupByArgs<ExtArgs>
             result: $Utils.Optional<Inconfort_thermiqueGroupByOutputType>[]
           }
           count: {
-            args: Prisma.inconfort_thermiqueCountArgs<ExtArgs>,
+            args: Prisma.inconfort_thermiqueCountArgs<ExtArgs>
             result: $Utils.Optional<Inconfort_thermiqueCountAggregateOutputType> | number
           }
         }
@@ -767,63 +770,67 @@ export namespace Prisma {
         fields: Prisma.clc_2018_2FieldRefs
         operations: {
           findUnique: {
-            args: Prisma.clc_2018_2FindUniqueArgs<ExtArgs>,
+            args: Prisma.clc_2018_2FindUniqueArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.clc_2018_2FindUniqueOrThrowArgs<ExtArgs>,
+            args: Prisma.clc_2018_2FindUniqueOrThrowArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>
           }
           findFirst: {
-            args: Prisma.clc_2018_2FindFirstArgs<ExtArgs>,
+            args: Prisma.clc_2018_2FindFirstArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.clc_2018_2FindFirstOrThrowArgs<ExtArgs>,
+            args: Prisma.clc_2018_2FindFirstOrThrowArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>
           }
           findMany: {
-            args: Prisma.clc_2018_2FindManyArgs<ExtArgs>,
+            args: Prisma.clc_2018_2FindManyArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>[]
           }
           create: {
-            args: Prisma.clc_2018_2CreateArgs<ExtArgs>,
+            args: Prisma.clc_2018_2CreateArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>
           }
           createMany: {
-            args: Prisma.clc_2018_2CreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
+            args: Prisma.clc_2018_2CreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.clc_2018_2CreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>[]
           }
           delete: {
-            args: Prisma.clc_2018_2DeleteArgs<ExtArgs>,
+            args: Prisma.clc_2018_2DeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>
           }
           update: {
-            args: Prisma.clc_2018_2UpdateArgs<ExtArgs>,
+            args: Prisma.clc_2018_2UpdateArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>
           }
           deleteMany: {
-            args: Prisma.clc_2018_2DeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
+            args: Prisma.clc_2018_2DeleteManyArgs<ExtArgs>
+            result: BatchPayload
           }
           updateMany: {
-            args: Prisma.clc_2018_2UpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
+            args: Prisma.clc_2018_2UpdateManyArgs<ExtArgs>
+            result: BatchPayload
           }
           upsert: {
-            args: Prisma.clc_2018_2UpsertArgs<ExtArgs>,
+            args: Prisma.clc_2018_2UpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>
           }
           aggregate: {
-            args: Prisma.Clc_2018_2AggregateArgs<ExtArgs>,
+            args: Prisma.Clc_2018_2AggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateClc_2018_2>
           }
           groupBy: {
-            args: Prisma.clc_2018_2GroupByArgs<ExtArgs>,
+            args: Prisma.clc_2018_2GroupByArgs<ExtArgs>
             result: $Utils.Optional<Clc_2018_2GroupByOutputType>[]
           }
           count: {
-            args: Prisma.clc_2018_2CountArgs<ExtArgs>,
+            args: Prisma.clc_2018_2CountArgs<ExtArgs>
             result: $Utils.Optional<Clc_2018_2CountAggregateOutputType> | number
           }
         }
@@ -833,63 +840,67 @@ export namespace Prisma {
         fields: Prisma.communes2FieldRefs
         operations: {
           findUnique: {
-            args: Prisma.communes2FindUniqueArgs<ExtArgs>,
+            args: Prisma.communes2FindUniqueArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$communes2Payload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.communes2FindUniqueOrThrowArgs<ExtArgs>,
+            args: Prisma.communes2FindUniqueOrThrowArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$communes2Payload>
           }
           findFirst: {
-            args: Prisma.communes2FindFirstArgs<ExtArgs>,
+            args: Prisma.communes2FindFirstArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$communes2Payload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.communes2FindFirstOrThrowArgs<ExtArgs>,
+            args: Prisma.communes2FindFirstOrThrowArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$communes2Payload>
           }
           findMany: {
-            args: Prisma.communes2FindManyArgs<ExtArgs>,
+            args: Prisma.communes2FindManyArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$communes2Payload>[]
           }
           create: {
-            args: Prisma.communes2CreateArgs<ExtArgs>,
+            args: Prisma.communes2CreateArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$communes2Payload>
           }
           createMany: {
-            args: Prisma.communes2CreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
+            args: Prisma.communes2CreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.communes2CreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communes2Payload>[]
           }
           delete: {
-            args: Prisma.communes2DeleteArgs<ExtArgs>,
+            args: Prisma.communes2DeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$communes2Payload>
           }
           update: {
-            args: Prisma.communes2UpdateArgs<ExtArgs>,
+            args: Prisma.communes2UpdateArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$communes2Payload>
           }
           deleteMany: {
-            args: Prisma.communes2DeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
+            args: Prisma.communes2DeleteManyArgs<ExtArgs>
+            result: BatchPayload
           }
           updateMany: {
-            args: Prisma.communes2UpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
+            args: Prisma.communes2UpdateManyArgs<ExtArgs>
+            result: BatchPayload
           }
           upsert: {
-            args: Prisma.communes2UpsertArgs<ExtArgs>,
+            args: Prisma.communes2UpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$communes2Payload>
           }
           aggregate: {
-            args: Prisma.Communes2AggregateArgs<ExtArgs>,
+            args: Prisma.Communes2AggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateCommunes2>
           }
           groupBy: {
-            args: Prisma.communes2GroupByArgs<ExtArgs>,
+            args: Prisma.communes2GroupByArgs<ExtArgs>
             result: $Utils.Optional<Communes2GroupByOutputType>[]
           }
           count: {
-            args: Prisma.communes2CountArgs<ExtArgs>,
+            args: Prisma.communes2CountArgs<ExtArgs>
             result: $Utils.Optional<Communes2CountAggregateOutputType> | number
           }
         }
@@ -899,63 +910,67 @@ export namespace Prisma {
         fields: Prisma.spatial_ref_sysFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.spatial_ref_sysFindUniqueArgs<ExtArgs>,
+            args: Prisma.spatial_ref_sysFindUniqueArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>,
+            args: Prisma.spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
           }
           findFirst: {
-            args: Prisma.spatial_ref_sysFindFirstArgs<ExtArgs>,
+            args: Prisma.spatial_ref_sysFindFirstArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>,
+            args: Prisma.spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
           }
           findMany: {
-            args: Prisma.spatial_ref_sysFindManyArgs<ExtArgs>,
+            args: Prisma.spatial_ref_sysFindManyArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[]
           }
           create: {
-            args: Prisma.spatial_ref_sysCreateArgs<ExtArgs>,
+            args: Prisma.spatial_ref_sysCreateArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
           }
           createMany: {
-            args: Prisma.spatial_ref_sysCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
+            args: Prisma.spatial_ref_sysCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.spatial_ref_sysCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[]
           }
           delete: {
-            args: Prisma.spatial_ref_sysDeleteArgs<ExtArgs>,
+            args: Prisma.spatial_ref_sysDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
           }
           update: {
-            args: Prisma.spatial_ref_sysUpdateArgs<ExtArgs>,
+            args: Prisma.spatial_ref_sysUpdateArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
           }
           deleteMany: {
-            args: Prisma.spatial_ref_sysDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
+            args: Prisma.spatial_ref_sysDeleteManyArgs<ExtArgs>
+            result: BatchPayload
           }
           updateMany: {
-            args: Prisma.spatial_ref_sysUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
+            args: Prisma.spatial_ref_sysUpdateManyArgs<ExtArgs>
+            result: BatchPayload
           }
           upsert: {
-            args: Prisma.spatial_ref_sysUpsertArgs<ExtArgs>,
+            args: Prisma.spatial_ref_sysUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
           }
           aggregate: {
-            args: Prisma.Spatial_ref_sysAggregateArgs<ExtArgs>,
+            args: Prisma.Spatial_ref_sysAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateSpatial_ref_sys>
           }
           groupBy: {
-            args: Prisma.spatial_ref_sysGroupByArgs<ExtArgs>,
+            args: Prisma.spatial_ref_sysGroupByArgs<ExtArgs>
             result: $Utils.Optional<Spatial_ref_sysGroupByOutputType>[]
           }
           count: {
-            args: Prisma.spatial_ref_sysCountArgs<ExtArgs>,
+            args: Prisma.spatial_ref_sysCountArgs<ExtArgs>
             result: $Utils.Optional<Spatial_ref_sysCountAggregateOutputType> | number
           }
         }
@@ -984,7 +999,7 @@ export namespace Prisma {
       }
     }
   }
-  export const defineExtension: $Extensions.ExtendsHook<'define', Prisma.TypeMapCb, $Extensions.DefaultArgs>
+  export const defineExtension: $Extensions.ExtendsHook<"define", Prisma.TypeMapCb, $Extensions.DefaultArgs>
   export type DefaultPrismaClient = PrismaClient
   export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
   export interface PrismaClientOptions {
@@ -1029,6 +1044,7 @@ export namespace Prisma {
     }
   }
 
+
   /* Types for Logging */
   export type LogLevel = 'info' | 'query' | 'warn' | 'error'
   export type LogDefinition = {
@@ -1065,6 +1081,7 @@ export namespace Prisma {
     | 'findFirstOrThrow'
     | 'create'
     | 'createMany'
+    | 'createManyAndReturn'
     | 'update'
     | 'updateMany'
     | 'upsert'
@@ -1165,6 +1182,8 @@ export namespace Prisma {
     over_80_sum_2020: number | null
     P20_POP80P: number | null
     P20_POP80P_PSEUL: number | null
+    P20_POP80P_PSEUL_PERCENT: number | null
+    ratio_precarite_log: number | null
     tee_log: number | null
     tee_mob: number | null
     precarite_logement: number | null
@@ -1175,10 +1194,15 @@ export namespace Prisma {
     NA5OQ_sum: number | null
     s_geom_cstr_bati: number | null
     densite_bati: number | null
+    clc_1_artificialise: number | null
+    clc_2_agricole: number | null
+    clc_3_foret_semiNaturel: number | null
+    clc_4_humide: number | null
+    clc_5_eau: number | null
   }
 
   export type Inconfort_thermiqueSumAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     region: number | null
     age_bati_post06: number | null
     age_bati_91_05: number | null
@@ -1211,6 +1235,8 @@ export namespace Prisma {
     over_80_sum_2020: number | null
     P20_POP80P: number | null
     P20_POP80P_PSEUL: number | null
+    P20_POP80P_PSEUL_PERCENT: number | null
+    ratio_precarite_log: number | null
     tee_log: number | null
     tee_mob: number | null
     precarite_logement: number | null
@@ -1221,10 +1247,15 @@ export namespace Prisma {
     NA5OQ_sum: bigint | null
     s_geom_cstr_bati: number | null
     densite_bati: number | null
+    clc_1_artificialise: number | null
+    clc_2_agricole: number | null
+    clc_3_foret_semiNaturel: number | null
+    clc_4_humide: number | null
+    clc_5_eau: number | null
   }
 
   export type Inconfort_thermiqueMinAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_commune: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -1262,6 +1293,8 @@ export namespace Prisma {
     over_80_sum_2020: number | null
     P20_POP80P: number | null
     P20_POP80P_PSEUL: number | null
+    P20_POP80P_PSEUL_PERCENT: number | null
+    ratio_precarite_log: number | null
     tee_log: number | null
     tee_mob: number | null
     precarite_logement: number | null
@@ -1272,10 +1305,15 @@ export namespace Prisma {
     NA5OQ_sum: bigint | null
     s_geom_cstr_bati: number | null
     densite_bati: number | null
+    clc_1_artificialise: number | null
+    clc_2_agricole: number | null
+    clc_3_foret_semiNaturel: number | null
+    clc_4_humide: number | null
+    clc_5_eau: number | null
   }
 
   export type Inconfort_thermiqueMaxAggregateOutputType = {
-    index: bigint | null
+    index: number | null
     code_commune: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -1313,6 +1351,8 @@ export namespace Prisma {
     over_80_sum_2020: number | null
     P20_POP80P: number | null
     P20_POP80P_PSEUL: number | null
+    P20_POP80P_PSEUL_PERCENT: number | null
+    ratio_precarite_log: number | null
     tee_log: number | null
     tee_mob: number | null
     precarite_logement: number | null
@@ -1323,6 +1363,11 @@ export namespace Prisma {
     NA5OQ_sum: bigint | null
     s_geom_cstr_bati: number | null
     densite_bati: number | null
+    clc_1_artificialise: number | null
+    clc_2_agricole: number | null
+    clc_3_foret_semiNaturel: number | null
+    clc_4_humide: number | null
+    clc_5_eau: number | null
   }
 
   export type Inconfort_thermiqueCountAggregateOutputType = {
@@ -1364,6 +1409,8 @@ export namespace Prisma {
     over_80_sum_2020: number
     P20_POP80P: number
     P20_POP80P_PSEUL: number
+    P20_POP80P_PSEUL_PERCENT: number
+    ratio_precarite_log: number
     tee_log: number
     tee_mob: number
     precarite_logement: number
@@ -1374,6 +1421,11 @@ export namespace Prisma {
     NA5OQ_sum: number
     s_geom_cstr_bati: number
     densite_bati: number
+    clc_1_artificialise: number
+    clc_2_agricole: number
+    clc_3_foret_semiNaturel: number
+    clc_4_humide: number
+    clc_5_eau: number
     _all: number
   }
 
@@ -1412,6 +1464,8 @@ export namespace Prisma {
     over_80_sum_2020?: true
     P20_POP80P?: true
     P20_POP80P_PSEUL?: true
+    P20_POP80P_PSEUL_PERCENT?: true
+    ratio_precarite_log?: true
     tee_log?: true
     tee_mob?: true
     precarite_logement?: true
@@ -1422,6 +1476,11 @@ export namespace Prisma {
     NA5OQ_sum?: true
     s_geom_cstr_bati?: true
     densite_bati?: true
+    clc_1_artificialise?: true
+    clc_2_agricole?: true
+    clc_3_foret_semiNaturel?: true
+    clc_4_humide?: true
+    clc_5_eau?: true
   }
 
   export type Inconfort_thermiqueSumAggregateInputType = {
@@ -1458,6 +1517,8 @@ export namespace Prisma {
     over_80_sum_2020?: true
     P20_POP80P?: true
     P20_POP80P_PSEUL?: true
+    P20_POP80P_PSEUL_PERCENT?: true
+    ratio_precarite_log?: true
     tee_log?: true
     tee_mob?: true
     precarite_logement?: true
@@ -1468,6 +1529,11 @@ export namespace Prisma {
     NA5OQ_sum?: true
     s_geom_cstr_bati?: true
     densite_bati?: true
+    clc_1_artificialise?: true
+    clc_2_agricole?: true
+    clc_3_foret_semiNaturel?: true
+    clc_4_humide?: true
+    clc_5_eau?: true
   }
 
   export type Inconfort_thermiqueMinAggregateInputType = {
@@ -1509,6 +1575,8 @@ export namespace Prisma {
     over_80_sum_2020?: true
     P20_POP80P?: true
     P20_POP80P_PSEUL?: true
+    P20_POP80P_PSEUL_PERCENT?: true
+    ratio_precarite_log?: true
     tee_log?: true
     tee_mob?: true
     precarite_logement?: true
@@ -1519,6 +1587,11 @@ export namespace Prisma {
     NA5OQ_sum?: true
     s_geom_cstr_bati?: true
     densite_bati?: true
+    clc_1_artificialise?: true
+    clc_2_agricole?: true
+    clc_3_foret_semiNaturel?: true
+    clc_4_humide?: true
+    clc_5_eau?: true
   }
 
   export type Inconfort_thermiqueMaxAggregateInputType = {
@@ -1560,6 +1633,8 @@ export namespace Prisma {
     over_80_sum_2020?: true
     P20_POP80P?: true
     P20_POP80P_PSEUL?: true
+    P20_POP80P_PSEUL_PERCENT?: true
+    ratio_precarite_log?: true
     tee_log?: true
     tee_mob?: true
     precarite_logement?: true
@@ -1570,6 +1645,11 @@ export namespace Prisma {
     NA5OQ_sum?: true
     s_geom_cstr_bati?: true
     densite_bati?: true
+    clc_1_artificialise?: true
+    clc_2_agricole?: true
+    clc_3_foret_semiNaturel?: true
+    clc_4_humide?: true
+    clc_5_eau?: true
   }
 
   export type Inconfort_thermiqueCountAggregateInputType = {
@@ -1611,6 +1691,8 @@ export namespace Prisma {
     over_80_sum_2020?: true
     P20_POP80P?: true
     P20_POP80P_PSEUL?: true
+    P20_POP80P_PSEUL_PERCENT?: true
+    ratio_precarite_log?: true
     tee_log?: true
     tee_mob?: true
     precarite_logement?: true
@@ -1621,6 +1703,11 @@ export namespace Prisma {
     NA5OQ_sum?: true
     s_geom_cstr_bati?: true
     densite_bati?: true
+    clc_1_artificialise?: true
+    clc_2_agricole?: true
+    clc_3_foret_semiNaturel?: true
+    clc_4_humide?: true
+    clc_5_eau?: true
     _all?: true
   }
 
@@ -1711,7 +1798,7 @@ export namespace Prisma {
   }
 
   export type Inconfort_thermiqueGroupByOutputType = {
-    index: bigint
+    index: number
     code_commune: string | null
     libelle_geographique: string | null
     epci: string | null
@@ -1749,6 +1836,8 @@ export namespace Prisma {
     over_80_sum_2020: number | null
     P20_POP80P: number | null
     P20_POP80P_PSEUL: number | null
+    P20_POP80P_PSEUL_PERCENT: number | null
+    ratio_precarite_log: number | null
     tee_log: number | null
     tee_mob: number | null
     precarite_logement: number | null
@@ -1759,6 +1848,11 @@ export namespace Prisma {
     NA5OQ_sum: bigint | null
     s_geom_cstr_bati: number | null
     densite_bati: number | null
+    clc_1_artificialise: number | null
+    clc_2_agricole: number | null
+    clc_3_foret_semiNaturel: number | null
+    clc_4_humide: number | null
+    clc_5_eau: number | null
     _count: Inconfort_thermiqueCountAggregateOutputType | null
     _avg: Inconfort_thermiqueAvgAggregateOutputType | null
     _sum: Inconfort_thermiqueSumAggregateOutputType | null
@@ -1819,6 +1913,8 @@ export namespace Prisma {
     over_80_sum_2020?: boolean
     P20_POP80P?: boolean
     P20_POP80P_PSEUL?: boolean
+    P20_POP80P_PSEUL_PERCENT?: boolean
+    ratio_precarite_log?: boolean
     tee_log?: boolean
     tee_mob?: boolean
     precarite_logement?: boolean
@@ -1829,6 +1925,69 @@ export namespace Prisma {
     NA5OQ_sum?: boolean
     s_geom_cstr_bati?: boolean
     densite_bati?: boolean
+    clc_1_artificialise?: boolean
+    clc_2_agricole?: boolean
+    clc_3_foret_semiNaturel?: boolean
+    clc_4_humide?: boolean
+    clc_5_eau?: boolean
+  }, ExtArgs["result"]["inconfort_thermique"]>
+
+  export type inconfort_thermiqueSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_commune?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+    age_bati_post06?: boolean
+    age_bati_91_05?: boolean
+    age_bati_46_90?: boolean
+    age_bati_19_45?: boolean
+    age_bati_pre_19?: boolean
+    under_4_sum_1968?: boolean
+    to_80_sum_1968?: boolean
+    over_80_sum_1968?: boolean
+    under_4_sum_1975?: boolean
+    to_80_sum_1975?: boolean
+    over_80_sum_1975?: boolean
+    under_4_sum_1982?: boolean
+    to_80_sum_1982?: boolean
+    over_80_sum_1982?: boolean
+    under_4_sum_1990?: boolean
+    to_80_sum_1990?: boolean
+    over_80_sum_1990?: boolean
+    under_4_sum_1999?: boolean
+    to_80_sum_1999?: boolean
+    over_80_sum_1999?: boolean
+    under_4_sum_2009?: boolean
+    to_80_sum_2009?: boolean
+    over_80_sum_2009?: boolean
+    under_4_sum_2014?: boolean
+    to_80_sum_2014?: boolean
+    over_80_sum_2014?: boolean
+    under_4_sum_2020?: boolean
+    to_80_sum_2020?: boolean
+    over_80_sum_2020?: boolean
+    P20_POP80P?: boolean
+    P20_POP80P_PSEUL?: boolean
+    P20_POP80P_PSEUL_PERCENT?: boolean
+    ratio_precarite_log?: boolean
+    tee_log?: boolean
+    tee_mob?: boolean
+    precarite_logement?: boolean
+    NA5AZ_sum?: boolean
+    NA5BE_sum?: boolean
+    NA5FZ_sum?: boolean
+    NA5GU_sum?: boolean
+    NA5OQ_sum?: boolean
+    s_geom_cstr_bati?: boolean
+    densite_bati?: boolean
+    clc_1_artificialise?: boolean
+    clc_2_agricole?: boolean
+    clc_3_foret_semiNaturel?: boolean
+    clc_4_humide?: boolean
+    clc_5_eau?: boolean
   }, ExtArgs["result"]["inconfort_thermique"]>
 
   export type inconfort_thermiqueSelectScalar = {
@@ -1870,6 +2029,8 @@ export namespace Prisma {
     over_80_sum_2020?: boolean
     P20_POP80P?: boolean
     P20_POP80P_PSEUL?: boolean
+    P20_POP80P_PSEUL_PERCENT?: boolean
+    ratio_precarite_log?: boolean
     tee_log?: boolean
     tee_mob?: boolean
     precarite_logement?: boolean
@@ -1880,15 +2041,19 @@ export namespace Prisma {
     NA5OQ_sum?: boolean
     s_geom_cstr_bati?: boolean
     densite_bati?: boolean
+    clc_1_artificialise?: boolean
+    clc_2_agricole?: boolean
+    clc_3_foret_semiNaturel?: boolean
+    clc_4_humide?: boolean
+    clc_5_eau?: boolean
   }
-
 
 
   export type $inconfort_thermiquePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "inconfort_thermique"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
+      index: number
       code_commune: string | null
       libelle_geographique: string | null
       epci: string | null
@@ -1926,6 +2091,8 @@ export namespace Prisma {
       over_80_sum_2020: number | null
       P20_POP80P: number | null
       P20_POP80P_PSEUL: number | null
+      P20_POP80P_PSEUL_PERCENT: number | null
+      ratio_precarite_log: number | null
       tee_log: number | null
       tee_mob: number | null
       precarite_logement: number | null
@@ -1936,10 +2103,14 @@ export namespace Prisma {
       NA5OQ_sum: bigint | null
       s_geom_cstr_bati: number | null
       densite_bati: number | null
+      clc_1_artificialise: number | null
+      clc_2_agricole: number | null
+      clc_3_foret_semiNaturel: number | null
+      clc_4_humide: number | null
+      clc_5_eau: number | null
     }, ExtArgs["result"]["inconfort_thermique"]>
     composites: {}
   }
-
 
   type inconfort_thermiqueGetPayload<S extends boolean | null | undefined | inconfort_thermiqueDefaultArgs> = $Result.GetResult<Prisma.$inconfort_thermiquePayload, S>
 
@@ -1960,14 +2131,12 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findUnique<T extends inconfort_thermiqueFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, inconfort_thermiqueFindUniqueArgs<ExtArgs>>
-    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+     */
+    findUnique<T extends inconfort_thermiqueFindUniqueArgs>(args: SelectSubset<T, inconfort_thermiqueFindUniqueArgs<ExtArgs>>): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one Inconfort_thermique that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
+     * Find one Inconfort_thermique that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
      * @param {inconfort_thermiqueFindUniqueOrThrowArgs} args - Arguments to find a Inconfort_thermique
      * @example
      * // Get one Inconfort_thermique
@@ -1976,10 +2145,8 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findUniqueOrThrow<T extends inconfort_thermiqueFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, inconfort_thermiqueFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+     */
+    findUniqueOrThrow<T extends inconfort_thermiqueFindUniqueOrThrowArgs>(args: SelectSubset<T, inconfort_thermiqueFindUniqueOrThrowArgs<ExtArgs>>): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first Inconfort_thermique that matches the filter.
@@ -1993,10 +2160,8 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findFirst<T extends inconfort_thermiqueFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, inconfort_thermiqueFindFirstArgs<ExtArgs>>
-    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+     */
+    findFirst<T extends inconfort_thermiqueFindFirstArgs>(args?: SelectSubset<T, inconfort_thermiqueFindFirstArgs<ExtArgs>>): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first Inconfort_thermique that matches the filter or
@@ -2011,16 +2176,14 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findFirstOrThrow<T extends inconfort_thermiqueFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, inconfort_thermiqueFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+     */
+    findFirstOrThrow<T extends inconfort_thermiqueFindFirstOrThrowArgs>(args?: SelectSubset<T, inconfort_thermiqueFindFirstOrThrowArgs<ExtArgs>>): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more Inconfort_thermiques that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {inconfort_thermiqueFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {inconfort_thermiqueFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Inconfort_thermiques
      * const inconfort_thermiques = await prisma.inconfort_thermique.findMany()
@@ -2031,10 +2194,8 @@ export namespace Prisma {
      * // Only select the `index`
      * const inconfort_thermiqueWithIndexOnly = await prisma.inconfort_thermique.findMany({ select: { index: true } })
      * 
-    **/
-    findMany<T extends inconfort_thermiqueFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, inconfort_thermiqueFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'findMany'>>
+     */
+    findMany<T extends inconfort_thermiqueFindManyArgs>(args?: SelectSubset<T, inconfort_thermiqueFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a Inconfort_thermique.
@@ -2047,26 +2208,46 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    create<T extends inconfort_thermiqueCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, inconfort_thermiqueCreateArgs<ExtArgs>>
-    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+     */
+    create<T extends inconfort_thermiqueCreateArgs>(args: SelectSubset<T, inconfort_thermiqueCreateArgs<ExtArgs>>): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many Inconfort_thermiques.
-     *     @param {inconfort_thermiqueCreateManyArgs} args - Arguments to create many Inconfort_thermiques.
-     *     @example
-     *     // Create many Inconfort_thermiques
-     *     const inconfort_thermique = await prisma.inconfort_thermique.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
+     * @param {inconfort_thermiqueCreateManyArgs} args - Arguments to create many Inconfort_thermiques.
+     * @example
+     * // Create many Inconfort_thermiques
+     * const inconfort_thermique = await prisma.inconfort_thermique.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
      *     
-    **/
-    createMany<T extends inconfort_thermiqueCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, inconfort_thermiqueCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
+     */
+    createMany<T extends inconfort_thermiqueCreateManyArgs>(args?: SelectSubset<T, inconfort_thermiqueCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Inconfort_thermiques and returns the data saved in the database.
+     * @param {inconfort_thermiqueCreateManyAndReturnArgs} args - Arguments to create many Inconfort_thermiques.
+     * @example
+     * // Create many Inconfort_thermiques
+     * const inconfort_thermique = await prisma.inconfort_thermique.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Inconfort_thermiques and only return the `index`
+     * const inconfort_thermiqueWithIndexOnly = await prisma.inconfort_thermique.createManyAndReturn({ 
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends inconfort_thermiqueCreateManyAndReturnArgs>(args?: SelectSubset<T, inconfort_thermiqueCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a Inconfort_thermique.
@@ -2079,10 +2260,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    delete<T extends inconfort_thermiqueDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, inconfort_thermiqueDeleteArgs<ExtArgs>>
-    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+     */
+    delete<T extends inconfort_thermiqueDeleteArgs>(args: SelectSubset<T, inconfort_thermiqueDeleteArgs<ExtArgs>>): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one Inconfort_thermique.
@@ -2098,10 +2277,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    update<T extends inconfort_thermiqueUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, inconfort_thermiqueUpdateArgs<ExtArgs>>
-    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+     */
+    update<T extends inconfort_thermiqueUpdateArgs>(args: SelectSubset<T, inconfort_thermiqueUpdateArgs<ExtArgs>>): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more Inconfort_thermiques.
@@ -2114,10 +2291,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    deleteMany<T extends inconfort_thermiqueDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, inconfort_thermiqueDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
+     */
+    deleteMany<T extends inconfort_thermiqueDeleteManyArgs>(args?: SelectSubset<T, inconfort_thermiqueDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Inconfort_thermiques.
@@ -2135,10 +2310,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    updateMany<T extends inconfort_thermiqueUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, inconfort_thermiqueUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
+     */
+    updateMany<T extends inconfort_thermiqueUpdateManyArgs>(args: SelectSubset<T, inconfort_thermiqueUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create or update one Inconfort_thermique.
@@ -2156,10 +2329,9 @@ export namespace Prisma {
      *     // ... the filter for the Inconfort_thermique we want to update
      *   }
      * })
-    **/
-    upsert<T extends inconfort_thermiqueUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, inconfort_thermiqueUpsertArgs<ExtArgs>>
-    ): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+     */
+    upsert<T extends inconfort_thermiqueUpsertArgs>(args: SelectSubset<T, inconfort_thermiqueUpsertArgs<ExtArgs>>): Prisma__inconfort_thermiqueClient<$Result.GetResult<Prisma.$inconfort_thermiquePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
 
     /**
      * Count the number of Inconfort_thermiques.
@@ -2299,30 +2471,29 @@ export namespace Prisma {
    * https://github.com/prisma/prisma-client-js/issues/707
    */
   export interface Prisma__inconfort_thermiqueClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-
+    readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of which ever callback is executed.
      */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
     /**
      * Attaches a callback for only the rejection of the Promise.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of the callback.
      */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
     /**
      * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
      * resolved value cannot be modified from the callback.
      * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
      * @returns A Promise for the completion of the callback.
      */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
+
 
 
 
@@ -2330,7 +2501,7 @@ export namespace Prisma {
    * Fields of the inconfort_thermique model
    */ 
   interface inconfort_thermiqueFieldRefs {
-    readonly index: FieldRef<"inconfort_thermique", 'BigInt'>
+    readonly index: FieldRef<"inconfort_thermique", 'Int'>
     readonly code_commune: FieldRef<"inconfort_thermique", 'String'>
     readonly libelle_geographique: FieldRef<"inconfort_thermique", 'String'>
     readonly epci: FieldRef<"inconfort_thermique", 'String'>
@@ -2368,6 +2539,8 @@ export namespace Prisma {
     readonly over_80_sum_2020: FieldRef<"inconfort_thermique", 'Float'>
     readonly P20_POP80P: FieldRef<"inconfort_thermique", 'Float'>
     readonly P20_POP80P_PSEUL: FieldRef<"inconfort_thermique", 'Float'>
+    readonly P20_POP80P_PSEUL_PERCENT: FieldRef<"inconfort_thermique", 'Float'>
+    readonly ratio_precarite_log: FieldRef<"inconfort_thermique", 'Float'>
     readonly tee_log: FieldRef<"inconfort_thermique", 'Float'>
     readonly tee_mob: FieldRef<"inconfort_thermique", 'Float'>
     readonly precarite_logement: FieldRef<"inconfort_thermique", 'Float'>
@@ -2378,6 +2551,11 @@ export namespace Prisma {
     readonly NA5OQ_sum: FieldRef<"inconfort_thermique", 'BigInt'>
     readonly s_geom_cstr_bati: FieldRef<"inconfort_thermique", 'Float'>
     readonly densite_bati: FieldRef<"inconfort_thermique", 'Float'>
+    readonly clc_1_artificialise: FieldRef<"inconfort_thermique", 'Float'>
+    readonly clc_2_agricole: FieldRef<"inconfort_thermique", 'Float'>
+    readonly clc_3_foret_semiNaturel: FieldRef<"inconfort_thermique", 'Float'>
+    readonly clc_4_humide: FieldRef<"inconfort_thermique", 'Float'>
+    readonly clc_5_eau: FieldRef<"inconfort_thermique", 'Float'>
   }
     
 
@@ -2555,6 +2733,21 @@ export namespace Prisma {
    * inconfort_thermique createMany
    */
   export type inconfort_thermiqueCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many inconfort_thermiques.
+     */
+    data: inconfort_thermiqueCreateManyInput | inconfort_thermiqueCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * inconfort_thermique createManyAndReturn
+   */
+  export type inconfort_thermiqueCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the inconfort_thermique
+     */
+    select?: inconfort_thermiqueSelectCreateManyAndReturn<ExtArgs> | null
     /**
      * The data used to create many inconfort_thermiques.
      */
@@ -2871,6 +3064,15 @@ export namespace Prisma {
     centroid?: boolean
   }, ExtArgs["result"]["clc_2018_2"]>
 
+  export type clc_2018_2SelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    area_ha?: boolean
+    shape_length?: boolean
+    shape_area?: boolean
+    label3?: boolean
+    centroid?: boolean
+  }, ExtArgs["result"]["clc_2018_2"]>
+
   export type clc_2018_2SelectScalar = {
     pk?: boolean
     area_ha?: boolean
@@ -2879,7 +3081,6 @@ export namespace Prisma {
     label3?: boolean
     centroid?: boolean
   }
-
 
 
   export type $clc_2018_2Payload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2895,7 +3096,6 @@ export namespace Prisma {
     }, ExtArgs["result"]["clc_2018_2"]>
     composites: {}
   }
-
 
   type clc_2018_2GetPayload<S extends boolean | null | undefined | clc_2018_2DefaultArgs> = $Result.GetResult<Prisma.$clc_2018_2Payload, S>
 
@@ -2916,14 +3116,12 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findUnique<T extends clc_2018_2FindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_2018_2FindUniqueArgs<ExtArgs>>
-    ): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+     */
+    findUnique<T extends clc_2018_2FindUniqueArgs>(args: SelectSubset<T, clc_2018_2FindUniqueArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one Clc_2018_2 that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
+     * Find one Clc_2018_2 that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
      * @param {clc_2018_2FindUniqueOrThrowArgs} args - Arguments to find a Clc_2018_2
      * @example
      * // Get one Clc_2018_2
@@ -2932,10 +3130,8 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findUniqueOrThrow<T extends clc_2018_2FindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_2018_2FindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+     */
+    findUniqueOrThrow<T extends clc_2018_2FindUniqueOrThrowArgs>(args: SelectSubset<T, clc_2018_2FindUniqueOrThrowArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first Clc_2018_2 that matches the filter.
@@ -2949,10 +3145,8 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findFirst<T extends clc_2018_2FindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_2018_2FindFirstArgs<ExtArgs>>
-    ): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+     */
+    findFirst<T extends clc_2018_2FindFirstArgs>(args?: SelectSubset<T, clc_2018_2FindFirstArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first Clc_2018_2 that matches the filter or
@@ -2967,16 +3161,14 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findFirstOrThrow<T extends clc_2018_2FindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_2018_2FindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+     */
+    findFirstOrThrow<T extends clc_2018_2FindFirstOrThrowArgs>(args?: SelectSubset<T, clc_2018_2FindFirstOrThrowArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more Clc_2018_2s that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_2018_2FindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {clc_2018_2FindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Clc_2018_2s
      * const clc_2018_2s = await prisma.clc_2018_2.findMany()
@@ -2987,10 +3179,8 @@ export namespace Prisma {
      * // Only select the `pk`
      * const clc_2018_2WithPkOnly = await prisma.clc_2018_2.findMany({ select: { pk: true } })
      * 
-    **/
-    findMany<T extends clc_2018_2FindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_2018_2FindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, 'findMany'>>
+     */
+    findMany<T extends clc_2018_2FindManyArgs>(args?: SelectSubset<T, clc_2018_2FindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a Clc_2018_2.
@@ -3003,26 +3193,46 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    create<T extends clc_2018_2CreateArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_2018_2CreateArgs<ExtArgs>>
-    ): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, 'create'>, never, ExtArgs>
+     */
+    create<T extends clc_2018_2CreateArgs>(args: SelectSubset<T, clc_2018_2CreateArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many Clc_2018_2s.
-     *     @param {clc_2018_2CreateManyArgs} args - Arguments to create many Clc_2018_2s.
-     *     @example
-     *     // Create many Clc_2018_2s
-     *     const clc_2018_2 = await prisma.clc_2018_2.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
+     * @param {clc_2018_2CreateManyArgs} args - Arguments to create many Clc_2018_2s.
+     * @example
+     * // Create many Clc_2018_2s
+     * const clc_2018_2 = await prisma.clc_2018_2.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
      *     
-    **/
-    createMany<T extends clc_2018_2CreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_2018_2CreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
+     */
+    createMany<T extends clc_2018_2CreateManyArgs>(args?: SelectSubset<T, clc_2018_2CreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Clc_2018_2s and returns the data saved in the database.
+     * @param {clc_2018_2CreateManyAndReturnArgs} args - Arguments to create many Clc_2018_2s.
+     * @example
+     * // Create many Clc_2018_2s
+     * const clc_2018_2 = await prisma.clc_2018_2.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Clc_2018_2s and only return the `pk`
+     * const clc_2018_2WithPkOnly = await prisma.clc_2018_2.createManyAndReturn({ 
+     *   select: { pk: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends clc_2018_2CreateManyAndReturnArgs>(args?: SelectSubset<T, clc_2018_2CreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a Clc_2018_2.
@@ -3035,10 +3245,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    delete<T extends clc_2018_2DeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_2018_2DeleteArgs<ExtArgs>>
-    ): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+     */
+    delete<T extends clc_2018_2DeleteArgs>(args: SelectSubset<T, clc_2018_2DeleteArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one Clc_2018_2.
@@ -3054,10 +3262,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    update<T extends clc_2018_2UpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_2018_2UpdateArgs<ExtArgs>>
-    ): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, 'update'>, never, ExtArgs>
+     */
+    update<T extends clc_2018_2UpdateArgs>(args: SelectSubset<T, clc_2018_2UpdateArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more Clc_2018_2s.
@@ -3070,10 +3276,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    deleteMany<T extends clc_2018_2DeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, clc_2018_2DeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
+     */
+    deleteMany<T extends clc_2018_2DeleteManyArgs>(args?: SelectSubset<T, clc_2018_2DeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Clc_2018_2s.
@@ -3091,10 +3295,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    updateMany<T extends clc_2018_2UpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_2018_2UpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
+     */
+    updateMany<T extends clc_2018_2UpdateManyArgs>(args: SelectSubset<T, clc_2018_2UpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create or update one Clc_2018_2.
@@ -3112,10 +3314,9 @@ export namespace Prisma {
      *     // ... the filter for the Clc_2018_2 we want to update
      *   }
      * })
-    **/
-    upsert<T extends clc_2018_2UpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, clc_2018_2UpsertArgs<ExtArgs>>
-    ): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+     */
+    upsert<T extends clc_2018_2UpsertArgs>(args: SelectSubset<T, clc_2018_2UpsertArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
 
     /**
      * Count the number of Clc_2018_2s.
@@ -3255,30 +3456,29 @@ export namespace Prisma {
    * https://github.com/prisma/prisma-client-js/issues/707
    */
   export interface Prisma__clc_2018_2Client<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-
+    readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of which ever callback is executed.
      */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
     /**
      * Attaches a callback for only the rejection of the Promise.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of the callback.
      */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
     /**
      * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
      * resolved value cannot be modified from the callback.
      * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
      * @returns A Promise for the completion of the callback.
      */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
+
 
 
 
@@ -3469,6 +3669,21 @@ export namespace Prisma {
    * clc_2018_2 createMany
    */
   export type clc_2018_2CreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many clc_2018_2s.
+     */
+    data: clc_2018_2CreateManyInput | clc_2018_2CreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * clc_2018_2 createManyAndReturn
+   */
+  export type clc_2018_2CreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_2018_2
+     */
+    select?: clc_2018_2SelectCreateManyAndReturn<ExtArgs> | null
     /**
      * The data used to create many clc_2018_2s.
      */
@@ -3817,6 +4032,19 @@ export namespace Prisma {
     coordinates?: boolean
   }, ExtArgs["result"]["communes2"]>
 
+  export type communes2SelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    code_commune?: boolean
+    libelle_commune?: boolean
+    reg?: boolean
+    dep?: boolean
+    libelle_epci?: boolean
+    epci?: boolean
+    densite_bati?: boolean
+    precarite_logement?: boolean
+    coordinates?: boolean
+  }, ExtArgs["result"]["communes2"]>
+
   export type communes2SelectScalar = {
     pk?: boolean
     code_commune?: boolean
@@ -3829,7 +4057,6 @@ export namespace Prisma {
     precarite_logement?: boolean
     coordinates?: boolean
   }
-
 
 
   export type $communes2Payload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3850,7 +4077,6 @@ export namespace Prisma {
     composites: {}
   }
 
-
   type communes2GetPayload<S extends boolean | null | undefined | communes2DefaultArgs> = $Result.GetResult<Prisma.$communes2Payload, S>
 
   type communes2CountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
@@ -3870,14 +4096,12 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findUnique<T extends communes2FindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, communes2FindUniqueArgs<ExtArgs>>
-    ): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+     */
+    findUnique<T extends communes2FindUniqueArgs>(args: SelectSubset<T, communes2FindUniqueArgs<ExtArgs>>): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one Communes2 that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
+     * Find one Communes2 that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
      * @param {communes2FindUniqueOrThrowArgs} args - Arguments to find a Communes2
      * @example
      * // Get one Communes2
@@ -3886,10 +4110,8 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findUniqueOrThrow<T extends communes2FindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, communes2FindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+     */
+    findUniqueOrThrow<T extends communes2FindUniqueOrThrowArgs>(args: SelectSubset<T, communes2FindUniqueOrThrowArgs<ExtArgs>>): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first Communes2 that matches the filter.
@@ -3903,10 +4125,8 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findFirst<T extends communes2FindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, communes2FindFirstArgs<ExtArgs>>
-    ): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+     */
+    findFirst<T extends communes2FindFirstArgs>(args?: SelectSubset<T, communes2FindFirstArgs<ExtArgs>>): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first Communes2 that matches the filter or
@@ -3921,16 +4141,14 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findFirstOrThrow<T extends communes2FindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, communes2FindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+     */
+    findFirstOrThrow<T extends communes2FindFirstOrThrowArgs>(args?: SelectSubset<T, communes2FindFirstOrThrowArgs<ExtArgs>>): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more Communes2s that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {communes2FindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {communes2FindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Communes2s
      * const communes2s = await prisma.communes2.findMany()
@@ -3941,10 +4159,8 @@ export namespace Prisma {
      * // Only select the `pk`
      * const communes2WithPkOnly = await prisma.communes2.findMany({ select: { pk: true } })
      * 
-    **/
-    findMany<T extends communes2FindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, communes2FindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, 'findMany'>>
+     */
+    findMany<T extends communes2FindManyArgs>(args?: SelectSubset<T, communes2FindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a Communes2.
@@ -3957,26 +4173,46 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    create<T extends communes2CreateArgs<ExtArgs>>(
-      args: SelectSubset<T, communes2CreateArgs<ExtArgs>>
-    ): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, 'create'>, never, ExtArgs>
+     */
+    create<T extends communes2CreateArgs>(args: SelectSubset<T, communes2CreateArgs<ExtArgs>>): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many Communes2s.
-     *     @param {communes2CreateManyArgs} args - Arguments to create many Communes2s.
-     *     @example
-     *     // Create many Communes2s
-     *     const communes2 = await prisma.communes2.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
+     * @param {communes2CreateManyArgs} args - Arguments to create many Communes2s.
+     * @example
+     * // Create many Communes2s
+     * const communes2 = await prisma.communes2.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
      *     
-    **/
-    createMany<T extends communes2CreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, communes2CreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
+     */
+    createMany<T extends communes2CreateManyArgs>(args?: SelectSubset<T, communes2CreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Communes2s and returns the data saved in the database.
+     * @param {communes2CreateManyAndReturnArgs} args - Arguments to create many Communes2s.
+     * @example
+     * // Create many Communes2s
+     * const communes2 = await prisma.communes2.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Communes2s and only return the `pk`
+     * const communes2WithPkOnly = await prisma.communes2.createManyAndReturn({ 
+     *   select: { pk: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends communes2CreateManyAndReturnArgs>(args?: SelectSubset<T, communes2CreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a Communes2.
@@ -3989,10 +4225,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    delete<T extends communes2DeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, communes2DeleteArgs<ExtArgs>>
-    ): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+     */
+    delete<T extends communes2DeleteArgs>(args: SelectSubset<T, communes2DeleteArgs<ExtArgs>>): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one Communes2.
@@ -4008,10 +4242,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    update<T extends communes2UpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, communes2UpdateArgs<ExtArgs>>
-    ): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, 'update'>, never, ExtArgs>
+     */
+    update<T extends communes2UpdateArgs>(args: SelectSubset<T, communes2UpdateArgs<ExtArgs>>): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more Communes2s.
@@ -4024,10 +4256,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    deleteMany<T extends communes2DeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, communes2DeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
+     */
+    deleteMany<T extends communes2DeleteManyArgs>(args?: SelectSubset<T, communes2DeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Communes2s.
@@ -4045,10 +4275,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    updateMany<T extends communes2UpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, communes2UpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
+     */
+    updateMany<T extends communes2UpdateManyArgs>(args: SelectSubset<T, communes2UpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create or update one Communes2.
@@ -4066,10 +4294,9 @@ export namespace Prisma {
      *     // ... the filter for the Communes2 we want to update
      *   }
      * })
-    **/
-    upsert<T extends communes2UpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, communes2UpsertArgs<ExtArgs>>
-    ): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+     */
+    upsert<T extends communes2UpsertArgs>(args: SelectSubset<T, communes2UpsertArgs<ExtArgs>>): Prisma__communes2Client<$Result.GetResult<Prisma.$communes2Payload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
 
     /**
      * Count the number of Communes2s.
@@ -4209,30 +4436,29 @@ export namespace Prisma {
    * https://github.com/prisma/prisma-client-js/issues/707
    */
   export interface Prisma__communes2Client<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-
+    readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of which ever callback is executed.
      */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
     /**
      * Attaches a callback for only the rejection of the Promise.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of the callback.
      */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
     /**
      * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
      * resolved value cannot be modified from the callback.
      * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
      * @returns A Promise for the completion of the callback.
      */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
+
 
 
 
@@ -4427,6 +4653,21 @@ export namespace Prisma {
    * communes2 createMany
    */
   export type communes2CreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many communes2s.
+     */
+    data: communes2CreateManyInput | communes2CreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * communes2 createManyAndReturn
+   */
+  export type communes2CreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes2
+     */
+    select?: communes2SelectCreateManyAndReturn<ExtArgs> | null
     /**
      * The data used to create many communes2s.
      */
@@ -4727,6 +4968,14 @@ export namespace Prisma {
     proj4text?: boolean
   }, ExtArgs["result"]["spatial_ref_sys"]>
 
+  export type spatial_ref_sysSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    srid?: boolean
+    auth_name?: boolean
+    auth_srid?: boolean
+    srtext?: boolean
+    proj4text?: boolean
+  }, ExtArgs["result"]["spatial_ref_sys"]>
+
   export type spatial_ref_sysSelectScalar = {
     srid?: boolean
     auth_name?: boolean
@@ -4734,7 +4983,6 @@ export namespace Prisma {
     srtext?: boolean
     proj4text?: boolean
   }
-
 
 
   export type $spatial_ref_sysPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4749,7 +4997,6 @@ export namespace Prisma {
     }, ExtArgs["result"]["spatial_ref_sys"]>
     composites: {}
   }
-
 
   type spatial_ref_sysGetPayload<S extends boolean | null | undefined | spatial_ref_sysDefaultArgs> = $Result.GetResult<Prisma.$spatial_ref_sysPayload, S>
 
@@ -4770,14 +5017,12 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findUnique<T extends spatial_ref_sysFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, spatial_ref_sysFindUniqueArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+     */
+    findUnique<T extends spatial_ref_sysFindUniqueArgs>(args: SelectSubset<T, spatial_ref_sysFindUniqueArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one Spatial_ref_sys that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
+     * Find one Spatial_ref_sys that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
      * @param {spatial_ref_sysFindUniqueOrThrowArgs} args - Arguments to find a Spatial_ref_sys
      * @example
      * // Get one Spatial_ref_sys
@@ -4786,10 +5031,8 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findUniqueOrThrow<T extends spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+     */
+    findUniqueOrThrow<T extends spatial_ref_sysFindUniqueOrThrowArgs>(args: SelectSubset<T, spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first Spatial_ref_sys that matches the filter.
@@ -4803,10 +5046,8 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findFirst<T extends spatial_ref_sysFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, spatial_ref_sysFindFirstArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+     */
+    findFirst<T extends spatial_ref_sysFindFirstArgs>(args?: SelectSubset<T, spatial_ref_sysFindFirstArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first Spatial_ref_sys that matches the filter or
@@ -4821,16 +5062,14 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-    **/
-    findFirstOrThrow<T extends spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+     */
+    findFirstOrThrow<T extends spatial_ref_sysFindFirstOrThrowArgs>(args?: SelectSubset<T, spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more Spatial_ref_sys that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {spatial_ref_sysFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Spatial_ref_sys
      * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
@@ -4841,10 +5080,8 @@ export namespace Prisma {
      * // Only select the `srid`
      * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.findMany({ select: { srid: true } })
      * 
-    **/
-    findMany<T extends spatial_ref_sysFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, spatial_ref_sysFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findMany'>>
+     */
+    findMany<T extends spatial_ref_sysFindManyArgs>(args?: SelectSubset<T, spatial_ref_sysFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a Spatial_ref_sys.
@@ -4857,26 +5094,46 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    create<T extends spatial_ref_sysCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, spatial_ref_sysCreateArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+     */
+    create<T extends spatial_ref_sysCreateArgs>(args: SelectSubset<T, spatial_ref_sysCreateArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many Spatial_ref_sys.
-     *     @param {spatial_ref_sysCreateManyArgs} args - Arguments to create many Spatial_ref_sys.
-     *     @example
-     *     // Create many Spatial_ref_sys
-     *     const spatial_ref_sys = await prisma.spatial_ref_sys.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
+     * @param {spatial_ref_sysCreateManyArgs} args - Arguments to create many Spatial_ref_sys.
+     * @example
+     * // Create many Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
      *     
-    **/
-    createMany<T extends spatial_ref_sysCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, spatial_ref_sysCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
+     */
+    createMany<T extends spatial_ref_sysCreateManyArgs>(args?: SelectSubset<T, spatial_ref_sysCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Spatial_ref_sys and returns the data saved in the database.
+     * @param {spatial_ref_sysCreateManyAndReturnArgs} args - Arguments to create many Spatial_ref_sys.
+     * @example
+     * // Create many Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Spatial_ref_sys and only return the `srid`
+     * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.createManyAndReturn({ 
+     *   select: { srid: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends spatial_ref_sysCreateManyAndReturnArgs>(args?: SelectSubset<T, spatial_ref_sysCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a Spatial_ref_sys.
@@ -4889,10 +5146,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    delete<T extends spatial_ref_sysDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, spatial_ref_sysDeleteArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+     */
+    delete<T extends spatial_ref_sysDeleteArgs>(args: SelectSubset<T, spatial_ref_sysDeleteArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one Spatial_ref_sys.
@@ -4908,10 +5163,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    update<T extends spatial_ref_sysUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, spatial_ref_sysUpdateArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+     */
+    update<T extends spatial_ref_sysUpdateArgs>(args: SelectSubset<T, spatial_ref_sysUpdateArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more Spatial_ref_sys.
@@ -4924,10 +5177,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    deleteMany<T extends spatial_ref_sysDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, spatial_ref_sysDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
+     */
+    deleteMany<T extends spatial_ref_sysDeleteManyArgs>(args?: SelectSubset<T, spatial_ref_sysDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Spatial_ref_sys.
@@ -4945,10 +5196,8 @@ export namespace Prisma {
      *   }
      * })
      * 
-    **/
-    updateMany<T extends spatial_ref_sysUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, spatial_ref_sysUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
+     */
+    updateMany<T extends spatial_ref_sysUpdateManyArgs>(args: SelectSubset<T, spatial_ref_sysUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create or update one Spatial_ref_sys.
@@ -4966,10 +5215,9 @@ export namespace Prisma {
      *     // ... the filter for the Spatial_ref_sys we want to update
      *   }
      * })
-    **/
-    upsert<T extends spatial_ref_sysUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, spatial_ref_sysUpsertArgs<ExtArgs>>
-    ): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+     */
+    upsert<T extends spatial_ref_sysUpsertArgs>(args: SelectSubset<T, spatial_ref_sysUpsertArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
 
     /**
      * Count the number of Spatial_ref_sys.
@@ -5109,30 +5357,29 @@ export namespace Prisma {
    * https://github.com/prisma/prisma-client-js/issues/707
    */
   export interface Prisma__spatial_ref_sysClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-
+    readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of which ever callback is executed.
      */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
     /**
      * Attaches a callback for only the rejection of the Promise.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of the callback.
      */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
     /**
      * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
      * resolved value cannot be modified from the callback.
      * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
      * @returns A Promise for the completion of the callback.
      */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
+
 
 
 
@@ -5330,6 +5577,21 @@ export namespace Prisma {
   }
 
   /**
+   * spatial_ref_sys createManyAndReturn
+   */
+  export type spatial_ref_sysCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many spatial_ref_sys.
+     */
+    data: spatial_ref_sysCreateManyInput | spatial_ref_sysCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
    * spatial_ref_sys update
    */
   export type spatial_ref_sysUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5471,6 +5733,8 @@ export namespace Prisma {
     over_80_sum_2020: 'over_80_sum_2020',
     P20_POP80P: 'P20_POP80P',
     P20_POP80P_PSEUL: 'P20_POP80P_PSEUL',
+    P20_POP80P_PSEUL_PERCENT: 'P20_POP80P_PSEUL_PERCENT',
+    ratio_precarite_log: 'ratio_precarite_log',
     tee_log: 'tee_log',
     tee_mob: 'tee_mob',
     precarite_logement: 'precarite_logement',
@@ -5480,7 +5744,12 @@ export namespace Prisma {
     NA5GU_sum: 'NA5GU_sum',
     NA5OQ_sum: 'NA5OQ_sum',
     s_geom_cstr_bati: 's_geom_cstr_bati',
-    densite_bati: 'densite_bati'
+    densite_bati: 'densite_bati',
+    clc_1_artificialise: 'clc_1_artificialise',
+    clc_2_agricole: 'clc_2_agricole',
+    clc_3_foret_semiNaturel: 'clc_3_foret_semiNaturel',
+    clc_4_humide: 'clc_4_humide',
+    clc_5_eau: 'clc_5_eau'
   };
 
   export type Inconfort_thermiqueScalarFieldEnum = (typeof Inconfort_thermiqueScalarFieldEnum)[keyof typeof Inconfort_thermiqueScalarFieldEnum]
@@ -5555,16 +5824,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'BigInt'
+   * Reference to a field of type 'Int'
    */
-  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
 
 
   /**
-   * Reference to a field of type 'BigInt[]'
+   * Reference to a field of type 'Int[]'
    */
-  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -5583,20 +5852,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -5608,6 +5863,20 @@ export namespace Prisma {
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
+
+
+  /**
+   * Reference to a field of type 'BigInt'
+   */
+  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+    
+
+
+  /**
+   * Reference to a field of type 'BigInt[]'
+   */
+  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
+    
   /**
    * Deep Input Types
    */
@@ -5617,7 +5886,7 @@ export namespace Prisma {
     AND?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[]
     OR?: inconfort_thermiqueWhereInput[]
     NOT?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[]
-    index?: BigIntFilter<"inconfort_thermique"> | bigint | number
+    index?: IntFilter<"inconfort_thermique"> | number
     code_commune?: StringNullableFilter<"inconfort_thermique"> | string | null
     libelle_geographique?: StringNullableFilter<"inconfort_thermique"> | string | null
     epci?: StringNullableFilter<"inconfort_thermique"> | string | null
@@ -5655,6 +5924,8 @@ export namespace Prisma {
     over_80_sum_2020?: FloatNullableFilter<"inconfort_thermique"> | number | null
     P20_POP80P?: FloatNullableFilter<"inconfort_thermique"> | number | null
     P20_POP80P_PSEUL?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    P20_POP80P_PSEUL_PERCENT?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    ratio_precarite_log?: FloatNullableFilter<"inconfort_thermique"> | number | null
     tee_log?: FloatNullableFilter<"inconfort_thermique"> | number | null
     tee_mob?: FloatNullableFilter<"inconfort_thermique"> | number | null
     precarite_logement?: FloatNullableFilter<"inconfort_thermique"> | number | null
@@ -5665,6 +5936,11 @@ export namespace Prisma {
     NA5OQ_sum?: BigIntNullableFilter<"inconfort_thermique"> | bigint | number | null
     s_geom_cstr_bati?: FloatNullableFilter<"inconfort_thermique"> | number | null
     densite_bati?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    clc_1_artificialise?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    clc_2_agricole?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    clc_3_foret_semiNaturel?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    clc_4_humide?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    clc_5_eau?: FloatNullableFilter<"inconfort_thermique"> | number | null
   }
 
   export type inconfort_thermiqueOrderByWithRelationInput = {
@@ -5706,6 +5982,8 @@ export namespace Prisma {
     over_80_sum_2020?: SortOrderInput | SortOrder
     P20_POP80P?: SortOrderInput | SortOrder
     P20_POP80P_PSEUL?: SortOrderInput | SortOrder
+    P20_POP80P_PSEUL_PERCENT?: SortOrderInput | SortOrder
+    ratio_precarite_log?: SortOrderInput | SortOrder
     tee_log?: SortOrderInput | SortOrder
     tee_mob?: SortOrderInput | SortOrder
     precarite_logement?: SortOrderInput | SortOrder
@@ -5716,10 +5994,15 @@ export namespace Prisma {
     NA5OQ_sum?: SortOrderInput | SortOrder
     s_geom_cstr_bati?: SortOrderInput | SortOrder
     densite_bati?: SortOrderInput | SortOrder
+    clc_1_artificialise?: SortOrderInput | SortOrder
+    clc_2_agricole?: SortOrderInput | SortOrder
+    clc_3_foret_semiNaturel?: SortOrderInput | SortOrder
+    clc_4_humide?: SortOrderInput | SortOrder
+    clc_5_eau?: SortOrderInput | SortOrder
   }
 
   export type inconfort_thermiqueWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
+    index?: number
     AND?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[]
     OR?: inconfort_thermiqueWhereInput[]
     NOT?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[]
@@ -5760,6 +6043,8 @@ export namespace Prisma {
     over_80_sum_2020?: FloatNullableFilter<"inconfort_thermique"> | number | null
     P20_POP80P?: FloatNullableFilter<"inconfort_thermique"> | number | null
     P20_POP80P_PSEUL?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    P20_POP80P_PSEUL_PERCENT?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    ratio_precarite_log?: FloatNullableFilter<"inconfort_thermique"> | number | null
     tee_log?: FloatNullableFilter<"inconfort_thermique"> | number | null
     tee_mob?: FloatNullableFilter<"inconfort_thermique"> | number | null
     precarite_logement?: FloatNullableFilter<"inconfort_thermique"> | number | null
@@ -5770,6 +6055,11 @@ export namespace Prisma {
     NA5OQ_sum?: BigIntNullableFilter<"inconfort_thermique"> | bigint | number | null
     s_geom_cstr_bati?: FloatNullableFilter<"inconfort_thermique"> | number | null
     densite_bati?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    clc_1_artificialise?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    clc_2_agricole?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    clc_3_foret_semiNaturel?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    clc_4_humide?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    clc_5_eau?: FloatNullableFilter<"inconfort_thermique"> | number | null
   }, "index">
 
   export type inconfort_thermiqueOrderByWithAggregationInput = {
@@ -5811,6 +6101,8 @@ export namespace Prisma {
     over_80_sum_2020?: SortOrderInput | SortOrder
     P20_POP80P?: SortOrderInput | SortOrder
     P20_POP80P_PSEUL?: SortOrderInput | SortOrder
+    P20_POP80P_PSEUL_PERCENT?: SortOrderInput | SortOrder
+    ratio_precarite_log?: SortOrderInput | SortOrder
     tee_log?: SortOrderInput | SortOrder
     tee_mob?: SortOrderInput | SortOrder
     precarite_logement?: SortOrderInput | SortOrder
@@ -5821,6 +6113,11 @@ export namespace Prisma {
     NA5OQ_sum?: SortOrderInput | SortOrder
     s_geom_cstr_bati?: SortOrderInput | SortOrder
     densite_bati?: SortOrderInput | SortOrder
+    clc_1_artificialise?: SortOrderInput | SortOrder
+    clc_2_agricole?: SortOrderInput | SortOrder
+    clc_3_foret_semiNaturel?: SortOrderInput | SortOrder
+    clc_4_humide?: SortOrderInput | SortOrder
+    clc_5_eau?: SortOrderInput | SortOrder
     _count?: inconfort_thermiqueCountOrderByAggregateInput
     _avg?: inconfort_thermiqueAvgOrderByAggregateInput
     _max?: inconfort_thermiqueMaxOrderByAggregateInput
@@ -5832,7 +6129,7 @@ export namespace Prisma {
     AND?: inconfort_thermiqueScalarWhereWithAggregatesInput | inconfort_thermiqueScalarWhereWithAggregatesInput[]
     OR?: inconfort_thermiqueScalarWhereWithAggregatesInput[]
     NOT?: inconfort_thermiqueScalarWhereWithAggregatesInput | inconfort_thermiqueScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"inconfort_thermique"> | bigint | number
+    index?: IntWithAggregatesFilter<"inconfort_thermique"> | number
     code_commune?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
     libelle_geographique?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
     epci?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
@@ -5870,6 +6167,8 @@ export namespace Prisma {
     over_80_sum_2020?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
     P20_POP80P?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
     P20_POP80P_PSEUL?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    P20_POP80P_PSEUL_PERCENT?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    ratio_precarite_log?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
     tee_log?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
     tee_mob?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
     precarite_logement?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
@@ -5880,6 +6179,11 @@ export namespace Prisma {
     NA5OQ_sum?: BigIntNullableWithAggregatesFilter<"inconfort_thermique"> | bigint | number | null
     s_geom_cstr_bati?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
     densite_bati?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    clc_1_artificialise?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    clc_2_agricole?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    clc_3_foret_semiNaturel?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    clc_4_humide?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    clc_5_eau?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
   }
 
   export type clc_2018_2WhereInput = {
@@ -6075,7 +6379,7 @@ export namespace Prisma {
   }
 
   export type inconfort_thermiqueCreateInput = {
-    index: bigint | number
+    index: number
     code_commune?: string | null
     libelle_geographique?: string | null
     epci?: string | null
@@ -6113,6 +6417,8 @@ export namespace Prisma {
     over_80_sum_2020?: number | null
     P20_POP80P?: number | null
     P20_POP80P_PSEUL?: number | null
+    P20_POP80P_PSEUL_PERCENT?: number | null
+    ratio_precarite_log?: number | null
     tee_log?: number | null
     tee_mob?: number | null
     precarite_logement?: number | null
@@ -6123,10 +6429,15 @@ export namespace Prisma {
     NA5OQ_sum?: bigint | number | null
     s_geom_cstr_bati?: number | null
     densite_bati?: number | null
+    clc_1_artificialise?: number | null
+    clc_2_agricole?: number | null
+    clc_3_foret_semiNaturel?: number | null
+    clc_4_humide?: number | null
+    clc_5_eau?: number | null
   }
 
   export type inconfort_thermiqueUncheckedCreateInput = {
-    index: bigint | number
+    index: number
     code_commune?: string | null
     libelle_geographique?: string | null
     epci?: string | null
@@ -6164,6 +6475,8 @@ export namespace Prisma {
     over_80_sum_2020?: number | null
     P20_POP80P?: number | null
     P20_POP80P_PSEUL?: number | null
+    P20_POP80P_PSEUL_PERCENT?: number | null
+    ratio_precarite_log?: number | null
     tee_log?: number | null
     tee_mob?: number | null
     precarite_logement?: number | null
@@ -6174,10 +6487,15 @@ export namespace Prisma {
     NA5OQ_sum?: bigint | number | null
     s_geom_cstr_bati?: number | null
     densite_bati?: number | null
+    clc_1_artificialise?: number | null
+    clc_2_agricole?: number | null
+    clc_3_foret_semiNaturel?: number | null
+    clc_4_humide?: number | null
+    clc_5_eau?: number | null
   }
 
   export type inconfort_thermiqueUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_commune?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6215,6 +6533,8 @@ export namespace Prisma {
     over_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
     P20_POP80P?: NullableFloatFieldUpdateOperationsInput | number | null
     P20_POP80P_PSEUL?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P_PSEUL_PERCENT?: NullableFloatFieldUpdateOperationsInput | number | null
+    ratio_precarite_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -6225,10 +6545,15 @@ export namespace Prisma {
     NA5OQ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_1_artificialise?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_2_agricole?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_3_foret_semiNaturel?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_4_humide?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_5_eau?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type inconfort_thermiqueUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_commune?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6266,6 +6591,8 @@ export namespace Prisma {
     over_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
     P20_POP80P?: NullableFloatFieldUpdateOperationsInput | number | null
     P20_POP80P_PSEUL?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P_PSEUL_PERCENT?: NullableFloatFieldUpdateOperationsInput | number | null
+    ratio_precarite_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -6276,10 +6603,15 @@ export namespace Prisma {
     NA5OQ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_1_artificialise?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_2_agricole?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_3_foret_semiNaturel?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_4_humide?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_5_eau?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type inconfort_thermiqueCreateManyInput = {
-    index: bigint | number
+    index: number
     code_commune?: string | null
     libelle_geographique?: string | null
     epci?: string | null
@@ -6317,6 +6649,8 @@ export namespace Prisma {
     over_80_sum_2020?: number | null
     P20_POP80P?: number | null
     P20_POP80P_PSEUL?: number | null
+    P20_POP80P_PSEUL_PERCENT?: number | null
+    ratio_precarite_log?: number | null
     tee_log?: number | null
     tee_mob?: number | null
     precarite_logement?: number | null
@@ -6327,10 +6661,15 @@ export namespace Prisma {
     NA5OQ_sum?: bigint | number | null
     s_geom_cstr_bati?: number | null
     densite_bati?: number | null
+    clc_1_artificialise?: number | null
+    clc_2_agricole?: number | null
+    clc_3_foret_semiNaturel?: number | null
+    clc_4_humide?: number | null
+    clc_5_eau?: number | null
   }
 
   export type inconfort_thermiqueUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_commune?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6368,6 +6707,8 @@ export namespace Prisma {
     over_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
     P20_POP80P?: NullableFloatFieldUpdateOperationsInput | number | null
     P20_POP80P_PSEUL?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P_PSEUL_PERCENT?: NullableFloatFieldUpdateOperationsInput | number | null
+    ratio_precarite_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -6378,10 +6719,15 @@ export namespace Prisma {
     NA5OQ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_1_artificialise?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_2_agricole?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_3_foret_semiNaturel?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_4_humide?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_5_eau?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type inconfort_thermiqueUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    index?: IntFieldUpdateOperationsInput | number
     code_commune?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
     epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6419,6 +6765,8 @@ export namespace Prisma {
     over_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
     P20_POP80P?: NullableFloatFieldUpdateOperationsInput | number | null
     P20_POP80P_PSEUL?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P_PSEUL_PERCENT?: NullableFloatFieldUpdateOperationsInput | number | null
+    ratio_precarite_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -6429,6 +6777,11 @@ export namespace Prisma {
     NA5OQ_sum?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_1_artificialise?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_2_agricole?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_3_foret_semiNaturel?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_4_humide?: NullableFloatFieldUpdateOperationsInput | number | null
+    clc_5_eau?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type clc_2018_2CreateInput = {
@@ -6635,15 +6988,15 @@ export namespace Prisma {
     proj4text?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type BigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -6738,6 +7091,8 @@ export namespace Prisma {
     over_80_sum_2020?: SortOrder
     P20_POP80P?: SortOrder
     P20_POP80P_PSEUL?: SortOrder
+    P20_POP80P_PSEUL_PERCENT?: SortOrder
+    ratio_precarite_log?: SortOrder
     tee_log?: SortOrder
     tee_mob?: SortOrder
     precarite_logement?: SortOrder
@@ -6748,6 +7103,11 @@ export namespace Prisma {
     NA5OQ_sum?: SortOrder
     s_geom_cstr_bati?: SortOrder
     densite_bati?: SortOrder
+    clc_1_artificialise?: SortOrder
+    clc_2_agricole?: SortOrder
+    clc_3_foret_semiNaturel?: SortOrder
+    clc_4_humide?: SortOrder
+    clc_5_eau?: SortOrder
   }
 
   export type inconfort_thermiqueAvgOrderByAggregateInput = {
@@ -6784,6 +7144,8 @@ export namespace Prisma {
     over_80_sum_2020?: SortOrder
     P20_POP80P?: SortOrder
     P20_POP80P_PSEUL?: SortOrder
+    P20_POP80P_PSEUL_PERCENT?: SortOrder
+    ratio_precarite_log?: SortOrder
     tee_log?: SortOrder
     tee_mob?: SortOrder
     precarite_logement?: SortOrder
@@ -6794,6 +7156,11 @@ export namespace Prisma {
     NA5OQ_sum?: SortOrder
     s_geom_cstr_bati?: SortOrder
     densite_bati?: SortOrder
+    clc_1_artificialise?: SortOrder
+    clc_2_agricole?: SortOrder
+    clc_3_foret_semiNaturel?: SortOrder
+    clc_4_humide?: SortOrder
+    clc_5_eau?: SortOrder
   }
 
   export type inconfort_thermiqueMaxOrderByAggregateInput = {
@@ -6835,6 +7202,8 @@ export namespace Prisma {
     over_80_sum_2020?: SortOrder
     P20_POP80P?: SortOrder
     P20_POP80P_PSEUL?: SortOrder
+    P20_POP80P_PSEUL_PERCENT?: SortOrder
+    ratio_precarite_log?: SortOrder
     tee_log?: SortOrder
     tee_mob?: SortOrder
     precarite_logement?: SortOrder
@@ -6845,6 +7214,11 @@ export namespace Prisma {
     NA5OQ_sum?: SortOrder
     s_geom_cstr_bati?: SortOrder
     densite_bati?: SortOrder
+    clc_1_artificialise?: SortOrder
+    clc_2_agricole?: SortOrder
+    clc_3_foret_semiNaturel?: SortOrder
+    clc_4_humide?: SortOrder
+    clc_5_eau?: SortOrder
   }
 
   export type inconfort_thermiqueMinOrderByAggregateInput = {
@@ -6886,6 +7260,8 @@ export namespace Prisma {
     over_80_sum_2020?: SortOrder
     P20_POP80P?: SortOrder
     P20_POP80P_PSEUL?: SortOrder
+    P20_POP80P_PSEUL_PERCENT?: SortOrder
+    ratio_precarite_log?: SortOrder
     tee_log?: SortOrder
     tee_mob?: SortOrder
     precarite_logement?: SortOrder
@@ -6896,6 +7272,11 @@ export namespace Prisma {
     NA5OQ_sum?: SortOrder
     s_geom_cstr_bati?: SortOrder
     densite_bati?: SortOrder
+    clc_1_artificialise?: SortOrder
+    clc_2_agricole?: SortOrder
+    clc_3_foret_semiNaturel?: SortOrder
+    clc_4_humide?: SortOrder
+    clc_5_eau?: SortOrder
   }
 
   export type inconfort_thermiqueSumOrderByAggregateInput = {
@@ -6932,6 +7313,8 @@ export namespace Prisma {
     over_80_sum_2020?: SortOrder
     P20_POP80P?: SortOrder
     P20_POP80P_PSEUL?: SortOrder
+    P20_POP80P_PSEUL_PERCENT?: SortOrder
+    ratio_precarite_log?: SortOrder
     tee_log?: SortOrder
     tee_mob?: SortOrder
     precarite_logement?: SortOrder
@@ -6942,22 +7325,27 @@ export namespace Prisma {
     NA5OQ_sum?: SortOrder
     s_geom_cstr_bati?: SortOrder
     densite_bati?: SortOrder
+    clc_1_artificialise?: SortOrder
+    clc_2_agricole?: SortOrder
+    clc_3_foret_semiNaturel?: SortOrder
+    clc_4_humide?: SortOrder
+    clc_5_eau?: SortOrder
   }
 
-  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
     _count?: NestedIntFilter<$PrismaModel>
     _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -7026,17 +7414,6 @@ export namespace Prisma {
     _max?: NestedBigIntNullableFilter<$PrismaModel>
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type clc_2018_2CountOrderByAggregateInput = {
     pk?: SortOrder
     area_ha?: SortOrder
@@ -7076,22 +7453,6 @@ export namespace Prisma {
     area_ha?: SortOrder
     shape_length?: SortOrder
     shape_area?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type communes2CountOrderByAggregateInput = {
@@ -7181,12 +7542,12 @@ export namespace Prisma {
     auth_srid?: SortOrder
   }
 
-  export type BigIntFieldUpdateOperationsInput = {
-    set?: bigint | number
-    increment?: bigint | number
-    decrement?: bigint | number
-    multiply?: bigint | number
-    divide?: bigint | number
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -7217,23 +7578,15 @@ export namespace Prisma {
     divide?: bigint | number
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type NestedBigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -7283,23 +7636,7 @@ export namespace Prisma {
     not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
   }
 
-  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -7307,7 +7644,12 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type NestedFloatFilter<$PrismaModel = never> = {
@@ -7384,22 +7726,6 @@ export namespace Prisma {
     _sum?: NestedBigIntNullableFilter<$PrismaModel>
     _min?: NestedBigIntNullableFilter<$PrismaModel>
     _max?: NestedBigIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
 

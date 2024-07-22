@@ -16,11 +16,11 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.13.0
+ * Prisma Client JS version: 5.16.2
  * Query Engine version: 34ace0eb2704183d2c05b60b52fba5c43c13f303
  */
 Prisma.prismaVersion = {
-  client: "5.13.0",
+  client: "5.16.2",
   engine: "34ace0eb2704183d2c05b60b52fba5c43c13f303"
 }
 
@@ -158,6 +158,8 @@ exports.Prisma.Inconfort_thermiqueScalarFieldEnum = {
   over_80_sum_2020: 'over_80_sum_2020',
   P20_POP80P: 'P20_POP80P',
   P20_POP80P_PSEUL: 'P20_POP80P_PSEUL',
+  P20_POP80P_PSEUL_PERCENT: 'P20_POP80P_PSEUL_PERCENT',
+  ratio_precarite_log: 'ratio_precarite_log',
   tee_log: 'tee_log',
   tee_mob: 'tee_mob',
   precarite_logement: 'precarite_logement',
@@ -167,7 +169,12 @@ exports.Prisma.Inconfort_thermiqueScalarFieldEnum = {
   NA5GU_sum: 'NA5GU_sum',
   NA5OQ_sum: 'NA5OQ_sum',
   s_geom_cstr_bati: 's_geom_cstr_bati',
-  densite_bati: 'densite_bati'
+  densite_bati: 'densite_bati',
+  clc_1_artificialise: 'clc_1_artificialise',
+  clc_2_agricole: 'clc_2_agricole',
+  clc_3_foret_semiNaturel: 'clc_3_foret_semiNaturel',
+  clc_4_humide: 'clc_4_humide',
+  clc_5_eau: 'clc_5_eau'
 };
 
 exports.Prisma.Clc_2018_2ScalarFieldEnum = {
