@@ -60,7 +60,7 @@ export type CLC = {
 }
 
 export type InconfortThermique = {
-  index: bigint,
+  index: number,
   code_commune: string | undefined | null,
   libelle_geographique: string | undefined | null,
   epci: string | undefined | null,
@@ -107,6 +107,11 @@ export type InconfortThermique = {
   NA5GU_sum: bigint | undefined | null,
   NA5OQ_sum: bigint | undefined | null,
   s_geom_cstr_bati: number | undefined | null,
-  densite_bati: number | undefined | null
+  densite_bati: number | undefined | null,
+  clc_1_artificialise: number | null | undefined,
+  clc_2_agricole: number | null | undefined,
+  clc_3_foret_semiNaturel: number | null | undefined,
+  clc_4_humide: number | null | undefined,
+  clc_5_eau: number | null | undefined
 }
 
