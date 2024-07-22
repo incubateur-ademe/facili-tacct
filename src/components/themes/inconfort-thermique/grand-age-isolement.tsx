@@ -14,39 +14,65 @@ interface Props {
 }
 
 type DataAge = {
-  code_commune: string | null | undefined,
+  code_commune: string | 
+  null | undefined,
   libelle_geographique: string | null | undefined,
   epci: string | null | undefined,
   libelle_epci: string | null | undefined,
-  P20_POP80P : number | null | undefined,
-  P20_POP80P_PSEUL: number | null | undefined,
-  under_4_sum_1968: number | null | undefined,
-  to_80_sum_1968: number | null | undefined,
-  over_80_sum_1968: number | null | undefined,
-  under_4_sum_1975: number | null | undefined,
-  to_80_sum_1975: number | null | undefined,
-  over_80_sum_1975: number | null | undefined,
-  under_4_sum_1982: number | null | undefined,
-  to_80_sum_1982: number | null | undefined,
-  over_80_sum_1982: number | null | undefined,
-  under_4_sum_1990: number | null | undefined,
-  to_80_sum_1990: number | null | undefined,
-  over_80_sum_1990: number | null | undefined,
-  under_4_sum_1999: number | null | undefined,
-  to_80_sum_1999: number | null | undefined,
-  over_80_sum_1999: number | null | undefined,
-  under_4_sum_2009: number | null | undefined,
-  to_80_sum_2009: number | null | undefined,
-  over_80_sum_2009: number | null | undefined,
-  under_4_sum_2014: number | null | undefined,
-  to_80_sum_2014: number | null | undefined,
-  over_80_sum_2014: number | null | undefined,
-  under_4_sum_2020: number | null | undefined,
-  to_80_sum_2020: number | null | undefined,
-  over_80_sum_2020: number | null | undefined,
+  P20_POP80P : number,
+  P20_POP80P_PSEUL: number,
+  under_4_sum_1968: number, 
+  to_80_sum_1968: number, 
+  over_80_sum_1968: number, 
+  under_4_sum_1975: number, 
+  to_80_sum_1975: number, 
+  over_80_sum_1975: number, 
+  under_4_sum_1982: number, 
+  to_80_sum_1982: number, 
+  over_80_sum_1982: number, 
+  under_4_sum_1990: number, 
+  to_80_sum_1990: number, 
+  over_80_sum_1990: number, 
+  under_4_sum_1999: number, 
+  to_80_sum_1999: number, 
+  over_80_sum_1999: number, 
+  under_4_sum_2009: number, 
+  to_80_sum_2009: number, 
+  over_80_sum_2009: number, 
+  under_4_sum_2014: number, 
+  to_80_sum_2014: number, 
+  over_80_sum_2014: number, 
+  under_4_sum_2020: number, 
+  to_80_sum_2020: number, 
+  over_80_sum_2020: number, 
 }
-
-function sumProperty(items: any[], property: string) {
+function sumProperty(
+  items: DataAge[],
+  property: "over_80_sum_1968" | 
+    "to_80_sum_1968" | 
+    "under_4_sum_1968" | 
+    "over_80_sum_1975" | 
+    "to_80_sum_1975" | 
+    "under_4_sum_1975" | 
+    "over_80_sum_1982" | 
+    "to_80_sum_1982" | 
+    "under_4_sum_1982" | 
+    "over_80_sum_1990" | 
+    "to_80_sum_1990" | 
+    "under_4_sum_1990" | 
+    "over_80_sum_1999" | 
+    "to_80_sum_1999" | 
+    "under_4_sum_1999" | 
+    "over_80_sum_2009" | 
+    "to_80_sum_2009" | 
+    "under_4_sum_2009" | 
+    "over_80_sum_2014" | 
+    "to_80_sum_2014" | 
+    "under_4_sum_2014" | 
+    "over_80_sum_2020" | 
+    "to_80_sum_2020" | 
+    "under_4_sum_2020"
+  ) {
   return items.reduce(function (a, b) {
     return a + b[property];
   }, 0);
@@ -63,32 +89,32 @@ export const GrandAgeIsolement = (props: Props) => {
       libelle_geographique: el.libelle_geographique ,
       epci: el.epci,
       libelle_epci: el.libelle_epci,
-      P20_POP80P : el["P20_POP80P"],
-      P20_POP80P_PSEUL: el["P20_POP80P_PSEUL"],
-      under_4_sum_1968: el.under_4_sum_1968,
-      to_80_sum_1968: el.to_80_sum_1968,
-      over_80_sum_1968: el.over_80_sum_1968,
-      under_4_sum_1975: el.under_4_sum_1975,
-      to_80_sum_1975: el.to_80_sum_1975,
-      over_80_sum_1975: el.over_80_sum_1975,
-      under_4_sum_1982: el.under_4_sum_1982,
-      to_80_sum_1982: el.to_80_sum_1982,
-      over_80_sum_1982: el.over_80_sum_1982,
-      under_4_sum_1990: el.under_4_sum_1990,
-      to_80_sum_1990: el.to_80_sum_1990,
-      over_80_sum_1990: el.over_80_sum_1990,
-      under_4_sum_1999: el.under_4_sum_1999,
-      to_80_sum_1999: el.to_80_sum_1999,
-      over_80_sum_1999: el.over_80_sum_1999,
-      under_4_sum_2009: el.under_4_sum_2009,
-      to_80_sum_2009: el.to_80_sum_2009,
-      over_80_sum_2009: el.over_80_sum_2009,
-      under_4_sum_2014: el.under_4_sum_2014,
-      to_80_sum_2014: el.to_80_sum_2014,
-      over_80_sum_2014: el.over_80_sum_2014,
-      under_4_sum_2020: el.under_4_sum_2020,
-      to_80_sum_2020: el.to_80_sum_2020,
-      over_80_sum_2020: el.over_80_sum_2020
+      P20_POP80P : Number(el["P20_POP80P"]),
+      P20_POP80P_PSEUL: Number(el["P20_POP80P_PSEUL"]),
+      under_4_sum_1968: Number(el.under_4_sum_1968),
+      to_80_sum_1968: Number(el.to_80_sum_1968),
+      over_80_sum_1968: Number(el.over_80_sum_1968),
+      under_4_sum_1975: Number(el.under_4_sum_1975),
+      to_80_sum_1975: Number(el.to_80_sum_1975),
+      over_80_sum_1975: Number(el.over_80_sum_1975),
+      under_4_sum_1982: Number(el.under_4_sum_1982),
+      to_80_sum_1982: Number(el.to_80_sum_1982),
+      over_80_sum_1982: Number(el.over_80_sum_1982),
+      under_4_sum_1990: Number(el.under_4_sum_1990),
+      to_80_sum_1990: Number(el.to_80_sum_1990),
+      over_80_sum_1990: Number(el.over_80_sum_1990),
+      under_4_sum_1999: Number(el.under_4_sum_1999),
+      to_80_sum_1999: Number(el.to_80_sum_1999),
+      over_80_sum_1999: Number(el.over_80_sum_1999),
+      under_4_sum_2009: Number(el.under_4_sum_2009),
+      to_80_sum_2009: Number(el.to_80_sum_2009),
+      over_80_sum_2009: Number(el.over_80_sum_2009),
+      under_4_sum_2014: Number(el.under_4_sum_2014),
+      to_80_sum_2014: Number(el.to_80_sum_2014),
+      over_80_sum_2014: Number(el.over_80_sum_2014),
+      under_4_sum_2020: Number(el.under_4_sum_2020),
+      to_80_sum_2020: Number(el.to_80_sum_2020),
+      over_80_sum_2020: Number(el.over_80_sum_2020)
     }
   })
 

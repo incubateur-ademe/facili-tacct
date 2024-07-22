@@ -36,7 +36,10 @@ type Vegetalisation = {
   clc_5_eau: number,
 }
 
-function sumProperty(items: any[], property: string) {
+function sumProperty(
+  items: Vegetalisation[], 
+  property: "clc_1_artificialise" | "clc_2_agricole" | "clc_3_foret_semiNaturel" | "clc_4_humide" | "clc_5_eau"
+  ) {
   return items.reduce(function (a, b) {
     return a + b[property];
   }, 0);
