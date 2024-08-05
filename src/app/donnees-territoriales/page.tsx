@@ -33,7 +33,7 @@ const Page = async (searchParams: SearchParams) => {
   const theme = themes.inconfort_thermique;
   const code = searchParams.searchParams.code;
   const db_inconfort_thermique = await Get_Inconfort_Thermique(code);
-  const db_filtered: Awaited<DbFiltered[]> = await Get_Communes(code); //REPLACE
+  const db_filtered: Awaited<DbFiltered[]> = await Get_Communes(code);
 
   const db_parsed = db_filtered.map(function (elem: DbFiltered) {
     return {
