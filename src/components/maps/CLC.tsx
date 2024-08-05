@@ -17,10 +17,11 @@ interface Props {
   //     centroid: string;
   //   }
   // }>;
+  db_filtered: any;
 }
 
 const Map = (props: Props) => {
-  const { clc } = props;
+  const { clc, db_filtered } = props;
   const mapRef = useRef<any>(null); //REPLACE L.Map | null
   const colors = {
     "Continuous urban fabric": "#DE7397",
@@ -151,6 +152,7 @@ const Map = (props: Props) => {
       />
       {/* <GeoJSON data={data1} /> */}
       <GeoJSON ref={mapRef} data={clc} style={style} onEachFeature={onEachFeature} />
+      <GeoJSON data={db_filtered} style={style} />
     </MapContainer>
   );
 };

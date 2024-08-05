@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@codegouvfr/react-dsfr/Button";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";

@@ -22,6 +22,19 @@ interface Props {
     }
   }>;
   inconfort_thermique: InconfortThermique[];
+  db_filtered: Array<{
+    geometry: string;
+    properties: {
+      code_commune: string;
+      coordinates: string;
+      densite_bati: number;
+      epci: string;
+      libelle_commune: string;
+      libelle_epci: string;
+      precarite_logement: number;
+    };
+    type: string;
+  }>
 }
 
 type Vegetalisation = {
@@ -46,7 +59,7 @@ function sumProperty(
 }
 
 export const Vegetalisation = (props: Props) => {
-  const { clc, inconfort_thermique } = props;
+  const { clc, inconfort_thermique, db_filtered } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
 
@@ -126,7 +139,7 @@ export const Vegetalisation = (props: Props) => {
                   title={<LegendCLC />}
                   placement="left"
                 >
-                  <div><Map clc={clc} /></div>
+                  <div><Map clc={clc} db_filtered={db_filtered} /></div>
                 </HtmlTooltip>
                 <p style={{ margin: "1em 0em 0em" }}>
                   Source : <b>CORINE Land Cover</b>
