@@ -31,36 +31,33 @@ export function MySearchInput(props: MySearchInputProps) {
   // const [value, setValue] = useState<Values | null>(null);
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState<Options[]>([]);
+  const [epciOptions, setEpciOptions] = useState<Options[]>([]);
+
+  console.log("epciOptions", epciOptions);
+
+  // supprime les doublons pour les objects epci
+  const filteredEpci = epciOptions.filter(
+    (value, index, self) => index === self.findIndex(t => t.nom === value.nom && t.code === value.code),
+  );
+
+  const collectivites = [...filteredEpci, ...options];
 
   useEffect(() => {
     void (async () => {
       const temp = await Get_Collectivite(inputValue);
+      console.log(temp);
+      setEpciOptions(
+        temp.map((el, i) => ({
+          nom: el.libelle_epci,
+          code: el.epci,
+        })),
+      );
       setOptions(
         temp.map((el, i) => ({
           nom: el.libelle_commune,
           code: el.code_commune,
         })),
       );
-      // console.log('temp', temp)
-      // if (temp.some(e => e.libelle_commune.includes(inputValue))) {
-      //   const communes = temp.map((el, i) => (
-      //     {
-      //       nom: el.libelle_commune,
-      //       code: el.code_commune
-      //     }
-      //   ));
-      //   console.log('communes', communes)
-      //   setOptions(communes);
-      // } else if (temp.some(e => e.libelle_epci.includes(inputValue))) {
-      //   const epci = temp.filter((el, i) => (
-      //     {
-      //       nom: el.libelle_epci,
-      //       code: el.code_commune
-      //     }
-      //   ));
-      //   // setOptions([epci, ...options]);
-      //   console.log('epci', epci)
-      // }
     })();
   }, [inputValue]);
 
@@ -69,13 +66,13 @@ export function MySearchInput(props: MySearchInputProps) {
       id={id}
       autoHighlight
       filterOptions={x => x}
-      options={options.sort((a, b) => a.nom.localeCompare(b.nom))}
+      options={collectivites.sort((a, b) => a.nom.localeCompare(b.nom))}
       autoComplete
       includeInputInList
       filterSelectedOptions
       // value={value}
       noOptionsText="Aucune collectivité trouvée"
-      onChange={(event: any, newValue: Options | null) => {
+      onChange={(event, newValue: Options | null) => {
         setOptions(newValue ? [newValue, ...options] : options);
         // setValue(newValue);
       }}
@@ -84,9 +81,9 @@ export function MySearchInput(props: MySearchInputProps) {
       }}
       getOptionLabel={option => option.nom}
       renderOption={(props, option) => {
-        const { key, ...optionProps } = props;
+        const { ...optionProps } = props;
         return (
-          <Box key={key} component="li" sx={{ height: "fit-content" }} {...optionProps}>
+          <Box component="li" sx={{ height: "fit-content" }} {...optionProps}>
             <p style={{ margin: "0" }}>
               <b>{option.nom} </b> ({option.code})
             </p>
