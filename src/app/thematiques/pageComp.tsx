@@ -4,11 +4,11 @@ import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-import thematiques from "@/lib/utils/thematiques";
+import { thematiques } from "@/lib/utils/thematiques";
 
 import styles from "./thematiques.module.scss";
 
-const ThematiquesComp = () => {
+export const ThematiquesComp = () => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
   const router = useRouter();
@@ -18,7 +18,7 @@ const ThematiquesComp = () => {
     if (cardId === 4) {
       router.push(`/etape2?code=${code}&thematique=${"inconfort_thermique"}`);
     }
-  }
+  };
 
   return (
     <div>
@@ -120,5 +120,3 @@ const ThematiquesComp = () => {
     </div>
   );
 };
-
-export default ThematiquesComp;

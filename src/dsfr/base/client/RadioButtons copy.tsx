@@ -2,7 +2,7 @@
 import { RadioButtons } from "@codegouvfr/react-dsfr/RadioButtons";
 import { useState } from "react";
 
-export default function RadioButton() {
+export function RadioButton() {
   const [value, setValue] = useState<"one" | "three" | "two" | undefined>(undefined);
 
   return (

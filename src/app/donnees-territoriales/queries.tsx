@@ -1,7 +1,7 @@
 "use server";
 
 import { PrismaClient as PostgresClient } from "../../generated/client";
-import * as types from "./type";
+import type * as types from "./type";
 
 const PrismaPostgres = new PostgresClient();
 
@@ -64,7 +64,7 @@ export const Get_Inconfort_Thermique = async (code: string): Promise<types.Incon
       where: {
         epci: code,
       },
-    })
+    });
     console.timeEnd("Query Execution Time INCONFORT");
     // console.log(value)
     return value;
@@ -74,4 +74,3 @@ export const Get_Inconfort_Thermique = async (code: string): Promise<types.Incon
     process.exit(1);
   }
 };
-

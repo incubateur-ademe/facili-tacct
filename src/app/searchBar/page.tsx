@@ -1,4 +1,4 @@
-import { Box, Container, GridCol } from "../../dsfr/server";
+import { Container } from "../../dsfr/server";
 import { SearchBarComp } from "./pageComp";
 
 const SearchBar = () => {

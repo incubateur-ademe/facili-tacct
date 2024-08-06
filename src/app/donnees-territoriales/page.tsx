@@ -2,13 +2,13 @@ import { type Metadata } from "next";
 import dynamic from "next/dynamic";
 
 import { StepperComp } from "@/components/Stepper";
-import themes from "@/lib/utils/themes";
+import { themes } from "@/lib/utils/themes";
 
+import { Loader } from "../../components/loader";
 import { Box, Container, GridCol } from "../../dsfr/server";
 import styles from "./donnees.module.scss";
-import { Loader } from "../../components/loader";
 import { Get_CLC, Get_Communes, Get_Inconfort_Thermique } from "./queries";
-import { CLC, DbFiltered } from "./type";
+import { type CLC, type DbFiltered } from "./type";
 
 export const metadata: Metadata = {
   title: "Données territoriales",
@@ -86,7 +86,12 @@ const Page = async (searchParams: SearchParams) => {
         Explorez des leviers d'action possibles en réduisant la sensibilité de votre territoire à l'inconfort thermique
       </p>
       <div className={styles.container}>
-        <DynamicPageComp data={theme} inconfort_thermique={db_inconfort_thermique} db_filtered={db_parsed} clc={clc_parsed} />
+        <DynamicPageComp
+          data={theme}
+          inconfort_thermique={db_inconfort_thermique}
+          db_filtered={db_parsed}
+          clc={clc_parsed}
+        />
       </div>
     </Container>
   );

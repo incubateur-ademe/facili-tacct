@@ -11,13 +11,11 @@ import inconfortIcon from "../../assets/icons/themes/inconfort_thermique_icon_te
 import infrastructureIcon from "../../assets/icons/themes/infrastructures_icon_teal.svg";
 import mobiliteIcon from "../../assets/icons/themes/mobilite_icon_teal.svg";
 import paysageIcon from "../../assets/icons/themes/paysages_icon_teal.svg";
-import qualiteAirEauIcon from "../../assets/icons/themes/qualiteAirEau_icon_teal.svg";
 import ressourcesEauIcon from "../../assets/icons/themes/ressourcesEau_icon_teal.svg";
 import santeIcon from "../../assets/icons/themes/sante_icon_teal.svg";
-import securiteIcon from "../../assets/icons/themes/securite_icon_teal.svg";
 import tourismeIcon from "../../assets/icons/themes/tourisme_icon_teal.svg";
 
-const thematiques = {
+export const thematiques = {
   Aménagement: {
     id: 0,
     category: "Compétences",
@@ -104,5 +102,3 @@ const thematiques = {
     icon: espacesNaturelsIcon,
   },
 };
-
-export default thematiques;
