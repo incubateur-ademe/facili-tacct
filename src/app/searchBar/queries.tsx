@@ -18,9 +18,9 @@ export const Get_Collectivite = async (collectivite: string): Promise<types.DbFi
       libelle_epci,
       libelle_commune,
       code_commune
-      FROM postgis."communes2" WHERE libelle_commune ILIKE ${variable_commune} OR libelle_epci ILIKE ${variable_epci} LIMIT 20;`;
+      FROM postgis."communes2" WHERE libelle_commune ILIKE ${variable_commune} OR libelle_epci ILIKE ${variable_epci} LIMIT 30;`;
       console.timeEnd("Query Execution Time");
-
+      // console.log(value);
       return value;
     } else if (typeof parseInt(collectivite) === "number") {
       const value: Awaited<types.DbFiltered[]> = await PrismaPostgres.$queryRaw`
