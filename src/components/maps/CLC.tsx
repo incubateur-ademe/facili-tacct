@@ -3,26 +3,42 @@
 import "leaflet/dist/leaflet.css";
 import "./maps.scss";
 
+import { type FeatureCollection, type GeoJsonObject, type Geometry } from "geojson";
+import { type FeatureGroup, type GeoJSONOptions, type LeafletMouseEventHandlerFn } from "leaflet";
 import { useRef } from "react";
 
+import { type DbFiltered } from "@/app/donnees-territoriales/type";
 import { GeoJSON, MapContainer, TileLayer } from "@/lib/react-leaflet";
+import { type Any } from "@/lib/utils/types";
+
+type Coordinates = number[][][];
+
+interface CLCProperties {
+  centroid: string;
+  label: string;
+}
+
+type CLC = FeatureCollection<Geometry, CLCProperties>;
+
+type CustomGeoJSONOptions = GeoJSONOptions<CLCProperties>;
 
 interface Props {
-  clc: any;
-  // clc: Array<{
-  //   type: string;
-  //   geometry: string;
-  //   properties: {
-  //     label: string;
-  //     centroid: string;
-  //   }
-  // }>;
-  db_filtered: any;
+  // clc: any;
+  clc: Array<{
+    geometry: {
+      coordinates: Coordinates;
+    };
+    properties: CLCProperties;
+    type: string;
+  }>;
+  db_filtered: DbFiltered;
 }
+
+type az = GeoJsonObject;
 
 const Map = (props: Props) => {
   const { clc, db_filtered } = props;
-  const mapRef = useRef<any>(null); //REPLACE L.Map | null
+  const mapRef = useRef<Any>(null); //REPLACE L.Map | null
   const colors = {
     "Continuous urban fabric": "#DE7397",
     "Discontinuous urban fabric": "#DE7397",
@@ -69,7 +85,7 @@ const Map = (props: Props) => {
     Estuaries: "#e6f2ff",
     "Sea and ocean": "#e6f2ff",
   };
-  const all_coordinates = clc.map((el: any) => el.geometry.coordinates[0]);
+  const all_coordinates = clc.map(el => el.geometry.coordinates[0]);
 
   const getCentroid = (arr: number[][]) => {
     return arr.reduce(
@@ -80,7 +96,7 @@ const Map = (props: Props) => {
     );
   };
 
-  const getCoordinates = (coords: number[][][]) => {
+  const getCoordinates = (coords: Coordinates) => {
     const coords_arr = [];
     for (let i = 0; i < coords.length; i++) {
       const center = getCentroid(coords[i]);
@@ -91,51 +107,51 @@ const Map = (props: Props) => {
 
   const centerCoord: number[] = getCoordinates(all_coordinates);
 
-  function getColor(d: string) {
+  function getColor(d: string | undefined) {
     const color = Object.entries(colors)
       .find(el => el[0] === d)
       ?.at(1);
     return color;
   }
 
-  function style(feature: any) {
+  const style: CustomGeoJSONOptions["style"] = feature => {
     return {
-      fillColor: getColor(feature.properties.label),
+      fillColor: getColor(feature?.properties.label),
       weight: 0.5,
       opacity: 1,
       color: "black",
       dashArray: "3",
       fillOpacity: 0.5,
     };
-  }
+  };
 
-  function mouseOnHandler(this: any, e: any) {
-    const layer = e.target;
-    const label = layer.feature.properties.label;
+  const mouseOnHandler: LeafletMouseEventHandlerFn = e => {
+    const layer = e.target as FeatureGroup<CLCProperties>;
+    // const label = layer.feature && "properties" in layer.feature ? layer.feature.properties.label : undefined;
     layer.setStyle({
       weight: 1.5,
       dashArray: "",
       fillOpacity: 1,
     });
-  }
+  };
 
   //make style after hover disappear
-  function mouseOutHandler(this: any, e: any) {
-    const layer = e.target;
+  const mouseOutHandler: LeafletMouseEventHandlerFn = e => {
+    const layer = e.target as FeatureGroup<CLCProperties>;
     layer.setStyle({
       weight: 0.5,
       color: "#000000",
       dashArray: "3",
       fillOpacity: 0.5,
     });
-  }
+  };
 
-  function onEachFeature(feature: any, layer: any) {
+  const onEachFeature: CustomGeoJSONOptions["onEachFeature"] = (feature, layer) => {
     layer.on({
       mouseover: mouseOnHandler,
       mouseout: mouseOutHandler,
     });
-  }
+  };
 
   return (
     <MapContainer

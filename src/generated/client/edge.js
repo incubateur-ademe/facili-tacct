@@ -208,7 +208,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Antoine\\Beta gouv\\Code\\facili-tacct\\src\\generated\\client",
+      "value": "/Users/lsagetlethias/source/ADEME/tacct/facili-tacct/src/generated/client",
       "fromEnvVar": null
     },
     "config": {
@@ -217,19 +217,18 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "darwin-arm64",
         "native": true
       }
     ],
     "previewFeatures": [
       "multiSchema"
     ],
-    "sourceFilePath": "C:\\Antoine\\Beta gouv\\Code\\facili-tacct\\prisma\\schema.prisma",
+    "sourceFilePath": "/Users/lsagetlethias/source/ADEME/tacct/facili-tacct/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../../prisma",
   "clientVersion": "5.16.2",
