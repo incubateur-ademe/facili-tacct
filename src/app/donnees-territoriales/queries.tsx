@@ -1,14 +1,14 @@
 "use server";
 
 import { PrismaClient as PostgresClient } from "../../generated/client";
-import type * as types from "./type";
+import { type DbFiltered } from "./type";
 
 const PrismaPostgres = new PostgresClient();
 
-export const Get_Communes = async (code: string): Promise<types.DbFiltered[]> => {
+export const Get_Communes = async (code: string): Promise<DbFiltered[]> => {
   try {
     console.time("Query Execution Time");
-    const value: Awaited<types.DbFiltered[]> = await PrismaPostgres.$queryRaw`
+    const value = await PrismaPostgres.$queryRaw<DbFiltered[]>`
       SELECT 
       epci, 
       libelle_epci,
