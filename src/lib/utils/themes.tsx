@@ -1,4 +1,4 @@
-const themes = {
+export const themes = {
   inconfort_thermique: [
     {
       id: 0,
@@ -44,5 +44,3 @@ const themes = {
     },
   ],
 };
-
-export default themes;
