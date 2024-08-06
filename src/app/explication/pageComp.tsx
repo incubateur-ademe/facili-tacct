@@ -4,7 +4,7 @@ import { Button } from "@codegouvfr/react-dsfr/Button";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-import themes from "@/lib/utils/themes";
+import { themes } from "@/lib/utils/themes";
 
 import Constellation from "./constellation";
 import styles from "./explication.module.scss";

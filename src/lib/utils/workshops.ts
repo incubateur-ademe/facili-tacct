@@ -1,4 +1,4 @@
-const workshops = [
+export const workshops = [
   {
     id: 0,
     tag: "Comprendre",
@@ -61,5 +61,3 @@ const workshops = [
     ],
   },
 ];
-
-export default workshops;

@@ -1,8 +1,8 @@
 import { useSearchParams } from "next/navigation";
 
-import { Loader } from "@/components/loader";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
-import Legend from "@/components/maps/legend";
+import { Loader } from "@/components/loader";
+import { Legend } from "@/components/maps/legend";
 import Map from "@/components/maps/map";
 import { GridCol } from "@/dsfr/layout";
 
@@ -19,7 +19,7 @@ interface Props {
       precarite_logement: number;
     };
     type: string;
-  }>
+  }>;
 }
 
 export const FragiliteEconomique = (props: Props) => {
@@ -52,8 +52,8 @@ export const FragiliteEconomique = (props: Props) => {
               <GridCol lg={4}>
                 <h4>LE CHIFFRE</h4>
                 <p>
-                  Dans l'EPCI {db_filtered[0]?.properties["libelle_epci"]}, la part des ménages qui sont en situation de précarité
-                  énergique logement est de <b>{(100 * precarite_log_epci).toPrecision(3)}%.</b>
+                  Dans l'EPCI {db_filtered[0]?.properties["libelle_epci"]}, la part des ménages qui sont en situation de
+                  précarité énergique logement est de <b>{(100 * precarite_log_epci).toPrecision(3)}%.</b>
                 </p>
                 <h4>EXPLICATION</h4>
                 <p>

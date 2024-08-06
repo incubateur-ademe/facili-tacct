@@ -1,29 +1,33 @@
-"use client"
+"use client";
 
 import { useSearchParams } from "next/navigation";
-import { Loader } from "@/components/loader";
+
+import { type InconfortThermique } from "@/app/donnees-territoriales/type";
 import { PieChart1 } from "@/components/charts/pieChart1";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
+import { Loader } from "@/components/loader";
 import { GridCol } from "@/dsfr/layout";
-import { InconfortThermique } from "@/app/donnees-territoriales/type";
 
 interface Props {
   inconfort_thermique: InconfortThermique[];
 }
 
 type DataTravailExt = {
-  code_commune: string | null | undefined,
-  libelle_geographique: string | null | undefined,
-  epci: string | null | undefined,
-  libelle_epci: string | null | undefined,
   NA5AZ_sum: number;
   NA5BE_sum: number;
   NA5FZ_sum: number;
   NA5GU_sum: number;
   NA5OQ_sum: number;
-}
+  code_commune: string | null | undefined;
+  epci: string | null | undefined;
+  libelle_epci: string | null | undefined;
+  libelle_geographique: string | null | undefined;
+};
 
-function sumProperty(items: DataTravailExt[], prop: "NA5AZ_sum" | "NA5BE_sum" | "NA5FZ_sum" | "NA5GU_sum" | "NA5OQ_sum") {
+function sumProperty(
+  items: DataTravailExt[],
+  prop: "NA5AZ_sum" | "NA5BE_sum" | "NA5FZ_sum" | "NA5GU_sum" | "NA5OQ_sum",
+) {
   return items.reduce(function (a, b) {
     return a + b[prop];
   }, 0);
@@ -31,7 +35,7 @@ function sumProperty(items: DataTravailExt[], prop: "NA5AZ_sum" | "NA5BE_sum" | 
 
 function sum(arr: number[]) {
   return arr.reduce(function (a, b) {
-     return a + b;
+    return a + b;
   }, 0);
 }
 
@@ -42,7 +46,7 @@ export const TravailExterieur = (props: Props) => {
   const temp_db: DataTravailExt[] = inconfort_thermique.map(el => {
     return {
       code_commune: el.code_commune,
-      libelle_geographique: el.libelle_geographique ,
+      libelle_geographique: el.libelle_geographique,
       epci: el.epci,
       libelle_epci: el.libelle_epci,
       NA5AZ_sum: Number(el.NA5AZ_sum),
@@ -50,15 +54,15 @@ export const TravailExterieur = (props: Props) => {
       NA5FZ_sum: Number(el.NA5FZ_sum),
       NA5GU_sum: Number(el.NA5GU_sum),
       NA5OQ_sum: Number(el.NA5OQ_sum),
-    }
-  })
+    };
+  });
   const sums = {
     sumAgriculture: sumProperty(temp_db, "NA5AZ_sum"),
     sumIndustries: sumProperty(temp_db, "NA5BE_sum"),
     sumConstruction: sumProperty(temp_db, "NA5FZ_sum"),
     sumCommerce: sumProperty(temp_db, "NA5GU_sum"),
-    sumAdministration: sumProperty(temp_db, "NA5OQ_sum")
-  }
+    sumAdministration: sumProperty(temp_db, "NA5OQ_sum"),
+  };
 
   const graphData = [
     {
@@ -96,10 +100,12 @@ export const TravailExterieur = (props: Props) => {
       color: "#E3EDFF",
       value: Number(((100 * sums.sumAdministration) / sum(Object.values(sums))).toFixed(1)),
     },
-  ]
+  ];
 
-  const travailExt = Number(((100 * sums.sumConstruction) / sum(Object.values(sums))).toFixed(1)) + Number(((100 * sums.sumAgriculture) / sum(Object.values(sums))).toFixed(1))
-  
+  const travailExt =
+    Number(((100 * sums.sumConstruction) / sum(Object.values(sums))).toFixed(1)) +
+    Number(((100 * sums.sumAgriculture) / sum(Object.values(sums))).toFixed(1));
+
   return (
     <>
       {inconfort_thermique.length ? (
@@ -117,8 +123,8 @@ export const TravailExterieur = (props: Props) => {
               <div>
                 <h4>LE CHIFFRE</h4>
                 <p>
-                  Dans l'EPCI {temp_db[0]?.libelle_epci}, la part cumulée des emplois dans les secteurs à risque est
-                  de <b>{travailExt?.toFixed(1)}%</b>, soit {sums.sumAgriculture + sums.sumConstruction} personnes.
+                  Dans l'EPCI {temp_db[0]?.libelle_epci}, la part cumulée des emplois dans les secteurs à risque est de{" "}
+                  <b>{travailExt?.toFixed(1)}%</b>, soit {sums.sumAgriculture + sums.sumConstruction} personnes.
                 </p>
               </div>
             ) : (

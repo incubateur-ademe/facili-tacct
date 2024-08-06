@@ -15,7 +15,7 @@ import { TravailExterieur } from "@/components/themes/inconfort-thermique/travai
 import { Vegetalisation } from "@/components/themes/inconfort-thermique/vegetalisation";
 
 import styles from "./donnees.module.scss";
-import { InconfortThermique } from "./type";
+import { type InconfortThermique } from "./type";
 
 interface Props {
   clc: Array<{
@@ -138,15 +138,16 @@ const PageComp = ({ data, db_filtered, clc, inconfort_thermique }: Props) => {
                 {(() => {
                   const Component = allComps.find(el => el.titre === selectedSubTab)?.Component;
                   if (!Component) return null;
-                  return <Component 
-                    data={data} 
-                    inconfort_thermique={inconfort_thermique} 
-                    db_filtered={db_filtered} 
-                    activeDataTab={selectedSubTab} 
-                    clc={clc} 
-                    />;
-                  }
-                )()}
+                  return (
+                    <Component
+                      data={data}
+                      inconfort_thermique={inconfort_thermique}
+                      db_filtered={db_filtered}
+                      activeDataTab={selectedSubTab}
+                      clc={clc}
+                    />
+                  );
+                })()}
               </Suspense>
             </div>
             <div className={styles.bottom}>

@@ -6,7 +6,7 @@ interface Props {
   data: string;
 }
 
-const Legend = (props: Props) => {
+export const Legend = (props: Props) => {
   const { data } = props;
   return (
     <>
@@ -64,4 +64,3 @@ const Legend = (props: Props) => {
     </>
   );
 };
-export default Legend;

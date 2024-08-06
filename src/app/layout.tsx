@@ -75,7 +75,6 @@ const RootLayout = ({ children }: PropsWithChildren) => {
               id={footerId}
               accessibility="non compliant"
               accessibilityLinkProps={{ href: "/accessibilite" }}
-              
               contentDescription={`${config.name} est un service développé par l'accélérateur de la transition écologique de l'ADEME.`}
               bottomItems={[
                 {
@@ -84,7 +83,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                 },
                 {
                   text: "Politique de confidentialité",
-                  linkProps: { href: "/politique-de-confidentialite"}
+                  linkProps: { href: "/politique-de-confidentialite" },
                 },
                 // <FooterPersonalDataPolicyItem key="FooterPersonalDataPolicyItem" />,
                 {

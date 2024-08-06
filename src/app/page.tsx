@@ -73,7 +73,14 @@ export default function Home() {
                 <b>transversale et collaborative</b> en impliquant les élus et différentes expertises thématiques.
               </p>
             </div>
-            <Image alt="" src={ConstellationImg} width={0} height={0} sizes="40vw" style={{ maxWidth: '40%', height: 'auto' }} />
+            <Image
+              alt=""
+              src={ConstellationImg}
+              width={0}
+              height={0}
+              sizes="40vw"
+              style={{ maxWidth: "40%", height: "auto" }}
+            />
           </div>
           {/* <div className={styles.test}></div>
           <div className={styles.test2}></div>

@@ -1,11 +1,10 @@
 import { useSearchParams } from "next/navigation";
 
-import { Loader } from "@/components/loader";
-import BarChart from "@/components/charts/BarChart";
+import { type InconfortThermique } from "@/app/donnees-territoriales/type";
+import { BarChart } from "@/components/charts/BarChart";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
+import { Loader } from "@/components/loader";
 import { GridCol } from "@/dsfr/layout";
-
-import { InconfortThermique } from "@/app/donnees-territoriales/type";
 
 interface Props {
   inconfort_thermique: InconfortThermique[];
@@ -20,16 +19,16 @@ interface ChartData {
 }
 
 type DataAgeBati = {
-  code_commune: string | null | undefined,
-  libelle_geographique: string | null | undefined,
-  epci: string | null | undefined,
-  libelle_epci: string | null | undefined,
-  age_bati_pre_19: number,
-  age_bati_19_45: number,
-  age_bati_46_90: number,
-  age_bati_91_05: number,
-  age_bati_post06: number
-}
+  age_bati_19_45: number;
+  age_bati_46_90: number;
+  age_bati_91_05: number;
+  age_bati_post06: number;
+  age_bati_pre_19: number;
+  code_commune: string | null | undefined;
+  epci: string | null | undefined;
+  libelle_epci: string | null | undefined;
+  libelle_geographique: string | null | undefined;
+};
 
 export const AgeBati = (props: Props) => {
   const { inconfort_thermique } = props;
@@ -39,23 +38,19 @@ export const AgeBati = (props: Props) => {
   const temp_db: DataAgeBati[] = inconfort_thermique.map(el => {
     return {
       code_commune: el.code_commune,
-      libelle_geographique: el.libelle_geographique ,
+      libelle_geographique: el.libelle_geographique,
       epci: el.epci,
       libelle_epci: el.libelle_epci,
       age_bati_pre_19: Number(el.age_bati_pre_19),
       age_bati_19_45: Number(el.age_bati_19_45),
       age_bati_46_90: Number(el.age_bati_46_90),
       age_bati_91_05: Number(el.age_bati_91_05),
-      age_bati_post06: Number(el.age_bati_post06)
-    }
-  })
-  
-  const constructionBefore2006 = (
-    temp_db[0]?.age_bati_pre_19 + 
-    temp_db[0]?.age_bati_19_45 + 
-    temp_db[0]?.age_bati_46_90 + 
-    temp_db[0]?.age_bati_91_05
-  )
+      age_bati_post06: Number(el.age_bati_post06),
+    };
+  });
+
+  const constructionBefore2006 =
+    temp_db[0]?.age_bati_pre_19 + temp_db[0]?.age_bati_19_45 + temp_db[0]?.age_bati_46_90 + temp_db[0]?.age_bati_91_05;
 
   const chartData: ChartData[] = [
     {
@@ -93,7 +88,7 @@ export const AgeBati = (props: Props) => {
       France: 11.4,
       FranceColor: "hsl(125, 70%, 50%)",
     },
-  ]
+  ];
 
   return (
     <>

@@ -2,7 +2,6 @@ import { Stepper } from "@codegouvfr/react-dsfr/Stepper";
 
 import db from "../../modules/db";
 // import { Filter_db } from "./filterFunc";
-import { Get_Prisma } from "./prismafunc";
 
 export default async function Test() {
   const addData = async (formData: FormData) => {
