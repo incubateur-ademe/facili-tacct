@@ -12,7 +12,7 @@ type Props = {
   }>;
 };
 
-const BarChart = ({ chartData }: Props) => {
+export const BarChart = ({ chartData }: Props) => {
   return (
     <div style={{ height: "500px", width: "100%" }}>
       <ResponsiveBar
@@ -22,19 +22,19 @@ const BarChart = ({ chartData }: Props) => {
           from: "color",
           modifiers: [["darker", 1.6]],
         }}
-        label={(d) => `${d.value}%`}
+        label={d => `${d.value}%`}
         tooltip={({ id, value, color }) => (
           <div
-              style={{
-                  padding: 8,
-                  background: '#FFF',
-              }}
+            style={{
+              padding: 8,
+              background: "#FFF",
+            }}
           >
-              <strong>
-                  {id}: {value}%
-              </strong>
+            <strong>
+              {id}: {value}%
+            </strong>
           </div>
-      )}
+        )}
         groupMode="grouped"
         indexBy="periode"
         margin={{ top: 50, right: 30, bottom: 50, left: 30 }}
@@ -68,5 +68,3 @@ const BarChart = ({ chartData }: Props) => {
     </div>
   );
 };
-
-export default BarChart;

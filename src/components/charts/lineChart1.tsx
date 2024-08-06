@@ -14,7 +14,7 @@ type GraphData = {
   y: number | undefined;
 };
 
-const LineChart1 = (props: Props) => {
+export const LineChart1 = (props: Props) => {
   const { xData, yData } = props;
   const [children, setChildren] = useState<GraphData[]>([]);
   const tempChildren: GraphData[] = [];
@@ -56,7 +56,6 @@ const LineChart1 = (props: Props) => {
             bottom: 50,
             left: 60,
           }}
-
           axisBottom={{
             tickSize: 5,
             tickPadding: 5,
@@ -80,5 +79,3 @@ const LineChart1 = (props: Props) => {
     </div>
   );
 };
-
-export default LineChart1;
