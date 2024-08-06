@@ -1,9 +1,10 @@
-import { Loader } from "@/components/loader";
+import { useSearchParams } from "next/navigation";
+
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
-import Legend from "@/components/maps/legend";
+import { Loader } from "@/components/loader";
+import { Legend } from "@/components/maps/legend";
 import Map from "@/components/maps/map";
 import { GridCol } from "@/dsfr/layout";
-import { useSearchParams } from "next/navigation";
 
 interface Props {
   db_filtered: Array<{
@@ -18,7 +19,7 @@ interface Props {
       precarite_logement: number;
     };
     type: string;
-  }>
+  }>;
 }
 
 const average = (array: number[]) => array.reduce((a: number, b: number) => a + b) / array.length;

@@ -3,8 +3,9 @@
 import "leaflet/dist/leaflet.css";
 import "./maps.scss";
 
-import { GeoJSON, MapContainer, TileLayer } from "@/lib/react-leaflet";
 import { useRef } from "react";
+
+import { GeoJSON, MapContainer, TileLayer } from "@/lib/react-leaflet";
 
 type GetColor = (d: number) => string;
 
@@ -15,8 +16,8 @@ type Style = {
   fillOpacity?: number;
   opacity?: number;
   properties: {
-    precarite_logement: number;
     densite_bati: number;
+    precarite_logement: number;
   };
   weight?: number;
 };
@@ -28,7 +29,7 @@ interface Props {
 
 const Map = (props: Props) => {
   const { data, db_filtered } = props;
-  const mapRef = useRef<any>(null);//REPLACE L.Map | null
+  const mapRef = useRef<any>(null); //REPLACE L.Map | null
   // const data1 = epci as GeoJSON.Feature;
 
   const latlng = [48.8575, 2.3514]; //paris
@@ -37,44 +38,28 @@ const Map = (props: Props) => {
   const all_coordinates = db_filtered.map((el: any) => el.geometry.coordinates[0][0]);
 
   const getCentroid = (arr: number[][]) => {
-    return (arr.reduce((x: number[], y: number[]) => {
+    return arr.reduce(
+      (x: number[], y: number[]) => {
         return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
       },
       [0, 0],
-    ));
+    );
   };
   const getCoordinates = (coords: number[][][]) => {
-    var coords_arr = []
-    for (var i = 0; i < coords.length; i++) {
+    const coords_arr = [];
+    for (let i = 0; i < coords.length; i++) {
       const center = getCentroid(coords[i]);
-      coords_arr.push(center)
+      coords_arr.push(center);
     }
     return getCentroid(coords_arr);
-  }
-   
+  };
+
   const centerCoord: number[] = getCoordinates(all_coordinates);
-  
+
   function getColor(d: number) {
     if (data === "densite_bati") {
-      return d > 0.2
-        ? "#FF5E54"
-        : d > 0.1
-          ? "#FFBD00"
-          : d > 0.05
-            ? "#FFFA6A"
-            : d > 0
-              ? "#D5F4A3"
-              : "#5CFF54";
-    } else
-      return d > 0.3
-        ? "#FF5E54"
-        : d > 0.2
-          ? "#FFBD00"
-          : d > 0.1
-            ? "#FFFA6A"
-            : d > 0
-              ? "#D5F4A3"
-              : "#5CFF54";
+      return d > 0.2 ? "#FF5E54" : d > 0.1 ? "#FFBD00" : d > 0.05 ? "#FFFA6A" : d > 0 ? "#D5F4A3" : "#5CFF54";
+    } else return d > 0.3 ? "#FF5E54" : d > 0.2 ? "#FFBD00" : d > 0.1 ? "#FFFA6A" : d > 0 ? "#D5F4A3" : "#5CFF54";
   }
 
   function style(feature: any) {
@@ -117,9 +102,7 @@ const Map = (props: Props) => {
 
     layer.bringToFront();
     if (data === "densite_bati") {
-      this.bindPopup(
-        `<div>${commune_name}</div><div>Densité du bâti : ${densite_bati}</div>`,
-      );
+      this.bindPopup(`<div>${commune_name}</div><div>Densité du bâti : ${densite_bati}</div>`);
       this.openPopup();
     } else {
       this.bindPopup(
@@ -173,12 +156,7 @@ const Map = (props: Props) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {/* <GeoJSON data={data1} /> */}
-      <GeoJSON
-        ref={mapRef}
-        data={db_filtered}
-        onEachFeature={onEachFeature}
-        style={style}
-      />
+      <GeoJSON ref={mapRef} data={db_filtered} onEachFeature={onEachFeature} style={style} />
     </MapContainer>
   );
 };

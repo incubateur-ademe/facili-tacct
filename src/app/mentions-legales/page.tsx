@@ -1,36 +1,3 @@
-// import { type Metadata } from "next";
-
-// import { anchorHeadingMDXComponents } from "@/mdx-components";
-
-// import MentionsLegalesContent from "../../../content/mentions-legales.mdx";
-// import { Container } from "../../dsfr/server";
-// import { sharedMetadata } from "../shared-metadata";
-
-// const title = "Mentions légales";
-// const url = "/mentions-legales";
-
-// export const metadata: Metadata = {
-//   ...sharedMetadata,
-//   title,
-//   openGraph: {
-//     ...sharedMetadata.openGraph,
-//     title,
-//     url,
-//   },
-//   alternates: {
-//     canonical: url,
-//   },
-// };
-
-// const MentionsLegales = () => (
-//   <Container my="4w">
-//     <h1>{title}</h1>
-//     <MentionsLegalesContent components={anchorHeadingMDXComponents} />
-//   </Container>
-// );
-
-// export default MentionsLegales;
-
 import { fr } from "@codegouvfr/react-dsfr";
 import { LegalNotice } from "@incubateur-ademe/legal-pages-react/LegalNotice";
 
