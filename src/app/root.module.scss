@@ -59,12 +59,11 @@
 }
 
 .cardWrapper {
-    display: flex;
-    justify-content: space-between;
-    padding: 12em 3.75em 3.75em; 
-    gap: 1.5em;
-    background-color: #F4F6FE;
-    flex-wrap: wrap;
+    display: flex !important;
+    justify-content: space-between !important;
+    padding: 12em 3.75em 3.75em !important; 
+    gap: 1.5em !important;
+    background-color: #F4F6FE !important;
 }
 
 .card {
