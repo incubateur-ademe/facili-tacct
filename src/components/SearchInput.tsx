@@ -18,6 +18,7 @@ type MySearchInputProps = {
 
 type Options = {
   code: string;
+  codeEpci: string;
   nom: string;
 };
 
@@ -47,12 +48,14 @@ export const MySearchInput = (props: MySearchInputProps) => {
         temp.map((el, i) => ({
           nom: el.libelle_epci,
           code: el.epci,
+          codeEpci: el.epci,
         })),
       );
       setOptions(
         temp.map((el, i) => ({
           nom: el.libelle_commune,
           code: el.code_commune,
+          codeEpci: el.epci,
         })),
       );
     })();
@@ -72,7 +75,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
       noOptionsText="Aucune collectivité trouvée"
       onChange={(event, newValue: Options | null) => {
         setOptions(newValue ? [newValue, ...options] : options);
-        setCode(newValue?.code);
+        setCode(newValue?.codeEpci);
       }}
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
