@@ -3,15 +3,15 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
+      sans: ["Graphik", "sans-serif"],
+      serif: ["Merriweather", "serif"],
     },
     // align with dsfr
     screens: {
       sm: "36em",
       md: "48em",
       lg: "62em",
-      xl: "78em",
+      xl: "80em",
     },
   },
   plugins: [],
@@ -20,4 +20,3 @@ module.exports = {
     preflight: false,
   },
 };
-

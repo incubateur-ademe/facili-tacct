@@ -2,6 +2,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    --heightWrapper: 375px;
 }
 
 .content {
@@ -11,46 +12,78 @@
 .container {
     margin: 3em 0;
 }
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: var(--heightWrapper);
+    gap: 2rem;
+    align-items: center;
+    padding: 3.75em 3.75em 7.5em;
+}
+
 .titles {
-    max-width: 50%;
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    color: beige;
+    align-items: center;
+    h1 {
+        color: beige;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 55.48px;
+    }
+    p {
+        max-width: 650px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 24.97px;
+        text-align: center;
+    }
 }
 .collectiviteWrapper {
+    position: absolute;
+    width: 46dvw;
+    max-width: 53em;
+    left: calc(50dvw - 23dvw);
+    top: calc(var(--heightWrapper) + 2em);
     display: flex;
     flex-direction: column;
     background-color: rgb(248, 248, 248);
     padding: 2em;
     margin: 0 auto;
     max-width: 60%;
-    border-radius: 4px;
+    border-radius: 8px;
     box-shadow: 1px 1px 5px rgb(138, 138, 138);
-}
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
 }
 
 .cardWrapper {
-    padding: 4em; 
-    gap: 3em;
-    background-color: grey;
+    display: flex;
+    justify-content: space-between;
+    padding: 12em 3.75em 3.75em; 
+    gap: 1.5em;
+    background-color: #F4F6FE;
+    flex-wrap: wrap;
 }
 
 .card {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    max-width: 45%;
     gap: 2rem;
-    height: 100%;
     background-color: white !important;
-    padding: 2rem;
-    border-radius: 4px;
+    border-radius: 8px;
     h2 {
         font-size: 1.4rem;
         line-height: 1.3em;
         font-weight: 700;
-        margin: 0;
+        margin: 0 0 1em;
+    }
+    .cardDescription {
+        display: flex;
+        flex-direction: column;
+        padding: 1em;
     }
 }
 
@@ -74,6 +107,15 @@
     }
     .constellationText{
         max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 1135px) {
+    .collectiviteWrapper {
+        width: 90dvw;
+        max-width: none;
+        left: calc(50dvw - 45dvw);
+        top: calc(var(--heightWrapper) + 6em);
     }
 }
 
