@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@codegouvfr/react-dsfr/Button";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useStyles } from "tss-react/dsfr";
 
@@ -18,7 +18,7 @@ export const Step3Comp = () => {
     <>
       <div className={styles.body}>
         <div className={styles.wrapper}>
-          <Image src={HandshakeIcon} alt="" />
+          <Image src={HandshakeIcon as StaticImageData} alt="" />
           <h1>Partenaires experts</h1>
           <p>
             Identifiez les partenaires sur lesquels vous pouvez vous appuyer pour faire avancer vos initiatives

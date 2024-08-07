@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@codegouvfr/react-dsfr/Button";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { useSearchParams } from "next/navigation";
 
 import RessourceBackground from "@/assets/images/ressources.svg";
@@ -57,7 +57,7 @@ const Ressources = () => {
         </div>
       </div> */}
       <Image
-        src={RessourceBackground}
+        src={RessourceBackground as StaticImageData}
         alt=""
         width={0}
         height={0}

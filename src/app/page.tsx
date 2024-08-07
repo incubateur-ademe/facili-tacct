@@ -2,7 +2,7 @@
 
 import { fr } from "@codegouvfr/react-dsfr";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { useState } from "react";
 import { useStyles } from "tss-react/dsfr";
 
@@ -45,13 +45,13 @@ export default function Home() {
           <Grid align="center" className={styles.cardWrapper}>
             <GridCol lg={5}>
               <div className={styles.card} style={darkClass} onClick={handleClick}>
-                <Image src={MarkerHandIcon} alt="" />
+                <Image src={MarkerHandIcon as StaticImageData} alt="" />
                 <h2>Déchiffrez les données socio-économiques de votre territoire</h2>
               </div>
             </GridCol>
             <GridCol lg={5}>
               <div className={styles.card} style={darkClass}>
-                <Image src={HandshakeIcon} alt="" />
+                <Image src={HandshakeIcon as StaticImageData} alt="" />
                 <h2>
                   Découvrez des ressources pour faciliter les conditions du dialogue avec vos élus, services techniques
                   et partenaires
