@@ -2,14 +2,14 @@
 
 import { fr } from "@codegouvfr/react-dsfr";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import { useState } from "react";
 import { useStyles } from "tss-react/dsfr";
 
-import HandshakeIcon from "../assets/icons/handshake_icon_green.svg";
-import MarkerHandIcon from "../assets/icons/markerHand_icon_green.svg";
-import ConstellationImg from "../assets/images/constellation.png";
-import { Grid, GridCol } from "../dsfr/layout";
+import Constellation2Img from "../assets/images/constellation2.png";
+import PeopleImg from "../assets/images/landing-page-group.png";
+import MapImg from "../assets/images/landing-page-map.png";
+import { Container, Grid } from "../dsfr/layout";
 import { CollectiviteComp } from "./CollectiviteComp";
 import styles from "./root.module.scss";
 
@@ -31,7 +31,62 @@ export default function Home() {
 
   return (
     <>
-      <div className={styles.container}>
+      <Container size="xl">
+        <div className={styles.wrapper} style={{ backgroundColor: "#0063CB" }}>
+          <div className={styles.titles}>
+            <h1>Vulnérable aux impacts du changement climatique ?</h1>
+            <p>
+              <b>Objectivez votre diagnostic</b> avec les données socio-économiques qui rendent votre territoire unique
+              et <b>découvrez des arguments et ressources pour mobiliser</b> vos collègues et partenaires externes sur
+              l'adaptation au changement climatique
+            </p>
+          </div>
+        </div>
+        <CollectiviteComp />
+        <Grid align="center" className={styles.cardWrapper}>
+          <div className={styles.card} style={darkClass}>
+            <Image src={MapImg} alt="" />
+            <div className={styles.cardDescription}>
+              <h2>Evaluez la sensibilité de votre territoire</h2>
+              <p>Déchiffrez les données socio-économiques qui rendent votre territoire unique</p>
+            </div>
+          </div>
+          <div className={styles.card} style={darkClass}>
+            <Image src={PeopleImg} alt="" />
+            <div className={styles.cardDescription}>
+              <h2>Facilitez les conditions du dialogue</h2>
+              <p>
+                Découvrez des ressources pour faciliter les conditions du dialogue avec vos élus, services techniques et
+                partenaires
+              </p>
+            </div>
+          </div>
+          {/* <GridCol lg={3}>
+              <div className={styles.card} style={darkClass}>
+                <Image src={MeetingIcon} alt="" />
+                <h2>Explorez des ressources pour mobiliser</h2>
+              </div>
+            </GridCol> */}
+        </Grid>
+        <div className={styles.constellationWrapper}>
+          <div className={styles.constellationText}>
+            <h3>L'adaptation n'est possible qu’en intelligence collective</h3>
+            <p>
+              Les initiatives d'adaptation au changement climatique réussissent lorsqu'elles sont abordées de manière{" "}
+              <b>transversale et collaborative</b> en impliquant les élus et différentes expertises thématiques.
+            </p>
+          </div>
+          <Image
+            alt=""
+            src={Constellation2Img}
+            width={0}
+            height={0}
+            sizes="40vw"
+            style={{ maxWidth: "40%", height: "auto" }}
+          />
+        </div>
+      </Container>
+      {/* <div className={styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.titles}>
             <h1>Vulnérable aux impacts du changement climatique ?</h1>
@@ -43,27 +98,18 @@ export default function Home() {
           </div>
           <CollectiviteComp />
           <Grid align="center" className={styles.cardWrapper}>
-            <GridCol lg={5}>
-              <div className={styles.card} style={darkClass} onClick={handleClick}>
-                <Image src={MarkerHandIcon as StaticImageData} alt="" />
-                <h2>Déchiffrez les données socio-économiques de votre territoire</h2>
-              </div>
-            </GridCol>
-            <GridCol lg={5}>
-              <div className={styles.card} style={darkClass}>
-                <Image src={HandshakeIcon as StaticImageData} alt="" />
-                <h2>
-                  Découvrez des ressources pour faciliter les conditions du dialogue avec vos élus, services techniques
-                  et partenaires
-                </h2>
-              </div>
-            </GridCol>
-            {/* <GridCol lg={3}>
-              <div className={styles.card} style={darkClass}>
-                <Image src={MeetingIcon} alt="" />
-                <h2>Explorez des ressources pour mobiliser</h2>
-              </div>
-            </GridCol> */}
+            <div className={styles.card} style={darkClass} onClick={handleClick}>
+              <Image src={MarkerHandIcon as StaticImageData} alt="" />
+              <h2>Déchiffrez les données socio-économiques de votre territoire</h2>
+            </div>
+            <div className={styles.card} style={darkClass}>
+              <Image src={HandshakeIcon as StaticImageData} alt="" />
+              <h2>
+                Découvrez des ressources pour faciliter les conditions du dialogue avec vos élus, services techniques et
+                partenaires
+              </h2>
+            </div>
+          
           </Grid>
           <div className={styles.constellationWrapper}>
             <div className={styles.constellationText}>
@@ -82,28 +128,14 @@ export default function Home() {
               style={{ maxWidth: "40%", height: "auto" }}
             />
           </div>
-          {/* <div className={styles.test}></div>
+          
+        </div>
+      </div> */}
+      {/* <div className={styles.test}></div>
           <div className={styles.test2}></div>
           <div className={styles.test3}></div>
           <div className={styles.test4}></div>
           <div className={styles.test5}></div> */}
-        </div>
-      </div>
-      {/* <Button
-        linkProps={{
-          href: '/diagnostic'
-        }}
-        className={css({
-          backgroundColor: fr.colors.getHex({isDark}).decisions.background.alt.redMarianne.default,
-          "&:hover": {
-            backgroundColor: fr.colors.getHex({isDark}).decisions.background.alt.redMarianne.hover
-          },
-          padding: "2em", 
-          margin: "2em",
-        })}
-      >
-        Commencer ma démarche
-      </Button>   */}
     </>
   );
 }
