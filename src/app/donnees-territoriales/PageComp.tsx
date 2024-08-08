@@ -15,17 +15,10 @@ import { TravailExterieur } from "@/components/themes/inconfort-thermique/travai
 import { Vegetalisation } from "@/components/themes/inconfort-thermique/vegetalisation";
 
 import styles from "./donnees.module.scss";
-import { type InconfortThermique } from "./type";
+import { type CLC, type InconfortThermique } from "./type";
 
 interface Props {
-  clc: Array<{
-    geometry: string;
-    properties: {
-      centroid: string;
-      label: string;
-    };
-    type: string;
-  }>;
+  clc: CLC[];
   data: Array<{
     donnee: string;
     facteur_sensibilite: string;

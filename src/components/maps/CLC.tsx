@@ -5,23 +5,33 @@ import "./maps.scss";
 
 import { useRef } from "react";
 
+import { type CLC } from "@/app/donnees-territoriales/type";
 import { GeoJSON, MapContainer, TileLayer } from "@/lib/react-leaflet";
 
 interface Props {
   clc: any;
-  // clc: Array<{
-  //   type: string;
+  // clc_parsed: Array<{
   //   geometry: string;
   //   properties: {
-  //     label: string;
   //     centroid: string;
-  //   }
+  //     label: string;
+  //   };
+  //   type: string;
   // }>;
-  db_filtered: any;
 }
 
-const Map = (props: Props) => {
-  const { clc, db_filtered } = props;
+export const Map = (props: Props) => {
+  const { clc } = props;
+  const clc_parsed = clc.map(function (elem: CLC) {
+    return {
+      type: "Feature",
+      properties: {
+        label: elem.legend,
+        centroid: elem.centroid,
+      },
+      geometry: JSON.parse(elem.geometry) as string,
+    };
+  });
   const mapRef = useRef<any>(null); //REPLACE L.Map | null
   const colors = {
     "Continuous urban fabric": "#DE7397",
@@ -69,7 +79,9 @@ const Map = (props: Props) => {
     Estuaries: "#e6f2ff",
     "Sea and ocean": "#e6f2ff",
   };
-  const all_coordinates = clc.map((el: any) => el.geometry.coordinates[0]);
+  const all_centroid: number[][] = clc_parsed.map((el: any) => {
+    return el.properties.centroid.split("POINT")[1].replace("(", "").replace(")", "").split(" ").map(Number);
+  });
 
   const getCentroid = (arr: number[][]) => {
     return arr.reduce(
@@ -80,16 +92,8 @@ const Map = (props: Props) => {
     );
   };
 
-  const getCoordinates = (coords: number[][][]) => {
-    const coords_arr = [];
-    for (let i = 0; i < coords.length; i++) {
-      const center = getCentroid(coords[i]);
-      coords_arr.push(center);
-    }
-    return getCentroid(coords_arr);
-  };
-
-  const centerCoord: number[] = getCoordinates(all_coordinates);
+  const latLong = getCentroid(all_centroid);
+  console.log("latLong", latLong);
 
   function getColor(d: string) {
     const color = Object.entries(colors)
@@ -101,7 +105,7 @@ const Map = (props: Props) => {
   function style(feature: any) {
     return {
       fillColor: getColor(feature.properties.label),
-      weight: 0.5,
+      weight: 0,
       opacity: 1,
       color: "black",
       dashArray: "3",
@@ -109,37 +113,9 @@ const Map = (props: Props) => {
     };
   }
 
-  function mouseOnHandler(this: any, e: any) {
-    const layer = e.target;
-    const label = layer.feature.properties.label;
-    layer.setStyle({
-      weight: 1.5,
-      dashArray: "",
-      fillOpacity: 1,
-    });
-  }
-
-  //make style after hover disappear
-  function mouseOutHandler(this: any, e: any) {
-    const layer = e.target;
-    layer.setStyle({
-      weight: 0.5,
-      color: "#000000",
-      dashArray: "3",
-      fillOpacity: 0.5,
-    });
-  }
-
-  function onEachFeature(feature: any, layer: any) {
-    layer.on({
-      mouseover: mouseOnHandler,
-      mouseout: mouseOutHandler,
-    });
-  }
-
   return (
     <MapContainer
-      center={[centerCoord[1], centerCoord[0]]}
+      center={[latLong[1], latLong[0]]}
       zoom={10}
       ref={mapRef}
       style={{ height: "500px", width: "100%" }}
@@ -151,10 +127,8 @@ const Map = (props: Props) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {/* <GeoJSON data={data1} /> */}
-      <GeoJSON ref={mapRef} data={clc} style={style} onEachFeature={onEachFeature} />
-      <GeoJSON data={db_filtered} style={style} />
+      <GeoJSON ref={mapRef} data={clc_parsed} style={style} />
+      {/* <GeoJSON data={db_filtered} style={style} /> */}
     </MapContainer>
   );
 };
-
-export default Map;
