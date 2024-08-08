@@ -207,6 +207,12 @@ exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
   proj4text: 'proj4text'
 };
 
+exports.Prisma.Clc_epciScalarFieldEnum = {
+  pk: 'pk',
+  legend: 'legend',
+  epci_code: 'epci_code'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -227,7 +233,8 @@ exports.Prisma.ModelName = {
   inconfort_thermique: 'inconfort_thermique',
   clc_2018_2: 'clc_2018_2',
   communes2: 'communes2',
-  spatial_ref_sys: 'spatial_ref_sys'
+  spatial_ref_sys: 'spatial_ref_sys',
+  clc_epci: 'clc_epci'
 };
 
 /**
