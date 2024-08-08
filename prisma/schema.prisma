@@ -111,3 +111,13 @@ model spatial_ref_sys {
 
   @@schema("postgis")
 }
+
+model clc_epci {
+  pk        Int                      @id @default(autoincrement())
+  legend    String?                  @db.VarChar
+  epci_code Int?
+  geometry  Unsupported("geometry")?
+
+  @@index([geometry], map: "clc_epci_geometry_geom_idx", type: Gist)
+  @@schema("postgis")
+}

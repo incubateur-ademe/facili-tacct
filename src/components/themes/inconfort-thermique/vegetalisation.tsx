@@ -2,23 +2,16 @@ import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses, type TooltipProps } from "@mui/material/Tooltip";
 import { useSearchParams } from "next/navigation";
 
-import { type InconfortThermique } from "@/app/donnees-territoriales/type";
+import { type CLC, type InconfortThermique } from "@/app/donnees-territoriales/type";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
-import Map from "@/components/maps/CLC";
+import { Map } from "@/components/maps/CLC";
 import { GridCol } from "@/dsfr/layout";
 
 import { LegendCLC } from "./vegetalisation-legend";
 
 interface Props {
-  clc: Array<{
-    geometry: string;
-    properties: {
-      centroid: string;
-      label: string;
-    };
-    type: string;
-  }>;
+  clc: CLC[];
   db_filtered: Array<{
     geometry: string;
     properties: {
@@ -135,7 +128,7 @@ export const Vegetalisation = (props: Props) => {
                   </p>
                   <HtmlTooltip title={<LegendCLC />} placement="left">
                     <div>
-                      <Map clc={clc} db_filtered={db_filtered} />
+                      <Map clc={clc} />
                     </div>
                   </HtmlTooltip>
                   <p style={{ margin: "1em 0em 0em" }}>

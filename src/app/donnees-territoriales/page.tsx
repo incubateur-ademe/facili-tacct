@@ -7,8 +7,8 @@ import { themes } from "@/lib/utils/themes";
 import { Loader } from "../../components/loader";
 import { Box, Container, GridCol } from "../../dsfr/server";
 import styles from "./donnees.module.scss";
-import { Get_CLC, Get_Communes, Get_Inconfort_Thermique } from "./queries";
-import { type CLC, type DbFiltered } from "./type";
+import { Get_Communes, Get_Inconfort_Thermique, GetClcEpci } from "./queries";
+import { type DbFiltered } from "./type";
 
 export const metadata: Metadata = {
   title: "Données territoriales",
@@ -33,7 +33,9 @@ const Page = async (searchParams: SearchParams) => {
   const theme = themes.inconfort_thermique;
   const code = searchParams.searchParams.code;
   const db_inconfort_thermique = await Get_Inconfort_Thermique(code);
-  const db_filtered: Awaited<DbFiltered[]> = await Get_Communes(code);
+  const clc_epci = await GetClcEpci(code);
+
+  const db_filtered = await Get_Communes(code);
 
   const db_parsed = db_filtered.map(function (elem: DbFiltered) {
     return {
@@ -47,33 +49,11 @@ const Page = async (searchParams: SearchParams) => {
         densite_bati: elem.densite_bati,
         coordinates: elem.coordinates,
       },
-      geometry: JSON.parse(elem.geometry),
+      geometry: JSON.parse(elem.geometry) as string,
     };
   });
 
-  const getCentroid = (arr: number[][]) => {
-    return arr.reduce(
-      (x: number[], y: number[]) => {
-        return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
-      },
-      [0, 0],
-    );
-  };
-
-  const all_coordinates = db_filtered.map((el: DbFiltered) => el.coordinates.split(",").map(Number));
-  const centerCoord: number[] = getCentroid(all_coordinates);
-
-  const clc_2018: Awaited<CLC[]> = await Get_CLC(centerCoord);
-  const clc_parsed = clc_2018.map(function (elem: CLC) {
-    return {
-      type: "Feature",
-      properties: {
-        label: elem.label3,
-        centroid: elem.centroid,
-      },
-      geometry: JSON.parse(elem.geometry),
-    };
-  });
+  // const all_coordinates = db_filtered.map((el: DbFiltered) => el.coordinates.split(",").map(Number));
 
   return (
     <Container py="4w">
@@ -90,7 +70,7 @@ const Page = async (searchParams: SearchParams) => {
           data={theme}
           inconfort_thermique={db_inconfort_thermique}
           db_filtered={db_parsed}
-          clc={clc_parsed}
+          clc={clc_epci}
         />
       </div>
     </Container>
