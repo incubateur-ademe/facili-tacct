@@ -45,11 +45,11 @@ export type DbFiltered = {
   coordinates: string;
   densite_bati: number;
   epci: string;
+  geometry: string;
   libelle_commune: string;
   libelle_epci: string;
-  precarite_logement: number;
 
-  geometry: string;
+  precarite_logement: number;
   // properties: {
   //   code_commune: string;
   //   coordinates: string;
@@ -66,63 +66,63 @@ export type CLC = {
   centroid: string;
   geometry: string;
   label3: string;
+  legend: string;
   pk: number;
   shape_length: number;
-}
+};
 
 export type InconfortThermique = {
-  index: number,
-  code_commune: string | undefined | null,
-  libelle_geographique: string | undefined | null,
-  epci: string | undefined | null,
-  libelle_epci: string | undefined | null,
-  departement: string | undefined | null,
-  region: number | undefined | null,
-  age_bati_post06: number | undefined | null,
-  age_bati_91_05: number | undefined | null,
-  age_bati_46_90: number | undefined | null,
-  age_bati_19_45: number | undefined | null,
-  age_bati_pre_19: number | undefined | null,
-  under_4_sum_1968: number | undefined | null,
-  to_80_sum_1968: number | undefined | null,
-  over_80_sum_1968: number | undefined | null,
-  under_4_sum_1975: number | undefined | null,
-  to_80_sum_1975: number | undefined | null,
-  over_80_sum_1975: number | undefined | null,
-  under_4_sum_1982: number | undefined | null,
-  to_80_sum_1982: number | undefined | null,
-  over_80_sum_1982: number | undefined | null,
-  under_4_sum_1990: number | undefined | null,
-  to_80_sum_1990: number | undefined | null,
-  over_80_sum_1990: number | undefined | null,
-  under_4_sum_1999: number | undefined | null,
-  to_80_sum_1999: number | undefined | null,
-  over_80_sum_1999: number | undefined | null,
-  under_4_sum_2009: number | undefined | null,
-  to_80_sum_2009: number | undefined | null,
-  over_80_sum_2009: number | undefined | null,
-  under_4_sum_2014: number | undefined | null,
-  to_80_sum_2014: number | undefined | null,
-  over_80_sum_2014: number | undefined | null,
-  under_4_sum_2020: number | undefined | null,
-  to_80_sum_2020: number | undefined | null,
-  over_80_sum_2020: number | undefined | null,
-  P20_POP80P: number | undefined | null,
-  P20_POP80P_PSEUL: number | undefined | null,
-  tee_log: number | undefined | null,
-  tee_mob: number | undefined | null,
-  precarite_logement: number | undefined | null,
-  NA5AZ_sum: bigint | undefined | null,
-  NA5BE_sum: bigint | undefined | null,
-  NA5FZ_sum: bigint | undefined | null,
-  NA5GU_sum: bigint | undefined | null,
-  NA5OQ_sum: bigint | undefined | null,
-  s_geom_cstr_bati: number | undefined | null,
-  densite_bati: number | undefined | null,
-  clc_1_artificialise: number | null | undefined,
-  clc_2_agricole: number | null | undefined,
-  clc_3_foret_semiNaturel: number | null | undefined,
-  clc_4_humide: number | null | undefined,
-  clc_5_eau: number | null | undefined
-}
-
+  NA5AZ_sum: bigint | null | undefined;
+  NA5BE_sum: bigint | null | undefined;
+  NA5FZ_sum: bigint | null | undefined;
+  NA5GU_sum: bigint | null | undefined;
+  NA5OQ_sum: bigint | null | undefined;
+  P20_POP80P: number | null | undefined;
+  P20_POP80P_PSEUL: number | null | undefined;
+  age_bati_19_45: number | null | undefined;
+  age_bati_46_90: number | null | undefined;
+  age_bati_91_05: number | null | undefined;
+  age_bati_post06: number | null | undefined;
+  age_bati_pre_19: number | null | undefined;
+  clc_1_artificialise: number | null | undefined;
+  clc_2_agricole: number | null | undefined;
+  clc_3_foret_semiNaturel: number | null | undefined;
+  clc_4_humide: number | null | undefined;
+  clc_5_eau: number | null | undefined;
+  code_commune: string | null | undefined;
+  densite_bati: number | null | undefined;
+  departement: string | null | undefined;
+  epci: string | null | undefined;
+  index: number;
+  libelle_epci: string | null | undefined;
+  libelle_geographique: string | null | undefined;
+  over_80_sum_1968: number | null | undefined;
+  over_80_sum_1975: number | null | undefined;
+  over_80_sum_1982: number | null | undefined;
+  over_80_sum_1990: number | null | undefined;
+  over_80_sum_1999: number | null | undefined;
+  over_80_sum_2009: number | null | undefined;
+  over_80_sum_2014: number | null | undefined;
+  over_80_sum_2020: number | null | undefined;
+  precarite_logement: number | null | undefined;
+  region: number | null | undefined;
+  s_geom_cstr_bati: number | null | undefined;
+  tee_log: number | null | undefined;
+  tee_mob: number | null | undefined;
+  to_80_sum_1968: number | null | undefined;
+  to_80_sum_1975: number | null | undefined;
+  to_80_sum_1982: number | null | undefined;
+  to_80_sum_1990: number | null | undefined;
+  to_80_sum_1999: number | null | undefined;
+  to_80_sum_2009: number | null | undefined;
+  to_80_sum_2014: number | null | undefined;
+  to_80_sum_2020: number | null | undefined;
+  under_4_sum_1968: number | null | undefined;
+  under_4_sum_1975: number | null | undefined;
+  under_4_sum_1982: number | null | undefined;
+  under_4_sum_1990: number | null | undefined;
+  under_4_sum_1999: number | null | undefined;
+  under_4_sum_2009: number | null | undefined;
+  under_4_sum_2014: number | null | undefined;
+  under_4_sum_2020: number | null | undefined;
+};
