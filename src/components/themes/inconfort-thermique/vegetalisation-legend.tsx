@@ -7,7 +7,7 @@ export const LegendCLC = () => {
     <div className="legendCLC">
       <div className="legendColor-wrapper">
         <div className="legendColor" style={{ backgroundColor: "#DE7397" }}></div>
-        <p>Routes/Transport</p>
+        <p>Constructions</p>
       </div>
       <div className="legendColor-wrapper">
         <div className="legendColor" style={{ backgroundColor: "#7A5710" }}></div>

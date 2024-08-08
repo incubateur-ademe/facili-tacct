@@ -34,44 +34,44 @@ export const Map = (props: Props) => {
   });
   const mapRef = useRef<any>(null); //REPLACE L.Map | null
   const colors = {
-    "Continuous urban fabric": "#DE7397",
-    "Discontinuous urban fabric": "#DE7397",
-    "Industrial or commercial units": "#DE7397",
+    "Continuous urban fabric": "#a0a0a0",
+    "Discontinuous urban fabric": "#a0a0a0",
+    "Industrial or commercial units": "#a0a0a0",
     "Road and rail networks and associated land": "#D7D7D7", //cc0000
     "Port areas": "#D7D7D7",
     Airports: "#D7D7D7",
     "Mineral extraction sites": "#e0cda9",
-    "Dump sites": "#DE7397",
-    "Construction sites": "#DE7397",
-    "Green urban areas": "#7EB47F", //ffa6ff
-    "Sport and leisure facilities": "#DE7397",
+    "Dump sites": "#a0a0a0",
+    "Construction sites": "#a0a0a0",
+    "Green urban areas": "#a6e64d", //ffa6ff
+    "Sport and leisure facilities": "#a0a0a0",
     "Non-irrigated arable land": "#7A5710",
     "Permanently irrigated land": "#7A5710",
-    "Rice fields": "#FFE6A6",
-    Vineyards: "#FFE6A6", //e68000
-    "Fruit trees and berry plantations": "#FFE6A6",
-    "Olive groves": "#FFE6A6", //e6a600
+    "Rice fields": "#a6e64d",
+    Vineyards: "#a6e64d", //e68000
+    "Fruit trees and berry plantations": "#a6e64d",
+    "Olive groves": "#a6e64d", //e6a600
     Pastures: "#7A5710",
-    "Annual crops associated with permanent crops": "#FFE6A6",
-    "Complex cultivation patterns": "#FFE6A6",
-    "Land principally occupied by agriculture, with significant areas of natural vegetation": "#FFE6A6",
-    "Agro-forestry areas": "#526E43", //f2cca6
-    "Broad-leaved forest": "#7C9B39", //80ff00
-    "Coniferous forest": "#7C9B39", //00a600
-    "Mixed forest": "#7C9B39", //4dff00
+    "Annual crops associated with permanent crops": "#a6e64d",
+    "Complex cultivation patterns": "#a6e64d",
+    "Land principally occupied by agriculture, with significant areas of natural vegetation": "#a6e64d",
+    "Agro-forestry areas": "#a6e64d", //f2cca6
+    "Broad-leaved forest": "#a6e64d", //80ff00
+    "Coniferous forest": "#a6e64d", //00a600
+    "Mixed forest": "#a6e64d", //4dff00
     "Natural grasslands": "#7A5710", //ccf24d
-    "Moors and heathland": "#CCCCFF",
+    "Moors and heathland": "#a6e64d",
     "Sclerophyllous vegetation": "#a6e64d",
-    "Transitional woodland-shrub": "#a6f200",
+    "Transitional woodland-shrub": "#a6e64d",
     "Beaches, dunes, sands": "#e0cda9",
     "Bare rocks": "#e0cda9",
     "Sparsely vegetated areas": "#a6e64d",
     "Burnt areas": "#000000",
     "Glaciers and perpetual snow": "#a6e6cc",
-    "Inland marshes": "#CCCCFF",
+    "Inland marshes": "#a6e64d",
     "Peat bogs": "#4D4DFF",
-    "Salt marshes": "#CCCCFF",
-    Salines: "#CCCCFF",
+    "Salt marshes": "#a6e64d",
+    Salines: "#a6e64d",
     "Intertidal flats": "#e6f2ff",
     "Water courses": "#e6f2ff",
     "Water bodies": "#e6f2ff",
@@ -109,7 +109,7 @@ export const Map = (props: Props) => {
       opacity: 1,
       color: "black",
       dashArray: "3",
-      fillOpacity: 0.5,
+      fillOpacity: 0.6,
     };
   }
 
