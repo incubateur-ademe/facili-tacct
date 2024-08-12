@@ -1,6 +1,6 @@
 import { useSearchParams } from "next/navigation";
 
-import { type DbFiltered } from "@/app/_searchBar/type";
+import { type CarteCommunes } from "@/app/donnees-territoriales/type";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
 import { Legend } from "@/components/maps/legend";
@@ -8,7 +8,7 @@ import { Map } from "@/components/maps/map";
 import { GridCol } from "@/dsfr/layout";
 
 interface Props {
-  db_filtered: DbFiltered[];
+  carteCommunes: CarteCommunes[];
 }
 
 type Geometry = {
@@ -16,10 +16,10 @@ type Geometry = {
   type: string;
 };
 
-export const FragiliteEconomique = ({ db_filtered }: Props) => {
+export const FragiliteEconomique = ({ carteCommunes }: Props) => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
-  const db_parsed = db_filtered.map(function (elem: DbFiltered) {
+  const db_parsed = carteCommunes.map(function (elem: CarteCommunes) {
     return {
       type: "Feature",
       properties: {
@@ -38,12 +38,12 @@ export const FragiliteEconomique = ({ db_filtered }: Props) => {
   const precarite_log_epci: number = Number(
     db_parsed.reduce(function (a, b) {
       return a + b.properties["precarite_logement"];
-    }, 0) / db_filtered.length,
+    }, 0) / carteCommunes.length,
   );
 
   return (
     <>
-      {db_filtered ? (
+      {carteCommunes ? (
         <div
           style={{
             display: "flex",
@@ -53,7 +53,7 @@ export const FragiliteEconomique = ({ db_filtered }: Props) => {
             alignItems: "center",
           }}
         >
-          {db_filtered.length ? (
+          {carteCommunes.length ? (
             <>
               <GridCol lg={4}>
                 <h4>LE CHIFFRE</h4>
@@ -74,7 +74,7 @@ export const FragiliteEconomique = ({ db_filtered }: Props) => {
                     <b>Répartition de la précarité énergétique logement par commune au sein de l'EPCI</b>
                   </p>
                   <Legend data={"precarite_log"} />
-                  <Map data={"precarite_log"} db_filtered={db_parsed} />
+                  <Map data={"precarite_log"} carteCommunes={db_parsed} />
                   <p>
                     Source : <b>ONPE</b>
                   </p>

@@ -11,8 +11,8 @@
 }
 
 .selectedButton {
-    background-color: #0063CB;
-    // border: 1px solid #000000;
+    background-color: #000091e7;
+    border: 1px solid #000000;
     border-radius: 25px;
     margin: 0 0.5em;
     padding: 0.2em 1em;
@@ -24,7 +24,7 @@
     }
 }
 .button {
-    background-color: #F9F9FF;
+    background-color: #e3e3fd;
     border-radius: 25px;
     margin: 0 0.5em;
     padding: 0.2em 1em;
@@ -62,10 +62,10 @@
     // looks
     //background-color: white;
     font-size: 1.25em;
-    // box-shadow:
-    //     0 0.125rem 0.5rem rgba(0, 0, 0, 0.3),
-    //     0 0.0625rem 0.125rem rgba(0, 0, 0, 0.2);
-    // border-left: 3px solid #000091;
+    box-shadow:
+        0 0.125rem 0.5rem rgba(0, 0, 0, 0.3),
+        0 0.0625rem 0.125rem rgba(0, 0, 0, 0.2);
+    border-left: 3px solid #000091;
 }
 
 .bubbleContent {
