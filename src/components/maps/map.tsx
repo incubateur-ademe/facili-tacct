@@ -3,42 +3,71 @@
 import "leaflet/dist/leaflet.css";
 import "./maps.scss";
 
+import { type Feature } from "geojson";
+import { type FeatureGroup, type Layer, type LeafletMouseEventHandlerFn, type StyleFunction } from "leaflet";
+import { useSearchParams } from "next/navigation";
 import { useRef } from "react";
 
 import { GeoJSON, MapContainer, TileLayer } from "@/lib/react-leaflet";
+import { type Any } from "@/lib/utils/types";
 
-type GetColor = (d: number) => string;
+import { GraphDataNotFound } from "../graph-data-not-found";
 
-type Style = {
-  color?: string;
-  dashArray?: string;
-  fillColor?: GetColor;
-  fillOpacity?: number;
-  opacity?: number;
-  properties: {
-    densite_bati: number;
-    precarite_logement: number;
-  };
-  weight?: number;
+type Geometry = {
+  coordinates: number[][][][];
+  type: string;
 };
-
 interface Props {
   data: string;
-  db_filtered: any;
+  db_filtered: Array<{
+    geometry: Geometry;
+    properties: {
+      code_commune: string;
+      coordinates: string;
+      densite_bati: number;
+      epci: string;
+      libelle_commune: string;
+      libelle_epci: string;
+      precarite_logement: number;
+    };
+    type: string;
+  }>;
 }
 
-const Map = (props: Props) => {
+interface Properties {
+  code_commune: string;
+  coordinates: string;
+  densite_bati: number;
+  epci: string;
+  libelle_commune: string;
+  libelle_epci: string;
+  precarite_logement: number;
+}
+
+interface DBParsed {
+  geometry: Geometry;
+  properties: {
+    code_commune: string;
+    coordinates: string;
+    densite_bati: number;
+    epci: string;
+    libelle_commune: string;
+    libelle_epci: string;
+    precarite_logement: number;
+  };
+  type: string;
+}
+
+export const Map = (props: Props) => {
   const { data, db_filtered } = props;
-  const mapRef = useRef<any>(null); //REPLACE L.Map | null
-  // const data1 = epci as GeoJSON.Feature;
+  const searchParams = useSearchParams();
+  const code = searchParams.get("code")!;
+  const mapRef = useRef(null);
 
-  const latlng = [48.8575, 2.3514]; //paris
-  const latLng_mairie1 = [48.8565, 2.3524]; //hotel de ville
-
-  const all_coordinates = db_filtered.map((el: any) => el.geometry.coordinates[0][0]);
+  const all_coordinates = db_filtered.map(el => el.geometry.coordinates?.[0]?.[0]);
 
   const getCentroid = (arr: number[][]) => {
-    return arr.reduce(
+    return arr?.reduce(
       (x: number[], y: number[]) => {
         return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
       },
@@ -55,17 +84,19 @@ const Map = (props: Props) => {
   };
 
   const centerCoord: number[] = getCoordinates(all_coordinates);
-
+  console.log("centerCoord", centerCoord);
   function getColor(d: number) {
     if (data === "densite_bati") {
       return d > 0.2 ? "#FF5E54" : d > 0.1 ? "#FFBD00" : d > 0.05 ? "#FFFA6A" : d > 0 ? "#D5F4A3" : "#5CFF54";
     } else return d > 0.3 ? "#FF5E54" : d > 0.2 ? "#FFBD00" : d > 0.1 ? "#FFFA6A" : d > 0 ? "#D5F4A3" : "#5CFF54";
   }
 
-  function style(feature: any) {
+  const style: StyleFunction<Any> = feature => {
+    const typedFeature = feature as DBParsed;
+
     if (data === "densite_bati") {
       return {
-        fillColor: getColor(feature.properties.densite_bati),
+        fillColor: getColor(typedFeature?.properties.densite_bati),
         weight: 1.5,
         opacity: 1,
         color: "black",
@@ -74,7 +105,7 @@ const Map = (props: Props) => {
       };
     } else {
       return {
-        fillColor: getColor(feature.properties.precarite_logement),
+        fillColor: getColor(typedFeature?.properties.precarite_logement),
         weight: 1.5,
         opacity: 1,
         color: "black",
@@ -82,83 +113,76 @@ const Map = (props: Props) => {
         fillOpacity: 0.7,
       };
     }
-  }
+  };
 
-  //on Hover
-  function mouseOnHandler(this: any, e: any) {
-    //REPLACE ????????
-
-    const layer = e.target;
-    const epci_name = layer.feature.properties.libelle_epci;
-    const commune_name = layer.feature.properties.libelle_commune;
-    const precarite_logement = Number(layer.feature.properties.precarite_logement).toFixed(2);
-    const densite_bati = layer.feature.properties.densite_bati.toFixed(2);
+  const mouseOnHandler: LeafletMouseEventHandlerFn = e => {
+    const layer = e.target as FeatureGroup<Properties>;
+    const commune_name =
+      layer.feature && "properties" in layer.feature ? layer.feature.properties.libelle_commune : undefined;
+    const precarite_logement =
+      layer.feature && "properties" in layer.feature
+        ? Number(layer.feature.properties.precarite_logement).toFixed(2)
+        : undefined;
+    const densite_bati =
+      layer.feature && "properties" in layer.feature ? layer.feature.properties.densite_bati.toFixed(2) : undefined;
     layer.setStyle({
       weight: 3,
       color: "#eee",
       dashArray: "",
       fillOpacity: 0.8,
     });
-
     layer.bringToFront();
-    if (data === "densite_bati") {
-      this.bindPopup(`<div>${commune_name}</div><div>Densité du bâti : ${densite_bati}</div>`);
-      this.openPopup();
+    if (data === "densite_bati" && commune_name && densite_bati) {
+      layer.bindPopup(`<div>${commune_name}</div><div>Densité du bâti : ${densite_bati}</div>`);
+      layer.openPopup();
     } else {
-      this.bindPopup(
+      layer.bindPopup(
         `<div>${commune_name}</div><div>Part des ménages en précarité : ${(100 * Number(precarite_logement)).toFixed(0)}%</div>`,
       );
-      this.openPopup();
+      layer.openPopup();
     }
-  }
+  };
 
   //make style after hover disappear
-  function mouseOutHandler(this: any, e: any) {
-    const layer = e.target;
-    // console.log("mapref.current", mapRef.current)
-    // mapRef.current?.resetStyle(e.target);
+  const mouseOutHandler: LeafletMouseEventHandlerFn = e => {
+    const layer = e.target as FeatureGroup<Properties>;
     layer.setStyle({
       weight: 1.5,
       color: "#000000",
       dashArray: "3",
       fillOpacity: 0.8,
     });
-    this.closePopup(e.target);
-  }
+    layer.closePopup();
+  };
 
-  // function zoomToFeature(e) {
-  //   let bounds = e.target.getBounds()
-  //   //console.log('bounds', bounds)
-  //   let center = e.target.getCenter()
-  //   setLat(Object.values(center)[0])
-  //   setLng(Object.values(center)[1])
-  // }
-
-  function onEachFeature(feature: any, layer: any) {
+  const onEachFeature = (feature: Feature<Any>, layer: Layer) => {
     layer.on({
       mouseover: mouseOnHandler,
       mouseout: mouseOutHandler,
-      // click: zoomToFeature
     });
-  }
+  };
 
   return (
-    <MapContainer
-      center={[centerCoord[1], centerCoord[0]]}
-      zoom={10}
-      ref={mapRef}
-      style={{ height: "500px", width: "100%" }}
-      attributionControl={false}
-      zoomControl={false}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {/* <GeoJSON data={data1} /> */}
-      <GeoJSON ref={mapRef} data={db_filtered} onEachFeature={onEachFeature} style={style} />
-    </MapContainer>
+    <>
+      {db_filtered === null ? (
+        <GraphDataNotFound code={code} />
+      ) : (
+        <MapContainer
+          center={[centerCoord[1], centerCoord[0]]}
+          zoom={10}
+          ref={mapRef}
+          style={{ height: "500px", width: "100%" }}
+          attributionControl={false}
+          zoomControl={false}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {/* <GeoJSON data={data1} /> */}
+          <GeoJSON ref={mapRef} data={db_filtered as any} onEachFeature={onEachFeature} style={style} />
+        </MapContainer>
+      )}
+    </>
   );
 };
-
-export default Map;
