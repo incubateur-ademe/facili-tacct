@@ -31,12 +31,16 @@ export const MySearchInput = (props: MySearchInputProps) => {
   const [epciOptions, setEpciOptions] = useState<Options[]>([]);
   const [code, setCode] = useState<string>();
 
-  // supprime les doublons pour les objects epci
+  // supprime les doublons pour les objects
   const filteredEpci = epciOptions.filter(
     (value, index, self) => index === self.findIndex(t => t.nom === value.nom && t.code === value.code),
   );
 
-  const collectivites = [...filteredEpci, ...options];
+  const filteredCommunes = options.filter(
+    (value, index, self) => index === self.findIndex(t => t.nom === value.nom && t.code === value.code),
+  );
+
+  const collectivites = [...filteredCommunes.sort((a, b) => a.nom.localeCompare(b.nom)), ...filteredEpci];
   const handleClick = () => {
     code ? router.push(`/thematiques?code=${code}`) : void 0;
   };
@@ -67,11 +71,8 @@ export const MySearchInput = (props: MySearchInputProps) => {
       id={id}
       autoHighlight
       filterOptions={x => x}
-      options={collectivites.sort((a, b) => a.nom.localeCompare(b.nom))}
-      autoComplete
-      includeInputInList
-      filterSelectedOptions
-      // value={value}
+      options={collectivites}
+      // value={collectivites}
       noOptionsText="Aucune collectivité trouvée"
       onChange={(event, newValue: Options | null) => {
         setOptions(newValue ? [newValue, ...options] : options);
@@ -80,7 +81,12 @@ export const MySearchInput = (props: MySearchInputProps) => {
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
       }}
-      getOptionLabel={option => option.nom}
+      getOptionLabel={option => {
+        if (option) {
+          return `${option.nom} (${option.code})`;
+        }
+        return "";
+      }}
       onKeyDown={e => {
         if (e.code === "Enter") {
           handleClick();

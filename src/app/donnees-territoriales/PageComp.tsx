@@ -15,7 +15,7 @@ import { TravailExterieur } from "@/components/themes/inconfort-thermique/travai
 import { Vegetalisation } from "@/components/themes/inconfort-thermique/vegetalisation";
 
 import styles from "./donnees.module.scss";
-import { type CLC, type InconfortThermique } from "./type";
+import { type CLC, type DbFiltered, type InconfortThermique } from "./type";
 
 interface Props {
   clc: CLC[];
@@ -26,19 +26,7 @@ interface Props {
     risque: string;
     titre: string;
   }>;
-  db_filtered: Array<{
-    geometry: string;
-    properties: {
-      code_commune: string;
-      coordinates: string;
-      densite_bati: number;
-      epci: string;
-      libelle_commune: string;
-      libelle_epci: string;
-      precarite_logement: number;
-    };
-    type: string;
-  }>;
+  db_filtered: DbFiltered[];
   inconfort_thermique: InconfortThermique[];
 }
 

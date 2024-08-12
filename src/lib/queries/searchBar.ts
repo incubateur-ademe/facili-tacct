@@ -9,7 +9,7 @@ const PrismaPostgres = new PostgresClient();
 export const GetCollectivite = async (collectivite: string): Promise<DbFiltered[]> => {
   try {
     console.time("Query Execution Time");
-    const variable_commune = collectivite + "%";
+    const variable_commune = "%" + collectivite + "%";
     const variable_code_commune = collectivite + "%";
     const variable_epci = "%" + collectivite + "%";
     if (isNaN(parseInt(collectivite))) {
@@ -19,10 +19,21 @@ export const GetCollectivite = async (collectivite: string): Promise<DbFiltered[
       libelle_epci,
       libelle_commune,
       code_commune
-      FROM postgis."communes2" WHERE libelle_commune ILIKE ${variable_commune} OR libelle_epci ILIKE ${variable_epci} LIMIT 30;`;
+      FROM postgis."communes2" WHERE libelle_commune ILIKE ${variable_commune} LIMIT 20;`; // OR libelle_epci ILIKE ${variable_epci}
       console.timeEnd("Query Execution Time");
       // console.log(value);
-      return value;
+      if (value.length > 0) {
+        return value;
+      } else {
+        const value = await PrismaPostgres.$queryRaw<DbFiltered[]>`
+        SELECT 
+        epci, 
+        libelle_epci,
+        libelle_commune,
+        code_commune
+        FROM postgis."communes2" WHERE libelle_epci ILIKE ${variable_epci} LIMIT 20;`;
+        return value;
+      }
     } else if (typeof parseInt(collectivite) === "number") {
       const value = await PrismaPostgres.$queryRaw<DbFiltered[]>`
       SELECT 

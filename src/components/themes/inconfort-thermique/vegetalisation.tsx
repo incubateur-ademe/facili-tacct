@@ -12,19 +12,6 @@ import { LegendCLC } from "./vegetalisation-legend";
 
 interface Props {
   clc: CLC[];
-  db_filtered: Array<{
-    geometry: string;
-    properties: {
-      code_commune: string;
-      coordinates: string;
-      densite_bati: number;
-      epci: string;
-      libelle_commune: string;
-      libelle_epci: string;
-      precarite_logement: number;
-    };
-    type: string;
-  }>;
   inconfort_thermique: InconfortThermique[];
 }
 
@@ -50,7 +37,7 @@ function sumProperty(
 }
 
 export const Vegetalisation = (props: Props) => {
-  const { clc, inconfort_thermique, db_filtered } = props;
+  const { clc, inconfort_thermique } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
 

@@ -1,38 +1,46 @@
 import { useSearchParams } from "next/navigation";
 
+import { type DbFiltered } from "@/app/_searchBar/type";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
 import { Legend } from "@/components/maps/legend";
-import Map from "@/components/maps/map";
+import { Map } from "@/components/maps/map";
 import { GridCol } from "@/dsfr/layout";
 
 interface Props {
-  db_filtered: Array<{
-    geometry: string;
-    properties: {
-      code_commune: string;
-      coordinates: string;
-      densite_bati: number;
-      epci: string;
-      libelle_commune: string;
-      libelle_epci: string;
-      precarite_logement: number;
-    };
-    type: string;
-  }>;
+  db_filtered: DbFiltered[];
 }
+
+type Geometry = {
+  coordinates: number[][][][];
+  type: string;
+};
 
 const average = (array: number[]) => array.reduce((a: number, b: number) => a + b) / array.length;
 
-export const DensiteBati = (props: Props) => {
-  const { db_filtered } = props;
+export const DensiteBati = ({ db_filtered }: Props) => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
-  const densite_epci = db_filtered?.map((el, i) => el.properties.densite_bati);
+  const db_parsed = db_filtered.map(function (elem: DbFiltered) {
+    return {
+      type: "Feature",
+      properties: {
+        epci: elem.epci,
+        libelle_epci: elem.libelle_epci,
+        libelle_commune: elem.libelle_commune,
+        code_commune: elem.code_commune,
+        precarite_logement: elem.precarite_logement,
+        densite_bati: elem.densite_bati,
+        coordinates: elem.coordinates,
+      },
+      geometry: JSON.parse(elem.geometry) as Geometry,
+    };
+  });
+  const densite_epci = db_parsed.map((el, i) => el.properties.densite_bati);
 
   return (
     <>
-      {db_filtered ? (
+      {db_parsed ? (
         <div
           style={{
             display: "flex",
@@ -42,13 +50,13 @@ export const DensiteBati = (props: Props) => {
             alignItems: "center",
           }}
         >
-          {db_filtered.length ? (
+          {db_parsed.length ? (
             <>
               <GridCol lg={4}>
                 <h4>LE CHIFFRE</h4>
                 {densite_epci ? (
                   <p>
-                    Dans l'EPCI {db_filtered[0]?.properties["libelle_epci"]}, la densité moyenne du bâtiment est de{" "}
+                    Dans l'EPCI {db_parsed[0]?.properties["libelle_epci"]}, la densité moyenne du bâtiment est de{" "}
                     <b>{average(densite_epci).toFixed(2)}</b>.
                   </p>
                 ) : (
@@ -68,7 +76,7 @@ export const DensiteBati = (props: Props) => {
                   <p>
                     <b>Répartition de la densité du bâti par commune au sein de l'EPCI</b>
                   </p>
-                  <Map data={"densite_bati"} db_filtered={db_filtered} />
+                  <Map data={"densite_bati"} db_filtered={db_parsed} />
                   <p>
                     Source : <b>Base de Données Nationale Des Bâtiments – BDNB</b>
                   </p>
