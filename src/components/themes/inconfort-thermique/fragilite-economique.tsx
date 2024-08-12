@@ -1,39 +1,45 @@
 import { useSearchParams } from "next/navigation";
 
+import { type DbFiltered } from "@/app/_searchBar/type";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
 import { Legend } from "@/components/maps/legend";
-import Map from "@/components/maps/map";
+import { Map } from "@/components/maps/map";
 import { GridCol } from "@/dsfr/layout";
 
 interface Props {
-  db_filtered: Array<{
-    geometry: string;
-    properties: {
-      code_commune: string;
-      coordinates: string;
-      densite_bati: number;
-      epci: string;
-      libelle_commune: string;
-      libelle_epci: string;
-      precarite_logement: number;
-    };
-    type: string;
-  }>;
+  db_filtered: DbFiltered[];
 }
 
-export const FragiliteEconomique = (props: Props) => {
-  const { db_filtered } = props;
+type Geometry = {
+  coordinates: number[][][][];
+  type: string;
+};
+
+export const FragiliteEconomique = ({ db_filtered }: Props) => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
-
+  const db_parsed = db_filtered.map(function (elem: DbFiltered) {
+    return {
+      type: "Feature",
+      properties: {
+        epci: elem.epci,
+        libelle_epci: elem.libelle_epci,
+        libelle_commune: elem.libelle_commune,
+        code_commune: elem.code_commune,
+        precarite_logement: elem.precarite_logement,
+        densite_bati: elem.densite_bati,
+        coordinates: elem.coordinates,
+      },
+      geometry: JSON.parse(elem.geometry) as Geometry,
+    };
+  });
   //Mean of all ratio_precarite_log of municipalities in epci
   const precarite_log_epci: number = Number(
-    db_filtered.reduce(function (a, b) {
+    db_parsed.reduce(function (a, b) {
       return a + b.properties["precarite_logement"];
     }, 0) / db_filtered.length,
   );
-  // console.log('db_filtered', db_filtered)
 
   return (
     <>
@@ -52,7 +58,7 @@ export const FragiliteEconomique = (props: Props) => {
               <GridCol lg={4}>
                 <h4>LE CHIFFRE</h4>
                 <p>
-                  Dans l'EPCI {db_filtered[0]?.properties["libelle_epci"]}, la part des ménages qui sont en situation de
+                  Dans l'EPCI {db_parsed[0]?.properties["libelle_epci"]}, la part des ménages qui sont en situation de
                   précarité énergique logement est de <b>{(100 * precarite_log_epci).toPrecision(3)}%.</b>
                 </p>
                 <h4>EXPLICATION</h4>
@@ -68,7 +74,7 @@ export const FragiliteEconomique = (props: Props) => {
                     <b>Répartition de la précarité énergétique logement par commune au sein de l'EPCI</b>
                   </p>
                   <Legend data={"precarite_log"} />
-                  <Map data={"precarite_log"} db_filtered={db_filtered} />
+                  <Map data={"precarite_log"} db_filtered={db_parsed} />
                   <p>
                     Source : <b>ONPE</b>
                   </p>

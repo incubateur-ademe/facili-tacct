@@ -6,26 +6,26 @@ export const LegendCLC = () => {
   return (
     <div className="legendCLC">
       <div className="legendColor-wrapper">
-        <div className="legendColor" style={{ backgroundColor: "#DE7397" }}></div>
-        <p>Constructions</p>
+        <div className="legendColor" style={{ backgroundColor: "#a0a0a0" }}></div>
+        <p>Territoires artificialisés</p>
       </div>
       <div className="legendColor-wrapper">
-        <div className="legendColor" style={{ backgroundColor: "#7A5710" }}></div>
-        <p>Prairies/Pâturages/Terres</p>
+        <div className="legendColor" style={{ backgroundColor: "#ffd24a" }}></div>
+        <p>Territoires agricoles</p>
       </div>
       <div className="legendColor-wrapper">
-        <div className="legendColor" style={{ backgroundColor: "#FFE6A6" }}></div>
-        <p>Agriculture/Plantations</p>
+        <div className="legendColor" style={{ backgroundColor: "#a6e64d" }}></div>
+        <p>Zones végétalisées et milieux semi-naturels</p>
       </div>
       <div className="legendColor-wrapper">
-        <div className="legendColor" style={{ backgroundColor: "#7C9B39" }}></div>
-        <p>Forêt</p>
+        <div className="legendColor" style={{ backgroundColor: "#f2a6ea" }}></div>
+        <p>Zones humides</p>
       </div>
       <div className="legendColor-wrapper">
-        <div className="legendColor" style={{ backgroundColor: "#7EB47F" }}></div>
-        <p>Espaces verts urbains</p>
+        <div className="legendColor" style={{ backgroundColor: "#6969ff" }}></div>
+        <p>Surfaces en eau</p>
       </div>
-      <div className="legendColor-wrapper">
+      {/* <div className="legendColor-wrapper">
         <div className="legendColor" style={{ backgroundColor: "#a6f200" }}></div>
         <p>Arbustes forestiers</p>
       </div>
@@ -56,7 +56,7 @@ export const LegendCLC = () => {
       <div className="legendColor-wrapper">
         <div className="legendColor" style={{ backgroundColor: "#e6f2ff" }}></div>
         <p>Eau</p>
-      </div>
+      </div> */}
     </div>
   );
 };
