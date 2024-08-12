@@ -104,19 +104,6 @@ export const ThematiquesComp = () => {
           )}
         </div>
       </div>
-      {/* <div className={styles.bottom}>
-        {selectedCard === 4 ? (
-          <Button
-            linkProps={{
-              href: `/etape2?code=${code}&thematique=${"inconfort_thermique"}`,
-            }}
-          >
-            Explorer cette thématique
-          </Button>
-        ) : (
-          <Button disabled>Explorer cette thématique</Button>
-        )}
-      </div> */}
     </div>
   );
 };

@@ -71,7 +71,6 @@ const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
       backgroundColor: fr.colors.getHex({ isDark }).decisions.background.alt.grey.hover,
     },
   };
-  // const { css } = useStyles();
 
   const tabs = [
     { tabId: "Population", label: "Population" },
@@ -141,16 +140,7 @@ const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
               >
                 Étape précédente
               </Button>
-              <Button
-                onClick={handleForward}
-                // className={css({
-                //   ".fr-btn": {
-                //     backgroundColor: "#0063CB",
-                //   },
-                // })}
-              >
-                Découvrir qui et comment convaincre
-              </Button>
+              <Button onClick={handleForward}>Découvrir qui et comment convaincre</Button>
             </div>
           </div>
         </div>

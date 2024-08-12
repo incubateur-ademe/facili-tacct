@@ -18,8 +18,7 @@ type Geometry = {
   type: string;
 };
 interface Props {
-  data: string;
-  db_filtered: Array<{
+  carteCommunes: Array<{
     geometry: Geometry;
     properties: {
       code_commune: string;
@@ -32,6 +31,7 @@ interface Props {
     };
     type: string;
   }>;
+  data: string;
 }
 
 interface Properties {
@@ -59,12 +59,12 @@ interface DBParsed {
 }
 
 export const Map = (props: Props) => {
-  const { data, db_filtered } = props;
+  const { data, carteCommunes } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
   const mapRef = useRef(null);
 
-  const all_coordinates = db_filtered.map(el => el.geometry.coordinates?.[0]?.[0]);
+  const all_coordinates = carteCommunes.map(el => el.geometry.coordinates?.[0]?.[0]);
 
   const getCentroid = (arr: number[][]) => {
     return arr?.reduce(
@@ -164,7 +164,7 @@ export const Map = (props: Props) => {
 
   return (
     <>
-      {db_filtered === null ? (
+      {carteCommunes === null ? (
         <GraphDataNotFound code={code} />
       ) : (
         <MapContainer
@@ -180,7 +180,7 @@ export const Map = (props: Props) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {/* <GeoJSON data={data1} /> */}
-          <GeoJSON ref={mapRef} data={db_filtered as any} onEachFeature={onEachFeature} style={style} />
+          <GeoJSON ref={mapRef} data={carteCommunes as any} onEachFeature={onEachFeature} style={style} />
         </MapContainer>
       )}
     </>

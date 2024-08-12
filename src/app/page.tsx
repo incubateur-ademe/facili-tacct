@@ -3,8 +3,6 @@
 import { fr } from "@codegouvfr/react-dsfr";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 import Image from "next/image";
-import { useState } from "react";
-import { useStyles } from "tss-react/dsfr";
 
 import Constellation2Img from "../assets/images/constellation2.png";
 import PeopleImg from "../assets/images/landing-page-group.png";
@@ -14,13 +12,7 @@ import { CollectiviteComp } from "./CollectiviteComp";
 import styles from "./root.module.scss";
 
 export default function Home() {
-  const { css } = useStyles();
   const { isDark } = useIsDark();
-
-  const [select, setSelect] = useState(false);
-  const handleClick = () => {
-    select ? setSelect(false) : setSelect(true);
-  };
 
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default.grey.active,

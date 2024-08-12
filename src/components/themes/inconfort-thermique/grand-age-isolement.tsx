@@ -1,8 +1,10 @@
 "use client";
 
+import Image, { type StaticImageData } from "next/image";
 import { useSearchParams } from "next/navigation";
 
 import { type InconfortThermique } from "@/app/donnees-territoriales/type";
+import CalculatorIcon from "@/assets/icons/calculator_icon_blue.svg";
 import { LineChart1 } from "@/components/charts/lineChart1";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
@@ -164,13 +166,27 @@ export const GrandAgeIsolement = (props: Props) => {
             alignItems: "center",
           }}
         >
-          <GridCol lg={4}>
-            <h4>LE CHIFFRE</h4>
-            <p>
-              Dans l'EPCI {temp_db[0]?.libelle_epci} les personnes de plus de 80 ans représentent{" "}
-              <b>{yData.over_80_2020_percent_epci}%</b> de la population en 2020.
-            </p>
-            <h4>COMPLÉMENT</h4>
+          <GridCol lg={5}>
+            {/* <h4>LE CHIFFRE</h4> */}
+            <div
+              style={{
+                backgroundColor: "#F9F9FF",
+                margin: "1em 0",
+                padding: "1em",
+                borderRadius: "0.5em",
+              }}
+            >
+              <p>
+                Dans l'EPCI {temp_db[0]?.libelle_epci} les personnes de plus de 80 ans représentent{" "}
+                <b>{yData.over_80_2020_percent_epci}%</b> de la population en 2020.
+              </p>
+              <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "4px" }}>
+                <Image src={CalculatorIcon as StaticImageData} alt="" />
+                <p style={{ color: "#0063CB", margin: "0" }}>
+                  <b>Méthode de calcul</b>
+                </p>
+              </div>
+            </div>
             <div>
               <p>
                 Les personnes âgées représentent les 2/3 de la surmortalité en période de fortes chaleurs. (Source :
