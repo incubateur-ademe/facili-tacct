@@ -1,19 +1,19 @@
 "use server";
 
-import { type DbFiltered } from "@/app/donnees-territoriales/type";
+import { type CarteCommunes } from "@/app/donnees-territoriales/type";
 
 import { PrismaClient as PostgresClient } from "../../generated/client";
 
 const PrismaPostgres = new PostgresClient();
 
-export const GetCollectivite = async (collectivite: string): Promise<DbFiltered[]> => {
+export const GetCollectivite = async (collectivite: string): Promise<CarteCommunes[]> => {
   try {
     console.time("Query Execution Time");
     const variable_commune = "%" + collectivite + "%";
     const variable_code_commune = collectivite + "%";
     const variable_epci = "%" + collectivite + "%";
     if (isNaN(parseInt(collectivite))) {
-      const value = await PrismaPostgres.$queryRaw<DbFiltered[]>`
+      const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
       SELECT 
       epci, 
       libelle_epci,
@@ -25,7 +25,7 @@ export const GetCollectivite = async (collectivite: string): Promise<DbFiltered[
       if (value.length > 0) {
         return value;
       } else {
-        const value = await PrismaPostgres.$queryRaw<DbFiltered[]>`
+        const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
         epci, 
         libelle_epci,
@@ -35,7 +35,7 @@ export const GetCollectivite = async (collectivite: string): Promise<DbFiltered[
         return value;
       }
     } else if (typeof parseInt(collectivite) === "number") {
-      const value = await PrismaPostgres.$queryRaw<DbFiltered[]>`
+      const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
       SELECT 
       epci, 
       libelle_epci,

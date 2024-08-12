@@ -1,6 +1,6 @@
 import { useSearchParams } from "next/navigation";
 
-import { type DbFiltered } from "@/app/_searchBar/type";
+import { type CarteCommunes } from "@/app/donnees-territoriales/type";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
 import { Legend } from "@/components/maps/legend";
@@ -8,7 +8,7 @@ import { Map } from "@/components/maps/map";
 import { GridCol } from "@/dsfr/layout";
 
 interface Props {
-  db_filtered: DbFiltered[];
+  carteCommunes: CarteCommunes[];
 }
 
 type Geometry = {
@@ -18,10 +18,10 @@ type Geometry = {
 
 const average = (array: number[]) => array.reduce((a: number, b: number) => a + b) / array.length;
 
-export const DensiteBati = ({ db_filtered }: Props) => {
+export const DensiteBati = ({ carteCommunes }: Props) => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
-  const db_parsed = db_filtered.map(function (elem: DbFiltered) {
+  const db_parsed = carteCommunes.map(function (elem: CarteCommunes) {
     return {
       type: "Feature",
       properties: {
@@ -76,7 +76,7 @@ export const DensiteBati = ({ db_filtered }: Props) => {
                   <p>
                     <b>Répartition de la densité du bâti par commune au sein de l'EPCI</b>
                   </p>
-                  <Map data={"densite_bati"} db_filtered={db_parsed} />
+                  <Map data={"densite_bati"} carteCommunes={db_parsed} />
                   <p>
                     Source : <b>Base de Données Nationale Des Bâtiments – BDNB</b>
                   </p>
