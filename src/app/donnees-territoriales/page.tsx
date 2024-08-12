@@ -8,7 +8,6 @@ import { Loader } from "../../components/loader";
 import { Box, Container, GridCol } from "../../dsfr/server";
 import styles from "./donnees.module.scss";
 import { Get_Communes, Get_Inconfort_Thermique, GetClcEpci } from "./queries";
-import { type DbFiltered } from "./type";
 
 export const metadata: Metadata = {
   title: "Données territoriales",
@@ -37,22 +36,6 @@ const Page = async (searchParams: SearchParams) => {
 
   const db_filtered = await Get_Communes(code);
 
-  const db_parsed = db_filtered.map(function (elem: DbFiltered) {
-    return {
-      type: "Feature",
-      properties: {
-        epci: elem.epci,
-        libelle_epci: elem.libelle_epci,
-        libelle_commune: elem.libelle_commune,
-        code_commune: elem.code_commune,
-        precarite_logement: elem.precarite_logement,
-        densite_bati: elem.densite_bati,
-        coordinates: elem.coordinates,
-      },
-      geometry: JSON.parse(elem.geometry) as string,
-    };
-  });
-
   // const all_coordinates = db_filtered.map((el: DbFiltered) => el.coordinates.split(",").map(Number));
 
   return (
@@ -69,7 +52,7 @@ const Page = async (searchParams: SearchParams) => {
         <DynamicPageComp
           data={theme}
           inconfort_thermique={db_inconfort_thermique}
-          db_filtered={db_parsed}
+          db_filtered={db_filtered}
           clc={clc_epci}
         />
       </div>
