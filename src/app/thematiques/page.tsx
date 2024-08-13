@@ -26,15 +26,6 @@ const Thematiques = () => {
         <NoticeComp title="Les thématiques suivantes ont été choisies selon " />
         <Cards />
       </Container>
-
-      {/* <div>
-        <Box style={{ backgroundColor: "white", margin: "1em 0" }}>
-          <GridCol lg={6} offset={1}>
-            <StepperComp title="Sélection d'une thématique" stepCount={4} currentStep={1} />
-          </GridCol>
-        </Box>
-        <ThematiquesComp />
-      </div> */}
     </>
   );
 };

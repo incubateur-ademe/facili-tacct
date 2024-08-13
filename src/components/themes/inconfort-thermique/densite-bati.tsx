@@ -5,6 +5,7 @@ import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
 import { Legend } from "@/components/maps/legend";
 import { Map } from "@/components/maps/map";
+import { CustomTooltip } from "@/components/utils/Tooltip";
 import { GridCol } from "@/dsfr/layout";
 
 interface Props {
@@ -38,6 +39,7 @@ export const DensiteBati = ({ carteCommunes }: Props) => {
   });
   const densite_epci = db_parsed.map((el, i) => el.properties.densite_bati);
 
+  const title = "(surface au sol de la construction x hauteur du bâtiment) / surface totale de la commune";
   return (
     <>
       {db_parsed ? (
@@ -47,22 +49,30 @@ export const DensiteBati = ({ carteCommunes }: Props) => {
             flexDirection: "row",
             gap: "1em",
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: "flex-start",
           }}
         >
           {db_parsed.length ? (
             <>
               <GridCol lg={4}>
-                <h4>LE CHIFFRE</h4>
-                {densite_epci ? (
-                  <p>
-                    Dans l'EPCI {db_parsed[0]?.properties["libelle_epci"]}, la densité moyenne du bâtiment est de{" "}
-                    <b>{average(densite_epci).toFixed(2)}</b>.
-                  </p>
-                ) : (
-                  ""
-                )}
-                <h4>DÉFINITION</h4>
+                <div
+                  style={{
+                    backgroundColor: "#F9F9FF",
+                    margin: "1em 0",
+                    padding: "1em",
+                    borderRadius: "0.5em",
+                  }}
+                >
+                  {densite_epci ? (
+                    <p>
+                      Dans l'EPCI {db_parsed[0]?.properties["libelle_epci"]}, la densité moyenne du bâtiment est de{" "}
+                      <b>{average(densite_epci).toFixed(2)}</b>.
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                  <CustomTooltip title={title} />
+                </div>
                 <p>
                   Il existe de nombreux indicateurs pour mesurer la densité du bâti. La formule de calcul choisie ici
                   est la suivante : <br></br>
@@ -71,14 +81,14 @@ export const DensiteBati = ({ carteCommunes }: Props) => {
                 </p>
               </GridCol>
               <GridCol lg={7}>
-                <div className="flex flex-col justify-end">
+                <div className="flex flex-col">
                   <Legend data={"densite_bati"} />
                   <p>
                     <b>Répartition de la densité du bâti par commune au sein de l'EPCI</b>
                   </p>
                   <Map data={"densite_bati"} carteCommunes={db_parsed} />
                   <p>
-                    Source : <b>Base de Données Nationale Des Bâtiments – BDNB</b>
+                    Source : <b style={{ color: "#0063CB" }}>Base de Données Nationale Des Bâtiments – BDNB</b>
                   </p>
                 </div>
               </GridCol>

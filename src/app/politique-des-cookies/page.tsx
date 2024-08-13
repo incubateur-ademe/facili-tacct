@@ -3,7 +3,7 @@ import { CookiesPolicy } from "@incubateur-ademe/legal-pages-react/CookiesPolicy
 
 import { CookieConsentButton } from "../CookieConsentButton";
 
-export default function CookiePolicyPage() {
+const CookiePolicyPage = () => {
   return (
     <div className={fr.cx("fr-container", "fr-my-4w")}>
       <CookiesPolicy
@@ -17,4 +17,6 @@ export default function CookiePolicyPage() {
       />
     </div>
   );
-}
+};
+
+export default CookiePolicyPage;
