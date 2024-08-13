@@ -1,4 +1,5 @@
 import { type Metadata } from "next";
+import { Suspense } from "react";
 
 import { StepperComp } from "@/components/Stepper";
 
@@ -20,7 +21,9 @@ const Explication = () => {
             <StepperComp title="Partenaires experts" stepCount={4} currentStep={3} />
           </GridCol>
         </Box>
-        <ExplicationComp />
+        <Suspense>
+          <ExplicationComp />
+        </Suspense>
       </div>
     </>
   );

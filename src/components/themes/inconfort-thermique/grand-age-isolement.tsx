@@ -1,13 +1,12 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
 import { useSearchParams } from "next/navigation";
 
 import { type InconfortThermique } from "@/app/donnees-territoriales/type";
-import CalculatorIcon from "@/assets/icons/calculator_icon_blue.svg";
 import { LineChart1 } from "@/components/charts/lineChart1";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
+import { CustomTooltip } from "@/components/utils/Tooltip";
 import { GridCol } from "@/dsfr/layout";
 
 interface Props {
@@ -154,6 +153,9 @@ export const GrandAgeIsolement = (props: Props) => {
     ).toFixed(2),
   };
 
+  const title =
+    "La proportion de personnes âgées que nous avons considérée correspond au pourcentage des personnes de plus de 80 ans dans la population à chaque recensement INSEE.";
+
   return (
     <>
       {inconfort_thermique.length ? (
@@ -163,7 +165,7 @@ export const GrandAgeIsolement = (props: Props) => {
             flexDirection: "row",
             gap: "1em",
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: "flex-start",
           }}
         >
           <GridCol lg={5}>
@@ -180,12 +182,7 @@ export const GrandAgeIsolement = (props: Props) => {
                 Dans l'EPCI {temp_db[0]?.libelle_epci} les personnes de plus de 80 ans représentent{" "}
                 <b>{yData.over_80_2020_percent_epci}%</b> de la population en 2020.
               </p>
-              <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "4px" }}>
-                <Image src={CalculatorIcon as StaticImageData} alt="" />
-                <p style={{ color: "#0063CB", margin: "0" }}>
-                  <b>Méthode de calcul</b>
-                </p>
-              </div>
+              <CustomTooltip title={title} />
             </div>
             <div>
               <p>
@@ -200,17 +197,17 @@ export const GrandAgeIsolement = (props: Props) => {
             </div>
           </GridCol>
           <GridCol lg={7}>
-            <div className="flex flex-col justify-end">
+            <div className="flex flex-col">
               <p style={{ margin: "0 2em 0" }}>
-                <b>Évolution de la part de population de plus de 75 ans depuis 1968</b>
+                <b>Évolution de la part de population de plus de 80 ans depuis 1968</b>
               </p>
               {yData.over_80_2020_percent_epci ? (
                 <LineChart1 xData={xData} yData={Object.values(yData).map(Number)} />
               ) : (
                 <Loader />
               )}
-              <p style={{ margin: "1em 0" }}>
-                Source : <b>Observatoire des territoires</b>
+              <p style={{ margin: "1em 2em" }}>
+                Source : <b style={{ color: "#0063CB" }}>Observatoire des territoires</b>
               </p>
             </div>
           </GridCol>

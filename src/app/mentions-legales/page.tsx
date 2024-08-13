@@ -1,7 +1,7 @@
 import { fr } from "@codegouvfr/react-dsfr";
 import { LegalNotice } from "@incubateur-ademe/legal-pages-react/LegalNotice";
 
-export default function LegalNoticePage() {
+const LegalNoticePage = () => {
   return (
     <div className={fr.cx("fr-container", "fr-my-4w")}>
       <LegalNotice
@@ -19,4 +19,5 @@ export default function LegalNoticePage() {
       />
     </div>
   );
-}
+};
+export default LegalNoticePage;
