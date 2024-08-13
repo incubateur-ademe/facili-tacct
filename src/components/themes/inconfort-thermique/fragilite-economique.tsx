@@ -5,6 +5,7 @@ import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
 import { Legend } from "@/components/maps/legend";
 import { Map } from "@/components/maps/map";
+import { CustomTooltip } from "@/components/utils/Tooltip";
 import { GridCol } from "@/dsfr/layout";
 
 interface Props {
@@ -41,6 +42,9 @@ export const FragiliteEconomique = ({ carteCommunes }: Props) => {
     }, 0) / carteCommunes.length,
   );
 
+  const title =
+    "La précarité énergétique liée au logement concerne les ménages des 3 premiers déciles qui consacrent plus de 8% de leurs revenus aux dépenses énergétiques liées à leur logement (chauffage, eau chaude, et ventilation).";
+
   return (
     <>
       {carteCommunes ? (
@@ -50,33 +54,43 @@ export const FragiliteEconomique = ({ carteCommunes }: Props) => {
             flexDirection: "row",
             gap: "1em",
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: "flex-start",
           }}
         >
           {carteCommunes.length ? (
             <>
-              <GridCol lg={4}>
-                <h4>LE CHIFFRE</h4>
-                <p>
-                  Dans l'EPCI {db_parsed[0]?.properties["libelle_epci"]}, la part des ménages qui sont en situation de
-                  précarité énergique logement est de <b>{(100 * precarite_log_epci).toPrecision(3)}%.</b>
-                </p>
-                <h4>EXPLICATION</h4>
-                <p>
-                  La précarité énergétique liée au logement concerne les ménages des 3 premiers déciles qui consacrent
-                  plus de 8% de leurs revenus aux dépenses énergétiques liées à leur logement (chauffage, eau chaude, et
-                  ventilation).
-                </p>
+              <GridCol lg={5}>
+                <div
+                  style={{
+                    backgroundColor: "#F9F9FF",
+                    margin: "1em 0",
+                    padding: "1em",
+                    borderRadius: "0.5em",
+                  }}
+                >
+                  <p>
+                    Dans l'EPCI {db_parsed[0]?.properties["libelle_epci"]}, la part des ménages qui sont en situation de
+                    précarité énergique logement est de <b>{(100 * precarite_log_epci).toPrecision(3)}%.</b>
+                  </p>
+                  <CustomTooltip title={title} />
+                </div>
+                <div>
+                  <p>
+                    La précarité énergétique liée au logement concerne les ménages des 3 premiers déciles qui consacrent
+                    plus de 8% de leurs revenus aux dépenses énergétiques liées à leur logement (chauffage, eau chaude,
+                    et ventilation).
+                  </p>
+                </div>
               </GridCol>
               <GridCol lg={7}>
-                <div className="flex flex-col justify-end">
+                <div className="flex flex-col">
                   <p>
                     <b>Répartition de la précarité énergétique logement par commune au sein de l'EPCI</b>
                   </p>
                   <Legend data={"precarite_log"} />
                   <Map data={"precarite_log"} carteCommunes={db_parsed} />
                   <p>
-                    Source : <b>ONPE</b>
+                    Source : <b style={{ color: "#0063CB" }}>ONPE</b>
                   </p>
                 </div>
               </GridCol>

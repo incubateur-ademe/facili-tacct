@@ -6,6 +6,7 @@ import { type InconfortThermique } from "@/app/donnees-territoriales/type";
 import { PieChart1 } from "@/components/charts/pieChart1";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
+import { CustomTooltip } from "@/components/utils/Tooltip";
 import { GridCol } from "@/dsfr/layout";
 
 interface Props {
@@ -106,6 +107,8 @@ export const TravailExterieur = (props: Props) => {
     Number(((100 * sums.sumConstruction) / sum(Object.values(sums))).toFixed(1)) +
     Number(((100 * sums.sumAgriculture) / sum(Object.values(sums))).toFixed(1));
 
+  const title =
+    "Le travail en extérieur conrrespond aux travailleurs dans les secteurs de la construction, de l'agriculture, de la sylviculture et de la pêche.";
   return (
     <>
       {inconfort_thermique.length ? (
@@ -115,22 +118,28 @@ export const TravailExterieur = (props: Props) => {
             flexDirection: "row",
             gap: "1em",
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: "flex-start",
           }}
         >
           <GridCol lg={5}>
             {sums.sumConstruction ? (
-              <div>
-                <h4>LE CHIFFRE</h4>
+              <div
+                style={{
+                  backgroundColor: "#F9F9FF",
+                  margin: "1em 0",
+                  padding: "1em",
+                  borderRadius: "0.5em",
+                }}
+              >
                 <p>
                   Dans l'EPCI {temp_db[0]?.libelle_epci}, la part cumulée des emplois dans les secteurs à risque est de{" "}
                   <b>{travailExt?.toFixed(1)}%</b>, soit {sums.sumAgriculture + sums.sumConstruction} personnes.
                 </p>
+                <CustomTooltip title={title} />
               </div>
             ) : (
               ""
             )}
-            <h4>EXPLICATION</h4>
             <div>
               <p>
                 Les emplois cumulés des secteurs de l’agriculture et de la construction fournissent une image grossière
@@ -147,13 +156,13 @@ export const TravailExterieur = (props: Props) => {
             </div>
           </GridCol>
           <GridCol lg={6}>
-            <div className="flex flex-col justify-end">
+            <div className="flex flex-col ">
               <p style={{ margin: "0 2em 0" }}>
                 <b>Part des emplois par activités économiques regroupées en 5 postes</b>
               </p>
               {graphData ? <PieChart1 graphData={graphData} /> : <Loader />}
-              <p>
-                Source : <b>INSEE (EMP3) 2018</b>
+              <p style={{ margin: "0 2em" }}>
+                Source : <b style={{ color: "#0063CB" }}>INSEE (EMP3) 2018</b>
               </p>
             </div>
           </GridCol>
