@@ -89,12 +89,19 @@ export const Vegetalisation = (props: Props) => {
           {temp_db.length ? (
             <>
               <GridCol lg={4}>
-                <h4>LE CHIFFRE</h4>
-                <p>
-                  Dans l'EPCI {temp_db[0]?.libelle_epci}, <b>{foret_percent?.toFixed(1)}%</b> du territoire est de la
-                  forêt ou des espaces semi-naturels. Cela correspond à <b>{foret_sum?.toFixed(1)}</b> hectares.
-                </p>
-                <h4>EXPLICATION</h4>
+                <div
+                  style={{
+                    backgroundColor: "#F9F9FF",
+                    margin: "1em 0",
+                    padding: "1em",
+                    borderRadius: "0.5em",
+                  }}
+                >
+                  <p>
+                    Dans l'EPCI {temp_db[0]?.libelle_epci}, <b>{foret_percent?.toFixed(1)}%</b> du territoire est de la
+                    forêt ou des espaces semi-naturels. Cela correspond à <b>{foret_sum?.toFixed(1)}</b> hectares.
+                  </p>
+                </div>
                 <p>
                   La présence d’arbres permet d’apporter de l’ombre et rafraichit l’air par évapotranspiration (lorsque
                   plusieurs arbres sont à proximité). Leur efficacité dans le rafraîchissement en milieu urbain dépend
@@ -109,8 +116,8 @@ export const Vegetalisation = (props: Props) => {
                 </p>
               </GridCol>
               <GridCol lg={7}>
-                <div className="flex flex-col justify-end">
-                  <p style={{ margin: "0 0 1em", textAlign: "center" }}>
+                <div className="flex flex-col">
+                  <p style={{ margin: "0 0 1em" }}>
                     <b>Cartographie des différents types de sols</b>
                   </p>
                   <HtmlTooltip title={<LegendCLC />} placement="left">
@@ -119,7 +126,7 @@ export const Vegetalisation = (props: Props) => {
                     </div>
                   </HtmlTooltip>
                   <p style={{ margin: "1em 0em 0em" }}>
-                    Source : <b>CORINE Land Cover</b>
+                    Source : <b style={{ color: "#0063CB" }}>CORINE Land Cover</b>
                   </p>
                 </div>
               </GridCol>

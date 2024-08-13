@@ -1,19 +1,19 @@
 import "./global.css";
 
-import { Badge } from "@codegouvfr/react-dsfr/Badge";
 import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
 import { Footer } from "@codegouvfr/react-dsfr/Footer";
-import { Header } from "@codegouvfr/react-dsfr/Header";
 import { DsfrHead } from "@codegouvfr/react-dsfr/next-appdir/DsfrHead";
 import { DsfrProvider } from "@codegouvfr/react-dsfr/next-appdir/DsfrProvider";
 import { getHtmlAttributes } from "@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes";
 import { cx } from "@codegouvfr/react-dsfr/tools/cx";
 import { type Metadata } from "next";
 import Link from "next/link";
-import { type PropsWithChildren } from "react";
+import { type PropsWithChildren, Suspense } from "react";
 import { NextAppDirEmotionCacheProvider } from "tss-react/next/appDir";
 
-import { Brand } from "../components/Brand";
+import { Brand } from "@/components/Brand";
+import { HeaderComp as Header } from "@/components/Header";
+
 import { config } from "../config";
 import { defaultColorScheme } from "../defaultColorScheme";
 import { StartDsfr } from "../StartDsfr";
@@ -55,24 +55,13 @@ const RootLayout = ({ children }: PropsWithChildren) => {
         <DsfrProvider lang="fr">
           {/* <ConsentBannerAndConsentManagement /> */}
           <div>
-            <Header
-              brandTop={<Brand />}
-              homeLinkProps={{
-                href: "/",
-                title: `Accueil - ${config.name}`,
-              }}
-              serviceTitle={
-                <>
-                  {config.name}{" "}
-                  <Badge as="span" noIcon severity="success">
-                    Beta
-                  </Badge>
-                </>
-              }
-            />
+            <Suspense>
+              <Header />
+            </Suspense>
             <NextAppDirEmotionCacheProvider options={{ key: "css" }}>{children}</NextAppDirEmotionCacheProvider>
             <Footer
               id={footerId}
+              brandTop={<Brand />}
               accessibility="non compliant"
               accessibilityLinkProps={{ href: "/accessibilite" }}
               contentDescription={`${config.name} est un service développé par l'accélérateur de la transition écologique de l'ADEME.`}
@@ -100,6 +89,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                 // },
               ]}
               termsLinkProps={{ href: "/mentions-legales" }}
+              homeLinkProps={{ href: "/", title: "Accueil" }}
               license={
                 <>
                   Sauf mention contraire, tous les contenus de ce site sont sous{" "}
