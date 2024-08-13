@@ -11,7 +11,7 @@ import { Container, Grid } from "../dsfr/layout";
 import { CollectiviteComp } from "./CollectiviteComp";
 import styles from "./root.module.scss";
 
-export default function Home() {
+const Home = () => {
   const { isDark } = useIsDark();
 
   const darkClass = {
@@ -130,4 +130,6 @@ export default function Home() {
           <div className={styles.test5}></div> */}
     </>
   );
-}
+};
+
+export default Home;

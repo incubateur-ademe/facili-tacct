@@ -99,16 +99,23 @@ export const AgeBati = (props: Props) => {
             flexDirection: "row",
             gap: "1em",
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: "flex-start",
           }}
         >
           <GridCol lg={4}>
-            <h4>LE CHIFFRE</h4>
-            <p>
-              Dans l'EPCI {temp_db[0]?.libelle_epci}, <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
-              principales sont construites avant 2006.
-            </p>
-            <h4>EXPLICATION</h4>
+            <div
+              style={{
+                backgroundColor: "#F9F9FF",
+                margin: "1em 0",
+                padding: "1em",
+                borderRadius: "0.5em",
+              }}
+            >
+              <p>
+                Dans l'EPCI {temp_db[0]?.libelle_epci}, <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
+                principales sont construites avant 2006.
+              </p>
+            </div>
             <p>
               La robustesse des logements face aux températures élevées dépend leur qualité intrinsèque (inertie
               thermique, présence de volets extérieurs, qualité des rénovations...). Si vous ne disposez pas d'étude
@@ -118,12 +125,12 @@ export const AgeBati = (props: Props) => {
           </GridCol>
           <GridCol lg={7}>
             <div className="flex flex-col justify-end">
-              <p style={{ margin: "0 2em 0" }}>
+              <p>
                 <b>Périodes de construction des bâtiments</b>
               </p>
               {chartData ? <BarChart chartData={chartData} /> : <Loader />}
               <p>
-                Source : <b>INSEE</b>
+                Source : <b style={{ color: "#0063CB" }}>INSEE</b>
               </p>
             </div>
           </GridCol>
