@@ -186,19 +186,6 @@ exports.Prisma.Clc_2018_2ScalarFieldEnum = {
   centroid: 'centroid'
 };
 
-exports.Prisma.Communes2ScalarFieldEnum = {
-  pk: 'pk',
-  code_commune: 'code_commune',
-  libelle_commune: 'libelle_commune',
-  reg: 'reg',
-  dep: 'dep',
-  libelle_epci: 'libelle_epci',
-  epci: 'epci',
-  densite_bati: 'densite_bati',
-  precarite_logement: 'precarite_logement',
-  coordinates: 'coordinates'
-};
-
 exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
   srid: 'srid',
   auth_name: 'auth_name',
@@ -211,6 +198,18 @@ exports.Prisma.Clc_epciScalarFieldEnum = {
   pk: 'pk',
   legend: 'legend',
   epci_code: 'epci_code'
+};
+
+exports.Prisma.CommunesScalarFieldEnum = {
+  pk: 'pk',
+  code_commune: 'code_commune',
+  libelle_commune: 'libelle_commune',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  libgeo: 'libgeo',
+  coordinates: 'coordinates',
+  densite_bati: 'densite_bati',
+  precarite_logement: 'precarite_logement'
 };
 
 exports.Prisma.SortOrder = {
@@ -232,9 +231,9 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   inconfort_thermique: 'inconfort_thermique',
   clc_2018_2: 'clc_2018_2',
-  communes2: 'communes2',
   spatial_ref_sys: 'spatial_ref_sys',
-  clc_epci: 'clc_epci'
+  clc_epci: 'clc_epci',
+  communes: 'communes'
 };
 
 /**

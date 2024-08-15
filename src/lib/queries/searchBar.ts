@@ -1,8 +1,7 @@
 "use server";
 
-import { type CarteCommunes } from "@/app/donnees-territoriales/type";
-
 import { PrismaClient as PostgresClient } from "../../generated/client";
+import { CarteCommunes } from "../postgres/models";
 
 const PrismaPostgres = new PostgresClient();
 

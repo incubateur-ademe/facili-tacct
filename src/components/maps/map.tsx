@@ -11,54 +11,13 @@ import { useRef } from "react";
 import { GeoJSON, MapContainer, TileLayer } from "@/lib/react-leaflet";
 import { type Any } from "@/lib/utils/types";
 
+import { CommunesIndicateursDto } from "@/lib/dto";
 import { GraphDataNotFound } from "../graph-data-not-found";
 
-type Geometry = {
-  coordinates: number[][][][];
-  type: string;
-};
-interface Props {
-  carteCommunes: Array<{
-    geometry: Geometry;
-    properties: {
-      code_commune: string;
-      coordinates: string;
-      densite_bati: number;
-      epci: string;
-      libelle_commune: string;
-      libelle_epci: string;
-      precarite_logement: number;
-    };
-    type: string;
-  }>;
+export const Map = (props: {
+  carteCommunes: CommunesIndicateursDto[];
   data: string;
-}
-
-interface Properties {
-  code_commune: string;
-  coordinates: string;
-  densite_bati: number;
-  epci: string;
-  libelle_commune: string;
-  libelle_epci: string;
-  precarite_logement: number;
-}
-
-interface DBParsed {
-  geometry: Geometry;
-  properties: {
-    code_commune: string;
-    coordinates: string;
-    densite_bati: number;
-    epci: string;
-    libelle_commune: string;
-    libelle_epci: string;
-    precarite_logement: number;
-  };
-  type: string;
-}
-
-export const Map = (props: Props) => {
+}) => {
   const { data, carteCommunes } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
@@ -84,15 +43,15 @@ export const Map = (props: Props) => {
   };
 
   const centerCoord: number[] = getCoordinates(all_coordinates);
-  console.log("centerCoord", centerCoord);
-  function getColor(d: number) {
+
+  const getColor = (d: number) => {
     if (data === "densite_bati") {
       return d > 0.2 ? "#FF5E54" : d > 0.1 ? "#FFBD00" : d > 0.05 ? "#FFFA6A" : d > 0 ? "#D5F4A3" : "#5CFF54";
     } else return d > 0.3 ? "#FF5E54" : d > 0.2 ? "#FFBD00" : d > 0.1 ? "#FFFA6A" : d > 0 ? "#D5F4A3" : "#5CFF54";
   }
 
   const style: StyleFunction<Any> = feature => {
-    const typedFeature = feature as DBParsed;
+    const typedFeature = feature as CommunesIndicateursDto;
 
     if (data === "densite_bati") {
       return {
@@ -116,7 +75,7 @@ export const Map = (props: Props) => {
   };
 
   const mouseOnHandler: LeafletMouseEventHandlerFn = e => {
-    const layer = e.target as FeatureGroup<Properties>;
+    const layer = e.target as FeatureGroup<CommunesIndicateursDto["properties"]>;
     const commune_name =
       layer.feature && "properties" in layer.feature ? layer.feature.properties.libelle_commune : undefined;
     const precarite_logement =
@@ -145,7 +104,7 @@ export const Map = (props: Props) => {
 
   //make style after hover disappear
   const mouseOutHandler: LeafletMouseEventHandlerFn = e => {
-    const layer = e.target as FeatureGroup<Properties>;
+    const layer = e.target as FeatureGroup<CommunesIndicateursDto["properties"]>;
     layer.setStyle({
       weight: 1.5,
       color: "#000000",
