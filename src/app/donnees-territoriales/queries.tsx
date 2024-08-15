@@ -1,7 +1,7 @@
 "use server";
 
+import { CarteCommunes, CLC, InconfortThermique } from "@/lib/postgres/models";
 import { PrismaClient as PostgresClient } from "../../generated/client";
-import { type CarteCommunes, type CLC, type InconfortThermique } from "./type";
 
 const PrismaPostgres = new PostgresClient();
 

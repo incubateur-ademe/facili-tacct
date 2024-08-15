@@ -2,24 +2,21 @@
 
 import { useSearchParams } from "next/navigation";
 
-import { type InconfortThermique } from "@/app/donnees-territoriales/type";
 import { LineChart1 } from "@/components/charts/lineChart1";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
 import { CustomTooltip } from "@/components/utils/Tooltip";
 import { GridCol } from "@/dsfr/layout";
-
-interface Props {
-  inconfort_thermique: InconfortThermique[];
-}
+import { grandAgeIsolementMapper } from "@/lib/mapper/inconfortThermique";
+import { InconfortThermique } from "@/lib/postgres/models";
 
 type DataAge = {
   P20_POP80P: number;
   P20_POP80P_PSEUL: number;
-  code_commune: string | null | undefined;
-  epci: string | null | undefined;
-  libelle_epci: string | null | undefined;
-  libelle_geographique: string | null | undefined;
+  code_commune: string;
+  epci: string;
+  libelle_epci: string;
+  libelle_geographique: string;
   over_80_sum_1968: number;
   over_80_sum_1975: number;
   over_80_sum_1982: number;
@@ -45,7 +42,8 @@ type DataAge = {
   under_4_sum_2014: number;
   under_4_sum_2020: number;
 };
-function sumProperty(
+
+const sumProperty = (
   items: DataAge[],
   property:
     | "over_80_sum_1968"
@@ -72,51 +70,20 @@ function sumProperty(
     | "under_4_sum_2009"
     | "under_4_sum_2014"
     | "under_4_sum_2020",
-) {
+) => {
   return items.reduce(function (a, b) {
     return a + b[property];
   }, 0);
 }
 
-export const GrandAgeIsolement = (props: Props) => {
+export const GrandAgeIsolement = (props: {
+  inconfort_thermique: InconfortThermique[];
+}) => {
   const { inconfort_thermique } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
   const xData: string[] = ["1968", "1975", "1982", "1990", "1999", "2009", "2014", "2020"];
-  const temp_db: DataAge[] = inconfort_thermique.map(el => {
-    return {
-      code_commune: el.code_commune,
-      libelle_geographique: el.libelle_geographique,
-      epci: el.epci,
-      libelle_epci: el.libelle_epci,
-      P20_POP80P: Number(el["P20_POP80P"]),
-      P20_POP80P_PSEUL: Number(el["P20_POP80P_PSEUL"]),
-      under_4_sum_1968: Number(el.under_4_sum_1968),
-      to_80_sum_1968: Number(el.to_80_sum_1968),
-      over_80_sum_1968: Number(el.over_80_sum_1968),
-      under_4_sum_1975: Number(el.under_4_sum_1975),
-      to_80_sum_1975: Number(el.to_80_sum_1975),
-      over_80_sum_1975: Number(el.over_80_sum_1975),
-      under_4_sum_1982: Number(el.under_4_sum_1982),
-      to_80_sum_1982: Number(el.to_80_sum_1982),
-      over_80_sum_1982: Number(el.over_80_sum_1982),
-      under_4_sum_1990: Number(el.under_4_sum_1990),
-      to_80_sum_1990: Number(el.to_80_sum_1990),
-      over_80_sum_1990: Number(el.over_80_sum_1990),
-      under_4_sum_1999: Number(el.under_4_sum_1999),
-      to_80_sum_1999: Number(el.to_80_sum_1999),
-      over_80_sum_1999: Number(el.over_80_sum_1999),
-      under_4_sum_2009: Number(el.under_4_sum_2009),
-      to_80_sum_2009: Number(el.to_80_sum_2009),
-      over_80_sum_2009: Number(el.over_80_sum_2009),
-      under_4_sum_2014: Number(el.under_4_sum_2014),
-      to_80_sum_2014: Number(el.to_80_sum_2014),
-      over_80_sum_2014: Number(el.over_80_sum_2014),
-      under_4_sum_2020: Number(el.under_4_sum_2020),
-      to_80_sum_2020: Number(el.to_80_sum_2020),
-      over_80_sum_2020: Number(el.over_80_sum_2020),
-    };
-  });
+  const temp_db = inconfort_thermique.map(grandAgeIsolementMapper);
 
   const yData = {
     over_80_1968_percent_epci: (
@@ -169,7 +136,6 @@ export const GrandAgeIsolement = (props: Props) => {
           }}
         >
           <GridCol lg={5}>
-            {/* <h4>LE CHIFFRE</h4> */}
             <div
               style={{
                 backgroundColor: "#F9F9FF",

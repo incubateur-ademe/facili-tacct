@@ -3,33 +3,14 @@
 import "leaflet/dist/leaflet.css";
 import "./maps.scss";
 
-import { type GeoGeometryObjects } from "d3";
 import { type StyleFunction } from "leaflet";
 import { useRef } from "react";
 
-// import { type CLC } from "@/app/donnees-territoriales/type";
+import { ClcDto } from "@/lib/dto";
+import { ClcMapper } from "@/lib/mapper/clc";
+import { CLC } from "@/lib/postgres/models";
 import { GeoJSON, MapContainer, TileLayer } from "@/lib/react-leaflet";
 import { type Any } from "@/lib/utils/types";
-
-interface CLC {
-  centroid: string;
-  geometry: string;
-  legend: string;
-  pk: number;
-}
-
-interface Props {
-  clc: CLC[];
-}
-
-interface CLCParsed {
-  geometry: GeoGeometryObjects;
-  properties: {
-    centroid: string;
-    label: string;
-  };
-  type: string;
-}
 
 const getCentroid = (arr: number[][]) => {
   return arr.reduce(
@@ -40,18 +21,9 @@ const getCentroid = (arr: number[][]) => {
   );
 };
 
-export const Map = (props: Props) => {
+export const Map = (props: {clc: CLC[]}) => {
   const { clc } = props;
-  const clc_parsed = clc.map(function (elem: CLC) {
-    return {
-      type: "Feature",
-      properties: {
-        label: elem.legend,
-        centroid: elem.centroid,
-      },
-      geometry: JSON.parse(elem.geometry) as GeoGeometryObjects,
-    };
-  });
+  const clc_parsed = clc.map(ClcMapper);
   const mapRef = useRef(null);
   const colors = {
     "Continuous urban fabric": "#a0a0a0",
@@ -113,7 +85,7 @@ export const Map = (props: Props) => {
   };
 
   const style: StyleFunction<Any> = feature => {
-    const typedFeature = feature as CLCParsed;
+    const typedFeature = feature as ClcDto;
 
     return {
       fillColor: getColor(typedFeature?.properties.label),

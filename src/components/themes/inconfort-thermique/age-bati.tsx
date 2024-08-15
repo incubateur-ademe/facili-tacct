@@ -1,14 +1,11 @@
 import { useSearchParams } from "next/navigation";
 
-import { type InconfortThermique } from "@/app/donnees-territoriales/type";
 import { BarChart } from "@/components/charts/BarChart";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
 import { GridCol } from "@/dsfr/layout";
-
-interface Props {
-  inconfort_thermique: InconfortThermique[];
-}
+import { ageBatiMapper } from "@/lib/mapper/inconfortThermique";
+import { InconfortThermique } from "@/lib/postgres/models";
 
 interface ChartData {
   France: number;
@@ -18,72 +15,50 @@ interface ChartData {
   periode: string;
 }
 
-type DataAgeBati = {
-  age_bati_19_45: number;
-  age_bati_46_90: number;
-  age_bati_91_05: number;
-  age_bati_post06: number;
-  age_bati_pre_19: number;
-  code_commune: string | null | undefined;
-  epci: string | null | undefined;
-  libelle_epci: string | null | undefined;
-  libelle_geographique: string | null | undefined;
-};
-
-export const AgeBati = (props: Props) => {
+export const AgeBati = (props: {
+  inconfort_thermique: InconfortThermique[];
+}) => {
   const { inconfort_thermique } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
 
-  const temp_db: DataAgeBati[] = inconfort_thermique.map(el => {
-    return {
-      code_commune: el.code_commune,
-      libelle_geographique: el.libelle_geographique,
-      epci: el.epci,
-      libelle_epci: el.libelle_epci,
-      age_bati_pre_19: Number(el.age_bati_pre_19),
-      age_bati_19_45: Number(el.age_bati_19_45),
-      age_bati_46_90: Number(el.age_bati_46_90),
-      age_bati_91_05: Number(el.age_bati_91_05),
-      age_bati_post06: Number(el.age_bati_post06),
-    };
-  });
+  const ageBati = inconfort_thermique.map(ageBatiMapper);
 
   const constructionBefore2006 =
-    temp_db[0]?.age_bati_pre_19 + temp_db[0]?.age_bati_19_45 + temp_db[0]?.age_bati_46_90 + temp_db[0]?.age_bati_91_05;
+    ageBati[0]?.age_bati_pre_19 + ageBati[0]?.age_bati_19_45 + ageBati[0]?.age_bati_46_90 + ageBati[0]?.age_bati_91_05;
 
   const chartData: ChartData[] = [
     {
       periode: "Avant 1919",
-      "Votre EPCI": temp_db[0]?.age_bati_pre_19?.toFixed(1),
+      "Votre EPCI": ageBati[0]?.age_bati_pre_19?.toFixed(1),
       "Votre EPCIColor": "#ececfe",
       France: 20.5,
       FranceColor: "hsl(125, 70%, 50%)",
     },
     {
       periode: "1919-1945",
-      "Votre EPCI": temp_db[0]?.age_bati_19_45?.toFixed(1),
+      "Votre EPCI": ageBati[0]?.age_bati_19_45?.toFixed(1),
       "Votre EPCIColor": "#ececfe",
       France: 9.2,
       FranceColor: "hsl(125, 70%, 50%)",
     },
     {
       periode: "1946-1990",
-      "Votre EPCI": temp_db[0]?.age_bati_46_90?.toFixed(1),
+      "Votre EPCI": ageBati[0]?.age_bati_46_90?.toFixed(1),
       "Votre EPCIColor": "#ececfe",
       France: 43.4,
       FranceColor: "hsl(125, 70%, 50%)",
     },
     {
       periode: "1991-2005",
-      "Votre EPCI": temp_db[0]?.age_bati_91_05?.toFixed(1),
+      "Votre EPCI": ageBati[0]?.age_bati_91_05?.toFixed(1),
       "Votre EPCIColor": "#ececfe",
       France: 15.5,
       FranceColor: "hsl(125, 70%, 50%)",
     },
     {
       periode: "Après 2006",
-      "Votre EPCI": temp_db[0]?.age_bati_post06?.toFixed(1),
+      "Votre EPCI": ageBati[0]?.age_bati_post06?.toFixed(1),
       "Votre EPCIColor": "#ececfe",
       France: 11.4,
       FranceColor: "hsl(125, 70%, 50%)",
@@ -112,7 +87,7 @@ export const AgeBati = (props: Props) => {
               }}
             >
               <p>
-                Dans l'EPCI {temp_db[0]?.libelle_epci}, <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
+                Dans l'EPCI {ageBati[0]?.libelle_epci}, <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
                 principales sont construites avant 2006.
               </p>
             </div>
