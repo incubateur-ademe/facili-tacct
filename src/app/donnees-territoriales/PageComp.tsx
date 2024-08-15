@@ -7,15 +7,15 @@ import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
+import { Vegetalisation } from "@/components/themes/inconfort-thermique/vegetalisation";
+
 import { AgeBati } from "@/components/themes/inconfort-thermique/age-bati";
 import { DensiteBati } from "@/components/themes/inconfort-thermique/densite-bati";
 import { FragiliteEconomique } from "@/components/themes/inconfort-thermique/fragilite-economique";
 import { GrandAgeIsolement } from "@/components/themes/inconfort-thermique/grand-age-isolement";
 import { TravailExterieur } from "@/components/themes/inconfort-thermique/travail-exterieur";
-import { Vegetalisation } from "@/components/themes/inconfort-thermique/vegetalisation";
-
+import { CLC, CarteCommunes, InconfortThermique } from "@/lib/postgres/models";
 import styles from "./donnees.module.scss";
-import { type CarteCommunes, type CLC, type InconfortThermique } from "./type";
 
 interface Props {
   carteCommunes: CarteCommunes[];
