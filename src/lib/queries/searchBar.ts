@@ -19,7 +19,7 @@ export const GetCollectivite = async (collectivite: string): Promise<CarteCommun
       libelle_epci,
       libelle_commune,
       code_commune
-      FROM postgis."communes2" WHERE libelle_commune ILIKE ${variable_commune} LIMIT 20;`; // OR libelle_epci ILIKE ${variable_epci}
+      FROM postgis."communes" WHERE libelle_commune ILIKE ${variable_commune} LIMIT 20;`; // OR libelle_epci ILIKE ${variable_epci}
       console.timeEnd("Query Execution Time");
       // console.log(value);
       if (value.length > 0) {
@@ -31,7 +31,7 @@ export const GetCollectivite = async (collectivite: string): Promise<CarteCommun
         libelle_epci,
         libelle_commune,
         code_commune
-        FROM postgis."communes2" WHERE libelle_epci ILIKE ${variable_epci} LIMIT 20;`;
+        FROM postgis."communes" WHERE libelle_epci ILIKE ${variable_epci} LIMIT 20;`;
         return value;
       }
     } else if (typeof parseInt(collectivite) === "number") {
@@ -41,7 +41,7 @@ export const GetCollectivite = async (collectivite: string): Promise<CarteCommun
       libelle_epci,
       libelle_commune,
       code_commune
-      FROM postgis."communes2" WHERE code_commune ILIKE ${variable_code_commune} LIMIT 20;`;
+      FROM postgis."communes" WHERE code_commune ILIKE ${variable_code_commune} LIMIT 20;`;
       console.timeEnd("Query Execution Time");
 
       return value;
