@@ -1,43 +1,24 @@
 import { useSearchParams } from "next/navigation";
 
-import { type CarteCommunes } from "@/app/donnees-territoriales/type";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
 import { Legend } from "@/components/maps/legend";
 import { Map } from "@/components/maps/map";
 import { CustomTooltip } from "@/components/utils/Tooltip";
 import { GridCol } from "@/dsfr/layout";
+import { CommunesIndicateursMapper } from "@/lib/mapper/communes";
+import { CarteCommunes } from "@/lib/postgres/models";
 
-interface Props {
+export const FragiliteEconomique = ({ carteCommunes }: {
   carteCommunes: CarteCommunes[];
-}
-
-type Geometry = {
-  coordinates: number[][][][];
-  type: string;
-};
-
-export const FragiliteEconomique = ({ carteCommunes }: Props) => {
+}) => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
-  const db_parsed = carteCommunes.map(function (elem: CarteCommunes) {
-    return {
-      type: "Feature",
-      properties: {
-        epci: elem.epci,
-        libelle_epci: elem.libelle_epci,
-        libelle_commune: elem.libelle_commune,
-        code_commune: elem.code_commune,
-        precarite_logement: elem.precarite_logement,
-        densite_bati: elem.densite_bati,
-        coordinates: elem.coordinates,
-      },
-      geometry: JSON.parse(elem.geometry) as Geometry,
-    };
-  });
+  const communesMap = carteCommunes.map(CommunesIndicateursMapper);
+
   //Mean of all ratio_precarite_log of municipalities in epci
   const precarite_log_epci: number = Number(
-    db_parsed.reduce(function (a, b) {
+    communesMap.reduce(function (a, b) {
       return a + b.properties["precarite_logement"];
     }, 0) / carteCommunes.length,
   );
@@ -69,7 +50,7 @@ export const FragiliteEconomique = ({ carteCommunes }: Props) => {
                   }}
                 >
                   <p>
-                    Dans l'EPCI {db_parsed[0]?.properties["libelle_epci"]}, la part des ménages qui sont en situation de
+                    Dans l'EPCI {communesMap[0]?.properties["libelle_epci"]}, la part des ménages qui sont en situation de
                     précarité énergique logement est de <b>{(100 * precarite_log_epci).toPrecision(3)}%.</b>
                   </p>
                   <CustomTooltip title={title} />
@@ -88,7 +69,7 @@ export const FragiliteEconomique = ({ carteCommunes }: Props) => {
                     <b>Répartition de la précarité énergétique logement par commune au sein de l'EPCI</b>
                   </p>
                   <Legend data={"precarite_log"} />
-                  <Map data={"precarite_log"} carteCommunes={db_parsed} />
+                  <Map data={"precarite_log"} carteCommunes={communesMap} />
                   <p>
                     Source : <b style={{ color: "#0063CB" }}>ONPE</b>
                   </p>
