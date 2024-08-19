@@ -72,7 +72,7 @@ export const Vegetalisation = (props: {
                     borderRadius: "0.5em",
                   }}
                 >
-                  <p>
+                  <p style={{color: "#161616"}}>
                     Dans l'EPCI {vegetalisation[0]?.libelle_epci}, <b>{foret_percent?.toFixed(1)}%</b> du territoire est de la
                     forêt ou des espaces semi-naturels. Cela correspond à <b>{foret_sum?.toFixed(1)}</b> hectares.
                   </p>

@@ -15,6 +15,7 @@ import { FragiliteEconomique } from "@/components/themes/inconfort-thermique/fra
 import { GrandAgeIsolement } from "@/components/themes/inconfort-thermique/grand-age-isolement";
 import { TravailExterieur } from "@/components/themes/inconfort-thermique/travail-exterieur";
 import { CLC, CarteCommunes, InconfortThermique } from "@/lib/postgres/models";
+import { useStyles } from "tss-react/dsfr";
 import styles from "./donnees.module.scss";
 
 interface Props {
@@ -71,7 +72,7 @@ const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
       backgroundColor: fr.colors.getHex({ isDark }).decisions.background.alt.grey.hover,
     },
   };
-  // const { css } = useStyles();
+  const { css } = useStyles();
 
   const tabs = [
     { tabId: "Population", label: "Population" },
@@ -89,7 +90,20 @@ const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
 
   return (
     <div className={styles.container}>
-      <Tabs selectedTabId={selectedTabId} tabs={tabs} onTabChange={setSelectedTabId}>
+      <Tabs selectedTabId={selectedTabId} tabs={tabs} onTabChange={setSelectedTabId} 
+        className={css({
+          ".fr-tabs__tab[aria-selected=true]:not(:disabled)": {
+            color: "#0063CB",
+            backgroundImage: "linear-gradient(0deg, #0063CB, #0063CB), linear-gradient(0deg, var(--border-default-grey), var(--border-default-grey)), linear-gradient(0deg, var(--border-default-grey), var(--border-default-grey)), linear-gradient(0deg, var(--border-default-grey), var(--border-default-grey))"
+          },
+          ".fr-tabs__tab:not([aria-selected=true])": {
+            color: "#3A3A3A",
+            backgroundColor: "#F9F9FF",
+            "&:hover": {
+              backgroundColor: "#e9e9ff",
+            },
+          }
+        })}>
         <div className={styles.formContainer}>
           <div className={styles.titles}>
             {selectedTabId === "Population" ? (

@@ -44,7 +44,7 @@ const Home = () => {
             </div>
           </div>
           <div className={styles.card} style={darkClass}>
-            <Image src={PeopleImg} alt="" />
+            <Image src={PeopleImg} alt="" style={{borderRadius:"0.5em 0 0 0.5em"}}/>
             <div className={styles.cardDescription}>
               <h2>Facilitez les conditions du dialogue</h2>
               <p>
