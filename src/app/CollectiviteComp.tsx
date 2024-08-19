@@ -4,8 +4,6 @@ import { SearchBarComp } from "@/components/SearchBar";
 
 import styles from "./root.module.scss";
 
-// type Event = React.ChangeEvent<HTMLInputElement>;
-
 export const CollectiviteComp = () => {
   return (
     <div className={styles.collectiviteWrapper}>
