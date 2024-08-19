@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { PieChart1 } from "@/components/charts/pieChart1";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
-import { CustomTooltip } from "@/components/utils/Tooltip";
+import { CustomTooltip } from "@/components/utils/CalculTooltip";
 import { GridCol } from "@/dsfr/layout";
 import { travailExtDto } from "@/lib/dto";
 import { travailExtMapper } from "@/lib/mapper/inconfortThermique";
