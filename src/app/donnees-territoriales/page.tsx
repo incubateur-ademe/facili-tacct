@@ -50,7 +50,7 @@ const Page = async (searchParams: SearchParams) => {
             {
               label: "Thématiques",
               linkProps: {
-                href: "/thematiques",
+                href: `/thematiques?code=${code}`,
               },
             },
           ]}

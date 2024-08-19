@@ -12,13 +12,11 @@
 
 .selectedButton {
     background-color: #0063cb;
-    // border: 1px solid #000000;
     border-radius: 25px;
     margin: 0 0.5em;
     padding: 0.2em 1em;
     color: #ececfe;
     &:hover {
-        //color: black;
         background-color: #000091e7 !important;
         color: #eeeeee;
     }
@@ -30,7 +28,6 @@
     padding: 0.2em 1em;
     color: #3a3a3a;
     &:hover {
-        //color: black;
         background-color: #e9e9ff !important;
         color: #000000;
     }
@@ -56,20 +53,12 @@
 }
 
 .bubble {
-    // width: 100%;
-    // layout
     position: relative;
-    // looks
-    //background-color: white;
     font-size: 1.25em;
-    // box-shadow:
-    //     0 0.125rem 0.5rem rgba(0, 0, 0, 0.3),
-    //     0 0.0625rem 0.125rem rgba(0, 0, 0, 0.2);
-    // border-left: 3px solid #000091;
 }
 
 .bubbleContent {
-    padding: 1.5em 1.5em 0.5em;
+    padding: 0.5em 1.5em 0.5em;
     background-color: white !important;
 }
 
