@@ -4,7 +4,7 @@ import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
 import { Legend } from "@/components/maps/legend";
 import { Map } from "@/components/maps/map";
-import { CustomTooltip } from "@/components/utils/Tooltip";
+import { CustomTooltip } from "@/components/utils/CalculTooltip";
 import { GridCol } from "@/dsfr/layout";
 import { CommunesIndicateursMapper } from "@/lib/mapper/communes";
 import { CarteCommunes } from "@/lib/postgres/models";
