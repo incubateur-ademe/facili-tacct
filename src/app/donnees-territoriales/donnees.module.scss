@@ -11,12 +11,12 @@
 }
 
 .selectedButton {
-    background-color: #0063CB;
+    background-color: #0063cb;
     // border: 1px solid #000000;
     border-radius: 25px;
     margin: 0 0.5em;
     padding: 0.2em 1em;
-    color: #eeeeee;
+    color: #ececfe;
     &:hover {
         //color: black;
         background-color: #000091e7 !important;
@@ -24,14 +24,14 @@
     }
 }
 .button {
-    background-color: #F9F9FF;
+    background-color: #f9f9ff;
     border-radius: 25px;
     margin: 0 0.5em;
     padding: 0.2em 1em;
-    color: #000000;
+    color: #3a3a3a;
     &:hover {
         //color: black;
-        background-color: #d0d0ff !important;
+        background-color: #e9e9ff !important;
         color: #000000;
     }
 }

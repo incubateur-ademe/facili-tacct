@@ -6,10 +6,10 @@ import Image, { type StaticImageData } from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { GetCommunes } from "@/app/donnees-territoriales/queries";
 import ressourcesIcon from "@/assets/icons/ressources_icon_blue.svg";
 import ressourcesIconWhite from "@/assets/icons/ressources_icon_white.svg";
 import { config } from "@/config";
+import { GetCommunes } from "@/lib/queries/cartographie";
 
 import { Brand } from "./Brand";
 

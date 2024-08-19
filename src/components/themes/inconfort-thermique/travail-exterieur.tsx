@@ -107,7 +107,7 @@ export const TravailExterieur = (props: {
                   borderRadius: "0.5em",
                 }}
               >
-                <p>
+                <p style={{color: "#161616"}}>
                   Dans l'EPCI {travailExterieur[0]?.libelle_epci}, la part cumulée des emplois dans les secteurs à risque est de{" "}
                   <b>{travailExt?.toFixed(1)}%</b>, soit {sums.sumAgriculture + sums.sumConstruction} personnes.
                 </p>

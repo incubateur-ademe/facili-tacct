@@ -4,11 +4,12 @@ import dynamic from "next/dynamic";
 
 import { themes } from "@/lib/utils/themes";
 
+import { GetClcEpci, GetCommunes } from "@/lib/queries/cartographie";
+import { GetInconfortThermique } from "@/lib/queries/thematiques";
 import { Loader } from "../../components/loader";
 import { NoticeComp } from "../../dsfr/base/Notice";
 import { Container } from "../../dsfr/server";
 import styles from "./donnees.module.scss";
-import { GetClcEpci, GetCommunes, GetInconfortThermique } from "./queries";
 
 export const metadata: Metadata = {
   title: "Données territoriales",

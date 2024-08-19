@@ -144,7 +144,7 @@ export const GrandAgeIsolement = (props: {
                 borderRadius: "0.5em",
               }}
             >
-              <p>
+              <p style={{color: "#161616"}}>
                 Dans l'EPCI {temp_db[0]?.libelle_epci} les personnes de plus de 80 ans représentent{" "}
                 <b>{yData.over_80_2020_percent_epci}%</b> de la population en 2020.
               </p>

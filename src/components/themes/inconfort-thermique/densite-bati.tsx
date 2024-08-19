@@ -42,7 +42,7 @@ export const DensiteBati = ({ carteCommunes }: {carteCommunes: CarteCommunes[]})
                   }}
                 >
                   {densite_epci ? (
-                    <p>
+                    <p style={{color: "#161616"}}>
                       Dans l'EPCI {communesMap[0]?.properties["libelle_epci"]}, la densité moyenne du bâtiment est de{" "}
                       <b>{average(densite_epci).toFixed(2)}</b>.
                     </p>

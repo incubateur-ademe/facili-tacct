@@ -86,7 +86,7 @@ export const AgeBati = (props: {
                 borderRadius: "0.5em",
               }}
             >
-              <p>
+              <p style={{color: "#161616"}}>
                 Dans l'EPCI {ageBati[0]?.libelle_epci}, <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
                 principales sont construites avant 2006.
               </p>

@@ -49,7 +49,7 @@ export const FragiliteEconomique = ({ carteCommunes }: {
                     borderRadius: "0.5em",
                   }}
                 >
-                  <p>
+                  <p style={{color: "#161616"}}>
                     Dans l'EPCI {communesMap[0]?.properties["libelle_epci"]}, la part des ménages qui sont en situation de
                     précarité énergique logement est de <b>{(100 * precarite_log_epci).toPrecision(3)}%.</b>
                   </p>
