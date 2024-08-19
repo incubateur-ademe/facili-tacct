@@ -5,5 +5,14 @@ interface Props {
   title: string;
 }
 export const NoticeComp = ({ title }: Props) => {
-  return <Notice isClosable={true} onClose={() => {}} title={title} />;
+  return (
+    <div
+      className="container"
+      style={{
+        margin: "1em 0"
+      }}
+    >
+      <Notice isClosable={true} onClose={() => {}} title={title} />
+    </div>
+  );
 };

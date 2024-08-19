@@ -4,7 +4,9 @@ import { fr } from "@codegouvfr/react-dsfr";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 import Image from "next/image";
 
+import useWindowDimensions from "@/hooks/windowDimensions";
 import Constellation2Img from "../assets/images/constellation2.png";
+import Constellation3Img from "../assets/images/constellation3.png";
 import PeopleImg from "../assets/images/landing-page-group.png";
 import MapImg from "../assets/images/landing-page-map.png";
 import { Container, Grid } from "../dsfr/layout";
@@ -13,13 +15,13 @@ import styles from "./root.module.scss";
 
 const Home = () => {
   const { isDark } = useIsDark();
-
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default.grey.active,
     "&:hover": {
       backgroundColor: fr.colors.getHex({ isDark }).decisions.background.alt.grey.hover,
     },
   };
+  const window = useWindowDimensions();
 
   return (
     <>
@@ -62,14 +64,24 @@ const Home = () => {
               <b>transversale et collaborative</b> en impliquant les élus et différentes expertises thématiques.
             </p>
           </div>
+          { window.width && window.width < 1280 ?
           <Image
             alt=""
             src={Constellation2Img}
             width={0}
             height={0}
             sizes="40vw"
+            style={{ position: "relative", maxWidth: "40%", height: "auto", right:"-3.5em" }}
+          /> : 
+          <Image
+            alt=""
+            src={Constellation3Img}
+            width={0}
+            height={0}
+            sizes="40vw"
             style={{ maxWidth: "40%", height: "auto" }}
-          />
+            />
+          }
         </div>
       </Container>
       {/* <div className={styles.test}></div>
