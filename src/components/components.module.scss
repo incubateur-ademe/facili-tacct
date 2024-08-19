@@ -50,6 +50,16 @@
     // margin-top: -20px;
 }
 
+.localisation {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    background-color: #f6f6f6;
+    color: #161616;
+    border-radius: 50px;
+    padding: 0.25em 0.75em 0.25em 0.2em;
+    line-height: 24px;
+}
 
 @keyframes spin {
     0% {

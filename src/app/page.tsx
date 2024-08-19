@@ -53,12 +53,6 @@ const Home = () => {
               </p>
             </div>
           </div>
-          {/* <GridCol lg={3}>
-              <div className={styles.card} style={darkClass}>
-                <Image src={MeetingIcon} alt="" />
-                <h2>Explorez des ressources pour mobiliser</h2>
-              </div>
-            </GridCol> */}
         </Grid>
         <div className={styles.constellationWrapper}>
           <div className={styles.constellationText}>
@@ -78,51 +72,6 @@ const Home = () => {
           />
         </div>
       </Container>
-      {/* <div className={styles.container}>
-        <div className={styles.wrapper}>
-          <div className={styles.titles}>
-            <h1>Vulnérable aux impacts du changement climatique ?</h1>
-            <p>
-              <b>Objectivez votre diagnostic</b> avec les données socio-économiques qui rendent votre territoire unique
-              et <b>découvrez des arguments et ressources pour mobiliser</b> vos collègues et partenaires externes sur
-              l'adaptation au changement climatique
-            </p>
-          </div>
-          <CollectiviteComp />
-          <Grid align="center" className={styles.cardWrapper}>
-            <div className={styles.card} style={darkClass} onClick={handleClick}>
-              <Image src={MarkerHandIcon as StaticImageData} alt="" />
-              <h2>Déchiffrez les données socio-économiques de votre territoire</h2>
-            </div>
-            <div className={styles.card} style={darkClass}>
-              <Image src={HandshakeIcon as StaticImageData} alt="" />
-              <h2>
-                Découvrez des ressources pour faciliter les conditions du dialogue avec vos élus, services techniques et
-                partenaires
-              </h2>
-            </div>
-          
-          </Grid>
-          <div className={styles.constellationWrapper}>
-            <div className={styles.constellationText}>
-              <h3>L'adaptation n'est possible qu’en intelligence collective</h3>
-              <p>
-                Les initiatives d'adaptation au changement climatique réussissent lorsqu'elles sont abordées de manière{" "}
-                <b>transversale et collaborative</b> en impliquant les élus et différentes expertises thématiques.
-              </p>
-            </div>
-            <Image
-              alt=""
-              src={ConstellationImg}
-              width={0}
-              height={0}
-              sizes="40vw"
-              style={{ maxWidth: "40%", height: "auto" }}
-            />
-          </div>
-          
-        </div>
-      </div> */}
       {/* <div className={styles.test}></div>
           <div className={styles.test2}></div>
           <div className={styles.test3}></div>
