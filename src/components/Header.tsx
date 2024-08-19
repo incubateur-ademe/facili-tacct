@@ -1,4 +1,8 @@
 "use client";
+import ressourcesIcon from "@/assets/icons/ressources_icon_blue.svg";
+import ressourcesIconWhite from "@/assets/icons/ressources_icon_white.svg";
+import { config } from "@/config";
+import { GetCommunes } from "@/lib/queries/cartographie";
 import Badge from "@codegouvfr/react-dsfr/Badge";
 import Header from "@codegouvfr/react-dsfr/Header";
 import { Button } from "@mui/material";
@@ -6,12 +10,18 @@ import Image, { type StaticImageData } from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import ressourcesIcon from "@/assets/icons/ressources_icon_blue.svg";
-import ressourcesIconWhite from "@/assets/icons/ressources_icon_white.svg";
-import { config } from "@/config";
-import { GetCommunes } from "@/lib/queries/cartographie";
-
 import { Brand } from "./Brand";
+import styles from "./components.module.scss";
+
+const Localisation = (props: { epci: string }) => {
+  const { epci } = props;
+  return (
+    <div className={styles.localisation}>
+      <button className="fr-icon-map-pin-user-fill"></button>
+      <p>{epci}</p>
+    </div>
+  );
+};
 
 export const HeaderComp = () => {
   const searchParams = useSearchParams();
@@ -43,13 +53,11 @@ export const HeaderComp = () => {
         </>
       }
       quickAccessItems={[
-        code
-          ? {
-              iconId: "fr-icon-map-pin-user-fill",
-              linkProps: { href: "" },
-              text: epci,
-            }
-          : "",
+        code ? (
+          <>
+            <Localisation epci={epci}/>
+          </>
+         ) : "",
         params.includes("ressources") ? (
           <>
             <Button
