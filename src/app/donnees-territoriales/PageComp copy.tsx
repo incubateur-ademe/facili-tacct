@@ -14,7 +14,6 @@ import { DensiteBati } from "@/components/themes/inconfort-thermique/densite-bat
 import { FragiliteEconomique } from "@/components/themes/inconfort-thermique/fragilite-economique";
 import { GrandAgeIsolement } from "@/components/themes/inconfort-thermique/grand-age-isolement";
 import { TravailExterieur } from "@/components/themes/inconfort-thermique/travail-exterieur";
-import { TabTooltip } from "@/components/utils/TabTooltip";
 import { CLC, CarteCommunes, InconfortThermique } from "@/lib/postgres/models";
 import { useStyles } from "tss-react/dsfr";
 import styles from "./donnees.module.scss";
@@ -75,6 +74,12 @@ const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
   };
   const { css } = useStyles();
 
+  const tabs = [
+    { tabId: "Population", label: "Population" },
+    { tabId: "Bâtiment", label: "Bâtiment" },
+    { tabId: "Urbanisme", label: "Urbanisme" },
+  ];
+
   useEffect(() => {
     setSelectedSubTab(data.filter(el => el.facteur_sensibilite === selectedTabId)[0].titre);
   }, [selectedTabId]);
@@ -85,37 +90,11 @@ const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
 
   return (
     <div className={styles.container}>
-      <Tabs 
-        selectedTabId={selectedTabId} 
-        tabs={[
-          {
-            tabId: "Population",
-            label: <TabTooltip 
-              selectedTab={selectedTabId} 
-              tooltip="La sensibilité de la population est généralement estimée au regard de facteurs démographique, social ou culturel" 
-              titre="Population"
-            /> 
-          },
-          { 
-            tabId: "Bâtiment", 
-            label: "Bâtiment"
-          },
-          { 
-            tabId: "Urbanisme",
-            label: "Urbanisme"
-          },
-        ]} 
-        onTabChange={setSelectedTabId} 
+      <Tabs selectedTabId={selectedTabId} tabs={tabs} onTabChange={setSelectedTabId} 
         className={css({
-          "::before": {
-            boxShadow: "inset 0 1px 0 0 var(--border-default-grey), inset 1px 0 0 0 transparent, inset -1px 0 0 0 transparent",
-          },
           ".fr-tabs__tab[aria-selected=true]:not(:disabled)": {
             color: "#0063CB",
-            backgroundImage: "linear-gradient(0deg, #0063CB, #0063CB), linear-gradient(0deg, var(--border-default-grey), var(--border-default-grey)), linear-gradient(0deg, var(--border-default-grey), var(--border-default-grey)), linear-gradient(0deg, var(--border-default-grey), var(--border-default-grey))",
-          },
-          ".fr-tabs__tab": {
-            margin: "0 0.25em 0 0",
+            backgroundImage: "linear-gradient(0deg, #0063CB, #0063CB), linear-gradient(0deg, var(--border-default-grey), var(--border-default-grey)), linear-gradient(0deg, var(--border-default-grey), var(--border-default-grey)), linear-gradient(0deg, var(--border-default-grey), var(--border-default-grey))"
           },
           ".fr-tabs__tab:not([aria-selected=true])": {
             color: "#3A3A3A",
@@ -123,13 +102,6 @@ const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
             "&:hover": {
               backgroundColor: "#e9e9ff",
             },
-          },
-          ".fr-tabs__panel": {
-            padding: "1rem 0"
-          },
-          ".fr-tabs__list": {
-            padding: "0",
-            margin: "0",
           }
         })}>
         <div className={styles.formContainer}>

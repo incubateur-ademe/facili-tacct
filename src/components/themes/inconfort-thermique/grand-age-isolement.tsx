@@ -5,10 +5,11 @@ import { useSearchParams } from "next/navigation";
 import { LineChart1 } from "@/components/charts/lineChart1";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
-import { CustomTooltip } from "@/components/utils/Tooltip";
+import { CustomTooltip } from "@/components/utils/CalculTooltip";
 import { GridCol } from "@/dsfr/layout";
 import { grandAgeIsolementMapper } from "@/lib/mapper/inconfortThermique";
 import { InconfortThermique } from "@/lib/postgres/models";
+import { useState } from "react";
 
 type DataAge = {
   P20_POP80P: number;
@@ -78,8 +79,19 @@ const sumProperty = (
 
 export const GrandAgeIsolement = (props: {
   inconfort_thermique: InconfortThermique[];
+  data: Array<{
+    donnee: string;
+    facteur_sensibilite: string;
+    id: number;
+    risque: string;
+    titre: string;
+  }>;
 }) => {
-  const { inconfort_thermique } = props;
+  const { inconfort_thermique, data } = props;
+  const [selectedSubTab, setSelectedSubTab] = useState("Grand âge");
+  const [selectedTabId, setSelectedTabId] = useState("Population");
+
+
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
   const xData: string[] = ["1968", "1975", "1982", "1990", "1999", "2009", "2014", "2020"];
