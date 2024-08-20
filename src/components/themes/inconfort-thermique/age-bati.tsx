@@ -3,9 +3,9 @@ import { useSearchParams } from "next/navigation";
 import { BarChart } from "@/components/charts/BarChart";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
-import { GridCol } from "@/dsfr/layout";
 import { ageBatiMapper } from "@/lib/mapper/inconfortThermique";
 import { InconfortThermique } from "@/lib/postgres/models";
+import styles from "./themes.module.scss";
 
 interface ChartData {
   France: number;
@@ -68,24 +68,9 @@ export const AgeBati = (props: {
   return (
     <>
       {inconfort_thermique.length ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: "1em",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-          }}
-        >
-          <GridCol lg={4}>
-            <div
-              style={{
-                backgroundColor: "#F9F9FF",
-                margin: "1em 0",
-                padding: "1em",
-                borderRadius: "0.5em",
-              }}
-            >
+        <div className={styles.container}>
+          <div className="w-2/5">
+          <div className={styles.explicationWrapper}>
               <p style={{color: "#161616"}}>
                 Dans l'EPCI {ageBati[0]?.libelle_epci}, <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
                 principales sont construites avant 2006.
@@ -97,18 +82,18 @@ export const AgeBati = (props: {
               spécifique sur le sujet, la période de construction, fournie par l'INSEE, vous donne une première
               approximation.
             </p>
-          </GridCol>
-          <GridCol lg={7}>
-            <div className="flex flex-col justify-end">
-              <p>
+          </div>
+          <div className="w-3/5">
+            <div className={styles.graphWrapper}>
+              <p style={{ padding: "1em", margin: "0" }}>
                 <b>Périodes de construction des bâtiments</b>
               </p>
               {chartData ? <BarChart chartData={chartData} /> : <Loader />}
-              <p>
+              <p style={{ padding: "1em", margin: "0" }}>
                 Source : <b style={{ color: "#0063CB" }}>INSEE</b>
               </p>
             </div>
-          </GridCol>
+          </div>
         </div>
       ) : (
         <GraphDataNotFound code={code} />
