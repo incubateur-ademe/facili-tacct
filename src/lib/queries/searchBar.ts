@@ -11,6 +11,7 @@ export const GetCollectivite = async (collectivite: string): Promise<CarteCommun
     const variable_commune = "%" + collectivite + "%";
     const variable_code_commune = collectivite + "%";
     const variable_epci = "%" + collectivite + "%";
+    //replace(${variable_commune}, ' ', '-')
     if (isNaN(parseInt(collectivite))) {
       const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
       SELECT 
@@ -18,7 +19,7 @@ export const GetCollectivite = async (collectivite: string): Promise<CarteCommun
       libelle_epci,
       libelle_commune,
       code_commune
-      FROM postgis."communes" WHERE unaccent('unaccent', libelle_commune) ILIKE unaccent('unaccent', ${variable_commune}) LIMIT 20;`; // OR libelle_epci ILIKE ${variable_epci} 
+      FROM postgis."communes" WHERE unaccent('unaccent', libelle_commune) ILIKE unaccent('unaccent', replace(${variable_commune}, ' ', '-')) LIMIT 20;`; // OR libelle_epci ILIKE ${variable_epci} 
       console.timeEnd("Query Execution Time");
       // console.log(value);
       if (value.length > 0) {
@@ -30,7 +31,7 @@ export const GetCollectivite = async (collectivite: string): Promise<CarteCommun
         libelle_epci,
         libelle_commune,
         code_commune
-        FROM postgis."communes" WHERE unaccent('unaccent', libelle_commune) ILIKE ${variable_epci} LIMIT 20;`;
+        FROM postgis."communes" WHERE unaccent('unaccent', libelle_epci) ILIKE unaccent('unaccent', ${variable_epci}) LIMIT 20;`;
         return value;
       }
     } else if (typeof parseInt(collectivite) === "number") {
