@@ -70,13 +70,13 @@ export const AgeBati = (props: {
       {inconfort_thermique.length ? (
         <div className={styles.container}>
           <div className="w-2/5">
-          <div className={styles.explicationWrapper}>
+            <div className={styles.explicationWrapper}>
               <p style={{color: "#161616"}}>
                 Dans l'EPCI {ageBati[0]?.libelle_epci}, <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
                 principales sont construites avant 2006.
               </p>
             </div>
-            <p>
+            <p className="px-4">
               La robustesse des logements face aux températures élevées dépend leur qualité intrinsèque (inertie
               thermique, présence de volets extérieurs, qualité des rénovations...). Si vous ne disposez pas d'étude
               spécifique sur le sujet, la période de construction, fournie par l'INSEE, vous donne une première

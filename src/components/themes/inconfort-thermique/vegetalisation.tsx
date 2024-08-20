@@ -62,18 +62,20 @@ export const Vegetalisation = (props: {
                     forêt ou des espaces semi-naturels. Cela correspond à <b>{foret_sum?.toFixed(1)}</b> hectares.
                   </p>
                 </div>
-                <p>
-                  La présence d’arbres permet d’apporter de l’ombre et rafraichit l’air par évapotranspiration (lorsque
-                  plusieurs arbres sont à proximité). Leur efficacité dans le rafraîchissement en milieu urbain dépend
-                  de leur nombre, de la densité de leur feuillage, des essences, de la qualité du sol et de la
-                  disponibilité en eau.<br></br> <br></br>
-                  Plus 2 à 3°C sont les effets maximaux d'arbres isolés sur la température d’air dans les rues ou
-                  lorsqu'ils sont alignés en bordure de route. (source :{" "}
-                  <a href="https://plusfraichemaville.fr/" target="_blank">
-                    Plus fraiche ma ville
-                  </a>
-                  )
-                </p>
+                <div className="px-4">
+                  <p>
+                    La présence d’arbres permet d’apporter de l’ombre et rafraichit l’air par évapotranspiration (lorsque
+                    plusieurs arbres sont à proximité). Leur efficacité dans le rafraîchissement en milieu urbain dépend
+                    de leur nombre, de la densité de leur feuillage, des essences, de la qualité du sol et de la
+                    disponibilité en eau.<br></br> <br></br>
+                    Plus 2 à 3°C sont les effets maximaux d'arbres isolés sur la température d’air dans les rues ou
+                    lorsqu'ils sont alignés en bordure de route. (source :{" "}
+                    <a href="https://plusfraichemaville.fr/" target="_blank">
+                      Plus fraiche ma ville
+                    </a>
+                    )
+                  </p>
+                </div>
               </div>
               <div className="w-3/5">
                 <div className={styles.graphWrapper}>

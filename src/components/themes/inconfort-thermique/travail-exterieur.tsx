@@ -101,7 +101,7 @@ export const TravailExterieur = (props: {
             ) : (
               ""
             )}
-            <div>
+            <div className="px-4">
               <p>
                 Les emplois cumulés des secteurs de l’agriculture et de la construction fournissent une image grossière
                 de la part des emplois en extérieur sur le territoire. Une partie des transports, du tourisme, voire la

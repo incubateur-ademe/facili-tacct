@@ -142,7 +142,7 @@ export const GrandAgeIsolement = (props: {
               </p>
               <CustomTooltip title={title} />
             </div>
-            <div>
+            <div className="px-4">
               <p>
                 Les personnes âgées représentent les 2/3 de la surmortalité en période de fortes chaleurs. (Source :
                 Santé Publique France, mai 2023)
