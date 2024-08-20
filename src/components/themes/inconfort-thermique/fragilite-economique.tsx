@@ -40,7 +40,7 @@ export const FragiliteEconomique = ({ carteCommunes }: {
                   </p>
                   <CustomTooltip title={title} />
                 </div>
-                <div>
+                <div className="px-4">
                   <p>
                     La précarité énergétique liée au logement concerne les ménages des 3 premiers déciles qui consacrent
                     plus de 8% de leurs revenus aux dépenses énergétiques liées à leur logement (chauffage, eau chaude,
