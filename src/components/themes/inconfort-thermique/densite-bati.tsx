@@ -36,12 +36,14 @@ export const DensiteBati = ({ carteCommunes }: {carteCommunes: CarteCommunes[]})
                   )}
                   <CustomTooltip title={title} />
                 </div>
-                <p>
-                  Il existe de nombreux indicateurs pour mesurer la densité du bâti. La formule de calcul choisie ici
-                  est la suivante : <br></br>
-                  <br></br>
-                  <b>(surface au sol de la construction x hauteur du bâtiment) / surface totale de la commune</b>
-                </p>
+                <div className="px-4">
+                  <p>
+                    Il existe de nombreux indicateurs pour mesurer la densité du bâti. La formule de calcul choisie ici
+                    est la suivante : <br></br>
+                    <br></br>
+                    <b>(surface au sol de la construction x hauteur du bâtiment) / surface totale de la commune</b>
+                  </p>
+                </div>
               </div>
               <div className="w-3/5">
                 <div className={styles.graphWrapper}>
