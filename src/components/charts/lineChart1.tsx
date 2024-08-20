@@ -33,49 +33,45 @@ export const LineChart1 = (props: Props) => {
   }, [yData]);
 
   return (
-    <div>
-      <div style={{ height: "500px", width: "110%" }}>
-        <ResponsiveLine
-          curve="linear"
-          data={[
-            {
-              id: "Courbe évolution de l'âge",
-              color: "hsl(284, 70%, 50%)",
-              data: children,
-            },
-          ]}
-          colors={"rgba(242, 133, 2, 0.9)"}
-          yScale={{
-            type: "linear",
-            min: Math.min(...yData) - 1,
-            max: Math.max(...yData) + 1,
-          }}
-          margin={{
-            top: 50,
-            right: 130,
-            bottom: 50,
-            left: 60,
-          }}
-          axisBottom={{
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: "Années de rencensement",
-            legendOffset: 36,
-            legendPosition: "middle",
-            truncateTickAt: 0,
-          }}
-          axisLeft={{
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: "Pourcentage (%)",
-            legendOffset: -40,
-            legendPosition: "middle",
-            truncateTickAt: 0,
-          }}
-        />
-      </div>
-    </div>
+    <ResponsiveLine
+      curve="linear"
+      data={[
+        {
+          id: "Courbe évolution de l'âge",
+          color: "hsl(284, 70%, 50%)",
+          data: children,
+        },
+      ]}
+      colors={"rgba(242, 133, 2, 0.9)"}
+      yScale={{
+        type: "linear",
+        min: Math.min(...yData) - 1,
+        max: Math.max(...yData) + 1,
+      }}
+      margin={{
+        top: 50,
+        right: 20,
+        bottom: 50,
+        left: 60,
+      }}
+      axisBottom={{
+        tickSize: 5,
+        tickPadding: 5,
+        tickRotation: 0,
+        legend: "Années de rencensement",
+        legendOffset: 36,
+        legendPosition: "middle",
+        truncateTickAt: 0,
+      }}
+      axisLeft={{
+        tickSize: 5,
+        tickPadding: 5,
+        tickRotation: 0,
+        legend: "Pourcentage (%)",
+        legendOffset: -40,
+        legendPosition: "middle",
+        truncateTickAt: 0,
+      }}
+    />
   );
 };

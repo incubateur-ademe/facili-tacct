@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.explicationWrapper {
+    background-color: #f9f9ff;
+    margin: 0 0 2em;
+    padding: 1em;
+    border-radius: 0.5em;
+}
+
+.graphWrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9ff;
+    border: solid 1px #ececec;
+}

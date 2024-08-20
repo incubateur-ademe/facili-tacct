@@ -15,9 +15,9 @@ type Props = {
 
 export const PieChart1 = ({ graphData }: Props) => {
   return (
-    <div>
+    <>
       {graphData.length != 0 ? (
-        <div style={{ height: "500px", minWidth: "450px" }}>
+        <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
           <ResponsivePie
             data={graphData}
             margin={{ top: 85, right: 100, bottom: 80, left: -20 }}
@@ -68,6 +68,6 @@ export const PieChart1 = ({ graphData }: Props) => {
       ) : (
         <Loader />
       )}
-    </div>
+    </>
   );
 };

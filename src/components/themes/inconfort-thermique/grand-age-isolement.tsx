@@ -6,10 +6,9 @@ import { LineChart1 } from "@/components/charts/lineChart1";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
 import { CustomTooltip } from "@/components/utils/CalculTooltip";
-import { GridCol } from "@/dsfr/layout";
 import { grandAgeIsolementMapper } from "@/lib/mapper/inconfortThermique";
 import { InconfortThermique } from "@/lib/postgres/models";
-import { useState } from "react";
+import styles from "./themes.module.scss";
 
 type DataAge = {
   P20_POP80P: number;
@@ -88,10 +87,6 @@ export const GrandAgeIsolement = (props: {
   }>;
 }) => {
   const { inconfort_thermique, data } = props;
-  const [selectedSubTab, setSelectedSubTab] = useState("Grand âge");
-  const [selectedTabId, setSelectedTabId] = useState("Population");
-
-
   const searchParams = useSearchParams();
   const code = searchParams.get("code")!;
   const xData: string[] = ["1968", "1975", "1982", "1990", "1999", "2009", "2014", "2020"];
@@ -138,25 +133,10 @@ export const GrandAgeIsolement = (props: {
   return (
     <>
       {inconfort_thermique.length ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: "1em",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-          }}
-        >
-          <GridCol lg={5}>
-            <div
-              style={{
-                backgroundColor: "#F9F9FF",
-                margin: "1em 0",
-                padding: "1em",
-                borderRadius: "0.5em",
-              }}
-            >
-              <p style={{color: "#161616"}}>
+        <div className={styles.container}>
+          <div className="w-2/5">
+            <div className={styles.explicationWrapper}>
+              <p style={{color: "#161616", margin:"0 0 0.5em"}}>
                 Dans l'EPCI {temp_db[0]?.libelle_epci} les personnes de plus de 80 ans représentent{" "}
                 <b>{yData.over_80_2020_percent_epci}%</b> de la population en 2020.
               </p>
@@ -173,22 +153,24 @@ export const GrandAgeIsolement = (props: {
               </p>
               <p>L’isolement social est un facteur de risque qui concerne toutes les populations.</p>
             </div>
-          </GridCol>
-          <GridCol lg={7}>
-            <div className="flex flex-col">
-              <p style={{ margin: "0 2em 0" }}>
+          </div>
+          <div className="w-3/5">
+            <div className={styles.graphWrapper}>
+              <p style={{ padding: "1em", margin: "0" }}>
                 <b>Évolution de la part de population de plus de 80 ans depuis 1968</b>
               </p>
               {yData.over_80_2020_percent_epci ? (
-                <LineChart1 xData={xData} yData={Object.values(yData).map(Number)} />
+                <div  style={{backgroundColor:"white", height: "500px", width: "100%"}}>
+                  <LineChart1 xData={xData} yData={Object.values(yData).map(Number)}/>
+                </div>
               ) : (
                 <Loader />
               )}
-              <p style={{ margin: "1em 2em" }}>
+              <p style={{ padding: "1em", margin: "0" }}>
                 Source : <b style={{ color: "#0063CB" }}>Observatoire des territoires</b>
               </p>
             </div>
-          </GridCol>
+          </div>
         </div>
       ) : (
         <GraphDataNotFound code={code} />
