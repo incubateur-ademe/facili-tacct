@@ -1,7 +1,6 @@
 "use client";
 
 import { fr } from "@codegouvfr/react-dsfr";
-import { Button } from "@codegouvfr/react-dsfr/Button";
 import { Tabs } from "@codegouvfr/react-dsfr/Tabs";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -134,14 +133,6 @@ const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
         })}>
         <div className={styles.formContainer}>
           <div className={styles.titles}>
-            {/* {selectedTabId === "Population" ? (
-              <p style={{ margin: "1em 0.5em 1em" }}>
-                La sensibilité de la population est généralement estimée au regard de facteurs démographique, social ou
-                culturel
-              </p>
-            ) : (
-              ""
-            )} */}
             {data
               .filter(el => el.facteur_sensibilite === selectedTabId)
               .map((element, i) => (
@@ -174,7 +165,7 @@ const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
                 })()}
               </Suspense>
             </div>
-            <div className={styles.bottom}>
+            {/* <div className={styles.bottom}>
               <Button
                 priority="secondary"
                 linkProps={{
@@ -193,7 +184,7 @@ const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
               >
                 Découvrir qui et comment convaincre
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
       </Tabs>
