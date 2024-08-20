@@ -14,7 +14,7 @@ type Props = {
 
 export const BarChart = ({ chartData }: Props) => {
   return (
-    <div style={{ height: "500px", width: "100%" }}>
+    <div style={{ height: "500px", width: "100%", backgroundColor: "white" }}>
       <ResponsiveBar
         data={chartData}
         keys={["Votre EPCI", "France"]}

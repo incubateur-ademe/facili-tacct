@@ -5,11 +5,11 @@ import { useSearchParams } from "next/navigation";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
 import { Map } from "@/components/maps/CLC";
-import { GridCol } from "@/dsfr/layout";
 import { vegetalisationMapper } from "@/lib/mapper/inconfortThermique";
 import { CLC, InconfortThermique } from "@/lib/postgres/models";
 
 import { VegetalisationDto } from "@/lib/dto";
+import styles from "./themes.module.scss";
 import { LegendCLC } from "./vegetalisation-legend";
 
 const sumProperty = (
@@ -52,26 +52,11 @@ export const Vegetalisation = (props: {
   return (
     <>
       {clc && vegetalisation ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: "1em",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
+        <div className={styles.container}>
           {vegetalisation.length ? (
             <>
-              <GridCol lg={4}>
-                <div
-                  style={{
-                    backgroundColor: "#F9F9FF",
-                    margin: "1em 0",
-                    padding: "1em",
-                    borderRadius: "0.5em",
-                  }}
-                >
+              <div className="w-2/5">
+                <div className={styles.explicationWrapper}>
                   <p style={{color: "#161616"}}>
                     Dans l'EPCI {vegetalisation[0]?.libelle_epci}, <b>{foret_percent?.toFixed(1)}%</b> du territoire est de la
                     forêt ou des espaces semi-naturels. Cela correspond à <b>{foret_sum?.toFixed(1)}</b> hectares.
@@ -89,10 +74,10 @@ export const Vegetalisation = (props: {
                   </a>
                   )
                 </p>
-              </GridCol>
-              <GridCol lg={7}>
-                <div className="flex flex-col">
-                  <p style={{ margin: "0 0 1em" }}>
+              </div>
+              <div className="w-3/5">
+                <div className={styles.graphWrapper}>
+                  <p style={{ padding: "1em", margin: "0" }}>
                     <b>Cartographie des différents types de sols</b>
                   </p>
                   <HtmlTooltip title={<LegendCLC />} placement="left">
@@ -100,11 +85,11 @@ export const Vegetalisation = (props: {
                       <Map clc={clc} />
                     </div>
                   </HtmlTooltip>
-                  <p style={{ margin: "1em 0em 0em" }}>
+                  <p style={{ padding: "1em", margin: "0" }}>
                     Source : <b style={{ color: "#0063CB" }}>CORINE Land Cover</b>
                   </p>
                 </div>
-              </GridCol>
+              </div>
             </>
           ) : (
             <GraphDataNotFound code={code} />
