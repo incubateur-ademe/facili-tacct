@@ -39,33 +39,31 @@ const Page = async (searchParams: SearchParams) => {
   const carteCommunes = await GetCommunes(code);
 
   return (
-    <>
-      <Container size="xl">
-        <Breadcrumb
-          currentPageLabel="Données socio-économiques"
-          homeLinkProps={{
-            href: "/",
-          }}
-          segments={[
-            {
-              label: "Thématiques",
-              linkProps: {
-                href: `/thematiques?code=${code}`,
-              },
+    <Container size="xl">
+      <Breadcrumb
+        currentPageLabel="Données socio-économiques"
+        homeLinkProps={{
+          href: "/",
+        }}
+        segments={[
+          {
+            label: "Thématiques",
+            linkProps: {
+              href: `/thematiques?code=${code}`,
             },
-          ]}
+          },
+        ]}
+      />
+      <NoticeComp title="Explorez des leviers d'action possibles en réduisant la sensibilité de votre territoire à l'inconfort thermique." />
+      <div className={styles.container}>
+        <DynamicPageComp
+          data={theme}
+          inconfort_thermique={dbInconfortThermique}
+          carteCommunes={carteCommunes}
+          clc={clcEpci}
         />
-        <NoticeComp title="Explorez des leviers d'action possibles en réduisant la sensibilité de votre territoire à l'inconfort thermique" />
-        <div className={styles.container}>
-          <DynamicPageComp
-            data={theme}
-            inconfort_thermique={dbInconfortThermique}
-            carteCommunes={carteCommunes}
-            clc={clcEpci}
-          />
-        </div>
-      </Container>
-    </>
+      </div>
+    </Container>
   );
 };
 
