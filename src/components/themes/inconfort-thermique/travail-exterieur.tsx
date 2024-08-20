@@ -6,10 +6,10 @@ import { PieChart1 } from "@/components/charts/pieChart1";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
 import { CustomTooltip } from "@/components/utils/CalculTooltip";
-import { GridCol } from "@/dsfr/layout";
 import { travailExtDto } from "@/lib/dto";
 import { travailExtMapper } from "@/lib/mapper/inconfortThermique";
 import { InconfortThermique } from "@/lib/postgres/models";
+import styles from "./themes.module.scss";
 
 const sumProperty = (
   items: travailExtDto[],
@@ -88,25 +88,10 @@ export const TravailExterieur = (props: {
   return (
     <>
       {inconfort_thermique.length ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: "1em",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-          }}
-        >
-          <GridCol lg={5}>
+        <div className={styles.container}>
+          <div className="w-2/5">
             {sums.sumConstruction ? (
-              <div
-                style={{
-                  backgroundColor: "#F9F9FF",
-                  margin: "1em 0",
-                  padding: "1em",
-                  borderRadius: "0.5em",
-                }}
-              >
+              <div className={styles.explicationWrapper}>
                 <p style={{color: "#161616"}}>
                   Dans l'EPCI {travailExterieur[0]?.libelle_epci}, la part cumulée des emplois dans les secteurs à risque est de{" "}
                   <b>{travailExt?.toFixed(1)}%</b>, soit {sums.sumAgriculture + sums.sumConstruction} personnes.
@@ -130,18 +115,18 @@ export const TravailExterieur = (props: {
                 publique France, 2022).
               </p>
             </div>
-          </GridCol>
-          <GridCol lg={6}>
-            <div className="flex flex-col ">
-              <p style={{ margin: "0 2em 0" }}>
+          </div>
+          <div className="w-3/5">
+            <div className={styles.graphWrapper}>
+              <p style={{ padding: "1em", margin: "0" }}>
                 <b>Part des emplois par activités économiques regroupées en 5 postes</b>
               </p>
               {graphData ? <PieChart1 graphData={graphData} /> : <Loader />}
-              <p style={{ margin: "0 2em" }}>
+              <p style={{ padding: "1em", margin: "0" }}>
                 Source : <b style={{ color: "#0063CB" }}>INSEE (EMP3) 2018</b>
               </p>
             </div>
-          </GridCol>
+          </div>
         </div>
       ) : (
         <GraphDataNotFound code={code} />

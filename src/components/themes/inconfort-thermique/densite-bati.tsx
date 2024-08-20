@@ -5,9 +5,9 @@ import { Loader } from "@/components/loader";
 import { Legend } from "@/components/maps/legend";
 import { Map } from "@/components/maps/map";
 import { CustomTooltip } from "@/components/utils/CalculTooltip";
-import { GridCol } from "@/dsfr/layout";
 import { CommunesIndicateursMapper } from "@/lib/mapper/communes";
 import { CarteCommunes } from "@/lib/postgres/models";
+import styles from "./themes.module.scss";
 
 const average = (array: number[]) => array.reduce((a: number, b: number) => a + b) / array.length;
 
@@ -21,26 +21,11 @@ export const DensiteBati = ({ carteCommunes }: {carteCommunes: CarteCommunes[]})
   return (
     <>
       {communesMap ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: "1em",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-          }}
-        >
+        <div className={styles.container}>
           {communesMap.length ? (
             <>
-              <GridCol lg={4}>
-                <div
-                  style={{
-                    backgroundColor: "#F9F9FF",
-                    margin: "1em 0",
-                    padding: "1em",
-                    borderRadius: "0.5em",
-                  }}
-                >
+              <div className="w-2/5">
+                <div className={styles.explicationWrapper}>
                   {densite_epci ? (
                     <p style={{color: "#161616"}}>
                       Dans l'EPCI {communesMap[0]?.properties["libelle_epci"]}, la densité moyenne du bâtiment est de{" "}
@@ -57,19 +42,19 @@ export const DensiteBati = ({ carteCommunes }: {carteCommunes: CarteCommunes[]})
                   <br></br>
                   <b>(surface au sol de la construction x hauteur du bâtiment) / surface totale de la commune</b>
                 </p>
-              </GridCol>
-              <GridCol lg={7}>
-                <div className="flex flex-col">
+              </div>
+              <div className="w-3/5">
+                <div className={styles.graphWrapper}>
                   <Legend data={"densite_bati"} />
-                  <p>
+                  <p style={{ padding: "1em", margin: "0" }}>
                     <b>Répartition de la densité du bâti par commune au sein de l'EPCI</b>
                   </p>
                   <Map data={"densite_bati"} carteCommunes={communesMap} />
-                  <p>
+                  <p style={{ padding: "1em", margin: "0" }}>
                     Source : <b style={{ color: "#0063CB" }}>Base de Données Nationale Des Bâtiments – BDNB</b>
                   </p>
                 </div>
-              </GridCol>
+              </div>
             </>
           ) : (
             <GraphDataNotFound code={code} />
