@@ -5,9 +5,9 @@ import { Loader } from "@/components/loader";
 import { Legend } from "@/components/maps/legend";
 import { Map } from "@/components/maps/map";
 import { CustomTooltip } from "@/components/utils/CalculTooltip";
-import { GridCol } from "@/dsfr/layout";
 import { CommunesIndicateursMapper } from "@/lib/mapper/communes";
 import { CarteCommunes } from "@/lib/postgres/models";
+import styles from "./themes.module.scss";
 
 export const FragiliteEconomique = ({ carteCommunes }: {
   carteCommunes: CarteCommunes[];
@@ -29,26 +29,11 @@ export const FragiliteEconomique = ({ carteCommunes }: {
   return (
     <>
       {carteCommunes ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: "1em",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-          }}
-        >
+        <div className={styles.container}>
           {carteCommunes.length ? (
             <>
-              <GridCol lg={5}>
-                <div
-                  style={{
-                    backgroundColor: "#F9F9FF",
-                    margin: "1em 0",
-                    padding: "1em",
-                    borderRadius: "0.5em",
-                  }}
-                >
+              <div className="w-2/5">
+                <div className={styles.explicationWrapper}>
                   <p style={{color: "#161616"}}>
                     Dans l'EPCI {communesMap[0]?.properties["libelle_epci"]}, la part des ménages qui sont en situation de
                     précarité énergique logement est de <b>{(100 * precarite_log_epci).toPrecision(3)}%.</b>
@@ -62,19 +47,19 @@ export const FragiliteEconomique = ({ carteCommunes }: {
                     et ventilation).
                   </p>
                 </div>
-              </GridCol>
-              <GridCol lg={7}>
-                <div className="flex flex-col">
-                  <p>
+              </div>
+              <div className="w-3/5">
+                <div className={styles.graphWrapper}>
+                  <p style={{padding: "1em", margin: "0"}}>
                     <b>Répartition de la précarité énergétique logement par commune au sein de l'EPCI</b>
                   </p>
                   <Legend data={"precarite_log"} />
                   <Map data={"precarite_log"} carteCommunes={communesMap} />
-                  <p>
+                  <p style={{padding: "1em", margin: "0"}}>
                     Source : <b style={{ color: "#0063CB" }}>ONPE</b>
                   </p>
                 </div>
-              </GridCol>
+              </div>
             </>
           ) : (
             <GraphDataNotFound code={code} />
