@@ -90,3 +90,10 @@
     justify-content: start;
     padding: 1em 0;
 }
+
+.tilesWrapper {
+    margin: 1em;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
