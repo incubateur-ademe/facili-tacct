@@ -68,6 +68,7 @@
     padding: 0.2em 1em;
     color: #ececfe;
     &:hover {
+        cursor: pointer;
         background-color: #000091e7 !important;
         color: #eeeeee;
     }
@@ -78,6 +79,7 @@
     padding: 0.2em 1em;
     color: #3a3a3a;
     &:hover {
+        cursor: pointer;
         background-color: #e9e9ff !important;
         color: #000000;
     }
@@ -88,17 +90,27 @@
     flex-direction: row;
     gap: 0.5em;
     justify-content: start;
-    padding: 1em 0 1.5em;
+    padding: 0 0 1.5em;
 }
 
 .cardsWrapper {
     display: flex;
     flex-direction: row;
     gap: 1.5em;
-    height: max-content;
+    flex-wrap: wrap;
 }
 
 .ressourcesWrapper {
     padding: 4em 0;
     border-bottom: 1px solid #DDDDDD;
+}
+
+.disabledTab {
+    background-color: #f9f9ff;
+    border-radius: 25px;
+    padding: 0.2em 1em;
+    color: #3a3a3a;
+    &:hover {
+        cursor: default;
+    }
 }
