@@ -40,16 +40,18 @@ const DiagnosticComp = () => {
     {
       id: 1,
       titre: "Thématique 2",
+      disabled: true
     },
     {
       id: 2,
       titre: "Thématique 3",
+      disabled: true
     }
   ]
 
   const allComps = [
     {
-      id:0,
+      id: 0,
       tab : "Vous n'avez pas de diagnostic",
       titre: 'Atelier "Mémoire"',
       tag: "Atelier",
@@ -57,20 +59,44 @@ const DiagnosticComp = () => {
       link: ""
     },
     {
-      id:1,
+      id: 1,
       tab : "Vous n'avez pas de diagnostic",
       titre: 'Constituer une équipe "cœur"',
       tag: "Retour d'expérience",
-      description:"Découvrez comment et pourquoi la Communauté de Communes du Bocage Bourbonnais (03) a mis en place une « équipe cœur » afin de piloter sa démarche TACCT.",
+      description: "Découvrez comment et pourquoi la Communauté de Communes du Bocage Bourbonnais (03) a mis en place une « équipe cœur » afin de piloter sa démarche TACCT.",
       link: "https://librairie.ademe.fr/7214-piloter-sa-demarche-tacct-retour-d-experience-dans-le-bocage-bourbonnais-03.html"
     },
     {
-      id:2,
+      id: 2,
+      tab : "Vous n'avez pas de diagnostic",
+      titre: "Faire son diagnostic de vulnérabilité",
+      tag: "Retour d'expérience",
+      description: "Retour d'expérience sur la réalisation d'un diagnostic de vulnérabilité avec TACCT à Epernay Agglo Champagne (51).",
+      link: "https://www.climaxion.fr/docutheque/realisation-dun-diagnostic-vulnerabilite-au-changement-climatique-epernay-agglo-champagne"
+    },
+    {
+      id: 3,
       tab : "Vous n'avez pas de diagnostic",
       titre: "Titre",
       tag: "Article",
-      description:"Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dolore magna aliqua. Vitae sapien pellentesque habitant morbi tristique senectus et",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dolore magna aliqua. Vitae sapien pellentesque habitant morbi tristique senectus et",
       link: ""
+    },
+    {
+      id: 4,
+      tab : "Vous découvrez le diagnostic pour la 1ère fois",
+      titre: "Restituer son diagnostic de vulnérabilité",
+      tag: "Retour d'expérience",
+      description: "Ils l'ont fait ! Retour d'expérience sur la restitution de son diagnostic de vulnérabilité en Haute Loire (43).",
+      link: "https://librairie.ademe.fr/7180-comment-restituer-son-diagnostic-des-impacts-du-changement-climatique-en-haute-loire-43.html"
+    },
+    {
+      id: 5,
+      tab : "Vous voulez réviser un diagnostic connu",
+      titre: "Évaluation en atelier",
+      tag: "Retour d'expérience",
+      description: 'Un atelier "sensible" pour évaluer les impacts du changement climatique au PNR des Pyrénées Ariégeoises (09).',
+      link: "https://librairie.ademe.fr/changement-climatique-et-energie/6223-evaluation-en-atelier-de-la-sensibilite-du-territoire-au-changement-climatique-au-pnr-pyrenees-ariegeoises-09.html"
     },
   ]
 
