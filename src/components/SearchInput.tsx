@@ -10,39 +10,41 @@ import { GetCollectivite } from "@/lib/queries/searchBar";
 
 type MySearchInputProps = {
   className?: string;
-  codeFromSearchBar: (a: string | undefined) => void;
+  communeCodeFromSearchBar: (a: string | undefined) => void;
+  epciCodeFromSearchBar: (a: string | undefined) => void;
   id: string;
   placeholder: string;
   type: string;
 };
 
 type Options = {
-  code: string;
+  codeCommune: string;
   codeEpci: string;
   nom: string;
 };
 
 export const MySearchInput = (props: MySearchInputProps) => {
-  const { className, id, type, codeFromSearchBar } = props;
+  const { className, id, type, epciCodeFromSearchBar, communeCodeFromSearchBar } = props;
   const router = useRouter();
   // const [value, setValue] = useState<Values | null>(null);
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState<Options[]>([]);
   const [epciOptions, setEpciOptions] = useState<Options[]>([]);
-  const [code, setCode] = useState<string>();
+  const [epciCode, setEpciCode] = useState<string>();
+  const [communeCode, setCommuneCode] = useState<string>();
 
   // supprime les doublons pour les objects
   const filteredEpci = epciOptions.filter(
-    (value, index, self) => index === self.findIndex(t => t.nom === value.nom && t.code === value.code),
+    (value, index, self) => index === self.findIndex(t => t.nom === value.nom && t.codeEpci === value.codeEpci),
   );
 
   const filteredCommunes = options.filter(
-    (value, index, self) => index === self.findIndex(t => t.nom === value.nom && t.code === value.code),
+    (value, index, self) => index === self.findIndex(t => t.nom === value.nom && t.codeCommune === value.codeCommune),
   );
 
   const collectivites = [...filteredCommunes.sort((a, b) => a.nom.localeCompare(b.nom)), ...filteredEpci];
   const handleClick = () => {
-    code ? router.push(`/thematiques?code=${code}`) : void 0;
+    communeCode ? router.push(`/thematiques?codgeo=${communeCode}`) : void 0;
   };
 
   useEffect(() => {
@@ -51,20 +53,21 @@ export const MySearchInput = (props: MySearchInputProps) => {
       setEpciOptions(
         temp.map((el, i) => ({
           nom: el.libelle_epci,
-          code: el.epci,
+          codeCommune: el.epci,
           codeEpci: el.epci,
         })),
       );
       setOptions(
         temp.map((el, i) => ({
           nom: el.libelle_commune,
-          code: el.code_commune,
+          codeCommune: el.code_commune,
           codeEpci: el.epci,
         })),
       );
     })();
-    codeFromSearchBar(code);
-  }, [inputValue, codeFromSearchBar, code]);
+    epciCodeFromSearchBar(epciCode);
+    communeCodeFromSearchBar(communeCode);
+  }, [inputValue, epciCodeFromSearchBar, epciCode, communeCodeFromSearchBar, communeCode]);
 
   return (
     <Autocomplete
@@ -76,14 +79,15 @@ export const MySearchInput = (props: MySearchInputProps) => {
       noOptionsText="Aucune collectivité trouvée"
       onChange={(event, newValue: Options | null) => {
         setOptions(newValue ? [newValue, ...options] : options);
-        setCode(newValue?.codeEpci);
+        setEpciCode(newValue?.codeEpci);
+        setCommuneCode(newValue?.codeCommune)
       }}
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
       }}
       getOptionLabel={option => {
         if (option) {
-          return `${option.nom} (${option.code})`;
+          return `${option.nom} (${option.codeCommune})`;
         }
         return "";
       }}
@@ -97,7 +101,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
         return (
           <Box component="li" sx={{ height: "fit-content" }} {...optionProps}>
             <p style={{ margin: "0" }}>
-              <b>{option.nom} </b> ({option.code})
+              <b>{option.nom} </b> ({option.codeCommune})
             </p>
           </Box>
         );
