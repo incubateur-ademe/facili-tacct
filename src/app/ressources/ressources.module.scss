@@ -83,10 +83,22 @@
     }
 }
 
-.titles {
+.tabs {
     display: flex;
     flex-direction: row;
     gap: 0.5em;
     justify-content: start;
-    padding: 1em 0;
+    padding: 1em 0 1.5em;
+}
+
+.cardsWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+    height: max-content;
+}
+
+.ressourcesWrapper {
+    padding: 4em 0;
+    border-bottom: 1px solid #DDDDDD;
 }
