@@ -2,7 +2,6 @@
 import ressourcesIcon from "@/assets/icons/ressources_icon_blue.svg";
 import ressourcesIconWhite from "@/assets/icons/ressources_icon_white.svg";
 import { config } from "@/config";
-import { GetCommunes } from "@/lib/queries/cartographie";
 import Badge from "@codegouvfr/react-dsfr/Badge";
 import Header from "@codegouvfr/react-dsfr/Header";
 import { Button } from "@mui/material";
@@ -10,6 +9,7 @@ import Image, { type StaticImageData } from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { GetCollectivite } from "@/lib/queries/searchBar";
 import { Brand } from "./Brand";
 import styles from "./components.module.scss";
 
@@ -28,12 +28,16 @@ export const HeaderComp = () => {
   const params = usePathname();
   const code = searchParams.get("code");
 
+  console.log('code', code)
   const [epci, setEpci] = useState("");
+  const [commune, setCommune] = useState("");
 
   useEffect(() => {
     void (async () => {
-      const temp = code ? await GetCommunes(code) : "";
+      const temp = code ? await GetCollectivite(code) : "";
+      console.log(temp)
       temp ? setEpci(temp[0].libelle_epci) : setEpci("");
+      temp ? setCommune(temp[0].libelle_commune) : setCommune("");
     })();
   }, [code]);
 
