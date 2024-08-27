@@ -11,8 +11,8 @@ datasource db {
 }
 
 model inconfort_thermique {
-  index                    Int    @id
-  code_commune             String
+  index                    BigInt @id
+  code_geographique        String
   libelle_geographique     String
   epci                     String
   libelle_epci             String
@@ -50,7 +50,6 @@ model inconfort_thermique {
   P20_POP80P               Float
   P20_POP80P_PSEUL         Float
   P20_POP80P_PSEUL_PERCENT Float
-  ratio_precarite_log      Float
   tee_log                  Float
   tee_mob                  Float
   precarite_logement       Float
@@ -59,7 +58,10 @@ model inconfort_thermique {
   NA5FZ_sum                BigInt
   NA5GU_sum                BigInt
   NA5OQ_sum                BigInt
+  superf_choro             Float
   s_geom_cstr_bati         Float
+  hauteur                  Float
+  h_x_s                    Float
   densite_bati             Float
   clc_1_artificialise      Float
   clc_2_agricole           Float
