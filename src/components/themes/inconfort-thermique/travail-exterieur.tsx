@@ -91,7 +91,7 @@ export const TravailExterieur = (props: {
       {inconfort_thermique.length ? (
         <div className={styles.container}>
           <div className="w-2/5">
-            {sums.sumConstruction ? (
+            {sums.sumConstruction || sums.sumAgriculture ? (
               <div className={styles.explicationWrapper}>
                 { codgeo ?
                   <p style={{color: "#161616", margin:"0 0 0.5em"}}>
