@@ -35,10 +35,9 @@ const Page = async (searchParams: SearchParams) => {
   const theme = themes.inconfort_thermique;
   const codepci = searchParams.searchParams.codepci;
   const codgeo = searchParams.searchParams.codgeo;
-  const dbInconfortThermique = codgeo !== null ? await GetInconfortThermique(codgeo) 
-        : codepci !== null ? await GetInconfortThermique(codepci) 
+  const dbInconfortThermique = codgeo ? await GetInconfortThermique(codgeo) 
+        : codepci ? await GetInconfortThermique(codepci) 
         : void 0;
-  
   const clcEpci = await GetClcEpci(codepci);
   const carteCommunes = await GetCommunes(codepci);
 
@@ -53,7 +52,7 @@ const Page = async (searchParams: SearchParams) => {
           {
             label: "Thématiques",
             linkProps: {
-              href: codgeo !== null ? `/thematiques?codgeo=${codgeo}&codepci=${codepci}` : `/thematiques?codepci=${codepci}`,
+              href: codgeo ? `/thematiques?codgeo=${codgeo}&codepci=${codepci}` : `/thematiques?codepci=${codepci}`,
             },
           },
         ]}

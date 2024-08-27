@@ -13,9 +13,11 @@ const average = (array: number[]) => array.reduce((a: number, b: number) => a + 
 
 export const DensiteBati = ({ carteCommunes }: {carteCommunes: CarteCommunes[]}) => {
   const searchParams = useSearchParams();
-  const code = searchParams.get("code")!;
+  const codgeo = searchParams.get("codgeo");
+  const codepci = searchParams.get("codepci")!;  
   const communesMap = carteCommunes.map(CommunesIndicateursMapper);
-  const densite_epci = communesMap.map((el, i) => el.properties.densite_bati);
+  const commune = codgeo ? communesMap.find((obj) => obj.properties["code_commune"] === codgeo) : undefined;
+  const densiteEpci = communesMap.map((el, i) => el.properties.densite_bati);
 
   const title = "(surface au sol de la construction x hauteur du bâtiment) / surface totale de la commune";
   return (
@@ -26,14 +28,18 @@ export const DensiteBati = ({ carteCommunes }: {carteCommunes: CarteCommunes[]})
             <>
               <div className="w-2/5">
                 <div className={styles.explicationWrapper}>
-                  {densite_epci ? (
-                    <p style={{color: "#161616"}}>
-                      Dans l'EPCI {communesMap[0]?.properties["libelle_epci"]}, la densité moyenne du bâtiment est de{" "}
-                      <b>{average(densite_epci).toFixed(2)}</b>.
+                  { commune ?
+                    <p style={{color: "#161616", margin:"0 0 0.5em"}}>
+                      Dans la commune de {commune.properties.libelle_commune}, la densité moyenne du bâtiment est de{" "}
+                      <b>{commune.properties.densite_bati.toFixed(2)}. </b> 
+                      À l'échelle de l'EPCI, ce taux est de <b>{average(densiteEpci).toFixed(2)}.</b>
                     </p>
-                  ) : (
-                    ""
-                  )}
+                    : 
+                    <p style={{color: "#161616", margin:"0 0 0.5em"}}>
+                      Dans l'EPCI {communesMap[0]?.properties["libelle_epci"]}, la densité moyenne du bâtiment est de{" "}
+                      <b>{average(densiteEpci).toFixed(2)}.</b>
+                    </p>
+                  }
                   <CustomTooltip title={title} />
                 </div>
                 <div className="px-4">
@@ -59,7 +65,7 @@ export const DensiteBati = ({ carteCommunes }: {carteCommunes: CarteCommunes[]})
               </div>
             </>
           ) : (
-            <GraphDataNotFound code={code} />
+            <GraphDataNotFound code={codgeo ? codgeo : codepci} />
           )}
         </div>
       ) : (
