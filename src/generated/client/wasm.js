@@ -212,6 +212,18 @@ exports.Prisma.CommunesScalarFieldEnum = {
   precarite_logement: 'precarite_logement'
 };
 
+exports.Prisma.Collectivites_searchbarScalarFieldEnum = {
+  index: 'index',
+  code_commune: 'code_commune',
+  libelle_commune: 'libelle_commune',
+  code_epci: 'code_epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  region: 'region',
+  search_code: 'search_code',
+  search_libelle: 'search_libelle'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -233,7 +245,8 @@ exports.Prisma.ModelName = {
   clc_2018_2: 'clc_2018_2',
   spatial_ref_sys: 'spatial_ref_sys',
   clc_epci: 'clc_epci',
-  communes: 'communes'
+  communes: 'communes',
+  collectivites_searchbar: 'collectivites_searchbar'
 };
 
 /**

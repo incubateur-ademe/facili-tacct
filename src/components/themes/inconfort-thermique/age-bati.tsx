@@ -20,10 +20,9 @@ export const AgeBati = (props: {
 }) => {
   const { inconfort_thermique } = props;
   const searchParams = useSearchParams();
-  const code = searchParams.get("code")!;
-
+  const codgeo = searchParams.get("codgeo");
+  const codepci = searchParams.get("codepci")!;
   const ageBati = inconfort_thermique.map(ageBatiMapper);
-
   const constructionBefore2006 =
     ageBati[0]?.age_bati_pre_19 + ageBati[0]?.age_bati_19_45 + ageBati[0]?.age_bati_46_90 + ageBati[0]?.age_bati_91_05;
 
@@ -96,7 +95,7 @@ export const AgeBati = (props: {
           </div>
         </div>
       ) : (
-        <GraphDataNotFound code={code} />
+        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
       )}
     </>
   );

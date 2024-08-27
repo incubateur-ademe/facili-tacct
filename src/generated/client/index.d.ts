@@ -38,6 +38,11 @@ export type clc_epci = $Result.DefaultSelection<Prisma.$clc_epciPayload>
  * 
  */
 export type communes = $Result.DefaultSelection<Prisma.$communesPayload>
+/**
+ * Model collectivites_searchbar
+ * 
+ */
+export type collectivites_searchbar = $Result.DefaultSelection<Prisma.$collectivites_searchbarPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -210,6 +215,16 @@ export class PrismaClient<
     * ```
     */
   get communes(): Prisma.communesDelegate<ExtArgs>;
+
+  /**
+   * `prisma.collectivites_searchbar`: Exposes CRUD operations for the **collectivites_searchbar** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Collectivites_searchbars
+    * const collectivites_searchbars = await prisma.collectivites_searchbar.findMany()
+    * ```
+    */
+  get collectivites_searchbar(): Prisma.collectivites_searchbarDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -691,7 +706,8 @@ export namespace Prisma {
     clc_2018_2: 'clc_2018_2',
     spatial_ref_sys: 'spatial_ref_sys',
     clc_epci: 'clc_epci',
-    communes: 'communes'
+    communes: 'communes',
+    collectivites_searchbar: 'collectivites_searchbar'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -707,7 +723,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "inconfort_thermique" | "clc_2018_2" | "spatial_ref_sys" | "clc_epci" | "communes"
+      modelProps: "inconfort_thermique" | "clc_2018_2" | "spatial_ref_sys" | "clc_epci" | "communes" | "collectivites_searchbar"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1058,6 +1074,76 @@ export namespace Prisma {
           count: {
             args: Prisma.communesCountArgs<ExtArgs>
             result: $Utils.Optional<CommunesCountAggregateOutputType> | number
+          }
+        }
+      }
+      collectivites_searchbar: {
+        payload: Prisma.$collectivites_searchbarPayload<ExtArgs>
+        fields: Prisma.collectivites_searchbarFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.collectivites_searchbarFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collectivites_searchbarPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.collectivites_searchbarFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collectivites_searchbarPayload>
+          }
+          findFirst: {
+            args: Prisma.collectivites_searchbarFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collectivites_searchbarPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.collectivites_searchbarFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collectivites_searchbarPayload>
+          }
+          findMany: {
+            args: Prisma.collectivites_searchbarFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collectivites_searchbarPayload>[]
+          }
+          create: {
+            args: Prisma.collectivites_searchbarCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collectivites_searchbarPayload>
+          }
+          createMany: {
+            args: Prisma.collectivites_searchbarCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.collectivites_searchbarCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collectivites_searchbarPayload>[]
+          }
+          delete: {
+            args: Prisma.collectivites_searchbarDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collectivites_searchbarPayload>
+          }
+          update: {
+            args: Prisma.collectivites_searchbarUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collectivites_searchbarPayload>
+          }
+          deleteMany: {
+            args: Prisma.collectivites_searchbarDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.collectivites_searchbarUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.collectivites_searchbarUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collectivites_searchbarPayload>
+          }
+          aggregate: {
+            args: Prisma.Collectivites_searchbarAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCollectivites_searchbar>
+          }
+          groupBy: {
+            args: Prisma.collectivites_searchbarGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Collectivites_searchbarGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.collectivites_searchbarCountArgs<ExtArgs>
+            result: $Utils.Optional<Collectivites_searchbarCountAggregateOutputType> | number
           }
         }
       }
@@ -6643,6 +6729,966 @@ export namespace Prisma {
 
 
   /**
+   * Model collectivites_searchbar
+   */
+
+  export type AggregateCollectivites_searchbar = {
+    _count: Collectivites_searchbarCountAggregateOutputType | null
+    _avg: Collectivites_searchbarAvgAggregateOutputType | null
+    _sum: Collectivites_searchbarSumAggregateOutputType | null
+    _min: Collectivites_searchbarMinAggregateOutputType | null
+    _max: Collectivites_searchbarMaxAggregateOutputType | null
+  }
+
+  export type Collectivites_searchbarAvgAggregateOutputType = {
+    index: number | null
+  }
+
+  export type Collectivites_searchbarSumAggregateOutputType = {
+    index: number | null
+  }
+
+  export type Collectivites_searchbarMinAggregateOutputType = {
+    index: number | null
+    code_commune: string | null
+    libelle_commune: string | null
+    code_epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: string | null
+    search_code: string | null
+    search_libelle: string | null
+  }
+
+  export type Collectivites_searchbarMaxAggregateOutputType = {
+    index: number | null
+    code_commune: string | null
+    libelle_commune: string | null
+    code_epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: string | null
+    search_code: string | null
+    search_libelle: string | null
+  }
+
+  export type Collectivites_searchbarCountAggregateOutputType = {
+    index: number
+    code_commune: number
+    libelle_commune: number
+    code_epci: number
+    libelle_epci: number
+    departement: number
+    region: number
+    search_code: number
+    search_libelle: number
+    _all: number
+  }
+
+
+  export type Collectivites_searchbarAvgAggregateInputType = {
+    index?: true
+  }
+
+  export type Collectivites_searchbarSumAggregateInputType = {
+    index?: true
+  }
+
+  export type Collectivites_searchbarMinAggregateInputType = {
+    index?: true
+    code_commune?: true
+    libelle_commune?: true
+    code_epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+    search_code?: true
+    search_libelle?: true
+  }
+
+  export type Collectivites_searchbarMaxAggregateInputType = {
+    index?: true
+    code_commune?: true
+    libelle_commune?: true
+    code_epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+    search_code?: true
+    search_libelle?: true
+  }
+
+  export type Collectivites_searchbarCountAggregateInputType = {
+    index?: true
+    code_commune?: true
+    libelle_commune?: true
+    code_epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+    search_code?: true
+    search_libelle?: true
+    _all?: true
+  }
+
+  export type Collectivites_searchbarAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which collectivites_searchbar to aggregate.
+     */
+    where?: collectivites_searchbarWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of collectivites_searchbars to fetch.
+     */
+    orderBy?: collectivites_searchbarOrderByWithRelationInput | collectivites_searchbarOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: collectivites_searchbarWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` collectivites_searchbars from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` collectivites_searchbars.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned collectivites_searchbars
+    **/
+    _count?: true | Collectivites_searchbarCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Collectivites_searchbarAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Collectivites_searchbarSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Collectivites_searchbarMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Collectivites_searchbarMaxAggregateInputType
+  }
+
+  export type GetCollectivites_searchbarAggregateType<T extends Collectivites_searchbarAggregateArgs> = {
+        [P in keyof T & keyof AggregateCollectivites_searchbar]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCollectivites_searchbar[P]>
+      : GetScalarType<T[P], AggregateCollectivites_searchbar[P]>
+  }
+
+
+
+
+  export type collectivites_searchbarGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: collectivites_searchbarWhereInput
+    orderBy?: collectivites_searchbarOrderByWithAggregationInput | collectivites_searchbarOrderByWithAggregationInput[]
+    by: Collectivites_searchbarScalarFieldEnum[] | Collectivites_searchbarScalarFieldEnum
+    having?: collectivites_searchbarScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Collectivites_searchbarCountAggregateInputType | true
+    _avg?: Collectivites_searchbarAvgAggregateInputType
+    _sum?: Collectivites_searchbarSumAggregateInputType
+    _min?: Collectivites_searchbarMinAggregateInputType
+    _max?: Collectivites_searchbarMaxAggregateInputType
+  }
+
+  export type Collectivites_searchbarGroupByOutputType = {
+    index: number
+    code_commune: string | null
+    libelle_commune: string | null
+    code_epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: string | null
+    search_code: string | null
+    search_libelle: string | null
+    _count: Collectivites_searchbarCountAggregateOutputType | null
+    _avg: Collectivites_searchbarAvgAggregateOutputType | null
+    _sum: Collectivites_searchbarSumAggregateOutputType | null
+    _min: Collectivites_searchbarMinAggregateOutputType | null
+    _max: Collectivites_searchbarMaxAggregateOutputType | null
+  }
+
+  type GetCollectivites_searchbarGroupByPayload<T extends collectivites_searchbarGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Collectivites_searchbarGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Collectivites_searchbarGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Collectivites_searchbarGroupByOutputType[P]>
+            : GetScalarType<T[P], Collectivites_searchbarGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type collectivites_searchbarSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_commune?: boolean
+    libelle_commune?: boolean
+    code_epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+    search_code?: boolean
+    search_libelle?: boolean
+  }, ExtArgs["result"]["collectivites_searchbar"]>
+
+  export type collectivites_searchbarSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_commune?: boolean
+    libelle_commune?: boolean
+    code_epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+    search_code?: boolean
+    search_libelle?: boolean
+  }, ExtArgs["result"]["collectivites_searchbar"]>
+
+  export type collectivites_searchbarSelectScalar = {
+    index?: boolean
+    code_commune?: boolean
+    libelle_commune?: boolean
+    code_epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+    search_code?: boolean
+    search_libelle?: boolean
+  }
+
+
+  export type $collectivites_searchbarPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "collectivites_searchbar"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: number
+      code_commune: string | null
+      libelle_commune: string | null
+      code_epci: string | null
+      libelle_epci: string | null
+      departement: string | null
+      region: string | null
+      search_code: string | null
+      search_libelle: string | null
+    }, ExtArgs["result"]["collectivites_searchbar"]>
+    composites: {}
+  }
+
+  type collectivites_searchbarGetPayload<S extends boolean | null | undefined | collectivites_searchbarDefaultArgs> = $Result.GetResult<Prisma.$collectivites_searchbarPayload, S>
+
+  type collectivites_searchbarCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<collectivites_searchbarFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Collectivites_searchbarCountAggregateInputType | true
+    }
+
+  export interface collectivites_searchbarDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['collectivites_searchbar'], meta: { name: 'collectivites_searchbar' } }
+    /**
+     * Find zero or one Collectivites_searchbar that matches the filter.
+     * @param {collectivites_searchbarFindUniqueArgs} args - Arguments to find a Collectivites_searchbar
+     * @example
+     * // Get one Collectivites_searchbar
+     * const collectivites_searchbar = await prisma.collectivites_searchbar.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends collectivites_searchbarFindUniqueArgs>(args: SelectSubset<T, collectivites_searchbarFindUniqueArgs<ExtArgs>>): Prisma__collectivites_searchbarClient<$Result.GetResult<Prisma.$collectivites_searchbarPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Collectivites_searchbar that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {collectivites_searchbarFindUniqueOrThrowArgs} args - Arguments to find a Collectivites_searchbar
+     * @example
+     * // Get one Collectivites_searchbar
+     * const collectivites_searchbar = await prisma.collectivites_searchbar.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends collectivites_searchbarFindUniqueOrThrowArgs>(args: SelectSubset<T, collectivites_searchbarFindUniqueOrThrowArgs<ExtArgs>>): Prisma__collectivites_searchbarClient<$Result.GetResult<Prisma.$collectivites_searchbarPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Collectivites_searchbar that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collectivites_searchbarFindFirstArgs} args - Arguments to find a Collectivites_searchbar
+     * @example
+     * // Get one Collectivites_searchbar
+     * const collectivites_searchbar = await prisma.collectivites_searchbar.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends collectivites_searchbarFindFirstArgs>(args?: SelectSubset<T, collectivites_searchbarFindFirstArgs<ExtArgs>>): Prisma__collectivites_searchbarClient<$Result.GetResult<Prisma.$collectivites_searchbarPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Collectivites_searchbar that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collectivites_searchbarFindFirstOrThrowArgs} args - Arguments to find a Collectivites_searchbar
+     * @example
+     * // Get one Collectivites_searchbar
+     * const collectivites_searchbar = await prisma.collectivites_searchbar.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends collectivites_searchbarFindFirstOrThrowArgs>(args?: SelectSubset<T, collectivites_searchbarFindFirstOrThrowArgs<ExtArgs>>): Prisma__collectivites_searchbarClient<$Result.GetResult<Prisma.$collectivites_searchbarPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Collectivites_searchbars that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collectivites_searchbarFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Collectivites_searchbars
+     * const collectivites_searchbars = await prisma.collectivites_searchbar.findMany()
+     * 
+     * // Get first 10 Collectivites_searchbars
+     * const collectivites_searchbars = await prisma.collectivites_searchbar.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const collectivites_searchbarWithIndexOnly = await prisma.collectivites_searchbar.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends collectivites_searchbarFindManyArgs>(args?: SelectSubset<T, collectivites_searchbarFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$collectivites_searchbarPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Collectivites_searchbar.
+     * @param {collectivites_searchbarCreateArgs} args - Arguments to create a Collectivites_searchbar.
+     * @example
+     * // Create one Collectivites_searchbar
+     * const Collectivites_searchbar = await prisma.collectivites_searchbar.create({
+     *   data: {
+     *     // ... data to create a Collectivites_searchbar
+     *   }
+     * })
+     * 
+     */
+    create<T extends collectivites_searchbarCreateArgs>(args: SelectSubset<T, collectivites_searchbarCreateArgs<ExtArgs>>): Prisma__collectivites_searchbarClient<$Result.GetResult<Prisma.$collectivites_searchbarPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Collectivites_searchbars.
+     * @param {collectivites_searchbarCreateManyArgs} args - Arguments to create many Collectivites_searchbars.
+     * @example
+     * // Create many Collectivites_searchbars
+     * const collectivites_searchbar = await prisma.collectivites_searchbar.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends collectivites_searchbarCreateManyArgs>(args?: SelectSubset<T, collectivites_searchbarCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Collectivites_searchbars and returns the data saved in the database.
+     * @param {collectivites_searchbarCreateManyAndReturnArgs} args - Arguments to create many Collectivites_searchbars.
+     * @example
+     * // Create many Collectivites_searchbars
+     * const collectivites_searchbar = await prisma.collectivites_searchbar.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Collectivites_searchbars and only return the `index`
+     * const collectivites_searchbarWithIndexOnly = await prisma.collectivites_searchbar.createManyAndReturn({ 
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends collectivites_searchbarCreateManyAndReturnArgs>(args?: SelectSubset<T, collectivites_searchbarCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$collectivites_searchbarPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Collectivites_searchbar.
+     * @param {collectivites_searchbarDeleteArgs} args - Arguments to delete one Collectivites_searchbar.
+     * @example
+     * // Delete one Collectivites_searchbar
+     * const Collectivites_searchbar = await prisma.collectivites_searchbar.delete({
+     *   where: {
+     *     // ... filter to delete one Collectivites_searchbar
+     *   }
+     * })
+     * 
+     */
+    delete<T extends collectivites_searchbarDeleteArgs>(args: SelectSubset<T, collectivites_searchbarDeleteArgs<ExtArgs>>): Prisma__collectivites_searchbarClient<$Result.GetResult<Prisma.$collectivites_searchbarPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Collectivites_searchbar.
+     * @param {collectivites_searchbarUpdateArgs} args - Arguments to update one Collectivites_searchbar.
+     * @example
+     * // Update one Collectivites_searchbar
+     * const collectivites_searchbar = await prisma.collectivites_searchbar.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends collectivites_searchbarUpdateArgs>(args: SelectSubset<T, collectivites_searchbarUpdateArgs<ExtArgs>>): Prisma__collectivites_searchbarClient<$Result.GetResult<Prisma.$collectivites_searchbarPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Collectivites_searchbars.
+     * @param {collectivites_searchbarDeleteManyArgs} args - Arguments to filter Collectivites_searchbars to delete.
+     * @example
+     * // Delete a few Collectivites_searchbars
+     * const { count } = await prisma.collectivites_searchbar.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends collectivites_searchbarDeleteManyArgs>(args?: SelectSubset<T, collectivites_searchbarDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Collectivites_searchbars.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collectivites_searchbarUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Collectivites_searchbars
+     * const collectivites_searchbar = await prisma.collectivites_searchbar.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends collectivites_searchbarUpdateManyArgs>(args: SelectSubset<T, collectivites_searchbarUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Collectivites_searchbar.
+     * @param {collectivites_searchbarUpsertArgs} args - Arguments to update or create a Collectivites_searchbar.
+     * @example
+     * // Update or create a Collectivites_searchbar
+     * const collectivites_searchbar = await prisma.collectivites_searchbar.upsert({
+     *   create: {
+     *     // ... data to create a Collectivites_searchbar
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Collectivites_searchbar we want to update
+     *   }
+     * })
+     */
+    upsert<T extends collectivites_searchbarUpsertArgs>(args: SelectSubset<T, collectivites_searchbarUpsertArgs<ExtArgs>>): Prisma__collectivites_searchbarClient<$Result.GetResult<Prisma.$collectivites_searchbarPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Collectivites_searchbars.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collectivites_searchbarCountArgs} args - Arguments to filter Collectivites_searchbars to count.
+     * @example
+     * // Count the number of Collectivites_searchbars
+     * const count = await prisma.collectivites_searchbar.count({
+     *   where: {
+     *     // ... the filter for the Collectivites_searchbars we want to count
+     *   }
+     * })
+    **/
+    count<T extends collectivites_searchbarCountArgs>(
+      args?: Subset<T, collectivites_searchbarCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Collectivites_searchbarCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Collectivites_searchbar.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Collectivites_searchbarAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Collectivites_searchbarAggregateArgs>(args: Subset<T, Collectivites_searchbarAggregateArgs>): Prisma.PrismaPromise<GetCollectivites_searchbarAggregateType<T>>
+
+    /**
+     * Group by Collectivites_searchbar.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collectivites_searchbarGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends collectivites_searchbarGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: collectivites_searchbarGroupByArgs['orderBy'] }
+        : { orderBy?: collectivites_searchbarGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, collectivites_searchbarGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCollectivites_searchbarGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the collectivites_searchbar model
+   */
+  readonly fields: collectivites_searchbarFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for collectivites_searchbar.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__collectivites_searchbarClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the collectivites_searchbar model
+   */ 
+  interface collectivites_searchbarFieldRefs {
+    readonly index: FieldRef<"collectivites_searchbar", 'Int'>
+    readonly code_commune: FieldRef<"collectivites_searchbar", 'String'>
+    readonly libelle_commune: FieldRef<"collectivites_searchbar", 'String'>
+    readonly code_epci: FieldRef<"collectivites_searchbar", 'String'>
+    readonly libelle_epci: FieldRef<"collectivites_searchbar", 'String'>
+    readonly departement: FieldRef<"collectivites_searchbar", 'String'>
+    readonly region: FieldRef<"collectivites_searchbar", 'String'>
+    readonly search_code: FieldRef<"collectivites_searchbar", 'String'>
+    readonly search_libelle: FieldRef<"collectivites_searchbar", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * collectivites_searchbar findUnique
+   */
+  export type collectivites_searchbarFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collectivites_searchbar
+     */
+    select?: collectivites_searchbarSelect<ExtArgs> | null
+    /**
+     * Filter, which collectivites_searchbar to fetch.
+     */
+    where: collectivites_searchbarWhereUniqueInput
+  }
+
+  /**
+   * collectivites_searchbar findUniqueOrThrow
+   */
+  export type collectivites_searchbarFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collectivites_searchbar
+     */
+    select?: collectivites_searchbarSelect<ExtArgs> | null
+    /**
+     * Filter, which collectivites_searchbar to fetch.
+     */
+    where: collectivites_searchbarWhereUniqueInput
+  }
+
+  /**
+   * collectivites_searchbar findFirst
+   */
+  export type collectivites_searchbarFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collectivites_searchbar
+     */
+    select?: collectivites_searchbarSelect<ExtArgs> | null
+    /**
+     * Filter, which collectivites_searchbar to fetch.
+     */
+    where?: collectivites_searchbarWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of collectivites_searchbars to fetch.
+     */
+    orderBy?: collectivites_searchbarOrderByWithRelationInput | collectivites_searchbarOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for collectivites_searchbars.
+     */
+    cursor?: collectivites_searchbarWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` collectivites_searchbars from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` collectivites_searchbars.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of collectivites_searchbars.
+     */
+    distinct?: Collectivites_searchbarScalarFieldEnum | Collectivites_searchbarScalarFieldEnum[]
+  }
+
+  /**
+   * collectivites_searchbar findFirstOrThrow
+   */
+  export type collectivites_searchbarFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collectivites_searchbar
+     */
+    select?: collectivites_searchbarSelect<ExtArgs> | null
+    /**
+     * Filter, which collectivites_searchbar to fetch.
+     */
+    where?: collectivites_searchbarWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of collectivites_searchbars to fetch.
+     */
+    orderBy?: collectivites_searchbarOrderByWithRelationInput | collectivites_searchbarOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for collectivites_searchbars.
+     */
+    cursor?: collectivites_searchbarWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` collectivites_searchbars from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` collectivites_searchbars.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of collectivites_searchbars.
+     */
+    distinct?: Collectivites_searchbarScalarFieldEnum | Collectivites_searchbarScalarFieldEnum[]
+  }
+
+  /**
+   * collectivites_searchbar findMany
+   */
+  export type collectivites_searchbarFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collectivites_searchbar
+     */
+    select?: collectivites_searchbarSelect<ExtArgs> | null
+    /**
+     * Filter, which collectivites_searchbars to fetch.
+     */
+    where?: collectivites_searchbarWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of collectivites_searchbars to fetch.
+     */
+    orderBy?: collectivites_searchbarOrderByWithRelationInput | collectivites_searchbarOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing collectivites_searchbars.
+     */
+    cursor?: collectivites_searchbarWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` collectivites_searchbars from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` collectivites_searchbars.
+     */
+    skip?: number
+    distinct?: Collectivites_searchbarScalarFieldEnum | Collectivites_searchbarScalarFieldEnum[]
+  }
+
+  /**
+   * collectivites_searchbar create
+   */
+  export type collectivites_searchbarCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collectivites_searchbar
+     */
+    select?: collectivites_searchbarSelect<ExtArgs> | null
+    /**
+     * The data needed to create a collectivites_searchbar.
+     */
+    data: XOR<collectivites_searchbarCreateInput, collectivites_searchbarUncheckedCreateInput>
+  }
+
+  /**
+   * collectivites_searchbar createMany
+   */
+  export type collectivites_searchbarCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many collectivites_searchbars.
+     */
+    data: collectivites_searchbarCreateManyInput | collectivites_searchbarCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * collectivites_searchbar createManyAndReturn
+   */
+  export type collectivites_searchbarCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collectivites_searchbar
+     */
+    select?: collectivites_searchbarSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many collectivites_searchbars.
+     */
+    data: collectivites_searchbarCreateManyInput | collectivites_searchbarCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * collectivites_searchbar update
+   */
+  export type collectivites_searchbarUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collectivites_searchbar
+     */
+    select?: collectivites_searchbarSelect<ExtArgs> | null
+    /**
+     * The data needed to update a collectivites_searchbar.
+     */
+    data: XOR<collectivites_searchbarUpdateInput, collectivites_searchbarUncheckedUpdateInput>
+    /**
+     * Choose, which collectivites_searchbar to update.
+     */
+    where: collectivites_searchbarWhereUniqueInput
+  }
+
+  /**
+   * collectivites_searchbar updateMany
+   */
+  export type collectivites_searchbarUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update collectivites_searchbars.
+     */
+    data: XOR<collectivites_searchbarUpdateManyMutationInput, collectivites_searchbarUncheckedUpdateManyInput>
+    /**
+     * Filter which collectivites_searchbars to update
+     */
+    where?: collectivites_searchbarWhereInput
+  }
+
+  /**
+   * collectivites_searchbar upsert
+   */
+  export type collectivites_searchbarUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collectivites_searchbar
+     */
+    select?: collectivites_searchbarSelect<ExtArgs> | null
+    /**
+     * The filter to search for the collectivites_searchbar to update in case it exists.
+     */
+    where: collectivites_searchbarWhereUniqueInput
+    /**
+     * In case the collectivites_searchbar found by the `where` argument doesn't exist, create a new collectivites_searchbar with this data.
+     */
+    create: XOR<collectivites_searchbarCreateInput, collectivites_searchbarUncheckedCreateInput>
+    /**
+     * In case the collectivites_searchbar was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<collectivites_searchbarUpdateInput, collectivites_searchbarUncheckedUpdateInput>
+  }
+
+  /**
+   * collectivites_searchbar delete
+   */
+  export type collectivites_searchbarDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collectivites_searchbar
+     */
+    select?: collectivites_searchbarSelect<ExtArgs> | null
+    /**
+     * Filter which collectivites_searchbar to delete.
+     */
+    where: collectivites_searchbarWhereUniqueInput
+  }
+
+  /**
+   * collectivites_searchbar deleteMany
+   */
+  export type collectivites_searchbarDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which collectivites_searchbars to delete
+     */
+    where?: collectivites_searchbarWhereInput
+  }
+
+  /**
+   * collectivites_searchbar without action
+   */
+  export type collectivites_searchbarDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collectivites_searchbar
+     */
+    select?: collectivites_searchbarSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6762,6 +7808,21 @@ export namespace Prisma {
   };
 
   export type CommunesScalarFieldEnum = (typeof CommunesScalarFieldEnum)[keyof typeof CommunesScalarFieldEnum]
+
+
+  export const Collectivites_searchbarScalarFieldEnum: {
+    index: 'index',
+    code_commune: 'code_commune',
+    libelle_commune: 'libelle_commune',
+    code_epci: 'code_epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    region: 'region',
+    search_code: 'search_code',
+    search_libelle: 'search_libelle'
+  };
+
+  export type Collectivites_searchbarScalarFieldEnum = (typeof Collectivites_searchbarScalarFieldEnum)[keyof typeof Collectivites_searchbarScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7385,6 +8446,80 @@ export namespace Prisma {
     coordinates?: StringNullableWithAggregatesFilter<"communes"> | string | null
     densite_bati?: FloatNullableWithAggregatesFilter<"communes"> | number | null
     precarite_logement?: FloatNullableWithAggregatesFilter<"communes"> | number | null
+  }
+
+  export type collectivites_searchbarWhereInput = {
+    AND?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
+    OR?: collectivites_searchbarWhereInput[]
+    NOT?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
+    index?: IntFilter<"collectivites_searchbar"> | number
+    code_commune?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    libelle_commune?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    code_epci?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    libelle_epci?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    departement?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    region?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    search_code?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    search_libelle?: StringNullableFilter<"collectivites_searchbar"> | string | null
+  }
+
+  export type collectivites_searchbarOrderByWithRelationInput = {
+    index?: SortOrder
+    code_commune?: SortOrderInput | SortOrder
+    libelle_commune?: SortOrderInput | SortOrder
+    code_epci?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    departement?: SortOrderInput | SortOrder
+    region?: SortOrderInput | SortOrder
+    search_code?: SortOrderInput | SortOrder
+    search_libelle?: SortOrderInput | SortOrder
+  }
+
+  export type collectivites_searchbarWhereUniqueInput = Prisma.AtLeast<{
+    index?: number
+    AND?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
+    OR?: collectivites_searchbarWhereInput[]
+    NOT?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
+    code_commune?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    libelle_commune?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    code_epci?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    libelle_epci?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    departement?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    region?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    search_code?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    search_libelle?: StringNullableFilter<"collectivites_searchbar"> | string | null
+  }, "index">
+
+  export type collectivites_searchbarOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_commune?: SortOrderInput | SortOrder
+    libelle_commune?: SortOrderInput | SortOrder
+    code_epci?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    departement?: SortOrderInput | SortOrder
+    region?: SortOrderInput | SortOrder
+    search_code?: SortOrderInput | SortOrder
+    search_libelle?: SortOrderInput | SortOrder
+    _count?: collectivites_searchbarCountOrderByAggregateInput
+    _avg?: collectivites_searchbarAvgOrderByAggregateInput
+    _max?: collectivites_searchbarMaxOrderByAggregateInput
+    _min?: collectivites_searchbarMinOrderByAggregateInput
+    _sum?: collectivites_searchbarSumOrderByAggregateInput
+  }
+
+  export type collectivites_searchbarScalarWhereWithAggregatesInput = {
+    AND?: collectivites_searchbarScalarWhereWithAggregatesInput | collectivites_searchbarScalarWhereWithAggregatesInput[]
+    OR?: collectivites_searchbarScalarWhereWithAggregatesInput[]
+    NOT?: collectivites_searchbarScalarWhereWithAggregatesInput | collectivites_searchbarScalarWhereWithAggregatesInput[]
+    index?: IntWithAggregatesFilter<"collectivites_searchbar"> | number
+    code_commune?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
+    libelle_commune?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
+    code_epci?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
+    libelle_epci?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
+    departement?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
+    region?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
+    search_code?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
+    search_libelle?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
   }
 
   export type inconfort_thermiqueCreateInput = {
@@ -8029,6 +9164,90 @@ export namespace Prisma {
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
+  export type collectivites_searchbarCreateInput = {
+    index: number
+    code_commune?: string | null
+    libelle_commune?: string | null
+    code_epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    region?: string | null
+    search_code?: string | null
+    search_libelle?: string | null
+  }
+
+  export type collectivites_searchbarUncheckedCreateInput = {
+    index: number
+    code_commune?: string | null
+    libelle_commune?: string | null
+    code_epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    region?: string | null
+    search_code?: string | null
+    search_libelle?: string | null
+  }
+
+  export type collectivites_searchbarUpdateInput = {
+    index?: IntFieldUpdateOperationsInput | number
+    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    code_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableStringFieldUpdateOperationsInput | string | null
+    search_code?: NullableStringFieldUpdateOperationsInput | string | null
+    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type collectivites_searchbarUncheckedUpdateInput = {
+    index?: IntFieldUpdateOperationsInput | number
+    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    code_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableStringFieldUpdateOperationsInput | string | null
+    search_code?: NullableStringFieldUpdateOperationsInput | string | null
+    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type collectivites_searchbarCreateManyInput = {
+    index: number
+    code_commune?: string | null
+    libelle_commune?: string | null
+    code_epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    region?: string | null
+    search_code?: string | null
+    search_libelle?: string | null
+  }
+
+  export type collectivites_searchbarUpdateManyMutationInput = {
+    index?: IntFieldUpdateOperationsInput | number
+    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    code_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableStringFieldUpdateOperationsInput | string | null
+    search_code?: NullableStringFieldUpdateOperationsInput | string | null
+    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type collectivites_searchbarUncheckedUpdateManyInput = {
+    index?: IntFieldUpdateOperationsInput | number
+    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
+    code_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableStringFieldUpdateOperationsInput | string | null
+    search_code?: NullableStringFieldUpdateOperationsInput | string | null
+    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -8666,6 +9885,50 @@ export namespace Prisma {
     precarite_logement?: SortOrder
   }
 
+  export type collectivites_searchbarCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_commune?: SortOrder
+    libelle_commune?: SortOrder
+    code_epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    search_code?: SortOrder
+    search_libelle?: SortOrder
+  }
+
+  export type collectivites_searchbarAvgOrderByAggregateInput = {
+    index?: SortOrder
+  }
+
+  export type collectivites_searchbarMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_commune?: SortOrder
+    libelle_commune?: SortOrder
+    code_epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    search_code?: SortOrder
+    search_libelle?: SortOrder
+  }
+
+  export type collectivites_searchbarMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_commune?: SortOrder
+    libelle_commune?: SortOrder
+    code_epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    search_code?: SortOrder
+    search_libelle?: SortOrder
+  }
+
+  export type collectivites_searchbarSumOrderByAggregateInput = {
+    index?: SortOrder
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -8936,6 +10199,10 @@ export namespace Prisma {
      * @deprecated Use communesDefaultArgs instead
      */
     export type communesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = communesDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use collectivites_searchbarDefaultArgs instead
+     */
+    export type collectivites_searchbarArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = collectivites_searchbarDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
