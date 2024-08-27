@@ -38,7 +38,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
     (value, index, self) => index === self.findIndex(t => t.searchLibelle === value.searchLibelle && t.searchCode === value.searchCode),
   );
   const collectivites = [...filteredCollectivite.sort((a, b) => a.searchLibelle.localeCompare(b.searchLibelle))];
-  
+
   const handleClick = () => {
     if (epciCode) {
       searchCode?.length < 7 ? router.push(`/thematiques?codgeo=${searchCode}&codepci=${epciCode}`) : router.push(`/thematiques?codepci=${epciCode}`);
