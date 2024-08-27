@@ -9,6 +9,7 @@ export const GetCollectivite = async (collectivite: string): Promise<Collectivit
   try {
     console.time("Query Execution Time");
     const variableCollectivite = "%" + collectivite + "%";
+    const variableCollectiviteNumber = collectivite + "%";
     if (isNaN(parseInt(collectivite))) {
       const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
       SELECT 
@@ -24,6 +25,17 @@ export const GetCollectivite = async (collectivite: string): Promise<Collectivit
       console.timeEnd("Query Execution Time");
       // console.log(value);
       return value;
+    } else if (typeof parseInt(collectivite) === "number") {
+      const value = await PrismaPostgres.collectivites_searchbar.findMany({
+        take: 20,
+        where: { search_code:
+          { 
+            startsWith: variableCollectiviteNumber
+          } 
+        },
+      });
+      console.timeEnd("Query Execution Time");
+      return value as CollectivitesSearchbar[];
     } else {
       return [
         {

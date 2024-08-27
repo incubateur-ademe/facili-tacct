@@ -1355,7 +1355,6 @@ export namespace Prisma {
     P20_POP80P: number | null
     P20_POP80P_PSEUL: number | null
     P20_POP80P_PSEUL_PERCENT: number | null
-    ratio_precarite_log: number | null
     tee_log: number | null
     tee_mob: number | null
     precarite_logement: number | null
@@ -1364,7 +1363,10 @@ export namespace Prisma {
     NA5FZ_sum: number | null
     NA5GU_sum: number | null
     NA5OQ_sum: number | null
+    superf_choro: number | null
     s_geom_cstr_bati: number | null
+    hauteur: number | null
+    h_x_s: number | null
     densite_bati: number | null
     clc_1_artificialise: number | null
     clc_2_agricole: number | null
@@ -1374,7 +1376,7 @@ export namespace Prisma {
   }
 
   export type Inconfort_thermiqueSumAggregateOutputType = {
-    index: number | null
+    index: bigint | null
     region: number | null
     age_bati_post06: number | null
     age_bati_91_05: number | null
@@ -1408,7 +1410,6 @@ export namespace Prisma {
     P20_POP80P: number | null
     P20_POP80P_PSEUL: number | null
     P20_POP80P_PSEUL_PERCENT: number | null
-    ratio_precarite_log: number | null
     tee_log: number | null
     tee_mob: number | null
     precarite_logement: number | null
@@ -1417,7 +1418,10 @@ export namespace Prisma {
     NA5FZ_sum: bigint | null
     NA5GU_sum: bigint | null
     NA5OQ_sum: bigint | null
+    superf_choro: number | null
     s_geom_cstr_bati: number | null
+    hauteur: number | null
+    h_x_s: number | null
     densite_bati: number | null
     clc_1_artificialise: number | null
     clc_2_agricole: number | null
@@ -1427,8 +1431,8 @@ export namespace Prisma {
   }
 
   export type Inconfort_thermiqueMinAggregateOutputType = {
-    index: number | null
-    code_commune: string | null
+    index: bigint | null
+    code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
     libelle_epci: string | null
@@ -1466,7 +1470,6 @@ export namespace Prisma {
     P20_POP80P: number | null
     P20_POP80P_PSEUL: number | null
     P20_POP80P_PSEUL_PERCENT: number | null
-    ratio_precarite_log: number | null
     tee_log: number | null
     tee_mob: number | null
     precarite_logement: number | null
@@ -1475,7 +1478,10 @@ export namespace Prisma {
     NA5FZ_sum: bigint | null
     NA5GU_sum: bigint | null
     NA5OQ_sum: bigint | null
+    superf_choro: number | null
     s_geom_cstr_bati: number | null
+    hauteur: number | null
+    h_x_s: number | null
     densite_bati: number | null
     clc_1_artificialise: number | null
     clc_2_agricole: number | null
@@ -1485,8 +1491,8 @@ export namespace Prisma {
   }
 
   export type Inconfort_thermiqueMaxAggregateOutputType = {
-    index: number | null
-    code_commune: string | null
+    index: bigint | null
+    code_geographique: string | null
     libelle_geographique: string | null
     epci: string | null
     libelle_epci: string | null
@@ -1524,7 +1530,6 @@ export namespace Prisma {
     P20_POP80P: number | null
     P20_POP80P_PSEUL: number | null
     P20_POP80P_PSEUL_PERCENT: number | null
-    ratio_precarite_log: number | null
     tee_log: number | null
     tee_mob: number | null
     precarite_logement: number | null
@@ -1533,7 +1538,10 @@ export namespace Prisma {
     NA5FZ_sum: bigint | null
     NA5GU_sum: bigint | null
     NA5OQ_sum: bigint | null
+    superf_choro: number | null
     s_geom_cstr_bati: number | null
+    hauteur: number | null
+    h_x_s: number | null
     densite_bati: number | null
     clc_1_artificialise: number | null
     clc_2_agricole: number | null
@@ -1544,7 +1552,7 @@ export namespace Prisma {
 
   export type Inconfort_thermiqueCountAggregateOutputType = {
     index: number
-    code_commune: number
+    code_geographique: number
     libelle_geographique: number
     epci: number
     libelle_epci: number
@@ -1582,7 +1590,6 @@ export namespace Prisma {
     P20_POP80P: number
     P20_POP80P_PSEUL: number
     P20_POP80P_PSEUL_PERCENT: number
-    ratio_precarite_log: number
     tee_log: number
     tee_mob: number
     precarite_logement: number
@@ -1591,7 +1598,10 @@ export namespace Prisma {
     NA5FZ_sum: number
     NA5GU_sum: number
     NA5OQ_sum: number
+    superf_choro: number
     s_geom_cstr_bati: number
+    hauteur: number
+    h_x_s: number
     densite_bati: number
     clc_1_artificialise: number
     clc_2_agricole: number
@@ -1637,7 +1647,6 @@ export namespace Prisma {
     P20_POP80P?: true
     P20_POP80P_PSEUL?: true
     P20_POP80P_PSEUL_PERCENT?: true
-    ratio_precarite_log?: true
     tee_log?: true
     tee_mob?: true
     precarite_logement?: true
@@ -1646,7 +1655,10 @@ export namespace Prisma {
     NA5FZ_sum?: true
     NA5GU_sum?: true
     NA5OQ_sum?: true
+    superf_choro?: true
     s_geom_cstr_bati?: true
+    hauteur?: true
+    h_x_s?: true
     densite_bati?: true
     clc_1_artificialise?: true
     clc_2_agricole?: true
@@ -1690,7 +1702,6 @@ export namespace Prisma {
     P20_POP80P?: true
     P20_POP80P_PSEUL?: true
     P20_POP80P_PSEUL_PERCENT?: true
-    ratio_precarite_log?: true
     tee_log?: true
     tee_mob?: true
     precarite_logement?: true
@@ -1699,7 +1710,10 @@ export namespace Prisma {
     NA5FZ_sum?: true
     NA5GU_sum?: true
     NA5OQ_sum?: true
+    superf_choro?: true
     s_geom_cstr_bati?: true
+    hauteur?: true
+    h_x_s?: true
     densite_bati?: true
     clc_1_artificialise?: true
     clc_2_agricole?: true
@@ -1710,7 +1724,7 @@ export namespace Prisma {
 
   export type Inconfort_thermiqueMinAggregateInputType = {
     index?: true
-    code_commune?: true
+    code_geographique?: true
     libelle_geographique?: true
     epci?: true
     libelle_epci?: true
@@ -1748,7 +1762,6 @@ export namespace Prisma {
     P20_POP80P?: true
     P20_POP80P_PSEUL?: true
     P20_POP80P_PSEUL_PERCENT?: true
-    ratio_precarite_log?: true
     tee_log?: true
     tee_mob?: true
     precarite_logement?: true
@@ -1757,7 +1770,10 @@ export namespace Prisma {
     NA5FZ_sum?: true
     NA5GU_sum?: true
     NA5OQ_sum?: true
+    superf_choro?: true
     s_geom_cstr_bati?: true
+    hauteur?: true
+    h_x_s?: true
     densite_bati?: true
     clc_1_artificialise?: true
     clc_2_agricole?: true
@@ -1768,7 +1784,7 @@ export namespace Prisma {
 
   export type Inconfort_thermiqueMaxAggregateInputType = {
     index?: true
-    code_commune?: true
+    code_geographique?: true
     libelle_geographique?: true
     epci?: true
     libelle_epci?: true
@@ -1806,7 +1822,6 @@ export namespace Prisma {
     P20_POP80P?: true
     P20_POP80P_PSEUL?: true
     P20_POP80P_PSEUL_PERCENT?: true
-    ratio_precarite_log?: true
     tee_log?: true
     tee_mob?: true
     precarite_logement?: true
@@ -1815,7 +1830,10 @@ export namespace Prisma {
     NA5FZ_sum?: true
     NA5GU_sum?: true
     NA5OQ_sum?: true
+    superf_choro?: true
     s_geom_cstr_bati?: true
+    hauteur?: true
+    h_x_s?: true
     densite_bati?: true
     clc_1_artificialise?: true
     clc_2_agricole?: true
@@ -1826,7 +1844,7 @@ export namespace Prisma {
 
   export type Inconfort_thermiqueCountAggregateInputType = {
     index?: true
-    code_commune?: true
+    code_geographique?: true
     libelle_geographique?: true
     epci?: true
     libelle_epci?: true
@@ -1864,7 +1882,6 @@ export namespace Prisma {
     P20_POP80P?: true
     P20_POP80P_PSEUL?: true
     P20_POP80P_PSEUL_PERCENT?: true
-    ratio_precarite_log?: true
     tee_log?: true
     tee_mob?: true
     precarite_logement?: true
@@ -1873,7 +1890,10 @@ export namespace Prisma {
     NA5FZ_sum?: true
     NA5GU_sum?: true
     NA5OQ_sum?: true
+    superf_choro?: true
     s_geom_cstr_bati?: true
+    hauteur?: true
+    h_x_s?: true
     densite_bati?: true
     clc_1_artificialise?: true
     clc_2_agricole?: true
@@ -1970,8 +1990,8 @@ export namespace Prisma {
   }
 
   export type Inconfort_thermiqueGroupByOutputType = {
-    index: number
-    code_commune: string
+    index: bigint
+    code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
@@ -2009,7 +2029,6 @@ export namespace Prisma {
     P20_POP80P: number
     P20_POP80P_PSEUL: number
     P20_POP80P_PSEUL_PERCENT: number
-    ratio_precarite_log: number
     tee_log: number
     tee_mob: number
     precarite_logement: number
@@ -2018,7 +2037,10 @@ export namespace Prisma {
     NA5FZ_sum: bigint
     NA5GU_sum: bigint
     NA5OQ_sum: bigint
+    superf_choro: number
     s_geom_cstr_bati: number
+    hauteur: number
+    h_x_s: number
     densite_bati: number
     clc_1_artificialise: number
     clc_2_agricole: number
@@ -2048,7 +2070,7 @@ export namespace Prisma {
 
   export type inconfort_thermiqueSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     index?: boolean
-    code_commune?: boolean
+    code_geographique?: boolean
     libelle_geographique?: boolean
     epci?: boolean
     libelle_epci?: boolean
@@ -2086,7 +2108,6 @@ export namespace Prisma {
     P20_POP80P?: boolean
     P20_POP80P_PSEUL?: boolean
     P20_POP80P_PSEUL_PERCENT?: boolean
-    ratio_precarite_log?: boolean
     tee_log?: boolean
     tee_mob?: boolean
     precarite_logement?: boolean
@@ -2095,7 +2116,10 @@ export namespace Prisma {
     NA5FZ_sum?: boolean
     NA5GU_sum?: boolean
     NA5OQ_sum?: boolean
+    superf_choro?: boolean
     s_geom_cstr_bati?: boolean
+    hauteur?: boolean
+    h_x_s?: boolean
     densite_bati?: boolean
     clc_1_artificialise?: boolean
     clc_2_agricole?: boolean
@@ -2106,7 +2130,7 @@ export namespace Prisma {
 
   export type inconfort_thermiqueSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     index?: boolean
-    code_commune?: boolean
+    code_geographique?: boolean
     libelle_geographique?: boolean
     epci?: boolean
     libelle_epci?: boolean
@@ -2144,7 +2168,6 @@ export namespace Prisma {
     P20_POP80P?: boolean
     P20_POP80P_PSEUL?: boolean
     P20_POP80P_PSEUL_PERCENT?: boolean
-    ratio_precarite_log?: boolean
     tee_log?: boolean
     tee_mob?: boolean
     precarite_logement?: boolean
@@ -2153,7 +2176,10 @@ export namespace Prisma {
     NA5FZ_sum?: boolean
     NA5GU_sum?: boolean
     NA5OQ_sum?: boolean
+    superf_choro?: boolean
     s_geom_cstr_bati?: boolean
+    hauteur?: boolean
+    h_x_s?: boolean
     densite_bati?: boolean
     clc_1_artificialise?: boolean
     clc_2_agricole?: boolean
@@ -2164,7 +2190,7 @@ export namespace Prisma {
 
   export type inconfort_thermiqueSelectScalar = {
     index?: boolean
-    code_commune?: boolean
+    code_geographique?: boolean
     libelle_geographique?: boolean
     epci?: boolean
     libelle_epci?: boolean
@@ -2202,7 +2228,6 @@ export namespace Prisma {
     P20_POP80P?: boolean
     P20_POP80P_PSEUL?: boolean
     P20_POP80P_PSEUL_PERCENT?: boolean
-    ratio_precarite_log?: boolean
     tee_log?: boolean
     tee_mob?: boolean
     precarite_logement?: boolean
@@ -2211,7 +2236,10 @@ export namespace Prisma {
     NA5FZ_sum?: boolean
     NA5GU_sum?: boolean
     NA5OQ_sum?: boolean
+    superf_choro?: boolean
     s_geom_cstr_bati?: boolean
+    hauteur?: boolean
+    h_x_s?: boolean
     densite_bati?: boolean
     clc_1_artificialise?: boolean
     clc_2_agricole?: boolean
@@ -2225,8 +2253,8 @@ export namespace Prisma {
     name: "inconfort_thermique"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: number
-      code_commune: string
+      index: bigint
+      code_geographique: string
       libelle_geographique: string
       epci: string
       libelle_epci: string
@@ -2264,7 +2292,6 @@ export namespace Prisma {
       P20_POP80P: number
       P20_POP80P_PSEUL: number
       P20_POP80P_PSEUL_PERCENT: number
-      ratio_precarite_log: number
       tee_log: number
       tee_mob: number
       precarite_logement: number
@@ -2273,7 +2300,10 @@ export namespace Prisma {
       NA5FZ_sum: bigint
       NA5GU_sum: bigint
       NA5OQ_sum: bigint
+      superf_choro: number
       s_geom_cstr_bati: number
+      hauteur: number
+      h_x_s: number
       densite_bati: number
       clc_1_artificialise: number
       clc_2_agricole: number
@@ -2673,8 +2703,8 @@ export namespace Prisma {
    * Fields of the inconfort_thermique model
    */ 
   interface inconfort_thermiqueFieldRefs {
-    readonly index: FieldRef<"inconfort_thermique", 'Int'>
-    readonly code_commune: FieldRef<"inconfort_thermique", 'String'>
+    readonly index: FieldRef<"inconfort_thermique", 'BigInt'>
+    readonly code_geographique: FieldRef<"inconfort_thermique", 'String'>
     readonly libelle_geographique: FieldRef<"inconfort_thermique", 'String'>
     readonly epci: FieldRef<"inconfort_thermique", 'String'>
     readonly libelle_epci: FieldRef<"inconfort_thermique", 'String'>
@@ -2712,7 +2742,6 @@ export namespace Prisma {
     readonly P20_POP80P: FieldRef<"inconfort_thermique", 'Float'>
     readonly P20_POP80P_PSEUL: FieldRef<"inconfort_thermique", 'Float'>
     readonly P20_POP80P_PSEUL_PERCENT: FieldRef<"inconfort_thermique", 'Float'>
-    readonly ratio_precarite_log: FieldRef<"inconfort_thermique", 'Float'>
     readonly tee_log: FieldRef<"inconfort_thermique", 'Float'>
     readonly tee_mob: FieldRef<"inconfort_thermique", 'Float'>
     readonly precarite_logement: FieldRef<"inconfort_thermique", 'Float'>
@@ -2721,7 +2750,10 @@ export namespace Prisma {
     readonly NA5FZ_sum: FieldRef<"inconfort_thermique", 'BigInt'>
     readonly NA5GU_sum: FieldRef<"inconfort_thermique", 'BigInt'>
     readonly NA5OQ_sum: FieldRef<"inconfort_thermique", 'BigInt'>
+    readonly superf_choro: FieldRef<"inconfort_thermique", 'Float'>
     readonly s_geom_cstr_bati: FieldRef<"inconfort_thermique", 'Float'>
+    readonly hauteur: FieldRef<"inconfort_thermique", 'Float'>
+    readonly h_x_s: FieldRef<"inconfort_thermique", 'Float'>
     readonly densite_bati: FieldRef<"inconfort_thermique", 'Float'>
     readonly clc_1_artificialise: FieldRef<"inconfort_thermique", 'Float'>
     readonly clc_2_agricole: FieldRef<"inconfort_thermique", 'Float'>
@@ -7704,7 +7736,7 @@ export namespace Prisma {
 
   export const Inconfort_thermiqueScalarFieldEnum: {
     index: 'index',
-    code_commune: 'code_commune',
+    code_geographique: 'code_geographique',
     libelle_geographique: 'libelle_geographique',
     epci: 'epci',
     libelle_epci: 'libelle_epci',
@@ -7742,7 +7774,6 @@ export namespace Prisma {
     P20_POP80P: 'P20_POP80P',
     P20_POP80P_PSEUL: 'P20_POP80P_PSEUL',
     P20_POP80P_PSEUL_PERCENT: 'P20_POP80P_PSEUL_PERCENT',
-    ratio_precarite_log: 'ratio_precarite_log',
     tee_log: 'tee_log',
     tee_mob: 'tee_mob',
     precarite_logement: 'precarite_logement',
@@ -7751,7 +7782,10 @@ export namespace Prisma {
     NA5FZ_sum: 'NA5FZ_sum',
     NA5GU_sum: 'NA5GU_sum',
     NA5OQ_sum: 'NA5OQ_sum',
+    superf_choro: 'superf_choro',
     s_geom_cstr_bati: 's_geom_cstr_bati',
+    hauteur: 'hauteur',
+    h_x_s: 'h_x_s',
     densite_bati: 'densite_bati',
     clc_1_artificialise: 'clc_1_artificialise',
     clc_2_agricole: 'clc_2_agricole',
@@ -7855,16 +7889,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
+   * Reference to a field of type 'BigInt'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
     
 
 
   /**
-   * Reference to a field of type 'Int[]'
+   * Reference to a field of type 'BigInt[]'
    */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
     
 
 
@@ -7883,6 +7917,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -7894,20 +7942,6 @@ export namespace Prisma {
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
-
-
-  /**
-   * Reference to a field of type 'BigInt'
-   */
-  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
-    
-
-
-  /**
-   * Reference to a field of type 'BigInt[]'
-   */
-  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
-    
   /**
    * Deep Input Types
    */
@@ -7917,8 +7951,8 @@ export namespace Prisma {
     AND?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[]
     OR?: inconfort_thermiqueWhereInput[]
     NOT?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[]
-    index?: IntFilter<"inconfort_thermique"> | number
-    code_commune?: StringFilter<"inconfort_thermique"> | string
+    index?: BigIntFilter<"inconfort_thermique"> | bigint | number
+    code_geographique?: StringFilter<"inconfort_thermique"> | string
     libelle_geographique?: StringFilter<"inconfort_thermique"> | string
     epci?: StringFilter<"inconfort_thermique"> | string
     libelle_epci?: StringFilter<"inconfort_thermique"> | string
@@ -7956,7 +7990,6 @@ export namespace Prisma {
     P20_POP80P?: FloatFilter<"inconfort_thermique"> | number
     P20_POP80P_PSEUL?: FloatFilter<"inconfort_thermique"> | number
     P20_POP80P_PSEUL_PERCENT?: FloatFilter<"inconfort_thermique"> | number
-    ratio_precarite_log?: FloatFilter<"inconfort_thermique"> | number
     tee_log?: FloatFilter<"inconfort_thermique"> | number
     tee_mob?: FloatFilter<"inconfort_thermique"> | number
     precarite_logement?: FloatFilter<"inconfort_thermique"> | number
@@ -7965,7 +7998,10 @@ export namespace Prisma {
     NA5FZ_sum?: BigIntFilter<"inconfort_thermique"> | bigint | number
     NA5GU_sum?: BigIntFilter<"inconfort_thermique"> | bigint | number
     NA5OQ_sum?: BigIntFilter<"inconfort_thermique"> | bigint | number
+    superf_choro?: FloatFilter<"inconfort_thermique"> | number
     s_geom_cstr_bati?: FloatFilter<"inconfort_thermique"> | number
+    hauteur?: FloatFilter<"inconfort_thermique"> | number
+    h_x_s?: FloatFilter<"inconfort_thermique"> | number
     densite_bati?: FloatFilter<"inconfort_thermique"> | number
     clc_1_artificialise?: FloatFilter<"inconfort_thermique"> | number
     clc_2_agricole?: FloatFilter<"inconfort_thermique"> | number
@@ -7976,7 +8012,7 @@ export namespace Prisma {
 
   export type inconfort_thermiqueOrderByWithRelationInput = {
     index?: SortOrder
-    code_commune?: SortOrder
+    code_geographique?: SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
     libelle_epci?: SortOrder
@@ -8014,7 +8050,6 @@ export namespace Prisma {
     P20_POP80P?: SortOrder
     P20_POP80P_PSEUL?: SortOrder
     P20_POP80P_PSEUL_PERCENT?: SortOrder
-    ratio_precarite_log?: SortOrder
     tee_log?: SortOrder
     tee_mob?: SortOrder
     precarite_logement?: SortOrder
@@ -8023,7 +8058,10 @@ export namespace Prisma {
     NA5FZ_sum?: SortOrder
     NA5GU_sum?: SortOrder
     NA5OQ_sum?: SortOrder
+    superf_choro?: SortOrder
     s_geom_cstr_bati?: SortOrder
+    hauteur?: SortOrder
+    h_x_s?: SortOrder
     densite_bati?: SortOrder
     clc_1_artificialise?: SortOrder
     clc_2_agricole?: SortOrder
@@ -8033,11 +8071,11 @@ export namespace Prisma {
   }
 
   export type inconfort_thermiqueWhereUniqueInput = Prisma.AtLeast<{
-    index?: number
+    index?: bigint | number
     AND?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[]
     OR?: inconfort_thermiqueWhereInput[]
     NOT?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[]
-    code_commune?: StringFilter<"inconfort_thermique"> | string
+    code_geographique?: StringFilter<"inconfort_thermique"> | string
     libelle_geographique?: StringFilter<"inconfort_thermique"> | string
     epci?: StringFilter<"inconfort_thermique"> | string
     libelle_epci?: StringFilter<"inconfort_thermique"> | string
@@ -8075,7 +8113,6 @@ export namespace Prisma {
     P20_POP80P?: FloatFilter<"inconfort_thermique"> | number
     P20_POP80P_PSEUL?: FloatFilter<"inconfort_thermique"> | number
     P20_POP80P_PSEUL_PERCENT?: FloatFilter<"inconfort_thermique"> | number
-    ratio_precarite_log?: FloatFilter<"inconfort_thermique"> | number
     tee_log?: FloatFilter<"inconfort_thermique"> | number
     tee_mob?: FloatFilter<"inconfort_thermique"> | number
     precarite_logement?: FloatFilter<"inconfort_thermique"> | number
@@ -8084,7 +8121,10 @@ export namespace Prisma {
     NA5FZ_sum?: BigIntFilter<"inconfort_thermique"> | bigint | number
     NA5GU_sum?: BigIntFilter<"inconfort_thermique"> | bigint | number
     NA5OQ_sum?: BigIntFilter<"inconfort_thermique"> | bigint | number
+    superf_choro?: FloatFilter<"inconfort_thermique"> | number
     s_geom_cstr_bati?: FloatFilter<"inconfort_thermique"> | number
+    hauteur?: FloatFilter<"inconfort_thermique"> | number
+    h_x_s?: FloatFilter<"inconfort_thermique"> | number
     densite_bati?: FloatFilter<"inconfort_thermique"> | number
     clc_1_artificialise?: FloatFilter<"inconfort_thermique"> | number
     clc_2_agricole?: FloatFilter<"inconfort_thermique"> | number
@@ -8095,7 +8135,7 @@ export namespace Prisma {
 
   export type inconfort_thermiqueOrderByWithAggregationInput = {
     index?: SortOrder
-    code_commune?: SortOrder
+    code_geographique?: SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
     libelle_epci?: SortOrder
@@ -8133,7 +8173,6 @@ export namespace Prisma {
     P20_POP80P?: SortOrder
     P20_POP80P_PSEUL?: SortOrder
     P20_POP80P_PSEUL_PERCENT?: SortOrder
-    ratio_precarite_log?: SortOrder
     tee_log?: SortOrder
     tee_mob?: SortOrder
     precarite_logement?: SortOrder
@@ -8142,7 +8181,10 @@ export namespace Prisma {
     NA5FZ_sum?: SortOrder
     NA5GU_sum?: SortOrder
     NA5OQ_sum?: SortOrder
+    superf_choro?: SortOrder
     s_geom_cstr_bati?: SortOrder
+    hauteur?: SortOrder
+    h_x_s?: SortOrder
     densite_bati?: SortOrder
     clc_1_artificialise?: SortOrder
     clc_2_agricole?: SortOrder
@@ -8160,8 +8202,8 @@ export namespace Prisma {
     AND?: inconfort_thermiqueScalarWhereWithAggregatesInput | inconfort_thermiqueScalarWhereWithAggregatesInput[]
     OR?: inconfort_thermiqueScalarWhereWithAggregatesInput[]
     NOT?: inconfort_thermiqueScalarWhereWithAggregatesInput | inconfort_thermiqueScalarWhereWithAggregatesInput[]
-    index?: IntWithAggregatesFilter<"inconfort_thermique"> | number
-    code_commune?: StringWithAggregatesFilter<"inconfort_thermique"> | string
+    index?: BigIntWithAggregatesFilter<"inconfort_thermique"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"inconfort_thermique"> | string
     libelle_geographique?: StringWithAggregatesFilter<"inconfort_thermique"> | string
     epci?: StringWithAggregatesFilter<"inconfort_thermique"> | string
     libelle_epci?: StringWithAggregatesFilter<"inconfort_thermique"> | string
@@ -8199,7 +8241,6 @@ export namespace Prisma {
     P20_POP80P?: FloatWithAggregatesFilter<"inconfort_thermique"> | number
     P20_POP80P_PSEUL?: FloatWithAggregatesFilter<"inconfort_thermique"> | number
     P20_POP80P_PSEUL_PERCENT?: FloatWithAggregatesFilter<"inconfort_thermique"> | number
-    ratio_precarite_log?: FloatWithAggregatesFilter<"inconfort_thermique"> | number
     tee_log?: FloatWithAggregatesFilter<"inconfort_thermique"> | number
     tee_mob?: FloatWithAggregatesFilter<"inconfort_thermique"> | number
     precarite_logement?: FloatWithAggregatesFilter<"inconfort_thermique"> | number
@@ -8208,7 +8249,10 @@ export namespace Prisma {
     NA5FZ_sum?: BigIntWithAggregatesFilter<"inconfort_thermique"> | bigint | number
     NA5GU_sum?: BigIntWithAggregatesFilter<"inconfort_thermique"> | bigint | number
     NA5OQ_sum?: BigIntWithAggregatesFilter<"inconfort_thermique"> | bigint | number
+    superf_choro?: FloatWithAggregatesFilter<"inconfort_thermique"> | number
     s_geom_cstr_bati?: FloatWithAggregatesFilter<"inconfort_thermique"> | number
+    hauteur?: FloatWithAggregatesFilter<"inconfort_thermique"> | number
+    h_x_s?: FloatWithAggregatesFilter<"inconfort_thermique"> | number
     densite_bati?: FloatWithAggregatesFilter<"inconfort_thermique"> | number
     clc_1_artificialise?: FloatWithAggregatesFilter<"inconfort_thermique"> | number
     clc_2_agricole?: FloatWithAggregatesFilter<"inconfort_thermique"> | number
@@ -8523,8 +8567,8 @@ export namespace Prisma {
   }
 
   export type inconfort_thermiqueCreateInput = {
-    index: number
-    code_commune: string
+    index: bigint | number
+    code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
@@ -8562,7 +8606,6 @@ export namespace Prisma {
     P20_POP80P: number
     P20_POP80P_PSEUL: number
     P20_POP80P_PSEUL_PERCENT: number
-    ratio_precarite_log: number
     tee_log: number
     tee_mob: number
     precarite_logement: number
@@ -8571,7 +8614,10 @@ export namespace Prisma {
     NA5FZ_sum: bigint | number
     NA5GU_sum: bigint | number
     NA5OQ_sum: bigint | number
+    superf_choro: number
     s_geom_cstr_bati: number
+    hauteur: number
+    h_x_s: number
     densite_bati: number
     clc_1_artificialise: number
     clc_2_agricole: number
@@ -8581,8 +8627,8 @@ export namespace Prisma {
   }
 
   export type inconfort_thermiqueUncheckedCreateInput = {
-    index: number
-    code_commune: string
+    index: bigint | number
+    code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
@@ -8620,7 +8666,6 @@ export namespace Prisma {
     P20_POP80P: number
     P20_POP80P_PSEUL: number
     P20_POP80P_PSEUL_PERCENT: number
-    ratio_precarite_log: number
     tee_log: number
     tee_mob: number
     precarite_logement: number
@@ -8629,7 +8674,10 @@ export namespace Prisma {
     NA5FZ_sum: bigint | number
     NA5GU_sum: bigint | number
     NA5OQ_sum: bigint | number
+    superf_choro: number
     s_geom_cstr_bati: number
+    hauteur: number
+    h_x_s: number
     densite_bati: number
     clc_1_artificialise: number
     clc_2_agricole: number
@@ -8639,8 +8687,8 @@ export namespace Prisma {
   }
 
   export type inconfort_thermiqueUpdateInput = {
-    index?: IntFieldUpdateOperationsInput | number
-    code_commune?: StringFieldUpdateOperationsInput | string
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
@@ -8678,7 +8726,6 @@ export namespace Prisma {
     P20_POP80P?: FloatFieldUpdateOperationsInput | number
     P20_POP80P_PSEUL?: FloatFieldUpdateOperationsInput | number
     P20_POP80P_PSEUL_PERCENT?: FloatFieldUpdateOperationsInput | number
-    ratio_precarite_log?: FloatFieldUpdateOperationsInput | number
     tee_log?: FloatFieldUpdateOperationsInput | number
     tee_mob?: FloatFieldUpdateOperationsInput | number
     precarite_logement?: FloatFieldUpdateOperationsInput | number
@@ -8687,7 +8734,10 @@ export namespace Prisma {
     NA5FZ_sum?: BigIntFieldUpdateOperationsInput | bigint | number
     NA5GU_sum?: BigIntFieldUpdateOperationsInput | bigint | number
     NA5OQ_sum?: BigIntFieldUpdateOperationsInput | bigint | number
+    superf_choro?: FloatFieldUpdateOperationsInput | number
     s_geom_cstr_bati?: FloatFieldUpdateOperationsInput | number
+    hauteur?: FloatFieldUpdateOperationsInput | number
+    h_x_s?: FloatFieldUpdateOperationsInput | number
     densite_bati?: FloatFieldUpdateOperationsInput | number
     clc_1_artificialise?: FloatFieldUpdateOperationsInput | number
     clc_2_agricole?: FloatFieldUpdateOperationsInput | number
@@ -8697,8 +8747,8 @@ export namespace Prisma {
   }
 
   export type inconfort_thermiqueUncheckedUpdateInput = {
-    index?: IntFieldUpdateOperationsInput | number
-    code_commune?: StringFieldUpdateOperationsInput | string
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
@@ -8736,7 +8786,6 @@ export namespace Prisma {
     P20_POP80P?: FloatFieldUpdateOperationsInput | number
     P20_POP80P_PSEUL?: FloatFieldUpdateOperationsInput | number
     P20_POP80P_PSEUL_PERCENT?: FloatFieldUpdateOperationsInput | number
-    ratio_precarite_log?: FloatFieldUpdateOperationsInput | number
     tee_log?: FloatFieldUpdateOperationsInput | number
     tee_mob?: FloatFieldUpdateOperationsInput | number
     precarite_logement?: FloatFieldUpdateOperationsInput | number
@@ -8745,7 +8794,10 @@ export namespace Prisma {
     NA5FZ_sum?: BigIntFieldUpdateOperationsInput | bigint | number
     NA5GU_sum?: BigIntFieldUpdateOperationsInput | bigint | number
     NA5OQ_sum?: BigIntFieldUpdateOperationsInput | bigint | number
+    superf_choro?: FloatFieldUpdateOperationsInput | number
     s_geom_cstr_bati?: FloatFieldUpdateOperationsInput | number
+    hauteur?: FloatFieldUpdateOperationsInput | number
+    h_x_s?: FloatFieldUpdateOperationsInput | number
     densite_bati?: FloatFieldUpdateOperationsInput | number
     clc_1_artificialise?: FloatFieldUpdateOperationsInput | number
     clc_2_agricole?: FloatFieldUpdateOperationsInput | number
@@ -8755,8 +8807,8 @@ export namespace Prisma {
   }
 
   export type inconfort_thermiqueCreateManyInput = {
-    index: number
-    code_commune: string
+    index: bigint | number
+    code_geographique: string
     libelle_geographique: string
     epci: string
     libelle_epci: string
@@ -8794,7 +8846,6 @@ export namespace Prisma {
     P20_POP80P: number
     P20_POP80P_PSEUL: number
     P20_POP80P_PSEUL_PERCENT: number
-    ratio_precarite_log: number
     tee_log: number
     tee_mob: number
     precarite_logement: number
@@ -8803,7 +8854,10 @@ export namespace Prisma {
     NA5FZ_sum: bigint | number
     NA5GU_sum: bigint | number
     NA5OQ_sum: bigint | number
+    superf_choro: number
     s_geom_cstr_bati: number
+    hauteur: number
+    h_x_s: number
     densite_bati: number
     clc_1_artificialise: number
     clc_2_agricole: number
@@ -8813,8 +8867,8 @@ export namespace Prisma {
   }
 
   export type inconfort_thermiqueUpdateManyMutationInput = {
-    index?: IntFieldUpdateOperationsInput | number
-    code_commune?: StringFieldUpdateOperationsInput | string
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
@@ -8852,7 +8906,6 @@ export namespace Prisma {
     P20_POP80P?: FloatFieldUpdateOperationsInput | number
     P20_POP80P_PSEUL?: FloatFieldUpdateOperationsInput | number
     P20_POP80P_PSEUL_PERCENT?: FloatFieldUpdateOperationsInput | number
-    ratio_precarite_log?: FloatFieldUpdateOperationsInput | number
     tee_log?: FloatFieldUpdateOperationsInput | number
     tee_mob?: FloatFieldUpdateOperationsInput | number
     precarite_logement?: FloatFieldUpdateOperationsInput | number
@@ -8861,7 +8914,10 @@ export namespace Prisma {
     NA5FZ_sum?: BigIntFieldUpdateOperationsInput | bigint | number
     NA5GU_sum?: BigIntFieldUpdateOperationsInput | bigint | number
     NA5OQ_sum?: BigIntFieldUpdateOperationsInput | bigint | number
+    superf_choro?: FloatFieldUpdateOperationsInput | number
     s_geom_cstr_bati?: FloatFieldUpdateOperationsInput | number
+    hauteur?: FloatFieldUpdateOperationsInput | number
+    h_x_s?: FloatFieldUpdateOperationsInput | number
     densite_bati?: FloatFieldUpdateOperationsInput | number
     clc_1_artificialise?: FloatFieldUpdateOperationsInput | number
     clc_2_agricole?: FloatFieldUpdateOperationsInput | number
@@ -8871,8 +8927,8 @@ export namespace Prisma {
   }
 
   export type inconfort_thermiqueUncheckedUpdateManyInput = {
-    index?: IntFieldUpdateOperationsInput | number
-    code_commune?: StringFieldUpdateOperationsInput | string
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
@@ -8910,7 +8966,6 @@ export namespace Prisma {
     P20_POP80P?: FloatFieldUpdateOperationsInput | number
     P20_POP80P_PSEUL?: FloatFieldUpdateOperationsInput | number
     P20_POP80P_PSEUL_PERCENT?: FloatFieldUpdateOperationsInput | number
-    ratio_precarite_log?: FloatFieldUpdateOperationsInput | number
     tee_log?: FloatFieldUpdateOperationsInput | number
     tee_mob?: FloatFieldUpdateOperationsInput | number
     precarite_logement?: FloatFieldUpdateOperationsInput | number
@@ -8919,7 +8974,10 @@ export namespace Prisma {
     NA5FZ_sum?: BigIntFieldUpdateOperationsInput | bigint | number
     NA5GU_sum?: BigIntFieldUpdateOperationsInput | bigint | number
     NA5OQ_sum?: BigIntFieldUpdateOperationsInput | bigint | number
+    superf_choro?: FloatFieldUpdateOperationsInput | number
     s_geom_cstr_bati?: FloatFieldUpdateOperationsInput | number
+    hauteur?: FloatFieldUpdateOperationsInput | number
+    h_x_s?: FloatFieldUpdateOperationsInput | number
     densite_bati?: FloatFieldUpdateOperationsInput | number
     clc_1_artificialise?: FloatFieldUpdateOperationsInput | number
     clc_2_agricole?: FloatFieldUpdateOperationsInput | number
@@ -9248,15 +9306,15 @@ export namespace Prisma {
     search_libelle?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type BigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -9274,6 +9332,17 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -9285,20 +9354,9 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type BigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
   export type inconfort_thermiqueCountOrderByAggregateInput = {
     index?: SortOrder
-    code_commune?: SortOrder
+    code_geographique?: SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
     libelle_epci?: SortOrder
@@ -9336,7 +9394,6 @@ export namespace Prisma {
     P20_POP80P?: SortOrder
     P20_POP80P_PSEUL?: SortOrder
     P20_POP80P_PSEUL_PERCENT?: SortOrder
-    ratio_precarite_log?: SortOrder
     tee_log?: SortOrder
     tee_mob?: SortOrder
     precarite_logement?: SortOrder
@@ -9345,7 +9402,10 @@ export namespace Prisma {
     NA5FZ_sum?: SortOrder
     NA5GU_sum?: SortOrder
     NA5OQ_sum?: SortOrder
+    superf_choro?: SortOrder
     s_geom_cstr_bati?: SortOrder
+    hauteur?: SortOrder
+    h_x_s?: SortOrder
     densite_bati?: SortOrder
     clc_1_artificialise?: SortOrder
     clc_2_agricole?: SortOrder
@@ -9389,7 +9449,6 @@ export namespace Prisma {
     P20_POP80P?: SortOrder
     P20_POP80P_PSEUL?: SortOrder
     P20_POP80P_PSEUL_PERCENT?: SortOrder
-    ratio_precarite_log?: SortOrder
     tee_log?: SortOrder
     tee_mob?: SortOrder
     precarite_logement?: SortOrder
@@ -9398,7 +9457,10 @@ export namespace Prisma {
     NA5FZ_sum?: SortOrder
     NA5GU_sum?: SortOrder
     NA5OQ_sum?: SortOrder
+    superf_choro?: SortOrder
     s_geom_cstr_bati?: SortOrder
+    hauteur?: SortOrder
+    h_x_s?: SortOrder
     densite_bati?: SortOrder
     clc_1_artificialise?: SortOrder
     clc_2_agricole?: SortOrder
@@ -9409,7 +9471,7 @@ export namespace Prisma {
 
   export type inconfort_thermiqueMaxOrderByAggregateInput = {
     index?: SortOrder
-    code_commune?: SortOrder
+    code_geographique?: SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
     libelle_epci?: SortOrder
@@ -9447,7 +9509,6 @@ export namespace Prisma {
     P20_POP80P?: SortOrder
     P20_POP80P_PSEUL?: SortOrder
     P20_POP80P_PSEUL_PERCENT?: SortOrder
-    ratio_precarite_log?: SortOrder
     tee_log?: SortOrder
     tee_mob?: SortOrder
     precarite_logement?: SortOrder
@@ -9456,7 +9517,10 @@ export namespace Prisma {
     NA5FZ_sum?: SortOrder
     NA5GU_sum?: SortOrder
     NA5OQ_sum?: SortOrder
+    superf_choro?: SortOrder
     s_geom_cstr_bati?: SortOrder
+    hauteur?: SortOrder
+    h_x_s?: SortOrder
     densite_bati?: SortOrder
     clc_1_artificialise?: SortOrder
     clc_2_agricole?: SortOrder
@@ -9467,7 +9531,7 @@ export namespace Prisma {
 
   export type inconfort_thermiqueMinOrderByAggregateInput = {
     index?: SortOrder
-    code_commune?: SortOrder
+    code_geographique?: SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
     libelle_epci?: SortOrder
@@ -9505,7 +9569,6 @@ export namespace Prisma {
     P20_POP80P?: SortOrder
     P20_POP80P_PSEUL?: SortOrder
     P20_POP80P_PSEUL_PERCENT?: SortOrder
-    ratio_precarite_log?: SortOrder
     tee_log?: SortOrder
     tee_mob?: SortOrder
     precarite_logement?: SortOrder
@@ -9514,7 +9577,10 @@ export namespace Prisma {
     NA5FZ_sum?: SortOrder
     NA5GU_sum?: SortOrder
     NA5OQ_sum?: SortOrder
+    superf_choro?: SortOrder
     s_geom_cstr_bati?: SortOrder
+    hauteur?: SortOrder
+    h_x_s?: SortOrder
     densite_bati?: SortOrder
     clc_1_artificialise?: SortOrder
     clc_2_agricole?: SortOrder
@@ -9558,7 +9624,6 @@ export namespace Prisma {
     P20_POP80P?: SortOrder
     P20_POP80P_PSEUL?: SortOrder
     P20_POP80P_PSEUL_PERCENT?: SortOrder
-    ratio_precarite_log?: SortOrder
     tee_log?: SortOrder
     tee_mob?: SortOrder
     precarite_logement?: SortOrder
@@ -9567,7 +9632,10 @@ export namespace Prisma {
     NA5FZ_sum?: SortOrder
     NA5GU_sum?: SortOrder
     NA5OQ_sum?: SortOrder
+    superf_choro?: SortOrder
     s_geom_cstr_bati?: SortOrder
+    hauteur?: SortOrder
+    h_x_s?: SortOrder
     densite_bati?: SortOrder
     clc_1_artificialise?: SortOrder
     clc_2_agricole?: SortOrder
@@ -9576,20 +9644,20 @@ export namespace Prisma {
     clc_5_eau?: SortOrder
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
     _count?: NestedIntFilter<$PrismaModel>
     _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -9610,6 +9678,22 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -9624,22 +9708,6 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
-  }
-
-  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type FloatNullableFilter<$PrismaModel = never> = {
@@ -9929,6 +9997,18 @@ export namespace Prisma {
     index?: SortOrder
   }
 
+  export type BigIntFieldUpdateOperationsInput = {
+    set?: bigint | number
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -9937,24 +10017,12 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
-  }
-
   export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type BigIntFieldUpdateOperationsInput = {
-    set?: bigint | number
-    increment?: bigint | number
-    decrement?: bigint | number
-    multiply?: bigint | number
-    divide?: bigint | number
   }
 
   export type NullableFloatFieldUpdateOperationsInput = {
@@ -9977,15 +10045,15 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type NestedBigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -10002,6 +10070,17 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -10013,7 +10092,7 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedBigIntFilter<$PrismaModel = never> = {
+  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
     notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -10021,23 +10100,12 @@ export namespace Prisma {
     lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
     _count?: NestedIntFilter<$PrismaModel>
     _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -10057,6 +10125,22 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -10071,22 +10155,6 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
-  }
-
-  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type NestedFloatNullableFilter<$PrismaModel = never> = {

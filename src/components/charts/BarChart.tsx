@@ -6,8 +6,8 @@ type Props = {
   chartData: Array<{
     France: number;
     FranceColor: string;
-    "Votre EPCI"?: string;
-    "Votre EPCIColor"?: string;
+    "Votre Collectivité"?: string;
+    "Votre CollectiviteColor"?: string;
     periode: string;
   }>;
 };
@@ -17,7 +17,7 @@ export const BarChart = ({ chartData }: Props) => {
     <div style={{ height: "500px", width: "100%", backgroundColor: "white" }}>
       <ResponsiveBar
         data={chartData}
-        keys={["Votre EPCI", "France"]}
+        keys={["Votre Collectivité", "France"]}
         borderColor={{
           from: "color",
           modifiers: [["darker", 1.6]],
@@ -46,7 +46,7 @@ export const BarChart = ({ chartData }: Props) => {
             anchor: "top-right",
             direction: "column",
             justify: false,
-            translateX: -60,
+            translateX: -100,
             translateY: -20,
             itemsSpacing: 2,
             itemWidth: 0,
