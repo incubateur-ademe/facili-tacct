@@ -10,23 +10,20 @@ import { MySearchInput } from "./SearchInput";
 
 export const SearchBarComp = () => {
   const router = useRouter();
-  const [epciCode, setEpciCode] = useState<string | undefined>();
-  const [communeCode, setCommuneCode] = useState<string | undefined>();
+  const [epciCode, setEpciCode] = useState<string>("");
+  // const [communeCode, setCommuneCode] = useState<string | undefined>();
+  const [searchCode, setSearchCode] = useState<string>("");
 
-  const getEpciCodeFromSearchBar = (code: string | undefined) => {
+  const getCodeFromSearchBar = (code: string) => {
+    setSearchCode(code);
+  };
+
+  const getEpciCodeFromSearchBar = (code: string) => {
     setEpciCode(code);
   };
 
-  const getCommuneCodeFromSearchBar = (code: string | undefined) => {
-    setCommuneCode(code);
-  };
-
   const handleClick = () => {
-    if (communeCode) {
-      router.push(`/thematiques?codgeo=${communeCode}`);
-    } else if (epciCode) {
-      router.push(`/thematiques?codepci=${epciCode}`)
-    }
+    searchCode?.length < 7 ? router.push(`/thematiques?codgeo=${searchCode}&codepci=${epciCode}`) : router.push(`/thematiques?codepci=${epciCode}`);
   };
 
   const { css } = useStyles();
@@ -46,8 +43,8 @@ export const SearchBarComp = () => {
             id={id}
             placeholder={placeholder}
             type={type}
-            epciCodeFromSearchBar={getEpciCodeFromSearchBar}
-            communeCodeFromSearchBar={getCommuneCodeFromSearchBar}
+            searchCodeFromSearchBar={getCodeFromSearchBar}
+            searchEpciCodeFromSearchBar={getEpciCodeFromSearchBar}
           />
         )}
       />

@@ -2,6 +2,7 @@
 import Badge from "@codegouvfr/react-dsfr/Badge";
 import { Card } from "@codegouvfr/react-dsfr/Card";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface Props {
   badge: string;
@@ -12,8 +13,19 @@ interface Props {
 }
 
 export const CardComp = ({ imageUrl, thematique, badgeSeverity, badge, title }: Props) => {
+  const [route, setRoute] = useState("");
   const searchParams = useSearchParams();
-  const code = searchParams.get("code");
+  const codgeo = searchParams.get("codgeo");
+  const codepci = searchParams.get("codepci")!;
+
+  useEffect(() => {
+    if (codepci) {
+      codgeo !== null ? 
+        setRoute(`/donnees-territoriales?codgeo=${codgeo}&codepci=${codepci}&thematique=${thematique}`) 
+        : setRoute(`/donnees-territoriales?codepci=${codepci}&thematique=${thematique}`);
+    }
+  }, [codgeo, codepci]);
+
   return (
     <div
       style={{
@@ -32,7 +44,7 @@ export const CardComp = ({ imageUrl, thematique, badgeSeverity, badge, title }: 
           imgTag: "fr-ratio-32x9",
         }}
         linkProps={{
-          href: `/donnees-territoriales?code=${code}&thematique=${thematique}`,
+          href: route,
         }}
         end={
           <ul className="fr-badges-group">
