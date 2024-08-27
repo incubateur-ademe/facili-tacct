@@ -16,11 +16,11 @@ export type InconfortThermique = {
   clc_3_foret_semiNaturel: number;
   clc_4_humide: number;
   clc_5_eau: number;
-  code_commune: string;
+  code_geographique: string;
   densite_bati: number;
   departement: string;
   epci: string;
-  index: number;
+  index: bigint;
   libelle_epci: string;
   libelle_geographique: string;
   over_80_sum_1968: number;
