@@ -120,3 +120,20 @@ model communes {
   @@index([geometry], map: "communes_geometry_geom_idx", type: Gist)
   @@schema("postgis")
 }
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model collectivites_searchbar {
+  index           BigInt?
+  code_commune    String?
+  libelle_commune String?
+  code_epci       String?
+  libelle_epci    String?
+  departement     String?
+  region          BigInt?
+  search_code     String?
+  search_libelle  String?
+
+  @@index([index], map: "ix_collectivites_searchbar_index")
+  @@ignore
+  @@schema("databases")
+}

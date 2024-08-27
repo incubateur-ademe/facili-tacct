@@ -54,6 +54,17 @@ export type InconfortThermique = {
   under_4_sum_2020: number;
 };
 
+export type CollectivitesSearchbar = {
+  code_commune: string;
+  code_epci: string;
+  libelle_commune: string;
+  libelle_epci: string;
+  search_libelle: string;
+  search_code: string;
+  departement: string;
+  region: string;
+};
+
 export type CarteCommunes = {
   code_commune: string;
   coordinates: string;
