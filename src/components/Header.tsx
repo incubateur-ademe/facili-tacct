@@ -17,7 +17,7 @@ const Localisation = (props: { libelle: string, code: string }) => {
   const { libelle, code } = props;
   return (
     <div className={styles.localisation}>
-      <button className="fr-icon-map-pin-user-fill"></button>
+      <button className="fr-icon-map-pin-user-fill" style={{cursor: "default"}}></button>
       <p>{libelle} - {code}</p>
     </div>
   );
