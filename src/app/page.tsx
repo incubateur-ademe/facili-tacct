@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <>
       <Container size="xl">
-        <div className={styles.wrapper} style={{ backgroundColor: "#0063CB" }}>
+        <div className={styles.wrapper}>
           <div className={styles.titles}>
             <h1>Vulnérable aux impacts du changement climatique ?</h1>
             <p>
