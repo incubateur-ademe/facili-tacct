@@ -35,6 +35,7 @@ const Page = async (searchParams: SearchParams) => {
   const theme = themes.inconfort_thermique;
   const codepci = searchParams.searchParams.codepci;
   const codgeo = searchParams.searchParams.codgeo;
+  const thematique = searchParams.searchParams.thematique;
   const dbInconfortThermique = codgeo ? await GetInconfortThermique(codgeo) 
         : codepci ? await GetInconfortThermique(codepci) 
         : void 0;
@@ -44,7 +45,7 @@ const Page = async (searchParams: SearchParams) => {
   return (
     <Container size="xl">
       <Breadcrumb
-        currentPageLabel="Données socio-économiques"
+        currentPageLabel= "Données territoriales : Inconfort thermique" //{`${thematique}`}
         homeLinkProps={{
           href: "/",
         }}
