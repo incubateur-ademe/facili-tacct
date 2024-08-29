@@ -21,6 +21,7 @@
     gap: 2rem;
     align-items: center;
     padding: 3.75em 3.75em 7.5em;
+    background-color: #0063CB;
 }
 
 .titles {
@@ -91,6 +92,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin: 0 0 2em;
 }
 .constellationText {
     display: flex;
@@ -100,6 +102,11 @@
     padding: 2em;
 }
 
+@media screen and (max-width: 1280px) {
+    .constellationWrapper {
+        margin: 0;
+    }
+}
 @media screen and (max-width: 900px) {
     .constellationWrapper {
         flex-direction: column;
