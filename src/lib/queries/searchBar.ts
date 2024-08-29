@@ -1,5 +1,6 @@
 "use server";
 
+import * as Sentry from "@sentry/nextjs";
 import { PrismaClient as PostgresClient } from "../../generated/client";
 import { CarteCommunes, CollectivitesSearchbar } from "../postgres/models";
 
@@ -52,6 +53,7 @@ export const GetCollectivite = async (collectivite: string): Promise<Collectivit
       console.timeEnd("Query Execution Time");
       return value as CollectivitesSearchbar[];
     } else {
+      Sentry.captureMessage(`Collectivite ${collectivite} not found`);
       return [
         {
           code_commune: "",
