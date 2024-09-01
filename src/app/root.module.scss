@@ -60,12 +60,16 @@
     box-shadow: 1px 1px 5px rgb(138, 138, 138);
 }
 
+.cardBackground {
+    background-color: #f4f6fe;
+}
+
 .cardWrapper {
     display: flex !important;
+    flex-direction: row;
     justify-content: space-between !important;
     padding: 12em 3.75em 3.75em !important;
     gap: 1.5em !important;
-    background-color: #f4f6fe !important;
 }
 
 .card {
@@ -115,6 +119,13 @@
     .constellationText {
         max-width: 80%;
     }
+    .cardWrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .card {
+        max-width: 80dvw;
+    }
 }
 
 @media screen and (max-width: 1135px) {
@@ -124,61 +135,4 @@
         left: calc(50dvw - 45dvw);
         top: calc(var(--heightWrapper) + 6em);
     }
-}
-
-.test {
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
-    border-top: 5px solid orange;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    transform: rotate(45deg);
-}
-.test2 {
-    position: relative;
-    top: -133px;
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
-    border-top: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-    border-bottom: 5px solid orange;
-    transform: rotate(45deg);
-    right: -95px;
-}
-
-.test3 {
-    position: relative;
-    right: -95px;
-    top: -170px;
-
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
-    border-top: 5px solid orange;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    transform: rotate(-45deg);
-    // -moz-transform: scale(-1, 1);
-    // -webkit-transform: scale(-1, 1);
-    // -o-transform: scale(-1, 1);
-    // -ms-transform: scale(-1, 1);
-    // transform: scale(-1, 1);
-}
-.test4 {
-    position: relative;
-    top: -303px;
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
-    border-top: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-    border-bottom: 5px solid orange;
-    transform: rotate(-45deg);
-    right: 0px;
 }
