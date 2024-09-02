@@ -1,7 +1,6 @@
 import { Breadcrumb } from "@codegouvfr/react-dsfr/Breadcrumb";
 import { type Metadata } from "next";
 
-import { NoticeComp } from "@/dsfr/base/Notice";
 
 import { Container } from "../../dsfr/server";
 import { Cards } from "./cards";
@@ -23,7 +22,7 @@ const Thematiques = () => {
           segments={[]}
         />
         <h1>Quelle thématique vous intéresse ?</h1>
-        <NoticeComp title="Les thématiques suivantes ont été choisies selon " />
+        {/* <NoticeComp title="Les thématiques suivantes ont été choisies selon " /> */}
         <Cards />
       </Container>
     </>
