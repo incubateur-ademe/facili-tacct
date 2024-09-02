@@ -27,9 +27,12 @@ export const Vegetalisation = (props: {
 }) => {
   const { clc, inconfort_thermique } = props;
   const searchParams = useSearchParams();
-  const code = searchParams.get("code")!;
+  const codgeo = searchParams.get("codgeo");
+  const codepci = searchParams.get("codepci")!;
   const vegetalisation = inconfort_thermique.map(vegetalisationMapper);
 
+  console.log(inconfort_thermique)
+  // console.log(vegetalisation);
   const foret_sum = sumProperty(vegetalisation, "clc_3_foret_semiNaturel");
   const foret_percent =
     (100 * sumProperty(vegetalisation, "clc_3_foret_semiNaturel")) /
@@ -57,10 +60,17 @@ export const Vegetalisation = (props: {
             <>
               <div className="w-2/5">
                 <div className={styles.explicationWrapper}>
-                  <p style={{color: "#161616"}}>
-                    Dans l'EPCI {vegetalisation[0]?.libelle_epci}, <b>{foret_percent?.toFixed(1)}%</b> du territoire est de la
-                    forêt ou des espaces semi-naturels. Cela correspond à <b>{foret_sum?.toFixed(1)}</b> hectares.
-                  </p>
+                  { codgeo ?
+                    <p style={{color: "#161616", margin:"0 0 0.5em"}}>
+                      Dans la commune de {vegetalisation[0]?.libelle_geographique}, <b>{foret_percent?.toFixed(1)}%</b> du territoire est de la
+                      forêt ou des espaces semi-naturels. Cela correspond à <b>{foret_sum?.toFixed(1)}</b> hectares.
+                    </p>
+                    : 
+                    <p style={{color: "#161616", margin:"0 0 0.5em"}}>
+                      Dans l'EPCI {vegetalisation[0]?.libelle_epci}, <b>{foret_percent?.toFixed(1)}%</b> du territoire est de la
+                      forêt ou des espaces semi-naturels. Cela correspond à <b>{foret_sum?.toFixed(1)}</b> hectares.
+                    </p>
+                  }
                 </div>
                 <div className="px-4">
                   <p>
@@ -94,7 +104,7 @@ export const Vegetalisation = (props: {
               </div>
             </>
           ) : (
-            <GraphDataNotFound code={code} />
+            <GraphDataNotFound code={codgeo ? codgeo : codepci} />
           )}
         </div>
       ) : (

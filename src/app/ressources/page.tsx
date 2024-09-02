@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 };
 
 const Ressources = () => {
+  // const { css } = useStyles();
   return (
     <Container size="xl">
       <Breadcrumb
@@ -18,9 +19,7 @@ const Ressources = () => {
         }}
         segments={[]}
       />
-      <div>
-        <DiagnosticComp />
-      </div>
+      <DiagnosticComp />
     </Container>
   )
 };

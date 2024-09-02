@@ -10,16 +10,20 @@ import { MySearchInput } from "./SearchInput";
 
 export const SearchBarComp = () => {
   const router = useRouter();
-  const [code, setCode] = useState<string | undefined>();
+  const [epciCode, setEpciCode] = useState<string>("");
+  // const [communeCode, setCommuneCode] = useState<string | undefined>();
+  const [searchCode, setSearchCode] = useState<string>("");
 
-  const getCodeFromSearchBar = (code: string | undefined) => {
-    setCode(code);
+  const getCodeFromSearchBar = (code: string) => {
+    setSearchCode(code);
+  };
+
+  const getEpciCodeFromSearchBar = (code: string) => {
+    setEpciCode(code);
   };
 
   const handleClick = () => {
-    if (code) {
-      router.push(`/thematiques?code=${code}`);
-    }
+    searchCode?.length < 7 ? router.push(`/thematiques?codgeo=${searchCode}&codepci=${epciCode}`) : router.push(`/thematiques?codepci=${epciCode}`);
   };
 
   const { css } = useStyles();
@@ -39,7 +43,8 @@ export const SearchBarComp = () => {
             id={id}
             placeholder={placeholder}
             type={type}
-            codeFromSearchBar={getCodeFromSearchBar}
+            searchCodeFromSearchBar={getCodeFromSearchBar}
+            searchEpciCodeFromSearchBar={getEpciCodeFromSearchBar}
           />
         )}
       />
