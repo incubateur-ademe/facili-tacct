@@ -1,6 +1,7 @@
 "use server";
 
 import { CarteCommunes, CLC } from "@/lib/postgres/models";
+import * as Sentry from "@sentry/nextjs";
 import { PrismaClient as PostgresClient } from "../../generated/client";
 
 const PrismaPostgres = new PostgresClient();
@@ -24,6 +25,7 @@ export const GetCommunes = async (code: string): Promise<CarteCommunes[]> => {
     return value;
   } catch (error) {
     console.error(error);
+    Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
     process.exit(1);
   }
