@@ -3,7 +3,7 @@
 import { fr } from "@codegouvfr/react-dsfr";
 import { Tabs } from "@codegouvfr/react-dsfr/Tabs";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
 import { Vegetalisation } from "@/components/themes/inconfort-thermique/vegetalisation";
@@ -61,10 +61,7 @@ const allComps = [
 const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState("Population");
   const [selectedSubTab, setSelectedSubTab] = useState("Grand âge");
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const code = searchParams.get("code");
-  const themeUrl = searchParams.get("thematique");
   const { isDark } = useIsDark();
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default.grey.active,
@@ -77,10 +74,6 @@ const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
   useEffect(() => {
     setSelectedSubTab(data.filter(el => el.facteur_sensibilite === selectedTabId)[0].titre);
   }, [selectedTabId]);
-
-  const handleForward = () => {
-    router.push(`/etape3?code=${code}&thematique=${themeUrl}`);
-  };
 
   return (
     <div className={styles.container}>
