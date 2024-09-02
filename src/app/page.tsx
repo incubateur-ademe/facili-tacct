@@ -10,7 +10,7 @@ import Constellation3Img from "../assets/images/constellation3.png";
 import PeopleImg from "../assets/images/landing-page-group.png";
 import MapImg from "../assets/images/landing-page-map.png";
 import { Container } from "../dsfr/layout";
-import { CollectiviteComp } from "./CollectiviteComp";
+import { CollectiviteSearch } from "./CollectiviteSearch";
 import styles from "./root.module.scss";
 
 const Home = () => {
@@ -24,7 +24,7 @@ const Home = () => {
   const window = useWindowDimensions();
 
   return (
-    <div>
+    <div className="mb-24">
       <div className={styles.wrapper}>
         <Container size="xl">
           <div className={styles.titles}>
@@ -37,7 +37,7 @@ const Home = () => {
           </div>
         </Container>
       </div>
-      <CollectiviteComp />
+      <CollectiviteSearch />
       <div className={styles.cardBackground}>
         <Container size="xl">
           <div className={styles.cardWrapper}>
