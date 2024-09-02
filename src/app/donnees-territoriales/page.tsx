@@ -23,7 +23,8 @@ const DynamicPageComp = dynamic(() => import("./PageComp"), {
 
 type SearchParams = {
   searchParams: {
-    code: string;
+    codepci: string;
+    codgeo: string;
     thematique: string;
   };
 };
@@ -32,11 +33,13 @@ type SearchParams = {
 
 const Page = async (searchParams: SearchParams) => {
   const theme = themes.inconfort_thermique;
-  const code = searchParams.searchParams.code;
-  const dbInconfortThermique = await GetInconfortThermique(code);
-  const clcEpci = await GetClcEpci(code);
-
-  const carteCommunes = await GetCommunes(code);
+  const codepci = searchParams.searchParams.codepci;
+  const codgeo = searchParams.searchParams.codgeo;
+  const dbInconfortThermique = codgeo ? await GetInconfortThermique(codgeo) 
+        : codepci ? await GetInconfortThermique(codepci) 
+        : void 0;
+  const clcEpci = await GetClcEpci(codepci);
+  const carteCommunes = await GetCommunes(codepci);
 
   return (
     <Container size="xl">
@@ -49,7 +52,7 @@ const Page = async (searchParams: SearchParams) => {
           {
             label: "Thématiques",
             linkProps: {
-              href: `/thematiques?code=${code}`,
+              href: codgeo ? `/thematiques?codgeo=${codgeo}&codepci=${codepci}` : `/thematiques?codepci=${codepci}`,
             },
           },
         ]}
@@ -58,7 +61,7 @@ const Page = async (searchParams: SearchParams) => {
       <div className={styles.container}>
         <DynamicPageComp
           data={theme}
-          inconfort_thermique={dbInconfortThermique}
+          inconfort_thermique={dbInconfortThermique!}
           carteCommunes={carteCommunes}
           clc={clcEpci}
         />

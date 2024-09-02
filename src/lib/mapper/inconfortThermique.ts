@@ -2,7 +2,7 @@ import { AgeBatiDto, GrandAgeIsolementDto, travailExtDto, type VegetalisationDto
 import { type InconfortThermique } from "../postgres/models";
 
 export const vegetalisationMapper = (vegetalisation: InconfortThermique): VegetalisationDto => ({
-  code_commune: vegetalisation.code_commune,
+  code_commune: vegetalisation.code_geographique,
   libelle_geographique: vegetalisation.libelle_geographique,
   epci: vegetalisation.epci,
   libelle_epci: vegetalisation.libelle_epci,
@@ -14,7 +14,7 @@ export const vegetalisationMapper = (vegetalisation: InconfortThermique): Vegeta
 });
 
 export const ageBatiMapper = (ageBati: InconfortThermique): AgeBatiDto => ({
-  code_commune: ageBati.code_commune,
+  code_commune: ageBati.code_geographique,
   libelle_geographique: ageBati.libelle_geographique,
   epci: ageBati.epci,
   libelle_epci: ageBati.libelle_epci,
@@ -26,7 +26,7 @@ export const ageBatiMapper = (ageBati: InconfortThermique): AgeBatiDto => ({
 })
 
 export const travailExtMapper = (travailExt: InconfortThermique): travailExtDto => ({
-  code_commune: travailExt.code_commune,
+  code_commune: travailExt.code_geographique,
   libelle_geographique: travailExt.libelle_geographique,
   epci: travailExt.epci,
   libelle_epci: travailExt.libelle_epci,
@@ -38,7 +38,7 @@ export const travailExtMapper = (travailExt: InconfortThermique): travailExtDto 
 })
 
 export const grandAgeIsolementMapper = (grandAgeIsolement: InconfortThermique): GrandAgeIsolementDto => ({
-  code_commune: grandAgeIsolement.code_commune,
+  code_commune: grandAgeIsolement.code_geographique,
   libelle_geographique: grandAgeIsolement.libelle_geographique,
   epci: grandAgeIsolement.epci,
   libelle_epci: grandAgeIsolement.libelle_epci,

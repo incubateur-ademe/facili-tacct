@@ -31,7 +31,8 @@ export const TravailExterieur = (props: {
 }) => {
   const { inconfort_thermique } = props;
   const searchParams = useSearchParams();
-  const code = searchParams.get("code")!;
+  const codgeo = searchParams.get("codgeo");
+  const codepci = searchParams.get("codepci")!;
   const travailExterieur = inconfort_thermique.map(travailExtMapper);
   const sums = {
     sumAgriculture: sumProperty(travailExterieur, "NA5AZ_sum"),
@@ -90,12 +91,19 @@ export const TravailExterieur = (props: {
       {inconfort_thermique.length ? (
         <div className={styles.container}>
           <div className="w-2/5">
-            {sums.sumConstruction ? (
+            {sums.sumConstruction || sums.sumAgriculture ? (
               <div className={styles.explicationWrapper}>
-                <p style={{color: "#161616"}}>
-                  Dans l'EPCI {travailExterieur[0]?.libelle_epci}, la part cumulée des emplois dans les secteurs à risque est de{" "}
-                  <b>{travailExt?.toFixed(1)}%</b>, soit {sums.sumAgriculture + sums.sumConstruction} personnes.
-                </p>
+                { codgeo ?
+                  <p style={{color: "#161616", margin:"0 0 0.5em"}}>
+                    Dans la commune de {travailExterieur[0]?.libelle_geographique}, la part cumulée des emplois dans les secteurs à risque est de{" "}
+                    <b>{travailExt?.toFixed(1)}%</b>, soit {sums.sumAgriculture + sums.sumConstruction} personnes.
+                  </p>
+                  : 
+                  <p style={{color: "#161616", margin:"0 0 0.5em"}}>
+                    Dans l'EPCI {travailExterieur[0]?.libelle_epci}, la part cumulée des emplois dans les secteurs à risque est de{" "}
+                    <b>{travailExt?.toFixed(1)}%</b>, soit {sums.sumAgriculture + sums.sumConstruction} personnes.
+                  </p>
+                }
                 <CustomTooltip title={title} />
               </div>
             ) : (
@@ -129,7 +137,7 @@ export const TravailExterieur = (props: {
           </div>
         </div>
       ) : (
-        <GraphDataNotFound code={code} />
+        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
       )}
     </>
   );

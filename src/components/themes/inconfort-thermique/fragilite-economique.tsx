@@ -13,14 +13,18 @@ export const FragiliteEconomique = ({ carteCommunes }: {
   carteCommunes: CarteCommunes[];
 }) => {
   const searchParams = useSearchParams();
-  const code = searchParams.get("code")!;
+  const codgeo = searchParams.get("codgeo");
+  const codepci = searchParams.get("codepci")!;
   const communesMap = carteCommunes.map(CommunesIndicateursMapper);
-
+  const commune = codgeo ? communesMap.find((obj) => obj.properties["code_commune"] === codgeo) : undefined;
   //Mean of all ratio_precarite_log of municipalities in epci
-  const precarite_log_epci: number = Number(
+  const precariteLogEpci: number = Number(
     communesMap.reduce(function (a, b) {
       return a + b.properties["precarite_logement"];
     }, 0) / carteCommunes.length,
+  );
+  const precariteCommune: number = Number(
+    commune ? commune.properties["precarite_logement"] : 0,
   );
 
   const title =
@@ -34,10 +38,18 @@ export const FragiliteEconomique = ({ carteCommunes }: {
             <>
               <div className="w-2/5">
                 <div className={styles.explicationWrapper}>
-                  <p style={{color: "#161616"}}>
-                    Dans l'EPCI {communesMap[0]?.properties["libelle_epci"]}, la part des ménages qui sont en situation de
-                    précarité énergique logement est de <b>{(100 * precarite_log_epci).toPrecision(3)}%.</b>
-                  </p>
+                  { commune ?
+                    <p style={{color: "#161616", margin:"0 0 0.5em"}}>
+                      Dans la commune de {commune.properties.libelle_commune}, la part des ménages qui sont en situation de
+                      précarité énergique logement est de <b>{(100 * precariteCommune).toPrecision(3)}%. </b> 
+                      À l'échelle de l'EPCI, ce taux est de <b>{(100 * precariteLogEpci).toPrecision(3)}%.</b>
+                    </p>
+                    : 
+                    <p style={{color: "#161616", margin:"0 0 0.5em"}}>
+                      Dans l'EPCI {communesMap[0]?.properties["libelle_epci"]}, la part des ménages qui sont en situation de
+                      précarité énergique logement est de <b>{(100 * precariteLogEpci).toPrecision(3)}%.</b>
+                    </p>
+                  }
                   <CustomTooltip title={title} />
                 </div>
                 <div className="px-4">
@@ -62,7 +74,7 @@ export const FragiliteEconomique = ({ carteCommunes }: {
               </div>
             </>
           ) : (
-            <GraphDataNotFound code={code} />
+            <GraphDataNotFound code={codgeo ? codgeo : codepci} />
           )}
         </div>
       ) : (

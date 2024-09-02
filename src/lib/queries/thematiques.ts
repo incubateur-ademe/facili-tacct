@@ -10,7 +10,7 @@ export const GetInconfortThermique = async (code: string): Promise<InconfortTher
     console.time("Query Execution Time INCONFORT");
     const value = await PrismaPostgres.inconfort_thermique.findMany({
       where: {
-        epci: code,
+        OR: [{ epci: code }, { code_geographique: code }], //...(code.length < 7 ? { code_commune: code } : { epci: code }),
       },
     });
     console.timeEnd("Query Execution Time INCONFORT");

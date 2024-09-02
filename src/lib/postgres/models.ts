@@ -16,11 +16,11 @@ export type InconfortThermique = {
   clc_3_foret_semiNaturel: number;
   clc_4_humide: number;
   clc_5_eau: number;
-  code_commune: string;
+  code_geographique: string;
   densite_bati: number;
   departement: string;
   epci: string;
-  index: number;
+  index: bigint;
   libelle_epci: string;
   libelle_geographique: string;
   over_80_sum_1968: number;
@@ -52,6 +52,17 @@ export type InconfortThermique = {
   under_4_sum_2009: number;
   under_4_sum_2014: number;
   under_4_sum_2020: number;
+};
+
+export type CollectivitesSearchbar = {
+  code_commune: string;// | null;
+  code_epci: string;// | null;
+  libelle_commune: string;// | null;
+  libelle_epci: string;// | null;
+  search_libelle: string;// | null;
+  search_code: string;// | null;
+  departement: string;// | null;
+  region: string;// | null;
 };
 
 export type CarteCommunes = {

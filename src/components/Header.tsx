@@ -2,7 +2,6 @@
 import ressourcesIcon from "@/assets/icons/ressources_icon_blue.svg";
 import ressourcesIconWhite from "@/assets/icons/ressources_icon_white.svg";
 import { config } from "@/config";
-import { GetCommunes } from "@/lib/queries/cartographie";
 import Badge from "@codegouvfr/react-dsfr/Badge";
 import Header from "@codegouvfr/react-dsfr/Header";
 import { Button } from "@mui/material";
@@ -10,15 +9,16 @@ import Image, { type StaticImageData } from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { GetInconfortThermique } from "@/lib/queries/thematiques";
 import { Brand } from "./Brand";
 import styles from "./components.module.scss";
 
-const Localisation = (props: { epci: string }) => {
-  const { epci } = props;
+const Localisation = (props: { libelle: string, code: string }) => {
+  const { libelle, code } = props;
   return (
     <div className={styles.localisation}>
       <button className="fr-icon-map-pin-user-fill"></button>
-      <p>{epci}</p>
+      <p>{libelle} - {code}</p>
     </div>
   );
 };
@@ -26,16 +26,21 @@ const Localisation = (props: { epci: string }) => {
 export const HeaderComp = () => {
   const searchParams = useSearchParams();
   const params = usePathname();
-  const code = searchParams.get("code");
-
+  const codgeo = searchParams.get("codgeo");
+  const codepci = searchParams.get("codepci")!;
   const [epci, setEpci] = useState("");
+  const [commune, setCommune] = useState("");
 
   useEffect(() => {
     void (async () => {
-      const temp = code ? await GetCommunes(code) : "";
-      temp ? setEpci(temp[0].libelle_epci) : setEpci("");
+      const temp = codgeo !== null ? await GetInconfortThermique(codgeo) 
+        : codepci !== null ? await GetInconfortThermique(codepci) 
+        : void 0;
+
+      temp && codgeo ? setCommune(temp[0].libelle_geographique) : setCommune("");
+      temp && !codgeo ? setEpci(temp[0].libelle_epci) : setEpci("");
     })();
-  }, [code]);
+  }, [codepci, codgeo]);
 
   return (
     <Header
@@ -53,9 +58,13 @@ export const HeaderComp = () => {
         </>
       }
       quickAccessItems={[
-        code ? (
+        commune && codgeo ? (
           <>
-            <Localisation epci={epci}/>
+            <Localisation libelle={commune} code={codgeo}/>
+          </>
+         ) : epci && codepci ? (
+          <>
+            <Localisation libelle={epci} code={codepci}/>
           </>
          ) : "",
         params.includes("ressources") ? (

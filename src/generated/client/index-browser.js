@@ -121,7 +121,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.Inconfort_thermiqueScalarFieldEnum = {
   index: 'index',
-  code_commune: 'code_commune',
+  code_geographique: 'code_geographique',
   libelle_geographique: 'libelle_geographique',
   epci: 'epci',
   libelle_epci: 'libelle_epci',
@@ -159,7 +159,6 @@ exports.Prisma.Inconfort_thermiqueScalarFieldEnum = {
   P20_POP80P: 'P20_POP80P',
   P20_POP80P_PSEUL: 'P20_POP80P_PSEUL',
   P20_POP80P_PSEUL_PERCENT: 'P20_POP80P_PSEUL_PERCENT',
-  ratio_precarite_log: 'ratio_precarite_log',
   tee_log: 'tee_log',
   tee_mob: 'tee_mob',
   precarite_logement: 'precarite_logement',
@@ -168,7 +167,10 @@ exports.Prisma.Inconfort_thermiqueScalarFieldEnum = {
   NA5FZ_sum: 'NA5FZ_sum',
   NA5GU_sum: 'NA5GU_sum',
   NA5OQ_sum: 'NA5OQ_sum',
+  superf_choro: 'superf_choro',
   s_geom_cstr_bati: 's_geom_cstr_bati',
+  hauteur: 'hauteur',
+  h_x_s: 'h_x_s',
   densite_bati: 'densite_bati',
   clc_1_artificialise: 'clc_1_artificialise',
   clc_2_agricole: 'clc_2_agricole',
@@ -212,6 +214,18 @@ exports.Prisma.CommunesScalarFieldEnum = {
   precarite_logement: 'precarite_logement'
 };
 
+exports.Prisma.Collectivites_searchbarScalarFieldEnum = {
+  index: 'index',
+  code_commune: 'code_commune',
+  libelle_commune: 'libelle_commune',
+  code_epci: 'code_epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  region: 'region',
+  search_code: 'search_code',
+  search_libelle: 'search_libelle'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -233,7 +247,8 @@ exports.Prisma.ModelName = {
   clc_2018_2: 'clc_2018_2',
   spatial_ref_sys: 'spatial_ref_sys',
   clc_epci: 'clc_epci',
-  communes: 'communes'
+  communes: 'communes',
+  collectivites_searchbar: 'collectivites_searchbar'
 };
 
 /**
