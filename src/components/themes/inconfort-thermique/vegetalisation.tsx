@@ -31,7 +31,6 @@ export const Vegetalisation = (props: {
   const codepci = searchParams.get("codepci")!;
   const vegetalisation = inconfort_thermique.map(vegetalisationMapper);
 
-  console.log(inconfort_thermique)
   // console.log(vegetalisation);
   const foret_sum = sumProperty(vegetalisation, "clc_3_foret_semiNaturel");
   const foret_percent =
