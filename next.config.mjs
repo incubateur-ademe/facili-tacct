@@ -136,9 +136,9 @@ export default withSentryConfig(withMDX(config), {
 org: "betagouv",
 project: "facili-tacct",
 sentryUrl: "https://sentry.incubateur.net",
+authToken: process.env.SENTRY_AUTH_TOKEN,
 
-// Only print logs for uploading source maps in CI
-silent: !process.env.CI,
+silent: false,
 
 // For all available options, see:
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
