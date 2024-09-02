@@ -58,7 +58,7 @@ const DiagnosticComp = () => {
           }
         </div>
       </div>
-      <div className={styles.ressourcesWrapper}>
+      <div className="py-16">
         <div className={styles.cardsWrapper}>
           {cards.cartesPermanentes.map((el, i) => (
             <CardComp 

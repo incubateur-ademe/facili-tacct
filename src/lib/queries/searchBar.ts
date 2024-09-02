@@ -69,6 +69,7 @@ export const GetCollectivite = async (collectivite: string): Promise<Collectivit
     }
   } catch (error) {
       console.error(error);
+      Sentry.captureException(error);
       await PrismaPostgres.$disconnect();
       process.exit(1);
    }
@@ -169,6 +170,7 @@ export const GetStringCommune = async (collectivite: string): Promise<CarteCommu
     }
   } catch (error) {
       console.error(error);
+      Sentry.captureException(error);
       await PrismaPostgres.$disconnect();
       process.exit(1);
    }
@@ -205,6 +207,7 @@ export const GetStringEpci = async (collectivite: string): Promise<CarteCommunes
     }
   } catch (error) {
       console.error(error);
+      Sentry.captureException(error);
       await PrismaPostgres.$disconnect();
       process.exit(1);
    }
@@ -240,6 +243,7 @@ export const GetCodeCommune = async (collectivite: string): Promise<CarteCommune
     }
   } catch (error) {
     console.error(error);
+    Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
     process.exit(1);
   }
@@ -275,6 +279,7 @@ export const GetCodeEpci = async (collectivite: string): Promise<CarteCommunes[]
     }
   } catch (error) {
     console.error(error);
+    Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
     process.exit(1);
   }

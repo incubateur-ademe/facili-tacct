@@ -27,7 +27,6 @@ type Options = {
 export const MySearchInput = (props: MySearchInputProps) => {
   const { className, id, type, searchCodeFromSearchBar, searchEpciCodeFromSearchBar } = props;
   const router = useRouter();
-  // const [value, setValue] = useState<Values | null>(null);
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState<Options[]>([]);
   const [epciCode, setEpciCode] = useState<string>("");
