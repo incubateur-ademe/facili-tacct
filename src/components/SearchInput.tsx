@@ -10,61 +10,56 @@ import { GetCollectivite } from "@/lib/queries/searchBar";
 
 type MySearchInputProps = {
   className?: string;
-  codeFromSearchBar: (a: string | undefined) => void;
+  searchCodeFromSearchBar: (a: string) => void;
+  searchEpciCodeFromSearchBar: (a: string) => void;
   id: string;
   placeholder: string;
   type: string;
 };
 
 type Options = {
-  code: string;
+  codeCommune: string;
   codeEpci: string;
-  nom: string;
+  searchCode: string;
+  searchLibelle: string;
 };
 
 export const MySearchInput = (props: MySearchInputProps) => {
-  const { className, id, type, codeFromSearchBar } = props;
+  const { className, id, type, searchCodeFromSearchBar, searchEpciCodeFromSearchBar } = props;
   const router = useRouter();
   // const [value, setValue] = useState<Values | null>(null);
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState<Options[]>([]);
-  const [epciOptions, setEpciOptions] = useState<Options[]>([]);
-  const [code, setCode] = useState<string>();
+  const [epciCode, setEpciCode] = useState<string>("");
+  const [searchCode, setSearchCode] = useState<string>("");
 
   // supprime les doublons pour les objects
-  const filteredEpci = epciOptions.filter(
-    (value, index, self) => index === self.findIndex(t => t.nom === value.nom && t.code === value.code),
+  const filteredCollectivite = options.filter(
+    (value, index, self) => index === self.findIndex(t => t.searchLibelle === value.searchLibelle && t.searchCode === value.searchCode),
   );
+  const collectivites = [...filteredCollectivite.sort((a, b) => a.searchLibelle.localeCompare(b.searchLibelle))];
 
-  const filteredCommunes = options.filter(
-    (value, index, self) => index === self.findIndex(t => t.nom === value.nom && t.code === value.code),
-  );
-
-  const collectivites = [...filteredCommunes.sort((a, b) => a.nom.localeCompare(b.nom)), ...filteredEpci];
   const handleClick = () => {
-    code ? router.push(`/thematiques?code=${code}`) : void 0;
+    if (epciCode) {
+      searchCode?.length < 7 ? router.push(`/thematiques?codgeo=${searchCode}&codepci=${epciCode}`) : router.push(`/thematiques?codepci=${epciCode}`);
+    }
   };
 
   useEffect(() => {
     void (async () => {
-      const temp = await GetCollectivite(inputValue);
-      setEpciOptions(
-        temp.map((el, i) => ({
-          nom: el.libelle_epci,
-          code: el.epci,
-          codeEpci: el.epci,
-        })),
-      );
+      const getCollectivite = await GetCollectivite(inputValue);
       setOptions(
-        temp.map((el, i) => ({
-          nom: el.libelle_commune,
-          code: el.code_commune,
-          codeEpci: el.epci,
+        getCollectivite.map((el, i) => ({
+          searchLibelle: el.search_libelle,
+          searchCode: el.search_code,
+          codeCommune: el.code_commune,
+          codeEpci: el.code_epci
         })),
       );
     })();
-    codeFromSearchBar(code);
-  }, [inputValue, codeFromSearchBar, code]);
+    searchCodeFromSearchBar(searchCode);
+    searchEpciCodeFromSearchBar(epciCode);
+  }, [inputValue]);
 
   return (
     <Autocomplete
@@ -76,14 +71,15 @@ export const MySearchInput = (props: MySearchInputProps) => {
       noOptionsText="Aucune collectivité trouvée"
       onChange={(event, newValue: Options | null) => {
         setOptions(newValue ? [newValue, ...options] : options);
-        setCode(newValue?.codeEpci);
+        setEpciCode(newValue?.codeEpci ?? "");
+        setSearchCode(newValue?.searchCode ?? "");
       }}
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
       }}
       getOptionLabel={option => {
         if (option) {
-          return `${option.nom} (${option.code})`;
+          return `${option.searchLibelle} (${option.searchCode})`;
         }
         return "";
       }}
@@ -97,7 +93,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
         return (
           <Box component="li" sx={{ height: "fit-content" }} {...optionProps}>
             <p style={{ margin: "0" }}>
-              <b>{option.nom} </b> ({option.code})
+              <b>{option.searchLibelle} </b> ({option.searchCode})
             </p>
           </Box>
         );
