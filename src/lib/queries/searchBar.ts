@@ -1,5 +1,6 @@
 "use server";
 
+import * as Sentry from "@sentry/nextjs";
 import { PrismaClient as PostgresClient } from "../../generated/client";
 import { CarteCommunes, CollectivitesSearchbar } from "../postgres/models";
 
@@ -24,7 +25,22 @@ export const GetCollectivite = async (collectivite: string): Promise<Collectivit
       FROM databases."collectivites_searchbar" WHERE unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) LIMIT 20;`; // OR libelle_epci ILIKE ${variableEpci} 
       console.timeEnd("Query Execution Time");
       // console.log(value);
-      return value;
+      if (value.length > 0) {
+        return value 
+      } else { 
+        const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
+        SELECT 
+        search_code,
+        search_libelle,
+        code_epci, 
+        libelle_epci,
+        libelle_commune,
+        code_commune,
+        departement,
+        region
+        FROM databases."collectivites_searchbar" WHERE unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite}) LIMIT 20;`; 
+        return value;
+      }
     } else if (typeof parseInt(collectivite) === "number") {
       const value = await PrismaPostgres.collectivites_searchbar.findMany({
         take: 20,
@@ -37,6 +53,7 @@ export const GetCollectivite = async (collectivite: string): Promise<Collectivit
       console.timeEnd("Query Execution Time");
       return value as CollectivitesSearchbar[];
     } else {
+      Sentry.captureMessage(`Collectivite ${collectivite} not found`);
       return [
         {
           code_commune: "",

@@ -21,6 +21,7 @@
     gap: 2rem;
     align-items: center;
     padding: 3.75em 3.75em 7.5em;
+    background-color: #0063CB;
 }
 
 .titles {
@@ -59,12 +60,16 @@
     box-shadow: 1px 1px 5px rgb(138, 138, 138);
 }
 
+.cardBackground {
+    background-color: #f4f6fe;
+}
+
 .cardWrapper {
     display: flex !important;
+    flex-direction: row;
     justify-content: space-between !important;
     padding: 12em 3.75em 3.75em !important;
     gap: 1.5em !important;
-    background-color: #f4f6fe !important;
 }
 
 .card {
@@ -91,6 +96,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin: 0 0 2em;
 }
 .constellationText {
     display: flex;
@@ -100,6 +106,11 @@
     padding: 2em;
 }
 
+@media screen and (max-width: 1280px) {
+    .constellationWrapper {
+        margin: 0;
+    }
+}
 @media screen and (max-width: 900px) {
     .constellationWrapper {
         flex-direction: column;
@@ -107,6 +118,13 @@
     }
     .constellationText {
         max-width: 80%;
+    }
+    .cardWrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .card {
+        max-width: 80dvw;
     }
 }
 
@@ -117,61 +135,4 @@
         left: calc(50dvw - 45dvw);
         top: calc(var(--heightWrapper) + 6em);
     }
-}
-
-.test {
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
-    border-top: 5px solid orange;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    transform: rotate(45deg);
-}
-.test2 {
-    position: relative;
-    top: -133px;
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
-    border-top: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-    border-bottom: 5px solid orange;
-    transform: rotate(45deg);
-    right: -95px;
-}
-
-.test3 {
-    position: relative;
-    right: -95px;
-    top: -170px;
-
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
-    border-top: 5px solid orange;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    transform: rotate(-45deg);
-    // -moz-transform: scale(-1, 1);
-    // -webkit-transform: scale(-1, 1);
-    // -o-transform: scale(-1, 1);
-    // -ms-transform: scale(-1, 1);
-    // transform: scale(-1, 1);
-}
-.test4 {
-    position: relative;
-    top: -303px;
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
-    border-top: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-    border-bottom: 5px solid orange;
-    transform: rotate(-45deg);
-    right: 0px;
 }
