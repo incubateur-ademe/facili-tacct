@@ -1,3 +1,11 @@
+.introduction {
+    padding: 2.25em 0 3.75em;
+    border-bottom: 1px solid #DDDDDD;
+    display: flex;
+    flex-direction: column;
+    gap: 2.25em;
+}
+
 .grayWrapper {
     display: flex;
     flex-direction: column;
@@ -28,10 +36,7 @@
     }
 }
 
-.introduction {
-    padding: 2em 0 3.75em;
-    border-bottom: 1px solid #DDDDDD;
-}
+
 
 .conseils {
     padding: 3.75em 0;
