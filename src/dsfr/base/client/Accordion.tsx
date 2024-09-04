@@ -16,7 +16,7 @@ type AccordionDataProps = {
 };
 
 const ControlledAccordion = ({ accordionData }: AccordionDataProps) => {
-  const [ expanded, setExpanded ] = useState(true)
+  const [ expanded, setExpanded ] = useState(false)
   return (
     <div className={fr.cx("fr-accordions-group")}>
       {
