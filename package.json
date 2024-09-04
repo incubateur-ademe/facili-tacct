@@ -9,8 +9,8 @@
     "predev": "only-include-used-icons",
     "prebuild": "only-include-used-icons",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
-    "build": "cross-env NODE_OPTIONS=--inspect next build",
-    "start": "next start",
+    "build": "cross-env NODE_OPTIONS=--inspect next build && node copy-assets.js",
+    "start": "node .next/standalone/server.js",
     "lint": "next lint",
     "eslint": "eslint --fix ./src"
   },
