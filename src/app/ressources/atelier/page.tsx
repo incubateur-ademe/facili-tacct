@@ -1,4 +1,3 @@
-import { Container } from "@/dsfr/server";
 import Breadcrumb from "@codegouvfr/react-dsfr/Breadcrumb";
 import { Metadata } from "next";
 import AtelierComp from "./comp";
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
 
 const Atelier = () => {
   return (
-    <Container size="xl" className="mb-24">
+    <div className="max-w-2xl m-auto pb-24">
       <Breadcrumb
         currentPageLabel="Atelier"
         homeLinkProps={{
@@ -26,7 +25,7 @@ const Atelier = () => {
         ]}
       />
       <AtelierComp />
-    </Container>
+    </div>
   )
 };
 
