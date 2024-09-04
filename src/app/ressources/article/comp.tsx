@@ -42,7 +42,16 @@ const ArticleComp = () => {
             </p>
           </div>
         </div>
-        <div className="flex justify-center"><Image src={AtelierImg} alt="" /></div>
+        <div className="flex justify-center">
+          <Image 
+            src={AtelierImg} 
+            alt="" 
+            width={0}
+            height={0}
+            sizes="100%"
+            style={{ width: '100%', height: 'auto' }} 
+          />
+        </div>
       </div>
       <div className={styles.textBloc}>
         <h2>Les données : lesquelles ? pourquoi ?</h2>
