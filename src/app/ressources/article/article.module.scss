@@ -1,20 +1,8 @@
 .introduction {
     padding: 2.25em 0 3.75em;
-    border-bottom: 1px solid #DDDDDD;
     display: flex;
     flex-direction: column;
     gap: 2.25em;
-}
-
-.grayWrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: fit-content;
-    gap: 1em;
-    border-radius: 0.5em;
-    background-color: #F6F6F6;
-    padding: 40px;
 }
 
 .blueWrapper {
@@ -24,44 +12,38 @@
     height: fit-content;
     gap: 1em;
     border-radius: 0.5em;
-    background-color: #F4F6FE;
+    background-color: #f4f6fe;
     padding: 40px;
     .content {
         display: flex;
         flex-direction: row;
         gap: 1em;
-        p { 
+        p {
             margin: 0;
         }
     }
 }
 
-
-
-.conseils {
-    padding: 3.75em 0;
-    border-bottom: 1px solid #DDDDDD;
-    .vigilance {
-        padding: 3em 0 0;
+.textBloc {
+    padding: 3.75em 0 0;
+    h2 {
+        margin: 0 0 2.25em;
+    }
+    h3 {
+        margin: 2.5em 0 1.5em;
     }
 }
 
-.deroule {
+.grayWrapper {
     display: flex;
     flex-direction: column;
-    gap: 1.5em;
-    border-radius: 0.5em;
-    padding: 3.75em 0;
-    width: fit-content;
+    width: 100%;
     height: fit-content;
-    border-bottom: 1px solid #DDDDDD;
-    .contentWrapper {
-        display: flex;
-        flex-direction: column;
-        padding: 0 0 0 2.6em;
-        margin: 0 0 2em;
-        gap: 2em;;
-    }
+    gap: 1em;
+    border-radius: 0.5em;
+    background-color: #f6f6f6;
+    padding: 40px;
+    margin: 1.5em 0 0;
 }
 
 .h2title {
@@ -84,7 +66,7 @@
     flex-direction: column;
     gap: 1em;
     a {
-        color: #0063CB;
+        color: #0063cb;
         font-size: 1rem;
         font-style: normal;
         font-weight: 700;

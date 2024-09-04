@@ -63,7 +63,7 @@ export const cards = {
       titre: "Titre",
       tag: "Article",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dolore magna aliqua. Vitae sapien pellentesque habitant morbi tristique senectus et",
-      link: ""
+      link: "/ressources/article"
     },
     {
       id: 4,
