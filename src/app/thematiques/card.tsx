@@ -17,7 +17,7 @@ export const CardComp = ({ imageUrl, thematique, badgeSeverity, badge, title }: 
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo");
   const codepci = searchParams.get("codepci")!;
-
+  
   useEffect(() => {
     if (codepci) {
       codgeo !== null ? 

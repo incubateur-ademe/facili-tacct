@@ -7,7 +7,7 @@ Sentry.init({
   dsn: SENTRY_DSN ?? "",
   environment: SENTRY_ENV ?? "development",
   // Adjust this value in production, or use tracesSampler for greater control
-  tracesSampleRate: 0.1,
+  tracesSampleRate: 1.0,
   debug: false,
 
   // remove healthz probes
