@@ -7,13 +7,13 @@ import { TabComp } from "./tabComp";
 
 const DiagnosticComp = () => {
   const [selectedTabId, setSelectedTabId] = useState("Vous n'avez pas de diagnostic");
-  
+
   const handleTab = (tab: string) => {
     setSelectedTabId(tab);
   }
 
   const [selectedThemeId, setSelectedThemeId] = useState("Inconfort thermique");
-  
+
   const handleTheme = (tab: string) => {
     setSelectedThemeId(tab);
   }
@@ -58,7 +58,7 @@ const DiagnosticComp = () => {
           }
         </div>
       </div>
-      <div className={styles.ressourcesWrapper}>
+      <div className="py-16">
         <div className={styles.cardsWrapper}>
           {cards.cartesPermanentes.map((el, i) => (
             <CardComp 

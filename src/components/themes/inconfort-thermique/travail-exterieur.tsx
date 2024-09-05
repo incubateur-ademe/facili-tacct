@@ -85,7 +85,7 @@ export const TravailExterieur = (props: {
     Number(((100 * sums.sumAgriculture) / sum(Object.values(sums))).toFixed(1));
 
   const title =
-    "Le travail en extérieur conrrespond aux travailleurs dans les secteurs de la construction, de l'agriculture, de la sylviculture et de la pêche.";
+    "Le travail en extérieur correspond aux travailleurs dans les secteurs de la construction, de l'agriculture, de la sylviculture et de la pêche.";
   return (
     <>
       {inconfort_thermique.length ? (
