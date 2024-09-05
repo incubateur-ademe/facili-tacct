@@ -63,38 +63,14 @@ model inconfort_thermique {
   hauteur                  Float
   h_x_s                    Float
   densite_bati             Float
-  clc_1_artificialise      Float
-  clc_2_agricole           Float
-  clc_3_foret_semiNaturel  Float
-  clc_4_humide             Float
-  clc_5_eau                Float
+  clc_1_artificialise      Float  @map("1_artificialise")
+  clc_2_agricole           Float  @map("2_agricole")
+  clc_3_foret_semiNaturel  Float  @map("3_foret_semiNaturel")
+  clc_4_humide             Float  @map("4_humide")
+  clc_5_eau                Float  @map("5_eau")
 
   @@index([index], map: "ix_inconfort_thermique_index")
   @@schema("databases")
-}
-
-model clc_2018_2 {
-  pk           Int                      @id @default(autoincrement())
-  area_ha      Float?
-  shape_length Float?
-  shape_area   Float?
-  label3       String?                  @db.VarChar
-  centroid     String?                  @db.VarChar
-  geometry     Unsupported("geometry")?
-
-  @@index([geometry], map: "clc_2018_2_geometry_geom_idx", type: Gist)
-  @@schema("postgis")
-}
-
-/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
-model spatial_ref_sys {
-  srid      Int     @id
-  auth_name String? @db.VarChar(256)
-  auth_srid Int?
-  srtext    String? @db.VarChar(2048)
-  proj4text String? @db.VarChar(2048)
-
-  @@schema("postgis")
 }
 
 model clc_epci {
@@ -124,7 +100,7 @@ model communes {
 }
 
 model collectivites_searchbar {
-  index           Int     @id
+  index           BigInt  @id
   code_commune    String?
   libelle_commune String?
   code_epci       String?

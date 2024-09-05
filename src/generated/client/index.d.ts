@@ -19,16 +19,6 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type inconfort_thermique = $Result.DefaultSelection<Prisma.$inconfort_thermiquePayload>
 /**
- * Model clc_2018_2
- * 
- */
-export type clc_2018_2 = $Result.DefaultSelection<Prisma.$clc_2018_2Payload>
-/**
- * Model spatial_ref_sys
- * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
- */
-export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPayload>
-/**
  * Model clc_epci
  * 
  */
@@ -175,26 +165,6 @@ export class PrismaClient<
     * ```
     */
   get inconfort_thermique(): Prisma.inconfort_thermiqueDelegate<ExtArgs>;
-
-  /**
-   * `prisma.clc_2018_2`: Exposes CRUD operations for the **clc_2018_2** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Clc_2018_2s
-    * const clc_2018_2s = await prisma.clc_2018_2.findMany()
-    * ```
-    */
-  get clc_2018_2(): Prisma.clc_2018_2Delegate<ExtArgs>;
-
-  /**
-   * `prisma.spatial_ref_sys`: Exposes CRUD operations for the **spatial_ref_sys** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Spatial_ref_sys
-    * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
-    * ```
-    */
-  get spatial_ref_sys(): Prisma.spatial_ref_sysDelegate<ExtArgs>;
 
   /**
    * `prisma.clc_epci`: Exposes CRUD operations for the **clc_epci** model.
@@ -703,8 +673,6 @@ export namespace Prisma {
 
   export const ModelName: {
     inconfort_thermique: 'inconfort_thermique',
-    clc_2018_2: 'clc_2018_2',
-    spatial_ref_sys: 'spatial_ref_sys',
     clc_epci: 'clc_epci',
     communes: 'communes',
     collectivites_searchbar: 'collectivites_searchbar'
@@ -723,7 +691,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "inconfort_thermique" | "clc_2018_2" | "spatial_ref_sys" | "clc_epci" | "communes" | "collectivites_searchbar"
+      modelProps: "inconfort_thermique" | "clc_epci" | "communes" | "collectivites_searchbar"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -794,146 +762,6 @@ export namespace Prisma {
           count: {
             args: Prisma.inconfort_thermiqueCountArgs<ExtArgs>
             result: $Utils.Optional<Inconfort_thermiqueCountAggregateOutputType> | number
-          }
-        }
-      }
-      clc_2018_2: {
-        payload: Prisma.$clc_2018_2Payload<ExtArgs>
-        fields: Prisma.clc_2018_2FieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.clc_2018_2FindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.clc_2018_2FindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>
-          }
-          findFirst: {
-            args: Prisma.clc_2018_2FindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.clc_2018_2FindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>
-          }
-          findMany: {
-            args: Prisma.clc_2018_2FindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>[]
-          }
-          create: {
-            args: Prisma.clc_2018_2CreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>
-          }
-          createMany: {
-            args: Prisma.clc_2018_2CreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.clc_2018_2CreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>[]
-          }
-          delete: {
-            args: Prisma.clc_2018_2DeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>
-          }
-          update: {
-            args: Prisma.clc_2018_2UpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>
-          }
-          deleteMany: {
-            args: Prisma.clc_2018_2DeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.clc_2018_2UpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.clc_2018_2UpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_2018_2Payload>
-          }
-          aggregate: {
-            args: Prisma.Clc_2018_2AggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateClc_2018_2>
-          }
-          groupBy: {
-            args: Prisma.clc_2018_2GroupByArgs<ExtArgs>
-            result: $Utils.Optional<Clc_2018_2GroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.clc_2018_2CountArgs<ExtArgs>
-            result: $Utils.Optional<Clc_2018_2CountAggregateOutputType> | number
-          }
-        }
-      }
-      spatial_ref_sys: {
-        payload: Prisma.$spatial_ref_sysPayload<ExtArgs>
-        fields: Prisma.spatial_ref_sysFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.spatial_ref_sysFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
-          }
-          findFirst: {
-            args: Prisma.spatial_ref_sysFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
-          }
-          findMany: {
-            args: Prisma.spatial_ref_sysFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[]
-          }
-          create: {
-            args: Prisma.spatial_ref_sysCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
-          }
-          createMany: {
-            args: Prisma.spatial_ref_sysCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.spatial_ref_sysCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[]
-          }
-          delete: {
-            args: Prisma.spatial_ref_sysDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
-          }
-          update: {
-            args: Prisma.spatial_ref_sysUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
-          }
-          deleteMany: {
-            args: Prisma.spatial_ref_sysDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.spatial_ref_sysUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.spatial_ref_sysUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
-          }
-          aggregate: {
-            args: Prisma.Spatial_ref_sysAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateSpatial_ref_sys>
-          }
-          groupBy: {
-            args: Prisma.spatial_ref_sysGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Spatial_ref_sysGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.spatial_ref_sysCountArgs<ExtArgs>
-            result: $Utils.Optional<Spatial_ref_sysCountAggregateOutputType> | number
           }
         }
       }
@@ -3049,1858 +2877,6 @@ export namespace Prisma {
 
 
   /**
-   * Model clc_2018_2
-   */
-
-  export type AggregateClc_2018_2 = {
-    _count: Clc_2018_2CountAggregateOutputType | null
-    _avg: Clc_2018_2AvgAggregateOutputType | null
-    _sum: Clc_2018_2SumAggregateOutputType | null
-    _min: Clc_2018_2MinAggregateOutputType | null
-    _max: Clc_2018_2MaxAggregateOutputType | null
-  }
-
-  export type Clc_2018_2AvgAggregateOutputType = {
-    pk: number | null
-    area_ha: number | null
-    shape_length: number | null
-    shape_area: number | null
-  }
-
-  export type Clc_2018_2SumAggregateOutputType = {
-    pk: number | null
-    area_ha: number | null
-    shape_length: number | null
-    shape_area: number | null
-  }
-
-  export type Clc_2018_2MinAggregateOutputType = {
-    pk: number | null
-    area_ha: number | null
-    shape_length: number | null
-    shape_area: number | null
-    label3: string | null
-    centroid: string | null
-  }
-
-  export type Clc_2018_2MaxAggregateOutputType = {
-    pk: number | null
-    area_ha: number | null
-    shape_length: number | null
-    shape_area: number | null
-    label3: string | null
-    centroid: string | null
-  }
-
-  export type Clc_2018_2CountAggregateOutputType = {
-    pk: number
-    area_ha: number
-    shape_length: number
-    shape_area: number
-    label3: number
-    centroid: number
-    _all: number
-  }
-
-
-  export type Clc_2018_2AvgAggregateInputType = {
-    pk?: true
-    area_ha?: true
-    shape_length?: true
-    shape_area?: true
-  }
-
-  export type Clc_2018_2SumAggregateInputType = {
-    pk?: true
-    area_ha?: true
-    shape_length?: true
-    shape_area?: true
-  }
-
-  export type Clc_2018_2MinAggregateInputType = {
-    pk?: true
-    area_ha?: true
-    shape_length?: true
-    shape_area?: true
-    label3?: true
-    centroid?: true
-  }
-
-  export type Clc_2018_2MaxAggregateInputType = {
-    pk?: true
-    area_ha?: true
-    shape_length?: true
-    shape_area?: true
-    label3?: true
-    centroid?: true
-  }
-
-  export type Clc_2018_2CountAggregateInputType = {
-    pk?: true
-    area_ha?: true
-    shape_length?: true
-    shape_area?: true
-    label3?: true
-    centroid?: true
-    _all?: true
-  }
-
-  export type Clc_2018_2AggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which clc_2018_2 to aggregate.
-     */
-    where?: clc_2018_2WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of clc_2018_2s to fetch.
-     */
-    orderBy?: clc_2018_2OrderByWithRelationInput | clc_2018_2OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: clc_2018_2WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` clc_2018_2s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` clc_2018_2s.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned clc_2018_2s
-    **/
-    _count?: true | Clc_2018_2CountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Clc_2018_2AvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Clc_2018_2SumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Clc_2018_2MinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Clc_2018_2MaxAggregateInputType
-  }
-
-  export type GetClc_2018_2AggregateType<T extends Clc_2018_2AggregateArgs> = {
-        [P in keyof T & keyof AggregateClc_2018_2]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateClc_2018_2[P]>
-      : GetScalarType<T[P], AggregateClc_2018_2[P]>
-  }
-
-
-
-
-  export type clc_2018_2GroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: clc_2018_2WhereInput
-    orderBy?: clc_2018_2OrderByWithAggregationInput | clc_2018_2OrderByWithAggregationInput[]
-    by: Clc_2018_2ScalarFieldEnum[] | Clc_2018_2ScalarFieldEnum
-    having?: clc_2018_2ScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Clc_2018_2CountAggregateInputType | true
-    _avg?: Clc_2018_2AvgAggregateInputType
-    _sum?: Clc_2018_2SumAggregateInputType
-    _min?: Clc_2018_2MinAggregateInputType
-    _max?: Clc_2018_2MaxAggregateInputType
-  }
-
-  export type Clc_2018_2GroupByOutputType = {
-    pk: number
-    area_ha: number | null
-    shape_length: number | null
-    shape_area: number | null
-    label3: string | null
-    centroid: string | null
-    _count: Clc_2018_2CountAggregateOutputType | null
-    _avg: Clc_2018_2AvgAggregateOutputType | null
-    _sum: Clc_2018_2SumAggregateOutputType | null
-    _min: Clc_2018_2MinAggregateOutputType | null
-    _max: Clc_2018_2MaxAggregateOutputType | null
-  }
-
-  type GetClc_2018_2GroupByPayload<T extends clc_2018_2GroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Clc_2018_2GroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Clc_2018_2GroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Clc_2018_2GroupByOutputType[P]>
-            : GetScalarType<T[P], Clc_2018_2GroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type clc_2018_2Select<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pk?: boolean
-    area_ha?: boolean
-    shape_length?: boolean
-    shape_area?: boolean
-    label3?: boolean
-    centroid?: boolean
-  }, ExtArgs["result"]["clc_2018_2"]>
-
-  export type clc_2018_2SelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pk?: boolean
-    area_ha?: boolean
-    shape_length?: boolean
-    shape_area?: boolean
-    label3?: boolean
-    centroid?: boolean
-  }, ExtArgs["result"]["clc_2018_2"]>
-
-  export type clc_2018_2SelectScalar = {
-    pk?: boolean
-    area_ha?: boolean
-    shape_length?: boolean
-    shape_area?: boolean
-    label3?: boolean
-    centroid?: boolean
-  }
-
-
-  export type $clc_2018_2Payload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "clc_2018_2"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      pk: number
-      area_ha: number | null
-      shape_length: number | null
-      shape_area: number | null
-      label3: string | null
-      centroid: string | null
-    }, ExtArgs["result"]["clc_2018_2"]>
-    composites: {}
-  }
-
-  type clc_2018_2GetPayload<S extends boolean | null | undefined | clc_2018_2DefaultArgs> = $Result.GetResult<Prisma.$clc_2018_2Payload, S>
-
-  type clc_2018_2CountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<clc_2018_2FindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: Clc_2018_2CountAggregateInputType | true
-    }
-
-  export interface clc_2018_2Delegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['clc_2018_2'], meta: { name: 'clc_2018_2' } }
-    /**
-     * Find zero or one Clc_2018_2 that matches the filter.
-     * @param {clc_2018_2FindUniqueArgs} args - Arguments to find a Clc_2018_2
-     * @example
-     * // Get one Clc_2018_2
-     * const clc_2018_2 = await prisma.clc_2018_2.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends clc_2018_2FindUniqueArgs>(args: SelectSubset<T, clc_2018_2FindUniqueArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
-
-    /**
-     * Find one Clc_2018_2 that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
-     * @param {clc_2018_2FindUniqueOrThrowArgs} args - Arguments to find a Clc_2018_2
-     * @example
-     * // Get one Clc_2018_2
-     * const clc_2018_2 = await prisma.clc_2018_2.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends clc_2018_2FindUniqueOrThrowArgs>(args: SelectSubset<T, clc_2018_2FindUniqueOrThrowArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
-
-    /**
-     * Find the first Clc_2018_2 that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_2018_2FindFirstArgs} args - Arguments to find a Clc_2018_2
-     * @example
-     * // Get one Clc_2018_2
-     * const clc_2018_2 = await prisma.clc_2018_2.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends clc_2018_2FindFirstArgs>(args?: SelectSubset<T, clc_2018_2FindFirstArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
-
-    /**
-     * Find the first Clc_2018_2 that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_2018_2FindFirstOrThrowArgs} args - Arguments to find a Clc_2018_2
-     * @example
-     * // Get one Clc_2018_2
-     * const clc_2018_2 = await prisma.clc_2018_2.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends clc_2018_2FindFirstOrThrowArgs>(args?: SelectSubset<T, clc_2018_2FindFirstOrThrowArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
-
-    /**
-     * Find zero or more Clc_2018_2s that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_2018_2FindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Clc_2018_2s
-     * const clc_2018_2s = await prisma.clc_2018_2.findMany()
-     * 
-     * // Get first 10 Clc_2018_2s
-     * const clc_2018_2s = await prisma.clc_2018_2.findMany({ take: 10 })
-     * 
-     * // Only select the `pk`
-     * const clc_2018_2WithPkOnly = await prisma.clc_2018_2.findMany({ select: { pk: true } })
-     * 
-     */
-    findMany<T extends clc_2018_2FindManyArgs>(args?: SelectSubset<T, clc_2018_2FindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "findMany">>
-
-    /**
-     * Create a Clc_2018_2.
-     * @param {clc_2018_2CreateArgs} args - Arguments to create a Clc_2018_2.
-     * @example
-     * // Create one Clc_2018_2
-     * const Clc_2018_2 = await prisma.clc_2018_2.create({
-     *   data: {
-     *     // ... data to create a Clc_2018_2
-     *   }
-     * })
-     * 
-     */
-    create<T extends clc_2018_2CreateArgs>(args: SelectSubset<T, clc_2018_2CreateArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "create">, never, ExtArgs>
-
-    /**
-     * Create many Clc_2018_2s.
-     * @param {clc_2018_2CreateManyArgs} args - Arguments to create many Clc_2018_2s.
-     * @example
-     * // Create many Clc_2018_2s
-     * const clc_2018_2 = await prisma.clc_2018_2.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends clc_2018_2CreateManyArgs>(args?: SelectSubset<T, clc_2018_2CreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Clc_2018_2s and returns the data saved in the database.
-     * @param {clc_2018_2CreateManyAndReturnArgs} args - Arguments to create many Clc_2018_2s.
-     * @example
-     * // Create many Clc_2018_2s
-     * const clc_2018_2 = await prisma.clc_2018_2.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Clc_2018_2s and only return the `pk`
-     * const clc_2018_2WithPkOnly = await prisma.clc_2018_2.createManyAndReturn({ 
-     *   select: { pk: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends clc_2018_2CreateManyAndReturnArgs>(args?: SelectSubset<T, clc_2018_2CreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "createManyAndReturn">>
-
-    /**
-     * Delete a Clc_2018_2.
-     * @param {clc_2018_2DeleteArgs} args - Arguments to delete one Clc_2018_2.
-     * @example
-     * // Delete one Clc_2018_2
-     * const Clc_2018_2 = await prisma.clc_2018_2.delete({
-     *   where: {
-     *     // ... filter to delete one Clc_2018_2
-     *   }
-     * })
-     * 
-     */
-    delete<T extends clc_2018_2DeleteArgs>(args: SelectSubset<T, clc_2018_2DeleteArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "delete">, never, ExtArgs>
-
-    /**
-     * Update one Clc_2018_2.
-     * @param {clc_2018_2UpdateArgs} args - Arguments to update one Clc_2018_2.
-     * @example
-     * // Update one Clc_2018_2
-     * const clc_2018_2 = await prisma.clc_2018_2.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends clc_2018_2UpdateArgs>(args: SelectSubset<T, clc_2018_2UpdateArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "update">, never, ExtArgs>
-
-    /**
-     * Delete zero or more Clc_2018_2s.
-     * @param {clc_2018_2DeleteManyArgs} args - Arguments to filter Clc_2018_2s to delete.
-     * @example
-     * // Delete a few Clc_2018_2s
-     * const { count } = await prisma.clc_2018_2.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends clc_2018_2DeleteManyArgs>(args?: SelectSubset<T, clc_2018_2DeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Clc_2018_2s.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_2018_2UpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Clc_2018_2s
-     * const clc_2018_2 = await prisma.clc_2018_2.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends clc_2018_2UpdateManyArgs>(args: SelectSubset<T, clc_2018_2UpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Clc_2018_2.
-     * @param {clc_2018_2UpsertArgs} args - Arguments to update or create a Clc_2018_2.
-     * @example
-     * // Update or create a Clc_2018_2
-     * const clc_2018_2 = await prisma.clc_2018_2.upsert({
-     *   create: {
-     *     // ... data to create a Clc_2018_2
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Clc_2018_2 we want to update
-     *   }
-     * })
-     */
-    upsert<T extends clc_2018_2UpsertArgs>(args: SelectSubset<T, clc_2018_2UpsertArgs<ExtArgs>>): Prisma__clc_2018_2Client<$Result.GetResult<Prisma.$clc_2018_2Payload<ExtArgs>, T, "upsert">, never, ExtArgs>
-
-
-    /**
-     * Count the number of Clc_2018_2s.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_2018_2CountArgs} args - Arguments to filter Clc_2018_2s to count.
-     * @example
-     * // Count the number of Clc_2018_2s
-     * const count = await prisma.clc_2018_2.count({
-     *   where: {
-     *     // ... the filter for the Clc_2018_2s we want to count
-     *   }
-     * })
-    **/
-    count<T extends clc_2018_2CountArgs>(
-      args?: Subset<T, clc_2018_2CountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Clc_2018_2CountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Clc_2018_2.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Clc_2018_2AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Clc_2018_2AggregateArgs>(args: Subset<T, Clc_2018_2AggregateArgs>): Prisma.PrismaPromise<GetClc_2018_2AggregateType<T>>
-
-    /**
-     * Group by Clc_2018_2.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_2018_2GroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends clc_2018_2GroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: clc_2018_2GroupByArgs['orderBy'] }
-        : { orderBy?: clc_2018_2GroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, clc_2018_2GroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClc_2018_2GroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the clc_2018_2 model
-   */
-  readonly fields: clc_2018_2FieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for clc_2018_2.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__clc_2018_2Client<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the clc_2018_2 model
-   */ 
-  interface clc_2018_2FieldRefs {
-    readonly pk: FieldRef<"clc_2018_2", 'Int'>
-    readonly area_ha: FieldRef<"clc_2018_2", 'Float'>
-    readonly shape_length: FieldRef<"clc_2018_2", 'Float'>
-    readonly shape_area: FieldRef<"clc_2018_2", 'Float'>
-    readonly label3: FieldRef<"clc_2018_2", 'String'>
-    readonly centroid: FieldRef<"clc_2018_2", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * clc_2018_2 findUnique
-   */
-  export type clc_2018_2FindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_2018_2
-     */
-    select?: clc_2018_2Select<ExtArgs> | null
-    /**
-     * Filter, which clc_2018_2 to fetch.
-     */
-    where: clc_2018_2WhereUniqueInput
-  }
-
-  /**
-   * clc_2018_2 findUniqueOrThrow
-   */
-  export type clc_2018_2FindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_2018_2
-     */
-    select?: clc_2018_2Select<ExtArgs> | null
-    /**
-     * Filter, which clc_2018_2 to fetch.
-     */
-    where: clc_2018_2WhereUniqueInput
-  }
-
-  /**
-   * clc_2018_2 findFirst
-   */
-  export type clc_2018_2FindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_2018_2
-     */
-    select?: clc_2018_2Select<ExtArgs> | null
-    /**
-     * Filter, which clc_2018_2 to fetch.
-     */
-    where?: clc_2018_2WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of clc_2018_2s to fetch.
-     */
-    orderBy?: clc_2018_2OrderByWithRelationInput | clc_2018_2OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for clc_2018_2s.
-     */
-    cursor?: clc_2018_2WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` clc_2018_2s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` clc_2018_2s.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of clc_2018_2s.
-     */
-    distinct?: Clc_2018_2ScalarFieldEnum | Clc_2018_2ScalarFieldEnum[]
-  }
-
-  /**
-   * clc_2018_2 findFirstOrThrow
-   */
-  export type clc_2018_2FindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_2018_2
-     */
-    select?: clc_2018_2Select<ExtArgs> | null
-    /**
-     * Filter, which clc_2018_2 to fetch.
-     */
-    where?: clc_2018_2WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of clc_2018_2s to fetch.
-     */
-    orderBy?: clc_2018_2OrderByWithRelationInput | clc_2018_2OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for clc_2018_2s.
-     */
-    cursor?: clc_2018_2WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` clc_2018_2s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` clc_2018_2s.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of clc_2018_2s.
-     */
-    distinct?: Clc_2018_2ScalarFieldEnum | Clc_2018_2ScalarFieldEnum[]
-  }
-
-  /**
-   * clc_2018_2 findMany
-   */
-  export type clc_2018_2FindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_2018_2
-     */
-    select?: clc_2018_2Select<ExtArgs> | null
-    /**
-     * Filter, which clc_2018_2s to fetch.
-     */
-    where?: clc_2018_2WhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of clc_2018_2s to fetch.
-     */
-    orderBy?: clc_2018_2OrderByWithRelationInput | clc_2018_2OrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing clc_2018_2s.
-     */
-    cursor?: clc_2018_2WhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` clc_2018_2s from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` clc_2018_2s.
-     */
-    skip?: number
-    distinct?: Clc_2018_2ScalarFieldEnum | Clc_2018_2ScalarFieldEnum[]
-  }
-
-  /**
-   * clc_2018_2 create
-   */
-  export type clc_2018_2CreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_2018_2
-     */
-    select?: clc_2018_2Select<ExtArgs> | null
-    /**
-     * The data needed to create a clc_2018_2.
-     */
-    data?: XOR<clc_2018_2CreateInput, clc_2018_2UncheckedCreateInput>
-  }
-
-  /**
-   * clc_2018_2 createMany
-   */
-  export type clc_2018_2CreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many clc_2018_2s.
-     */
-    data: clc_2018_2CreateManyInput | clc_2018_2CreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * clc_2018_2 createManyAndReturn
-   */
-  export type clc_2018_2CreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_2018_2
-     */
-    select?: clc_2018_2SelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many clc_2018_2s.
-     */
-    data: clc_2018_2CreateManyInput | clc_2018_2CreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * clc_2018_2 update
-   */
-  export type clc_2018_2UpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_2018_2
-     */
-    select?: clc_2018_2Select<ExtArgs> | null
-    /**
-     * The data needed to update a clc_2018_2.
-     */
-    data: XOR<clc_2018_2UpdateInput, clc_2018_2UncheckedUpdateInput>
-    /**
-     * Choose, which clc_2018_2 to update.
-     */
-    where: clc_2018_2WhereUniqueInput
-  }
-
-  /**
-   * clc_2018_2 updateMany
-   */
-  export type clc_2018_2UpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update clc_2018_2s.
-     */
-    data: XOR<clc_2018_2UpdateManyMutationInput, clc_2018_2UncheckedUpdateManyInput>
-    /**
-     * Filter which clc_2018_2s to update
-     */
-    where?: clc_2018_2WhereInput
-  }
-
-  /**
-   * clc_2018_2 upsert
-   */
-  export type clc_2018_2UpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_2018_2
-     */
-    select?: clc_2018_2Select<ExtArgs> | null
-    /**
-     * The filter to search for the clc_2018_2 to update in case it exists.
-     */
-    where: clc_2018_2WhereUniqueInput
-    /**
-     * In case the clc_2018_2 found by the `where` argument doesn't exist, create a new clc_2018_2 with this data.
-     */
-    create: XOR<clc_2018_2CreateInput, clc_2018_2UncheckedCreateInput>
-    /**
-     * In case the clc_2018_2 was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<clc_2018_2UpdateInput, clc_2018_2UncheckedUpdateInput>
-  }
-
-  /**
-   * clc_2018_2 delete
-   */
-  export type clc_2018_2DeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_2018_2
-     */
-    select?: clc_2018_2Select<ExtArgs> | null
-    /**
-     * Filter which clc_2018_2 to delete.
-     */
-    where: clc_2018_2WhereUniqueInput
-  }
-
-  /**
-   * clc_2018_2 deleteMany
-   */
-  export type clc_2018_2DeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which clc_2018_2s to delete
-     */
-    where?: clc_2018_2WhereInput
-  }
-
-  /**
-   * clc_2018_2 without action
-   */
-  export type clc_2018_2DefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_2018_2
-     */
-    select?: clc_2018_2Select<ExtArgs> | null
-  }
-
-
-  /**
-   * Model spatial_ref_sys
-   */
-
-  export type AggregateSpatial_ref_sys = {
-    _count: Spatial_ref_sysCountAggregateOutputType | null
-    _avg: Spatial_ref_sysAvgAggregateOutputType | null
-    _sum: Spatial_ref_sysSumAggregateOutputType | null
-    _min: Spatial_ref_sysMinAggregateOutputType | null
-    _max: Spatial_ref_sysMaxAggregateOutputType | null
-  }
-
-  export type Spatial_ref_sysAvgAggregateOutputType = {
-    srid: number | null
-    auth_srid: number | null
-  }
-
-  export type Spatial_ref_sysSumAggregateOutputType = {
-    srid: number | null
-    auth_srid: number | null
-  }
-
-  export type Spatial_ref_sysMinAggregateOutputType = {
-    srid: number | null
-    auth_name: string | null
-    auth_srid: number | null
-    srtext: string | null
-    proj4text: string | null
-  }
-
-  export type Spatial_ref_sysMaxAggregateOutputType = {
-    srid: number | null
-    auth_name: string | null
-    auth_srid: number | null
-    srtext: string | null
-    proj4text: string | null
-  }
-
-  export type Spatial_ref_sysCountAggregateOutputType = {
-    srid: number
-    auth_name: number
-    auth_srid: number
-    srtext: number
-    proj4text: number
-    _all: number
-  }
-
-
-  export type Spatial_ref_sysAvgAggregateInputType = {
-    srid?: true
-    auth_srid?: true
-  }
-
-  export type Spatial_ref_sysSumAggregateInputType = {
-    srid?: true
-    auth_srid?: true
-  }
-
-  export type Spatial_ref_sysMinAggregateInputType = {
-    srid?: true
-    auth_name?: true
-    auth_srid?: true
-    srtext?: true
-    proj4text?: true
-  }
-
-  export type Spatial_ref_sysMaxAggregateInputType = {
-    srid?: true
-    auth_name?: true
-    auth_srid?: true
-    srtext?: true
-    proj4text?: true
-  }
-
-  export type Spatial_ref_sysCountAggregateInputType = {
-    srid?: true
-    auth_name?: true
-    auth_srid?: true
-    srtext?: true
-    proj4text?: true
-    _all?: true
-  }
-
-  export type Spatial_ref_sysAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which spatial_ref_sys to aggregate.
-     */
-    where?: spatial_ref_sysWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of spatial_ref_sys to fetch.
-     */
-    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: spatial_ref_sysWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` spatial_ref_sys from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` spatial_ref_sys.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned spatial_ref_sys
-    **/
-    _count?: true | Spatial_ref_sysCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Spatial_ref_sysAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Spatial_ref_sysSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Spatial_ref_sysMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Spatial_ref_sysMaxAggregateInputType
-  }
-
-  export type GetSpatial_ref_sysAggregateType<T extends Spatial_ref_sysAggregateArgs> = {
-        [P in keyof T & keyof AggregateSpatial_ref_sys]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateSpatial_ref_sys[P]>
-      : GetScalarType<T[P], AggregateSpatial_ref_sys[P]>
-  }
-
-
-
-
-  export type spatial_ref_sysGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: spatial_ref_sysWhereInput
-    orderBy?: spatial_ref_sysOrderByWithAggregationInput | spatial_ref_sysOrderByWithAggregationInput[]
-    by: Spatial_ref_sysScalarFieldEnum[] | Spatial_ref_sysScalarFieldEnum
-    having?: spatial_ref_sysScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Spatial_ref_sysCountAggregateInputType | true
-    _avg?: Spatial_ref_sysAvgAggregateInputType
-    _sum?: Spatial_ref_sysSumAggregateInputType
-    _min?: Spatial_ref_sysMinAggregateInputType
-    _max?: Spatial_ref_sysMaxAggregateInputType
-  }
-
-  export type Spatial_ref_sysGroupByOutputType = {
-    srid: number
-    auth_name: string | null
-    auth_srid: number | null
-    srtext: string | null
-    proj4text: string | null
-    _count: Spatial_ref_sysCountAggregateOutputType | null
-    _avg: Spatial_ref_sysAvgAggregateOutputType | null
-    _sum: Spatial_ref_sysSumAggregateOutputType | null
-    _min: Spatial_ref_sysMinAggregateOutputType | null
-    _max: Spatial_ref_sysMaxAggregateOutputType | null
-  }
-
-  type GetSpatial_ref_sysGroupByPayload<T extends spatial_ref_sysGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Spatial_ref_sysGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Spatial_ref_sysGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Spatial_ref_sysGroupByOutputType[P]>
-            : GetScalarType<T[P], Spatial_ref_sysGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type spatial_ref_sysSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    srid?: boolean
-    auth_name?: boolean
-    auth_srid?: boolean
-    srtext?: boolean
-    proj4text?: boolean
-  }, ExtArgs["result"]["spatial_ref_sys"]>
-
-  export type spatial_ref_sysSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    srid?: boolean
-    auth_name?: boolean
-    auth_srid?: boolean
-    srtext?: boolean
-    proj4text?: boolean
-  }, ExtArgs["result"]["spatial_ref_sys"]>
-
-  export type spatial_ref_sysSelectScalar = {
-    srid?: boolean
-    auth_name?: boolean
-    auth_srid?: boolean
-    srtext?: boolean
-    proj4text?: boolean
-  }
-
-
-  export type $spatial_ref_sysPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "spatial_ref_sys"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      srid: number
-      auth_name: string | null
-      auth_srid: number | null
-      srtext: string | null
-      proj4text: string | null
-    }, ExtArgs["result"]["spatial_ref_sys"]>
-    composites: {}
-  }
-
-  type spatial_ref_sysGetPayload<S extends boolean | null | undefined | spatial_ref_sysDefaultArgs> = $Result.GetResult<Prisma.$spatial_ref_sysPayload, S>
-
-  type spatial_ref_sysCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<spatial_ref_sysFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: Spatial_ref_sysCountAggregateInputType | true
-    }
-
-  export interface spatial_ref_sysDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['spatial_ref_sys'], meta: { name: 'spatial_ref_sys' } }
-    /**
-     * Find zero or one Spatial_ref_sys that matches the filter.
-     * @param {spatial_ref_sysFindUniqueArgs} args - Arguments to find a Spatial_ref_sys
-     * @example
-     * // Get one Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends spatial_ref_sysFindUniqueArgs>(args: SelectSubset<T, spatial_ref_sysFindUniqueArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
-
-    /**
-     * Find one Spatial_ref_sys that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
-     * @param {spatial_ref_sysFindUniqueOrThrowArgs} args - Arguments to find a Spatial_ref_sys
-     * @example
-     * // Get one Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends spatial_ref_sysFindUniqueOrThrowArgs>(args: SelectSubset<T, spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
-
-    /**
-     * Find the first Spatial_ref_sys that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysFindFirstArgs} args - Arguments to find a Spatial_ref_sys
-     * @example
-     * // Get one Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends spatial_ref_sysFindFirstArgs>(args?: SelectSubset<T, spatial_ref_sysFindFirstArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
-
-    /**
-     * Find the first Spatial_ref_sys that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysFindFirstOrThrowArgs} args - Arguments to find a Spatial_ref_sys
-     * @example
-     * // Get one Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends spatial_ref_sysFindFirstOrThrowArgs>(args?: SelectSubset<T, spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
-
-    /**
-     * Find zero or more Spatial_ref_sys that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
-     * 
-     * // Get first 10 Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany({ take: 10 })
-     * 
-     * // Only select the `srid`
-     * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.findMany({ select: { srid: true } })
-     * 
-     */
-    findMany<T extends spatial_ref_sysFindManyArgs>(args?: SelectSubset<T, spatial_ref_sysFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findMany">>
-
-    /**
-     * Create a Spatial_ref_sys.
-     * @param {spatial_ref_sysCreateArgs} args - Arguments to create a Spatial_ref_sys.
-     * @example
-     * // Create one Spatial_ref_sys
-     * const Spatial_ref_sys = await prisma.spatial_ref_sys.create({
-     *   data: {
-     *     // ... data to create a Spatial_ref_sys
-     *   }
-     * })
-     * 
-     */
-    create<T extends spatial_ref_sysCreateArgs>(args: SelectSubset<T, spatial_ref_sysCreateArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "create">, never, ExtArgs>
-
-    /**
-     * Create many Spatial_ref_sys.
-     * @param {spatial_ref_sysCreateManyArgs} args - Arguments to create many Spatial_ref_sys.
-     * @example
-     * // Create many Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends spatial_ref_sysCreateManyArgs>(args?: SelectSubset<T, spatial_ref_sysCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Spatial_ref_sys and returns the data saved in the database.
-     * @param {spatial_ref_sysCreateManyAndReturnArgs} args - Arguments to create many Spatial_ref_sys.
-     * @example
-     * // Create many Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Spatial_ref_sys and only return the `srid`
-     * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.createManyAndReturn({ 
-     *   select: { srid: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends spatial_ref_sysCreateManyAndReturnArgs>(args?: SelectSubset<T, spatial_ref_sysCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "createManyAndReturn">>
-
-    /**
-     * Delete a Spatial_ref_sys.
-     * @param {spatial_ref_sysDeleteArgs} args - Arguments to delete one Spatial_ref_sys.
-     * @example
-     * // Delete one Spatial_ref_sys
-     * const Spatial_ref_sys = await prisma.spatial_ref_sys.delete({
-     *   where: {
-     *     // ... filter to delete one Spatial_ref_sys
-     *   }
-     * })
-     * 
-     */
-    delete<T extends spatial_ref_sysDeleteArgs>(args: SelectSubset<T, spatial_ref_sysDeleteArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "delete">, never, ExtArgs>
-
-    /**
-     * Update one Spatial_ref_sys.
-     * @param {spatial_ref_sysUpdateArgs} args - Arguments to update one Spatial_ref_sys.
-     * @example
-     * // Update one Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends spatial_ref_sysUpdateArgs>(args: SelectSubset<T, spatial_ref_sysUpdateArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "update">, never, ExtArgs>
-
-    /**
-     * Delete zero or more Spatial_ref_sys.
-     * @param {spatial_ref_sysDeleteManyArgs} args - Arguments to filter Spatial_ref_sys to delete.
-     * @example
-     * // Delete a few Spatial_ref_sys
-     * const { count } = await prisma.spatial_ref_sys.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends spatial_ref_sysDeleteManyArgs>(args?: SelectSubset<T, spatial_ref_sysDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Spatial_ref_sys.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends spatial_ref_sysUpdateManyArgs>(args: SelectSubset<T, spatial_ref_sysUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Spatial_ref_sys.
-     * @param {spatial_ref_sysUpsertArgs} args - Arguments to update or create a Spatial_ref_sys.
-     * @example
-     * // Update or create a Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.upsert({
-     *   create: {
-     *     // ... data to create a Spatial_ref_sys
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Spatial_ref_sys we want to update
-     *   }
-     * })
-     */
-    upsert<T extends spatial_ref_sysUpsertArgs>(args: SelectSubset<T, spatial_ref_sysUpsertArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
-
-
-    /**
-     * Count the number of Spatial_ref_sys.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysCountArgs} args - Arguments to filter Spatial_ref_sys to count.
-     * @example
-     * // Count the number of Spatial_ref_sys
-     * const count = await prisma.spatial_ref_sys.count({
-     *   where: {
-     *     // ... the filter for the Spatial_ref_sys we want to count
-     *   }
-     * })
-    **/
-    count<T extends spatial_ref_sysCountArgs>(
-      args?: Subset<T, spatial_ref_sysCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Spatial_ref_sysCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Spatial_ref_sys.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Spatial_ref_sysAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Spatial_ref_sysAggregateArgs>(args: Subset<T, Spatial_ref_sysAggregateArgs>): Prisma.PrismaPromise<GetSpatial_ref_sysAggregateType<T>>
-
-    /**
-     * Group by Spatial_ref_sys.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends spatial_ref_sysGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: spatial_ref_sysGroupByArgs['orderBy'] }
-        : { orderBy?: spatial_ref_sysGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, spatial_ref_sysGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSpatial_ref_sysGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the spatial_ref_sys model
-   */
-  readonly fields: spatial_ref_sysFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for spatial_ref_sys.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__spatial_ref_sysClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the spatial_ref_sys model
-   */ 
-  interface spatial_ref_sysFieldRefs {
-    readonly srid: FieldRef<"spatial_ref_sys", 'Int'>
-    readonly auth_name: FieldRef<"spatial_ref_sys", 'String'>
-    readonly auth_srid: FieldRef<"spatial_ref_sys", 'Int'>
-    readonly srtext: FieldRef<"spatial_ref_sys", 'String'>
-    readonly proj4text: FieldRef<"spatial_ref_sys", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * spatial_ref_sys findUnique
-   */
-  export type spatial_ref_sysFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter, which spatial_ref_sys to fetch.
-     */
-    where: spatial_ref_sysWhereUniqueInput
-  }
-
-  /**
-   * spatial_ref_sys findUniqueOrThrow
-   */
-  export type spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter, which spatial_ref_sys to fetch.
-     */
-    where: spatial_ref_sysWhereUniqueInput
-  }
-
-  /**
-   * spatial_ref_sys findFirst
-   */
-  export type spatial_ref_sysFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter, which spatial_ref_sys to fetch.
-     */
-    where?: spatial_ref_sysWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of spatial_ref_sys to fetch.
-     */
-    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for spatial_ref_sys.
-     */
-    cursor?: spatial_ref_sysWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` spatial_ref_sys from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` spatial_ref_sys.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of spatial_ref_sys.
-     */
-    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
-  }
-
-  /**
-   * spatial_ref_sys findFirstOrThrow
-   */
-  export type spatial_ref_sysFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter, which spatial_ref_sys to fetch.
-     */
-    where?: spatial_ref_sysWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of spatial_ref_sys to fetch.
-     */
-    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for spatial_ref_sys.
-     */
-    cursor?: spatial_ref_sysWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` spatial_ref_sys from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` spatial_ref_sys.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of spatial_ref_sys.
-     */
-    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
-  }
-
-  /**
-   * spatial_ref_sys findMany
-   */
-  export type spatial_ref_sysFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter, which spatial_ref_sys to fetch.
-     */
-    where?: spatial_ref_sysWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of spatial_ref_sys to fetch.
-     */
-    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing spatial_ref_sys.
-     */
-    cursor?: spatial_ref_sysWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` spatial_ref_sys from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` spatial_ref_sys.
-     */
-    skip?: number
-    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
-  }
-
-  /**
-   * spatial_ref_sys create
-   */
-  export type spatial_ref_sysCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * The data needed to create a spatial_ref_sys.
-     */
-    data: XOR<spatial_ref_sysCreateInput, spatial_ref_sysUncheckedCreateInput>
-  }
-
-  /**
-   * spatial_ref_sys createMany
-   */
-  export type spatial_ref_sysCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many spatial_ref_sys.
-     */
-    data: spatial_ref_sysCreateManyInput | spatial_ref_sysCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * spatial_ref_sys createManyAndReturn
-   */
-  export type spatial_ref_sysCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many spatial_ref_sys.
-     */
-    data: spatial_ref_sysCreateManyInput | spatial_ref_sysCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * spatial_ref_sys update
-   */
-  export type spatial_ref_sysUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * The data needed to update a spatial_ref_sys.
-     */
-    data: XOR<spatial_ref_sysUpdateInput, spatial_ref_sysUncheckedUpdateInput>
-    /**
-     * Choose, which spatial_ref_sys to update.
-     */
-    where: spatial_ref_sysWhereUniqueInput
-  }
-
-  /**
-   * spatial_ref_sys updateMany
-   */
-  export type spatial_ref_sysUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update spatial_ref_sys.
-     */
-    data: XOR<spatial_ref_sysUpdateManyMutationInput, spatial_ref_sysUncheckedUpdateManyInput>
-    /**
-     * Filter which spatial_ref_sys to update
-     */
-    where?: spatial_ref_sysWhereInput
-  }
-
-  /**
-   * spatial_ref_sys upsert
-   */
-  export type spatial_ref_sysUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * The filter to search for the spatial_ref_sys to update in case it exists.
-     */
-    where: spatial_ref_sysWhereUniqueInput
-    /**
-     * In case the spatial_ref_sys found by the `where` argument doesn't exist, create a new spatial_ref_sys with this data.
-     */
-    create: XOR<spatial_ref_sysCreateInput, spatial_ref_sysUncheckedCreateInput>
-    /**
-     * In case the spatial_ref_sys was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<spatial_ref_sysUpdateInput, spatial_ref_sysUncheckedUpdateInput>
-  }
-
-  /**
-   * spatial_ref_sys delete
-   */
-  export type spatial_ref_sysDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter which spatial_ref_sys to delete.
-     */
-    where: spatial_ref_sysWhereUniqueInput
-  }
-
-  /**
-   * spatial_ref_sys deleteMany
-   */
-  export type spatial_ref_sysDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which spatial_ref_sys to delete
-     */
-    where?: spatial_ref_sysWhereInput
-  }
-
-  /**
-   * spatial_ref_sys without action
-   */
-  export type spatial_ref_sysDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-  }
-
-
-  /**
    * Model clc_epci
    */
 
@@ -6777,11 +4753,11 @@ export namespace Prisma {
   }
 
   export type Collectivites_searchbarSumAggregateOutputType = {
-    index: number | null
+    index: bigint | null
   }
 
   export type Collectivites_searchbarMinAggregateOutputType = {
-    index: number | null
+    index: bigint | null
     code_commune: string | null
     libelle_commune: string | null
     code_epci: string | null
@@ -6793,7 +4769,7 @@ export namespace Prisma {
   }
 
   export type Collectivites_searchbarMaxAggregateOutputType = {
-    index: number | null
+    index: bigint | null
     code_commune: string | null
     libelle_commune: string | null
     code_epci: string | null
@@ -6950,7 +4926,7 @@ export namespace Prisma {
   }
 
   export type Collectivites_searchbarGroupByOutputType = {
-    index: number
+    index: bigint
     code_commune: string | null
     libelle_commune: string | null
     code_epci: string | null
@@ -7021,7 +4997,7 @@ export namespace Prisma {
     name: "collectivites_searchbar"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: number
+      index: bigint
       code_commune: string | null
       libelle_commune: string | null
       code_epci: string | null
@@ -7423,7 +5399,7 @@ export namespace Prisma {
    * Fields of the collectivites_searchbar model
    */ 
   interface collectivites_searchbarFieldRefs {
-    readonly index: FieldRef<"collectivites_searchbar", 'Int'>
+    readonly index: FieldRef<"collectivites_searchbar", 'BigInt'>
     readonly code_commune: FieldRef<"collectivites_searchbar", 'String'>
     readonly libelle_commune: FieldRef<"collectivites_searchbar", 'String'>
     readonly code_epci: FieldRef<"collectivites_searchbar", 'String'>
@@ -7795,29 +5771,6 @@ export namespace Prisma {
   };
 
   export type Inconfort_thermiqueScalarFieldEnum = (typeof Inconfort_thermiqueScalarFieldEnum)[keyof typeof Inconfort_thermiqueScalarFieldEnum]
-
-
-  export const Clc_2018_2ScalarFieldEnum: {
-    pk: 'pk',
-    area_ha: 'area_ha',
-    shape_length: 'shape_length',
-    shape_area: 'shape_area',
-    label3: 'label3',
-    centroid: 'centroid'
-  };
-
-  export type Clc_2018_2ScalarFieldEnum = (typeof Clc_2018_2ScalarFieldEnum)[keyof typeof Clc_2018_2ScalarFieldEnum]
-
-
-  export const Spatial_ref_sysScalarFieldEnum: {
-    srid: 'srid',
-    auth_name: 'auth_name',
-    auth_srid: 'auth_srid',
-    srtext: 'srtext',
-    proj4text: 'proj4text'
-  };
-
-  export type Spatial_ref_sysScalarFieldEnum = (typeof Spatial_ref_sysScalarFieldEnum)[keyof typeof Spatial_ref_sysScalarFieldEnum]
 
 
   export const Clc_epciScalarFieldEnum: {
@@ -8261,119 +6214,6 @@ export namespace Prisma {
     clc_5_eau?: FloatWithAggregatesFilter<"inconfort_thermique"> | number
   }
 
-  export type clc_2018_2WhereInput = {
-    AND?: clc_2018_2WhereInput | clc_2018_2WhereInput[]
-    OR?: clc_2018_2WhereInput[]
-    NOT?: clc_2018_2WhereInput | clc_2018_2WhereInput[]
-    pk?: IntFilter<"clc_2018_2"> | number
-    area_ha?: FloatNullableFilter<"clc_2018_2"> | number | null
-    shape_length?: FloatNullableFilter<"clc_2018_2"> | number | null
-    shape_area?: FloatNullableFilter<"clc_2018_2"> | number | null
-    label3?: StringNullableFilter<"clc_2018_2"> | string | null
-    centroid?: StringNullableFilter<"clc_2018_2"> | string | null
-  }
-
-  export type clc_2018_2OrderByWithRelationInput = {
-    pk?: SortOrder
-    area_ha?: SortOrderInput | SortOrder
-    shape_length?: SortOrderInput | SortOrder
-    shape_area?: SortOrderInput | SortOrder
-    label3?: SortOrderInput | SortOrder
-    centroid?: SortOrderInput | SortOrder
-  }
-
-  export type clc_2018_2WhereUniqueInput = Prisma.AtLeast<{
-    pk?: number
-    AND?: clc_2018_2WhereInput | clc_2018_2WhereInput[]
-    OR?: clc_2018_2WhereInput[]
-    NOT?: clc_2018_2WhereInput | clc_2018_2WhereInput[]
-    area_ha?: FloatNullableFilter<"clc_2018_2"> | number | null
-    shape_length?: FloatNullableFilter<"clc_2018_2"> | number | null
-    shape_area?: FloatNullableFilter<"clc_2018_2"> | number | null
-    label3?: StringNullableFilter<"clc_2018_2"> | string | null
-    centroid?: StringNullableFilter<"clc_2018_2"> | string | null
-  }, "pk">
-
-  export type clc_2018_2OrderByWithAggregationInput = {
-    pk?: SortOrder
-    area_ha?: SortOrderInput | SortOrder
-    shape_length?: SortOrderInput | SortOrder
-    shape_area?: SortOrderInput | SortOrder
-    label3?: SortOrderInput | SortOrder
-    centroid?: SortOrderInput | SortOrder
-    _count?: clc_2018_2CountOrderByAggregateInput
-    _avg?: clc_2018_2AvgOrderByAggregateInput
-    _max?: clc_2018_2MaxOrderByAggregateInput
-    _min?: clc_2018_2MinOrderByAggregateInput
-    _sum?: clc_2018_2SumOrderByAggregateInput
-  }
-
-  export type clc_2018_2ScalarWhereWithAggregatesInput = {
-    AND?: clc_2018_2ScalarWhereWithAggregatesInput | clc_2018_2ScalarWhereWithAggregatesInput[]
-    OR?: clc_2018_2ScalarWhereWithAggregatesInput[]
-    NOT?: clc_2018_2ScalarWhereWithAggregatesInput | clc_2018_2ScalarWhereWithAggregatesInput[]
-    pk?: IntWithAggregatesFilter<"clc_2018_2"> | number
-    area_ha?: FloatNullableWithAggregatesFilter<"clc_2018_2"> | number | null
-    shape_length?: FloatNullableWithAggregatesFilter<"clc_2018_2"> | number | null
-    shape_area?: FloatNullableWithAggregatesFilter<"clc_2018_2"> | number | null
-    label3?: StringNullableWithAggregatesFilter<"clc_2018_2"> | string | null
-    centroid?: StringNullableWithAggregatesFilter<"clc_2018_2"> | string | null
-  }
-
-  export type spatial_ref_sysWhereInput = {
-    AND?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
-    OR?: spatial_ref_sysWhereInput[]
-    NOT?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
-    srid?: IntFilter<"spatial_ref_sys"> | number
-    auth_name?: StringNullableFilter<"spatial_ref_sys"> | string | null
-    auth_srid?: IntNullableFilter<"spatial_ref_sys"> | number | null
-    srtext?: StringNullableFilter<"spatial_ref_sys"> | string | null
-    proj4text?: StringNullableFilter<"spatial_ref_sys"> | string | null
-  }
-
-  export type spatial_ref_sysOrderByWithRelationInput = {
-    srid?: SortOrder
-    auth_name?: SortOrderInput | SortOrder
-    auth_srid?: SortOrderInput | SortOrder
-    srtext?: SortOrderInput | SortOrder
-    proj4text?: SortOrderInput | SortOrder
-  }
-
-  export type spatial_ref_sysWhereUniqueInput = Prisma.AtLeast<{
-    srid?: number
-    AND?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
-    OR?: spatial_ref_sysWhereInput[]
-    NOT?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
-    auth_name?: StringNullableFilter<"spatial_ref_sys"> | string | null
-    auth_srid?: IntNullableFilter<"spatial_ref_sys"> | number | null
-    srtext?: StringNullableFilter<"spatial_ref_sys"> | string | null
-    proj4text?: StringNullableFilter<"spatial_ref_sys"> | string | null
-  }, "srid">
-
-  export type spatial_ref_sysOrderByWithAggregationInput = {
-    srid?: SortOrder
-    auth_name?: SortOrderInput | SortOrder
-    auth_srid?: SortOrderInput | SortOrder
-    srtext?: SortOrderInput | SortOrder
-    proj4text?: SortOrderInput | SortOrder
-    _count?: spatial_ref_sysCountOrderByAggregateInput
-    _avg?: spatial_ref_sysAvgOrderByAggregateInput
-    _max?: spatial_ref_sysMaxOrderByAggregateInput
-    _min?: spatial_ref_sysMinOrderByAggregateInput
-    _sum?: spatial_ref_sysSumOrderByAggregateInput
-  }
-
-  export type spatial_ref_sysScalarWhereWithAggregatesInput = {
-    AND?: spatial_ref_sysScalarWhereWithAggregatesInput | spatial_ref_sysScalarWhereWithAggregatesInput[]
-    OR?: spatial_ref_sysScalarWhereWithAggregatesInput[]
-    NOT?: spatial_ref_sysScalarWhereWithAggregatesInput | spatial_ref_sysScalarWhereWithAggregatesInput[]
-    srid?: IntWithAggregatesFilter<"spatial_ref_sys"> | number
-    auth_name?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
-    auth_srid?: IntNullableWithAggregatesFilter<"spatial_ref_sys"> | number | null
-    srtext?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
-    proj4text?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
-  }
-
   export type clc_epciWhereInput = {
     AND?: clc_epciWhereInput | clc_epciWhereInput[]
     OR?: clc_epciWhereInput[]
@@ -8496,7 +6336,7 @@ export namespace Prisma {
     AND?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
     OR?: collectivites_searchbarWhereInput[]
     NOT?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
-    index?: IntFilter<"collectivites_searchbar"> | number
+    index?: BigIntFilter<"collectivites_searchbar"> | bigint | number
     code_commune?: StringNullableFilter<"collectivites_searchbar"> | string | null
     libelle_commune?: StringNullableFilter<"collectivites_searchbar"> | string | null
     code_epci?: StringNullableFilter<"collectivites_searchbar"> | string | null
@@ -8520,7 +6360,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarWhereUniqueInput = Prisma.AtLeast<{
-    index?: number
+    index?: bigint | number
     AND?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
     OR?: collectivites_searchbarWhereInput[]
     NOT?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
@@ -8555,7 +6395,7 @@ export namespace Prisma {
     AND?: collectivites_searchbarScalarWhereWithAggregatesInput | collectivites_searchbarScalarWhereWithAggregatesInput[]
     OR?: collectivites_searchbarScalarWhereWithAggregatesInput[]
     NOT?: collectivites_searchbarScalarWhereWithAggregatesInput | collectivites_searchbarScalarWhereWithAggregatesInput[]
-    index?: IntWithAggregatesFilter<"collectivites_searchbar"> | number
+    index?: BigIntWithAggregatesFilter<"collectivites_searchbar"> | bigint | number
     code_commune?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
     libelle_commune?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
     code_epci?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
@@ -8986,122 +6826,6 @@ export namespace Prisma {
     clc_5_eau?: FloatFieldUpdateOperationsInput | number
   }
 
-  export type clc_2018_2CreateInput = {
-    area_ha?: number | null
-    shape_length?: number | null
-    shape_area?: number | null
-    label3?: string | null
-    centroid?: string | null
-  }
-
-  export type clc_2018_2UncheckedCreateInput = {
-    pk?: number
-    area_ha?: number | null
-    shape_length?: number | null
-    shape_area?: number | null
-    label3?: string | null
-    centroid?: string | null
-  }
-
-  export type clc_2018_2UpdateInput = {
-    area_ha?: NullableFloatFieldUpdateOperationsInput | number | null
-    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
-    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
-    label3?: NullableStringFieldUpdateOperationsInput | string | null
-    centroid?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type clc_2018_2UncheckedUpdateInput = {
-    pk?: IntFieldUpdateOperationsInput | number
-    area_ha?: NullableFloatFieldUpdateOperationsInput | number | null
-    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
-    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
-    label3?: NullableStringFieldUpdateOperationsInput | string | null
-    centroid?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type clc_2018_2CreateManyInput = {
-    pk?: number
-    area_ha?: number | null
-    shape_length?: number | null
-    shape_area?: number | null
-    label3?: string | null
-    centroid?: string | null
-  }
-
-  export type clc_2018_2UpdateManyMutationInput = {
-    area_ha?: NullableFloatFieldUpdateOperationsInput | number | null
-    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
-    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
-    label3?: NullableStringFieldUpdateOperationsInput | string | null
-    centroid?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type clc_2018_2UncheckedUpdateManyInput = {
-    pk?: IntFieldUpdateOperationsInput | number
-    area_ha?: NullableFloatFieldUpdateOperationsInput | number | null
-    shape_length?: NullableFloatFieldUpdateOperationsInput | number | null
-    shape_area?: NullableFloatFieldUpdateOperationsInput | number | null
-    label3?: NullableStringFieldUpdateOperationsInput | string | null
-    centroid?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type spatial_ref_sysCreateInput = {
-    srid: number
-    auth_name?: string | null
-    auth_srid?: number | null
-    srtext?: string | null
-    proj4text?: string | null
-  }
-
-  export type spatial_ref_sysUncheckedCreateInput = {
-    srid: number
-    auth_name?: string | null
-    auth_srid?: number | null
-    srtext?: string | null
-    proj4text?: string | null
-  }
-
-  export type spatial_ref_sysUpdateInput = {
-    srid?: IntFieldUpdateOperationsInput | number
-    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
-    srtext?: NullableStringFieldUpdateOperationsInput | string | null
-    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type spatial_ref_sysUncheckedUpdateInput = {
-    srid?: IntFieldUpdateOperationsInput | number
-    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
-    srtext?: NullableStringFieldUpdateOperationsInput | string | null
-    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type spatial_ref_sysCreateManyInput = {
-    srid: number
-    auth_name?: string | null
-    auth_srid?: number | null
-    srtext?: string | null
-    proj4text?: string | null
-  }
-
-  export type spatial_ref_sysUpdateManyMutationInput = {
-    srid?: IntFieldUpdateOperationsInput | number
-    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
-    srtext?: NullableStringFieldUpdateOperationsInput | string | null
-    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type spatial_ref_sysUncheckedUpdateManyInput = {
-    srid?: IntFieldUpdateOperationsInput | number
-    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
-    srtext?: NullableStringFieldUpdateOperationsInput | string | null
-    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
   export type clc_epciCreateInput = {
     legend?: string | null
     epci_code?: number | null
@@ -9223,7 +6947,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarCreateInput = {
-    index: number
+    index: bigint | number
     code_commune?: string | null
     libelle_commune?: string | null
     code_epci?: string | null
@@ -9235,7 +6959,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarUncheckedCreateInput = {
-    index: number
+    index: bigint | number
     code_commune?: string | null
     libelle_commune?: string | null
     code_epci?: string | null
@@ -9247,7 +6971,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarUpdateInput = {
-    index?: IntFieldUpdateOperationsInput | number
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_commune?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
     code_epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9259,7 +6983,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarUncheckedUpdateInput = {
-    index?: IntFieldUpdateOperationsInput | number
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_commune?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
     code_epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9271,7 +6995,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarCreateManyInput = {
-    index: number
+    index: bigint | number
     code_commune?: string | null
     libelle_commune?: string | null
     code_epci?: string | null
@@ -9283,7 +7007,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarUpdateManyMutationInput = {
-    index?: IntFieldUpdateOperationsInput | number
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_commune?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
     code_epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9295,7 +7019,7 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarUncheckedUpdateManyInput = {
-    index?: IntFieldUpdateOperationsInput | number
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_commune?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
     code_epci?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9710,17 +7434,6 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -9736,86 +7449,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
-  export type clc_2018_2CountOrderByAggregateInput = {
-    pk?: SortOrder
-    area_ha?: SortOrder
-    shape_length?: SortOrder
-    shape_area?: SortOrder
-    label3?: SortOrder
-    centroid?: SortOrder
-  }
-
-  export type clc_2018_2AvgOrderByAggregateInput = {
-    pk?: SortOrder
-    area_ha?: SortOrder
-    shape_length?: SortOrder
-    shape_area?: SortOrder
-  }
-
-  export type clc_2018_2MaxOrderByAggregateInput = {
-    pk?: SortOrder
-    area_ha?: SortOrder
-    shape_length?: SortOrder
-    shape_area?: SortOrder
-    label3?: SortOrder
-    centroid?: SortOrder
-  }
-
-  export type clc_2018_2MinOrderByAggregateInput = {
-    pk?: SortOrder
-    area_ha?: SortOrder
-    shape_length?: SortOrder
-    shape_area?: SortOrder
-    label3?: SortOrder
-    centroid?: SortOrder
-  }
-
-  export type clc_2018_2SumOrderByAggregateInput = {
-    pk?: SortOrder
-    area_ha?: SortOrder
-    shape_length?: SortOrder
-    shape_area?: SortOrder
-  }
-
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -9827,54 +7460,9 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type spatial_ref_sysCountOrderByAggregateInput = {
-    srid?: SortOrder
-    auth_name?: SortOrder
-    auth_srid?: SortOrder
-    srtext?: SortOrder
-    proj4text?: SortOrder
-  }
-
-  export type spatial_ref_sysAvgOrderByAggregateInput = {
-    srid?: SortOrder
-    auth_srid?: SortOrder
-  }
-
-  export type spatial_ref_sysMaxOrderByAggregateInput = {
-    srid?: SortOrder
-    auth_name?: SortOrder
-    auth_srid?: SortOrder
-    srtext?: SortOrder
-    proj4text?: SortOrder
-  }
-
-  export type spatial_ref_sysMinOrderByAggregateInput = {
-    srid?: SortOrder
-    auth_name?: SortOrder
-    auth_srid?: SortOrder
-    srtext?: SortOrder
-    proj4text?: SortOrder
-  }
-
-  export type spatial_ref_sysSumOrderByAggregateInput = {
-    srid?: SortOrder
-    auth_srid?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type clc_epciCountOrderByAggregateInput = {
@@ -9903,6 +7491,51 @@ export namespace Prisma {
   export type clc_epciSumOrderByAggregateInput = {
     pk?: SortOrder
     epci_code?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type communesCountOrderByAggregateInput = {
@@ -9951,6 +7584,22 @@ export namespace Prisma {
     pk?: SortOrder
     densite_bati?: SortOrder
     precarite_logement?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type collectivites_searchbarCountOrderByAggregateInput = {
@@ -10025,7 +7674,11 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableFloatFieldUpdateOperationsInput = {
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
     decrement?: number
@@ -10033,11 +7686,7 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
+  export type NullableFloatFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
     decrement?: number
@@ -10157,17 +7806,6 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -10180,22 +7818,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
@@ -10242,6 +7864,33 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
 
 
   /**
@@ -10251,14 +7900,6 @@ export namespace Prisma {
      * @deprecated Use inconfort_thermiqueDefaultArgs instead
      */
     export type inconfort_thermiqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = inconfort_thermiqueDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use clc_2018_2DefaultArgs instead
-     */
-    export type clc_2018_2Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = clc_2018_2DefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use spatial_ref_sysDefaultArgs instead
-     */
-    export type spatial_ref_sysArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = spatial_ref_sysDefaultArgs<ExtArgs>
     /**
      * @deprecated Use clc_epciDefaultArgs instead
      */
