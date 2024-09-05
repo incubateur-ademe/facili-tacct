@@ -43,7 +43,7 @@ const Page = async (searchParams: SearchParams) => {
   const carteCommunes = await GetCommunes(codepci);
 
   return (
-    <Container size="xl">
+    <Container size="xl" className="mb-24">
       <Breadcrumb
         currentPageLabel= "Données territoriales : Inconfort thermique" //{`${thematique}`}
         homeLinkProps={{

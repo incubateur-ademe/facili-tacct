@@ -1,6 +1,7 @@
 "use server";
 
 import { InconfortThermique } from "@/lib/postgres/models";
+import * as Sentry from "@sentry/nextjs";
 import { PrismaClient as PostgresClient } from "../../generated/client";
 
 const PrismaPostgres = new PostgresClient();
@@ -14,10 +15,11 @@ export const GetInconfortThermique = async (code: string): Promise<InconfortTher
       },
     });
     console.timeEnd("Query Execution Time INCONFORT");
-    // console.log(value)
+    Sentry.captureMessage(`Get inconfort thermique ${code}`, "info")
     return value;
   } catch (error) {
     console.error(error);
+    Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
     process.exit(1);
   }

@@ -1,13 +1,14 @@
 generator client {
-  provider        = "prisma-client-js"
-  output          = "../src/generated/client"
-  previewFeatures = ["multiSchema"]
+    provider        = "prisma-client-js"
+    output          = "../src/generated/client"
+    binaryTargets   = ["native", "debian-openssl-3.0.x"]
+    previewFeatures = ["multiSchema"]
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("SCALINGO_POSTGRESQL_URL")
-  schemas  = ["databases", "postgis"]
+    provider = "postgresql"
+    url      = env("SCALINGO_POSTGRESQL_URL")
+    schemas  = ["databases", "postgis"]
 }
 
 model inconfort_thermique {
@@ -69,34 +70,34 @@ model inconfort_thermique {
   clc_4_humide             Float  @map("4_humide")
   clc_5_eau                Float  @map("5_eau")
 
-  @@index([index], map: "ix_inconfort_thermique_index")
-  @@schema("databases")
+    @@index([index], map: "ix_inconfort_thermique_index")
+    @@schema("databases")
 }
 
 model clc_epci {
-  pk        Int                      @id @default(autoincrement())
-  legend    String?                  @db.VarChar
-  epci_code Int?
-  geometry  Unsupported("geometry")?
+    pk        Int                      @id @default(autoincrement())
+    legend    String?                  @db.VarChar
+    epci_code Int?
+    geometry  Unsupported("geometry")?
 
-  @@index([geometry], map: "clc_epci_geometry_geom_idx", type: Gist)
-  @@schema("postgis")
+    @@index([geometry], map: "clc_epci_geometry_geom_idx", type: Gist)
+    @@schema("postgis")
 }
 
 model communes {
-  pk                 Int                      @id @default(autoincrement())
-  code_commune       String?                  @db.VarChar
-  libelle_commune    String?                  @db.VarChar
-  epci               String?                  @db.VarChar
-  libelle_epci       String?                  @db.VarChar
-  libgeo             String?                  @db.VarChar
-  coordinates        String?                  @db.VarChar
-  densite_bati       Float?
-  precarite_logement Float?
-  geometry           Unsupported("geometry")?
+    pk                 Int                      @id @default(autoincrement())
+    code_commune       String?                  @db.VarChar
+    libelle_commune    String?                  @db.VarChar
+    epci               String?                  @db.VarChar
+    libelle_epci       String?                  @db.VarChar
+    libgeo             String?                  @db.VarChar
+    coordinates        String?                  @db.VarChar
+    densite_bati       Float?
+    precarite_logement Float?
+    geometry           Unsupported("geometry")?
 
-  @@index([geometry], map: "communes_geometry_geom_idx", type: Gist)
-  @@schema("postgis")
+    @@index([geometry], map: "communes_geometry_geom_idx", type: Gist)
+    @@schema("postgis")
 }
 
 model collectivites_searchbar {
@@ -110,6 +111,6 @@ model collectivites_searchbar {
   search_code     String?
   search_libelle  String?
 
-  @@index([index], map: "ix_collectivites_searchbar_index")
-  @@schema("databases")
+    @@index([index], map: "ix_collectivites_searchbar_index")
+    @@schema("databases")
 }
