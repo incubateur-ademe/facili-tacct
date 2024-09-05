@@ -99,6 +99,7 @@ const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
         ]} 
         onTabChange={setSelectedTabId} 
         className={css({
+          boxShadow: "none",
           "::before": {
             boxShadow: "inset 0 1px 0 0 var(--border-default-grey), inset 1px 0 0 0 transparent, inset -1px 0 0 0 transparent",
           },

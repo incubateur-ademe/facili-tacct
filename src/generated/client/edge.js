@@ -210,7 +210,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Antoine\\BetaGouv\\Code\\facili-tacct\\facili-tacct\\src\\generated\\client",
+      "value": "C:\\Antoine\\Beta gouv\\Code\\facili-tacct\\src\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -221,12 +221,16 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "debian-openssl-3.0.x"
       }
     ],
     "previewFeatures": [
       "multiSchema"
     ],
-    "sourceFilePath": "C:\\Antoine\\BetaGouv\\Code\\facili-tacct\\facili-tacct\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Antoine\\Beta gouv\\Code\\facili-tacct\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

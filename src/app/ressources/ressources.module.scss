@@ -114,3 +114,10 @@
         cursor: default;
     }
 }
+
+.tilesWrapper {
+    margin: 1em;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
