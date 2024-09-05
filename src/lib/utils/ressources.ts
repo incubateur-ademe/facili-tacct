@@ -39,7 +39,7 @@ export const cards = {
       titre: 'Atelier "Mémoire"',
       tag: "Atelier",
       description:"Faites appel à la mémoire collective pour débuter sur l'exposition de votre territoire aux impacts du changement climatique.",
-      link: ""
+      link: "/ressources/atelier"
     },
     {
       id: 1,
@@ -63,7 +63,7 @@ export const cards = {
       titre: "Titre",
       tag: "Article",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dolore magna aliqua. Vitae sapien pellentesque habitant morbi tristique senectus et",
-      link: ""
+      link: "/ressources/article"
     },
     {
       id: 4,
