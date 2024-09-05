@@ -179,23 +179,6 @@ exports.Prisma.Inconfort_thermiqueScalarFieldEnum = {
   clc_5_eau: 'clc_5_eau'
 };
 
-exports.Prisma.Clc_2018_2ScalarFieldEnum = {
-  pk: 'pk',
-  area_ha: 'area_ha',
-  shape_length: 'shape_length',
-  shape_area: 'shape_area',
-  label3: 'label3',
-  centroid: 'centroid'
-};
-
-exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
-  srid: 'srid',
-  auth_name: 'auth_name',
-  auth_srid: 'auth_srid',
-  srtext: 'srtext',
-  proj4text: 'proj4text'
-};
-
 exports.Prisma.Clc_epciScalarFieldEnum = {
   pk: 'pk',
   legend: 'legend',
@@ -244,8 +227,6 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   inconfort_thermique: 'inconfort_thermique',
-  clc_2018_2: 'clc_2018_2',
-  spatial_ref_sys: 'spatial_ref_sys',
   clc_epci: 'clc_epci',
   communes: 'communes',
   collectivites_searchbar: 'collectivites_searchbar'
