@@ -1,9 +1,10 @@
+events {}
 # instruction at the http level like
 limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
 
 server {
-    charset utf-8;
     location / {
         limit_req zone=one burst=5;
+         proxy_pass <%= ENV["PRODUCTION_SITE"] %>	
     }
 }
