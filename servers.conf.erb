@@ -3,7 +3,8 @@ limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
 
 server {
     location / {
-        limit_req zone=one burst=5;
+        #nodelay parameter : NGINX immediately rejects any requests that exceed the rate limit, rather than waiting for the current time period to end before applying the limit.
+        limit_req zone=one burst=5 nodelay;
          proxy_pass <%= ENV["PRODUCTION_SITE"] %>;
     }
 }
