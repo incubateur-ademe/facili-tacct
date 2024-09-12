@@ -28,13 +28,13 @@ const DiagnosticComp = () => {
         />
         <div className={styles.cardsWrapper}>
           {cards.diagnostic.map((el, i) => (
-            el.tab === selectedTabId ? 
+            el.tab.includes(selectedTabId) ? 
               <CardComp 
                 key={i}
                 description={el.description}
                 tag={el.tag}
                 titre={el.titre}
-                link={el.link}
+                link={el.link + "?title=" + el.titre}
               /> : null))
           }
         </div>
@@ -53,7 +53,7 @@ const DiagnosticComp = () => {
                 description={el.description}
                 tag={el.tag}
                 titre={el.titre}
-                link={el.link}
+                link={el.link + "?title=" + el.titre}
               /> : null))
           }
         </div>

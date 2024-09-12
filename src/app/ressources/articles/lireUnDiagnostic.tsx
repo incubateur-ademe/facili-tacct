@@ -7,8 +7,7 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import styles from "./article.module.scss";
 
-
-const ArticleComp = () => {
+const LireUnDiagnostic = () => {
   
   return (
     <div>
@@ -178,4 +177,4 @@ const ArticleComp = () => {
   );
 };
 
-export default ArticleComp;
+export default LireUnDiagnostic;

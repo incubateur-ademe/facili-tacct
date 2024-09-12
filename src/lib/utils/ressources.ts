@@ -59,11 +59,11 @@ export const cards = {
     },
     {
       id: 3,
-      tab : "Vous n'avez pas de diagnostic",
-      titre: "Titre",
+      tab : ["Vous n'avez pas de diagnostic", "Vous découvrez le diagnostic pour la 1ère fois", "Vous voulez réviser un diagnostic connu"],
+      titre: "10 minutes pour analyser les 80 pages de votre diagnostic de vulnérabilité",
       tag: "Article",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dolore magna aliqua. Vitae sapien pellentesque habitant morbi tristique senectus et",
-      link: "/ressources/article"
+      description: "Le diagnostic de vulnérabilité est un document clé pour comprendre le territoire et ses spécificités.",
+      link: "/ressources/articles"
     },
     {
       id: 4,
@@ -76,10 +76,26 @@ export const cards = {
     {
       id: 5,
       tab : "Vous voulez réviser un diagnostic connu",
-      titre: "Évaluation en atelier",
-      tag: "Retour d'expérience",
-      description: 'Un atelier "sensible" pour évaluer les impacts du changement climatique au PNR des Pyrénées Ariégeoises (09).',
-      link: "https://librairie.ademe.fr/changement-climatique-et-energie/6223-evaluation-en-atelier-de-la-sensibilite-du-territoire-au-changement-climatique-au-pnr-pyrenees-ariegeoises-09.html"
+      titre: "Mettre en récit mon territoire pour engager",
+      tag: "Article",
+      description: "« L’humanité est une « espèce fabulatrice qui, en se racontant des histoires de plus en plus complexes, développe des capacités de coopération » - Yval Noah Harrari ; Découvrez la mise en récit.",
+      link: "/ressources/articles"
+    },
+    {
+      id: 6,
+      tab : "Vous voulez réviser un diagnostic connu",
+      titre: "La facilitation d’ateliers : une démarche éprouvée d’engagement",
+      tag: "Article",
+      description: "Pour réellement engager vos parties prenantes dans votre démarche d’adaptation appuyez-vous sur une démarche éprouvée : la facilitation d’ateliers.",
+      link: "/ressources/articles"
+    },
+    {
+      id: 7,
+      tab : ["Vous n'avez pas de diagnostic", "Vous découvrez le diagnostic pour la 1ère fois", "Vous voulez réviser un diagnostic connu"],
+      titre: "Article CdC sur la facilitation",
+      tag: "Article",
+      description: "Engager vos participants, ça s’anticipe, pour cela intégrez la facilitation d’ateliers (ou l’intelligence collective) dès conception de votre cahier des charges.",
+      link: "/ressources/articles"
     },
   ],
   inconfortThermique: [
@@ -104,10 +120,10 @@ export const cards = {
     {
       id: 0,
       tab: "",
-      titre: 'Rejoignez la communauté',
+      titre: 'Rejoignez notre communauté sur l’adaptation au changement climatique',
       tag: "",
-      description: "Donec et nisl id sapien blandit mattis. Aenean dictum odio sit amet risus. Morbi purus. Nulla a est sit amet purus venenatis iaculis. Vivamus viverra purus vel magna. Donec in justo sed odio malesuada dapibus.",
-      link: ""
+      description: "Rejoindre notre communauté c’est avoir accès à des bonnes pratiques, des contacts et retours d’expériences provenant d’autres chargés de missions.",
+      link: "https://tally.so/r/n0LrEZ"
     },
     {
       id: 1,
