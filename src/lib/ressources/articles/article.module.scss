@@ -1,5 +1,5 @@
 .introduction {
-    padding: 2.25em 0 3.75em;
+    padding: 2.25em 0 0;
     display: flex;
     flex-direction: column;
     gap: 2.25em;
@@ -22,15 +22,21 @@
             margin: 0;
         }
     }
+    li {
+        margin: 0 0 0.5rem;
+    }
 }
 
 .textBloc {
-    padding: 3.75em 0 0;
+    padding: 3.75rem 0 0;
     h2 {
-        margin: 0 0 2.25em;
+        margin: 2.25rem 0;
     }
     h3 {
-        margin: 2.5em 0 1.5em;
+        margin: 2.5rem 0 1.5rem;
+    }
+    li {
+        margin: 0 0 0.5rem;
     }
 }
 
@@ -44,6 +50,9 @@
     background-color: #f6f6f6;
     padding: 40px;
     margin: 1.5em 0 0;
+    li {
+        margin: 0 0 0.5rem;
+    }
 }
 
 .h2title {
@@ -77,5 +86,8 @@
         flex-direction: row;
         gap: 2px;
         padding: 0 2.6em;
+        a {
+            background-image: none;
+        }
     }
 }

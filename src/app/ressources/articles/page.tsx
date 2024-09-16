@@ -1,6 +1,6 @@
 import Breadcrumb from "@codegouvfr/react-dsfr/Breadcrumb";
 import { Metadata } from "next";
-import ArticleComp from "./comp";
+import ArticleComp from "./articles";
 
 export const metadata: Metadata = {
   title: "Ressources",

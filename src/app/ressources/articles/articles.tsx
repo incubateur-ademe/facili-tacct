@@ -1,10 +1,10 @@
 "use client";
+import CDC from "@/lib/ressources/articles/CDC";
+import FacilitationDateliers from "@/lib/ressources/articles/facilitationDateliers";
+import LireUnDiagnostic from "@/lib/ressources/articles/lireUnDiagnostic";
+import MiseEnRecit from "@/lib/ressources/articles/miseEnRecit";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
-import CDC from "./CDC";
-import FacilitationDateliers from "./facilitationDateliers";
-import LireUnDiagnostic from "./lireUnDiagnostic";
-import MiseEnRecit from "./miseEnRecit";
 
 const allArticles = [
   {
@@ -25,7 +25,7 @@ const allArticles = [
   }
 ];
 
-const ArticleComp = () => {
+const Article = () => {
   const searchParams = useSearchParams();
   const article = searchParams.get("title");
   return (
@@ -43,4 +43,4 @@ const ArticleComp = () => {
   );
 };
 
-export default ArticleComp;
+export default Article;
