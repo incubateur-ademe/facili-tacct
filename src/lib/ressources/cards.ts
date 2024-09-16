@@ -33,30 +33,30 @@ export const ressourcesTabs = {
 
 export const cards = {
   diagnostic: [
-    {
-      id: 0,
-      tab : "Vous n'avez pas de diagnostic",
-      titre: 'Atelier "Mémoire"',
-      tag: "Atelier",
-      description:"Faites appel à la mémoire collective pour débuter sur l'exposition de votre territoire aux impacts du changement climatique.",
-      link: "/ressources/atelier"
-    },
-    {
-      id: 1,
-      tab : "Vous n'avez pas de diagnostic",
-      titre: 'Constituer une équipe "cœur"',
-      tag: "Retour d'expérience",
-      description: "Découvrez comment et pourquoi la Communauté de Communes du Bocage Bourbonnais (03) a mis en place une « équipe cœur » afin de piloter sa démarche TACCT.",
-      link: "https://librairie.ademe.fr/7214-piloter-sa-demarche-tacct-retour-d-experience-dans-le-bocage-bourbonnais-03.html"
-    },
-    {
-      id: 2,
-      tab : "Vous n'avez pas de diagnostic",
-      titre: "Faire son diagnostic de vulnérabilité",
-      tag: "Retour d'expérience",
-      description: "Retour d'expérience sur la réalisation d'un diagnostic de vulnérabilité avec TACCT à Epernay Agglo Champagne (51).",
-      link: "https://www.climaxion.fr/docutheque/realisation-dun-diagnostic-vulnerabilite-au-changement-climatique-epernay-agglo-champagne"
-    },
+    // {
+    //   id: 0,
+    //   tab : "Vous n'avez pas de diagnostic",
+    //   titre: 'Atelier "Mémoire"',
+    //   tag: "Atelier",
+    //   description:"Faites appel à la mémoire collective pour débuter sur l'exposition de votre territoire aux impacts du changement climatique.",
+    //   link: "/ressources/atelier"
+    // },
+    // {
+    //   id: 1,
+    //   tab : "Vous n'avez pas de diagnostic",
+    //   titre: 'Constituer une équipe "cœur"',
+    //   tag: "Retour d'expérience",
+    //   description: "Découvrez comment et pourquoi la Communauté de Communes du Bocage Bourbonnais (03) a mis en place une « équipe cœur » afin de piloter sa démarche TACCT.",
+    //   link: "https://librairie.ademe.fr/7214-piloter-sa-demarche-tacct-retour-d-experience-dans-le-bocage-bourbonnais-03.html"
+    // },
+    // {
+    //   id: 2,
+    //   tab : "Vous n'avez pas de diagnostic",
+    //   titre: "Faire son diagnostic de vulnérabilité",
+    //   tag: "Retour d'expérience",
+    //   description: "Retour d'expérience sur la réalisation d'un diagnostic de vulnérabilité avec TACCT à Epernay Agglo Champagne (51).",
+    //   link: "https://www.climaxion.fr/docutheque/realisation-dun-diagnostic-vulnerabilite-au-changement-climatique-epernay-agglo-champagne"
+    // },
     {
       id: 3,
       tab : ["Vous n'avez pas de diagnostic", "Vous découvrez le diagnostic pour la 1ère fois", "Vous voulez réviser un diagnostic connu"],
