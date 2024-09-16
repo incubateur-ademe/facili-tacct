@@ -1,11 +1,11 @@
 "use client";
-import { cards, ressourcesTabs } from "@/lib/utils/ressources";
+import { cards, ressourcesTabs } from "@/lib/ressources/cards";
 import { useState } from "react";
 import { CardComp } from "./CustomCard";
 import styles from "./ressources.module.scss";
-import { TabComp } from "./tabComp";
+import { TabComp } from "./tabs";
 
-const DiagnosticComp = () => {
+const RessourcesCards = () => {
   const [selectedTabId, setSelectedTabId] = useState("Vous n'avez pas de diagnostic");
 
   const handleTab = (tab: string) => {
@@ -74,4 +74,4 @@ const DiagnosticComp = () => {
   )
 };
 
-export default DiagnosticComp;
+export default RessourcesCards;
