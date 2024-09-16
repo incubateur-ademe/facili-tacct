@@ -1,11 +1,11 @@
 "use client";
-import { cards, ressourcesTabs } from "@/lib/utils/ressources";
+import { cards, ressourcesTabs } from "@/lib/ressources/cards";
 import { useState } from "react";
 import { CardComp } from "./CustomCard";
 import styles from "./ressources.module.scss";
-import { TabComp } from "./tabComp";
+import { TabComp } from "./tabs";
 
-const DiagnosticComp = () => {
+const RessourcesCards = () => {
   const [selectedTabId, setSelectedTabId] = useState("Vous n'avez pas de diagnostic");
 
   const handleTab = (tab: string) => {
@@ -28,13 +28,13 @@ const DiagnosticComp = () => {
         />
         <div className={styles.cardsWrapper}>
           {cards.diagnostic.map((el, i) => (
-            el.tab === selectedTabId ? 
+            el.tab.includes(selectedTabId) ? 
               <CardComp 
                 key={i}
                 description={el.description}
                 tag={el.tag}
                 titre={el.titre}
-                link={el.link}
+                link={el.link + "?title=" + el.titre}
               /> : null))
           }
         </div>
@@ -53,7 +53,7 @@ const DiagnosticComp = () => {
                 description={el.description}
                 tag={el.tag}
                 titre={el.titre}
-                link={el.link}
+                link={el.link + "?title=" + el.titre}
               /> : null))
           }
         </div>
@@ -74,4 +74,4 @@ const DiagnosticComp = () => {
   )
 };
 
-export default DiagnosticComp;
+export default RessourcesCards;
