@@ -67,10 +67,6 @@ const RootLayout = ({ children }: PropsWithChildren) => {
               contentDescription={`${config.name} est un service développé par l'accélérateur de la transition écologique de l'ADEME.`}
               bottomItems={[
                 {
-                  text: "CGU",
-                  linkProps: { href: "/cgu" },
-                },
-                {
                   text: "Politique de confidentialité",
                   linkProps: { href: "/politique-de-confidentialite" },
                 },
