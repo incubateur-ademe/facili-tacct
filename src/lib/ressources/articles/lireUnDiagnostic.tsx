@@ -7,9 +7,8 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import styles from "./article.module.scss";
 
+const LireUnDiagnostic = () => {
 
-const ArticleComp = () => {
-  
   return (
     <div>
       <h1>Lire un diagnostic en 10 min</h1>
@@ -102,9 +101,6 @@ const ArticleComp = () => {
           ce qui nécessite une expertise territoriale assez fine, exigeant le recours aux services ou aux acteurs locaux pertinents ; 
           cela explique qu’ils soient souvent peu présents dans les diagnostics. C’est pourtant leur présence qui permettra de qualifier les enjeux de votre territoire.
         </p>
-      
-      </div>
-      <div className={styles.textBloc}>
         <h2>Vos enjeux sont-ils priorisés ? Comment ?</h2>
         <p>
           La stratégie d’action, qui suit logiquement la réalisation du diagnostic, sera difficile si celui ci fournit une liste ‘à la Prévert’ 
@@ -148,7 +144,7 @@ const ArticleComp = () => {
             Compléter les données “manquantes” si vous en avez identifié. Réunissez les services et partenaires si les enjeux ne sont pas priorisés.
           </li>
           <li>
-            Le travail de diagnostic ne fournit pas des listes d’actions à mener : ce travail reste à faire ! Heureusement les enjeux prioritaires vous permettent d’identifier rapidement des **leviers** d’actions qui pourront faire l’objet de discussion.
+            Le travail de diagnostic ne fournit pas des listes d’actions à mener : ce travail reste à faire ! Heureusement les enjeux prioritaires vous permettent d’identifier rapidement des leviers d’actions qui pourront faire l’objet de discussion.
           </li>
           <li>
             Le diagnostic de vulnérabilité va devoir évoluer dans le temps en fonction de ce qui se passe sur votre territoire. Définir des niveaux d’impact (à évaluer par des indicateurs à suivre) vous permettra de situer la collectivité par rapport à des conséquences que vous avez définies ; cela facilitera sa mise à jour.
@@ -178,4 +174,4 @@ const ArticleComp = () => {
   );
 };
 
-export default ArticleComp;
+export default LireUnDiagnostic;

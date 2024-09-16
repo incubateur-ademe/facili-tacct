@@ -1,7 +1,7 @@
 import Breadcrumb from "@codegouvfr/react-dsfr/Breadcrumb";
 import { Metadata } from "next";
 import { Container } from "../../dsfr/server";
-import DiagnosticComp from "./diagnostic";
+import RessourcesCards from "./cards";
 
 export const metadata: Metadata = {
   title: "Ressources",
@@ -19,7 +19,7 @@ const Ressources = () => {
         }}
         segments={[]}
       />
-      <DiagnosticComp />
+      <RessourcesCards />
     </Container>
   )
 };
