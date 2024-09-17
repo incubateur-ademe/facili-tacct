@@ -172,11 +172,11 @@ exports.Prisma.Inconfort_thermiqueScalarFieldEnum = {
   hauteur: 'hauteur',
   h_x_s: 'h_x_s',
   densite_bati: 'densite_bati',
-  clc_1_artificialise: 'clc_1_artificialise',
   clc_2_agricole: 'clc_2_agricole',
   clc_3_foret_semiNaturel: 'clc_3_foret_semiNaturel',
   clc_4_humide: 'clc_4_humide',
-  clc_5_eau: 'clc_5_eau'
+  clc_5_eau: 'clc_5_eau',
+  clc_1_artificialise: 'clc_1_artificialise'
 };
 
 exports.Prisma.Clc_epciScalarFieldEnum = {

@@ -11,36 +11,36 @@ import { InconfortThermique } from "@/lib/postgres/models";
 import styles from "./themes.module.scss";
 
 type DataAge = {
-  P20_POP80P: number;
-  P20_POP80P_PSEUL: number;
+  P20_POP80P?: number;
+  P20_POP80P_PSEUL?: number;
   code_commune: string;
   epci: string;
   libelle_epci: string;
   libelle_geographique: string;
-  over_80_sum_1968: number;
-  over_80_sum_1975: number;
-  over_80_sum_1982: number;
-  over_80_sum_1990: number;
-  over_80_sum_1999: number;
-  over_80_sum_2009: number;
-  over_80_sum_2014: number;
-  over_80_sum_2020: number;
-  to_80_sum_1968: number;
-  to_80_sum_1975: number;
-  to_80_sum_1982: number;
-  to_80_sum_1990: number;
-  to_80_sum_1999: number;
-  to_80_sum_2009: number;
-  to_80_sum_2014: number;
-  to_80_sum_2020: number;
-  under_4_sum_1968: number;
-  under_4_sum_1975: number;
-  under_4_sum_1982: number;
-  under_4_sum_1990: number;
-  under_4_sum_1999: number;
-  under_4_sum_2009: number;
-  under_4_sum_2014: number;
-  under_4_sum_2020: number;
+  over_80_sum_1968?: number;
+  over_80_sum_1975?: number;
+  over_80_sum_1982?: number;
+  over_80_sum_1990?: number;
+  over_80_sum_1999?: number;
+  over_80_sum_2009?: number;
+  over_80_sum_2014?: number;
+  over_80_sum_2020?: number;
+  to_80_sum_1968?: number;
+  to_80_sum_1975?: number;
+  to_80_sum_1982?: number;
+  to_80_sum_1990?: number;
+  to_80_sum_1999?: number;
+  to_80_sum_2009?: number;
+  to_80_sum_2014?: number;
+  to_80_sum_2020?: number;
+  under_4_sum_1968?: number;
+  under_4_sum_1975?: number;
+  under_4_sum_1982?: number;
+  under_4_sum_1990?: number;
+  under_4_sum_1999?: number;
+  under_4_sum_2009?: number;
+  under_4_sum_2014?: number;
+  under_4_sum_2020?: number;
 };
 
 const sumProperty = (
@@ -72,7 +72,7 @@ const sumProperty = (
     | "under_4_sum_2020",
 ) => {
   return items.reduce(function (a, b) {
-    return a + b[property];
+    return a + (b[property] || 0);
   }, 0);
 }
 
@@ -127,6 +127,9 @@ export const GrandAgeIsolement = (props: {
       (sumProperty(grandAgeIsolement, "to_80_sum_2020") + sumProperty(grandAgeIsolement, "under_4_sum_2020"))
     ).toFixed(2),
   };
+  const yGraphData = Object.values(yData).map(Number).map(value => isNaN(value) ? 0 : value);
+
+  console.log("yGraphData", yGraphData);
 
   const title =
     "La proportion de personnes âgées que nous avons considérée correspond au pourcentage des personnes de plus de 80 ans dans la population à chaque recensement INSEE.";
@@ -169,7 +172,7 @@ export const GrandAgeIsolement = (props: {
               </p>
               {yData.over_80_2020_percent_epci ? (
                 <div  style={{backgroundColor:"white", height: "500px", width: "100%"}}>
-                  <LineChart1 xData={xData} yData={Object.values(yData).map(Number)}/>
+                  <LineChart1 xData={xData} yData={yGraphData}/>
                 </div>
               ) : (
                 <Loader />
