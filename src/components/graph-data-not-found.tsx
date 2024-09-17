@@ -22,7 +22,7 @@ export function GraphDataNotFound({ code }: Props) {
     >
       <GridCol lg={5}>
         <h4>Données indisponibles</h4>
-        <p>Pour l'EPCI que vous avez renseigné (code SIREN: {code}), nous ne disposons pas de ce type de donnée. </p>
+        <p>Pour la collectivité que vous avez renseignée (code : {code}), nous ne disposons pas de ce type de donnée. </p>
       </GridCol>
       <GridCol lg={6}>
         <Image src={GraphImage} alt="" width={0} height={0} style={{ width: "90%", height: "auto" }} />
