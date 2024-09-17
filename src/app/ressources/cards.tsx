@@ -20,7 +20,23 @@ const RessourcesCards = () => {
 
   return (
     <div>
-      <div className={styles.ressourcesWrapper} style={{ padding: "0 0 4em 0" }}>
+      <div className={styles.ressourcesWrapper} style={{ padding: "0 0 4em 0" }}>        
+        <div className={styles.cardsWrapper}>
+          {cards.cartesPermanentes.map((el, i) => (
+            <CardComp 
+              key={i}
+              description={el.description}
+              titre={el.titre}
+              link={el.link}
+              backgroundColor="#E3E3FD"
+              textColor="#161616"
+              titleColor="#161616"
+              logoColor="#000091"
+            />))
+          }
+        </div>
+      </div>
+      <div className={styles.ressourcesWrapper} style={{ padding: "4em 0" }}>
         <TabComp 
           defaultTab="Vous n'avez pas de diagnostic"
           data={ressourcesTabs.diagnostic}
@@ -55,18 +71,6 @@ const RessourcesCards = () => {
                 titre={el.titre}
                 link={el.link + "?title=" + el.titre}
               /> : null))
-          }
-        </div>
-      </div>
-      <div className="py-16">
-        <div className={styles.cardsWrapper}>
-          {cards.cartesPermanentes.map((el, i) => (
-            <CardComp 
-              key={i}
-              description={el.description}
-              titre={el.titre}
-              link={el.link}
-            />))
           }
         </div>
       </div>
