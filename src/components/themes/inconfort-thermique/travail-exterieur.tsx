@@ -96,12 +96,12 @@ export const TravailExterieur = (props: {
                 { codgeo ?
                   <p style={{color: "#161616", margin:"0 0 0.5em"}}>
                     Dans la commune de {travailExterieur[0]?.libelle_geographique}, la part cumulée des emplois dans les secteurs à risque est de{" "}
-                    <b>{travailExt?.toFixed(1)}%</b>, soit {sums.sumAgriculture + sums.sumConstruction} personnes.
+                    <b>{travailExt?.toFixed(1)}%</b>, soit {(sums.sumAgriculture + sums.sumConstruction).toFixed(0)} personnes.
                   </p>
                   : 
                   <p style={{color: "#161616", margin:"0 0 0.5em"}}>
                     Dans l'EPCI {travailExterieur[0]?.libelle_epci}, la part cumulée des emplois dans les secteurs à risque est de{" "}
-                    <b>{travailExt?.toFixed(1)}%</b>, soit {sums.sumAgriculture + sums.sumConstruction} personnes.
+                    <b>{travailExt?.toFixed(1)}%</b>, soit {(sums.sumAgriculture + sums.sumConstruction).toFixed(0)} personnes.
                   </p>
                 }
                 <CustomTooltip title={title} />
