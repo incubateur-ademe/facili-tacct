@@ -76,6 +76,12 @@ const sumProperty = (
   }, 0);
 }
 
+const sum = (arr: number[]) => {
+  return arr.reduce(function (a, b) {
+    return a + b;
+  }, 0);
+}
+
 export const GrandAgeIsolement = (props: {
   inconfort_thermique: InconfortThermique[];
   data: Array<{
@@ -90,7 +96,7 @@ export const GrandAgeIsolement = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo")!;
   const codepci = searchParams.get("codepci")!;
-  const xData: string[] = ["1968", "1975", "1982", "1990", "1999", "2009", "2014", "2020"];
+  const xData = ["1968", "1975", "1982", "1990", "1999", "2009", "2014", "2020"];
   const grandAgeIsolement = inconfort_thermique.map(grandAgeIsolementMapper);
 
   const yData = {
@@ -129,14 +135,12 @@ export const GrandAgeIsolement = (props: {
   };
   const yGraphData = Object.values(yData).map(Number).map(value => isNaN(value) ? 0 : value);
 
-  console.log("yGraphData", yGraphData);
-
   const title =
     "La proportion de personnes âgées que nous avons considérée correspond au pourcentage des personnes de plus de 80 ans dans la population à chaque recensement INSEE.";
 
   return (
     <>
-      {inconfort_thermique.length ? (
+      {inconfort_thermique.length && sum(yGraphData) != 0 ? (
         <div className={styles.container}>
           <div className="w-2/5">
             <div className={styles.explicationWrapper}>

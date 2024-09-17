@@ -8,9 +8,13 @@ import { Map } from "@/components/maps/CLC";
 import { vegetalisationMapper } from "@/lib/mapper/inconfortThermique";
 import { CLC, InconfortThermique } from "@/lib/postgres/models";
 
+import GraphNotFound from "@/assets/images/data_not_found.svg";
 import { VegetalisationDto } from "@/lib/dto";
+import Image from "next/image";
 import styles from "./themes.module.scss";
 import { LegendCLC } from "./vegetalisation-legend";
+
+const GraphImage = GraphNotFound as HTMLImageElement;
 
 const sumProperty = (
   items: VegetalisationDto[],
@@ -30,8 +34,6 @@ export const Vegetalisation = (props: {
   const codgeo = searchParams.get("codgeo");
   const codepci = searchParams.get("codepci")!;
   const vegetalisation = inconfort_thermique.map(vegetalisationMapper);
-
-  // console.log(vegetalisation);
   const foret_sum = sumProperty(vegetalisation, "clc_3_foret_semiNaturel");
   const foret_percent =
     (100 * sumProperty(vegetalisation, "clc_3_foret_semiNaturel")) /
@@ -53,7 +55,7 @@ export const Vegetalisation = (props: {
 
   return (
     <>
-      {clc && vegetalisation ? (
+      { vegetalisation ? (
         <div className={styles.container}>
           {vegetalisation.length ? (
             <>
@@ -87,19 +89,24 @@ export const Vegetalisation = (props: {
                 </div>
               </div>
               <div className="w-3/5">
-                <div className={styles.graphWrapper}>
-                  <p style={{ padding: "1em", margin: "0" }}>
-                    <b>Cartographie des différents types de sols</b>
-                  </p>
-                  <HtmlTooltip title={<LegendCLC />} placement="left">
-                    <div>
-                      <Map clc={clc} />
-                    </div>
-                  </HtmlTooltip>
-                  <p style={{ padding: "1em", margin: "0" }}>
-                    Source : <b style={{ color: "#0063CB" }}>CORINE Land Cover</b>
-                  </p>
-                </div>
+                {
+                  clc.length > 0 ? 
+                  <div className={styles.graphWrapper}>
+                    <p style={{ padding: "1em", margin: "0" }}>
+                      <b>Cartographie des différents types de sols</b>
+                    </p>
+                    <HtmlTooltip title={<LegendCLC />} placement="left">
+                      <div>
+                        <Map clc={clc} />
+                      </div>
+                    </HtmlTooltip>
+                    <p style={{ padding: "1em", margin: "0" }}>
+                      Source : <b style={{ color: "#0063CB" }}>CORINE Land Cover</b>
+                    </p>
+                  </div>
+                  : <Image src={GraphImage} alt="" width={0} height={0} style={{ width: "90%", height: "auto" }} />
+                }
+                
               </div>
             </>
           ) : (
