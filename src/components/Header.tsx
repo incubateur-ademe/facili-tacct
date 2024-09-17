@@ -35,7 +35,6 @@ export const HeaderComp = () => {
       const temp = codgeo !== null ? await GetInconfortThermique(codgeo) 
         : codepci !== null ? await GetInconfortThermique(codepci) 
         : void 0;
-
       temp && codgeo ? setCommune(temp[0].libelle_geographique) : setCommune("");
       temp && !codgeo ? setEpci(temp[0].libelle_epci) : setEpci("");
     })();
