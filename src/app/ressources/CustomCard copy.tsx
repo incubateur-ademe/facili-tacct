@@ -8,13 +8,9 @@ interface Props {
   titre: string;
   tag?: string;
   link: string;
-  backgroundColor?: string;
-  textColor?: string;
-  titleColor?: string;
-  logoColor?: string;
 }
 
-export const CardComp = ({ description, titre, tag, link, backgroundColor, textColor, titleColor, logoColor }: Props) => {
+export const CardComp = ({ description, titre, tag, link }: Props) => {
   const { css } = useStyles();
   return (
     <div
@@ -36,14 +32,6 @@ export const CardComp = ({ description, titre, tag, link, backgroundColor, textC
         titleAs="h2"
         className={css({
           height: "100%",
-          backgroundColor: backgroundColor,
-          color: textColor,
-            "a": {
-              color: titleColor + "!important",
-              "&::after": {
-                color: logoColor,
-              },
-            },
         })}
       />
     </div>
