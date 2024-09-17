@@ -32,6 +32,7 @@ yarn-error.log*
 .env*.local
 .env
 .env.sentry-build-plugin
+.env.preprod
 
 # vercel
 .vercel
