@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import { ResponsiveLine } from "@/lib/nivo/line";
+import { useEffect, useState } from "react";
 
 type Props = {
   xData: Array<string | undefined>;
@@ -18,8 +17,6 @@ export const LineChart1 = (props: Props) => {
   const { xData, yData } = props;
   const [children, setChildren] = useState<GraphData[]>([]);
   const tempChildren: GraphData[] = [];
-  // console.log('children', children)
-  // console.log('yData', yData)
 
   useEffect(() => {
     xData.forEach((item, id) => {
@@ -45,7 +42,7 @@ export const LineChart1 = (props: Props) => {
       colors={"rgba(242, 133, 2, 0.9)"}
       yScale={{
         type: "linear",
-        min: Math.min(...yData) - 1,
+        min: Math.min(...yData) <= 0 ? 0 : Math.min(...yData) - 1,
         max: Math.max(...yData) + 1,
       }}
       margin={{

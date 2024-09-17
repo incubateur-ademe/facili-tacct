@@ -21,6 +21,11 @@ const average = (
   prop: "age_bati_pre_19" | "age_bati_19_45" | "age_bati_46_90" | "age_bati_91_05" | "age_bati_post06"
 ) => array.reduce((a: number, b: AgeBatiDto) => a + b[prop], 0) / array.length;
 
+const sum = (arr: number[]) => {
+  return arr.reduce(function (a, b) {
+    return a + b;
+  }, 0);
+}
 
 export const AgeBati = (props: {
   inconfort_thermique: InconfortThermique[];
@@ -82,7 +87,7 @@ export const AgeBati = (props: {
 
   return (
     <>
-      {inconfort_thermique.length ? (
+      {inconfort_thermique.length && sum(Object.values(averages)) != 0 ? (
         <div className={styles.container}>
           <div className="w-2/5">
             <div className={styles.explicationWrapper}>

@@ -88,7 +88,7 @@ export const TravailExterieur = (props: {
     "Le travail en extérieur correspond aux travailleurs dans les secteurs de la construction, de l'agriculture, de la sylviculture et de la pêche.";
   return (
     <>
-      {inconfort_thermique.length ? (
+      {inconfort_thermique.length && travailExt ? (
         <div className={styles.container}>
           <div className="w-2/5">
             {sums.sumConstruction || sums.sumAgriculture ? (
