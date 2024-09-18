@@ -31,7 +31,7 @@ Le nettoyage et le prétraitement de la donnée par rapport à la base original 
 Ensuite, cette donnée est intégrée à Postgres et requêtée par le frontend.
 
 <p align="center">
-  <img src="./flowIntegration.svg" />
+  <img src="./public/flowIntegration.svg" />
 </p>
 
 ## Structure des bases de données
@@ -42,4 +42,4 @@ La donnée stockée correspond à des données socio-économiques spécifiques �
 
 Le schéma databases regroupe les différentes thématiques et un schéma séparé est utilisé pour stocker les données géographique qui nécéssitent l'extension postgis.
 
-![alt text](./postgresStructure.svg)
+![alt text](./public/postgresStructure.svg)
