@@ -55,9 +55,15 @@ const config = {
     return config;
   },
   productionBrowserSourceMaps: false,
-  experimental: {
+experimental: {
     typedRoutes: true,
     serverSourceMaps: false,
+    serverActions: {
+          allowedOrigins: [
+            'facili-tacct.beta.gouv.fr',
+            'facili-tacct.osc-fr1.scalingo.io', // Codespaces
+          ],
+        }
   },
   eslint: {
     ignoreDuringBuilds: true,
