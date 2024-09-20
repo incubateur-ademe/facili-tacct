@@ -58,13 +58,12 @@ const config = {
     experimental: {
         typedRoutes: true,
         serverSourceMaps: false,
-        // serverActions: {
-        //   allowedOrigins: [
-        //     process.env.DOMAIN_URL,
-        //     process.env.SCALINGO_URL,
-        //     process.env.NGINX_URL,
-        //   ],
-        // }
+        serverActions: {
+          allowedOrigins: [
+            process.env.DOMAIN_URL,
+            process.env.NGINX_URL,
+          ],
+        }
     },
     eslint: {
       ignoreDuringBuilds: true,

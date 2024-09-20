@@ -3,11 +3,12 @@ import { type Metadata } from "next";
 
 import { themes } from "@/lib/utils/themes";
 
+import { Loader } from "@/components/loader";
 import { GetCommunes } from "@/lib/queries/cartographie";
 import { GetInconfortThermique } from "@/lib/queries/thematiques";
+import dynamic from "next/dynamic";
 import { NoticeComp } from "../../dsfr/base/Notice";
 import { Container } from "../../dsfr/server";
-import PageComp from "./PageComp";
 import styles from "./donnees.module.scss";
 
 export const metadata: Metadata = {
@@ -22,6 +23,11 @@ type SearchParams = {
     thematique: string;
   };
 };
+
+const DynamicPageComp = dynamic(() => import("./PageComp"), {
+  ssr: false,
+  loading: () => <Loader />,
+});
 
 const Page = async (searchParams: SearchParams) => {
   const theme = themes.inconfort_thermique;
@@ -50,7 +56,7 @@ const Page = async (searchParams: SearchParams) => {
       />
       <NoticeComp title="Explorez des leviers d'action possibles en réduisant la sensibilité de votre territoire à l'inconfort thermique." />
       <div className={styles.container}>
-        <PageComp
+        <DynamicPageComp
           data={theme}
           inconfort_thermique={dbInconfortThermique!}
           carteCommunes={carteCommunes}
