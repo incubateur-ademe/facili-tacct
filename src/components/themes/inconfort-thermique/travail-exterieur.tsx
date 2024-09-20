@@ -5,10 +5,11 @@ import { useSearchParams } from "next/navigation";
 import { PieChart1 } from "@/components/charts/pieChart1";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
-import { CustomTooltip } from "@/components/utils/CalculTooltip";
 import { travailExtDto } from "@/lib/dto";
 import { travailExtMapper } from "@/lib/mapper/inconfortThermique";
 import { InconfortThermique } from "@/lib/postgres/models";
+import { CustomTooltip } from "@/utils/CalculTooltip";
+import { Sum } from "@/utils/reusableFunctions/sum";
 import styles from "./themes.module.scss";
 
 const sumProperty = (
@@ -17,12 +18,6 @@ const sumProperty = (
 ) => {
   return items.reduce(function (a, b) {
     return a + b[prop];
-  }, 0);
-}
-
-const sum = (arr: number[]) => {
-  return arr.reduce(function (a, b) {
-    return a + b;
   }, 0);
 }
 
@@ -48,41 +43,41 @@ export const TravailExterieur = (props: {
       label: "Agriculture",
       count: sums.sumAgriculture,
       color: "#68D273",
-      value: Number(((100 * sums.sumAgriculture) / sum(Object.values(sums))).toFixed(1)),
+      value: Number(((100 * sums.sumAgriculture) / Sum(Object.values(sums))).toFixed(1)),
     },
     {
       id: "Industrie manufacturière, industries extractives et autres",
       label: "Industries",
       count: sums.sumIndustries,
       color: "#E4FFE3",
-      value: Number(((100 * sums.sumIndustries) / sum(Object.values(sums))).toFixed(1)),
+      value: Number(((100 * sums.sumIndustries) / Sum(Object.values(sums))).toFixed(1)),
     },
     {
       id: "Construction",
       label: "Construction",
       count: sums.sumConstruction,
       color: "#BD72D6",
-      value: Number(((100 * sums.sumConstruction) / sum(Object.values(sums))).toFixed(1)),
+      value: Number(((100 * sums.sumConstruction) / Sum(Object.values(sums))).toFixed(1)),
     },
     {
       id: "Commerce, transports et services divers",
       label: "Commerces et transports",
       count: sums.sumCommerce,
       color: "#FFF6E3",
-      value: Number(((100 * sums.sumCommerce) / sum(Object.values(sums))).toFixed(1)),
+      value: Number(((100 * sums.sumCommerce) / Sum(Object.values(sums))).toFixed(1)),
     },
     {
       id: "Administration publique, enseignement, santé humaine et action sociale",
       label: "Administations",
       count: sums.sumAdministration,
       color: "#E3EDFF",
-      value: Number(((100 * sums.sumAdministration) / sum(Object.values(sums))).toFixed(1)),
+      value: Number(((100 * sums.sumAdministration) / Sum(Object.values(sums))).toFixed(1)),
     },
   ];
 
   const travailExt =
-    Number(((100 * sums.sumConstruction) / sum(Object.values(sums))).toFixed(1)) +
-    Number(((100 * sums.sumAgriculture) / sum(Object.values(sums))).toFixed(1));
+    Number(((100 * sums.sumConstruction) / Sum(Object.values(sums))).toFixed(1)) +
+    Number(((100 * sums.sumAgriculture) / Sum(Object.values(sums))).toFixed(1));
 
   const title =
     "Le travail en extérieur correspond aux travailleurs dans les secteurs de la construction, de l'agriculture, de la sylviculture et de la pêche.";

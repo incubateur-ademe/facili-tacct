@@ -1,6 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
+
+This is a Next.js project
 
 First, run the development server:
 
@@ -14,23 +14,32 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Projet Facili-tacct
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Facili-tacct a pour but d'accompagner les collectivités pour une meilleure appropriation de leur diagnostic de vulnérabilité.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+L'outil doit pouvoir proposer aux collectivités de la donnée socio-économique en lien avec des thématiques liées à l'adaptation au changement climatique.
 
-## Learn More
+L'objectif est donc de proposer de l'information territorialisée et pertinente pour engager les chargés de mission dans des plans d'adapatation.
 
-To learn more about Next.js, take a look at the following resources:
+## Flow pour l'intégration d'un indicateur
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Après le choix d'une thématique et des indicateurs pertinents en lien avec cette thématique, nous devons récupérer cette donnée et l'adapter pour retourner l'information de façon cohérente pour une collectivité.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Le nettoyage et le prétraitement de la donnée par rapport à la base original se fait par Notebook python. L'intérêt est de limiter la taille des tables pour obtenir de meilleures performances.
 
-## Deploy on Vercel
+Ensuite, cette donnée est intégrée à Postgres et requêtée par le frontend.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<p align="center">
+  <img src="./public/flowIntegration.svg" />
+</p>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Structure des bases de données
+
+Nous utilisons PostgreSQL pour le stockage de nos données (cf adr 001-stack).
+
+La donnée stockée correspond à des données socio-économiques spécifiques à une thématique.
+
+Le schéma databases regroupe les différentes thématiques et un schéma séparé est utilisé pour stocker les données géographique qui nécéssitent l'extension postgis.
+
+![alt text](./public/postgresStructure.svg)

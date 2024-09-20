@@ -1,3 +1,4 @@
+"use client";
 import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses, type TooltipProps } from "@mui/material/Tooltip";
 import { useSearchParams } from "next/navigation";
@@ -25,11 +26,12 @@ const sumProperty = (
   }, 0);
 }
 
-export const Vegetalisation = (props: {
+const Vegetalisation = (props: {
   clc: CLC[];
   inconfort_thermique: InconfortThermique[];
 }) => {
-  const { clc, inconfort_thermique } = props;
+  const { inconfort_thermique, clc } = props;
+  // const [clc, setClc] = useState<CLC[]>();
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo");
   const codepci = searchParams.get("codepci")!;
@@ -90,7 +92,7 @@ export const Vegetalisation = (props: {
               </div>
               <div className="w-3/5">
                 {
-                  clc.length > 0 ? 
+                  clc && clc.length > 0 ? 
                   <div className={styles.graphWrapper}>
                     <p style={{ padding: "1em", margin: "0" }}>
                       <b>Cartographie des différents types de sols</b>
@@ -104,9 +106,9 @@ export const Vegetalisation = (props: {
                       Source : <b style={{ color: "#0063CB" }}>CORINE Land Cover</b>
                     </p>
                   </div>
-                  : <Image src={GraphImage} alt="" width={0} height={0} style={{ width: "90%", height: "auto" }} />
+                  : clc ? <Image src={GraphImage} alt="" width={0} height={0} style={{ width: "90%", height: "auto" }} />
+                  : <Loader />
                 }
-                
               </div>
             </>
           ) : (
@@ -119,3 +121,5 @@ export const Vegetalisation = (props: {
     </>
   );
 };
+
+export default Vegetalisation;
