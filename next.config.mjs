@@ -44,92 +44,92 @@ const ContentSecurityPolicy = Object.entries(csp)
 
 /** @type {import('next').NextConfig} */
 const config = {
-  poweredByHeader: false,
-  swcMinify: true,
-  webpack: config => {
-    config.module.rules.push({
-      test: /\.(woff2|webmanifest)$/,
-      type: "asset/resource",
-    });
-    //config.infrastructureLogging = { debug: /PackFileCache/ };
-    return config;
-  },
-  productionBrowserSourceMaps: false,
-experimental: {
-    typedRoutes: true,
-    serverSourceMaps: false,
-    serverActions: {
+    poweredByHeader: false,
+    swcMinify: true,
+    webpack: config => {
+      config.module.rules.push({
+        test: /\.(woff2|webmanifest)$/,
+        type: "asset/resource",
+      });
+      //config.infrastructureLogging = { debug: /PackFileCache/ };
+      return config;
+    },
+    productionBrowserSourceMaps: false,
+    experimental: {
+        typedRoutes: true,
+        serverSourceMaps: false,
+        serverActions: {
           allowedOrigins: [
-            'facili-tacct.beta.gouv.fr',
-            'facili-tacct.osc-fr1.scalingo.io', // Codespaces
+            process.env.SCALINGO_URL,
+            process.env.NGINX_URL,
           ],
         }
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  output: "standalone",
-  env: {
-    NEXT_TELEMETRY_DISABLED: "1",
-    NEXT_PUBLIC_APP_VERSION: version,
-    // NEXT_PUBLIC_APP_VERSION_COMMIT: isDeployment ? process.env.VERCEL_GIT_COMMIT_SHA : "dev",
-    NEXT_PUBLIC_REPOSITORY_URL: isDeployment
-      ? `https://github.com/${process.env.VERCEL_GIT_REPO_OWNER}/${process.env.VERCEL_GIT_REPO_SLUG}`
-      : (process.env.NEXT_PUBLIC_APP_REPOSITORY_URL ?? "no repository"),
-    NEXT_PUBLIC_SITE_URL: isDeployment
-      ? (process.env.NEXT_PUBLIC_SITE_URL ?? `https://${process.env.VERCEL_URL}`)
-      : "http://localhost:3000",
-  },
-  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
-  async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: [
-          {
-            key: "Content-Security-Policy",
-            value: ContentSecurityPolicy,
-          },
-          {
-            key: "X-Frame-Options",
-            value: "DENY",
-          },
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
-          },
-          {
-            key: "X-XSS-Protection",
-            value: "1; mode=block",
-          },
-          {
-            key: "Referrer-Policy",
-            value: "no-referrer, strict-origin-when-cross-origin",
-          },
-          {
-            key: "Permissions-Policy",
-            value: "fullscreen=(), display-capture=(), camera=(), microphone=(), geolocation=()",
-          },
-          {
-            key: "Cross-Origin-Embedder-Policy",
-            value: "credentialless",
-          },
-          {
-            key: "Cross-Origin-Opener-Policy",
-            value: "same-origin",
-          },
-          {
-            key: "Cross-Origin-Resource-Policy",
-            value: "cross-origin",
-          },
-        ],
-      },
-    ];
-  },
+    },
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
+    output: "standalone",
+    env: {
+      NEXT_TELEMETRY_DISABLED: "1",
+      NEXT_PUBLIC_APP_VERSION: version,
+      // NEXT_PUBLIC_APP_VERSION_COMMIT: isDeployment ? process.env.VERCEL_GIT_COMMIT_SHA : "dev",
+      NEXT_PUBLIC_REPOSITORY_URL: isDeployment
+        ? `https://github.com/${process.env.VERCEL_GIT_REPO_OWNER}/${process.env.VERCEL_GIT_REPO_SLUG}`
+        : (process.env.NEXT_PUBLIC_APP_REPOSITORY_URL ?? "no repository"),
+      NEXT_PUBLIC_SITE_URL: isDeployment
+        ? (process.env.NEXT_PUBLIC_SITE_URL ?? `https://${process.env.VERCEL_URL}`)
+        : "http://localhost:3000",
+    },
+    pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+    async headers() {
+      return [
+        {
+          source: "/(.*)",
+          headers: [
+            {
+              key: "Content-Security-Policy",
+              value: ContentSecurityPolicy,
+            },
+            {
+              key: "X-Frame-Options",
+              value: "DENY",
+            },
+            {
+              key: "X-Content-Type-Options",
+              value: "nosniff",
+            },
+            {
+              key: "X-XSS-Protection",
+              value: "1; mode=block",
+            },
+            {
+              key: "Referrer-Policy",
+              value: "no-referrer, strict-origin-when-cross-origin",
+            },
+            {
+              key: "Permissions-Policy",
+              value: "fullscreen=(), display-capture=(), camera=(), microphone=(), geolocation=()",
+            },
+            {
+              key: "Cross-Origin-Embedder-Policy",
+              value: "credentialless",
+            },
+            {
+              key: "Cross-Origin-Opener-Policy",
+              value: "same-origin",
+            },
+            {
+              key: "Cross-Origin-Resource-Policy",
+              value: "cross-origin",
+            },
+          ],
+        },
+      ];
+    },
 };
 
 const withMDX = createMDX({
-  extension: /\.mdx?$/,
+    extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkFrontmatter, remarkGfm, [remarkMdxFrontmatter, { name: "metadata" }]],
   },
