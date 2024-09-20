@@ -4,23 +4,23 @@ import { fr } from "@codegouvfr/react-dsfr";
 import { Tabs } from "@codegouvfr/react-dsfr/Tabs";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { Vegetalisation } from "@/components/themes/inconfort-thermique/vegetalisation";
 
+import { Loader } from "@/components/loader";
 import { AgeBati } from "@/components/themes/inconfort-thermique/age-bati";
 import { DensiteBati } from "@/components/themes/inconfort-thermique/densite-bati";
 import { FragiliteEconomique } from "@/components/themes/inconfort-thermique/fragilite-economique";
 import { GrandAgeIsolement } from "@/components/themes/inconfort-thermique/grand-age-isolement";
 import { TravailExterieur } from "@/components/themes/inconfort-thermique/travail-exterieur";
-import { TabTooltip } from "@/components/utils/TabTooltip";
-import { CLC, CarteCommunes, InconfortThermique } from "@/lib/postgres/models";
+import { CarteCommunes, CLC, InconfortThermique } from "@/lib/postgres/models";
+import { GetClcEpci } from "@/lib/queries/cartographie";
+import { TabTooltip } from "@/utils/TabTooltip";
+import dynamic from "next/dynamic";
 import { useStyles } from "tss-react/dsfr";
 import styles from "./donnees.module.scss";
 
 interface Props {
-  carteCommunes: CarteCommunes[];
-  clc: CLC[];
   data: Array<{
     donnee: string;
     facteur_sensibilite: string;
@@ -28,40 +28,52 @@ interface Props {
     risque: string;
     titre: string;
   }>;
+  carteCommunes: CarteCommunes[];
   inconfort_thermique: InconfortThermique[];
 }
+
+interface VegetalisationProps {
+  clc: CLC[];
+}
+
+const DynamicVegetalisation = dynamic(() => import("../../components/themes/inconfort-thermique/vegetalisation"), {
+  ssr: false,
+  loading: () => <Loader />,
+});
 
 const allComps = [
   {
     titre: "Grand âge",
-    Component: (props: Props & { activeDataTab: string }) => <GrandAgeIsolement {...props} />,
+    Component: ({inconfort_thermique, data}: Props & { activeDataTab: string }) => <GrandAgeIsolement inconfort_thermique={inconfort_thermique} data={data} />,
   },
   {
     titre: "Fragilité économique",
-    Component: (props: Props & { activeDataTab: string }) => <FragiliteEconomique {...props} />,
+    Component: ({carteCommunes}: Props & { activeDataTab: string }) => <FragiliteEconomique carteCommunes={carteCommunes} />,
   },
   {
     titre: "Travail en extérieur",
-    Component: (props: Props & { activeDataTab: string }) => <TravailExterieur {...props} />,
+    Component: ({inconfort_thermique}: Props & { activeDataTab: string }) => <TravailExterieur inconfort_thermique={inconfort_thermique} />,
   },
   {
     titre: "Age du bâtiment",
-    Component: (props: Props & { activeDataTab: string }) => <AgeBati {...props} />,
+    Component: ({inconfort_thermique}: Props & { activeDataTab: string }) => <AgeBati inconfort_thermique={inconfort_thermique} />,
   },
   {
     titre: "Densité du bâti",
-    Component: (props: Props & { activeDataTab: string }) => <DensiteBati {...props} />,
+    Component: ({carteCommunes}: Props & { activeDataTab: string }) => <DensiteBati carteCommunes={carteCommunes} />,
   },
   {
     titre: "Végétalisation",
-    Component: (props: Props & { activeDataTab: string }) => <Vegetalisation {...props} />,
+    Component: ({clc, inconfort_thermique}: Props & VegetalisationProps & { activeDataTab: string }) => <DynamicVegetalisation inconfort_thermique={inconfort_thermique} clc={clc} />,
   },
 ];
 
-const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
+const PageComp = ({ data, carteCommunes, inconfort_thermique }: Props) => {
+  const [clc, setClc] = useState<CLC[]>();
   const [selectedTabId, setSelectedTabId] = useState("Population");
   const [selectedSubTab, setSelectedSubTab] = useState("Grand âge");
   const searchParams = useSearchParams();
+  const codepci = searchParams.get("codepci")!;
   const { isDark } = useIsDark();
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default.grey.active,
@@ -73,7 +85,11 @@ const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
 
   useEffect(() => {
     setSelectedSubTab(data.filter(el => el.facteur_sensibilite === selectedTabId)[0].titre);
-  }, [selectedTabId]);
+    void (async () => {
+      const temp = await GetClcEpci(codepci); 
+      temp && codepci ? setClc(temp) : void 0;
+    })();
+  }, [selectedTabId, codepci]);
 
   return (
     <div className={styles.container}>
@@ -143,42 +159,20 @@ const PageComp = ({ data, carteCommunes, clc, inconfort_thermique }: Props) => {
           </div>
           <div className={styles.bubble}>
             <div className={styles.bubbleContent} style={darkClass}>
-              <Suspense>
-                {(() => {
-                  const Component = allComps.find(el => el.titre === selectedSubTab)?.Component;
-                  if (!Component) return null;
-                  return (
-                    <Component
-                      data={data}
-                      inconfort_thermique={inconfort_thermique}
-                      carteCommunes={carteCommunes}
-                      activeDataTab={selectedSubTab}
-                      clc={clc}
-                    />
-                  );
-                })()}
-              </Suspense>
+              {(() => {
+                const Component = allComps.find(el => el.titre === selectedSubTab)?.Component;
+                if (!Component) return null;
+                return (
+                  <Component
+                    data={data}
+                    inconfort_thermique={inconfort_thermique}
+                    carteCommunes={carteCommunes}
+                    activeDataTab={selectedSubTab}
+                    clc={clc || []}
+                  />
+                );
+              })()}
             </div>
-            {/* <div className={styles.bottom}>
-              <Button
-                priority="secondary"
-                linkProps={{
-                  href: `/etape2?code=${code}&thematique=${themeUrl}`,
-                }}
-              >
-                Étape précédente
-              </Button>
-              <Button
-                onClick={handleForward}
-                // className={css({
-                //   ".fr-btn": {
-                //     backgroundColor: "#0063CB",
-                //   },
-                // })}
-              >
-                Découvrir qui et comment convaincre
-              </Button>
-            </div> */}
           </div>
         </div>
       </Tabs>
