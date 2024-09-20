@@ -60,6 +60,7 @@ const config = {
         serverSourceMaps: false,
         serverActions: {
           allowedOrigins: [
+            process.env.DOMAIN_URL,
             process.env.SCALINGO_URL,
             process.env.NGINX_URL,
           ],
