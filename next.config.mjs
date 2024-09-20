@@ -62,6 +62,7 @@ const config = {
           allowedOrigins: [
             process.env.DOMAIN_URL,
             process.env.NGINX_URL,
+            "http://localhost"
           ],
         }
     },
