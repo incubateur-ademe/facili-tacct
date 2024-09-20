@@ -5,9 +5,10 @@ import { useSearchParams } from "next/navigation";
 import { LineChart1 } from "@/components/charts/lineChart1";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
-import { CustomTooltip } from "@/components/utils/CalculTooltip";
 import { grandAgeIsolementMapper } from "@/lib/mapper/inconfortThermique";
 import { InconfortThermique } from "@/lib/postgres/models";
+import { CustomTooltip } from "@/utils/CalculTooltip";
+import { Sum } from "@/utils/reusableFunctions/sum";
 import styles from "./themes.module.scss";
 
 type DataAge = {
@@ -76,12 +77,6 @@ const sumProperty = (
   }, 0);
 }
 
-const sum = (arr: number[]) => {
-  return arr.reduce(function (a, b) {
-    return a + b;
-  }, 0);
-}
-
 export const GrandAgeIsolement = (props: {
   inconfort_thermique: InconfortThermique[];
   data: Array<{
@@ -140,7 +135,7 @@ export const GrandAgeIsolement = (props: {
 
   return (
     <>
-      {inconfort_thermique.length && sum(yGraphData) != 0 ? (
+      {inconfort_thermique.length && Sum(yGraphData) != 0 ? (
         <div className={styles.container}>
           <div className="w-2/5">
             <div className={styles.explicationWrapper}>
