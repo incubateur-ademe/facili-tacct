@@ -60,8 +60,7 @@ const config = {
         serverSourceMaps: false,
         serverActions: {
           allowedOrigins: [
-            "https://facili-tacct.beta.gouv.fr/",
-            "facili-tacct.beta.gouv.fr",
+            "*.beta.gouv.fr",
           ],
         }
     },
@@ -85,52 +84,52 @@ const config = {
       return [
         {
           source: "/(.*)",
-        //   headers: [
-        //     {
-        //       key: "Content-Security-Policy",
-        //       value: ContentSecurityPolicy,
-        //     },
-        //     {
-        //       key: "X-Frame-Options",
-        //       value: "DENY",
-        //     },
-        //     {
-        //       key: "X-Content-Type-Options",
-        //       value: "nosniff",
-        //     },
-        //     {
-        //       key: "X-XSS-Protection",
-        //       value: "1; mode=block",
-        //     },
-        //     {
-        //       key: "Referrer-Policy",
-        //       value: "no-referrer, strict-origin-when-cross-origin",
-        //     },
-        //     {
-        //       key: "Permissions-Policy",
-        //       value: "fullscreen=(), display-capture=(), camera=(), microphone=(), geolocation=()",
-        //     },
-        //     {
-        //       key: "Cross-Origin-Embedder-Policy",
-        //       value: "credentialless",
-        //     },
-        //     {
-        //       key: "Cross-Origin-Opener-Policy",
-        //       value: "same-origin",
-        //     },
-        //     {
-        //       key: "Cross-Origin-Resource-Policy",
-        //       value: "cross-origin",
-        //     },
-        //     {
-        //         key: "Access-Control-Allow-Origin",
-        //         value: "*"
-        //     },
-        //     {
-        //         key: "Access-Control-Allow-Methods",
-        //         value: "GET,POST"
-        //     },
-        //   ],
+          headers: [
+            {
+              key: "Content-Security-Policy",
+              value: ContentSecurityPolicy,
+            },
+            // {
+            //   key: "X-Frame-Options",
+            //   value: "DENY",
+            // },
+            // {
+            //   key: "X-Content-Type-Options",
+            //   value: "nosniff",
+            // },
+            // {
+            //   key: "X-XSS-Protection",
+            //   value: "1; mode=block",
+            // },
+            {
+              key: "Referrer-Policy",
+              value: "no-referrer", //, strict-origin-when-cross-origin
+            },
+            {
+              key: "Permissions-Policy",
+              value: "fullscreen=(), display-capture=(), camera=(), microphone=(), geolocation=()",
+            },
+            {
+              key: "Cross-Origin-Embedder-Policy",
+              value: "credentialless",
+            },
+            // {
+            //   key: "Cross-Origin-Opener-Policy",
+            //   value: "same-origin",
+            // },
+            // {
+            //   key: "Cross-Origin-Resource-Policy",
+            //   value: "cross-origin",
+            // },
+            // {
+            //     key: "Access-Control-Allow-Origin",
+            //     value: "*"
+            // },
+            // {
+            //     key: "Access-Control-Allow-Methods",
+            //     value: "GET,POST"
+            // },
+          ],
         },
       ];
     },
