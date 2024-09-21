@@ -103,7 +103,7 @@ const config = {
             },
             {
               key: "Referrer-Policy",
-              value: "no-referrer", //, strict-origin-when-cross-origin
+              value: "no-referrer, strict-origin-when-cross-origin", //, strict-origin-when-cross-origin
             },
             {
               key: "Permissions-Policy",
@@ -121,14 +121,6 @@ const config = {
               key: "Cross-Origin-Resource-Policy",
               value: "cross-origin",
             },
-            // {
-            //     key: "Access-Control-Allow-Origin",
-            //     value: "*"
-            // },
-            // {
-            //     key: "Access-Control-Allow-Methods",
-            //     value: "GET,POST"
-            // },
           ],
         },
       ];
