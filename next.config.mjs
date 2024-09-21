@@ -60,9 +60,8 @@ const config = {
         serverSourceMaps: false,
         serverActions: {
           allowedOrigins: [
-            process.env.DOMAIN_URL,
-            process.env.NGINX_URL,
-            "http://localhost"
+            "https://facili-tacct.beta.gouv.fr/",
+            "facili-tacct.beta.gouv.fr",
           ],
         }
     },
