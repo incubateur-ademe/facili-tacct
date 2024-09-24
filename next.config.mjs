@@ -59,10 +59,9 @@ const config = {
         typedRoutes: true,
         serverSourceMaps: false,
         serverActions: {
-          allowedOrigins: [
-            process.env.DOMAIN_URL,
-            process.env.NGINX_URL,
-          ],
+            allowedOrigins: [
+                "*.beta.gouv.fr",
+            ],
         }
     },
     eslint: {
