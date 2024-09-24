@@ -59,9 +59,9 @@ const config = {
         typedRoutes: true,
         serverSourceMaps: false,
         serverActions: {
-          allowedOrigins: [
-            "*.beta.gouv.fr",
-          ],
+            allowedOrigins: [
+                "*.beta.gouv.fr",
+            ],
         }
     },
     eslint: {
