@@ -2,7 +2,7 @@ export const ressourcesTabs = {
   diagnostic : [
     {
       id: 0,
-      titre: "Vous n'avez pas de diagnostic",
+      titre: "Vous voulez réviser un diagnostic connu",
     },
     {
       id: 1,
@@ -10,8 +10,8 @@ export const ressourcesTabs = {
     },
     {
       id: 2,
-      titre: "Vous voulez réviser un diagnostic connu",
-    }
+      titre: "Vous n'avez pas de diagnostic",
+    },
   ],
   themes: [
     {
@@ -59,7 +59,7 @@ export const cards = {
     // },
     {
       id: 3,
-      tab : ["Vous n'avez pas de diagnostic", "Vous découvrez le diagnostic pour la 1ère fois", "Vous voulez réviser un diagnostic connu"],
+      tab : ["Vous découvrez le diagnostic pour la 1ère fois", "Vous voulez réviser un diagnostic connu"],
       titre: "10 minutes pour analyser les 80 pages de votre diagnostic de vulnérabilité",
       tag: "Article",
       description: "Le diagnostic de vulnérabilité est un document clé pour comprendre le territoire et ses spécificités.",
@@ -75,7 +75,7 @@ export const cards = {
     },
     {
       id: 5,
-      tab : "Vous voulez réviser un diagnostic connu",
+      tab : "Vous découvrez le diagnostic pour la 1ère fois",
       titre: "Mettre en récit mon territoire pour engager",
       tag: "Article",
       description: "« L’humanité est une « espèce fabulatrice qui, en se racontant des histoires de plus en plus complexes, développe des capacités de coopération » - Yval Noah Harrari ; Découvrez la mise en récit.",
@@ -83,7 +83,7 @@ export const cards = {
     },
     {
       id: 6,
-      tab : "Vous voulez réviser un diagnostic connu",
+      tab : "Vous découvrez le diagnostic pour la 1ère fois",
       titre: "La facilitation d’ateliers : une démarche éprouvée d’engagement",
       tag: "Article",
       description: "Pour réellement engager vos parties prenantes dans votre démarche d’adaptation appuyez-vous sur une démarche éprouvée : la facilitation d’ateliers.",
@@ -91,8 +91,8 @@ export const cards = {
     },
     {
       id: 7,
-      tab : ["Vous n'avez pas de diagnostic", "Vous découvrez le diagnostic pour la 1ère fois", "Vous voulez réviser un diagnostic connu"],
-      titre: "Article CdC sur la facilitation",
+      tab : ["Vous découvrez le diagnostic pour la 1ère fois", "Vous voulez réviser un diagnostic connu"],
+      titre: "Le cahier des charges, levier pour intégrer la facilitation",
       tag: "Article",
       description: "Engager vos participants, ça s’anticipe, pour cela intégrez la facilitation d’ateliers (ou l’intelligence collective) dès conception de votre cahier des charges.",
       link: "/ressources/articles"
