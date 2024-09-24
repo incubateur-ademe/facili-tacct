@@ -60,7 +60,7 @@ export const Map = (props: {
         opacity: 1,
         color: "#161616",
         // dashArray: "3",
-        fillOpacity: 0.7,
+        fillOpacity: 0.6,
       };
     } else {
       return {
@@ -69,7 +69,7 @@ export const Map = (props: {
         opacity: 1,
         color: "#161616",
         // dashArray: "3",
-        fillOpacity: 0.7,
+        fillOpacity: 0.6,
       };
     }
   };
@@ -85,9 +85,9 @@ export const Map = (props: {
     const densite_bati = layer.feature && "properties" in layer.feature ? layer.feature.properties.densite_bati.toFixed(2) : undefined;
     layer.setStyle({
       weight: 3,
-      color: "#eee",
+      color: "#0D2100",
       // dashArray: "",
-      fillOpacity: 0.8,
+      fillOpacity: 0.9,
     });
     layer.bringToFront();
     if (data === "densite_bati" && commune_name && densite_bati) {
@@ -137,7 +137,6 @@ export const Map = (props: {
             attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
           />
-          {/* <GeoJSON data={data1} /> */}
           <GeoJSON ref={mapRef} data={carteCommunes as any} onEachFeature={onEachFeature} style={style} />
         </MapContainer>
       )}
