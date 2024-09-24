@@ -6,7 +6,7 @@ import styles from "./ressources.module.scss";
 import { TabComp } from "./tabs";
 
 const RessourcesCards = () => {
-  const [selectedTabId, setSelectedTabId] = useState("Vous n'avez pas de diagnostic");
+  const [selectedTabId, setSelectedTabId] = useState("Vous voulez réviser un diagnostic connu");
 
   const handleTab = (tab: string) => {
     setSelectedTabId(tab);
@@ -38,7 +38,7 @@ const RessourcesCards = () => {
       </div>
       <div className={styles.ressourcesWrapper} style={{ padding: "4em 0" }}>
         <TabComp 
-          defaultTab="Vous n'avez pas de diagnostic"
+          defaultTab="Vous voulez réviser un diagnostic connu"
           data={ressourcesTabs.diagnostic}
           handleTab={handleTab}
         />
