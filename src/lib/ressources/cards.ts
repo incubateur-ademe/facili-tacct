@@ -41,22 +41,6 @@ export const cards = {
     //   description:"Faites appel à la mémoire collective pour débuter sur l'exposition de votre territoire aux impacts du changement climatique.",
     //   link: "/ressources/atelier"
     // },
-    // {
-    //   id: 1,
-    //   tab : "Vous n'avez pas de diagnostic",
-    //   titre: 'Constituer une équipe "cœur"',
-    //   tag: "Retour d'expérience",
-    //   description: "Découvrez comment et pourquoi la Communauté de Communes du Bocage Bourbonnais (03) a mis en place une « équipe cœur » afin de piloter sa démarche TACCT.",
-    //   link: "https://librairie.ademe.fr/7214-piloter-sa-demarche-tacct-retour-d-experience-dans-le-bocage-bourbonnais-03.html"
-    // },
-    // {
-    //   id: 2,
-    //   tab : "Vous n'avez pas de diagnostic",
-    //   titre: "Faire son diagnostic de vulnérabilité",
-    //   tag: "Retour d'expérience",
-    //   description: "Retour d'expérience sur la réalisation d'un diagnostic de vulnérabilité avec TACCT à Epernay Agglo Champagne (51).",
-    //   link: "https://www.climaxion.fr/docutheque/realisation-dun-diagnostic-vulnerabilite-au-changement-climatique-epernay-agglo-champagne"
-    // },
     {
       id: 3,
       tab : ["Vous découvrez le diagnostic pour la 1ère fois", "Vous voulez réviser un diagnostic connu"],
@@ -68,21 +52,13 @@ export const cards = {
     {
       id: 4,
       tab : "Vous découvrez le diagnostic pour la 1ère fois",
-      titre: "Restituer son diagnostic de vulnérabilité",
-      tag: "Retour d'expérience",
-      description: "Ils l'ont fait ! Retour d'expérience sur la restitution de son diagnostic de vulnérabilité en Haute Loire (43).",
-      link: "https://librairie.ademe.fr/7180-comment-restituer-son-diagnostic-des-impacts-du-changement-climatique-en-haute-loire-43.html"
-    },
-    {
-      id: 5,
-      tab : "Vous découvrez le diagnostic pour la 1ère fois",
       titre: "Mettre en récit mon territoire pour engager",
       tag: "Article",
       description: "« L’humanité est une « espèce fabulatrice qui, en se racontant des histoires de plus en plus complexes, développe des capacités de coopération » - Yval Noah Harrari ; Découvrez la mise en récit.",
       link: "/ressources/articles"
     },
     {
-      id: 6,
+      id: 5,
       tab : "Vous découvrez le diagnostic pour la 1ère fois",
       titre: "La facilitation d’ateliers : une démarche éprouvée d’engagement",
       tag: "Article",
@@ -90,12 +66,100 @@ export const cards = {
       link: "/ressources/articles"
     },
     {
-      id: 7,
+      id: 6,
       tab : ["Vous découvrez le diagnostic pour la 1ère fois", "Vous voulez réviser un diagnostic connu"],
       titre: "Le cahier des charges, levier pour intégrer la facilitation",
       tag: "Article",
       description: "Engager vos participants, ça s’anticipe, pour cela intégrez la facilitation d’ateliers (ou l’intelligence collective) dès conception de votre cahier des charges.",
       link: "/ressources/articles"
+    },
+    {
+      id: 7,
+      tab : "Vous découvrez le diagnostic pour la 1ère fois",
+      titre: "Comment restituer son diagnostic des impacts du changement climatique en Haute-Loire (43)",
+      tag: "Retour d'expérience",
+      description: "Ils l'ont fait ! Retour d'expérience sur la restitution de son diagnostic de vulnérabilité en Haute Loire (43).",
+      link: "https://librairie.ademe.fr/7180-comment-restituer-son-diagnostic-des-impacts-du-changement-climatique-en-haute-loire-43.html"
+    },
+    {
+      id: 8,
+      tab : "Vous voulez réviser un diagnostic connu",
+      titre: 'Evaluation en atelier de la sensibilité du territoire au changement climatique au PNR Pyrénées Ariégeoises (09)',
+      tag: "Retour d'expérience",
+      description: "",
+      link: "https://librairie.ademe.fr/changement-climatique-et-energie/6223-evaluation-en-atelier-de-la-sensibilite-du-territoire-au-changement-climatique-au-pnr-pyrenees-ariegeoises-09.html"
+    },
+    {
+      id: 9,
+      tab : "Vous voulez réviser un diagnostic connu",
+      titre: "Retour d'expériences de la mise en place de la démarche TACCT sur des territoires",
+      tag: "Retour d'expérience",
+      description: "",
+      link: "https://librairie.ademe.fr/7538-adaptation-au-changement-climatique.html"
+    },
+    {
+      id: 10,
+      tab : "Vous découvrez le diagnostic pour la 1ère fois",
+      titre: "Coorganiser des ateliers TACCT pour mobiliser : Retour d'expérience dans les Baronnies en Drôme Provençale (26)",
+      tag: "Retour d'expérience",
+      description: "",
+      link: "https://librairie.ademe.fr/7228-coorganiser-des-ateliers-tacct-pour-mobiliser-retour-d-experience-dans-les-baronnies-en-drome-provencale-26.html"
+    },
+    {
+      id: 11,
+      tab : "Vous découvrez le diagnostic pour la 1ère fois",
+      titre: "Questionner l'imaginaire pour faire réagir en atelier TACCT : Retour d'expérience de Clermont Auvergne Métropole (63)",
+      tag: "Retour d'expérience",
+      description: "",
+      link: "https://librairie.ademe.fr/7215-questionner-l-imaginaire-pour-faire-reagir-en-atelier-tacct-retour-d-experience-de-clermont-auvergne-metropole-63.html"
+    },
+    {
+      id: 12,
+      tab: "Vous découvrez le diagnostic pour la 1ère fois",
+      titre: "Comment restituer son diagnostic des impacts du changement climatique en Haute-Savoie (74) ?",
+      tag: "Retour d'expérience",
+      description: "",
+      link: "https://librairie.ademe.fr/7129-comment-restituer-son-diagnostic-des-impacts-du-changement-climatique-en-haute-savoie-74-.html"
+    },
+    {
+      id: 13,
+      tab: "Vous découvrez le diagnostic pour la 1ère fois",
+      titre: "Mettre en récit TACCT stratégie pour engager les élus : Retour d'expérience du PNR du Pilat (42)",
+      tag: "Retour d'expérience",
+      description: "",
+      link: "https://librairie.ademe.fr/7544-mettre-en-recit-tacct-strategie-pour-engager-les-elus-retour-d-experience-du-pnr-du-pilat-42.html"
+    },
+    {
+      id: 14,
+      tab: ["Vous n'avez pas de diagnostic", "Vous voulez réviser un diagnostic connu"],
+      titre: "Piloter sa démarche TACCT : Retour d'expérience dans le Bocage Bourbonnais (03)",
+      tag: "Retour d'expérience",
+      description: "",
+      link: "https://librairie.ademe.fr/7214-piloter-sa-demarche-tacct-retour-d-experience-dans-le-bocage-bourbonnais-03.html"
+    },
+    {
+      id: 15,
+      tab: "Vous n'avez pas de diagnostic",
+      titre: "Réalisation d'un diagnostic de vulnérabilité au changement climatique",
+      tag: "Retour d'expérience",
+      description: "",
+      link: "https://www.climaxion.fr/docutheque/realisation-dun-diagnostic-vulnerabilite-au-changement-climatique-epernay-agglo-champagne"
+    },
+    {
+      id: 16,
+      tab: "Vous n'avez pas de diagnostic",
+      titre: "Construire la feuille de route Adaptation au Changement Climatique du département de l’Indre",
+      tag: "Retour d'expérience",
+      description: "",
+      link: "https://www.indre.gouv.fr/Actions-de-l-Etat/Environnement/Strategie-Climat-36-une-demarche-departementale-et-partenariale/3.-Construire-notre-feuille-de-route/La-methode"
+    },
+    {
+      id: 17,
+      tab: "Vous n'avez pas de diagnostic",
+      titre: "Adaptation au changement climatique : déploiement de la démarche TACCT",
+      tag: "Retour d'expérience",
+      description: "",
+      link: "https://www.payspyreneesmediterranee.org/thematiques/transitions-energie-climat/adaptation-au-changement-climatique/"
     },
   ],
   inconfortThermique: [
