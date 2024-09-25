@@ -6,23 +6,23 @@ export const LegendCLC = () => {
   return (
     <div className="legendCLC">
       <div className="legendColor-wrapper">
-        <div className="legendColor" style={{ backgroundColor: "#a0a0a0" }}></div>
+        <div className="legendColor" style={{ backgroundColor: "#ffff99" }}></div>
         <p>Territoires artificialisés</p>
       </div>
       <div className="legendColor-wrapper">
-        <div className="legendColor" style={{ backgroundColor: "#ffd24a" }}></div>
+        <div className="legendColor" style={{ backgroundColor: "#fdc086" }}></div>
         <p>Territoires agricoles</p>
       </div>
       <div className="legendColor-wrapper">
-        <div className="legendColor" style={{ backgroundColor: "#a6e64d" }}></div>
+        <div className="legendColor" style={{ backgroundColor: "#7fc97f" }}></div>
         <p>Zones végétalisées et milieux semi-naturels</p>
       </div>
       <div className="legendColor-wrapper">
-        <div className="legendColor" style={{ backgroundColor: "#f2a6ea" }}></div>
+        <div className="legendColor" style={{ backgroundColor: "#beaed4" }}></div>
         <p>Zones humides</p>
       </div>
       <div className="legendColor-wrapper">
-        <div className="legendColor" style={{ backgroundColor: "#6969ff" }}></div>
+        <div className="legendColor" style={{ backgroundColor: "#386cb0" }}></div>
         <p>Surfaces en eau</p>
       </div>
       {/* <div className="legendColor-wrapper">
