@@ -107,8 +107,7 @@ export const Map = (props: {
     layer.setStyle({
       weight: 1.5,
       color: "#000000",
-      // dashArray: "3",
-      fillOpacity: 0.8,
+      fillOpacity: 0.6,
     });
     layer.closePopup();
   };
@@ -137,7 +136,6 @@ export const Map = (props: {
             attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
           />
-          {/* <GeoJSON data={data1} /> */}
           <GeoJSON ref={mapRef} data={carteCommunes as any} onEachFeature={onEachFeature} style={style} />
         </MapContainer>
       )}
