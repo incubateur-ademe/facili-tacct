@@ -26,50 +26,50 @@ export const Map = (props: {clc: CLC[]}) => {
   const clc_parsed = clc.map(ClcMapper);
   const mapRef = useRef(null);
   const colors = {
-    "Continuous urban fabric": "#a0a0a0",
-    "Discontinuous urban fabric": "#a0a0a0",
-    "Industrial or commercial units": "#a0a0a0",
-    "Road and rail networks and associated land": "#a0a0a0", //cc0000
-    "Port areas": "#a0a0a0",
-    Airports: "#a0a0a0",
-    "Mineral extraction sites": "#a0a0a0",
-    "Dump sites": "#a0a0a0",
-    "Construction sites": "#a0a0a0",
-    "Green urban areas": "#a6e64d", //ffa6ff
-    "Sport and leisure facilities": "#a0a0a0",
-    "Non-irrigated arable land": "#ffd24a",
-    "Permanently irrigated land": "#ffd24a",
-    "Rice fields": "#ffd24a",
-    Vineyards: "#ffd24a", //e68000
-    "Fruit trees and berry plantations": "#ffd24a",
-    "Olive groves": "#ffd24a", //e6a600
-    Pastures: "#ffd24a",
-    "Annual crops associated with permanent crops": "#ffd24a",
-    "Complex cultivation patterns": "#ffd24a",
-    "Land principally occupied by agriculture, with significant areas of natural vegetation": "#ffd24a",
-    "Agro-forestry areas": "#ffd24a", //f2cca6
-    "Broad-leaved forest": "#a6e64d", //80ff00
-    "Coniferous forest": "#a6e64d", //00a600
-    "Mixed forest": "#a6e64d", //4dff00
-    "Natural grasslands": "#a6e64d", //ccf24d
-    "Moors and heathland": "#a6e64d",
-    "Sclerophyllous vegetation": "#a6e64d",
-    "Transitional woodland-shrub": "#a6e64d",
-    "Beaches, dunes, sands": "#a6e64d",
-    "Bare rocks": "#a6e64d",
-    "Sparsely vegetated areas": "#a6e64d",
-    "Burnt areas": "#a6e64d",
-    "Glaciers and perpetual snow": "#a6e64d",
-    "Inland marshes": "#f2a6ea",
-    "Peat bogs": "#f2a6ea",
-    "Salt marshes": "#f2a6ea",
-    Salines: "#f2a6ea",
-    "Intertidal flats": "#f2a6ea",
-    "Water courses": "#6969ff",
-    "Water bodies": "#6969ff",
-    "Coastal lagoons": "#6969ff",
-    Estuaries: "#6969ff",
-    "Sea and ocean": "#6969ff",
+    "Continuous urban fabric": "#ffff99",
+    "Discontinuous urban fabric": "#ffff99",
+    "Industrial or commercial units": "#ffff99",
+    "Road and rail networks and associated land": "#ffff99", //cc0000
+    "Port areas": "#ffff99",
+    Airports: "#ffff99",
+    "Mineral extraction sites": "#ffff99",
+    "Dump sites": "#ffff99",
+    "Construction sites": "#ffff99",
+    "Green urban areas": "#7fc97f", //ffa6ff
+    "Sport and leisure facilities": "#ffff99",
+    "Non-irrigated arable land": "#fdc086",
+    "Permanently irrigated land": "#fdc086",
+    "Rice fields": "#fdc086",
+    Vineyards: "#fdc086", //e68000
+    "Fruit trees and berry plantations": "#fdc086",
+    "Olive groves": "#fdc086", //e6a600
+    Pastures: "#fdc086",
+    "Annual crops associated with permanent crops": "#fdc086",
+    "Complex cultivation patterns": "#fdc086",
+    "Land principally occupied by agriculture, with significant areas of natural vegetation": "#fdc086",
+    "Agro-forestry areas": "#fdc086", //f2cca6
+    "Broad-leaved forest": "#7fc97f", //80ff00
+    "Coniferous forest": "#7fc97f", //00a600
+    "Mixed forest": "#7fc97f", //4dff00
+    "Natural grasslands": "#7fc97f", //ccf24d
+    "Moors and heathland": "#7fc97f",
+    "Sclerophyllous vegetation": "#7fc97f",
+    "Transitional woodland-shrub": "#7fc97f",
+    "Beaches, dunes, sands": "#7fc97f",
+    "Bare rocks": "#7fc97f",
+    "Sparsely vegetated areas": "#7fc97f",
+    "Burnt areas": "#7fc97f",
+    "Glaciers and perpetual snow": "#7fc97f",
+    "Inland marshes": "#beaed4",
+    "Peat bogs": "#beaed4",
+    "Salt marshes": "#beaed4",
+    Salines: "#beaed4",
+    "Intertidal flats": "#beaed4",
+    "Water courses": "#386cb0",
+    "Water bodies": "#386cb0",
+    "Coastal lagoons": "#386cb0",
+    Estuaries: "#386cb0",
+    "Sea and ocean": "#386cb0",
   };
   const all_centroid: number[][] = clc_parsed.map(el => {
     return el.properties.centroid.split("POINT")[1].replace("(", "").replace(")", "").split(" ").map(Number);
@@ -92,7 +92,6 @@ export const Map = (props: {clc: CLC[]}) => {
       weight: 0,
       opacity: 1,
       color: "black",
-      dashArray: "3",
       fillOpacity: 0.6,
     };
   };
@@ -107,8 +106,8 @@ export const Map = (props: {clc: CLC[]}) => {
       zoomControl={false}
     >
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
       />
       <GeoJSON ref={mapRef} data={clc_parsed as any} style={style} />
     </MapContainer>
