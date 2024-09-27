@@ -8,7 +8,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("SCALINGO_POSTGRESQL_URL")
-  schemas  = ["databases", "postgis"]
+  schemas  = ["databases", "postgis", "ressources"]
 }
 
 model inconfort_thermique {
@@ -113,4 +113,27 @@ model collectivites_searchbar {
 
   @@index([index], map: "ix_collectivites_searchbar_index")
   @@schema("databases")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model spatial_ref_sys {
+  srid      Int     @id
+  auth_name String? @db.VarChar(256)
+  auth_srid Int?
+  srtext    String? @db.VarChar(2048)
+  proj4text String? @db.VarChar(2048)
+
+  @@schema("postgis")
+}
+
+model users {
+  pk              Int       @id @default(autoincrement())
+  email           String    @unique(map: "email") @db.VarChar(256)
+  username        String    @unique(map: "username") @db.VarChar(256)
+  password        String    @db.VarChar(256)
+  created_at      DateTime  @db.Timestamp(6)
+  last_connection DateTime? @db.Timestamptz(6)
+  role            String    @db.VarChar(8)
+
+  @@schema("ressources")
 }
