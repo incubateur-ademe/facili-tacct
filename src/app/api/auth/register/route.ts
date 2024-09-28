@@ -7,7 +7,6 @@ const prisma = new PostgresClient()
 export async function POST(request: Request) {
   try {
     const { username, password } = await request.json();
-    console.log({ username, password });
     const hashedPassword = await hash(password, 10);
     const newUser = await prisma.users.create({
       data: {
@@ -18,7 +17,6 @@ export async function POST(request: Request) {
         created_at: new Date(),
       },
     })
-    console.log("User created", newUser);
   } catch (e) {
     console.log({ e });
   }
