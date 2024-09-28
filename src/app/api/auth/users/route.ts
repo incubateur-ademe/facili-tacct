@@ -8,7 +8,6 @@ const PrismaPostgres = new PostgresClient();
 export const GET = async () => {
   try {
     const users = await PrismaPostgres.users.findMany();
-    console.log(users);
     return new NextResponse(JSON.stringify(users), {status: 200});
   } catch (error) {
     console.error(error);

@@ -4,15 +4,18 @@ import LoginForm from "./form";
 
 export default async function SignIn() {
   const session = await getServerSession();
-
-  // if (session) {
-  //   redirect("/ressources");
-  // }
+  console.log("session", session);
+  if (session) {
+    // redirect("/api/ressources");
+  }
   return (
-    <section className="h-screen flex items-center justify-center">
+    <div className="h-screen flex items-center justify-center">
       <div className="w-[600px]">
+        {
+          session ? <div>{JSON.stringify(session)}</div> : "déconnecté"
+        }
         <LoginForm />
       </div>
-    </section>
+    </div>
   )
 }

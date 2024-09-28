@@ -1,10 +1,12 @@
+import { compare } from "bcrypt";
+import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaClient as PostgresClient } from "../../generated/client";
 
 const PrismaPostgres = new PostgresClient();
 
-export const AuthOptions = {
+export const AuthOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
@@ -23,19 +25,34 @@ export const AuthOptions = {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        const value = await PrismaPostgres.users.findUnique({
-          where: { 
-            password: credentials!.password,
-            username: credentials!.username        
+        const user = await PrismaPostgres.users.findUnique({
+          where: {
+            username: credentials!.username
           }
         });
-        if (value) {
-          return {
-            id: value.pk.toString(),
-            name: value.username,
-            email: value.email,
-          };
-        } return null
+        if (user) {
+          const comparedPasswords = await compare(credentials!.password, user.password);
+          if (comparedPasswords) {
+            return {
+              id: user.pk.toString(),
+              name: user.username,
+              username: user.username,
+            };
+          }
+        } return null;
+        // const value = await PrismaPostgres.users.findUnique({
+        //   where: { 
+        //     password: hashedPassword,
+        //     username: credentials!.username        
+        //   }
+        // });
+        // if (value) {
+        //   return {
+        //     id: value.pk.toString(),
+        //     name: value.username,
+        //     email: value.email,
+        //   };
+        // } return null
       }
     })
   ],
