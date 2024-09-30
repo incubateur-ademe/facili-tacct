@@ -8,7 +8,7 @@
   "scripts": {
     "predev": "only-include-used-icons",
     "prebuild": "only-include-used-icons",
-    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
+    "dev": "next dev",
     "build": "cross-env NODE_OPTIONS=--inspect next build && node copy-assets.js",
     "start": "node .next/standalone/server.js",
     "eslint": "eslint --fix ./src"
@@ -27,6 +27,10 @@
     "@nivo/core": "^0.87.0",
     "@nivo/line": "^0.87.0",
     "@nivo/pie": "^0.87.0",
+    "@notion-render/bookmark-plugin": "^0.0.2",
+    "@notion-render/client": "^0.0.2",
+    "@notion-render/hljs-plugin": "^0.0.2",
+    "@notionhq/client": "^2.2.15",
     "@prisma/client": "^5.13.0",
     "@sentry/nextjs": "^8.27.0",
     "@vercel/postgres": "^0.9.0",
