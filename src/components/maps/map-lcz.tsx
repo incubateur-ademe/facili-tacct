@@ -76,6 +76,8 @@ export const MapLCZ = (props: {
             // attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://lcz-generator.rub.de/tms-inverted/global-map-tiles/v3/{z}/{x}/{y}.png"
             opacity={0.6}
+            maxZoom={50}
+            maxNativeZoom={50}
           />
           <GeoJSON ref={mapRef} data={carteCommunes as Any} style={style} />
         </MapContainer>
