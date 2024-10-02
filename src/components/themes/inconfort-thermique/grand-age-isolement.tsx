@@ -6,46 +6,13 @@ import { LineChart1 } from "@/components/charts/lineChart1";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
 import { grandAgeIsolementMapper } from "@/lib/mapper/inconfortThermique";
-import { InconfortThermique } from "@/lib/postgres/models";
+import { DataGrandAge, InconfortThermique } from "@/lib/postgres/models";
 import { CustomTooltip } from "@/utils/CalculTooltip";
 import { Sum } from "@/utils/reusableFunctions/sum";
 import styles from "./themes.module.scss";
 
-type DataAge = {
-  P20_POP80P?: number;
-  P20_POP80P_PSEUL?: number;
-  code_commune: string;
-  epci: string;
-  libelle_epci: string;
-  libelle_geographique: string;
-  over_80_sum_1968?: number;
-  over_80_sum_1975?: number;
-  over_80_sum_1982?: number;
-  over_80_sum_1990?: number;
-  over_80_sum_1999?: number;
-  over_80_sum_2009?: number;
-  over_80_sum_2014?: number;
-  over_80_sum_2020?: number;
-  to_80_sum_1968?: number;
-  to_80_sum_1975?: number;
-  to_80_sum_1982?: number;
-  to_80_sum_1990?: number;
-  to_80_sum_1999?: number;
-  to_80_sum_2009?: number;
-  to_80_sum_2014?: number;
-  to_80_sum_2020?: number;
-  under_4_sum_1968?: number;
-  under_4_sum_1975?: number;
-  under_4_sum_1982?: number;
-  under_4_sum_1990?: number;
-  under_4_sum_1999?: number;
-  under_4_sum_2009?: number;
-  under_4_sum_2014?: number;
-  under_4_sum_2020?: number;
-};
-
 const sumProperty = (
-  items: DataAge[],
+  items: DataGrandAge[],
   property:
     | "over_80_sum_1968"
     | "over_80_sum_1975"
@@ -128,14 +95,16 @@ export const GrandAgeIsolement = (props: {
       (sumProperty(grandAgeIsolement, "to_80_sum_2020") + sumProperty(grandAgeIsolement, "under_4_sum_2020"))
     ).toFixed(2),
   };
-  const yGraphData = Object.values(yData).map(Number).map(value => isNaN(value) ? 0 : value);
+  const yGraphData = Object.values(yData).map(Number).map(value => isNaN(value) ? null : value);
+
+  console.log("yGraphData", yGraphData);
 
   const title =
     "La proportion de personnes âgées que nous avons considérée correspond au pourcentage des personnes de plus de 80 ans dans la population à chaque recensement INSEE.";
 
   return (
     <>
-      {inconfort_thermique.length && Sum(yGraphData) != 0 ? (
+      {inconfort_thermique.length && Sum(yGraphData.filter(e => e != null)) != 0 ? (
         <div className={styles.container}>
           <div className="w-2/5">
             <div className={styles.explicationWrapper}>

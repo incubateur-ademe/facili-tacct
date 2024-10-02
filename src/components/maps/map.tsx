@@ -19,7 +19,8 @@ export const Map = (props: {
 }) => {
   const { data, carteCommunes } = props;
   const searchParams = useSearchParams();
-  const code = searchParams.get("code")!;
+  const codgeo = searchParams.get("codgeo");
+  const codepci = searchParams.get("codepci")!;  
   const mapRef = useRef(null);
 
   const all_coordinates = carteCommunes.map(el => el.geometry.coordinates?.[0]?.[0]);
@@ -41,7 +42,9 @@ export const Map = (props: {
     return getCentroid(coords_arr);
   };
 
-  const centerCoord: number[] = getCoordinates(all_coordinates);
+  const commune = codgeo ? carteCommunes.find(el => el.properties.code_commune === codgeo) : null;
+
+  const centerCoord: number[] = commune ? getCentroid(commune.geometry.coordinates?.[0][0]) : getCoordinates(all_coordinates);
 
   const getColor = (d: number) => {
     if (data === "densite_bati") {
@@ -120,7 +123,7 @@ export const Map = (props: {
   return (
     <>
       {carteCommunes === null ? (
-        <GraphDataNotFound code={code} />
+        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
       ) : (
         <MapContainer
           center={[centerCoord[1], centerCoord[0]]}
