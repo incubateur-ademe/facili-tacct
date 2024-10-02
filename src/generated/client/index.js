@@ -13,6 +13,7 @@ const {
   empty,
   join,
   raw,
+  skip,
   Decimal,
   Debug,
   objectEnumValues,
@@ -31,12 +32,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.16.2
- * Query Engine version: 34ace0eb2704183d2c05b60b52fba5c43c13f303
+ * Prisma Client JS version: 5.20.0
+ * Query Engine version: 06fc58a368dc7be9fbbbe894adf8d445d208c284
  */
 Prisma.prismaVersion = {
-  client: "5.16.2",
-  engine: "34ace0eb2704183d2c05b60b52fba5c43c13f303"
+  client: "5.20.0",
+  engine: "06fc58a368dc7be9fbbbe894adf8d445d208c284"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -74,6 +75,8 @@ Prisma.NullTypes = {
   JsonNull: objectEnumValues.classes.JsonNull,
   AnyNull: objectEnumValues.classes.AnyNull
 }
+
+
 
 
   const path = require('path')
@@ -211,7 +214,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Antoine\\Beta Gouv\\facili-tacct\\dev\\facili-tacct\\src\\generated\\client",
+      "value": "C:\\Antoine\\Beta Gouv\\Code\\facili-tacct\\facili-tacct\\src\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -231,7 +234,7 @@ const config = {
     "previewFeatures": [
       "multiSchema"
     ],
-    "sourceFilePath": "C:\\Antoine\\Beta Gouv\\facili-tacct\\dev\\facili-tacct\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Antoine\\Beta Gouv\\Code\\facili-tacct\\facili-tacct\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -239,8 +242,8 @@ const config = {
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",
-  "clientVersion": "5.16.2",
-  "engineVersion": "34ace0eb2704183d2c05b60b52fba5c43c13f303",
+  "clientVersion": "5.20.0",
+  "engineVersion": "06fc58a368dc7be9fbbbe894adf8d445d208c284",
   "datasourceNames": [
     "db"
   ],
