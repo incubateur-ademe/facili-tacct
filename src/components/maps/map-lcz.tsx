@@ -1,14 +1,13 @@
 "use client";
 
 import "leaflet/dist/leaflet.css";
-import "./maps.scss";
-
-import { type StyleFunction } from "leaflet";
-import { useSearchParams } from "next/navigation";
-import { useRef } from "react";
 
 import { GeoJSON, MapContainer, TileLayer } from "@/lib/react-leaflet";
 import { type Any } from "@/lib/utils/types";
+import { type StyleFunction } from "leaflet";
+import { useSearchParams } from "next/navigation";
+import { useRef } from "react";
+import "./maps.scss";
 
 import { CommunesIndicateursDto } from "@/lib/dto";
 import { GraphDataNotFound } from "../graph-data-not-found";
@@ -18,7 +17,8 @@ export const MapLCZ = (props: {
 }) => {
   const { carteCommunes } = props;
   const searchParams = useSearchParams();
-  const code = searchParams.get("code")!;
+  const codgeo = searchParams.get("codgeo");
+  const codepci = searchParams.get("codepci")!;
   const mapRef = useRef(null);
 
   const all_coordinates = carteCommunes.map(el => el.geometry.coordinates?.[0]?.[0]);
@@ -40,33 +40,34 @@ export const MapLCZ = (props: {
     return getCentroid(coords_arr);
   };
 
-  const centerCoord: number[] = getCoordinates(all_coordinates);
+  const commune = codgeo ? carteCommunes.find(el => el.properties.code_commune === codgeo) : null;
 
+  const centerCoord: number[] = commune ? getCentroid(commune.geometry.coordinates?.[0][0]) : getCoordinates(all_coordinates);
 
-  const style: StyleFunction<Any> = feature => {
-      return {
-        weight: 1,
-        opacity: 1,
-        color: "#161616",
-        // dashArray: "3",
-        fillOpacity: 0,
-      };
+  const style: StyleFunction<Any> = () => {
+    return {
+      weight: 1,
+      opacity: 1,
+      color: "#161616",
+      // dashArray: "3",
+      fillOpacity: 0,
+      cursor: "wait",
+    };
   };
-
-  
 
   return (
     <>
       {carteCommunes === null ? (
-        <GraphDataNotFound code={code} />
+        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
       ) : (
         <MapContainer
           center={[centerCoord[1], centerCoord[0]]}
-          zoom={10}
+          zoom={commune ? 11 : 10}
           ref={mapRef}
-          style={{ height: "500px", width: "100%"}}
+          style={{ height: "500px", width: "100%", cursor: "grab" }}
           attributionControl={false}
           zoomControl={false}
+          maxZoom={13}
         >
           <TileLayer
             // attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openma            attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -76,8 +77,6 @@ export const MapLCZ = (props: {
             // attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://lcz-generator.rub.de/tms-inverted/global-map-tiles/v3/{z}/{x}/{y}.png"
             opacity={0.6}
-            maxZoom={50}
-            maxNativeZoom={50}
           />
           <GeoJSON ref={mapRef} data={carteCommunes as Any} style={style} />
         </MapContainer>
