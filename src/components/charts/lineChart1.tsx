@@ -29,7 +29,6 @@ export const LineChart1 = (props: Props) => {
     });
   }, [yData]);
 
-  console.log("children", children);
   return (
     <ResponsiveLine
       curve="linear"
