@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 
 type Props = {
   xData: Array<string | undefined>;
-  yData: number[];
+  yData: Array<number | null>;
 };
 
 type GraphData = {
   x: string | undefined;
-  y: number | undefined;
+  y: number | null | undefined;
 };
 
 export const LineChart1 = (props: Props) => {
@@ -29,6 +29,7 @@ export const LineChart1 = (props: Props) => {
     });
   }, [yData]);
 
+  console.log("children", children);
   return (
     <ResponsiveLine
       curve="linear"
@@ -40,10 +41,12 @@ export const LineChart1 = (props: Props) => {
         },
       ]}
       colors={"rgba(242, 133, 2, 0.9)"}
+      isInteractive={true}
+      useMesh={true}
       yScale={{
         type: "linear",
-        min: Math.min(...yData) <= 0 ? 0 : Math.min(...yData) - 1,
-        max: Math.max(...yData) + 1,
+        min: 0,
+        max: Math.max(...yData.filter(e => e != null)) + 1,
       }}
       margin={{
         top: 50,

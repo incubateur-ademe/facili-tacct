@@ -84,3 +84,36 @@ export type CLC = {
   pk: number;
   shape_length: number;
 };
+
+export type DataGrandAge = {
+  P20_POP80P?: number;
+  P20_POP80P_PSEUL?: number;
+  code_commune: string;
+  epci: string;
+  libelle_epci: string;
+  libelle_geographique: string;
+  over_80_sum_1968?: number;
+  over_80_sum_1975?: number;
+  over_80_sum_1982?: number;
+  over_80_sum_1990?: number;
+  over_80_sum_1999?: number;
+  over_80_sum_2009?: number;
+  over_80_sum_2014?: number;
+  over_80_sum_2020?: number;
+  to_80_sum_1968?: number;
+  to_80_sum_1975?: number;
+  to_80_sum_1982?: number;
+  to_80_sum_1990?: number;
+  to_80_sum_1999?: number;
+  to_80_sum_2009?: number;
+  to_80_sum_2014?: number;
+  to_80_sum_2020?: number;
+  under_4_sum_1968?: number;
+  under_4_sum_1975?: number;
+  under_4_sum_1982?: number;
+  under_4_sum_1990?: number;
+  under_4_sum_1999?: number;
+  under_4_sum_2009?: number;
+  under_4_sum_2014?: number;
+  under_4_sum_2020?: number;
+};
