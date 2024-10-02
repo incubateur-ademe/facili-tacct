@@ -97,8 +97,6 @@ export const GrandAgeIsolement = (props: {
   };
   const yGraphData = Object.values(yData).map(Number).map(value => isNaN(value) ? null : value);
 
-  console.log("yGraphData", yGraphData);
-
   const title =
     "La proportion de personnes âgées que nous avons considérée correspond au pourcentage des personnes de plus de 80 ans dans la population à chaque recensement INSEE.";
 
