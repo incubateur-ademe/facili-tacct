@@ -74,6 +74,9 @@ importers:
       pg:
         specifier: ^8.11.5
         version: 8.13.0
+      prisma-client-a2fb8a8ee4cc7c24999c8915b98945fef0ad4314bf39866168cc2d4ca99282fa:
+        specifier: link:src\generated\client
+        version: link:src/generated/client
       react:
         specifier: ^18
         version: 18.3.1
