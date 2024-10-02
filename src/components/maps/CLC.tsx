@@ -1,7 +1,6 @@
 "use client";
 
 import "leaflet/dist/leaflet.css";
-import "./maps.scss";
 
 import { type StyleFunction } from "leaflet";
 import { useRef } from "react";

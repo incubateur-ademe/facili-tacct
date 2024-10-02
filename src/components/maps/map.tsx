@@ -1,7 +1,6 @@
 "use client";
 
 import "leaflet/dist/leaflet.css";
-import "./maps.scss";
 
 import { type Feature } from "geojson";
 import { type FeatureGroup, type Layer, type LeafletMouseEventHandlerFn, type StyleFunction } from "leaflet";
@@ -86,7 +85,6 @@ export const Map = (props: {
     layer.setStyle({
       weight: 3,
       color: "#0D2100",
-      // dashArray: "",
       fillOpacity: 0.9,
     });
     layer.bringToFront();
@@ -105,7 +103,7 @@ export const Map = (props: {
   const mouseOutHandler: LeafletMouseEventHandlerFn = e => {
     const layer = e.target as FeatureGroup<CommunesIndicateursDto["properties"]>;
     layer.setStyle({
-      weight: 1.5,
+      weight: 1,
       color: "#000000",
       fillOpacity: 0.6,
     });
