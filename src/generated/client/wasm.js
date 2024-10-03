@@ -203,6 +203,7 @@ exports.Prisma.CommunesScalarFieldEnum = {
 exports.Prisma.Collectivites_searchbarScalarFieldEnum = {
   index: 'index',
   code_commune: 'code_commune',
+  coordinates: 'coordinates',
   libelle_commune: 'libelle_commune',
   code_epci: 'code_epci',
   libelle_epci: 'libelle_epci',
@@ -210,6 +211,14 @@ exports.Prisma.Collectivites_searchbarScalarFieldEnum = {
   region: 'region',
   search_code: 'search_code',
   search_libelle: 'search_libelle'
+};
+
+exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
+  srid: 'srid',
+  auth_name: 'auth_name',
+  auth_srid: 'auth_srid',
+  srtext: 'srtext',
+  proj4text: 'proj4text'
 };
 
 exports.Prisma.SortOrder = {
@@ -232,7 +241,8 @@ exports.Prisma.ModelName = {
   inconfort_thermique: 'inconfort_thermique',
   clc_epci: 'clc_epci',
   communes: 'communes',
-  collectivites_searchbar: 'collectivites_searchbar'
+  collectivites_searchbar: 'collectivites_searchbar',
+  spatial_ref_sys: 'spatial_ref_sys'
 };
 
 /**
