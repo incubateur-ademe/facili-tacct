@@ -10,12 +10,14 @@ import { useRef } from "react";
 import "./maps.scss";
 
 import { CommunesIndicateursDto } from "@/lib/dto";
+import { swapNumbers } from "@/utils/reusableFunctions/swapItemsInArray";
 import { GraphDataNotFound } from "../graph-data-not-found";
 
 export const MapLCZ = (props: {
   carteCommunes: CommunesIndicateursDto[];
+  collectivite: any;
 }) => {
-  const { carteCommunes } = props;
+  const { carteCommunes, collectivite } = props;
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo");
   const codepci = searchParams.get("codepci")!;
@@ -42,7 +44,7 @@ export const MapLCZ = (props: {
 
   const commune = codgeo ? carteCommunes.find(el => el.properties.code_commune === codgeo) : null;
 
-  const centerCoord: number[] = commune ? getCentroid(commune.geometry.coordinates?.[0][0]) : getCoordinates(all_coordinates);
+  const centerCoord: number[] = collectivite[0] ? swapNumbers((collectivite[0].coordinates.split(",").map(Number)), 0, 1) : getCoordinates(all_coordinates);
 
   const style: StyleFunction<Any> = () => {
     return {
@@ -51,7 +53,6 @@ export const MapLCZ = (props: {
       color: "#161616",
       // dashArray: "3",
       fillOpacity: 0,
-      cursor: "wait",
     };
   };
 

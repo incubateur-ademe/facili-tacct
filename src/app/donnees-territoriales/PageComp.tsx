@@ -14,7 +14,7 @@ import { FragiliteEconomique } from "@/components/themes/inconfort-thermique/fra
 import { GrandAgeIsolement } from "@/components/themes/inconfort-thermique/grand-age-isolement";
 import LCZ from "@/components/themes/inconfort-thermique/lcz";
 import { TravailExterieur } from "@/components/themes/inconfort-thermique/travail-exterieur";
-import { CarteCommunes, CLC, InconfortThermique } from "@/lib/postgres/models";
+import { CarteCommunes, CLC, CollectivitesSearchbar, InconfortThermique } from "@/lib/postgres/models";
 import { GetClcEpci } from "@/lib/queries/cartographie";
 import { TabTooltip } from "@/utils/TabTooltip";
 import dynamic from "next/dynamic";
@@ -31,6 +31,7 @@ interface Props {
   }>;
   carteCommunes: CarteCommunes[];
   inconfort_thermique: InconfortThermique[];
+  collectivite: CollectivitesSearchbar[];
 }
 
 interface VegetalisationProps {
@@ -65,7 +66,7 @@ const allComps = [
   },
   {
     titre: "LCZ",
-    Component: ({carteCommunes}: Props & { activeDataTab: string }) => <LCZ carteCommunes={carteCommunes} />,
+    Component: ({carteCommunes, collectivite}: Props & { activeDataTab: string }) => <LCZ carteCommunes={carteCommunes} collectivite={collectivite} />,
   },
   {
     titre: "Végétalisation",
@@ -73,7 +74,7 @@ const allComps = [
   },
 ];
 
-const PageComp = ({ data, carteCommunes, inconfort_thermique }: Props) => {
+const PageComp = ({ data, carteCommunes, inconfort_thermique, collectivite }: Props) => {
   const [clc, setClc] = useState<CLC[]>();
   const [selectedTabId, setSelectedTabId] = useState("Population");
   const [selectedSubTab, setSelectedSubTab] = useState("Grand âge");
@@ -174,6 +175,7 @@ const PageComp = ({ data, carteCommunes, inconfort_thermique }: Props) => {
                     carteCommunes={carteCommunes}
                     activeDataTab={selectedSubTab}
                     clc={clc || []}
+                    collectivite={collectivite}
                   />
                 );
               })()}

@@ -1,31 +1,31 @@
 "use client";
 import { MapLCZ } from "@/components/maps/map-lcz";
 import { CommunesIndicateursMapper } from "@/lib/mapper/communes";
-import { CarteCommunes } from "@/lib/postgres/models";
-import { useSearchParams } from "next/navigation";
+import { CarteCommunes, CollectivitesSearchbar } from "@/lib/postgres/models";
 import styles from "./themes.module.scss";
 
-const LCZ = ({ carteCommunes }: {
+const LCZ = ({ carteCommunes, collectivite }: {
   carteCommunes: CarteCommunes[];
+  collectivite: CollectivitesSearchbar[];
 }) => {
-  const searchParams = useSearchParams();
-  const codgeo = searchParams.get("codgeo");
-  const codepci = searchParams.get("codepci")!;
+  // const searchParams = useSearchParams();
+  // const codgeo = searchParams.get("codgeo");
+  // const codepci = searchParams.get("codepci")!;
   const communesMap = carteCommunes.map(CommunesIndicateursMapper);
-  const commune = codgeo ? communesMap.find((obj) => obj.properties["code_commune"] === codgeo) : undefined;
+  // const commune = codgeo ? communesMap.find((obj) => obj.properties["code_commune"] === codgeo) : undefined;
   return (
     <div className={styles.container}>
       <div className="w-2/5">
         <div className={styles.explicationWrapper}>
-          { commune ?
+          { collectivite[0] ?
             <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-              Dans la commune de {commune.properties.libelle_commune}, la part des ménages qui sont en situation de
+              Dans la commune de {collectivite[0]?.libelle_commune}, la part des ménages qui sont en situation de
               précarité énergique logement est de <b>XXX%. </b> 
               À l'échelle de l'EPCI, ce taux est de <b>XXXX%.</b>
             </p>
             : 
             <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-              Dans l'EPCI {communesMap[0]?.properties["libelle_epci"]}, la part des ménages qui sont en situation de
+              Dans l'EPCI {collectivite[0]["libelle_epci"]}, la part des ménages qui sont en situation de
               précarité énergique logement est de <b>XXXX%.</b>
             </p>
           }
@@ -43,7 +43,7 @@ const LCZ = ({ carteCommunes }: {
             <b>Cartographie LCZ</b>
           </p>
           <div>
-            <MapLCZ carteCommunes={communesMap}/>
+            <MapLCZ carteCommunes={communesMap} collectivite={collectivite} />
           </div>
       </div>
     </div>

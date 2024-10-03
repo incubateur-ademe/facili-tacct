@@ -42,6 +42,24 @@ export const LineChart1 = (props: Props) => {
       colors={"rgba(242, 133, 2, 0.9)"}
       isInteractive={true}
       useMesh={true}
+      tooltip={
+        ({ point }) => {
+          return (
+            <div
+              style={{
+                background: "white",
+                padding: "0.5rem",
+                border: "1px solid #ccc",
+                position: "relative",
+                right: "4rem",
+                boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px"
+              }}
+            >
+              {point.data.xFormatted} : <b>{point.data.yFormatted}%</b>
+            </div>
+          );
+        }
+      }
       yScale={{
         type: "linear",
         min: 0,
