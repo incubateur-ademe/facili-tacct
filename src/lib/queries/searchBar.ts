@@ -15,6 +15,7 @@ export const GetCollectivite = async (collectivite: string): Promise<Collectivit
       const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
       SELECT 
       search_code,
+      coordinates,
       search_libelle,
       code_epci, 
       libelle_epci,
@@ -31,6 +32,7 @@ export const GetCollectivite = async (collectivite: string): Promise<Collectivit
         const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
         SELECT 
         search_code,
+        coordinates,
         search_libelle,
         code_epci, 
         libelle_epci,
@@ -57,6 +59,7 @@ export const GetCollectivite = async (collectivite: string): Promise<Collectivit
       return [
         {
           code_commune: "",
+          coordinates: "",
           search_code: "",
           search_libelle: "",
           code_epci: "",
