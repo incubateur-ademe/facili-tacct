@@ -5,6 +5,7 @@ import { themes } from "@/lib/utils/themes";
 
 import { Loader } from "@/components/loader";
 import { GetCommunes } from "@/lib/queries/cartographie";
+import { GetCollectivite } from "@/lib/queries/searchBar";
 import { GetInconfortThermique } from "@/lib/queries/thematiques";
 import dynamic from "next/dynamic";
 import { NoticeComp } from "../../dsfr/base/Notice";
@@ -36,6 +37,9 @@ const Page = async (searchParams: SearchParams) => {
   const dbInconfortThermique = codgeo ? await GetInconfortThermique(codgeo) 
         : codepci ? await GetInconfortThermique(codepci) 
         : void 0;
+  const collectivite = codgeo ? await GetCollectivite(codgeo) 
+    : codepci ? await GetCollectivite(codepci) 
+    : void 0;
   const carteCommunes = await GetCommunes(codepci);
 
   return (
@@ -60,6 +64,7 @@ const Page = async (searchParams: SearchParams) => {
           data={theme}
           inconfort_thermique={dbInconfortThermique!}
           carteCommunes={carteCommunes}
+          collectivite={collectivite!}
         />
       </div>
     </Container>
