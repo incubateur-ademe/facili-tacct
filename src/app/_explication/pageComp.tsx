@@ -17,7 +17,7 @@ export const ExplicationComp = () => {
 
   const [activeTab, setActiveTab] = useState(0);
   const [selected, setSelected] = useState<boolean[]>([false, false, false, false, false, false, false]);
-  const theme = themes.inconfort_thermique;
+  const theme = themes.inconfortThermique;
 
   const [selectedCircle, setSelectedCircle] = useState({
     Bâtiment: selected.at(0),
