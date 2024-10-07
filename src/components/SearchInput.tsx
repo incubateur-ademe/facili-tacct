@@ -51,7 +51,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
         getCollectivite.map((el, i) => ({
           searchLibelle: el.search_libelle,
           searchCode: el.search_code,
-          codeCommune: el.code_commune,
+          codeCommune: el.code_commune ?? "",
           codeEpci: el.code_epci
         })),
       );
