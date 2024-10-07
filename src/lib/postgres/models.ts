@@ -55,10 +55,10 @@ export type InconfortThermique = {
 };
 
 export type CollectivitesSearchbar = {
-  code_commune: string;// | null;
-  coordinates: string;
+  code_commune?: string | null;
+  coordinates?: string | null;
   code_epci: string;// | null;
-  libelle_commune: string;// | null;
+  libelle_commune?: string | null;
   libelle_epci: string;// | null;
   search_libelle: string;// | null;
   search_code: string;// | null;

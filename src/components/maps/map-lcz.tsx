@@ -44,7 +44,7 @@ export const MapLCZ = (props: {
 
   const commune = codgeo ? carteCommunes.find(el => el.properties.code_commune === codgeo) : null;
 
-  const centerCoord: number[] = collectivite[0] ? swapNumbers((collectivite[0].coordinates.split(",").map(Number)), 0, 1) : getCoordinates(all_coordinates);
+  const centerCoord: number[] = collectivite[0].coordinates ? swapNumbers((collectivite[0].coordinates.split(",").map(Number)), 0, 1) : getCoordinates(all_coordinates);
 
   const style: StyleFunction<Any> = () => {
     return {

@@ -10,7 +10,7 @@ export const Cards = () => {
     <div className={styles.cardWrapper}>
       <CardComp
         imageUrl="./inconfortThermiqueIcon.svg"
-        thematique="inconfort_thermique"
+        thematique="inconfortThermique"
         badgeSeverity="success"
         badge="Disponible"
         title="Inconfort thermique"
