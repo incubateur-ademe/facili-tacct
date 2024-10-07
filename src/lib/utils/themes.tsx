@@ -1,5 +1,5 @@
 export const themes = {
-  inconfort_thermique: [
+  inconfortThermique: [
     {
       id: 0,
       titre: "Grand âge",

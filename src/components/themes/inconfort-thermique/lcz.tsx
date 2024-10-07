@@ -19,7 +19,7 @@ const LCZ = ({ carteCommunes, collectivite }: {
         <div className={styles.explicationWrapper}>
           { collectivite[0] ?
             <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-              Dans la commune de {collectivite[0]?.libelle_commune}, la part des ménages qui sont en situation de
+              Dans la commune de {collectivite[0]?.search_libelle}, la part des ménages qui sont en situation de
               précarité énergique logement est de <b>XXX%. </b> 
               À l'échelle de l'EPCI, ce taux est de <b>XXXX%.</b>
             </p>
