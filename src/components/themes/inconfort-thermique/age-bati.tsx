@@ -23,13 +23,13 @@ const average = (
 ) => array.reduce((a: number, b: AgeBatiDto) => a + b[prop], 0) / array.length;
 
 export const AgeBati = (props: {
-  inconfort_thermique: InconfortThermique[];
+  inconfortThermique: InconfortThermique[];
 }) => {
-  const { inconfort_thermique } = props;
+  const { inconfortThermique } = props;
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo");
   const codepci = searchParams.get("codepci")!;
-  const ageBati = inconfort_thermique.map(ageBatiMapper);
+  const ageBati = inconfortThermique.map(ageBatiMapper);
 
   const averages = {
     averageAgeBatiPre19: average(ageBati, "age_bati_pre_19"),
@@ -82,7 +82,7 @@ export const AgeBati = (props: {
 
   return (
     <>
-      {inconfort_thermique.length && Sum(Object.values(averages)) != 0 ? (
+      {inconfortThermique.length && Sum(Object.values(averages)) != 0 ? (
         <div className={styles.container}>
           <div className="w-2/5">
             <div className={styles.explicationWrapper}>
