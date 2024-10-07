@@ -22,7 +22,6 @@ export const MapLCZ = (props: {
   const codgeo = searchParams.get("codgeo");
   const codepci = searchParams.get("codepci")!;
   const mapRef = useRef(null);
-
   const all_coordinates = carteCommunes.map(el => el.geometry.coordinates?.[0]?.[0]);
 
   const getCentroid = (arr: number[][]) => {
@@ -43,7 +42,6 @@ export const MapLCZ = (props: {
   };
 
   const commune = codgeo ? carteCommunes.find(el => el.properties.code_commune === codgeo) : null;
-
   const centerCoord: number[] = collectivite[0].coordinates ? swapNumbers((collectivite[0].coordinates.split(",").map(Number)), 0, 1) : getCoordinates(all_coordinates);
 
   const style: StyleFunction<Any> = () => {
@@ -58,7 +56,7 @@ export const MapLCZ = (props: {
 
   return (
     <>
-      {carteCommunes === null ? (
+      { carteCommunes === null ? (
         <GraphDataNotFound code={codgeo ? codgeo : codepci} />
       ) : (
         <MapContainer
