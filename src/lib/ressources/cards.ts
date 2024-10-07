@@ -1,5 +1,5 @@
 export const ressourcesTabs = {
-  diagnostic : [
+  diagnostic: [
     {
       id: 0,
       titre: "Vous voulez réviser un diagnostic connu",
@@ -35,7 +35,7 @@ export const cards = {
   diagnostic: [
     // {
     //   id: 0,
-    //   tab : "Vous n'avez pas de diagnostic",
+    //   tab: "Vous n'avez pas de diagnostic",
     //   titre: 'Atelier "Mémoire"',
     //   tag: "Atelier",
     //   description:"Faites appel à la mémoire collective pour débuter sur l'exposition de votre territoire aux impacts du changement climatique.",
@@ -43,7 +43,7 @@ export const cards = {
     // },
     {
       id: 3,
-      tab : ["Vous découvrez le diagnostic pour la 1ère fois", "Vous voulez réviser un diagnostic connu"],
+      tab: ["Vous découvrez le diagnostic pour la 1ère fois", "Vous voulez réviser un diagnostic connu"],
       titre: "10 minutes pour analyser les 80 pages de votre diagnostic de vulnérabilité",
       tag: "Article",
       description: "Le diagnostic de vulnérabilité est un document clé pour comprendre le territoire et ses spécificités.",
@@ -51,7 +51,7 @@ export const cards = {
     },
     {
       id: 4,
-      tab : "Vous découvrez le diagnostic pour la 1ère fois",
+      tab: "Vous découvrez le diagnostic pour la 1ère fois",
       titre: "Mettre en récit mon territoire pour engager",
       tag: "Article",
       description: "« L’humanité est une « espèce fabulatrice qui, en se racontant des histoires de plus en plus complexes, développe des capacités de coopération » - Yval Noah Harrari ; Découvrez la mise en récit.",
@@ -59,15 +59,15 @@ export const cards = {
     },
     {
       id: 5,
-      tab : "Vous découvrez le diagnostic pour la 1ère fois",
-      titre: "La facilitation d’ateliers : une démarche éprouvée d’engagement",
+      tab: "Vous découvrez le diagnostic pour la 1ère fois",
+      titre: "La facilitation d’ateliers : une démarche éprouvée d’engagement",
       tag: "Article",
-      description: "Pour réellement engager vos parties prenantes dans votre démarche d’adaptation appuyez-vous sur une démarche éprouvée : la facilitation d’ateliers.",
+      description: "Pour réellement engager vos parties prenantes dans votre démarche d’adaptation appuyez-vous sur une démarche éprouvée : la facilitation d’ateliers.",
       link: "/ressources/articles"
     },
     {
       id: 6,
-      tab : ["Vous découvrez le diagnostic pour la 1ère fois", "Vous voulez réviser un diagnostic connu"],
+      tab: ["Vous découvrez le diagnostic pour la 1ère fois", "Vous voulez réviser un diagnostic connu"],
       titre: "Le cahier des charges, levier pour intégrer la facilitation",
       tag: "Article",
       description: "Engager vos participants, ça s’anticipe, pour cela intégrez la facilitation d’ateliers (ou l’intelligence collective) dès conception de votre cahier des charges.",
@@ -75,42 +75,42 @@ export const cards = {
     },
     {
       id: 7,
-      tab : "Vous découvrez le diagnostic pour la 1ère fois",
+      tab: "Vous découvrez le diagnostic pour la 1ère fois",
       titre: "Comment restituer son diagnostic des impacts du changement climatique en Haute-Loire (43)",
       tag: "Retour d'expérience",
-      description: "Ils l'ont fait ! Retour d'expérience sur la restitution de son diagnostic de vulnérabilité en Haute Loire (43).",
+      description: "Comment embarquer dans la construction de votre stratégie d’adaptation? Un partage engageant du diagnostic est important, pour cela, la CA du Puy-en-Velay a articulé TACCT et l’atelier ClimaSTORY.",
       link: "https://librairie.ademe.fr/7180-comment-restituer-son-diagnostic-des-impacts-du-changement-climatique-en-haute-loire-43.html"
     },
     {
       id: 8,
-      tab : "Vous voulez réviser un diagnostic connu",
+      tab: "Vous voulez réviser un diagnostic connu",
       titre: 'Evaluation en atelier de la sensibilité du territoire au changement climatique au PNR Pyrénées Ariégeoises (09)',
       tag: "Retour d'expérience",
-      description: "",
+      description: "Pour réaliser son diagnostic de vulnérabilité, il faut analyser l’exposition, puis la sensibilité. Pour réaliser cela en concertation, le PNR des Pyrénées Ariégeoises a mis en place un atelier dédié.",
       link: "https://librairie.ademe.fr/changement-climatique-et-energie/6223-evaluation-en-atelier-de-la-sensibilite-du-territoire-au-changement-climatique-au-pnr-pyrenees-ariegeoises-09.html"
     },
     {
       id: 9,
-      tab : "Vous voulez réviser un diagnostic connu",
+      tab: "Vous voulez réviser un diagnostic connu",
       titre: "Retour d'expériences de la mise en place de la démarche TACCT sur des territoires",
       tag: "Retour d'expérience",
-      description: "",
+      description: "Intéressé par la démarche TACCT ? Cette fiche est un retour d’expérience des bonnes pratiques et points de vigilance pour 10 territoires ayant suivi la démarche en AURA - Occitanie.",
       link: "https://librairie.ademe.fr/7538-adaptation-au-changement-climatique.html"
     },
     {
       id: 10,
-      tab : "Vous découvrez le diagnostic pour la 1ère fois",
-      titre: "Coorganiser des ateliers TACCT pour mobiliser : Retour d'expérience dans les Baronnies en Drôme Provençale (26)",
+      tab: "Vous découvrez le diagnostic pour la 1ère fois",
+      titre: "Coorganiser des ateliers TACCT pour mobiliser : Retour d'expérience dans les Baronnies en Drôme Provençale (26)",
       tag: "Retour d'expérience",
-      description: "",
+      description: "Pourquoi et comment coorganiser des ateliers sur les enjeux de votre territoire? la CCBDP a identifié trois enjeux d'adaptation majeurs à la suite de son diagnostic de vulnérabilité et a souhaité mobiliser ses partenaires.",
       link: "https://librairie.ademe.fr/7228-coorganiser-des-ateliers-tacct-pour-mobiliser-retour-d-experience-dans-les-baronnies-en-drome-provencale-26.html"
     },
     {
       id: 11,
-      tab : "Vous découvrez le diagnostic pour la 1ère fois",
-      titre: "Questionner l'imaginaire pour faire réagir en atelier TACCT : Retour d'expérience de Clermont Auvergne Métropole (63)",
+      tab: "Vous découvrez le diagnostic pour la 1ère fois",
+      titre: "Questionner l'imaginaire pour faire réagir en atelier TACCT : Retour d'expérience de Clermont Auvergne Métropole (63)",
       tag: "Retour d'expérience",
-      description: "",
+      description: "Utiliser la mise en récit lors d’un atelier de restitution de  votre diagnostic de vulnérabilité : Clermont Auvergne Métropole l’a fait avec une Une de journal fictive.",
       link: "https://librairie.ademe.fr/7215-questionner-l-imaginaire-pour-faire-reagir-en-atelier-tacct-retour-d-experience-de-clermont-auvergne-metropole-63.html"
     },
     {
@@ -118,23 +118,23 @@ export const cards = {
       tab: "Vous découvrez le diagnostic pour la 1ère fois",
       titre: "Comment restituer son diagnostic des impacts du changement climatique en Haute-Savoie (74) ?",
       tag: "Retour d'expérience",
-      description: "",
+      description: "Comment embarquer dans la construction de votre stratégie d’adaptation? Un partage engageant du diagnostic est important, pour cela, la CCVCMB a articulé TACCT et l’atelier ClimaSTORY.",
       link: "https://librairie.ademe.fr/7129-comment-restituer-son-diagnostic-des-impacts-du-changement-climatique-en-haute-savoie-74-.html"
     },
     {
       id: 13,
       tab: "Vous découvrez le diagnostic pour la 1ère fois",
-      titre: "Mettre en récit TACCT stratégie pour engager les élus : Retour d'expérience du PNR du Pilat (42)",
+      titre: "Mettre en récit TACCT stratégie pour engager les élus : Retour d'expérience du PNR du Pilat (42)",
       tag: "Retour d'expérience",
-      description: "",
+      description: "Après avoir réalisé en autonomie son diagnostic de vulnérabilité, le PNR du Pilat a décidé de suivre TACCT Stratégie pour mobiliser et mettre en récit son territoire sur un enjeu déterminé.",
       link: "https://librairie.ademe.fr/7544-mettre-en-recit-tacct-strategie-pour-engager-les-elus-retour-d-experience-du-pnr-du-pilat-42.html"
     },
     {
       id: 14,
       tab: ["Vous n'avez pas de diagnostic", "Vous voulez réviser un diagnostic connu"],
-      titre: "Piloter sa démarche TACCT : Retour d'expérience dans le Bocage Bourbonnais (03)",
+      titre: "Piloter sa démarche TACCT : Retour d'expérience dans le Bocage Bourbonnais (03)",
       tag: "Retour d'expérience",
-      description: "",
+      description: "Le travail en transversalité entre services et, entre agents et élus sont des gages de réussite. Comment et pourquoi la CCBB a mis en place une « équipe cœur » afin de piloter sa démarche TACCT.",
       link: "https://librairie.ademe.fr/7214-piloter-sa-demarche-tacct-retour-d-experience-dans-le-bocage-bourbonnais-03.html"
     },
     {
@@ -142,7 +142,7 @@ export const cards = {
       tab: "Vous n'avez pas de diagnostic",
       titre: "Réalisation d'un diagnostic de vulnérabilité au changement climatique",
       tag: "Retour d'expérience",
-      description: "",
+      description: "Epernay Agglo Champagne pour son PCAET a effectué son diagnostic de vulnérabilité : revivez la démarche suivie et les apprentissages en s’appuyant sur TACCT.",
       link: "https://www.climaxion.fr/docutheque/realisation-dun-diagnostic-vulnerabilite-au-changement-climatique-epernay-agglo-champagne"
     },
     {
@@ -150,15 +150,15 @@ export const cards = {
       tab: "Vous n'avez pas de diagnostic",
       titre: "Construire la feuille de route Adaptation au Changement Climatique du département de l’Indre",
       tag: "Retour d'expérience",
-      description: "",
+      description: "Le département de l’Indre a mis en oeuvre la démarche TACCT du diagnostic jusqu’à l’identification de la stratégie et du plan d’action. Tout cela en mobilisant de nombreuses parties prenantes.",
       link: "https://www.indre.gouv.fr/Actions-de-l-Etat/Environnement/Strategie-Climat-36-une-demarche-departementale-et-partenariale/3.-Construire-notre-feuille-de-route/La-methode"
     },
     {
       id: 17,
       tab: "Vous n'avez pas de diagnostic",
-      titre: "Adaptation au changement climatique : déploiement de la démarche TACCT",
+      titre: "Adaptation au changement climatique : déploiement de la démarche TACCT",
       tag: "Retour d'expérience",
-      description: "",
+      description: "Le Pays Pyrénées Méditerranée a mis en oeuvre la démarche TACCT du diagnostic jusqu’à la mise en oeuvre de sa stratégie. Pour retrouver toutes les étapes de la démarche vous pouvez consulter cette fiche.",
       link: "https://www.payspyreneesmediterranee.org/thematiques/transitions-energie-climat/adaptation-au-changement-climatique/"
     },
   ],
@@ -176,7 +176,7 @@ export const cards = {
       tab: "Inconfort thermique",
       titre: 'CRACC',
       tag: "Article",
-      description: "Canicule : à quoi s’attendre et comment s’adapter ?",
+      description: "Canicule : à quoi s’attendre et comment s’adapter ?",
       link: "https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/canicule"
     },
   ],
