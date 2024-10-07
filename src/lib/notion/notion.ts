@@ -1,4 +1,5 @@
-import { Client } from "@notionhq/client";
+// import { Client } from "@notionhq/client";
+const { Client } = require("@notionhq/client")
 
 const notion = new Client({
   auth: process.env.NOTION_KEY,
@@ -14,7 +15,6 @@ export const getPage = async () => {
 export const getBlocks = async (blockId: string) => {
   const response = await notion.blocks.children.list({
     block_id: blockId,
-    page_size: 50,
   });
   return response.results;
 };
