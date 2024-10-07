@@ -40,9 +40,7 @@ const Page = async (searchParams: SearchParams) => {
   const collectivite = codgeo ? await GetCollectivite(codgeo) 
     : codepci ? await GetCollectivite(codepci) 
     : void 0;
-  console.log("collectivite", collectivite);
   const carteCommunes = await GetCommunes(codepci);
-
   return (
     <Container size="xl" className="mb-24">
       <Breadcrumb
