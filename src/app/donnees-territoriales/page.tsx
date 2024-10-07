@@ -31,7 +31,7 @@ const DynamicPageComp = dynamic(() => import("./PageComp"), {
 });
 
 const Page = async (searchParams: SearchParams) => {
-  const theme = themes.inconfort_thermique;
+  const theme = themes.inconfortThermique;
   const codepci = searchParams.searchParams.codepci;
   const codgeo = searchParams.searchParams.codgeo;
   const dbInconfortThermique = codgeo ? await GetInconfortThermique(codgeo) 
@@ -40,6 +40,7 @@ const Page = async (searchParams: SearchParams) => {
   const collectivite = codgeo ? await GetCollectivite(codgeo) 
     : codepci ? await GetCollectivite(codepci) 
     : void 0;
+  console.log("collectivite", collectivite);
   const carteCommunes = await GetCommunes(codepci);
 
   return (
@@ -62,7 +63,7 @@ const Page = async (searchParams: SearchParams) => {
       <div className={styles.container}>
         <DynamicPageComp
           data={theme}
-          inconfort_thermique={dbInconfortThermique!}
+          inconfortThermique={dbInconfortThermique!}
           carteCommunes={carteCommunes}
           collectivite={collectivite!}
         />

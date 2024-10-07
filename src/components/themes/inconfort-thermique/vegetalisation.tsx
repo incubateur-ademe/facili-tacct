@@ -28,14 +28,14 @@ const sumProperty = (
 
 const Vegetalisation = (props: {
   clc: CLC[];
-  inconfort_thermique: InconfortThermique[];
+  inconfortThermique: InconfortThermique[];
 }) => {
-  const { inconfort_thermique, clc } = props;
+  const { inconfortThermique, clc } = props;
   // const [clc, setClc] = useState<CLC[]>();
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo");
   const codepci = searchParams.get("codepci")!;
-  const vegetalisation = inconfort_thermique.map(vegetalisationMapper);
+  const vegetalisation = inconfortThermique.map(vegetalisationMapper);
   const foret_sum = sumProperty(vegetalisation, "clc_3_foret_semiNaturel");
   const foret_percent =
     (100 * sumProperty(vegetalisation, "clc_3_foret_semiNaturel")) /

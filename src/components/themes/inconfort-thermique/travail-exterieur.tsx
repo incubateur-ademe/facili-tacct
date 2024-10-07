@@ -22,13 +22,13 @@ const sumProperty = (
 }
 
 export const TravailExterieur = (props: {
-  inconfort_thermique: InconfortThermique[];
+  inconfortThermique: InconfortThermique[];
 }) => {
-  const { inconfort_thermique } = props;
+  const { inconfortThermique } = props;
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo");
   const codepci = searchParams.get("codepci")!;
-  const travailExterieur = inconfort_thermique.map(travailExtMapper);
+  const travailExterieur = inconfortThermique.map(travailExtMapper);
   const sums = {
     sumAgriculture: sumProperty(travailExterieur, "NA5AZ_sum"),
     sumIndustries: sumProperty(travailExterieur, "NA5BE_sum"),
@@ -83,7 +83,7 @@ export const TravailExterieur = (props: {
     "Le travail en extérieur correspond aux travailleurs dans les secteurs de la construction, de l'agriculture, de la sylviculture et de la pêche.";
   return (
     <>
-      {inconfort_thermique.length && travailExt ? (
+      {inconfortThermique.length && travailExt ? (
         <div className={styles.container}>
           <div className="w-2/5">
             {sums.sumConstruction || sums.sumAgriculture ? (

@@ -30,7 +30,7 @@ interface Props {
     titre: string;
   }>;
   carteCommunes: CarteCommunes[];
-  inconfort_thermique: InconfortThermique[];
+  inconfortThermique: InconfortThermique[];
   collectivite: CollectivitesSearchbar[];
 }
 
@@ -46,7 +46,7 @@ const DynamicVegetalisation = dynamic(() => import("../../components/themes/inco
 const allComps = [
   {
     titre: "Grand âge",
-    Component: ({inconfort_thermique, data}: Props & { activeDataTab: string }) => <GrandAgeIsolement inconfort_thermique={inconfort_thermique} data={data} />,
+    Component: ({inconfortThermique, data}: Props & { activeDataTab: string }) => <GrandAgeIsolement inconfortThermique={inconfortThermique} data={data} />,
   },
   {
     titre: "Fragilité économique",
@@ -54,11 +54,11 @@ const allComps = [
   },
   {
     titre: "Travail en extérieur",
-    Component: ({inconfort_thermique}: Props & { activeDataTab: string }) => <TravailExterieur inconfort_thermique={inconfort_thermique} />,
+    Component: ({inconfortThermique}: Props & { activeDataTab: string }) => <TravailExterieur inconfortThermique={inconfortThermique} />,
   },
   {
     titre: "Age du bâtiment",
-    Component: ({inconfort_thermique}: Props & { activeDataTab: string }) => <AgeBati inconfort_thermique={inconfort_thermique} />,
+    Component: ({inconfortThermique}: Props & { activeDataTab: string }) => <AgeBati inconfortThermique={inconfortThermique} />,
   },
   {
     titre: "Densité du bâti",
@@ -70,11 +70,11 @@ const allComps = [
   },
   {
     titre: "Végétalisation",
-    Component: ({clc, inconfort_thermique}: Props & VegetalisationProps & { activeDataTab: string }) => <DynamicVegetalisation inconfort_thermique={inconfort_thermique} clc={clc} />,
+    Component: ({clc, inconfortThermique}: Props & VegetalisationProps & { activeDataTab: string }) => <DynamicVegetalisation inconfortThermique={inconfortThermique} clc={clc} />,
   },
 ];
 
-const PageComp = ({ data, carteCommunes, inconfort_thermique, collectivite }: Props) => {
+const PageComp = ({ data, carteCommunes, inconfortThermique, collectivite }: Props) => {
   const [clc, setClc] = useState<CLC[]>();
   const [selectedTabId, setSelectedTabId] = useState("Population");
   const [selectedSubTab, setSelectedSubTab] = useState("Grand âge");
@@ -171,7 +171,7 @@ const PageComp = ({ data, carteCommunes, inconfort_thermique, collectivite }: Pr
                 return (
                   <Component
                     data={data}
-                    inconfort_thermique={inconfort_thermique}
+                    inconfortThermique={inconfortThermique}
                     carteCommunes={carteCommunes}
                     activeDataTab={selectedSubTab}
                     clc={clc || []}

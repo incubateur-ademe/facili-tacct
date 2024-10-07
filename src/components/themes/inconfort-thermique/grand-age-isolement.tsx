@@ -45,7 +45,7 @@ const sumProperty = (
 }
 
 export const GrandAgeIsolement = (props: {
-  inconfort_thermique: InconfortThermique[];
+  inconfortThermique: InconfortThermique[];
   data: Array<{
     donnee: string;
     facteur_sensibilite: string;
@@ -54,12 +54,12 @@ export const GrandAgeIsolement = (props: {
     titre: string;
   }>;
 }) => {
-  const { inconfort_thermique } = props;
+  const { inconfortThermique } = props;
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo")!;
   const codepci = searchParams.get("codepci")!;
   const xData = ["1968", "1975", "1982", "1990", "1999", "2009", "2014", "2020"];
-  const grandAgeIsolement = inconfort_thermique.map(grandAgeIsolementMapper);
+  const grandAgeIsolement = inconfortThermique.map(grandAgeIsolementMapper);
 
   const yData = {
     over_80_1968_percent_epci: (
@@ -102,7 +102,7 @@ export const GrandAgeIsolement = (props: {
 
   return (
     <>
-      {inconfort_thermique.length && Sum(yGraphData.filter(e => e != null)) != 0 ? (
+      {inconfortThermique.length && Sum(yGraphData.filter(e => e != null)) != 0 ? (
         <div className={styles.container}>
           <div className="w-2/5">
             <div className={styles.explicationWrapper}>
