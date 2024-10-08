@@ -1,15 +1,18 @@
-import { getBlocks, getPage } from "@/lib/notion/notion";
+import { getBlocks, getDatabase } from "@/lib/notion/notion";
 import { Text } from "./Text";
 import styles from './text.module.css';
 
 const ArticlesApi = async () => {
-  const id = process.env.NOTION_ID;
-  const getPageContent = await getPage();
+  const id = process.env.NOTION_PAGE_ID;
+  const dbId = process.env.NOTION_DATABASE_ID;
+  // const getPageContent = await getPage();
+  const getDatabaseContent = await getDatabase(dbId as string);
   const getBlocksContent = await getBlocks(id as string) as Block[];
 
   const getTexts = (array: Block[]) => {
     const texts = array.map((el: Block, i) => {
       const value = el[el.type] as BlockType;
+      // console.log('el', el);
       switch (el.type) {
         case "paragraph":
           const paragraphtexts = value?.rich_text ? value?.rich_text : [];
