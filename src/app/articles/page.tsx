@@ -9,9 +9,7 @@ const Articles = async () => {
   const getDatabaseContent = await getDatabase(dbId as string);
   const ids = getDatabaseContent.map((el: any) => el.id)
 
-
   const getBlocksContent = await getBlocks(id as string) as Block[];
-
 
   return (
     <div style={{margin:"6em auto", maxWidth:"650px", display:"flex", flexDirection:"column", alignItems:"center"}}>
