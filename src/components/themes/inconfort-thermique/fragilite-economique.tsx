@@ -6,7 +6,7 @@ import { Legend } from "@/components/maps/legend";
 import { Map } from "@/components/maps/map";
 import { CommunesIndicateursMapper } from "@/lib/mapper/communes";
 import { CarteCommunes } from "@/lib/postgres/models";
-import { CustomTooltip } from "@/utils/CalculTooltip";
+import { CustomTooltip } from "@/lib/utils/CalculTooltip";
 import styles from "./themes.module.scss";
 
 export const FragiliteEconomique = ({ carteCommunes }: {

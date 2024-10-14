@@ -2,7 +2,7 @@
 
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
-import { type BoxProps, BoxRef } from "../dsfr/server";
+import { type BoxProps, BoxRef } from "../../dsfr/server";
 
 export interface ClientAnimateProps extends BoxProps {
   animateOptions?: Parameters<typeof useAutoAnimate>[0];
