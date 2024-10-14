@@ -1,3 +1,11 @@
+type SearchParams = {
+  searchParams: {
+    codepci: string;
+    codgeo: string;
+    thematique: string;
+  };
+};
+
 // export type DataCommune = {
 //   features: CommunesTypes[];
 //   name: string;
