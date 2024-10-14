@@ -6,7 +6,7 @@ import { Loader } from "@/components/loader";
 import { AgeBatiDto } from "@/lib/dto";
 import { ageBatiMapper } from "@/lib/mapper/inconfortThermique";
 import { InconfortThermique } from "@/lib/postgres/models";
-import { Sum } from "@/utils/reusableFunctions/sum";
+import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import styles from "./themes.module.scss";
 
 interface ChartData {

@@ -7,19 +7,10 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 
-import { Loader } from "@/components/loader";
-import { AgeBati } from "@/components/themes/inconfort-thermique/age-bati";
-import { DensiteBati } from "@/components/themes/inconfort-thermique/densite-bati";
-import { FragiliteEconomique } from "@/components/themes/inconfort-thermique/fragilite-economique";
-import { GrandAgeIsolement } from "@/components/themes/inconfort-thermique/grand-age-isolement";
-import LCZ from "@/components/themes/inconfort-thermique/lcz";
-import { TravailExterieur } from "@/components/themes/inconfort-thermique/travail-exterieur";
-import { CarteCommunes, CLC, CollectivitesSearchbar, InconfortThermique } from "@/lib/postgres/models";
-import { GetClcEpci } from "@/lib/queries/cartographie";
-import { TabTooltip } from "@/utils/TabTooltip";
-import dynamic from "next/dynamic";
+import { StationsClassees } from "@/components/themes/biodiversite/stationsClassees";
+import { Biodiversite, CarteCommunes } from "@/lib/postgres/models";
 import { useStyles } from "tss-react/dsfr";
-import styles from "./donnees.module.scss";
+import styles from "../donnees.module.scss";
 
 interface Props {
   data: Array<{
@@ -29,55 +20,20 @@ interface Props {
     risque: string;
     titre: string;
   }>;
+  biodiversite: Biodiversite[];
   carteCommunes: CarteCommunes[];
-  inconfortThermique: InconfortThermique[];
-  collectivite: CollectivitesSearchbar[];
 }
-
-interface VegetalisationProps {
-  clc: CLC[];
-}
-
-const DynamicVegetalisation = dynamic(() => import("../../components/themes/inconfort-thermique/vegetalisation"), {
-  ssr: false,
-  loading: () => <Loader />,
-});
 
 const allComps = [
   {
-    titre: "Grand âge",
-    Component: ({inconfortThermique, data}: Props & { activeDataTab: string }) => <GrandAgeIsolement inconfortThermique={inconfortThermique} data={data} />,
-  },
-  {
-    titre: "Fragilité économique",
-    Component: ({carteCommunes}: Props & { activeDataTab: string }) => <FragiliteEconomique carteCommunes={carteCommunes} />,
-  },
-  {
-    titre: "Travail en extérieur",
-    Component: ({inconfortThermique}: Props & { activeDataTab: string }) => <TravailExterieur inconfortThermique={inconfortThermique} />,
-  },
-  {
-    titre: "Age du bâtiment",
-    Component: ({inconfortThermique}: Props & { activeDataTab: string }) => <AgeBati inconfortThermique={inconfortThermique} />,
-  },
-  {
-    titre: "Densité du bâti",
-    Component: ({carteCommunes}: Props & { activeDataTab: string }) => <DensiteBati carteCommunes={carteCommunes} />,
-  },
-  {
-    titre: "LCZ",
-    Component: ({carteCommunes, collectivite}: Props & { activeDataTab: string }) => <LCZ carteCommunes={carteCommunes} collectivite={collectivite} />,
-  },
-  {
-    titre: "Végétalisation",
-    Component: ({clc, inconfortThermique}: Props & VegetalisationProps & { activeDataTab: string }) => <DynamicVegetalisation inconfortThermique={inconfortThermique} clc={clc} />,
+    titre: "Stations classées",
+    Component: ({biodiversite, data, carteCommunes}: Props & { activeDataTab: string }) => <StationsClassees biodiversite={biodiversite} data={data} carteCommunes={carteCommunes} />,
   },
 ];
 
-const PageComp = ({ data, carteCommunes, inconfortThermique, collectivite }: Props) => {
-  const [clc, setClc] = useState<CLC[]>();
-  const [selectedTabId, setSelectedTabId] = useState("Population");
-  const [selectedSubTab, setSelectedSubTab] = useState("Grand âge");
+const BiodiversiteComp = ({ data, biodiversite, carteCommunes }: Props) => {
+  const [selectedTabId, setSelectedTabId] = useState("A déterminer");
+  const [selectedSubTab, setSelectedSubTab] = useState("Stations classées");
   const searchParams = useSearchParams();
   const codepci = searchParams.get("codepci")!;
   const { isDark } = useIsDark();
@@ -91,10 +47,6 @@ const PageComp = ({ data, carteCommunes, inconfortThermique, collectivite }: Pro
 
   useEffect(() => {
     setSelectedSubTab(data.filter(el => el.facteur_sensibilite === selectedTabId)[0].titre);
-    void (async () => {
-      const temp = await GetClcEpci(codepci); 
-      temp && codepci ? setClc(temp) : void 0;
-    })();
   }, [selectedTabId, codepci]);
 
   return (
@@ -103,20 +55,8 @@ const PageComp = ({ data, carteCommunes, inconfortThermique, collectivite }: Pro
         selectedTabId={selectedTabId} 
         tabs={[
           {
-            tabId: "Population",
-            label: <TabTooltip 
-              selectedTab={selectedTabId} 
-              tooltip="La sensibilité de la population est généralement estimée au regard de facteurs démographique, social ou culturel" 
-              titre="Population"
-            /> 
-          },
-          { 
-            tabId: "Bâtiment", 
-            label: "Bâtiment"
-          },
-          { 
-            tabId: "Urbanisme",
-            label: "Urbanisme"
+            tabId: "A déterminer",
+            label: "A déterminer"
           },
         ]} 
         onTabChange={setSelectedTabId} 
@@ -171,11 +111,9 @@ const PageComp = ({ data, carteCommunes, inconfortThermique, collectivite }: Pro
                 return (
                   <Component
                     data={data}
-                    inconfortThermique={inconfortThermique}
-                    carteCommunes={carteCommunes}
+                    biodiversite={biodiversite}
                     activeDataTab={selectedSubTab}
-                    clc={clc || []}
-                    collectivite={collectivite}
+                    carteCommunes={carteCommunes}
                   />
                 );
               })()}
@@ -188,4 +126,4 @@ const PageComp = ({ data, carteCommunes, inconfortThermique, collectivite }: Pro
 };
 
 // eslint-disable-next-line import/no-default-export
-export default PageComp;
+export default BiodiversiteComp;

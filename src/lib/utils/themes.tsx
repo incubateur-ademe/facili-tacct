@@ -50,4 +50,20 @@ export const themes = {
       donnee: "LOREM IPSUM DE LA VEGETALISATION",
     },
   ],
+  biodiversite: [
+    {
+      id: 0,
+      titre: "Stations classées",
+      facteur_sensibilite: "A déterminer",
+      risque: "",
+      donnee: "",
+    },
+    {
+      id: 1,
+      titre: "Lorem",
+      facteur_sensibilite: "ipsum",
+      risque: "",
+      donnee: "",
+    },
+  ]
 };

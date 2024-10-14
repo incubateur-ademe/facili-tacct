@@ -35,89 +35,111 @@ const santeIcon = _santeIcon as StaticImageData;
 const tourismeIcon = _tourismeIcon as StaticImageData;
 
 export const thematiques = {
-  Aménagement: {
-    id: 0,
-    category: "Compétences",
-    icon: amenagementIcon,
-  },
-  Bâtiment: {
-    id: 1,
-    category: "Compétences",
-    icon: batimentIcon,
-  },
-  // "Développement économique": {
-  //   id: ,
-  //   category: "Compétences",
-  //   icon: batimentIcon,
-  // },
-  "Gestion de l'eau": {
-    id: 2,
-    category: "Compétences",
-    icon: gestionEauIcon,
-  },
-  "Gestion des risques": {
-    id: 3,
-    category: "Compétences",
-    icon: gestionRisqueIcon,
-  },
-  "Inconfort thermique": {
-    id: 4,
-    category: "Cadre de vie",
-    icon: inconfortIcon,
-  },
-  Infrastructures: {
-    id: 5,
-    category: "Cadre de vie",
-    icon: infrastructureIcon,
-  },
-  "Mobilité / transport": {
-    id: 6,
-    category: "Compétences",
-    icon: mobiliteIcon,
-  },
-  Paysages: {
-    id: 7,
-    category: "Cadre de vie",
-    icon: paysageIcon,
-  },
-  Santé: {
-    id: 9,
-    category: "Cadre de vie",
-    icon: santeIcon,
-  },
-  Agriculture: {
-    id: 11,
-    category: "Ressources économiques locales",
-    icon: agricultureIcon,
-  },
-  "Filière bois": {
-    id: 12,
-    category: "Ressources économiques locales",
-    icon: filiereBoisIcon,
-  },
-  Tourisme: {
-    id: 13,
-    category: "Ressources économiques locales",
-    icon: tourismeIcon,
-  },
-  "Écosystèmes et biodiversité": {
-    id: 14,
-    category: "Ressources naturelles",
-    icon: biodiversiteIcon,
-  },
-  "Ressources en eau": {
-    id: 15,
-    category: "Ressources naturelles",
-    icon: ressourcesEauIcon,
-  },
-  Forêt: {
-    id: 16,
-    category: "Ressources naturelles",
-    icon: foretIcon,
-  },
-  "Espaces naturels": {
-    id: 17,
-    category: "Ressources naturelles",
-    icon: espacesNaturelsIcon,
-  },
+  disponible: [
+    {
+      thematique: "Inconfort thermique",
+      id: 0,
+      category: "",
+      icon: inconfortIcon,
+      imageUrl: "./inconfortThermiqueIcon.svg"
+    },
+    {
+      thematique: "Biodiversité",
+      id: 1,
+      category: "",
+      icon: biodiversiteIcon,
+      imageUrl: "./biodiversiteIcon.svg"
+    }
+  ],
+  bientot_disponible: [
+    {
+      thematique: "Aménagement",
+      id: 0,
+      category: "",
+      icon: amenagementIcon,
+      imageUrl: "./amenagementIcon.svg"
+    },
+    {
+      thematique: "Ressources en eau",
+      id: 1,
+      category: "",
+      icon: gestionEauIcon,
+      imageUrl: "./eauIcon.svg"
+    },
+    {
+      thematique: "Espaces naturels",
+      id: 2,
+      category: "",
+      icon: espacesNaturelsIcon,
+      imageUrl: "./espacesNaturelsIcon.svg"
+    }
+  ],
+  futur: [
+    {
+      thematique: "Infrastructures",
+      id: 0,
+      category: "",
+      icon: infrastructureIcon,
+    },
+    {
+      thematique: "Mobilité / transport",
+      id: 1,
+      category: "",
+      icon: mobiliteIcon,
+    },
+    {
+      thematique: "Paysages",
+      id: 2,
+      category: "",
+      icon: paysageIcon,
+    },
+    {
+      thematique: "Gestion des risques",
+      id: 3,
+      category: "",
+      icon: gestionRisqueIcon,
+    },
+    {
+      thematique: "Agriculture",
+      id: 11,
+      category: "",
+      icon: agricultureIcon,
+    },
+    {
+      thematique: "Filière bois",
+      id: 12,
+      category: "",
+      icon: filiereBoisIcon,
+    },
+    {
+      thematique: "Tourisme",
+      id: 13,
+      category: "",
+      icon: tourismeIcon,
+    },
+    {
+      thematique: "Écosystèmes et biodiversité",
+      id: 14,
+      category: "",
+      icon: biodiversiteIcon,
+    },
+    {
+      thematique: "Ressources en eau",
+      id: 15,
+      category: "",
+      icon: ressourcesEauIcon,
+    },
+    {
+      thematique: "Forêt",
+      id: 16,
+      category: "",
+      icon: foretIcon,
+    },
+    {
+      thematique: "Santé",
+      id: 4,
+      category: "",
+      icon: santeIcon,
+    }
+  ]
 };
