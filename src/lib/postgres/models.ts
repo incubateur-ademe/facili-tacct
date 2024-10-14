@@ -54,6 +54,17 @@ export type InconfortThermique = {
   under_4_sum_2020: number | null;
 };
 
+export type Biodiversite = {
+  type_touristique: string | null;
+  code_geographique: string | null;
+  departement: string | null;
+  epci: string | null;
+  index: bigint | null;
+  libelle_epci: string | null;
+  libelle_geographique: string | null;
+  region: number | null;
+}
+
 export type CollectivitesSearchbar = {
   code_commune?: string | null;
   coordinates?: string | null;

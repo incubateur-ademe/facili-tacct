@@ -7,8 +7,8 @@ import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { Loader } from "@/components/loader";
 import { grandAgeIsolementMapper } from "@/lib/mapper/inconfortThermique";
 import { DataGrandAge, InconfortThermique } from "@/lib/postgres/models";
-import { CustomTooltip } from "@/utils/CalculTooltip";
-import { Sum } from "@/utils/reusableFunctions/sum";
+import { CustomTooltip } from "@/lib/utils/CalculTooltip";
+import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import styles from "./themes.module.scss";
 
 const sumProperty = (

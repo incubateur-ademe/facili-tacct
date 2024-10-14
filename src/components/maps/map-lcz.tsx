@@ -10,7 +10,7 @@ import { useRef } from "react";
 import "./maps.scss";
 
 import { CommunesIndicateursDto } from "@/lib/dto";
-import { swapNumbers } from "@/utils/reusableFunctions/swapItemsInArray";
+import { swapNumbers } from "@/lib/utils/reusableFunctions/swapItemsInArray";
 import { GraphDataNotFound } from "../graph-data-not-found";
 
 export const MapLCZ = (props: {
