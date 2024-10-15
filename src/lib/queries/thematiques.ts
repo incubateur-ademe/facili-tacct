@@ -1,6 +1,6 @@
 "use server";
 
-import { Biodiversite, InconfortThermique } from "@/lib/postgres/models";
+import { Biodiversite, GestionRisques, InconfortThermique } from "@/lib/postgres/models";
 import * as Sentry from "@sentry/nextjs";
 import { PrismaClient as PostgresClient } from "../../generated/client";
 
@@ -25,12 +25,38 @@ export const GetInconfortThermique = async (code: string): Promise<InconfortTher
   }
 };
 
+export const GetGestionRisques = async (code: string): Promise<GestionRisques[]> => {
+  try {
+    console.time("Query Execution Time GESTIONRISQUES");
+    const value = await PrismaPostgres.gestion_risques.findMany({
+      where: {
+        OR: [{ epci: code }, { code_geographique: code }]
+      },
+    });
+    console.timeEnd("Query Execution Time GESTIONRISQUES");
+    Sentry.captureMessage(`Get GestionRisques ${code}`, "info")
+    return value;
+  } catch (error) {
+    console.error(error);
+    Sentry.captureException(error);
+    await PrismaPostgres.$disconnect();
+    process.exit(1);
+  }
+};
+
 export const GetBiodiversite = async (code: string): Promise<Biodiversite[]> => {
   try {
     console.time("Query Execution Time BIODIVERSITE");
     const value = await PrismaPostgres.biodiversite.findMany({
       where: {
-        OR: [{ epci: code }, { code_geographique: code }],
+        AND:[
+          { epci: code },
+          {
+            type_touristique: {
+              not: null
+            }
+          }
+        ]
       },
     });
     console.timeEnd("Query Execution Time BIODIVERSITE");

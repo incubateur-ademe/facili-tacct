@@ -7,20 +7,19 @@ import { type FeatureGroup, type Layer, type LeafletMouseEventHandlerFn, type St
 import { useSearchParams } from "next/navigation";
 import { useRef } from "react";
 
+import { Biodiversite } from "@/lib/postgres/models";
 import { GeoJSON, MapContainer, TileLayer } from "@/lib/react-leaflet";
 import { type Any } from "@/lib/utils/types";
 
 import { CommunesIndicateursDto } from "@/lib/dto";
-import Image, { StaticImageData } from "next/image";
-import { Marker, MarkerLayer } from "react-leaflet-marker";
-import markerIcon from "../../assets/icons/marker_icon_blue.svg";
 import { GraphDataNotFound } from "../graph-data-not-found";
 
 export const Map = (props: {
   carteCommunes: CommunesIndicateursDto[];
+  biodiversite: Biodiversite[];
   data: string;
 }) => {
-  const { data, carteCommunes } = props;
+  const { data, carteCommunes, biodiversite } = props;
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo");
   const codepci = searchParams.get("codepci")!;  
@@ -45,8 +44,21 @@ export const Map = (props: {
     return getCentroid(coords_arr);
   };
 
-  const commune = codgeo ? carteCommunes.find(el => el.properties.code_commune === codgeo) : null;
+  const getMarkerCoordinates = (allCommunes: CommunesIndicateursDto[], biodiversite: Biodiversite[]) => {
+    const markers = allCommunes.filter(
+      a => biodiversite?.some(
+        b => a.properties.code_commune === b.code_geographique
+      )).map(
+        el => el.properties.coordinates.split(",").map(Number)
+      );
+    return markers;
+  }
 
+  const commune = codgeo ? carteCommunes.find(el => el.properties.code_commune === codgeo) : null;
+  const markerCoordinates = getMarkerCoordinates(carteCommunes, biodiversite);
+
+  // const allCoords = carteCommunes.filter(e => e.properties.code_commune === biodiversite.).map(el => el.properties.coordinates.split(",").map(Number));
+  // console.log("allCoords", allCoords);
   const centerCoord: number[] = commune ? getCentroid(commune.geometry.coordinates?.[0][0]) : getCoordinates(all_coordinates);
 
   const style: StyleFunction<Any> = feature => {
@@ -109,22 +121,29 @@ export const Map = (props: {
           <TileLayer
             url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <MarkerLayer opacity={1}>
-            <GeoJSON ref={mapRef} data={carteCommunes as any} onEachFeature={onEachFeature} style={style} />
-            <Marker
-              interactive
-              riseOnHover
-              position={[45.74831435, 5.5927847]}
-              placement="top"
-              zIndexOffset={1000000}
-            >
-              <Image src={markerIcon as StaticImageData} alt="" />
-            </Marker>
-        </MarkerLayer>
-
-          {/* <Circle center={[45.74831435, 5.5927847]} radius={200} pane="my-existing-pane" /> */}
-
-
+          <GeoJSON ref={mapRef} data={carteCommunes as any} onEachFeature={onEachFeature} style={style} />
+          {/* <LeafletMarker position={markerCoordinates[0]}>
+            
+          </LeafletMarker> */}
+          {/* <MarkerLayer>
+            {
+              markerCoordinates?.map((el, i) => (
+                <Marker
+                  key={i}
+                  interactive={false}
+                  riseOnHover={false}
+                  position={el as [number, number]}
+                  zIndexOffset={0}
+                  size={[
+                    25,
+                    25
+                  ]}
+                >
+                  <img src="./marker_icon_blue.svg" alt="" width={25} height={25}/>
+                </Marker>
+              ))
+            }
+          </MarkerLayer> */}
         </MapContainer>
       )}
     </>
