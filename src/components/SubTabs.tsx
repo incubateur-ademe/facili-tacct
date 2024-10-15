@@ -4,32 +4,24 @@ import { useState } from "react";
 import styles from "./components.module.scss";
 
 interface Props {
-  data: Array<{
-    donnee?: string;
-    facteur_sensibilite?: string;
-    id?: number;
-    risque?: string;
-    titre: string;
-  }>;
+  data: Array<string | null>;
   defaultTab: string;
 }
 
 const SubTabs = ({ data, defaultTab }: Props) => {
   const [selectedSubTab, setSelectedSubTab] = useState(defaultTab);
-
-  console.log("selectedSubTab", selectedSubTab);
   return(
     <div className={styles.titles}>
       {data
         .map((element, i) => (
           <button
             key={i}
-            className={selectedSubTab === element.titre ? styles.selectedTabButton : styles.tabButton}
+            className={selectedSubTab === element ? styles.selectedTabButton : styles.tabButton}
             onClick={() => {
-              setSelectedSubTab(element.titre);
+              setSelectedSubTab(element ? element : "");
             }}
           >
-            {element.titre}
+            {element}
           </button>
         ))}
     </div>
