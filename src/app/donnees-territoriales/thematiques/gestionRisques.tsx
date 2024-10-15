@@ -18,7 +18,7 @@ const GestionRisques = async (searchParams: SearchParams) => {
   : codepci ? await GetGestionRisques(codepci) 
   : void 0;
   const carteCommunes = await GetCommunes(codepci);
-
+  
   return (
     <div>
       {/* <NoticeComp title="Explorez des leviers d'action possibles en réduisant la sensibilité de votre territoire" /> */}

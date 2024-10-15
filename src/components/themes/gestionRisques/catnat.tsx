@@ -7,7 +7,21 @@ import SubTabs from "@/components/SubTabs";
 import { CommunesIndicateursMapper } from "@/lib/mapper/communes";
 import { CarteCommunes, GestionRisques } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import styles from "./gestionRisques.module.scss";
+
+type ArreteCatNat = {
+  annee_arrete: number;
+  lib_risque_jo: string | null;
+  dat_pub_arrete: string | null;
+  code_geographique: string | null;
+  departement: string | null;
+  epci: string | null;
+  index: bigint | null;
+  libelle_epci: string | null;
+  libelle_geographique: string | null;
+  region: number | null;
+}
 
 export const Catnat = (props: {
   gestionRisques: GestionRisques[];
@@ -21,22 +35,23 @@ export const Catnat = (props: {
   }>;
 }) => {
   const { gestionRisques, carteCommunes } = props;
+  const [sliderValue, setSliderValue] = useState<number[]>([1982, 2024]);
+  const [arretesCatnat, setArretesCatnat] = useState<Array<ArreteCatNat>>([]);
+  const typesRisques = gestionRisques ? [...new Set(gestionRisques.map(item => item.lib_risque_jo))] : [""];
 
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo")!;
   const codepci = searchParams.get("codepci")!;
   const communesMap = carteCommunes.map(CommunesIndicateursMapper);
 
-  const subTabData = [
-    {
-      id: 0,
-      titre: "Mouvement de terrain",
-    },
-    {
-      id: 1,
-      titre: "RGA",
-    },
-  ]
+  useEffect(() => {
+    const gestionRisquesEnrich = gestionRisques?.map(item => {
+      return {...item, annee_arrete: Number(item.dat_pub_arrete?.split("-")[0])}
+    }).filter(el => el.annee_arrete >= sliderValue[0] && el.annee_arrete <= sliderValue[1]);
+    console.log("gestionRisquesEnrich", gestionRisquesEnrich);
+    setArretesCatnat(gestionRisquesEnrich);
+  }, [sliderValue]);
+
   return (
     <>
       {gestionRisques ? (
@@ -67,18 +82,20 @@ export const Catnat = (props: {
           </div>
           <div className="w-2/3">
             <div className={styles.graphWrapper}>
-              <div style={{ padding: "0.75rem", margin: "0", height: "3rem" }} className="flex flex-row justify-between">
-                <p>Titre</p>
+              <div className={styles.catnatGraphTitleWrapper}>
+                <h2>Arrêtés CatNat par communes</h2>
                 <p>onglets flex-end</p>
               </div>
-              <div style={{ padding: "0.75rem", margin: "0" }} className="flex flex-row justify-between">
+              <div className={styles.catnatGraphFiltersWrapper}>
                 <div>
-                  <SubTabs data={subTabData} defaultTab="Mouvement de terrain" />
+                  <SubTabs data={["Tous types", ...typesRisques]} defaultTab="Tous types" />
                 </div>
-                <RangeSlider firstValue={1982} lastValue={2022} minDist={1}/>
+                <div>
+                  <RangeSlider firstValue={1982} lastValue={2024} minDist={1} setSliderValue={setSliderValue}/>
+                </div>
               </div>
               <div className="">
-                <PieChartCatnat/>
+                <PieChartCatnat gestionRisques={arretesCatnat}/>
               </div>
               <p style={{ padding: "1em", margin: "0" }}>
                 Source : <b style={{ color: "#0063CB" }}>XXXXXXX</b>
