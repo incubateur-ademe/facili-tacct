@@ -30,7 +30,7 @@ export const StationsClassees = (props: {
     <>
       {biodiversite ? (
         <div className={styles.container}>
-          <div className="w-2/5">
+          <div className="w-1/3">
             <div className={styles.explicationWrapper}>
               { codgeo ?
                 <p style={{color: "#161616", margin:"0 0 0.5em"}}>
@@ -54,12 +54,12 @@ export const StationsClassees = (props: {
               <p>Lorem </p>
             </div>
           </div>
-          <div className="w-3/5">
+          <div className="w-2/3">
             <div className={styles.graphWrapper}>
               <p style={{ padding: "1em", margin: "0" }}>
                 <b>Titre</b>
               </p>
-              <Map data={"stationsClassees"} carteCommunes={communesMap} />
+              <Map data={"stationsClassees"} carteCommunes={communesMap} biodiversite={biodiversite}/>
               <div className={styles.legend}>
                 <div className={styles.legendStationWrapper}>
                   <div className={styles.legendItem}>

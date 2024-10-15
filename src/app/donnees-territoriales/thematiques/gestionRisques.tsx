@@ -1,20 +1,22 @@
 import { Loader } from '@/components/loader';
 import { GetCommunes } from '@/lib/queries/cartographie';
-import { GetBiodiversite } from '@/lib/queries/thematiques';
+import { GetGestionRisques } from '@/lib/queries/thematiques';
 import { themes } from "@/lib/utils/themes";
 import dynamic from 'next/dynamic';
 import styles from "../donnees.module.scss";
 
-const DynamicPageComp = dynamic(() => import("./biodiversiteComp"), {
+const DynamicPageComp = dynamic(() => import("./gestionRisquesComp"), {
   ssr: false,
   loading: () => <Loader />,
 });
 
-const Biodiversite = async (searchParams: SearchParams) => {
-  const theme = themes.biodiversite;
+const GestionRisques = async (searchParams: SearchParams) => {
+  const theme = themes.gestionRisques;
   const codepci = searchParams.searchParams.codepci;
   const codgeo = searchParams.searchParams.codgeo;
-  const dbBiodiversite = await GetBiodiversite(codepci);
+  const dbGestionRisques = codgeo ? await GetGestionRisques(codgeo) 
+  : codepci ? await GetGestionRisques(codepci) 
+  : void 0;
   const carteCommunes = await GetCommunes(codepci);
 
   return (
@@ -23,7 +25,7 @@ const Biodiversite = async (searchParams: SearchParams) => {
       <div className={styles.container}>
         <DynamicPageComp
           data={theme}
-          biodiversite={dbBiodiversite!}
+          gestionRisques={dbGestionRisques!}
           carteCommunes={carteCommunes}
         />
       </div>
@@ -31,4 +33,4 @@ const Biodiversite = async (searchParams: SearchParams) => {
   );
 };
 
-export default Biodiversite;
+export default GestionRisques;

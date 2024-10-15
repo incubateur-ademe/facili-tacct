@@ -232,6 +232,18 @@ exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
   proj4text: 'proj4text'
 };
 
+exports.Prisma.Gestion_risquesScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  lib_risque_jo: 'lib_risque_jo',
+  dat_pub_arrete: 'dat_pub_arrete',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  region: 'region'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -254,7 +266,8 @@ exports.Prisma.ModelName = {
   communes: 'communes',
   collectivites_searchbar: 'collectivites_searchbar',
   biodiversite: 'biodiversite',
-  spatial_ref_sys: 'spatial_ref_sys'
+  spatial_ref_sys: 'spatial_ref_sys',
+  gestion_risques: 'gestion_risques'
 };
 
 /**
