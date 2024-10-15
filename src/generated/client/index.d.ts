@@ -43,6 +43,11 @@ export type biodiversite = $Result.DefaultSelection<Prisma.$biodiversitePayload>
  * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
  */
 export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPayload>
+/**
+ * Model gestion_risques
+ * 
+ */
+export type gestion_risques = $Result.DefaultSelection<Prisma.$gestion_risquesPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -226,6 +231,16 @@ export class PrismaClient<
     * ```
     */
   get spatial_ref_sys(): Prisma.spatial_ref_sysDelegate<ExtArgs>;
+
+  /**
+   * `prisma.gestion_risques`: Exposes CRUD operations for the **gestion_risques** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Gestion_risques
+    * const gestion_risques = await prisma.gestion_risques.findMany()
+    * ```
+    */
+  get gestion_risques(): Prisma.gestion_risquesDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -672,7 +687,8 @@ export namespace Prisma {
     communes: 'communes',
     collectivites_searchbar: 'collectivites_searchbar',
     biodiversite: 'biodiversite',
-    spatial_ref_sys: 'spatial_ref_sys'
+    spatial_ref_sys: 'spatial_ref_sys',
+    gestion_risques: 'gestion_risques'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -688,7 +704,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "inconfort_thermique" | "clc_epci" | "communes" | "collectivites_searchbar" | "biodiversite" | "spatial_ref_sys"
+      modelProps: "inconfort_thermique" | "clc_epci" | "communes" | "collectivites_searchbar" | "biodiversite" | "spatial_ref_sys" | "gestion_risques"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1109,6 +1125,76 @@ export namespace Prisma {
           count: {
             args: Prisma.spatial_ref_sysCountArgs<ExtArgs>
             result: $Utils.Optional<Spatial_ref_sysCountAggregateOutputType> | number
+          }
+        }
+      }
+      gestion_risques: {
+        payload: Prisma.$gestion_risquesPayload<ExtArgs>
+        fields: Prisma.gestion_risquesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.gestion_risquesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gestion_risquesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.gestion_risquesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gestion_risquesPayload>
+          }
+          findFirst: {
+            args: Prisma.gestion_risquesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gestion_risquesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.gestion_risquesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gestion_risquesPayload>
+          }
+          findMany: {
+            args: Prisma.gestion_risquesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gestion_risquesPayload>[]
+          }
+          create: {
+            args: Prisma.gestion_risquesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gestion_risquesPayload>
+          }
+          createMany: {
+            args: Prisma.gestion_risquesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.gestion_risquesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gestion_risquesPayload>[]
+          }
+          delete: {
+            args: Prisma.gestion_risquesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gestion_risquesPayload>
+          }
+          update: {
+            args: Prisma.gestion_risquesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gestion_risquesPayload>
+          }
+          deleteMany: {
+            args: Prisma.gestion_risquesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.gestion_risquesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.gestion_risquesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gestion_risquesPayload>
+          }
+          aggregate: {
+            args: Prisma.Gestion_risquesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGestion_risques>
+          }
+          groupBy: {
+            args: Prisma.gestion_risquesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Gestion_risquesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.gestion_risquesCountArgs<ExtArgs>
+            result: $Utils.Optional<Gestion_risquesCountAggregateOutputType> | number
           }
         }
       }
@@ -7714,6 +7800,970 @@ export namespace Prisma {
 
 
   /**
+   * Model gestion_risques
+   */
+
+  export type AggregateGestion_risques = {
+    _count: Gestion_risquesCountAggregateOutputType | null
+    _avg: Gestion_risquesAvgAggregateOutputType | null
+    _sum: Gestion_risquesSumAggregateOutputType | null
+    _min: Gestion_risquesMinAggregateOutputType | null
+    _max: Gestion_risquesMaxAggregateOutputType | null
+  }
+
+  export type Gestion_risquesAvgAggregateOutputType = {
+    index: number | null
+    region: number | null
+  }
+
+  export type Gestion_risquesSumAggregateOutputType = {
+    index: bigint | null
+    region: number | null
+  }
+
+  export type Gestion_risquesMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    lib_risque_jo: string | null
+    dat_pub_arrete: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: number | null
+  }
+
+  export type Gestion_risquesMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    lib_risque_jo: string | null
+    dat_pub_arrete: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: number | null
+  }
+
+  export type Gestion_risquesCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    lib_risque_jo: number
+    dat_pub_arrete: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    region: number
+    _all: number
+  }
+
+
+  export type Gestion_risquesAvgAggregateInputType = {
+    index?: true
+    region?: true
+  }
+
+  export type Gestion_risquesSumAggregateInputType = {
+    index?: true
+    region?: true
+  }
+
+  export type Gestion_risquesMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    lib_risque_jo?: true
+    dat_pub_arrete?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+  }
+
+  export type Gestion_risquesMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    lib_risque_jo?: true
+    dat_pub_arrete?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+  }
+
+  export type Gestion_risquesCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    lib_risque_jo?: true
+    dat_pub_arrete?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+    _all?: true
+  }
+
+  export type Gestion_risquesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which gestion_risques to aggregate.
+     */
+    where?: gestion_risquesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of gestion_risques to fetch.
+     */
+    orderBy?: gestion_risquesOrderByWithRelationInput | gestion_risquesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: gestion_risquesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` gestion_risques from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` gestion_risques.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned gestion_risques
+    **/
+    _count?: true | Gestion_risquesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Gestion_risquesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Gestion_risquesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Gestion_risquesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Gestion_risquesMaxAggregateInputType
+  }
+
+  export type GetGestion_risquesAggregateType<T extends Gestion_risquesAggregateArgs> = {
+        [P in keyof T & keyof AggregateGestion_risques]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGestion_risques[P]>
+      : GetScalarType<T[P], AggregateGestion_risques[P]>
+  }
+
+
+
+
+  export type gestion_risquesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: gestion_risquesWhereInput
+    orderBy?: gestion_risquesOrderByWithAggregationInput | gestion_risquesOrderByWithAggregationInput[]
+    by: Gestion_risquesScalarFieldEnum[] | Gestion_risquesScalarFieldEnum
+    having?: gestion_risquesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Gestion_risquesCountAggregateInputType | true
+    _avg?: Gestion_risquesAvgAggregateInputType
+    _sum?: Gestion_risquesSumAggregateInputType
+    _min?: Gestion_risquesMinAggregateInputType
+    _max?: Gestion_risquesMaxAggregateInputType
+  }
+
+  export type Gestion_risquesGroupByOutputType = {
+    index: bigint
+    code_geographique: string | null
+    lib_risque_jo: string | null
+    dat_pub_arrete: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: number | null
+    _count: Gestion_risquesCountAggregateOutputType | null
+    _avg: Gestion_risquesAvgAggregateOutputType | null
+    _sum: Gestion_risquesSumAggregateOutputType | null
+    _min: Gestion_risquesMinAggregateOutputType | null
+    _max: Gestion_risquesMaxAggregateOutputType | null
+  }
+
+  type GetGestion_risquesGroupByPayload<T extends gestion_risquesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Gestion_risquesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Gestion_risquesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Gestion_risquesGroupByOutputType[P]>
+            : GetScalarType<T[P], Gestion_risquesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type gestion_risquesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    lib_risque_jo?: boolean
+    dat_pub_arrete?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+  }, ExtArgs["result"]["gestion_risques"]>
+
+  export type gestion_risquesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    lib_risque_jo?: boolean
+    dat_pub_arrete?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+  }, ExtArgs["result"]["gestion_risques"]>
+
+  export type gestion_risquesSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    lib_risque_jo?: boolean
+    dat_pub_arrete?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+  }
+
+
+  export type $gestion_risquesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "gestion_risques"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string | null
+      lib_risque_jo: string | null
+      dat_pub_arrete: string | null
+      libelle_geographique: string | null
+      epci: string | null
+      libelle_epci: string | null
+      departement: string | null
+      region: number | null
+    }, ExtArgs["result"]["gestion_risques"]>
+    composites: {}
+  }
+
+  type gestion_risquesGetPayload<S extends boolean | null | undefined | gestion_risquesDefaultArgs> = $Result.GetResult<Prisma.$gestion_risquesPayload, S>
+
+  type gestion_risquesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<gestion_risquesFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Gestion_risquesCountAggregateInputType | true
+    }
+
+  export interface gestion_risquesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['gestion_risques'], meta: { name: 'gestion_risques' } }
+    /**
+     * Find zero or one Gestion_risques that matches the filter.
+     * @param {gestion_risquesFindUniqueArgs} args - Arguments to find a Gestion_risques
+     * @example
+     * // Get one Gestion_risques
+     * const gestion_risques = await prisma.gestion_risques.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends gestion_risquesFindUniqueArgs>(args: SelectSubset<T, gestion_risquesFindUniqueArgs<ExtArgs>>): Prisma__gestion_risquesClient<$Result.GetResult<Prisma.$gestion_risquesPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Gestion_risques that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {gestion_risquesFindUniqueOrThrowArgs} args - Arguments to find a Gestion_risques
+     * @example
+     * // Get one Gestion_risques
+     * const gestion_risques = await prisma.gestion_risques.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends gestion_risquesFindUniqueOrThrowArgs>(args: SelectSubset<T, gestion_risquesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__gestion_risquesClient<$Result.GetResult<Prisma.$gestion_risquesPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Gestion_risques that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {gestion_risquesFindFirstArgs} args - Arguments to find a Gestion_risques
+     * @example
+     * // Get one Gestion_risques
+     * const gestion_risques = await prisma.gestion_risques.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends gestion_risquesFindFirstArgs>(args?: SelectSubset<T, gestion_risquesFindFirstArgs<ExtArgs>>): Prisma__gestion_risquesClient<$Result.GetResult<Prisma.$gestion_risquesPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Gestion_risques that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {gestion_risquesFindFirstOrThrowArgs} args - Arguments to find a Gestion_risques
+     * @example
+     * // Get one Gestion_risques
+     * const gestion_risques = await prisma.gestion_risques.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends gestion_risquesFindFirstOrThrowArgs>(args?: SelectSubset<T, gestion_risquesFindFirstOrThrowArgs<ExtArgs>>): Prisma__gestion_risquesClient<$Result.GetResult<Prisma.$gestion_risquesPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Gestion_risques that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {gestion_risquesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Gestion_risques
+     * const gestion_risques = await prisma.gestion_risques.findMany()
+     * 
+     * // Get first 10 Gestion_risques
+     * const gestion_risques = await prisma.gestion_risques.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const gestion_risquesWithIndexOnly = await prisma.gestion_risques.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends gestion_risquesFindManyArgs>(args?: SelectSubset<T, gestion_risquesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$gestion_risquesPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Gestion_risques.
+     * @param {gestion_risquesCreateArgs} args - Arguments to create a Gestion_risques.
+     * @example
+     * // Create one Gestion_risques
+     * const Gestion_risques = await prisma.gestion_risques.create({
+     *   data: {
+     *     // ... data to create a Gestion_risques
+     *   }
+     * })
+     * 
+     */
+    create<T extends gestion_risquesCreateArgs>(args: SelectSubset<T, gestion_risquesCreateArgs<ExtArgs>>): Prisma__gestion_risquesClient<$Result.GetResult<Prisma.$gestion_risquesPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Gestion_risques.
+     * @param {gestion_risquesCreateManyArgs} args - Arguments to create many Gestion_risques.
+     * @example
+     * // Create many Gestion_risques
+     * const gestion_risques = await prisma.gestion_risques.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends gestion_risquesCreateManyArgs>(args?: SelectSubset<T, gestion_risquesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Gestion_risques and returns the data saved in the database.
+     * @param {gestion_risquesCreateManyAndReturnArgs} args - Arguments to create many Gestion_risques.
+     * @example
+     * // Create many Gestion_risques
+     * const gestion_risques = await prisma.gestion_risques.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Gestion_risques and only return the `index`
+     * const gestion_risquesWithIndexOnly = await prisma.gestion_risques.createManyAndReturn({ 
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends gestion_risquesCreateManyAndReturnArgs>(args?: SelectSubset<T, gestion_risquesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$gestion_risquesPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Gestion_risques.
+     * @param {gestion_risquesDeleteArgs} args - Arguments to delete one Gestion_risques.
+     * @example
+     * // Delete one Gestion_risques
+     * const Gestion_risques = await prisma.gestion_risques.delete({
+     *   where: {
+     *     // ... filter to delete one Gestion_risques
+     *   }
+     * })
+     * 
+     */
+    delete<T extends gestion_risquesDeleteArgs>(args: SelectSubset<T, gestion_risquesDeleteArgs<ExtArgs>>): Prisma__gestion_risquesClient<$Result.GetResult<Prisma.$gestion_risquesPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Gestion_risques.
+     * @param {gestion_risquesUpdateArgs} args - Arguments to update one Gestion_risques.
+     * @example
+     * // Update one Gestion_risques
+     * const gestion_risques = await prisma.gestion_risques.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends gestion_risquesUpdateArgs>(args: SelectSubset<T, gestion_risquesUpdateArgs<ExtArgs>>): Prisma__gestion_risquesClient<$Result.GetResult<Prisma.$gestion_risquesPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Gestion_risques.
+     * @param {gestion_risquesDeleteManyArgs} args - Arguments to filter Gestion_risques to delete.
+     * @example
+     * // Delete a few Gestion_risques
+     * const { count } = await prisma.gestion_risques.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends gestion_risquesDeleteManyArgs>(args?: SelectSubset<T, gestion_risquesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Gestion_risques.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {gestion_risquesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Gestion_risques
+     * const gestion_risques = await prisma.gestion_risques.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends gestion_risquesUpdateManyArgs>(args: SelectSubset<T, gestion_risquesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Gestion_risques.
+     * @param {gestion_risquesUpsertArgs} args - Arguments to update or create a Gestion_risques.
+     * @example
+     * // Update or create a Gestion_risques
+     * const gestion_risques = await prisma.gestion_risques.upsert({
+     *   create: {
+     *     // ... data to create a Gestion_risques
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Gestion_risques we want to update
+     *   }
+     * })
+     */
+    upsert<T extends gestion_risquesUpsertArgs>(args: SelectSubset<T, gestion_risquesUpsertArgs<ExtArgs>>): Prisma__gestion_risquesClient<$Result.GetResult<Prisma.$gestion_risquesPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Gestion_risques.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {gestion_risquesCountArgs} args - Arguments to filter Gestion_risques to count.
+     * @example
+     * // Count the number of Gestion_risques
+     * const count = await prisma.gestion_risques.count({
+     *   where: {
+     *     // ... the filter for the Gestion_risques we want to count
+     *   }
+     * })
+    **/
+    count<T extends gestion_risquesCountArgs>(
+      args?: Subset<T, gestion_risquesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Gestion_risquesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Gestion_risques.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Gestion_risquesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Gestion_risquesAggregateArgs>(args: Subset<T, Gestion_risquesAggregateArgs>): Prisma.PrismaPromise<GetGestion_risquesAggregateType<T>>
+
+    /**
+     * Group by Gestion_risques.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {gestion_risquesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends gestion_risquesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: gestion_risquesGroupByArgs['orderBy'] }
+        : { orderBy?: gestion_risquesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, gestion_risquesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGestion_risquesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the gestion_risques model
+   */
+  readonly fields: gestion_risquesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for gestion_risques.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__gestion_risquesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the gestion_risques model
+   */ 
+  interface gestion_risquesFieldRefs {
+    readonly index: FieldRef<"gestion_risques", 'BigInt'>
+    readonly code_geographique: FieldRef<"gestion_risques", 'String'>
+    readonly lib_risque_jo: FieldRef<"gestion_risques", 'String'>
+    readonly dat_pub_arrete: FieldRef<"gestion_risques", 'String'>
+    readonly libelle_geographique: FieldRef<"gestion_risques", 'String'>
+    readonly epci: FieldRef<"gestion_risques", 'String'>
+    readonly libelle_epci: FieldRef<"gestion_risques", 'String'>
+    readonly departement: FieldRef<"gestion_risques", 'String'>
+    readonly region: FieldRef<"gestion_risques", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * gestion_risques findUnique
+   */
+  export type gestion_risquesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gestion_risques
+     */
+    select?: gestion_risquesSelect<ExtArgs> | null
+    /**
+     * Filter, which gestion_risques to fetch.
+     */
+    where: gestion_risquesWhereUniqueInput
+  }
+
+  /**
+   * gestion_risques findUniqueOrThrow
+   */
+  export type gestion_risquesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gestion_risques
+     */
+    select?: gestion_risquesSelect<ExtArgs> | null
+    /**
+     * Filter, which gestion_risques to fetch.
+     */
+    where: gestion_risquesWhereUniqueInput
+  }
+
+  /**
+   * gestion_risques findFirst
+   */
+  export type gestion_risquesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gestion_risques
+     */
+    select?: gestion_risquesSelect<ExtArgs> | null
+    /**
+     * Filter, which gestion_risques to fetch.
+     */
+    where?: gestion_risquesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of gestion_risques to fetch.
+     */
+    orderBy?: gestion_risquesOrderByWithRelationInput | gestion_risquesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for gestion_risques.
+     */
+    cursor?: gestion_risquesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` gestion_risques from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` gestion_risques.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of gestion_risques.
+     */
+    distinct?: Gestion_risquesScalarFieldEnum | Gestion_risquesScalarFieldEnum[]
+  }
+
+  /**
+   * gestion_risques findFirstOrThrow
+   */
+  export type gestion_risquesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gestion_risques
+     */
+    select?: gestion_risquesSelect<ExtArgs> | null
+    /**
+     * Filter, which gestion_risques to fetch.
+     */
+    where?: gestion_risquesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of gestion_risques to fetch.
+     */
+    orderBy?: gestion_risquesOrderByWithRelationInput | gestion_risquesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for gestion_risques.
+     */
+    cursor?: gestion_risquesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` gestion_risques from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` gestion_risques.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of gestion_risques.
+     */
+    distinct?: Gestion_risquesScalarFieldEnum | Gestion_risquesScalarFieldEnum[]
+  }
+
+  /**
+   * gestion_risques findMany
+   */
+  export type gestion_risquesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gestion_risques
+     */
+    select?: gestion_risquesSelect<ExtArgs> | null
+    /**
+     * Filter, which gestion_risques to fetch.
+     */
+    where?: gestion_risquesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of gestion_risques to fetch.
+     */
+    orderBy?: gestion_risquesOrderByWithRelationInput | gestion_risquesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing gestion_risques.
+     */
+    cursor?: gestion_risquesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` gestion_risques from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` gestion_risques.
+     */
+    skip?: number
+    distinct?: Gestion_risquesScalarFieldEnum | Gestion_risquesScalarFieldEnum[]
+  }
+
+  /**
+   * gestion_risques create
+   */
+  export type gestion_risquesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gestion_risques
+     */
+    select?: gestion_risquesSelect<ExtArgs> | null
+    /**
+     * The data needed to create a gestion_risques.
+     */
+    data: XOR<gestion_risquesCreateInput, gestion_risquesUncheckedCreateInput>
+  }
+
+  /**
+   * gestion_risques createMany
+   */
+  export type gestion_risquesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many gestion_risques.
+     */
+    data: gestion_risquesCreateManyInput | gestion_risquesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * gestion_risques createManyAndReturn
+   */
+  export type gestion_risquesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gestion_risques
+     */
+    select?: gestion_risquesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many gestion_risques.
+     */
+    data: gestion_risquesCreateManyInput | gestion_risquesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * gestion_risques update
+   */
+  export type gestion_risquesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gestion_risques
+     */
+    select?: gestion_risquesSelect<ExtArgs> | null
+    /**
+     * The data needed to update a gestion_risques.
+     */
+    data: XOR<gestion_risquesUpdateInput, gestion_risquesUncheckedUpdateInput>
+    /**
+     * Choose, which gestion_risques to update.
+     */
+    where: gestion_risquesWhereUniqueInput
+  }
+
+  /**
+   * gestion_risques updateMany
+   */
+  export type gestion_risquesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update gestion_risques.
+     */
+    data: XOR<gestion_risquesUpdateManyMutationInput, gestion_risquesUncheckedUpdateManyInput>
+    /**
+     * Filter which gestion_risques to update
+     */
+    where?: gestion_risquesWhereInput
+  }
+
+  /**
+   * gestion_risques upsert
+   */
+  export type gestion_risquesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gestion_risques
+     */
+    select?: gestion_risquesSelect<ExtArgs> | null
+    /**
+     * The filter to search for the gestion_risques to update in case it exists.
+     */
+    where: gestion_risquesWhereUniqueInput
+    /**
+     * In case the gestion_risques found by the `where` argument doesn't exist, create a new gestion_risques with this data.
+     */
+    create: XOR<gestion_risquesCreateInput, gestion_risquesUncheckedCreateInput>
+    /**
+     * In case the gestion_risques was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<gestion_risquesUpdateInput, gestion_risquesUncheckedUpdateInput>
+  }
+
+  /**
+   * gestion_risques delete
+   */
+  export type gestion_risquesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gestion_risques
+     */
+    select?: gestion_risquesSelect<ExtArgs> | null
+    /**
+     * Filter which gestion_risques to delete.
+     */
+    where: gestion_risquesWhereUniqueInput
+  }
+
+  /**
+   * gestion_risques deleteMany
+   */
+  export type gestion_risquesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which gestion_risques to delete
+     */
+    where?: gestion_risquesWhereInput
+  }
+
+  /**
+   * gestion_risques without action
+   */
+  export type gestion_risquesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the gestion_risques
+     */
+    select?: gestion_risquesSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -7853,6 +8903,21 @@ export namespace Prisma {
   };
 
   export type Spatial_ref_sysScalarFieldEnum = (typeof Spatial_ref_sysScalarFieldEnum)[keyof typeof Spatial_ref_sysScalarFieldEnum]
+
+
+  export const Gestion_risquesScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    lib_risque_jo: 'lib_risque_jo',
+    dat_pub_arrete: 'dat_pub_arrete',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    region: 'region'
+  };
+
+  export type Gestion_risquesScalarFieldEnum = (typeof Gestion_risquesScalarFieldEnum)[keyof typeof Gestion_risquesScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8575,6 +9640,80 @@ export namespace Prisma {
     auth_srid?: IntNullableWithAggregatesFilter<"spatial_ref_sys"> | number | null
     srtext?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
     proj4text?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
+  }
+
+  export type gestion_risquesWhereInput = {
+    AND?: gestion_risquesWhereInput | gestion_risquesWhereInput[]
+    OR?: gestion_risquesWhereInput[]
+    NOT?: gestion_risquesWhereInput | gestion_risquesWhereInput[]
+    index?: BigIntFilter<"gestion_risques"> | bigint | number
+    code_geographique?: StringNullableFilter<"gestion_risques"> | string | null
+    lib_risque_jo?: StringNullableFilter<"gestion_risques"> | string | null
+    dat_pub_arrete?: StringNullableFilter<"gestion_risques"> | string | null
+    libelle_geographique?: StringNullableFilter<"gestion_risques"> | string | null
+    epci?: StringNullableFilter<"gestion_risques"> | string | null
+    libelle_epci?: StringNullableFilter<"gestion_risques"> | string | null
+    departement?: StringNullableFilter<"gestion_risques"> | string | null
+    region?: FloatNullableFilter<"gestion_risques"> | number | null
+  }
+
+  export type gestion_risquesOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrderInput | SortOrder
+    lib_risque_jo?: SortOrderInput | SortOrder
+    dat_pub_arrete?: SortOrderInput | SortOrder
+    libelle_geographique?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    departement?: SortOrderInput | SortOrder
+    region?: SortOrderInput | SortOrder
+  }
+
+  export type gestion_risquesWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: gestion_risquesWhereInput | gestion_risquesWhereInput[]
+    OR?: gestion_risquesWhereInput[]
+    NOT?: gestion_risquesWhereInput | gestion_risquesWhereInput[]
+    code_geographique?: StringNullableFilter<"gestion_risques"> | string | null
+    lib_risque_jo?: StringNullableFilter<"gestion_risques"> | string | null
+    dat_pub_arrete?: StringNullableFilter<"gestion_risques"> | string | null
+    libelle_geographique?: StringNullableFilter<"gestion_risques"> | string | null
+    epci?: StringNullableFilter<"gestion_risques"> | string | null
+    libelle_epci?: StringNullableFilter<"gestion_risques"> | string | null
+    departement?: StringNullableFilter<"gestion_risques"> | string | null
+    region?: FloatNullableFilter<"gestion_risques"> | number | null
+  }, "index">
+
+  export type gestion_risquesOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrderInput | SortOrder
+    lib_risque_jo?: SortOrderInput | SortOrder
+    dat_pub_arrete?: SortOrderInput | SortOrder
+    libelle_geographique?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    departement?: SortOrderInput | SortOrder
+    region?: SortOrderInput | SortOrder
+    _count?: gestion_risquesCountOrderByAggregateInput
+    _avg?: gestion_risquesAvgOrderByAggregateInput
+    _max?: gestion_risquesMaxOrderByAggregateInput
+    _min?: gestion_risquesMinOrderByAggregateInput
+    _sum?: gestion_risquesSumOrderByAggregateInput
+  }
+
+  export type gestion_risquesScalarWhereWithAggregatesInput = {
+    AND?: gestion_risquesScalarWhereWithAggregatesInput | gestion_risquesScalarWhereWithAggregatesInput[]
+    OR?: gestion_risquesScalarWhereWithAggregatesInput[]
+    NOT?: gestion_risquesScalarWhereWithAggregatesInput | gestion_risquesScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"gestion_risques"> | bigint | number
+    code_geographique?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
+    lib_risque_jo?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
+    dat_pub_arrete?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
+    libelle_geographique?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
+    epci?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
+    libelle_epci?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
+    departement?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
+    region?: FloatNullableWithAggregatesFilter<"gestion_risques"> | number | null
   }
 
   export type inconfort_thermiqueCreateInput = {
@@ -9341,6 +10480,90 @@ export namespace Prisma {
     proj4text?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type gestion_risquesCreateInput = {
+    index: bigint | number
+    code_geographique?: string | null
+    lib_risque_jo?: string | null
+    dat_pub_arrete?: string | null
+    libelle_geographique?: string | null
+    epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    region?: number | null
+  }
+
+  export type gestion_risquesUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique?: string | null
+    lib_risque_jo?: string | null
+    dat_pub_arrete?: string | null
+    libelle_geographique?: string | null
+    epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    region?: number | null
+  }
+
+  export type gestion_risquesUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    lib_risque_jo?: NullableStringFieldUpdateOperationsInput | string | null
+    dat_pub_arrete?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type gestion_risquesUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    lib_risque_jo?: NullableStringFieldUpdateOperationsInput | string | null
+    dat_pub_arrete?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type gestion_risquesCreateManyInput = {
+    index: bigint | number
+    code_geographique?: string | null
+    lib_risque_jo?: string | null
+    dat_pub_arrete?: string | null
+    libelle_geographique?: string | null
+    epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    region?: number | null
+  }
+
+  export type gestion_risquesUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    lib_risque_jo?: NullableStringFieldUpdateOperationsInput | string | null
+    dat_pub_arrete?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type gestion_risquesUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    lib_risque_jo?: NullableStringFieldUpdateOperationsInput | string | null
+    dat_pub_arrete?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -10010,6 +11233,52 @@ export namespace Prisma {
     auth_srid?: SortOrder
   }
 
+  export type gestion_risquesCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    lib_risque_jo?: SortOrder
+    dat_pub_arrete?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type gestion_risquesAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+  }
+
+  export type gestion_risquesMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    lib_risque_jo?: SortOrder
+    dat_pub_arrete?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type gestion_risquesMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    lib_risque_jo?: SortOrder
+    dat_pub_arrete?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type gestion_risquesSumOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+  }
+
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number
     increment?: bigint | number
@@ -10260,6 +11529,10 @@ export namespace Prisma {
      * @deprecated Use spatial_ref_sysDefaultArgs instead
      */
     export type spatial_ref_sysArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = spatial_ref_sysDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use gestion_risquesDefaultArgs instead
+     */
+    export type gestion_risquesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = gestion_risquesDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

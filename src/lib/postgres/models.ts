@@ -65,6 +65,18 @@ export type Biodiversite = {
   region: number | null;
 }
 
+export type GestionRisques = {
+  lib_risque_jo: string | null;
+  dat_pub_arrete: string | null;
+  code_geographique: string | null;
+  departement: string | null;
+  epci: string | null;
+  index: bigint | null;
+  libelle_epci: string | null;
+  libelle_geographique: string | null;
+  region: number | null;
+}
+
 export type CollectivitesSearchbar = {
   code_commune?: string | null;
   coordinates?: string | null;

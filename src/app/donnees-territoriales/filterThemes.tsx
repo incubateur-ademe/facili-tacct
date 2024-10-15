@@ -1,5 +1,6 @@
 import { ErrorDisplay } from "../ErrorDisplay";
 import Biodiversite from "./thematiques/biodiversite";
+import GestionRisques from "./thematiques/gestionRisques";
 import InconfortThermique from "./thematiques/inconfortThermique";
 
 const FilterThemes = (searchParams: SearchParams) => {
@@ -10,7 +11,10 @@ const FilterThemes = (searchParams: SearchParams) => {
           <InconfortThermique searchParams={searchParams.searchParams}/>
         ) : thematique === "Biodiversité" ? (
           <Biodiversite searchParams={searchParams.searchParams}/>
-        ) : (
+        ) : thematique === "Gestion des risques" ? (
+          <GestionRisques searchParams={searchParams.searchParams}/>
+        ) :
+        (
           <ErrorDisplay code="404" />
         )}        
       </div>

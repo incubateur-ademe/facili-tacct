@@ -140,3 +140,18 @@ model spatial_ref_sys {
 
   @@schema("postgis")
 }
+
+model gestion_risques {
+  index                BigInt  @id
+  code_geographique    String?
+  lib_risque_jo        String?
+  dat_pub_arrete       String?
+  libelle_geographique String?
+  epci                 String?
+  libelle_epci         String?
+  departement          String?
+  region               Float?
+
+  @@index([index], map: "ix_gestion_risques_index")
+  @@schema("databases")
+}

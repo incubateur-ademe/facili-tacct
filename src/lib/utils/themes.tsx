@@ -65,5 +65,21 @@ export const themes = {
       risque: "",
       donnee: "",
     },
+  ],
+  gestionRisques: [
+    {
+      id: 0,
+      titre: "catnat",
+      facteur_sensibilite: "A déterminer",
+      risque: "",
+      donnee: "",
+    },
+    {
+      id: 1,
+      titre: "Lorem",
+      facteur_sensibilite: "A déterminer",
+      risque: "",
+      donnee: "",
+    },
   ]
 };

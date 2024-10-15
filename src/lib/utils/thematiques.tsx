@@ -49,16 +49,16 @@ export const thematiques = {
       category: "",
       icon: biodiversiteIcon,
       imageUrl: "./biodiversiteIcon.svg"
-    }
-  ],
-  bientot_disponible: [
+    },
     {
-      thematique: "Aménagement",
-      id: 0,
+      thematique: "Gestion des risques",
+      id: 2,
       category: "",
       icon: amenagementIcon,
       imageUrl: "./amenagementIcon.svg"
     },
+  ],
+  bientot_disponible: [
     {
       thematique: "Ressources en eau",
       id: 1,

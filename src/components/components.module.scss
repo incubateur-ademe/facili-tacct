@@ -60,6 +60,38 @@
     padding: 0.25em 0.75em 0.25em 0.2em;
     line-height: 24px;
 }
+.titles {
+    .sensibilite {
+        display: flex;
+        flex-direction: row;
+        column-gap: 2em;
+    }
+}
+.selectedTabButton {
+    background-color: #0063cb;
+    // border: 1px solid #000000;
+    border-radius: 25px;
+    margin: 0 0.5em;
+    padding: 0.2em 1em;
+    color: #ececfe;
+    &:hover {
+        //color: black;
+        background-color: #000091e7 !important;
+        color: #eeeeee;
+    }
+}
+.TabButton {
+    background-color: #f9f9ff;
+    border-radius: 25px;
+    margin: 0 0.5em;
+    padding: 0.2em 1em;
+    color: #3a3a3a;
+    &:hover {
+        //color: black;
+        background-color: #e9e9ff !important;
+        color: #000000;
+    }
+}
 
 @keyframes spin {
     0% {
