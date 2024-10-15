@@ -6,11 +6,13 @@ interface RangeSliderProps {
   firstValue: number;
   lastValue: number;
   minDist: number;
+  setSliderValue: (value: number[]) => void;
 }
 
-const RangeSlider = ({ firstValue, lastValue, minDist }: RangeSliderProps) => {
+const RangeSlider = ({ firstValue, lastValue, minDist, setSliderValue }: RangeSliderProps) => {
   const [value, setValue] = useState<number[]>([firstValue, lastValue]);
   const minDistance = minDist;
+
   const handleChange = (
     event: Event,
     newValue: number | number[],
@@ -21,8 +23,10 @@ const RangeSlider = ({ firstValue, lastValue, minDist }: RangeSliderProps) => {
     }
     if (activeThumb === 0) {
       setValue([Math.min(newValue[0], value[1] - minDistance), value[1]]);
+      setSliderValue([Math.min(newValue[0], value[1] - minDistance), value[1]]);
     } else {
       setValue([value[0], Math.max(newValue[1], value[0] + minDistance)]);
+      setSliderValue([value[0], Math.max(newValue[1], value[0] + minDistance)]);
     }
   };
 
@@ -32,9 +36,10 @@ const RangeSlider = ({ firstValue, lastValue, minDist }: RangeSliderProps) => {
   ]
 
   return (
-    <Box sx={{ width: 300 }}>
+    <Box sx={{ width: 250 }}>
       <Slider
         getAriaLabel={() => 'Date range'}
+        sx={{ flexGrow: 1 }}
         value={value}
         onChange={handleChange}
         valueLabelDisplay="off"
