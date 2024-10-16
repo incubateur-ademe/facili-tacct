@@ -1,5 +1,6 @@
 "use client";
 
+import { BarChartCatnat } from "@/components/charts/BarChartCatnat";
 import PieChartCatnat from "@/components/charts/pieChartCatnat";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import RangeSlider from "@/components/Slider";
@@ -48,7 +49,6 @@ export const Catnat = (props: {
     const gestionRisquesEnrich = gestionRisques?.map(item => {
       return {...item, annee_arrete: Number(item.dat_pub_arrete?.split("-")[0])}
     }).filter(el => el.annee_arrete >= sliderValue[0] && el.annee_arrete <= sliderValue[1]);
-    console.log("gestionRisquesEnrich", gestionRisquesEnrich);
     setArretesCatnat(gestionRisquesEnrich);
   }, [sliderValue]);
 
@@ -60,13 +60,13 @@ export const Catnat = (props: {
             <div className={styles.explicationWrapper}>
               { codgeo ?
                 <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-                  Dans la commune de {gestionRisques[0]?.libelle_geographique}, les personnes de plus de 80 ans représentent{" "}
-                  <b>XXXX%</b> de la population en 2020.
+                  Dans la commune de {gestionRisques[0]?.libelle_geographique}, {" "}
+                  <b>XXXX%</b> .
                 </p>
                 : 
                 <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-                  Dans l'EPCI {gestionRisques[0]?.libelle_epci}, les personnes de plus de 80 ans représentent{" "}
-                  <b>XXXXX%</b> de la population en 2020.
+                  Dans l'EPCI {gestionRisques[0]?.libelle_epci}, {" "}
+                  <b>XXXXX%</b> .
                 </p>
               }
             </div>
@@ -96,6 +96,7 @@ export const Catnat = (props: {
               </div>
               <div className="">
                 <PieChartCatnat gestionRisques={arretesCatnat}/>
+                <BarChartCatnat gestionRisques={arretesCatnat}/>
               </div>
               <p style={{ padding: "1em", margin: "0" }}>
                 Source : <b style={{ color: "#0063CB" }}>XXXXXXX</b>
