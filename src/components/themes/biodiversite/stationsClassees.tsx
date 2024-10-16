@@ -34,13 +34,13 @@ export const StationsClassees = (props: {
             <div className={styles.explicationWrapper}>
               { codgeo ?
                 <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-                  Dans la commune de {biodiversite[0]?.libelle_geographique}, les personnes de plus de 80 ans représentent{" "}
-                  <b>XXXX%</b> de la population en 2020.
+                  Dans la commune de {biodiversite[0]?.libelle_geographique}, {" "}
+                  <b>XXXX%</b> .
                 </p>
                 : 
                 <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-                  Dans l'EPCI {biodiversite[0]?.libelle_epci}, les personnes de plus de 80 ans représentent{" "}
-                  <b>XXXXX%</b> de la population en 2020.
+                  Dans l'EPCI {biodiversite[0]?.libelle_epci}, {" "}
+                  <b>XXXXX%</b> .
                 </p>
               }
             </div>
