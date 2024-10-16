@@ -37,7 +37,9 @@ export const Catnat = (props: {
 }) => {
   const { gestionRisques, carteCommunes } = props;
   const [sliderValue, setSliderValue] = useState<number[]>([1982, 2024]);
-  const [arretesCatnat, setArretesCatnat] = useState<Array<ArreteCatNat>>([]);
+  const [typeRisqueValue, setTypeRisqueValue] = useState<string>("Tous types");
+  const [arretesCatnat, setArretesCatnat] = useState<ArreteCatNat[]>([]);
+  const [catnatFilteredByType, setCatnatFilteredByType] = useState<GestionRisques[]>(gestionRisques);
   const typesRisques = gestionRisques ? [...new Set(gestionRisques.map(item => item.lib_risque_jo))] : [""];
 
   const searchParams = useSearchParams();
@@ -46,11 +48,13 @@ export const Catnat = (props: {
   const communesMap = carteCommunes.map(CommunesIndicateursMapper);
 
   useEffect(() => {
-    const gestionRisquesEnrich = gestionRisques?.map(item => {
+    const catnatFilteredByType = typeRisqueValue === "Tous types" ? gestionRisques : gestionRisques.filter(item => item.lib_risque_jo === typeRisqueValue)
+    setCatnatFilteredByType(catnatFilteredByType);
+    const gestionRisquesEnrich = catnatFilteredByType?.map(item => {
       return {...item, annee_arrete: Number(item.dat_pub_arrete?.split("-")[0])}
     }).filter(el => el.annee_arrete >= sliderValue[0] && el.annee_arrete <= sliderValue[1]);
     setArretesCatnat(gestionRisquesEnrich);
-  }, [sliderValue]);
+  }, [sliderValue, typeRisqueValue]);
 
   return (
     <>
@@ -88,15 +92,15 @@ export const Catnat = (props: {
               </div>
               <div className={styles.catnatGraphFiltersWrapper}>
                 <div>
-                  <SubTabs data={["Tous types", ...typesRisques]} defaultTab="Tous types" />
+                  <SubTabs data={["Tous types", ...typesRisques]} defaultTab={typeRisqueValue} setTypeRisqueValue={setTypeRisqueValue} />
                 </div>
                 <div>
                   <RangeSlider firstValue={1982} lastValue={2024} minDist={1} setSliderValue={setSliderValue}/>
                 </div>
               </div>
               <div className="">
-                <PieChartCatnat gestionRisques={arretesCatnat}/>
                 <BarChartCatnat gestionRisques={arretesCatnat}/>
+                <PieChartCatnat gestionRisques={arretesCatnat}/>
               </div>
               <p style={{ padding: "1em", margin: "0" }}>
                 Source : <b style={{ color: "#0063CB" }}>XXXXXXX</b>
