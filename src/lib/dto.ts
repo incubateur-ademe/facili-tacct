@@ -72,6 +72,16 @@ export type GrandAgeIsolementDto = {
 export type CommunesIndicateursDto = {
   type: string;
   properties: {
+    catnat?: {
+      Innondations?: number;
+      "Grêle / neige"? : number;
+      "Sécheresse"? : number;
+      "Cyclones / Tempêtes"? : number;
+      "Retrait-gonflement des argiles"? : number;
+      "Mouvements de terrain"? : number;
+      sumCatnat?: number;
+      indexName?: string;
+    };
     epci: string;
     libelle_epci: string;
     libelle_commune: string;

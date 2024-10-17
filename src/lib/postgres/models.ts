@@ -98,6 +98,7 @@ export type CarteCommunes = {
   libelle_commune: string;
   libelle_epci: string;
   precarite_logement: number;
+  catnat?: Object;
 };
 
 export type CLC = {
