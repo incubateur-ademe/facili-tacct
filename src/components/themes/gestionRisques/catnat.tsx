@@ -3,10 +3,13 @@
 import { BarChartCatnat } from "@/components/charts/BarChartCatnat";
 import PieChartCatnat from "@/components/charts/pieChartCatnat";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
+import { MapCatnat } from "@/components/maps/mapCatnat";
 import RangeSlider from "@/components/Slider";
 import SubTabs from "@/components/SubTabs";
 import { CommunesIndicateursMapper } from "@/lib/mapper/communes";
 import { CarteCommunes, GestionRisques } from "@/lib/postgres/models";
+import { CountOccByIndex } from "@/lib/utils/reusableFunctions/occurencesCount";
+import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./gestionRisques.module.scss";
@@ -23,6 +26,21 @@ type ArreteCatNat = {
   libelle_geographique: string | null;
   region: number | null;
 }
+
+type DataByCodeGeographique = {
+  indexName: string;
+  Innondations?: number;
+  "Grêle / neige"? : number;
+  "Sécheresse"? : number;
+  "Cyclones / Tempêtes"? : number;
+  "Retrait-gonflement des argiles"? : number;
+  "Mouvements de terrain"? : number;
+}
+
+type GenericObject = {
+  [key: string]: string | number | bigint | null;
+}
+
 
 export const Catnat = (props: {
   gestionRisques: GestionRisques[];
@@ -45,7 +63,22 @@ export const Catnat = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo")!;
   const codepci = searchParams.get("codepci")!;
-  const communesMap = carteCommunes.map(CommunesIndicateursMapper);
+  const dataByCodeGeographique = CountOccByIndex<GenericObject>(
+    gestionRisques, "code_geographique", "lib_risque_jo").map(el => {
+      const sum = Sum(Object.values(el).filter(item => typeof item === "number"))
+      return {
+        ...el as DataByCodeGeographique,
+        sumCatnat: sum,
+      }
+    }
+  )
+  const carteCommunesEnriched = carteCommunes.map(el => {
+    return {
+      ...el,
+      catnat: dataByCodeGeographique.find(item => item.indexName === el.code_commune),
+    }
+  })
+  const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
 
   useEffect(() => {
     const catnatFilteredByType = typeRisqueValue === "Tous types" ? gestionRisques : gestionRisques.filter(item => item.lib_risque_jo === typeRisqueValue)
@@ -55,6 +88,7 @@ export const Catnat = (props: {
     }).filter(el => el.annee_arrete >= sliderValue[0] && el.annee_arrete <= sliderValue[1]);
     setArretesCatnat(gestionRisquesEnrich);
   }, [sliderValue, typeRisqueValue]);
+
 
   return (
     <>
@@ -99,8 +133,9 @@ export const Catnat = (props: {
                 </div>
               </div>
               <div className="">
-                <BarChartCatnat gestionRisques={arretesCatnat}/>
-                <PieChartCatnat gestionRisques={arretesCatnat}/>
+                <MapCatnat carteCommunes={communesMap} typeRisqueValue={typeRisqueValue} />
+                <BarChartCatnat gestionRisques={arretesCatnat}  />
+                <PieChartCatnat gestionRisques={arretesCatnat}  />
               </div>
               <p style={{ padding: "1em", margin: "0" }}>
                 Source : <b style={{ color: "#0063CB" }}>XXXXXXX</b>

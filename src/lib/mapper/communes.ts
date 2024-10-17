@@ -4,6 +4,7 @@ import { CarteCommunes } from "../postgres/models";
 export const CommunesIndicateursMapper = (commune: CarteCommunes): CommunesIndicateursDto => ({
   type: "Feature",
   properties: {
+    catnat: commune.catnat,
     epci: commune.epci,
     libelle_epci: commune.libelle_epci,
     libelle_commune: commune.libelle_commune,
