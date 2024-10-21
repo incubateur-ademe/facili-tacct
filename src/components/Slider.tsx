@@ -37,7 +37,7 @@ const RangeSlider = ({ firstValue, lastValue, minDist, setSliderValue, width }: 
   ]
 
   return (
-    <Box sx={{ width: width }}>
+    <Box sx={{ width: width, padding: "0.75rem 0" }}>
       <Slider
         getAriaLabel={() => 'Date range'}
         sx={{ flexGrow: 1 }}
