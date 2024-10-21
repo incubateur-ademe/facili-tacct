@@ -1,5 +1,5 @@
-import { BarChartCatnat } from "@/components/charts/BarChartCatnat";
-import PieChartCatnat from "@/components/charts/pieChartCatnat";
+import { BarChartCatnat } from "@/components/charts/catnat/BarChartCatnat";
+import PieChartCatnat from "@/components/charts/catnat/pieChartCatnat";
 import { MapCatnat } from "@/components/maps/mapCatnat";
 import RangeSlider from "@/components/Slider";
 import SubTabs from "@/components/SubTabs";

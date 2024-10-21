@@ -16,6 +16,16 @@ type ArreteCatNat = {
   region: number | null;
 }
 
+const colors: { [key: string]: string } = {
+  'Innondations': '#206EB4',
+  'Sécheresse': '#FF7700',
+  'Mouvements de terrain': '#BE5415',
+  'Retrait-gonflement des argiles': '#FFBC5C',
+  'Cyclones / Tempêtes': '#82815A',
+  'Grêle / neige': '#00A302',
+  'Avalanches': '#723AA0',
+};
+
 const PieChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
   const { gestionRisques } = props;
   const countTypes = CountOcc(gestionRisques, "lib_risque_jo");
@@ -33,13 +43,15 @@ const PieChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
     <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
       <ResponsivePie
         data={graphData}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+        margin={{ top: 60, right: 80, bottom: 60, left: 80 }}
+        colors={graphData => colors[graphData.id]}
         isInteractive={true}
         innerRadius={0.5}
-        padAngle={0.7}
+        padAngle={1}
         cornerRadius={3}
         activeOuterRadiusOffset={8}
         borderWidth={1}
+        arcLinkLabelsSkipAngle={7}
         sortByValue={false}
         borderColor={{
           from: 'color',

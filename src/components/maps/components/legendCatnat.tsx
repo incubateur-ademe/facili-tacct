@@ -8,8 +8,20 @@ interface Props {
   carteCommunes: any;
 }
 
+const colors: { [key: string]: string[] } = 
+  {
+    "Tous types": ["#F60000", "#FF5B37", "#FF8966", "#FFB297", "#FFD8CB"],
+    "Innondations": ["#206EB4", "#588AC7", "#82A7D9", "#A9C4EC", "#D0E3FF"],
+    "Sécheresse": ["#FF7700", "#FF9141", "#FFAA6D", "#FFC298", "#FFDAC3"],
+    "Mouvements de terrain": ["#BE5415", "#D27641", "#E3976C", "#F2B897", "#FFFF8C"],
+    "Retrait-gonflement des argiles": ["#FFBC5C", "#FCCE78", "#FBDE97", "#FBECB6", "#FFFAD6"],
+    "Cyclones / Tempêtes": ["#82815A", "#A09F66", "#BFBE73", "#DEDE7F", "#F4F38A"],
+    "Grêle / neige": ["#00A302", "#56B544", "#83C770", "#ABD99B", "#D1EAC7"],
+    "Avalanches": ["#723AA0", "#9361B7", "#B289CF", "#D2B1E6", "#F1DBFE"],
+  };
+
 export const Legend = (props: Props) => {
-  const { data, typeRisqueValue, carteCommunes } = props;
+  const { typeRisqueValue, carteCommunes } = props;
 
   const maxValue = () => {
     if (typeRisqueValue === "Tous types") {
@@ -40,28 +52,23 @@ export const Legend = (props: Props) => {
   const max = maxValue();
 
     return (
-      <div className="legend">
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ backgroundColor: "#FF5E54", width: "20px", height: "20px" }}></div>
-          <p>&gt;{Math.round((4/5) * max)}</p>
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ backgroundColor: "#FFBD00", width: "20px", height: "20px" }}></div>
-          <p>{Math.round((4/5) * max)}-{Math.round((3/5) * max)}</p>
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ backgroundColor: "#FFFA6A", width: "20px", height: "20px" }}></div>
-          <p>{Math.round((3/5) * max)}-{Math.round((2/5) * max)}</p>
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ backgroundColor: "#D5F4A3", width: "20px", height: "20px" }}></div>
-          <p>{Math.round((2/5) * max)}-{Math.round((1/5) * max)}</p>
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ backgroundColor: "#5CFF54", width: "20px", height: "20px" }}></div>
-          <p>&lt;{Math.round((1/5) * max)}</p>
-        </div>
+      <div className="legendCatnat">
+        {
+          colors[typeRisqueValue].map((color, index) => {
+            return (
+              <div key={index} style={{ display: "flex", justifyContent: "space-between" }}>
+                <div style={{ backgroundColor: color, width: "20px", height: "20px" }}></div>
+                {
+                  index === 0 ? <p>&gt;{Math.round((4/5) * max)}</p> :
+                  index === 1 ? <p>{Math.round((4/5) * max)}-{Math.round((3/5) * max)}</p> :
+                  index === 2 ? <p>{Math.round((3/5) * max)}-{Math.round((2/5) * max)}</p> :
+                  index === 3 ? <p>{Math.round((2/5) * max)}-{Math.round((1/5) * max)}</p> :
+                  <p>&lt;{Math.round((1/5) * max)}</p>
+                }
+              </div>
+            );
+          })
+        }
       </div>
-
     );
   }
