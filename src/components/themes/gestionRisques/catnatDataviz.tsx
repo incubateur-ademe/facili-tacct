@@ -1,5 +1,6 @@
 import { BarChartCatnat } from "@/components/charts/catnat/BarChartCatnat";
 import PieChartCatnat from "@/components/charts/catnat/pieChartCatnat";
+import { LegendCatnat } from "@/components/maps/components/legendCatnat";
 import { MapCatnat } from "@/components/maps/mapCatnat";
 import RangeSlider from "@/components/Slider";
 import SubTabs from "@/components/SubTabs";
@@ -59,6 +60,7 @@ const CatnatDataViz = (props: Props) => {
                 defaultTab={typeRisqueValue}
                 setValue={setTypeRisqueValue}
                 maxWidth="60%"
+                borderRight="solid 1px #D6D6F0"
               />
               <RangeSlider
                 firstValue={1982}
@@ -80,6 +82,9 @@ const CatnatDataViz = (props: Props) => {
               />
             </div>
             <MapCatnat carteCommunes={carteCommunes} typeRisqueValue={typeRisqueValue} />
+            <div className={styles.legend} style={{ width:"auto", justifyContent:"center"}}>
+              <LegendCatnat data={"catnat"} typeRisqueValue={typeRisqueValue} carteCommunes={carteCommunes} />
+            </div>
           </>
         ) : ""
       }
