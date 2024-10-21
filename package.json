@@ -30,6 +30,7 @@
     "@nivo/line": "^0.87.0",
     "@nivo/pie": "^0.87.0",
     "@prisma/client": "^5.13.0",
+    "@react-spring/web": "^9.7.5",
     "@sentry/nextjs": "^8.27.0",
     "@vercel/postgres": "^0.9.0",
     "cookies-next": "^4.1.1",
