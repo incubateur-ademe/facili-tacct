@@ -1,17 +1,13 @@
 "use client";
 
-import { BarChartCatnat } from "@/components/charts/BarChartCatnat";
-import PieChartCatnat from "@/components/charts/pieChartCatnat";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
-import { MapCatnat } from "@/components/maps/mapCatnat";
-import RangeSlider from "@/components/Slider";
-import SubTabs from "@/components/SubTabs";
 import { CommunesIndicateursMapper } from "@/lib/mapper/communes";
 import { CarteCommunes, GestionRisques } from "@/lib/postgres/models";
 import { CountOccByIndex } from "@/lib/utils/reusableFunctions/occurencesCount";
 import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import CatnatDataViz from "./catnatDataviz";
 import styles from "./gestionRisques.module.scss";
 
 type ArreteCatNat = {
@@ -56,7 +52,8 @@ export const Catnat = (props: {
   const { gestionRisques, carteCommunes } = props;
   const [sliderValue, setSliderValue] = useState<number[]>([1982, 2024]);
   const [typeRisqueValue, setTypeRisqueValue] = useState<string>("Tous types");
-  const [arretesCatnat, setArretesCatnat] = useState<ArreteCatNat[]>([]);
+  const [arretesCatnatPieChart, setArretesCatnatPieChart] = useState<ArreteCatNat[]>([]);
+  const [arretesCatnatBarChart, setArretesCatnatBarChart] = useState<ArreteCatNat[]>([]);
   const [catnatFilteredByType, setCatnatFilteredByType] = useState<GestionRisques[]>(gestionRisques);
   const typesRisques = gestionRisques ? [...new Set(gestionRisques.map(item => item.lib_risque_jo))] : [""];
 
@@ -83,12 +80,15 @@ export const Catnat = (props: {
   useEffect(() => {
     const catnatFilteredByType = typeRisqueValue === "Tous types" ? gestionRisques : gestionRisques.filter(item => item.lib_risque_jo === typeRisqueValue)
     setCatnatFilteredByType(catnatFilteredByType);
-    const gestionRisquesEnrich = catnatFilteredByType?.map(item => {
+    const gestionRisquesEnrichBarChart = catnatFilteredByType?.map(item => {
       return {...item, annee_arrete: Number(item.dat_pub_arrete?.split("-")[0])}
     }).filter(el => el.annee_arrete >= sliderValue[0] && el.annee_arrete <= sliderValue[1]);
-    setArretesCatnat(gestionRisquesEnrich);
+    const gestionRisquesEnrichPieChart = gestionRisques?.map(item => {
+      return {...item, annee_arrete: Number(item.dat_pub_arrete?.split("-")[0])}
+    }).filter(el => el.annee_arrete >= sliderValue[0] && el.annee_arrete <= sliderValue[1]);
+    setArretesCatnatPieChart(gestionRisquesEnrichPieChart);
+    setArretesCatnatBarChart(gestionRisquesEnrichBarChart);
   }, [sliderValue, typeRisqueValue]);
-
 
   return (
     <>
@@ -118,29 +118,16 @@ export const Catnat = (props: {
               <p>Lorem </p>
             </div>
           </div>
-          <div className="w-2/3">
-            <div className={styles.graphWrapper}>
-              <div className={styles.catnatGraphTitleWrapper}>
-                <h2>Arrêtés CatNat par communes</h2>
-                <p>onglets flex-end</p>
-              </div>
-              <div className={styles.catnatGraphFiltersWrapper}>
-                <div>
-                  <SubTabs data={["Tous types", ...typesRisques]} defaultTab={typeRisqueValue} setTypeRisqueValue={setTypeRisqueValue} />
-                </div>
-                <div>
-                  <RangeSlider firstValue={1982} lastValue={2024} minDist={1} setSliderValue={setSliderValue}/>
-                </div>
-              </div>
-              <div className="">
-                <MapCatnat carteCommunes={communesMap} typeRisqueValue={typeRisqueValue} />
-                <BarChartCatnat gestionRisques={arretesCatnat}  />
-                <PieChartCatnat gestionRisques={arretesCatnat}  />
-              </div>
-              <p style={{ padding: "1em", margin: "0" }}>
-                Source : <b style={{ color: "#0063CB" }}>XXXXXXX</b>
-              </p>
-            </div>
+          <div className="w-2/3">              
+            <CatnatDataViz 
+              carteCommunes={communesMap}
+              typeRisqueValue={typeRisqueValue}
+              gestionRisquesBarChart={arretesCatnatBarChart}
+              gestionRisquesPieChart={arretesCatnatPieChart}
+              typesRisques={typesRisques}
+              setTypeRisqueValue={setTypeRisqueValue}
+              setSliderValue={setSliderValue}
+            /> 
           </div>
         </div>
       ) : (

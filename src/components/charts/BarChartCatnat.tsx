@@ -4,19 +4,6 @@ import { ResponsiveBar } from "@/lib/nivo/bar";
 import { CountOccByIndex } from "@/lib/utils/reusableFunctions/occurencesCount";
 import { Any } from "@/lib/utils/types";
 
-type ArreteCatNat = {
-  annee_arrete: number;
-  lib_risque_jo: string | null;
-  dat_pub_arrete: string | null;
-  code_geographique: string | null;
-  departement: string | null;
-  epci: string | null;
-  index: bigint | null;
-  libelle_epci: string | null;
-  libelle_geographique: string | null;
-  region: number | null;
-}
-
 const colors: { [key: string]: string } = {
   'Innondations': '#21A59B',
   'Sécheresse': '#ADA943',
@@ -114,7 +101,7 @@ export const BarChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
             truncateTickAt: 0,
             tickValues: 5
           }}
-          labelSkipWidth={10}
+          labelSkipWidth={15}
           labelSkipHeight={12}
           labelTextColor={{
             from: 'color',
