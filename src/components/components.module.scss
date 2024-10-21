@@ -61,6 +61,7 @@
     line-height: 24px;
 }
 .titles {
+    width: fit-content;
     .sensibilite {
         display: flex;
         flex-direction: row;
@@ -68,7 +69,7 @@
     }
 }
 .selectedTabButton {
-    background-color: #0063cb;
+    background-color: #0063cb !important;
     // border: 1px solid #000000;
     border-radius: 25px;
     margin: 0 0.5em;
@@ -78,11 +79,11 @@
     font-weight: 400;
     line-height: 20px;
     text-align: center;
-    &:hover {
-        //color: black;
-        background-color: #000091e7 !important;
-        color: #eeeeee;
-    }
+    // &:hover {
+    //     //color: black;
+    //     background-color: #000091e7 !important;
+    //     color: #eeeeee;
+    // }
 }
 .tabButton {
     background-color: #f9f9ff;
