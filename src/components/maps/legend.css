@@ -18,3 +18,24 @@
   height: 20px;
   padding: 0 10px;
 }
+
+.legendCatnat {
+    position: absolute;
+    z-index: 999;
+    right: 3%;
+    bottom: 5%;
+    padding: 14px 0px;
+    box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
+    font-size:12px;
+    background: rgba(0,0,0,0.8);
+    border-radius: 5px;
+    width: 12%;
+}
+
+.legendCatnat > div {
+  color:white;
+  position: relative;
+  display: flex;
+  height: 20px;
+  padding: 0 10px;
+}
