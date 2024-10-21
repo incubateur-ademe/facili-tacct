@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "../../themes/gestionRisques/gestionRisques.module.scss";
 import "../legend.css";
 
 interface Props {
@@ -20,7 +21,7 @@ const colors: { [key: string]: string[] } =
     "Avalanches": ["#723AA0", "#9361B7", "#B289CF", "#D2B1E6", "#F1DBFE"],
   };
 
-export const Legend = (props: Props) => {
+export const LegendCatnat = (props: Props) => {
   const { typeRisqueValue, carteCommunes } = props;
 
   const maxValue = () => {
@@ -52,12 +53,12 @@ export const Legend = (props: Props) => {
   const max = maxValue();
 
   return (
-    <div className="legendCatnat">
+    <div className={styles.legendItemsWrapper}>
       {
         max > 5 ? colors[typeRisqueValue].map((color, index) => {
           return (
-            <div key={index} style={{ display: "flex", justifyContent: "space-between" }}>
-              <div style={{ backgroundColor: color, width: "20px", height: "20px" }}></div>
+            <div className={styles.legendItem} key={index} >
+              <div className={styles.legendColor} style={{ backgroundColor: color, opacity:"0.6" }}></div>
               {
                 index === 0 ? <p>&#x2265;{Math.round((4/5) * max)}</p> :
                 index === 1 ? <p>{Math.round((4/5) * max)}-{Math.round((3/5) * max)}</p> :
@@ -69,8 +70,8 @@ export const Legend = (props: Props) => {
           );
         }) : colors[typeRisqueValue].slice(0, max).map((color, index) => {
           return (
-            <div key={index} style={{ display: "flex", justifyContent: "space-between" }}>
-              <div style={{ backgroundColor: color, width: "20px", height: "20px" }}></div>
+            <div className={styles.legendItem} key={index} >
+              <div className={styles.legendColor} style={{ backgroundColor: color, opacity:"0.6" }}></div>
               <p>{max - index}</p> 
             </div>
           );

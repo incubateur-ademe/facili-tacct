@@ -8,12 +8,13 @@ interface Props {
   defaultTab: string;
   setValue: (value: string) => void;
   maxWidth?: string;
+  borderRight?: string;
 }
 
-const SubTabs = ({ data, defaultTab, setValue, maxWidth="100%" }: Props) => {
+const SubTabs = ({ data, defaultTab, setValue, maxWidth="100%", borderRight="none" }: Props) => {
   const [selectedSubTab, setSelectedSubTab] = useState(defaultTab);
   return(
-    <div className={styles.titles} style={{maxWidth: maxWidth}}>
+    <div className={styles.titles} style={{maxWidth: maxWidth, borderRight: borderRight}}>
       {data
         .map((element, i) => (
           <button

@@ -11,7 +11,6 @@ import { type Any } from "@/lib/utils/types";
 
 import { CommunesIndicateursDto } from "@/lib/dto";
 import { GraphDataNotFound } from "../graph-data-not-found";
-import { Legend } from "./components/legendCatnat";
 
 
 const colors: { [key: string]: string[] } = 
@@ -157,8 +156,6 @@ export const MapCatnat = (props: {
             url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
           />
           <GeoJSON ref={mapRef} data={carteCommunes as Any} style={style} />
-          <Legend data={"catnat"} typeRisqueValue={typeRisqueValue} carteCommunes={carteCommunes}/>
-
         </MapContainer>
 
       )}
