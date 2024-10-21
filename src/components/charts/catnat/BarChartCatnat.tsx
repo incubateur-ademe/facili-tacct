@@ -73,8 +73,7 @@ export const BarChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
                       {id}: <strong>{value}</strong>
                   </span>
               </div>
-                      } 
-                    
+          }     
           axisTop={null}
           axisRight={null}
           axisBottom={{

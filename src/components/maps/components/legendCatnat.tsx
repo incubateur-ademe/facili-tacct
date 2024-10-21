@@ -51,24 +51,31 @@ export const Legend = (props: Props) => {
   }
   const max = maxValue();
 
-    return (
-      <div className="legendCatnat">
-        {
-          colors[typeRisqueValue].map((color, index) => {
-            return (
-              <div key={index} style={{ display: "flex", justifyContent: "space-between" }}>
-                <div style={{ backgroundColor: color, width: "20px", height: "20px" }}></div>
-                {
-                  index === 0 ? <p>&gt;{Math.round((4/5) * max)}</p> :
-                  index === 1 ? <p>{Math.round((4/5) * max)}-{Math.round((3/5) * max)}</p> :
-                  index === 2 ? <p>{Math.round((3/5) * max)}-{Math.round((2/5) * max)}</p> :
-                  index === 3 ? <p>{Math.round((2/5) * max)}-{Math.round((1/5) * max)}</p> :
-                  <p>&lt;{Math.round((1/5) * max)}</p>
-                }
-              </div>
-            );
-          })
-        }
-      </div>
-    );
-  }
+  return (
+    <div className="legendCatnat">
+      {
+        max > 5 ? colors[typeRisqueValue].map((color, index) => {
+          return (
+            <div key={index} style={{ display: "flex", justifyContent: "space-between" }}>
+              <div style={{ backgroundColor: color, width: "20px", height: "20px" }}></div>
+              {
+                index === 0 ? <p>&#x2265;{Math.round((4/5) * max)}</p> :
+                index === 1 ? <p>{Math.round((4/5) * max)}-{Math.round((3/5) * max)}</p> :
+                index === 2 ? <p>{Math.round((3/5) * max)}-{Math.round((2/5) * max)}</p> :
+                index === 3 ? <p>{Math.round((2/5) * max)}-{Math.round((1/5) * max)}</p> :
+                <p>&lt;{Math.round((1/5) * max)}</p>
+              }
+            </div>
+          );
+        }) : colors[typeRisqueValue].slice(0, max).map((color, index) => {
+          return (
+            <div key={index} style={{ display: "flex", justifyContent: "space-between" }}>
+              <div style={{ backgroundColor: color, width: "20px", height: "20px" }}></div>
+              <p>{max - index}</p> 
+            </div>
+          );
+        })
+      }
+    </div>
+  );
+}
