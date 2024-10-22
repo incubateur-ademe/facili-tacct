@@ -5,7 +5,7 @@ import { CountOccByIndex } from "@/lib/utils/reusableFunctions/occurencesCount";
 import { Any } from "@/lib/utils/types";
 
 const colors: { [key: string]: string } = {
-  'Innondations': '#206EB4',
+  'Inondations': '#206EB4',
   'Sécheresse': '#FF7700',
   'Mouvements de terrain': '#BE5415',
   'Retrait-gonflement des argiles': '#FFBC5C',

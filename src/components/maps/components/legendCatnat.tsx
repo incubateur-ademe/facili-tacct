@@ -12,7 +12,7 @@ interface Props {
 const colors: { [key: string]: string[] } = 
   {
     "Tous types": ["#F60000", "#FF5B37", "#FF8966", "#FFB297", "#FFD8CB"],
-    "Innondations": ["#206EB4", "#588AC7", "#82A7D9", "#A9C4EC", "#D0E3FF"],
+    "Inondations": ["#206EB4", "#588AC7", "#82A7D9", "#A9C4EC", "#D0E3FF"],
     "Sécheresse": ["#FF7700", "#FF9141", "#FFAA6D", "#FFC298", "#FFDAC3"],
     "Mouvements de terrain": ["#BE5415", "#D27641", "#E3976C", "#F2B897", "#FFFF8C"],
     "Retrait-gonflement des argiles": ["#FFBC5C", "#FCCE78", "#FBDE97", "#FBECB6", "#FFFAD6"],
@@ -40,8 +40,8 @@ export const LegendCatnat = (props: Props) => {
     } else if (typeRisqueValue === "Mouvements de terrain") {
       const maxValue = Math.max(...carteCommunes.map((el: any) => el.properties.catnat?.["Mouvements de terrain"] ? el.properties.catnat?.["Mouvements de terrain"] : 0));
       return maxValue;
-    } else if (typeRisqueValue === "Innondations") {
-      const maxValue = Math.max(...carteCommunes.map((el: any) => el.properties.catnat?.Innondations ? el.properties.catnat?.Innondations : 0));
+    } else if (typeRisqueValue === "Inondations") {
+      const maxValue = Math.max(...carteCommunes.map((el: any) => el.properties.catnat?.Inondations ? el.properties.catnat?.Inondations : 0));
       return maxValue;
     } else if (typeRisqueValue === "Grêle / neige") {
       const maxValue = Math.max(...carteCommunes.map((el: any) => el.properties.catnat?.["Grêle / neige"] ? el.properties.catnat?.["Grêle / neige"] : 0));
