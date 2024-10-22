@@ -6,22 +6,16 @@ import cartographieIconBlack from "@/assets/icons/cartographie_icon_black.svg";
 import cartographieIconWhite from "@/assets/icons/cartographie_icon_white.svg";
 import evolutionIconBlack from "@/assets/icons/evolution_icon_black.svg";
 import evolutionIconWhite from "@/assets/icons/evolution_icon_white.svg";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { useState } from "react";
 import styles from "./components.module.scss";
 
 interface Props {
   data: Array<string | null>;
   defaultTab: string;
-  setValue: (value: string) => void;
+  setValue: (value: CatnatTypes) => void;
   maxWidth?: string;
   borderRight?: string;
-}
-
-type TabIcons = {
-  name: string;
-  iconNotSelected: StaticImageData;
-  iconSelected: StaticImageData;
 }
 
 const tabIcons = [
@@ -62,7 +56,7 @@ const SubTabs = ({ data, defaultTab, setValue, maxWidth="100%", borderRight="non
             className={selectedSubTab === element ? styles.selectedTabButton : styles.tabButton}
             onClick={() => {
               setSelectedSubTab(element ? element : "");
-              setValue(element ? element : "");
+              setValue(element ? element as CatnatTypes : "Tous types");
             }}
           >
             { 

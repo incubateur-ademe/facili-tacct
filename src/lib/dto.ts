@@ -73,12 +73,13 @@ export type CommunesIndicateursDto = {
   type: string;
   properties: {
     catnat?: {
-      Innondations?: number;
+      Inondations?: number;
       "Grêle / neige"? : number;
       "Sécheresse"? : number;
       "Cyclones / Tempêtes"? : number;
       "Retrait-gonflement des argiles"? : number;
       "Mouvements de terrain"? : number;
+      "Avalanches"? : number;
       sumCatnat?: number;
       indexName?: string;
     };

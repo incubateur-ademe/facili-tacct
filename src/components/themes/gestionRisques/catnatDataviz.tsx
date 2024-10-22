@@ -12,11 +12,11 @@ type Props = {
   carteCommunes: CommunesIndicateursDto[];
   datavizTab: string;
   setDatavizTab: (value: string) => void;
-  typeRisqueValue: string;
+  typeRisqueValue: CatnatTypes;
   gestionRisquesPieChart: ArreteCatNat[];
   gestionRisquesBarChart: ArreteCatNat[];
   typesRisques: (string | null)[];
-  setTypeRisqueValue: (value: string) => void;
+  setTypeRisqueValue: (value: CatnatTypes) => void;
   setSliderValue: (value: number[]) => void; 
   sliderValue: number[];
 }
