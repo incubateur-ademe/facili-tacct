@@ -50,6 +50,7 @@ export const Catnat = (props: {
   }>;
 }) => {
   const { gestionRisques, carteCommunes } = props;
+  const [datavizTab, setDatavizTab] = useState<string>("Répartition");
   const [sliderValue, setSliderValue] = useState<number[]>([1982, 2024]);
   const [typeRisqueValue, setTypeRisqueValue] = useState<string>("Tous types");
   const [arretesCatnatPieChart, setArretesCatnatPieChart] = useState<ArreteCatNat[]>([]);
@@ -88,7 +89,7 @@ export const Catnat = (props: {
     }).filter(el => el.annee_arrete >= sliderValue[0] && el.annee_arrete <= sliderValue[1]);
     setArretesCatnatPieChart(gestionRisquesEnrichPieChart);
     setArretesCatnatBarChart(gestionRisquesEnrichBarChart);
-  }, [sliderValue, typeRisqueValue]);
+  }, [sliderValue, typeRisqueValue, datavizTab]);
 
   return (
     <>
@@ -121,12 +122,15 @@ export const Catnat = (props: {
           <div className="w-2/3">              
             <CatnatDataViz 
               carteCommunes={communesMap}
+              datavizTab={datavizTab}
+              setDatavizTab={setDatavizTab}
               typeRisqueValue={typeRisqueValue}
               gestionRisquesBarChart={arretesCatnatBarChart}
               gestionRisquesPieChart={arretesCatnatPieChart}
               typesRisques={typesRisques}
               setTypeRisqueValue={setTypeRisqueValue}
               setSliderValue={setSliderValue}
+              sliderValue={sliderValue}
             /> 
           </div>
         </div>
