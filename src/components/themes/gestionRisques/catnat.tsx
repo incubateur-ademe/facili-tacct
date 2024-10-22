@@ -10,34 +10,6 @@ import { useEffect, useState } from "react";
 import CatnatDataViz from "./catnatDataviz";
 import styles from "./gestionRisques.module.scss";
 
-type ArreteCatNat = {
-  annee_arrete: number;
-  lib_risque_jo: string | null;
-  dat_pub_arrete: string | null;
-  code_geographique: string | null;
-  departement: string | null;
-  epci: string | null;
-  index: bigint | null;
-  libelle_epci: string | null;
-  libelle_geographique: string | null;
-  region: number | null;
-}
-
-type DataByCodeGeographique = {
-  indexName: string;
-  Innondations?: number;
-  "Grêle / neige"? : number;
-  "Sécheresse"? : number;
-  "Cyclones / Tempêtes"? : number;
-  "Retrait-gonflement des argiles"? : number;
-  "Mouvements de terrain"? : number;
-}
-
-type GenericObject = {
-  [key: string]: string | number | bigint | null;
-}
-
-
 export const Catnat = (props: {
   gestionRisques: GestionRisques[];
   carteCommunes: CarteCommunes[];
@@ -52,7 +24,7 @@ export const Catnat = (props: {
   const { gestionRisques, carteCommunes } = props;
   const [datavizTab, setDatavizTab] = useState<string>("Répartition");
   const [sliderValue, setSliderValue] = useState<number[]>([1982, 2024]);
-  const [typeRisqueValue, setTypeRisqueValue] = useState<string>("Tous types");
+  const [typeRisqueValue, setTypeRisqueValue] = useState<CatnatTypes>("Tous types");
   const [arretesCatnatPieChart, setArretesCatnatPieChart] = useState<ArreteCatNat[]>([]);
   const [arretesCatnatBarChart, setArretesCatnatBarChart] = useState<ArreteCatNat[]>([]);
   const [catnatFilteredByType, setCatnatFilteredByType] = useState<GestionRisques[]>(gestionRisques);
