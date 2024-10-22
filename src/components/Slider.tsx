@@ -7,11 +7,13 @@ interface RangeSliderProps {
   lastValue: number;
   minDist: number;
   setSliderValue: (value: number[]) => void;
+  sliderValue: number[];
   width: number;
+  padding?: string;
 }
 
-const RangeSlider = ({ firstValue, lastValue, minDist, setSliderValue, width }: RangeSliderProps) => {
-  const [value, setValue] = useState<number[]>([firstValue, lastValue]);
+const RangeSlider = ({ firstValue, lastValue, minDist, setSliderValue,sliderValue, width, padding="0.75rem 1rem" }: RangeSliderProps) => {
+  const [value, setValue] = useState<number[]>([sliderValue[0], sliderValue[1]]);
   const minDistance = minDist;
 
   const handleChange = (
@@ -37,7 +39,7 @@ const RangeSlider = ({ firstValue, lastValue, minDist, setSliderValue, width }: 
   ]
 
   return (
-    <Box sx={{ width: width, padding: "0.75rem 0" }}>
+    <Box sx={{ width: width, padding: padding }}>
       <Slider
         getAriaLabel={() => 'Date range'}
         sx={{ flexGrow: 1 }}

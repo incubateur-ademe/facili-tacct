@@ -6,30 +6,34 @@ import RangeSlider from "@/components/Slider";
 import SubTabs from "@/components/SubTabs";
 import { CommunesIndicateursDto } from "@/lib/dto";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
 import styles from "./gestionRisques.module.scss";
 
 type Props = {
   carteCommunes: CommunesIndicateursDto[];
+  datavizTab: string;
+  setDatavizTab: (value: string) => void;
   typeRisqueValue: string;
   gestionRisquesPieChart: ArreteCatNat[];
   gestionRisquesBarChart: ArreteCatNat[];
   typesRisques: (string | null)[];
   setTypeRisqueValue: (value: string) => void;
   setSliderValue: (value: number[]) => void; 
+  sliderValue: number[];
 }
 
 const CatnatDataViz = (props: Props) => {
   const { 
     carteCommunes,
+    datavizTab,
+    setDatavizTab,
     typeRisqueValue,
     gestionRisquesPieChart,
     gestionRisquesBarChart,
     typesRisques,
     setTypeRisqueValue,
-    setSliderValue
+    setSliderValue,
+    sliderValue
   } = props;
-  const [datavizTab, setDatavizTab] = useState<string>("Répartition");
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo")!;
   return (
@@ -47,6 +51,7 @@ const CatnatDataViz = (props: Props) => {
                 lastValue={2024}
                 minDist={1}
                 setSliderValue={setSliderValue}
+                sliderValue={sliderValue}
                 width={750}
               />
             </div>
@@ -67,7 +72,9 @@ const CatnatDataViz = (props: Props) => {
                 lastValue={2024}
                 minDist={1}
                 setSliderValue={setSliderValue}
-                width={250}
+                sliderValue={sliderValue}
+                width={270}
+                padding={"0 1rem 0 0"}
               />
             </div>
             <BarChartCatnat gestionRisques={gestionRisquesBarChart} />
