@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.explicationWrapper {
+    background-color: #f9f9ff;
+    margin: 0 0 2em;
+    padding: 1em;
+    border-radius: 0.5em;
+    border: solid 1px #d6d6f0;
+}
+
+.graphWrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9ff;
+    border: solid 1px #d6d6f0;
+    border-radius: 0.5em;
+}
+
+.prelevementEauWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.sliderDataWrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}

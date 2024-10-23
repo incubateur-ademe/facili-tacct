@@ -57,15 +57,15 @@ export const thematiques = {
       icon: amenagementIcon,
       imageUrl: "./amenagementIcon.svg"
     },
-  ],
-  bientot_disponible: [
     {
       thematique: "Ressources en eau",
-      id: 1,
+      id: 3,
       category: "",
       icon: gestionEauIcon,
       imageUrl: "./eauIcon.svg"
     },
+  ],
+  bientot_disponible: [
     {
       thematique: "Espaces naturels",
       id: 2,

@@ -170,3 +170,31 @@ model communes_drom {
   @@index([geometry], map: "communes_drom_geometry_geom_idx", type: Gist)
   @@schema("postgis")
 }
+
+model ressources_eau {
+  index                BigInt  @id
+  code_geographique    String
+  LIBELLE_SOUS_CHAMP   String?
+  SOUS_CHAMP           String?
+  A2020                Float?
+  A2019                Float?
+  A2018                Float?
+  A2017                Float?
+  A2016                Float?
+  A2015                Float?
+  A2014                Float?
+  A2013                Float?
+  A2012                Float?
+  A2011                Float?
+  A2010                Float?
+  A2009                Float?
+  A2008                Float?
+  libelle_geographique String?
+  epci                 String?
+  libelle_epci         String?
+  departement          String?
+  region               Float?
+
+  @@index([index], map: "ix_ressources_eau_index")
+  @@schema("databases")
+}

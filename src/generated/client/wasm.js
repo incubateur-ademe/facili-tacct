@@ -255,6 +255,31 @@ exports.Prisma.Communes_dromScalarFieldEnum = {
   precarite_logement: 'precarite_logement'
 };
 
+exports.Prisma.Ressources_eauScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  LIBELLE_SOUS_CHAMP: 'LIBELLE_SOUS_CHAMP',
+  SOUS_CHAMP: 'SOUS_CHAMP',
+  A2020: 'A2020',
+  A2019: 'A2019',
+  A2018: 'A2018',
+  A2017: 'A2017',
+  A2016: 'A2016',
+  A2015: 'A2015',
+  A2014: 'A2014',
+  A2013: 'A2013',
+  A2012: 'A2012',
+  A2011: 'A2011',
+  A2010: 'A2010',
+  A2009: 'A2009',
+  A2008: 'A2008',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  region: 'region'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -279,7 +304,8 @@ exports.Prisma.ModelName = {
   biodiversite: 'biodiversite',
   spatial_ref_sys: 'spatial_ref_sys',
   gestion_risques: 'gestion_risques',
-  communes_drom: 'communes_drom'
+  communes_drom: 'communes_drom',
+  ressources_eau: 'ressources_eau'
 };
 
 /**
