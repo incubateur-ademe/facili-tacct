@@ -48,6 +48,11 @@ export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPa
  * 
  */
 export type gestion_risques = $Result.DefaultSelection<Prisma.$gestion_risquesPayload>
+/**
+ * Model communes_drom
+ * 
+ */
+export type communes_drom = $Result.DefaultSelection<Prisma.$communes_dromPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -241,6 +246,16 @@ export class PrismaClient<
     * ```
     */
   get gestion_risques(): Prisma.gestion_risquesDelegate<ExtArgs>;
+
+  /**
+   * `prisma.communes_drom`: Exposes CRUD operations for the **communes_drom** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Communes_droms
+    * const communes_droms = await prisma.communes_drom.findMany()
+    * ```
+    */
+  get communes_drom(): Prisma.communes_dromDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -301,7 +316,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 5.20.0
-   * Query Engine version: 06fc58a368dc7be9fbbbe894adf8d445d208c284
+   * Query Engine version: bf0e5e8a04cada8225617067eaa03d041e2bba36
    */
   export type PrismaVersion = {
     client: string
@@ -688,7 +703,8 @@ export namespace Prisma {
     collectivites_searchbar: 'collectivites_searchbar',
     biodiversite: 'biodiversite',
     spatial_ref_sys: 'spatial_ref_sys',
-    gestion_risques: 'gestion_risques'
+    gestion_risques: 'gestion_risques',
+    communes_drom: 'communes_drom'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -704,7 +720,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "inconfort_thermique" | "clc_epci" | "communes" | "collectivites_searchbar" | "biodiversite" | "spatial_ref_sys" | "gestion_risques"
+      modelProps: "inconfort_thermique" | "clc_epci" | "communes" | "collectivites_searchbar" | "biodiversite" | "spatial_ref_sys" | "gestion_risques" | "communes_drom"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1195,6 +1211,60 @@ export namespace Prisma {
           count: {
             args: Prisma.gestion_risquesCountArgs<ExtArgs>
             result: $Utils.Optional<Gestion_risquesCountAggregateOutputType> | number
+          }
+        }
+      }
+      communes_drom: {
+        payload: Prisma.$communes_dromPayload<ExtArgs>
+        fields: Prisma.communes_dromFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.communes_dromFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communes_dromPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.communes_dromFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communes_dromPayload>
+          }
+          findFirst: {
+            args: Prisma.communes_dromFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communes_dromPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.communes_dromFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communes_dromPayload>
+          }
+          findMany: {
+            args: Prisma.communes_dromFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communes_dromPayload>[]
+          }
+          delete: {
+            args: Prisma.communes_dromDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communes_dromPayload>
+          }
+          update: {
+            args: Prisma.communes_dromUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communes_dromPayload>
+          }
+          deleteMany: {
+            args: Prisma.communes_dromDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.communes_dromUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          aggregate: {
+            args: Prisma.Communes_dromAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCommunes_drom>
+          }
+          groupBy: {
+            args: Prisma.communes_dromGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Communes_dromGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.communes_dromCountArgs<ExtArgs>
+            result: $Utils.Optional<Communes_dromCountAggregateOutputType> | number
           }
         }
       }
@@ -8764,6 +8834,819 @@ export namespace Prisma {
 
 
   /**
+   * Model communes_drom
+   */
+
+  export type AggregateCommunes_drom = {
+    _count: Communes_dromCountAggregateOutputType | null
+    _avg: Communes_dromAvgAggregateOutputType | null
+    _sum: Communes_dromSumAggregateOutputType | null
+    _min: Communes_dromMinAggregateOutputType | null
+    _max: Communes_dromMaxAggregateOutputType | null
+  }
+
+  export type Communes_dromAvgAggregateOutputType = {
+    pk: number | null
+    densite_bati: number | null
+    precarite_logement: number | null
+  }
+
+  export type Communes_dromSumAggregateOutputType = {
+    pk: number | null
+    densite_bati: number | null
+    precarite_logement: number | null
+  }
+
+  export type Communes_dromMinAggregateOutputType = {
+    pk: number | null
+    code_commune: string | null
+    libelle_commune: string | null
+    epci: string | null
+    libelle_epci: string | null
+    coordinates: string | null
+    densite_bati: number | null
+    precarite_logement: number | null
+  }
+
+  export type Communes_dromMaxAggregateOutputType = {
+    pk: number | null
+    code_commune: string | null
+    libelle_commune: string | null
+    epci: string | null
+    libelle_epci: string | null
+    coordinates: string | null
+    densite_bati: number | null
+    precarite_logement: number | null
+  }
+
+  export type Communes_dromCountAggregateOutputType = {
+    pk: number
+    code_commune: number
+    libelle_commune: number
+    epci: number
+    libelle_epci: number
+    coordinates: number
+    densite_bati: number
+    precarite_logement: number
+    _all: number
+  }
+
+
+  export type Communes_dromAvgAggregateInputType = {
+    pk?: true
+    densite_bati?: true
+    precarite_logement?: true
+  }
+
+  export type Communes_dromSumAggregateInputType = {
+    pk?: true
+    densite_bati?: true
+    precarite_logement?: true
+  }
+
+  export type Communes_dromMinAggregateInputType = {
+    pk?: true
+    code_commune?: true
+    libelle_commune?: true
+    epci?: true
+    libelle_epci?: true
+    coordinates?: true
+    densite_bati?: true
+    precarite_logement?: true
+  }
+
+  export type Communes_dromMaxAggregateInputType = {
+    pk?: true
+    code_commune?: true
+    libelle_commune?: true
+    epci?: true
+    libelle_epci?: true
+    coordinates?: true
+    densite_bati?: true
+    precarite_logement?: true
+  }
+
+  export type Communes_dromCountAggregateInputType = {
+    pk?: true
+    code_commune?: true
+    libelle_commune?: true
+    epci?: true
+    libelle_epci?: true
+    coordinates?: true
+    densite_bati?: true
+    precarite_logement?: true
+    _all?: true
+  }
+
+  export type Communes_dromAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which communes_drom to aggregate.
+     */
+    where?: communes_dromWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes_droms to fetch.
+     */
+    orderBy?: communes_dromOrderByWithRelationInput | communes_dromOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: communes_dromWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes_droms from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes_droms.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned communes_droms
+    **/
+    _count?: true | Communes_dromCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Communes_dromAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Communes_dromSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Communes_dromMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Communes_dromMaxAggregateInputType
+  }
+
+  export type GetCommunes_dromAggregateType<T extends Communes_dromAggregateArgs> = {
+        [P in keyof T & keyof AggregateCommunes_drom]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCommunes_drom[P]>
+      : GetScalarType<T[P], AggregateCommunes_drom[P]>
+  }
+
+
+
+
+  export type communes_dromGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: communes_dromWhereInput
+    orderBy?: communes_dromOrderByWithAggregationInput | communes_dromOrderByWithAggregationInput[]
+    by: Communes_dromScalarFieldEnum[] | Communes_dromScalarFieldEnum
+    having?: communes_dromScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Communes_dromCountAggregateInputType | true
+    _avg?: Communes_dromAvgAggregateInputType
+    _sum?: Communes_dromSumAggregateInputType
+    _min?: Communes_dromMinAggregateInputType
+    _max?: Communes_dromMaxAggregateInputType
+  }
+
+  export type Communes_dromGroupByOutputType = {
+    pk: number
+    code_commune: string
+    libelle_commune: string
+    epci: string
+    libelle_epci: string
+    coordinates: string
+    densite_bati: number | null
+    precarite_logement: number | null
+    _count: Communes_dromCountAggregateOutputType | null
+    _avg: Communes_dromAvgAggregateOutputType | null
+    _sum: Communes_dromSumAggregateOutputType | null
+    _min: Communes_dromMinAggregateOutputType | null
+    _max: Communes_dromMaxAggregateOutputType | null
+  }
+
+  type GetCommunes_dromGroupByPayload<T extends communes_dromGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Communes_dromGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Communes_dromGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Communes_dromGroupByOutputType[P]>
+            : GetScalarType<T[P], Communes_dromGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type communes_dromSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    code_commune?: boolean
+    libelle_commune?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    coordinates?: boolean
+    densite_bati?: boolean
+    precarite_logement?: boolean
+  }, ExtArgs["result"]["communes_drom"]>
+
+
+  export type communes_dromSelectScalar = {
+    pk?: boolean
+    code_commune?: boolean
+    libelle_commune?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    coordinates?: boolean
+    densite_bati?: boolean
+    precarite_logement?: boolean
+  }
+
+
+  export type $communes_dromPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "communes_drom"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      code_commune: string
+      libelle_commune: string
+      epci: string
+      libelle_epci: string
+      coordinates: string
+      densite_bati: number | null
+      precarite_logement: number | null
+    }, ExtArgs["result"]["communes_drom"]>
+    composites: {}
+  }
+
+  type communes_dromGetPayload<S extends boolean | null | undefined | communes_dromDefaultArgs> = $Result.GetResult<Prisma.$communes_dromPayload, S>
+
+  type communes_dromCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<communes_dromFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Communes_dromCountAggregateInputType | true
+    }
+
+  export interface communes_dromDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['communes_drom'], meta: { name: 'communes_drom' } }
+    /**
+     * Find zero or one Communes_drom that matches the filter.
+     * @param {communes_dromFindUniqueArgs} args - Arguments to find a Communes_drom
+     * @example
+     * // Get one Communes_drom
+     * const communes_drom = await prisma.communes_drom.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends communes_dromFindUniqueArgs>(args: SelectSubset<T, communes_dromFindUniqueArgs<ExtArgs>>): Prisma__communes_dromClient<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Communes_drom that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {communes_dromFindUniqueOrThrowArgs} args - Arguments to find a Communes_drom
+     * @example
+     * // Get one Communes_drom
+     * const communes_drom = await prisma.communes_drom.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends communes_dromFindUniqueOrThrowArgs>(args: SelectSubset<T, communes_dromFindUniqueOrThrowArgs<ExtArgs>>): Prisma__communes_dromClient<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Communes_drom that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_dromFindFirstArgs} args - Arguments to find a Communes_drom
+     * @example
+     * // Get one Communes_drom
+     * const communes_drom = await prisma.communes_drom.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends communes_dromFindFirstArgs>(args?: SelectSubset<T, communes_dromFindFirstArgs<ExtArgs>>): Prisma__communes_dromClient<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Communes_drom that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_dromFindFirstOrThrowArgs} args - Arguments to find a Communes_drom
+     * @example
+     * // Get one Communes_drom
+     * const communes_drom = await prisma.communes_drom.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends communes_dromFindFirstOrThrowArgs>(args?: SelectSubset<T, communes_dromFindFirstOrThrowArgs<ExtArgs>>): Prisma__communes_dromClient<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Communes_droms that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_dromFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Communes_droms
+     * const communes_droms = await prisma.communes_drom.findMany()
+     * 
+     * // Get first 10 Communes_droms
+     * const communes_droms = await prisma.communes_drom.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const communes_dromWithPkOnly = await prisma.communes_drom.findMany({ select: { pk: true } })
+     * 
+     */
+    findMany<T extends communes_dromFindManyArgs>(args?: SelectSubset<T, communes_dromFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Delete a Communes_drom.
+     * @param {communes_dromDeleteArgs} args - Arguments to delete one Communes_drom.
+     * @example
+     * // Delete one Communes_drom
+     * const Communes_drom = await prisma.communes_drom.delete({
+     *   where: {
+     *     // ... filter to delete one Communes_drom
+     *   }
+     * })
+     * 
+     */
+    delete<T extends communes_dromDeleteArgs>(args: SelectSubset<T, communes_dromDeleteArgs<ExtArgs>>): Prisma__communes_dromClient<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Communes_drom.
+     * @param {communes_dromUpdateArgs} args - Arguments to update one Communes_drom.
+     * @example
+     * // Update one Communes_drom
+     * const communes_drom = await prisma.communes_drom.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends communes_dromUpdateArgs>(args: SelectSubset<T, communes_dromUpdateArgs<ExtArgs>>): Prisma__communes_dromClient<$Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Communes_droms.
+     * @param {communes_dromDeleteManyArgs} args - Arguments to filter Communes_droms to delete.
+     * @example
+     * // Delete a few Communes_droms
+     * const { count } = await prisma.communes_drom.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends communes_dromDeleteManyArgs>(args?: SelectSubset<T, communes_dromDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Communes_droms.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_dromUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Communes_droms
+     * const communes_drom = await prisma.communes_drom.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends communes_dromUpdateManyArgs>(args: SelectSubset<T, communes_dromUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+
+    /**
+     * Count the number of Communes_droms.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_dromCountArgs} args - Arguments to filter Communes_droms to count.
+     * @example
+     * // Count the number of Communes_droms
+     * const count = await prisma.communes_drom.count({
+     *   where: {
+     *     // ... the filter for the Communes_droms we want to count
+     *   }
+     * })
+    **/
+    count<T extends communes_dromCountArgs>(
+      args?: Subset<T, communes_dromCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Communes_dromCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Communes_drom.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Communes_dromAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Communes_dromAggregateArgs>(args: Subset<T, Communes_dromAggregateArgs>): Prisma.PrismaPromise<GetCommunes_dromAggregateType<T>>
+
+    /**
+     * Group by Communes_drom.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communes_dromGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends communes_dromGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: communes_dromGroupByArgs['orderBy'] }
+        : { orderBy?: communes_dromGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, communes_dromGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommunes_dromGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the communes_drom model
+   */
+  readonly fields: communes_dromFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for communes_drom.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__communes_dromClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the communes_drom model
+   */ 
+  interface communes_dromFieldRefs {
+    readonly pk: FieldRef<"communes_drom", 'Int'>
+    readonly code_commune: FieldRef<"communes_drom", 'String'>
+    readonly libelle_commune: FieldRef<"communes_drom", 'String'>
+    readonly epci: FieldRef<"communes_drom", 'String'>
+    readonly libelle_epci: FieldRef<"communes_drom", 'String'>
+    readonly coordinates: FieldRef<"communes_drom", 'String'>
+    readonly densite_bati: FieldRef<"communes_drom", 'Float'>
+    readonly precarite_logement: FieldRef<"communes_drom", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * communes_drom findUnique
+   */
+  export type communes_dromFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Filter, which communes_drom to fetch.
+     */
+    where: communes_dromWhereUniqueInput
+  }
+
+  /**
+   * communes_drom findUniqueOrThrow
+   */
+  export type communes_dromFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Filter, which communes_drom to fetch.
+     */
+    where: communes_dromWhereUniqueInput
+  }
+
+  /**
+   * communes_drom findFirst
+   */
+  export type communes_dromFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Filter, which communes_drom to fetch.
+     */
+    where?: communes_dromWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes_droms to fetch.
+     */
+    orderBy?: communes_dromOrderByWithRelationInput | communes_dromOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for communes_droms.
+     */
+    cursor?: communes_dromWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes_droms from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes_droms.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of communes_droms.
+     */
+    distinct?: Communes_dromScalarFieldEnum | Communes_dromScalarFieldEnum[]
+  }
+
+  /**
+   * communes_drom findFirstOrThrow
+   */
+  export type communes_dromFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Filter, which communes_drom to fetch.
+     */
+    where?: communes_dromWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes_droms to fetch.
+     */
+    orderBy?: communes_dromOrderByWithRelationInput | communes_dromOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for communes_droms.
+     */
+    cursor?: communes_dromWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes_droms from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes_droms.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of communes_droms.
+     */
+    distinct?: Communes_dromScalarFieldEnum | Communes_dromScalarFieldEnum[]
+  }
+
+  /**
+   * communes_drom findMany
+   */
+  export type communes_dromFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Filter, which communes_droms to fetch.
+     */
+    where?: communes_dromWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes_droms to fetch.
+     */
+    orderBy?: communes_dromOrderByWithRelationInput | communes_dromOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing communes_droms.
+     */
+    cursor?: communes_dromWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes_droms from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes_droms.
+     */
+    skip?: number
+    distinct?: Communes_dromScalarFieldEnum | Communes_dromScalarFieldEnum[]
+  }
+
+  /**
+   * communes_drom update
+   */
+  export type communes_dromUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * The data needed to update a communes_drom.
+     */
+    data: XOR<communes_dromUpdateInput, communes_dromUncheckedUpdateInput>
+    /**
+     * Choose, which communes_drom to update.
+     */
+    where: communes_dromWhereUniqueInput
+  }
+
+  /**
+   * communes_drom updateMany
+   */
+  export type communes_dromUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update communes_droms.
+     */
+    data: XOR<communes_dromUpdateManyMutationInput, communes_dromUncheckedUpdateManyInput>
+    /**
+     * Filter which communes_droms to update
+     */
+    where?: communes_dromWhereInput
+  }
+
+  /**
+   * communes_drom delete
+   */
+  export type communes_dromDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+    /**
+     * Filter which communes_drom to delete.
+     */
+    where: communes_dromWhereUniqueInput
+  }
+
+  /**
+   * communes_drom deleteMany
+   */
+  export type communes_dromDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which communes_droms to delete
+     */
+    where?: communes_dromWhereInput
+  }
+
+  /**
+   * communes_drom without action
+   */
+  export type communes_dromDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -8918,6 +9801,20 @@ export namespace Prisma {
   };
 
   export type Gestion_risquesScalarFieldEnum = (typeof Gestion_risquesScalarFieldEnum)[keyof typeof Gestion_risquesScalarFieldEnum]
+
+
+  export const Communes_dromScalarFieldEnum: {
+    pk: 'pk',
+    code_commune: 'code_commune',
+    libelle_commune: 'libelle_commune',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    coordinates: 'coordinates',
+    densite_bati: 'densite_bati',
+    precarite_logement: 'precarite_logement'
+  };
+
+  export type Communes_dromScalarFieldEnum = (typeof Communes_dromScalarFieldEnum)[keyof typeof Communes_dromScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -9714,6 +10611,75 @@ export namespace Prisma {
     libelle_epci?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
     departement?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
     region?: FloatNullableWithAggregatesFilter<"gestion_risques"> | number | null
+  }
+
+  export type communes_dromWhereInput = {
+    AND?: communes_dromWhereInput | communes_dromWhereInput[]
+    OR?: communes_dromWhereInput[]
+    NOT?: communes_dromWhereInput | communes_dromWhereInput[]
+    pk?: IntFilter<"communes_drom"> | number
+    code_commune?: StringFilter<"communes_drom"> | string
+    libelle_commune?: StringFilter<"communes_drom"> | string
+    epci?: StringFilter<"communes_drom"> | string
+    libelle_epci?: StringFilter<"communes_drom"> | string
+    coordinates?: StringFilter<"communes_drom"> | string
+    densite_bati?: FloatNullableFilter<"communes_drom"> | number | null
+    precarite_logement?: FloatNullableFilter<"communes_drom"> | number | null
+  }
+
+  export type communes_dromOrderByWithRelationInput = {
+    pk?: SortOrder
+    code_commune?: SortOrder
+    libelle_commune?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    coordinates?: SortOrder
+    densite_bati?: SortOrderInput | SortOrder
+    precarite_logement?: SortOrderInput | SortOrder
+  }
+
+  export type communes_dromWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: communes_dromWhereInput | communes_dromWhereInput[]
+    OR?: communes_dromWhereInput[]
+    NOT?: communes_dromWhereInput | communes_dromWhereInput[]
+    code_commune?: StringFilter<"communes_drom"> | string
+    libelle_commune?: StringFilter<"communes_drom"> | string
+    epci?: StringFilter<"communes_drom"> | string
+    libelle_epci?: StringFilter<"communes_drom"> | string
+    coordinates?: StringFilter<"communes_drom"> | string
+    densite_bati?: FloatNullableFilter<"communes_drom"> | number | null
+    precarite_logement?: FloatNullableFilter<"communes_drom"> | number | null
+  }, "pk">
+
+  export type communes_dromOrderByWithAggregationInput = {
+    pk?: SortOrder
+    code_commune?: SortOrder
+    libelle_commune?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    coordinates?: SortOrder
+    densite_bati?: SortOrderInput | SortOrder
+    precarite_logement?: SortOrderInput | SortOrder
+    _count?: communes_dromCountOrderByAggregateInput
+    _avg?: communes_dromAvgOrderByAggregateInput
+    _max?: communes_dromMaxOrderByAggregateInput
+    _min?: communes_dromMinOrderByAggregateInput
+    _sum?: communes_dromSumOrderByAggregateInput
+  }
+
+  export type communes_dromScalarWhereWithAggregatesInput = {
+    AND?: communes_dromScalarWhereWithAggregatesInput | communes_dromScalarWhereWithAggregatesInput[]
+    OR?: communes_dromScalarWhereWithAggregatesInput[]
+    NOT?: communes_dromScalarWhereWithAggregatesInput | communes_dromScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"communes_drom"> | number
+    code_commune?: StringWithAggregatesFilter<"communes_drom"> | string
+    libelle_commune?: StringWithAggregatesFilter<"communes_drom"> | string
+    epci?: StringWithAggregatesFilter<"communes_drom"> | string
+    libelle_epci?: StringWithAggregatesFilter<"communes_drom"> | string
+    coordinates?: StringWithAggregatesFilter<"communes_drom"> | string
+    densite_bati?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
+    precarite_logement?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
   }
 
   export type inconfort_thermiqueCreateInput = {
@@ -10564,6 +11530,48 @@ export namespace Prisma {
     region?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
+  export type communes_dromUpdateInput = {
+    code_commune?: StringFieldUpdateOperationsInput | string
+    libelle_commune?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    coordinates?: StringFieldUpdateOperationsInput | string
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type communes_dromUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    code_commune?: StringFieldUpdateOperationsInput | string
+    libelle_commune?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    coordinates?: StringFieldUpdateOperationsInput | string
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type communes_dromUpdateManyMutationInput = {
+    code_commune?: StringFieldUpdateOperationsInput | string
+    libelle_commune?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    coordinates?: StringFieldUpdateOperationsInput | string
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type communes_dromUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    code_commune?: StringFieldUpdateOperationsInput | string
+    libelle_commune?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    coordinates?: StringFieldUpdateOperationsInput | string
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
+    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -11279,6 +12287,51 @@ export namespace Prisma {
     region?: SortOrder
   }
 
+  export type communes_dromCountOrderByAggregateInput = {
+    pk?: SortOrder
+    code_commune?: SortOrder
+    libelle_commune?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    coordinates?: SortOrder
+    densite_bati?: SortOrder
+    precarite_logement?: SortOrder
+  }
+
+  export type communes_dromAvgOrderByAggregateInput = {
+    pk?: SortOrder
+    densite_bati?: SortOrder
+    precarite_logement?: SortOrder
+  }
+
+  export type communes_dromMaxOrderByAggregateInput = {
+    pk?: SortOrder
+    code_commune?: SortOrder
+    libelle_commune?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    coordinates?: SortOrder
+    densite_bati?: SortOrder
+    precarite_logement?: SortOrder
+  }
+
+  export type communes_dromMinOrderByAggregateInput = {
+    pk?: SortOrder
+    code_commune?: SortOrder
+    libelle_commune?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    coordinates?: SortOrder
+    densite_bati?: SortOrder
+    precarite_logement?: SortOrder
+  }
+
+  export type communes_dromSumOrderByAggregateInput = {
+    pk?: SortOrder
+    densite_bati?: SortOrder
+    precarite_logement?: SortOrder
+  }
+
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number
     increment?: bigint | number
@@ -11533,6 +12586,10 @@ export namespace Prisma {
      * @deprecated Use gestion_risquesDefaultArgs instead
      */
     export type gestion_risquesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = gestion_risquesDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use communes_dromDefaultArgs instead
+     */
+    export type communes_dromArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = communes_dromDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
