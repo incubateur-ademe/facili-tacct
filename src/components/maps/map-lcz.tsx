@@ -13,6 +13,24 @@ import { CommunesIndicateursDto } from "@/lib/dto";
 import { swapNumbers } from "@/lib/utils/reusableFunctions/swapItemsInArray";
 import { GraphDataNotFound } from "../graph-data-not-found";
 
+const getCentroid = (arr: number[][]) => {
+  return arr?.reduce(
+    (x: number[], y: number[]) => {
+      return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
+    },
+    [0, 0],
+  );
+};
+
+const getCoordinates = (coords: number[][][]) => {
+  const coords_arr = [];
+  for (let i = 0; i < coords.length; i++) {
+    const center = getCentroid(coords[i]);
+    coords_arr.push(center);
+  }
+  return getCentroid(coords_arr);
+};
+
 export const MapLCZ = (props: {
   carteCommunes: CommunesIndicateursDto[];
   collectivite: any;
@@ -23,23 +41,6 @@ export const MapLCZ = (props: {
   const codepci = searchParams.get("codepci")!;
   const mapRef = useRef(null);
   const all_coordinates = carteCommunes.map(el => el.geometry.coordinates?.[0]?.[0]);
-
-  const getCentroid = (arr: number[][]) => {
-    return arr?.reduce(
-      (x: number[], y: number[]) => {
-        return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
-      },
-      [0, 0],
-    );
-  };
-  const getCoordinates = (coords: number[][][]) => {
-    const coords_arr = [];
-    for (let i = 0; i < coords.length; i++) {
-      const center = getCentroid(coords[i]);
-      coords_arr.push(center);
-    }
-    return getCentroid(coords_arr);
-  };
 
   const commune = codgeo ? carteCommunes.find(el => el.properties.code_commune === codgeo) : null;
   const centerCoord: number[] = collectivite[0].coordinates ? swapNumbers((collectivite[0].coordinates.split(",").map(Number)), 0, 1) : getCoordinates(all_coordinates);
