@@ -71,7 +71,7 @@ const PieChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
             fontWeight: 400,
         }}
         >
-            arrêtés CatNat
+            arrêté(s) CatNat
         </text>
       </>
     )
