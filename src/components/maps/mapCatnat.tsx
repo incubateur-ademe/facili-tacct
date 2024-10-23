@@ -10,6 +10,7 @@ import { GeoJSON, MapContainer, TileLayer } from "@/lib/react-leaflet";
 import { type Any } from "@/lib/utils/types";
 
 import { CommunesIndicateursDto } from "@/lib/dto";
+import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import { Feature } from "geojson";
 import { GraphDataNotFound } from "../graph-data-not-found";
 
@@ -76,7 +77,7 @@ export const MapCatnat = (props: {
         weight: 1,
         opacity: 1,
         color: "#161616",
-        fillOpacity: 0.6,
+        fillOpacity: 1,
       };
     } else {
       const maxValue = Math.max(...carteCommunes.map(el => el.properties.catnat?.[typeRisqueValue] ? el.properties.catnat?.[typeRisqueValue] : 0));
@@ -86,17 +87,18 @@ export const MapCatnat = (props: {
         weight: 1,
         opacity: 1,
         color: "#161616",
-        fillOpacity: 0.6,
+        fillOpacity: 1,
       }
     } 
   }
 
   const CustomTooltip = (restCatnat: Object, communeName: string) => {
     const keys = Object.keys(restCatnat);
-    const values = Object.values(restCatnat);    
+    const values = Object.values(restCatnat);  
+    const sum = Sum(values);  
     return (
       `<div stype="padding: 1.25rem">
-        <div style="font-size: 0.75rem; font-family: Marianne; font-weight: 700; padding: 0 0 1rem">${communeName}</div>
+        <div style="font-size: 0.75rem; font-family: Marianne; font-weight: 700; padding: 0 0 1rem">${communeName} : ${sum} arrêté(s) au total</div>
         ${keys.map((el, i) => `
           <div style="
             margin: 0;
@@ -140,7 +142,7 @@ export const MapCatnat = (props: {
     layer.setStyle({
       weight: 1,
       color: "#000000",
-      fillOpacity: 0.6,
+      fillOpacity: 1,
     });
     layer.closePopup();
   };
