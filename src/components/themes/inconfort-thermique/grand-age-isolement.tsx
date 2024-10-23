@@ -96,9 +96,7 @@ export const GrandAgeIsolement = (props: {
     ).toFixed(2),
   };
   const yGraphData = Object.values(yData).map(Number).map(value => isNaN(value) ? null : value);
-
-  const title =
-    "La proportion de personnes âgées que nous avons considérée correspond au pourcentage des personnes de plus de 80 ans dans la population à chaque recensement INSEE.";
+  const methodeCalcul = "Nombre de personnes de plus de 80 ans divisé par la population totale à chaque recensement INSEE.";
 
   return (
     <>
@@ -108,27 +106,34 @@ export const GrandAgeIsolement = (props: {
             <div className={styles.explicationWrapper}>
               { codgeo ?
                 <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-                  Dans la commune de {grandAgeIsolement[0]?.libelle_geographique}, les personnes de plus de 80 ans représentent{" "}
-                  <b>{yData.over_80_2020_percent_epci}%</b> de la population en 2020.
+                  En 2020, <b>{yData.over_80_2020_percent_epci}%</b> de la population de votre collectivité est constitué de personnes âgées de plus de 80 ans 
+                  (soit <b>{sumProperty(grandAgeIsolement, "over_80_sum_2020")}</b> personnes). 
                 </p>
                 : 
                 <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-                  Dans l'EPCI {grandAgeIsolement[0]?.libelle_epci}, les personnes de plus de 80 ans représentent{" "}
-                  <b>{yData.over_80_2020_percent_epci}%</b> de la population en 2020.
+                  En 2020, <b>{yData.over_80_2020_percent_epci}%</b> de la population de votre collectivité est constitué de personnes âgées de plus de 80 ans 
+                  (soit <b>{sumProperty(grandAgeIsolement, "over_80_sum_2020")}</b> personnes). 
                 </p>
               }
-              <CustomTooltip title={title} />
+              <CustomTooltip title={methodeCalcul} />
             </div>
             <div className="px-4">
               <p>
-                Les personnes âgées représentent les 2/3 de la surmortalité en période de fortes chaleurs. (Source :
-                Santé Publique France, mai 2023)
+                Les personnes âgées représentent les deux tiers de la surmortalité en période de fortes chaleurs.
+                <br></br>Le corps des personnes âgées régule moins bien la température, ce qui les rend plus sensibles aux fortes chaleurs. Elles ressentent également moins la soif, ce qui augmente les risques de déshydratation. S'ajoutent souvent des problèmes de santé chroniques, comme les maladies cardiovasculaires ou respiratoires, aggravés par la chaleur.
               </p>
               <p>
-                Leur vulnérabilité spécifique provient notamment de leur non-appréciation de leurs besoins
-                d’hydratation, mais aussi, sans surprise, à leur état de santé souvent dégradé.
+                Cette vulnérabilité est exacerbée par plusieurs facteurs : précarité énergétique, isolement social, et conditions de logement inadéquates. Plus ces facteurs se cumulent, plus le risque d’une surmortalité en période de chaleur augmente. Ces conditions créent un "cercle vicieux" qui accroît leur fragilité face à l’inconfort thermique. 
               </p>
-              <p>L’isolement social est un facteur de risque qui concerne toutes les populations.</p>
+              <p>
+                ⇒ C’est toujours beaucoup trop ! <b>33 000 décès ont été attribués à la chaleur</b> entre 2014 et 2022, dont <b>23 000</b> chez les personnes âgées de 75 ans et plus. 
+              </p>
+              <p>
+                ⇒ <b>28% seulement des décès</b> liés à la chaleur se produisent pendant les canicules, qui ne représente que 6% des jours de l’été. Soyons vigilants aussi en dehors des périodes de canicule. 
+              </p>
+              <p>
+                ⇒ Tous concernés : les personnes de <b>moins de 75 ans</b>, c’est 71% des consultations SOS Médecins en 2022 et un <b>tiers des décès</b> liés à la chaleur entre 2014 et 2022.
+              </p>
             </div>
           </div>
           <div className="w-3/5">
