@@ -60,8 +60,17 @@ export const themes = {
     },
     {
       id: 1,
-      titre: "Lorem",
-      facteur_sensibilite: "ipsum",
+      titre: "Prélèvement en eau",
+      facteur_sensibilite: "Eau",
+      risque: "",
+      donnee: "",
+    },
+  ],
+  ressourcesEau: [
+    {
+      id: 0,
+      titre: "Prélèvement en eau",
+      facteur_sensibilite: "A déterminer",
       risque: "",
       donnee: "",
     },

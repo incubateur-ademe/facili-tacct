@@ -7,8 +7,8 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 
-import { StationsClassees } from "@/components/themes/biodiversite/stationsClassees";
-import { Biodiversite, CarteCommunes } from "@/lib/postgres/models";
+import { PrelevementEau } from "@/components/themes/ressourcesEau/prelevementEau";
+import { RessourcesEau } from "@/lib/postgres/models";
 import { useStyles } from "tss-react/dsfr";
 import styles from "../donnees.module.scss";
 
@@ -20,18 +20,17 @@ interface Props {
     risque: string;
     titre: string;
   }>;
-  biodiversite: Biodiversite[];
-  carteCommunes: CarteCommunes[];
+  ressourcesEau: RessourcesEau[];
 }
 
 const allComps = [
   {
-    titre: "Stations classées",
-    Component: ({biodiversite, data, carteCommunes}: Props & { activeDataTab: string }) => <StationsClassees biodiversite={biodiversite} data={data} carteCommunes={carteCommunes} />,
-  },
+    titre: "Prélèvement en eau",
+    Component: ({data, ressourcesEau}: Props & { activeDataTab: string }) => <PrelevementEau data={data} ressourcesEau={ressourcesEau} />,
+  }
 ];
 
-const BiodiversiteComp = ({ data, biodiversite, carteCommunes }: Props) => {
+const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState("A déterminer");
   const [selectedSubTab, setSelectedSubTab] = useState("Stations classées");
   const searchParams = useSearchParams();
@@ -58,10 +57,6 @@ const BiodiversiteComp = ({ data, biodiversite, carteCommunes }: Props) => {
             tabId: "A déterminer",
             label: "A déterminer"
           },
-          {
-            tabId: "Eau",
-            label: "Eau"
-          }
         ]} 
         onTabChange={setSelectedTabId} 
         className={css({
@@ -115,9 +110,8 @@ const BiodiversiteComp = ({ data, biodiversite, carteCommunes }: Props) => {
                 return (
                   <Component
                     data={data}
-                    biodiversite={biodiversite}
+                    ressourcesEau={ressourcesEau}
                     activeDataTab={selectedSubTab}
-                    carteCommunes={carteCommunes}
                   />
                 );
               })()}
@@ -130,4 +124,4 @@ const BiodiversiteComp = ({ data, biodiversite, carteCommunes }: Props) => {
 };
 
 // eslint-disable-next-line import/no-default-export
-export default BiodiversiteComp;
+export default RessourcesEauComp;

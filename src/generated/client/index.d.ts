@@ -53,6 +53,11 @@ export type gestion_risques = $Result.DefaultSelection<Prisma.$gestion_risquesPa
  * 
  */
 export type communes_drom = $Result.DefaultSelection<Prisma.$communes_dromPayload>
+/**
+ * Model ressources_eau
+ * 
+ */
+export type ressources_eau = $Result.DefaultSelection<Prisma.$ressources_eauPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -256,6 +261,16 @@ export class PrismaClient<
     * ```
     */
   get communes_drom(): Prisma.communes_dromDelegate<ExtArgs>;
+
+  /**
+   * `prisma.ressources_eau`: Exposes CRUD operations for the **ressources_eau** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Ressources_eaus
+    * const ressources_eaus = await prisma.ressources_eau.findMany()
+    * ```
+    */
+  get ressources_eau(): Prisma.ressources_eauDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -704,7 +719,8 @@ export namespace Prisma {
     biodiversite: 'biodiversite',
     spatial_ref_sys: 'spatial_ref_sys',
     gestion_risques: 'gestion_risques',
-    communes_drom: 'communes_drom'
+    communes_drom: 'communes_drom',
+    ressources_eau: 'ressources_eau'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -720,7 +736,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "inconfort_thermique" | "clc_epci" | "communes" | "collectivites_searchbar" | "biodiversite" | "spatial_ref_sys" | "gestion_risques" | "communes_drom"
+      modelProps: "inconfort_thermique" | "clc_epci" | "communes" | "collectivites_searchbar" | "biodiversite" | "spatial_ref_sys" | "gestion_risques" | "communes_drom" | "ressources_eau"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1265,6 +1281,76 @@ export namespace Prisma {
           count: {
             args: Prisma.communes_dromCountArgs<ExtArgs>
             result: $Utils.Optional<Communes_dromCountAggregateOutputType> | number
+          }
+        }
+      }
+      ressources_eau: {
+        payload: Prisma.$ressources_eauPayload<ExtArgs>
+        fields: Prisma.ressources_eauFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ressources_eauFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ressources_eauPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ressources_eauFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ressources_eauPayload>
+          }
+          findFirst: {
+            args: Prisma.ressources_eauFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ressources_eauPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ressources_eauFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ressources_eauPayload>
+          }
+          findMany: {
+            args: Prisma.ressources_eauFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ressources_eauPayload>[]
+          }
+          create: {
+            args: Prisma.ressources_eauCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ressources_eauPayload>
+          }
+          createMany: {
+            args: Prisma.ressources_eauCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ressources_eauCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ressources_eauPayload>[]
+          }
+          delete: {
+            args: Prisma.ressources_eauDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ressources_eauPayload>
+          }
+          update: {
+            args: Prisma.ressources_eauUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ressources_eauPayload>
+          }
+          deleteMany: {
+            args: Prisma.ressources_eauDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ressources_eauUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ressources_eauUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ressources_eauPayload>
+          }
+          aggregate: {
+            args: Prisma.Ressources_eauAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRessources_eau>
+          }
+          groupBy: {
+            args: Prisma.ressources_eauGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Ressources_eauGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ressources_eauCountArgs<ExtArgs>
+            result: $Utils.Optional<Ressources_eauCountAggregateOutputType> | number
           }
         }
       }
@@ -9647,6 +9733,1178 @@ export namespace Prisma {
 
 
   /**
+   * Model ressources_eau
+   */
+
+  export type AggregateRessources_eau = {
+    _count: Ressources_eauCountAggregateOutputType | null
+    _avg: Ressources_eauAvgAggregateOutputType | null
+    _sum: Ressources_eauSumAggregateOutputType | null
+    _min: Ressources_eauMinAggregateOutputType | null
+    _max: Ressources_eauMaxAggregateOutputType | null
+  }
+
+  export type Ressources_eauAvgAggregateOutputType = {
+    index: number | null
+    A2020: number | null
+    A2019: number | null
+    A2018: number | null
+    A2017: number | null
+    A2016: number | null
+    A2015: number | null
+    A2014: number | null
+    A2013: number | null
+    A2012: number | null
+    A2011: number | null
+    A2010: number | null
+    A2009: number | null
+    A2008: number | null
+    region: number | null
+  }
+
+  export type Ressources_eauSumAggregateOutputType = {
+    index: bigint | null
+    A2020: number | null
+    A2019: number | null
+    A2018: number | null
+    A2017: number | null
+    A2016: number | null
+    A2015: number | null
+    A2014: number | null
+    A2013: number | null
+    A2012: number | null
+    A2011: number | null
+    A2010: number | null
+    A2009: number | null
+    A2008: number | null
+    region: number | null
+  }
+
+  export type Ressources_eauMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    LIBELLE_SOUS_CHAMP: string | null
+    SOUS_CHAMP: string | null
+    A2020: number | null
+    A2019: number | null
+    A2018: number | null
+    A2017: number | null
+    A2016: number | null
+    A2015: number | null
+    A2014: number | null
+    A2013: number | null
+    A2012: number | null
+    A2011: number | null
+    A2010: number | null
+    A2009: number | null
+    A2008: number | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: number | null
+  }
+
+  export type Ressources_eauMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    LIBELLE_SOUS_CHAMP: string | null
+    SOUS_CHAMP: string | null
+    A2020: number | null
+    A2019: number | null
+    A2018: number | null
+    A2017: number | null
+    A2016: number | null
+    A2015: number | null
+    A2014: number | null
+    A2013: number | null
+    A2012: number | null
+    A2011: number | null
+    A2010: number | null
+    A2009: number | null
+    A2008: number | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: number | null
+  }
+
+  export type Ressources_eauCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    LIBELLE_SOUS_CHAMP: number
+    SOUS_CHAMP: number
+    A2020: number
+    A2019: number
+    A2018: number
+    A2017: number
+    A2016: number
+    A2015: number
+    A2014: number
+    A2013: number
+    A2012: number
+    A2011: number
+    A2010: number
+    A2009: number
+    A2008: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    region: number
+    _all: number
+  }
+
+
+  export type Ressources_eauAvgAggregateInputType = {
+    index?: true
+    A2020?: true
+    A2019?: true
+    A2018?: true
+    A2017?: true
+    A2016?: true
+    A2015?: true
+    A2014?: true
+    A2013?: true
+    A2012?: true
+    A2011?: true
+    A2010?: true
+    A2009?: true
+    A2008?: true
+    region?: true
+  }
+
+  export type Ressources_eauSumAggregateInputType = {
+    index?: true
+    A2020?: true
+    A2019?: true
+    A2018?: true
+    A2017?: true
+    A2016?: true
+    A2015?: true
+    A2014?: true
+    A2013?: true
+    A2012?: true
+    A2011?: true
+    A2010?: true
+    A2009?: true
+    A2008?: true
+    region?: true
+  }
+
+  export type Ressources_eauMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    LIBELLE_SOUS_CHAMP?: true
+    SOUS_CHAMP?: true
+    A2020?: true
+    A2019?: true
+    A2018?: true
+    A2017?: true
+    A2016?: true
+    A2015?: true
+    A2014?: true
+    A2013?: true
+    A2012?: true
+    A2011?: true
+    A2010?: true
+    A2009?: true
+    A2008?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+  }
+
+  export type Ressources_eauMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    LIBELLE_SOUS_CHAMP?: true
+    SOUS_CHAMP?: true
+    A2020?: true
+    A2019?: true
+    A2018?: true
+    A2017?: true
+    A2016?: true
+    A2015?: true
+    A2014?: true
+    A2013?: true
+    A2012?: true
+    A2011?: true
+    A2010?: true
+    A2009?: true
+    A2008?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+  }
+
+  export type Ressources_eauCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    LIBELLE_SOUS_CHAMP?: true
+    SOUS_CHAMP?: true
+    A2020?: true
+    A2019?: true
+    A2018?: true
+    A2017?: true
+    A2016?: true
+    A2015?: true
+    A2014?: true
+    A2013?: true
+    A2012?: true
+    A2011?: true
+    A2010?: true
+    A2009?: true
+    A2008?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+    _all?: true
+  }
+
+  export type Ressources_eauAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ressources_eau to aggregate.
+     */
+    where?: ressources_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ressources_eaus to fetch.
+     */
+    orderBy?: ressources_eauOrderByWithRelationInput | ressources_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ressources_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ressources_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ressources_eaus.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ressources_eaus
+    **/
+    _count?: true | Ressources_eauCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Ressources_eauAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Ressources_eauSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Ressources_eauMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Ressources_eauMaxAggregateInputType
+  }
+
+  export type GetRessources_eauAggregateType<T extends Ressources_eauAggregateArgs> = {
+        [P in keyof T & keyof AggregateRessources_eau]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRessources_eau[P]>
+      : GetScalarType<T[P], AggregateRessources_eau[P]>
+  }
+
+
+
+
+  export type ressources_eauGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ressources_eauWhereInput
+    orderBy?: ressources_eauOrderByWithAggregationInput | ressources_eauOrderByWithAggregationInput[]
+    by: Ressources_eauScalarFieldEnum[] | Ressources_eauScalarFieldEnum
+    having?: ressources_eauScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Ressources_eauCountAggregateInputType | true
+    _avg?: Ressources_eauAvgAggregateInputType
+    _sum?: Ressources_eauSumAggregateInputType
+    _min?: Ressources_eauMinAggregateInputType
+    _max?: Ressources_eauMaxAggregateInputType
+  }
+
+  export type Ressources_eauGroupByOutputType = {
+    index: bigint
+    code_geographique: string
+    LIBELLE_SOUS_CHAMP: string | null
+    SOUS_CHAMP: string | null
+    A2020: number | null
+    A2019: number | null
+    A2018: number | null
+    A2017: number | null
+    A2016: number | null
+    A2015: number | null
+    A2014: number | null
+    A2013: number | null
+    A2012: number | null
+    A2011: number | null
+    A2010: number | null
+    A2009: number | null
+    A2008: number | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: number | null
+    _count: Ressources_eauCountAggregateOutputType | null
+    _avg: Ressources_eauAvgAggregateOutputType | null
+    _sum: Ressources_eauSumAggregateOutputType | null
+    _min: Ressources_eauMinAggregateOutputType | null
+    _max: Ressources_eauMaxAggregateOutputType | null
+  }
+
+  type GetRessources_eauGroupByPayload<T extends ressources_eauGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Ressources_eauGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Ressources_eauGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Ressources_eauGroupByOutputType[P]>
+            : GetScalarType<T[P], Ressources_eauGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ressources_eauSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    LIBELLE_SOUS_CHAMP?: boolean
+    SOUS_CHAMP?: boolean
+    A2020?: boolean
+    A2019?: boolean
+    A2018?: boolean
+    A2017?: boolean
+    A2016?: boolean
+    A2015?: boolean
+    A2014?: boolean
+    A2013?: boolean
+    A2012?: boolean
+    A2011?: boolean
+    A2010?: boolean
+    A2009?: boolean
+    A2008?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+  }, ExtArgs["result"]["ressources_eau"]>
+
+  export type ressources_eauSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    LIBELLE_SOUS_CHAMP?: boolean
+    SOUS_CHAMP?: boolean
+    A2020?: boolean
+    A2019?: boolean
+    A2018?: boolean
+    A2017?: boolean
+    A2016?: boolean
+    A2015?: boolean
+    A2014?: boolean
+    A2013?: boolean
+    A2012?: boolean
+    A2011?: boolean
+    A2010?: boolean
+    A2009?: boolean
+    A2008?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+  }, ExtArgs["result"]["ressources_eau"]>
+
+  export type ressources_eauSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    LIBELLE_SOUS_CHAMP?: boolean
+    SOUS_CHAMP?: boolean
+    A2020?: boolean
+    A2019?: boolean
+    A2018?: boolean
+    A2017?: boolean
+    A2016?: boolean
+    A2015?: boolean
+    A2014?: boolean
+    A2013?: boolean
+    A2012?: boolean
+    A2011?: boolean
+    A2010?: boolean
+    A2009?: boolean
+    A2008?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+  }
+
+
+  export type $ressources_eauPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ressources_eau"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string
+      LIBELLE_SOUS_CHAMP: string | null
+      SOUS_CHAMP: string | null
+      A2020: number | null
+      A2019: number | null
+      A2018: number | null
+      A2017: number | null
+      A2016: number | null
+      A2015: number | null
+      A2014: number | null
+      A2013: number | null
+      A2012: number | null
+      A2011: number | null
+      A2010: number | null
+      A2009: number | null
+      A2008: number | null
+      libelle_geographique: string | null
+      epci: string | null
+      libelle_epci: string | null
+      departement: string | null
+      region: number | null
+    }, ExtArgs["result"]["ressources_eau"]>
+    composites: {}
+  }
+
+  type ressources_eauGetPayload<S extends boolean | null | undefined | ressources_eauDefaultArgs> = $Result.GetResult<Prisma.$ressources_eauPayload, S>
+
+  type ressources_eauCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ressources_eauFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Ressources_eauCountAggregateInputType | true
+    }
+
+  export interface ressources_eauDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ressources_eau'], meta: { name: 'ressources_eau' } }
+    /**
+     * Find zero or one Ressources_eau that matches the filter.
+     * @param {ressources_eauFindUniqueArgs} args - Arguments to find a Ressources_eau
+     * @example
+     * // Get one Ressources_eau
+     * const ressources_eau = await prisma.ressources_eau.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ressources_eauFindUniqueArgs>(args: SelectSubset<T, ressources_eauFindUniqueArgs<ExtArgs>>): Prisma__ressources_eauClient<$Result.GetResult<Prisma.$ressources_eauPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Ressources_eau that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ressources_eauFindUniqueOrThrowArgs} args - Arguments to find a Ressources_eau
+     * @example
+     * // Get one Ressources_eau
+     * const ressources_eau = await prisma.ressources_eau.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ressources_eauFindUniqueOrThrowArgs>(args: SelectSubset<T, ressources_eauFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ressources_eauClient<$Result.GetResult<Prisma.$ressources_eauPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Ressources_eau that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ressources_eauFindFirstArgs} args - Arguments to find a Ressources_eau
+     * @example
+     * // Get one Ressources_eau
+     * const ressources_eau = await prisma.ressources_eau.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ressources_eauFindFirstArgs>(args?: SelectSubset<T, ressources_eauFindFirstArgs<ExtArgs>>): Prisma__ressources_eauClient<$Result.GetResult<Prisma.$ressources_eauPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Ressources_eau that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ressources_eauFindFirstOrThrowArgs} args - Arguments to find a Ressources_eau
+     * @example
+     * // Get one Ressources_eau
+     * const ressources_eau = await prisma.ressources_eau.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ressources_eauFindFirstOrThrowArgs>(args?: SelectSubset<T, ressources_eauFindFirstOrThrowArgs<ExtArgs>>): Prisma__ressources_eauClient<$Result.GetResult<Prisma.$ressources_eauPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Ressources_eaus that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ressources_eauFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Ressources_eaus
+     * const ressources_eaus = await prisma.ressources_eau.findMany()
+     * 
+     * // Get first 10 Ressources_eaus
+     * const ressources_eaus = await prisma.ressources_eau.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const ressources_eauWithIndexOnly = await prisma.ressources_eau.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends ressources_eauFindManyArgs>(args?: SelectSubset<T, ressources_eauFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ressources_eauPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Ressources_eau.
+     * @param {ressources_eauCreateArgs} args - Arguments to create a Ressources_eau.
+     * @example
+     * // Create one Ressources_eau
+     * const Ressources_eau = await prisma.ressources_eau.create({
+     *   data: {
+     *     // ... data to create a Ressources_eau
+     *   }
+     * })
+     * 
+     */
+    create<T extends ressources_eauCreateArgs>(args: SelectSubset<T, ressources_eauCreateArgs<ExtArgs>>): Prisma__ressources_eauClient<$Result.GetResult<Prisma.$ressources_eauPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Ressources_eaus.
+     * @param {ressources_eauCreateManyArgs} args - Arguments to create many Ressources_eaus.
+     * @example
+     * // Create many Ressources_eaus
+     * const ressources_eau = await prisma.ressources_eau.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ressources_eauCreateManyArgs>(args?: SelectSubset<T, ressources_eauCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Ressources_eaus and returns the data saved in the database.
+     * @param {ressources_eauCreateManyAndReturnArgs} args - Arguments to create many Ressources_eaus.
+     * @example
+     * // Create many Ressources_eaus
+     * const ressources_eau = await prisma.ressources_eau.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Ressources_eaus and only return the `index`
+     * const ressources_eauWithIndexOnly = await prisma.ressources_eau.createManyAndReturn({ 
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ressources_eauCreateManyAndReturnArgs>(args?: SelectSubset<T, ressources_eauCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ressources_eauPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Ressources_eau.
+     * @param {ressources_eauDeleteArgs} args - Arguments to delete one Ressources_eau.
+     * @example
+     * // Delete one Ressources_eau
+     * const Ressources_eau = await prisma.ressources_eau.delete({
+     *   where: {
+     *     // ... filter to delete one Ressources_eau
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ressources_eauDeleteArgs>(args: SelectSubset<T, ressources_eauDeleteArgs<ExtArgs>>): Prisma__ressources_eauClient<$Result.GetResult<Prisma.$ressources_eauPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Ressources_eau.
+     * @param {ressources_eauUpdateArgs} args - Arguments to update one Ressources_eau.
+     * @example
+     * // Update one Ressources_eau
+     * const ressources_eau = await prisma.ressources_eau.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ressources_eauUpdateArgs>(args: SelectSubset<T, ressources_eauUpdateArgs<ExtArgs>>): Prisma__ressources_eauClient<$Result.GetResult<Prisma.$ressources_eauPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Ressources_eaus.
+     * @param {ressources_eauDeleteManyArgs} args - Arguments to filter Ressources_eaus to delete.
+     * @example
+     * // Delete a few Ressources_eaus
+     * const { count } = await prisma.ressources_eau.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ressources_eauDeleteManyArgs>(args?: SelectSubset<T, ressources_eauDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Ressources_eaus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ressources_eauUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Ressources_eaus
+     * const ressources_eau = await prisma.ressources_eau.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ressources_eauUpdateManyArgs>(args: SelectSubset<T, ressources_eauUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Ressources_eau.
+     * @param {ressources_eauUpsertArgs} args - Arguments to update or create a Ressources_eau.
+     * @example
+     * // Update or create a Ressources_eau
+     * const ressources_eau = await prisma.ressources_eau.upsert({
+     *   create: {
+     *     // ... data to create a Ressources_eau
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Ressources_eau we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ressources_eauUpsertArgs>(args: SelectSubset<T, ressources_eauUpsertArgs<ExtArgs>>): Prisma__ressources_eauClient<$Result.GetResult<Prisma.$ressources_eauPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Ressources_eaus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ressources_eauCountArgs} args - Arguments to filter Ressources_eaus to count.
+     * @example
+     * // Count the number of Ressources_eaus
+     * const count = await prisma.ressources_eau.count({
+     *   where: {
+     *     // ... the filter for the Ressources_eaus we want to count
+     *   }
+     * })
+    **/
+    count<T extends ressources_eauCountArgs>(
+      args?: Subset<T, ressources_eauCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Ressources_eauCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Ressources_eau.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Ressources_eauAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Ressources_eauAggregateArgs>(args: Subset<T, Ressources_eauAggregateArgs>): Prisma.PrismaPromise<GetRessources_eauAggregateType<T>>
+
+    /**
+     * Group by Ressources_eau.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ressources_eauGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ressources_eauGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ressources_eauGroupByArgs['orderBy'] }
+        : { orderBy?: ressources_eauGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ressources_eauGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRessources_eauGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ressources_eau model
+   */
+  readonly fields: ressources_eauFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ressources_eau.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ressources_eauClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ressources_eau model
+   */ 
+  interface ressources_eauFieldRefs {
+    readonly index: FieldRef<"ressources_eau", 'BigInt'>
+    readonly code_geographique: FieldRef<"ressources_eau", 'String'>
+    readonly LIBELLE_SOUS_CHAMP: FieldRef<"ressources_eau", 'String'>
+    readonly SOUS_CHAMP: FieldRef<"ressources_eau", 'String'>
+    readonly A2020: FieldRef<"ressources_eau", 'Float'>
+    readonly A2019: FieldRef<"ressources_eau", 'Float'>
+    readonly A2018: FieldRef<"ressources_eau", 'Float'>
+    readonly A2017: FieldRef<"ressources_eau", 'Float'>
+    readonly A2016: FieldRef<"ressources_eau", 'Float'>
+    readonly A2015: FieldRef<"ressources_eau", 'Float'>
+    readonly A2014: FieldRef<"ressources_eau", 'Float'>
+    readonly A2013: FieldRef<"ressources_eau", 'Float'>
+    readonly A2012: FieldRef<"ressources_eau", 'Float'>
+    readonly A2011: FieldRef<"ressources_eau", 'Float'>
+    readonly A2010: FieldRef<"ressources_eau", 'Float'>
+    readonly A2009: FieldRef<"ressources_eau", 'Float'>
+    readonly A2008: FieldRef<"ressources_eau", 'Float'>
+    readonly libelle_geographique: FieldRef<"ressources_eau", 'String'>
+    readonly epci: FieldRef<"ressources_eau", 'String'>
+    readonly libelle_epci: FieldRef<"ressources_eau", 'String'>
+    readonly departement: FieldRef<"ressources_eau", 'String'>
+    readonly region: FieldRef<"ressources_eau", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ressources_eau findUnique
+   */
+  export type ressources_eauFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ressources_eau
+     */
+    select?: ressources_eauSelect<ExtArgs> | null
+    /**
+     * Filter, which ressources_eau to fetch.
+     */
+    where: ressources_eauWhereUniqueInput
+  }
+
+  /**
+   * ressources_eau findUniqueOrThrow
+   */
+  export type ressources_eauFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ressources_eau
+     */
+    select?: ressources_eauSelect<ExtArgs> | null
+    /**
+     * Filter, which ressources_eau to fetch.
+     */
+    where: ressources_eauWhereUniqueInput
+  }
+
+  /**
+   * ressources_eau findFirst
+   */
+  export type ressources_eauFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ressources_eau
+     */
+    select?: ressources_eauSelect<ExtArgs> | null
+    /**
+     * Filter, which ressources_eau to fetch.
+     */
+    where?: ressources_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ressources_eaus to fetch.
+     */
+    orderBy?: ressources_eauOrderByWithRelationInput | ressources_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ressources_eaus.
+     */
+    cursor?: ressources_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ressources_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ressources_eaus.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ressources_eaus.
+     */
+    distinct?: Ressources_eauScalarFieldEnum | Ressources_eauScalarFieldEnum[]
+  }
+
+  /**
+   * ressources_eau findFirstOrThrow
+   */
+  export type ressources_eauFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ressources_eau
+     */
+    select?: ressources_eauSelect<ExtArgs> | null
+    /**
+     * Filter, which ressources_eau to fetch.
+     */
+    where?: ressources_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ressources_eaus to fetch.
+     */
+    orderBy?: ressources_eauOrderByWithRelationInput | ressources_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ressources_eaus.
+     */
+    cursor?: ressources_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ressources_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ressources_eaus.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ressources_eaus.
+     */
+    distinct?: Ressources_eauScalarFieldEnum | Ressources_eauScalarFieldEnum[]
+  }
+
+  /**
+   * ressources_eau findMany
+   */
+  export type ressources_eauFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ressources_eau
+     */
+    select?: ressources_eauSelect<ExtArgs> | null
+    /**
+     * Filter, which ressources_eaus to fetch.
+     */
+    where?: ressources_eauWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ressources_eaus to fetch.
+     */
+    orderBy?: ressources_eauOrderByWithRelationInput | ressources_eauOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ressources_eaus.
+     */
+    cursor?: ressources_eauWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ressources_eaus from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ressources_eaus.
+     */
+    skip?: number
+    distinct?: Ressources_eauScalarFieldEnum | Ressources_eauScalarFieldEnum[]
+  }
+
+  /**
+   * ressources_eau create
+   */
+  export type ressources_eauCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ressources_eau
+     */
+    select?: ressources_eauSelect<ExtArgs> | null
+    /**
+     * The data needed to create a ressources_eau.
+     */
+    data: XOR<ressources_eauCreateInput, ressources_eauUncheckedCreateInput>
+  }
+
+  /**
+   * ressources_eau createMany
+   */
+  export type ressources_eauCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ressources_eaus.
+     */
+    data: ressources_eauCreateManyInput | ressources_eauCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ressources_eau createManyAndReturn
+   */
+  export type ressources_eauCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ressources_eau
+     */
+    select?: ressources_eauSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many ressources_eaus.
+     */
+    data: ressources_eauCreateManyInput | ressources_eauCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ressources_eau update
+   */
+  export type ressources_eauUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ressources_eau
+     */
+    select?: ressources_eauSelect<ExtArgs> | null
+    /**
+     * The data needed to update a ressources_eau.
+     */
+    data: XOR<ressources_eauUpdateInput, ressources_eauUncheckedUpdateInput>
+    /**
+     * Choose, which ressources_eau to update.
+     */
+    where: ressources_eauWhereUniqueInput
+  }
+
+  /**
+   * ressources_eau updateMany
+   */
+  export type ressources_eauUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ressources_eaus.
+     */
+    data: XOR<ressources_eauUpdateManyMutationInput, ressources_eauUncheckedUpdateManyInput>
+    /**
+     * Filter which ressources_eaus to update
+     */
+    where?: ressources_eauWhereInput
+  }
+
+  /**
+   * ressources_eau upsert
+   */
+  export type ressources_eauUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ressources_eau
+     */
+    select?: ressources_eauSelect<ExtArgs> | null
+    /**
+     * The filter to search for the ressources_eau to update in case it exists.
+     */
+    where: ressources_eauWhereUniqueInput
+    /**
+     * In case the ressources_eau found by the `where` argument doesn't exist, create a new ressources_eau with this data.
+     */
+    create: XOR<ressources_eauCreateInput, ressources_eauUncheckedCreateInput>
+    /**
+     * In case the ressources_eau was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ressources_eauUpdateInput, ressources_eauUncheckedUpdateInput>
+  }
+
+  /**
+   * ressources_eau delete
+   */
+  export type ressources_eauDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ressources_eau
+     */
+    select?: ressources_eauSelect<ExtArgs> | null
+    /**
+     * Filter which ressources_eau to delete.
+     */
+    where: ressources_eauWhereUniqueInput
+  }
+
+  /**
+   * ressources_eau deleteMany
+   */
+  export type ressources_eauDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ressources_eaus to delete
+     */
+    where?: ressources_eauWhereInput
+  }
+
+  /**
+   * ressources_eau without action
+   */
+  export type ressources_eauDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ressources_eau
+     */
+    select?: ressources_eauSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -9815,6 +11073,34 @@ export namespace Prisma {
   };
 
   export type Communes_dromScalarFieldEnum = (typeof Communes_dromScalarFieldEnum)[keyof typeof Communes_dromScalarFieldEnum]
+
+
+  export const Ressources_eauScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    LIBELLE_SOUS_CHAMP: 'LIBELLE_SOUS_CHAMP',
+    SOUS_CHAMP: 'SOUS_CHAMP',
+    A2020: 'A2020',
+    A2019: 'A2019',
+    A2018: 'A2018',
+    A2017: 'A2017',
+    A2016: 'A2016',
+    A2015: 'A2015',
+    A2014: 'A2014',
+    A2013: 'A2013',
+    A2012: 'A2012',
+    A2011: 'A2011',
+    A2010: 'A2010',
+    A2009: 'A2009',
+    A2008: 'A2008',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    region: 'region'
+  };
+
+  export type Ressources_eauScalarFieldEnum = (typeof Ressources_eauScalarFieldEnum)[keyof typeof Ressources_eauScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -10680,6 +11966,145 @@ export namespace Prisma {
     coordinates?: StringWithAggregatesFilter<"communes_drom"> | string
     densite_bati?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
     precarite_logement?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
+  }
+
+  export type ressources_eauWhereInput = {
+    AND?: ressources_eauWhereInput | ressources_eauWhereInput[]
+    OR?: ressources_eauWhereInput[]
+    NOT?: ressources_eauWhereInput | ressources_eauWhereInput[]
+    index?: BigIntFilter<"ressources_eau"> | bigint | number
+    code_geographique?: StringFilter<"ressources_eau"> | string
+    LIBELLE_SOUS_CHAMP?: StringNullableFilter<"ressources_eau"> | string | null
+    SOUS_CHAMP?: StringNullableFilter<"ressources_eau"> | string | null
+    A2020?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2019?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2018?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2017?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2016?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2015?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2014?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2013?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2012?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2011?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2010?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2009?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2008?: FloatNullableFilter<"ressources_eau"> | number | null
+    libelle_geographique?: StringNullableFilter<"ressources_eau"> | string | null
+    epci?: StringNullableFilter<"ressources_eau"> | string | null
+    libelle_epci?: StringNullableFilter<"ressources_eau"> | string | null
+    departement?: StringNullableFilter<"ressources_eau"> | string | null
+    region?: FloatNullableFilter<"ressources_eau"> | number | null
+  }
+
+  export type ressources_eauOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    LIBELLE_SOUS_CHAMP?: SortOrderInput | SortOrder
+    SOUS_CHAMP?: SortOrderInput | SortOrder
+    A2020?: SortOrderInput | SortOrder
+    A2019?: SortOrderInput | SortOrder
+    A2018?: SortOrderInput | SortOrder
+    A2017?: SortOrderInput | SortOrder
+    A2016?: SortOrderInput | SortOrder
+    A2015?: SortOrderInput | SortOrder
+    A2014?: SortOrderInput | SortOrder
+    A2013?: SortOrderInput | SortOrder
+    A2012?: SortOrderInput | SortOrder
+    A2011?: SortOrderInput | SortOrder
+    A2010?: SortOrderInput | SortOrder
+    A2009?: SortOrderInput | SortOrder
+    A2008?: SortOrderInput | SortOrder
+    libelle_geographique?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    departement?: SortOrderInput | SortOrder
+    region?: SortOrderInput | SortOrder
+  }
+
+  export type ressources_eauWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: ressources_eauWhereInput | ressources_eauWhereInput[]
+    OR?: ressources_eauWhereInput[]
+    NOT?: ressources_eauWhereInput | ressources_eauWhereInput[]
+    code_geographique?: StringFilter<"ressources_eau"> | string
+    LIBELLE_SOUS_CHAMP?: StringNullableFilter<"ressources_eau"> | string | null
+    SOUS_CHAMP?: StringNullableFilter<"ressources_eau"> | string | null
+    A2020?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2019?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2018?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2017?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2016?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2015?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2014?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2013?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2012?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2011?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2010?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2009?: FloatNullableFilter<"ressources_eau"> | number | null
+    A2008?: FloatNullableFilter<"ressources_eau"> | number | null
+    libelle_geographique?: StringNullableFilter<"ressources_eau"> | string | null
+    epci?: StringNullableFilter<"ressources_eau"> | string | null
+    libelle_epci?: StringNullableFilter<"ressources_eau"> | string | null
+    departement?: StringNullableFilter<"ressources_eau"> | string | null
+    region?: FloatNullableFilter<"ressources_eau"> | number | null
+  }, "index">
+
+  export type ressources_eauOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    LIBELLE_SOUS_CHAMP?: SortOrderInput | SortOrder
+    SOUS_CHAMP?: SortOrderInput | SortOrder
+    A2020?: SortOrderInput | SortOrder
+    A2019?: SortOrderInput | SortOrder
+    A2018?: SortOrderInput | SortOrder
+    A2017?: SortOrderInput | SortOrder
+    A2016?: SortOrderInput | SortOrder
+    A2015?: SortOrderInput | SortOrder
+    A2014?: SortOrderInput | SortOrder
+    A2013?: SortOrderInput | SortOrder
+    A2012?: SortOrderInput | SortOrder
+    A2011?: SortOrderInput | SortOrder
+    A2010?: SortOrderInput | SortOrder
+    A2009?: SortOrderInput | SortOrder
+    A2008?: SortOrderInput | SortOrder
+    libelle_geographique?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    departement?: SortOrderInput | SortOrder
+    region?: SortOrderInput | SortOrder
+    _count?: ressources_eauCountOrderByAggregateInput
+    _avg?: ressources_eauAvgOrderByAggregateInput
+    _max?: ressources_eauMaxOrderByAggregateInput
+    _min?: ressources_eauMinOrderByAggregateInput
+    _sum?: ressources_eauSumOrderByAggregateInput
+  }
+
+  export type ressources_eauScalarWhereWithAggregatesInput = {
+    AND?: ressources_eauScalarWhereWithAggregatesInput | ressources_eauScalarWhereWithAggregatesInput[]
+    OR?: ressources_eauScalarWhereWithAggregatesInput[]
+    NOT?: ressources_eauScalarWhereWithAggregatesInput | ressources_eauScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"ressources_eau"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"ressources_eau"> | string
+    LIBELLE_SOUS_CHAMP?: StringNullableWithAggregatesFilter<"ressources_eau"> | string | null
+    SOUS_CHAMP?: StringNullableWithAggregatesFilter<"ressources_eau"> | string | null
+    A2020?: FloatNullableWithAggregatesFilter<"ressources_eau"> | number | null
+    A2019?: FloatNullableWithAggregatesFilter<"ressources_eau"> | number | null
+    A2018?: FloatNullableWithAggregatesFilter<"ressources_eau"> | number | null
+    A2017?: FloatNullableWithAggregatesFilter<"ressources_eau"> | number | null
+    A2016?: FloatNullableWithAggregatesFilter<"ressources_eau"> | number | null
+    A2015?: FloatNullableWithAggregatesFilter<"ressources_eau"> | number | null
+    A2014?: FloatNullableWithAggregatesFilter<"ressources_eau"> | number | null
+    A2013?: FloatNullableWithAggregatesFilter<"ressources_eau"> | number | null
+    A2012?: FloatNullableWithAggregatesFilter<"ressources_eau"> | number | null
+    A2011?: FloatNullableWithAggregatesFilter<"ressources_eau"> | number | null
+    A2010?: FloatNullableWithAggregatesFilter<"ressources_eau"> | number | null
+    A2009?: FloatNullableWithAggregatesFilter<"ressources_eau"> | number | null
+    A2008?: FloatNullableWithAggregatesFilter<"ressources_eau"> | number | null
+    libelle_geographique?: StringNullableWithAggregatesFilter<"ressources_eau"> | string | null
+    epci?: StringNullableWithAggregatesFilter<"ressources_eau"> | string | null
+    libelle_epci?: StringNullableWithAggregatesFilter<"ressources_eau"> | string | null
+    departement?: StringNullableWithAggregatesFilter<"ressources_eau"> | string | null
+    region?: FloatNullableWithAggregatesFilter<"ressources_eau"> | number | null
   }
 
   export type inconfort_thermiqueCreateInput = {
@@ -11572,6 +12997,181 @@ export namespace Prisma {
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
+  export type ressources_eauCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    LIBELLE_SOUS_CHAMP?: string | null
+    SOUS_CHAMP?: string | null
+    A2020?: number | null
+    A2019?: number | null
+    A2018?: number | null
+    A2017?: number | null
+    A2016?: number | null
+    A2015?: number | null
+    A2014?: number | null
+    A2013?: number | null
+    A2012?: number | null
+    A2011?: number | null
+    A2010?: number | null
+    A2009?: number | null
+    A2008?: number | null
+    libelle_geographique?: string | null
+    epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    region?: number | null
+  }
+
+  export type ressources_eauUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    LIBELLE_SOUS_CHAMP?: string | null
+    SOUS_CHAMP?: string | null
+    A2020?: number | null
+    A2019?: number | null
+    A2018?: number | null
+    A2017?: number | null
+    A2016?: number | null
+    A2015?: number | null
+    A2014?: number | null
+    A2013?: number | null
+    A2012?: number | null
+    A2011?: number | null
+    A2010?: number | null
+    A2009?: number | null
+    A2008?: number | null
+    libelle_geographique?: string | null
+    epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    region?: number | null
+  }
+
+  export type ressources_eauUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    LIBELLE_SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
+    SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
+    A2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2019?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2018?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2017?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2016?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2015?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2013?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2012?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2011?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2010?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2008?: NullableFloatFieldUpdateOperationsInput | number | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type ressources_eauUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    LIBELLE_SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
+    SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
+    A2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2019?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2018?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2017?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2016?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2015?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2013?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2012?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2011?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2010?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2008?: NullableFloatFieldUpdateOperationsInput | number | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type ressources_eauCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    LIBELLE_SOUS_CHAMP?: string | null
+    SOUS_CHAMP?: string | null
+    A2020?: number | null
+    A2019?: number | null
+    A2018?: number | null
+    A2017?: number | null
+    A2016?: number | null
+    A2015?: number | null
+    A2014?: number | null
+    A2013?: number | null
+    A2012?: number | null
+    A2011?: number | null
+    A2010?: number | null
+    A2009?: number | null
+    A2008?: number | null
+    libelle_geographique?: string | null
+    epci?: string | null
+    libelle_epci?: string | null
+    departement?: string | null
+    region?: number | null
+  }
+
+  export type ressources_eauUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    LIBELLE_SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
+    SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
+    A2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2019?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2018?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2017?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2016?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2015?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2013?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2012?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2011?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2010?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2008?: NullableFloatFieldUpdateOperationsInput | number | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type ressources_eauUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    LIBELLE_SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
+    SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
+    A2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2019?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2018?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2017?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2016?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2015?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2013?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2012?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2011?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2010?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    A2008?: NullableFloatFieldUpdateOperationsInput | number | null
+    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
+    epci?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
+    departement?: NullableStringFieldUpdateOperationsInput | string | null
+    region?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -12332,6 +13932,117 @@ export namespace Prisma {
     precarite_logement?: SortOrder
   }
 
+  export type ressources_eauCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    LIBELLE_SOUS_CHAMP?: SortOrder
+    SOUS_CHAMP?: SortOrder
+    A2020?: SortOrder
+    A2019?: SortOrder
+    A2018?: SortOrder
+    A2017?: SortOrder
+    A2016?: SortOrder
+    A2015?: SortOrder
+    A2014?: SortOrder
+    A2013?: SortOrder
+    A2012?: SortOrder
+    A2011?: SortOrder
+    A2010?: SortOrder
+    A2009?: SortOrder
+    A2008?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type ressources_eauAvgOrderByAggregateInput = {
+    index?: SortOrder
+    A2020?: SortOrder
+    A2019?: SortOrder
+    A2018?: SortOrder
+    A2017?: SortOrder
+    A2016?: SortOrder
+    A2015?: SortOrder
+    A2014?: SortOrder
+    A2013?: SortOrder
+    A2012?: SortOrder
+    A2011?: SortOrder
+    A2010?: SortOrder
+    A2009?: SortOrder
+    A2008?: SortOrder
+    region?: SortOrder
+  }
+
+  export type ressources_eauMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    LIBELLE_SOUS_CHAMP?: SortOrder
+    SOUS_CHAMP?: SortOrder
+    A2020?: SortOrder
+    A2019?: SortOrder
+    A2018?: SortOrder
+    A2017?: SortOrder
+    A2016?: SortOrder
+    A2015?: SortOrder
+    A2014?: SortOrder
+    A2013?: SortOrder
+    A2012?: SortOrder
+    A2011?: SortOrder
+    A2010?: SortOrder
+    A2009?: SortOrder
+    A2008?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type ressources_eauMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    LIBELLE_SOUS_CHAMP?: SortOrder
+    SOUS_CHAMP?: SortOrder
+    A2020?: SortOrder
+    A2019?: SortOrder
+    A2018?: SortOrder
+    A2017?: SortOrder
+    A2016?: SortOrder
+    A2015?: SortOrder
+    A2014?: SortOrder
+    A2013?: SortOrder
+    A2012?: SortOrder
+    A2011?: SortOrder
+    A2010?: SortOrder
+    A2009?: SortOrder
+    A2008?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type ressources_eauSumOrderByAggregateInput = {
+    index?: SortOrder
+    A2020?: SortOrder
+    A2019?: SortOrder
+    A2018?: SortOrder
+    A2017?: SortOrder
+    A2016?: SortOrder
+    A2015?: SortOrder
+    A2014?: SortOrder
+    A2013?: SortOrder
+    A2012?: SortOrder
+    A2011?: SortOrder
+    A2010?: SortOrder
+    A2009?: SortOrder
+    A2008?: SortOrder
+    region?: SortOrder
+  }
+
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number
     increment?: bigint | number
@@ -12590,6 +14301,10 @@ export namespace Prisma {
      * @deprecated Use communes_dromDefaultArgs instead
      */
     export type communes_dromArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = communes_dromDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ressources_eauDefaultArgs instead
+     */
+    export type ressources_eauArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ressources_eauDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
