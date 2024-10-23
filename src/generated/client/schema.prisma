@@ -155,3 +155,18 @@ model gestion_risques {
   @@index([index], map: "ix_gestion_risques_index")
   @@schema("databases")
 }
+
+model communes_drom {
+  pk                 Int                     @id @default(autoincrement())
+  code_commune       String                  @db.VarChar
+  libelle_commune    String                  @db.VarChar
+  epci               String                  @db.VarChar
+  libelle_epci       String                  @db.VarChar
+  coordinates        String                  @db.VarChar
+  densite_bati       Float?
+  precarite_logement Float?
+  geometry           Unsupported("geometry")
+
+  @@index([geometry], map: "communes_drom_geometry_geom_idx", type: Gist)
+  @@schema("postgis")
+}

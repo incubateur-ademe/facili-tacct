@@ -92,12 +92,12 @@ export type CollectivitesSearchbar = {
 export type CarteCommunes = {
   code_commune: string;
   coordinates: string;
-  densite_bati: number;
+  densite_bati?: number;
   epci: string;
   geometry: string;
   libelle_commune: string;
   libelle_epci: string;
-  precarite_logement: number;
+  precarite_logement?: number;
   catnat?: Object;
 };
 

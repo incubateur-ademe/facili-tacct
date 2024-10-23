@@ -18,11 +18,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 5.20.0
- * Query Engine version: 06fc58a368dc7be9fbbbe894adf8d445d208c284
+ * Query Engine version: bf0e5e8a04cada8225617067eaa03d041e2bba36
  */
 Prisma.prismaVersion = {
   client: "5.20.0",
-  engine: "06fc58a368dc7be9fbbbe894adf8d445d208c284"
+  engine: "bf0e5e8a04cada8225617067eaa03d041e2bba36"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -244,6 +244,17 @@ exports.Prisma.Gestion_risquesScalarFieldEnum = {
   region: 'region'
 };
 
+exports.Prisma.Communes_dromScalarFieldEnum = {
+  pk: 'pk',
+  code_commune: 'code_commune',
+  libelle_commune: 'libelle_commune',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  coordinates: 'coordinates',
+  densite_bati: 'densite_bati',
+  precarite_logement: 'precarite_logement'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -267,7 +278,8 @@ exports.Prisma.ModelName = {
   collectivites_searchbar: 'collectivites_searchbar',
   biodiversite: 'biodiversite',
   spatial_ref_sys: 'spatial_ref_sys',
-  gestion_risques: 'gestion_risques'
+  gestion_risques: 'gestion_risques',
+  communes_drom: 'communes_drom'
 };
 
 /**
