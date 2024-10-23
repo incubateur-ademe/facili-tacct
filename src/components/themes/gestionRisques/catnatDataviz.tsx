@@ -36,6 +36,7 @@ const CatnatDataViz = (props: Props) => {
   } = props;
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo")!;
+
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.catnatGraphTitleWrapper}>
