@@ -58,7 +58,7 @@ export const LegendCatnat = (props: Props) => {
         max > 5 ? colors[typeRisqueValue].map((color, index) => {
           return (
             <div className={styles.legendItem} key={index} >
-              <div className={styles.legendColor} style={{ backgroundColor: color, opacity:"0.6" }}></div>
+              <div className={styles.legendColor} style={{ backgroundColor: color, opacity:"1" }}></div>
               {
                 index === 0 ? <p>&#x2265;{Math.round((4/5) * max)}</p> :
                 index === 1 ? <p>{Math.round((4/5) * max)}-{Math.round((3/5) * max)}</p> :
@@ -71,7 +71,7 @@ export const LegendCatnat = (props: Props) => {
         }) : colors[typeRisqueValue].slice(0, max).map((color, index) => {
           return (
             <div className={styles.legendItem} key={index} >
-              <div className={styles.legendColor} style={{ backgroundColor: color, opacity:"0.6" }}></div>
+              <div className={styles.legendColor} style={{ backgroundColor: color, opacity:"1" }}></div>
               <p>{max - index}</p> 
             </div>
           );
