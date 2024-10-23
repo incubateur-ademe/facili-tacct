@@ -8,38 +8,11 @@ import usine_icon_black from "@/assets/icons/themes/usine_icon_black.svg";
 import vagues_icon_black from "@/assets/icons/themes/vagues_icon_black.svg";
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { RessourcesEau } from "@/lib/postgres/models";
+import { SumByKey } from "@/lib/utils/reusableFunctions/sumByKey";
+import { Box, Slider } from "@mui/material";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import styles from "./ressourcesEau.module.scss";
-
-const data = [
-  {
-    titre: "Agriculture",
-    icon: <Image src={tracteur_icon_black} alt="" />,
-  },
-  {
-    titre: "Eau potable",
-    icon: <Image src={robinet_icon_black} alt="" />,
-  },
-  {
-    titre: "Industrie et autres usages économiques",
-    icon: <Image src={usine_icon_black} alt="" />,
-  },
-  {
-    titre: "Refroidissement des centrales électriques",
-    icon: <Image src={flocon_icon_black} alt="" />,
-  },
-  {
-    titre: "Alimentation des canaux",
-    icon: <Image src={vagues_icon_black} alt="" />,
-  },
-  {
-    titre: "Production d'électricité (barrages hydro-électriques)",
-    icon: <Image src={eclair_icon_black} alt="" />,
-  }
-]
-
-
 
 export const PrelevementEau = (props: {
   data: Array<{
@@ -56,7 +29,42 @@ export const PrelevementEau = (props: {
   const codgeo = searchParams.get("codgeo")!;
   const codepci = searchParams.get("codepci")!;
 
-  console.log("ressourcesEau", ressourcesEau);
+  const data = [
+    {
+      titre: "Agriculture",
+      icon: <Image src={tracteur_icon_black} alt="" />,
+      sum: SumByKey(ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), "A2020"),
+    },
+    {
+      titre: "Eau potable",
+      icon: <Image src={robinet_icon_black} alt="" />,
+      sum: SumByKey(ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("eau potable")), "A2020"),
+    },
+    {
+      titre: "Industrie et autres usages économiques",
+      icon: <Image src={usine_icon_black} alt="" />,
+      sum: SumByKey(ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie et autres usages économiques")), "A2020"),
+    },
+    {
+      titre: "Refroidissement des centrales électriques",
+      icon: <Image src={flocon_icon_black} alt="" />,
+      sum: SumByKey(ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), "A2020"),
+    },
+    {
+      titre: "Alimentation des canaux",
+      icon: <Image src={vagues_icon_black} alt="" />,
+      sum: SumByKey(ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), "A2020"),
+    },
+    {
+      titre: "Production d'électricité (barrages hydro-électriques)",
+      icon: <Image src={eclair_icon_black} alt="" />,
+      sum: SumByKey(ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), "A2020"),
+    },
+  ];
+
+  const total = SumByKey(ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("total")), "A2020");
+
+
   return (
     <>
       {1 === 1 ? (
@@ -91,13 +99,24 @@ export const PrelevementEau = (props: {
                 <b>Titre</b>
               </p>
               <div className={styles.prelevementEauWrapper}>
-                <div className={styles.sliderDataWrapper}>
+                <div className={styles.slidersWrapper}>
                   {
                     data.map((item, index) => {
                       return (
-                        <div key={index} className={styles.sliderDataItem}>
+                        <div key={index} className={styles.sliderDataWrapper}>
                           {item.icon}
                           <p>{item.titre}</p>
+                          <Box sx={{width: "300px"}} >
+                            <Slider
+                              sx={{ flexGrow: 1 }}
+                              value={item.sum}
+                              valueLabelDisplay="off"
+                              max={total}
+                              min={0}
+                            />
+                          </Box>
+                          <p>{(100 * item.sum / total).toFixed(2)}%</p>
+                          <p>{(item.sum).toFixed(0)} m3</p>
                         </div>
                       )
                     })
