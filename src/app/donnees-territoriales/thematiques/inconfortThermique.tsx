@@ -2,7 +2,7 @@ import { Loader } from '@/components/loader';
 import { NoticeComp } from '@/dsfr/base/Notice';
 import { GetCommunes } from '@/lib/queries/cartographie';
 import { GetCollectivite } from '@/lib/queries/searchBar';
-import { GetInconfortThermique } from '@/lib/queries/thematiques';
+import { GetInconfortThermiqueDepartment } from '@/lib/queries/thematiques';
 import { themes } from "@/lib/utils/themes";
 import dynamic from 'next/dynamic';
 import styles from "../donnees.module.scss";
@@ -16,13 +16,12 @@ const InconfortThermique = async (searchParams: SearchParams) => {
   const theme = themes.inconfortThermique;
   const codepci = searchParams.searchParams.codepci;
   const codgeo = searchParams.searchParams.codgeo;
-  const dbInconfortThermique = codgeo ? await GetInconfortThermique(codgeo) 
-    : codepci ? await GetInconfortThermique(codepci) 
-    : void 0;
+  const dbInconfortThermique = await GetInconfortThermiqueDepartment(codepci);
   const collectivite = codgeo ? await GetCollectivite(codgeo) 
     : codepci ? await GetCollectivite(codepci) 
     : void 0;
   const carteCommunes = await GetCommunes(codepci);
+  // const departement = !codgeo ? await GetInconfortThermiqueDepartment(codepci) : [];
 
   return (
     <div>
@@ -33,6 +32,7 @@ const InconfortThermique = async (searchParams: SearchParams) => {
           inconfortThermique={dbInconfortThermique!}
           carteCommunes={carteCommunes}
           collectivite={collectivite!}
+          // departement={departement}
         />
       </div>
     </div>
