@@ -35,7 +35,7 @@ export const Catnat = (props: {
   const codepci = searchParams.get("codepci")!;
   const dataByCodeGeographique = CountOccByIndex<GenericObject>(
     gestionRisques, "code_geographique", "lib_risque_jo").map(el => {
-      const sum = Sum(Object.values(el).filter(item => typeof item === "number"))
+      const sum = Sum(Object.values(el).filter(item => typeof item === "number") as number[]);
       return {
         ...el as DataByCodeGeographique,
         sumCatnat: sum,
