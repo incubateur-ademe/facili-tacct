@@ -18,7 +18,7 @@ const colors: { [key: string]: string[] } =
     "Retrait-gonflement des argiles": ["#F8E0F8", "#DB7BDD", "#BB43BD", "#89078E", "#560057"],
     "Cyclones / Tempêtes": ["#DAFDFF", "#5EEDF3", "#00C2CC", "#00949D", "#005055"],
     "Grêle / neige": ["#EBFDF6", "#6AEEC6", "#00C190", "#009770", "#004F3D"],
-    "Avalanches": ["#E9E2FA", "#A67FE1", "#7A49BE", "#5524A0", "#270757"],
+    "Avalanche": ["#E9E2FA", "#A67FE1", "#7A49BE", "#5524A0", "#270757"],
   };
 
 const getIntegersBetweenFloats = (minValue: number, maxValue: number) => {
@@ -33,6 +33,16 @@ const getIntegersBetweenFloats = (minValue: number, maxValue: number) => {
   }
   return list;
 }
+
+const LegendBlock: React.FC<{ color: string, value: number }> = ({ color, value }) => {
+  return (
+    <div className={styles.legendItem}>
+      <div className={styles.legendColor} style={{ backgroundColor: color, opacity:"1" }}></div>
+      <p>{value}</p>
+    </div>
+  );
+};
+
 
 export const LegendCatnat = (props: Props) => {
   const { typeRisqueValue, carteCommunes } = props;
@@ -66,7 +76,12 @@ export const LegendCatnat = (props: Props) => {
       const maxValue = Math.max(...carteCommunes.map((el: any) => el.properties.catnat?.["Grêle / neige"] ? el.properties.catnat?.["Grêle / neige"] : 0));
       const minValue = Math.min(...carteCommunes.map((el: any) => el.properties.catnat?.["Grêle / neige"] ? el.properties.catnat?.["Grêle / neige"] : 0));
       return [minValue, maxValue];
-    } else {
+    } else if (typeRisqueValue === "Avalanche") {
+      const maxValue = Math.max(...carteCommunes.map((el: any) => el.properties.catnat?.Avalanche ? el.properties.catnat?.Avalanche : 0));
+      const minValue = Math.min(...carteCommunes.map((el: any) => el.properties.catnat?.Avalanche ? el.properties.catnat?.Avalanche : 0));
+      return [minValue, maxValue];
+    }
+    else {
       return [0, 0];
     }
   }
@@ -93,14 +108,35 @@ export const LegendCatnat = (props: Props) => {
               }
             </div>
           );
-        }) : colors[typeRisqueValue].slice(0, minMax[1]).map((color, index) => {
-          return (
-            <div className={styles.legendItem} key={index} >
-              <div className={styles.legendColor} style={{ backgroundColor: color, opacity:"1" }}></div>
-              <p>{index + 1}</p> 
-            </div>
-          );
-        })
+        }) : minMax[1] === 1 ? (
+            <LegendBlock color={colors[typeRisqueValue][2]} value={minMax[1]} />         
+        ) : minMax[1] === 2 ? (
+          <>
+            <LegendBlock color={colors[typeRisqueValue][1]} value={1} />
+            <LegendBlock color={colors[typeRisqueValue][3]} value={2} />  
+          </> 
+        ) : minMax[1] === 3 ? (
+          <>
+            <LegendBlock color={colors[typeRisqueValue][0]} value={1} />
+            <LegendBlock color={colors[typeRisqueValue][2]} value={2} />
+            <LegendBlock color={colors[typeRisqueValue][4]} value={3} />
+          </>
+        ) : minMax[1] === 4 ? (
+          <>
+            <LegendBlock color={colors[typeRisqueValue][0]} value={1} />
+            <LegendBlock color={colors[typeRisqueValue][2]} value={2} />
+            <LegendBlock color={colors[typeRisqueValue][3]} value={3} />
+            <LegendBlock color={colors[typeRisqueValue][4]} value={4} />
+          </>
+        ) : (
+          <>
+            <LegendBlock color={colors[typeRisqueValue][0]} value={1} />
+            <LegendBlock color={colors[typeRisqueValue][1]} value={2} />
+            <LegendBlock color={colors[typeRisqueValue][2]} value={3} />
+            <LegendBlock color={colors[typeRisqueValue][3]} value={4} />
+            <LegendBlock color={colors[typeRisqueValue][4]} value={5} />
+          </>
+        )
       }
     </div>
   );

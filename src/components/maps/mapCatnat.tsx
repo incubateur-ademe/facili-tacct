@@ -23,7 +23,7 @@ const colors: { [key: string]: string[] } =
     "Retrait-gonflement des argiles": ["#F8E0F8", "#DB7BDD", "#BB43BD", "#89078E", "#560057"],
     "Cyclones / Tempêtes": ["#DAFDFF", "#5EEDF3", "#00C2CC", "#00949D", "#005055"],
     "Grêle / neige": ["#EBFDF6", "#6AEEC6", "#00C190", "#009770", "#004F3D"],
-    "Avalanches": ["#E9E2FA", "#A67FE1", "#7A49BE", "#5524A0", "#270757"],
+    "Avalanche": ["#E9E2FA", "#A67FE1", "#7A49BE", "#5524A0", "#270757"],
 };
 
 const getCentroid = (arr: number[][]) => {
@@ -53,9 +53,15 @@ const getColor = (d: number, max: number, typeCatnat: string) => {
       d >= ((2/5) * max) ? colorPalette[2] : 
       d >= ((1/5) * max) ? colorPalette[1] :
       colorPalette[0]
-    ) : (
-      colorPalette[d-1]
-    )
+    ) : max === 1 ? (
+      colorPalette[2]
+    ) : max === 2 ? (
+      d === 1 ? colorPalette[1] : colorPalette[3]
+    ) : max === 3 ? (
+      d === 1 ? colorPalette[0] : d === 2 ? colorPalette[2] : colorPalette[4]
+    ) : max === 4 ? (
+      d === 1 ? colorPalette[0] : d === 2 ? colorPalette[2] : d === 3 ? colorPalette[3] : colorPalette[4]
+    ) : colorPalette[d-1]
   )
 }
 

@@ -5,13 +5,13 @@ import { CountOccByIndex } from "@/lib/utils/reusableFunctions/occurencesCount";
 import { Any } from "@/lib/utils/types";
 
 const colors: { [key: string]: string } = {
-  'Inondations': '#206EB4',
-  'Sécheresse': '#FF7700',
-  'Mouvements de terrain': '#BE5415',
-  'Retrait-gonflement des argiles': '#FFBC5C',
-  'Cyclones / Tempêtes': '#82815A',
-  'Grêle / neige': '#00A302',
-  'Avalanches': '#723AA0',
+  'Inondations': '#009ADC',
+  'Sécheresse': '#FFCF5E',
+  'Mouvements de terrain': '#F66E19',
+  'Retrait-gonflement des argiles': '#BB43BD',
+  'Cyclones / Tempêtes': '#00C2CC',
+  'Grêle / neige': '#00C190',
+  'Avalanche': '#7A49BE',
 };
 
 export const BarChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
