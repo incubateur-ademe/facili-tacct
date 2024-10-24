@@ -16,14 +16,14 @@ import { GraphDataNotFound } from "../graph-data-not-found";
 
 const colors: { [key: string]: string[] } = 
   {
-    "Tous types": ["#F60000", "#FF5B37", "#FF8966", "#FFB297", "#FFD8CB"],
-    "Inondations": ["#206EB4", "#588AC7", "#82A7D9", "#A9C4EC", "#D0E3FF"],
-    "Sécheresse": ["#FF7700", "#FF9141", "#FFAA6D", "#FFC298", "#FFDAC3"],
-    "Mouvements de terrain": ["#BE5415", "#D27641", "#E3976C", "#F2B897", "#FFFF8C"],
-    "Retrait-gonflement des argiles": ["#FFBC5C", "#FCCE78", "#FBDE97", "#FBECB6", "#FFFAD6"],
-    "Cyclones / Tempêtes": ["#82815A", "#A09F66", "#BFBE73", "#DEDE7F", "#F4F38A"],
-    "Grêle / neige": ["#00A302", "#56B544", "#83C770", "#ABD99B", "#D1EAC7"],
-    "Avalanches": ["#723AA0", "#9361B7", "#B289CF", "#D2B1E6", "#F1DBFE"],
+    "Tous types": ["#FFECEE", "#FF9699", "#E8323B", "#B5000E", "#680000"],
+    "Inondations": ["#D8EFFA", "#6EC7F7", "#009ADC", "#0072B5", "#003F70"],
+    "Sécheresse": ["#FFFBE8", "#FEE29C", "#FFCF5E", "#D19800", "#533B00"],
+    "Mouvements de terrain": ["#FFEEE5", "#FFAF84", "#F66E19", "#B64800", "#5E2000"],
+    "Retrait-gonflement des argiles": ["#F8E0F8", "#DB7BDD", "#BB43BD", "#89078E", "#560057"],
+    "Cyclones / Tempêtes": ["#DAFDFF", "#5EEDF3", "#00C2CC", "#00949D", "#005055"],
+    "Grêle / neige": ["#EBFDF6", "#6AEEC6", "#00C190", "#009770", "#004F3D"],
+    "Avalanches": ["#E9E2FA", "#A67FE1", "#7A49BE", "#5524A0", "#270757"],
 };
 
 const getCentroid = (arr: number[][]) => {
@@ -47,11 +47,15 @@ const getCoordinates = (coords: number[][][]) => {
 const getColor = (d: number, max: number, typeCatnat: string) => {
   const colorPalette = colors[typeCatnat];
   return (
-    d > Math.round((4/5) * max) ? colorPalette[0] : 
-    d > Math.round((3/5) * max) ? colorPalette[1] : 
-    d > Math.round((2/5) * max) ? colorPalette[2] : 
-    d > Math.round((1/5) * max) ? colorPalette[3] :
-    colorPalette[4]
+    max > 5 ? (
+      d >= ((4/5) * max) ? colorPalette[4] : 
+      d >= ((3/5) * max) ? colorPalette[3] : 
+      d >= ((2/5) * max) ? colorPalette[2] : 
+      d >= ((1/5) * max) ? colorPalette[1] :
+      colorPalette[0]
+    ) : (
+      colorPalette[d-1]
+    )
   )
 }
 
@@ -121,7 +125,6 @@ export const MapCatnat = (props: {
     const catnat = layer.feature && "properties" in layer.feature ? layer.feature.properties.catnat : undefined;
     // const newArray = array.map(({dropAttr1, dropAttr2, ...keepAttrs}) => keepAttrs)
     const { indexName, sumCatnat, ...restCatnat } = catnat || {};
-
     layer.setStyle({
       weight: 3,
       color: "#0D2100",
