@@ -47,10 +47,10 @@ const getCoordinates = (coords: number[][][]) => {
 const getColor = (d: number, max: number, typeCatnat: string) => {
   const colorPalette = colors[typeCatnat];
   return (
-    d > (4/5) * max ? colorPalette[0] : 
-    d > (3/5) * max ? colorPalette[1] : 
-    d > (2/5) * max ? colorPalette[2] : 
-    d > (1/5) * max ? colorPalette[3] :
+    d > Math.round((4/5) * max) ? colorPalette[0] : 
+    d > Math.round((3/5) * max) ? colorPalette[1] : 
+    d > Math.round((2/5) * max) ? colorPalette[2] : 
+    d > Math.round((1/5) * max) ? colorPalette[3] :
     colorPalette[4]
   )
 }
@@ -80,10 +80,10 @@ export const MapCatnat = (props: {
         fillOpacity: 1,
       };
     } else {
-      const maxValue = Math.max(...carteCommunes.map(el => el.properties.catnat?.[typeRisqueValue] ? el.properties.catnat?.[typeRisqueValue] : 0));
+      const maxValue = Math.max(...carteCommunes.map(el => el.properties.catnat?.[typeRisqueValue] ? el.properties.catnat?.[typeRisqueValue] as number : 0));
       return {
         fillColor: typedFeature?.properties.catnat?.[typeRisqueValue] ? 
-          getColor(typedFeature?.properties.catnat?.[typeRisqueValue], maxValue, typeRisqueValue) : "transparent",
+          getColor(typedFeature?.properties.catnat?.[typeRisqueValue] as number, maxValue, typeRisqueValue) : "transparent",
         weight: 1,
         opacity: 1,
         color: "#161616",

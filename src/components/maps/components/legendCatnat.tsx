@@ -11,14 +11,14 @@ interface Props {
 
 const colors: { [key: string]: string[] } = 
   {
-    "Tous types": ["#F60000", "#FF5B37", "#FF8966", "#FFB297", "#FFD8CB"],
-    "Inondations": ["#206EB4", "#588AC7", "#82A7D9", "#A9C4EC", "#D0E3FF"],
-    "Sécheresse": ["#FF7700", "#FF9141", "#FFAA6D", "#FFC298", "#FFDAC3"],
-    "Mouvements de terrain": ["#BE5415", "#D27641", "#E3976C", "#F2B897", "#FFFF8C"],
-    "Retrait-gonflement des argiles": ["#FFBC5C", "#FCCE78", "#FBDE97", "#FBECB6", "#FFFAD6"],
-    "Cyclones / Tempêtes": ["#82815A", "#A09F66", "#BFBE73", "#DEDE7F", "#F4F38A"],
-    "Grêle / neige": ["#00A302", "#56B544", "#83C770", "#ABD99B", "#D1EAC7"],
-    "Avalanches": ["#723AA0", "#9361B7", "#B289CF", "#D2B1E6", "#F1DBFE"],
+    "Tous types": ["#FFD8CB", "#FFB297", "#FF8966", "#FF5B37", "#F60000"],
+    "Inondations": ["#D0E3FF", "#A9C4EC", "#82A7D9", "#588AC7", "#206EB4"],
+    "Sécheresse": ["#FFDAC3", "#FFC298", "#FFAA6D", "#FF9141", "#FF7700"],
+    "Mouvements de terrain": ["#FFFF8C", "#F2B897", "#E3976C", "#D27641", "#BE5415"],
+    "Retrait-gonflement des argiles": ["#FFFAD6", "#FBECB6", "#FBDE97", "#FCCE78", "#FFBC5C"],
+    "Cyclones / Tempêtes": ["#F4F38A", "#DEDE7F", "#BFBE73", "#A09F66", "#82815A"],
+    "Grêle / neige": ["#D1EAC7", "#ABD99B", "#83C770", "#56B544", "#00A302"],
+    "Avalanches": ["#F1DBFE", "#D2B1E6", "#B289CF", "#9361B7", "#723AA0"],
   };
 
 export const LegendCatnat = (props: Props) => {
@@ -51,6 +51,10 @@ export const LegendCatnat = (props: Props) => {
     }
   }
   const max = maxValue();
+  const step0 = Math.round((1/5) * max);
+  const step1 = Math.round((2/5) * max);
+  const step2 = Math.round((3/5) * max);
+  const step3 = Math.round((4/5) * max);
 
   return (
     <div className={styles.legendItemsWrapper}>
@@ -60,11 +64,11 @@ export const LegendCatnat = (props: Props) => {
             <div className={styles.legendItem} key={index} >
               <div className={styles.legendColor} style={{ backgroundColor: color, opacity:"1" }}></div>
               {
-                index === 0 ? <p>&#x2265;{Math.round((4/5) * max)}</p> :
-                index === 1 ? <p>{Math.round((4/5) * max)}-{Math.round((3/5) * max)}</p> :
-                index === 2 ? <p>{Math.round((3/5) * max)}-{Math.round((2/5) * max)}</p> :
-                index === 3 ? <p>{Math.round((2/5) * max)}-{Math.round((1/5) * max)}</p> :
-                <p>&lt;{Math.round((1/5) * max)}</p>
+                index === 0 ? <p>&#8804;{step0}</p> :
+                index === 1 ? (step0 + 1 === step1 ? <p>{step1}</p> : <p>{step0 + 1}-{step1}</p>) :
+                index === 2 ? (step1 + 1 === step2 ? <p>{step2}</p> : <p>{step1 + 1}-{step2}</p>) :
+                index === 3 ? (step2 + 1 === step3 ? <p>{step3}</p> : <p>{step2 + 1}-{step3}</p>) :
+                <p>&#x2265;{step3 + 1}</p>
               }
             </div>
           );
