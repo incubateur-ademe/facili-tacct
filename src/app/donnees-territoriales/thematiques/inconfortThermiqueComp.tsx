@@ -32,6 +32,7 @@ interface Props {
   carteCommunes: CarteCommunes[];
   inconfortThermique: InconfortThermique[];
   collectivite: CollectivitesSearchbar[];
+  departement?: InconfortThermique[];
 }
 
 interface VegetalisationProps {
@@ -46,7 +47,7 @@ const DynamicVegetalisation = dynamic(() => import("../../../components/themes/i
 const allComps = [
   {
     titre: "Grand âge",
-    Component: ({inconfortThermique, data}: Props & { activeDataTab: string }) => <GrandAgeIsolement inconfortThermique={inconfortThermique} data={data} />,
+    Component: ({inconfortThermique, data, departement}: Props & { activeDataTab: string }) => <GrandAgeIsolement inconfortThermique={inconfortThermique} data={data} departement={departement} />,
   },
   {
     titre: "Fragilité économique",
@@ -74,7 +75,7 @@ const allComps = [
   },
 ];
 
-const PageComp = ({ data, carteCommunes, inconfortThermique, collectivite }: Props) => {
+const PageComp = ({ data, carteCommunes, inconfortThermique, collectivite, departement }: Props) => {
   const [clc, setClc] = useState<CLC[]>();
   const [selectedTabId, setSelectedTabId] = useState("Population");
   const [selectedSubTab, setSelectedSubTab] = useState("Grand âge");
@@ -176,6 +177,7 @@ const PageComp = ({ data, carteCommunes, inconfortThermique, collectivite }: Pro
                     activeDataTab={selectedSubTab}
                     clc={clc || []}
                     collectivite={collectivite}
+                    departement={departement}
                   />
                 );
               })()}
