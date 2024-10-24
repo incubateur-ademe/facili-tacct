@@ -25,6 +25,29 @@ export const GetInconfortThermique = async (code: string): Promise<InconfortTher
   }
 };
 
+export const GetInconfortThermiqueDepartment = async (code: string) => {
+  try {
+    console.time("Query Execution Time INCONFORT DEPARTEMENT");
+    const departement = await PrismaPostgres.inconfort_thermique.findFirst({
+      where: {
+        epci: code,
+      },
+    });
+    const value = await PrismaPostgres.inconfort_thermique.findMany({
+      where: {
+        departement: departement?.departement,
+      },
+    });
+    console.timeEnd("Query Execution Time INCONFORT DEPARTEMENT");
+    return value;;
+  } catch (error) {
+    console.error(error);
+    Sentry.captureException(error);
+    await PrismaPostgres.$disconnect();
+    process.exit(1);
+  }
+};
+
 export const GetGestionRisques = async (code: string): Promise<GestionRisques[]> => {
   try {
     console.time("Query Execution Time GESTIONRISQUES");
