@@ -27,8 +27,12 @@ export const FragiliteEconomique = ({ carteCommunes }: {
     commune ? commune.properties["precarite_logement"] : 0,
   );
 
-  const title =
-    "La précarité énergétique liée au logement concerne les ménages des 3 premiers déciles qui consacrent plus de 8% de leurs revenus aux dépenses énergétiques liées à leur logement (chauffage, eau chaude, et ventilation).";
+  const title = <>
+    <div>La précarité énergétique liée au logement concerne : </div><br></br>
+    <div>- les ménages des 3 premiers déciles(*) c'est-à-dire les 30% de la population ayant les revenus les plus modestes,</div>
+    <div>- parmi ces 30%, les ménages qui consacrent plus de 8% de leurs revenus aux dépenses énergétiques liées à leur logement (chauffage, eau chaude, et ventilation).</div><br></br>
+    <div>(*)Les déciles divisent les revenus de la population en dix parties égales. Dans la modélisation effectuée pour l’ONPE, le 3è décile correspond à des revenus inférieurs à 19 600€ par an.</div>
+  </>
 
   return (
     <>
@@ -40,23 +44,35 @@ export const FragiliteEconomique = ({ carteCommunes }: {
                 <div className={styles.explicationWrapper}>
                   { commune ?
                     <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-                      Dans la commune de {commune.properties.libelle_commune}, la part des ménages qui sont en situation de
-                      précarité énergique logement est de <b>{(100 * precariteCommune).toPrecision(3)}%. </b> 
-                      À l'échelle de l'EPCI, ce taux est de <b>{(100 * precariteLogEpci).toPrecision(3)}%.</b>
+                      La part des ménages en situation de précarité énergique logement sur votre territoire est de <b>{(100 * precariteCommune).toPrecision(3)}%. </b>
+                      Ce taux est de <b>{(100 * precariteLogEpci).toPrecision(3)}%</b> dans votre EPCI.
                     </p>
                     : 
                     <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-                      Dans l'EPCI {communesMap[0]?.properties["libelle_epci"]}, la part des ménages qui sont en situation de
-                      précarité énergique logement est de <b>{(100 * precariteLogEpci).toPrecision(3)}%.</b>
+                      La part des ménages en situation de précarité énergique logement sur votre territoire est de <b>{(100 * precariteLogEpci).toPrecision(3)}%. </b>
                     </p>
                   }
-                  <CustomTooltip title={title} />
+                  <CustomTooltip title={title} texte="D'où vient ce chiffre ?"/>
                 </div>
                 <div className="px-4">
                   <p>
-                    La précarité énergétique liée au logement concerne les ménages des 3 premiers déciles qui consacrent
-                    plus de 8% de leurs revenus aux dépenses énergétiques liées à leur logement (chauffage, eau chaude,
-                    et ventilation).
+                    Les ménages en précarité énergétique doivent faire des choix difficiles : limiter le chauffage, réduire l’utilisation 
+                    de l’eau chaude pour éviter des factures trop élevées. Un logement mal isolé l’hiver sera aussi coûteux à rafraîchir l’été. 
+                  </p>
+                  <p>
+                    Leurs conditions de vie sont directement impactées, avec des conséquences sur leur santé, leur bien-être et leur 
+                    capacité à maintenir une qualité de vie décente. La précarité énergétique n'est pas seulement une question de confort : 
+                    elle est un enjeu de santé publique et de justice sociale. 
+                  </p>
+                  <p>
+                    En 2024 : <br></br>
+                    - <b>55%</b> des Français déclarent avoir souffert d’un excès de chaleur en été.<br></br>
+                    - <b>79 %</b> des Français ont dû restreindre leur chauffage.<br></br><br></br>
+                    En 2023 : <br></br>
+                    - plus d’un million de ménages ont subi une intervention de leur fournisseur d’énergie pour cause d'impayés, une situation qui les expose à une précarité encore plus grande.
+                  </p>
+                  <p>- - - - <br></br>
+                    Protéger les populations précaires des fortes chaleurs est la mesure n°14 du Plan national d’adaptation au changement climatique (PNACC 3).
                   </p>
                 </div>
               </div>
@@ -68,7 +84,7 @@ export const FragiliteEconomique = ({ carteCommunes }: {
                   <Legend data={"precarite_log"} />
                   <Map data={"precarite_log"} carteCommunes={communesMap} />
                   <p style={{padding: "1em", margin: "0"}}>
-                    Source : <b style={{ color: "#0063CB" }}>ONPE</b>
+                    Source : <b style={{ color: "#0063CB" }}>Observation de la précarité énergétique (ONPE), GEODIP</b>
                   </p>
                 </div>
               </div>

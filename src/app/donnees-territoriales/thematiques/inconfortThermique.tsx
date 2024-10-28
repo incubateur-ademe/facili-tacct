@@ -25,7 +25,8 @@ const InconfortThermique = async (searchParams: SearchParams) => {
 
   return (
     <div>
-      <NoticeComp title="Explorez des leviers d'action possibles en réduisant la sensibilité de votre territoire à l'inconfort thermique." />
+      <NoticeComp title="Auparavant occasionnelles (tous les 5 à 10 ans), les canicules se succèdent tous les étés depuis 2015 (à l'exception de 2021).
+        Explorez ici des leviers d'action possibles vous permettant de réduire la sensibilité de votre territoire à l'inconfort thermique." />
       <div className={styles.container}>
         <DynamicPageComp
           data={theme}
