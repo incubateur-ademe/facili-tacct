@@ -32,7 +32,7 @@ const allComps = [
 
 const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState("A déterminer");
-  const [selectedSubTab, setSelectedSubTab] = useState("Stations classées");
+  const [selectedSubTab, setSelectedSubTab] = useState("Prélèvement en eau");
   const searchParams = useSearchParams();
   const codepci = searchParams.get("codepci")!;
   const { isDark } = useIsDark();

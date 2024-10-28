@@ -43,7 +43,6 @@ export const Catnat = (props: {
       }
     }
   )
-  console.log("vdataByCodeGeographique", dataByCodeGeographique)
   const carteCommunesEnriched = carteCommunes.map(el => {
     return {
       ...el,
