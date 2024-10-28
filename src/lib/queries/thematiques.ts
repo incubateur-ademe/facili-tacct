@@ -96,16 +96,14 @@ export const GetBiodiversite = async (code: string): Promise<Biodiversite[]> => 
 export const GetRessourceEau = async (code: string): Promise<RessourcesEau[]> => {
   try {
     console.time("Query Execution Time RESSOURCES EAU");
+    const departement = await PrismaPostgres.ressources_eau.findFirst({
+      where: {
+        epci: code,
+      },
+    });
     const value = await PrismaPostgres.ressources_eau.findMany({
       where: {
-        AND:[
-          { epci: code },
-          {
-            LIBELLE_SOUS_CHAMP: {
-              not: null
-            }
-          }
-        ]
+        departement: departement?.departement,
       },
     });
     console.timeEnd("Query Execution Time RESSOURCES EAU");
