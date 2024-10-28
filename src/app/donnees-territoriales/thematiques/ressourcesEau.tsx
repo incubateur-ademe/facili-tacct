@@ -14,7 +14,6 @@ const RessourcesEau = async (searchParams: SearchParams) => {
   const codepci = searchParams.searchParams.codepci;
   const codgeo = searchParams.searchParams.codgeo;
   const dbRessourcesEau = await GetRessourceEau(codepci);
-
   return (
     <div>
       <div className={styles.container}>
