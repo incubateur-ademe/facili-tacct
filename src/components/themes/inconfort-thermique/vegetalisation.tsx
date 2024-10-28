@@ -35,15 +35,19 @@ const Vegetalisation = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo");
   const codepci = searchParams.get("codepci")!;
-  const vegetalisation = inconfortThermique.map(vegetalisationMapper);
-  const foret_sum = sumProperty(vegetalisation, "clc_3_foret_semiNaturel");
+  const vegetalisationMapped = inconfortThermique.map(vegetalisationMapper);
+  const vegetalisationCommune = codgeo ? vegetalisationMapped.filter(e => e.code_commune === codgeo) : null;
+  const vegetalisationEpci = vegetalisationMapped.filter(e => e.epci === codepci);
+  const vegetalisationDptmt = vegetalisationMapped;
+  const vegetalisationCollectivite = vegetalisationCommune ? vegetalisationCommune : vegetalisationEpci;
+  const foret_sum = sumProperty(vegetalisationCollectivite, "clc_3_foret_semiNaturel");
   const foret_percent =
-    (100 * sumProperty(vegetalisation, "clc_3_foret_semiNaturel")) /
-    (sumProperty(vegetalisation, "clc_1_artificialise") +
-      sumProperty(vegetalisation, "clc_2_agricole") +
-      sumProperty(vegetalisation, "clc_3_foret_semiNaturel") +
-      sumProperty(vegetalisation, "clc_4_humide") +
-      sumProperty(vegetalisation, "clc_5_eau"));
+    (100 * sumProperty(vegetalisationCollectivite, "clc_3_foret_semiNaturel")) /
+    (sumProperty(vegetalisationCollectivite, "clc_1_artificialise") +
+      sumProperty(vegetalisationCollectivite, "clc_2_agricole") +
+      sumProperty(vegetalisationCollectivite, "clc_3_foret_semiNaturel") +
+      sumProperty(vegetalisationCollectivite, "clc_4_humide") +
+      sumProperty(vegetalisationCollectivite, "clc_5_eau"));
 
   const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -57,20 +61,20 @@ const Vegetalisation = (props: {
 
   return (
     <>
-      { vegetalisation ? (
+      { vegetalisationCollectivite ? (
         <div className={styles.container}>
-          {vegetalisation.length ? (
+          {vegetalisationCollectivite.length ? (
             <>
               <div className="w-2/5">
                 <div className={styles.explicationWrapper}>
                   { codgeo ?
                     <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-                      Dans la commune de {vegetalisation[0]?.libelle_geographique}, <b>{foret_percent?.toFixed(1)}%</b> du territoire est de la
+                      Dans la commune de {vegetalisationCollectivite[0]?.libelle_geographique}, <b>{foret_percent?.toFixed(1)}%</b> du territoire est de la
                       forêt ou des espaces semi-naturels. Cela correspond à <b>{foret_sum?.toFixed(1)}</b> hectares.
                     </p>
                     : 
                     <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-                      Dans l'EPCI {vegetalisation[0]?.libelle_epci}, <b>{foret_percent?.toFixed(1)}%</b> du territoire est de la
+                      Dans l'EPCI {vegetalisationCollectivite[0]?.libelle_epci}, <b>{foret_percent?.toFixed(1)}%</b> du territoire est de la
                       forêt ou des espaces semi-naturels. Cela correspond à <b>{foret_sum?.toFixed(1)}</b> hectares.
                     </p>
                   }

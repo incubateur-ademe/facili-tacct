@@ -5,10 +5,11 @@ import Image, { type StaticImageData } from "next/image";
 import CalculatorIcon from "@/assets/icons/calculator_icon_blue.svg";
 
 interface Props {
-  title: string;
+  title: React.ReactNode;
+  texte?: string;
 }
 
-export const CustomTooltip = ({ title }: Props) => {
+export const CustomTooltip = ({ title, texte= "Méthode de calcul" }: Props) => {
   const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
   ))(({ theme }) => ({
@@ -18,6 +19,8 @@ export const CustomTooltip = ({ title }: Props) => {
       fontSize: theme.typography.pxToRem(16),
       boxShadow: "0px 4px 12px 0px #00001229",
       padding: "1em",
+      width: "400px",
+      maxWidth: "400px"
     },
   }));
   return (
@@ -34,7 +37,7 @@ export const CustomTooltip = ({ title }: Props) => {
       >
         <Image src={CalculatorIcon as StaticImageData} alt="" />
         <p style={{ color: "#0063CB", margin: "0" }}>
-          <b>Méthode de calcul</b>
+          <b>{texte}</b>
         </p>
       </div>
     </HtmlTooltip>
