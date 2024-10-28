@@ -1,22 +1,43 @@
-.legend {
-  position: absolute;
-  z-index: 999;
-  right: 3%;
-  bottom: 23%;
-  padding: 14px 0px;
-  box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
-  font-size:12px;
-  background: rgba(0,0,0,0.8);
-  border-radius: 5px;
-  width: 12%;
+.legend-fragilite-economique {
+    position: absolute;
+    z-index: 999;
+    right: 1%;
+    top: 47%;
+    padding: 14px 0px;
+    box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    width: 12%;
 }
 
-.legend > div {
-  color:white;
-  position: relative;
-  display: flex;
-  height: 20px;
-  padding: 0 10px;
+.legend-fragilite-economique > div {
+    color: white;
+    position: relative;
+    display: flex;
+    height: 20px;
+    padding: 0 10px;
+}
+
+.legend-densite-bati {
+    position: absolute;
+    z-index: 999;
+    right: 1%;
+    top: 64%;
+    padding: 14px 0px;
+    box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    width: 12%;
+}
+
+.legend-densite-bati > div {
+    color: white;
+    position: relative;
+    display: flex;
+    height: 20px;
+    padding: 0 10px;
 }
 
 .legendCatnat {
@@ -26,16 +47,16 @@
     bottom: 5%;
     padding: 14px 0px;
     box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
-    font-size:12px;
-    background: rgba(0,0,0,0.8);
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
     width: 12%;
 }
 
 .legendCatnat > div {
-  color:white;
-  position: relative;
-  display: flex;
-  height: 20px;
-  padding: 0 10px;
+    color: white;
+    position: relative;
+    display: flex;
+    height: 20px;
+    padding: 0 10px;
 }

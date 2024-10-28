@@ -1,9 +1,9 @@
+import RangeSlider from "@/components/Slider";
+import SubTabs from "@/components/SubTabs";
 import { BarChartCatnat } from "@/components/charts/catnat/BarChartCatnat";
 import PieChartCatnat from "@/components/charts/catnat/pieChartCatnat";
 import { LegendCatnat } from "@/components/maps/components/legendCatnat";
 import { MapCatnat } from "@/components/maps/mapCatnat";
-import RangeSlider from "@/components/Slider";
-import SubTabs from "@/components/SubTabs";
 import { CommunesIndicateursDto } from "@/lib/dto";
 import { useSearchParams } from "next/navigation";
 import styles from "./gestionRisques.module.scss";
@@ -40,7 +40,7 @@ const CatnatDataViz = (props: Props) => {
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.catnatGraphTitleWrapper}>
-        <h2>Arrêtés CatNat par communes</h2>
+        <h2>Arrêtés catastrophes naturelles</h2>
         <SubTabs data={codgeo ? ["Répartition", "Évolution"] : ["Répartition", "Évolution", "Cartographie"]} defaultTab={datavizTab} setValue={setDatavizTab} />
       </div>
       {
