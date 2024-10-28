@@ -112,7 +112,6 @@ const PrelevementEauDataViz = (props: Props) => {
       .filter((obj) => obj.epci === codepci)
       .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("total")), "A2020");
 
-  console.log(data);
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.prelevementEauGraphTitleWrapper}>
@@ -122,7 +121,7 @@ const PrelevementEauDataViz = (props: Props) => {
       <div className={styles.prelevementEauWrapper}>
       {
         datavizTab === "Répartition" ? (
-          data.sort((a, b) => b.sumCollectivite - a.sumCollectivite).map((item, index) => {
+          data.filter(e => e.sumCollectivite !== 0).sort((a, b) => b.sumCollectivite - a.sumCollectivite).map((item, index) => {
             return (
               <div key={index} className={styles.progressDataWrapper}>
                 <div className={styles.progressDesign}>
