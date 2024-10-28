@@ -47,31 +47,45 @@ const DynamicVegetalisation = dynamic(() => import("../../../components/themes/i
 const allComps = [
   {
     titre: "Grand âge",
-    Component: ({inconfortThermique, data, departement}: Props & { activeDataTab: string }) => <GrandAgeIsolement inconfortThermique={inconfortThermique} data={data} departement={departement} />,
+    Component: (
+      {inconfortThermique, data }: Props & { activeDataTab: string }
+      ) => <GrandAgeIsolement inconfortThermique={inconfortThermique} data={data} />,
   },
   {
     titre: "Fragilité économique",
-    Component: ({carteCommunes}: Props & { activeDataTab: string }) => <FragiliteEconomique carteCommunes={carteCommunes} />,
+    Component: (
+      {carteCommunes}: Props & { activeDataTab: string }
+      ) => <FragiliteEconomique carteCommunes={carteCommunes} />,
   },
   {
     titre: "Travail en extérieur",
-    Component: ({inconfortThermique}: Props & { activeDataTab: string }) => <TravailExterieur inconfortThermique={inconfortThermique} />,
+    Component: (
+      {inconfortThermique}: Props & { activeDataTab: string }
+      ) => <TravailExterieur inconfortThermique={inconfortThermique} />,
   },
   {
     titre: "Age du bâtiment",
-    Component: ({inconfortThermique}: Props & { activeDataTab: string }) => <AgeBati inconfortThermique={inconfortThermique} />,
+    Component: (
+      {inconfortThermique}: Props & { activeDataTab: string }
+      ) => <AgeBati inconfortThermique={inconfortThermique} />,
   },
   {
     titre: "Densité du bâti",
-    Component: ({carteCommunes}: Props & { activeDataTab: string }) => <DensiteBati carteCommunes={carteCommunes} />,
+    Component: (
+      {carteCommunes}: Props & { activeDataTab: string }
+      ) => <DensiteBati carteCommunes={carteCommunes} />,
   },
   {
     titre: "LCZ",
-    Component: ({carteCommunes, collectivite}: Props & { activeDataTab: string }) => <LCZ carteCommunes={carteCommunes} collectivite={collectivite} />,
+    Component: (
+      {carteCommunes, collectivite}: Props & { activeDataTab: string }
+      ) => <LCZ carteCommunes={carteCommunes} collectivite={collectivite} />,
   },
   {
     titre: "Végétalisation",
-    Component: ({clc, inconfortThermique}: Props & VegetalisationProps & { activeDataTab: string }) => <DynamicVegetalisation inconfortThermique={inconfortThermique} clc={clc} />,
+    Component: (
+      {clc, inconfortThermique}: Props & VegetalisationProps & { activeDataTab: string }
+      ) => <DynamicVegetalisation inconfortThermique={inconfortThermique} clc={clc} />,
   },
 ];
 
@@ -107,7 +121,7 @@ const PageComp = ({ data, carteCommunes, inconfortThermique, collectivite, depar
             tabId: "Population",
             label: <TabTooltip 
               selectedTab={selectedTabId} 
-              tooltip="La sensibilité de la population est généralement estimée au regard de facteurs démographique, social ou culturel" 
+              tooltip="Santé et emploi des populations sont des indicateurs de sensibilité aux fortes chaleurs" 
               titre="Population"
             /> 
           },

@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 
 import { Catnat } from "@/components/themes/gestionRisques/catnat";
 import { CarteCommunes, GestionRisques } from "@/lib/postgres/models";
+import { TabTooltip } from "@/lib/utils/TabTooltip";
 import { useStyles } from "tss-react/dsfr";
 import styles from "../donnees.module.scss";
 
@@ -32,7 +33,7 @@ const allComps = [
 ];
 
 const GestionRisquesComp = ({ data, gestionRisques, carteCommunes }: Props) => {
-  const [selectedTabId, setSelectedTabId] = useState("A déterminer");
+  const [selectedTabId, setSelectedTabId] = useState("Arrêtés catastrophes naturelles");
   const [selectedSubTab, setSelectedSubTab] = useState("catnat");
   const searchParams = useSearchParams();
   const codepci = searchParams.get("codepci")!;
@@ -55,8 +56,12 @@ const GestionRisquesComp = ({ data, gestionRisques, carteCommunes }: Props) => {
         selectedTabId={selectedTabId} 
         tabs={[
           {
-            tabId: "A déterminer",
-            label: "A déterminer"
+            tabId: "Arrêtés catastrophes naturelles",
+            label: <TabTooltip 
+              selectedTab={selectedTabId} 
+              tooltip="Pour une commune, la prise en charge des conséquences d’une catastrophe naturelle par un assureur au titre de la garantie « Cat-Nat »  est accordée par la publication d’un arrêté interministériel au Journal Officiel reconnaissant l’état de catastrophe naturelle de la commune concernée." 
+              titre="Arrêtés catastrophes naturelles"
+            /> 
           },
         ]} 
         onTabChange={setSelectedTabId} 
@@ -88,7 +93,7 @@ const GestionRisquesComp = ({ data, gestionRisques, carteCommunes }: Props) => {
           }
         })}>
         <div className={styles.formContainer}>
-          <div className={styles.titles}>
+          {/* <div className={styles.titles}>
             {data
               .filter(el => el.facteur_sensibilite === selectedTabId)
               .map((element, i) => (
@@ -102,7 +107,7 @@ const GestionRisquesComp = ({ data, gestionRisques, carteCommunes }: Props) => {
                   {element.titre}
                 </button>
               ))}
-          </div>
+          </div> */}
           <div className={styles.bubble}>
             <div className={styles.bubbleContent} style={darkClass}>
               {(() => {

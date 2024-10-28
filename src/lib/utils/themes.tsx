@@ -79,7 +79,7 @@ export const themes = {
     {
       id: 0,
       titre: "catnat",
-      facteur_sensibilite: "A déterminer",
+      facteur_sensibilite: "Arrêtés catastrophes naturelles",
       risque: "",
       donnee: "",
     },
