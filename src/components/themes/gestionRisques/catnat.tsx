@@ -3,6 +3,7 @@
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { CommunesIndicateursMapper } from "@/lib/mapper/communes";
 import { CarteCommunes, GestionRisques } from "@/lib/postgres/models";
+import { CustomTooltip } from "@/lib/utils/CalculTooltip";
 import { CountOccByIndex } from "@/lib/utils/reusableFunctions/occurencesCount";
 import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import { useSearchParams } from "next/navigation";
@@ -42,6 +43,7 @@ export const Catnat = (props: {
       }
     }
   )
+  console.log("vdataByCodeGeographique", dataByCodeGeographique)
   const carteCommunesEnriched = carteCommunes.map(el => {
     return {
       ...el,
@@ -63,32 +65,61 @@ export const Catnat = (props: {
     setArretesCatnatBarChart(gestionRisquesEnrichBarChart);
   }, [sliderValue, typeRisqueValue, datavizTab]);
 
+  const title = <>
+    <div>
+      Il s’agit du nombre total d'arrêtés de catastrophes naturelles d’origine climatique publiés au Journal Officiel par 
+      commune depuis la création de la garantie Cat-Nat  en 1982 (loi du 13 juillet 1982). Sont considérés comme risques naturels d’origine climatique : 
+      les avalanches, les phénomènes atmosphériques tels que les vents cycloniques, les tempêtes (exclues à partir de 1989), la grêle et 
+      la neige (exclues à partir de 2010), les inondations (coulée de boue, inondations par remontée de nappe,  et inondations par choc mécanique des vagues), 
+      les mouvements de terrain (regroupant les chocs mécaniques liés à l’action des vagues, l’éboulement rocheux, la chute de blocs, l’effondrement de terrain, 
+      l’affaissement et le glissement de terrain), la sécheresse (notamment le retrait-gonflement des argiles). 
+    </div><br></br>
+    <div>Les dommages dus aux vents cycloniques ne sont intégrés dans la garantie des catastrophes naturelles que depuis la fin de l'année 2000, lorsque la vitesse du vent dépasse 145 km/h pendant dix minutes, ou 215 km/h par rafale.</div>
+    <div>Les catastrophes naturelles d’origine non climatiques (séismes, éruptions volcaniques, lave torrentielle, raz de marée) sont exclues du décompte.</div>
+  </>
+
   return (
     <>
       {gestionRisques ? (
         <div className={styles.container}>
           <div className="w-1/3">
             <div className={styles.explicationWrapper}>
-              { codgeo ?
-                <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-                  Dans la commune de {gestionRisques[0]?.libelle_geographique}, {" "}
-                  <b>XXXX%</b> .
-                </p>
-                : 
-                <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-                  Dans l'EPCI {gestionRisques[0]?.libelle_epci}, {" "}
-                  <b>XXXXX%</b> .
-                </p>
+              {
+                dataByCodeGeographique[0].sumCatnat === 0 ? (
+                  <p>
+                    L’absence d’arrêté CatNat ne signifie pas que votre territoire n’a jamais connu d’événements climatiques importants, ni subis de dégâts significatifs. 
+                  </p>
+                ) : (
+                  <p style={{color: "#161616", margin:"0 0 0.5em"}}>
+                    Depuis 1982, <b>{dataByCodeGeographique[0].sumCatnat}</b> événement(s) climatique(s) sont à l’origine d’une reconnaissance de l'état de catastrophe naturelle sur votre territoire.
+                  </p>
+                )
               }
+              <CustomTooltip title={title} texte="D'où vient ce chiffre ?"/>
             </div>
             <div className="px-4">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam, ut inchoavit, et
+                Chaque hausse de 0,5 °C de la température mondiale est susceptible d’augmenter l'intensité et/ou la fréquence des phénomènes extrêmes. 
+                Entre 1900 et début 2022, la France métropolitaine a concentré 14 % des événements naturels très graves recensés en Europe, 
+                en particulier des inondations et des cyclones/tempêtes. Avec l’Italie, elle figure parmi les pays les plus touchés, 
+                loin devant les autres pays européens.
               </p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam, ut inchoavit, et
+                ⇒ 257 500, c’est le nombre d'arrêtés liés aux événements climatiques depuis la création du régime CatNat en 1982. 
+                Les inondations représentent plus de 56% du total. 
               </p>
-              <p>Lorem </p>
+              <p>
+                ⇒ 8 : c'est le nombre moyen d’arrêtés CatNat par commune entre 1982 et septembre 2024. Mais une commune détient le triste record de 135 arrêtés sur cette période !
+              </p>
+              <p>
+                ⇒ 10,6 milliards d’euros : c’est le coût d’indemnisations des dommages liés à des aléas climatiques en France en 2022.
+              </p>
+              <p>
+                ⇒ 4,8 milliards d’euros : montant moyen annuel des pertes économiques directes attribuées aux événements naturels en 
+                France entre 2015 et 2019, soit : <br></br>
+                - deux fois le budget annuel des Agences de l’eau, ou <br></br>
+                - 20 fois les besoins annuels pour adapter les biens exposés au risque d’érosion en France au cours des 25 prochaines années (estimation de l’Inspection générale de l'environnement et du développement durable).
+              </p>
             </div>
           </div>
           <div className="w-2/3">              

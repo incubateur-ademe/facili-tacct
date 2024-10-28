@@ -29,14 +29,17 @@ export const AgeBati = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo");
   const codepci = searchParams.get("codepci")!;
-  const ageBati = inconfortThermique.map(ageBatiMapper);
-
+  const ageBatiMapped = inconfortThermique.map(ageBatiMapper);
+  const ageBatiCommune = codgeo ? ageBatiMapped.filter(e => e.code_commune === codgeo) : null;
+  const ageBatiEpci = ageBatiMapped.filter(e => e.epci === codepci);
+  const ageBatiDptmt = ageBatiMapped;
+  const ageBatiCollectivite = ageBatiCommune ? ageBatiCommune : ageBatiEpci;
   const averages = {
-    averageAgeBatiPre19: average(ageBati, "age_bati_pre_19"),
-    averageAgeBati1945: average(ageBati, "age_bati_19_45"),
-    averageAgeBati4690: average(ageBati, "age_bati_46_90"),
-    averageAgeBati9105: average(ageBati, "age_bati_91_05"),
-    averageAgeBatiPost06: average(ageBati, "age_bati_post06"),
+    averageAgeBatiPre19: average(ageBatiCollectivite, "age_bati_pre_19"),
+    averageAgeBati1945: average(ageBatiCollectivite, "age_bati_19_45"),
+    averageAgeBati4690: average(ageBatiCollectivite, "age_bati_46_90"),
+    averageAgeBati9105: average(ageBatiCollectivite, "age_bati_91_05"),
+    averageAgeBatiPost06: average(ageBatiCollectivite, "age_bati_post06"),
   };
 
   const constructionBefore2006 =
@@ -88,12 +91,12 @@ export const AgeBati = (props: {
             <div className={styles.explicationWrapper}>
               { codgeo ?
                 <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-                  Dans la commune de {ageBati[0]?.libelle_geographique}, <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
+                  Dans la commune de {ageBatiCollectivite[0]?.libelle_geographique}, <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
                   principales sont construites avant 2006.
                 </p>
                 : 
                 <p style={{color: "#161616", margin:"0 0 0.5em"}}>
-                  Dans l'EPCI {ageBati[0]?.libelle_epci}, <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
+                  Dans l'EPCI {ageBatiCollectivite[0]?.libelle_epci}, <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
                   principales sont construites avant 2006.
                 </p>
               }

@@ -11,7 +11,7 @@ export const Legend = (props: Props) => {
   return (
     <>
       {data === "densite_bati" ? (
-        <div className="legend">
+        <div className="legend-densite-bati">
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div style={{ backgroundColor: "#FF5E54", width: "20px", height: "20px" }}></div>
             <p>&gt;0.2</p>
@@ -38,7 +38,7 @@ export const Legend = (props: Props) => {
               <div style={{ "--color": '#5CFF54'}}>0</div> */}
         </div>
       ) : (
-        <div className="legend">
+        <div className="legend-fragilite-economique">
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div style={{ backgroundColor: "#FF5E54", width: "20px", height: "20px" }}></div>
             <p>&gt;30%</p>

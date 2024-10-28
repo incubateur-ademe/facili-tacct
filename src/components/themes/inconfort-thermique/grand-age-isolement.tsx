@@ -153,6 +153,10 @@ export const GrandAgeIsolement = (props: {
                 ⇒ <b>28% seulement des décès</b> liés à la chaleur se produisent pendant les canicules, qui ne représente que 6% des jours de l’été. Soyons vigilants aussi en dehors des périodes de canicule. 
               </p>
               <p>
+                ⇒Tous concernés : les personnes de moins de 75 ans, c’est 71% des consultations SOS Médecins en lien avec la chaleur entre le 1er juin et le 15 septembre 2022, 
+                et un tiers des décès liés à la chaleur entre 2014 et 2022.  
+              </p>
+              <p>
                 ⇒ Seuls 12 % des Français se considèrent fragiles ou très fragiles pendant une canicule. La perception du risque personnel lié à la chaleur est faible.
               </p>
             </div>
