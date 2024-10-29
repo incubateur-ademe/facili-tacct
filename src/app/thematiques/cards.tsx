@@ -12,7 +12,7 @@ export const Cards = () => {
       top: 0,
       behavior: "smooth",
     })
-  });
+  }, []);
   return (
     <div className={styles.cardWrapper}>
       {

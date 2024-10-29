@@ -47,6 +47,13 @@ const GestionRisquesComp = ({ data, gestionRisques, carteCommunes }: Props) => {
   const { css } = useStyles();
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }, []);
+  
+  useEffect(() => {
     setSelectedSubTab(data.filter(el => el.facteur_sensibilite === selectedTabId)[0].titre);
   }, [selectedTabId, codepci]);
 
