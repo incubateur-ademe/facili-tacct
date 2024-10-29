@@ -2,10 +2,17 @@
 import { thematiques } from "@/lib/utils/thematiques";
 import Badge from "@codegouvfr/react-dsfr/Badge";
 import { Card } from "@codegouvfr/react-dsfr/Card";
+import { useEffect } from "react";
 import { CardComp } from "./card";
 import styles from "./thematiques.module.scss";
 
 export const Cards = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  });
   return (
     <div className={styles.cardWrapper}>
       {
