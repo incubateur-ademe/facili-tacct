@@ -18,6 +18,7 @@ export const BarChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
   const { gestionRisques } = props;
   const typesRisques = [...new Set(gestionRisques.map(item => item.lib_risque_jo))].filter(item => item !== null).sort();
   const graphData = CountOccByIndex(gestionRisques, "annee_arrete", "lib_risque_jo");
+  console.log("graphData", graphData);
   const minDate = Math.min(...gestionRisques.map(e => e.annee_arrete));
   const maxDate = Math.max(...gestionRisques.map(e => e.annee_arrete));
   return (
@@ -105,7 +106,7 @@ export const BarChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'Nombre de catastrphes recensées',
+            legend: 'Nombre de catastrophes recensées',
             legendPosition: 'middle',
             legendOffset: -50,
             truncateTickAt: 0,
