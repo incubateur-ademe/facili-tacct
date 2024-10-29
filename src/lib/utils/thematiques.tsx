@@ -40,29 +40,25 @@ export const thematiques = {
       thematique: "Inconfort thermique",
       id: 0,
       category: "",
-      icon: inconfortIcon,
       imageUrl: "./inconfortThermiqueIcon.svg"
     },
     // {
     //   thematique: "Biodiversité",
     //   id: 1,
     //   category: "",
-    //   icon: biodiversiteIcon,
-    //   imageUrl: "./biodiversiteIcon.svg"
+    //   //   imageUrl: "./biodiversiteIcon.svg"
     // },
     {
       thematique: "Gestion des risques",
       id: 2,
       category: "",
-      icon: amenagementIcon,
-      imageUrl: "./amenagementIcon.svg"
+      imageUrl: "./gestion_risques_bluetile.svg"
     },
     {
       thematique: "Ressources en eau",
       id: 3,
       category: "",
-      icon: gestionEauIcon,
-      imageUrl: "./eauIcon.svg"
+      imageUrl: "./ressources_eau_bluetile.svg"
     },
   ],
   bientot_disponible: [
@@ -70,14 +66,12 @@ export const thematiques = {
       thematique: "Espaces naturels",
       id: 2,
       category: "",
-      icon: espacesNaturelsIcon,
       imageUrl: "./espacesNaturelsIcon.svg"
     },
     {
       thematique: "Biodiversité",
       id: 1,
       category: "",
-      icon: biodiversiteIcon,
       imageUrl: "./biodiversiteIcon.svg"
     },
   ],
@@ -86,67 +80,56 @@ export const thematiques = {
       thematique: "Infrastructures",
       id: 0,
       category: "",
-      icon: infrastructureIcon,
-    },
+      },
     {
       thematique: "Mobilité / transport",
       id: 1,
       category: "",
-      icon: mobiliteIcon,
-    },
+      },
     {
       thematique: "Paysages",
       id: 2,
       category: "",
-      icon: paysageIcon,
-    },
+      },
     {
       thematique: "Gestion des risques",
       id: 3,
       category: "",
-      icon: gestionRisqueIcon,
-    },
+      },
     {
       thematique: "Agriculture",
       id: 11,
       category: "",
-      icon: agricultureIcon,
-    },
+      },
     {
       thematique: "Filière bois",
       id: 12,
       category: "",
-      icon: filiereBoisIcon,
-    },
+      },
     {
       thematique: "Tourisme",
       id: 13,
       category: "",
-      icon: tourismeIcon,
-    },
+      },
     {
       thematique: "Écosystèmes et biodiversité",
       id: 14,
       category: "",
-      icon: biodiversiteIcon,
-    },
+      },
     {
       thematique: "Ressources en eau",
       id: 15,
       category: "",
-      icon: ressourcesEauIcon,
-    },
+      },
     {
       thematique: "Forêt",
       id: 16,
       category: "",
-      icon: foretIcon,
-    },
+      },
     {
       thematique: "Santé",
       id: 4,
       category: "",
-      icon: santeIcon,
-    }
+      }
   ]
 };
