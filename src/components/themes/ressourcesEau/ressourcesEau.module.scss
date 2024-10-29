@@ -60,6 +60,15 @@
     border-bottom: solid 1px #D6D6F0;
 }
 
+.prelevementEauSliderWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 1rem;
+    border-bottom: solid 1px #D6D6F0;
+    margin: 0 auto;
+}
+
 .progressDataWrapper{
     display: flex;
     flex-direction: row;
