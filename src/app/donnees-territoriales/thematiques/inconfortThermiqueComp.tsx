@@ -105,6 +105,13 @@ const PageComp = ({ data, carteCommunes, inconfortThermique, collectivite, depar
   const { css } = useStyles();
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }, []);
+  
+  useEffect(() => {
     setSelectedSubTab(data.filter(el => el.facteur_sensibilite === selectedTabId)[0].titre);
     void (async () => {
       const temp = await GetClcEpci(codepci); 
