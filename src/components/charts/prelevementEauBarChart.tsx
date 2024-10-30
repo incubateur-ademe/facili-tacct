@@ -7,11 +7,19 @@ import { ResponsiveBar } from "@nivo/bar";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-type Props = {
-  ressourcesEau: RessourcesEau[];
-  sliderValue: number[];
+type GraphData = {
+  Agriculture: number;
+  "Eau potable": number;
+  "Industrie et autres usages économiques": number;
+  "Refroidissement des centrales électriques": number;
+  "Alimentation des canaux": number;
+  "Production d'électricité (barrages hydro-électriques)": number;
+  annee: string;
 }
 
+// const initialYears = ["2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020"]
+const ressourcesEauYears = ["A2008", "A2009", "A2010", "A2011", "A2012", "A2013", "A2014", "A2015", "A2016", "A2017", "A2018", "A2019", "A2020"];
+const columns = ["LIBELLE_SOUS_CHAMP", "SOUS_CHAMP", "code_geographique", "departement", "epci", "index", "libelle_epci", "libelle_geographique", "region"]
 const colors: { [key: string]: string } = {
   'Agriculture': '#00C190',
   'Eau potable': '#009ADC',
@@ -20,10 +28,6 @@ const colors: { [key: string]: string } = {
   'Alimentation des canaux': '#00C2CC',
   'Production d\'électricité (barrages hydro-électriques)': '#FFCF5E',
 };
-
-const ressourcesEauYears = ["A2008", "A2009", "A2010", "A2011", "A2012", "A2013", "A2014", "A2015", "A2016", "A2017", "A2018", "A2019", "A2020"];
-const columns = ["LIBELLE_SOUS_CHAMP", "SOUS_CHAMP", "code_geographique", "departement", "epci", "index", "libelle_epci", "libelle_geographique", "region"]
-
 
 const  ressourceEauFilter = (sliderValues: number[], allYears: string[], data: RessourcesEau[]) => {
   const values = [`A${sliderValues[0]}`, `A${sliderValues[1]}`];
@@ -39,157 +43,45 @@ const  ressourceEauFilter = (sliderValues: number[], allYears: string[], data: R
   return newArray;
 }
 
-const PrelevementEauBarChart = (props: Props) => {
-  const { ressourcesEau, sliderValue } = props;
+const graphDataFunct = (filteredYears: string[], data: RessourcesEau[]) => {
+  const dataArr: GraphData[] = [];
+  const years = filteredYears.map((year) => year.split("A")[1]);
+  years.forEach((year) => {
+    const obj = {
+      "Agriculture": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), `A${year}`),
+      "Eau potable": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), `A${year}`),
+      "Industrie et autres usages économiques": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), `A${year}`),
+      "Refroidissement des centrales électriques": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), `A${year}`),
+      "Alimentation des canaux": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), `A${year}`),
+      "Production d'électricité (barrages hydro-électriques)": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), `A${year}`),
+      annee: year,
+    }
+    dataArr.push(obj);
+  });
+  return dataArr;
+}
+
+const PrelevementEauBarChart = ({ ressourcesEau, sliderValue }: { ressourcesEau: RessourcesEau[], sliderValue: number[] }) => {
   const [filteredRessourcesEau, setFilteredRessourcesEau] = useState(ressourcesEau);
-  const [selectedYears, setSelectedYears] = useState<string[]>([]);
+  const [selectedYears, setSelectedYears] = useState<string[]>(ressourcesEauYears.map(year => year.split("A")[1]));
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo")!;
   const codepci = searchParams.get("codepci")!;
   const collectiviteData = codgeo ? filteredRessourcesEau.filter((obj) => obj.code_geographique === codgeo) : filteredRessourcesEau.filter((obj) => obj.epci === codepci);
+  const [graphData, setGraphData] = useState<GraphData[]>(graphDataFunct(selectedYears, collectiviteData));
 
   useEffect(() => {
     const values = [`A${sliderValue[0]}`, `A${sliderValue[1]}`];
     setSelectedYears(ressourcesEauYears.slice(ressourcesEauYears.indexOf(values[0]), ressourcesEauYears.indexOf(values[1]) + 1))
     setFilteredRessourcesEau(ressourceEauFilter(sliderValue, ressourcesEauYears, ressourcesEau));
-  }, [sliderValue]);
+    setGraphData(graphDataFunct(selectedYears, collectiviteData));
+  }, [sliderValue, selectedYears]);
 
-  console.log("ressourcesEau", collectiviteData);
-
-  const graphData = [
-    {
-      "Agriculture": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), "A2008"),
-      "Eau potable": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), "A2008"),
-      "Industrie et autres usages économiques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), "A2008"),
-      "Refroidissement des centrales électriques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), "A2008"),
-      "Alimentation des canaux": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), "A2008"),
-      "Production d'électricité (barrages hydro-électriques)": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), "A2008"),
-      annee: 2008,
-    },
-    {
-      "Agriculture": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), "A2009"),
-      "Eau potable": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), "A2009"),
-      "Industrie et autres usages économiques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), "A2009"),
-      "Refroidissement des centrales électriques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), "A2009"),
-      "Alimentation des canaux": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), "A2009"),
-      "Production d'électricité (barrages hydro-électriques)": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), "A2009"),
-      annee: 2009,
-    },
-    {
-      "Agriculture": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), "A2010"),
-      "Eau potable": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), "A2010"),
-      "Industrie et autres usages économiques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), "A2010"),
-      "Refroidissement des centrales électriques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), "A2010"),
-      "Alimentation des canaux": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), "A2010"),
-      "Production d'électricité (barrages hydro-électriques)": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), "A2010"),
-      annee: 2010,
-    },
-    {
-      "Agriculture": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), "A2011"),
-      "Eau potable": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), "A2011"),
-      "Industrie et autres usages économiques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), "A2011"),
-      "Refroidissement des centrales électriques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), "A2011"),
-      "Alimentation des canaux": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), "A2011"),
-      "Production d'électricité (barrages hydro-électriques)": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), "A2011"),
-      annee: 2011,
-    },
-    {
-      "Agriculture": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), "A2012"),
-      "Eau potable": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), "A2012"),
-      "Industrie et autres usages économiques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), "A2012"),
-      "Refroidissement des centrales électriques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), "A2012"),
-      "Alimentation des canaux": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), "A2012"),
-      "Production d'électricité (barrages hydro-électriques)": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), "A2012"),
-      annee: 2012,
-    },
-    {
-      "Agriculture": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), "A2013"),
-      "Eau potable": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), "A2013"),
-      "Industrie et autres usages économiques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), "A2013"),
-      "Refroidissement des centrales électriques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), "A2013"),
-      "Alimentation des canaux": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), "A2013"),
-      "Production d'électricité (barrages hydro-électriques)": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), "A2013"),
-      annee: 2013,
-    },
-    {
-      "Agriculture": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), "A2014"),
-      "Eau potable": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), "A2014"),
-      "Industrie et autres usages économiques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), "A2014"),
-      "Refroidissement des centrales électriques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), "A2014"),
-      "Alimentation des canaux": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), "A2014"),
-      "Production d'électricité (barrages hydro-électriques)": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), "A2014"),
-      annee: 2014,
-    },
-    {
-      "Agriculture": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), "A2015"),
-      "Eau potable": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), "A2015"),
-      "Industrie et autres usages économiques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), "A2015"),
-      "Refroidissement des centrales électriques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), "A2015"),
-      "Alimentation des canaux": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), "A2015"),
-      "Production d'électricité (barrages hydro-électriques)": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), "A2015"),
-      annee: 2015,
-    },
-    {
-      "Agriculture": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), "A2016"),
-      "Eau potable": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), "A2016"),
-      "Industrie et autres usages économiques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), "A2016"),
-      "Refroidissement des centrales électriques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), "A2016"),
-      "Alimentation des canaux": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), "A2016"),
-      "Production d'électricité (barrages hydro-électriques)": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), "A2016"),
-      annee: 2016,
-    },
-    {
-      "Agriculture": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), "A2017"),
-      "Eau potable": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), "A2017"),
-      "Industrie et autres usages économiques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), "A2017"),
-      "Refroidissement des centrales électriques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), "A2017"),
-      "Alimentation des canaux": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), "A2017"),
-      "Production d'électricité (barrages hydro-électriques)": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), "A2017"),
-      annee: 2017,
-    },
-    {
-      "Agriculture": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), "A2018"),
-      "Eau potable": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), "A2018"),
-      "Industrie et autres usages économiques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), "A2018"),
-      "Refroidissement des centrales électriques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), "A2018"),
-      "Alimentation des canaux": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), "A2018"),
-      "Production d'électricité (barrages hydro-électriques)": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), "A2018"),
-      annee: 2018,
-    },
-    {
-      "Agriculture": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), "A2019"),
-      "Eau potable": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), "A2019"),
-      "Industrie et autres usages économiques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), "A2019"),
-      "Refroidissement des centrales électriques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), "A2019"),
-      "Alimentation des canaux": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), "A2019"),
-      "Production d'électricité (barrages hydro-électriques)": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), "A2019"),
-      annee: 2019,
-    },
-    {
-      "Agriculture": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), "A2020"),
-      "Eau potable": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), "A2020"),
-      "Industrie et autres usages économiques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), "A2020"),
-      "Refroidissement des centrales électriques": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), "A2020"),
-      "Alimentation des canaux": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), "A2020"),
-      "Production d'électricité (barrages hydro-électriques)": SumByKey(collectiviteData.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), "A2020"),
-      annee: 2020,
-    },
-  ];
-
-  console.log("data", graphData);
-  const keys = [
-    "Eau potable",
-    "Agriculture",
-    "Industrie et autres usages économiques",
-    "Refroidissement des centrales électriques",
-    "Alimentation des canaux",
-    "Production d'électricité (barrages hydro-électriques)"
-  ];
   return (
     <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
       <ResponsiveBar
         data={graphData as Any}
-        keys={keys}
+        keys={Object.keys(colors)}
         isFocusable={true}
         indexBy="annee"
         colors={bar => colors[bar.id]}
