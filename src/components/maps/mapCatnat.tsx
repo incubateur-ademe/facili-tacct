@@ -107,7 +107,7 @@ export const MapCatnat = (props: {
     const values = Object.values(restCatnat);  
     const sum = Sum(values);  
     return (
-      `<div stype="padding: 1.25rem">
+      `<div style="padding: 1.25rem">
         <div style="font-size: 0.75rem; font-family: Marianne; font-weight: 700; padding: 0 0 1rem">${communeName} : ${sum} arrêté(s) au total</div>
         ${keys.map((el, i) => `
           <div style="

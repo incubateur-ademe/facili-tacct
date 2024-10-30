@@ -8,46 +8,15 @@ import { RessourcesEau } from "@/lib/postgres/models";
 import { useState } from "react";
 import styles from "./ressourcesEau.module.scss";
 
-type Props = {
+const PrelevementEauDataViz = ({
+  ressourcesEau,
+  datavizTab,
+  setDatavizTab,
+} : {
   ressourcesEau: RessourcesEau[];
   datavizTab: string;
   setDatavizTab: (value: string) => void;
-}
-
-type RessourcesEauFiltered = {
-  LIBELLE_SOUS_CHAMP?: string | null;
-  SOUS_CHAMP?: string | null;
-  code_geographique?: string;
-  departement?: string | null;
-  epci?: string | null;
-  index?: bigint | null;
-  libelle_epci?: string | null;
-  libelle_geographique?: string | null;
-  region?: number | null;
-  A2008?: number | null;
-  A2009?: number | null;
-  A2010?: number | null;
-  A2011?: number | null;
-  A2012?: number | null;
-  A2013?: number | null;
-  A2014?: number | null;
-  A2015?: number | null;
-  A2016?: number | null;
-  A2017?: number | null;
-  A2018?: number | null;
-  A2019?: number | null;
-  A2020?: number | null;
-}
-
-type Years = "A2008" | "A2009" | "A2010" | "A2011" | "A2012" | "A2013" | "A2014" | "A2015" | "A2016" | "A2017" | "A2018" | "A2019" | "A2020";
-
-type GenericObject = {
-  [key: string]: string | number | bigint | null;
-}
-
-
-const PrelevementEauDataViz = (props: Props) => {
-  const { ressourcesEau, datavizTab, setDatavizTab } = props;
+}) => {
   const [sliderValue, setSliderValue] = useState<number[]>([2008, 2020]);
 
   return (

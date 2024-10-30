@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "@/components/themes/gestionRisques/gestionRisques.module.scss";
 import { ResponsiveBar } from "@/lib/nivo/bar";
 import { CountOccByIndex } from "@/lib/utils/reusableFunctions/occurencesCount";
 import { Any } from "@/lib/utils/types";
@@ -18,7 +19,6 @@ export const BarChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
   const { gestionRisques } = props;
   const typesRisques = [...new Set(gestionRisques.map(item => item.lib_risque_jo))].filter(item => item !== null).sort();
   const graphData = CountOccByIndex(gestionRisques, "annee_arrete", "lib_risque_jo");
-  console.log("graphData", graphData);
   const minDate = Math.min(...gestionRisques.map(e => e.annee_arrete));
   const maxDate = Math.max(...gestionRisques.map(e => e.annee_arrete));
   return (
@@ -53,28 +53,37 @@ export const BarChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
               ]
             ]
           }}
-          tooltip={({
-              id,
-              value,
-              color
-            }) => <div style={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
-                padding: 8,
-                background: '#FFFFFF',
-                right: '8rem',
-                fontSize: 'inherit',
-                borderRadius: '2px',
-                border: '1px solid #ccc',
-                translate: "-80px"
-              }}>
-                  <div style={{height: "12px", width: "12px", backgroundColor: color, marginRight: "8px"}}/>
-                  <span>
-                      {id}: <strong>{value}</strong>
-                  </span>
-              </div>
-          }     
+          tooltip={
+            ({ data }) => {
+              const dataArray = Object.entries(data).map(el => {
+                return {
+                  titre: el[0],
+                  value: el[1],
+                  color: colors[el[0]]
+                }
+            });
+              return (
+                <div className={styles.tooltipEvolutionWrapper}>
+                  <h3>{dataArray.at(-1)?.value}</h3>
+                  {
+                    dataArray.slice(0, -1).map((el, i) => {
+                      return (
+                        <div className={styles.itemWrapper} key={i}>
+                          <div className={styles.titre}> 
+                            <div className={styles.colorSquare} style={{background: el.color}}/>
+                            <p>{el.titre}</p>
+                          </div>
+                          <div className={styles.value}>
+                            <p>{el.value}</p>
+                          </div>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+              );
+            }
+          }
           axisTop={null}
           axisRight={null}
           axisBottom={{
