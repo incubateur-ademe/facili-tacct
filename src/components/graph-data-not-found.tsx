@@ -18,11 +18,12 @@ export function GraphDataNotFound({ code }: Props) {
         gap: "1em",
         justifyContent: "space-between",
         alignItems: "center",
+        margin: "2em",
       }}
     >
       <GridCol lg={5}>
         <h4>Données indisponibles</h4>
-        <p>Pour la collectivité que vous avez renseignée (code : {code}), nous ne disposons pas de ce type de donnée. </p>
+        <p>Pour la collectivité que vous avez renseignée (code : {code}), nous ne disposons pas de cette donnée.</p>
       </GridCol>
       <GridCol lg={6}>
         <Image src={GraphImage} alt="" width={0} height={0} style={{ width: "90%", height: "auto" }} />
