@@ -90,11 +90,11 @@
     width: 100%;
     p {
         margin: 0;
-        font-size: 0.5rem;;
-        font-weight: 700;
+        font-size: 0.75rem;;
+        font-weight: 400;
         font-family: "Inter";
         text-transform: uppercase;
-        line-height: 10px;
+        line-height: 14px;
     }
     .barMarker{
         width: 100%;
@@ -112,6 +112,7 @@
 .progressNumbers {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 1px;
     text-align: end;
     width: 80px;
