@@ -17,7 +17,6 @@ type GraphData = {
   annee: string;
 }
 
-// const initialYears = ["2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020"]
 const ressourcesEauYears = ["A2008", "A2009", "A2010", "A2011", "A2012", "A2013", "A2014", "A2015", "A2016", "A2017", "A2018", "A2019", "A2020"];
 const columns = ["LIBELLE_SOUS_CHAMP", "SOUS_CHAMP", "code_geographique", "departement", "epci", "index", "libelle_epci", "libelle_geographique", "region"]
 const colors: { [key: string]: string } = {
@@ -61,7 +60,9 @@ const graphDataFunct = (filteredYears: string[], data: RessourcesEau[]) => {
   return dataArr;
 }
 
-const PrelevementEauBarChart = ({ ressourcesEau, sliderValue }: { ressourcesEau: RessourcesEau[], sliderValue: number[] }) => {
+const PrelevementEauBarChart = (
+  { ressourcesEau, sliderValue }: { ressourcesEau: RessourcesEau[], sliderValue: number[] }
+) => {
   const [filteredRessourcesEau, setFilteredRessourcesEau] = useState(ressourcesEau);
   const [selectedYears, setSelectedYears] = useState<string[]>(ressourcesEauYears.map(year => year.split("A")[1]));
   const searchParams = useSearchParams();
@@ -133,11 +134,29 @@ const PrelevementEauBarChart = ({ ressourcesEau, sliderValue }: { ressourcesEau:
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: 'Nombre de ...................',
+          legend: 'Volumétrie en Mm³',
           legendPosition: 'middle',
           legendOffset: -50,
           truncateTickAt: 0,
-          tickValues: 5
+          tickValues: 5, //number of tickvalues displayed along the ax
+          renderTick: (e) => {
+            return (
+              <g transform={`translate(${e.x},${e.y})`}>
+                <text
+                  x={-20}
+                  y={5}
+                  textAnchor="middle"
+                  style={{
+                    fill: 'black',
+                    fontSize: 12,
+                    fontWeight: 400,
+                  }}
+                >
+                  {e.value / 1000000}
+                </text>
+              </g>
+            );
+          }
         }}
         labelSkipWidth={40}
         labelSkipHeight={12}

@@ -123,21 +123,20 @@ const PrelevementEauProgressBars = (props: Props) => {
                   showInfo={false}
                   status="normal"
                   strokeColor={item.color}
-                  // size={[400, 8]}
+                  size={["100%",12]}
                   style={{ width: "95%" }}
                   type="line"
                   trailColor="#F9F9FF"
                 />
-                <div style={{position: "relative", width: "100%", transform:`translateX(${95 * item.sumDptmt / totalDptmt}%) translateY(-1.1rem)`}}>
+                <div style={{position: "relative", width: "100%", transform:`translateX(${95 * item.sumDptmt / totalDptmt}%) translateY(-1.25rem)`}}>
                   <div className={styles.marker}></div>
-                  {/* <p>{Math.round(95 * item.sumDptmt / totalDptmt)}%</p> */}
                 </div>
               </div>
             </div>
           </div>
           <div className={styles.progressNumbers}>
             <p><b>{(100 * item.sumCollectivite / total).toFixed(1)}%</b></p>
-            <p>{(item.sumCollectivite).toFixed(0)}m³</p>
+            <p>{(item.sumCollectivite/1000000).toFixed(1)} Mm³</p>
           </div>
         </div>
       ))
