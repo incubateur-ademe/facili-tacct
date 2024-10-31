@@ -31,6 +31,14 @@ const colors: { [key: string]: string } = {
   "Production d'électricité (barrages hydro-électriques)": "#FFCF5E",
 };
 const legend = ["Agriculture", "Eau potable", "Industrie", "Refroidissement des centrales", "Alimentation des canaux", "Barrages hydro-électriques"];
+// const legend = {
+//   "Agriculture": "Agriculture",
+//   "Eau potable": "Eau potable",
+//   "Industrie et autres usages économiques": "Industrie",
+//   "Refroidissement des centrales électriques": "Refroidissement des centrales",
+//   "Alimentation des canaux": "Alimentation des canaux",
+//   "Production d'électricité (barrages hydro-électriques)": "Barrages hydro-électriques",
+// }
 
 // const  ressourceEauFilter = (sliderValues: number[], allYears: string[], data: RessourcesEau[]) => {
 //   const values = [`A${sliderValues[0]}`, `A${sliderValues[1]}`];
@@ -95,6 +103,8 @@ const PrelevementEauBarChart = (
     setSelectedYears(ressourcesEauYears.slice(ressourcesEauYears.indexOf(`A${sliderValue[0]}`), ressourcesEauYears.indexOf(`A${sliderValue[1]}`) + 1))
   }, [sliderValue]);
 
+  // console.log((graphData))
+
   return (
     graphData && graphData.length ? (
       <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
@@ -114,12 +124,7 @@ const PrelevementEauBarChart = (
           indexScale={{ type: 'band', round: true }}
           borderColor={{
             from: 'color',
-            modifiers: [
-              [
-                'darker',
-                1.6
-              ]
-            ]
+            modifiers: [['darker', 1.6]]
           }}    
           axisTop={null}
           axisRight={null}
@@ -178,6 +183,34 @@ const PrelevementEauBarChart = (
           }}
           labelSkipWidth={40}
           labelSkipHeight={12}
+          // legends={[
+          //   {
+          //     dataFrom: 'keys',
+          //     anchor: 'bottom-right',
+          //     direction: 'column',
+          //     justify: false,
+          //     translateX: 120,
+          //     translateY: 0,
+          //     itemsSpacing: 2,
+          //     itemWidth: 100,
+          //     itemHeight: 25,
+          //     itemDirection: 'left-to-right',
+          //     itemOpacity: 0.85,
+          //     symbolSize: 20,
+          //     data: Object.entries(graphData[0]).slice(0, -1).map((el, i) => {
+          //       var legendId = legend[el[0]];
+          //       console.log("legendId", legendId)
+          //       console.log("el", el)
+          //       if (el[1] != 0) {
+          //         return {
+          //           id: el[0],
+          //           label: legendId,
+          //           color: colors[el[0]]
+          //         }
+          //       } else { return null }
+          //     }).filter(el => el !== null)
+          //   }
+          // ]}
           legends={[
             {
               ...legendProps,
@@ -189,6 +222,7 @@ const PrelevementEauBarChart = (
                 })),
             },
           ]}
+          
           tooltip={
             ({ data }) => {
               const dataArray = Object.entries(data).map(el => {
