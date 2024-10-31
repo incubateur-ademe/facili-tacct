@@ -128,7 +128,7 @@ const PageComp = ({ data, carteCommunes, inconfortThermique, collectivite, depar
             tabId: "Population",
             label: <TabTooltip 
               selectedTab={selectedTabId} 
-              tooltip="Santé et emploi des populations sont des indicateurs de sensibilité aux fortes chaleurs" 
+              tooltip="Santé et emploi des populations sont des indicateurs de sensibilité aux fortes chaleurs." 
               titre="Population"
             /> 
           },

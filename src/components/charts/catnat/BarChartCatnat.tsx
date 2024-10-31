@@ -149,16 +149,14 @@ export const BarChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
               effects: [
                 {
                   on: 'hover',
-                  style: {
-                          itemOpacity: 1
-                        }
-                      }
-                    ]
-                  }
-                ]}
-                role="application"
-                ariaLabel="Nivo bar chart demo"
-                barAriaLabel={e=>e.id+": "+e.formattedValue+" in annee_arrete: "+e.indexValue}
+                  style: { itemOpacity: 1 }
+                }
+              ]
+            }
+          ]}
+          role="application"
+          ariaLabel="Nivo bar chart demo"
+          barAriaLabel={e=>e.id+": "+e.formattedValue+" in annee_arrete: "+e.indexValue}
         />
       }
     </div>
