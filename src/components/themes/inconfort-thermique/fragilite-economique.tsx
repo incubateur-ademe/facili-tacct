@@ -72,7 +72,10 @@ export const FragiliteEconomique = ({ carteCommunes }: {
                     - plus d’un million de ménages ont subi une intervention de leur fournisseur d’énergie pour cause d'impayés, une situation qui les expose à une précarité encore plus grande.
                   </p>
                   <p>- - - - <br></br>
-                    Protéger les populations précaires des fortes chaleurs est la mesure n°14 du Plan national d’adaptation au changement climatique (PNACC 3).
+                    Adapter les logements au risque de forte chaleur est la mesure 9 du Plan national d’adaptation au changement climatique (PNACC 3).
+                  </p>
+                  <p>
+                    Protéger les populations précaires des fortes chaleurs est la mesure n°14 du PNACC 3.
                   </p>
                 </div>
               </div>
