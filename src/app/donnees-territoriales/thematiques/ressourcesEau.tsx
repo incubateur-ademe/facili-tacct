@@ -13,9 +13,7 @@ const RessourcesEau = async (searchParams: SearchParams) => {
   const theme = themes.ressourcesEau;
   const codepci = searchParams.searchParams.codepci;
   const codgeo = searchParams.searchParams.codgeo;
-  const dbRessourcesEau = await GetRessourceEau(codepci);
-  const dataParMaille = codgeo ? dbRessourcesEau.filter((obj) => obj.code_geographique === codgeo) : dbRessourcesEau.filter((obj) => obj.epci === codepci);
-  console.log("dataParMaille", dataParMaille);
+  const dbRessourcesEau =  await GetRessourceEau(codepci);
 
   return (
     <div>

@@ -21,38 +21,6 @@ type GraphData = {
 }
 
 const ressourcesEauYears = ["A2008", "A2009", "A2010", "A2011", "A2012", "A2013", "A2014", "A2015", "A2016", "A2017", "A2018", "A2019", "A2020"];
-// const columns = ["LIBELLE_SOUS_CHAMP", "SOUS_CHAMP", "code_geographique", "departement", "epci", "index", "libelle_epci", "libelle_geographique", "region"]
-const colors: { [key: string]: string } = {
-  "Agriculture": "#00C190",
-  "Eau potable": "#009ADC",
-  "Industrie et autres usages économiques": "#7A49BE",
-  "Refroidissement des centrales électriques": "#BB43BD",
-  "Alimentation des canaux": "#00C2CC",
-  "Production d'électricité (barrages hydro-électriques)": "#FFCF5E",
-};
-const legend = ["Agriculture", "Eau potable", "Industrie", "Refroidissement des centrales", "Alimentation des canaux", "Barrages hydro-électriques"];
-// const legend = {
-//   "Agriculture": "Agriculture",
-//   "Eau potable": "Eau potable",
-//   "Industrie et autres usages économiques": "Industrie",
-//   "Refroidissement des centrales électriques": "Refroidissement des centrales",
-//   "Alimentation des canaux": "Alimentation des canaux",
-//   "Production d'électricité (barrages hydro-électriques)": "Barrages hydro-électriques",
-// }
-
-// const  ressourceEauFilter = (sliderValues: number[], allYears: string[], data: RessourcesEau[]) => {
-//   const values = [`A${sliderValues[0]}`, `A${sliderValues[1]}`];
-//   const newSelectedYears = allYears.slice(allYears.indexOf(values[0]), allYears.indexOf(values[1]) + 1);
-//   const newKeys = columns.concat(newSelectedYears);
-//   const newArray = data.map(item => {
-//     const newItem: Any = {};
-//     newKeys.forEach(key => {
-//       newItem[key] = (item as Any)[key];
-//     });
-//     return newItem;
-//   });
-//   return newArray;
-// }
 
 const legendProps: BarLegendProps = {
   dataFrom: 'keys',
@@ -82,6 +50,7 @@ const graphDataFunct = (filteredYears: string[], data: RessourcesEau[]) => {
       "Production d'électricité (barrages hydro-électriques)": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), `A${year}`),
       annee: year,
     }
+    // const sorted = Object.entries(obj).sort(([,a],[,b]) => a-b).reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
     const isNull = Sum(Object.values(obj).slice(0, -1))
     isNull != 0 ? dataArr.push(obj) : null;
   });
@@ -95,7 +64,6 @@ const PrelevementEauBarChart = (
   const codgeo = searchParams.get("codgeo")!;
   const codepci = searchParams.get("codepci")!;
   const dataParMaille = codgeo ? ressourcesEau.filter((obj) => obj.code_geographique === codgeo) : ressourcesEau.filter((obj) => obj.epci === codepci);
-  console.log("dataParMaille", dataParMaille)
   const [selectedYears, setSelectedYears] = useState<string[]>(ressourcesEauYears.map(year => year.split("A")[1]));
   const graphData = graphDataFunct(selectedYears, dataParMaille)
   const collectiviteName = codgeo ? dataParMaille[0].libelle_geographique : dataParMaille[0].libelle_epci; 
@@ -104,17 +72,54 @@ const PrelevementEauBarChart = (
     setSelectedYears(ressourcesEauYears.slice(ressourcesEauYears.indexOf(`A${sliderValue[0]}`), ressourcesEauYears.indexOf(`A${sliderValue[1]}`) + 1))
   }, [sliderValue]);
 
-  // console.log((graphData))
+  const legends = [
+    {
+      texte_complet: "Agriculture",
+      texte_raccourci: "Agriculture",
+      valeur: SumByKey(graphData, 'Agriculture'),
+      couleur: "#00C190"
+    },
+    {
+      texte_complet: "Alimentation des canaux",
+      texte_raccourci: "Alimentation des canaux",
+      valeur: SumByKey(graphData, 'Alimentation des canaux'),
+      couleur: "#00C2CC"
+    },
+    {
+      texte_complet: "Eau potable",
+      texte_raccourci: "Eau potable",
+      valeur: SumByKey(graphData, 'Eau potable'),
+      couleur: "#009ADC"
+    },
+    {
+      texte_complet: "Industrie et autres usages économiques",
+      texte_raccourci: "Industrie",
+      valeur: SumByKey(graphData, 'Industrie et autres usages économiques'),
+      couleur: "#7A49BE"
+    },
+    {
+      texte_complet: "Production d'électricité (barrages hydro-électriques)",
+      texte_raccourci: "Barrages hydro-électriques",
+      valeur: SumByKey(graphData, 'Production d\'électricité (barrages hydro-électriques)'),
+      couleur: "#FFCF5E"
+    },
+    {
+      texte_complet: "Refroidissement des centrales électriques",
+      texte_raccourci: "Refroidissement des centrales",
+      valeur: SumByKey(graphData, 'Refroidissement des centrales électriques'),
+      couleur: "#BB43BD"
+    }
+  ]
 
   return (
     graphData && graphData.length ? (
       <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
         <ResponsiveBar
           data={graphData as Any}
-          keys={Object.keys(colors)}
+          keys={legends.map(e => e.texte_complet)}
           isFocusable={true}
           indexBy="annee"
-          colors={bar => colors[bar.id]}
+          colors={legends.map(e => e.couleur)}
           margin={{ top: 40, right: 200, bottom: 80, left: 80 }}
           padding={0.3}
           innerPadding={2}
@@ -184,53 +189,24 @@ const PrelevementEauBarChart = (
           }}
           labelSkipWidth={40}
           labelSkipHeight={12}
-          // legends={[
-          //   {
-          //     dataFrom: 'keys',
-          //     anchor: 'bottom-right',
-          //     direction: 'column',
-          //     justify: false,
-          //     translateX: 120,
-          //     translateY: 0,
-          //     itemsSpacing: 2,
-          //     itemWidth: 100,
-          //     itemHeight: 25,
-          //     itemDirection: 'left-to-right',
-          //     itemOpacity: 0.85,
-          //     symbolSize: 20,
-          //     data: Object.entries(graphData[0]).slice(0, -1).map((el, i) => {
-          //       var legendId = legend[el[0]];
-          //       console.log("legendId", legendId)
-          //       console.log("el", el)
-          //       if (el[1] != 0) {
-          //         return {
-          //           id: el[0],
-          //           label: legendId,
-          //           color: colors[el[0]]
-          //         }
-          //       } else { return null }
-          //     }).filter(el => el !== null)
-          //   }
-          // ]}
           legends={[
             {
               ...legendProps,
-              data: legend
-                .map((leg, index) => ({
-                  id: index,
-                  label: leg,
-                  color: Object.values(colors)[index],
+              data: legends.filter(e => e.valeur != 0)
+                .map((legend, index) => ({
+                  id: index, 
+                  label: legend.texte_raccourci,
+                  color: legend.couleur,
                 })),
             },
           ]}
-          
           tooltip={
             ({ data }) => {
               const dataArray = Object.entries(data).map(el => {
                 return {
                   titre: el[0],
                   value: el[1],
-                  color: colors[el[0]]
+                  color: legends.find(e => e.texte_complet === el[0])?.couleur //colors[el[0]]
                 }
             });
               return (
