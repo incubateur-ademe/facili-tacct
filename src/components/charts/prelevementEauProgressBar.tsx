@@ -100,59 +100,69 @@ const PrelevementEauProgressBars = ({ ressourcesEau }: { ressourcesEau: Ressourc
 
   return (
     <div className={styles.prelevementEauWrapper}>
-    {
-      data.sort((a, b) => b.sumCollectivite - a.sumCollectivite).map((item, index) => ( //.filter(e => e.sumCollectivite !== 0)
-        <HtmlTooltip 
-          title={
-            <div className={styles.tooltip}>
-              <h3>{item.titre}</h3>
-              <p>
-                {collectivite} : {" "}
-                <b>{(100 * item.sumCollectivite / total).toFixed(1)}%</b> {" "}
-                ({(item.sumCollectivite/1000000).toFixed(1)} Mm³)
-              </p>
-              <p>
-                Département {departement} : {" "}
-                <b>{(100 * item.sumDptmt / totalDptmt).toFixed(1)}%</b> {" "}
-                ({(item.sumDptmt/1000000).toFixed(1)} Mm³)
-                </p>
-            </div>
-          }
-          placement="top"
-        >
-          <div key={index} className={styles.progressDataWrapper}>
-            <div className={styles.progressDesign}>
-              {item.icon}
-              <div className={styles.progressBar}>
-                <p>{item.titre}</p>
-                <div className={styles.barMarker}>
-                    <Progress 
-                      percent={Number((100 * item.sumCollectivite / total))} 
-                      showInfo={false}
-                      strokeColor={item.color}
-                      size={["100%", 12]}
-                      style={{ width: "95%" }}
-                      type="line"
-                      trailColor="#F9F9FF"
-                    />
-                  <div style={{
-                    position: "relative",
-                    width: "100%",
-                    transform:`translate(${95 * item.sumDptmt / totalDptmt}%, -1.25rem)`}}>
-                    <div className={styles.marker}></div>
+      {
+        data.find(e => e.sumCollectivite !== 0) ? (
+          <>
+            {
+              data.sort((a, b) => b.sumCollectivite - a.sumCollectivite).map((item, index) => (
+                <HtmlTooltip 
+                  title={
+                    <div className={styles.tooltip}>
+                      <h3>{item.titre}</h3>
+                      <p>
+                        {collectivite} : {" "}
+                        <b>{(100 * item.sumCollectivite / total).toFixed(1)}%</b> {" "}
+                        ({(item.sumCollectivite/1000000).toFixed(1)} Mm³)
+                      </p>
+                      <p>
+                        Département {departement} : {" "}
+                        <b>{(100 * item.sumDptmt / totalDptmt).toFixed(1)}%</b> {" "}
+                        ({(item.sumDptmt/1000000).toFixed(1)} Mm³)
+                        </p>
+                    </div>
+                  }
+                  placement="top"
+                >
+                  <div key={index} className={styles.progressDataWrapper}>
+                    <div className={styles.progressDesign}>
+                      {item.icon}
+                      <div className={styles.progressBar}>
+                        <p>{item.titre}</p>
+                        <div className={styles.barMarker}>
+                          <Progress 
+                            percent={Number((100 * item.sumCollectivite / total))} 
+                            showInfo={false}
+                            strokeColor={item.color}
+                            size={["100%", 12]}
+                            style={{ width: "95%" }}
+                            type="line"
+                            trailColor="#F9F9FF"
+                          />
+                          <div style={{
+                            position: "relative",
+                            width: "100%",
+                            transform:`translate(${95 * item.sumDptmt / totalDptmt}%, -1.25rem)`}}>
+                            <div className={styles.marker}></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className={styles.progressNumbers}>
+                      <p><b>{(100 * item.sumCollectivite / total).toFixed(1)}%</b></p>
+                      <p>{(item.sumCollectivite/1000000).toFixed(1)} Mm³</p>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.progressNumbers}>
-              <p><b>{(100 * item.sumCollectivite / total).toFixed(1)}%</b></p>
-              <p>{(item.sumCollectivite/1000000).toFixed(1)} Mm³</p>
-            </div>
+                </HtmlTooltip>                
+              ))
+            }
+            <Image src={legendEpci} alt="" style={{alignSelf: "end"}}/>
+          </>
+        ) : (
+          <div style={{height:"inherit", alignContent: "center", textAlign:"center"}}>
+            Aucun prélèvement en eau trouvé en 2020 pour cette collectivité : {collectivite}
           </div>
-        </HtmlTooltip>                
-      ))
-    }
-    <Image src={legendEpci} alt="" style={{alignSelf: "end"}}/>
+        )
+      }
   </div>
 )};
 
