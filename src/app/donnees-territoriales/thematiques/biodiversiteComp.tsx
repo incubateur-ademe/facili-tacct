@@ -7,8 +7,9 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 
+import AgricultureBiologique from "@/components/themes/biodiversite/agricultureBio";
 import { StationsClassees } from "@/components/themes/biodiversite/stationsClassees";
-import { Biodiversite, CarteCommunes } from "@/lib/postgres/models";
+import { AgricultureBio, Biodiversite, CarteCommunes } from "@/lib/postgres/models";
 import { useStyles } from "tss-react/dsfr";
 import styles from "../donnees.module.scss";
 
@@ -22,6 +23,7 @@ interface Props {
   }>;
   biodiversite: Biodiversite[];
   carteCommunes: CarteCommunes[];
+  agricultureBio: AgricultureBio[];
 }
 
 const allComps = [
@@ -29,9 +31,13 @@ const allComps = [
     titre: "Stations classées",
     Component: ({biodiversite, data, carteCommunes}: Props & { activeDataTab: string }) => <StationsClassees biodiversite={biodiversite} data={data} carteCommunes={carteCommunes} />,
   },
+  {
+    titre: "Agriculture biologique",
+    Component: ({data, agricultureBio}: Props & { activeDataTab: string }) => <AgricultureBiologique data={data} agricultureBio={agricultureBio} />,
+  }
 ];
 
-const BiodiversiteComp = ({ data, biodiversite, carteCommunes }: Props) => {
+const BiodiversiteComp = ({ data, biodiversite, carteCommunes, agricultureBio }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState("A déterminer");
   const [selectedSubTab, setSelectedSubTab] = useState("Stations classées");
   const searchParams = useSearchParams();
@@ -59,8 +65,8 @@ const BiodiversiteComp = ({ data, biodiversite, carteCommunes }: Props) => {
             label: "A déterminer"
           },
           {
-            tabId: "Eau",
-            label: "Eau"
+            tabId: "Agriculture",
+            label: "Agriculture"
           }
         ]} 
         onTabChange={setSelectedTabId} 
@@ -118,6 +124,7 @@ const BiodiversiteComp = ({ data, biodiversite, carteCommunes }: Props) => {
                     biodiversite={biodiversite}
                     activeDataTab={selectedSubTab}
                     carteCommunes={carteCommunes}
+                    agricultureBio={agricultureBio}
                   />
                 );
               })()}
