@@ -110,6 +110,8 @@ const PrelevementEauBarChart = (
       couleur: "#BB43BD"
     }
   ]
+  const minValueXTicks = Math.min(...graphData.map(e => Number(e.annee)))
+  const maxValueXTicks = Math.max(...graphData.map(e => Number(e.annee)))
 
   return (
     graphData && graphData.length ? (
@@ -135,7 +137,7 @@ const PrelevementEauBarChart = (
           axisTop={null}
           axisRight={null}
           axisBottom={{
-            tickValues: sliderValue[0] != sliderValue[1] ? [sliderValue[0].toString(), sliderValue[1].toString()] : sliderValue[0].toString(),
+            tickValues: minValueXTicks != maxValueXTicks ? [`${minValueXTicks}`, `${maxValueXTicks}`] : [`${minValueXTicks}`],
             tickSize: 0,
             tickPadding: 15,
             renderTick: (e) => {
@@ -187,8 +189,7 @@ const PrelevementEauBarChart = (
               );
             }
           }}
-          labelSkipWidth={40}
-          labelSkipHeight={12}
+          enableLabel={false}
           legends={[
             {
               ...legendProps,
@@ -221,7 +222,7 @@ const PrelevementEauBarChart = (
                             <p>{el.titre}</p>
                           </div>
                           <div className={styles.value}>
-                            <p>{(Number(el.value) / 1000000).toFixed(1)}Mm³</p>
+                            <p>{(Number(el.value) / 1000000).toFixed(2)}Mm³</p>
                           </div>
                         </div>
                       )
