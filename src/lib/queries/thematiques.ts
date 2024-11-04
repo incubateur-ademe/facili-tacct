@@ -1,6 +1,6 @@
 "use server";
 
-import { Biodiversite, GestionRisques, InconfortThermique, RessourcesEau } from "@/lib/postgres/models";
+import { AgricultureBio, Biodiversite, GestionRisques, InconfortThermique, RessourcesEau } from "@/lib/postgres/models";
 import * as Sentry from "@sentry/nextjs";
 import { PrismaClient as PostgresClient } from "../../generated/client";
 
@@ -117,3 +117,21 @@ export const GetRessourceEau = async (code: string): Promise<RessourcesEau[]> =>
   }
 };
 
+export const GetAgricultureBio = async (code: string): Promise<AgricultureBio[]> => {
+  try {
+    console.time("Query Execution Time AGRICULTURE BIO");
+    const value = await PrismaPostgres.agriculture_bio.findMany({
+      where: {
+        epci: code,
+      },
+    });
+    console.timeEnd("Query Execution Time AGRICULTURE BIO");
+    Sentry.captureMessage(`Get Ressources en eau ${code}`, "info")
+    return value;
+  } catch (error) {
+    console.error(error);
+    Sentry.captureException(error);
+    await PrismaPostgres.$disconnect();
+    process.exit(1);
+  }
+};

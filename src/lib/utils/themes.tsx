@@ -60,8 +60,8 @@ export const themes = {
     },
     {
       id: 1,
-      titre: "Prélèvement en eau",
-      facteur_sensibilite: "Eau",
+      titre: "Agriculture biologique",
+      facteur_sensibilite: "Agriculture",
       risque: "",
       donnee: "",
     },

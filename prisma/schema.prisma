@@ -198,3 +198,21 @@ model ressources_eau {
   @@index([index], map: "ix_ressources_eau_index")
   @@schema("databases")
 }
+
+model agriculture_bio {
+  index              BigInt  @id
+  epci               String
+  VARIABLE           String
+  LIBELLE_SOUS_CHAMP String?
+  surface_2022       Float
+  surface_2021       Float
+  surface_2020       Float
+  surface_2019       Float
+  nombre_2022        Float
+  nombre_2021        Float
+  nombre_2020        Float
+  nombre_2019        Float
+
+  @@index([index], map: "ix_agriculture_bio_index")
+  @@schema("databases")
+}

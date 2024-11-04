@@ -1,6 +1,6 @@
 import { Loader } from '@/components/loader';
 import { GetCommunes } from '@/lib/queries/cartographie';
-import { GetBiodiversite } from '@/lib/queries/thematiques';
+import { GetAgricultureBio, GetBiodiversite } from '@/lib/queries/thematiques';
 import { themes } from "@/lib/utils/themes";
 import dynamic from 'next/dynamic';
 import styles from "../donnees.module.scss";
@@ -16,15 +16,16 @@ const Biodiversite = async (searchParams: SearchParams) => {
   const codgeo = searchParams.searchParams.codgeo;
   const dbBiodiversite = await GetBiodiversite(codepci);
   const carteCommunes = await GetCommunes(codepci);
+  const dbAgricultureBio = await GetAgricultureBio(codepci);
 
   return (
     <div>
-      {/* <NoticeComp title="Explorez des leviers d'action possibles en réduisant la sensibilité de votre territoire" /> */}
       <div className={styles.container}>
         <DynamicPageComp
           data={theme}
           biodiversite={dbBiodiversite!}
           carteCommunes={carteCommunes}
+          agricultureBio={dbAgricultureBio!}
         />
       </div>
     </div>
