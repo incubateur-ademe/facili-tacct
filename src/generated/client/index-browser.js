@@ -280,6 +280,21 @@ exports.Prisma.Ressources_eauScalarFieldEnum = {
   region: 'region'
 };
 
+exports.Prisma.Agriculture_bioScalarFieldEnum = {
+  index: 'index',
+  epci: 'epci',
+  VARIABLE: 'VARIABLE',
+  LIBELLE_SOUS_CHAMP: 'LIBELLE_SOUS_CHAMP',
+  surface_2022: 'surface_2022',
+  surface_2021: 'surface_2021',
+  surface_2020: 'surface_2020',
+  surface_2019: 'surface_2019',
+  nombre_2022: 'nombre_2022',
+  nombre_2021: 'nombre_2021',
+  nombre_2020: 'nombre_2020',
+  nombre_2019: 'nombre_2019'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -305,7 +320,8 @@ exports.Prisma.ModelName = {
   spatial_ref_sys: 'spatial_ref_sys',
   gestion_risques: 'gestion_risques',
   communes_drom: 'communes_drom',
-  ressources_eau: 'ressources_eau'
+  ressources_eau: 'ressources_eau',
+  agriculture_bio: 'agriculture_bio'
 };
 
 /**
