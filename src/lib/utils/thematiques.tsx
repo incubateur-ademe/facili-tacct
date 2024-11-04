@@ -42,12 +42,12 @@ export const thematiques = {
       category: "",
       imageUrl: "./inconfortThermiqueIcon.svg"
     },
-    // {
-    //   thematique: "Biodiversité",
-    //   id: 1,
-    //   category: "",
-    //   //   imageUrl: "./biodiversiteIcon.svg"
-    // },
+    {
+      thematique: "Biodiversité",
+      id: 1,
+      category: "",
+      imageUrl: "./biodiversiteIconBlue.svg"
+    },
     {
       thematique: "Gestion des risques",
       id: 2,
@@ -68,12 +68,12 @@ export const thematiques = {
       category: "",
       imageUrl: "./espacesNaturelsIcon.svg"
     },
-    {
-      thematique: "Biodiversité",
-      id: 1,
-      category: "",
-      imageUrl: "./biodiversiteIcon.svg"
-    },
+    // {
+    //   thematique: "Biodiversité",
+    //   id: 1,
+    //   category: "",
+    //   imageUrl: "./biodiversiteIcon.svg"
+    // },
   ],
   futur: [
     {

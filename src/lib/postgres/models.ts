@@ -102,6 +102,21 @@ export type RessourcesEau = {
   A2020: number | null;
 }
 
+export type AgricultureBio = {
+  index: bigint;
+  epci: string;
+  VARIABLE: string;
+  LIBELLE_SOUS_CHAMP: string | null;
+  surface_2022: number;
+  surface_2021: number;
+  surface_2020: number;
+  surface_2019: number;
+  nombre_2022: number;
+  nombre_2021: number;
+  nombre_2020: number;
+  nombre_2019: number;
+}
+
 export type CollectivitesSearchbar = {
   code_commune?: string | null;
   coordinates?: string | null;
