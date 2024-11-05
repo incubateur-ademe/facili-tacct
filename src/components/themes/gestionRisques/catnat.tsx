@@ -76,7 +76,6 @@ export const Catnat = (props: {
     <div>Les dommages dus aux vents cycloniques ne sont intégrés dans la garantie des catastrophes naturelles que depuis la fin de l'année 2000, lorsque la vitesse du vent dépasse 145 km/h pendant dix minutes, ou 215 km/h par rafale.</div>
     <div>Les catastrophes naturelles d’origine non climatiques (séismes, éruptions volcaniques, lave torrentielle, raz de marée) sont exclues du décompte.</div>
   </>
-  console.log("dataByCodeGeographique", dataByCodeGeographique)
   return (
     <>
       {gestionRisques ? (

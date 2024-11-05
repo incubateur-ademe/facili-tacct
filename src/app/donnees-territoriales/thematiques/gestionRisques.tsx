@@ -1,5 +1,5 @@
 import { Loader } from '@/components/loader';
-import { GetCommunes } from '@/lib/queries/cartographie';
+import { GetCommunes, GetErosionCotiere } from '@/lib/queries/cartographie';
 import { GetGestionRisques } from '@/lib/queries/thematiques';
 import { themes } from "@/lib/utils/themes";
 import dynamic from 'next/dynamic';
@@ -18,6 +18,7 @@ const GestionRisques = async (searchParams: SearchParams) => {
   : codepci ? await GetGestionRisques(codepci) 
   : void 0;
   const carteCommunes = await GetCommunes(codepci);
+  const erosionCotiere = await GetErosionCotiere();
   
   return (
     <div>
@@ -27,6 +28,7 @@ const GestionRisques = async (searchParams: SearchParams) => {
           data={theme}
           gestionRisques={dbGestionRisques!}
           carteCommunes={carteCommunes}
+          erosionCotiere={erosionCotiere}
         />
       </div>
     </div>

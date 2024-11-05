@@ -18,11 +18,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 5.20.0
- * Query Engine version: bf0e5e8a04cada8225617067eaa03d041e2bba36
+ * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
  */
 Prisma.prismaVersion = {
   client: "5.20.0",
-  engine: "bf0e5e8a04cada8225617067eaa03d041e2bba36"
+  engine: "605197351a3c8bdd595af2d2a9bc3025bca48ea2"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -295,6 +295,14 @@ exports.Prisma.Agriculture_bioScalarFieldEnum = {
   nombre_2019: 'nombre_2019'
 };
 
+exports.Prisma.Erosion_cotiereScalarFieldEnum = {
+  pk: 'pk',
+  taux: 'taux',
+  duree: 'duree',
+  tdc_ancien: 'tdc_ancien',
+  tdc_rec: 'tdc_rec'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -321,7 +329,8 @@ exports.Prisma.ModelName = {
   gestion_risques: 'gestion_risques',
   communes_drom: 'communes_drom',
   ressources_eau: 'ressources_eau',
-  agriculture_bio: 'agriculture_bio'
+  agriculture_bio: 'agriculture_bio',
+  erosion_cotiere: 'erosion_cotiere'
 };
 
 /**

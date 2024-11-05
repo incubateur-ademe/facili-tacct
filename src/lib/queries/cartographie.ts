@@ -1,6 +1,6 @@
 "use server";
 
-import { CarteCommunes, CLC } from "@/lib/postgres/models";
+import { CarteCommunes, CLC, ErosionCotiere } from "@/lib/postgres/models";
 import * as Sentry from "@sentry/nextjs";
 import { PrismaClient as PostgresClient } from "../../generated/client";
 
@@ -44,6 +44,24 @@ export const GetClcEpci = async (code: string): Promise<CLC[]> => {
       FROM postgis."clc_epci" WHERE epci_code=${code_number};`;
     // console.log(value);
     console.timeEnd("Query Execution Time GetClcEpci");
+    return value;
+  } catch (error) {
+    console.error(error);
+    await PrismaPostgres.$disconnect();
+    process.exit(1);
+  }
+};
+
+export const GetErosionCotiere = async (): Promise<ErosionCotiere[]> => {
+  try {
+    console.time("Query Execution Time ErosionCotiere");
+    const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
+      SELECT 
+      taux, 
+      ST_AsGeoJSON(geometry) geometry
+      FROM postgis."erosion_cotiere";`;
+    // console.log(value);
+    console.timeEnd("Query Execution Time ErosionCotiere");
     return value;
   } catch (error) {
     console.error(error);

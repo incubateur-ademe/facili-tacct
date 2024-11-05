@@ -105,3 +105,14 @@ export type ClcDto = {
   };
   type: string;
 };
+
+export type ErosionCotiereDto = {
+  geometry: {
+    coordinates: number[][][][];
+    type: string;
+  };
+  type: string;
+  properties: {
+    taux: number;
+  };
+};
