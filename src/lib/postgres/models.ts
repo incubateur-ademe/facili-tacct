@@ -150,6 +150,15 @@ export type CLC = {
   shape_length: number;
 };
 
+export type ErosionCotiere = {
+  pk: number;
+  taux: number;
+  duree: number;
+  tdc_ancien: number;
+  tdc_rec: number;
+  geometry: string;
+};
+
 export type DataGrandAge = {
   P20_POP80P?: number;
   P20_POP80P_PSEUL?: number;
