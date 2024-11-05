@@ -216,3 +216,15 @@ model agriculture_bio {
   @@index([index], map: "ix_agriculture_bio_index")
   @@schema("databases")
 }
+
+model erosion_cotiere {
+  pk         Int                     @id @default(autoincrement())
+  taux       Float
+  duree      Float
+  tdc_ancien BigInt
+  tdc_rec    BigInt
+  geometry   Unsupported("geometry")
+
+  @@index([geometry], map: "erosion_cotiere_geometry_geom_idx", type: Gist)
+  @@schema("postgis")
+}
