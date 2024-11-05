@@ -63,6 +63,11 @@ export type ressources_eau = $Result.DefaultSelection<Prisma.$ressources_eauPayl
  * 
  */
 export type agriculture_bio = $Result.DefaultSelection<Prisma.$agriculture_bioPayload>
+/**
+ * Model erosion_cotiere
+ * 
+ */
+export type erosion_cotiere = $Result.DefaultSelection<Prisma.$erosion_cotierePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -286,6 +291,16 @@ export class PrismaClient<
     * ```
     */
   get agriculture_bio(): Prisma.agriculture_bioDelegate<ExtArgs>;
+
+  /**
+   * `prisma.erosion_cotiere`: Exposes CRUD operations for the **erosion_cotiere** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Erosion_cotieres
+    * const erosion_cotieres = await prisma.erosion_cotiere.findMany()
+    * ```
+    */
+  get erosion_cotiere(): Prisma.erosion_cotiereDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -346,7 +361,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 5.20.0
-   * Query Engine version: bf0e5e8a04cada8225617067eaa03d041e2bba36
+   * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
    */
   export type PrismaVersion = {
     client: string
@@ -736,7 +751,8 @@ export namespace Prisma {
     gestion_risques: 'gestion_risques',
     communes_drom: 'communes_drom',
     ressources_eau: 'ressources_eau',
-    agriculture_bio: 'agriculture_bio'
+    agriculture_bio: 'agriculture_bio',
+    erosion_cotiere: 'erosion_cotiere'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -752,7 +768,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "inconfort_thermique" | "clc_epci" | "communes" | "collectivites_searchbar" | "biodiversite" | "spatial_ref_sys" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio"
+      modelProps: "inconfort_thermique" | "clc_epci" | "communes" | "collectivites_searchbar" | "biodiversite" | "spatial_ref_sys" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio" | "erosion_cotiere"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1437,6 +1453,60 @@ export namespace Prisma {
           count: {
             args: Prisma.agriculture_bioCountArgs<ExtArgs>
             result: $Utils.Optional<Agriculture_bioCountAggregateOutputType> | number
+          }
+        }
+      }
+      erosion_cotiere: {
+        payload: Prisma.$erosion_cotierePayload<ExtArgs>
+        fields: Prisma.erosion_cotiereFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.erosion_cotiereFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$erosion_cotierePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.erosion_cotiereFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$erosion_cotierePayload>
+          }
+          findFirst: {
+            args: Prisma.erosion_cotiereFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$erosion_cotierePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.erosion_cotiereFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$erosion_cotierePayload>
+          }
+          findMany: {
+            args: Prisma.erosion_cotiereFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$erosion_cotierePayload>[]
+          }
+          delete: {
+            args: Prisma.erosion_cotiereDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$erosion_cotierePayload>
+          }
+          update: {
+            args: Prisma.erosion_cotiereUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$erosion_cotierePayload>
+          }
+          deleteMany: {
+            args: Prisma.erosion_cotiereDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.erosion_cotiereUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          aggregate: {
+            args: Prisma.Erosion_cotiereAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateErosion_cotiere>
+          }
+          groupBy: {
+            args: Prisma.erosion_cotiereGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Erosion_cotiereGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.erosion_cotiereCountArgs<ExtArgs>
+            result: $Utils.Optional<Erosion_cotiereCountAggregateOutputType> | number
           }
         }
       }
@@ -12019,6 +12089,794 @@ export namespace Prisma {
 
 
   /**
+   * Model erosion_cotiere
+   */
+
+  export type AggregateErosion_cotiere = {
+    _count: Erosion_cotiereCountAggregateOutputType | null
+    _avg: Erosion_cotiereAvgAggregateOutputType | null
+    _sum: Erosion_cotiereSumAggregateOutputType | null
+    _min: Erosion_cotiereMinAggregateOutputType | null
+    _max: Erosion_cotiereMaxAggregateOutputType | null
+  }
+
+  export type Erosion_cotiereAvgAggregateOutputType = {
+    pk: number | null
+    taux: number | null
+    duree: number | null
+    tdc_ancien: number | null
+    tdc_rec: number | null
+  }
+
+  export type Erosion_cotiereSumAggregateOutputType = {
+    pk: number | null
+    taux: number | null
+    duree: number | null
+    tdc_ancien: bigint | null
+    tdc_rec: bigint | null
+  }
+
+  export type Erosion_cotiereMinAggregateOutputType = {
+    pk: number | null
+    taux: number | null
+    duree: number | null
+    tdc_ancien: bigint | null
+    tdc_rec: bigint | null
+  }
+
+  export type Erosion_cotiereMaxAggregateOutputType = {
+    pk: number | null
+    taux: number | null
+    duree: number | null
+    tdc_ancien: bigint | null
+    tdc_rec: bigint | null
+  }
+
+  export type Erosion_cotiereCountAggregateOutputType = {
+    pk: number
+    taux: number
+    duree: number
+    tdc_ancien: number
+    tdc_rec: number
+    _all: number
+  }
+
+
+  export type Erosion_cotiereAvgAggregateInputType = {
+    pk?: true
+    taux?: true
+    duree?: true
+    tdc_ancien?: true
+    tdc_rec?: true
+  }
+
+  export type Erosion_cotiereSumAggregateInputType = {
+    pk?: true
+    taux?: true
+    duree?: true
+    tdc_ancien?: true
+    tdc_rec?: true
+  }
+
+  export type Erosion_cotiereMinAggregateInputType = {
+    pk?: true
+    taux?: true
+    duree?: true
+    tdc_ancien?: true
+    tdc_rec?: true
+  }
+
+  export type Erosion_cotiereMaxAggregateInputType = {
+    pk?: true
+    taux?: true
+    duree?: true
+    tdc_ancien?: true
+    tdc_rec?: true
+  }
+
+  export type Erosion_cotiereCountAggregateInputType = {
+    pk?: true
+    taux?: true
+    duree?: true
+    tdc_ancien?: true
+    tdc_rec?: true
+    _all?: true
+  }
+
+  export type Erosion_cotiereAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which erosion_cotiere to aggregate.
+     */
+    where?: erosion_cotiereWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of erosion_cotieres to fetch.
+     */
+    orderBy?: erosion_cotiereOrderByWithRelationInput | erosion_cotiereOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: erosion_cotiereWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` erosion_cotieres from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` erosion_cotieres.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned erosion_cotieres
+    **/
+    _count?: true | Erosion_cotiereCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Erosion_cotiereAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Erosion_cotiereSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Erosion_cotiereMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Erosion_cotiereMaxAggregateInputType
+  }
+
+  export type GetErosion_cotiereAggregateType<T extends Erosion_cotiereAggregateArgs> = {
+        [P in keyof T & keyof AggregateErosion_cotiere]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateErosion_cotiere[P]>
+      : GetScalarType<T[P], AggregateErosion_cotiere[P]>
+  }
+
+
+
+
+  export type erosion_cotiereGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: erosion_cotiereWhereInput
+    orderBy?: erosion_cotiereOrderByWithAggregationInput | erosion_cotiereOrderByWithAggregationInput[]
+    by: Erosion_cotiereScalarFieldEnum[] | Erosion_cotiereScalarFieldEnum
+    having?: erosion_cotiereScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Erosion_cotiereCountAggregateInputType | true
+    _avg?: Erosion_cotiereAvgAggregateInputType
+    _sum?: Erosion_cotiereSumAggregateInputType
+    _min?: Erosion_cotiereMinAggregateInputType
+    _max?: Erosion_cotiereMaxAggregateInputType
+  }
+
+  export type Erosion_cotiereGroupByOutputType = {
+    pk: number
+    taux: number
+    duree: number
+    tdc_ancien: bigint
+    tdc_rec: bigint
+    _count: Erosion_cotiereCountAggregateOutputType | null
+    _avg: Erosion_cotiereAvgAggregateOutputType | null
+    _sum: Erosion_cotiereSumAggregateOutputType | null
+    _min: Erosion_cotiereMinAggregateOutputType | null
+    _max: Erosion_cotiereMaxAggregateOutputType | null
+  }
+
+  type GetErosion_cotiereGroupByPayload<T extends erosion_cotiereGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Erosion_cotiereGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Erosion_cotiereGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Erosion_cotiereGroupByOutputType[P]>
+            : GetScalarType<T[P], Erosion_cotiereGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type erosion_cotiereSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    taux?: boolean
+    duree?: boolean
+    tdc_ancien?: boolean
+    tdc_rec?: boolean
+  }, ExtArgs["result"]["erosion_cotiere"]>
+
+
+  export type erosion_cotiereSelectScalar = {
+    pk?: boolean
+    taux?: boolean
+    duree?: boolean
+    tdc_ancien?: boolean
+    tdc_rec?: boolean
+  }
+
+
+  export type $erosion_cotierePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "erosion_cotiere"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      taux: number
+      duree: number
+      tdc_ancien: bigint
+      tdc_rec: bigint
+    }, ExtArgs["result"]["erosion_cotiere"]>
+    composites: {}
+  }
+
+  type erosion_cotiereGetPayload<S extends boolean | null | undefined | erosion_cotiereDefaultArgs> = $Result.GetResult<Prisma.$erosion_cotierePayload, S>
+
+  type erosion_cotiereCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<erosion_cotiereFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Erosion_cotiereCountAggregateInputType | true
+    }
+
+  export interface erosion_cotiereDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['erosion_cotiere'], meta: { name: 'erosion_cotiere' } }
+    /**
+     * Find zero or one Erosion_cotiere that matches the filter.
+     * @param {erosion_cotiereFindUniqueArgs} args - Arguments to find a Erosion_cotiere
+     * @example
+     * // Get one Erosion_cotiere
+     * const erosion_cotiere = await prisma.erosion_cotiere.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends erosion_cotiereFindUniqueArgs>(args: SelectSubset<T, erosion_cotiereFindUniqueArgs<ExtArgs>>): Prisma__erosion_cotiereClient<$Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Erosion_cotiere that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {erosion_cotiereFindUniqueOrThrowArgs} args - Arguments to find a Erosion_cotiere
+     * @example
+     * // Get one Erosion_cotiere
+     * const erosion_cotiere = await prisma.erosion_cotiere.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends erosion_cotiereFindUniqueOrThrowArgs>(args: SelectSubset<T, erosion_cotiereFindUniqueOrThrowArgs<ExtArgs>>): Prisma__erosion_cotiereClient<$Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Erosion_cotiere that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {erosion_cotiereFindFirstArgs} args - Arguments to find a Erosion_cotiere
+     * @example
+     * // Get one Erosion_cotiere
+     * const erosion_cotiere = await prisma.erosion_cotiere.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends erosion_cotiereFindFirstArgs>(args?: SelectSubset<T, erosion_cotiereFindFirstArgs<ExtArgs>>): Prisma__erosion_cotiereClient<$Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Erosion_cotiere that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {erosion_cotiereFindFirstOrThrowArgs} args - Arguments to find a Erosion_cotiere
+     * @example
+     * // Get one Erosion_cotiere
+     * const erosion_cotiere = await prisma.erosion_cotiere.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends erosion_cotiereFindFirstOrThrowArgs>(args?: SelectSubset<T, erosion_cotiereFindFirstOrThrowArgs<ExtArgs>>): Prisma__erosion_cotiereClient<$Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Erosion_cotieres that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {erosion_cotiereFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Erosion_cotieres
+     * const erosion_cotieres = await prisma.erosion_cotiere.findMany()
+     * 
+     * // Get first 10 Erosion_cotieres
+     * const erosion_cotieres = await prisma.erosion_cotiere.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const erosion_cotiereWithPkOnly = await prisma.erosion_cotiere.findMany({ select: { pk: true } })
+     * 
+     */
+    findMany<T extends erosion_cotiereFindManyArgs>(args?: SelectSubset<T, erosion_cotiereFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Delete a Erosion_cotiere.
+     * @param {erosion_cotiereDeleteArgs} args - Arguments to delete one Erosion_cotiere.
+     * @example
+     * // Delete one Erosion_cotiere
+     * const Erosion_cotiere = await prisma.erosion_cotiere.delete({
+     *   where: {
+     *     // ... filter to delete one Erosion_cotiere
+     *   }
+     * })
+     * 
+     */
+    delete<T extends erosion_cotiereDeleteArgs>(args: SelectSubset<T, erosion_cotiereDeleteArgs<ExtArgs>>): Prisma__erosion_cotiereClient<$Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Erosion_cotiere.
+     * @param {erosion_cotiereUpdateArgs} args - Arguments to update one Erosion_cotiere.
+     * @example
+     * // Update one Erosion_cotiere
+     * const erosion_cotiere = await prisma.erosion_cotiere.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends erosion_cotiereUpdateArgs>(args: SelectSubset<T, erosion_cotiereUpdateArgs<ExtArgs>>): Prisma__erosion_cotiereClient<$Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Erosion_cotieres.
+     * @param {erosion_cotiereDeleteManyArgs} args - Arguments to filter Erosion_cotieres to delete.
+     * @example
+     * // Delete a few Erosion_cotieres
+     * const { count } = await prisma.erosion_cotiere.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends erosion_cotiereDeleteManyArgs>(args?: SelectSubset<T, erosion_cotiereDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Erosion_cotieres.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {erosion_cotiereUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Erosion_cotieres
+     * const erosion_cotiere = await prisma.erosion_cotiere.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends erosion_cotiereUpdateManyArgs>(args: SelectSubset<T, erosion_cotiereUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+
+    /**
+     * Count the number of Erosion_cotieres.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {erosion_cotiereCountArgs} args - Arguments to filter Erosion_cotieres to count.
+     * @example
+     * // Count the number of Erosion_cotieres
+     * const count = await prisma.erosion_cotiere.count({
+     *   where: {
+     *     // ... the filter for the Erosion_cotieres we want to count
+     *   }
+     * })
+    **/
+    count<T extends erosion_cotiereCountArgs>(
+      args?: Subset<T, erosion_cotiereCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Erosion_cotiereCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Erosion_cotiere.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Erosion_cotiereAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Erosion_cotiereAggregateArgs>(args: Subset<T, Erosion_cotiereAggregateArgs>): Prisma.PrismaPromise<GetErosion_cotiereAggregateType<T>>
+
+    /**
+     * Group by Erosion_cotiere.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {erosion_cotiereGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends erosion_cotiereGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: erosion_cotiereGroupByArgs['orderBy'] }
+        : { orderBy?: erosion_cotiereGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, erosion_cotiereGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetErosion_cotiereGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the erosion_cotiere model
+   */
+  readonly fields: erosion_cotiereFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for erosion_cotiere.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__erosion_cotiereClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the erosion_cotiere model
+   */ 
+  interface erosion_cotiereFieldRefs {
+    readonly pk: FieldRef<"erosion_cotiere", 'Int'>
+    readonly taux: FieldRef<"erosion_cotiere", 'Float'>
+    readonly duree: FieldRef<"erosion_cotiere", 'Float'>
+    readonly tdc_ancien: FieldRef<"erosion_cotiere", 'BigInt'>
+    readonly tdc_rec: FieldRef<"erosion_cotiere", 'BigInt'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * erosion_cotiere findUnique
+   */
+  export type erosion_cotiereFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+    /**
+     * Filter, which erosion_cotiere to fetch.
+     */
+    where: erosion_cotiereWhereUniqueInput
+  }
+
+  /**
+   * erosion_cotiere findUniqueOrThrow
+   */
+  export type erosion_cotiereFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+    /**
+     * Filter, which erosion_cotiere to fetch.
+     */
+    where: erosion_cotiereWhereUniqueInput
+  }
+
+  /**
+   * erosion_cotiere findFirst
+   */
+  export type erosion_cotiereFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+    /**
+     * Filter, which erosion_cotiere to fetch.
+     */
+    where?: erosion_cotiereWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of erosion_cotieres to fetch.
+     */
+    orderBy?: erosion_cotiereOrderByWithRelationInput | erosion_cotiereOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for erosion_cotieres.
+     */
+    cursor?: erosion_cotiereWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` erosion_cotieres from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` erosion_cotieres.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of erosion_cotieres.
+     */
+    distinct?: Erosion_cotiereScalarFieldEnum | Erosion_cotiereScalarFieldEnum[]
+  }
+
+  /**
+   * erosion_cotiere findFirstOrThrow
+   */
+  export type erosion_cotiereFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+    /**
+     * Filter, which erosion_cotiere to fetch.
+     */
+    where?: erosion_cotiereWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of erosion_cotieres to fetch.
+     */
+    orderBy?: erosion_cotiereOrderByWithRelationInput | erosion_cotiereOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for erosion_cotieres.
+     */
+    cursor?: erosion_cotiereWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` erosion_cotieres from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` erosion_cotieres.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of erosion_cotieres.
+     */
+    distinct?: Erosion_cotiereScalarFieldEnum | Erosion_cotiereScalarFieldEnum[]
+  }
+
+  /**
+   * erosion_cotiere findMany
+   */
+  export type erosion_cotiereFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+    /**
+     * Filter, which erosion_cotieres to fetch.
+     */
+    where?: erosion_cotiereWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of erosion_cotieres to fetch.
+     */
+    orderBy?: erosion_cotiereOrderByWithRelationInput | erosion_cotiereOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing erosion_cotieres.
+     */
+    cursor?: erosion_cotiereWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` erosion_cotieres from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` erosion_cotieres.
+     */
+    skip?: number
+    distinct?: Erosion_cotiereScalarFieldEnum | Erosion_cotiereScalarFieldEnum[]
+  }
+
+  /**
+   * erosion_cotiere update
+   */
+  export type erosion_cotiereUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+    /**
+     * The data needed to update a erosion_cotiere.
+     */
+    data: XOR<erosion_cotiereUpdateInput, erosion_cotiereUncheckedUpdateInput>
+    /**
+     * Choose, which erosion_cotiere to update.
+     */
+    where: erosion_cotiereWhereUniqueInput
+  }
+
+  /**
+   * erosion_cotiere updateMany
+   */
+  export type erosion_cotiereUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update erosion_cotieres.
+     */
+    data: XOR<erosion_cotiereUpdateManyMutationInput, erosion_cotiereUncheckedUpdateManyInput>
+    /**
+     * Filter which erosion_cotieres to update
+     */
+    where?: erosion_cotiereWhereInput
+  }
+
+  /**
+   * erosion_cotiere delete
+   */
+  export type erosion_cotiereDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+    /**
+     * Filter which erosion_cotiere to delete.
+     */
+    where: erosion_cotiereWhereUniqueInput
+  }
+
+  /**
+   * erosion_cotiere deleteMany
+   */
+  export type erosion_cotiereDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which erosion_cotieres to delete
+     */
+    where?: erosion_cotiereWhereInput
+  }
+
+  /**
+   * erosion_cotiere without action
+   */
+  export type erosion_cotiereDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -12233,6 +13091,17 @@ export namespace Prisma {
   };
 
   export type Agriculture_bioScalarFieldEnum = (typeof Agriculture_bioScalarFieldEnum)[keyof typeof Agriculture_bioScalarFieldEnum]
+
+
+  export const Erosion_cotiereScalarFieldEnum: {
+    pk: 'pk',
+    taux: 'taux',
+    duree: 'duree',
+    tdc_ancien: 'tdc_ancien',
+    tdc_rec: 'tdc_rec'
+  };
+
+  export type Erosion_cotiereScalarFieldEnum = (typeof Erosion_cotiereScalarFieldEnum)[keyof typeof Erosion_cotiereScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -13326,6 +14195,60 @@ export namespace Prisma {
     nombre_2021?: FloatWithAggregatesFilter<"agriculture_bio"> | number
     nombre_2020?: FloatWithAggregatesFilter<"agriculture_bio"> | number
     nombre_2019?: FloatWithAggregatesFilter<"agriculture_bio"> | number
+  }
+
+  export type erosion_cotiereWhereInput = {
+    AND?: erosion_cotiereWhereInput | erosion_cotiereWhereInput[]
+    OR?: erosion_cotiereWhereInput[]
+    NOT?: erosion_cotiereWhereInput | erosion_cotiereWhereInput[]
+    pk?: IntFilter<"erosion_cotiere"> | number
+    taux?: FloatFilter<"erosion_cotiere"> | number
+    duree?: FloatFilter<"erosion_cotiere"> | number
+    tdc_ancien?: BigIntFilter<"erosion_cotiere"> | bigint | number
+    tdc_rec?: BigIntFilter<"erosion_cotiere"> | bigint | number
+  }
+
+  export type erosion_cotiereOrderByWithRelationInput = {
+    pk?: SortOrder
+    taux?: SortOrder
+    duree?: SortOrder
+    tdc_ancien?: SortOrder
+    tdc_rec?: SortOrder
+  }
+
+  export type erosion_cotiereWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: erosion_cotiereWhereInput | erosion_cotiereWhereInput[]
+    OR?: erosion_cotiereWhereInput[]
+    NOT?: erosion_cotiereWhereInput | erosion_cotiereWhereInput[]
+    taux?: FloatFilter<"erosion_cotiere"> | number
+    duree?: FloatFilter<"erosion_cotiere"> | number
+    tdc_ancien?: BigIntFilter<"erosion_cotiere"> | bigint | number
+    tdc_rec?: BigIntFilter<"erosion_cotiere"> | bigint | number
+  }, "pk">
+
+  export type erosion_cotiereOrderByWithAggregationInput = {
+    pk?: SortOrder
+    taux?: SortOrder
+    duree?: SortOrder
+    tdc_ancien?: SortOrder
+    tdc_rec?: SortOrder
+    _count?: erosion_cotiereCountOrderByAggregateInput
+    _avg?: erosion_cotiereAvgOrderByAggregateInput
+    _max?: erosion_cotiereMaxOrderByAggregateInput
+    _min?: erosion_cotiereMinOrderByAggregateInput
+    _sum?: erosion_cotiereSumOrderByAggregateInput
+  }
+
+  export type erosion_cotiereScalarWhereWithAggregatesInput = {
+    AND?: erosion_cotiereScalarWhereWithAggregatesInput | erosion_cotiereScalarWhereWithAggregatesInput[]
+    OR?: erosion_cotiereScalarWhereWithAggregatesInput[]
+    NOT?: erosion_cotiereScalarWhereWithAggregatesInput | erosion_cotiereScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"erosion_cotiere"> | number
+    taux?: FloatWithAggregatesFilter<"erosion_cotiere"> | number
+    duree?: FloatWithAggregatesFilter<"erosion_cotiere"> | number
+    tdc_ancien?: BigIntWithAggregatesFilter<"erosion_cotiere"> | bigint | number
+    tdc_rec?: BigIntWithAggregatesFilter<"erosion_cotiere"> | bigint | number
   }
 
   export type inconfort_thermiqueCreateInput = {
@@ -14498,6 +15421,36 @@ export namespace Prisma {
     nombre_2019?: FloatFieldUpdateOperationsInput | number
   }
 
+  export type erosion_cotiereUpdateInput = {
+    taux?: FloatFieldUpdateOperationsInput | number
+    duree?: FloatFieldUpdateOperationsInput | number
+    tdc_ancien?: BigIntFieldUpdateOperationsInput | bigint | number
+    tdc_rec?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type erosion_cotiereUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    taux?: FloatFieldUpdateOperationsInput | number
+    duree?: FloatFieldUpdateOperationsInput | number
+    tdc_ancien?: BigIntFieldUpdateOperationsInput | bigint | number
+    tdc_rec?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type erosion_cotiereUpdateManyMutationInput = {
+    taux?: FloatFieldUpdateOperationsInput | number
+    duree?: FloatFieldUpdateOperationsInput | number
+    tdc_ancien?: BigIntFieldUpdateOperationsInput | bigint | number
+    tdc_rec?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type erosion_cotiereUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    taux?: FloatFieldUpdateOperationsInput | number
+    duree?: FloatFieldUpdateOperationsInput | number
+    tdc_ancien?: BigIntFieldUpdateOperationsInput | bigint | number
+    tdc_rec?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -15465,6 +16418,46 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type erosion_cotiereCountOrderByAggregateInput = {
+    pk?: SortOrder
+    taux?: SortOrder
+    duree?: SortOrder
+    tdc_ancien?: SortOrder
+    tdc_rec?: SortOrder
+  }
+
+  export type erosion_cotiereAvgOrderByAggregateInput = {
+    pk?: SortOrder
+    taux?: SortOrder
+    duree?: SortOrder
+    tdc_ancien?: SortOrder
+    tdc_rec?: SortOrder
+  }
+
+  export type erosion_cotiereMaxOrderByAggregateInput = {
+    pk?: SortOrder
+    taux?: SortOrder
+    duree?: SortOrder
+    tdc_ancien?: SortOrder
+    tdc_rec?: SortOrder
+  }
+
+  export type erosion_cotiereMinOrderByAggregateInput = {
+    pk?: SortOrder
+    taux?: SortOrder
+    duree?: SortOrder
+    tdc_ancien?: SortOrder
+    tdc_rec?: SortOrder
+  }
+
+  export type erosion_cotiereSumOrderByAggregateInput = {
+    pk?: SortOrder
+    taux?: SortOrder
+    duree?: SortOrder
+    tdc_ancien?: SortOrder
+    tdc_rec?: SortOrder
+  }
+
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number
     increment?: bigint | number
@@ -15755,6 +16748,10 @@ export namespace Prisma {
      * @deprecated Use agriculture_bioDefaultArgs instead
      */
     export type agriculture_bioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = agriculture_bioDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use erosion_cotiereDefaultArgs instead
+     */
+    export type erosion_cotiereArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = erosion_cotiereDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
