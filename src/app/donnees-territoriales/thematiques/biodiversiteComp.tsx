@@ -38,8 +38,8 @@ const allComps = [
 ];
 
 const BiodiversiteComp = ({ data, biodiversite, carteCommunes, agricultureBio }: Props) => {
-  const [selectedTabId, setSelectedTabId] = useState("A déterminer");
-  const [selectedSubTab, setSelectedSubTab] = useState("Stations classées");
+  const [selectedTabId, setSelectedTabId] = useState("Agriculture");
+  const [selectedSubTab, setSelectedSubTab] = useState("Agriculture biologique");
   const searchParams = useSearchParams();
   const codepci = searchParams.get("codepci")!;
   const { isDark } = useIsDark();
@@ -60,10 +60,10 @@ const BiodiversiteComp = ({ data, biodiversite, carteCommunes, agricultureBio }:
       <Tabs 
         selectedTabId={selectedTabId} 
         tabs={[
-          {
-            tabId: "A déterminer",
-            label: "A déterminer"
-          },
+          // {
+          //   tabId: "A déterminer",
+          //   label: "A déterminer"
+          // },
           {
             tabId: "Agriculture",
             label: "Agriculture"

@@ -95,7 +95,7 @@ const PrelevementEauProgressBars = ({ ressourcesEau }: { ressourcesEau: Ressourc
     ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("total")), "A2020"
   );
   const total = Filter(ressourcesEau, codgeo, codepci, "total", "A2020") === 0 ? 1 : Filter(ressourcesEau, codgeo, codepci, "total", "A2020");
-  const collectivite = codgeo ? ressourcesEau.filter((obj) => obj.code_geographique === codgeo)[0].libelle_geographique : ressourcesEau.filter((obj) => obj.epci === codepci)[0].libelle_epci;
+  const collectivite = codgeo ? ressourcesEau.filter((obj) => obj.code_geographique === codgeo)[0]?.libelle_geographique : ressourcesEau.filter((obj) => obj.epci === codepci)[0]?.libelle_epci;
   const departement = ressourcesEau[0].departement
 
   return (

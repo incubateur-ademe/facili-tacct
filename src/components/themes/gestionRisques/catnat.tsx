@@ -76,6 +76,7 @@ export const Catnat = (props: {
     <div>Les dommages dus aux vents cycloniques ne sont intégrés dans la garantie des catastrophes naturelles que depuis la fin de l'année 2000, lorsque la vitesse du vent dépasse 145 km/h pendant dix minutes, ou 215 km/h par rafale.</div>
     <div>Les catastrophes naturelles d’origine non climatiques (séismes, éruptions volcaniques, lave torrentielle, raz de marée) sont exclues du décompte.</div>
   </>
+  console.log("dataByCodeGeographique", dataByCodeGeographique)
   return (
     <>
       {gestionRisques ? (
@@ -83,7 +84,7 @@ export const Catnat = (props: {
           <div className="w-1/3">
             <div className={styles.explicationWrapper}>
               {
-                dataByCodeGeographique[0].sumCatnat === 0 ? (
+                dataByCodeGeographique[0]?.sumCatnat === 0 ? (
                   <p>
                     L’absence d’arrêté CatNat ne signifie pas que votre territoire n’a jamais connu d’événements climatiques importants, ni subis de dégâts significatifs. 
                   </p>
