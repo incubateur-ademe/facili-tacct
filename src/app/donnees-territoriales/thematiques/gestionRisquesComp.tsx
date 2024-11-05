@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 
 
 import { Catnat } from "@/components/themes/gestionRisques/catnat";
-import { CarteCommunes, GestionRisques } from "@/lib/postgres/models";
+import ErosionCotes from "@/components/themes/gestionRisques/erosionCotiere";
+import { CarteCommunes, ErosionCotiere, GestionRisques } from "@/lib/postgres/models";
 import { TabTooltip } from "@/lib/utils/TabTooltip";
 import { useStyles } from "tss-react/dsfr";
 import styles from "../donnees.module.scss";
@@ -23,6 +24,7 @@ interface Props {
   }>;
   gestionRisques: GestionRisques[];
   carteCommunes: CarteCommunes[];
+  erosionCotiere: ErosionCotiere[];
 }
 
 const allComps = [
@@ -30,9 +32,13 @@ const allComps = [
     titre: "catnat",
     Component: ({gestionRisques, data, carteCommunes}: Props & { activeDataTab: string }) => <Catnat gestionRisques={gestionRisques} data={data} carteCommunes={carteCommunes} />,
   },
+  {
+    titre: "Érosion côtière",
+    Component: ({ erosionCotiere }: Props & { activeDataTab: string }) => <ErosionCotes erosionCotiere={erosionCotiere} />,
+  },
 ];
 
-const GestionRisquesComp = ({ data, gestionRisques, carteCommunes }: Props) => {
+const GestionRisquesComp = ({ data, gestionRisques, carteCommunes, erosionCotiere }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState("Arrêtés catastrophes naturelles");
   const [selectedSubTab, setSelectedSubTab] = useState("catnat");
   const searchParams = useSearchParams();
@@ -70,6 +76,10 @@ const GestionRisquesComp = ({ data, gestionRisques, carteCommunes }: Props) => {
               titre="Arrêtés catastrophes naturelles"
             /> 
           },
+          {
+            tabId: "Érosion côtière",
+            label: "Érosion côtière"
+          }
         ]} 
         onTabChange={setSelectedTabId} 
         className={css({
@@ -126,6 +136,7 @@ const GestionRisquesComp = ({ data, gestionRisques, carteCommunes }: Props) => {
                     gestionRisques={gestionRisques}
                     activeDataTab={selectedSubTab}
                     carteCommunes={carteCommunes}
+                    erosionCotiere={erosionCotiere}
                   />
                 );
               })()}

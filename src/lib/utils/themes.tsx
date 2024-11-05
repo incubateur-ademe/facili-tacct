@@ -85,8 +85,8 @@ export const themes = {
     },
     {
       id: 1,
-      titre: "Lorem",
-      facteur_sensibilite: "A déterminer",
+      titre: "Érosion côtière",
+      facteur_sensibilite: "Érosion côtière",
       risque: "",
       donnee: "",
     },
