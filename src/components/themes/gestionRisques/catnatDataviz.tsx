@@ -65,7 +65,7 @@ const CatnatDataViz = (props: Props) => {
                 data={["Tous types", ...typesRisques]}
                 defaultTab={typeRisqueValue}
                 setValue={setTypeRisqueValue}
-                maxWidth="60%"
+                maxWidth="65%"
                 borderRight="solid 1px #D6D6F0"
               />
               <RangeSlider
@@ -74,8 +74,9 @@ const CatnatDataViz = (props: Props) => {
                 minDist={1}
                 setSliderValue={setSliderValue}
                 sliderValue={sliderValue}
-                width={270}
-                padding={"0 1rem 0 0"}
+                width={"-webkit-fill-available"}
+                padding={"0 1rem 0 2rem"}
+                maxWidth="70%"
               />
             </div>
             <BarChartCatnat gestionRisques={gestionRisquesBarChart} />
