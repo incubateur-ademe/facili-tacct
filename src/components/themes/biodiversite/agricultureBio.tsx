@@ -33,11 +33,14 @@ const AgricultureBiologique = (props: {
             </div>
             <div className="px-4">
               <p>
-                Integer ac diam. Nullam porttitor dolor eget metus. Nulla sed metus quis tortor lacinia tempor. 
-                Mauris mauris dui, faucibus vitae, aliquet sit amet, placerat a, ante. Nunc placerat tincidunt neque. 
-                Mauris egestas dolor ut ipsum cursus malesuada. Curabitur odio. Nunc lobortis. Sed mattis tempor felis.
-                 Mauris dolor quam, facilisis at, bibendum sit amet, rutrum ornare, pede. Suspendisse accumsan sagittis velit. 
-                 Pellentesque varius laoreet lorem. Vivamus egestas sapien id diam.
+                Cet indicateur fait partie du kit des indicateurs de développement durable fourni dans le cadre de l’Agenda 2030 et 
+                des 17 Objectifs de Développement Durable (ODD)
+              </p>
+              <p>
+                L’agriculture biologique regroupe un ensemble de pratiques agricoles respectueuses des équilibres écologiques qui 
+                contribue à la préservation des sols et des ressources naturelles (non-utilisation de produits chimiques de synthèse, 
+                la non-utilisation d'OGM, le recyclage des matières organiques, la rotation des cultures et la lutte biologique). 
+                L'agriculture biologique apporte une réponse essentielle à la préservation de notre environnement. 
               </p>
             </div>
           </div>
