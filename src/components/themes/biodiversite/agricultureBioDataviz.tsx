@@ -47,7 +47,7 @@ const AgricultureBioDataViz = ({
         )
       }
       <p style={{ padding: "1em", margin: "0" }}>
-        Source : <b style={{ color: "#0063CB" }}>XXXXXXX</b>
+        Source : <b style={{ color: "#0063CB" }}>Catalogue DiDo</b>
       </p>
     </div>
   )

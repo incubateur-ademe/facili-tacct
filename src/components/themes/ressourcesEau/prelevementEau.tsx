@@ -40,7 +40,7 @@ export const PrelevementEau = (props: {
           <div className="w-5/12">
             <div className={styles.explicationWrapper}>
               <p>
-                XXXXXXXXXXXXXXX 
+                Le volume total des prélèvements en eau de votre territoire en 2022 est de [X] m3, soit l’équivalent de [X] piscines olympiques.  
               </p>
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?"/>
             </div>
