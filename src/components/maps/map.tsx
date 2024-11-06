@@ -92,13 +92,17 @@ export const Map = (props: {
     });
     layer.bringToFront();
     if (data === "densite_bati" && commune_name && densite_bati) {
-      layer.bindPopup(`<div>${commune_name}</div><div>Densité du bâti : ${densite_bati}</div>`);
-      layer.openPopup();
-    } else {
-      layer.bindPopup(
-        `<div>${commune_name}</div><div>Part des ménages en précarité : ${(100 * Number(precarite_logement)).toFixed(0)}%</div>`,
+      layer.bindTooltip(
+        `<div>${commune_name}</div><div>Densité du bâti : ${densite_bati}</div>`,
+        { direction: "top" },
       );
-      layer.openPopup();
+      layer.openTooltip();
+    } else {
+      layer.bindTooltip(
+        `<div>${commune_name}</div><div>Part des ménages en précarité : ${(100 * Number(precarite_logement)).toFixed(0)}%</div>`, 
+        { direction: "top" },
+      );
+      layer.openTooltip();
     }
   };
 
@@ -110,7 +114,7 @@ export const Map = (props: {
       color: "#000000",
       fillOpacity: 0.6,
     });
-    layer.closePopup();
+    layer.closeTooltip();
   };
 
   const onEachFeature = (feature: Feature<Any>, layer: Layer) => {

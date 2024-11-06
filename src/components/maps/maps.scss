@@ -1,29 +1,16 @@
-// .leaflet-popup {
-//   position: relative;
-//   left: 82% !important;
-//   top: 3% !important;
-//   transform: none !important;
-//   margin: 0 !important;
-//   -webkit-transition: none !important;
-//   -moz-transition: none !important;
-//   -o-transition: none !important;
-//   transition: none !important;
-// }
-
-// .leaflet-popup-tip-container {
-//   display: none;
-// }
-
-// .leaflet-popup-content-wrapper {
-//   color: #000092;
-// }
-
-// .leaflet-popup-content-wrapper .leaflet-popup-content {
-// }
-
 .leaflet-interactive {
     cursor: grab;
 }
 .leaflet-hover {
     cursor: pointer;
 }
+
+// .leaflet-tooltip {
+//     transform: none !important;
+// }
+
+// .leaflet-tooltip-top:before {
+//     bottom: 0;
+//     margin-bottom: 0;
+//     border-top-color: transparent;
+// }
