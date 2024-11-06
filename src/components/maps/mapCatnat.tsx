@@ -136,13 +136,10 @@ export const MapCatnat = (props: {
       color: "#0D2100",
       fillOpacity: 0.9,
     });
+    layer.bindTooltip(CustomTooltip(restCatnat, commune_name as string), { direction: "top" });
+    layer.openTooltip();
     layer.bringToFront();
-    if (typeRisqueValue === "Tous types") {
-      layer.bindPopup(CustomTooltip(restCatnat, commune_name as string));
-    } else {
-      layer.bindPopup(CustomTooltip(restCatnat, commune_name as string));
-    }
-    layer.openPopup();
+
   };
 
   //make style after hover disappear
@@ -153,7 +150,7 @@ export const MapCatnat = (props: {
       color: "#000000",
       fillOpacity: 1,
     });
-    layer.closePopup();
+    layer.closeTooltip();
   };
 
   const onEachFeature = (feature: Feature<Any>, layer: Layer) => {
