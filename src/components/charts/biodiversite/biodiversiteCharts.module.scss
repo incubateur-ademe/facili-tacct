@@ -1,0 +1,23 @@
+.progressWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progressText {
+    position: absolute;
+    text-align: center;
+    p {
+      font-weight: 600;
+      max-width: 70px;
+      font-size: 13px;
+      line-height: 15.73px;
+      font-family: 'Poppins';
+      margin: 0;
+    }
+    span {
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--lightblue-predicta);
+    }
+  }

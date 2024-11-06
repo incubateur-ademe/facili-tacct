@@ -4,11 +4,11 @@ import styles from "@/components/themes/ressourcesEau/ressourcesEau.module.scss"
 import { RessourcesEau } from "@/lib/postgres/models";
 import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import { SumByKey } from "@/lib/utils/reusableFunctions/sumByKey";
-import { Any } from "@/lib/utils/types";
-import { BarLegendProps, ResponsiveBar } from "@nivo/bar";
+import { BarDatum, BarLegendProps, BarTooltipProps } from "@nivo/bar";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { GraphDataNotFound } from "../graph-data-not-found";
+import { NivoBarChart } from "./NivoBarChart";
 
 type GraphData = {
   Agriculture: number;
@@ -113,126 +113,54 @@ const PrelevementEauBarChart = (
   const minValueXTicks = Math.min(...graphData.map(e => Number(e.annee)))
   const maxValueXTicks = Math.max(...graphData.map(e => Number(e.annee)))
 
+  const CustomTooltip = ({ data }: BarTooltipProps<BarDatum>) => {
+    const dataArray = Object.entries(data).map(el => {
+      return {
+        titre: el[0],
+        value: el[1],
+        color: legends.find(e => e.texte_complet === el[0])?.couleur
+      }
+    });
+    return (
+      <div className={styles.tooltipEvolutionWrapper}>
+        <h3>{collectiviteName} ({dataArray.at(-1)?.value})</h3>
+        {
+          dataArray.slice(0, -1).map((el, i) => {
+            return (
+              <div className={styles.itemWrapper} key={i}>
+                <div className={styles.titre}> 
+                  <div className={styles.colorSquare} style={{background: el.color}}/>
+                  <p>{el.titre}</p>
+                </div>
+                <div className={styles.value}>
+                  <p>{(Number(el.value) / 1000000).toFixed(2)}Mm³</p>
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
+    );
+  }
+
   return (
     graphData && graphData.length ? (
       <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
-        <ResponsiveBar
-          data={graphData as Any}
-          keys={legends.map(e => e.texte_complet)}
-          isFocusable={true}
-          indexBy="annee"
+        <NivoBarChart
+          bottomTickValues={minValueXTicks != maxValueXTicks ? [`${minValueXTicks}`, `${maxValueXTicks}`] : [`${minValueXTicks}`]}
           colors={legends.map(e => e.couleur)}
-          margin={{ top: 40, right: 200, bottom: 80, left: 80 }}
-          padding={0.3}
-          innerPadding={2}
-          borderRadius={1}
-          valueScale={{
-            type: "linear",
-          }}
-          indexScale={{ type: 'band', round: true }}
-          borderColor={{
-            from: 'color',
-            modifiers: [['darker', 1.6]]
-          }}    
-          axisTop={null}
-          axisRight={null}
-          axisBottom={{
-            tickValues: minValueXTicks != maxValueXTicks ? [`${minValueXTicks}`, `${maxValueXTicks}`] : [`${minValueXTicks}`],
-            tickSize: 0,
-            tickPadding: 15,
-            renderTick: (e) => {
-              return (
-                <g transform={`translate(${e.x},${e.y})`}>
-                  <text
-                    x={0}
-                    y={10}
-                    dy={16}
-                    textAnchor="middle"
-                    style={{
-                      fill: 'black',
-                      fontSize: 12,
-                      fontWeight: 400,                      
-                    }}
-                  >
-                    {e.value}
-                  </text>
-                </g>
-              );
-            }
-          }}
-          gridYValues={5}
-          axisLeft={{
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: 'Volumétrie en Mm³',
-            legendPosition: 'middle',
-            legendOffset: -50,
-            truncateTickAt: 0,
-            tickValues: 5, //number of tickvalues displayed along the ax
-            renderTick: (e) => {
-              return (
-                <g transform={`translate(${e.x},${e.y})`}>
-                  <text
-                    x={-20}
-                    y={5}
-                    textAnchor="middle"
-                    style={{
-                      fill: 'black',
-                      fontSize: 12,
-                      fontWeight: 400,
-                    }}
-                  >
-                    {e.value / 1000000}
-                  </text>
-                </g>
-              );
-            }
-          }}
-          enableLabel={false}
-          legends={[
-            {
-              ...legendProps,
-              data: legends.filter(e => e.valeur != 0)
-                .map((legend, index) => ({
-                  id: index, 
-                  label: legend.texte_raccourci,
-                  color: legend.couleur,
-                })),
-            },
-          ]}
-          tooltip={
-            ({ data }) => {
-              const dataArray = Object.entries(data).map(el => {
-                return {
-                  titre: el[0],
-                  value: el[1],
-                  color: legends.find(e => e.texte_complet === el[0])?.couleur //colors[el[0]]
-                }
-            });
-              return (
-                <div className={styles.tooltipEvolutionWrapper}>
-                  <h3>{collectiviteName} ({dataArray.at(-1)?.value})</h3>
-                  {
-                    dataArray.slice(0, -1).map((el, i) => {
-                      return (
-                        <div className={styles.itemWrapper} key={i}>
-                          <div className={styles.titre}> 
-                            <div className={styles.colorSquare} style={{background: el.color}}/>
-                            <p>{el.titre}</p>
-                          </div>
-                          <div className={styles.value}>
-                            <p>{(Number(el.value) / 1000000).toFixed(2)}Mm³</p>
-                          </div>
-                        </div>
-                      )
-                    })
-                  }
-                </div>
-              );
-            }
-          }
-          role="application"
+          graphData={graphData}
+          keys={legends.map(e => e.texte_complet)}
+          indexBy="annee"
+          legendData={legends.filter(e => e.valeur != 0)
+            .map((legend, index) => ({
+              id: index, 
+              label: legend.texte_raccourci,
+              color: legend.couleur,
+            }))}
+          tooltip={CustomTooltip}
+          axisLeftLegend="Volumétrie en Mm³"
+          axisLeftTickFactor={1000000}
         />
       </div>
     ) : <GraphDataNotFound code={codgeo ? codgeo : codepci} />
