@@ -1,76 +1,135 @@
+import surfaceCertifeeIcon from "@/assets/icons/agriculture_bio_surface_certifiee_icon.svg";
+import surfaceClassiqueIcon from "@/assets/icons/agriculture_bio_surface_classique_icon.svg";
+import surfaceEnConversionIcon from "@/assets/icons/agriculture_bio_surface_conversion_icon.svg";
+import { AgricultureBio } from "@/lib/postgres/models";
+import { Round } from "@/lib/utils/reusableFunctions/round";
+import { styled, Tooltip, tooltipClasses, TooltipProps } from "@mui/material";
 import { Progress } from "antd";
+import Image from "next/image";
 import styles from "./biodiversiteCharts.module.scss";
 
-export const AgricultureBioPieCharts = () => {
-  const progress1 = 60;
-  const progress2 = 25;
-  const progress3 = 15;
-  const rotation2 = progress1 * 3.6;
-  const rotation3 = (progress1 + progress2) * 3.6;
+type ProgressTypes = {
+  strokeLinecap: "butt";
+  type: "circle";
+  size: number;
+  strokeWidth: number;
+  showInfo: boolean;
+}
+
+const ProgressProps: ProgressTypes = {
+  strokeLinecap: "butt",
+  type: "circle",
+  size: 100,
+  strokeWidth: 12,
+  showInfo: false,
+};
+
+const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(() => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: '#ffffff',
+    color: '#3a3a3a',
+    maxWidth: 600,
+    boxShadow: "0px 2px 6px 0px rgba(0, 0, 18, 0.16)",
+    padding: "20px",
+    fontFamily: "Marianne"
+  },
+}));
+
+export const AgricultureBioPieCharts = ( { agricultureBio }: { agricultureBio: AgricultureBio[] }) => {
+  const surfaceCertifiee = agricultureBio.find(obj => obj.LIBELLE_SOUS_CHAMP === "Surface certifiée")?.surface_2022!;
+  const surfaceEnConversion = agricultureBio.find(obj => obj.LIBELLE_SOUS_CHAMP === "Surface en conversion")?.surface_2022!;
+  const surfaceTotale = agricultureBio.find(obj => obj.VARIABLE === "saue")?.surface_2022!;
+  const nombreExploitations = agricultureBio.find(obj => obj.VARIABLE === "saue")?.nombre_2022!;
+  const partCertifiee = Round((surfaceCertifiee / surfaceTotale) * 100, 1);
+  const partEnConversion = Round((surfaceEnConversion / surfaceTotale) * 100, 1);
+  const partSurfaceRestante = Round(100 - partCertifiee - partEnConversion, 1);
+
   return (
     <div className="flex flex-row justify-center gap-20 p-12">
-      <div className={styles.progressWrapper}>
-        <Progress
-          aria-label='Progress bar'
-          percent={60}
-          // success={{
-          //   percent: 60,
-          //   strokeColor: 'blue'
-          // }}
-          strokeLinecap="butt"
-          type="circle"
-          size={100}
-          strokeWidth={10}
-          strokeColor="#00949D"
-          showInfo={false}
-          trailColor="#00949D10"
-        />
-        <div className={styles.progressText}>
-          <p>
-            <span>{60}% </span>
-          </p>
-        </div>
-      </div>
-      <div className={styles.progressWrapper}  >
-        <Progress
-          style={{ transform: `rotate(${rotation2}deg)` }}
-          aria-label='Progress bar'
-          percent={25}
-          strokeLinecap="butt"
-          type="circle"
-          size={100}
-          strokeWidth={10}
-          strokeColor="#00C2CC"
-          showInfo={false}
-          trailColor="#00C2CC10"
-        />
-        <div className={styles.progressText} >
-          <p>
-            <span>25% </span>
-          </p>
-        </div>
-      </div>
-      <div className={styles.progressWrapper}>
-        <Progress
-          style={{ transform: `rotate(${rotation3}deg)` }}
-          aria-label='Progress bar'
-          percent={15}
-          strokeLinecap="butt"
-          type="circle"
-          size={100}
-          strokeWidth={10}
-          strokeColor="#BB43BD"
-          showInfo={false}
-          trailColor="#BB43BD10"
-        />
-        <div
-          className={styles.progressText}
-          style={{ cursor: 'pointer' }}
+      <div className={styles.dataWrapper}>
+        <Image src={surfaceCertifeeIcon} alt="" />
+        <p>Surface <b>déjà certifiée</b></p>
+        <HtmlTooltip 
+          title={
+            <div className={styles.tooltip}>
+              <h3>Surface déjà certifiée (2022)</h3>
+              <p><b>{Round(surfaceCertifiee, 0)}</b> {" "} ha</p>
+              <p><b>{nombreExploitations}</b> {" "} exploitation(s)</p>
+            </div>
+          }
+          placement="top"
         >
-          <p>
-            <span>15% </span>
-          </p>
-        </div>
+          <div className={styles.progressWrapper}>
+            <Progress
+              {...ProgressProps}
+              aria-label='Circle progress bar'
+              percent={partCertifiee}
+              strokeColor="#00949D"
+              trailColor="#00949D10"
+            />
+            <div className={styles.progressText}>
+              <p style={{color: "#00949D"}}><span>{partCertifiee}</span>%</p>
+            </div>
+          </div>
+        </HtmlTooltip>
+      </div>
+      <div className={styles.dataWrapper}>
+        <Image src={surfaceEnConversionIcon} alt="" />
+        <p>Surface <b>en conversion</b></p>
+        <HtmlTooltip 
+          title={
+            <div className={styles.tooltip}>
+              <h3>Surface en conversion (2022)</h3>
+              <p><b>{Round(surfaceEnConversion, 0)}</b> {" "} ha</p>
+              <p><b>{nombreExploitations}</b> {" "} exploitation(s)</p>
+            </div>
+          }
+          placement="top"
+        >
+          <div className={styles.progressWrapper}>
+            <Progress
+              {...ProgressProps}
+              style={{ transform: `rotate(${partCertifiee * 3.6}deg)` }}
+              aria-label='Circle progress bar'
+              percent={partEnConversion}
+              strokeColor="#00C2CC"
+              trailColor="#00C2CC10"
+            />
+            <div className={styles.progressText} >
+              <p style={{color: "#00C2CC"}}><span>{partEnConversion}</span>%</p>
+            </div>
+          </div>
+        </HtmlTooltip>
+      </div>
+      <div className={styles.dataWrapper}>
+        <Image src={surfaceClassiqueIcon} alt="" />
+        <p>Surface <b>restante</b></p>
+        <HtmlTooltip 
+          title={
+            <div className={styles.tooltip}>
+              <h3>Surface restante (2022)</h3>
+              <p><b>{Round(surfaceTotale - surfaceCertifiee - surfaceEnConversion, 0)}</b> {" "} ha</p>
+              <p><b>{nombreExploitations}</b> {" "} exploitation(s)</p>
+            </div>
+          }
+          placement="top"
+        >
+          <div className={styles.progressWrapper}>
+            <Progress
+              {...ProgressProps}
+              style={{ transform: `rotate(${(partCertifiee + partEnConversion) * 3.6}deg)` }}
+              aria-label='Circle progress bar'
+              percent={partSurfaceRestante}
+              strokeColor="#BB43BD"
+              trailColor="#BB43BD10"
+            />
+            <div className={styles.progressText}>
+              <p style={{color: "#BB43BD"}}><span>{partSurfaceRestante}</span>%</p>
+            </div>
+          </div>
+        </HtmlTooltip>
       </div>
     </div>
   );
