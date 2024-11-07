@@ -26,7 +26,7 @@ const AgricultureBioDataViz = ({
       </div>
       {
         datavizTab === "Répartition" ? (
-          <AgricultureBioPieCharts />
+          <AgricultureBioPieCharts agricultureBio={agricultureBio} />
         ) : (
           <>
             <div className={styles.prelevementEauSliderWrapper}>
