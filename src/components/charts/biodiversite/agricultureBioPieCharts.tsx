@@ -2,8 +2,8 @@ import surfaceCertifeeIcon from "@/assets/icons/agriculture_bio_surface_certifie
 import surfaceClassiqueIcon from "@/assets/icons/agriculture_bio_surface_classique_icon.svg";
 import surfaceEnConversionIcon from "@/assets/icons/agriculture_bio_surface_conversion_icon.svg";
 import { AgricultureBio } from "@/lib/postgres/models";
+import { HtmlTooltip } from "@/lib/utils/HtmlTooltip";
 import { Round } from "@/lib/utils/reusableFunctions/round";
-import { styled, Tooltip, tooltipClasses, TooltipProps } from "@mui/material";
 import { Progress } from "antd";
 import Image from "next/image";
 import styles from "./biodiversiteCharts.module.scss";
@@ -23,19 +23,6 @@ const ProgressProps: ProgressTypes = {
   strokeWidth: 12,
   showInfo: false,
 };
-
-const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))(() => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: '#ffffff',
-    color: '#3a3a3a',
-    maxWidth: 600,
-    boxShadow: "0px 2px 6px 0px rgba(0, 0, 18, 0.16)",
-    padding: "20px",
-    fontFamily: "Marianne"
-  },
-}));
 
 export const AgricultureBioPieCharts = ( { agricultureBio }: { agricultureBio: AgricultureBio[] }) => {
   const surfaceCertifiee = agricultureBio.find(obj => obj.LIBELLE_SOUS_CHAMP === "Surface certifiée")?.surface_2022!;
