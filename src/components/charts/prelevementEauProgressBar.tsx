@@ -9,24 +9,11 @@ import vagues_icon_black from "@/assets/icons/themes/vagues_icon_black.svg";
 import legendEpci from "@/assets/images/legend_prelevement_eau_epci.svg";
 import styles from "@/components/themes/ressourcesEau/ressourcesEau.module.scss";
 import { RessourcesEau } from "@/lib/postgres/models";
+import { HtmlTooltip } from "@/lib/utils/HtmlTooltip";
 import { SumByKey } from "@/lib/utils/reusableFunctions/sumByKey";
-import { styled, Tooltip, tooltipClasses, TooltipProps } from "@mui/material";
 import { Progress } from "antd";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-
-const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))(() => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: '#ffffff',
-    color: '#3a3a3a',
-    maxWidth: 600,
-    boxShadow: "0px 2px 6px 0px rgba(0, 0, 18, 0.16)",
-    padding: "20px",
-    fontFamily: "Marianne"
-  },
-}));
 
 const Filter = (data: RessourcesEau[], codgeo: string, codepci: string, type: string, year: string) => {
   const sumFiltered = SumByKey(
