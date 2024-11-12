@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { useState } from 'react';
+import "./globalMui.css";
 
 interface RangeSliderProps {
   firstValue: number;

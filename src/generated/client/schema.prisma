@@ -202,6 +202,7 @@ model ressources_eau {
 model agriculture_bio {
   index              BigInt  @id
   epci               String
+  libelle_epci       String
   VARIABLE           String
   LIBELLE_SOUS_CHAMP String?
   surface_2022       Float

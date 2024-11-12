@@ -2,6 +2,7 @@
 
 import styles from "@/components/themes/biodiversite/biodiversite.module.scss";
 import { AgricultureBio } from "@/lib/postgres/models";
+import { Round } from "@/lib/utils/reusableFunctions/round";
 import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import { SumByKey } from "@/lib/utils/reusableFunctions/sumByKey";
 import { BarDatum, BarTooltipProps } from "@nivo/bar";
@@ -14,7 +15,8 @@ type GraphData = {
   "Surface certifiée agriculture biologique": number;
   "Surface en conversion agriculture biologique": number;
   // "Surface totale agriculture biologique": number;
-  "Surface agricole totale": number;
+  // "Surface agricole totale": number;
+  "Surface restante à convertir": number;
   // "part_agribio": number;
   annee: string;
 }
@@ -28,7 +30,8 @@ const graphDataFunct = (filteredYears: string[], data: AgricultureBio[]) => {
       "Surface certifiée agriculture biologique": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP === "Surface certifiée"), `surface_${year}`),
       "Surface en conversion agriculture biologique": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP === "Surface en conversion"), `surface_${year}`),
       // "Surface totale agriculture biologique": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP === "Surface totale"), `surface_${year}`),
-      "Surface agricole totale": SumByKey(data.filter((item) => item.VARIABLE === "saue"), `surface_${year}`),
+      // "Surface agricole totale": SumByKey(data.filter((item) => item.VARIABLE === "saue"), `surface_${year}`),
+      "Surface restante à convertir": SumByKey(data.filter((item) => item.VARIABLE === "saue"), `surface_${year}`) - SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP === "Surface totale"), `surface_${year}`),
       // "part_agribio": SumByKey(data.filter((item) => item.VARIABLE === "part_agribio_surf"), `surface_${year}`),
       annee: year,
     }
@@ -45,7 +48,7 @@ export const AgricultureBioBarChart = (
   const codgeo = searchParams.get("codgeo")!;
   const codepci = searchParams.get("codepci")!;
   const [selectedYears, setSelectedYears] = useState<string[]>(agricultureBioYears.map(year => year.split("_")[1]));
-  const collectiviteName = agricultureBio[0].epci;
+  const collectiviteName = agricultureBio[0].libelle_epci;
   const graphData = graphDataFunct(selectedYears, agricultureBio)
 
   useEffect(() => {
@@ -55,20 +58,20 @@ export const AgricultureBioBarChart = (
   const legends = [
     {
       variable: "Surface certifiée agriculture biologique",
-      texte_raccourci: "Surface certifiée bio",
+      texte_raccourci: "Surface certifiée",
       valeur: SumByKey(graphData, "Surface certifiée agriculture biologique"),
       couleur: "#00C2CC"
     },
     {
       variable: "Surface en conversion agriculture biologique",
-      texte_raccourci: "Surface en conversion bio",
+      texte_raccourci: "Surface en conversion",
       valeur: SumByKey(graphData, 'Surface en conversion agriculture biologique'),
       couleur: "#00949D"
     },
     {
-      variable: "Surface agricole totale",
-      texte_raccourci: "Surface totale (bio + classique)",
-      valeur: SumByKey(graphData, 'Surface agricole totale'),
+      variable: "Surface restante à convertir",
+      texte_raccourci: "Surface restante",
+      valeur: SumByKey(graphData, 'Surface restante à convertir'),
       couleur: "#BB43BD"
     },
   ]
@@ -94,7 +97,7 @@ export const AgricultureBioBarChart = (
                   <p>{el.titre}</p>
                 </div>
                 <div className={styles.value}>
-                  <p>{(Number(el.value)).toFixed(0)} ha</p>
+                  <p>{Round(Number(el.value), 0)} ha</p>
                 </div>
               </div>
             )
