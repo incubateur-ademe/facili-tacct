@@ -20,7 +20,8 @@ export const CustomTooltip = ({ title, texte= "Méthode de calcul" }: Props) => 
       boxShadow: "0px 4px 12px 0px #00001229",
       padding: "1em",
       width: "400px",
-      maxWidth: "400px"
+      maxWidth: "400px",
+      fontFamily: "Marianne",
     },
   }));
   return (

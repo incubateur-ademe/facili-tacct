@@ -136,10 +136,9 @@ export const MapCatnat = (props: {
       color: "#0D2100",
       fillOpacity: 0.9,
     });
-    layer.bindTooltip(CustomTooltip(restCatnat, commune_name as string), { direction: "top" });
+    layer.bindTooltip(CustomTooltip(restCatnat, commune_name as string), { direction: "top", opacity: 0.97 });
     layer.openTooltip();
     layer.bringToFront();
-
   };
 
   //make style after hover disappear
