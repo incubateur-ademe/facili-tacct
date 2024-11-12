@@ -3,7 +3,6 @@
 import styles from "@/components/themes/ressourcesEau/ressourcesEau.module.scss";
 import { RessourcesEau } from "@/lib/postgres/models";
 import { Sum } from "@/lib/utils/reusableFunctions/sum";
-import { SumByKey } from "@/lib/utils/reusableFunctions/sumByKey";
 import { BarDatum, BarLegendProps, BarTooltipProps } from "@nivo/bar";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -21,6 +20,7 @@ type GraphData = {
 }
 
 const ressourcesEauYears = ["A2008", "A2009", "A2010", "A2011", "A2012", "A2013", "A2014", "A2015", "A2016", "A2017", "A2018", "A2019", "A2020"];
+type Years = "A2008" | "A2009" | "A2010" | "A2011" | "A2012" | "A2013" | "A2014" | "A2015" | "A2016" | "A2017" | "A2018" | "A2019" | "A2020";
 
 const legendProps: BarLegendProps = {
   dataFrom: 'keys',
@@ -40,18 +40,25 @@ const legendProps: BarLegendProps = {
 const graphDataFunct = (filteredYears: string[], data: RessourcesEau[]) => {
   const dataArr: GraphData[] = [];
   const years = filteredYears.map((year) => year.split("A")[1]);
-  years.forEach((year) => {
+  filteredYears.forEach((year) => {
+    const genericObjects = (text: string) => data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(text))
+    console.log(genericObjects("agriculture").map(e => e[year as Years]));
     const obj = {
-      "Agriculture": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), `A${year}`),
-      "Eau potable": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), `A${year}`),
-      "Industrie et autres usages économiques": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), `A${year}`),
-      "Refroidissement des centrales électriques": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), `A${year}`),
-      "Alimentation des canaux": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), `A${year}`),
-      "Production d'électricité (barrages hydro-électriques)": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), `A${year}`),
-      annee: year,
+      "Agriculture": Sum(genericObjects("agriculture").map(e => e[year as Years]).filter((value): value is number => value !== null)),
+      "Eau potable": Sum(genericObjects("potable").map(e => e[year as Years]).filter((value): value is number => value !== null)),
+      "Industrie et autres usages économiques": Sum(genericObjects("industrie").map(e => e[year as Years]).filter((value): value is number => value !== null)),
+      "Refroidissement des centrales électriques": Sum(genericObjects("refroidissement").map(e => e[year as Years]).filter((value): value is number => value !== null)),
+      "Alimentation des canaux": Sum(genericObjects("alimentation").map(e => e[year as Years]).filter((value): value is number => value !== null)),
+      "Production d'électricité (barrages hydro-électriques)": Sum(genericObjects("production").map(e => e[year as Years]).filter((value): value is number => value !== null)),
+      // "Eau potable": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), year),
+      // "Industrie et autres usages économiques": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), year),
+      // "Refroidissement des centrales électriques": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), year),
+      // "Alimentation des canaux": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), year),
+      // "Production d'électricité (barrages hydro-électriques)": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), year),
+      annee: year.split("A")[1],
     }
     // const sorted = Object.entries(obj).sort(([,a],[,b]) => a-b).reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
-    const isNull = Sum(Object.values(obj).slice(0, -1))
+    const isNull = Sum(Object.values(obj).slice(0, -1) as number[]);
     isNull != 0 ? dataArr.push(obj) : null;
   });
   return dataArr;
@@ -67,7 +74,9 @@ const PrelevementEauBarChart = (
   const [selectedYears, setSelectedYears] = useState<string[]>(ressourcesEauYears.map(year => year.split("A")[1]));
   const graphData = graphDataFunct(selectedYears, dataParMaille)
   const collectiviteName = codgeo ? dataParMaille[0].libelle_geographique : dataParMaille[0].libelle_epci; 
+  const genericObjects = (text: string) => dataParMaille.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(text))
 
+  console.log(graphData)
   useEffect(() => {
     setSelectedYears(ressourcesEauYears.slice(ressourcesEauYears.indexOf(`A${sliderValue[0]}`), ressourcesEauYears.indexOf(`A${sliderValue[1]}`) + 1))
   }, [sliderValue]);
@@ -76,37 +85,42 @@ const PrelevementEauBarChart = (
     {
       texte_complet: "Agriculture",
       texte_raccourci: "Agriculture",
-      valeur: SumByKey(graphData, 'Agriculture'),
+      valeur: Sum(graphData.map(e => e.Agriculture)),
       couleur: "#00C190"
     },
     {
       texte_complet: "Alimentation des canaux",
       texte_raccourci: "Alimentation des canaux",
-      valeur: SumByKey(graphData, 'Alimentation des canaux'),
+      valeur: Sum(graphData.map(e => e["Alimentation des canaux"])),
+      // valeur: SumByKey(graphData, 'Alimentation des canaux'),
       couleur: "#00C2CC"
     },
     {
       texte_complet: "Eau potable",
       texte_raccourci: "Eau potable",
-      valeur: SumByKey(graphData, 'Eau potable'),
+      valeur: Sum(graphData.map(e => e["Eau potable"])),
+      // valeur: SumByKey(graphData, 'Eau potable'),
       couleur: "#009ADC"
     },
     {
       texte_complet: "Industrie et autres usages économiques",
       texte_raccourci: "Industrie",
-      valeur: SumByKey(graphData, 'Industrie et autres usages économiques'),
+      valeur: Sum(graphData.map(e => e["Industrie et autres usages économiques"])),
+      // valeur: SumByKey(graphData, 'Industrie et autres usages économiques'),
       couleur: "#7A49BE"
     },
     {
       texte_complet: "Production d'électricité (barrages hydro-électriques)",
       texte_raccourci: "Barrages hydro-électriques",
-      valeur: SumByKey(graphData, 'Production d\'électricité (barrages hydro-électriques)'),
+      valeur: Sum(graphData.map(e => e["Production d'électricité (barrages hydro-électriques)"])),
+      // valeur: SumByKey(graphData, 'Production d\'électricité (barrages hydro-électriques)'),
       couleur: "#FFCF5E"
     },
     {
       texte_complet: "Refroidissement des centrales électriques",
       texte_raccourci: "Refroidissement des centrales",
-      valeur: SumByKey(graphData, 'Refroidissement des centrales électriques'),
+      valeur: Sum(graphData.map(e => e["Refroidissement des centrales électriques"])),
+      // valeur: SumByKey(graphData, 'Refroidissement des centrales électriques'),
       couleur: "#BB43BD"
     }
   ]
