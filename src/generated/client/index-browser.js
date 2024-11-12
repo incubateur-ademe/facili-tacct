@@ -283,6 +283,7 @@ exports.Prisma.Ressources_eauScalarFieldEnum = {
 exports.Prisma.Agriculture_bioScalarFieldEnum = {
   index: 'index',
   epci: 'epci',
+  libelle_epci: 'libelle_epci',
   VARIABLE: 'VARIABLE',
   LIBELLE_SOUS_CHAMP: 'LIBELLE_SOUS_CHAMP',
   surface_2022: 'surface_2022',

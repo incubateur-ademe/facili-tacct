@@ -2,6 +2,7 @@
     background-color: rgb(241, 241, 241);
     padding: 2rem 5rem;
     width: -webkit-fill-available;
+    width: -moz-available;
 }
 .cardContainer {
     padding: 1rem 5rem;
@@ -62,4 +63,5 @@
     padding: 1em 2em;
     justify-content: end;
     width: -webkit-fill-available;
+    width: -moz-available;
 }
