@@ -1,8 +1,8 @@
 "use server";
 
-import { CarteCommunes, CLC, ErosionCotiere } from "@/lib/postgres/models";
+import { CarteCommunes, CLC, EpciContours, ErosionCotiere } from "@/lib/postgres/models";
 import * as Sentry from "@sentry/nextjs";
-import { PrismaClient as PostgresClient } from "../../generated/client";
+import { PrismaClient as PostgresClient } from "../../../generated/client";
 
 const PrismaPostgres = new PostgresClient();
 
@@ -52,14 +52,20 @@ export const GetClcEpci = async (code: string): Promise<CLC[]> => {
   }
 };
 
-export const GetErosionCotiere = async (): Promise<ErosionCotiere[]> => {
+export const GetErosionCotiere = async (code: string): Promise<ErosionCotiere[]> => {
   try {
     console.time("Query Execution Time ErosionCotiere");
+    const epci = await PrismaPostgres.$queryRaw<EpciContours[]>`
+      SELECT 
+      epci_code,
+      ST_AsText(ST_Centroid(geometry)) centroid,
+      ST_AsText(ST_GeomFromGeoJSON(ST_AsGeoJSON(geometry))) geometry
+      FROM postgis."epci" WHERE epci_code=${code};`;
     const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
       SELECT 
       taux, 
       ST_AsGeoJSON(geometry) geometry
-      FROM postgis."erosion_cotiere";`;
+      FROM postgis."erosion_cotiere" WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${epci[0].geometry})), 4326), 0.8);`;
     // console.log(value);
     console.timeEnd("Query Execution Time ErosionCotiere");
     return value;
@@ -69,6 +75,24 @@ export const GetErosionCotiere = async (): Promise<ErosionCotiere[]> => {
     process.exit(1);
   }
 };
+
+export const GetEpci = async (code: string): Promise<EpciContours[]> => {
+  try {
+    console.time("Query Execution Time GetEpci");
+    const value = await PrismaPostgres.$queryRaw<EpciContours[]>`
+      SELECT 
+      epci_code, 
+      ST_AsGeoJSON(geometry) geometry
+      FROM postgis."epci" WHERE epci_code=${code};`;
+    // console.log(value);
+    console.timeEnd("Query Execution Time GetEpci");
+    return value;
+  } catch (error) {
+    console.error(error);
+    await PrismaPostgres.$disconnect();
+    process.exit(1);
+  }
+}
 
 // export const Get_CLC = async (centerCoord: number[]): Promise<CLC[]> => {
 //   try {
