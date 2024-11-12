@@ -11099,6 +11099,7 @@ export namespace Prisma {
   export type Agriculture_bioMinAggregateOutputType = {
     index: bigint | null
     epci: string | null
+    libelle_epci: string | null
     VARIABLE: string | null
     LIBELLE_SOUS_CHAMP: string | null
     surface_2022: number | null
@@ -11114,6 +11115,7 @@ export namespace Prisma {
   export type Agriculture_bioMaxAggregateOutputType = {
     index: bigint | null
     epci: string | null
+    libelle_epci: string | null
     VARIABLE: string | null
     LIBELLE_SOUS_CHAMP: string | null
     surface_2022: number | null
@@ -11129,6 +11131,7 @@ export namespace Prisma {
   export type Agriculture_bioCountAggregateOutputType = {
     index: number
     epci: number
+    libelle_epci: number
     VARIABLE: number
     LIBELLE_SOUS_CHAMP: number
     surface_2022: number
@@ -11170,6 +11173,7 @@ export namespace Prisma {
   export type Agriculture_bioMinAggregateInputType = {
     index?: true
     epci?: true
+    libelle_epci?: true
     VARIABLE?: true
     LIBELLE_SOUS_CHAMP?: true
     surface_2022?: true
@@ -11185,6 +11189,7 @@ export namespace Prisma {
   export type Agriculture_bioMaxAggregateInputType = {
     index?: true
     epci?: true
+    libelle_epci?: true
     VARIABLE?: true
     LIBELLE_SOUS_CHAMP?: true
     surface_2022?: true
@@ -11200,6 +11205,7 @@ export namespace Prisma {
   export type Agriculture_bioCountAggregateInputType = {
     index?: true
     epci?: true
+    libelle_epci?: true
     VARIABLE?: true
     LIBELLE_SOUS_CHAMP?: true
     surface_2022?: true
@@ -11302,6 +11308,7 @@ export namespace Prisma {
   export type Agriculture_bioGroupByOutputType = {
     index: bigint
     epci: string
+    libelle_epci: string
     VARIABLE: string
     LIBELLE_SOUS_CHAMP: string | null
     surface_2022: number
@@ -11336,6 +11343,7 @@ export namespace Prisma {
   export type agriculture_bioSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     index?: boolean
     epci?: boolean
+    libelle_epci?: boolean
     VARIABLE?: boolean
     LIBELLE_SOUS_CHAMP?: boolean
     surface_2022?: boolean
@@ -11351,6 +11359,7 @@ export namespace Prisma {
   export type agriculture_bioSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     index?: boolean
     epci?: boolean
+    libelle_epci?: boolean
     VARIABLE?: boolean
     LIBELLE_SOUS_CHAMP?: boolean
     surface_2022?: boolean
@@ -11366,6 +11375,7 @@ export namespace Prisma {
   export type agriculture_bioSelectScalar = {
     index?: boolean
     epci?: boolean
+    libelle_epci?: boolean
     VARIABLE?: boolean
     LIBELLE_SOUS_CHAMP?: boolean
     surface_2022?: boolean
@@ -11385,6 +11395,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       index: bigint
       epci: string
+      libelle_epci: string
       VARIABLE: string
       LIBELLE_SOUS_CHAMP: string | null
       surface_2022: number
@@ -11790,6 +11801,7 @@ export namespace Prisma {
   interface agriculture_bioFieldRefs {
     readonly index: FieldRef<"agriculture_bio", 'BigInt'>
     readonly epci: FieldRef<"agriculture_bio", 'String'>
+    readonly libelle_epci: FieldRef<"agriculture_bio", 'String'>
     readonly VARIABLE: FieldRef<"agriculture_bio", 'String'>
     readonly LIBELLE_SOUS_CHAMP: FieldRef<"agriculture_bio", 'String'>
     readonly surface_2022: FieldRef<"agriculture_bio", 'Float'>
@@ -13078,6 +13090,7 @@ export namespace Prisma {
   export const Agriculture_bioScalarFieldEnum: {
     index: 'index',
     epci: 'epci',
+    libelle_epci: 'libelle_epci',
     VARIABLE: 'VARIABLE',
     LIBELLE_SOUS_CHAMP: 'LIBELLE_SOUS_CHAMP',
     surface_2022: 'surface_2022',
@@ -14114,6 +14127,7 @@ export namespace Prisma {
     NOT?: agriculture_bioWhereInput | agriculture_bioWhereInput[]
     index?: BigIntFilter<"agriculture_bio"> | bigint | number
     epci?: StringFilter<"agriculture_bio"> | string
+    libelle_epci?: StringFilter<"agriculture_bio"> | string
     VARIABLE?: StringFilter<"agriculture_bio"> | string
     LIBELLE_SOUS_CHAMP?: StringNullableFilter<"agriculture_bio"> | string | null
     surface_2022?: FloatFilter<"agriculture_bio"> | number
@@ -14129,6 +14143,7 @@ export namespace Prisma {
   export type agriculture_bioOrderByWithRelationInput = {
     index?: SortOrder
     epci?: SortOrder
+    libelle_epci?: SortOrder
     VARIABLE?: SortOrder
     LIBELLE_SOUS_CHAMP?: SortOrderInput | SortOrder
     surface_2022?: SortOrder
@@ -14147,6 +14162,7 @@ export namespace Prisma {
     OR?: agriculture_bioWhereInput[]
     NOT?: agriculture_bioWhereInput | agriculture_bioWhereInput[]
     epci?: StringFilter<"agriculture_bio"> | string
+    libelle_epci?: StringFilter<"agriculture_bio"> | string
     VARIABLE?: StringFilter<"agriculture_bio"> | string
     LIBELLE_SOUS_CHAMP?: StringNullableFilter<"agriculture_bio"> | string | null
     surface_2022?: FloatFilter<"agriculture_bio"> | number
@@ -14162,6 +14178,7 @@ export namespace Prisma {
   export type agriculture_bioOrderByWithAggregationInput = {
     index?: SortOrder
     epci?: SortOrder
+    libelle_epci?: SortOrder
     VARIABLE?: SortOrder
     LIBELLE_SOUS_CHAMP?: SortOrderInput | SortOrder
     surface_2022?: SortOrder
@@ -14185,6 +14202,7 @@ export namespace Prisma {
     NOT?: agriculture_bioScalarWhereWithAggregatesInput | agriculture_bioScalarWhereWithAggregatesInput[]
     index?: BigIntWithAggregatesFilter<"agriculture_bio"> | bigint | number
     epci?: StringWithAggregatesFilter<"agriculture_bio"> | string
+    libelle_epci?: StringWithAggregatesFilter<"agriculture_bio"> | string
     VARIABLE?: StringWithAggregatesFilter<"agriculture_bio"> | string
     LIBELLE_SOUS_CHAMP?: StringNullableWithAggregatesFilter<"agriculture_bio"> | string | null
     surface_2022?: FloatWithAggregatesFilter<"agriculture_bio"> | number
@@ -15319,6 +15337,7 @@ export namespace Prisma {
   export type agriculture_bioCreateInput = {
     index: bigint | number
     epci: string
+    libelle_epci: string
     VARIABLE: string
     LIBELLE_SOUS_CHAMP?: string | null
     surface_2022: number
@@ -15334,6 +15353,7 @@ export namespace Prisma {
   export type agriculture_bioUncheckedCreateInput = {
     index: bigint | number
     epci: string
+    libelle_epci: string
     VARIABLE: string
     LIBELLE_SOUS_CHAMP?: string | null
     surface_2022: number
@@ -15349,6 +15369,7 @@ export namespace Prisma {
   export type agriculture_bioUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
     VARIABLE?: StringFieldUpdateOperationsInput | string
     LIBELLE_SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
     surface_2022?: FloatFieldUpdateOperationsInput | number
@@ -15364,6 +15385,7 @@ export namespace Prisma {
   export type agriculture_bioUncheckedUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
     VARIABLE?: StringFieldUpdateOperationsInput | string
     LIBELLE_SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
     surface_2022?: FloatFieldUpdateOperationsInput | number
@@ -15379,6 +15401,7 @@ export namespace Prisma {
   export type agriculture_bioCreateManyInput = {
     index: bigint | number
     epci: string
+    libelle_epci: string
     VARIABLE: string
     LIBELLE_SOUS_CHAMP?: string | null
     surface_2022: number
@@ -15394,6 +15417,7 @@ export namespace Prisma {
   export type agriculture_bioUpdateManyMutationInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
     VARIABLE?: StringFieldUpdateOperationsInput | string
     LIBELLE_SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
     surface_2022?: FloatFieldUpdateOperationsInput | number
@@ -15409,6 +15433,7 @@ export namespace Prisma {
   export type agriculture_bioUncheckedUpdateManyInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
     VARIABLE?: StringFieldUpdateOperationsInput | string
     LIBELLE_SOUS_CHAMP?: NullableStringFieldUpdateOperationsInput | string | null
     surface_2022?: FloatFieldUpdateOperationsInput | number
@@ -16336,6 +16361,7 @@ export namespace Prisma {
   export type agriculture_bioCountOrderByAggregateInput = {
     index?: SortOrder
     epci?: SortOrder
+    libelle_epci?: SortOrder
     VARIABLE?: SortOrder
     LIBELLE_SOUS_CHAMP?: SortOrder
     surface_2022?: SortOrder
@@ -16363,6 +16389,7 @@ export namespace Prisma {
   export type agriculture_bioMaxOrderByAggregateInput = {
     index?: SortOrder
     epci?: SortOrder
+    libelle_epci?: SortOrder
     VARIABLE?: SortOrder
     LIBELLE_SOUS_CHAMP?: SortOrder
     surface_2022?: SortOrder
@@ -16378,6 +16405,7 @@ export namespace Prisma {
   export type agriculture_bioMinOrderByAggregateInput = {
     index?: SortOrder
     epci?: SortOrder
+    libelle_epci?: SortOrder
     VARIABLE?: SortOrder
     LIBELLE_SOUS_CHAMP?: SortOrder
     surface_2022?: SortOrder
