@@ -1,5 +1,5 @@
 import { Loader } from '@/components/loader';
-import { GetCommunes, GetErosionCotiere } from '@/lib/queries/cartographie';
+import { GetCommunes, GetEpci, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import { GetGestionRisques } from '@/lib/queries/thematiques';
 import { themes } from "@/lib/utils/themes";
 import dynamic from 'next/dynamic';
@@ -18,8 +18,9 @@ const GestionRisques = async (searchParams: SearchParams) => {
   : codepci ? await GetGestionRisques(codepci) 
   : void 0;
   const carteCommunes = await GetCommunes(codepci);
-  const erosionCotiere = await GetErosionCotiere();
-  
+  const erosionCotiere = await GetErosionCotiere(codepci);
+  const epciContours = await GetEpci(codepci);
+
   return (
     <div>
       {/* <NoticeComp title="Explorez des leviers d'action possibles en réduisant la sensibilité de votre territoire" /> */}
@@ -29,6 +30,7 @@ const GestionRisques = async (searchParams: SearchParams) => {
           gestionRisques={dbGestionRisques!}
           carteCommunes={carteCommunes}
           erosionCotiere={erosionCotiere}
+          epciContours={epciContours}
         />
       </div>
     </div>

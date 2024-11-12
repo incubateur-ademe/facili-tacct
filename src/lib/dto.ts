@@ -108,11 +108,22 @@ export type ClcDto = {
 
 export type ErosionCotiereDto = {
   geometry: {
-    coordinates: number[][][][];
+    coordinates: number[][][];
     type: string;
   };
   type: string;
   properties: {
     taux: number;
+  };
+};
+
+export type EpciContoursDto = {
+  geometry: {
+    coordinates: number[][][][];
+    type: string;
+  };
+  type: string;
+  properties: {
+    epci_code: string;
   };
 };

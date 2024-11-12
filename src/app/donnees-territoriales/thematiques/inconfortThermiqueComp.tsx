@@ -15,7 +15,7 @@ import { GrandAgeIsolement } from "@/components/themes/inconfort-thermique/grand
 import LCZ from "@/components/themes/inconfort-thermique/lcz";
 import { TravailExterieur } from "@/components/themes/inconfort-thermique/travail-exterieur";
 import { CarteCommunes, CLC, CollectivitesSearchbar, InconfortThermique } from "@/lib/postgres/models";
-import { GetClcEpci } from "@/lib/queries/cartographie";
+import { GetClcEpci } from "@/lib/queries/postgis/cartographie";
 import { TabTooltip } from "@/lib/utils/TabTooltip";
 import dynamic from "next/dynamic";
 import { useStyles } from "tss-react/dsfr";

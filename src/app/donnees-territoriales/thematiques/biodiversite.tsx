@@ -1,5 +1,5 @@
 import { Loader } from '@/components/loader';
-import { GetCommunes } from '@/lib/queries/cartographie';
+import { GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { GetAgricultureBio, GetBiodiversite } from '@/lib/queries/thematiques';
 import { themes } from "@/lib/utils/themes";
 import dynamic from 'next/dynamic';

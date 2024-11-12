@@ -1,6 +1,6 @@
 import { Loader } from '@/components/loader';
 import { NoticeComp } from '@/dsfr/base/Notice';
-import { GetCommunes } from '@/lib/queries/cartographie';
+import { GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { GetCollectivite } from '@/lib/queries/searchBar';
 import { GetInconfortThermiqueDepartment } from '@/lib/queries/thematiques';
 import { themes } from "@/lib/utils/themes";

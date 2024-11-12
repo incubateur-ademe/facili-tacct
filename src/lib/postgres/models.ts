@@ -142,6 +142,12 @@ export type CarteCommunes = {
   catnat?: Object;
 };
 
+export type EpciContours = {
+  epci_code: string;
+  geometry: string;
+  pk: number;
+};
+
 export type CLC = {
   centroid: string;
   geometry: string;
