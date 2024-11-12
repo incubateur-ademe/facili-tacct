@@ -85,10 +85,11 @@ const PrelevementEauProgressBars = ({ ressourcesEau }: { ressourcesEau: Ressourc
   const collectivite = codgeo ? ressourcesEau.filter((obj) => obj.code_geographique === codgeo)[0]?.libelle_geographique : ressourcesEau.filter((obj) => obj.epci === codepci)[0]?.libelle_epci;
   const departement = ressourcesEau[0].departement
 
+  console.log(collectivite)
   return (
     <div className={styles.prelevementEauWrapper}>
       {
-        data.find(e => e.sumCollectivite !== 0) ? (
+        collectivite && data.find(e => e.sumCollectivite !== 0) ? (
           <>
             {
               data.sort((a, b) => b.sumCollectivite - a.sumCollectivite).map((item, index) => (

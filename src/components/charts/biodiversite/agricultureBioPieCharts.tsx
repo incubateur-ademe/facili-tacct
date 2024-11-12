@@ -26,12 +26,20 @@ const ProgressProps: ProgressTypes = {
 
 export const AgricultureBioPieCharts = ( { agricultureBio }: { agricultureBio: AgricultureBio[] }) => {
   const surfaceCertifiee = agricultureBio.find(obj => obj.LIBELLE_SOUS_CHAMP === "Surface certifiée")?.surface_2022!;
+  const surfaceCertifiee2019 = agricultureBio.find(obj => obj.LIBELLE_SOUS_CHAMP === "Surface certifiée")?.surface_2019!;
   const surfaceEnConversion = agricultureBio.find(obj => obj.LIBELLE_SOUS_CHAMP === "Surface en conversion")?.surface_2022!;
+  const surfaceEnConversion2019 = agricultureBio.find(obj => obj.LIBELLE_SOUS_CHAMP === "Surface en conversion")?.surface_2019!;
   const surfaceTotale = agricultureBio.find(obj => obj.VARIABLE === "saue")?.surface_2022!;
+  const surfaceTotale2019 = agricultureBio.find(obj => obj.VARIABLE === "saue")?.surface_2019!;
   const nombreExploitations = agricultureBio.find(obj => obj.VARIABLE === "saue")?.nombre_2022!;
   const partCertifiee = Round((surfaceCertifiee / surfaceTotale) * 100, 1);
   const partEnConversion = Round((surfaceEnConversion / surfaceTotale) * 100, 1);
   const partSurfaceRestante = Round(100 - partCertifiee - partEnConversion, 1);
+  const evolutionCertifiee = ( surfaceCertifiee - surfaceCertifiee2019 ) / surfaceCertifiee2019 * 100;
+  const evolutionConversion = ( surfaceEnConversion - surfaceEnConversion2019 ) / surfaceEnConversion2019 * 100;
+  const evolutionRestante = (
+    (surfaceTotale - surfaceCertifiee - surfaceEnConversion) - (surfaceTotale2019 - surfaceCertifiee2019 - surfaceEnConversion2019)
+  ) / (surfaceTotale2019 - surfaceCertifiee2019 - surfaceEnConversion2019) * 100;
 
   return (
     <div className="flex flex-row justify-center gap-20 p-12">
@@ -43,6 +51,7 @@ export const AgricultureBioPieCharts = ( { agricultureBio }: { agricultureBio: A
             <div className={styles.tooltip}>
               <h3>Surface déjà certifiée (2022)</h3>
               <p><b>{Round(surfaceCertifiee, 0)}</b> {" "} ha</p>
+              {evolutionCertifiee >= 0 ? <p><b>+{Round(evolutionCertifiee, 1)}</b>% depuis 2019</p> : <p><b>{Round(evolutionCertifiee, 1)}</b>% depuis 2019</p>}
               <p><b>{nombreExploitations}</b> {" "} exploitation(s)</p>
             </div>
           }
@@ -70,6 +79,7 @@ export const AgricultureBioPieCharts = ( { agricultureBio }: { agricultureBio: A
             <div className={styles.tooltip}>
               <h3>Surface en conversion (2022)</h3>
               <p><b>{Round(surfaceEnConversion, 0)}</b> {" "} ha</p>
+              {evolutionConversion >= 0 ? <p><b>+{Round(evolutionConversion, 1)}</b>% depuis 2019</p> : <p><b>{Round(evolutionConversion, 1)}</b>% depuis 2019</p>}
               <p><b>{nombreExploitations}</b> {" "} exploitation(s)</p>
             </div>
           }
@@ -98,6 +108,7 @@ export const AgricultureBioPieCharts = ( { agricultureBio }: { agricultureBio: A
             <div className={styles.tooltip}>
               <h3>Surface restante (2022)</h3>
               <p><b>{Round(surfaceTotale - surfaceCertifiee - surfaceEnConversion, 0)}</b> {" "} ha</p>
+              {evolutionRestante >= 0 ? <p><b>+{Round(evolutionRestante, 2)}</b>% depuis 2019</p> : <p><b>{Round(evolutionRestante, 2)}</b>% depuis 2019</p>}
               <p><b>{nombreExploitations}</b> {" "} exploitation(s)</p>
             </div>
           }

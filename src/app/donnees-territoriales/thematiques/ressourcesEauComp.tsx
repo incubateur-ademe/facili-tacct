@@ -25,14 +25,14 @@ interface Props {
 
 const allComps = [
   {
-    titre: "Prélèvement en eau",
+    titre: "Prélèvements en eau",
     Component: ({data, ressourcesEau}: Props & { activeDataTab: string }) => <PrelevementEau data={data} ressourcesEau={ressourcesEau} />,
   }
 ];
 
 const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
-  const [selectedTabId, setSelectedTabId] = useState("A déterminer");
-  const [selectedSubTab, setSelectedSubTab] = useState("Prélèvement en eau");
+  const [selectedTabId, setSelectedTabId] = useState("Prélèvements en eau");
+  const [selectedSubTab, setSelectedSubTab] = useState("Prélèvements en eau");
   const searchParams = useSearchParams();
   const codepci = searchParams.get("codepci")!;
   const { isDark } = useIsDark();
@@ -61,8 +61,8 @@ const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
         selectedTabId={selectedTabId} 
         tabs={[
           {
-            tabId: "A déterminer",
-            label: "A déterminer"
+            tabId: "Prélèvements en eau",
+            label: "Prélèvements en eau"
           },
         ]} 
         onTabChange={setSelectedTabId} 
@@ -94,7 +94,7 @@ const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
           }
         })}>
         <div className={styles.formContainer}>
-          <div className={styles.titles}>
+          {/* <div className={styles.titles}>
             {data
               .filter(el => el.facteur_sensibilite === selectedTabId)
               .map((element, i) => (
@@ -108,7 +108,7 @@ const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
                   {element.titre}
                 </button>
               ))}
-          </div>
+          </div> */}
           <div className={styles.bubble}>
             <div className={styles.bubbleContent} style={darkClass}>
               {(() => {

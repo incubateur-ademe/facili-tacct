@@ -3,10 +3,23 @@
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { RessourcesEau } from "@/lib/postgres/models";
 import { CustomTooltip } from "@/lib/utils/CalculTooltip";
+import { Round } from "@/lib/utils/reusableFunctions/round";
+import { SumByKey } from "@/lib/utils/reusableFunctions/sumByKey";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import PrelevementEauDataViz from "./prelevementEauDataviz";
 import styles from "./ressourcesEau.module.scss";
+
+const Filter = (data: RessourcesEau[], codgeo: string, codepci: string, type: string, year: string) => {
+  const sumFiltered = SumByKey(
+    data.filter(
+      obj => codgeo ? obj.code_geographique === codgeo : obj.epci === codepci
+    ).filter(
+        (item) => item.LIBELLE_SOUS_CHAMP?.includes(type)
+      ), year
+    );
+  return sumFiltered;
+}
 
 export const PrelevementEau = (props: {
   data: Array<{
@@ -23,6 +36,7 @@ export const PrelevementEau = (props: {
   const codgeo = searchParams.get("codgeo")!;
   const codepci = searchParams.get("codepci")!;
   const [datavizTab, setDatavizTab] = useState<string>("Répartition");
+  const volumeTotalPreleve = Round(Filter(ressourcesEau, codgeo, codepci, "total", "A2020") / 1000000, 0);
 
   const title = <>
     <div>
@@ -40,7 +54,7 @@ export const PrelevementEau = (props: {
           <div className="w-5/12">
             <div className={styles.explicationWrapper}>
               <p>
-                Le volume total des prélèvements en eau de votre territoire en 2022 est de [X] m3, soit l’équivalent de [X] piscines olympiques.  
+                Le volume total des prélèvements en eau de votre territoire en 2020 est de {volumeTotalPreleve} Mm3, soit l’équivalent de {1000000 * volumeTotalPreleve / 3750} piscines olympiques.  
               </p>
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?"/>
             </div>

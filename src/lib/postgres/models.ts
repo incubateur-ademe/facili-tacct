@@ -105,6 +105,7 @@ export type RessourcesEau = {
 export type AgricultureBio = {
   index: bigint;
   epci: string;
+  libelle_epci: string;
   VARIABLE: string;
   LIBELLE_SOUS_CHAMP: string | null;
   surface_2022: number;
