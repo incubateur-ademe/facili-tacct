@@ -1,6 +1,7 @@
 "use client";
 
 import { Loader } from "@/components/loader";
+import styles from "@/components/themes/gestionRisques/gestionRisques.module.scss";
 import { ResponsivePie } from "@/lib/nivo/pie";
 
 type Props = {
@@ -40,7 +41,7 @@ export const PieChart1 = ({ graphData }: Props) => {
             // arcLinkLabelsColor={{ from: 'color' }}
             legends={[
               {
-                anchor: "right",
+                anchor: "bottom-right",
                 direction: "column",
                 justify: false,
                 translateX: -20,
@@ -53,16 +54,21 @@ export const PieChart1 = ({ graphData }: Props) => {
                 itemOpacity: 1,
                 symbolSize: 10,
                 symbolShape: "circle",
-                effects: [
-                  {
-                    on: "hover",
-                    style: {
-                      itemTextColor: "#000",
-                    },
-                  },
-                ],
               },
             ]}
+            tooltip={({ datum: { id, value, color } }) => (
+              <div className={styles.tooltipEvolutionWrapper}>
+                <div className={styles.itemWrapper}>
+                  <div className={styles.titre}> 
+                    <div className={styles.colorSquare} style={{background: color}}/>
+                    <p>{id}</p>
+                  </div>
+                  <div className={styles.value}>
+                    <p>{value}%</p>
+                  </div>
+                </div>
+              </div>
+            )}
           />
         </div>
       ) : (
