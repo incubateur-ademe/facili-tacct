@@ -94,13 +94,13 @@ export const Map = (props: {
     if (data === "densite_bati" && commune_name && densite_bati) {
       layer.bindTooltip(
         `<div>${commune_name}</div><div>Densité du bâti : ${densite_bati}</div>`,
-        { direction: "top" },
+        { direction: "top", opacity: 0.97 },
       );
       layer.openTooltip();
     } else {
       layer.bindTooltip(
         `<div>${commune_name}</div><div>Part des ménages en précarité : ${(100 * Number(precarite_logement)).toFixed(0)}%</div>`, 
-        { direction: "top" },
+        { direction: "top", opacity: 0.97 },
       );
       layer.openTooltip();
     }

@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "@/components/themes/gestionRisques/gestionRisques.module.scss";
 import { ResponsiveBar } from "@/lib/nivo/bar";
 
 type Props = {
@@ -24,17 +25,30 @@ export const BarChart = ({ chartData }: Props) => {
         }}
         label={d => `${d.value}%`}
         tooltip={({ id, value, color }) => (
-          <div
-            style={{
-              padding: 8,
-              background: "#FFF",
-            }}
-          >
-            <strong>
-              {id}: {value}%
-            </strong>
+          <div className={styles.tooltipEvolutionWrapper} style={{ right: "5rem"}}>
+            <div className={styles.itemWrapper}>
+              <div className={styles.titre}> 
+                <div className={styles.colorSquare} style={{background: color}}/>
+                <p>{id}</p>
+              </div>
+              <div className={styles.value}>
+                <p>{value}%</p>
+              </div>
+            </div>
           </div>
         )}
+        // tooltip={({ id, value }) => (
+        //   <div
+        //     style={{
+        //       padding: 8,
+        //       background: "#FFF",
+        //     }}
+        //   >
+        //     <strong>
+        //       {id}: {value}%
+        //     </strong>
+        //   </div>
+        // )}
         groupMode="grouped"
         indexBy="periode"
         margin={{ top: 50, right: 30, bottom: 50, left: 30 }}
