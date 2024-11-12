@@ -22,7 +22,18 @@ const AgricultureBiologique = (props: {
   const codepci = searchParams.get("codepci")!;
   const [datavizTab, setDatavizTab] = useState<string>("Répartition");
 
-  const title = "Coucou";
+  const title = <>
+    <div>
+      Les superficies totales en agriculture biologique comprennent : 
+    </div>
+    <div>
+      <ul>
+        <li>les surfaces « certifiées bio » qui rassemblent les parcelles dont la période de conversion est terminée et dont la production peut être commercialisée avec la mention « agriculture biologique » ;</li>
+        <li>les superficies en conversion (la durée de conversion variant de 2 ans pour les cultures annuelles à 3 ans pour les cultures pérennes).</li>
+      </ul>
+    </div>
+  </>;
+
   return (
     <>
       {agricultureBio ? (

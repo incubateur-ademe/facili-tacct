@@ -69,8 +69,8 @@ export const themes = {
   ressourcesEau: [
     {
       id: 0,
-      titre: "Prélèvement en eau",
-      facteur_sensibilite: "A déterminer",
+      titre: "Prélèvements en eau",
+      facteur_sensibilite: "Prélèvements en eau",
       risque: "",
       donnee: "",
     },
