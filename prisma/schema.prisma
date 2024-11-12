@@ -229,3 +229,12 @@ model erosion_cotiere {
   @@index([geometry], map: "erosion_cotiere_geometry_geom_idx", type: Gist)
   @@schema("postgis")
 }
+
+model epci {
+  pk        Int                     @id @default(autoincrement())
+  epci_code String                  @db.VarChar
+  geometry  Unsupported("geometry")
+
+  @@index([geometry], map: "epci_geometry_geom_idx", type: Gist)
+  @@schema("postgis")
+}
