@@ -59,13 +59,13 @@ export const GetErosionCotiere = async (code: string): Promise<ErosionCotiere[]>
       SELECT 
       epci_code,
       ST_AsText(ST_Centroid(geometry)) centroid,
-      ST_AsText(ST_GeomFromGeoJSON(ST_AsGeoJSON(geometry))) geometry
+      ST_AsText(geometry) geometry
       FROM postgis."epci" WHERE epci_code=${code};`;
     const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
       SELECT 
       taux, 
       ST_AsGeoJSON(geometry) geometry
-      FROM postgis."erosion_cotiere" WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${epci[0].geometry})), 4326), 0.8);`;
+      FROM postgis."erosion_cotiere" WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`;
     // console.log(value);
     console.timeEnd("Query Execution Time ErosionCotiere");
     return value;
@@ -75,6 +75,8 @@ export const GetErosionCotiere = async (code: string): Promise<ErosionCotiere[]>
     process.exit(1);
   }
 };
+// Dans var value si on veut faire une requête avec ST_DWithin (geometry dans un rayon de 0.8) : 
+// FROM postgis."erosion_cotiere" WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${epci[0].geometry})), 4326), 0.8);`;
 
 export const GetEpci = async (code: string): Promise<EpciContours[]> => {
   try {
@@ -93,32 +95,3 @@ export const GetEpci = async (code: string): Promise<EpciContours[]> => {
     process.exit(1);
   }
 }
-
-// export const Get_CLC = async (centerCoord: number[]): Promise<CLC[]> => {
-//   try {
-//     console.time("Query Execution Time Get_CLC");
-//     //Pour requêter seulement les coordonnées (polygon) : ST_AsText(ST_GeomFromGeoJSON(ST_AsGeoJSON(geometry))) geometry
-//     const coords = centerCoord[1] + " " + centerCoord[0];
-//     const point = "POINT(" + coords + ")";
-//     const value = await PrismaPostgres.$queryRaw<CLC[]>`
-//       SELECT
-//       label3,
-//       pk,
-//       shape_length,
-//       ST_AsText(ST_PointFromText(centroid, 4326)) centroid,
-//       ST_AsGeoJSON(geometry) geometry
-//       FROM postgis."clc_2018_2" WHERE ST_DWithin(ST_PointFromText(centroid, 3857), ST_PointFromText(${point}, 3857), 0.2);`;
-//     //ST_AsText(ST_PointFromText(centroid, 3857)) centroid
-//     //ST_DWithin(geometry, ST_PointFromText(${point}, 4326), 0.21)
-//     //ST_PointFromText(centroid, 4326)
-//     //ST_DWithin(geometry, ST_PointFromText('POINT(-0.572834 42.911196)', 4326), 1000.0)
-//     // console.log(value)
-//     console.timeEnd("Query Execution Time Get_CLC");
-//     return value;
-//   } catch (error) {
-//     console.error(error);
-//     await PrismaPostgres.$disconnect();
-//     process.exit(1);
-//   }
-// };
-

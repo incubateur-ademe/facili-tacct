@@ -34,8 +34,6 @@ export const MapErosionCotiere = (props: {
   const codepci = searchParams.get("codepci")!;  
   const mapRef = useRef(null);
   const centerCoord: number[] = getCentroid(epciContours[0].geometry.coordinates[0][0]);
-  // console.log("erosionCotiere[0].geometry.coordinates?.[0]", epciContours[0].geometry.coordinates[0][0])
-  // console.log(centerCoord);
 
   const getColor = (d: number) => {
     return d > 1 ? "#FFBE0B" : d > 0.4 ? "#FB5607" : d > 0 ? "#FF006E" : d > -2 ? "#8338EC" : "#3A86FF";
@@ -68,7 +66,7 @@ export const MapErosionCotiere = (props: {
       center={[centerCoord[1], centerCoord[0]]}
       zoom={10}
       ref={mapRef}
-      style={{ height: "500px", width: "100%"}}
+      style={{ height: "500px", width: "100%" }}
       attributionControl={false}
       zoomControl={false}
       minZoom={9}
