@@ -34,3 +34,24 @@ Les nouvelles tables sont intégrées au fichier schema.prisma
 ### 4 - Queries dans le code
 
 Le type geometry n'est pas supporté par Prisma. Nous utilisons la fontion queryRaw de Prisma pour la requête. 
+Les requêtes par indexation spatiale sont à privilégier pour la performance. 
+Liste des fonctions sous Postgis qui supportent l'indexation (https://postgis.net/workshops/postgis-intro/indexing.html) :
+    - ST_Intersects
+    - ST_Contains
+    - ST_Within
+    - ST_DWithin
+    - ST_ContainsProperly
+    - ST_CoveredBy
+    - ST_Covers
+    - ST_Overlaps
+    - ST_Crosses
+    - ST_DFullyWithin
+    - ST_3DIntersects
+    - ST_3DDWithin
+    - ST_3DDFullyWithin
+    - ST_LineCrossingDirection
+    - ST_OrderingEquals
+    - ST_Equals
+
+Comme Prisma ne supporte pas le type geometry, il faut transformer la geometry en texte pour éventuellement la retransformer ensuite. Par exemple :
+ ``` ST_AsText(geometry) geometry ```

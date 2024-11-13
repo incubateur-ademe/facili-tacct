@@ -10,20 +10,35 @@ import legendEpci from "@/assets/images/legend_prelevement_eau_epci.svg";
 import styles from "@/components/themes/ressourcesEau/ressourcesEau.module.scss";
 import { RessourcesEau } from "@/lib/postgres/models";
 import { HtmlTooltip } from "@/lib/utils/HtmlTooltip";
-import { SumByKey } from "@/lib/utils/reusableFunctions/sumByKey";
+import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import { Progress } from "antd";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 
-const Filter = (data: RessourcesEau[], codgeo: string, codepci: string, type: string, year: string) => {
-  const sumFiltered = SumByKey(
-    data.filter(
-      obj => codgeo ? obj.code_geographique === codgeo : obj.epci === codepci
-    ).filter(
-        (item) => item.LIBELLE_SOUS_CHAMP?.includes(type)
-      ), year
-    );
-  return sumFiltered;
+const SumFiltered = (data: RessourcesEau[], codgeo: string, codepci: string, type: string, collectivite: boolean = false) => {
+  if (collectivite) {
+    return Sum(
+      data.filter(
+        obj => codgeo ? obj.code_geographique === codgeo : obj.epci === codepci
+      ).filter(
+        item => item.LIBELLE_SOUS_CHAMP?.includes(type)
+      ).map(
+        e => e.A2020
+      ).filter(
+        (value): value is number => value !== null
+      )
+    )
+  } else {
+    return Sum(
+      data.filter(
+        item => item.LIBELLE_SOUS_CHAMP?.includes(type)
+      ).map(
+        e => e.A2020
+      ).filter(
+        (value): value is number => value !== null
+      )
+    )
+  }
 }
 
 const PrelevementEauProgressBars = ({ ressourcesEau }: { ressourcesEau: RessourcesEau[] }) => {
@@ -35,53 +50,48 @@ const PrelevementEauProgressBars = ({ ressourcesEau }: { ressourcesEau: Ressourc
     {
       titre: "Agriculture",
       icon: <Image src={tracteur_icon_black} alt="" />,
-      sumDptmt: SumByKey(ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("agriculture")), "A2020"),
-      sumCollectivite: Filter(ressourcesEau, codgeo, codepci, "agriculture", "A2020"),
+      sumDptmt: SumFiltered(ressourcesEau, codgeo, codepci, "agriculture"),
+      sumCollectivite: SumFiltered(ressourcesEau, codgeo, codepci, "agriculture", true),
       color: "#00C190"
     },
     {
       titre: "Eau potable",
       icon: <Image src={robinet_icon_black} alt="" />,
-      sumDptmt: SumByKey(ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("potable")), "A2020"),
-      sumCollectivite: Filter(ressourcesEau, codgeo, codepci, "potable", "A2020"),
+      sumDptmt: SumFiltered(ressourcesEau, codgeo, codepci, "potable"),
+      sumCollectivite: SumFiltered(ressourcesEau, codgeo, codepci, "potable", true),
       color: "#009ADC"
     },
     {
       titre: "Industrie et autres usages économiques",
       icon: <Image src={usine_icon_black} alt="" />,
-      sumDptmt: SumByKey(ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("industrie")), "A2020"),
-      sumCollectivite: Filter(ressourcesEau, codgeo, codepci, "industrie", "A2020"),
+      sumDptmt: SumFiltered(ressourcesEau, codgeo, codepci, "industrie"),
+      sumCollectivite: SumFiltered(ressourcesEau, codgeo, codepci, "industrie", true),
       color: "#7A49BE"
     },
     {
       titre: "Refroidissement des centrales électriques",
       icon: <Image src={flocon_icon_black} alt="" />,
-      sumDptmt: SumByKey(ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("refroidissement")), "A2020"),
-      sumCollectivite: Filter(ressourcesEau, codgeo, codepci, "refroidissement", "A2020"),
+      sumDptmt: SumFiltered(ressourcesEau, codgeo, codepci, "refroidissement"),
+      sumCollectivite: SumFiltered(ressourcesEau, codgeo, codepci, "refroidissement", true),
       color: "#BB43BD"
     },
     {
       titre: "Alimentation des canaux",
       icon: <Image src={vagues_icon_black} alt="" />,
-      sumDptmt: SumByKey(ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("alimentation")), "A2020"),
-      sumCollectivite: Filter(ressourcesEau, codgeo, codepci, "alimentation", "A2020"),
+      sumDptmt: SumFiltered(ressourcesEau, codgeo, codepci, "alimentation"),
+      sumCollectivite: SumFiltered(ressourcesEau, codgeo, codepci, "alimentation", true),
       color: "#00C2CC"
     },
     {
       titre: "Production d'électricité (barrages hydro-électriques)",
       icon: <Image src={eclair_icon_black} alt="" />,
-      sumDptmt: SumByKey(ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("production")), "A2020"),
-      sumCollectivite: Filter(ressourcesEau, codgeo, codepci, "production", "A2020"),
+      sumDptmt: SumFiltered(ressourcesEau, codgeo, codepci, "production"),
+      sumCollectivite: SumFiltered(ressourcesEau, codgeo, codepci, "production", true),
       color: "#FFCF5E"
     },
   ];
-
-  const totalDptmt = SumByKey(
-    ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("total")), "A2020"
-  ) === 0 ? 1 : SumByKey(
-    ressourcesEau.filter((item) => item.LIBELLE_SOUS_CHAMP?.includes("total")), "A2020"
-  );
-  const total = Filter(ressourcesEau, codgeo, codepci, "total", "A2020") === 0 ? 1 : Filter(ressourcesEau, codgeo, codepci, "total", "A2020");
+  const totalDptmt = SumFiltered(ressourcesEau, codgeo, codepci, "total") === 0 ? 1 : SumFiltered(ressourcesEau, codgeo, codepci, "total");
+  const total = SumFiltered(ressourcesEau, codgeo, codepci, "total", true) === 0 ? 1 : SumFiltered(ressourcesEau, codgeo, codepci, "total", true);
   const collectivite = codgeo ? ressourcesEau.filter((obj) => obj.code_geographique === codgeo)[0]?.libelle_geographique : ressourcesEau.filter((obj) => obj.epci === codepci)[0]?.libelle_epci;
   const departement = ressourcesEau[0].departement
 
