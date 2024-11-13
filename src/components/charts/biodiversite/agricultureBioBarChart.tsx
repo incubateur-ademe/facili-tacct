@@ -4,7 +4,6 @@ import styles from "@/components/themes/biodiversite/biodiversite.module.scss";
 import { AgricultureBio } from "@/lib/postgres/models";
 import { Round } from "@/lib/utils/reusableFunctions/round";
 import { Sum } from "@/lib/utils/reusableFunctions/sum";
-import { SumByKey } from "@/lib/utils/reusableFunctions/sumByKey";
 import { BarDatum, BarTooltipProps } from "@nivo/bar";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -22,22 +21,32 @@ type GraphData = {
 }
 const agricultureBioYears = ["surface_2019", "surface_2020", "surface_2021", "surface_2022"];
 
+type Years = "surface_2019" | "surface_2020" | "surface_2021" | "surface_2022";
+
 const graphDataFunct = (filteredYears: string[], data: AgricultureBio[]) => {
   const dataArr: GraphData[] = [];
-  const years = filteredYears.map((year) => year.split("_")[1]);
-  years.forEach((year) => {
+  filteredYears.forEach((year) => {
+    const genericObjects = (text: string, column: "LIBELLE_SOUS_CHAMP" | "VARIABLE") => data.filter(
+      (item) => item[column]?.includes(text)
+    ).map(
+      e => e[year as Years]
+    ).filter(
+      (value): value is number => value !== null
+    )
     const obj = {
-      "Surface certifiée agriculture biologique": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP === "Surface certifiée"), `surface_${year}`),
-      "Surface en conversion agriculture biologique": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP === "Surface en conversion"), `surface_${year}`),
-      // "Surface totale agriculture biologique": SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP === "Surface totale"), `surface_${year}`),
-      // "Surface agricole totale": SumByKey(data.filter((item) => item.VARIABLE === "saue"), `surface_${year}`),
-      "Surface restante à convertir": SumByKey(data.filter((item) => item.VARIABLE === "saue"), `surface_${year}`) - SumByKey(data.filter((item) => item.LIBELLE_SOUS_CHAMP === "Surface totale"), `surface_${year}`),
-      // "part_agribio": SumByKey(data.filter((item) => item.VARIABLE === "part_agribio_surf"), `surface_${year}`),
-      annee: year,
+      "Surface certifiée agriculture biologique": Sum(genericObjects("Surface certifiée", "LIBELLE_SOUS_CHAMP")),
+      "Surface en conversion agriculture biologique": Sum(genericObjects("Surface en conversion", "LIBELLE_SOUS_CHAMP")),
+      // "Surface totale agriculture biologique": Sum(genericObjects("Surface totale", "LIBELLE_SOUS_CHAMP")),
+      // "Surface agricole totale": Sum(genericObjects("saue", "VARIABLE")),
+      "Surface restante à convertir": Sum(genericObjects("saue", "VARIABLE")) - Sum(genericObjects("Surface totale", "LIBELLE_SOUS_CHAMP")),
+      // "part_agribio": Sum(genericObjects("part_agribio_surf")),
+      annee: year.split("_")[1],
     }
-    const isNull = Sum(Object.values(obj).slice(0, -1))
-    isNull != 0 ? dataArr.push(obj) : null;
+    const isNull = Sum(Object.values(obj).slice(0, -1) as number[]);
+    console.log("Object.values(obj)", obj);
+    isNull !== 0 ? dataArr.push(obj) : null;
   });
+
   return dataArr;
 }
 
@@ -59,19 +68,19 @@ export const AgricultureBioBarChart = (
     {
       variable: "Surface certifiée agriculture biologique",
       texte_raccourci: "Surface certifiée",
-      valeur: SumByKey(graphData, "Surface certifiée agriculture biologique"),
+      valeur: Sum(graphData.map(e => e["Surface certifiée agriculture biologique"])),
       couleur: "#00C2CC"
     },
     {
       variable: "Surface en conversion agriculture biologique",
       texte_raccourci: "Surface en conversion",
-      valeur: SumByKey(graphData, 'Surface en conversion agriculture biologique'),
+      valeur: Sum(graphData.map(e => e["Surface en conversion agriculture biologique"])),
       couleur: "#00949D"
     },
     {
       variable: "Surface restante à convertir",
       texte_raccourci: "Surface restante",
-      valeur: SumByKey(graphData, 'Surface restante à convertir'),
+      valeur: Sum(graphData.map(e => e["Surface restante à convertir"])),
       couleur: "#BB43BD"
     },
   ]
