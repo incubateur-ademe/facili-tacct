@@ -20,7 +20,7 @@ const allArticles = [
     Component: () => <FacilitationDateliers />,
   },
   {
-    titre: "Article CdC sur la facilitation",
+    titre: "Le cahier des charges, levier pour intégrer la facilitation",
     Component: () => <CDC />,
   }
 ];

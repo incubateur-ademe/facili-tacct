@@ -14,14 +14,10 @@ import { NextAppDirEmotionCacheProvider } from "tss-react/next/appDir";
 import { Brand } from "@/components/Brand";
 import { HeaderComp as Header } from "@/components/Header";
 
+import dynamic from "next/dynamic";
 import { config } from "../config";
 import { defaultColorScheme } from "../defaultColorScheme";
 import { StartDsfr } from "../StartDsfr";
-// import {
-//   ConsentBannerAndConsentManagement,
-//   FooterConsentManagementItem,
-//   FooterPersonalDataPolicyItem,
-// } from "../ui/consentManagement";
 import { Banner } from "./banner";
 import { PHProvider } from "./providers";
 import styles from "./root.module.scss";
@@ -46,6 +42,10 @@ export const metadata: Metadata = {
   },
 };
 
+const PostHogPageView = dynamic(() => import('./PostHogPageView'), {
+  ssr: false,
+})
+
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="fr" {...getHtmlAttributes({ defaultColorScheme, lang: "fr" })} className={cx(styles.app)}>
@@ -55,9 +55,9 @@ const RootLayout = ({ children }: PropsWithChildren) => {
       </head>
       <PHProvider>
         <body>
+          <PostHogPageView />
           <DsfrProvider lang="fr">
-            {/* <ConsentBannerAndConsentManagement /> */}
-            <div>
+            <div> 
               <Suspense>
                 <Header />
               </Suspense>
