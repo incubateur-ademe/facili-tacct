@@ -6,7 +6,7 @@ const CDC = () => {
 
   return (
     <div>
-      <h1>Article CdC sur la facilitation</h1>
+      <h1>Le cahier des charges, levier pour intégrer la facilitation</h1>
       <div className={styles.textBloc}>
         <p>
           <b>Comment mieux intégrer la facilitation d’ateliers (ou l’intelligence collective) dans les cahiers des charges</b>. 

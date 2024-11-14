@@ -27,6 +27,7 @@ const csp = {
     "https://stats.beta.gouv.fr",
     process.env.FACILI_TACCT_ENV === "preprod" && "https://vercel.live",
     process.env.NODE_ENV === "development" && "'unsafe-eval' http://localhost",
+    "*.posthog.com",
   ],
   "style-src": ["'self'", "'unsafe-inline'"],
   "object-src": ["'self'", "data:"],
