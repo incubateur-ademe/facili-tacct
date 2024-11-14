@@ -9,6 +9,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { GetInconfortThermique } from "@/lib/queries/thematiques";
+import { usePostHog } from "posthog-js/react";
 import { Brand } from "./Brand";
 import styles from "./components.module.scss";
 
@@ -29,6 +30,7 @@ export const HeaderComp = () => {
   const codepci = searchParams.get("codepci")!;
   const [epci, setEpci] = useState("");
   const [commune, setCommune] = useState("");
+  const posthog = usePostHog()
 
   useEffect(() => {
     void (async () => {
@@ -39,6 +41,16 @@ export const HeaderComp = () => {
       temp && !codgeo ? setEpci(temp[0]?.libelle_epci) : setEpci("");
     })();
   }, [codepci, codgeo]);
+
+  
+  const RessourcesClick = () => {
+    posthog.capture(
+      'ressources_clicked',
+      {
+        ressource: "ressources",
+        date: new Date()
+      })
+  }
 
   return (
     <Header
@@ -84,6 +96,7 @@ export const HeaderComp = () => {
               top: "-0.5em",
               margin: "0 0 0 1em",
             }}
+            onClick={RessourcesClick}
           >
             Ressources
           </Button>
