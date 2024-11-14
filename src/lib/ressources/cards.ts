@@ -60,7 +60,7 @@ export const cards = {
     {
       id: 5,
       tab: "Vous découvrez le diagnostic pour la 1ère fois",
-      titre: "La facilitation d’ateliers : une démarche éprouvée d’engagement",
+      titre: "La facilitation d’ateliers : une démarche éprouvée d’engagement",
       tag: "Article",
       description: "Pour réellement engager vos parties prenantes dans votre démarche d’adaptation appuyez-vous sur une démarche éprouvée : la facilitation d’ateliers.",
       link: "/ressources/articles"

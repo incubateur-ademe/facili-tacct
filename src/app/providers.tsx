@@ -1,18 +1,19 @@
 'use client'
 import posthog from 'posthog-js';
 import { PostHogProvider } from 'posthog-js/react';
-import { useEffect } from 'react';
-
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { cookieConsentGiven } from './banner';
 
 export const PHProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
-    posthog.init('phc_nsb48oCvlg6fbb8KXqc9VHKB5LeA6ep3l4HMJfECv8R', {
-      api_host: 'https://eu.i.posthog.com',
-      person_profiles: 'identified_only',
-      persistence: cookieConsentGiven() === 'yes' ? 'localStorage+cookie' : 'memory'
-    })
+    if (!window.location.host.includes('127.0.0.1') && !window.location.host.includes('localhost')) {
+      posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+        api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+        person_profiles: 'identified_only',
+        persistence: cookieConsentGiven() === 'yes' ? 'localStorage+cookie' : 'memory',
+        capture_pageview: false
+      })
+    }
   }, []);
   return (
     <PostHogProvider client={posthog}>{children}</PostHogProvider>
