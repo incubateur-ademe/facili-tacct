@@ -17,6 +17,7 @@ export default function PostHogPageView() : null {
       posthog.capture(
         '$pageview',
         {
+          distinctId: posthog.get_distinct_id(),
           '$current_url': url,
         }
       )
