@@ -22,9 +22,16 @@ import { StartDsfr } from "../StartDsfr";
 //   FooterConsentManagementItem,
 //   FooterPersonalDataPolicyItem,
 // } from "../ui/consentManagement";
+import posthog from 'posthog-js';
 import styles from "./root.module.scss";
 import { sharedMetadata } from "./shared-metadata";
 
+posthog.init('phc_nsb48oCvlg6fbb8KXqc9VHKB5LeA6ep3l4HMJfECv8R',
+  {
+      api_host: 'https://eu.i.posthog.com',
+      person_profiles: 'identified_only' // or 'always' to create profiles for anonymous users as well
+  }
+)
 const contentId = "content";
 const footerId = "footer";
 
