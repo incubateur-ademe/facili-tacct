@@ -1,12 +1,13 @@
 "use client";
 
+import { CommunesIndicateursDto } from "@/lib/dto";
 import styles from "../../themes/gestionRisques/gestionRisques.module.scss";
 import "../legend.css";
 
 interface Props {
   data: string;
   typeRisqueValue: string;
-  carteCommunes: any;
+  carteCommunes: CommunesIndicateursDto[];
 }
 
 const colors: { [key: string]: string[] } = 
@@ -49,36 +50,36 @@ export const LegendCatnat = (props: Props) => {
 
   const minMaxValue = () => {
     if (typeRisqueValue === "Tous types") {
-      const maxValue = Math.max(...carteCommunes.map((el: any) => el.properties.catnat?.sumCatnat ? el.properties.catnat?.sumCatnat : 0));
-      const minValue = Math.min(...carteCommunes.map((el: any) => el.properties.catnat?.sumCatnat ? el.properties.catnat?.sumCatnat : 0));
+      const maxValue = Math.max(...carteCommunes.map((el) => el.properties.catnat?.sumCatnat ? el.properties.catnat?.sumCatnat : 0));
+      const minValue = Math.min(...carteCommunes.map((el) => el.properties.catnat?.sumCatnat ? el.properties.catnat?.sumCatnat : 0));
       return [minValue, maxValue];
     } else if (typeRisqueValue === "Sécheresse") {
-      const maxValue = Math.max(...carteCommunes.map((el: any) => el.properties.catnat?.["Sécheresse"] ? el.properties.catnat?.["Sécheresse"] : 0));
-      const minValue = Math.min(...carteCommunes.map((el: any) => el.properties.catnat?.["Sécheresse"] ? el.properties.catnat?.["Sécheresse"] : 0));
+      const maxValue = Math.max(...carteCommunes.map((el) => el.properties.catnat?.["Sécheresse"] ? el.properties.catnat?.["Sécheresse"] : 0));
+      const minValue = Math.min(...carteCommunes.map((el) => el.properties.catnat?.["Sécheresse"] ? el.properties.catnat?.["Sécheresse"] : 0));
       return [minValue, maxValue];
     } else if (typeRisqueValue === "Cyclones / Tempêtes") {
-      const maxValue = Math.max(...carteCommunes.map((el: any) => el.properties.catnat?.["Cyclones / Tempêtes"] ? el.properties.catnat?.["Cyclones / Tempêtes"] : 0));
-      const minValue = Math.min(...carteCommunes.map((el: any) => el.properties.catnat?.["Cyclones / Tempêtes"] ? el.properties.catnat?.["Cyclones / Tempêtes"] : 0));
+      const maxValue = Math.max(...carteCommunes.map((el) => el.properties.catnat?.["Cyclones / Tempêtes"] ? el.properties.catnat?.["Cyclones / Tempêtes"] : 0));
+      const minValue = Math.min(...carteCommunes.map((el) => el.properties.catnat?.["Cyclones / Tempêtes"] ? el.properties.catnat?.["Cyclones / Tempêtes"] : 0));
       return [minValue, maxValue];
     } else if (typeRisqueValue === "Retrait-gonflement des argiles") {
-      const maxValue = Math.max(...carteCommunes.map((el: any) => el.properties.catnat?.["Retrait-gonflement des argiles"] ? el.properties.catnat?.["Retrait-gonflement des argiles"] : 0));
-      const minValue = Math.min(...carteCommunes.map((el: any) => el.properties.catnat?.["Retrait-gonflement des argiles"] ? el.properties.catnat?.["Retrait-gonflement des argiles"] : 0));
+      const maxValue = Math.max(...carteCommunes.map((el) => el.properties.catnat?.["Retrait-gonflement des argiles"] ? el.properties.catnat?.["Retrait-gonflement des argiles"] : 0));
+      const minValue = Math.min(...carteCommunes.map((el) => el.properties.catnat?.["Retrait-gonflement des argiles"] ? el.properties.catnat?.["Retrait-gonflement des argiles"] : 0));
       return [minValue, maxValue];
     } else if (typeRisqueValue === "Mouvements de terrain") {
-      const maxValue = Math.max(...carteCommunes.map((el: any) => el.properties.catnat?.["Mouvements de terrain"] ? el.properties.catnat?.["Mouvements de terrain"] : 0));
-      const minValue = Math.min(...carteCommunes.map((el: any) => el.properties.catnat?.["Mouvements de terrain"] ? el.properties.catnat?.["Mouvements de terrain"] : 0));
+      const maxValue = Math.max(...carteCommunes.map((el) => el.properties.catnat?.["Mouvements de terrain"] ? el.properties.catnat?.["Mouvements de terrain"] : 0));
+      const minValue = Math.min(...carteCommunes.map((el) => el.properties.catnat?.["Mouvements de terrain"] ? el.properties.catnat?.["Mouvements de terrain"] : 0));
       return [minValue, maxValue];
     } else if (typeRisqueValue === "Inondations") {
-      const maxValue = Math.max(...carteCommunes.map((el: any) => el.properties.catnat?.Inondations ? el.properties.catnat?.Inondations : 0));
-      const minValue = Math.min(...carteCommunes.map((el: any) => el.properties.catnat?.Inondations ? el.properties.catnat?.Inondations : 0));
+      const maxValue = Math.max(...carteCommunes.map((el) => el.properties.catnat?.Inondations ? el.properties.catnat?.Inondations : 0));
+      const minValue = Math.min(...carteCommunes.map((el) => el.properties.catnat?.Inondations ? el.properties.catnat?.Inondations : 0));
       return [minValue, maxValue];
     } else if (typeRisqueValue === "Grêle / neige") {
-      const maxValue = Math.max(...carteCommunes.map((el: any) => el.properties.catnat?.["Grêle / neige"] ? el.properties.catnat?.["Grêle / neige"] : 0));
-      const minValue = Math.min(...carteCommunes.map((el: any) => el.properties.catnat?.["Grêle / neige"] ? el.properties.catnat?.["Grêle / neige"] : 0));
+      const maxValue = Math.max(...carteCommunes.map((el) => el.properties.catnat?.["Grêle / neige"] ? el.properties.catnat?.["Grêle / neige"] : 0));
+      const minValue = Math.min(...carteCommunes.map((el) => el.properties.catnat?.["Grêle / neige"] ? el.properties.catnat?.["Grêle / neige"] : 0));
       return [minValue, maxValue];
     } else if (typeRisqueValue === "Avalanche") {
-      const maxValue = Math.max(...carteCommunes.map((el: any) => el.properties.catnat?.Avalanche ? el.properties.catnat?.Avalanche : 0));
-      const minValue = Math.min(...carteCommunes.map((el: any) => el.properties.catnat?.Avalanche ? el.properties.catnat?.Avalanche : 0));
+      const maxValue = Math.max(...carteCommunes.map((el) => el.properties.catnat?.Avalanche ? el.properties.catnat?.Avalanche : 0));
+      const minValue = Math.min(...carteCommunes.map((el) => el.properties.catnat?.Avalanche ? el.properties.catnat?.Avalanche : 0));
       return [minValue, maxValue];
     }
     else {

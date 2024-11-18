@@ -2,7 +2,8 @@
 
 import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
-import { ResponsivePie } from '@nivo/pie';
+import { Any } from '@/lib/utils/types';
+import { DefaultRawDatum, PieCustomLayerProps, ResponsivePie } from '@nivo/pie';
 import { animated } from '@react-spring/web';
 
 type ArreteCatNat = {
@@ -42,7 +43,7 @@ const PieChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
     (value, index, self) => index === self.findIndex(t => t.label === value.label),
   );
 
-  const CenteredMetric = ({ dataWithArc, centerX, centerY }: any) => {
+  const CenteredMetric = ({ dataWithArc, centerX, centerY }: PieCustomLayerProps<DefaultRawDatum>) => {
     let total = 0
     dataWithArc.forEach((datum: { value: number; }) => {
         total += datum.value
@@ -77,7 +78,7 @@ const PieChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
     )
   }
 
-  const  arcLabelsComponent = ({ datum, label, style }: any) => {
+  const  arcLabelsComponent = ({ datum, label, style }: Any) => {
     return (
       <animated.g style={style}>
         <animated.path 

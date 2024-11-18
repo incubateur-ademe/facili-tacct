@@ -10,7 +10,9 @@ import { useRef } from "react";
 import "./maps.scss";
 
 import { CommunesIndicateursDto } from "@/lib/dto";
+import { CollectivitesSearchbar } from "@/lib/postgres/models";
 import { swapNumbers } from "@/lib/utils/reusableFunctions/swapItemsInArray";
+import { GeoJsonObject } from "geojson";
 import { GraphDataNotFound } from "../graph-data-not-found";
 
 const getCentroid = (arr: number[][]) => {
@@ -33,7 +35,7 @@ const getCoordinates = (coords: number[][][]) => {
 
 export const MapLCZ = (props: {
   carteCommunes: CommunesIndicateursDto[];
-  collectivite: any;
+  collectivite: CollectivitesSearchbar[];
 }) => {
   const { carteCommunes, collectivite } = props;
   const searchParams = useSearchParams();
@@ -78,7 +80,7 @@ export const MapLCZ = (props: {
             url="https://lcz-generator.rub.de/tms-inverted/global-map-tiles/v3/{z}/{x}/{y}.png"
             opacity={0.6}
           />
-          <GeoJSON ref={mapRef} data={carteCommunes as Any} style={style} />
+          <GeoJSON ref={mapRef} data={carteCommunes as unknown as GeoJsonObject} style={style} />
         </MapContainer>
       )}
     </>
