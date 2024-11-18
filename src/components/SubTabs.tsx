@@ -13,7 +13,7 @@ import styles from "./components.module.scss";
 interface Props {
   data: Array<string | null>;
   defaultTab: string;
-  setValue: (value: string) => void;
+  setValue: (value: string & CatnatTypes) => void;
   maxWidth?: string;
   borderRight?: string;
 }
