@@ -1,3 +1,4 @@
+import { Any } from "@/lib/utils/types";
 import { BarDatum, BarLegendProps, BarTooltipProps, ResponsiveBar } from "@nivo/bar";
 
 type Datum = {
@@ -66,7 +67,7 @@ export const NivoBarChart = ({
         tickValues: bottomTickValues,
         tickSize: 0,
         tickPadding: 15,
-        renderTick: (e: any) => {
+        renderTick: (e: Any) => {
           return (
             <g transform={`translate(${e.x},${e.y})`}>
               <text

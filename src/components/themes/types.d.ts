@@ -9,7 +9,7 @@ type CatnatTypes = "Inondations" |
   "Retrait-gonflement des argiles" | 
   "Mouvements de terrain" | 
   "Tous types" | 
-  "Avalanches"
+  "Avalanche"
 
 type ArreteCatNat = {
   annee_arrete: number;
@@ -32,7 +32,7 @@ type DataByCodeGeographique = {
   "Cyclones / Tempêtes"? : number;
   "Retrait-gonflement des argiles"? : number;
   "Mouvements de terrain"? : number;
-  "Avalanches"? : number;
+  "Avalanche"? : number;
 }
 type TabIcons = {
   name: string;

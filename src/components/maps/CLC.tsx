@@ -10,6 +10,7 @@ import { ClcMapper } from "@/lib/mapper/clc";
 import { CLC } from "@/lib/postgres/models";
 import { GeoJSON, MapContainer, TileLayer } from "@/lib/react-leaflet";
 import { type Any } from "@/lib/utils/types";
+import { GeoJsonObject } from "geojson";
 
 const getCentroid = (arr: number[][]) => {
   return arr.reduce(
@@ -108,7 +109,7 @@ export const Map = (props: {clc: CLC[]}) => {
         attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
       />
-      <GeoJSON ref={mapRef} data={clc_parsed as any} style={style} />
+      <GeoJSON ref={mapRef} data={clc_parsed as unknown as GeoJsonObject} style={style} />
     </MapContainer>
   );
 };

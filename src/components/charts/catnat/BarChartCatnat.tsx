@@ -1,9 +1,8 @@
 "use client";
 
 import styles from "@/components/themes/gestionRisques/gestionRisques.module.scss";
-import { ResponsiveBar } from "@/lib/nivo/bar";
+import { BarDatum, ResponsiveBar } from "@/lib/nivo/bar";
 import { CountOccByIndex } from "@/lib/utils/reusableFunctions/occurencesCount";
-import { Any } from "@/lib/utils/types";
 
 const colors: { [key: string]: string } = {
   'Inondations': '#009ADC',
@@ -31,7 +30,7 @@ export const BarChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
           </div>
         ) :
         <ResponsiveBar
-          data={graphData as Any}
+          data={graphData as unknown as BarDatum[]} 
           keys={typesRisques}
           isFocusable={true}
           indexBy="indexName"

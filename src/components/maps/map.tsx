@@ -2,7 +2,7 @@
 
 import "leaflet/dist/leaflet.css";
 
-import { type Feature } from "geojson";
+import { GeoJsonObject, type Feature } from "geojson";
 import { type FeatureGroup, type Layer, type LeafletMouseEventHandlerFn, type StyleFunction } from "leaflet";
 import { useSearchParams } from "next/navigation";
 import { useRef } from "react";
@@ -141,7 +141,7 @@ export const Map = (props: {
             attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
           />
-          <GeoJSON ref={mapRef} data={carteCommunes as any} onEachFeature={onEachFeature} style={style} />
+          <GeoJSON ref={mapRef} data={carteCommunes as unknown as GeoJsonObject} onEachFeature={onEachFeature} style={style} />
         </MapContainer>
       )}
     </>
