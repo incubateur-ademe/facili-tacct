@@ -45,7 +45,7 @@ export const HeaderComp = () => {
   
   const RessourcesClick = () => {
     posthog.capture(
-      'ressources_clicked',
+      'ressources_bouton',
       {
         ressource: "ressources",
         date: new Date()
