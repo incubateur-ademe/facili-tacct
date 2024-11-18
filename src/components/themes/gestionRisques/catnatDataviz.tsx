@@ -64,7 +64,7 @@ const CatnatDataViz = (props: Props) => {
               <SubTabs 
                 data={["Tous types", ...typesRisques]}
                 defaultTab={typeRisqueValue}
-                setValue={setTypeRisqueValue as (value: string) => void}
+                setValue={setTypeRisqueValue}
                 maxWidth="65%"
                 borderRight="solid 1px #D6D6F0"
               />
@@ -87,7 +87,7 @@ const CatnatDataViz = (props: Props) => {
               <SubTabs
                 data={["Tous types", ...typesRisques]}
                 defaultTab={typeRisqueValue}
-                setValue={setTypeRisqueValue as (value: string) => void}
+                setValue={setTypeRisqueValue}
               />
             </div>
             <MapCatnat carteCommunes={carteCommunes} typeRisqueValue={typeRisqueValue} />
