@@ -11,7 +11,7 @@ import { type Any } from "@/lib/utils/types";
 
 import { CommunesIndicateursDto } from "@/lib/dto";
 import { Sum } from "@/lib/utils/reusableFunctions/sum";
-import { Feature } from "geojson";
+import { Feature, GeoJsonObject } from "geojson";
 import { GraphDataNotFound } from "../graph-data-not-found";
 
 const colors: { [key: string]: string[] } = 
@@ -180,7 +180,7 @@ export const MapCatnat = (props: {
             // attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openma            attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <GeoJSON ref={mapRef} data={carteCommunes as Any} style={style} onEachFeature={onEachFeature} />
+          <GeoJSON ref={mapRef} data={carteCommunes as unknown as GeoJsonObject} style={style} onEachFeature={onEachFeature} />
         </MapContainer>
 
       )}

@@ -15,7 +15,6 @@ export const GetInconfortThermique = async (code: string): Promise<InconfortTher
       },
     });
     console.timeEnd("Query Execution Time INCONFORT");
-    Sentry.captureMessage(`Get inconfort thermique ${code}`, "info")
     return value;
   } catch (error) {
     console.error(error);
@@ -57,7 +56,6 @@ export const GetGestionRisques = async (code: string): Promise<GestionRisques[]>
       },
     });
     console.timeEnd("Query Execution Time GESTIONRISQUES");
-    Sentry.captureMessage(`Get GestionRisques ${code}`, "info")
     return value;
   } catch (error) {
     console.error(error);
@@ -83,7 +81,6 @@ export const GetBiodiversite = async (code: string): Promise<Biodiversite[]> => 
       },
     });
     console.timeEnd("Query Execution Time BIODIVERSITE");
-    Sentry.captureMessage(`Get Biodiversité ${code}`, "info")
     return value;
   } catch (error) {
     console.error(error);
@@ -107,7 +104,6 @@ export const GetRessourceEau = async (code: string): Promise<RessourcesEau[]> =>
       },
     });
     console.timeEnd("Query Execution Time RESSOURCES EAU");
-    Sentry.captureMessage(`Get Ressources en eau ${code}`, "info")
     return value;
   } catch (error) {
     console.error(error);
@@ -126,7 +122,6 @@ export const GetAgricultureBio = async (code: string): Promise<AgricultureBio[]>
       },
     });
     console.timeEnd("Query Execution Time AGRICULTURE BIO");
-    Sentry.captureMessage(`Get Ressources en eau ${code}`, "info")
     return value;
   } catch (error) {
     console.error(error);
