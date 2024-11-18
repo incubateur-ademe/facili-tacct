@@ -1,5 +1,6 @@
 import { Card } from "@codegouvfr/react-dsfr/Card";
 import { Tag } from "@codegouvfr/react-dsfr/Tag";
+import { usePostHog } from "posthog-js/react";
 import { useStyles } from "tss-react/dsfr";
 import "./ressources.module.scss";
 
@@ -16,12 +17,24 @@ interface Props {
 
 export const CardComp = ({ description, titre, tag, link, backgroundColor, textColor, titleColor, logoColor }: Props) => {
   const { css } = useStyles();
+  const posthog = usePostHog()
+
+  const RessourcesClick = () => {
+    posthog.capture(
+      'ressource_consultée',
+      {
+        ressource: titre,
+        type: tag
+      })
+  }
+
   return (
     <div
       className="container"
       style={{
         width: 360,
       }}
+      onClick={RessourcesClick}
     >
       <Card
         border

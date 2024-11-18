@@ -79,7 +79,7 @@ export type CommunesIndicateursDto = {
       "Cyclones / Tempêtes"? : number;
       "Retrait-gonflement des argiles"? : number;
       "Mouvements de terrain"? : number;
-      "Avalanches"? : number;
+      "Avalanche"? : number;
       sumCatnat?: number;
       indexName?: string;
     };
