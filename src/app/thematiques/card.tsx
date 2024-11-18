@@ -2,6 +2,7 @@
 import Badge from "@codegouvfr/react-dsfr/Badge";
 import { Card } from "@codegouvfr/react-dsfr/Card";
 import { useSearchParams } from "next/navigation";
+import { usePostHog } from "posthog-js/react";
 import { useEffect, useState } from "react";
 
 interface Props {
@@ -17,7 +18,8 @@ export const CardComp = ({ imageUrl, thematique, badgeSeverity, badge, title }: 
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo");
   const codepci = searchParams.get("codepci")!;
-  
+  const posthog = usePostHog()
+
   useEffect(() => {
     if (codepci) {
       codgeo !== null ? 
@@ -26,11 +28,20 @@ export const CardComp = ({ imageUrl, thematique, badgeSeverity, badge, title }: 
     }
   }, [codgeo, codepci]);
 
+  const ThematiquesClick = () => {
+    posthog.capture(
+      'thematique_clicked',
+      {
+        thematique: thematique,
+      })
+  }
+
   return (
     <div
       style={{
         width: 360,
       }}
+      onClick={ThematiquesClick}
     >
       <Card
         background
