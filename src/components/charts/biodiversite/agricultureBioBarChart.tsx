@@ -43,7 +43,6 @@ const graphDataFunct = (filteredYears: string[], data: AgricultureBio[]) => {
       annee: year.split("_")[1],
     }
     const isNull = Sum(Object.values(obj).slice(0, -1) as number[]);
-    console.log("Object.values(obj)", obj);
     isNull !== 0 ? dataArr.push(obj) : null;
   });
 
