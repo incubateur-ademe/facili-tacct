@@ -127,3 +127,20 @@ export type EpciContoursDto = {
     epci_code: string;
   };
 };
+
+type SurfacesProtegessChildren = {
+  name: string;
+  color: string;
+  loc: number;
+}
+
+export type SurfacesProtegeesDto = {
+  name: string;
+  color: string;
+  children: {
+    name: string;
+    color: string;
+    loc?: number;
+    children?: SurfacesProtegessChildren[];
+  }[];
+};
