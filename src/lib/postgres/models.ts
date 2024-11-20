@@ -1,3 +1,4 @@
+
 export type InconfortThermique = {
   NA5AZ_sum: number | null;
   NA5BE_sum: number | null;
@@ -198,3 +199,45 @@ export type DataGrandAge = {
   under_4_sum_2014?: number;
   under_4_sum_2020?: number;
 };
+
+export type SurfacesProtegees = {
+  index: bigint;
+  code_geographique: string;
+  LIBELLE_VARIABLE: string;
+  SOUS_CHAMP: string;
+  A2019: number;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  region: number;
+}
+
+export type SurfacesProtegeesByCol = {
+  index: bigint;
+  code_geographique: string;
+  PNC: string | null;
+  RAMSAR: string | null;
+  PNR: string | null;
+  PNP: string | null;
+  FOR_PRO: string | null;
+  ZZZ: string | null;
+  ZNIEFF2: string | null;
+  ZNIEFF1: string | null;
+  RNR: string | null;
+  TOU_PRO: string | null;
+  NATURA: string | null;
+  ZPS: string | null;
+  SIC: string | null;
+  CELRL: string | null;
+  BIO: string | null;
+  APB: string | null;
+  RN: string | null;
+  RBFD: string | null;
+  RNCFS: string | null;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  region: number;
+}

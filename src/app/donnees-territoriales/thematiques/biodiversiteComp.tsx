@@ -9,7 +9,8 @@ import { useEffect, useState } from "react";
 
 import AgricultureBiologique from "@/components/themes/biodiversite/agricultureBio";
 import { StationsClassees } from "@/components/themes/biodiversite/stationsClassees";
-import { AgricultureBio, Biodiversite, CarteCommunes } from "@/lib/postgres/models";
+import SurfacesProtegees from "@/components/themes/biodiversite/surfacesProtegees";
+import { AgricultureBio, Biodiversite, CarteCommunes, SurfacesProtegeesByCol } from "@/lib/postgres/models";
 import { useStyles } from "tss-react/dsfr";
 import styles from "../donnees.module.scss";
 
@@ -24,6 +25,7 @@ interface Props {
   biodiversite: Biodiversite[];
   carteCommunes: CarteCommunes[];
   agricultureBio: AgricultureBio[];
+  surfacesProtegees: SurfacesProtegeesByCol[];
 }
 
 const allComps = [
@@ -34,10 +36,14 @@ const allComps = [
   {
     titre: "Agriculture biologique",
     Component: ({data, agricultureBio}: Props & { activeDataTab: string }) => <AgricultureBiologique data={data} agricultureBio={agricultureBio} />,
+  },
+  {
+    titre: "Surfaces protégées",
+    Component: ({data, surfacesProtegees}: Props & { activeDataTab: string }) => <SurfacesProtegees data={data} surfacesProtegees={surfacesProtegees} />,
   }
 ];
 
-const BiodiversiteComp = ({ data, biodiversite, carteCommunes, agricultureBio }: Props) => {
+const BiodiversiteComp = ({ data, biodiversite, carteCommunes, agricultureBio, surfacesProtegees }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState("Agriculture");
   const [selectedSubTab, setSelectedSubTab] = useState("Agriculture biologique");
   const searchParams = useSearchParams();
@@ -67,6 +73,10 @@ const BiodiversiteComp = ({ data, biodiversite, carteCommunes, agricultureBio }:
           {
             tabId: "Agriculture",
             label: "Agriculture"
+          },
+          {
+            tabId: "Surfaces protégées",
+            label: "Surfaces protégées"
           }
         ]} 
         onTabChange={setSelectedTabId} 
@@ -125,6 +135,7 @@ const BiodiversiteComp = ({ data, biodiversite, carteCommunes, agricultureBio }:
                     activeDataTab={selectedSubTab}
                     carteCommunes={carteCommunes}
                     agricultureBio={agricultureBio}
+                    surfacesProtegees={surfacesProtegees}
                   />
                 );
               })()}
