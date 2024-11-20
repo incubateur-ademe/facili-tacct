@@ -68,6 +68,21 @@ export type agriculture_bio = $Result.DefaultSelection<Prisma.$agriculture_bioPa
  * 
  */
 export type erosion_cotiere = $Result.DefaultSelection<Prisma.$erosion_cotierePayload>
+/**
+ * Model epci
+ * 
+ */
+export type epci = $Result.DefaultSelection<Prisma.$epciPayload>
+/**
+ * Model surfaces_protegees
+ * 
+ */
+export type surfaces_protegees = $Result.DefaultSelection<Prisma.$surfaces_protegeesPayload>
+/**
+ * Model surfaces_protegees_by_col
+ * 
+ */
+export type surfaces_protegees_by_col = $Result.DefaultSelection<Prisma.$surfaces_protegees_by_colPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -301,6 +316,36 @@ export class PrismaClient<
     * ```
     */
   get erosion_cotiere(): Prisma.erosion_cotiereDelegate<ExtArgs>;
+
+  /**
+   * `prisma.epci`: Exposes CRUD operations for the **epci** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Epcis
+    * const epcis = await prisma.epci.findMany()
+    * ```
+    */
+  get epci(): Prisma.epciDelegate<ExtArgs>;
+
+  /**
+   * `prisma.surfaces_protegees`: Exposes CRUD operations for the **surfaces_protegees** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Surfaces_protegees
+    * const surfaces_protegees = await prisma.surfaces_protegees.findMany()
+    * ```
+    */
+  get surfaces_protegees(): Prisma.surfaces_protegeesDelegate<ExtArgs>;
+
+  /**
+   * `prisma.surfaces_protegees_by_col`: Exposes CRUD operations for the **surfaces_protegees_by_col** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Surfaces_protegees_by_cols
+    * const surfaces_protegees_by_cols = await prisma.surfaces_protegees_by_col.findMany()
+    * ```
+    */
+  get surfaces_protegees_by_col(): Prisma.surfaces_protegees_by_colDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -752,7 +797,10 @@ export namespace Prisma {
     communes_drom: 'communes_drom',
     ressources_eau: 'ressources_eau',
     agriculture_bio: 'agriculture_bio',
-    erosion_cotiere: 'erosion_cotiere'
+    erosion_cotiere: 'erosion_cotiere',
+    epci: 'epci',
+    surfaces_protegees: 'surfaces_protegees',
+    surfaces_protegees_by_col: 'surfaces_protegees_by_col'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -768,7 +816,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "inconfort_thermique" | "clc_epci" | "communes" | "collectivites_searchbar" | "biodiversite" | "spatial_ref_sys" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio" | "erosion_cotiere"
+      modelProps: "inconfort_thermique" | "clc_epci" | "communes" | "collectivites_searchbar" | "biodiversite" | "spatial_ref_sys" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio" | "erosion_cotiere" | "epci" | "surfaces_protegees" | "surfaces_protegees_by_col"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1507,6 +1555,200 @@ export namespace Prisma {
           count: {
             args: Prisma.erosion_cotiereCountArgs<ExtArgs>
             result: $Utils.Optional<Erosion_cotiereCountAggregateOutputType> | number
+          }
+        }
+      }
+      epci: {
+        payload: Prisma.$epciPayload<ExtArgs>
+        fields: Prisma.epciFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.epciFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$epciPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.epciFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$epciPayload>
+          }
+          findFirst: {
+            args: Prisma.epciFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$epciPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.epciFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$epciPayload>
+          }
+          findMany: {
+            args: Prisma.epciFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$epciPayload>[]
+          }
+          delete: {
+            args: Prisma.epciDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$epciPayload>
+          }
+          update: {
+            args: Prisma.epciUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$epciPayload>
+          }
+          deleteMany: {
+            args: Prisma.epciDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.epciUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          aggregate: {
+            args: Prisma.EpciAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEpci>
+          }
+          groupBy: {
+            args: Prisma.epciGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EpciGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.epciCountArgs<ExtArgs>
+            result: $Utils.Optional<EpciCountAggregateOutputType> | number
+          }
+        }
+      }
+      surfaces_protegees: {
+        payload: Prisma.$surfaces_protegeesPayload<ExtArgs>
+        fields: Prisma.surfaces_protegeesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.surfaces_protegeesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.surfaces_protegeesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>
+          }
+          findFirst: {
+            args: Prisma.surfaces_protegeesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.surfaces_protegeesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>
+          }
+          findMany: {
+            args: Prisma.surfaces_protegeesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>[]
+          }
+          create: {
+            args: Prisma.surfaces_protegeesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>
+          }
+          createMany: {
+            args: Prisma.surfaces_protegeesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.surfaces_protegeesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>[]
+          }
+          delete: {
+            args: Prisma.surfaces_protegeesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>
+          }
+          update: {
+            args: Prisma.surfaces_protegeesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>
+          }
+          deleteMany: {
+            args: Prisma.surfaces_protegeesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.surfaces_protegeesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.surfaces_protegeesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>
+          }
+          aggregate: {
+            args: Prisma.Surfaces_protegeesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSurfaces_protegees>
+          }
+          groupBy: {
+            args: Prisma.surfaces_protegeesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Surfaces_protegeesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.surfaces_protegeesCountArgs<ExtArgs>
+            result: $Utils.Optional<Surfaces_protegeesCountAggregateOutputType> | number
+          }
+        }
+      }
+      surfaces_protegees_by_col: {
+        payload: Prisma.$surfaces_protegees_by_colPayload<ExtArgs>
+        fields: Prisma.surfaces_protegees_by_colFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.surfaces_protegees_by_colFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.surfaces_protegees_by_colFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>
+          }
+          findFirst: {
+            args: Prisma.surfaces_protegees_by_colFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.surfaces_protegees_by_colFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>
+          }
+          findMany: {
+            args: Prisma.surfaces_protegees_by_colFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>[]
+          }
+          create: {
+            args: Prisma.surfaces_protegees_by_colCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>
+          }
+          createMany: {
+            args: Prisma.surfaces_protegees_by_colCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.surfaces_protegees_by_colCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>[]
+          }
+          delete: {
+            args: Prisma.surfaces_protegees_by_colDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>
+          }
+          update: {
+            args: Prisma.surfaces_protegees_by_colUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>
+          }
+          deleteMany: {
+            args: Prisma.surfaces_protegees_by_colDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.surfaces_protegees_by_colUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.surfaces_protegees_by_colUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>
+          }
+          aggregate: {
+            args: Prisma.Surfaces_protegees_by_colAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSurfaces_protegees_by_col>
+          }
+          groupBy: {
+            args: Prisma.surfaces_protegees_by_colGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Surfaces_protegees_by_colGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.surfaces_protegees_by_colCountArgs<ExtArgs>
+            result: $Utils.Optional<Surfaces_protegees_by_colCountAggregateOutputType> | number
           }
         }
       }
@@ -12889,6 +13131,2893 @@ export namespace Prisma {
 
 
   /**
+   * Model epci
+   */
+
+  export type AggregateEpci = {
+    _count: EpciCountAggregateOutputType | null
+    _avg: EpciAvgAggregateOutputType | null
+    _sum: EpciSumAggregateOutputType | null
+    _min: EpciMinAggregateOutputType | null
+    _max: EpciMaxAggregateOutputType | null
+  }
+
+  export type EpciAvgAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type EpciSumAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type EpciMinAggregateOutputType = {
+    pk: number | null
+    epci_code: string | null
+  }
+
+  export type EpciMaxAggregateOutputType = {
+    pk: number | null
+    epci_code: string | null
+  }
+
+  export type EpciCountAggregateOutputType = {
+    pk: number
+    epci_code: number
+    _all: number
+  }
+
+
+  export type EpciAvgAggregateInputType = {
+    pk?: true
+  }
+
+  export type EpciSumAggregateInputType = {
+    pk?: true
+  }
+
+  export type EpciMinAggregateInputType = {
+    pk?: true
+    epci_code?: true
+  }
+
+  export type EpciMaxAggregateInputType = {
+    pk?: true
+    epci_code?: true
+  }
+
+  export type EpciCountAggregateInputType = {
+    pk?: true
+    epci_code?: true
+    _all?: true
+  }
+
+  export type EpciAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which epci to aggregate.
+     */
+    where?: epciWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of epcis to fetch.
+     */
+    orderBy?: epciOrderByWithRelationInput | epciOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: epciWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` epcis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` epcis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned epcis
+    **/
+    _count?: true | EpciCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: EpciAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EpciSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EpciMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EpciMaxAggregateInputType
+  }
+
+  export type GetEpciAggregateType<T extends EpciAggregateArgs> = {
+        [P in keyof T & keyof AggregateEpci]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEpci[P]>
+      : GetScalarType<T[P], AggregateEpci[P]>
+  }
+
+
+
+
+  export type epciGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: epciWhereInput
+    orderBy?: epciOrderByWithAggregationInput | epciOrderByWithAggregationInput[]
+    by: EpciScalarFieldEnum[] | EpciScalarFieldEnum
+    having?: epciScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EpciCountAggregateInputType | true
+    _avg?: EpciAvgAggregateInputType
+    _sum?: EpciSumAggregateInputType
+    _min?: EpciMinAggregateInputType
+    _max?: EpciMaxAggregateInputType
+  }
+
+  export type EpciGroupByOutputType = {
+    pk: number
+    epci_code: string
+    _count: EpciCountAggregateOutputType | null
+    _avg: EpciAvgAggregateOutputType | null
+    _sum: EpciSumAggregateOutputType | null
+    _min: EpciMinAggregateOutputType | null
+    _max: EpciMaxAggregateOutputType | null
+  }
+
+  type GetEpciGroupByPayload<T extends epciGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EpciGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EpciGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EpciGroupByOutputType[P]>
+            : GetScalarType<T[P], EpciGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type epciSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    epci_code?: boolean
+  }, ExtArgs["result"]["epci"]>
+
+
+  export type epciSelectScalar = {
+    pk?: boolean
+    epci_code?: boolean
+  }
+
+
+  export type $epciPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "epci"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      epci_code: string
+    }, ExtArgs["result"]["epci"]>
+    composites: {}
+  }
+
+  type epciGetPayload<S extends boolean | null | undefined | epciDefaultArgs> = $Result.GetResult<Prisma.$epciPayload, S>
+
+  type epciCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<epciFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: EpciCountAggregateInputType | true
+    }
+
+  export interface epciDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['epci'], meta: { name: 'epci' } }
+    /**
+     * Find zero or one Epci that matches the filter.
+     * @param {epciFindUniqueArgs} args - Arguments to find a Epci
+     * @example
+     * // Get one Epci
+     * const epci = await prisma.epci.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends epciFindUniqueArgs>(args: SelectSubset<T, epciFindUniqueArgs<ExtArgs>>): Prisma__epciClient<$Result.GetResult<Prisma.$epciPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Epci that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {epciFindUniqueOrThrowArgs} args - Arguments to find a Epci
+     * @example
+     * // Get one Epci
+     * const epci = await prisma.epci.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends epciFindUniqueOrThrowArgs>(args: SelectSubset<T, epciFindUniqueOrThrowArgs<ExtArgs>>): Prisma__epciClient<$Result.GetResult<Prisma.$epciPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Epci that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {epciFindFirstArgs} args - Arguments to find a Epci
+     * @example
+     * // Get one Epci
+     * const epci = await prisma.epci.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends epciFindFirstArgs>(args?: SelectSubset<T, epciFindFirstArgs<ExtArgs>>): Prisma__epciClient<$Result.GetResult<Prisma.$epciPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Epci that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {epciFindFirstOrThrowArgs} args - Arguments to find a Epci
+     * @example
+     * // Get one Epci
+     * const epci = await prisma.epci.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends epciFindFirstOrThrowArgs>(args?: SelectSubset<T, epciFindFirstOrThrowArgs<ExtArgs>>): Prisma__epciClient<$Result.GetResult<Prisma.$epciPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Epcis that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {epciFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Epcis
+     * const epcis = await prisma.epci.findMany()
+     * 
+     * // Get first 10 Epcis
+     * const epcis = await prisma.epci.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const epciWithPkOnly = await prisma.epci.findMany({ select: { pk: true } })
+     * 
+     */
+    findMany<T extends epciFindManyArgs>(args?: SelectSubset<T, epciFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$epciPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Delete a Epci.
+     * @param {epciDeleteArgs} args - Arguments to delete one Epci.
+     * @example
+     * // Delete one Epci
+     * const Epci = await prisma.epci.delete({
+     *   where: {
+     *     // ... filter to delete one Epci
+     *   }
+     * })
+     * 
+     */
+    delete<T extends epciDeleteArgs>(args: SelectSubset<T, epciDeleteArgs<ExtArgs>>): Prisma__epciClient<$Result.GetResult<Prisma.$epciPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Epci.
+     * @param {epciUpdateArgs} args - Arguments to update one Epci.
+     * @example
+     * // Update one Epci
+     * const epci = await prisma.epci.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends epciUpdateArgs>(args: SelectSubset<T, epciUpdateArgs<ExtArgs>>): Prisma__epciClient<$Result.GetResult<Prisma.$epciPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Epcis.
+     * @param {epciDeleteManyArgs} args - Arguments to filter Epcis to delete.
+     * @example
+     * // Delete a few Epcis
+     * const { count } = await prisma.epci.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends epciDeleteManyArgs>(args?: SelectSubset<T, epciDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Epcis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {epciUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Epcis
+     * const epci = await prisma.epci.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends epciUpdateManyArgs>(args: SelectSubset<T, epciUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+
+    /**
+     * Count the number of Epcis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {epciCountArgs} args - Arguments to filter Epcis to count.
+     * @example
+     * // Count the number of Epcis
+     * const count = await prisma.epci.count({
+     *   where: {
+     *     // ... the filter for the Epcis we want to count
+     *   }
+     * })
+    **/
+    count<T extends epciCountArgs>(
+      args?: Subset<T, epciCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EpciCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Epci.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EpciAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EpciAggregateArgs>(args: Subset<T, EpciAggregateArgs>): Prisma.PrismaPromise<GetEpciAggregateType<T>>
+
+    /**
+     * Group by Epci.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {epciGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends epciGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: epciGroupByArgs['orderBy'] }
+        : { orderBy?: epciGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, epciGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEpciGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the epci model
+   */
+  readonly fields: epciFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for epci.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__epciClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the epci model
+   */ 
+  interface epciFieldRefs {
+    readonly pk: FieldRef<"epci", 'Int'>
+    readonly epci_code: FieldRef<"epci", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * epci findUnique
+   */
+  export type epciFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the epci
+     */
+    select?: epciSelect<ExtArgs> | null
+    /**
+     * Filter, which epci to fetch.
+     */
+    where: epciWhereUniqueInput
+  }
+
+  /**
+   * epci findUniqueOrThrow
+   */
+  export type epciFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the epci
+     */
+    select?: epciSelect<ExtArgs> | null
+    /**
+     * Filter, which epci to fetch.
+     */
+    where: epciWhereUniqueInput
+  }
+
+  /**
+   * epci findFirst
+   */
+  export type epciFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the epci
+     */
+    select?: epciSelect<ExtArgs> | null
+    /**
+     * Filter, which epci to fetch.
+     */
+    where?: epciWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of epcis to fetch.
+     */
+    orderBy?: epciOrderByWithRelationInput | epciOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for epcis.
+     */
+    cursor?: epciWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` epcis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` epcis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of epcis.
+     */
+    distinct?: EpciScalarFieldEnum | EpciScalarFieldEnum[]
+  }
+
+  /**
+   * epci findFirstOrThrow
+   */
+  export type epciFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the epci
+     */
+    select?: epciSelect<ExtArgs> | null
+    /**
+     * Filter, which epci to fetch.
+     */
+    where?: epciWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of epcis to fetch.
+     */
+    orderBy?: epciOrderByWithRelationInput | epciOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for epcis.
+     */
+    cursor?: epciWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` epcis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` epcis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of epcis.
+     */
+    distinct?: EpciScalarFieldEnum | EpciScalarFieldEnum[]
+  }
+
+  /**
+   * epci findMany
+   */
+  export type epciFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the epci
+     */
+    select?: epciSelect<ExtArgs> | null
+    /**
+     * Filter, which epcis to fetch.
+     */
+    where?: epciWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of epcis to fetch.
+     */
+    orderBy?: epciOrderByWithRelationInput | epciOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing epcis.
+     */
+    cursor?: epciWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` epcis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` epcis.
+     */
+    skip?: number
+    distinct?: EpciScalarFieldEnum | EpciScalarFieldEnum[]
+  }
+
+  /**
+   * epci update
+   */
+  export type epciUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the epci
+     */
+    select?: epciSelect<ExtArgs> | null
+    /**
+     * The data needed to update a epci.
+     */
+    data: XOR<epciUpdateInput, epciUncheckedUpdateInput>
+    /**
+     * Choose, which epci to update.
+     */
+    where: epciWhereUniqueInput
+  }
+
+  /**
+   * epci updateMany
+   */
+  export type epciUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update epcis.
+     */
+    data: XOR<epciUpdateManyMutationInput, epciUncheckedUpdateManyInput>
+    /**
+     * Filter which epcis to update
+     */
+    where?: epciWhereInput
+  }
+
+  /**
+   * epci delete
+   */
+  export type epciDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the epci
+     */
+    select?: epciSelect<ExtArgs> | null
+    /**
+     * Filter which epci to delete.
+     */
+    where: epciWhereUniqueInput
+  }
+
+  /**
+   * epci deleteMany
+   */
+  export type epciDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which epcis to delete
+     */
+    where?: epciWhereInput
+  }
+
+  /**
+   * epci without action
+   */
+  export type epciDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the epci
+     */
+    select?: epciSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * Model surfaces_protegees
+   */
+
+  export type AggregateSurfaces_protegees = {
+    _count: Surfaces_protegeesCountAggregateOutputType | null
+    _avg: Surfaces_protegeesAvgAggregateOutputType | null
+    _sum: Surfaces_protegeesSumAggregateOutputType | null
+    _min: Surfaces_protegeesMinAggregateOutputType | null
+    _max: Surfaces_protegeesMaxAggregateOutputType | null
+  }
+
+  export type Surfaces_protegeesAvgAggregateOutputType = {
+    index: number | null
+    A2019: number | null
+    region: number | null
+  }
+
+  export type Surfaces_protegeesSumAggregateOutputType = {
+    index: bigint | null
+    A2019: number | null
+    region: number | null
+  }
+
+  export type Surfaces_protegeesMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    LIBELLE_VARIABLE: string | null
+    SOUS_CHAMP: string | null
+    A2019: number | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: number | null
+  }
+
+  export type Surfaces_protegeesMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    LIBELLE_VARIABLE: string | null
+    SOUS_CHAMP: string | null
+    A2019: number | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: number | null
+  }
+
+  export type Surfaces_protegeesCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    LIBELLE_VARIABLE: number
+    SOUS_CHAMP: number
+    A2019: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    region: number
+    _all: number
+  }
+
+
+  export type Surfaces_protegeesAvgAggregateInputType = {
+    index?: true
+    A2019?: true
+    region?: true
+  }
+
+  export type Surfaces_protegeesSumAggregateInputType = {
+    index?: true
+    A2019?: true
+    region?: true
+  }
+
+  export type Surfaces_protegeesMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    LIBELLE_VARIABLE?: true
+    SOUS_CHAMP?: true
+    A2019?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+  }
+
+  export type Surfaces_protegeesMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    LIBELLE_VARIABLE?: true
+    SOUS_CHAMP?: true
+    A2019?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+  }
+
+  export type Surfaces_protegeesCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    LIBELLE_VARIABLE?: true
+    SOUS_CHAMP?: true
+    A2019?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+    _all?: true
+  }
+
+  export type Surfaces_protegeesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which surfaces_protegees to aggregate.
+     */
+    where?: surfaces_protegeesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_protegees to fetch.
+     */
+    orderBy?: surfaces_protegeesOrderByWithRelationInput | surfaces_protegeesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: surfaces_protegeesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_protegees from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` surfaces_protegees.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned surfaces_protegees
+    **/
+    _count?: true | Surfaces_protegeesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Surfaces_protegeesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Surfaces_protegeesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Surfaces_protegeesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Surfaces_protegeesMaxAggregateInputType
+  }
+
+  export type GetSurfaces_protegeesAggregateType<T extends Surfaces_protegeesAggregateArgs> = {
+        [P in keyof T & keyof AggregateSurfaces_protegees]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSurfaces_protegees[P]>
+      : GetScalarType<T[P], AggregateSurfaces_protegees[P]>
+  }
+
+
+
+
+  export type surfaces_protegeesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: surfaces_protegeesWhereInput
+    orderBy?: surfaces_protegeesOrderByWithAggregationInput | surfaces_protegeesOrderByWithAggregationInput[]
+    by: Surfaces_protegeesScalarFieldEnum[] | Surfaces_protegeesScalarFieldEnum
+    having?: surfaces_protegeesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Surfaces_protegeesCountAggregateInputType | true
+    _avg?: Surfaces_protegeesAvgAggregateInputType
+    _sum?: Surfaces_protegeesSumAggregateInputType
+    _min?: Surfaces_protegeesMinAggregateInputType
+    _max?: Surfaces_protegeesMaxAggregateInputType
+  }
+
+  export type Surfaces_protegeesGroupByOutputType = {
+    index: bigint
+    code_geographique: string
+    LIBELLE_VARIABLE: string
+    SOUS_CHAMP: string
+    A2019: number
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
+    _count: Surfaces_protegeesCountAggregateOutputType | null
+    _avg: Surfaces_protegeesAvgAggregateOutputType | null
+    _sum: Surfaces_protegeesSumAggregateOutputType | null
+    _min: Surfaces_protegeesMinAggregateOutputType | null
+    _max: Surfaces_protegeesMaxAggregateOutputType | null
+  }
+
+  type GetSurfaces_protegeesGroupByPayload<T extends surfaces_protegeesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Surfaces_protegeesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Surfaces_protegeesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Surfaces_protegeesGroupByOutputType[P]>
+            : GetScalarType<T[P], Surfaces_protegeesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type surfaces_protegeesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    LIBELLE_VARIABLE?: boolean
+    SOUS_CHAMP?: boolean
+    A2019?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+  }, ExtArgs["result"]["surfaces_protegees"]>
+
+  export type surfaces_protegeesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    LIBELLE_VARIABLE?: boolean
+    SOUS_CHAMP?: boolean
+    A2019?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+  }, ExtArgs["result"]["surfaces_protegees"]>
+
+  export type surfaces_protegeesSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    LIBELLE_VARIABLE?: boolean
+    SOUS_CHAMP?: boolean
+    A2019?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+  }
+
+
+  export type $surfaces_protegeesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "surfaces_protegees"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string
+      LIBELLE_VARIABLE: string
+      SOUS_CHAMP: string
+      A2019: number
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      region: number
+    }, ExtArgs["result"]["surfaces_protegees"]>
+    composites: {}
+  }
+
+  type surfaces_protegeesGetPayload<S extends boolean | null | undefined | surfaces_protegeesDefaultArgs> = $Result.GetResult<Prisma.$surfaces_protegeesPayload, S>
+
+  type surfaces_protegeesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<surfaces_protegeesFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Surfaces_protegeesCountAggregateInputType | true
+    }
+
+  export interface surfaces_protegeesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['surfaces_protegees'], meta: { name: 'surfaces_protegees' } }
+    /**
+     * Find zero or one Surfaces_protegees that matches the filter.
+     * @param {surfaces_protegeesFindUniqueArgs} args - Arguments to find a Surfaces_protegees
+     * @example
+     * // Get one Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends surfaces_protegeesFindUniqueArgs>(args: SelectSubset<T, surfaces_protegeesFindUniqueArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Surfaces_protegees that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {surfaces_protegeesFindUniqueOrThrowArgs} args - Arguments to find a Surfaces_protegees
+     * @example
+     * // Get one Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends surfaces_protegeesFindUniqueOrThrowArgs>(args: SelectSubset<T, surfaces_protegeesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Surfaces_protegees that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegeesFindFirstArgs} args - Arguments to find a Surfaces_protegees
+     * @example
+     * // Get one Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends surfaces_protegeesFindFirstArgs>(args?: SelectSubset<T, surfaces_protegeesFindFirstArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Surfaces_protegees that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegeesFindFirstOrThrowArgs} args - Arguments to find a Surfaces_protegees
+     * @example
+     * // Get one Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends surfaces_protegeesFindFirstOrThrowArgs>(args?: SelectSubset<T, surfaces_protegeesFindFirstOrThrowArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Surfaces_protegees that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegeesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.findMany()
+     * 
+     * // Get first 10 Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const surfaces_protegeesWithIndexOnly = await prisma.surfaces_protegees.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends surfaces_protegeesFindManyArgs>(args?: SelectSubset<T, surfaces_protegeesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Surfaces_protegees.
+     * @param {surfaces_protegeesCreateArgs} args - Arguments to create a Surfaces_protegees.
+     * @example
+     * // Create one Surfaces_protegees
+     * const Surfaces_protegees = await prisma.surfaces_protegees.create({
+     *   data: {
+     *     // ... data to create a Surfaces_protegees
+     *   }
+     * })
+     * 
+     */
+    create<T extends surfaces_protegeesCreateArgs>(args: SelectSubset<T, surfaces_protegeesCreateArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Surfaces_protegees.
+     * @param {surfaces_protegeesCreateManyArgs} args - Arguments to create many Surfaces_protegees.
+     * @example
+     * // Create many Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends surfaces_protegeesCreateManyArgs>(args?: SelectSubset<T, surfaces_protegeesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Surfaces_protegees and returns the data saved in the database.
+     * @param {surfaces_protegeesCreateManyAndReturnArgs} args - Arguments to create many Surfaces_protegees.
+     * @example
+     * // Create many Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Surfaces_protegees and only return the `index`
+     * const surfaces_protegeesWithIndexOnly = await prisma.surfaces_protegees.createManyAndReturn({ 
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends surfaces_protegeesCreateManyAndReturnArgs>(args?: SelectSubset<T, surfaces_protegeesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Surfaces_protegees.
+     * @param {surfaces_protegeesDeleteArgs} args - Arguments to delete one Surfaces_protegees.
+     * @example
+     * // Delete one Surfaces_protegees
+     * const Surfaces_protegees = await prisma.surfaces_protegees.delete({
+     *   where: {
+     *     // ... filter to delete one Surfaces_protegees
+     *   }
+     * })
+     * 
+     */
+    delete<T extends surfaces_protegeesDeleteArgs>(args: SelectSubset<T, surfaces_protegeesDeleteArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Surfaces_protegees.
+     * @param {surfaces_protegeesUpdateArgs} args - Arguments to update one Surfaces_protegees.
+     * @example
+     * // Update one Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends surfaces_protegeesUpdateArgs>(args: SelectSubset<T, surfaces_protegeesUpdateArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Surfaces_protegees.
+     * @param {surfaces_protegeesDeleteManyArgs} args - Arguments to filter Surfaces_protegees to delete.
+     * @example
+     * // Delete a few Surfaces_protegees
+     * const { count } = await prisma.surfaces_protegees.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends surfaces_protegeesDeleteManyArgs>(args?: SelectSubset<T, surfaces_protegeesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Surfaces_protegees.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegeesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends surfaces_protegeesUpdateManyArgs>(args: SelectSubset<T, surfaces_protegeesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Surfaces_protegees.
+     * @param {surfaces_protegeesUpsertArgs} args - Arguments to update or create a Surfaces_protegees.
+     * @example
+     * // Update or create a Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.upsert({
+     *   create: {
+     *     // ... data to create a Surfaces_protegees
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Surfaces_protegees we want to update
+     *   }
+     * })
+     */
+    upsert<T extends surfaces_protegeesUpsertArgs>(args: SelectSubset<T, surfaces_protegeesUpsertArgs<ExtArgs>>): Prisma__surfaces_protegeesClient<$Result.GetResult<Prisma.$surfaces_protegeesPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Surfaces_protegees.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegeesCountArgs} args - Arguments to filter Surfaces_protegees to count.
+     * @example
+     * // Count the number of Surfaces_protegees
+     * const count = await prisma.surfaces_protegees.count({
+     *   where: {
+     *     // ... the filter for the Surfaces_protegees we want to count
+     *   }
+     * })
+    **/
+    count<T extends surfaces_protegeesCountArgs>(
+      args?: Subset<T, surfaces_protegeesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Surfaces_protegeesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Surfaces_protegees.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Surfaces_protegeesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Surfaces_protegeesAggregateArgs>(args: Subset<T, Surfaces_protegeesAggregateArgs>): Prisma.PrismaPromise<GetSurfaces_protegeesAggregateType<T>>
+
+    /**
+     * Group by Surfaces_protegees.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegeesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends surfaces_protegeesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: surfaces_protegeesGroupByArgs['orderBy'] }
+        : { orderBy?: surfaces_protegeesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, surfaces_protegeesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSurfaces_protegeesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the surfaces_protegees model
+   */
+  readonly fields: surfaces_protegeesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for surfaces_protegees.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__surfaces_protegeesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the surfaces_protegees model
+   */ 
+  interface surfaces_protegeesFieldRefs {
+    readonly index: FieldRef<"surfaces_protegees", 'BigInt'>
+    readonly code_geographique: FieldRef<"surfaces_protegees", 'String'>
+    readonly LIBELLE_VARIABLE: FieldRef<"surfaces_protegees", 'String'>
+    readonly SOUS_CHAMP: FieldRef<"surfaces_protegees", 'String'>
+    readonly A2019: FieldRef<"surfaces_protegees", 'Float'>
+    readonly libelle_geographique: FieldRef<"surfaces_protegees", 'String'>
+    readonly epci: FieldRef<"surfaces_protegees", 'String'>
+    readonly libelle_epci: FieldRef<"surfaces_protegees", 'String'>
+    readonly departement: FieldRef<"surfaces_protegees", 'String'>
+    readonly region: FieldRef<"surfaces_protegees", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * surfaces_protegees findUnique
+   */
+  export type surfaces_protegeesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Filter, which surfaces_protegees to fetch.
+     */
+    where: surfaces_protegeesWhereUniqueInput
+  }
+
+  /**
+   * surfaces_protegees findUniqueOrThrow
+   */
+  export type surfaces_protegeesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Filter, which surfaces_protegees to fetch.
+     */
+    where: surfaces_protegeesWhereUniqueInput
+  }
+
+  /**
+   * surfaces_protegees findFirst
+   */
+  export type surfaces_protegeesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Filter, which surfaces_protegees to fetch.
+     */
+    where?: surfaces_protegeesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_protegees to fetch.
+     */
+    orderBy?: surfaces_protegeesOrderByWithRelationInput | surfaces_protegeesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for surfaces_protegees.
+     */
+    cursor?: surfaces_protegeesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_protegees from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` surfaces_protegees.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of surfaces_protegees.
+     */
+    distinct?: Surfaces_protegeesScalarFieldEnum | Surfaces_protegeesScalarFieldEnum[]
+  }
+
+  /**
+   * surfaces_protegees findFirstOrThrow
+   */
+  export type surfaces_protegeesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Filter, which surfaces_protegees to fetch.
+     */
+    where?: surfaces_protegeesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_protegees to fetch.
+     */
+    orderBy?: surfaces_protegeesOrderByWithRelationInput | surfaces_protegeesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for surfaces_protegees.
+     */
+    cursor?: surfaces_protegeesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_protegees from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` surfaces_protegees.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of surfaces_protegees.
+     */
+    distinct?: Surfaces_protegeesScalarFieldEnum | Surfaces_protegeesScalarFieldEnum[]
+  }
+
+  /**
+   * surfaces_protegees findMany
+   */
+  export type surfaces_protegeesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Filter, which surfaces_protegees to fetch.
+     */
+    where?: surfaces_protegeesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_protegees to fetch.
+     */
+    orderBy?: surfaces_protegeesOrderByWithRelationInput | surfaces_protegeesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing surfaces_protegees.
+     */
+    cursor?: surfaces_protegeesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_protegees from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` surfaces_protegees.
+     */
+    skip?: number
+    distinct?: Surfaces_protegeesScalarFieldEnum | Surfaces_protegeesScalarFieldEnum[]
+  }
+
+  /**
+   * surfaces_protegees create
+   */
+  export type surfaces_protegeesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * The data needed to create a surfaces_protegees.
+     */
+    data: XOR<surfaces_protegeesCreateInput, surfaces_protegeesUncheckedCreateInput>
+  }
+
+  /**
+   * surfaces_protegees createMany
+   */
+  export type surfaces_protegeesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many surfaces_protegees.
+     */
+    data: surfaces_protegeesCreateManyInput | surfaces_protegeesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * surfaces_protegees createManyAndReturn
+   */
+  export type surfaces_protegeesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many surfaces_protegees.
+     */
+    data: surfaces_protegeesCreateManyInput | surfaces_protegeesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * surfaces_protegees update
+   */
+  export type surfaces_protegeesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * The data needed to update a surfaces_protegees.
+     */
+    data: XOR<surfaces_protegeesUpdateInput, surfaces_protegeesUncheckedUpdateInput>
+    /**
+     * Choose, which surfaces_protegees to update.
+     */
+    where: surfaces_protegeesWhereUniqueInput
+  }
+
+  /**
+   * surfaces_protegees updateMany
+   */
+  export type surfaces_protegeesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update surfaces_protegees.
+     */
+    data: XOR<surfaces_protegeesUpdateManyMutationInput, surfaces_protegeesUncheckedUpdateManyInput>
+    /**
+     * Filter which surfaces_protegees to update
+     */
+    where?: surfaces_protegeesWhereInput
+  }
+
+  /**
+   * surfaces_protegees upsert
+   */
+  export type surfaces_protegeesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * The filter to search for the surfaces_protegees to update in case it exists.
+     */
+    where: surfaces_protegeesWhereUniqueInput
+    /**
+     * In case the surfaces_protegees found by the `where` argument doesn't exist, create a new surfaces_protegees with this data.
+     */
+    create: XOR<surfaces_protegeesCreateInput, surfaces_protegeesUncheckedCreateInput>
+    /**
+     * In case the surfaces_protegees was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<surfaces_protegeesUpdateInput, surfaces_protegeesUncheckedUpdateInput>
+  }
+
+  /**
+   * surfaces_protegees delete
+   */
+  export type surfaces_protegeesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+    /**
+     * Filter which surfaces_protegees to delete.
+     */
+    where: surfaces_protegeesWhereUniqueInput
+  }
+
+  /**
+   * surfaces_protegees deleteMany
+   */
+  export type surfaces_protegeesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which surfaces_protegees to delete
+     */
+    where?: surfaces_protegeesWhereInput
+  }
+
+  /**
+   * surfaces_protegees without action
+   */
+  export type surfaces_protegeesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * Model surfaces_protegees_by_col
+   */
+
+  export type AggregateSurfaces_protegees_by_col = {
+    _count: Surfaces_protegees_by_colCountAggregateOutputType | null
+    _avg: Surfaces_protegees_by_colAvgAggregateOutputType | null
+    _sum: Surfaces_protegees_by_colSumAggregateOutputType | null
+    _min: Surfaces_protegees_by_colMinAggregateOutputType | null
+    _max: Surfaces_protegees_by_colMaxAggregateOutputType | null
+  }
+
+  export type Surfaces_protegees_by_colAvgAggregateOutputType = {
+    index: number | null
+    region: number | null
+  }
+
+  export type Surfaces_protegees_by_colSumAggregateOutputType = {
+    index: bigint | null
+    region: number | null
+  }
+
+  export type Surfaces_protegees_by_colMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    PNC: string | null
+    RAMSAR: string | null
+    PNR: string | null
+    PNP: string | null
+    FOR_PRO: string | null
+    ZZZ: string | null
+    ZNIEFF2: string | null
+    ZNIEFF1: string | null
+    RNR: string | null
+    TOU_PRO: string | null
+    NATURA: string | null
+    ZPS: string | null
+    SIC: string | null
+    CELRL: string | null
+    BIO: string | null
+    APB: string | null
+    RN: string | null
+    RBFD: string | null
+    RNCFS: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: number | null
+  }
+
+  export type Surfaces_protegees_by_colMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    PNC: string | null
+    RAMSAR: string | null
+    PNR: string | null
+    PNP: string | null
+    FOR_PRO: string | null
+    ZZZ: string | null
+    ZNIEFF2: string | null
+    ZNIEFF1: string | null
+    RNR: string | null
+    TOU_PRO: string | null
+    NATURA: string | null
+    ZPS: string | null
+    SIC: string | null
+    CELRL: string | null
+    BIO: string | null
+    APB: string | null
+    RN: string | null
+    RBFD: string | null
+    RNCFS: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: number | null
+  }
+
+  export type Surfaces_protegees_by_colCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    PNC: number
+    RAMSAR: number
+    PNR: number
+    PNP: number
+    FOR_PRO: number
+    ZZZ: number
+    ZNIEFF2: number
+    ZNIEFF1: number
+    RNR: number
+    TOU_PRO: number
+    NATURA: number
+    ZPS: number
+    SIC: number
+    CELRL: number
+    BIO: number
+    APB: number
+    RN: number
+    RBFD: number
+    RNCFS: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    region: number
+    _all: number
+  }
+
+
+  export type Surfaces_protegees_by_colAvgAggregateInputType = {
+    index?: true
+    region?: true
+  }
+
+  export type Surfaces_protegees_by_colSumAggregateInputType = {
+    index?: true
+    region?: true
+  }
+
+  export type Surfaces_protegees_by_colMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    PNC?: true
+    RAMSAR?: true
+    PNR?: true
+    PNP?: true
+    FOR_PRO?: true
+    ZZZ?: true
+    ZNIEFF2?: true
+    ZNIEFF1?: true
+    RNR?: true
+    TOU_PRO?: true
+    NATURA?: true
+    ZPS?: true
+    SIC?: true
+    CELRL?: true
+    BIO?: true
+    APB?: true
+    RN?: true
+    RBFD?: true
+    RNCFS?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+  }
+
+  export type Surfaces_protegees_by_colMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    PNC?: true
+    RAMSAR?: true
+    PNR?: true
+    PNP?: true
+    FOR_PRO?: true
+    ZZZ?: true
+    ZNIEFF2?: true
+    ZNIEFF1?: true
+    RNR?: true
+    TOU_PRO?: true
+    NATURA?: true
+    ZPS?: true
+    SIC?: true
+    CELRL?: true
+    BIO?: true
+    APB?: true
+    RN?: true
+    RBFD?: true
+    RNCFS?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+  }
+
+  export type Surfaces_protegees_by_colCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    PNC?: true
+    RAMSAR?: true
+    PNR?: true
+    PNP?: true
+    FOR_PRO?: true
+    ZZZ?: true
+    ZNIEFF2?: true
+    ZNIEFF1?: true
+    RNR?: true
+    TOU_PRO?: true
+    NATURA?: true
+    ZPS?: true
+    SIC?: true
+    CELRL?: true
+    BIO?: true
+    APB?: true
+    RN?: true
+    RBFD?: true
+    RNCFS?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+    _all?: true
+  }
+
+  export type Surfaces_protegees_by_colAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which surfaces_protegees_by_col to aggregate.
+     */
+    where?: surfaces_protegees_by_colWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_protegees_by_cols to fetch.
+     */
+    orderBy?: surfaces_protegees_by_colOrderByWithRelationInput | surfaces_protegees_by_colOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: surfaces_protegees_by_colWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_protegees_by_cols from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` surfaces_protegees_by_cols.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned surfaces_protegees_by_cols
+    **/
+    _count?: true | Surfaces_protegees_by_colCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Surfaces_protegees_by_colAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Surfaces_protegees_by_colSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Surfaces_protegees_by_colMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Surfaces_protegees_by_colMaxAggregateInputType
+  }
+
+  export type GetSurfaces_protegees_by_colAggregateType<T extends Surfaces_protegees_by_colAggregateArgs> = {
+        [P in keyof T & keyof AggregateSurfaces_protegees_by_col]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSurfaces_protegees_by_col[P]>
+      : GetScalarType<T[P], AggregateSurfaces_protegees_by_col[P]>
+  }
+
+
+
+
+  export type surfaces_protegees_by_colGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: surfaces_protegees_by_colWhereInput
+    orderBy?: surfaces_protegees_by_colOrderByWithAggregationInput | surfaces_protegees_by_colOrderByWithAggregationInput[]
+    by: Surfaces_protegees_by_colScalarFieldEnum[] | Surfaces_protegees_by_colScalarFieldEnum
+    having?: surfaces_protegees_by_colScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Surfaces_protegees_by_colCountAggregateInputType | true
+    _avg?: Surfaces_protegees_by_colAvgAggregateInputType
+    _sum?: Surfaces_protegees_by_colSumAggregateInputType
+    _min?: Surfaces_protegees_by_colMinAggregateInputType
+    _max?: Surfaces_protegees_by_colMaxAggregateInputType
+  }
+
+  export type Surfaces_protegees_by_colGroupByOutputType = {
+    index: bigint
+    code_geographique: string
+    PNC: string | null
+    RAMSAR: string | null
+    PNR: string | null
+    PNP: string | null
+    FOR_PRO: string | null
+    ZZZ: string | null
+    ZNIEFF2: string | null
+    ZNIEFF1: string | null
+    RNR: string | null
+    TOU_PRO: string | null
+    NATURA: string | null
+    ZPS: string | null
+    SIC: string | null
+    CELRL: string | null
+    BIO: string | null
+    APB: string | null
+    RN: string | null
+    RBFD: string | null
+    RNCFS: string | null
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
+    _count: Surfaces_protegees_by_colCountAggregateOutputType | null
+    _avg: Surfaces_protegees_by_colAvgAggregateOutputType | null
+    _sum: Surfaces_protegees_by_colSumAggregateOutputType | null
+    _min: Surfaces_protegees_by_colMinAggregateOutputType | null
+    _max: Surfaces_protegees_by_colMaxAggregateOutputType | null
+  }
+
+  type GetSurfaces_protegees_by_colGroupByPayload<T extends surfaces_protegees_by_colGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Surfaces_protegees_by_colGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Surfaces_protegees_by_colGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Surfaces_protegees_by_colGroupByOutputType[P]>
+            : GetScalarType<T[P], Surfaces_protegees_by_colGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type surfaces_protegees_by_colSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    PNC?: boolean
+    RAMSAR?: boolean
+    PNR?: boolean
+    PNP?: boolean
+    FOR_PRO?: boolean
+    ZZZ?: boolean
+    ZNIEFF2?: boolean
+    ZNIEFF1?: boolean
+    RNR?: boolean
+    TOU_PRO?: boolean
+    NATURA?: boolean
+    ZPS?: boolean
+    SIC?: boolean
+    CELRL?: boolean
+    BIO?: boolean
+    APB?: boolean
+    RN?: boolean
+    RBFD?: boolean
+    RNCFS?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+  }, ExtArgs["result"]["surfaces_protegees_by_col"]>
+
+  export type surfaces_protegees_by_colSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    PNC?: boolean
+    RAMSAR?: boolean
+    PNR?: boolean
+    PNP?: boolean
+    FOR_PRO?: boolean
+    ZZZ?: boolean
+    ZNIEFF2?: boolean
+    ZNIEFF1?: boolean
+    RNR?: boolean
+    TOU_PRO?: boolean
+    NATURA?: boolean
+    ZPS?: boolean
+    SIC?: boolean
+    CELRL?: boolean
+    BIO?: boolean
+    APB?: boolean
+    RN?: boolean
+    RBFD?: boolean
+    RNCFS?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+  }, ExtArgs["result"]["surfaces_protegees_by_col"]>
+
+  export type surfaces_protegees_by_colSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    PNC?: boolean
+    RAMSAR?: boolean
+    PNR?: boolean
+    PNP?: boolean
+    FOR_PRO?: boolean
+    ZZZ?: boolean
+    ZNIEFF2?: boolean
+    ZNIEFF1?: boolean
+    RNR?: boolean
+    TOU_PRO?: boolean
+    NATURA?: boolean
+    ZPS?: boolean
+    SIC?: boolean
+    CELRL?: boolean
+    BIO?: boolean
+    APB?: boolean
+    RN?: boolean
+    RBFD?: boolean
+    RNCFS?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+  }
+
+
+  export type $surfaces_protegees_by_colPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "surfaces_protegees_by_col"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string
+      PNC: string | null
+      RAMSAR: string | null
+      PNR: string | null
+      PNP: string | null
+      FOR_PRO: string | null
+      ZZZ: string | null
+      ZNIEFF2: string | null
+      ZNIEFF1: string | null
+      RNR: string | null
+      TOU_PRO: string | null
+      NATURA: string | null
+      ZPS: string | null
+      SIC: string | null
+      CELRL: string | null
+      BIO: string | null
+      APB: string | null
+      RN: string | null
+      RBFD: string | null
+      RNCFS: string | null
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      region: number
+    }, ExtArgs["result"]["surfaces_protegees_by_col"]>
+    composites: {}
+  }
+
+  type surfaces_protegees_by_colGetPayload<S extends boolean | null | undefined | surfaces_protegees_by_colDefaultArgs> = $Result.GetResult<Prisma.$surfaces_protegees_by_colPayload, S>
+
+  type surfaces_protegees_by_colCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<surfaces_protegees_by_colFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Surfaces_protegees_by_colCountAggregateInputType | true
+    }
+
+  export interface surfaces_protegees_by_colDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['surfaces_protegees_by_col'], meta: { name: 'surfaces_protegees_by_col' } }
+    /**
+     * Find zero or one Surfaces_protegees_by_col that matches the filter.
+     * @param {surfaces_protegees_by_colFindUniqueArgs} args - Arguments to find a Surfaces_protegees_by_col
+     * @example
+     * // Get one Surfaces_protegees_by_col
+     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends surfaces_protegees_by_colFindUniqueArgs>(args: SelectSubset<T, surfaces_protegees_by_colFindUniqueArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Surfaces_protegees_by_col that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {surfaces_protegees_by_colFindUniqueOrThrowArgs} args - Arguments to find a Surfaces_protegees_by_col
+     * @example
+     * // Get one Surfaces_protegees_by_col
+     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends surfaces_protegees_by_colFindUniqueOrThrowArgs>(args: SelectSubset<T, surfaces_protegees_by_colFindUniqueOrThrowArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Surfaces_protegees_by_col that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegees_by_colFindFirstArgs} args - Arguments to find a Surfaces_protegees_by_col
+     * @example
+     * // Get one Surfaces_protegees_by_col
+     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends surfaces_protegees_by_colFindFirstArgs>(args?: SelectSubset<T, surfaces_protegees_by_colFindFirstArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Surfaces_protegees_by_col that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegees_by_colFindFirstOrThrowArgs} args - Arguments to find a Surfaces_protegees_by_col
+     * @example
+     * // Get one Surfaces_protegees_by_col
+     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends surfaces_protegees_by_colFindFirstOrThrowArgs>(args?: SelectSubset<T, surfaces_protegees_by_colFindFirstOrThrowArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Surfaces_protegees_by_cols that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegees_by_colFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Surfaces_protegees_by_cols
+     * const surfaces_protegees_by_cols = await prisma.surfaces_protegees_by_col.findMany()
+     * 
+     * // Get first 10 Surfaces_protegees_by_cols
+     * const surfaces_protegees_by_cols = await prisma.surfaces_protegees_by_col.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const surfaces_protegees_by_colWithIndexOnly = await prisma.surfaces_protegees_by_col.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends surfaces_protegees_by_colFindManyArgs>(args?: SelectSubset<T, surfaces_protegees_by_colFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Surfaces_protegees_by_col.
+     * @param {surfaces_protegees_by_colCreateArgs} args - Arguments to create a Surfaces_protegees_by_col.
+     * @example
+     * // Create one Surfaces_protegees_by_col
+     * const Surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.create({
+     *   data: {
+     *     // ... data to create a Surfaces_protegees_by_col
+     *   }
+     * })
+     * 
+     */
+    create<T extends surfaces_protegees_by_colCreateArgs>(args: SelectSubset<T, surfaces_protegees_by_colCreateArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Surfaces_protegees_by_cols.
+     * @param {surfaces_protegees_by_colCreateManyArgs} args - Arguments to create many Surfaces_protegees_by_cols.
+     * @example
+     * // Create many Surfaces_protegees_by_cols
+     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends surfaces_protegees_by_colCreateManyArgs>(args?: SelectSubset<T, surfaces_protegees_by_colCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Surfaces_protegees_by_cols and returns the data saved in the database.
+     * @param {surfaces_protegees_by_colCreateManyAndReturnArgs} args - Arguments to create many Surfaces_protegees_by_cols.
+     * @example
+     * // Create many Surfaces_protegees_by_cols
+     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Surfaces_protegees_by_cols and only return the `index`
+     * const surfaces_protegees_by_colWithIndexOnly = await prisma.surfaces_protegees_by_col.createManyAndReturn({ 
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends surfaces_protegees_by_colCreateManyAndReturnArgs>(args?: SelectSubset<T, surfaces_protegees_by_colCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Surfaces_protegees_by_col.
+     * @param {surfaces_protegees_by_colDeleteArgs} args - Arguments to delete one Surfaces_protegees_by_col.
+     * @example
+     * // Delete one Surfaces_protegees_by_col
+     * const Surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.delete({
+     *   where: {
+     *     // ... filter to delete one Surfaces_protegees_by_col
+     *   }
+     * })
+     * 
+     */
+    delete<T extends surfaces_protegees_by_colDeleteArgs>(args: SelectSubset<T, surfaces_protegees_by_colDeleteArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Surfaces_protegees_by_col.
+     * @param {surfaces_protegees_by_colUpdateArgs} args - Arguments to update one Surfaces_protegees_by_col.
+     * @example
+     * // Update one Surfaces_protegees_by_col
+     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends surfaces_protegees_by_colUpdateArgs>(args: SelectSubset<T, surfaces_protegees_by_colUpdateArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Surfaces_protegees_by_cols.
+     * @param {surfaces_protegees_by_colDeleteManyArgs} args - Arguments to filter Surfaces_protegees_by_cols to delete.
+     * @example
+     * // Delete a few Surfaces_protegees_by_cols
+     * const { count } = await prisma.surfaces_protegees_by_col.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends surfaces_protegees_by_colDeleteManyArgs>(args?: SelectSubset<T, surfaces_protegees_by_colDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Surfaces_protegees_by_cols.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegees_by_colUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Surfaces_protegees_by_cols
+     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends surfaces_protegees_by_colUpdateManyArgs>(args: SelectSubset<T, surfaces_protegees_by_colUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Surfaces_protegees_by_col.
+     * @param {surfaces_protegees_by_colUpsertArgs} args - Arguments to update or create a Surfaces_protegees_by_col.
+     * @example
+     * // Update or create a Surfaces_protegees_by_col
+     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.upsert({
+     *   create: {
+     *     // ... data to create a Surfaces_protegees_by_col
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Surfaces_protegees_by_col we want to update
+     *   }
+     * })
+     */
+    upsert<T extends surfaces_protegees_by_colUpsertArgs>(args: SelectSubset<T, surfaces_protegees_by_colUpsertArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Surfaces_protegees_by_cols.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegees_by_colCountArgs} args - Arguments to filter Surfaces_protegees_by_cols to count.
+     * @example
+     * // Count the number of Surfaces_protegees_by_cols
+     * const count = await prisma.surfaces_protegees_by_col.count({
+     *   where: {
+     *     // ... the filter for the Surfaces_protegees_by_cols we want to count
+     *   }
+     * })
+    **/
+    count<T extends surfaces_protegees_by_colCountArgs>(
+      args?: Subset<T, surfaces_protegees_by_colCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Surfaces_protegees_by_colCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Surfaces_protegees_by_col.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Surfaces_protegees_by_colAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Surfaces_protegees_by_colAggregateArgs>(args: Subset<T, Surfaces_protegees_by_colAggregateArgs>): Prisma.PrismaPromise<GetSurfaces_protegees_by_colAggregateType<T>>
+
+    /**
+     * Group by Surfaces_protegees_by_col.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_protegees_by_colGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends surfaces_protegees_by_colGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: surfaces_protegees_by_colGroupByArgs['orderBy'] }
+        : { orderBy?: surfaces_protegees_by_colGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, surfaces_protegees_by_colGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSurfaces_protegees_by_colGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the surfaces_protegees_by_col model
+   */
+  readonly fields: surfaces_protegees_by_colFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for surfaces_protegees_by_col.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__surfaces_protegees_by_colClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the surfaces_protegees_by_col model
+   */ 
+  interface surfaces_protegees_by_colFieldRefs {
+    readonly index: FieldRef<"surfaces_protegees_by_col", 'BigInt'>
+    readonly code_geographique: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly PNC: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly RAMSAR: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly PNR: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly PNP: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly FOR_PRO: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly ZZZ: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly ZNIEFF2: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly ZNIEFF1: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly RNR: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly TOU_PRO: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly NATURA: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly ZPS: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly SIC: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly CELRL: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly BIO: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly APB: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly RN: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly RBFD: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly RNCFS: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly libelle_geographique: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly epci: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly libelle_epci: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly departement: FieldRef<"surfaces_protegees_by_col", 'String'>
+    readonly region: FieldRef<"surfaces_protegees_by_col", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * surfaces_protegees_by_col findUnique
+   */
+  export type surfaces_protegees_by_colFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees_by_col
+     */
+    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    /**
+     * Filter, which surfaces_protegees_by_col to fetch.
+     */
+    where: surfaces_protegees_by_colWhereUniqueInput
+  }
+
+  /**
+   * surfaces_protegees_by_col findUniqueOrThrow
+   */
+  export type surfaces_protegees_by_colFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees_by_col
+     */
+    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    /**
+     * Filter, which surfaces_protegees_by_col to fetch.
+     */
+    where: surfaces_protegees_by_colWhereUniqueInput
+  }
+
+  /**
+   * surfaces_protegees_by_col findFirst
+   */
+  export type surfaces_protegees_by_colFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees_by_col
+     */
+    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    /**
+     * Filter, which surfaces_protegees_by_col to fetch.
+     */
+    where?: surfaces_protegees_by_colWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_protegees_by_cols to fetch.
+     */
+    orderBy?: surfaces_protegees_by_colOrderByWithRelationInput | surfaces_protegees_by_colOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for surfaces_protegees_by_cols.
+     */
+    cursor?: surfaces_protegees_by_colWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_protegees_by_cols from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` surfaces_protegees_by_cols.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of surfaces_protegees_by_cols.
+     */
+    distinct?: Surfaces_protegees_by_colScalarFieldEnum | Surfaces_protegees_by_colScalarFieldEnum[]
+  }
+
+  /**
+   * surfaces_protegees_by_col findFirstOrThrow
+   */
+  export type surfaces_protegees_by_colFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees_by_col
+     */
+    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    /**
+     * Filter, which surfaces_protegees_by_col to fetch.
+     */
+    where?: surfaces_protegees_by_colWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_protegees_by_cols to fetch.
+     */
+    orderBy?: surfaces_protegees_by_colOrderByWithRelationInput | surfaces_protegees_by_colOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for surfaces_protegees_by_cols.
+     */
+    cursor?: surfaces_protegees_by_colWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_protegees_by_cols from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` surfaces_protegees_by_cols.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of surfaces_protegees_by_cols.
+     */
+    distinct?: Surfaces_protegees_by_colScalarFieldEnum | Surfaces_protegees_by_colScalarFieldEnum[]
+  }
+
+  /**
+   * surfaces_protegees_by_col findMany
+   */
+  export type surfaces_protegees_by_colFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees_by_col
+     */
+    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    /**
+     * Filter, which surfaces_protegees_by_cols to fetch.
+     */
+    where?: surfaces_protegees_by_colWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_protegees_by_cols to fetch.
+     */
+    orderBy?: surfaces_protegees_by_colOrderByWithRelationInput | surfaces_protegees_by_colOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing surfaces_protegees_by_cols.
+     */
+    cursor?: surfaces_protegees_by_colWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_protegees_by_cols from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` surfaces_protegees_by_cols.
+     */
+    skip?: number
+    distinct?: Surfaces_protegees_by_colScalarFieldEnum | Surfaces_protegees_by_colScalarFieldEnum[]
+  }
+
+  /**
+   * surfaces_protegees_by_col create
+   */
+  export type surfaces_protegees_by_colCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees_by_col
+     */
+    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    /**
+     * The data needed to create a surfaces_protegees_by_col.
+     */
+    data: XOR<surfaces_protegees_by_colCreateInput, surfaces_protegees_by_colUncheckedCreateInput>
+  }
+
+  /**
+   * surfaces_protegees_by_col createMany
+   */
+  export type surfaces_protegees_by_colCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many surfaces_protegees_by_cols.
+     */
+    data: surfaces_protegees_by_colCreateManyInput | surfaces_protegees_by_colCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * surfaces_protegees_by_col createManyAndReturn
+   */
+  export type surfaces_protegees_by_colCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees_by_col
+     */
+    select?: surfaces_protegees_by_colSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many surfaces_protegees_by_cols.
+     */
+    data: surfaces_protegees_by_colCreateManyInput | surfaces_protegees_by_colCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * surfaces_protegees_by_col update
+   */
+  export type surfaces_protegees_by_colUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees_by_col
+     */
+    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    /**
+     * The data needed to update a surfaces_protegees_by_col.
+     */
+    data: XOR<surfaces_protegees_by_colUpdateInput, surfaces_protegees_by_colUncheckedUpdateInput>
+    /**
+     * Choose, which surfaces_protegees_by_col to update.
+     */
+    where: surfaces_protegees_by_colWhereUniqueInput
+  }
+
+  /**
+   * surfaces_protegees_by_col updateMany
+   */
+  export type surfaces_protegees_by_colUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update surfaces_protegees_by_cols.
+     */
+    data: XOR<surfaces_protegees_by_colUpdateManyMutationInput, surfaces_protegees_by_colUncheckedUpdateManyInput>
+    /**
+     * Filter which surfaces_protegees_by_cols to update
+     */
+    where?: surfaces_protegees_by_colWhereInput
+  }
+
+  /**
+   * surfaces_protegees_by_col upsert
+   */
+  export type surfaces_protegees_by_colUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees_by_col
+     */
+    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    /**
+     * The filter to search for the surfaces_protegees_by_col to update in case it exists.
+     */
+    where: surfaces_protegees_by_colWhereUniqueInput
+    /**
+     * In case the surfaces_protegees_by_col found by the `where` argument doesn't exist, create a new surfaces_protegees_by_col with this data.
+     */
+    create: XOR<surfaces_protegees_by_colCreateInput, surfaces_protegees_by_colUncheckedCreateInput>
+    /**
+     * In case the surfaces_protegees_by_col was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<surfaces_protegees_by_colUpdateInput, surfaces_protegees_by_colUncheckedUpdateInput>
+  }
+
+  /**
+   * surfaces_protegees_by_col delete
+   */
+  export type surfaces_protegees_by_colDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees_by_col
+     */
+    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    /**
+     * Filter which surfaces_protegees_by_col to delete.
+     */
+    where: surfaces_protegees_by_colWhereUniqueInput
+  }
+
+  /**
+   * surfaces_protegees_by_col deleteMany
+   */
+  export type surfaces_protegees_by_colDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which surfaces_protegees_by_cols to delete
+     */
+    where?: surfaces_protegees_by_colWhereInput
+  }
+
+  /**
+   * surfaces_protegees_by_col without action
+   */
+  export type surfaces_protegees_by_colDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees_by_col
+     */
+    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -13115,6 +16244,62 @@ export namespace Prisma {
   };
 
   export type Erosion_cotiereScalarFieldEnum = (typeof Erosion_cotiereScalarFieldEnum)[keyof typeof Erosion_cotiereScalarFieldEnum]
+
+
+  export const EpciScalarFieldEnum: {
+    pk: 'pk',
+    epci_code: 'epci_code'
+  };
+
+  export type EpciScalarFieldEnum = (typeof EpciScalarFieldEnum)[keyof typeof EpciScalarFieldEnum]
+
+
+  export const Surfaces_protegeesScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    LIBELLE_VARIABLE: 'LIBELLE_VARIABLE',
+    SOUS_CHAMP: 'SOUS_CHAMP',
+    A2019: 'A2019',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    region: 'region'
+  };
+
+  export type Surfaces_protegeesScalarFieldEnum = (typeof Surfaces_protegeesScalarFieldEnum)[keyof typeof Surfaces_protegeesScalarFieldEnum]
+
+
+  export const Surfaces_protegees_by_colScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    PNC: 'PNC',
+    RAMSAR: 'RAMSAR',
+    PNR: 'PNR',
+    PNP: 'PNP',
+    FOR_PRO: 'FOR_PRO',
+    ZZZ: 'ZZZ',
+    ZNIEFF2: 'ZNIEFF2',
+    ZNIEFF1: 'ZNIEFF1',
+    RNR: 'RNR',
+    TOU_PRO: 'TOU_PRO',
+    NATURA: 'NATURA',
+    ZPS: 'ZPS',
+    SIC: 'SIC',
+    CELRL: 'CELRL',
+    BIO: 'BIO',
+    APB: 'APB',
+    RN: 'RN',
+    RBFD: 'RBFD',
+    RNCFS: 'RNCFS',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    region: 'region'
+  };
+
+  export type Surfaces_protegees_by_colScalarFieldEnum = (typeof Surfaces_protegees_by_colScalarFieldEnum)[keyof typeof Surfaces_protegees_by_colScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -14267,6 +17452,283 @@ export namespace Prisma {
     duree?: FloatWithAggregatesFilter<"erosion_cotiere"> | number
     tdc_ancien?: BigIntWithAggregatesFilter<"erosion_cotiere"> | bigint | number
     tdc_rec?: BigIntWithAggregatesFilter<"erosion_cotiere"> | bigint | number
+  }
+
+  export type epciWhereInput = {
+    AND?: epciWhereInput | epciWhereInput[]
+    OR?: epciWhereInput[]
+    NOT?: epciWhereInput | epciWhereInput[]
+    pk?: IntFilter<"epci"> | number
+    epci_code?: StringFilter<"epci"> | string
+  }
+
+  export type epciOrderByWithRelationInput = {
+    pk?: SortOrder
+    epci_code?: SortOrder
+  }
+
+  export type epciWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: epciWhereInput | epciWhereInput[]
+    OR?: epciWhereInput[]
+    NOT?: epciWhereInput | epciWhereInput[]
+    epci_code?: StringFilter<"epci"> | string
+  }, "pk">
+
+  export type epciOrderByWithAggregationInput = {
+    pk?: SortOrder
+    epci_code?: SortOrder
+    _count?: epciCountOrderByAggregateInput
+    _avg?: epciAvgOrderByAggregateInput
+    _max?: epciMaxOrderByAggregateInput
+    _min?: epciMinOrderByAggregateInput
+    _sum?: epciSumOrderByAggregateInput
+  }
+
+  export type epciScalarWhereWithAggregatesInput = {
+    AND?: epciScalarWhereWithAggregatesInput | epciScalarWhereWithAggregatesInput[]
+    OR?: epciScalarWhereWithAggregatesInput[]
+    NOT?: epciScalarWhereWithAggregatesInput | epciScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"epci"> | number
+    epci_code?: StringWithAggregatesFilter<"epci"> | string
+  }
+
+  export type surfaces_protegeesWhereInput = {
+    AND?: surfaces_protegeesWhereInput | surfaces_protegeesWhereInput[]
+    OR?: surfaces_protegeesWhereInput[]
+    NOT?: surfaces_protegeesWhereInput | surfaces_protegeesWhereInput[]
+    index?: BigIntFilter<"surfaces_protegees"> | bigint | number
+    code_geographique?: StringFilter<"surfaces_protegees"> | string
+    LIBELLE_VARIABLE?: StringFilter<"surfaces_protegees"> | string
+    SOUS_CHAMP?: StringFilter<"surfaces_protegees"> | string
+    A2019?: FloatFilter<"surfaces_protegees"> | number
+    libelle_geographique?: StringFilter<"surfaces_protegees"> | string
+    epci?: StringFilter<"surfaces_protegees"> | string
+    libelle_epci?: StringFilter<"surfaces_protegees"> | string
+    departement?: StringFilter<"surfaces_protegees"> | string
+    region?: FloatFilter<"surfaces_protegees"> | number
+  }
+
+  export type surfaces_protegeesOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    LIBELLE_VARIABLE?: SortOrder
+    SOUS_CHAMP?: SortOrder
+    A2019?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type surfaces_protegeesWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: surfaces_protegeesWhereInput | surfaces_protegeesWhereInput[]
+    OR?: surfaces_protegeesWhereInput[]
+    NOT?: surfaces_protegeesWhereInput | surfaces_protegeesWhereInput[]
+    code_geographique?: StringFilter<"surfaces_protegees"> | string
+    LIBELLE_VARIABLE?: StringFilter<"surfaces_protegees"> | string
+    SOUS_CHAMP?: StringFilter<"surfaces_protegees"> | string
+    A2019?: FloatFilter<"surfaces_protegees"> | number
+    libelle_geographique?: StringFilter<"surfaces_protegees"> | string
+    epci?: StringFilter<"surfaces_protegees"> | string
+    libelle_epci?: StringFilter<"surfaces_protegees"> | string
+    departement?: StringFilter<"surfaces_protegees"> | string
+    region?: FloatFilter<"surfaces_protegees"> | number
+  }, "index">
+
+  export type surfaces_protegeesOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    LIBELLE_VARIABLE?: SortOrder
+    SOUS_CHAMP?: SortOrder
+    A2019?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    _count?: surfaces_protegeesCountOrderByAggregateInput
+    _avg?: surfaces_protegeesAvgOrderByAggregateInput
+    _max?: surfaces_protegeesMaxOrderByAggregateInput
+    _min?: surfaces_protegeesMinOrderByAggregateInput
+    _sum?: surfaces_protegeesSumOrderByAggregateInput
+  }
+
+  export type surfaces_protegeesScalarWhereWithAggregatesInput = {
+    AND?: surfaces_protegeesScalarWhereWithAggregatesInput | surfaces_protegeesScalarWhereWithAggregatesInput[]
+    OR?: surfaces_protegeesScalarWhereWithAggregatesInput[]
+    NOT?: surfaces_protegeesScalarWhereWithAggregatesInput | surfaces_protegeesScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"surfaces_protegees"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"surfaces_protegees"> | string
+    LIBELLE_VARIABLE?: StringWithAggregatesFilter<"surfaces_protegees"> | string
+    SOUS_CHAMP?: StringWithAggregatesFilter<"surfaces_protegees"> | string
+    A2019?: FloatWithAggregatesFilter<"surfaces_protegees"> | number
+    libelle_geographique?: StringWithAggregatesFilter<"surfaces_protegees"> | string
+    epci?: StringWithAggregatesFilter<"surfaces_protegees"> | string
+    libelle_epci?: StringWithAggregatesFilter<"surfaces_protegees"> | string
+    departement?: StringWithAggregatesFilter<"surfaces_protegees"> | string
+    region?: FloatWithAggregatesFilter<"surfaces_protegees"> | number
+  }
+
+  export type surfaces_protegees_by_colWhereInput = {
+    AND?: surfaces_protegees_by_colWhereInput | surfaces_protegees_by_colWhereInput[]
+    OR?: surfaces_protegees_by_colWhereInput[]
+    NOT?: surfaces_protegees_by_colWhereInput | surfaces_protegees_by_colWhereInput[]
+    index?: BigIntFilter<"surfaces_protegees_by_col"> | bigint | number
+    code_geographique?: StringFilter<"surfaces_protegees_by_col"> | string
+    PNC?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    RAMSAR?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    PNR?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    PNP?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    FOR_PRO?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    ZZZ?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    ZNIEFF2?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    ZNIEFF1?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    RNR?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    TOU_PRO?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    NATURA?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    ZPS?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    SIC?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    CELRL?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    BIO?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    APB?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    RN?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    RBFD?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    RNCFS?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    libelle_geographique?: StringFilter<"surfaces_protegees_by_col"> | string
+    epci?: StringFilter<"surfaces_protegees_by_col"> | string
+    libelle_epci?: StringFilter<"surfaces_protegees_by_col"> | string
+    departement?: StringFilter<"surfaces_protegees_by_col"> | string
+    region?: FloatFilter<"surfaces_protegees_by_col"> | number
+  }
+
+  export type surfaces_protegees_by_colOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    PNC?: SortOrderInput | SortOrder
+    RAMSAR?: SortOrderInput | SortOrder
+    PNR?: SortOrderInput | SortOrder
+    PNP?: SortOrderInput | SortOrder
+    FOR_PRO?: SortOrderInput | SortOrder
+    ZZZ?: SortOrderInput | SortOrder
+    ZNIEFF2?: SortOrderInput | SortOrder
+    ZNIEFF1?: SortOrderInput | SortOrder
+    RNR?: SortOrderInput | SortOrder
+    TOU_PRO?: SortOrderInput | SortOrder
+    NATURA?: SortOrderInput | SortOrder
+    ZPS?: SortOrderInput | SortOrder
+    SIC?: SortOrderInput | SortOrder
+    CELRL?: SortOrderInput | SortOrder
+    BIO?: SortOrderInput | SortOrder
+    APB?: SortOrderInput | SortOrder
+    RN?: SortOrderInput | SortOrder
+    RBFD?: SortOrderInput | SortOrder
+    RNCFS?: SortOrderInput | SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type surfaces_protegees_by_colWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: surfaces_protegees_by_colWhereInput | surfaces_protegees_by_colWhereInput[]
+    OR?: surfaces_protegees_by_colWhereInput[]
+    NOT?: surfaces_protegees_by_colWhereInput | surfaces_protegees_by_colWhereInput[]
+    code_geographique?: StringFilter<"surfaces_protegees_by_col"> | string
+    PNC?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    RAMSAR?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    PNR?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    PNP?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    FOR_PRO?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    ZZZ?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    ZNIEFF2?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    ZNIEFF1?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    RNR?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    TOU_PRO?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    NATURA?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    ZPS?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    SIC?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    CELRL?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    BIO?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    APB?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    RN?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    RBFD?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    RNCFS?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
+    libelle_geographique?: StringFilter<"surfaces_protegees_by_col"> | string
+    epci?: StringFilter<"surfaces_protegees_by_col"> | string
+    libelle_epci?: StringFilter<"surfaces_protegees_by_col"> | string
+    departement?: StringFilter<"surfaces_protegees_by_col"> | string
+    region?: FloatFilter<"surfaces_protegees_by_col"> | number
+  }, "index">
+
+  export type surfaces_protegees_by_colOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    PNC?: SortOrderInput | SortOrder
+    RAMSAR?: SortOrderInput | SortOrder
+    PNR?: SortOrderInput | SortOrder
+    PNP?: SortOrderInput | SortOrder
+    FOR_PRO?: SortOrderInput | SortOrder
+    ZZZ?: SortOrderInput | SortOrder
+    ZNIEFF2?: SortOrderInput | SortOrder
+    ZNIEFF1?: SortOrderInput | SortOrder
+    RNR?: SortOrderInput | SortOrder
+    TOU_PRO?: SortOrderInput | SortOrder
+    NATURA?: SortOrderInput | SortOrder
+    ZPS?: SortOrderInput | SortOrder
+    SIC?: SortOrderInput | SortOrder
+    CELRL?: SortOrderInput | SortOrder
+    BIO?: SortOrderInput | SortOrder
+    APB?: SortOrderInput | SortOrder
+    RN?: SortOrderInput | SortOrder
+    RBFD?: SortOrderInput | SortOrder
+    RNCFS?: SortOrderInput | SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    _count?: surfaces_protegees_by_colCountOrderByAggregateInput
+    _avg?: surfaces_protegees_by_colAvgOrderByAggregateInput
+    _max?: surfaces_protegees_by_colMaxOrderByAggregateInput
+    _min?: surfaces_protegees_by_colMinOrderByAggregateInput
+    _sum?: surfaces_protegees_by_colSumOrderByAggregateInput
+  }
+
+  export type surfaces_protegees_by_colScalarWhereWithAggregatesInput = {
+    AND?: surfaces_protegees_by_colScalarWhereWithAggregatesInput | surfaces_protegees_by_colScalarWhereWithAggregatesInput[]
+    OR?: surfaces_protegees_by_colScalarWhereWithAggregatesInput[]
+    NOT?: surfaces_protegees_by_colScalarWhereWithAggregatesInput | surfaces_protegees_by_colScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"surfaces_protegees_by_col"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"surfaces_protegees_by_col"> | string
+    PNC?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    RAMSAR?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    PNR?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    PNP?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    FOR_PRO?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    ZZZ?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    ZNIEFF2?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    ZNIEFF1?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    RNR?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    TOU_PRO?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    NATURA?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    ZPS?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    SIC?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    CELRL?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    BIO?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    APB?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    RN?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    RBFD?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    RNCFS?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
+    libelle_geographique?: StringWithAggregatesFilter<"surfaces_protegees_by_col"> | string
+    epci?: StringWithAggregatesFilter<"surfaces_protegees_by_col"> | string
+    libelle_epci?: StringWithAggregatesFilter<"surfaces_protegees_by_col"> | string
+    departement?: StringWithAggregatesFilter<"surfaces_protegees_by_col"> | string
+    region?: FloatWithAggregatesFilter<"surfaces_protegees_by_col"> | number
   }
 
   export type inconfort_thermiqueCreateInput = {
@@ -15476,6 +18938,318 @@ export namespace Prisma {
     tdc_rec?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
+  export type epciUpdateInput = {
+    epci_code?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type epciUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    epci_code?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type epciUpdateManyMutationInput = {
+    epci_code?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type epciUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    epci_code?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type surfaces_protegeesCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    LIBELLE_VARIABLE: string
+    SOUS_CHAMP: string
+    A2019: number
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
+  }
+
+  export type surfaces_protegeesUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    LIBELLE_VARIABLE: string
+    SOUS_CHAMP: string
+    A2019: number
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
+  }
+
+  export type surfaces_protegeesUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    LIBELLE_VARIABLE?: StringFieldUpdateOperationsInput | string
+    SOUS_CHAMP?: StringFieldUpdateOperationsInput | string
+    A2019?: FloatFieldUpdateOperationsInput | number
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type surfaces_protegeesUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    LIBELLE_VARIABLE?: StringFieldUpdateOperationsInput | string
+    SOUS_CHAMP?: StringFieldUpdateOperationsInput | string
+    A2019?: FloatFieldUpdateOperationsInput | number
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type surfaces_protegeesCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    LIBELLE_VARIABLE: string
+    SOUS_CHAMP: string
+    A2019: number
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
+  }
+
+  export type surfaces_protegeesUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    LIBELLE_VARIABLE?: StringFieldUpdateOperationsInput | string
+    SOUS_CHAMP?: StringFieldUpdateOperationsInput | string
+    A2019?: FloatFieldUpdateOperationsInput | number
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type surfaces_protegeesUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    LIBELLE_VARIABLE?: StringFieldUpdateOperationsInput | string
+    SOUS_CHAMP?: StringFieldUpdateOperationsInput | string
+    A2019?: FloatFieldUpdateOperationsInput | number
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type surfaces_protegees_by_colCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    PNC?: string | null
+    RAMSAR?: string | null
+    PNR?: string | null
+    PNP?: string | null
+    FOR_PRO?: string | null
+    ZZZ?: string | null
+    ZNIEFF2?: string | null
+    ZNIEFF1?: string | null
+    RNR?: string | null
+    TOU_PRO?: string | null
+    NATURA?: string | null
+    ZPS?: string | null
+    SIC?: string | null
+    CELRL?: string | null
+    BIO?: string | null
+    APB?: string | null
+    RN?: string | null
+    RBFD?: string | null
+    RNCFS?: string | null
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
+  }
+
+  export type surfaces_protegees_by_colUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    PNC?: string | null
+    RAMSAR?: string | null
+    PNR?: string | null
+    PNP?: string | null
+    FOR_PRO?: string | null
+    ZZZ?: string | null
+    ZNIEFF2?: string | null
+    ZNIEFF1?: string | null
+    RNR?: string | null
+    TOU_PRO?: string | null
+    NATURA?: string | null
+    ZPS?: string | null
+    SIC?: string | null
+    CELRL?: string | null
+    BIO?: string | null
+    APB?: string | null
+    RN?: string | null
+    RBFD?: string | null
+    RNCFS?: string | null
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
+  }
+
+  export type surfaces_protegees_by_colUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    PNC?: NullableStringFieldUpdateOperationsInput | string | null
+    RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNP?: NullableStringFieldUpdateOperationsInput | string | null
+    FOR_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    ZZZ?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF2?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF1?: NullableStringFieldUpdateOperationsInput | string | null
+    RNR?: NullableStringFieldUpdateOperationsInput | string | null
+    TOU_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    NATURA?: NullableStringFieldUpdateOperationsInput | string | null
+    ZPS?: NullableStringFieldUpdateOperationsInput | string | null
+    SIC?: NullableStringFieldUpdateOperationsInput | string | null
+    CELRL?: NullableStringFieldUpdateOperationsInput | string | null
+    BIO?: NullableStringFieldUpdateOperationsInput | string | null
+    APB?: NullableStringFieldUpdateOperationsInput | string | null
+    RN?: NullableStringFieldUpdateOperationsInput | string | null
+    RBFD?: NullableStringFieldUpdateOperationsInput | string | null
+    RNCFS?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type surfaces_protegees_by_colUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    PNC?: NullableStringFieldUpdateOperationsInput | string | null
+    RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNP?: NullableStringFieldUpdateOperationsInput | string | null
+    FOR_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    ZZZ?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF2?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF1?: NullableStringFieldUpdateOperationsInput | string | null
+    RNR?: NullableStringFieldUpdateOperationsInput | string | null
+    TOU_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    NATURA?: NullableStringFieldUpdateOperationsInput | string | null
+    ZPS?: NullableStringFieldUpdateOperationsInput | string | null
+    SIC?: NullableStringFieldUpdateOperationsInput | string | null
+    CELRL?: NullableStringFieldUpdateOperationsInput | string | null
+    BIO?: NullableStringFieldUpdateOperationsInput | string | null
+    APB?: NullableStringFieldUpdateOperationsInput | string | null
+    RN?: NullableStringFieldUpdateOperationsInput | string | null
+    RBFD?: NullableStringFieldUpdateOperationsInput | string | null
+    RNCFS?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type surfaces_protegees_by_colCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    PNC?: string | null
+    RAMSAR?: string | null
+    PNR?: string | null
+    PNP?: string | null
+    FOR_PRO?: string | null
+    ZZZ?: string | null
+    ZNIEFF2?: string | null
+    ZNIEFF1?: string | null
+    RNR?: string | null
+    TOU_PRO?: string | null
+    NATURA?: string | null
+    ZPS?: string | null
+    SIC?: string | null
+    CELRL?: string | null
+    BIO?: string | null
+    APB?: string | null
+    RN?: string | null
+    RBFD?: string | null
+    RNCFS?: string | null
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
+  }
+
+  export type surfaces_protegees_by_colUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    PNC?: NullableStringFieldUpdateOperationsInput | string | null
+    RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNP?: NullableStringFieldUpdateOperationsInput | string | null
+    FOR_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    ZZZ?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF2?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF1?: NullableStringFieldUpdateOperationsInput | string | null
+    RNR?: NullableStringFieldUpdateOperationsInput | string | null
+    TOU_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    NATURA?: NullableStringFieldUpdateOperationsInput | string | null
+    ZPS?: NullableStringFieldUpdateOperationsInput | string | null
+    SIC?: NullableStringFieldUpdateOperationsInput | string | null
+    CELRL?: NullableStringFieldUpdateOperationsInput | string | null
+    BIO?: NullableStringFieldUpdateOperationsInput | string | null
+    APB?: NullableStringFieldUpdateOperationsInput | string | null
+    RN?: NullableStringFieldUpdateOperationsInput | string | null
+    RBFD?: NullableStringFieldUpdateOperationsInput | string | null
+    RNCFS?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type surfaces_protegees_by_colUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    PNC?: NullableStringFieldUpdateOperationsInput | string | null
+    RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNP?: NullableStringFieldUpdateOperationsInput | string | null
+    FOR_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    ZZZ?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF2?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF1?: NullableStringFieldUpdateOperationsInput | string | null
+    RNR?: NullableStringFieldUpdateOperationsInput | string | null
+    TOU_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    NATURA?: NullableStringFieldUpdateOperationsInput | string | null
+    ZPS?: NullableStringFieldUpdateOperationsInput | string | null
+    SIC?: NullableStringFieldUpdateOperationsInput | string | null
+    CELRL?: NullableStringFieldUpdateOperationsInput | string | null
+    BIO?: NullableStringFieldUpdateOperationsInput | string | null
+    APB?: NullableStringFieldUpdateOperationsInput | string | null
+    RN?: NullableStringFieldUpdateOperationsInput | string | null
+    RBFD?: NullableStringFieldUpdateOperationsInput | string | null
+    RNCFS?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+  }
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -16486,6 +20260,177 @@ export namespace Prisma {
     tdc_rec?: SortOrder
   }
 
+  export type epciCountOrderByAggregateInput = {
+    pk?: SortOrder
+    epci_code?: SortOrder
+  }
+
+  export type epciAvgOrderByAggregateInput = {
+    pk?: SortOrder
+  }
+
+  export type epciMaxOrderByAggregateInput = {
+    pk?: SortOrder
+    epci_code?: SortOrder
+  }
+
+  export type epciMinOrderByAggregateInput = {
+    pk?: SortOrder
+    epci_code?: SortOrder
+  }
+
+  export type epciSumOrderByAggregateInput = {
+    pk?: SortOrder
+  }
+
+  export type surfaces_protegeesCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    LIBELLE_VARIABLE?: SortOrder
+    SOUS_CHAMP?: SortOrder
+    A2019?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type surfaces_protegeesAvgOrderByAggregateInput = {
+    index?: SortOrder
+    A2019?: SortOrder
+    region?: SortOrder
+  }
+
+  export type surfaces_protegeesMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    LIBELLE_VARIABLE?: SortOrder
+    SOUS_CHAMP?: SortOrder
+    A2019?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type surfaces_protegeesMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    LIBELLE_VARIABLE?: SortOrder
+    SOUS_CHAMP?: SortOrder
+    A2019?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type surfaces_protegeesSumOrderByAggregateInput = {
+    index?: SortOrder
+    A2019?: SortOrder
+    region?: SortOrder
+  }
+
+  export type surfaces_protegees_by_colCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    PNC?: SortOrder
+    RAMSAR?: SortOrder
+    PNR?: SortOrder
+    PNP?: SortOrder
+    FOR_PRO?: SortOrder
+    ZZZ?: SortOrder
+    ZNIEFF2?: SortOrder
+    ZNIEFF1?: SortOrder
+    RNR?: SortOrder
+    TOU_PRO?: SortOrder
+    NATURA?: SortOrder
+    ZPS?: SortOrder
+    SIC?: SortOrder
+    CELRL?: SortOrder
+    BIO?: SortOrder
+    APB?: SortOrder
+    RN?: SortOrder
+    RBFD?: SortOrder
+    RNCFS?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type surfaces_protegees_by_colAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+  }
+
+  export type surfaces_protegees_by_colMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    PNC?: SortOrder
+    RAMSAR?: SortOrder
+    PNR?: SortOrder
+    PNP?: SortOrder
+    FOR_PRO?: SortOrder
+    ZZZ?: SortOrder
+    ZNIEFF2?: SortOrder
+    ZNIEFF1?: SortOrder
+    RNR?: SortOrder
+    TOU_PRO?: SortOrder
+    NATURA?: SortOrder
+    ZPS?: SortOrder
+    SIC?: SortOrder
+    CELRL?: SortOrder
+    BIO?: SortOrder
+    APB?: SortOrder
+    RN?: SortOrder
+    RBFD?: SortOrder
+    RNCFS?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type surfaces_protegees_by_colMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    PNC?: SortOrder
+    RAMSAR?: SortOrder
+    PNR?: SortOrder
+    PNP?: SortOrder
+    FOR_PRO?: SortOrder
+    ZZZ?: SortOrder
+    ZNIEFF2?: SortOrder
+    ZNIEFF1?: SortOrder
+    RNR?: SortOrder
+    TOU_PRO?: SortOrder
+    NATURA?: SortOrder
+    ZPS?: SortOrder
+    SIC?: SortOrder
+    CELRL?: SortOrder
+    BIO?: SortOrder
+    APB?: SortOrder
+    RN?: SortOrder
+    RBFD?: SortOrder
+    RNCFS?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+  }
+
+  export type surfaces_protegees_by_colSumOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+  }
+
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number
     increment?: bigint | number
@@ -16780,6 +20725,18 @@ export namespace Prisma {
      * @deprecated Use erosion_cotiereDefaultArgs instead
      */
     export type erosion_cotiereArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = erosion_cotiereDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use epciDefaultArgs instead
+     */
+    export type epciArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = epciDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use surfaces_protegeesDefaultArgs instead
+     */
+    export type surfaces_protegeesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = surfaces_protegeesDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use surfaces_protegees_by_colDefaultArgs instead
+     */
+    export type surfaces_protegees_by_colArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = surfaces_protegees_by_colDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

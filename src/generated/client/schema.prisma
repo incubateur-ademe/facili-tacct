@@ -229,3 +229,60 @@ model erosion_cotiere {
   @@index([geometry], map: "erosion_cotiere_geometry_geom_idx", type: Gist)
   @@schema("postgis")
 }
+
+model epci {
+  pk        Int                     @id @default(autoincrement())
+  epci_code String                  @db.VarChar
+  geometry  Unsupported("geometry")
+
+  @@index([geometry], map: "epci_geometry_geom_idx", type: Gist)
+  @@schema("postgis")
+}
+
+model surfaces_protegees {
+  index                BigInt @id
+  code_geographique    String
+  LIBELLE_VARIABLE     String
+  SOUS_CHAMP           String
+  A2019                Float
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  region               Float
+
+  @@index([index], map: "ix_surfaces_protegees_index")
+  @@schema("databases")
+}
+
+model surfaces_protegees_by_col {
+  index                BigInt  @id
+  code_geographique    String
+  PNC                  String?
+  RAMSAR               String?
+  PNR                  String?
+  PNP                  String?
+  FOR_PRO              String?
+  ZZZ                  String?
+  ZNIEFF2              String?
+  ZNIEFF1              String?
+  RNR                  String?
+  TOU_PRO              String?
+  NATURA               String?
+  ZPS                  String?
+  SIC                  String?
+  CELRL                String?
+  BIO                  String?
+  APB                  String?
+  RN                   String?
+  RBFD                 String?
+  RNCFS                String?
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  region               Float
+
+  @@index([index], map: "ix_surfaces_protegees_by_col_index")
+  @@schema("databases")
+}
