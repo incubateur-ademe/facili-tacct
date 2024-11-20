@@ -77,7 +77,7 @@ const SurfacesProtegees = (
             </div>
           </div>
           <div className="w-2/3">              
-            <SurfacesProtegeesDataviz />
+            <SurfacesProtegeesDataviz surfacesProtegees={surfacesProtegees}/>
           </div>
         </div>
       ) : (
