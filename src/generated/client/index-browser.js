@@ -304,6 +304,53 @@ exports.Prisma.Erosion_cotiereScalarFieldEnum = {
   tdc_rec: 'tdc_rec'
 };
 
+exports.Prisma.EpciScalarFieldEnum = {
+  pk: 'pk',
+  epci_code: 'epci_code'
+};
+
+exports.Prisma.Surfaces_protegeesScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  LIBELLE_VARIABLE: 'LIBELLE_VARIABLE',
+  SOUS_CHAMP: 'SOUS_CHAMP',
+  A2019: 'A2019',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  region: 'region'
+};
+
+exports.Prisma.Surfaces_protegees_by_colScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  PNC: 'PNC',
+  RAMSAR: 'RAMSAR',
+  PNR: 'PNR',
+  PNP: 'PNP',
+  FOR_PRO: 'FOR_PRO',
+  ZZZ: 'ZZZ',
+  ZNIEFF2: 'ZNIEFF2',
+  ZNIEFF1: 'ZNIEFF1',
+  RNR: 'RNR',
+  TOU_PRO: 'TOU_PRO',
+  NATURA: 'NATURA',
+  ZPS: 'ZPS',
+  SIC: 'SIC',
+  CELRL: 'CELRL',
+  BIO: 'BIO',
+  APB: 'APB',
+  RN: 'RN',
+  RBFD: 'RBFD',
+  RNCFS: 'RNCFS',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  region: 'region'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -331,7 +378,10 @@ exports.Prisma.ModelName = {
   communes_drom: 'communes_drom',
   ressources_eau: 'ressources_eau',
   agriculture_bio: 'agriculture_bio',
-  erosion_cotiere: 'erosion_cotiere'
+  erosion_cotiere: 'erosion_cotiere',
+  epci: 'epci',
+  surfaces_protegees: 'surfaces_protegees',
+  surfaces_protegees_by_col: 'surfaces_protegees_by_col'
 };
 
 /**

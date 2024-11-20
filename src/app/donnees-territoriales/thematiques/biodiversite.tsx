@@ -1,4 +1,5 @@
 import { Loader } from '@/components/loader';
+import { GetSurfacesProtegees, GetSurfacesProtegeesByCol } from '@/lib/queries/databases/biodiversite';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { GetAgricultureBio, GetBiodiversite } from '@/lib/queries/thematiques';
 import { themes } from "@/lib/utils/themes";
@@ -17,6 +18,8 @@ const Biodiversite = async (searchParams: SearchParams) => {
   const dbBiodiversite = await GetBiodiversite(codepci);
   const carteCommunes = await GetCommunes(codepci);
   const dbAgricultureBio = await GetAgricultureBio(codepci);
+  const dbSurfacesProtegees = await GetSurfacesProtegees(codepci);
+  const dbSurfaceProtegeesByCol = await GetSurfacesProtegeesByCol(codepci);
 
   return (
     <div>
@@ -26,6 +29,7 @@ const Biodiversite = async (searchParams: SearchParams) => {
           biodiversite={dbBiodiversite!}
           carteCommunes={carteCommunes}
           agricultureBio={dbAgricultureBio!}
+          surfacesProtegees={dbSurfaceProtegeesByCol}
         />
       </div>
     </div>

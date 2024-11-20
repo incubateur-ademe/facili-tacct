@@ -65,6 +65,13 @@ export const themes = {
       risque: "",
       donnee: "",
     },
+    {
+      id: 2,
+      titre: "Surfaces protégées",
+      facteur_sensibilite: "Surfaces protégées",
+      risque: "",
+      donnee: "",
+    }
   ],
   ressourcesEau: [
     {
