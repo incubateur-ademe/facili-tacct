@@ -36,17 +36,36 @@ export const MapErosionCotiere = (props: {
   const centerCoord: number[] = getCentroid(epciContours[0].geometry.coordinates[0][0]);
 
   const getColor = (d: number) => {
-    return d > 1 ? "#FFBE0B" : d > 0.4 ? "#FB5607" : d > 0 ? "#FF006E" : d > -2 ? "#8338EC" : "#3A86FF";
+    if (d >= 3) {
+      return "#046803";
+    } else if (d < 3 && d >= 1.5) {
+      return "#1DA546";
+    } else if (d < 1.5 && d >= 0.5) {
+      return "#86CD63";
+    } else if (d < 0.5 && d >= 0.1) {
+      return "#DCEE9F";
+    } else if (d < 0.1 && d > -0.1) {
+      return "#AFF7F1";
+    } else if (d <= -0.1 && d > -0.5) {
+      return "#FEDD9A";
+    } else if (d <= -0.5 && d > -1.5) {
+      return "#F59550";
+    } else if (d <= -1.5 && d > -3) {
+      return "#B87830";
+    } else if (d <= -3) {
+      return "#A74E10";
+    } else {
+      return "#9D9C9C";
+    }
   }
 
   const style: StyleFunction<Any> = feature => {
     const typedFeature = feature as ErosionCotiereDto;
     return {
       fillColor: getColor(typedFeature?.properties.taux),
-      weight: 1,
+      weight: 5,
       opacity: 1,
       color: getColor(typedFeature?.properties.taux),
-      // dashArray: "3",
       fillOpacity: 0.95,
     };
   };
@@ -72,11 +91,14 @@ export const MapErosionCotiere = (props: {
       minZoom={9}
     >
       <TileLayer
-        // attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+	      attribution='<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://tile.jawg.io/jawg-sunny/{z}/{x}/{y}{r}.png?access-token=MBbcKi3EyFqyyHvvHVbfnE4iOJ34FiUs1yWbVID476VAReeeO0NdrKWg6FljGBIC"
       />
       <GeoJSON ref={mapRef} data={erosionCotiere as Any} style={style} />
       <GeoJSON ref={mapRef} data={epciContours as Any} style={epciStyle}/>
+      {/* <div className={styles.ErosionCotiereLegendButton}>
+        <Image src={MapIcon} alt="" width={48} height={48}/>
+      </div> */}
     </MapContainer>
   );
 };
