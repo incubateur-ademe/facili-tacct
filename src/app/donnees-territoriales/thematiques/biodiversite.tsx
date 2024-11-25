@@ -1,6 +1,6 @@
 import { Loader } from '@/components/loader';
 import { GetSurfacesProtegees } from '@/lib/queries/databases/biodiversite';
-import { GetCommunes } from '@/lib/queries/postgis/cartographie';
+import { GetCommunes, GetEpci } from '@/lib/queries/postgis/cartographie';
 import { GetAgricultureBio, GetBiodiversite } from '@/lib/queries/thematiques';
 import { themes } from "@/lib/utils/themes";
 import dynamic from 'next/dynamic';
@@ -19,6 +19,7 @@ const Biodiversite = async (searchParams: SearchParams) => {
   const carteCommunes = await GetCommunes(codepci);
   const dbAgricultureBio = await GetAgricultureBio(codepci);
   const dbSurfacesProtegees = await GetSurfacesProtegees(codepci);
+  const epciContours = await GetEpci(codepci);
 
   return (
     <div>
@@ -29,6 +30,7 @@ const Biodiversite = async (searchParams: SearchParams) => {
           carteCommunes={carteCommunes}
           agricultureBio={dbAgricultureBio!}
           surfacesProtegees={dbSurfacesProtegees}
+          epciContours={epciContours}
         />
       </div>
     </div>
