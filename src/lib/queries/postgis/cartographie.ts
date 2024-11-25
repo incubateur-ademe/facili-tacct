@@ -71,7 +71,7 @@ export const GetErosionCotiere = async (code: string): Promise<ErosionCotiere[][
       taux, 
       ST_AsGeoJSON(geometry) geometry
       FROM postgis."erosion_cotiere" WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${epci[0].geometry})), 4326), 0.6);`; //ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326))
-    console.log([valueIntersect, value]);
+    // console.log([valueIntersect, value]);
     console.timeEnd("Query Execution Time ErosionCotiere");
     return [valueIntersect ?? 0, value];
   } catch (error) {

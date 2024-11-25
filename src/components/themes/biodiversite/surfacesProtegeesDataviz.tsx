@@ -49,14 +49,14 @@ const SurfacesProtegeesDataviz = (
           data={filterNullValues(data)}
           identity="name"
           value="loc"
-          valueFormat=".02s"
+          valueFormat=">-.0f"
           tile="squarify"
           leavesOnly={true}
           margin={{ top: 30, right: 50, bottom: 30, left: 30 }}
           labelSkipSize={12}
           label={e => {
             const maxWidth = e.width / 6;
-            return e.id?.length > maxWidth ? e.id?.slice(0, maxWidth - 1) + '...' : e.id + " " + e.formattedValue;
+            return e.id?.length > maxWidth ? e.id?.slice(0, maxWidth - 1) + '...' : e.id + " : " + e.formattedValue + " ha";
           }}
           orientLabel={false}
           nodeOpacity={0.05}

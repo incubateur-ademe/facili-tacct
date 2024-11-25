@@ -16,14 +16,7 @@ const getCentroid = (arr: number[][]) => {
     [0, 0],
   );
 };
-const getCoordinates = (coords: number[][][]) => {
-  const coords_arr = [];
-  for (let i = 0; i < coords.length; i++) {
-    const center = getCentroid(coords[i]);
-    coords_arr.push(center);
-  }
-  return getCentroid(coords_arr);
-};
+
 
 export const MapErosionCotiere = (props: {
   erosionCotiere: ErosionCotiereDto[];
@@ -75,7 +68,6 @@ export const MapErosionCotiere = (props: {
       weight: 1,
       opacity: 1,
       color: "#161616",
-      // dashArray: "3",
       fillOpacity: 0,
     };
   };

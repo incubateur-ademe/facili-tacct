@@ -200,19 +200,6 @@ export type DataGrandAge = {
   under_4_sum_2020?: number;
 };
 
-export type SurfacesProtegees = {
-  index: bigint;
-  code_geographique: string;
-  LIBELLE_VARIABLE: string;
-  SOUS_CHAMP: string;
-  A2019: number;
-  libelle_geographique: string;
-  epci: string;
-  libelle_epci: string;
-  departement: string;
-  region: number;
-}
-
 export type SurfacesProtegeesByCol = {
   index: bigint;
   code_geographique: string;

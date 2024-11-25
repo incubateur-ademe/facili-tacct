@@ -39,11 +39,6 @@ export type collectivites_searchbar = $Result.DefaultSelection<Prisma.$collectiv
  */
 export type biodiversite = $Result.DefaultSelection<Prisma.$biodiversitePayload>
 /**
- * Model spatial_ref_sys
- * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
- */
-export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPayload>
-/**
  * Model gestion_risques
  * 
  */
@@ -79,10 +74,10 @@ export type epci = $Result.DefaultSelection<Prisma.$epciPayload>
  */
 export type surfaces_protegees = $Result.DefaultSelection<Prisma.$surfaces_protegeesPayload>
 /**
- * Model surfaces_protegees_by_col
- * 
+ * Model spatial_ref_sys
+ * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
  */
-export type surfaces_protegees_by_col = $Result.DefaultSelection<Prisma.$surfaces_protegees_by_colPayload>
+export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -258,16 +253,6 @@ export class PrismaClient<
   get biodiversite(): Prisma.biodiversiteDelegate<ExtArgs>;
 
   /**
-   * `prisma.spatial_ref_sys`: Exposes CRUD operations for the **spatial_ref_sys** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Spatial_ref_sys
-    * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
-    * ```
-    */
-  get spatial_ref_sys(): Prisma.spatial_ref_sysDelegate<ExtArgs>;
-
-  /**
    * `prisma.gestion_risques`: Exposes CRUD operations for the **gestion_risques** model.
     * Example usage:
     * ```ts
@@ -338,14 +323,14 @@ export class PrismaClient<
   get surfaces_protegees(): Prisma.surfaces_protegeesDelegate<ExtArgs>;
 
   /**
-   * `prisma.surfaces_protegees_by_col`: Exposes CRUD operations for the **surfaces_protegees_by_col** model.
+   * `prisma.spatial_ref_sys`: Exposes CRUD operations for the **spatial_ref_sys** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Surfaces_protegees_by_cols
-    * const surfaces_protegees_by_cols = await prisma.surfaces_protegees_by_col.findMany()
+    * // Fetch zero or more Spatial_ref_sys
+    * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
     * ```
     */
-  get surfaces_protegees_by_col(): Prisma.surfaces_protegees_by_colDelegate<ExtArgs>;
+  get spatial_ref_sys(): Prisma.spatial_ref_sysDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -792,7 +777,6 @@ export namespace Prisma {
     communes: 'communes',
     collectivites_searchbar: 'collectivites_searchbar',
     biodiversite: 'biodiversite',
-    spatial_ref_sys: 'spatial_ref_sys',
     gestion_risques: 'gestion_risques',
     communes_drom: 'communes_drom',
     ressources_eau: 'ressources_eau',
@@ -800,7 +784,7 @@ export namespace Prisma {
     erosion_cotiere: 'erosion_cotiere',
     epci: 'epci',
     surfaces_protegees: 'surfaces_protegees',
-    surfaces_protegees_by_col: 'surfaces_protegees_by_col'
+    spatial_ref_sys: 'spatial_ref_sys'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -816,7 +800,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "inconfort_thermique" | "clc_epci" | "communes" | "collectivites_searchbar" | "biodiversite" | "spatial_ref_sys" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio" | "erosion_cotiere" | "epci" | "surfaces_protegees" | "surfaces_protegees_by_col"
+      modelProps: "inconfort_thermique" | "clc_epci" | "communes" | "collectivites_searchbar" | "biodiversite" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio" | "erosion_cotiere" | "epci" | "surfaces_protegees" | "spatial_ref_sys"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1167,76 +1151,6 @@ export namespace Prisma {
           count: {
             args: Prisma.biodiversiteCountArgs<ExtArgs>
             result: $Utils.Optional<BiodiversiteCountAggregateOutputType> | number
-          }
-        }
-      }
-      spatial_ref_sys: {
-        payload: Prisma.$spatial_ref_sysPayload<ExtArgs>
-        fields: Prisma.spatial_ref_sysFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.spatial_ref_sysFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
-          }
-          findFirst: {
-            args: Prisma.spatial_ref_sysFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
-          }
-          findMany: {
-            args: Prisma.spatial_ref_sysFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[]
-          }
-          create: {
-            args: Prisma.spatial_ref_sysCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
-          }
-          createMany: {
-            args: Prisma.spatial_ref_sysCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.spatial_ref_sysCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[]
-          }
-          delete: {
-            args: Prisma.spatial_ref_sysDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
-          }
-          update: {
-            args: Prisma.spatial_ref_sysUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
-          }
-          deleteMany: {
-            args: Prisma.spatial_ref_sysDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.spatial_ref_sysUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.spatial_ref_sysUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
-          }
-          aggregate: {
-            args: Prisma.Spatial_ref_sysAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateSpatial_ref_sys>
-          }
-          groupBy: {
-            args: Prisma.spatial_ref_sysGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Spatial_ref_sysGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.spatial_ref_sysCountArgs<ExtArgs>
-            result: $Utils.Optional<Spatial_ref_sysCountAggregateOutputType> | number
           }
         }
       }
@@ -1682,73 +1596,73 @@ export namespace Prisma {
           }
         }
       }
-      surfaces_protegees_by_col: {
-        payload: Prisma.$surfaces_protegees_by_colPayload<ExtArgs>
-        fields: Prisma.surfaces_protegees_by_colFieldRefs
+      spatial_ref_sys: {
+        payload: Prisma.$spatial_ref_sysPayload<ExtArgs>
+        fields: Prisma.spatial_ref_sysFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.surfaces_protegees_by_colFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload> | null
+            args: Prisma.spatial_ref_sysFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.surfaces_protegees_by_colFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>
+            args: Prisma.spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
           }
           findFirst: {
-            args: Prisma.surfaces_protegees_by_colFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload> | null
+            args: Prisma.spatial_ref_sysFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.surfaces_protegees_by_colFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>
+            args: Prisma.spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
           }
           findMany: {
-            args: Prisma.surfaces_protegees_by_colFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>[]
+            args: Prisma.spatial_ref_sysFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[]
           }
           create: {
-            args: Prisma.surfaces_protegees_by_colCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>
+            args: Prisma.spatial_ref_sysCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
           }
           createMany: {
-            args: Prisma.surfaces_protegees_by_colCreateManyArgs<ExtArgs>
+            args: Prisma.spatial_ref_sysCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.surfaces_protegees_by_colCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>[]
+            args: Prisma.spatial_ref_sysCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[]
           }
           delete: {
-            args: Prisma.surfaces_protegees_by_colDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>
+            args: Prisma.spatial_ref_sysDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
           }
           update: {
-            args: Prisma.surfaces_protegees_by_colUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>
+            args: Prisma.spatial_ref_sysUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
           }
           deleteMany: {
-            args: Prisma.surfaces_protegees_by_colDeleteManyArgs<ExtArgs>
+            args: Prisma.spatial_ref_sysDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.surfaces_protegees_by_colUpdateManyArgs<ExtArgs>
+            args: Prisma.spatial_ref_sysUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.surfaces_protegees_by_colUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$surfaces_protegees_by_colPayload>
+            args: Prisma.spatial_ref_sysUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
           }
           aggregate: {
-            args: Prisma.Surfaces_protegees_by_colAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateSurfaces_protegees_by_col>
+            args: Prisma.Spatial_ref_sysAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSpatial_ref_sys>
           }
           groupBy: {
-            args: Prisma.surfaces_protegees_by_colGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Surfaces_protegees_by_colGroupByOutputType>[]
+            args: Prisma.spatial_ref_sysGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Spatial_ref_sysGroupByOutputType>[]
           }
           count: {
-            args: Prisma.surfaces_protegees_by_colCountArgs<ExtArgs>
-            result: $Utils.Optional<Surfaces_protegees_by_colCountAggregateOutputType> | number
+            args: Prisma.spatial_ref_sysCountArgs<ExtArgs>
+            result: $Utils.Optional<Spatial_ref_sysCountAggregateOutputType> | number
           }
         }
       }
@@ -7438,922 +7352,6 @@ export namespace Prisma {
 
 
   /**
-   * Model spatial_ref_sys
-   */
-
-  export type AggregateSpatial_ref_sys = {
-    _count: Spatial_ref_sysCountAggregateOutputType | null
-    _avg: Spatial_ref_sysAvgAggregateOutputType | null
-    _sum: Spatial_ref_sysSumAggregateOutputType | null
-    _min: Spatial_ref_sysMinAggregateOutputType | null
-    _max: Spatial_ref_sysMaxAggregateOutputType | null
-  }
-
-  export type Spatial_ref_sysAvgAggregateOutputType = {
-    srid: number | null
-    auth_srid: number | null
-  }
-
-  export type Spatial_ref_sysSumAggregateOutputType = {
-    srid: number | null
-    auth_srid: number | null
-  }
-
-  export type Spatial_ref_sysMinAggregateOutputType = {
-    srid: number | null
-    auth_name: string | null
-    auth_srid: number | null
-    srtext: string | null
-    proj4text: string | null
-  }
-
-  export type Spatial_ref_sysMaxAggregateOutputType = {
-    srid: number | null
-    auth_name: string | null
-    auth_srid: number | null
-    srtext: string | null
-    proj4text: string | null
-  }
-
-  export type Spatial_ref_sysCountAggregateOutputType = {
-    srid: number
-    auth_name: number
-    auth_srid: number
-    srtext: number
-    proj4text: number
-    _all: number
-  }
-
-
-  export type Spatial_ref_sysAvgAggregateInputType = {
-    srid?: true
-    auth_srid?: true
-  }
-
-  export type Spatial_ref_sysSumAggregateInputType = {
-    srid?: true
-    auth_srid?: true
-  }
-
-  export type Spatial_ref_sysMinAggregateInputType = {
-    srid?: true
-    auth_name?: true
-    auth_srid?: true
-    srtext?: true
-    proj4text?: true
-  }
-
-  export type Spatial_ref_sysMaxAggregateInputType = {
-    srid?: true
-    auth_name?: true
-    auth_srid?: true
-    srtext?: true
-    proj4text?: true
-  }
-
-  export type Spatial_ref_sysCountAggregateInputType = {
-    srid?: true
-    auth_name?: true
-    auth_srid?: true
-    srtext?: true
-    proj4text?: true
-    _all?: true
-  }
-
-  export type Spatial_ref_sysAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which spatial_ref_sys to aggregate.
-     */
-    where?: spatial_ref_sysWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of spatial_ref_sys to fetch.
-     */
-    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: spatial_ref_sysWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` spatial_ref_sys from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` spatial_ref_sys.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned spatial_ref_sys
-    **/
-    _count?: true | Spatial_ref_sysCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Spatial_ref_sysAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Spatial_ref_sysSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Spatial_ref_sysMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Spatial_ref_sysMaxAggregateInputType
-  }
-
-  export type GetSpatial_ref_sysAggregateType<T extends Spatial_ref_sysAggregateArgs> = {
-        [P in keyof T & keyof AggregateSpatial_ref_sys]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateSpatial_ref_sys[P]>
-      : GetScalarType<T[P], AggregateSpatial_ref_sys[P]>
-  }
-
-
-
-
-  export type spatial_ref_sysGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: spatial_ref_sysWhereInput
-    orderBy?: spatial_ref_sysOrderByWithAggregationInput | spatial_ref_sysOrderByWithAggregationInput[]
-    by: Spatial_ref_sysScalarFieldEnum[] | Spatial_ref_sysScalarFieldEnum
-    having?: spatial_ref_sysScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Spatial_ref_sysCountAggregateInputType | true
-    _avg?: Spatial_ref_sysAvgAggregateInputType
-    _sum?: Spatial_ref_sysSumAggregateInputType
-    _min?: Spatial_ref_sysMinAggregateInputType
-    _max?: Spatial_ref_sysMaxAggregateInputType
-  }
-
-  export type Spatial_ref_sysGroupByOutputType = {
-    srid: number
-    auth_name: string | null
-    auth_srid: number | null
-    srtext: string | null
-    proj4text: string | null
-    _count: Spatial_ref_sysCountAggregateOutputType | null
-    _avg: Spatial_ref_sysAvgAggregateOutputType | null
-    _sum: Spatial_ref_sysSumAggregateOutputType | null
-    _min: Spatial_ref_sysMinAggregateOutputType | null
-    _max: Spatial_ref_sysMaxAggregateOutputType | null
-  }
-
-  type GetSpatial_ref_sysGroupByPayload<T extends spatial_ref_sysGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Spatial_ref_sysGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Spatial_ref_sysGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Spatial_ref_sysGroupByOutputType[P]>
-            : GetScalarType<T[P], Spatial_ref_sysGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type spatial_ref_sysSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    srid?: boolean
-    auth_name?: boolean
-    auth_srid?: boolean
-    srtext?: boolean
-    proj4text?: boolean
-  }, ExtArgs["result"]["spatial_ref_sys"]>
-
-  export type spatial_ref_sysSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    srid?: boolean
-    auth_name?: boolean
-    auth_srid?: boolean
-    srtext?: boolean
-    proj4text?: boolean
-  }, ExtArgs["result"]["spatial_ref_sys"]>
-
-  export type spatial_ref_sysSelectScalar = {
-    srid?: boolean
-    auth_name?: boolean
-    auth_srid?: boolean
-    srtext?: boolean
-    proj4text?: boolean
-  }
-
-
-  export type $spatial_ref_sysPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "spatial_ref_sys"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      srid: number
-      auth_name: string | null
-      auth_srid: number | null
-      srtext: string | null
-      proj4text: string | null
-    }, ExtArgs["result"]["spatial_ref_sys"]>
-    composites: {}
-  }
-
-  type spatial_ref_sysGetPayload<S extends boolean | null | undefined | spatial_ref_sysDefaultArgs> = $Result.GetResult<Prisma.$spatial_ref_sysPayload, S>
-
-  type spatial_ref_sysCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<spatial_ref_sysFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: Spatial_ref_sysCountAggregateInputType | true
-    }
-
-  export interface spatial_ref_sysDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['spatial_ref_sys'], meta: { name: 'spatial_ref_sys' } }
-    /**
-     * Find zero or one Spatial_ref_sys that matches the filter.
-     * @param {spatial_ref_sysFindUniqueArgs} args - Arguments to find a Spatial_ref_sys
-     * @example
-     * // Get one Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends spatial_ref_sysFindUniqueArgs>(args: SelectSubset<T, spatial_ref_sysFindUniqueArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
-
-    /**
-     * Find one Spatial_ref_sys that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
-     * @param {spatial_ref_sysFindUniqueOrThrowArgs} args - Arguments to find a Spatial_ref_sys
-     * @example
-     * // Get one Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends spatial_ref_sysFindUniqueOrThrowArgs>(args: SelectSubset<T, spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
-
-    /**
-     * Find the first Spatial_ref_sys that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysFindFirstArgs} args - Arguments to find a Spatial_ref_sys
-     * @example
-     * // Get one Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends spatial_ref_sysFindFirstArgs>(args?: SelectSubset<T, spatial_ref_sysFindFirstArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
-
-    /**
-     * Find the first Spatial_ref_sys that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysFindFirstOrThrowArgs} args - Arguments to find a Spatial_ref_sys
-     * @example
-     * // Get one Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends spatial_ref_sysFindFirstOrThrowArgs>(args?: SelectSubset<T, spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
-
-    /**
-     * Find zero or more Spatial_ref_sys that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
-     * 
-     * // Get first 10 Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany({ take: 10 })
-     * 
-     * // Only select the `srid`
-     * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.findMany({ select: { srid: true } })
-     * 
-     */
-    findMany<T extends spatial_ref_sysFindManyArgs>(args?: SelectSubset<T, spatial_ref_sysFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findMany">>
-
-    /**
-     * Create a Spatial_ref_sys.
-     * @param {spatial_ref_sysCreateArgs} args - Arguments to create a Spatial_ref_sys.
-     * @example
-     * // Create one Spatial_ref_sys
-     * const Spatial_ref_sys = await prisma.spatial_ref_sys.create({
-     *   data: {
-     *     // ... data to create a Spatial_ref_sys
-     *   }
-     * })
-     * 
-     */
-    create<T extends spatial_ref_sysCreateArgs>(args: SelectSubset<T, spatial_ref_sysCreateArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "create">, never, ExtArgs>
-
-    /**
-     * Create many Spatial_ref_sys.
-     * @param {spatial_ref_sysCreateManyArgs} args - Arguments to create many Spatial_ref_sys.
-     * @example
-     * // Create many Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends spatial_ref_sysCreateManyArgs>(args?: SelectSubset<T, spatial_ref_sysCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Spatial_ref_sys and returns the data saved in the database.
-     * @param {spatial_ref_sysCreateManyAndReturnArgs} args - Arguments to create many Spatial_ref_sys.
-     * @example
-     * // Create many Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Spatial_ref_sys and only return the `srid`
-     * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.createManyAndReturn({ 
-     *   select: { srid: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends spatial_ref_sysCreateManyAndReturnArgs>(args?: SelectSubset<T, spatial_ref_sysCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "createManyAndReturn">>
-
-    /**
-     * Delete a Spatial_ref_sys.
-     * @param {spatial_ref_sysDeleteArgs} args - Arguments to delete one Spatial_ref_sys.
-     * @example
-     * // Delete one Spatial_ref_sys
-     * const Spatial_ref_sys = await prisma.spatial_ref_sys.delete({
-     *   where: {
-     *     // ... filter to delete one Spatial_ref_sys
-     *   }
-     * })
-     * 
-     */
-    delete<T extends spatial_ref_sysDeleteArgs>(args: SelectSubset<T, spatial_ref_sysDeleteArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "delete">, never, ExtArgs>
-
-    /**
-     * Update one Spatial_ref_sys.
-     * @param {spatial_ref_sysUpdateArgs} args - Arguments to update one Spatial_ref_sys.
-     * @example
-     * // Update one Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends spatial_ref_sysUpdateArgs>(args: SelectSubset<T, spatial_ref_sysUpdateArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "update">, never, ExtArgs>
-
-    /**
-     * Delete zero or more Spatial_ref_sys.
-     * @param {spatial_ref_sysDeleteManyArgs} args - Arguments to filter Spatial_ref_sys to delete.
-     * @example
-     * // Delete a few Spatial_ref_sys
-     * const { count } = await prisma.spatial_ref_sys.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends spatial_ref_sysDeleteManyArgs>(args?: SelectSubset<T, spatial_ref_sysDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Spatial_ref_sys.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends spatial_ref_sysUpdateManyArgs>(args: SelectSubset<T, spatial_ref_sysUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Spatial_ref_sys.
-     * @param {spatial_ref_sysUpsertArgs} args - Arguments to update or create a Spatial_ref_sys.
-     * @example
-     * // Update or create a Spatial_ref_sys
-     * const spatial_ref_sys = await prisma.spatial_ref_sys.upsert({
-     *   create: {
-     *     // ... data to create a Spatial_ref_sys
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Spatial_ref_sys we want to update
-     *   }
-     * })
-     */
-    upsert<T extends spatial_ref_sysUpsertArgs>(args: SelectSubset<T, spatial_ref_sysUpsertArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
-
-
-    /**
-     * Count the number of Spatial_ref_sys.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysCountArgs} args - Arguments to filter Spatial_ref_sys to count.
-     * @example
-     * // Count the number of Spatial_ref_sys
-     * const count = await prisma.spatial_ref_sys.count({
-     *   where: {
-     *     // ... the filter for the Spatial_ref_sys we want to count
-     *   }
-     * })
-    **/
-    count<T extends spatial_ref_sysCountArgs>(
-      args?: Subset<T, spatial_ref_sysCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Spatial_ref_sysCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Spatial_ref_sys.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Spatial_ref_sysAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Spatial_ref_sysAggregateArgs>(args: Subset<T, Spatial_ref_sysAggregateArgs>): Prisma.PrismaPromise<GetSpatial_ref_sysAggregateType<T>>
-
-    /**
-     * Group by Spatial_ref_sys.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {spatial_ref_sysGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends spatial_ref_sysGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: spatial_ref_sysGroupByArgs['orderBy'] }
-        : { orderBy?: spatial_ref_sysGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, spatial_ref_sysGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSpatial_ref_sysGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the spatial_ref_sys model
-   */
-  readonly fields: spatial_ref_sysFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for spatial_ref_sys.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__spatial_ref_sysClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the spatial_ref_sys model
-   */ 
-  interface spatial_ref_sysFieldRefs {
-    readonly srid: FieldRef<"spatial_ref_sys", 'Int'>
-    readonly auth_name: FieldRef<"spatial_ref_sys", 'String'>
-    readonly auth_srid: FieldRef<"spatial_ref_sys", 'Int'>
-    readonly srtext: FieldRef<"spatial_ref_sys", 'String'>
-    readonly proj4text: FieldRef<"spatial_ref_sys", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * spatial_ref_sys findUnique
-   */
-  export type spatial_ref_sysFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter, which spatial_ref_sys to fetch.
-     */
-    where: spatial_ref_sysWhereUniqueInput
-  }
-
-  /**
-   * spatial_ref_sys findUniqueOrThrow
-   */
-  export type spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter, which spatial_ref_sys to fetch.
-     */
-    where: spatial_ref_sysWhereUniqueInput
-  }
-
-  /**
-   * spatial_ref_sys findFirst
-   */
-  export type spatial_ref_sysFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter, which spatial_ref_sys to fetch.
-     */
-    where?: spatial_ref_sysWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of spatial_ref_sys to fetch.
-     */
-    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for spatial_ref_sys.
-     */
-    cursor?: spatial_ref_sysWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` spatial_ref_sys from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` spatial_ref_sys.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of spatial_ref_sys.
-     */
-    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
-  }
-
-  /**
-   * spatial_ref_sys findFirstOrThrow
-   */
-  export type spatial_ref_sysFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter, which spatial_ref_sys to fetch.
-     */
-    where?: spatial_ref_sysWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of spatial_ref_sys to fetch.
-     */
-    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for spatial_ref_sys.
-     */
-    cursor?: spatial_ref_sysWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` spatial_ref_sys from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` spatial_ref_sys.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of spatial_ref_sys.
-     */
-    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
-  }
-
-  /**
-   * spatial_ref_sys findMany
-   */
-  export type spatial_ref_sysFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter, which spatial_ref_sys to fetch.
-     */
-    where?: spatial_ref_sysWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of spatial_ref_sys to fetch.
-     */
-    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing spatial_ref_sys.
-     */
-    cursor?: spatial_ref_sysWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` spatial_ref_sys from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` spatial_ref_sys.
-     */
-    skip?: number
-    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
-  }
-
-  /**
-   * spatial_ref_sys create
-   */
-  export type spatial_ref_sysCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * The data needed to create a spatial_ref_sys.
-     */
-    data: XOR<spatial_ref_sysCreateInput, spatial_ref_sysUncheckedCreateInput>
-  }
-
-  /**
-   * spatial_ref_sys createMany
-   */
-  export type spatial_ref_sysCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many spatial_ref_sys.
-     */
-    data: spatial_ref_sysCreateManyInput | spatial_ref_sysCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * spatial_ref_sys createManyAndReturn
-   */
-  export type spatial_ref_sysCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many spatial_ref_sys.
-     */
-    data: spatial_ref_sysCreateManyInput | spatial_ref_sysCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * spatial_ref_sys update
-   */
-  export type spatial_ref_sysUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * The data needed to update a spatial_ref_sys.
-     */
-    data: XOR<spatial_ref_sysUpdateInput, spatial_ref_sysUncheckedUpdateInput>
-    /**
-     * Choose, which spatial_ref_sys to update.
-     */
-    where: spatial_ref_sysWhereUniqueInput
-  }
-
-  /**
-   * spatial_ref_sys updateMany
-   */
-  export type spatial_ref_sysUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update spatial_ref_sys.
-     */
-    data: XOR<spatial_ref_sysUpdateManyMutationInput, spatial_ref_sysUncheckedUpdateManyInput>
-    /**
-     * Filter which spatial_ref_sys to update
-     */
-    where?: spatial_ref_sysWhereInput
-  }
-
-  /**
-   * spatial_ref_sys upsert
-   */
-  export type spatial_ref_sysUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * The filter to search for the spatial_ref_sys to update in case it exists.
-     */
-    where: spatial_ref_sysWhereUniqueInput
-    /**
-     * In case the spatial_ref_sys found by the `where` argument doesn't exist, create a new spatial_ref_sys with this data.
-     */
-    create: XOR<spatial_ref_sysCreateInput, spatial_ref_sysUncheckedCreateInput>
-    /**
-     * In case the spatial_ref_sys was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<spatial_ref_sysUpdateInput, spatial_ref_sysUncheckedUpdateInput>
-  }
-
-  /**
-   * spatial_ref_sys delete
-   */
-  export type spatial_ref_sysDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-    /**
-     * Filter which spatial_ref_sys to delete.
-     */
-    where: spatial_ref_sysWhereUniqueInput
-  }
-
-  /**
-   * spatial_ref_sys deleteMany
-   */
-  export type spatial_ref_sysDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which spatial_ref_sys to delete
-     */
-    where?: spatial_ref_sysWhereInput
-  }
-
-  /**
-   * spatial_ref_sys without action
-   */
-  export type spatial_ref_sysDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the spatial_ref_sys
-     */
-    select?: spatial_ref_sysSelect<ExtArgs> | null
-  }
-
-
-  /**
    * Model gestion_risques
    */
 
@@ -13883,22 +12881,36 @@ export namespace Prisma {
 
   export type Surfaces_protegeesAvgAggregateOutputType = {
     index: number | null
-    A2019: number | null
     region: number | null
   }
 
   export type Surfaces_protegeesSumAggregateOutputType = {
     index: bigint | null
-    A2019: number | null
     region: number | null
   }
 
   export type Surfaces_protegeesMinAggregateOutputType = {
     index: bigint | null
     code_geographique: string | null
-    LIBELLE_VARIABLE: string | null
-    SOUS_CHAMP: string | null
-    A2019: number | null
+    PNC: string | null
+    RAMSAR: string | null
+    PNR: string | null
+    PNP: string | null
+    FOR_PRO: string | null
+    ZZZ: string | null
+    ZNIEFF2: string | null
+    ZNIEFF1: string | null
+    RNR: string | null
+    TOU_PRO: string | null
+    NATURA: string | null
+    ZPS: string | null
+    SIC: string | null
+    CELRL: string | null
+    BIO: string | null
+    APB: string | null
+    RN: string | null
+    RBFD: string | null
+    RNCFS: string | null
     libelle_geographique: string | null
     epci: string | null
     libelle_epci: string | null
@@ -13909,9 +12921,25 @@ export namespace Prisma {
   export type Surfaces_protegeesMaxAggregateOutputType = {
     index: bigint | null
     code_geographique: string | null
-    LIBELLE_VARIABLE: string | null
-    SOUS_CHAMP: string | null
-    A2019: number | null
+    PNC: string | null
+    RAMSAR: string | null
+    PNR: string | null
+    PNP: string | null
+    FOR_PRO: string | null
+    ZZZ: string | null
+    ZNIEFF2: string | null
+    ZNIEFF1: string | null
+    RNR: string | null
+    TOU_PRO: string | null
+    NATURA: string | null
+    ZPS: string | null
+    SIC: string | null
+    CELRL: string | null
+    BIO: string | null
+    APB: string | null
+    RN: string | null
+    RBFD: string | null
+    RNCFS: string | null
     libelle_geographique: string | null
     epci: string | null
     libelle_epci: string | null
@@ -13922,9 +12950,25 @@ export namespace Prisma {
   export type Surfaces_protegeesCountAggregateOutputType = {
     index: number
     code_geographique: number
-    LIBELLE_VARIABLE: number
-    SOUS_CHAMP: number
-    A2019: number
+    PNC: number
+    RAMSAR: number
+    PNR: number
+    PNP: number
+    FOR_PRO: number
+    ZZZ: number
+    ZNIEFF2: number
+    ZNIEFF1: number
+    RNR: number
+    TOU_PRO: number
+    NATURA: number
+    ZPS: number
+    SIC: number
+    CELRL: number
+    BIO: number
+    APB: number
+    RN: number
+    RBFD: number
+    RNCFS: number
     libelle_geographique: number
     epci: number
     libelle_epci: number
@@ -13936,22 +12980,36 @@ export namespace Prisma {
 
   export type Surfaces_protegeesAvgAggregateInputType = {
     index?: true
-    A2019?: true
     region?: true
   }
 
   export type Surfaces_protegeesSumAggregateInputType = {
     index?: true
-    A2019?: true
     region?: true
   }
 
   export type Surfaces_protegeesMinAggregateInputType = {
     index?: true
     code_geographique?: true
-    LIBELLE_VARIABLE?: true
-    SOUS_CHAMP?: true
-    A2019?: true
+    PNC?: true
+    RAMSAR?: true
+    PNR?: true
+    PNP?: true
+    FOR_PRO?: true
+    ZZZ?: true
+    ZNIEFF2?: true
+    ZNIEFF1?: true
+    RNR?: true
+    TOU_PRO?: true
+    NATURA?: true
+    ZPS?: true
+    SIC?: true
+    CELRL?: true
+    BIO?: true
+    APB?: true
+    RN?: true
+    RBFD?: true
+    RNCFS?: true
     libelle_geographique?: true
     epci?: true
     libelle_epci?: true
@@ -13962,9 +13020,25 @@ export namespace Prisma {
   export type Surfaces_protegeesMaxAggregateInputType = {
     index?: true
     code_geographique?: true
-    LIBELLE_VARIABLE?: true
-    SOUS_CHAMP?: true
-    A2019?: true
+    PNC?: true
+    RAMSAR?: true
+    PNR?: true
+    PNP?: true
+    FOR_PRO?: true
+    ZZZ?: true
+    ZNIEFF2?: true
+    ZNIEFF1?: true
+    RNR?: true
+    TOU_PRO?: true
+    NATURA?: true
+    ZPS?: true
+    SIC?: true
+    CELRL?: true
+    BIO?: true
+    APB?: true
+    RN?: true
+    RBFD?: true
+    RNCFS?: true
     libelle_geographique?: true
     epci?: true
     libelle_epci?: true
@@ -13975,9 +13049,25 @@ export namespace Prisma {
   export type Surfaces_protegeesCountAggregateInputType = {
     index?: true
     code_geographique?: true
-    LIBELLE_VARIABLE?: true
-    SOUS_CHAMP?: true
-    A2019?: true
+    PNC?: true
+    RAMSAR?: true
+    PNR?: true
+    PNP?: true
+    FOR_PRO?: true
+    ZZZ?: true
+    ZNIEFF2?: true
+    ZNIEFF1?: true
+    RNR?: true
+    TOU_PRO?: true
+    NATURA?: true
+    ZPS?: true
+    SIC?: true
+    CELRL?: true
+    BIO?: true
+    APB?: true
+    RN?: true
+    RBFD?: true
+    RNCFS?: true
     libelle_geographique?: true
     epci?: true
     libelle_epci?: true
@@ -14075,9 +13165,25 @@ export namespace Prisma {
   export type Surfaces_protegeesGroupByOutputType = {
     index: bigint
     code_geographique: string
-    LIBELLE_VARIABLE: string
-    SOUS_CHAMP: string
-    A2019: number
+    PNC: string | null
+    RAMSAR: string | null
+    PNR: string | null
+    PNP: string | null
+    FOR_PRO: string | null
+    ZZZ: string | null
+    ZNIEFF2: string | null
+    ZNIEFF1: string | null
+    RNR: string | null
+    TOU_PRO: string | null
+    NATURA: string | null
+    ZPS: string | null
+    SIC: string | null
+    CELRL: string | null
+    BIO: string | null
+    APB: string | null
+    RN: string | null
+    RBFD: string | null
+    RNCFS: string | null
     libelle_geographique: string
     epci: string
     libelle_epci: string
@@ -14107,9 +13213,25 @@ export namespace Prisma {
   export type surfaces_protegeesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     index?: boolean
     code_geographique?: boolean
-    LIBELLE_VARIABLE?: boolean
-    SOUS_CHAMP?: boolean
-    A2019?: boolean
+    PNC?: boolean
+    RAMSAR?: boolean
+    PNR?: boolean
+    PNP?: boolean
+    FOR_PRO?: boolean
+    ZZZ?: boolean
+    ZNIEFF2?: boolean
+    ZNIEFF1?: boolean
+    RNR?: boolean
+    TOU_PRO?: boolean
+    NATURA?: boolean
+    ZPS?: boolean
+    SIC?: boolean
+    CELRL?: boolean
+    BIO?: boolean
+    APB?: boolean
+    RN?: boolean
+    RBFD?: boolean
+    RNCFS?: boolean
     libelle_geographique?: boolean
     epci?: boolean
     libelle_epci?: boolean
@@ -14120,9 +13242,25 @@ export namespace Prisma {
   export type surfaces_protegeesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     index?: boolean
     code_geographique?: boolean
-    LIBELLE_VARIABLE?: boolean
-    SOUS_CHAMP?: boolean
-    A2019?: boolean
+    PNC?: boolean
+    RAMSAR?: boolean
+    PNR?: boolean
+    PNP?: boolean
+    FOR_PRO?: boolean
+    ZZZ?: boolean
+    ZNIEFF2?: boolean
+    ZNIEFF1?: boolean
+    RNR?: boolean
+    TOU_PRO?: boolean
+    NATURA?: boolean
+    ZPS?: boolean
+    SIC?: boolean
+    CELRL?: boolean
+    BIO?: boolean
+    APB?: boolean
+    RN?: boolean
+    RBFD?: boolean
+    RNCFS?: boolean
     libelle_geographique?: boolean
     epci?: boolean
     libelle_epci?: boolean
@@ -14133,9 +13271,25 @@ export namespace Prisma {
   export type surfaces_protegeesSelectScalar = {
     index?: boolean
     code_geographique?: boolean
-    LIBELLE_VARIABLE?: boolean
-    SOUS_CHAMP?: boolean
-    A2019?: boolean
+    PNC?: boolean
+    RAMSAR?: boolean
+    PNR?: boolean
+    PNP?: boolean
+    FOR_PRO?: boolean
+    ZZZ?: boolean
+    ZNIEFF2?: boolean
+    ZNIEFF1?: boolean
+    RNR?: boolean
+    TOU_PRO?: boolean
+    NATURA?: boolean
+    ZPS?: boolean
+    SIC?: boolean
+    CELRL?: boolean
+    BIO?: boolean
+    APB?: boolean
+    RN?: boolean
+    RBFD?: boolean
+    RNCFS?: boolean
     libelle_geographique?: boolean
     epci?: boolean
     libelle_epci?: boolean
@@ -14150,9 +13304,25 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       index: bigint
       code_geographique: string
-      LIBELLE_VARIABLE: string
-      SOUS_CHAMP: string
-      A2019: number
+      PNC: string | null
+      RAMSAR: string | null
+      PNR: string | null
+      PNP: string | null
+      FOR_PRO: string | null
+      ZZZ: string | null
+      ZNIEFF2: string | null
+      ZNIEFF1: string | null
+      RNR: string | null
+      TOU_PRO: string | null
+      NATURA: string | null
+      ZPS: string | null
+      SIC: string | null
+      CELRL: string | null
+      BIO: string | null
+      APB: string | null
+      RN: string | null
+      RBFD: string | null
+      RNCFS: string | null
       libelle_geographique: string
       epci: string
       libelle_epci: string
@@ -14553,9 +13723,25 @@ export namespace Prisma {
   interface surfaces_protegeesFieldRefs {
     readonly index: FieldRef<"surfaces_protegees", 'BigInt'>
     readonly code_geographique: FieldRef<"surfaces_protegees", 'String'>
-    readonly LIBELLE_VARIABLE: FieldRef<"surfaces_protegees", 'String'>
-    readonly SOUS_CHAMP: FieldRef<"surfaces_protegees", 'String'>
-    readonly A2019: FieldRef<"surfaces_protegees", 'Float'>
+    readonly PNC: FieldRef<"surfaces_protegees", 'String'>
+    readonly RAMSAR: FieldRef<"surfaces_protegees", 'String'>
+    readonly PNR: FieldRef<"surfaces_protegees", 'String'>
+    readonly PNP: FieldRef<"surfaces_protegees", 'String'>
+    readonly FOR_PRO: FieldRef<"surfaces_protegees", 'String'>
+    readonly ZZZ: FieldRef<"surfaces_protegees", 'String'>
+    readonly ZNIEFF2: FieldRef<"surfaces_protegees", 'String'>
+    readonly ZNIEFF1: FieldRef<"surfaces_protegees", 'String'>
+    readonly RNR: FieldRef<"surfaces_protegees", 'String'>
+    readonly TOU_PRO: FieldRef<"surfaces_protegees", 'String'>
+    readonly NATURA: FieldRef<"surfaces_protegees", 'String'>
+    readonly ZPS: FieldRef<"surfaces_protegees", 'String'>
+    readonly SIC: FieldRef<"surfaces_protegees", 'String'>
+    readonly CELRL: FieldRef<"surfaces_protegees", 'String'>
+    readonly BIO: FieldRef<"surfaces_protegees", 'String'>
+    readonly APB: FieldRef<"surfaces_protegees", 'String'>
+    readonly RN: FieldRef<"surfaces_protegees", 'String'>
+    readonly RBFD: FieldRef<"surfaces_protegees", 'String'>
+    readonly RNCFS: FieldRef<"surfaces_protegees", 'String'>
     readonly libelle_geographique: FieldRef<"surfaces_protegees", 'String'>
     readonly epci: FieldRef<"surfaces_protegees", 'String'>
     readonly libelle_epci: FieldRef<"surfaces_protegees", 'String'>
@@ -14850,597 +14036,366 @@ export namespace Prisma {
 
 
   /**
-   * Model surfaces_protegees_by_col
+   * Model spatial_ref_sys
    */
 
-  export type AggregateSurfaces_protegees_by_col = {
-    _count: Surfaces_protegees_by_colCountAggregateOutputType | null
-    _avg: Surfaces_protegees_by_colAvgAggregateOutputType | null
-    _sum: Surfaces_protegees_by_colSumAggregateOutputType | null
-    _min: Surfaces_protegees_by_colMinAggregateOutputType | null
-    _max: Surfaces_protegees_by_colMaxAggregateOutputType | null
+  export type AggregateSpatial_ref_sys = {
+    _count: Spatial_ref_sysCountAggregateOutputType | null
+    _avg: Spatial_ref_sysAvgAggregateOutputType | null
+    _sum: Spatial_ref_sysSumAggregateOutputType | null
+    _min: Spatial_ref_sysMinAggregateOutputType | null
+    _max: Spatial_ref_sysMaxAggregateOutputType | null
   }
 
-  export type Surfaces_protegees_by_colAvgAggregateOutputType = {
-    index: number | null
-    region: number | null
+  export type Spatial_ref_sysAvgAggregateOutputType = {
+    srid: number | null
+    auth_srid: number | null
   }
 
-  export type Surfaces_protegees_by_colSumAggregateOutputType = {
-    index: bigint | null
-    region: number | null
+  export type Spatial_ref_sysSumAggregateOutputType = {
+    srid: number | null
+    auth_srid: number | null
   }
 
-  export type Surfaces_protegees_by_colMinAggregateOutputType = {
-    index: bigint | null
-    code_geographique: string | null
-    PNC: string | null
-    RAMSAR: string | null
-    PNR: string | null
-    PNP: string | null
-    FOR_PRO: string | null
-    ZZZ: string | null
-    ZNIEFF2: string | null
-    ZNIEFF1: string | null
-    RNR: string | null
-    TOU_PRO: string | null
-    NATURA: string | null
-    ZPS: string | null
-    SIC: string | null
-    CELRL: string | null
-    BIO: string | null
-    APB: string | null
-    RN: string | null
-    RBFD: string | null
-    RNCFS: string | null
-    libelle_geographique: string | null
-    epci: string | null
-    libelle_epci: string | null
-    departement: string | null
-    region: number | null
+  export type Spatial_ref_sysMinAggregateOutputType = {
+    srid: number | null
+    auth_name: string | null
+    auth_srid: number | null
+    srtext: string | null
+    proj4text: string | null
   }
 
-  export type Surfaces_protegees_by_colMaxAggregateOutputType = {
-    index: bigint | null
-    code_geographique: string | null
-    PNC: string | null
-    RAMSAR: string | null
-    PNR: string | null
-    PNP: string | null
-    FOR_PRO: string | null
-    ZZZ: string | null
-    ZNIEFF2: string | null
-    ZNIEFF1: string | null
-    RNR: string | null
-    TOU_PRO: string | null
-    NATURA: string | null
-    ZPS: string | null
-    SIC: string | null
-    CELRL: string | null
-    BIO: string | null
-    APB: string | null
-    RN: string | null
-    RBFD: string | null
-    RNCFS: string | null
-    libelle_geographique: string | null
-    epci: string | null
-    libelle_epci: string | null
-    departement: string | null
-    region: number | null
+  export type Spatial_ref_sysMaxAggregateOutputType = {
+    srid: number | null
+    auth_name: string | null
+    auth_srid: number | null
+    srtext: string | null
+    proj4text: string | null
   }
 
-  export type Surfaces_protegees_by_colCountAggregateOutputType = {
-    index: number
-    code_geographique: number
-    PNC: number
-    RAMSAR: number
-    PNR: number
-    PNP: number
-    FOR_PRO: number
-    ZZZ: number
-    ZNIEFF2: number
-    ZNIEFF1: number
-    RNR: number
-    TOU_PRO: number
-    NATURA: number
-    ZPS: number
-    SIC: number
-    CELRL: number
-    BIO: number
-    APB: number
-    RN: number
-    RBFD: number
-    RNCFS: number
-    libelle_geographique: number
-    epci: number
-    libelle_epci: number
-    departement: number
-    region: number
+  export type Spatial_ref_sysCountAggregateOutputType = {
+    srid: number
+    auth_name: number
+    auth_srid: number
+    srtext: number
+    proj4text: number
     _all: number
   }
 
 
-  export type Surfaces_protegees_by_colAvgAggregateInputType = {
-    index?: true
-    region?: true
+  export type Spatial_ref_sysAvgAggregateInputType = {
+    srid?: true
+    auth_srid?: true
   }
 
-  export type Surfaces_protegees_by_colSumAggregateInputType = {
-    index?: true
-    region?: true
+  export type Spatial_ref_sysSumAggregateInputType = {
+    srid?: true
+    auth_srid?: true
   }
 
-  export type Surfaces_protegees_by_colMinAggregateInputType = {
-    index?: true
-    code_geographique?: true
-    PNC?: true
-    RAMSAR?: true
-    PNR?: true
-    PNP?: true
-    FOR_PRO?: true
-    ZZZ?: true
-    ZNIEFF2?: true
-    ZNIEFF1?: true
-    RNR?: true
-    TOU_PRO?: true
-    NATURA?: true
-    ZPS?: true
-    SIC?: true
-    CELRL?: true
-    BIO?: true
-    APB?: true
-    RN?: true
-    RBFD?: true
-    RNCFS?: true
-    libelle_geographique?: true
-    epci?: true
-    libelle_epci?: true
-    departement?: true
-    region?: true
+  export type Spatial_ref_sysMinAggregateInputType = {
+    srid?: true
+    auth_name?: true
+    auth_srid?: true
+    srtext?: true
+    proj4text?: true
   }
 
-  export type Surfaces_protegees_by_colMaxAggregateInputType = {
-    index?: true
-    code_geographique?: true
-    PNC?: true
-    RAMSAR?: true
-    PNR?: true
-    PNP?: true
-    FOR_PRO?: true
-    ZZZ?: true
-    ZNIEFF2?: true
-    ZNIEFF1?: true
-    RNR?: true
-    TOU_PRO?: true
-    NATURA?: true
-    ZPS?: true
-    SIC?: true
-    CELRL?: true
-    BIO?: true
-    APB?: true
-    RN?: true
-    RBFD?: true
-    RNCFS?: true
-    libelle_geographique?: true
-    epci?: true
-    libelle_epci?: true
-    departement?: true
-    region?: true
+  export type Spatial_ref_sysMaxAggregateInputType = {
+    srid?: true
+    auth_name?: true
+    auth_srid?: true
+    srtext?: true
+    proj4text?: true
   }
 
-  export type Surfaces_protegees_by_colCountAggregateInputType = {
-    index?: true
-    code_geographique?: true
-    PNC?: true
-    RAMSAR?: true
-    PNR?: true
-    PNP?: true
-    FOR_PRO?: true
-    ZZZ?: true
-    ZNIEFF2?: true
-    ZNIEFF1?: true
-    RNR?: true
-    TOU_PRO?: true
-    NATURA?: true
-    ZPS?: true
-    SIC?: true
-    CELRL?: true
-    BIO?: true
-    APB?: true
-    RN?: true
-    RBFD?: true
-    RNCFS?: true
-    libelle_geographique?: true
-    epci?: true
-    libelle_epci?: true
-    departement?: true
-    region?: true
+  export type Spatial_ref_sysCountAggregateInputType = {
+    srid?: true
+    auth_name?: true
+    auth_srid?: true
+    srtext?: true
+    proj4text?: true
     _all?: true
   }
 
-  export type Surfaces_protegees_by_colAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Spatial_ref_sysAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which surfaces_protegees_by_col to aggregate.
+     * Filter which spatial_ref_sys to aggregate.
      */
-    where?: surfaces_protegees_by_colWhereInput
+    where?: spatial_ref_sysWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of surfaces_protegees_by_cols to fetch.
+     * Determine the order of spatial_ref_sys to fetch.
      */
-    orderBy?: surfaces_protegees_by_colOrderByWithRelationInput | surfaces_protegees_by_colOrderByWithRelationInput[]
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: surfaces_protegees_by_colWhereUniqueInput
+    cursor?: spatial_ref_sysWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` surfaces_protegees_by_cols from the position of the cursor.
+     * Take `±n` spatial_ref_sys from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` surfaces_protegees_by_cols.
+     * Skip the first `n` spatial_ref_sys.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned surfaces_protegees_by_cols
+     * Count returned spatial_ref_sys
     **/
-    _count?: true | Surfaces_protegees_by_colCountAggregateInputType
+    _count?: true | Spatial_ref_sysCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: Surfaces_protegees_by_colAvgAggregateInputType
+    _avg?: Spatial_ref_sysAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: Surfaces_protegees_by_colSumAggregateInputType
+    _sum?: Spatial_ref_sysSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: Surfaces_protegees_by_colMinAggregateInputType
+    _min?: Spatial_ref_sysMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: Surfaces_protegees_by_colMaxAggregateInputType
+    _max?: Spatial_ref_sysMaxAggregateInputType
   }
 
-  export type GetSurfaces_protegees_by_colAggregateType<T extends Surfaces_protegees_by_colAggregateArgs> = {
-        [P in keyof T & keyof AggregateSurfaces_protegees_by_col]: P extends '_count' | 'count'
+  export type GetSpatial_ref_sysAggregateType<T extends Spatial_ref_sysAggregateArgs> = {
+        [P in keyof T & keyof AggregateSpatial_ref_sys]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateSurfaces_protegees_by_col[P]>
-      : GetScalarType<T[P], AggregateSurfaces_protegees_by_col[P]>
+        : GetScalarType<T[P], AggregateSpatial_ref_sys[P]>
+      : GetScalarType<T[P], AggregateSpatial_ref_sys[P]>
   }
 
 
 
 
-  export type surfaces_protegees_by_colGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: surfaces_protegees_by_colWhereInput
-    orderBy?: surfaces_protegees_by_colOrderByWithAggregationInput | surfaces_protegees_by_colOrderByWithAggregationInput[]
-    by: Surfaces_protegees_by_colScalarFieldEnum[] | Surfaces_protegees_by_colScalarFieldEnum
-    having?: surfaces_protegees_by_colScalarWhereWithAggregatesInput
+  export type spatial_ref_sysGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: spatial_ref_sysWhereInput
+    orderBy?: spatial_ref_sysOrderByWithAggregationInput | spatial_ref_sysOrderByWithAggregationInput[]
+    by: Spatial_ref_sysScalarFieldEnum[] | Spatial_ref_sysScalarFieldEnum
+    having?: spatial_ref_sysScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: Surfaces_protegees_by_colCountAggregateInputType | true
-    _avg?: Surfaces_protegees_by_colAvgAggregateInputType
-    _sum?: Surfaces_protegees_by_colSumAggregateInputType
-    _min?: Surfaces_protegees_by_colMinAggregateInputType
-    _max?: Surfaces_protegees_by_colMaxAggregateInputType
+    _count?: Spatial_ref_sysCountAggregateInputType | true
+    _avg?: Spatial_ref_sysAvgAggregateInputType
+    _sum?: Spatial_ref_sysSumAggregateInputType
+    _min?: Spatial_ref_sysMinAggregateInputType
+    _max?: Spatial_ref_sysMaxAggregateInputType
   }
 
-  export type Surfaces_protegees_by_colGroupByOutputType = {
-    index: bigint
-    code_geographique: string
-    PNC: string | null
-    RAMSAR: string | null
-    PNR: string | null
-    PNP: string | null
-    FOR_PRO: string | null
-    ZZZ: string | null
-    ZNIEFF2: string | null
-    ZNIEFF1: string | null
-    RNR: string | null
-    TOU_PRO: string | null
-    NATURA: string | null
-    ZPS: string | null
-    SIC: string | null
-    CELRL: string | null
-    BIO: string | null
-    APB: string | null
-    RN: string | null
-    RBFD: string | null
-    RNCFS: string | null
-    libelle_geographique: string
-    epci: string
-    libelle_epci: string
-    departement: string
-    region: number
-    _count: Surfaces_protegees_by_colCountAggregateOutputType | null
-    _avg: Surfaces_protegees_by_colAvgAggregateOutputType | null
-    _sum: Surfaces_protegees_by_colSumAggregateOutputType | null
-    _min: Surfaces_protegees_by_colMinAggregateOutputType | null
-    _max: Surfaces_protegees_by_colMaxAggregateOutputType | null
+  export type Spatial_ref_sysGroupByOutputType = {
+    srid: number
+    auth_name: string | null
+    auth_srid: number | null
+    srtext: string | null
+    proj4text: string | null
+    _count: Spatial_ref_sysCountAggregateOutputType | null
+    _avg: Spatial_ref_sysAvgAggregateOutputType | null
+    _sum: Spatial_ref_sysSumAggregateOutputType | null
+    _min: Spatial_ref_sysMinAggregateOutputType | null
+    _max: Spatial_ref_sysMaxAggregateOutputType | null
   }
 
-  type GetSurfaces_protegees_by_colGroupByPayload<T extends surfaces_protegees_by_colGroupByArgs> = Prisma.PrismaPromise<
+  type GetSpatial_ref_sysGroupByPayload<T extends spatial_ref_sysGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<Surfaces_protegees_by_colGroupByOutputType, T['by']> &
+      PickEnumerable<Spatial_ref_sysGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof Surfaces_protegees_by_colGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof Spatial_ref_sysGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], Surfaces_protegees_by_colGroupByOutputType[P]>
-            : GetScalarType<T[P], Surfaces_protegees_by_colGroupByOutputType[P]>
+              : GetScalarType<T[P], Spatial_ref_sysGroupByOutputType[P]>
+            : GetScalarType<T[P], Spatial_ref_sysGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type surfaces_protegees_by_colSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    index?: boolean
-    code_geographique?: boolean
-    PNC?: boolean
-    RAMSAR?: boolean
-    PNR?: boolean
-    PNP?: boolean
-    FOR_PRO?: boolean
-    ZZZ?: boolean
-    ZNIEFF2?: boolean
-    ZNIEFF1?: boolean
-    RNR?: boolean
-    TOU_PRO?: boolean
-    NATURA?: boolean
-    ZPS?: boolean
-    SIC?: boolean
-    CELRL?: boolean
-    BIO?: boolean
-    APB?: boolean
-    RN?: boolean
-    RBFD?: boolean
-    RNCFS?: boolean
-    libelle_geographique?: boolean
-    epci?: boolean
-    libelle_epci?: boolean
-    departement?: boolean
-    region?: boolean
-  }, ExtArgs["result"]["surfaces_protegees_by_col"]>
+  export type spatial_ref_sysSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    srid?: boolean
+    auth_name?: boolean
+    auth_srid?: boolean
+    srtext?: boolean
+    proj4text?: boolean
+  }, ExtArgs["result"]["spatial_ref_sys"]>
 
-  export type surfaces_protegees_by_colSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    index?: boolean
-    code_geographique?: boolean
-    PNC?: boolean
-    RAMSAR?: boolean
-    PNR?: boolean
-    PNP?: boolean
-    FOR_PRO?: boolean
-    ZZZ?: boolean
-    ZNIEFF2?: boolean
-    ZNIEFF1?: boolean
-    RNR?: boolean
-    TOU_PRO?: boolean
-    NATURA?: boolean
-    ZPS?: boolean
-    SIC?: boolean
-    CELRL?: boolean
-    BIO?: boolean
-    APB?: boolean
-    RN?: boolean
-    RBFD?: boolean
-    RNCFS?: boolean
-    libelle_geographique?: boolean
-    epci?: boolean
-    libelle_epci?: boolean
-    departement?: boolean
-    region?: boolean
-  }, ExtArgs["result"]["surfaces_protegees_by_col"]>
+  export type spatial_ref_sysSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    srid?: boolean
+    auth_name?: boolean
+    auth_srid?: boolean
+    srtext?: boolean
+    proj4text?: boolean
+  }, ExtArgs["result"]["spatial_ref_sys"]>
 
-  export type surfaces_protegees_by_colSelectScalar = {
-    index?: boolean
-    code_geographique?: boolean
-    PNC?: boolean
-    RAMSAR?: boolean
-    PNR?: boolean
-    PNP?: boolean
-    FOR_PRO?: boolean
-    ZZZ?: boolean
-    ZNIEFF2?: boolean
-    ZNIEFF1?: boolean
-    RNR?: boolean
-    TOU_PRO?: boolean
-    NATURA?: boolean
-    ZPS?: boolean
-    SIC?: boolean
-    CELRL?: boolean
-    BIO?: boolean
-    APB?: boolean
-    RN?: boolean
-    RBFD?: boolean
-    RNCFS?: boolean
-    libelle_geographique?: boolean
-    epci?: boolean
-    libelle_epci?: boolean
-    departement?: boolean
-    region?: boolean
+  export type spatial_ref_sysSelectScalar = {
+    srid?: boolean
+    auth_name?: boolean
+    auth_srid?: boolean
+    srtext?: boolean
+    proj4text?: boolean
   }
 
 
-  export type $surfaces_protegees_by_colPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "surfaces_protegees_by_col"
+  export type $spatial_ref_sysPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "spatial_ref_sys"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      index: bigint
-      code_geographique: string
-      PNC: string | null
-      RAMSAR: string | null
-      PNR: string | null
-      PNP: string | null
-      FOR_PRO: string | null
-      ZZZ: string | null
-      ZNIEFF2: string | null
-      ZNIEFF1: string | null
-      RNR: string | null
-      TOU_PRO: string | null
-      NATURA: string | null
-      ZPS: string | null
-      SIC: string | null
-      CELRL: string | null
-      BIO: string | null
-      APB: string | null
-      RN: string | null
-      RBFD: string | null
-      RNCFS: string | null
-      libelle_geographique: string
-      epci: string
-      libelle_epci: string
-      departement: string
-      region: number
-    }, ExtArgs["result"]["surfaces_protegees_by_col"]>
+      srid: number
+      auth_name: string | null
+      auth_srid: number | null
+      srtext: string | null
+      proj4text: string | null
+    }, ExtArgs["result"]["spatial_ref_sys"]>
     composites: {}
   }
 
-  type surfaces_protegees_by_colGetPayload<S extends boolean | null | undefined | surfaces_protegees_by_colDefaultArgs> = $Result.GetResult<Prisma.$surfaces_protegees_by_colPayload, S>
+  type spatial_ref_sysGetPayload<S extends boolean | null | undefined | spatial_ref_sysDefaultArgs> = $Result.GetResult<Prisma.$spatial_ref_sysPayload, S>
 
-  type surfaces_protegees_by_colCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<surfaces_protegees_by_colFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: Surfaces_protegees_by_colCountAggregateInputType | true
+  type spatial_ref_sysCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<spatial_ref_sysFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Spatial_ref_sysCountAggregateInputType | true
     }
 
-  export interface surfaces_protegees_by_colDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['surfaces_protegees_by_col'], meta: { name: 'surfaces_protegees_by_col' } }
+  export interface spatial_ref_sysDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['spatial_ref_sys'], meta: { name: 'spatial_ref_sys' } }
     /**
-     * Find zero or one Surfaces_protegees_by_col that matches the filter.
-     * @param {surfaces_protegees_by_colFindUniqueArgs} args - Arguments to find a Surfaces_protegees_by_col
+     * Find zero or one Spatial_ref_sys that matches the filter.
+     * @param {spatial_ref_sysFindUniqueArgs} args - Arguments to find a Spatial_ref_sys
      * @example
-     * // Get one Surfaces_protegees_by_col
-     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.findUnique({
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends surfaces_protegees_by_colFindUniqueArgs>(args: SelectSubset<T, surfaces_protegees_by_colFindUniqueArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+    findUnique<T extends spatial_ref_sysFindUniqueArgs>(args: SelectSubset<T, spatial_ref_sysFindUniqueArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one Surfaces_protegees_by_col that matches the filter or throw an error with `error.code='P2025'` 
+     * Find one Spatial_ref_sys that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
-     * @param {surfaces_protegees_by_colFindUniqueOrThrowArgs} args - Arguments to find a Surfaces_protegees_by_col
+     * @param {spatial_ref_sysFindUniqueOrThrowArgs} args - Arguments to find a Spatial_ref_sys
      * @example
-     * // Get one Surfaces_protegees_by_col
-     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.findUniqueOrThrow({
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends surfaces_protegees_by_colFindUniqueOrThrowArgs>(args: SelectSubset<T, surfaces_protegees_by_colFindUniqueOrThrowArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+    findUniqueOrThrow<T extends spatial_ref_sysFindUniqueOrThrowArgs>(args: SelectSubset<T, spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
-     * Find the first Surfaces_protegees_by_col that matches the filter.
+     * Find the first Spatial_ref_sys that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {surfaces_protegees_by_colFindFirstArgs} args - Arguments to find a Surfaces_protegees_by_col
+     * @param {spatial_ref_sysFindFirstArgs} args - Arguments to find a Spatial_ref_sys
      * @example
-     * // Get one Surfaces_protegees_by_col
-     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.findFirst({
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends surfaces_protegees_by_colFindFirstArgs>(args?: SelectSubset<T, surfaces_protegees_by_colFindFirstArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+    findFirst<T extends spatial_ref_sysFindFirstArgs>(args?: SelectSubset<T, spatial_ref_sysFindFirstArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
-     * Find the first Surfaces_protegees_by_col that matches the filter or
+     * Find the first Spatial_ref_sys that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {surfaces_protegees_by_colFindFirstOrThrowArgs} args - Arguments to find a Surfaces_protegees_by_col
+     * @param {spatial_ref_sysFindFirstOrThrowArgs} args - Arguments to find a Spatial_ref_sys
      * @example
-     * // Get one Surfaces_protegees_by_col
-     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.findFirstOrThrow({
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends surfaces_protegees_by_colFindFirstOrThrowArgs>(args?: SelectSubset<T, surfaces_protegees_by_colFindFirstOrThrowArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+    findFirstOrThrow<T extends spatial_ref_sysFindFirstOrThrowArgs>(args?: SelectSubset<T, spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
-     * Find zero or more Surfaces_protegees_by_cols that matches the filter.
+     * Find zero or more Spatial_ref_sys that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {surfaces_protegees_by_colFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {spatial_ref_sysFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Surfaces_protegees_by_cols
-     * const surfaces_protegees_by_cols = await prisma.surfaces_protegees_by_col.findMany()
+     * // Get all Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
      * 
-     * // Get first 10 Surfaces_protegees_by_cols
-     * const surfaces_protegees_by_cols = await prisma.surfaces_protegees_by_col.findMany({ take: 10 })
+     * // Get first 10 Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany({ take: 10 })
      * 
-     * // Only select the `index`
-     * const surfaces_protegees_by_colWithIndexOnly = await prisma.surfaces_protegees_by_col.findMany({ select: { index: true } })
+     * // Only select the `srid`
+     * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.findMany({ select: { srid: true } })
      * 
      */
-    findMany<T extends surfaces_protegees_by_colFindManyArgs>(args?: SelectSubset<T, surfaces_protegees_by_colFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "findMany">>
+    findMany<T extends spatial_ref_sysFindManyArgs>(args?: SelectSubset<T, spatial_ref_sysFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findMany">>
 
     /**
-     * Create a Surfaces_protegees_by_col.
-     * @param {surfaces_protegees_by_colCreateArgs} args - Arguments to create a Surfaces_protegees_by_col.
+     * Create a Spatial_ref_sys.
+     * @param {spatial_ref_sysCreateArgs} args - Arguments to create a Spatial_ref_sys.
      * @example
-     * // Create one Surfaces_protegees_by_col
-     * const Surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.create({
+     * // Create one Spatial_ref_sys
+     * const Spatial_ref_sys = await prisma.spatial_ref_sys.create({
      *   data: {
-     *     // ... data to create a Surfaces_protegees_by_col
+     *     // ... data to create a Spatial_ref_sys
      *   }
      * })
      * 
      */
-    create<T extends surfaces_protegees_by_colCreateArgs>(args: SelectSubset<T, surfaces_protegees_by_colCreateArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "create">, never, ExtArgs>
+    create<T extends spatial_ref_sysCreateArgs>(args: SelectSubset<T, spatial_ref_sysCreateArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
-     * Create many Surfaces_protegees_by_cols.
-     * @param {surfaces_protegees_by_colCreateManyArgs} args - Arguments to create many Surfaces_protegees_by_cols.
+     * Create many Spatial_ref_sys.
+     * @param {spatial_ref_sysCreateManyArgs} args - Arguments to create many Spatial_ref_sys.
      * @example
-     * // Create many Surfaces_protegees_by_cols
-     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.createMany({
+     * // Create many Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends surfaces_protegees_by_colCreateManyArgs>(args?: SelectSubset<T, surfaces_protegees_by_colCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends spatial_ref_sysCreateManyArgs>(args?: SelectSubset<T, spatial_ref_sysCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Surfaces_protegees_by_cols and returns the data saved in the database.
-     * @param {surfaces_protegees_by_colCreateManyAndReturnArgs} args - Arguments to create many Surfaces_protegees_by_cols.
+     * Create many Spatial_ref_sys and returns the data saved in the database.
+     * @param {spatial_ref_sysCreateManyAndReturnArgs} args - Arguments to create many Spatial_ref_sys.
      * @example
-     * // Create many Surfaces_protegees_by_cols
-     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.createManyAndReturn({
+     * // Create many Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Surfaces_protegees_by_cols and only return the `index`
-     * const surfaces_protegees_by_colWithIndexOnly = await prisma.surfaces_protegees_by_col.createManyAndReturn({ 
-     *   select: { index: true },
+     * // Create many Spatial_ref_sys and only return the `srid`
+     * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.createManyAndReturn({ 
+     *   select: { srid: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -15449,28 +14404,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends surfaces_protegees_by_colCreateManyAndReturnArgs>(args?: SelectSubset<T, surfaces_protegees_by_colCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "createManyAndReturn">>
+    createManyAndReturn<T extends spatial_ref_sysCreateManyAndReturnArgs>(args?: SelectSubset<T, spatial_ref_sysCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
-     * Delete a Surfaces_protegees_by_col.
-     * @param {surfaces_protegees_by_colDeleteArgs} args - Arguments to delete one Surfaces_protegees_by_col.
+     * Delete a Spatial_ref_sys.
+     * @param {spatial_ref_sysDeleteArgs} args - Arguments to delete one Spatial_ref_sys.
      * @example
-     * // Delete one Surfaces_protegees_by_col
-     * const Surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.delete({
+     * // Delete one Spatial_ref_sys
+     * const Spatial_ref_sys = await prisma.spatial_ref_sys.delete({
      *   where: {
-     *     // ... filter to delete one Surfaces_protegees_by_col
+     *     // ... filter to delete one Spatial_ref_sys
      *   }
      * })
      * 
      */
-    delete<T extends surfaces_protegees_by_colDeleteArgs>(args: SelectSubset<T, surfaces_protegees_by_colDeleteArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+    delete<T extends spatial_ref_sysDeleteArgs>(args: SelectSubset<T, spatial_ref_sysDeleteArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
-     * Update one Surfaces_protegees_by_col.
-     * @param {surfaces_protegees_by_colUpdateArgs} args - Arguments to update one Surfaces_protegees_by_col.
+     * Update one Spatial_ref_sys.
+     * @param {spatial_ref_sysUpdateArgs} args - Arguments to update one Spatial_ref_sys.
      * @example
-     * // Update one Surfaces_protegees_by_col
-     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.update({
+     * // Update one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -15480,30 +14435,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends surfaces_protegees_by_colUpdateArgs>(args: SelectSubset<T, surfaces_protegees_by_colUpdateArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "update">, never, ExtArgs>
+    update<T extends spatial_ref_sysUpdateArgs>(args: SelectSubset<T, spatial_ref_sysUpdateArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
-     * Delete zero or more Surfaces_protegees_by_cols.
-     * @param {surfaces_protegees_by_colDeleteManyArgs} args - Arguments to filter Surfaces_protegees_by_cols to delete.
+     * Delete zero or more Spatial_ref_sys.
+     * @param {spatial_ref_sysDeleteManyArgs} args - Arguments to filter Spatial_ref_sys to delete.
      * @example
-     * // Delete a few Surfaces_protegees_by_cols
-     * const { count } = await prisma.surfaces_protegees_by_col.deleteMany({
+     * // Delete a few Spatial_ref_sys
+     * const { count } = await prisma.spatial_ref_sys.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends surfaces_protegees_by_colDeleteManyArgs>(args?: SelectSubset<T, surfaces_protegees_by_colDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends spatial_ref_sysDeleteManyArgs>(args?: SelectSubset<T, spatial_ref_sysDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Surfaces_protegees_by_cols.
+     * Update zero or more Spatial_ref_sys.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {surfaces_protegees_by_colUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {spatial_ref_sysUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Surfaces_protegees_by_cols
-     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.updateMany({
+     * // Update many Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -15513,56 +14468,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends surfaces_protegees_by_colUpdateManyArgs>(args: SelectSubset<T, surfaces_protegees_by_colUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends spatial_ref_sysUpdateManyArgs>(args: SelectSubset<T, spatial_ref_sysUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Surfaces_protegees_by_col.
-     * @param {surfaces_protegees_by_colUpsertArgs} args - Arguments to update or create a Surfaces_protegees_by_col.
+     * Create or update one Spatial_ref_sys.
+     * @param {spatial_ref_sysUpsertArgs} args - Arguments to update or create a Spatial_ref_sys.
      * @example
-     * // Update or create a Surfaces_protegees_by_col
-     * const surfaces_protegees_by_col = await prisma.surfaces_protegees_by_col.upsert({
+     * // Update or create a Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.upsert({
      *   create: {
-     *     // ... data to create a Surfaces_protegees_by_col
+     *     // ... data to create a Spatial_ref_sys
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Surfaces_protegees_by_col we want to update
+     *     // ... the filter for the Spatial_ref_sys we want to update
      *   }
      * })
      */
-    upsert<T extends surfaces_protegees_by_colUpsertArgs>(args: SelectSubset<T, surfaces_protegees_by_colUpsertArgs<ExtArgs>>): Prisma__surfaces_protegees_by_colClient<$Result.GetResult<Prisma.$surfaces_protegees_by_colPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+    upsert<T extends spatial_ref_sysUpsertArgs>(args: SelectSubset<T, spatial_ref_sysUpsertArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
-     * Count the number of Surfaces_protegees_by_cols.
+     * Count the number of Spatial_ref_sys.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {surfaces_protegees_by_colCountArgs} args - Arguments to filter Surfaces_protegees_by_cols to count.
+     * @param {spatial_ref_sysCountArgs} args - Arguments to filter Spatial_ref_sys to count.
      * @example
-     * // Count the number of Surfaces_protegees_by_cols
-     * const count = await prisma.surfaces_protegees_by_col.count({
+     * // Count the number of Spatial_ref_sys
+     * const count = await prisma.spatial_ref_sys.count({
      *   where: {
-     *     // ... the filter for the Surfaces_protegees_by_cols we want to count
+     *     // ... the filter for the Spatial_ref_sys we want to count
      *   }
      * })
     **/
-    count<T extends surfaces_protegees_by_colCountArgs>(
-      args?: Subset<T, surfaces_protegees_by_colCountArgs>,
+    count<T extends spatial_ref_sysCountArgs>(
+      args?: Subset<T, spatial_ref_sysCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], Surfaces_protegees_by_colCountAggregateOutputType>
+          : GetScalarType<T['select'], Spatial_ref_sysCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Surfaces_protegees_by_col.
+     * Allows you to perform aggregations operations on a Spatial_ref_sys.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Surfaces_protegees_by_colAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {Spatial_ref_sysAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -15582,13 +14537,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends Surfaces_protegees_by_colAggregateArgs>(args: Subset<T, Surfaces_protegees_by_colAggregateArgs>): Prisma.PrismaPromise<GetSurfaces_protegees_by_colAggregateType<T>>
+    aggregate<T extends Spatial_ref_sysAggregateArgs>(args: Subset<T, Spatial_ref_sysAggregateArgs>): Prisma.PrismaPromise<GetSpatial_ref_sysAggregateType<T>>
 
     /**
-     * Group by Surfaces_protegees_by_col.
+     * Group by Spatial_ref_sys.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {surfaces_protegees_by_colGroupByArgs} args - Group by arguments.
+     * @param {spatial_ref_sysGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -15603,14 +14558,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends surfaces_protegees_by_colGroupByArgs,
+      T extends spatial_ref_sysGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: surfaces_protegees_by_colGroupByArgs['orderBy'] }
-        : { orderBy?: surfaces_protegees_by_colGroupByArgs['orderBy'] },
+        ? { orderBy: spatial_ref_sysGroupByArgs['orderBy'] }
+        : { orderBy?: spatial_ref_sysGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -15659,20 +14614,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, surfaces_protegees_by_colGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSurfaces_protegees_by_colGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, spatial_ref_sysGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSpatial_ref_sysGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the surfaces_protegees_by_col model
+   * Fields of the spatial_ref_sys model
    */
-  readonly fields: surfaces_protegees_by_colFieldRefs;
+  readonly fields: spatial_ref_sysFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for surfaces_protegees_by_col.
+   * The delegate class that acts as a "Promise-like" for spatial_ref_sys.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__surfaces_protegees_by_colClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__spatial_ref_sysClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -15700,320 +14655,299 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the surfaces_protegees_by_col model
+   * Fields of the spatial_ref_sys model
    */ 
-  interface surfaces_protegees_by_colFieldRefs {
-    readonly index: FieldRef<"surfaces_protegees_by_col", 'BigInt'>
-    readonly code_geographique: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly PNC: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly RAMSAR: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly PNR: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly PNP: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly FOR_PRO: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly ZZZ: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly ZNIEFF2: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly ZNIEFF1: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly RNR: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly TOU_PRO: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly NATURA: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly ZPS: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly SIC: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly CELRL: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly BIO: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly APB: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly RN: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly RBFD: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly RNCFS: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly libelle_geographique: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly epci: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly libelle_epci: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly departement: FieldRef<"surfaces_protegees_by_col", 'String'>
-    readonly region: FieldRef<"surfaces_protegees_by_col", 'Float'>
+  interface spatial_ref_sysFieldRefs {
+    readonly srid: FieldRef<"spatial_ref_sys", 'Int'>
+    readonly auth_name: FieldRef<"spatial_ref_sys", 'String'>
+    readonly auth_srid: FieldRef<"spatial_ref_sys", 'Int'>
+    readonly srtext: FieldRef<"spatial_ref_sys", 'String'>
+    readonly proj4text: FieldRef<"spatial_ref_sys", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * surfaces_protegees_by_col findUnique
+   * spatial_ref_sys findUnique
    */
-  export type surfaces_protegees_by_colFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type spatial_ref_sysFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the surfaces_protegees_by_col
+     * Select specific fields to fetch from the spatial_ref_sys
      */
-    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    select?: spatial_ref_sysSelect<ExtArgs> | null
     /**
-     * Filter, which surfaces_protegees_by_col to fetch.
+     * Filter, which spatial_ref_sys to fetch.
      */
-    where: surfaces_protegees_by_colWhereUniqueInput
+    where: spatial_ref_sysWhereUniqueInput
   }
 
   /**
-   * surfaces_protegees_by_col findUniqueOrThrow
+   * spatial_ref_sys findUniqueOrThrow
    */
-  export type surfaces_protegees_by_colFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the surfaces_protegees_by_col
+     * Select specific fields to fetch from the spatial_ref_sys
      */
-    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    select?: spatial_ref_sysSelect<ExtArgs> | null
     /**
-     * Filter, which surfaces_protegees_by_col to fetch.
+     * Filter, which spatial_ref_sys to fetch.
      */
-    where: surfaces_protegees_by_colWhereUniqueInput
+    where: spatial_ref_sysWhereUniqueInput
   }
 
   /**
-   * surfaces_protegees_by_col findFirst
+   * spatial_ref_sys findFirst
    */
-  export type surfaces_protegees_by_colFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type spatial_ref_sysFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the surfaces_protegees_by_col
+     * Select specific fields to fetch from the spatial_ref_sys
      */
-    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    select?: spatial_ref_sysSelect<ExtArgs> | null
     /**
-     * Filter, which surfaces_protegees_by_col to fetch.
+     * Filter, which spatial_ref_sys to fetch.
      */
-    where?: surfaces_protegees_by_colWhereInput
+    where?: spatial_ref_sysWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of surfaces_protegees_by_cols to fetch.
+     * Determine the order of spatial_ref_sys to fetch.
      */
-    orderBy?: surfaces_protegees_by_colOrderByWithRelationInput | surfaces_protegees_by_colOrderByWithRelationInput[]
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for surfaces_protegees_by_cols.
+     * Sets the position for searching for spatial_ref_sys.
      */
-    cursor?: surfaces_protegees_by_colWhereUniqueInput
+    cursor?: spatial_ref_sysWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` surfaces_protegees_by_cols from the position of the cursor.
+     * Take `±n` spatial_ref_sys from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` surfaces_protegees_by_cols.
+     * Skip the first `n` spatial_ref_sys.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of surfaces_protegees_by_cols.
+     * Filter by unique combinations of spatial_ref_sys.
      */
-    distinct?: Surfaces_protegees_by_colScalarFieldEnum | Surfaces_protegees_by_colScalarFieldEnum[]
+    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
   }
 
   /**
-   * surfaces_protegees_by_col findFirstOrThrow
+   * spatial_ref_sys findFirstOrThrow
    */
-  export type surfaces_protegees_by_colFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type spatial_ref_sysFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the surfaces_protegees_by_col
+     * Select specific fields to fetch from the spatial_ref_sys
      */
-    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    select?: spatial_ref_sysSelect<ExtArgs> | null
     /**
-     * Filter, which surfaces_protegees_by_col to fetch.
+     * Filter, which spatial_ref_sys to fetch.
      */
-    where?: surfaces_protegees_by_colWhereInput
+    where?: spatial_ref_sysWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of surfaces_protegees_by_cols to fetch.
+     * Determine the order of spatial_ref_sys to fetch.
      */
-    orderBy?: surfaces_protegees_by_colOrderByWithRelationInput | surfaces_protegees_by_colOrderByWithRelationInput[]
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for surfaces_protegees_by_cols.
+     * Sets the position for searching for spatial_ref_sys.
      */
-    cursor?: surfaces_protegees_by_colWhereUniqueInput
+    cursor?: spatial_ref_sysWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` surfaces_protegees_by_cols from the position of the cursor.
+     * Take `±n` spatial_ref_sys from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` surfaces_protegees_by_cols.
+     * Skip the first `n` spatial_ref_sys.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of surfaces_protegees_by_cols.
+     * Filter by unique combinations of spatial_ref_sys.
      */
-    distinct?: Surfaces_protegees_by_colScalarFieldEnum | Surfaces_protegees_by_colScalarFieldEnum[]
+    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
   }
 
   /**
-   * surfaces_protegees_by_col findMany
+   * spatial_ref_sys findMany
    */
-  export type surfaces_protegees_by_colFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type spatial_ref_sysFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the surfaces_protegees_by_col
+     * Select specific fields to fetch from the spatial_ref_sys
      */
-    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    select?: spatial_ref_sysSelect<ExtArgs> | null
     /**
-     * Filter, which surfaces_protegees_by_cols to fetch.
+     * Filter, which spatial_ref_sys to fetch.
      */
-    where?: surfaces_protegees_by_colWhereInput
+    where?: spatial_ref_sysWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of surfaces_protegees_by_cols to fetch.
+     * Determine the order of spatial_ref_sys to fetch.
      */
-    orderBy?: surfaces_protegees_by_colOrderByWithRelationInput | surfaces_protegees_by_colOrderByWithRelationInput[]
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing surfaces_protegees_by_cols.
+     * Sets the position for listing spatial_ref_sys.
      */
-    cursor?: surfaces_protegees_by_colWhereUniqueInput
+    cursor?: spatial_ref_sysWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` surfaces_protegees_by_cols from the position of the cursor.
+     * Take `±n` spatial_ref_sys from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` surfaces_protegees_by_cols.
+     * Skip the first `n` spatial_ref_sys.
      */
     skip?: number
-    distinct?: Surfaces_protegees_by_colScalarFieldEnum | Surfaces_protegees_by_colScalarFieldEnum[]
+    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
   }
 
   /**
-   * surfaces_protegees_by_col create
+   * spatial_ref_sys create
    */
-  export type surfaces_protegees_by_colCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type spatial_ref_sysCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the surfaces_protegees_by_col
+     * Select specific fields to fetch from the spatial_ref_sys
      */
-    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    select?: spatial_ref_sysSelect<ExtArgs> | null
     /**
-     * The data needed to create a surfaces_protegees_by_col.
+     * The data needed to create a spatial_ref_sys.
      */
-    data: XOR<surfaces_protegees_by_colCreateInput, surfaces_protegees_by_colUncheckedCreateInput>
+    data: XOR<spatial_ref_sysCreateInput, spatial_ref_sysUncheckedCreateInput>
   }
 
   /**
-   * surfaces_protegees_by_col createMany
+   * spatial_ref_sys createMany
    */
-  export type surfaces_protegees_by_colCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type spatial_ref_sysCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many surfaces_protegees_by_cols.
+     * The data used to create many spatial_ref_sys.
      */
-    data: surfaces_protegees_by_colCreateManyInput | surfaces_protegees_by_colCreateManyInput[]
+    data: spatial_ref_sysCreateManyInput | spatial_ref_sysCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * surfaces_protegees_by_col createManyAndReturn
+   * spatial_ref_sys createManyAndReturn
    */
-  export type surfaces_protegees_by_colCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type spatial_ref_sysCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the surfaces_protegees_by_col
+     * Select specific fields to fetch from the spatial_ref_sys
      */
-    select?: surfaces_protegees_by_colSelectCreateManyAndReturn<ExtArgs> | null
+    select?: spatial_ref_sysSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * The data used to create many surfaces_protegees_by_cols.
+     * The data used to create many spatial_ref_sys.
      */
-    data: surfaces_protegees_by_colCreateManyInput | surfaces_protegees_by_colCreateManyInput[]
+    data: spatial_ref_sysCreateManyInput | spatial_ref_sysCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * surfaces_protegees_by_col update
+   * spatial_ref_sys update
    */
-  export type surfaces_protegees_by_colUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type spatial_ref_sysUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the surfaces_protegees_by_col
+     * Select specific fields to fetch from the spatial_ref_sys
      */
-    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    select?: spatial_ref_sysSelect<ExtArgs> | null
     /**
-     * The data needed to update a surfaces_protegees_by_col.
+     * The data needed to update a spatial_ref_sys.
      */
-    data: XOR<surfaces_protegees_by_colUpdateInput, surfaces_protegees_by_colUncheckedUpdateInput>
+    data: XOR<spatial_ref_sysUpdateInput, spatial_ref_sysUncheckedUpdateInput>
     /**
-     * Choose, which surfaces_protegees_by_col to update.
+     * Choose, which spatial_ref_sys to update.
      */
-    where: surfaces_protegees_by_colWhereUniqueInput
+    where: spatial_ref_sysWhereUniqueInput
   }
 
   /**
-   * surfaces_protegees_by_col updateMany
+   * spatial_ref_sys updateMany
    */
-  export type surfaces_protegees_by_colUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type spatial_ref_sysUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update surfaces_protegees_by_cols.
+     * The data used to update spatial_ref_sys.
      */
-    data: XOR<surfaces_protegees_by_colUpdateManyMutationInput, surfaces_protegees_by_colUncheckedUpdateManyInput>
+    data: XOR<spatial_ref_sysUpdateManyMutationInput, spatial_ref_sysUncheckedUpdateManyInput>
     /**
-     * Filter which surfaces_protegees_by_cols to update
+     * Filter which spatial_ref_sys to update
      */
-    where?: surfaces_protegees_by_colWhereInput
+    where?: spatial_ref_sysWhereInput
   }
 
   /**
-   * surfaces_protegees_by_col upsert
+   * spatial_ref_sys upsert
    */
-  export type surfaces_protegees_by_colUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type spatial_ref_sysUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the surfaces_protegees_by_col
+     * Select specific fields to fetch from the spatial_ref_sys
      */
-    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    select?: spatial_ref_sysSelect<ExtArgs> | null
     /**
-     * The filter to search for the surfaces_protegees_by_col to update in case it exists.
+     * The filter to search for the spatial_ref_sys to update in case it exists.
      */
-    where: surfaces_protegees_by_colWhereUniqueInput
+    where: spatial_ref_sysWhereUniqueInput
     /**
-     * In case the surfaces_protegees_by_col found by the `where` argument doesn't exist, create a new surfaces_protegees_by_col with this data.
+     * In case the spatial_ref_sys found by the `where` argument doesn't exist, create a new spatial_ref_sys with this data.
      */
-    create: XOR<surfaces_protegees_by_colCreateInput, surfaces_protegees_by_colUncheckedCreateInput>
+    create: XOR<spatial_ref_sysCreateInput, spatial_ref_sysUncheckedCreateInput>
     /**
-     * In case the surfaces_protegees_by_col was found with the provided `where` argument, update it with this data.
+     * In case the spatial_ref_sys was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<surfaces_protegees_by_colUpdateInput, surfaces_protegees_by_colUncheckedUpdateInput>
+    update: XOR<spatial_ref_sysUpdateInput, spatial_ref_sysUncheckedUpdateInput>
   }
 
   /**
-   * surfaces_protegees_by_col delete
+   * spatial_ref_sys delete
    */
-  export type surfaces_protegees_by_colDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type spatial_ref_sysDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the surfaces_protegees_by_col
+     * Select specific fields to fetch from the spatial_ref_sys
      */
-    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    select?: spatial_ref_sysSelect<ExtArgs> | null
     /**
-     * Filter which surfaces_protegees_by_col to delete.
+     * Filter which spatial_ref_sys to delete.
      */
-    where: surfaces_protegees_by_colWhereUniqueInput
+    where: spatial_ref_sysWhereUniqueInput
   }
 
   /**
-   * surfaces_protegees_by_col deleteMany
+   * spatial_ref_sys deleteMany
    */
-  export type surfaces_protegees_by_colDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type spatial_ref_sysDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which surfaces_protegees_by_cols to delete
+     * Filter which spatial_ref_sys to delete
      */
-    where?: surfaces_protegees_by_colWhereInput
+    where?: spatial_ref_sysWhereInput
   }
 
   /**
-   * surfaces_protegees_by_col without action
+   * spatial_ref_sys without action
    */
-  export type surfaces_protegees_by_colDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type spatial_ref_sysDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the surfaces_protegees_by_col
+     * Select specific fields to fetch from the spatial_ref_sys
      */
-    select?: surfaces_protegees_by_colSelect<ExtArgs> | null
+    select?: spatial_ref_sysSelect<ExtArgs> | null
   }
 
 
@@ -16148,17 +15082,6 @@ export namespace Prisma {
   export type BiodiversiteScalarFieldEnum = (typeof BiodiversiteScalarFieldEnum)[keyof typeof BiodiversiteScalarFieldEnum]
 
 
-  export const Spatial_ref_sysScalarFieldEnum: {
-    srid: 'srid',
-    auth_name: 'auth_name',
-    auth_srid: 'auth_srid',
-    srtext: 'srtext',
-    proj4text: 'proj4text'
-  };
-
-  export type Spatial_ref_sysScalarFieldEnum = (typeof Spatial_ref_sysScalarFieldEnum)[keyof typeof Spatial_ref_sysScalarFieldEnum]
-
-
   export const Gestion_risquesScalarFieldEnum: {
     index: 'index',
     code_geographique: 'code_geographique',
@@ -16257,22 +15180,6 @@ export namespace Prisma {
   export const Surfaces_protegeesScalarFieldEnum: {
     index: 'index',
     code_geographique: 'code_geographique',
-    LIBELLE_VARIABLE: 'LIBELLE_VARIABLE',
-    SOUS_CHAMP: 'SOUS_CHAMP',
-    A2019: 'A2019',
-    libelle_geographique: 'libelle_geographique',
-    epci: 'epci',
-    libelle_epci: 'libelle_epci',
-    departement: 'departement',
-    region: 'region'
-  };
-
-  export type Surfaces_protegeesScalarFieldEnum = (typeof Surfaces_protegeesScalarFieldEnum)[keyof typeof Surfaces_protegeesScalarFieldEnum]
-
-
-  export const Surfaces_protegees_by_colScalarFieldEnum: {
-    index: 'index',
-    code_geographique: 'code_geographique',
     PNC: 'PNC',
     RAMSAR: 'RAMSAR',
     PNR: 'PNR',
@@ -16299,7 +15206,18 @@ export namespace Prisma {
     region: 'region'
   };
 
-  export type Surfaces_protegees_by_colScalarFieldEnum = (typeof Surfaces_protegees_by_colScalarFieldEnum)[keyof typeof Surfaces_protegees_by_colScalarFieldEnum]
+  export type Surfaces_protegeesScalarFieldEnum = (typeof Surfaces_protegeesScalarFieldEnum)[keyof typeof Surfaces_protegeesScalarFieldEnum]
+
+
+  export const Spatial_ref_sysScalarFieldEnum: {
+    srid: 'srid',
+    auth_name: 'auth_name',
+    auth_srid: 'auth_srid',
+    srtext: 'srtext',
+    proj4text: 'proj4text'
+  };
+
+  export type Spatial_ref_sysScalarFieldEnum = (typeof Spatial_ref_sysScalarFieldEnum)[keyof typeof Spatial_ref_sysScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -16970,60 +15888,6 @@ export namespace Prisma {
     region?: FloatNullableWithAggregatesFilter<"biodiversite"> | number | null
   }
 
-  export type spatial_ref_sysWhereInput = {
-    AND?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
-    OR?: spatial_ref_sysWhereInput[]
-    NOT?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
-    srid?: IntFilter<"spatial_ref_sys"> | number
-    auth_name?: StringNullableFilter<"spatial_ref_sys"> | string | null
-    auth_srid?: IntNullableFilter<"spatial_ref_sys"> | number | null
-    srtext?: StringNullableFilter<"spatial_ref_sys"> | string | null
-    proj4text?: StringNullableFilter<"spatial_ref_sys"> | string | null
-  }
-
-  export type spatial_ref_sysOrderByWithRelationInput = {
-    srid?: SortOrder
-    auth_name?: SortOrderInput | SortOrder
-    auth_srid?: SortOrderInput | SortOrder
-    srtext?: SortOrderInput | SortOrder
-    proj4text?: SortOrderInput | SortOrder
-  }
-
-  export type spatial_ref_sysWhereUniqueInput = Prisma.AtLeast<{
-    srid?: number
-    AND?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
-    OR?: spatial_ref_sysWhereInput[]
-    NOT?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
-    auth_name?: StringNullableFilter<"spatial_ref_sys"> | string | null
-    auth_srid?: IntNullableFilter<"spatial_ref_sys"> | number | null
-    srtext?: StringNullableFilter<"spatial_ref_sys"> | string | null
-    proj4text?: StringNullableFilter<"spatial_ref_sys"> | string | null
-  }, "srid">
-
-  export type spatial_ref_sysOrderByWithAggregationInput = {
-    srid?: SortOrder
-    auth_name?: SortOrderInput | SortOrder
-    auth_srid?: SortOrderInput | SortOrder
-    srtext?: SortOrderInput | SortOrder
-    proj4text?: SortOrderInput | SortOrder
-    _count?: spatial_ref_sysCountOrderByAggregateInput
-    _avg?: spatial_ref_sysAvgOrderByAggregateInput
-    _max?: spatial_ref_sysMaxOrderByAggregateInput
-    _min?: spatial_ref_sysMinOrderByAggregateInput
-    _sum?: spatial_ref_sysSumOrderByAggregateInput
-  }
-
-  export type spatial_ref_sysScalarWhereWithAggregatesInput = {
-    AND?: spatial_ref_sysScalarWhereWithAggregatesInput | spatial_ref_sysScalarWhereWithAggregatesInput[]
-    OR?: spatial_ref_sysScalarWhereWithAggregatesInput[]
-    NOT?: spatial_ref_sysScalarWhereWithAggregatesInput | spatial_ref_sysScalarWhereWithAggregatesInput[]
-    srid?: IntWithAggregatesFilter<"spatial_ref_sys"> | number
-    auth_name?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
-    auth_srid?: IntNullableWithAggregatesFilter<"spatial_ref_sys"> | number | null
-    srtext?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
-    proj4text?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
-  }
-
   export type gestion_risquesWhereInput = {
     AND?: gestion_risquesWhereInput | gestion_risquesWhereInput[]
     OR?: gestion_risquesWhereInput[]
@@ -17499,9 +16363,25 @@ export namespace Prisma {
     NOT?: surfaces_protegeesWhereInput | surfaces_protegeesWhereInput[]
     index?: BigIntFilter<"surfaces_protegees"> | bigint | number
     code_geographique?: StringFilter<"surfaces_protegees"> | string
-    LIBELLE_VARIABLE?: StringFilter<"surfaces_protegees"> | string
-    SOUS_CHAMP?: StringFilter<"surfaces_protegees"> | string
-    A2019?: FloatFilter<"surfaces_protegees"> | number
+    PNC?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RAMSAR?: StringNullableFilter<"surfaces_protegees"> | string | null
+    PNR?: StringNullableFilter<"surfaces_protegees"> | string | null
+    PNP?: StringNullableFilter<"surfaces_protegees"> | string | null
+    FOR_PRO?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZZZ?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZNIEFF2?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZNIEFF1?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RNR?: StringNullableFilter<"surfaces_protegees"> | string | null
+    TOU_PRO?: StringNullableFilter<"surfaces_protegees"> | string | null
+    NATURA?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZPS?: StringNullableFilter<"surfaces_protegees"> | string | null
+    SIC?: StringNullableFilter<"surfaces_protegees"> | string | null
+    CELRL?: StringNullableFilter<"surfaces_protegees"> | string | null
+    BIO?: StringNullableFilter<"surfaces_protegees"> | string | null
+    APB?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RN?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RBFD?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RNCFS?: StringNullableFilter<"surfaces_protegees"> | string | null
     libelle_geographique?: StringFilter<"surfaces_protegees"> | string
     epci?: StringFilter<"surfaces_protegees"> | string
     libelle_epci?: StringFilter<"surfaces_protegees"> | string
@@ -17512,9 +16392,25 @@ export namespace Prisma {
   export type surfaces_protegeesOrderByWithRelationInput = {
     index?: SortOrder
     code_geographique?: SortOrder
-    LIBELLE_VARIABLE?: SortOrder
-    SOUS_CHAMP?: SortOrder
-    A2019?: SortOrder
+    PNC?: SortOrderInput | SortOrder
+    RAMSAR?: SortOrderInput | SortOrder
+    PNR?: SortOrderInput | SortOrder
+    PNP?: SortOrderInput | SortOrder
+    FOR_PRO?: SortOrderInput | SortOrder
+    ZZZ?: SortOrderInput | SortOrder
+    ZNIEFF2?: SortOrderInput | SortOrder
+    ZNIEFF1?: SortOrderInput | SortOrder
+    RNR?: SortOrderInput | SortOrder
+    TOU_PRO?: SortOrderInput | SortOrder
+    NATURA?: SortOrderInput | SortOrder
+    ZPS?: SortOrderInput | SortOrder
+    SIC?: SortOrderInput | SortOrder
+    CELRL?: SortOrderInput | SortOrder
+    BIO?: SortOrderInput | SortOrder
+    APB?: SortOrderInput | SortOrder
+    RN?: SortOrderInput | SortOrder
+    RBFD?: SortOrderInput | SortOrder
+    RNCFS?: SortOrderInput | SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
     libelle_epci?: SortOrder
@@ -17528,9 +16424,25 @@ export namespace Prisma {
     OR?: surfaces_protegeesWhereInput[]
     NOT?: surfaces_protegeesWhereInput | surfaces_protegeesWhereInput[]
     code_geographique?: StringFilter<"surfaces_protegees"> | string
-    LIBELLE_VARIABLE?: StringFilter<"surfaces_protegees"> | string
-    SOUS_CHAMP?: StringFilter<"surfaces_protegees"> | string
-    A2019?: FloatFilter<"surfaces_protegees"> | number
+    PNC?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RAMSAR?: StringNullableFilter<"surfaces_protegees"> | string | null
+    PNR?: StringNullableFilter<"surfaces_protegees"> | string | null
+    PNP?: StringNullableFilter<"surfaces_protegees"> | string | null
+    FOR_PRO?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZZZ?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZNIEFF2?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZNIEFF1?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RNR?: StringNullableFilter<"surfaces_protegees"> | string | null
+    TOU_PRO?: StringNullableFilter<"surfaces_protegees"> | string | null
+    NATURA?: StringNullableFilter<"surfaces_protegees"> | string | null
+    ZPS?: StringNullableFilter<"surfaces_protegees"> | string | null
+    SIC?: StringNullableFilter<"surfaces_protegees"> | string | null
+    CELRL?: StringNullableFilter<"surfaces_protegees"> | string | null
+    BIO?: StringNullableFilter<"surfaces_protegees"> | string | null
+    APB?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RN?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RBFD?: StringNullableFilter<"surfaces_protegees"> | string | null
+    RNCFS?: StringNullableFilter<"surfaces_protegees"> | string | null
     libelle_geographique?: StringFilter<"surfaces_protegees"> | string
     epci?: StringFilter<"surfaces_protegees"> | string
     libelle_epci?: StringFilter<"surfaces_protegees"> | string
@@ -17541,9 +16453,25 @@ export namespace Prisma {
   export type surfaces_protegeesOrderByWithAggregationInput = {
     index?: SortOrder
     code_geographique?: SortOrder
-    LIBELLE_VARIABLE?: SortOrder
-    SOUS_CHAMP?: SortOrder
-    A2019?: SortOrder
+    PNC?: SortOrderInput | SortOrder
+    RAMSAR?: SortOrderInput | SortOrder
+    PNR?: SortOrderInput | SortOrder
+    PNP?: SortOrderInput | SortOrder
+    FOR_PRO?: SortOrderInput | SortOrder
+    ZZZ?: SortOrderInput | SortOrder
+    ZNIEFF2?: SortOrderInput | SortOrder
+    ZNIEFF1?: SortOrderInput | SortOrder
+    RNR?: SortOrderInput | SortOrder
+    TOU_PRO?: SortOrderInput | SortOrder
+    NATURA?: SortOrderInput | SortOrder
+    ZPS?: SortOrderInput | SortOrder
+    SIC?: SortOrderInput | SortOrder
+    CELRL?: SortOrderInput | SortOrder
+    BIO?: SortOrderInput | SortOrder
+    APB?: SortOrderInput | SortOrder
+    RN?: SortOrderInput | SortOrder
+    RBFD?: SortOrderInput | SortOrder
+    RNCFS?: SortOrderInput | SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
     libelle_epci?: SortOrder
@@ -17562,9 +16490,25 @@ export namespace Prisma {
     NOT?: surfaces_protegeesScalarWhereWithAggregatesInput | surfaces_protegeesScalarWhereWithAggregatesInput[]
     index?: BigIntWithAggregatesFilter<"surfaces_protegees"> | bigint | number
     code_geographique?: StringWithAggregatesFilter<"surfaces_protegees"> | string
-    LIBELLE_VARIABLE?: StringWithAggregatesFilter<"surfaces_protegees"> | string
-    SOUS_CHAMP?: StringWithAggregatesFilter<"surfaces_protegees"> | string
-    A2019?: FloatWithAggregatesFilter<"surfaces_protegees"> | number
+    PNC?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    RAMSAR?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    PNR?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    PNP?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    FOR_PRO?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    ZZZ?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    ZNIEFF2?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    ZNIEFF1?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    RNR?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    TOU_PRO?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    NATURA?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    ZPS?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    SIC?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    CELRL?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    BIO?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    APB?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    RN?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    RBFD?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
+    RNCFS?: StringNullableWithAggregatesFilter<"surfaces_protegees"> | string | null
     libelle_geographique?: StringWithAggregatesFilter<"surfaces_protegees"> | string
     epci?: StringWithAggregatesFilter<"surfaces_protegees"> | string
     libelle_epci?: StringWithAggregatesFilter<"surfaces_protegees"> | string
@@ -17572,163 +16516,58 @@ export namespace Prisma {
     region?: FloatWithAggregatesFilter<"surfaces_protegees"> | number
   }
 
-  export type surfaces_protegees_by_colWhereInput = {
-    AND?: surfaces_protegees_by_colWhereInput | surfaces_protegees_by_colWhereInput[]
-    OR?: surfaces_protegees_by_colWhereInput[]
-    NOT?: surfaces_protegees_by_colWhereInput | surfaces_protegees_by_colWhereInput[]
-    index?: BigIntFilter<"surfaces_protegees_by_col"> | bigint | number
-    code_geographique?: StringFilter<"surfaces_protegees_by_col"> | string
-    PNC?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    RAMSAR?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    PNR?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    PNP?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    FOR_PRO?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    ZZZ?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    ZNIEFF2?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    ZNIEFF1?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    RNR?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    TOU_PRO?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    NATURA?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    ZPS?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    SIC?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    CELRL?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    BIO?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    APB?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    RN?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    RBFD?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    RNCFS?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    libelle_geographique?: StringFilter<"surfaces_protegees_by_col"> | string
-    epci?: StringFilter<"surfaces_protegees_by_col"> | string
-    libelle_epci?: StringFilter<"surfaces_protegees_by_col"> | string
-    departement?: StringFilter<"surfaces_protegees_by_col"> | string
-    region?: FloatFilter<"surfaces_protegees_by_col"> | number
+  export type spatial_ref_sysWhereInput = {
+    AND?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    OR?: spatial_ref_sysWhereInput[]
+    NOT?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    srid?: IntFilter<"spatial_ref_sys"> | number
+    auth_name?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    auth_srid?: IntNullableFilter<"spatial_ref_sys"> | number | null
+    srtext?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    proj4text?: StringNullableFilter<"spatial_ref_sys"> | string | null
   }
 
-  export type surfaces_protegees_by_colOrderByWithRelationInput = {
-    index?: SortOrder
-    code_geographique?: SortOrder
-    PNC?: SortOrderInput | SortOrder
-    RAMSAR?: SortOrderInput | SortOrder
-    PNR?: SortOrderInput | SortOrder
-    PNP?: SortOrderInput | SortOrder
-    FOR_PRO?: SortOrderInput | SortOrder
-    ZZZ?: SortOrderInput | SortOrder
-    ZNIEFF2?: SortOrderInput | SortOrder
-    ZNIEFF1?: SortOrderInput | SortOrder
-    RNR?: SortOrderInput | SortOrder
-    TOU_PRO?: SortOrderInput | SortOrder
-    NATURA?: SortOrderInput | SortOrder
-    ZPS?: SortOrderInput | SortOrder
-    SIC?: SortOrderInput | SortOrder
-    CELRL?: SortOrderInput | SortOrder
-    BIO?: SortOrderInput | SortOrder
-    APB?: SortOrderInput | SortOrder
-    RN?: SortOrderInput | SortOrder
-    RBFD?: SortOrderInput | SortOrder
-    RNCFS?: SortOrderInput | SortOrder
-    libelle_geographique?: SortOrder
-    epci?: SortOrder
-    libelle_epci?: SortOrder
-    departement?: SortOrder
-    region?: SortOrder
+  export type spatial_ref_sysOrderByWithRelationInput = {
+    srid?: SortOrder
+    auth_name?: SortOrderInput | SortOrder
+    auth_srid?: SortOrderInput | SortOrder
+    srtext?: SortOrderInput | SortOrder
+    proj4text?: SortOrderInput | SortOrder
   }
 
-  export type surfaces_protegees_by_colWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
-    AND?: surfaces_protegees_by_colWhereInput | surfaces_protegees_by_colWhereInput[]
-    OR?: surfaces_protegees_by_colWhereInput[]
-    NOT?: surfaces_protegees_by_colWhereInput | surfaces_protegees_by_colWhereInput[]
-    code_geographique?: StringFilter<"surfaces_protegees_by_col"> | string
-    PNC?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    RAMSAR?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    PNR?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    PNP?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    FOR_PRO?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    ZZZ?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    ZNIEFF2?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    ZNIEFF1?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    RNR?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    TOU_PRO?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    NATURA?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    ZPS?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    SIC?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    CELRL?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    BIO?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    APB?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    RN?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    RBFD?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    RNCFS?: StringNullableFilter<"surfaces_protegees_by_col"> | string | null
-    libelle_geographique?: StringFilter<"surfaces_protegees_by_col"> | string
-    epci?: StringFilter<"surfaces_protegees_by_col"> | string
-    libelle_epci?: StringFilter<"surfaces_protegees_by_col"> | string
-    departement?: StringFilter<"surfaces_protegees_by_col"> | string
-    region?: FloatFilter<"surfaces_protegees_by_col"> | number
-  }, "index">
+  export type spatial_ref_sysWhereUniqueInput = Prisma.AtLeast<{
+    srid?: number
+    AND?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    OR?: spatial_ref_sysWhereInput[]
+    NOT?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    auth_name?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    auth_srid?: IntNullableFilter<"spatial_ref_sys"> | number | null
+    srtext?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    proj4text?: StringNullableFilter<"spatial_ref_sys"> | string | null
+  }, "srid">
 
-  export type surfaces_protegees_by_colOrderByWithAggregationInput = {
-    index?: SortOrder
-    code_geographique?: SortOrder
-    PNC?: SortOrderInput | SortOrder
-    RAMSAR?: SortOrderInput | SortOrder
-    PNR?: SortOrderInput | SortOrder
-    PNP?: SortOrderInput | SortOrder
-    FOR_PRO?: SortOrderInput | SortOrder
-    ZZZ?: SortOrderInput | SortOrder
-    ZNIEFF2?: SortOrderInput | SortOrder
-    ZNIEFF1?: SortOrderInput | SortOrder
-    RNR?: SortOrderInput | SortOrder
-    TOU_PRO?: SortOrderInput | SortOrder
-    NATURA?: SortOrderInput | SortOrder
-    ZPS?: SortOrderInput | SortOrder
-    SIC?: SortOrderInput | SortOrder
-    CELRL?: SortOrderInput | SortOrder
-    BIO?: SortOrderInput | SortOrder
-    APB?: SortOrderInput | SortOrder
-    RN?: SortOrderInput | SortOrder
-    RBFD?: SortOrderInput | SortOrder
-    RNCFS?: SortOrderInput | SortOrder
-    libelle_geographique?: SortOrder
-    epci?: SortOrder
-    libelle_epci?: SortOrder
-    departement?: SortOrder
-    region?: SortOrder
-    _count?: surfaces_protegees_by_colCountOrderByAggregateInput
-    _avg?: surfaces_protegees_by_colAvgOrderByAggregateInput
-    _max?: surfaces_protegees_by_colMaxOrderByAggregateInput
-    _min?: surfaces_protegees_by_colMinOrderByAggregateInput
-    _sum?: surfaces_protegees_by_colSumOrderByAggregateInput
+  export type spatial_ref_sysOrderByWithAggregationInput = {
+    srid?: SortOrder
+    auth_name?: SortOrderInput | SortOrder
+    auth_srid?: SortOrderInput | SortOrder
+    srtext?: SortOrderInput | SortOrder
+    proj4text?: SortOrderInput | SortOrder
+    _count?: spatial_ref_sysCountOrderByAggregateInput
+    _avg?: spatial_ref_sysAvgOrderByAggregateInput
+    _max?: spatial_ref_sysMaxOrderByAggregateInput
+    _min?: spatial_ref_sysMinOrderByAggregateInput
+    _sum?: spatial_ref_sysSumOrderByAggregateInput
   }
 
-  export type surfaces_protegees_by_colScalarWhereWithAggregatesInput = {
-    AND?: surfaces_protegees_by_colScalarWhereWithAggregatesInput | surfaces_protegees_by_colScalarWhereWithAggregatesInput[]
-    OR?: surfaces_protegees_by_colScalarWhereWithAggregatesInput[]
-    NOT?: surfaces_protegees_by_colScalarWhereWithAggregatesInput | surfaces_protegees_by_colScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"surfaces_protegees_by_col"> | bigint | number
-    code_geographique?: StringWithAggregatesFilter<"surfaces_protegees_by_col"> | string
-    PNC?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    RAMSAR?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    PNR?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    PNP?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    FOR_PRO?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    ZZZ?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    ZNIEFF2?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    ZNIEFF1?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    RNR?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    TOU_PRO?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    NATURA?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    ZPS?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    SIC?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    CELRL?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    BIO?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    APB?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    RN?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    RBFD?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    RNCFS?: StringNullableWithAggregatesFilter<"surfaces_protegees_by_col"> | string | null
-    libelle_geographique?: StringWithAggregatesFilter<"surfaces_protegees_by_col"> | string
-    epci?: StringWithAggregatesFilter<"surfaces_protegees_by_col"> | string
-    libelle_epci?: StringWithAggregatesFilter<"surfaces_protegees_by_col"> | string
-    departement?: StringWithAggregatesFilter<"surfaces_protegees_by_col"> | string
-    region?: FloatWithAggregatesFilter<"surfaces_protegees_by_col"> | number
+  export type spatial_ref_sysScalarWhereWithAggregatesInput = {
+    AND?: spatial_ref_sysScalarWhereWithAggregatesInput | spatial_ref_sysScalarWhereWithAggregatesInput[]
+    OR?: spatial_ref_sysScalarWhereWithAggregatesInput[]
+    NOT?: spatial_ref_sysScalarWhereWithAggregatesInput | spatial_ref_sysScalarWhereWithAggregatesInput[]
+    srid?: IntWithAggregatesFilter<"spatial_ref_sys"> | number
+    auth_name?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
+    auth_srid?: IntNullableWithAggregatesFilter<"spatial_ref_sys"> | number | null
+    srtext?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
+    proj4text?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
   }
 
   export type inconfort_thermiqueCreateInput = {
@@ -18439,62 +17278,6 @@ export namespace Prisma {
     region?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
-  export type spatial_ref_sysCreateInput = {
-    srid: number
-    auth_name?: string | null
-    auth_srid?: number | null
-    srtext?: string | null
-    proj4text?: string | null
-  }
-
-  export type spatial_ref_sysUncheckedCreateInput = {
-    srid: number
-    auth_name?: string | null
-    auth_srid?: number | null
-    srtext?: string | null
-    proj4text?: string | null
-  }
-
-  export type spatial_ref_sysUpdateInput = {
-    srid?: IntFieldUpdateOperationsInput | number
-    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
-    srtext?: NullableStringFieldUpdateOperationsInput | string | null
-    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type spatial_ref_sysUncheckedUpdateInput = {
-    srid?: IntFieldUpdateOperationsInput | number
-    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
-    srtext?: NullableStringFieldUpdateOperationsInput | string | null
-    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type spatial_ref_sysCreateManyInput = {
-    srid: number
-    auth_name?: string | null
-    auth_srid?: number | null
-    srtext?: string | null
-    proj4text?: string | null
-  }
-
-  export type spatial_ref_sysUpdateManyMutationInput = {
-    srid?: IntFieldUpdateOperationsInput | number
-    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
-    srtext?: NullableStringFieldUpdateOperationsInput | string | null
-    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type spatial_ref_sysUncheckedUpdateManyInput = {
-    srid?: IntFieldUpdateOperationsInput | number
-    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
-    srtext?: NullableStringFieldUpdateOperationsInput | string | null
-    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
   export type gestion_risquesCreateInput = {
     index: bigint | number
     code_geographique?: string | null
@@ -18959,9 +17742,25 @@ export namespace Prisma {
   export type surfaces_protegeesCreateInput = {
     index: bigint | number
     code_geographique: string
-    LIBELLE_VARIABLE: string
-    SOUS_CHAMP: string
-    A2019: number
+    PNC?: string | null
+    RAMSAR?: string | null
+    PNR?: string | null
+    PNP?: string | null
+    FOR_PRO?: string | null
+    ZZZ?: string | null
+    ZNIEFF2?: string | null
+    ZNIEFF1?: string | null
+    RNR?: string | null
+    TOU_PRO?: string | null
+    NATURA?: string | null
+    ZPS?: string | null
+    SIC?: string | null
+    CELRL?: string | null
+    BIO?: string | null
+    APB?: string | null
+    RN?: string | null
+    RBFD?: string | null
+    RNCFS?: string | null
     libelle_geographique: string
     epci: string
     libelle_epci: string
@@ -18972,9 +17771,25 @@ export namespace Prisma {
   export type surfaces_protegeesUncheckedCreateInput = {
     index: bigint | number
     code_geographique: string
-    LIBELLE_VARIABLE: string
-    SOUS_CHAMP: string
-    A2019: number
+    PNC?: string | null
+    RAMSAR?: string | null
+    PNR?: string | null
+    PNP?: string | null
+    FOR_PRO?: string | null
+    ZZZ?: string | null
+    ZNIEFF2?: string | null
+    ZNIEFF1?: string | null
+    RNR?: string | null
+    TOU_PRO?: string | null
+    NATURA?: string | null
+    ZPS?: string | null
+    SIC?: string | null
+    CELRL?: string | null
+    BIO?: string | null
+    APB?: string | null
+    RN?: string | null
+    RBFD?: string | null
+    RNCFS?: string | null
     libelle_geographique: string
     epci: string
     libelle_epci: string
@@ -18985,9 +17800,25 @@ export namespace Prisma {
   export type surfaces_protegeesUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
-    LIBELLE_VARIABLE?: StringFieldUpdateOperationsInput | string
-    SOUS_CHAMP?: StringFieldUpdateOperationsInput | string
-    A2019?: FloatFieldUpdateOperationsInput | number
+    PNC?: NullableStringFieldUpdateOperationsInput | string | null
+    RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNP?: NullableStringFieldUpdateOperationsInput | string | null
+    FOR_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    ZZZ?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF2?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF1?: NullableStringFieldUpdateOperationsInput | string | null
+    RNR?: NullableStringFieldUpdateOperationsInput | string | null
+    TOU_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    NATURA?: NullableStringFieldUpdateOperationsInput | string | null
+    ZPS?: NullableStringFieldUpdateOperationsInput | string | null
+    SIC?: NullableStringFieldUpdateOperationsInput | string | null
+    CELRL?: NullableStringFieldUpdateOperationsInput | string | null
+    BIO?: NullableStringFieldUpdateOperationsInput | string | null
+    APB?: NullableStringFieldUpdateOperationsInput | string | null
+    RN?: NullableStringFieldUpdateOperationsInput | string | null
+    RBFD?: NullableStringFieldUpdateOperationsInput | string | null
+    RNCFS?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
@@ -18998,9 +17829,25 @@ export namespace Prisma {
   export type surfaces_protegeesUncheckedUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
-    LIBELLE_VARIABLE?: StringFieldUpdateOperationsInput | string
-    SOUS_CHAMP?: StringFieldUpdateOperationsInput | string
-    A2019?: FloatFieldUpdateOperationsInput | number
+    PNC?: NullableStringFieldUpdateOperationsInput | string | null
+    RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNP?: NullableStringFieldUpdateOperationsInput | string | null
+    FOR_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    ZZZ?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF2?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF1?: NullableStringFieldUpdateOperationsInput | string | null
+    RNR?: NullableStringFieldUpdateOperationsInput | string | null
+    TOU_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    NATURA?: NullableStringFieldUpdateOperationsInput | string | null
+    ZPS?: NullableStringFieldUpdateOperationsInput | string | null
+    SIC?: NullableStringFieldUpdateOperationsInput | string | null
+    CELRL?: NullableStringFieldUpdateOperationsInput | string | null
+    BIO?: NullableStringFieldUpdateOperationsInput | string | null
+    APB?: NullableStringFieldUpdateOperationsInput | string | null
+    RN?: NullableStringFieldUpdateOperationsInput | string | null
+    RBFD?: NullableStringFieldUpdateOperationsInput | string | null
+    RNCFS?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
@@ -19011,9 +17858,25 @@ export namespace Prisma {
   export type surfaces_protegeesCreateManyInput = {
     index: bigint | number
     code_geographique: string
-    LIBELLE_VARIABLE: string
-    SOUS_CHAMP: string
-    A2019: number
+    PNC?: string | null
+    RAMSAR?: string | null
+    PNR?: string | null
+    PNP?: string | null
+    FOR_PRO?: string | null
+    ZZZ?: string | null
+    ZNIEFF2?: string | null
+    ZNIEFF1?: string | null
+    RNR?: string | null
+    TOU_PRO?: string | null
+    NATURA?: string | null
+    ZPS?: string | null
+    SIC?: string | null
+    CELRL?: string | null
+    BIO?: string | null
+    APB?: string | null
+    RN?: string | null
+    RBFD?: string | null
+    RNCFS?: string | null
     libelle_geographique: string
     epci: string
     libelle_epci: string
@@ -19024,9 +17887,25 @@ export namespace Prisma {
   export type surfaces_protegeesUpdateManyMutationInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
-    LIBELLE_VARIABLE?: StringFieldUpdateOperationsInput | string
-    SOUS_CHAMP?: StringFieldUpdateOperationsInput | string
-    A2019?: FloatFieldUpdateOperationsInput | number
+    PNC?: NullableStringFieldUpdateOperationsInput | string | null
+    RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNR?: NullableStringFieldUpdateOperationsInput | string | null
+    PNP?: NullableStringFieldUpdateOperationsInput | string | null
+    FOR_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    ZZZ?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF2?: NullableStringFieldUpdateOperationsInput | string | null
+    ZNIEFF1?: NullableStringFieldUpdateOperationsInput | string | null
+    RNR?: NullableStringFieldUpdateOperationsInput | string | null
+    TOU_PRO?: NullableStringFieldUpdateOperationsInput | string | null
+    NATURA?: NullableStringFieldUpdateOperationsInput | string | null
+    ZPS?: NullableStringFieldUpdateOperationsInput | string | null
+    SIC?: NullableStringFieldUpdateOperationsInput | string | null
+    CELRL?: NullableStringFieldUpdateOperationsInput | string | null
+    BIO?: NullableStringFieldUpdateOperationsInput | string | null
+    APB?: NullableStringFieldUpdateOperationsInput | string | null
+    RN?: NullableStringFieldUpdateOperationsInput | string | null
+    RBFD?: NullableStringFieldUpdateOperationsInput | string | null
+    RNCFS?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_geographique?: StringFieldUpdateOperationsInput | string
     epci?: StringFieldUpdateOperationsInput | string
     libelle_epci?: StringFieldUpdateOperationsInput | string
@@ -19037,77 +17916,6 @@ export namespace Prisma {
   export type surfaces_protegeesUncheckedUpdateManyInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
-    LIBELLE_VARIABLE?: StringFieldUpdateOperationsInput | string
-    SOUS_CHAMP?: StringFieldUpdateOperationsInput | string
-    A2019?: FloatFieldUpdateOperationsInput | number
-    libelle_geographique?: StringFieldUpdateOperationsInput | string
-    epci?: StringFieldUpdateOperationsInput | string
-    libelle_epci?: StringFieldUpdateOperationsInput | string
-    departement?: StringFieldUpdateOperationsInput | string
-    region?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type surfaces_protegees_by_colCreateInput = {
-    index: bigint | number
-    code_geographique: string
-    PNC?: string | null
-    RAMSAR?: string | null
-    PNR?: string | null
-    PNP?: string | null
-    FOR_PRO?: string | null
-    ZZZ?: string | null
-    ZNIEFF2?: string | null
-    ZNIEFF1?: string | null
-    RNR?: string | null
-    TOU_PRO?: string | null
-    NATURA?: string | null
-    ZPS?: string | null
-    SIC?: string | null
-    CELRL?: string | null
-    BIO?: string | null
-    APB?: string | null
-    RN?: string | null
-    RBFD?: string | null
-    RNCFS?: string | null
-    libelle_geographique: string
-    epci: string
-    libelle_epci: string
-    departement: string
-    region: number
-  }
-
-  export type surfaces_protegees_by_colUncheckedCreateInput = {
-    index: bigint | number
-    code_geographique: string
-    PNC?: string | null
-    RAMSAR?: string | null
-    PNR?: string | null
-    PNP?: string | null
-    FOR_PRO?: string | null
-    ZZZ?: string | null
-    ZNIEFF2?: string | null
-    ZNIEFF1?: string | null
-    RNR?: string | null
-    TOU_PRO?: string | null
-    NATURA?: string | null
-    ZPS?: string | null
-    SIC?: string | null
-    CELRL?: string | null
-    BIO?: string | null
-    APB?: string | null
-    RN?: string | null
-    RBFD?: string | null
-    RNCFS?: string | null
-    libelle_geographique: string
-    epci: string
-    libelle_epci: string
-    departement: string
-    region: number
-  }
-
-  export type surfaces_protegees_by_colUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: StringFieldUpdateOperationsInput | string
     PNC?: NullableStringFieldUpdateOperationsInput | string | null
     RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
     PNR?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19134,120 +17942,60 @@ export namespace Prisma {
     region?: FloatFieldUpdateOperationsInput | number
   }
 
-  export type surfaces_protegees_by_colUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: StringFieldUpdateOperationsInput | string
-    PNC?: NullableStringFieldUpdateOperationsInput | string | null
-    RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
-    PNR?: NullableStringFieldUpdateOperationsInput | string | null
-    PNP?: NullableStringFieldUpdateOperationsInput | string | null
-    FOR_PRO?: NullableStringFieldUpdateOperationsInput | string | null
-    ZZZ?: NullableStringFieldUpdateOperationsInput | string | null
-    ZNIEFF2?: NullableStringFieldUpdateOperationsInput | string | null
-    ZNIEFF1?: NullableStringFieldUpdateOperationsInput | string | null
-    RNR?: NullableStringFieldUpdateOperationsInput | string | null
-    TOU_PRO?: NullableStringFieldUpdateOperationsInput | string | null
-    NATURA?: NullableStringFieldUpdateOperationsInput | string | null
-    ZPS?: NullableStringFieldUpdateOperationsInput | string | null
-    SIC?: NullableStringFieldUpdateOperationsInput | string | null
-    CELRL?: NullableStringFieldUpdateOperationsInput | string | null
-    BIO?: NullableStringFieldUpdateOperationsInput | string | null
-    APB?: NullableStringFieldUpdateOperationsInput | string | null
-    RN?: NullableStringFieldUpdateOperationsInput | string | null
-    RBFD?: NullableStringFieldUpdateOperationsInput | string | null
-    RNCFS?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_geographique?: StringFieldUpdateOperationsInput | string
-    epci?: StringFieldUpdateOperationsInput | string
-    libelle_epci?: StringFieldUpdateOperationsInput | string
-    departement?: StringFieldUpdateOperationsInput | string
-    region?: FloatFieldUpdateOperationsInput | number
+  export type spatial_ref_sysCreateInput = {
+    srid: number
+    auth_name?: string | null
+    auth_srid?: number | null
+    srtext?: string | null
+    proj4text?: string | null
   }
 
-  export type surfaces_protegees_by_colCreateManyInput = {
-    index: bigint | number
-    code_geographique: string
-    PNC?: string | null
-    RAMSAR?: string | null
-    PNR?: string | null
-    PNP?: string | null
-    FOR_PRO?: string | null
-    ZZZ?: string | null
-    ZNIEFF2?: string | null
-    ZNIEFF1?: string | null
-    RNR?: string | null
-    TOU_PRO?: string | null
-    NATURA?: string | null
-    ZPS?: string | null
-    SIC?: string | null
-    CELRL?: string | null
-    BIO?: string | null
-    APB?: string | null
-    RN?: string | null
-    RBFD?: string | null
-    RNCFS?: string | null
-    libelle_geographique: string
-    epci: string
-    libelle_epci: string
-    departement: string
-    region: number
+  export type spatial_ref_sysUncheckedCreateInput = {
+    srid: number
+    auth_name?: string | null
+    auth_srid?: number | null
+    srtext?: string | null
+    proj4text?: string | null
   }
 
-  export type surfaces_protegees_by_colUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: StringFieldUpdateOperationsInput | string
-    PNC?: NullableStringFieldUpdateOperationsInput | string | null
-    RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
-    PNR?: NullableStringFieldUpdateOperationsInput | string | null
-    PNP?: NullableStringFieldUpdateOperationsInput | string | null
-    FOR_PRO?: NullableStringFieldUpdateOperationsInput | string | null
-    ZZZ?: NullableStringFieldUpdateOperationsInput | string | null
-    ZNIEFF2?: NullableStringFieldUpdateOperationsInput | string | null
-    ZNIEFF1?: NullableStringFieldUpdateOperationsInput | string | null
-    RNR?: NullableStringFieldUpdateOperationsInput | string | null
-    TOU_PRO?: NullableStringFieldUpdateOperationsInput | string | null
-    NATURA?: NullableStringFieldUpdateOperationsInput | string | null
-    ZPS?: NullableStringFieldUpdateOperationsInput | string | null
-    SIC?: NullableStringFieldUpdateOperationsInput | string | null
-    CELRL?: NullableStringFieldUpdateOperationsInput | string | null
-    BIO?: NullableStringFieldUpdateOperationsInput | string | null
-    APB?: NullableStringFieldUpdateOperationsInput | string | null
-    RN?: NullableStringFieldUpdateOperationsInput | string | null
-    RBFD?: NullableStringFieldUpdateOperationsInput | string | null
-    RNCFS?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_geographique?: StringFieldUpdateOperationsInput | string
-    epci?: StringFieldUpdateOperationsInput | string
-    libelle_epci?: StringFieldUpdateOperationsInput | string
-    departement?: StringFieldUpdateOperationsInput | string
-    region?: FloatFieldUpdateOperationsInput | number
+  export type spatial_ref_sysUpdateInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type surfaces_protegees_by_colUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: StringFieldUpdateOperationsInput | string
-    PNC?: NullableStringFieldUpdateOperationsInput | string | null
-    RAMSAR?: NullableStringFieldUpdateOperationsInput | string | null
-    PNR?: NullableStringFieldUpdateOperationsInput | string | null
-    PNP?: NullableStringFieldUpdateOperationsInput | string | null
-    FOR_PRO?: NullableStringFieldUpdateOperationsInput | string | null
-    ZZZ?: NullableStringFieldUpdateOperationsInput | string | null
-    ZNIEFF2?: NullableStringFieldUpdateOperationsInput | string | null
-    ZNIEFF1?: NullableStringFieldUpdateOperationsInput | string | null
-    RNR?: NullableStringFieldUpdateOperationsInput | string | null
-    TOU_PRO?: NullableStringFieldUpdateOperationsInput | string | null
-    NATURA?: NullableStringFieldUpdateOperationsInput | string | null
-    ZPS?: NullableStringFieldUpdateOperationsInput | string | null
-    SIC?: NullableStringFieldUpdateOperationsInput | string | null
-    CELRL?: NullableStringFieldUpdateOperationsInput | string | null
-    BIO?: NullableStringFieldUpdateOperationsInput | string | null
-    APB?: NullableStringFieldUpdateOperationsInput | string | null
-    RN?: NullableStringFieldUpdateOperationsInput | string | null
-    RBFD?: NullableStringFieldUpdateOperationsInput | string | null
-    RNCFS?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_geographique?: StringFieldUpdateOperationsInput | string
-    epci?: StringFieldUpdateOperationsInput | string
-    libelle_epci?: StringFieldUpdateOperationsInput | string
-    departement?: StringFieldUpdateOperationsInput | string
-    region?: FloatFieldUpdateOperationsInput | number
+  export type spatial_ref_sysUncheckedUpdateInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type spatial_ref_sysCreateManyInput = {
+    srid: number
+    auth_name?: string | null
+    auth_srid?: number | null
+    srtext?: string | null
+    proj4text?: string | null
+  }
+
+  export type spatial_ref_sysUpdateManyMutationInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type spatial_ref_sysUncheckedUpdateManyInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BigIntFilter<$PrismaModel = never> = {
@@ -19885,40 +18633,6 @@ export namespace Prisma {
     region?: SortOrder
   }
 
-  export type spatial_ref_sysCountOrderByAggregateInput = {
-    srid?: SortOrder
-    auth_name?: SortOrder
-    auth_srid?: SortOrder
-    srtext?: SortOrder
-    proj4text?: SortOrder
-  }
-
-  export type spatial_ref_sysAvgOrderByAggregateInput = {
-    srid?: SortOrder
-    auth_srid?: SortOrder
-  }
-
-  export type spatial_ref_sysMaxOrderByAggregateInput = {
-    srid?: SortOrder
-    auth_name?: SortOrder
-    auth_srid?: SortOrder
-    srtext?: SortOrder
-    proj4text?: SortOrder
-  }
-
-  export type spatial_ref_sysMinOrderByAggregateInput = {
-    srid?: SortOrder
-    auth_name?: SortOrder
-    auth_srid?: SortOrder
-    srtext?: SortOrder
-    proj4text?: SortOrder
-  }
-
-  export type spatial_ref_sysSumOrderByAggregateInput = {
-    srid?: SortOrder
-    auth_srid?: SortOrder
-  }
-
   export type gestion_risquesCountOrderByAggregateInput = {
     index?: SortOrder
     code_geographique?: SortOrder
@@ -20286,9 +19000,25 @@ export namespace Prisma {
   export type surfaces_protegeesCountOrderByAggregateInput = {
     index?: SortOrder
     code_geographique?: SortOrder
-    LIBELLE_VARIABLE?: SortOrder
-    SOUS_CHAMP?: SortOrder
-    A2019?: SortOrder
+    PNC?: SortOrder
+    RAMSAR?: SortOrder
+    PNR?: SortOrder
+    PNP?: SortOrder
+    FOR_PRO?: SortOrder
+    ZZZ?: SortOrder
+    ZNIEFF2?: SortOrder
+    ZNIEFF1?: SortOrder
+    RNR?: SortOrder
+    TOU_PRO?: SortOrder
+    NATURA?: SortOrder
+    ZPS?: SortOrder
+    SIC?: SortOrder
+    CELRL?: SortOrder
+    BIO?: SortOrder
+    APB?: SortOrder
+    RN?: SortOrder
+    RBFD?: SortOrder
+    RNCFS?: SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
     libelle_epci?: SortOrder
@@ -20298,16 +19028,31 @@ export namespace Prisma {
 
   export type surfaces_protegeesAvgOrderByAggregateInput = {
     index?: SortOrder
-    A2019?: SortOrder
     region?: SortOrder
   }
 
   export type surfaces_protegeesMaxOrderByAggregateInput = {
     index?: SortOrder
     code_geographique?: SortOrder
-    LIBELLE_VARIABLE?: SortOrder
-    SOUS_CHAMP?: SortOrder
-    A2019?: SortOrder
+    PNC?: SortOrder
+    RAMSAR?: SortOrder
+    PNR?: SortOrder
+    PNP?: SortOrder
+    FOR_PRO?: SortOrder
+    ZZZ?: SortOrder
+    ZNIEFF2?: SortOrder
+    ZNIEFF1?: SortOrder
+    RNR?: SortOrder
+    TOU_PRO?: SortOrder
+    NATURA?: SortOrder
+    ZPS?: SortOrder
+    SIC?: SortOrder
+    CELRL?: SortOrder
+    BIO?: SortOrder
+    APB?: SortOrder
+    RN?: SortOrder
+    RBFD?: SortOrder
+    RNCFS?: SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
     libelle_epci?: SortOrder
@@ -20318,9 +19063,25 @@ export namespace Prisma {
   export type surfaces_protegeesMinOrderByAggregateInput = {
     index?: SortOrder
     code_geographique?: SortOrder
-    LIBELLE_VARIABLE?: SortOrder
-    SOUS_CHAMP?: SortOrder
-    A2019?: SortOrder
+    PNC?: SortOrder
+    RAMSAR?: SortOrder
+    PNR?: SortOrder
+    PNP?: SortOrder
+    FOR_PRO?: SortOrder
+    ZZZ?: SortOrder
+    ZNIEFF2?: SortOrder
+    ZNIEFF1?: SortOrder
+    RNR?: SortOrder
+    TOU_PRO?: SortOrder
+    NATURA?: SortOrder
+    ZPS?: SortOrder
+    SIC?: SortOrder
+    CELRL?: SortOrder
+    BIO?: SortOrder
+    APB?: SortOrder
+    RN?: SortOrder
+    RBFD?: SortOrder
+    RNCFS?: SortOrder
     libelle_geographique?: SortOrder
     epci?: SortOrder
     libelle_epci?: SortOrder
@@ -20330,105 +19091,41 @@ export namespace Prisma {
 
   export type surfaces_protegeesSumOrderByAggregateInput = {
     index?: SortOrder
-    A2019?: SortOrder
     region?: SortOrder
   }
 
-  export type surfaces_protegees_by_colCountOrderByAggregateInput = {
-    index?: SortOrder
-    code_geographique?: SortOrder
-    PNC?: SortOrder
-    RAMSAR?: SortOrder
-    PNR?: SortOrder
-    PNP?: SortOrder
-    FOR_PRO?: SortOrder
-    ZZZ?: SortOrder
-    ZNIEFF2?: SortOrder
-    ZNIEFF1?: SortOrder
-    RNR?: SortOrder
-    TOU_PRO?: SortOrder
-    NATURA?: SortOrder
-    ZPS?: SortOrder
-    SIC?: SortOrder
-    CELRL?: SortOrder
-    BIO?: SortOrder
-    APB?: SortOrder
-    RN?: SortOrder
-    RBFD?: SortOrder
-    RNCFS?: SortOrder
-    libelle_geographique?: SortOrder
-    epci?: SortOrder
-    libelle_epci?: SortOrder
-    departement?: SortOrder
-    region?: SortOrder
+  export type spatial_ref_sysCountOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_name?: SortOrder
+    auth_srid?: SortOrder
+    srtext?: SortOrder
+    proj4text?: SortOrder
   }
 
-  export type surfaces_protegees_by_colAvgOrderByAggregateInput = {
-    index?: SortOrder
-    region?: SortOrder
+  export type spatial_ref_sysAvgOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_srid?: SortOrder
   }
 
-  export type surfaces_protegees_by_colMaxOrderByAggregateInput = {
-    index?: SortOrder
-    code_geographique?: SortOrder
-    PNC?: SortOrder
-    RAMSAR?: SortOrder
-    PNR?: SortOrder
-    PNP?: SortOrder
-    FOR_PRO?: SortOrder
-    ZZZ?: SortOrder
-    ZNIEFF2?: SortOrder
-    ZNIEFF1?: SortOrder
-    RNR?: SortOrder
-    TOU_PRO?: SortOrder
-    NATURA?: SortOrder
-    ZPS?: SortOrder
-    SIC?: SortOrder
-    CELRL?: SortOrder
-    BIO?: SortOrder
-    APB?: SortOrder
-    RN?: SortOrder
-    RBFD?: SortOrder
-    RNCFS?: SortOrder
-    libelle_geographique?: SortOrder
-    epci?: SortOrder
-    libelle_epci?: SortOrder
-    departement?: SortOrder
-    region?: SortOrder
+  export type spatial_ref_sysMaxOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_name?: SortOrder
+    auth_srid?: SortOrder
+    srtext?: SortOrder
+    proj4text?: SortOrder
   }
 
-  export type surfaces_protegees_by_colMinOrderByAggregateInput = {
-    index?: SortOrder
-    code_geographique?: SortOrder
-    PNC?: SortOrder
-    RAMSAR?: SortOrder
-    PNR?: SortOrder
-    PNP?: SortOrder
-    FOR_PRO?: SortOrder
-    ZZZ?: SortOrder
-    ZNIEFF2?: SortOrder
-    ZNIEFF1?: SortOrder
-    RNR?: SortOrder
-    TOU_PRO?: SortOrder
-    NATURA?: SortOrder
-    ZPS?: SortOrder
-    SIC?: SortOrder
-    CELRL?: SortOrder
-    BIO?: SortOrder
-    APB?: SortOrder
-    RN?: SortOrder
-    RBFD?: SortOrder
-    RNCFS?: SortOrder
-    libelle_geographique?: SortOrder
-    epci?: SortOrder
-    libelle_epci?: SortOrder
-    departement?: SortOrder
-    region?: SortOrder
+  export type spatial_ref_sysMinOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_name?: SortOrder
+    auth_srid?: SortOrder
+    srtext?: SortOrder
+    proj4text?: SortOrder
   }
 
-  export type surfaces_protegees_by_colSumOrderByAggregateInput = {
-    index?: SortOrder
-    region?: SortOrder
+  export type spatial_ref_sysSumOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_srid?: SortOrder
   }
 
   export type BigIntFieldUpdateOperationsInput = {
@@ -20702,10 +19399,6 @@ export namespace Prisma {
      */
     export type biodiversiteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = biodiversiteDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use spatial_ref_sysDefaultArgs instead
-     */
-    export type spatial_ref_sysArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = spatial_ref_sysDefaultArgs<ExtArgs>
-    /**
      * @deprecated Use gestion_risquesDefaultArgs instead
      */
     export type gestion_risquesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = gestion_risquesDefaultArgs<ExtArgs>
@@ -20734,9 +19427,9 @@ export namespace Prisma {
      */
     export type surfaces_protegeesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = surfaces_protegeesDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use surfaces_protegees_by_colDefaultArgs instead
+     * @deprecated Use spatial_ref_sysDefaultArgs instead
      */
-    export type surfaces_protegees_by_colArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = surfaces_protegees_by_colDefaultArgs<ExtArgs>
+    export type spatial_ref_sysArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = spatial_ref_sysDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
