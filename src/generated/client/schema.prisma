@@ -130,17 +130,6 @@ model biodiversite {
   @@schema("databases")
 }
 
-/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
-model spatial_ref_sys {
-  srid      Int     @id
-  auth_name String? @db.VarChar(256)
-  auth_srid Int?
-  srtext    String? @db.VarChar(2048)
-  proj4text String? @db.VarChar(2048)
-
-  @@schema("postgis")
-}
-
 model gestion_risques {
   index                BigInt  @id
   code_geographique    String?
@@ -240,22 +229,6 @@ model epci {
 }
 
 model surfaces_protegees {
-  index                BigInt @id
-  code_geographique    String
-  LIBELLE_VARIABLE     String
-  SOUS_CHAMP           String
-  A2019                Float
-  libelle_geographique String
-  epci                 String
-  libelle_epci         String
-  departement          String
-  region               Float
-
-  @@index([index], map: "ix_surfaces_protegees_index")
-  @@schema("databases")
-}
-
-model surfaces_protegees_by_col {
   index                BigInt  @id
   code_geographique    String
   PNC                  String?
@@ -283,6 +256,17 @@ model surfaces_protegees_by_col {
   departement          String
   region               Float
 
-  @@index([index], map: "ix_surfaces_protegees_by_col_index")
+  @@index([index], map: "ix_surfaces_protegees_index")
   @@schema("databases")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model spatial_ref_sys {
+  srid      Int     @id
+  auth_name String? @db.VarChar(256)
+  auth_srid Int?
+  srtext    String? @db.VarChar(2048)
+  proj4text String? @db.VarChar(2048)
+
+  @@schema("postgis")
 }
