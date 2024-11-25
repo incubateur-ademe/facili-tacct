@@ -129,3 +129,26 @@
         }
     }
 }
+
+.tooltipSurfacesProtegeesWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: "Marianne";
+    background-color: #FFFFFF;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    position: relative;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16);
+    color: #3a3a3a;
+    .color {
+        height: 1rem;
+        width: 1rem;
+        border-radius: 2px;
+        align-self: center;
+    }
+    p {
+        margin: 0;
+    }
+}

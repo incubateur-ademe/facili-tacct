@@ -19,7 +19,7 @@
 // autres types d’espaces de protection : CELRL    	conservatoire du littoral et des rivages lacustres
 
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
-import { SurfacesProtegeesByCol } from "@/lib/postgres/models";
+import { EpciContours, SurfacesProtegeesByCol } from "@/lib/postgres/models";
 import { CustomTooltip } from "@/lib/utils/CalculTooltip";
 import { useSearchParams } from "next/navigation";
 import styles from "./biodiversite.module.scss";
@@ -28,6 +28,7 @@ import SurfacesProtegeesDataviz from "./surfacesProtegeesDataviz";
 const SurfacesProtegees = (
   props: {
     surfacesProtegees: SurfacesProtegeesByCol[];
+    epciContours: EpciContours[];
     data: Array<{
       donnee: string;
       facteur_sensibilite: string;
@@ -37,11 +38,10 @@ const SurfacesProtegees = (
     }>;
   }
 ) => {
-  const { surfacesProtegees } = props;
+  const { surfacesProtegees, epciContours } = props;
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo")!;
   const codepci = searchParams.get("codepci")!;
-  // console.log("surfacesProtegees", surfacesProtegees);
 
   const title = <>
     <div>
@@ -77,7 +77,7 @@ const SurfacesProtegees = (
             </div>
           </div>
           <div className="w-2/3">              
-            <SurfacesProtegeesDataviz surfacesProtegees={surfacesProtegees}/>
+            <SurfacesProtegeesDataviz surfacesProtegees={surfacesProtegees} epciContours={epciContours}/>
           </div>
         </div>
       ) : (
