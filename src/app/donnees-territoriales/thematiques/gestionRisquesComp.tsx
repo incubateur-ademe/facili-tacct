@@ -24,7 +24,7 @@ interface Props {
   }>;
   gestionRisques: GestionRisques[];
   carteCommunes: CarteCommunes[];
-  erosionCotiere: ErosionCotiere[];
+  erosionCotiere: ErosionCotiere[][];
   epciContours: EpciContours[];
 }
 
@@ -35,11 +35,12 @@ const allComps = [
   },
   {
     titre: "Érosion côtière",
-    Component: ({ erosionCotiere, epciContours }: Props & { activeDataTab: string }) => <ErosionCotes erosionCotiere={erosionCotiere} epciContours={epciContours} />,
+    Component: ({ erosionCotiere, epciContours }: Props & { activeDataTab: string }) => <ErosionCotes erosionCotiere={erosionCotiere[1]} epciContours={epciContours} />,
   },
 ];
 
 const GestionRisquesComp = ({ data, gestionRisques, carteCommunes, erosionCotiere, epciContours }: Props) => {
+  console.log("erosionCotiere", erosionCotiere[0].length);
   const [selectedTabId, setSelectedTabId] = useState("Arrêtés catastrophes naturelles");
   const [selectedSubTab, setSelectedSubTab] = useState("catnat");
   const searchParams = useSearchParams();
@@ -77,10 +78,11 @@ const GestionRisquesComp = ({ data, gestionRisques, carteCommunes, erosionCotier
               titre="Arrêtés catastrophes naturelles"
             /> 
           },
-          {
+          ...(erosionCotiere[0].length > 0 ? 
+          [{
             tabId: "Érosion côtière",
             label: "Érosion côtière"
-          }
+          }] : [])
         ]} 
         onTabChange={setSelectedTabId} 
         className={css({

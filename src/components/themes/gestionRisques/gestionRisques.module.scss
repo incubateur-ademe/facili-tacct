@@ -138,3 +138,40 @@
         }
     }
 }
+
+.ErosionCotiereLegendButton {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+    z-index: 400;
+}
+
+.ErosionCotiereLegendWrapper {
+    position: relative;
+    width: max-content;
+    padding: 14px 0px;
+    box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
+    font-size: 12px;
+    background: rgb(251, 252, 255);
+    border-radius: 5px;
+    border: 1px solid #dadde9;
+    .colorWrapper {
+        display: 'flex';
+        justify-content: 'space-between';
+        .color {
+            width: 20px;
+            height: 20px;
+            border-radius: 25px;
+        }
+    }
+}
+
+.ErosionCotiereLegendWrapper > div {
+    position: relative;
+    display: flex;
+    height: 25px;
+    padding: 0 10px;
+    gap: 1em;
+}
+
