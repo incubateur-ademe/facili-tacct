@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import AgricultureBiologique from "@/components/themes/biodiversite/agricultureBio";
 import { StationsClassees } from "@/components/themes/biodiversite/stationsClassees";
 import SurfacesProtegees from "@/components/themes/biodiversite/surfacesProtegees";
-import { AgricultureBio, Biodiversite, CarteCommunes, SurfacesProtegeesByCol } from "@/lib/postgres/models";
+import { AgricultureBio, Biodiversite, CarteCommunes, EpciContours, SurfacesProtegeesByCol } from "@/lib/postgres/models";
 import { useStyles } from "tss-react/dsfr";
 import styles from "../donnees.module.scss";
 
@@ -26,6 +26,7 @@ interface Props {
   carteCommunes: CarteCommunes[];
   agricultureBio: AgricultureBio[];
   surfacesProtegees: SurfacesProtegeesByCol[];
+  epciContours: EpciContours[];
 }
 
 const allComps = [
@@ -39,11 +40,21 @@ const allComps = [
   },
   {
     titre: "Surfaces protégées",
-    Component: ({data, surfacesProtegees}: Props & { activeDataTab: string }) => <SurfacesProtegees data={data} surfacesProtegees={surfacesProtegees} />,
+    Component: (
+      {data, surfacesProtegees, epciContours}: Props & { activeDataTab: string }
+    ) => <SurfacesProtegees data={data} surfacesProtegees={surfacesProtegees} epciContours={epciContours}/>,
   }
 ];
 
-const BiodiversiteComp = ({ data, biodiversite, carteCommunes, agricultureBio, surfacesProtegees }: Props) => {
+const BiodiversiteComp = (
+  { 
+    data, 
+    biodiversite,
+    carteCommunes, 
+    agricultureBio, 
+    surfacesProtegees, 
+    epciContours
+  }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState("Agriculture");
   const [selectedSubTab, setSelectedSubTab] = useState("Agriculture biologique");
   const searchParams = useSearchParams();
@@ -136,6 +147,7 @@ const BiodiversiteComp = ({ data, biodiversite, carteCommunes, agricultureBio, s
                     carteCommunes={carteCommunes}
                     agricultureBio={agricultureBio}
                     surfacesProtegees={surfacesProtegees}
+                    epciContours={epciContours}
                   />
                 );
               })()}
