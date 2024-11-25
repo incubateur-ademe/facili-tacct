@@ -21,7 +21,6 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
 
 const ErosionCotes = (props: { erosionCotiere: ErosionCotiere[], epciContours: EpciContours[] }) => {
   const { erosionCotiere, epciContours } = props;
-  console.log("erosionCotiere", erosionCotiere);
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo")!;
   const codepci = searchParams.get("codepci")!;
