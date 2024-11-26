@@ -19,7 +19,7 @@
 // autres types d’espaces de protection : CELRL    	conservatoire du littoral et des rivages lacustres
 
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
-import { CarteCommunes, EpciContours, SurfacesProtegeesByCol } from "@/lib/postgres/models";
+import { CarteCommunes, SurfacesProtegeesByCol } from "@/lib/postgres/models";
 import { CustomTooltip } from "@/lib/utils/CalculTooltip";
 import { useSearchParams } from "next/navigation";
 import styles from "./biodiversite.module.scss";
@@ -28,7 +28,6 @@ import SurfacesProtegeesDataviz from "./surfacesProtegeesDataviz";
 const SurfacesProtegees = (
   props: {
     surfacesProtegees: SurfacesProtegeesByCol[];
-    epciContours: EpciContours[];
     data: Array<{
       donnee: string;
       facteur_sensibilite: string;
@@ -39,10 +38,11 @@ const SurfacesProtegees = (
     carteCommunes: CarteCommunes[];
   }
 ) => {
-  const { surfacesProtegees, epciContours, carteCommunes } = props;
+  const { surfacesProtegees, carteCommunes } = props;
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo")!;
   const codepci = searchParams.get("codepci")!;
+  const surfaceTerritoire = codgeo ? carteCommunes.filter(e => e.code_commune === codgeo)[0].surface : carteCommunes.map(el => el.surface).reduce((a, b) => a + b, 0);
 
   const title = <>
     <div>
@@ -62,6 +62,7 @@ const SurfacesProtegees = (
         <div className={styles.container}>
           <div className="w-1/3">
             <div className={styles.explicationWrapper}>
+              La surface totale du territoire est de {surfaceTerritoire} ha.
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?"/>
             </div>
             <div className="px-4">

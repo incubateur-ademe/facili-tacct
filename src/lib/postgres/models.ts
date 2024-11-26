@@ -141,6 +141,7 @@ export type CarteCommunes = {
   libelle_epci: string;
   precarite_logement?: number;
   catnat?: Object;
+  surface: number;
 };
 
 export type EpciContours = {
