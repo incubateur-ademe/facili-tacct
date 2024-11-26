@@ -97,6 +97,21 @@ export type CommunesIndicateursDto = {
   };
 };
 
+export type CommunesContoursDto = {
+  type: string;
+  properties: {
+    epci: string;
+    libelle_epci: string;
+    libelle_commune: string;
+    code_commune: string;
+    coordinates: string;
+  };
+  geometry: {
+    coordinates: number[][][][];
+    type: string;
+  };
+};
+
 export type ClcDto = {
   geometry: GeoGeometryObjects;
   properties: {
