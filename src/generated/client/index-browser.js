@@ -244,7 +244,8 @@ exports.Prisma.Communes_dromScalarFieldEnum = {
   libelle_epci: 'libelle_epci',
   coordinates: 'coordinates',
   densite_bati: 'densite_bati',
-  precarite_logement: 'precarite_logement'
+  precarite_logement: 'precarite_logement',
+  surface: 'surface'
 };
 
 exports.Prisma.Ressources_eauScalarFieldEnum = {

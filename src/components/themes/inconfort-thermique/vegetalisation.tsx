@@ -107,7 +107,7 @@ const Vegetalisation = (props: {
                       </div>
                     </HtmlTooltip>
                     <p style={{ padding: "1em", margin: "0" }}>
-                      Source : <b style={{ color: "#0063CB" }}>CORINE Land Cover</b>
+                      Source : CORINE Land Cover
                     </p>
                   </div>
                   : clc ? <Image src={GraphImage} alt="" width={0} height={0} style={{ width: "90%", height: "auto" }} />
