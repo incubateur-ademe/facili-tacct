@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 
 import { PrelevementEau } from "@/components/themes/ressourcesEau/prelevementEau";
 import { RessourcesEau } from "@/lib/postgres/models";
+import { TabTooltip } from "@/lib/utils/TabTooltip";
 import { useStyles } from "tss-react/dsfr";
 import styles from "../donnees.module.scss";
 
@@ -62,7 +63,11 @@ const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
         tabs={[
           {
             tabId: "Prélèvements en eau",
-            label: "Prélèvements en eau"
+            label: <TabTooltip 
+              selectedTab={selectedTabId} 
+              tooltip="Les prélèvements correspondent à l’eau douce extraite des eaux souterraines et des eaux de surface pour les besoins des activités humaines." 
+              titre="Prélèvements en eau"
+            /> 
           },
         ]} 
         onTabChange={setSelectedTabId} 
