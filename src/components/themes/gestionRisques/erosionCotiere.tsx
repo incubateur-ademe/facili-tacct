@@ -40,7 +40,8 @@ const ErosionCotes = (props: { erosionCotiere: ErosionCotiere[], epciContours: E
           <div className="w-5/12">
             <div className={styles.explicationWrapper}>
               <p>
-                 
+                L’érosion est un phénomène qui touche inégalement les côtes, en fonction de leur profil géologique. 
+                Elle s’observe sur des temps longs mais peut connaître des épisodes brutaux selon les endroits.
               </p>
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?"/>
             </div>
@@ -48,7 +49,7 @@ const ErosionCotes = (props: { erosionCotiere: ErosionCotiere[], epciContours: E
               <p>
                 L'érosion grignote nos côtes : près de 20% du littoral français recule face à la mer. 
                 Ce phénomène naturel s'accélère avec le changement climatique, la hausse du niveau des mers et la multiplication des tempêtes notamment. 
-                Les chiffres sont alarmants. 37% des côtes sableuses s'érodent, soit 700 kilomètres - la distance Paris-Marseille - qui disparaissent peu à peu. 
+                Les chiffres sont préoccupants. 37% des côtes sableuses s'érodent, soit 700 kilomètres - la distance Paris-Marseille - qui disparaissent peu à peu. 
                 En 50 ans, la mer a englouti l'équivalent de la ville de La Rochelle : 30 km² de terres perdues.   
               </p>
                 <p>
@@ -70,8 +71,8 @@ const ErosionCotes = (props: { erosionCotiere: ErosionCotiere[], epciContours: E
                 ⇒ D'ici 2050 : 5200 logements et 1400 locaux d'activité seront menacés, pour un coût estimé à 1,2 milliard d'euros.
               </p>
               <p>- - - - <br></br>
-                Plan National d'Adaptation au Changement Climatique - PNACC 3 :
-                Accompagner l’adaptation du tourisme culturel, de montagne, littoral et nautique (mesure 35)
+                Plan National d'Adaptation au Changement Climatique (PNACC 3) : 
+                La mesure 35 prévoit d’accompagner l’adaptation du tourisme culturel, de montagne, littoral et nautique.
               </p>
             </div>
           </div>

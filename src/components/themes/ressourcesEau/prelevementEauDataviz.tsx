@@ -22,7 +22,7 @@ const PrelevementEauDataViz = ({
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.prelevementEauGraphTitleWrapper}>
-        <h2>Prélèvements en eau selon les grands usages</h2>
+        <h2>Prélèvements en eau par usages</h2>
         <SubTabs data={["Répartition", "Évolution"]} defaultTab={datavizTab} setValue={setDatavizTab} />
       </div>
       {
