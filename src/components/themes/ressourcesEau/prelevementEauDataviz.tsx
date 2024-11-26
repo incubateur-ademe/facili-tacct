@@ -48,7 +48,7 @@ const PrelevementEauDataViz = ({
         )
       }
       <p style={{ padding: "1em", margin: "0" }}>
-        Source : <b style={{ color: "#0063CB" }}>BNPE, Catalogue DiDo (Indicateurs territoriaux de développement durable - ITDD)</b>
+        Source : BNPE, Catalogue DiDo (Indicateurs territoriaux de développement durable - ITDD)
       </p>
     </div>
   )

@@ -98,7 +98,7 @@ const CatnatDataViz = (props: Props) => {
         ) : ""
       }
       <p style={{ padding: "1em", margin: "0" }}>
-        Source : <b style={{ color: "#0063CB" }}>Base nationale de Gestion ASsistée des Procédures Administratives relatives aux Risques (GASPAR). Dernière mise à jour : septembre 2024</b>
+        Source : Base nationale de Gestion ASsistée des Procédures Administratives relatives aux Risques (GASPAR). Dernière mise à jour : septembre 2024
       </p>
     </div>
   )

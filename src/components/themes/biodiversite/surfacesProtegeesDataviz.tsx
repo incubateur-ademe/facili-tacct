@@ -101,7 +101,7 @@ const SurfacesProtegeesDataviz = (
       }
       
       <p style={{ padding: "1em", margin: "0" }}>
-        Source : <b style={{ color: "#0063CB" }}>SDES</b>
+        Source : SDES
       </p>
     </div>
   );
