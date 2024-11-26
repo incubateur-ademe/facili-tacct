@@ -42,36 +42,36 @@ export const themes = {
       risque: "Moyen",
       donnee: "LOREM IPSUM DE LA VEGETALISATION",
     },
-    {
-      id: 6,
-      titre: "LCZ",
-      facteur_sensibilite: "Urbanisme",
-      risque: "Moyen",
-      donnee: "LOREM IPSUM DE LA VEGETALISATION",
-    },
+    // {
+    //   id: 6,
+    //   titre: "LCZ",
+    //   facteur_sensibilite: "Urbanisme",
+    //   risque: "Moyen",
+    //   donnee: "LOREM IPSUM DE LA VEGETALISATION",
+    // },
   ],
   biodiversite: [
-    {
-      id: 0,
-      titre: "Stations classées",
-      facteur_sensibilite: "A déterminer",
-      risque: "",
-      donnee: "",
-    },
+    // {
+    //   id: 0,
+    //   titre: "Stations classées",
+    //   facteur_sensibilite: "A déterminer",
+    //   risque: "",
+    //   donnee: "",
+    // },
     {
       id: 1,
       titre: "Agriculture biologique",
-      facteur_sensibilite: "Agriculture",
+      facteur_sensibilite: "Agriculture biologique",
       risque: "",
       donnee: "",
     },
-    {
-      id: 2,
-      titre: "Surfaces protégées",
-      facteur_sensibilite: "Surfaces protégées",
-      risque: "",
-      donnee: "",
-    }
+    // {
+    //   id: 2,
+    //   titre: "Surfaces protégées",
+    //   facteur_sensibilite: "Surfaces protégées",
+    //   risque: "",
+    //   donnee: "",
+    // }
   ],
   ressourcesEau: [
     {
