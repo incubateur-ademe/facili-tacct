@@ -48,7 +48,6 @@ const SurfacesProtegeesDataviz = (
   const codgeo = searchParams.get("codgeo")!;
   const [datavizTab, setDatavizTab] = useState<string>("Répartition");
   const filteredData = codgeo ? surfacesProtegees.filter(e => e.code_geographique === codgeo) : surfacesProtegees;
-  console.log("filteredData", filteredData);
   const data = SurfacesProtegeesGraphMapper(filteredData);
 
   return (
