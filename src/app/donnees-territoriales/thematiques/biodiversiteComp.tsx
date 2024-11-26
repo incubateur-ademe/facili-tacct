@@ -11,6 +11,7 @@ import AgricultureBiologique from "@/components/themes/biodiversite/agricultureB
 import { StationsClassees } from "@/components/themes/biodiversite/stationsClassees";
 import SurfacesProtegees from "@/components/themes/biodiversite/surfacesProtegees";
 import { AgricultureBio, Biodiversite, CarteCommunes, EpciContours, SurfacesProtegeesByCol } from "@/lib/postgres/models";
+import { TabTooltip } from "@/lib/utils/TabTooltip";
 import { useStyles } from "tss-react/dsfr";
 import styles from "../donnees.module.scss";
 
@@ -78,8 +79,12 @@ const BiodiversiteComp = (
         selectedTabId={selectedTabId} 
         tabs={[
           {
-            tabId: "Agriculture biologique",
-            label: "Agriculture biologique"
+            tabId: "",
+            label: <TabTooltip 
+              selectedTab={selectedTabId} 
+              tooltip="L’agriculture biologique fait partie d’un ensemble de pratiques agricoles respectueuses des équilibres écologiques qui contribue à la préservation des sols et des ressources naturelles. " 
+              titre="Agriculture biologique"
+            /> 
           },
           // {
           //   tabId: "Surfaces protégées",
