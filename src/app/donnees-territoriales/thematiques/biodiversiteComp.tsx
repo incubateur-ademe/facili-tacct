@@ -55,7 +55,7 @@ const BiodiversiteComp = (
     surfacesProtegees, 
     epciContours
   }: Props) => {
-  const [selectedTabId, setSelectedTabId] = useState("Agriculture");
+  const [selectedTabId, setSelectedTabId] = useState("Agriculture biologique");
   const [selectedSubTab, setSelectedSubTab] = useState("Agriculture biologique");
   const searchParams = useSearchParams();
   const codepci = searchParams.get("codepci")!;
@@ -77,18 +77,14 @@ const BiodiversiteComp = (
       <Tabs 
         selectedTabId={selectedTabId} 
         tabs={[
-          // {
-          //   tabId: "A déterminer",
-          //   label: "A déterminer"
-          // },
           {
-            tabId: "Agriculture",
-            label: "Agriculture"
+            tabId: "Agriculture biologique",
+            label: "Agriculture biologique"
           },
-          {
-            tabId: "Surfaces protégées",
-            label: "Surfaces protégées"
-          }
+          // {
+          //   tabId: "Surfaces protégées",
+          //   label: "Surfaces protégées"
+          // }
         ]} 
         onTabChange={setSelectedTabId} 
         className={css({
@@ -119,7 +115,7 @@ const BiodiversiteComp = (
           }
         })}>
         <div className={styles.formContainer}>
-          <div className={styles.titles}>
+          {/* <div className={styles.titles}>
             {data
               .filter(el => el.facteur_sensibilite === selectedTabId)
               .map((element, i) => (
@@ -133,7 +129,7 @@ const BiodiversiteComp = (
                   {element.titre}
                 </button>
               ))}
-          </div>
+          </div> */}
           <div className={styles.bubble}>
             <div className={styles.bubbleContent} style={darkClass}>
               {(() => {

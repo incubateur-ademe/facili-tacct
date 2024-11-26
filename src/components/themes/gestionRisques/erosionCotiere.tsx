@@ -40,7 +40,7 @@ const ErosionCotes = (props: { erosionCotiere: ErosionCotiere[], epciContours: E
           <div className="w-5/12">
             <div className={styles.explicationWrapper}>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut cursus sed lacus eget aliquam. Aenean est felis, commodo vel tincidunt eu, hendrerit sit amet neque. 
+                 
               </p>
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?"/>
             </div>

@@ -16,7 +16,7 @@ const AgricultureBiologique = (props: {
     titre: string;
   }>;
 }) => {
-  const { agricultureBio, data } = props;
+  const { agricultureBio } = props;
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo")!;
   const codepci = searchParams.get("codepci")!;
