@@ -43,7 +43,7 @@ const allComps = [
     titre: "Surfaces protégées",
     Component: (
       {data, surfacesProtegees, epciContours, carteCommunes}: Props & { activeDataTab: string }
-    ) => <SurfacesProtegees data={data} surfacesProtegees={surfacesProtegees} epciContours={epciContours} carteCommunes={carteCommunes}/>,
+    ) => <SurfacesProtegees data={data} surfacesProtegees={surfacesProtegees} carteCommunes={carteCommunes}/>,
   }
 ];
 
