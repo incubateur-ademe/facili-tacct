@@ -48,7 +48,7 @@ const PrelevementEauDataViz = ({
         )
       }
       <p style={{ padding: "1em", margin: "0" }}>
-        Source : <b style={{ color: "#0063CB" }}>XXXXXXX</b>
+        Source : XXXXXXX
       </p>
     </div>
   )
