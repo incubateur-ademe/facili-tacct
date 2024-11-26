@@ -42,7 +42,7 @@ export const AgricultureBioPieCharts = ( { agricultureBio }: { agricultureBio: A
   ) / (surfaceTotale2019 - surfaceCertifiee2019 - surfaceEnConversion2019) * 100;
 
   return (
-    <div className="flex flex-row justify-center gap-20 p-12">
+    <div className="flex flex-row justify-center gap-20 p-12 bg-white">
       <div className={styles.dataWrapper}>
         <Image src={surfaceCertifeeIcon} alt="" />
         <p>Surface <b>déjà certifiée</b></p>
