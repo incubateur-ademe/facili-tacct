@@ -1,43 +1,64 @@
 "use client";
 
-import { EpciContoursDto } from "@/lib/dto";
+import { CommunesContoursDto } from "@/lib/dto";
 import { MapContainer } from "@/lib/react-leaflet";
-import { LatLngBoundsExpression, LatLngExpression } from "leaflet";
+import { GeoJsonObject } from "geojson";
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { useRef } from "react";
-import { Polygon } from "react-leaflet";
+import { useEffect, useRef, useState } from "react";
+import { GeoJSON, useMap } from "react-leaflet";
 
-
-
-const getCentroid = (arr: number[][]) => {
-  return arr?.reduce(
-    (x: number[], y: number[]) => {
-      return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
-    },
-    [0, 0],
-  );
-};
-
-
-export const MapContourEpci = (props: {
-  epciContours: EpciContoursDto[];
+export const MapContourTerritoire = (props: {
+  territoireContours: CommunesContoursDto[];
+  pourcentage: number;
 }) => {
-  const { epciContours } = props;
+  const { territoireContours, pourcentage } = props;
   const mapRef = useRef(null);
+
+  const ContourTerritoire = () => {
+    const [data, setData] = useState<CommunesContoursDto[]>();
+    const map = useMap();
+  
+    useEffect(() => {
+      setData(territoireContours);
+    }, [territoireContours]);
+  
+    if (data) {
+      const geojsonObject = L.geoJSON(data as unknown as GeoJsonObject);
+      map.fitBounds(geojsonObject.getBounds()); 
+      return <GeoJSON data={data as unknown as GeoJsonObject} style={style}/>;
+    } else {
+      return null;
+    }
+  };
+
+  const style = () => {
+    return {
+      fillColor: "transparent",
+      weight: 1,
+      opacity: 1,
+      color: "#161616",
+      fillOpacity: 1,
+    }
+  };
 
   return (
     <MapContainer
       ref={mapRef}
-      style={{ height: "500px", width: "100%", backgroundColor: "white" }}
+      style={{ height: "100%", width: "100%", backgroundColor: "#fdfdfd", display: "flex" }}
       attributionControl={false}
       zoomControl={false}
-      bounds={epciContours[0].geometry.coordinates[0][0] as unknown as LatLngBoundsExpression }
-      boundsOptions={{ padding: [1, 1] }}
+      scrollWheelZoom={false}
+      // bounds={territoireContours[0].geometry.coordinates[0][0] as unknown as LatLngBoundsExpression }
+      dragging={false}
+      boundsOptions={{ padding: [0, 0] }}
     >
-      <Polygon 
-        positions={epciContours[0].geometry.coordinates[0][0] as unknown as LatLngExpression[][]}
+      {/* <Polygon 
+        positions={territoireContours[0].geometry.coordinates[0][0] as unknown as LatLngExpression[][]}
         pathOptions={{color: "#161616", fillColor: "transparent"}}
-      />
+      /> */}
+      <div style={{backgroundColor: "lightblue", opacity: "0.5", height: `${pourcentage}%`, width: "100%", alignSelf: "end"}} />
+      <ContourTerritoire />
     </MapContainer>
   );
 };
