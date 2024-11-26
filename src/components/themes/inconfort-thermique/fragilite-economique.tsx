@@ -87,7 +87,7 @@ export const FragiliteEconomique = ({ carteCommunes }: {
                   <Legend data={"precarite_log"} />
                   <Map data={"precarite_log"} carteCommunes={communesMap} />
                   <p style={{padding: "1em", margin: "0"}}>
-                    Source : <b style={{ color: "#0063CB" }}>Observation de la précarité énergétique (ONPE), GEODIP</b>
+                    Source : Observation de la précarité énergétique (ONPE), GEODIP
                   </p>
                 </div>
               </div>
