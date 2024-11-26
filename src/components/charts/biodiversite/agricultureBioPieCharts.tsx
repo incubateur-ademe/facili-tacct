@@ -1,5 +1,4 @@
 import surfaceCertifeeIcon from "@/assets/icons/agriculture_bio_surface_certifiee_icon.svg";
-import surfaceClassiqueIcon from "@/assets/icons/agriculture_bio_surface_classique_icon.svg";
 import surfaceEnConversionIcon from "@/assets/icons/agriculture_bio_surface_conversion_icon.svg";
 import { AgricultureBio } from "@/lib/postgres/models";
 import { HtmlTooltip } from "@/lib/utils/HtmlTooltip";
@@ -100,7 +99,7 @@ export const AgricultureBioPieCharts = ( { agricultureBio }: { agricultureBio: A
           </div>
         </HtmlTooltip>
       </div>
-      <div className={styles.dataWrapper}>
+      {/* <div className={styles.dataWrapper}>
         <Image src={surfaceClassiqueIcon} alt="" />
         <p>Surface <b>restante</b></p>
         <HtmlTooltip 
@@ -128,7 +127,7 @@ export const AgricultureBioPieCharts = ( { agricultureBio }: { agricultureBio: A
             </div>
           </div>
         </HtmlTooltip>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -15,7 +15,7 @@ type GraphData = {
   "Surface en conversion agriculture biologique": number;
   // "Surface totale agriculture biologique": number;
   // "Surface agricole totale": number;
-  "Surface restante à convertir": number;
+  // "Surface restante à convertir": number;
   // "part_agribio": number;
   annee: string;
 }
@@ -38,7 +38,7 @@ const graphDataFunct = (filteredYears: string[], data: AgricultureBio[]) => {
       "Surface en conversion agriculture biologique": Sum(genericObjects("Surface en conversion", "LIBELLE_SOUS_CHAMP")),
       // "Surface totale agriculture biologique": Sum(genericObjects("Surface totale", "LIBELLE_SOUS_CHAMP")),
       // "Surface agricole totale": Sum(genericObjects("saue", "VARIABLE")),
-      "Surface restante à convertir": Sum(genericObjects("saue", "VARIABLE")) - Sum(genericObjects("Surface totale", "LIBELLE_SOUS_CHAMP")),
+      // "Surface restante à convertir": Sum(genericObjects("saue", "VARIABLE")) - Sum(genericObjects("Surface totale", "LIBELLE_SOUS_CHAMP")),
       // "part_agribio": Sum(genericObjects("part_agribio_surf")),
       annee: year.split("_")[1],
     }
@@ -76,12 +76,12 @@ export const AgricultureBioBarChart = (
       valeur: Sum(graphData.map(e => e["Surface en conversion agriculture biologique"])),
       couleur: "#00949D"
     },
-    {
-      variable: "Surface restante à convertir",
-      texte_raccourci: "Surface restante",
-      valeur: Sum(graphData.map(e => e["Surface restante à convertir"])),
-      couleur: "#BB43BD"
-    },
+    // {
+    //   variable: "Surface restante à convertir",
+    //   texte_raccourci: "Surface restante",
+    //   valeur: Sum(graphData.map(e => e["Surface restante à convertir"])),
+    //   couleur: "#BB43BD"
+    // },
   ]
 
   const CustomTooltip = ({ data }: BarTooltipProps<BarDatum>) => {
