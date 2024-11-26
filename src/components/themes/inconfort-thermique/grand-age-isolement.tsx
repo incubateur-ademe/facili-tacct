@@ -174,7 +174,7 @@ export const GrandAgeIsolement = (props: {
                 <Loader />
               )}
               <p style={{ padding: "1em", margin: "0" }}>
-                Source : <b style={{ color: "#0063CB" }}>Observatoire des territoires</b>
+                Source : Observatoire des territoires
               </p>
             </div>
           </div>

@@ -6,9 +6,10 @@ import { SurfacesProtegeesDto } from '@/lib/dto';
 import { SurfacesProtegeesGraphMapper } from '@/lib/mapper/biodiversite';
 import { CommunesContourMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, SurfacesProtegeesByCol } from '@/lib/postgres/models';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { ResponsiveTreeMap } from '@nivo/treemap';
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from "./biodiversite.module.scss";
 
 type GraphData = {
@@ -51,17 +52,26 @@ const SurfacesProtegeesDataviz = (
   const territoireContourMap = carteCommunes.map(CommunesContourMapper);
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo")!;
-  const [datavizTab, setDatavizTab] = useState<string>("Répartition");
+  const [datavizTab, setDatavizTab] = useState<string>("Chiffre");
+  const [surfacesProtegeesSurfaces, setSurfacesProtegeesSurfaces] = useState<number>(0);
   const filteredData = codgeo ? surfacesProtegees.filter(e => e.code_geographique === codgeo) : surfacesProtegees;
   const filteredTerritoire = codgeo ? territoireContourMap.filter(e => e.properties.code_commune === codgeo) : territoireContourMap;
+  const surfaceTerritoire = codgeo ? carteCommunes.filter(e => e.code_commune === codgeo)[0].surface : carteCommunes.map(el => el.surface).reduce((a, b) => a + b, 0);
   const data = SurfacesProtegeesGraphMapper(filteredData);
-  console.log("surfacesProtegees", 100 * (Filter(surfacesProtegees, "ZNIEFF1")/156465));
 
-  const varTest = 100 * (Filter(surfacesProtegees, "ZNIEFF1")/156465)
+  useEffect(() => {
+    const surfaceTemp = data.children.map(e => {
+      const children = e.children!;
+      return children.map(e => e.loc).reduce((a, b) => a + b, 0);
+    });
+    const sum = surfaceTemp.reduce((a, b) => a + b, 0);
+    setSurfacesProtegeesSurfaces(sum);
+  }, []);
+  
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.dataVizGraphTitleWrapper} style={{ padding: "1rem" }}>
-        <h2>Surfaces protégées (zonages d’enjeux écologique et dispositifs de protection)</h2>
+        <h2>Surfaces protégées</h2>
         <SubTabs data={["Répartition", "Chiffre"]} defaultTab={datavizTab} setValue={setDatavizTab} />
       </div>
       {
@@ -102,15 +112,15 @@ const SurfacesProtegeesDataviz = (
         ) : (
           <>
             <div style={{backgroundColor: "white", height: "500px", width: "100%", display: "flex", alignItems: "end", flexDirection: "column"}}>
-              <h2>{varTest}%</h2>
-              <MapContourTerritoire territoireContours={filteredTerritoire} pourcentage={varTest}/>
+              <h4>Pourcentage de surfaces protégées : {Round(100 * (surfacesProtegeesSurfaces / surfaceTerritoire), 2)} %</h4>
+              <MapContourTerritoire territoireContours={filteredTerritoire} pourcentage={Round(100 * (surfacesProtegeesSurfaces / surfaceTerritoire), 2)}/>
             </div>
           </>
         )
       }
       
       <p style={{ padding: "1em", margin: "0" }}>
-        Source : <b style={{ color: "#0063CB" }}>SDES</b>
+        Source : SDES
       </p>
     </div>
   );

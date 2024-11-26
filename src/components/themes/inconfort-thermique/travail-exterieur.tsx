@@ -146,7 +146,7 @@ export const TravailExterieur = (props: {
               </p>
               {graphData ? <PieChart1 graphData={graphData} /> : <Loader />}
               <p style={{ padding: "1em", margin: "0" }}>
-                Source : <b style={{ color: "#0063CB" }}>INSEE, Emplois au lieu de travail par sexe, secteur d'activité économique et catégorie socioprofessionnelle, 2021</b>
+                Source : INSEE, Emplois au lieu de travail par sexe, secteur d'activité économique et catégorie socioprofessionnelle, 2021
               </p>
             </div>
           </div>

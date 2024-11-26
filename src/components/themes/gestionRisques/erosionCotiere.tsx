@@ -86,7 +86,7 @@ const ErosionCotes = (props: { erosionCotiere: ErosionCotiere[], epciContours: E
                   </div>
                 </HtmlTooltip>
               <p style={{ padding: "1em", margin: "0" }}>
-                Source : <b style={{ color: "#0063CB" }}>CEREMA</b>
+                Source : CEREMA
               </p>
             </div>              
           </div>
