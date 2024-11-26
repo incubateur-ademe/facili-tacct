@@ -12,7 +12,6 @@ import { AgeBati } from "@/components/themes/inconfort-thermique/age-bati";
 import { DensiteBati } from "@/components/themes/inconfort-thermique/densite-bati";
 import { FragiliteEconomique } from "@/components/themes/inconfort-thermique/fragilite-economique";
 import { GrandAgeIsolement } from "@/components/themes/inconfort-thermique/grand-age-isolement";
-import LCZ from "@/components/themes/inconfort-thermique/lcz";
 import { TravailExterieur } from "@/components/themes/inconfort-thermique/travail-exterieur";
 import { CarteCommunes, CLC, CollectivitesSearchbar, InconfortThermique } from "@/lib/postgres/models";
 import { GetClcEpci } from "@/lib/queries/postgis/cartographie";
@@ -75,12 +74,12 @@ const allComps = [
       {carteCommunes}: Props & { activeDataTab: string }
       ) => <DensiteBati carteCommunes={carteCommunes} />,
   },
-  {
-    titre: "LCZ",
-    Component: (
-      {carteCommunes, collectivite}: Props & { activeDataTab: string }
-      ) => <LCZ carteCommunes={carteCommunes} collectivite={collectivite} />,
-  },
+  // {
+  //   titre: "LCZ",
+  //   Component: (
+  //     {carteCommunes, collectivite}: Props & { activeDataTab: string }
+  //     ) => <LCZ carteCommunes={carteCommunes} collectivite={collectivite} />,
+  // },
   {
     titre: "Végétalisation",
     Component: (
