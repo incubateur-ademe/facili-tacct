@@ -21,6 +21,8 @@ const AgricultureBiologique = (props: {
   const codgeo = searchParams.get("codgeo")!;
   const codepci = searchParams.get("codepci")!;
   const [datavizTab, setDatavizTab] = useState<string>("Répartition");
+  const nombreExploitations = agricultureBio.find(obj => obj.VARIABLE === "saue")?.nombre_2022!;
+  const surfaceTotale = agricultureBio.find(obj => obj.VARIABLE === "saue")?.surface_2022!;
 
   const title = <>
     <div>
@@ -32,30 +34,54 @@ const AgricultureBiologique = (props: {
         <li>les superficies en conversion (la durée de conversion variant de 2 ans pour les cultures annuelles à 3 ans pour les cultures pérennes).</li>
       </ul>
     </div>
+    <div>
+      Cet indicateur fait partie du kit des indicateurs de développement durable fourni dans le cadre de l’Agenda 2030 et des 17 Objectifs de Développement Durable (ODD).
+    </div>
   </>;
 
   return (
     <>
       {agricultureBio ? (
         <div className={styles.container}>
-          <div className="w-1/3">
+          <div className="w-1/2">
             <div className={styles.explicationWrapper}>
+              <p>
+                Dans votre EPCI, il existe {nombreExploitations} exploitations, représentant un total de {surfaceTotale} hectares.
+              </p>
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?"/>
             </div>
             <div className="px-4">
               <p>
-                Cet indicateur fait partie du kit des indicateurs de développement durable fourni dans le cadre de l’Agenda 2030 et 
-                des 17 Objectifs de Développement Durable (ODD)
+                L'effondrement de la biodiversité n’est pas une fiction : 69 % des espèces sauvages ont disparu à l'échelle de la planète entre 1970 et 2018, 
+                du fait notamment de la dégradation ou de la disparition de leurs habitats naturels. L’agriculture dispose de deux leviers complémentaires 
+                de protection de la biodiversité : adopter des pratiques moins intensives et favoriser la diversité des paysages. 
+                Les cultures à bas niveau d’intrants, la non-utilisation de produits chimiques de synthèse, la non-utilisation d'OGM, 
+                le recyclage des matières organiques, la rotation des cultures et la lutte biologique participent à ces deux objectifs. 
               </p>
               <p>
-                L’agriculture biologique regroupe un ensemble de pratiques agricoles respectueuses des équilibres écologiques qui 
-                contribue à la préservation des sols et des ressources naturelles (non-utilisation de produits chimiques de synthèse, 
-                la non-utilisation d'OGM, le recyclage des matières organiques, la rotation des cultures et la lutte biologique). 
-                L'agriculture biologique apporte une réponse essentielle à la préservation de notre environnement. 
+                Si l’agriculture biologique n’est pas une solution parfaite, elle reste aujourd’hui l’une des meilleures réponses, 
+                aux côtés des pratiques à bas-intrants, pour préserver la biodiversité. Alors que 70 % des sols agricoles sont dégradés en Europe, 
+                ses effets positifs sur la vie souterraine sont avérés. 
+                Des écosystèmes renforcés sont des écosystèmes plus résilients aux impacts du changement climatique.
+              </p>
+              <p>
+                ⇒ Une biodiversité plus riche dans les parcelles en agriculture biologique : +32 % d'individus et +23 % d'espèces par rapport à l’agriculture conventionnelle. 
+              </p>
+              <p>
+                ⇒ 70 % des indicateurs biologiques des sols s'améliorent après conversion. 
+              </p>
+              <p>
+                ⇒ Une pollinisation 2,4 fois plus efficace qu'en agriculture conventionnelle.
+              </p>
+              <p>
+                ⇒ Une meilleure résistance à la sécheresse : disponibilité en eau dans les sols améliorée de 4 % à 45 %.
+              </p>
+              <p>
+                ⇒ Jusqu'à 35 % de carbone supplémentaire stocké dans les sols.
               </p>
             </div>
           </div>
-          <div className="w-2/3">              
+          <div className="w-1/2">              
             <AgricultureBioDataViz 
               agricultureBio={agricultureBio}
               datavizTab={datavizTab}
