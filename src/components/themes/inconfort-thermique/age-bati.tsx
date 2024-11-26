@@ -115,7 +115,7 @@ export const AgeBati = (props: {
               </p>
               {chartData ? <BarChart chartData={chartData} /> : <Loader />}
               <p style={{ padding: "1em", margin: "0" }}>
-                Source : <b style={{ color: "#0063CB" }}>INSEE</b>
+                Source : INSEE
               </p>
             </div>
           </div>

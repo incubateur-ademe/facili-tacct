@@ -168,6 +168,7 @@ export const GetStringCommune = async (collectivite: string): Promise<CarteCommu
           libelle_epci: "",
           precarite_logement: 0,
           geometry: "",
+          surface: 0,
         },
       ];
     }
@@ -205,6 +206,7 @@ export const GetStringEpci = async (collectivite: string): Promise<CarteCommunes
           libelle_epci: "",
           precarite_logement: 0,
           geometry: "",
+          surface: 0,
         },
       ];
     }
@@ -241,6 +243,7 @@ export const GetCodeCommune = async (collectivite: string): Promise<CarteCommune
           libelle_epci: "",
           precarite_logement: 0,
           geometry: "",
+          surface: 0,
         },
       ];
     }
@@ -277,6 +280,7 @@ export const GetCodeEpci = async (collectivite: string): Promise<CarteCommunes[]
           libelle_epci: "",
           precarite_logement: 0,
           geometry: "",
+          surface: 0,
         },
       ];
     }

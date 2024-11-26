@@ -18,6 +18,7 @@ export const GetCommunes = async (code: string): Promise<CarteCommunes[]> => {
       coordinates, 
       precarite_logement,
       densite_bati,
+      surface,
       ST_AsGeoJSON(geometry) geometry 
       FROM postgis."communes_drom" WHERE epci=${code};`;
     console.timeEnd("Query Execution Time");

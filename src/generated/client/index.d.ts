@@ -8331,12 +8331,14 @@ export namespace Prisma {
     pk: number | null
     densite_bati: number | null
     precarite_logement: number | null
+    surface: number | null
   }
 
   export type Communes_dromSumAggregateOutputType = {
     pk: number | null
     densite_bati: number | null
     precarite_logement: number | null
+    surface: number | null
   }
 
   export type Communes_dromMinAggregateOutputType = {
@@ -8348,6 +8350,7 @@ export namespace Prisma {
     coordinates: string | null
     densite_bati: number | null
     precarite_logement: number | null
+    surface: number | null
   }
 
   export type Communes_dromMaxAggregateOutputType = {
@@ -8359,6 +8362,7 @@ export namespace Prisma {
     coordinates: string | null
     densite_bati: number | null
     precarite_logement: number | null
+    surface: number | null
   }
 
   export type Communes_dromCountAggregateOutputType = {
@@ -8370,6 +8374,7 @@ export namespace Prisma {
     coordinates: number
     densite_bati: number
     precarite_logement: number
+    surface: number
     _all: number
   }
 
@@ -8378,12 +8383,14 @@ export namespace Prisma {
     pk?: true
     densite_bati?: true
     precarite_logement?: true
+    surface?: true
   }
 
   export type Communes_dromSumAggregateInputType = {
     pk?: true
     densite_bati?: true
     precarite_logement?: true
+    surface?: true
   }
 
   export type Communes_dromMinAggregateInputType = {
@@ -8395,6 +8402,7 @@ export namespace Prisma {
     coordinates?: true
     densite_bati?: true
     precarite_logement?: true
+    surface?: true
   }
 
   export type Communes_dromMaxAggregateInputType = {
@@ -8406,6 +8414,7 @@ export namespace Prisma {
     coordinates?: true
     densite_bati?: true
     precarite_logement?: true
+    surface?: true
   }
 
   export type Communes_dromCountAggregateInputType = {
@@ -8417,6 +8426,7 @@ export namespace Prisma {
     coordinates?: true
     densite_bati?: true
     precarite_logement?: true
+    surface?: true
     _all?: true
   }
 
@@ -8515,6 +8525,7 @@ export namespace Prisma {
     coordinates: string
     densite_bati: number | null
     precarite_logement: number | null
+    surface: number
     _count: Communes_dromCountAggregateOutputType | null
     _avg: Communes_dromAvgAggregateOutputType | null
     _sum: Communes_dromSumAggregateOutputType | null
@@ -8545,6 +8556,7 @@ export namespace Prisma {
     coordinates?: boolean
     densite_bati?: boolean
     precarite_logement?: boolean
+    surface?: boolean
   }, ExtArgs["result"]["communes_drom"]>
 
 
@@ -8557,6 +8569,7 @@ export namespace Prisma {
     coordinates?: boolean
     densite_bati?: boolean
     precarite_logement?: boolean
+    surface?: boolean
   }
 
 
@@ -8572,6 +8585,7 @@ export namespace Prisma {
       coordinates: string
       densite_bati: number | null
       precarite_logement: number | null
+      surface: number
     }, ExtArgs["result"]["communes_drom"]>
     composites: {}
   }
@@ -8902,6 +8916,7 @@ export namespace Prisma {
     readonly coordinates: FieldRef<"communes_drom", 'String'>
     readonly densite_bati: FieldRef<"communes_drom", 'Float'>
     readonly precarite_logement: FieldRef<"communes_drom", 'Float'>
+    readonly surface: FieldRef<"communes_drom", 'Float'>
   }
     
 
@@ -15105,7 +15120,8 @@ export namespace Prisma {
     libelle_epci: 'libelle_epci',
     coordinates: 'coordinates',
     densite_bati: 'densite_bati',
-    precarite_logement: 'precarite_logement'
+    precarite_logement: 'precarite_logement',
+    surface: 'surface'
   };
 
   export type Communes_dromScalarFieldEnum = (typeof Communes_dromScalarFieldEnum)[keyof typeof Communes_dromScalarFieldEnum]
@@ -15974,6 +15990,7 @@ export namespace Prisma {
     coordinates?: StringFilter<"communes_drom"> | string
     densite_bati?: FloatNullableFilter<"communes_drom"> | number | null
     precarite_logement?: FloatNullableFilter<"communes_drom"> | number | null
+    surface?: FloatFilter<"communes_drom"> | number
   }
 
   export type communes_dromOrderByWithRelationInput = {
@@ -15985,6 +16002,7 @@ export namespace Prisma {
     coordinates?: SortOrder
     densite_bati?: SortOrderInput | SortOrder
     precarite_logement?: SortOrderInput | SortOrder
+    surface?: SortOrder
   }
 
   export type communes_dromWhereUniqueInput = Prisma.AtLeast<{
@@ -15999,6 +16017,7 @@ export namespace Prisma {
     coordinates?: StringFilter<"communes_drom"> | string
     densite_bati?: FloatNullableFilter<"communes_drom"> | number | null
     precarite_logement?: FloatNullableFilter<"communes_drom"> | number | null
+    surface?: FloatFilter<"communes_drom"> | number
   }, "pk">
 
   export type communes_dromOrderByWithAggregationInput = {
@@ -16010,6 +16029,7 @@ export namespace Prisma {
     coordinates?: SortOrder
     densite_bati?: SortOrderInput | SortOrder
     precarite_logement?: SortOrderInput | SortOrder
+    surface?: SortOrder
     _count?: communes_dromCountOrderByAggregateInput
     _avg?: communes_dromAvgOrderByAggregateInput
     _max?: communes_dromMaxOrderByAggregateInput
@@ -16029,6 +16049,7 @@ export namespace Prisma {
     coordinates?: StringWithAggregatesFilter<"communes_drom"> | string
     densite_bati?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
     precarite_logement?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
+    surface?: FloatWithAggregatesFilter<"communes_drom"> | number
   }
 
   export type ressources_eauWhereInput = {
@@ -17370,6 +17391,7 @@ export namespace Prisma {
     coordinates?: StringFieldUpdateOperationsInput | string
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface?: FloatFieldUpdateOperationsInput | number
   }
 
   export type communes_dromUncheckedUpdateInput = {
@@ -17381,6 +17403,7 @@ export namespace Prisma {
     coordinates?: StringFieldUpdateOperationsInput | string
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface?: FloatFieldUpdateOperationsInput | number
   }
 
   export type communes_dromUpdateManyMutationInput = {
@@ -17391,6 +17414,7 @@ export namespace Prisma {
     coordinates?: StringFieldUpdateOperationsInput | string
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface?: FloatFieldUpdateOperationsInput | number
   }
 
   export type communes_dromUncheckedUpdateManyInput = {
@@ -17402,6 +17426,7 @@ export namespace Prisma {
     coordinates?: StringFieldUpdateOperationsInput | string
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface?: FloatFieldUpdateOperationsInput | number
   }
 
   export type ressources_eauCreateInput = {
@@ -18679,6 +18704,17 @@ export namespace Prisma {
     region?: SortOrder
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type communes_dromCountOrderByAggregateInput = {
     pk?: SortOrder
     code_commune?: SortOrder
@@ -18688,12 +18724,14 @@ export namespace Prisma {
     coordinates?: SortOrder
     densite_bati?: SortOrder
     precarite_logement?: SortOrder
+    surface?: SortOrder
   }
 
   export type communes_dromAvgOrderByAggregateInput = {
     pk?: SortOrder
     densite_bati?: SortOrder
     precarite_logement?: SortOrder
+    surface?: SortOrder
   }
 
   export type communes_dromMaxOrderByAggregateInput = {
@@ -18705,6 +18743,7 @@ export namespace Prisma {
     coordinates?: SortOrder
     densite_bati?: SortOrder
     precarite_logement?: SortOrder
+    surface?: SortOrder
   }
 
   export type communes_dromMinOrderByAggregateInput = {
@@ -18716,12 +18755,30 @@ export namespace Prisma {
     coordinates?: SortOrder
     densite_bati?: SortOrder
     precarite_logement?: SortOrder
+    surface?: SortOrder
   }
 
   export type communes_dromSumOrderByAggregateInput = {
     pk?: SortOrder
     densite_bati?: SortOrder
     precarite_logement?: SortOrder
+    surface?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type ressources_eauCountOrderByAggregateInput = {
@@ -18835,17 +18892,6 @@ export namespace Prisma {
     region?: SortOrder
   }
 
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type agriculture_bioCountOrderByAggregateInput = {
     index?: SortOrder
     epci?: SortOrder
@@ -18916,22 +18962,6 @@ export namespace Prisma {
     nombre_2021?: SortOrder
     nombre_2020?: SortOrder
     nombre_2019?: SortOrder
-  }
-
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type erosion_cotiereCountOrderByAggregateInput = {

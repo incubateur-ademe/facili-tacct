@@ -59,7 +59,7 @@ export const DensiteBati = ({ carteCommunes }: {carteCommunes: CarteCommunes[]})
                   </p>
                   <Map data={"densite_bati"} carteCommunes={communesMap} />
                   <p style={{ padding: "1em", margin: "0" }}>
-                    Source : <b style={{ color: "#0063CB" }}>Base de Données Nationale Des Bâtiments – BDNB</b>
+                    Source : Base de Données Nationale Des Bâtiments – BDNB
                   </p>
                 </div>
               </div>
