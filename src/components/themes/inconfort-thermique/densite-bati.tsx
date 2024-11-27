@@ -15,7 +15,7 @@ export const DensiteBati = ({ carteCommunes }: {carteCommunes: CarteCommunes[]})
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo");
   const codepci = searchParams.get("codepci")!;  
-  const communesMap = carteCommunes.map(CommunesIndicateursMapper);
+  const communesMap = carteCommunes.map(CommunesIndicateursMapper).filter(e => !isNaN(e.properties.densite_bati));
   const commune = codgeo ? communesMap.find((obj) => obj.properties["code_commune"] === codgeo) : undefined;
   const densiteEpci = communesMap.map((el, i) => el.properties.densite_bati);
 
