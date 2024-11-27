@@ -1,6 +1,7 @@
 import { GraphDataNotFound } from "@/components/graph-data-not-found";
 import { AgricultureBio } from "@/lib/postgres/models";
 import { CustomTooltip } from "@/lib/utils/CalculTooltip";
+import { Round } from "@/lib/utils/reusableFunctions/round";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import AgricultureBioDataViz from "./agricultureBioDataviz";
@@ -23,6 +24,7 @@ const AgricultureBiologique = (props: {
   const [datavizTab, setDatavizTab] = useState<string>("Répartition");
   const nombreExploitations = agricultureBio.find(obj => obj.VARIABLE === "saue")?.nombre_2022!;
   const surfaceTotale = agricultureBio.find(obj => obj.VARIABLE === "saue")?.surface_2022!;
+  const surfaceAgriBio = agricultureBio.find(obj => obj.LIBELLE_SOUS_CHAMP === "Surface totale")?.surface_2022!;
 
   const title = <>
     <div>
@@ -45,9 +47,17 @@ const AgricultureBiologique = (props: {
         <div className={styles.container}>
           <div className="w-1/2">
             <div className={styles.explicationWrapper}>
-              <p>
-                Dans votre EPCI, il existe {nombreExploitations} exploitations, représentant un total de {surfaceTotale} hectares.
-              </p>
+              { codgeo ?
+                <p style={{color: "#161616", margin:"0 0 0.5em"}}>
+                  Cette données n’est disponible qu’à l’échelle de votre EPCI. <br></br>
+                  Dans votre EPCI, <b>{nombreExploitations} exploitations</b> sont en agriculture biologique ou en conversion, représentant un total de <b>{Round(surfaceAgriBio, 0)} hectares</b>.
+                </p>
+                : 
+                <p style={{color: "#161616", margin:"0 0 0.5em"}}>
+                  Dans votre EPCI, <b>{nombreExploitations} exploitations</b> sont en agriculture biologique ou en conversion, représentant un total de <b>{Round(surfaceAgriBio, 0)} hectares</b>.
+                </p>
+              }
+              
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?"/>
             </div>
             <div className="px-4">
