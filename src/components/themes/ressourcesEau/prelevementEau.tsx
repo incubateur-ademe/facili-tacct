@@ -97,7 +97,7 @@ export const PrelevementEau = (props: {
                 ⇒ 20 % des prélèvements d’eau potable sont perdus à cause des fuites, soit l’équivalent de la consommation de 18,5 millions d’habitants. 
               </p>
               <p>- - - - <br></br>
-                Le Plan Eau agit pour atteindre -10% d’eau prélevée d’ici 2030 :
+                Le Plan Eau agit pour atteindre -10 % d’eau prélevée d’ici 2030 :
                 <br></br>
                   -  la mesure 11 prévoit la fin progressive des autorisations de prélèvement non soutenables dans les bassins en déséquilibre 
                   (au fur et à mesure du renouvellement des autorisations) ;<br></br>

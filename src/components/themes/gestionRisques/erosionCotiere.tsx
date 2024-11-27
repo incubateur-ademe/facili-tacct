@@ -47,9 +47,9 @@ const ErosionCotes = (props: { erosionCotiere: ErosionCotiere[], epciContours: E
             </div>
             <div className="px-4">
               <p>
-                L'érosion grignote nos côtes : près de 20% du littoral français recule face à la mer. 
+                L'érosion grignote nos côtes : près de 20 % du littoral français recule face à la mer. 
                 Ce phénomène naturel s'accélère avec le changement climatique, la hausse du niveau des mers et la multiplication des tempêtes notamment. 
-                Les chiffres sont préoccupants. 37% des côtes sableuses s'érodent, soit 700 kilomètres - la distance Paris-Marseille - qui disparaissent peu à peu. 
+                Les chiffres sont préoccupants. 37 % des côtes sableuses s'érodent, soit 700 kilomètres - la distance Paris-Marseille - qui disparaissent peu à peu. 
                 En 50 ans, la mer a englouti l'équivalent de la ville de La Rochelle : 30 km² de terres perdues.   
               </p>
                 <p>
