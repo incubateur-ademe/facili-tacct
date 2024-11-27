@@ -17,6 +17,7 @@ const InconfortThermique = async (searchParams: SearchParams) => {
   const codepci = searchParams.searchParams.codepci;
   const codgeo = searchParams.searchParams.codgeo;
   const dbInconfortThermique = await GetInconfortThermiqueDepartment(codepci);
+  
   const collectivite = codgeo ? await GetCollectivite(codgeo) 
     : codepci ? await GetCollectivite(codepci) 
     : void 0;
