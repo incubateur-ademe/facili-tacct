@@ -22,6 +22,7 @@ export const Map = (props: {
   const codgeo = searchParams.get("codgeo");
   const codepci = searchParams.get("codepci")!;  
   const mapRef = useRef(null);
+  const mapData = carteCommunes.filter(e => e.properties.code_commune !== "75056" && e.properties.code_commune !== "13055" && e.properties.code_commune !== "69123")
 
   const all_coordinates = carteCommunes.map(el => el.geometry.coordinates?.[0]?.[0]);
 
@@ -141,7 +142,7 @@ export const Map = (props: {
             attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
           />
-          <GeoJSON ref={mapRef} data={carteCommunes as unknown as GeoJsonObject} onEachFeature={onEachFeature} style={style} />
+          <GeoJSON ref={mapRef} data={mapData as unknown as GeoJsonObject} onEachFeature={onEachFeature} style={style} />
         </MapContainer>
       )}
     </>
