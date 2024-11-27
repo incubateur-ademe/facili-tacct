@@ -15,7 +15,7 @@ export const FragiliteEconomique = ({ carteCommunes }: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo");
   const codepci = searchParams.get("codepci")!;
-  const communesMap = carteCommunes.map(CommunesIndicateursMapper);
+  const communesMap = carteCommunes.map(CommunesIndicateursMapper).filter(e => !isNaN(e.properties.precarite_logement));
   const commune = codgeo ? communesMap.find((obj) => obj.properties["code_commune"] === codgeo) : undefined;
   //Mean of all ratio_precarite_log of municipalities in epci
   const precariteLogEpci: number = Number(
