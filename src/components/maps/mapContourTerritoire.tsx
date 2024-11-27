@@ -25,15 +25,10 @@ export const MapContourTerritoire = (props: {
   
     if (data.length > 0) {
       const geojsonObject = L.geoJSON(data as unknown as GeoJsonObject);
-      // const point = L.point(geojsonObject.getBounds().getNorthEast().lat, geojsonObject.getBounds().getNorthEast().lng);
-      map.fitBounds(geojsonObject.getBounds(), { padding: [0, 0] }); 
-      console.log("geojsonObject.getBounds()", geojsonObject.getBounds())
-      
+      map.fitBounds(geojsonObject.getBounds());     
       return (
         <>
-          <GeoJSON ref={mapRef} data={data as unknown as GeoJsonObject} style={style} >
-            <div style={{backgroundColor: "lightblue", opacity: "0.5", height: `${pourcentage}%`, width: "100%", alignSelf: "end"}} />
-          </GeoJSON>
+          <GeoJSON ref={mapRef} data={data as unknown as GeoJsonObject} style={style} />
           {/* <Circle
             center={geojsonObject.getBounds().getNorthEast()}
             pathOptions={{ fillColor: 'blue' }}
@@ -53,11 +48,10 @@ export const MapContourTerritoire = (props: {
             center={geojsonObject.getBounds().getSouthWest()}
             pathOptions={{ fillColor: 'blue' }}
             radius={100}
-          /> */}
-          {/* <Pane name="purple-rectangle">
+          />
+          <Pane name="purple-rectangle">
             <Rectangle bounds={[[geojsonObject.getBounds().getSouthWest()], [geojsonObject.getBounds().getNorthEast()]]} pathOptions={{ color: 'purple' }} />
           </Pane> */}
-          {/* <div style={{backgroundColor: "lightblue", opacity: "0.5", height: `${pourcentage}%`, width: "100%", alignSelf: "end"}} /> */}
         </>
       );
     } else {
@@ -75,11 +69,7 @@ export const MapContourTerritoire = (props: {
     }
   };
 
-  const test = L.geoJSON(data as unknown as GeoJsonObject).getBounds()
-  // console.log("test", test.getNorthWest())
-
   return (
-    <div style={{height: "inherit", width: "100%", backgroundColor: "red"}}>
     <MapContainer
       ref={mapRef}
       style={{ height: "100%", width: "100%", backgroundColor: "rgb(251, 251, 251)", display: "flex" }}
@@ -87,13 +77,10 @@ export const MapContourTerritoire = (props: {
       zoomControl={false}
       scrollWheelZoom={false}
       dragging={false}
-      // bounds={[[48.076879978, -1.752527937], [48.154988694, -1.624359117]]}
-      // bounds={test.getNorthEast() ? [[test.getNorthEast().lat, test.getNorthEast().lng], [test.getSouthWest().lat, test.getSouthWest().lng]]: [[0, 0], [0, 0]]}
       boundsOptions={{ padding: [0, 0] }}
     >
-      {/* <div style={{backgroundColor: "lightblue", opacity: "0.5", height: `${pourcentage}%`, width: "100%", alignSelf: "end"}} /> */}
+      <div style={{backgroundColor: "lightblue", opacity: "0.5", height: `${pourcentage}%`, width: "100%", alignSelf: "end"}} />
       <ContourTerritoire />
     </MapContainer>
-    </div>
   );
 };
