@@ -1,6 +1,6 @@
 "use client";
 
-import { MapContourTerritoire } from '@/components/maps/mapContourEpci';
+import { MapContourTerritoire } from '@/components/maps/mapContourTerritoire';
 import SubTabs from '@/components/SubTabs';
 import { SurfacesProtegeesDto } from '@/lib/dto';
 import { SurfacesProtegeesGraphMapper } from '@/lib/mapper/biodiversite';
@@ -49,6 +49,8 @@ const SurfacesProtegeesDataviz = (
   }
 ) => {
   const { surfacesProtegees, carteCommunes } = props;
+  
+  console.log("Carte communes", carteCommunes);
   const territoireContourMap = carteCommunes.map(CommunesContourMapper);
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo")!;
@@ -59,6 +61,13 @@ const SurfacesProtegeesDataviz = (
   const surfaceTerritoire = codgeo ? carteCommunes.filter(e => e.code_commune === codgeo)[0].surface : carteCommunes.map(el => el.surface).reduce((a, b) => a + b, 0);
   const data = SurfacesProtegeesGraphMapper(filteredData);
 
+  console.log("surfaceTerritoire", surfaceTerritoire);
+  console.log("surfacesProtegees", surfacesProtegees);
+  console.log("surfacesProtegeesSurfaces", surfacesProtegeesSurfaces);
+
+  // Calculer surfaces tou_pro
+  console.log("Surfaces tou_pro", Filter(surfacesProtegees.filter(e => e.code_geographique === codgeo), "TOU_PRO"));
+
   useEffect(() => {
     const surfaceTemp = data.children.map(e => {
       const children = e.children!;
@@ -68,9 +77,11 @@ const SurfacesProtegeesDataviz = (
     setSurfacesProtegeesSurfaces(sum);
   }, []);
   
+  const varSurfacesProtegees = Round(100 * (Filter(surfacesProtegees.filter(e => e.code_geographique === codgeo), "TOU_PRO") / surfaceTerritoire), 1);
+
   return (
     <div className={styles.graphWrapper}>
-      <div className={styles.dataVizGraphTitleWrapper} style={{ padding: "1rem" }}>
+      <div className={styles.dataVizGraphTitleWrapper} >
         <h2>Surfaces protégées</h2>
         <SubTabs data={["Répartition", "Chiffre"]} defaultTab={datavizTab} setValue={setDatavizTab} />
       </div>
@@ -83,7 +94,7 @@ const SurfacesProtegeesDataviz = (
               value="loc"
               valueFormat=">-.0f"
               tile="squarify"
-              leavesOnly={true}
+              leavesOnly={false}
               margin={{ top: 30, right: 50, bottom: 30, left: 30 }}
               labelSkipSize={12}
               label={e => {
@@ -112,8 +123,8 @@ const SurfacesProtegeesDataviz = (
         ) : (
           <>
             <div style={{backgroundColor: "white", height: "500px", width: "100%", display: "flex", alignItems: "end", flexDirection: "column"}}>
-              <h4>Pourcentage de surfaces protégées : {Round(100 * (surfacesProtegeesSurfaces / surfaceTerritoire), 2)} %</h4>
-              <MapContourTerritoire territoireContours={filteredTerritoire} pourcentage={Round(100 * (surfacesProtegeesSurfaces / surfaceTerritoire), 2)}/>
+              <h4 style={{alignSelf: "center"}}>Pourcentage de surfaces protégées : {varSurfacesProtegees} %</h4>
+              <MapContourTerritoire territoireContours={filteredTerritoire} pourcentage={varSurfacesProtegees}/>
             </div>
           </>
         )
