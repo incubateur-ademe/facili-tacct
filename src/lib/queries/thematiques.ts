@@ -27,18 +27,28 @@ export const GetInconfortThermique = async (code: string): Promise<InconfortTher
 export const GetInconfortThermiqueDepartment = async (code: string) => {
   try {
     console.time("Query Execution Time INCONFORT DEPARTEMENT");
-    const departement = await PrismaPostgres.inconfort_thermique.findFirst({
-      where: {
-        epci: code,
-      },
-    });
-    const value = await PrismaPostgres.inconfort_thermique.findMany({
-      where: {
-        departement: departement?.departement,
-      },
-    });
-    console.timeEnd("Query Execution Time INCONFORT DEPARTEMENT");
-    return value;;
+    if (code === "200054781") {
+      const value = await PrismaPostgres.inconfort_thermique.findMany({
+        where: {
+          OR: [{ departement: "75" }, { departement: "91" }, { departement: "92" }, { departement: "93" }, { departement: "94" }, { departement: "95" }],
+        },
+      });
+      console.timeEnd("Query Execution Time INCONFORT DEPARTEMENT");
+      return value;
+    } else {
+      const departement = await PrismaPostgres.inconfort_thermique.findFirst({
+        where: {
+          epci: code,
+        },
+      });
+      const value = await PrismaPostgres.inconfort_thermique.findMany({
+        where: {
+          departement: departement?.departement,
+        },
+      });
+      console.timeEnd("Query Execution Time INCONFORT DEPARTEMENT");
+      return value;
+    }
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
