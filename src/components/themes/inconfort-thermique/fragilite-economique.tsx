@@ -36,9 +36,9 @@ export const FragiliteEconomique = ({ carteCommunes }: {
 
   return (
     <>
-      {carteCommunes ? (
+      {communesMap ? (
         <div className={styles.container}>
-          {carteCommunes.length ? (
+          { communesMap.length ? (
             <>
               <div className="w-2/5">
                 <div className={styles.explicationWrapper}>
