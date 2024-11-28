@@ -8,7 +8,7 @@ const PrismaPostgres = new PostgresClient();
 
 export const GetCommunes = async (code: string): Promise<CarteCommunes[]> => {
   try {
-    console.time("Query Execution Time");
+    console.time(`Query Execution Time communes ${code}`);
     const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
       SELECT 
       epci, 
@@ -20,7 +20,7 @@ export const GetCommunes = async (code: string): Promise<CarteCommunes[]> => {
       densite_bati,
       ST_AsGeoJSON(geometry) geometry 
       FROM postgis."communes_drom" WHERE epci=${code};`;
-    console.timeEnd("Query Execution Time");
+    console.timeEnd(`Query Execution Time communes ${code}`);
     // console.log(value)
     return value;
   } catch (error) {
