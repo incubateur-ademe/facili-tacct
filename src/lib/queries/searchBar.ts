@@ -154,7 +154,7 @@ export const GetStringCommune = async (collectivite: string): Promise<CarteCommu
       libelle_commune,
       code_commune
       FROM postgis."communes" WHERE unaccent('unaccent', libelle_commune) ILIKE unaccent('unaccent', replace(${variableCommune}, ' ', '-')) LIMIT 20;`; // OR libelle_epci ILIKE ${variableEpci} 
-      console.timeEnd("Query Execution Time");
+      console.timeEnd(`Query Execution Time ${variableCommune}`);
       // console.log(value);
       return value;
     } else {
@@ -192,7 +192,7 @@ export const GetStringEpci = async (collectivite: string): Promise<CarteCommunes
       libelle_commune,
       code_commune
       FROM postgis."communes" WHERE unaccent('unaccent', libelle_epci) ILIKE unaccent('unaccent', replace(${variableEpci}, ' ', '-')) LIMIT 20;`; // OR libelle_epci ILIKE ${variableEpci} 
-      console.timeEnd("Query Execution Time");
+      console.timeEnd(`Query Execution Time EPCI ${variableEpci}`);
       // console.log(value);
       return value;
     } else {
@@ -230,7 +230,7 @@ export const GetCodeCommune = async (collectivite: string): Promise<CarteCommune
       libelle_commune,
       code_commune
       FROM postgis."communes" WHERE code_commune ILIKE ${variableCodeCommune} LIMIT 20;`;
-      console.timeEnd("Query Execution Time");
+      console.timeEnd(`Query Execution Time communes ${variableCodeCommune}`);
       return value;
     } else {
       return [
@@ -267,7 +267,7 @@ export const GetCodeEpci = async (collectivite: string): Promise<CarteCommunes[]
       libelle_commune,
       code_commune
       FROM postgis."communes" WHERE epci ILIKE ${variableCodeEpci} LIMIT 20;`;
-      console.timeEnd("Query Execution Time");
+      console.timeEnd(`Query Execution Time epci ${variableCodeEpci}`);
       return value;
     } else {
       return [

@@ -40,7 +40,6 @@ const allComps = [
 ];
 
 const GestionRisquesComp = ({ data, gestionRisques, carteCommunes, erosionCotiere, epciContours }: Props) => {
-  console.log("erosionCotiere", erosionCotiere[0].length);
   const [selectedTabId, setSelectedTabId] = useState("Arrêtés catastrophes naturelles");
   const [selectedSubTab, setSelectedSubTab] = useState("catnat");
   const searchParams = useSearchParams();
