@@ -118,7 +118,10 @@ export const BarChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
             legendPosition: 'middle',
             legendOffset: -50,
             truncateTickAt: 0,
-            tickValues: 5
+            tickValues: 5,
+            format: (e) => {
+              return e % 1 != 0 ? "" : e;
+            }
           }}
           labelSkipWidth={15}
           labelSkipHeight={12}
@@ -155,7 +158,7 @@ export const BarChartCatnat = (props: {gestionRisques: ArreteCatNat[]}) => {
           ]}
           role="application"
           ariaLabel="Nivo bar chart demo"
-          barAriaLabel={e=>e.id+": "+e.formattedValue+" in annee_arrete: "+e.indexValue}
+          barAriaLabel={e=>e.id+": "+e.formattedValue+" dans CatNat: "+e.indexValue}
         />
       }
     </div>
