@@ -244,7 +244,8 @@ exports.Prisma.Communes_dromScalarFieldEnum = {
   libelle_epci: 'libelle_epci',
   coordinates: 'coordinates',
   densite_bati: 'densite_bati',
-  precarite_logement: 'precarite_logement'
+  precarite_logement: 'precarite_logement',
+  surface: 'surface'
 };
 
 exports.Prisma.Ressources_eauScalarFieldEnum = {
@@ -330,14 +331,6 @@ exports.Prisma.Surfaces_protegeesScalarFieldEnum = {
   region: 'region'
 };
 
-exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
-  srid: 'srid',
-  auth_name: 'auth_name',
-  auth_srid: 'auth_srid',
-  srtext: 'srtext',
-  proj4text: 'proj4text'
-};
-
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -366,8 +359,7 @@ exports.Prisma.ModelName = {
   agriculture_bio: 'agriculture_bio',
   erosion_cotiere: 'erosion_cotiere',
   epci: 'epci',
-  surfaces_protegees: 'surfaces_protegees',
-  spatial_ref_sys: 'spatial_ref_sys'
+  surfaces_protegees: 'surfaces_protegees'
 };
 
 /**
