@@ -18,8 +18,6 @@ type SearchParams = {
   };
 };
 
-
-
 const Page = async (searchParams: SearchParams) => {
   const codepci = searchParams.searchParams.codepci;
   const codgeo = searchParams.searchParams.codgeo;
