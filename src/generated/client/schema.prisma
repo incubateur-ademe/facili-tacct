@@ -118,15 +118,14 @@ model collectivites_searchbar {
 
 model biodiversite {
   index                BigInt  @id
-  code_geographique    String?
-  type_touristique     String?
-  libelle_geographique String?
-  epci                 String?
-  libelle_epci         String?
-  departement          String?
+  code_geographique    String? @db.VarChar(10)
+  type_touristique     String? @db.VarChar(50)
+  libelle_geographique String? @db.VarChar(100)
+  epci                 String? @db.VarChar(15)
+  libelle_epci         String? @db.VarChar(100)
+  departement          String? @db.VarChar(5)
   region               Float?
 
-  @@index([index], map: "ix_biodiversite_index")
   @@schema("databases")
 }
 
@@ -141,7 +140,6 @@ model gestion_risques {
   departement          String?
   region               Float?
 
-  @@index([index], map: "ix_gestion_risques_index")
   @@schema("databases")
 }
 
@@ -154,6 +152,7 @@ model communes_drom {
   coordinates        String                  @db.VarChar
   densite_bati       Float?
   precarite_logement Float?
+  surface            Float?
   geometry           Unsupported("geometry")
 
   @@index([geometry], map: "communes_drom_geometry_geom_idx", type: Gist)
@@ -162,9 +161,9 @@ model communes_drom {
 
 model ressources_eau {
   index                BigInt  @id
-  code_geographique    String
-  LIBELLE_SOUS_CHAMP   String?
-  SOUS_CHAMP           String?
+  code_geographique    String  @db.VarChar(10)
+  LIBELLE_SOUS_CHAMP   String? @db.VarChar(100)
+  SOUS_CHAMP           String? @db.VarChar(20)
   A2020                Float?
   A2019                Float?
   A2018                Float?
@@ -178,22 +177,21 @@ model ressources_eau {
   A2010                Float?
   A2009                Float?
   A2008                Float?
-  libelle_geographique String?
-  epci                 String?
-  libelle_epci         String?
-  departement          String?
+  libelle_geographique String? @db.VarChar(100)
+  epci                 String? @db.VarChar(15)
+  libelle_epci         String? @db.VarChar(100)
+  departement          String? @db.VarChar(5)
   region               Float?
 
-  @@index([index], map: "ix_ressources_eau_index")
   @@schema("databases")
 }
 
 model agriculture_bio {
   index              BigInt  @id
-  epci               String
-  libelle_epci       String
-  VARIABLE           String
-  LIBELLE_SOUS_CHAMP String?
+  epci               String  @db.VarChar(16)
+  libelle_epci       String  @db.VarChar(100)
+  VARIABLE           String  @db.VarChar(50)
+  LIBELLE_SOUS_CHAMP String? @db.VarChar(50)
   surface_2022       Float
   surface_2021       Float
   surface_2020       Float
@@ -203,28 +201,25 @@ model agriculture_bio {
   nombre_2020        Float
   nombre_2019        Float
 
-  @@index([index], map: "ix_agriculture_bio_index")
   @@schema("databases")
 }
 
 model erosion_cotiere {
-  pk         Int                     @id @default(autoincrement())
+  pk         Int                     @id
   taux       Float
   duree      Float
   tdc_ancien BigInt
   tdc_rec    BigInt
   geometry   Unsupported("geometry")
 
-  @@index([geometry], map: "erosion_cotiere_geometry_geom_idx", type: Gist)
   @@schema("postgis")
 }
 
 model epci {
-  pk        Int                     @id @default(autoincrement())
-  epci_code String                  @db.VarChar
+  pk        Int                     @id
+  epci_code String                  @db.VarChar(15)
   geometry  Unsupported("geometry")
 
-  @@index([geometry], map: "epci_geometry_geom_idx", type: Gist)
   @@schema("postgis")
 }
 
@@ -258,15 +253,4 @@ model surfaces_protegees {
 
   @@index([index], map: "ix_surfaces_protegees_index")
   @@schema("databases")
-}
-
-/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
-model spatial_ref_sys {
-  srid      Int     @id
-  auth_name String? @db.VarChar(256)
-  auth_srid Int?
-  srtext    String? @db.VarChar(2048)
-  proj4text String? @db.VarChar(2048)
-
-  @@schema("postgis")
 }
