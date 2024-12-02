@@ -147,31 +147,86 @@
     z-index: 400;
 }
 
+// .ErosionCotiereLegendWrapper {
+//     position: relative;
+//     width: max-content;
+//     padding: 14px 0px;
+//     box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
+//     font-size: 12px;
+//     background: rgb(251, 252, 255);
+//     border-radius: 5px;
+//     border: 1px solid #dadde9;
+//     .colorWrapper {
+//         display: 'flex';
+//         justify-content: 'space-between';
+//         .color {
+//             width: 20px;
+//             height: 20px;
+//             border-radius: 25px;
+//         }
+//     }
+// }
+
+// .ErosionCotiereLegendWrapper > div {
+//     position: relative;
+//     display: flex;
+//     height: 25px;
+//     padding: 0 10px;
+//     gap: 1em;
+// }
+
 .ErosionCotiereLegendWrapper {
-    position: relative;
-    width: max-content;
-    padding: 14px 0px;
-    box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
-    font-size: 12px;
-    background: rgb(251, 252, 255);
-    border-radius: 5px;
-    border: 1px solid #dadde9;
-    .colorWrapper {
-        display: 'flex';
-        justify-content: 'space-between';
-        .color {
-            width: 20px;
-            height: 20px;
-            border-radius: 25px;
+    margin: 1rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1rem;
+    background: #F9F9FF;
+    border-radius: 0.5rem;
+    border: solid 1px #d6d6f0;
+    h2 {
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 20px;
+        text-align: left;
+        color: "#0063CB";
+        margin: 0;
+    }
+    p {
+        margin: 0;
+        font-size: 14px;
+        font-family: "Marianne";
+    }
+    .bloc {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .legendsWrappers {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 1rem;
+            .legendsSide {
+                display: flex;
+                flex-direction: column;
+                gap: 0.1rem;
+                .legendItem {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 1rem;
+                    .colorSquare {
+                        height: 1rem;
+                        width: 1rem;
+                        border-radius: 2px;
+                        align-self: center;
+                        border: 1px solid #161616;
+                    }
+                }
+            }
         }
     }
-}
 
-.ErosionCotiereLegendWrapper > div {
-    position: relative;
-    display: flex;
-    height: 25px;
-    padding: 0 10px;
-    gap: 1em;
 }
-
