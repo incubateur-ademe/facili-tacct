@@ -61,12 +61,12 @@ const SurfacesProtegeesDataviz = (
   const surfaceTerritoire = codgeo ? carteCommunes.filter(e => e.code_commune === codgeo)[0].surface : carteCommunes.map(el => el.surface).reduce((a, b) => a + b, 0);
   const data = SurfacesProtegeesGraphMapper(filteredData);
 
-  console.log("surfaceTerritoire", surfaceTerritoire);
-  console.log("surfacesProtegees", surfacesProtegees);
-  console.log("surfacesProtegeesSurfaces", surfacesProtegeesSurfaces);
+  // console.log("surfaceTerritoire", surfaceTerritoire);
+  // console.log("surfacesProtegees", surfacesProtegees);
+  // console.log("surfacesProtegeesSurfaces", surfacesProtegeesSurfaces);
 
   // Calculer surfaces tou_pro
-  console.log("Surfaces tou_pro", Filter(surfacesProtegees.filter(e => e.code_geographique === codgeo), "TOU_PRO"));
+  // console.log("Surfaces tou_pro", Filter(surfacesProtegees.filter(e => e.code_geographique === codgeo), "TOU_PRO"));
 
   useEffect(() => {
     const surfaceTemp = data.children.map(e => {

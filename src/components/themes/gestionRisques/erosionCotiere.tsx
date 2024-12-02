@@ -6,7 +6,6 @@ import { EpciContours, ErosionCotiere } from "@/lib/postgres/models";
 import { CustomTooltip } from "@/lib/utils/CalculTooltip";
 import { styled, Tooltip, tooltipClasses, TooltipProps } from "@mui/material";
 import { useSearchParams } from "next/navigation";
-import { LegendErosionCotiere } from "./erosionCotiere-legend";
 import styles from "./gestionRisques.module.scss";
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
@@ -81,11 +80,9 @@ const ErosionCotes = (props: { erosionCotiere: ErosionCotiere[], epciContours: E
               <div className={styles.catnatGraphTitleWrapper} style={{ padding: "1rem" }}>
                 <h2>Érosion du littoral</h2>
               </div>
-                <HtmlTooltip title={<LegendErosionCotiere />} placement="left">
-                  <div>
-                    <MapErosionCotiere erosionCotiere={erosionCotiereMap} epciContours={epciContoursMap} />
-                  </div>
-                </HtmlTooltip>
+              <div>
+                <MapErosionCotiere erosionCotiere={erosionCotiereMap} epciContours={epciContoursMap} />
+              </div>
               <p style={{ padding: "1em", margin: "0" }}>
                 Source : CEREMA
               </p>
@@ -110,11 +107,11 @@ const ErosionCotes = (props: { erosionCotiere: ErosionCotiere[], epciContours: E
                   <div className={styles.legendsSide}>
                     <div className={styles.legendItem}>
                       <div className={styles.colorSquare} style={{ backgroundColor: "#F59550" }}></div>
-                      <p>Supérieur à 0,5 m/an</p>
+                      <p>Entre 0,5 et 1,5 m/an</p>
                     </div>
                     <div className={styles.legendItem}>
                       <div className={styles.colorSquare} style={{ backgroundColor: "#FEDD9A" }}></div>
-                      <p>Supérieur à 0,5 m/an</p>
+                      <p>Entre 0,1 et 0,5 m/an</p>
                     </div>
                   </div>
                 </div>
@@ -127,21 +124,21 @@ const ErosionCotes = (props: { erosionCotiere: ErosionCotiere[], epciContours: E
                   <div className={styles.legendsSide}>
                     <div className={styles.legendItem}>
                       <div className={styles.colorSquare} style={{ backgroundColor: "#DCEE9F" }}></div>
-                      <p>Supérieur à 0,5 m/an</p>
+                      <p>Entre 0,1 et 0,5 m/an</p>
                     </div>
                     <div className={styles.legendItem}>
                       <div className={styles.colorSquare} style={{ backgroundColor: "#86CD63" }}></div>
-                      <p>Supérieur à 0,5 m/an</p>
+                      <p>Entre 0,5 et 1,5 m/an</p>
                     </div>
                   </div>
                   <div className={styles.legendsSide}>
                     <div className={styles.legendItem}>
                       <div className={styles.colorSquare} style={{ backgroundColor: "#1DA546" }}></div>
-                      <p>Supérieur à 0,5 m/an</p>
+                      <p>Entre 1,5 et 3 m/an</p>
                     </div>
                     <div className={styles.legendItem}>
                       <div className={styles.colorSquare} style={{ backgroundColor: "#046803" }}></div>
-                      <p>Supérieur à 0,5 m/an</p>
+                      <p>Supérieur à 3 m/an</p>
                     </div>
                   </div>
                 </div>
