@@ -26,7 +26,7 @@ export const MapErosionCotiere = (props: {
   const searchParams = useSearchParams();
   const codepci = searchParams.get("codepci")!;  
   const mapRef = useRef(null);
-  const centerCoord: number[] = getCentroid(epciContours[0].geometry.coordinates[0][0]);
+  const centerCoord: number[] = getCentroid(epciContours[0]?.geometry?.coordinates[0][0]);
 
   const getColor = (d: number) => {
     if (d >= 3) {
