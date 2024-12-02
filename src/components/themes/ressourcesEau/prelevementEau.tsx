@@ -52,6 +52,7 @@ export const PrelevementEau = (props: {
   const codepci = searchParams.get("codepci")!;
   const [datavizTab, setDatavizTab] = useState<string>("Répartition");
   const volumeTotalPreleve = Round(SumFiltered(ressourcesEau, codgeo, codepci, "total", true) / 1000000, 0);
+  const dataParMaille = codgeo ? ressourcesEau.filter((obj) => obj.code_geographique === codgeo) : ressourcesEau.filter((obj) => obj.epci === codepci);
 
   const title = <>
     <div>
@@ -64,7 +65,7 @@ export const PrelevementEau = (props: {
 
   return (
     <>
-      {ressourcesEau ? (
+      {dataParMaille.length !== 0 ? (
         <div className={styles.container}>
           <div className="w-5/12">
             <div className={styles.explicationWrapper}>
