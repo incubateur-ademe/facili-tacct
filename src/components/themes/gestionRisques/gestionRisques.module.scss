@@ -176,14 +176,14 @@
 // }
 
 .ErosionCotiereLegendWrapper {
-    margin: 1rem 0 0 0;
+    // margin: 1rem 0 0 0;
     display: flex;
     flex-direction: column;
     gap: 1em;
     padding: 1rem;
     background: #F9F9FF;
-    border-radius: 0.5rem;
-    border: solid 1px #d6d6f0;
+    // border-radius: 0.5rem;
+    border-bottom: solid 1px #d6d6f0;
     h2 {
         font-size: 1rem;
         font-weight: 700;
@@ -207,23 +207,29 @@
             justify-content: space-between;
             width: 100%;
             padding: 0 1rem;
-            .legendsSide {
+            .legendsLeft {
                 display: flex;
                 flex-direction: column;
                 gap: 0.1rem;
-                .legendItem {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    align-items: center;
-                    gap: 1rem;
-                    .colorSquare {
-                        height: 1rem;
-                        width: 1rem;
-                        border-radius: 2px;
-                        align-self: center;
-                        border: 1px solid #161616;
-                    }
+            }
+            .legendsRight {
+                display: flex;
+                flex-direction: column;
+                gap: 0.1rem;
+                width: 180px;
+            }
+            .legendItem {
+                display: flex;
+                flex-direction: row;
+                justify-content: start;
+                align-items: center;
+                column-gap: 1rem;
+                .colorSquare {
+                    height: 1rem;
+                    width: 1rem;
+                    border-radius: 2px;
+                    align-self: center;
+                    border: 1px solid #161616;
                 }
             }
         }
