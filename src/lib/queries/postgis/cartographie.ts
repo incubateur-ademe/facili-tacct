@@ -22,7 +22,6 @@ export const GetCommunes = async (code: string): Promise<CarteCommunes[]> => {
       ST_AsGeoJSON(geometry) geometry 
       FROM postgis."communes_drom" WHERE epci=${code};`;
     console.timeEnd(`Query Execution Time communes ${code}`);
-    console.log(value[0])
     return value;
   } catch (error) {
     console.error(error);

@@ -57,7 +57,7 @@ const PrelevementEauBarChart = (
   const dataParMaille = codgeo ? ressourcesEau.filter((obj) => obj.code_geographique === codgeo) : ressourcesEau.filter((obj) => obj.epci === codepci);
   const [selectedYears, setSelectedYears] = useState<string[]>(ressourcesEauYears.map(year => year.split("A")[1]));
   const graphData = graphDataFunct(selectedYears, dataParMaille)
-  const collectiviteName = codgeo ? dataParMaille[0].libelle_geographique : dataParMaille[0].libelle_epci; 
+  const collectiviteName = codgeo ? dataParMaille[0]?.libelle_geographique : dataParMaille[0]?.libelle_epci; 
 
   useEffect(() => {
     setSelectedYears(ressourcesEauYears.slice(ressourcesEauYears.indexOf(`A${sliderValue[0]}`), ressourcesEauYears.indexOf(`A${sliderValue[1]}`) + 1))
