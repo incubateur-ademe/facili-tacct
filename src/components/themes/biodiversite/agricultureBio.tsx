@@ -16,7 +16,8 @@ const AgricultureBiologique = (props: {
     titre: string;
   }>;
 }) => {
-  const { agricultureBio, data } = props;
+  const { agricultureBio } = props;
+  console.log("agricultureBio", agricultureBio[0]);
   const searchParams = useSearchParams();
   const codgeo = searchParams.get("codgeo")!;
   const codepci = searchParams.get("codepci")!;
@@ -36,7 +37,7 @@ const AgricultureBiologique = (props: {
 
   return (
     <>
-      {agricultureBio ? (
+      {agricultureBio[0] ? (
         <div className={styles.container}>
           <div className="w-1/3">
             <div className={styles.explicationWrapper}>
