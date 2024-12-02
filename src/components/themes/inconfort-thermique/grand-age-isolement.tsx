@@ -8,7 +8,6 @@ import { Loader } from "@/components/loader";
 import { grandAgeIsolementMapper } from "@/lib/mapper/inconfortThermique";
 import { DataGrandAge, InconfortThermique } from "@/lib/postgres/models";
 import { CustomTooltip } from "@/lib/utils/CalculTooltip";
-import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import styles from "./themes.module.scss";
 
 const sumProperty = (
@@ -113,7 +112,7 @@ export const GrandAgeIsolement = (props: {
   
   return (
     <>
-      {inconfortThermique.length && Sum(yGraphData.filter(e => e != null) as number[]) != 0 ? (
+      {inconfortThermique.length && !Object.values(yData).slice(0, -2).includes("NaN") ? (
         <div className={styles.container}>
           <div className="w-2/5">
             <div className={styles.explicationWrapper}>
