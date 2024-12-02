@@ -172,7 +172,8 @@ const LireUnDiagnostic = () => {
           <div className={styles.link}>
             <Link 
               href="https://tacct.ademe.fr/"
-              target="_blank" rel="noreferrer"
+              target="_blank"
+              rel="noreferrer"
             >
               Découvrez la méthode TACCT
             </Link>
