@@ -89,7 +89,80 @@ const ErosionCotes = (props: { erosionCotiere: ErosionCotiere[], epciContours: E
               <p style={{ padding: "1em", margin: "0" }}>
                 Source : CEREMA
               </p>
-            </div>              
+            </div>
+            <div className={styles.ErosionCotiereLegendWrapper}>
+              <h2>Mouvement du trait de côte</h2>
+              <div className={styles.bloc}>
+                <p style={{width: "85px", minWidth: "85px", margin: 0, alignSelf: "center"}}>
+                  <b>Recul</b>
+                </p>
+                <div className={styles.legendsWrappers}>
+                  <div className={styles.legendsSide}>
+                    <div className={styles.legendItem}>
+                      <div className={styles.colorSquare} style={{ backgroundColor: "#A74E10" }}></div>
+                      <p>Supérieur à 3 m/an</p>
+                    </div>
+                    <div className={styles.legendItem}>
+                      <div className={styles.colorSquare} style={{ backgroundColor: "#B87830" }}></div>
+                      <p>Entre 1,5 et 3 m/an</p>
+                    </div>
+                  </div>
+                  <div className={styles.legendsSide}>
+                    <div className={styles.legendItem}>
+                      <div className={styles.colorSquare} style={{ backgroundColor: "#F59550" }}></div>
+                      <p>Supérieur à 0,5 m/an</p>
+                    </div>
+                    <div className={styles.legendItem}>
+                      <div className={styles.colorSquare} style={{ backgroundColor: "#FEDD9A" }}></div>
+                      <p>Supérieur à 0,5 m/an</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.bloc}>
+                <p style={{width: "85px", minWidth: "85px", margin: 0, alignSelf: "center"}}>
+                  <b>Avancée</b>
+                </p>
+                <div className={styles.legendsWrappers}>
+                  <div className={styles.legendsSide}>
+                    <div className={styles.legendItem}>
+                      <div className={styles.colorSquare} style={{ backgroundColor: "#DCEE9F" }}></div>
+                      <p>Supérieur à 0,5 m/an</p>
+                    </div>
+                    <div className={styles.legendItem}>
+                      <div className={styles.colorSquare} style={{ backgroundColor: "#86CD63" }}></div>
+                      <p>Supérieur à 0,5 m/an</p>
+                    </div>
+                  </div>
+                  <div className={styles.legendsSide}>
+                    <div className={styles.legendItem}>
+                      <div className={styles.colorSquare} style={{ backgroundColor: "#1DA546" }}></div>
+                      <p>Supérieur à 0,5 m/an</p>
+                    </div>
+                    <div className={styles.legendItem}>
+                      <div className={styles.colorSquare} style={{ backgroundColor: "#046803" }}></div>
+                      <p>Supérieur à 0,5 m/an</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.bloc}>
+                <div className={styles.legendsWrappers} style={{marginLeft  : "85px"}}>
+                  <div className={styles.legendsSide}>
+                    <div className={styles.legendItem}>
+                      <div className={styles.colorSquare} style={{ backgroundColor: "#AFF7F1" }}></div>
+                      <p>Mouvement non perceptible</p>
+                    </div>
+                  </div>
+                  <div className={styles.legendsSide}>
+                    <div className={styles.legendItem}>
+                      <div className={styles.colorSquare} style={{ backgroundColor: "#9D9C9C" }}></div>
+                      <p>Absence de données</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>         
           </div>
         </div>
       ) : (
