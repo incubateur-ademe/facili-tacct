@@ -78,7 +78,7 @@ export const Catnat = (props: {
   </>
   return (
     <>
-      {gestionRisques ? (
+      {gestionRisques.length !== 0 ? (
         <div className={styles.container}>
           <div className="w-1/3">
             <div className={styles.explicationWrapper}>

@@ -6,7 +6,6 @@ import { Loader } from "@/components/loader";
 import { AgeBatiDto } from "@/lib/dto";
 import { ageBatiMapper } from "@/lib/mapper/inconfortThermique";
 import { InconfortThermique } from "@/lib/postgres/models";
-import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import styles from "./themes.module.scss";
 
 interface ChartData {
@@ -85,7 +84,7 @@ export const AgeBati = (props: {
 
   return (
     <>
-      {inconfortThermique.length && Sum(Object.values(averages)) != 0 ? (
+      {inconfortThermique.length && !Object.values(averages).includes(NaN) ? (
         <div className={styles.container}>
           <div className="w-2/5">
             <div className={styles.explicationWrapper}>

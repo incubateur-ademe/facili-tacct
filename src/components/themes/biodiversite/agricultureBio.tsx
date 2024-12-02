@@ -43,7 +43,7 @@ const AgricultureBiologique = (props: {
 
   return (
     <>
-      {agricultureBio ? (
+      {agricultureBio[0] ? (
         <div className={styles.container}>
           <div className="w-1/2">
             <div className={styles.explicationWrapper}>
