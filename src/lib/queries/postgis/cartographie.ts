@@ -18,10 +18,10 @@ export const GetCommunes = async (code: string): Promise<CarteCommunes[]> => {
       coordinates, 
       precarite_logement,
       densite_bati,
+      surface,
       ST_AsGeoJSON(geometry) geometry 
       FROM postgis."communes_drom" WHERE epci=${code};`;
     console.timeEnd(`Query Execution Time communes ${code}`);
-    // console.log(value)
     return value;
   } catch (error) {
     console.error(error);
@@ -61,19 +61,22 @@ export const GetErosionCotiere = async (code: string): Promise<ErosionCotiere[][
       ST_AsText(ST_Centroid(geometry)) centroid,
       ST_AsText(geometry) geometry
       FROM postgis."epci" WHERE epci_code=${code};`;
-    const valueIntersect = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
-      SELECT 
-      taux, 
-      ST_AsGeoJSON(geometry) geometry
-      FROM postgis."erosion_cotiere" WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`
-    const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
-      SELECT 
-      taux, 
-      ST_AsGeoJSON(geometry) geometry
-      FROM postgis."erosion_cotiere" WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${epci[0].geometry})), 4326), 0.6);`; //ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326))
-    // console.log([valueIntersect, value]);
-    console.timeEnd("Query Execution Time ErosionCotiere");
-    return [valueIntersect ?? 0, value];
+    if (epci[0]) {
+      const valueIntersect = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
+        SELECT 
+        taux, 
+        ST_AsGeoJSON(geometry) geometry
+        FROM postgis."erosion_cotiere" WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`
+      const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
+        SELECT 
+        taux, 
+        ST_AsGeoJSON(geometry) geometry
+        FROM postgis."erosion_cotiere" WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${epci[0].geometry})), 4326), 0.6);`; //ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326))
+        console.timeEnd("Query Execution Time ErosionCotiere");
+      return [valueIntersect ?? 0, value]
+    } else {
+      return [[], []];
+    }
   } catch (error) {
     console.error(error);
     await PrismaPostgres.$disconnect();
@@ -81,29 +84,29 @@ export const GetErosionCotiere = async (code: string): Promise<ErosionCotiere[][
   }
 };
 
-export const GetErosionCotiereIntersect = async (code: string): Promise<ErosionCotiere[]> => {
-  try {
-    console.time("Query Execution Time ErosionCotiere");
-    const epci = await PrismaPostgres.$queryRaw<EpciContours[]>`
-      SELECT 
-      epci_code,
-      ST_AsText(ST_Centroid(geometry)) centroid,
-      ST_AsText(geometry) geometry
-      FROM postgis."epci" WHERE epci_code=${code};`;
-    const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
-      SELECT 
-      taux, 
-      ST_AsGeoJSON(geometry) geometry
-      FROM postgis."erosion_cotiere" WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`; //ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326))
-    // console.log(value);
-    console.timeEnd("Query Execution Time ErosionCotiere");
-    return value;
-  } catch (error) {
-    console.error(error);
-    await PrismaPostgres.$disconnect();
-    process.exit(1);
-  }
-};
+// export const GetErosionCotiereIntersect = async (code: string): Promise<ErosionCotiere[]> => {
+//   try {
+//     console.time("Query Execution Time ErosionCotiere");
+//     const epci = await PrismaPostgres.$queryRaw<EpciContours[]>`
+//       SELECT 
+//       epci_code,
+//       ST_AsText(ST_Centroid(geometry)) centroid,
+//       ST_AsText(geometry) geometry
+//       FROM postgis."epci" WHERE epci_code=${code};`;
+//       const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
+//         SELECT 
+//         taux, 
+//         ST_AsGeoJSON(geometry) geometry
+//         FROM postgis."erosion_cotiere" WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`; //ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326))
+//     // console.log(value);
+//     console.timeEnd("Query Execution Time ErosionCotiere");
+//     return value;
+//   } catch (error) {
+//     console.error(error);
+//     await PrismaPostgres.$disconnect();
+//     process.exit(1);
+//   }
+// };
 
 export const GetEpci = async (code: string): Promise<EpciContours[]> => {
   try {
