@@ -4,7 +4,6 @@ import GroupIcon from "@/assets/icons/group_people_icon_black.svg";
 import HourglassIcon from "@/assets/icons/hourglass_icon_black.svg";
 import ForwardArrow from "@/assets/icons/keyboard_arrow_next_icon_black.svg";
 import LightbulbIcon from "@/assets/icons/lightbulb_icon_black.svg";
-import LinkIcon from "@/assets/icons/link_icon_blue.svg";
 import ListIcon from "@/assets/icons/list_unordered_icon_black.svg";
 import WarningIcon from "@/assets/icons/warning_icon_black.svg";
 import ControlledAccordion from "@/dsfr/base/client/Accordion";
@@ -200,12 +199,24 @@ const AtelierComp = () => {
         </div>
         <div className={styles.links}>
           <div className={styles.link}>
-            <Link href="/">Atelier sensibilité du territoire</Link>
-            <Image src={LinkIcon as StaticImageData} alt="" />
+            <Link 
+              href="/ressources/articles?title=La%20facilitation%20d’ateliers%20:%20une%20démarche%20éprouvée%20d’engagement"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Atelier sensibilité du territoire
+            </Link>
+            {/* <Image src={LinkIcon as StaticImageData} alt="" /> */}
           </div>
           <div className={styles.link}>
-            <Link href="/">Découvrez la méthode TACCT</Link>
-            <Image src={LinkIcon as StaticImageData} alt="" />
+            <Link 
+              href="https://tacct.ademe.fr/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Découvrez la méthode TACCT
+            </Link>
+            {/* <Image src={LinkIcon as StaticImageData} alt="" /> */}
           </div>
         </div>
       </div>

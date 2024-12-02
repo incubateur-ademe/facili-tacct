@@ -1,7 +1,6 @@
 import BookIcon from "@/assets/icons/book_icon_black.svg";
 import ForwardArrow from "@/assets/icons/keyboard_arrow_next_icon_black.svg";
 import LightbulbIcon from "@/assets/icons/lightbulb_icon_black.svg";
-import LinkIcon from "@/assets/icons/link_icon_blue.svg";
 import AtelierImg from "@/assets/images/article1.png";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -161,12 +160,23 @@ const LireUnDiagnostic = () => {
         </div>
         <div className={styles.links}>
           <div className={styles.link}>
-            <Link href="/">Atelier sensibilité du territoire</Link>
-            <Image src={LinkIcon as StaticImageData} alt="" />
+            <Link 
+              href="/ressources/articles?title=La%20facilitation%20d’ateliers%20:%20une%20démarche%20éprouvée%20d’engagement"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Atelier sensibilité du territoire
+            </Link>
+            {/* <Image src={LinkIcon as StaticImageData} alt="" /> */}
           </div>
           <div className={styles.link}>
-            <Link href="/">Découvrez la méthode TACCT</Link>
-            <Image src={LinkIcon as StaticImageData} alt="" />
+            <Link 
+              href="https://tacct.ademe.fr/"
+              target="_blank" rel="noreferrer"
+            >
+              Découvrez la méthode TACCT
+            </Link>
+            {/* <Image src={LinkIcon as StaticImageData} alt="" /> */}
           </div>
         </div>
       </div>
