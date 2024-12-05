@@ -8,9 +8,10 @@ import { useEffect, useState } from "react";
 
 
 import AgricultureBiologique from "@/components/themes/biodiversite/agricultureBio";
+import { ConsommationEspacesNAF } from "@/components/themes/biodiversite/consommationEspacesNAF";
 import { StationsClassees } from "@/components/themes/biodiversite/stationsClassees";
 import SurfacesProtegees from "@/components/themes/biodiversite/surfacesProtegees";
-import { AgricultureBio, Biodiversite, CarteCommunes, EpciContours, SurfacesProtegeesByCol } from "@/lib/postgres/models";
+import { AgricultureBio, Biodiversite, CarteCommunes, ConsommationNAF, EpciContours, SurfacesProtegeesByCol } from "@/lib/postgres/models";
 import { useStyles } from "tss-react/dsfr";
 import styles from "../donnees.module.scss";
 
@@ -26,6 +27,7 @@ interface Props {
   carteCommunes: CarteCommunes[];
   agricultureBio: AgricultureBio[];
   surfacesProtegees: SurfacesProtegeesByCol[];
+  consommationNAF: ConsommationNAF[];
   epciContours: EpciContours[];
 }
 
@@ -43,6 +45,12 @@ const allComps = [
     Component: (
       {data, surfacesProtegees, epciContours, carteCommunes}: Props & { activeDataTab: string }
     ) => <SurfacesProtegees data={data} surfacesProtegees={surfacesProtegees} carteCommunes={carteCommunes}/>,
+  },
+  {
+    titre: "Consommation d'espaces NAF",
+    Component: (
+      {data, consommationNAF, carteCommunes}: Props & { activeDataTab: string }
+    ) => <ConsommationEspacesNAF data={data} consommationNAF={consommationNAF} carteCommunes={carteCommunes}/>,
   }
 ];
 
@@ -53,6 +61,7 @@ const BiodiversiteComp = (
     carteCommunes, 
     agricultureBio, 
     surfacesProtegees, 
+    consommationNAF,
     epciContours
   }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState("Agriculture");
@@ -77,10 +86,6 @@ const BiodiversiteComp = (
       <Tabs 
         selectedTabId={selectedTabId} 
         tabs={[
-          // {
-          //   tabId: "A déterminer",
-          //   label: "A déterminer"
-          // },
           {
             tabId: "Agriculture",
             label: "Agriculture"
@@ -88,6 +93,10 @@ const BiodiversiteComp = (
           {
             tabId: "Surfaces protégées",
             label: "Surfaces protégées"
+          },
+          {
+            tabId: "Consommation d'espaces NAF",
+            label: "Consommation d'espaces NAF"
           }
         ]} 
         onTabChange={setSelectedTabId} 
@@ -147,6 +156,7 @@ const BiodiversiteComp = (
                     carteCommunes={carteCommunes}
                     agricultureBio={agricultureBio}
                     surfacesProtegees={surfacesProtegees}
+                    consommationNAF={consommationNAF}
                     epciContours={epciContours}
                   />
                 );
