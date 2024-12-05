@@ -24,11 +24,6 @@ export type inconfort_thermique = $Result.DefaultSelection<Prisma.$inconfort_the
  */
 export type clc_epci = $Result.DefaultSelection<Prisma.$clc_epciPayload>
 /**
- * Model communes
- * 
- */
-export type communes = $Result.DefaultSelection<Prisma.$communesPayload>
-/**
  * Model collectivites_searchbar
  * 
  */
@@ -73,6 +68,16 @@ export type epci = $Result.DefaultSelection<Prisma.$epciPayload>
  * 
  */
 export type surfaces_protegees = $Result.DefaultSelection<Prisma.$surfaces_protegeesPayload>
+/**
+ * Model spatial_ref_sys
+ * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+ */
+export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPayload>
+/**
+ * Model consommation_espaces_naf
+ * 
+ */
+export type consommation_espaces_naf = $Result.DefaultSelection<Prisma.$consommation_espaces_nafPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -218,16 +223,6 @@ export class PrismaClient<
   get clc_epci(): Prisma.clc_epciDelegate<ExtArgs>;
 
   /**
-   * `prisma.communes`: Exposes CRUD operations for the **communes** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Communes
-    * const communes = await prisma.communes.findMany()
-    * ```
-    */
-  get communes(): Prisma.communesDelegate<ExtArgs>;
-
-  /**
    * `prisma.collectivites_searchbar`: Exposes CRUD operations for the **collectivites_searchbar** model.
     * Example usage:
     * ```ts
@@ -316,6 +311,26 @@ export class PrismaClient<
     * ```
     */
   get surfaces_protegees(): Prisma.surfaces_protegeesDelegate<ExtArgs>;
+
+  /**
+   * `prisma.spatial_ref_sys`: Exposes CRUD operations for the **spatial_ref_sys** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Spatial_ref_sys
+    * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
+    * ```
+    */
+  get spatial_ref_sys(): Prisma.spatial_ref_sysDelegate<ExtArgs>;
+
+  /**
+   * `prisma.consommation_espaces_naf`: Exposes CRUD operations for the **consommation_espaces_naf** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Consommation_espaces_nafs
+    * const consommation_espaces_nafs = await prisma.consommation_espaces_naf.findMany()
+    * ```
+    */
+  get consommation_espaces_naf(): Prisma.consommation_espaces_nafDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -376,7 +391,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 5.20.0
-   * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
+   * Query Engine version: 5dbef10bdbfb579e07d35cc85fb1518d357cb99e
    */
   export type PrismaVersion = {
     client: string
@@ -759,7 +774,6 @@ export namespace Prisma {
   export const ModelName: {
     inconfort_thermique: 'inconfort_thermique',
     clc_epci: 'clc_epci',
-    communes: 'communes',
     collectivites_searchbar: 'collectivites_searchbar',
     biodiversite: 'biodiversite',
     gestion_risques: 'gestion_risques',
@@ -768,7 +782,9 @@ export namespace Prisma {
     agriculture_bio: 'agriculture_bio',
     erosion_cotiere: 'erosion_cotiere',
     epci: 'epci',
-    surfaces_protegees: 'surfaces_protegees'
+    surfaces_protegees: 'surfaces_protegees',
+    spatial_ref_sys: 'spatial_ref_sys',
+    consommation_espaces_naf: 'consommation_espaces_naf'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -784,7 +800,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "inconfort_thermique" | "clc_epci" | "communes" | "collectivites_searchbar" | "biodiversite" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio" | "erosion_cotiere" | "epci" | "surfaces_protegees"
+      modelProps: "inconfort_thermique" | "clc_epci" | "collectivites_searchbar" | "biodiversite" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio" | "erosion_cotiere" | "epci" | "surfaces_protegees" | "spatial_ref_sys" | "consommation_espaces_naf"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -925,76 +941,6 @@ export namespace Prisma {
           count: {
             args: Prisma.clc_epciCountArgs<ExtArgs>
             result: $Utils.Optional<Clc_epciCountAggregateOutputType> | number
-          }
-        }
-      }
-      communes: {
-        payload: Prisma.$communesPayload<ExtArgs>
-        fields: Prisma.communesFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.communesFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.communesFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          findFirst: {
-            args: Prisma.communesFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.communesFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          findMany: {
-            args: Prisma.communesFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>[]
-          }
-          create: {
-            args: Prisma.communesCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          createMany: {
-            args: Prisma.communesCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.communesCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>[]
-          }
-          delete: {
-            args: Prisma.communesDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          update: {
-            args: Prisma.communesUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          deleteMany: {
-            args: Prisma.communesDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.communesUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.communesUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          aggregate: {
-            args: Prisma.CommunesAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCommunes>
-          }
-          groupBy: {
-            args: Prisma.communesGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CommunesGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.communesCountArgs<ExtArgs>
-            result: $Utils.Optional<CommunesCountAggregateOutputType> | number
           }
         }
       }
@@ -1577,6 +1523,146 @@ export namespace Prisma {
           count: {
             args: Prisma.surfaces_protegeesCountArgs<ExtArgs>
             result: $Utils.Optional<Surfaces_protegeesCountAggregateOutputType> | number
+          }
+        }
+      }
+      spatial_ref_sys: {
+        payload: Prisma.$spatial_ref_sysPayload<ExtArgs>
+        fields: Prisma.spatial_ref_sysFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.spatial_ref_sysFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          findFirst: {
+            args: Prisma.spatial_ref_sysFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          findMany: {
+            args: Prisma.spatial_ref_sysFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[]
+          }
+          create: {
+            args: Prisma.spatial_ref_sysCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          createMany: {
+            args: Prisma.spatial_ref_sysCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.spatial_ref_sysCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[]
+          }
+          delete: {
+            args: Prisma.spatial_ref_sysDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          update: {
+            args: Prisma.spatial_ref_sysUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          deleteMany: {
+            args: Prisma.spatial_ref_sysDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.spatial_ref_sysUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.spatial_ref_sysUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          aggregate: {
+            args: Prisma.Spatial_ref_sysAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSpatial_ref_sys>
+          }
+          groupBy: {
+            args: Prisma.spatial_ref_sysGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Spatial_ref_sysGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.spatial_ref_sysCountArgs<ExtArgs>
+            result: $Utils.Optional<Spatial_ref_sysCountAggregateOutputType> | number
+          }
+        }
+      }
+      consommation_espaces_naf: {
+        payload: Prisma.$consommation_espaces_nafPayload<ExtArgs>
+        fields: Prisma.consommation_espaces_nafFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.consommation_espaces_nafFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consommation_espaces_nafPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.consommation_espaces_nafFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consommation_espaces_nafPayload>
+          }
+          findFirst: {
+            args: Prisma.consommation_espaces_nafFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consommation_espaces_nafPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.consommation_espaces_nafFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consommation_espaces_nafPayload>
+          }
+          findMany: {
+            args: Prisma.consommation_espaces_nafFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consommation_espaces_nafPayload>[]
+          }
+          create: {
+            args: Prisma.consommation_espaces_nafCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consommation_espaces_nafPayload>
+          }
+          createMany: {
+            args: Prisma.consommation_espaces_nafCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.consommation_espaces_nafCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consommation_espaces_nafPayload>[]
+          }
+          delete: {
+            args: Prisma.consommation_espaces_nafDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consommation_espaces_nafPayload>
+          }
+          update: {
+            args: Prisma.consommation_espaces_nafUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consommation_espaces_nafPayload>
+          }
+          deleteMany: {
+            args: Prisma.consommation_espaces_nafDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.consommation_espaces_nafUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.consommation_espaces_nafUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consommation_espaces_nafPayload>
+          }
+          aggregate: {
+            args: Prisma.Consommation_espaces_nafAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateConsommation_espaces_naf>
+          }
+          groupBy: {
+            args: Prisma.consommation_espaces_nafGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Consommation_espaces_nafGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.consommation_espaces_nafCountArgs<ExtArgs>
+            result: $Utils.Optional<Consommation_espaces_nafCountAggregateOutputType> | number
           }
         }
       }
@@ -4370,974 +4456,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the clc_epci
      */
     select?: clc_epciSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * Model communes
-   */
-
-  export type AggregateCommunes = {
-    _count: CommunesCountAggregateOutputType | null
-    _avg: CommunesAvgAggregateOutputType | null
-    _sum: CommunesSumAggregateOutputType | null
-    _min: CommunesMinAggregateOutputType | null
-    _max: CommunesMaxAggregateOutputType | null
-  }
-
-  export type CommunesAvgAggregateOutputType = {
-    pk: number | null
-    densite_bati: number | null
-    precarite_logement: number | null
-  }
-
-  export type CommunesSumAggregateOutputType = {
-    pk: number | null
-    densite_bati: number | null
-    precarite_logement: number | null
-  }
-
-  export type CommunesMinAggregateOutputType = {
-    pk: number | null
-    code_commune: string | null
-    libelle_commune: string | null
-    epci: string | null
-    libelle_epci: string | null
-    libgeo: string | null
-    coordinates: string | null
-    densite_bati: number | null
-    precarite_logement: number | null
-  }
-
-  export type CommunesMaxAggregateOutputType = {
-    pk: number | null
-    code_commune: string | null
-    libelle_commune: string | null
-    epci: string | null
-    libelle_epci: string | null
-    libgeo: string | null
-    coordinates: string | null
-    densite_bati: number | null
-    precarite_logement: number | null
-  }
-
-  export type CommunesCountAggregateOutputType = {
-    pk: number
-    code_commune: number
-    libelle_commune: number
-    epci: number
-    libelle_epci: number
-    libgeo: number
-    coordinates: number
-    densite_bati: number
-    precarite_logement: number
-    _all: number
-  }
-
-
-  export type CommunesAvgAggregateInputType = {
-    pk?: true
-    densite_bati?: true
-    precarite_logement?: true
-  }
-
-  export type CommunesSumAggregateInputType = {
-    pk?: true
-    densite_bati?: true
-    precarite_logement?: true
-  }
-
-  export type CommunesMinAggregateInputType = {
-    pk?: true
-    code_commune?: true
-    libelle_commune?: true
-    epci?: true
-    libelle_epci?: true
-    libgeo?: true
-    coordinates?: true
-    densite_bati?: true
-    precarite_logement?: true
-  }
-
-  export type CommunesMaxAggregateInputType = {
-    pk?: true
-    code_commune?: true
-    libelle_commune?: true
-    epci?: true
-    libelle_epci?: true
-    libgeo?: true
-    coordinates?: true
-    densite_bati?: true
-    precarite_logement?: true
-  }
-
-  export type CommunesCountAggregateInputType = {
-    pk?: true
-    code_commune?: true
-    libelle_commune?: true
-    epci?: true
-    libelle_epci?: true
-    libgeo?: true
-    coordinates?: true
-    densite_bati?: true
-    precarite_logement?: true
-    _all?: true
-  }
-
-  export type CommunesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which communes to aggregate.
-     */
-    where?: communesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of communes to fetch.
-     */
-    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: communesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` communes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` communes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned communes
-    **/
-    _count?: true | CommunesCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: CommunesAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: CommunesSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: CommunesMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: CommunesMaxAggregateInputType
-  }
-
-  export type GetCommunesAggregateType<T extends CommunesAggregateArgs> = {
-        [P in keyof T & keyof AggregateCommunes]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCommunes[P]>
-      : GetScalarType<T[P], AggregateCommunes[P]>
-  }
-
-
-
-
-  export type communesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: communesWhereInput
-    orderBy?: communesOrderByWithAggregationInput | communesOrderByWithAggregationInput[]
-    by: CommunesScalarFieldEnum[] | CommunesScalarFieldEnum
-    having?: communesScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: CommunesCountAggregateInputType | true
-    _avg?: CommunesAvgAggregateInputType
-    _sum?: CommunesSumAggregateInputType
-    _min?: CommunesMinAggregateInputType
-    _max?: CommunesMaxAggregateInputType
-  }
-
-  export type CommunesGroupByOutputType = {
-    pk: number
-    code_commune: string | null
-    libelle_commune: string | null
-    epci: string | null
-    libelle_epci: string | null
-    libgeo: string | null
-    coordinates: string | null
-    densite_bati: number | null
-    precarite_logement: number | null
-    _count: CommunesCountAggregateOutputType | null
-    _avg: CommunesAvgAggregateOutputType | null
-    _sum: CommunesSumAggregateOutputType | null
-    _min: CommunesMinAggregateOutputType | null
-    _max: CommunesMaxAggregateOutputType | null
-  }
-
-  type GetCommunesGroupByPayload<T extends communesGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<CommunesGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof CommunesGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], CommunesGroupByOutputType[P]>
-            : GetScalarType<T[P], CommunesGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type communesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pk?: boolean
-    code_commune?: boolean
-    libelle_commune?: boolean
-    epci?: boolean
-    libelle_epci?: boolean
-    libgeo?: boolean
-    coordinates?: boolean
-    densite_bati?: boolean
-    precarite_logement?: boolean
-  }, ExtArgs["result"]["communes"]>
-
-  export type communesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pk?: boolean
-    code_commune?: boolean
-    libelle_commune?: boolean
-    epci?: boolean
-    libelle_epci?: boolean
-    libgeo?: boolean
-    coordinates?: boolean
-    densite_bati?: boolean
-    precarite_logement?: boolean
-  }, ExtArgs["result"]["communes"]>
-
-  export type communesSelectScalar = {
-    pk?: boolean
-    code_commune?: boolean
-    libelle_commune?: boolean
-    epci?: boolean
-    libelle_epci?: boolean
-    libgeo?: boolean
-    coordinates?: boolean
-    densite_bati?: boolean
-    precarite_logement?: boolean
-  }
-
-
-  export type $communesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "communes"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      pk: number
-      code_commune: string | null
-      libelle_commune: string | null
-      epci: string | null
-      libelle_epci: string | null
-      libgeo: string | null
-      coordinates: string | null
-      densite_bati: number | null
-      precarite_logement: number | null
-    }, ExtArgs["result"]["communes"]>
-    composites: {}
-  }
-
-  type communesGetPayload<S extends boolean | null | undefined | communesDefaultArgs> = $Result.GetResult<Prisma.$communesPayload, S>
-
-  type communesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<communesFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: CommunesCountAggregateInputType | true
-    }
-
-  export interface communesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['communes'], meta: { name: 'communes' } }
-    /**
-     * Find zero or one Communes that matches the filter.
-     * @param {communesFindUniqueArgs} args - Arguments to find a Communes
-     * @example
-     * // Get one Communes
-     * const communes = await prisma.communes.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends communesFindUniqueArgs>(args: SelectSubset<T, communesFindUniqueArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
-
-    /**
-     * Find one Communes that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
-     * @param {communesFindUniqueOrThrowArgs} args - Arguments to find a Communes
-     * @example
-     * // Get one Communes
-     * const communes = await prisma.communes.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends communesFindUniqueOrThrowArgs>(args: SelectSubset<T, communesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
-
-    /**
-     * Find the first Communes that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesFindFirstArgs} args - Arguments to find a Communes
-     * @example
-     * // Get one Communes
-     * const communes = await prisma.communes.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends communesFindFirstArgs>(args?: SelectSubset<T, communesFindFirstArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
-
-    /**
-     * Find the first Communes that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesFindFirstOrThrowArgs} args - Arguments to find a Communes
-     * @example
-     * // Get one Communes
-     * const communes = await prisma.communes.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends communesFindFirstOrThrowArgs>(args?: SelectSubset<T, communesFindFirstOrThrowArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
-
-    /**
-     * Find zero or more Communes that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Communes
-     * const communes = await prisma.communes.findMany()
-     * 
-     * // Get first 10 Communes
-     * const communes = await prisma.communes.findMany({ take: 10 })
-     * 
-     * // Only select the `pk`
-     * const communesWithPkOnly = await prisma.communes.findMany({ select: { pk: true } })
-     * 
-     */
-    findMany<T extends communesFindManyArgs>(args?: SelectSubset<T, communesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "findMany">>
-
-    /**
-     * Create a Communes.
-     * @param {communesCreateArgs} args - Arguments to create a Communes.
-     * @example
-     * // Create one Communes
-     * const Communes = await prisma.communes.create({
-     *   data: {
-     *     // ... data to create a Communes
-     *   }
-     * })
-     * 
-     */
-    create<T extends communesCreateArgs>(args: SelectSubset<T, communesCreateArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "create">, never, ExtArgs>
-
-    /**
-     * Create many Communes.
-     * @param {communesCreateManyArgs} args - Arguments to create many Communes.
-     * @example
-     * // Create many Communes
-     * const communes = await prisma.communes.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends communesCreateManyArgs>(args?: SelectSubset<T, communesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Communes and returns the data saved in the database.
-     * @param {communesCreateManyAndReturnArgs} args - Arguments to create many Communes.
-     * @example
-     * // Create many Communes
-     * const communes = await prisma.communes.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Communes and only return the `pk`
-     * const communesWithPkOnly = await prisma.communes.createManyAndReturn({ 
-     *   select: { pk: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends communesCreateManyAndReturnArgs>(args?: SelectSubset<T, communesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "createManyAndReturn">>
-
-    /**
-     * Delete a Communes.
-     * @param {communesDeleteArgs} args - Arguments to delete one Communes.
-     * @example
-     * // Delete one Communes
-     * const Communes = await prisma.communes.delete({
-     *   where: {
-     *     // ... filter to delete one Communes
-     *   }
-     * })
-     * 
-     */
-    delete<T extends communesDeleteArgs>(args: SelectSubset<T, communesDeleteArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "delete">, never, ExtArgs>
-
-    /**
-     * Update one Communes.
-     * @param {communesUpdateArgs} args - Arguments to update one Communes.
-     * @example
-     * // Update one Communes
-     * const communes = await prisma.communes.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends communesUpdateArgs>(args: SelectSubset<T, communesUpdateArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "update">, never, ExtArgs>
-
-    /**
-     * Delete zero or more Communes.
-     * @param {communesDeleteManyArgs} args - Arguments to filter Communes to delete.
-     * @example
-     * // Delete a few Communes
-     * const { count } = await prisma.communes.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends communesDeleteManyArgs>(args?: SelectSubset<T, communesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Communes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Communes
-     * const communes = await prisma.communes.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends communesUpdateManyArgs>(args: SelectSubset<T, communesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Communes.
-     * @param {communesUpsertArgs} args - Arguments to update or create a Communes.
-     * @example
-     * // Update or create a Communes
-     * const communes = await prisma.communes.upsert({
-     *   create: {
-     *     // ... data to create a Communes
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Communes we want to update
-     *   }
-     * })
-     */
-    upsert<T extends communesUpsertArgs>(args: SelectSubset<T, communesUpsertArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
-
-
-    /**
-     * Count the number of Communes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesCountArgs} args - Arguments to filter Communes to count.
-     * @example
-     * // Count the number of Communes
-     * const count = await prisma.communes.count({
-     *   where: {
-     *     // ... the filter for the Communes we want to count
-     *   }
-     * })
-    **/
-    count<T extends communesCountArgs>(
-      args?: Subset<T, communesCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], CommunesCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Communes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CommunesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends CommunesAggregateArgs>(args: Subset<T, CommunesAggregateArgs>): Prisma.PrismaPromise<GetCommunesAggregateType<T>>
-
-    /**
-     * Group by Communes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends communesGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: communesGroupByArgs['orderBy'] }
-        : { orderBy?: communesGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, communesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommunesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the communes model
-   */
-  readonly fields: communesFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for communes.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__communesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the communes model
-   */ 
-  interface communesFieldRefs {
-    readonly pk: FieldRef<"communes", 'Int'>
-    readonly code_commune: FieldRef<"communes", 'String'>
-    readonly libelle_commune: FieldRef<"communes", 'String'>
-    readonly epci: FieldRef<"communes", 'String'>
-    readonly libelle_epci: FieldRef<"communes", 'String'>
-    readonly libgeo: FieldRef<"communes", 'String'>
-    readonly coordinates: FieldRef<"communes", 'String'>
-    readonly densite_bati: FieldRef<"communes", 'Float'>
-    readonly precarite_logement: FieldRef<"communes", 'Float'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * communes findUnique
-   */
-  export type communesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Filter, which communes to fetch.
-     */
-    where: communesWhereUniqueInput
-  }
-
-  /**
-   * communes findUniqueOrThrow
-   */
-  export type communesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Filter, which communes to fetch.
-     */
-    where: communesWhereUniqueInput
-  }
-
-  /**
-   * communes findFirst
-   */
-  export type communesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Filter, which communes to fetch.
-     */
-    where?: communesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of communes to fetch.
-     */
-    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for communes.
-     */
-    cursor?: communesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` communes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` communes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of communes.
-     */
-    distinct?: CommunesScalarFieldEnum | CommunesScalarFieldEnum[]
-  }
-
-  /**
-   * communes findFirstOrThrow
-   */
-  export type communesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Filter, which communes to fetch.
-     */
-    where?: communesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of communes to fetch.
-     */
-    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for communes.
-     */
-    cursor?: communesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` communes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` communes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of communes.
-     */
-    distinct?: CommunesScalarFieldEnum | CommunesScalarFieldEnum[]
-  }
-
-  /**
-   * communes findMany
-   */
-  export type communesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Filter, which communes to fetch.
-     */
-    where?: communesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of communes to fetch.
-     */
-    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing communes.
-     */
-    cursor?: communesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` communes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` communes.
-     */
-    skip?: number
-    distinct?: CommunesScalarFieldEnum | CommunesScalarFieldEnum[]
-  }
-
-  /**
-   * communes create
-   */
-  export type communesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * The data needed to create a communes.
-     */
-    data?: XOR<communesCreateInput, communesUncheckedCreateInput>
-  }
-
-  /**
-   * communes createMany
-   */
-  export type communesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many communes.
-     */
-    data: communesCreateManyInput | communesCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * communes createManyAndReturn
-   */
-  export type communesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many communes.
-     */
-    data: communesCreateManyInput | communesCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * communes update
-   */
-  export type communesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * The data needed to update a communes.
-     */
-    data: XOR<communesUpdateInput, communesUncheckedUpdateInput>
-    /**
-     * Choose, which communes to update.
-     */
-    where: communesWhereUniqueInput
-  }
-
-  /**
-   * communes updateMany
-   */
-  export type communesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update communes.
-     */
-    data: XOR<communesUpdateManyMutationInput, communesUncheckedUpdateManyInput>
-    /**
-     * Filter which communes to update
-     */
-    where?: communesWhereInput
-  }
-
-  /**
-   * communes upsert
-   */
-  export type communesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * The filter to search for the communes to update in case it exists.
-     */
-    where: communesWhereUniqueInput
-    /**
-     * In case the communes found by the `where` argument doesn't exist, create a new communes with this data.
-     */
-    create: XOR<communesCreateInput, communesUncheckedCreateInput>
-    /**
-     * In case the communes was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<communesUpdateInput, communesUncheckedUpdateInput>
-  }
-
-  /**
-   * communes delete
-   */
-  export type communesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Filter which communes to delete.
-     */
-    where: communesWhereUniqueInput
-  }
-
-  /**
-   * communes deleteMany
-   */
-  export type communesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which communes to delete
-     */
-    where?: communesWhereInput
-  }
-
-  /**
-   * communes without action
-   */
-  export type communesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
   }
 
 
@@ -8440,6 +7558,7 @@ export namespace Prisma {
     densite_bati: number | null
     precarite_logement: number | null
     surface: number | null
+    surface: number | null
     _count: Communes_dromCountAggregateOutputType | null
     _avg: Communes_dromAvgAggregateOutputType | null
     _sum: Communes_dromSumAggregateOutputType | null
@@ -8499,6 +7618,7 @@ export namespace Prisma {
       coordinates: string
       densite_bati: number | null
       precarite_logement: number | null
+      surface: number | null
       surface: number | null
     }, ExtArgs["result"]["communes_drom"]>
     composites: {}
@@ -13965,6 +13085,3766 @@ export namespace Prisma {
 
 
   /**
+   * Model spatial_ref_sys
+   */
+
+  export type AggregateSpatial_ref_sys = {
+    _count: Spatial_ref_sysCountAggregateOutputType | null
+    _avg: Spatial_ref_sysAvgAggregateOutputType | null
+    _sum: Spatial_ref_sysSumAggregateOutputType | null
+    _min: Spatial_ref_sysMinAggregateOutputType | null
+    _max: Spatial_ref_sysMaxAggregateOutputType | null
+  }
+
+  export type Spatial_ref_sysAvgAggregateOutputType = {
+    srid: number | null
+    auth_srid: number | null
+  }
+
+  export type Spatial_ref_sysSumAggregateOutputType = {
+    srid: number | null
+    auth_srid: number | null
+  }
+
+  export type Spatial_ref_sysMinAggregateOutputType = {
+    srid: number | null
+    auth_name: string | null
+    auth_srid: number | null
+    srtext: string | null
+    proj4text: string | null
+  }
+
+  export type Spatial_ref_sysMaxAggregateOutputType = {
+    srid: number | null
+    auth_name: string | null
+    auth_srid: number | null
+    srtext: string | null
+    proj4text: string | null
+  }
+
+  export type Spatial_ref_sysCountAggregateOutputType = {
+    srid: number
+    auth_name: number
+    auth_srid: number
+    srtext: number
+    proj4text: number
+    _all: number
+  }
+
+
+  export type Spatial_ref_sysAvgAggregateInputType = {
+    srid?: true
+    auth_srid?: true
+  }
+
+  export type Spatial_ref_sysSumAggregateInputType = {
+    srid?: true
+    auth_srid?: true
+  }
+
+  export type Spatial_ref_sysMinAggregateInputType = {
+    srid?: true
+    auth_name?: true
+    auth_srid?: true
+    srtext?: true
+    proj4text?: true
+  }
+
+  export type Spatial_ref_sysMaxAggregateInputType = {
+    srid?: true
+    auth_name?: true
+    auth_srid?: true
+    srtext?: true
+    proj4text?: true
+  }
+
+  export type Spatial_ref_sysCountAggregateInputType = {
+    srid?: true
+    auth_name?: true
+    auth_srid?: true
+    srtext?: true
+    proj4text?: true
+    _all?: true
+  }
+
+  export type Spatial_ref_sysAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which spatial_ref_sys to aggregate.
+     */
+    where?: spatial_ref_sysWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of spatial_ref_sys to fetch.
+     */
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: spatial_ref_sysWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` spatial_ref_sys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` spatial_ref_sys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned spatial_ref_sys
+    **/
+    _count?: true | Spatial_ref_sysCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Spatial_ref_sysAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Spatial_ref_sysSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Spatial_ref_sysMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Spatial_ref_sysMaxAggregateInputType
+  }
+
+  export type GetSpatial_ref_sysAggregateType<T extends Spatial_ref_sysAggregateArgs> = {
+        [P in keyof T & keyof AggregateSpatial_ref_sys]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSpatial_ref_sys[P]>
+      : GetScalarType<T[P], AggregateSpatial_ref_sys[P]>
+  }
+
+
+
+
+  export type spatial_ref_sysGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: spatial_ref_sysWhereInput
+    orderBy?: spatial_ref_sysOrderByWithAggregationInput | spatial_ref_sysOrderByWithAggregationInput[]
+    by: Spatial_ref_sysScalarFieldEnum[] | Spatial_ref_sysScalarFieldEnum
+    having?: spatial_ref_sysScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Spatial_ref_sysCountAggregateInputType | true
+    _avg?: Spatial_ref_sysAvgAggregateInputType
+    _sum?: Spatial_ref_sysSumAggregateInputType
+    _min?: Spatial_ref_sysMinAggregateInputType
+    _max?: Spatial_ref_sysMaxAggregateInputType
+  }
+
+  export type Spatial_ref_sysGroupByOutputType = {
+    srid: number
+    auth_name: string | null
+    auth_srid: number | null
+    srtext: string | null
+    proj4text: string | null
+    _count: Spatial_ref_sysCountAggregateOutputType | null
+    _avg: Spatial_ref_sysAvgAggregateOutputType | null
+    _sum: Spatial_ref_sysSumAggregateOutputType | null
+    _min: Spatial_ref_sysMinAggregateOutputType | null
+    _max: Spatial_ref_sysMaxAggregateOutputType | null
+  }
+
+  type GetSpatial_ref_sysGroupByPayload<T extends spatial_ref_sysGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Spatial_ref_sysGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Spatial_ref_sysGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Spatial_ref_sysGroupByOutputType[P]>
+            : GetScalarType<T[P], Spatial_ref_sysGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type spatial_ref_sysSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    srid?: boolean
+    auth_name?: boolean
+    auth_srid?: boolean
+    srtext?: boolean
+    proj4text?: boolean
+  }, ExtArgs["result"]["spatial_ref_sys"]>
+
+  export type spatial_ref_sysSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    srid?: boolean
+    auth_name?: boolean
+    auth_srid?: boolean
+    srtext?: boolean
+    proj4text?: boolean
+  }, ExtArgs["result"]["spatial_ref_sys"]>
+
+  export type spatial_ref_sysSelectScalar = {
+    srid?: boolean
+    auth_name?: boolean
+    auth_srid?: boolean
+    srtext?: boolean
+    proj4text?: boolean
+  }
+
+
+  export type $spatial_ref_sysPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "spatial_ref_sys"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      srid: number
+      auth_name: string | null
+      auth_srid: number | null
+      srtext: string | null
+      proj4text: string | null
+    }, ExtArgs["result"]["spatial_ref_sys"]>
+    composites: {}
+  }
+
+  type spatial_ref_sysGetPayload<S extends boolean | null | undefined | spatial_ref_sysDefaultArgs> = $Result.GetResult<Prisma.$spatial_ref_sysPayload, S>
+
+  type spatial_ref_sysCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<spatial_ref_sysFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Spatial_ref_sysCountAggregateInputType | true
+    }
+
+  export interface spatial_ref_sysDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['spatial_ref_sys'], meta: { name: 'spatial_ref_sys' } }
+    /**
+     * Find zero or one Spatial_ref_sys that matches the filter.
+     * @param {spatial_ref_sysFindUniqueArgs} args - Arguments to find a Spatial_ref_sys
+     * @example
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends spatial_ref_sysFindUniqueArgs>(args: SelectSubset<T, spatial_ref_sysFindUniqueArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Spatial_ref_sys that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {spatial_ref_sysFindUniqueOrThrowArgs} args - Arguments to find a Spatial_ref_sys
+     * @example
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends spatial_ref_sysFindUniqueOrThrowArgs>(args: SelectSubset<T, spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Spatial_ref_sys that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysFindFirstArgs} args - Arguments to find a Spatial_ref_sys
+     * @example
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends spatial_ref_sysFindFirstArgs>(args?: SelectSubset<T, spatial_ref_sysFindFirstArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Spatial_ref_sys that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysFindFirstOrThrowArgs} args - Arguments to find a Spatial_ref_sys
+     * @example
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends spatial_ref_sysFindFirstOrThrowArgs>(args?: SelectSubset<T, spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Spatial_ref_sys that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
+     * 
+     * // Get first 10 Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany({ take: 10 })
+     * 
+     * // Only select the `srid`
+     * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.findMany({ select: { srid: true } })
+     * 
+     */
+    findMany<T extends spatial_ref_sysFindManyArgs>(args?: SelectSubset<T, spatial_ref_sysFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Spatial_ref_sys.
+     * @param {spatial_ref_sysCreateArgs} args - Arguments to create a Spatial_ref_sys.
+     * @example
+     * // Create one Spatial_ref_sys
+     * const Spatial_ref_sys = await prisma.spatial_ref_sys.create({
+     *   data: {
+     *     // ... data to create a Spatial_ref_sys
+     *   }
+     * })
+     * 
+     */
+    create<T extends spatial_ref_sysCreateArgs>(args: SelectSubset<T, spatial_ref_sysCreateArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Spatial_ref_sys.
+     * @param {spatial_ref_sysCreateManyArgs} args - Arguments to create many Spatial_ref_sys.
+     * @example
+     * // Create many Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends spatial_ref_sysCreateManyArgs>(args?: SelectSubset<T, spatial_ref_sysCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Spatial_ref_sys and returns the data saved in the database.
+     * @param {spatial_ref_sysCreateManyAndReturnArgs} args - Arguments to create many Spatial_ref_sys.
+     * @example
+     * // Create many Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Spatial_ref_sys and only return the `srid`
+     * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.createManyAndReturn({ 
+     *   select: { srid: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends spatial_ref_sysCreateManyAndReturnArgs>(args?: SelectSubset<T, spatial_ref_sysCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Spatial_ref_sys.
+     * @param {spatial_ref_sysDeleteArgs} args - Arguments to delete one Spatial_ref_sys.
+     * @example
+     * // Delete one Spatial_ref_sys
+     * const Spatial_ref_sys = await prisma.spatial_ref_sys.delete({
+     *   where: {
+     *     // ... filter to delete one Spatial_ref_sys
+     *   }
+     * })
+     * 
+     */
+    delete<T extends spatial_ref_sysDeleteArgs>(args: SelectSubset<T, spatial_ref_sysDeleteArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Spatial_ref_sys.
+     * @param {spatial_ref_sysUpdateArgs} args - Arguments to update one Spatial_ref_sys.
+     * @example
+     * // Update one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends spatial_ref_sysUpdateArgs>(args: SelectSubset<T, spatial_ref_sysUpdateArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Spatial_ref_sys.
+     * @param {spatial_ref_sysDeleteManyArgs} args - Arguments to filter Spatial_ref_sys to delete.
+     * @example
+     * // Delete a few Spatial_ref_sys
+     * const { count } = await prisma.spatial_ref_sys.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends spatial_ref_sysDeleteManyArgs>(args?: SelectSubset<T, spatial_ref_sysDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Spatial_ref_sys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends spatial_ref_sysUpdateManyArgs>(args: SelectSubset<T, spatial_ref_sysUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Spatial_ref_sys.
+     * @param {spatial_ref_sysUpsertArgs} args - Arguments to update or create a Spatial_ref_sys.
+     * @example
+     * // Update or create a Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.upsert({
+     *   create: {
+     *     // ... data to create a Spatial_ref_sys
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Spatial_ref_sys we want to update
+     *   }
+     * })
+     */
+    upsert<T extends spatial_ref_sysUpsertArgs>(args: SelectSubset<T, spatial_ref_sysUpsertArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Spatial_ref_sys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysCountArgs} args - Arguments to filter Spatial_ref_sys to count.
+     * @example
+     * // Count the number of Spatial_ref_sys
+     * const count = await prisma.spatial_ref_sys.count({
+     *   where: {
+     *     // ... the filter for the Spatial_ref_sys we want to count
+     *   }
+     * })
+    **/
+    count<T extends spatial_ref_sysCountArgs>(
+      args?: Subset<T, spatial_ref_sysCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Spatial_ref_sysCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Spatial_ref_sys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Spatial_ref_sysAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Spatial_ref_sysAggregateArgs>(args: Subset<T, Spatial_ref_sysAggregateArgs>): Prisma.PrismaPromise<GetSpatial_ref_sysAggregateType<T>>
+
+    /**
+     * Group by Spatial_ref_sys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends spatial_ref_sysGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: spatial_ref_sysGroupByArgs['orderBy'] }
+        : { orderBy?: spatial_ref_sysGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, spatial_ref_sysGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSpatial_ref_sysGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the spatial_ref_sys model
+   */
+  readonly fields: spatial_ref_sysFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for spatial_ref_sys.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__spatial_ref_sysClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the spatial_ref_sys model
+   */ 
+  interface spatial_ref_sysFieldRefs {
+    readonly srid: FieldRef<"spatial_ref_sys", 'Int'>
+    readonly auth_name: FieldRef<"spatial_ref_sys", 'String'>
+    readonly auth_srid: FieldRef<"spatial_ref_sys", 'Int'>
+    readonly srtext: FieldRef<"spatial_ref_sys", 'String'>
+    readonly proj4text: FieldRef<"spatial_ref_sys", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * spatial_ref_sys findUnique
+   */
+  export type spatial_ref_sysFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Filter, which spatial_ref_sys to fetch.
+     */
+    where: spatial_ref_sysWhereUniqueInput
+  }
+
+  /**
+   * spatial_ref_sys findUniqueOrThrow
+   */
+  export type spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Filter, which spatial_ref_sys to fetch.
+     */
+    where: spatial_ref_sysWhereUniqueInput
+  }
+
+  /**
+   * spatial_ref_sys findFirst
+   */
+  export type spatial_ref_sysFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Filter, which spatial_ref_sys to fetch.
+     */
+    where?: spatial_ref_sysWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of spatial_ref_sys to fetch.
+     */
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for spatial_ref_sys.
+     */
+    cursor?: spatial_ref_sysWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` spatial_ref_sys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` spatial_ref_sys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of spatial_ref_sys.
+     */
+    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
+  }
+
+  /**
+   * spatial_ref_sys findFirstOrThrow
+   */
+  export type spatial_ref_sysFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Filter, which spatial_ref_sys to fetch.
+     */
+    where?: spatial_ref_sysWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of spatial_ref_sys to fetch.
+     */
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for spatial_ref_sys.
+     */
+    cursor?: spatial_ref_sysWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` spatial_ref_sys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` spatial_ref_sys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of spatial_ref_sys.
+     */
+    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
+  }
+
+  /**
+   * spatial_ref_sys findMany
+   */
+  export type spatial_ref_sysFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Filter, which spatial_ref_sys to fetch.
+     */
+    where?: spatial_ref_sysWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of spatial_ref_sys to fetch.
+     */
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing spatial_ref_sys.
+     */
+    cursor?: spatial_ref_sysWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` spatial_ref_sys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` spatial_ref_sys.
+     */
+    skip?: number
+    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
+  }
+
+  /**
+   * spatial_ref_sys create
+   */
+  export type spatial_ref_sysCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * The data needed to create a spatial_ref_sys.
+     */
+    data: XOR<spatial_ref_sysCreateInput, spatial_ref_sysUncheckedCreateInput>
+  }
+
+  /**
+   * spatial_ref_sys createMany
+   */
+  export type spatial_ref_sysCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many spatial_ref_sys.
+     */
+    data: spatial_ref_sysCreateManyInput | spatial_ref_sysCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * spatial_ref_sys createManyAndReturn
+   */
+  export type spatial_ref_sysCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many spatial_ref_sys.
+     */
+    data: spatial_ref_sysCreateManyInput | spatial_ref_sysCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * spatial_ref_sys update
+   */
+  export type spatial_ref_sysUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * The data needed to update a spatial_ref_sys.
+     */
+    data: XOR<spatial_ref_sysUpdateInput, spatial_ref_sysUncheckedUpdateInput>
+    /**
+     * Choose, which spatial_ref_sys to update.
+     */
+    where: spatial_ref_sysWhereUniqueInput
+  }
+
+  /**
+   * spatial_ref_sys updateMany
+   */
+  export type spatial_ref_sysUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update spatial_ref_sys.
+     */
+    data: XOR<spatial_ref_sysUpdateManyMutationInput, spatial_ref_sysUncheckedUpdateManyInput>
+    /**
+     * Filter which spatial_ref_sys to update
+     */
+    where?: spatial_ref_sysWhereInput
+  }
+
+  /**
+   * spatial_ref_sys upsert
+   */
+  export type spatial_ref_sysUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * The filter to search for the spatial_ref_sys to update in case it exists.
+     */
+    where: spatial_ref_sysWhereUniqueInput
+    /**
+     * In case the spatial_ref_sys found by the `where` argument doesn't exist, create a new spatial_ref_sys with this data.
+     */
+    create: XOR<spatial_ref_sysCreateInput, spatial_ref_sysUncheckedCreateInput>
+    /**
+     * In case the spatial_ref_sys was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<spatial_ref_sysUpdateInput, spatial_ref_sysUncheckedUpdateInput>
+  }
+
+  /**
+   * spatial_ref_sys delete
+   */
+  export type spatial_ref_sysDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Filter which spatial_ref_sys to delete.
+     */
+    where: spatial_ref_sysWhereUniqueInput
+  }
+
+  /**
+   * spatial_ref_sys deleteMany
+   */
+  export type spatial_ref_sysDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which spatial_ref_sys to delete
+     */
+    where?: spatial_ref_sysWhereInput
+  }
+
+  /**
+   * spatial_ref_sys without action
+   */
+  export type spatial_ref_sysDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * Model consommation_espaces_naf
+   */
+
+  export type AggregateConsommation_espaces_naf = {
+    _count: Consommation_espaces_nafCountAggregateOutputType | null
+    _avg: Consommation_espaces_nafAvgAggregateOutputType | null
+    _sum: Consommation_espaces_nafSumAggregateOutputType | null
+    _min: Consommation_espaces_nafMinAggregateOutputType | null
+    _max: Consommation_espaces_nafMaxAggregateOutputType | null
+  }
+
+  export type Consommation_espaces_nafAvgAggregateOutputType = {
+    index: number | null
+    region: number | null
+    naf09art10: number | null
+    art09act10: number | null
+    art09hab10: number | null
+    art09mix10: number | null
+    art09rou10: number | null
+    art09fer10: number | null
+    art09inc10: number | null
+    naf10art11: number | null
+    art10act11: number | null
+    art10hab11: number | null
+    art10mix11: number | null
+    art10rou11: number | null
+    art10fer11: number | null
+    art10inc11: number | null
+    naf11art12: number | null
+    art11act12: number | null
+    art11hab12: number | null
+    art11mix12: number | null
+    art11rou12: number | null
+    art11fer12: number | null
+    art11inc12: number | null
+    naf12art13: number | null
+    art12act13: number | null
+    art12hab13: number | null
+    art12mix13: number | null
+    art12rou13: number | null
+    art12fer13: number | null
+    art12inc13: number | null
+    naf13art14: number | null
+    art13act14: number | null
+    art13hab14: number | null
+    art13mix14: number | null
+    art13rou14: number | null
+    art13fer14: number | null
+    art13inc14: number | null
+    naf14art15: number | null
+    art14act15: number | null
+    art14hab15: number | null
+    art14mix15: number | null
+    art14rou15: number | null
+    art14fer15: number | null
+    art14inc15: number | null
+    naf15art16: number | null
+    art15act16: number | null
+    art15hab16: number | null
+    art15mix16: number | null
+    art15rou16: number | null
+    art15fer16: number | null
+    art15inc16: number | null
+    naf16art17: number | null
+    art16act17: number | null
+    art16hab17: number | null
+    art16mix17: number | null
+    art16rou17: number | null
+    art16fer17: number | null
+    art16inc17: number | null
+    naf17art18: number | null
+    art17act18: number | null
+    art17hab18: number | null
+    art17mix18: number | null
+    art17rou18: number | null
+    art17fer18: number | null
+    art17inc18: number | null
+    naf18art19: number | null
+    art18act19: number | null
+    art18hab19: number | null
+    art18mix19: number | null
+    art18rou19: number | null
+    art18fer19: number | null
+    art18inc19: number | null
+    naf19art20: number | null
+    art19act20: number | null
+    art19hab20: number | null
+    art19mix20: number | null
+    art19rou20: number | null
+    art19fer20: number | null
+    art19inc20: number | null
+    naf20art21: number | null
+    art20act21: number | null
+    art20hab21: number | null
+    art20mix21: number | null
+    art20rou21: number | null
+    art20fer21: number | null
+    art20inc21: number | null
+    naf21art22: number | null
+    art21act22: number | null
+    art21hab22: number | null
+    art21mix22: number | null
+    art21rou22: number | null
+    art21fer22: number | null
+    art21inc22: number | null
+    naf22art23: number | null
+    art22act23: number | null
+    art22hab23: number | null
+    art22mix23: number | null
+    art22rou23: number | null
+    art22fer23: number | null
+    art22inc23: number | null
+    naf09art23: number | null
+    art09act23: number | null
+    art09hab23: number | null
+    art09mix23: number | null
+    art09inc23: number | null
+    art09rou23: number | null
+    art09fer23: number | null
+    artcom0923: number | null
+    pop14: number | null
+    pop20: number | null
+    pop1420: number | null
+    men14: number | null
+    men20: number | null
+    men1420: number | null
+    emp14: number | null
+    emp20: number | null
+    emp1420: number | null
+    mepart1420: number | null
+    menhab1420: number | null
+    artpop1420: number | null
+    surfcom2023: number | null
+  }
+
+  export type Consommation_espaces_nafSumAggregateOutputType = {
+    index: bigint | null
+    region: number | null
+    naf09art10: number | null
+    art09act10: number | null
+    art09hab10: number | null
+    art09mix10: number | null
+    art09rou10: number | null
+    art09fer10: number | null
+    art09inc10: number | null
+    naf10art11: number | null
+    art10act11: number | null
+    art10hab11: number | null
+    art10mix11: number | null
+    art10rou11: number | null
+    art10fer11: number | null
+    art10inc11: number | null
+    naf11art12: number | null
+    art11act12: number | null
+    art11hab12: number | null
+    art11mix12: number | null
+    art11rou12: number | null
+    art11fer12: number | null
+    art11inc12: number | null
+    naf12art13: number | null
+    art12act13: number | null
+    art12hab13: number | null
+    art12mix13: number | null
+    art12rou13: number | null
+    art12fer13: number | null
+    art12inc13: number | null
+    naf13art14: number | null
+    art13act14: number | null
+    art13hab14: number | null
+    art13mix14: number | null
+    art13rou14: number | null
+    art13fer14: number | null
+    art13inc14: number | null
+    naf14art15: number | null
+    art14act15: number | null
+    art14hab15: number | null
+    art14mix15: number | null
+    art14rou15: number | null
+    art14fer15: number | null
+    art14inc15: number | null
+    naf15art16: number | null
+    art15act16: number | null
+    art15hab16: number | null
+    art15mix16: number | null
+    art15rou16: number | null
+    art15fer16: number | null
+    art15inc16: number | null
+    naf16art17: number | null
+    art16act17: number | null
+    art16hab17: number | null
+    art16mix17: number | null
+    art16rou17: number | null
+    art16fer17: number | null
+    art16inc17: number | null
+    naf17art18: number | null
+    art17act18: number | null
+    art17hab18: number | null
+    art17mix18: number | null
+    art17rou18: number | null
+    art17fer18: number | null
+    art17inc18: number | null
+    naf18art19: number | null
+    art18act19: number | null
+    art18hab19: number | null
+    art18mix19: number | null
+    art18rou19: number | null
+    art18fer19: number | null
+    art18inc19: number | null
+    naf19art20: number | null
+    art19act20: number | null
+    art19hab20: number | null
+    art19mix20: number | null
+    art19rou20: number | null
+    art19fer20: number | null
+    art19inc20: number | null
+    naf20art21: number | null
+    art20act21: number | null
+    art20hab21: number | null
+    art20mix21: number | null
+    art20rou21: number | null
+    art20fer21: number | null
+    art20inc21: number | null
+    naf21art22: number | null
+    art21act22: number | null
+    art21hab22: number | null
+    art21mix22: number | null
+    art21rou22: number | null
+    art21fer22: number | null
+    art21inc22: number | null
+    naf22art23: number | null
+    art22act23: number | null
+    art22hab23: number | null
+    art22mix23: number | null
+    art22rou23: number | null
+    art22fer23: number | null
+    art22inc23: number | null
+    naf09art23: number | null
+    art09act23: number | null
+    art09hab23: number | null
+    art09mix23: number | null
+    art09inc23: number | null
+    art09rou23: number | null
+    art09fer23: number | null
+    artcom0923: number | null
+    pop14: number | null
+    pop20: number | null
+    pop1420: number | null
+    men14: number | null
+    men20: number | null
+    men1420: number | null
+    emp14: number | null
+    emp20: number | null
+    emp1420: number | null
+    mepart1420: number | null
+    menhab1420: number | null
+    artpop1420: number | null
+    surfcom2023: number | null
+  }
+
+  export type Consommation_espaces_nafMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: number | null
+    naf09art10: number | null
+    art09act10: number | null
+    art09hab10: number | null
+    art09mix10: number | null
+    art09rou10: number | null
+    art09fer10: number | null
+    art09inc10: number | null
+    naf10art11: number | null
+    art10act11: number | null
+    art10hab11: number | null
+    art10mix11: number | null
+    art10rou11: number | null
+    art10fer11: number | null
+    art10inc11: number | null
+    naf11art12: number | null
+    art11act12: number | null
+    art11hab12: number | null
+    art11mix12: number | null
+    art11rou12: number | null
+    art11fer12: number | null
+    art11inc12: number | null
+    naf12art13: number | null
+    art12act13: number | null
+    art12hab13: number | null
+    art12mix13: number | null
+    art12rou13: number | null
+    art12fer13: number | null
+    art12inc13: number | null
+    naf13art14: number | null
+    art13act14: number | null
+    art13hab14: number | null
+    art13mix14: number | null
+    art13rou14: number | null
+    art13fer14: number | null
+    art13inc14: number | null
+    naf14art15: number | null
+    art14act15: number | null
+    art14hab15: number | null
+    art14mix15: number | null
+    art14rou15: number | null
+    art14fer15: number | null
+    art14inc15: number | null
+    naf15art16: number | null
+    art15act16: number | null
+    art15hab16: number | null
+    art15mix16: number | null
+    art15rou16: number | null
+    art15fer16: number | null
+    art15inc16: number | null
+    naf16art17: number | null
+    art16act17: number | null
+    art16hab17: number | null
+    art16mix17: number | null
+    art16rou17: number | null
+    art16fer17: number | null
+    art16inc17: number | null
+    naf17art18: number | null
+    art17act18: number | null
+    art17hab18: number | null
+    art17mix18: number | null
+    art17rou18: number | null
+    art17fer18: number | null
+    art17inc18: number | null
+    naf18art19: number | null
+    art18act19: number | null
+    art18hab19: number | null
+    art18mix19: number | null
+    art18rou19: number | null
+    art18fer19: number | null
+    art18inc19: number | null
+    naf19art20: number | null
+    art19act20: number | null
+    art19hab20: number | null
+    art19mix20: number | null
+    art19rou20: number | null
+    art19fer20: number | null
+    art19inc20: number | null
+    naf20art21: number | null
+    art20act21: number | null
+    art20hab21: number | null
+    art20mix21: number | null
+    art20rou21: number | null
+    art20fer21: number | null
+    art20inc21: number | null
+    naf21art22: number | null
+    art21act22: number | null
+    art21hab22: number | null
+    art21mix22: number | null
+    art21rou22: number | null
+    art21fer22: number | null
+    art21inc22: number | null
+    naf22art23: number | null
+    art22act23: number | null
+    art22hab23: number | null
+    art22mix23: number | null
+    art22rou23: number | null
+    art22fer23: number | null
+    art22inc23: number | null
+    naf09art23: number | null
+    art09act23: number | null
+    art09hab23: number | null
+    art09mix23: number | null
+    art09inc23: number | null
+    art09rou23: number | null
+    art09fer23: number | null
+    artcom0923: number | null
+    pop14: number | null
+    pop20: number | null
+    pop1420: number | null
+    men14: number | null
+    men20: number | null
+    men1420: number | null
+    emp14: number | null
+    emp20: number | null
+    emp1420: number | null
+    mepart1420: number | null
+    menhab1420: number | null
+    artpop1420: number | null
+    surfcom2023: number | null
+  }
+
+  export type Consommation_espaces_nafMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    region: number | null
+    naf09art10: number | null
+    art09act10: number | null
+    art09hab10: number | null
+    art09mix10: number | null
+    art09rou10: number | null
+    art09fer10: number | null
+    art09inc10: number | null
+    naf10art11: number | null
+    art10act11: number | null
+    art10hab11: number | null
+    art10mix11: number | null
+    art10rou11: number | null
+    art10fer11: number | null
+    art10inc11: number | null
+    naf11art12: number | null
+    art11act12: number | null
+    art11hab12: number | null
+    art11mix12: number | null
+    art11rou12: number | null
+    art11fer12: number | null
+    art11inc12: number | null
+    naf12art13: number | null
+    art12act13: number | null
+    art12hab13: number | null
+    art12mix13: number | null
+    art12rou13: number | null
+    art12fer13: number | null
+    art12inc13: number | null
+    naf13art14: number | null
+    art13act14: number | null
+    art13hab14: number | null
+    art13mix14: number | null
+    art13rou14: number | null
+    art13fer14: number | null
+    art13inc14: number | null
+    naf14art15: number | null
+    art14act15: number | null
+    art14hab15: number | null
+    art14mix15: number | null
+    art14rou15: number | null
+    art14fer15: number | null
+    art14inc15: number | null
+    naf15art16: number | null
+    art15act16: number | null
+    art15hab16: number | null
+    art15mix16: number | null
+    art15rou16: number | null
+    art15fer16: number | null
+    art15inc16: number | null
+    naf16art17: number | null
+    art16act17: number | null
+    art16hab17: number | null
+    art16mix17: number | null
+    art16rou17: number | null
+    art16fer17: number | null
+    art16inc17: number | null
+    naf17art18: number | null
+    art17act18: number | null
+    art17hab18: number | null
+    art17mix18: number | null
+    art17rou18: number | null
+    art17fer18: number | null
+    art17inc18: number | null
+    naf18art19: number | null
+    art18act19: number | null
+    art18hab19: number | null
+    art18mix19: number | null
+    art18rou19: number | null
+    art18fer19: number | null
+    art18inc19: number | null
+    naf19art20: number | null
+    art19act20: number | null
+    art19hab20: number | null
+    art19mix20: number | null
+    art19rou20: number | null
+    art19fer20: number | null
+    art19inc20: number | null
+    naf20art21: number | null
+    art20act21: number | null
+    art20hab21: number | null
+    art20mix21: number | null
+    art20rou21: number | null
+    art20fer21: number | null
+    art20inc21: number | null
+    naf21art22: number | null
+    art21act22: number | null
+    art21hab22: number | null
+    art21mix22: number | null
+    art21rou22: number | null
+    art21fer22: number | null
+    art21inc22: number | null
+    naf22art23: number | null
+    art22act23: number | null
+    art22hab23: number | null
+    art22mix23: number | null
+    art22rou23: number | null
+    art22fer23: number | null
+    art22inc23: number | null
+    naf09art23: number | null
+    art09act23: number | null
+    art09hab23: number | null
+    art09mix23: number | null
+    art09inc23: number | null
+    art09rou23: number | null
+    art09fer23: number | null
+    artcom0923: number | null
+    pop14: number | null
+    pop20: number | null
+    pop1420: number | null
+    men14: number | null
+    men20: number | null
+    men1420: number | null
+    emp14: number | null
+    emp20: number | null
+    emp1420: number | null
+    mepart1420: number | null
+    menhab1420: number | null
+    artpop1420: number | null
+    surfcom2023: number | null
+  }
+
+  export type Consommation_espaces_nafCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    region: number
+    naf09art10: number
+    art09act10: number
+    art09hab10: number
+    art09mix10: number
+    art09rou10: number
+    art09fer10: number
+    art09inc10: number
+    naf10art11: number
+    art10act11: number
+    art10hab11: number
+    art10mix11: number
+    art10rou11: number
+    art10fer11: number
+    art10inc11: number
+    naf11art12: number
+    art11act12: number
+    art11hab12: number
+    art11mix12: number
+    art11rou12: number
+    art11fer12: number
+    art11inc12: number
+    naf12art13: number
+    art12act13: number
+    art12hab13: number
+    art12mix13: number
+    art12rou13: number
+    art12fer13: number
+    art12inc13: number
+    naf13art14: number
+    art13act14: number
+    art13hab14: number
+    art13mix14: number
+    art13rou14: number
+    art13fer14: number
+    art13inc14: number
+    naf14art15: number
+    art14act15: number
+    art14hab15: number
+    art14mix15: number
+    art14rou15: number
+    art14fer15: number
+    art14inc15: number
+    naf15art16: number
+    art15act16: number
+    art15hab16: number
+    art15mix16: number
+    art15rou16: number
+    art15fer16: number
+    art15inc16: number
+    naf16art17: number
+    art16act17: number
+    art16hab17: number
+    art16mix17: number
+    art16rou17: number
+    art16fer17: number
+    art16inc17: number
+    naf17art18: number
+    art17act18: number
+    art17hab18: number
+    art17mix18: number
+    art17rou18: number
+    art17fer18: number
+    art17inc18: number
+    naf18art19: number
+    art18act19: number
+    art18hab19: number
+    art18mix19: number
+    art18rou19: number
+    art18fer19: number
+    art18inc19: number
+    naf19art20: number
+    art19act20: number
+    art19hab20: number
+    art19mix20: number
+    art19rou20: number
+    art19fer20: number
+    art19inc20: number
+    naf20art21: number
+    art20act21: number
+    art20hab21: number
+    art20mix21: number
+    art20rou21: number
+    art20fer21: number
+    art20inc21: number
+    naf21art22: number
+    art21act22: number
+    art21hab22: number
+    art21mix22: number
+    art21rou22: number
+    art21fer22: number
+    art21inc22: number
+    naf22art23: number
+    art22act23: number
+    art22hab23: number
+    art22mix23: number
+    art22rou23: number
+    art22fer23: number
+    art22inc23: number
+    naf09art23: number
+    art09act23: number
+    art09hab23: number
+    art09mix23: number
+    art09inc23: number
+    art09rou23: number
+    art09fer23: number
+    artcom0923: number
+    pop14: number
+    pop20: number
+    pop1420: number
+    men14: number
+    men20: number
+    men1420: number
+    emp14: number
+    emp20: number
+    emp1420: number
+    mepart1420: number
+    menhab1420: number
+    artpop1420: number
+    surfcom2023: number
+    _all: number
+  }
+
+
+  export type Consommation_espaces_nafAvgAggregateInputType = {
+    index?: true
+    region?: true
+    naf09art10?: true
+    art09act10?: true
+    art09hab10?: true
+    art09mix10?: true
+    art09rou10?: true
+    art09fer10?: true
+    art09inc10?: true
+    naf10art11?: true
+    art10act11?: true
+    art10hab11?: true
+    art10mix11?: true
+    art10rou11?: true
+    art10fer11?: true
+    art10inc11?: true
+    naf11art12?: true
+    art11act12?: true
+    art11hab12?: true
+    art11mix12?: true
+    art11rou12?: true
+    art11fer12?: true
+    art11inc12?: true
+    naf12art13?: true
+    art12act13?: true
+    art12hab13?: true
+    art12mix13?: true
+    art12rou13?: true
+    art12fer13?: true
+    art12inc13?: true
+    naf13art14?: true
+    art13act14?: true
+    art13hab14?: true
+    art13mix14?: true
+    art13rou14?: true
+    art13fer14?: true
+    art13inc14?: true
+    naf14art15?: true
+    art14act15?: true
+    art14hab15?: true
+    art14mix15?: true
+    art14rou15?: true
+    art14fer15?: true
+    art14inc15?: true
+    naf15art16?: true
+    art15act16?: true
+    art15hab16?: true
+    art15mix16?: true
+    art15rou16?: true
+    art15fer16?: true
+    art15inc16?: true
+    naf16art17?: true
+    art16act17?: true
+    art16hab17?: true
+    art16mix17?: true
+    art16rou17?: true
+    art16fer17?: true
+    art16inc17?: true
+    naf17art18?: true
+    art17act18?: true
+    art17hab18?: true
+    art17mix18?: true
+    art17rou18?: true
+    art17fer18?: true
+    art17inc18?: true
+    naf18art19?: true
+    art18act19?: true
+    art18hab19?: true
+    art18mix19?: true
+    art18rou19?: true
+    art18fer19?: true
+    art18inc19?: true
+    naf19art20?: true
+    art19act20?: true
+    art19hab20?: true
+    art19mix20?: true
+    art19rou20?: true
+    art19fer20?: true
+    art19inc20?: true
+    naf20art21?: true
+    art20act21?: true
+    art20hab21?: true
+    art20mix21?: true
+    art20rou21?: true
+    art20fer21?: true
+    art20inc21?: true
+    naf21art22?: true
+    art21act22?: true
+    art21hab22?: true
+    art21mix22?: true
+    art21rou22?: true
+    art21fer22?: true
+    art21inc22?: true
+    naf22art23?: true
+    art22act23?: true
+    art22hab23?: true
+    art22mix23?: true
+    art22rou23?: true
+    art22fer23?: true
+    art22inc23?: true
+    naf09art23?: true
+    art09act23?: true
+    art09hab23?: true
+    art09mix23?: true
+    art09inc23?: true
+    art09rou23?: true
+    art09fer23?: true
+    artcom0923?: true
+    pop14?: true
+    pop20?: true
+    pop1420?: true
+    men14?: true
+    men20?: true
+    men1420?: true
+    emp14?: true
+    emp20?: true
+    emp1420?: true
+    mepart1420?: true
+    menhab1420?: true
+    artpop1420?: true
+    surfcom2023?: true
+  }
+
+  export type Consommation_espaces_nafSumAggregateInputType = {
+    index?: true
+    region?: true
+    naf09art10?: true
+    art09act10?: true
+    art09hab10?: true
+    art09mix10?: true
+    art09rou10?: true
+    art09fer10?: true
+    art09inc10?: true
+    naf10art11?: true
+    art10act11?: true
+    art10hab11?: true
+    art10mix11?: true
+    art10rou11?: true
+    art10fer11?: true
+    art10inc11?: true
+    naf11art12?: true
+    art11act12?: true
+    art11hab12?: true
+    art11mix12?: true
+    art11rou12?: true
+    art11fer12?: true
+    art11inc12?: true
+    naf12art13?: true
+    art12act13?: true
+    art12hab13?: true
+    art12mix13?: true
+    art12rou13?: true
+    art12fer13?: true
+    art12inc13?: true
+    naf13art14?: true
+    art13act14?: true
+    art13hab14?: true
+    art13mix14?: true
+    art13rou14?: true
+    art13fer14?: true
+    art13inc14?: true
+    naf14art15?: true
+    art14act15?: true
+    art14hab15?: true
+    art14mix15?: true
+    art14rou15?: true
+    art14fer15?: true
+    art14inc15?: true
+    naf15art16?: true
+    art15act16?: true
+    art15hab16?: true
+    art15mix16?: true
+    art15rou16?: true
+    art15fer16?: true
+    art15inc16?: true
+    naf16art17?: true
+    art16act17?: true
+    art16hab17?: true
+    art16mix17?: true
+    art16rou17?: true
+    art16fer17?: true
+    art16inc17?: true
+    naf17art18?: true
+    art17act18?: true
+    art17hab18?: true
+    art17mix18?: true
+    art17rou18?: true
+    art17fer18?: true
+    art17inc18?: true
+    naf18art19?: true
+    art18act19?: true
+    art18hab19?: true
+    art18mix19?: true
+    art18rou19?: true
+    art18fer19?: true
+    art18inc19?: true
+    naf19art20?: true
+    art19act20?: true
+    art19hab20?: true
+    art19mix20?: true
+    art19rou20?: true
+    art19fer20?: true
+    art19inc20?: true
+    naf20art21?: true
+    art20act21?: true
+    art20hab21?: true
+    art20mix21?: true
+    art20rou21?: true
+    art20fer21?: true
+    art20inc21?: true
+    naf21art22?: true
+    art21act22?: true
+    art21hab22?: true
+    art21mix22?: true
+    art21rou22?: true
+    art21fer22?: true
+    art21inc22?: true
+    naf22art23?: true
+    art22act23?: true
+    art22hab23?: true
+    art22mix23?: true
+    art22rou23?: true
+    art22fer23?: true
+    art22inc23?: true
+    naf09art23?: true
+    art09act23?: true
+    art09hab23?: true
+    art09mix23?: true
+    art09inc23?: true
+    art09rou23?: true
+    art09fer23?: true
+    artcom0923?: true
+    pop14?: true
+    pop20?: true
+    pop1420?: true
+    men14?: true
+    men20?: true
+    men1420?: true
+    emp14?: true
+    emp20?: true
+    emp1420?: true
+    mepart1420?: true
+    menhab1420?: true
+    artpop1420?: true
+    surfcom2023?: true
+  }
+
+  export type Consommation_espaces_nafMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+    naf09art10?: true
+    art09act10?: true
+    art09hab10?: true
+    art09mix10?: true
+    art09rou10?: true
+    art09fer10?: true
+    art09inc10?: true
+    naf10art11?: true
+    art10act11?: true
+    art10hab11?: true
+    art10mix11?: true
+    art10rou11?: true
+    art10fer11?: true
+    art10inc11?: true
+    naf11art12?: true
+    art11act12?: true
+    art11hab12?: true
+    art11mix12?: true
+    art11rou12?: true
+    art11fer12?: true
+    art11inc12?: true
+    naf12art13?: true
+    art12act13?: true
+    art12hab13?: true
+    art12mix13?: true
+    art12rou13?: true
+    art12fer13?: true
+    art12inc13?: true
+    naf13art14?: true
+    art13act14?: true
+    art13hab14?: true
+    art13mix14?: true
+    art13rou14?: true
+    art13fer14?: true
+    art13inc14?: true
+    naf14art15?: true
+    art14act15?: true
+    art14hab15?: true
+    art14mix15?: true
+    art14rou15?: true
+    art14fer15?: true
+    art14inc15?: true
+    naf15art16?: true
+    art15act16?: true
+    art15hab16?: true
+    art15mix16?: true
+    art15rou16?: true
+    art15fer16?: true
+    art15inc16?: true
+    naf16art17?: true
+    art16act17?: true
+    art16hab17?: true
+    art16mix17?: true
+    art16rou17?: true
+    art16fer17?: true
+    art16inc17?: true
+    naf17art18?: true
+    art17act18?: true
+    art17hab18?: true
+    art17mix18?: true
+    art17rou18?: true
+    art17fer18?: true
+    art17inc18?: true
+    naf18art19?: true
+    art18act19?: true
+    art18hab19?: true
+    art18mix19?: true
+    art18rou19?: true
+    art18fer19?: true
+    art18inc19?: true
+    naf19art20?: true
+    art19act20?: true
+    art19hab20?: true
+    art19mix20?: true
+    art19rou20?: true
+    art19fer20?: true
+    art19inc20?: true
+    naf20art21?: true
+    art20act21?: true
+    art20hab21?: true
+    art20mix21?: true
+    art20rou21?: true
+    art20fer21?: true
+    art20inc21?: true
+    naf21art22?: true
+    art21act22?: true
+    art21hab22?: true
+    art21mix22?: true
+    art21rou22?: true
+    art21fer22?: true
+    art21inc22?: true
+    naf22art23?: true
+    art22act23?: true
+    art22hab23?: true
+    art22mix23?: true
+    art22rou23?: true
+    art22fer23?: true
+    art22inc23?: true
+    naf09art23?: true
+    art09act23?: true
+    art09hab23?: true
+    art09mix23?: true
+    art09inc23?: true
+    art09rou23?: true
+    art09fer23?: true
+    artcom0923?: true
+    pop14?: true
+    pop20?: true
+    pop1420?: true
+    men14?: true
+    men20?: true
+    men1420?: true
+    emp14?: true
+    emp20?: true
+    emp1420?: true
+    mepart1420?: true
+    menhab1420?: true
+    artpop1420?: true
+    surfcom2023?: true
+  }
+
+  export type Consommation_espaces_nafMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+    naf09art10?: true
+    art09act10?: true
+    art09hab10?: true
+    art09mix10?: true
+    art09rou10?: true
+    art09fer10?: true
+    art09inc10?: true
+    naf10art11?: true
+    art10act11?: true
+    art10hab11?: true
+    art10mix11?: true
+    art10rou11?: true
+    art10fer11?: true
+    art10inc11?: true
+    naf11art12?: true
+    art11act12?: true
+    art11hab12?: true
+    art11mix12?: true
+    art11rou12?: true
+    art11fer12?: true
+    art11inc12?: true
+    naf12art13?: true
+    art12act13?: true
+    art12hab13?: true
+    art12mix13?: true
+    art12rou13?: true
+    art12fer13?: true
+    art12inc13?: true
+    naf13art14?: true
+    art13act14?: true
+    art13hab14?: true
+    art13mix14?: true
+    art13rou14?: true
+    art13fer14?: true
+    art13inc14?: true
+    naf14art15?: true
+    art14act15?: true
+    art14hab15?: true
+    art14mix15?: true
+    art14rou15?: true
+    art14fer15?: true
+    art14inc15?: true
+    naf15art16?: true
+    art15act16?: true
+    art15hab16?: true
+    art15mix16?: true
+    art15rou16?: true
+    art15fer16?: true
+    art15inc16?: true
+    naf16art17?: true
+    art16act17?: true
+    art16hab17?: true
+    art16mix17?: true
+    art16rou17?: true
+    art16fer17?: true
+    art16inc17?: true
+    naf17art18?: true
+    art17act18?: true
+    art17hab18?: true
+    art17mix18?: true
+    art17rou18?: true
+    art17fer18?: true
+    art17inc18?: true
+    naf18art19?: true
+    art18act19?: true
+    art18hab19?: true
+    art18mix19?: true
+    art18rou19?: true
+    art18fer19?: true
+    art18inc19?: true
+    naf19art20?: true
+    art19act20?: true
+    art19hab20?: true
+    art19mix20?: true
+    art19rou20?: true
+    art19fer20?: true
+    art19inc20?: true
+    naf20art21?: true
+    art20act21?: true
+    art20hab21?: true
+    art20mix21?: true
+    art20rou21?: true
+    art20fer21?: true
+    art20inc21?: true
+    naf21art22?: true
+    art21act22?: true
+    art21hab22?: true
+    art21mix22?: true
+    art21rou22?: true
+    art21fer22?: true
+    art21inc22?: true
+    naf22art23?: true
+    art22act23?: true
+    art22hab23?: true
+    art22mix23?: true
+    art22rou23?: true
+    art22fer23?: true
+    art22inc23?: true
+    naf09art23?: true
+    art09act23?: true
+    art09hab23?: true
+    art09mix23?: true
+    art09inc23?: true
+    art09rou23?: true
+    art09fer23?: true
+    artcom0923?: true
+    pop14?: true
+    pop20?: true
+    pop1420?: true
+    men14?: true
+    men20?: true
+    men1420?: true
+    emp14?: true
+    emp20?: true
+    emp1420?: true
+    mepart1420?: true
+    menhab1420?: true
+    artpop1420?: true
+    surfcom2023?: true
+  }
+
+  export type Consommation_espaces_nafCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    region?: true
+    naf09art10?: true
+    art09act10?: true
+    art09hab10?: true
+    art09mix10?: true
+    art09rou10?: true
+    art09fer10?: true
+    art09inc10?: true
+    naf10art11?: true
+    art10act11?: true
+    art10hab11?: true
+    art10mix11?: true
+    art10rou11?: true
+    art10fer11?: true
+    art10inc11?: true
+    naf11art12?: true
+    art11act12?: true
+    art11hab12?: true
+    art11mix12?: true
+    art11rou12?: true
+    art11fer12?: true
+    art11inc12?: true
+    naf12art13?: true
+    art12act13?: true
+    art12hab13?: true
+    art12mix13?: true
+    art12rou13?: true
+    art12fer13?: true
+    art12inc13?: true
+    naf13art14?: true
+    art13act14?: true
+    art13hab14?: true
+    art13mix14?: true
+    art13rou14?: true
+    art13fer14?: true
+    art13inc14?: true
+    naf14art15?: true
+    art14act15?: true
+    art14hab15?: true
+    art14mix15?: true
+    art14rou15?: true
+    art14fer15?: true
+    art14inc15?: true
+    naf15art16?: true
+    art15act16?: true
+    art15hab16?: true
+    art15mix16?: true
+    art15rou16?: true
+    art15fer16?: true
+    art15inc16?: true
+    naf16art17?: true
+    art16act17?: true
+    art16hab17?: true
+    art16mix17?: true
+    art16rou17?: true
+    art16fer17?: true
+    art16inc17?: true
+    naf17art18?: true
+    art17act18?: true
+    art17hab18?: true
+    art17mix18?: true
+    art17rou18?: true
+    art17fer18?: true
+    art17inc18?: true
+    naf18art19?: true
+    art18act19?: true
+    art18hab19?: true
+    art18mix19?: true
+    art18rou19?: true
+    art18fer19?: true
+    art18inc19?: true
+    naf19art20?: true
+    art19act20?: true
+    art19hab20?: true
+    art19mix20?: true
+    art19rou20?: true
+    art19fer20?: true
+    art19inc20?: true
+    naf20art21?: true
+    art20act21?: true
+    art20hab21?: true
+    art20mix21?: true
+    art20rou21?: true
+    art20fer21?: true
+    art20inc21?: true
+    naf21art22?: true
+    art21act22?: true
+    art21hab22?: true
+    art21mix22?: true
+    art21rou22?: true
+    art21fer22?: true
+    art21inc22?: true
+    naf22art23?: true
+    art22act23?: true
+    art22hab23?: true
+    art22mix23?: true
+    art22rou23?: true
+    art22fer23?: true
+    art22inc23?: true
+    naf09art23?: true
+    art09act23?: true
+    art09hab23?: true
+    art09mix23?: true
+    art09inc23?: true
+    art09rou23?: true
+    art09fer23?: true
+    artcom0923?: true
+    pop14?: true
+    pop20?: true
+    pop1420?: true
+    men14?: true
+    men20?: true
+    men1420?: true
+    emp14?: true
+    emp20?: true
+    emp1420?: true
+    mepart1420?: true
+    menhab1420?: true
+    artpop1420?: true
+    surfcom2023?: true
+    _all?: true
+  }
+
+  export type Consommation_espaces_nafAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which consommation_espaces_naf to aggregate.
+     */
+    where?: consommation_espaces_nafWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of consommation_espaces_nafs to fetch.
+     */
+    orderBy?: consommation_espaces_nafOrderByWithRelationInput | consommation_espaces_nafOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: consommation_espaces_nafWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` consommation_espaces_nafs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` consommation_espaces_nafs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned consommation_espaces_nafs
+    **/
+    _count?: true | Consommation_espaces_nafCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Consommation_espaces_nafAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Consommation_espaces_nafSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Consommation_espaces_nafMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Consommation_espaces_nafMaxAggregateInputType
+  }
+
+  export type GetConsommation_espaces_nafAggregateType<T extends Consommation_espaces_nafAggregateArgs> = {
+        [P in keyof T & keyof AggregateConsommation_espaces_naf]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateConsommation_espaces_naf[P]>
+      : GetScalarType<T[P], AggregateConsommation_espaces_naf[P]>
+  }
+
+
+
+
+  export type consommation_espaces_nafGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: consommation_espaces_nafWhereInput
+    orderBy?: consommation_espaces_nafOrderByWithAggregationInput | consommation_espaces_nafOrderByWithAggregationInput[]
+    by: Consommation_espaces_nafScalarFieldEnum[] | Consommation_espaces_nafScalarFieldEnum
+    having?: consommation_espaces_nafScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Consommation_espaces_nafCountAggregateInputType | true
+    _avg?: Consommation_espaces_nafAvgAggregateInputType
+    _sum?: Consommation_espaces_nafSumAggregateInputType
+    _min?: Consommation_espaces_nafMinAggregateInputType
+    _max?: Consommation_espaces_nafMaxAggregateInputType
+  }
+
+  export type Consommation_espaces_nafGroupByOutputType = {
+    index: bigint
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
+    naf09art10: number
+    art09act10: number
+    art09hab10: number
+    art09mix10: number
+    art09rou10: number
+    art09fer10: number
+    art09inc10: number
+    naf10art11: number
+    art10act11: number
+    art10hab11: number
+    art10mix11: number
+    art10rou11: number
+    art10fer11: number
+    art10inc11: number
+    naf11art12: number
+    art11act12: number
+    art11hab12: number
+    art11mix12: number
+    art11rou12: number
+    art11fer12: number
+    art11inc12: number
+    naf12art13: number
+    art12act13: number
+    art12hab13: number
+    art12mix13: number
+    art12rou13: number
+    art12fer13: number
+    art12inc13: number
+    naf13art14: number
+    art13act14: number
+    art13hab14: number
+    art13mix14: number
+    art13rou14: number
+    art13fer14: number
+    art13inc14: number
+    naf14art15: number
+    art14act15: number
+    art14hab15: number
+    art14mix15: number
+    art14rou15: number
+    art14fer15: number
+    art14inc15: number
+    naf15art16: number
+    art15act16: number
+    art15hab16: number
+    art15mix16: number
+    art15rou16: number
+    art15fer16: number
+    art15inc16: number
+    naf16art17: number
+    art16act17: number
+    art16hab17: number
+    art16mix17: number
+    art16rou17: number
+    art16fer17: number
+    art16inc17: number
+    naf17art18: number
+    art17act18: number
+    art17hab18: number
+    art17mix18: number
+    art17rou18: number
+    art17fer18: number
+    art17inc18: number
+    naf18art19: number
+    art18act19: number
+    art18hab19: number
+    art18mix19: number
+    art18rou19: number
+    art18fer19: number
+    art18inc19: number
+    naf19art20: number
+    art19act20: number
+    art19hab20: number
+    art19mix20: number
+    art19rou20: number
+    art19fer20: number
+    art19inc20: number
+    naf20art21: number
+    art20act21: number
+    art20hab21: number
+    art20mix21: number
+    art20rou21: number
+    art20fer21: number
+    art20inc21: number
+    naf21art22: number
+    art21act22: number
+    art21hab22: number
+    art21mix22: number
+    art21rou22: number
+    art21fer22: number
+    art21inc22: number
+    naf22art23: number
+    art22act23: number
+    art22hab23: number
+    art22mix23: number
+    art22rou23: number
+    art22fer23: number
+    art22inc23: number
+    naf09art23: number
+    art09act23: number
+    art09hab23: number
+    art09mix23: number
+    art09inc23: number
+    art09rou23: number
+    art09fer23: number
+    artcom0923: number
+    pop14: number
+    pop20: number
+    pop1420: number
+    men14: number
+    men20: number
+    men1420: number
+    emp14: number
+    emp20: number
+    emp1420: number
+    mepart1420: number
+    menhab1420: number
+    artpop1420: number | null
+    surfcom2023: number
+    _count: Consommation_espaces_nafCountAggregateOutputType | null
+    _avg: Consommation_espaces_nafAvgAggregateOutputType | null
+    _sum: Consommation_espaces_nafSumAggregateOutputType | null
+    _min: Consommation_espaces_nafMinAggregateOutputType | null
+    _max: Consommation_espaces_nafMaxAggregateOutputType | null
+  }
+
+  type GetConsommation_espaces_nafGroupByPayload<T extends consommation_espaces_nafGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Consommation_espaces_nafGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Consommation_espaces_nafGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Consommation_espaces_nafGroupByOutputType[P]>
+            : GetScalarType<T[P], Consommation_espaces_nafGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type consommation_espaces_nafSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+    naf09art10?: boolean
+    art09act10?: boolean
+    art09hab10?: boolean
+    art09mix10?: boolean
+    art09rou10?: boolean
+    art09fer10?: boolean
+    art09inc10?: boolean
+    naf10art11?: boolean
+    art10act11?: boolean
+    art10hab11?: boolean
+    art10mix11?: boolean
+    art10rou11?: boolean
+    art10fer11?: boolean
+    art10inc11?: boolean
+    naf11art12?: boolean
+    art11act12?: boolean
+    art11hab12?: boolean
+    art11mix12?: boolean
+    art11rou12?: boolean
+    art11fer12?: boolean
+    art11inc12?: boolean
+    naf12art13?: boolean
+    art12act13?: boolean
+    art12hab13?: boolean
+    art12mix13?: boolean
+    art12rou13?: boolean
+    art12fer13?: boolean
+    art12inc13?: boolean
+    naf13art14?: boolean
+    art13act14?: boolean
+    art13hab14?: boolean
+    art13mix14?: boolean
+    art13rou14?: boolean
+    art13fer14?: boolean
+    art13inc14?: boolean
+    naf14art15?: boolean
+    art14act15?: boolean
+    art14hab15?: boolean
+    art14mix15?: boolean
+    art14rou15?: boolean
+    art14fer15?: boolean
+    art14inc15?: boolean
+    naf15art16?: boolean
+    art15act16?: boolean
+    art15hab16?: boolean
+    art15mix16?: boolean
+    art15rou16?: boolean
+    art15fer16?: boolean
+    art15inc16?: boolean
+    naf16art17?: boolean
+    art16act17?: boolean
+    art16hab17?: boolean
+    art16mix17?: boolean
+    art16rou17?: boolean
+    art16fer17?: boolean
+    art16inc17?: boolean
+    naf17art18?: boolean
+    art17act18?: boolean
+    art17hab18?: boolean
+    art17mix18?: boolean
+    art17rou18?: boolean
+    art17fer18?: boolean
+    art17inc18?: boolean
+    naf18art19?: boolean
+    art18act19?: boolean
+    art18hab19?: boolean
+    art18mix19?: boolean
+    art18rou19?: boolean
+    art18fer19?: boolean
+    art18inc19?: boolean
+    naf19art20?: boolean
+    art19act20?: boolean
+    art19hab20?: boolean
+    art19mix20?: boolean
+    art19rou20?: boolean
+    art19fer20?: boolean
+    art19inc20?: boolean
+    naf20art21?: boolean
+    art20act21?: boolean
+    art20hab21?: boolean
+    art20mix21?: boolean
+    art20rou21?: boolean
+    art20fer21?: boolean
+    art20inc21?: boolean
+    naf21art22?: boolean
+    art21act22?: boolean
+    art21hab22?: boolean
+    art21mix22?: boolean
+    art21rou22?: boolean
+    art21fer22?: boolean
+    art21inc22?: boolean
+    naf22art23?: boolean
+    art22act23?: boolean
+    art22hab23?: boolean
+    art22mix23?: boolean
+    art22rou23?: boolean
+    art22fer23?: boolean
+    art22inc23?: boolean
+    naf09art23?: boolean
+    art09act23?: boolean
+    art09hab23?: boolean
+    art09mix23?: boolean
+    art09inc23?: boolean
+    art09rou23?: boolean
+    art09fer23?: boolean
+    artcom0923?: boolean
+    pop14?: boolean
+    pop20?: boolean
+    pop1420?: boolean
+    men14?: boolean
+    men20?: boolean
+    men1420?: boolean
+    emp14?: boolean
+    emp20?: boolean
+    emp1420?: boolean
+    mepart1420?: boolean
+    menhab1420?: boolean
+    artpop1420?: boolean
+    surfcom2023?: boolean
+  }, ExtArgs["result"]["consommation_espaces_naf"]>
+
+  export type consommation_espaces_nafSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+    naf09art10?: boolean
+    art09act10?: boolean
+    art09hab10?: boolean
+    art09mix10?: boolean
+    art09rou10?: boolean
+    art09fer10?: boolean
+    art09inc10?: boolean
+    naf10art11?: boolean
+    art10act11?: boolean
+    art10hab11?: boolean
+    art10mix11?: boolean
+    art10rou11?: boolean
+    art10fer11?: boolean
+    art10inc11?: boolean
+    naf11art12?: boolean
+    art11act12?: boolean
+    art11hab12?: boolean
+    art11mix12?: boolean
+    art11rou12?: boolean
+    art11fer12?: boolean
+    art11inc12?: boolean
+    naf12art13?: boolean
+    art12act13?: boolean
+    art12hab13?: boolean
+    art12mix13?: boolean
+    art12rou13?: boolean
+    art12fer13?: boolean
+    art12inc13?: boolean
+    naf13art14?: boolean
+    art13act14?: boolean
+    art13hab14?: boolean
+    art13mix14?: boolean
+    art13rou14?: boolean
+    art13fer14?: boolean
+    art13inc14?: boolean
+    naf14art15?: boolean
+    art14act15?: boolean
+    art14hab15?: boolean
+    art14mix15?: boolean
+    art14rou15?: boolean
+    art14fer15?: boolean
+    art14inc15?: boolean
+    naf15art16?: boolean
+    art15act16?: boolean
+    art15hab16?: boolean
+    art15mix16?: boolean
+    art15rou16?: boolean
+    art15fer16?: boolean
+    art15inc16?: boolean
+    naf16art17?: boolean
+    art16act17?: boolean
+    art16hab17?: boolean
+    art16mix17?: boolean
+    art16rou17?: boolean
+    art16fer17?: boolean
+    art16inc17?: boolean
+    naf17art18?: boolean
+    art17act18?: boolean
+    art17hab18?: boolean
+    art17mix18?: boolean
+    art17rou18?: boolean
+    art17fer18?: boolean
+    art17inc18?: boolean
+    naf18art19?: boolean
+    art18act19?: boolean
+    art18hab19?: boolean
+    art18mix19?: boolean
+    art18rou19?: boolean
+    art18fer19?: boolean
+    art18inc19?: boolean
+    naf19art20?: boolean
+    art19act20?: boolean
+    art19hab20?: boolean
+    art19mix20?: boolean
+    art19rou20?: boolean
+    art19fer20?: boolean
+    art19inc20?: boolean
+    naf20art21?: boolean
+    art20act21?: boolean
+    art20hab21?: boolean
+    art20mix21?: boolean
+    art20rou21?: boolean
+    art20fer21?: boolean
+    art20inc21?: boolean
+    naf21art22?: boolean
+    art21act22?: boolean
+    art21hab22?: boolean
+    art21mix22?: boolean
+    art21rou22?: boolean
+    art21fer22?: boolean
+    art21inc22?: boolean
+    naf22art23?: boolean
+    art22act23?: boolean
+    art22hab23?: boolean
+    art22mix23?: boolean
+    art22rou23?: boolean
+    art22fer23?: boolean
+    art22inc23?: boolean
+    naf09art23?: boolean
+    art09act23?: boolean
+    art09hab23?: boolean
+    art09mix23?: boolean
+    art09inc23?: boolean
+    art09rou23?: boolean
+    art09fer23?: boolean
+    artcom0923?: boolean
+    pop14?: boolean
+    pop20?: boolean
+    pop1420?: boolean
+    men14?: boolean
+    men20?: boolean
+    men1420?: boolean
+    emp14?: boolean
+    emp20?: boolean
+    emp1420?: boolean
+    mepart1420?: boolean
+    menhab1420?: boolean
+    artpop1420?: boolean
+    surfcom2023?: boolean
+  }, ExtArgs["result"]["consommation_espaces_naf"]>
+
+  export type consommation_espaces_nafSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    region?: boolean
+    naf09art10?: boolean
+    art09act10?: boolean
+    art09hab10?: boolean
+    art09mix10?: boolean
+    art09rou10?: boolean
+    art09fer10?: boolean
+    art09inc10?: boolean
+    naf10art11?: boolean
+    art10act11?: boolean
+    art10hab11?: boolean
+    art10mix11?: boolean
+    art10rou11?: boolean
+    art10fer11?: boolean
+    art10inc11?: boolean
+    naf11art12?: boolean
+    art11act12?: boolean
+    art11hab12?: boolean
+    art11mix12?: boolean
+    art11rou12?: boolean
+    art11fer12?: boolean
+    art11inc12?: boolean
+    naf12art13?: boolean
+    art12act13?: boolean
+    art12hab13?: boolean
+    art12mix13?: boolean
+    art12rou13?: boolean
+    art12fer13?: boolean
+    art12inc13?: boolean
+    naf13art14?: boolean
+    art13act14?: boolean
+    art13hab14?: boolean
+    art13mix14?: boolean
+    art13rou14?: boolean
+    art13fer14?: boolean
+    art13inc14?: boolean
+    naf14art15?: boolean
+    art14act15?: boolean
+    art14hab15?: boolean
+    art14mix15?: boolean
+    art14rou15?: boolean
+    art14fer15?: boolean
+    art14inc15?: boolean
+    naf15art16?: boolean
+    art15act16?: boolean
+    art15hab16?: boolean
+    art15mix16?: boolean
+    art15rou16?: boolean
+    art15fer16?: boolean
+    art15inc16?: boolean
+    naf16art17?: boolean
+    art16act17?: boolean
+    art16hab17?: boolean
+    art16mix17?: boolean
+    art16rou17?: boolean
+    art16fer17?: boolean
+    art16inc17?: boolean
+    naf17art18?: boolean
+    art17act18?: boolean
+    art17hab18?: boolean
+    art17mix18?: boolean
+    art17rou18?: boolean
+    art17fer18?: boolean
+    art17inc18?: boolean
+    naf18art19?: boolean
+    art18act19?: boolean
+    art18hab19?: boolean
+    art18mix19?: boolean
+    art18rou19?: boolean
+    art18fer19?: boolean
+    art18inc19?: boolean
+    naf19art20?: boolean
+    art19act20?: boolean
+    art19hab20?: boolean
+    art19mix20?: boolean
+    art19rou20?: boolean
+    art19fer20?: boolean
+    art19inc20?: boolean
+    naf20art21?: boolean
+    art20act21?: boolean
+    art20hab21?: boolean
+    art20mix21?: boolean
+    art20rou21?: boolean
+    art20fer21?: boolean
+    art20inc21?: boolean
+    naf21art22?: boolean
+    art21act22?: boolean
+    art21hab22?: boolean
+    art21mix22?: boolean
+    art21rou22?: boolean
+    art21fer22?: boolean
+    art21inc22?: boolean
+    naf22art23?: boolean
+    art22act23?: boolean
+    art22hab23?: boolean
+    art22mix23?: boolean
+    art22rou23?: boolean
+    art22fer23?: boolean
+    art22inc23?: boolean
+    naf09art23?: boolean
+    art09act23?: boolean
+    art09hab23?: boolean
+    art09mix23?: boolean
+    art09inc23?: boolean
+    art09rou23?: boolean
+    art09fer23?: boolean
+    artcom0923?: boolean
+    pop14?: boolean
+    pop20?: boolean
+    pop1420?: boolean
+    men14?: boolean
+    men20?: boolean
+    men1420?: boolean
+    emp14?: boolean
+    emp20?: boolean
+    emp1420?: boolean
+    mepart1420?: boolean
+    menhab1420?: boolean
+    artpop1420?: boolean
+    surfcom2023?: boolean
+  }
+
+
+  export type $consommation_espaces_nafPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "consommation_espaces_naf"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      region: number
+      naf09art10: number
+      art09act10: number
+      art09hab10: number
+      art09mix10: number
+      art09rou10: number
+      art09fer10: number
+      art09inc10: number
+      naf10art11: number
+      art10act11: number
+      art10hab11: number
+      art10mix11: number
+      art10rou11: number
+      art10fer11: number
+      art10inc11: number
+      naf11art12: number
+      art11act12: number
+      art11hab12: number
+      art11mix12: number
+      art11rou12: number
+      art11fer12: number
+      art11inc12: number
+      naf12art13: number
+      art12act13: number
+      art12hab13: number
+      art12mix13: number
+      art12rou13: number
+      art12fer13: number
+      art12inc13: number
+      naf13art14: number
+      art13act14: number
+      art13hab14: number
+      art13mix14: number
+      art13rou14: number
+      art13fer14: number
+      art13inc14: number
+      naf14art15: number
+      art14act15: number
+      art14hab15: number
+      art14mix15: number
+      art14rou15: number
+      art14fer15: number
+      art14inc15: number
+      naf15art16: number
+      art15act16: number
+      art15hab16: number
+      art15mix16: number
+      art15rou16: number
+      art15fer16: number
+      art15inc16: number
+      naf16art17: number
+      art16act17: number
+      art16hab17: number
+      art16mix17: number
+      art16rou17: number
+      art16fer17: number
+      art16inc17: number
+      naf17art18: number
+      art17act18: number
+      art17hab18: number
+      art17mix18: number
+      art17rou18: number
+      art17fer18: number
+      art17inc18: number
+      naf18art19: number
+      art18act19: number
+      art18hab19: number
+      art18mix19: number
+      art18rou19: number
+      art18fer19: number
+      art18inc19: number
+      naf19art20: number
+      art19act20: number
+      art19hab20: number
+      art19mix20: number
+      art19rou20: number
+      art19fer20: number
+      art19inc20: number
+      naf20art21: number
+      art20act21: number
+      art20hab21: number
+      art20mix21: number
+      art20rou21: number
+      art20fer21: number
+      art20inc21: number
+      naf21art22: number
+      art21act22: number
+      art21hab22: number
+      art21mix22: number
+      art21rou22: number
+      art21fer22: number
+      art21inc22: number
+      naf22art23: number
+      art22act23: number
+      art22hab23: number
+      art22mix23: number
+      art22rou23: number
+      art22fer23: number
+      art22inc23: number
+      naf09art23: number
+      art09act23: number
+      art09hab23: number
+      art09mix23: number
+      art09inc23: number
+      art09rou23: number
+      art09fer23: number
+      artcom0923: number
+      pop14: number
+      pop20: number
+      pop1420: number
+      men14: number
+      men20: number
+      men1420: number
+      emp14: number
+      emp20: number
+      emp1420: number
+      mepart1420: number
+      menhab1420: number
+      artpop1420: number | null
+      surfcom2023: number
+    }, ExtArgs["result"]["consommation_espaces_naf"]>
+    composites: {}
+  }
+
+  type consommation_espaces_nafGetPayload<S extends boolean | null | undefined | consommation_espaces_nafDefaultArgs> = $Result.GetResult<Prisma.$consommation_espaces_nafPayload, S>
+
+  type consommation_espaces_nafCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<consommation_espaces_nafFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Consommation_espaces_nafCountAggregateInputType | true
+    }
+
+  export interface consommation_espaces_nafDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['consommation_espaces_naf'], meta: { name: 'consommation_espaces_naf' } }
+    /**
+     * Find zero or one Consommation_espaces_naf that matches the filter.
+     * @param {consommation_espaces_nafFindUniqueArgs} args - Arguments to find a Consommation_espaces_naf
+     * @example
+     * // Get one Consommation_espaces_naf
+     * const consommation_espaces_naf = await prisma.consommation_espaces_naf.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends consommation_espaces_nafFindUniqueArgs>(args: SelectSubset<T, consommation_espaces_nafFindUniqueArgs<ExtArgs>>): Prisma__consommation_espaces_nafClient<$Result.GetResult<Prisma.$consommation_espaces_nafPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Consommation_espaces_naf that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {consommation_espaces_nafFindUniqueOrThrowArgs} args - Arguments to find a Consommation_espaces_naf
+     * @example
+     * // Get one Consommation_espaces_naf
+     * const consommation_espaces_naf = await prisma.consommation_espaces_naf.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends consommation_espaces_nafFindUniqueOrThrowArgs>(args: SelectSubset<T, consommation_espaces_nafFindUniqueOrThrowArgs<ExtArgs>>): Prisma__consommation_espaces_nafClient<$Result.GetResult<Prisma.$consommation_espaces_nafPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Consommation_espaces_naf that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {consommation_espaces_nafFindFirstArgs} args - Arguments to find a Consommation_espaces_naf
+     * @example
+     * // Get one Consommation_espaces_naf
+     * const consommation_espaces_naf = await prisma.consommation_espaces_naf.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends consommation_espaces_nafFindFirstArgs>(args?: SelectSubset<T, consommation_espaces_nafFindFirstArgs<ExtArgs>>): Prisma__consommation_espaces_nafClient<$Result.GetResult<Prisma.$consommation_espaces_nafPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Consommation_espaces_naf that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {consommation_espaces_nafFindFirstOrThrowArgs} args - Arguments to find a Consommation_espaces_naf
+     * @example
+     * // Get one Consommation_espaces_naf
+     * const consommation_espaces_naf = await prisma.consommation_espaces_naf.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends consommation_espaces_nafFindFirstOrThrowArgs>(args?: SelectSubset<T, consommation_espaces_nafFindFirstOrThrowArgs<ExtArgs>>): Prisma__consommation_espaces_nafClient<$Result.GetResult<Prisma.$consommation_espaces_nafPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Consommation_espaces_nafs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {consommation_espaces_nafFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Consommation_espaces_nafs
+     * const consommation_espaces_nafs = await prisma.consommation_espaces_naf.findMany()
+     * 
+     * // Get first 10 Consommation_espaces_nafs
+     * const consommation_espaces_nafs = await prisma.consommation_espaces_naf.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const consommation_espaces_nafWithIndexOnly = await prisma.consommation_espaces_naf.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends consommation_espaces_nafFindManyArgs>(args?: SelectSubset<T, consommation_espaces_nafFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$consommation_espaces_nafPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Consommation_espaces_naf.
+     * @param {consommation_espaces_nafCreateArgs} args - Arguments to create a Consommation_espaces_naf.
+     * @example
+     * // Create one Consommation_espaces_naf
+     * const Consommation_espaces_naf = await prisma.consommation_espaces_naf.create({
+     *   data: {
+     *     // ... data to create a Consommation_espaces_naf
+     *   }
+     * })
+     * 
+     */
+    create<T extends consommation_espaces_nafCreateArgs>(args: SelectSubset<T, consommation_espaces_nafCreateArgs<ExtArgs>>): Prisma__consommation_espaces_nafClient<$Result.GetResult<Prisma.$consommation_espaces_nafPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Consommation_espaces_nafs.
+     * @param {consommation_espaces_nafCreateManyArgs} args - Arguments to create many Consommation_espaces_nafs.
+     * @example
+     * // Create many Consommation_espaces_nafs
+     * const consommation_espaces_naf = await prisma.consommation_espaces_naf.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends consommation_espaces_nafCreateManyArgs>(args?: SelectSubset<T, consommation_espaces_nafCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Consommation_espaces_nafs and returns the data saved in the database.
+     * @param {consommation_espaces_nafCreateManyAndReturnArgs} args - Arguments to create many Consommation_espaces_nafs.
+     * @example
+     * // Create many Consommation_espaces_nafs
+     * const consommation_espaces_naf = await prisma.consommation_espaces_naf.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Consommation_espaces_nafs and only return the `index`
+     * const consommation_espaces_nafWithIndexOnly = await prisma.consommation_espaces_naf.createManyAndReturn({ 
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends consommation_espaces_nafCreateManyAndReturnArgs>(args?: SelectSubset<T, consommation_espaces_nafCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$consommation_espaces_nafPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Consommation_espaces_naf.
+     * @param {consommation_espaces_nafDeleteArgs} args - Arguments to delete one Consommation_espaces_naf.
+     * @example
+     * // Delete one Consommation_espaces_naf
+     * const Consommation_espaces_naf = await prisma.consommation_espaces_naf.delete({
+     *   where: {
+     *     // ... filter to delete one Consommation_espaces_naf
+     *   }
+     * })
+     * 
+     */
+    delete<T extends consommation_espaces_nafDeleteArgs>(args: SelectSubset<T, consommation_espaces_nafDeleteArgs<ExtArgs>>): Prisma__consommation_espaces_nafClient<$Result.GetResult<Prisma.$consommation_espaces_nafPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Consommation_espaces_naf.
+     * @param {consommation_espaces_nafUpdateArgs} args - Arguments to update one Consommation_espaces_naf.
+     * @example
+     * // Update one Consommation_espaces_naf
+     * const consommation_espaces_naf = await prisma.consommation_espaces_naf.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends consommation_espaces_nafUpdateArgs>(args: SelectSubset<T, consommation_espaces_nafUpdateArgs<ExtArgs>>): Prisma__consommation_espaces_nafClient<$Result.GetResult<Prisma.$consommation_espaces_nafPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Consommation_espaces_nafs.
+     * @param {consommation_espaces_nafDeleteManyArgs} args - Arguments to filter Consommation_espaces_nafs to delete.
+     * @example
+     * // Delete a few Consommation_espaces_nafs
+     * const { count } = await prisma.consommation_espaces_naf.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends consommation_espaces_nafDeleteManyArgs>(args?: SelectSubset<T, consommation_espaces_nafDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Consommation_espaces_nafs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {consommation_espaces_nafUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Consommation_espaces_nafs
+     * const consommation_espaces_naf = await prisma.consommation_espaces_naf.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends consommation_espaces_nafUpdateManyArgs>(args: SelectSubset<T, consommation_espaces_nafUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Consommation_espaces_naf.
+     * @param {consommation_espaces_nafUpsertArgs} args - Arguments to update or create a Consommation_espaces_naf.
+     * @example
+     * // Update or create a Consommation_espaces_naf
+     * const consommation_espaces_naf = await prisma.consommation_espaces_naf.upsert({
+     *   create: {
+     *     // ... data to create a Consommation_espaces_naf
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Consommation_espaces_naf we want to update
+     *   }
+     * })
+     */
+    upsert<T extends consommation_espaces_nafUpsertArgs>(args: SelectSubset<T, consommation_espaces_nafUpsertArgs<ExtArgs>>): Prisma__consommation_espaces_nafClient<$Result.GetResult<Prisma.$consommation_espaces_nafPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Consommation_espaces_nafs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {consommation_espaces_nafCountArgs} args - Arguments to filter Consommation_espaces_nafs to count.
+     * @example
+     * // Count the number of Consommation_espaces_nafs
+     * const count = await prisma.consommation_espaces_naf.count({
+     *   where: {
+     *     // ... the filter for the Consommation_espaces_nafs we want to count
+     *   }
+     * })
+    **/
+    count<T extends consommation_espaces_nafCountArgs>(
+      args?: Subset<T, consommation_espaces_nafCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Consommation_espaces_nafCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Consommation_espaces_naf.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Consommation_espaces_nafAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Consommation_espaces_nafAggregateArgs>(args: Subset<T, Consommation_espaces_nafAggregateArgs>): Prisma.PrismaPromise<GetConsommation_espaces_nafAggregateType<T>>
+
+    /**
+     * Group by Consommation_espaces_naf.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {consommation_espaces_nafGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends consommation_espaces_nafGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: consommation_espaces_nafGroupByArgs['orderBy'] }
+        : { orderBy?: consommation_espaces_nafGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, consommation_espaces_nafGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetConsommation_espaces_nafGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the consommation_espaces_naf model
+   */
+  readonly fields: consommation_espaces_nafFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for consommation_espaces_naf.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__consommation_espaces_nafClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the consommation_espaces_naf model
+   */ 
+  interface consommation_espaces_nafFieldRefs {
+    readonly index: FieldRef<"consommation_espaces_naf", 'BigInt'>
+    readonly code_geographique: FieldRef<"consommation_espaces_naf", 'String'>
+    readonly libelle_geographique: FieldRef<"consommation_espaces_naf", 'String'>
+    readonly epci: FieldRef<"consommation_espaces_naf", 'String'>
+    readonly libelle_epci: FieldRef<"consommation_espaces_naf", 'String'>
+    readonly departement: FieldRef<"consommation_espaces_naf", 'String'>
+    readonly region: FieldRef<"consommation_espaces_naf", 'Int'>
+    readonly naf09art10: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art09act10: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art09hab10: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art09mix10: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art09rou10: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art09fer10: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art09inc10: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly naf10art11: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art10act11: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art10hab11: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art10mix11: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art10rou11: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art10fer11: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art10inc11: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly naf11art12: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art11act12: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art11hab12: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art11mix12: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art11rou12: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art11fer12: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art11inc12: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly naf12art13: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art12act13: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art12hab13: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art12mix13: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art12rou13: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art12fer13: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art12inc13: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly naf13art14: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art13act14: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art13hab14: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art13mix14: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art13rou14: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art13fer14: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art13inc14: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly naf14art15: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art14act15: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art14hab15: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art14mix15: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art14rou15: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art14fer15: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art14inc15: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly naf15art16: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art15act16: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art15hab16: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art15mix16: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art15rou16: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art15fer16: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art15inc16: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly naf16art17: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art16act17: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art16hab17: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art16mix17: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art16rou17: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art16fer17: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art16inc17: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly naf17art18: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art17act18: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art17hab18: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art17mix18: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art17rou18: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art17fer18: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art17inc18: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly naf18art19: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art18act19: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art18hab19: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art18mix19: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art18rou19: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art18fer19: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art18inc19: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly naf19art20: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art19act20: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art19hab20: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art19mix20: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art19rou20: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art19fer20: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art19inc20: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly naf20art21: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art20act21: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art20hab21: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art20mix21: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art20rou21: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art20fer21: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art20inc21: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly naf21art22: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art21act22: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art21hab22: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art21mix22: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art21rou22: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art21fer22: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art21inc22: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly naf22art23: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art22act23: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art22hab23: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art22mix23: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art22rou23: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art22fer23: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art22inc23: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly naf09art23: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art09act23: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art09hab23: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art09mix23: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art09inc23: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art09rou23: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly art09fer23: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly artcom0923: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly pop14: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly pop20: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly pop1420: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly men14: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly men20: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly men1420: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly emp14: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly emp20: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly emp1420: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly mepart1420: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly menhab1420: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly artpop1420: FieldRef<"consommation_espaces_naf", 'Float'>
+    readonly surfcom2023: FieldRef<"consommation_espaces_naf", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * consommation_espaces_naf findUnique
+   */
+  export type consommation_espaces_nafFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consommation_espaces_naf
+     */
+    select?: consommation_espaces_nafSelect<ExtArgs> | null
+    /**
+     * Filter, which consommation_espaces_naf to fetch.
+     */
+    where: consommation_espaces_nafWhereUniqueInput
+  }
+
+  /**
+   * consommation_espaces_naf findUniqueOrThrow
+   */
+  export type consommation_espaces_nafFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consommation_espaces_naf
+     */
+    select?: consommation_espaces_nafSelect<ExtArgs> | null
+    /**
+     * Filter, which consommation_espaces_naf to fetch.
+     */
+    where: consommation_espaces_nafWhereUniqueInput
+  }
+
+  /**
+   * consommation_espaces_naf findFirst
+   */
+  export type consommation_espaces_nafFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consommation_espaces_naf
+     */
+    select?: consommation_espaces_nafSelect<ExtArgs> | null
+    /**
+     * Filter, which consommation_espaces_naf to fetch.
+     */
+    where?: consommation_espaces_nafWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of consommation_espaces_nafs to fetch.
+     */
+    orderBy?: consommation_espaces_nafOrderByWithRelationInput | consommation_espaces_nafOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for consommation_espaces_nafs.
+     */
+    cursor?: consommation_espaces_nafWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` consommation_espaces_nafs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` consommation_espaces_nafs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of consommation_espaces_nafs.
+     */
+    distinct?: Consommation_espaces_nafScalarFieldEnum | Consommation_espaces_nafScalarFieldEnum[]
+  }
+
+  /**
+   * consommation_espaces_naf findFirstOrThrow
+   */
+  export type consommation_espaces_nafFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consommation_espaces_naf
+     */
+    select?: consommation_espaces_nafSelect<ExtArgs> | null
+    /**
+     * Filter, which consommation_espaces_naf to fetch.
+     */
+    where?: consommation_espaces_nafWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of consommation_espaces_nafs to fetch.
+     */
+    orderBy?: consommation_espaces_nafOrderByWithRelationInput | consommation_espaces_nafOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for consommation_espaces_nafs.
+     */
+    cursor?: consommation_espaces_nafWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` consommation_espaces_nafs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` consommation_espaces_nafs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of consommation_espaces_nafs.
+     */
+    distinct?: Consommation_espaces_nafScalarFieldEnum | Consommation_espaces_nafScalarFieldEnum[]
+  }
+
+  /**
+   * consommation_espaces_naf findMany
+   */
+  export type consommation_espaces_nafFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consommation_espaces_naf
+     */
+    select?: consommation_espaces_nafSelect<ExtArgs> | null
+    /**
+     * Filter, which consommation_espaces_nafs to fetch.
+     */
+    where?: consommation_espaces_nafWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of consommation_espaces_nafs to fetch.
+     */
+    orderBy?: consommation_espaces_nafOrderByWithRelationInput | consommation_espaces_nafOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing consommation_espaces_nafs.
+     */
+    cursor?: consommation_espaces_nafWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` consommation_espaces_nafs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` consommation_espaces_nafs.
+     */
+    skip?: number
+    distinct?: Consommation_espaces_nafScalarFieldEnum | Consommation_espaces_nafScalarFieldEnum[]
+  }
+
+  /**
+   * consommation_espaces_naf create
+   */
+  export type consommation_espaces_nafCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consommation_espaces_naf
+     */
+    select?: consommation_espaces_nafSelect<ExtArgs> | null
+    /**
+     * The data needed to create a consommation_espaces_naf.
+     */
+    data: XOR<consommation_espaces_nafCreateInput, consommation_espaces_nafUncheckedCreateInput>
+  }
+
+  /**
+   * consommation_espaces_naf createMany
+   */
+  export type consommation_espaces_nafCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many consommation_espaces_nafs.
+     */
+    data: consommation_espaces_nafCreateManyInput | consommation_espaces_nafCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * consommation_espaces_naf createManyAndReturn
+   */
+  export type consommation_espaces_nafCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consommation_espaces_naf
+     */
+    select?: consommation_espaces_nafSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many consommation_espaces_nafs.
+     */
+    data: consommation_espaces_nafCreateManyInput | consommation_espaces_nafCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * consommation_espaces_naf update
+   */
+  export type consommation_espaces_nafUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consommation_espaces_naf
+     */
+    select?: consommation_espaces_nafSelect<ExtArgs> | null
+    /**
+     * The data needed to update a consommation_espaces_naf.
+     */
+    data: XOR<consommation_espaces_nafUpdateInput, consommation_espaces_nafUncheckedUpdateInput>
+    /**
+     * Choose, which consommation_espaces_naf to update.
+     */
+    where: consommation_espaces_nafWhereUniqueInput
+  }
+
+  /**
+   * consommation_espaces_naf updateMany
+   */
+  export type consommation_espaces_nafUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update consommation_espaces_nafs.
+     */
+    data: XOR<consommation_espaces_nafUpdateManyMutationInput, consommation_espaces_nafUncheckedUpdateManyInput>
+    /**
+     * Filter which consommation_espaces_nafs to update
+     */
+    where?: consommation_espaces_nafWhereInput
+  }
+
+  /**
+   * consommation_espaces_naf upsert
+   */
+  export type consommation_espaces_nafUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consommation_espaces_naf
+     */
+    select?: consommation_espaces_nafSelect<ExtArgs> | null
+    /**
+     * The filter to search for the consommation_espaces_naf to update in case it exists.
+     */
+    where: consommation_espaces_nafWhereUniqueInput
+    /**
+     * In case the consommation_espaces_naf found by the `where` argument doesn't exist, create a new consommation_espaces_naf with this data.
+     */
+    create: XOR<consommation_espaces_nafCreateInput, consommation_espaces_nafUncheckedCreateInput>
+    /**
+     * In case the consommation_espaces_naf was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<consommation_espaces_nafUpdateInput, consommation_espaces_nafUncheckedUpdateInput>
+  }
+
+  /**
+   * consommation_espaces_naf delete
+   */
+  export type consommation_espaces_nafDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consommation_espaces_naf
+     */
+    select?: consommation_espaces_nafSelect<ExtArgs> | null
+    /**
+     * Filter which consommation_espaces_naf to delete.
+     */
+    where: consommation_espaces_nafWhereUniqueInput
+  }
+
+  /**
+   * consommation_espaces_naf deleteMany
+   */
+  export type consommation_espaces_nafDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which consommation_espaces_nafs to delete
+     */
+    where?: consommation_espaces_nafWhereInput
+  }
+
+  /**
+   * consommation_espaces_naf without action
+   */
+  export type consommation_espaces_nafDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consommation_espaces_naf
+     */
+    select?: consommation_espaces_nafSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -14048,21 +16928,6 @@ export namespace Prisma {
   };
 
   export type Clc_epciScalarFieldEnum = (typeof Clc_epciScalarFieldEnum)[keyof typeof Clc_epciScalarFieldEnum]
-
-
-  export const CommunesScalarFieldEnum: {
-    pk: 'pk',
-    code_commune: 'code_commune',
-    libelle_commune: 'libelle_commune',
-    epci: 'epci',
-    libelle_epci: 'libelle_epci',
-    libgeo: 'libgeo',
-    coordinates: 'coordinates',
-    densite_bati: 'densite_bati',
-    precarite_logement: 'precarite_logement'
-  };
-
-  export type CommunesScalarFieldEnum = (typeof CommunesScalarFieldEnum)[keyof typeof CommunesScalarFieldEnum]
 
 
   export const Collectivites_searchbarScalarFieldEnum: {
@@ -14221,6 +17086,149 @@ export namespace Prisma {
   };
 
   export type Surfaces_protegeesScalarFieldEnum = (typeof Surfaces_protegeesScalarFieldEnum)[keyof typeof Surfaces_protegeesScalarFieldEnum]
+
+
+  export const Spatial_ref_sysScalarFieldEnum: {
+    srid: 'srid',
+    auth_name: 'auth_name',
+    auth_srid: 'auth_srid',
+    srtext: 'srtext',
+    proj4text: 'proj4text'
+  };
+
+  export type Spatial_ref_sysScalarFieldEnum = (typeof Spatial_ref_sysScalarFieldEnum)[keyof typeof Spatial_ref_sysScalarFieldEnum]
+
+
+  export const Consommation_espaces_nafScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    region: 'region',
+    naf09art10: 'naf09art10',
+    art09act10: 'art09act10',
+    art09hab10: 'art09hab10',
+    art09mix10: 'art09mix10',
+    art09rou10: 'art09rou10',
+    art09fer10: 'art09fer10',
+    art09inc10: 'art09inc10',
+    naf10art11: 'naf10art11',
+    art10act11: 'art10act11',
+    art10hab11: 'art10hab11',
+    art10mix11: 'art10mix11',
+    art10rou11: 'art10rou11',
+    art10fer11: 'art10fer11',
+    art10inc11: 'art10inc11',
+    naf11art12: 'naf11art12',
+    art11act12: 'art11act12',
+    art11hab12: 'art11hab12',
+    art11mix12: 'art11mix12',
+    art11rou12: 'art11rou12',
+    art11fer12: 'art11fer12',
+    art11inc12: 'art11inc12',
+    naf12art13: 'naf12art13',
+    art12act13: 'art12act13',
+    art12hab13: 'art12hab13',
+    art12mix13: 'art12mix13',
+    art12rou13: 'art12rou13',
+    art12fer13: 'art12fer13',
+    art12inc13: 'art12inc13',
+    naf13art14: 'naf13art14',
+    art13act14: 'art13act14',
+    art13hab14: 'art13hab14',
+    art13mix14: 'art13mix14',
+    art13rou14: 'art13rou14',
+    art13fer14: 'art13fer14',
+    art13inc14: 'art13inc14',
+    naf14art15: 'naf14art15',
+    art14act15: 'art14act15',
+    art14hab15: 'art14hab15',
+    art14mix15: 'art14mix15',
+    art14rou15: 'art14rou15',
+    art14fer15: 'art14fer15',
+    art14inc15: 'art14inc15',
+    naf15art16: 'naf15art16',
+    art15act16: 'art15act16',
+    art15hab16: 'art15hab16',
+    art15mix16: 'art15mix16',
+    art15rou16: 'art15rou16',
+    art15fer16: 'art15fer16',
+    art15inc16: 'art15inc16',
+    naf16art17: 'naf16art17',
+    art16act17: 'art16act17',
+    art16hab17: 'art16hab17',
+    art16mix17: 'art16mix17',
+    art16rou17: 'art16rou17',
+    art16fer17: 'art16fer17',
+    art16inc17: 'art16inc17',
+    naf17art18: 'naf17art18',
+    art17act18: 'art17act18',
+    art17hab18: 'art17hab18',
+    art17mix18: 'art17mix18',
+    art17rou18: 'art17rou18',
+    art17fer18: 'art17fer18',
+    art17inc18: 'art17inc18',
+    naf18art19: 'naf18art19',
+    art18act19: 'art18act19',
+    art18hab19: 'art18hab19',
+    art18mix19: 'art18mix19',
+    art18rou19: 'art18rou19',
+    art18fer19: 'art18fer19',
+    art18inc19: 'art18inc19',
+    naf19art20: 'naf19art20',
+    art19act20: 'art19act20',
+    art19hab20: 'art19hab20',
+    art19mix20: 'art19mix20',
+    art19rou20: 'art19rou20',
+    art19fer20: 'art19fer20',
+    art19inc20: 'art19inc20',
+    naf20art21: 'naf20art21',
+    art20act21: 'art20act21',
+    art20hab21: 'art20hab21',
+    art20mix21: 'art20mix21',
+    art20rou21: 'art20rou21',
+    art20fer21: 'art20fer21',
+    art20inc21: 'art20inc21',
+    naf21art22: 'naf21art22',
+    art21act22: 'art21act22',
+    art21hab22: 'art21hab22',
+    art21mix22: 'art21mix22',
+    art21rou22: 'art21rou22',
+    art21fer22: 'art21fer22',
+    art21inc22: 'art21inc22',
+    naf22art23: 'naf22art23',
+    art22act23: 'art22act23',
+    art22hab23: 'art22hab23',
+    art22mix23: 'art22mix23',
+    art22rou23: 'art22rou23',
+    art22fer23: 'art22fer23',
+    art22inc23: 'art22inc23',
+    naf09art23: 'naf09art23',
+    art09act23: 'art09act23',
+    art09hab23: 'art09hab23',
+    art09mix23: 'art09mix23',
+    art09inc23: 'art09inc23',
+    art09rou23: 'art09rou23',
+    art09fer23: 'art09fer23',
+    artcom0923: 'artcom0923',
+    pop14: 'pop14',
+    pop20: 'pop20',
+    pop1420: 'pop1420',
+    men14: 'men14',
+    men20: 'men20',
+    men1420: 'men1420',
+    emp14: 'emp14',
+    emp20: 'emp20',
+    emp1420: 'emp1420',
+    mepart1420: 'mepart1420',
+    menhab1420: 'menhab1420',
+    artpop1420: 'artpop1420',
+    surfcom2023: 'surfcom2023'
+  };
+
+  export type Consommation_espaces_nafScalarFieldEnum = (typeof Consommation_espaces_nafScalarFieldEnum)[keyof typeof Consommation_espaces_nafScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -14669,80 +17677,6 @@ export namespace Prisma {
     epci_code?: IntNullableWithAggregatesFilter<"clc_epci"> | number | null
   }
 
-  export type communesWhereInput = {
-    AND?: communesWhereInput | communesWhereInput[]
-    OR?: communesWhereInput[]
-    NOT?: communesWhereInput | communesWhereInput[]
-    pk?: IntFilter<"communes"> | number
-    code_commune?: StringNullableFilter<"communes"> | string | null
-    libelle_commune?: StringNullableFilter<"communes"> | string | null
-    epci?: StringNullableFilter<"communes"> | string | null
-    libelle_epci?: StringNullableFilter<"communes"> | string | null
-    libgeo?: StringNullableFilter<"communes"> | string | null
-    coordinates?: StringNullableFilter<"communes"> | string | null
-    densite_bati?: FloatNullableFilter<"communes"> | number | null
-    precarite_logement?: FloatNullableFilter<"communes"> | number | null
-  }
-
-  export type communesOrderByWithRelationInput = {
-    pk?: SortOrder
-    code_commune?: SortOrderInput | SortOrder
-    libelle_commune?: SortOrderInput | SortOrder
-    epci?: SortOrderInput | SortOrder
-    libelle_epci?: SortOrderInput | SortOrder
-    libgeo?: SortOrderInput | SortOrder
-    coordinates?: SortOrderInput | SortOrder
-    densite_bati?: SortOrderInput | SortOrder
-    precarite_logement?: SortOrderInput | SortOrder
-  }
-
-  export type communesWhereUniqueInput = Prisma.AtLeast<{
-    pk?: number
-    AND?: communesWhereInput | communesWhereInput[]
-    OR?: communesWhereInput[]
-    NOT?: communesWhereInput | communesWhereInput[]
-    code_commune?: StringNullableFilter<"communes"> | string | null
-    libelle_commune?: StringNullableFilter<"communes"> | string | null
-    epci?: StringNullableFilter<"communes"> | string | null
-    libelle_epci?: StringNullableFilter<"communes"> | string | null
-    libgeo?: StringNullableFilter<"communes"> | string | null
-    coordinates?: StringNullableFilter<"communes"> | string | null
-    densite_bati?: FloatNullableFilter<"communes"> | number | null
-    precarite_logement?: FloatNullableFilter<"communes"> | number | null
-  }, "pk">
-
-  export type communesOrderByWithAggregationInput = {
-    pk?: SortOrder
-    code_commune?: SortOrderInput | SortOrder
-    libelle_commune?: SortOrderInput | SortOrder
-    epci?: SortOrderInput | SortOrder
-    libelle_epci?: SortOrderInput | SortOrder
-    libgeo?: SortOrderInput | SortOrder
-    coordinates?: SortOrderInput | SortOrder
-    densite_bati?: SortOrderInput | SortOrder
-    precarite_logement?: SortOrderInput | SortOrder
-    _count?: communesCountOrderByAggregateInput
-    _avg?: communesAvgOrderByAggregateInput
-    _max?: communesMaxOrderByAggregateInput
-    _min?: communesMinOrderByAggregateInput
-    _sum?: communesSumOrderByAggregateInput
-  }
-
-  export type communesScalarWhereWithAggregatesInput = {
-    AND?: communesScalarWhereWithAggregatesInput | communesScalarWhereWithAggregatesInput[]
-    OR?: communesScalarWhereWithAggregatesInput[]
-    NOT?: communesScalarWhereWithAggregatesInput | communesScalarWhereWithAggregatesInput[]
-    pk?: IntWithAggregatesFilter<"communes"> | number
-    code_commune?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    libelle_commune?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    epci?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    libelle_epci?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    libgeo?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    coordinates?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    densite_bati?: FloatNullableWithAggregatesFilter<"communes"> | number | null
-    precarite_logement?: FloatNullableWithAggregatesFilter<"communes"> | number | null
-  }
-
   export type collectivites_searchbarWhereInput = {
     AND?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
     OR?: collectivites_searchbarWhereInput[]
@@ -14978,6 +17912,7 @@ export namespace Prisma {
     densite_bati?: FloatNullableFilter<"communes_drom"> | number | null
     precarite_logement?: FloatNullableFilter<"communes_drom"> | number | null
     surface?: FloatNullableFilter<"communes_drom"> | number | null
+    surface?: FloatNullableFilter<"communes_drom"> | number | null
   }
 
   export type communes_dromOrderByWithRelationInput = {
@@ -14989,6 +17924,7 @@ export namespace Prisma {
     coordinates?: SortOrder
     densite_bati?: SortOrderInput | SortOrder
     precarite_logement?: SortOrderInput | SortOrder
+    surface?: SortOrderInput | SortOrder
     surface?: SortOrderInput | SortOrder
   }
 
@@ -15005,6 +17941,7 @@ export namespace Prisma {
     densite_bati?: FloatNullableFilter<"communes_drom"> | number | null
     precarite_logement?: FloatNullableFilter<"communes_drom"> | number | null
     surface?: FloatNullableFilter<"communes_drom"> | number | null
+    surface?: FloatNullableFilter<"communes_drom"> | number | null
   }, "pk">
 
   export type communes_dromOrderByWithAggregationInput = {
@@ -15016,6 +17953,7 @@ export namespace Prisma {
     coordinates?: SortOrder
     densite_bati?: SortOrderInput | SortOrder
     precarite_logement?: SortOrderInput | SortOrder
+    surface?: SortOrderInput | SortOrder
     surface?: SortOrderInput | SortOrder
     _count?: communes_dromCountOrderByAggregateInput
     _avg?: communes_dromAvgOrderByAggregateInput
@@ -15036,6 +17974,7 @@ export namespace Prisma {
     coordinates?: StringWithAggregatesFilter<"communes_drom"> | string
     densite_bati?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
     precarite_logement?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
+    surface?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
     surface?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
   }
 
@@ -15524,6 +18463,719 @@ export namespace Prisma {
     region?: FloatWithAggregatesFilter<"surfaces_protegees"> | number
   }
 
+  export type spatial_ref_sysWhereInput = {
+    AND?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    OR?: spatial_ref_sysWhereInput[]
+    NOT?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    srid?: IntFilter<"spatial_ref_sys"> | number
+    auth_name?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    auth_srid?: IntNullableFilter<"spatial_ref_sys"> | number | null
+    srtext?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    proj4text?: StringNullableFilter<"spatial_ref_sys"> | string | null
+  }
+
+  export type spatial_ref_sysOrderByWithRelationInput = {
+    srid?: SortOrder
+    auth_name?: SortOrderInput | SortOrder
+    auth_srid?: SortOrderInput | SortOrder
+    srtext?: SortOrderInput | SortOrder
+    proj4text?: SortOrderInput | SortOrder
+  }
+
+  export type spatial_ref_sysWhereUniqueInput = Prisma.AtLeast<{
+    srid?: number
+    AND?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    OR?: spatial_ref_sysWhereInput[]
+    NOT?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    auth_name?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    auth_srid?: IntNullableFilter<"spatial_ref_sys"> | number | null
+    srtext?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    proj4text?: StringNullableFilter<"spatial_ref_sys"> | string | null
+  }, "srid">
+
+  export type spatial_ref_sysOrderByWithAggregationInput = {
+    srid?: SortOrder
+    auth_name?: SortOrderInput | SortOrder
+    auth_srid?: SortOrderInput | SortOrder
+    srtext?: SortOrderInput | SortOrder
+    proj4text?: SortOrderInput | SortOrder
+    _count?: spatial_ref_sysCountOrderByAggregateInput
+    _avg?: spatial_ref_sysAvgOrderByAggregateInput
+    _max?: spatial_ref_sysMaxOrderByAggregateInput
+    _min?: spatial_ref_sysMinOrderByAggregateInput
+    _sum?: spatial_ref_sysSumOrderByAggregateInput
+  }
+
+  export type spatial_ref_sysScalarWhereWithAggregatesInput = {
+    AND?: spatial_ref_sysScalarWhereWithAggregatesInput | spatial_ref_sysScalarWhereWithAggregatesInput[]
+    OR?: spatial_ref_sysScalarWhereWithAggregatesInput[]
+    NOT?: spatial_ref_sysScalarWhereWithAggregatesInput | spatial_ref_sysScalarWhereWithAggregatesInput[]
+    srid?: IntWithAggregatesFilter<"spatial_ref_sys"> | number
+    auth_name?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
+    auth_srid?: IntNullableWithAggregatesFilter<"spatial_ref_sys"> | number | null
+    srtext?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
+    proj4text?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
+  }
+
+  export type consommation_espaces_nafWhereInput = {
+    AND?: consommation_espaces_nafWhereInput | consommation_espaces_nafWhereInput[]
+    OR?: consommation_espaces_nafWhereInput[]
+    NOT?: consommation_espaces_nafWhereInput | consommation_espaces_nafWhereInput[]
+    index?: BigIntFilter<"consommation_espaces_naf"> | bigint | number
+    code_geographique?: StringFilter<"consommation_espaces_naf"> | string
+    libelle_geographique?: StringFilter<"consommation_espaces_naf"> | string
+    epci?: StringFilter<"consommation_espaces_naf"> | string
+    libelle_epci?: StringFilter<"consommation_espaces_naf"> | string
+    departement?: StringFilter<"consommation_espaces_naf"> | string
+    region?: IntFilter<"consommation_espaces_naf"> | number
+    naf09art10?: FloatFilter<"consommation_espaces_naf"> | number
+    art09act10?: FloatFilter<"consommation_espaces_naf"> | number
+    art09hab10?: FloatFilter<"consommation_espaces_naf"> | number
+    art09mix10?: FloatFilter<"consommation_espaces_naf"> | number
+    art09rou10?: FloatFilter<"consommation_espaces_naf"> | number
+    art09fer10?: FloatFilter<"consommation_espaces_naf"> | number
+    art09inc10?: FloatFilter<"consommation_espaces_naf"> | number
+    naf10art11?: FloatFilter<"consommation_espaces_naf"> | number
+    art10act11?: FloatFilter<"consommation_espaces_naf"> | number
+    art10hab11?: FloatFilter<"consommation_espaces_naf"> | number
+    art10mix11?: FloatFilter<"consommation_espaces_naf"> | number
+    art10rou11?: FloatFilter<"consommation_espaces_naf"> | number
+    art10fer11?: FloatFilter<"consommation_espaces_naf"> | number
+    art10inc11?: FloatFilter<"consommation_espaces_naf"> | number
+    naf11art12?: FloatFilter<"consommation_espaces_naf"> | number
+    art11act12?: FloatFilter<"consommation_espaces_naf"> | number
+    art11hab12?: FloatFilter<"consommation_espaces_naf"> | number
+    art11mix12?: FloatFilter<"consommation_espaces_naf"> | number
+    art11rou12?: FloatFilter<"consommation_espaces_naf"> | number
+    art11fer12?: FloatFilter<"consommation_espaces_naf"> | number
+    art11inc12?: FloatFilter<"consommation_espaces_naf"> | number
+    naf12art13?: FloatFilter<"consommation_espaces_naf"> | number
+    art12act13?: FloatFilter<"consommation_espaces_naf"> | number
+    art12hab13?: FloatFilter<"consommation_espaces_naf"> | number
+    art12mix13?: FloatFilter<"consommation_espaces_naf"> | number
+    art12rou13?: FloatFilter<"consommation_espaces_naf"> | number
+    art12fer13?: FloatFilter<"consommation_espaces_naf"> | number
+    art12inc13?: FloatFilter<"consommation_espaces_naf"> | number
+    naf13art14?: FloatFilter<"consommation_espaces_naf"> | number
+    art13act14?: FloatFilter<"consommation_espaces_naf"> | number
+    art13hab14?: FloatFilter<"consommation_espaces_naf"> | number
+    art13mix14?: FloatFilter<"consommation_espaces_naf"> | number
+    art13rou14?: FloatFilter<"consommation_espaces_naf"> | number
+    art13fer14?: FloatFilter<"consommation_espaces_naf"> | number
+    art13inc14?: FloatFilter<"consommation_espaces_naf"> | number
+    naf14art15?: FloatFilter<"consommation_espaces_naf"> | number
+    art14act15?: FloatFilter<"consommation_espaces_naf"> | number
+    art14hab15?: FloatFilter<"consommation_espaces_naf"> | number
+    art14mix15?: FloatFilter<"consommation_espaces_naf"> | number
+    art14rou15?: FloatFilter<"consommation_espaces_naf"> | number
+    art14fer15?: FloatFilter<"consommation_espaces_naf"> | number
+    art14inc15?: FloatFilter<"consommation_espaces_naf"> | number
+    naf15art16?: FloatFilter<"consommation_espaces_naf"> | number
+    art15act16?: FloatFilter<"consommation_espaces_naf"> | number
+    art15hab16?: FloatFilter<"consommation_espaces_naf"> | number
+    art15mix16?: FloatFilter<"consommation_espaces_naf"> | number
+    art15rou16?: FloatFilter<"consommation_espaces_naf"> | number
+    art15fer16?: FloatFilter<"consommation_espaces_naf"> | number
+    art15inc16?: FloatFilter<"consommation_espaces_naf"> | number
+    naf16art17?: FloatFilter<"consommation_espaces_naf"> | number
+    art16act17?: FloatFilter<"consommation_espaces_naf"> | number
+    art16hab17?: FloatFilter<"consommation_espaces_naf"> | number
+    art16mix17?: FloatFilter<"consommation_espaces_naf"> | number
+    art16rou17?: FloatFilter<"consommation_espaces_naf"> | number
+    art16fer17?: FloatFilter<"consommation_espaces_naf"> | number
+    art16inc17?: FloatFilter<"consommation_espaces_naf"> | number
+    naf17art18?: FloatFilter<"consommation_espaces_naf"> | number
+    art17act18?: FloatFilter<"consommation_espaces_naf"> | number
+    art17hab18?: FloatFilter<"consommation_espaces_naf"> | number
+    art17mix18?: FloatFilter<"consommation_espaces_naf"> | number
+    art17rou18?: FloatFilter<"consommation_espaces_naf"> | number
+    art17fer18?: FloatFilter<"consommation_espaces_naf"> | number
+    art17inc18?: FloatFilter<"consommation_espaces_naf"> | number
+    naf18art19?: FloatFilter<"consommation_espaces_naf"> | number
+    art18act19?: FloatFilter<"consommation_espaces_naf"> | number
+    art18hab19?: FloatFilter<"consommation_espaces_naf"> | number
+    art18mix19?: FloatFilter<"consommation_espaces_naf"> | number
+    art18rou19?: FloatFilter<"consommation_espaces_naf"> | number
+    art18fer19?: FloatFilter<"consommation_espaces_naf"> | number
+    art18inc19?: FloatFilter<"consommation_espaces_naf"> | number
+    naf19art20?: FloatFilter<"consommation_espaces_naf"> | number
+    art19act20?: FloatFilter<"consommation_espaces_naf"> | number
+    art19hab20?: FloatFilter<"consommation_espaces_naf"> | number
+    art19mix20?: FloatFilter<"consommation_espaces_naf"> | number
+    art19rou20?: FloatFilter<"consommation_espaces_naf"> | number
+    art19fer20?: FloatFilter<"consommation_espaces_naf"> | number
+    art19inc20?: FloatFilter<"consommation_espaces_naf"> | number
+    naf20art21?: FloatFilter<"consommation_espaces_naf"> | number
+    art20act21?: FloatFilter<"consommation_espaces_naf"> | number
+    art20hab21?: FloatFilter<"consommation_espaces_naf"> | number
+    art20mix21?: FloatFilter<"consommation_espaces_naf"> | number
+    art20rou21?: FloatFilter<"consommation_espaces_naf"> | number
+    art20fer21?: FloatFilter<"consommation_espaces_naf"> | number
+    art20inc21?: FloatFilter<"consommation_espaces_naf"> | number
+    naf21art22?: FloatFilter<"consommation_espaces_naf"> | number
+    art21act22?: FloatFilter<"consommation_espaces_naf"> | number
+    art21hab22?: FloatFilter<"consommation_espaces_naf"> | number
+    art21mix22?: FloatFilter<"consommation_espaces_naf"> | number
+    art21rou22?: FloatFilter<"consommation_espaces_naf"> | number
+    art21fer22?: FloatFilter<"consommation_espaces_naf"> | number
+    art21inc22?: FloatFilter<"consommation_espaces_naf"> | number
+    naf22art23?: FloatFilter<"consommation_espaces_naf"> | number
+    art22act23?: FloatFilter<"consommation_espaces_naf"> | number
+    art22hab23?: FloatFilter<"consommation_espaces_naf"> | number
+    art22mix23?: FloatFilter<"consommation_espaces_naf"> | number
+    art22rou23?: FloatFilter<"consommation_espaces_naf"> | number
+    art22fer23?: FloatFilter<"consommation_espaces_naf"> | number
+    art22inc23?: FloatFilter<"consommation_espaces_naf"> | number
+    naf09art23?: FloatFilter<"consommation_espaces_naf"> | number
+    art09act23?: FloatFilter<"consommation_espaces_naf"> | number
+    art09hab23?: FloatFilter<"consommation_espaces_naf"> | number
+    art09mix23?: FloatFilter<"consommation_espaces_naf"> | number
+    art09inc23?: FloatFilter<"consommation_espaces_naf"> | number
+    art09rou23?: FloatFilter<"consommation_espaces_naf"> | number
+    art09fer23?: FloatFilter<"consommation_espaces_naf"> | number
+    artcom0923?: FloatFilter<"consommation_espaces_naf"> | number
+    pop14?: FloatFilter<"consommation_espaces_naf"> | number
+    pop20?: FloatFilter<"consommation_espaces_naf"> | number
+    pop1420?: FloatFilter<"consommation_espaces_naf"> | number
+    men14?: FloatFilter<"consommation_espaces_naf"> | number
+    men20?: FloatFilter<"consommation_espaces_naf"> | number
+    men1420?: FloatFilter<"consommation_espaces_naf"> | number
+    emp14?: FloatFilter<"consommation_espaces_naf"> | number
+    emp20?: FloatFilter<"consommation_espaces_naf"> | number
+    emp1420?: FloatFilter<"consommation_espaces_naf"> | number
+    mepart1420?: FloatFilter<"consommation_espaces_naf"> | number
+    menhab1420?: FloatFilter<"consommation_espaces_naf"> | number
+    artpop1420?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    surfcom2023?: FloatFilter<"consommation_espaces_naf"> | number
+  }
+
+  export type consommation_espaces_nafOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    naf09art10?: SortOrder
+    art09act10?: SortOrder
+    art09hab10?: SortOrder
+    art09mix10?: SortOrder
+    art09rou10?: SortOrder
+    art09fer10?: SortOrder
+    art09inc10?: SortOrder
+    naf10art11?: SortOrder
+    art10act11?: SortOrder
+    art10hab11?: SortOrder
+    art10mix11?: SortOrder
+    art10rou11?: SortOrder
+    art10fer11?: SortOrder
+    art10inc11?: SortOrder
+    naf11art12?: SortOrder
+    art11act12?: SortOrder
+    art11hab12?: SortOrder
+    art11mix12?: SortOrder
+    art11rou12?: SortOrder
+    art11fer12?: SortOrder
+    art11inc12?: SortOrder
+    naf12art13?: SortOrder
+    art12act13?: SortOrder
+    art12hab13?: SortOrder
+    art12mix13?: SortOrder
+    art12rou13?: SortOrder
+    art12fer13?: SortOrder
+    art12inc13?: SortOrder
+    naf13art14?: SortOrder
+    art13act14?: SortOrder
+    art13hab14?: SortOrder
+    art13mix14?: SortOrder
+    art13rou14?: SortOrder
+    art13fer14?: SortOrder
+    art13inc14?: SortOrder
+    naf14art15?: SortOrder
+    art14act15?: SortOrder
+    art14hab15?: SortOrder
+    art14mix15?: SortOrder
+    art14rou15?: SortOrder
+    art14fer15?: SortOrder
+    art14inc15?: SortOrder
+    naf15art16?: SortOrder
+    art15act16?: SortOrder
+    art15hab16?: SortOrder
+    art15mix16?: SortOrder
+    art15rou16?: SortOrder
+    art15fer16?: SortOrder
+    art15inc16?: SortOrder
+    naf16art17?: SortOrder
+    art16act17?: SortOrder
+    art16hab17?: SortOrder
+    art16mix17?: SortOrder
+    art16rou17?: SortOrder
+    art16fer17?: SortOrder
+    art16inc17?: SortOrder
+    naf17art18?: SortOrder
+    art17act18?: SortOrder
+    art17hab18?: SortOrder
+    art17mix18?: SortOrder
+    art17rou18?: SortOrder
+    art17fer18?: SortOrder
+    art17inc18?: SortOrder
+    naf18art19?: SortOrder
+    art18act19?: SortOrder
+    art18hab19?: SortOrder
+    art18mix19?: SortOrder
+    art18rou19?: SortOrder
+    art18fer19?: SortOrder
+    art18inc19?: SortOrder
+    naf19art20?: SortOrder
+    art19act20?: SortOrder
+    art19hab20?: SortOrder
+    art19mix20?: SortOrder
+    art19rou20?: SortOrder
+    art19fer20?: SortOrder
+    art19inc20?: SortOrder
+    naf20art21?: SortOrder
+    art20act21?: SortOrder
+    art20hab21?: SortOrder
+    art20mix21?: SortOrder
+    art20rou21?: SortOrder
+    art20fer21?: SortOrder
+    art20inc21?: SortOrder
+    naf21art22?: SortOrder
+    art21act22?: SortOrder
+    art21hab22?: SortOrder
+    art21mix22?: SortOrder
+    art21rou22?: SortOrder
+    art21fer22?: SortOrder
+    art21inc22?: SortOrder
+    naf22art23?: SortOrder
+    art22act23?: SortOrder
+    art22hab23?: SortOrder
+    art22mix23?: SortOrder
+    art22rou23?: SortOrder
+    art22fer23?: SortOrder
+    art22inc23?: SortOrder
+    naf09art23?: SortOrder
+    art09act23?: SortOrder
+    art09hab23?: SortOrder
+    art09mix23?: SortOrder
+    art09inc23?: SortOrder
+    art09rou23?: SortOrder
+    art09fer23?: SortOrder
+    artcom0923?: SortOrder
+    pop14?: SortOrder
+    pop20?: SortOrder
+    pop1420?: SortOrder
+    men14?: SortOrder
+    men20?: SortOrder
+    men1420?: SortOrder
+    emp14?: SortOrder
+    emp20?: SortOrder
+    emp1420?: SortOrder
+    mepart1420?: SortOrder
+    menhab1420?: SortOrder
+    artpop1420?: SortOrderInput | SortOrder
+    surfcom2023?: SortOrder
+  }
+
+  export type consommation_espaces_nafWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: consommation_espaces_nafWhereInput | consommation_espaces_nafWhereInput[]
+    OR?: consommation_espaces_nafWhereInput[]
+    NOT?: consommation_espaces_nafWhereInput | consommation_espaces_nafWhereInput[]
+    code_geographique?: StringFilter<"consommation_espaces_naf"> | string
+    libelle_geographique?: StringFilter<"consommation_espaces_naf"> | string
+    epci?: StringFilter<"consommation_espaces_naf"> | string
+    libelle_epci?: StringFilter<"consommation_espaces_naf"> | string
+    departement?: StringFilter<"consommation_espaces_naf"> | string
+    region?: IntFilter<"consommation_espaces_naf"> | number
+    naf09art10?: FloatFilter<"consommation_espaces_naf"> | number
+    art09act10?: FloatFilter<"consommation_espaces_naf"> | number
+    art09hab10?: FloatFilter<"consommation_espaces_naf"> | number
+    art09mix10?: FloatFilter<"consommation_espaces_naf"> | number
+    art09rou10?: FloatFilter<"consommation_espaces_naf"> | number
+    art09fer10?: FloatFilter<"consommation_espaces_naf"> | number
+    art09inc10?: FloatFilter<"consommation_espaces_naf"> | number
+    naf10art11?: FloatFilter<"consommation_espaces_naf"> | number
+    art10act11?: FloatFilter<"consommation_espaces_naf"> | number
+    art10hab11?: FloatFilter<"consommation_espaces_naf"> | number
+    art10mix11?: FloatFilter<"consommation_espaces_naf"> | number
+    art10rou11?: FloatFilter<"consommation_espaces_naf"> | number
+    art10fer11?: FloatFilter<"consommation_espaces_naf"> | number
+    art10inc11?: FloatFilter<"consommation_espaces_naf"> | number
+    naf11art12?: FloatFilter<"consommation_espaces_naf"> | number
+    art11act12?: FloatFilter<"consommation_espaces_naf"> | number
+    art11hab12?: FloatFilter<"consommation_espaces_naf"> | number
+    art11mix12?: FloatFilter<"consommation_espaces_naf"> | number
+    art11rou12?: FloatFilter<"consommation_espaces_naf"> | number
+    art11fer12?: FloatFilter<"consommation_espaces_naf"> | number
+    art11inc12?: FloatFilter<"consommation_espaces_naf"> | number
+    naf12art13?: FloatFilter<"consommation_espaces_naf"> | number
+    art12act13?: FloatFilter<"consommation_espaces_naf"> | number
+    art12hab13?: FloatFilter<"consommation_espaces_naf"> | number
+    art12mix13?: FloatFilter<"consommation_espaces_naf"> | number
+    art12rou13?: FloatFilter<"consommation_espaces_naf"> | number
+    art12fer13?: FloatFilter<"consommation_espaces_naf"> | number
+    art12inc13?: FloatFilter<"consommation_espaces_naf"> | number
+    naf13art14?: FloatFilter<"consommation_espaces_naf"> | number
+    art13act14?: FloatFilter<"consommation_espaces_naf"> | number
+    art13hab14?: FloatFilter<"consommation_espaces_naf"> | number
+    art13mix14?: FloatFilter<"consommation_espaces_naf"> | number
+    art13rou14?: FloatFilter<"consommation_espaces_naf"> | number
+    art13fer14?: FloatFilter<"consommation_espaces_naf"> | number
+    art13inc14?: FloatFilter<"consommation_espaces_naf"> | number
+    naf14art15?: FloatFilter<"consommation_espaces_naf"> | number
+    art14act15?: FloatFilter<"consommation_espaces_naf"> | number
+    art14hab15?: FloatFilter<"consommation_espaces_naf"> | number
+    art14mix15?: FloatFilter<"consommation_espaces_naf"> | number
+    art14rou15?: FloatFilter<"consommation_espaces_naf"> | number
+    art14fer15?: FloatFilter<"consommation_espaces_naf"> | number
+    art14inc15?: FloatFilter<"consommation_espaces_naf"> | number
+    naf15art16?: FloatFilter<"consommation_espaces_naf"> | number
+    art15act16?: FloatFilter<"consommation_espaces_naf"> | number
+    art15hab16?: FloatFilter<"consommation_espaces_naf"> | number
+    art15mix16?: FloatFilter<"consommation_espaces_naf"> | number
+    art15rou16?: FloatFilter<"consommation_espaces_naf"> | number
+    art15fer16?: FloatFilter<"consommation_espaces_naf"> | number
+    art15inc16?: FloatFilter<"consommation_espaces_naf"> | number
+    naf16art17?: FloatFilter<"consommation_espaces_naf"> | number
+    art16act17?: FloatFilter<"consommation_espaces_naf"> | number
+    art16hab17?: FloatFilter<"consommation_espaces_naf"> | number
+    art16mix17?: FloatFilter<"consommation_espaces_naf"> | number
+    art16rou17?: FloatFilter<"consommation_espaces_naf"> | number
+    art16fer17?: FloatFilter<"consommation_espaces_naf"> | number
+    art16inc17?: FloatFilter<"consommation_espaces_naf"> | number
+    naf17art18?: FloatFilter<"consommation_espaces_naf"> | number
+    art17act18?: FloatFilter<"consommation_espaces_naf"> | number
+    art17hab18?: FloatFilter<"consommation_espaces_naf"> | number
+    art17mix18?: FloatFilter<"consommation_espaces_naf"> | number
+    art17rou18?: FloatFilter<"consommation_espaces_naf"> | number
+    art17fer18?: FloatFilter<"consommation_espaces_naf"> | number
+    art17inc18?: FloatFilter<"consommation_espaces_naf"> | number
+    naf18art19?: FloatFilter<"consommation_espaces_naf"> | number
+    art18act19?: FloatFilter<"consommation_espaces_naf"> | number
+    art18hab19?: FloatFilter<"consommation_espaces_naf"> | number
+    art18mix19?: FloatFilter<"consommation_espaces_naf"> | number
+    art18rou19?: FloatFilter<"consommation_espaces_naf"> | number
+    art18fer19?: FloatFilter<"consommation_espaces_naf"> | number
+    art18inc19?: FloatFilter<"consommation_espaces_naf"> | number
+    naf19art20?: FloatFilter<"consommation_espaces_naf"> | number
+    art19act20?: FloatFilter<"consommation_espaces_naf"> | number
+    art19hab20?: FloatFilter<"consommation_espaces_naf"> | number
+    art19mix20?: FloatFilter<"consommation_espaces_naf"> | number
+    art19rou20?: FloatFilter<"consommation_espaces_naf"> | number
+    art19fer20?: FloatFilter<"consommation_espaces_naf"> | number
+    art19inc20?: FloatFilter<"consommation_espaces_naf"> | number
+    naf20art21?: FloatFilter<"consommation_espaces_naf"> | number
+    art20act21?: FloatFilter<"consommation_espaces_naf"> | number
+    art20hab21?: FloatFilter<"consommation_espaces_naf"> | number
+    art20mix21?: FloatFilter<"consommation_espaces_naf"> | number
+    art20rou21?: FloatFilter<"consommation_espaces_naf"> | number
+    art20fer21?: FloatFilter<"consommation_espaces_naf"> | number
+    art20inc21?: FloatFilter<"consommation_espaces_naf"> | number
+    naf21art22?: FloatFilter<"consommation_espaces_naf"> | number
+    art21act22?: FloatFilter<"consommation_espaces_naf"> | number
+    art21hab22?: FloatFilter<"consommation_espaces_naf"> | number
+    art21mix22?: FloatFilter<"consommation_espaces_naf"> | number
+    art21rou22?: FloatFilter<"consommation_espaces_naf"> | number
+    art21fer22?: FloatFilter<"consommation_espaces_naf"> | number
+    art21inc22?: FloatFilter<"consommation_espaces_naf"> | number
+    naf22art23?: FloatFilter<"consommation_espaces_naf"> | number
+    art22act23?: FloatFilter<"consommation_espaces_naf"> | number
+    art22hab23?: FloatFilter<"consommation_espaces_naf"> | number
+    art22mix23?: FloatFilter<"consommation_espaces_naf"> | number
+    art22rou23?: FloatFilter<"consommation_espaces_naf"> | number
+    art22fer23?: FloatFilter<"consommation_espaces_naf"> | number
+    art22inc23?: FloatFilter<"consommation_espaces_naf"> | number
+    naf09art23?: FloatFilter<"consommation_espaces_naf"> | number
+    art09act23?: FloatFilter<"consommation_espaces_naf"> | number
+    art09hab23?: FloatFilter<"consommation_espaces_naf"> | number
+    art09mix23?: FloatFilter<"consommation_espaces_naf"> | number
+    art09inc23?: FloatFilter<"consommation_espaces_naf"> | number
+    art09rou23?: FloatFilter<"consommation_espaces_naf"> | number
+    art09fer23?: FloatFilter<"consommation_espaces_naf"> | number
+    artcom0923?: FloatFilter<"consommation_espaces_naf"> | number
+    pop14?: FloatFilter<"consommation_espaces_naf"> | number
+    pop20?: FloatFilter<"consommation_espaces_naf"> | number
+    pop1420?: FloatFilter<"consommation_espaces_naf"> | number
+    men14?: FloatFilter<"consommation_espaces_naf"> | number
+    men20?: FloatFilter<"consommation_espaces_naf"> | number
+    men1420?: FloatFilter<"consommation_espaces_naf"> | number
+    emp14?: FloatFilter<"consommation_espaces_naf"> | number
+    emp20?: FloatFilter<"consommation_espaces_naf"> | number
+    emp1420?: FloatFilter<"consommation_espaces_naf"> | number
+    mepart1420?: FloatFilter<"consommation_espaces_naf"> | number
+    menhab1420?: FloatFilter<"consommation_espaces_naf"> | number
+    artpop1420?: FloatNullableFilter<"consommation_espaces_naf"> | number | null
+    surfcom2023?: FloatFilter<"consommation_espaces_naf"> | number
+  }, "index">
+
+  export type consommation_espaces_nafOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    naf09art10?: SortOrder
+    art09act10?: SortOrder
+    art09hab10?: SortOrder
+    art09mix10?: SortOrder
+    art09rou10?: SortOrder
+    art09fer10?: SortOrder
+    art09inc10?: SortOrder
+    naf10art11?: SortOrder
+    art10act11?: SortOrder
+    art10hab11?: SortOrder
+    art10mix11?: SortOrder
+    art10rou11?: SortOrder
+    art10fer11?: SortOrder
+    art10inc11?: SortOrder
+    naf11art12?: SortOrder
+    art11act12?: SortOrder
+    art11hab12?: SortOrder
+    art11mix12?: SortOrder
+    art11rou12?: SortOrder
+    art11fer12?: SortOrder
+    art11inc12?: SortOrder
+    naf12art13?: SortOrder
+    art12act13?: SortOrder
+    art12hab13?: SortOrder
+    art12mix13?: SortOrder
+    art12rou13?: SortOrder
+    art12fer13?: SortOrder
+    art12inc13?: SortOrder
+    naf13art14?: SortOrder
+    art13act14?: SortOrder
+    art13hab14?: SortOrder
+    art13mix14?: SortOrder
+    art13rou14?: SortOrder
+    art13fer14?: SortOrder
+    art13inc14?: SortOrder
+    naf14art15?: SortOrder
+    art14act15?: SortOrder
+    art14hab15?: SortOrder
+    art14mix15?: SortOrder
+    art14rou15?: SortOrder
+    art14fer15?: SortOrder
+    art14inc15?: SortOrder
+    naf15art16?: SortOrder
+    art15act16?: SortOrder
+    art15hab16?: SortOrder
+    art15mix16?: SortOrder
+    art15rou16?: SortOrder
+    art15fer16?: SortOrder
+    art15inc16?: SortOrder
+    naf16art17?: SortOrder
+    art16act17?: SortOrder
+    art16hab17?: SortOrder
+    art16mix17?: SortOrder
+    art16rou17?: SortOrder
+    art16fer17?: SortOrder
+    art16inc17?: SortOrder
+    naf17art18?: SortOrder
+    art17act18?: SortOrder
+    art17hab18?: SortOrder
+    art17mix18?: SortOrder
+    art17rou18?: SortOrder
+    art17fer18?: SortOrder
+    art17inc18?: SortOrder
+    naf18art19?: SortOrder
+    art18act19?: SortOrder
+    art18hab19?: SortOrder
+    art18mix19?: SortOrder
+    art18rou19?: SortOrder
+    art18fer19?: SortOrder
+    art18inc19?: SortOrder
+    naf19art20?: SortOrder
+    art19act20?: SortOrder
+    art19hab20?: SortOrder
+    art19mix20?: SortOrder
+    art19rou20?: SortOrder
+    art19fer20?: SortOrder
+    art19inc20?: SortOrder
+    naf20art21?: SortOrder
+    art20act21?: SortOrder
+    art20hab21?: SortOrder
+    art20mix21?: SortOrder
+    art20rou21?: SortOrder
+    art20fer21?: SortOrder
+    art20inc21?: SortOrder
+    naf21art22?: SortOrder
+    art21act22?: SortOrder
+    art21hab22?: SortOrder
+    art21mix22?: SortOrder
+    art21rou22?: SortOrder
+    art21fer22?: SortOrder
+    art21inc22?: SortOrder
+    naf22art23?: SortOrder
+    art22act23?: SortOrder
+    art22hab23?: SortOrder
+    art22mix23?: SortOrder
+    art22rou23?: SortOrder
+    art22fer23?: SortOrder
+    art22inc23?: SortOrder
+    naf09art23?: SortOrder
+    art09act23?: SortOrder
+    art09hab23?: SortOrder
+    art09mix23?: SortOrder
+    art09inc23?: SortOrder
+    art09rou23?: SortOrder
+    art09fer23?: SortOrder
+    artcom0923?: SortOrder
+    pop14?: SortOrder
+    pop20?: SortOrder
+    pop1420?: SortOrder
+    men14?: SortOrder
+    men20?: SortOrder
+    men1420?: SortOrder
+    emp14?: SortOrder
+    emp20?: SortOrder
+    emp1420?: SortOrder
+    mepart1420?: SortOrder
+    menhab1420?: SortOrder
+    artpop1420?: SortOrderInput | SortOrder
+    surfcom2023?: SortOrder
+    _count?: consommation_espaces_nafCountOrderByAggregateInput
+    _avg?: consommation_espaces_nafAvgOrderByAggregateInput
+    _max?: consommation_espaces_nafMaxOrderByAggregateInput
+    _min?: consommation_espaces_nafMinOrderByAggregateInput
+    _sum?: consommation_espaces_nafSumOrderByAggregateInput
+  }
+
+  export type consommation_espaces_nafScalarWhereWithAggregatesInput = {
+    AND?: consommation_espaces_nafScalarWhereWithAggregatesInput | consommation_espaces_nafScalarWhereWithAggregatesInput[]
+    OR?: consommation_espaces_nafScalarWhereWithAggregatesInput[]
+    NOT?: consommation_espaces_nafScalarWhereWithAggregatesInput | consommation_espaces_nafScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"consommation_espaces_naf"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"consommation_espaces_naf"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"consommation_espaces_naf"> | string
+    epci?: StringWithAggregatesFilter<"consommation_espaces_naf"> | string
+    libelle_epci?: StringWithAggregatesFilter<"consommation_espaces_naf"> | string
+    departement?: StringWithAggregatesFilter<"consommation_espaces_naf"> | string
+    region?: IntWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf09art10?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art09act10?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art09hab10?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art09mix10?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art09rou10?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art09fer10?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art09inc10?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf10art11?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art10act11?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art10hab11?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art10mix11?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art10rou11?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art10fer11?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art10inc11?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf11art12?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art11act12?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art11hab12?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art11mix12?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art11rou12?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art11fer12?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art11inc12?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf12art13?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art12act13?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art12hab13?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art12mix13?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art12rou13?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art12fer13?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art12inc13?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf13art14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art13act14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art13hab14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art13mix14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art13rou14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art13fer14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art13inc14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf14art15?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art14act15?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art14hab15?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art14mix15?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art14rou15?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art14fer15?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art14inc15?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf15art16?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art15act16?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art15hab16?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art15mix16?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art15rou16?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art15fer16?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art15inc16?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf16art17?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art16act17?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art16hab17?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art16mix17?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art16rou17?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art16fer17?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art16inc17?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf17art18?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art17act18?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art17hab18?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art17mix18?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art17rou18?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art17fer18?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art17inc18?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf18art19?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art18act19?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art18hab19?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art18mix19?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art18rou19?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art18fer19?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art18inc19?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf19art20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art19act20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art19hab20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art19mix20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art19rou20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art19fer20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art19inc20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf20art21?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art20act21?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art20hab21?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art20mix21?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art20rou21?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art20fer21?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art20inc21?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf21art22?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art21act22?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art21hab22?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art21mix22?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art21rou22?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art21fer22?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art21inc22?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf22art23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art22act23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art22hab23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art22mix23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art22rou23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art22fer23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art22inc23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    naf09art23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art09act23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art09hab23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art09mix23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art09inc23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art09rou23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    art09fer23?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    artcom0923?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    pop14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    pop20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    pop1420?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    men14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    men20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    men1420?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    emp14?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    emp20?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    emp1420?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    mepart1420?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    menhab1420?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+    artpop1420?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
+    surfcom2023?: FloatWithAggregatesFilter<"consommation_espaces_naf"> | number
+  }
+
   export type inconfort_thermiqueCreateInput = {
     index: bigint | number
     code_geographique: string
@@ -15983,87 +19635,6 @@ export namespace Prisma {
     epci_code?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
-  export type communesCreateInput = {
-    code_commune?: string | null
-    libelle_commune?: string | null
-    epci?: string | null
-    libelle_epci?: string | null
-    libgeo?: string | null
-    coordinates?: string | null
-    densite_bati?: number | null
-    precarite_logement?: number | null
-  }
-
-  export type communesUncheckedCreateInput = {
-    pk?: number
-    code_commune?: string | null
-    libelle_commune?: string | null
-    epci?: string | null
-    libelle_epci?: string | null
-    libgeo?: string | null
-    coordinates?: string | null
-    densite_bati?: number | null
-    precarite_logement?: number | null
-  }
-
-  export type communesUpdateInput = {
-    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
-    libgeo?: NullableStringFieldUpdateOperationsInput | string | null
-    coordinates?: NullableStringFieldUpdateOperationsInput | string | null
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
-    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type communesUncheckedUpdateInput = {
-    pk?: IntFieldUpdateOperationsInput | number
-    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
-    libgeo?: NullableStringFieldUpdateOperationsInput | string | null
-    coordinates?: NullableStringFieldUpdateOperationsInput | string | null
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
-    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type communesCreateManyInput = {
-    pk?: number
-    code_commune?: string | null
-    libelle_commune?: string | null
-    epci?: string | null
-    libelle_epci?: string | null
-    libgeo?: string | null
-    coordinates?: string | null
-    densite_bati?: number | null
-    precarite_logement?: number | null
-  }
-
-  export type communesUpdateManyMutationInput = {
-    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
-    libgeo?: NullableStringFieldUpdateOperationsInput | string | null
-    coordinates?: NullableStringFieldUpdateOperationsInput | string | null
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
-    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type communesUncheckedUpdateManyInput = {
-    pk?: IntFieldUpdateOperationsInput | number
-    code_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
-    libgeo?: NullableStringFieldUpdateOperationsInput | string | null
-    coordinates?: NullableStringFieldUpdateOperationsInput | string | null
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
-    precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
   export type collectivites_searchbarCreateInput = {
     index: bigint | number
     code_commune?: string | null
@@ -16325,6 +19896,7 @@ export namespace Prisma {
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
     surface?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type communes_dromUncheckedUpdateInput = {
@@ -16337,6 +19909,7 @@ export namespace Prisma {
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
     surface?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type communes_dromUpdateManyMutationInput = {
@@ -16347,6 +19920,7 @@ export namespace Prisma {
     coordinates?: StringFieldUpdateOperationsInput | string
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface?: NullableFloatFieldUpdateOperationsInput | number | null
     surface?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
@@ -16359,6 +19933,7 @@ export namespace Prisma {
     coordinates?: StringFieldUpdateOperationsInput | string
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface?: NullableFloatFieldUpdateOperationsInput | number | null
     surface?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
@@ -16904,6 +20479,965 @@ export namespace Prisma {
     region?: FloatFieldUpdateOperationsInput | number
   }
 
+  export type spatial_ref_sysCreateInput = {
+    srid: number
+    auth_name?: string | null
+    auth_srid?: number | null
+    srtext?: string | null
+    proj4text?: string | null
+  }
+
+  export type spatial_ref_sysUncheckedCreateInput = {
+    srid: number
+    auth_name?: string | null
+    auth_srid?: number | null
+    srtext?: string | null
+    proj4text?: string | null
+  }
+
+  export type spatial_ref_sysUpdateInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type spatial_ref_sysUncheckedUpdateInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type spatial_ref_sysCreateManyInput = {
+    srid: number
+    auth_name?: string | null
+    auth_srid?: number | null
+    srtext?: string | null
+    proj4text?: string | null
+  }
+
+  export type spatial_ref_sysUpdateManyMutationInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type spatial_ref_sysUncheckedUpdateManyInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type consommation_espaces_nafCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
+    naf09art10: number
+    art09act10: number
+    art09hab10: number
+    art09mix10: number
+    art09rou10: number
+    art09fer10: number
+    art09inc10: number
+    naf10art11: number
+    art10act11: number
+    art10hab11: number
+    art10mix11: number
+    art10rou11: number
+    art10fer11: number
+    art10inc11: number
+    naf11art12: number
+    art11act12: number
+    art11hab12: number
+    art11mix12: number
+    art11rou12: number
+    art11fer12: number
+    art11inc12: number
+    naf12art13: number
+    art12act13: number
+    art12hab13: number
+    art12mix13: number
+    art12rou13: number
+    art12fer13: number
+    art12inc13: number
+    naf13art14: number
+    art13act14: number
+    art13hab14: number
+    art13mix14: number
+    art13rou14: number
+    art13fer14: number
+    art13inc14: number
+    naf14art15: number
+    art14act15: number
+    art14hab15: number
+    art14mix15: number
+    art14rou15: number
+    art14fer15: number
+    art14inc15: number
+    naf15art16: number
+    art15act16: number
+    art15hab16: number
+    art15mix16: number
+    art15rou16: number
+    art15fer16: number
+    art15inc16: number
+    naf16art17: number
+    art16act17: number
+    art16hab17: number
+    art16mix17: number
+    art16rou17: number
+    art16fer17: number
+    art16inc17: number
+    naf17art18: number
+    art17act18: number
+    art17hab18: number
+    art17mix18: number
+    art17rou18: number
+    art17fer18: number
+    art17inc18: number
+    naf18art19: number
+    art18act19: number
+    art18hab19: number
+    art18mix19: number
+    art18rou19: number
+    art18fer19: number
+    art18inc19: number
+    naf19art20: number
+    art19act20: number
+    art19hab20: number
+    art19mix20: number
+    art19rou20: number
+    art19fer20: number
+    art19inc20: number
+    naf20art21: number
+    art20act21: number
+    art20hab21: number
+    art20mix21: number
+    art20rou21: number
+    art20fer21: number
+    art20inc21: number
+    naf21art22: number
+    art21act22: number
+    art21hab22: number
+    art21mix22: number
+    art21rou22: number
+    art21fer22: number
+    art21inc22: number
+    naf22art23: number
+    art22act23: number
+    art22hab23: number
+    art22mix23: number
+    art22rou23: number
+    art22fer23: number
+    art22inc23: number
+    naf09art23: number
+    art09act23: number
+    art09hab23: number
+    art09mix23: number
+    art09inc23: number
+    art09rou23: number
+    art09fer23: number
+    artcom0923: number
+    pop14: number
+    pop20: number
+    pop1420: number
+    men14: number
+    men20: number
+    men1420: number
+    emp14: number
+    emp20: number
+    emp1420: number
+    mepart1420: number
+    menhab1420: number
+    artpop1420?: number | null
+    surfcom2023: number
+  }
+
+  export type consommation_espaces_nafUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
+    naf09art10: number
+    art09act10: number
+    art09hab10: number
+    art09mix10: number
+    art09rou10: number
+    art09fer10: number
+    art09inc10: number
+    naf10art11: number
+    art10act11: number
+    art10hab11: number
+    art10mix11: number
+    art10rou11: number
+    art10fer11: number
+    art10inc11: number
+    naf11art12: number
+    art11act12: number
+    art11hab12: number
+    art11mix12: number
+    art11rou12: number
+    art11fer12: number
+    art11inc12: number
+    naf12art13: number
+    art12act13: number
+    art12hab13: number
+    art12mix13: number
+    art12rou13: number
+    art12fer13: number
+    art12inc13: number
+    naf13art14: number
+    art13act14: number
+    art13hab14: number
+    art13mix14: number
+    art13rou14: number
+    art13fer14: number
+    art13inc14: number
+    naf14art15: number
+    art14act15: number
+    art14hab15: number
+    art14mix15: number
+    art14rou15: number
+    art14fer15: number
+    art14inc15: number
+    naf15art16: number
+    art15act16: number
+    art15hab16: number
+    art15mix16: number
+    art15rou16: number
+    art15fer16: number
+    art15inc16: number
+    naf16art17: number
+    art16act17: number
+    art16hab17: number
+    art16mix17: number
+    art16rou17: number
+    art16fer17: number
+    art16inc17: number
+    naf17art18: number
+    art17act18: number
+    art17hab18: number
+    art17mix18: number
+    art17rou18: number
+    art17fer18: number
+    art17inc18: number
+    naf18art19: number
+    art18act19: number
+    art18hab19: number
+    art18mix19: number
+    art18rou19: number
+    art18fer19: number
+    art18inc19: number
+    naf19art20: number
+    art19act20: number
+    art19hab20: number
+    art19mix20: number
+    art19rou20: number
+    art19fer20: number
+    art19inc20: number
+    naf20art21: number
+    art20act21: number
+    art20hab21: number
+    art20mix21: number
+    art20rou21: number
+    art20fer21: number
+    art20inc21: number
+    naf21art22: number
+    art21act22: number
+    art21hab22: number
+    art21mix22: number
+    art21rou22: number
+    art21fer22: number
+    art21inc22: number
+    naf22art23: number
+    art22act23: number
+    art22hab23: number
+    art22mix23: number
+    art22rou23: number
+    art22fer23: number
+    art22inc23: number
+    naf09art23: number
+    art09act23: number
+    art09hab23: number
+    art09mix23: number
+    art09inc23: number
+    art09rou23: number
+    art09fer23: number
+    artcom0923: number
+    pop14: number
+    pop20: number
+    pop1420: number
+    men14: number
+    men20: number
+    men1420: number
+    emp14: number
+    emp20: number
+    emp1420: number
+    mepart1420: number
+    menhab1420: number
+    artpop1420?: number | null
+    surfcom2023: number
+  }
+
+  export type consommation_espaces_nafUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    naf09art10?: FloatFieldUpdateOperationsInput | number
+    art09act10?: FloatFieldUpdateOperationsInput | number
+    art09hab10?: FloatFieldUpdateOperationsInput | number
+    art09mix10?: FloatFieldUpdateOperationsInput | number
+    art09rou10?: FloatFieldUpdateOperationsInput | number
+    art09fer10?: FloatFieldUpdateOperationsInput | number
+    art09inc10?: FloatFieldUpdateOperationsInput | number
+    naf10art11?: FloatFieldUpdateOperationsInput | number
+    art10act11?: FloatFieldUpdateOperationsInput | number
+    art10hab11?: FloatFieldUpdateOperationsInput | number
+    art10mix11?: FloatFieldUpdateOperationsInput | number
+    art10rou11?: FloatFieldUpdateOperationsInput | number
+    art10fer11?: FloatFieldUpdateOperationsInput | number
+    art10inc11?: FloatFieldUpdateOperationsInput | number
+    naf11art12?: FloatFieldUpdateOperationsInput | number
+    art11act12?: FloatFieldUpdateOperationsInput | number
+    art11hab12?: FloatFieldUpdateOperationsInput | number
+    art11mix12?: FloatFieldUpdateOperationsInput | number
+    art11rou12?: FloatFieldUpdateOperationsInput | number
+    art11fer12?: FloatFieldUpdateOperationsInput | number
+    art11inc12?: FloatFieldUpdateOperationsInput | number
+    naf12art13?: FloatFieldUpdateOperationsInput | number
+    art12act13?: FloatFieldUpdateOperationsInput | number
+    art12hab13?: FloatFieldUpdateOperationsInput | number
+    art12mix13?: FloatFieldUpdateOperationsInput | number
+    art12rou13?: FloatFieldUpdateOperationsInput | number
+    art12fer13?: FloatFieldUpdateOperationsInput | number
+    art12inc13?: FloatFieldUpdateOperationsInput | number
+    naf13art14?: FloatFieldUpdateOperationsInput | number
+    art13act14?: FloatFieldUpdateOperationsInput | number
+    art13hab14?: FloatFieldUpdateOperationsInput | number
+    art13mix14?: FloatFieldUpdateOperationsInput | number
+    art13rou14?: FloatFieldUpdateOperationsInput | number
+    art13fer14?: FloatFieldUpdateOperationsInput | number
+    art13inc14?: FloatFieldUpdateOperationsInput | number
+    naf14art15?: FloatFieldUpdateOperationsInput | number
+    art14act15?: FloatFieldUpdateOperationsInput | number
+    art14hab15?: FloatFieldUpdateOperationsInput | number
+    art14mix15?: FloatFieldUpdateOperationsInput | number
+    art14rou15?: FloatFieldUpdateOperationsInput | number
+    art14fer15?: FloatFieldUpdateOperationsInput | number
+    art14inc15?: FloatFieldUpdateOperationsInput | number
+    naf15art16?: FloatFieldUpdateOperationsInput | number
+    art15act16?: FloatFieldUpdateOperationsInput | number
+    art15hab16?: FloatFieldUpdateOperationsInput | number
+    art15mix16?: FloatFieldUpdateOperationsInput | number
+    art15rou16?: FloatFieldUpdateOperationsInput | number
+    art15fer16?: FloatFieldUpdateOperationsInput | number
+    art15inc16?: FloatFieldUpdateOperationsInput | number
+    naf16art17?: FloatFieldUpdateOperationsInput | number
+    art16act17?: FloatFieldUpdateOperationsInput | number
+    art16hab17?: FloatFieldUpdateOperationsInput | number
+    art16mix17?: FloatFieldUpdateOperationsInput | number
+    art16rou17?: FloatFieldUpdateOperationsInput | number
+    art16fer17?: FloatFieldUpdateOperationsInput | number
+    art16inc17?: FloatFieldUpdateOperationsInput | number
+    naf17art18?: FloatFieldUpdateOperationsInput | number
+    art17act18?: FloatFieldUpdateOperationsInput | number
+    art17hab18?: FloatFieldUpdateOperationsInput | number
+    art17mix18?: FloatFieldUpdateOperationsInput | number
+    art17rou18?: FloatFieldUpdateOperationsInput | number
+    art17fer18?: FloatFieldUpdateOperationsInput | number
+    art17inc18?: FloatFieldUpdateOperationsInput | number
+    naf18art19?: FloatFieldUpdateOperationsInput | number
+    art18act19?: FloatFieldUpdateOperationsInput | number
+    art18hab19?: FloatFieldUpdateOperationsInput | number
+    art18mix19?: FloatFieldUpdateOperationsInput | number
+    art18rou19?: FloatFieldUpdateOperationsInput | number
+    art18fer19?: FloatFieldUpdateOperationsInput | number
+    art18inc19?: FloatFieldUpdateOperationsInput | number
+    naf19art20?: FloatFieldUpdateOperationsInput | number
+    art19act20?: FloatFieldUpdateOperationsInput | number
+    art19hab20?: FloatFieldUpdateOperationsInput | number
+    art19mix20?: FloatFieldUpdateOperationsInput | number
+    art19rou20?: FloatFieldUpdateOperationsInput | number
+    art19fer20?: FloatFieldUpdateOperationsInput | number
+    art19inc20?: FloatFieldUpdateOperationsInput | number
+    naf20art21?: FloatFieldUpdateOperationsInput | number
+    art20act21?: FloatFieldUpdateOperationsInput | number
+    art20hab21?: FloatFieldUpdateOperationsInput | number
+    art20mix21?: FloatFieldUpdateOperationsInput | number
+    art20rou21?: FloatFieldUpdateOperationsInput | number
+    art20fer21?: FloatFieldUpdateOperationsInput | number
+    art20inc21?: FloatFieldUpdateOperationsInput | number
+    naf21art22?: FloatFieldUpdateOperationsInput | number
+    art21act22?: FloatFieldUpdateOperationsInput | number
+    art21hab22?: FloatFieldUpdateOperationsInput | number
+    art21mix22?: FloatFieldUpdateOperationsInput | number
+    art21rou22?: FloatFieldUpdateOperationsInput | number
+    art21fer22?: FloatFieldUpdateOperationsInput | number
+    art21inc22?: FloatFieldUpdateOperationsInput | number
+    naf22art23?: FloatFieldUpdateOperationsInput | number
+    art22act23?: FloatFieldUpdateOperationsInput | number
+    art22hab23?: FloatFieldUpdateOperationsInput | number
+    art22mix23?: FloatFieldUpdateOperationsInput | number
+    art22rou23?: FloatFieldUpdateOperationsInput | number
+    art22fer23?: FloatFieldUpdateOperationsInput | number
+    art22inc23?: FloatFieldUpdateOperationsInput | number
+    naf09art23?: FloatFieldUpdateOperationsInput | number
+    art09act23?: FloatFieldUpdateOperationsInput | number
+    art09hab23?: FloatFieldUpdateOperationsInput | number
+    art09mix23?: FloatFieldUpdateOperationsInput | number
+    art09inc23?: FloatFieldUpdateOperationsInput | number
+    art09rou23?: FloatFieldUpdateOperationsInput | number
+    art09fer23?: FloatFieldUpdateOperationsInput | number
+    artcom0923?: FloatFieldUpdateOperationsInput | number
+    pop14?: FloatFieldUpdateOperationsInput | number
+    pop20?: FloatFieldUpdateOperationsInput | number
+    pop1420?: FloatFieldUpdateOperationsInput | number
+    men14?: FloatFieldUpdateOperationsInput | number
+    men20?: FloatFieldUpdateOperationsInput | number
+    men1420?: FloatFieldUpdateOperationsInput | number
+    emp14?: FloatFieldUpdateOperationsInput | number
+    emp20?: FloatFieldUpdateOperationsInput | number
+    emp1420?: FloatFieldUpdateOperationsInput | number
+    mepart1420?: FloatFieldUpdateOperationsInput | number
+    menhab1420?: FloatFieldUpdateOperationsInput | number
+    artpop1420?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfcom2023?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type consommation_espaces_nafUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    naf09art10?: FloatFieldUpdateOperationsInput | number
+    art09act10?: FloatFieldUpdateOperationsInput | number
+    art09hab10?: FloatFieldUpdateOperationsInput | number
+    art09mix10?: FloatFieldUpdateOperationsInput | number
+    art09rou10?: FloatFieldUpdateOperationsInput | number
+    art09fer10?: FloatFieldUpdateOperationsInput | number
+    art09inc10?: FloatFieldUpdateOperationsInput | number
+    naf10art11?: FloatFieldUpdateOperationsInput | number
+    art10act11?: FloatFieldUpdateOperationsInput | number
+    art10hab11?: FloatFieldUpdateOperationsInput | number
+    art10mix11?: FloatFieldUpdateOperationsInput | number
+    art10rou11?: FloatFieldUpdateOperationsInput | number
+    art10fer11?: FloatFieldUpdateOperationsInput | number
+    art10inc11?: FloatFieldUpdateOperationsInput | number
+    naf11art12?: FloatFieldUpdateOperationsInput | number
+    art11act12?: FloatFieldUpdateOperationsInput | number
+    art11hab12?: FloatFieldUpdateOperationsInput | number
+    art11mix12?: FloatFieldUpdateOperationsInput | number
+    art11rou12?: FloatFieldUpdateOperationsInput | number
+    art11fer12?: FloatFieldUpdateOperationsInput | number
+    art11inc12?: FloatFieldUpdateOperationsInput | number
+    naf12art13?: FloatFieldUpdateOperationsInput | number
+    art12act13?: FloatFieldUpdateOperationsInput | number
+    art12hab13?: FloatFieldUpdateOperationsInput | number
+    art12mix13?: FloatFieldUpdateOperationsInput | number
+    art12rou13?: FloatFieldUpdateOperationsInput | number
+    art12fer13?: FloatFieldUpdateOperationsInput | number
+    art12inc13?: FloatFieldUpdateOperationsInput | number
+    naf13art14?: FloatFieldUpdateOperationsInput | number
+    art13act14?: FloatFieldUpdateOperationsInput | number
+    art13hab14?: FloatFieldUpdateOperationsInput | number
+    art13mix14?: FloatFieldUpdateOperationsInput | number
+    art13rou14?: FloatFieldUpdateOperationsInput | number
+    art13fer14?: FloatFieldUpdateOperationsInput | number
+    art13inc14?: FloatFieldUpdateOperationsInput | number
+    naf14art15?: FloatFieldUpdateOperationsInput | number
+    art14act15?: FloatFieldUpdateOperationsInput | number
+    art14hab15?: FloatFieldUpdateOperationsInput | number
+    art14mix15?: FloatFieldUpdateOperationsInput | number
+    art14rou15?: FloatFieldUpdateOperationsInput | number
+    art14fer15?: FloatFieldUpdateOperationsInput | number
+    art14inc15?: FloatFieldUpdateOperationsInput | number
+    naf15art16?: FloatFieldUpdateOperationsInput | number
+    art15act16?: FloatFieldUpdateOperationsInput | number
+    art15hab16?: FloatFieldUpdateOperationsInput | number
+    art15mix16?: FloatFieldUpdateOperationsInput | number
+    art15rou16?: FloatFieldUpdateOperationsInput | number
+    art15fer16?: FloatFieldUpdateOperationsInput | number
+    art15inc16?: FloatFieldUpdateOperationsInput | number
+    naf16art17?: FloatFieldUpdateOperationsInput | number
+    art16act17?: FloatFieldUpdateOperationsInput | number
+    art16hab17?: FloatFieldUpdateOperationsInput | number
+    art16mix17?: FloatFieldUpdateOperationsInput | number
+    art16rou17?: FloatFieldUpdateOperationsInput | number
+    art16fer17?: FloatFieldUpdateOperationsInput | number
+    art16inc17?: FloatFieldUpdateOperationsInput | number
+    naf17art18?: FloatFieldUpdateOperationsInput | number
+    art17act18?: FloatFieldUpdateOperationsInput | number
+    art17hab18?: FloatFieldUpdateOperationsInput | number
+    art17mix18?: FloatFieldUpdateOperationsInput | number
+    art17rou18?: FloatFieldUpdateOperationsInput | number
+    art17fer18?: FloatFieldUpdateOperationsInput | number
+    art17inc18?: FloatFieldUpdateOperationsInput | number
+    naf18art19?: FloatFieldUpdateOperationsInput | number
+    art18act19?: FloatFieldUpdateOperationsInput | number
+    art18hab19?: FloatFieldUpdateOperationsInput | number
+    art18mix19?: FloatFieldUpdateOperationsInput | number
+    art18rou19?: FloatFieldUpdateOperationsInput | number
+    art18fer19?: FloatFieldUpdateOperationsInput | number
+    art18inc19?: FloatFieldUpdateOperationsInput | number
+    naf19art20?: FloatFieldUpdateOperationsInput | number
+    art19act20?: FloatFieldUpdateOperationsInput | number
+    art19hab20?: FloatFieldUpdateOperationsInput | number
+    art19mix20?: FloatFieldUpdateOperationsInput | number
+    art19rou20?: FloatFieldUpdateOperationsInput | number
+    art19fer20?: FloatFieldUpdateOperationsInput | number
+    art19inc20?: FloatFieldUpdateOperationsInput | number
+    naf20art21?: FloatFieldUpdateOperationsInput | number
+    art20act21?: FloatFieldUpdateOperationsInput | number
+    art20hab21?: FloatFieldUpdateOperationsInput | number
+    art20mix21?: FloatFieldUpdateOperationsInput | number
+    art20rou21?: FloatFieldUpdateOperationsInput | number
+    art20fer21?: FloatFieldUpdateOperationsInput | number
+    art20inc21?: FloatFieldUpdateOperationsInput | number
+    naf21art22?: FloatFieldUpdateOperationsInput | number
+    art21act22?: FloatFieldUpdateOperationsInput | number
+    art21hab22?: FloatFieldUpdateOperationsInput | number
+    art21mix22?: FloatFieldUpdateOperationsInput | number
+    art21rou22?: FloatFieldUpdateOperationsInput | number
+    art21fer22?: FloatFieldUpdateOperationsInput | number
+    art21inc22?: FloatFieldUpdateOperationsInput | number
+    naf22art23?: FloatFieldUpdateOperationsInput | number
+    art22act23?: FloatFieldUpdateOperationsInput | number
+    art22hab23?: FloatFieldUpdateOperationsInput | number
+    art22mix23?: FloatFieldUpdateOperationsInput | number
+    art22rou23?: FloatFieldUpdateOperationsInput | number
+    art22fer23?: FloatFieldUpdateOperationsInput | number
+    art22inc23?: FloatFieldUpdateOperationsInput | number
+    naf09art23?: FloatFieldUpdateOperationsInput | number
+    art09act23?: FloatFieldUpdateOperationsInput | number
+    art09hab23?: FloatFieldUpdateOperationsInput | number
+    art09mix23?: FloatFieldUpdateOperationsInput | number
+    art09inc23?: FloatFieldUpdateOperationsInput | number
+    art09rou23?: FloatFieldUpdateOperationsInput | number
+    art09fer23?: FloatFieldUpdateOperationsInput | number
+    artcom0923?: FloatFieldUpdateOperationsInput | number
+    pop14?: FloatFieldUpdateOperationsInput | number
+    pop20?: FloatFieldUpdateOperationsInput | number
+    pop1420?: FloatFieldUpdateOperationsInput | number
+    men14?: FloatFieldUpdateOperationsInput | number
+    men20?: FloatFieldUpdateOperationsInput | number
+    men1420?: FloatFieldUpdateOperationsInput | number
+    emp14?: FloatFieldUpdateOperationsInput | number
+    emp20?: FloatFieldUpdateOperationsInput | number
+    emp1420?: FloatFieldUpdateOperationsInput | number
+    mepart1420?: FloatFieldUpdateOperationsInput | number
+    menhab1420?: FloatFieldUpdateOperationsInput | number
+    artpop1420?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfcom2023?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type consommation_espaces_nafCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
+    naf09art10: number
+    art09act10: number
+    art09hab10: number
+    art09mix10: number
+    art09rou10: number
+    art09fer10: number
+    art09inc10: number
+    naf10art11: number
+    art10act11: number
+    art10hab11: number
+    art10mix11: number
+    art10rou11: number
+    art10fer11: number
+    art10inc11: number
+    naf11art12: number
+    art11act12: number
+    art11hab12: number
+    art11mix12: number
+    art11rou12: number
+    art11fer12: number
+    art11inc12: number
+    naf12art13: number
+    art12act13: number
+    art12hab13: number
+    art12mix13: number
+    art12rou13: number
+    art12fer13: number
+    art12inc13: number
+    naf13art14: number
+    art13act14: number
+    art13hab14: number
+    art13mix14: number
+    art13rou14: number
+    art13fer14: number
+    art13inc14: number
+    naf14art15: number
+    art14act15: number
+    art14hab15: number
+    art14mix15: number
+    art14rou15: number
+    art14fer15: number
+    art14inc15: number
+    naf15art16: number
+    art15act16: number
+    art15hab16: number
+    art15mix16: number
+    art15rou16: number
+    art15fer16: number
+    art15inc16: number
+    naf16art17: number
+    art16act17: number
+    art16hab17: number
+    art16mix17: number
+    art16rou17: number
+    art16fer17: number
+    art16inc17: number
+    naf17art18: number
+    art17act18: number
+    art17hab18: number
+    art17mix18: number
+    art17rou18: number
+    art17fer18: number
+    art17inc18: number
+    naf18art19: number
+    art18act19: number
+    art18hab19: number
+    art18mix19: number
+    art18rou19: number
+    art18fer19: number
+    art18inc19: number
+    naf19art20: number
+    art19act20: number
+    art19hab20: number
+    art19mix20: number
+    art19rou20: number
+    art19fer20: number
+    art19inc20: number
+    naf20art21: number
+    art20act21: number
+    art20hab21: number
+    art20mix21: number
+    art20rou21: number
+    art20fer21: number
+    art20inc21: number
+    naf21art22: number
+    art21act22: number
+    art21hab22: number
+    art21mix22: number
+    art21rou22: number
+    art21fer22: number
+    art21inc22: number
+    naf22art23: number
+    art22act23: number
+    art22hab23: number
+    art22mix23: number
+    art22rou23: number
+    art22fer23: number
+    art22inc23: number
+    naf09art23: number
+    art09act23: number
+    art09hab23: number
+    art09mix23: number
+    art09inc23: number
+    art09rou23: number
+    art09fer23: number
+    artcom0923: number
+    pop14: number
+    pop20: number
+    pop1420: number
+    men14: number
+    men20: number
+    men1420: number
+    emp14: number
+    emp20: number
+    emp1420: number
+    mepart1420: number
+    menhab1420: number
+    artpop1420?: number | null
+    surfcom2023: number
+  }
+
+  export type consommation_espaces_nafUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    naf09art10?: FloatFieldUpdateOperationsInput | number
+    art09act10?: FloatFieldUpdateOperationsInput | number
+    art09hab10?: FloatFieldUpdateOperationsInput | number
+    art09mix10?: FloatFieldUpdateOperationsInput | number
+    art09rou10?: FloatFieldUpdateOperationsInput | number
+    art09fer10?: FloatFieldUpdateOperationsInput | number
+    art09inc10?: FloatFieldUpdateOperationsInput | number
+    naf10art11?: FloatFieldUpdateOperationsInput | number
+    art10act11?: FloatFieldUpdateOperationsInput | number
+    art10hab11?: FloatFieldUpdateOperationsInput | number
+    art10mix11?: FloatFieldUpdateOperationsInput | number
+    art10rou11?: FloatFieldUpdateOperationsInput | number
+    art10fer11?: FloatFieldUpdateOperationsInput | number
+    art10inc11?: FloatFieldUpdateOperationsInput | number
+    naf11art12?: FloatFieldUpdateOperationsInput | number
+    art11act12?: FloatFieldUpdateOperationsInput | number
+    art11hab12?: FloatFieldUpdateOperationsInput | number
+    art11mix12?: FloatFieldUpdateOperationsInput | number
+    art11rou12?: FloatFieldUpdateOperationsInput | number
+    art11fer12?: FloatFieldUpdateOperationsInput | number
+    art11inc12?: FloatFieldUpdateOperationsInput | number
+    naf12art13?: FloatFieldUpdateOperationsInput | number
+    art12act13?: FloatFieldUpdateOperationsInput | number
+    art12hab13?: FloatFieldUpdateOperationsInput | number
+    art12mix13?: FloatFieldUpdateOperationsInput | number
+    art12rou13?: FloatFieldUpdateOperationsInput | number
+    art12fer13?: FloatFieldUpdateOperationsInput | number
+    art12inc13?: FloatFieldUpdateOperationsInput | number
+    naf13art14?: FloatFieldUpdateOperationsInput | number
+    art13act14?: FloatFieldUpdateOperationsInput | number
+    art13hab14?: FloatFieldUpdateOperationsInput | number
+    art13mix14?: FloatFieldUpdateOperationsInput | number
+    art13rou14?: FloatFieldUpdateOperationsInput | number
+    art13fer14?: FloatFieldUpdateOperationsInput | number
+    art13inc14?: FloatFieldUpdateOperationsInput | number
+    naf14art15?: FloatFieldUpdateOperationsInput | number
+    art14act15?: FloatFieldUpdateOperationsInput | number
+    art14hab15?: FloatFieldUpdateOperationsInput | number
+    art14mix15?: FloatFieldUpdateOperationsInput | number
+    art14rou15?: FloatFieldUpdateOperationsInput | number
+    art14fer15?: FloatFieldUpdateOperationsInput | number
+    art14inc15?: FloatFieldUpdateOperationsInput | number
+    naf15art16?: FloatFieldUpdateOperationsInput | number
+    art15act16?: FloatFieldUpdateOperationsInput | number
+    art15hab16?: FloatFieldUpdateOperationsInput | number
+    art15mix16?: FloatFieldUpdateOperationsInput | number
+    art15rou16?: FloatFieldUpdateOperationsInput | number
+    art15fer16?: FloatFieldUpdateOperationsInput | number
+    art15inc16?: FloatFieldUpdateOperationsInput | number
+    naf16art17?: FloatFieldUpdateOperationsInput | number
+    art16act17?: FloatFieldUpdateOperationsInput | number
+    art16hab17?: FloatFieldUpdateOperationsInput | number
+    art16mix17?: FloatFieldUpdateOperationsInput | number
+    art16rou17?: FloatFieldUpdateOperationsInput | number
+    art16fer17?: FloatFieldUpdateOperationsInput | number
+    art16inc17?: FloatFieldUpdateOperationsInput | number
+    naf17art18?: FloatFieldUpdateOperationsInput | number
+    art17act18?: FloatFieldUpdateOperationsInput | number
+    art17hab18?: FloatFieldUpdateOperationsInput | number
+    art17mix18?: FloatFieldUpdateOperationsInput | number
+    art17rou18?: FloatFieldUpdateOperationsInput | number
+    art17fer18?: FloatFieldUpdateOperationsInput | number
+    art17inc18?: FloatFieldUpdateOperationsInput | number
+    naf18art19?: FloatFieldUpdateOperationsInput | number
+    art18act19?: FloatFieldUpdateOperationsInput | number
+    art18hab19?: FloatFieldUpdateOperationsInput | number
+    art18mix19?: FloatFieldUpdateOperationsInput | number
+    art18rou19?: FloatFieldUpdateOperationsInput | number
+    art18fer19?: FloatFieldUpdateOperationsInput | number
+    art18inc19?: FloatFieldUpdateOperationsInput | number
+    naf19art20?: FloatFieldUpdateOperationsInput | number
+    art19act20?: FloatFieldUpdateOperationsInput | number
+    art19hab20?: FloatFieldUpdateOperationsInput | number
+    art19mix20?: FloatFieldUpdateOperationsInput | number
+    art19rou20?: FloatFieldUpdateOperationsInput | number
+    art19fer20?: FloatFieldUpdateOperationsInput | number
+    art19inc20?: FloatFieldUpdateOperationsInput | number
+    naf20art21?: FloatFieldUpdateOperationsInput | number
+    art20act21?: FloatFieldUpdateOperationsInput | number
+    art20hab21?: FloatFieldUpdateOperationsInput | number
+    art20mix21?: FloatFieldUpdateOperationsInput | number
+    art20rou21?: FloatFieldUpdateOperationsInput | number
+    art20fer21?: FloatFieldUpdateOperationsInput | number
+    art20inc21?: FloatFieldUpdateOperationsInput | number
+    naf21art22?: FloatFieldUpdateOperationsInput | number
+    art21act22?: FloatFieldUpdateOperationsInput | number
+    art21hab22?: FloatFieldUpdateOperationsInput | number
+    art21mix22?: FloatFieldUpdateOperationsInput | number
+    art21rou22?: FloatFieldUpdateOperationsInput | number
+    art21fer22?: FloatFieldUpdateOperationsInput | number
+    art21inc22?: FloatFieldUpdateOperationsInput | number
+    naf22art23?: FloatFieldUpdateOperationsInput | number
+    art22act23?: FloatFieldUpdateOperationsInput | number
+    art22hab23?: FloatFieldUpdateOperationsInput | number
+    art22mix23?: FloatFieldUpdateOperationsInput | number
+    art22rou23?: FloatFieldUpdateOperationsInput | number
+    art22fer23?: FloatFieldUpdateOperationsInput | number
+    art22inc23?: FloatFieldUpdateOperationsInput | number
+    naf09art23?: FloatFieldUpdateOperationsInput | number
+    art09act23?: FloatFieldUpdateOperationsInput | number
+    art09hab23?: FloatFieldUpdateOperationsInput | number
+    art09mix23?: FloatFieldUpdateOperationsInput | number
+    art09inc23?: FloatFieldUpdateOperationsInput | number
+    art09rou23?: FloatFieldUpdateOperationsInput | number
+    art09fer23?: FloatFieldUpdateOperationsInput | number
+    artcom0923?: FloatFieldUpdateOperationsInput | number
+    pop14?: FloatFieldUpdateOperationsInput | number
+    pop20?: FloatFieldUpdateOperationsInput | number
+    pop1420?: FloatFieldUpdateOperationsInput | number
+    men14?: FloatFieldUpdateOperationsInput | number
+    men20?: FloatFieldUpdateOperationsInput | number
+    men1420?: FloatFieldUpdateOperationsInput | number
+    emp14?: FloatFieldUpdateOperationsInput | number
+    emp20?: FloatFieldUpdateOperationsInput | number
+    emp1420?: FloatFieldUpdateOperationsInput | number
+    mepart1420?: FloatFieldUpdateOperationsInput | number
+    menhab1420?: FloatFieldUpdateOperationsInput | number
+    artpop1420?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfcom2023?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type consommation_espaces_nafUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: IntFieldUpdateOperationsInput | number
+    naf09art10?: FloatFieldUpdateOperationsInput | number
+    art09act10?: FloatFieldUpdateOperationsInput | number
+    art09hab10?: FloatFieldUpdateOperationsInput | number
+    art09mix10?: FloatFieldUpdateOperationsInput | number
+    art09rou10?: FloatFieldUpdateOperationsInput | number
+    art09fer10?: FloatFieldUpdateOperationsInput | number
+    art09inc10?: FloatFieldUpdateOperationsInput | number
+    naf10art11?: FloatFieldUpdateOperationsInput | number
+    art10act11?: FloatFieldUpdateOperationsInput | number
+    art10hab11?: FloatFieldUpdateOperationsInput | number
+    art10mix11?: FloatFieldUpdateOperationsInput | number
+    art10rou11?: FloatFieldUpdateOperationsInput | number
+    art10fer11?: FloatFieldUpdateOperationsInput | number
+    art10inc11?: FloatFieldUpdateOperationsInput | number
+    naf11art12?: FloatFieldUpdateOperationsInput | number
+    art11act12?: FloatFieldUpdateOperationsInput | number
+    art11hab12?: FloatFieldUpdateOperationsInput | number
+    art11mix12?: FloatFieldUpdateOperationsInput | number
+    art11rou12?: FloatFieldUpdateOperationsInput | number
+    art11fer12?: FloatFieldUpdateOperationsInput | number
+    art11inc12?: FloatFieldUpdateOperationsInput | number
+    naf12art13?: FloatFieldUpdateOperationsInput | number
+    art12act13?: FloatFieldUpdateOperationsInput | number
+    art12hab13?: FloatFieldUpdateOperationsInput | number
+    art12mix13?: FloatFieldUpdateOperationsInput | number
+    art12rou13?: FloatFieldUpdateOperationsInput | number
+    art12fer13?: FloatFieldUpdateOperationsInput | number
+    art12inc13?: FloatFieldUpdateOperationsInput | number
+    naf13art14?: FloatFieldUpdateOperationsInput | number
+    art13act14?: FloatFieldUpdateOperationsInput | number
+    art13hab14?: FloatFieldUpdateOperationsInput | number
+    art13mix14?: FloatFieldUpdateOperationsInput | number
+    art13rou14?: FloatFieldUpdateOperationsInput | number
+    art13fer14?: FloatFieldUpdateOperationsInput | number
+    art13inc14?: FloatFieldUpdateOperationsInput | number
+    naf14art15?: FloatFieldUpdateOperationsInput | number
+    art14act15?: FloatFieldUpdateOperationsInput | number
+    art14hab15?: FloatFieldUpdateOperationsInput | number
+    art14mix15?: FloatFieldUpdateOperationsInput | number
+    art14rou15?: FloatFieldUpdateOperationsInput | number
+    art14fer15?: FloatFieldUpdateOperationsInput | number
+    art14inc15?: FloatFieldUpdateOperationsInput | number
+    naf15art16?: FloatFieldUpdateOperationsInput | number
+    art15act16?: FloatFieldUpdateOperationsInput | number
+    art15hab16?: FloatFieldUpdateOperationsInput | number
+    art15mix16?: FloatFieldUpdateOperationsInput | number
+    art15rou16?: FloatFieldUpdateOperationsInput | number
+    art15fer16?: FloatFieldUpdateOperationsInput | number
+    art15inc16?: FloatFieldUpdateOperationsInput | number
+    naf16art17?: FloatFieldUpdateOperationsInput | number
+    art16act17?: FloatFieldUpdateOperationsInput | number
+    art16hab17?: FloatFieldUpdateOperationsInput | number
+    art16mix17?: FloatFieldUpdateOperationsInput | number
+    art16rou17?: FloatFieldUpdateOperationsInput | number
+    art16fer17?: FloatFieldUpdateOperationsInput | number
+    art16inc17?: FloatFieldUpdateOperationsInput | number
+    naf17art18?: FloatFieldUpdateOperationsInput | number
+    art17act18?: FloatFieldUpdateOperationsInput | number
+    art17hab18?: FloatFieldUpdateOperationsInput | number
+    art17mix18?: FloatFieldUpdateOperationsInput | number
+    art17rou18?: FloatFieldUpdateOperationsInput | number
+    art17fer18?: FloatFieldUpdateOperationsInput | number
+    art17inc18?: FloatFieldUpdateOperationsInput | number
+    naf18art19?: FloatFieldUpdateOperationsInput | number
+    art18act19?: FloatFieldUpdateOperationsInput | number
+    art18hab19?: FloatFieldUpdateOperationsInput | number
+    art18mix19?: FloatFieldUpdateOperationsInput | number
+    art18rou19?: FloatFieldUpdateOperationsInput | number
+    art18fer19?: FloatFieldUpdateOperationsInput | number
+    art18inc19?: FloatFieldUpdateOperationsInput | number
+    naf19art20?: FloatFieldUpdateOperationsInput | number
+    art19act20?: FloatFieldUpdateOperationsInput | number
+    art19hab20?: FloatFieldUpdateOperationsInput | number
+    art19mix20?: FloatFieldUpdateOperationsInput | number
+    art19rou20?: FloatFieldUpdateOperationsInput | number
+    art19fer20?: FloatFieldUpdateOperationsInput | number
+    art19inc20?: FloatFieldUpdateOperationsInput | number
+    naf20art21?: FloatFieldUpdateOperationsInput | number
+    art20act21?: FloatFieldUpdateOperationsInput | number
+    art20hab21?: FloatFieldUpdateOperationsInput | number
+    art20mix21?: FloatFieldUpdateOperationsInput | number
+    art20rou21?: FloatFieldUpdateOperationsInput | number
+    art20fer21?: FloatFieldUpdateOperationsInput | number
+    art20inc21?: FloatFieldUpdateOperationsInput | number
+    naf21art22?: FloatFieldUpdateOperationsInput | number
+    art21act22?: FloatFieldUpdateOperationsInput | number
+    art21hab22?: FloatFieldUpdateOperationsInput | number
+    art21mix22?: FloatFieldUpdateOperationsInput | number
+    art21rou22?: FloatFieldUpdateOperationsInput | number
+    art21fer22?: FloatFieldUpdateOperationsInput | number
+    art21inc22?: FloatFieldUpdateOperationsInput | number
+    naf22art23?: FloatFieldUpdateOperationsInput | number
+    art22act23?: FloatFieldUpdateOperationsInput | number
+    art22hab23?: FloatFieldUpdateOperationsInput | number
+    art22mix23?: FloatFieldUpdateOperationsInput | number
+    art22rou23?: FloatFieldUpdateOperationsInput | number
+    art22fer23?: FloatFieldUpdateOperationsInput | number
+    art22inc23?: FloatFieldUpdateOperationsInput | number
+    naf09art23?: FloatFieldUpdateOperationsInput | number
+    art09act23?: FloatFieldUpdateOperationsInput | number
+    art09hab23?: FloatFieldUpdateOperationsInput | number
+    art09mix23?: FloatFieldUpdateOperationsInput | number
+    art09inc23?: FloatFieldUpdateOperationsInput | number
+    art09rou23?: FloatFieldUpdateOperationsInput | number
+    art09fer23?: FloatFieldUpdateOperationsInput | number
+    artcom0923?: FloatFieldUpdateOperationsInput | number
+    pop14?: FloatFieldUpdateOperationsInput | number
+    pop20?: FloatFieldUpdateOperationsInput | number
+    pop1420?: FloatFieldUpdateOperationsInput | number
+    men14?: FloatFieldUpdateOperationsInput | number
+    men20?: FloatFieldUpdateOperationsInput | number
+    men1420?: FloatFieldUpdateOperationsInput | number
+    emp14?: FloatFieldUpdateOperationsInput | number
+    emp20?: FloatFieldUpdateOperationsInput | number
+    emp1420?: FloatFieldUpdateOperationsInput | number
+    mepart1420?: FloatFieldUpdateOperationsInput | number
+    menhab1420?: FloatFieldUpdateOperationsInput | number
+    artpop1420?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfcom2023?: FloatFieldUpdateOperationsInput | number
+  }
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -17401,54 +21935,6 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type communesCountOrderByAggregateInput = {
-    pk?: SortOrder
-    code_commune?: SortOrder
-    libelle_commune?: SortOrder
-    epci?: SortOrder
-    libelle_epci?: SortOrder
-    libgeo?: SortOrder
-    coordinates?: SortOrder
-    densite_bati?: SortOrder
-    precarite_logement?: SortOrder
-  }
-
-  export type communesAvgOrderByAggregateInput = {
-    pk?: SortOrder
-    densite_bati?: SortOrder
-    precarite_logement?: SortOrder
-  }
-
-  export type communesMaxOrderByAggregateInput = {
-    pk?: SortOrder
-    code_commune?: SortOrder
-    libelle_commune?: SortOrder
-    epci?: SortOrder
-    libelle_epci?: SortOrder
-    libgeo?: SortOrder
-    coordinates?: SortOrder
-    densite_bati?: SortOrder
-    precarite_logement?: SortOrder
-  }
-
-  export type communesMinOrderByAggregateInput = {
-    pk?: SortOrder
-    code_commune?: SortOrder
-    libelle_commune?: SortOrder
-    epci?: SortOrder
-    libelle_epci?: SortOrder
-    libgeo?: SortOrder
-    coordinates?: SortOrder
-    densite_bati?: SortOrder
-    precarite_logement?: SortOrder
-  }
-
-  export type communesSumOrderByAggregateInput = {
-    pk?: SortOrder
-    densite_bati?: SortOrder
-    precarite_logement?: SortOrder
-  }
-
   export type collectivites_searchbarCountOrderByAggregateInput = {
     index?: SortOrder
     code_commune?: SortOrder
@@ -17583,17 +22069,6 @@ export namespace Prisma {
   export type gestion_risquesSumOrderByAggregateInput = {
     index?: SortOrder
     region?: SortOrder
-  }
-
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type communes_dromCountOrderByAggregateInput = {
@@ -17757,6 +22232,17 @@ export namespace Prisma {
     region?: SortOrder
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type agriculture_bioCountOrderByAggregateInput = {
     index?: SortOrder
     epci?: SortOrder
@@ -17827,6 +22313,22 @@ export namespace Prisma {
     nombre_2021?: SortOrder
     nombre_2020?: SortOrder
     nombre_2019?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type erosion_cotiereCountOrderByAggregateInput = {
@@ -17987,6 +22489,675 @@ export namespace Prisma {
   export type surfaces_protegeesSumOrderByAggregateInput = {
     index?: SortOrder
     region?: SortOrder
+  }
+
+  export type spatial_ref_sysCountOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_name?: SortOrder
+    auth_srid?: SortOrder
+    srtext?: SortOrder
+    proj4text?: SortOrder
+  }
+
+  export type spatial_ref_sysAvgOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_srid?: SortOrder
+  }
+
+  export type spatial_ref_sysMaxOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_name?: SortOrder
+    auth_srid?: SortOrder
+    srtext?: SortOrder
+    proj4text?: SortOrder
+  }
+
+  export type spatial_ref_sysMinOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_name?: SortOrder
+    auth_srid?: SortOrder
+    srtext?: SortOrder
+    proj4text?: SortOrder
+  }
+
+  export type spatial_ref_sysSumOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_srid?: SortOrder
+  }
+
+  export type consommation_espaces_nafCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    naf09art10?: SortOrder
+    art09act10?: SortOrder
+    art09hab10?: SortOrder
+    art09mix10?: SortOrder
+    art09rou10?: SortOrder
+    art09fer10?: SortOrder
+    art09inc10?: SortOrder
+    naf10art11?: SortOrder
+    art10act11?: SortOrder
+    art10hab11?: SortOrder
+    art10mix11?: SortOrder
+    art10rou11?: SortOrder
+    art10fer11?: SortOrder
+    art10inc11?: SortOrder
+    naf11art12?: SortOrder
+    art11act12?: SortOrder
+    art11hab12?: SortOrder
+    art11mix12?: SortOrder
+    art11rou12?: SortOrder
+    art11fer12?: SortOrder
+    art11inc12?: SortOrder
+    naf12art13?: SortOrder
+    art12act13?: SortOrder
+    art12hab13?: SortOrder
+    art12mix13?: SortOrder
+    art12rou13?: SortOrder
+    art12fer13?: SortOrder
+    art12inc13?: SortOrder
+    naf13art14?: SortOrder
+    art13act14?: SortOrder
+    art13hab14?: SortOrder
+    art13mix14?: SortOrder
+    art13rou14?: SortOrder
+    art13fer14?: SortOrder
+    art13inc14?: SortOrder
+    naf14art15?: SortOrder
+    art14act15?: SortOrder
+    art14hab15?: SortOrder
+    art14mix15?: SortOrder
+    art14rou15?: SortOrder
+    art14fer15?: SortOrder
+    art14inc15?: SortOrder
+    naf15art16?: SortOrder
+    art15act16?: SortOrder
+    art15hab16?: SortOrder
+    art15mix16?: SortOrder
+    art15rou16?: SortOrder
+    art15fer16?: SortOrder
+    art15inc16?: SortOrder
+    naf16art17?: SortOrder
+    art16act17?: SortOrder
+    art16hab17?: SortOrder
+    art16mix17?: SortOrder
+    art16rou17?: SortOrder
+    art16fer17?: SortOrder
+    art16inc17?: SortOrder
+    naf17art18?: SortOrder
+    art17act18?: SortOrder
+    art17hab18?: SortOrder
+    art17mix18?: SortOrder
+    art17rou18?: SortOrder
+    art17fer18?: SortOrder
+    art17inc18?: SortOrder
+    naf18art19?: SortOrder
+    art18act19?: SortOrder
+    art18hab19?: SortOrder
+    art18mix19?: SortOrder
+    art18rou19?: SortOrder
+    art18fer19?: SortOrder
+    art18inc19?: SortOrder
+    naf19art20?: SortOrder
+    art19act20?: SortOrder
+    art19hab20?: SortOrder
+    art19mix20?: SortOrder
+    art19rou20?: SortOrder
+    art19fer20?: SortOrder
+    art19inc20?: SortOrder
+    naf20art21?: SortOrder
+    art20act21?: SortOrder
+    art20hab21?: SortOrder
+    art20mix21?: SortOrder
+    art20rou21?: SortOrder
+    art20fer21?: SortOrder
+    art20inc21?: SortOrder
+    naf21art22?: SortOrder
+    art21act22?: SortOrder
+    art21hab22?: SortOrder
+    art21mix22?: SortOrder
+    art21rou22?: SortOrder
+    art21fer22?: SortOrder
+    art21inc22?: SortOrder
+    naf22art23?: SortOrder
+    art22act23?: SortOrder
+    art22hab23?: SortOrder
+    art22mix23?: SortOrder
+    art22rou23?: SortOrder
+    art22fer23?: SortOrder
+    art22inc23?: SortOrder
+    naf09art23?: SortOrder
+    art09act23?: SortOrder
+    art09hab23?: SortOrder
+    art09mix23?: SortOrder
+    art09inc23?: SortOrder
+    art09rou23?: SortOrder
+    art09fer23?: SortOrder
+    artcom0923?: SortOrder
+    pop14?: SortOrder
+    pop20?: SortOrder
+    pop1420?: SortOrder
+    men14?: SortOrder
+    men20?: SortOrder
+    men1420?: SortOrder
+    emp14?: SortOrder
+    emp20?: SortOrder
+    emp1420?: SortOrder
+    mepart1420?: SortOrder
+    menhab1420?: SortOrder
+    artpop1420?: SortOrder
+    surfcom2023?: SortOrder
+  }
+
+  export type consommation_espaces_nafAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    naf09art10?: SortOrder
+    art09act10?: SortOrder
+    art09hab10?: SortOrder
+    art09mix10?: SortOrder
+    art09rou10?: SortOrder
+    art09fer10?: SortOrder
+    art09inc10?: SortOrder
+    naf10art11?: SortOrder
+    art10act11?: SortOrder
+    art10hab11?: SortOrder
+    art10mix11?: SortOrder
+    art10rou11?: SortOrder
+    art10fer11?: SortOrder
+    art10inc11?: SortOrder
+    naf11art12?: SortOrder
+    art11act12?: SortOrder
+    art11hab12?: SortOrder
+    art11mix12?: SortOrder
+    art11rou12?: SortOrder
+    art11fer12?: SortOrder
+    art11inc12?: SortOrder
+    naf12art13?: SortOrder
+    art12act13?: SortOrder
+    art12hab13?: SortOrder
+    art12mix13?: SortOrder
+    art12rou13?: SortOrder
+    art12fer13?: SortOrder
+    art12inc13?: SortOrder
+    naf13art14?: SortOrder
+    art13act14?: SortOrder
+    art13hab14?: SortOrder
+    art13mix14?: SortOrder
+    art13rou14?: SortOrder
+    art13fer14?: SortOrder
+    art13inc14?: SortOrder
+    naf14art15?: SortOrder
+    art14act15?: SortOrder
+    art14hab15?: SortOrder
+    art14mix15?: SortOrder
+    art14rou15?: SortOrder
+    art14fer15?: SortOrder
+    art14inc15?: SortOrder
+    naf15art16?: SortOrder
+    art15act16?: SortOrder
+    art15hab16?: SortOrder
+    art15mix16?: SortOrder
+    art15rou16?: SortOrder
+    art15fer16?: SortOrder
+    art15inc16?: SortOrder
+    naf16art17?: SortOrder
+    art16act17?: SortOrder
+    art16hab17?: SortOrder
+    art16mix17?: SortOrder
+    art16rou17?: SortOrder
+    art16fer17?: SortOrder
+    art16inc17?: SortOrder
+    naf17art18?: SortOrder
+    art17act18?: SortOrder
+    art17hab18?: SortOrder
+    art17mix18?: SortOrder
+    art17rou18?: SortOrder
+    art17fer18?: SortOrder
+    art17inc18?: SortOrder
+    naf18art19?: SortOrder
+    art18act19?: SortOrder
+    art18hab19?: SortOrder
+    art18mix19?: SortOrder
+    art18rou19?: SortOrder
+    art18fer19?: SortOrder
+    art18inc19?: SortOrder
+    naf19art20?: SortOrder
+    art19act20?: SortOrder
+    art19hab20?: SortOrder
+    art19mix20?: SortOrder
+    art19rou20?: SortOrder
+    art19fer20?: SortOrder
+    art19inc20?: SortOrder
+    naf20art21?: SortOrder
+    art20act21?: SortOrder
+    art20hab21?: SortOrder
+    art20mix21?: SortOrder
+    art20rou21?: SortOrder
+    art20fer21?: SortOrder
+    art20inc21?: SortOrder
+    naf21art22?: SortOrder
+    art21act22?: SortOrder
+    art21hab22?: SortOrder
+    art21mix22?: SortOrder
+    art21rou22?: SortOrder
+    art21fer22?: SortOrder
+    art21inc22?: SortOrder
+    naf22art23?: SortOrder
+    art22act23?: SortOrder
+    art22hab23?: SortOrder
+    art22mix23?: SortOrder
+    art22rou23?: SortOrder
+    art22fer23?: SortOrder
+    art22inc23?: SortOrder
+    naf09art23?: SortOrder
+    art09act23?: SortOrder
+    art09hab23?: SortOrder
+    art09mix23?: SortOrder
+    art09inc23?: SortOrder
+    art09rou23?: SortOrder
+    art09fer23?: SortOrder
+    artcom0923?: SortOrder
+    pop14?: SortOrder
+    pop20?: SortOrder
+    pop1420?: SortOrder
+    men14?: SortOrder
+    men20?: SortOrder
+    men1420?: SortOrder
+    emp14?: SortOrder
+    emp20?: SortOrder
+    emp1420?: SortOrder
+    mepart1420?: SortOrder
+    menhab1420?: SortOrder
+    artpop1420?: SortOrder
+    surfcom2023?: SortOrder
+  }
+
+  export type consommation_espaces_nafMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    naf09art10?: SortOrder
+    art09act10?: SortOrder
+    art09hab10?: SortOrder
+    art09mix10?: SortOrder
+    art09rou10?: SortOrder
+    art09fer10?: SortOrder
+    art09inc10?: SortOrder
+    naf10art11?: SortOrder
+    art10act11?: SortOrder
+    art10hab11?: SortOrder
+    art10mix11?: SortOrder
+    art10rou11?: SortOrder
+    art10fer11?: SortOrder
+    art10inc11?: SortOrder
+    naf11art12?: SortOrder
+    art11act12?: SortOrder
+    art11hab12?: SortOrder
+    art11mix12?: SortOrder
+    art11rou12?: SortOrder
+    art11fer12?: SortOrder
+    art11inc12?: SortOrder
+    naf12art13?: SortOrder
+    art12act13?: SortOrder
+    art12hab13?: SortOrder
+    art12mix13?: SortOrder
+    art12rou13?: SortOrder
+    art12fer13?: SortOrder
+    art12inc13?: SortOrder
+    naf13art14?: SortOrder
+    art13act14?: SortOrder
+    art13hab14?: SortOrder
+    art13mix14?: SortOrder
+    art13rou14?: SortOrder
+    art13fer14?: SortOrder
+    art13inc14?: SortOrder
+    naf14art15?: SortOrder
+    art14act15?: SortOrder
+    art14hab15?: SortOrder
+    art14mix15?: SortOrder
+    art14rou15?: SortOrder
+    art14fer15?: SortOrder
+    art14inc15?: SortOrder
+    naf15art16?: SortOrder
+    art15act16?: SortOrder
+    art15hab16?: SortOrder
+    art15mix16?: SortOrder
+    art15rou16?: SortOrder
+    art15fer16?: SortOrder
+    art15inc16?: SortOrder
+    naf16art17?: SortOrder
+    art16act17?: SortOrder
+    art16hab17?: SortOrder
+    art16mix17?: SortOrder
+    art16rou17?: SortOrder
+    art16fer17?: SortOrder
+    art16inc17?: SortOrder
+    naf17art18?: SortOrder
+    art17act18?: SortOrder
+    art17hab18?: SortOrder
+    art17mix18?: SortOrder
+    art17rou18?: SortOrder
+    art17fer18?: SortOrder
+    art17inc18?: SortOrder
+    naf18art19?: SortOrder
+    art18act19?: SortOrder
+    art18hab19?: SortOrder
+    art18mix19?: SortOrder
+    art18rou19?: SortOrder
+    art18fer19?: SortOrder
+    art18inc19?: SortOrder
+    naf19art20?: SortOrder
+    art19act20?: SortOrder
+    art19hab20?: SortOrder
+    art19mix20?: SortOrder
+    art19rou20?: SortOrder
+    art19fer20?: SortOrder
+    art19inc20?: SortOrder
+    naf20art21?: SortOrder
+    art20act21?: SortOrder
+    art20hab21?: SortOrder
+    art20mix21?: SortOrder
+    art20rou21?: SortOrder
+    art20fer21?: SortOrder
+    art20inc21?: SortOrder
+    naf21art22?: SortOrder
+    art21act22?: SortOrder
+    art21hab22?: SortOrder
+    art21mix22?: SortOrder
+    art21rou22?: SortOrder
+    art21fer22?: SortOrder
+    art21inc22?: SortOrder
+    naf22art23?: SortOrder
+    art22act23?: SortOrder
+    art22hab23?: SortOrder
+    art22mix23?: SortOrder
+    art22rou23?: SortOrder
+    art22fer23?: SortOrder
+    art22inc23?: SortOrder
+    naf09art23?: SortOrder
+    art09act23?: SortOrder
+    art09hab23?: SortOrder
+    art09mix23?: SortOrder
+    art09inc23?: SortOrder
+    art09rou23?: SortOrder
+    art09fer23?: SortOrder
+    artcom0923?: SortOrder
+    pop14?: SortOrder
+    pop20?: SortOrder
+    pop1420?: SortOrder
+    men14?: SortOrder
+    men20?: SortOrder
+    men1420?: SortOrder
+    emp14?: SortOrder
+    emp20?: SortOrder
+    emp1420?: SortOrder
+    mepart1420?: SortOrder
+    menhab1420?: SortOrder
+    artpop1420?: SortOrder
+    surfcom2023?: SortOrder
+  }
+
+  export type consommation_espaces_nafMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    naf09art10?: SortOrder
+    art09act10?: SortOrder
+    art09hab10?: SortOrder
+    art09mix10?: SortOrder
+    art09rou10?: SortOrder
+    art09fer10?: SortOrder
+    art09inc10?: SortOrder
+    naf10art11?: SortOrder
+    art10act11?: SortOrder
+    art10hab11?: SortOrder
+    art10mix11?: SortOrder
+    art10rou11?: SortOrder
+    art10fer11?: SortOrder
+    art10inc11?: SortOrder
+    naf11art12?: SortOrder
+    art11act12?: SortOrder
+    art11hab12?: SortOrder
+    art11mix12?: SortOrder
+    art11rou12?: SortOrder
+    art11fer12?: SortOrder
+    art11inc12?: SortOrder
+    naf12art13?: SortOrder
+    art12act13?: SortOrder
+    art12hab13?: SortOrder
+    art12mix13?: SortOrder
+    art12rou13?: SortOrder
+    art12fer13?: SortOrder
+    art12inc13?: SortOrder
+    naf13art14?: SortOrder
+    art13act14?: SortOrder
+    art13hab14?: SortOrder
+    art13mix14?: SortOrder
+    art13rou14?: SortOrder
+    art13fer14?: SortOrder
+    art13inc14?: SortOrder
+    naf14art15?: SortOrder
+    art14act15?: SortOrder
+    art14hab15?: SortOrder
+    art14mix15?: SortOrder
+    art14rou15?: SortOrder
+    art14fer15?: SortOrder
+    art14inc15?: SortOrder
+    naf15art16?: SortOrder
+    art15act16?: SortOrder
+    art15hab16?: SortOrder
+    art15mix16?: SortOrder
+    art15rou16?: SortOrder
+    art15fer16?: SortOrder
+    art15inc16?: SortOrder
+    naf16art17?: SortOrder
+    art16act17?: SortOrder
+    art16hab17?: SortOrder
+    art16mix17?: SortOrder
+    art16rou17?: SortOrder
+    art16fer17?: SortOrder
+    art16inc17?: SortOrder
+    naf17art18?: SortOrder
+    art17act18?: SortOrder
+    art17hab18?: SortOrder
+    art17mix18?: SortOrder
+    art17rou18?: SortOrder
+    art17fer18?: SortOrder
+    art17inc18?: SortOrder
+    naf18art19?: SortOrder
+    art18act19?: SortOrder
+    art18hab19?: SortOrder
+    art18mix19?: SortOrder
+    art18rou19?: SortOrder
+    art18fer19?: SortOrder
+    art18inc19?: SortOrder
+    naf19art20?: SortOrder
+    art19act20?: SortOrder
+    art19hab20?: SortOrder
+    art19mix20?: SortOrder
+    art19rou20?: SortOrder
+    art19fer20?: SortOrder
+    art19inc20?: SortOrder
+    naf20art21?: SortOrder
+    art20act21?: SortOrder
+    art20hab21?: SortOrder
+    art20mix21?: SortOrder
+    art20rou21?: SortOrder
+    art20fer21?: SortOrder
+    art20inc21?: SortOrder
+    naf21art22?: SortOrder
+    art21act22?: SortOrder
+    art21hab22?: SortOrder
+    art21mix22?: SortOrder
+    art21rou22?: SortOrder
+    art21fer22?: SortOrder
+    art21inc22?: SortOrder
+    naf22art23?: SortOrder
+    art22act23?: SortOrder
+    art22hab23?: SortOrder
+    art22mix23?: SortOrder
+    art22rou23?: SortOrder
+    art22fer23?: SortOrder
+    art22inc23?: SortOrder
+    naf09art23?: SortOrder
+    art09act23?: SortOrder
+    art09hab23?: SortOrder
+    art09mix23?: SortOrder
+    art09inc23?: SortOrder
+    art09rou23?: SortOrder
+    art09fer23?: SortOrder
+    artcom0923?: SortOrder
+    pop14?: SortOrder
+    pop20?: SortOrder
+    pop1420?: SortOrder
+    men14?: SortOrder
+    men20?: SortOrder
+    men1420?: SortOrder
+    emp14?: SortOrder
+    emp20?: SortOrder
+    emp1420?: SortOrder
+    mepart1420?: SortOrder
+    menhab1420?: SortOrder
+    artpop1420?: SortOrder
+    surfcom2023?: SortOrder
+  }
+
+  export type consommation_espaces_nafSumOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    naf09art10?: SortOrder
+    art09act10?: SortOrder
+    art09hab10?: SortOrder
+    art09mix10?: SortOrder
+    art09rou10?: SortOrder
+    art09fer10?: SortOrder
+    art09inc10?: SortOrder
+    naf10art11?: SortOrder
+    art10act11?: SortOrder
+    art10hab11?: SortOrder
+    art10mix11?: SortOrder
+    art10rou11?: SortOrder
+    art10fer11?: SortOrder
+    art10inc11?: SortOrder
+    naf11art12?: SortOrder
+    art11act12?: SortOrder
+    art11hab12?: SortOrder
+    art11mix12?: SortOrder
+    art11rou12?: SortOrder
+    art11fer12?: SortOrder
+    art11inc12?: SortOrder
+    naf12art13?: SortOrder
+    art12act13?: SortOrder
+    art12hab13?: SortOrder
+    art12mix13?: SortOrder
+    art12rou13?: SortOrder
+    art12fer13?: SortOrder
+    art12inc13?: SortOrder
+    naf13art14?: SortOrder
+    art13act14?: SortOrder
+    art13hab14?: SortOrder
+    art13mix14?: SortOrder
+    art13rou14?: SortOrder
+    art13fer14?: SortOrder
+    art13inc14?: SortOrder
+    naf14art15?: SortOrder
+    art14act15?: SortOrder
+    art14hab15?: SortOrder
+    art14mix15?: SortOrder
+    art14rou15?: SortOrder
+    art14fer15?: SortOrder
+    art14inc15?: SortOrder
+    naf15art16?: SortOrder
+    art15act16?: SortOrder
+    art15hab16?: SortOrder
+    art15mix16?: SortOrder
+    art15rou16?: SortOrder
+    art15fer16?: SortOrder
+    art15inc16?: SortOrder
+    naf16art17?: SortOrder
+    art16act17?: SortOrder
+    art16hab17?: SortOrder
+    art16mix17?: SortOrder
+    art16rou17?: SortOrder
+    art16fer17?: SortOrder
+    art16inc17?: SortOrder
+    naf17art18?: SortOrder
+    art17act18?: SortOrder
+    art17hab18?: SortOrder
+    art17mix18?: SortOrder
+    art17rou18?: SortOrder
+    art17fer18?: SortOrder
+    art17inc18?: SortOrder
+    naf18art19?: SortOrder
+    art18act19?: SortOrder
+    art18hab19?: SortOrder
+    art18mix19?: SortOrder
+    art18rou19?: SortOrder
+    art18fer19?: SortOrder
+    art18inc19?: SortOrder
+    naf19art20?: SortOrder
+    art19act20?: SortOrder
+    art19hab20?: SortOrder
+    art19mix20?: SortOrder
+    art19rou20?: SortOrder
+    art19fer20?: SortOrder
+    art19inc20?: SortOrder
+    naf20art21?: SortOrder
+    art20act21?: SortOrder
+    art20hab21?: SortOrder
+    art20mix21?: SortOrder
+    art20rou21?: SortOrder
+    art20fer21?: SortOrder
+    art20inc21?: SortOrder
+    naf21art22?: SortOrder
+    art21act22?: SortOrder
+    art21hab22?: SortOrder
+    art21mix22?: SortOrder
+    art21rou22?: SortOrder
+    art21fer22?: SortOrder
+    art21inc22?: SortOrder
+    naf22art23?: SortOrder
+    art22act23?: SortOrder
+    art22hab23?: SortOrder
+    art22mix23?: SortOrder
+    art22rou23?: SortOrder
+    art22fer23?: SortOrder
+    art22inc23?: SortOrder
+    naf09art23?: SortOrder
+    art09act23?: SortOrder
+    art09hab23?: SortOrder
+    art09mix23?: SortOrder
+    art09inc23?: SortOrder
+    art09rou23?: SortOrder
+    art09fer23?: SortOrder
+    artcom0923?: SortOrder
+    pop14?: SortOrder
+    pop20?: SortOrder
+    pop1420?: SortOrder
+    men14?: SortOrder
+    men20?: SortOrder
+    men1420?: SortOrder
+    emp14?: SortOrder
+    emp20?: SortOrder
+    emp1420?: SortOrder
+    mepart1420?: SortOrder
+    menhab1420?: SortOrder
+    artpop1420?: SortOrder
+    surfcom2023?: SortOrder
   }
 
   export type BigIntFieldUpdateOperationsInput = {
@@ -18248,10 +23419,6 @@ export namespace Prisma {
      */
     export type clc_epciArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = clc_epciDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use communesDefaultArgs instead
-     */
-    export type communesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = communesDefaultArgs<ExtArgs>
-    /**
      * @deprecated Use collectivites_searchbarDefaultArgs instead
      */
     export type collectivites_searchbarArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = collectivites_searchbarDefaultArgs<ExtArgs>
@@ -18287,6 +23454,14 @@ export namespace Prisma {
      * @deprecated Use surfaces_protegeesDefaultArgs instead
      */
     export type surfaces_protegeesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = surfaces_protegeesDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use spatial_ref_sysDefaultArgs instead
+     */
+    export type spatial_ref_sysArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = spatial_ref_sysDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use consommation_espaces_nafDefaultArgs instead
+     */
+    export type consommation_espaces_nafArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = consommation_espaces_nafDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
