@@ -18,11 +18,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 5.20.0
- * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
+ * Query Engine version: 5dbef10bdbfb579e07d35cc85fb1518d357cb99e
  */
 Prisma.prismaVersion = {
   client: "5.20.0",
-  engine: "605197351a3c8bdd595af2d2a9bc3025bca48ea2"
+  engine: "5dbef10bdbfb579e07d35cc85fb1518d357cb99e"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -188,18 +188,6 @@ exports.Prisma.Clc_epciScalarFieldEnum = {
   epci_code: 'epci_code'
 };
 
-exports.Prisma.CommunesScalarFieldEnum = {
-  pk: 'pk',
-  code_commune: 'code_commune',
-  libelle_commune: 'libelle_commune',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  libgeo: 'libgeo',
-  coordinates: 'coordinates',
-  densite_bati: 'densite_bati',
-  precarite_logement: 'precarite_logement'
-};
-
 exports.Prisma.Collectivites_searchbarScalarFieldEnum = {
   index: 'index',
   code_commune: 'code_commune',
@@ -339,6 +327,135 @@ exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
   proj4text: 'proj4text'
 };
 
+exports.Prisma.Consommation_espaces_nafScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  region: 'region',
+  naf09art10: 'naf09art10',
+  art09act10: 'art09act10',
+  art09hab10: 'art09hab10',
+  art09mix10: 'art09mix10',
+  art09rou10: 'art09rou10',
+  art09fer10: 'art09fer10',
+  art09inc10: 'art09inc10',
+  naf10art11: 'naf10art11',
+  art10act11: 'art10act11',
+  art10hab11: 'art10hab11',
+  art10mix11: 'art10mix11',
+  art10rou11: 'art10rou11',
+  art10fer11: 'art10fer11',
+  art10inc11: 'art10inc11',
+  naf11art12: 'naf11art12',
+  art11act12: 'art11act12',
+  art11hab12: 'art11hab12',
+  art11mix12: 'art11mix12',
+  art11rou12: 'art11rou12',
+  art11fer12: 'art11fer12',
+  art11inc12: 'art11inc12',
+  naf12art13: 'naf12art13',
+  art12act13: 'art12act13',
+  art12hab13: 'art12hab13',
+  art12mix13: 'art12mix13',
+  art12rou13: 'art12rou13',
+  art12fer13: 'art12fer13',
+  art12inc13: 'art12inc13',
+  naf13art14: 'naf13art14',
+  art13act14: 'art13act14',
+  art13hab14: 'art13hab14',
+  art13mix14: 'art13mix14',
+  art13rou14: 'art13rou14',
+  art13fer14: 'art13fer14',
+  art13inc14: 'art13inc14',
+  naf14art15: 'naf14art15',
+  art14act15: 'art14act15',
+  art14hab15: 'art14hab15',
+  art14mix15: 'art14mix15',
+  art14rou15: 'art14rou15',
+  art14fer15: 'art14fer15',
+  art14inc15: 'art14inc15',
+  naf15art16: 'naf15art16',
+  art15act16: 'art15act16',
+  art15hab16: 'art15hab16',
+  art15mix16: 'art15mix16',
+  art15rou16: 'art15rou16',
+  art15fer16: 'art15fer16',
+  art15inc16: 'art15inc16',
+  naf16art17: 'naf16art17',
+  art16act17: 'art16act17',
+  art16hab17: 'art16hab17',
+  art16mix17: 'art16mix17',
+  art16rou17: 'art16rou17',
+  art16fer17: 'art16fer17',
+  art16inc17: 'art16inc17',
+  naf17art18: 'naf17art18',
+  art17act18: 'art17act18',
+  art17hab18: 'art17hab18',
+  art17mix18: 'art17mix18',
+  art17rou18: 'art17rou18',
+  art17fer18: 'art17fer18',
+  art17inc18: 'art17inc18',
+  naf18art19: 'naf18art19',
+  art18act19: 'art18act19',
+  art18hab19: 'art18hab19',
+  art18mix19: 'art18mix19',
+  art18rou19: 'art18rou19',
+  art18fer19: 'art18fer19',
+  art18inc19: 'art18inc19',
+  naf19art20: 'naf19art20',
+  art19act20: 'art19act20',
+  art19hab20: 'art19hab20',
+  art19mix20: 'art19mix20',
+  art19rou20: 'art19rou20',
+  art19fer20: 'art19fer20',
+  art19inc20: 'art19inc20',
+  naf20art21: 'naf20art21',
+  art20act21: 'art20act21',
+  art20hab21: 'art20hab21',
+  art20mix21: 'art20mix21',
+  art20rou21: 'art20rou21',
+  art20fer21: 'art20fer21',
+  art20inc21: 'art20inc21',
+  naf21art22: 'naf21art22',
+  art21act22: 'art21act22',
+  art21hab22: 'art21hab22',
+  art21mix22: 'art21mix22',
+  art21rou22: 'art21rou22',
+  art21fer22: 'art21fer22',
+  art21inc22: 'art21inc22',
+  naf22art23: 'naf22art23',
+  art22act23: 'art22act23',
+  art22hab23: 'art22hab23',
+  art22mix23: 'art22mix23',
+  art22rou23: 'art22rou23',
+  art22fer23: 'art22fer23',
+  art22inc23: 'art22inc23',
+  naf09art23: 'naf09art23',
+  art09act23: 'art09act23',
+  art09hab23: 'art09hab23',
+  art09mix23: 'art09mix23',
+  art09inc23: 'art09inc23',
+  art09rou23: 'art09rou23',
+  art09fer23: 'art09fer23',
+  artcom0923: 'artcom0923',
+  pop14: 'pop14',
+  pop20: 'pop20',
+  pop1420: 'pop1420',
+  men14: 'men14',
+  men20: 'men20',
+  men1420: 'men1420',
+  emp14: 'emp14',
+  emp20: 'emp20',
+  emp1420: 'emp1420',
+  mepart1420: 'mepart1420',
+  menhab1420: 'menhab1420',
+  artpop1420: 'artpop1420',
+  surfcom2023: 'surfcom2023'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -358,7 +475,6 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   inconfort_thermique: 'inconfort_thermique',
   clc_epci: 'clc_epci',
-  communes: 'communes',
   collectivites_searchbar: 'collectivites_searchbar',
   biodiversite: 'biodiversite',
   gestion_risques: 'gestion_risques',
@@ -368,7 +484,8 @@ exports.Prisma.ModelName = {
   erosion_cotiere: 'erosion_cotiere',
   epci: 'epci',
   surfaces_protegees: 'surfaces_protegees',
-  spatial_ref_sys: 'spatial_ref_sys'
+  spatial_ref_sys: 'spatial_ref_sys',
+  consommation_espaces_naf: 'consommation_espaces_naf'
 };
 
 /**
