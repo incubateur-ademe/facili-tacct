@@ -84,22 +84,6 @@ model clc_epci {
   @@schema("postgis")
 }
 
-model communes {
-  pk                 Int                      @id @default(autoincrement())
-  code_commune       String?                  @db.VarChar
-  libelle_commune    String?                  @db.VarChar
-  epci               String?                  @db.VarChar
-  libelle_epci       String?                  @db.VarChar
-  libgeo             String?                  @db.VarChar
-  coordinates        String?                  @db.VarChar
-  densite_bati       Float?
-  precarite_logement Float?
-  geometry           Unsupported("geometry")?
-
-  @@index([geometry], map: "communes_geometry_geom_idx", type: Gist)
-  @@schema("postgis")
-}
-
 model collectivites_searchbar {
   index           BigInt  @id
   code_commune    String?
@@ -154,7 +138,7 @@ model communes_drom {
   coordinates        String                  @db.VarChar
   densite_bati       Float?
   precarite_logement Float?
-  surface            Float
+  surface            Float?
   geometry           Unsupported("geometry")
 
   @@index([geometry], map: "communes_drom_geometry_geom_idx", type: Gist)
@@ -270,4 +254,136 @@ model spatial_ref_sys {
   proj4text String? @db.VarChar(2048)
 
   @@schema("postgis")
+}
+
+model consommation_espaces_naf {
+  index                BigInt @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  region               Int
+  naf09art10           Float
+  art09act10           Float
+  art09hab10           Float
+  art09mix10           Float
+  art09rou10           Float
+  art09fer10           Float
+  art09inc10           Float
+  naf10art11           Float
+  art10act11           Float
+  art10hab11           Float
+  art10mix11           Float
+  art10rou11           Float
+  art10fer11           Float
+  art10inc11           Float
+  naf11art12           Float
+  art11act12           Float
+  art11hab12           Float
+  art11mix12           Float
+  art11rou12           Float
+  art11fer12           Float
+  art11inc12           Float
+  naf12art13           Float
+  art12act13           Float
+  art12hab13           Float
+  art12mix13           Float
+  art12rou13           Float
+  art12fer13           Float
+  art12inc13           Float
+  naf13art14           Float
+  art13act14           Float
+  art13hab14           Float
+  art13mix14           Float
+  art13rou14           Float
+  art13fer14           Float
+  art13inc14           Float
+  naf14art15           Float
+  art14act15           Float
+  art14hab15           Float
+  art14mix15           Float
+  art14rou15           Float
+  art14fer15           Float
+  art14inc15           Float
+  naf15art16           Float
+  art15act16           Float
+  art15hab16           Float
+  art15mix16           Float
+  art15rou16           Float
+  art15fer16           Float
+  art15inc16           Float
+  naf16art17           Float
+  art16act17           Float
+  art16hab17           Float
+  art16mix17           Float
+  art16rou17           Float
+  art16fer17           Float
+  art16inc17           Float
+  naf17art18           Float
+  art17act18           Float
+  art17hab18           Float
+  art17mix18           Float
+  art17rou18           Float
+  art17fer18           Float
+  art17inc18           Float
+  naf18art19           Float
+  art18act19           Float
+  art18hab19           Float
+  art18mix19           Float
+  art18rou19           Float
+  art18fer19           Float
+  art18inc19           Float
+  naf19art20           Float
+  art19act20           Float
+  art19hab20           Float
+  art19mix20           Float
+  art19rou20           Float
+  art19fer20           Float
+  art19inc20           Float
+  naf20art21           Float
+  art20act21           Float
+  art20hab21           Float
+  art20mix21           Float
+  art20rou21           Float
+  art20fer21           Float
+  art20inc21           Float
+  naf21art22           Float
+  art21act22           Float
+  art21hab22           Float
+  art21mix22           Float
+  art21rou22           Float
+  art21fer22           Float
+  art21inc22           Float
+  naf22art23           Float
+  art22act23           Float
+  art22hab23           Float
+  art22mix23           Float
+  art22rou23           Float
+  art22fer23           Float
+  art22inc23           Float
+  naf09art23           Float
+  art09act23           Float
+  art09hab23           Float
+  art09mix23           Float
+  art09inc23           Float
+  art09rou23           Float
+  art09fer23           Float
+  artcom0923           Float
+  pop14                Float
+  pop20                Float
+  pop1420              Float
+  men14                Float
+  men20                Float
+  men1420              Float
+  emp14                Float
+  emp20                Float
+  emp1420              Float
+  mepart1420           Float
+  menhab1420           Float
+  artpop1420           Float?
+  surfcom2023          Float
+
+  @@index([index], map: "ix_consommation_espaces_naf_index")
+  @@schema("databases")
 }
