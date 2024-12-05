@@ -65,13 +65,20 @@ export const themes = {
       risque: "",
       donnee: "",
     },
-    // {
-    //   id: 2,
-    //   titre: "Surfaces protégées",
-    //   facteur_sensibilite: "Surfaces protégées",
-    //   risque: "",
-    //   donnee: "",
-    // }
+    {
+      id: 2,
+      titre: "Surfaces protégées",
+      facteur_sensibilite: "Surfaces protégées",
+      risque: "",
+      donnee: "",
+    },
+    {
+      id: 3,
+      titre: "Consommation d'espaces NAF",
+      facteur_sensibilite: "Consommation d'espaces NAF",
+      risque: "",
+      donnee: "",
+    }
   ],
   ressourcesEau: [
     {

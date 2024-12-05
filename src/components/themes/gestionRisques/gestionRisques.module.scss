@@ -179,7 +179,7 @@
     // margin: 1rem 0 0 0;
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 0.5em;
     padding: 1rem;
     background: #F9F9FF;
     // border-radius: 0.5rem;
@@ -210,7 +210,7 @@
             .legendsLeft {
                 display: flex;
                 flex-direction: column;
-                gap: 0.1rem;
+                // gap: 0.1rem;
             }
             .legendsRight {
                 display: flex;

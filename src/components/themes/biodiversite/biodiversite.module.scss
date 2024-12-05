@@ -152,3 +152,38 @@
         margin: 0;
     }
 }
+
+.graphWrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9ff;
+    border: solid 1px #d6d6f0;
+    border-radius: 0.5em;
+}
+.biodiversiteGraphTitleWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    border-bottom: solid 1px #D6D6F0;
+    h2 {
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 20px;
+        text-align: left;
+        color: "#0063CB";
+        margin: 0;
+    }
+    p {
+        margin: 0;
+    }
+}
+.biodiversiteGraphFiltersWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    border-bottom: solid 1px #D6D6F0;
+}
