@@ -1,0 +1,174 @@
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    --heightWrapper: 375px;
+    color: #3a3a3a;
+}
+
+.content {
+    flex-grow: 1;
+}
+
+.container {
+    margin: 3em 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: var(--heightWrapper);
+    gap: 2rem;
+    align-items: center;
+    padding: 3.75em 3.75em 7.5em;
+    background-color: #0063cb;
+}
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: beige;
+    align-items: center;
+    h1 {
+        color: beige;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 55.48px;
+    }
+    p {
+        max-width: 650px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 24.97px;
+        text-align: center;
+    }
+}
+.collectiviteWrapper {
+    position: absolute;
+    width: 46dvw;
+    max-width: 53em;
+    left: calc(50dvw - 23dvw);
+    top: calc(var(--heightWrapper) - 5em);
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(248, 248, 248);
+    padding: 2em;
+    margin: 0 auto;
+    max-width: 60%;
+    border-radius: 8px;
+    box-shadow: 1px 1px 5px rgb(138, 138, 138);
+}
+
+.cardBackground {
+    background-color: #f4f6fe;
+}
+
+.cardWrapper {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between !important;
+    padding: 12em 3.75em 3.75em !important;
+    gap: 1.5em !important;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    max-width: 45%;
+    gap: 2rem;
+    background-color: white !important;
+    border-radius: 8px;
+    h2 {
+        font-size: 1.4rem;
+        line-height: 1.3em;
+        font-weight: 700;
+        margin: 0 0 1em;
+    }
+    .cardDescription {
+        display: flex;
+        flex-direction: column;
+        padding: 1em;
+    }
+}
+
+.constellationWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 0 2em;
+}
+.constellationText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 40%;
+    padding: 2em 0;
+}
+
+@media screen and (max-width: 1280px) {
+    .constellationWrapper {
+        margin: 0;
+    }
+}
+@media screen and (max-width: 900px) {
+    .constellationWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .constellationText {
+        max-width: 80%;
+    }
+    .cardWrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .card {
+        max-width: 80dvw;
+    }
+}
+
+.cookieConsentWrapper {
+    position: fixed;
+    bottom: 2rem;
+    width: 50%;
+    margin: 0 25%;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: '0px 4px 12px 0px #0063CB29';
+    background-color: #fff; //#f9f9ff;
+    border-radius: 0.5em;
+    border: solid 1px #0063cb;
+    z-index: 500;
+    .acceptCookieBtn {
+        color: #0063cb;
+        border-radius: 4px;
+        border: 1px solid #0063cb;
+        padding: 0.5em 1em;
+        font-weight: 500;
+        font-family: 'Marianne';
+        font-size: 1rem;
+        height: 48px;
+        margin: 0 0 0 1em;
+    }
+    .declineCookieBtn {
+        color: #3e5165;
+        border-radius: 4px;
+        border: 1px solid #3e5165;
+        padding: 0.5em 1em;
+        font-weight: 500;
+        font-family: 'Marianne';
+        font-size: 1rem;
+        height: 48px;
+        margin: 0 0 0 1em;
+    }
+}
+
+@media screen and (max-width: 1135px) {
+    .collectiviteWrapper {
+        width: 90dvw;
+        max-width: none;
+        left: calc(50dvw - 45dvw);
+        top: calc(var(--heightWrapper));
+    }
+}
