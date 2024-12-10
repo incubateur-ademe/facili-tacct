@@ -1,29 +1,34 @@
 import { Loader } from '@/components/loader';
-import { GetCommunes, GetEpci, GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
+import {
+  GetCommunes,
+  GetEpci,
+  GetErosionCotiere
+} from '@/lib/queries/postgis/cartographie';
 import { GetGestionRisques } from '@/lib/queries/thematiques';
-import { themes } from "@/lib/utils/themes";
+import { themes } from '@/lib/utils/themes';
 import dynamic from 'next/dynamic';
-import styles from "../donnees.module.scss";
+import styles from '../donnees.module.scss';
 
-const DynamicPageComp = dynamic(() => import("./gestionRisquesComp"), {
+const DynamicPageComp = dynamic(() => import('./gestionRisquesComp'), {
   ssr: false,
-  loading: () => <Loader />,
+  loading: () => <Loader />
 });
 
 const GestionRisques = async (searchParams: SearchParams) => {
   const theme = themes.gestionRisques;
   const codepci = searchParams.searchParams.codepci;
   const codgeo = searchParams.searchParams.codgeo;
-  const dbGestionRisques = codgeo ? await GetGestionRisques(codgeo) 
-  : codepci ? await GetGestionRisques(codepci) 
-  : void 0;
+  const dbGestionRisques = codgeo
+    ? await GetGestionRisques(codgeo)
+    : codepci
+      ? await GetGestionRisques(codepci)
+      : void 0;
   const carteCommunes = await GetCommunes(codepci);
-  const erosionCotiere = await GetErosionCotiere(codepci);
-  const epciContours = await GetEpci(codepci);
+  const erosionCotiere = await GetErosionCotiere(codepci, codgeo ?? undefined);
+  const epciContours = await GetEpci(codepci, codgeo ?? undefined);
 
   return (
     <div>
-      {/* <NoticeComp title="Explorez des leviers d'action possibles en réduisant la sensibilité de votre territoire" /> */}
       <div className={styles.container}>
         <DynamicPageComp
           data={theme}
