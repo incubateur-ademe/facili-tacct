@@ -1,0 +1,4 @@
+fileignoreconfig:
+- filename: src/generated/client/index.d.ts
+  checksum: ccb7bcc06849262a96b741c81dabdf3bbe92f2679ae35c429221e65689c4354c
+version: ""

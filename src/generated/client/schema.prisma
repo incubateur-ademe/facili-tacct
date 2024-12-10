@@ -137,7 +137,6 @@ model communes_drom {
   densite_bati       Float?
   precarite_logement Float?
   surface            Float?
-  surface            Float?
   geometry           Unsupported("geometry")
 
   @@index([geometry], map: "communes_drom_geometry_geom_idx", type: Gist)
