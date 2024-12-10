@@ -19,7 +19,8 @@ module.exports = {
         'secu',
         'indicator',
         'deploy',
-        'db'
+        'db',
+        'config'
       ]
     ]
   }
