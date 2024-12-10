@@ -81,11 +81,10 @@ const ErosionCotes = (props: { erosionCotiere: ErosionCotiere[], epciContours: E
               <div className={styles.catnatGraphTitleWrapper} style={{ padding: "1rem" }}>
                 <h2>Érosion du littoral</h2>
               </div>
-                <HtmlTooltip title={<LegendErosionCotiere />} placement="left">
-                  <div>
-                    <MapErosionCotiere erosionCotiere={erosionCotiereMap} epciContours={epciContoursMap} />
-                  </div>
-                </HtmlTooltip>
+              <div>
+                <MapErosionCotiere erosionCotiere={erosionCotiereMap} epciContours={epciContoursMap} />
+              </div>
+              <LegendErosionCotiere />
               <p style={{ padding: "1em", margin: "0" }}>
                 Source : CEREMA
               </p>
