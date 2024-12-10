@@ -5,7 +5,7 @@ import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
 import { ConsommationNAF } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './biodiversite.module.scss';
 
 export const ConsommationEspacesNAFDataviz = (props: {
@@ -20,25 +20,6 @@ export const ConsommationEspacesNAFDataviz = (props: {
   const [datavizTab, setDatavizTab] = useState<string>('Évolution');
   const [typeValue, setTypeValue] = useState<string>('Tous types');
   const [sliderValue, setSliderValue] = useState<number[]>([2009, 2023]);
-  const [consommationNAFFilteredByType, setConsommationNAFFilteredByType] =
-    useState<ConsommationNAF[]>(consommationNAF);
-  const [consommationNAFtBarChart, setConsommationNAFtBarChart] = useState<
-    ConsommationNAF[]
-  >([]);
-
-  useEffect(() => {
-    const consommationNAFFilteredByType =
-      typeValue === 'Tous types'
-        ? consommationNAF
-        : consommationNAF.filter((item) => item);
-    setConsommationNAFFilteredByType(consommationNAFFilteredByType);
-    const consommationNAFEnrichBarChart = consommationNAFFilteredByType
-      ?.map((item) => {
-        return { ...item };
-      })
-      .filter((el) => el);
-    setConsommationNAFtBarChart(consommationNAFEnrichBarChart);
-  }, [sliderValue, typeValue, datavizTab]);
 
   return (
     <div className={styles.graphWrapper}>
@@ -59,7 +40,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
               'Activité',
               'Routes',
               'Ferroviaire',
-              'Inconnnu'
+              'Inconnu'
             ]}
             defaultTab={typeValue}
             setValue={setTypeValue}
@@ -79,6 +60,8 @@ export const ConsommationEspacesNAFDataviz = (props: {
         </div>
         <ConsommationEspacesNAFBarChart
           consommationEspacesNAF={filteredConsommationNAF}
+          sliderValue={sliderValue}
+          filterValue={typeValue}
         />
       </>
     </div>
