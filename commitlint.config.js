@@ -17,7 +17,9 @@ module.exports = {
         'perf',
         'build',
         'secu',
-        'indicator'
+        'indicator',
+        'deploy',
+        'db'
       ]
     ]
   }
