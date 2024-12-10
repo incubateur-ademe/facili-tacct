@@ -35,6 +35,7 @@ interface Props {
   agricultureBio: AgricultureBio[];
   surfacesProtegees: SurfacesProtegeesByCol[];
   consommationNAF: ConsommationNAF[];
+  consommationNAF: ConsommationNAF[];
   epciContours: EpciContours[];
 }
 
@@ -211,6 +212,7 @@ const BiodiversiteComp = ({
                     carteCommunes={carteCommunes}
                     agricultureBio={agricultureBio}
                     surfacesProtegees={surfacesProtegees}
+                    consommationNAF={consommationNAF}
                     consommationNAF={consommationNAF}
                     epciContours={epciContours}
                   />
