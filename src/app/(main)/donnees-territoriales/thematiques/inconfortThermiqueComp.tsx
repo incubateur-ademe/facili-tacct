@@ -37,6 +37,7 @@ interface Props {
   inconfortThermique: InconfortThermique[];
   collectivite: CollectivitesSearchbar[];
   departement?: InconfortThermique[];
+  LCZBayonne: any[];
 }
 
 interface VegetalisationProps {
@@ -90,9 +91,14 @@ const allComps = [
     titre: 'LCZ',
     Component: ({
       carteCommunes,
-      collectivite
+      collectivite,
+      LCZBayonne
     }: Props & { activeDataTab: string }) => (
-      <LCZ carteCommunes={carteCommunes} collectivite={collectivite} />
+      <LCZ
+        carteCommunes={carteCommunes}
+        collectivite={collectivite}
+        LCZBayonne={LCZBayonne}
+      />
     )
   },
   {
@@ -114,7 +120,8 @@ const PageComp = ({
   carteCommunes,
   inconfortThermique,
   collectivite,
-  departement
+  departement,
+  LCZBayonne
 }: Props) => {
   const [clc, setClc] = useState<CLC[]>();
   const [selectedTabId, setSelectedTabId] = useState('Population');
@@ -240,6 +247,7 @@ const PageComp = ({
                     clc={clc || []}
                     collectivite={collectivite}
                     departement={departement}
+                    LCZBayonne={LCZBayonne}
                   />
                 );
               })()}
