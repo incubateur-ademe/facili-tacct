@@ -65,7 +65,7 @@ export const FragiliteEconomique = ({
                 <div className={styles.explicationWrapper}>
                   {commune ? (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      La part des ménages en situation de précarité énergique
+                      La part des ménages en situation de précarité énergétique
                       logement sur votre territoire est de{' '}
                       <b>{(100 * precariteCommune).toPrecision(3)}%. </b>
                       Ce taux est de{' '}
@@ -74,7 +74,7 @@ export const FragiliteEconomique = ({
                     </p>
                   ) : (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      La part des ménages en situation de précarité énergique
+                      La part des ménages en situation de précarité énergétique
                       logement sur votre territoire est de{' '}
                       <b>{(100 * precariteLogEpci).toPrecision(3)}%. </b>
                     </p>

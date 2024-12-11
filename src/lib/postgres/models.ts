@@ -1,4 +1,3 @@
-
 export type InconfortThermique = {
   NA5AZ_sum: number | null;
   NA5BE_sum: number | null;
@@ -64,7 +63,7 @@ export type Biodiversite = {
   libelle_epci: string | null;
   libelle_geographique: string | null;
   region: number | null;
-}
+};
 
 export type GestionRisques = {
   lib_risque_jo: string | null;
@@ -76,7 +75,7 @@ export type GestionRisques = {
   libelle_epci: string | null;
   libelle_geographique: string | null;
   region: number | null;
-}
+};
 
 export type RessourcesEau = {
   LIBELLE_SOUS_CHAMP: string | null;
@@ -101,7 +100,7 @@ export type RessourcesEau = {
   A2018: number | null;
   A2019: number | null;
   A2020: number | null;
-}
+};
 
 export type AgricultureBio = {
   index: bigint;
@@ -117,18 +116,18 @@ export type AgricultureBio = {
   nombre_2021: number;
   nombre_2020: number;
   nombre_2019: number;
-}
+};
 
 export type CollectivitesSearchbar = {
   code_commune?: string | null;
   coordinates?: string | null;
-  code_epci: string;// | null;
+  code_epci: string; // | null;
   libelle_commune?: string | null;
-  libelle_epci: string;// | null;
-  search_libelle: string;// | null;
-  search_code: string;// | null;
-  departement: string;// | null;
-  region: string;// | null;
+  libelle_epci: string; // | null;
+  search_libelle: string; // | null;
+  search_code: string; // | null;
+  departement: string; // | null;
+  region: string; // | null;
 };
 
 export type CarteCommunes = {
@@ -141,6 +140,7 @@ export type CarteCommunes = {
   libelle_epci: string;
   precarite_logement?: number;
   catnat?: Object;
+  naf?: Object;
   surface: number;
 };
 
@@ -228,7 +228,7 @@ export type SurfacesProtegeesByCol = {
   libelle_epci: string;
   departement: string;
   region: number;
-}
+};
 
 export type ConsommationNAF = {
   index: bigint;
@@ -355,4 +355,4 @@ export type ConsommationNAF = {
   menhab1420: number;
   artpop1420: number | null;
   surfcom2023: number;
-}
+};

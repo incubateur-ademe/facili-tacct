@@ -1,4 +1,4 @@
-import { GeoGeometryObjects } from "d3";
+import { GeoGeometryObjects } from 'd3';
 
 export type VegetalisationDto = {
   clc_1_artificialise: number;
@@ -22,7 +22,7 @@ export type AgeBatiDto = {
   age_bati_46_90: number;
   age_bati_91_05: number;
   age_bati_post06: number;
-}
+};
 
 export type travailExtDto = {
   NA5AZ_sum: number;
@@ -67,19 +67,19 @@ export type GrandAgeIsolementDto = {
   under_4_sum_2009?: number;
   under_4_sum_2014?: number;
   under_4_sum_2020?: number;
-}
+};
 
 export type CommunesIndicateursDto = {
   type: string;
   properties: {
     catnat?: {
       Inondations?: number;
-      "Grêle / neige"? : number;
-      "Sécheresse"? : number;
-      "Cyclones / Tempêtes"? : number;
-      "Retrait-gonflement des argiles"? : number;
-      "Mouvements de terrain"? : number;
-      "Avalanche"? : number;
+      'Grêle / neige'?: number;
+      Sécheresse?: number;
+      'Cyclones / Tempêtes'?: number;
+      'Retrait-gonflement des argiles'?: number;
+      'Mouvements de terrain'?: number;
+      Avalanche?: number;
       sumCatnat?: number;
       indexName?: string;
     };
@@ -90,6 +90,7 @@ export type CommunesIndicateursDto = {
     precarite_logement: number;
     densite_bati: number;
     coordinates: string;
+    naf?: string;
   };
   geometry: {
     coordinates: number[][][][];
@@ -147,7 +148,7 @@ type SurfacesProtegessChildren = {
   name: string;
   color: string;
   loc: number;
-}
+};
 
 export type SurfacesProtegeesDto = {
   name: string;
