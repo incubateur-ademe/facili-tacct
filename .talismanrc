@@ -43,4 +43,6 @@ fileignoreconfig:
   checksum: 4005d1184c8b22f1b6480ca52ba4b8649a718c3d9d8130d10afdab153d8da68b
 - filename: src/components/maps/mapEspacesNAF.tsx
   checksum: 1179303c0e9c2d0c3cc0def550cf75053fc5c611e948f63ecc87bcab6da8d4bd
+- filename: src/components/maps/mapCatnat.tsx
+  checksum: c6f188d0d38060f780f658a5db55bdd8a588a0a4fde7881e571d03b932400615
 version: ""

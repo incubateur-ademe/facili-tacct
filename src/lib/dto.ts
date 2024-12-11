@@ -90,7 +90,7 @@ export type CommunesIndicateursDto = {
     precarite_logement: number;
     densite_bati: number;
     coordinates: string;
-    naf?: string;
+    naf?: number;
   };
   geometry: {
     coordinates: number[][][][];
