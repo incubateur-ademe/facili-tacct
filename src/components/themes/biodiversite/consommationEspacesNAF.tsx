@@ -25,7 +25,9 @@ export const ConsommationEspacesNAF = (props: {
   const carteCommunesEnriched = carteCommunes.map((el) => {
     return {
       ...el,
-      naf: 'naf'
+      naf: consommationNAF.find(
+        (item) => item.code_geographique === el.code_commune
+      )?.naf09art23
     };
   });
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
