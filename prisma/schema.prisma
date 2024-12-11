@@ -102,14 +102,15 @@ model collectivites_searchbar {
 
 model biodiversite {
   index                BigInt  @id
-  code_geographique    String? @db.VarChar(10)
-  type_touristique     String? @db.VarChar(50)
-  libelle_geographique String? @db.VarChar(100)
-  epci                 String? @db.VarChar(15)
-  libelle_epci         String? @db.VarChar(100)
-  departement          String? @db.VarChar(5)
+  code_geographique    String?
+  type_touristique     String?
+  libelle_geographique String?
+  epci                 String?
+  libelle_epci         String?
+  departement          String?
   region               Float?
 
+  @@index([index], map: "ix_biodiversite_index")
   @@schema("databases")
 }
 
@@ -124,6 +125,7 @@ model gestion_risques {
   departement          String?
   region               Float?
 
+  @@index([index], map: "ix_gestion_risques_index")
   @@schema("databases")
 }
 
@@ -145,9 +147,9 @@ model communes_drom {
 
 model ressources_eau {
   index                BigInt  @id
-  code_geographique    String  @db.VarChar(10)
-  LIBELLE_SOUS_CHAMP   String? @db.VarChar(100)
-  SOUS_CHAMP           String? @db.VarChar(20)
+  code_geographique    String
+  LIBELLE_SOUS_CHAMP   String?
+  SOUS_CHAMP           String?
   A2020                Float?
   A2019                Float?
   A2018                Float?
@@ -161,21 +163,22 @@ model ressources_eau {
   A2010                Float?
   A2009                Float?
   A2008                Float?
-  libelle_geographique String? @db.VarChar(100)
-  epci                 String? @db.VarChar(15)
-  libelle_epci         String? @db.VarChar(100)
-  departement          String? @db.VarChar(5)
+  libelle_geographique String?
+  epci                 String?
+  libelle_epci         String?
+  departement          String?
   region               Float?
 
+  @@index([index], map: "ix_ressources_eau_index")
   @@schema("databases")
 }
 
 model agriculture_bio {
   index              BigInt  @id
-  epci               String  @db.VarChar(16)
-  libelle_epci       String  @db.VarChar(100)
-  VARIABLE           String  @db.VarChar(50)
-  LIBELLE_SOUS_CHAMP String? @db.VarChar(50)
+  epci               String
+  libelle_epci       String
+  VARIABLE           String
+  LIBELLE_SOUS_CHAMP String?
   surface_2022       Float
   surface_2021       Float
   surface_2020       Float
@@ -185,25 +188,28 @@ model agriculture_bio {
   nombre_2020        Float
   nombre_2019        Float
 
+  @@index([index], map: "ix_agriculture_bio_index")
   @@schema("databases")
 }
 
 model erosion_cotiere {
-  pk         Int                     @id
+  pk         Int                     @id @default(autoincrement())
   taux       Float
   duree      Float
   tdc_ancien BigInt
   tdc_rec    BigInt
   geometry   Unsupported("geometry")
 
+  @@index([geometry], map: "erosion_cotiere_geometry_geom_idx", type: Gist)
   @@schema("postgis")
 }
 
 model epci {
-  pk        Int                     @id
-  epci_code String                  @db.VarChar(15)
+  pk        Int                     @id @default(autoincrement())
+  epci_code String                  @db.VarChar
   geometry  Unsupported("geometry")
 
+  @@index([geometry], map: "epci_geometry_geom_idx", type: Gist)
   @@schema("postgis")
 }
 
@@ -380,4 +386,23 @@ model consommation_espaces_naf {
 
   @@index([index], map: "ix_consommation_espaces_naf_index")
   @@schema("databases")
+}
+
+model lcz_bayonne_test {
+  pk         Int                      @id @default(autoincrement())
+  identifier String?                  @db.VarChar
+  hre        Float?
+  are        Float?
+  bur        Float?
+  ror        Float?
+  bsr        Float?
+  war        Float?
+  ver        Float?
+  vhr        Float?
+  lcz        String?                  @db.VarChar
+  lcz_int    Int?
+  geometry   Unsupported("geometry")?
+
+  @@index([geometry], map: "lcz_bayonne_test_geometry_geom_idx", type: Gist)
+  @@schema("postgis")
 }
