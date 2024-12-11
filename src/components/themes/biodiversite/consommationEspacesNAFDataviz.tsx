@@ -1,8 +1,10 @@
 'use client';
 
 import { ConsommationEspacesNAFBarChart } from '@/components/charts/biodiversite/consommationEspacesNAFBarChart';
+import { MapEspacesNaf } from '@/components/maps/mapEspacesNAF';
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
+import { CommunesIndicateursDto } from '@/lib/dto';
 import { ConsommationNAF } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
@@ -10,8 +12,9 @@ import styles from './biodiversite.module.scss';
 
 export const ConsommationEspacesNAFDataviz = (props: {
   consommationNAF: ConsommationNAF[];
+  carteCommunes: CommunesIndicateursDto[];
 }) => {
-  const { consommationNAF } = props;
+  const { consommationNAF, carteCommunes } = props;
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
   const filteredConsommationNAF = consommationNAF.filter(
@@ -31,39 +34,45 @@ export const ConsommationEspacesNAFDataviz = (props: {
           setValue={setDatavizTab}
         />
       </div>
-      <>
-        <div className={styles.biodiversiteGraphFiltersWrapper}>
-          <SubTabs
-            data={[
-              'Tous types',
-              'Habitat',
-              'Activité',
-              'Routes',
-              'Ferroviaire',
-              'Inconnu'
-            ]}
-            defaultTab={typeValue}
-            setValue={setTypeValue}
-            maxWidth="65%"
-            borderRight="solid 1px #D6D6F0"
-          />
-          <RangeSlider
-            firstValue={2009}
-            lastValue={2023}
-            minDist={1}
-            setSliderValue={setSliderValue}
+      {datavizTab === 'Évolution' ? (
+        <>
+          <div className={styles.biodiversiteGraphFiltersWrapper}>
+            <SubTabs
+              data={[
+                'Tous types',
+                'Habitat',
+                'Activité',
+                'Routes',
+                'Ferroviaire',
+                'Inconnu'
+              ]}
+              defaultTab={typeValue}
+              setValue={setTypeValue}
+              maxWidth="65%"
+              borderRight="solid 1px #D6D6F0"
+            />
+            <RangeSlider
+              firstValue={2009}
+              lastValue={2023}
+              minDist={1}
+              setSliderValue={setSliderValue}
+              sliderValue={sliderValue}
+              width={'-webkit-fill-available'}
+              padding={'0 1rem 0 2rem'}
+              maxWidth="70%"
+            />
+          </div>
+          <ConsommationEspacesNAFBarChart
+            consommationEspacesNAF={filteredConsommationNAF}
             sliderValue={sliderValue}
-            width={'-webkit-fill-available'}
-            padding={'0 1rem 0 2rem'}
-            maxWidth="70%"
+            filterValue={typeValue}
           />
-        </div>
-        <ConsommationEspacesNAFBarChart
-          consommationEspacesNAF={filteredConsommationNAF}
-          sliderValue={sliderValue}
-          filterValue={typeValue}
-        />
-      </>
+        </>
+      ) : (
+        <>
+          <MapEspacesNaf carteCommunes={carteCommunes} />
+        </>
+      )}
     </div>
   );
 };
