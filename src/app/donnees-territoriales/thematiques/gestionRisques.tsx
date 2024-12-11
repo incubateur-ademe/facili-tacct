@@ -18,12 +18,11 @@ const GestionRisques = async (searchParams: SearchParams) => {
   : codepci ? await GetGestionRisques(codepci) 
   : void 0;
   const carteCommunes = await GetCommunes(codepci);
-  const erosionCotiere = await GetErosionCotiere(codepci);
-  const epciContours = await GetEpci(codepci);
+  const erosionCotiere = await GetErosionCotiere(codepci, codgeo ?? undefined);
+  const epciContours = await GetEpci(codepci, codgeo ?? undefined);
 
   return (
     <div>
-      {/* <NoticeComp title="Explorez des leviers d'action possibles en réduisant la sensibilité de votre territoire" /> */}
       <div className={styles.container}>
         <DynamicPageComp
           data={theme}
