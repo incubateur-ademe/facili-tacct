@@ -87,6 +87,12 @@ export type spatial_ref_sys =
  */
 export type consommation_espaces_naf =
   $Result.DefaultSelection<Prisma.$consommation_espaces_nafPayload>;
+/**
+ * Model lcz_bayonne_test
+ *
+ */
+export type lcz_bayonne_test =
+  $Result.DefaultSelection<Prisma.$lcz_bayonne_testPayload>;
 
 /**
  * ##  Prisma Client ʲˢ
@@ -373,6 +379,16 @@ export class PrismaClient<
    * ```
    */
   get consommation_espaces_naf(): Prisma.consommation_espaces_nafDelegate<ExtArgs>;
+
+  /**
+   * `prisma.lcz_bayonne_test`: Exposes CRUD operations for the **lcz_bayonne_test** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Lcz_bayonne_tests
+   * const lcz_bayonne_tests = await prisma.lcz_bayonne_test.findMany()
+   * ```
+   */
+  get lcz_bayonne_test(): Prisma.lcz_bayonne_testDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -430,8 +446,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact;
 
   /**
-   * Prisma Client JS version: 5.22.0
-   * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
+   * Prisma Client JS version: 5.20.0
+   * Query Engine version: 5dbef10bdbfb579e07d35cc85fb1518d357cb99e
    */
   export type PrismaVersion = {
     client: string;
@@ -845,6 +861,7 @@ export namespace Prisma {
     surfaces_protegees: 'surfaces_protegees';
     spatial_ref_sys: 'spatial_ref_sys';
     consommation_espaces_naf: 'consommation_espaces_naf';
+    lcz_bayonne_test: 'lcz_bayonne_test';
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -882,7 +899,8 @@ export namespace Prisma {
         | 'epci'
         | 'surfaces_protegees'
         | 'spatial_ref_sys'
-        | 'consommation_espaces_naf';
+        | 'consommation_espaces_naf'
+        | 'lcz_bayonne_test';
       txIsolationLevel: Prisma.TransactionIsolationLevel;
     };
     model: {
@@ -1766,6 +1784,78 @@ export namespace Prisma {
             args: Prisma.consommation_espaces_nafCountArgs<ExtArgs>;
             result:
               | $Utils.Optional<Consommation_espaces_nafCountAggregateOutputType>
+              | number;
+          };
+        };
+      };
+      lcz_bayonne_test: {
+        payload: Prisma.$lcz_bayonne_testPayload<ExtArgs>;
+        fields: Prisma.lcz_bayonne_testFieldRefs;
+        operations: {
+          findUnique: {
+            args: Prisma.lcz_bayonne_testFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$lcz_bayonne_testPayload> | null;
+          };
+          findUniqueOrThrow: {
+            args: Prisma.lcz_bayonne_testFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$lcz_bayonne_testPayload>;
+          };
+          findFirst: {
+            args: Prisma.lcz_bayonne_testFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$lcz_bayonne_testPayload> | null;
+          };
+          findFirstOrThrow: {
+            args: Prisma.lcz_bayonne_testFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$lcz_bayonne_testPayload>;
+          };
+          findMany: {
+            args: Prisma.lcz_bayonne_testFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$lcz_bayonne_testPayload>[];
+          };
+          create: {
+            args: Prisma.lcz_bayonne_testCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$lcz_bayonne_testPayload>;
+          };
+          createMany: {
+            args: Prisma.lcz_bayonne_testCreateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          createManyAndReturn: {
+            args: Prisma.lcz_bayonne_testCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$lcz_bayonne_testPayload>[];
+          };
+          delete: {
+            args: Prisma.lcz_bayonne_testDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$lcz_bayonne_testPayload>;
+          };
+          update: {
+            args: Prisma.lcz_bayonne_testUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$lcz_bayonne_testPayload>;
+          };
+          deleteMany: {
+            args: Prisma.lcz_bayonne_testDeleteManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateMany: {
+            args: Prisma.lcz_bayonne_testUpdateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          upsert: {
+            args: Prisma.lcz_bayonne_testUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$lcz_bayonne_testPayload>;
+          };
+          aggregate: {
+            args: Prisma.Lcz_bayonne_testAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregateLcz_bayonne_test>;
+          };
+          groupBy: {
+            args: Prisma.lcz_bayonne_testGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<Lcz_bayonne_testGroupByOutputType>[];
+          };
+          count: {
+            args: Prisma.lcz_bayonne_testCountArgs<ExtArgs>;
+            result:
+              | $Utils.Optional<Lcz_bayonne_testCountAggregateOutputType>
               | number;
           };
         };
@@ -19297,6 +19387,1227 @@ export namespace Prisma {
   };
 
   /**
+   * Model lcz_bayonne_test
+   */
+
+  export type AggregateLcz_bayonne_test = {
+    _count: Lcz_bayonne_testCountAggregateOutputType | null;
+    _avg: Lcz_bayonne_testAvgAggregateOutputType | null;
+    _sum: Lcz_bayonne_testSumAggregateOutputType | null;
+    _min: Lcz_bayonne_testMinAggregateOutputType | null;
+    _max: Lcz_bayonne_testMaxAggregateOutputType | null;
+  };
+
+  export type Lcz_bayonne_testAvgAggregateOutputType = {
+    pk: number | null;
+    hre: number | null;
+    are: number | null;
+    bur: number | null;
+    ror: number | null;
+    bsr: number | null;
+    war: number | null;
+    ver: number | null;
+    vhr: number | null;
+    lcz_int: number | null;
+  };
+
+  export type Lcz_bayonne_testSumAggregateOutputType = {
+    pk: number | null;
+    hre: number | null;
+    are: number | null;
+    bur: number | null;
+    ror: number | null;
+    bsr: number | null;
+    war: number | null;
+    ver: number | null;
+    vhr: number | null;
+    lcz_int: number | null;
+  };
+
+  export type Lcz_bayonne_testMinAggregateOutputType = {
+    pk: number | null;
+    identifier: string | null;
+    hre: number | null;
+    are: number | null;
+    bur: number | null;
+    ror: number | null;
+    bsr: number | null;
+    war: number | null;
+    ver: number | null;
+    vhr: number | null;
+    lcz: string | null;
+    lcz_int: number | null;
+  };
+
+  export type Lcz_bayonne_testMaxAggregateOutputType = {
+    pk: number | null;
+    identifier: string | null;
+    hre: number | null;
+    are: number | null;
+    bur: number | null;
+    ror: number | null;
+    bsr: number | null;
+    war: number | null;
+    ver: number | null;
+    vhr: number | null;
+    lcz: string | null;
+    lcz_int: number | null;
+  };
+
+  export type Lcz_bayonne_testCountAggregateOutputType = {
+    pk: number;
+    identifier: number;
+    hre: number;
+    are: number;
+    bur: number;
+    ror: number;
+    bsr: number;
+    war: number;
+    ver: number;
+    vhr: number;
+    lcz: number;
+    lcz_int: number;
+    _all: number;
+  };
+
+  export type Lcz_bayonne_testAvgAggregateInputType = {
+    pk?: true;
+    hre?: true;
+    are?: true;
+    bur?: true;
+    ror?: true;
+    bsr?: true;
+    war?: true;
+    ver?: true;
+    vhr?: true;
+    lcz_int?: true;
+  };
+
+  export type Lcz_bayonne_testSumAggregateInputType = {
+    pk?: true;
+    hre?: true;
+    are?: true;
+    bur?: true;
+    ror?: true;
+    bsr?: true;
+    war?: true;
+    ver?: true;
+    vhr?: true;
+    lcz_int?: true;
+  };
+
+  export type Lcz_bayonne_testMinAggregateInputType = {
+    pk?: true;
+    identifier?: true;
+    hre?: true;
+    are?: true;
+    bur?: true;
+    ror?: true;
+    bsr?: true;
+    war?: true;
+    ver?: true;
+    vhr?: true;
+    lcz?: true;
+    lcz_int?: true;
+  };
+
+  export type Lcz_bayonne_testMaxAggregateInputType = {
+    pk?: true;
+    identifier?: true;
+    hre?: true;
+    are?: true;
+    bur?: true;
+    ror?: true;
+    bsr?: true;
+    war?: true;
+    ver?: true;
+    vhr?: true;
+    lcz?: true;
+    lcz_int?: true;
+  };
+
+  export type Lcz_bayonne_testCountAggregateInputType = {
+    pk?: true;
+    identifier?: true;
+    hre?: true;
+    are?: true;
+    bur?: true;
+    ror?: true;
+    bsr?: true;
+    war?: true;
+    ver?: true;
+    vhr?: true;
+    lcz?: true;
+    lcz_int?: true;
+    _all?: true;
+  };
+
+  export type Lcz_bayonne_testAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which lcz_bayonne_test to aggregate.
+     */
+    where?: lcz_bayonne_testWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of lcz_bayonne_tests to fetch.
+     */
+    orderBy?:
+      | lcz_bayonne_testOrderByWithRelationInput
+      | lcz_bayonne_testOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: lcz_bayonne_testWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` lcz_bayonne_tests from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` lcz_bayonne_tests.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned lcz_bayonne_tests
+     **/
+    _count?: true | Lcz_bayonne_testCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: Lcz_bayonne_testAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: Lcz_bayonne_testSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: Lcz_bayonne_testMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: Lcz_bayonne_testMaxAggregateInputType;
+  };
+
+  export type GetLcz_bayonne_testAggregateType<
+    T extends Lcz_bayonne_testAggregateArgs
+  > = {
+    [P in keyof T & keyof AggregateLcz_bayonne_test]: P extends
+      | '_count'
+      | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLcz_bayonne_test[P]>
+      : GetScalarType<T[P], AggregateLcz_bayonne_test[P]>;
+  };
+
+  export type lcz_bayonne_testGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    where?: lcz_bayonne_testWhereInput;
+    orderBy?:
+      | lcz_bayonne_testOrderByWithAggregationInput
+      | lcz_bayonne_testOrderByWithAggregationInput[];
+    by: Lcz_bayonne_testScalarFieldEnum[] | Lcz_bayonne_testScalarFieldEnum;
+    having?: lcz_bayonne_testScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: Lcz_bayonne_testCountAggregateInputType | true;
+    _avg?: Lcz_bayonne_testAvgAggregateInputType;
+    _sum?: Lcz_bayonne_testSumAggregateInputType;
+    _min?: Lcz_bayonne_testMinAggregateInputType;
+    _max?: Lcz_bayonne_testMaxAggregateInputType;
+  };
+
+  export type Lcz_bayonne_testGroupByOutputType = {
+    pk: number;
+    identifier: string | null;
+    hre: number | null;
+    are: number | null;
+    bur: number | null;
+    ror: number | null;
+    bsr: number | null;
+    war: number | null;
+    ver: number | null;
+    vhr: number | null;
+    lcz: string | null;
+    lcz_int: number | null;
+    _count: Lcz_bayonne_testCountAggregateOutputType | null;
+    _avg: Lcz_bayonne_testAvgAggregateOutputType | null;
+    _sum: Lcz_bayonne_testSumAggregateOutputType | null;
+    _min: Lcz_bayonne_testMinAggregateOutputType | null;
+    _max: Lcz_bayonne_testMaxAggregateOutputType | null;
+  };
+
+  type GetLcz_bayonne_testGroupByPayload<
+    T extends lcz_bayonne_testGroupByArgs
+  > = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Lcz_bayonne_testGroupByOutputType, T['by']> & {
+        [P in keyof T &
+          keyof Lcz_bayonne_testGroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : GetScalarType<T[P], Lcz_bayonne_testGroupByOutputType[P]>
+          : GetScalarType<T[P], Lcz_bayonne_testGroupByOutputType[P]>;
+      }
+    >
+  >;
+
+  export type lcz_bayonne_testSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      pk?: boolean;
+      identifier?: boolean;
+      hre?: boolean;
+      are?: boolean;
+      bur?: boolean;
+      ror?: boolean;
+      bsr?: boolean;
+      war?: boolean;
+      ver?: boolean;
+      vhr?: boolean;
+      lcz?: boolean;
+      lcz_int?: boolean;
+    },
+    ExtArgs['result']['lcz_bayonne_test']
+  >;
+
+  export type lcz_bayonne_testSelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      pk?: boolean;
+      identifier?: boolean;
+      hre?: boolean;
+      are?: boolean;
+      bur?: boolean;
+      ror?: boolean;
+      bsr?: boolean;
+      war?: boolean;
+      ver?: boolean;
+      vhr?: boolean;
+      lcz?: boolean;
+      lcz_int?: boolean;
+    },
+    ExtArgs['result']['lcz_bayonne_test']
+  >;
+
+  export type lcz_bayonne_testSelectScalar = {
+    pk?: boolean;
+    identifier?: boolean;
+    hre?: boolean;
+    are?: boolean;
+    bur?: boolean;
+    ror?: boolean;
+    bsr?: boolean;
+    war?: boolean;
+    ver?: boolean;
+    vhr?: boolean;
+    lcz?: boolean;
+    lcz_int?: boolean;
+  };
+
+  export type $lcz_bayonne_testPayload<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    name: 'lcz_bayonne_test';
+    objects: {};
+    scalars: $Extensions.GetPayloadResult<
+      {
+        pk: number;
+        identifier: string | null;
+        hre: number | null;
+        are: number | null;
+        bur: number | null;
+        ror: number | null;
+        bsr: number | null;
+        war: number | null;
+        ver: number | null;
+        vhr: number | null;
+        lcz: string | null;
+        lcz_int: number | null;
+      },
+      ExtArgs['result']['lcz_bayonne_test']
+    >;
+    composites: {};
+  };
+
+  type lcz_bayonne_testGetPayload<
+    S extends boolean | null | undefined | lcz_bayonne_testDefaultArgs
+  > = $Result.GetResult<Prisma.$lcz_bayonne_testPayload, S>;
+
+  type lcz_bayonne_testCountArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = Omit<lcz_bayonne_testFindManyArgs, 'select' | 'include' | 'distinct'> & {
+    select?: Lcz_bayonne_testCountAggregateInputType | true;
+  };
+
+  export interface lcz_bayonne_testDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['lcz_bayonne_test'];
+      meta: { name: 'lcz_bayonne_test' };
+    };
+    /**
+     * Find zero or one Lcz_bayonne_test that matches the filter.
+     * @param {lcz_bayonne_testFindUniqueArgs} args - Arguments to find a Lcz_bayonne_test
+     * @example
+     * // Get one Lcz_bayonne_test
+     * const lcz_bayonne_test = await prisma.lcz_bayonne_test.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends lcz_bayonne_testFindUniqueArgs>(
+      args: SelectSubset<T, lcz_bayonne_testFindUniqueArgs<ExtArgs>>
+    ): Prisma__lcz_bayonne_testClient<
+      $Result.GetResult<
+        Prisma.$lcz_bayonne_testPayload<ExtArgs>,
+        T,
+        'findUnique'
+      > | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find one Lcz_bayonne_test that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {lcz_bayonne_testFindUniqueOrThrowArgs} args - Arguments to find a Lcz_bayonne_test
+     * @example
+     * // Get one Lcz_bayonne_test
+     * const lcz_bayonne_test = await prisma.lcz_bayonne_test.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends lcz_bayonne_testFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, lcz_bayonne_testFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__lcz_bayonne_testClient<
+      $Result.GetResult<
+        Prisma.$lcz_bayonne_testPayload<ExtArgs>,
+        T,
+        'findUniqueOrThrow'
+      >,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first Lcz_bayonne_test that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_bayonne_testFindFirstArgs} args - Arguments to find a Lcz_bayonne_test
+     * @example
+     * // Get one Lcz_bayonne_test
+     * const lcz_bayonne_test = await prisma.lcz_bayonne_test.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends lcz_bayonne_testFindFirstArgs>(
+      args?: SelectSubset<T, lcz_bayonne_testFindFirstArgs<ExtArgs>>
+    ): Prisma__lcz_bayonne_testClient<
+      $Result.GetResult<
+        Prisma.$lcz_bayonne_testPayload<ExtArgs>,
+        T,
+        'findFirst'
+      > | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first Lcz_bayonne_test that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_bayonne_testFindFirstOrThrowArgs} args - Arguments to find a Lcz_bayonne_test
+     * @example
+     * // Get one Lcz_bayonne_test
+     * const lcz_bayonne_test = await prisma.lcz_bayonne_test.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends lcz_bayonne_testFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, lcz_bayonne_testFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__lcz_bayonne_testClient<
+      $Result.GetResult<
+        Prisma.$lcz_bayonne_testPayload<ExtArgs>,
+        T,
+        'findFirstOrThrow'
+      >,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find zero or more Lcz_bayonne_tests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_bayonne_testFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Lcz_bayonne_tests
+     * const lcz_bayonne_tests = await prisma.lcz_bayonne_test.findMany()
+     *
+     * // Get first 10 Lcz_bayonne_tests
+     * const lcz_bayonne_tests = await prisma.lcz_bayonne_test.findMany({ take: 10 })
+     *
+     * // Only select the `pk`
+     * const lcz_bayonne_testWithPkOnly = await prisma.lcz_bayonne_test.findMany({ select: { pk: true } })
+     *
+     */
+    findMany<T extends lcz_bayonne_testFindManyArgs>(
+      args?: SelectSubset<T, lcz_bayonne_testFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$lcz_bayonne_testPayload<ExtArgs>, T, 'findMany'>
+    >;
+
+    /**
+     * Create a Lcz_bayonne_test.
+     * @param {lcz_bayonne_testCreateArgs} args - Arguments to create a Lcz_bayonne_test.
+     * @example
+     * // Create one Lcz_bayonne_test
+     * const Lcz_bayonne_test = await prisma.lcz_bayonne_test.create({
+     *   data: {
+     *     // ... data to create a Lcz_bayonne_test
+     *   }
+     * })
+     *
+     */
+    create<T extends lcz_bayonne_testCreateArgs>(
+      args: SelectSubset<T, lcz_bayonne_testCreateArgs<ExtArgs>>
+    ): Prisma__lcz_bayonne_testClient<
+      $Result.GetResult<Prisma.$lcz_bayonne_testPayload<ExtArgs>, T, 'create'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Create many Lcz_bayonne_tests.
+     * @param {lcz_bayonne_testCreateManyArgs} args - Arguments to create many Lcz_bayonne_tests.
+     * @example
+     * // Create many Lcz_bayonne_tests
+     * const lcz_bayonne_test = await prisma.lcz_bayonne_test.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends lcz_bayonne_testCreateManyArgs>(
+      args?: SelectSubset<T, lcz_bayonne_testCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create many Lcz_bayonne_tests and returns the data saved in the database.
+     * @param {lcz_bayonne_testCreateManyAndReturnArgs} args - Arguments to create many Lcz_bayonne_tests.
+     * @example
+     * // Create many Lcz_bayonne_tests
+     * const lcz_bayonne_test = await prisma.lcz_bayonne_test.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Lcz_bayonne_tests and only return the `pk`
+     * const lcz_bayonne_testWithPkOnly = await prisma.lcz_bayonne_test.createManyAndReturn({
+     *   select: { pk: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends lcz_bayonne_testCreateManyAndReturnArgs>(
+      args?: SelectSubset<T, lcz_bayonne_testCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$lcz_bayonne_testPayload<ExtArgs>,
+        T,
+        'createManyAndReturn'
+      >
+    >;
+
+    /**
+     * Delete a Lcz_bayonne_test.
+     * @param {lcz_bayonne_testDeleteArgs} args - Arguments to delete one Lcz_bayonne_test.
+     * @example
+     * // Delete one Lcz_bayonne_test
+     * const Lcz_bayonne_test = await prisma.lcz_bayonne_test.delete({
+     *   where: {
+     *     // ... filter to delete one Lcz_bayonne_test
+     *   }
+     * })
+     *
+     */
+    delete<T extends lcz_bayonne_testDeleteArgs>(
+      args: SelectSubset<T, lcz_bayonne_testDeleteArgs<ExtArgs>>
+    ): Prisma__lcz_bayonne_testClient<
+      $Result.GetResult<Prisma.$lcz_bayonne_testPayload<ExtArgs>, T, 'delete'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Update one Lcz_bayonne_test.
+     * @param {lcz_bayonne_testUpdateArgs} args - Arguments to update one Lcz_bayonne_test.
+     * @example
+     * // Update one Lcz_bayonne_test
+     * const lcz_bayonne_test = await prisma.lcz_bayonne_test.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends lcz_bayonne_testUpdateArgs>(
+      args: SelectSubset<T, lcz_bayonne_testUpdateArgs<ExtArgs>>
+    ): Prisma__lcz_bayonne_testClient<
+      $Result.GetResult<Prisma.$lcz_bayonne_testPayload<ExtArgs>, T, 'update'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Delete zero or more Lcz_bayonne_tests.
+     * @param {lcz_bayonne_testDeleteManyArgs} args - Arguments to filter Lcz_bayonne_tests to delete.
+     * @example
+     * // Delete a few Lcz_bayonne_tests
+     * const { count } = await prisma.lcz_bayonne_test.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends lcz_bayonne_testDeleteManyArgs>(
+      args?: SelectSubset<T, lcz_bayonne_testDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Lcz_bayonne_tests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_bayonne_testUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Lcz_bayonne_tests
+     * const lcz_bayonne_test = await prisma.lcz_bayonne_test.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends lcz_bayonne_testUpdateManyArgs>(
+      args: SelectSubset<T, lcz_bayonne_testUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create or update one Lcz_bayonne_test.
+     * @param {lcz_bayonne_testUpsertArgs} args - Arguments to update or create a Lcz_bayonne_test.
+     * @example
+     * // Update or create a Lcz_bayonne_test
+     * const lcz_bayonne_test = await prisma.lcz_bayonne_test.upsert({
+     *   create: {
+     *     // ... data to create a Lcz_bayonne_test
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Lcz_bayonne_test we want to update
+     *   }
+     * })
+     */
+    upsert<T extends lcz_bayonne_testUpsertArgs>(
+      args: SelectSubset<T, lcz_bayonne_testUpsertArgs<ExtArgs>>
+    ): Prisma__lcz_bayonne_testClient<
+      $Result.GetResult<Prisma.$lcz_bayonne_testPayload<ExtArgs>, T, 'upsert'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Count the number of Lcz_bayonne_tests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_bayonne_testCountArgs} args - Arguments to filter Lcz_bayonne_tests to count.
+     * @example
+     * // Count the number of Lcz_bayonne_tests
+     * const count = await prisma.lcz_bayonne_test.count({
+     *   where: {
+     *     // ... the filter for the Lcz_bayonne_tests we want to count
+     *   }
+     * })
+     **/
+    count<T extends lcz_bayonne_testCountArgs>(
+      args?: Subset<T, lcz_bayonne_testCountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Lcz_bayonne_testCountAggregateOutputType>
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a Lcz_bayonne_test.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Lcz_bayonne_testAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends Lcz_bayonne_testAggregateArgs>(
+      args: Subset<T, Lcz_bayonne_testAggregateArgs>
+    ): Prisma.PrismaPromise<GetLcz_bayonne_testAggregateType<T>>;
+
+    /**
+     * Group by Lcz_bayonne_test.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {lcz_bayonne_testGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends lcz_bayonne_testGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: lcz_bayonne_testGroupByArgs['orderBy'] }
+        : { orderBy?: lcz_bayonne_testGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<
+        Keys<MaybeTupleToUnion<T['orderBy']>>
+      >,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`
+                    ];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+    >(
+      args: SubsetIntersection<T, lcz_bayonne_testGroupByArgs, OrderByArg> &
+        InputErrors
+    ): {} extends InputErrors
+      ? GetLcz_bayonne_testGroupByPayload<T>
+      : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the lcz_bayonne_test model
+     */
+    readonly fields: lcz_bayonne_testFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for lcz_bayonne_test.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__lcz_bayonne_testClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?:
+        | ((value: T) => TResult1 | PromiseLike<TResult1>)
+        | undefined
+        | null,
+      onrejected?:
+        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?:
+        | ((reason: any) => TResult | PromiseLike<TResult>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the lcz_bayonne_test model
+   */
+  interface lcz_bayonne_testFieldRefs {
+    readonly pk: FieldRef<'lcz_bayonne_test', 'Int'>;
+    readonly identifier: FieldRef<'lcz_bayonne_test', 'String'>;
+    readonly hre: FieldRef<'lcz_bayonne_test', 'Float'>;
+    readonly are: FieldRef<'lcz_bayonne_test', 'Float'>;
+    readonly bur: FieldRef<'lcz_bayonne_test', 'Float'>;
+    readonly ror: FieldRef<'lcz_bayonne_test', 'Float'>;
+    readonly bsr: FieldRef<'lcz_bayonne_test', 'Float'>;
+    readonly war: FieldRef<'lcz_bayonne_test', 'Float'>;
+    readonly ver: FieldRef<'lcz_bayonne_test', 'Float'>;
+    readonly vhr: FieldRef<'lcz_bayonne_test', 'Float'>;
+    readonly lcz: FieldRef<'lcz_bayonne_test', 'String'>;
+    readonly lcz_int: FieldRef<'lcz_bayonne_test', 'Int'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * lcz_bayonne_test findUnique
+   */
+  export type lcz_bayonne_testFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the lcz_bayonne_test
+     */
+    select?: lcz_bayonne_testSelect<ExtArgs> | null;
+    /**
+     * Filter, which lcz_bayonne_test to fetch.
+     */
+    where: lcz_bayonne_testWhereUniqueInput;
+  };
+
+  /**
+   * lcz_bayonne_test findUniqueOrThrow
+   */
+  export type lcz_bayonne_testFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the lcz_bayonne_test
+     */
+    select?: lcz_bayonne_testSelect<ExtArgs> | null;
+    /**
+     * Filter, which lcz_bayonne_test to fetch.
+     */
+    where: lcz_bayonne_testWhereUniqueInput;
+  };
+
+  /**
+   * lcz_bayonne_test findFirst
+   */
+  export type lcz_bayonne_testFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the lcz_bayonne_test
+     */
+    select?: lcz_bayonne_testSelect<ExtArgs> | null;
+    /**
+     * Filter, which lcz_bayonne_test to fetch.
+     */
+    where?: lcz_bayonne_testWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of lcz_bayonne_tests to fetch.
+     */
+    orderBy?:
+      | lcz_bayonne_testOrderByWithRelationInput
+      | lcz_bayonne_testOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for lcz_bayonne_tests.
+     */
+    cursor?: lcz_bayonne_testWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` lcz_bayonne_tests from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` lcz_bayonne_tests.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of lcz_bayonne_tests.
+     */
+    distinct?:
+      | Lcz_bayonne_testScalarFieldEnum
+      | Lcz_bayonne_testScalarFieldEnum[];
+  };
+
+  /**
+   * lcz_bayonne_test findFirstOrThrow
+   */
+  export type lcz_bayonne_testFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the lcz_bayonne_test
+     */
+    select?: lcz_bayonne_testSelect<ExtArgs> | null;
+    /**
+     * Filter, which lcz_bayonne_test to fetch.
+     */
+    where?: lcz_bayonne_testWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of lcz_bayonne_tests to fetch.
+     */
+    orderBy?:
+      | lcz_bayonne_testOrderByWithRelationInput
+      | lcz_bayonne_testOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for lcz_bayonne_tests.
+     */
+    cursor?: lcz_bayonne_testWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` lcz_bayonne_tests from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` lcz_bayonne_tests.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of lcz_bayonne_tests.
+     */
+    distinct?:
+      | Lcz_bayonne_testScalarFieldEnum
+      | Lcz_bayonne_testScalarFieldEnum[];
+  };
+
+  /**
+   * lcz_bayonne_test findMany
+   */
+  export type lcz_bayonne_testFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the lcz_bayonne_test
+     */
+    select?: lcz_bayonne_testSelect<ExtArgs> | null;
+    /**
+     * Filter, which lcz_bayonne_tests to fetch.
+     */
+    where?: lcz_bayonne_testWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of lcz_bayonne_tests to fetch.
+     */
+    orderBy?:
+      | lcz_bayonne_testOrderByWithRelationInput
+      | lcz_bayonne_testOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing lcz_bayonne_tests.
+     */
+    cursor?: lcz_bayonne_testWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` lcz_bayonne_tests from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` lcz_bayonne_tests.
+     */
+    skip?: number;
+    distinct?:
+      | Lcz_bayonne_testScalarFieldEnum
+      | Lcz_bayonne_testScalarFieldEnum[];
+  };
+
+  /**
+   * lcz_bayonne_test create
+   */
+  export type lcz_bayonne_testCreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the lcz_bayonne_test
+     */
+    select?: lcz_bayonne_testSelect<ExtArgs> | null;
+    /**
+     * The data needed to create a lcz_bayonne_test.
+     */
+    data?: XOR<
+      lcz_bayonne_testCreateInput,
+      lcz_bayonne_testUncheckedCreateInput
+    >;
+  };
+
+  /**
+   * lcz_bayonne_test createMany
+   */
+  export type lcz_bayonne_testCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to create many lcz_bayonne_tests.
+     */
+    data: lcz_bayonne_testCreateManyInput | lcz_bayonne_testCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * lcz_bayonne_test createManyAndReturn
+   */
+  export type lcz_bayonne_testCreateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the lcz_bayonne_test
+     */
+    select?: lcz_bayonne_testSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * The data used to create many lcz_bayonne_tests.
+     */
+    data: lcz_bayonne_testCreateManyInput | lcz_bayonne_testCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * lcz_bayonne_test update
+   */
+  export type lcz_bayonne_testUpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the lcz_bayonne_test
+     */
+    select?: lcz_bayonne_testSelect<ExtArgs> | null;
+    /**
+     * The data needed to update a lcz_bayonne_test.
+     */
+    data: XOR<
+      lcz_bayonne_testUpdateInput,
+      lcz_bayonne_testUncheckedUpdateInput
+    >;
+    /**
+     * Choose, which lcz_bayonne_test to update.
+     */
+    where: lcz_bayonne_testWhereUniqueInput;
+  };
+
+  /**
+   * lcz_bayonne_test updateMany
+   */
+  export type lcz_bayonne_testUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to update lcz_bayonne_tests.
+     */
+    data: XOR<
+      lcz_bayonne_testUpdateManyMutationInput,
+      lcz_bayonne_testUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which lcz_bayonne_tests to update
+     */
+    where?: lcz_bayonne_testWhereInput;
+  };
+
+  /**
+   * lcz_bayonne_test upsert
+   */
+  export type lcz_bayonne_testUpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the lcz_bayonne_test
+     */
+    select?: lcz_bayonne_testSelect<ExtArgs> | null;
+    /**
+     * The filter to search for the lcz_bayonne_test to update in case it exists.
+     */
+    where: lcz_bayonne_testWhereUniqueInput;
+    /**
+     * In case the lcz_bayonne_test found by the `where` argument doesn't exist, create a new lcz_bayonne_test with this data.
+     */
+    create: XOR<
+      lcz_bayonne_testCreateInput,
+      lcz_bayonne_testUncheckedCreateInput
+    >;
+    /**
+     * In case the lcz_bayonne_test was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<
+      lcz_bayonne_testUpdateInput,
+      lcz_bayonne_testUncheckedUpdateInput
+    >;
+  };
+
+  /**
+   * lcz_bayonne_test delete
+   */
+  export type lcz_bayonne_testDeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the lcz_bayonne_test
+     */
+    select?: lcz_bayonne_testSelect<ExtArgs> | null;
+    /**
+     * Filter which lcz_bayonne_test to delete.
+     */
+    where: lcz_bayonne_testWhereUniqueInput;
+  };
+
+  /**
+   * lcz_bayonne_test deleteMany
+   */
+  export type lcz_bayonne_testDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which lcz_bayonne_tests to delete
+     */
+    where?: lcz_bayonne_testWhereInput;
+  };
+
+  /**
+   * lcz_bayonne_test without action
+   */
+  export type lcz_bayonne_testDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the lcz_bayonne_test
+     */
+    select?: lcz_bayonne_testSelect<ExtArgs> | null;
+  };
+
+  /**
    * Enums
    */
 
@@ -19682,6 +20993,24 @@ export namespace Prisma {
 
   export type Consommation_espaces_nafScalarFieldEnum =
     (typeof Consommation_espaces_nafScalarFieldEnum)[keyof typeof Consommation_espaces_nafScalarFieldEnum];
+
+  export const Lcz_bayonne_testScalarFieldEnum: {
+    pk: 'pk';
+    identifier: 'identifier';
+    hre: 'hre';
+    are: 'are';
+    bur: 'bur';
+    ror: 'ror';
+    bsr: 'bsr';
+    war: 'war';
+    ver: 'ver';
+    vhr: 'vhr';
+    lcz: 'lcz';
+    lcz_int: 'lcz_int';
+  };
+
+  export type Lcz_bayonne_testScalarFieldEnum =
+    (typeof Lcz_bayonne_testScalarFieldEnum)[keyof typeof Lcz_bayonne_testScalarFieldEnum];
 
   export const SortOrder: {
     asc: 'asc';
@@ -22301,6 +23630,111 @@ export namespace Prisma {
       | number;
   };
 
+  export type lcz_bayonne_testWhereInput = {
+    AND?: lcz_bayonne_testWhereInput | lcz_bayonne_testWhereInput[];
+    OR?: lcz_bayonne_testWhereInput[];
+    NOT?: lcz_bayonne_testWhereInput | lcz_bayonne_testWhereInput[];
+    pk?: IntFilter<'lcz_bayonne_test'> | number;
+    identifier?: StringNullableFilter<'lcz_bayonne_test'> | string | null;
+    hre?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+    are?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+    bur?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+    ror?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+    bsr?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+    war?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+    ver?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+    vhr?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+    lcz?: StringNullableFilter<'lcz_bayonne_test'> | string | null;
+    lcz_int?: IntNullableFilter<'lcz_bayonne_test'> | number | null;
+  };
+
+  export type lcz_bayonne_testOrderByWithRelationInput = {
+    pk?: SortOrder;
+    identifier?: SortOrderInput | SortOrder;
+    hre?: SortOrderInput | SortOrder;
+    are?: SortOrderInput | SortOrder;
+    bur?: SortOrderInput | SortOrder;
+    ror?: SortOrderInput | SortOrder;
+    bsr?: SortOrderInput | SortOrder;
+    war?: SortOrderInput | SortOrder;
+    ver?: SortOrderInput | SortOrder;
+    vhr?: SortOrderInput | SortOrder;
+    lcz?: SortOrderInput | SortOrder;
+    lcz_int?: SortOrderInput | SortOrder;
+  };
+
+  export type lcz_bayonne_testWhereUniqueInput = Prisma.AtLeast<
+    {
+      pk?: number;
+      AND?: lcz_bayonne_testWhereInput | lcz_bayonne_testWhereInput[];
+      OR?: lcz_bayonne_testWhereInput[];
+      NOT?: lcz_bayonne_testWhereInput | lcz_bayonne_testWhereInput[];
+      identifier?: StringNullableFilter<'lcz_bayonne_test'> | string | null;
+      hre?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+      are?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+      bur?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+      ror?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+      bsr?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+      war?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+      ver?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+      vhr?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
+      lcz?: StringNullableFilter<'lcz_bayonne_test'> | string | null;
+      lcz_int?: IntNullableFilter<'lcz_bayonne_test'> | number | null;
+    },
+    'pk'
+  >;
+
+  export type lcz_bayonne_testOrderByWithAggregationInput = {
+    pk?: SortOrder;
+    identifier?: SortOrderInput | SortOrder;
+    hre?: SortOrderInput | SortOrder;
+    are?: SortOrderInput | SortOrder;
+    bur?: SortOrderInput | SortOrder;
+    ror?: SortOrderInput | SortOrder;
+    bsr?: SortOrderInput | SortOrder;
+    war?: SortOrderInput | SortOrder;
+    ver?: SortOrderInput | SortOrder;
+    vhr?: SortOrderInput | SortOrder;
+    lcz?: SortOrderInput | SortOrder;
+    lcz_int?: SortOrderInput | SortOrder;
+    _count?: lcz_bayonne_testCountOrderByAggregateInput;
+    _avg?: lcz_bayonne_testAvgOrderByAggregateInput;
+    _max?: lcz_bayonne_testMaxOrderByAggregateInput;
+    _min?: lcz_bayonne_testMinOrderByAggregateInput;
+    _sum?: lcz_bayonne_testSumOrderByAggregateInput;
+  };
+
+  export type lcz_bayonne_testScalarWhereWithAggregatesInput = {
+    AND?:
+      | lcz_bayonne_testScalarWhereWithAggregatesInput
+      | lcz_bayonne_testScalarWhereWithAggregatesInput[];
+    OR?: lcz_bayonne_testScalarWhereWithAggregatesInput[];
+    NOT?:
+      | lcz_bayonne_testScalarWhereWithAggregatesInput
+      | lcz_bayonne_testScalarWhereWithAggregatesInput[];
+    pk?: IntWithAggregatesFilter<'lcz_bayonne_test'> | number;
+    identifier?:
+      | StringNullableWithAggregatesFilter<'lcz_bayonne_test'>
+      | string
+      | null;
+    hre?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
+    are?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
+    bur?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
+    ror?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
+    bsr?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
+    war?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
+    ver?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
+    vhr?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
+    lcz?:
+      | StringNullableWithAggregatesFilter<'lcz_bayonne_test'>
+      | string
+      | null;
+    lcz_int?:
+      | IntNullableWithAggregatesFilter<'lcz_bayonne_test'>
+      | number
+      | null;
+  };
+
   export type inconfort_thermiqueCreateInput = {
     index: bigint | number;
     code_geographique: string;
@@ -23490,7 +24924,6 @@ export namespace Prisma {
   };
 
   export type erosion_cotiereUpdateInput = {
-    pk?: IntFieldUpdateOperationsInput | number;
     taux?: FloatFieldUpdateOperationsInput | number;
     duree?: FloatFieldUpdateOperationsInput | number;
     tdc_ancien?: BigIntFieldUpdateOperationsInput | bigint | number;
@@ -23506,7 +24939,6 @@ export namespace Prisma {
   };
 
   export type erosion_cotiereUpdateManyMutationInput = {
-    pk?: IntFieldUpdateOperationsInput | number;
     taux?: FloatFieldUpdateOperationsInput | number;
     duree?: FloatFieldUpdateOperationsInput | number;
     tdc_ancien?: BigIntFieldUpdateOperationsInput | bigint | number;
@@ -23522,7 +24954,6 @@ export namespace Prisma {
   };
 
   export type epciUpdateInput = {
-    pk?: IntFieldUpdateOperationsInput | number;
     epci_code?: StringFieldUpdateOperationsInput | string;
   };
 
@@ -23532,7 +24963,6 @@ export namespace Prisma {
   };
 
   export type epciUpdateManyMutationInput = {
-    pk?: IntFieldUpdateOperationsInput | number;
     epci_code?: StringFieldUpdateOperationsInput | string;
   };
 
@@ -24701,6 +26131,108 @@ export namespace Prisma {
     menhab1420?: FloatFieldUpdateOperationsInput | number;
     artpop1420?: NullableFloatFieldUpdateOperationsInput | number | null;
     surfcom2023?: FloatFieldUpdateOperationsInput | number;
+  };
+
+  export type lcz_bayonne_testCreateInput = {
+    identifier?: string | null;
+    hre?: number | null;
+    are?: number | null;
+    bur?: number | null;
+    ror?: number | null;
+    bsr?: number | null;
+    war?: number | null;
+    ver?: number | null;
+    vhr?: number | null;
+    lcz?: string | null;
+    lcz_int?: number | null;
+  };
+
+  export type lcz_bayonne_testUncheckedCreateInput = {
+    pk?: number;
+    identifier?: string | null;
+    hre?: number | null;
+    are?: number | null;
+    bur?: number | null;
+    ror?: number | null;
+    bsr?: number | null;
+    war?: number | null;
+    ver?: number | null;
+    vhr?: number | null;
+    lcz?: string | null;
+    lcz_int?: number | null;
+  };
+
+  export type lcz_bayonne_testUpdateInput = {
+    identifier?: NullableStringFieldUpdateOperationsInput | string | null;
+    hre?: NullableFloatFieldUpdateOperationsInput | number | null;
+    are?: NullableFloatFieldUpdateOperationsInput | number | null;
+    bur?: NullableFloatFieldUpdateOperationsInput | number | null;
+    ror?: NullableFloatFieldUpdateOperationsInput | number | null;
+    bsr?: NullableFloatFieldUpdateOperationsInput | number | null;
+    war?: NullableFloatFieldUpdateOperationsInput | number | null;
+    ver?: NullableFloatFieldUpdateOperationsInput | number | null;
+    vhr?: NullableFloatFieldUpdateOperationsInput | number | null;
+    lcz?: NullableStringFieldUpdateOperationsInput | string | null;
+    lcz_int?: NullableIntFieldUpdateOperationsInput | number | null;
+  };
+
+  export type lcz_bayonne_testUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number;
+    identifier?: NullableStringFieldUpdateOperationsInput | string | null;
+    hre?: NullableFloatFieldUpdateOperationsInput | number | null;
+    are?: NullableFloatFieldUpdateOperationsInput | number | null;
+    bur?: NullableFloatFieldUpdateOperationsInput | number | null;
+    ror?: NullableFloatFieldUpdateOperationsInput | number | null;
+    bsr?: NullableFloatFieldUpdateOperationsInput | number | null;
+    war?: NullableFloatFieldUpdateOperationsInput | number | null;
+    ver?: NullableFloatFieldUpdateOperationsInput | number | null;
+    vhr?: NullableFloatFieldUpdateOperationsInput | number | null;
+    lcz?: NullableStringFieldUpdateOperationsInput | string | null;
+    lcz_int?: NullableIntFieldUpdateOperationsInput | number | null;
+  };
+
+  export type lcz_bayonne_testCreateManyInput = {
+    pk?: number;
+    identifier?: string | null;
+    hre?: number | null;
+    are?: number | null;
+    bur?: number | null;
+    ror?: number | null;
+    bsr?: number | null;
+    war?: number | null;
+    ver?: number | null;
+    vhr?: number | null;
+    lcz?: string | null;
+    lcz_int?: number | null;
+  };
+
+  export type lcz_bayonne_testUpdateManyMutationInput = {
+    identifier?: NullableStringFieldUpdateOperationsInput | string | null;
+    hre?: NullableFloatFieldUpdateOperationsInput | number | null;
+    are?: NullableFloatFieldUpdateOperationsInput | number | null;
+    bur?: NullableFloatFieldUpdateOperationsInput | number | null;
+    ror?: NullableFloatFieldUpdateOperationsInput | number | null;
+    bsr?: NullableFloatFieldUpdateOperationsInput | number | null;
+    war?: NullableFloatFieldUpdateOperationsInput | number | null;
+    ver?: NullableFloatFieldUpdateOperationsInput | number | null;
+    vhr?: NullableFloatFieldUpdateOperationsInput | number | null;
+    lcz?: NullableStringFieldUpdateOperationsInput | string | null;
+    lcz_int?: NullableIntFieldUpdateOperationsInput | number | null;
+  };
+
+  export type lcz_bayonne_testUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number;
+    identifier?: NullableStringFieldUpdateOperationsInput | string | null;
+    hre?: NullableFloatFieldUpdateOperationsInput | number | null;
+    are?: NullableFloatFieldUpdateOperationsInput | number | null;
+    bur?: NullableFloatFieldUpdateOperationsInput | number | null;
+    ror?: NullableFloatFieldUpdateOperationsInput | number | null;
+    bsr?: NullableFloatFieldUpdateOperationsInput | number | null;
+    war?: NullableFloatFieldUpdateOperationsInput | number | null;
+    ver?: NullableFloatFieldUpdateOperationsInput | number | null;
+    vhr?: NullableFloatFieldUpdateOperationsInput | number | null;
+    lcz?: NullableStringFieldUpdateOperationsInput | string | null;
+    lcz_int?: NullableIntFieldUpdateOperationsInput | number | null;
   };
 
   export type BigIntFilter<$PrismaModel = never> = {
@@ -26428,6 +27960,77 @@ export namespace Prisma {
     surfcom2023?: SortOrder;
   };
 
+  export type lcz_bayonne_testCountOrderByAggregateInput = {
+    pk?: SortOrder;
+    identifier?: SortOrder;
+    hre?: SortOrder;
+    are?: SortOrder;
+    bur?: SortOrder;
+    ror?: SortOrder;
+    bsr?: SortOrder;
+    war?: SortOrder;
+    ver?: SortOrder;
+    vhr?: SortOrder;
+    lcz?: SortOrder;
+    lcz_int?: SortOrder;
+  };
+
+  export type lcz_bayonne_testAvgOrderByAggregateInput = {
+    pk?: SortOrder;
+    hre?: SortOrder;
+    are?: SortOrder;
+    bur?: SortOrder;
+    ror?: SortOrder;
+    bsr?: SortOrder;
+    war?: SortOrder;
+    ver?: SortOrder;
+    vhr?: SortOrder;
+    lcz_int?: SortOrder;
+  };
+
+  export type lcz_bayonne_testMaxOrderByAggregateInput = {
+    pk?: SortOrder;
+    identifier?: SortOrder;
+    hre?: SortOrder;
+    are?: SortOrder;
+    bur?: SortOrder;
+    ror?: SortOrder;
+    bsr?: SortOrder;
+    war?: SortOrder;
+    ver?: SortOrder;
+    vhr?: SortOrder;
+    lcz?: SortOrder;
+    lcz_int?: SortOrder;
+  };
+
+  export type lcz_bayonne_testMinOrderByAggregateInput = {
+    pk?: SortOrder;
+    identifier?: SortOrder;
+    hre?: SortOrder;
+    are?: SortOrder;
+    bur?: SortOrder;
+    ror?: SortOrder;
+    bsr?: SortOrder;
+    war?: SortOrder;
+    ver?: SortOrder;
+    vhr?: SortOrder;
+    lcz?: SortOrder;
+    lcz_int?: SortOrder;
+  };
+
+  export type lcz_bayonne_testSumOrderByAggregateInput = {
+    pk?: SortOrder;
+    hre?: SortOrder;
+    are?: SortOrder;
+    bur?: SortOrder;
+    ror?: SortOrder;
+    bsr?: SortOrder;
+    war?: SortOrder;
+    ver?: SortOrder;
+    vhr?: SortOrder;
+    lcz_int?: SortOrder;
+  };
+
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number;
     increment?: bigint | number;
@@ -26757,6 +28360,12 @@ export namespace Prisma {
   export type consommation_espaces_nafArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = consommation_espaces_nafDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use lcz_bayonne_testDefaultArgs instead
+   */
+  export type lcz_bayonne_testArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = lcz_bayonne_testDefaultArgs<ExtArgs>;
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
