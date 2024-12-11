@@ -15,12 +15,12 @@ exports.Prisma = Prisma;
 exports.$Enums = {};
 
 /**
- * Prisma Client JS version: 5.22.0
- * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
+ * Prisma Client JS version: 5.20.0
+ * Query Engine version: 5dbef10bdbfb579e07d35cc85fb1518d357cb99e
  */
 Prisma.prismaVersion = {
-  client: '5.22.0',
-  engine: '605197351a3c8bdd595af2d2a9bc3025bca48ea2'
+  client: '5.20.0',
+  engine: '5dbef10bdbfb579e07d35cc85fb1518d357cb99e'
 };
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -452,6 +452,21 @@ exports.Prisma.Consommation_espaces_nafScalarFieldEnum = {
   surfcom2023: 'surfcom2023'
 };
 
+exports.Prisma.Lcz_bayonne_testScalarFieldEnum = {
+  pk: 'pk',
+  identifier: 'identifier',
+  hre: 'hre',
+  are: 'are',
+  bur: 'bur',
+  ror: 'ror',
+  bsr: 'bsr',
+  war: 'war',
+  ver: 'ver',
+  vhr: 'vhr',
+  lcz: 'lcz',
+  lcz_int: 'lcz_int'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -480,7 +495,8 @@ exports.Prisma.ModelName = {
   epci: 'epci',
   surfaces_protegees: 'surfaces_protegees',
   spatial_ref_sys: 'spatial_ref_sys',
-  consommation_espaces_naf: 'consommation_espaces_naf'
+  consommation_espaces_naf: 'consommation_espaces_naf',
+  lcz_bayonne_test: 'lcz_bayonne_test'
 };
 
 /**

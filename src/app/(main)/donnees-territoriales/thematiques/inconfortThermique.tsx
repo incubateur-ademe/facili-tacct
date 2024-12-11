@@ -1,6 +1,7 @@
 import { Loader } from '@/components/loader';
 import { NoticeComp } from '@/dsfr/base/Notice';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
+import { GetLCZBayonne } from '@/lib/queries/postgis/lcz';
 import { GetCollectivite } from '@/lib/queries/searchBar';
 import { GetInconfortThermiqueDepartment } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/utils/themes';
@@ -17,6 +18,7 @@ const InconfortThermique = async (searchParams: SearchParams) => {
   const codepci = searchParams.searchParams.codepci;
   const codgeo = searchParams.searchParams.codgeo;
   const dbInconfortThermique = await GetInconfortThermiqueDepartment(codepci);
+  const LCZBayonne = await GetLCZBayonne();
 
   const collectivite = codgeo
     ? await GetCollectivite(codgeo)
@@ -24,7 +26,6 @@ const InconfortThermique = async (searchParams: SearchParams) => {
       ? await GetCollectivite(codepci)
       : void 0;
   const carteCommunes = await GetCommunes(codepci);
-  // const departement = !codgeo ? await GetInconfortThermiqueDepartment(codepci) : [];
 
   return (
     <div>
@@ -38,7 +39,7 @@ const InconfortThermique = async (searchParams: SearchParams) => {
           inconfortThermique={dbInconfortThermique!}
           carteCommunes={carteCommunes}
           collectivite={collectivite!}
-          // departement={departement}
+          LCZBayonne={LCZBayonne}
         />
       </div>
     </div>
