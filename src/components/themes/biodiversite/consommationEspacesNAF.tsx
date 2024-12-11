@@ -1,4 +1,5 @@
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
 import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { useSearchParams } from 'next/navigation';
@@ -16,10 +17,18 @@ export const ConsommationEspacesNAF = (props: {
     titre: string;
   }>;
 }) => {
-  const { consommationNAF } = props;
+  const { consommationNAF, carteCommunes } = props;
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
+
+  const carteCommunesEnriched = carteCommunes.map((el) => {
+    return {
+      ...el,
+      naf: 'naf'
+    };
+  });
+  const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
 
   const title = (
     <>
@@ -47,7 +56,10 @@ export const ConsommationEspacesNAF = (props: {
             </div>
           </div>
           <div className="w-2/3">
-            <ConsommationEspacesNAFDataviz consommationNAF={consommationNAF} />
+            <ConsommationEspacesNAFDataviz
+              consommationNAF={consommationNAF}
+              carteCommunes={communesMap}
+            />
           </div>
         </div>
       ) : (
