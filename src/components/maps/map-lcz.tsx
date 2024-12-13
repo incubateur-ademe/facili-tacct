@@ -62,9 +62,9 @@ const getColor = (d: any) => {
 export const MapLCZ = (props: {
   carteCommunes: CommunesIndicateursDto[];
   collectivite: CollectivitesSearchbar[];
-  LCZBayonne: any[];
+  // LCZBayonne: any[];
 }) => {
-  const { carteCommunes, collectivite, LCZBayonne } = props;
+  const { carteCommunes, collectivite } = props;
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo');
   const codepci = searchParams.get('codepci')!;
@@ -124,11 +124,11 @@ export const MapLCZ = (props: {
             url="https://lcz-generator.rub.de/tms-inverted/global-map-tiles/v3/{z}/{x}/{y}.png"
             opacity={0.4}
           />
-          <GeoJSON
+          {/* <GeoJSON
             ref={mapRef}
             data={LCZBayonne as unknown as GeoJsonObject}
             style={style2}
-          />
+          /> */}
           <GeoJSON
             ref={mapRef}
             data={carteCommunes as unknown as GeoJsonObject}
