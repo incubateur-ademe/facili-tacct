@@ -1,26 +1,23 @@
 'use client';
 import { MapLCZ } from '@/components/maps/map-lcz';
-import {
-  CommunesIndicateursMapper,
-  LCZBayonneMapper
-} from '@/lib/mapper/communes';
+import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, CollectivitesSearchbar } from '@/lib/postgres/models';
 import styles from './themes.module.scss';
 
 const LCZ = ({
   carteCommunes,
-  collectivite,
-  LCZBayonne
+  collectivite
+  // LCZBayonne
 }: {
   carteCommunes: CarteCommunes[];
   collectivite: CollectivitesSearchbar[];
-  LCZBayonne: any[];
+  // LCZBayonne: any[];
 }) => {
   // const searchParams = useSearchParams();
   // const codgeo = searchParams.get("codgeo");
   // const codepci = searchParams.get("codepci")!;
   const communesMap = carteCommunes.map(CommunesIndicateursMapper);
-  const LCZMap = LCZBayonne.map(LCZBayonneMapper);
+  // const LCZMap = LCZBayonne.map(LCZBayonneMapper);
   // const commune = codgeo ? communesMap.find((obj) => obj.properties["code_commune"] === codgeo) : undefined;
   return (
     <div className={styles.container}>
@@ -65,7 +62,7 @@ const LCZ = ({
             <MapLCZ
               carteCommunes={communesMap}
               collectivite={collectivite}
-              LCZBayonne={LCZMap}
+              // LCZBayonne={LCZMap}
             />
           </div>
         </div>
