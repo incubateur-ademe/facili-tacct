@@ -23,8 +23,6 @@ fileignoreconfig:
   checksum: a0e61fcbfaf5371d2ec3726f6f7d5e8013f0e84261c930720e23a780c07e7457
 - filename: src/generated/client/runtime/edge.js
   checksum: 003b26939f55c47694f49b5624bf46952a31df574683660f49427f679f2fedad
-- filename: pnpm-lock.yaml
-  checksum: 75a822a29cf8d2a17156789850b2a0249c37287e3d36876895ac4a79122a0eab
 - filename: src/generated/client/runtime/library.d.ts
   checksum: f5f963b66bbacaf3f109afbfa29c2587dfcc63e8bf7dd5406bd8a952863f3190
 - filename: src/app/(main)/_explication/components/sante.tsx
@@ -47,4 +45,6 @@ fileignoreconfig:
   checksum: c6f188d0d38060f780f658a5db55bdd8a588a0a4fde7881e571d03b932400615
 - filename: next.config.mjs
   checksum: b8131b68d6a045316672dd3288c966e4d35ee4e707f1368918d735baf2a5ee83
+- filename: pnpm-lock.yaml
+  checksum: a0407d1efee095b699e644419ea8e2aafa665b743b83436688afd5b06f596ce5
 version: ""
