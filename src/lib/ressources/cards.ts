@@ -169,7 +169,7 @@ export const cards = {
       titre: 'Plus Fraîche Ma Ville',
       tag: "Article",
       description:"Trouvez les bonnes solutions pour rafraîchir durablement votre collectivité.",
-      link: "https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/milieux/foret"
+      link: "https://plusfraichemaville.fr/"
     },
     {
       id: 1,
