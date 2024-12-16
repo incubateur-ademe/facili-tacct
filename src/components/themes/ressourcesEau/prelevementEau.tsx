@@ -60,7 +60,7 @@ export const PrelevementEau = (props: {
       Cependant, les usages exonérés de redevance (aquaculture, géothermie, lutte antigel de cultures pérennes, réalimentation de milieux naturels, etc.) 
       ne figurent pas dans la base de données.
     </div><br></br>
-    <div>En outre-mer, la lutte contre les incendies et la production d’énergie renouvelable sont également exonérés.</div>
+    <div>En outre-mer, la lutte contre les incendies et la production d’énergie renouvelable sont également exonérées.</div>
   </>
 
   return (

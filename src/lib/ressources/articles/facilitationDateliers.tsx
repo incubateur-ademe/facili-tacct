@@ -12,7 +12,7 @@ const FacilitationDateliers = () => {
       <h1>La facilitation d’ateliers : une démarche éprouvée d’engagement</h1>
       <div className={styles.textBloc}>
         <p>
-          23.04.24, nous organisions un atelier autour du <b>rôle de la facilitation d’ateliers dans la mobilisation.</b>
+          Le 23.04.24, nous organisions un atelier autour du <b>rôle de la facilitation d’ateliers dans la mobilisation.</b>
         </p>
         <b>Nos intervenant-es :</b> Louis & Mathilde de Caluire-et-Cuire.
         <ul>
