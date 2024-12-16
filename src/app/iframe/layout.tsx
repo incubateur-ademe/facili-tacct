@@ -1,3 +1,4 @@
+import '@iframe-resizer/child';
 import '../global.css';
 
 import RootLayout from '@/app/layout';
