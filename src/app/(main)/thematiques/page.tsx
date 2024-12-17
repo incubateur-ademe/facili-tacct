@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Thématiques'
 };
 
-const Thematiques = () => {
+const Thematiques = async () => {
   return (
     <>
       <Container size="xl">
