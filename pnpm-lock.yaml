@@ -88,9 +88,6 @@ importers:
       pg:
         specifier: ^8.11.5
         version: 8.13.0
-      polygon-clipping:
-        specifier: ^0.15.7
-        version: 0.15.7
       posthog-js:
         specifier: ^1.194.3
         version: 1.194.3
