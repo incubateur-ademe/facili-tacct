@@ -60,7 +60,7 @@ const SurfacesProtegeesDataviz = (props: {
   const territoireContourMap = carteCommunes.map(CommunesContourMapper);
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
-  const [datavizTab, setDatavizTab] = useState<string>('Chiffre');
+  const [datavizTab, setDatavizTab] = useState<string>('Cartographie');
   const [surfacesProtegeesSurfaces, setSurfacesProtegeesSurfaces] =
     useState<number>(0);
   const filteredData = codgeo
@@ -74,13 +74,6 @@ const SurfacesProtegeesDataviz = (props: {
     : carteCommunes.map((el) => el.surface).reduce((a, b) => a + b, 0);
   const data = SurfacesProtegeesGraphMapper(filteredData);
 
-  // console.log("surfaceTerritoire", surfaceTerritoire);
-  // console.log("surfacesProtegees", surfacesProtegees);
-  // console.log("surfacesProtegeesSurfaces", surfacesProtegeesSurfaces);
-
-  // Calculer surfaces tou_pro
-  // console.log("Surfaces tou_pro", Filter(surfacesProtegees.filter(e => e.code_geographique === codgeo), "TOU_PRO"));
-
   useEffect(() => {
     const surfaceTemp = data.children.map((e) => {
       const children = e.children!;
@@ -90,22 +83,31 @@ const SurfacesProtegeesDataviz = (props: {
     setSurfacesProtegeesSurfaces(sum);
   }, []);
 
-  const varSurfacesProtegees = Round(
-    100 *
-      (Filter(
-        surfacesProtegees.filter((e) => e.code_geographique === codgeo),
-        'TOU_PRO'
-      ) /
-        surfaceTerritoire),
-    1
-  );
+  const varSurfacesProtegees = codgeo
+    ? Round(
+        100 *
+          (Filter(
+            surfacesProtegees.filter((e) => e.code_geographique === codgeo),
+            'TOU_PRO'
+          ) /
+            surfaceTerritoire),
+        1
+      )
+    : Round(
+        100 *
+          (surfacesProtegees
+            .map((e) => Number(e.TOU_PRO))
+            .reduce((a, b) => a + (b || 0), 0) /
+            surfaceTerritoire),
+        1
+      );
 
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.dataVizGraphTitleWrapper}>
         <h2>Surfaces protégées</h2>
         <SubTabs
-          data={['Répartition', 'Chiffre']}
+          data={['Cartographie', 'Répartition']}
           defaultTab={datavizTab}
           setValue={setDatavizTab}
         />
@@ -155,7 +157,7 @@ const SurfacesProtegeesDataviz = (props: {
             )}
           />
         </div>
-      ) : (
+      ) : datavizTab === 'Cartographie' ? (
         <>
           <div
             style={{
@@ -167,17 +169,15 @@ const SurfacesProtegeesDataviz = (props: {
               flexDirection: 'column'
             }}
           >
-            <h4 style={{ alignSelf: 'center' }}>
-              Pourcentage de surfaces protégées : {varSurfacesProtegees} %
-            </h4>
             <MapContourTerritoire
               territoireContours={filteredTerritoire}
               pourcentage={varSurfacesProtegees}
             />
           </div>
         </>
+      ) : (
+        ''
       )}
-
       <p style={{ padding: '1em', margin: '0' }}>Source : SDES</p>
     </div>
   );

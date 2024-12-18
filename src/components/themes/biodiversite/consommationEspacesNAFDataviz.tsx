@@ -1,9 +1,6 @@
 'use client';
 
-import { ConsommationEspacesNAFBarChart } from '@/components/charts/biodiversite/consommationEspacesNAFBarChart';
 import { MapEspacesNaf } from '@/components/maps/mapEspacesNAF';
-import RangeSlider from '@/components/Slider';
-import SubTabs from '@/components/SubTabs';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { ConsommationNAF } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
@@ -26,15 +23,21 @@ export const ConsommationEspacesNAFDataviz = (props: {
 
   return (
     <div className={styles.graphWrapper}>
-      <div className={styles.biodiversiteGraphTitleWrapper}>
+      <div
+        className={styles.biodiversiteGraphTitleWrapper}
+        style={{ padding: '1rem' }}
+      >
         <h2>Évolution espaces NAF</h2>
-        <SubTabs
+        {/* <SubTabs
           data={['Évolution', 'Répartition', 'Cartographie']}
           defaultTab={datavizTab}
           setValue={setDatavizTab}
-        />
+        /> */}
       </div>
-      {datavizTab === 'Évolution' ? (
+      <>
+        <MapEspacesNaf carteCommunes={carteCommunes} />
+      </>
+      {/* {datavizTab === 'Évolution' ? (
         <>
           <div className={styles.biodiversiteGraphFiltersWrapper}>
             <SubTabs
@@ -72,7 +75,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
         <>
           <MapEspacesNaf carteCommunes={carteCommunes} />
         </>
-      )}
+      )} */}
     </div>
   );
 };
