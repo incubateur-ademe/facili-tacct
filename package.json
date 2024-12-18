@@ -49,7 +49,6 @@
     "leaflet": "^1.9.4",
     "next": "^14.2.3",
     "pg": "^8.11.5",
-    "polygon-clipping": "^0.15.7",
     "posthog-js": "^1.194.3",
     "prisma-client-a2fb8a8ee4cc7c24999c8915b98945fef0ad4314bf39866168cc2d4ca99282fa": "link:src\\generated\\client",
     "react": "^18",
