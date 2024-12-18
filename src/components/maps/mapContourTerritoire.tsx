@@ -3,11 +3,18 @@
 import { CommunesContoursDto } from '@/lib/dto';
 import { MapContainer } from '@/lib/react-leaflet';
 import * as turf from '@turf/turf';
-import { GeoJsonObject } from 'geojson';
+import {
+  Feature,
+  GeoJsonObject,
+  GeoJsonProperties,
+  MultiPolygon,
+  Polygon
+} from 'geojson';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useRef, useState } from 'react';
-import { GeoJSON, TileLayer, useMap } from 'react-leaflet';
+import { GeoJSON, TileLayer } from 'react-leaflet';
+import { Loader } from '../loader';
 
 export const MapContourTerritoire = (props: {
   territoireContours: CommunesContoursDto[];
@@ -15,56 +22,95 @@ export const MapContourTerritoire = (props: {
 }) => {
   const { territoireContours, pourcentage } = props;
   const mapRef = useRef(null);
-  const [data, setData] = useState<CommunesContoursDto[]>([]);
+  const [bounds, setBounds] = useState<number[]>([0, 0, 0, 0]);
+  const south = bounds[1];
+  const north = bounds[3];
+  const hauteurTerritoire = north - south;
+  const newValue = south + (hauteurTerritoire * pourcentage) / 100;
 
-  const south = 45.433554862;
-  const north = 45.802437758;
-
-  var hauteurTerritoire = north - south;
-  var percent = 90;
-  var newValue = south + (hauteurTerritoire * percent) / 100;
-
-  var polygon = turf.polygon([
+  const polygon = turf.polygon([
     [
-      [-1.243793323, 45.433554862],
-      [-0.707834253, 45.433554862],
-      [-0.707834253, newValue],
-      [-1.243793323, newValue],
-      [-1.243793323, 45.433554862]
+      [bounds[0], bounds[1]],
+      [bounds[2], bounds[1]],
+      [bounds[2], newValue],
+      [bounds[0], newValue],
+      [bounds[0], bounds[1]]
     ]
   ]);
 
-  var union = turf.union(turf.featureCollection(territoireContours as any));
+  const geojsonObject = L.geoJSON(
+    territoireContours as unknown as GeoJsonObject
+  );
+  useEffect(() => {
+    setBounds(geojsonObject.getBounds().toBBoxString().split(',').map(Number));
+  }, []);
+  const union =
+    territoireContours.length > 1
+      ? turf.union(
+          turf.featureCollection(
+            territoireContours as Feature<
+              Polygon | MultiPolygon,
+              GeoJsonProperties
+            >[]
+          )
+        )
+      : territoireContours[0];
+  const intersect = union
+    ? turf.intersect(
+        turf.featureCollection([
+          polygon,
+          union as Feature<Polygon, GeoJsonProperties>
+        ])
+      )
+    : null;
 
-  var intersect = turf.intersect(turf.featureCollection([polygon, union]));
-  // console.log("intersect", intersect);
-
-  // console.log("union", union);
-
-  const ContourTerritoire = () => {
-    const map = useMap();
-    useEffect(() => {
-      setData(territoireContours);
-    }, [territoireContours]);
-
-    if (data.length > 0) {
-      const geojsonObject = L.geoJSON(data as unknown as GeoJsonObject);
-      // const polygonLayer = L.geoJSON(polygon);
-
-      map.fitBounds(geojsonObject.getBounds());
-      // setBounds(geojsonObject.getBounds().toBBoxString().split(",").map(Number));
-      return (
-        <>
-          <GeoJSON
-            ref={mapRef}
-            data={intersect as unknown as GeoJsonObject}
+  return (
+    <>
+      {bounds[0] != 0 ? (
+        <MapContainer
+          ref={mapRef}
+          style={{
+            height: '100%',
+            width: '100%',
+            backgroundColor: 'rgb(251, 251, 251)',
+            display: 'flex'
+          }}
+          attributionControl={false}
+          zoomControl={false}
+          scrollWheelZoom={false}
+          dragging={false}
+          bounds={[
+            [bounds[1], bounds[0]],
+            [bounds[3], bounds[2]]
+          ]}
+          boundsOptions={{ padding: [0, 0] }}
+        >
+          <div
             style={{
-              color: '#00C190',
-              weight: 1,
-              fillColor: '#00C190',
-              opacity: 1,
-              fillOpacity: 1
+              display: 'flex',
+              alignSelf: 'center',
+              zIndex: '501',
+              margin: 'auto',
+              backgroundColor: 'white',
+              padding: '0.5rem',
+              borderRadius: '0.5rem',
+              boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px'
             }}
+          >
+            <p
+              style={{
+                fontSize: '24px',
+                fontFamily: 'Marianne',
+                fontWeight: '700',
+                margin: '0'
+              }}
+            >
+              {pourcentage} %
+            </p>
+          </div>
+          <TileLayer
+            attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
           />
           <GeoJSON
             ref={mapRef}
@@ -72,69 +118,25 @@ export const MapContourTerritoire = (props: {
             style={{
               color: '#161616',
               weight: 1,
-              fillColor: 'transparent',
+              fillColor: '#DFDFDF',
+              fillOpacity: 1,
               opacity: 1
             }}
           />
-        </>
-      );
-    } else {
-      return null;
-    }
-  };
-
-  const style = () => {
-    return {
-      fillColor: 'transparent',
-      weight: 1,
-      opacity: 1,
-      color: '#161616',
-      fillOpacity: 1
-    };
-  };
-
-  return (
-    <MapContainer
-      ref={mapRef}
-      style={{
-        height: '100%',
-        width: '100%',
-        backgroundColor: 'rgb(251, 251, 251)',
-        display: 'flex'
-      }}
-      attributionControl={false}
-      zoomControl={false}
-      zoom={7}
-      scrollWheelZoom={false}
-      dragging={false}
-      boundsOptions={{ padding: [0, 0] }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          alignSelf: 'center',
-          zIndex: '501',
-          margin: 'auto',
-          backgroundColor: 'white',
-          padding: '1rem'
-        }}
-      >
-        <p
-          style={{
-            fontSize: '24px',
-            fontFamily: 'Marianne',
-            fontWeight: '700',
-            margin: '0'
-          }}
-        >
-          {percent} %
-        </p>
-      </div>
-      <TileLayer
-        attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
-      />
-      <ContourTerritoire />
-    </MapContainer>
+          <GeoJSON
+            ref={mapRef}
+            data={intersect as unknown as GeoJsonObject}
+            style={{
+              color: 'none',
+              fillColor: '#00C190',
+              opacity: 1,
+              fillOpacity: 1
+            }}
+          />
+        </MapContainer>
+      ) : (
+        <Loader />
+      )}
+    </>
   );
 };
