@@ -108,7 +108,7 @@ export const MapContourTerritoire = (props: {
               {pourcentage} %
             </p>
           </div>
-          {process.env.ENV === 'preprod' ? (
+          {process.env.NEXT_PUBLIC_ENV === 'preprod' ? (
             <TileLayer
               attribution='<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://tile.jawg.io/jawg-sunny/{z}/{x}/{y}{r}.png?access-token=MBbcKi3EyFqyyHvvHVbfnE4iOJ34FiUs1yWbVID476VAReeeO0NdrKWg6FljGBIC"
