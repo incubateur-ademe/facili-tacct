@@ -2,8 +2,7 @@ import { SurfacesProtegeesDto } from '@/lib/dto';
 import { HtmlTooltip } from '@/lib/utils/HtmlTooltip';
 import { Any } from '@/lib/utils/types';
 import { ResponsiveTreeMap } from '@nivo/treemap';
-import styles from '../themes/biodiversite/biodiversite.module.scss';
-import './nivo.scss';
+import styles from '../../themes/biodiversite/biodiversite.module.scss';
 
 type GraphData = {
   name: string;
@@ -34,7 +33,11 @@ const filterNullValues = (data: SurfacesProtegeesDto) => {
   return Object.fromEntries(newEntries);
 };
 
-export const NivoTreeMap = ({ data }: { data: SurfacesProtegeesDto }) => {
+export const SurfacesProtegeesTreeMap = ({
+  data
+}: {
+  data: SurfacesProtegeesDto;
+}) => {
   return (
     <div
       style={{
@@ -115,12 +118,6 @@ export const NivoTreeMap = ({ data }: { data: SurfacesProtegeesDto }) => {
             </g>
           );
         }}
-        onMouseEnter={(e) => {
-          console.log(e);
-        }}
-        onClick={(e) => {
-          console.log(e);
-        }}
         identity="name"
         value="loc"
         valueFormat=">-.0f"
@@ -143,17 +140,6 @@ export const NivoTreeMap = ({ data }: { data: SurfacesProtegeesDto }) => {
         // borderColor={{
         //   from: 'color'
         // }}
-        tooltip={({ node }) => (
-          <div className={styles.tooltipSurfacesProtegeesWrapper}>
-            <div
-              className={styles.color}
-              style={{ backgroundColor: node.color }}
-            ></div>
-            <p>
-              <b>{node.id}</b> : {node.formattedValue} ha
-            </p>
-          </div>
-        )}
       />
     </div>
   );
