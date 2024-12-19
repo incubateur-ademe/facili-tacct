@@ -49,4 +49,6 @@ fileignoreconfig:
   checksum: 833f759dc62d11cdb9f33635bd92d7af28cbbf00ed41e1d4b56c02fa614a802b
 - filename: pnpm-lock.yaml
   checksum: 602f7a01f92af0297cf1e1bae7ae37f0cc2cb9955e929da3649fd4cb58ae7612
+- filename: src/components/themes/biodiversite/surfacesProtegeesDataviz.tsx
+  checksum: 3f38362dab8e71f11ef6bc7c9e8eb259240ef8cb2037298f5cdf030cb13f085d
 version: ""
