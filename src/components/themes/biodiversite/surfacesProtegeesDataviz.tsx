@@ -1,6 +1,6 @@
 'use client';
 
-import { NivoTreeMap } from '@/components/charts/NivoTreeMap';
+import { SurfacesProtegeesTreeMap } from '@/components/charts/biodiversite/surfacesProtegeesTreeMap';
 import { MapContourTerritoire } from '@/components/maps/mapContourTerritoire';
 import SubTabs from '@/components/SubTabs';
 import { SurfacesProtegeesGraphMapper } from '@/lib/mapper/biodiversite';
@@ -10,16 +10,6 @@ import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './biodiversite.module.scss';
-
-type GraphData = {
-  name: string;
-  color: string;
-  children: {
-    name: string;
-    color: string;
-    loc: number;
-  }[];
-};
 
 const Filter = (
   sp: SurfacesProtegeesByCol[],
@@ -101,36 +91,17 @@ const SurfacesProtegeesDataviz = (props: {
       </div>
       {datavizTab === 'Répartition' ? (
         <div>
-          <NivoTreeMap data={data} />
-          <div
-            style={{
-              backgroundColor: 'white',
-              padding: '0 2em 1em',
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap',
-              rowGap: '0.25rem'
-            }}
-          >
+          <SurfacesProtegeesTreeMap data={data} />
+          <div className={styles.treemapLegendWrapper}>
             {legends.map((e) => (
-              <div
-                key={e.name}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  flexDirection: 'row',
-                  columnGap: '0.5rem'
-                }}
-              >
+              <div key={e.name} className={styles.legend}>
                 <div
-                  style={{
-                    backgroundColor: e.color,
-                    width: '20px',
-                    height: '20px'
-                  }}
-                ></div>
-                <p className="m-0 p-0">{e.name}</p>
+                  className={styles.color}
+                  style={{ backgroundColor: e.color }}
+                />
+                <p className="m-0 p-0" style={{ fontSize: '16px' }}>
+                  {e.name}
+                </p>
               </div>
             ))}
           </div>
