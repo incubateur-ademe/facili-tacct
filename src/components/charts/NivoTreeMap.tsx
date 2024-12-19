@@ -1,4 +1,5 @@
 import { SurfacesProtegeesDto } from '@/lib/dto';
+import { HtmlTooltip } from '@/lib/utils/HtmlTooltip';
 import { Any } from '@/lib/utils/types';
 import { ResponsiveTreeMap } from '@nivo/treemap';
 import styles from '../themes/biodiversite/biodiversite.module.scss';
@@ -47,15 +48,30 @@ export const NivoTreeMap = ({ data }: { data: SurfacesProtegeesDto }) => {
         nodeComponent={(e: Any) => {
           return (
             <g transform={`translate(${e.node.x},${e.node.y})`}>
-              <rect
-                className="nivo_tree_map_rect"
-                rx={8}
-                width={e.node.width}
-                height={e.node.height}
-                fill={e.node.data.color}
-                fillOpacity={1}
-              />
-              {e.node.height > 20 && e.node.width > 48 ? (
+              <HtmlTooltip
+                placement="left"
+                title={
+                  <div className={styles.tooltipSurfacesProtegeesWrapper}>
+                    <div
+                      className={styles.color}
+                      style={{ backgroundColor: e.node.data.color }}
+                    ></div>
+                    <p>
+                      <b>{e.node.id}</b> : {e.node.formattedValue} ha
+                    </p>
+                  </div>
+                }
+              >
+                <rect
+                  className="nivo_tree_map_rect"
+                  rx={8}
+                  width={e.node.width}
+                  height={e.node.height}
+                  fill={e.node.data.color}
+                  fillOpacity={1}
+                />
+              </HtmlTooltip>
+              {e.node.height > 32 && e.node.width > 48 ? (
                 <>
                   <text
                     x={e.node.width / 2}
@@ -66,7 +82,8 @@ export const NivoTreeMap = ({ data }: { data: SurfacesProtegeesDto }) => {
                       fontSize: 18,
                       fontWeight: 700,
                       fill: '#FFFFFF',
-                      fontFamily: 'Marianne'
+                      fontFamily: 'Marianne',
+                      pointerEvents: 'none'
                     }}
                   >
                     {e.node.formattedValue?.length > e.node.width / 6
@@ -83,7 +100,8 @@ export const NivoTreeMap = ({ data }: { data: SurfacesProtegeesDto }) => {
                       fontSize: 14,
                       fontWeight: 500,
                       fill: '#FFFFFF',
-                      fontFamily: 'Marianne'
+                      fontFamily: 'Marianne',
+                      pointerEvents: 'none'
                     }}
                   >
                     {e.node.id?.length > e.node.width / 8
@@ -120,11 +138,11 @@ export const NivoTreeMap = ({ data }: { data: SurfacesProtegeesDto }) => {
         innerPadding={4}
         nodeOpacity={1}
         // parentLabelTextColor={'#000000'}
-        parentLabelSize={25}
-        labelTextColor={'#FFFFFF'}
-        borderColor={{
-          from: 'color'
-        }}
+        // parentLabelSize={25}
+        // labelTextColor={'#FFFFFF'}
+        // borderColor={{
+        //   from: 'color'
+        // }}
         tooltip={({ node }) => (
           <div className={styles.tooltipSurfacesProtegeesWrapper}>
             <div
