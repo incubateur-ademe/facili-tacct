@@ -54,6 +54,11 @@ const RootLayoutMain = ({ children }: PropsWithChildren) => {
           accessibility="non compliant"
           accessibilityLinkProps={{ href: '/accessibilite' }}
           contentDescription={`${config.name} est un service développé par l'accélérateur de la transition écologique de l'ADEME.`}
+          operatorLogo={{
+            alt: "Logo de l'ADEME",
+            imgUrl: '/logo-ademe.svg',
+            orientation: 'vertical'
+          }}
           bottomItems={[
             {
               text: 'Politique de confidentialité',
