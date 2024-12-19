@@ -62,7 +62,7 @@ export const SurfacesProtegeesGraphMapper = (
         ]
       },
       {
-        name: 'Espaces de protection reglementaire',
+        name: 'Espaces de protection réglementaire',
         color: 'hsl(198, 100%, 43%)',
         children: [
           {
