@@ -109,7 +109,8 @@ const SurfacesProtegeesDataviz = (props: {
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'space-between',
-              flexWrap: 'wrap'
+              flexWrap: 'wrap',
+              rowGap: '0.25rem'
             }}
           >
             {legends.map((e) => (
@@ -118,18 +119,18 @@ const SurfacesProtegeesDataviz = (props: {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  flexDirection: 'row'
+                  flexDirection: 'row',
+                  columnGap: '0.5rem'
                 }}
               >
                 <div
                   style={{
                     backgroundColor: e.color,
                     width: '20px',
-                    height: '20px',
-                    marginRight: '10px'
+                    height: '20px'
                   }}
                 ></div>
-                <p className="m-0 p-2">{e.name}</p>
+                <p className="m-0 p-0">{e.name}</p>
               </div>
             ))}
           </div>
