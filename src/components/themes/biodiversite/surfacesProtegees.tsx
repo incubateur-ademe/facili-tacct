@@ -45,15 +45,13 @@ const SurfacesProtegees = (props: {
     : carteCommunes.map((el) => el.surface).reduce((a, b) => a + b, 0);
 
   const title = (
-    <>
-      <div>Les surfaces protégées :</div>
-      <div>
-        <ul>
-          <li>Lorem ;</li>
-          <li>Ipsum .</li>
-        </ul>
-      </div>
-    </>
+    <div>
+      Les aires protégées de nature réglementaire concernent les parcs
+      nationaux, les réserves naturelles nationales, régionales et de Corse, les
+      arrêtés préfectoraux de biotope / géotope / habitats naturels, les
+      réserves nationales de chasse et de faune sauvage et les réserves
+      biologiques.
+    </div>
   );
 
   return (
@@ -68,18 +66,32 @@ const SurfacesProtegees = (props: {
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
             </div>
             <div className="px-4">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                Les aires protégées constituent un rempart essentiel pour
+                préserver la biodiversité. Face à l'érosion des écosystèmes et
+                au changement climatique, les aires protégées offrent des
+                sanctuaires où la nature peut s'adapter et se régénérer. La
+                France porte une responsabilité particulière avec ses
+                territoires abritant 10% des espèces connues sur la planète.
               </p>
               <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
+                Sur 33 % du territoire français, les aires protégées
+                accomplissent des missions vitales : stocker le carbone dans les
+                forêts et zones humides, faciliter la migration des espèces,
+                maintenir des écosystèmes résilients capables de s’adapter au
+                changement climatique, etc. Un défi qui implique de penser
+                l'équilibre entre préservation stricte et accès au public, pour
+                faire de ces espaces des lieux de sensibilisation aux enjeux
+                climatiques, tout en garantissant leur fonction première :
+                protéger la biodiversité.
+              </p>
+              <p>
+                - - - - <br></br>
+                La Stratégie Nationale pour les Aires Protégées (SNAP) vise à
+                doter la France d'un réseau cohérent d'aires protégées
+                terrestres et marines couvrant, d'ici 2030, au moins 30 % de
+                l'ensemble du territoire national et de l'espace maritime
+                français, dont au moins 10 % en protection forte.
               </p>
             </div>
           </div>
