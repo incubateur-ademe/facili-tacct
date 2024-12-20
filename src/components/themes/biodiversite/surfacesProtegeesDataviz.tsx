@@ -99,25 +99,14 @@ const SurfacesProtegeesDataviz = (props: {
                   className={styles.color}
                   style={{ backgroundColor: e.color }}
                 />
-                <p className="m-0 p-0" style={{ fontSize: '16px' }}>
-                  {e.name}
-                </p>
+                <p className={styles.legendText}>{e.name}</p>
               </div>
             ))}
           </div>
         </div>
       ) : datavizTab === 'Cartographie' ? (
         <>
-          <div
-            style={{
-              backgroundColor: 'white',
-              height: '500px',
-              width: '100%',
-              display: 'flex',
-              alignItems: 'end',
-              flexDirection: 'column'
-            }}
-          >
+          <div className={styles.surfacesProtegeesMapWrapper}>
             <MapContourTerritoire
               territoireContours={filteredTerritoire}
               pourcentage={varSurfacesProtegees}
@@ -127,7 +116,7 @@ const SurfacesProtegeesDataviz = (props: {
       ) : (
         ''
       )}
-      <p style={{ padding: '1em', margin: '0' }}>Source : SDES</p>
+      <p className="m-0 p-4">Source : SDES</p>
     </div>
   );
 };
