@@ -1,5 +1,7 @@
+'use client';
+
 import { SurfacesProtegeesDto } from '@/lib/dto';
-import { HtmlTooltip } from '@/lib/utils/HtmlTooltip';
+import { HtmlTooltipMousePosition } from '@/lib/utils/HtmlTooltip';
 import { Any } from '@/lib/utils/types';
 import { ResponsiveTreeMap } from '@nivo/treemap';
 import styles from '../../themes/biodiversite/biodiversite.module.scss';
@@ -51,8 +53,7 @@ export const SurfacesProtegeesTreeMap = ({
         nodeComponent={(e: Any) => {
           return (
             <g transform={`translate(${e.node.x},${e.node.y})`}>
-              <HtmlTooltip
-                placement="left"
+              <HtmlTooltipMousePosition
                 title={
                   <div className={styles.tooltipSurfacesProtegeesWrapper}>
                     <div
@@ -73,7 +74,7 @@ export const SurfacesProtegeesTreeMap = ({
                   fill={e.node.data.color}
                   fillOpacity={1}
                 />
-              </HtmlTooltip>
+              </HtmlTooltipMousePosition>
               {e.node.height > 32 && e.node.width > 48 ? (
                 <>
                   <text
@@ -124,22 +125,8 @@ export const SurfacesProtegeesTreeMap = ({
         tile="squarify"
         leavesOnly={true}
         margin={{ top: 30, right: 50, bottom: 30, left: 30 }}
-        // labelSkipSize={12}
-        // label={(e) => {
-        //   const maxWidth = e.width / 6;
-        //   return e.id?.length > maxWidth
-        //     ? e.id?.slice(0, maxWidth - 1) + '...'
-        //     : e.id + ' : ' + e.formattedValue + ' ha';
-        // }}
-        // orientLabel={false}
         innerPadding={4}
         nodeOpacity={1}
-        // parentLabelTextColor={'#000000'}
-        // parentLabelSize={25}
-        // labelTextColor={'#FFFFFF'}
-        // borderColor={{
-        //   from: 'color'
-        // }}
       />
     </div>
   );
