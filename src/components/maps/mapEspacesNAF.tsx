@@ -1,21 +1,19 @@
 'use client';
 
-import 'leaflet/dist/leaflet.css';
-
+import { CommunesIndicateursDto } from '@/lib/dto';
+import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
+import { Round } from '@/lib/utils/reusableFunctions/round';
+import { type Any } from '@/lib/utils/types';
+import { Feature, GeoJsonObject } from 'geojson';
 import {
   FeatureGroup,
   Layer,
   LeafletMouseEventHandlerFn,
   type StyleFunction
 } from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
-
-import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
-import { type Any } from '@/lib/utils/types';
-
-import { CommunesIndicateursDto } from '@/lib/dto';
-import { Feature, GeoJsonObject } from 'geojson';
 import { GraphDataNotFound } from '../graph-data-not-found';
 
 const getCentroid = (arr: number[][]) => {
@@ -37,15 +35,17 @@ const getCoordinates = (coords: number[][][]) => {
 };
 
 const getColor = (d: number) => {
-  return d > 20000
-    ? '#FF5E54'
-    : d > 10000
-      ? '#FFBD00'
-      : d > 5000
-        ? '#FFFA6A'
-        : d > 0
-          ? '#D5F4A3'
-          : '#5CFF54';
+  return d > 200000
+    ? '#680000'
+    : d > 100000
+      ? '#B5000E'
+      : d > 50000
+        ? '#E8323B'
+        : d > 20000
+          ? '#FF9699'
+          : d > 10000
+            ? '#FFECEE'
+            : '#D8EFFA';
 };
 
 export const MapEspacesNaf = (props: {
@@ -71,7 +71,7 @@ export const MapEspacesNaf = (props: {
     const typedFeature = feature as CommunesIndicateursDto;
     return {
       fillColor: getColor(typedFeature?.properties.naf ?? 0),
-      weight: 1,
+      weight: typedFeature.properties.code_commune === codgeo ? 3 : 1,
       opacity: 1,
       color: '#161616',
       fillOpacity: 1
@@ -79,9 +79,14 @@ export const MapEspacesNaf = (props: {
   };
 
   const CustomTooltip = (communeName: string, naf: number) => {
-    return `<div style="padding: 1rem">
-        <div style="font-size: 0.75rem; font-family: Marianne; font-weight: 700; padding: 0 0 1rem">${communeName} : ${naf / 10000} hectare(s)</div>
-      </div>`;
+    return `
+      <div style="padding: 0.5rem">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0">
+          <p style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; margin: 0">${communeName} : </p> 
+          <p style="font-size: 0.75rem; font-family: Marianne; font-weight: 700; margin: 0"> ${Round(naf / 10000, 1)} hectare(s)</p>
+        </div>
+      </div>
+    `;
   };
 
   const mouseOnHandler: LeafletMouseEventHandlerFn = (e) => {
@@ -114,8 +119,9 @@ export const MapEspacesNaf = (props: {
     const layer = e.target as FeatureGroup<
       CommunesIndicateursDto['properties']
     >;
+    const codeCommune = e.sourceTarget.feature.properties.code_commune;
     layer.setStyle({
-      weight: 1,
+      weight: codeCommune === codgeo ? 3 : 1,
       color: '#000000',
       fillOpacity: 1
     });
@@ -136,7 +142,7 @@ export const MapEspacesNaf = (props: {
       ) : (
         <MapContainer
           center={[centerCoord[1], centerCoord[0]]}
-          zoom={10}
+          zoom={commune ? 12 : 10}
           ref={mapRef}
           style={{ height: '500px', width: '100%' }}
           attributionControl={false}
