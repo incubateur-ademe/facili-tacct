@@ -51,4 +51,6 @@ fileignoreconfig:
   checksum: 602f7a01f92af0297cf1e1bae7ae37f0cc2cb9955e929da3649fd4cb58ae7612
 - filename: src/components/themes/biodiversite/surfacesProtegeesDataviz.tsx
   checksum: 966e6e9d80fc8aead28526766f23a5963ebc746bf292497c2a2be9879c889702
+- filename: src/components/maps/components/legendCatnat.tsx
+  checksum: 7a838e685ee3cafffa94f6d2d53316bb6a843dd86850769bfa22ddce35587399
 version: ""

@@ -2,7 +2,7 @@ import { useSearchParams } from 'next/navigation';
 
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
-import { Legend } from '@/components/maps/legend';
+import LegendInconfortThermique from '@/components/maps/components/legendInconfortThermique';
 import { Map } from '@/components/maps/map';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes } from '@/lib/postgres/models';
@@ -129,7 +129,7 @@ export const FragiliteEconomique = ({
                       commune au sein de l'EPCI
                     </b>
                   </p>
-                  <Legend data={'precarite_log'} />
+                  <LegendInconfortThermique data={'precarite_log'} />
                   <Map data={'precarite_log'} carteCommunes={communesMap} />
                   <p style={{ padding: '1em', margin: '0' }}>
                     Source : Observation de la précarité énergétique (ONPE),

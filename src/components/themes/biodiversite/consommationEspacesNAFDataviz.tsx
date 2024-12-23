@@ -1,5 +1,6 @@
 'use client';
 
+import { LegendEspacesNAF } from '@/components/maps/components/legendEspacesNAF';
 import { MapEspacesNaf } from '@/components/maps/mapEspacesNAF';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { ConsommationNAF } from '@/lib/postgres/models';
@@ -27,7 +28,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
         className={styles.biodiversiteGraphTitleWrapper}
         style={{ padding: '1rem' }}
       >
-        <h2>Évolution espaces NAF</h2>
+        <h2>Consommation des espaces NAF</h2>
         {/* <SubTabs
           data={['Évolution', 'Répartition', 'Cartographie']}
           defaultTab={datavizTab}
@@ -36,7 +37,14 @@ export const ConsommationEspacesNAFDataviz = (props: {
       </div>
       <>
         <MapEspacesNaf carteCommunes={carteCommunes} />
+        <div
+          className={styles.legend}
+          style={{ width: 'auto', justifyContent: 'center' }}
+        >
+          <LegendEspacesNAF />
+        </div>
       </>
+      <p style={{ padding: '1em', margin: '0' }}>Source : XXXXXX</p>
       {/* {datavizTab === 'Évolution' ? (
         <>
           <div className={styles.biodiversiteGraphFiltersWrapper}>
