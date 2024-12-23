@@ -16,11 +16,11 @@ exports.$Enums = {};
 
 /**
  * Prisma Client JS version: 5.20.0
- * Query Engine version: 5dbef10bdbfb579e07d35cc85fb1518d357cb99e
+ * Query Engine version: 11f085a2012c0f4778414c8db2651556ee0ef959
  */
 Prisma.prismaVersion = {
   client: '5.20.0',
-  engine: '5dbef10bdbfb579e07d35cc85fb1518d357cb99e'
+  engine: '11f085a2012c0f4778414c8db2651556ee0ef959'
 };
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -467,6 +467,12 @@ exports.Prisma.Lcz_bayonne_testScalarFieldEnum = {
   lcz_int: 'lcz_int'
 };
 
+exports.Prisma.North_star_metricScalarFieldEnum = {
+  value: 'value',
+  date: 'date',
+  pk: 'pk'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -496,7 +502,8 @@ exports.Prisma.ModelName = {
   surfaces_protegees: 'surfaces_protegees',
   spatial_ref_sys: 'spatial_ref_sys',
   consommation_espaces_naf: 'consommation_espaces_naf',
-  lcz_bayonne_test: 'lcz_bayonne_test'
+  lcz_bayonne_test: 'lcz_bayonne_test',
+  north_star_metric: 'north_star_metric'
 };
 
 /**
