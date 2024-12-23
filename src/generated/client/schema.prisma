@@ -8,7 +8,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("SCALINGO_POSTGRESQL_URL")
-  schemas  = ["databases", "postgis"]
+  schemas  = ["analytics", "databases", "postgis"]
 }
 
 model inconfort_thermique {
@@ -405,4 +405,12 @@ model lcz_bayonne_test {
 
   @@index([geometry], map: "lcz_bayonne_test_geometry_geom_idx", type: Gist)
   @@schema("postgis")
+}
+
+model north_star_metric {
+  value String   @db.VarChar(32)
+  date  DateTime @db.Timestamp(6)
+  pk    Int      @id
+
+  @@schema("analytics")
 }
