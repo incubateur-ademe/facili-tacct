@@ -93,6 +93,12 @@ export type consommation_espaces_naf =
  */
 export type lcz_bayonne_test =
   $Result.DefaultSelection<Prisma.$lcz_bayonne_testPayload>;
+/**
+ * Model north_star_metric
+ *
+ */
+export type north_star_metric =
+  $Result.DefaultSelection<Prisma.$north_star_metricPayload>;
 
 /**
  * ##  Prisma Client ʲˢ
@@ -389,6 +395,16 @@ export class PrismaClient<
    * ```
    */
   get lcz_bayonne_test(): Prisma.lcz_bayonne_testDelegate<ExtArgs>;
+
+  /**
+   * `prisma.north_star_metric`: Exposes CRUD operations for the **north_star_metric** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more North_star_metrics
+   * const north_star_metrics = await prisma.north_star_metric.findMany()
+   * ```
+   */
+  get north_star_metric(): Prisma.north_star_metricDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -447,7 +463,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 5.20.0
-   * Query Engine version: 5dbef10bdbfb579e07d35cc85fb1518d357cb99e
+   * Query Engine version: 11f085a2012c0f4778414c8db2651556ee0ef959
    */
   export type PrismaVersion = {
     client: string;
@@ -862,6 +878,7 @@ export namespace Prisma {
     spatial_ref_sys: 'spatial_ref_sys';
     consommation_espaces_naf: 'consommation_espaces_naf';
     lcz_bayonne_test: 'lcz_bayonne_test';
+    north_star_metric: 'north_star_metric';
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -900,7 +917,8 @@ export namespace Prisma {
         | 'surfaces_protegees'
         | 'spatial_ref_sys'
         | 'consommation_espaces_naf'
-        | 'lcz_bayonne_test';
+        | 'lcz_bayonne_test'
+        | 'north_star_metric';
       txIsolationLevel: Prisma.TransactionIsolationLevel;
     };
     model: {
@@ -1856,6 +1874,78 @@ export namespace Prisma {
             args: Prisma.lcz_bayonne_testCountArgs<ExtArgs>;
             result:
               | $Utils.Optional<Lcz_bayonne_testCountAggregateOutputType>
+              | number;
+          };
+        };
+      };
+      north_star_metric: {
+        payload: Prisma.$north_star_metricPayload<ExtArgs>;
+        fields: Prisma.north_star_metricFieldRefs;
+        operations: {
+          findUnique: {
+            args: Prisma.north_star_metricFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$north_star_metricPayload> | null;
+          };
+          findUniqueOrThrow: {
+            args: Prisma.north_star_metricFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$north_star_metricPayload>;
+          };
+          findFirst: {
+            args: Prisma.north_star_metricFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$north_star_metricPayload> | null;
+          };
+          findFirstOrThrow: {
+            args: Prisma.north_star_metricFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$north_star_metricPayload>;
+          };
+          findMany: {
+            args: Prisma.north_star_metricFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$north_star_metricPayload>[];
+          };
+          create: {
+            args: Prisma.north_star_metricCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$north_star_metricPayload>;
+          };
+          createMany: {
+            args: Prisma.north_star_metricCreateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          createManyAndReturn: {
+            args: Prisma.north_star_metricCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$north_star_metricPayload>[];
+          };
+          delete: {
+            args: Prisma.north_star_metricDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$north_star_metricPayload>;
+          };
+          update: {
+            args: Prisma.north_star_metricUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$north_star_metricPayload>;
+          };
+          deleteMany: {
+            args: Prisma.north_star_metricDeleteManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateMany: {
+            args: Prisma.north_star_metricUpdateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          upsert: {
+            args: Prisma.north_star_metricUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$north_star_metricPayload>;
+          };
+          aggregate: {
+            args: Prisma.North_star_metricAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregateNorth_star_metric>;
+          };
+          groupBy: {
+            args: Prisma.north_star_metricGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<North_star_metricGroupByOutputType>[];
+          };
+          count: {
+            args: Prisma.north_star_metricCountArgs<ExtArgs>;
+            result:
+              | $Utils.Optional<North_star_metricCountAggregateOutputType>
               | number;
           };
         };
@@ -20608,6 +20698,1090 @@ export namespace Prisma {
   };
 
   /**
+   * Model north_star_metric
+   */
+
+  export type AggregateNorth_star_metric = {
+    _count: North_star_metricCountAggregateOutputType | null;
+    _avg: North_star_metricAvgAggregateOutputType | null;
+    _sum: North_star_metricSumAggregateOutputType | null;
+    _min: North_star_metricMinAggregateOutputType | null;
+    _max: North_star_metricMaxAggregateOutputType | null;
+  };
+
+  export type North_star_metricAvgAggregateOutputType = {
+    pk: number | null;
+  };
+
+  export type North_star_metricSumAggregateOutputType = {
+    pk: number | null;
+  };
+
+  export type North_star_metricMinAggregateOutputType = {
+    value: string | null;
+    date: Date | null;
+    pk: number | null;
+  };
+
+  export type North_star_metricMaxAggregateOutputType = {
+    value: string | null;
+    date: Date | null;
+    pk: number | null;
+  };
+
+  export type North_star_metricCountAggregateOutputType = {
+    value: number;
+    date: number;
+    pk: number;
+    _all: number;
+  };
+
+  export type North_star_metricAvgAggregateInputType = {
+    pk?: true;
+  };
+
+  export type North_star_metricSumAggregateInputType = {
+    pk?: true;
+  };
+
+  export type North_star_metricMinAggregateInputType = {
+    value?: true;
+    date?: true;
+    pk?: true;
+  };
+
+  export type North_star_metricMaxAggregateInputType = {
+    value?: true;
+    date?: true;
+    pk?: true;
+  };
+
+  export type North_star_metricCountAggregateInputType = {
+    value?: true;
+    date?: true;
+    pk?: true;
+    _all?: true;
+  };
+
+  export type North_star_metricAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which north_star_metric to aggregate.
+     */
+    where?: north_star_metricWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of north_star_metrics to fetch.
+     */
+    orderBy?:
+      | north_star_metricOrderByWithRelationInput
+      | north_star_metricOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: north_star_metricWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` north_star_metrics from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` north_star_metrics.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned north_star_metrics
+     **/
+    _count?: true | North_star_metricCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: North_star_metricAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: North_star_metricSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: North_star_metricMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: North_star_metricMaxAggregateInputType;
+  };
+
+  export type GetNorth_star_metricAggregateType<
+    T extends North_star_metricAggregateArgs
+  > = {
+    [P in keyof T & keyof AggregateNorth_star_metric]: P extends
+      | '_count'
+      | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNorth_star_metric[P]>
+      : GetScalarType<T[P], AggregateNorth_star_metric[P]>;
+  };
+
+  export type north_star_metricGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    where?: north_star_metricWhereInput;
+    orderBy?:
+      | north_star_metricOrderByWithAggregationInput
+      | north_star_metricOrderByWithAggregationInput[];
+    by: North_star_metricScalarFieldEnum[] | North_star_metricScalarFieldEnum;
+    having?: north_star_metricScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: North_star_metricCountAggregateInputType | true;
+    _avg?: North_star_metricAvgAggregateInputType;
+    _sum?: North_star_metricSumAggregateInputType;
+    _min?: North_star_metricMinAggregateInputType;
+    _max?: North_star_metricMaxAggregateInputType;
+  };
+
+  export type North_star_metricGroupByOutputType = {
+    value: string;
+    date: Date;
+    pk: number;
+    _count: North_star_metricCountAggregateOutputType | null;
+    _avg: North_star_metricAvgAggregateOutputType | null;
+    _sum: North_star_metricSumAggregateOutputType | null;
+    _min: North_star_metricMinAggregateOutputType | null;
+    _max: North_star_metricMaxAggregateOutputType | null;
+  };
+
+  type GetNorth_star_metricGroupByPayload<
+    T extends north_star_metricGroupByArgs
+  > = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<North_star_metricGroupByOutputType, T['by']> & {
+        [P in keyof T &
+          keyof North_star_metricGroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : GetScalarType<T[P], North_star_metricGroupByOutputType[P]>
+          : GetScalarType<T[P], North_star_metricGroupByOutputType[P]>;
+      }
+    >
+  >;
+
+  export type north_star_metricSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      value?: boolean;
+      date?: boolean;
+      pk?: boolean;
+    },
+    ExtArgs['result']['north_star_metric']
+  >;
+
+  export type north_star_metricSelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      value?: boolean;
+      date?: boolean;
+      pk?: boolean;
+    },
+    ExtArgs['result']['north_star_metric']
+  >;
+
+  export type north_star_metricSelectScalar = {
+    value?: boolean;
+    date?: boolean;
+    pk?: boolean;
+  };
+
+  export type $north_star_metricPayload<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    name: 'north_star_metric';
+    objects: {};
+    scalars: $Extensions.GetPayloadResult<
+      {
+        value: string;
+        date: Date;
+        pk: number;
+      },
+      ExtArgs['result']['north_star_metric']
+    >;
+    composites: {};
+  };
+
+  type north_star_metricGetPayload<
+    S extends boolean | null | undefined | north_star_metricDefaultArgs
+  > = $Result.GetResult<Prisma.$north_star_metricPayload, S>;
+
+  type north_star_metricCountArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = Omit<north_star_metricFindManyArgs, 'select' | 'include' | 'distinct'> & {
+    select?: North_star_metricCountAggregateInputType | true;
+  };
+
+  export interface north_star_metricDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['north_star_metric'];
+      meta: { name: 'north_star_metric' };
+    };
+    /**
+     * Find zero or one North_star_metric that matches the filter.
+     * @param {north_star_metricFindUniqueArgs} args - Arguments to find a North_star_metric
+     * @example
+     * // Get one North_star_metric
+     * const north_star_metric = await prisma.north_star_metric.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends north_star_metricFindUniqueArgs>(
+      args: SelectSubset<T, north_star_metricFindUniqueArgs<ExtArgs>>
+    ): Prisma__north_star_metricClient<
+      $Result.GetResult<
+        Prisma.$north_star_metricPayload<ExtArgs>,
+        T,
+        'findUnique'
+      > | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find one North_star_metric that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {north_star_metricFindUniqueOrThrowArgs} args - Arguments to find a North_star_metric
+     * @example
+     * // Get one North_star_metric
+     * const north_star_metric = await prisma.north_star_metric.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends north_star_metricFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, north_star_metricFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__north_star_metricClient<
+      $Result.GetResult<
+        Prisma.$north_star_metricPayload<ExtArgs>,
+        T,
+        'findUniqueOrThrow'
+      >,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first North_star_metric that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {north_star_metricFindFirstArgs} args - Arguments to find a North_star_metric
+     * @example
+     * // Get one North_star_metric
+     * const north_star_metric = await prisma.north_star_metric.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends north_star_metricFindFirstArgs>(
+      args?: SelectSubset<T, north_star_metricFindFirstArgs<ExtArgs>>
+    ): Prisma__north_star_metricClient<
+      $Result.GetResult<
+        Prisma.$north_star_metricPayload<ExtArgs>,
+        T,
+        'findFirst'
+      > | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first North_star_metric that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {north_star_metricFindFirstOrThrowArgs} args - Arguments to find a North_star_metric
+     * @example
+     * // Get one North_star_metric
+     * const north_star_metric = await prisma.north_star_metric.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends north_star_metricFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, north_star_metricFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__north_star_metricClient<
+      $Result.GetResult<
+        Prisma.$north_star_metricPayload<ExtArgs>,
+        T,
+        'findFirstOrThrow'
+      >,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find zero or more North_star_metrics that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {north_star_metricFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all North_star_metrics
+     * const north_star_metrics = await prisma.north_star_metric.findMany()
+     *
+     * // Get first 10 North_star_metrics
+     * const north_star_metrics = await prisma.north_star_metric.findMany({ take: 10 })
+     *
+     * // Only select the `value`
+     * const north_star_metricWithValueOnly = await prisma.north_star_metric.findMany({ select: { value: true } })
+     *
+     */
+    findMany<T extends north_star_metricFindManyArgs>(
+      args?: SelectSubset<T, north_star_metricFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$north_star_metricPayload<ExtArgs>,
+        T,
+        'findMany'
+      >
+    >;
+
+    /**
+     * Create a North_star_metric.
+     * @param {north_star_metricCreateArgs} args - Arguments to create a North_star_metric.
+     * @example
+     * // Create one North_star_metric
+     * const North_star_metric = await prisma.north_star_metric.create({
+     *   data: {
+     *     // ... data to create a North_star_metric
+     *   }
+     * })
+     *
+     */
+    create<T extends north_star_metricCreateArgs>(
+      args: SelectSubset<T, north_star_metricCreateArgs<ExtArgs>>
+    ): Prisma__north_star_metricClient<
+      $Result.GetResult<Prisma.$north_star_metricPayload<ExtArgs>, T, 'create'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Create many North_star_metrics.
+     * @param {north_star_metricCreateManyArgs} args - Arguments to create many North_star_metrics.
+     * @example
+     * // Create many North_star_metrics
+     * const north_star_metric = await prisma.north_star_metric.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends north_star_metricCreateManyArgs>(
+      args?: SelectSubset<T, north_star_metricCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create many North_star_metrics and returns the data saved in the database.
+     * @param {north_star_metricCreateManyAndReturnArgs} args - Arguments to create many North_star_metrics.
+     * @example
+     * // Create many North_star_metrics
+     * const north_star_metric = await prisma.north_star_metric.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many North_star_metrics and only return the `value`
+     * const north_star_metricWithValueOnly = await prisma.north_star_metric.createManyAndReturn({
+     *   select: { value: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends north_star_metricCreateManyAndReturnArgs>(
+      args?: SelectSubset<T, north_star_metricCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$north_star_metricPayload<ExtArgs>,
+        T,
+        'createManyAndReturn'
+      >
+    >;
+
+    /**
+     * Delete a North_star_metric.
+     * @param {north_star_metricDeleteArgs} args - Arguments to delete one North_star_metric.
+     * @example
+     * // Delete one North_star_metric
+     * const North_star_metric = await prisma.north_star_metric.delete({
+     *   where: {
+     *     // ... filter to delete one North_star_metric
+     *   }
+     * })
+     *
+     */
+    delete<T extends north_star_metricDeleteArgs>(
+      args: SelectSubset<T, north_star_metricDeleteArgs<ExtArgs>>
+    ): Prisma__north_star_metricClient<
+      $Result.GetResult<Prisma.$north_star_metricPayload<ExtArgs>, T, 'delete'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Update one North_star_metric.
+     * @param {north_star_metricUpdateArgs} args - Arguments to update one North_star_metric.
+     * @example
+     * // Update one North_star_metric
+     * const north_star_metric = await prisma.north_star_metric.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends north_star_metricUpdateArgs>(
+      args: SelectSubset<T, north_star_metricUpdateArgs<ExtArgs>>
+    ): Prisma__north_star_metricClient<
+      $Result.GetResult<Prisma.$north_star_metricPayload<ExtArgs>, T, 'update'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Delete zero or more North_star_metrics.
+     * @param {north_star_metricDeleteManyArgs} args - Arguments to filter North_star_metrics to delete.
+     * @example
+     * // Delete a few North_star_metrics
+     * const { count } = await prisma.north_star_metric.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends north_star_metricDeleteManyArgs>(
+      args?: SelectSubset<T, north_star_metricDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more North_star_metrics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {north_star_metricUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many North_star_metrics
+     * const north_star_metric = await prisma.north_star_metric.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends north_star_metricUpdateManyArgs>(
+      args: SelectSubset<T, north_star_metricUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create or update one North_star_metric.
+     * @param {north_star_metricUpsertArgs} args - Arguments to update or create a North_star_metric.
+     * @example
+     * // Update or create a North_star_metric
+     * const north_star_metric = await prisma.north_star_metric.upsert({
+     *   create: {
+     *     // ... data to create a North_star_metric
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the North_star_metric we want to update
+     *   }
+     * })
+     */
+    upsert<T extends north_star_metricUpsertArgs>(
+      args: SelectSubset<T, north_star_metricUpsertArgs<ExtArgs>>
+    ): Prisma__north_star_metricClient<
+      $Result.GetResult<Prisma.$north_star_metricPayload<ExtArgs>, T, 'upsert'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Count the number of North_star_metrics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {north_star_metricCountArgs} args - Arguments to filter North_star_metrics to count.
+     * @example
+     * // Count the number of North_star_metrics
+     * const count = await prisma.north_star_metric.count({
+     *   where: {
+     *     // ... the filter for the North_star_metrics we want to count
+     *   }
+     * })
+     **/
+    count<T extends north_star_metricCountArgs>(
+      args?: Subset<T, north_star_metricCountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<
+              T['select'],
+              North_star_metricCountAggregateOutputType
+            >
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a North_star_metric.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {North_star_metricAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends North_star_metricAggregateArgs>(
+      args: Subset<T, North_star_metricAggregateArgs>
+    ): Prisma.PrismaPromise<GetNorth_star_metricAggregateType<T>>;
+
+    /**
+     * Group by North_star_metric.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {north_star_metricGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends north_star_metricGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: north_star_metricGroupByArgs['orderBy'] }
+        : { orderBy?: north_star_metricGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<
+        Keys<MaybeTupleToUnion<T['orderBy']>>
+      >,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`
+                    ];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+    >(
+      args: SubsetIntersection<T, north_star_metricGroupByArgs, OrderByArg> &
+        InputErrors
+    ): {} extends InputErrors
+      ? GetNorth_star_metricGroupByPayload<T>
+      : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the north_star_metric model
+     */
+    readonly fields: north_star_metricFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for north_star_metric.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__north_star_metricClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?:
+        | ((value: T) => TResult1 | PromiseLike<TResult1>)
+        | undefined
+        | null,
+      onrejected?:
+        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?:
+        | ((reason: any) => TResult | PromiseLike<TResult>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the north_star_metric model
+   */
+  interface north_star_metricFieldRefs {
+    readonly value: FieldRef<'north_star_metric', 'String'>;
+    readonly date: FieldRef<'north_star_metric', 'DateTime'>;
+    readonly pk: FieldRef<'north_star_metric', 'Int'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * north_star_metric findUnique
+   */
+  export type north_star_metricFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the north_star_metric
+     */
+    select?: north_star_metricSelect<ExtArgs> | null;
+    /**
+     * Filter, which north_star_metric to fetch.
+     */
+    where: north_star_metricWhereUniqueInput;
+  };
+
+  /**
+   * north_star_metric findUniqueOrThrow
+   */
+  export type north_star_metricFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the north_star_metric
+     */
+    select?: north_star_metricSelect<ExtArgs> | null;
+    /**
+     * Filter, which north_star_metric to fetch.
+     */
+    where: north_star_metricWhereUniqueInput;
+  };
+
+  /**
+   * north_star_metric findFirst
+   */
+  export type north_star_metricFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the north_star_metric
+     */
+    select?: north_star_metricSelect<ExtArgs> | null;
+    /**
+     * Filter, which north_star_metric to fetch.
+     */
+    where?: north_star_metricWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of north_star_metrics to fetch.
+     */
+    orderBy?:
+      | north_star_metricOrderByWithRelationInput
+      | north_star_metricOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for north_star_metrics.
+     */
+    cursor?: north_star_metricWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` north_star_metrics from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` north_star_metrics.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of north_star_metrics.
+     */
+    distinct?:
+      | North_star_metricScalarFieldEnum
+      | North_star_metricScalarFieldEnum[];
+  };
+
+  /**
+   * north_star_metric findFirstOrThrow
+   */
+  export type north_star_metricFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the north_star_metric
+     */
+    select?: north_star_metricSelect<ExtArgs> | null;
+    /**
+     * Filter, which north_star_metric to fetch.
+     */
+    where?: north_star_metricWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of north_star_metrics to fetch.
+     */
+    orderBy?:
+      | north_star_metricOrderByWithRelationInput
+      | north_star_metricOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for north_star_metrics.
+     */
+    cursor?: north_star_metricWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` north_star_metrics from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` north_star_metrics.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of north_star_metrics.
+     */
+    distinct?:
+      | North_star_metricScalarFieldEnum
+      | North_star_metricScalarFieldEnum[];
+  };
+
+  /**
+   * north_star_metric findMany
+   */
+  export type north_star_metricFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the north_star_metric
+     */
+    select?: north_star_metricSelect<ExtArgs> | null;
+    /**
+     * Filter, which north_star_metrics to fetch.
+     */
+    where?: north_star_metricWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of north_star_metrics to fetch.
+     */
+    orderBy?:
+      | north_star_metricOrderByWithRelationInput
+      | north_star_metricOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing north_star_metrics.
+     */
+    cursor?: north_star_metricWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` north_star_metrics from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` north_star_metrics.
+     */
+    skip?: number;
+    distinct?:
+      | North_star_metricScalarFieldEnum
+      | North_star_metricScalarFieldEnum[];
+  };
+
+  /**
+   * north_star_metric create
+   */
+  export type north_star_metricCreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the north_star_metric
+     */
+    select?: north_star_metricSelect<ExtArgs> | null;
+    /**
+     * The data needed to create a north_star_metric.
+     */
+    data: XOR<
+      north_star_metricCreateInput,
+      north_star_metricUncheckedCreateInput
+    >;
+  };
+
+  /**
+   * north_star_metric createMany
+   */
+  export type north_star_metricCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to create many north_star_metrics.
+     */
+    data: north_star_metricCreateManyInput | north_star_metricCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * north_star_metric createManyAndReturn
+   */
+  export type north_star_metricCreateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the north_star_metric
+     */
+    select?: north_star_metricSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * The data used to create many north_star_metrics.
+     */
+    data: north_star_metricCreateManyInput | north_star_metricCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * north_star_metric update
+   */
+  export type north_star_metricUpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the north_star_metric
+     */
+    select?: north_star_metricSelect<ExtArgs> | null;
+    /**
+     * The data needed to update a north_star_metric.
+     */
+    data: XOR<
+      north_star_metricUpdateInput,
+      north_star_metricUncheckedUpdateInput
+    >;
+    /**
+     * Choose, which north_star_metric to update.
+     */
+    where: north_star_metricWhereUniqueInput;
+  };
+
+  /**
+   * north_star_metric updateMany
+   */
+  export type north_star_metricUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to update north_star_metrics.
+     */
+    data: XOR<
+      north_star_metricUpdateManyMutationInput,
+      north_star_metricUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which north_star_metrics to update
+     */
+    where?: north_star_metricWhereInput;
+  };
+
+  /**
+   * north_star_metric upsert
+   */
+  export type north_star_metricUpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the north_star_metric
+     */
+    select?: north_star_metricSelect<ExtArgs> | null;
+    /**
+     * The filter to search for the north_star_metric to update in case it exists.
+     */
+    where: north_star_metricWhereUniqueInput;
+    /**
+     * In case the north_star_metric found by the `where` argument doesn't exist, create a new north_star_metric with this data.
+     */
+    create: XOR<
+      north_star_metricCreateInput,
+      north_star_metricUncheckedCreateInput
+    >;
+    /**
+     * In case the north_star_metric was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<
+      north_star_metricUpdateInput,
+      north_star_metricUncheckedUpdateInput
+    >;
+  };
+
+  /**
+   * north_star_metric delete
+   */
+  export type north_star_metricDeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the north_star_metric
+     */
+    select?: north_star_metricSelect<ExtArgs> | null;
+    /**
+     * Filter which north_star_metric to delete.
+     */
+    where: north_star_metricWhereUniqueInput;
+  };
+
+  /**
+   * north_star_metric deleteMany
+   */
+  export type north_star_metricDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which north_star_metrics to delete
+     */
+    where?: north_star_metricWhereInput;
+  };
+
+  /**
+   * north_star_metric without action
+   */
+  export type north_star_metricDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the north_star_metric
+     */
+    select?: north_star_metricSelect<ExtArgs> | null;
+  };
+
+  /**
    * Enums
    */
 
@@ -21012,6 +22186,15 @@ export namespace Prisma {
   export type Lcz_bayonne_testScalarFieldEnum =
     (typeof Lcz_bayonne_testScalarFieldEnum)[keyof typeof Lcz_bayonne_testScalarFieldEnum];
 
+  export const North_star_metricScalarFieldEnum: {
+    value: 'value';
+    date: 'date';
+    pk: 'pk';
+  };
+
+  export type North_star_metricScalarFieldEnum =
+    (typeof North_star_metricScalarFieldEnum)[keyof typeof North_star_metricScalarFieldEnum];
+
   export const SortOrder: {
     asc: 'asc';
     desc: 'desc';
@@ -21099,6 +22282,22 @@ export namespace Prisma {
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<
     $PrismaModel,
     'Float[]'
+  >;
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<
+    $PrismaModel,
+    'DateTime'
+  >;
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<
+    $PrismaModel,
+    'DateTime[]'
   >;
 
   /**
@@ -23735,6 +24934,57 @@ export namespace Prisma {
       | null;
   };
 
+  export type north_star_metricWhereInput = {
+    AND?: north_star_metricWhereInput | north_star_metricWhereInput[];
+    OR?: north_star_metricWhereInput[];
+    NOT?: north_star_metricWhereInput | north_star_metricWhereInput[];
+    value?: StringFilter<'north_star_metric'> | string;
+    date?: DateTimeFilter<'north_star_metric'> | Date | string;
+    pk?: IntFilter<'north_star_metric'> | number;
+  };
+
+  export type north_star_metricOrderByWithRelationInput = {
+    value?: SortOrder;
+    date?: SortOrder;
+    pk?: SortOrder;
+  };
+
+  export type north_star_metricWhereUniqueInput = Prisma.AtLeast<
+    {
+      pk?: number;
+      AND?: north_star_metricWhereInput | north_star_metricWhereInput[];
+      OR?: north_star_metricWhereInput[];
+      NOT?: north_star_metricWhereInput | north_star_metricWhereInput[];
+      value?: StringFilter<'north_star_metric'> | string;
+      date?: DateTimeFilter<'north_star_metric'> | Date | string;
+    },
+    'pk'
+  >;
+
+  export type north_star_metricOrderByWithAggregationInput = {
+    value?: SortOrder;
+    date?: SortOrder;
+    pk?: SortOrder;
+    _count?: north_star_metricCountOrderByAggregateInput;
+    _avg?: north_star_metricAvgOrderByAggregateInput;
+    _max?: north_star_metricMaxOrderByAggregateInput;
+    _min?: north_star_metricMinOrderByAggregateInput;
+    _sum?: north_star_metricSumOrderByAggregateInput;
+  };
+
+  export type north_star_metricScalarWhereWithAggregatesInput = {
+    AND?:
+      | north_star_metricScalarWhereWithAggregatesInput
+      | north_star_metricScalarWhereWithAggregatesInput[];
+    OR?: north_star_metricScalarWhereWithAggregatesInput[];
+    NOT?:
+      | north_star_metricScalarWhereWithAggregatesInput
+      | north_star_metricScalarWhereWithAggregatesInput[];
+    value?: StringWithAggregatesFilter<'north_star_metric'> | string;
+    date?: DateTimeWithAggregatesFilter<'north_star_metric'> | Date | string;
+    pk?: IntWithAggregatesFilter<'north_star_metric'> | number;
+  };
+
   export type inconfort_thermiqueCreateInput = {
     index: bigint | number;
     code_geographique: string;
@@ -26235,6 +27485,48 @@ export namespace Prisma {
     lcz_int?: NullableIntFieldUpdateOperationsInput | number | null;
   };
 
+  export type north_star_metricCreateInput = {
+    value: string;
+    date: Date | string;
+    pk: number;
+  };
+
+  export type north_star_metricUncheckedCreateInput = {
+    value: string;
+    date: Date | string;
+    pk: number;
+  };
+
+  export type north_star_metricUpdateInput = {
+    value?: StringFieldUpdateOperationsInput | string;
+    date?: DateTimeFieldUpdateOperationsInput | Date | string;
+    pk?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type north_star_metricUncheckedUpdateInput = {
+    value?: StringFieldUpdateOperationsInput | string;
+    date?: DateTimeFieldUpdateOperationsInput | Date | string;
+    pk?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type north_star_metricCreateManyInput = {
+    value: string;
+    date: Date | string;
+    pk: number;
+  };
+
+  export type north_star_metricUpdateManyMutationInput = {
+    value?: StringFieldUpdateOperationsInput | string;
+    date?: DateTimeFieldUpdateOperationsInput | Date | string;
+    pk?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type north_star_metricUncheckedUpdateManyInput = {
+    value?: StringFieldUpdateOperationsInput | string;
+    date?: DateTimeFieldUpdateOperationsInput | Date | string;
+    pk?: IntFieldUpdateOperationsInput | number;
+  };
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>;
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>;
@@ -28031,6 +29323,57 @@ export namespace Prisma {
     lcz_int?: SortOrder;
   };
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string;
+  };
+
+  export type north_star_metricCountOrderByAggregateInput = {
+    value?: SortOrder;
+    date?: SortOrder;
+    pk?: SortOrder;
+  };
+
+  export type north_star_metricAvgOrderByAggregateInput = {
+    pk?: SortOrder;
+  };
+
+  export type north_star_metricMaxOrderByAggregateInput = {
+    value?: SortOrder;
+    date?: SortOrder;
+    pk?: SortOrder;
+  };
+
+  export type north_star_metricMinOrderByAggregateInput = {
+    value?: SortOrder;
+    date?: SortOrder;
+    pk?: SortOrder;
+  };
+
+  export type north_star_metricSumOrderByAggregateInput = {
+    pk?: SortOrder;
+  };
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string;
+    _count?: NestedIntFilter<$PrismaModel>;
+    _min?: NestedDateTimeFilter<$PrismaModel>;
+    _max?: NestedDateTimeFilter<$PrismaModel>;
+  };
+
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number;
     increment?: bigint | number;
@@ -28077,6 +29420,10 @@ export namespace Prisma {
     decrement?: number;
     multiply?: number;
     divide?: number;
+  };
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string;
   };
 
   export type NestedBigIntFilter<$PrismaModel = never> = {
@@ -28279,6 +29626,31 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>;
   };
 
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string;
+  };
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string;
+    _count?: NestedIntFilter<$PrismaModel>;
+    _min?: NestedDateTimeFilter<$PrismaModel>;
+    _max?: NestedDateTimeFilter<$PrismaModel>;
+  };
+
   /**
    * Aliases for legacy arg types
    */
@@ -28366,6 +29738,12 @@ export namespace Prisma {
   export type lcz_bayonne_testArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = lcz_bayonne_testDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use north_star_metricDefaultArgs instead
+   */
+  export type north_star_metricArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = north_star_metricDefaultArgs<ExtArgs>;
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
