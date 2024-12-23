@@ -102,10 +102,8 @@ const BiodiversiteComp = ({
   consommationNAF,
   epciContours
 }: Props) => {
-  const [selectedTabId, setSelectedTabId] = useState('Agriculture biologique');
-  const [selectedSubTab, setSelectedSubTab] = useState(
-    'Agriculture biologique'
-  );
+  const [selectedTabId, setSelectedTabId] = useState('Surfaces protégées');
+  const [selectedSubTab, setSelectedSubTab] = useState('Surfaces protégées');
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
   const { isDark } = useIsDark();
@@ -131,6 +129,10 @@ const BiodiversiteComp = ({
         selectedTabId={selectedTabId}
         tabs={[
           {
+            tabId: 'Surfaces protégées',
+            label: 'Surfaces protégées'
+          },
+          {
             tabId: 'Agriculture biologique',
             label: (
               <TabTooltip
@@ -139,10 +141,6 @@ const BiodiversiteComp = ({
                 titre="Agriculture biologique"
               />
             )
-          },
-          {
-            tabId: 'Surfaces protégées',
-            label: 'Surfaces protégées'
           },
           {
             tabId: "Consommation d'espaces NAF",
