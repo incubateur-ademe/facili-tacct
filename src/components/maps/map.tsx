@@ -179,7 +179,7 @@ export const Map = (props: {
       ) : (
         <MapContainer
           center={[centerCoord[1], centerCoord[0]]}
-          zoom={10}
+          zoom={commune ? 11 : 10}
           ref={mapRef}
           style={{ height: '500px', width: '100%' }}
           attributionControl={false}
