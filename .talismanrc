@@ -1,20 +1,4 @@
 fileignoreconfig:
-- filename: src/generated/client/index.d.ts
-  checksum: 1872dfc68df09900d6407358050d276c72f339b30a9a2aeb2902a9dbd7926702
-- filename: src/generated/client/index-browser.js
-  checksum: ac65a8371f31b8660f2fed2b9b40f6e2838484d6158311c14d3a0d5ec0ffcc24
-- filename: src/generated/client/package.json
-  checksum: 4f51957947d8d72ed591a080640e603b8239f94cb24047992b5aa9a712229f6a
-- filename: src/generated/client/edge.js
-  checksum: 518bc5836bf4e78ab53e2da51ba87dd7d6868b81be978ae834ba3285402bc566
-- filename: src/generated/client/index.js
-  checksum: db7106ddec1d97378c25c548433a3ddc764a2f28c4be831213447a0e2216581d
-- filename: src/generated/client/wasm.js
-  checksum: 12efcd756db7193680acdd418b9207753879c0f1ef077096a8fef5aca8467bbe
-- filename: src/generated/client/runtime/wasm.js
-  checksum: e33f95dd64f3d4d6bbaf55de482c1453cfca08d73a21b1ac410693ae5e824518
-- filename: src/generated/client/index.d.ts
-  checksum: 1872dfc68df09900d6407358050d276c72f339b30a9a2aeb2902a9dbd7926702
 - filename: src/generated/client/runtime/library.js
   checksum: 7d54eb61ebc30b3454a11105a9afa2f2a8b60e97a2ef5fcf9ded1228124f7bcf
 - filename: src/generated/client/runtime/react-native.js
@@ -53,4 +37,18 @@ fileignoreconfig:
   checksum: 966e6e9d80fc8aead28526766f23a5963ebc746bf292497c2a2be9879c889702
 - filename: src/components/maps/components/legendCatnat.tsx
   checksum: 7a838e685ee3cafffa94f6d2d53316bb6a843dd86850769bfa22ddce35587399
+- filename: src/app/api/stats/route.ts
+  checksum: bb6a9eb5070433948cbcc0ee31a435b4f9e3e9fe5b9f3b3fa4335593281d7ad8
+- filename: src/generated/client/package.json
+  checksum: c6ab2e1b43aa4aa0c4c8cc1539b60ba410428306a2b907c45f4cd780e30c0f69
+- filename: src/generated/client/wasm.js
+  checksum: 498b257cada8aaf68e4d8f7fd2d7f69d103f47bb08631876673c52a2a5f1f69c
+- filename: src/generated/client/index-browser.js
+  checksum: 94c13019ceaadd2032a56da1cc35ade12c8d4a56eb43b8b7650c41ba372c0095
+- filename: src/generated/client/edge.js
+  checksum: 8792ab0d6b9fc22c56127a0d5d59c193455bffdd0379ad97d0f342e80190747b
+- filename: src/generated/client/index.d.ts
+  checksum: 34846e8a34d631a4c190e5e23a21ec72abfebe2dd5394f49aee2cf01d884a78e
+- filename: src/generated/client/index.js
+  checksum: 7198eb2489a3a2f3134f0199878f11df039de09891caa9710c1ca0a5b867a7bb
 version: ""
