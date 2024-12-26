@@ -1,7 +1,7 @@
-import EpciCount from './epciCount';
-import RessourcesClicked from './ressourcesClicked';
-import ThematiquesTypes from './thematiquesTypes';
-import UniqueUsers from './uniqueUsers';
+import EpciCount from './metrics/epciCount';
+import RessourcesClicked from './metrics/ressourcesClicked';
+import ThematiquesTypes from './metrics/thematiquesTypes';
+import UniqueUsers from './metrics/uniqueUsers';
 
 const Page = async () => {
   return (

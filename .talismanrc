@@ -1,14 +1,22 @@
 fileignoreconfig:
-- filename: src/generated/client/runtime/library.js
-  checksum: 7d54eb61ebc30b3454a11105a9afa2f2a8b60e97a2ef5fcf9ded1228124f7bcf
+- filename: src/generated/client/runtime/wasm.js
+  checksum: 5cc1e567a4a832fca5d423b1fbcaf67155154a858335e2bd51071d50880eb450
+- filename: src/generated/client/package.json
+  checksum: d3dfd272d125c545292f81fd251c2fc55465d2330c1e80e27a5f757e115c082e
+- filename: src/generated/client/edge.js
+  checksum: 992c06dd8c7dc03d917f19cf972875fd9861a626d68d127f4c618705afdd16f0
+- filename: src/generated/client/index.js
+  checksum: c134c33644bfd0f713d66df9043bc8957a1b321e40e4d4139fc7b2e93693487f
 - filename: src/generated/client/runtime/react-native.js
-  checksum: 442121ef67400edd21c13eddb3d19b2da2b7e87ec06d5b751a134aca2a4cea7d
+  checksum: ca53da0f25be1b328abf21c8428e35ad1c16cf9abece3b30b4f90e12dcacebf5
 - filename: src/generated/client/runtime/edge-esm.js
-  checksum: a0e61fcbfaf5371d2ec3726f6f7d5e8013f0e84261c930720e23a780c07e7457
+  checksum: 653cf70144c390e7ac4eaab0b3818248b0b0ea629684c92b819defa1a173c5ce
 - filename: src/generated/client/runtime/edge.js
-  checksum: 003b26939f55c47694f49b5624bf46952a31df574683660f49427f679f2fedad
-- filename: src/generated/client/runtime/library.d.ts
-  checksum: f5f963b66bbacaf3f109afbfa29c2587dfcc63e8bf7dd5406bd8a952863f3190
+  checksum: 2e919056ba20d2c8a4c912321b4180852400e4428458b6b0e73e945b6b8d4f04
+- filename: src/generated/client/runtime/library.js
+  checksum: df372689c8cfe9a8df81fba18cd6b8954d3122144f145c87dacfe4bc4b2346d0
+- filename: pnpm-lock.yaml
+  checksum: 80aeea22ac3ffe1147358da210bc6e96c90bc936ff09056a90ba536da82979cc
 - filename: src/app/(main)/_explication/components/sante.tsx
   checksum: 80d459d4ed1a74891709c9fb879ebf71408fa6b0f3043916b59d2daab47cde76
 - filename: src/app/(main)/layout.tsx
@@ -41,16 +49,6 @@ fileignoreconfig:
   checksum: bb6a9eb5070433948cbcc0ee31a435b4f9e3e9fe5b9f3b3fa4335593281d7ad8
 - filename: src/generated/client/package.json
   checksum: c6ab2e1b43aa4aa0c4c8cc1539b60ba410428306a2b907c45f4cd780e30c0f69
-- filename: src/generated/client/wasm.js
-  checksum: 498b257cada8aaf68e4d8f7fd2d7f69d103f47bb08631876673c52a2a5f1f69c
-- filename: src/generated/client/index-browser.js
-  checksum: 94c13019ceaadd2032a56da1cc35ade12c8d4a56eb43b8b7650c41ba372c0095
-- filename: src/generated/client/edge.js
-  checksum: 8792ab0d6b9fc22c56127a0d5d59c193455bffdd0379ad97d0f342e80190747b
-- filename: src/generated/client/index.d.ts
-  checksum: 34846e8a34d631a4c190e5e23a21ec72abfebe2dd5394f49aee2cf01d884a78e
-- filename: src/generated/client/index.js
-  checksum: 7198eb2489a3a2f3134f0199878f11df039de09891caa9710c1ca0a5b867a7bb
 - filename: src/components/charts/stats/BarChart.tsx
   checksum: 741c4c84ea1a4a1427d8795e2f1209452a112531e0422bf2ea5f0444ee944ac3
 version: ""

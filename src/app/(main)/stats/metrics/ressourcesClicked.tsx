@@ -1,13 +1,9 @@
 import { BarChartStats } from '@/components/charts/stats/BarChart';
 import { Container } from '@/dsfr/layout';
-import GetInsights from './query';
+import GetInsights from '../query';
 
 const RessourcesClicked = async () => {
-  const query = await GetInsights();
-  const ressourcesClicked = query.results?.filter(
-    (e) => e.short_id === '4HSdF87O'
-  )[0].result;
-
+  const ressourcesClicked = await GetInsights('4HSdF87O');
   const graphData = ressourcesClicked
     .filter((e) => e.action.math === 'total')
     .map((e) => {
