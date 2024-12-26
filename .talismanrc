@@ -51,4 +51,6 @@ fileignoreconfig:
   checksum: 34846e8a34d631a4c190e5e23a21ec72abfebe2dd5394f49aee2cf01d884a78e
 - filename: src/generated/client/index.js
   checksum: 7198eb2489a3a2f3134f0199878f11df039de09891caa9710c1ca0a5b867a7bb
+- filename: src/components/charts/stats/BarChart.tsx
+  checksum: 741c4c84ea1a4a1427d8795e2f1209452a112531e0422bf2ea5f0444ee944ac3
 version: ""

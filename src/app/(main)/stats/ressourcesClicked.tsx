@@ -2,18 +2,18 @@ import { BarChartStats } from '@/components/charts/stats/BarChart';
 import { Container } from '@/dsfr/layout';
 import GetInsights from './query';
 
-const ThematiquesTypes = async () => {
+const RessourcesClicked = async () => {
   const query = await GetInsights();
-  const thematiquesClicked = query.results?.filter(
-    (e) => e.short_id === 'GllOqTd1'
+  const ressourcesClicked = query.results?.filter(
+    (e) => e.short_id === '4HSdF87O'
   )[0].result;
 
-  const graphData = thematiquesClicked
-    .filter((e) => e.action.math === 'dau')
+  const graphData = ressourcesClicked
+    .filter((e) => e.action.math === 'total')
     .map((e) => {
       return {
         titre: e.breakdown_value[0],
-        nombre: e.aggregated_value
+        nombre: e.count
       };
     })
     .sort((a, b) => b.nombre - a.nombre);
@@ -21,20 +21,20 @@ const ThematiquesTypes = async () => {
   return (
     <Container m="4w">
       <div style={{ margin: '0 0 2rem' }}>
-        <h2>Thématiques recherchées</h2>
-        <div className="flex flex-row gap-8">
-          {graphData.map((e, i) => {
+        <h2>Ressources recherchées</h2>
+        {ressourcesClicked
+          .filter((e) => e.action.math === 'total')
+          .map((e, i) => {
             return (
               <p key={i}>
-                {e.titre} : {e.nombre}
+                {e.breakdown_value[0]} : {e.count}
               </p>
             );
           })}
-        </div>
         <BarChartStats graphData={graphData} />
       </div>
     </Container>
   );
 };
 
-export default ThematiquesTypes;
+export default RessourcesClicked;
