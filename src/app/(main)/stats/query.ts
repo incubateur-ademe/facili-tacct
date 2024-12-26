@@ -9,45 +9,17 @@ interface Response {
       count: number;
       aggregated_value: number;
       label: string;
-      breakdown_value: string;
+      breakdown_value: string[];
+      action: {
+        math: string;
+        type: string;
+      };
     }[];
   }[];
 }
 
 const GetInsights = async () => {
-  const params = new URLSearchParams();
-
-  params.append(
-    'events',
-    JSON.stringify([
-      {
-        id: 'insight created'
-      }
-    ])
-  );
-  params.append('display', 'BoldNumber');
-  // params.append(
-  //   'properties',
-  //   JSON.stringify({
-  //     type: 'AND',
-  //     values: [
-  //       {
-  //         type: 'AND',
-  //         values: [
-  //           {
-  //             key: 'name',
-  //             type: 'group',
-  //             value: [filterValue],
-  //             operator: 'exact',
-  //             group_type_index: 0,
-  //           },
-  //         ],
-  //       },
-  //     ],
-  //   })
-  // );
-
-  const url = `https://eu.posthog.com/api/projects/39308/insights?date_from=2021-01-01`;
+  const url = `https://eu.posthog.com/api/projects/39308/insights`;
   const request = await fetch(url, {
     method: 'GET',
     headers: {
