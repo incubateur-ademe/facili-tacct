@@ -1,4 +1,3 @@
-// https://www.notion.so/accelerateur-transition-ecologique-ademe/Route-stats-9ccb601c7b9649878b2568b175e86456
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient as PostgresClient } from '../../../generated/client';
 
