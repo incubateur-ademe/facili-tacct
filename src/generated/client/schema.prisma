@@ -410,7 +410,7 @@ model lcz_bayonne_test {
 model north_star_metric {
   value String   @db.VarChar(32)
   date  DateTime @db.Timestamp(6)
-  pk    Int      @id
+  pk    Int      @id @default(autoincrement())
 
   @@schema("analytics")
 }

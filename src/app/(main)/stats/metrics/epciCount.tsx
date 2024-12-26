@@ -1,12 +1,8 @@
 import { Container } from '@/dsfr/layout';
-import GetInsights from './query';
+import GetInsights from '../query';
 
 const EpciCount = async () => {
-  const query = await GetInsights();
-  const totalEpci = query.results?.filter((e) => e.short_id === '9LrQuRLc')[0]
-    .result;
-  // console.log("totalEpci", totalEpci)
-
+  const totalEpci = await GetInsights('9LrQuRLc');
   return (
     <Container m="4w">
       <div style={{ margin: '0 0 2rem' }}>

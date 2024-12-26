@@ -1,13 +1,9 @@
 import { BarChartStats } from '@/components/charts/stats/BarChart';
 import { Container } from '@/dsfr/layout';
-import GetInsights from './query';
+import GetInsights from '../query';
 
 const ThematiquesTypes = async () => {
-  const query = await GetInsights();
-  const thematiquesClicked = query.results?.filter(
-    (e) => e.short_id === 'GllOqTd1'
-  )[0].result;
-
+  const thematiquesClicked = await GetInsights('GllOqTd1');
   const graphData = thematiquesClicked
     .filter((e) => e.action.math === 'dau')
     .map((e) => {

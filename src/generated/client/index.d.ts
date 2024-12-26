@@ -425,7 +425,6 @@ export namespace Prisma {
   export import PrismaClientRustPanicError = runtime.PrismaClientRustPanicError;
   export import PrismaClientInitializationError = runtime.PrismaClientInitializationError;
   export import PrismaClientValidationError = runtime.PrismaClientValidationError;
-  export import NotFoundError = runtime.NotFoundError;
 
   /**
    * Re-export of sql-template-tag
@@ -462,7 +461,7 @@ export namespace Prisma {
   export import Exact = $Public.Exact;
 
   /**
-   * Prisma Client JS version: 5.20.0
+   * Prisma Client JS version: 6.1.0
    * Query Engine version: 11f085a2012c0f4778414c8db2651556ee0ef959
    */
   export type PrismaVersion = {
@@ -27488,19 +27487,17 @@ export namespace Prisma {
   export type north_star_metricCreateInput = {
     value: string;
     date: Date | string;
-    pk: number;
   };
 
   export type north_star_metricUncheckedCreateInput = {
     value: string;
     date: Date | string;
-    pk: number;
+    pk?: number;
   };
 
   export type north_star_metricUpdateInput = {
     value?: StringFieldUpdateOperationsInput | string;
     date?: DateTimeFieldUpdateOperationsInput | Date | string;
-    pk?: IntFieldUpdateOperationsInput | number;
   };
 
   export type north_star_metricUncheckedUpdateInput = {
@@ -27512,13 +27509,12 @@ export namespace Prisma {
   export type north_star_metricCreateManyInput = {
     value: string;
     date: Date | string;
-    pk: number;
+    pk?: number;
   };
 
   export type north_star_metricUpdateManyMutationInput = {
     value?: StringFieldUpdateOperationsInput | string;
     date?: DateTimeFieldUpdateOperationsInput | Date | string;
-    pk?: IntFieldUpdateOperationsInput | number;
   };
 
   export type north_star_metricUncheckedUpdateManyInput = {
@@ -29650,100 +29646,6 @@ export namespace Prisma {
     _min?: NestedDateTimeFilter<$PrismaModel>;
     _max?: NestedDateTimeFilter<$PrismaModel>;
   };
-
-  /**
-   * Aliases for legacy arg types
-   */
-  /**
-   * @deprecated Use inconfort_thermiqueDefaultArgs instead
-   */
-  export type inconfort_thermiqueArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = inconfort_thermiqueDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use clc_epciDefaultArgs instead
-   */
-  export type clc_epciArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = clc_epciDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use collectivites_searchbarDefaultArgs instead
-   */
-  export type collectivites_searchbarArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = collectivites_searchbarDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use biodiversiteDefaultArgs instead
-   */
-  export type biodiversiteArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = biodiversiteDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use gestion_risquesDefaultArgs instead
-   */
-  export type gestion_risquesArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = gestion_risquesDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use communes_dromDefaultArgs instead
-   */
-  export type communes_dromArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = communes_dromDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use ressources_eauDefaultArgs instead
-   */
-  export type ressources_eauArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = ressources_eauDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use agriculture_bioDefaultArgs instead
-   */
-  export type agriculture_bioArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = agriculture_bioDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use erosion_cotiereDefaultArgs instead
-   */
-  export type erosion_cotiereArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = erosion_cotiereDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use epciDefaultArgs instead
-   */
-  export type epciArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = epciDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use surfaces_protegeesDefaultArgs instead
-   */
-  export type surfaces_protegeesArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = surfaces_protegeesDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use spatial_ref_sysDefaultArgs instead
-   */
-  export type spatial_ref_sysArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = spatial_ref_sysDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use consommation_espaces_nafDefaultArgs instead
-   */
-  export type consommation_espaces_nafArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = consommation_espaces_nafDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use lcz_bayonne_testDefaultArgs instead
-   */
-  export type lcz_bayonne_testArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = lcz_bayonne_testDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use north_star_metricDefaultArgs instead
-   */
-  export type north_star_metricArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = north_star_metricDefaultArgs<ExtArgs>;
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

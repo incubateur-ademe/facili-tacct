@@ -3,22 +3,34 @@
 import { ResponsiveLine } from '@/lib/nivo/line';
 import { useEffect, useState } from 'react';
 
-type Props = {
-  data: Array<string | undefined>;
-};
-
 type GraphData = {
   x: string;
   y: number;
 };
 
-export const LineChart = (props: any) => {
-  const { rawData } = props;
-  const { data, labels } = rawData[0];
+type rawData = {
+  data: number[];
+  labels: string[];
+  count: number;
+  aggregated_value: number;
+  label: string;
+  breakdown_value: string[];
+  action: {
+    math: string;
+    type: string;
+  };
+};
+
+type Props = {
+  rawData: rawData[];
+};
+
+export const LineChart = (props: Props) => {
+  const { data, labels } = props.rawData[0];
   const [children, setChildren] = useState<GraphData[]>([]);
-  const tempChildren: GraphData[] = [];
 
   useEffect(() => {
+    const tempChildren: GraphData[] = [];
     for (let i = 0; i < data.length; i++) {
       tempChildren.push({ x: labels[i], y: data[i] });
     }
@@ -32,11 +44,10 @@ export const LineChart = (props: any) => {
         {
           id: "Évolution du nombre d'utilisateurs",
           color: 'hsl(284, 70%, 50%)',
-          data: children
+          data: children.filter((e) => !e.x.includes('Nov'))
         }
       ]}
       colors={'rgba(242, 133, 2, 0.9)'}
-      isInteractive={true}
       useMesh={true}
       tooltip={({ point }) => {
         return (
@@ -54,11 +65,11 @@ export const LineChart = (props: any) => {
           </div>
         );
       }}
-      yScale={{
-        type: 'linear',
-        min: 0
-        // max: Math.max(...yData.filter(e => e != null)) + 1,
-      }}
+      // yScale={{
+      //   type: 'linear',
+      //   min: 0
+      //   // max: Math.max(...yData.filter(e => e != null)) + 1,
+      // }}
       margin={{
         top: 50,
         right: 20,
