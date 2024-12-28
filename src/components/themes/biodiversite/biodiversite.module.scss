@@ -190,13 +190,13 @@
     flex-wrap: wrap;
     row-gap: 1rem;
     column-gap: 1.25rem;
-    .legend {
+    .legendTreeMap {
         display: flex;
         align-items: center;
         flex-direction: row;
         column-gap: 0.5rem;
         padding: 0;
-        .color {
+        .colorTreeMap {
             width: 1rem;
             height: 1rem;
             border-radius: 2px;
