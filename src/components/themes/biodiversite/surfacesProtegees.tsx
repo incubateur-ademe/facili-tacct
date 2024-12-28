@@ -21,6 +21,7 @@
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { CarteCommunes, SurfacesProtegeesByCol } from '@/lib/postgres/models';
 import { CustomTooltip } from '@/lib/utils/CalculTooltip';
+import { DarkClass } from '@/lib/utils/DarkClass';
 import { useSearchParams } from 'next/navigation';
 import styles from './biodiversite.module.scss';
 import SurfacesProtegeesDataviz from './surfacesProtegeesDataviz';
@@ -44,6 +45,7 @@ const SurfacesProtegees = (props: {
     ? carteCommunes.filter((e) => e.code_commune === codgeo)[0].surface
     : carteCommunes.map((el) => el.surface).reduce((a, b) => a + b, 0);
 
+  const darkClass = DarkClass();
   const title = (
     <div>
       Les aires protégées de nature réglementaire concernent les parcs
