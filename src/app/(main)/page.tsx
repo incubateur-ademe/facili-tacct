@@ -1,10 +1,9 @@
 'use client';
 
-import { fr } from '@codegouvfr/react-dsfr';
-import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import Image from 'next/image';
 
 import useWindowDimensions from '@/hooks/windowDimensions';
+import { DarkClass } from '@/lib/utils/DarkClass';
 import Constellation2Img from '../../assets/images/constellation2.png';
 import Constellation3Img from '../../assets/images/constellation3.png';
 import PeopleImg from '../../assets/images/landing-page-group.png';
@@ -14,15 +13,7 @@ import styles from '../root.module.scss';
 import { CollectiviteSearch } from './CollectiviteSearch';
 
 const Home = () => {
-  const { isDark } = useIsDark();
-  const darkClass = {
-    backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
-      .grey.active,
-    '&:hover': {
-      backgroundColor: fr.colors.getHex({ isDark }).decisions.background.alt
-        .grey.hover
-    }
-  };
+  const darkClass = DarkClass();
   const window = useWindowDimensions();
 
   return (
@@ -45,7 +36,7 @@ const Home = () => {
       <div className={styles.cardBackground}>
         <Container size="xl">
           <div className={styles.cardWrapper}>
-            <div className={styles.card} style={darkClass}>
+            <div className={styles.card}>
               <Image src={MapImg} alt="" />
               <div className={styles.cardDescription}>
                 <h2>Evaluez la sensibilité de votre territoire</h2>
@@ -55,7 +46,7 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div className={styles.card} style={darkClass}>
+            <div className={styles.card}>
               <Image
                 src={PeopleImg}
                 alt=""
