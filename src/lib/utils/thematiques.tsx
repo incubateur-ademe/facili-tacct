@@ -59,6 +59,12 @@ export const thematiques = {
       id: 3,
       category: '',
       imageUrl: '../ressources_eau_bluetile.svg'
+    },
+    {
+      thematique: 'Aménagement',
+      id: 4,
+      category: '',
+      imageUrl: '../amenagementIcon.svg'
     }
   ],
   bientot_disponible: [
