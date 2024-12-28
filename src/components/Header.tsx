@@ -9,14 +9,16 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import { GetInconfortThermique } from '@/lib/queries/thematiques';
+import { DarkClass } from '@/lib/utils/DarkClass';
 import { usePostHog } from 'posthog-js/react';
 import { Brand } from './Brand';
 import styles from './components.module.scss';
 
 const Localisation = (props: { libelle: string; code: string }) => {
+  const darkClass = DarkClass();
   const { libelle, code } = props;
   return (
-    <div className={styles.localisation}>
+    <div className={styles.localisation} style={darkClass}>
       <span
         className="fr-icon-map-pin-user-fill"
         style={{ borderRadius: '25px' }}

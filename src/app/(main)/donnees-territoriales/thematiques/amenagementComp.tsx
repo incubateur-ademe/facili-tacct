@@ -4,19 +4,8 @@ import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import AgricultureBiologique from '@/components/themes/biodiversite/agricultureBio';
 import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
-import { StationsClassees } from '@/components/themes/biodiversite/stationsClassees';
-import SurfacesProtegees from '@/components/themes/biodiversite/surfacesProtegees';
-import {
-  AgricultureBio,
-  Biodiversite,
-  CarteCommunes,
-  ConsommationNAF,
-  EpciContours,
-  SurfacesProtegeesByCol
-} from '@/lib/postgres/models';
-import { TabTooltip } from '@/lib/utils/TabTooltip';
+import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -28,52 +17,11 @@ interface Props {
     risque: string;
     titre: string;
   }>;
-  biodiversite: Biodiversite[];
-  carteCommunes: CarteCommunes[];
-  agricultureBio: AgricultureBio[];
-  surfacesProtegees: SurfacesProtegeesByCol[];
   consommationNAF: ConsommationNAF[];
-  epciContours: EpciContours[];
+  carteCommunes: CarteCommunes[];
 }
 
 const allComps = [
-  {
-    titre: 'Stations classées',
-    Component: ({
-      biodiversite,
-      data,
-      carteCommunes
-    }: Props & { activeDataTab: string }) => (
-      <StationsClassees
-        biodiversite={biodiversite}
-        data={data}
-        carteCommunes={carteCommunes}
-      />
-    )
-  },
-  {
-    titre: 'Agriculture biologique',
-    Component: ({
-      data,
-      agricultureBio
-    }: Props & { activeDataTab: string }) => (
-      <AgricultureBiologique data={data} agricultureBio={agricultureBio} />
-    )
-  },
-  {
-    titre: 'Surfaces protégées',
-    Component: ({
-      data,
-      surfacesProtegees,
-      carteCommunes
-    }: Props & { activeDataTab: string }) => (
-      <SurfacesProtegees
-        data={data}
-        surfacesProtegees={surfacesProtegees}
-        carteCommunes={carteCommunes}
-      />
-    )
-  },
   {
     titre: "Consommation d'espaces NAF",
     Component: ({
@@ -90,20 +38,23 @@ const allComps = [
   }
 ];
 
-const BiodiversiteComp = ({
-  data,
-  biodiversite,
-  carteCommunes,
-  agricultureBio,
-  surfacesProtegees,
-  consommationNAF,
-  epciContours
-}: Props) => {
-  const [selectedTabId, setSelectedTabId] = useState('Surfaces protégées');
-  const [selectedSubTab, setSelectedSubTab] = useState('Surfaces protégées');
+const AmenagementComp = ({ data, carteCommunes, consommationNAF }: Props) => {
+  const [selectedTabId, setSelectedTabId] = useState(
+    "Consommation d'espaces NAF"
+  );
+  const [selectedSubTab, setSelectedSubTab] = useState(
+    "Consommation d'espaces NAF"
+  );
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
   const { css } = useStyles();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
 
   useEffect(() => {
     setSelectedSubTab(
@@ -116,20 +67,6 @@ const BiodiversiteComp = ({
       <Tabs
         selectedTabId={selectedTabId}
         tabs={[
-          {
-            tabId: 'Surfaces protégées',
-            label: 'Surfaces protégées'
-          },
-          {
-            tabId: 'Agriculture biologique',
-            label: (
-              <TabTooltip
-                selectedTab={selectedTabId}
-                tooltip="L’agriculture biologique fait partie d’un ensemble de pratiques agricoles respectueuses des équilibres écologiques qui contribue à la préservation des sols et des ressources naturelles. "
-                titre="Agriculture biologique"
-              />
-            )
-          },
           {
             tabId: "Consommation d'espaces NAF",
             label: "Consommation d'espaces NAF"
@@ -167,21 +104,6 @@ const BiodiversiteComp = ({
         })}
       >
         <div className={styles.formContainer}>
-          <div className={styles.titles}>
-            {/* {data
-              .filter(el => el.facteur_sensibilite === selectedTabId)
-              .map((element, i) => (
-                <button
-                  key={i}
-                  className={selectedSubTab === element.titre ? styles.selectedButton : styles.button}
-                  onClick={() => {
-                    setSelectedSubTab(element.titre);
-                  }}
-                >
-                  {element.titre}
-                </button>
-              ))} */}
-          </div>
           <div className={styles.bubble}>
             <div className={styles.bubbleContent}>
               {(() => {
@@ -192,13 +114,9 @@ const BiodiversiteComp = ({
                 return (
                   <Component
                     data={data}
-                    biodiversite={biodiversite}
                     activeDataTab={selectedSubTab}
                     carteCommunes={carteCommunes}
-                    agricultureBio={agricultureBio}
-                    surfacesProtegees={surfacesProtegees}
                     consommationNAF={consommationNAF}
-                    epciContours={epciContours}
                   />
                 );
               })()}
@@ -211,4 +129,4 @@ const BiodiversiteComp = ({
 };
 
 // eslint-disable-next-line import/no-default-export
-export default BiodiversiteComp;
+export default AmenagementComp;
