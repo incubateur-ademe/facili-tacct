@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { ResponsiveLine } from "@/lib/nivo/line";
-import { useEffect, useState } from "react";
+import { ResponsiveLine } from '@/lib/nivo/line';
+import { useEffect, useState } from 'react';
 
 type Props = {
   xData: Array<string | undefined>;
@@ -22,7 +22,7 @@ export const LineChart1 = (props: Props) => {
     xData.forEach((item, id) => {
       const dict: GraphData = {
         x: item,
-        y: yData.at(id),
+        y: yData.at(id)
       };
       tempChildren.push(dict);
       setChildren(tempChildren);
@@ -35,59 +35,57 @@ export const LineChart1 = (props: Props) => {
       data={[
         {
           id: "Courbe évolution de l'âge",
-          color: "hsl(284, 70%, 50%)",
-          data: children,
-        },
+          color: 'hsl(284, 70%, 50%)',
+          data: children
+        }
       ]}
-      colors={"rgba(242, 133, 2, 0.9)"}
+      colors={'rgba(242, 133, 2, 0.9)'}
       isInteractive={true}
       useMesh={true}
-      tooltip={
-        ({ point }) => {
-          return (
-            <div
-              style={{
-                background: "white",
-                padding: "0.5rem",
-                border: "1px solid #ccc",
-                position: "relative",
-                right: "4rem",
-                boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px"
-              }}
-            >
-              {point.data.xFormatted} : <b>{point.data.yFormatted}%</b>
-            </div>
-          );
-        }
-      }
+      tooltip={({ point }) => {
+        return (
+          <div
+            style={{
+              background: 'white',
+              padding: '0.5rem',
+              border: '1px solid #ccc',
+              position: 'relative',
+              right: '4rem',
+              boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px'
+            }}
+          >
+            {point.data.xFormatted} : <b>{point.data.yFormatted}%</b>
+          </div>
+        );
+      }}
       yScale={{
-        type: "linear",
+        type: 'linear',
         min: 0,
-        max: Math.max(...yData.filter(e => e != null)) + 1,
+        max: Math.max(...yData.filter((e) => e != null)) + 1
       }}
       margin={{
         top: 50,
         right: 20,
         bottom: 50,
-        left: 60,
+        left: 60
       }}
       axisBottom={{
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "Années de rencensement",
+        legend: 'Années de rencensement',
         legendOffset: 36,
-        legendPosition: "middle",
-        truncateTickAt: 0,
+        legendPosition: 'middle',
+        truncateTickAt: 0
       }}
       axisLeft={{
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "Pourcentage (%)",
+        legend: 'Pourcentage (%)',
         legendOffset: -40,
-        legendPosition: "middle",
-        truncateTickAt: 0,
+        legendPosition: 'middle',
+        truncateTickAt: 0
       }}
     />
   );
