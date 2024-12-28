@@ -94,9 +94,9 @@ const SurfacesProtegeesDataviz = (props: {
           <SurfacesProtegeesTreeMap data={data} />
           <div className={styles.treemapLegendWrapper}>
             {legends.map((e) => (
-              <div key={e.name} className={styles.legend}>
+              <div key={e.name} className={styles.legendTreeMap}>
                 <div
-                  className={styles.color}
+                  className={styles.colorTreeMap}
                   style={{ backgroundColor: e.color }}
                 />
                 <p className={styles.legendText}>{e.name}</p>

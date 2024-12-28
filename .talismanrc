@@ -41,8 +41,6 @@ fileignoreconfig:
   checksum: 833f759dc62d11cdb9f33635bd92d7af28cbbf00ed41e1d4b56c02fa614a802b
 - filename: pnpm-lock.yaml
   checksum: 602f7a01f92af0297cf1e1bae7ae37f0cc2cb9955e929da3649fd4cb58ae7612
-- filename: src/components/themes/biodiversite/surfacesProtegeesDataviz.tsx
-  checksum: 966e6e9d80fc8aead28526766f23a5963ebc746bf292497c2a2be9879c889702
 - filename: src/components/maps/components/legendCatnat.tsx
   checksum: 7a838e685ee3cafffa94f6d2d53316bb6a843dd86850769bfa22ddce35587399
 - filename: src/app/api/stats/route.ts
@@ -51,4 +49,12 @@ fileignoreconfig:
   checksum: c6ab2e1b43aa4aa0c4c8cc1539b60ba410428306a2b907c45f4cd780e30c0f69
 - filename: src/components/charts/stats/BarChart.tsx
   checksum: 741c4c84ea1a4a1427d8795e2f1209452a112531e0422bf2ea5f0444ee944ac3
+- filename: src/components/charts/ressourcesEau/prelevementEauBarChart.tsx
+  checksum: 0b1d5c225eaa92d55c51653fb20b6607686459fe26bcaacebf938eaf7f5ce793
+- filename: src/components/themes/biodiversite/surfacesProtegeesDataviz.tsx
+  checksum: 197f30e03998d0268665e167a3e54920dabfd38b11f918823de2475b0c177661
+- filename: src/components/charts/ressourcesEau/prelevementEauProgressBar.tsx
+  checksum: 295dd639ded011fd7360e67ea9d9d10c46161aa7d33e0edf785e524ce6e0ac37
+- filename: src/components/charts/gestionRisques/BarChartCatnat.tsx
+  checksum: 0be5d117f823fc580b08501ef830c361486ea010de90ccad470b7f18bfe3252f
 version: ""
