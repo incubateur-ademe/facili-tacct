@@ -1,28 +1,43 @@
-"use client";
+'use client';
 
-import "./vegetalisation-legend.css";
+import './vegetalisation-legend.css';
 
 export const LegendCLC = () => {
   return (
     <div className="legendCLC">
       <div className="legendColor-wrapper">
-        <div className="legendColor" style={{ backgroundColor: "#ffff99" }}></div>
+        <div
+          className="legendColor"
+          style={{ backgroundColor: '#ffff99' }}
+        ></div>
         <p>Territoires artificialisés</p>
       </div>
       <div className="legendColor-wrapper">
-        <div className="legendColor" style={{ backgroundColor: "#fdc086" }}></div>
+        <div
+          className="legendColor"
+          style={{ backgroundColor: '#fdc086' }}
+        ></div>
         <p>Territoires agricoles</p>
       </div>
       <div className="legendColor-wrapper">
-        <div className="legendColor" style={{ backgroundColor: "#7fc97f" }}></div>
+        <div
+          className="legendColor"
+          style={{ backgroundColor: '#7fc97f' }}
+        ></div>
         <p>Zones végétalisées et milieux semi-naturels</p>
       </div>
       <div className="legendColor-wrapper">
-        <div className="legendColor" style={{ backgroundColor: "#beaed4" }}></div>
+        <div
+          className="legendColor"
+          style={{ backgroundColor: '#beaed4' }}
+        ></div>
         <p>Zones humides</p>
       </div>
       <div className="legendColor-wrapper">
-        <div className="legendColor" style={{ backgroundColor: "#386cb0" }}></div>
+        <div
+          className="legendColor"
+          style={{ backgroundColor: '#386cb0' }}
+        ></div>
         <p>Surfaces en eau</p>
       </div>
       {/* <div className="legendColor-wrapper">

@@ -7,12 +7,12 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import { Loader } from '@/components/loader';
-import { AgeBati } from '@/components/themes/inconfort-thermique/age-bati';
-import { DensiteBati } from '@/components/themes/inconfort-thermique/densite-bati';
-import { FragiliteEconomique } from '@/components/themes/inconfort-thermique/fragilite-economique';
-import { GrandAgeIsolement } from '@/components/themes/inconfort-thermique/grand-age-isolement';
-import LCZ from '@/components/themes/inconfort-thermique/lcz';
-import { TravailExterieur } from '@/components/themes/inconfort-thermique/travail-exterieur';
+import { AgeBati } from '@/components/themes/inconfortThermique/age-bati';
+import { DensiteBati } from '@/components/themes/inconfortThermique/densite-bati';
+import { FragiliteEconomique } from '@/components/themes/inconfortThermique/fragilite-economique';
+import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grand-age-isolement';
+import LCZ from '@/components/themes/inconfortThermique/lcz';
+import { TravailExterieur } from '@/components/themes/inconfortThermique/travail-exterieur';
 import {
   CarteCommunes,
   CLC,
@@ -46,7 +46,7 @@ interface VegetalisationProps {
 
 const DynamicVegetalisation = dynamic(
   () =>
-    import('../../../../components/themes/inconfort-thermique/vegetalisation'),
+    import('../../../../components/themes/inconfortThermique/vegetalisation'),
   {
     ssr: false,
     loading: () => <Loader />

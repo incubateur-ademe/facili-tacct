@@ -1,24 +1,34 @@
-"use client";
+'use client';
 
-import "../inconfort-thermique/vegetalisation-legend.css";
-import styles from "./gestionRisques.module.scss";
+import '../inconfortThermique/vegetalisation-legend.css';
+import styles from './gestionRisques.module.scss';
 
-const LegendItem = (props: { text: string, color: string }) => {
+const LegendItem = (props: { text: string; color: string }) => {
   const { text, color } = props;
   return (
     <div className={styles.legendItem}>
-      <div className={styles.colorSquare} style={{ backgroundColor: color }}></div>
+      <div
+        className={styles.colorSquare}
+        style={{ backgroundColor: color }}
+      ></div>
       <p>{text}</p>
     </div>
   );
-}
+};
 
 export const LegendErosionCotiere = () => {
   return (
     <div className={styles.ErosionCotiereLegendWrapper}>
       <h2>Mouvement du trait de côte</h2>
       <div className={styles.bloc}>
-        <p style={{width: "85px", minWidth: "85px", margin: 0, alignSelf: "center"}}>
+        <p
+          style={{
+            width: '85px',
+            minWidth: '85px',
+            margin: 0,
+            alignSelf: 'center'
+          }}
+        >
           <b>Recul</b>
         </p>
         <div className={styles.legendsWrappers}>
@@ -33,7 +43,14 @@ export const LegendErosionCotiere = () => {
         </div>
       </div>
       <div className={styles.bloc}>
-        <p style={{width: "85px", minWidth: "85px", margin: 0, alignSelf: "center"}}>
+        <p
+          style={{
+            width: '85px',
+            minWidth: '85px',
+            margin: 0,
+            alignSelf: 'center'
+          }}
+        >
           <b>Avancée</b>
         </p>
         <div className={styles.legendsWrappers}>
@@ -48,7 +65,7 @@ export const LegendErosionCotiere = () => {
         </div>
       </div>
       <div className={styles.bloc}>
-        <div className={styles.legendsWrappers} style={{ marginLeft  : "85px" }}>
+        <div className={styles.legendsWrappers} style={{ marginLeft: '85px' }}>
           <div className={styles.legendsLeft}>
             <LegendItem text="Non perceptible" color="#AFF7F1" />
           </div>
@@ -57,8 +74,8 @@ export const LegendErosionCotiere = () => {
           </div>
         </div>
       </div>
-    </div> 
-  )
+    </div>
+  );
 };
 
 // export const LegendErosionCotiere = () => {

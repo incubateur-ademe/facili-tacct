@@ -40,13 +40,13 @@ export const thematiques = {
       thematique: 'Inconfort thermique',
       id: 0,
       category: '',
-      imageUrl: '../inconfortThermiqueIcon.svg'
+      imageUrl: '../inconfort_thermique_bluetile.svg'
     },
     {
       thematique: 'Biodiversité',
       id: 1,
       category: '',
-      imageUrl: '../biodiversiteIconBlue.svg'
+      imageUrl: '../biodiversite_bluetile.svg'
     },
     {
       thematique: 'Gestion des risques',
@@ -64,7 +64,7 @@ export const thematiques = {
       thematique: 'Aménagement',
       id: 4,
       category: '',
-      imageUrl: '../amenagementIcon.svg'
+      imageUrl: '../amenagement_bluetile.svg'
     }
   ],
   bientot_disponible: [
