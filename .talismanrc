@@ -15,8 +15,6 @@ fileignoreconfig:
   checksum: 2e919056ba20d2c8a4c912321b4180852400e4428458b6b0e73e945b6b8d4f04
 - filename: src/generated/client/runtime/library.js
   checksum: df372689c8cfe9a8df81fba18cd6b8954d3122144f145c87dacfe4bc4b2346d0
-- filename: pnpm-lock.yaml
-  checksum: 80aeea22ac3ffe1147358da210bc6e96c90bc936ff09056a90ba536da82979cc
 - filename: src/app/(main)/_explication/components/sante.tsx
   checksum: 80d459d4ed1a74891709c9fb879ebf71408fa6b0f3043916b59d2daab47cde76
 - filename: src/app/(main)/layout.tsx
@@ -40,7 +38,9 @@ fileignoreconfig:
 - filename: src/components/maps/mapContourTerritoire.tsx
   checksum: 833f759dc62d11cdb9f33635bd92d7af28cbbf00ed41e1d4b56c02fa614a802b
 - filename: pnpm-lock.yaml
-  checksum: 602f7a01f92af0297cf1e1bae7ae37f0cc2cb9955e929da3649fd4cb58ae7612
+  checksum: 7f1cddf849e68828b8344ffdc3d683baf94e3f13f2e8173902c10031d7507aed
+- filename: src/components/SearchInput.tsx
+  checksum: f65093cceb8cbcf38caa8fe2f9ddaa33c3f1f949175e19508626a0bc3c425a88
 - filename: src/components/maps/components/legendCatnat.tsx
   checksum: 7a838e685ee3cafffa94f6d2d53316bb6a843dd86850769bfa22ddce35587399
 - filename: src/app/api/stats/route.ts
