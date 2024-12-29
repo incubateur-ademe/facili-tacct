@@ -2,7 +2,7 @@ import '../global.css';
 
 import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display';
 import { Footer } from '@codegouvfr/react-dsfr/Footer';
-import { type Metadata } from 'next';
+import Metadata from 'next';
 import { type PropsWithChildren, Suspense } from 'react';
 import { NextAppDirEmotionCacheProvider } from 'tss-react/next/appDir';
 
@@ -33,9 +33,7 @@ export const metadata: Metadata = {
   }
 };
 
-const PostHogPageView = dynamic(() => import('../PostHogPageView'), {
-  ssr: false
-});
+const PostHogPageView = dynamic(() => import('../PostHogPageView'));
 
 const RootLayoutMain = ({ children }: PropsWithChildren) => {
   return (

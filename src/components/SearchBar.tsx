@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import Button from "@codegouvfr/react-dsfr/Button";
-import { SearchBar } from "@codegouvfr/react-dsfr/SearchBar";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { useStyles } from "tss-react/dsfr";
+import Button from '@codegouvfr/react-dsfr/Button';
+import { SearchBar } from '@codegouvfr/react-dsfr/SearchBar';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
-import { MySearchInput } from "./SearchInput";
+import './globalMui.css';
+import { MySearchInput } from './SearchInput';
 
 export const SearchBarComp = () => {
   const router = useRouter();
-  const [epciCode, setEpciCode] = useState<string>("");
-  const [searchCode, setSearchCode] = useState<string>("");
+  const [epciCode, setEpciCode] = useState<string>('');
+  const [searchCode, setSearchCode] = useState<string>('');
 
   const getCodeFromSearchBar = (code: string) => {
     setSearchCode(code);
@@ -23,21 +23,22 @@ export const SearchBarComp = () => {
 
   const handleClick = () => {
     if (searchCode.length !== 0) {
-      searchCode?.length < 7 ? router.push(`/thematiques?codgeo=${searchCode}&codepci=${epciCode}`) : router.push(`/thematiques?codepci=${epciCode}`);
+      searchCode?.length < 7
+        ? router.push(`/thematiques?codgeo=${searchCode}&codepci=${epciCode}`)
+        : router.push(`/thematiques?codepci=${epciCode}`);
     }
   };
 
-  const { css } = useStyles();
-
   return (
-    <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
+    <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
       <SearchBar
-        className={css({
-          width: "inherit",
-          ".fr-btn": {
-            display: "none",
-          },
-        })}
+        style={{ width: 'inherit' }}
+        // className={css({
+        //   width: "inherit",
+        //   ".fr-btn": {
+        //     display: "none",
+        //   },
+        // })}
         renderInput={({ className, id, placeholder, type }) => (
           <MySearchInput
             className={className}
@@ -49,7 +50,15 @@ export const SearchBarComp = () => {
           />
         )}
       />
-      { searchCode.length === 0 ? <Button disabled>Continuer</Button> : <Button onClick={handleClick}>Continuer</Button> }
+      {searchCode.length === 0 ? (
+        <Button disabled style={{ display: 'block' }}>
+          Continuer
+        </Button>
+      ) : (
+        <Button onClick={handleClick} style={{ display: 'block' }}>
+          Continuer
+        </Button>
+      )}
     </div>
   );
 };

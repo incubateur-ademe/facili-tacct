@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 export interface MentionPartProps {
   children?: React.ReactNode | React.ReactNode[];
   description: string;
