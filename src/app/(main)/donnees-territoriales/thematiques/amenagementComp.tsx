@@ -4,7 +4,7 @@ import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
+import { ConsommationEspacesNAF } from '@/components/themes/amenagement/consommationEspacesNAF';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
