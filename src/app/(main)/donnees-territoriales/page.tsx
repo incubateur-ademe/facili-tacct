@@ -10,17 +10,17 @@ export const metadata: Metadata = {
 };
 
 type SearchParams = {
-  searchParams: {
+  searchParams: Promise<{
     codepci: string;
     codgeo: string;
     thematique: string;
-  };
+  }>;
 };
 
 const Page = async (searchParams: SearchParams) => {
-  const codepci = searchParams.searchParams.codepci;
-  const codgeo = searchParams.searchParams.codgeo;
-  const thematique = searchParams.searchParams.thematique;
+  const codepci = (await searchParams.searchParams).codepci;
+  const codgeo = (await searchParams.searchParams).codgeo;
+  const thematique = (await searchParams.searchParams).thematique;
 
   return (
     <Container size="xl" className="mb-24">
@@ -40,7 +40,7 @@ const Page = async (searchParams: SearchParams) => {
           }
         ]}
       />
-      <FilterThemes searchParams={searchParams.searchParams} />
+      <FilterThemes searchParams={await searchParams.searchParams} />
     </Container>
   );
 };

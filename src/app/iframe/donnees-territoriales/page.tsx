@@ -8,17 +8,17 @@ export const metadata: Metadata = {
 };
 
 type SearchParams = {
-  searchParams: {
+  searchParams: Promise<{
     codepci: string;
     codgeo: string;
     thematique: string;
-  };
+  }>;
 };
 
 const Page = async (searchParams: SearchParams) => {
   return (
     <Container size="xl" className="mb-24">
-      <FilterThemes searchParams={searchParams.searchParams} />
+      <FilterThemes searchParams={await searchParams.searchParams} />
     </Container>
   );
 };
