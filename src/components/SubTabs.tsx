@@ -1,14 +1,19 @@
-"use client" 
+'use client';
 
-import camembertIconBlack from "@/assets/icons/camembert_icon_black.svg";
-import camembertIconWhite from "@/assets/icons/camembert_icon_white.svg";
-import cartographieIconBlack from "@/assets/icons/cartographie_icon_black.svg";
-import cartographieIconWhite from "@/assets/icons/cartographie_icon_white.svg";
-import evolutionIconBlack from "@/assets/icons/evolution_icon_black.svg";
-import evolutionIconWhite from "@/assets/icons/evolution_icon_white.svg";
-import Image from "next/image";
-import { useState } from "react";
-import styles from "./components.module.scss";
+import activiteIconBlack from '@/assets/icons/activite_icon_black.svg';
+import camembertIconBlack from '@/assets/icons/camembert_icon_black.svg';
+import camembertIconWhite from '@/assets/icons/camembert_icon_white.svg';
+import cartographieIconBlack from '@/assets/icons/cartographie_icon_black.svg';
+import cartographieIconWhite from '@/assets/icons/cartographie_icon_white.svg';
+import evolutionIconBlack from '@/assets/icons/evolution_icon_black.svg';
+import evolutionIconWhite from '@/assets/icons/evolution_icon_white.svg';
+import habitatIconBlack from '@/assets/icons/habitat_icon_black.svg';
+import inconnuIconBlack from '@/assets/icons/inconnu_icon_black.svg';
+import routesIconBlack from '@/assets/icons/route_icon_black.svg';
+import ferroviaireIconBlack from '@/assets/icons/train_icon_black.svg';
+import Image from 'next/image';
+import { useState } from 'react';
+import styles from './components.module.scss';
 
 interface Props {
   data: Array<string | null>;
@@ -20,55 +25,104 @@ interface Props {
 
 const tabIcons = [
   {
-    name: "Répartition", 
+    name: 'Répartition',
     iconNotSelected: camembertIconBlack,
-    iconSelected: camembertIconWhite,
+    iconSelected: camembertIconWhite
   },
   {
-    name: "Évolution",
+    name: 'Évolution',
     iconNotSelected: evolutionIconBlack,
-    iconSelected: evolutionIconWhite,
+    iconSelected: evolutionIconWhite
   },
   {
-    name: "Cartographie",
+    name: 'Cartographie',
     iconNotSelected: cartographieIconBlack,
-    iconSelected: cartographieIconWhite,
+    iconSelected: cartographieIconWhite
+  },
+  {
+    name: 'Tous types',
+    iconNotSelected: null,
+    iconSelected: null
+  },
+  {
+    name: 'Habitat',
+    iconNotSelected: habitatIconBlack,
+    iconSelected: habitatIconBlack
+  },
+  {
+    name: 'Activité',
+    iconNotSelected: activiteIconBlack,
+    iconSelected: activiteIconBlack
+  },
+  {
+    name: 'Routes',
+    iconNotSelected: routesIconBlack,
+    iconSelected: routesIconBlack
+  },
+  {
+    name: 'Ferroviaire',
+    iconNotSelected: ferroviaireIconBlack,
+    iconSelected: ferroviaireIconBlack
+  },
+  {
+    name: 'Inconnu',
+    iconNotSelected: inconnuIconBlack,
+    iconSelected: inconnuIconBlack
   }
 ];
 
-
-const tabsWithIcons = (tabIcons: TabIcons[], name: string, selectedSubTab: string) => {
-  const obj = tabIcons.filter((tab) => tab.name === name).length > 0 ? tabIcons.filter((tab) => tab.name === name)[0] : null;
+const tabsWithIcons = (
+  tabIcons: TabIcons[],
+  name: string,
+  selectedSubTab: string
+) => {
+  const obj =
+    tabIcons.filter((tab) => tab.name === name).length > 0
+      ? tabIcons.filter((tab) => tab.name === name)[0]
+      : null;
   if (selectedSubTab === name) {
     return obj?.iconSelected;
   } else return obj?.iconNotSelected;
-}
+};
 
-const SubTabs = ({ data, defaultTab, setValue, maxWidth="100%", borderRight="none" }: Props) => {
+const SubTabs = ({
+  data,
+  defaultTab,
+  setValue,
+  maxWidth = '100%',
+  borderRight = 'none'
+}: Props) => {
   const [selectedSubTab, setSelectedSubTab] = useState(defaultTab);
 
-  return(
-    <div className={styles.titles} style={{maxWidth: maxWidth, borderRight: borderRight}}>
-      {data
-        .map((element, i) => (
-          <button
-            key={i}
-            className={selectedSubTab === element ? styles.selectedTabButton : styles.tabButton}
-            onClick={() => {
-              setSelectedSubTab(element ? element : "");
-              setValue(element ? element as CatnatTypes : "Tous types");
-            }}
-          >
-            { 
-              element && tabsWithIcons(tabIcons, element, selectedSubTab) ? 
-              <Image src={tabsWithIcons(tabIcons, element, selectedSubTab)!} alt=""/> 
-              : null
-            }
-            {element}
-          </button>
-        ))}
+  return (
+    <div
+      className={styles.titles}
+      style={{ maxWidth: maxWidth, borderRight: borderRight }}
+    >
+      {data.map((element, i) => (
+        <button
+          key={i}
+          className={
+            selectedSubTab === element
+              ? styles.selectedTabButton
+              : styles.tabButton
+          }
+          onClick={() => {
+            setSelectedSubTab(element ? element : '');
+            setValue(element ? (element as CatnatTypes) : 'Tous types');
+          }}
+        >
+          {element && tabsWithIcons(tabIcons, element, selectedSubTab) ? (
+            <Image
+              src={tabsWithIcons(tabIcons, element, selectedSubTab)!}
+              alt=""
+            />
+          ) : null}
+          {element}
+        </button>
+      ))}
     </div>
-  )
-}
+  );
+};
 
 export default SubTabs;

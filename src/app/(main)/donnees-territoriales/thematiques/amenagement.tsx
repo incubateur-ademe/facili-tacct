@@ -11,7 +11,7 @@ const DynamicPageComp = dynamic(() => import('./amenagementComp'), {
 });
 
 const Amenagement = async (searchParams: SearchParams) => {
-  const theme = themes.ressourcesEau;
+  const theme = themes.amenagement;
   const codepci = searchParams.searchParams.codepci;
   const codgeo = searchParams.searchParams.codgeo;
   const dbConsommationNAF = await GetConsommationNAF(codepci);
