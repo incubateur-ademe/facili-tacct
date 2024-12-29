@@ -1,5 +1,12 @@
-import { Any } from "@/lib/utils/types";
-import { BarDatum, BarLegendProps, BarTooltipProps, ResponsiveBar } from "@nivo/bar";
+import { Any } from '@/lib/utils/types';
+import {
+  BarDatum,
+  BarLegendProps,
+  BarTooltipProps,
+  ResponsiveBar
+} from '@nivo/bar';
+
+import type { JSX } from 'react';
 
 type Datum = {
   id: string | number;
@@ -21,7 +28,7 @@ const legendProps: BarLegendProps = {
   itemHeight: 25,
   itemDirection: 'left-to-right',
   itemOpacity: 0.85,
-  symbolSize: 20,
+  symbolSize: 20
 };
 
 type NivoBarChartProps = {
@@ -36,7 +43,7 @@ type NivoBarChartProps = {
   axisLeftTickFactor?: number;
 };
 
-export const NivoBarChart = ({ 
+export const NivoBarChart = ({
   graphData,
   keys,
   indexBy,
@@ -45,7 +52,7 @@ export const NivoBarChart = ({
   legendData,
   tooltip,
   axisLeftLegend,
-  axisLeftTickFactor = 1,
+  axisLeftTickFactor = 1
 }: NivoBarChartProps) => {
   return (
     <ResponsiveBar
@@ -58,9 +65,9 @@ export const NivoBarChart = ({
       padding={0.3}
       innerPadding={2}
       borderRadius={1}
-      valueScale={{ type: "linear" }}
+      valueScale={{ type: 'linear' }}
       indexScale={{ type: 'band', round: true }}
-      borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}    
+      borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
       axisTop={null}
       axisRight={null}
       axisBottom={{
@@ -78,7 +85,7 @@ export const NivoBarChart = ({
                 style={{
                   fill: 'black',
                   fontSize: 12,
-                  fontWeight: 400,                      
+                  fontWeight: 400
                 }}
               >
                 {e.value}
@@ -107,7 +114,7 @@ export const NivoBarChart = ({
                 style={{
                   fill: 'black',
                   fontSize: 12,
-                  fontWeight: 400,
+                  fontWeight: 400
                 }}
               >
                 {e.value / axisLeftTickFactor}
@@ -120,11 +127,11 @@ export const NivoBarChart = ({
       legends={[
         {
           ...legendProps,
-          data: legendData,
-        },
+          data: legendData
+        }
       ]}
       tooltip={tooltip}
       role="application"
     />
   );
-}
+};
