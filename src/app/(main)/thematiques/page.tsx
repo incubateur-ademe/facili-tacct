@@ -1,5 +1,5 @@
 import { Breadcrumb } from '@codegouvfr/react-dsfr/Breadcrumb';
-import { type Metadata } from 'next';
+import Metadata from 'next';
 
 import { Container } from '../../../dsfr/server';
 import { Cards } from './cards';
