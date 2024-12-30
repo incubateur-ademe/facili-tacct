@@ -1,6 +1,7 @@
 'use client';
 
-import { ConsommationEspacesNAFBarChart } from '@/components/charts/biodiversite/consommationEspacesNAFBarChart';
+import { ConsommationEspacesNAFBarChart } from '@/components/charts/amenagement/consommationEspacesNAFBarChart';
+import { ConsommationEspacesNAFMenagesBarChart } from '@/components/charts/amenagement/consommationEspacesNAFMenagesBarChart';
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
 import { CommunesIndicateursDto } from '@/lib/dto';
@@ -13,7 +14,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
   consommationNAF: ConsommationNAF[];
   carteCommunes: CommunesIndicateursDto[];
 }) => {
-  const { consommationNAF, carteCommunes } = props;
+  const { consommationNAF } = props;
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
   const filteredConsommationNAF = consommationNAF.filter(
@@ -70,6 +71,12 @@ export const ConsommationEspacesNAFDataviz = (props: {
             filterValue={typeValue}
           />
         </>
+      ) : datavizTab === 'Répartition' ? (
+        <ConsommationEspacesNAFMenagesBarChart
+          consommationEspacesNAF={filteredConsommationNAF}
+          sliderValue={sliderValue}
+          filterValue={typeValue}
+        />
       ) : (
         ''
       )}

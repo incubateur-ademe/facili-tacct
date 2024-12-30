@@ -16526,6 +16526,9 @@ export namespace Prisma {
     menhab1420: number | null;
     artpop1420: number | null;
     surfcom2023: number | null;
+    C10_MEN: number | null;
+    C15_MEN: number | null;
+    C21_MEN: number | null;
   };
 
   export type Consommation_espaces_nafSumAggregateOutputType = {
@@ -16650,6 +16653,9 @@ export namespace Prisma {
     menhab1420: number | null;
     artpop1420: number | null;
     surfcom2023: number | null;
+    C10_MEN: number | null;
+    C15_MEN: number | null;
+    C21_MEN: number | null;
   };
 
   export type Consommation_espaces_nafMinAggregateOutputType = {
@@ -16779,6 +16785,9 @@ export namespace Prisma {
     menhab1420: number | null;
     artpop1420: number | null;
     surfcom2023: number | null;
+    C10_MEN: number | null;
+    C15_MEN: number | null;
+    C21_MEN: number | null;
   };
 
   export type Consommation_espaces_nafMaxAggregateOutputType = {
@@ -16908,6 +16917,9 @@ export namespace Prisma {
     menhab1420: number | null;
     artpop1420: number | null;
     surfcom2023: number | null;
+    C10_MEN: number | null;
+    C15_MEN: number | null;
+    C21_MEN: number | null;
   };
 
   export type Consommation_espaces_nafCountAggregateOutputType = {
@@ -17037,6 +17049,9 @@ export namespace Prisma {
     menhab1420: number;
     artpop1420: number;
     surfcom2023: number;
+    C10_MEN: number;
+    C15_MEN: number;
+    C21_MEN: number;
     _all: number;
   };
 
@@ -17162,6 +17177,9 @@ export namespace Prisma {
     menhab1420?: true;
     artpop1420?: true;
     surfcom2023?: true;
+    C10_MEN?: true;
+    C15_MEN?: true;
+    C21_MEN?: true;
   };
 
   export type Consommation_espaces_nafSumAggregateInputType = {
@@ -17286,6 +17304,9 @@ export namespace Prisma {
     menhab1420?: true;
     artpop1420?: true;
     surfcom2023?: true;
+    C10_MEN?: true;
+    C15_MEN?: true;
+    C21_MEN?: true;
   };
 
   export type Consommation_espaces_nafMinAggregateInputType = {
@@ -17415,6 +17436,9 @@ export namespace Prisma {
     menhab1420?: true;
     artpop1420?: true;
     surfcom2023?: true;
+    C10_MEN?: true;
+    C15_MEN?: true;
+    C21_MEN?: true;
   };
 
   export type Consommation_espaces_nafMaxAggregateInputType = {
@@ -17544,6 +17568,9 @@ export namespace Prisma {
     menhab1420?: true;
     artpop1420?: true;
     surfcom2023?: true;
+    C10_MEN?: true;
+    C15_MEN?: true;
+    C21_MEN?: true;
   };
 
   export type Consommation_espaces_nafCountAggregateInputType = {
@@ -17673,6 +17700,9 @@ export namespace Prisma {
     menhab1420?: true;
     artpop1420?: true;
     surfcom2023?: true;
+    C10_MEN?: true;
+    C15_MEN?: true;
+    C21_MEN?: true;
     _all?: true;
   };
 
@@ -17900,6 +17930,9 @@ export namespace Prisma {
     menhab1420: number;
     artpop1420: number | null;
     surfcom2023: number;
+    C10_MEN: number | null;
+    C15_MEN: number | null;
+    C21_MEN: number | null;
     _count: Consommation_espaces_nafCountAggregateOutputType | null;
     _avg: Consommation_espaces_nafAvgAggregateOutputType | null;
     _sum: Consommation_espaces_nafSumAggregateOutputType | null;
@@ -18052,6 +18085,9 @@ export namespace Prisma {
       menhab1420?: boolean;
       artpop1420?: boolean;
       surfcom2023?: boolean;
+      C10_MEN?: boolean;
+      C15_MEN?: boolean;
+      C21_MEN?: boolean;
     },
     ExtArgs['result']['consommation_espaces_naf']
   >;
@@ -18186,6 +18222,9 @@ export namespace Prisma {
       menhab1420?: boolean;
       artpop1420?: boolean;
       surfcom2023?: boolean;
+      C10_MEN?: boolean;
+      C15_MEN?: boolean;
+      C21_MEN?: boolean;
     },
     ExtArgs['result']['consommation_espaces_naf']
   >;
@@ -18317,6 +18356,9 @@ export namespace Prisma {
     menhab1420?: boolean;
     artpop1420?: boolean;
     surfcom2023?: boolean;
+    C10_MEN?: boolean;
+    C15_MEN?: boolean;
+    C21_MEN?: boolean;
   };
 
   export type $consommation_espaces_nafPayload<
@@ -18452,6 +18494,9 @@ export namespace Prisma {
         menhab1420: number;
         artpop1420: number | null;
         surfcom2023: number;
+        C10_MEN: number | null;
+        C15_MEN: number | null;
+        C21_MEN: number | null;
       },
       ExtArgs['result']['consommation_espaces_naf']
     >;
@@ -19130,6 +19175,9 @@ export namespace Prisma {
     readonly menhab1420: FieldRef<'consommation_espaces_naf', 'Float'>;
     readonly artpop1420: FieldRef<'consommation_espaces_naf', 'Float'>;
     readonly surfcom2023: FieldRef<'consommation_espaces_naf', 'Float'>;
+    readonly C10_MEN: FieldRef<'consommation_espaces_naf', 'Float'>;
+    readonly C15_MEN: FieldRef<'consommation_espaces_naf', 'Float'>;
+    readonly C21_MEN: FieldRef<'consommation_espaces_naf', 'Float'>;
   }
 
   // Custom InputTypes
@@ -22162,6 +22210,9 @@ export namespace Prisma {
     menhab1420: 'menhab1420';
     artpop1420: 'artpop1420';
     surfcom2023: 'surfcom2023';
+    C10_MEN: 'C10_MEN';
+    C15_MEN: 'C15_MEN';
+    C21_MEN: 'C21_MEN';
   };
 
   export type Consommation_espaces_nafScalarFieldEnum =
@@ -24269,6 +24320,9 @@ export namespace Prisma {
       | number
       | null;
     surfcom2023?: FloatFilter<'consommation_espaces_naf'> | number;
+    C10_MEN?: FloatNullableFilter<'consommation_espaces_naf'> | number | null;
+    C15_MEN?: FloatNullableFilter<'consommation_espaces_naf'> | number | null;
+    C21_MEN?: FloatNullableFilter<'consommation_espaces_naf'> | number | null;
   };
 
   export type consommation_espaces_nafOrderByWithRelationInput = {
@@ -24398,6 +24452,9 @@ export namespace Prisma {
     menhab1420?: SortOrder;
     artpop1420?: SortOrderInput | SortOrder;
     surfcom2023?: SortOrder;
+    C10_MEN?: SortOrderInput | SortOrder;
+    C15_MEN?: SortOrderInput | SortOrder;
+    C21_MEN?: SortOrderInput | SortOrder;
   };
 
   export type consommation_espaces_nafWhereUniqueInput = Prisma.AtLeast<
@@ -24538,6 +24595,9 @@ export namespace Prisma {
         | number
         | null;
       surfcom2023?: FloatFilter<'consommation_espaces_naf'> | number;
+      C10_MEN?: FloatNullableFilter<'consommation_espaces_naf'> | number | null;
+      C15_MEN?: FloatNullableFilter<'consommation_espaces_naf'> | number | null;
+      C21_MEN?: FloatNullableFilter<'consommation_espaces_naf'> | number | null;
     },
     'index'
   >;
@@ -24669,6 +24729,9 @@ export namespace Prisma {
     menhab1420?: SortOrder;
     artpop1420?: SortOrderInput | SortOrder;
     surfcom2023?: SortOrder;
+    C10_MEN?: SortOrderInput | SortOrder;
+    C15_MEN?: SortOrderInput | SortOrder;
+    C21_MEN?: SortOrderInput | SortOrder;
     _count?: consommation_espaces_nafCountOrderByAggregateInput;
     _avg?: consommation_espaces_nafAvgOrderByAggregateInput;
     _max?: consommation_espaces_nafMaxOrderByAggregateInput;
@@ -24826,6 +24889,18 @@ export namespace Prisma {
     surfcom2023?:
       | FloatWithAggregatesFilter<'consommation_espaces_naf'>
       | number;
+    C10_MEN?:
+      | FloatNullableWithAggregatesFilter<'consommation_espaces_naf'>
+      | number
+      | null;
+    C15_MEN?:
+      | FloatNullableWithAggregatesFilter<'consommation_espaces_naf'>
+      | number
+      | null;
+    C21_MEN?:
+      | FloatNullableWithAggregatesFilter<'consommation_espaces_naf'>
+      | number
+      | null;
   };
 
   export type lcz_bayonne_testWhereInput = {
@@ -26606,6 +26681,9 @@ export namespace Prisma {
     menhab1420: number;
     artpop1420?: number | null;
     surfcom2023: number;
+    C10_MEN?: number | null;
+    C15_MEN?: number | null;
+    C21_MEN?: number | null;
   };
 
   export type consommation_espaces_nafUncheckedCreateInput = {
@@ -26735,6 +26813,9 @@ export namespace Prisma {
     menhab1420: number;
     artpop1420?: number | null;
     surfcom2023: number;
+    C10_MEN?: number | null;
+    C15_MEN?: number | null;
+    C21_MEN?: number | null;
   };
 
   export type consommation_espaces_nafUpdateInput = {
@@ -26864,6 +26945,9 @@ export namespace Prisma {
     menhab1420?: FloatFieldUpdateOperationsInput | number;
     artpop1420?: NullableFloatFieldUpdateOperationsInput | number | null;
     surfcom2023?: FloatFieldUpdateOperationsInput | number;
+    C10_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
+    C15_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
+    C21_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
   };
 
   export type consommation_espaces_nafUncheckedUpdateInput = {
@@ -26993,6 +27077,9 @@ export namespace Prisma {
     menhab1420?: FloatFieldUpdateOperationsInput | number;
     artpop1420?: NullableFloatFieldUpdateOperationsInput | number | null;
     surfcom2023?: FloatFieldUpdateOperationsInput | number;
+    C10_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
+    C15_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
+    C21_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
   };
 
   export type consommation_espaces_nafCreateManyInput = {
@@ -27122,6 +27209,9 @@ export namespace Prisma {
     menhab1420: number;
     artpop1420?: number | null;
     surfcom2023: number;
+    C10_MEN?: number | null;
+    C15_MEN?: number | null;
+    C21_MEN?: number | null;
   };
 
   export type consommation_espaces_nafUpdateManyMutationInput = {
@@ -27251,6 +27341,9 @@ export namespace Prisma {
     menhab1420?: FloatFieldUpdateOperationsInput | number;
     artpop1420?: NullableFloatFieldUpdateOperationsInput | number | null;
     surfcom2023?: FloatFieldUpdateOperationsInput | number;
+    C10_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
+    C15_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
+    C21_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
   };
 
   export type consommation_espaces_nafUncheckedUpdateManyInput = {
@@ -27380,6 +27473,9 @@ export namespace Prisma {
     menhab1420?: FloatFieldUpdateOperationsInput | number;
     artpop1420?: NullableFloatFieldUpdateOperationsInput | number | null;
     surfcom2023?: FloatFieldUpdateOperationsInput | number;
+    C10_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
+    C15_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
+    C21_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
   };
 
   export type lcz_bayonne_testCreateInput = {
@@ -27487,17 +27583,19 @@ export namespace Prisma {
   export type north_star_metricCreateInput = {
     value: string;
     date: Date | string;
+    pk: number;
   };
 
   export type north_star_metricUncheckedCreateInput = {
     value: string;
     date: Date | string;
-    pk?: number;
+    pk: number;
   };
 
   export type north_star_metricUpdateInput = {
     value?: StringFieldUpdateOperationsInput | string;
     date?: DateTimeFieldUpdateOperationsInput | Date | string;
+    pk?: IntFieldUpdateOperationsInput | number;
   };
 
   export type north_star_metricUncheckedUpdateInput = {
@@ -27509,12 +27607,13 @@ export namespace Prisma {
   export type north_star_metricCreateManyInput = {
     value: string;
     date: Date | string;
-    pk?: number;
+    pk: number;
   };
 
   export type north_star_metricUpdateManyMutationInput = {
     value?: StringFieldUpdateOperationsInput | string;
     date?: DateTimeFieldUpdateOperationsInput | Date | string;
+    pk?: IntFieldUpdateOperationsInput | number;
   };
 
   export type north_star_metricUncheckedUpdateManyInput = {
@@ -28740,6 +28839,9 @@ export namespace Prisma {
     menhab1420?: SortOrder;
     artpop1420?: SortOrder;
     surfcom2023?: SortOrder;
+    C10_MEN?: SortOrder;
+    C15_MEN?: SortOrder;
+    C21_MEN?: SortOrder;
   };
 
   export type consommation_espaces_nafAvgOrderByAggregateInput = {
@@ -28864,6 +28966,9 @@ export namespace Prisma {
     menhab1420?: SortOrder;
     artpop1420?: SortOrder;
     surfcom2023?: SortOrder;
+    C10_MEN?: SortOrder;
+    C15_MEN?: SortOrder;
+    C21_MEN?: SortOrder;
   };
 
   export type consommation_espaces_nafMaxOrderByAggregateInput = {
@@ -28993,6 +29098,9 @@ export namespace Prisma {
     menhab1420?: SortOrder;
     artpop1420?: SortOrder;
     surfcom2023?: SortOrder;
+    C10_MEN?: SortOrder;
+    C15_MEN?: SortOrder;
+    C21_MEN?: SortOrder;
   };
 
   export type consommation_espaces_nafMinOrderByAggregateInput = {
@@ -29122,6 +29230,9 @@ export namespace Prisma {
     menhab1420?: SortOrder;
     artpop1420?: SortOrder;
     surfcom2023?: SortOrder;
+    C10_MEN?: SortOrder;
+    C15_MEN?: SortOrder;
+    C21_MEN?: SortOrder;
   };
 
   export type consommation_espaces_nafSumOrderByAggregateInput = {
@@ -29246,6 +29357,9 @@ export namespace Prisma {
     menhab1420?: SortOrder;
     artpop1420?: SortOrder;
     surfcom2023?: SortOrder;
+    C10_MEN?: SortOrder;
+    C15_MEN?: SortOrder;
+    C21_MEN?: SortOrder;
   };
 
   export type lcz_bayonne_testCountOrderByAggregateInput = {

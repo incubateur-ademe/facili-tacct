@@ -383,6 +383,9 @@ model consommation_espaces_naf {
   menhab1420           Float
   artpop1420           Float?
   surfcom2023          Float
+  C10_MEN              Float?
+  C15_MEN              Float?
+  C21_MEN              Float?
 
   @@index([index], map: "ix_consommation_espaces_naf_index")
   @@schema("databases")
@@ -410,7 +413,7 @@ model lcz_bayonne_test {
 model north_star_metric {
   value String   @db.VarChar(32)
   date  DateTime @db.Timestamp(6)
-  pk    Int      @id @default(autoincrement())
+  pk    Int      @id
 
   @@schema("analytics")
 }
