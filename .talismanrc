@@ -1,12 +1,6 @@
 fileignoreconfig:
 - filename: src/generated/client/runtime/wasm.js
   checksum: 5cc1e567a4a832fca5d423b1fbcaf67155154a858335e2bd51071d50880eb450
-- filename: src/generated/client/package.json
-  checksum: d3dfd272d125c545292f81fd251c2fc55465d2330c1e80e27a5f757e115c082e
-- filename: src/generated/client/edge.js
-  checksum: 992c06dd8c7dc03d917f19cf972875fd9861a626d68d127f4c618705afdd16f0
-- filename: src/generated/client/index.js
-  checksum: c134c33644bfd0f713d66df9043bc8957a1b321e40e4d4139fc7b2e93693487f
 - filename: src/generated/client/runtime/react-native.js
   checksum: ca53da0f25be1b328abf21c8428e35ad1c16cf9abece3b30b4f90e12dcacebf5
 - filename: src/generated/client/runtime/edge-esm.js
@@ -46,7 +40,13 @@ fileignoreconfig:
 - filename: src/app/api/stats/route.ts
   checksum: bb6a9eb5070433948cbcc0ee31a435b4f9e3e9fe5b9f3b3fa4335593281d7ad8
 - filename: src/generated/client/package.json
-  checksum: c6ab2e1b43aa4aa0c4c8cc1539b60ba410428306a2b907c45f4cd780e30c0f69
+  checksum: ef0be64e221f1ff9d24627de1801c994bd80d4becb171b1882badd3204d13ce8
+- filename: src/generated/client/index.js
+  checksum: 0388e71683019beca70ef3adb860f1cbee0344a32379548ada74891f962cf104
+- filename: src/generated/client/edge.js
+  checksum: 23fb4ce18189c6b68e626868ce697ba6e360e18dbc3b873dbc83fb9302080329
+- filename: src/components/charts/amenagement/consommationEspacesNAFMenagesBarChart.tsx
+  checksum: 438772ef97004d413e9568ee3aa12f4aa82994fbecdeccbba5b2f760fb1ca1c2
 - filename: src/components/charts/stats/BarChart.tsx
   checksum: 741c4c84ea1a4a1427d8795e2f1209452a112531e0422bf2ea5f0444ee944ac3
 - filename: src/components/charts/ressourcesEau/prelevementEauBarChart.tsx

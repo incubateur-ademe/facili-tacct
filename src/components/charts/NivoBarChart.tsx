@@ -39,6 +39,7 @@ type NivoBarChartProps = {
   tooltip?: ({ data }: BarTooltipProps<BarDatum>) => JSX.Element;
   axisLeftLegend?: string;
   axisLeftTickFactor?: number;
+  groupMode?: 'grouped' | 'stacked' | undefined;
 };
 
 export const NivoBarChart = ({
@@ -50,7 +51,8 @@ export const NivoBarChart = ({
   legendData,
   tooltip,
   axisLeftLegend,
-  axisLeftTickFactor = 1
+  axisLeftTickFactor = 1,
+  groupMode = 'stacked'
 }: NivoBarChartProps) => {
   return (
     <ResponsiveBar
@@ -60,6 +62,7 @@ export const NivoBarChart = ({
       indexBy={indexBy}
       colors={colors}
       margin={{ top: 40, right: 200, bottom: 80, left: 80 }}
+      groupMode={groupMode}
       padding={0.3}
       innerPadding={2}
       borderRadius={1}
