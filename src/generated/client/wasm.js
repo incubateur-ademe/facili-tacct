@@ -444,7 +444,10 @@ exports.Prisma.Consommation_espaces_nafScalarFieldEnum = {
   mepart1420: 'mepart1420',
   menhab1420: 'menhab1420',
   artpop1420: 'artpop1420',
-  surfcom2023: 'surfcom2023'
+  surfcom2023: 'surfcom2023',
+  C10_MEN: 'C10_MEN',
+  C15_MEN: 'C15_MEN',
+  C21_MEN: 'C21_MEN'
 };
 
 exports.Prisma.Lcz_bayonne_testScalarFieldEnum = {
