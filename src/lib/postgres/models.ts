@@ -355,4 +355,7 @@ export type ConsommationNAF = {
   menhab1420: number;
   artpop1420: number | null;
   surfcom2023: number;
+  C10_MEN: number | null;
+  C15_MEN: number | null;
+  C21_MEN: number | null;
 };
