@@ -95,11 +95,13 @@ const allComps = [
     titre: "État des cours d'eau",
     Component: ({
       etatCoursDeau,
-      epciContours
+      epciContours,
+      carteCommunes
     }: Props & { activeDataTab: string }) => (
       <EtatQualiteCoursDeau
         etatCoursDeau={etatCoursDeau}
         epciContours={epciContours}
+        carteCommunes={carteCommunes}
       />
     )
   }

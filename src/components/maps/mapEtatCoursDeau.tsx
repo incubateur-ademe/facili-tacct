@@ -1,11 +1,11 @@
 'use client';
 
 import { EpciContoursDto, EtatCoursDeauDto } from '@/lib/dto';
+import { CarteCommunes } from '@/lib/postgres/models';
 import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
 import { Any } from '@/lib/utils/types';
-import { StyleFunction } from 'leaflet';
+import { LatLngExpression, StyleFunction } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 
 const getCentroid = (arr: number[][]) => {
@@ -20,14 +20,13 @@ const getCentroid = (arr: number[][]) => {
 export const MapEtatCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeauDto[];
   epciContours: EpciContoursDto[];
+  carteCommunes: CarteCommunes | undefined;
 }) => {
-  const { etatCoursDeau, epciContours } = props;
-  const searchParams = useSearchParams();
-  const codepci = searchParams.get('codepci')!;
+  const { etatCoursDeau, epciContours, carteCommunes } = props;
   const mapRef = useRef(null);
-  const centerCoord: number[] = getCentroid(
-    epciContours[0]?.geometry?.coordinates[0][0]
-  );
+  const centerCoord: number[] = carteCommunes
+    ? carteCommunes?.coordinates.split(',').map(Number)
+    : getCentroid(epciContours[0]?.geometry?.coordinates[0][0]);
 
   const getColor = (d: string | null) => {
     if (d === '1') {
@@ -49,7 +48,7 @@ export const MapEtatCoursDeau = (props: {
     const typedFeature = feature as EtatCoursDeauDto;
     return {
       fillColor: getColor(typedFeature?.properties.etateco),
-      weight: 5,
+      weight: 2.5,
       opacity: 1,
       color: getColor(typedFeature?.properties.etateco),
       fillOpacity: 0.95
@@ -67,13 +66,18 @@ export const MapEtatCoursDeau = (props: {
 
   return (
     <MapContainer
-      center={[centerCoord[1], centerCoord[0]]}
+      center={
+        carteCommunes
+          ? (centerCoord as LatLngExpression)
+          : [centerCoord[1], centerCoord[0]]
+      }
       zoom={10}
       ref={mapRef}
       style={{ height: '500px', width: '100%' }}
       attributionControl={false}
       zoomControl={false}
       minZoom={9}
+      dragging={false}
     >
       <TileLayer
         attribution='<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
