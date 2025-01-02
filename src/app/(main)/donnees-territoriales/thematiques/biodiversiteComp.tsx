@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 
 import AgricultureBiologique from '@/components/themes/biodiversite/agricultureBio';
 import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
+import EtatQualiteCoursDeau from '@/components/themes/biodiversite/etatCoursDeau';
 import { StationsClassees } from '@/components/themes/biodiversite/stationsClassees';
 import SurfacesProtegees from '@/components/themes/biodiversite/surfacesProtegees';
 import {
@@ -14,6 +15,7 @@ import {
   CarteCommunes,
   ConsommationNAF,
   EpciContours,
+  EtatCoursDeau,
   SurfacesProtegeesByCol
 } from '@/lib/postgres/models';
 import { TabTooltip } from '@/lib/utils/TabTooltip';
@@ -34,6 +36,7 @@ interface Props {
   surfacesProtegees: SurfacesProtegeesByCol[];
   consommationNAF: ConsommationNAF[];
   epciContours: EpciContours[];
+  etatCoursDeau: EtatCoursDeau[];
 }
 
 const allComps = [
@@ -87,6 +90,18 @@ const allComps = [
         carteCommunes={carteCommunes}
       />
     )
+  },
+  {
+    titre: "État des cours d'eau",
+    Component: ({
+      etatCoursDeau,
+      epciContours
+    }: Props & { activeDataTab: string }) => (
+      <EtatQualiteCoursDeau
+        etatCoursDeau={etatCoursDeau}
+        epciContours={epciContours}
+      />
+    )
   }
 ];
 
@@ -97,7 +112,8 @@ const BiodiversiteComp = ({
   agricultureBio,
   surfacesProtegees,
   consommationNAF,
-  epciContours
+  epciContours,
+  etatCoursDeau
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Surfaces protégées');
   const [selectedSubTab, setSelectedSubTab] = useState('Surfaces protégées');
@@ -133,6 +149,10 @@ const BiodiversiteComp = ({
           {
             tabId: "Consommation d'espaces NAF",
             label: "Consommation d'espaces NAF"
+          },
+          {
+            tabId: "État des cours d'eau",
+            label: "État des cours d'eau"
           }
         ]}
         onTabChange={setSelectedTabId}
@@ -199,6 +219,7 @@ const BiodiversiteComp = ({
                     surfacesProtegees={surfacesProtegees}
                     consommationNAF={consommationNAF}
                     epciContours={epciContours}
+                    etatCoursDeau={etatCoursDeau}
                   />
                 );
               })()}

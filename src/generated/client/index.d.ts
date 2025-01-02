@@ -99,6 +99,12 @@ export type lcz_bayonne_test =
  */
 export type north_star_metric =
   $Result.DefaultSelection<Prisma.$north_star_metricPayload>;
+/**
+ * Model etat_cours_d_eau
+ *
+ */
+export type etat_cours_d_eau =
+  $Result.DefaultSelection<Prisma.$etat_cours_d_eauPayload>;
 
 /**
  * ##  Prisma Client ʲˢ
@@ -405,6 +411,16 @@ export class PrismaClient<
    * ```
    */
   get north_star_metric(): Prisma.north_star_metricDelegate<ExtArgs>;
+
+  /**
+   * `prisma.etat_cours_d_eau`: Exposes CRUD operations for the **etat_cours_d_eau** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Etat_cours_d_eaus
+   * const etat_cours_d_eaus = await prisma.etat_cours_d_eau.findMany()
+   * ```
+   */
+  get etat_cours_d_eau(): Prisma.etat_cours_d_eauDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -878,6 +894,7 @@ export namespace Prisma {
     consommation_espaces_naf: 'consommation_espaces_naf';
     lcz_bayonne_test: 'lcz_bayonne_test';
     north_star_metric: 'north_star_metric';
+    etat_cours_d_eau: 'etat_cours_d_eau';
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -917,7 +934,8 @@ export namespace Prisma {
         | 'spatial_ref_sys'
         | 'consommation_espaces_naf'
         | 'lcz_bayonne_test'
-        | 'north_star_metric';
+        | 'north_star_metric'
+        | 'etat_cours_d_eau';
       txIsolationLevel: Prisma.TransactionIsolationLevel;
     };
     model: {
@@ -1945,6 +1963,62 @@ export namespace Prisma {
             args: Prisma.north_star_metricCountArgs<ExtArgs>;
             result:
               | $Utils.Optional<North_star_metricCountAggregateOutputType>
+              | number;
+          };
+        };
+      };
+      etat_cours_d_eau: {
+        payload: Prisma.$etat_cours_d_eauPayload<ExtArgs>;
+        fields: Prisma.etat_cours_d_eauFieldRefs;
+        operations: {
+          findUnique: {
+            args: Prisma.etat_cours_d_eauFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$etat_cours_d_eauPayload> | null;
+          };
+          findUniqueOrThrow: {
+            args: Prisma.etat_cours_d_eauFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$etat_cours_d_eauPayload>;
+          };
+          findFirst: {
+            args: Prisma.etat_cours_d_eauFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$etat_cours_d_eauPayload> | null;
+          };
+          findFirstOrThrow: {
+            args: Prisma.etat_cours_d_eauFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$etat_cours_d_eauPayload>;
+          };
+          findMany: {
+            args: Prisma.etat_cours_d_eauFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$etat_cours_d_eauPayload>[];
+          };
+          delete: {
+            args: Prisma.etat_cours_d_eauDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$etat_cours_d_eauPayload>;
+          };
+          update: {
+            args: Prisma.etat_cours_d_eauUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$etat_cours_d_eauPayload>;
+          };
+          deleteMany: {
+            args: Prisma.etat_cours_d_eauDeleteManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateMany: {
+            args: Prisma.etat_cours_d_eauUpdateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          aggregate: {
+            args: Prisma.Etat_cours_d_eauAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregateEtat_cours_d_eau>;
+          };
+          groupBy: {
+            args: Prisma.etat_cours_d_eauGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<Etat_cours_d_eauGroupByOutputType>[];
+          };
+          count: {
+            args: Prisma.etat_cours_d_eauCountArgs<ExtArgs>;
+            result:
+              | $Utils.Optional<Etat_cours_d_eauCountAggregateOutputType>
               | number;
           };
         };
@@ -21829,6 +21903,1023 @@ export namespace Prisma {
   };
 
   /**
+   * Model etat_cours_d_eau
+   */
+
+  export type AggregateEtat_cours_d_eau = {
+    _count: Etat_cours_d_eauCountAggregateOutputType | null;
+    _avg: Etat_cours_d_eauAvgAggregateOutputType | null;
+    _sum: Etat_cours_d_eauSumAggregateOutputType | null;
+    _min: Etat_cours_d_eauMinAggregateOutputType | null;
+    _max: Etat_cours_d_eauMaxAggregateOutputType | null;
+  };
+
+  export type Etat_cours_d_eauAvgAggregateOutputType = {
+    pk: number | null;
+    longueur: number | null;
+    ordre: number | null;
+    qmoyaval: number | null;
+    distmer: number | null;
+    distsrce: number | null;
+    gid: number | null;
+  };
+
+  export type Etat_cours_d_eauSumAggregateOutputType = {
+    pk: number | null;
+    longueur: number | null;
+    ordre: number | null;
+    qmoyaval: number | null;
+    distmer: number | null;
+    distsrce: number | null;
+    gid: bigint | null;
+  };
+
+  export type Etat_cours_d_eauMinAggregateOutputType = {
+    pk: number | null;
+    code_eu_md: string | null;
+    name: string | null;
+    longueur: number | null;
+    statut: string | null;
+    ordre: number | null;
+    etateco: string | null;
+    qmoyaval: number | null;
+    distmer: number | null;
+    distsrce: number | null;
+    gid: bigint | null;
+    annee: string | null;
+  };
+
+  export type Etat_cours_d_eauMaxAggregateOutputType = {
+    pk: number | null;
+    code_eu_md: string | null;
+    name: string | null;
+    longueur: number | null;
+    statut: string | null;
+    ordre: number | null;
+    etateco: string | null;
+    qmoyaval: number | null;
+    distmer: number | null;
+    distsrce: number | null;
+    gid: bigint | null;
+    annee: string | null;
+  };
+
+  export type Etat_cours_d_eauCountAggregateOutputType = {
+    pk: number;
+    code_eu_md: number;
+    name: number;
+    longueur: number;
+    statut: number;
+    ordre: number;
+    etateco: number;
+    qmoyaval: number;
+    distmer: number;
+    distsrce: number;
+    gid: number;
+    annee: number;
+    _all: number;
+  };
+
+  export type Etat_cours_d_eauAvgAggregateInputType = {
+    pk?: true;
+    longueur?: true;
+    ordre?: true;
+    qmoyaval?: true;
+    distmer?: true;
+    distsrce?: true;
+    gid?: true;
+  };
+
+  export type Etat_cours_d_eauSumAggregateInputType = {
+    pk?: true;
+    longueur?: true;
+    ordre?: true;
+    qmoyaval?: true;
+    distmer?: true;
+    distsrce?: true;
+    gid?: true;
+  };
+
+  export type Etat_cours_d_eauMinAggregateInputType = {
+    pk?: true;
+    code_eu_md?: true;
+    name?: true;
+    longueur?: true;
+    statut?: true;
+    ordre?: true;
+    etateco?: true;
+    qmoyaval?: true;
+    distmer?: true;
+    distsrce?: true;
+    gid?: true;
+    annee?: true;
+  };
+
+  export type Etat_cours_d_eauMaxAggregateInputType = {
+    pk?: true;
+    code_eu_md?: true;
+    name?: true;
+    longueur?: true;
+    statut?: true;
+    ordre?: true;
+    etateco?: true;
+    qmoyaval?: true;
+    distmer?: true;
+    distsrce?: true;
+    gid?: true;
+    annee?: true;
+  };
+
+  export type Etat_cours_d_eauCountAggregateInputType = {
+    pk?: true;
+    code_eu_md?: true;
+    name?: true;
+    longueur?: true;
+    statut?: true;
+    ordre?: true;
+    etateco?: true;
+    qmoyaval?: true;
+    distmer?: true;
+    distsrce?: true;
+    gid?: true;
+    annee?: true;
+    _all?: true;
+  };
+
+  export type Etat_cours_d_eauAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which etat_cours_d_eau to aggregate.
+     */
+    where?: etat_cours_d_eauWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of etat_cours_d_eaus to fetch.
+     */
+    orderBy?:
+      | etat_cours_d_eauOrderByWithRelationInput
+      | etat_cours_d_eauOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: etat_cours_d_eauWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` etat_cours_d_eaus from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` etat_cours_d_eaus.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned etat_cours_d_eaus
+     **/
+    _count?: true | Etat_cours_d_eauCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: Etat_cours_d_eauAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: Etat_cours_d_eauSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: Etat_cours_d_eauMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: Etat_cours_d_eauMaxAggregateInputType;
+  };
+
+  export type GetEtat_cours_d_eauAggregateType<
+    T extends Etat_cours_d_eauAggregateArgs
+  > = {
+    [P in keyof T & keyof AggregateEtat_cours_d_eau]: P extends
+      | '_count'
+      | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEtat_cours_d_eau[P]>
+      : GetScalarType<T[P], AggregateEtat_cours_d_eau[P]>;
+  };
+
+  export type etat_cours_d_eauGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    where?: etat_cours_d_eauWhereInput;
+    orderBy?:
+      | etat_cours_d_eauOrderByWithAggregationInput
+      | etat_cours_d_eauOrderByWithAggregationInput[];
+    by: Etat_cours_d_eauScalarFieldEnum[] | Etat_cours_d_eauScalarFieldEnum;
+    having?: etat_cours_d_eauScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: Etat_cours_d_eauCountAggregateInputType | true;
+    _avg?: Etat_cours_d_eauAvgAggregateInputType;
+    _sum?: Etat_cours_d_eauSumAggregateInputType;
+    _min?: Etat_cours_d_eauMinAggregateInputType;
+    _max?: Etat_cours_d_eauMaxAggregateInputType;
+  };
+
+  export type Etat_cours_d_eauGroupByOutputType = {
+    pk: number;
+    code_eu_md: string;
+    name: string;
+    longueur: number | null;
+    statut: string | null;
+    ordre: number | null;
+    etateco: string | null;
+    qmoyaval: number | null;
+    distmer: number | null;
+    distsrce: number | null;
+    gid: bigint;
+    annee: string;
+    _count: Etat_cours_d_eauCountAggregateOutputType | null;
+    _avg: Etat_cours_d_eauAvgAggregateOutputType | null;
+    _sum: Etat_cours_d_eauSumAggregateOutputType | null;
+    _min: Etat_cours_d_eauMinAggregateOutputType | null;
+    _max: Etat_cours_d_eauMaxAggregateOutputType | null;
+  };
+
+  type GetEtat_cours_d_eauGroupByPayload<
+    T extends etat_cours_d_eauGroupByArgs
+  > = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Etat_cours_d_eauGroupByOutputType, T['by']> & {
+        [P in keyof T &
+          keyof Etat_cours_d_eauGroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : GetScalarType<T[P], Etat_cours_d_eauGroupByOutputType[P]>
+          : GetScalarType<T[P], Etat_cours_d_eauGroupByOutputType[P]>;
+      }
+    >
+  >;
+
+  export type etat_cours_d_eauSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      pk?: boolean;
+      code_eu_md?: boolean;
+      name?: boolean;
+      longueur?: boolean;
+      statut?: boolean;
+      ordre?: boolean;
+      etateco?: boolean;
+      qmoyaval?: boolean;
+      distmer?: boolean;
+      distsrce?: boolean;
+      gid?: boolean;
+      annee?: boolean;
+    },
+    ExtArgs['result']['etat_cours_d_eau']
+  >;
+
+  export type etat_cours_d_eauSelectScalar = {
+    pk?: boolean;
+    code_eu_md?: boolean;
+    name?: boolean;
+    longueur?: boolean;
+    statut?: boolean;
+    ordre?: boolean;
+    etateco?: boolean;
+    qmoyaval?: boolean;
+    distmer?: boolean;
+    distsrce?: boolean;
+    gid?: boolean;
+    annee?: boolean;
+  };
+
+  export type $etat_cours_d_eauPayload<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    name: 'etat_cours_d_eau';
+    objects: {};
+    scalars: $Extensions.GetPayloadResult<
+      {
+        pk: number;
+        code_eu_md: string;
+        name: string;
+        longueur: number | null;
+        statut: string | null;
+        ordre: number | null;
+        etateco: string | null;
+        qmoyaval: number | null;
+        distmer: number | null;
+        distsrce: number | null;
+        gid: bigint;
+        annee: string;
+      },
+      ExtArgs['result']['etat_cours_d_eau']
+    >;
+    composites: {};
+  };
+
+  type etat_cours_d_eauGetPayload<
+    S extends boolean | null | undefined | etat_cours_d_eauDefaultArgs
+  > = $Result.GetResult<Prisma.$etat_cours_d_eauPayload, S>;
+
+  type etat_cours_d_eauCountArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = Omit<etat_cours_d_eauFindManyArgs, 'select' | 'include' | 'distinct'> & {
+    select?: Etat_cours_d_eauCountAggregateInputType | true;
+  };
+
+  export interface etat_cours_d_eauDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['etat_cours_d_eau'];
+      meta: { name: 'etat_cours_d_eau' };
+    };
+    /**
+     * Find zero or one Etat_cours_d_eau that matches the filter.
+     * @param {etat_cours_d_eauFindUniqueArgs} args - Arguments to find a Etat_cours_d_eau
+     * @example
+     * // Get one Etat_cours_d_eau
+     * const etat_cours_d_eau = await prisma.etat_cours_d_eau.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends etat_cours_d_eauFindUniqueArgs>(
+      args: SelectSubset<T, etat_cours_d_eauFindUniqueArgs<ExtArgs>>
+    ): Prisma__etat_cours_d_eauClient<
+      $Result.GetResult<
+        Prisma.$etat_cours_d_eauPayload<ExtArgs>,
+        T,
+        'findUnique'
+      > | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find one Etat_cours_d_eau that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {etat_cours_d_eauFindUniqueOrThrowArgs} args - Arguments to find a Etat_cours_d_eau
+     * @example
+     * // Get one Etat_cours_d_eau
+     * const etat_cours_d_eau = await prisma.etat_cours_d_eau.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends etat_cours_d_eauFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, etat_cours_d_eauFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__etat_cours_d_eauClient<
+      $Result.GetResult<
+        Prisma.$etat_cours_d_eauPayload<ExtArgs>,
+        T,
+        'findUniqueOrThrow'
+      >,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first Etat_cours_d_eau that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {etat_cours_d_eauFindFirstArgs} args - Arguments to find a Etat_cours_d_eau
+     * @example
+     * // Get one Etat_cours_d_eau
+     * const etat_cours_d_eau = await prisma.etat_cours_d_eau.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends etat_cours_d_eauFindFirstArgs>(
+      args?: SelectSubset<T, etat_cours_d_eauFindFirstArgs<ExtArgs>>
+    ): Prisma__etat_cours_d_eauClient<
+      $Result.GetResult<
+        Prisma.$etat_cours_d_eauPayload<ExtArgs>,
+        T,
+        'findFirst'
+      > | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first Etat_cours_d_eau that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {etat_cours_d_eauFindFirstOrThrowArgs} args - Arguments to find a Etat_cours_d_eau
+     * @example
+     * // Get one Etat_cours_d_eau
+     * const etat_cours_d_eau = await prisma.etat_cours_d_eau.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends etat_cours_d_eauFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, etat_cours_d_eauFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__etat_cours_d_eauClient<
+      $Result.GetResult<
+        Prisma.$etat_cours_d_eauPayload<ExtArgs>,
+        T,
+        'findFirstOrThrow'
+      >,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find zero or more Etat_cours_d_eaus that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {etat_cours_d_eauFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Etat_cours_d_eaus
+     * const etat_cours_d_eaus = await prisma.etat_cours_d_eau.findMany()
+     *
+     * // Get first 10 Etat_cours_d_eaus
+     * const etat_cours_d_eaus = await prisma.etat_cours_d_eau.findMany({ take: 10 })
+     *
+     * // Only select the `pk`
+     * const etat_cours_d_eauWithPkOnly = await prisma.etat_cours_d_eau.findMany({ select: { pk: true } })
+     *
+     */
+    findMany<T extends etat_cours_d_eauFindManyArgs>(
+      args?: SelectSubset<T, etat_cours_d_eauFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$etat_cours_d_eauPayload<ExtArgs>, T, 'findMany'>
+    >;
+
+    /**
+     * Delete a Etat_cours_d_eau.
+     * @param {etat_cours_d_eauDeleteArgs} args - Arguments to delete one Etat_cours_d_eau.
+     * @example
+     * // Delete one Etat_cours_d_eau
+     * const Etat_cours_d_eau = await prisma.etat_cours_d_eau.delete({
+     *   where: {
+     *     // ... filter to delete one Etat_cours_d_eau
+     *   }
+     * })
+     *
+     */
+    delete<T extends etat_cours_d_eauDeleteArgs>(
+      args: SelectSubset<T, etat_cours_d_eauDeleteArgs<ExtArgs>>
+    ): Prisma__etat_cours_d_eauClient<
+      $Result.GetResult<Prisma.$etat_cours_d_eauPayload<ExtArgs>, T, 'delete'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Update one Etat_cours_d_eau.
+     * @param {etat_cours_d_eauUpdateArgs} args - Arguments to update one Etat_cours_d_eau.
+     * @example
+     * // Update one Etat_cours_d_eau
+     * const etat_cours_d_eau = await prisma.etat_cours_d_eau.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends etat_cours_d_eauUpdateArgs>(
+      args: SelectSubset<T, etat_cours_d_eauUpdateArgs<ExtArgs>>
+    ): Prisma__etat_cours_d_eauClient<
+      $Result.GetResult<Prisma.$etat_cours_d_eauPayload<ExtArgs>, T, 'update'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Delete zero or more Etat_cours_d_eaus.
+     * @param {etat_cours_d_eauDeleteManyArgs} args - Arguments to filter Etat_cours_d_eaus to delete.
+     * @example
+     * // Delete a few Etat_cours_d_eaus
+     * const { count } = await prisma.etat_cours_d_eau.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends etat_cours_d_eauDeleteManyArgs>(
+      args?: SelectSubset<T, etat_cours_d_eauDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Etat_cours_d_eaus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {etat_cours_d_eauUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Etat_cours_d_eaus
+     * const etat_cours_d_eau = await prisma.etat_cours_d_eau.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends etat_cours_d_eauUpdateManyArgs>(
+      args: SelectSubset<T, etat_cours_d_eauUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Count the number of Etat_cours_d_eaus.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {etat_cours_d_eauCountArgs} args - Arguments to filter Etat_cours_d_eaus to count.
+     * @example
+     * // Count the number of Etat_cours_d_eaus
+     * const count = await prisma.etat_cours_d_eau.count({
+     *   where: {
+     *     // ... the filter for the Etat_cours_d_eaus we want to count
+     *   }
+     * })
+     **/
+    count<T extends etat_cours_d_eauCountArgs>(
+      args?: Subset<T, etat_cours_d_eauCountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Etat_cours_d_eauCountAggregateOutputType>
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a Etat_cours_d_eau.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Etat_cours_d_eauAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends Etat_cours_d_eauAggregateArgs>(
+      args: Subset<T, Etat_cours_d_eauAggregateArgs>
+    ): Prisma.PrismaPromise<GetEtat_cours_d_eauAggregateType<T>>;
+
+    /**
+     * Group by Etat_cours_d_eau.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {etat_cours_d_eauGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends etat_cours_d_eauGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: etat_cours_d_eauGroupByArgs['orderBy'] }
+        : { orderBy?: etat_cours_d_eauGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<
+        Keys<MaybeTupleToUnion<T['orderBy']>>
+      >,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`
+                    ];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+    >(
+      args: SubsetIntersection<T, etat_cours_d_eauGroupByArgs, OrderByArg> &
+        InputErrors
+    ): {} extends InputErrors
+      ? GetEtat_cours_d_eauGroupByPayload<T>
+      : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the etat_cours_d_eau model
+     */
+    readonly fields: etat_cours_d_eauFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for etat_cours_d_eau.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__etat_cours_d_eauClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?:
+        | ((value: T) => TResult1 | PromiseLike<TResult1>)
+        | undefined
+        | null,
+      onrejected?:
+        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?:
+        | ((reason: any) => TResult | PromiseLike<TResult>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the etat_cours_d_eau model
+   */
+  interface etat_cours_d_eauFieldRefs {
+    readonly pk: FieldRef<'etat_cours_d_eau', 'Int'>;
+    readonly code_eu_md: FieldRef<'etat_cours_d_eau', 'String'>;
+    readonly name: FieldRef<'etat_cours_d_eau', 'String'>;
+    readonly longueur: FieldRef<'etat_cours_d_eau', 'Float'>;
+    readonly statut: FieldRef<'etat_cours_d_eau', 'String'>;
+    readonly ordre: FieldRef<'etat_cours_d_eau', 'Float'>;
+    readonly etateco: FieldRef<'etat_cours_d_eau', 'String'>;
+    readonly qmoyaval: FieldRef<'etat_cours_d_eau', 'Float'>;
+    readonly distmer: FieldRef<'etat_cours_d_eau', 'Float'>;
+    readonly distsrce: FieldRef<'etat_cours_d_eau', 'Float'>;
+    readonly gid: FieldRef<'etat_cours_d_eau', 'BigInt'>;
+    readonly annee: FieldRef<'etat_cours_d_eau', 'String'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * etat_cours_d_eau findUnique
+   */
+  export type etat_cours_d_eauFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null;
+    /**
+     * Filter, which etat_cours_d_eau to fetch.
+     */
+    where: etat_cours_d_eauWhereUniqueInput;
+  };
+
+  /**
+   * etat_cours_d_eau findUniqueOrThrow
+   */
+  export type etat_cours_d_eauFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null;
+    /**
+     * Filter, which etat_cours_d_eau to fetch.
+     */
+    where: etat_cours_d_eauWhereUniqueInput;
+  };
+
+  /**
+   * etat_cours_d_eau findFirst
+   */
+  export type etat_cours_d_eauFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null;
+    /**
+     * Filter, which etat_cours_d_eau to fetch.
+     */
+    where?: etat_cours_d_eauWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of etat_cours_d_eaus to fetch.
+     */
+    orderBy?:
+      | etat_cours_d_eauOrderByWithRelationInput
+      | etat_cours_d_eauOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for etat_cours_d_eaus.
+     */
+    cursor?: etat_cours_d_eauWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` etat_cours_d_eaus from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` etat_cours_d_eaus.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of etat_cours_d_eaus.
+     */
+    distinct?:
+      | Etat_cours_d_eauScalarFieldEnum
+      | Etat_cours_d_eauScalarFieldEnum[];
+  };
+
+  /**
+   * etat_cours_d_eau findFirstOrThrow
+   */
+  export type etat_cours_d_eauFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null;
+    /**
+     * Filter, which etat_cours_d_eau to fetch.
+     */
+    where?: etat_cours_d_eauWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of etat_cours_d_eaus to fetch.
+     */
+    orderBy?:
+      | etat_cours_d_eauOrderByWithRelationInput
+      | etat_cours_d_eauOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for etat_cours_d_eaus.
+     */
+    cursor?: etat_cours_d_eauWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` etat_cours_d_eaus from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` etat_cours_d_eaus.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of etat_cours_d_eaus.
+     */
+    distinct?:
+      | Etat_cours_d_eauScalarFieldEnum
+      | Etat_cours_d_eauScalarFieldEnum[];
+  };
+
+  /**
+   * etat_cours_d_eau findMany
+   */
+  export type etat_cours_d_eauFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null;
+    /**
+     * Filter, which etat_cours_d_eaus to fetch.
+     */
+    where?: etat_cours_d_eauWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of etat_cours_d_eaus to fetch.
+     */
+    orderBy?:
+      | etat_cours_d_eauOrderByWithRelationInput
+      | etat_cours_d_eauOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing etat_cours_d_eaus.
+     */
+    cursor?: etat_cours_d_eauWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` etat_cours_d_eaus from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` etat_cours_d_eaus.
+     */
+    skip?: number;
+    distinct?:
+      | Etat_cours_d_eauScalarFieldEnum
+      | Etat_cours_d_eauScalarFieldEnum[];
+  };
+
+  /**
+   * etat_cours_d_eau update
+   */
+  export type etat_cours_d_eauUpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null;
+    /**
+     * The data needed to update a etat_cours_d_eau.
+     */
+    data: XOR<
+      etat_cours_d_eauUpdateInput,
+      etat_cours_d_eauUncheckedUpdateInput
+    >;
+    /**
+     * Choose, which etat_cours_d_eau to update.
+     */
+    where: etat_cours_d_eauWhereUniqueInput;
+  };
+
+  /**
+   * etat_cours_d_eau updateMany
+   */
+  export type etat_cours_d_eauUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to update etat_cours_d_eaus.
+     */
+    data: XOR<
+      etat_cours_d_eauUpdateManyMutationInput,
+      etat_cours_d_eauUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which etat_cours_d_eaus to update
+     */
+    where?: etat_cours_d_eauWhereInput;
+  };
+
+  /**
+   * etat_cours_d_eau delete
+   */
+  export type etat_cours_d_eauDeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null;
+    /**
+     * Filter which etat_cours_d_eau to delete.
+     */
+    where: etat_cours_d_eauWhereUniqueInput;
+  };
+
+  /**
+   * etat_cours_d_eau deleteMany
+   */
+  export type etat_cours_d_eauDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which etat_cours_d_eaus to delete
+     */
+    where?: etat_cours_d_eauWhereInput;
+  };
+
+  /**
+   * etat_cours_d_eau without action
+   */
+  export type etat_cours_d_eauDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelect<ExtArgs> | null;
+  };
+
+  /**
    * Enums
    */
 
@@ -22244,6 +23335,24 @@ export namespace Prisma {
 
   export type North_star_metricScalarFieldEnum =
     (typeof North_star_metricScalarFieldEnum)[keyof typeof North_star_metricScalarFieldEnum];
+
+  export const Etat_cours_d_eauScalarFieldEnum: {
+    pk: 'pk';
+    code_eu_md: 'code_eu_md';
+    name: 'name';
+    longueur: 'longueur';
+    statut: 'statut';
+    ordre: 'ordre';
+    etateco: 'etateco';
+    qmoyaval: 'qmoyaval';
+    distmer: 'distmer';
+    distsrce: 'distsrce';
+    gid: 'gid';
+    annee: 'annee';
+  };
+
+  export type Etat_cours_d_eauScalarFieldEnum =
+    (typeof Etat_cours_d_eauScalarFieldEnum)[keyof typeof Etat_cours_d_eauScalarFieldEnum];
 
   export const SortOrder: {
     asc: 'asc';
@@ -25059,6 +26168,123 @@ export namespace Prisma {
     pk?: IntWithAggregatesFilter<'north_star_metric'> | number;
   };
 
+  export type etat_cours_d_eauWhereInput = {
+    AND?: etat_cours_d_eauWhereInput | etat_cours_d_eauWhereInput[];
+    OR?: etat_cours_d_eauWhereInput[];
+    NOT?: etat_cours_d_eauWhereInput | etat_cours_d_eauWhereInput[];
+    pk?: IntFilter<'etat_cours_d_eau'> | number;
+    code_eu_md?: StringFilter<'etat_cours_d_eau'> | string;
+    name?: StringFilter<'etat_cours_d_eau'> | string;
+    longueur?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
+    statut?: StringNullableFilter<'etat_cours_d_eau'> | string | null;
+    ordre?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
+    etateco?: StringNullableFilter<'etat_cours_d_eau'> | string | null;
+    qmoyaval?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
+    distmer?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
+    distsrce?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
+    gid?: BigIntFilter<'etat_cours_d_eau'> | bigint | number;
+    annee?: StringFilter<'etat_cours_d_eau'> | string;
+  };
+
+  export type etat_cours_d_eauOrderByWithRelationInput = {
+    pk?: SortOrder;
+    code_eu_md?: SortOrder;
+    name?: SortOrder;
+    longueur?: SortOrderInput | SortOrder;
+    statut?: SortOrderInput | SortOrder;
+    ordre?: SortOrderInput | SortOrder;
+    etateco?: SortOrderInput | SortOrder;
+    qmoyaval?: SortOrderInput | SortOrder;
+    distmer?: SortOrderInput | SortOrder;
+    distsrce?: SortOrderInput | SortOrder;
+    gid?: SortOrder;
+    annee?: SortOrder;
+  };
+
+  export type etat_cours_d_eauWhereUniqueInput = Prisma.AtLeast<
+    {
+      pk?: number;
+      AND?: etat_cours_d_eauWhereInput | etat_cours_d_eauWhereInput[];
+      OR?: etat_cours_d_eauWhereInput[];
+      NOT?: etat_cours_d_eauWhereInput | etat_cours_d_eauWhereInput[];
+      code_eu_md?: StringFilter<'etat_cours_d_eau'> | string;
+      name?: StringFilter<'etat_cours_d_eau'> | string;
+      longueur?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
+      statut?: StringNullableFilter<'etat_cours_d_eau'> | string | null;
+      ordre?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
+      etateco?: StringNullableFilter<'etat_cours_d_eau'> | string | null;
+      qmoyaval?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
+      distmer?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
+      distsrce?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
+      gid?: BigIntFilter<'etat_cours_d_eau'> | bigint | number;
+      annee?: StringFilter<'etat_cours_d_eau'> | string;
+    },
+    'pk'
+  >;
+
+  export type etat_cours_d_eauOrderByWithAggregationInput = {
+    pk?: SortOrder;
+    code_eu_md?: SortOrder;
+    name?: SortOrder;
+    longueur?: SortOrderInput | SortOrder;
+    statut?: SortOrderInput | SortOrder;
+    ordre?: SortOrderInput | SortOrder;
+    etateco?: SortOrderInput | SortOrder;
+    qmoyaval?: SortOrderInput | SortOrder;
+    distmer?: SortOrderInput | SortOrder;
+    distsrce?: SortOrderInput | SortOrder;
+    gid?: SortOrder;
+    annee?: SortOrder;
+    _count?: etat_cours_d_eauCountOrderByAggregateInput;
+    _avg?: etat_cours_d_eauAvgOrderByAggregateInput;
+    _max?: etat_cours_d_eauMaxOrderByAggregateInput;
+    _min?: etat_cours_d_eauMinOrderByAggregateInput;
+    _sum?: etat_cours_d_eauSumOrderByAggregateInput;
+  };
+
+  export type etat_cours_d_eauScalarWhereWithAggregatesInput = {
+    AND?:
+      | etat_cours_d_eauScalarWhereWithAggregatesInput
+      | etat_cours_d_eauScalarWhereWithAggregatesInput[];
+    OR?: etat_cours_d_eauScalarWhereWithAggregatesInput[];
+    NOT?:
+      | etat_cours_d_eauScalarWhereWithAggregatesInput
+      | etat_cours_d_eauScalarWhereWithAggregatesInput[];
+    pk?: IntWithAggregatesFilter<'etat_cours_d_eau'> | number;
+    code_eu_md?: StringWithAggregatesFilter<'etat_cours_d_eau'> | string;
+    name?: StringWithAggregatesFilter<'etat_cours_d_eau'> | string;
+    longueur?:
+      | FloatNullableWithAggregatesFilter<'etat_cours_d_eau'>
+      | number
+      | null;
+    statut?:
+      | StringNullableWithAggregatesFilter<'etat_cours_d_eau'>
+      | string
+      | null;
+    ordre?:
+      | FloatNullableWithAggregatesFilter<'etat_cours_d_eau'>
+      | number
+      | null;
+    etateco?:
+      | StringNullableWithAggregatesFilter<'etat_cours_d_eau'>
+      | string
+      | null;
+    qmoyaval?:
+      | FloatNullableWithAggregatesFilter<'etat_cours_d_eau'>
+      | number
+      | null;
+    distmer?:
+      | FloatNullableWithAggregatesFilter<'etat_cours_d_eau'>
+      | number
+      | null;
+    distsrce?:
+      | FloatNullableWithAggregatesFilter<'etat_cours_d_eau'>
+      | number
+      | null;
+    gid?: BigIntWithAggregatesFilter<'etat_cours_d_eau'> | bigint | number;
+    annee?: StringWithAggregatesFilter<'etat_cours_d_eau'> | string;
+  };
+
   export type inconfort_thermiqueCreateInput = {
     index: bigint | number;
     code_geographique: string;
@@ -27622,6 +28848,64 @@ export namespace Prisma {
     pk?: IntFieldUpdateOperationsInput | number;
   };
 
+  export type etat_cours_d_eauUpdateInput = {
+    code_eu_md?: StringFieldUpdateOperationsInput | string;
+    name?: StringFieldUpdateOperationsInput | string;
+    longueur?: NullableFloatFieldUpdateOperationsInput | number | null;
+    statut?: NullableStringFieldUpdateOperationsInput | string | null;
+    ordre?: NullableFloatFieldUpdateOperationsInput | number | null;
+    etateco?: NullableStringFieldUpdateOperationsInput | string | null;
+    qmoyaval?: NullableFloatFieldUpdateOperationsInput | number | null;
+    distmer?: NullableFloatFieldUpdateOperationsInput | number | null;
+    distsrce?: NullableFloatFieldUpdateOperationsInput | number | null;
+    gid?: BigIntFieldUpdateOperationsInput | bigint | number;
+    annee?: StringFieldUpdateOperationsInput | string;
+  };
+
+  export type etat_cours_d_eauUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number;
+    code_eu_md?: StringFieldUpdateOperationsInput | string;
+    name?: StringFieldUpdateOperationsInput | string;
+    longueur?: NullableFloatFieldUpdateOperationsInput | number | null;
+    statut?: NullableStringFieldUpdateOperationsInput | string | null;
+    ordre?: NullableFloatFieldUpdateOperationsInput | number | null;
+    etateco?: NullableStringFieldUpdateOperationsInput | string | null;
+    qmoyaval?: NullableFloatFieldUpdateOperationsInput | number | null;
+    distmer?: NullableFloatFieldUpdateOperationsInput | number | null;
+    distsrce?: NullableFloatFieldUpdateOperationsInput | number | null;
+    gid?: BigIntFieldUpdateOperationsInput | bigint | number;
+    annee?: StringFieldUpdateOperationsInput | string;
+  };
+
+  export type etat_cours_d_eauUpdateManyMutationInput = {
+    code_eu_md?: StringFieldUpdateOperationsInput | string;
+    name?: StringFieldUpdateOperationsInput | string;
+    longueur?: NullableFloatFieldUpdateOperationsInput | number | null;
+    statut?: NullableStringFieldUpdateOperationsInput | string | null;
+    ordre?: NullableFloatFieldUpdateOperationsInput | number | null;
+    etateco?: NullableStringFieldUpdateOperationsInput | string | null;
+    qmoyaval?: NullableFloatFieldUpdateOperationsInput | number | null;
+    distmer?: NullableFloatFieldUpdateOperationsInput | number | null;
+    distsrce?: NullableFloatFieldUpdateOperationsInput | number | null;
+    gid?: BigIntFieldUpdateOperationsInput | bigint | number;
+    annee?: StringFieldUpdateOperationsInput | string;
+  };
+
+  export type etat_cours_d_eauUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number;
+    code_eu_md?: StringFieldUpdateOperationsInput | string;
+    name?: StringFieldUpdateOperationsInput | string;
+    longueur?: NullableFloatFieldUpdateOperationsInput | number | null;
+    statut?: NullableStringFieldUpdateOperationsInput | string | null;
+    ordre?: NullableFloatFieldUpdateOperationsInput | number | null;
+    etateco?: NullableStringFieldUpdateOperationsInput | string | null;
+    qmoyaval?: NullableFloatFieldUpdateOperationsInput | number | null;
+    distmer?: NullableFloatFieldUpdateOperationsInput | number | null;
+    distsrce?: NullableFloatFieldUpdateOperationsInput | number | null;
+    gid?: BigIntFieldUpdateOperationsInput | bigint | number;
+    annee?: StringFieldUpdateOperationsInput | string;
+  };
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>;
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>;
@@ -29482,6 +30766,71 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>;
     _min?: NestedDateTimeFilter<$PrismaModel>;
     _max?: NestedDateTimeFilter<$PrismaModel>;
+  };
+
+  export type etat_cours_d_eauCountOrderByAggregateInput = {
+    pk?: SortOrder;
+    code_eu_md?: SortOrder;
+    name?: SortOrder;
+    longueur?: SortOrder;
+    statut?: SortOrder;
+    ordre?: SortOrder;
+    etateco?: SortOrder;
+    qmoyaval?: SortOrder;
+    distmer?: SortOrder;
+    distsrce?: SortOrder;
+    gid?: SortOrder;
+    annee?: SortOrder;
+  };
+
+  export type etat_cours_d_eauAvgOrderByAggregateInput = {
+    pk?: SortOrder;
+    longueur?: SortOrder;
+    ordre?: SortOrder;
+    qmoyaval?: SortOrder;
+    distmer?: SortOrder;
+    distsrce?: SortOrder;
+    gid?: SortOrder;
+  };
+
+  export type etat_cours_d_eauMaxOrderByAggregateInput = {
+    pk?: SortOrder;
+    code_eu_md?: SortOrder;
+    name?: SortOrder;
+    longueur?: SortOrder;
+    statut?: SortOrder;
+    ordre?: SortOrder;
+    etateco?: SortOrder;
+    qmoyaval?: SortOrder;
+    distmer?: SortOrder;
+    distsrce?: SortOrder;
+    gid?: SortOrder;
+    annee?: SortOrder;
+  };
+
+  export type etat_cours_d_eauMinOrderByAggregateInput = {
+    pk?: SortOrder;
+    code_eu_md?: SortOrder;
+    name?: SortOrder;
+    longueur?: SortOrder;
+    statut?: SortOrder;
+    ordre?: SortOrder;
+    etateco?: SortOrder;
+    qmoyaval?: SortOrder;
+    distmer?: SortOrder;
+    distsrce?: SortOrder;
+    gid?: SortOrder;
+    annee?: SortOrder;
+  };
+
+  export type etat_cours_d_eauSumOrderByAggregateInput = {
+    pk?: SortOrder;
+    longueur?: SortOrder;
+    ordre?: SortOrder;
+    qmoyaval?: SortOrder;
+    distmer?: SortOrder;
+    distsrce?: SortOrder;
+    gid?: SortOrder;
   };
 
   export type BigIntFieldUpdateOperationsInput = {

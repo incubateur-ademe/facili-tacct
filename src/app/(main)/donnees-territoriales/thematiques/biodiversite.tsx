@@ -4,6 +4,7 @@ import {
   GetSurfacesProtegees
 } from '@/lib/queries/databases/biodiversite';
 import { GetCommunes, GetEpci } from '@/lib/queries/postgis/cartographie';
+import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
 import { GetAgricultureBio, GetBiodiversite } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/utils/themes';
 import dynamic from 'next/dynamic';
@@ -24,6 +25,7 @@ const Biodiversite = async (searchParams: SearchParams) => {
   const dbSurfacesProtegees = await GetSurfacesProtegees(codepci);
   const dbConsommationNAF = await GetConsommationNAF(codepci);
   const epciContours = await GetEpci(codepci);
+  const dbEtatCoursDeau = await GetEtatCoursDeau(codepci, codgeo);
 
   return (
     <div>
@@ -36,6 +38,7 @@ const Biodiversite = async (searchParams: SearchParams) => {
           surfacesProtegees={dbSurfacesProtegees}
           consommationNAF={dbConsommationNAF}
           epciContours={epciContours}
+          etatCoursDeau={dbEtatCoursDeau}
         />
       </div>
     </div>

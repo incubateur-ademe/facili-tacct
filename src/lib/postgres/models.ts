@@ -359,3 +359,19 @@ export type ConsommationNAF = {
   C15_MEN: number | null;
   C21_MEN: number | null;
 };
+
+export type EtatCoursDeau = {
+  pk: number;
+  code_eu_md: string;
+  name: string;
+  longueur: number | null;
+  statut: string;
+  ordre: number | null;
+  etateco: string | null;
+  qmoyaval: number | null;
+  distmer: number | null;
+  distsrce: number | null;
+  gid: number;
+  annee: string;
+  geometry: string;
+};

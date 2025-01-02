@@ -78,6 +78,13 @@ export const themes = {
       facteur_sensibilite: "Consommation d'espaces NAF",
       risque: '',
       donnee: ''
+    },
+    {
+      id: 4,
+      titre: "État des cours d'eau",
+      facteur_sensibilite: "État des cours d'eau",
+      risque: '',
+      donnee: ''
     }
   ],
   ressourcesEau: [
