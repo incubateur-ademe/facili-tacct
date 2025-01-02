@@ -26,7 +26,7 @@ const GetInsights = async (shortId?: string) => {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.POSTHOG_API_KEY}`
     },
-    cache: 'no-cache'
+    cache: 'no-store'
   });
 
   if (!request.ok) {
