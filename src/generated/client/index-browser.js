@@ -471,6 +471,21 @@ exports.Prisma.North_star_metricScalarFieldEnum = {
   pk: 'pk'
 };
 
+exports.Prisma.Etat_cours_d_eauScalarFieldEnum = {
+  pk: 'pk',
+  code_eu_md: 'code_eu_md',
+  name: 'name',
+  longueur: 'longueur',
+  statut: 'statut',
+  ordre: 'ordre',
+  etateco: 'etateco',
+  qmoyaval: 'qmoyaval',
+  distmer: 'distmer',
+  distsrce: 'distsrce',
+  gid: 'gid',
+  annee: 'annee'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -501,7 +516,8 @@ exports.Prisma.ModelName = {
   spatial_ref_sys: 'spatial_ref_sys',
   consommation_espaces_naf: 'consommation_espaces_naf',
   lcz_bayonne_test: 'lcz_bayonne_test',
-  north_star_metric: 'north_star_metric'
+  north_star_metric: 'north_star_metric',
+  etat_cours_d_eau: 'etat_cours_d_eau'
 };
 
 /**

@@ -417,3 +417,22 @@ model north_star_metric {
 
   @@schema("analytics")
 }
+
+model etat_cours_d_eau {
+  pk         Int                     @id @default(autoincrement())
+  code_eu_md String                  @db.VarChar
+  name       String                  @db.VarChar
+  longueur   Float?
+  statut     String?                 @db.VarChar
+  ordre      Float?
+  etateco    String?                 @db.VarChar
+  qmoyaval   Float?
+  distmer    Float?
+  distsrce   Float?
+  gid        BigInt
+  annee      String                  @db.VarChar
+  geometry   Unsupported("geometry")
+
+  @@index([geometry], map: "etat_cours_d_eau_geometry_geom_idx", type: Gist)
+  @@schema("postgis")
+}
