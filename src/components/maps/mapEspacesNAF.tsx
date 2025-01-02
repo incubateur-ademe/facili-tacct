@@ -52,16 +52,19 @@ export const MapEspacesNaf = (props: {
   carteCommunes: CommunesIndicateursDto[];
 }) => {
   const { carteCommunes } = props;
+  const carteCommunesFiltered = carteCommunes.filter(
+    (el) => el.properties.naf != undefined
+  );
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo');
   const codepci = searchParams.get('codepci')!;
   const mapRef = useRef(null);
 
-  const all_coordinates = carteCommunes.map(
+  const all_coordinates = carteCommunesFiltered.map(
     (el) => el.geometry.coordinates?.[0]?.[0]
   );
   const commune = codgeo
-    ? carteCommunes.find((el) => el.properties.code_commune === codgeo)
+    ? carteCommunesFiltered.find((el) => el.properties.code_commune === codgeo)
     : null;
   const centerCoord: number[] = commune
     ? getCentroid(commune.geometry.coordinates?.[0][0])
@@ -137,7 +140,7 @@ export const MapEspacesNaf = (props: {
 
   return (
     <>
-      {carteCommunes === null ? (
+      {carteCommunesFiltered === null ? (
         <GraphDataNotFound code={codgeo ? codgeo : codepci} />
       ) : (
         <MapContainer
@@ -154,7 +157,7 @@ export const MapEspacesNaf = (props: {
           />
           <GeoJSON
             ref={mapRef}
-            data={carteCommunes as unknown as GeoJsonObject}
+            data={carteCommunesFiltered as unknown as GeoJsonObject}
             style={style}
             onEachFeature={onEachFeature}
           />
