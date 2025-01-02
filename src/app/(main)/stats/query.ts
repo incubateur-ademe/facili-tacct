@@ -26,8 +26,12 @@ const GetInsights = async (shortId?: string) => {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.POSTHOG_API_KEY}`
     },
-    next: { revalidate: 3600 }
+    cache: 'no-cache'
   });
+
+  if (!request.ok) {
+    throw new Error('Failed to fetch data');
+  }
 
   const response: Response = await request.json();
   const filteredResponse = response.results.filter(
