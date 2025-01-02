@@ -1,22 +1,31 @@
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { LegendEtatCoursDeau } from '@/components/maps/components/legendEtatCoursDeau';
 import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
 import { EpciContoursMapper } from '@/lib/mapper/epci';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
-import { EpciContours, EtatCoursDeau } from '@/lib/postgres/models';
+import {
+  CarteCommunes,
+  EpciContours,
+  EtatCoursDeau
+} from '@/lib/postgres/models';
 import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { useSearchParams } from 'next/navigation';
-import styles from '../gestionRisques/gestionRisques.module.scss';
+import styles from './biodiversite.module.scss';
 
 const EtatQualiteCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeau[];
   epciContours: EpciContours[];
+  carteCommunes: CarteCommunes[];
 }) => {
-  const { etatCoursDeau, epciContours } = props;
+  const { etatCoursDeau, epciContours, carteCommunes } = props;
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
   const etatCoursDeauMap = etatCoursDeau.map(EtatCoursDeauMapper);
   const epciContoursMap = epciContours.map(EpciContoursMapper);
+  const commune = carteCommunes.find(
+    (commune) => commune.code_commune === codgeo
+  );
   const title = (
     <>
       <div></div>
@@ -52,7 +61,7 @@ const EtatQualiteCoursDeau = (props: {
           <div className="w-7/12">
             <div className={styles.graphWrapper}>
               <div
-                className={styles.catnatGraphTitleWrapper}
+                className={styles.biodiversiteGraphTitleWrapper}
                 style={{ padding: '1rem' }}
               >
                 <h2>État des cours d'eau</h2>
@@ -61,7 +70,14 @@ const EtatQualiteCoursDeau = (props: {
                 <MapEtatCoursDeau
                   etatCoursDeau={etatCoursDeauMap}
                   epciContours={epciContoursMap}
+                  carteCommunes={commune}
                 />
+              </div>
+              <div
+                className={styles.legend}
+                style={{ width: 'auto', justifyContent: 'center' }}
+              >
+                <LegendEtatCoursDeau />
               </div>
               <p style={{ padding: '1em', margin: '0' }}>
                 Source : Agences de l'eau
