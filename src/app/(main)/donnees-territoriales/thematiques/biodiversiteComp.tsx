@@ -4,9 +4,9 @@ import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+import { Loader } from '@/components/loader';
 import AgricultureBiologique from '@/components/themes/biodiversite/agricultureBio';
 import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
-import EtatQualiteCoursDeau from '@/components/themes/biodiversite/etatCoursDeau';
 import { StationsClassees } from '@/components/themes/biodiversite/stationsClassees';
 import SurfacesProtegees from '@/components/themes/biodiversite/surfacesProtegees';
 import {
@@ -18,7 +18,9 @@ import {
   EtatCoursDeau,
   SurfacesProtegeesByCol
 } from '@/lib/postgres/models';
+import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
 import { TabTooltip } from '@/lib/utils/TabTooltip';
+import dynamic from 'next/dynamic';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -36,8 +38,15 @@ interface Props {
   surfacesProtegees: SurfacesProtegeesByCol[];
   consommationNAF: ConsommationNAF[];
   epciContours: EpciContours[];
-  etatCoursDeau: EtatCoursDeau[];
 }
+
+const DynamicCoursDeau = dynamic(
+  () => import('../../../../components/themes/biodiversite/etatCoursDeau'),
+  {
+    ssr: false,
+    loading: () => <Loader />
+  }
+);
 
 const allComps = [
   {
@@ -97,8 +106,8 @@ const allComps = [
       etatCoursDeau,
       epciContours,
       carteCommunes
-    }: Props & { activeDataTab: string }) => (
-      <EtatQualiteCoursDeau
+    }: Props & { activeDataTab: string; etatCoursDeau: EtatCoursDeau[] }) => (
+      <DynamicCoursDeau
         etatCoursDeau={etatCoursDeau}
         epciContours={epciContours}
         carteCommunes={carteCommunes}
@@ -114,11 +123,11 @@ const BiodiversiteComp = ({
   agricultureBio,
   surfacesProtegees,
   consommationNAF,
-  epciContours,
-  etatCoursDeau
+  epciContours
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Surfaces protégées');
   const [selectedSubTab, setSelectedSubTab] = useState('Surfaces protégées');
+  const [etatCoursDeau, setEtatCoursDeau] = useState<EtatCoursDeau[]>();
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
   const { css } = useStyles();
@@ -127,6 +136,10 @@ const BiodiversiteComp = ({
     setSelectedSubTab(
       data.filter((el) => el.facteur_sensibilite === selectedTabId)[0].titre
     );
+    void (async () => {
+      const temp = await GetEtatCoursDeau(codepci);
+      temp && codepci ? setEtatCoursDeau(temp) : void 0;
+    })();
   }, [selectedTabId, codepci]);
 
   return (
@@ -221,7 +234,7 @@ const BiodiversiteComp = ({
                     surfacesProtegees={surfacesProtegees}
                     consommationNAF={consommationNAF}
                     epciContours={epciContours}
-                    etatCoursDeau={etatCoursDeau}
+                    etatCoursDeau={etatCoursDeau || []}
                   />
                 );
               })()}

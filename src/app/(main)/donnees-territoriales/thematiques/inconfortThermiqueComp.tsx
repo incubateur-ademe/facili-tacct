@@ -40,10 +40,6 @@ interface Props {
   // LCZBayonne: any[];
 }
 
-interface VegetalisationProps {
-  clc: CLC[];
-}
-
 const DynamicVegetalisation = dynamic(
   () =>
     import('../../../../components/themes/inconfortThermique/vegetalisation'),
@@ -106,7 +102,7 @@ const allComps = [
     Component: ({
       clc,
       inconfortThermique
-    }: Props & VegetalisationProps & { activeDataTab: string }) => (
+    }: Props & { activeDataTab: string; clc: CLC[] }) => (
       <DynamicVegetalisation
         inconfortThermique={inconfortThermique}
         clc={clc}
