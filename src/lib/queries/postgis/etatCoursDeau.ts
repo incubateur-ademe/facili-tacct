@@ -18,20 +18,20 @@ export const GetEtatCoursDeau = async (
       ST_AsText(geometry) geometry
       FROM postgis."epci" WHERE epci_code=${code};`;
     if (epci[0]) {
-      const valueIntersect = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
-        SELECT 
-        name,
-        etateco,
-        ST_AsGeoJSON(geometry) geometry
-        FROM postgis."etat_cours_d_eau" WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`;
-      // const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
+      // const valueIntersect = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
       //   SELECT
       //   name,
       //   etateco,
       //   ST_AsGeoJSON(geometry) geometry
-      //   FROM postgis."etat_cours_d_eau" WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${epci[0].geometry})), 4326), 0.6);`; //ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326))
+      //   FROM postgis."etat_cours_d_eau" WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`;
+      const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
+        SELECT
+        name,
+        etateco,
+        ST_AsGeoJSON(geometry) geometry
+        FROM postgis."etat_cours_d_eau" WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${epci[0].geometry})), 4326), 1);`; //ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326))
       console.timeEnd('Query Execution Time EtatCoursDeau');
-      return valueIntersect;
+      return value;
     } else if (code === 'ZZZZZZZZZ') {
       const ile = await PrismaPostgres.$queryRaw<EpciContours[]>`
         SELECT 
