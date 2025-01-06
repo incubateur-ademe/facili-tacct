@@ -38,8 +38,10 @@ type NivoBarChartProps = {
   legendData?: Datum[];
   tooltip?: ({ data }: BarTooltipProps<BarDatum>) => JSX.Element;
   axisLeftLegend?: string;
+  axisBottomLegend?: string;
   axisLeftTickFactor?: number;
   groupMode?: 'grouped' | 'stacked' | undefined;
+  showLegend?: boolean;
 };
 
 export const NivoBarChart = ({
@@ -51,8 +53,10 @@ export const NivoBarChart = ({
   legendData,
   tooltip,
   axisLeftLegend,
+  axisBottomLegend,
   axisLeftTickFactor = 1,
-  groupMode = 'stacked'
+  groupMode = 'stacked',
+  showLegend = true
 }: NivoBarChartProps) => {
   return (
     <ResponsiveBar
@@ -61,7 +65,11 @@ export const NivoBarChart = ({
       isFocusable={true}
       indexBy={indexBy}
       colors={colors}
-      margin={{ top: 40, right: 200, bottom: 80, left: 80 }}
+      margin={
+        showLegend
+          ? { top: 40, right: 200, bottom: 80, left: 80 }
+          : { top: 40, right: 80, bottom: 80, left: 80 }
+      }
       groupMode={groupMode}
       padding={0.3}
       innerPadding={2}
@@ -75,6 +83,9 @@ export const NivoBarChart = ({
         tickValues: bottomTickValues,
         tickSize: 0,
         tickPadding: 15,
+        legend: axisBottomLegend,
+        legendOffset: 50,
+        legendPosition: 'middle',
         renderTick: (e: Any) => {
           return (
             <g transform={`translate(${e.x},${e.y})`}>
@@ -127,12 +138,16 @@ export const NivoBarChart = ({
         }
       }}
       enableLabel={false}
-      legends={[
-        {
-          ...legendProps,
-          data: legendData
-        }
-      ]}
+      legends={
+        showLegend
+          ? [
+              {
+                ...legendProps,
+                data: legendData
+              }
+            ]
+          : []
+      }
       tooltip={tooltip}
       role="application"
     />

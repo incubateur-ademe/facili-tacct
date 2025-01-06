@@ -1,7 +1,6 @@
 'use client';
 
 import { ConsommationEspacesNAFBarChart } from '@/components/charts/amenagement/consommationEspacesNAFBarChart';
-import { ConsommationEspacesNAFMenagesBarChart } from '@/components/charts/amenagement/consommationEspacesNAFMenagesBarChart';
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
 import { CommunesIndicateursDto } from '@/lib/dto';
@@ -9,6 +8,33 @@ import { ConsommationNAF } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import styles from './amenagement.module.scss';
+
+const legends = [
+  {
+    variable: 'Activité',
+    couleur: '#F66E19'
+  },
+  {
+    variable: 'Habitat',
+    couleur: '#009ADC'
+  },
+  {
+    variable: 'Mixte',
+    couleur: '#FFCF5E'
+  },
+  {
+    variable: 'Routes',
+    couleur: '#7A49BE'
+  },
+  {
+    variable: 'Ferroviaire',
+    couleur: '#BB43BD'
+  },
+  {
+    variable: 'Inconnu',
+    couleur: '#00C2CC'
+  }
+];
 
 export const ConsommationEspacesNAFDataviz = (props: {
   consommationNAF: ConsommationNAF[];
@@ -20,7 +46,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
   const filteredConsommationNAF = consommationNAF.filter(
     (item) => item.epci === codepci
   );
-  const [datavizTab, setDatavizTab] = useState<string>('Évolution');
+  const [datavizTab, setDatavizTab] = useState<string>('Répartition');
   const [typeValue, setTypeValue] = useState<string>('Tous types');
   const [sliderValue, setSliderValue] = useState<number[]>([2009, 2023]);
 
@@ -32,12 +58,12 @@ export const ConsommationEspacesNAFDataviz = (props: {
       >
         <h2>Consommation des espaces NAF</h2>
         <SubTabs
-          data={['Évolution', 'Répartition', 'Cartographie']}
+          data={['Répartition']}
           defaultTab={datavizTab}
           setValue={setDatavizTab}
         />
       </div>
-      {datavizTab === 'Évolution' ? (
+      {datavizTab === 'Répartition' ? (
         <>
           <div className={styles.amenagementGraphFiltersWrapper}>
             <SubTabs
@@ -45,13 +71,14 @@ export const ConsommationEspacesNAFDataviz = (props: {
                 'Tous types',
                 'Habitat',
                 'Activité',
+                'Mixte',
                 'Routes',
                 'Ferroviaire',
                 'Inconnu'
               ]}
               defaultTab={typeValue}
               setValue={setTypeValue}
-              maxWidth="65%"
+              maxWidth="70%"
               borderRight="solid 1px #D6D6F0"
             />
             <RangeSlider
@@ -62,7 +89,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
               sliderValue={sliderValue}
               width={'-webkit-fill-available'}
               padding={'0 1rem 0 2rem'}
-              maxWidth="70%"
+              maxWidth="35%"
             />
           </div>
           <ConsommationEspacesNAFBarChart
@@ -70,13 +97,18 @@ export const ConsommationEspacesNAFDataviz = (props: {
             sliderValue={sliderValue}
             filterValue={typeValue}
           />
+          <div className={styles.NafBarLegendWrapper}>
+            {legends.map((e) => (
+              <div key={e.variable} className={styles.legendNafBar}>
+                <div
+                  className={styles.colorNafBar}
+                  style={{ backgroundColor: e.couleur }}
+                />
+                <p className={styles.legendText}>{e.variable}</p>
+              </div>
+            ))}
+          </div>
         </>
-      ) : datavizTab === 'Répartition' ? (
-        <ConsommationEspacesNAFMenagesBarChart
-          consommationEspacesNAF={filteredConsommationNAF}
-          sliderValue={sliderValue}
-          filterValue={typeValue}
-        />
       ) : (
         ''
       )}

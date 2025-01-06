@@ -23,10 +23,10 @@ fileignoreconfig:
   checksum: a07619c7387e66b6b2efd8c3c96843bfb75679951b2aea14cabdbe256c192116
 - filename: src/app/iframe/thematiques/cards.tsx
   checksum: e5fd0389b54a29cd2de97ed2a2073c49d642fcbe3456a1c0095a70fdd36d1c38
-- filename: src/components/charts/biodiversite/consommationEspacesNAFBarChart.tsx
-  checksum: 4005d1184c8b22f1b6480ca52ba4b8649a718c3d9d8130d10afdab153d8da68b
-- filename: src/components/maps/mapEspacesNAF.tsx
-  checksum: 1179303c0e9c2d0c3cc0def550cf75053fc5c611e948f63ecc87bcab6da8d4bd
+- filename: src/components/themes/amenagement/consommationEspacesNAFDataviz.tsx
+  checksum: c557055d7fb2c3d2051513685ef1998df1cb55a3395bdab285708637618da3db
+- filename: src/components/charts/amenagement/consommationEspacesNAFBarChart.tsx
+  checksum: 849244ad1e7ca6796c7b4fd3338573b338698dfea32c95f42fa306458b381804
 - filename: src/components/maps/mapCatnat.tsx
   checksum: c6f188d0d38060f780f658a5db55bdd8a588a0a4fde7881e571d03b932400615
 - filename: next.config.mjs
