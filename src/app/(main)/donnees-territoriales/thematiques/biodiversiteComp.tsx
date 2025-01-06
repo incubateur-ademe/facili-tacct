@@ -4,7 +4,6 @@ import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { Loader } from '@/components/loader';
 import AgricultureBiologique from '@/components/themes/biodiversite/agricultureBio';
 import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
 import { StationsClassees } from '@/components/themes/biodiversite/stationsClassees';
@@ -15,12 +14,9 @@ import {
   CarteCommunes,
   ConsommationNAF,
   EpciContours,
-  EtatCoursDeau,
   SurfacesProtegeesByCol
 } from '@/lib/postgres/models';
-import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
 import { TabTooltip } from '@/lib/utils/TabTooltip';
-import dynamic from 'next/dynamic';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -39,14 +35,6 @@ interface Props {
   consommationNAF: ConsommationNAF[];
   epciContours: EpciContours[];
 }
-
-const DynamicCoursDeau = dynamic(
-  () => import('../../../../components/themes/biodiversite/etatCoursDeau'),
-  {
-    ssr: false,
-    loading: () => <Loader />
-  }
-);
 
 const allComps = [
   {
@@ -99,20 +87,6 @@ const allComps = [
         carteCommunes={carteCommunes}
       />
     )
-  },
-  {
-    titre: "État des cours d'eau",
-    Component: ({
-      etatCoursDeau,
-      epciContours,
-      carteCommunes
-    }: Props & { activeDataTab: string; etatCoursDeau: EtatCoursDeau[] }) => (
-      <DynamicCoursDeau
-        etatCoursDeau={etatCoursDeau}
-        epciContours={epciContours}
-        carteCommunes={carteCommunes}
-      />
-    )
   }
 ];
 
@@ -127,7 +101,6 @@ const BiodiversiteComp = ({
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Surfaces protégées');
   const [selectedSubTab, setSelectedSubTab] = useState('Surfaces protégées');
-  const [etatCoursDeau, setEtatCoursDeau] = useState<EtatCoursDeau[]>();
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
   const { css } = useStyles();
@@ -136,10 +109,6 @@ const BiodiversiteComp = ({
     setSelectedSubTab(
       data.filter((el) => el.facteur_sensibilite === selectedTabId)[0].titre
     );
-    void (async () => {
-      const temp = await GetEtatCoursDeau(codepci);
-      temp && codepci ? setEtatCoursDeau(temp) : void 0;
-    })();
   }, [selectedTabId, codepci]);
 
   return (
@@ -164,10 +133,6 @@ const BiodiversiteComp = ({
           {
             tabId: "Consommation d'espaces NAF",
             label: "Consommation d'espaces NAF"
-          },
-          {
-            tabId: "État des cours d'eau",
-            label: "État des cours d'eau"
           }
         ]}
         onTabChange={setSelectedTabId}
@@ -202,21 +167,6 @@ const BiodiversiteComp = ({
         })}
       >
         <div className={styles.formContainer}>
-          <div className={styles.titles}>
-            {/* {data
-              .filter(el => el.facteur_sensibilite === selectedTabId)
-              .map((element, i) => (
-                <button
-                  key={i}
-                  className={selectedSubTab === element.titre ? styles.selectedButton : styles.button}
-                  onClick={() => {
-                    setSelectedSubTab(element.titre);
-                  }}
-                >
-                  {element.titre}
-                </button>
-              ))} */}
-          </div>
           <div className={styles.bubble}>
             <div className={styles.bubbleContent}>
               {(() => {
@@ -234,7 +184,6 @@ const BiodiversiteComp = ({
                     surfacesProtegees={surfacesProtegees}
                     consommationNAF={consommationNAF}
                     epciContours={epciContours}
-                    etatCoursDeau={etatCoursDeau || []}
                   />
                 );
               })()}

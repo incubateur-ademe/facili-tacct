@@ -41,14 +41,14 @@ export const themes = {
       facteur_sensibilite: 'Urbanisme',
       risque: 'Moyen',
       donnee: 'LOREM IPSUM DE LA VEGETALISATION'
-    },
-    {
-      id: 6,
-      titre: 'LCZ',
-      facteur_sensibilite: 'Urbanisme',
-      risque: 'Moyen',
-      donnee: 'LOREM IPSUM DE LA VEGETALISATION'
     }
+    // {
+    //   id: 6,
+    //   titre: 'LCZ',
+    //   facteur_sensibilite: 'Urbanisme',
+    //   risque: 'Moyen',
+    //   donnee: 'LOREM IPSUM DE LA VEGETALISATION'
+    // }
   ],
   biodiversite: [
     {
@@ -76,13 +76,6 @@ export const themes = {
       id: 3,
       titre: "Consommation d'espaces NAF",
       facteur_sensibilite: "Consommation d'espaces NAF",
-      risque: '',
-      donnee: ''
-    },
-    {
-      id: 4,
-      titre: "État des cours d'eau",
-      facteur_sensibilite: "État des cours d'eau",
       risque: '',
       donnee: ''
     }

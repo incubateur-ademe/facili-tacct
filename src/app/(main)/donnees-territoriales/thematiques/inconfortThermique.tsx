@@ -37,7 +37,6 @@ const InconfortThermique = async (searchParams: SearchParams) => {
           inconfortThermique={dbInconfortThermique!}
           carteCommunes={carteCommunes}
           collectivite={collectivite!}
-          // LCZBayonne={LCZBayonne}
         />
       </div>
     </div>

@@ -11,7 +11,6 @@ import { AgeBati } from '@/components/themes/inconfortThermique/age-bati';
 import { DensiteBati } from '@/components/themes/inconfortThermique/densite-bati';
 import { FragiliteEconomique } from '@/components/themes/inconfortThermique/fragilite-economique';
 import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grand-age-isolement';
-import LCZ from '@/components/themes/inconfortThermique/lcz';
 import { TravailExterieur } from '@/components/themes/inconfortThermique/travail-exterieur';
 import {
   CarteCommunes,
@@ -37,7 +36,6 @@ interface Props {
   inconfortThermique: InconfortThermique[];
   collectivite: CollectivitesSearchbar[];
   departement?: InconfortThermique[];
-  // LCZBayonne: any[];
 }
 
 const DynamicVegetalisation = dynamic(
@@ -84,20 +82,6 @@ const allComps = [
     )
   },
   {
-    titre: 'LCZ',
-    Component: ({
-      carteCommunes,
-      collectivite
-      // LCZBayonne
-    }: Props & { activeDataTab: string }) => (
-      <LCZ
-        carteCommunes={carteCommunes}
-        collectivite={collectivite}
-        // LCZBayonne={LCZBayonne}
-      />
-    )
-  },
-  {
     titre: 'Végétalisation',
     Component: ({
       clc,
@@ -117,7 +101,6 @@ const PageComp = ({
   inconfortThermique,
   collectivite,
   departement
-  // LCZBayonne
 }: Props) => {
   const [clc, setClc] = useState<CLC[]>();
   const [selectedTabId, setSelectedTabId] = useState('Population');
@@ -243,7 +226,6 @@ const PageComp = ({
                     clc={clc || []}
                     collectivite={collectivite}
                     departement={departement}
-                    // LCZBayonne={LCZBayonne}
                   />
                 );
               })()}

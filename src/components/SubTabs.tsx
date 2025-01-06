@@ -12,6 +12,8 @@ import habitatIconBlack from '@/assets/icons/habitat_icon_black.svg';
 import habitatIconWhite from '@/assets/icons/habitat_icon_white.svg';
 import inconnuIconBlack from '@/assets/icons/inconnu_icon_black.svg';
 import inconnuIconWhite from '@/assets/icons/inconnu_icon_white.svg';
+import mixteIconBlack from '@/assets/icons/mixte_icon_black.svg';
+import mixteIconWhite from '@/assets/icons/mixte_icon_white.svg';
 import routesIconBlack from '@/assets/icons/route_icon_black.svg';
 import routesIconWhite from '@/assets/icons/route_icon_white.svg';
 import ferroviaireIconBlack from '@/assets/icons/train_icon_black.svg';
@@ -58,6 +60,11 @@ const tabIcons = [
     name: 'Activité',
     iconNotSelected: activiteIconBlack,
     iconSelected: activiteIconWhite
+  },
+  {
+    name: 'Mixte',
+    iconNotSelected: mixteIconBlack,
+    iconSelected: mixteIconWhite
   },
   {
     name: 'Routes',
