@@ -83,7 +83,7 @@ const CatnatDataViz = (props: Props) => {
               sliderValue={sliderValue}
               width={'-webkit-fill-available'}
               padding={'0 1rem 0 2rem'}
-              maxWidth="70%"
+              maxWidth="50%"
             />
           </div>
           <BarChartCatnat gestionRisques={gestionRisquesBarChart} />

@@ -1,33 +1,35 @@
 'use client';
 
+import styles from '@/components/themes/biodiversite/biodiversite.module.scss';
 import { ConsommationNAF } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
+import { BarDatum, BarTooltipProps } from '@nivo/bar';
 import { NivoBarChart } from '../NivoBarChart';
 
 const legends = [
+  {
+    variable: 'Activité',
+    couleur: '#F66E19'
+  },
   {
     variable: 'Habitat',
     couleur: '#009ADC'
   },
   {
-    variable: 'Activité',
+    variable: 'Mixte',
     couleur: '#FFCF5E'
   },
   {
-    variable: 'Mixte',
-    couleur: '#FF6F61'
-  },
-  {
-    variable: 'Inconnu',
-    couleur: '#BB43BD'
-  },
-  {
     variable: 'Routes',
-    couleur: '#00C2CC'
+    couleur: '#7A49BE'
   },
   {
     variable: 'Ferroviaire',
-    couleur: '#00949D'
+    couleur: '#BB43BD'
+  },
+  {
+    variable: 'Inconnu',
+    couleur: '#00C2CC'
   }
 ];
 
@@ -52,7 +54,6 @@ export const ConsommationEspacesNAFBarChart = (props: {
   const { consommationEspacesNAF, sliderValue, filterValue } = props;
   const graphData: GraphData[] = [];
   const allYears: string[] = [];
-
   const stringYears = sliderValue.map((year) => year.toString().substring(2));
   const minYear = Number(stringYears[0]);
   const maxYear = Number(stringYears[1]);
@@ -76,9 +77,10 @@ export const ConsommationEspacesNAFBarChart = (props: {
     const actKey = 'art' + firstYear + 'act' + secondYear;
     const habKey = 'art' + firstYear + 'hab' + secondYear;
     const mixKey = 'art' + firstYear + 'mix' + secondYear;
-    const incKey = 'art' + firstYear + 'inc' + secondYear;
     const rouKey = 'art' + firstYear + 'rou' + secondYear;
     const ferKey = 'art' + firstYear + 'fer' + secondYear;
+    const incKey = 'art' + firstYear + 'inc' + secondYear;
+
     const columnsNAF =
       filterValue === 'Habitat'
         ? [habKey]
@@ -92,28 +94,59 @@ export const ConsommationEspacesNAFBarChart = (props: {
                 ? [rouKey]
                 : filterValue === 'Ferroviaire'
                   ? [ferKey]
-                  : [actKey, habKey, mixKey, incKey, rouKey, ferKey];
+                  : [actKey, habKey, mixKey, rouKey, ferKey, incKey];
 
     consommationEspacesNAF.map((el) => {
       const NAFByYear = subObjectByKeys(el, columnsNAF);
       act += NAFByYear[actKey] as number;
       hab += NAFByYear[habKey] as number;
       mix += NAFByYear[mixKey] as number;
-      inc += NAFByYear[incKey] as number;
       rou += NAFByYear[rouKey] as number;
       fer += NAFByYear[ferKey] as number;
+      inc += NAFByYear[incKey] as number;
     });
 
     graphData.push({
       Activité: act ? Round(act / 10000, 0) : 0,
       Habitat: hab ? Round(hab / 10000, 0) : 0,
       Mixte: mix ? Round(mix / 10000, 0) : 0,
-      Inconnu: inc ? Round(inc / 10000, 0) : 0,
       Routes: rou ? Round(rou / 10000, 0) : 0,
       Ferroviaire: fer ? Round(fer / 10000, 0) : 0,
+      Inconnu: inc ? Round(inc / 10000, 0) : 0,
       annee: year
     });
   });
+
+  const CustomTooltip = ({ data }: BarTooltipProps<BarDatum>) => {
+    const dataArray = Object.entries(data).map((el) => {
+      return {
+        titre: el[0],
+        value: el[1],
+        color: legends.find((e) => e.variable === el[0])?.couleur
+      };
+    });
+
+    return (
+      <div className={styles.tooltipEvolutionWrapper}>
+        {dataArray.slice(0, -1).map((el, i) => {
+          return (
+            <div className={styles.itemWrapper} key={i}>
+              <div className={styles.titre}>
+                <div
+                  className={styles.colorSquare}
+                  style={{ background: el.color }}
+                />
+                <p>{el.titre}</p>
+              </div>
+              <div className={styles.value}>
+                <p>{Round(Number(el.value), 0)} ha</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
 
   return (
     <div
@@ -125,6 +158,9 @@ export const ConsommationEspacesNAFBarChart = (props: {
         keys={Object.keys(graphData[0]).slice(0, -1)}
         indexBy="annee"
         axisLeftLegend="Surface en ha"
+        axisBottomLegend="Années"
+        showLegend={false}
+        tooltip={CustomTooltip}
       />
     </div>
   );
