@@ -60,7 +60,7 @@ export const cards = {
       titre: 'Mettre en récit mon territoire pour engager',
       tag: 'Article',
       description:
-        '« L’humanité est une « espèce fabulatrice qui, en se racontant des histoires de plus en plus complexes, développe des capacités de coopération » - Yval Noah Harrari ; Découvrez la mise en récit.',
+        '« L’humanité est une espèce fabulatrice qui, en se racontant des histoires de plus en plus complexes, développe des capacités de coopération » - Yval Noah Harrari ; Découvrez la mise en récit.',
       link: '/ressources/articles'
     },
     {
