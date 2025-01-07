@@ -1,7 +1,7 @@
 import BookIcon from '@/assets/icons/book_icon_black.svg';
 import ForwardArrow from '@/assets/icons/keyboard_arrow_next_icon_black.svg';
 import ArticleImage from '@/assets/images/article4.png';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import styles from './article.module.scss';
 
@@ -205,7 +205,7 @@ const PourquoiMobiliser = () => {
       </div>
       <div className={styles.grayWrapper}>
         <div className={styles.h2title}>
-          <Image src={ForwardArrow as StaticImageData} alt="" />
+          <Image src={ForwardArrow} alt="" />
           <h2>Pour aller plus loin</h2>
         </div>
         <p>
@@ -230,7 +230,7 @@ const PourquoiMobiliser = () => {
       </div>
       <div className={styles.grayWrapper}>
         <div className={styles.h2title}>
-          <Image src={BookIcon as StaticImageData} alt="" />
+          <Image src={BookIcon} alt="" />
           <h2>Ressources proposées</h2>
         </div>
         <div className={styles.links}>

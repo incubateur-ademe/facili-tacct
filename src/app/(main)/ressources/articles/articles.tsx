@@ -1,5 +1,7 @@
 'use client';
+import Adacc from '@/lib/ressources/articles/adacc';
 import CDC from '@/lib/ressources/articles/CDC';
+import ClimaStory from '@/lib/ressources/articles/climaStory';
 import EviterPrecherDesert from '@/lib/ressources/articles/eviterPrecherDesert';
 import FacilitationDateliers from '@/lib/ressources/articles/facilitationDateliers';
 import LireUnDiagnostic from '@/lib/ressources/articles/lireUnDiagnostic';
@@ -32,6 +34,15 @@ const allArticles = [
   {
     titre: 'Comment éviter de prêcher dans le désert ?',
     Component: () => <EviterPrecherDesert />
+  },
+  {
+    titre:
+      'Sensibiliser à l’ACC : les AdACC (Les ateliers de l’adaptation au changement climatique)',
+    Component: () => <Adacc />
+  },
+  {
+    titre: 'ClimaStory, une cartographie pour sensibiliser',
+    Component: () => <ClimaStory />
   }
 ];
 

@@ -220,6 +220,31 @@ export const cards = {
       description:
         'La mobilisation n’est jamais simple, nous avons identifiés des freins et des pratiques concrètes à activer pour réaliser une mobilisation efficace.',
       link: '/ressources/articles'
+    },
+    {
+      id: 20,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        "Vous n'avez pas de diagnostic"
+      ],
+      titre:
+        'Sensibiliser à l’ACC : les AdACC (Les ateliers de l’adaptation au changement climatique)',
+      tag: 'Article',
+      description:
+        'La sensibilisation, un préalable à la mobilisation ? Retour d’expérience de Sarah Clamens avec la mise en œuvre des Ateliers de l’Adaptation au Changement Climatique à la CA de Saintes.',
+      link: '/ressources/articles'
+    },
+    {
+      id: 21,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        "Vous n'avez pas de diagnostic"
+      ],
+      titre: 'ClimaStory, une cartographie pour sensibiliser',
+      tag: 'Article',
+      description:
+        'Approcher l’adaptation au changement climatique via une carte du territoire, fictive ou non : une manière sensible d’aborder le sujet.',
+      link: '/ressources/articles'
     }
   ],
   inconfortThermique: [
