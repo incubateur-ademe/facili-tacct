@@ -148,6 +148,20 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNat[] }) => {
         arcLinkLabelsOffset={10}
         arcLinkLabelsDiagonalLength={16}
         arcLinkLabelsStraightLength={20}
+        // tooltip={({ datum: { id, value } }: PieTooltipProps<DefaultRawDatum>) => (
+        //   <div
+        //     style={{
+        //       padding: '12px',
+        //       color: 'white',
+        //       background: 'rgba(0, 0, 0, 0.7)',
+        //       borderRadius: '3px'
+        //     }}
+        //   >
+        //     <strong>{id}</strong>
+        //     <br />
+        //     {value} arrêté(s)
+        //   </div>
+        // )}
       />
     </div>
   );
