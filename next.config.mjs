@@ -32,13 +32,7 @@ const csp = {
     ],
     'style-src': ["'self'", "'unsafe-inline'"],
     'object-src': ["'self'", 'data:'],
-    'frame-ancestors': [
-        "'self'",
-        'http://localhost:5174/*',
-        'http://localhost:5174',
-        'http://localhost:5173/*',
-        'http://localhost:5173'
-    ],
+    'frame-ancestors': ["'self'"],
     'base-uri': ["'self'", 'https://*.gouv.fr'],
     'form-action': ["'self'", 'https://*.gouv.fr'],
     'block-all-mixed-content': [],
