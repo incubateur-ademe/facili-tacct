@@ -1,3 +1,5 @@
+'use server';
+
 import { LineChart } from '@/components/charts/stats/lineChart';
 import { Container } from '@/dsfr/layout';
 import GetInsights from '../query';

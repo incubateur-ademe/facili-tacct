@@ -19,7 +19,7 @@ interface Response {
 }
 
 const GetInsights = async (shortId?: string) => {
-  const url = `https://eu.posthog.com/api/projects/39308/insights`;
+  const url = `https://eu.posthog.com/api/projects/39308/insights?refresh=true`;
   const request = await fetch(url, {
     method: 'GET',
     headers: {
