@@ -196,6 +196,30 @@ export const cards = {
       description:
         'Le Pays Pyrénées Méditerranée a mis en oeuvre la démarche TACCT du diagnostic jusqu’à la mise en oeuvre de sa stratégie. Pour retrouver toutes les étapes de la démarche vous pouvez consulter cette fiche.',
       link: 'https://www.payspyreneesmediterranee.org/thematiques/transitions-energie-climat/adaptation-au-changement-climatique/'
+    },
+    {
+      id: 18,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        'Vous découvrez le diagnostic pour la 1ère fois'
+      ],
+      titre: 'Pourquoi mobiliser en interne et externe ?',
+      tag: 'Article',
+      description:
+        'Le climat c’est notre affaire à tous, pour autant la mobilisation autour de ce sujet reste toujours difficile aujourd’hui.',
+      link: '/ressources/articles'
+    },
+    {
+      id: 19,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        'Vous découvrez le diagnostic pour la 1ère fois'
+      ],
+      titre: 'Comment éviter de prêcher dans le désert ?',
+      tag: 'Article',
+      description:
+        'La mobilisation n’est jamais simple, nous avons identifiés des freins et des pratiques concrètes à activer pour réaliser une mobilisation efficace.',
+      link: '/ressources/articles'
     }
   ],
   inconfortThermique: [
