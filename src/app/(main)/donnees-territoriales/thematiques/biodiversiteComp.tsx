@@ -121,6 +121,10 @@ const BiodiversiteComp = ({
             label: 'Surfaces protégées'
           },
           {
+            tabId: "Consommation d'espaces NAF",
+            label: "Consommation d'espaces NAF"
+          },
+          {
             tabId: 'Agriculture biologique',
             label: (
               <TabTooltip
@@ -129,10 +133,6 @@ const BiodiversiteComp = ({
                 titre="Agriculture biologique"
               />
             )
-          },
-          {
-            tabId: "Consommation d'espaces NAF",
-            label: "Consommation d'espaces NAF"
           }
         ]}
         onTabChange={setSelectedTabId}
