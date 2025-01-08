@@ -25,8 +25,7 @@ const GetInsights = async (shortId?: string) => {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.POSTHOG_API_KEY}`
-    },
-    next: { revalidate: 3600 }
+    }
   });
 
   const response: Response = await request.json();

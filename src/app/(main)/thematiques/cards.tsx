@@ -15,9 +15,9 @@ export const Cards = () => {
   }, []);
   return (
     <div className={styles.cardWrapper}>
-      {thematiques.disponible.map((thematique) => (
+      {thematiques.disponible.map((thematique, i) => (
         <CardComp
-          key={thematique.id}
+          key={`thematiqueDispo${i}`}
           imageUrl={thematique.imageUrl}
           thematique={thematique.thematique}
           badgeSeverity="success"
@@ -25,12 +25,12 @@ export const Cards = () => {
           title={thematique.thematique}
         />
       ))}
-      {thematiques.bientot_disponible.map((thematique) => (
+      {thematiques.bientot_disponible.map((thematique, i) => (
         <div
           style={{
             width: 360
           }}
-          key={thematique.id}
+          key={`thematiqueBientotDispo${i}`}
         >
           <Card
             background
