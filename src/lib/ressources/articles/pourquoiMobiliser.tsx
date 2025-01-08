@@ -1,5 +1,6 @@
 import BookIcon from '@/assets/icons/book_icon_black.svg';
 import ForwardArrow from '@/assets/icons/keyboard_arrow_next_icon_black.svg';
+import ArticleImage2 from '@/assets/images/article13.png';
 import ArticleImage from '@/assets/images/article4.png';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,7 +16,7 @@ const PourquoiMobiliser = () => {
           de Villé).
         </h2>
         <p>
-          Combien de mails envoyés et restés sans réponse? Combien d’ateliers
+          Combien de mails envoyés et restés sans réponse ? Combien d’ateliers
           avec un nombre de participants trop faible ? Mobiliser n’est pas
           simple et nécessite une expertise spécifique.
         </p>
@@ -28,21 +29,19 @@ const PourquoiMobiliser = () => {
           des interférences entre impacts du changement climatique et leurs
           activités : le concept ne mobilise pas.
         </p>
-        <div className="flex justify-center mb-12">
-          <p>
-            Pour les mobiliser, il est important de pouvoir aborder des sujets
-            qui les concernent mais dont vous n’êtes pas expert. Cela peut vite
-            tourner au “dialogue de sourd”.
-          </p>
-          <Image
-            src={ArticleImage}
-            alt="Dessin comique sur l'incompréhension du vocabulaire technique"
-            width={0}
-            height={0}
-            sizes="50%"
-            style={{ width: '50%', height: 'auto' }}
-          />
-        </div>
+        <p>
+          Pour les mobiliser, il est important de pouvoir aborder des sujets qui
+          les concernent mais dont vous n’êtes pas expert. Cela peut vite
+          tourner au “dialogue de sourd”.
+        </p>
+        <Image
+          src={ArticleImage}
+          alt="Dessin comique sur l'incompréhension du vocabulaire technique"
+          width={0}
+          height={0}
+          sizes="100%"
+          style={{ width: '100%', height: 'auto' }}
+        />
         <p>
           Notre idée pour aider au dialogue :
           <ul>
@@ -235,15 +234,52 @@ const PourquoiMobiliser = () => {
         </div>
         <div className={styles.links}>
           <div className={styles.link}>
-            <Link
-              href="https://cornu.viabloga.com/texts/jean-michel-cornu"
-              target="_blank"
-              rel="noreferrer"
-            >
-              1 h pour animer un réseau, de Jean Michel Cornu
-            </Link>
+            <p>
+              <ul>
+                <li>
+                  <Link
+                    href="https://cornu.viabloga.com/texts/jean-michel-cornu"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    1 h pour animer un réseau, de Jean Michel Cornu
+                  </Link>
+                </li>
+                <li>
+                  Jolet, vous partage également, un nombre de ressources issues
+                  de son travail, accessibles à ce lien :
+                  <ul>{/* <li>coucou</li> */}</ul>
+                </li>
+              </ul>
+            </p>
           </div>
         </div>
+      </div>
+      <div className={styles.textBloc}>
+        <h2>
+          <u>En conclusion :</u>
+        </h2>
+        <div className="flex justify-center mb-12 gap-4">
+          <p>
+            Bravo à Jolet qui a su inspirer une communauté d’action sur son
+            territoire, illustrant le rôle fondamental d’animation du chargé(e)
+            de mission.
+          </p>
+          <Image
+            src={ArticleImage2}
+            alt="Dessin comique sur l'incompréhension du vocabulaire technique"
+            width={0}
+            height={0}
+            sizes="70%"
+            style={{ width: '70%', height: 'auto' }}
+          />
+        </div>
+        <p>
+          Les acteurs de la Vallée de Villé peuvent ainsi travailler
+          collectivement sur des actions concrètes, issues de leurs besoins, et
+          poursuivre leurs collaborations, en attendant la stratégie finalisée
+          d’adaptation au changement climatique de leur collectivité.
+        </p>
       </div>
     </div>
   );

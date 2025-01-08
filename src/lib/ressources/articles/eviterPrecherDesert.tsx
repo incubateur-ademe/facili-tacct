@@ -1,4 +1,5 @@
 import ForwardArrow from '@/assets/icons/keyboard_arrow_next_icon_black.svg';
+import ArticleImage3 from '@/assets/images/article14.png';
 import ArticleImage from '@/assets/images/article5.png';
 import ArticleImage2 from '@/assets/images/article6.jpg';
 import Image, { StaticImageData } from 'next/image';
@@ -13,7 +14,7 @@ const EviterPrecherDesert = () => {
         bien mobiliser
       </h1>
       <div className={styles.textBloc}>
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-12 gap-4">
           <div>
             <p>
               Cet article a été rédigé avec Jolet Van Kipshagen, Tifaine Briand,
@@ -81,6 +82,12 @@ const EviterPrecherDesert = () => {
             </li>
           </ul>
         </p>
+        <p>
+          Ces blocages sont de différentes natures : logistique, compétence ou
+          organisationnelle. Vous trouverez ci-dessous un diagramme qui cherche
+          à vous apporter autant de réponses concrètes aux freins
+          sus-mentionnés.
+        </p>
         <Image
           src={ArticleImage2}
           alt="Schéma expliquant les freins à la mobilisation"
@@ -109,6 +116,14 @@ const EviterPrecherDesert = () => {
           d’adapter votre posture et la manière dont vous intervenez en fonction
           de l’état émotionnel des parties prenantes que vous mobilisez.
         </p>
+        <Image
+          src={ArticleImage3}
+          alt="Schéma expliquant les freins à la mobilisation"
+          width={0}
+          height={0}
+          sizes="100%"
+          style={{ width: '100%', height: 'auto' }}
+        />
         <p>
           <ul>
             <li>
