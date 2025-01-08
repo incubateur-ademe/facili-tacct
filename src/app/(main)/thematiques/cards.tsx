@@ -26,12 +26,7 @@ export const Cards = () => {
         />
       ))}
       {thematiques.bientot_disponible.map((thematique, i) => (
-        <div
-          style={{
-            width: 360
-          }}
-          key={`thematiqueBientotDispo${i}`}
-        >
+        <div style={{ width: 360 }} key={`thematiqueBientotDispo${i}`}>
           <Card
             background
             border
@@ -45,13 +40,9 @@ export const Cards = () => {
               imgTag: 'fr-ratio-32x9'
             }}
             end={
-              <ul className="fr-badges-group">
-                <li>
-                  <Badge noIcon severity="new">
-                    Bientôt disponible
-                  </Badge>
-                </li>
-              </ul>
+              <Badge noIcon severity="new">
+                Bientôt disponible
+              </Badge>
             }
           />
         </div>

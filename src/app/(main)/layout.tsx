@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 const PostHogPageView = dynamic(() => import('../PostHogPageView'));
 
-const RootLayoutMain = ({ children }: PropsWithChildren) => {
+const LayoutMain = ({ children }: PropsWithChildren) => {
   return (
     <NextAppDirEmotionCacheProvider options={{ key: 'css' }}>
       <PostHogPageView />
@@ -79,4 +79,4 @@ const RootLayoutMain = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default RootLayoutMain;
+export default LayoutMain;

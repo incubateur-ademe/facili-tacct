@@ -104,5 +104,14 @@ export const themes = {
       risque: '',
       donnee: ''
     }
+  ],
+  amenagement: [
+    {
+      id: 0,
+      titre: "Consommation d'espaces NAF",
+      facteur_sensibilite: "Consommation d'espaces NAF",
+      risque: '',
+      donnee: ''
+    }
   ]
 };
