@@ -88,20 +88,26 @@ const ClimaStory = () => {
             </li>
             <li>
               <b>Séquence 1 : REPERAGE DES EFFETS</b>
-              Cette phase permet aux participants de comprendre les effets du
-              changement climatique sur le territoire, les impacts et
-              conséquences socio-économiques.
+              <p>
+                Cette phase permet aux participants de comprendre les effets du
+                changement climatique sur le territoire, les impacts et
+                conséquences socio-économiques.
+              </p>
             </li>
             <li>
               <b>Séquence 2 : DETERMINATION DES ENJEUX</b>
-              Dans cette phase les participants déterminent les actions
-              possibles et comprennent les liens entre les activités et
-              compétences du territoire.
+              <p>
+                Dans cette phase les participants déterminent les actions
+                possibles et comprennent les liens entre les activités et
+                compétences du territoire.
+              </p>
             </li>
             <li>
               <b>Séquence 3 : CHOIX DES SOLUTIONS</b>
-              Durant ce temps, les participants se mettent d’accord sur les
-              solutions envisageables et se mettent d’accord sur leur portage.
+              <p>
+                Durant ce temps, les participants se mettent d’accord sur les
+                solutions envisageables et se mettent d’accord sur leur portage.
+              </p>
             </li>
             <li>
               <b>Conclusion de l’atelier</b>
@@ -168,26 +174,6 @@ const ClimaStory = () => {
           prédéfinis : ils sont réalisés sur demande. Ce mode de fonctionnement
           a permis de toucher différents publics : le pôle aménagement de la CC,
           un collectif de citoyens engagés, France Travail, etc.
-        </p>
-
-        <h3>Pourquoi Saintes Grandes Rives, l’Agglo a utilisé cet outil ?</h3>
-        <p>
-          Le PCAET réglementaire a été validé en février 2024. Le volet
-          adaptation au changement climatique, assez succinct sur les
-          vulnérabilités du territoire, pointe principalement sur la ressource
-          en eau et la biodiversité. Le territoire est notamment concerné par
-          les inondations et un risque de baisse de 40% des ressources en eau
-          d’ici à 2050.
-        </p>
-        <p>
-          Les élus du territoire ont déjà réalisé une Fresque du Climat qui leur
-          a permis de renforcer leur compréhension du volet atténuation du
-          PCAET. Désormais, et en amont de la rédaction du PLUi, Sarah Clamens
-          souhaite les sensibiliser à l’adaptation au changement climatique. En
-          créant un pont entre urbanisme et adaptation au changement climatique,
-          ce nouveau document réglementaire en discussion est l’occasion de
-          réfléchir et de planifier une partie de la stratégie d’adaptation du
-          territoire.
         </p>
         <h2>Les apprentissages de nos échanges :</h2>
         <p>
