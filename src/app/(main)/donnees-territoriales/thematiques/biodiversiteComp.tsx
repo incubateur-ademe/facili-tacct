@@ -149,7 +149,13 @@ const BiodiversiteComp = ({
         tabs={[
           {
             tabId: 'Surfaces protégées',
-            label: 'Surfaces protégées'
+            label: (
+              <TabTooltip
+                selectedTab={selectedTabId}
+                tooltip="Espaces d’inventaire et de protection."
+                titre="Surfaces protégées"
+              />
+            )
           },
           {
             tabId: "Consommation d'espaces NAF",
