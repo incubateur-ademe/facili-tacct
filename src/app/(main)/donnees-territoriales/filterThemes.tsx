@@ -7,8 +7,8 @@ import GestionRisques from './thematiques/gestionRisques';
 import InconfortThermique from './thematiques/inconfortThermique';
 import RessourcesEau from './thematiques/ressourcesEau';
 
-const FilterThemes = (searchParams: SearchParams) => {
-  const thematique = searchParams.searchParams.thematique;
+const FilterThemes = async (searchParams: SearchParams) => {
+  const thematique = await searchParams.searchParams.thematique;
   return (
     <div>
       {thematique === 'Inconfort thermique' ? (
