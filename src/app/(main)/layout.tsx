@@ -1,15 +1,12 @@
-import '../global.css';
-
 import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display';
 import { Footer } from '@codegouvfr/react-dsfr/Footer';
-import Metadata from 'next';
-import { type PropsWithChildren, Suspense } from 'react';
+import { type Metadata } from 'next';
+import { type PropsWithChildren } from 'react';
 import { NextAppDirEmotionCacheProvider } from 'tss-react/next/appDir';
 
 import { Brand } from '@/components/Brand';
 import { HeaderComp as Header } from '@/components/Header';
 
-import RootLayout from '@/app/layout';
 import dynamic from 'next/dynamic';
 import { config } from '../../config';
 import { Banner } from './banner';
@@ -37,54 +34,48 @@ const PostHogPageView = dynamic(() => import('../PostHogPageView'));
 
 const RootLayoutMain = ({ children }: PropsWithChildren) => {
   return (
-    <RootLayout>
+    <NextAppDirEmotionCacheProvider options={{ key: 'css' }}>
       <PostHogPageView />
-      <div>
-        <Suspense>
-          <Header />
-        </Suspense>
-        <NextAppDirEmotionCacheProvider options={{ key: 'css' }}>
-          {children}
-        </NextAppDirEmotionCacheProvider>
-        <Footer
-          id={footerId}
-          brandTop={<Brand />}
-          accessibility="non compliant"
-          accessibilityLinkProps={{ href: '/accessibilite' }}
-          contentDescription={`${config.name} est un service développé par l'accélérateur de la transition écologique de l'ADEME.`}
-          operatorLogo={{
-            alt: "Logo de l'ADEME",
-            imgUrl: '/logo-ademe.svg',
-            orientation: 'vertical'
-          }}
-          bottomItems={[
-            {
-              text: 'Politique de confidentialité',
-              linkProps: { href: '/politique-de-confidentialite' }
-            },
-            {
-              ...headerFooterDisplayItem,
-              iconId: 'fr-icon-theme-fill'
-            }
-          ]}
-          termsLinkProps={{ href: '/mentions-legales' }}
-          homeLinkProps={{ href: '/', title: 'Accueil' }}
-          license={
-            <>
-              Sauf mention contraire, tous les contenus de ce site sont sous{' '}
-              <a
-                href={`${config.repositoryUrl}/main/LICENSE`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                licence Apache 2.0
-              </a>
-            </>
+      <Header />
+      <main>{children}</main>
+      <Footer
+        id={footerId}
+        brandTop={<Brand />}
+        accessibility="non compliant"
+        accessibilityLinkProps={{ href: '/accessibilite' }}
+        contentDescription={`${config.name} est un service développé par l'accélérateur de la transition écologique de l'ADEME.`}
+        operatorLogo={{
+          alt: "Logo de l'ADEME",
+          imgUrl: '/logo-ademe.svg',
+          orientation: 'vertical'
+        }}
+        bottomItems={[
+          {
+            text: 'Politique de confidentialité',
+            linkProps: { href: '/politique-de-confidentialite' }
+          },
+          {
+            ...headerFooterDisplayItem,
+            iconId: 'fr-icon-theme-fill'
           }
-        />
-      </div>
+        ]}
+        termsLinkProps={{ href: '/mentions-legales' }}
+        homeLinkProps={{ href: '/', title: 'Accueil' }}
+        license={
+          <>
+            Sauf mention contraire, tous les contenus de ce site sont sous{' '}
+            <a
+              href={`${config.repositoryUrl}/main/LICENSE`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              licence Apache 2.0
+            </a>
+          </>
+        }
+      />
       <Banner />
-    </RootLayout>
+    </NextAppDirEmotionCacheProvider>
   );
 };
 
