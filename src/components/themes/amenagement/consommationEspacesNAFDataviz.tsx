@@ -43,9 +43,10 @@ export const ConsommationEspacesNAFDataviz = (props: {
   const { consommationNAF } = props;
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
-  const filteredConsommationNAF = consommationNAF.filter(
-    (item) => item.epci === codepci
-  );
+  const codgeo = searchParams.get('codgeo')!;
+  const filteredConsommationNAF = codgeo
+    ? consommationNAF.filter((item) => item.code_geographique === codgeo)
+    : consommationNAF.filter((item) => item.epci === codepci);
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
   const [typeValue, setTypeValue] = useState<string>('Tous types');
   const [sliderValue, setSliderValue] = useState<number[]>([2009, 2023]);
@@ -56,7 +57,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
         className={styles.amenagementGraphTitleWrapper}
         style={{ padding: '1rem' }}
       >
-        <h2>Consommation des espaces NAF</h2>
+        <h2>Artificialisation des sols entre 2009 et 2023</h2>
         <SubTabs
           data={['Répartition']}
           defaultTab={datavizTab}
@@ -112,7 +113,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
       ) : (
         ''
       )}
-      <p style={{ padding: '1em', margin: '0' }}>Source : XXXXXX</p>
+      <p style={{ padding: '1em', margin: '0' }}>Source : CEREMA, avril 2024</p>
     </div>
   );
 };
