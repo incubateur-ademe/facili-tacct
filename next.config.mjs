@@ -12,7 +12,7 @@ const csp = {
     'connect-src': [
         '*',
         'https://*.gouv.fr',
-        process.env.FACILI_TACCT_ENV === 'preprod' && 'https://vercel.live',
+        process.env.FACILI_TACCT_ENV === 'preprod',
         process.env.NODE_ENV === 'development' && 'http://localhost'
     ],
     'font-src': ["'self'"],
@@ -22,9 +22,6 @@ const csp = {
         "'self'",
         "'unsafe-inline'",
         'https://stats.beta.gouv.fr',
-        process.env.FACILI_TACCT_ENV === 'preprod' && 'https://vercel.live',
-        process.env.NODE_ENV === 'development' &&
-            "'unsafe-eval' http://localhost",
         '*.posthog.com'
     ],
     'style-src': ["'self'", "'unsafe-inline'"],
@@ -39,12 +36,7 @@ const csp = {
     'base-uri': ["'self'", 'https://*.gouv.fr'],
     'form-action': ["'self'", 'https://*.gouv.fr'],
     'block-all-mixed-content': [],
-    'upgrade-insecure-requests': [],
-    'frame-src': [
-        process.env.FACILI_TACCT_ENV === 'preprod'
-            ? 'https://vercel.live'
-            : "'none'"
-    ]
+    'upgrade-insecure-requests': []
 };
 
 const ContentSecurityPolicy = Object.entries(csp)
@@ -81,10 +73,7 @@ const config = {
         NEXT_PUBLIC_REPOSITORY_URL: isDeployment
             ? `https://github.com/${process.env.VERCEL_GIT_REPO_OWNER}/${process.env.VERCEL_GIT_REPO_SLUG}`
             : (process.env.NEXT_PUBLIC_APP_REPOSITORY_URL ?? 'no repository'),
-        NEXT_PUBLIC_SITE_URL: isDeployment
-            ? (process.env.NEXT_PUBLIC_SITE_URL ??
-              `https://${process.env.VERCEL_URL}`)
-            : 'http://localhost:3000'
+        NEXT_PUBLIC_SITE_URL: 'http://localhost:3000'
     },
     pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
     async headers() {
