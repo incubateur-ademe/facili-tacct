@@ -1,11 +1,10 @@
 'use client';
 
-import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
-import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+import { Loader } from '@/components/loader';
 import AgricultureBiologique from '@/components/themes/biodiversite/agricultureBio';
 import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
 import { StationsClassees } from '@/components/themes/biodiversite/stationsClassees';
@@ -16,9 +15,12 @@ import {
   CarteCommunes,
   ConsommationNAF,
   EpciContours,
+  EtatCoursDeau,
   SurfacesProtegeesByCol
 } from '@/lib/postgres/models';
+import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
 import { TabTooltip } from '@/lib/utils/TabTooltip';
+import dynamic from 'next/dynamic';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -37,6 +39,14 @@ interface Props {
   consommationNAF: ConsommationNAF[];
   epciContours: EpciContours[];
 }
+
+const DynamicCoursDeau = dynamic(
+  () => import('../../../../components/themes/biodiversite/etatCoursDeau'),
+  {
+    ssr: false,
+    loading: () => <Loader />
+  }
+);
 
 const allComps = [
   {
@@ -67,7 +77,6 @@ const allComps = [
     Component: ({
       data,
       surfacesProtegees,
-      epciContours,
       carteCommunes
     }: Props & { activeDataTab: string }) => (
       <SurfacesProtegees
@@ -90,6 +99,20 @@ const allComps = [
         carteCommunes={carteCommunes}
       />
     )
+  },
+  {
+    titre: "État des cours d'eau",
+    Component: ({
+      etatCoursDeau,
+      epciContours,
+      carteCommunes
+    }: Props & { activeDataTab: string; etatCoursDeau: EtatCoursDeau[] }) => (
+      <DynamicCoursDeau
+        etatCoursDeau={etatCoursDeau}
+        epciContours={epciContours}
+        carteCommunes={carteCommunes}
+      />
+    )
   }
 ];
 
@@ -102,27 +125,21 @@ const BiodiversiteComp = ({
   consommationNAF,
   epciContours
 }: Props) => {
-  const [selectedTabId, setSelectedTabId] = useState('Agriculture biologique');
-  const [selectedSubTab, setSelectedSubTab] = useState(
-    'Agriculture biologique'
-  );
+  const [selectedTabId, setSelectedTabId] = useState('Surfaces protégées');
+  const [selectedSubTab, setSelectedSubTab] = useState('Surfaces protégées');
+  const [etatCoursDeau, setEtatCoursDeau] = useState<EtatCoursDeau[]>();
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
-  const { isDark } = useIsDark();
-  const darkClass = {
-    backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
-      .grey.active,
-    '&:hover': {
-      backgroundColor: fr.colors.getHex({ isDark }).decisions.background.alt
-        .grey.hover
-    }
-  };
   const { css } = useStyles();
 
   useEffect(() => {
     setSelectedSubTab(
       data.filter((el) => el.facteur_sensibilite === selectedTabId)[0].titre
     );
+    void (async () => {
+      const temp = await GetEtatCoursDeau(codepci);
+      temp && codepci ? setEtatCoursDeau(temp) : void 0;
+    })();
   }, [selectedTabId, codepci]);
 
   return (
@@ -130,6 +147,14 @@ const BiodiversiteComp = ({
       <Tabs
         selectedTabId={selectedTabId}
         tabs={[
+          {
+            tabId: 'Surfaces protégées',
+            label: 'Surfaces protégées'
+          },
+          {
+            tabId: "Consommation d'espaces NAF",
+            label: "Consommation d'espaces NAF"
+          },
           {
             tabId: 'Agriculture biologique',
             label: (
@@ -139,14 +164,6 @@ const BiodiversiteComp = ({
                 titre="Agriculture biologique"
               />
             )
-          },
-          {
-            tabId: 'Surfaces protégées',
-            label: 'Surfaces protégées'
-          },
-          {
-            tabId: "Consommation d'espaces NAF",
-            label: "Consommation d'espaces NAF"
           }
         ]}
         onTabChange={setSelectedTabId}
@@ -197,7 +214,7 @@ const BiodiversiteComp = ({
               ))} */}
           </div>
           <div className={styles.bubble}>
-            <div className={styles.bubbleContent} style={darkClass}>
+            <div className={styles.bubbleContent}>
               {(() => {
                 const Component = allComps.find(
                   (el) => el.titre === selectedSubTab
@@ -213,6 +230,7 @@ const BiodiversiteComp = ({
                     surfacesProtegees={surfacesProtegees}
                     consommationNAF={consommationNAF}
                     epciContours={epciContours}
+                    etatCoursDeau={etatCoursDeau || []}
                   />
                 );
               })()}

@@ -43,6 +43,18 @@ const SurfacesProtegeesDataviz = (props: {
     ? carteCommunes.filter((e) => e.code_commune === codgeo)[0].surface
     : carteCommunes.map((el) => el.surface).reduce((a, b) => a + b, 0);
   const data = SurfacesProtegeesGraphMapper(filteredData);
+  const sommeSurfaces = filteredData
+    .map((e) => {
+      return {
+        FOR_PRO: Number(e.FOR_PRO),
+        TOU_PRO: Number(e.TOU_PRO),
+        NATURA: Number(e.NATURA),
+        CELRL: Number(e.CELRL),
+        ZZZ: Number(e.ZZZ)
+      };
+    })
+    .map((e) => e.CELRL + e.FOR_PRO + e.NATURA + e.TOU_PRO + e.ZZZ)
+    .reduce((a, b) => a + b, 0);
 
   useEffect(() => {
     const surfaceTemp = data.children.map((e) => {
@@ -53,25 +65,10 @@ const SurfacesProtegeesDataviz = (props: {
     setSurfacesProtegeesSurfaces(sum);
   }, []);
 
-  const varSurfacesProtegees = codgeo
-    ? Round(
-        100 *
-          (Filter(
-            surfacesProtegees.filter((e) => e.code_geographique === codgeo),
-            'TOU_PRO'
-          ) /
-            surfaceTerritoire),
-        1
-      )
-    : Round(
-        100 *
-          (surfacesProtegees
-            .map((e) => Number(e.TOU_PRO))
-            .reduce((a, b) => a + (b || 0), 0) /
-            surfaceTerritoire),
-        1
-      );
-
+  const varSurfacesProtegees = Round(
+    100 * (sommeSurfaces / surfaceTerritoire),
+    1
+  );
   const legends = data.children.map((e) => {
     return {
       name: e.name,
@@ -82,7 +79,7 @@ const SurfacesProtegeesDataviz = (props: {
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.dataVizGraphTitleWrapper}>
-        <h2>Surfaces protégées</h2>
+        <h2>Espaces d’intérêt écologique ou protégés</h2>
         <SubTabs
           data={['Cartographie', 'Répartition']}
           defaultTab={datavizTab}
@@ -116,7 +113,11 @@ const SurfacesProtegeesDataviz = (props: {
       ) : (
         ''
       )}
-      <p className="m-0 p-4">Source : SDES</p>
+      <p className="m-0 p-4">
+        Source : SDES d’après Muséum national d’histoire naturelle dans
+        Catalogue DiDo (Indicateurs territoriaux de développement durable -
+        ITDD)
+      </p>
     </div>
   );
 };

@@ -10,7 +10,7 @@ export const GetCollectivite = async (
   collectivite: string
 ): Promise<CollectivitesSearchbar[]> => {
   try {
-    console.time(`Query Execution Time COLLECTIVITE ${collectivite}`);
+    console.time('Query Execution Time COLLECTIVITE');
     const variableCollectivite = '%' + collectivite + '%';
     const variableCollectiviteNumber = collectivite + '%';
     if (isNaN(parseInt(collectivite))) {

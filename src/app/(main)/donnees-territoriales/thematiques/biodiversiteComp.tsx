@@ -149,7 +149,17 @@ const BiodiversiteComp = ({
         tabs={[
           {
             tabId: 'Surfaces protégées',
-            label: 'Surfaces protégées'
+            label: (
+              <TabTooltip
+                selectedTab={selectedTabId}
+                tooltip="Espaces d’inventaire et de protection."
+                titre="Surfaces protégées"
+              />
+            )
+          },
+          {
+            tabId: "Consommation d'espaces NAF",
+            label: "Consommation d'espaces NAF"
           },
           {
             tabId: 'Agriculture biologique',
@@ -160,14 +170,6 @@ const BiodiversiteComp = ({
                 titre="Agriculture biologique"
               />
             )
-          },
-          {
-            tabId: "Consommation d'espaces NAF",
-            label: "Consommation d'espaces NAF"
-          },
-          {
-            tabId: "État des cours d'eau",
-            label: "État des cours d'eau"
           }
         ]}
         onTabChange={setSelectedTabId}
