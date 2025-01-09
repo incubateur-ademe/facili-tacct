@@ -39,8 +39,12 @@ const ErosionCotes = (props: {
                 L’érosion est un phénomène qui touche inégalement les côtes, en
                 fonction de leur profil géologique. Elle s’observe sur des temps
                 longs mais peut connaître des épisodes brutaux selon les
-                endroits.
+                endroits. L’érosion est un phénomène qui touche inégalement les
+                côtes, en fonction de leur profil géologique. Elle s’observe sur
+                des temps longs mais peut connaître des épisodes brutaux selon
+                les endroits.
               </p>
+              <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
             </div>
             <div className="px-4">
@@ -78,12 +82,45 @@ const ErosionCotes = (props: {
                 </li>
               </p>
               <p>
+                Impacts locaux sur les milieux :
+                <li>
+                  Augmentation des intrusions salines des aquifères côtiers,
+                </li>
+                <li>Modification des paysages (nouvelles lagunes…),</li>
+                <li>Appauvrissement des sols dû à la salinisation.</li>
+              </p>
+              <p>
+                Impacts locaux sur les activités humaines :
+                <li>
+                  Diminution de la disponibilité des eaux douces souterraines
+                  pour les différents usages,
+                </li>
+                <li>
+                  Modification des marais salins avec conséquences sur les
+                  activités,
+                </li>
+                <li>
+                  Salinisation et réduction des terres par submersion temporaire
+                  ou permanente.
+                </li>
+              </p>
+              <p>
                 ⇒ 523 communes touchées par le recul du littoral, dont 59
-                perdent plus d'1,5 mètre de littoral chaque année.
+                perdent plus d'1,5 mètre de littoral chaque année. ⇒ 523
+                communes touchées par le recul du littoral, dont 59 perdent plus
+                d'1,5 mètre de littoral chaque année.
               </p>
               <p>
                 ⇒ D'ici 2050 : 5200 logements et 1400 locaux d'activité seront
-                menacés, pour un coût estimé à 1,2 milliard d'euros.
+                menacés, pour un coût estimé à 1,2 milliard d'euros. ⇒ D'ici
+                2050 : 5200 logements et 1400 locaux d'activité seront menacés,
+                pour un coût estimé à 1,2 milliard d'euros.
+              </p>
+              <p>
+                - - - - <br></br>
+                Plan National d'Adaptation au Changement Climatique (PNACC 3) :
+                La mesure 35 prévoit d’accompagner l’adaptation du tourisme
+                culturel, de montagne, littoral et nautique.
               </p>
               <p>
                 - - - - <br></br>
@@ -99,7 +136,20 @@ const ErosionCotes = (props: {
                 className={styles.catnatGraphTitleWrapper}
                 style={{ padding: '1rem' }}
               >
-                <h2>Érosion du littoral</h2>
+                <div
+                  className={styles.catnatGraphTitleWrapper}
+                  style={{ padding: '1rem' }}
+                >
+                  <h2>Érosion du littoral</h2>
+                </div>
+                <div>
+                  <MapErosionCotiere
+                    erosionCotiere={erosionCotiereMap}
+                    epciContours={epciContoursMap}
+                  />
+                </div>
+                <LegendErosionCotiere />
+                <p style={{ padding: '1em', margin: '0' }}>Source : CEREMA</p>
               </div>
               <div>
                 <MapErosionCotiere
