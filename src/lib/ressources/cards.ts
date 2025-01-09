@@ -60,7 +60,7 @@ export const cards = {
       titre: 'Mettre en récit mon territoire pour engager',
       tag: 'Article',
       description:
-        '« L’humanité est une « espèce fabulatrice qui, en se racontant des histoires de plus en plus complexes, développe des capacités de coopération » - Yval Noah Harrari ; Découvrez la mise en récit.',
+        '« L’humanité est une espèce fabulatrice qui, en se racontant des histoires de plus en plus complexes, développe des capacités de coopération » - Yval Noah Harrari ; Découvrez la mise en récit.',
       link: '/ressources/articles'
     },
     {
@@ -196,6 +196,55 @@ export const cards = {
       description:
         'Le Pays Pyrénées Méditerranée a mis en oeuvre la démarche TACCT du diagnostic jusqu’à la mise en oeuvre de sa stratégie. Pour retrouver toutes les étapes de la démarche vous pouvez consulter cette fiche.',
       link: 'https://www.payspyreneesmediterranee.org/thematiques/transitions-energie-climat/adaptation-au-changement-climatique/'
+    },
+    {
+      id: 18,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        'Vous découvrez le diagnostic pour la 1ère fois'
+      ],
+      titre: 'Pourquoi mobiliser en interne et externe ?',
+      tag: 'Article',
+      description:
+        'Le climat c’est notre affaire à tous, pour autant la mobilisation autour de ce sujet reste toujours difficile aujourd’hui.',
+      link: '/ressources/articles'
+    },
+    {
+      id: 19,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        'Vous découvrez le diagnostic pour la 1ère fois'
+      ],
+      titre: 'Comment éviter de prêcher dans le désert ?',
+      tag: 'Article',
+      description:
+        'La mobilisation n’est jamais simple, nous avons identifiés des freins et des pratiques concrètes à activer pour réaliser une mobilisation efficace.',
+      link: '/ressources/articles'
+    },
+    {
+      id: 20,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        "Vous n'avez pas de diagnostic"
+      ],
+      titre:
+        'Sensibiliser à l’ACC : les AdACC (Les ateliers de l’adaptation au changement climatique)',
+      tag: 'Article',
+      description:
+        'La sensibilisation, un préalable à la mobilisation ? Retour d’expérience de Sarah Clamens avec la mise en œuvre des Ateliers de l’Adaptation au Changement Climatique à la CA de Saintes.',
+      link: '/ressources/articles'
+    },
+    {
+      id: 21,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        "Vous n'avez pas de diagnostic"
+      ],
+      titre: 'ClimaStory, une cartographie pour sensibiliser',
+      tag: 'Article',
+      description:
+        'Approcher l’adaptation au changement climatique via une carte du territoire, fictive ou non : une manière sensible d’aborder le sujet.',
+      link: '/ressources/articles'
     }
   ],
   inconfortThermique: [

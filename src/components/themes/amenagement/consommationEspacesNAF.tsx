@@ -34,9 +34,16 @@ export const ConsommationEspacesNAF = (props: {
 
   const title = (
     <div>
-      La consommation d’un espace naturel, agricole ou forestier (ENAF) désigne
-      sa conversion en surface artificialisée, le rendant indisponible pour des
-      usages tels que l’agriculture, la foresterie ou les habitats naturels.
+      <p>
+        La consommation d’un espace naturel, agricole ou forestier (ENAF)
+        désigne sa conversion en surface artificialisée, le rendant indisponible
+        pour des usages tels que l’agriculture, la foresterie ou les habitats
+        naturels.
+      </p>
+      <p>
+        Selon l’INSEE, un ménage désigne l'ensemble des personnes qui partagent
+        la même résidence principale.
+      </p>
     </div>
   );
   return (
@@ -50,42 +57,34 @@ export const ConsommationEspacesNAF = (props: {
             </div>
             <div className="px-4">
               <p>
-                L'artificialisation des sols constitue la première menace pour
-                la biodiversité. 24 000 hectares par an d’espaces naturels,
-                agricoles et forestiers (ENAF) sont consommés depuis dix ans.
-                Soit l’équivalent de 10 fois la superficie de Marseille qui
-                disparaît sous le béton. L'artificialisation des sols fragmente
-                les habitats, isole les espèces et perturbe des processus
-                naturels essentiels, comme la pollinisation et le cycle de
-                l'eau.
+                L’artificialisation des sols progresse, même là où la population
+                diminue. Chaque année depuis dix ans, 24 000 hectares d’espaces
+                naturels, agricoles et forestiers (ENAF) disparaissent sous le
+                béton, soit 10 fois la superficie de Marseille.
               </p>
               <p>
-                La consommation d’ENAF a des conséquences dramatiques pour le
-                climat. Les sols perdent leur rôle de puits de carbone et
-                amplifient les risques d’inondations. Un hectare de sol
-                artificialisé libère jusqu’à 190 tonnes de CO2, soit l’empreinte
-                carbone annuelle de 20 Français. Avec 446 m² de terres
-                artificialisées consommées par habitant, la France se place au
-                4e rang européen. Préserver les ENAF est vital : c’est protéger
-                la biodiversité et renforcer la résilience des territoires face
-                aux défis climatiques.
+                66 % des ENAF consommés sont destinées à l’habitat. Les projets
+                de faible densité utilisent beaucoup de sols pour un nombre
+                limité de logements. En périphérie des villes, l’étalement
+                urbain allonge les trajets domicile-travail, renforce la
+                dépendance à la voiture et augmente les émissions de gaz à effet
+                de serre. <br></br>
+                Ce type d’aménagement peu économe en sols a un coût climatique
+                majeur : chaque hectare artificialisé libère jusqu’à 190 tonnes
+                de CO2, soit l’empreinte carbone annuelle de 20 Français.
               </p>
               <p>
-                - 8 % du territoire français est artificialisé <br></br>- 65 %
-                des surfaces consommées ont été destinées à l’habitat, 23 % ont
-                servi aux activités industrielles et commerciales (2020-2021){' '}
-                <br></br>- Si l’artificialisation des sols continue au même
-                rythme jusqu’en 2050, elle pourrait libérer autant de carbone
-                que 75 % des émissions totales de gaz à effet de serre de la
-                France en 2015.
+                - 66 % de la consommation des espaces ENAF est destinée à
+                l’habitat (période 2022-2023, Cerema) <br></br>- 7 820 communes
+                consomment de l’espace alors qu’elles perdent des ménages
+                (période 2014-2020, Cerema) : une consommation d’ENAF
+                déconnectée des besoins réels des territoires ! <br></br>- 51 %
+                de la consommation d’espaces liée à l’habitat provient de
+                constructions de moins de 8 logements par hectare (période
+                2009-2022, Cerema)
               </p>
               <p>
                 - - - - <br></br>
-                info périmée ? <br></br>
-                53% des espaces artificialisés relèvent directement des choix
-                des collectivités (résidentiel, culturel, sportif, loisirs) -
-                période 2006-2014 (Terruti) 50% des zones humides ont disparu
-                entre 1960 et 1990
               </p>
             </div>
           </div>
