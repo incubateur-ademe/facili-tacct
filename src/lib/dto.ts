@@ -6,6 +6,7 @@ export type VegetalisationDto = {
   clc_3_foret_semiNaturel: number;
   clc_4_humide: number;
   clc_5_eau: number;
+  superf_choro: number;
   code_commune: string;
   epci: string;
   libelle_epci: string;

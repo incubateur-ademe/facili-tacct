@@ -14,9 +14,10 @@ import { CLC, InconfortThermique } from '@/lib/postgres/models';
 
 import GraphNotFound from '@/assets/images/data_not_found.svg';
 import { VegetalisationDto } from '@/lib/dto';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
 import styles from './themes.module.scss';
-import { LegendCLC } from './vegetalisation-legend';
+// import { LegendCLC } from './vegetalisation-legend';
 
 const GraphImage = GraphNotFound as HTMLImageElement;
 
@@ -28,43 +29,57 @@ const sumProperty = (
     | 'clc_3_foret_semiNaturel'
     | 'clc_4_humide'
     | 'clc_5_eau'
+    | 'superf_choro'
 ) => {
   return items.reduce(function (a, b) {
     return a + b[property];
   }, 0);
 };
 
+const legends = [
+  {
+    name: 'Territoires artificialisés',
+    color: '#ffff99'
+  },
+  {
+    name: 'Territoires agricoles',
+    color: '#fdc086'
+  },
+  {
+    name: 'Zones végétalisées et milieux semi-naturels',
+    color: '#7fc97f'
+  },
+  {
+    name: 'Zones humides',
+    color: '#beaed4'
+  },
+  {
+    name: 'Surfaces en eau',
+    color: '#386cb0'
+  }
+];
+
 const Vegetalisation = (props: {
   clc: CLC[];
   inconfortThermique: InconfortThermique[];
 }) => {
   const { inconfortThermique, clc } = props;
-  // const [clc, setClc] = useState<CLC[]>();
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo');
   const codepci = searchParams.get('codepci')!;
   const vegetalisationMapped = inconfortThermique.map(vegetalisationMapper);
-  const vegetalisationCommune = codgeo
+  const vegetalisationCollectivite = codgeo
     ? vegetalisationMapped.filter((e) => e.code_commune === codgeo)
-    : null;
-  const vegetalisationEpci = vegetalisationMapped.filter(
-    (e) => e.epci === codepci
-  );
+    : vegetalisationMapped.filter((e) => e.epci === codepci);
+
   const vegetalisationDptmt = vegetalisationMapped;
-  const vegetalisationCollectivite = vegetalisationCommune
-    ? vegetalisationCommune
-    : vegetalisationEpci;
   const foret_sum = sumProperty(
     vegetalisationCollectivite,
     'clc_3_foret_semiNaturel'
   );
   const foret_percent =
     (100 * sumProperty(vegetalisationCollectivite, 'clc_3_foret_semiNaturel')) /
-    (sumProperty(vegetalisationCollectivite, 'clc_1_artificialise') +
-      sumProperty(vegetalisationCollectivite, 'clc_2_agricole') +
-      sumProperty(vegetalisationCollectivite, 'clc_3_foret_semiNaturel') +
-      sumProperty(vegetalisationCollectivite, 'clc_4_humide') +
-      sumProperty(vegetalisationCollectivite, 'clc_5_eau'));
+    (100 * sumProperty(vegetalisationCollectivite, 'superf_choro'));
 
   const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -88,16 +103,16 @@ const Vegetalisation = (props: {
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       Dans la commune de{' '}
                       {vegetalisationCollectivite[0]?.libelle_geographique},{' '}
-                      <b>{foret_percent?.toFixed(1)}%</b> du territoire est de
-                      la forêt ou des espaces semi-naturels. Cela correspond à{' '}
-                      <b>{foret_sum?.toFixed(1)}</b> hectares.
+                      <b>{Round(foret_percent, 1)}%</b> du territoire est de la
+                      forêt ou des espaces semi-naturels. Cela correspond à{' '}
+                      <b>{Round(foret_sum, 1)}</b> hectares.
                     </p>
                   ) : (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       Dans l'EPCI {vegetalisationCollectivite[0]?.libelle_epci},{' '}
-                      <b>{foret_percent?.toFixed(1)}%</b> du territoire est de
-                      la forêt ou des espaces semi-naturels. Cela correspond à{' '}
-                      <b>{foret_sum?.toFixed(1)}</b> hectares.
+                      <b>{Round(foret_percent, 1)}%</b> du territoire est de la
+                      forêt ou des espaces semi-naturels. Cela correspond à{' '}
+                      <b>{Round(foret_sum, 1)}</b> hectares.
                     </p>
                   )}
                 </div>
@@ -125,11 +140,23 @@ const Vegetalisation = (props: {
                     <p style={{ padding: '1em', margin: '0' }}>
                       <b>Cartographie des différents types de sols</b>
                     </p>
-                    <HtmlTooltip title={<LegendCLC />} placement="left">
-                      <div>
-                        <Map clc={clc} />
-                      </div>
-                    </HtmlTooltip>
+                    {/* <HtmlTooltip title={<LegendCLC />} placement="left"> */}
+                    <Map clc={clc} />
+                    <div className={styles.vegetalisationLegendWrapper}>
+                      {legends.map((e) => (
+                        <div
+                          key={e.name}
+                          className={styles.legendVegetalisation}
+                        >
+                          <div
+                            className={styles.colorVegetalisation}
+                            style={{ backgroundColor: e.color }}
+                          />
+                          <p className={styles.legendText}>{e.name}</p>
+                        </div>
+                      ))}
+                    </div>
+                    {/* </HtmlTooltip> */}
                     <p style={{ padding: '1em', margin: '0' }}>
                       Source : CORINE Land Cover
                     </p>

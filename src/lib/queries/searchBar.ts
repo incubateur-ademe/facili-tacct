@@ -25,9 +25,8 @@ export const GetCollectivite = async (
       code_commune,
       departement,
       region
-      FROM databases."collectivites_searchbar" WHERE search_libelle ILIKE replace(${variableCollectivite}, ' ', '-') LIMIT 20;`; // OR libelle_epci ILIKE ${variableEpci}
+      FROM databases."collectivites_searchbar" WHERE unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) LIMIT 20;`; // OR libelle_epci ILIKE ${variableEpci}
       console.timeEnd(`Query Execution Time COLLECTIVITE ${collectivite}`);
-      //      FROM databases."collectivites_searchbar" WHERE unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) LIMIT 20;`; // OR libelle_epci ILIKE ${variableEpci}
       // console.log(value);
       if (value.length > 0) {
         return value;
@@ -43,10 +42,9 @@ export const GetCollectivite = async (
         code_commune,
         departement,
         region
-        FROM databases."collectivites_searchbar" WHERE search_libelle ILIKE ${variableCollectivite} LIMIT 20;`;
+        FROM databases."collectivites_searchbar" WHERE unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite}) LIMIT 20;`;
         return value;
       }
-      //        FROM databases."collectivites_searchbar" WHERE unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite}) LIMIT 20;`;
     } else if (typeof parseInt(collectivite) === 'number') {
       const value = await PrismaPostgres.collectivites_searchbar.findMany({
         take: 20,

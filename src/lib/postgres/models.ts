@@ -34,6 +34,7 @@ export type InconfortThermique = {
   precarite_logement: number | null;
   region: number;
   s_geom_cstr_bati: number | null;
+  superf_choro: number | null;
   tee_log: number | null;
   tee_mob: number | null;
   to_80_sum_1968: number | null;
