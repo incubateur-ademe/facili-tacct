@@ -7,13 +7,19 @@
     "pnpm": "9.11.0"
   },
   "engines.pnpm": "9.11.0",
+  "husky": {
+    "hooks": {
+      "pre-commit": "bash -c '\"%TALISMAN_HOME%\\talisman_windows_amd64.exe\" --githook pre-commit'"
+    }
+  },
   "scripts": {
     "predev": "only-include-used-icons",
     "prebuild": "only-include-used-icons",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "cross-env NODE_OPTIONS=--inspect next build && node copy-assets.js",
     "start": "node .next/standalone/server.js",
-    "eslint": "eslint --fix ./src"
+    "eslint": "eslint --fix ./src",
+    "prepare": "husky"
   },
   "dependencies": {
     "@codegouvfr/react-dsfr": "^1.9.10",
@@ -22,6 +28,7 @@
     "@faker-js/faker": "^8.4.1",
     "@formkit/auto-animate": "^0.8.1",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@iframe-resizer/child": "^5.3.2",
     "@incubateur-ademe/legal-pages-react": "^0.2.0",
     "@mui/material": "^5.15.16",
     "@next/mdx": "^14.0.3",
@@ -30,9 +37,10 @@
     "@nivo/line": "^0.87.0",
     "@nivo/pie": "^0.87.0",
     "@nivo/treemap": "^0.88.0",
-    "@prisma/client": "^5.20.0",
+    "@prisma/client": "^6.1.0",
     "@react-spring/web": "^9.7.5",
     "@sentry/nextjs": "^8.27.0",
+    "@turf/turf": "^7.1.0",
     "@vercel/postgres": "^0.9.0",
     "antd": "^5.21.5",
     "cookies-next": "^4.1.1",
@@ -41,7 +49,7 @@
     "leaflet": "^1.9.4",
     "next": "^14.2.3",
     "pg": "^8.11.5",
-    "posthog-js": "^1.184.2",
+    "posthog-js": "^1.194.3",
     "prisma-client-a2fb8a8ee4cc7c24999c8915b98945fef0ad4314bf39866168cc2d4ca99282fa": "link:src\\generated\\client",
     "react": "^18",
     "react-dom": "^18",
@@ -58,6 +66,8 @@
     "tss-react": "^4.9.10"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
     "@mdx-js/loader": "^3.0.0",
     "@types/d3": "^7.4.3",
     "@types/geojson": "^7946.0.14",
@@ -78,9 +88,10 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-typescript-sort-keys": "^3.1.0",
     "eslint-plugin-unused-imports": "^3.0.0",
+    "husky": "^9.1.7",
     "postcss": "^8",
     "prettier": "^3.1.0",
-    "prisma": "^5.16.1",
+    "prisma": "^6.1.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
     "typescript-eslint": "7.5.0"

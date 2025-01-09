@@ -18,42 +18,43 @@
 // espaces de protection contractuel : BIO    	réserves de biosphère
 // autres types d’espaces de protection : CELRL    	conservatoire du littoral et des rivages lacustres
 
-import { GraphDataNotFound } from "@/components/graph-data-not-found";
-import { EpciContours, SurfacesProtegeesByCol } from "@/lib/postgres/models";
-import { CustomTooltip } from "@/lib/utils/CalculTooltip";
-import { useSearchParams } from "next/navigation";
-import styles from "./biodiversite.module.scss";
-import SurfacesProtegeesDataviz from "./surfacesProtegeesDataviz";
+import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { CarteCommunes, SurfacesProtegeesByCol } from '@/lib/postgres/models';
+import { CustomTooltip } from '@/lib/utils/CalculTooltip';
+import { DarkClass } from '@/lib/utils/DarkClass';
+import { useSearchParams } from 'next/navigation';
+import styles from './biodiversite.module.scss';
+import SurfacesProtegeesDataviz from './surfacesProtegeesDataviz';
 
-const SurfacesProtegees = (
-  props: {
-    surfacesProtegees: SurfacesProtegeesByCol[];
-    epciContours: EpciContours[];
-    data: Array<{
-      donnee: string;
-      facteur_sensibilite: string;
-      id: number;
-      risque: string;
-      titre: string;
-    }>;
-  }
-) => {
-  const { surfacesProtegees, epciContours } = props;
+const SurfacesProtegees = (props: {
+  surfacesProtegees: SurfacesProtegeesByCol[];
+  data: Array<{
+    donnee: string;
+    facteur_sensibilite: string;
+    id: number;
+    risque: string;
+    titre: string;
+  }>;
+  carteCommunes: CarteCommunes[];
+}) => {
+  const { surfacesProtegees, carteCommunes } = props;
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get("codgeo")!;
-  const codepci = searchParams.get("codepci")!;
+  const codgeo = searchParams.get('codgeo')!;
+  const codepci = searchParams.get('codepci')!;
+  const surfaceTerritoire = codgeo
+    ? carteCommunes.filter((e) => e.code_commune === codgeo)[0].surface
+    : carteCommunes.map((el) => el.surface).reduce((a, b) => a + b, 0);
 
-  const title = <>
+  const darkClass = DarkClass();
+  const title = (
     <div>
-      Les surfaces protégées : 
+      Les aires protégées de nature réglementaire concernent les parcs
+      nationaux, les réserves naturelles nationales, régionales et de Corse, les
+      arrêtés préfectoraux de biotope / géotope / habitats naturels, les
+      réserves nationales de chasse et de faune sauvage et les réserves
+      biologiques.
     </div>
-    <div>
-      <ul>
-        <li>Lorem  ;</li>
-        <li>Ipsum .</li>
-      </ul>
-    </div>
-  </>;
+  );
 
   return (
     <>
@@ -61,23 +62,46 @@ const SurfacesProtegees = (
         <div className={styles.container}>
           <div className="w-1/3">
             <div className={styles.explicationWrapper}>
-              <CustomTooltip title={title} texte="D'où vient ce chiffre ?"/>
+              <p>
+                La surface totale du territoire est de {surfaceTerritoire} ha.
+              </p>
+              <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
             </div>
             <div className="px-4">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Les aires protégées constituent un rempart essentiel pour
+                préserver la biodiversité. Face à l'érosion des écosystèmes et
+                au changement climatique, les aires protégées offrent des
+                sanctuaires où la nature peut s'adapter et se régénérer. La
+                France porte une responsabilité particulière avec ses
+                territoires abritant 10% des espèces connues sur la planète.
               </p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Sur 33 % du territoire français, les aires protégées
+                accomplissent des missions vitales : stocker le carbone dans les
+                forêts et zones humides, faciliter la migration des espèces,
+                maintenir des écosystèmes résilients capables de s’adapter au
+                changement climatique, etc. Un défi qui implique de penser
+                l'équilibre entre préservation stricte et accès au public, pour
+                faire de ces espaces des lieux de sensibilisation aux enjeux
+                climatiques, tout en garantissant leur fonction première :
+                protéger la biodiversité.
               </p>
               <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                - - - - <br></br>
+                La Stratégie Nationale pour les Aires Protégées (SNAP) vise à
+                doter la France d'un réseau cohérent d'aires protégées
+                terrestres et marines couvrant, d'ici 2030, au moins 30 % de
+                l'ensemble du territoire national et de l'espace maritime
+                français, dont au moins 10 % en protection forte.
               </p>
             </div>
           </div>
-          <div className="w-2/3">              
-            <SurfacesProtegeesDataviz surfacesProtegees={surfacesProtegees} epciContours={epciContours}/>
+          <div className="w-2/3">
+            <SurfacesProtegeesDataviz
+              surfacesProtegees={surfacesProtegees}
+              carteCommunes={carteCommunes}
+            />
           </div>
         </div>
       ) : (
@@ -85,6 +109,6 @@ const SurfacesProtegees = (
       )}
     </>
   );
-}
+};
 
 export default SurfacesProtegees;
