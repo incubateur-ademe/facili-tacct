@@ -33,7 +33,7 @@ const ClimaStory = () => {
           <Image src={BulbIcon} alt="" />
           <h2>ClimaSTORYⓇ, une cartographie pour sensibiliser</h2>
         </div>
-        <p>
+        <div>
           <ul>
             <li>
               Objectif : prendre conscience des effets en cascade du changement
@@ -45,14 +45,16 @@ const ClimaStory = () => {
               connaissances particulières de la part des participants.
             </li>
           </ul>
-        </p>
+        </div>
       </div>
       <div className={styles.textBloc}>
         <h3>Concrètement, une session ClimaSTORYⓇ, ça se passe comment ?</h3>
-        <p>
-          <b>
-            <u>Il faut :</u>
-          </b>
+        <div>
+          <p>
+            <b>
+              <u>Il faut :</u>
+            </b>
+          </p>
           <ul>
             <li>
               Un animateur préalablement formé qui dispose de la boite du jeu.
@@ -64,7 +66,7 @@ const ClimaStory = () => {
               Entre <b>6 et 12</b> participants
             </li>
           </ul>
-        </p>
+        </div>
         <Image
           src={ArticleImage2}
           alt="Photo du jeu ClimaStory"
@@ -75,10 +77,12 @@ const ClimaStory = () => {
         />
         <br></br>
         <br></br>
-        <p>
-          <b>
-            <u>L'atelier se déroule en plusieurs temps :</u>
-          </b>
+        <div>
+          <p>
+            <b>
+              <u>L'atelier se déroule en plusieurs temps :</u>
+            </b>
+          </p>
           <ul>
             <li>
               <b>
@@ -113,7 +117,7 @@ const ClimaStory = () => {
               <b>Conclusion de l’atelier</b>
             </li>
           </ul>
-        </p>
+        </div>
         <p>
           En fonction des participants, 3 protocoles, avec des objectifs
           différents, sont possibles :
@@ -176,7 +180,7 @@ const ClimaStory = () => {
           un collectif de citoyens engagés, France Travail, etc.
         </p>
         <h2>Les apprentissages de nos échanges :</h2>
-        <p>
+        <div>
           <ul>
             <li>
               L’utilisation d’un territoire fictif dépassionne les débats, mais
@@ -206,7 +210,7 @@ const ClimaStory = () => {
               au changement climatique.
             </li>
           </ul>
-        </p>
+        </div>
         <h2>
           En conclusion : la sensibilisation, un préalable qui peut vous aider
           sur le temps long.
@@ -218,8 +222,8 @@ const ClimaStory = () => {
           commune, tout chargé de mission peine à faire valoir l’importance de
           ce sujet qui touche tout le monde.
         </p>
-        <p>
-          Avec ClimaSTORYⓇ, les participants repartent en ayant :
+        <div>
+          <p>Avec ClimaSTORYⓇ, les participants repartent en ayant :</p>
           <ul>
             <li>Compris les impacts en chaîne du changement climatique,</li>
             <li>
@@ -231,7 +235,7 @@ const ClimaStory = () => {
               Défini un plan d’intervention pour le territoire et ses acteurs.
             </li>
           </ul>
-        </p>
+        </div>
       </div>
       <div className={styles.grayWrapper}>
         <div className={styles.h2title}>
@@ -240,7 +244,7 @@ const ClimaStory = () => {
         </div>
         <div className={styles.links}>
           <div className={styles.link}>
-            <p>
+            <div>
               <ul>
                 <li>
                   Le site de{' '}
@@ -254,7 +258,7 @@ const ClimaStory = () => {
                    ;
                 </li>
               </ul>
-            </p>
+            </div>
           </div>
         </div>
       </div>
@@ -263,7 +267,7 @@ const ClimaStory = () => {
           <Image src={ForwardArrow} alt="" />
           <h2>Pour aller plus loin</h2>
         </div>
-        <p>
+        <div>
           <ul>
             <li>
               Des retours d’expériences sur ClimaSTORYⓇ sont disponibles sur la{' '}
@@ -288,7 +292,7 @@ const ClimaStory = () => {
               des animateurs ClimaSTORYⓇ.
             </li>
           </ul>
-        </p>
+        </div>
       </div>
     </div>
   );

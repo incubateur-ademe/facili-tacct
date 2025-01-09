@@ -64,7 +64,7 @@ const allComps = [
     )
   },
   {
-    titre: 'Agriculture biologique',
+    titre: 'Surfaces en bio',
     Component: ({
       data,
       agricultureBio
@@ -156,12 +156,12 @@ const BiodiversiteComp = ({
             label: "Consommation d'espaces NAF"
           },
           {
-            tabId: 'Agriculture biologique',
+            tabId: 'Surfaces en bio',
             label: (
               <TabTooltip
                 selectedTab={selectedTabId}
                 tooltip="L’agriculture biologique fait partie d’un ensemble de pratiques agricoles respectueuses des équilibres écologiques qui contribue à la préservation des sols et des ressources naturelles. "
-                titre="Agriculture biologique"
+                titre="Surfaces en bio"
               />
             )
           }

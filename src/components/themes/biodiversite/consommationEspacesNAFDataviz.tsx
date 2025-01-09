@@ -28,7 +28,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
         className={styles.biodiversiteGraphTitleWrapper}
         style={{ padding: '1rem' }}
       >
-        <h2>Consommation des espaces NAF</h2>
+        <h2>Artificialisation des sols entre 2009 et 2023</h2>
         {/* <SubTabs
           data={['Évolution', 'Répartition', 'Cartographie']}
           defaultTab={datavizTab}
@@ -44,7 +44,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
           <LegendEspacesNAF />
         </div>
       </>
-      <p style={{ padding: '1em', margin: '0' }}>Source : XXXXXX</p>
+      <p style={{ padding: '1em', margin: '0' }}>Source : CEREMA, avril 2024</p>
       {/* {datavizTab === 'Évolution' ? (
         <>
           <div className={styles.biodiversiteGraphFiltersWrapper}>

@@ -60,8 +60,8 @@ export const themes = {
     },
     {
       id: 1,
-      titre: 'Agriculture biologique',
-      facteur_sensibilite: 'Agriculture biologique',
+      titre: 'Surfaces en bio',
+      facteur_sensibilite: 'Surfaces en bio',
       risque: '',
       donnee: ''
     },

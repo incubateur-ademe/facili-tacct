@@ -64,7 +64,7 @@ const allComps = [
     )
   },
   {
-    titre: 'Agriculture biologique',
+    titre: 'Surfaces en bio',
     Component: ({
       data,
       agricultureBio
@@ -159,15 +159,21 @@ const BiodiversiteComp = ({
           },
           {
             tabId: "Consommation d'espaces NAF",
-            label: "Consommation d'espaces NAF"
+            label: (
+              <TabTooltip
+                selectedTab={selectedTabId}
+                tooltip="La consommation d’un espace naturel, agricole ou forestier (ENAF) désigne sa conversion en surface artificialisée, le rendant indisponible pour des usages tels que l’agriculture, la foresterie ou les habitats naturels."
+                titre="Consommation d'espaces NAF"
+              />
+            )
           },
           {
-            tabId: 'Agriculture biologique',
+            tabId: 'Surfaces en bio',
             label: (
               <TabTooltip
                 selectedTab={selectedTabId}
                 tooltip="L’agriculture biologique fait partie d’un ensemble de pratiques agricoles respectueuses des équilibres écologiques qui contribue à la préservation des sols et des ressources naturelles. "
-                titre="Agriculture biologique"
+                titre="Surfaces en bio"
               />
             )
           }

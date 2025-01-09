@@ -17,7 +17,6 @@ import { VegetalisationDto } from '@/lib/dto';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
 import styles from './themes.module.scss';
-// import { LegendCLC } from './vegetalisation-legend';
 
 const GraphImage = GraphNotFound as HTMLImageElement;
 
@@ -140,7 +139,6 @@ const Vegetalisation = (props: {
                     <p style={{ padding: '1em', margin: '0' }}>
                       <b>Cartographie des différents types de sols</b>
                     </p>
-                    {/* <HtmlTooltip title={<LegendCLC />} placement="left"> */}
                     <Map clc={clc} />
                     <div className={styles.vegetalisationLegendWrapper}>
                       {legends.map((e) => (
@@ -156,7 +154,6 @@ const Vegetalisation = (props: {
                         </div>
                       ))}
                     </div>
-                    {/* </HtmlTooltip> */}
                     <p style={{ padding: '1em', margin: '0' }}>
                       Source : CORINE Land Cover
                     </p>

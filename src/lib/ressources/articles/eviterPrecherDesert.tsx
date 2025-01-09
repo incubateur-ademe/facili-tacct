@@ -43,7 +43,7 @@ const EviterPrecherDesert = () => {
           />
         </div>
         <h2>La mobilisation : 8 freins majeurs identifiés</h2>
-        <p>
+        <div>
           <ul>
             <li>
               Ne pas avoir une <b>vision claire des objectifs</b> : qu'est-ce
@@ -81,7 +81,7 @@ const EviterPrecherDesert = () => {
               échanges et <b>pas uniquement de la validation</b>… ;
             </li>
           </ul>
-        </p>
+        </div>
         <p>
           Ces blocages sont de différentes natures : logistique, compétence ou
           organisationnelle. Vous trouverez ci-dessous un diagramme qui cherche
@@ -124,7 +124,7 @@ const EviterPrecherDesert = () => {
           sizes="100%"
           style={{ width: '100%', height: 'auto' }}
         />
-        <p>
+        <div>
           <ul>
             <li>
               Les phases informatives sont nécessaires, mais peuvent mener à
@@ -141,16 +141,18 @@ const EviterPrecherDesert = () => {
               en présentant à d’autres territoires les actions menées.
             </li>
           </ul>
-        </p>
+        </div>
       </div>
       <div className={styles.grayWrapper}>
         <div className={styles.h2title}>
           <Image src={ForwardArrow as StaticImageData} alt="" />
           <h2>Pour aller plus loin</h2>
         </div>
-        <p>
-          Dans la continuité de cette conduite du changement, appuyez-vous sur
-          d’autres outils, tel que :
+        <div>
+          <p>
+            Dans la continuité de cette conduite du changement, appuyez-vous sur
+            d’autres outils, tel que :
+          </p>
           <ul>
             <li>
               <b>La balance décisionnelle :</b> pour présenter les risques et
@@ -165,7 +167,7 @@ const EviterPrecherDesert = () => {
               des chiffres ou bien par des faits?
             </li>
           </ul>
-        </p>
+        </div>
         <p>
           Tout ceci est abordé lors de la{' '}
           <Link
