@@ -25,7 +25,7 @@ const Adacc = () => {
           <Image src={BulbIcon} alt="" />
           <h2>Les AdACC</h2>
         </div>
-        <p>
+        <div>
           <ul>
             <li>Les AdACC : un format interactif pour un petit groupe ;</li>
             <li>
@@ -45,11 +45,11 @@ const Adacc = () => {
               février 2022).
             </li>
           </ul>
-        </p>
+        </div>
       </div>
       <div className={styles.textBloc}>
         <h3>Concrètement, pour organiser un AdACC, il faut :</h3>
-        <p>
+        <div>
           <ul>
             <li>
               Un animateur préalablement formé, qui dispose des cartes de
@@ -62,7 +62,7 @@ const Adacc = () => {
               Entre <b>6 et 12</b> participants
             </li>
           </ul>
-        </p>
+        </div>
         <Image
           src={ArticleImage}
           alt="Schéma expliquant les 2 démarches d'un atelier : découverte et expérimentation"
@@ -99,9 +99,11 @@ const Adacc = () => {
           style={{ width: '100%', height: 'auto' }}
         />
         <h3>Comment s’est passé l’organisation de l’atelier ?</h3>
-        <p>
-          Sarah a été accompagnée par un animateur de l’atelier avec 2 visio
-          préparatoires sur le contenu d’environ 1h30 chacune :
+        <div>
+          <p>
+            Sarah a été accompagnée par un animateur de l’atelier avec 2 visio
+            préparatoires sur le contenu d’environ 1h30 chacune :
+          </p>
           <ul>
             <li>
               La 1ère sur l’explication du déroulé et la clarification des
@@ -114,7 +116,7 @@ const Adacc = () => {
               leur territoire.
             </li>
           </ul>
-        </p>
+        </div>
         <p>
           Lors de ces 2 ateliers, plusieurs enjeux ont été identifié : qualité
           de vie des habitants en lien avec le bâti, qualité de vie en lien avec
@@ -123,12 +125,14 @@ const Adacc = () => {
           utilisé comme cas d’étude la 2nde séquence de l’atelier :
           l’expérimentation de la méthode.
         </p>
-        <p>
-          Les aspects organisationnels sont de la responsabilité de la
-          collectivité : réservation de la salle, invitation des élus et
-          relances. Pour maximiser leur présence, Sarah a axé sa communication
-          sur le fait que cet atelier rentrait dans le cadre du travail sur le
-          PLUi.
+        <div>
+          <p>
+            Les aspects organisationnels sont de la responsabilité de la
+            collectivité : réservation de la salle, invitation des élus et
+            relances. Pour maximiser leur présence, Sarah a axé sa communication
+            sur le fait que cet atelier rentrait dans le cadre du travail sur le
+            PLUi.
+          </p>
           <ul>
             <li>
               Ce travail de mobilisation a permis de réunir 35 élus
@@ -139,9 +143,9 @@ const Adacc = () => {
               a été réalisé de 17h à 20h.
             </li>
           </ul>
-        </p>
+        </div>
         <h2>Les apprentissages de cette rencontre :</h2>
-        <p>
+        <div>
           <ul>
             <li>
               Le format d’atelier en intelligence collective permet de faire
@@ -183,7 +187,7 @@ const Adacc = () => {
               l’EPCI.
             </li>
           </ul>
-        </p>
+        </div>
         <h3>
           En conclusion : la sensibilisation, un préalable qui peut vous aider
           sur le temps long.
@@ -210,7 +214,7 @@ const Adacc = () => {
         </div>
         <div className={styles.links}>
           <div className={styles.link}>
-            <p>
+            <div>
               <ul>
                 <li>
                   Le site des{' '}
@@ -235,7 +239,7 @@ const Adacc = () => {
                    ;
                 </li>
               </ul>
-            </p>
+            </div>
           </div>
         </div>
       </div>
@@ -244,9 +248,11 @@ const Adacc = () => {
           <Image src={ForwardArrow} alt="" />
           <h2>Pour aller plus loin</h2>
         </div>
-        <p>
-          À la suite de cette session vous avez sollicité l’organisation d’un
-          atelier de l’Adaptation au Changement Climatique :
+        <div>
+          <p>
+            À la suite de cette session vous avez sollicité l’organisation d’un
+            atelier de l’Adaptation au Changement Climatique :
+          </p>
           <ul>
             <li>
               Pour expérimenter l’atelier en présentiel, voici le{' '}
@@ -260,7 +266,7 @@ const Adacc = () => {
               vers le document qui recense les ateliers dans toute la france.
             </li>
           </ul>
-        </p>
+        </div>
       </div>
     </div>
   );

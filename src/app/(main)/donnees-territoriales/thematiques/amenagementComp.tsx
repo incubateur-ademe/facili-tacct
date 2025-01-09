@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 
 import { ConsommationEspacesNAF } from '@/components/themes/amenagement/consommationEspacesNAF';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
+import { TabTooltip } from '@/lib/utils/TabTooltip';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -69,7 +70,13 @@ const AmenagementComp = ({ data, carteCommunes, consommationNAF }: Props) => {
         tabs={[
           {
             tabId: "Consommation d'espaces NAF",
-            label: "Consommation d'espaces NAF"
+            label: (
+              <TabTooltip
+                selectedTab={selectedTabId}
+                tooltip="La consommation d’un espace naturel, agricole ou forestier (ENAF) désigne sa conversion en surface artificialisée, le rendant indisponible pour des usages tels que l’agriculture, la foresterie ou les habitats naturels."
+                titre="Consommation d'espaces NAF"
+              />
+            )
           }
         ]}
         onTabChange={setSelectedTabId}
