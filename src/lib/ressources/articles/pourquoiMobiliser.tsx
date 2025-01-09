@@ -42,8 +42,8 @@ const PourquoiMobiliser = () => {
           sizes="100%"
           style={{ width: '100%', height: 'auto' }}
         />
-        <p>
-          Notre idée pour aider au dialogue :
+        <div>
+          <p>Notre idée pour aider au dialogue :</p>
           <ul>
             <li>
               Vous aider à développer une expertise de la problématique, (par
@@ -55,7 +55,7 @@ const PourquoiMobiliser = () => {
               sous jacent de chaque thématique.
             </li>
           </ul>
-        </p>
+        </div>
         <h2>
           Retour d’expérience : Violaine Magne (Clermont Auvergne Metropole) et
           d’Adam Gibaud (PNR du Pilat)
@@ -79,8 +79,8 @@ const PourquoiMobiliser = () => {
           afin de s’assurer que l’exercice sera mené sous le signe de la
           concertation.
         </p>
-        <p>
-          Résultats :
+        <div>
+          <p>Résultats :</p>
           <ul>
             <li>
               <b>8 ateliers de sensibilisation</b> afin de récolter des retours
@@ -101,7 +101,7 @@ const PourquoiMobiliser = () => {
               50 participants.
             </li>
           </ul>
-        </p>
+        </div>
         <h2>Une mobilisation pour quels bénéfices ?</h2>
         <p>
           Le travail en ateliers vise à{' '}
@@ -126,7 +126,7 @@ const PourquoiMobiliser = () => {
         </p>
         <h2>Les apprentissages clés partagés</h2>
         <h3>En amont :</h3>
-        <p>
+        <div>
           <ul>
             <li>
               Un prérequis essentiel : la validation d’une vision commune avec
@@ -156,9 +156,9 @@ const PourquoiMobiliser = () => {
               prenantes, vous facilite l’obtention de contacts.
             </li>
           </ul>
-        </p>
+        </div>
         <h3>Lors des temps collectifs :</h3>
-        <p>
+        <div>
           <ul>
             <li>
               Mettre la convivialité au cœur des moments collectifs. Pour Jolet,
@@ -189,7 +189,7 @@ const PourquoiMobiliser = () => {
               </i>
             </li>
           </ul>
-        </p>
+        </div>
         <h3>À la suite de la mobilisation :</h3>
         <p>
           Communiquer, communiquer, communiquer : c’est-à-dire rendre visible le
@@ -234,7 +234,7 @@ const PourquoiMobiliser = () => {
         </div>
         <div className={styles.links}>
           <div className={styles.link}>
-            <p>
+            <div>
               <ul>
                 <li>
                   <Link
@@ -248,10 +248,9 @@ const PourquoiMobiliser = () => {
                 <li>
                   Jolet, vous partage également, un nombre de ressources issues
                   de son travail, accessibles à ce lien :
-                  <ul>{/* <li>coucou</li> */}</ul>
                 </li>
               </ul>
-            </p>
+            </div>
           </div>
         </div>
       </div>

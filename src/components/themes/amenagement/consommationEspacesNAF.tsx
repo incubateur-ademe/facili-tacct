@@ -2,6 +2,7 @@ import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
 import { CustomTooltip } from '@/lib/utils/CalculTooltip';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import styles from './amenagement.module.scss';
 import { ConsommationEspacesNAFDataviz } from './consommationEspacesNAFDataviz';
@@ -31,7 +32,10 @@ export const ConsommationEspacesNAF = (props: {
     };
   });
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
-
+  const sumNaf = codgeo
+    ? consommationNAF.filter((item) => item.code_geographique === codgeo)[0]
+        .naf09art23
+    : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
   const title = (
     <div>
       <p>
@@ -52,13 +56,17 @@ export const ConsommationEspacesNAF = (props: {
         <div className={styles.container}>
           <div className="w-2/5">
             <div className={styles.explicationWrapper}>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>
+                Entre 2009 et 2023, votre territoire a consommé{' '}
+                <b>{Round(sumNaf / 10000, 1)} hectare(s)</b> d’espaces naturels
+                et forestiers.{' '}
+              </p>
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
             </div>
             <div className="px-4">
               <p>
                 L’artificialisation des sols progresse, même là où la population
-                diminue. Chaque année depuis dix ans, 24 000 hectares d’espaces
+                diminue. Chaque année depuis dix ans, 24 000 hectares d’espaces
                 naturels, agricoles et forestiers (ENAF) disparaissent sous le
                 béton, soit 10 fois la superficie de Marseille.
               </p>
