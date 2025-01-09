@@ -1,4 +1,3 @@
-
 export type InconfortThermique = {
   NA5AZ_sum: number | null;
   NA5BE_sum: number | null;
@@ -64,7 +63,7 @@ export type Biodiversite = {
   libelle_epci: string | null;
   libelle_geographique: string | null;
   region: number | null;
-}
+};
 
 export type GestionRisques = {
   lib_risque_jo: string | null;
@@ -76,7 +75,7 @@ export type GestionRisques = {
   libelle_epci: string | null;
   libelle_geographique: string | null;
   region: number | null;
-}
+};
 
 export type RessourcesEau = {
   LIBELLE_SOUS_CHAMP: string | null;
@@ -101,7 +100,7 @@ export type RessourcesEau = {
   A2018: number | null;
   A2019: number | null;
   A2020: number | null;
-}
+};
 
 export type AgricultureBio = {
   index: bigint;
@@ -117,18 +116,18 @@ export type AgricultureBio = {
   nombre_2021: number;
   nombre_2020: number;
   nombre_2019: number;
-}
+};
 
 export type CollectivitesSearchbar = {
   code_commune?: string | null;
   coordinates?: string | null;
-  code_epci: string;// | null;
+  code_epci: string; // | null;
   libelle_commune?: string | null;
-  libelle_epci: string;// | null;
-  search_libelle: string;// | null;
-  search_code: string;// | null;
-  departement: string;// | null;
-  region: string;// | null;
+  libelle_epci: string; // | null;
+  search_libelle: string; // | null;
+  search_code: string; // | null;
+  departement: string; // | null;
+  region: string; // | null;
 };
 
 export type CarteCommunes = {
@@ -141,6 +140,8 @@ export type CarteCommunes = {
   libelle_epci: string;
   precarite_logement?: number;
   catnat?: Object;
+  naf?: number;
+  surface: number;
 };
 
 export type EpciContours = {
@@ -227,4 +228,134 @@ export type SurfacesProtegeesByCol = {
   libelle_epci: string;
   departement: string;
   region: number;
-}
+};
+
+export type ConsommationNAF = {
+  index: bigint;
+  code_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  region: number;
+  naf09art10: number;
+  art09act10: number;
+  art09hab10: number;
+  art09mix10: number;
+  art09rou10: number;
+  art09fer10: number;
+  art09inc10: number;
+  naf10art11: number;
+  art10act11: number;
+  art10hab11: number;
+  art10mix11: number;
+  art10rou11: number;
+  art10fer11: number;
+  naf11art12: number;
+  art11act12: number;
+  art11hab12: number;
+  art11mix12: number;
+  art11rou12: number;
+  art11fer12: number;
+  art11inc12: number;
+  naf12art13: number;
+  art12act13: number;
+  art12hab13: number;
+  art12mix13: number;
+  art12rou13: number;
+  art12fer13: number;
+  art12inc13: number;
+  naf13art14: number;
+  art13act14: number;
+  art13hab14: number;
+  art13mix14: number;
+  art13rou14: number;
+  art13fer14: number;
+  art13inc14: number;
+  naf14art15: number;
+  art14act15: number;
+  art14hab15: number;
+  art14mix15: number;
+  art14rou15: number;
+  art14fer15: number;
+  art14inc15: number;
+  naf15art16: number;
+  art15act16: number;
+  art15hab16: number;
+  art15mix16: number;
+  art15rou16: number;
+  art15fer16: number;
+  art15inc16: number;
+  naf16art17: number;
+  art16act17: number;
+  art16hab17: number;
+  art16mix17: number;
+  art16rou17: number;
+  art16fer17: number;
+  art16inc17: number;
+  naf17art18: number;
+  art17act18: number;
+  art17hab18: number;
+  art17mix18: number;
+  art17rou18: number;
+  art17fer18: number;
+  art17inc18: number;
+  naf18art19: number;
+  art18act19: number;
+  art18hab19: number;
+  art18mix19: number;
+  art18rou19: number;
+  art18fer19: number;
+  art18inc19: number;
+  naf19art20: number;
+  art19act20: number;
+  art19hab20: number;
+  art19mix20: number;
+  art19rou20: number;
+  art19fer20: number;
+  art19inc20: number;
+  naf20art21: number;
+  art20act21: number;
+  art20hab21: number;
+  art20mix21: number;
+  art20rou21: number;
+  art20fer21: number;
+  art20inc21: number;
+  naf21art22: number;
+  art21act22: number;
+  art21hab22: number;
+  art21mix22: number;
+  art21rou22: number;
+  art21fer22: number;
+  art21inc22: number;
+  naf22art23: number;
+  art22act23: number;
+  art22hab23: number;
+  art22mix23: number;
+  art22rou23: number;
+  art22fer23: number;
+  art22inc23: number;
+  naf09art23: number;
+  art09act23: number;
+  art09hab23: number;
+  art09mix23: number;
+  art09inc23: number;
+  art09rou23: number;
+  art09fer23: number;
+  artcom0923: number;
+  pop14: number;
+  pop20: number;
+  pop1420: number;
+  men14: number;
+  men20: number;
+  men1420: number;
+  emp14: number;
+  emp20: number;
+  emp1420: number;
+  mepart1420: number;
+  menhab1420: number;
+  artpop1420: number | null;
+  surfcom2023: number;
+  C10_MEN: number | null;
+  C15_MEN: number | null;
+  C21_MEN: number | null;
+};

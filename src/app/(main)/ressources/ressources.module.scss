@@ -1,0 +1,123 @@
+.wrapper {
+}
+
+.blocWrapper {
+    margin: 1em 0 4em;
+}
+
+.titles {
+    display: flex;
+    flex-direction: row;
+    column-gap: 2em;
+}
+
+.favoris {
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5em;
+    height: fit-content;
+    padding: 0.5em;
+    background-color: #f1f1f1;
+    align-items: center;
+    border-radius: 0.25rem;
+    &:hover {
+        cursor: pointer;
+    }
+    p {
+        margin: 0;
+    }
+}
+
+.cardWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.card {
+    background-color: #f4f4f4;
+    padding: 1.5em;
+    border-radius: 0.25rem;
+    border: 2px solid black;
+    min-width: 300px;
+}
+
+.subcard {
+    background-color: #fff;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    border-radius: 0.25rem;
+    p {
+        margin: 0;
+    }
+}
+
+.bottom {
+    display: flex;
+    background-color: #eeeeee;
+    padding: 1em 2em;
+    justify-content: space-between;
+    // position: sticky;
+}
+
+.selectedTab {
+    background-color: #0063cb;
+    border-radius: 25px;
+    padding: 0.2em 1em;
+    color: #ececfe;
+    &:hover {
+        cursor: pointer;
+        background-color: #000091e7 !important;
+        color: #eeeeee;
+    }
+}
+.tab {
+    background-color: #f9f9ff;
+    border-radius: 25px;
+    padding: 0.2em 1em;
+    color: #3a3a3a;
+    &:hover {
+        cursor: pointer;
+        background-color: #e9e9ff !important;
+        color: #000000;
+    }
+}
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    justify-content: start;
+    padding: 0 0 1.5em;
+}
+
+.cardsWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+    flex-wrap: wrap;
+}
+
+.ressourcesWrapper {
+    padding: 4rem 0;
+    border-bottom: 1px solid #dddddd;
+}
+
+.disabledTab {
+    background-color: #f9f9ff;
+    border-radius: 25px;
+    padding: 0.2em 1em;
+    color: #3a3a3a;
+    &:hover {
+        cursor: default;
+    }
+}
+
+.tilesWrapper {
+    margin: 1em;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
