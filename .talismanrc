@@ -61,4 +61,6 @@ fileignoreconfig:
   checksum: c82136ee80408a2be2eca7eea79549d837c51f5318e40b40540c300d31d609b2
 - filename: src/generated/client/index.d.ts
   checksum: 77ff7bbd9e21ece0b6794bb77614441ec23708e2ca84d96bce0f217126e957df
+- filename: src/components/themes/inconfortThermique/vegetalisation.tsx
+  checksum: b2856549c693ae7e45376bea391b750d5fbdb7d1832868d881ca33454510e7b2
 version: ""
