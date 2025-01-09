@@ -8,7 +8,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("SCALINGO_POSTGRESQL_URL")
-  schemas  = ["databases", "postgis"]
+  schemas  = ["analytics", "databases", "postgis"]
 }
 
 model inconfort_thermique {
@@ -84,22 +84,6 @@ model clc_epci {
   @@schema("postgis")
 }
 
-model communes {
-  pk                 Int                      @id @default(autoincrement())
-  code_commune       String?                  @db.VarChar
-  libelle_commune    String?                  @db.VarChar
-  epci               String?                  @db.VarChar
-  libelle_epci       String?                  @db.VarChar
-  libgeo             String?                  @db.VarChar
-  coordinates        String?                  @db.VarChar
-  densite_bati       Float?
-  precarite_logement Float?
-  geometry           Unsupported("geometry")?
-
-  @@index([geometry], map: "communes_geometry_geom_idx", type: Gist)
-  @@schema("postgis")
-}
-
 model collectivites_searchbar {
   index           BigInt  @id
   code_commune    String?
@@ -118,14 +102,15 @@ model collectivites_searchbar {
 
 model biodiversite {
   index                BigInt  @id
-  code_geographique    String? @db.VarChar(10)
-  type_touristique     String? @db.VarChar(50)
-  libelle_geographique String? @db.VarChar(100)
-  epci                 String? @db.VarChar(15)
-  libelle_epci         String? @db.VarChar(100)
-  departement          String? @db.VarChar(5)
+  code_geographique    String?
+  type_touristique     String?
+  libelle_geographique String?
+  epci                 String?
+  libelle_epci         String?
+  departement          String?
   region               Float?
 
+  @@index([index], map: "ix_biodiversite_index")
   @@schema("databases")
 }
 
@@ -140,6 +125,7 @@ model gestion_risques {
   departement          String?
   region               Float?
 
+  @@index([index], map: "ix_gestion_risques_index")
   @@schema("databases")
 }
 
@@ -161,9 +147,9 @@ model communes_drom {
 
 model ressources_eau {
   index                BigInt  @id
-  code_geographique    String  @db.VarChar(10)
-  LIBELLE_SOUS_CHAMP   String? @db.VarChar(100)
-  SOUS_CHAMP           String? @db.VarChar(20)
+  code_geographique    String
+  LIBELLE_SOUS_CHAMP   String?
+  SOUS_CHAMP           String?
   A2020                Float?
   A2019                Float?
   A2018                Float?
@@ -177,21 +163,22 @@ model ressources_eau {
   A2010                Float?
   A2009                Float?
   A2008                Float?
-  libelle_geographique String? @db.VarChar(100)
-  epci                 String? @db.VarChar(15)
-  libelle_epci         String? @db.VarChar(100)
-  departement          String? @db.VarChar(5)
+  libelle_geographique String?
+  epci                 String?
+  libelle_epci         String?
+  departement          String?
   region               Float?
 
+  @@index([index], map: "ix_ressources_eau_index")
   @@schema("databases")
 }
 
 model agriculture_bio {
   index              BigInt  @id
-  epci               String  @db.VarChar(16)
-  libelle_epci       String  @db.VarChar(100)
-  VARIABLE           String  @db.VarChar(50)
-  LIBELLE_SOUS_CHAMP String? @db.VarChar(50)
+  epci               String
+  libelle_epci       String
+  VARIABLE           String
+  LIBELLE_SOUS_CHAMP String?
   surface_2022       Float
   surface_2021       Float
   surface_2020       Float
@@ -201,25 +188,28 @@ model agriculture_bio {
   nombre_2020        Float
   nombre_2019        Float
 
+  @@index([index], map: "ix_agriculture_bio_index")
   @@schema("databases")
 }
 
 model erosion_cotiere {
-  pk         Int                     @id
+  pk         Int                     @id @default(autoincrement())
   taux       Float
   duree      Float
   tdc_ancien BigInt
   tdc_rec    BigInt
   geometry   Unsupported("geometry")
 
+  @@index([geometry], map: "erosion_cotiere_geometry_geom_idx", type: Gist)
   @@schema("postgis")
 }
 
 model epci {
-  pk        Int                     @id
-  epci_code String                  @db.VarChar(15)
+  pk        Int                     @id @default(autoincrement())
+  epci_code String                  @db.VarChar
   geometry  Unsupported("geometry")
 
+  @@index([geometry], map: "epci_geometry_geom_idx", type: Gist)
   @@schema("postgis")
 }
 
@@ -253,4 +243,196 @@ model surfaces_protegees {
 
   @@index([index], map: "ix_surfaces_protegees_index")
   @@schema("databases")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model spatial_ref_sys {
+  srid      Int     @id
+  auth_name String? @db.VarChar(256)
+  auth_srid Int?
+  srtext    String? @db.VarChar(2048)
+  proj4text String? @db.VarChar(2048)
+
+  @@schema("postgis")
+}
+
+model consommation_espaces_naf {
+  index                BigInt @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  region               Int
+  naf09art10           Float
+  art09act10           Float
+  art09hab10           Float
+  art09mix10           Float
+  art09rou10           Float
+  art09fer10           Float
+  art09inc10           Float
+  naf10art11           Float
+  art10act11           Float
+  art10hab11           Float
+  art10mix11           Float
+  art10rou11           Float
+  art10fer11           Float
+  art10inc11           Float
+  naf11art12           Float
+  art11act12           Float
+  art11hab12           Float
+  art11mix12           Float
+  art11rou12           Float
+  art11fer12           Float
+  art11inc12           Float
+  naf12art13           Float
+  art12act13           Float
+  art12hab13           Float
+  art12mix13           Float
+  art12rou13           Float
+  art12fer13           Float
+  art12inc13           Float
+  naf13art14           Float
+  art13act14           Float
+  art13hab14           Float
+  art13mix14           Float
+  art13rou14           Float
+  art13fer14           Float
+  art13inc14           Float
+  naf14art15           Float
+  art14act15           Float
+  art14hab15           Float
+  art14mix15           Float
+  art14rou15           Float
+  art14fer15           Float
+  art14inc15           Float
+  naf15art16           Float
+  art15act16           Float
+  art15hab16           Float
+  art15mix16           Float
+  art15rou16           Float
+  art15fer16           Float
+  art15inc16           Float
+  naf16art17           Float
+  art16act17           Float
+  art16hab17           Float
+  art16mix17           Float
+  art16rou17           Float
+  art16fer17           Float
+  art16inc17           Float
+  naf17art18           Float
+  art17act18           Float
+  art17hab18           Float
+  art17mix18           Float
+  art17rou18           Float
+  art17fer18           Float
+  art17inc18           Float
+  naf18art19           Float
+  art18act19           Float
+  art18hab19           Float
+  art18mix19           Float
+  art18rou19           Float
+  art18fer19           Float
+  art18inc19           Float
+  naf19art20           Float
+  art19act20           Float
+  art19hab20           Float
+  art19mix20           Float
+  art19rou20           Float
+  art19fer20           Float
+  art19inc20           Float
+  naf20art21           Float
+  art20act21           Float
+  art20hab21           Float
+  art20mix21           Float
+  art20rou21           Float
+  art20fer21           Float
+  art20inc21           Float
+  naf21art22           Float
+  art21act22           Float
+  art21hab22           Float
+  art21mix22           Float
+  art21rou22           Float
+  art21fer22           Float
+  art21inc22           Float
+  naf22art23           Float
+  art22act23           Float
+  art22hab23           Float
+  art22mix23           Float
+  art22rou23           Float
+  art22fer23           Float
+  art22inc23           Float
+  naf09art23           Float
+  art09act23           Float
+  art09hab23           Float
+  art09mix23           Float
+  art09inc23           Float
+  art09rou23           Float
+  art09fer23           Float
+  artcom0923           Float
+  pop14                Float
+  pop20                Float
+  pop1420              Float
+  men14                Float
+  men20                Float
+  men1420              Float
+  emp14                Float
+  emp20                Float
+  emp1420              Float
+  mepart1420           Float
+  menhab1420           Float
+  artpop1420           Float?
+  surfcom2023          Float
+  C10_MEN              Float?
+  C15_MEN              Float?
+  C21_MEN              Float?
+
+  @@index([index], map: "ix_consommation_espaces_naf_index")
+  @@schema("databases")
+}
+
+model lcz_bayonne_test {
+  pk         Int                      @id @default(autoincrement())
+  identifier String?                  @db.VarChar
+  hre        Float?
+  are        Float?
+  bur        Float?
+  ror        Float?
+  bsr        Float?
+  war        Float?
+  ver        Float?
+  vhr        Float?
+  lcz        String?                  @db.VarChar
+  lcz_int    Int?
+  geometry   Unsupported("geometry")?
+
+  @@index([geometry], map: "lcz_bayonne_test_geometry_geom_idx", type: Gist)
+  @@schema("postgis")
+}
+
+model north_star_metric {
+  value String   @db.VarChar(32)
+  date  DateTime @db.Timestamp(6)
+  pk    Int      @id
+
+  @@schema("analytics")
+}
+
+model etat_cours_d_eau {
+  pk         Int                     @id @default(autoincrement())
+  code_eu_md String                  @db.VarChar
+  name       String                  @db.VarChar
+  longueur   Float?
+  statut     String?                 @db.VarChar
+  ordre      Float?
+  etateco    String?                 @db.VarChar
+  qmoyaval   Float?
+  distmer    Float?
+  distsrce   Float?
+  gid        BigInt
+  annee      String                  @db.VarChar
+  geometry   Unsupported("geometry")
+
+  @@index([geometry], map: "etat_cours_d_eau_geometry_geom_idx", type: Gist)
+  @@schema("postgis")
 }
