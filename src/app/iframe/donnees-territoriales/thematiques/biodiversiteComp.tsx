@@ -54,7 +54,7 @@ const allComps = [
     )
   },
   {
-    titre: 'Agriculture biologique',
+    titre: 'Surfaces en bio',
     Component: ({
       data,
       agricultureBio
@@ -102,10 +102,8 @@ const BiodiversiteComp = ({
   consommationNAF,
   epciContours
 }: Props) => {
-  const [selectedTabId, setSelectedTabId] = useState('Agriculture biologique');
-  const [selectedSubTab, setSelectedSubTab] = useState(
-    'Agriculture biologique'
-  );
+  const [selectedTabId, setSelectedTabId] = useState('Surfaces en bio');
+  const [selectedSubTab, setSelectedSubTab] = useState('Surfaces en bio');
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
   const { isDark } = useIsDark();
@@ -139,12 +137,12 @@ const BiodiversiteComp = ({
             label: "Consommation d'espaces NAF"
           },
           {
-            tabId: 'Agriculture biologique',
+            tabId: 'Surfaces en bio',
             label: (
               <TabTooltip
                 selectedTab={selectedTabId}
                 tooltip="L’agriculture biologique fait partie d’un ensemble de pratiques agricoles respectueuses des équilibres écologiques qui contribue à la préservation des sols et des ressources naturelles. "
-                titre="Agriculture biologique"
+                titre="Surfaces en bio"
               />
             )
           }
