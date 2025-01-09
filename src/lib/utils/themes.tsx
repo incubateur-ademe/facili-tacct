@@ -60,18 +60,18 @@ export const themes = {
     },
     {
       id: 1,
-      titre: 'Agriculture biologique',
-      facteur_sensibilite: 'Agriculture biologique',
+      titre: 'Surfaces en bio',
+      facteur_sensibilite: 'Surfaces en bio',
       risque: '',
       donnee: ''
     },
-    {
-      id: 2,
-      titre: 'Surfaces protégées',
-      facteur_sensibilite: 'Surfaces protégées',
-      risque: '',
-      donnee: ''
-    },
+    // {
+    //   id: 2,
+    //   titre: 'Surfaces protégées',
+    //   facteur_sensibilite: 'Surfaces protégées',
+    //   risque: '',
+    //   donnee: ''
+    // },
     {
       id: 3,
       titre: "Consommation d'espaces NAF",

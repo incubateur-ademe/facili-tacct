@@ -66,7 +66,7 @@ export const ConsommationEspacesNAF = (props: {
             <div className="px-4">
               <p>
                 L’artificialisation des sols progresse, même là où la population
-                diminue. Chaque année depuis dix ans, 24 000 hectares d’espaces
+                diminue. Chaque année depuis dix ans, 24 000 hectares d’espaces
                 naturels, agricoles et forestiers (ENAF) disparaissent sous le
                 béton, soit 10 fois la superficie de Marseille.
               </p>
