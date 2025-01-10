@@ -39,14 +39,15 @@ export const ConsommationEspacesNAF = (props: {
   const title = (
     <div>
       <p>
-        La consommation d’un espace naturel, agricole ou forestier (ENAF)
-        désigne sa conversion en surface artificialisée, le rendant indisponible
-        pour des usages tels que l’agriculture, la foresterie ou les habitats
-        naturels.
-      </p>
-      <p>
-        Selon l’INSEE, un ménage désigne l'ensemble des personnes qui partagent
-        la même résidence principale.
+        Le suivi de cet indicateur est réalisé par le CEREMA dans le cadre de
+        l’objectif “zéro artificialisation nette” de la loi « Climat et
+        résilience ». La consommation d’espaces NAF est calculée à partir des
+        fichiers fonciers entre 2009 et 2023, présentée ici toute destination
+        confondue. Les données sont traitées pour donner des tendances de façon
+        uniforme sur toute la France ; ponctuellement, il est possible que les
+        documents de planification de certaines collectivités territoriales
+        fassent référence à des données locales de consommation d'espaces
+        différentes de celles fournies par le CEREMA.
       </p>
     </div>
   );
@@ -65,34 +66,33 @@ export const ConsommationEspacesNAF = (props: {
             </div>
             <div className="px-4">
               <p>
-                L’artificialisation des sols progresse, même là où la population
-                diminue. Chaque année depuis dix ans, 24 000 hectares d’espaces
-                naturels, agricoles et forestiers (ENAF) disparaissent sous le
-                béton, soit 10 fois la superficie de Marseille.
+                Depuis dix ans, 24 000 hectares d’espaces naturels, agricoles et
+                forestiers disparaissent chaque année sous le béton, soit 10
+                fois la superficie de Marseille. Depuis les années 1980, les
+                surfaces artificialisées ont augmenté de 70 %, un rythme bien
+                supérieur à celui de la population française (+19 %). Pire,
+                elles progressent, même là où la population diminue.
               </p>
               <p>
-                66 % des ENAF consommés sont destinées à l’habitat. Les projets
-                de faible densité utilisent beaucoup de sols pour un nombre
-                limité de logements. En périphérie des villes, l’étalement
-                urbain allonge les trajets domicile-travail, renforce la
-                dépendance à la voiture et augmente les émissions de gaz à effet
-                de serre. <br></br>
-                Ce type d’aménagement peu économe en sols a un coût climatique
-                majeur : chaque hectare artificialisé libère jusqu’à 190 tonnes
-                de CO2, soit l’empreinte carbone annuelle de 20 Français.
+                En périphérie des villes, l’étalement urbain allonge les trajets
+                domicile-travail, renforce la dépendance à la voiture et
+                augmente les émissions de gaz à effet de serre. Chaque hectare
+                artificialisé libère jusqu’à 190 tonnes de CO2, soit l’empreinte
+                carbone annuelle de 20 Français.
               </p>
               <p>
-                - 66 % de la consommation des espaces ENAF est destinée à
-                l’habitat (période 2022-2023, Cerema) <br></br>- 7 820 communes
-                consomment de l’espace alors qu’elles perdent des ménages
-                (période 2014-2020, Cerema) : une consommation d’ENAF
-                déconnectée des besoins réels des territoires ! <br></br>- 51 %
-                de la consommation d’espaces liée à l’habitat provient de
-                constructions de moins de 8 logements par hectare (période
-                2009-2022, Cerema)
+                ⇒ 43 % de la consommation d'espace a lieu dans des zones
+                péri-urbaines peu denses
               </p>
               <p>
-                - - - - <br></br>
+                ⇒ 66 % des ENAF consommés sont destinées à l’habitat dont plus
+                de la moitié (51 %) est constitué de constructions de moins de 8
+                logements par hectare
+              </p>
+              <p>
+                ⇒ 7 820 communes consomment de l’espace alors qu’elles perdent
+                des ménages : une consommation d’ENAF déconnectée des besoins
+                réels des territoires !
               </p>
             </div>
           </div>
