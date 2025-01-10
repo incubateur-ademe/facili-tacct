@@ -2,7 +2,9 @@ import { Loader } from '@/components/loader';
 import { NoticeComp } from '@/dsfr/base/Notice';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { GetCollectivite } from '@/lib/queries/searchBar';
-import { GetInconfortThermiqueDepartment } from '@/lib/queries/thematiques';
+import GetCube, {
+  GetInconfortThermiqueDepartment
+} from '@/lib/queries/thematiques';
 import { themes } from '@/lib/utils/themes';
 import dynamic from 'next/dynamic';
 import styles from '../donnees.module.scss';
@@ -24,6 +26,9 @@ const InconfortThermique = async (searchParams: SearchParams) => {
       ? await GetCollectivite(codepci)
       : void 0;
   const carteCommunes = await GetCommunes(codepci);
+
+  const cube = GetCube();
+  // console.log(cube);
 
   return (
     <div>

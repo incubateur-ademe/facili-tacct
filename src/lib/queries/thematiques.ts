@@ -1,20 +1,28 @@
-"use server";
+'use server';
 
-import { AgricultureBio, Biodiversite, GestionRisques, InconfortThermique, RessourcesEau } from "@/lib/postgres/models";
-import * as Sentry from "@sentry/nextjs";
-import { PrismaClient as PostgresClient } from "../../generated/client";
+import {
+  AgricultureBio,
+  Biodiversite,
+  GestionRisques,
+  InconfortThermique,
+  RessourcesEau
+} from '@/lib/postgres/models';
+import * as Sentry from '@sentry/nextjs';
+import { PrismaClient as PostgresClient } from '../../generated/client';
 
 const PrismaPostgres = new PostgresClient();
 
-export const GetInconfortThermique = async (code: string): Promise<InconfortThermique[]> => {
+export const GetInconfortThermique = async (
+  code: string
+): Promise<InconfortThermique[]> => {
   try {
-    console.time("Query Execution Time INCONFORT");
+    console.time('Query Execution Time INCONFORT');
     const value = await PrismaPostgres.inconfort_thermique.findMany({
       where: {
-        OR: [{ epci: code }, { code_geographique: code }], //...(code.length < 7 ? { code_commune: code } : { epci: code }),
-      },
+        OR: [{ epci: code }, { code_geographique: code }] //...(code.length < 7 ? { code_commune: code } : { epci: code }),
+      }
     });
-    console.timeEnd("Query Execution Time INCONFORT");
+    console.timeEnd('Query Execution Time INCONFORT');
     return value;
   } catch (error) {
     console.error(error);
@@ -26,27 +34,34 @@ export const GetInconfortThermique = async (code: string): Promise<InconfortTher
 
 export const GetInconfortThermiqueDepartment = async (code: string) => {
   try {
-    console.time("Query Execution Time INCONFORT DEPARTEMENT");
-    if (code === "200054781") {
+    console.time('Query Execution Time INCONFORT DEPARTEMENT');
+    if (code === '200054781') {
       const value = await PrismaPostgres.inconfort_thermique.findMany({
         where: {
-          OR: [{ departement: "75" }, { departement: "91" }, { departement: "92" }, { departement: "93" }, { departement: "94" }, { departement: "95" }],
-        },
+          OR: [
+            { departement: '75' },
+            { departement: '91' },
+            { departement: '92' },
+            { departement: '93' },
+            { departement: '94' },
+            { departement: '95' }
+          ]
+        }
       });
-      console.timeEnd("Query Execution Time INCONFORT DEPARTEMENT");
+      console.timeEnd('Query Execution Time INCONFORT DEPARTEMENT');
       return value;
     } else {
       const departement = await PrismaPostgres.inconfort_thermique.findFirst({
         where: {
-          epci: code,
-        },
+          epci: code
+        }
       });
       const value = await PrismaPostgres.inconfort_thermique.findMany({
         where: {
-          departement: departement?.departement,
-        },
+          departement: departement?.departement
+        }
       });
-      console.timeEnd("Query Execution Time INCONFORT DEPARTEMENT");
+      console.timeEnd('Query Execution Time INCONFORT DEPARTEMENT');
       return value;
     }
   } catch (error) {
@@ -57,15 +72,17 @@ export const GetInconfortThermiqueDepartment = async (code: string) => {
   }
 };
 
-export const GetGestionRisques = async (code: string): Promise<GestionRisques[]> => {
+export const GetGestionRisques = async (
+  code: string
+): Promise<GestionRisques[]> => {
   try {
-    console.time("Query Execution Time GESTIONRISQUES");
+    console.time('Query Execution Time GESTIONRISQUES');
     const value = await PrismaPostgres.gestion_risques.findMany({
       where: {
         OR: [{ epci: code }, { code_geographique: code }]
-      },
+      }
     });
-    console.timeEnd("Query Execution Time GESTIONRISQUES");
+    console.timeEnd('Query Execution Time GESTIONRISQUES');
     return value;
   } catch (error) {
     console.error(error);
@@ -75,12 +92,14 @@ export const GetGestionRisques = async (code: string): Promise<GestionRisques[]>
   }
 };
 
-export const GetBiodiversite = async (code: string): Promise<Biodiversite[]> => {
+export const GetBiodiversite = async (
+  code: string
+): Promise<Biodiversite[]> => {
   try {
-    console.time("Query Execution Time BIODIVERSITE");
+    console.time('Query Execution Time BIODIVERSITE');
     const value = await PrismaPostgres.biodiversite.findMany({
       where: {
-        AND:[
+        AND: [
           { epci: code },
           {
             type_touristique: {
@@ -88,9 +107,9 @@ export const GetBiodiversite = async (code: string): Promise<Biodiversite[]> => 
             }
           }
         ]
-      },
+      }
     });
-    console.timeEnd("Query Execution Time BIODIVERSITE");
+    console.timeEnd('Query Execution Time BIODIVERSITE');
     return value;
   } catch (error) {
     console.error(error);
@@ -100,20 +119,22 @@ export const GetBiodiversite = async (code: string): Promise<Biodiversite[]> => 
   }
 };
 
-export const GetRessourceEau = async (code: string): Promise<RessourcesEau[]> => {
+export const GetRessourceEau = async (
+  code: string
+): Promise<RessourcesEau[]> => {
   try {
-    console.time("Query Execution Time RESSOURCES EAU");
+    console.time('Query Execution Time RESSOURCES EAU');
     const departement = await PrismaPostgres.ressources_eau.findFirst({
       where: {
-        epci: code,
-      },
+        epci: code
+      }
     });
     const value = await PrismaPostgres.ressources_eau.findMany({
       where: {
-        departement: departement?.departement,
-      },
+        departement: departement?.departement
+      }
     });
-    console.timeEnd("Query Execution Time RESSOURCES EAU");
+    console.timeEnd('Query Execution Time RESSOURCES EAU');
     return value;
   } catch (error) {
     console.error(error);
@@ -123,15 +144,64 @@ export const GetRessourceEau = async (code: string): Promise<RessourcesEau[]> =>
   }
 };
 
-export const GetAgricultureBio = async (code: string): Promise<AgricultureBio[]> => {
+const GetCube = async () => {
+  const url = `https://api.indicateurs.ecologie.gouv.fr/cubejs-api/v1/load`;
+  console.time('Query Execution Time CUBEJS');
+  const request = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${process.env.TEST_ECOLAB_TOKEN}`
+    },
+    // cache: 'no-store',
+    body: JSON.stringify({
+      query: {
+        measures: ['prelevement_eau_usage.id_638'],
+        filters: [
+          {
+            member: 'prelevement_eau_usage.libelle_commune',
+            operator: 'equals',
+            values: ['BALAGUERES']
+          }
+        ],
+        timezone: 'UTC',
+        dimensions: ['prelevement_eau_usage.usage'],
+        timeDimensions: [
+          {
+            dimension: 'prelevement_eau_usage.date_mesure',
+            granularity: 'year'
+          }
+        ],
+        order: { 'prelevement_eau_usage.date_mesure': 'asc' }
+      }
+    })
+  });
+
+  if (!request.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  const response: Response = await request.json();
+  console.timeEnd('Query Execution Time CUBEJS');
+
+  // console.log("response", response.data);
+
+  return response;
+};
+
+export default GetCube;
+
+export const GetAgricultureBio = async (
+  code: string
+): Promise<AgricultureBio[]> => {
   try {
-    console.time("Query Execution Time AGRICULTURE BIO");
+    console.time('Query Execution Time AGRICULTURE BIO');
     const value = await PrismaPostgres.agriculture_bio.findMany({
       where: {
-        epci: code,
-      },
+        epci: code
+      }
     });
-    console.timeEnd("Query Execution Time AGRICULTURE BIO");
+    console.timeEnd('Query Execution Time AGRICULTURE BIO');
     return value;
   } catch (error) {
     console.error(error);
