@@ -37,11 +37,11 @@ const allArticles = [
   },
   {
     titre:
-      'Sensibiliser à l’ACC : les AdACC (Les ateliers de l’adaptation au changement climatique)',
+      'Sensibiliser à l’adaptation : les AdACC (Ateliers de l’Adaptation au Changement Climatique)',
     Component: () => <Adacc />
   },
   {
-    titre: 'ClimaStory, une cartographie pour sensibiliser',
+    titre: 'ClimaSTORY, une cartographie pour sensibiliser',
     Component: () => <ClimaStory />
   }
 ];

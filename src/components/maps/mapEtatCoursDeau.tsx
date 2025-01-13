@@ -73,6 +73,16 @@ export const MapEtatCoursDeau = (props: {
     };
   };
 
+  const CustomTooltip = (coursDeau: string) => {
+    return `
+      <div style="padding: 0.5rem">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0">
+          <p style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; margin: 0">${coursDeau}</p> 
+        </div>
+      </div>
+    `;
+  };
+
   const mouseOnHandler: LeafletMouseEventHandlerFn = (e) => {
     const layer = e.target as FeatureGroup<EtatCoursDeauDto['properties']>;
     const coursDeau =
@@ -80,14 +90,13 @@ export const MapEtatCoursDeau = (props: {
         ? layer.feature.properties.name
         : undefined;
     layer.setStyle({
-      weight: 10
-      // color: "transpanrent"
+      weight: 7
     });
-    layer.bindTooltip(coursDeau as string),
-      {
-        direction: 'center',
-        opacity: 0.97
-      };
+    // console.log("e.originalEvent", e.originalEvent);
+    layer.bindTooltip(CustomTooltip(coursDeau as string), {
+      direction: 'center',
+      offset: [0, -50]
+    });
     layer.openTooltip();
     layer.bringToFront();
   };
@@ -136,7 +145,10 @@ export const MapEtatCoursDeau = (props: {
       <style>
         {`
         .leaflet-interactive {
-        cursor: pointer !important;
+          cursor: pointer !important;
+        }
+        .leaflet-tooltip {
+          opacity: 0.95 !important;
         }
       `}
         <GeoJSON ref={mapRef} data={epciContours as Any} style={epciStyle} />
