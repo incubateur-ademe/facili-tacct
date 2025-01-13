@@ -60,7 +60,7 @@ export const cards = {
       titre: 'Mettre en récit mon territoire pour engager',
       tag: 'Article',
       description:
-        '« L’humanité est une espèce fabulatrice qui, en se racontant des histoires de plus en plus complexes, développe des capacités de coopération » - Yval Noah Harrari ; Découvrez la mise en récit.',
+        '« L’humanité est une espèce fabulatrice qui, en se racontant des histoires de plus en plus complexes, développe des capacités de coopération » - Yuval Noah Harrari ; Découvrez la mise en récit.',
       link: '/ressources/articles'
     },
     {
@@ -228,7 +228,7 @@ export const cards = {
         "Vous n'avez pas de diagnostic"
       ],
       titre:
-        'Sensibiliser à l’ACC : les AdACC (Les ateliers de l’adaptation au changement climatique)',
+        'Sensibiliser à l’adaptation : les AdACC (Ateliers de l’Adaptation au Changement Climatique)',
       tag: 'Article',
       description:
         'La sensibilisation, un préalable à la mobilisation ? Retour d’expérience de Sarah Clamens avec la mise en œuvre des Ateliers de l’Adaptation au Changement Climatique à la CA de Saintes.',
@@ -240,7 +240,7 @@ export const cards = {
         'Vous voulez réviser un diagnostic connu',
         "Vous n'avez pas de diagnostic"
       ],
-      titre: 'ClimaStory, une cartographie pour sensibiliser',
+      titre: 'ClimaSTORY, une cartographie pour sensibiliser',
       tag: 'Article',
       description:
         'Approcher l’adaptation au changement climatique via une carte du territoire, fictive ou non : une manière sensible d’aborder le sujet.',
