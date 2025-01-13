@@ -363,16 +363,8 @@ export type ConsommationNAF = {
 
 export type EtatCoursDeau = {
   pk: number;
-  code_eu_md: string;
   name: string;
-  longueur: number | null;
-  statut: string;
-  ordre: number | null;
+  longueur: number;
   etateco: string | null;
-  qmoyaval: number | null;
-  distmer: number | null;
-  distsrce: number | null;
-  gid: number;
-  annee: string;
   geometry: string;
 };

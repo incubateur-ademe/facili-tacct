@@ -51,16 +51,20 @@ fileignoreconfig:
   checksum: 295dd639ded011fd7360e67ea9d9d10c46161aa7d33e0edf785e524ce6e0ac37
 - filename: src/components/charts/gestionRisques/BarChartCatnat.tsx
   checksum: 0be5d117f823fc580b08501ef830c361486ea010de90ccad470b7f18bfe3252f
-- filename: src/generated/client/package.json
-  checksum: f8ea7f590297abdbdd1581c4771c2264562121a7ab492c228760809ac45982d4
-- filename: src/generated/client/edge.js
-  checksum: 82d5b4ce904fedf67194ddb14ff8d6325ce540b3b42b66d15c52c8e57ecca21e
-- filename: src/generated/client/index.js
-  checksum: 2705ac7c5605e616bc0223c5eda3e7799f3cdc57a03df73465d7422122a2f128
 - filename: src/components/maps/mapEtatCoursDeau.tsx
   checksum: c82136ee80408a2be2eca7eea79549d837c51f5318e40b40540c300d31d609b2
-- filename: src/generated/client/index.d.ts
-  checksum: 77ff7bbd9e21ece0b6794bb77614441ec23708e2ca84d96bce0f217126e957df
 - filename: src/components/themes/inconfortThermique/vegetalisation.tsx
   checksum: b2856549c693ae7e45376bea391b750d5fbdb7d1832868d881ca33454510e7b2
+- filename: src/generated/client/index-browser.js
+  checksum: a5058ab0f4a7d4960cb840db4fa2c84f150e036d9f773e2ef973881b98d5585b
+- filename: src/generated/client/wasm.js
+  checksum: 5966d89fbfff8bc5a50d58fa7df5483c8cae9b76df9e99c55a05844d2546e374
+- filename: src/generated/client/package.json
+  checksum: 0e0f65cbd9f5a39ca1cfabf5a339b05734ba601e9fd72034331a31f4b8719055
+- filename: src/generated/client/index.d.ts
+  checksum: 255b7d51d7eac8b079517cbd34aba20444a5f7afafe7799fd4717a17c55549bf
+- filename: src/generated/client/edge.js
+  checksum: 536db038c1e5358fd56914a9afc71cd66f8358342b583c6b98da9643d11416f3
+- filename: src/generated/client/index.js
+  checksum: 855393eea8b6e53a10b26520f01b91665384d96199b54912adace6b11459478c
 version: ""

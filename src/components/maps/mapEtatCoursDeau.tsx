@@ -4,9 +4,17 @@ import { EpciContoursDto, EtatCoursDeauDto } from '@/lib/dto';
 import { CarteCommunes } from '@/lib/postgres/models';
 import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
 import { Any } from '@/lib/utils/types';
-import { LatLngExpression, StyleFunction } from 'leaflet';
+import { Feature } from 'geojson';
+import {
+  FeatureGroup,
+  LatLngExpression,
+  Layer,
+  LeafletMouseEventHandlerFn,
+  StyleFunction
+} from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useRef } from 'react';
+import { useStyles } from 'tss-react/dsfr';
 
 const getCentroid = (arr: number[][]) => {
   return arr?.reduce(
@@ -23,6 +31,7 @@ export const MapEtatCoursDeau = (props: {
   carteCommunes: CarteCommunes | undefined;
 }) => {
   const { etatCoursDeau, epciContours, carteCommunes } = props;
+  const css = useStyles();
   const mapRef = useRef(null);
   const centerCoord: number[] = carteCommunes
     ? carteCommunes?.coordinates.split(',').map(Number)
@@ -64,6 +73,43 @@ export const MapEtatCoursDeau = (props: {
     };
   };
 
+  const mouseOnHandler: LeafletMouseEventHandlerFn = (e) => {
+    const layer = e.target as FeatureGroup<EtatCoursDeauDto['properties']>;
+    const coursDeau =
+      layer.feature && 'properties' in layer.feature
+        ? layer.feature.properties.name
+        : undefined;
+    layer.setStyle({
+      weight: 10
+      // color: "transpanrent"
+    });
+    layer.bindTooltip(coursDeau as string),
+      {
+        direction: 'center',
+        opacity: 0.97
+      };
+    layer.openTooltip();
+    layer.bringToFront();
+  };
+
+  //make style after hover disappear
+  const mouseOutHandler: LeafletMouseEventHandlerFn = (e) => {
+    const layer = e.target as FeatureGroup<EtatCoursDeauDto['properties']>;
+    layer.setStyle({
+      weight: 2.5,
+      // color: getColor(layer.feature?.properties.etateco),
+      fillOpacity: 0.95
+    });
+    layer.closeTooltip();
+  };
+
+  const onEachFeature = (feature: Feature<Any>, layer: Layer) => {
+    layer.on({
+      mouseover: mouseOnHandler,
+      mouseout: mouseOutHandler
+    });
+  };
+
   return (
     <MapContainer
       center={
@@ -73,7 +119,7 @@ export const MapEtatCoursDeau = (props: {
       }
       zoom={10}
       ref={mapRef}
-      style={{ height: '500px', width: '100%' }}
+      style={{ height: '500px', width: '100%', cursor: 'pointer' }}
       attributionControl={false}
       zoomControl={false}
       minZoom={9}
@@ -84,11 +130,23 @@ export const MapEtatCoursDeau = (props: {
         url="https://tile.jawg.io/jawg-sunny/{z}/{x}/{y}{r}.png?access-token=MBbcKi3EyFqyyHvvHVbfnE4iOJ34FiUs1yWbVID476VAReeeO0NdrKWg6FljGBIC"
       />
       {/* <TileLayer
-            attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
-          /> */}
-      <GeoJSON ref={mapRef} data={etatCoursDeau as Any} style={style} />
-      <GeoJSON ref={mapRef} data={epciContours as Any} style={epciStyle} />
+        attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+        /> */}
+      <style>
+        {`
+        .leaflet-interactive {
+        cursor: pointer !important;
+        }
+      `}
+        <GeoJSON ref={mapRef} data={epciContours as Any} style={epciStyle} />
+        <GeoJSON
+          ref={mapRef}
+          data={etatCoursDeau as Any}
+          style={style}
+          onEachFeature={onEachFeature}
+        />
+      </style>
     </MapContainer>
   );
 };
