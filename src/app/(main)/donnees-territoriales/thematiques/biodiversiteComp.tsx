@@ -176,6 +176,10 @@ const BiodiversiteComp = ({
                 titre="Surfaces en bio"
               />
             )
+          },
+          {
+            tabId: "État des cours d'eau",
+            label: "État des cours d'eau"
           }
         ]}
         onTabChange={setSelectedTabId}
