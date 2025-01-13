@@ -478,7 +478,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 6.1.0
-   * Query Engine version: 11f085a2012c0f4778414c8db2651556ee0ef959
+   * Query Engine version: 4123509d24aa4dede1e864b46351bf2790323b69
    */
   export type PrismaVersion = {
     client: string;
@@ -21917,132 +21917,64 @@ export namespace Prisma {
   export type Etat_cours_d_eauAvgAggregateOutputType = {
     pk: number | null;
     longueur: number | null;
-    ordre: number | null;
-    qmoyaval: number | null;
-    distmer: number | null;
-    distsrce: number | null;
-    gid: number | null;
   };
 
   export type Etat_cours_d_eauSumAggregateOutputType = {
     pk: number | null;
     longueur: number | null;
-    ordre: number | null;
-    qmoyaval: number | null;
-    distmer: number | null;
-    distsrce: number | null;
-    gid: bigint | null;
   };
 
   export type Etat_cours_d_eauMinAggregateOutputType = {
     pk: number | null;
-    code_eu_md: string | null;
     name: string | null;
     longueur: number | null;
-    statut: string | null;
-    ordre: number | null;
     etateco: string | null;
-    qmoyaval: number | null;
-    distmer: number | null;
-    distsrce: number | null;
-    gid: bigint | null;
-    annee: string | null;
   };
 
   export type Etat_cours_d_eauMaxAggregateOutputType = {
     pk: number | null;
-    code_eu_md: string | null;
     name: string | null;
     longueur: number | null;
-    statut: string | null;
-    ordre: number | null;
     etateco: string | null;
-    qmoyaval: number | null;
-    distmer: number | null;
-    distsrce: number | null;
-    gid: bigint | null;
-    annee: string | null;
   };
 
   export type Etat_cours_d_eauCountAggregateOutputType = {
     pk: number;
-    code_eu_md: number;
     name: number;
     longueur: number;
-    statut: number;
-    ordre: number;
     etateco: number;
-    qmoyaval: number;
-    distmer: number;
-    distsrce: number;
-    gid: number;
-    annee: number;
     _all: number;
   };
 
   export type Etat_cours_d_eauAvgAggregateInputType = {
     pk?: true;
     longueur?: true;
-    ordre?: true;
-    qmoyaval?: true;
-    distmer?: true;
-    distsrce?: true;
-    gid?: true;
   };
 
   export type Etat_cours_d_eauSumAggregateInputType = {
     pk?: true;
     longueur?: true;
-    ordre?: true;
-    qmoyaval?: true;
-    distmer?: true;
-    distsrce?: true;
-    gid?: true;
   };
 
   export type Etat_cours_d_eauMinAggregateInputType = {
     pk?: true;
-    code_eu_md?: true;
     name?: true;
     longueur?: true;
-    statut?: true;
-    ordre?: true;
     etateco?: true;
-    qmoyaval?: true;
-    distmer?: true;
-    distsrce?: true;
-    gid?: true;
-    annee?: true;
   };
 
   export type Etat_cours_d_eauMaxAggregateInputType = {
     pk?: true;
-    code_eu_md?: true;
     name?: true;
     longueur?: true;
-    statut?: true;
-    ordre?: true;
     etateco?: true;
-    qmoyaval?: true;
-    distmer?: true;
-    distsrce?: true;
-    gid?: true;
-    annee?: true;
   };
 
   export type Etat_cours_d_eauCountAggregateInputType = {
     pk?: true;
-    code_eu_md?: true;
     name?: true;
     longueur?: true;
-    statut?: true;
-    ordre?: true;
     etateco?: true;
-    qmoyaval?: true;
-    distmer?: true;
-    distsrce?: true;
-    gid?: true;
-    annee?: true;
     _all?: true;
   };
 
@@ -22143,17 +22075,9 @@ export namespace Prisma {
 
   export type Etat_cours_d_eauGroupByOutputType = {
     pk: number;
-    code_eu_md: string;
     name: string;
-    longueur: number | null;
-    statut: string | null;
-    ordre: number | null;
+    longueur: number;
     etateco: string | null;
-    qmoyaval: number | null;
-    distmer: number | null;
-    distsrce: number | null;
-    gid: bigint;
-    annee: string;
     _count: Etat_cours_d_eauCountAggregateOutputType | null;
     _avg: Etat_cours_d_eauAvgAggregateOutputType | null;
     _sum: Etat_cours_d_eauSumAggregateOutputType | null;
@@ -22181,34 +22105,18 @@ export namespace Prisma {
   > = $Extensions.GetSelect<
     {
       pk?: boolean;
-      code_eu_md?: boolean;
       name?: boolean;
       longueur?: boolean;
-      statut?: boolean;
-      ordre?: boolean;
       etateco?: boolean;
-      qmoyaval?: boolean;
-      distmer?: boolean;
-      distsrce?: boolean;
-      gid?: boolean;
-      annee?: boolean;
     },
     ExtArgs['result']['etat_cours_d_eau']
   >;
 
   export type etat_cours_d_eauSelectScalar = {
     pk?: boolean;
-    code_eu_md?: boolean;
     name?: boolean;
     longueur?: boolean;
-    statut?: boolean;
-    ordre?: boolean;
     etateco?: boolean;
-    qmoyaval?: boolean;
-    distmer?: boolean;
-    distsrce?: boolean;
-    gid?: boolean;
-    annee?: boolean;
   };
 
   export type $etat_cours_d_eauPayload<
@@ -22219,17 +22127,9 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<
       {
         pk: number;
-        code_eu_md: string;
         name: string;
-        longueur: number | null;
-        statut: string | null;
-        ordre: number | null;
+        longueur: number;
         etateco: string | null;
-        qmoyaval: number | null;
-        distmer: number | null;
-        distsrce: number | null;
-        gid: bigint;
-        annee: string;
       },
       ExtArgs['result']['etat_cours_d_eau']
     >;
@@ -22646,17 +22546,9 @@ export namespace Prisma {
    */
   interface etat_cours_d_eauFieldRefs {
     readonly pk: FieldRef<'etat_cours_d_eau', 'Int'>;
-    readonly code_eu_md: FieldRef<'etat_cours_d_eau', 'String'>;
     readonly name: FieldRef<'etat_cours_d_eau', 'String'>;
     readonly longueur: FieldRef<'etat_cours_d_eau', 'Float'>;
-    readonly statut: FieldRef<'etat_cours_d_eau', 'String'>;
-    readonly ordre: FieldRef<'etat_cours_d_eau', 'Float'>;
     readonly etateco: FieldRef<'etat_cours_d_eau', 'String'>;
-    readonly qmoyaval: FieldRef<'etat_cours_d_eau', 'Float'>;
-    readonly distmer: FieldRef<'etat_cours_d_eau', 'Float'>;
-    readonly distsrce: FieldRef<'etat_cours_d_eau', 'Float'>;
-    readonly gid: FieldRef<'etat_cours_d_eau', 'BigInt'>;
-    readonly annee: FieldRef<'etat_cours_d_eau', 'String'>;
   }
 
   // Custom InputTypes
@@ -23338,17 +23230,9 @@ export namespace Prisma {
 
   export const Etat_cours_d_eauScalarFieldEnum: {
     pk: 'pk';
-    code_eu_md: 'code_eu_md';
     name: 'name';
     longueur: 'longueur';
-    statut: 'statut';
-    ordre: 'ordre';
     etateco: 'etateco';
-    qmoyaval: 'qmoyaval';
-    distmer: 'distmer';
-    distsrce: 'distsrce';
-    gid: 'gid';
-    annee: 'annee';
   };
 
   export type Etat_cours_d_eauScalarFieldEnum =
@@ -26173,32 +26057,16 @@ export namespace Prisma {
     OR?: etat_cours_d_eauWhereInput[];
     NOT?: etat_cours_d_eauWhereInput | etat_cours_d_eauWhereInput[];
     pk?: IntFilter<'etat_cours_d_eau'> | number;
-    code_eu_md?: StringFilter<'etat_cours_d_eau'> | string;
     name?: StringFilter<'etat_cours_d_eau'> | string;
-    longueur?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
-    statut?: StringNullableFilter<'etat_cours_d_eau'> | string | null;
-    ordre?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
+    longueur?: FloatFilter<'etat_cours_d_eau'> | number;
     etateco?: StringNullableFilter<'etat_cours_d_eau'> | string | null;
-    qmoyaval?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
-    distmer?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
-    distsrce?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
-    gid?: BigIntFilter<'etat_cours_d_eau'> | bigint | number;
-    annee?: StringFilter<'etat_cours_d_eau'> | string;
   };
 
   export type etat_cours_d_eauOrderByWithRelationInput = {
     pk?: SortOrder;
-    code_eu_md?: SortOrder;
     name?: SortOrder;
-    longueur?: SortOrderInput | SortOrder;
-    statut?: SortOrderInput | SortOrder;
-    ordre?: SortOrderInput | SortOrder;
+    longueur?: SortOrder;
     etateco?: SortOrderInput | SortOrder;
-    qmoyaval?: SortOrderInput | SortOrder;
-    distmer?: SortOrderInput | SortOrder;
-    distsrce?: SortOrderInput | SortOrder;
-    gid?: SortOrder;
-    annee?: SortOrder;
   };
 
   export type etat_cours_d_eauWhereUniqueInput = Prisma.AtLeast<
@@ -26207,34 +26075,18 @@ export namespace Prisma {
       AND?: etat_cours_d_eauWhereInput | etat_cours_d_eauWhereInput[];
       OR?: etat_cours_d_eauWhereInput[];
       NOT?: etat_cours_d_eauWhereInput | etat_cours_d_eauWhereInput[];
-      code_eu_md?: StringFilter<'etat_cours_d_eau'> | string;
       name?: StringFilter<'etat_cours_d_eau'> | string;
-      longueur?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
-      statut?: StringNullableFilter<'etat_cours_d_eau'> | string | null;
-      ordre?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
+      longueur?: FloatFilter<'etat_cours_d_eau'> | number;
       etateco?: StringNullableFilter<'etat_cours_d_eau'> | string | null;
-      qmoyaval?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
-      distmer?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
-      distsrce?: FloatNullableFilter<'etat_cours_d_eau'> | number | null;
-      gid?: BigIntFilter<'etat_cours_d_eau'> | bigint | number;
-      annee?: StringFilter<'etat_cours_d_eau'> | string;
     },
     'pk'
   >;
 
   export type etat_cours_d_eauOrderByWithAggregationInput = {
     pk?: SortOrder;
-    code_eu_md?: SortOrder;
     name?: SortOrder;
-    longueur?: SortOrderInput | SortOrder;
-    statut?: SortOrderInput | SortOrder;
-    ordre?: SortOrderInput | SortOrder;
+    longueur?: SortOrder;
     etateco?: SortOrderInput | SortOrder;
-    qmoyaval?: SortOrderInput | SortOrder;
-    distmer?: SortOrderInput | SortOrder;
-    distsrce?: SortOrderInput | SortOrder;
-    gid?: SortOrder;
-    annee?: SortOrder;
     _count?: etat_cours_d_eauCountOrderByAggregateInput;
     _avg?: etat_cours_d_eauAvgOrderByAggregateInput;
     _max?: etat_cours_d_eauMaxOrderByAggregateInput;
@@ -26251,38 +26103,12 @@ export namespace Prisma {
       | etat_cours_d_eauScalarWhereWithAggregatesInput
       | etat_cours_d_eauScalarWhereWithAggregatesInput[];
     pk?: IntWithAggregatesFilter<'etat_cours_d_eau'> | number;
-    code_eu_md?: StringWithAggregatesFilter<'etat_cours_d_eau'> | string;
     name?: StringWithAggregatesFilter<'etat_cours_d_eau'> | string;
-    longueur?:
-      | FloatNullableWithAggregatesFilter<'etat_cours_d_eau'>
-      | number
-      | null;
-    statut?:
-      | StringNullableWithAggregatesFilter<'etat_cours_d_eau'>
-      | string
-      | null;
-    ordre?:
-      | FloatNullableWithAggregatesFilter<'etat_cours_d_eau'>
-      | number
-      | null;
+    longueur?: FloatWithAggregatesFilter<'etat_cours_d_eau'> | number;
     etateco?:
       | StringNullableWithAggregatesFilter<'etat_cours_d_eau'>
       | string
       | null;
-    qmoyaval?:
-      | FloatNullableWithAggregatesFilter<'etat_cours_d_eau'>
-      | number
-      | null;
-    distmer?:
-      | FloatNullableWithAggregatesFilter<'etat_cours_d_eau'>
-      | number
-      | null;
-    distsrce?:
-      | FloatNullableWithAggregatesFilter<'etat_cours_d_eau'>
-      | number
-      | null;
-    gid?: BigIntWithAggregatesFilter<'etat_cours_d_eau'> | bigint | number;
-    annee?: StringWithAggregatesFilter<'etat_cours_d_eau'> | string;
   };
 
   export type inconfort_thermiqueCreateInput = {
@@ -28849,61 +28675,29 @@ export namespace Prisma {
   };
 
   export type etat_cours_d_eauUpdateInput = {
-    code_eu_md?: StringFieldUpdateOperationsInput | string;
     name?: StringFieldUpdateOperationsInput | string;
-    longueur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    statut?: NullableStringFieldUpdateOperationsInput | string | null;
-    ordre?: NullableFloatFieldUpdateOperationsInput | number | null;
+    longueur?: FloatFieldUpdateOperationsInput | number;
     etateco?: NullableStringFieldUpdateOperationsInput | string | null;
-    qmoyaval?: NullableFloatFieldUpdateOperationsInput | number | null;
-    distmer?: NullableFloatFieldUpdateOperationsInput | number | null;
-    distsrce?: NullableFloatFieldUpdateOperationsInput | number | null;
-    gid?: BigIntFieldUpdateOperationsInput | bigint | number;
-    annee?: StringFieldUpdateOperationsInput | string;
   };
 
   export type etat_cours_d_eauUncheckedUpdateInput = {
     pk?: IntFieldUpdateOperationsInput | number;
-    code_eu_md?: StringFieldUpdateOperationsInput | string;
     name?: StringFieldUpdateOperationsInput | string;
-    longueur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    statut?: NullableStringFieldUpdateOperationsInput | string | null;
-    ordre?: NullableFloatFieldUpdateOperationsInput | number | null;
+    longueur?: FloatFieldUpdateOperationsInput | number;
     etateco?: NullableStringFieldUpdateOperationsInput | string | null;
-    qmoyaval?: NullableFloatFieldUpdateOperationsInput | number | null;
-    distmer?: NullableFloatFieldUpdateOperationsInput | number | null;
-    distsrce?: NullableFloatFieldUpdateOperationsInput | number | null;
-    gid?: BigIntFieldUpdateOperationsInput | bigint | number;
-    annee?: StringFieldUpdateOperationsInput | string;
   };
 
   export type etat_cours_d_eauUpdateManyMutationInput = {
-    code_eu_md?: StringFieldUpdateOperationsInput | string;
     name?: StringFieldUpdateOperationsInput | string;
-    longueur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    statut?: NullableStringFieldUpdateOperationsInput | string | null;
-    ordre?: NullableFloatFieldUpdateOperationsInput | number | null;
+    longueur?: FloatFieldUpdateOperationsInput | number;
     etateco?: NullableStringFieldUpdateOperationsInput | string | null;
-    qmoyaval?: NullableFloatFieldUpdateOperationsInput | number | null;
-    distmer?: NullableFloatFieldUpdateOperationsInput | number | null;
-    distsrce?: NullableFloatFieldUpdateOperationsInput | number | null;
-    gid?: BigIntFieldUpdateOperationsInput | bigint | number;
-    annee?: StringFieldUpdateOperationsInput | string;
   };
 
   export type etat_cours_d_eauUncheckedUpdateManyInput = {
     pk?: IntFieldUpdateOperationsInput | number;
-    code_eu_md?: StringFieldUpdateOperationsInput | string;
     name?: StringFieldUpdateOperationsInput | string;
-    longueur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    statut?: NullableStringFieldUpdateOperationsInput | string | null;
-    ordre?: NullableFloatFieldUpdateOperationsInput | number | null;
+    longueur?: FloatFieldUpdateOperationsInput | number;
     etateco?: NullableStringFieldUpdateOperationsInput | string | null;
-    qmoyaval?: NullableFloatFieldUpdateOperationsInput | number | null;
-    distmer?: NullableFloatFieldUpdateOperationsInput | number | null;
-    distsrce?: NullableFloatFieldUpdateOperationsInput | number | null;
-    gid?: BigIntFieldUpdateOperationsInput | bigint | number;
-    annee?: StringFieldUpdateOperationsInput | string;
   };
 
   export type BigIntFilter<$PrismaModel = never> = {
@@ -30770,67 +30564,33 @@ export namespace Prisma {
 
   export type etat_cours_d_eauCountOrderByAggregateInput = {
     pk?: SortOrder;
-    code_eu_md?: SortOrder;
     name?: SortOrder;
     longueur?: SortOrder;
-    statut?: SortOrder;
-    ordre?: SortOrder;
     etateco?: SortOrder;
-    qmoyaval?: SortOrder;
-    distmer?: SortOrder;
-    distsrce?: SortOrder;
-    gid?: SortOrder;
-    annee?: SortOrder;
   };
 
   export type etat_cours_d_eauAvgOrderByAggregateInput = {
     pk?: SortOrder;
     longueur?: SortOrder;
-    ordre?: SortOrder;
-    qmoyaval?: SortOrder;
-    distmer?: SortOrder;
-    distsrce?: SortOrder;
-    gid?: SortOrder;
   };
 
   export type etat_cours_d_eauMaxOrderByAggregateInput = {
     pk?: SortOrder;
-    code_eu_md?: SortOrder;
     name?: SortOrder;
     longueur?: SortOrder;
-    statut?: SortOrder;
-    ordre?: SortOrder;
     etateco?: SortOrder;
-    qmoyaval?: SortOrder;
-    distmer?: SortOrder;
-    distsrce?: SortOrder;
-    gid?: SortOrder;
-    annee?: SortOrder;
   };
 
   export type etat_cours_d_eauMinOrderByAggregateInput = {
     pk?: SortOrder;
-    code_eu_md?: SortOrder;
     name?: SortOrder;
     longueur?: SortOrder;
-    statut?: SortOrder;
-    ordre?: SortOrder;
     etateco?: SortOrder;
-    qmoyaval?: SortOrder;
-    distmer?: SortOrder;
-    distsrce?: SortOrder;
-    gid?: SortOrder;
-    annee?: SortOrder;
   };
 
   export type etat_cours_d_eauSumOrderByAggregateInput = {
     pk?: SortOrder;
     longueur?: SortOrder;
-    ordre?: SortOrder;
-    qmoyaval?: SortOrder;
-    distmer?: SortOrder;
-    distsrce?: SortOrder;
-    gid?: SortOrder;
   };
 
   export type BigIntFieldUpdateOperationsInput = {
