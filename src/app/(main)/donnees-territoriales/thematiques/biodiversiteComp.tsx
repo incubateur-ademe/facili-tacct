@@ -15,10 +15,8 @@ import {
   CarteCommunes,
   ConsommationNAF,
   EpciContours,
-  EtatCoursDeau,
   SurfacesProtegeesByCol
 } from '@/lib/postgres/models';
-import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
 import { TabTooltip } from '@/lib/utils/TabTooltip';
 import dynamic from 'next/dynamic';
 import { useStyles } from 'tss-react/dsfr';
@@ -99,20 +97,6 @@ const allComps = [
         carteCommunes={carteCommunes}
       />
     )
-  },
-  {
-    titre: "État des cours d'eau",
-    Component: ({
-      etatCoursDeau,
-      epciContours,
-      carteCommunes
-    }: Props & { activeDataTab: string; etatCoursDeau: EtatCoursDeau[] }) => (
-      <DynamicCoursDeau
-        etatCoursDeau={etatCoursDeau}
-        epciContours={epciContours}
-        carteCommunes={carteCommunes}
-      />
-    )
   }
 ];
 
@@ -127,7 +111,6 @@ const BiodiversiteComp = ({
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Surfaces protégées');
   const [selectedSubTab, setSelectedSubTab] = useState('Surfaces protégées');
-  const [etatCoursDeau, setEtatCoursDeau] = useState<EtatCoursDeau[]>();
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
   const { css } = useStyles();
@@ -136,10 +119,6 @@ const BiodiversiteComp = ({
     setSelectedSubTab(
       data.filter((el) => el.facteur_sensibilite === selectedTabId)[0].titre
     );
-    void (async () => {
-      const temp = await GetEtatCoursDeau(codepci);
-      temp && codepci ? setEtatCoursDeau(temp) : void 0;
-    })();
   }, [selectedTabId, codepci]);
 
   return (
@@ -176,10 +155,6 @@ const BiodiversiteComp = ({
                 titre="Surfaces en bio"
               />
             )
-          },
-          {
-            tabId: "État des cours d'eau",
-            label: "État des cours d'eau"
           }
         ]}
         onTabChange={setSelectedTabId}
@@ -246,7 +221,6 @@ const BiodiversiteComp = ({
                     surfacesProtegees={surfacesProtegees}
                     consommationNAF={consommationNAF}
                     epciContours={epciContours}
-                    etatCoursDeau={etatCoursDeau || []}
                   />
                 );
               })()}

@@ -41,13 +41,13 @@ export const MapEtatCoursDeau = (props: {
     if (d === '1') {
       return '#0095C8';
     } else if (d === '2') {
-      return '#AFD018';
+      return '#00C190';
     } else if (d === '3') {
-      return '#FEE556';
+      return '#FFCF5E';
     } else if (d === '4') {
-      return '#FF9935';
+      return '#F66E19';
     } else if (d === '5') {
-      return '#D61E28';
+      return '#B5000E';
     } else {
       return '#9D9C9C';
     }
@@ -57,7 +57,7 @@ export const MapEtatCoursDeau = (props: {
     const typedFeature = feature as EtatCoursDeauDto;
     return {
       fillColor: getColor(typedFeature?.properties.etateco),
-      weight: 2.5,
+      weight: 2,
       opacity: 1,
       color: getColor(typedFeature?.properties.etateco),
       fillOpacity: 0.95
@@ -73,10 +73,13 @@ export const MapEtatCoursDeau = (props: {
     };
   };
 
-  const CustomTooltip = (coursDeau: string) => {
+  const CustomTooltip = (coursDeau: string, color: string) => {
     return `
       <div style="padding: 0.5rem">
-        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0; gap: 0.5rem; align-items: center">
+          <div
+            style="background-color: ${color}; width: 1rem; height: 1rem; border-radius: 2px; border: 0.5px solid #161616"
+          ></div>
           <p style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; margin: 0">${coursDeau}</p> 
         </div>
       </div>
@@ -92,11 +95,14 @@ export const MapEtatCoursDeau = (props: {
     layer.setStyle({
       weight: 7
     });
-    // console.log("e.originalEvent", e.originalEvent);
-    layer.bindTooltip(CustomTooltip(coursDeau as string), {
-      direction: 'center',
-      offset: [0, -50]
-    });
+    // console.log("e.originalEvent", e.originalEvent, e.target.options.color);
+    layer.bindTooltip(
+      CustomTooltip(coursDeau as string, e.target.options.color),
+      {
+        direction: e.originalEvent.offsetY > 250 ? 'top' : 'bottom',
+        offset: e.originalEvent.offsetX > 400 ? [-75, 0] : [75, 0]
+      }
+    );
     layer.openTooltip();
     layer.bringToFront();
   };
@@ -105,7 +111,7 @@ export const MapEtatCoursDeau = (props: {
   const mouseOutHandler: LeafletMouseEventHandlerFn = (e) => {
     const layer = e.target as FeatureGroup<EtatCoursDeauDto['properties']>;
     layer.setStyle({
-      weight: 2.5,
+      weight: 2,
       // color: getColor(layer.feature?.properties.etateco),
       fillOpacity: 0.95
     });
@@ -132,16 +138,16 @@ export const MapEtatCoursDeau = (props: {
       attributionControl={false}
       zoomControl={false}
       minZoom={9}
-      dragging={false}
+      // dragging={false}
     >
-      <TileLayer
+      {/* <TileLayer
         attribution='<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://tile.jawg.io/jawg-sunny/{z}/{x}/{y}{r}.png?access-token=MBbcKi3EyFqyyHvvHVbfnE4iOJ34FiUs1yWbVID476VAReeeO0NdrKWg6FljGBIC"
-      />
-      {/* <TileLayer
+      /> */}
+      <TileLayer
         attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
-        /> */}
+      />
       <style>
         {`
         .leaflet-interactive {
@@ -149,6 +155,12 @@ export const MapEtatCoursDeau = (props: {
         }
         .leaflet-tooltip {
           opacity: 0.95 !important;
+        }
+        .leaflet-tooltip-top:before {
+          content: none !important;
+        }
+        .leaflet-tooltip-bottom:before {
+          content: none !important;
         }
       `}
         <GeoJSON ref={mapRef} data={epciContours as Any} style={epciStyle} />
