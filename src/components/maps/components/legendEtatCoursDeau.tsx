@@ -5,10 +5,10 @@ import styles from './mapsComponents.module.scss';
 
 const colors: string[] = [
   '#0095C8',
-  '#AFD018',
-  '#FEE556',
-  '#FF9935',
-  '#D61E28',
+  '#00C190',
+  '#FFCF5E',
+  '#F66E19',
+  '#B5000E',
   '#9D9C9C'
 ];
 
