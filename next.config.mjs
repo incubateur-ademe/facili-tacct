@@ -73,6 +73,7 @@ const config = {
         serverActions: {
             allowedOrigins: ['*.beta.gouv.fr']
         }
+        // ppr: 'incremental'
     },
     eslint: {
         ignoreDuringBuilds: true
