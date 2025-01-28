@@ -1,6 +1,7 @@
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { LegendEtatCoursDeau } from '@/components/maps/components/legendEtatCoursDeau';
 import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
+import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EpciContoursMapper } from '@/lib/mapper/epci';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
 import {
@@ -23,12 +24,29 @@ const EtatQualiteCoursDeau = (props: {
   const codepci = searchParams.get('codepci')!;
   const etatCoursDeauMap = etatCoursDeau.map(EtatCoursDeauMapper);
   const epciContoursMap = epciContours.map(EpciContoursMapper);
-  const commune = carteCommunes.find(
-    (commune) => commune.code_commune === codgeo
-  );
+  const carteCommunesMap = carteCommunes.map(CommunesIndicateursMapper);
   const title = (
     <>
-      <div></div>
+      <div>
+        En application de la directive-cadre européenne sur l’eau, l’état
+        écologique global de chaque rivière est évalué tous les 6 ans par les
+        agences de l’eau, à partir de relevés sur 3 ans (N-1, N-2, N-3) issus
+        des stations de mesure de la qualité de l’eau (par modélisation en leur
+        absence). Plusieurs critères concourent à cette évaluation :
+        <ul>
+          <li>température et acidité de l'eau,</li>
+          <li>bilan de l’oxygène,</li>
+          <li>hydro-morphologie du cours d’eau,</li>
+          <li>
+            présence de poissons, de plantes aquatiques, de microalgues, de
+            micropolluants, de nutriments (eutrophisation), etc.
+          </li>
+        </ul>
+        <p>
+          Attention, le bon état écologique d’une rivière ne signifie pas une
+          qualité sanitaire suffisante pour s’y baigner.
+        </p>
+      </div>
       <br></br>
     </>
   );
@@ -46,15 +64,23 @@ const EtatQualiteCoursDeau = (props: {
             </div>
             <div className="px-4">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-                diam
+                Seuls 43 % des cours d’eau français sont en bon état écologique.
+                Si les principaux facteurs de dégradation de la qualité des eaux
+                sont les pollutions (nitrates, pesticides) et les altérations
+                physiques des rivières (seuils et barrages, endiguement….), le
+                réchauffement climatique aggrave les déséquilibres en cours. La
+                hausse des températures et les sécheresses prolongées entraînent
+                la chute des débits, voire assecs, la prolifération d'espèces
+                exotiques envahissantes, la concentration des polluants
+                (massivement relâchés lors des crues) ; la hausse des
+                température de l’eau et l’ensoleillement sont des conditions
+                favorables à l’eutrophisation.
               </p>
-
-              <p>⇒</p>
-              <p>⇒</p>
               <p>
                 - - - - <br></br>
-                Plan National d'Adaptation au Changement Climatique (PNACC 3) :
+                L’objectif de la Directive Cadre sur l’Eau (2000) était
+                d’atteindre un bon état général des eaux d’ici 2027 : il semble
+                hors d’atteinte désormais.
               </p>
             </div>
           </div>
@@ -70,7 +96,7 @@ const EtatQualiteCoursDeau = (props: {
                 <MapEtatCoursDeau
                   etatCoursDeau={etatCoursDeauMap}
                   epciContours={epciContoursMap}
-                  carteCommunes={commune}
+                  carteCommunes={carteCommunesMap}
                 />
               </div>
               <div
