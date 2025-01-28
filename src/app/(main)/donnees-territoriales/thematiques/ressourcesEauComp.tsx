@@ -75,6 +75,7 @@ const RessourcesEauComp = ({
   const [etatCoursDeau, setEtatCoursDeau] = useState<EtatCoursDeau[]>();
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
+  const codgeo = searchParams.get('codgeo')!;
   const { isDark } = useIsDark();
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
@@ -98,7 +99,7 @@ const RessourcesEauComp = ({
       data.filter((el) => el.facteur_sensibilite === selectedTabId)[0].titre
     );
     void (async () => {
-      const temp = await GetEtatCoursDeau(codepci);
+      const temp = await GetEtatCoursDeau(codepci, codgeo);
       temp && codepci ? setEtatCoursDeau(temp) : void 0;
     })();
   }, [selectedTabId, codepci]);
