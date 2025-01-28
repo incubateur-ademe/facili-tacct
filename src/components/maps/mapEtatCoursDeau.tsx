@@ -1,7 +1,10 @@
 'use client';
 
-import { EpciContoursDto, EtatCoursDeauDto } from '@/lib/dto';
-import { CarteCommunes } from '@/lib/postgres/models';
+import {
+  CommunesIndicateursDto,
+  EpciContoursDto,
+  EtatCoursDeauDto
+} from '@/lib/dto';
 import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
 import { Any } from '@/lib/utils/types';
 import { Feature } from 'geojson';
@@ -13,8 +16,8 @@ import {
   StyleFunction
 } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
-import { useStyles } from 'tss-react/dsfr';
 
 const getCentroid = (arr: number[][]) => {
   return arr?.reduce(
@@ -28,13 +31,18 @@ const getCentroid = (arr: number[][]) => {
 export const MapEtatCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeauDto[];
   epciContours: EpciContoursDto[];
-  carteCommunes: CarteCommunes | undefined;
+  carteCommunes: CommunesIndicateursDto[];
 }) => {
   const { etatCoursDeau, epciContours, carteCommunes } = props;
-  const css = useStyles();
+  const searchParams = useSearchParams();
+  const codgeo = searchParams.get('codgeo')!;
+  const commune = carteCommunes.find(
+    (commune) => commune.properties.code_commune === codgeo
+  );
   const mapRef = useRef(null);
-  const centerCoord: number[] = carteCommunes
-    ? carteCommunes?.coordinates.split(',').map(Number)
+
+  const centerCoord: number[] = commune
+    ? commune.properties.coordinates.split(',').map(Number)
     : getCentroid(epciContours[0]?.geometry?.coordinates[0][0]);
 
   const getColor = (d: string | null) => {
@@ -64,10 +72,10 @@ export const MapEtatCoursDeau = (props: {
     };
   };
 
-  const epciStyle: StyleFunction<Any> = () => {
+  const territoireStyle: StyleFunction<Any> = (e) => {
     return {
-      weight: 1,
-      opacity: 1,
+      weight: e?.properties.code_commune === codgeo ? 2 : 0.5,
+      opacity: 0.9,
       color: '#161616',
       fillOpacity: 0
     };
@@ -128,17 +136,16 @@ export const MapEtatCoursDeau = (props: {
   return (
     <MapContainer
       center={
-        carteCommunes
+        commune
           ? (centerCoord as LatLngExpression)
           : [centerCoord[1], centerCoord[0]]
       }
-      zoom={10}
+      zoom={codgeo ? 12 : 10}
       ref={mapRef}
       style={{ height: '500px', width: '100%', cursor: 'pointer' }}
       attributionControl={false}
       zoomControl={false}
       minZoom={9}
-      // dragging={false}
     >
       {/* <TileLayer
         attribution='<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -163,7 +170,11 @@ export const MapEtatCoursDeau = (props: {
           content: none !important;
         }
       `}
-        <GeoJSON ref={mapRef} data={epciContours as Any} style={epciStyle} />
+        <GeoJSON
+          ref={mapRef}
+          data={carteCommunes as Any}
+          style={territoireStyle}
+        />
         <GeoJSON
           ref={mapRef}
           data={etatCoursDeau as Any}
