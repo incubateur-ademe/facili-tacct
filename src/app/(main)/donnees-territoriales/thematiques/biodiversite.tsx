@@ -8,6 +8,7 @@ import { GetAgricultureBio, GetBiodiversite } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/utils/themes';
 import dynamic from 'next/dynamic';
 import styles from '../donnees.module.scss';
+import BiodiversiteComp from './biodiversiteComp';
 
 const DynamicPageComp = dynamic(() => import('./biodiversiteComp'), {
   loading: () => <Loader />
@@ -24,18 +25,16 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
   const epciContours = await GetEpci(codepci);
 
   return (
-    <div>
-      <div className={styles.container}>
-        <DynamicPageComp
-          data={theme}
-          biodiversite={dbBiodiversite!}
-          carteCommunes={carteCommunes}
-          agricultureBio={dbAgricultureBio!}
-          surfacesProtegees={dbSurfacesProtegees}
-          consommationNAF={dbConsommationNAF}
-          epciContours={epciContours}
-        />
-      </div>
+    <div className={styles.container}>
+      <BiodiversiteComp
+        data={theme}
+        biodiversite={dbBiodiversite!}
+        carteCommunes={carteCommunes}
+        agricultureBio={dbAgricultureBio!}
+        surfacesProtegees={dbSurfacesProtegees}
+        consommationNAF={dbConsommationNAF}
+        epciContours={epciContours}
+      />
     </div>
   );
 };

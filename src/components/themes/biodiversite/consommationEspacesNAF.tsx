@@ -73,9 +73,11 @@ export const ConsommationEspacesNAF = (props: {
                 en outre à une homogénéisation de la biodiversité qui affecte la
                 résilience des milieux.
               </p>
-              <p>
-                La consommation d’ENAF a des conséquences dramatiques pour le
-                climat :
+              <div>
+                <p>
+                  La consommation d’ENAF a des conséquences dramatiques pour le
+                  climat :
+                </p>
                 <ul>
                   <li>
                     Les sols perdent leur rôle de puits de carbone et leur
@@ -90,7 +92,7 @@ export const ConsommationEspacesNAF = (props: {
                     épuratoires des milieux.
                   </li>
                 </ul>
-              </p>
+              </div>
               <p>
                 ⇒ 24 000 hectares par an d’espaces naturels, agricoles et
                 forestiers sont consommés depuis dix ans, soit l’équivalent de
