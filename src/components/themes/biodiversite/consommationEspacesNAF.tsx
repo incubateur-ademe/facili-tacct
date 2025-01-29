@@ -1,3 +1,5 @@
+'use client';
+
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';

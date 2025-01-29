@@ -8,14 +8,12 @@ import dynamic from 'next/dynamic';
 import styles from '../donnees.module.scss';
 
 const DynamicPageComp = dynamic(() => import('./inconfortThermiqueComp'), {
-  ssr: false,
   loading: () => <Loader />
 });
 
-const InconfortThermique = async (searchParams: SearchParams) => {
+const InconfortThermique = async (props: { searchParams: SearchParams }) => {
+  const { codepci, codgeo } = await props.searchParams;
   const theme = themes.inconfortThermique;
-  const codepci = searchParams.searchParams.codepci;
-  const codgeo = searchParams.searchParams.codgeo;
   const dbInconfortThermique = await GetInconfortThermiqueDepartment(codepci);
 
   const collectivite = codgeo

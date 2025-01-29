@@ -66,13 +66,9 @@ export const CardComp = ({
           href: route
         }}
         end={
-          <ul className="fr-badges-group">
-            <li>
-              <Badge noIcon severity={badgeSeverity}>
-                {badge}
-              </Badge>
-            </li>
-          </ul>
+          <Badge noIcon severity={badgeSeverity}>
+            {badge}
+          </Badge>
         }
         title={title}
         titleAs="h2"

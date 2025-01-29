@@ -83,22 +83,16 @@ export const HeaderComp = () => {
       }}
       quickAccessItems={[
         commune && codgeo ? (
-          <>
-            <Localisation libelle={commune} code={codgeo} />
-          </>
+          <Localisation libelle={commune} code={codgeo} />
         ) : epci && codepci ? (
-          <>
-            <Localisation libelle={epci} code={codepci} />
-          </>
+          <Localisation libelle={epci} code={codepci} />
         ) : null,
         params.includes('ressources') ? null : (
           <Button
             key="0"
             variant="outlined"
             href="/ressources"
-            startIcon={
-              <Image src={ressourcesIcon as StaticImageData} alt=""></Image>
-            }
+            startIcon={<Image src={ressourcesIcon as StaticImageData} alt="" />}
             sx={{
               textTransform: 'none',
               color: '#0063CB',
