@@ -11,17 +11,6 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './biodiversite.module.scss';
 
-const Filter = (
-  sp: SurfacesProtegeesByCol[],
-  filter: keyof SurfacesProtegeesByCol
-): number => {
-  const filtered = sp
-    .filter((sp) => Number(sp[filter]) !== 0)
-    .map((sp) => Number(sp[filter]))
-    .reduce((a, b) => a + b, 0);
-  return filtered;
-};
-
 const SurfacesProtegeesDataviz = (props: {
   surfacesProtegees: SurfacesProtegeesByCol[];
   carteCommunes: CarteCommunes[];

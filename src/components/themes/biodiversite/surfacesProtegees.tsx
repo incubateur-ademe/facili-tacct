@@ -18,6 +18,8 @@
 // espaces de protection contractuel : BIO    	réserves de biosphère
 // autres types d’espaces de protection : CELRL    	conservatoire du littoral et des rivages lacustres
 
+'use client';
+
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { CarteCommunes, SurfacesProtegeesByCol } from '@/lib/postgres/models';
 import { CustomTooltip } from '@/lib/utils/CalculTooltip';
@@ -47,16 +49,6 @@ const SurfacesProtegees = (props: {
   const filteredData = codgeo
     ? surfacesProtegees.filter((e) => e.code_geographique === codgeo)
     : surfacesProtegees;
-  // console.log("filteredData", filteredData.map((e) => {
-  //   return {
-  //     FOR_PRO: Number(e.FOR_PRO),
-  //     TOU_PRO: Number(e.TOU_PRO),
-  //     NATURA: Number(e.NATURA),
-  //     CELRL: Number(e.CELRL),
-  //     ZZZ: Number(e.ZZZ)
-  //   };
-  // }));
-  // console.log("surfaceTerritoire", surfaceTerritoire);
   const sommeSurfaces = filteredData
     .map((e) => {
       return {
@@ -80,8 +72,8 @@ const SurfacesProtegees = (props: {
 
   const title = (
     <div>
-      <p>
-        Les zones d’aires protégées prises en compte sont :
+      <div>
+        <p>Les zones d’aires protégées prises en compte sont :</p>
         <ul>
           <li>
             de nature réglementaire, dite “de protection forte” (cœur des parcs
@@ -102,7 +94,7 @@ const SurfacesProtegees = (props: {
             des sites d’inventaires patrimoniaux (ZNIEFF type 1 et 2, ZICO)
           </li>
         </ul>
-      </p>
+      </div>
     </div>
   );
 
