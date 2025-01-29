@@ -18,7 +18,7 @@ export const HtmlTooltipMousePosition = ({
   children,
   title
 }: {
-  children: ReactElement;
+  children: ReactElement<any>;
   title: ReactNode;
 }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
