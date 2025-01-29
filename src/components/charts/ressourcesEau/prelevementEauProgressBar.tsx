@@ -170,6 +170,7 @@ const PrelevementEauProgressBars = ({
                     </p>
                   </div>
                 }
+                key={index}
                 placement="top"
               >
                 <div key={index} className={styles.progressDataWrapper}>
@@ -219,6 +220,7 @@ const PrelevementEauProgressBars = ({
             alignContent: 'center',
             textAlign: 'center'
           }}
+          key="noData"
         >
           Aucun prélèvement en eau trouvé en 2020 pour cette collectivité :{' '}
           {collectivite}

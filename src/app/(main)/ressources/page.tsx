@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 };
 
 const Ressources = () => {
-  // const { css } = useStyles();
   return (
     <Container size="xl" className="mb-24">
       <Breadcrumb

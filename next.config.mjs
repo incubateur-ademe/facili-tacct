@@ -1,4 +1,4 @@
-import createMDX from '@next/mdx';
+import nextMDX from '@next/mdx';
 import { withSentryConfig } from '@sentry/nextjs';
 
 import packageJson from './package.json' assert { type: 'json' };
@@ -135,7 +135,7 @@ const config = {
     }
 };
 
-const withMDX = createMDX({
+const withMDX = nextMDX({
     extension: /\.mdx?$/,
     options: {
         //NextJs 15
