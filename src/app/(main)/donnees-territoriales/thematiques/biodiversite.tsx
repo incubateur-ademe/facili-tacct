@@ -10,14 +10,12 @@ import dynamic from 'next/dynamic';
 import styles from '../donnees.module.scss';
 
 const DynamicPageComp = dynamic(() => import('./biodiversiteComp'), {
-  ssr: false,
   loading: () => <Loader />
 });
 
-const Biodiversite = async (searchParams: SearchParams) => {
+const Biodiversite = async (props: { searchParams: SearchParams }) => {
   const theme = themes.biodiversite;
-  const codepci = searchParams.searchParams.codepci;
-  const codgeo = searchParams.searchParams.codgeo;
+  const { codepci } = await props.searchParams;
   const dbBiodiversite = await GetBiodiversite(codepci);
   const carteCommunes = await GetCommunes(codepci);
   const dbAgricultureBio = await GetAgricultureBio(codepci);
