@@ -7,18 +7,10 @@ export const metadata: Metadata = {
   description: 'Données territoriales'
 };
 
-type SearchParams = {
-  searchParams: Promise<{
-    codepci: string;
-    codgeo: string;
-    thematique: string;
-  }>;
-};
-
-const Page = async (searchParams: SearchParams) => {
+const Page = async (props: { searchParams: SearchParams }) => {
   return (
     <Container size="xl" className="mb-24">
-      <FilterThemes searchParams={await searchParams.searchParams} />
+      <FilterThemes {...props} />
     </Container>
   );
 };

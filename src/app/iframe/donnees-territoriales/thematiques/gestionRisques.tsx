@@ -10,14 +10,12 @@ import dynamic from 'next/dynamic';
 import styles from '../donnees.module.scss';
 
 const DynamicPageComp = dynamic(() => import('./gestionRisquesComp'), {
-  ssr: false,
   loading: () => <Loader />
 });
 
-const GestionRisques = async (searchParams: SearchParams) => {
+const GestionRisques = async (props: { searchParams: SearchParams }) => {
   const theme = themes.gestionRisques;
-  const codepci = searchParams.searchParams.codepci;
-  const codgeo = searchParams.searchParams.codgeo;
+  const { codepci, codgeo } = await props.searchParams;
   const dbGestionRisques = codgeo
     ? await GetGestionRisques(codgeo)
     : codepci

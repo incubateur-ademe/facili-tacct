@@ -1,6 +1,5 @@
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { Metadata } from 'next';
-import { Suspense } from 'react';
 import ArticleComp from './articles';
 
 export const metadata: Metadata = {
@@ -25,9 +24,7 @@ const Article = () => {
           }
         ]}
       />
-      <Suspense>
-        <ArticleComp />
-      </Suspense>
+      <ArticleComp />
     </div>
   );
 };

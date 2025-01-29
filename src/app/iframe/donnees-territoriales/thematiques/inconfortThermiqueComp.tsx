@@ -47,7 +47,6 @@ const DynamicVegetalisation = dynamic(
   () =>
     import('../../../../components/themes/inconfortThermique/vegetalisation'),
   {
-    ssr: false,
     loading: () => <Loader />
   }
 );

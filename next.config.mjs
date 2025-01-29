@@ -1,4 +1,4 @@
-import nextMDX from '@next/mdx';
+import createMDX from '@next/mdx';
 import { withSentryConfig } from '@sentry/nextjs';
 
 import packageJson from './package.json' assert { type: 'json' };
@@ -135,13 +135,13 @@ const config = {
     }
 };
 
-const withMDX = nextMDX({
-    extension: /\.mdx?$/,
-    options: {
-        //NextJs 15
-        remarkPlugins: [],
-        rehypePlugins: [['rehype-katex', { strict: true, throwOnError: true }]]
-    }
+const withMDX = createMDX({
+    extension: /\.mdx?$/
+    // options: {
+    //     //NextJs 15
+    //     remarkPlugins: [],
+    //     rehypePlugins: [['rehype-katex', { strict: true, throwOnError: true }]]
+    // }
 });
 
 export default withSentryConfig(withMDX(config), {
