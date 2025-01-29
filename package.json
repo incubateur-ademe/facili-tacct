@@ -58,6 +58,7 @@
     "react-leaflet-marker": "^2.1.1",
     "react-router-dom": "^6.23.1",
     "reactstrap": "^9.2.3",
+    "rehype-katex": "^7.0.1",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.0",
     "remark-mdx-frontmatter": "^4.0.0",
@@ -78,9 +79,9 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@typescript-eslint/parser": "8.0.0",
+    "@typescript-eslint/parser": "^8",
     "autoprefixer": "^10.4.16",
-    "eslint": "^8.55.0",
+    "eslint": "^9",
     "eslint-config-next": "^15",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -96,7 +97,7 @@
     "prisma": "^6.1.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
-    "typescript-eslint": "7.5.0"
+    "typescript-eslint": "^8"
   },
   "pnpm": {
     "overrides": {

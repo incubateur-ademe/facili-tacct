@@ -1,4 +1,4 @@
-import { Breadcrumb } from '@codegouvfr/react-dsfr/Breadcrumb';
+import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { type Metadata } from 'next';
 import { Container } from '../../../dsfr/server';
 import { Cards } from './cards';
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const Thematiques = () => {
   return (
-    <Container size="xl">
+    <Container size="xl" className="mb-24">
       <Breadcrumb
         currentPageLabel="Thématique"
         homeLinkProps={{
