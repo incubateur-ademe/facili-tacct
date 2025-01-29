@@ -20,7 +20,8 @@ const {
   warnOnce,
   defineDmmfProperty,
   Public,
-  getRuntime
+  getRuntime,
+  createParam
 } = require('./runtime/edge.js');
 
 const Prisma = {};
@@ -29,12 +30,12 @@ exports.Prisma = Prisma;
 exports.$Enums = {};
 
 /**
- * Prisma Client JS version: 6.1.0
- * Query Engine version: 4123509d24aa4dede1e864b46351bf2790323b69
+ * Prisma Client JS version: 6.3.0
+ * Query Engine version: acc0b9dd43eb689cbd20c9470515d719db10d0b0
  */
 Prisma.prismaVersion = {
-  client: '6.1.0',
-  engine: '4123509d24aa4dede1e864b46351bf2790323b69'
+  client: '6.3.0',
+  engine: 'acc0b9dd43eb689cbd20c9470515d719db10d0b0'
 };
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -492,7 +493,7 @@ const config = {
     },
     output: {
       value:
-        'C:\\Antoine\\BetaGouv\\Code\\facili-tacct\\facili-tacct\\src\\generated\\client',
+        'C:\\Antoine\\BetaGouv\\facili-tacct\\dev\\facili-tacct\\src\\generated\\client',
       fromEnvVar: null
     },
     config: {
@@ -511,7 +512,7 @@ const config = {
     ],
     previewFeatures: ['multiSchema'],
     sourceFilePath:
-      'C:\\Antoine\\BetaGouv\\Code\\facili-tacct\\facili-tacct\\prisma\\schema.prisma',
+      'C:\\Antoine\\BetaGouv\\facili-tacct\\dev\\facili-tacct\\prisma\\schema.prisma',
     isCustomOutput: true
   },
   relativeEnvPaths: {
@@ -519,11 +520,11 @@ const config = {
     schemaEnvPath: '../../../.env'
   },
   relativePath: '../../../prisma',
-  clientVersion: '6.1.0',
-  engineVersion: '4123509d24aa4dede1e864b46351bf2790323b69',
+  clientVersion: '6.3.0',
+  engineVersion: 'acc0b9dd43eb689cbd20c9470515d719db10d0b0',
   datasourceNames: ['db'],
   activeProvider: 'postgresql',
-  postinstall: false,
+  postinstall: true,
   inlineDatasources: {
     db: {
       url: {
@@ -545,6 +546,7 @@ config.runtimeDataModel = JSON.parse(
 );
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel);
 config.engineWasm = undefined;
+config.compilerWasm = undefined;
 
 config.injectableEdgeEnv = () => ({
   parsed: {

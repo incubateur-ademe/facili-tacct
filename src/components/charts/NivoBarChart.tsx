@@ -5,6 +5,7 @@ import {
   BarTooltipProps,
   ResponsiveBar
 } from '@nivo/bar';
+import { JSX } from 'react';
 
 type Datum = {
   id: string | number;

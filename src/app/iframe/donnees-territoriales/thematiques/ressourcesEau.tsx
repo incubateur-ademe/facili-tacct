@@ -5,14 +5,12 @@ import dynamic from 'next/dynamic';
 import styles from '../donnees.module.scss';
 
 const DynamicPageComp = dynamic(() => import('./ressourcesEauComp'), {
-  ssr: false,
   loading: () => <Loader />
 });
 
-const RessourcesEau = async (searchParams: SearchParams) => {
+const RessourcesEau = async (props: { searchParams: SearchParams }) => {
   const theme = themes.ressourcesEau;
-  const codepci = searchParams.searchParams.codepci;
-  const codgeo = searchParams.searchParams.codgeo;
+  const { codepci } = await props.searchParams;
   const dbRessourcesEau = await GetRessourceEau(codepci);
 
   return (

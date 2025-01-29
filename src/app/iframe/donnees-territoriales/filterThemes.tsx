@@ -6,18 +6,18 @@ import GestionRisques from './thematiques/gestionRisques';
 import InconfortThermique from './thematiques/inconfortThermique';
 import RessourcesEau from './thematiques/ressourcesEau';
 
-const FilterThemes = (searchParams: SearchParams) => {
-  const thematique = searchParams.searchParams.thematique;
+const FilterThemes = async (props: { searchParams: SearchParams }) => {
+  const { thematique } = await props.searchParams;
   return (
     <div>
       {thematique === 'Inconfort thermique' ? (
-        <InconfortThermique searchParams={searchParams.searchParams} />
+        <InconfortThermique {...props} />
       ) : thematique === 'Biodiversité' ? (
-        <Biodiversite searchParams={searchParams.searchParams} />
+        <Biodiversite {...props} />
       ) : thematique === 'Gestion des risques' ? (
-        <GestionRisques searchParams={searchParams.searchParams} />
+        <GestionRisques {...props} />
       ) : thematique === 'Ressources en eau' ? (
-        <RessourcesEau searchParams={searchParams.searchParams} />
+        <RessourcesEau {...props} />
       ) : (
         <ErrorDisplay code="404" />
       )}

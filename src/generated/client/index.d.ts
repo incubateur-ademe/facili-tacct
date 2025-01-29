@@ -260,7 +260,18 @@ export class PrismaClient<
     }
   ): $Utils.JsPromise<R>;
 
-  $extends: $Extensions.ExtendsHook<'extends', Prisma.TypeMapCb, ExtArgs>;
+  $extends: $Extensions.ExtendsHook<
+    'extends',
+    Prisma.TypeMapCb,
+    ExtArgs,
+    $Utils.Call<
+      Prisma.TypeMapCb,
+      {
+        extArgs: ExtArgs;
+      }
+    >,
+    ClientOptions
+  >;
 
   /**
    * `prisma.inconfort_thermique`: Exposes CRUD operations for the **inconfort_thermique** model.
@@ -270,7 +281,10 @@ export class PrismaClient<
    * const inconfort_thermiques = await prisma.inconfort_thermique.findMany()
    * ```
    */
-  get inconfort_thermique(): Prisma.inconfort_thermiqueDelegate<ExtArgs>;
+  get inconfort_thermique(): Prisma.inconfort_thermiqueDelegate<
+    ExtArgs,
+    ClientOptions
+  >;
 
   /**
    * `prisma.clc_epci`: Exposes CRUD operations for the **clc_epci** model.
@@ -280,7 +294,7 @@ export class PrismaClient<
    * const clc_epcis = await prisma.clc_epci.findMany()
    * ```
    */
-  get clc_epci(): Prisma.clc_epciDelegate<ExtArgs>;
+  get clc_epci(): Prisma.clc_epciDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.collectivites_searchbar`: Exposes CRUD operations for the **collectivites_searchbar** model.
@@ -290,7 +304,10 @@ export class PrismaClient<
    * const collectivites_searchbars = await prisma.collectivites_searchbar.findMany()
    * ```
    */
-  get collectivites_searchbar(): Prisma.collectivites_searchbarDelegate<ExtArgs>;
+  get collectivites_searchbar(): Prisma.collectivites_searchbarDelegate<
+    ExtArgs,
+    ClientOptions
+  >;
 
   /**
    * `prisma.biodiversite`: Exposes CRUD operations for the **biodiversite** model.
@@ -300,7 +317,7 @@ export class PrismaClient<
    * const biodiversites = await prisma.biodiversite.findMany()
    * ```
    */
-  get biodiversite(): Prisma.biodiversiteDelegate<ExtArgs>;
+  get biodiversite(): Prisma.biodiversiteDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.gestion_risques`: Exposes CRUD operations for the **gestion_risques** model.
@@ -310,7 +327,7 @@ export class PrismaClient<
    * const gestion_risques = await prisma.gestion_risques.findMany()
    * ```
    */
-  get gestion_risques(): Prisma.gestion_risquesDelegate<ExtArgs>;
+  get gestion_risques(): Prisma.gestion_risquesDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.communes_drom`: Exposes CRUD operations for the **communes_drom** model.
@@ -320,7 +337,7 @@ export class PrismaClient<
    * const communes_droms = await prisma.communes_drom.findMany()
    * ```
    */
-  get communes_drom(): Prisma.communes_dromDelegate<ExtArgs>;
+  get communes_drom(): Prisma.communes_dromDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.ressources_eau`: Exposes CRUD operations for the **ressources_eau** model.
@@ -330,7 +347,7 @@ export class PrismaClient<
    * const ressources_eaus = await prisma.ressources_eau.findMany()
    * ```
    */
-  get ressources_eau(): Prisma.ressources_eauDelegate<ExtArgs>;
+  get ressources_eau(): Prisma.ressources_eauDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.agriculture_bio`: Exposes CRUD operations for the **agriculture_bio** model.
@@ -340,7 +357,7 @@ export class PrismaClient<
    * const agriculture_bios = await prisma.agriculture_bio.findMany()
    * ```
    */
-  get agriculture_bio(): Prisma.agriculture_bioDelegate<ExtArgs>;
+  get agriculture_bio(): Prisma.agriculture_bioDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.erosion_cotiere`: Exposes CRUD operations for the **erosion_cotiere** model.
@@ -350,7 +367,7 @@ export class PrismaClient<
    * const erosion_cotieres = await prisma.erosion_cotiere.findMany()
    * ```
    */
-  get erosion_cotiere(): Prisma.erosion_cotiereDelegate<ExtArgs>;
+  get erosion_cotiere(): Prisma.erosion_cotiereDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.epci`: Exposes CRUD operations for the **epci** model.
@@ -360,7 +377,7 @@ export class PrismaClient<
    * const epcis = await prisma.epci.findMany()
    * ```
    */
-  get epci(): Prisma.epciDelegate<ExtArgs>;
+  get epci(): Prisma.epciDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.surfaces_protegees`: Exposes CRUD operations for the **surfaces_protegees** model.
@@ -370,7 +387,10 @@ export class PrismaClient<
    * const surfaces_protegees = await prisma.surfaces_protegees.findMany()
    * ```
    */
-  get surfaces_protegees(): Prisma.surfaces_protegeesDelegate<ExtArgs>;
+  get surfaces_protegees(): Prisma.surfaces_protegeesDelegate<
+    ExtArgs,
+    ClientOptions
+  >;
 
   /**
    * `prisma.spatial_ref_sys`: Exposes CRUD operations for the **spatial_ref_sys** model.
@@ -380,7 +400,7 @@ export class PrismaClient<
    * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
    * ```
    */
-  get spatial_ref_sys(): Prisma.spatial_ref_sysDelegate<ExtArgs>;
+  get spatial_ref_sys(): Prisma.spatial_ref_sysDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.consommation_espaces_naf`: Exposes CRUD operations for the **consommation_espaces_naf** model.
@@ -390,7 +410,10 @@ export class PrismaClient<
    * const consommation_espaces_nafs = await prisma.consommation_espaces_naf.findMany()
    * ```
    */
-  get consommation_espaces_naf(): Prisma.consommation_espaces_nafDelegate<ExtArgs>;
+  get consommation_espaces_naf(): Prisma.consommation_espaces_nafDelegate<
+    ExtArgs,
+    ClientOptions
+  >;
 
   /**
    * `prisma.lcz_bayonne_test`: Exposes CRUD operations for the **lcz_bayonne_test** model.
@@ -400,7 +423,10 @@ export class PrismaClient<
    * const lcz_bayonne_tests = await prisma.lcz_bayonne_test.findMany()
    * ```
    */
-  get lcz_bayonne_test(): Prisma.lcz_bayonne_testDelegate<ExtArgs>;
+  get lcz_bayonne_test(): Prisma.lcz_bayonne_testDelegate<
+    ExtArgs,
+    ClientOptions
+  >;
 
   /**
    * `prisma.north_star_metric`: Exposes CRUD operations for the **north_star_metric** model.
@@ -410,7 +436,10 @@ export class PrismaClient<
    * const north_star_metrics = await prisma.north_star_metric.findMany()
    * ```
    */
-  get north_star_metric(): Prisma.north_star_metricDelegate<ExtArgs>;
+  get north_star_metric(): Prisma.north_star_metricDelegate<
+    ExtArgs,
+    ClientOptions
+  >;
 
   /**
    * `prisma.etat_cours_d_eau`: Exposes CRUD operations for the **etat_cours_d_eau** model.
@@ -420,7 +449,10 @@ export class PrismaClient<
    * const etat_cours_d_eaus = await prisma.etat_cours_d_eau.findMany()
    * ```
    */
-  get etat_cours_d_eau(): Prisma.etat_cours_d_eauDelegate<ExtArgs>;
+  get etat_cours_d_eau(): Prisma.etat_cours_d_eauDelegate<
+    ExtArgs,
+    ClientOptions
+  >;
 }
 
 export namespace Prisma {
@@ -477,8 +509,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact;
 
   /**
-   * Prisma Client JS version: 6.1.0
-   * Query Engine version: 4123509d24aa4dede1e864b46351bf2790323b69
+   * Prisma Client JS version: 6.3.0
+   * Query Engine version: acc0b9dd43eb689cbd20c9470515d719db10d0b0
    */
   export type PrismaVersion = {
     client: string;
@@ -991,6 +1023,10 @@ export namespace Prisma {
             args: Prisma.inconfort_thermiqueUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
+          updateManyAndReturn: {
+            args: Prisma.inconfort_thermiqueUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>[];
+          };
           upsert: {
             args: Prisma.inconfort_thermiqueUpsertArgs<ExtArgs>;
             result: $Utils.PayloadToResult<Prisma.$inconfort_thermiquePayload>;
@@ -1063,6 +1099,10 @@ export namespace Prisma {
             args: Prisma.clc_epciUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
+          updateManyAndReturn: {
+            args: Prisma.clc_epciUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>[];
+          };
           upsert: {
             args: Prisma.clc_epciUpsertArgs<ExtArgs>;
             result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>;
@@ -1132,6 +1172,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.collectivites_searchbarUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
+          };
+          updateManyAndReturn: {
+            args: Prisma.collectivites_searchbarUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$collectivites_searchbarPayload>[];
           };
           upsert: {
             args: Prisma.collectivites_searchbarUpsertArgs<ExtArgs>;
@@ -1205,6 +1249,10 @@ export namespace Prisma {
             args: Prisma.biodiversiteUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
+          updateManyAndReturn: {
+            args: Prisma.biodiversiteUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$biodiversitePayload>[];
+          };
           upsert: {
             args: Prisma.biodiversiteUpsertArgs<ExtArgs>;
             result: $Utils.PayloadToResult<Prisma.$biodiversitePayload>;
@@ -1277,6 +1325,10 @@ export namespace Prisma {
             args: Prisma.gestion_risquesUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
+          updateManyAndReturn: {
+            args: Prisma.gestion_risquesUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$gestion_risquesPayload>[];
+          };
           upsert: {
             args: Prisma.gestion_risquesUpsertArgs<ExtArgs>;
             result: $Utils.PayloadToResult<Prisma.$gestion_risquesPayload>;
@@ -1336,6 +1388,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.communes_dromUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
+          };
+          updateManyAndReturn: {
+            args: Prisma.communes_dromUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$communes_dromPayload>[];
           };
           aggregate: {
             args: Prisma.Communes_dromAggregateArgs<ExtArgs>;
@@ -1404,6 +1460,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.ressources_eauUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
+          };
+          updateManyAndReturn: {
+            args: Prisma.ressources_eauUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ressources_eauPayload>[];
           };
           upsert: {
             args: Prisma.ressources_eauUpsertArgs<ExtArgs>;
@@ -1477,6 +1537,10 @@ export namespace Prisma {
             args: Prisma.agriculture_bioUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
+          updateManyAndReturn: {
+            args: Prisma.agriculture_bioUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$agriculture_bioPayload>[];
+          };
           upsert: {
             args: Prisma.agriculture_bioUpsertArgs<ExtArgs>;
             result: $Utils.PayloadToResult<Prisma.$agriculture_bioPayload>;
@@ -1537,6 +1601,10 @@ export namespace Prisma {
             args: Prisma.erosion_cotiereUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
+          updateManyAndReturn: {
+            args: Prisma.erosion_cotiereUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$erosion_cotierePayload>[];
+          };
           aggregate: {
             args: Prisma.Erosion_cotiereAggregateArgs<ExtArgs>;
             result: $Utils.Optional<AggregateErosion_cotiere>;
@@ -1592,6 +1660,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.epciUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
+          };
+          updateManyAndReturn: {
+            args: Prisma.epciUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$epciPayload>[];
           };
           aggregate: {
             args: Prisma.EpciAggregateArgs<ExtArgs>;
@@ -1658,6 +1730,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.surfaces_protegeesUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
+          };
+          updateManyAndReturn: {
+            args: Prisma.surfaces_protegeesUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$surfaces_protegeesPayload>[];
           };
           upsert: {
             args: Prisma.surfaces_protegeesUpsertArgs<ExtArgs>;
@@ -1731,6 +1807,10 @@ export namespace Prisma {
             args: Prisma.spatial_ref_sysUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
+          updateManyAndReturn: {
+            args: Prisma.spatial_ref_sysUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[];
+          };
           upsert: {
             args: Prisma.spatial_ref_sysUpsertArgs<ExtArgs>;
             result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>;
@@ -1802,6 +1882,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.consommation_espaces_nafUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
+          };
+          updateManyAndReturn: {
+            args: Prisma.consommation_espaces_nafUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$consommation_espaces_nafPayload>[];
           };
           upsert: {
             args: Prisma.consommation_espaces_nafUpsertArgs<ExtArgs>;
@@ -1875,6 +1959,10 @@ export namespace Prisma {
             args: Prisma.lcz_bayonne_testUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
+          updateManyAndReturn: {
+            args: Prisma.lcz_bayonne_testUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$lcz_bayonne_testPayload>[];
+          };
           upsert: {
             args: Prisma.lcz_bayonne_testUpsertArgs<ExtArgs>;
             result: $Utils.PayloadToResult<Prisma.$lcz_bayonne_testPayload>;
@@ -1947,6 +2035,10 @@ export namespace Prisma {
             args: Prisma.north_star_metricUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
+          updateManyAndReturn: {
+            args: Prisma.north_star_metricUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$north_star_metricPayload>[];
+          };
           upsert: {
             args: Prisma.north_star_metricUpsertArgs<ExtArgs>;
             result: $Utils.PayloadToResult<Prisma.$north_star_metricPayload>;
@@ -2006,6 +2098,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.etat_cours_d_eauUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
+          };
+          updateManyAndReturn: {
+            args: Prisma.etat_cours_d_eauUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$etat_cours_d_eauPayload>[];
           };
           aggregate: {
             args: Prisma.Etat_cours_d_eauAggregateArgs<ExtArgs>;
@@ -2094,7 +2190,40 @@ export namespace Prisma {
       timeout?: number;
       isolationLevel?: Prisma.TransactionIsolationLevel;
     };
+    /**
+     * Global configuration for omitting model fields by default.
+     *
+     * @example
+     * ```
+     * const prisma = new PrismaClient({
+     *   omit: {
+     *     user: {
+     *       password: true
+     *     }
+     *   }
+     * })
+     * ```
+     */
+    omit?: Prisma.GlobalOmitConfig;
   }
+  export type GlobalOmitConfig = {
+    inconfort_thermique?: inconfort_thermiqueOmit;
+    clc_epci?: clc_epciOmit;
+    collectivites_searchbar?: collectivites_searchbarOmit;
+    biodiversite?: biodiversiteOmit;
+    gestion_risques?: gestion_risquesOmit;
+    communes_drom?: communes_dromOmit;
+    ressources_eau?: ressources_eauOmit;
+    agriculture_bio?: agriculture_bioOmit;
+    erosion_cotiere?: erosion_cotiereOmit;
+    epci?: epciOmit;
+    surfaces_protegees?: surfaces_protegeesOmit;
+    spatial_ref_sys?: spatial_ref_sysOmit;
+    consommation_espaces_naf?: consommation_espaces_nafOmit;
+    lcz_bayonne_test?: lcz_bayonne_testOmit;
+    north_star_metric?: north_star_metricOmit;
+    etat_cours_d_eau?: etat_cours_d_eauOmit;
+  };
 
   /* Types for Logging */
   export type LogLevel = 'info' | 'query' | 'warn' | 'error';
@@ -2144,6 +2273,7 @@ export namespace Prisma {
     | 'createManyAndReturn'
     | 'update'
     | 'updateMany'
+    | 'updateManyAndReturn'
     | 'upsert'
     | 'delete'
     | 'deleteMany'
@@ -3100,6 +3230,71 @@ export namespace Prisma {
     ExtArgs['result']['inconfort_thermique']
   >;
 
+  export type inconfort_thermiqueSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_geographique?: boolean;
+      libelle_geographique?: boolean;
+      epci?: boolean;
+      libelle_epci?: boolean;
+      departement?: boolean;
+      region?: boolean;
+      age_bati_post06?: boolean;
+      age_bati_91_05?: boolean;
+      age_bati_46_90?: boolean;
+      age_bati_19_45?: boolean;
+      age_bati_pre_19?: boolean;
+      under_4_sum_1968?: boolean;
+      to_80_sum_1968?: boolean;
+      over_80_sum_1968?: boolean;
+      under_4_sum_1975?: boolean;
+      to_80_sum_1975?: boolean;
+      over_80_sum_1975?: boolean;
+      under_4_sum_1982?: boolean;
+      to_80_sum_1982?: boolean;
+      over_80_sum_1982?: boolean;
+      under_4_sum_1990?: boolean;
+      to_80_sum_1990?: boolean;
+      over_80_sum_1990?: boolean;
+      under_4_sum_1999?: boolean;
+      to_80_sum_1999?: boolean;
+      over_80_sum_1999?: boolean;
+      under_4_sum_2009?: boolean;
+      to_80_sum_2009?: boolean;
+      over_80_sum_2009?: boolean;
+      under_4_sum_2014?: boolean;
+      to_80_sum_2014?: boolean;
+      over_80_sum_2014?: boolean;
+      under_4_sum_2020?: boolean;
+      to_80_sum_2020?: boolean;
+      over_80_sum_2020?: boolean;
+      P20_POP80P?: boolean;
+      P20_POP80P_PSEUL?: boolean;
+      P20_POP80P_PSEUL_PERCENT?: boolean;
+      tee_log?: boolean;
+      tee_mob?: boolean;
+      precarite_logement?: boolean;
+      NA5AZ_sum?: boolean;
+      NA5BE_sum?: boolean;
+      NA5FZ_sum?: boolean;
+      NA5GU_sum?: boolean;
+      NA5OQ_sum?: boolean;
+      superf_choro?: boolean;
+      s_geom_cstr_bati?: boolean;
+      hauteur?: boolean;
+      h_x_s?: boolean;
+      densite_bati?: boolean;
+      clc_2_agricole?: boolean;
+      clc_3_foret_semiNaturel?: boolean;
+      clc_4_humide?: boolean;
+      clc_5_eau?: boolean;
+      clc_1_artificialise?: boolean;
+    },
+    ExtArgs['result']['inconfort_thermique']
+  >;
+
   export type inconfort_thermiqueSelectScalar = {
     index?: boolean;
     code_geographique?: boolean;
@@ -3159,6 +3354,69 @@ export namespace Prisma {
     clc_5_eau?: boolean;
     clc_1_artificialise?: boolean;
   };
+
+  export type inconfort_thermiqueOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'index'
+    | 'code_geographique'
+    | 'libelle_geographique'
+    | 'epci'
+    | 'libelle_epci'
+    | 'departement'
+    | 'region'
+    | 'age_bati_post06'
+    | 'age_bati_91_05'
+    | 'age_bati_46_90'
+    | 'age_bati_19_45'
+    | 'age_bati_pre_19'
+    | 'under_4_sum_1968'
+    | 'to_80_sum_1968'
+    | 'over_80_sum_1968'
+    | 'under_4_sum_1975'
+    | 'to_80_sum_1975'
+    | 'over_80_sum_1975'
+    | 'under_4_sum_1982'
+    | 'to_80_sum_1982'
+    | 'over_80_sum_1982'
+    | 'under_4_sum_1990'
+    | 'to_80_sum_1990'
+    | 'over_80_sum_1990'
+    | 'under_4_sum_1999'
+    | 'to_80_sum_1999'
+    | 'over_80_sum_1999'
+    | 'under_4_sum_2009'
+    | 'to_80_sum_2009'
+    | 'over_80_sum_2009'
+    | 'under_4_sum_2014'
+    | 'to_80_sum_2014'
+    | 'over_80_sum_2014'
+    | 'under_4_sum_2020'
+    | 'to_80_sum_2020'
+    | 'over_80_sum_2020'
+    | 'P20_POP80P'
+    | 'P20_POP80P_PSEUL'
+    | 'P20_POP80P_PSEUL_PERCENT'
+    | 'tee_log'
+    | 'tee_mob'
+    | 'precarite_logement'
+    | 'NA5AZ_sum'
+    | 'NA5BE_sum'
+    | 'NA5FZ_sum'
+    | 'NA5GU_sum'
+    | 'NA5OQ_sum'
+    | 'superf_choro'
+    | 's_geom_cstr_bati'
+    | 'hauteur'
+    | 'h_x_s'
+    | 'densite_bati'
+    | 'clc_2_agricole'
+    | 'clc_3_foret_semiNaturel'
+    | 'clc_4_humide'
+    | 'clc_5_eau'
+    | 'clc_1_artificialise',
+    ExtArgs['result']['inconfort_thermique']
+  >;
 
   export type $inconfort_thermiquePayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -3238,13 +3496,14 @@ export namespace Prisma {
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = Omit<
     inconfort_thermiqueFindManyArgs,
-    'select' | 'include' | 'distinct'
+    'select' | 'include' | 'distinct' | 'omit'
   > & {
     select?: Inconfort_thermiqueCountAggregateInputType | true;
   };
 
   export interface inconfort_thermiqueDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['inconfort_thermique'];
@@ -3267,10 +3526,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$inconfort_thermiquePayload<ExtArgs>,
         T,
-        'findUnique'
+        'findUnique',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -3291,10 +3552,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$inconfort_thermiquePayload<ExtArgs>,
         T,
-        'findUniqueOrThrow'
+        'findUniqueOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -3316,10 +3579,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$inconfort_thermiquePayload<ExtArgs>,
         T,
-        'findFirst'
+        'findFirst',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -3342,10 +3607,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$inconfort_thermiquePayload<ExtArgs>,
         T,
-        'findFirstOrThrow'
+        'findFirstOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -3370,7 +3637,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$inconfort_thermiquePayload<ExtArgs>,
         T,
-        'findMany'
+        'findMany',
+        ClientOptions
       >
     >;
 
@@ -3392,10 +3660,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$inconfort_thermiquePayload<ExtArgs>,
         T,
-        'create'
+        'create',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -3445,7 +3715,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$inconfort_thermiquePayload<ExtArgs>,
         T,
-        'createManyAndReturn'
+        'createManyAndReturn',
+        ClientOptions
       >
     >;
 
@@ -3467,10 +3738,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$inconfort_thermiquePayload<ExtArgs>,
         T,
-        'delete'
+        'delete',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -3494,10 +3767,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$inconfort_thermiquePayload<ExtArgs>,
         T,
-        'update'
+        'update',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -3538,6 +3813,45 @@ export namespace Prisma {
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
+     * Update zero or more Inconfort_thermiques and returns the data updated in the database.
+     * @param {inconfort_thermiqueUpdateManyAndReturnArgs} args - Arguments to update many Inconfort_thermiques.
+     * @example
+     * // Update many Inconfort_thermiques
+     * const inconfort_thermique = await prisma.inconfort_thermique.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Inconfort_thermiques and only return the `index`
+     * const inconfort_thermiqueWithIndexOnly = await prisma.inconfort_thermique.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends inconfort_thermiqueUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, inconfort_thermiqueUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$inconfort_thermiquePayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
      * Create or update one Inconfort_thermique.
      * @param {inconfort_thermiqueUpsertArgs} args - Arguments to update or create a Inconfort_thermique.
      * @example
@@ -3560,10 +3874,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$inconfort_thermiquePayload<ExtArgs>,
         T,
-        'upsert'
+        'upsert',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -3718,7 +4034,8 @@ export namespace Prisma {
   export interface Prisma__inconfort_thermiqueClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -3832,6 +4149,10 @@ export namespace Prisma {
      */
     select?: inconfort_thermiqueSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the inconfort_thermique
+     */
+    omit?: inconfort_thermiqueOmit<ExtArgs> | null;
+    /**
      * Filter, which inconfort_thermique to fetch.
      */
     where: inconfort_thermiqueWhereUniqueInput;
@@ -3848,6 +4169,10 @@ export namespace Prisma {
      */
     select?: inconfort_thermiqueSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the inconfort_thermique
+     */
+    omit?: inconfort_thermiqueOmit<ExtArgs> | null;
+    /**
      * Filter, which inconfort_thermique to fetch.
      */
     where: inconfort_thermiqueWhereUniqueInput;
@@ -3863,6 +4188,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the inconfort_thermique
      */
     select?: inconfort_thermiqueSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique
+     */
+    omit?: inconfort_thermiqueOmit<ExtArgs> | null;
     /**
      * Filter, which inconfort_thermique to fetch.
      */
@@ -3914,6 +4243,10 @@ export namespace Prisma {
      */
     select?: inconfort_thermiqueSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the inconfort_thermique
+     */
+    omit?: inconfort_thermiqueOmit<ExtArgs> | null;
+    /**
      * Filter, which inconfort_thermique to fetch.
      */
     where?: inconfort_thermiqueWhereInput;
@@ -3964,6 +4297,10 @@ export namespace Prisma {
      */
     select?: inconfort_thermiqueSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the inconfort_thermique
+     */
+    omit?: inconfort_thermiqueOmit<ExtArgs> | null;
+    /**
      * Filter, which inconfort_thermiques to fetch.
      */
     where?: inconfort_thermiqueWhereInput;
@@ -4009,6 +4346,10 @@ export namespace Prisma {
      */
     select?: inconfort_thermiqueSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the inconfort_thermique
+     */
+    omit?: inconfort_thermiqueOmit<ExtArgs> | null;
+    /**
      * The data needed to create a inconfort_thermique.
      */
     data: XOR<
@@ -4043,6 +4384,10 @@ export namespace Prisma {
      */
     select?: inconfort_thermiqueSelectCreateManyAndReturn<ExtArgs> | null;
     /**
+     * Omit specific fields from the inconfort_thermique
+     */
+    omit?: inconfort_thermiqueOmit<ExtArgs> | null;
+    /**
      * The data used to create many inconfort_thermiques.
      */
     data:
@@ -4061,6 +4406,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the inconfort_thermique
      */
     select?: inconfort_thermiqueSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique
+     */
+    omit?: inconfort_thermiqueOmit<ExtArgs> | null;
     /**
      * The data needed to update a inconfort_thermique.
      */
@@ -4091,6 +4440,41 @@ export namespace Prisma {
      * Filter which inconfort_thermiques to update
      */
     where?: inconfort_thermiqueWhereInput;
+    /**
+     * Limit how many inconfort_thermiques to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * inconfort_thermique updateManyAndReturn
+   */
+  export type inconfort_thermiqueUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the inconfort_thermique
+     */
+    select?: inconfort_thermiqueSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique
+     */
+    omit?: inconfort_thermiqueOmit<ExtArgs> | null;
+    /**
+     * The data used to update inconfort_thermiques.
+     */
+    data: XOR<
+      inconfort_thermiqueUpdateManyMutationInput,
+      inconfort_thermiqueUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which inconfort_thermiques to update
+     */
+    where?: inconfort_thermiqueWhereInput;
+    /**
+     * Limit how many inconfort_thermiques to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -4103,6 +4487,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the inconfort_thermique
      */
     select?: inconfort_thermiqueSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique
+     */
+    omit?: inconfort_thermiqueOmit<ExtArgs> | null;
     /**
      * The filter to search for the inconfort_thermique to update in case it exists.
      */
@@ -4134,6 +4522,10 @@ export namespace Prisma {
      */
     select?: inconfort_thermiqueSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the inconfort_thermique
+     */
+    omit?: inconfort_thermiqueOmit<ExtArgs> | null;
+    /**
      * Filter which inconfort_thermique to delete.
      */
     where: inconfort_thermiqueWhereUniqueInput;
@@ -4149,6 +4541,10 @@ export namespace Prisma {
      * Filter which inconfort_thermiques to delete
      */
     where?: inconfort_thermiqueWhereInput;
+    /**
+     * Limit how many inconfort_thermiques to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -4161,6 +4557,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the inconfort_thermique
      */
     select?: inconfort_thermiqueSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique
+     */
+    omit?: inconfort_thermiqueOmit<ExtArgs> | null;
   };
 
   /**
@@ -4370,11 +4770,29 @@ export namespace Prisma {
     ExtArgs['result']['clc_epci']
   >;
 
+  export type clc_epciSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      pk?: boolean;
+      legend?: boolean;
+      epci_code?: boolean;
+    },
+    ExtArgs['result']['clc_epci']
+  >;
+
   export type clc_epciSelectScalar = {
     pk?: boolean;
     legend?: boolean;
     epci_code?: boolean;
   };
+
+  export type clc_epciOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    'pk' | 'legend' | 'epci_code',
+    ExtArgs['result']['clc_epci']
+  >;
 
   export type $clc_epciPayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -4398,12 +4816,13 @@ export namespace Prisma {
 
   type clc_epciCountArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<clc_epciFindManyArgs, 'select' | 'include' | 'distinct'> & {
+  > = Omit<clc_epciFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
     select?: Clc_epciCountAggregateInputType | true;
   };
 
   export interface clc_epciDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['clc_epci'];
@@ -4426,10 +4845,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$clc_epciPayload<ExtArgs>,
         T,
-        'findUnique'
+        'findUnique',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -4450,10 +4871,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$clc_epciPayload<ExtArgs>,
         T,
-        'findUniqueOrThrow'
+        'findUniqueOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -4475,10 +4898,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$clc_epciPayload<ExtArgs>,
         T,
-        'findFirst'
+        'findFirst',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -4501,10 +4926,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$clc_epciPayload<ExtArgs>,
         T,
-        'findFirstOrThrow'
+        'findFirstOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -4526,7 +4953,12 @@ export namespace Prisma {
     findMany<T extends clc_epciFindManyArgs>(
       args?: SelectSubset<T, clc_epciFindManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, 'findMany'>
+      $Result.GetResult<
+        Prisma.$clc_epciPayload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
     >;
 
     /**
@@ -4544,9 +4976,15 @@ export namespace Prisma {
     create<T extends clc_epciCreateArgs>(
       args: SelectSubset<T, clc_epciCreateArgs<ExtArgs>>
     ): Prisma__clc_epciClient<
-      $Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, 'create'>,
+      $Result.GetResult<
+        Prisma.$clc_epciPayload<ExtArgs>,
+        T,
+        'create',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -4593,7 +5031,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$clc_epciPayload<ExtArgs>,
         T,
-        'createManyAndReturn'
+        'createManyAndReturn',
+        ClientOptions
       >
     >;
 
@@ -4612,9 +5051,15 @@ export namespace Prisma {
     delete<T extends clc_epciDeleteArgs>(
       args: SelectSubset<T, clc_epciDeleteArgs<ExtArgs>>
     ): Prisma__clc_epciClient<
-      $Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, 'delete'>,
+      $Result.GetResult<
+        Prisma.$clc_epciPayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -4635,9 +5080,15 @@ export namespace Prisma {
     update<T extends clc_epciUpdateArgs>(
       args: SelectSubset<T, clc_epciUpdateArgs<ExtArgs>>
     ): Prisma__clc_epciClient<
-      $Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, 'update'>,
+      $Result.GetResult<
+        Prisma.$clc_epciPayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -4678,6 +5129,45 @@ export namespace Prisma {
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
+     * Update zero or more Clc_epcis and returns the data updated in the database.
+     * @param {clc_epciUpdateManyAndReturnArgs} args - Arguments to update many Clc_epcis.
+     * @example
+     * // Update many Clc_epcis
+     * const clc_epci = await prisma.clc_epci.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Clc_epcis and only return the `pk`
+     * const clc_epciWithPkOnly = await prisma.clc_epci.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends clc_epciUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, clc_epciUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$clc_epciPayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
      * Create or update one Clc_epci.
      * @param {clc_epciUpsertArgs} args - Arguments to update or create a Clc_epci.
      * @example
@@ -4697,9 +5187,15 @@ export namespace Prisma {
     upsert<T extends clc_epciUpsertArgs>(
       args: SelectSubset<T, clc_epciUpsertArgs<ExtArgs>>
     ): Prisma__clc_epciClient<
-      $Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, 'upsert'>,
+      $Result.GetResult<
+        Prisma.$clc_epciPayload<ExtArgs>,
+        T,
+        'upsert',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -4850,7 +5346,8 @@ export namespace Prisma {
   export interface Prisma__clc_epciClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -4910,6 +5407,10 @@ export namespace Prisma {
      */
     select?: clc_epciSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null;
+    /**
      * Filter, which clc_epci to fetch.
      */
     where: clc_epciWhereUniqueInput;
@@ -4926,6 +5427,10 @@ export namespace Prisma {
      */
     select?: clc_epciSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null;
+    /**
      * Filter, which clc_epci to fetch.
      */
     where: clc_epciWhereUniqueInput;
@@ -4941,6 +5446,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the clc_epci
      */
     select?: clc_epciSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null;
     /**
      * Filter, which clc_epci to fetch.
      */
@@ -4990,6 +5499,10 @@ export namespace Prisma {
      */
     select?: clc_epciSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null;
+    /**
      * Filter, which clc_epci to fetch.
      */
     where?: clc_epciWhereInput;
@@ -5038,6 +5551,10 @@ export namespace Prisma {
      */
     select?: clc_epciSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null;
+    /**
      * Filter, which clc_epcis to fetch.
      */
     where?: clc_epciWhereInput;
@@ -5081,6 +5598,10 @@ export namespace Prisma {
      */
     select?: clc_epciSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null;
+    /**
      * The data needed to create a clc_epci.
      */
     data?: XOR<clc_epciCreateInput, clc_epciUncheckedCreateInput>;
@@ -5110,6 +5631,10 @@ export namespace Prisma {
      */
     select?: clc_epciSelectCreateManyAndReturn<ExtArgs> | null;
     /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null;
+    /**
      * The data used to create many clc_epcis.
      */
     data: clc_epciCreateManyInput | clc_epciCreateManyInput[];
@@ -5126,6 +5651,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the clc_epci
      */
     select?: clc_epciSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null;
     /**
      * The data needed to update a clc_epci.
      */
@@ -5153,6 +5682,41 @@ export namespace Prisma {
      * Filter which clc_epcis to update
      */
     where?: clc_epciWhereInput;
+    /**
+     * Limit how many clc_epcis to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * clc_epci updateManyAndReturn
+   */
+  export type clc_epciUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null;
+    /**
+     * The data used to update clc_epcis.
+     */
+    data: XOR<
+      clc_epciUpdateManyMutationInput,
+      clc_epciUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which clc_epcis to update
+     */
+    where?: clc_epciWhereInput;
+    /**
+     * Limit how many clc_epcis to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -5165,6 +5729,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the clc_epci
      */
     select?: clc_epciSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null;
     /**
      * The filter to search for the clc_epci to update in case it exists.
      */
@@ -5190,6 +5758,10 @@ export namespace Prisma {
      */
     select?: clc_epciSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null;
+    /**
      * Filter which clc_epci to delete.
      */
     where: clc_epciWhereUniqueInput;
@@ -5205,6 +5777,10 @@ export namespace Prisma {
      * Filter which clc_epcis to delete
      */
     where?: clc_epciWhereInput;
+    /**
+     * Limit how many clc_epcis to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -5217,6 +5793,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the clc_epci
      */
     select?: clc_epciSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null;
   };
 
   /**
@@ -5493,6 +6073,24 @@ export namespace Prisma {
     ExtArgs['result']['collectivites_searchbar']
   >;
 
+  export type collectivites_searchbarSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_commune?: boolean;
+      coordinates?: boolean;
+      libelle_commune?: boolean;
+      code_epci?: boolean;
+      libelle_epci?: boolean;
+      departement?: boolean;
+      region?: boolean;
+      search_code?: boolean;
+      search_libelle?: boolean;
+    },
+    ExtArgs['result']['collectivites_searchbar']
+  >;
+
   export type collectivites_searchbarSelectScalar = {
     index?: boolean;
     code_commune?: boolean;
@@ -5505,6 +6103,22 @@ export namespace Prisma {
     search_code?: boolean;
     search_libelle?: boolean;
   };
+
+  export type collectivites_searchbarOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'index'
+    | 'code_commune'
+    | 'coordinates'
+    | 'libelle_commune'
+    | 'code_epci'
+    | 'libelle_epci'
+    | 'departement'
+    | 'region'
+    | 'search_code'
+    | 'search_libelle',
+    ExtArgs['result']['collectivites_searchbar']
+  >;
 
   export type $collectivites_searchbarPayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -5537,13 +6151,14 @@ export namespace Prisma {
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = Omit<
     collectivites_searchbarFindManyArgs,
-    'select' | 'include' | 'distinct'
+    'select' | 'include' | 'distinct' | 'omit'
   > & {
     select?: Collectivites_searchbarCountAggregateInputType | true;
   };
 
   export interface collectivites_searchbarDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['collectivites_searchbar'];
@@ -5566,10 +6181,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$collectivites_searchbarPayload<ExtArgs>,
         T,
-        'findUnique'
+        'findUnique',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -5593,10 +6210,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$collectivites_searchbarPayload<ExtArgs>,
         T,
-        'findUniqueOrThrow'
+        'findUniqueOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -5618,10 +6237,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$collectivites_searchbarPayload<ExtArgs>,
         T,
-        'findFirst'
+        'findFirst',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -5647,10 +6268,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$collectivites_searchbarPayload<ExtArgs>,
         T,
-        'findFirstOrThrow'
+        'findFirstOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -5675,7 +6298,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$collectivites_searchbarPayload<ExtArgs>,
         T,
-        'findMany'
+        'findMany',
+        ClientOptions
       >
     >;
 
@@ -5697,10 +6321,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$collectivites_searchbarPayload<ExtArgs>,
         T,
-        'create'
+        'create',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -5752,7 +6378,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$collectivites_searchbarPayload<ExtArgs>,
         T,
-        'createManyAndReturn'
+        'createManyAndReturn',
+        ClientOptions
       >
     >;
 
@@ -5774,10 +6401,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$collectivites_searchbarPayload<ExtArgs>,
         T,
-        'delete'
+        'delete',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -5801,10 +6430,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$collectivites_searchbarPayload<ExtArgs>,
         T,
-        'update'
+        'update',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -5845,6 +6476,50 @@ export namespace Prisma {
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
+     * Update zero or more Collectivites_searchbars and returns the data updated in the database.
+     * @param {collectivites_searchbarUpdateManyAndReturnArgs} args - Arguments to update many Collectivites_searchbars.
+     * @example
+     * // Update many Collectivites_searchbars
+     * const collectivites_searchbar = await prisma.collectivites_searchbar.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Collectivites_searchbars and only return the `index`
+     * const collectivites_searchbarWithIndexOnly = await prisma.collectivites_searchbar.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<
+      T extends collectivites_searchbarUpdateManyAndReturnArgs
+    >(
+      args: SelectSubset<
+        T,
+        collectivites_searchbarUpdateManyAndReturnArgs<ExtArgs>
+      >
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$collectivites_searchbarPayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
      * Create or update one Collectivites_searchbar.
      * @param {collectivites_searchbarUpsertArgs} args - Arguments to update or create a Collectivites_searchbar.
      * @example
@@ -5867,10 +6542,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$collectivites_searchbarPayload<ExtArgs>,
         T,
-        'upsert'
+        'upsert',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -6029,7 +6706,8 @@ export namespace Prisma {
   export interface Prisma__collectivites_searchbarClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -6096,6 +6774,10 @@ export namespace Prisma {
      */
     select?: collectivites_searchbarSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the collectivites_searchbar
+     */
+    omit?: collectivites_searchbarOmit<ExtArgs> | null;
+    /**
      * Filter, which collectivites_searchbar to fetch.
      */
     where: collectivites_searchbarWhereUniqueInput;
@@ -6112,6 +6794,10 @@ export namespace Prisma {
      */
     select?: collectivites_searchbarSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the collectivites_searchbar
+     */
+    omit?: collectivites_searchbarOmit<ExtArgs> | null;
+    /**
      * Filter, which collectivites_searchbar to fetch.
      */
     where: collectivites_searchbarWhereUniqueInput;
@@ -6127,6 +6813,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the collectivites_searchbar
      */
     select?: collectivites_searchbarSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the collectivites_searchbar
+     */
+    omit?: collectivites_searchbarOmit<ExtArgs> | null;
     /**
      * Filter, which collectivites_searchbar to fetch.
      */
@@ -6178,6 +6868,10 @@ export namespace Prisma {
      */
     select?: collectivites_searchbarSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the collectivites_searchbar
+     */
+    omit?: collectivites_searchbarOmit<ExtArgs> | null;
+    /**
      * Filter, which collectivites_searchbar to fetch.
      */
     where?: collectivites_searchbarWhereInput;
@@ -6228,6 +6922,10 @@ export namespace Prisma {
      */
     select?: collectivites_searchbarSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the collectivites_searchbar
+     */
+    omit?: collectivites_searchbarOmit<ExtArgs> | null;
+    /**
      * Filter, which collectivites_searchbars to fetch.
      */
     where?: collectivites_searchbarWhereInput;
@@ -6273,6 +6971,10 @@ export namespace Prisma {
      */
     select?: collectivites_searchbarSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the collectivites_searchbar
+     */
+    omit?: collectivites_searchbarOmit<ExtArgs> | null;
+    /**
      * The data needed to create a collectivites_searchbar.
      */
     data: XOR<
@@ -6307,6 +7009,10 @@ export namespace Prisma {
      */
     select?: collectivites_searchbarSelectCreateManyAndReturn<ExtArgs> | null;
     /**
+     * Omit specific fields from the collectivites_searchbar
+     */
+    omit?: collectivites_searchbarOmit<ExtArgs> | null;
+    /**
      * The data used to create many collectivites_searchbars.
      */
     data:
@@ -6325,6 +7031,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the collectivites_searchbar
      */
     select?: collectivites_searchbarSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the collectivites_searchbar
+     */
+    omit?: collectivites_searchbarOmit<ExtArgs> | null;
     /**
      * The data needed to update a collectivites_searchbar.
      */
@@ -6355,6 +7065,41 @@ export namespace Prisma {
      * Filter which collectivites_searchbars to update
      */
     where?: collectivites_searchbarWhereInput;
+    /**
+     * Limit how many collectivites_searchbars to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * collectivites_searchbar updateManyAndReturn
+   */
+  export type collectivites_searchbarUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the collectivites_searchbar
+     */
+    select?: collectivites_searchbarSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the collectivites_searchbar
+     */
+    omit?: collectivites_searchbarOmit<ExtArgs> | null;
+    /**
+     * The data used to update collectivites_searchbars.
+     */
+    data: XOR<
+      collectivites_searchbarUpdateManyMutationInput,
+      collectivites_searchbarUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which collectivites_searchbars to update
+     */
+    where?: collectivites_searchbarWhereInput;
+    /**
+     * Limit how many collectivites_searchbars to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -6367,6 +7112,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the collectivites_searchbar
      */
     select?: collectivites_searchbarSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the collectivites_searchbar
+     */
+    omit?: collectivites_searchbarOmit<ExtArgs> | null;
     /**
      * The filter to search for the collectivites_searchbar to update in case it exists.
      */
@@ -6398,6 +7147,10 @@ export namespace Prisma {
      */
     select?: collectivites_searchbarSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the collectivites_searchbar
+     */
+    omit?: collectivites_searchbarOmit<ExtArgs> | null;
+    /**
      * Filter which collectivites_searchbar to delete.
      */
     where: collectivites_searchbarWhereUniqueInput;
@@ -6413,6 +7166,10 @@ export namespace Prisma {
      * Filter which collectivites_searchbars to delete
      */
     where?: collectivites_searchbarWhereInput;
+    /**
+     * Limit how many collectivites_searchbars to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -6425,6 +7182,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the collectivites_searchbar
      */
     select?: collectivites_searchbarSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the collectivites_searchbar
+     */
+    omit?: collectivites_searchbarOmit<ExtArgs> | null;
   };
 
   /**
@@ -6682,6 +7443,22 @@ export namespace Prisma {
     ExtArgs['result']['biodiversite']
   >;
 
+  export type biodiversiteSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_geographique?: boolean;
+      type_touristique?: boolean;
+      libelle_geographique?: boolean;
+      epci?: boolean;
+      libelle_epci?: boolean;
+      departement?: boolean;
+      region?: boolean;
+    },
+    ExtArgs['result']['biodiversite']
+  >;
+
   export type biodiversiteSelectScalar = {
     index?: boolean;
     code_geographique?: boolean;
@@ -6692,6 +7469,20 @@ export namespace Prisma {
     departement?: boolean;
     region?: boolean;
   };
+
+  export type biodiversiteOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'index'
+    | 'code_geographique'
+    | 'type_touristique'
+    | 'libelle_geographique'
+    | 'epci'
+    | 'libelle_epci'
+    | 'departement'
+    | 'region',
+    ExtArgs['result']['biodiversite']
+  >;
 
   export type $biodiversitePayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -6720,12 +7511,16 @@ export namespace Prisma {
 
   type biodiversiteCountArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<biodiversiteFindManyArgs, 'select' | 'include' | 'distinct'> & {
+  > = Omit<
+    biodiversiteFindManyArgs,
+    'select' | 'include' | 'distinct' | 'omit'
+  > & {
     select?: BiodiversiteCountAggregateInputType | true;
   };
 
   export interface biodiversiteDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['biodiversite'];
@@ -6748,10 +7543,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$biodiversitePayload<ExtArgs>,
         T,
-        'findUnique'
+        'findUnique',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -6772,10 +7569,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$biodiversitePayload<ExtArgs>,
         T,
-        'findUniqueOrThrow'
+        'findUniqueOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -6797,10 +7596,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$biodiversitePayload<ExtArgs>,
         T,
-        'findFirst'
+        'findFirst',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -6823,10 +7624,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$biodiversitePayload<ExtArgs>,
         T,
-        'findFirstOrThrow'
+        'findFirstOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -6848,7 +7651,12 @@ export namespace Prisma {
     findMany<T extends biodiversiteFindManyArgs>(
       args?: SelectSubset<T, biodiversiteFindManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$biodiversitePayload<ExtArgs>, T, 'findMany'>
+      $Result.GetResult<
+        Prisma.$biodiversitePayload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
     >;
 
     /**
@@ -6866,9 +7674,15 @@ export namespace Prisma {
     create<T extends biodiversiteCreateArgs>(
       args: SelectSubset<T, biodiversiteCreateArgs<ExtArgs>>
     ): Prisma__biodiversiteClient<
-      $Result.GetResult<Prisma.$biodiversitePayload<ExtArgs>, T, 'create'>,
+      $Result.GetResult<
+        Prisma.$biodiversitePayload<ExtArgs>,
+        T,
+        'create',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -6915,7 +7729,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$biodiversitePayload<ExtArgs>,
         T,
-        'createManyAndReturn'
+        'createManyAndReturn',
+        ClientOptions
       >
     >;
 
@@ -6934,9 +7749,15 @@ export namespace Prisma {
     delete<T extends biodiversiteDeleteArgs>(
       args: SelectSubset<T, biodiversiteDeleteArgs<ExtArgs>>
     ): Prisma__biodiversiteClient<
-      $Result.GetResult<Prisma.$biodiversitePayload<ExtArgs>, T, 'delete'>,
+      $Result.GetResult<
+        Prisma.$biodiversitePayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -6957,9 +7778,15 @@ export namespace Prisma {
     update<T extends biodiversiteUpdateArgs>(
       args: SelectSubset<T, biodiversiteUpdateArgs<ExtArgs>>
     ): Prisma__biodiversiteClient<
-      $Result.GetResult<Prisma.$biodiversitePayload<ExtArgs>, T, 'update'>,
+      $Result.GetResult<
+        Prisma.$biodiversitePayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -7000,6 +7827,45 @@ export namespace Prisma {
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
+     * Update zero or more Biodiversites and returns the data updated in the database.
+     * @param {biodiversiteUpdateManyAndReturnArgs} args - Arguments to update many Biodiversites.
+     * @example
+     * // Update many Biodiversites
+     * const biodiversite = await prisma.biodiversite.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Biodiversites and only return the `index`
+     * const biodiversiteWithIndexOnly = await prisma.biodiversite.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends biodiversiteUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, biodiversiteUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$biodiversitePayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
      * Create or update one Biodiversite.
      * @param {biodiversiteUpsertArgs} args - Arguments to update or create a Biodiversite.
      * @example
@@ -7019,9 +7885,15 @@ export namespace Prisma {
     upsert<T extends biodiversiteUpsertArgs>(
       args: SelectSubset<T, biodiversiteUpsertArgs<ExtArgs>>
     ): Prisma__biodiversiteClient<
-      $Result.GetResult<Prisma.$biodiversitePayload<ExtArgs>, T, 'upsert'>,
+      $Result.GetResult<
+        Prisma.$biodiversitePayload<ExtArgs>,
+        T,
+        'upsert',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -7173,7 +8045,8 @@ export namespace Prisma {
   export interface Prisma__biodiversiteClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -7238,6 +8111,10 @@ export namespace Prisma {
      */
     select?: biodiversiteSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the biodiversite
+     */
+    omit?: biodiversiteOmit<ExtArgs> | null;
+    /**
      * Filter, which biodiversite to fetch.
      */
     where: biodiversiteWhereUniqueInput;
@@ -7254,6 +8131,10 @@ export namespace Prisma {
      */
     select?: biodiversiteSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the biodiversite
+     */
+    omit?: biodiversiteOmit<ExtArgs> | null;
+    /**
      * Filter, which biodiversite to fetch.
      */
     where: biodiversiteWhereUniqueInput;
@@ -7269,6 +8150,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the biodiversite
      */
     select?: biodiversiteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the biodiversite
+     */
+    omit?: biodiversiteOmit<ExtArgs> | null;
     /**
      * Filter, which biodiversite to fetch.
      */
@@ -7318,6 +8203,10 @@ export namespace Prisma {
      */
     select?: biodiversiteSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the biodiversite
+     */
+    omit?: biodiversiteOmit<ExtArgs> | null;
+    /**
      * Filter, which biodiversite to fetch.
      */
     where?: biodiversiteWhereInput;
@@ -7366,6 +8255,10 @@ export namespace Prisma {
      */
     select?: biodiversiteSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the biodiversite
+     */
+    omit?: biodiversiteOmit<ExtArgs> | null;
+    /**
      * Filter, which biodiversites to fetch.
      */
     where?: biodiversiteWhereInput;
@@ -7409,6 +8302,10 @@ export namespace Prisma {
      */
     select?: biodiversiteSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the biodiversite
+     */
+    omit?: biodiversiteOmit<ExtArgs> | null;
+    /**
      * The data needed to create a biodiversite.
      */
     data: XOR<biodiversiteCreateInput, biodiversiteUncheckedCreateInput>;
@@ -7438,6 +8335,10 @@ export namespace Prisma {
      */
     select?: biodiversiteSelectCreateManyAndReturn<ExtArgs> | null;
     /**
+     * Omit specific fields from the biodiversite
+     */
+    omit?: biodiversiteOmit<ExtArgs> | null;
+    /**
      * The data used to create many biodiversites.
      */
     data: biodiversiteCreateManyInput | biodiversiteCreateManyInput[];
@@ -7454,6 +8355,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the biodiversite
      */
     select?: biodiversiteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the biodiversite
+     */
+    omit?: biodiversiteOmit<ExtArgs> | null;
     /**
      * The data needed to update a biodiversite.
      */
@@ -7481,6 +8386,41 @@ export namespace Prisma {
      * Filter which biodiversites to update
      */
     where?: biodiversiteWhereInput;
+    /**
+     * Limit how many biodiversites to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * biodiversite updateManyAndReturn
+   */
+  export type biodiversiteUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the biodiversite
+     */
+    select?: biodiversiteSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the biodiversite
+     */
+    omit?: biodiversiteOmit<ExtArgs> | null;
+    /**
+     * The data used to update biodiversites.
+     */
+    data: XOR<
+      biodiversiteUpdateManyMutationInput,
+      biodiversiteUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which biodiversites to update
+     */
+    where?: biodiversiteWhereInput;
+    /**
+     * Limit how many biodiversites to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -7493,6 +8433,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the biodiversite
      */
     select?: biodiversiteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the biodiversite
+     */
+    omit?: biodiversiteOmit<ExtArgs> | null;
     /**
      * The filter to search for the biodiversite to update in case it exists.
      */
@@ -7518,6 +8462,10 @@ export namespace Prisma {
      */
     select?: biodiversiteSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the biodiversite
+     */
+    omit?: biodiversiteOmit<ExtArgs> | null;
+    /**
      * Filter which biodiversite to delete.
      */
     where: biodiversiteWhereUniqueInput;
@@ -7533,6 +8481,10 @@ export namespace Prisma {
      * Filter which biodiversites to delete
      */
     where?: biodiversiteWhereInput;
+    /**
+     * Limit how many biodiversites to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -7545,6 +8497,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the biodiversite
      */
     select?: biodiversiteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the biodiversite
+     */
+    omit?: biodiversiteOmit<ExtArgs> | null;
   };
 
   /**
@@ -7813,6 +8769,23 @@ export namespace Prisma {
     ExtArgs['result']['gestion_risques']
   >;
 
+  export type gestion_risquesSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_geographique?: boolean;
+      lib_risque_jo?: boolean;
+      dat_pub_arrete?: boolean;
+      libelle_geographique?: boolean;
+      epci?: boolean;
+      libelle_epci?: boolean;
+      departement?: boolean;
+      region?: boolean;
+    },
+    ExtArgs['result']['gestion_risques']
+  >;
+
   export type gestion_risquesSelectScalar = {
     index?: boolean;
     code_geographique?: boolean;
@@ -7824,6 +8797,21 @@ export namespace Prisma {
     departement?: boolean;
     region?: boolean;
   };
+
+  export type gestion_risquesOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'index'
+    | 'code_geographique'
+    | 'lib_risque_jo'
+    | 'dat_pub_arrete'
+    | 'libelle_geographique'
+    | 'epci'
+    | 'libelle_epci'
+    | 'departement'
+    | 'region',
+    ExtArgs['result']['gestion_risques']
+  >;
 
   export type $gestion_risquesPayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -7853,12 +8841,16 @@ export namespace Prisma {
 
   type gestion_risquesCountArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<gestion_risquesFindManyArgs, 'select' | 'include' | 'distinct'> & {
+  > = Omit<
+    gestion_risquesFindManyArgs,
+    'select' | 'include' | 'distinct' | 'omit'
+  > & {
     select?: Gestion_risquesCountAggregateInputType | true;
   };
 
   export interface gestion_risquesDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['gestion_risques'];
@@ -7881,10 +8873,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$gestion_risquesPayload<ExtArgs>,
         T,
-        'findUnique'
+        'findUnique',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -7905,10 +8899,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$gestion_risquesPayload<ExtArgs>,
         T,
-        'findUniqueOrThrow'
+        'findUniqueOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -7930,10 +8926,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$gestion_risquesPayload<ExtArgs>,
         T,
-        'findFirst'
+        'findFirst',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -7956,10 +8954,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$gestion_risquesPayload<ExtArgs>,
         T,
-        'findFirstOrThrow'
+        'findFirstOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -7981,7 +8981,12 @@ export namespace Prisma {
     findMany<T extends gestion_risquesFindManyArgs>(
       args?: SelectSubset<T, gestion_risquesFindManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$gestion_risquesPayload<ExtArgs>, T, 'findMany'>
+      $Result.GetResult<
+        Prisma.$gestion_risquesPayload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
     >;
 
     /**
@@ -7999,9 +9004,15 @@ export namespace Prisma {
     create<T extends gestion_risquesCreateArgs>(
       args: SelectSubset<T, gestion_risquesCreateArgs<ExtArgs>>
     ): Prisma__gestion_risquesClient<
-      $Result.GetResult<Prisma.$gestion_risquesPayload<ExtArgs>, T, 'create'>,
+      $Result.GetResult<
+        Prisma.$gestion_risquesPayload<ExtArgs>,
+        T,
+        'create',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -8048,7 +9059,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$gestion_risquesPayload<ExtArgs>,
         T,
-        'createManyAndReturn'
+        'createManyAndReturn',
+        ClientOptions
       >
     >;
 
@@ -8067,9 +9079,15 @@ export namespace Prisma {
     delete<T extends gestion_risquesDeleteArgs>(
       args: SelectSubset<T, gestion_risquesDeleteArgs<ExtArgs>>
     ): Prisma__gestion_risquesClient<
-      $Result.GetResult<Prisma.$gestion_risquesPayload<ExtArgs>, T, 'delete'>,
+      $Result.GetResult<
+        Prisma.$gestion_risquesPayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -8090,9 +9108,15 @@ export namespace Prisma {
     update<T extends gestion_risquesUpdateArgs>(
       args: SelectSubset<T, gestion_risquesUpdateArgs<ExtArgs>>
     ): Prisma__gestion_risquesClient<
-      $Result.GetResult<Prisma.$gestion_risquesPayload<ExtArgs>, T, 'update'>,
+      $Result.GetResult<
+        Prisma.$gestion_risquesPayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -8133,6 +9157,45 @@ export namespace Prisma {
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
+     * Update zero or more Gestion_risques and returns the data updated in the database.
+     * @param {gestion_risquesUpdateManyAndReturnArgs} args - Arguments to update many Gestion_risques.
+     * @example
+     * // Update many Gestion_risques
+     * const gestion_risques = await prisma.gestion_risques.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Gestion_risques and only return the `index`
+     * const gestion_risquesWithIndexOnly = await prisma.gestion_risques.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends gestion_risquesUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, gestion_risquesUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$gestion_risquesPayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
      * Create or update one Gestion_risques.
      * @param {gestion_risquesUpsertArgs} args - Arguments to update or create a Gestion_risques.
      * @example
@@ -8152,9 +9215,15 @@ export namespace Prisma {
     upsert<T extends gestion_risquesUpsertArgs>(
       args: SelectSubset<T, gestion_risquesUpsertArgs<ExtArgs>>
     ): Prisma__gestion_risquesClient<
-      $Result.GetResult<Prisma.$gestion_risquesPayload<ExtArgs>, T, 'upsert'>,
+      $Result.GetResult<
+        Prisma.$gestion_risquesPayload<ExtArgs>,
+        T,
+        'upsert',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -8306,7 +9375,8 @@ export namespace Prisma {
   export interface Prisma__gestion_risquesClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -8372,6 +9442,10 @@ export namespace Prisma {
      */
     select?: gestion_risquesSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the gestion_risques
+     */
+    omit?: gestion_risquesOmit<ExtArgs> | null;
+    /**
      * Filter, which gestion_risques to fetch.
      */
     where: gestion_risquesWhereUniqueInput;
@@ -8388,6 +9462,10 @@ export namespace Prisma {
      */
     select?: gestion_risquesSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the gestion_risques
+     */
+    omit?: gestion_risquesOmit<ExtArgs> | null;
+    /**
      * Filter, which gestion_risques to fetch.
      */
     where: gestion_risquesWhereUniqueInput;
@@ -8403,6 +9481,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the gestion_risques
      */
     select?: gestion_risquesSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the gestion_risques
+     */
+    omit?: gestion_risquesOmit<ExtArgs> | null;
     /**
      * Filter, which gestion_risques to fetch.
      */
@@ -8454,6 +9536,10 @@ export namespace Prisma {
      */
     select?: gestion_risquesSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the gestion_risques
+     */
+    omit?: gestion_risquesOmit<ExtArgs> | null;
+    /**
      * Filter, which gestion_risques to fetch.
      */
     where?: gestion_risquesWhereInput;
@@ -8504,6 +9590,10 @@ export namespace Prisma {
      */
     select?: gestion_risquesSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the gestion_risques
+     */
+    omit?: gestion_risquesOmit<ExtArgs> | null;
+    /**
      * Filter, which gestion_risques to fetch.
      */
     where?: gestion_risquesWhereInput;
@@ -8549,6 +9639,10 @@ export namespace Prisma {
      */
     select?: gestion_risquesSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the gestion_risques
+     */
+    omit?: gestion_risquesOmit<ExtArgs> | null;
+    /**
      * The data needed to create a gestion_risques.
      */
     data: XOR<gestion_risquesCreateInput, gestion_risquesUncheckedCreateInput>;
@@ -8578,6 +9672,10 @@ export namespace Prisma {
      */
     select?: gestion_risquesSelectCreateManyAndReturn<ExtArgs> | null;
     /**
+     * Omit specific fields from the gestion_risques
+     */
+    omit?: gestion_risquesOmit<ExtArgs> | null;
+    /**
      * The data used to create many gestion_risques.
      */
     data: gestion_risquesCreateManyInput | gestion_risquesCreateManyInput[];
@@ -8594,6 +9692,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the gestion_risques
      */
     select?: gestion_risquesSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the gestion_risques
+     */
+    omit?: gestion_risquesOmit<ExtArgs> | null;
     /**
      * The data needed to update a gestion_risques.
      */
@@ -8621,6 +9723,41 @@ export namespace Prisma {
      * Filter which gestion_risques to update
      */
     where?: gestion_risquesWhereInput;
+    /**
+     * Limit how many gestion_risques to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * gestion_risques updateManyAndReturn
+   */
+  export type gestion_risquesUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the gestion_risques
+     */
+    select?: gestion_risquesSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the gestion_risques
+     */
+    omit?: gestion_risquesOmit<ExtArgs> | null;
+    /**
+     * The data used to update gestion_risques.
+     */
+    data: XOR<
+      gestion_risquesUpdateManyMutationInput,
+      gestion_risquesUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which gestion_risques to update
+     */
+    where?: gestion_risquesWhereInput;
+    /**
+     * Limit how many gestion_risques to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -8633,6 +9770,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the gestion_risques
      */
     select?: gestion_risquesSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the gestion_risques
+     */
+    omit?: gestion_risquesOmit<ExtArgs> | null;
     /**
      * The filter to search for the gestion_risques to update in case it exists.
      */
@@ -8664,6 +9805,10 @@ export namespace Prisma {
      */
     select?: gestion_risquesSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the gestion_risques
+     */
+    omit?: gestion_risquesOmit<ExtArgs> | null;
+    /**
      * Filter which gestion_risques to delete.
      */
     where: gestion_risquesWhereUniqueInput;
@@ -8679,6 +9824,10 @@ export namespace Prisma {
      * Filter which gestion_risques to delete
      */
     where?: gestion_risquesWhereInput;
+    /**
+     * Limit how many gestion_risques to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -8691,6 +9840,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the gestion_risques
      */
     select?: gestion_risquesSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the gestion_risques
+     */
+    omit?: gestion_risquesOmit<ExtArgs> | null;
   };
 
   /**
@@ -8948,6 +10101,23 @@ export namespace Prisma {
     ExtArgs['result']['communes_drom']
   >;
 
+  export type communes_dromSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      pk?: boolean;
+      code_commune?: boolean;
+      libelle_commune?: boolean;
+      epci?: boolean;
+      libelle_epci?: boolean;
+      coordinates?: boolean;
+      densite_bati?: boolean;
+      precarite_logement?: boolean;
+      surface?: boolean;
+    },
+    ExtArgs['result']['communes_drom']
+  >;
+
   export type communes_dromSelectScalar = {
     pk?: boolean;
     code_commune?: boolean;
@@ -8959,6 +10129,21 @@ export namespace Prisma {
     precarite_logement?: boolean;
     surface?: boolean;
   };
+
+  export type communes_dromOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'pk'
+    | 'code_commune'
+    | 'libelle_commune'
+    | 'epci'
+    | 'libelle_epci'
+    | 'coordinates'
+    | 'densite_bati'
+    | 'precarite_logement'
+    | 'surface',
+    ExtArgs['result']['communes_drom']
+  >;
 
   export type $communes_dromPayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -8988,12 +10173,16 @@ export namespace Prisma {
 
   type communes_dromCountArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<communes_dromFindManyArgs, 'select' | 'include' | 'distinct'> & {
+  > = Omit<
+    communes_dromFindManyArgs,
+    'select' | 'include' | 'distinct' | 'omit'
+  > & {
     select?: Communes_dromCountAggregateInputType | true;
   };
 
   export interface communes_dromDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['communes_drom'];
@@ -9016,10 +10205,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$communes_dromPayload<ExtArgs>,
         T,
-        'findUnique'
+        'findUnique',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -9040,10 +10231,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$communes_dromPayload<ExtArgs>,
         T,
-        'findUniqueOrThrow'
+        'findUniqueOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -9065,10 +10258,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$communes_dromPayload<ExtArgs>,
         T,
-        'findFirst'
+        'findFirst',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -9091,10 +10286,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$communes_dromPayload<ExtArgs>,
         T,
-        'findFirstOrThrow'
+        'findFirstOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -9116,7 +10313,12 @@ export namespace Prisma {
     findMany<T extends communes_dromFindManyArgs>(
       args?: SelectSubset<T, communes_dromFindManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, 'findMany'>
+      $Result.GetResult<
+        Prisma.$communes_dromPayload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
     >;
 
     /**
@@ -9134,9 +10336,15 @@ export namespace Prisma {
     delete<T extends communes_dromDeleteArgs>(
       args: SelectSubset<T, communes_dromDeleteArgs<ExtArgs>>
     ): Prisma__communes_dromClient<
-      $Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, 'delete'>,
+      $Result.GetResult<
+        Prisma.$communes_dromPayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -9157,9 +10365,15 @@ export namespace Prisma {
     update<T extends communes_dromUpdateArgs>(
       args: SelectSubset<T, communes_dromUpdateArgs<ExtArgs>>
     ): Prisma__communes_dromClient<
-      $Result.GetResult<Prisma.$communes_dromPayload<ExtArgs>, T, 'update'>,
+      $Result.GetResult<
+        Prisma.$communes_dromPayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -9198,6 +10412,45 @@ export namespace Prisma {
     updateMany<T extends communes_dromUpdateManyArgs>(
       args: SelectSubset<T, communes_dromUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Communes_droms and returns the data updated in the database.
+     * @param {communes_dromUpdateManyAndReturnArgs} args - Arguments to update many Communes_droms.
+     * @example
+     * // Update many Communes_droms
+     * const communes_drom = await prisma.communes_drom.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Communes_droms and only return the `pk`
+     * const communes_dromWithPkOnly = await prisma.communes_drom.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends communes_dromUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, communes_dromUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$communes_dromPayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
 
     /**
      * Count the number of Communes_droms.
@@ -9348,7 +10601,8 @@ export namespace Prisma {
   export interface Prisma__communes_dromClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -9414,6 +10668,10 @@ export namespace Prisma {
      */
     select?: communes_dromSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null;
+    /**
      * Filter, which communes_drom to fetch.
      */
     where: communes_dromWhereUniqueInput;
@@ -9430,6 +10688,10 @@ export namespace Prisma {
      */
     select?: communes_dromSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null;
+    /**
      * Filter, which communes_drom to fetch.
      */
     where: communes_dromWhereUniqueInput;
@@ -9445,6 +10707,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the communes_drom
      */
     select?: communes_dromSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null;
     /**
      * Filter, which communes_drom to fetch.
      */
@@ -9494,6 +10760,10 @@ export namespace Prisma {
      */
     select?: communes_dromSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null;
+    /**
      * Filter, which communes_drom to fetch.
      */
     where?: communes_dromWhereInput;
@@ -9542,6 +10812,10 @@ export namespace Prisma {
      */
     select?: communes_dromSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null;
+    /**
      * Filter, which communes_droms to fetch.
      */
     where?: communes_dromWhereInput;
@@ -9585,6 +10859,10 @@ export namespace Prisma {
      */
     select?: communes_dromSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null;
+    /**
      * The data needed to update a communes_drom.
      */
     data: XOR<communes_dromUpdateInput, communes_dromUncheckedUpdateInput>;
@@ -9611,6 +10889,41 @@ export namespace Prisma {
      * Filter which communes_droms to update
      */
     where?: communes_dromWhereInput;
+    /**
+     * Limit how many communes_droms to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * communes_drom updateManyAndReturn
+   */
+  export type communes_dromUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the communes_drom
+     */
+    select?: communes_dromSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null;
+    /**
+     * The data used to update communes_droms.
+     */
+    data: XOR<
+      communes_dromUpdateManyMutationInput,
+      communes_dromUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which communes_droms to update
+     */
+    where?: communes_dromWhereInput;
+    /**
+     * Limit how many communes_droms to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -9623,6 +10936,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the communes_drom
      */
     select?: communes_dromSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null;
     /**
      * Filter which communes_drom to delete.
      */
@@ -9639,6 +10956,10 @@ export namespace Prisma {
      * Filter which communes_droms to delete
      */
     where?: communes_dromWhereInput;
+    /**
+     * Limit how many communes_droms to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -9651,6 +10972,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the communes_drom
      */
     select?: communes_dromSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the communes_drom
+     */
+    omit?: communes_dromOmit<ExtArgs> | null;
   };
 
   /**
@@ -10086,6 +11411,36 @@ export namespace Prisma {
     ExtArgs['result']['ressources_eau']
   >;
 
+  export type ressources_eauSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_geographique?: boolean;
+      LIBELLE_SOUS_CHAMP?: boolean;
+      SOUS_CHAMP?: boolean;
+      A2020?: boolean;
+      A2019?: boolean;
+      A2018?: boolean;
+      A2017?: boolean;
+      A2016?: boolean;
+      A2015?: boolean;
+      A2014?: boolean;
+      A2013?: boolean;
+      A2012?: boolean;
+      A2011?: boolean;
+      A2010?: boolean;
+      A2009?: boolean;
+      A2008?: boolean;
+      libelle_geographique?: boolean;
+      epci?: boolean;
+      libelle_epci?: boolean;
+      departement?: boolean;
+      region?: boolean;
+    },
+    ExtArgs['result']['ressources_eau']
+  >;
+
   export type ressources_eauSelectScalar = {
     index?: boolean;
     code_geographique?: boolean;
@@ -10110,6 +11465,34 @@ export namespace Prisma {
     departement?: boolean;
     region?: boolean;
   };
+
+  export type ressources_eauOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'index'
+    | 'code_geographique'
+    | 'LIBELLE_SOUS_CHAMP'
+    | 'SOUS_CHAMP'
+    | 'A2020'
+    | 'A2019'
+    | 'A2018'
+    | 'A2017'
+    | 'A2016'
+    | 'A2015'
+    | 'A2014'
+    | 'A2013'
+    | 'A2012'
+    | 'A2011'
+    | 'A2010'
+    | 'A2009'
+    | 'A2008'
+    | 'libelle_geographique'
+    | 'epci'
+    | 'libelle_epci'
+    | 'departement'
+    | 'region',
+    ExtArgs['result']['ressources_eau']
+  >;
 
   export type $ressources_eauPayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -10152,12 +11535,16 @@ export namespace Prisma {
 
   type ressources_eauCountArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<ressources_eauFindManyArgs, 'select' | 'include' | 'distinct'> & {
+  > = Omit<
+    ressources_eauFindManyArgs,
+    'select' | 'include' | 'distinct' | 'omit'
+  > & {
     select?: Ressources_eauCountAggregateInputType | true;
   };
 
   export interface ressources_eauDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['ressources_eau'];
@@ -10180,10 +11567,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$ressources_eauPayload<ExtArgs>,
         T,
-        'findUnique'
+        'findUnique',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -10204,10 +11593,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$ressources_eauPayload<ExtArgs>,
         T,
-        'findUniqueOrThrow'
+        'findUniqueOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -10229,10 +11620,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$ressources_eauPayload<ExtArgs>,
         T,
-        'findFirst'
+        'findFirst',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -10255,10 +11648,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$ressources_eauPayload<ExtArgs>,
         T,
-        'findFirstOrThrow'
+        'findFirstOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -10280,7 +11675,12 @@ export namespace Prisma {
     findMany<T extends ressources_eauFindManyArgs>(
       args?: SelectSubset<T, ressources_eauFindManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$ressources_eauPayload<ExtArgs>, T, 'findMany'>
+      $Result.GetResult<
+        Prisma.$ressources_eauPayload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
     >;
 
     /**
@@ -10298,9 +11698,15 @@ export namespace Prisma {
     create<T extends ressources_eauCreateArgs>(
       args: SelectSubset<T, ressources_eauCreateArgs<ExtArgs>>
     ): Prisma__ressources_eauClient<
-      $Result.GetResult<Prisma.$ressources_eauPayload<ExtArgs>, T, 'create'>,
+      $Result.GetResult<
+        Prisma.$ressources_eauPayload<ExtArgs>,
+        T,
+        'create',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -10347,7 +11753,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$ressources_eauPayload<ExtArgs>,
         T,
-        'createManyAndReturn'
+        'createManyAndReturn',
+        ClientOptions
       >
     >;
 
@@ -10366,9 +11773,15 @@ export namespace Prisma {
     delete<T extends ressources_eauDeleteArgs>(
       args: SelectSubset<T, ressources_eauDeleteArgs<ExtArgs>>
     ): Prisma__ressources_eauClient<
-      $Result.GetResult<Prisma.$ressources_eauPayload<ExtArgs>, T, 'delete'>,
+      $Result.GetResult<
+        Prisma.$ressources_eauPayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -10389,9 +11802,15 @@ export namespace Prisma {
     update<T extends ressources_eauUpdateArgs>(
       args: SelectSubset<T, ressources_eauUpdateArgs<ExtArgs>>
     ): Prisma__ressources_eauClient<
-      $Result.GetResult<Prisma.$ressources_eauPayload<ExtArgs>, T, 'update'>,
+      $Result.GetResult<
+        Prisma.$ressources_eauPayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -10432,6 +11851,45 @@ export namespace Prisma {
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
+     * Update zero or more Ressources_eaus and returns the data updated in the database.
+     * @param {ressources_eauUpdateManyAndReturnArgs} args - Arguments to update many Ressources_eaus.
+     * @example
+     * // Update many Ressources_eaus
+     * const ressources_eau = await prisma.ressources_eau.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Ressources_eaus and only return the `index`
+     * const ressources_eauWithIndexOnly = await prisma.ressources_eau.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends ressources_eauUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, ressources_eauUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$ressources_eauPayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
      * Create or update one Ressources_eau.
      * @param {ressources_eauUpsertArgs} args - Arguments to update or create a Ressources_eau.
      * @example
@@ -10451,9 +11909,15 @@ export namespace Prisma {
     upsert<T extends ressources_eauUpsertArgs>(
       args: SelectSubset<T, ressources_eauUpsertArgs<ExtArgs>>
     ): Prisma__ressources_eauClient<
-      $Result.GetResult<Prisma.$ressources_eauPayload<ExtArgs>, T, 'upsert'>,
+      $Result.GetResult<
+        Prisma.$ressources_eauPayload<ExtArgs>,
+        T,
+        'upsert',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -10605,7 +12069,8 @@ export namespace Prisma {
   export interface Prisma__ressources_eauClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -10684,6 +12149,10 @@ export namespace Prisma {
      */
     select?: ressources_eauSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the ressources_eau
+     */
+    omit?: ressources_eauOmit<ExtArgs> | null;
+    /**
      * Filter, which ressources_eau to fetch.
      */
     where: ressources_eauWhereUniqueInput;
@@ -10700,6 +12169,10 @@ export namespace Prisma {
      */
     select?: ressources_eauSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the ressources_eau
+     */
+    omit?: ressources_eauOmit<ExtArgs> | null;
+    /**
      * Filter, which ressources_eau to fetch.
      */
     where: ressources_eauWhereUniqueInput;
@@ -10715,6 +12188,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the ressources_eau
      */
     select?: ressources_eauSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ressources_eau
+     */
+    omit?: ressources_eauOmit<ExtArgs> | null;
     /**
      * Filter, which ressources_eau to fetch.
      */
@@ -10764,6 +12241,10 @@ export namespace Prisma {
      */
     select?: ressources_eauSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the ressources_eau
+     */
+    omit?: ressources_eauOmit<ExtArgs> | null;
+    /**
      * Filter, which ressources_eau to fetch.
      */
     where?: ressources_eauWhereInput;
@@ -10812,6 +12293,10 @@ export namespace Prisma {
      */
     select?: ressources_eauSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the ressources_eau
+     */
+    omit?: ressources_eauOmit<ExtArgs> | null;
+    /**
      * Filter, which ressources_eaus to fetch.
      */
     where?: ressources_eauWhereInput;
@@ -10855,6 +12340,10 @@ export namespace Prisma {
      */
     select?: ressources_eauSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the ressources_eau
+     */
+    omit?: ressources_eauOmit<ExtArgs> | null;
+    /**
      * The data needed to create a ressources_eau.
      */
     data: XOR<ressources_eauCreateInput, ressources_eauUncheckedCreateInput>;
@@ -10884,6 +12373,10 @@ export namespace Prisma {
      */
     select?: ressources_eauSelectCreateManyAndReturn<ExtArgs> | null;
     /**
+     * Omit specific fields from the ressources_eau
+     */
+    omit?: ressources_eauOmit<ExtArgs> | null;
+    /**
      * The data used to create many ressources_eaus.
      */
     data: ressources_eauCreateManyInput | ressources_eauCreateManyInput[];
@@ -10900,6 +12393,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the ressources_eau
      */
     select?: ressources_eauSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ressources_eau
+     */
+    omit?: ressources_eauOmit<ExtArgs> | null;
     /**
      * The data needed to update a ressources_eau.
      */
@@ -10927,6 +12424,41 @@ export namespace Prisma {
      * Filter which ressources_eaus to update
      */
     where?: ressources_eauWhereInput;
+    /**
+     * Limit how many ressources_eaus to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * ressources_eau updateManyAndReturn
+   */
+  export type ressources_eauUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the ressources_eau
+     */
+    select?: ressources_eauSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ressources_eau
+     */
+    omit?: ressources_eauOmit<ExtArgs> | null;
+    /**
+     * The data used to update ressources_eaus.
+     */
+    data: XOR<
+      ressources_eauUpdateManyMutationInput,
+      ressources_eauUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which ressources_eaus to update
+     */
+    where?: ressources_eauWhereInput;
+    /**
+     * Limit how many ressources_eaus to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -10939,6 +12471,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the ressources_eau
      */
     select?: ressources_eauSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ressources_eau
+     */
+    omit?: ressources_eauOmit<ExtArgs> | null;
     /**
      * The filter to search for the ressources_eau to update in case it exists.
      */
@@ -10964,6 +12500,10 @@ export namespace Prisma {
      */
     select?: ressources_eauSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the ressources_eau
+     */
+    omit?: ressources_eauOmit<ExtArgs> | null;
+    /**
      * Filter which ressources_eau to delete.
      */
     where: ressources_eauWhereUniqueInput;
@@ -10979,6 +12519,10 @@ export namespace Prisma {
      * Filter which ressources_eaus to delete
      */
     where?: ressources_eauWhereInput;
+    /**
+     * Limit how many ressources_eaus to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -10991,6 +12535,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the ressources_eau
      */
     select?: ressources_eauSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ressources_eau
+     */
+    omit?: ressources_eauOmit<ExtArgs> | null;
   };
 
   /**
@@ -11323,6 +12871,27 @@ export namespace Prisma {
     ExtArgs['result']['agriculture_bio']
   >;
 
+  export type agriculture_bioSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      epci?: boolean;
+      libelle_epci?: boolean;
+      VARIABLE?: boolean;
+      LIBELLE_SOUS_CHAMP?: boolean;
+      surface_2022?: boolean;
+      surface_2021?: boolean;
+      surface_2020?: boolean;
+      surface_2019?: boolean;
+      nombre_2022?: boolean;
+      nombre_2021?: boolean;
+      nombre_2020?: boolean;
+      nombre_2019?: boolean;
+    },
+    ExtArgs['result']['agriculture_bio']
+  >;
+
   export type agriculture_bioSelectScalar = {
     index?: boolean;
     epci?: boolean;
@@ -11338,6 +12907,25 @@ export namespace Prisma {
     nombre_2020?: boolean;
     nombre_2019?: boolean;
   };
+
+  export type agriculture_bioOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'index'
+    | 'epci'
+    | 'libelle_epci'
+    | 'VARIABLE'
+    | 'LIBELLE_SOUS_CHAMP'
+    | 'surface_2022'
+    | 'surface_2021'
+    | 'surface_2020'
+    | 'surface_2019'
+    | 'nombre_2022'
+    | 'nombre_2021'
+    | 'nombre_2020'
+    | 'nombre_2019',
+    ExtArgs['result']['agriculture_bio']
+  >;
 
   export type $agriculture_bioPayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -11371,12 +12959,16 @@ export namespace Prisma {
 
   type agriculture_bioCountArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<agriculture_bioFindManyArgs, 'select' | 'include' | 'distinct'> & {
+  > = Omit<
+    agriculture_bioFindManyArgs,
+    'select' | 'include' | 'distinct' | 'omit'
+  > & {
     select?: Agriculture_bioCountAggregateInputType | true;
   };
 
   export interface agriculture_bioDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['agriculture_bio'];
@@ -11399,10 +12991,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$agriculture_bioPayload<ExtArgs>,
         T,
-        'findUnique'
+        'findUnique',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -11423,10 +13017,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$agriculture_bioPayload<ExtArgs>,
         T,
-        'findUniqueOrThrow'
+        'findUniqueOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -11448,10 +13044,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$agriculture_bioPayload<ExtArgs>,
         T,
-        'findFirst'
+        'findFirst',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -11474,10 +13072,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$agriculture_bioPayload<ExtArgs>,
         T,
-        'findFirstOrThrow'
+        'findFirstOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -11499,7 +13099,12 @@ export namespace Prisma {
     findMany<T extends agriculture_bioFindManyArgs>(
       args?: SelectSubset<T, agriculture_bioFindManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$agriculture_bioPayload<ExtArgs>, T, 'findMany'>
+      $Result.GetResult<
+        Prisma.$agriculture_bioPayload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
     >;
 
     /**
@@ -11517,9 +13122,15 @@ export namespace Prisma {
     create<T extends agriculture_bioCreateArgs>(
       args: SelectSubset<T, agriculture_bioCreateArgs<ExtArgs>>
     ): Prisma__agriculture_bioClient<
-      $Result.GetResult<Prisma.$agriculture_bioPayload<ExtArgs>, T, 'create'>,
+      $Result.GetResult<
+        Prisma.$agriculture_bioPayload<ExtArgs>,
+        T,
+        'create',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -11566,7 +13177,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$agriculture_bioPayload<ExtArgs>,
         T,
-        'createManyAndReturn'
+        'createManyAndReturn',
+        ClientOptions
       >
     >;
 
@@ -11585,9 +13197,15 @@ export namespace Prisma {
     delete<T extends agriculture_bioDeleteArgs>(
       args: SelectSubset<T, agriculture_bioDeleteArgs<ExtArgs>>
     ): Prisma__agriculture_bioClient<
-      $Result.GetResult<Prisma.$agriculture_bioPayload<ExtArgs>, T, 'delete'>,
+      $Result.GetResult<
+        Prisma.$agriculture_bioPayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -11608,9 +13226,15 @@ export namespace Prisma {
     update<T extends agriculture_bioUpdateArgs>(
       args: SelectSubset<T, agriculture_bioUpdateArgs<ExtArgs>>
     ): Prisma__agriculture_bioClient<
-      $Result.GetResult<Prisma.$agriculture_bioPayload<ExtArgs>, T, 'update'>,
+      $Result.GetResult<
+        Prisma.$agriculture_bioPayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -11651,6 +13275,45 @@ export namespace Prisma {
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
+     * Update zero or more Agriculture_bios and returns the data updated in the database.
+     * @param {agriculture_bioUpdateManyAndReturnArgs} args - Arguments to update many Agriculture_bios.
+     * @example
+     * // Update many Agriculture_bios
+     * const agriculture_bio = await prisma.agriculture_bio.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Agriculture_bios and only return the `index`
+     * const agriculture_bioWithIndexOnly = await prisma.agriculture_bio.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends agriculture_bioUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, agriculture_bioUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$agriculture_bioPayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
      * Create or update one Agriculture_bio.
      * @param {agriculture_bioUpsertArgs} args - Arguments to update or create a Agriculture_bio.
      * @example
@@ -11670,9 +13333,15 @@ export namespace Prisma {
     upsert<T extends agriculture_bioUpsertArgs>(
       args: SelectSubset<T, agriculture_bioUpsertArgs<ExtArgs>>
     ): Prisma__agriculture_bioClient<
-      $Result.GetResult<Prisma.$agriculture_bioPayload<ExtArgs>, T, 'upsert'>,
+      $Result.GetResult<
+        Prisma.$agriculture_bioPayload<ExtArgs>,
+        T,
+        'upsert',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -11824,7 +13493,8 @@ export namespace Prisma {
   export interface Prisma__agriculture_bioClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -11894,6 +13564,10 @@ export namespace Prisma {
      */
     select?: agriculture_bioSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the agriculture_bio
+     */
+    omit?: agriculture_bioOmit<ExtArgs> | null;
+    /**
      * Filter, which agriculture_bio to fetch.
      */
     where: agriculture_bioWhereUniqueInput;
@@ -11910,6 +13584,10 @@ export namespace Prisma {
      */
     select?: agriculture_bioSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the agriculture_bio
+     */
+    omit?: agriculture_bioOmit<ExtArgs> | null;
+    /**
      * Filter, which agriculture_bio to fetch.
      */
     where: agriculture_bioWhereUniqueInput;
@@ -11925,6 +13603,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the agriculture_bio
      */
     select?: agriculture_bioSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture_bio
+     */
+    omit?: agriculture_bioOmit<ExtArgs> | null;
     /**
      * Filter, which agriculture_bio to fetch.
      */
@@ -11976,6 +13658,10 @@ export namespace Prisma {
      */
     select?: agriculture_bioSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the agriculture_bio
+     */
+    omit?: agriculture_bioOmit<ExtArgs> | null;
+    /**
      * Filter, which agriculture_bio to fetch.
      */
     where?: agriculture_bioWhereInput;
@@ -12026,6 +13712,10 @@ export namespace Prisma {
      */
     select?: agriculture_bioSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the agriculture_bio
+     */
+    omit?: agriculture_bioOmit<ExtArgs> | null;
+    /**
      * Filter, which agriculture_bios to fetch.
      */
     where?: agriculture_bioWhereInput;
@@ -12071,6 +13761,10 @@ export namespace Prisma {
      */
     select?: agriculture_bioSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the agriculture_bio
+     */
+    omit?: agriculture_bioOmit<ExtArgs> | null;
+    /**
      * The data needed to create a agriculture_bio.
      */
     data: XOR<agriculture_bioCreateInput, agriculture_bioUncheckedCreateInput>;
@@ -12100,6 +13794,10 @@ export namespace Prisma {
      */
     select?: agriculture_bioSelectCreateManyAndReturn<ExtArgs> | null;
     /**
+     * Omit specific fields from the agriculture_bio
+     */
+    omit?: agriculture_bioOmit<ExtArgs> | null;
+    /**
      * The data used to create many agriculture_bios.
      */
     data: agriculture_bioCreateManyInput | agriculture_bioCreateManyInput[];
@@ -12116,6 +13814,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the agriculture_bio
      */
     select?: agriculture_bioSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture_bio
+     */
+    omit?: agriculture_bioOmit<ExtArgs> | null;
     /**
      * The data needed to update a agriculture_bio.
      */
@@ -12143,6 +13845,41 @@ export namespace Prisma {
      * Filter which agriculture_bios to update
      */
     where?: agriculture_bioWhereInput;
+    /**
+     * Limit how many agriculture_bios to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * agriculture_bio updateManyAndReturn
+   */
+  export type agriculture_bioUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the agriculture_bio
+     */
+    select?: agriculture_bioSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture_bio
+     */
+    omit?: agriculture_bioOmit<ExtArgs> | null;
+    /**
+     * The data used to update agriculture_bios.
+     */
+    data: XOR<
+      agriculture_bioUpdateManyMutationInput,
+      agriculture_bioUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which agriculture_bios to update
+     */
+    where?: agriculture_bioWhereInput;
+    /**
+     * Limit how many agriculture_bios to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -12155,6 +13892,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the agriculture_bio
      */
     select?: agriculture_bioSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture_bio
+     */
+    omit?: agriculture_bioOmit<ExtArgs> | null;
     /**
      * The filter to search for the agriculture_bio to update in case it exists.
      */
@@ -12186,6 +13927,10 @@ export namespace Prisma {
      */
     select?: agriculture_bioSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the agriculture_bio
+     */
+    omit?: agriculture_bioOmit<ExtArgs> | null;
+    /**
      * Filter which agriculture_bio to delete.
      */
     where: agriculture_bioWhereUniqueInput;
@@ -12201,6 +13946,10 @@ export namespace Prisma {
      * Filter which agriculture_bios to delete
      */
     where?: agriculture_bioWhereInput;
+    /**
+     * Limit how many agriculture_bios to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -12213,6 +13962,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the agriculture_bio
      */
     select?: agriculture_bioSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture_bio
+     */
+    omit?: agriculture_bioOmit<ExtArgs> | null;
   };
 
   /**
@@ -12444,6 +14197,19 @@ export namespace Prisma {
     ExtArgs['result']['erosion_cotiere']
   >;
 
+  export type erosion_cotiereSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      pk?: boolean;
+      taux?: boolean;
+      duree?: boolean;
+      tdc_ancien?: boolean;
+      tdc_rec?: boolean;
+    },
+    ExtArgs['result']['erosion_cotiere']
+  >;
+
   export type erosion_cotiereSelectScalar = {
     pk?: boolean;
     taux?: boolean;
@@ -12451,6 +14217,13 @@ export namespace Prisma {
     tdc_ancien?: boolean;
     tdc_rec?: boolean;
   };
+
+  export type erosion_cotiereOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    'pk' | 'taux' | 'duree' | 'tdc_ancien' | 'tdc_rec',
+    ExtArgs['result']['erosion_cotiere']
+  >;
 
   export type $erosion_cotierePayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -12476,12 +14249,16 @@ export namespace Prisma {
 
   type erosion_cotiereCountArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<erosion_cotiereFindManyArgs, 'select' | 'include' | 'distinct'> & {
+  > = Omit<
+    erosion_cotiereFindManyArgs,
+    'select' | 'include' | 'distinct' | 'omit'
+  > & {
     select?: Erosion_cotiereCountAggregateInputType | true;
   };
 
   export interface erosion_cotiereDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['erosion_cotiere'];
@@ -12504,10 +14281,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$erosion_cotierePayload<ExtArgs>,
         T,
-        'findUnique'
+        'findUnique',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -12528,10 +14307,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$erosion_cotierePayload<ExtArgs>,
         T,
-        'findUniqueOrThrow'
+        'findUniqueOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -12553,10 +14334,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$erosion_cotierePayload<ExtArgs>,
         T,
-        'findFirst'
+        'findFirst',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -12579,10 +14362,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$erosion_cotierePayload<ExtArgs>,
         T,
-        'findFirstOrThrow'
+        'findFirstOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -12604,7 +14389,12 @@ export namespace Prisma {
     findMany<T extends erosion_cotiereFindManyArgs>(
       args?: SelectSubset<T, erosion_cotiereFindManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, 'findMany'>
+      $Result.GetResult<
+        Prisma.$erosion_cotierePayload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
     >;
 
     /**
@@ -12622,9 +14412,15 @@ export namespace Prisma {
     delete<T extends erosion_cotiereDeleteArgs>(
       args: SelectSubset<T, erosion_cotiereDeleteArgs<ExtArgs>>
     ): Prisma__erosion_cotiereClient<
-      $Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, 'delete'>,
+      $Result.GetResult<
+        Prisma.$erosion_cotierePayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -12645,9 +14441,15 @@ export namespace Prisma {
     update<T extends erosion_cotiereUpdateArgs>(
       args: SelectSubset<T, erosion_cotiereUpdateArgs<ExtArgs>>
     ): Prisma__erosion_cotiereClient<
-      $Result.GetResult<Prisma.$erosion_cotierePayload<ExtArgs>, T, 'update'>,
+      $Result.GetResult<
+        Prisma.$erosion_cotierePayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -12686,6 +14488,45 @@ export namespace Prisma {
     updateMany<T extends erosion_cotiereUpdateManyArgs>(
       args: SelectSubset<T, erosion_cotiereUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Erosion_cotieres and returns the data updated in the database.
+     * @param {erosion_cotiereUpdateManyAndReturnArgs} args - Arguments to update many Erosion_cotieres.
+     * @example
+     * // Update many Erosion_cotieres
+     * const erosion_cotiere = await prisma.erosion_cotiere.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Erosion_cotieres and only return the `pk`
+     * const erosion_cotiereWithPkOnly = await prisma.erosion_cotiere.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends erosion_cotiereUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, erosion_cotiereUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$erosion_cotierePayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
 
     /**
      * Count the number of Erosion_cotieres.
@@ -12836,7 +14677,8 @@ export namespace Prisma {
   export interface Prisma__erosion_cotiereClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -12898,6 +14740,10 @@ export namespace Prisma {
      */
     select?: erosion_cotiereSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null;
+    /**
      * Filter, which erosion_cotiere to fetch.
      */
     where: erosion_cotiereWhereUniqueInput;
@@ -12914,6 +14760,10 @@ export namespace Prisma {
      */
     select?: erosion_cotiereSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null;
+    /**
      * Filter, which erosion_cotiere to fetch.
      */
     where: erosion_cotiereWhereUniqueInput;
@@ -12929,6 +14779,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the erosion_cotiere
      */
     select?: erosion_cotiereSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null;
     /**
      * Filter, which erosion_cotiere to fetch.
      */
@@ -12980,6 +14834,10 @@ export namespace Prisma {
      */
     select?: erosion_cotiereSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null;
+    /**
      * Filter, which erosion_cotiere to fetch.
      */
     where?: erosion_cotiereWhereInput;
@@ -13030,6 +14888,10 @@ export namespace Prisma {
      */
     select?: erosion_cotiereSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null;
+    /**
      * Filter, which erosion_cotieres to fetch.
      */
     where?: erosion_cotiereWhereInput;
@@ -13075,6 +14937,10 @@ export namespace Prisma {
      */
     select?: erosion_cotiereSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null;
+    /**
      * The data needed to update a erosion_cotiere.
      */
     data: XOR<erosion_cotiereUpdateInput, erosion_cotiereUncheckedUpdateInput>;
@@ -13101,6 +14967,41 @@ export namespace Prisma {
      * Filter which erosion_cotieres to update
      */
     where?: erosion_cotiereWhereInput;
+    /**
+     * Limit how many erosion_cotieres to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * erosion_cotiere updateManyAndReturn
+   */
+  export type erosion_cotiereUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the erosion_cotiere
+     */
+    select?: erosion_cotiereSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null;
+    /**
+     * The data used to update erosion_cotieres.
+     */
+    data: XOR<
+      erosion_cotiereUpdateManyMutationInput,
+      erosion_cotiereUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which erosion_cotieres to update
+     */
+    where?: erosion_cotiereWhereInput;
+    /**
+     * Limit how many erosion_cotieres to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -13113,6 +15014,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the erosion_cotiere
      */
     select?: erosion_cotiereSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null;
     /**
      * Filter which erosion_cotiere to delete.
      */
@@ -13129,6 +15034,10 @@ export namespace Prisma {
      * Filter which erosion_cotieres to delete
      */
     where?: erosion_cotiereWhereInput;
+    /**
+     * Limit how many erosion_cotieres to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -13141,6 +15050,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the erosion_cotiere
      */
     select?: erosion_cotiereSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the erosion_cotiere
+     */
+    omit?: erosion_cotiereOmit<ExtArgs> | null;
   };
 
   /**
@@ -13324,10 +15237,24 @@ export namespace Prisma {
     ExtArgs['result']['epci']
   >;
 
+  export type epciSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      pk?: boolean;
+      epci_code?: boolean;
+    },
+    ExtArgs['result']['epci']
+  >;
+
   export type epciSelectScalar = {
     pk?: boolean;
     epci_code?: boolean;
   };
+
+  export type epciOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<'pk' | 'epci_code', ExtArgs['result']['epci']>;
 
   export type $epciPayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -13349,12 +15276,13 @@ export namespace Prisma {
 
   type epciCountArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<epciFindManyArgs, 'select' | 'include' | 'distinct'> & {
+  > = Omit<epciFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
     select?: EpciCountAggregateInputType | true;
   };
 
   export interface epciDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['epci'];
@@ -13374,9 +15302,15 @@ export namespace Prisma {
     findUnique<T extends epciFindUniqueArgs>(
       args: SelectSubset<T, epciFindUniqueArgs<ExtArgs>>
     ): Prisma__epciClient<
-      $Result.GetResult<Prisma.$epciPayload<ExtArgs>, T, 'findUnique'> | null,
+      $Result.GetResult<
+        Prisma.$epciPayload<ExtArgs>,
+        T,
+        'findUnique',
+        ClientOptions
+      > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -13394,9 +15328,15 @@ export namespace Prisma {
     findUniqueOrThrow<T extends epciFindUniqueOrThrowArgs>(
       args: SelectSubset<T, epciFindUniqueOrThrowArgs<ExtArgs>>
     ): Prisma__epciClient<
-      $Result.GetResult<Prisma.$epciPayload<ExtArgs>, T, 'findUniqueOrThrow'>,
+      $Result.GetResult<
+        Prisma.$epciPayload<ExtArgs>,
+        T,
+        'findUniqueOrThrow',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -13415,9 +15355,15 @@ export namespace Prisma {
     findFirst<T extends epciFindFirstArgs>(
       args?: SelectSubset<T, epciFindFirstArgs<ExtArgs>>
     ): Prisma__epciClient<
-      $Result.GetResult<Prisma.$epciPayload<ExtArgs>, T, 'findFirst'> | null,
+      $Result.GetResult<
+        Prisma.$epciPayload<ExtArgs>,
+        T,
+        'findFirst',
+        ClientOptions
+      > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -13437,9 +15383,15 @@ export namespace Prisma {
     findFirstOrThrow<T extends epciFindFirstOrThrowArgs>(
       args?: SelectSubset<T, epciFindFirstOrThrowArgs<ExtArgs>>
     ): Prisma__epciClient<
-      $Result.GetResult<Prisma.$epciPayload<ExtArgs>, T, 'findFirstOrThrow'>,
+      $Result.GetResult<
+        Prisma.$epciPayload<ExtArgs>,
+        T,
+        'findFirstOrThrow',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -13461,7 +15413,12 @@ export namespace Prisma {
     findMany<T extends epciFindManyArgs>(
       args?: SelectSubset<T, epciFindManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$epciPayload<ExtArgs>, T, 'findMany'>
+      $Result.GetResult<
+        Prisma.$epciPayload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
     >;
 
     /**
@@ -13479,9 +15436,15 @@ export namespace Prisma {
     delete<T extends epciDeleteArgs>(
       args: SelectSubset<T, epciDeleteArgs<ExtArgs>>
     ): Prisma__epciClient<
-      $Result.GetResult<Prisma.$epciPayload<ExtArgs>, T, 'delete'>,
+      $Result.GetResult<
+        Prisma.$epciPayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -13502,9 +15465,15 @@ export namespace Prisma {
     update<T extends epciUpdateArgs>(
       args: SelectSubset<T, epciUpdateArgs<ExtArgs>>
     ): Prisma__epciClient<
-      $Result.GetResult<Prisma.$epciPayload<ExtArgs>, T, 'update'>,
+      $Result.GetResult<
+        Prisma.$epciPayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -13543,6 +15512,45 @@ export namespace Prisma {
     updateMany<T extends epciUpdateManyArgs>(
       args: SelectSubset<T, epciUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Epcis and returns the data updated in the database.
+     * @param {epciUpdateManyAndReturnArgs} args - Arguments to update many Epcis.
+     * @example
+     * // Update many Epcis
+     * const epci = await prisma.epci.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Epcis and only return the `pk`
+     * const epciWithPkOnly = await prisma.epci.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends epciUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, epciUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$epciPayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
 
     /**
      * Count the number of Epcis.
@@ -13692,7 +15700,8 @@ export namespace Prisma {
   export interface Prisma__epciClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -13751,6 +15760,10 @@ export namespace Prisma {
      */
     select?: epciSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the epci
+     */
+    omit?: epciOmit<ExtArgs> | null;
+    /**
      * Filter, which epci to fetch.
      */
     where: epciWhereUniqueInput;
@@ -13767,6 +15780,10 @@ export namespace Prisma {
      */
     select?: epciSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the epci
+     */
+    omit?: epciOmit<ExtArgs> | null;
+    /**
      * Filter, which epci to fetch.
      */
     where: epciWhereUniqueInput;
@@ -13782,6 +15799,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the epci
      */
     select?: epciSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the epci
+     */
+    omit?: epciOmit<ExtArgs> | null;
     /**
      * Filter, which epci to fetch.
      */
@@ -13829,6 +15850,10 @@ export namespace Prisma {
      */
     select?: epciSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the epci
+     */
+    omit?: epciOmit<ExtArgs> | null;
+    /**
      * Filter, which epci to fetch.
      */
     where?: epciWhereInput;
@@ -13875,6 +15900,10 @@ export namespace Prisma {
      */
     select?: epciSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the epci
+     */
+    omit?: epciOmit<ExtArgs> | null;
+    /**
      * Filter, which epcis to fetch.
      */
     where?: epciWhereInput;
@@ -13916,6 +15945,10 @@ export namespace Prisma {
      */
     select?: epciSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the epci
+     */
+    omit?: epciOmit<ExtArgs> | null;
+    /**
      * The data needed to update a epci.
      */
     data: XOR<epciUpdateInput, epciUncheckedUpdateInput>;
@@ -13939,6 +15972,38 @@ export namespace Prisma {
      * Filter which epcis to update
      */
     where?: epciWhereInput;
+    /**
+     * Limit how many epcis to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * epci updateManyAndReturn
+   */
+  export type epciUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the epci
+     */
+    select?: epciSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the epci
+     */
+    omit?: epciOmit<ExtArgs> | null;
+    /**
+     * The data used to update epcis.
+     */
+    data: XOR<epciUpdateManyMutationInput, epciUncheckedUpdateManyInput>;
+    /**
+     * Filter which epcis to update
+     */
+    where?: epciWhereInput;
+    /**
+     * Limit how many epcis to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -13951,6 +16016,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the epci
      */
     select?: epciSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the epci
+     */
+    omit?: epciOmit<ExtArgs> | null;
     /**
      * Filter which epci to delete.
      */
@@ -13967,6 +16036,10 @@ export namespace Prisma {
      * Filter which epcis to delete
      */
     where?: epciWhereInput;
+    /**
+     * Limit how many epcis to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -13979,6 +16052,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the epci
      */
     select?: epciSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the epci
+     */
+    omit?: epciOmit<ExtArgs> | null;
   };
 
   /**
@@ -14401,6 +16478,40 @@ export namespace Prisma {
     ExtArgs['result']['surfaces_protegees']
   >;
 
+  export type surfaces_protegeesSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_geographique?: boolean;
+      PNC?: boolean;
+      RAMSAR?: boolean;
+      PNR?: boolean;
+      PNP?: boolean;
+      FOR_PRO?: boolean;
+      ZZZ?: boolean;
+      ZNIEFF2?: boolean;
+      ZNIEFF1?: boolean;
+      RNR?: boolean;
+      TOU_PRO?: boolean;
+      NATURA?: boolean;
+      ZPS?: boolean;
+      SIC?: boolean;
+      CELRL?: boolean;
+      BIO?: boolean;
+      APB?: boolean;
+      RN?: boolean;
+      RBFD?: boolean;
+      RNCFS?: boolean;
+      libelle_geographique?: boolean;
+      epci?: boolean;
+      libelle_epci?: boolean;
+      departement?: boolean;
+      region?: boolean;
+    },
+    ExtArgs['result']['surfaces_protegees']
+  >;
+
   export type surfaces_protegeesSelectScalar = {
     index?: boolean;
     code_geographique?: boolean;
@@ -14429,6 +16540,38 @@ export namespace Prisma {
     departement?: boolean;
     region?: boolean;
   };
+
+  export type surfaces_protegeesOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'index'
+    | 'code_geographique'
+    | 'PNC'
+    | 'RAMSAR'
+    | 'PNR'
+    | 'PNP'
+    | 'FOR_PRO'
+    | 'ZZZ'
+    | 'ZNIEFF2'
+    | 'ZNIEFF1'
+    | 'RNR'
+    | 'TOU_PRO'
+    | 'NATURA'
+    | 'ZPS'
+    | 'SIC'
+    | 'CELRL'
+    | 'BIO'
+    | 'APB'
+    | 'RN'
+    | 'RBFD'
+    | 'RNCFS'
+    | 'libelle_geographique'
+    | 'epci'
+    | 'libelle_epci'
+    | 'departement'
+    | 'region',
+    ExtArgs['result']['surfaces_protegees']
+  >;
 
   export type $surfaces_protegeesPayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -14477,13 +16620,14 @@ export namespace Prisma {
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = Omit<
     surfaces_protegeesFindManyArgs,
-    'select' | 'include' | 'distinct'
+    'select' | 'include' | 'distinct' | 'omit'
   > & {
     select?: Surfaces_protegeesCountAggregateInputType | true;
   };
 
   export interface surfaces_protegeesDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['surfaces_protegees'];
@@ -14506,10 +16650,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$surfaces_protegeesPayload<ExtArgs>,
         T,
-        'findUnique'
+        'findUnique',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -14530,10 +16676,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$surfaces_protegeesPayload<ExtArgs>,
         T,
-        'findUniqueOrThrow'
+        'findUniqueOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -14555,10 +16703,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$surfaces_protegeesPayload<ExtArgs>,
         T,
-        'findFirst'
+        'findFirst',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -14581,10 +16731,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$surfaces_protegeesPayload<ExtArgs>,
         T,
-        'findFirstOrThrow'
+        'findFirstOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -14609,7 +16761,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$surfaces_protegeesPayload<ExtArgs>,
         T,
-        'findMany'
+        'findMany',
+        ClientOptions
       >
     >;
 
@@ -14631,10 +16784,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$surfaces_protegeesPayload<ExtArgs>,
         T,
-        'create'
+        'create',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -14681,7 +16836,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$surfaces_protegeesPayload<ExtArgs>,
         T,
-        'createManyAndReturn'
+        'createManyAndReturn',
+        ClientOptions
       >
     >;
 
@@ -14703,10 +16859,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$surfaces_protegeesPayload<ExtArgs>,
         T,
-        'delete'
+        'delete',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -14730,10 +16888,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$surfaces_protegeesPayload<ExtArgs>,
         T,
-        'update'
+        'update',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -14774,6 +16934,45 @@ export namespace Prisma {
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
+     * Update zero or more Surfaces_protegees and returns the data updated in the database.
+     * @param {surfaces_protegeesUpdateManyAndReturnArgs} args - Arguments to update many Surfaces_protegees.
+     * @example
+     * // Update many Surfaces_protegees
+     * const surfaces_protegees = await prisma.surfaces_protegees.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Surfaces_protegees and only return the `index`
+     * const surfaces_protegeesWithIndexOnly = await prisma.surfaces_protegees.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends surfaces_protegeesUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, surfaces_protegeesUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$surfaces_protegeesPayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
      * Create or update one Surfaces_protegees.
      * @param {surfaces_protegeesUpsertArgs} args - Arguments to update or create a Surfaces_protegees.
      * @example
@@ -14796,10 +16995,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$surfaces_protegeesPayload<ExtArgs>,
         T,
-        'upsert'
+        'upsert',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -14954,7 +17155,8 @@ export namespace Prisma {
   export interface Prisma__surfaces_protegeesClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -15037,6 +17239,10 @@ export namespace Prisma {
      */
     select?: surfaces_protegeesSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null;
+    /**
      * Filter, which surfaces_protegees to fetch.
      */
     where: surfaces_protegeesWhereUniqueInput;
@@ -15053,6 +17259,10 @@ export namespace Prisma {
      */
     select?: surfaces_protegeesSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null;
+    /**
      * Filter, which surfaces_protegees to fetch.
      */
     where: surfaces_protegeesWhereUniqueInput;
@@ -15068,6 +17278,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the surfaces_protegees
      */
     select?: surfaces_protegeesSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null;
     /**
      * Filter, which surfaces_protegees to fetch.
      */
@@ -15119,6 +17333,10 @@ export namespace Prisma {
      */
     select?: surfaces_protegeesSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null;
+    /**
      * Filter, which surfaces_protegees to fetch.
      */
     where?: surfaces_protegeesWhereInput;
@@ -15169,6 +17387,10 @@ export namespace Prisma {
      */
     select?: surfaces_protegeesSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null;
+    /**
      * Filter, which surfaces_protegees to fetch.
      */
     where?: surfaces_protegeesWhereInput;
@@ -15214,6 +17436,10 @@ export namespace Prisma {
      */
     select?: surfaces_protegeesSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null;
+    /**
      * The data needed to create a surfaces_protegees.
      */
     data: XOR<
@@ -15248,6 +17474,10 @@ export namespace Prisma {
      */
     select?: surfaces_protegeesSelectCreateManyAndReturn<ExtArgs> | null;
     /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null;
+    /**
      * The data used to create many surfaces_protegees.
      */
     data:
@@ -15266,6 +17496,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the surfaces_protegees
      */
     select?: surfaces_protegeesSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null;
     /**
      * The data needed to update a surfaces_protegees.
      */
@@ -15296,6 +17530,41 @@ export namespace Prisma {
      * Filter which surfaces_protegees to update
      */
     where?: surfaces_protegeesWhereInput;
+    /**
+     * Limit how many surfaces_protegees to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * surfaces_protegees updateManyAndReturn
+   */
+  export type surfaces_protegeesUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the surfaces_protegees
+     */
+    select?: surfaces_protegeesSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null;
+    /**
+     * The data used to update surfaces_protegees.
+     */
+    data: XOR<
+      surfaces_protegeesUpdateManyMutationInput,
+      surfaces_protegeesUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which surfaces_protegees to update
+     */
+    where?: surfaces_protegeesWhereInput;
+    /**
+     * Limit how many surfaces_protegees to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -15308,6 +17577,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the surfaces_protegees
      */
     select?: surfaces_protegeesSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null;
     /**
      * The filter to search for the surfaces_protegees to update in case it exists.
      */
@@ -15339,6 +17612,10 @@ export namespace Prisma {
      */
     select?: surfaces_protegeesSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null;
+    /**
      * Filter which surfaces_protegees to delete.
      */
     where: surfaces_protegeesWhereUniqueInput;
@@ -15354,6 +17631,10 @@ export namespace Prisma {
      * Filter which surfaces_protegees to delete
      */
     where?: surfaces_protegeesWhereInput;
+    /**
+     * Limit how many surfaces_protegees to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -15366,6 +17647,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the surfaces_protegees
      */
     select?: surfaces_protegeesSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the surfaces_protegees
+     */
+    omit?: surfaces_protegeesOmit<ExtArgs> | null;
   };
 
   /**
@@ -15598,6 +17883,19 @@ export namespace Prisma {
     ExtArgs['result']['spatial_ref_sys']
   >;
 
+  export type spatial_ref_sysSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      srid?: boolean;
+      auth_name?: boolean;
+      auth_srid?: boolean;
+      srtext?: boolean;
+      proj4text?: boolean;
+    },
+    ExtArgs['result']['spatial_ref_sys']
+  >;
+
   export type spatial_ref_sysSelectScalar = {
     srid?: boolean;
     auth_name?: boolean;
@@ -15605,6 +17903,13 @@ export namespace Prisma {
     srtext?: boolean;
     proj4text?: boolean;
   };
+
+  export type spatial_ref_sysOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    'srid' | 'auth_name' | 'auth_srid' | 'srtext' | 'proj4text',
+    ExtArgs['result']['spatial_ref_sys']
+  >;
 
   export type $spatial_ref_sysPayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -15630,12 +17935,16 @@ export namespace Prisma {
 
   type spatial_ref_sysCountArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<spatial_ref_sysFindManyArgs, 'select' | 'include' | 'distinct'> & {
+  > = Omit<
+    spatial_ref_sysFindManyArgs,
+    'select' | 'include' | 'distinct' | 'omit'
+  > & {
     select?: Spatial_ref_sysCountAggregateInputType | true;
   };
 
   export interface spatial_ref_sysDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['spatial_ref_sys'];
@@ -15658,10 +17967,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$spatial_ref_sysPayload<ExtArgs>,
         T,
-        'findUnique'
+        'findUnique',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -15682,10 +17993,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$spatial_ref_sysPayload<ExtArgs>,
         T,
-        'findUniqueOrThrow'
+        'findUniqueOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -15707,10 +18020,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$spatial_ref_sysPayload<ExtArgs>,
         T,
-        'findFirst'
+        'findFirst',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -15733,10 +18048,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$spatial_ref_sysPayload<ExtArgs>,
         T,
-        'findFirstOrThrow'
+        'findFirstOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -15758,7 +18075,12 @@ export namespace Prisma {
     findMany<T extends spatial_ref_sysFindManyArgs>(
       args?: SelectSubset<T, spatial_ref_sysFindManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'findMany'>
+      $Result.GetResult<
+        Prisma.$spatial_ref_sysPayload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
     >;
 
     /**
@@ -15776,9 +18098,15 @@ export namespace Prisma {
     create<T extends spatial_ref_sysCreateArgs>(
       args: SelectSubset<T, spatial_ref_sysCreateArgs<ExtArgs>>
     ): Prisma__spatial_ref_sysClient<
-      $Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'create'>,
+      $Result.GetResult<
+        Prisma.$spatial_ref_sysPayload<ExtArgs>,
+        T,
+        'create',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -15825,7 +18153,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$spatial_ref_sysPayload<ExtArgs>,
         T,
-        'createManyAndReturn'
+        'createManyAndReturn',
+        ClientOptions
       >
     >;
 
@@ -15844,9 +18173,15 @@ export namespace Prisma {
     delete<T extends spatial_ref_sysDeleteArgs>(
       args: SelectSubset<T, spatial_ref_sysDeleteArgs<ExtArgs>>
     ): Prisma__spatial_ref_sysClient<
-      $Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'delete'>,
+      $Result.GetResult<
+        Prisma.$spatial_ref_sysPayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -15867,9 +18202,15 @@ export namespace Prisma {
     update<T extends spatial_ref_sysUpdateArgs>(
       args: SelectSubset<T, spatial_ref_sysUpdateArgs<ExtArgs>>
     ): Prisma__spatial_ref_sysClient<
-      $Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'update'>,
+      $Result.GetResult<
+        Prisma.$spatial_ref_sysPayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -15910,6 +18251,45 @@ export namespace Prisma {
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
+     * Update zero or more Spatial_ref_sys and returns the data updated in the database.
+     * @param {spatial_ref_sysUpdateManyAndReturnArgs} args - Arguments to update many Spatial_ref_sys.
+     * @example
+     * // Update many Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Spatial_ref_sys and only return the `srid`
+     * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.updateManyAndReturn({
+     *   select: { srid: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends spatial_ref_sysUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, spatial_ref_sysUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$spatial_ref_sysPayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
      * Create or update one Spatial_ref_sys.
      * @param {spatial_ref_sysUpsertArgs} args - Arguments to update or create a Spatial_ref_sys.
      * @example
@@ -15929,9 +18309,15 @@ export namespace Prisma {
     upsert<T extends spatial_ref_sysUpsertArgs>(
       args: SelectSubset<T, spatial_ref_sysUpsertArgs<ExtArgs>>
     ): Prisma__spatial_ref_sysClient<
-      $Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, 'upsert'>,
+      $Result.GetResult<
+        Prisma.$spatial_ref_sysPayload<ExtArgs>,
+        T,
+        'upsert',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -16083,7 +18469,8 @@ export namespace Prisma {
   export interface Prisma__spatial_ref_sysClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -16145,6 +18532,10 @@ export namespace Prisma {
      */
     select?: spatial_ref_sysSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null;
+    /**
      * Filter, which spatial_ref_sys to fetch.
      */
     where: spatial_ref_sysWhereUniqueInput;
@@ -16161,6 +18552,10 @@ export namespace Prisma {
      */
     select?: spatial_ref_sysSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null;
+    /**
      * Filter, which spatial_ref_sys to fetch.
      */
     where: spatial_ref_sysWhereUniqueInput;
@@ -16176,6 +18571,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the spatial_ref_sys
      */
     select?: spatial_ref_sysSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null;
     /**
      * Filter, which spatial_ref_sys to fetch.
      */
@@ -16227,6 +18626,10 @@ export namespace Prisma {
      */
     select?: spatial_ref_sysSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null;
+    /**
      * Filter, which spatial_ref_sys to fetch.
      */
     where?: spatial_ref_sysWhereInput;
@@ -16277,6 +18680,10 @@ export namespace Prisma {
      */
     select?: spatial_ref_sysSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null;
+    /**
      * Filter, which spatial_ref_sys to fetch.
      */
     where?: spatial_ref_sysWhereInput;
@@ -16322,6 +18729,10 @@ export namespace Prisma {
      */
     select?: spatial_ref_sysSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null;
+    /**
      * The data needed to create a spatial_ref_sys.
      */
     data: XOR<spatial_ref_sysCreateInput, spatial_ref_sysUncheckedCreateInput>;
@@ -16351,6 +18762,10 @@ export namespace Prisma {
      */
     select?: spatial_ref_sysSelectCreateManyAndReturn<ExtArgs> | null;
     /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null;
+    /**
      * The data used to create many spatial_ref_sys.
      */
     data: spatial_ref_sysCreateManyInput | spatial_ref_sysCreateManyInput[];
@@ -16367,6 +18782,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the spatial_ref_sys
      */
     select?: spatial_ref_sysSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null;
     /**
      * The data needed to update a spatial_ref_sys.
      */
@@ -16394,6 +18813,41 @@ export namespace Prisma {
      * Filter which spatial_ref_sys to update
      */
     where?: spatial_ref_sysWhereInput;
+    /**
+     * Limit how many spatial_ref_sys to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * spatial_ref_sys updateManyAndReturn
+   */
+  export type spatial_ref_sysUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null;
+    /**
+     * The data used to update spatial_ref_sys.
+     */
+    data: XOR<
+      spatial_ref_sysUpdateManyMutationInput,
+      spatial_ref_sysUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which spatial_ref_sys to update
+     */
+    where?: spatial_ref_sysWhereInput;
+    /**
+     * Limit how many spatial_ref_sys to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -16406,6 +18860,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the spatial_ref_sys
      */
     select?: spatial_ref_sysSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null;
     /**
      * The filter to search for the spatial_ref_sys to update in case it exists.
      */
@@ -16437,6 +18895,10 @@ export namespace Prisma {
      */
     select?: spatial_ref_sysSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null;
+    /**
      * Filter which spatial_ref_sys to delete.
      */
     where: spatial_ref_sysWhereUniqueInput;
@@ -16452,6 +18914,10 @@ export namespace Prisma {
      * Filter which spatial_ref_sys to delete
      */
     where?: spatial_ref_sysWhereInput;
+    /**
+     * Limit how many spatial_ref_sys to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -16464,6 +18930,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the spatial_ref_sys
      */
     select?: spatial_ref_sysSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null;
   };
 
   /**
@@ -18303,6 +20773,143 @@ export namespace Prisma {
     ExtArgs['result']['consommation_espaces_naf']
   >;
 
+  export type consommation_espaces_nafSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_geographique?: boolean;
+      libelle_geographique?: boolean;
+      epci?: boolean;
+      libelle_epci?: boolean;
+      departement?: boolean;
+      region?: boolean;
+      naf09art10?: boolean;
+      art09act10?: boolean;
+      art09hab10?: boolean;
+      art09mix10?: boolean;
+      art09rou10?: boolean;
+      art09fer10?: boolean;
+      art09inc10?: boolean;
+      naf10art11?: boolean;
+      art10act11?: boolean;
+      art10hab11?: boolean;
+      art10mix11?: boolean;
+      art10rou11?: boolean;
+      art10fer11?: boolean;
+      art10inc11?: boolean;
+      naf11art12?: boolean;
+      art11act12?: boolean;
+      art11hab12?: boolean;
+      art11mix12?: boolean;
+      art11rou12?: boolean;
+      art11fer12?: boolean;
+      art11inc12?: boolean;
+      naf12art13?: boolean;
+      art12act13?: boolean;
+      art12hab13?: boolean;
+      art12mix13?: boolean;
+      art12rou13?: boolean;
+      art12fer13?: boolean;
+      art12inc13?: boolean;
+      naf13art14?: boolean;
+      art13act14?: boolean;
+      art13hab14?: boolean;
+      art13mix14?: boolean;
+      art13rou14?: boolean;
+      art13fer14?: boolean;
+      art13inc14?: boolean;
+      naf14art15?: boolean;
+      art14act15?: boolean;
+      art14hab15?: boolean;
+      art14mix15?: boolean;
+      art14rou15?: boolean;
+      art14fer15?: boolean;
+      art14inc15?: boolean;
+      naf15art16?: boolean;
+      art15act16?: boolean;
+      art15hab16?: boolean;
+      art15mix16?: boolean;
+      art15rou16?: boolean;
+      art15fer16?: boolean;
+      art15inc16?: boolean;
+      naf16art17?: boolean;
+      art16act17?: boolean;
+      art16hab17?: boolean;
+      art16mix17?: boolean;
+      art16rou17?: boolean;
+      art16fer17?: boolean;
+      art16inc17?: boolean;
+      naf17art18?: boolean;
+      art17act18?: boolean;
+      art17hab18?: boolean;
+      art17mix18?: boolean;
+      art17rou18?: boolean;
+      art17fer18?: boolean;
+      art17inc18?: boolean;
+      naf18art19?: boolean;
+      art18act19?: boolean;
+      art18hab19?: boolean;
+      art18mix19?: boolean;
+      art18rou19?: boolean;
+      art18fer19?: boolean;
+      art18inc19?: boolean;
+      naf19art20?: boolean;
+      art19act20?: boolean;
+      art19hab20?: boolean;
+      art19mix20?: boolean;
+      art19rou20?: boolean;
+      art19fer20?: boolean;
+      art19inc20?: boolean;
+      naf20art21?: boolean;
+      art20act21?: boolean;
+      art20hab21?: boolean;
+      art20mix21?: boolean;
+      art20rou21?: boolean;
+      art20fer21?: boolean;
+      art20inc21?: boolean;
+      naf21art22?: boolean;
+      art21act22?: boolean;
+      art21hab22?: boolean;
+      art21mix22?: boolean;
+      art21rou22?: boolean;
+      art21fer22?: boolean;
+      art21inc22?: boolean;
+      naf22art23?: boolean;
+      art22act23?: boolean;
+      art22hab23?: boolean;
+      art22mix23?: boolean;
+      art22rou23?: boolean;
+      art22fer23?: boolean;
+      art22inc23?: boolean;
+      naf09art23?: boolean;
+      art09act23?: boolean;
+      art09hab23?: boolean;
+      art09mix23?: boolean;
+      art09inc23?: boolean;
+      art09rou23?: boolean;
+      art09fer23?: boolean;
+      artcom0923?: boolean;
+      pop14?: boolean;
+      pop20?: boolean;
+      pop1420?: boolean;
+      men14?: boolean;
+      men20?: boolean;
+      men1420?: boolean;
+      emp14?: boolean;
+      emp20?: boolean;
+      emp1420?: boolean;
+      mepart1420?: boolean;
+      menhab1420?: boolean;
+      artpop1420?: boolean;
+      surfcom2023?: boolean;
+      C10_MEN?: boolean;
+      C15_MEN?: boolean;
+      C21_MEN?: boolean;
+    },
+    ExtArgs['result']['consommation_espaces_naf']
+  >;
+
   export type consommation_espaces_nafSelectScalar = {
     index?: boolean;
     code_geographique?: boolean;
@@ -18434,6 +21041,141 @@ export namespace Prisma {
     C15_MEN?: boolean;
     C21_MEN?: boolean;
   };
+
+  export type consommation_espaces_nafOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'index'
+    | 'code_geographique'
+    | 'libelle_geographique'
+    | 'epci'
+    | 'libelle_epci'
+    | 'departement'
+    | 'region'
+    | 'naf09art10'
+    | 'art09act10'
+    | 'art09hab10'
+    | 'art09mix10'
+    | 'art09rou10'
+    | 'art09fer10'
+    | 'art09inc10'
+    | 'naf10art11'
+    | 'art10act11'
+    | 'art10hab11'
+    | 'art10mix11'
+    | 'art10rou11'
+    | 'art10fer11'
+    | 'art10inc11'
+    | 'naf11art12'
+    | 'art11act12'
+    | 'art11hab12'
+    | 'art11mix12'
+    | 'art11rou12'
+    | 'art11fer12'
+    | 'art11inc12'
+    | 'naf12art13'
+    | 'art12act13'
+    | 'art12hab13'
+    | 'art12mix13'
+    | 'art12rou13'
+    | 'art12fer13'
+    | 'art12inc13'
+    | 'naf13art14'
+    | 'art13act14'
+    | 'art13hab14'
+    | 'art13mix14'
+    | 'art13rou14'
+    | 'art13fer14'
+    | 'art13inc14'
+    | 'naf14art15'
+    | 'art14act15'
+    | 'art14hab15'
+    | 'art14mix15'
+    | 'art14rou15'
+    | 'art14fer15'
+    | 'art14inc15'
+    | 'naf15art16'
+    | 'art15act16'
+    | 'art15hab16'
+    | 'art15mix16'
+    | 'art15rou16'
+    | 'art15fer16'
+    | 'art15inc16'
+    | 'naf16art17'
+    | 'art16act17'
+    | 'art16hab17'
+    | 'art16mix17'
+    | 'art16rou17'
+    | 'art16fer17'
+    | 'art16inc17'
+    | 'naf17art18'
+    | 'art17act18'
+    | 'art17hab18'
+    | 'art17mix18'
+    | 'art17rou18'
+    | 'art17fer18'
+    | 'art17inc18'
+    | 'naf18art19'
+    | 'art18act19'
+    | 'art18hab19'
+    | 'art18mix19'
+    | 'art18rou19'
+    | 'art18fer19'
+    | 'art18inc19'
+    | 'naf19art20'
+    | 'art19act20'
+    | 'art19hab20'
+    | 'art19mix20'
+    | 'art19rou20'
+    | 'art19fer20'
+    | 'art19inc20'
+    | 'naf20art21'
+    | 'art20act21'
+    | 'art20hab21'
+    | 'art20mix21'
+    | 'art20rou21'
+    | 'art20fer21'
+    | 'art20inc21'
+    | 'naf21art22'
+    | 'art21act22'
+    | 'art21hab22'
+    | 'art21mix22'
+    | 'art21rou22'
+    | 'art21fer22'
+    | 'art21inc22'
+    | 'naf22art23'
+    | 'art22act23'
+    | 'art22hab23'
+    | 'art22mix23'
+    | 'art22rou23'
+    | 'art22fer23'
+    | 'art22inc23'
+    | 'naf09art23'
+    | 'art09act23'
+    | 'art09hab23'
+    | 'art09mix23'
+    | 'art09inc23'
+    | 'art09rou23'
+    | 'art09fer23'
+    | 'artcom0923'
+    | 'pop14'
+    | 'pop20'
+    | 'pop1420'
+    | 'men14'
+    | 'men20'
+    | 'men1420'
+    | 'emp14'
+    | 'emp20'
+    | 'emp1420'
+    | 'mepart1420'
+    | 'menhab1420'
+    | 'artpop1420'
+    | 'surfcom2023'
+    | 'C10_MEN'
+    | 'C15_MEN'
+    | 'C21_MEN',
+    ExtArgs['result']['consommation_espaces_naf']
+  >;
 
   export type $consommation_espaces_nafPayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -18585,13 +21327,14 @@ export namespace Prisma {
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = Omit<
     consommation_espaces_nafFindManyArgs,
-    'select' | 'include' | 'distinct'
+    'select' | 'include' | 'distinct' | 'omit'
   > & {
     select?: Consommation_espaces_nafCountAggregateInputType | true;
   };
 
   export interface consommation_espaces_nafDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['consommation_espaces_naf'];
@@ -18614,10 +21357,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$consommation_espaces_nafPayload<ExtArgs>,
         T,
-        'findUnique'
+        'findUnique',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -18641,10 +21386,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$consommation_espaces_nafPayload<ExtArgs>,
         T,
-        'findUniqueOrThrow'
+        'findUniqueOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -18666,10 +21413,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$consommation_espaces_nafPayload<ExtArgs>,
         T,
-        'findFirst'
+        'findFirst',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -18695,10 +21444,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$consommation_espaces_nafPayload<ExtArgs>,
         T,
-        'findFirstOrThrow'
+        'findFirstOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -18723,7 +21474,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$consommation_espaces_nafPayload<ExtArgs>,
         T,
-        'findMany'
+        'findMany',
+        ClientOptions
       >
     >;
 
@@ -18745,10 +21497,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$consommation_espaces_nafPayload<ExtArgs>,
         T,
-        'create'
+        'create',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -18800,7 +21554,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$consommation_espaces_nafPayload<ExtArgs>,
         T,
-        'createManyAndReturn'
+        'createManyAndReturn',
+        ClientOptions
       >
     >;
 
@@ -18822,10 +21577,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$consommation_espaces_nafPayload<ExtArgs>,
         T,
-        'delete'
+        'delete',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -18849,10 +21606,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$consommation_espaces_nafPayload<ExtArgs>,
         T,
-        'update'
+        'update',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -18893,6 +21652,50 @@ export namespace Prisma {
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
+     * Update zero or more Consommation_espaces_nafs and returns the data updated in the database.
+     * @param {consommation_espaces_nafUpdateManyAndReturnArgs} args - Arguments to update many Consommation_espaces_nafs.
+     * @example
+     * // Update many Consommation_espaces_nafs
+     * const consommation_espaces_naf = await prisma.consommation_espaces_naf.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Consommation_espaces_nafs and only return the `index`
+     * const consommation_espaces_nafWithIndexOnly = await prisma.consommation_espaces_naf.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<
+      T extends consommation_espaces_nafUpdateManyAndReturnArgs
+    >(
+      args: SelectSubset<
+        T,
+        consommation_espaces_nafUpdateManyAndReturnArgs<ExtArgs>
+      >
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$consommation_espaces_nafPayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
      * Create or update one Consommation_espaces_naf.
      * @param {consommation_espaces_nafUpsertArgs} args - Arguments to update or create a Consommation_espaces_naf.
      * @example
@@ -18915,10 +21718,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$consommation_espaces_nafPayload<ExtArgs>,
         T,
-        'upsert'
+        'upsert',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -19077,7 +21882,8 @@ export namespace Prisma {
   export interface Prisma__consommation_espaces_nafClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -19266,6 +22072,10 @@ export namespace Prisma {
      */
     select?: consommation_espaces_nafSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the consommation_espaces_naf
+     */
+    omit?: consommation_espaces_nafOmit<ExtArgs> | null;
+    /**
      * Filter, which consommation_espaces_naf to fetch.
      */
     where: consommation_espaces_nafWhereUniqueInput;
@@ -19282,6 +22092,10 @@ export namespace Prisma {
      */
     select?: consommation_espaces_nafSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the consommation_espaces_naf
+     */
+    omit?: consommation_espaces_nafOmit<ExtArgs> | null;
+    /**
      * Filter, which consommation_espaces_naf to fetch.
      */
     where: consommation_espaces_nafWhereUniqueInput;
@@ -19297,6 +22111,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the consommation_espaces_naf
      */
     select?: consommation_espaces_nafSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the consommation_espaces_naf
+     */
+    omit?: consommation_espaces_nafOmit<ExtArgs> | null;
     /**
      * Filter, which consommation_espaces_naf to fetch.
      */
@@ -19348,6 +22166,10 @@ export namespace Prisma {
      */
     select?: consommation_espaces_nafSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the consommation_espaces_naf
+     */
+    omit?: consommation_espaces_nafOmit<ExtArgs> | null;
+    /**
      * Filter, which consommation_espaces_naf to fetch.
      */
     where?: consommation_espaces_nafWhereInput;
@@ -19398,6 +22220,10 @@ export namespace Prisma {
      */
     select?: consommation_espaces_nafSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the consommation_espaces_naf
+     */
+    omit?: consommation_espaces_nafOmit<ExtArgs> | null;
+    /**
      * Filter, which consommation_espaces_nafs to fetch.
      */
     where?: consommation_espaces_nafWhereInput;
@@ -19443,6 +22269,10 @@ export namespace Prisma {
      */
     select?: consommation_espaces_nafSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the consommation_espaces_naf
+     */
+    omit?: consommation_espaces_nafOmit<ExtArgs> | null;
+    /**
      * The data needed to create a consommation_espaces_naf.
      */
     data: XOR<
@@ -19477,6 +22307,10 @@ export namespace Prisma {
      */
     select?: consommation_espaces_nafSelectCreateManyAndReturn<ExtArgs> | null;
     /**
+     * Omit specific fields from the consommation_espaces_naf
+     */
+    omit?: consommation_espaces_nafOmit<ExtArgs> | null;
+    /**
      * The data used to create many consommation_espaces_nafs.
      */
     data:
@@ -19495,6 +22329,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the consommation_espaces_naf
      */
     select?: consommation_espaces_nafSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the consommation_espaces_naf
+     */
+    omit?: consommation_espaces_nafOmit<ExtArgs> | null;
     /**
      * The data needed to update a consommation_espaces_naf.
      */
@@ -19525,6 +22363,41 @@ export namespace Prisma {
      * Filter which consommation_espaces_nafs to update
      */
     where?: consommation_espaces_nafWhereInput;
+    /**
+     * Limit how many consommation_espaces_nafs to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * consommation_espaces_naf updateManyAndReturn
+   */
+  export type consommation_espaces_nafUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the consommation_espaces_naf
+     */
+    select?: consommation_espaces_nafSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the consommation_espaces_naf
+     */
+    omit?: consommation_espaces_nafOmit<ExtArgs> | null;
+    /**
+     * The data used to update consommation_espaces_nafs.
+     */
+    data: XOR<
+      consommation_espaces_nafUpdateManyMutationInput,
+      consommation_espaces_nafUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which consommation_espaces_nafs to update
+     */
+    where?: consommation_espaces_nafWhereInput;
+    /**
+     * Limit how many consommation_espaces_nafs to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -19537,6 +22410,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the consommation_espaces_naf
      */
     select?: consommation_espaces_nafSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the consommation_espaces_naf
+     */
+    omit?: consommation_espaces_nafOmit<ExtArgs> | null;
     /**
      * The filter to search for the consommation_espaces_naf to update in case it exists.
      */
@@ -19568,6 +22445,10 @@ export namespace Prisma {
      */
     select?: consommation_espaces_nafSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the consommation_espaces_naf
+     */
+    omit?: consommation_espaces_nafOmit<ExtArgs> | null;
+    /**
      * Filter which consommation_espaces_naf to delete.
      */
     where: consommation_espaces_nafWhereUniqueInput;
@@ -19583,6 +22464,10 @@ export namespace Prisma {
      * Filter which consommation_espaces_nafs to delete
      */
     where?: consommation_espaces_nafWhereInput;
+    /**
+     * Limit how many consommation_espaces_nafs to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -19595,6 +22480,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the consommation_espaces_naf
      */
     select?: consommation_espaces_nafSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the consommation_espaces_naf
+     */
+    omit?: consommation_espaces_nafOmit<ExtArgs> | null;
   };
 
   /**
@@ -19923,6 +22812,26 @@ export namespace Prisma {
     ExtArgs['result']['lcz_bayonne_test']
   >;
 
+  export type lcz_bayonne_testSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      pk?: boolean;
+      identifier?: boolean;
+      hre?: boolean;
+      are?: boolean;
+      bur?: boolean;
+      ror?: boolean;
+      bsr?: boolean;
+      war?: boolean;
+      ver?: boolean;
+      vhr?: boolean;
+      lcz?: boolean;
+      lcz_int?: boolean;
+    },
+    ExtArgs['result']['lcz_bayonne_test']
+  >;
+
   export type lcz_bayonne_testSelectScalar = {
     pk?: boolean;
     identifier?: boolean;
@@ -19937,6 +22846,24 @@ export namespace Prisma {
     lcz?: boolean;
     lcz_int?: boolean;
   };
+
+  export type lcz_bayonne_testOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'pk'
+    | 'identifier'
+    | 'hre'
+    | 'are'
+    | 'bur'
+    | 'ror'
+    | 'bsr'
+    | 'war'
+    | 'ver'
+    | 'vhr'
+    | 'lcz'
+    | 'lcz_int',
+    ExtArgs['result']['lcz_bayonne_test']
+  >;
 
   export type $lcz_bayonne_testPayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -19969,12 +22896,16 @@ export namespace Prisma {
 
   type lcz_bayonne_testCountArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<lcz_bayonne_testFindManyArgs, 'select' | 'include' | 'distinct'> & {
+  > = Omit<
+    lcz_bayonne_testFindManyArgs,
+    'select' | 'include' | 'distinct' | 'omit'
+  > & {
     select?: Lcz_bayonne_testCountAggregateInputType | true;
   };
 
   export interface lcz_bayonne_testDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['lcz_bayonne_test'];
@@ -19997,10 +22928,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$lcz_bayonne_testPayload<ExtArgs>,
         T,
-        'findUnique'
+        'findUnique',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -20021,10 +22954,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$lcz_bayonne_testPayload<ExtArgs>,
         T,
-        'findUniqueOrThrow'
+        'findUniqueOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -20046,10 +22981,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$lcz_bayonne_testPayload<ExtArgs>,
         T,
-        'findFirst'
+        'findFirst',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -20072,10 +23009,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$lcz_bayonne_testPayload<ExtArgs>,
         T,
-        'findFirstOrThrow'
+        'findFirstOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -20097,7 +23036,12 @@ export namespace Prisma {
     findMany<T extends lcz_bayonne_testFindManyArgs>(
       args?: SelectSubset<T, lcz_bayonne_testFindManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$lcz_bayonne_testPayload<ExtArgs>, T, 'findMany'>
+      $Result.GetResult<
+        Prisma.$lcz_bayonne_testPayload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
     >;
 
     /**
@@ -20115,9 +23059,15 @@ export namespace Prisma {
     create<T extends lcz_bayonne_testCreateArgs>(
       args: SelectSubset<T, lcz_bayonne_testCreateArgs<ExtArgs>>
     ): Prisma__lcz_bayonne_testClient<
-      $Result.GetResult<Prisma.$lcz_bayonne_testPayload<ExtArgs>, T, 'create'>,
+      $Result.GetResult<
+        Prisma.$lcz_bayonne_testPayload<ExtArgs>,
+        T,
+        'create',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -20164,7 +23114,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$lcz_bayonne_testPayload<ExtArgs>,
         T,
-        'createManyAndReturn'
+        'createManyAndReturn',
+        ClientOptions
       >
     >;
 
@@ -20183,9 +23134,15 @@ export namespace Prisma {
     delete<T extends lcz_bayonne_testDeleteArgs>(
       args: SelectSubset<T, lcz_bayonne_testDeleteArgs<ExtArgs>>
     ): Prisma__lcz_bayonne_testClient<
-      $Result.GetResult<Prisma.$lcz_bayonne_testPayload<ExtArgs>, T, 'delete'>,
+      $Result.GetResult<
+        Prisma.$lcz_bayonne_testPayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -20206,9 +23163,15 @@ export namespace Prisma {
     update<T extends lcz_bayonne_testUpdateArgs>(
       args: SelectSubset<T, lcz_bayonne_testUpdateArgs<ExtArgs>>
     ): Prisma__lcz_bayonne_testClient<
-      $Result.GetResult<Prisma.$lcz_bayonne_testPayload<ExtArgs>, T, 'update'>,
+      $Result.GetResult<
+        Prisma.$lcz_bayonne_testPayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -20249,6 +23212,45 @@ export namespace Prisma {
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
+     * Update zero or more Lcz_bayonne_tests and returns the data updated in the database.
+     * @param {lcz_bayonne_testUpdateManyAndReturnArgs} args - Arguments to update many Lcz_bayonne_tests.
+     * @example
+     * // Update many Lcz_bayonne_tests
+     * const lcz_bayonne_test = await prisma.lcz_bayonne_test.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Lcz_bayonne_tests and only return the `pk`
+     * const lcz_bayonne_testWithPkOnly = await prisma.lcz_bayonne_test.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends lcz_bayonne_testUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, lcz_bayonne_testUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$lcz_bayonne_testPayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
      * Create or update one Lcz_bayonne_test.
      * @param {lcz_bayonne_testUpsertArgs} args - Arguments to update or create a Lcz_bayonne_test.
      * @example
@@ -20268,9 +23270,15 @@ export namespace Prisma {
     upsert<T extends lcz_bayonne_testUpsertArgs>(
       args: SelectSubset<T, lcz_bayonne_testUpsertArgs<ExtArgs>>
     ): Prisma__lcz_bayonne_testClient<
-      $Result.GetResult<Prisma.$lcz_bayonne_testPayload<ExtArgs>, T, 'upsert'>,
+      $Result.GetResult<
+        Prisma.$lcz_bayonne_testPayload<ExtArgs>,
+        T,
+        'upsert',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -20422,7 +23430,8 @@ export namespace Prisma {
   export interface Prisma__lcz_bayonne_testClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -20491,6 +23500,10 @@ export namespace Prisma {
      */
     select?: lcz_bayonne_testSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the lcz_bayonne_test
+     */
+    omit?: lcz_bayonne_testOmit<ExtArgs> | null;
+    /**
      * Filter, which lcz_bayonne_test to fetch.
      */
     where: lcz_bayonne_testWhereUniqueInput;
@@ -20507,6 +23520,10 @@ export namespace Prisma {
      */
     select?: lcz_bayonne_testSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the lcz_bayonne_test
+     */
+    omit?: lcz_bayonne_testOmit<ExtArgs> | null;
+    /**
      * Filter, which lcz_bayonne_test to fetch.
      */
     where: lcz_bayonne_testWhereUniqueInput;
@@ -20522,6 +23539,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the lcz_bayonne_test
      */
     select?: lcz_bayonne_testSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the lcz_bayonne_test
+     */
+    omit?: lcz_bayonne_testOmit<ExtArgs> | null;
     /**
      * Filter, which lcz_bayonne_test to fetch.
      */
@@ -20573,6 +23594,10 @@ export namespace Prisma {
      */
     select?: lcz_bayonne_testSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the lcz_bayonne_test
+     */
+    omit?: lcz_bayonne_testOmit<ExtArgs> | null;
+    /**
      * Filter, which lcz_bayonne_test to fetch.
      */
     where?: lcz_bayonne_testWhereInput;
@@ -20623,6 +23648,10 @@ export namespace Prisma {
      */
     select?: lcz_bayonne_testSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the lcz_bayonne_test
+     */
+    omit?: lcz_bayonne_testOmit<ExtArgs> | null;
+    /**
      * Filter, which lcz_bayonne_tests to fetch.
      */
     where?: lcz_bayonne_testWhereInput;
@@ -20668,6 +23697,10 @@ export namespace Prisma {
      */
     select?: lcz_bayonne_testSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the lcz_bayonne_test
+     */
+    omit?: lcz_bayonne_testOmit<ExtArgs> | null;
+    /**
      * The data needed to create a lcz_bayonne_test.
      */
     data?: XOR<
@@ -20700,6 +23733,10 @@ export namespace Prisma {
      */
     select?: lcz_bayonne_testSelectCreateManyAndReturn<ExtArgs> | null;
     /**
+     * Omit specific fields from the lcz_bayonne_test
+     */
+    omit?: lcz_bayonne_testOmit<ExtArgs> | null;
+    /**
      * The data used to create many lcz_bayonne_tests.
      */
     data: lcz_bayonne_testCreateManyInput | lcz_bayonne_testCreateManyInput[];
@@ -20716,6 +23753,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the lcz_bayonne_test
      */
     select?: lcz_bayonne_testSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the lcz_bayonne_test
+     */
+    omit?: lcz_bayonne_testOmit<ExtArgs> | null;
     /**
      * The data needed to update a lcz_bayonne_test.
      */
@@ -20746,6 +23787,41 @@ export namespace Prisma {
      * Filter which lcz_bayonne_tests to update
      */
     where?: lcz_bayonne_testWhereInput;
+    /**
+     * Limit how many lcz_bayonne_tests to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * lcz_bayonne_test updateManyAndReturn
+   */
+  export type lcz_bayonne_testUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the lcz_bayonne_test
+     */
+    select?: lcz_bayonne_testSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the lcz_bayonne_test
+     */
+    omit?: lcz_bayonne_testOmit<ExtArgs> | null;
+    /**
+     * The data used to update lcz_bayonne_tests.
+     */
+    data: XOR<
+      lcz_bayonne_testUpdateManyMutationInput,
+      lcz_bayonne_testUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which lcz_bayonne_tests to update
+     */
+    where?: lcz_bayonne_testWhereInput;
+    /**
+     * Limit how many lcz_bayonne_tests to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -20758,6 +23834,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the lcz_bayonne_test
      */
     select?: lcz_bayonne_testSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the lcz_bayonne_test
+     */
+    omit?: lcz_bayonne_testOmit<ExtArgs> | null;
     /**
      * The filter to search for the lcz_bayonne_test to update in case it exists.
      */
@@ -20789,6 +23869,10 @@ export namespace Prisma {
      */
     select?: lcz_bayonne_testSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the lcz_bayonne_test
+     */
+    omit?: lcz_bayonne_testOmit<ExtArgs> | null;
+    /**
      * Filter which lcz_bayonne_test to delete.
      */
     where: lcz_bayonne_testWhereUniqueInput;
@@ -20804,6 +23888,10 @@ export namespace Prisma {
      * Filter which lcz_bayonne_tests to delete
      */
     where?: lcz_bayonne_testWhereInput;
+    /**
+     * Limit how many lcz_bayonne_tests to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -20816,6 +23904,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the lcz_bayonne_test
      */
     select?: lcz_bayonne_testSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the lcz_bayonne_test
+     */
+    omit?: lcz_bayonne_testOmit<ExtArgs> | null;
   };
 
   /**
@@ -21027,11 +24119,29 @@ export namespace Prisma {
     ExtArgs['result']['north_star_metric']
   >;
 
+  export type north_star_metricSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      value?: boolean;
+      date?: boolean;
+      pk?: boolean;
+    },
+    ExtArgs['result']['north_star_metric']
+  >;
+
   export type north_star_metricSelectScalar = {
     value?: boolean;
     date?: boolean;
     pk?: boolean;
   };
+
+  export type north_star_metricOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    'value' | 'date' | 'pk',
+    ExtArgs['result']['north_star_metric']
+  >;
 
   export type $north_star_metricPayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -21055,12 +24165,16 @@ export namespace Prisma {
 
   type north_star_metricCountArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<north_star_metricFindManyArgs, 'select' | 'include' | 'distinct'> & {
+  > = Omit<
+    north_star_metricFindManyArgs,
+    'select' | 'include' | 'distinct' | 'omit'
+  > & {
     select?: North_star_metricCountAggregateInputType | true;
   };
 
   export interface north_star_metricDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['north_star_metric'];
@@ -21083,10 +24197,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$north_star_metricPayload<ExtArgs>,
         T,
-        'findUnique'
+        'findUnique',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -21107,10 +24223,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$north_star_metricPayload<ExtArgs>,
         T,
-        'findUniqueOrThrow'
+        'findUniqueOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -21132,10 +24250,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$north_star_metricPayload<ExtArgs>,
         T,
-        'findFirst'
+        'findFirst',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -21158,10 +24278,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$north_star_metricPayload<ExtArgs>,
         T,
-        'findFirstOrThrow'
+        'findFirstOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -21186,7 +24308,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$north_star_metricPayload<ExtArgs>,
         T,
-        'findMany'
+        'findMany',
+        ClientOptions
       >
     >;
 
@@ -21205,9 +24328,15 @@ export namespace Prisma {
     create<T extends north_star_metricCreateArgs>(
       args: SelectSubset<T, north_star_metricCreateArgs<ExtArgs>>
     ): Prisma__north_star_metricClient<
-      $Result.GetResult<Prisma.$north_star_metricPayload<ExtArgs>, T, 'create'>,
+      $Result.GetResult<
+        Prisma.$north_star_metricPayload<ExtArgs>,
+        T,
+        'create',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -21254,7 +24383,8 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$north_star_metricPayload<ExtArgs>,
         T,
-        'createManyAndReturn'
+        'createManyAndReturn',
+        ClientOptions
       >
     >;
 
@@ -21273,9 +24403,15 @@ export namespace Prisma {
     delete<T extends north_star_metricDeleteArgs>(
       args: SelectSubset<T, north_star_metricDeleteArgs<ExtArgs>>
     ): Prisma__north_star_metricClient<
-      $Result.GetResult<Prisma.$north_star_metricPayload<ExtArgs>, T, 'delete'>,
+      $Result.GetResult<
+        Prisma.$north_star_metricPayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -21296,9 +24432,15 @@ export namespace Prisma {
     update<T extends north_star_metricUpdateArgs>(
       args: SelectSubset<T, north_star_metricUpdateArgs<ExtArgs>>
     ): Prisma__north_star_metricClient<
-      $Result.GetResult<Prisma.$north_star_metricPayload<ExtArgs>, T, 'update'>,
+      $Result.GetResult<
+        Prisma.$north_star_metricPayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -21339,6 +24481,45 @@ export namespace Prisma {
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
+     * Update zero or more North_star_metrics and returns the data updated in the database.
+     * @param {north_star_metricUpdateManyAndReturnArgs} args - Arguments to update many North_star_metrics.
+     * @example
+     * // Update many North_star_metrics
+     * const north_star_metric = await prisma.north_star_metric.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more North_star_metrics and only return the `value`
+     * const north_star_metricWithValueOnly = await prisma.north_star_metric.updateManyAndReturn({
+     *   select: { value: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends north_star_metricUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, north_star_metricUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$north_star_metricPayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
      * Create or update one North_star_metric.
      * @param {north_star_metricUpsertArgs} args - Arguments to update or create a North_star_metric.
      * @example
@@ -21358,9 +24539,15 @@ export namespace Prisma {
     upsert<T extends north_star_metricUpsertArgs>(
       args: SelectSubset<T, north_star_metricUpsertArgs<ExtArgs>>
     ): Prisma__north_star_metricClient<
-      $Result.GetResult<Prisma.$north_star_metricPayload<ExtArgs>, T, 'upsert'>,
+      $Result.GetResult<
+        Prisma.$north_star_metricPayload<ExtArgs>,
+        T,
+        'upsert',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -21515,7 +24702,8 @@ export namespace Prisma {
   export interface Prisma__north_star_metricClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -21575,6 +24763,10 @@ export namespace Prisma {
      */
     select?: north_star_metricSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the north_star_metric
+     */
+    omit?: north_star_metricOmit<ExtArgs> | null;
+    /**
      * Filter, which north_star_metric to fetch.
      */
     where: north_star_metricWhereUniqueInput;
@@ -21591,6 +24783,10 @@ export namespace Prisma {
      */
     select?: north_star_metricSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the north_star_metric
+     */
+    omit?: north_star_metricOmit<ExtArgs> | null;
+    /**
      * Filter, which north_star_metric to fetch.
      */
     where: north_star_metricWhereUniqueInput;
@@ -21606,6 +24802,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the north_star_metric
      */
     select?: north_star_metricSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the north_star_metric
+     */
+    omit?: north_star_metricOmit<ExtArgs> | null;
     /**
      * Filter, which north_star_metric to fetch.
      */
@@ -21657,6 +24857,10 @@ export namespace Prisma {
      */
     select?: north_star_metricSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the north_star_metric
+     */
+    omit?: north_star_metricOmit<ExtArgs> | null;
+    /**
      * Filter, which north_star_metric to fetch.
      */
     where?: north_star_metricWhereInput;
@@ -21707,6 +24911,10 @@ export namespace Prisma {
      */
     select?: north_star_metricSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the north_star_metric
+     */
+    omit?: north_star_metricOmit<ExtArgs> | null;
+    /**
      * Filter, which north_star_metrics to fetch.
      */
     where?: north_star_metricWhereInput;
@@ -21752,6 +24960,10 @@ export namespace Prisma {
      */
     select?: north_star_metricSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the north_star_metric
+     */
+    omit?: north_star_metricOmit<ExtArgs> | null;
+    /**
      * The data needed to create a north_star_metric.
      */
     data: XOR<
@@ -21784,6 +24996,10 @@ export namespace Prisma {
      */
     select?: north_star_metricSelectCreateManyAndReturn<ExtArgs> | null;
     /**
+     * Omit specific fields from the north_star_metric
+     */
+    omit?: north_star_metricOmit<ExtArgs> | null;
+    /**
      * The data used to create many north_star_metrics.
      */
     data: north_star_metricCreateManyInput | north_star_metricCreateManyInput[];
@@ -21800,6 +25016,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the north_star_metric
      */
     select?: north_star_metricSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the north_star_metric
+     */
+    omit?: north_star_metricOmit<ExtArgs> | null;
     /**
      * The data needed to update a north_star_metric.
      */
@@ -21830,6 +25050,41 @@ export namespace Prisma {
      * Filter which north_star_metrics to update
      */
     where?: north_star_metricWhereInput;
+    /**
+     * Limit how many north_star_metrics to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * north_star_metric updateManyAndReturn
+   */
+  export type north_star_metricUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the north_star_metric
+     */
+    select?: north_star_metricSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the north_star_metric
+     */
+    omit?: north_star_metricOmit<ExtArgs> | null;
+    /**
+     * The data used to update north_star_metrics.
+     */
+    data: XOR<
+      north_star_metricUpdateManyMutationInput,
+      north_star_metricUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which north_star_metrics to update
+     */
+    where?: north_star_metricWhereInput;
+    /**
+     * Limit how many north_star_metrics to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -21842,6 +25097,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the north_star_metric
      */
     select?: north_star_metricSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the north_star_metric
+     */
+    omit?: north_star_metricOmit<ExtArgs> | null;
     /**
      * The filter to search for the north_star_metric to update in case it exists.
      */
@@ -21873,6 +25132,10 @@ export namespace Prisma {
      */
     select?: north_star_metricSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the north_star_metric
+     */
+    omit?: north_star_metricOmit<ExtArgs> | null;
+    /**
      * Filter which north_star_metric to delete.
      */
     where: north_star_metricWhereUniqueInput;
@@ -21888,6 +25151,10 @@ export namespace Prisma {
      * Filter which north_star_metrics to delete
      */
     where?: north_star_metricWhereInput;
+    /**
+     * Limit how many north_star_metrics to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -21900,6 +25167,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the north_star_metric
      */
     select?: north_star_metricSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the north_star_metric
+     */
+    omit?: north_star_metricOmit<ExtArgs> | null;
   };
 
   /**
@@ -22112,12 +25383,31 @@ export namespace Prisma {
     ExtArgs['result']['etat_cours_d_eau']
   >;
 
+  export type etat_cours_d_eauSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      pk?: boolean;
+      name?: boolean;
+      longueur?: boolean;
+      etateco?: boolean;
+    },
+    ExtArgs['result']['etat_cours_d_eau']
+  >;
+
   export type etat_cours_d_eauSelectScalar = {
     pk?: boolean;
     name?: boolean;
     longueur?: boolean;
     etateco?: boolean;
   };
+
+  export type etat_cours_d_eauOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    'pk' | 'name' | 'longueur' | 'etateco',
+    ExtArgs['result']['etat_cours_d_eau']
+  >;
 
   export type $etat_cours_d_eauPayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
@@ -22142,12 +25432,16 @@ export namespace Prisma {
 
   type etat_cours_d_eauCountArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<etat_cours_d_eauFindManyArgs, 'select' | 'include' | 'distinct'> & {
+  > = Omit<
+    etat_cours_d_eauFindManyArgs,
+    'select' | 'include' | 'distinct' | 'omit'
+  > & {
     select?: Etat_cours_d_eauCountAggregateInputType | true;
   };
 
   export interface etat_cours_d_eauDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > {
     [K: symbol]: {
       types: Prisma.TypeMap<ExtArgs>['model']['etat_cours_d_eau'];
@@ -22170,10 +25464,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$etat_cours_d_eauPayload<ExtArgs>,
         T,
-        'findUnique'
+        'findUnique',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -22194,10 +25490,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$etat_cours_d_eauPayload<ExtArgs>,
         T,
-        'findUniqueOrThrow'
+        'findUniqueOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -22219,10 +25517,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$etat_cours_d_eauPayload<ExtArgs>,
         T,
-        'findFirst'
+        'findFirst',
+        ClientOptions
       > | null,
       null,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -22245,10 +25545,12 @@ export namespace Prisma {
       $Result.GetResult<
         Prisma.$etat_cours_d_eauPayload<ExtArgs>,
         T,
-        'findFirstOrThrow'
+        'findFirstOrThrow',
+        ClientOptions
       >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -22270,7 +25572,12 @@ export namespace Prisma {
     findMany<T extends etat_cours_d_eauFindManyArgs>(
       args?: SelectSubset<T, etat_cours_d_eauFindManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$etat_cours_d_eauPayload<ExtArgs>, T, 'findMany'>
+      $Result.GetResult<
+        Prisma.$etat_cours_d_eauPayload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
     >;
 
     /**
@@ -22288,9 +25595,15 @@ export namespace Prisma {
     delete<T extends etat_cours_d_eauDeleteArgs>(
       args: SelectSubset<T, etat_cours_d_eauDeleteArgs<ExtArgs>>
     ): Prisma__etat_cours_d_eauClient<
-      $Result.GetResult<Prisma.$etat_cours_d_eauPayload<ExtArgs>, T, 'delete'>,
+      $Result.GetResult<
+        Prisma.$etat_cours_d_eauPayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -22311,9 +25624,15 @@ export namespace Prisma {
     update<T extends etat_cours_d_eauUpdateArgs>(
       args: SelectSubset<T, etat_cours_d_eauUpdateArgs<ExtArgs>>
     ): Prisma__etat_cours_d_eauClient<
-      $Result.GetResult<Prisma.$etat_cours_d_eauPayload<ExtArgs>, T, 'update'>,
+      $Result.GetResult<
+        Prisma.$etat_cours_d_eauPayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
       never,
-      ExtArgs
+      ExtArgs,
+      ClientOptions
     >;
 
     /**
@@ -22352,6 +25671,45 @@ export namespace Prisma {
     updateMany<T extends etat_cours_d_eauUpdateManyArgs>(
       args: SelectSubset<T, etat_cours_d_eauUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Etat_cours_d_eaus and returns the data updated in the database.
+     * @param {etat_cours_d_eauUpdateManyAndReturnArgs} args - Arguments to update many Etat_cours_d_eaus.
+     * @example
+     * // Update many Etat_cours_d_eaus
+     * const etat_cours_d_eau = await prisma.etat_cours_d_eau.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Etat_cours_d_eaus and only return the `pk`
+     * const etat_cours_d_eauWithPkOnly = await prisma.etat_cours_d_eau.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends etat_cours_d_eauUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, etat_cours_d_eauUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$etat_cours_d_eauPayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
 
     /**
      * Count the number of Etat_cours_d_eaus.
@@ -22502,7 +25860,8 @@ export namespace Prisma {
   export interface Prisma__etat_cours_d_eauClient<
     T,
     Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     /**
@@ -22563,6 +25922,10 @@ export namespace Prisma {
      */
     select?: etat_cours_d_eauSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null;
+    /**
      * Filter, which etat_cours_d_eau to fetch.
      */
     where: etat_cours_d_eauWhereUniqueInput;
@@ -22579,6 +25942,10 @@ export namespace Prisma {
      */
     select?: etat_cours_d_eauSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null;
+    /**
      * Filter, which etat_cours_d_eau to fetch.
      */
     where: etat_cours_d_eauWhereUniqueInput;
@@ -22594,6 +25961,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the etat_cours_d_eau
      */
     select?: etat_cours_d_eauSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null;
     /**
      * Filter, which etat_cours_d_eau to fetch.
      */
@@ -22645,6 +26016,10 @@ export namespace Prisma {
      */
     select?: etat_cours_d_eauSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null;
+    /**
      * Filter, which etat_cours_d_eau to fetch.
      */
     where?: etat_cours_d_eauWhereInput;
@@ -22695,6 +26070,10 @@ export namespace Prisma {
      */
     select?: etat_cours_d_eauSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null;
+    /**
      * Filter, which etat_cours_d_eaus to fetch.
      */
     where?: etat_cours_d_eauWhereInput;
@@ -22740,6 +26119,10 @@ export namespace Prisma {
      */
     select?: etat_cours_d_eauSelect<ExtArgs> | null;
     /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null;
+    /**
      * The data needed to update a etat_cours_d_eau.
      */
     data: XOR<
@@ -22769,6 +26152,41 @@ export namespace Prisma {
      * Filter which etat_cours_d_eaus to update
      */
     where?: etat_cours_d_eauWhereInput;
+    /**
+     * Limit how many etat_cours_d_eaus to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * etat_cours_d_eau updateManyAndReturn
+   */
+  export type etat_cours_d_eauUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the etat_cours_d_eau
+     */
+    select?: etat_cours_d_eauSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null;
+    /**
+     * The data used to update etat_cours_d_eaus.
+     */
+    data: XOR<
+      etat_cours_d_eauUpdateManyMutationInput,
+      etat_cours_d_eauUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which etat_cours_d_eaus to update
+     */
+    where?: etat_cours_d_eauWhereInput;
+    /**
+     * Limit how many etat_cours_d_eaus to update.
+     */
+    limit?: number;
   };
 
   /**
@@ -22781,6 +26199,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the etat_cours_d_eau
      */
     select?: etat_cours_d_eauSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null;
     /**
      * Filter which etat_cours_d_eau to delete.
      */
@@ -22797,6 +26219,10 @@ export namespace Prisma {
      * Filter which etat_cours_d_eaus to delete
      */
     where?: etat_cours_d_eauWhereInput;
+    /**
+     * Limit how many etat_cours_d_eaus to delete.
+     */
+    limit?: number;
   };
 
   /**
@@ -22809,6 +26235,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the etat_cours_d_eau
      */
     select?: etat_cours_d_eauSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the etat_cours_d_eau
+     */
+    omit?: etat_cours_d_eauOmit<ExtArgs> | null;
   };
 
   /**

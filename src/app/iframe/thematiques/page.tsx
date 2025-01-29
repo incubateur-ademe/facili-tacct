@@ -9,13 +9,11 @@ export const metadata: Metadata = {
 
 const Thematiques = () => {
   return (
-    <>
-      <Container size="xl">
-        <h1>Quelle thématique vous intéresse ?</h1>
-        {/* <NoticeComp title="Les thématiques suivantes ont été choisies selon " /> */}
-        <Cards />
-      </Container>
-    </>
+    <Container size="xl">
+      <h1>Quelle thématique vous intéresse ?</h1>
+      {/* <NoticeComp title="Les thématiques suivantes ont été choisies selon " /> */}
+      <Cards />
+    </Container>
   );
 };
 
