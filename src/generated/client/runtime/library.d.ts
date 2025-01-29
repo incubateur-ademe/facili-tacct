@@ -30,7 +30,10 @@ export declare type Action =
   | 'queryRaw'
   | 'runCommandRaw';
 
-declare type ActiveConnectorType = Exclude<ConnectorType, 'postgres'>;
+declare type ActiveConnectorType = Exclude<
+  ConnectorType,
+  'postgres' | 'prisma+postgres'
+>;
 
 export declare type Aggregate = '_count' | '_max' | '_min' | '_avg' | '_sum';
 
@@ -253,6 +256,24 @@ declare const ColumnTypeEnum: {
   readonly UnknownNumber: 128;
 };
 
+declare type CompilerWasmLoadingConfig = {
+  /**
+   * WASM-bindgen runtime for corresponding module
+   */
+  getRuntime: () => {
+    __wbg_set_wasm(exports: unknown): any;
+    QueryCompiler: QueryCompilerConstructor;
+  };
+  /**
+   * Loads the raw wasm module for the wasm compiler engine. This configuration is
+   * generated specifically for each type of client, eg. Node.js client and Edge
+   * clients will have different implementations.
+   * @remarks this is a callback on purpose, we only load the wasm if needed.
+   * @remarks only used by ClientEngine
+   */
+  getQueryCompilerWasmModule: () => Promise<unknown>;
+};
+
 export declare type Compute<T> = T extends Function
   ? T
   : {
@@ -286,6 +307,7 @@ declare type ConnectorType =
   | 'sqlite'
   | 'postgresql'
   | 'postgres'
+  | 'prisma+postgres'
   | 'sqlserver'
   | 'cockroachdb';
 
@@ -339,6 +361,8 @@ declare type Context_2<T> = T extends {
 export declare type Count<O> = {
   [K in keyof O]: Count<number>;
 } & {};
+
+export declare function createParam(name: string): Param<unknown, string>;
 
 /**
  * Custom fetch function for `DataProxyEngine`.
@@ -755,7 +779,13 @@ declare const denylist: readonly [
   '$extends'
 ];
 
+declare type DeserializedResponse = Array<Record<string, unknown>>;
+
 export declare function deserializeJsonResponse(result: unknown): unknown;
+
+export declare function deserializeRawResult(
+  response: RawResponse
+): DeserializedResponse;
 
 export declare type DevTypeMapDef = {
   meta: {
@@ -868,6 +898,7 @@ export declare namespace DMMF {
     relationFromFields?: string[];
     relationToFields?: string[];
     relationOnDelete?: string;
+    relationOnUpdate?: string;
     relationName?: string;
     documentation?: string;
   }>;
@@ -991,6 +1022,7 @@ export declare namespace DMMF {
     createManyAndReturn?: string | null;
     update?: string | null;
     updateMany?: string | null;
+    updateManyAndReturn?: string | null;
     upsert?: string | null;
     delete?: string | null;
     deleteMany?: string | null;
@@ -1011,6 +1043,7 @@ export declare namespace DMMF {
     createManyAndReturn = 'createManyAndReturn',
     update = 'update',
     updateMany = 'updateMany',
+    updateManyAndReturn = 'updateManyAndReturn',
     upsert = 'upsert',
     delete = 'delete',
     deleteMany = 'deleteMany',
@@ -1549,7 +1582,8 @@ declare interface EngineConfig {
   /**
    * Web Assembly module loading configuration
    */
-  engineWasm?: WasmLoadingConfig;
+  engineWasm?: EngineWasmLoadingConfig;
+  compilerWasm?: CompilerWasmLoadingConfig;
   /**
    * Allows Accelerate to use runtime utilities from the client. These are
    * necessary for the AccelerateEngine to function correctly.
@@ -1589,6 +1623,24 @@ declare type EngineSpan = {
 declare type EngineSpanId = string;
 
 declare type EngineSpanKind = 'client' | 'internal';
+
+declare type EngineWasmLoadingConfig = {
+  /**
+   * WASM-bindgen runtime for corresponding module
+   */
+  getRuntime: () => {
+    __wbg_set_wasm(exports: unknown): any;
+    QueryEngine: QueryEngineConstructor;
+  };
+  /**
+   * Loads the raw wasm module for the wasm query engine. This configuration is
+   * generated specifically for each type of client, eg. Node.js client and Edge
+   * clients will have different implementations.
+   * @remarks this is a callback on purpose, we only load the wasm if needed.
+   * @remarks only used by LibraryEngine
+   */
+  getQueryEngineWasmModule: () => Promise<unknown>;
+};
 
 declare type EnvPaths = {
   rootEnvPath: string | null;
@@ -1877,6 +1929,8 @@ export declare interface FieldRef<Model, FieldType> {
   readonly isList: boolean;
 }
 
+declare type Flavour = 'mysql' | 'postgres' | 'sqlite';
+
 export declare type FluentOperation =
   | 'findUnique'
   | 'findUniqueOrThrow'
@@ -2001,7 +2055,13 @@ export declare type GetFindResult<
         } & (A extends {
           include: any;
         } & Record<string, unknown>
-          ? DefaultSelection<P, A, ClientOptions>
+          ? DefaultSelection<
+              P,
+              A & {
+                omit: A['omit'];
+              },
+              ClientOptions
+            >
           : unknown)
       : DefaultSelection<P, A, ClientOptions>;
 
@@ -2116,7 +2176,7 @@ export declare function getPrismaClient(config: GetPrismaClientConfig): {
     $executeRaw(
       query: TemplateStringsArray | Sql,
       ...values: any[]
-    ): PrismaPromise_2<unknown>;
+    ): PrismaPromise_2<unknown, any>;
     /**
      * Unsafe counterpart of `$executeRaw` that is susceptible to SQL injections
      * @see https://github.com/prisma/prisma/issues/7142
@@ -2128,7 +2188,7 @@ export declare function getPrismaClient(config: GetPrismaClientConfig): {
     $executeRawUnsafe(
       query: string,
       ...values: RawValue[]
-    ): PrismaPromise_2<unknown>;
+    ): PrismaPromise_2<unknown, any>;
     /**
      * Executes a raw command only for MongoDB
      *
@@ -2137,7 +2197,7 @@ export declare function getPrismaClient(config: GetPrismaClientConfig): {
      */
     $runCommandRaw(
       command: Record<string, JsInputValue>
-    ): PrismaPromise_2<unknown>;
+    ): PrismaPromise_2<unknown, any>;
     /**
      * Executes a raw query and returns selected data
      */
@@ -2158,12 +2218,12 @@ export declare function getPrismaClient(config: GetPrismaClientConfig): {
     $queryRaw(
       query: TemplateStringsArray | Sql,
       ...values: any[]
-    ): PrismaPromise_2<unknown>;
+    ): PrismaPromise_2<unknown, any>;
     /**
      * Counterpart to $queryRaw, that returns strongly typed results
      * @param typedSql
      */
-    $queryRawTyped(typedSql: UnknownTypedSql): PrismaPromise_2<unknown>;
+    $queryRawTyped(typedSql: UnknownTypedSql): PrismaPromise_2<unknown, any>;
     /**
      * Unsafe counterpart of `$queryRaw` that is susceptible to SQL injections
      * @see https://github.com/prisma/prisma/issues/7142
@@ -2175,7 +2235,7 @@ export declare function getPrismaClient(config: GetPrismaClientConfig): {
     $queryRawUnsafe(
       query: string,
       ...values: RawValue[]
-    ): PrismaPromise_2<unknown>;
+    ): PrismaPromise_2<unknown, any>;
     /**
      * Execute a batch of requests in a transaction
      * @param requests
@@ -2316,7 +2376,8 @@ declare type GetPrismaClientConfig = {
   /**
    * Optional wasm loading configuration
    */
-  engineWasm?: WasmLoadingConfig;
+  engineWasm?: EngineWasmLoadingConfig;
+  compilerWasm?: CompilerWasmLoadingConfig;
 };
 
 export declare type GetResult<
@@ -2335,6 +2396,7 @@ export declare type GetResult<
   createManyAndReturn: GetFindResult<Payload, Args, ClientOptions>[];
   update: GetFindResult<Payload, Args, ClientOptions>;
   updateMany: GetBatchResult;
+  updateManyAndReturn: GetFindResult<Payload, Args, ClientOptions>[];
   upsert: GetFindResult<Payload, Args, ClientOptions>;
   delete: GetFindResult<Payload, Args, ClientOptions>;
   deleteMany: GetBatchResult;
@@ -2638,6 +2700,7 @@ declare type JsonQueryAction =
   | 'createManyAndReturn'
   | 'updateOne'
   | 'updateMany'
+  | 'updateManyAndReturn'
   | 'deleteOne'
   | 'deleteMany'
   | 'upsertOne'
@@ -2995,6 +3058,7 @@ export declare type Operation =
   | 'createManyAndReturn'
   | 'update'
   | 'updateMany'
+  | 'updateManyAndReturn'
   | 'upsert'
   | 'delete'
   | 'deleteMany'
@@ -3056,6 +3120,14 @@ export declare type Or<A extends 1 | 0, B extends 1 | 0> = {
     1: 1;
   };
 }[A][B];
+
+export declare function Param<$Type, $Value extends string>(
+  name: $Value
+): Param<$Type, $Value>;
+
+export declare type Param<out $Type, $Value extends string> = {
+  readonly name: $Value;
+};
 
 export declare type PatchFlat<O1, O2> = O1 & Omit_2<O2, keyof O1>;
 
@@ -3205,6 +3277,12 @@ declare function prismaGraphQLToJSError(
   activeProvider: string
 ): PrismaClientKnownRequestError | PrismaClientUnknownRequestError;
 
+declare type PrismaOperationSpec<TArgs, TAction = string> = {
+  args: TArgs;
+  action: TAction;
+  model: string;
+};
+
 export declare interface PrismaPromise<T> extends Promise<T> {
   [Symbol.toStringTag]: 'PrismaPromise';
 }
@@ -3214,15 +3292,19 @@ export declare interface PrismaPromise<T> extends Promise<T> {
  * original `Promise` are optional so that it can be backwards-compatible.
  * @see [[createPrismaPromise]]
  */
-declare interface PrismaPromise_2<A> extends Promise<A> {
+declare interface PrismaPromise_2<
+  TResult,
+  TSpec extends PrismaOperationSpec<unknown> = any
+> extends Promise<TResult> {
+  get spec(): TSpec;
   /**
    * Extension of the original `.then` function
    * @param onfulfilled same as regular promises
    * @param onrejected same as regular promises
    * @param transaction transaction options
    */
-  then<R1 = A, R2 = never>(
-    onfulfilled?: (value: A) => R1 | PromiseLike<R1>,
+  then<R1 = TResult, R2 = never>(
+    onfulfilled?: (value: TResult) => R1 | PromiseLike<R1>,
     onrejected?: (error: unknown) => R2 | PromiseLike<R2>,
     transaction?: PrismaPromiseTransaction
   ): Promise<R1 | R2>;
@@ -3234,7 +3316,7 @@ declare interface PrismaPromise_2<A> extends Promise<A> {
   catch<R = never>(
     onrejected?: ((reason: any) => R | PromiseLike<R>) | undefined | null,
     transaction?: PrismaPromiseTransaction
-  ): Promise<A | R>;
+  ): Promise<TResult | R>;
   /**
    * Extension of the original `.finally` function
    * @param onfinally same as regular promises
@@ -3243,7 +3325,7 @@ declare interface PrismaPromise_2<A> extends Promise<A> {
   finally(
     onfinally?: (() => void) | undefined | null,
     transaction?: PrismaPromiseTransaction
-  ): Promise<A>;
+  ): Promise<TResult>;
   /**
    * Called when executing a batch of regular tx
    * @param transaction transaction options for batch tx
@@ -3263,7 +3345,7 @@ declare type PrismaPromiseBatchTransaction = {
 
 declare type PrismaPromiseCallback = (
   transaction?: PrismaPromiseTransaction
-) => PrismaPromise_2<unknown>;
+) => Promise<unknown>;
 
 /**
  * Creates a [[PrismaPromise]]. It is Prisma's implementation of `Promise` which
@@ -3274,8 +3356,9 @@ declare type PrismaPromiseCallback = (
  * @see [[PrismaPromise]]
  * @returns
  */
-declare type PrismaPromiseFactory = (
-  callback: PrismaPromiseCallback
+declare type PrismaPromiseFactory = <T extends PrismaOperationSpec<unknown>>(
+  callback: PrismaPromiseCallback,
+  op?: T
 ) => PrismaPromise_2<unknown>;
 
 declare type PrismaPromiseInteractiveTransaction<PayloadType = unknown> = {
@@ -3306,7 +3389,7 @@ declare type Query = {
 };
 
 declare interface Queryable {
-  readonly provider: 'mysql' | 'postgres' | 'sqlite';
+  readonly provider: Flavour;
   readonly adapterName: (typeof officialPrismaAdapters)[number] | (string & {});
   /**
    * Execute a query given as SQL, interpolating the given parameters,
@@ -3324,6 +3407,20 @@ declare interface Queryable {
    */
   executeRaw(params: Query): Promise<Result_4<number>>;
 }
+
+declare type QueryCompiler = {
+  compile(request: string): Promise<string>;
+};
+
+declare interface QueryCompilerConstructor {
+  new (options: QueryCompilerOptions): QueryCompiler;
+}
+
+declare type QueryCompilerOptions = {
+  datamodel: string;
+  flavour: Flavour;
+  connectionInfo: ConnectionInfo;
+};
 
 declare type QueryEngineBatchGraphQLRequest = {
   batch: QueryEngineRequest[];
@@ -3416,6 +3513,41 @@ declare type QueryEvent = {
 
 declare type QueryEventType = 'query';
 
+declare type QueryIntrospectionBuiltinType =
+  | 'int'
+  | 'bigint'
+  | 'float'
+  | 'double'
+  | 'string'
+  | 'enum'
+  | 'bytes'
+  | 'bool'
+  | 'char'
+  | 'decimal'
+  | 'json'
+  | 'xml'
+  | 'uuid'
+  | 'datetime'
+  | 'date'
+  | 'time'
+  | 'int-array'
+  | 'bigint-array'
+  | 'float-array'
+  | 'double-array'
+  | 'string-array'
+  | 'char-array'
+  | 'bytes-array'
+  | 'bool-array'
+  | 'decimal-array'
+  | 'json-array'
+  | 'xml-array'
+  | 'uuid-array'
+  | 'datetime-array'
+  | 'date-array'
+  | 'time-array'
+  | 'null'
+  | 'unknown';
+
 declare type QueryMiddleware = (
   params: QueryMiddlewareParams,
   next: (params: QueryMiddlewareParams) => Promise<unknown>
@@ -3466,6 +3598,12 @@ export declare type RawQueryArgs =
   | Sql
   | UnknownTypedSql
   | [query: string, ...values: RawValue[]];
+
+declare type RawResponse = {
+  columns: string[];
+  types: QueryIntrospectionBuiltinType[];
+  rows: unknown[][];
+};
 
 declare type RawTaggedValue = {
   $type: 'Raw';
@@ -4310,23 +4448,5 @@ export declare const warnOnce: (
   message: string,
   ...args: unknown[]
 ) => void;
-
-declare type WasmLoadingConfig = {
-  /**
-   * WASM-bindgen runtime for corresponding module
-   */
-  getRuntime: () => {
-    __wbg_set_wasm(exports: unknown): any;
-    QueryEngine: QueryEngineConstructor;
-  };
-  /**
-   * Loads the raw wasm module for the wasm query engine. This configuration is
-   * generated specifically for each type of client, eg. Node.js client and Edge
-   * clients will have different implementations.
-   * @remarks this is a callback on purpose, we only load the wasm if needed.
-   * @remarks only used by LibraryEngine.ts
-   */
-  getQueryEngineWasmModule: () => Promise<unknown>;
-};
 
 export {};
