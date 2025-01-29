@@ -1,11 +1,5 @@
 'use client';
 
-import { fr } from '@codegouvfr/react-dsfr';
-import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
-import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
-import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-
 import { Loader } from '@/components/loader';
 import { AgeBati } from '@/components/themes/inconfortThermique/age-bati';
 import { DensiteBati } from '@/components/themes/inconfortThermique/densite-bati';
@@ -21,7 +15,12 @@ import {
 } from '@/lib/postgres/models';
 import { GetClcEpci } from '@/lib/queries/postgis/cartographie';
 import { TabTooltip } from '@/lib/utils/TabTooltip';
+import { fr } from '@codegouvfr/react-dsfr';
+import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
+import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import dynamic from 'next/dynamic';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -44,7 +43,6 @@ const DynamicVegetalisation = dynamic(
   () =>
     import('../../../../components/themes/inconfortThermique/vegetalisation'),
   {
-    ssr: false,
     loading: () => <Loader />
   }
 );

@@ -41,7 +41,6 @@ interface Props {
 const DynamicCoursDeau = dynamic(
   () => import('../../../../components/themes/biodiversite/etatCoursDeau'),
   {
-    ssr: false,
     loading: () => <Loader />
   }
 );

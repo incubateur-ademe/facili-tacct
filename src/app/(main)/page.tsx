@@ -1,9 +1,8 @@
 'use client';
 
-import Image from 'next/image';
-
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { DarkClass } from '@/lib/utils/DarkClass';
+import Image from 'next/image';
 import Constellation2Img from '../../assets/images/constellation2.png';
 import Constellation3Img from '../../assets/images/constellation3.png';
 import PeopleImg from '../../assets/images/landing-page-group.png';

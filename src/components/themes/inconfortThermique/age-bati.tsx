@@ -1,11 +1,11 @@
-import { useSearchParams } from 'next/navigation';
-
+'use client';
 import { BarChart } from '@/components/charts/inconfortThermique/BarChartAgeBati';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
 import { AgeBatiDto } from '@/lib/dto';
 import { ageBatiMapper } from '@/lib/mapper/inconfortThermique';
 import { InconfortThermique } from '@/lib/postgres/models';
+import { useSearchParams } from 'next/navigation';
 import styles from './themes.module.scss';
 
 interface ChartData {
