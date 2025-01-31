@@ -2,7 +2,7 @@
 
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 import { Loader } from '@/components/loader';
 import AgricultureBiologique from '@/components/themes/biodiversite/agricultureBio';
@@ -220,17 +220,19 @@ const BiodiversiteComp = ({
                 )?.Component;
                 if (!Component) return null;
                 return (
-                  <Component
-                    data={data}
-                    biodiversite={biodiversite}
-                    activeDataTab={selectedSubTab}
-                    carteCommunes={carteCommunes}
-                    agricultureBio={agricultureBio}
-                    surfacesProtegees={surfacesProtegees}
-                    consommationNAF={consommationNAF}
-                    epciContours={epciContours}
-                    etatCoursDeau={etatCoursDeau || []}
-                  />
+                  <Suspense>
+                    <Component
+                      data={data}
+                      biodiversite={biodiversite}
+                      activeDataTab={selectedSubTab}
+                      carteCommunes={carteCommunes}
+                      agricultureBio={agricultureBio}
+                      surfacesProtegees={surfacesProtegees}
+                      consommationNAF={consommationNAF}
+                      epciContours={epciContours}
+                      etatCoursDeau={etatCoursDeau || []}
+                    />
+                  </Suspense>
                 );
               })()}
             </div>
