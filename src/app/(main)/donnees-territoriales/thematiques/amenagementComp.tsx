@@ -2,7 +2,7 @@
 
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 import { ConsommationEspacesNAF } from '@/components/themes/amenagement/consommationEspacesNAF';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
@@ -119,12 +119,14 @@ const AmenagementComp = ({ data, carteCommunes, consommationNAF }: Props) => {
                 )?.Component;
                 if (!Component) return null;
                 return (
-                  <Component
-                    data={data}
-                    activeDataTab={selectedSubTab}
-                    carteCommunes={carteCommunes}
-                    consommationNAF={consommationNAF}
-                  />
+                  <Suspense>
+                    <Component
+                      data={data}
+                      activeDataTab={selectedSubTab}
+                      carteCommunes={carteCommunes}
+                      consommationNAF={consommationNAF}
+                    />
+                  </Suspense>
                 );
               })()}
             </div>
