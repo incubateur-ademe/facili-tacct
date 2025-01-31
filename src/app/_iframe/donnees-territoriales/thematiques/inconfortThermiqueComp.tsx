@@ -108,7 +108,7 @@ const allComps = [
   }
 ];
 
-const PageComp = ({
+const InconfortThermiqueComp = ({
   data,
   carteCommunes,
   inconfortThermique,
@@ -251,4 +251,4 @@ const PageComp = ({
 };
 
 // eslint-disable-next-line import/no-default-export
-export default PageComp;
+export default InconfortThermiqueComp;

@@ -1,6 +1,7 @@
 import { GetConsommationNAF } from '@/lib/queries/databases/biodiversite';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { themes } from '@/lib/utils/themes';
+import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
 import AmenagementComp from './amenagementComp';
 
@@ -13,11 +14,13 @@ const Amenagement = async (props: { searchParams: SearchParams }) => {
   return (
     <div>
       <div className={styles.container}>
-        <AmenagementComp
-          data={theme}
-          consommationNAF={dbConsommationNAF}
-          carteCommunes={carteCommunes}
-        />
+        <Suspense>
+          <AmenagementComp
+            data={theme}
+            consommationNAF={dbConsommationNAF}
+            carteCommunes={carteCommunes}
+          />
+        </Suspense>
       </div>
     </div>
   );

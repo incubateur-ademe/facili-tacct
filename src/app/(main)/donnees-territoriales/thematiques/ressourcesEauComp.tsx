@@ -4,7 +4,7 @@ import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 import { Loader } from '@/components/loader';
 import { PrelevementEau } from '@/components/themes/ressourcesEau/prelevementEau';
@@ -178,14 +178,16 @@ const RessourcesEauComp = ({
                 )?.Component;
                 if (!Component) return null;
                 return (
-                  <Component
-                    data={data}
-                    ressourcesEau={ressourcesEau}
-                    activeDataTab={selectedSubTab}
-                    epciContours={epciContours}
-                    carteCommunes={carteCommunes}
-                    etatCoursDeau={etatCoursDeau || []}
-                  />
+                  <Suspense>
+                    <Component
+                      data={data}
+                      ressourcesEau={ressourcesEau}
+                      activeDataTab={selectedSubTab}
+                      epciContours={epciContours}
+                      carteCommunes={carteCommunes}
+                      etatCoursDeau={etatCoursDeau || []}
+                    />
+                  </Suspense>
                 );
               })()}
             </div>

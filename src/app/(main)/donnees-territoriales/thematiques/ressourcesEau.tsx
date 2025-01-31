@@ -1,6 +1,7 @@
 import { GetCommunes, GetEpci } from '@/lib/queries/postgis/cartographie';
 import { GetRessourceEau } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/utils/themes';
+import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
 import RessourcesEauComp from './ressourcesEauComp';
 
@@ -13,12 +14,14 @@ const RessourcesEau = async (props: { searchParams: SearchParams }) => {
 
   return (
     <div className={styles.container}>
-      <RessourcesEauComp
-        data={theme}
-        ressourcesEau={dbRessourcesEau}
-        carteCommunes={carteCommunes}
-        epciContours={epciContours}
-      />
+      <Suspense>
+        <RessourcesEauComp
+          data={theme}
+          ressourcesEau={dbRessourcesEau}
+          carteCommunes={carteCommunes}
+          epciContours={epciContours}
+        />
+      </Suspense>
     </div>
   );
 };

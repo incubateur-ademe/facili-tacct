@@ -1,3 +1,4 @@
+//https://github.com/incubateur-ademe/pages-legales-faciles/blob/dev/next.config.mjs
 import createMDX from '@next/mdx';
 import { withSentryConfig } from '@sentry/nextjs';
 
@@ -5,7 +6,14 @@ import packageJson from './package.json' assert { type: 'json' };
 
 const { version } = packageJson;
 
-const isDeployment = !!process.env.VERCEL_URL;
+const isDeployment = !!process.env.SOURCE_VERSION;
+
+const env = {
+    NEXT_PUBLIC_APP_VERSION: version,
+    NEXT_PUBLIC_APP_VERSION_COMMIT: isDeployment
+        ? process.env.SOURCE_VERSION
+        : 'dev'
+};
 
 const csp = {
     'default-src': ["'none'"],
@@ -34,7 +42,8 @@ const csp = {
         'http://localhost:5174/*',
         'http://localhost:5174',
         'http://localhost:5173/*',
-        'http://localhost:5173'
+        'http://localhost:5173',
+        'https://mon-espace-collectivite.osc-fr1.scalingo.io'
     ],
     'base-uri': ["'self'", 'https://*.gouv.fr'],
     'form-action': ["'self'", 'https://*.gouv.fr'],
@@ -64,12 +73,10 @@ const config = {
     },
     productionBrowserSourceMaps: false,
     experimental: {
-        // typedRoutes: true, //NextJs 15
         serverSourceMaps: false,
         serverActions: {
             allowedOrigins: ['*.beta.gouv.fr']
         }
-        // ppr: 'incremental'
     },
     eslint: {
         ignoreDuringBuilds: true
@@ -137,11 +144,6 @@ const config = {
 
 const withMDX = createMDX({
     extension: /\.mdx?$/
-    // options: {
-    //     //NextJs 15
-    //     remarkPlugins: [],
-    //     rehypePlugins: [['rehype-katex', { strict: true, throwOnError: true }]]
-    // }
 });
 
 export default withSentryConfig(withMDX(config), {

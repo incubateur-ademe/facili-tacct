@@ -20,7 +20,7 @@ import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -109,7 +109,7 @@ const allComps = [
   }
 ];
 
-const PageComp = ({
+const InconfortThermiqueComp = ({
   data,
   carteCommunes,
   inconfortThermique,
@@ -233,16 +233,18 @@ const PageComp = ({
                 )?.Component;
                 if (!Component) return null;
                 return (
-                  <Component
-                    data={data}
-                    inconfortThermique={inconfortThermique}
-                    carteCommunes={carteCommunes}
-                    activeDataTab={selectedSubTab}
-                    clc={clc || []}
-                    collectivite={collectivite}
-                    departement={departement}
-                    // LCZBayonne={LCZBayonne}
-                  />
+                  <Suspense>
+                    <Component
+                      data={data}
+                      inconfortThermique={inconfortThermique}
+                      carteCommunes={carteCommunes}
+                      activeDataTab={selectedSubTab}
+                      clc={clc || []}
+                      collectivite={collectivite}
+                      departement={departement}
+                      // LCZBayonne={LCZBayonne}
+                    />
+                  </Suspense>
                 );
               })()}
             </div>
@@ -254,4 +256,4 @@ const PageComp = ({
 };
 
 // eslint-disable-next-line import/no-default-export
-export default PageComp;
+export default InconfortThermiqueComp;

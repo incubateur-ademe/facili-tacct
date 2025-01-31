@@ -1,4 +1,3 @@
-import { Loader } from '@/components/loader';
 import {
   GetCommunes,
   GetEpci,
@@ -6,12 +5,9 @@ import {
 } from '@/lib/queries/postgis/cartographie';
 import { GetGestionRisques } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/utils/themes';
-import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
-
-const DynamicPageComp = dynamic(() => import('./gestionRisquesComp'), {
-  loading: () => <Loader />
-});
+import GestionRisquesComp from './gestionRisquesComp';
 
 const GestionRisques = async (props: { searchParams: SearchParams }) => {
   const theme = themes.gestionRisques;
@@ -28,13 +24,15 @@ const GestionRisques = async (props: { searchParams: SearchParams }) => {
   return (
     <div>
       <div className={styles.container}>
-        <DynamicPageComp
-          data={theme}
-          gestionRisques={dbGestionRisques!}
-          carteCommunes={carteCommunes}
-          erosionCotiere={erosionCotiere}
-          epciContours={epciContours}
-        />
+        <Suspense>
+          <GestionRisquesComp
+            data={theme}
+            gestionRisques={dbGestionRisques!}
+            carteCommunes={carteCommunes}
+            erosionCotiere={erosionCotiere}
+            epciContours={epciContours}
+          />
+        </Suspense>
       </div>
     </div>
   );
