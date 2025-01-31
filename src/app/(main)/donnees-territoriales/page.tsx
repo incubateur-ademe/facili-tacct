@@ -1,3 +1,4 @@
+import { ClientOnly } from '@/components/utils/ClientOnly';
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { type Metadata } from 'next';
 import { Container } from '../../../dsfr/server';
@@ -12,23 +13,25 @@ const Page = async (props: { searchParams: SearchParams }) => {
   const { thematique, codepci, codgeo } = await props.searchParams;
   return (
     <Container size="xl" className="mb-24">
-      <Breadcrumb
-        currentPageLabel={`Données territoriales : ${thematique}`}
-        homeLinkProps={{
-          href: '/'
-        }}
-        segments={[
-          {
-            label: 'Thématiques',
-            linkProps: {
-              href: codgeo
-                ? `/thematiques?codgeo=${codgeo}&codepci=${codepci}`
-                : `/thematiques?codepci=${codepci}`
+      <ClientOnly>
+        <Breadcrumb
+          currentPageLabel={`Données territoriales : ${thematique}`}
+          homeLinkProps={{
+            href: '/'
+          }}
+          segments={[
+            {
+              label: 'Thématiques',
+              linkProps: {
+                href: codgeo
+                  ? `/thematiques?codgeo=${codgeo}&codepci=${codepci}`
+                  : `/thematiques?codepci=${codepci}`
+              }
             }
-          }
-        ]}
-      />
-      <FilterThemes {...props} />
+          ]}
+        />
+        <FilterThemes {...props} />
+      </ClientOnly>
     </Container>
   );
 };

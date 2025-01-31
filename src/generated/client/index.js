@@ -495,7 +495,7 @@ const config = {
     },
     output: {
       value:
-        'C:\\Antoine\\BetaGouv\\facili-tacct\\dev\\facili-tacct\\src\\generated\\client',
+        'C:\\Antoine\\BetaGouv\\Code\\facili-tacct\\facili-tacct\\src\\generated\\client',
       fromEnvVar: null
     },
     config: {
@@ -514,7 +514,7 @@ const config = {
     ],
     previewFeatures: ['multiSchema'],
     sourceFilePath:
-      'C:\\Antoine\\BetaGouv\\facili-tacct\\dev\\facili-tacct\\prisma\\schema.prisma',
+      'C:\\Antoine\\BetaGouv\\Code\\facili-tacct\\facili-tacct\\prisma\\schema.prisma',
     isCustomOutput: true
   },
   relativeEnvPaths: {

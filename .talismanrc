@@ -20,7 +20,9 @@ fileignoreconfig:
 - filename: src/generated/client/runtime/edge.js
   checksum: dd492c7eabd32b66f20f5fd3b44af182e1caff374381f4956dbbc39a5352066b
 - filename: pnpm-lock.yaml
-  checksum: 29351582bf54b3612dcb4489cde570300ef155b4e90b9b5b4aa9a6e0458b187f
+  checksum: 69633fe8a295912b8370e1de9e9f7453844fef7691ef096b0cae8e8e7e04463d
+- filename: src/app/(main)/thematiques/page.tsx
+  checksum: f29555dd0da8a0401506a380dbd935048780b960c41cbbc480f232a7e5ba7d76
 - filename: src/app/(main)/layout.tsx
   checksum: bebd900d7689763bd886a800e9aa47db5ba33ff2d2c5bf1ce8aad047da8cb6f2
 - filename: src/app/iframe/layout.tsx
