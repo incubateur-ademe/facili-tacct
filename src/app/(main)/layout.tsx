@@ -1,13 +1,12 @@
+import { Brand } from '@/components/Brand';
+import { HeaderComp as Header } from '@/components/Header';
+import { ClientOnly } from '@/components/utils/ClientOnly';
 import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display';
 import { Footer } from '@codegouvfr/react-dsfr/Footer';
 import { type Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { Suspense, type PropsWithChildren } from 'react';
 import { NextAppDirEmotionCacheProvider } from 'tss-react/next/appDir';
-
-import { Brand } from '@/components/Brand';
-import { HeaderComp as Header } from '@/components/Header';
-
-import dynamic from 'next/dynamic';
 import { config } from '../../config';
 import { Banner } from './banner';
 import { sharedMetadata } from './shared-metadata';
@@ -38,9 +37,11 @@ const LayoutMain = ({ children }: PropsWithChildren) => {
       <Suspense>
         <PostHogPageView />
       </Suspense>
-      <Suspense>
-        <Header />
-      </Suspense>
+      <ClientOnly>
+        <Suspense>
+          <Header />
+        </Suspense>
+      </ClientOnly>
       <main>{children}</main>
       <Footer
         id={footerId}
