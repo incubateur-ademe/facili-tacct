@@ -1,7 +1,7 @@
 import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display';
 import { Footer } from '@codegouvfr/react-dsfr/Footer';
 import { type Metadata } from 'next';
-import { type PropsWithChildren } from 'react';
+import { Suspense, type PropsWithChildren } from 'react';
 import { NextAppDirEmotionCacheProvider } from 'tss-react/next/appDir';
 
 import { Brand } from '@/components/Brand';
@@ -33,11 +33,14 @@ export const metadata: Metadata = {
 const PostHogPageView = dynamic(() => import('../PostHogPageView'));
 
 const LayoutMain = ({ children }: PropsWithChildren) => {
-  //TODO suspense useful in build ?
   return (
     <NextAppDirEmotionCacheProvider options={{ key: 'css' }}>
-      <PostHogPageView />
-      <Header />
+      <Suspense>
+        <PostHogPageView />
+      </Suspense>
+      <Suspense>
+        <Header />
+      </Suspense>
       <main>{children}</main>
       <Footer
         id={footerId}

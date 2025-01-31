@@ -1,12 +1,8 @@
-import { Loader } from '@/components/loader';
 import { GetRessourceEau } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/utils/themes';
-import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
-
-const DynamicPageComp = dynamic(() => import('./ressourcesEauComp'), {
-  loading: () => <Loader />
-});
+import RessourcesEauComp from './ressourcesEauComp';
 
 const RessourcesEau = async (props: { searchParams: SearchParams }) => {
   const theme = themes.ressourcesEau;
@@ -16,7 +12,9 @@ const RessourcesEau = async (props: { searchParams: SearchParams }) => {
   return (
     <div>
       <div className={styles.container}>
-        <DynamicPageComp data={theme} ressourcesEau={dbRessourcesEau} />
+        <Suspense>
+          <RessourcesEauComp data={theme} ressourcesEau={dbRessourcesEau} />
+        </Suspense>
       </div>
     </div>
   );
