@@ -4,7 +4,7 @@ import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 import { Loader } from '@/components/loader';
 import { AgeBati } from '@/components/themes/inconfortThermique/age-bati';
@@ -231,15 +231,17 @@ const InconfortThermiqueComp = ({
                 )?.Component;
                 if (!Component) return null;
                 return (
-                  <Component
-                    data={data}
-                    inconfortThermique={inconfortThermique}
-                    carteCommunes={carteCommunes}
-                    activeDataTab={selectedSubTab}
-                    clc={clc || []}
-                    collectivite={collectivite}
-                    departement={departement}
-                  />
+                  <Suspense>
+                    <Component
+                      data={data}
+                      inconfortThermique={inconfortThermique}
+                      carteCommunes={carteCommunes}
+                      activeDataTab={selectedSubTab}
+                      clc={clc || []}
+                      collectivite={collectivite}
+                      departement={departement}
+                    />
+                  </Suspense>
                 );
               })()}
             </div>
