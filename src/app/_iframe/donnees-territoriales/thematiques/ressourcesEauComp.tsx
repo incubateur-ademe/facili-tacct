@@ -4,7 +4,7 @@ import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 import { PrelevementEau } from '@/components/themes/ressourcesEau/prelevementEau';
 import { RessourcesEau } from '@/lib/postgres/models';
@@ -132,11 +132,13 @@ const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
                 )?.Component;
                 if (!Component) return null;
                 return (
-                  <Component
-                    data={data}
-                    ressourcesEau={ressourcesEau}
-                    activeDataTab={selectedSubTab}
-                  />
+                  <Suspense>
+                    <Component
+                      data={data}
+                      ressourcesEau={ressourcesEau}
+                      activeDataTab={selectedSubTab}
+                    />
+                  </Suspense>
                 );
               })()}
             </div>
