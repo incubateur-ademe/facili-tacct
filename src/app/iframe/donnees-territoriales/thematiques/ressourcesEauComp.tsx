@@ -1,22 +1,18 @@
 'use client';
 
+import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
+import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 
 import { Loader } from '@/components/loader';
-import AgricultureBiologique from '@/components/themes/biodiversite/agricultureBio';
-import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
-import { StationsClassees } from '@/components/themes/biodiversite/stationsClassees';
-import SurfacesProtegees from '@/components/themes/biodiversite/surfacesProtegees';
+import { PrelevementEau } from '@/components/themes/ressourcesEau/prelevementEau';
 import {
-  AgricultureBio,
-  Biodiversite,
   CarteCommunes,
-  ConsommationNAF,
   EpciContours,
   EtatCoursDeau,
-  SurfacesProtegeesByCol
+  RessourcesEau
 } from '@/lib/postgres/models';
 import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
 import { TabTooltip } from '@/lib/utils/TabTooltip';
@@ -32,11 +28,8 @@ interface Props {
     risque: string;
     titre: string;
   }>;
-  biodiversite: Biodiversite[];
+  ressourcesEau: RessourcesEau[];
   carteCommunes: CarteCommunes[];
-  agricultureBio: AgricultureBio[];
-  surfacesProtegees: SurfacesProtegeesByCol[];
-  consommationNAF: ConsommationNAF[];
   epciContours: EpciContours[];
 }
 
@@ -49,54 +42,9 @@ const DynamicCoursDeau = dynamic(
 
 const allComps = [
   {
-    titre: 'Stations classées',
-    Component: ({
-      biodiversite,
-      data,
-      carteCommunes
-    }: Props & { activeDataTab: string }) => (
-      <StationsClassees
-        biodiversite={biodiversite}
-        data={data}
-        carteCommunes={carteCommunes}
-      />
-    )
-  },
-  {
-    titre: 'Surfaces en bio',
-    Component: ({
-      data,
-      agricultureBio
-    }: Props & { activeDataTab: string }) => (
-      <AgricultureBiologique data={data} agricultureBio={agricultureBio} />
-    )
-  },
-  {
-    titre: 'Surfaces protégées',
-    Component: ({
-      data,
-      surfacesProtegees,
-      carteCommunes
-    }: Props & { activeDataTab: string }) => (
-      <SurfacesProtegees
-        data={data}
-        surfacesProtegees={surfacesProtegees}
-        carteCommunes={carteCommunes}
-      />
-    )
-  },
-  {
-    titre: "Consommation d'espaces NAF",
-    Component: ({
-      data,
-      consommationNAF,
-      carteCommunes
-    }: Props & { activeDataTab: string }) => (
-      <ConsommationEspacesNAF
-        data={data}
-        consommationNAF={consommationNAF}
-        carteCommunes={carteCommunes}
-      />
+    titre: 'Prélèvements en eau',
+    Component: ({ data, ressourcesEau }: Props & { activeDataTab: string }) => (
+      <PrelevementEau data={data} ressourcesEau={ressourcesEau} />
     )
   },
   {
@@ -115,54 +63,64 @@ const allComps = [
   }
 ];
 
-const BiodiversiteComp = ({
+const RessourcesEauComp = ({
   data,
-  biodiversite,
+  ressourcesEau,
   carteCommunes,
-  agricultureBio,
-  surfacesProtegees,
-  consommationNAF,
   epciContours
 }: Props) => {
-  const [selectedTabId, setSelectedTabId] = useState('Surfaces protégées');
-  const [selectedSubTab, setSelectedSubTab] = useState('Surfaces protégées');
+  const [selectedTabId, setSelectedTabId] = useState('Prélèvements en eau');
+  const [selectedSubTab, setSelectedSubTab] = useState('Prélèvements en eau');
   const [etatCoursDeau, setEtatCoursDeau] = useState<EtatCoursDeau[]>();
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
+  const codgeo = searchParams.get('codgeo')!;
+  const { isDark } = useIsDark();
+  const darkClass = {
+    backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
+      .grey.active,
+    '&:hover': {
+      backgroundColor: fr.colors.getHex({ isDark }).decisions.background.alt
+        .grey.hover
+    }
+  };
   const { css } = useStyles();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
 
   useEffect(() => {
     setSelectedSubTab(
       data.filter((el) => el.facteur_sensibilite === selectedTabId)[0].titre
     );
     void (async () => {
-      const temp = await GetEtatCoursDeau(codepci);
+      const temp = await GetEtatCoursDeau(codepci, codgeo);
       temp && codepci ? setEtatCoursDeau(temp) : void 0;
     })();
   }, [selectedTabId, codepci]);
 
   return (
-    <div className={styles.container}>
+    <div className="w-full">
       <Tabs
         selectedTabId={selectedTabId}
         tabs={[
           {
-            tabId: 'Surfaces protégées',
-            label: 'Surfaces protégées'
-          },
-          {
-            tabId: "Consommation d'espaces NAF",
-            label: "Consommation d'espaces NAF"
-          },
-          {
-            tabId: 'Surfaces en bio',
+            tabId: 'Prélèvements en eau',
             label: (
               <TabTooltip
                 selectedTab={selectedTabId}
-                tooltip="L’agriculture biologique fait partie d’un ensemble de pratiques agricoles respectueuses des équilibres écologiques qui contribue à la préservation des sols et des ressources naturelles. "
-                titre="Surfaces en bio"
+                tooltip="Les prélèvements correspondent à l’eau douce extraite des eaux souterraines et des eaux de surface pour les besoins des activités humaines."
+                titre="Prélèvements en eau"
               />
             )
+          },
+          {
+            tabId: "État des cours d'eau",
+            label: "État des cours d'eau"
           }
         ]}
         onTabChange={setSelectedTabId}
@@ -197,8 +155,8 @@ const BiodiversiteComp = ({
         })}
       >
         <div className={styles.formContainer}>
-          <div className={styles.titles}>
-            {/* {data
+          {/* <div className={styles.titles}>
+            {data
               .filter(el => el.facteur_sensibilite === selectedTabId)
               .map((element, i) => (
                 <button
@@ -210,10 +168,10 @@ const BiodiversiteComp = ({
                 >
                   {element.titre}
                 </button>
-              ))} */}
-          </div>
+              ))}
+          </div> */}
           <div className={styles.bubble}>
-            <div className={styles.bubbleContent}>
+            <div className={styles.bubbleContent} style={darkClass}>
               {(() => {
                 const Component = allComps.find(
                   (el) => el.titre === selectedSubTab
@@ -223,13 +181,10 @@ const BiodiversiteComp = ({
                   <Suspense>
                     <Component
                       data={data}
-                      biodiversite={biodiversite}
+                      ressourcesEau={ressourcesEau}
                       activeDataTab={selectedSubTab}
-                      carteCommunes={carteCommunes}
-                      agricultureBio={agricultureBio}
-                      surfacesProtegees={surfacesProtegees}
-                      consommationNAF={consommationNAF}
                       epciContours={epciContours}
+                      carteCommunes={carteCommunes}
                       etatCoursDeau={etatCoursDeau || []}
                     />
                   </Suspense>
@@ -244,4 +199,4 @@ const BiodiversiteComp = ({
 };
 
 // eslint-disable-next-line import/no-default-export
-export default BiodiversiteComp;
+export default RessourcesEauComp;
