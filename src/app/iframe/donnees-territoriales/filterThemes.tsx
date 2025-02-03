@@ -1,6 +1,7 @@
 'use server';
 
 import { ErrorDisplay } from '../../ErrorDisplay';
+import Amenagement from './thematiques/amenagement';
 import Biodiversite from './thematiques/biodiversite';
 import GestionRisques from './thematiques/gestionRisques';
 import InconfortThermique from './thematiques/inconfortThermique';
@@ -18,6 +19,8 @@ const FilterThemes = async (props: { searchParams: SearchParams }) => {
         <GestionRisques {...props} />
       ) : thematique === 'Ressources en eau' ? (
         <RessourcesEau {...props} />
+      ) : thematique === 'Aménagement' ? (
+        <Amenagement {...props} />
       ) : (
         <ErrorDisplay code="404" />
       )}

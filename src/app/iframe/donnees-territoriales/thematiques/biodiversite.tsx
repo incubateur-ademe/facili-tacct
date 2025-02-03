@@ -20,20 +20,18 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
   const epciContours = await GetEpci(codepci);
 
   return (
-    <div>
-      <div className={styles.container}>
-        <Suspense>
-          <BiodiversiteComp
-            data={theme}
-            biodiversite={dbBiodiversite!}
-            carteCommunes={carteCommunes}
-            agricultureBio={dbAgricultureBio!}
-            surfacesProtegees={dbSurfacesProtegees}
-            consommationNAF={dbConsommationNAF}
-            epciContours={epciContours}
-          />
-        </Suspense>
-      </div>
+    <div className={styles.container}>
+      <Suspense>
+        <BiodiversiteComp
+          data={theme}
+          biodiversite={dbBiodiversite!}
+          carteCommunes={carteCommunes}
+          agricultureBio={dbAgricultureBio!}
+          surfacesProtegees={dbSurfacesProtegees}
+          consommationNAF={dbConsommationNAF}
+          epciContours={epciContours}
+        />
+      </Suspense>
     </div>
   );
 };
