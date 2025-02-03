@@ -1,4 +1,3 @@
-import { Loader } from '@/components/loader';
 import {
   GetConsommationNAF,
   GetSurfacesProtegees
@@ -6,14 +5,9 @@ import {
 import { GetCommunes, GetEpci } from '@/lib/queries/postgis/cartographie';
 import { GetAgricultureBio, GetBiodiversite } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/utils/themes';
-import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
 import BiodiversiteComp from './biodiversiteComp';
-
-const DynamicPageComp = dynamic(() => import('./biodiversiteComp'), {
-  loading: () => <Loader />
-});
 
 const Biodiversite = async (props: { searchParams: SearchParams }) => {
   const theme = themes.biodiversite;

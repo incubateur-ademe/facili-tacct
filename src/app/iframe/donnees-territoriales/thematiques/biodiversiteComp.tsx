@@ -214,21 +214,6 @@ const BiodiversiteComp = ({
         })}
       >
         <div className={styles.formContainer}>
-          <div className={styles.titles}>
-            {/* {data
-              .filter(el => el.facteur_sensibilite === selectedTabId)
-              .map((element, i) => (
-                <button
-                  key={i}
-                  className={selectedSubTab === element.titre ? styles.selectedButton : styles.button}
-                  onClick={() => {
-                    setSelectedSubTab(element.titre);
-                  }}
-                >
-                  {element.titre}
-                </button>
-              ))} */}
-          </div>
           <div className={styles.bubble}>
             <div className={styles.bubbleContent}>
               {(() => {
