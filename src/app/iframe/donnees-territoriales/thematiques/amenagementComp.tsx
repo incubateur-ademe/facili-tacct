@@ -1,13 +1,11 @@
 'use client';
 
-import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
-import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 
-import { PrelevementEau } from '@/components/themes/ressourcesEau/prelevementEau';
-import { RessourcesEau } from '@/lib/postgres/models';
+import { ConsommationEspacesNAF } from '@/components/themes/amenagement/consommationEspacesNAF';
+import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
 import { TabTooltip } from '@/lib/utils/TabTooltip';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
@@ -20,32 +18,36 @@ interface Props {
     risque: string;
     titre: string;
   }>;
-  ressourcesEau: RessourcesEau[];
+  consommationNAF: ConsommationNAF[];
+  carteCommunes: CarteCommunes[];
 }
 
 const allComps = [
   {
-    titre: 'Prélèvements en eau',
-    Component: ({ data, ressourcesEau }: Props & { activeDataTab: string }) => (
-      <PrelevementEau data={data} ressourcesEau={ressourcesEau} />
+    titre: "Consommation d'espaces NAF",
+    Component: ({
+      data,
+      consommationNAF,
+      carteCommunes
+    }: Props & { activeDataTab: string }) => (
+      <ConsommationEspacesNAF
+        data={data}
+        consommationNAF={consommationNAF}
+        carteCommunes={carteCommunes}
+      />
     )
   }
 ];
 
-const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
-  const [selectedTabId, setSelectedTabId] = useState('Prélèvements en eau');
-  const [selectedSubTab, setSelectedSubTab] = useState('Prélèvements en eau');
+const AmenagementComp = ({ data, carteCommunes, consommationNAF }: Props) => {
+  const [selectedTabId, setSelectedTabId] = useState(
+    "Consommation d'espaces NAF"
+  );
+  const [selectedSubTab, setSelectedSubTab] = useState(
+    "Consommation d'espaces NAF"
+  );
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
-  const { isDark } = useIsDark();
-  const darkClass = {
-    backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
-      .grey.active,
-    '&:hover': {
-      backgroundColor: fr.colors.getHex({ isDark }).decisions.background.alt
-        .grey.hover
-    }
-  };
   const { css } = useStyles();
 
   useEffect(() => {
@@ -67,12 +69,12 @@ const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
         selectedTabId={selectedTabId}
         tabs={[
           {
-            tabId: 'Prélèvements en eau',
+            tabId: "Consommation d'espaces NAF",
             label: (
               <TabTooltip
                 selectedTab={selectedTabId}
-                tooltip="Les prélèvements correspondent à l’eau douce extraite des eaux souterraines et des eaux de surface pour les besoins des activités humaines."
-                titre="Prélèvements en eau"
+                tooltip="La consommation d’un espace naturel, agricole ou forestier (ENAF) désigne sa conversion en surface artificialisée, le rendant indisponible pour des usages tels que l’agriculture, la foresterie ou les habitats naturels."
+                titre="Consommation d'espaces NAF"
               />
             )
           }
@@ -109,23 +111,8 @@ const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
         })}
       >
         <div className={styles.formContainer}>
-          {/* <div className={styles.titles}>
-            {data
-              .filter(el => el.facteur_sensibilite === selectedTabId)
-              .map((element, i) => (
-                <button
-                  key={i}
-                  className={selectedSubTab === element.titre ? styles.selectedButton : styles.button}
-                  onClick={() => {
-                    setSelectedSubTab(element.titre);
-                  }}
-                >
-                  {element.titre}
-                </button>
-              ))}
-          </div> */}
           <div className={styles.bubble}>
-            <div className={styles.bubbleContent} style={darkClass}>
+            <div className={styles.bubbleContent}>
               {(() => {
                 const Component = allComps.find(
                   (el) => el.titre === selectedSubTab
@@ -135,8 +122,9 @@ const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
                   <Suspense>
                     <Component
                       data={data}
-                      ressourcesEau={ressourcesEau}
                       activeDataTab={selectedSubTab}
+                      carteCommunes={carteCommunes}
+                      consommationNAF={consommationNAF}
                     />
                   </Suspense>
                 );
@@ -150,4 +138,4 @@ const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
 };
 
 // eslint-disable-next-line import/no-default-export
-export default RessourcesEauComp;
+export default AmenagementComp;
