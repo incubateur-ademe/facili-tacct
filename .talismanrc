@@ -33,6 +33,16 @@ fileignoreconfig:
   checksum: dced7fa003236eb5917272207e90b6b2b9316c74f88ee41994c6c418e6afaa03
 - filename: src/components/themes/biodiversite/AOT40.tsx
   checksum: 99fa67361c11ec26ed2f3649613298ccf25bc2725533a222a3fbf0e5334c8bc3
+- filename: src/app/_api/auth/register/route.ts
+  checksum: 98d0a8b7e17be6740284355017b2541bcd1edace1024bb1769d58e7d893e27b4
+- filename: src/app/_api/auth/users/route.ts
+  checksum: 7f373ac2002993e1d683a3a7ca9c15f3b7baa72619e677dabbdb4231291075d5
+- filename: src/app/register/form.tsx
+  checksum: b1f46eda6277d8677ded7fb1e0840eeb128e6c1071f773cd944df9cba28fef92
+- filename: src/app/login/form.tsx
+  checksum: 667712a1193ce17e63fb4c868c37d58265cf8d689870daca1b66e6074a7880ff
+- filename: src/lib/auth/authOptions.ts
+  checksum: e7fb99bb2be5c34c6c501952defa547c6ac4383bf140dcbcbbeaf14336b24cca
 - filename: src/generated/client/index.d.ts
-  checksum: 74d36c62a901ca06a37d59cee2af94bfbd4a28e8dd2a729c1a60300c877d1423
+  checksum: 97585745d418ac28ac241e79ab3ec997faf6bf2b7aede69a1361c9edee57c89a
 version: ""
