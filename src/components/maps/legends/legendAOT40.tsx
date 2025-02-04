@@ -4,12 +4,12 @@ import './legend.css';
 import styles from './mapsComponents.module.scss';
 
 const colors: string[] = [
-  '#0095C8',
-  '#00C190',
-  '#FFCF5E',
-  '#F66E19',
-  '#B5000E',
-  '#9D9C9C'
+  '#7A49BE',
+  '#A67FE1',
+  '#DB7BDD',
+  '#FF9699',
+  '#00C2CC',
+  '#5EEDF3'
 ];
 
 const LegendBlock: React.FC<{ color: string; value: string }> = ({
@@ -30,12 +30,12 @@ const LegendBlock: React.FC<{ color: string; value: string }> = ({
 export const LegendAOT40 = () => {
   return (
     <div className={styles.legendItemsWrapper}>
-      <LegendBlock color={colors[0]} value={'Très bon état'} />
-      <LegendBlock color={colors[1]} value={'Bon état'} />
-      <LegendBlock color={colors[2]} value={'État moyen'} />
-      <LegendBlock color={colors[3]} value={'État médiocre'} />
-      <LegendBlock color={colors[4]} value={'État mauvais'} />
-      <LegendBlock color={colors[5]} value={'Indéterminé/pas de données'} />
+      <LegendBlock color={colors[0]} value={'> 36000'} />
+      <LegendBlock color={colors[1]} value={'36000 - 27000'} />
+      <LegendBlock color={colors[2]} value={'27000 - 18000'} />
+      <LegendBlock color={colors[3]} value={'18000 - 12000'} />
+      <LegendBlock color={colors[4]} value={'12000 - 6000'} />
+      <LegendBlock color={colors[5]} value={'< 6000'} />
     </div>
   );
 };
