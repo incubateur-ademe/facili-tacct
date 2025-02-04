@@ -478,6 +478,19 @@ exports.Prisma.Etat_cours_d_eauScalarFieldEnum = {
   etateco: 'etateco'
 };
 
+exports.Prisma.Aot_40ScalarFieldEnum = {
+  index: 'index',
+  Organisme: 'Organisme',
+  code_zas: 'code_zas',
+  Zas: 'Zas',
+  code_site: 'code_site',
+  nom_site: 'nom_site',
+  type_d_implantation: 'type_d_implantation',
+  valeur_brute: 'valeur_brute',
+  Latitude: 'Latitude',
+  Longitude: 'Longitude'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -509,7 +522,8 @@ exports.Prisma.ModelName = {
   consommation_espaces_naf: 'consommation_espaces_naf',
   lcz_bayonne_test: 'lcz_bayonne_test',
   north_star_metric: 'north_star_metric',
-  etat_cours_d_eau: 'etat_cours_d_eau'
+  etat_cours_d_eau: 'etat_cours_d_eau',
+  aot_40: 'aot_40'
 };
 
 /**
