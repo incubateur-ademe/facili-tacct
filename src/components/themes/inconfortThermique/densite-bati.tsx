@@ -2,7 +2,7 @@ import { useSearchParams } from 'next/navigation';
 
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
-import LegendInconfortThermique from '@/components/maps/components/legendInconfortThermique';
+import LegendInconfortThermique from '@/components/maps/legends/legendInconfortThermique';
 import { Map } from '@/components/maps/map';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes } from '@/lib/postgres/models';

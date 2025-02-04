@@ -55,6 +55,7 @@
     "react": "^19",
     "react-dom": "^19",
     "react-leaflet": "^5",
+    "react-leaflet-cluster": "^2.1.0",
     "react-leaflet-marker": "^2.1.1",
     "react-router-dom": "^6.23.1",
     "reactstrap": "^9.2.3",

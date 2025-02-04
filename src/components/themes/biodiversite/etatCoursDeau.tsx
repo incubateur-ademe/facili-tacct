@@ -1,5 +1,5 @@
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
-import { LegendEtatCoursDeau } from '@/components/maps/components/legendEtatCoursDeau';
+import { LegendEtatCoursDeau } from '@/components/maps/legends/legendEtatCoursDeau';
 import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EpciContoursMapper } from '@/lib/mapper/epci';

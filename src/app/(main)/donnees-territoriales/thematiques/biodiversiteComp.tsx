@@ -6,11 +6,13 @@ import { Suspense, useEffect, useState } from 'react';
 
 import { Loader } from '@/components/loader';
 import AgricultureBiologique from '@/components/themes/biodiversite/agricultureBio';
+import AOT40Dataviz from '@/components/themes/biodiversite/AOT40';
 import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
 import { StationsClassees } from '@/components/themes/biodiversite/stationsClassees';
 import SurfacesProtegees from '@/components/themes/biodiversite/surfacesProtegees';
 import {
   AgricultureBio,
+  AOT40,
   Biodiversite,
   CarteCommunes,
   ConsommationNAF,
@@ -38,6 +40,7 @@ interface Props {
   surfacesProtegees: SurfacesProtegeesByCol[];
   consommationNAF: ConsommationNAF[];
   epciContours: EpciContours[];
+  aot40: AOT40[];
 }
 
 const DynamicCoursDeau = dynamic(
@@ -112,6 +115,12 @@ const allComps = [
         carteCommunes={carteCommunes}
       />
     )
+  },
+  {
+    titre: 'Seuils de pollution',
+    Component: ({ aot40 }: Props & { activeDataTab: string }) => (
+      <AOT40Dataviz aot40={aot40} />
+    )
   }
 ];
 
@@ -122,7 +131,8 @@ const BiodiversiteComp = ({
   agricultureBio,
   surfacesProtegees,
   consommationNAF,
-  epciContours
+  epciContours,
+  aot40
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Surfaces protégées');
   const [selectedSubTab, setSelectedSubTab] = useState('Surfaces protégées');
@@ -180,6 +190,10 @@ const BiodiversiteComp = ({
           {
             tabId: "État des cours d'eau",
             label: "État des cours d'eau"
+          },
+          {
+            tabId: 'Seuils de pollution',
+            label: 'Seuils de pollution'
           }
         ]}
         onTabChange={setSelectedTabId}
@@ -248,6 +262,7 @@ const BiodiversiteComp = ({
                       consommationNAF={consommationNAF}
                       epciContours={epciContours}
                       etatCoursDeau={etatCoursDeau || []}
+                      aot40={aot40}
                     />
                   </Suspense>
                 );
