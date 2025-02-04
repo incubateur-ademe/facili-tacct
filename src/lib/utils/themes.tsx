@@ -85,6 +85,13 @@ export const themes = {
       facteur_sensibilite: "État des cours d'eau",
       risque: '',
       donnee: ''
+    },
+    {
+      id: 5,
+      titre: 'Seuils de pollution',
+      facteur_sensibilite: 'Seuils de pollution',
+      risque: '',
+      donnee: ''
     }
   ],
   ressourcesEau: [
