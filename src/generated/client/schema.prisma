@@ -429,6 +429,22 @@ model etat_cours_d_eau {
   @@schema("postgis")
 }
 
+model aot_40 {
+  index               BigInt  @id
+  Organisme           String?
+  code_zas            String? @map("code zas")
+  Zas                 String?
+  code_site           String? @map("code site")
+  nom_site            String? @map("nom site")
+  type_d_implantation String? @map("type d'implantation")
+  valeur_brute        Float?  @map("valeur brute")
+  Latitude            Float?
+  Longitude           Float?
+
+  @@index([index], map: "ix_aot_40_index")
+  @@schema("databases")
+}
+
 /// We could not retrieve columns for the underlying table. Either it has none or you are missing rights to see them. Please check your privileges.
 // model bdhi_structure {
 // @@schema("databases")

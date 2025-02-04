@@ -1,4 +1,5 @@
 import {
+  GetAOT40,
   GetConsommationNAF,
   GetSurfacesProtegees
 } from '@/lib/queries/databases/biodiversite';
@@ -18,6 +19,7 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
   const dbSurfacesProtegees = await GetSurfacesProtegees(codepci);
   const dbConsommationNAF = await GetConsommationNAF(codepci);
   const epciContours = await GetEpci(codepci);
+  const dbAOT40 = await GetAOT40();
 
   return (
     <div className={styles.container}>
@@ -30,6 +32,7 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
           surfacesProtegees={dbSurfacesProtegees}
           consommationNAF={dbConsommationNAF}
           epciContours={epciContours}
+          aot40={dbAOT40}
         />
       </Suspense>
     </div>

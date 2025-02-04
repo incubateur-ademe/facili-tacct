@@ -105,6 +105,11 @@ export type north_star_metric =
  */
 export type etat_cours_d_eau =
   $Result.DefaultSelection<Prisma.$etat_cours_d_eauPayload>;
+/**
+ * Model aot_40
+ *
+ */
+export type aot_40 = $Result.DefaultSelection<Prisma.$aot_40Payload>;
 
 /**
  * ##  Prisma Client ʲˢ
@@ -453,6 +458,16 @@ export class PrismaClient<
     ExtArgs,
     ClientOptions
   >;
+
+  /**
+   * `prisma.aot_40`: Exposes CRUD operations for the **aot_40** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Aot_40s
+   * const aot_40s = await prisma.aot_40.findMany()
+   * ```
+   */
+  get aot_40(): Prisma.aot_40Delegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -927,6 +942,7 @@ export namespace Prisma {
     lcz_bayonne_test: 'lcz_bayonne_test';
     north_star_metric: 'north_star_metric';
     etat_cours_d_eau: 'etat_cours_d_eau';
+    aot_40: 'aot_40';
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -967,7 +983,8 @@ export namespace Prisma {
         | 'consommation_espaces_naf'
         | 'lcz_bayonne_test'
         | 'north_star_metric'
-        | 'etat_cours_d_eau';
+        | 'etat_cours_d_eau'
+        | 'aot_40';
       txIsolationLevel: Prisma.TransactionIsolationLevel;
     };
     model: {
@@ -2119,6 +2136,80 @@ export namespace Prisma {
           };
         };
       };
+      aot_40: {
+        payload: Prisma.$aot_40Payload<ExtArgs>;
+        fields: Prisma.aot_40FieldRefs;
+        operations: {
+          findUnique: {
+            args: Prisma.aot_40FindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$aot_40Payload> | null;
+          };
+          findUniqueOrThrow: {
+            args: Prisma.aot_40FindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$aot_40Payload>;
+          };
+          findFirst: {
+            args: Prisma.aot_40FindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$aot_40Payload> | null;
+          };
+          findFirstOrThrow: {
+            args: Prisma.aot_40FindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$aot_40Payload>;
+          };
+          findMany: {
+            args: Prisma.aot_40FindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$aot_40Payload>[];
+          };
+          create: {
+            args: Prisma.aot_40CreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$aot_40Payload>;
+          };
+          createMany: {
+            args: Prisma.aot_40CreateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          createManyAndReturn: {
+            args: Prisma.aot_40CreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$aot_40Payload>[];
+          };
+          delete: {
+            args: Prisma.aot_40DeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$aot_40Payload>;
+          };
+          update: {
+            args: Prisma.aot_40UpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$aot_40Payload>;
+          };
+          deleteMany: {
+            args: Prisma.aot_40DeleteManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateMany: {
+            args: Prisma.aot_40UpdateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateManyAndReturn: {
+            args: Prisma.aot_40UpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$aot_40Payload>[];
+          };
+          upsert: {
+            args: Prisma.aot_40UpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$aot_40Payload>;
+          };
+          aggregate: {
+            args: Prisma.Aot_40AggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregateAot_40>;
+          };
+          groupBy: {
+            args: Prisma.aot_40GroupByArgs<ExtArgs>;
+            result: $Utils.Optional<Aot_40GroupByOutputType>[];
+          };
+          count: {
+            args: Prisma.aot_40CountArgs<ExtArgs>;
+            result: $Utils.Optional<Aot_40CountAggregateOutputType> | number;
+          };
+        };
+      };
     };
   } & {
     other: {
@@ -2223,6 +2314,7 @@ export namespace Prisma {
     lcz_bayonne_test?: lcz_bayonne_testOmit;
     north_star_metric?: north_star_metricOmit;
     etat_cours_d_eau?: etat_cours_d_eauOmit;
+    aot_40?: aot_40Omit;
   };
 
   /* Types for Logging */
@@ -26242,6 +26334,1336 @@ export namespace Prisma {
   };
 
   /**
+   * Model aot_40
+   */
+
+  export type AggregateAot_40 = {
+    _count: Aot_40CountAggregateOutputType | null;
+    _avg: Aot_40AvgAggregateOutputType | null;
+    _sum: Aot_40SumAggregateOutputType | null;
+    _min: Aot_40MinAggregateOutputType | null;
+    _max: Aot_40MaxAggregateOutputType | null;
+  };
+
+  export type Aot_40AvgAggregateOutputType = {
+    index: number | null;
+    valeur_brute: number | null;
+    Latitude: number | null;
+    Longitude: number | null;
+  };
+
+  export type Aot_40SumAggregateOutputType = {
+    index: bigint | null;
+    valeur_brute: number | null;
+    Latitude: number | null;
+    Longitude: number | null;
+  };
+
+  export type Aot_40MinAggregateOutputType = {
+    index: bigint | null;
+    Organisme: string | null;
+    code_zas: string | null;
+    Zas: string | null;
+    code_site: string | null;
+    nom_site: string | null;
+    type_d_implantation: string | null;
+    valeur_brute: number | null;
+    Latitude: number | null;
+    Longitude: number | null;
+  };
+
+  export type Aot_40MaxAggregateOutputType = {
+    index: bigint | null;
+    Organisme: string | null;
+    code_zas: string | null;
+    Zas: string | null;
+    code_site: string | null;
+    nom_site: string | null;
+    type_d_implantation: string | null;
+    valeur_brute: number | null;
+    Latitude: number | null;
+    Longitude: number | null;
+  };
+
+  export type Aot_40CountAggregateOutputType = {
+    index: number;
+    Organisme: number;
+    code_zas: number;
+    Zas: number;
+    code_site: number;
+    nom_site: number;
+    type_d_implantation: number;
+    valeur_brute: number;
+    Latitude: number;
+    Longitude: number;
+    _all: number;
+  };
+
+  export type Aot_40AvgAggregateInputType = {
+    index?: true;
+    valeur_brute?: true;
+    Latitude?: true;
+    Longitude?: true;
+  };
+
+  export type Aot_40SumAggregateInputType = {
+    index?: true;
+    valeur_brute?: true;
+    Latitude?: true;
+    Longitude?: true;
+  };
+
+  export type Aot_40MinAggregateInputType = {
+    index?: true;
+    Organisme?: true;
+    code_zas?: true;
+    Zas?: true;
+    code_site?: true;
+    nom_site?: true;
+    type_d_implantation?: true;
+    valeur_brute?: true;
+    Latitude?: true;
+    Longitude?: true;
+  };
+
+  export type Aot_40MaxAggregateInputType = {
+    index?: true;
+    Organisme?: true;
+    code_zas?: true;
+    Zas?: true;
+    code_site?: true;
+    nom_site?: true;
+    type_d_implantation?: true;
+    valeur_brute?: true;
+    Latitude?: true;
+    Longitude?: true;
+  };
+
+  export type Aot_40CountAggregateInputType = {
+    index?: true;
+    Organisme?: true;
+    code_zas?: true;
+    Zas?: true;
+    code_site?: true;
+    nom_site?: true;
+    type_d_implantation?: true;
+    valeur_brute?: true;
+    Latitude?: true;
+    Longitude?: true;
+    _all?: true;
+  };
+
+  export type Aot_40AggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which aot_40 to aggregate.
+     */
+    where?: aot_40WhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of aot_40s to fetch.
+     */
+    orderBy?: aot_40OrderByWithRelationInput | aot_40OrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: aot_40WhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` aot_40s from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` aot_40s.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned aot_40s
+     **/
+    _count?: true | Aot_40CountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: Aot_40AvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: Aot_40SumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: Aot_40MinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: Aot_40MaxAggregateInputType;
+  };
+
+  export type GetAot_40AggregateType<T extends Aot_40AggregateArgs> = {
+    [P in keyof T & keyof AggregateAot_40]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAot_40[P]>
+      : GetScalarType<T[P], AggregateAot_40[P]>;
+  };
+
+  export type aot_40GroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    where?: aot_40WhereInput;
+    orderBy?:
+      | aot_40OrderByWithAggregationInput
+      | aot_40OrderByWithAggregationInput[];
+    by: Aot_40ScalarFieldEnum[] | Aot_40ScalarFieldEnum;
+    having?: aot_40ScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: Aot_40CountAggregateInputType | true;
+    _avg?: Aot_40AvgAggregateInputType;
+    _sum?: Aot_40SumAggregateInputType;
+    _min?: Aot_40MinAggregateInputType;
+    _max?: Aot_40MaxAggregateInputType;
+  };
+
+  export type Aot_40GroupByOutputType = {
+    index: bigint;
+    Organisme: string | null;
+    code_zas: string | null;
+    Zas: string | null;
+    code_site: string | null;
+    nom_site: string | null;
+    type_d_implantation: string | null;
+    valeur_brute: number | null;
+    Latitude: number | null;
+    Longitude: number | null;
+    _count: Aot_40CountAggregateOutputType | null;
+    _avg: Aot_40AvgAggregateOutputType | null;
+    _sum: Aot_40SumAggregateOutputType | null;
+    _min: Aot_40MinAggregateOutputType | null;
+    _max: Aot_40MaxAggregateOutputType | null;
+  };
+
+  type GetAot_40GroupByPayload<T extends aot_40GroupByArgs> =
+    Prisma.PrismaPromise<
+      Array<
+        PickEnumerable<Aot_40GroupByOutputType, T['by']> & {
+          [P in keyof T & keyof Aot_40GroupByOutputType]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Aot_40GroupByOutputType[P]>
+            : GetScalarType<T[P], Aot_40GroupByOutputType[P]>;
+        }
+      >
+    >;
+
+  export type aot_40Select<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      Organisme?: boolean;
+      code_zas?: boolean;
+      Zas?: boolean;
+      code_site?: boolean;
+      nom_site?: boolean;
+      type_d_implantation?: boolean;
+      valeur_brute?: boolean;
+      Latitude?: boolean;
+      Longitude?: boolean;
+    },
+    ExtArgs['result']['aot_40']
+  >;
+
+  export type aot_40SelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      Organisme?: boolean;
+      code_zas?: boolean;
+      Zas?: boolean;
+      code_site?: boolean;
+      nom_site?: boolean;
+      type_d_implantation?: boolean;
+      valeur_brute?: boolean;
+      Latitude?: boolean;
+      Longitude?: boolean;
+    },
+    ExtArgs['result']['aot_40']
+  >;
+
+  export type aot_40SelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      Organisme?: boolean;
+      code_zas?: boolean;
+      Zas?: boolean;
+      code_site?: boolean;
+      nom_site?: boolean;
+      type_d_implantation?: boolean;
+      valeur_brute?: boolean;
+      Latitude?: boolean;
+      Longitude?: boolean;
+    },
+    ExtArgs['result']['aot_40']
+  >;
+
+  export type aot_40SelectScalar = {
+    index?: boolean;
+    Organisme?: boolean;
+    code_zas?: boolean;
+    Zas?: boolean;
+    code_site?: boolean;
+    nom_site?: boolean;
+    type_d_implantation?: boolean;
+    valeur_brute?: boolean;
+    Latitude?: boolean;
+    Longitude?: boolean;
+  };
+
+  export type aot_40Omit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'index'
+    | 'Organisme'
+    | 'code_zas'
+    | 'Zas'
+    | 'code_site'
+    | 'nom_site'
+    | 'type_d_implantation'
+    | 'valeur_brute'
+    | 'Latitude'
+    | 'Longitude',
+    ExtArgs['result']['aot_40']
+  >;
+
+  export type $aot_40Payload<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    name: 'aot_40';
+    objects: {};
+    scalars: $Extensions.GetPayloadResult<
+      {
+        index: bigint;
+        Organisme: string | null;
+        code_zas: string | null;
+        Zas: string | null;
+        code_site: string | null;
+        nom_site: string | null;
+        type_d_implantation: string | null;
+        valeur_brute: number | null;
+        Latitude: number | null;
+        Longitude: number | null;
+      },
+      ExtArgs['result']['aot_40']
+    >;
+    composites: {};
+  };
+
+  type aot_40GetPayload<
+    S extends boolean | null | undefined | aot_40DefaultArgs
+  > = $Result.GetResult<Prisma.$aot_40Payload, S>;
+
+  type aot_40CountArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = Omit<aot_40FindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: Aot_40CountAggregateInputType | true;
+  };
+
+  export interface aot_40Delegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['aot_40'];
+      meta: { name: 'aot_40' };
+    };
+    /**
+     * Find zero or one Aot_40 that matches the filter.
+     * @param {aot_40FindUniqueArgs} args - Arguments to find a Aot_40
+     * @example
+     * // Get one Aot_40
+     * const aot_40 = await prisma.aot_40.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends aot_40FindUniqueArgs>(
+      args: SelectSubset<T, aot_40FindUniqueArgs<ExtArgs>>
+    ): Prisma__aot_40Client<
+      $Result.GetResult<
+        Prisma.$aot_40Payload<ExtArgs>,
+        T,
+        'findUnique',
+        ClientOptions
+      > | null,
+      null,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find one Aot_40 that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {aot_40FindUniqueOrThrowArgs} args - Arguments to find a Aot_40
+     * @example
+     * // Get one Aot_40
+     * const aot_40 = await prisma.aot_40.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends aot_40FindUniqueOrThrowArgs>(
+      args: SelectSubset<T, aot_40FindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__aot_40Client<
+      $Result.GetResult<
+        Prisma.$aot_40Payload<ExtArgs>,
+        T,
+        'findUniqueOrThrow',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find the first Aot_40 that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {aot_40FindFirstArgs} args - Arguments to find a Aot_40
+     * @example
+     * // Get one Aot_40
+     * const aot_40 = await prisma.aot_40.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends aot_40FindFirstArgs>(
+      args?: SelectSubset<T, aot_40FindFirstArgs<ExtArgs>>
+    ): Prisma__aot_40Client<
+      $Result.GetResult<
+        Prisma.$aot_40Payload<ExtArgs>,
+        T,
+        'findFirst',
+        ClientOptions
+      > | null,
+      null,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find the first Aot_40 that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {aot_40FindFirstOrThrowArgs} args - Arguments to find a Aot_40
+     * @example
+     * // Get one Aot_40
+     * const aot_40 = await prisma.aot_40.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends aot_40FindFirstOrThrowArgs>(
+      args?: SelectSubset<T, aot_40FindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__aot_40Client<
+      $Result.GetResult<
+        Prisma.$aot_40Payload<ExtArgs>,
+        T,
+        'findFirstOrThrow',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find zero or more Aot_40s that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {aot_40FindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Aot_40s
+     * const aot_40s = await prisma.aot_40.findMany()
+     *
+     * // Get first 10 Aot_40s
+     * const aot_40s = await prisma.aot_40.findMany({ take: 10 })
+     *
+     * // Only select the `index`
+     * const aot_40WithIndexOnly = await prisma.aot_40.findMany({ select: { index: true } })
+     *
+     */
+    findMany<T extends aot_40FindManyArgs>(
+      args?: SelectSubset<T, aot_40FindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$aot_40Payload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Create a Aot_40.
+     * @param {aot_40CreateArgs} args - Arguments to create a Aot_40.
+     * @example
+     * // Create one Aot_40
+     * const Aot_40 = await prisma.aot_40.create({
+     *   data: {
+     *     // ... data to create a Aot_40
+     *   }
+     * })
+     *
+     */
+    create<T extends aot_40CreateArgs>(
+      args: SelectSubset<T, aot_40CreateArgs<ExtArgs>>
+    ): Prisma__aot_40Client<
+      $Result.GetResult<
+        Prisma.$aot_40Payload<ExtArgs>,
+        T,
+        'create',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Create many Aot_40s.
+     * @param {aot_40CreateManyArgs} args - Arguments to create many Aot_40s.
+     * @example
+     * // Create many Aot_40s
+     * const aot_40 = await prisma.aot_40.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends aot_40CreateManyArgs>(
+      args?: SelectSubset<T, aot_40CreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create many Aot_40s and returns the data saved in the database.
+     * @param {aot_40CreateManyAndReturnArgs} args - Arguments to create many Aot_40s.
+     * @example
+     * // Create many Aot_40s
+     * const aot_40 = await prisma.aot_40.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Aot_40s and only return the `index`
+     * const aot_40WithIndexOnly = await prisma.aot_40.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends aot_40CreateManyAndReturnArgs>(
+      args?: SelectSubset<T, aot_40CreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$aot_40Payload<ExtArgs>,
+        T,
+        'createManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Delete a Aot_40.
+     * @param {aot_40DeleteArgs} args - Arguments to delete one Aot_40.
+     * @example
+     * // Delete one Aot_40
+     * const Aot_40 = await prisma.aot_40.delete({
+     *   where: {
+     *     // ... filter to delete one Aot_40
+     *   }
+     * })
+     *
+     */
+    delete<T extends aot_40DeleteArgs>(
+      args: SelectSubset<T, aot_40DeleteArgs<ExtArgs>>
+    ): Prisma__aot_40Client<
+      $Result.GetResult<
+        Prisma.$aot_40Payload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Update one Aot_40.
+     * @param {aot_40UpdateArgs} args - Arguments to update one Aot_40.
+     * @example
+     * // Update one Aot_40
+     * const aot_40 = await prisma.aot_40.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends aot_40UpdateArgs>(
+      args: SelectSubset<T, aot_40UpdateArgs<ExtArgs>>
+    ): Prisma__aot_40Client<
+      $Result.GetResult<
+        Prisma.$aot_40Payload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Delete zero or more Aot_40s.
+     * @param {aot_40DeleteManyArgs} args - Arguments to filter Aot_40s to delete.
+     * @example
+     * // Delete a few Aot_40s
+     * const { count } = await prisma.aot_40.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends aot_40DeleteManyArgs>(
+      args?: SelectSubset<T, aot_40DeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Aot_40s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {aot_40UpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Aot_40s
+     * const aot_40 = await prisma.aot_40.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends aot_40UpdateManyArgs>(
+      args: SelectSubset<T, aot_40UpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Aot_40s and returns the data updated in the database.
+     * @param {aot_40UpdateManyAndReturnArgs} args - Arguments to update many Aot_40s.
+     * @example
+     * // Update many Aot_40s
+     * const aot_40 = await prisma.aot_40.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Aot_40s and only return the `index`
+     * const aot_40WithIndexOnly = await prisma.aot_40.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends aot_40UpdateManyAndReturnArgs>(
+      args: SelectSubset<T, aot_40UpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$aot_40Payload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Create or update one Aot_40.
+     * @param {aot_40UpsertArgs} args - Arguments to update or create a Aot_40.
+     * @example
+     * // Update or create a Aot_40
+     * const aot_40 = await prisma.aot_40.upsert({
+     *   create: {
+     *     // ... data to create a Aot_40
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Aot_40 we want to update
+     *   }
+     * })
+     */
+    upsert<T extends aot_40UpsertArgs>(
+      args: SelectSubset<T, aot_40UpsertArgs<ExtArgs>>
+    ): Prisma__aot_40Client<
+      $Result.GetResult<
+        Prisma.$aot_40Payload<ExtArgs>,
+        T,
+        'upsert',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Count the number of Aot_40s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {aot_40CountArgs} args - Arguments to filter Aot_40s to count.
+     * @example
+     * // Count the number of Aot_40s
+     * const count = await prisma.aot_40.count({
+     *   where: {
+     *     // ... the filter for the Aot_40s we want to count
+     *   }
+     * })
+     **/
+    count<T extends aot_40CountArgs>(
+      args?: Subset<T, aot_40CountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Aot_40CountAggregateOutputType>
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a Aot_40.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Aot_40AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends Aot_40AggregateArgs>(
+      args: Subset<T, Aot_40AggregateArgs>
+    ): Prisma.PrismaPromise<GetAot_40AggregateType<T>>;
+
+    /**
+     * Group by Aot_40.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {aot_40GroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends aot_40GroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: aot_40GroupByArgs['orderBy'] }
+        : { orderBy?: aot_40GroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<
+        Keys<MaybeTupleToUnion<T['orderBy']>>
+      >,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`
+                    ];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+    >(
+      args: SubsetIntersection<T, aot_40GroupByArgs, OrderByArg> & InputErrors
+    ): {} extends InputErrors
+      ? GetAot_40GroupByPayload<T>
+      : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the aot_40 model
+     */
+    readonly fields: aot_40FieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for aot_40.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__aot_40Client<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?:
+        | ((value: T) => TResult1 | PromiseLike<TResult1>)
+        | undefined
+        | null,
+      onrejected?:
+        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?:
+        | ((reason: any) => TResult | PromiseLike<TResult>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the aot_40 model
+   */
+  interface aot_40FieldRefs {
+    readonly index: FieldRef<'aot_40', 'BigInt'>;
+    readonly Organisme: FieldRef<'aot_40', 'String'>;
+    readonly code_zas: FieldRef<'aot_40', 'String'>;
+    readonly Zas: FieldRef<'aot_40', 'String'>;
+    readonly code_site: FieldRef<'aot_40', 'String'>;
+    readonly nom_site: FieldRef<'aot_40', 'String'>;
+    readonly type_d_implantation: FieldRef<'aot_40', 'String'>;
+    readonly valeur_brute: FieldRef<'aot_40', 'Float'>;
+    readonly Latitude: FieldRef<'aot_40', 'Float'>;
+    readonly Longitude: FieldRef<'aot_40', 'Float'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * aot_40 findUnique
+   */
+  export type aot_40FindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the aot_40
+     */
+    select?: aot_40Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the aot_40
+     */
+    omit?: aot_40Omit<ExtArgs> | null;
+    /**
+     * Filter, which aot_40 to fetch.
+     */
+    where: aot_40WhereUniqueInput;
+  };
+
+  /**
+   * aot_40 findUniqueOrThrow
+   */
+  export type aot_40FindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the aot_40
+     */
+    select?: aot_40Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the aot_40
+     */
+    omit?: aot_40Omit<ExtArgs> | null;
+    /**
+     * Filter, which aot_40 to fetch.
+     */
+    where: aot_40WhereUniqueInput;
+  };
+
+  /**
+   * aot_40 findFirst
+   */
+  export type aot_40FindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the aot_40
+     */
+    select?: aot_40Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the aot_40
+     */
+    omit?: aot_40Omit<ExtArgs> | null;
+    /**
+     * Filter, which aot_40 to fetch.
+     */
+    where?: aot_40WhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of aot_40s to fetch.
+     */
+    orderBy?: aot_40OrderByWithRelationInput | aot_40OrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for aot_40s.
+     */
+    cursor?: aot_40WhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` aot_40s from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` aot_40s.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of aot_40s.
+     */
+    distinct?: Aot_40ScalarFieldEnum | Aot_40ScalarFieldEnum[];
+  };
+
+  /**
+   * aot_40 findFirstOrThrow
+   */
+  export type aot_40FindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the aot_40
+     */
+    select?: aot_40Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the aot_40
+     */
+    omit?: aot_40Omit<ExtArgs> | null;
+    /**
+     * Filter, which aot_40 to fetch.
+     */
+    where?: aot_40WhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of aot_40s to fetch.
+     */
+    orderBy?: aot_40OrderByWithRelationInput | aot_40OrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for aot_40s.
+     */
+    cursor?: aot_40WhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` aot_40s from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` aot_40s.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of aot_40s.
+     */
+    distinct?: Aot_40ScalarFieldEnum | Aot_40ScalarFieldEnum[];
+  };
+
+  /**
+   * aot_40 findMany
+   */
+  export type aot_40FindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the aot_40
+     */
+    select?: aot_40Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the aot_40
+     */
+    omit?: aot_40Omit<ExtArgs> | null;
+    /**
+     * Filter, which aot_40s to fetch.
+     */
+    where?: aot_40WhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of aot_40s to fetch.
+     */
+    orderBy?: aot_40OrderByWithRelationInput | aot_40OrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing aot_40s.
+     */
+    cursor?: aot_40WhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` aot_40s from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` aot_40s.
+     */
+    skip?: number;
+    distinct?: Aot_40ScalarFieldEnum | Aot_40ScalarFieldEnum[];
+  };
+
+  /**
+   * aot_40 create
+   */
+  export type aot_40CreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the aot_40
+     */
+    select?: aot_40Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the aot_40
+     */
+    omit?: aot_40Omit<ExtArgs> | null;
+    /**
+     * The data needed to create a aot_40.
+     */
+    data: XOR<aot_40CreateInput, aot_40UncheckedCreateInput>;
+  };
+
+  /**
+   * aot_40 createMany
+   */
+  export type aot_40CreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to create many aot_40s.
+     */
+    data: aot_40CreateManyInput | aot_40CreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * aot_40 createManyAndReturn
+   */
+  export type aot_40CreateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the aot_40
+     */
+    select?: aot_40SelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the aot_40
+     */
+    omit?: aot_40Omit<ExtArgs> | null;
+    /**
+     * The data used to create many aot_40s.
+     */
+    data: aot_40CreateManyInput | aot_40CreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * aot_40 update
+   */
+  export type aot_40UpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the aot_40
+     */
+    select?: aot_40Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the aot_40
+     */
+    omit?: aot_40Omit<ExtArgs> | null;
+    /**
+     * The data needed to update a aot_40.
+     */
+    data: XOR<aot_40UpdateInput, aot_40UncheckedUpdateInput>;
+    /**
+     * Choose, which aot_40 to update.
+     */
+    where: aot_40WhereUniqueInput;
+  };
+
+  /**
+   * aot_40 updateMany
+   */
+  export type aot_40UpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to update aot_40s.
+     */
+    data: XOR<aot_40UpdateManyMutationInput, aot_40UncheckedUpdateManyInput>;
+    /**
+     * Filter which aot_40s to update
+     */
+    where?: aot_40WhereInput;
+    /**
+     * Limit how many aot_40s to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * aot_40 updateManyAndReturn
+   */
+  export type aot_40UpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the aot_40
+     */
+    select?: aot_40SelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the aot_40
+     */
+    omit?: aot_40Omit<ExtArgs> | null;
+    /**
+     * The data used to update aot_40s.
+     */
+    data: XOR<aot_40UpdateManyMutationInput, aot_40UncheckedUpdateManyInput>;
+    /**
+     * Filter which aot_40s to update
+     */
+    where?: aot_40WhereInput;
+    /**
+     * Limit how many aot_40s to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * aot_40 upsert
+   */
+  export type aot_40UpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the aot_40
+     */
+    select?: aot_40Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the aot_40
+     */
+    omit?: aot_40Omit<ExtArgs> | null;
+    /**
+     * The filter to search for the aot_40 to update in case it exists.
+     */
+    where: aot_40WhereUniqueInput;
+    /**
+     * In case the aot_40 found by the `where` argument doesn't exist, create a new aot_40 with this data.
+     */
+    create: XOR<aot_40CreateInput, aot_40UncheckedCreateInput>;
+    /**
+     * In case the aot_40 was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<aot_40UpdateInput, aot_40UncheckedUpdateInput>;
+  };
+
+  /**
+   * aot_40 delete
+   */
+  export type aot_40DeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the aot_40
+     */
+    select?: aot_40Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the aot_40
+     */
+    omit?: aot_40Omit<ExtArgs> | null;
+    /**
+     * Filter which aot_40 to delete.
+     */
+    where: aot_40WhereUniqueInput;
+  };
+
+  /**
+   * aot_40 deleteMany
+   */
+  export type aot_40DeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which aot_40s to delete
+     */
+    where?: aot_40WhereInput;
+    /**
+     * Limit how many aot_40s to delete.
+     */
+    limit?: number;
+  };
+
+  /**
+   * aot_40 without action
+   */
+  export type aot_40DefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the aot_40
+     */
+    select?: aot_40Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the aot_40
+     */
+    omit?: aot_40Omit<ExtArgs> | null;
+  };
+
+  /**
    * Enums
    */
 
@@ -26667,6 +28089,22 @@ export namespace Prisma {
 
   export type Etat_cours_d_eauScalarFieldEnum =
     (typeof Etat_cours_d_eauScalarFieldEnum)[keyof typeof Etat_cours_d_eauScalarFieldEnum];
+
+  export const Aot_40ScalarFieldEnum: {
+    index: 'index';
+    Organisme: 'Organisme';
+    code_zas: 'code_zas';
+    Zas: 'Zas';
+    code_site: 'code_site';
+    nom_site: 'nom_site';
+    type_d_implantation: 'type_d_implantation';
+    valeur_brute: 'valeur_brute';
+    Latitude: 'Latitude';
+    Longitude: 'Longitude';
+  };
+
+  export type Aot_40ScalarFieldEnum =
+    (typeof Aot_40ScalarFieldEnum)[keyof typeof Aot_40ScalarFieldEnum];
 
   export const SortOrder: {
     asc: 'asc';
@@ -29541,6 +30979,95 @@ export namespace Prisma {
       | null;
   };
 
+  export type aot_40WhereInput = {
+    AND?: aot_40WhereInput | aot_40WhereInput[];
+    OR?: aot_40WhereInput[];
+    NOT?: aot_40WhereInput | aot_40WhereInput[];
+    index?: BigIntFilter<'aot_40'> | bigint | number;
+    Organisme?: StringNullableFilter<'aot_40'> | string | null;
+    code_zas?: StringNullableFilter<'aot_40'> | string | null;
+    Zas?: StringNullableFilter<'aot_40'> | string | null;
+    code_site?: StringNullableFilter<'aot_40'> | string | null;
+    nom_site?: StringNullableFilter<'aot_40'> | string | null;
+    type_d_implantation?: StringNullableFilter<'aot_40'> | string | null;
+    valeur_brute?: FloatNullableFilter<'aot_40'> | number | null;
+    Latitude?: FloatNullableFilter<'aot_40'> | number | null;
+    Longitude?: FloatNullableFilter<'aot_40'> | number | null;
+  };
+
+  export type aot_40OrderByWithRelationInput = {
+    index?: SortOrder;
+    Organisme?: SortOrderInput | SortOrder;
+    code_zas?: SortOrderInput | SortOrder;
+    Zas?: SortOrderInput | SortOrder;
+    code_site?: SortOrderInput | SortOrder;
+    nom_site?: SortOrderInput | SortOrder;
+    type_d_implantation?: SortOrderInput | SortOrder;
+    valeur_brute?: SortOrderInput | SortOrder;
+    Latitude?: SortOrderInput | SortOrder;
+    Longitude?: SortOrderInput | SortOrder;
+  };
+
+  export type aot_40WhereUniqueInput = Prisma.AtLeast<
+    {
+      index?: bigint | number;
+      AND?: aot_40WhereInput | aot_40WhereInput[];
+      OR?: aot_40WhereInput[];
+      NOT?: aot_40WhereInput | aot_40WhereInput[];
+      Organisme?: StringNullableFilter<'aot_40'> | string | null;
+      code_zas?: StringNullableFilter<'aot_40'> | string | null;
+      Zas?: StringNullableFilter<'aot_40'> | string | null;
+      code_site?: StringNullableFilter<'aot_40'> | string | null;
+      nom_site?: StringNullableFilter<'aot_40'> | string | null;
+      type_d_implantation?: StringNullableFilter<'aot_40'> | string | null;
+      valeur_brute?: FloatNullableFilter<'aot_40'> | number | null;
+      Latitude?: FloatNullableFilter<'aot_40'> | number | null;
+      Longitude?: FloatNullableFilter<'aot_40'> | number | null;
+    },
+    'index'
+  >;
+
+  export type aot_40OrderByWithAggregationInput = {
+    index?: SortOrder;
+    Organisme?: SortOrderInput | SortOrder;
+    code_zas?: SortOrderInput | SortOrder;
+    Zas?: SortOrderInput | SortOrder;
+    code_site?: SortOrderInput | SortOrder;
+    nom_site?: SortOrderInput | SortOrder;
+    type_d_implantation?: SortOrderInput | SortOrder;
+    valeur_brute?: SortOrderInput | SortOrder;
+    Latitude?: SortOrderInput | SortOrder;
+    Longitude?: SortOrderInput | SortOrder;
+    _count?: aot_40CountOrderByAggregateInput;
+    _avg?: aot_40AvgOrderByAggregateInput;
+    _max?: aot_40MaxOrderByAggregateInput;
+    _min?: aot_40MinOrderByAggregateInput;
+    _sum?: aot_40SumOrderByAggregateInput;
+  };
+
+  export type aot_40ScalarWhereWithAggregatesInput = {
+    AND?:
+      | aot_40ScalarWhereWithAggregatesInput
+      | aot_40ScalarWhereWithAggregatesInput[];
+    OR?: aot_40ScalarWhereWithAggregatesInput[];
+    NOT?:
+      | aot_40ScalarWhereWithAggregatesInput
+      | aot_40ScalarWhereWithAggregatesInput[];
+    index?: BigIntWithAggregatesFilter<'aot_40'> | bigint | number;
+    Organisme?: StringNullableWithAggregatesFilter<'aot_40'> | string | null;
+    code_zas?: StringNullableWithAggregatesFilter<'aot_40'> | string | null;
+    Zas?: StringNullableWithAggregatesFilter<'aot_40'> | string | null;
+    code_site?: StringNullableWithAggregatesFilter<'aot_40'> | string | null;
+    nom_site?: StringNullableWithAggregatesFilter<'aot_40'> | string | null;
+    type_d_implantation?:
+      | StringNullableWithAggregatesFilter<'aot_40'>
+      | string
+      | null;
+    valeur_brute?: FloatNullableWithAggregatesFilter<'aot_40'> | number | null;
+    Latitude?: FloatNullableWithAggregatesFilter<'aot_40'> | number | null;
+    Longitude?: FloatNullableWithAggregatesFilter<'aot_40'> | number | null;
+  };
+
   export type inconfort_thermiqueCreateInput = {
     index: bigint | number;
     code_geographique: string;
@@ -32130,6 +33657,109 @@ export namespace Prisma {
     etateco?: NullableStringFieldUpdateOperationsInput | string | null;
   };
 
+  export type aot_40CreateInput = {
+    index: bigint | number;
+    Organisme?: string | null;
+    code_zas?: string | null;
+    Zas?: string | null;
+    code_site?: string | null;
+    nom_site?: string | null;
+    type_d_implantation?: string | null;
+    valeur_brute?: number | null;
+    Latitude?: number | null;
+    Longitude?: number | null;
+  };
+
+  export type aot_40UncheckedCreateInput = {
+    index: bigint | number;
+    Organisme?: string | null;
+    code_zas?: string | null;
+    Zas?: string | null;
+    code_site?: string | null;
+    nom_site?: string | null;
+    type_d_implantation?: string | null;
+    valeur_brute?: number | null;
+    Latitude?: number | null;
+    Longitude?: number | null;
+  };
+
+  export type aot_40UpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    Organisme?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_zas?: NullableStringFieldUpdateOperationsInput | string | null;
+    Zas?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_site?: NullableStringFieldUpdateOperationsInput | string | null;
+    nom_site?: NullableStringFieldUpdateOperationsInput | string | null;
+    type_d_implantation?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    valeur_brute?: NullableFloatFieldUpdateOperationsInput | number | null;
+    Latitude?: NullableFloatFieldUpdateOperationsInput | number | null;
+    Longitude?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
+  export type aot_40UncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    Organisme?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_zas?: NullableStringFieldUpdateOperationsInput | string | null;
+    Zas?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_site?: NullableStringFieldUpdateOperationsInput | string | null;
+    nom_site?: NullableStringFieldUpdateOperationsInput | string | null;
+    type_d_implantation?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    valeur_brute?: NullableFloatFieldUpdateOperationsInput | number | null;
+    Latitude?: NullableFloatFieldUpdateOperationsInput | number | null;
+    Longitude?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
+  export type aot_40CreateManyInput = {
+    index: bigint | number;
+    Organisme?: string | null;
+    code_zas?: string | null;
+    Zas?: string | null;
+    code_site?: string | null;
+    nom_site?: string | null;
+    type_d_implantation?: string | null;
+    valeur_brute?: number | null;
+    Latitude?: number | null;
+    Longitude?: number | null;
+  };
+
+  export type aot_40UpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    Organisme?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_zas?: NullableStringFieldUpdateOperationsInput | string | null;
+    Zas?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_site?: NullableStringFieldUpdateOperationsInput | string | null;
+    nom_site?: NullableStringFieldUpdateOperationsInput | string | null;
+    type_d_implantation?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    valeur_brute?: NullableFloatFieldUpdateOperationsInput | number | null;
+    Latitude?: NullableFloatFieldUpdateOperationsInput | number | null;
+    Longitude?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
+  export type aot_40UncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    Organisme?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_zas?: NullableStringFieldUpdateOperationsInput | string | null;
+    Zas?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_site?: NullableStringFieldUpdateOperationsInput | string | null;
+    nom_site?: NullableStringFieldUpdateOperationsInput | string | null;
+    type_d_implantation?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    valeur_brute?: NullableFloatFieldUpdateOperationsInput | number | null;
+    Latitude?: NullableFloatFieldUpdateOperationsInput | number | null;
+    Longitude?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>;
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>;
@@ -34021,6 +35651,59 @@ export namespace Prisma {
   export type etat_cours_d_eauSumOrderByAggregateInput = {
     pk?: SortOrder;
     longueur?: SortOrder;
+  };
+
+  export type aot_40CountOrderByAggregateInput = {
+    index?: SortOrder;
+    Organisme?: SortOrder;
+    code_zas?: SortOrder;
+    Zas?: SortOrder;
+    code_site?: SortOrder;
+    nom_site?: SortOrder;
+    type_d_implantation?: SortOrder;
+    valeur_brute?: SortOrder;
+    Latitude?: SortOrder;
+    Longitude?: SortOrder;
+  };
+
+  export type aot_40AvgOrderByAggregateInput = {
+    index?: SortOrder;
+    valeur_brute?: SortOrder;
+    Latitude?: SortOrder;
+    Longitude?: SortOrder;
+  };
+
+  export type aot_40MaxOrderByAggregateInput = {
+    index?: SortOrder;
+    Organisme?: SortOrder;
+    code_zas?: SortOrder;
+    Zas?: SortOrder;
+    code_site?: SortOrder;
+    nom_site?: SortOrder;
+    type_d_implantation?: SortOrder;
+    valeur_brute?: SortOrder;
+    Latitude?: SortOrder;
+    Longitude?: SortOrder;
+  };
+
+  export type aot_40MinOrderByAggregateInput = {
+    index?: SortOrder;
+    Organisme?: SortOrder;
+    code_zas?: SortOrder;
+    Zas?: SortOrder;
+    code_site?: SortOrder;
+    nom_site?: SortOrder;
+    type_d_implantation?: SortOrder;
+    valeur_brute?: SortOrder;
+    Latitude?: SortOrder;
+    Longitude?: SortOrder;
+  };
+
+  export type aot_40SumOrderByAggregateInput = {
+    index?: SortOrder;
+    valeur_brute?: SortOrder;
+    Latitude?: SortOrder;
+    Longitude?: SortOrder;
   };
 
   export type BigIntFieldUpdateOperationsInput = {

@@ -1,6 +1,6 @@
 'use client';
 
-import { LegendEspacesNAF } from '@/components/maps/components/legendEspacesNAF';
+import { LegendEspacesNAF } from '@/components/maps/legends/legendEspacesNAF';
 import { MapEspacesNaf } from '@/components/maps/mapEspacesNAF';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { ConsommationNAF } from '@/lib/postgres/models';

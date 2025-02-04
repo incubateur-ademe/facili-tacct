@@ -368,3 +368,16 @@ export type EtatCoursDeau = {
   etateco: string | null;
   geometry: string;
 };
+
+export type AOT40 = {
+  index: bigint;
+  Organisme: string | null;
+  code_zas: string | null;
+  Zas: string | null;
+  code_site: string | null;
+  nom_site: string | null;
+  type_d_implantation: string | null;
+  valeur_brute: number | null;
+  Latitude: number | null;
+  Longitude: number | null;
+};
