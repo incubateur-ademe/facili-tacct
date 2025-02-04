@@ -1,10 +1,6 @@
 fileignoreconfig:
-- filename: src/generated/client/index-browser.js
-  checksum: 01de3126f2ad9266c4087789a2c41069229f213230872bf917891bfec67b511d
 - filename: src/generated/client/runtime/edge-esm.js
   checksum: 274fe11ab5690937c5b76aa106665fba618991f3fb14b96f7a6844873818955e
-- filename: src/generated/client/wasm.js
-  checksum: 4f2fef030ec68e208cf1b7584fb8a70e58e71e9a3768245673c11bed159dcffb
 - filename: src/generated/client/runtime/react-native.js
   checksum: 0e1af8308b5084625442574285eb8e395919db58b9dab412854a6f2e3ef1b734
 - filename: src/generated/client/runtime/wasm.js
@@ -23,26 +19,28 @@ fileignoreconfig:
   checksum: 2288585aa7f4cade736912d075bf08b1d9a8ad6d2a59e0faee31667130535ce4
 - filename: src/app/_iframe/thematiques/cards.tsx
   checksum: 6a15cac397de48145e1d0ffccde66371a7ecb9c9bb96ca341970fdc9141b0d6d
-- filename: src/generated/client/package.json
-  checksum: a94ede04e4e4e0fb514fe793b0a0c0e60ceb97093be607d7462daff43f6f2e06
-- filename: src/generated/client/index.js
-  checksum: 9b64b3fc45cc6e806b5693491e5e626890b27bd52b327fc867d23a0c113294a9
-- filename: src/generated/client/edge.js
-  checksum: 688bf5d9be3bebcd703f88bca578b388b5ecd059174eccaa0d8014dd307c0da0
-- filename: pnpm-lock.yaml
-  checksum: dced7fa003236eb5917272207e90b6b2b9316c74f88ee41994c6c418e6afaa03
 - filename: src/components/themes/biodiversite/AOT40.tsx
   checksum: 99fa67361c11ec26ed2f3649613298ccf25bc2725533a222a3fbf0e5334c8bc3
 - filename: src/app/_api/auth/register/route.ts
   checksum: 98d0a8b7e17be6740284355017b2541bcd1edace1024bb1769d58e7d893e27b4
-- filename: src/app/_api/auth/users/route.ts
-  checksum: 7f373ac2002993e1d683a3a7ca9c15f3b7baa72619e677dabbdb4231291075d5
 - filename: src/app/register/form.tsx
   checksum: b1f46eda6277d8677ded7fb1e0840eeb128e6c1071f773cd944df9cba28fef92
 - filename: src/app/login/form.tsx
   checksum: 667712a1193ce17e63fb4c868c37d58265cf8d689870daca1b66e6074a7880ff
 - filename: src/lib/auth/authOptions.ts
   checksum: e7fb99bb2be5c34c6c501952defa547c6ac4383bf140dcbcbbeaf14336b24cca
+- filename: src/generated/client/package.json
+  checksum: d82cb3cf3a17cb8548fff6e78d2aa9eeaed84441faeb082b17dd11e0c2c59940
+- filename: src/generated/client/edge.js
+  checksum: 79d314950e203e54eaf5d34c5755e5ab0f73dac2460e5769b8f5355949bc8be6
+- filename: src/generated/client/index.js
+  checksum: d7a4c3db88ef2f3ea805199d6b0ab8ca42f152db66a024030fe23438a4e0c8b7
+- filename: pnpm-lock.yaml
+  checksum: 0b9c776f532aa2789aaaa0f83b48015182870f8a6bf52c2ed6e4e3d7ba2bad7b
+- filename: src/generated/client/index-browser.js
+  checksum: f95882ba525fe9e031bc1d743e0165d3198884c0f2ea9e6baf5d51737dfbc498
+- filename: src/generated/client/wasm.js
+  checksum: 4e8fa0499f06b907b165714b6e48bd15a2491170e1ea45101203a0c25616d8e5
 - filename: src/generated/client/index.d.ts
-  checksum: 97585745d418ac28ac241e79ab3ec997faf6bf2b7aede69a1361c9edee57c89a
+  checksum: 540283b47b02088324debb737c8d3be215d1899efb630d58e986d2ff9c37ab92
 version: ""
