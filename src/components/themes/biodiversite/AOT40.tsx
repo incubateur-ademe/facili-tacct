@@ -1,13 +1,18 @@
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { LegendAOT40 } from '@/components/maps/legends/legendAOT40';
 import { MapAOT40 } from '@/components/maps/mapAOT40';
-import { AOT40 } from '@/lib/postgres/models';
+import { EpciContoursMapper } from '@/lib/mapper/epci';
+import { AOT40, EpciContours } from '@/lib/postgres/models';
 import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { useSearchParams } from 'next/navigation';
 import styles from './biodiversite.module.scss';
 
-const AOT40Dataviz = (props: { aot40: AOT40[] }) => {
-  const { aot40 } = props;
+const AOT40Dataviz = (props: {
+  aot40: AOT40[];
+  epciContours: EpciContours[];
+}) => {
+  const { aot40, epciContours } = props;
+  const epciContoursMap = epciContours.map(EpciContoursMapper);
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
@@ -61,7 +66,7 @@ const AOT40Dataviz = (props: { aot40: AOT40[] }) => {
                 <h2>AOT 40 O3 végétation 5 ans</h2>
               </div>
               <div>
-                <MapAOT40 aot40={aot40} />
+                <MapAOT40 aot40={aot40} epciContours={epciContoursMap} />
               </div>
               <div
                 className={styles.legend}
