@@ -8,7 +8,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("SCALINGO_POSTGRESQL_URL")
-  schemas  = ["analytics", "databases", "postgis"]
+  schemas  = ["analytics", "databases", "postgis", "ressources"]
 }
 
 model inconfort_thermique {
@@ -449,3 +449,15 @@ model aot_40 {
 // model bdhi_structure {
 // @@schema("databases")
 // }
+
+model users {
+  pk              Int       @id @default(autoincrement())
+  email           String    @unique(map: "email") @db.VarChar(256)
+  username        String    @unique(map: "username") @db.VarChar(256)
+  password        String    @db.VarChar(256)
+  created_at      DateTime  @db.Timestamp(6)
+  last_connection DateTime? @db.Timestamptz(6)
+  role            String    @db.VarChar(8)
+
+  @@schema("ressources")
+}

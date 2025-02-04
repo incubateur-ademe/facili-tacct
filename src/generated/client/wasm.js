@@ -491,6 +491,16 @@ exports.Prisma.Aot_40ScalarFieldEnum = {
   Longitude: 'Longitude'
 };
 
+exports.Prisma.UsersScalarFieldEnum = {
+  pk: 'pk',
+  email: 'email',
+  username: 'username',
+  password: 'password',
+  created_at: 'created_at',
+  last_connection: 'last_connection',
+  role: 'role'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -523,7 +533,8 @@ exports.Prisma.ModelName = {
   lcz_bayonne_test: 'lcz_bayonne_test',
   north_star_metric: 'north_star_metric',
   etat_cours_d_eau: 'etat_cours_d_eau',
-  aot_40: 'aot_40'
+  aot_40: 'aot_40',
+  users: 'users'
 };
 
 /**
