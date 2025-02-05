@@ -1,8 +1,9 @@
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { LegendAOT40 } from '@/components/maps/legends/legendAOT40';
 import { MapAOT40 } from '@/components/maps/mapAOT40';
+import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EpciContoursMapper } from '@/lib/mapper/epci';
-import { AOT40, EpciContours } from '@/lib/postgres/models';
+import { AOT40, CarteCommunes, EpciContours } from '@/lib/postgres/models';
 import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { useSearchParams } from 'next/navigation';
 import styles from './biodiversite.module.scss';
@@ -10,9 +11,11 @@ import styles from './biodiversite.module.scss';
 const AOT40Dataviz = (props: {
   aot40: AOT40[];
   epciContours: EpciContours[];
+  carteCommunes: CarteCommunes[];
 }) => {
-  const { aot40, epciContours } = props;
+  const { aot40, epciContours, carteCommunes } = props;
   const epciContoursMap = epciContours.map(EpciContoursMapper);
+  const carteCommunesMap = carteCommunes.map(CommunesIndicateursMapper);
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
@@ -66,7 +69,11 @@ const AOT40Dataviz = (props: {
                 <h2>AOT 40 O3 végétation 5 ans</h2>
               </div>
               <div>
-                <MapAOT40 aot40={aot40} epciContours={epciContoursMap} />
+                <MapAOT40
+                  aot40={aot40}
+                  epciContours={epciContoursMap}
+                  carteCommunes={carteCommunesMap}
+                />
               </div>
               <div
                 className={styles.legend}
