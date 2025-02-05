@@ -118,8 +118,16 @@ const allComps = [
   },
   {
     titre: 'Seuils de pollution',
-    Component: ({ aot40, epciContours }: Props & { activeDataTab: string }) => (
-      <AOT40Dataviz aot40={aot40} epciContours={epciContours} />
+    Component: ({
+      aot40,
+      epciContours,
+      carteCommunes
+    }: Props & { activeDataTab: string }) => (
+      <AOT40Dataviz
+        aot40={aot40}
+        epciContours={epciContours}
+        carteCommunes={carteCommunes}
+      />
     )
   }
 ];
