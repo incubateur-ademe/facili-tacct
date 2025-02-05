@@ -27,13 +27,15 @@ const EtatQualiteCoursDeau = (props: {
   const carteCommunesMap = carteCommunes.map(CommunesIndicateursMapper);
   const title = (
     <div>
-      En application de la directive-cadre européenne sur l’eau, l’état
-      écologique global de chaque rivière est évalué tous les 6 ans par les
-      agences de l’eau, à partir de relevés sur 3 ans (N-1, N-2, N-3) issus des
-      stations de mesure de la qualité de l’eau (par modélisation en leur
-      absence). Plusieurs critères concourent à cette évaluation :
+      <p>
+        En application de la directive-cadre européenne sur l’eau, l’état
+        écologique global de chaque rivière est évalué tous les 6 ans par les
+        agences de l’eau, à partir de relevés sur 3 ans (N-1, N-2, N-3) issus
+        des stations de mesure de la qualité de l’eau (par modélisation en leur
+        absence). Plusieurs critères concourent à cette évaluation :
+      </p>
       <ul>
-        <li>température et acidité de l'eau,</li>
+        <li>température et acidité de l’eau,</li>
         <li>bilan de l’oxygène,</li>
         <li>hydro-morphologie du cours d’eau,</li>
         <li>
@@ -55,14 +57,15 @@ const EtatQualiteCoursDeau = (props: {
           <div className="w-5/12">
             <div className={styles.explicationWrapper}>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-                diam
+                La biodiversité en eau douce est particulièrement menacée. La
+                carte ci-contre reflète l’état écologique des cours d’eau
+                présents sur votre territoire.
               </p>
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
             </div>
             <div className="px-4">
               <p>
-                Seuls 43 % des cours d’eau français sont en bon état écologique.
+                Seuls 43 % des cours d’eau français sont en bon état écologique.
                 Si les principaux facteurs de dégradation de la qualité des eaux
                 sont les pollutions (nitrates, pesticides) et les altérations
                 physiques des rivières (seuils et barrages, endiguement….), le
@@ -74,6 +77,20 @@ const EtatQualiteCoursDeau = (props: {
                 température de l’eau et l’ensoleillement sont des conditions
                 favorables à l’eutrophisation.
               </p>
+              <p>
+                Un mauvais état écologique a des impacts graves sur la
+                biodiversité : il perturbe les conditions de vie des espèces
+                aquatiques et dégrade leurs habitats. En 20 ans :
+              </p>
+              <ul className="text-[1rem] leading-[1.5rem]">
+                <li>
+                  Les populations de truites de rivière ont diminué de 44 %.
+                </li>
+                <li>
+                  L’abondance de l’anguille européenne est tombée à 10 % de son
+                  niveau historique.
+                </li>
+              </ul>
               <p>
                 - - - - <br></br>
                 L’objectif de la Directive Cadre sur l’Eau (2000) était
@@ -88,7 +105,7 @@ const EtatQualiteCoursDeau = (props: {
                 className={styles.biodiversiteGraphTitleWrapper}
                 style={{ padding: '1rem' }}
               >
-                <h2>État des cours d'eau</h2>
+                <h2>État écologique des cours d’eau</h2>
               </div>
               <div>
                 <MapEtatCoursDeau
