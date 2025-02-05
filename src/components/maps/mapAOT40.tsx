@@ -7,11 +7,12 @@ import {
   MapContainer,
   Marker,
   Popup,
-  Rectangle,
   TileLayer
 } from '@/lib/react-leaflet';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Any } from '@/lib/utils/types';
+import * as turf from '@turf/turf';
+import { Position } from 'geojson';
 import L, {
   LatLngBoundsExpression,
   LatLngExpression,
@@ -19,11 +20,9 @@ import L, {
 } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 // documentation : https://akursat.gitbook.io/marker-cluster/api
-import * as turf from '@turf/turf';
-import { Position } from 'geojson';
 
 const color = (valeur: number) => {
   return valeur > 36000
@@ -40,12 +39,13 @@ const color = (valeur: number) => {
 };
 
 const getCentroid = (arr: number[][]) => {
-  return arr?.reduce(
+  const centroid = arr?.reduce(
     (x: number[], y: number[]) => {
       return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
     },
     [0, 0]
   );
+  return [centroid[1], centroid[0]];
 };
 
 export const MapAOT40 = (props: {
@@ -56,13 +56,12 @@ export const MapAOT40 = (props: {
   const { aot40, epciContours, carteCommunes } = props;
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
+  const mapRef = useRef(null);
+  const markerRef = useRef(null);
+
   const commune = carteCommunes.find(
     (commune) => commune.properties.code_commune === codgeo
   );
-  console.log('commune', commune);
-  console.log('epciContours', epciContours);
-  const mapRef = useRef(null);
-  const markerRef = useRef(null);
   const centerCoord: number[] = commune
     ? commune.properties.coordinates.split(',').map(Number)
     : getCentroid(epciContours[0]?.geometry?.coordinates[0][0]);
@@ -89,55 +88,30 @@ export const MapAOT40 = (props: {
     };
   });
 
-  const [bounds, setBounds] = useState<number[][]>([
-    [49.148827865, 6.256465128],
-    [49.060822284, 6.136002445]
-  ]);
+  const polygonTerritoire = commune
+    ? turf.multiPolygon(commune?.geometry.coordinates as Position[][][])
+    : turf.multiPolygon(
+        epciContours[0]?.geometry.coordinates as Position[][][]
+      );
 
-  const polygonTerritoire = turf.multiPolygon(
-    commune?.geometry.coordinates as Position[][][]
-  );
-
+  const enveloppe = turf
+    .bboxPolygon(turf.bbox(turf.envelope(polygonTerritoire)))
+    .geometry.coordinates[0].map((coord) => [coord[1], coord[0]]);
   const pointCollection = aot40map.map((aot) => {
     return turf.point(aot.coordinates as number[]);
   });
   const featureCollection = turf.featureCollection(pointCollection);
   const nearestPoint = turf.nearestPoint(
-    turf.centroid(polygonTerritoire),
+    turf.point([centerCoord[0], centerCoord[1]]),
     featureCollection
   );
   const bbox = turf.bbox(
     turf.featureCollection([nearestPoint, turf.point(centerCoord)])
   );
   const boundsIfNoPoint = [
-    [bbox[1], bbox[0]],
-    [bbox[3], bbox[2]]
+    [bbox[0], bbox[1]],
+    [bbox[2], bbox[3]]
   ];
-
-  console.log(turf.centroid(polygonTerritoire));
-  console.log('nearest point', nearestPoint);
-
-  console.log('TURFFFFF', turf.booleanWithin(nearestPoint, polygonTerritoire));
-
-  // console.log("bbox", bbox);
-
-  useEffect(() => {
-    const northeast = mapRef.current?.getBounds()?._northEast;
-    const southwest = mapRef.current?.getBounds()?._southWest;
-    southwest
-      ? setBounds([
-          [northeast?.lat, northeast?.lng],
-          [southwest?.lat, southwest?.lng]
-        ])
-      : null;
-  }, [mapRef.current]);
-
-  // const intersect = turf.intersect(
-  //         turf.featureCollection([
-  //           polygon,
-  //           union as Feature<Polygon, GeoJsonProperties>
-  //         ])
-  //       );
 
   const territoireStyle: StyleFunction<Any> = () => {
     return {
@@ -150,17 +124,16 @@ export const MapAOT40 = (props: {
 
   return (
     <MapContainer
-      center={
-        commune
-          ? (centerCoord as LatLngExpression)
-          : [centerCoord[1], centerCoord[0]]
-      }
       zoom={commune ? 11 : 9}
       ref={mapRef}
       style={{ height: '500px', width: '100%', cursor: 'pointer' }}
       attributionControl={false}
       zoomControl={false}
-      bounds={boundsIfNoPoint as LatLngBoundsExpression}
+      bounds={
+        turf.booleanPointInPolygon(nearestPoint, turf.polygon([enveloppe]))
+          ? (enveloppe as LatLngBoundsExpression)
+          : (boundsIfNoPoint as LatLngBoundsExpression)
+      }
     >
       <TileLayer
         attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -170,7 +143,6 @@ export const MapAOT40 = (props: {
         data={commune ?? (epciContours as Any)}
         style={territoireStyle}
       />
-      <Rectangle bounds={bounds as unknown as LatLngBoundsExpression} />
       <MarkerClusterGroup
         chunkedLoading
         removeOutsideVisibleBounds={true}
