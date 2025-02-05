@@ -16,12 +16,14 @@ import { Position } from 'geojson';
 import L, {
   LatLngBoundsExpression,
   LatLngExpression,
+  LeafletMouseEvent,
   StyleFunction
 } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import MarkerClusterGroup from 'react-leaflet-cluster';
+import './maps.css';
 // documentation : https://akursat.gitbook.io/marker-cluster/api
 
 const color = (valeur: number) => {
@@ -74,8 +76,8 @@ export const MapAOT40 = (props: {
       type_implantation: aot.type_d_implantation,
       icon: L.divIcon({
         html: `
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="6" cy="6" r="6" fill=${color(aot.valeur_brute!)} />
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="9" cy="9" r="9" fill=${color(aot.valeur_brute!)} />
           </svg>`,
         className: 'svg-marker',
         iconSize: [24, 24],
@@ -122,6 +124,24 @@ export const MapAOT40 = (props: {
     };
   };
 
+  const createClusterCustomIcon = function (cluster: any) {
+    const number = cluster.getChildCount();
+    const size = number < 4 ? 40 : 40 + number > 65 ? 65 : 40 + number;
+    return L.divIcon({
+      html: `<span>${number}</span>`,
+      className: 'custom-marker-cluster',
+      iconSize: L.point(size, size, true)
+      // iconSize: [45, 45],
+      // iconAnchor: [15, 15]
+    });
+  };
+
+  const CustomTooltip = () => {
+    return `<div style="padding: 0.25rem">
+        <div style="font-size: 0.75rem; font-family: Marianne; font-weight: 700;"> Contenu cluster hover</div>
+      </div>`;
+  };
+
   return (
     <MapContainer
       zoom={commune ? 11 : 9}
@@ -146,21 +166,20 @@ export const MapAOT40 = (props: {
       <MarkerClusterGroup
         chunkedLoading
         removeOutsideVisibleBounds={true}
-        maxClusterRadius={55}
-        polygonOptions={{ color: 'transparent', opacity: 0 }}
-
-        // iconCreateFunction={() => {
-        //   return L.divIcon({
-        //     html: `
-        //       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-        //         <circle cx="6" cy="6" r="6" fill="#FFCF5E"} />
-        //       </svg>
-        //     `,
-        //     className: 'svg-marker',
-        //     iconSize: [45, 45],
-        //     // iconAnchor: [15, 15]
-        //   });
-        // }}
+        maxClusterRadius={155}
+        iconCreateFunction={createClusterCustomIcon}
+        polygonOptions={{
+          color: 'transparent',
+          fillOpacity: 0
+        }}
+        onMouseOver={(e: LeafletMouseEvent) => {
+          e.layer.bindTooltip(CustomTooltip(), {
+            opacity: 0.97,
+            direction: 'top',
+            offset: [0, -20]
+          });
+          e.layer.openTooltip();
+        }}
       >
         {aot40map.map((aot, i) => {
           return (

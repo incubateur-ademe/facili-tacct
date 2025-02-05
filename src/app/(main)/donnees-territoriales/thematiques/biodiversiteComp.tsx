@@ -197,7 +197,13 @@ const BiodiversiteComp = ({
           },
           {
             tabId: "État des cours d'eau",
-            label: "État des cours d'eau"
+            label: (
+              <TabTooltip
+                selectedTab={selectedTabId}
+                tooltip="Le bon fonctionnement des milieux aquatiques est évalué à partir d’éléments physico-chimiques (composition de l’eau, polluants…) mais aussi de la présence de la faune et de la flore (poissons, invertébrés, plantes aquatiques), ainsi que des propriétés hydromorphologiques (état des berges, continuité de la rivière, etc.)."
+                titre="État des cours d'eau"
+              />
+            )
           },
           {
             tabId: 'Seuils de pollution',
