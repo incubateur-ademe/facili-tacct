@@ -43,4 +43,6 @@ fileignoreconfig:
   checksum: f95882ba525fe9e031bc1d743e0165d3198884c0f2ea9e6baf5d51737dfbc498
 - filename: src/generated/client/wasm.js
   checksum: 4e8fa0499f06b907b165714b6e48bd15a2491170e1ea45101203a0c25616d8e5
+- filename: src/components/maps/legends/legendComp.tsx
+  checksum: 44a1d880689a63cb51bd7fb9a79ebbe41dbb64c56357469a008e85e282b10e7f
 version: ""

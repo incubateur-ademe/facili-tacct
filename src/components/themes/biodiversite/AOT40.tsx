@@ -1,5 +1,5 @@
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
-import { LegendAOT40 } from '@/components/maps/legends/legendAOT40';
+import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapAOT40 } from '@/components/maps/mapAOT40';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EpciContoursMapper } from '@/lib/mapper/epci';
@@ -7,6 +7,33 @@ import { AOT40, CarteCommunes, EpciContours } from '@/lib/postgres/models';
 import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { useSearchParams } from 'next/navigation';
 import styles from './biodiversite.module.scss';
+
+const legends = [
+  {
+    value: '> 36000',
+    color: '#7A49BE'
+  },
+  {
+    value: '36000 - 27000',
+    color: '#A67FE1'
+  },
+  {
+    value: '27000 - 18000',
+    color: '#DB7BDD'
+  },
+  {
+    value: '18000 - 12000',
+    color: '#FF9699'
+  },
+  {
+    value: '12000 - 6000',
+    color: '#00C2CC'
+  },
+  {
+    value: '< 6000',
+    color: '#5EEDF3'
+  }
+];
 
 const AOT40Dataviz = (props: {
   aot40: AOT40[];
@@ -79,7 +106,7 @@ const AOT40Dataviz = (props: {
                 className={styles.legend}
                 style={{ width: 'auto', justifyContent: 'center' }}
               >
-                <LegendAOT40 />
+                <LegendCompColor legends={legends} />
               </div>
               <p style={{ padding: '1em', margin: '0' }}>Source : Géodair</p>
             </div>
