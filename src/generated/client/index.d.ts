@@ -115,6 +115,12 @@ export type aot_40 = $Result.DefaultSelection<Prisma.$aot_40Payload>;
  *
  */
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>;
+/**
+ * Model qualite_sites_baignade
+ *
+ */
+export type qualite_sites_baignade =
+  $Result.DefaultSelection<Prisma.$qualite_sites_baignadePayload>;
 
 /**
  * ##  Prisma Client ʲˢ
@@ -483,6 +489,19 @@ export class PrismaClient<
    * ```
    */
   get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.qualite_sites_baignade`: Exposes CRUD operations for the **qualite_sites_baignade** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Qualite_sites_baignades
+   * const qualite_sites_baignades = await prisma.qualite_sites_baignade.findMany()
+   * ```
+   */
+  get qualite_sites_baignade(): Prisma.qualite_sites_baignadeDelegate<
+    ExtArgs,
+    ClientOptions
+  >;
 }
 
 export namespace Prisma {
@@ -959,6 +978,7 @@ export namespace Prisma {
     etat_cours_d_eau: 'etat_cours_d_eau';
     aot_40: 'aot_40';
     users: 'users';
+    qualite_sites_baignade: 'qualite_sites_baignade';
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -1001,7 +1021,8 @@ export namespace Prisma {
         | 'north_star_metric'
         | 'etat_cours_d_eau'
         | 'aot_40'
-        | 'users';
+        | 'users'
+        | 'qualite_sites_baignade';
       txIsolationLevel: Prisma.TransactionIsolationLevel;
     };
     model: {
@@ -2301,6 +2322,82 @@ export namespace Prisma {
           };
         };
       };
+      qualite_sites_baignade: {
+        payload: Prisma.$qualite_sites_baignadePayload<ExtArgs>;
+        fields: Prisma.qualite_sites_baignadeFieldRefs;
+        operations: {
+          findUnique: {
+            args: Prisma.qualite_sites_baignadeFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload> | null;
+          };
+          findUniqueOrThrow: {
+            args: Prisma.qualite_sites_baignadeFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>;
+          };
+          findFirst: {
+            args: Prisma.qualite_sites_baignadeFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload> | null;
+          };
+          findFirstOrThrow: {
+            args: Prisma.qualite_sites_baignadeFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>;
+          };
+          findMany: {
+            args: Prisma.qualite_sites_baignadeFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>[];
+          };
+          create: {
+            args: Prisma.qualite_sites_baignadeCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>;
+          };
+          createMany: {
+            args: Prisma.qualite_sites_baignadeCreateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          createManyAndReturn: {
+            args: Prisma.qualite_sites_baignadeCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>[];
+          };
+          delete: {
+            args: Prisma.qualite_sites_baignadeDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>;
+          };
+          update: {
+            args: Prisma.qualite_sites_baignadeUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>;
+          };
+          deleteMany: {
+            args: Prisma.qualite_sites_baignadeDeleteManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateMany: {
+            args: Prisma.qualite_sites_baignadeUpdateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateManyAndReturn: {
+            args: Prisma.qualite_sites_baignadeUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>[];
+          };
+          upsert: {
+            args: Prisma.qualite_sites_baignadeUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$qualite_sites_baignadePayload>;
+          };
+          aggregate: {
+            args: Prisma.Qualite_sites_baignadeAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregateQualite_sites_baignade>;
+          };
+          groupBy: {
+            args: Prisma.qualite_sites_baignadeGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<Qualite_sites_baignadeGroupByOutputType>[];
+          };
+          count: {
+            args: Prisma.qualite_sites_baignadeCountArgs<ExtArgs>;
+            result:
+              | $Utils.Optional<Qualite_sites_baignadeCountAggregateOutputType>
+              | number;
+          };
+        };
+      };
     };
   } & {
     other: {
@@ -2407,6 +2504,7 @@ export namespace Prisma {
     etat_cours_d_eau?: etat_cours_d_eauOmit;
     aot_40?: aot_40Omit;
     users?: usersOmit;
+    qualite_sites_baignade?: qualite_sites_baignadeOmit;
   };
 
   /* Types for Logging */
@@ -29032,6 +29130,1487 @@ export namespace Prisma {
   };
 
   /**
+   * Model qualite_sites_baignade
+   */
+
+  export type AggregateQualite_sites_baignade = {
+    _count: Qualite_sites_baignadeCountAggregateOutputType | null;
+    _avg: Qualite_sites_baignadeAvgAggregateOutputType | null;
+    _sum: Qualite_sites_baignadeSumAggregateOutputType | null;
+    _min: Qualite_sites_baignadeMinAggregateOutputType | null;
+    _max: Qualite_sites_baignadeMaxAggregateOutputType | null;
+  };
+
+  export type Qualite_sites_baignadeAvgAggregateOutputType = {
+    index: number | null;
+    LONG: number | null;
+    LAT: number | null;
+  };
+
+  export type Qualite_sites_baignadeSumAggregateOutputType = {
+    index: bigint | null;
+    LONG: number | null;
+    LAT: number | null;
+  };
+
+  export type Qualite_sites_baignadeMinAggregateOutputType = {
+    index: bigint | null;
+    DEP_NOM: string | null;
+    DEP_NUM: string | null;
+    TYPE: string | null;
+    COMMUNE: string | null;
+    POINT: string | null;
+    LONG: number | null;
+    LAT: number | null;
+    QEB_2013: string | null;
+    QEB_2014: string | null;
+    QEB_2015: string | null;
+    QEB_2016: string | null;
+    QEB_2017: string | null;
+    QEB_2018: string | null;
+    QEB_2019: string | null;
+    QEB_2020: string | null;
+  };
+
+  export type Qualite_sites_baignadeMaxAggregateOutputType = {
+    index: bigint | null;
+    DEP_NOM: string | null;
+    DEP_NUM: string | null;
+    TYPE: string | null;
+    COMMUNE: string | null;
+    POINT: string | null;
+    LONG: number | null;
+    LAT: number | null;
+    QEB_2013: string | null;
+    QEB_2014: string | null;
+    QEB_2015: string | null;
+    QEB_2016: string | null;
+    QEB_2017: string | null;
+    QEB_2018: string | null;
+    QEB_2019: string | null;
+    QEB_2020: string | null;
+  };
+
+  export type Qualite_sites_baignadeCountAggregateOutputType = {
+    index: number;
+    DEP_NOM: number;
+    DEP_NUM: number;
+    TYPE: number;
+    COMMUNE: number;
+    POINT: number;
+    LONG: number;
+    LAT: number;
+    QEB_2013: number;
+    QEB_2014: number;
+    QEB_2015: number;
+    QEB_2016: number;
+    QEB_2017: number;
+    QEB_2018: number;
+    QEB_2019: number;
+    QEB_2020: number;
+    _all: number;
+  };
+
+  export type Qualite_sites_baignadeAvgAggregateInputType = {
+    index?: true;
+    LONG?: true;
+    LAT?: true;
+  };
+
+  export type Qualite_sites_baignadeSumAggregateInputType = {
+    index?: true;
+    LONG?: true;
+    LAT?: true;
+  };
+
+  export type Qualite_sites_baignadeMinAggregateInputType = {
+    index?: true;
+    DEP_NOM?: true;
+    DEP_NUM?: true;
+    TYPE?: true;
+    COMMUNE?: true;
+    POINT?: true;
+    LONG?: true;
+    LAT?: true;
+    QEB_2013?: true;
+    QEB_2014?: true;
+    QEB_2015?: true;
+    QEB_2016?: true;
+    QEB_2017?: true;
+    QEB_2018?: true;
+    QEB_2019?: true;
+    QEB_2020?: true;
+  };
+
+  export type Qualite_sites_baignadeMaxAggregateInputType = {
+    index?: true;
+    DEP_NOM?: true;
+    DEP_NUM?: true;
+    TYPE?: true;
+    COMMUNE?: true;
+    POINT?: true;
+    LONG?: true;
+    LAT?: true;
+    QEB_2013?: true;
+    QEB_2014?: true;
+    QEB_2015?: true;
+    QEB_2016?: true;
+    QEB_2017?: true;
+    QEB_2018?: true;
+    QEB_2019?: true;
+    QEB_2020?: true;
+  };
+
+  export type Qualite_sites_baignadeCountAggregateInputType = {
+    index?: true;
+    DEP_NOM?: true;
+    DEP_NUM?: true;
+    TYPE?: true;
+    COMMUNE?: true;
+    POINT?: true;
+    LONG?: true;
+    LAT?: true;
+    QEB_2013?: true;
+    QEB_2014?: true;
+    QEB_2015?: true;
+    QEB_2016?: true;
+    QEB_2017?: true;
+    QEB_2018?: true;
+    QEB_2019?: true;
+    QEB_2020?: true;
+    _all?: true;
+  };
+
+  export type Qualite_sites_baignadeAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which qualite_sites_baignade to aggregate.
+     */
+    where?: qualite_sites_baignadeWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of qualite_sites_baignades to fetch.
+     */
+    orderBy?:
+      | qualite_sites_baignadeOrderByWithRelationInput
+      | qualite_sites_baignadeOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: qualite_sites_baignadeWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` qualite_sites_baignades from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` qualite_sites_baignades.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned qualite_sites_baignades
+     **/
+    _count?: true | Qualite_sites_baignadeCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: Qualite_sites_baignadeAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: Qualite_sites_baignadeSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: Qualite_sites_baignadeMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: Qualite_sites_baignadeMaxAggregateInputType;
+  };
+
+  export type GetQualite_sites_baignadeAggregateType<
+    T extends Qualite_sites_baignadeAggregateArgs
+  > = {
+    [P in keyof T & keyof AggregateQualite_sites_baignade]: P extends
+      | '_count'
+      | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateQualite_sites_baignade[P]>
+      : GetScalarType<T[P], AggregateQualite_sites_baignade[P]>;
+  };
+
+  export type qualite_sites_baignadeGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    where?: qualite_sites_baignadeWhereInput;
+    orderBy?:
+      | qualite_sites_baignadeOrderByWithAggregationInput
+      | qualite_sites_baignadeOrderByWithAggregationInput[];
+    by:
+      | Qualite_sites_baignadeScalarFieldEnum[]
+      | Qualite_sites_baignadeScalarFieldEnum;
+    having?: qualite_sites_baignadeScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: Qualite_sites_baignadeCountAggregateInputType | true;
+    _avg?: Qualite_sites_baignadeAvgAggregateInputType;
+    _sum?: Qualite_sites_baignadeSumAggregateInputType;
+    _min?: Qualite_sites_baignadeMinAggregateInputType;
+    _max?: Qualite_sites_baignadeMaxAggregateInputType;
+  };
+
+  export type Qualite_sites_baignadeGroupByOutputType = {
+    index: bigint;
+    DEP_NOM: string | null;
+    DEP_NUM: string | null;
+    TYPE: string | null;
+    COMMUNE: string | null;
+    POINT: string | null;
+    LONG: number | null;
+    LAT: number | null;
+    QEB_2013: string | null;
+    QEB_2014: string | null;
+    QEB_2015: string | null;
+    QEB_2016: string | null;
+    QEB_2017: string | null;
+    QEB_2018: string | null;
+    QEB_2019: string | null;
+    QEB_2020: string | null;
+    _count: Qualite_sites_baignadeCountAggregateOutputType | null;
+    _avg: Qualite_sites_baignadeAvgAggregateOutputType | null;
+    _sum: Qualite_sites_baignadeSumAggregateOutputType | null;
+    _min: Qualite_sites_baignadeMinAggregateOutputType | null;
+    _max: Qualite_sites_baignadeMaxAggregateOutputType | null;
+  };
+
+  type GetQualite_sites_baignadeGroupByPayload<
+    T extends qualite_sites_baignadeGroupByArgs
+  > = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Qualite_sites_baignadeGroupByOutputType, T['by']> & {
+        [P in keyof T &
+          keyof Qualite_sites_baignadeGroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : GetScalarType<T[P], Qualite_sites_baignadeGroupByOutputType[P]>
+          : GetScalarType<T[P], Qualite_sites_baignadeGroupByOutputType[P]>;
+      }
+    >
+  >;
+
+  export type qualite_sites_baignadeSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      DEP_NOM?: boolean;
+      DEP_NUM?: boolean;
+      TYPE?: boolean;
+      COMMUNE?: boolean;
+      POINT?: boolean;
+      LONG?: boolean;
+      LAT?: boolean;
+      QEB_2013?: boolean;
+      QEB_2014?: boolean;
+      QEB_2015?: boolean;
+      QEB_2016?: boolean;
+      QEB_2017?: boolean;
+      QEB_2018?: boolean;
+      QEB_2019?: boolean;
+      QEB_2020?: boolean;
+    },
+    ExtArgs['result']['qualite_sites_baignade']
+  >;
+
+  export type qualite_sites_baignadeSelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      DEP_NOM?: boolean;
+      DEP_NUM?: boolean;
+      TYPE?: boolean;
+      COMMUNE?: boolean;
+      POINT?: boolean;
+      LONG?: boolean;
+      LAT?: boolean;
+      QEB_2013?: boolean;
+      QEB_2014?: boolean;
+      QEB_2015?: boolean;
+      QEB_2016?: boolean;
+      QEB_2017?: boolean;
+      QEB_2018?: boolean;
+      QEB_2019?: boolean;
+      QEB_2020?: boolean;
+    },
+    ExtArgs['result']['qualite_sites_baignade']
+  >;
+
+  export type qualite_sites_baignadeSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      DEP_NOM?: boolean;
+      DEP_NUM?: boolean;
+      TYPE?: boolean;
+      COMMUNE?: boolean;
+      POINT?: boolean;
+      LONG?: boolean;
+      LAT?: boolean;
+      QEB_2013?: boolean;
+      QEB_2014?: boolean;
+      QEB_2015?: boolean;
+      QEB_2016?: boolean;
+      QEB_2017?: boolean;
+      QEB_2018?: boolean;
+      QEB_2019?: boolean;
+      QEB_2020?: boolean;
+    },
+    ExtArgs['result']['qualite_sites_baignade']
+  >;
+
+  export type qualite_sites_baignadeSelectScalar = {
+    index?: boolean;
+    DEP_NOM?: boolean;
+    DEP_NUM?: boolean;
+    TYPE?: boolean;
+    COMMUNE?: boolean;
+    POINT?: boolean;
+    LONG?: boolean;
+    LAT?: boolean;
+    QEB_2013?: boolean;
+    QEB_2014?: boolean;
+    QEB_2015?: boolean;
+    QEB_2016?: boolean;
+    QEB_2017?: boolean;
+    QEB_2018?: boolean;
+    QEB_2019?: boolean;
+    QEB_2020?: boolean;
+  };
+
+  export type qualite_sites_baignadeOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'index'
+    | 'DEP_NOM'
+    | 'DEP_NUM'
+    | 'TYPE'
+    | 'COMMUNE'
+    | 'POINT'
+    | 'LONG'
+    | 'LAT'
+    | 'QEB_2013'
+    | 'QEB_2014'
+    | 'QEB_2015'
+    | 'QEB_2016'
+    | 'QEB_2017'
+    | 'QEB_2018'
+    | 'QEB_2019'
+    | 'QEB_2020',
+    ExtArgs['result']['qualite_sites_baignade']
+  >;
+
+  export type $qualite_sites_baignadePayload<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    name: 'qualite_sites_baignade';
+    objects: {};
+    scalars: $Extensions.GetPayloadResult<
+      {
+        index: bigint;
+        DEP_NOM: string | null;
+        DEP_NUM: string | null;
+        TYPE: string | null;
+        COMMUNE: string | null;
+        POINT: string | null;
+        LONG: number | null;
+        LAT: number | null;
+        QEB_2013: string | null;
+        QEB_2014: string | null;
+        QEB_2015: string | null;
+        QEB_2016: string | null;
+        QEB_2017: string | null;
+        QEB_2018: string | null;
+        QEB_2019: string | null;
+        QEB_2020: string | null;
+      },
+      ExtArgs['result']['qualite_sites_baignade']
+    >;
+    composites: {};
+  };
+
+  type qualite_sites_baignadeGetPayload<
+    S extends boolean | null | undefined | qualite_sites_baignadeDefaultArgs
+  > = $Result.GetResult<Prisma.$qualite_sites_baignadePayload, S>;
+
+  type qualite_sites_baignadeCountArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = Omit<
+    qualite_sites_baignadeFindManyArgs,
+    'select' | 'include' | 'distinct' | 'omit'
+  > & {
+    select?: Qualite_sites_baignadeCountAggregateInputType | true;
+  };
+
+  export interface qualite_sites_baignadeDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['qualite_sites_baignade'];
+      meta: { name: 'qualite_sites_baignade' };
+    };
+    /**
+     * Find zero or one Qualite_sites_baignade that matches the filter.
+     * @param {qualite_sites_baignadeFindUniqueArgs} args - Arguments to find a Qualite_sites_baignade
+     * @example
+     * // Get one Qualite_sites_baignade
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends qualite_sites_baignadeFindUniqueArgs>(
+      args: SelectSubset<T, qualite_sites_baignadeFindUniqueArgs<ExtArgs>>
+    ): Prisma__qualite_sites_baignadeClient<
+      $Result.GetResult<
+        Prisma.$qualite_sites_baignadePayload<ExtArgs>,
+        T,
+        'findUnique',
+        ClientOptions
+      > | null,
+      null,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find one Qualite_sites_baignade that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {qualite_sites_baignadeFindUniqueOrThrowArgs} args - Arguments to find a Qualite_sites_baignade
+     * @example
+     * // Get one Qualite_sites_baignade
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends qualite_sites_baignadeFindUniqueOrThrowArgs>(
+      args: SelectSubset<
+        T,
+        qualite_sites_baignadeFindUniqueOrThrowArgs<ExtArgs>
+      >
+    ): Prisma__qualite_sites_baignadeClient<
+      $Result.GetResult<
+        Prisma.$qualite_sites_baignadePayload<ExtArgs>,
+        T,
+        'findUniqueOrThrow',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find the first Qualite_sites_baignade that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {qualite_sites_baignadeFindFirstArgs} args - Arguments to find a Qualite_sites_baignade
+     * @example
+     * // Get one Qualite_sites_baignade
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends qualite_sites_baignadeFindFirstArgs>(
+      args?: SelectSubset<T, qualite_sites_baignadeFindFirstArgs<ExtArgs>>
+    ): Prisma__qualite_sites_baignadeClient<
+      $Result.GetResult<
+        Prisma.$qualite_sites_baignadePayload<ExtArgs>,
+        T,
+        'findFirst',
+        ClientOptions
+      > | null,
+      null,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find the first Qualite_sites_baignade that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {qualite_sites_baignadeFindFirstOrThrowArgs} args - Arguments to find a Qualite_sites_baignade
+     * @example
+     * // Get one Qualite_sites_baignade
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends qualite_sites_baignadeFindFirstOrThrowArgs>(
+      args?: SelectSubset<
+        T,
+        qualite_sites_baignadeFindFirstOrThrowArgs<ExtArgs>
+      >
+    ): Prisma__qualite_sites_baignadeClient<
+      $Result.GetResult<
+        Prisma.$qualite_sites_baignadePayload<ExtArgs>,
+        T,
+        'findFirstOrThrow',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find zero or more Qualite_sites_baignades that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {qualite_sites_baignadeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Qualite_sites_baignades
+     * const qualite_sites_baignades = await prisma.qualite_sites_baignade.findMany()
+     *
+     * // Get first 10 Qualite_sites_baignades
+     * const qualite_sites_baignades = await prisma.qualite_sites_baignade.findMany({ take: 10 })
+     *
+     * // Only select the `index`
+     * const qualite_sites_baignadeWithIndexOnly = await prisma.qualite_sites_baignade.findMany({ select: { index: true } })
+     *
+     */
+    findMany<T extends qualite_sites_baignadeFindManyArgs>(
+      args?: SelectSubset<T, qualite_sites_baignadeFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$qualite_sites_baignadePayload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Create a Qualite_sites_baignade.
+     * @param {qualite_sites_baignadeCreateArgs} args - Arguments to create a Qualite_sites_baignade.
+     * @example
+     * // Create one Qualite_sites_baignade
+     * const Qualite_sites_baignade = await prisma.qualite_sites_baignade.create({
+     *   data: {
+     *     // ... data to create a Qualite_sites_baignade
+     *   }
+     * })
+     *
+     */
+    create<T extends qualite_sites_baignadeCreateArgs>(
+      args: SelectSubset<T, qualite_sites_baignadeCreateArgs<ExtArgs>>
+    ): Prisma__qualite_sites_baignadeClient<
+      $Result.GetResult<
+        Prisma.$qualite_sites_baignadePayload<ExtArgs>,
+        T,
+        'create',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Create many Qualite_sites_baignades.
+     * @param {qualite_sites_baignadeCreateManyArgs} args - Arguments to create many Qualite_sites_baignades.
+     * @example
+     * // Create many Qualite_sites_baignades
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends qualite_sites_baignadeCreateManyArgs>(
+      args?: SelectSubset<T, qualite_sites_baignadeCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create many Qualite_sites_baignades and returns the data saved in the database.
+     * @param {qualite_sites_baignadeCreateManyAndReturnArgs} args - Arguments to create many Qualite_sites_baignades.
+     * @example
+     * // Create many Qualite_sites_baignades
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Qualite_sites_baignades and only return the `index`
+     * const qualite_sites_baignadeWithIndexOnly = await prisma.qualite_sites_baignade.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<
+      T extends qualite_sites_baignadeCreateManyAndReturnArgs
+    >(
+      args?: SelectSubset<
+        T,
+        qualite_sites_baignadeCreateManyAndReturnArgs<ExtArgs>
+      >
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$qualite_sites_baignadePayload<ExtArgs>,
+        T,
+        'createManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Delete a Qualite_sites_baignade.
+     * @param {qualite_sites_baignadeDeleteArgs} args - Arguments to delete one Qualite_sites_baignade.
+     * @example
+     * // Delete one Qualite_sites_baignade
+     * const Qualite_sites_baignade = await prisma.qualite_sites_baignade.delete({
+     *   where: {
+     *     // ... filter to delete one Qualite_sites_baignade
+     *   }
+     * })
+     *
+     */
+    delete<T extends qualite_sites_baignadeDeleteArgs>(
+      args: SelectSubset<T, qualite_sites_baignadeDeleteArgs<ExtArgs>>
+    ): Prisma__qualite_sites_baignadeClient<
+      $Result.GetResult<
+        Prisma.$qualite_sites_baignadePayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Update one Qualite_sites_baignade.
+     * @param {qualite_sites_baignadeUpdateArgs} args - Arguments to update one Qualite_sites_baignade.
+     * @example
+     * // Update one Qualite_sites_baignade
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends qualite_sites_baignadeUpdateArgs>(
+      args: SelectSubset<T, qualite_sites_baignadeUpdateArgs<ExtArgs>>
+    ): Prisma__qualite_sites_baignadeClient<
+      $Result.GetResult<
+        Prisma.$qualite_sites_baignadePayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Delete zero or more Qualite_sites_baignades.
+     * @param {qualite_sites_baignadeDeleteManyArgs} args - Arguments to filter Qualite_sites_baignades to delete.
+     * @example
+     * // Delete a few Qualite_sites_baignades
+     * const { count } = await prisma.qualite_sites_baignade.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends qualite_sites_baignadeDeleteManyArgs>(
+      args?: SelectSubset<T, qualite_sites_baignadeDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Qualite_sites_baignades.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {qualite_sites_baignadeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Qualite_sites_baignades
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends qualite_sites_baignadeUpdateManyArgs>(
+      args: SelectSubset<T, qualite_sites_baignadeUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Qualite_sites_baignades and returns the data updated in the database.
+     * @param {qualite_sites_baignadeUpdateManyAndReturnArgs} args - Arguments to update many Qualite_sites_baignades.
+     * @example
+     * // Update many Qualite_sites_baignades
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Qualite_sites_baignades and only return the `index`
+     * const qualite_sites_baignadeWithIndexOnly = await prisma.qualite_sites_baignade.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<
+      T extends qualite_sites_baignadeUpdateManyAndReturnArgs
+    >(
+      args: SelectSubset<
+        T,
+        qualite_sites_baignadeUpdateManyAndReturnArgs<ExtArgs>
+      >
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$qualite_sites_baignadePayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Create or update one Qualite_sites_baignade.
+     * @param {qualite_sites_baignadeUpsertArgs} args - Arguments to update or create a Qualite_sites_baignade.
+     * @example
+     * // Update or create a Qualite_sites_baignade
+     * const qualite_sites_baignade = await prisma.qualite_sites_baignade.upsert({
+     *   create: {
+     *     // ... data to create a Qualite_sites_baignade
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Qualite_sites_baignade we want to update
+     *   }
+     * })
+     */
+    upsert<T extends qualite_sites_baignadeUpsertArgs>(
+      args: SelectSubset<T, qualite_sites_baignadeUpsertArgs<ExtArgs>>
+    ): Prisma__qualite_sites_baignadeClient<
+      $Result.GetResult<
+        Prisma.$qualite_sites_baignadePayload<ExtArgs>,
+        T,
+        'upsert',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Count the number of Qualite_sites_baignades.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {qualite_sites_baignadeCountArgs} args - Arguments to filter Qualite_sites_baignades to count.
+     * @example
+     * // Count the number of Qualite_sites_baignades
+     * const count = await prisma.qualite_sites_baignade.count({
+     *   where: {
+     *     // ... the filter for the Qualite_sites_baignades we want to count
+     *   }
+     * })
+     **/
+    count<T extends qualite_sites_baignadeCountArgs>(
+      args?: Subset<T, qualite_sites_baignadeCountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<
+              T['select'],
+              Qualite_sites_baignadeCountAggregateOutputType
+            >
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a Qualite_sites_baignade.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Qualite_sites_baignadeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends Qualite_sites_baignadeAggregateArgs>(
+      args: Subset<T, Qualite_sites_baignadeAggregateArgs>
+    ): Prisma.PrismaPromise<GetQualite_sites_baignadeAggregateType<T>>;
+
+    /**
+     * Group by Qualite_sites_baignade.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {qualite_sites_baignadeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends qualite_sites_baignadeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: qualite_sites_baignadeGroupByArgs['orderBy'] }
+        : { orderBy?: qualite_sites_baignadeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<
+        Keys<MaybeTupleToUnion<T['orderBy']>>
+      >,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`
+                    ];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+    >(
+      args: SubsetIntersection<
+        T,
+        qualite_sites_baignadeGroupByArgs,
+        OrderByArg
+      > &
+        InputErrors
+    ): {} extends InputErrors
+      ? GetQualite_sites_baignadeGroupByPayload<T>
+      : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the qualite_sites_baignade model
+     */
+    readonly fields: qualite_sites_baignadeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for qualite_sites_baignade.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__qualite_sites_baignadeClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?:
+        | ((value: T) => TResult1 | PromiseLike<TResult1>)
+        | undefined
+        | null,
+      onrejected?:
+        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?:
+        | ((reason: any) => TResult | PromiseLike<TResult>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the qualite_sites_baignade model
+   */
+  interface qualite_sites_baignadeFieldRefs {
+    readonly index: FieldRef<'qualite_sites_baignade', 'BigInt'>;
+    readonly DEP_NOM: FieldRef<'qualite_sites_baignade', 'String'>;
+    readonly DEP_NUM: FieldRef<'qualite_sites_baignade', 'String'>;
+    readonly TYPE: FieldRef<'qualite_sites_baignade', 'String'>;
+    readonly COMMUNE: FieldRef<'qualite_sites_baignade', 'String'>;
+    readonly POINT: FieldRef<'qualite_sites_baignade', 'String'>;
+    readonly LONG: FieldRef<'qualite_sites_baignade', 'Float'>;
+    readonly LAT: FieldRef<'qualite_sites_baignade', 'Float'>;
+    readonly QEB_2013: FieldRef<'qualite_sites_baignade', 'String'>;
+    readonly QEB_2014: FieldRef<'qualite_sites_baignade', 'String'>;
+    readonly QEB_2015: FieldRef<'qualite_sites_baignade', 'String'>;
+    readonly QEB_2016: FieldRef<'qualite_sites_baignade', 'String'>;
+    readonly QEB_2017: FieldRef<'qualite_sites_baignade', 'String'>;
+    readonly QEB_2018: FieldRef<'qualite_sites_baignade', 'String'>;
+    readonly QEB_2019: FieldRef<'qualite_sites_baignade', 'String'>;
+    readonly QEB_2020: FieldRef<'qualite_sites_baignade', 'String'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * qualite_sites_baignade findUnique
+   */
+  export type qualite_sites_baignadeFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null;
+    /**
+     * Filter, which qualite_sites_baignade to fetch.
+     */
+    where: qualite_sites_baignadeWhereUniqueInput;
+  };
+
+  /**
+   * qualite_sites_baignade findUniqueOrThrow
+   */
+  export type qualite_sites_baignadeFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null;
+    /**
+     * Filter, which qualite_sites_baignade to fetch.
+     */
+    where: qualite_sites_baignadeWhereUniqueInput;
+  };
+
+  /**
+   * qualite_sites_baignade findFirst
+   */
+  export type qualite_sites_baignadeFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null;
+    /**
+     * Filter, which qualite_sites_baignade to fetch.
+     */
+    where?: qualite_sites_baignadeWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of qualite_sites_baignades to fetch.
+     */
+    orderBy?:
+      | qualite_sites_baignadeOrderByWithRelationInput
+      | qualite_sites_baignadeOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for qualite_sites_baignades.
+     */
+    cursor?: qualite_sites_baignadeWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` qualite_sites_baignades from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` qualite_sites_baignades.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of qualite_sites_baignades.
+     */
+    distinct?:
+      | Qualite_sites_baignadeScalarFieldEnum
+      | Qualite_sites_baignadeScalarFieldEnum[];
+  };
+
+  /**
+   * qualite_sites_baignade findFirstOrThrow
+   */
+  export type qualite_sites_baignadeFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null;
+    /**
+     * Filter, which qualite_sites_baignade to fetch.
+     */
+    where?: qualite_sites_baignadeWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of qualite_sites_baignades to fetch.
+     */
+    orderBy?:
+      | qualite_sites_baignadeOrderByWithRelationInput
+      | qualite_sites_baignadeOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for qualite_sites_baignades.
+     */
+    cursor?: qualite_sites_baignadeWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` qualite_sites_baignades from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` qualite_sites_baignades.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of qualite_sites_baignades.
+     */
+    distinct?:
+      | Qualite_sites_baignadeScalarFieldEnum
+      | Qualite_sites_baignadeScalarFieldEnum[];
+  };
+
+  /**
+   * qualite_sites_baignade findMany
+   */
+  export type qualite_sites_baignadeFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null;
+    /**
+     * Filter, which qualite_sites_baignades to fetch.
+     */
+    where?: qualite_sites_baignadeWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of qualite_sites_baignades to fetch.
+     */
+    orderBy?:
+      | qualite_sites_baignadeOrderByWithRelationInput
+      | qualite_sites_baignadeOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing qualite_sites_baignades.
+     */
+    cursor?: qualite_sites_baignadeWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` qualite_sites_baignades from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` qualite_sites_baignades.
+     */
+    skip?: number;
+    distinct?:
+      | Qualite_sites_baignadeScalarFieldEnum
+      | Qualite_sites_baignadeScalarFieldEnum[];
+  };
+
+  /**
+   * qualite_sites_baignade create
+   */
+  export type qualite_sites_baignadeCreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null;
+    /**
+     * The data needed to create a qualite_sites_baignade.
+     */
+    data: XOR<
+      qualite_sites_baignadeCreateInput,
+      qualite_sites_baignadeUncheckedCreateInput
+    >;
+  };
+
+  /**
+   * qualite_sites_baignade createMany
+   */
+  export type qualite_sites_baignadeCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to create many qualite_sites_baignades.
+     */
+    data:
+      | qualite_sites_baignadeCreateManyInput
+      | qualite_sites_baignadeCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * qualite_sites_baignade createManyAndReturn
+   */
+  export type qualite_sites_baignadeCreateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null;
+    /**
+     * The data used to create many qualite_sites_baignades.
+     */
+    data:
+      | qualite_sites_baignadeCreateManyInput
+      | qualite_sites_baignadeCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * qualite_sites_baignade update
+   */
+  export type qualite_sites_baignadeUpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null;
+    /**
+     * The data needed to update a qualite_sites_baignade.
+     */
+    data: XOR<
+      qualite_sites_baignadeUpdateInput,
+      qualite_sites_baignadeUncheckedUpdateInput
+    >;
+    /**
+     * Choose, which qualite_sites_baignade to update.
+     */
+    where: qualite_sites_baignadeWhereUniqueInput;
+  };
+
+  /**
+   * qualite_sites_baignade updateMany
+   */
+  export type qualite_sites_baignadeUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to update qualite_sites_baignades.
+     */
+    data: XOR<
+      qualite_sites_baignadeUpdateManyMutationInput,
+      qualite_sites_baignadeUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which qualite_sites_baignades to update
+     */
+    where?: qualite_sites_baignadeWhereInput;
+    /**
+     * Limit how many qualite_sites_baignades to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * qualite_sites_baignade updateManyAndReturn
+   */
+  export type qualite_sites_baignadeUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null;
+    /**
+     * The data used to update qualite_sites_baignades.
+     */
+    data: XOR<
+      qualite_sites_baignadeUpdateManyMutationInput,
+      qualite_sites_baignadeUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which qualite_sites_baignades to update
+     */
+    where?: qualite_sites_baignadeWhereInput;
+    /**
+     * Limit how many qualite_sites_baignades to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * qualite_sites_baignade upsert
+   */
+  export type qualite_sites_baignadeUpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null;
+    /**
+     * The filter to search for the qualite_sites_baignade to update in case it exists.
+     */
+    where: qualite_sites_baignadeWhereUniqueInput;
+    /**
+     * In case the qualite_sites_baignade found by the `where` argument doesn't exist, create a new qualite_sites_baignade with this data.
+     */
+    create: XOR<
+      qualite_sites_baignadeCreateInput,
+      qualite_sites_baignadeUncheckedCreateInput
+    >;
+    /**
+     * In case the qualite_sites_baignade was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<
+      qualite_sites_baignadeUpdateInput,
+      qualite_sites_baignadeUncheckedUpdateInput
+    >;
+  };
+
+  /**
+   * qualite_sites_baignade delete
+   */
+  export type qualite_sites_baignadeDeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null;
+    /**
+     * Filter which qualite_sites_baignade to delete.
+     */
+    where: qualite_sites_baignadeWhereUniqueInput;
+  };
+
+  /**
+   * qualite_sites_baignade deleteMany
+   */
+  export type qualite_sites_baignadeDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which qualite_sites_baignades to delete
+     */
+    where?: qualite_sites_baignadeWhereInput;
+    /**
+     * Limit how many qualite_sites_baignades to delete.
+     */
+    limit?: number;
+  };
+
+  /**
+   * qualite_sites_baignade without action
+   */
+  export type qualite_sites_baignadeDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the qualite_sites_baignade
+     */
+    select?: qualite_sites_baignadeSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the qualite_sites_baignade
+     */
+    omit?: qualite_sites_baignadeOmit<ExtArgs> | null;
+  };
+
+  /**
    * Enums
    */
 
@@ -29486,6 +31065,28 @@ export namespace Prisma {
 
   export type UsersScalarFieldEnum =
     (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum];
+
+  export const Qualite_sites_baignadeScalarFieldEnum: {
+    index: 'index';
+    DEP_NOM: 'DEP_NOM';
+    DEP_NUM: 'DEP_NUM';
+    TYPE: 'TYPE';
+    COMMUNE: 'COMMUNE';
+    POINT: 'POINT';
+    LONG: 'LONG';
+    LAT: 'LAT';
+    QEB_2013: 'QEB_2013';
+    QEB_2014: 'QEB_2014';
+    QEB_2015: 'QEB_2015';
+    QEB_2016: 'QEB_2016';
+    QEB_2017: 'QEB_2017';
+    QEB_2018: 'QEB_2018';
+    QEB_2019: 'QEB_2019';
+    QEB_2020: 'QEB_2020';
+  };
+
+  export type Qualite_sites_baignadeScalarFieldEnum =
+    (typeof Qualite_sites_baignadeScalarFieldEnum)[keyof typeof Qualite_sites_baignadeScalarFieldEnum];
 
   export const SortOrder: {
     asc: 'asc';
@@ -32524,6 +34125,174 @@ export namespace Prisma {
     role?: StringWithAggregatesFilter<'users'> | string;
   };
 
+  export type qualite_sites_baignadeWhereInput = {
+    AND?: qualite_sites_baignadeWhereInput | qualite_sites_baignadeWhereInput[];
+    OR?: qualite_sites_baignadeWhereInput[];
+    NOT?: qualite_sites_baignadeWhereInput | qualite_sites_baignadeWhereInput[];
+    index?: BigIntFilter<'qualite_sites_baignade'> | bigint | number;
+    DEP_NOM?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+    DEP_NUM?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+    TYPE?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+    COMMUNE?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+    POINT?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+    LONG?: FloatNullableFilter<'qualite_sites_baignade'> | number | null;
+    LAT?: FloatNullableFilter<'qualite_sites_baignade'> | number | null;
+    QEB_2013?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+    QEB_2014?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+    QEB_2015?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+    QEB_2016?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+    QEB_2017?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+    QEB_2018?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+    QEB_2019?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+    QEB_2020?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+  };
+
+  export type qualite_sites_baignadeOrderByWithRelationInput = {
+    index?: SortOrder;
+    DEP_NOM?: SortOrderInput | SortOrder;
+    DEP_NUM?: SortOrderInput | SortOrder;
+    TYPE?: SortOrderInput | SortOrder;
+    COMMUNE?: SortOrderInput | SortOrder;
+    POINT?: SortOrderInput | SortOrder;
+    LONG?: SortOrderInput | SortOrder;
+    LAT?: SortOrderInput | SortOrder;
+    QEB_2013?: SortOrderInput | SortOrder;
+    QEB_2014?: SortOrderInput | SortOrder;
+    QEB_2015?: SortOrderInput | SortOrder;
+    QEB_2016?: SortOrderInput | SortOrder;
+    QEB_2017?: SortOrderInput | SortOrder;
+    QEB_2018?: SortOrderInput | SortOrder;
+    QEB_2019?: SortOrderInput | SortOrder;
+    QEB_2020?: SortOrderInput | SortOrder;
+  };
+
+  export type qualite_sites_baignadeWhereUniqueInput = Prisma.AtLeast<
+    {
+      index?: bigint | number;
+      AND?:
+        | qualite_sites_baignadeWhereInput
+        | qualite_sites_baignadeWhereInput[];
+      OR?: qualite_sites_baignadeWhereInput[];
+      NOT?:
+        | qualite_sites_baignadeWhereInput
+        | qualite_sites_baignadeWhereInput[];
+      DEP_NOM?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+      DEP_NUM?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+      TYPE?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+      COMMUNE?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+      POINT?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+      LONG?: FloatNullableFilter<'qualite_sites_baignade'> | number | null;
+      LAT?: FloatNullableFilter<'qualite_sites_baignade'> | number | null;
+      QEB_2013?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+      QEB_2014?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+      QEB_2015?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+      QEB_2016?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+      QEB_2017?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+      QEB_2018?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+      QEB_2019?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+      QEB_2020?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
+    },
+    'index'
+  >;
+
+  export type qualite_sites_baignadeOrderByWithAggregationInput = {
+    index?: SortOrder;
+    DEP_NOM?: SortOrderInput | SortOrder;
+    DEP_NUM?: SortOrderInput | SortOrder;
+    TYPE?: SortOrderInput | SortOrder;
+    COMMUNE?: SortOrderInput | SortOrder;
+    POINT?: SortOrderInput | SortOrder;
+    LONG?: SortOrderInput | SortOrder;
+    LAT?: SortOrderInput | SortOrder;
+    QEB_2013?: SortOrderInput | SortOrder;
+    QEB_2014?: SortOrderInput | SortOrder;
+    QEB_2015?: SortOrderInput | SortOrder;
+    QEB_2016?: SortOrderInput | SortOrder;
+    QEB_2017?: SortOrderInput | SortOrder;
+    QEB_2018?: SortOrderInput | SortOrder;
+    QEB_2019?: SortOrderInput | SortOrder;
+    QEB_2020?: SortOrderInput | SortOrder;
+    _count?: qualite_sites_baignadeCountOrderByAggregateInput;
+    _avg?: qualite_sites_baignadeAvgOrderByAggregateInput;
+    _max?: qualite_sites_baignadeMaxOrderByAggregateInput;
+    _min?: qualite_sites_baignadeMinOrderByAggregateInput;
+    _sum?: qualite_sites_baignadeSumOrderByAggregateInput;
+  };
+
+  export type qualite_sites_baignadeScalarWhereWithAggregatesInput = {
+    AND?:
+      | qualite_sites_baignadeScalarWhereWithAggregatesInput
+      | qualite_sites_baignadeScalarWhereWithAggregatesInput[];
+    OR?: qualite_sites_baignadeScalarWhereWithAggregatesInput[];
+    NOT?:
+      | qualite_sites_baignadeScalarWhereWithAggregatesInput
+      | qualite_sites_baignadeScalarWhereWithAggregatesInput[];
+    index?:
+      | BigIntWithAggregatesFilter<'qualite_sites_baignade'>
+      | bigint
+      | number;
+    DEP_NOM?:
+      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
+      | string
+      | null;
+    DEP_NUM?:
+      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
+      | string
+      | null;
+    TYPE?:
+      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
+      | string
+      | null;
+    COMMUNE?:
+      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
+      | string
+      | null;
+    POINT?:
+      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
+      | string
+      | null;
+    LONG?:
+      | FloatNullableWithAggregatesFilter<'qualite_sites_baignade'>
+      | number
+      | null;
+    LAT?:
+      | FloatNullableWithAggregatesFilter<'qualite_sites_baignade'>
+      | number
+      | null;
+    QEB_2013?:
+      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
+      | string
+      | null;
+    QEB_2014?:
+      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
+      | string
+      | null;
+    QEB_2015?:
+      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
+      | string
+      | null;
+    QEB_2016?:
+      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
+      | string
+      | null;
+    QEB_2017?:
+      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
+      | string
+      | null;
+    QEB_2018?:
+      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
+      | string
+      | null;
+    QEB_2019?:
+      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
+      | string
+      | null;
+    QEB_2020?:
+      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
+      | string
+      | null;
+  };
+
   export type inconfort_thermiqueCreateInput = {
     index: bigint | number;
     code_geographique: string;
@@ -35299,6 +37068,139 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string;
   };
 
+  export type qualite_sites_baignadeCreateInput = {
+    index: bigint | number;
+    DEP_NOM?: string | null;
+    DEP_NUM?: string | null;
+    TYPE?: string | null;
+    COMMUNE?: string | null;
+    POINT?: string | null;
+    LONG?: number | null;
+    LAT?: number | null;
+    QEB_2013?: string | null;
+    QEB_2014?: string | null;
+    QEB_2015?: string | null;
+    QEB_2016?: string | null;
+    QEB_2017?: string | null;
+    QEB_2018?: string | null;
+    QEB_2019?: string | null;
+    QEB_2020?: string | null;
+  };
+
+  export type qualite_sites_baignadeUncheckedCreateInput = {
+    index: bigint | number;
+    DEP_NOM?: string | null;
+    DEP_NUM?: string | null;
+    TYPE?: string | null;
+    COMMUNE?: string | null;
+    POINT?: string | null;
+    LONG?: number | null;
+    LAT?: number | null;
+    QEB_2013?: string | null;
+    QEB_2014?: string | null;
+    QEB_2015?: string | null;
+    QEB_2016?: string | null;
+    QEB_2017?: string | null;
+    QEB_2018?: string | null;
+    QEB_2019?: string | null;
+    QEB_2020?: string | null;
+  };
+
+  export type qualite_sites_baignadeUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    DEP_NOM?: NullableStringFieldUpdateOperationsInput | string | null;
+    DEP_NUM?: NullableStringFieldUpdateOperationsInput | string | null;
+    TYPE?: NullableStringFieldUpdateOperationsInput | string | null;
+    COMMUNE?: NullableStringFieldUpdateOperationsInput | string | null;
+    POINT?: NullableStringFieldUpdateOperationsInput | string | null;
+    LONG?: NullableFloatFieldUpdateOperationsInput | number | null;
+    LAT?: NullableFloatFieldUpdateOperationsInput | number | null;
+    QEB_2013?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2015?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2016?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2017?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2018?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2019?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+  };
+
+  export type qualite_sites_baignadeUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    DEP_NOM?: NullableStringFieldUpdateOperationsInput | string | null;
+    DEP_NUM?: NullableStringFieldUpdateOperationsInput | string | null;
+    TYPE?: NullableStringFieldUpdateOperationsInput | string | null;
+    COMMUNE?: NullableStringFieldUpdateOperationsInput | string | null;
+    POINT?: NullableStringFieldUpdateOperationsInput | string | null;
+    LONG?: NullableFloatFieldUpdateOperationsInput | number | null;
+    LAT?: NullableFloatFieldUpdateOperationsInput | number | null;
+    QEB_2013?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2015?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2016?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2017?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2018?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2019?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+  };
+
+  export type qualite_sites_baignadeCreateManyInput = {
+    index: bigint | number;
+    DEP_NOM?: string | null;
+    DEP_NUM?: string | null;
+    TYPE?: string | null;
+    COMMUNE?: string | null;
+    POINT?: string | null;
+    LONG?: number | null;
+    LAT?: number | null;
+    QEB_2013?: string | null;
+    QEB_2014?: string | null;
+    QEB_2015?: string | null;
+    QEB_2016?: string | null;
+    QEB_2017?: string | null;
+    QEB_2018?: string | null;
+    QEB_2019?: string | null;
+    QEB_2020?: string | null;
+  };
+
+  export type qualite_sites_baignadeUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    DEP_NOM?: NullableStringFieldUpdateOperationsInput | string | null;
+    DEP_NUM?: NullableStringFieldUpdateOperationsInput | string | null;
+    TYPE?: NullableStringFieldUpdateOperationsInput | string | null;
+    COMMUNE?: NullableStringFieldUpdateOperationsInput | string | null;
+    POINT?: NullableStringFieldUpdateOperationsInput | string | null;
+    LONG?: NullableFloatFieldUpdateOperationsInput | number | null;
+    LAT?: NullableFloatFieldUpdateOperationsInput | number | null;
+    QEB_2013?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2015?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2016?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2017?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2018?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2019?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+  };
+
+  export type qualite_sites_baignadeUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    DEP_NOM?: NullableStringFieldUpdateOperationsInput | string | null;
+    DEP_NUM?: NullableStringFieldUpdateOperationsInput | string | null;
+    TYPE?: NullableStringFieldUpdateOperationsInput | string | null;
+    COMMUNE?: NullableStringFieldUpdateOperationsInput | string | null;
+    POINT?: NullableStringFieldUpdateOperationsInput | string | null;
+    LONG?: NullableFloatFieldUpdateOperationsInput | number | null;
+    LAT?: NullableFloatFieldUpdateOperationsInput | number | null;
+    QEB_2013?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2015?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2016?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2017?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2018?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2019?: NullableStringFieldUpdateOperationsInput | string | null;
+    QEB_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+  };
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>;
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>;
@@ -37310,6 +39212,75 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>;
     _min?: NestedDateTimeNullableFilter<$PrismaModel>;
     _max?: NestedDateTimeNullableFilter<$PrismaModel>;
+  };
+
+  export type qualite_sites_baignadeCountOrderByAggregateInput = {
+    index?: SortOrder;
+    DEP_NOM?: SortOrder;
+    DEP_NUM?: SortOrder;
+    TYPE?: SortOrder;
+    COMMUNE?: SortOrder;
+    POINT?: SortOrder;
+    LONG?: SortOrder;
+    LAT?: SortOrder;
+    QEB_2013?: SortOrder;
+    QEB_2014?: SortOrder;
+    QEB_2015?: SortOrder;
+    QEB_2016?: SortOrder;
+    QEB_2017?: SortOrder;
+    QEB_2018?: SortOrder;
+    QEB_2019?: SortOrder;
+    QEB_2020?: SortOrder;
+  };
+
+  export type qualite_sites_baignadeAvgOrderByAggregateInput = {
+    index?: SortOrder;
+    LONG?: SortOrder;
+    LAT?: SortOrder;
+  };
+
+  export type qualite_sites_baignadeMaxOrderByAggregateInput = {
+    index?: SortOrder;
+    DEP_NOM?: SortOrder;
+    DEP_NUM?: SortOrder;
+    TYPE?: SortOrder;
+    COMMUNE?: SortOrder;
+    POINT?: SortOrder;
+    LONG?: SortOrder;
+    LAT?: SortOrder;
+    QEB_2013?: SortOrder;
+    QEB_2014?: SortOrder;
+    QEB_2015?: SortOrder;
+    QEB_2016?: SortOrder;
+    QEB_2017?: SortOrder;
+    QEB_2018?: SortOrder;
+    QEB_2019?: SortOrder;
+    QEB_2020?: SortOrder;
+  };
+
+  export type qualite_sites_baignadeMinOrderByAggregateInput = {
+    index?: SortOrder;
+    DEP_NOM?: SortOrder;
+    DEP_NUM?: SortOrder;
+    TYPE?: SortOrder;
+    COMMUNE?: SortOrder;
+    POINT?: SortOrder;
+    LONG?: SortOrder;
+    LAT?: SortOrder;
+    QEB_2013?: SortOrder;
+    QEB_2014?: SortOrder;
+    QEB_2015?: SortOrder;
+    QEB_2016?: SortOrder;
+    QEB_2017?: SortOrder;
+    QEB_2018?: SortOrder;
+    QEB_2019?: SortOrder;
+    QEB_2020?: SortOrder;
+  };
+
+  export type qualite_sites_baignadeSumOrderByAggregateInput = {
+    index?: SortOrder;
+    LONG?: SortOrder;
+    LAT?: SortOrder;
   };
 
   export type BigIntFieldUpdateOperationsInput = {

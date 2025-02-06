@@ -381,3 +381,22 @@ export type AOT40 = {
   Latitude: number | null;
   Longitude: number | null;
 };
+
+export type QualiteSitesBaignade = {
+  index: bigint;
+  DEP_NOM: string | null;
+  DEP_NUM: string | null;
+  TYPE: string | null;
+  COMMUNE: string | null;
+  POINT: string | null;
+  LONG: number | null;
+  LAT: number | null;
+  QEB_2013: string | null;
+  QEB_2014: string | null;
+  QEB_2015: string | null;
+  QEB_2016: string | null;
+  QEB_2017: string | null;
+  QEB_2018: string | null;
+  QEB_2019: string | null;
+  QEB_2020: string | null;
+};
