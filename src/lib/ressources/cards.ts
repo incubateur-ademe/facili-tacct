@@ -17,17 +17,17 @@ export const ressourcesTabs = {
     {
       id: 0,
       titre: 'Inconfort thermique'
-    },
-    {
-      id: 1,
-      titre: 'Thématique 2',
-      disabled: true
-    },
-    {
-      id: 2,
-      titre: 'Thématique 3',
-      disabled: true
     }
+    // {
+    //   id: 1,
+    //   titre: 'Thématique 2',
+    //   disabled: true
+    // },
+    // {
+    //   id: 2,
+    //   titre: 'Thématique 3',
+    //   disabled: true
+    // }
   ]
 };
 
@@ -245,6 +245,86 @@ export const cards = {
       description:
         'Approcher l’adaptation au changement climatique via une carte du territoire, fictive ou non : une manière sensible d’aborder le sujet.',
       link: '/ressources/articles'
+    },
+    {
+      id: 22,
+      tab: 'Vous voulez réviser un diagnostic connu',
+      titre:
+        "Evaluer la sensibilité au changement climatique en atelier - Retour d'expérience de la Vallée de Kaysersberg (68)",
+      tag: "Retour d'expérience",
+      description:
+        'Suite à l’analyse de l’exposition du territoire, évaluer sa sensibilité permet de comprendre la manière dont il sera affecté. La Vallée de Keysersberg a mené un atelier participatif.',
+      link: 'https://librairie.ademe.fr/changement-climatique/7906-evaluer-la-sensibilite-au-changement-climatique-en-atelier-retour-d-experience-de-la-vallee-de-kaysersberg-68.html'
+    },
+    {
+      id: 23,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        "Vous n'avez pas de diagnostic"
+      ],
+      titre:
+        "Sensibiliser au lancement de la démarche TACCT - Retour d'expérience de la CC de Ardennes Thiérache (08)",
+      tag: "Retour d'expérience",
+      description:
+        'La sensibilisation est un fort levier d’engagement dans une démarche TACCT, découvrez l’atelier mémoire utilisé par la CC Ardennes Thiérache pour mobiliser les élus communautaires et services.',
+      link: 'https://librairie.ademe.fr/changement-climatique/7905-sensibiliser-au-lancement-de-la-demarche-tacct-retour-d-experience-de-la-cc-de-ardennes-thierache-08.html'
+    },
+    {
+      id: 24,
+      tab: 'Vous voulez réviser un diagnostic connu',
+      titre:
+        "Des trajectoires d'adaptation pour prévenir les incertitudes du changement climatique – PETR du Pays Barrois (55)",
+      tag: "Retour d'expérience",
+      description:
+        'Les trajectoires d’adaptations permettent d’anticiper l’évolution climatique. Le PETR du Pays Barrois, c’est basé sur ces trajectoires pour la mise en oeuvre de groupements d’actions.',
+      link: 'https://librairie.ademe.fr/changement-climatique/7908-des-trajectoires-d-adaptation-pour-prevenir-les-incertitudes-du-changement-climatique-petr-du-pays-barrois-55.html'
+    },
+    {
+      id: 25,
+      tab: 'Vous découvrez le diagnostic pour la 1ère fois',
+      titre:
+        "Restituer le diagnostic de vulnérabilité - Retour d'expérience de la CC de la Vallée de Villé (67)",
+      tag: "Retour d'expérience",
+      description:
+        'Le diagnostic de vulnérabilité est le document idéal pour partager le constat territorial, la CC de la Vallée de Villé a organisé une restitution participative avec élus, agents et habitants.',
+      link: 'https://librairie.ademe.fr/changement-climatique/7911-restituer-le-diagnostic-de-vulnerabilite-retour-d-experience-de-la-cc-de-la-vallee-de-ville-67.html'
+    },
+    {
+      id: 26,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        "Vous n'avez pas de diagnostic",
+        'Vous découvrez le diagnostic pour la 1ère fois'
+      ],
+      titre:
+        "Diagnostic de vulnérabilité au réchauffement climatique d'un territoire rural du Nord Est de la France : Cœur du Pays Haut",
+      tag: "Retour d'expérience",
+      description:
+        'La démarche TACCT est une approche systémique de l’adaptation. Découvrez le contexte et les étapes clés pour la réalisation du diagnostic de vulnérabilité par la CC du Coeur du Pays Haut.',
+      link: 'https://librairie.ademe.fr/changement-climatique/7910-diagnostic-de-vulnerabilite-au-rechauffement-climatique-d-un-territoire-rural-du-nord-est-de-la-france-coeur-du-pays-haut.html'
+    },
+    {
+      id: 27,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        'Vous découvrez le diagnostic pour la 1ère fois'
+      ],
+      titre:
+        "Atelier de co-construction des actions face aux impacts du changement climatique d'Épernay Agglo Champagne (51)",
+      tag: "Retour d'expérience",
+      description:
+        'La co-construction est un important facteur de réussite d’une démarche TACCT. Epernay Agglo Champagne met en lumière dans cette fiche l’identification des enjeux et des actions liées.',
+      link: 'https://librairie.ademe.fr/changement-climatique/7909-atelier-de-co-construction-des-actions-face-aux-impacts-du-changement-climatique-d-epernay-agglo-champagne-51.html'
+    },
+    {
+      id: 28,
+      tab: 'Vous découvrez le diagnostic pour la 1ère fois',
+      titre:
+        "Présenter le diagnostic de l'exposition - Retour d'expérience du PNR des Vosges du Nord (67)",
+      tag: "Retour d'expérience",
+      description:
+        'Une facette du diagnostic de vulnérabilité, l’analyse de l’exposition. Découvrez l’usage des données climatiques actuelles et futures du PNR des Vosges du Nord',
+      link: 'https://librairie.ademe.fr/changement-climatique/7907-presenter-le-diagnostic-de-l-exposition-retour-d-experience-du-pnr-des-vosges-du-nord-67.html'
     }
   ],
   inconfortThermique: [
