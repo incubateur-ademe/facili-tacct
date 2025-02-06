@@ -108,6 +108,13 @@ export const themes = {
       facteur_sensibilite: "État des cours d'eau",
       risque: '',
       donnee: ''
+    },
+    {
+      id: 2,
+      titre: 'Qualité des eaux de baignade',
+      facteur_sensibilite: 'Qualité des eaux de baignade',
+      risque: '',
+      donnee: ''
     }
   ],
   gestionRisques: [
