@@ -93,8 +93,6 @@ export const MapQualiteEauxBaignade = (props: {
     };
   });
 
-  console.log('qualiteEauxmap', qualiteEauxmap);
-
   const polygonTerritoire = commune
     ? turf.multiPolygon(commune?.geometry.coordinates as Position[][][])
     : turf.multiPolygon(
@@ -231,7 +229,7 @@ export const MapQualiteEauxBaignade = (props: {
                               ? 'Suffisant'
                               : el.qualite2020 === 'I'
                                 ? 'Insuffisant'
-                                : 'Passable'}
+                                : 'Pas de données disponibles'}
                       </p>
                     </div>
                   </div>
