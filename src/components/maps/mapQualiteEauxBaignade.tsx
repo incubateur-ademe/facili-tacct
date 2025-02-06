@@ -2,6 +2,7 @@
 
 import { CommunesIndicateursDto, EpciContoursDto } from '@/lib/dto';
 import { QualiteSitesBaignade } from '@/lib/postgres/models';
+
 import {
   GeoJSON,
   MapContainer,
@@ -25,18 +26,18 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 import './maps.css';
 // documentation : https://akursat.gitbook.io/marker-cluster/api
 
-const color = (valeur: number) => {
-  return valeur > 36000
-    ? '#7A49BE'
-    : valeur > 27000
-      ? '#A67FE1'
-      : valeur > 18000
-        ? '#DB7BDD'
-        : valeur > 12000
-          ? '#FF9699'
-          : valeur > 6000
-            ? '#00C2CC'
-            : '#5EEDF3';
+const qualiteIcon = (qualite: string | undefined) => {
+  return qualite === 'E'
+    ? '/qualite_baignade_excellent.svg'
+    : qualite === 'B'
+      ? '/qualite_baignade_bon.svg'
+      : qualite === 'S'
+        ? '/qualite_baignade_suffisant.svg'
+        : qualite === 'I'
+          ? '/qualite_baignade_insuffisant.svg'
+          : qualite === 'P'
+            ? '/marker_icon_blue.svg'
+            : '/marker_icon_blue.svg';
 };
 
 const getCentroid = (arr: number[][]) => {
@@ -71,19 +72,16 @@ export const MapQualiteEauxBaignade = (props: {
     return {
       coordinates: [qualite.LAT, qualite.LONG],
       nomSite: qualite.POINT,
-      qualite2013: qualite.QEB_2013,
-      qualite2014: qualite.QEB_2014,
-      qualite2015: qualite.QEB_2015,
-      qualite2016: qualite.QEB_2016,
-      qualite2017: qualite.QEB_2017,
-      qualite2018: qualite.QEB_2018,
-      qualite2019: qualite.QEB_2019,
-      qualite2020: qualite.QEB_2020,
+      qualite2013: qualite.QEB_2013?.slice(-1),
+      qualite2014: qualite.QEB_2014?.slice(-1),
+      qualite2015: qualite.QEB_2015?.slice(-1),
+      qualite2016: qualite.QEB_2016?.slice(-1),
+      qualite2017: qualite.QEB_2017?.slice(-1),
+      qualite2018: qualite.QEB_2018?.slice(-1),
+      qualite2019: qualite.QEB_2019?.slice(-1),
+      qualite2020: qualite.QEB_2020?.slice(-1),
       icon: L.divIcon({
-        html: `
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="9" cy="9" r="9" fill="red" />
-          </svg>`,
+        html: `<div><img src=${qualiteIcon(qualite.QEB_2020?.slice(-1))} /></div>`,
         className: 'svg-marker',
         iconSize: [24, 24],
         iconAnchor: [0, 0]
@@ -94,6 +92,8 @@ export const MapQualiteEauxBaignade = (props: {
       })
     };
   });
+
+  console.log('qualiteEauxmap', qualiteEauxmap);
 
   const polygonTerritoire = commune
     ? turf.multiPolygon(commune?.geometry.coordinates as Position[][][])
@@ -171,7 +171,7 @@ export const MapQualiteEauxBaignade = (props: {
       <MarkerClusterGroup
         chunkedLoading
         removeOutsideVisibleBounds={true}
-        maxClusterRadius={155}
+        maxClusterRadius={1}
         iconCreateFunction={createClusterCustomIcon}
         polygonOptions={{
           color: 'transparent',
@@ -223,6 +223,15 @@ export const MapQualiteEauxBaignade = (props: {
                     <div className="flex flex-row justify-between p-0 gap-2 items-center w-max">
                       <p className="text-[0.75rem] font-marianne font-[400]">
                         {el.nomSite} :{' '}
+                        {el.qualite2020 === 'E'
+                          ? 'Excellent'
+                          : el.qualite2020 === 'B'
+                            ? 'Bon'
+                            : el.qualite2020 === 'S'
+                              ? 'Suffisant'
+                              : el.qualite2020 === 'I'
+                                ? 'Insuffisant'
+                                : 'Passable'}
                       </p>
                     </div>
                   </div>
