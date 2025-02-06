@@ -1,5 +1,5 @@
+import { GetRessourceEau } from '@/lib/queries/databases/ressourcesEau';
 import { GetCommunes, GetEpci } from '@/lib/queries/postgis/cartographie';
-import { GetRessourceEau } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/utils/themes';
 import { Suspense } from 'react';
 import styles from '../donnees.module.scss';

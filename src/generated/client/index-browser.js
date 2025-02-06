@@ -501,6 +501,25 @@ exports.Prisma.UsersScalarFieldEnum = {
   role: 'role'
 };
 
+exports.Prisma.Qualite_sites_baignadeScalarFieldEnum = {
+  index: 'index',
+  DEP_NOM: 'DEP_NOM',
+  DEP_NUM: 'DEP_NUM',
+  TYPE: 'TYPE',
+  COMMUNE: 'COMMUNE',
+  POINT: 'POINT',
+  LONG: 'LONG',
+  LAT: 'LAT',
+  QEB_2013: 'QEB_2013',
+  QEB_2014: 'QEB_2014',
+  QEB_2015: 'QEB_2015',
+  QEB_2016: 'QEB_2016',
+  QEB_2017: 'QEB_2017',
+  QEB_2018: 'QEB_2018',
+  QEB_2019: 'QEB_2019',
+  QEB_2020: 'QEB_2020'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -534,7 +553,8 @@ exports.Prisma.ModelName = {
   north_star_metric: 'north_star_metric',
   etat_cours_d_eau: 'etat_cours_d_eau',
   aot_40: 'aot_40',
-  users: 'users'
+  users: 'users',
+  qualite_sites_baignade: 'qualite_sites_baignade'
 };
 
 /**

@@ -1,5 +1,8 @@
+import {
+  GetQualiteEauxBaignade,
+  GetRessourceEau
+} from '@/lib/queries/databases/ressourcesEau';
 import { GetCommunes, GetEpci } from '@/lib/queries/postgis/cartographie';
-import { GetRessourceEau } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/utils/themes';
 import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
@@ -11,6 +14,7 @@ const RessourcesEau = async (props: { searchParams: SearchParams }) => {
   const dbRessourcesEau = await GetRessourceEau(codepci);
   const carteCommunes = await GetCommunes(codepci);
   const epciContours = await GetEpci(codepci);
+  const qualiteEauxBaignadeByDepmt = await GetQualiteEauxBaignade(codepci);
 
   return (
     <div className={styles.container}>
@@ -20,6 +24,7 @@ const RessourcesEau = async (props: { searchParams: SearchParams }) => {
           ressourcesEau={dbRessourcesEau}
           carteCommunes={carteCommunes}
           epciContours={epciContours}
+          qualiteEauxBaignade={qualiteEauxBaignadeByDepmt}
         />
       </Suspense>
     </div>

@@ -445,11 +445,6 @@ model aot_40 {
   @@schema("databases")
 }
 
-/// We could not retrieve columns for the underlying table. Either it has none or you are missing rights to see them. Please check your privileges.
-// model bdhi_structure {
-// @@schema("databases")
-// }
-
 model users {
   pk              Int       @id @default(autoincrement())
   email           String    @unique(map: "email") @db.VarChar(256)
@@ -460,4 +455,31 @@ model users {
   role            String    @db.VarChar(8)
 
   @@schema("ressources")
+}
+
+/// We could not retrieve columns for the underlying table. Either it has none or you are missing rights to see them. Please check your privileges.
+// model bdhi_structure {
+// @@schema("databases")
+// }
+
+model qualite_sites_baignade {
+  index    BigInt  @id
+  DEP_NOM  String?
+  DEP_NUM  String?
+  TYPE     String?
+  COMMUNE  String?
+  POINT    String?
+  LONG     Float?
+  LAT      Float?
+  QEB_2013 String?
+  QEB_2014 String?
+  QEB_2015 String?
+  QEB_2016 String?
+  QEB_2017 String?
+  QEB_2018 String?
+  QEB_2019 String?
+  QEB_2020 String?
+
+  @@index([index], map: "ix_qualite_sites_baignade_index")
+  @@schema("databases")
 }
