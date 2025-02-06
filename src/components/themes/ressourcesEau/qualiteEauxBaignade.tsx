@@ -1,7 +1,12 @@
 'use client';
 
+import qualiteInconnu from '@/assets/icons/marker_icon_blue.svg';
+import qualiteBon from '@/assets/icons/qualite_baignade_bon.svg';
+import qualiteExcellent from '@/assets/icons/qualite_baignade_excellent.svg';
+import qualiteInsuffisant from '@/assets/icons/qualite_baignade_insuffisant.svg';
+import qualiteSuffisant from '@/assets/icons/qualite_baignade_suffisant.svg';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
-import { LegendQualiteSitesBaignade } from '@/components/maps/legends/legendQualiteSitesBaignade';
+import { LegendCompIcons } from '@/components/maps/legends/legendComp';
 import { MapQualiteEauxBaignade } from '@/components/maps/mapQualiteEauxBaignade';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EpciContoursMapper } from '@/lib/mapper/epci';
@@ -13,6 +18,29 @@ import {
 import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { useSearchParams } from 'next/navigation';
 import styles from './ressourcesEau.module.scss';
+
+const legends = [
+  {
+    value: 'Excellent',
+    icon: qualiteExcellent
+  },
+  {
+    value: 'Bon',
+    icon: qualiteBon
+  },
+  {
+    value: 'Suffisant',
+    icon: qualiteSuffisant
+  },
+  {
+    value: 'Insuffisant',
+    icon: qualiteInsuffisant
+  },
+  {
+    value: 'Inconnu',
+    icon: qualiteInconnu
+  }
+];
 
 export const QualiteEauxBaignade = (props: {
   qualiteEauxBaignade: QualiteSitesBaignade[];
@@ -95,7 +123,7 @@ export const QualiteEauxBaignade = (props: {
                 className={styles.legend}
                 style={{ width: 'auto', justifyContent: 'center' }}
               >
-                <LegendQualiteSitesBaignade />
+                <LegendCompIcons legends={legends} />
               </div>
               <p style={{ padding: '1em', margin: '0' }}>Source : </p>
             </div>
