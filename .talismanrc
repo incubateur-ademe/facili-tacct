@@ -30,17 +30,17 @@ fileignoreconfig:
 - filename: src/lib/auth/authOptions.ts
   checksum: e7fb99bb2be5c34c6c501952defa547c6ac4383bf140dcbcbbeaf14336b24cca
 - filename: src/generated/client/package.json
-  checksum: d82cb3cf3a17cb8548fff6e78d2aa9eeaed84441faeb082b17dd11e0c2c59940
+  checksum: 9b8ec2f8b92bb31d3f7d58ad802b87c4aa7fbd258407f7cf059d47459c889f66
 - filename: src/generated/client/edge.js
-  checksum: 79d314950e203e54eaf5d34c5755e5ab0f73dac2460e5769b8f5355949bc8be6
+  checksum: 748ebb7a2ecfc87324319a30a2a853f943f24b23831b5ada9d7c7539628c25b5
 - filename: src/generated/client/index.js
-  checksum: d7a4c3db88ef2f3ea805199d6b0ab8ca42f152db66a024030fe23438a4e0c8b7
+  checksum: b3c3d76c364a7343eb18ac2295f25ef9c2aff4fbf83f78b056140c7ec2220ee0
+- filename: src/generated/client/index.d.ts
+  checksum: 357480c1e23292d7cf1ad8d465f3976f97958880ec02c58beece66a244c6129e
 - filename: pnpm-lock.yaml
   checksum: 0b9c776f532aa2789aaaa0f83b48015182870f8a6bf52c2ed6e4e3d7ba2bad7b
 - filename: src/generated/client/index-browser.js
   checksum: f95882ba525fe9e031bc1d743e0165d3198884c0f2ea9e6baf5d51737dfbc498
 - filename: src/generated/client/wasm.js
   checksum: 4e8fa0499f06b907b165714b6e48bd15a2491170e1ea45101203a0c25616d8e5
-- filename: src/generated/client/index.d.ts
-  checksum: 540283b47b02088324debb737c8d3be215d1899efb630d58e986d2ff9c37ab92
 version: ""
