@@ -88,7 +88,10 @@ const EtatQualiteCoursDeau = (props: {
                 carte ci-contre reflète l’état écologique des cours d’eau
                 présents sur votre territoire.
               </p>
-              <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
+              <CustomTooltip
+                title={title}
+                texte="Sur quoi repose ce classement ?"
+              />
             </div>
             <div className="px-4">
               <p>
