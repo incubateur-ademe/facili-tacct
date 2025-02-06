@@ -21,7 +21,7 @@ const PrelevementEauDataViz = ({
 
   return (
     <div className={styles.graphWrapper}>
-      <div className={styles.prelevementEauGraphTitleWrapper}>
+      <div className={styles.ressourcesEauGraphTitleWrapper}>
         <h2>Prélèvements en eau par usages</h2>
         <SubTabs
           data={['Répartition', 'Évolution']}
@@ -33,7 +33,7 @@ const PrelevementEauDataViz = ({
         <PrelevementEauProgressBars ressourcesEau={ressourcesEau} />
       ) : (
         <>
-          <div className={styles.prelevementEauSliderWrapper}>
+          <div className={styles.ressourcesEauSliderWrapper}>
             <RangeSlider
               firstValue={2008}
               lastValue={2020}
