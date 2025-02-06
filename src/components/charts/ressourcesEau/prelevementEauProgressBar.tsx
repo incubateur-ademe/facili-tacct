@@ -146,7 +146,7 @@ const PrelevementEauProgressBars = ({
   const departement = ressourcesEau[0].departement;
 
   return (
-    <div className={styles.prelevementEauWrapper}>
+    <div className={styles.ressourcesEauWrapper}>
       {collectivite && data.find((e) => e.sumCollectivite !== 0) ? (
         <>
           {data
