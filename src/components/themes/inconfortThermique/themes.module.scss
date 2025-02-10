@@ -54,3 +54,12 @@
         // }
     }
 }
+
+.legend {
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+    padding: 1rem;
+    width: fit-content;
+    border-bottom: solid 1px #d6d6f0;
+}

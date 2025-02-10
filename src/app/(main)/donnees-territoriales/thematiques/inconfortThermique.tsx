@@ -1,17 +1,11 @@
-import { Loader } from '@/components/loader';
 import { NoticeComp } from '@/dsfr/base/Notice';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { GetCollectivite } from '@/lib/queries/searchBar';
 import { GetInconfortThermiqueDepartment } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/utils/themes';
-import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
 import InconfortThermiqueComp from './inconfortThermiqueComp';
-
-const DynamicPageComp = dynamic(() => import('./inconfortThermiqueComp'), {
-  loading: () => <Loader />
-});
 
 const InconfortThermique = async (props: { searchParams: SearchParams }) => {
   const { codepci, codgeo } = await props.searchParams;
@@ -38,7 +32,6 @@ const InconfortThermique = async (props: { searchParams: SearchParams }) => {
             inconfortThermique={dbInconfortThermique!}
             carteCommunes={carteCommunes}
             collectivite={collectivite!}
-            // LCZBayonne={LCZBayonne}
           />
         </Suspense>
       </div>

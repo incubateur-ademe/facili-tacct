@@ -40,8 +40,8 @@ export const ConsommationEspacesNAF = (props: {
     <div>
       <p>
         Le suivi de cet indicateur est réalisé par le CEREMA dans le cadre de
-        l’objectif “zéro artificialisation nette” de la loi « Climat et
-        résilience ». La consommation d’espaces NAF est calculée à partir des
+        l’objectif “zéro artificialisation nette” de la loi « Climat et
+        résilience ». La consommation d’espaces NAF est calculée à partir des
         fichiers fonciers entre 2009 et 2023. Les données sont traitées pour
         donner des tendances de façon uniforme sur toute la France ;
         ponctuellement, il est possible que les documents de planification de
@@ -90,7 +90,7 @@ export const ConsommationEspacesNAF = (props: {
                 logements par hectare
               </p>
               <p>
-                ⇒ 7 820 communes consomment de l’espace alors qu’elles perdent
+                ⇒ 7 820 communes consomment de l’espace alors qu’elles perdent
                 des ménages : une consommation d’ENAF déconnectée des besoins
                 réels des territoires !
               </p>
