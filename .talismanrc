@@ -45,4 +45,6 @@ fileignoreconfig:
   checksum: 4e8fa0499f06b907b165714b6e48bd15a2491170e1ea45101203a0c25616d8e5
 - filename: src/components/maps/legends/legendComp.tsx
   checksum: 44a1d880689a63cb51bd7fb9a79ebbe41dbb64c56357469a008e85e282b10e7f
+- filename: src/components/themes/gestionRisques/catnat.tsx
+  checksum: 7adc680c52851b8984cc5cda440ab2e5df7ca7675a2a0196f1484fbf03dfb458
 version: ""
