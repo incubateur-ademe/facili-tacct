@@ -149,25 +149,27 @@ export const GrandAgeIsolement = (props: {
             <div className={styles.explicationWrapper}>
               {codgeo ? (
                 <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                  En 2020, <b>{yData.over_80_2020_percent}%</b> de la population
-                  de votre collectivité est constitué de personnes âgées de plus
-                  de 80 ans (soit{' '}
+                  En 2020, <b>{yData.over_80_2020_percent} %</b> de la
+                  population de votre collectivité est constitué de personnes
+                  âgées de plus de 80 ans (soit{' '}
                   <b>{sumProperty(grandAgeCollectivite, 'over_80_sum_2020')}</b>{' '}
                   personnes).
                   <br></br>
-                  Ce taux est de <b>{yData.over_80_2020_percent_epci}%</b> dans
+                  Ce taux est de <b>{yData.over_80_2020_percent_epci} %</b> dans
                   votre EPCI.
                 </p>
               ) : (
                 <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                  En 2020, <b>{yData.over_80_2020_percent}%</b> de la population
-                  de votre collectivité est constitué de personnes âgées de plus
-                  de 80 ans (soit{' '}
+                  En 2020, <b>{yData.over_80_2020_percent} %</b> de la
+                  population de votre collectivité est constitué de personnes
+                  âgées de plus de 80 ans (soit{' '}
                   <b>{sumProperty(grandAgeCollectivite, 'over_80_sum_2020')}</b>{' '}
                   personnes).
                   <br></br>
-                  Ce taux est de <b>{yData.over_80_2020_percent_dptmt}%</b> dans
-                  votre département.
+                  Ce taux est de <b>
+                    {yData.over_80_2020_percent_dptmt} %
+                  </b>{' '}
+                  dans votre département.
                 </p>
               )}
               <CustomTooltip title={methodeCalcul} />
@@ -193,24 +195,24 @@ export const GrandAgeIsolement = (props: {
               </p>
               <p>
                 ⇒ C’est toujours beaucoup trop !{' '}
-                <b>33 000 décès ont été attribués à la chaleur</b> entre 2014 et
-                2022, dont <b>23 000</b> chez les personnes âgées de 75 ans et
+                <b>33 000 décès ont été attribués à la chaleur</b> entre 2014 et
+                2022, dont <b>23 000</b> chez les personnes âgées de 75 ans et
                 plus.
               </p>
               <p>
-                ⇒ <b>28% seulement des décès</b> liés à la chaleur se produisent
-                pendant les canicules, qui ne représente que 6% des jours de
-                l’été. Soyons vigilants aussi en dehors des périodes de
+                ⇒ <b>28 % seulement des décès</b> liés à la chaleur se
+                produisent pendant les canicules, qui ne représente que 6 % des
+                jours de l’été. Soyons vigilants aussi en dehors des périodes de
                 canicule.
               </p>
               <p>
-                ⇒Tous concernés : les personnes de moins de 75 ans, c’est 71%
+                ⇒Tous concernés : les personnes de moins de 75 ans, c’est 71 %
                 des consultations SOS Médecins en lien avec la chaleur entre le
                 1er juin et le 15 septembre 2022, et un tiers des décès liés à
                 la chaleur entre 2014 et 2022.
               </p>
               <p>
-                ⇒ Seuls 12 % des Français se considèrent fragiles ou très
+                ⇒ Seuls 12 % des Français se considèrent fragiles ou très
                 fragiles pendant une canicule. La perception du risque personnel
                 lié à la chaleur est faible.
               </p>

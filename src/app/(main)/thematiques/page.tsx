@@ -22,7 +22,7 @@ const Thematiques = () => {
         />
         <h1>Quelle thématique vous intéresse ?</h1>
         {/* <NoticeComp title="Les thématiques suivantes ont été choisies selon " /> */}
-        <Cards />µ
+        <Cards />
       </ClientOnly>
     </Container>
   );
