@@ -41,8 +41,8 @@ export const ConsommationEspacesNAF = (props: {
   const title = (
     <div>
       Le suivi de cet indicateur est réalisé par le CEREMA dans le cadre de
-      l’objectif “zéro artificialisation nette” de la loi « Climat et résilience
-      ». La consommation d’espaces NAF est calculée à partir des fichiers
+      l’objectif “zéro artificialisation nette” de la loi « Climat et résilience
+       ». La consommation d’espaces NAF est calculée à partir des fichiers
       fonciers entre 2009 et 2023, présentée ici toute destination confondue.
       Les données sont traitées pour donner des tendances de façon uniforme sur
       toute la France ; ponctuellement, il est possible que les documents de
@@ -78,7 +78,7 @@ export const ConsommationEspacesNAF = (props: {
                   La consommation d’ENAF a des conséquences dramatiques pour le
                   climat :
                 </p>
-                <ul>
+                <ul className="text-[1rem] leading-[1.5rem]">
                   <li>
                     Les sols perdent leur rôle de puits de carbone et leur
                     capacité d’infiltration ce qui perturbe le cycle naturel de
@@ -94,7 +94,7 @@ export const ConsommationEspacesNAF = (props: {
                 </ul>
               </div>
               <p>
-                ⇒ 24 000 hectares par an d’espaces naturels, agricoles et
+                ⇒ 24 000 hectares par an d’espaces naturels, agricoles et
                 forestiers sont consommés depuis dix ans, soit l’équivalent de
                 10 fois la superficie de Marseille.
               </p>

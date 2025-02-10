@@ -108,7 +108,7 @@ const AOT40Dataviz = (props: {
               >
                 <LegendCompColor legends={legends} />
               </div>
-              <p style={{ padding: '1em', margin: '0' }}>Source : Géodair</p>
+              <p style={{ padding: '1em', margin: '0' }}>Source : Géod’Air</p>
             </div>
           </div>
         </div>
