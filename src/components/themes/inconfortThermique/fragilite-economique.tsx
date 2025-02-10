@@ -2,12 +2,35 @@ import { useSearchParams } from 'next/navigation';
 
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
-import LegendInconfortThermique from '@/components/maps/legends/legendInconfortThermique';
+import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { Map } from '@/components/maps/map';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes } from '@/lib/postgres/models';
 import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import styles from './themes.module.scss';
+
+const legends = [
+  {
+    value: '> 30 %',
+    color: '#FF5E54'
+  },
+  {
+    value: '20 % - 30 %',
+    color: '#FFBD00'
+  },
+  {
+    value: '10 % - 20 %',
+    color: '#FFFA6A'
+  },
+  {
+    value: '0 - 10 %',
+    color: '#D5F4A3'
+  },
+  {
+    value: '0 %',
+    color: '#5CFF54'
+  }
+];
 
 export const FragiliteEconomique = ({
   carteCommunes
@@ -38,13 +61,13 @@ export const FragiliteEconomique = ({
       <div>La précarité énergétique liée au logement concerne : </div>
       <br></br>
       <div>
-        - les ménages des 3 premiers déciles(*) c'est-à-dire les 30% de la
+        - les ménages des 3 premiers déciles(*) c'est-à-dire les 30 % de la
         population ayant les revenus les plus modestes,
       </div>
       <div>
-        - parmi ces 30%, les ménages qui consacrent plus de 8% de leurs revenus
-        aux dépenses énergétiques liées à leur logement (chauffage, eau chaude,
-        et ventilation).
+        - parmi ces 30 %, les ménages qui consacrent plus de 8 % de leurs
+        revenus aux dépenses énergétiques liées à leur logement (chauffage, eau
+        chaude, et ventilation).
       </div>
       <br></br>
       <div>
@@ -67,16 +90,16 @@ export const FragiliteEconomique = ({
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       La part des ménages en situation de précarité énergétique
                       logement sur votre territoire est de{' '}
-                      <b>{(100 * precariteCommune).toPrecision(3)}%. </b>
+                      <b>{(100 * precariteCommune).toPrecision(3)} %. </b>
                       Ce taux est de{' '}
-                      <b>{(100 * precariteLogEpci).toPrecision(3)}%</b> dans
+                      <b>{(100 * precariteLogEpci).toPrecision(3)} %</b> dans
                       votre EPCI.
                     </p>
                   ) : (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       La part des ménages en situation de précarité énergétique
                       logement sur votre territoire est de{' '}
-                      <b>{(100 * precariteLogEpci).toPrecision(3)}%. </b>
+                      <b>{(100 * precariteLogEpci).toPrecision(3)} %. </b>
                     </p>
                   )}
                   <CustomTooltip
@@ -100,9 +123,10 @@ export const FragiliteEconomique = ({
                     elle est un enjeu de santé publique et de justice sociale.
                   </p>
                   <p>
-                    En 2024 : <br></br>- <b>55%</b> des Français déclarent avoir
-                    souffert d’un excès de chaleur en été.<br></br>- <b>79 %</b>{' '}
-                    des Français ont dû restreindre leur chauffage.<br></br>
+                    En 2024 : <br></br>- <b>55 %</b> des Français déclarent
+                    avoir souffert d’un excès de chaleur en été.<br></br>-{' '}
+                    <b>79 %</b> des Français ont dû restreindre leur chauffage.
+                    <br></br>
                     <br></br>
                     En 2023 : <br></br>- plus d’un million de ménages ont subi
                     une intervention de leur fournisseur d’énergie pour cause
@@ -117,7 +141,7 @@ export const FragiliteEconomique = ({
                   </p>
                   <p>
                     Protéger les populations précaires des fortes chaleurs est
-                    la mesure n°14 du PNACC 3.
+                    la mesure n°14 du PNACC 3.
                   </p>
                 </div>
               </div>
@@ -129,8 +153,14 @@ export const FragiliteEconomique = ({
                       commune au sein de l'EPCI
                     </b>
                   </p>
-                  <LegendInconfortThermique data={'precarite_log'} />
+                  {/* <LegendInconfortThermique data={'precarite_log'} /> */}
                   <Map data={'precarite_log'} carteCommunes={communesMap} />
+                  <div
+                    className={styles.legend}
+                    style={{ width: 'auto', justifyContent: 'center' }}
+                  >
+                    <LegendCompColor legends={legends} />
+                  </div>
                   <p style={{ padding: '1em', margin: '0' }}>
                     Source : Observation de la précarité énergétique (ONPE),
                     GEODIP

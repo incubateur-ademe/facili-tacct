@@ -8,11 +8,12 @@ import { useSearchParams } from 'next/navigation';
 
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
-import { Map } from '@/components/maps/CLC';
+import { CLCMap } from '@/components/maps/CLC';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { CLC, InconfortThermique } from '@/lib/postgres/models';
 
 import GraphNotFound from '@/assets/images/data_not_found.svg';
+import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { VegetalisationDto } from '@/lib/dto';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
@@ -37,23 +38,23 @@ const sumProperty = (
 
 const legends = [
   {
-    name: 'Territoires artificialisés',
+    value: 'Territoires artificialisés',
     color: '#ffff99'
   },
   {
-    name: 'Territoires agricoles',
+    value: 'Territoires agricoles',
     color: '#fdc086'
   },
   {
-    name: 'Zones végétalisées et milieux semi-naturels',
+    value: 'Zones végétalisées et milieux semi-naturels',
     color: '#7fc97f'
   },
   {
-    name: 'Zones humides',
+    value: 'Zones humides',
     color: '#beaed4'
   },
   {
-    name: 'Surfaces en eau',
+    value: 'Surfaces en eau',
     color: '#386cb0'
   }
 ];
@@ -102,14 +103,14 @@ const Vegetalisation = (props: {
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       Dans la commune de{' '}
                       {vegetalisationCollectivite[0]?.libelle_geographique},{' '}
-                      <b>{Round(foret_percent, 1)}%</b> du territoire est de la
+                      <b>{Round(foret_percent, 1)} %</b> du territoire est de la
                       forêt ou des espaces semi-naturels. Cela correspond à{' '}
                       <b>{Round(foret_sum, 1)}</b> hectares.
                     </p>
                   ) : (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       Dans l'EPCI {vegetalisationCollectivite[0]?.libelle_epci},{' '}
-                      <b>{Round(foret_percent, 1)}%</b> du territoire est de la
+                      <b>{Round(foret_percent, 1)} %</b> du territoire est de la
                       forêt ou des espaces semi-naturels. Cela correspond à{' '}
                       <b>{Round(foret_sum, 1)}</b> hectares.
                     </p>
@@ -139,20 +140,12 @@ const Vegetalisation = (props: {
                     <p style={{ padding: '1em', margin: '0' }}>
                       <b>Cartographie des différents types de sols</b>
                     </p>
-                    <Map clc={clc} />
-                    <div className={styles.vegetalisationLegendWrapper}>
-                      {legends.map((e) => (
-                        <div
-                          key={e.name}
-                          className={styles.legendVegetalisation}
-                        >
-                          <div
-                            className={styles.colorVegetalisation}
-                            style={{ backgroundColor: e.color }}
-                          />
-                          <p className={styles.legendText}>{e.name}</p>
-                        </div>
-                      ))}
+                    <CLCMap clc={clc} />
+                    <div
+                      className={styles.legend}
+                      style={{ width: 'auto', justifyContent: 'center' }}
+                    >
+                      <LegendCompColor legends={legends} />
                     </div>
                     <p style={{ padding: '1em', margin: '0' }}>
                       Source : CORINE Land Cover

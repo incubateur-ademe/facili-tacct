@@ -1,7 +1,6 @@
 'use client';
 
-import '../inconfortThermique/vegetalisation-legend.css';
-import styles from './gestionRisques.module.scss';
+import styles from '../../themes/gestionRisques/gestionRisques.module.scss';
 
 const LegendItem = (props: { text: string; color: string }) => {
   const { text, color } = props;

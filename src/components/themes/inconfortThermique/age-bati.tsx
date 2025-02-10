@@ -102,13 +102,13 @@ export const AgeBati = (props: {
                 <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                   Dans la commune de{' '}
                   {ageBatiCollectivite[0]?.libelle_geographique},{' '}
-                  <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
+                  <b>{constructionBefore2006?.toFixed(1)} %</b> des résidences
                   principales sont construites avant 2006.
                 </p>
               ) : (
                 <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                   Dans l'EPCI {ageBatiCollectivite[0]?.libelle_epci},{' '}
-                  <b>{constructionBefore2006?.toFixed(1)}%</b> des résidences
+                  <b>{constructionBefore2006?.toFixed(1)} %</b> des résidences
                   principales sont construites avant 2006.
                 </p>
               )}

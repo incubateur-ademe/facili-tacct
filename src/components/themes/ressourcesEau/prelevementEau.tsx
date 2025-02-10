@@ -129,18 +129,24 @@ export const PrelevementEau = (props: {
               <p>
                 - - - - <br></br>
                 Le Plan Eau agit pour atteindre -10% d’eau prélevée d’ici 2030 :
-                <br></br>- la mesure 11 prévoit la fin progressive des
-                autorisations de prélèvement non soutenables dans les bassins en
-                déséquilibre (au fur et à mesure du renouvellement des
-                autorisations) ;<br></br>- la mesure 12 prévoit l’installation
-                obligatoire de compteurs connectés pour les prélèvements
-                importants (généralisation prévue d'ici 2027) ;<br></br>- la
-                mesure 13 prévoit le renforcement de l'encadrement des petits
-                prélèvements domestiques.
+                <li>
+                  la mesure 11 prévoit la fin progressive des autorisations de
+                  prélèvement non soutenables dans les bassins en déséquilibre
+                  (au fur et à mesure du renouvellement des autorisations) ;
+                </li>
+                <li>
+                  la mesure 12 prévoit l’installation obligatoire de compteurs
+                  connectés pour les prélèvements importants (généralisation
+                  prévue d'ici 2027) ;
+                </li>
+                <li>
+                  la mesure 13 prévoit le renforcement de l'encadrement des
+                  petits prélèvements domestiques.
+                </li>
               </p>
               <p>
                 Plan National d’Adaptation au Changement Climatique (PNACC 3) :
-                <br></br>- La mesure 21 prévoit une étude spécifique sur les
+                <br></br>La mesure 21 prévoit une étude spécifique sur les
                 vulnérabilités de l'approvisionnement en eau potable dans les
                 départements et régions d'Outre-mer.
               </p>
