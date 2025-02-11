@@ -56,18 +56,9 @@ export const QualiteEauxBaignade = (props: {
 
   const title = (
     <>
-      <div>
-        L'indicateur représente le volume annuel d'eau prélevée (pour les
-        prélèvements soumis à redevance), par grands usages. Cependant, les
-        usages exonérés de redevance (aquaculture, géothermie, lutte antigel de
-        cultures pérennes, réalimentation de milieux naturels, etc.) ne figurent
-        pas dans la base de données.
-      </div>
+      <div>L'indicateur représente l</div>
       <br></br>
-      <div>
-        En outre-mer, la lutte contre les incendies et la production d’énergie
-        renouvelable sont également exonérées.
-      </div>
+      <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed</div>
     </>
   );
 
