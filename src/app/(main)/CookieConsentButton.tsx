@@ -1,7 +1,18 @@
 'use client';
 
-import { type PropsWithChildren } from 'react';
+import CookieModal from '@/app/(main)/cookieModal';
+import { createModal } from '@codegouvfr/react-dsfr/Modal';
 
-export const CookieConsentButton = ({ children }: PropsWithChildren) => (
-  <button onClick={() => console.log('====== CLICK')}>{children}</button>
-);
+const modal = createModal({
+  id: 'cookie-modal',
+  isOpenedByDefault: false
+});
+
+export const CookieConsentButton = () => {
+  return (
+    <>
+      <CookieModal modal={modal} />
+      <button onClick={() => modal.open()}>ICI</button>
+    </>
+  );
+};
