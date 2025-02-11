@@ -8,7 +8,7 @@ import dynamic from 'next/dynamic';
 import { Suspense, type PropsWithChildren } from 'react';
 import { NextAppDirEmotionCacheProvider } from 'tss-react/next/appDir';
 import { config } from '../../config';
-import { Banner } from './banner';
+import { CookieBanner } from './cookieBanner';
 import { sharedMetadata } from './shared-metadata';
 
 const footerId = 'footer';
@@ -60,26 +60,18 @@ const LayoutMain = ({ children }: PropsWithChildren) => {
             linkProps: { href: '/politique-de-confidentialite' }
           },
           {
+            text: 'Politique des cookies',
+            linkProps: { href: '/politique-des-cookies' }
+          },
+          {
             ...headerFooterDisplayItem,
             iconId: 'fr-icon-theme-fill'
           }
         ]}
         termsLinkProps={{ href: '/mentions-legales' }}
         homeLinkProps={{ href: '/', title: 'Accueil' }}
-        license={
-          <>
-            Sauf mention contraire, tous les contenus de ce site sont sous{' '}
-            <a
-              href={`${config.repositoryUrl}/main/LICENSE`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              licence Apache 2.0
-            </a>
-          </>
-        }
       />
-      <Banner />
+      <CookieBanner />
     </NextAppDirEmotionCacheProvider>
   );
 };

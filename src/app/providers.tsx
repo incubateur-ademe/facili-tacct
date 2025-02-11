@@ -2,7 +2,7 @@
 import posthog from 'posthog-js';
 import { PostHogProvider } from 'posthog-js/react';
 import { ReactNode, useEffect } from 'react';
-import { cookieConsentGiven } from './(main)/banner';
+import { cookieConsentGiven } from './(main)/cookieBanner';
 
 export const PHProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
