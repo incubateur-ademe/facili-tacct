@@ -1,0 +1,21 @@
+.cookieConsentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 3rem 0 0;
+    border-top: 1px solid #000091;
+}
+
+.cookieConsentWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0;
+        padding: 0 0 1rem;
+    }
+}
