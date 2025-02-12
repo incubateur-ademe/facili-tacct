@@ -11,23 +11,23 @@ import styles from './biodiversite.module.scss';
 const legends = [
   {
     value: '> 36000',
-    color: '#7A49BE'
+    color: '#5524A0'
   },
   {
     value: '36000 - 27000',
-    color: '#A67FE1'
+    color: '#E8323B'
   },
   {
     value: '27000 - 18000',
-    color: '#DB7BDD'
+    color: '#FFCF5E'
   },
   {
     value: '18000 - 12000',
-    color: '#FF9699'
+    color: '#3E8F3E'
   },
   {
     value: '12000 - 6000',
-    color: '#00C2CC'
+    color: '#009ADC'
   },
   {
     value: '< 6000',

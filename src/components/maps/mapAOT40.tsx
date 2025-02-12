@@ -28,15 +28,15 @@ import './maps.css';
 
 const color = (valeur: number) => {
   return valeur > 36000
-    ? '#7A49BE'
+    ? '#5524A0'
     : valeur > 27000
-      ? '#A67FE1'
+      ? '#E8323B'
       : valeur > 18000
-        ? '#DB7BDD'
+        ? '#FFCF5E'
         : valeur > 12000
-          ? '#FF9699'
+          ? '#3E8F3E'
           : valeur > 6000
-            ? '#00C2CC'
+            ? '#009ADC'
             : '#5EEDF3';
 };
 
@@ -173,7 +173,7 @@ export const MapAOT40 = (props: {
       <MarkerClusterGroup
         chunkedLoading
         removeOutsideVisibleBounds={true}
-        maxClusterRadius={155}
+        maxClusterRadius={30}
         iconCreateFunction={createClusterCustomIcon}
         polygonOptions={{
           color: 'transparent',
