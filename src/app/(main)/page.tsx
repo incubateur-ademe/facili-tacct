@@ -14,7 +14,6 @@ import { CollectiviteSearch } from './CollectiviteSearch';
 const Home = () => {
   const darkClass = DarkClass();
   const window = useWindowDimensions();
-
   return (
     <div className="mb-24">
       <div className={styles.wrapper}>
