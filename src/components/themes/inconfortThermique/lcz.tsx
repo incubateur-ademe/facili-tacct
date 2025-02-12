@@ -1,5 +1,5 @@
 'use client';
-import { MapLCZ } from '@/components/maps/map-lcz';
+// import { MapLCZ } from '@/components/maps/map-lcz';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, CollectivitesSearchbar } from '@/lib/postgres/models';
 import styles from './themes.module.scss';
@@ -58,13 +58,13 @@ const LCZ = ({
           <p style={{ padding: '1em', margin: '0' }}>
             <b>Cartographie LCZ</b>
           </p>
-          <div>
+          {/* <div>
             <MapLCZ
               carteCommunes={communesMap}
               collectivite={collectivite}
               // LCZBayonne={LCZMap}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
