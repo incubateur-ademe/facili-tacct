@@ -10,7 +10,7 @@ const PrivacyPolicyPage = () => {
         includeBetaGouv
         cookieConsentButton={<CookieConsentButton>CLICK</CookieConsentButton>}
         siteName="Facilit-TACCT"
-        cookies={[]} //aucun
+        cookies={[]}
         thirdParties={[
           {
             name: 'Scalingo',
