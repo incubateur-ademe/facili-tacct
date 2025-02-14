@@ -8,7 +8,7 @@ const PrivacyPolicyPage = () => {
     <div className={fr.cx('fr-container', 'fr-my-4w')}>
       <PrivacyPolicy
         includeBetaGouv
-        cookieConsentButton={<CookieConsentButton>CLICK</CookieConsentButton>}
+        cookieConsentButton={<CookieConsentButton />}
         siteName="Facilit-TACCT"
         cookies={[]}
         thirdParties={[
