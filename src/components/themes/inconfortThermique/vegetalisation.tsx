@@ -1,9 +1,4 @@
 'use client';
-import { styled } from '@mui/material/styles';
-import Tooltip, {
-  tooltipClasses,
-  type TooltipProps
-} from '@mui/material/Tooltip';
 import { useSearchParams } from 'next/navigation';
 
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
@@ -12,7 +7,7 @@ import { CLCMap } from '@/components/maps/CLC';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { CLC, InconfortThermique } from '@/lib/postgres/models';
 
-import GraphNotFound from '@/assets/images/data_not_found.svg';
+import GraphNotFound from '@/assets/images/no_data_on_territory.svg';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { VegetalisationDto } from '@/lib/dto';
 import { Round } from '@/lib/utils/reusableFunctions/round';
@@ -72,7 +67,6 @@ const Vegetalisation = (props: {
     ? vegetalisationMapped.filter((e) => e.code_commune === codgeo)
     : vegetalisationMapped.filter((e) => e.epci === codepci);
 
-  const vegetalisationDptmt = vegetalisationMapped;
   const foret_sum = sumProperty(
     vegetalisationCollectivite,
     'clc_3_foret_semiNaturel'
@@ -81,15 +75,7 @@ const Vegetalisation = (props: {
     (100 * sumProperty(vegetalisationCollectivite, 'clc_3_foret_semiNaturel')) /
     (100 * sumProperty(vegetalisationCollectivite, 'superf_choro'));
 
-  const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
-    <Tooltip {...props} classes={{ popper: className }} />
-  ))(({ theme }) => ({
-    [`& .${tooltipClasses.tooltip}`]: {
-      backgroundColor: 'transparent',
-      color: 'rgba(0, 0, 0, 0.87)',
-      fontSize: theme.typography.pxToRem(12)
-    }
-  }));
+  console.log('vegetalisationCollectivite', vegetalisationCollectivite);
 
   return (
     <>
