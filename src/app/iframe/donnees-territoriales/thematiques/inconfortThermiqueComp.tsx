@@ -11,7 +11,6 @@ import { AgeBati } from '@/components/themes/inconfortThermique/age-bati';
 import { DensiteBati } from '@/components/themes/inconfortThermique/densite-bati';
 import { FragiliteEconomique } from '@/components/themes/inconfortThermique/fragilite-economique';
 import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grand-age-isolement';
-import LCZ from '@/components/themes/inconfortThermique/lcz';
 import { TravailExterieur } from '@/components/themes/inconfortThermique/travail-exterieur';
 import {
   CarteCommunes,
@@ -85,15 +84,15 @@ const allComps = [
       <DensiteBati carteCommunes={carteCommunes} />
     )
   },
-  {
-    titre: 'LCZ',
-    Component: ({
-      carteCommunes,
-      collectivite
-    }: Props & { activeDataTab: string }) => (
-      <LCZ carteCommunes={carteCommunes} collectivite={collectivite} />
-    )
-  },
+  // {
+  //   titre: 'LCZ',
+  //   Component: ({
+  //     carteCommunes,
+  //     collectivite
+  //   }: Props & { activeDataTab: string }) => (
+  //     <LCZ carteCommunes={carteCommunes} collectivite={collectivite} />
+  //   )
+  // },
   {
     titre: 'Végétalisation',
     Component: ({
