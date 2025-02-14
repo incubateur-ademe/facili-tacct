@@ -5,6 +5,7 @@ import { Loader } from '@/components/loader';
 import { AgeBatiDto } from '@/lib/dto';
 import { ageBatiMapper } from '@/lib/mapper/inconfortThermique';
 import { InconfortThermique } from '@/lib/postgres/models';
+import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import styles from './themes.module.scss';
 
@@ -92,9 +93,12 @@ export const AgeBati = (props: {
     }
   ];
 
+  console.log('averages');
   return (
     <>
-      {inconfortThermique.length && !Object.values(averages).includes(NaN) ? (
+      {inconfortThermique.length &&
+      !Object.values(averages).includes(NaN) &&
+      Sum(Object.values(averages)) != 0 ? (
         <div className={styles.container}>
           <div className="w-2/5">
             <div className={styles.explicationWrapper}>
