@@ -17,7 +17,7 @@ type CookieModalProps = {
     isOpenedByDefault: boolean;
     id: string;
   };
-  setConsentGiven: (value: string) => void;
+  setConsentGiven?: (value: string) => void;
 };
 
 const CookieModal = ({ modal, setConsentGiven }: CookieModalProps) => {
@@ -25,10 +25,10 @@ const CookieModal = ({ modal, setConsentGiven }: CookieModalProps) => {
   const handleValidateCookies = () => {
     if (areTermAccepted) {
       localStorage.setItem('cookie_consent', 'yes');
-      setConsentGiven('yes');
+      setConsentGiven?.('yes');
     } else {
       localStorage.setItem('cookie_consent', 'no');
-      setConsentGiven('no');
+      setConsentGiven?.('no');
     }
     modal.close();
   };
