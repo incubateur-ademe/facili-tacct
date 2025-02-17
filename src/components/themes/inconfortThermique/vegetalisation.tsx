@@ -67,15 +67,13 @@ const Vegetalisation = (props: {
     ? vegetalisationMapped.filter((e) => e.code_commune === codgeo)
     : vegetalisationMapped.filter((e) => e.epci === codepci);
 
-  const foret_sum = sumProperty(
+  const foretSum = sumProperty(
     vegetalisationCollectivite,
     'clc_3_foret_semiNaturel'
   );
-  const foret_percent =
+  const foretPercent =
     (100 * sumProperty(vegetalisationCollectivite, 'clc_3_foret_semiNaturel')) /
     (100 * sumProperty(vegetalisationCollectivite, 'superf_choro'));
-
-  console.log('vegetalisationCollectivite', vegetalisationCollectivite);
 
   return (
     <>
@@ -85,20 +83,25 @@ const Vegetalisation = (props: {
             <>
               <div className="w-2/5">
                 <div className={styles.explicationWrapper}>
-                  {codgeo ? (
+                  {foretPercent == Infinity ? (
+                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                      Sur le territoire, la forêt et les espaces semi-naturels
+                      recouvrent <b>{Round(foretSum, 1)}</b> hectares.
+                    </p>
+                  ) : codgeo ? (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       Dans la commune de{' '}
                       {vegetalisationCollectivite[0]?.libelle_geographique},{' '}
-                      <b>{Round(foret_percent, 1)} %</b> du territoire est de la
+                      <b>{Round(foretPercent, 1)} %</b> du territoire est de la
                       forêt ou des espaces semi-naturels. Cela correspond à{' '}
-                      <b>{Round(foret_sum, 1)}</b> hectares.
+                      <b>{Round(foretSum, 1)}</b> hectares.
                     </p>
                   ) : (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       Dans l'EPCI {vegetalisationCollectivite[0]?.libelle_epci},{' '}
-                      <b>{Round(foret_percent, 1)} %</b> du territoire est de la
+                      <b>{Round(foretPercent, 1)} %</b> du territoire est de la
                       forêt ou des espaces semi-naturels. Cela correspond à{' '}
-                      <b>{Round(foret_sum, 1)}</b> hectares.
+                      <b>{Round(foretSum, 1)}</b> hectares.
                     </p>
                   )}
                 </div>
