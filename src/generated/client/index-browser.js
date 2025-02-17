@@ -520,6 +520,66 @@ exports.Prisma.Qualite_sites_baignadeScalarFieldEnum = {
   QEB_2020: 'QEB_2020'
 };
 
+exports.Prisma.Inconfort_thermique2ScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  region: 'region',
+  age_bati_post06: 'age_bati_post06',
+  age_bati_91_05: 'age_bati_91_05',
+  age_bati_46_90: 'age_bati_46_90',
+  age_bati_19_45: 'age_bati_19_45',
+  age_bati_pre_19: 'age_bati_pre_19',
+  under_4_sum_1968: 'under_4_sum_1968',
+  to_80_sum_1968: 'to_80_sum_1968',
+  over_80_sum_1968: 'over_80_sum_1968',
+  under_4_sum_1975: 'under_4_sum_1975',
+  to_80_sum_1975: 'to_80_sum_1975',
+  over_80_sum_1975: 'over_80_sum_1975',
+  under_4_sum_1982: 'under_4_sum_1982',
+  to_80_sum_1982: 'to_80_sum_1982',
+  over_80_sum_1982: 'over_80_sum_1982',
+  under_4_sum_1990: 'under_4_sum_1990',
+  to_80_sum_1990: 'to_80_sum_1990',
+  over_80_sum_1990: 'over_80_sum_1990',
+  under_4_sum_1999: 'under_4_sum_1999',
+  to_80_sum_1999: 'to_80_sum_1999',
+  over_80_sum_1999: 'over_80_sum_1999',
+  under_4_sum_2009: 'under_4_sum_2009',
+  to_80_sum_2009: 'to_80_sum_2009',
+  over_80_sum_2009: 'over_80_sum_2009',
+  under_4_sum_2014: 'under_4_sum_2014',
+  to_80_sum_2014: 'to_80_sum_2014',
+  over_80_sum_2014: 'over_80_sum_2014',
+  under_4_sum_2020: 'under_4_sum_2020',
+  to_80_sum_2020: 'to_80_sum_2020',
+  over_80_sum_2020: 'over_80_sum_2020',
+  P20_POP80P: 'P20_POP80P',
+  P20_POP80P_PSEUL: 'P20_POP80P_PSEUL',
+  P20_POP80P_PSEUL_PERCENT: 'P20_POP80P_PSEUL_PERCENT',
+  tee_log: 'tee_log',
+  tee_mob: 'tee_mob',
+  precarite_logement: 'precarite_logement',
+  NA5AZ_sum: 'NA5AZ_sum',
+  NA5BE_sum: 'NA5BE_sum',
+  NA5FZ_sum: 'NA5FZ_sum',
+  NA5GU_sum: 'NA5GU_sum',
+  NA5OQ_sum: 'NA5OQ_sum',
+  s_geom_cstr_bati: 's_geom_cstr_bati',
+  hauteur: 'hauteur',
+  h_x_s: 'h_x_s',
+  densite_bati: 'densite_bati',
+  clc_1_artificialise: 'clc_1_artificialise',
+  clc_2_agricole: 'clc_2_agricole',
+  clc_3_foret_semiNaturel: 'clc_3_foret_semiNaturel',
+  clc_4_humide: 'clc_4_humide',
+  clc_5_eau: 'clc_5_eau',
+  superf_choro: 'superf_choro'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -554,7 +614,8 @@ exports.Prisma.ModelName = {
   etat_cours_d_eau: 'etat_cours_d_eau',
   aot_40: 'aot_40',
   users: 'users',
-  qualite_sites_baignade: 'qualite_sites_baignade'
+  qualite_sites_baignade: 'qualite_sites_baignade',
+  inconfort_thermique2: 'inconfort_thermique2'
 };
 
 /**
