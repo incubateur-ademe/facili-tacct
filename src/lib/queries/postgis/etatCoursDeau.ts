@@ -11,25 +11,21 @@ export const GetEtatCoursDeau = async (
 ): Promise<EtatCoursDeau[]> => {
   try {
     const distance = codgeo ? 0.1 : 0.8;
-
     if (codgeo) {
-      console.time('Query Execution Time EtatCoursDeau2');
-
+      console.time('Query Execution Time EtatCoursDeau');
       const commune = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
         epci,
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsText(geometry) geometry
         FROM postgis."communes_drom" WHERE code_commune=${codgeo};`;
-      console.timeEnd('Query Execution Time EtatCoursDeau2');
-      console.time('Query Execution Time EtatCoursDeau3');
       const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
         SELECT
         name,
         etateco,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."etat_cours_d_eau" WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${commune[0].geometry})), 4326), ${distance});`;
-      console.timeEnd('Query Execution Time EtatCoursDeau3');
+      console.timeEnd('Query Execution Time EtatCoursDeau');
       return value;
     } else {
       console.time('Query Execution Time EtatCoursDeau');
@@ -39,15 +35,13 @@ export const GetEtatCoursDeau = async (
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsText(geometry) geometry
         FROM postgis."communes_drom" WHERE epci=${codepci};`;
-      console.timeEnd('Query Execution Time EtatCoursDeau');
-      console.time('Query Execution Time EtatCoursDeau4');
       const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
         SELECT
         name,
         etateco,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."etat_cours_d_eau" WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${epci[0].geometry})), 4326), ${distance});`; //ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326))
-      console.timeEnd('Query Execution Time EtatCoursDeau4');
+      console.timeEnd('Query Execution Time EtatCoursDeau');
       return value;
     }
   } catch (error) {
