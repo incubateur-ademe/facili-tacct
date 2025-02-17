@@ -16,14 +16,14 @@ export const GetRessourceEau = async (
       }
     });
     console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
-    console.time('Query Execution Time PRELEVEMENT EAUX 2222222');
+    console.time('Query Execution Time PRELEVEMENT EAUX 2');
 
     const value = await PrismaPostgres.ressources_eau.findMany({
       where: {
         departement: departement?.departement
       }
     });
-    console.timeEnd('Query Execution Time PRELEVEMENT EAUX 2222222');
+    console.timeEnd('Query Execution Time PRELEVEMENT EAUX 2');
 
     return value;
   } catch (error) {
