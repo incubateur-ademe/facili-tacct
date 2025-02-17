@@ -121,6 +121,12 @@ export type users = $Result.DefaultSelection<Prisma.$usersPayload>;
  */
 export type qualite_sites_baignade =
   $Result.DefaultSelection<Prisma.$qualite_sites_baignadePayload>;
+/**
+ * Model inconfort_thermique2
+ *
+ */
+export type inconfort_thermique2 =
+  $Result.DefaultSelection<Prisma.$inconfort_thermique2Payload>;
 
 /**
  * ##  Prisma Client ʲˢ
@@ -499,6 +505,19 @@ export class PrismaClient<
    * ```
    */
   get qualite_sites_baignade(): Prisma.qualite_sites_baignadeDelegate<
+    ExtArgs,
+    ClientOptions
+  >;
+
+  /**
+   * `prisma.inconfort_thermique2`: Exposes CRUD operations for the **inconfort_thermique2** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Inconfort_thermique2s
+   * const inconfort_thermique2s = await prisma.inconfort_thermique2.findMany()
+   * ```
+   */
+  get inconfort_thermique2(): Prisma.inconfort_thermique2Delegate<
     ExtArgs,
     ClientOptions
   >;
@@ -979,6 +998,7 @@ export namespace Prisma {
     aot_40: 'aot_40';
     users: 'users';
     qualite_sites_baignade: 'qualite_sites_baignade';
+    inconfort_thermique2: 'inconfort_thermique2';
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -1022,7 +1042,8 @@ export namespace Prisma {
         | 'etat_cours_d_eau'
         | 'aot_40'
         | 'users'
-        | 'qualite_sites_baignade';
+        | 'qualite_sites_baignade'
+        | 'inconfort_thermique2';
       txIsolationLevel: Prisma.TransactionIsolationLevel;
     };
     model: {
@@ -2398,6 +2419,82 @@ export namespace Prisma {
           };
         };
       };
+      inconfort_thermique2: {
+        payload: Prisma.$inconfort_thermique2Payload<ExtArgs>;
+        fields: Prisma.inconfort_thermique2FieldRefs;
+        operations: {
+          findUnique: {
+            args: Prisma.inconfort_thermique2FindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermique2Payload> | null;
+          };
+          findUniqueOrThrow: {
+            args: Prisma.inconfort_thermique2FindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermique2Payload>;
+          };
+          findFirst: {
+            args: Prisma.inconfort_thermique2FindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermique2Payload> | null;
+          };
+          findFirstOrThrow: {
+            args: Prisma.inconfort_thermique2FindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermique2Payload>;
+          };
+          findMany: {
+            args: Prisma.inconfort_thermique2FindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermique2Payload>[];
+          };
+          create: {
+            args: Prisma.inconfort_thermique2CreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermique2Payload>;
+          };
+          createMany: {
+            args: Prisma.inconfort_thermique2CreateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          createManyAndReturn: {
+            args: Prisma.inconfort_thermique2CreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermique2Payload>[];
+          };
+          delete: {
+            args: Prisma.inconfort_thermique2DeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermique2Payload>;
+          };
+          update: {
+            args: Prisma.inconfort_thermique2UpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermique2Payload>;
+          };
+          deleteMany: {
+            args: Prisma.inconfort_thermique2DeleteManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateMany: {
+            args: Prisma.inconfort_thermique2UpdateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateManyAndReturn: {
+            args: Prisma.inconfort_thermique2UpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermique2Payload>[];
+          };
+          upsert: {
+            args: Prisma.inconfort_thermique2UpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$inconfort_thermique2Payload>;
+          };
+          aggregate: {
+            args: Prisma.Inconfort_thermique2AggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregateInconfort_thermique2>;
+          };
+          groupBy: {
+            args: Prisma.inconfort_thermique2GroupByArgs<ExtArgs>;
+            result: $Utils.Optional<Inconfort_thermique2GroupByOutputType>[];
+          };
+          count: {
+            args: Prisma.inconfort_thermique2CountArgs<ExtArgs>;
+            result:
+              | $Utils.Optional<Inconfort_thermique2CountAggregateOutputType>
+              | number;
+          };
+        };
+      };
     };
   } & {
     other: {
@@ -2505,6 +2602,7 @@ export namespace Prisma {
     aot_40?: aot_40Omit;
     users?: usersOmit;
     qualite_sites_baignade?: qualite_sites_baignadeOmit;
+    inconfort_thermique2?: inconfort_thermique2Omit;
   };
 
   /* Types for Logging */
@@ -30611,6 +30709,2138 @@ export namespace Prisma {
   };
 
   /**
+   * Model inconfort_thermique2
+   */
+
+  export type AggregateInconfort_thermique2 = {
+    _count: Inconfort_thermique2CountAggregateOutputType | null;
+    _avg: Inconfort_thermique2AvgAggregateOutputType | null;
+    _sum: Inconfort_thermique2SumAggregateOutputType | null;
+    _min: Inconfort_thermique2MinAggregateOutputType | null;
+    _max: Inconfort_thermique2MaxAggregateOutputType | null;
+  };
+
+  export type Inconfort_thermique2AvgAggregateOutputType = {
+    index: number | null;
+    region: number | null;
+    age_bati_post06: number | null;
+    age_bati_91_05: number | null;
+    age_bati_46_90: number | null;
+    age_bati_19_45: number | null;
+    age_bati_pre_19: number | null;
+    tee_log: number | null;
+    tee_mob: number | null;
+    precarite_logement: number | null;
+    NA5AZ_sum: number | null;
+    NA5BE_sum: number | null;
+    NA5FZ_sum: number | null;
+    NA5GU_sum: number | null;
+    NA5OQ_sum: number | null;
+    s_geom_cstr_bati: number | null;
+    hauteur: number | null;
+    h_x_s: number | null;
+    densite_bati: number | null;
+    clc_1_artificialise: number | null;
+    clc_2_agricole: number | null;
+    clc_3_foret_semiNaturel: number | null;
+    clc_4_humide: number | null;
+    clc_5_eau: number | null;
+    superf_choro: number | null;
+  };
+
+  export type Inconfort_thermique2SumAggregateOutputType = {
+    index: bigint | null;
+    region: number | null;
+    age_bati_post06: number | null;
+    age_bati_91_05: number | null;
+    age_bati_46_90: number | null;
+    age_bati_19_45: number | null;
+    age_bati_pre_19: number | null;
+    tee_log: number | null;
+    tee_mob: number | null;
+    precarite_logement: number | null;
+    NA5AZ_sum: number | null;
+    NA5BE_sum: number | null;
+    NA5FZ_sum: number | null;
+    NA5GU_sum: number | null;
+    NA5OQ_sum: number | null;
+    s_geom_cstr_bati: number | null;
+    hauteur: number | null;
+    h_x_s: number | null;
+    densite_bati: number | null;
+    clc_1_artificialise: number | null;
+    clc_2_agricole: number | null;
+    clc_3_foret_semiNaturel: number | null;
+    clc_4_humide: number | null;
+    clc_5_eau: number | null;
+    superf_choro: number | null;
+  };
+
+  export type Inconfort_thermique2MinAggregateOutputType = {
+    index: bigint | null;
+    code_geographique: string | null;
+    libelle_geographique: string | null;
+    epci: string | null;
+    libelle_epci: string | null;
+    departement: string | null;
+    region: number | null;
+    age_bati_post06: number | null;
+    age_bati_91_05: number | null;
+    age_bati_46_90: number | null;
+    age_bati_19_45: number | null;
+    age_bati_pre_19: number | null;
+    under_4_sum_1968: string | null;
+    to_80_sum_1968: string | null;
+    over_80_sum_1968: string | null;
+    under_4_sum_1975: string | null;
+    to_80_sum_1975: string | null;
+    over_80_sum_1975: string | null;
+    under_4_sum_1982: string | null;
+    to_80_sum_1982: string | null;
+    over_80_sum_1982: string | null;
+    under_4_sum_1990: string | null;
+    to_80_sum_1990: string | null;
+    over_80_sum_1990: string | null;
+    under_4_sum_1999: string | null;
+    to_80_sum_1999: string | null;
+    over_80_sum_1999: string | null;
+    under_4_sum_2009: string | null;
+    to_80_sum_2009: string | null;
+    over_80_sum_2009: string | null;
+    under_4_sum_2014: string | null;
+    to_80_sum_2014: string | null;
+    over_80_sum_2014: string | null;
+    under_4_sum_2020: string | null;
+    to_80_sum_2020: string | null;
+    over_80_sum_2020: string | null;
+    P20_POP80P: string | null;
+    P20_POP80P_PSEUL: string | null;
+    P20_POP80P_PSEUL_PERCENT: string | null;
+    tee_log: number | null;
+    tee_mob: number | null;
+    precarite_logement: number | null;
+    NA5AZ_sum: number | null;
+    NA5BE_sum: number | null;
+    NA5FZ_sum: number | null;
+    NA5GU_sum: number | null;
+    NA5OQ_sum: number | null;
+    s_geom_cstr_bati: number | null;
+    hauteur: number | null;
+    h_x_s: number | null;
+    densite_bati: number | null;
+    clc_1_artificialise: number | null;
+    clc_2_agricole: number | null;
+    clc_3_foret_semiNaturel: number | null;
+    clc_4_humide: number | null;
+    clc_5_eau: number | null;
+    superf_choro: number | null;
+  };
+
+  export type Inconfort_thermique2MaxAggregateOutputType = {
+    index: bigint | null;
+    code_geographique: string | null;
+    libelle_geographique: string | null;
+    epci: string | null;
+    libelle_epci: string | null;
+    departement: string | null;
+    region: number | null;
+    age_bati_post06: number | null;
+    age_bati_91_05: number | null;
+    age_bati_46_90: number | null;
+    age_bati_19_45: number | null;
+    age_bati_pre_19: number | null;
+    under_4_sum_1968: string | null;
+    to_80_sum_1968: string | null;
+    over_80_sum_1968: string | null;
+    under_4_sum_1975: string | null;
+    to_80_sum_1975: string | null;
+    over_80_sum_1975: string | null;
+    under_4_sum_1982: string | null;
+    to_80_sum_1982: string | null;
+    over_80_sum_1982: string | null;
+    under_4_sum_1990: string | null;
+    to_80_sum_1990: string | null;
+    over_80_sum_1990: string | null;
+    under_4_sum_1999: string | null;
+    to_80_sum_1999: string | null;
+    over_80_sum_1999: string | null;
+    under_4_sum_2009: string | null;
+    to_80_sum_2009: string | null;
+    over_80_sum_2009: string | null;
+    under_4_sum_2014: string | null;
+    to_80_sum_2014: string | null;
+    over_80_sum_2014: string | null;
+    under_4_sum_2020: string | null;
+    to_80_sum_2020: string | null;
+    over_80_sum_2020: string | null;
+    P20_POP80P: string | null;
+    P20_POP80P_PSEUL: string | null;
+    P20_POP80P_PSEUL_PERCENT: string | null;
+    tee_log: number | null;
+    tee_mob: number | null;
+    precarite_logement: number | null;
+    NA5AZ_sum: number | null;
+    NA5BE_sum: number | null;
+    NA5FZ_sum: number | null;
+    NA5GU_sum: number | null;
+    NA5OQ_sum: number | null;
+    s_geom_cstr_bati: number | null;
+    hauteur: number | null;
+    h_x_s: number | null;
+    densite_bati: number | null;
+    clc_1_artificialise: number | null;
+    clc_2_agricole: number | null;
+    clc_3_foret_semiNaturel: number | null;
+    clc_4_humide: number | null;
+    clc_5_eau: number | null;
+    superf_choro: number | null;
+  };
+
+  export type Inconfort_thermique2CountAggregateOutputType = {
+    index: number;
+    code_geographique: number;
+    libelle_geographique: number;
+    epci: number;
+    libelle_epci: number;
+    departement: number;
+    region: number;
+    age_bati_post06: number;
+    age_bati_91_05: number;
+    age_bati_46_90: number;
+    age_bati_19_45: number;
+    age_bati_pre_19: number;
+    under_4_sum_1968: number;
+    to_80_sum_1968: number;
+    over_80_sum_1968: number;
+    under_4_sum_1975: number;
+    to_80_sum_1975: number;
+    over_80_sum_1975: number;
+    under_4_sum_1982: number;
+    to_80_sum_1982: number;
+    over_80_sum_1982: number;
+    under_4_sum_1990: number;
+    to_80_sum_1990: number;
+    over_80_sum_1990: number;
+    under_4_sum_1999: number;
+    to_80_sum_1999: number;
+    over_80_sum_1999: number;
+    under_4_sum_2009: number;
+    to_80_sum_2009: number;
+    over_80_sum_2009: number;
+    under_4_sum_2014: number;
+    to_80_sum_2014: number;
+    over_80_sum_2014: number;
+    under_4_sum_2020: number;
+    to_80_sum_2020: number;
+    over_80_sum_2020: number;
+    P20_POP80P: number;
+    P20_POP80P_PSEUL: number;
+    P20_POP80P_PSEUL_PERCENT: number;
+    tee_log: number;
+    tee_mob: number;
+    precarite_logement: number;
+    NA5AZ_sum: number;
+    NA5BE_sum: number;
+    NA5FZ_sum: number;
+    NA5GU_sum: number;
+    NA5OQ_sum: number;
+    s_geom_cstr_bati: number;
+    hauteur: number;
+    h_x_s: number;
+    densite_bati: number;
+    clc_1_artificialise: number;
+    clc_2_agricole: number;
+    clc_3_foret_semiNaturel: number;
+    clc_4_humide: number;
+    clc_5_eau: number;
+    superf_choro: number;
+    _all: number;
+  };
+
+  export type Inconfort_thermique2AvgAggregateInputType = {
+    index?: true;
+    region?: true;
+    age_bati_post06?: true;
+    age_bati_91_05?: true;
+    age_bati_46_90?: true;
+    age_bati_19_45?: true;
+    age_bati_pre_19?: true;
+    tee_log?: true;
+    tee_mob?: true;
+    precarite_logement?: true;
+    NA5AZ_sum?: true;
+    NA5BE_sum?: true;
+    NA5FZ_sum?: true;
+    NA5GU_sum?: true;
+    NA5OQ_sum?: true;
+    s_geom_cstr_bati?: true;
+    hauteur?: true;
+    h_x_s?: true;
+    densite_bati?: true;
+    clc_1_artificialise?: true;
+    clc_2_agricole?: true;
+    clc_3_foret_semiNaturel?: true;
+    clc_4_humide?: true;
+    clc_5_eau?: true;
+    superf_choro?: true;
+  };
+
+  export type Inconfort_thermique2SumAggregateInputType = {
+    index?: true;
+    region?: true;
+    age_bati_post06?: true;
+    age_bati_91_05?: true;
+    age_bati_46_90?: true;
+    age_bati_19_45?: true;
+    age_bati_pre_19?: true;
+    tee_log?: true;
+    tee_mob?: true;
+    precarite_logement?: true;
+    NA5AZ_sum?: true;
+    NA5BE_sum?: true;
+    NA5FZ_sum?: true;
+    NA5GU_sum?: true;
+    NA5OQ_sum?: true;
+    s_geom_cstr_bati?: true;
+    hauteur?: true;
+    h_x_s?: true;
+    densite_bati?: true;
+    clc_1_artificialise?: true;
+    clc_2_agricole?: true;
+    clc_3_foret_semiNaturel?: true;
+    clc_4_humide?: true;
+    clc_5_eau?: true;
+    superf_choro?: true;
+  };
+
+  export type Inconfort_thermique2MinAggregateInputType = {
+    index?: true;
+    code_geographique?: true;
+    libelle_geographique?: true;
+    epci?: true;
+    libelle_epci?: true;
+    departement?: true;
+    region?: true;
+    age_bati_post06?: true;
+    age_bati_91_05?: true;
+    age_bati_46_90?: true;
+    age_bati_19_45?: true;
+    age_bati_pre_19?: true;
+    under_4_sum_1968?: true;
+    to_80_sum_1968?: true;
+    over_80_sum_1968?: true;
+    under_4_sum_1975?: true;
+    to_80_sum_1975?: true;
+    over_80_sum_1975?: true;
+    under_4_sum_1982?: true;
+    to_80_sum_1982?: true;
+    over_80_sum_1982?: true;
+    under_4_sum_1990?: true;
+    to_80_sum_1990?: true;
+    over_80_sum_1990?: true;
+    under_4_sum_1999?: true;
+    to_80_sum_1999?: true;
+    over_80_sum_1999?: true;
+    under_4_sum_2009?: true;
+    to_80_sum_2009?: true;
+    over_80_sum_2009?: true;
+    under_4_sum_2014?: true;
+    to_80_sum_2014?: true;
+    over_80_sum_2014?: true;
+    under_4_sum_2020?: true;
+    to_80_sum_2020?: true;
+    over_80_sum_2020?: true;
+    P20_POP80P?: true;
+    P20_POP80P_PSEUL?: true;
+    P20_POP80P_PSEUL_PERCENT?: true;
+    tee_log?: true;
+    tee_mob?: true;
+    precarite_logement?: true;
+    NA5AZ_sum?: true;
+    NA5BE_sum?: true;
+    NA5FZ_sum?: true;
+    NA5GU_sum?: true;
+    NA5OQ_sum?: true;
+    s_geom_cstr_bati?: true;
+    hauteur?: true;
+    h_x_s?: true;
+    densite_bati?: true;
+    clc_1_artificialise?: true;
+    clc_2_agricole?: true;
+    clc_3_foret_semiNaturel?: true;
+    clc_4_humide?: true;
+    clc_5_eau?: true;
+    superf_choro?: true;
+  };
+
+  export type Inconfort_thermique2MaxAggregateInputType = {
+    index?: true;
+    code_geographique?: true;
+    libelle_geographique?: true;
+    epci?: true;
+    libelle_epci?: true;
+    departement?: true;
+    region?: true;
+    age_bati_post06?: true;
+    age_bati_91_05?: true;
+    age_bati_46_90?: true;
+    age_bati_19_45?: true;
+    age_bati_pre_19?: true;
+    under_4_sum_1968?: true;
+    to_80_sum_1968?: true;
+    over_80_sum_1968?: true;
+    under_4_sum_1975?: true;
+    to_80_sum_1975?: true;
+    over_80_sum_1975?: true;
+    under_4_sum_1982?: true;
+    to_80_sum_1982?: true;
+    over_80_sum_1982?: true;
+    under_4_sum_1990?: true;
+    to_80_sum_1990?: true;
+    over_80_sum_1990?: true;
+    under_4_sum_1999?: true;
+    to_80_sum_1999?: true;
+    over_80_sum_1999?: true;
+    under_4_sum_2009?: true;
+    to_80_sum_2009?: true;
+    over_80_sum_2009?: true;
+    under_4_sum_2014?: true;
+    to_80_sum_2014?: true;
+    over_80_sum_2014?: true;
+    under_4_sum_2020?: true;
+    to_80_sum_2020?: true;
+    over_80_sum_2020?: true;
+    P20_POP80P?: true;
+    P20_POP80P_PSEUL?: true;
+    P20_POP80P_PSEUL_PERCENT?: true;
+    tee_log?: true;
+    tee_mob?: true;
+    precarite_logement?: true;
+    NA5AZ_sum?: true;
+    NA5BE_sum?: true;
+    NA5FZ_sum?: true;
+    NA5GU_sum?: true;
+    NA5OQ_sum?: true;
+    s_geom_cstr_bati?: true;
+    hauteur?: true;
+    h_x_s?: true;
+    densite_bati?: true;
+    clc_1_artificialise?: true;
+    clc_2_agricole?: true;
+    clc_3_foret_semiNaturel?: true;
+    clc_4_humide?: true;
+    clc_5_eau?: true;
+    superf_choro?: true;
+  };
+
+  export type Inconfort_thermique2CountAggregateInputType = {
+    index?: true;
+    code_geographique?: true;
+    libelle_geographique?: true;
+    epci?: true;
+    libelle_epci?: true;
+    departement?: true;
+    region?: true;
+    age_bati_post06?: true;
+    age_bati_91_05?: true;
+    age_bati_46_90?: true;
+    age_bati_19_45?: true;
+    age_bati_pre_19?: true;
+    under_4_sum_1968?: true;
+    to_80_sum_1968?: true;
+    over_80_sum_1968?: true;
+    under_4_sum_1975?: true;
+    to_80_sum_1975?: true;
+    over_80_sum_1975?: true;
+    under_4_sum_1982?: true;
+    to_80_sum_1982?: true;
+    over_80_sum_1982?: true;
+    under_4_sum_1990?: true;
+    to_80_sum_1990?: true;
+    over_80_sum_1990?: true;
+    under_4_sum_1999?: true;
+    to_80_sum_1999?: true;
+    over_80_sum_1999?: true;
+    under_4_sum_2009?: true;
+    to_80_sum_2009?: true;
+    over_80_sum_2009?: true;
+    under_4_sum_2014?: true;
+    to_80_sum_2014?: true;
+    over_80_sum_2014?: true;
+    under_4_sum_2020?: true;
+    to_80_sum_2020?: true;
+    over_80_sum_2020?: true;
+    P20_POP80P?: true;
+    P20_POP80P_PSEUL?: true;
+    P20_POP80P_PSEUL_PERCENT?: true;
+    tee_log?: true;
+    tee_mob?: true;
+    precarite_logement?: true;
+    NA5AZ_sum?: true;
+    NA5BE_sum?: true;
+    NA5FZ_sum?: true;
+    NA5GU_sum?: true;
+    NA5OQ_sum?: true;
+    s_geom_cstr_bati?: true;
+    hauteur?: true;
+    h_x_s?: true;
+    densite_bati?: true;
+    clc_1_artificialise?: true;
+    clc_2_agricole?: true;
+    clc_3_foret_semiNaturel?: true;
+    clc_4_humide?: true;
+    clc_5_eau?: true;
+    superf_choro?: true;
+    _all?: true;
+  };
+
+  export type Inconfort_thermique2AggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which inconfort_thermique2 to aggregate.
+     */
+    where?: inconfort_thermique2WhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of inconfort_thermique2s to fetch.
+     */
+    orderBy?:
+      | inconfort_thermique2OrderByWithRelationInput
+      | inconfort_thermique2OrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: inconfort_thermique2WhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` inconfort_thermique2s from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` inconfort_thermique2s.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned inconfort_thermique2s
+     **/
+    _count?: true | Inconfort_thermique2CountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: Inconfort_thermique2AvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: Inconfort_thermique2SumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: Inconfort_thermique2MinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: Inconfort_thermique2MaxAggregateInputType;
+  };
+
+  export type GetInconfort_thermique2AggregateType<
+    T extends Inconfort_thermique2AggregateArgs
+  > = {
+    [P in keyof T & keyof AggregateInconfort_thermique2]: P extends
+      | '_count'
+      | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateInconfort_thermique2[P]>
+      : GetScalarType<T[P], AggregateInconfort_thermique2[P]>;
+  };
+
+  export type inconfort_thermique2GroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    where?: inconfort_thermique2WhereInput;
+    orderBy?:
+      | inconfort_thermique2OrderByWithAggregationInput
+      | inconfort_thermique2OrderByWithAggregationInput[];
+    by:
+      | Inconfort_thermique2ScalarFieldEnum[]
+      | Inconfort_thermique2ScalarFieldEnum;
+    having?: inconfort_thermique2ScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: Inconfort_thermique2CountAggregateInputType | true;
+    _avg?: Inconfort_thermique2AvgAggregateInputType;
+    _sum?: Inconfort_thermique2SumAggregateInputType;
+    _min?: Inconfort_thermique2MinAggregateInputType;
+    _max?: Inconfort_thermique2MaxAggregateInputType;
+  };
+
+  export type Inconfort_thermique2GroupByOutputType = {
+    index: bigint;
+    code_geographique: string;
+    libelle_geographique: string;
+    epci: string;
+    libelle_epci: string;
+    departement: string;
+    region: number;
+    age_bati_post06: number | null;
+    age_bati_91_05: number | null;
+    age_bati_46_90: number | null;
+    age_bati_19_45: number | null;
+    age_bati_pre_19: number | null;
+    under_4_sum_1968: string | null;
+    to_80_sum_1968: string | null;
+    over_80_sum_1968: string | null;
+    under_4_sum_1975: string | null;
+    to_80_sum_1975: string | null;
+    over_80_sum_1975: string | null;
+    under_4_sum_1982: string | null;
+    to_80_sum_1982: string | null;
+    over_80_sum_1982: string | null;
+    under_4_sum_1990: string | null;
+    to_80_sum_1990: string | null;
+    over_80_sum_1990: string | null;
+    under_4_sum_1999: string | null;
+    to_80_sum_1999: string | null;
+    over_80_sum_1999: string | null;
+    under_4_sum_2009: string | null;
+    to_80_sum_2009: string | null;
+    over_80_sum_2009: string | null;
+    under_4_sum_2014: string | null;
+    to_80_sum_2014: string | null;
+    over_80_sum_2014: string | null;
+    under_4_sum_2020: string | null;
+    to_80_sum_2020: string | null;
+    over_80_sum_2020: string | null;
+    P20_POP80P: string | null;
+    P20_POP80P_PSEUL: string | null;
+    P20_POP80P_PSEUL_PERCENT: string | null;
+    tee_log: number | null;
+    tee_mob: number | null;
+    precarite_logement: number | null;
+    NA5AZ_sum: number | null;
+    NA5BE_sum: number | null;
+    NA5FZ_sum: number | null;
+    NA5GU_sum: number | null;
+    NA5OQ_sum: number | null;
+    s_geom_cstr_bati: number | null;
+    hauteur: number | null;
+    h_x_s: number | null;
+    densite_bati: number | null;
+    clc_1_artificialise: number | null;
+    clc_2_agricole: number | null;
+    clc_3_foret_semiNaturel: number | null;
+    clc_4_humide: number | null;
+    clc_5_eau: number | null;
+    superf_choro: number | null;
+    _count: Inconfort_thermique2CountAggregateOutputType | null;
+    _avg: Inconfort_thermique2AvgAggregateOutputType | null;
+    _sum: Inconfort_thermique2SumAggregateOutputType | null;
+    _min: Inconfort_thermique2MinAggregateOutputType | null;
+    _max: Inconfort_thermique2MaxAggregateOutputType | null;
+  };
+
+  type GetInconfort_thermique2GroupByPayload<
+    T extends inconfort_thermique2GroupByArgs
+  > = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Inconfort_thermique2GroupByOutputType, T['by']> & {
+        [P in keyof T &
+          keyof Inconfort_thermique2GroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : GetScalarType<T[P], Inconfort_thermique2GroupByOutputType[P]>
+          : GetScalarType<T[P], Inconfort_thermique2GroupByOutputType[P]>;
+      }
+    >
+  >;
+
+  export type inconfort_thermique2Select<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_geographique?: boolean;
+      libelle_geographique?: boolean;
+      epci?: boolean;
+      libelle_epci?: boolean;
+      departement?: boolean;
+      region?: boolean;
+      age_bati_post06?: boolean;
+      age_bati_91_05?: boolean;
+      age_bati_46_90?: boolean;
+      age_bati_19_45?: boolean;
+      age_bati_pre_19?: boolean;
+      under_4_sum_1968?: boolean;
+      to_80_sum_1968?: boolean;
+      over_80_sum_1968?: boolean;
+      under_4_sum_1975?: boolean;
+      to_80_sum_1975?: boolean;
+      over_80_sum_1975?: boolean;
+      under_4_sum_1982?: boolean;
+      to_80_sum_1982?: boolean;
+      over_80_sum_1982?: boolean;
+      under_4_sum_1990?: boolean;
+      to_80_sum_1990?: boolean;
+      over_80_sum_1990?: boolean;
+      under_4_sum_1999?: boolean;
+      to_80_sum_1999?: boolean;
+      over_80_sum_1999?: boolean;
+      under_4_sum_2009?: boolean;
+      to_80_sum_2009?: boolean;
+      over_80_sum_2009?: boolean;
+      under_4_sum_2014?: boolean;
+      to_80_sum_2014?: boolean;
+      over_80_sum_2014?: boolean;
+      under_4_sum_2020?: boolean;
+      to_80_sum_2020?: boolean;
+      over_80_sum_2020?: boolean;
+      P20_POP80P?: boolean;
+      P20_POP80P_PSEUL?: boolean;
+      P20_POP80P_PSEUL_PERCENT?: boolean;
+      tee_log?: boolean;
+      tee_mob?: boolean;
+      precarite_logement?: boolean;
+      NA5AZ_sum?: boolean;
+      NA5BE_sum?: boolean;
+      NA5FZ_sum?: boolean;
+      NA5GU_sum?: boolean;
+      NA5OQ_sum?: boolean;
+      s_geom_cstr_bati?: boolean;
+      hauteur?: boolean;
+      h_x_s?: boolean;
+      densite_bati?: boolean;
+      clc_1_artificialise?: boolean;
+      clc_2_agricole?: boolean;
+      clc_3_foret_semiNaturel?: boolean;
+      clc_4_humide?: boolean;
+      clc_5_eau?: boolean;
+      superf_choro?: boolean;
+    },
+    ExtArgs['result']['inconfort_thermique2']
+  >;
+
+  export type inconfort_thermique2SelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_geographique?: boolean;
+      libelle_geographique?: boolean;
+      epci?: boolean;
+      libelle_epci?: boolean;
+      departement?: boolean;
+      region?: boolean;
+      age_bati_post06?: boolean;
+      age_bati_91_05?: boolean;
+      age_bati_46_90?: boolean;
+      age_bati_19_45?: boolean;
+      age_bati_pre_19?: boolean;
+      under_4_sum_1968?: boolean;
+      to_80_sum_1968?: boolean;
+      over_80_sum_1968?: boolean;
+      under_4_sum_1975?: boolean;
+      to_80_sum_1975?: boolean;
+      over_80_sum_1975?: boolean;
+      under_4_sum_1982?: boolean;
+      to_80_sum_1982?: boolean;
+      over_80_sum_1982?: boolean;
+      under_4_sum_1990?: boolean;
+      to_80_sum_1990?: boolean;
+      over_80_sum_1990?: boolean;
+      under_4_sum_1999?: boolean;
+      to_80_sum_1999?: boolean;
+      over_80_sum_1999?: boolean;
+      under_4_sum_2009?: boolean;
+      to_80_sum_2009?: boolean;
+      over_80_sum_2009?: boolean;
+      under_4_sum_2014?: boolean;
+      to_80_sum_2014?: boolean;
+      over_80_sum_2014?: boolean;
+      under_4_sum_2020?: boolean;
+      to_80_sum_2020?: boolean;
+      over_80_sum_2020?: boolean;
+      P20_POP80P?: boolean;
+      P20_POP80P_PSEUL?: boolean;
+      P20_POP80P_PSEUL_PERCENT?: boolean;
+      tee_log?: boolean;
+      tee_mob?: boolean;
+      precarite_logement?: boolean;
+      NA5AZ_sum?: boolean;
+      NA5BE_sum?: boolean;
+      NA5FZ_sum?: boolean;
+      NA5GU_sum?: boolean;
+      NA5OQ_sum?: boolean;
+      s_geom_cstr_bati?: boolean;
+      hauteur?: boolean;
+      h_x_s?: boolean;
+      densite_bati?: boolean;
+      clc_1_artificialise?: boolean;
+      clc_2_agricole?: boolean;
+      clc_3_foret_semiNaturel?: boolean;
+      clc_4_humide?: boolean;
+      clc_5_eau?: boolean;
+      superf_choro?: boolean;
+    },
+    ExtArgs['result']['inconfort_thermique2']
+  >;
+
+  export type inconfort_thermique2SelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_geographique?: boolean;
+      libelle_geographique?: boolean;
+      epci?: boolean;
+      libelle_epci?: boolean;
+      departement?: boolean;
+      region?: boolean;
+      age_bati_post06?: boolean;
+      age_bati_91_05?: boolean;
+      age_bati_46_90?: boolean;
+      age_bati_19_45?: boolean;
+      age_bati_pre_19?: boolean;
+      under_4_sum_1968?: boolean;
+      to_80_sum_1968?: boolean;
+      over_80_sum_1968?: boolean;
+      under_4_sum_1975?: boolean;
+      to_80_sum_1975?: boolean;
+      over_80_sum_1975?: boolean;
+      under_4_sum_1982?: boolean;
+      to_80_sum_1982?: boolean;
+      over_80_sum_1982?: boolean;
+      under_4_sum_1990?: boolean;
+      to_80_sum_1990?: boolean;
+      over_80_sum_1990?: boolean;
+      under_4_sum_1999?: boolean;
+      to_80_sum_1999?: boolean;
+      over_80_sum_1999?: boolean;
+      under_4_sum_2009?: boolean;
+      to_80_sum_2009?: boolean;
+      over_80_sum_2009?: boolean;
+      under_4_sum_2014?: boolean;
+      to_80_sum_2014?: boolean;
+      over_80_sum_2014?: boolean;
+      under_4_sum_2020?: boolean;
+      to_80_sum_2020?: boolean;
+      over_80_sum_2020?: boolean;
+      P20_POP80P?: boolean;
+      P20_POP80P_PSEUL?: boolean;
+      P20_POP80P_PSEUL_PERCENT?: boolean;
+      tee_log?: boolean;
+      tee_mob?: boolean;
+      precarite_logement?: boolean;
+      NA5AZ_sum?: boolean;
+      NA5BE_sum?: boolean;
+      NA5FZ_sum?: boolean;
+      NA5GU_sum?: boolean;
+      NA5OQ_sum?: boolean;
+      s_geom_cstr_bati?: boolean;
+      hauteur?: boolean;
+      h_x_s?: boolean;
+      densite_bati?: boolean;
+      clc_1_artificialise?: boolean;
+      clc_2_agricole?: boolean;
+      clc_3_foret_semiNaturel?: boolean;
+      clc_4_humide?: boolean;
+      clc_5_eau?: boolean;
+      superf_choro?: boolean;
+    },
+    ExtArgs['result']['inconfort_thermique2']
+  >;
+
+  export type inconfort_thermique2SelectScalar = {
+    index?: boolean;
+    code_geographique?: boolean;
+    libelle_geographique?: boolean;
+    epci?: boolean;
+    libelle_epci?: boolean;
+    departement?: boolean;
+    region?: boolean;
+    age_bati_post06?: boolean;
+    age_bati_91_05?: boolean;
+    age_bati_46_90?: boolean;
+    age_bati_19_45?: boolean;
+    age_bati_pre_19?: boolean;
+    under_4_sum_1968?: boolean;
+    to_80_sum_1968?: boolean;
+    over_80_sum_1968?: boolean;
+    under_4_sum_1975?: boolean;
+    to_80_sum_1975?: boolean;
+    over_80_sum_1975?: boolean;
+    under_4_sum_1982?: boolean;
+    to_80_sum_1982?: boolean;
+    over_80_sum_1982?: boolean;
+    under_4_sum_1990?: boolean;
+    to_80_sum_1990?: boolean;
+    over_80_sum_1990?: boolean;
+    under_4_sum_1999?: boolean;
+    to_80_sum_1999?: boolean;
+    over_80_sum_1999?: boolean;
+    under_4_sum_2009?: boolean;
+    to_80_sum_2009?: boolean;
+    over_80_sum_2009?: boolean;
+    under_4_sum_2014?: boolean;
+    to_80_sum_2014?: boolean;
+    over_80_sum_2014?: boolean;
+    under_4_sum_2020?: boolean;
+    to_80_sum_2020?: boolean;
+    over_80_sum_2020?: boolean;
+    P20_POP80P?: boolean;
+    P20_POP80P_PSEUL?: boolean;
+    P20_POP80P_PSEUL_PERCENT?: boolean;
+    tee_log?: boolean;
+    tee_mob?: boolean;
+    precarite_logement?: boolean;
+    NA5AZ_sum?: boolean;
+    NA5BE_sum?: boolean;
+    NA5FZ_sum?: boolean;
+    NA5GU_sum?: boolean;
+    NA5OQ_sum?: boolean;
+    s_geom_cstr_bati?: boolean;
+    hauteur?: boolean;
+    h_x_s?: boolean;
+    densite_bati?: boolean;
+    clc_1_artificialise?: boolean;
+    clc_2_agricole?: boolean;
+    clc_3_foret_semiNaturel?: boolean;
+    clc_4_humide?: boolean;
+    clc_5_eau?: boolean;
+    superf_choro?: boolean;
+  };
+
+  export type inconfort_thermique2Omit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'index'
+    | 'code_geographique'
+    | 'libelle_geographique'
+    | 'epci'
+    | 'libelle_epci'
+    | 'departement'
+    | 'region'
+    | 'age_bati_post06'
+    | 'age_bati_91_05'
+    | 'age_bati_46_90'
+    | 'age_bati_19_45'
+    | 'age_bati_pre_19'
+    | 'under_4_sum_1968'
+    | 'to_80_sum_1968'
+    | 'over_80_sum_1968'
+    | 'under_4_sum_1975'
+    | 'to_80_sum_1975'
+    | 'over_80_sum_1975'
+    | 'under_4_sum_1982'
+    | 'to_80_sum_1982'
+    | 'over_80_sum_1982'
+    | 'under_4_sum_1990'
+    | 'to_80_sum_1990'
+    | 'over_80_sum_1990'
+    | 'under_4_sum_1999'
+    | 'to_80_sum_1999'
+    | 'over_80_sum_1999'
+    | 'under_4_sum_2009'
+    | 'to_80_sum_2009'
+    | 'over_80_sum_2009'
+    | 'under_4_sum_2014'
+    | 'to_80_sum_2014'
+    | 'over_80_sum_2014'
+    | 'under_4_sum_2020'
+    | 'to_80_sum_2020'
+    | 'over_80_sum_2020'
+    | 'P20_POP80P'
+    | 'P20_POP80P_PSEUL'
+    | 'P20_POP80P_PSEUL_PERCENT'
+    | 'tee_log'
+    | 'tee_mob'
+    | 'precarite_logement'
+    | 'NA5AZ_sum'
+    | 'NA5BE_sum'
+    | 'NA5FZ_sum'
+    | 'NA5GU_sum'
+    | 'NA5OQ_sum'
+    | 's_geom_cstr_bati'
+    | 'hauteur'
+    | 'h_x_s'
+    | 'densite_bati'
+    | 'clc_1_artificialise'
+    | 'clc_2_agricole'
+    | 'clc_3_foret_semiNaturel'
+    | 'clc_4_humide'
+    | 'clc_5_eau'
+    | 'superf_choro',
+    ExtArgs['result']['inconfort_thermique2']
+  >;
+
+  export type $inconfort_thermique2Payload<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    name: 'inconfort_thermique2';
+    objects: {};
+    scalars: $Extensions.GetPayloadResult<
+      {
+        index: bigint;
+        code_geographique: string;
+        libelle_geographique: string;
+        epci: string;
+        libelle_epci: string;
+        departement: string;
+        region: number;
+        age_bati_post06: number | null;
+        age_bati_91_05: number | null;
+        age_bati_46_90: number | null;
+        age_bati_19_45: number | null;
+        age_bati_pre_19: number | null;
+        under_4_sum_1968: string | null;
+        to_80_sum_1968: string | null;
+        over_80_sum_1968: string | null;
+        under_4_sum_1975: string | null;
+        to_80_sum_1975: string | null;
+        over_80_sum_1975: string | null;
+        under_4_sum_1982: string | null;
+        to_80_sum_1982: string | null;
+        over_80_sum_1982: string | null;
+        under_4_sum_1990: string | null;
+        to_80_sum_1990: string | null;
+        over_80_sum_1990: string | null;
+        under_4_sum_1999: string | null;
+        to_80_sum_1999: string | null;
+        over_80_sum_1999: string | null;
+        under_4_sum_2009: string | null;
+        to_80_sum_2009: string | null;
+        over_80_sum_2009: string | null;
+        under_4_sum_2014: string | null;
+        to_80_sum_2014: string | null;
+        over_80_sum_2014: string | null;
+        under_4_sum_2020: string | null;
+        to_80_sum_2020: string | null;
+        over_80_sum_2020: string | null;
+        P20_POP80P: string | null;
+        P20_POP80P_PSEUL: string | null;
+        P20_POP80P_PSEUL_PERCENT: string | null;
+        tee_log: number | null;
+        tee_mob: number | null;
+        precarite_logement: number | null;
+        NA5AZ_sum: number | null;
+        NA5BE_sum: number | null;
+        NA5FZ_sum: number | null;
+        NA5GU_sum: number | null;
+        NA5OQ_sum: number | null;
+        s_geom_cstr_bati: number | null;
+        hauteur: number | null;
+        h_x_s: number | null;
+        densite_bati: number | null;
+        clc_1_artificialise: number | null;
+        clc_2_agricole: number | null;
+        clc_3_foret_semiNaturel: number | null;
+        clc_4_humide: number | null;
+        clc_5_eau: number | null;
+        superf_choro: number | null;
+      },
+      ExtArgs['result']['inconfort_thermique2']
+    >;
+    composites: {};
+  };
+
+  type inconfort_thermique2GetPayload<
+    S extends boolean | null | undefined | inconfort_thermique2DefaultArgs
+  > = $Result.GetResult<Prisma.$inconfort_thermique2Payload, S>;
+
+  type inconfort_thermique2CountArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = Omit<
+    inconfort_thermique2FindManyArgs,
+    'select' | 'include' | 'distinct' | 'omit'
+  > & {
+    select?: Inconfort_thermique2CountAggregateInputType | true;
+  };
+
+  export interface inconfort_thermique2Delegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['inconfort_thermique2'];
+      meta: { name: 'inconfort_thermique2' };
+    };
+    /**
+     * Find zero or one Inconfort_thermique2 that matches the filter.
+     * @param {inconfort_thermique2FindUniqueArgs} args - Arguments to find a Inconfort_thermique2
+     * @example
+     * // Get one Inconfort_thermique2
+     * const inconfort_thermique2 = await prisma.inconfort_thermique2.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends inconfort_thermique2FindUniqueArgs>(
+      args: SelectSubset<T, inconfort_thermique2FindUniqueArgs<ExtArgs>>
+    ): Prisma__inconfort_thermique2Client<
+      $Result.GetResult<
+        Prisma.$inconfort_thermique2Payload<ExtArgs>,
+        T,
+        'findUnique',
+        ClientOptions
+      > | null,
+      null,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find one Inconfort_thermique2 that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {inconfort_thermique2FindUniqueOrThrowArgs} args - Arguments to find a Inconfort_thermique2
+     * @example
+     * // Get one Inconfort_thermique2
+     * const inconfort_thermique2 = await prisma.inconfort_thermique2.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends inconfort_thermique2FindUniqueOrThrowArgs>(
+      args: SelectSubset<T, inconfort_thermique2FindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__inconfort_thermique2Client<
+      $Result.GetResult<
+        Prisma.$inconfort_thermique2Payload<ExtArgs>,
+        T,
+        'findUniqueOrThrow',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find the first Inconfort_thermique2 that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {inconfort_thermique2FindFirstArgs} args - Arguments to find a Inconfort_thermique2
+     * @example
+     * // Get one Inconfort_thermique2
+     * const inconfort_thermique2 = await prisma.inconfort_thermique2.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends inconfort_thermique2FindFirstArgs>(
+      args?: SelectSubset<T, inconfort_thermique2FindFirstArgs<ExtArgs>>
+    ): Prisma__inconfort_thermique2Client<
+      $Result.GetResult<
+        Prisma.$inconfort_thermique2Payload<ExtArgs>,
+        T,
+        'findFirst',
+        ClientOptions
+      > | null,
+      null,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find the first Inconfort_thermique2 that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {inconfort_thermique2FindFirstOrThrowArgs} args - Arguments to find a Inconfort_thermique2
+     * @example
+     * // Get one Inconfort_thermique2
+     * const inconfort_thermique2 = await prisma.inconfort_thermique2.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends inconfort_thermique2FindFirstOrThrowArgs>(
+      args?: SelectSubset<T, inconfort_thermique2FindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__inconfort_thermique2Client<
+      $Result.GetResult<
+        Prisma.$inconfort_thermique2Payload<ExtArgs>,
+        T,
+        'findFirstOrThrow',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find zero or more Inconfort_thermique2s that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {inconfort_thermique2FindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Inconfort_thermique2s
+     * const inconfort_thermique2s = await prisma.inconfort_thermique2.findMany()
+     *
+     * // Get first 10 Inconfort_thermique2s
+     * const inconfort_thermique2s = await prisma.inconfort_thermique2.findMany({ take: 10 })
+     *
+     * // Only select the `index`
+     * const inconfort_thermique2WithIndexOnly = await prisma.inconfort_thermique2.findMany({ select: { index: true } })
+     *
+     */
+    findMany<T extends inconfort_thermique2FindManyArgs>(
+      args?: SelectSubset<T, inconfort_thermique2FindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$inconfort_thermique2Payload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Create a Inconfort_thermique2.
+     * @param {inconfort_thermique2CreateArgs} args - Arguments to create a Inconfort_thermique2.
+     * @example
+     * // Create one Inconfort_thermique2
+     * const Inconfort_thermique2 = await prisma.inconfort_thermique2.create({
+     *   data: {
+     *     // ... data to create a Inconfort_thermique2
+     *   }
+     * })
+     *
+     */
+    create<T extends inconfort_thermique2CreateArgs>(
+      args: SelectSubset<T, inconfort_thermique2CreateArgs<ExtArgs>>
+    ): Prisma__inconfort_thermique2Client<
+      $Result.GetResult<
+        Prisma.$inconfort_thermique2Payload<ExtArgs>,
+        T,
+        'create',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Create many Inconfort_thermique2s.
+     * @param {inconfort_thermique2CreateManyArgs} args - Arguments to create many Inconfort_thermique2s.
+     * @example
+     * // Create many Inconfort_thermique2s
+     * const inconfort_thermique2 = await prisma.inconfort_thermique2.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends inconfort_thermique2CreateManyArgs>(
+      args?: SelectSubset<T, inconfort_thermique2CreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create many Inconfort_thermique2s and returns the data saved in the database.
+     * @param {inconfort_thermique2CreateManyAndReturnArgs} args - Arguments to create many Inconfort_thermique2s.
+     * @example
+     * // Create many Inconfort_thermique2s
+     * const inconfort_thermique2 = await prisma.inconfort_thermique2.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Inconfort_thermique2s and only return the `index`
+     * const inconfort_thermique2WithIndexOnly = await prisma.inconfort_thermique2.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends inconfort_thermique2CreateManyAndReturnArgs>(
+      args?: SelectSubset<
+        T,
+        inconfort_thermique2CreateManyAndReturnArgs<ExtArgs>
+      >
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$inconfort_thermique2Payload<ExtArgs>,
+        T,
+        'createManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Delete a Inconfort_thermique2.
+     * @param {inconfort_thermique2DeleteArgs} args - Arguments to delete one Inconfort_thermique2.
+     * @example
+     * // Delete one Inconfort_thermique2
+     * const Inconfort_thermique2 = await prisma.inconfort_thermique2.delete({
+     *   where: {
+     *     // ... filter to delete one Inconfort_thermique2
+     *   }
+     * })
+     *
+     */
+    delete<T extends inconfort_thermique2DeleteArgs>(
+      args: SelectSubset<T, inconfort_thermique2DeleteArgs<ExtArgs>>
+    ): Prisma__inconfort_thermique2Client<
+      $Result.GetResult<
+        Prisma.$inconfort_thermique2Payload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Update one Inconfort_thermique2.
+     * @param {inconfort_thermique2UpdateArgs} args - Arguments to update one Inconfort_thermique2.
+     * @example
+     * // Update one Inconfort_thermique2
+     * const inconfort_thermique2 = await prisma.inconfort_thermique2.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends inconfort_thermique2UpdateArgs>(
+      args: SelectSubset<T, inconfort_thermique2UpdateArgs<ExtArgs>>
+    ): Prisma__inconfort_thermique2Client<
+      $Result.GetResult<
+        Prisma.$inconfort_thermique2Payload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Delete zero or more Inconfort_thermique2s.
+     * @param {inconfort_thermique2DeleteManyArgs} args - Arguments to filter Inconfort_thermique2s to delete.
+     * @example
+     * // Delete a few Inconfort_thermique2s
+     * const { count } = await prisma.inconfort_thermique2.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends inconfort_thermique2DeleteManyArgs>(
+      args?: SelectSubset<T, inconfort_thermique2DeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Inconfort_thermique2s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {inconfort_thermique2UpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Inconfort_thermique2s
+     * const inconfort_thermique2 = await prisma.inconfort_thermique2.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends inconfort_thermique2UpdateManyArgs>(
+      args: SelectSubset<T, inconfort_thermique2UpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Inconfort_thermique2s and returns the data updated in the database.
+     * @param {inconfort_thermique2UpdateManyAndReturnArgs} args - Arguments to update many Inconfort_thermique2s.
+     * @example
+     * // Update many Inconfort_thermique2s
+     * const inconfort_thermique2 = await prisma.inconfort_thermique2.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Inconfort_thermique2s and only return the `index`
+     * const inconfort_thermique2WithIndexOnly = await prisma.inconfort_thermique2.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends inconfort_thermique2UpdateManyAndReturnArgs>(
+      args: SelectSubset<
+        T,
+        inconfort_thermique2UpdateManyAndReturnArgs<ExtArgs>
+      >
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$inconfort_thermique2Payload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Create or update one Inconfort_thermique2.
+     * @param {inconfort_thermique2UpsertArgs} args - Arguments to update or create a Inconfort_thermique2.
+     * @example
+     * // Update or create a Inconfort_thermique2
+     * const inconfort_thermique2 = await prisma.inconfort_thermique2.upsert({
+     *   create: {
+     *     // ... data to create a Inconfort_thermique2
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Inconfort_thermique2 we want to update
+     *   }
+     * })
+     */
+    upsert<T extends inconfort_thermique2UpsertArgs>(
+      args: SelectSubset<T, inconfort_thermique2UpsertArgs<ExtArgs>>
+    ): Prisma__inconfort_thermique2Client<
+      $Result.GetResult<
+        Prisma.$inconfort_thermique2Payload<ExtArgs>,
+        T,
+        'upsert',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Count the number of Inconfort_thermique2s.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {inconfort_thermique2CountArgs} args - Arguments to filter Inconfort_thermique2s to count.
+     * @example
+     * // Count the number of Inconfort_thermique2s
+     * const count = await prisma.inconfort_thermique2.count({
+     *   where: {
+     *     // ... the filter for the Inconfort_thermique2s we want to count
+     *   }
+     * })
+     **/
+    count<T extends inconfort_thermique2CountArgs>(
+      args?: Subset<T, inconfort_thermique2CountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<
+              T['select'],
+              Inconfort_thermique2CountAggregateOutputType
+            >
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a Inconfort_thermique2.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Inconfort_thermique2AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends Inconfort_thermique2AggregateArgs>(
+      args: Subset<T, Inconfort_thermique2AggregateArgs>
+    ): Prisma.PrismaPromise<GetInconfort_thermique2AggregateType<T>>;
+
+    /**
+     * Group by Inconfort_thermique2.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {inconfort_thermique2GroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends inconfort_thermique2GroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: inconfort_thermique2GroupByArgs['orderBy'] }
+        : { orderBy?: inconfort_thermique2GroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<
+        Keys<MaybeTupleToUnion<T['orderBy']>>
+      >,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`
+                    ];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+    >(
+      args: SubsetIntersection<T, inconfort_thermique2GroupByArgs, OrderByArg> &
+        InputErrors
+    ): {} extends InputErrors
+      ? GetInconfort_thermique2GroupByPayload<T>
+      : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the inconfort_thermique2 model
+     */
+    readonly fields: inconfort_thermique2FieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for inconfort_thermique2.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__inconfort_thermique2Client<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?:
+        | ((value: T) => TResult1 | PromiseLike<TResult1>)
+        | undefined
+        | null,
+      onrejected?:
+        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?:
+        | ((reason: any) => TResult | PromiseLike<TResult>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the inconfort_thermique2 model
+   */
+  interface inconfort_thermique2FieldRefs {
+    readonly index: FieldRef<'inconfort_thermique2', 'BigInt'>;
+    readonly code_geographique: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly libelle_geographique: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly epci: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly libelle_epci: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly departement: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly region: FieldRef<'inconfort_thermique2', 'Int'>;
+    readonly age_bati_post06: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly age_bati_91_05: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly age_bati_46_90: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly age_bati_19_45: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly age_bati_pre_19: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly under_4_sum_1968: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly to_80_sum_1968: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly over_80_sum_1968: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly under_4_sum_1975: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly to_80_sum_1975: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly over_80_sum_1975: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly under_4_sum_1982: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly to_80_sum_1982: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly over_80_sum_1982: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly under_4_sum_1990: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly to_80_sum_1990: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly over_80_sum_1990: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly under_4_sum_1999: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly to_80_sum_1999: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly over_80_sum_1999: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly under_4_sum_2009: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly to_80_sum_2009: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly over_80_sum_2009: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly under_4_sum_2014: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly to_80_sum_2014: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly over_80_sum_2014: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly under_4_sum_2020: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly to_80_sum_2020: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly over_80_sum_2020: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly P20_POP80P: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly P20_POP80P_PSEUL: FieldRef<'inconfort_thermique2', 'String'>;
+    readonly P20_POP80P_PSEUL_PERCENT: FieldRef<
+      'inconfort_thermique2',
+      'String'
+    >;
+    readonly tee_log: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly tee_mob: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly precarite_logement: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly NA5AZ_sum: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly NA5BE_sum: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly NA5FZ_sum: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly NA5GU_sum: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly NA5OQ_sum: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly s_geom_cstr_bati: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly hauteur: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly h_x_s: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly densite_bati: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly clc_1_artificialise: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly clc_2_agricole: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly clc_3_foret_semiNaturel: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly clc_4_humide: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly clc_5_eau: FieldRef<'inconfort_thermique2', 'Float'>;
+    readonly superf_choro: FieldRef<'inconfort_thermique2', 'Float'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * inconfort_thermique2 findUnique
+   */
+  export type inconfort_thermique2FindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the inconfort_thermique2
+     */
+    select?: inconfort_thermique2Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique2
+     */
+    omit?: inconfort_thermique2Omit<ExtArgs> | null;
+    /**
+     * Filter, which inconfort_thermique2 to fetch.
+     */
+    where: inconfort_thermique2WhereUniqueInput;
+  };
+
+  /**
+   * inconfort_thermique2 findUniqueOrThrow
+   */
+  export type inconfort_thermique2FindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the inconfort_thermique2
+     */
+    select?: inconfort_thermique2Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique2
+     */
+    omit?: inconfort_thermique2Omit<ExtArgs> | null;
+    /**
+     * Filter, which inconfort_thermique2 to fetch.
+     */
+    where: inconfort_thermique2WhereUniqueInput;
+  };
+
+  /**
+   * inconfort_thermique2 findFirst
+   */
+  export type inconfort_thermique2FindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the inconfort_thermique2
+     */
+    select?: inconfort_thermique2Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique2
+     */
+    omit?: inconfort_thermique2Omit<ExtArgs> | null;
+    /**
+     * Filter, which inconfort_thermique2 to fetch.
+     */
+    where?: inconfort_thermique2WhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of inconfort_thermique2s to fetch.
+     */
+    orderBy?:
+      | inconfort_thermique2OrderByWithRelationInput
+      | inconfort_thermique2OrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for inconfort_thermique2s.
+     */
+    cursor?: inconfort_thermique2WhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` inconfort_thermique2s from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` inconfort_thermique2s.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of inconfort_thermique2s.
+     */
+    distinct?:
+      | Inconfort_thermique2ScalarFieldEnum
+      | Inconfort_thermique2ScalarFieldEnum[];
+  };
+
+  /**
+   * inconfort_thermique2 findFirstOrThrow
+   */
+  export type inconfort_thermique2FindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the inconfort_thermique2
+     */
+    select?: inconfort_thermique2Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique2
+     */
+    omit?: inconfort_thermique2Omit<ExtArgs> | null;
+    /**
+     * Filter, which inconfort_thermique2 to fetch.
+     */
+    where?: inconfort_thermique2WhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of inconfort_thermique2s to fetch.
+     */
+    orderBy?:
+      | inconfort_thermique2OrderByWithRelationInput
+      | inconfort_thermique2OrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for inconfort_thermique2s.
+     */
+    cursor?: inconfort_thermique2WhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` inconfort_thermique2s from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` inconfort_thermique2s.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of inconfort_thermique2s.
+     */
+    distinct?:
+      | Inconfort_thermique2ScalarFieldEnum
+      | Inconfort_thermique2ScalarFieldEnum[];
+  };
+
+  /**
+   * inconfort_thermique2 findMany
+   */
+  export type inconfort_thermique2FindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the inconfort_thermique2
+     */
+    select?: inconfort_thermique2Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique2
+     */
+    omit?: inconfort_thermique2Omit<ExtArgs> | null;
+    /**
+     * Filter, which inconfort_thermique2s to fetch.
+     */
+    where?: inconfort_thermique2WhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of inconfort_thermique2s to fetch.
+     */
+    orderBy?:
+      | inconfort_thermique2OrderByWithRelationInput
+      | inconfort_thermique2OrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing inconfort_thermique2s.
+     */
+    cursor?: inconfort_thermique2WhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` inconfort_thermique2s from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` inconfort_thermique2s.
+     */
+    skip?: number;
+    distinct?:
+      | Inconfort_thermique2ScalarFieldEnum
+      | Inconfort_thermique2ScalarFieldEnum[];
+  };
+
+  /**
+   * inconfort_thermique2 create
+   */
+  export type inconfort_thermique2CreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the inconfort_thermique2
+     */
+    select?: inconfort_thermique2Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique2
+     */
+    omit?: inconfort_thermique2Omit<ExtArgs> | null;
+    /**
+     * The data needed to create a inconfort_thermique2.
+     */
+    data: XOR<
+      inconfort_thermique2CreateInput,
+      inconfort_thermique2UncheckedCreateInput
+    >;
+  };
+
+  /**
+   * inconfort_thermique2 createMany
+   */
+  export type inconfort_thermique2CreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to create many inconfort_thermique2s.
+     */
+    data:
+      | inconfort_thermique2CreateManyInput
+      | inconfort_thermique2CreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * inconfort_thermique2 createManyAndReturn
+   */
+  export type inconfort_thermique2CreateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the inconfort_thermique2
+     */
+    select?: inconfort_thermique2SelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique2
+     */
+    omit?: inconfort_thermique2Omit<ExtArgs> | null;
+    /**
+     * The data used to create many inconfort_thermique2s.
+     */
+    data:
+      | inconfort_thermique2CreateManyInput
+      | inconfort_thermique2CreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * inconfort_thermique2 update
+   */
+  export type inconfort_thermique2UpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the inconfort_thermique2
+     */
+    select?: inconfort_thermique2Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique2
+     */
+    omit?: inconfort_thermique2Omit<ExtArgs> | null;
+    /**
+     * The data needed to update a inconfort_thermique2.
+     */
+    data: XOR<
+      inconfort_thermique2UpdateInput,
+      inconfort_thermique2UncheckedUpdateInput
+    >;
+    /**
+     * Choose, which inconfort_thermique2 to update.
+     */
+    where: inconfort_thermique2WhereUniqueInput;
+  };
+
+  /**
+   * inconfort_thermique2 updateMany
+   */
+  export type inconfort_thermique2UpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to update inconfort_thermique2s.
+     */
+    data: XOR<
+      inconfort_thermique2UpdateManyMutationInput,
+      inconfort_thermique2UncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which inconfort_thermique2s to update
+     */
+    where?: inconfort_thermique2WhereInput;
+    /**
+     * Limit how many inconfort_thermique2s to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * inconfort_thermique2 updateManyAndReturn
+   */
+  export type inconfort_thermique2UpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the inconfort_thermique2
+     */
+    select?: inconfort_thermique2SelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique2
+     */
+    omit?: inconfort_thermique2Omit<ExtArgs> | null;
+    /**
+     * The data used to update inconfort_thermique2s.
+     */
+    data: XOR<
+      inconfort_thermique2UpdateManyMutationInput,
+      inconfort_thermique2UncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which inconfort_thermique2s to update
+     */
+    where?: inconfort_thermique2WhereInput;
+    /**
+     * Limit how many inconfort_thermique2s to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * inconfort_thermique2 upsert
+   */
+  export type inconfort_thermique2UpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the inconfort_thermique2
+     */
+    select?: inconfort_thermique2Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique2
+     */
+    omit?: inconfort_thermique2Omit<ExtArgs> | null;
+    /**
+     * The filter to search for the inconfort_thermique2 to update in case it exists.
+     */
+    where: inconfort_thermique2WhereUniqueInput;
+    /**
+     * In case the inconfort_thermique2 found by the `where` argument doesn't exist, create a new inconfort_thermique2 with this data.
+     */
+    create: XOR<
+      inconfort_thermique2CreateInput,
+      inconfort_thermique2UncheckedCreateInput
+    >;
+    /**
+     * In case the inconfort_thermique2 was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<
+      inconfort_thermique2UpdateInput,
+      inconfort_thermique2UncheckedUpdateInput
+    >;
+  };
+
+  /**
+   * inconfort_thermique2 delete
+   */
+  export type inconfort_thermique2DeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the inconfort_thermique2
+     */
+    select?: inconfort_thermique2Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique2
+     */
+    omit?: inconfort_thermique2Omit<ExtArgs> | null;
+    /**
+     * Filter which inconfort_thermique2 to delete.
+     */
+    where: inconfort_thermique2WhereUniqueInput;
+  };
+
+  /**
+   * inconfort_thermique2 deleteMany
+   */
+  export type inconfort_thermique2DeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which inconfort_thermique2s to delete
+     */
+    where?: inconfort_thermique2WhereInput;
+    /**
+     * Limit how many inconfort_thermique2s to delete.
+     */
+    limit?: number;
+  };
+
+  /**
+   * inconfort_thermique2 without action
+   */
+  export type inconfort_thermique2DefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the inconfort_thermique2
+     */
+    select?: inconfort_thermique2Select<ExtArgs> | null;
+    /**
+     * Omit specific fields from the inconfort_thermique2
+     */
+    omit?: inconfort_thermique2Omit<ExtArgs> | null;
+  };
+
+  /**
    * Enums
    */
 
@@ -31087,6 +33317,69 @@ export namespace Prisma {
 
   export type Qualite_sites_baignadeScalarFieldEnum =
     (typeof Qualite_sites_baignadeScalarFieldEnum)[keyof typeof Qualite_sites_baignadeScalarFieldEnum];
+
+  export const Inconfort_thermique2ScalarFieldEnum: {
+    index: 'index';
+    code_geographique: 'code_geographique';
+    libelle_geographique: 'libelle_geographique';
+    epci: 'epci';
+    libelle_epci: 'libelle_epci';
+    departement: 'departement';
+    region: 'region';
+    age_bati_post06: 'age_bati_post06';
+    age_bati_91_05: 'age_bati_91_05';
+    age_bati_46_90: 'age_bati_46_90';
+    age_bati_19_45: 'age_bati_19_45';
+    age_bati_pre_19: 'age_bati_pre_19';
+    under_4_sum_1968: 'under_4_sum_1968';
+    to_80_sum_1968: 'to_80_sum_1968';
+    over_80_sum_1968: 'over_80_sum_1968';
+    under_4_sum_1975: 'under_4_sum_1975';
+    to_80_sum_1975: 'to_80_sum_1975';
+    over_80_sum_1975: 'over_80_sum_1975';
+    under_4_sum_1982: 'under_4_sum_1982';
+    to_80_sum_1982: 'to_80_sum_1982';
+    over_80_sum_1982: 'over_80_sum_1982';
+    under_4_sum_1990: 'under_4_sum_1990';
+    to_80_sum_1990: 'to_80_sum_1990';
+    over_80_sum_1990: 'over_80_sum_1990';
+    under_4_sum_1999: 'under_4_sum_1999';
+    to_80_sum_1999: 'to_80_sum_1999';
+    over_80_sum_1999: 'over_80_sum_1999';
+    under_4_sum_2009: 'under_4_sum_2009';
+    to_80_sum_2009: 'to_80_sum_2009';
+    over_80_sum_2009: 'over_80_sum_2009';
+    under_4_sum_2014: 'under_4_sum_2014';
+    to_80_sum_2014: 'to_80_sum_2014';
+    over_80_sum_2014: 'over_80_sum_2014';
+    under_4_sum_2020: 'under_4_sum_2020';
+    to_80_sum_2020: 'to_80_sum_2020';
+    over_80_sum_2020: 'over_80_sum_2020';
+    P20_POP80P: 'P20_POP80P';
+    P20_POP80P_PSEUL: 'P20_POP80P_PSEUL';
+    P20_POP80P_PSEUL_PERCENT: 'P20_POP80P_PSEUL_PERCENT';
+    tee_log: 'tee_log';
+    tee_mob: 'tee_mob';
+    precarite_logement: 'precarite_logement';
+    NA5AZ_sum: 'NA5AZ_sum';
+    NA5BE_sum: 'NA5BE_sum';
+    NA5FZ_sum: 'NA5FZ_sum';
+    NA5GU_sum: 'NA5GU_sum';
+    NA5OQ_sum: 'NA5OQ_sum';
+    s_geom_cstr_bati: 's_geom_cstr_bati';
+    hauteur: 'hauteur';
+    h_x_s: 'h_x_s';
+    densite_bati: 'densite_bati';
+    clc_1_artificialise: 'clc_1_artificialise';
+    clc_2_agricole: 'clc_2_agricole';
+    clc_3_foret_semiNaturel: 'clc_3_foret_semiNaturel';
+    clc_4_humide: 'clc_4_humide';
+    clc_5_eau: 'clc_5_eau';
+    superf_choro: 'superf_choro';
+  };
+
+  export type Inconfort_thermique2ScalarFieldEnum =
+    (typeof Inconfort_thermique2ScalarFieldEnum)[keyof typeof Inconfort_thermique2ScalarFieldEnum];
 
   export const SortOrder: {
     asc: 'asc';
@@ -34293,6 +36586,709 @@ export namespace Prisma {
       | null;
   };
 
+  export type inconfort_thermique2WhereInput = {
+    AND?: inconfort_thermique2WhereInput | inconfort_thermique2WhereInput[];
+    OR?: inconfort_thermique2WhereInput[];
+    NOT?: inconfort_thermique2WhereInput | inconfort_thermique2WhereInput[];
+    index?: BigIntFilter<'inconfort_thermique2'> | bigint | number;
+    code_geographique?: StringFilter<'inconfort_thermique2'> | string;
+    libelle_geographique?: StringFilter<'inconfort_thermique2'> | string;
+    epci?: StringFilter<'inconfort_thermique2'> | string;
+    libelle_epci?: StringFilter<'inconfort_thermique2'> | string;
+    departement?: StringFilter<'inconfort_thermique2'> | string;
+    region?: IntFilter<'inconfort_thermique2'> | number;
+    age_bati_post06?:
+      | FloatNullableFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    age_bati_91_05?:
+      | FloatNullableFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    age_bati_46_90?:
+      | FloatNullableFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    age_bati_19_45?:
+      | FloatNullableFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    age_bati_pre_19?:
+      | FloatNullableFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    under_4_sum_1968?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_1968?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_1968?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    under_4_sum_1975?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_1975?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_1975?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    under_4_sum_1982?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_1982?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_1982?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    under_4_sum_1990?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_1990?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_1990?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    under_4_sum_1999?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_1999?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_1999?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    under_4_sum_2009?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_2009?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_2009?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    under_4_sum_2014?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_2014?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_2014?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    under_4_sum_2020?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_2020?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_2020?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    P20_POP80P?: StringNullableFilter<'inconfort_thermique2'> | string | null;
+    P20_POP80P_PSEUL?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    P20_POP80P_PSEUL_PERCENT?:
+      | StringNullableFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    tee_log?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+    tee_mob?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+    precarite_logement?:
+      | FloatNullableFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    NA5AZ_sum?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+    NA5BE_sum?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+    NA5FZ_sum?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+    NA5GU_sum?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+    NA5OQ_sum?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+    s_geom_cstr_bati?:
+      | FloatNullableFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    hauteur?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+    h_x_s?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+    densite_bati?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+    clc_1_artificialise?:
+      | FloatNullableFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    clc_2_agricole?:
+      | FloatNullableFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    clc_3_foret_semiNaturel?:
+      | FloatNullableFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    clc_4_humide?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+    clc_5_eau?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+    superf_choro?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+  };
+
+  export type inconfort_thermique2OrderByWithRelationInput = {
+    index?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
+    epci?: SortOrder;
+    libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
+    age_bati_post06?: SortOrderInput | SortOrder;
+    age_bati_91_05?: SortOrderInput | SortOrder;
+    age_bati_46_90?: SortOrderInput | SortOrder;
+    age_bati_19_45?: SortOrderInput | SortOrder;
+    age_bati_pre_19?: SortOrderInput | SortOrder;
+    under_4_sum_1968?: SortOrderInput | SortOrder;
+    to_80_sum_1968?: SortOrderInput | SortOrder;
+    over_80_sum_1968?: SortOrderInput | SortOrder;
+    under_4_sum_1975?: SortOrderInput | SortOrder;
+    to_80_sum_1975?: SortOrderInput | SortOrder;
+    over_80_sum_1975?: SortOrderInput | SortOrder;
+    under_4_sum_1982?: SortOrderInput | SortOrder;
+    to_80_sum_1982?: SortOrderInput | SortOrder;
+    over_80_sum_1982?: SortOrderInput | SortOrder;
+    under_4_sum_1990?: SortOrderInput | SortOrder;
+    to_80_sum_1990?: SortOrderInput | SortOrder;
+    over_80_sum_1990?: SortOrderInput | SortOrder;
+    under_4_sum_1999?: SortOrderInput | SortOrder;
+    to_80_sum_1999?: SortOrderInput | SortOrder;
+    over_80_sum_1999?: SortOrderInput | SortOrder;
+    under_4_sum_2009?: SortOrderInput | SortOrder;
+    to_80_sum_2009?: SortOrderInput | SortOrder;
+    over_80_sum_2009?: SortOrderInput | SortOrder;
+    under_4_sum_2014?: SortOrderInput | SortOrder;
+    to_80_sum_2014?: SortOrderInput | SortOrder;
+    over_80_sum_2014?: SortOrderInput | SortOrder;
+    under_4_sum_2020?: SortOrderInput | SortOrder;
+    to_80_sum_2020?: SortOrderInput | SortOrder;
+    over_80_sum_2020?: SortOrderInput | SortOrder;
+    P20_POP80P?: SortOrderInput | SortOrder;
+    P20_POP80P_PSEUL?: SortOrderInput | SortOrder;
+    P20_POP80P_PSEUL_PERCENT?: SortOrderInput | SortOrder;
+    tee_log?: SortOrderInput | SortOrder;
+    tee_mob?: SortOrderInput | SortOrder;
+    precarite_logement?: SortOrderInput | SortOrder;
+    NA5AZ_sum?: SortOrderInput | SortOrder;
+    NA5BE_sum?: SortOrderInput | SortOrder;
+    NA5FZ_sum?: SortOrderInput | SortOrder;
+    NA5GU_sum?: SortOrderInput | SortOrder;
+    NA5OQ_sum?: SortOrderInput | SortOrder;
+    s_geom_cstr_bati?: SortOrderInput | SortOrder;
+    hauteur?: SortOrderInput | SortOrder;
+    h_x_s?: SortOrderInput | SortOrder;
+    densite_bati?: SortOrderInput | SortOrder;
+    clc_1_artificialise?: SortOrderInput | SortOrder;
+    clc_2_agricole?: SortOrderInput | SortOrder;
+    clc_3_foret_semiNaturel?: SortOrderInput | SortOrder;
+    clc_4_humide?: SortOrderInput | SortOrder;
+    clc_5_eau?: SortOrderInput | SortOrder;
+    superf_choro?: SortOrderInput | SortOrder;
+  };
+
+  export type inconfort_thermique2WhereUniqueInput = Prisma.AtLeast<
+    {
+      index?: bigint | number;
+      AND?: inconfort_thermique2WhereInput | inconfort_thermique2WhereInput[];
+      OR?: inconfort_thermique2WhereInput[];
+      NOT?: inconfort_thermique2WhereInput | inconfort_thermique2WhereInput[];
+      code_geographique?: StringFilter<'inconfort_thermique2'> | string;
+      libelle_geographique?: StringFilter<'inconfort_thermique2'> | string;
+      epci?: StringFilter<'inconfort_thermique2'> | string;
+      libelle_epci?: StringFilter<'inconfort_thermique2'> | string;
+      departement?: StringFilter<'inconfort_thermique2'> | string;
+      region?: IntFilter<'inconfort_thermique2'> | number;
+      age_bati_post06?:
+        | FloatNullableFilter<'inconfort_thermique2'>
+        | number
+        | null;
+      age_bati_91_05?:
+        | FloatNullableFilter<'inconfort_thermique2'>
+        | number
+        | null;
+      age_bati_46_90?:
+        | FloatNullableFilter<'inconfort_thermique2'>
+        | number
+        | null;
+      age_bati_19_45?:
+        | FloatNullableFilter<'inconfort_thermique2'>
+        | number
+        | null;
+      age_bati_pre_19?:
+        | FloatNullableFilter<'inconfort_thermique2'>
+        | number
+        | null;
+      under_4_sum_1968?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      to_80_sum_1968?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      over_80_sum_1968?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      under_4_sum_1975?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      to_80_sum_1975?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      over_80_sum_1975?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      under_4_sum_1982?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      to_80_sum_1982?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      over_80_sum_1982?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      under_4_sum_1990?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      to_80_sum_1990?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      over_80_sum_1990?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      under_4_sum_1999?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      to_80_sum_1999?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      over_80_sum_1999?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      under_4_sum_2009?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      to_80_sum_2009?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      over_80_sum_2009?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      under_4_sum_2014?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      to_80_sum_2014?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      over_80_sum_2014?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      under_4_sum_2020?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      to_80_sum_2020?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      over_80_sum_2020?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      P20_POP80P?: StringNullableFilter<'inconfort_thermique2'> | string | null;
+      P20_POP80P_PSEUL?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      P20_POP80P_PSEUL_PERCENT?:
+        | StringNullableFilter<'inconfort_thermique2'>
+        | string
+        | null;
+      tee_log?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+      tee_mob?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+      precarite_logement?:
+        | FloatNullableFilter<'inconfort_thermique2'>
+        | number
+        | null;
+      NA5AZ_sum?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+      NA5BE_sum?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+      NA5FZ_sum?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+      NA5GU_sum?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+      NA5OQ_sum?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+      s_geom_cstr_bati?:
+        | FloatNullableFilter<'inconfort_thermique2'>
+        | number
+        | null;
+      hauteur?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+      h_x_s?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+      densite_bati?:
+        | FloatNullableFilter<'inconfort_thermique2'>
+        | number
+        | null;
+      clc_1_artificialise?:
+        | FloatNullableFilter<'inconfort_thermique2'>
+        | number
+        | null;
+      clc_2_agricole?:
+        | FloatNullableFilter<'inconfort_thermique2'>
+        | number
+        | null;
+      clc_3_foret_semiNaturel?:
+        | FloatNullableFilter<'inconfort_thermique2'>
+        | number
+        | null;
+      clc_4_humide?:
+        | FloatNullableFilter<'inconfort_thermique2'>
+        | number
+        | null;
+      clc_5_eau?: FloatNullableFilter<'inconfort_thermique2'> | number | null;
+      superf_choro?:
+        | FloatNullableFilter<'inconfort_thermique2'>
+        | number
+        | null;
+    },
+    'index'
+  >;
+
+  export type inconfort_thermique2OrderByWithAggregationInput = {
+    index?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
+    epci?: SortOrder;
+    libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
+    age_bati_post06?: SortOrderInput | SortOrder;
+    age_bati_91_05?: SortOrderInput | SortOrder;
+    age_bati_46_90?: SortOrderInput | SortOrder;
+    age_bati_19_45?: SortOrderInput | SortOrder;
+    age_bati_pre_19?: SortOrderInput | SortOrder;
+    under_4_sum_1968?: SortOrderInput | SortOrder;
+    to_80_sum_1968?: SortOrderInput | SortOrder;
+    over_80_sum_1968?: SortOrderInput | SortOrder;
+    under_4_sum_1975?: SortOrderInput | SortOrder;
+    to_80_sum_1975?: SortOrderInput | SortOrder;
+    over_80_sum_1975?: SortOrderInput | SortOrder;
+    under_4_sum_1982?: SortOrderInput | SortOrder;
+    to_80_sum_1982?: SortOrderInput | SortOrder;
+    over_80_sum_1982?: SortOrderInput | SortOrder;
+    under_4_sum_1990?: SortOrderInput | SortOrder;
+    to_80_sum_1990?: SortOrderInput | SortOrder;
+    over_80_sum_1990?: SortOrderInput | SortOrder;
+    under_4_sum_1999?: SortOrderInput | SortOrder;
+    to_80_sum_1999?: SortOrderInput | SortOrder;
+    over_80_sum_1999?: SortOrderInput | SortOrder;
+    under_4_sum_2009?: SortOrderInput | SortOrder;
+    to_80_sum_2009?: SortOrderInput | SortOrder;
+    over_80_sum_2009?: SortOrderInput | SortOrder;
+    under_4_sum_2014?: SortOrderInput | SortOrder;
+    to_80_sum_2014?: SortOrderInput | SortOrder;
+    over_80_sum_2014?: SortOrderInput | SortOrder;
+    under_4_sum_2020?: SortOrderInput | SortOrder;
+    to_80_sum_2020?: SortOrderInput | SortOrder;
+    over_80_sum_2020?: SortOrderInput | SortOrder;
+    P20_POP80P?: SortOrderInput | SortOrder;
+    P20_POP80P_PSEUL?: SortOrderInput | SortOrder;
+    P20_POP80P_PSEUL_PERCENT?: SortOrderInput | SortOrder;
+    tee_log?: SortOrderInput | SortOrder;
+    tee_mob?: SortOrderInput | SortOrder;
+    precarite_logement?: SortOrderInput | SortOrder;
+    NA5AZ_sum?: SortOrderInput | SortOrder;
+    NA5BE_sum?: SortOrderInput | SortOrder;
+    NA5FZ_sum?: SortOrderInput | SortOrder;
+    NA5GU_sum?: SortOrderInput | SortOrder;
+    NA5OQ_sum?: SortOrderInput | SortOrder;
+    s_geom_cstr_bati?: SortOrderInput | SortOrder;
+    hauteur?: SortOrderInput | SortOrder;
+    h_x_s?: SortOrderInput | SortOrder;
+    densite_bati?: SortOrderInput | SortOrder;
+    clc_1_artificialise?: SortOrderInput | SortOrder;
+    clc_2_agricole?: SortOrderInput | SortOrder;
+    clc_3_foret_semiNaturel?: SortOrderInput | SortOrder;
+    clc_4_humide?: SortOrderInput | SortOrder;
+    clc_5_eau?: SortOrderInput | SortOrder;
+    superf_choro?: SortOrderInput | SortOrder;
+    _count?: inconfort_thermique2CountOrderByAggregateInput;
+    _avg?: inconfort_thermique2AvgOrderByAggregateInput;
+    _max?: inconfort_thermique2MaxOrderByAggregateInput;
+    _min?: inconfort_thermique2MinOrderByAggregateInput;
+    _sum?: inconfort_thermique2SumOrderByAggregateInput;
+  };
+
+  export type inconfort_thermique2ScalarWhereWithAggregatesInput = {
+    AND?:
+      | inconfort_thermique2ScalarWhereWithAggregatesInput
+      | inconfort_thermique2ScalarWhereWithAggregatesInput[];
+    OR?: inconfort_thermique2ScalarWhereWithAggregatesInput[];
+    NOT?:
+      | inconfort_thermique2ScalarWhereWithAggregatesInput
+      | inconfort_thermique2ScalarWhereWithAggregatesInput[];
+    index?:
+      | BigIntWithAggregatesFilter<'inconfort_thermique2'>
+      | bigint
+      | number;
+    code_geographique?:
+      | StringWithAggregatesFilter<'inconfort_thermique2'>
+      | string;
+    libelle_geographique?:
+      | StringWithAggregatesFilter<'inconfort_thermique2'>
+      | string;
+    epci?: StringWithAggregatesFilter<'inconfort_thermique2'> | string;
+    libelle_epci?: StringWithAggregatesFilter<'inconfort_thermique2'> | string;
+    departement?: StringWithAggregatesFilter<'inconfort_thermique2'> | string;
+    region?: IntWithAggregatesFilter<'inconfort_thermique2'> | number;
+    age_bati_post06?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    age_bati_91_05?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    age_bati_46_90?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    age_bati_19_45?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    age_bati_pre_19?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    under_4_sum_1968?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_1968?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_1968?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    under_4_sum_1975?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_1975?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_1975?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    under_4_sum_1982?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_1982?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_1982?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    under_4_sum_1990?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_1990?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_1990?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    under_4_sum_1999?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_1999?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_1999?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    under_4_sum_2009?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_2009?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_2009?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    under_4_sum_2014?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_2014?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_2014?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    under_4_sum_2020?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    to_80_sum_2020?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    over_80_sum_2020?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    P20_POP80P?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    P20_POP80P_PSEUL?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    P20_POP80P_PSEUL_PERCENT?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | string
+      | null;
+    tee_log?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    tee_mob?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    precarite_logement?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    NA5AZ_sum?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    NA5BE_sum?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    NA5FZ_sum?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    NA5GU_sum?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    NA5OQ_sum?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    s_geom_cstr_bati?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    hauteur?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    h_x_s?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    densite_bati?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    clc_1_artificialise?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    clc_2_agricole?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    clc_3_foret_semiNaturel?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    clc_4_humide?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    clc_5_eau?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+    superf_choro?:
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique2'>
+      | number
+      | null;
+  };
+
   export type inconfort_thermiqueCreateInput = {
     index: bigint | number;
     code_geographique: string;
@@ -37201,6 +40197,474 @@ export namespace Prisma {
     QEB_2020?: NullableStringFieldUpdateOperationsInput | string | null;
   };
 
+  export type inconfort_thermique2CreateInput = {
+    index: bigint | number;
+    code_geographique: string;
+    libelle_geographique: string;
+    epci: string;
+    libelle_epci: string;
+    departement: string;
+    region: number;
+    age_bati_post06?: number | null;
+    age_bati_91_05?: number | null;
+    age_bati_46_90?: number | null;
+    age_bati_19_45?: number | null;
+    age_bati_pre_19?: number | null;
+    under_4_sum_1968?: string | null;
+    to_80_sum_1968?: string | null;
+    over_80_sum_1968?: string | null;
+    under_4_sum_1975?: string | null;
+    to_80_sum_1975?: string | null;
+    over_80_sum_1975?: string | null;
+    under_4_sum_1982?: string | null;
+    to_80_sum_1982?: string | null;
+    over_80_sum_1982?: string | null;
+    under_4_sum_1990?: string | null;
+    to_80_sum_1990?: string | null;
+    over_80_sum_1990?: string | null;
+    under_4_sum_1999?: string | null;
+    to_80_sum_1999?: string | null;
+    over_80_sum_1999?: string | null;
+    under_4_sum_2009?: string | null;
+    to_80_sum_2009?: string | null;
+    over_80_sum_2009?: string | null;
+    under_4_sum_2014?: string | null;
+    to_80_sum_2014?: string | null;
+    over_80_sum_2014?: string | null;
+    under_4_sum_2020?: string | null;
+    to_80_sum_2020?: string | null;
+    over_80_sum_2020?: string | null;
+    P20_POP80P?: string | null;
+    P20_POP80P_PSEUL?: string | null;
+    P20_POP80P_PSEUL_PERCENT?: string | null;
+    tee_log?: number | null;
+    tee_mob?: number | null;
+    precarite_logement?: number | null;
+    NA5AZ_sum?: number | null;
+    NA5BE_sum?: number | null;
+    NA5FZ_sum?: number | null;
+    NA5GU_sum?: number | null;
+    NA5OQ_sum?: number | null;
+    s_geom_cstr_bati?: number | null;
+    hauteur?: number | null;
+    h_x_s?: number | null;
+    densite_bati?: number | null;
+    clc_1_artificialise?: number | null;
+    clc_2_agricole?: number | null;
+    clc_3_foret_semiNaturel?: number | null;
+    clc_4_humide?: number | null;
+    clc_5_eau?: number | null;
+    superf_choro?: number | null;
+  };
+
+  export type inconfort_thermique2UncheckedCreateInput = {
+    index: bigint | number;
+    code_geographique: string;
+    libelle_geographique: string;
+    epci: string;
+    libelle_epci: string;
+    departement: string;
+    region: number;
+    age_bati_post06?: number | null;
+    age_bati_91_05?: number | null;
+    age_bati_46_90?: number | null;
+    age_bati_19_45?: number | null;
+    age_bati_pre_19?: number | null;
+    under_4_sum_1968?: string | null;
+    to_80_sum_1968?: string | null;
+    over_80_sum_1968?: string | null;
+    under_4_sum_1975?: string | null;
+    to_80_sum_1975?: string | null;
+    over_80_sum_1975?: string | null;
+    under_4_sum_1982?: string | null;
+    to_80_sum_1982?: string | null;
+    over_80_sum_1982?: string | null;
+    under_4_sum_1990?: string | null;
+    to_80_sum_1990?: string | null;
+    over_80_sum_1990?: string | null;
+    under_4_sum_1999?: string | null;
+    to_80_sum_1999?: string | null;
+    over_80_sum_1999?: string | null;
+    under_4_sum_2009?: string | null;
+    to_80_sum_2009?: string | null;
+    over_80_sum_2009?: string | null;
+    under_4_sum_2014?: string | null;
+    to_80_sum_2014?: string | null;
+    over_80_sum_2014?: string | null;
+    under_4_sum_2020?: string | null;
+    to_80_sum_2020?: string | null;
+    over_80_sum_2020?: string | null;
+    P20_POP80P?: string | null;
+    P20_POP80P_PSEUL?: string | null;
+    P20_POP80P_PSEUL_PERCENT?: string | null;
+    tee_log?: number | null;
+    tee_mob?: number | null;
+    precarite_logement?: number | null;
+    NA5AZ_sum?: number | null;
+    NA5BE_sum?: number | null;
+    NA5FZ_sum?: number | null;
+    NA5GU_sum?: number | null;
+    NA5OQ_sum?: number | null;
+    s_geom_cstr_bati?: number | null;
+    hauteur?: number | null;
+    h_x_s?: number | null;
+    densite_bati?: number | null;
+    clc_1_artificialise?: number | null;
+    clc_2_agricole?: number | null;
+    clc_3_foret_semiNaturel?: number | null;
+    clc_4_humide?: number | null;
+    clc_5_eau?: number | null;
+    superf_choro?: number | null;
+  };
+
+  export type inconfort_thermique2UpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
+    epci?: StringFieldUpdateOperationsInput | string;
+    libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: IntFieldUpdateOperationsInput | number;
+    age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null;
+    under_4_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+    P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null;
+    P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null;
+    P20_POP80P_PSEUL_PERCENT?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    tee_log?: NullableFloatFieldUpdateOperationsInput | number | null;
+    tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null;
+    precarite_logement?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    NA5AZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5BE_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5FZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5GU_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5OQ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
+    hauteur?: NullableFloatFieldUpdateOperationsInput | number | null;
+    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
+    clc_1_artificialise?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    clc_2_agricole?: NullableFloatFieldUpdateOperationsInput | number | null;
+    clc_3_foret_semiNaturel?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    clc_4_humide?: NullableFloatFieldUpdateOperationsInput | number | null;
+    clc_5_eau?: NullableFloatFieldUpdateOperationsInput | number | null;
+    superf_choro?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
+  export type inconfort_thermique2UncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
+    epci?: StringFieldUpdateOperationsInput | string;
+    libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: IntFieldUpdateOperationsInput | number;
+    age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null;
+    under_4_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+    P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null;
+    P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null;
+    P20_POP80P_PSEUL_PERCENT?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    tee_log?: NullableFloatFieldUpdateOperationsInput | number | null;
+    tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null;
+    precarite_logement?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    NA5AZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5BE_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5FZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5GU_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5OQ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
+    hauteur?: NullableFloatFieldUpdateOperationsInput | number | null;
+    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
+    clc_1_artificialise?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    clc_2_agricole?: NullableFloatFieldUpdateOperationsInput | number | null;
+    clc_3_foret_semiNaturel?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    clc_4_humide?: NullableFloatFieldUpdateOperationsInput | number | null;
+    clc_5_eau?: NullableFloatFieldUpdateOperationsInput | number | null;
+    superf_choro?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
+  export type inconfort_thermique2CreateManyInput = {
+    index: bigint | number;
+    code_geographique: string;
+    libelle_geographique: string;
+    epci: string;
+    libelle_epci: string;
+    departement: string;
+    region: number;
+    age_bati_post06?: number | null;
+    age_bati_91_05?: number | null;
+    age_bati_46_90?: number | null;
+    age_bati_19_45?: number | null;
+    age_bati_pre_19?: number | null;
+    under_4_sum_1968?: string | null;
+    to_80_sum_1968?: string | null;
+    over_80_sum_1968?: string | null;
+    under_4_sum_1975?: string | null;
+    to_80_sum_1975?: string | null;
+    over_80_sum_1975?: string | null;
+    under_4_sum_1982?: string | null;
+    to_80_sum_1982?: string | null;
+    over_80_sum_1982?: string | null;
+    under_4_sum_1990?: string | null;
+    to_80_sum_1990?: string | null;
+    over_80_sum_1990?: string | null;
+    under_4_sum_1999?: string | null;
+    to_80_sum_1999?: string | null;
+    over_80_sum_1999?: string | null;
+    under_4_sum_2009?: string | null;
+    to_80_sum_2009?: string | null;
+    over_80_sum_2009?: string | null;
+    under_4_sum_2014?: string | null;
+    to_80_sum_2014?: string | null;
+    over_80_sum_2014?: string | null;
+    under_4_sum_2020?: string | null;
+    to_80_sum_2020?: string | null;
+    over_80_sum_2020?: string | null;
+    P20_POP80P?: string | null;
+    P20_POP80P_PSEUL?: string | null;
+    P20_POP80P_PSEUL_PERCENT?: string | null;
+    tee_log?: number | null;
+    tee_mob?: number | null;
+    precarite_logement?: number | null;
+    NA5AZ_sum?: number | null;
+    NA5BE_sum?: number | null;
+    NA5FZ_sum?: number | null;
+    NA5GU_sum?: number | null;
+    NA5OQ_sum?: number | null;
+    s_geom_cstr_bati?: number | null;
+    hauteur?: number | null;
+    h_x_s?: number | null;
+    densite_bati?: number | null;
+    clc_1_artificialise?: number | null;
+    clc_2_agricole?: number | null;
+    clc_3_foret_semiNaturel?: number | null;
+    clc_4_humide?: number | null;
+    clc_5_eau?: number | null;
+    superf_choro?: number | null;
+  };
+
+  export type inconfort_thermique2UpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
+    epci?: StringFieldUpdateOperationsInput | string;
+    libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: IntFieldUpdateOperationsInput | number;
+    age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null;
+    under_4_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+    P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null;
+    P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null;
+    P20_POP80P_PSEUL_PERCENT?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    tee_log?: NullableFloatFieldUpdateOperationsInput | number | null;
+    tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null;
+    precarite_logement?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    NA5AZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5BE_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5FZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5GU_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5OQ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
+    hauteur?: NullableFloatFieldUpdateOperationsInput | number | null;
+    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
+    clc_1_artificialise?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    clc_2_agricole?: NullableFloatFieldUpdateOperationsInput | number | null;
+    clc_3_foret_semiNaturel?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    clc_4_humide?: NullableFloatFieldUpdateOperationsInput | number | null;
+    clc_5_eau?: NullableFloatFieldUpdateOperationsInput | number | null;
+    superf_choro?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
+  export type inconfort_thermique2UncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
+    epci?: StringFieldUpdateOperationsInput | string;
+    libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: IntFieldUpdateOperationsInput | number;
+    age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null;
+    age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null;
+    under_4_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
+    under_4_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+    to_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+    over_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
+    P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null;
+    P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null;
+    P20_POP80P_PSEUL_PERCENT?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    tee_log?: NullableFloatFieldUpdateOperationsInput | number | null;
+    tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null;
+    precarite_logement?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    NA5AZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5BE_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5FZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5GU_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    NA5OQ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
+    s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
+    hauteur?: NullableFloatFieldUpdateOperationsInput | number | null;
+    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
+    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
+    clc_1_artificialise?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    clc_2_agricole?: NullableFloatFieldUpdateOperationsInput | number | null;
+    clc_3_foret_semiNaturel?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    clc_4_humide?: NullableFloatFieldUpdateOperationsInput | number | null;
+    clc_5_eau?: NullableFloatFieldUpdateOperationsInput | number | null;
+    superf_choro?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>;
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>;
@@ -39281,6 +42745,242 @@ export namespace Prisma {
     index?: SortOrder;
     LONG?: SortOrder;
     LAT?: SortOrder;
+  };
+
+  export type inconfort_thermique2CountOrderByAggregateInput = {
+    index?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
+    epci?: SortOrder;
+    libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
+    age_bati_post06?: SortOrder;
+    age_bati_91_05?: SortOrder;
+    age_bati_46_90?: SortOrder;
+    age_bati_19_45?: SortOrder;
+    age_bati_pre_19?: SortOrder;
+    under_4_sum_1968?: SortOrder;
+    to_80_sum_1968?: SortOrder;
+    over_80_sum_1968?: SortOrder;
+    under_4_sum_1975?: SortOrder;
+    to_80_sum_1975?: SortOrder;
+    over_80_sum_1975?: SortOrder;
+    under_4_sum_1982?: SortOrder;
+    to_80_sum_1982?: SortOrder;
+    over_80_sum_1982?: SortOrder;
+    under_4_sum_1990?: SortOrder;
+    to_80_sum_1990?: SortOrder;
+    over_80_sum_1990?: SortOrder;
+    under_4_sum_1999?: SortOrder;
+    to_80_sum_1999?: SortOrder;
+    over_80_sum_1999?: SortOrder;
+    under_4_sum_2009?: SortOrder;
+    to_80_sum_2009?: SortOrder;
+    over_80_sum_2009?: SortOrder;
+    under_4_sum_2014?: SortOrder;
+    to_80_sum_2014?: SortOrder;
+    over_80_sum_2014?: SortOrder;
+    under_4_sum_2020?: SortOrder;
+    to_80_sum_2020?: SortOrder;
+    over_80_sum_2020?: SortOrder;
+    P20_POP80P?: SortOrder;
+    P20_POP80P_PSEUL?: SortOrder;
+    P20_POP80P_PSEUL_PERCENT?: SortOrder;
+    tee_log?: SortOrder;
+    tee_mob?: SortOrder;
+    precarite_logement?: SortOrder;
+    NA5AZ_sum?: SortOrder;
+    NA5BE_sum?: SortOrder;
+    NA5FZ_sum?: SortOrder;
+    NA5GU_sum?: SortOrder;
+    NA5OQ_sum?: SortOrder;
+    s_geom_cstr_bati?: SortOrder;
+    hauteur?: SortOrder;
+    h_x_s?: SortOrder;
+    densite_bati?: SortOrder;
+    clc_1_artificialise?: SortOrder;
+    clc_2_agricole?: SortOrder;
+    clc_3_foret_semiNaturel?: SortOrder;
+    clc_4_humide?: SortOrder;
+    clc_5_eau?: SortOrder;
+    superf_choro?: SortOrder;
+  };
+
+  export type inconfort_thermique2AvgOrderByAggregateInput = {
+    index?: SortOrder;
+    region?: SortOrder;
+    age_bati_post06?: SortOrder;
+    age_bati_91_05?: SortOrder;
+    age_bati_46_90?: SortOrder;
+    age_bati_19_45?: SortOrder;
+    age_bati_pre_19?: SortOrder;
+    tee_log?: SortOrder;
+    tee_mob?: SortOrder;
+    precarite_logement?: SortOrder;
+    NA5AZ_sum?: SortOrder;
+    NA5BE_sum?: SortOrder;
+    NA5FZ_sum?: SortOrder;
+    NA5GU_sum?: SortOrder;
+    NA5OQ_sum?: SortOrder;
+    s_geom_cstr_bati?: SortOrder;
+    hauteur?: SortOrder;
+    h_x_s?: SortOrder;
+    densite_bati?: SortOrder;
+    clc_1_artificialise?: SortOrder;
+    clc_2_agricole?: SortOrder;
+    clc_3_foret_semiNaturel?: SortOrder;
+    clc_4_humide?: SortOrder;
+    clc_5_eau?: SortOrder;
+    superf_choro?: SortOrder;
+  };
+
+  export type inconfort_thermique2MaxOrderByAggregateInput = {
+    index?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
+    epci?: SortOrder;
+    libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
+    age_bati_post06?: SortOrder;
+    age_bati_91_05?: SortOrder;
+    age_bati_46_90?: SortOrder;
+    age_bati_19_45?: SortOrder;
+    age_bati_pre_19?: SortOrder;
+    under_4_sum_1968?: SortOrder;
+    to_80_sum_1968?: SortOrder;
+    over_80_sum_1968?: SortOrder;
+    under_4_sum_1975?: SortOrder;
+    to_80_sum_1975?: SortOrder;
+    over_80_sum_1975?: SortOrder;
+    under_4_sum_1982?: SortOrder;
+    to_80_sum_1982?: SortOrder;
+    over_80_sum_1982?: SortOrder;
+    under_4_sum_1990?: SortOrder;
+    to_80_sum_1990?: SortOrder;
+    over_80_sum_1990?: SortOrder;
+    under_4_sum_1999?: SortOrder;
+    to_80_sum_1999?: SortOrder;
+    over_80_sum_1999?: SortOrder;
+    under_4_sum_2009?: SortOrder;
+    to_80_sum_2009?: SortOrder;
+    over_80_sum_2009?: SortOrder;
+    under_4_sum_2014?: SortOrder;
+    to_80_sum_2014?: SortOrder;
+    over_80_sum_2014?: SortOrder;
+    under_4_sum_2020?: SortOrder;
+    to_80_sum_2020?: SortOrder;
+    over_80_sum_2020?: SortOrder;
+    P20_POP80P?: SortOrder;
+    P20_POP80P_PSEUL?: SortOrder;
+    P20_POP80P_PSEUL_PERCENT?: SortOrder;
+    tee_log?: SortOrder;
+    tee_mob?: SortOrder;
+    precarite_logement?: SortOrder;
+    NA5AZ_sum?: SortOrder;
+    NA5BE_sum?: SortOrder;
+    NA5FZ_sum?: SortOrder;
+    NA5GU_sum?: SortOrder;
+    NA5OQ_sum?: SortOrder;
+    s_geom_cstr_bati?: SortOrder;
+    hauteur?: SortOrder;
+    h_x_s?: SortOrder;
+    densite_bati?: SortOrder;
+    clc_1_artificialise?: SortOrder;
+    clc_2_agricole?: SortOrder;
+    clc_3_foret_semiNaturel?: SortOrder;
+    clc_4_humide?: SortOrder;
+    clc_5_eau?: SortOrder;
+    superf_choro?: SortOrder;
+  };
+
+  export type inconfort_thermique2MinOrderByAggregateInput = {
+    index?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
+    epci?: SortOrder;
+    libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
+    age_bati_post06?: SortOrder;
+    age_bati_91_05?: SortOrder;
+    age_bati_46_90?: SortOrder;
+    age_bati_19_45?: SortOrder;
+    age_bati_pre_19?: SortOrder;
+    under_4_sum_1968?: SortOrder;
+    to_80_sum_1968?: SortOrder;
+    over_80_sum_1968?: SortOrder;
+    under_4_sum_1975?: SortOrder;
+    to_80_sum_1975?: SortOrder;
+    over_80_sum_1975?: SortOrder;
+    under_4_sum_1982?: SortOrder;
+    to_80_sum_1982?: SortOrder;
+    over_80_sum_1982?: SortOrder;
+    under_4_sum_1990?: SortOrder;
+    to_80_sum_1990?: SortOrder;
+    over_80_sum_1990?: SortOrder;
+    under_4_sum_1999?: SortOrder;
+    to_80_sum_1999?: SortOrder;
+    over_80_sum_1999?: SortOrder;
+    under_4_sum_2009?: SortOrder;
+    to_80_sum_2009?: SortOrder;
+    over_80_sum_2009?: SortOrder;
+    under_4_sum_2014?: SortOrder;
+    to_80_sum_2014?: SortOrder;
+    over_80_sum_2014?: SortOrder;
+    under_4_sum_2020?: SortOrder;
+    to_80_sum_2020?: SortOrder;
+    over_80_sum_2020?: SortOrder;
+    P20_POP80P?: SortOrder;
+    P20_POP80P_PSEUL?: SortOrder;
+    P20_POP80P_PSEUL_PERCENT?: SortOrder;
+    tee_log?: SortOrder;
+    tee_mob?: SortOrder;
+    precarite_logement?: SortOrder;
+    NA5AZ_sum?: SortOrder;
+    NA5BE_sum?: SortOrder;
+    NA5FZ_sum?: SortOrder;
+    NA5GU_sum?: SortOrder;
+    NA5OQ_sum?: SortOrder;
+    s_geom_cstr_bati?: SortOrder;
+    hauteur?: SortOrder;
+    h_x_s?: SortOrder;
+    densite_bati?: SortOrder;
+    clc_1_artificialise?: SortOrder;
+    clc_2_agricole?: SortOrder;
+    clc_3_foret_semiNaturel?: SortOrder;
+    clc_4_humide?: SortOrder;
+    clc_5_eau?: SortOrder;
+    superf_choro?: SortOrder;
+  };
+
+  export type inconfort_thermique2SumOrderByAggregateInput = {
+    index?: SortOrder;
+    region?: SortOrder;
+    age_bati_post06?: SortOrder;
+    age_bati_91_05?: SortOrder;
+    age_bati_46_90?: SortOrder;
+    age_bati_19_45?: SortOrder;
+    age_bati_pre_19?: SortOrder;
+    tee_log?: SortOrder;
+    tee_mob?: SortOrder;
+    precarite_logement?: SortOrder;
+    NA5AZ_sum?: SortOrder;
+    NA5BE_sum?: SortOrder;
+    NA5FZ_sum?: SortOrder;
+    NA5GU_sum?: SortOrder;
+    NA5OQ_sum?: SortOrder;
+    s_geom_cstr_bati?: SortOrder;
+    hauteur?: SortOrder;
+    h_x_s?: SortOrder;
+    densite_bati?: SortOrder;
+    clc_1_artificialise?: SortOrder;
+    clc_2_agricole?: SortOrder;
+    clc_3_foret_semiNaturel?: SortOrder;
+    clc_4_humide?: SortOrder;
+    clc_5_eau?: SortOrder;
+    superf_choro?: SortOrder;
   };
 
   export type BigIntFieldUpdateOperationsInput = {
