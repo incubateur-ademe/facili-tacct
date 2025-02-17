@@ -9,18 +9,22 @@ export const GetRessourceEau = async (
   code: string
 ): Promise<RessourcesEau[]> => {
   try {
-    console.time('Query Execution Time QUALITE EAUX BAIGNADE');
+    console.time('Query Execution Time PRELEVEMENT EAUX');
     const departement = await PrismaPostgres.ressources_eau.findFirst({
       where: {
         epci: code
       }
     });
+    console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
+    console.time('Query Execution Time PRELEVEMENT EAUX 2');
+
     const value = await PrismaPostgres.ressources_eau.findMany({
       where: {
         departement: departement?.departement
       }
     });
-    console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
+    console.timeEnd('Query Execution Time PRELEVEMENT EAUX 2');
+
     return value;
   } catch (error) {
     console.error(error);
