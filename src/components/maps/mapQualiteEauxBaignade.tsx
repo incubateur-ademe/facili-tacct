@@ -1,9 +1,10 @@
 'use client';
 
-import qualiteInconnu from '@/assets/icons/marker_icon_blue.svg';
 import qualiteBon from '@/assets/icons/qualite_baignade_bon.svg';
 import qualiteExcellent from '@/assets/icons/qualite_baignade_excellent.svg';
 import qualiteInsuffisant from '@/assets/icons/qualite_baignade_insuffisant.svg';
+import qualiteManquePrelevement from '@/assets/icons/qualite_baignade_manque_prelevement.svg';
+import qualiteNonClasse from '@/assets/icons/qualite_baignade_non_classe.svg';
 import qualiteSuffisant from '@/assets/icons/qualite_baignade_suffisant.svg';
 import { CommunesIndicateursDto, EpciContoursDto } from '@/lib/dto';
 import { QualiteSitesBaignade } from '@/lib/postgres/models';
@@ -36,8 +37,8 @@ const qualiteIcon = (qualite: string | undefined) => {
         : qualite === 'I'
           ? '/qualite_baignade_insuffisant.svg'
           : qualite === 'P'
-            ? '/marker_icon_blue.svg'
-            : '/marker_icon_blue.svg';
+            ? '/qualite_baignade_manque_prelevement.svg'
+            : '/qualite_baignade_non_classe.svg';
 };
 
 const getCentroid = (arr: number[][]) => {
@@ -161,7 +162,7 @@ export const MapQualiteEauxBaignade = (props: {
       <MarkerClusterGroup
         chunkedLoading
         removeOutsideVisibleBounds={true}
-        maxClusterRadius={30}
+        maxClusterRadius={1}
         iconCreateFunction={createClusterCustomIcon}
         polygonOptions={{
           color: 'transparent',
@@ -226,7 +227,9 @@ export const MapQualiteEauxBaignade = (props: {
                                 ? qualiteSuffisant
                                 : el.qualite2020 === 'I'
                                   ? qualiteInsuffisant
-                                  : qualiteInconnu
+                                  : el.qualite2020 === 'P'
+                                    ? qualiteManquePrelevement
+                                    : qualiteNonClasse
                         }
                         alt=""
                       />
@@ -241,7 +244,9 @@ export const MapQualiteEauxBaignade = (props: {
                                 ? 'Suffisant'
                                 : el.qualite2020 === 'I'
                                   ? 'Insuffisant'
-                                  : 'Pas de données disponibles'}
+                                  : el.qualite2020 === 'P'
+                                    ? 'Insuffisamment de prélèvement'
+                                    : 'Site non classé'}
                         </p>
                       </div>
                     </div>

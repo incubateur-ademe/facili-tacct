@@ -136,9 +136,16 @@ export const MapAOT40 = (props: {
     });
   };
 
-  const CustomTooltip = () => {
-    return `<div style="padding: 0.25rem">
-        <div style="font-size: 0.75rem; font-family: Marianne; font-weight: 700;"> Contenu cluster hover</div>
+  const CustomTooltip = (sitesInCluster: string[]) => {
+    const displayedSites = sitesInCluster.slice(0, 10);
+    return `<div style="padding: 0.25rem;">
+        <div style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; border-bottom: 1px solid #B8B8B8; margin-bottom: 0.5rem;">
+          Dans ce regroupement :
+        </div>
+        <div style="display: flex; flex-direction: column; font-size: 10px; font-family: Marianne; font-weight: 700;">
+          ${displayedSites.map((site) => `<div>${site}</div>`).join('')}
+          ${sitesInCluster.length > 10 ? '<div>...</div>' : ''}
+        </div>
       </div>`;
   };
 
@@ -180,12 +187,15 @@ export const MapAOT40 = (props: {
           fillOpacity: 0
         }}
         onMouseOver={(e: LeafletMouseEvent) => {
-          e.layer.bindTooltip(CustomTooltip(), {
+          const sitesInCluster = e.propagatedFrom
+            .getAllChildMarkers()
+            .map((el: { options: { title: string } }) => el.options.title);
+          e.propagatedFrom.bindTooltip(CustomTooltip(sitesInCluster), {
             opacity: 0.97,
-            direction: 'top',
-            offset: [0, -20]
+            direction: e.originalEvent.layerY > 250 ? 'top' : 'bottom',
+            offset: [0, e.originalEvent.layerY > 250 ? -25 : 25]
           });
-          e.layer.openTooltip();
+          e.propagatedFrom.openTooltip();
         }}
       >
         {aot40map.map((aot, i) => {
@@ -193,6 +203,7 @@ export const MapAOT40 = (props: {
             <Marker
               key={i}
               icon={aot.icon}
+              title={aot.nom_site!}
               position={aot.coordinates as LatLngExpression}
               ref={markerRef}
               eventHandlers={{

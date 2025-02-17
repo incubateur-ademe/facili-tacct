@@ -47,4 +47,8 @@ fileignoreconfig:
   checksum: 44a1d880689a63cb51bd7fb9a79ebbe41dbb64c56357469a008e85e282b10e7f
 - filename: src/components/themes/gestionRisques/catnat.tsx
   checksum: 7adc680c52851b8984cc5cda440ab2e5df7ca7675a2a0196f1484fbf03dfb458
+- filename: src/components/themes/biodiversite/surfacesProtegeesDataviz.tsx
+  checksum: 4700af7186b6420305c071447d830b19a27980111048b412de361b6e3a4b10cc
+- filename: src/components/charts/stats/BarChart.tsx
+  checksum: e72162794b7a525e11539311e3e95cd4288ea4dde72032fcf6514a04f323b49a
 version: ""

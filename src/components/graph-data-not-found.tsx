@@ -1,7 +1,7 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-import GraphNotFound from "@/assets/images/data_not_found.svg";
-import { GridCol } from "@/dsfr/layout";
+import GraphNotFound from '@/assets/images/no_data_on_territory.svg';
+import { GridCol } from '@/dsfr/layout';
 
 interface Props {
   code: string | undefined;
@@ -13,20 +13,29 @@ export function GraphDataNotFound({ code }: Props) {
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "row",
-        gap: "1em",
-        justifyContent: "space-between",
-        alignItems: "center",
-        margin: "2em",
+        display: 'flex',
+        flexDirection: 'row',
+        gap: '1em',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        margin: '2em'
       }}
     >
       <GridCol lg={5}>
         <h4>Données indisponibles</h4>
-        <p>Pour la collectivité que vous avez renseignée (code : {code}), nous ne disposons pas de cette donnée.</p>
+        <p>
+          Pour la collectivité que vous avez renseignée (code : {code}), nous ne
+          disposons pas de cette donnée.
+        </p>
       </GridCol>
       <GridCol lg={6}>
-        <Image src={GraphImage} alt="" width={0} height={0} style={{ width: "90%", height: "auto" }} />
+        <Image
+          src={GraphImage}
+          alt=""
+          width={0}
+          height={0}
+          style={{ width: '90%', height: 'auto' }}
+        />
       </GridCol>
     </div>
   );
