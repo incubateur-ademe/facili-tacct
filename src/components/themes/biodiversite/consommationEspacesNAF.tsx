@@ -36,7 +36,7 @@ export const ConsommationEspacesNAF = (props: {
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
   const sumNaf = codgeo
     ? consommationNAF.filter((item) => item.code_geographique === codgeo)[0]
-        .naf09art23
+        ?.naf09art23
     : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
   const title = (
     <div>
