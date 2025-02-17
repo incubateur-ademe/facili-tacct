@@ -4,6 +4,7 @@ import {
   GetSurfacesProtegees
 } from '@/lib/queries/databases/biodiversite';
 import { GetCommunes, GetEpci } from '@/lib/queries/postgis/cartographie';
+import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
 import { GetAgricultureBio, GetBiodiversite } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/utils/themes';
 import { Suspense } from 'react';
@@ -12,7 +13,7 @@ import BiodiversiteComp from './biodiversiteComp';
 
 const Biodiversite = async (props: { searchParams: SearchParams }) => {
   const theme = themes.biodiversite;
-  const { codepci } = await props.searchParams;
+  const { codepci, codgeo } = await props.searchParams;
   const dbBiodiversite = await GetBiodiversite(codepci);
   const carteCommunes = await GetCommunes(codepci);
   const dbAgricultureBio = await GetAgricultureBio(codepci);
@@ -20,6 +21,7 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
   const dbConsommationNAF = await GetConsommationNAF(codepci);
   const epciContours = await GetEpci(codepci);
   const dbAOT40 = await GetAOT40();
+  const dbEtatCoursDeau = await GetEtatCoursDeau(codepci, codgeo);
 
   return (
     <div className={styles.container}>
@@ -33,6 +35,7 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
           consommationNAF={dbConsommationNAF}
           epciContours={epciContours}
           aot40={dbAOT40}
+          etatCoursDeau={dbEtatCoursDeau}
         />
       </Suspense>
     </div>
