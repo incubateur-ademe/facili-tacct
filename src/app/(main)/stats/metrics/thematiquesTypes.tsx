@@ -1,6 +1,7 @@
 import { BarChartStats } from '@/components/charts/stats/BarChart';
 import { Container } from '@/dsfr/layout';
 import GetInsights from '../query';
+import styles from '../stats.module.scss';
 
 const ThematiquesTypes = async () => {
   const thematiquesClicked = await GetInsights('GllOqTd1');
@@ -19,18 +20,32 @@ const ThematiquesTypes = async () => {
   return (
     <Container m="4w">
       {graphData ? (
-        <div style={{ margin: '0 0 2rem' }}>
+        <div
+          style={{
+            backgroundColor: 'white',
+            margin: '0 0 4rem'
+          }}
+        >
           <h2>Thématiques recherchées</h2>
-          <div className="flex flex-row gap-8">
-            {graphData.map((e, i) => {
-              return (
-                <p key={i}>
-                  {e.titre} : {e.nombre}
-                </p>
-              );
-            })}
+          <div className={styles.graphWrapper}>
+            <div
+              className={styles.graphTitleWrapper}
+              style={{ padding: '1rem' }}
+            >
+              <h2>Nombre de recherche par thématiques</h2>
+            </div>
+            <div
+              style={{
+                backgroundColor: 'white',
+                height: '650px',
+                width: '100%',
+                padding: '0 3rem',
+                borderRadius: '0.5rem'
+              }}
+            >
+              <BarChartStats graphData={graphData} />
+            </div>
           </div>
-          <BarChartStats graphData={graphData} />
         </div>
       ) : (
         ''

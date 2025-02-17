@@ -44,7 +44,7 @@ export const LineChart = (props: Props) => {
         {
           id: "Évolution du nombre d'utilisateurs",
           color: 'hsl(284, 70%, 50%)',
-          data: children.filter((e) => !e.x.includes('Nov'))
+          data: children.slice(-30).filter((e) => !e.x.includes('Nov'))
         }
       ]}
       colors={'rgba(242, 133, 2, 0.9)'}

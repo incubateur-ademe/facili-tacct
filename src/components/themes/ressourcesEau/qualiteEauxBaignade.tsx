@@ -1,9 +1,10 @@
 'use client';
 
-import qualiteInconnu from '@/assets/icons/marker_icon_blue.svg';
 import qualiteBon from '@/assets/icons/qualite_baignade_bon.svg';
 import qualiteExcellent from '@/assets/icons/qualite_baignade_excellent.svg';
 import qualiteInsuffisant from '@/assets/icons/qualite_baignade_insuffisant.svg';
+import qualiteManquePrelevement from '@/assets/icons/qualite_baignade_manque_prelevement.svg';
+import qualiteNonClasse from '@/assets/icons/qualite_baignade_non_classe.svg';
 import qualiteSuffisant from '@/assets/icons/qualite_baignade_suffisant.svg';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { LegendCompIcons } from '@/components/maps/legends/legendComp';
@@ -37,8 +38,12 @@ const legends = [
     icon: qualiteInsuffisant
   },
   {
-    value: 'Inconnu',
-    icon: qualiteInconnu
+    value: 'Site non classé',
+    icon: qualiteNonClasse
+  },
+  {
+    value: 'Insuffisamment de prélèvement',
+    icon: qualiteManquePrelevement
   }
 ];
 
