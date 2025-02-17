@@ -10,15 +10,7 @@ export const GetEtatCoursDeau = async (
   codgeo?: string
 ): Promise<EtatCoursDeau[]> => {
   try {
-    console.time('Query Execution Time EtatCoursDeau');
     const distance = codgeo ? 0.1 : 0.8;
-    const epci = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
-      SELECT 
-      epci,
-      ST_AsText(ST_Centroid(geometry)) centroid,
-      ST_AsText(geometry) geometry
-      FROM postgis."communes_drom" WHERE epci=${codepci};`;
-    console.timeEnd('Query Execution Time EtatCoursDeau');
 
     if (codgeo) {
       console.time('Query Execution Time EtatCoursDeau2');
@@ -40,12 +32,14 @@ export const GetEtatCoursDeau = async (
       console.timeEnd('Query Execution Time EtatCoursDeau3');
       return value;
     } else {
-      // const valueIntersect = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
-      //   SELECT
-      //   name,
-      //   etateco,
-      //   ST_AsGeoJSON(geometry) geometry
-      //   FROM postgis."etat_cours_d_eau" WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`;
+      console.time('Query Execution Time EtatCoursDeau');
+      const epci = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        SELECT 
+        epci,
+        ST_AsText(ST_Centroid(geometry)) centroid,
+        ST_AsText(geometry) geometry
+        FROM postgis."communes_drom" WHERE epci=${codepci};`;
+      console.timeEnd('Query Execution Time EtatCoursDeau');
       console.time('Query Execution Time EtatCoursDeau4');
       const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
         SELECT
