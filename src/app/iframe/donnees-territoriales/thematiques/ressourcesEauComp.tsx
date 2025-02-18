@@ -34,7 +34,7 @@ interface Props {
 }
 
 const DynamicCoursDeau = dynamic(
-  () => import('../../../../components/themes/biodiversite/etatCoursDeau'),
+  () => import('../../../../components/themes/ressourcesEau/etatCoursDeau'),
   {
     loading: () => <Loader />
   }
@@ -48,7 +48,7 @@ const allComps = [
     )
   },
   {
-    titre: "État des cours d'eau",
+    titre: "État écologique des cours d'eau",
     Component: ({
       etatCoursDeau,
       epciContours,
@@ -119,8 +119,8 @@ const RessourcesEauComp = ({
             )
           },
           {
-            tabId: "État des cours d'eau",
-            label: "État des cours d'eau"
+            tabId: "État écologique des cours d'eau",
+            label: "État écologique des cours d'eau"
           }
         ]}
         onTabChange={setSelectedTabId}
@@ -155,21 +155,6 @@ const RessourcesEauComp = ({
         })}
       >
         <div className={styles.formContainer}>
-          {/* <div className={styles.titles}>
-            {data
-              .filter(el => el.facteur_sensibilite === selectedTabId)
-              .map((element, i) => (
-                <button
-                  key={i}
-                  className={selectedSubTab === element.titre ? styles.selectedButton : styles.button}
-                  onClick={() => {
-                    setSelectedSubTab(element.titre);
-                  }}
-                >
-                  {element.titre}
-                </button>
-              ))}
-          </div> */}
           <div className={styles.bubble}>
             <div className={styles.bubbleContent} style={darkClass}>
               {(() => {
