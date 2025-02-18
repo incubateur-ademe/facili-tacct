@@ -8,7 +8,7 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[javascript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
@@ -17,7 +17,7 @@
     "editor.defaultFormatter": "vscode.markdown-language-features"
   },
   "files.associations": {
-    ".env*": "dotenv",
+    ".env*": "dotenv"
   },
-  "mdx.server.enable": true,
+  "mdx.server.enable": true
 }
