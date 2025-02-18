@@ -6,6 +6,7 @@ import robinet_icon_black from '@/assets/icons/themes/robinet_icon_black.svg';
 import tracteur_icon_black from '@/assets/icons/themes/tracteur_icon_black.svg';
 import usine_icon_black from '@/assets/icons/themes/usine_icon_black.svg';
 import vagues_icon_black from '@/assets/icons/themes/vagues_icon_black.svg';
+import GraphNotFound from '@/assets/images/data_not_found_prelevement.svg';
 import legendEpci from '@/assets/images/legend_prelevement_eau_epci.svg';
 import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
 import { RessourcesEau } from '@/lib/postgres/models';
@@ -222,8 +223,13 @@ const PrelevementEauProgressBars = ({
           }}
           key="noData"
         >
-          Aucun prélèvement en eau trouvé en 2020 pour cette collectivité :{' '}
-          {collectivite}
+          <Image
+            src={GraphNotFound}
+            alt=""
+            width={0}
+            height={0}
+            style={{ width: '90%', height: 'auto' }}
+          />
         </div>
       )}
     </div>

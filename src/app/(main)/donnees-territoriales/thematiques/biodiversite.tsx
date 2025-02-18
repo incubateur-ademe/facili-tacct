@@ -1,8 +1,8 @@
 import {
   GetAOT40,
-  GetConsommationNAF,
-  GetSurfacesProtegees
+  GetConsommationNAF
 } from '@/lib/queries/databases/biodiversite';
+import { GetQualiteEauxBaignade } from '@/lib/queries/databases/ressourcesEau';
 import { GetCommunes, GetEpci } from '@/lib/queries/postgis/cartographie';
 import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
 import { GetAgricultureBio, GetBiodiversite } from '@/lib/queries/thematiques';
@@ -17,11 +17,12 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
   const dbBiodiversite = await GetBiodiversite(codepci);
   const carteCommunes = await GetCommunes(codepci);
   const dbAgricultureBio = await GetAgricultureBio(codepci);
-  const dbSurfacesProtegees = await GetSurfacesProtegees(codepci);
+  // const dbSurfacesProtegees = await GetSurfacesProtegees(codepci);
   const dbConsommationNAF = await GetConsommationNAF(codepci);
   const epciContours = await GetEpci(codepci);
   const dbAOT40 = await GetAOT40();
   const dbEtatCoursDeau = await GetEtatCoursDeau(codepci, codgeo);
+  const qualiteEauxBaignadeByDepmt = await GetQualiteEauxBaignade(codepci);
 
   return (
     <div className={styles.container}>
@@ -31,11 +32,12 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
           biodiversite={dbBiodiversite!}
           carteCommunes={carteCommunes}
           agricultureBio={dbAgricultureBio!}
-          surfacesProtegees={dbSurfacesProtegees}
+          // surfacesProtegees={dbSurfacesProtegees}
           consommationNAF={dbConsommationNAF}
           epciContours={epciContours}
           aot40={dbAOT40}
           etatCoursDeau={dbEtatCoursDeau}
+          qualiteEauxBaignade={qualiteEauxBaignadeByDepmt}
         />
       </Suspense>
     </div>
