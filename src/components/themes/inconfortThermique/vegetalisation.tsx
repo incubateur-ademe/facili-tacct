@@ -141,13 +141,15 @@ const Vegetalisation = (props: {
                     </p>
                   </div>
                 ) : clc ? (
-                  <Image
-                    src={GraphImage}
-                    alt=""
-                    width={0}
-                    height={0}
-                    style={{ width: '90%', height: 'auto' }}
-                  />
+                  <div className={styles.nodataWrapper}>
+                    <Image
+                      src={GraphImage}
+                      alt=""
+                      width={0}
+                      height={0}
+                      style={{ width: '90%', height: 'auto' }}
+                    />
+                  </div>
                 ) : (
                   <Loader />
                 )}

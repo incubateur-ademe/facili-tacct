@@ -81,15 +81,15 @@ export const themes = {
     },
     {
       id: 4,
-      titre: "État des cours d'eau",
-      facteur_sensibilite: "État des cours d'eau",
+      titre: "État écologique des cours d'eau",
+      facteur_sensibilite: "État écologique des cours d'eau",
       risque: '',
       donnee: ''
     },
     {
       id: 5,
-      titre: 'Seuils de pollution',
-      facteur_sensibilite: 'Seuils de pollution',
+      titre: 'Ozone et végétation',
+      facteur_sensibilite: 'Ozone et végétation',
       risque: '',
       donnee: ''
     }
@@ -104,8 +104,8 @@ export const themes = {
     },
     {
       id: 1,
-      titre: "État des cours d'eau",
-      facteur_sensibilite: "État des cours d'eau",
+      titre: "État écologique des cours d'eau",
+      facteur_sensibilite: "État écologique des cours d'eau",
       risque: '',
       donnee: ''
     },

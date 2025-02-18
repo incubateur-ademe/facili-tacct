@@ -5,6 +5,7 @@ import {
   EpciContoursDto,
   EtatCoursDeauDto
 } from '@/lib/dto';
+import { QualiteSitesBaignade } from '@/lib/postgres/models';
 import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
 import { Any } from '@/lib/utils/types';
 import { Feature } from 'geojson';
@@ -18,6 +19,7 @@ import {
 import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
+import SitesBaignadeMarkers from './components/sitesBaignadeMarkers';
 
 const getCentroid = (arr: number[][]) => {
   return arr?.reduce(
@@ -32,8 +34,10 @@ export const MapEtatCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeauDto[];
   epciContours: EpciContoursDto[];
   carteCommunes: CommunesIndicateursDto[];
+  qualiteEauxBaignade?: QualiteSitesBaignade[];
 }) => {
-  const { etatCoursDeau, epciContours, carteCommunes } = props;
+  const { etatCoursDeau, epciContours, carteCommunes, qualiteEauxBaignade } =
+    props;
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const commune = carteCommunes.find(
@@ -184,6 +188,9 @@ export const MapEtatCoursDeau = (props: {
           style={style}
           onEachFeature={onEachFeature}
         />
+        {qualiteEauxBaignade && (
+          <SitesBaignadeMarkers qualiteEauxBaignade={qualiteEauxBaignade} />
+        )}
       </style>
     </MapContainer>
   );

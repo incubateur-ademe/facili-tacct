@@ -212,3 +212,12 @@
     width: fit-content;
     border-bottom: solid 1px #d6d6f0;
 }
+
+.legendCoursDeau {
+    display: flex;
+    flex-direction: column;
+    border-bottom: solid 1px #d6d6f0;
+    width: fit-content;
+    gap: 0.75em;
+    padding: 1rem;
+}

@@ -8,12 +8,10 @@ import { Suspense, useEffect, useState } from 'react';
 
 import { Loader } from '@/components/loader';
 import { PrelevementEau } from '@/components/themes/ressourcesEau/prelevementEau';
-import { QualiteEauxBaignade } from '@/components/themes/ressourcesEau/qualiteEauxBaignade';
 import {
   CarteCommunes,
   EpciContours,
   EtatCoursDeau,
-  QualiteSitesBaignade,
   RessourcesEau
 } from '@/lib/postgres/models';
 import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
@@ -33,11 +31,10 @@ interface Props {
   ressourcesEau: RessourcesEau[];
   carteCommunes: CarteCommunes[];
   epciContours: EpciContours[];
-  qualiteEauxBaignade: QualiteSitesBaignade[];
 }
 
 const DynamicCoursDeau = dynamic(
-  () => import('../../../../components/themes/biodiversite/etatCoursDeau'),
+  () => import('../../../../components/themes/ressourcesEau/etatCoursDeau'),
   {
     loading: () => <Loader />
   }
@@ -51,7 +48,7 @@ const allComps = [
     )
   },
   {
-    titre: "État des cours d'eau",
+    titre: "État écologique des cours d'eau",
     Component: ({
       etatCoursDeau,
       epciContours,
@@ -63,20 +60,6 @@ const allComps = [
         carteCommunes={carteCommunes}
       />
     )
-  },
-  {
-    titre: 'Qualité des eaux de baignade',
-    Component: ({
-      qualiteEauxBaignade,
-      epciContours,
-      carteCommunes
-    }: Props & { activeDataTab: string }) => (
-      <QualiteEauxBaignade
-        qualiteEauxBaignade={qualiteEauxBaignade}
-        epciContours={epciContours}
-        carteCommunes={carteCommunes}
-      />
-    )
   }
 ];
 
@@ -84,8 +67,7 @@ const RessourcesEauComp = ({
   data,
   ressourcesEau,
   carteCommunes,
-  epciContours,
-  qualiteEauxBaignade
+  epciContours
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Prélèvements en eau');
   const [selectedSubTab, setSelectedSubTab] = useState('Prélèvements en eau');
@@ -137,12 +119,8 @@ const RessourcesEauComp = ({
             )
           },
           {
-            tabId: "État des cours d'eau",
-            label: "État des cours d'eau"
-          },
-          {
-            tabId: 'Qualité des eaux de baignade',
-            label: 'Qualité des eaux de baignade'
+            tabId: "État écologique des cours d'eau",
+            label: "État écologique des cours d'eau"
           }
         ]}
         onTabChange={setSelectedTabId}
@@ -193,7 +171,6 @@ const RessourcesEauComp = ({
                       epciContours={epciContours}
                       carteCommunes={carteCommunes}
                       etatCoursDeau={etatCoursDeau || []}
-                      qualiteEauxBaignade={qualiteEauxBaignade}
                     />
                   </Suspense>
                 );
