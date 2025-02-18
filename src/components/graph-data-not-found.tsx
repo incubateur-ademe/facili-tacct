@@ -18,7 +18,7 @@ export function GraphDataNotFound({ code }: Props) {
         gap: '1em',
         justifyContent: 'space-between',
         alignItems: 'center',
-        margin: '2em'
+        margin: '0 2em'
       }}
     >
       <GridCol lg={5}>
@@ -29,13 +29,23 @@ export function GraphDataNotFound({ code }: Props) {
         </p>
       </GridCol>
       <GridCol lg={6}>
-        <Image
-          src={GraphImage}
-          alt=""
-          width={0}
-          height={0}
-          style={{ width: '90%', height: 'auto' }}
-        />
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            border: 'solid 1px #d6d6f0',
+            borderRadius: '0.5em',
+            padding: '4em 2em'
+          }}
+        >
+          <Image
+            src={GraphImage}
+            alt=""
+            width={0}
+            height={0}
+            style={{ width: '90%', height: 'auto' }}
+          />
+        </div>
       </GridCol>
     </div>
   );

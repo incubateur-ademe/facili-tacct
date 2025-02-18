@@ -5,17 +5,18 @@ import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 
 import AgricultureBiologique from '@/components/themes/biodiversite/agricultureBio';
+import AOT40Dataviz from '@/components/themes/biodiversite/AOT40';
 import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
 import { StationsClassees } from '@/components/themes/biodiversite/stationsClassees';
-import SurfacesProtegees from '@/components/themes/biodiversite/surfacesProtegees';
 import {
   AgricultureBio,
+  AOT40,
   Biodiversite,
   CarteCommunes,
   ConsommationNAF,
   EpciContours,
   EtatCoursDeau,
-  SurfacesProtegeesByCol
+  QualiteSitesBaignade
 } from '@/lib/postgres/models';
 import { TabTooltip } from '@/lib/utils/TabTooltip';
 import { useStyles } from 'tss-react/dsfr';
@@ -33,10 +34,12 @@ interface Props {
   biodiversite: Biodiversite[];
   carteCommunes: CarteCommunes[];
   agricultureBio: AgricultureBio[];
-  surfacesProtegees: SurfacesProtegeesByCol[];
+  // surfacesProtegees: SurfacesProtegeesByCol[];
   consommationNAF: ConsommationNAF[];
   epciContours: EpciContours[];
+  aot40: AOT40[];
   etatCoursDeau: EtatCoursDeau[];
+  qualiteEauxBaignade: QualiteSitesBaignade[];
 }
 
 const allComps = [
@@ -63,20 +66,20 @@ const allComps = [
       <AgricultureBiologique data={data} agricultureBio={agricultureBio} />
     )
   },
-  {
-    titre: 'Surfaces protégées',
-    Component: ({
-      data,
-      surfacesProtegees,
-      carteCommunes
-    }: Props & { activeDataTab: string }) => (
-      <SurfacesProtegees
-        data={data}
-        surfacesProtegees={surfacesProtegees}
-        carteCommunes={carteCommunes}
-      />
-    )
-  },
+  // {
+  //   titre: 'Surfaces protégées',
+  //   Component: ({
+  //     data,
+  //     surfacesProtegees,
+  //     carteCommunes
+  //   }: Props & { activeDataTab: string }) => (
+  //     <SurfacesProtegees
+  //       data={data}
+  //       surfacesProtegees={surfacesProtegees}
+  //       carteCommunes={carteCommunes}
+  //     />
+  //   )
+  // },
   {
     titre: "Consommation d'espaces NAF",
     Component: ({
@@ -92,14 +95,30 @@ const allComps = [
     )
   },
   {
-    titre: "État des cours d'eau",
+    titre: "État écologique des cours d'eau",
     Component: ({
       etatCoursDeau,
       epciContours,
-      carteCommunes
+      carteCommunes,
+      qualiteEauxBaignade
     }: Props & { activeDataTab: string; etatCoursDeau: EtatCoursDeau[] }) => (
       <EtatQualiteCoursDeau
         etatCoursDeau={etatCoursDeau}
+        epciContours={epciContours}
+        carteCommunes={carteCommunes}
+        qualiteEauxBaignade={qualiteEauxBaignade}
+      />
+    )
+  },
+  {
+    titre: 'Ozone et végétation',
+    Component: ({
+      aot40,
+      epciContours,
+      carteCommunes
+    }: Props & { activeDataTab: string }) => (
+      <AOT40Dataviz
+        aot40={aot40}
         epciContours={epciContours}
         carteCommunes={carteCommunes}
       />
@@ -112,17 +131,22 @@ const BiodiversiteComp = ({
   biodiversite,
   carteCommunes,
   agricultureBio,
-  surfacesProtegees,
+  // surfacesProtegees,
   consommationNAF,
   epciContours,
-  etatCoursDeau
+  aot40,
+  etatCoursDeau,
+  qualiteEauxBaignade
 }: Props) => {
-  const [selectedTabId, setSelectedTabId] = useState('Surfaces protégées');
-  const [selectedSubTab, setSelectedSubTab] = useState('Surfaces protégées');
+  const [selectedTabId, setSelectedTabId] = useState(
+    "Consommation d'espaces NAF"
+  );
+  const [selectedSubTab, setSelectedSubTab] = useState(
+    "Consommation d'espaces NAF"
+  );
   // const [etatCoursDeau, setEtatCoursDeau] = useState<EtatCoursDeau[]>();
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
-  const codgeo = searchParams.get('codgeo')!;
   const { css } = useStyles();
 
   useEffect(() => {
@@ -140,16 +164,16 @@ const BiodiversiteComp = ({
       <Tabs
         selectedTabId={selectedTabId}
         tabs={[
-          {
-            tabId: 'Surfaces protégées',
-            label: (
-              <TabTooltip
-                selectedTab={selectedTabId}
-                tooltip="Espaces d’inventaire et de protection."
-                titre="Surfaces protégées"
-              />
-            )
-          },
+          // {
+          //   tabId: 'Surfaces protégées',
+          //   label: (
+          //     <TabTooltip
+          //       selectedTab={selectedTabId}
+          //       tooltip="Espaces d’inventaire et de protection."
+          //       titre="Surfaces protégées"
+          //     />
+          //   )
+          // },
           {
             tabId: "Consommation d'espaces NAF",
             label: (
@@ -171,14 +195,18 @@ const BiodiversiteComp = ({
             )
           },
           {
-            tabId: "État des cours d'eau",
+            tabId: "État écologique des cours d'eau",
             label: (
               <TabTooltip
                 selectedTab={selectedTabId}
                 tooltip="Le bon fonctionnement des milieux aquatiques est évalué à partir d’éléments physico-chimiques (composition de l’eau, polluants…) mais aussi de la présence de la faune et de la flore (poissons, invertébrés, plantes aquatiques), ainsi que des propriétés hydromorphologiques (état des berges, continuité de la rivière, etc.)."
-                titre="État des cours d'eau"
+                titre="État écologique des cours d'eau"
               />
             )
+          },
+          {
+            tabId: 'Ozone et végétation',
+            label: 'Ozone et végétation'
           }
         ]}
         onTabChange={setSelectedTabId}
@@ -243,10 +271,12 @@ const BiodiversiteComp = ({
                       activeDataTab={selectedSubTab}
                       carteCommunes={carteCommunes}
                       agricultureBio={agricultureBio}
-                      surfacesProtegees={surfacesProtegees}
+                      // surfacesProtegees={surfacesProtegees}
                       consommationNAF={consommationNAF}
                       epciContours={epciContours}
                       etatCoursDeau={etatCoursDeau || []}
+                      qualiteEauxBaignade={qualiteEauxBaignade}
+                      aot40={aot40}
                     />
                   </Suspense>
                 );
