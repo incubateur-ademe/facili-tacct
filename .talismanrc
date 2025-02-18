@@ -44,11 +44,11 @@ fileignoreconfig:
 - filename: src/components/charts/stats/BarChart.tsx
   checksum: e72162794b7a525e11539311e3e95cd4288ea4dde72032fcf6514a04f323b49a
 - filename: src/generated/client/package.json
-  checksum: 702034f19c432f2d3825df22cf5c04b0183019e23297e48797d532c03db8059a
+  checksum: 4413fbcfa01eba2feafa504f0d5b6f11f5c9ad65753b781cce7902707043ea2b
 - filename: src/generated/client/index.js
-  checksum: 20a2205751bde3c21e51d54ba8401f703051cb423d037e1ecde00d826d1de8d4
+  checksum: 4bda4a289cce24c65d1e68f8617048de744a23a84b91cc9f4ca94c0c26452adb
 - filename: src/generated/client/edge.js
-  checksum: 2632a10a5246456f3554e9006c110b0c674bde26489e03502cfc16a35f8e5486
+  checksum: b2418c61cb765353e5bbfb49a004d40c657ba0c0b461205f9696295bbd33fd6a
 - filename: src/generated/client/index.d.ts
-  checksum: 780602f5e7b007b8df385b7b105092672f21345adb09f74ad7ab327ecc8ee3f1
+  checksum: 989dc29cdd589e3c0f6d9d15ef965e6ce7a29bd5d2b24bb09ed3f8c920cbe519
 version: ""

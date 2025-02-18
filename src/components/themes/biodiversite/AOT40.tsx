@@ -143,6 +143,20 @@ const AOT40Dataviz = (props: {
               ) : (
                 <>
                   <p>
+                    La pollution à l’ozone ne s'arrête pas aux frontières des
+                    agglomérations. Les zones rurales subissent aussi ses
+                    effets. L'ozone voyage sur de longues distances, porté par
+                    le vent. Même les territoires éloignés des sources de
+                    pollution en subissent les effets. 15 % des stations de
+                    mesure en milieu rural dépassaient encore le seuil
+                    réglementaire d'ozone sur la période 2018-2022.
+                  </p>
+                  <p>
+                    Les lignes qui suivent s’appliquent aux agglomérations où
+                    des dépassements de seuils réglementaires ont été constatés.
+                  </p>
+                  <p>
+                    - - - - <br></br>
                     L’ozone de basse altitude est le polluant de l’air le plus
                     destructeur pour la végétation et la biodiversité. Le
                     changement climatique aggrave la pollution de l’air, et vice

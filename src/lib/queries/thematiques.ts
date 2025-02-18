@@ -16,7 +16,7 @@ export const GetInconfortThermique = async (
 ): Promise<InconfortThermique[]> => {
   try {
     console.time('Query Execution Time INCONFORT');
-    const value = await PrismaPostgres.inconfort_thermique2.findMany({
+    const value = await PrismaPostgres.inconfort_thermique.findMany({
       where: {
         OR: [{ epci: code }, { code_geographique: code }]
       }
@@ -35,7 +35,7 @@ export const GetInconfortThermiqueDepartment = async (code: string) => {
   try {
     console.time('Query Execution Time INCONFORT DEPARTEMENT');
     if (code === '200054781') {
-      const value = await PrismaPostgres.inconfort_thermique2.findMany({
+      const value = await PrismaPostgres.inconfort_thermique.findMany({
         where: {
           OR: [
             { departement: '75' },
@@ -50,12 +50,12 @@ export const GetInconfortThermiqueDepartment = async (code: string) => {
       console.timeEnd('Query Execution Time INCONFORT DEPARTEMENT');
       return value;
     } else {
-      const departement = await PrismaPostgres.inconfort_thermique2.findFirst({
+      const departement = await PrismaPostgres.inconfort_thermique.findFirst({
         where: {
           epci: code
         }
       });
-      const value = await PrismaPostgres.inconfort_thermique2.findMany({
+      const value = await PrismaPostgres.inconfort_thermique.findMany({
         where: {
           departement: departement?.departement
         }
