@@ -195,18 +195,14 @@ const BiodiversiteComp = ({
             )
           },
           {
-            tabId: "État écologique des cours d'eau",
+            tabId: 'Pollutions',
             label: (
               <TabTooltip
                 selectedTab={selectedTabId}
                 tooltip="Le bon fonctionnement des milieux aquatiques est évalué à partir d’éléments physico-chimiques (composition de l’eau, polluants…) mais aussi de la présence de la faune et de la flore (poissons, invertébrés, plantes aquatiques), ainsi que des propriétés hydromorphologiques (état des berges, continuité de la rivière, etc.)."
-                titre="État écologique des cours d'eau"
+                titre="Pollutions"
               />
             )
-          },
-          {
-            tabId: 'Ozone et végétation',
-            label: 'Ozone et végétation'
           }
         ]}
         onTabChange={setSelectedTabId}
@@ -242,19 +238,25 @@ const BiodiversiteComp = ({
       >
         <div className={styles.formContainer}>
           <div className={styles.titles}>
-            {/* {data
-              .filter(el => el.facteur_sensibilite === selectedTabId)
-              .map((element, i) => (
-                <button
-                  key={i}
-                  className={selectedSubTab === element.titre ? styles.selectedButton : styles.button}
-                  onClick={() => {
-                    setSelectedSubTab(element.titre);
-                  }}
-                >
-                  {element.titre}
-                </button>
-              ))} */}
+            {selectedTabId === 'Pollutions'
+              ? data
+                  .filter((el) => el.facteur_sensibilite === selectedTabId)
+                  .map((element, i) => (
+                    <button
+                      key={i}
+                      className={
+                        selectedSubTab === element.titre
+                          ? styles.selectedButton
+                          : styles.button
+                      }
+                      onClick={() => {
+                        setSelectedSubTab(element.titre);
+                      }}
+                    >
+                      {element.titre}
+                    </button>
+                  ))
+              : ''}
           </div>
           <div className={styles.bubble}>
             <div className={styles.bubbleContent}>

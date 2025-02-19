@@ -73,7 +73,10 @@ const AOT40Dataviz = (props: {
   });
 
   const pointCollection = aot40map.map((aot) => {
-    return turf.point(aot.coordinates as number[]);
+    return turf.point(aot.coordinates as number[], {
+      value: aot.value,
+      nom_site: aot.nom_site
+    });
   });
   const featureCollection = turf.featureCollection(pointCollection);
   const nearestPoint = turf.nearestPoint(
@@ -85,6 +88,21 @@ const AOT40Dataviz = (props: {
       JSON.stringify(aot.coordinates) ===
       JSON.stringify(nearestPoint.geometry.coordinates)
   );
+  const circle = turf.circle(
+    [centerCoord[0], centerCoord[1]],
+    nearestPoint.properties.distanceToPoint + 20,
+    { steps: 10, units: 'kilometers' }
+  );
+  const stationsWithinCircle = turf.pointsWithinPolygon(
+    featureCollection,
+    circle
+  );
+  const maxValueInStations = stationsWithinCircle.features
+    .map((f) => f.properties?.value)
+    .reduce((a, b) => Math.max(Number(a), Number(b)));
+  const maxStation = stationsWithinCircle.features.find(
+    (f) => f.properties?.value === maxValueInStations
+  );
 
   const title = (
     <div>
@@ -93,17 +111,24 @@ const AOT40Dataviz = (props: {
         estimant l’impact de la pollution à l’ozone sur la végétation. Il mesure
         l’accumulation des concentrations d’ozone dépassant 40 ppb (80 µg/m³) :
       </p>
-      <ul>
-        <li>
-          Calculé sur trois mois, de mai à juillet, en tenant compte de la
-          période de photosynthèse (entre 8 h et 20 h) ;
-        </li>
-        <li>Vise à évaluer les effets de l’ozone sur la végétation ;</li>
-        <li>
-          Généralement étudié en milieu rural, où l’ozone affecte les
-          écosystèmes et les cultures.
-        </li>
-      </ul>
+      <p>
+        Il est calculé par la somme des différences entre les concentrations
+        horaires d'ozone supérieures à 80 µg/m3 et le seuil de 80 µg/m3,
+        mesurées quotidiennement entre 8 h et 20 h, de mai à juillet pour tenir
+        compte de la période de photosynthèse.
+      </p>
+      <p>
+        Une valeur cible(*) de 18 000 µg/m³ par heure, en moyenne calculée sur 5
+        ans, est fixée dans la directive 2024/2881 du 23 octobre 2024 concernant
+        la qualité de l’air ambiant et un air pur pour l’Europe.
+      </p>
+      <p>
+        <i>
+          (*) Valeur cible : niveau à atteindre, dans la mesure du possible,
+          afin d'éviter, de prévenir ou de réduire les effets nocifs sur
+          l'environnement.
+        </i>
+      </p>
     </div>
   );
   return (
@@ -113,84 +138,75 @@ const AOT40Dataviz = (props: {
           <div className="w-5/12">
             <div className={styles.explicationWrapper}>
               <p>
-                Distance entre la station la plus proche et le centre du
-                territoire : {Round(nearestPoint.properties.distanceToPoint, 2)}{' '}
-                km
+                La pollution à l’ozone ne s'arrête pas aux frontières des
+                agglomérations. Portée par le vent, la dispersion peut s’étendre
+                sur plusieurs centaines de kilomètres. Même les territoires
+                éloignés des sources de pollution en subissent les effets.
               </p>
-              <p>
-                Valeur O3 de la station :{' '}
-                {Round(Number(neareastStation?.value), 2)} µg/m³
-              </p>
+              {maxValueInStations == null ? (
+                <p>
+                  Nous ne disposons pas de données pour les stations proches de
+                  votre territoire
+                </p>
+              ) : maxValueInStations < 6000 ? (
+                <p>
+                  Bravo, le seuil de 6 000 µg/m³ par heure fixé comme objectif
+                  pour 2050 est déjà atteint. Ne relâchez pas vos efforts.
+                </p>
+              ) : maxValueInStations > 18000 ? (
+                <p>
+                  Le cumul d’ozone enregistré ces 5 dernières années pendant la
+                  période de végétation ({Round(maxValueInStations, 0)} µg/m³)
+                  risque d’engendrer des réactions de la part des végétaux de
+                  votre territoire.
+                </p>
+              ) : (
+                <p>
+                  Le seuil actuel de protection de la végétation de 18 000 µg/m³
+                  par heure n’est pas franchi. Poursuivez vos efforts,
+                  l’objectif fixé pour 2050 est de 6 000 µg/m³ par heure.
+                </p>
+              )}
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
             </div>
             <div className="px-4">
-              {nearestPoint.properties.distanceToPoint > 15 ? (
-                <>
-                  <p>
-                    La pollution à l’ozone ne s'arrête pas aux frontières des
-                    agglomérations. Les zones rurales subissent aussi ses
-                    effets. L'ozone voyage sur de longues distances, porté par
-                    le vent. Même les territoires éloignés des sources de
-                    pollution en subissent les effets. 15 % des stations de
-                    mesure en milieu rural dépassaient encore le seuil
-                    réglementaire d'ozone sur la période 2018-2022.
-                  </p>
-                  <p>
-                    Les lignes qui suivent s’appliquent aux agglomérations où
-                    des dépassements de seuils réglementaires ont été constatés.
-                  </p>
-                </>
-              ) : (
-                <>
-                  <p>
-                    La pollution à l’ozone ne s'arrête pas aux frontières des
-                    agglomérations. Les zones rurales subissent aussi ses
-                    effets. L'ozone voyage sur de longues distances, porté par
-                    le vent. Même les territoires éloignés des sources de
-                    pollution en subissent les effets. 15 % des stations de
-                    mesure en milieu rural dépassaient encore le seuil
-                    réglementaire d'ozone sur la période 2018-2022.
-                  </p>
-                  <p>
-                    Les lignes qui suivent s’appliquent aux agglomérations où
-                    des dépassements de seuils réglementaires ont été constatés.
-                  </p>
-                  <p>
-                    - - - - <br></br>
-                    L’ozone de basse altitude est le polluant de l’air le plus
-                    destructeur pour la végétation et la biodiversité. Le
-                    changement climatique aggrave la pollution de l’air, et vice
-                    versa. Les périodes de fortes chaleurs, de plus en plus
-                    fréquentes et intenses, favorisent la formation d’ozone de
-                    basse altitude. L’ozone est l’un des rares gaz à être à la
-                    fois un polluant de l’air et un gaz à effet de serre.
-                  </p>
-                  <p>
-                    À l’échelle mondiale, environ 90 % des pertes de rendement
-                    agricole dues à la pollution atmosphérique sont attribuées à
-                    l’ozone. Ce polluant s’infiltre dans les plantes, détruit
-                    leurs cellules et perturbe leur croissance. Les forêts sont
-                    particulièrement touchées. Les arbres affaiblis deviennent
-                    plus vulnérables aux maladies, et perdent leur capacité à
-                    stocker du carbone. L’ozone perturbe la pollinisation des
-                    abeilles, essentielles à 75 % des cultures alimentaires.
-                  </p>
-                  <p>
-                    ⇒ En 2022, 25 agglomérations françaises ont dépassé les
-                    seuils réglementaires européens pour au moins un de ces
-                    quatre polluants : dioxyde d’azote, PM10, ozone
-                    troposphérique, monoxyde d'azote. Mais si les valeurs guides
-                    de l’OMS avaient été appliquées, la quasi-totalité des
-                    agglomérations françaises auraient été en dépassement : 95 %
-                    des agglomérations pour l’ozone.
-                  </p>
-                  <p>
-                    ⇒ Dans certaines régions françaises, des arbres comme le
-                    hêtre et l'épicéa enregistrent des pertes de biomasse allant
-                    jusqu'à 22 %.
-                  </p>
-                </>
-              )}
+              <p>
+                L’ozone de basse altitude est le polluant de l’air le plus
+                destructeur pour la biodiversité. C’est l’un des rares gaz à
+                être à la fois un polluant de l’air et un gaz à effet de serre :
+                les périodes de fortes chaleurs, de plus en plus fréquentes et
+                intenses, favorisent la formation d’ozone de basse altitude,
+                dont les concentrations aggravent le changement climatique.
+              </p>
+              <p>
+                Ce gaz très oxydant s’infiltre dans les plantes, détruit leurs
+                cellules et perturbe leur croissance. Les forêts sont
+                particulièrement touchées. Les arbres affaiblis deviennent plus
+                vulnérables aux maladies et aux sècheresses, et perdent leur
+                capacité à stocker du carbone. L’ozone perturbe la pollinisation
+                des abeilles, essentielles à 75 % des cultures alimentaires.
+              </p>
+              <p>
+                ⇒ 15 % des stations de mesure en milieu rural dépassaient encore
+                le seuil réglementaire d'ozone sur la période 2018-2022.
+              </p>
+              <p>
+                ⇒ Dans certaines régions françaises, des arbres comme le hêtre
+                et l'épicéa enregistrent des pertes de biomasse allant jusqu'à
+                22 %.
+              </p>
+              <p>
+                ⇒ À l’échelle mondiale, environ 90 % des pertes de rendement
+                agricole dues à la pollution atmosphérique sont attribuées à
+                l’ozone.
+              </p>
+              <p>
+                - - - - <br></br>
+                La directive 2024/2881 du 23 octobre 2024 concernant la qualité
+                de l’air ambiant et un air pur pour l’Europe fixe un objectif de
+                protection de la végétation de 6 000 µg/m³ par heure au 1er
+                janvier 2050.
+              </p>
             </div>
           </div>
           <div className="w-7/12">
@@ -199,7 +215,10 @@ const AOT40Dataviz = (props: {
                 className={styles.biodiversiteGraphTitleWrapper}
                 style={{ padding: '1rem' }}
               >
-                <h2>AOT40 O3 végétation 5 ans</h2>
+                <h2>
+                  Concentration dans l’air durant la période de végétation,
+                  moyenne sur 5 ans 2020-2024 (µg/m³)
+                </h2>
               </div>
               <div>
                 <MapAOT40
@@ -214,7 +233,9 @@ const AOT40Dataviz = (props: {
               >
                 <LegendCompColor legends={aot40Legends} />
               </div>
-              <p style={{ padding: '1em', margin: '0' }}>Source : Géod’Air</p>
+              <p style={{ padding: '1em', margin: '0' }}>
+                Source : Géod’Air (2024)
+              </p>
             </div>
           </div>
         </div>
