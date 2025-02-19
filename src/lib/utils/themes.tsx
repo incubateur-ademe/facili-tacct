@@ -82,14 +82,14 @@ export const themes = {
     {
       id: 4,
       titre: "État écologique des cours d'eau",
-      facteur_sensibilite: "État écologique des cours d'eau",
+      facteur_sensibilite: 'Pollutions',
       risque: '',
       donnee: ''
     },
     {
       id: 5,
       titre: 'Ozone et végétation',
-      facteur_sensibilite: 'Ozone et végétation',
+      facteur_sensibilite: 'Pollutions',
       risque: '',
       donnee: ''
     }

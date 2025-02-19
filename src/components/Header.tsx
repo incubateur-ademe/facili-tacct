@@ -60,7 +60,6 @@ export const HeaderComp = () => {
       date: new Date()
     });
   };
-  //TODO ClientONly
 
   return (
     <Header
