@@ -1,5 +1,4 @@
 // @ts-nocheck
-// TODO
 'use client';
 
 import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
