@@ -34,23 +34,23 @@ export const qualiteEauxBaignadelegends = [
 
 export const etatCoursDeauLegends = [
   {
-    value: 'Très bon état',
+    value: 'Très bon',
     color: '#0095C8'
   },
   {
-    value: 'Bon état',
+    value: 'Bon',
     color: '#00C190'
   },
   {
-    value: 'État moyen',
+    value: 'Moyen',
     color: '#FFCF5E'
   },
   {
-    value: 'État médiocre',
+    value: 'Médiocre',
     color: '#F66E19'
   },
   {
-    value: 'État mauvais',
+    value: 'Mauvais',
     color: '#B5000E'
   },
   {

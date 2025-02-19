@@ -93,7 +93,6 @@ export const AgeBati = (props: {
     }
   ];
 
-  console.log('averages');
   return (
     <>
       {inconfortThermique.length &&
