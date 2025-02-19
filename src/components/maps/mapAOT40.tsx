@@ -238,7 +238,7 @@ export const MapAOT40 = (props: {
                         {aot.nom_site} :{' '}
                       </p>
                       <p className="text-[0.75rem] font-marianne font-[700]">
-                        {Round(Number(aot.value), 2)} µg/m3
+                        {Round(Number(aot.value), 0)} µg/m3
                       </p>
                     </div>
                   </div>
