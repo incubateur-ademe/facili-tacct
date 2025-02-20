@@ -5,9 +5,9 @@ import { useSearchParams } from 'next/navigation';
 import { LineChart1 } from '@/components/charts/inconfortThermique/lineChartGrandAge';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { grandAgeIsolementMapper } from '@/lib/mapper/inconfortThermique';
 import { DataGrandAge, InconfortThermique } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import styles from './themes.module.scss';
 
 const sumProperty = (

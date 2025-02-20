@@ -9,6 +9,7 @@ import qualiteSuffisant from '@/assets/icons/qualite_baignade_suffisant.svg';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { LegendCompIcons } from '@/components/maps/legends/legendComp';
 import { MapQualiteEauxBaignade } from '@/components/maps/mapQualiteEauxBaignade';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EpciContoursMapper } from '@/lib/mapper/epci';
 import {
@@ -16,7 +17,6 @@ import {
   EpciContours,
   QualiteSitesBaignade
 } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { useSearchParams } from 'next/navigation';
 import styles from './ressourcesEau.module.scss';
 
