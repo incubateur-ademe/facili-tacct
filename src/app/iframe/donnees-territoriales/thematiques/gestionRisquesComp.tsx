@@ -8,13 +8,13 @@ import { Suspense, useEffect, useState } from 'react';
 
 import { Catnat } from '@/components/themes/gestionRisques/catnat';
 import ErosionCotes from '@/components/themes/gestionRisques/erosionCotiere';
+import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   CarteCommunes,
   EpciContours,
   ErosionCotiere,
   GestionRisques
 } from '@/lib/postgres/models';
-import { TabTooltip } from '@/lib/utils/TabTooltip';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
