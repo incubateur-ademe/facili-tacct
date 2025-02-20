@@ -14,6 +14,24 @@ export const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
   }
 }));
 
+export const HtmlTooltipDefinition = styled(
+  ({ className, ...props }: TooltipProps) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  )
+)(() => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: '#ffffff',
+    fontSize: '1rem',
+    color: '#3a3a3a',
+    maxWidth: 600,
+    boxShadow: '0px 2px 6px 0px rgba(0, 0, 18, 0.16)',
+    padding: '20px',
+    fontFamily: 'Marianne',
+    fontWeight: 400,
+    border: '1px solid #0063CB'
+  }
+}));
+
 export const HtmlTooltipMousePosition = ({
   children,
   title
@@ -46,5 +64,21 @@ export const HtmlTooltipMousePosition = ({
     >
       {children}
     </HtmlTooltip>
+  );
+};
+
+export const DefinitionTooltip = ({
+  children,
+  title
+}: {
+  children: string;
+  title: ReactNode;
+}) => {
+  return (
+    <HtmlTooltipDefinition title={title} placement="top" sx={{ maxWidth: 400 }}>
+      <span style={{ borderBottom: '1px dashed #0063CB', cursor: 'help' }}>
+        {children}
+      </span>
+    </HtmlTooltipDefinition>
   );
 };

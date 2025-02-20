@@ -8,6 +8,8 @@ import {
   LegendCompIcons
 } from '@/components/maps/legends/legendComp';
 import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
+import { DefinitionTooltip } from '@/components/utils/HtmlTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EpciContoursMapper } from '@/lib/mapper/epci';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
@@ -17,7 +19,6 @@ import {
   EtatCoursDeau,
   QualiteSitesBaignade
 } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { useSearchParams } from 'next/navigation';
 import styles from './biodiversite.module.scss';
 
@@ -60,6 +61,16 @@ const EtatQualiteCoursDeau = (props: {
       <br></br>
     </div>
   );
+
+  const eutrophisation = (
+    <span>
+      L’eutrophisation est un phénomène causé par un excès de nutriments (azote,
+      phosphore) dans l’eau, favorisant la prolifération d’algues. Leur
+      décomposition appauvrit l’oxygène du milieu, asphyxiant la faune et
+      dégradant les écosystèmes aquatiques.
+    </span>
+  );
+
   return (
     <>
       {etatCoursDeau.length ? (
@@ -88,7 +99,11 @@ const EtatQualiteCoursDeau = (props: {
                 exotiques envahissantes, la concentration des polluants
                 (massivement relâchés lors des crues) ; la hausse des
                 température de l’eau et l’ensoleillement sont des conditions
-                favorables à l’eutrophisation.
+                favorables à{' '}
+                <DefinitionTooltip title={eutrophisation}>
+                  l’eutrophisation
+                </DefinitionTooltip>
+                .
               </p>
               <p>
                 Un mauvais état écologique a des impacts graves sur la

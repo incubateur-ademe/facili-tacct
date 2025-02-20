@@ -4,9 +4,9 @@ import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { Map } from '@/components/maps/map';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import styles from './themes.module.scss';
 
 const legends = [

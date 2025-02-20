@@ -1,9 +1,9 @@
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { MapErosionCotiere } from '@/components/maps/mapErosionCotiere';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { EpciContoursMapper } from '@/lib/mapper/epci';
 import { ErosionCotiereMapper } from '@/lib/mapper/erosionCotiere';
 import { EpciContours, ErosionCotiere } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { useSearchParams } from 'next/navigation';
 import { LegendErosionCotiere } from '../../maps/legends/legendErosionCotiere';
 import styles from './gestionRisques.module.scss';

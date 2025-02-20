@@ -1,7 +1,7 @@
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import styles from './amenagement.module.scss';

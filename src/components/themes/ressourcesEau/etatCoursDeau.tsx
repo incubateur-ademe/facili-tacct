@@ -1,6 +1,7 @@
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EpciContoursMapper } from '@/lib/mapper/epci';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
@@ -9,7 +10,6 @@ import {
   EpciContours,
   EtatCoursDeau
 } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { useSearchParams } from 'next/navigation';
 import styles from './ressourcesEau.module.scss';
 

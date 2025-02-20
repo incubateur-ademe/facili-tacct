@@ -18,7 +18,6 @@ const PrelevementEauDataViz = ({
   setDatavizTab: (value: string) => void;
 }) => {
   const [sliderValue, setSliderValue] = useState<number[]>([2008, 2020]);
-
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.ressourcesEauGraphTitleWrapper}>

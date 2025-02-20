@@ -5,10 +5,10 @@ import { useSearchParams } from 'next/navigation';
 import { PieChart1 } from '@/components/charts/inconfortThermique/pieChartTravailExt';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { travailExtDto } from '@/lib/dto';
 import { travailExtMapper } from '@/lib/mapper/inconfortThermique';
 import { InconfortThermique } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import styles from './themes.module.scss';
 

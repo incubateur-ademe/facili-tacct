@@ -8,6 +8,7 @@ import AgricultureBiologique from '@/components/themes/biodiversite/agricultureB
 import AOT40Dataviz from '@/components/themes/biodiversite/AOT40';
 import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
 import { StationsClassees } from '@/components/themes/biodiversite/stationsClassees';
+import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   AgricultureBio,
   AOT40,
@@ -18,7 +19,6 @@ import {
   EtatCoursDeau,
   QualiteSitesBaignade
 } from '@/lib/postgres/models';
-import { TabTooltip } from '@/lib/utils/TabTooltip';
 import { useStyles } from 'tss-react/dsfr';
 import EtatQualiteCoursDeau from '../../../../components/themes/biodiversite/etatCoursDeau';
 import styles from '../donnees.module.scss';

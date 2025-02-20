@@ -1,8 +1,8 @@
 'use client';
 
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { RessourcesEau } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
@@ -60,6 +60,26 @@ export const PrelevementEau = (props: {
     ? ressourcesEau.filter((obj) => obj.code_geographique === codgeo)
     : ressourcesEau.filter((obj) => obj.epci === codepci);
 
+  const sumAllYears = dataParMaille
+    .map((year) => {
+      return [
+        Number(year.A2008),
+        Number(year.A2009),
+        Number(year.A2010),
+        Number(year.A2011),
+        Number(year.A2012),
+        Number(year.A2013),
+        Number(year.A2014),
+        Number(year.A2015),
+        Number(year.A2016),
+        Number(year.A2017),
+        Number(year.A2018),
+        Number(year.A2019),
+        Number(year.A2020)
+      ].reduce((a, b) => a + b, 0);
+    })
+    .reduce((a, b) => a + b, 0);
+
   const title = (
     <>
       <div>
@@ -79,7 +99,7 @@ export const PrelevementEau = (props: {
 
   return (
     <>
-      {dataParMaille.length !== 0 ? (
+      {dataParMaille.length !== 0 && sumAllYears !== 0 ? (
         <div className={styles.container}>
           <div className="w-5/12">
             <div className={styles.explicationWrapper}>
