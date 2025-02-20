@@ -438,16 +438,12 @@ model etat_cours_d_eau {
 }
 
 model aot_40 {
-  index               BigInt  @id
-  Organisme           String?
-  code_zas            String? @map("code zas")
-  Zas                 String?
-  code_site           String? @map("code site")
-  nom_site            String? @map("nom site")
-  type_d_implantation String? @map("type d'implantation")
-  valeur_brute        Float?  @map("valeur brute")
-  Latitude            Float?
-  Longitude           Float?
+  index               BigInt @id
+  nom_site            String @map("nom site")
+  type_d_implantation String @map("type d'implantation")
+  valeur_brute        Float  @map("valeur brute")
+  Latitude            Float
+  Longitude           Float
 
   @@index([index], map: "ix_aot_40_index")
   @@schema("databases")
@@ -467,13 +463,13 @@ model users {
 
 model qualite_sites_baignade {
   index    BigInt  @id
-  DEP_NOM  String?
-  DEP_NUM  String?
-  TYPE     String?
-  COMMUNE  String?
-  POINT    String?
-  LONG     Float?
-  LAT      Float?
+  DEP_NOM  String
+  DEP_NUM  String
+  TYPE     String
+  COMMUNE  String
+  POINT    String
+  LONG     Float
+  LAT      Float
   QEB_2013 String?
   QEB_2014 String?
   QEB_2015 String?
