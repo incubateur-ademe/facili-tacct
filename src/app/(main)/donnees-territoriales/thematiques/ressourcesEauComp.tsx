@@ -8,6 +8,7 @@ import { Suspense, useEffect, useState } from 'react';
 
 import { Loader } from '@/components/loader';
 import { PrelevementEau } from '@/components/themes/ressourcesEau/prelevementEau';
+import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   CarteCommunes,
   EpciContours,
@@ -15,7 +16,6 @@ import {
   RessourcesEau
 } from '@/lib/postgres/models';
 import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
-import { TabTooltip } from '@/lib/utils/TabTooltip';
 import dynamic from 'next/dynamic';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
