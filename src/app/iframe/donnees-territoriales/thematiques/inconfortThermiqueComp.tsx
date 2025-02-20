@@ -12,6 +12,7 @@ import { DensiteBati } from '@/components/themes/inconfortThermique/densite-bati
 import { FragiliteEconomique } from '@/components/themes/inconfortThermique/fragilite-economique';
 import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grand-age-isolement';
 import { TravailExterieur } from '@/components/themes/inconfortThermique/travail-exterieur';
+import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   CarteCommunes,
   CLC,
@@ -19,7 +20,6 @@ import {
   InconfortThermique
 } from '@/lib/postgres/models';
 import { GetClcEpci } from '@/lib/queries/postgis/cartographie';
-import { TabTooltip } from '@/lib/utils/TabTooltip';
 import dynamic from 'next/dynamic';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
