@@ -16,11 +16,11 @@ exports.$Enums = {};
 
 /**
  * Prisma Client JS version: 6.3.0
- * Query Engine version: acc0b9dd43eb689cbd20c9470515d719db10d0b0
+ * Query Engine version: a9055b89e58b4b5bfb59600785423b1db3d0e75d
  */
 Prisma.prismaVersion = {
   client: '6.3.0',
-  engine: 'acc0b9dd43eb689cbd20c9470515d719db10d0b0'
+  engine: 'a9055b89e58b4b5bfb59600785423b1db3d0e75d'
 };
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -480,10 +480,6 @@ exports.Prisma.Etat_cours_d_eauScalarFieldEnum = {
 
 exports.Prisma.Aot_40ScalarFieldEnum = {
   index: 'index',
-  Organisme: 'Organisme',
-  code_zas: 'code_zas',
-  Zas: 'Zas',
-  code_site: 'code_site',
   nom_site: 'nom_site',
   type_d_implantation: 'type_d_implantation',
   valeur_brute: 'valeur_brute',

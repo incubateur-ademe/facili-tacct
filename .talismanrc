@@ -31,10 +31,6 @@ fileignoreconfig:
   checksum: e7fb99bb2be5c34c6c501952defa547c6ac4383bf140dcbcbbeaf14336b24cca
 - filename: pnpm-lock.yaml
   checksum: 0b9c776f532aa2789aaaa0f83b48015182870f8a6bf52c2ed6e4e3d7ba2bad7b
-- filename: src/generated/client/index-browser.js
-  checksum: f95882ba525fe9e031bc1d743e0165d3198884c0f2ea9e6baf5d51737dfbc498
-- filename: src/generated/client/wasm.js
-  checksum: 4e8fa0499f06b907b165714b6e48bd15a2491170e1ea45101203a0c25616d8e5
 - filename: src/components/maps/legends/legendComp.tsx
   checksum: 44a1d880689a63cb51bd7fb9a79ebbe41dbb64c56357469a008e85e282b10e7f
 - filename: src/components/themes/gestionRisques/catnat.tsx
@@ -43,12 +39,16 @@ fileignoreconfig:
   checksum: 4700af7186b6420305c071447d830b19a27980111048b412de361b6e3a4b10cc
 - filename: src/components/charts/stats/BarChart.tsx
   checksum: e72162794b7a525e11539311e3e95cd4288ea4dde72032fcf6514a04f323b49a
+- filename: src/generated/client/wasm.js
+  checksum: 578412250cfd0a1985762a4d32b467b3684b89334168f434d6903ae4e082abf8
 - filename: src/generated/client/package.json
-  checksum: 4413fbcfa01eba2feafa504f0d5b6f11f5c9ad65753b781cce7902707043ea2b
-- filename: src/generated/client/index.js
-  checksum: 4bda4a289cce24c65d1e68f8617048de744a23a84b91cc9f4ca94c0c26452adb
-- filename: src/generated/client/edge.js
-  checksum: b2418c61cb765353e5bbfb49a004d40c657ba0c0b461205f9696295bbd33fd6a
+  checksum: 7891f1bc7e461d2cab95d23173c5eb24039a2dbd4fbb4cfdbf54e4071b0c9210
+- filename: src/generated/client/index-browser.js
+  checksum: 7b74293a3420207806aa8cc3bf6edd34110b6b5aae64483f9e0a49cf926c77f8
 - filename: src/generated/client/index.d.ts
-  checksum: 989dc29cdd589e3c0f6d9d15ef965e6ce7a29bd5d2b24bb09ed3f8c920cbe519
+  checksum: 0e94527b6167e0ab51af3e3b81e958e6ea5056320e77b6dffee67552a20a9b7f
+- filename: src/generated/client/edge.js
+  checksum: 871ad16b8795e2adfc8f33606312bb31c6b3bde07145a17e42888c4970a2debf
+- filename: src/generated/client/index.js
+  checksum: e68a76e618c7d8485abc462a69e7fefae9f5d6eccdbfe723cd41cbabc4f819e1
 version: ""

@@ -559,7 +559,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 6.3.0
-   * Query Engine version: acc0b9dd43eb689cbd20c9470515d719db10d0b0
+   * Query Engine version: a9055b89e58b4b5bfb59600785423b1db3d0e75d
    */
   export type PrismaVersion = {
     client: string;
@@ -26446,10 +26446,6 @@ export namespace Prisma {
 
   export type Aot_40MinAggregateOutputType = {
     index: bigint | null;
-    Organisme: string | null;
-    code_zas: string | null;
-    Zas: string | null;
-    code_site: string | null;
     nom_site: string | null;
     type_d_implantation: string | null;
     valeur_brute: number | null;
@@ -26459,10 +26455,6 @@ export namespace Prisma {
 
   export type Aot_40MaxAggregateOutputType = {
     index: bigint | null;
-    Organisme: string | null;
-    code_zas: string | null;
-    Zas: string | null;
-    code_site: string | null;
     nom_site: string | null;
     type_d_implantation: string | null;
     valeur_brute: number | null;
@@ -26472,10 +26464,6 @@ export namespace Prisma {
 
   export type Aot_40CountAggregateOutputType = {
     index: number;
-    Organisme: number;
-    code_zas: number;
-    Zas: number;
-    code_site: number;
     nom_site: number;
     type_d_implantation: number;
     valeur_brute: number;
@@ -26500,10 +26488,6 @@ export namespace Prisma {
 
   export type Aot_40MinAggregateInputType = {
     index?: true;
-    Organisme?: true;
-    code_zas?: true;
-    Zas?: true;
-    code_site?: true;
     nom_site?: true;
     type_d_implantation?: true;
     valeur_brute?: true;
@@ -26513,10 +26497,6 @@ export namespace Prisma {
 
   export type Aot_40MaxAggregateInputType = {
     index?: true;
-    Organisme?: true;
-    code_zas?: true;
-    Zas?: true;
-    code_site?: true;
     nom_site?: true;
     type_d_implantation?: true;
     valeur_brute?: true;
@@ -26526,10 +26506,6 @@ export namespace Prisma {
 
   export type Aot_40CountAggregateInputType = {
     index?: true;
-    Organisme?: true;
-    code_zas?: true;
-    Zas?: true;
-    code_site?: true;
     nom_site?: true;
     type_d_implantation?: true;
     valeur_brute?: true;
@@ -26629,15 +26605,11 @@ export namespace Prisma {
 
   export type Aot_40GroupByOutputType = {
     index: bigint;
-    Organisme: string | null;
-    code_zas: string | null;
-    Zas: string | null;
-    code_site: string | null;
-    nom_site: string | null;
-    type_d_implantation: string | null;
-    valeur_brute: number | null;
-    Latitude: number | null;
-    Longitude: number | null;
+    nom_site: string;
+    type_d_implantation: string;
+    valeur_brute: number;
+    Latitude: number;
+    Longitude: number;
     _count: Aot_40CountAggregateOutputType | null;
     _avg: Aot_40AvgAggregateOutputType | null;
     _sum: Aot_40SumAggregateOutputType | null;
@@ -26663,10 +26635,6 @@ export namespace Prisma {
   > = $Extensions.GetSelect<
     {
       index?: boolean;
-      Organisme?: boolean;
-      code_zas?: boolean;
-      Zas?: boolean;
-      code_site?: boolean;
       nom_site?: boolean;
       type_d_implantation?: boolean;
       valeur_brute?: boolean;
@@ -26681,10 +26649,6 @@ export namespace Prisma {
   > = $Extensions.GetSelect<
     {
       index?: boolean;
-      Organisme?: boolean;
-      code_zas?: boolean;
-      Zas?: boolean;
-      code_site?: boolean;
       nom_site?: boolean;
       type_d_implantation?: boolean;
       valeur_brute?: boolean;
@@ -26699,10 +26663,6 @@ export namespace Prisma {
   > = $Extensions.GetSelect<
     {
       index?: boolean;
-      Organisme?: boolean;
-      code_zas?: boolean;
-      Zas?: boolean;
-      code_site?: boolean;
       nom_site?: boolean;
       type_d_implantation?: boolean;
       valeur_brute?: boolean;
@@ -26714,10 +26674,6 @@ export namespace Prisma {
 
   export type aot_40SelectScalar = {
     index?: boolean;
-    Organisme?: boolean;
-    code_zas?: boolean;
-    Zas?: boolean;
-    code_site?: boolean;
     nom_site?: boolean;
     type_d_implantation?: boolean;
     valeur_brute?: boolean;
@@ -26729,10 +26685,6 @@ export namespace Prisma {
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = $Extensions.GetOmit<
     | 'index'
-    | 'Organisme'
-    | 'code_zas'
-    | 'Zas'
-    | 'code_site'
     | 'nom_site'
     | 'type_d_implantation'
     | 'valeur_brute'
@@ -26749,15 +26701,11 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<
       {
         index: bigint;
-        Organisme: string | null;
-        code_zas: string | null;
-        Zas: string | null;
-        code_site: string | null;
-        nom_site: string | null;
-        type_d_implantation: string | null;
-        valeur_brute: number | null;
-        Latitude: number | null;
-        Longitude: number | null;
+        nom_site: string;
+        type_d_implantation: string;
+        valeur_brute: number;
+        Latitude: number;
+        Longitude: number;
       },
       ExtArgs['result']['aot_40']
     >;
@@ -27345,10 +27293,6 @@ export namespace Prisma {
    */
   interface aot_40FieldRefs {
     readonly index: FieldRef<'aot_40', 'BigInt'>;
-    readonly Organisme: FieldRef<'aot_40', 'String'>;
-    readonly code_zas: FieldRef<'aot_40', 'String'>;
-    readonly Zas: FieldRef<'aot_40', 'String'>;
-    readonly code_site: FieldRef<'aot_40', 'String'>;
     readonly nom_site: FieldRef<'aot_40', 'String'>;
     readonly type_d_implantation: FieldRef<'aot_40', 'String'>;
     readonly valeur_brute: FieldRef<'aot_40', 'Float'>;
@@ -29275,13 +29219,13 @@ export namespace Prisma {
 
   export type Qualite_sites_baignadeGroupByOutputType = {
     index: bigint;
-    DEP_NOM: string | null;
-    DEP_NUM: string | null;
-    TYPE: string | null;
-    COMMUNE: string | null;
-    POINT: string | null;
-    LONG: number | null;
-    LAT: number | null;
+    DEP_NOM: string;
+    DEP_NUM: string;
+    TYPE: string;
+    COMMUNE: string;
+    POINT: string;
+    LONG: number;
+    LAT: number;
     QEB_2013: string | null;
     QEB_2014: string | null;
     QEB_2015: string | null;
@@ -29433,13 +29377,13 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<
       {
         index: bigint;
-        DEP_NOM: string | null;
-        DEP_NUM: string | null;
-        TYPE: string | null;
-        COMMUNE: string | null;
-        POINT: string | null;
-        LONG: number | null;
-        LAT: number | null;
+        DEP_NOM: string;
+        DEP_NUM: string;
+        TYPE: string;
+        COMMUNE: string;
+        POINT: string;
+        LONG: number;
+        LAT: number;
         QEB_2013: string | null;
         QEB_2014: string | null;
         QEB_2015: string | null;
@@ -30934,10 +30878,6 @@ export namespace Prisma {
 
   export const Aot_40ScalarFieldEnum: {
     index: 'index';
-    Organisme: 'Organisme';
-    code_zas: 'code_zas';
-    Zas: 'Zas';
-    code_site: 'code_site';
     nom_site: 'nom_site';
     type_d_implantation: 'type_d_implantation';
     valeur_brute: 'valeur_brute';
@@ -33885,28 +33825,20 @@ export namespace Prisma {
     OR?: aot_40WhereInput[];
     NOT?: aot_40WhereInput | aot_40WhereInput[];
     index?: BigIntFilter<'aot_40'> | bigint | number;
-    Organisme?: StringNullableFilter<'aot_40'> | string | null;
-    code_zas?: StringNullableFilter<'aot_40'> | string | null;
-    Zas?: StringNullableFilter<'aot_40'> | string | null;
-    code_site?: StringNullableFilter<'aot_40'> | string | null;
-    nom_site?: StringNullableFilter<'aot_40'> | string | null;
-    type_d_implantation?: StringNullableFilter<'aot_40'> | string | null;
-    valeur_brute?: FloatNullableFilter<'aot_40'> | number | null;
-    Latitude?: FloatNullableFilter<'aot_40'> | number | null;
-    Longitude?: FloatNullableFilter<'aot_40'> | number | null;
+    nom_site?: StringFilter<'aot_40'> | string;
+    type_d_implantation?: StringFilter<'aot_40'> | string;
+    valeur_brute?: FloatFilter<'aot_40'> | number;
+    Latitude?: FloatFilter<'aot_40'> | number;
+    Longitude?: FloatFilter<'aot_40'> | number;
   };
 
   export type aot_40OrderByWithRelationInput = {
     index?: SortOrder;
-    Organisme?: SortOrderInput | SortOrder;
-    code_zas?: SortOrderInput | SortOrder;
-    Zas?: SortOrderInput | SortOrder;
-    code_site?: SortOrderInput | SortOrder;
-    nom_site?: SortOrderInput | SortOrder;
-    type_d_implantation?: SortOrderInput | SortOrder;
-    valeur_brute?: SortOrderInput | SortOrder;
-    Latitude?: SortOrderInput | SortOrder;
-    Longitude?: SortOrderInput | SortOrder;
+    nom_site?: SortOrder;
+    type_d_implantation?: SortOrder;
+    valeur_brute?: SortOrder;
+    Latitude?: SortOrder;
+    Longitude?: SortOrder;
   };
 
   export type aot_40WhereUniqueInput = Prisma.AtLeast<
@@ -33915,30 +33847,22 @@ export namespace Prisma {
       AND?: aot_40WhereInput | aot_40WhereInput[];
       OR?: aot_40WhereInput[];
       NOT?: aot_40WhereInput | aot_40WhereInput[];
-      Organisme?: StringNullableFilter<'aot_40'> | string | null;
-      code_zas?: StringNullableFilter<'aot_40'> | string | null;
-      Zas?: StringNullableFilter<'aot_40'> | string | null;
-      code_site?: StringNullableFilter<'aot_40'> | string | null;
-      nom_site?: StringNullableFilter<'aot_40'> | string | null;
-      type_d_implantation?: StringNullableFilter<'aot_40'> | string | null;
-      valeur_brute?: FloatNullableFilter<'aot_40'> | number | null;
-      Latitude?: FloatNullableFilter<'aot_40'> | number | null;
-      Longitude?: FloatNullableFilter<'aot_40'> | number | null;
+      nom_site?: StringFilter<'aot_40'> | string;
+      type_d_implantation?: StringFilter<'aot_40'> | string;
+      valeur_brute?: FloatFilter<'aot_40'> | number;
+      Latitude?: FloatFilter<'aot_40'> | number;
+      Longitude?: FloatFilter<'aot_40'> | number;
     },
     'index'
   >;
 
   export type aot_40OrderByWithAggregationInput = {
     index?: SortOrder;
-    Organisme?: SortOrderInput | SortOrder;
-    code_zas?: SortOrderInput | SortOrder;
-    Zas?: SortOrderInput | SortOrder;
-    code_site?: SortOrderInput | SortOrder;
-    nom_site?: SortOrderInput | SortOrder;
-    type_d_implantation?: SortOrderInput | SortOrder;
-    valeur_brute?: SortOrderInput | SortOrder;
-    Latitude?: SortOrderInput | SortOrder;
-    Longitude?: SortOrderInput | SortOrder;
+    nom_site?: SortOrder;
+    type_d_implantation?: SortOrder;
+    valeur_brute?: SortOrder;
+    Latitude?: SortOrder;
+    Longitude?: SortOrder;
     _count?: aot_40CountOrderByAggregateInput;
     _avg?: aot_40AvgOrderByAggregateInput;
     _max?: aot_40MaxOrderByAggregateInput;
@@ -33955,18 +33879,11 @@ export namespace Prisma {
       | aot_40ScalarWhereWithAggregatesInput
       | aot_40ScalarWhereWithAggregatesInput[];
     index?: BigIntWithAggregatesFilter<'aot_40'> | bigint | number;
-    Organisme?: StringNullableWithAggregatesFilter<'aot_40'> | string | null;
-    code_zas?: StringNullableWithAggregatesFilter<'aot_40'> | string | null;
-    Zas?: StringNullableWithAggregatesFilter<'aot_40'> | string | null;
-    code_site?: StringNullableWithAggregatesFilter<'aot_40'> | string | null;
-    nom_site?: StringNullableWithAggregatesFilter<'aot_40'> | string | null;
-    type_d_implantation?:
-      | StringNullableWithAggregatesFilter<'aot_40'>
-      | string
-      | null;
-    valeur_brute?: FloatNullableWithAggregatesFilter<'aot_40'> | number | null;
-    Latitude?: FloatNullableWithAggregatesFilter<'aot_40'> | number | null;
-    Longitude?: FloatNullableWithAggregatesFilter<'aot_40'> | number | null;
+    nom_site?: StringWithAggregatesFilter<'aot_40'> | string;
+    type_d_implantation?: StringWithAggregatesFilter<'aot_40'> | string;
+    valeur_brute?: FloatWithAggregatesFilter<'aot_40'> | number;
+    Latitude?: FloatWithAggregatesFilter<'aot_40'> | number;
+    Longitude?: FloatWithAggregatesFilter<'aot_40'> | number;
   };
 
   export type usersWhereInput = {
@@ -34049,13 +33966,13 @@ export namespace Prisma {
     OR?: qualite_sites_baignadeWhereInput[];
     NOT?: qualite_sites_baignadeWhereInput | qualite_sites_baignadeWhereInput[];
     index?: BigIntFilter<'qualite_sites_baignade'> | bigint | number;
-    DEP_NOM?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
-    DEP_NUM?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
-    TYPE?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
-    COMMUNE?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
-    POINT?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
-    LONG?: FloatNullableFilter<'qualite_sites_baignade'> | number | null;
-    LAT?: FloatNullableFilter<'qualite_sites_baignade'> | number | null;
+    DEP_NOM?: StringFilter<'qualite_sites_baignade'> | string;
+    DEP_NUM?: StringFilter<'qualite_sites_baignade'> | string;
+    TYPE?: StringFilter<'qualite_sites_baignade'> | string;
+    COMMUNE?: StringFilter<'qualite_sites_baignade'> | string;
+    POINT?: StringFilter<'qualite_sites_baignade'> | string;
+    LONG?: FloatFilter<'qualite_sites_baignade'> | number;
+    LAT?: FloatFilter<'qualite_sites_baignade'> | number;
     QEB_2013?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
     QEB_2014?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
     QEB_2015?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
@@ -34068,13 +33985,13 @@ export namespace Prisma {
 
   export type qualite_sites_baignadeOrderByWithRelationInput = {
     index?: SortOrder;
-    DEP_NOM?: SortOrderInput | SortOrder;
-    DEP_NUM?: SortOrderInput | SortOrder;
-    TYPE?: SortOrderInput | SortOrder;
-    COMMUNE?: SortOrderInput | SortOrder;
-    POINT?: SortOrderInput | SortOrder;
-    LONG?: SortOrderInput | SortOrder;
-    LAT?: SortOrderInput | SortOrder;
+    DEP_NOM?: SortOrder;
+    DEP_NUM?: SortOrder;
+    TYPE?: SortOrder;
+    COMMUNE?: SortOrder;
+    POINT?: SortOrder;
+    LONG?: SortOrder;
+    LAT?: SortOrder;
     QEB_2013?: SortOrderInput | SortOrder;
     QEB_2014?: SortOrderInput | SortOrder;
     QEB_2015?: SortOrderInput | SortOrder;
@@ -34095,13 +34012,13 @@ export namespace Prisma {
       NOT?:
         | qualite_sites_baignadeWhereInput
         | qualite_sites_baignadeWhereInput[];
-      DEP_NOM?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
-      DEP_NUM?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
-      TYPE?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
-      COMMUNE?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
-      POINT?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
-      LONG?: FloatNullableFilter<'qualite_sites_baignade'> | number | null;
-      LAT?: FloatNullableFilter<'qualite_sites_baignade'> | number | null;
+      DEP_NOM?: StringFilter<'qualite_sites_baignade'> | string;
+      DEP_NUM?: StringFilter<'qualite_sites_baignade'> | string;
+      TYPE?: StringFilter<'qualite_sites_baignade'> | string;
+      COMMUNE?: StringFilter<'qualite_sites_baignade'> | string;
+      POINT?: StringFilter<'qualite_sites_baignade'> | string;
+      LONG?: FloatFilter<'qualite_sites_baignade'> | number;
+      LAT?: FloatFilter<'qualite_sites_baignade'> | number;
       QEB_2013?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
       QEB_2014?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
       QEB_2015?: StringNullableFilter<'qualite_sites_baignade'> | string | null;
@@ -34116,13 +34033,13 @@ export namespace Prisma {
 
   export type qualite_sites_baignadeOrderByWithAggregationInput = {
     index?: SortOrder;
-    DEP_NOM?: SortOrderInput | SortOrder;
-    DEP_NUM?: SortOrderInput | SortOrder;
-    TYPE?: SortOrderInput | SortOrder;
-    COMMUNE?: SortOrderInput | SortOrder;
-    POINT?: SortOrderInput | SortOrder;
-    LONG?: SortOrderInput | SortOrder;
-    LAT?: SortOrderInput | SortOrder;
+    DEP_NOM?: SortOrder;
+    DEP_NUM?: SortOrder;
+    TYPE?: SortOrder;
+    COMMUNE?: SortOrder;
+    POINT?: SortOrder;
+    LONG?: SortOrder;
+    LAT?: SortOrder;
     QEB_2013?: SortOrderInput | SortOrder;
     QEB_2014?: SortOrderInput | SortOrder;
     QEB_2015?: SortOrderInput | SortOrder;
@@ -34150,34 +34067,13 @@ export namespace Prisma {
       | BigIntWithAggregatesFilter<'qualite_sites_baignade'>
       | bigint
       | number;
-    DEP_NOM?:
-      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
-      | string
-      | null;
-    DEP_NUM?:
-      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
-      | string
-      | null;
-    TYPE?:
-      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
-      | string
-      | null;
-    COMMUNE?:
-      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
-      | string
-      | null;
-    POINT?:
-      | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
-      | string
-      | null;
-    LONG?:
-      | FloatNullableWithAggregatesFilter<'qualite_sites_baignade'>
-      | number
-      | null;
-    LAT?:
-      | FloatNullableWithAggregatesFilter<'qualite_sites_baignade'>
-      | number
-      | null;
+    DEP_NOM?: StringWithAggregatesFilter<'qualite_sites_baignade'> | string;
+    DEP_NUM?: StringWithAggregatesFilter<'qualite_sites_baignade'> | string;
+    TYPE?: StringWithAggregatesFilter<'qualite_sites_baignade'> | string;
+    COMMUNE?: StringWithAggregatesFilter<'qualite_sites_baignade'> | string;
+    POINT?: StringWithAggregatesFilter<'qualite_sites_baignade'> | string;
+    LONG?: FloatWithAggregatesFilter<'qualite_sites_baignade'> | number;
+    LAT?: FloatWithAggregatesFilter<'qualite_sites_baignade'> | number;
     QEB_2013?:
       | StringNullableWithAggregatesFilter<'qualite_sites_baignade'>
       | string
@@ -36803,105 +36699,65 @@ export namespace Prisma {
 
   export type aot_40CreateInput = {
     index: bigint | number;
-    Organisme?: string | null;
-    code_zas?: string | null;
-    Zas?: string | null;
-    code_site?: string | null;
-    nom_site?: string | null;
-    type_d_implantation?: string | null;
-    valeur_brute?: number | null;
-    Latitude?: number | null;
-    Longitude?: number | null;
+    nom_site: string;
+    type_d_implantation: string;
+    valeur_brute: number;
+    Latitude: number;
+    Longitude: number;
   };
 
   export type aot_40UncheckedCreateInput = {
     index: bigint | number;
-    Organisme?: string | null;
-    code_zas?: string | null;
-    Zas?: string | null;
-    code_site?: string | null;
-    nom_site?: string | null;
-    type_d_implantation?: string | null;
-    valeur_brute?: number | null;
-    Latitude?: number | null;
-    Longitude?: number | null;
+    nom_site: string;
+    type_d_implantation: string;
+    valeur_brute: number;
+    Latitude: number;
+    Longitude: number;
   };
 
   export type aot_40UpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    Organisme?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_zas?: NullableStringFieldUpdateOperationsInput | string | null;
-    Zas?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_site?: NullableStringFieldUpdateOperationsInput | string | null;
-    nom_site?: NullableStringFieldUpdateOperationsInput | string | null;
-    type_d_implantation?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    valeur_brute?: NullableFloatFieldUpdateOperationsInput | number | null;
-    Latitude?: NullableFloatFieldUpdateOperationsInput | number | null;
-    Longitude?: NullableFloatFieldUpdateOperationsInput | number | null;
+    nom_site?: StringFieldUpdateOperationsInput | string;
+    type_d_implantation?: StringFieldUpdateOperationsInput | string;
+    valeur_brute?: FloatFieldUpdateOperationsInput | number;
+    Latitude?: FloatFieldUpdateOperationsInput | number;
+    Longitude?: FloatFieldUpdateOperationsInput | number;
   };
 
   export type aot_40UncheckedUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    Organisme?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_zas?: NullableStringFieldUpdateOperationsInput | string | null;
-    Zas?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_site?: NullableStringFieldUpdateOperationsInput | string | null;
-    nom_site?: NullableStringFieldUpdateOperationsInput | string | null;
-    type_d_implantation?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    valeur_brute?: NullableFloatFieldUpdateOperationsInput | number | null;
-    Latitude?: NullableFloatFieldUpdateOperationsInput | number | null;
-    Longitude?: NullableFloatFieldUpdateOperationsInput | number | null;
+    nom_site?: StringFieldUpdateOperationsInput | string;
+    type_d_implantation?: StringFieldUpdateOperationsInput | string;
+    valeur_brute?: FloatFieldUpdateOperationsInput | number;
+    Latitude?: FloatFieldUpdateOperationsInput | number;
+    Longitude?: FloatFieldUpdateOperationsInput | number;
   };
 
   export type aot_40CreateManyInput = {
     index: bigint | number;
-    Organisme?: string | null;
-    code_zas?: string | null;
-    Zas?: string | null;
-    code_site?: string | null;
-    nom_site?: string | null;
-    type_d_implantation?: string | null;
-    valeur_brute?: number | null;
-    Latitude?: number | null;
-    Longitude?: number | null;
+    nom_site: string;
+    type_d_implantation: string;
+    valeur_brute: number;
+    Latitude: number;
+    Longitude: number;
   };
 
   export type aot_40UpdateManyMutationInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    Organisme?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_zas?: NullableStringFieldUpdateOperationsInput | string | null;
-    Zas?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_site?: NullableStringFieldUpdateOperationsInput | string | null;
-    nom_site?: NullableStringFieldUpdateOperationsInput | string | null;
-    type_d_implantation?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    valeur_brute?: NullableFloatFieldUpdateOperationsInput | number | null;
-    Latitude?: NullableFloatFieldUpdateOperationsInput | number | null;
-    Longitude?: NullableFloatFieldUpdateOperationsInput | number | null;
+    nom_site?: StringFieldUpdateOperationsInput | string;
+    type_d_implantation?: StringFieldUpdateOperationsInput | string;
+    valeur_brute?: FloatFieldUpdateOperationsInput | number;
+    Latitude?: FloatFieldUpdateOperationsInput | number;
+    Longitude?: FloatFieldUpdateOperationsInput | number;
   };
 
   export type aot_40UncheckedUpdateManyInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    Organisme?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_zas?: NullableStringFieldUpdateOperationsInput | string | null;
-    Zas?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_site?: NullableStringFieldUpdateOperationsInput | string | null;
-    nom_site?: NullableStringFieldUpdateOperationsInput | string | null;
-    type_d_implantation?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    valeur_brute?: NullableFloatFieldUpdateOperationsInput | number | null;
-    Latitude?: NullableFloatFieldUpdateOperationsInput | number | null;
-    Longitude?: NullableFloatFieldUpdateOperationsInput | number | null;
+    nom_site?: StringFieldUpdateOperationsInput | string;
+    type_d_implantation?: StringFieldUpdateOperationsInput | string;
+    valeur_brute?: FloatFieldUpdateOperationsInput | number;
+    Latitude?: FloatFieldUpdateOperationsInput | number;
+    Longitude?: FloatFieldUpdateOperationsInput | number;
   };
 
   export type usersCreateInput = {
@@ -36989,13 +36845,13 @@ export namespace Prisma {
 
   export type qualite_sites_baignadeCreateInput = {
     index: bigint | number;
-    DEP_NOM?: string | null;
-    DEP_NUM?: string | null;
-    TYPE?: string | null;
-    COMMUNE?: string | null;
-    POINT?: string | null;
-    LONG?: number | null;
-    LAT?: number | null;
+    DEP_NOM: string;
+    DEP_NUM: string;
+    TYPE: string;
+    COMMUNE: string;
+    POINT: string;
+    LONG: number;
+    LAT: number;
     QEB_2013?: string | null;
     QEB_2014?: string | null;
     QEB_2015?: string | null;
@@ -37008,13 +36864,13 @@ export namespace Prisma {
 
   export type qualite_sites_baignadeUncheckedCreateInput = {
     index: bigint | number;
-    DEP_NOM?: string | null;
-    DEP_NUM?: string | null;
-    TYPE?: string | null;
-    COMMUNE?: string | null;
-    POINT?: string | null;
-    LONG?: number | null;
-    LAT?: number | null;
+    DEP_NOM: string;
+    DEP_NUM: string;
+    TYPE: string;
+    COMMUNE: string;
+    POINT: string;
+    LONG: number;
+    LAT: number;
     QEB_2013?: string | null;
     QEB_2014?: string | null;
     QEB_2015?: string | null;
@@ -37027,13 +36883,13 @@ export namespace Prisma {
 
   export type qualite_sites_baignadeUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    DEP_NOM?: NullableStringFieldUpdateOperationsInput | string | null;
-    DEP_NUM?: NullableStringFieldUpdateOperationsInput | string | null;
-    TYPE?: NullableStringFieldUpdateOperationsInput | string | null;
-    COMMUNE?: NullableStringFieldUpdateOperationsInput | string | null;
-    POINT?: NullableStringFieldUpdateOperationsInput | string | null;
-    LONG?: NullableFloatFieldUpdateOperationsInput | number | null;
-    LAT?: NullableFloatFieldUpdateOperationsInput | number | null;
+    DEP_NOM?: StringFieldUpdateOperationsInput | string;
+    DEP_NUM?: StringFieldUpdateOperationsInput | string;
+    TYPE?: StringFieldUpdateOperationsInput | string;
+    COMMUNE?: StringFieldUpdateOperationsInput | string;
+    POINT?: StringFieldUpdateOperationsInput | string;
+    LONG?: FloatFieldUpdateOperationsInput | number;
+    LAT?: FloatFieldUpdateOperationsInput | number;
     QEB_2013?: NullableStringFieldUpdateOperationsInput | string | null;
     QEB_2014?: NullableStringFieldUpdateOperationsInput | string | null;
     QEB_2015?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -37046,13 +36902,13 @@ export namespace Prisma {
 
   export type qualite_sites_baignadeUncheckedUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    DEP_NOM?: NullableStringFieldUpdateOperationsInput | string | null;
-    DEP_NUM?: NullableStringFieldUpdateOperationsInput | string | null;
-    TYPE?: NullableStringFieldUpdateOperationsInput | string | null;
-    COMMUNE?: NullableStringFieldUpdateOperationsInput | string | null;
-    POINT?: NullableStringFieldUpdateOperationsInput | string | null;
-    LONG?: NullableFloatFieldUpdateOperationsInput | number | null;
-    LAT?: NullableFloatFieldUpdateOperationsInput | number | null;
+    DEP_NOM?: StringFieldUpdateOperationsInput | string;
+    DEP_NUM?: StringFieldUpdateOperationsInput | string;
+    TYPE?: StringFieldUpdateOperationsInput | string;
+    COMMUNE?: StringFieldUpdateOperationsInput | string;
+    POINT?: StringFieldUpdateOperationsInput | string;
+    LONG?: FloatFieldUpdateOperationsInput | number;
+    LAT?: FloatFieldUpdateOperationsInput | number;
     QEB_2013?: NullableStringFieldUpdateOperationsInput | string | null;
     QEB_2014?: NullableStringFieldUpdateOperationsInput | string | null;
     QEB_2015?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -37065,13 +36921,13 @@ export namespace Prisma {
 
   export type qualite_sites_baignadeCreateManyInput = {
     index: bigint | number;
-    DEP_NOM?: string | null;
-    DEP_NUM?: string | null;
-    TYPE?: string | null;
-    COMMUNE?: string | null;
-    POINT?: string | null;
-    LONG?: number | null;
-    LAT?: number | null;
+    DEP_NOM: string;
+    DEP_NUM: string;
+    TYPE: string;
+    COMMUNE: string;
+    POINT: string;
+    LONG: number;
+    LAT: number;
     QEB_2013?: string | null;
     QEB_2014?: string | null;
     QEB_2015?: string | null;
@@ -37084,13 +36940,13 @@ export namespace Prisma {
 
   export type qualite_sites_baignadeUpdateManyMutationInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    DEP_NOM?: NullableStringFieldUpdateOperationsInput | string | null;
-    DEP_NUM?: NullableStringFieldUpdateOperationsInput | string | null;
-    TYPE?: NullableStringFieldUpdateOperationsInput | string | null;
-    COMMUNE?: NullableStringFieldUpdateOperationsInput | string | null;
-    POINT?: NullableStringFieldUpdateOperationsInput | string | null;
-    LONG?: NullableFloatFieldUpdateOperationsInput | number | null;
-    LAT?: NullableFloatFieldUpdateOperationsInput | number | null;
+    DEP_NOM?: StringFieldUpdateOperationsInput | string;
+    DEP_NUM?: StringFieldUpdateOperationsInput | string;
+    TYPE?: StringFieldUpdateOperationsInput | string;
+    COMMUNE?: StringFieldUpdateOperationsInput | string;
+    POINT?: StringFieldUpdateOperationsInput | string;
+    LONG?: FloatFieldUpdateOperationsInput | number;
+    LAT?: FloatFieldUpdateOperationsInput | number;
     QEB_2013?: NullableStringFieldUpdateOperationsInput | string | null;
     QEB_2014?: NullableStringFieldUpdateOperationsInput | string | null;
     QEB_2015?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -37103,13 +36959,13 @@ export namespace Prisma {
 
   export type qualite_sites_baignadeUncheckedUpdateManyInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    DEP_NOM?: NullableStringFieldUpdateOperationsInput | string | null;
-    DEP_NUM?: NullableStringFieldUpdateOperationsInput | string | null;
-    TYPE?: NullableStringFieldUpdateOperationsInput | string | null;
-    COMMUNE?: NullableStringFieldUpdateOperationsInput | string | null;
-    POINT?: NullableStringFieldUpdateOperationsInput | string | null;
-    LONG?: NullableFloatFieldUpdateOperationsInput | number | null;
-    LAT?: NullableFloatFieldUpdateOperationsInput | number | null;
+    DEP_NOM?: StringFieldUpdateOperationsInput | string;
+    DEP_NUM?: StringFieldUpdateOperationsInput | string;
+    TYPE?: StringFieldUpdateOperationsInput | string;
+    COMMUNE?: StringFieldUpdateOperationsInput | string;
+    POINT?: StringFieldUpdateOperationsInput | string;
+    LONG?: FloatFieldUpdateOperationsInput | number;
+    LAT?: FloatFieldUpdateOperationsInput | number;
     QEB_2013?: NullableStringFieldUpdateOperationsInput | string | null;
     QEB_2014?: NullableStringFieldUpdateOperationsInput | string | null;
     QEB_2015?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -38961,10 +38817,6 @@ export namespace Prisma {
 
   export type aot_40CountOrderByAggregateInput = {
     index?: SortOrder;
-    Organisme?: SortOrder;
-    code_zas?: SortOrder;
-    Zas?: SortOrder;
-    code_site?: SortOrder;
     nom_site?: SortOrder;
     type_d_implantation?: SortOrder;
     valeur_brute?: SortOrder;
@@ -38981,10 +38833,6 @@ export namespace Prisma {
 
   export type aot_40MaxOrderByAggregateInput = {
     index?: SortOrder;
-    Organisme?: SortOrder;
-    code_zas?: SortOrder;
-    Zas?: SortOrder;
-    code_site?: SortOrder;
     nom_site?: SortOrder;
     type_d_implantation?: SortOrder;
     valeur_brute?: SortOrder;
@@ -38994,10 +38842,6 @@ export namespace Prisma {
 
   export type aot_40MinOrderByAggregateInput = {
     index?: SortOrder;
-    Organisme?: SortOrder;
-    code_zas?: SortOrder;
-    Zas?: SortOrder;
-    code_site?: SortOrder;
     nom_site?: SortOrder;
     type_d_implantation?: SortOrder;
     valeur_brute?: SortOrder;

@@ -371,26 +371,22 @@ export type EtatCoursDeau = {
 
 export type AOT40 = {
   index: bigint;
-  Organisme: string | null;
-  code_zas: string | null;
-  Zas: string | null;
-  code_site: string | null;
-  nom_site: string | null;
-  type_d_implantation: string | null;
-  valeur_brute: number | null;
-  Latitude: number | null;
-  Longitude: number | null;
+  nom_site: string;
+  type_d_implantation: string;
+  valeur_brute: number;
+  Latitude: number;
+  Longitude: number;
 };
 
 export type QualiteSitesBaignade = {
   index: bigint;
-  DEP_NOM: string | null;
-  DEP_NUM: string | null;
-  TYPE: string | null;
-  COMMUNE: string | null;
-  POINT: string | null;
-  LONG: number | null;
-  LAT: number | null;
+  DEP_NOM: string;
+  DEP_NUM: string;
+  TYPE: string;
+  COMMUNE: string;
+  POINT: string;
+  LONG: number;
+  LAT: number;
   QEB_2013: string | null;
   QEB_2014: string | null;
   QEB_2015: string | null;
