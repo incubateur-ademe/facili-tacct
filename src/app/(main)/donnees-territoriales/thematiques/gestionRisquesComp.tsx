@@ -8,12 +8,14 @@ import { Suspense, useEffect, useState } from 'react';
 
 import { Catnat } from '@/components/themes/gestionRisques/catnat';
 import ErosionCotes from '@/components/themes/gestionRisques/erosionCotiere';
+import { FeuxForet } from '@/components/themes/gestionRisques/feuxForet';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   CarteCommunes,
   EpciContours,
   ErosionCotiere,
-  GestionRisques
+  GestionRisques,
+  IncendiesForet
 } from '@/lib/postgres/models';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
@@ -30,6 +32,7 @@ interface Props {
   carteCommunes: CarteCommunes[];
   erosionCotiere: ErosionCotiere[][];
   epciContours: EpciContours[];
+  incendiesForet: IncendiesForet[];
 }
 
 const allComps = [
@@ -58,6 +61,18 @@ const allComps = [
         epciContours={epciContours}
       />
     )
+  },
+  {
+    titre: 'Feux de forêt',
+    Component: ({
+      incendiesForet,
+      carteCommunes
+    }: Props & { activeDataTab: string }) => (
+      <FeuxForet
+        incendiesForet={incendiesForet}
+        carteCommunes={carteCommunes}
+      />
+    )
   }
 ];
 
@@ -66,7 +81,8 @@ const GestionRisquesComp = ({
   gestionRisques,
   carteCommunes,
   erosionCotiere,
-  epciContours
+  epciContours,
+  incendiesForet
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState(
     'Arrêtés catastrophes naturelles'
@@ -112,6 +128,10 @@ const GestionRisquesComp = ({
                 titre="Arrêtés catastrophes naturelles"
               />
             )
+          },
+          {
+            tabId: 'Feux de forêt',
+            label: 'Feux de forêt'
           },
           ...(erosionCotiere[0].length > 0
             ? [
@@ -191,6 +211,7 @@ const GestionRisquesComp = ({
                       carteCommunes={carteCommunes}
                       erosionCotiere={erosionCotiere}
                       epciContours={epciContours}
+                      incendiesForet={incendiesForet}
                     />
                   </Suspense>
                 );

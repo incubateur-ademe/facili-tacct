@@ -45,7 +45,6 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNat[] }) => {
       index === self.findIndex((t) => t.label === value.label)
   );
 
-  console.log('graphData', graphData);
   const CenteredMetric = ({
     dataWithArc,
     centerX,

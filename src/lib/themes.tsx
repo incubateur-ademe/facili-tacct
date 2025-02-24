@@ -131,6 +131,34 @@ export const themes = {
       facteurSensibilite: 'Érosion côtière',
       risque: '',
       donnee: ''
+    },
+    {
+      id: 2,
+      titre: 'Feux de forêt',
+      facteurSensibilite: 'Feux de forêt',
+      risque: '',
+      donnee: ''
+    },
+    {
+      id: 3,
+      titre: 'Inondations',
+      facteurSensibilite: 'Inondations',
+      risque: '',
+      donnee: ''
+    },
+    {
+      id: 4,
+      titre: 'Mouvements de terrain',
+      facteurSensibilite: 'Mouvements de terrain',
+      risque: '',
+      donnee: ''
+    },
+    {
+      id: 5,
+      titre: 'Sécheresse',
+      facteurSensibilite: 'Sécheresse',
+      risque: '',
+      donnee: ''
     }
   ],
   amenagement: [

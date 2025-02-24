@@ -94,6 +94,7 @@ export type CommunesIndicateursDto = {
     naf?: number;
     surfacesIrriguees?: number;
     chefsExploitation55Ans?: number;
+    incendiesForet?: number | null;
   };
   geometry: {
     coordinates: number[][][][];

@@ -126,6 +126,12 @@ export type qualite_sites_baignade =
  *
  */
 export type agriculture = $Result.DefaultSelection<Prisma.$agriculturePayload>;
+/**
+ * Model incendies_foret
+ *
+ */
+export type incendies_foret =
+  $Result.DefaultSelection<Prisma.$incendies_foretPayload>;
 
 /**
  * ##  Prisma Client ʲˢ
@@ -517,6 +523,16 @@ export class PrismaClient<
    * ```
    */
   get agriculture(): Prisma.agricultureDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.incendies_foret`: Exposes CRUD operations for the **incendies_foret** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Incendies_forets
+   * const incendies_forets = await prisma.incendies_foret.findMany()
+   * ```
+   */
+  get incendies_foret(): Prisma.incendies_foretDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -995,6 +1011,7 @@ export namespace Prisma {
     users: 'users';
     qualite_sites_baignade: 'qualite_sites_baignade';
     agriculture: 'agriculture';
+    incendies_foret: 'incendies_foret';
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -1039,7 +1056,8 @@ export namespace Prisma {
         | 'aot_40'
         | 'users'
         | 'qualite_sites_baignade'
-        | 'agriculture';
+        | 'agriculture'
+        | 'incendies_foret';
       txIsolationLevel: Prisma.TransactionIsolationLevel;
     };
     model: {
@@ -2491,6 +2509,82 @@ export namespace Prisma {
           };
         };
       };
+      incendies_foret: {
+        payload: Prisma.$incendies_foretPayload<ExtArgs>;
+        fields: Prisma.incendies_foretFieldRefs;
+        operations: {
+          findUnique: {
+            args: Prisma.incendies_foretFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload> | null;
+          };
+          findUniqueOrThrow: {
+            args: Prisma.incendies_foretFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>;
+          };
+          findFirst: {
+            args: Prisma.incendies_foretFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload> | null;
+          };
+          findFirstOrThrow: {
+            args: Prisma.incendies_foretFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>;
+          };
+          findMany: {
+            args: Prisma.incendies_foretFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>[];
+          };
+          create: {
+            args: Prisma.incendies_foretCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>;
+          };
+          createMany: {
+            args: Prisma.incendies_foretCreateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          createManyAndReturn: {
+            args: Prisma.incendies_foretCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>[];
+          };
+          delete: {
+            args: Prisma.incendies_foretDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>;
+          };
+          update: {
+            args: Prisma.incendies_foretUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>;
+          };
+          deleteMany: {
+            args: Prisma.incendies_foretDeleteManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateMany: {
+            args: Prisma.incendies_foretUpdateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateManyAndReturn: {
+            args: Prisma.incendies_foretUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>[];
+          };
+          upsert: {
+            args: Prisma.incendies_foretUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>;
+          };
+          aggregate: {
+            args: Prisma.Incendies_foretAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregateIncendies_foret>;
+          };
+          groupBy: {
+            args: Prisma.incendies_foretGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<Incendies_foretGroupByOutputType>[];
+          };
+          count: {
+            args: Prisma.incendies_foretCountArgs<ExtArgs>;
+            result:
+              | $Utils.Optional<Incendies_foretCountAggregateOutputType>
+              | number;
+          };
+        };
+      };
     };
   } & {
     other: {
@@ -2599,6 +2693,7 @@ export namespace Prisma {
     users?: usersOmit;
     qualite_sites_baignade?: qualite_sites_baignadeOmit;
     agriculture?: agricultureOmit;
+    incendies_foret?: incendies_foretOmit;
   };
 
   /* Types for Logging */
@@ -31880,6 +31975,1531 @@ export namespace Prisma {
   };
 
   /**
+   * Model incendies_foret
+   */
+
+  export type AggregateIncendies_foret = {
+    _count: Incendies_foretCountAggregateOutputType | null;
+    _avg: Incendies_foretAvgAggregateOutputType | null;
+    _sum: Incendies_foretSumAggregateOutputType | null;
+    _min: Incendies_foretMinAggregateOutputType | null;
+    _max: Incendies_foretMaxAggregateOutputType | null;
+  };
+
+  export type Incendies_foretAvgAggregateOutputType = {
+    index: number | null;
+    region: number | null;
+    annee: number | null;
+    surface_parcourue: number | null;
+    surface_foret: number | null;
+    surface_maquis_garrigues: number | null;
+    autres_surfaces_naturelles_hors_foret: number | null;
+    surfaces_agricoles: number | null;
+    surfaces_non_boisees: number | null;
+    surfaces_non_boisees_artificialisees: number | null;
+    surfaces_non_boisees_naturelles: number | null;
+    surface_autres_terres_boisees: number | null;
+    autres_surfaces: number | null;
+  };
+
+  export type Incendies_foretSumAggregateOutputType = {
+    index: bigint | null;
+    region: number | null;
+    annee: bigint | null;
+    surface_parcourue: number | null;
+    surface_foret: number | null;
+    surface_maquis_garrigues: number | null;
+    autres_surfaces_naturelles_hors_foret: number | null;
+    surfaces_agricoles: number | null;
+    surfaces_non_boisees: number | null;
+    surfaces_non_boisees_artificialisees: number | null;
+    surfaces_non_boisees_naturelles: number | null;
+    surface_autres_terres_boisees: number | null;
+    autres_surfaces: number | null;
+  };
+
+  export type Incendies_foretMinAggregateOutputType = {
+    index: bigint | null;
+    code_geographique: string | null;
+    libelle_geographique: string | null;
+    epci: string | null;
+    libelle_epci: string | null;
+    departement: string | null;
+    region: number | null;
+    annee: bigint | null;
+    surface_parcourue: number | null;
+    surface_foret: number | null;
+    surface_maquis_garrigues: number | null;
+    autres_surfaces_naturelles_hors_foret: number | null;
+    surfaces_agricoles: number | null;
+    surfaces_non_boisees: number | null;
+    surfaces_non_boisees_artificialisees: number | null;
+    surfaces_non_boisees_naturelles: number | null;
+    surface_autres_terres_boisees: number | null;
+    autres_surfaces: number | null;
+  };
+
+  export type Incendies_foretMaxAggregateOutputType = {
+    index: bigint | null;
+    code_geographique: string | null;
+    libelle_geographique: string | null;
+    epci: string | null;
+    libelle_epci: string | null;
+    departement: string | null;
+    region: number | null;
+    annee: bigint | null;
+    surface_parcourue: number | null;
+    surface_foret: number | null;
+    surface_maquis_garrigues: number | null;
+    autres_surfaces_naturelles_hors_foret: number | null;
+    surfaces_agricoles: number | null;
+    surfaces_non_boisees: number | null;
+    surfaces_non_boisees_artificialisees: number | null;
+    surfaces_non_boisees_naturelles: number | null;
+    surface_autres_terres_boisees: number | null;
+    autres_surfaces: number | null;
+  };
+
+  export type Incendies_foretCountAggregateOutputType = {
+    index: number;
+    code_geographique: number;
+    libelle_geographique: number;
+    epci: number;
+    libelle_epci: number;
+    departement: number;
+    region: number;
+    annee: number;
+    surface_parcourue: number;
+    surface_foret: number;
+    surface_maquis_garrigues: number;
+    autres_surfaces_naturelles_hors_foret: number;
+    surfaces_agricoles: number;
+    surfaces_non_boisees: number;
+    surfaces_non_boisees_artificialisees: number;
+    surfaces_non_boisees_naturelles: number;
+    surface_autres_terres_boisees: number;
+    autres_surfaces: number;
+    _all: number;
+  };
+
+  export type Incendies_foretAvgAggregateInputType = {
+    index?: true;
+    region?: true;
+    annee?: true;
+    surface_parcourue?: true;
+    surface_foret?: true;
+    surface_maquis_garrigues?: true;
+    autres_surfaces_naturelles_hors_foret?: true;
+    surfaces_agricoles?: true;
+    surfaces_non_boisees?: true;
+    surfaces_non_boisees_artificialisees?: true;
+    surfaces_non_boisees_naturelles?: true;
+    surface_autres_terres_boisees?: true;
+    autres_surfaces?: true;
+  };
+
+  export type Incendies_foretSumAggregateInputType = {
+    index?: true;
+    region?: true;
+    annee?: true;
+    surface_parcourue?: true;
+    surface_foret?: true;
+    surface_maquis_garrigues?: true;
+    autres_surfaces_naturelles_hors_foret?: true;
+    surfaces_agricoles?: true;
+    surfaces_non_boisees?: true;
+    surfaces_non_boisees_artificialisees?: true;
+    surfaces_non_boisees_naturelles?: true;
+    surface_autres_terres_boisees?: true;
+    autres_surfaces?: true;
+  };
+
+  export type Incendies_foretMinAggregateInputType = {
+    index?: true;
+    code_geographique?: true;
+    libelle_geographique?: true;
+    epci?: true;
+    libelle_epci?: true;
+    departement?: true;
+    region?: true;
+    annee?: true;
+    surface_parcourue?: true;
+    surface_foret?: true;
+    surface_maquis_garrigues?: true;
+    autres_surfaces_naturelles_hors_foret?: true;
+    surfaces_agricoles?: true;
+    surfaces_non_boisees?: true;
+    surfaces_non_boisees_artificialisees?: true;
+    surfaces_non_boisees_naturelles?: true;
+    surface_autres_terres_boisees?: true;
+    autres_surfaces?: true;
+  };
+
+  export type Incendies_foretMaxAggregateInputType = {
+    index?: true;
+    code_geographique?: true;
+    libelle_geographique?: true;
+    epci?: true;
+    libelle_epci?: true;
+    departement?: true;
+    region?: true;
+    annee?: true;
+    surface_parcourue?: true;
+    surface_foret?: true;
+    surface_maquis_garrigues?: true;
+    autres_surfaces_naturelles_hors_foret?: true;
+    surfaces_agricoles?: true;
+    surfaces_non_boisees?: true;
+    surfaces_non_boisees_artificialisees?: true;
+    surfaces_non_boisees_naturelles?: true;
+    surface_autres_terres_boisees?: true;
+    autres_surfaces?: true;
+  };
+
+  export type Incendies_foretCountAggregateInputType = {
+    index?: true;
+    code_geographique?: true;
+    libelle_geographique?: true;
+    epci?: true;
+    libelle_epci?: true;
+    departement?: true;
+    region?: true;
+    annee?: true;
+    surface_parcourue?: true;
+    surface_foret?: true;
+    surface_maquis_garrigues?: true;
+    autres_surfaces_naturelles_hors_foret?: true;
+    surfaces_agricoles?: true;
+    surfaces_non_boisees?: true;
+    surfaces_non_boisees_artificialisees?: true;
+    surfaces_non_boisees_naturelles?: true;
+    surface_autres_terres_boisees?: true;
+    autres_surfaces?: true;
+    _all?: true;
+  };
+
+  export type Incendies_foretAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which incendies_foret to aggregate.
+     */
+    where?: incendies_foretWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of incendies_forets to fetch.
+     */
+    orderBy?:
+      | incendies_foretOrderByWithRelationInput
+      | incendies_foretOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: incendies_foretWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` incendies_forets from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` incendies_forets.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned incendies_forets
+     **/
+    _count?: true | Incendies_foretCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: Incendies_foretAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: Incendies_foretSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: Incendies_foretMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: Incendies_foretMaxAggregateInputType;
+  };
+
+  export type GetIncendies_foretAggregateType<
+    T extends Incendies_foretAggregateArgs
+  > = {
+    [P in keyof T & keyof AggregateIncendies_foret]: P extends
+      | '_count'
+      | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateIncendies_foret[P]>
+      : GetScalarType<T[P], AggregateIncendies_foret[P]>;
+  };
+
+  export type incendies_foretGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    where?: incendies_foretWhereInput;
+    orderBy?:
+      | incendies_foretOrderByWithAggregationInput
+      | incendies_foretOrderByWithAggregationInput[];
+    by: Incendies_foretScalarFieldEnum[] | Incendies_foretScalarFieldEnum;
+    having?: incendies_foretScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: Incendies_foretCountAggregateInputType | true;
+    _avg?: Incendies_foretAvgAggregateInputType;
+    _sum?: Incendies_foretSumAggregateInputType;
+    _min?: Incendies_foretMinAggregateInputType;
+    _max?: Incendies_foretMaxAggregateInputType;
+  };
+
+  export type Incendies_foretGroupByOutputType = {
+    index: bigint;
+    code_geographique: string;
+    libelle_geographique: string;
+    epci: string;
+    libelle_epci: string;
+    departement: string;
+    region: number;
+    annee: bigint;
+    surface_parcourue: number;
+    surface_foret: number | null;
+    surface_maquis_garrigues: number | null;
+    autres_surfaces_naturelles_hors_foret: number | null;
+    surfaces_agricoles: number | null;
+    surfaces_non_boisees: number | null;
+    surfaces_non_boisees_artificialisees: number | null;
+    surfaces_non_boisees_naturelles: number | null;
+    surface_autres_terres_boisees: number | null;
+    autres_surfaces: number | null;
+    _count: Incendies_foretCountAggregateOutputType | null;
+    _avg: Incendies_foretAvgAggregateOutputType | null;
+    _sum: Incendies_foretSumAggregateOutputType | null;
+    _min: Incendies_foretMinAggregateOutputType | null;
+    _max: Incendies_foretMaxAggregateOutputType | null;
+  };
+
+  type GetIncendies_foretGroupByPayload<T extends incendies_foretGroupByArgs> =
+    Prisma.PrismaPromise<
+      Array<
+        PickEnumerable<Incendies_foretGroupByOutputType, T['by']> & {
+          [P in keyof T &
+            keyof Incendies_foretGroupByOutputType]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Incendies_foretGroupByOutputType[P]>
+            : GetScalarType<T[P], Incendies_foretGroupByOutputType[P]>;
+        }
+      >
+    >;
+
+  export type incendies_foretSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_geographique?: boolean;
+      libelle_geographique?: boolean;
+      epci?: boolean;
+      libelle_epci?: boolean;
+      departement?: boolean;
+      region?: boolean;
+      annee?: boolean;
+      surface_parcourue?: boolean;
+      surface_foret?: boolean;
+      surface_maquis_garrigues?: boolean;
+      autres_surfaces_naturelles_hors_foret?: boolean;
+      surfaces_agricoles?: boolean;
+      surfaces_non_boisees?: boolean;
+      surfaces_non_boisees_artificialisees?: boolean;
+      surfaces_non_boisees_naturelles?: boolean;
+      surface_autres_terres_boisees?: boolean;
+      autres_surfaces?: boolean;
+    },
+    ExtArgs['result']['incendies_foret']
+  >;
+
+  export type incendies_foretSelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_geographique?: boolean;
+      libelle_geographique?: boolean;
+      epci?: boolean;
+      libelle_epci?: boolean;
+      departement?: boolean;
+      region?: boolean;
+      annee?: boolean;
+      surface_parcourue?: boolean;
+      surface_foret?: boolean;
+      surface_maquis_garrigues?: boolean;
+      autres_surfaces_naturelles_hors_foret?: boolean;
+      surfaces_agricoles?: boolean;
+      surfaces_non_boisees?: boolean;
+      surfaces_non_boisees_artificialisees?: boolean;
+      surfaces_non_boisees_naturelles?: boolean;
+      surface_autres_terres_boisees?: boolean;
+      autres_surfaces?: boolean;
+    },
+    ExtArgs['result']['incendies_foret']
+  >;
+
+  export type incendies_foretSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_geographique?: boolean;
+      libelle_geographique?: boolean;
+      epci?: boolean;
+      libelle_epci?: boolean;
+      departement?: boolean;
+      region?: boolean;
+      annee?: boolean;
+      surface_parcourue?: boolean;
+      surface_foret?: boolean;
+      surface_maquis_garrigues?: boolean;
+      autres_surfaces_naturelles_hors_foret?: boolean;
+      surfaces_agricoles?: boolean;
+      surfaces_non_boisees?: boolean;
+      surfaces_non_boisees_artificialisees?: boolean;
+      surfaces_non_boisees_naturelles?: boolean;
+      surface_autres_terres_boisees?: boolean;
+      autres_surfaces?: boolean;
+    },
+    ExtArgs['result']['incendies_foret']
+  >;
+
+  export type incendies_foretSelectScalar = {
+    index?: boolean;
+    code_geographique?: boolean;
+    libelle_geographique?: boolean;
+    epci?: boolean;
+    libelle_epci?: boolean;
+    departement?: boolean;
+    region?: boolean;
+    annee?: boolean;
+    surface_parcourue?: boolean;
+    surface_foret?: boolean;
+    surface_maquis_garrigues?: boolean;
+    autres_surfaces_naturelles_hors_foret?: boolean;
+    surfaces_agricoles?: boolean;
+    surfaces_non_boisees?: boolean;
+    surfaces_non_boisees_artificialisees?: boolean;
+    surfaces_non_boisees_naturelles?: boolean;
+    surface_autres_terres_boisees?: boolean;
+    autres_surfaces?: boolean;
+  };
+
+  export type incendies_foretOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'index'
+    | 'code_geographique'
+    | 'libelle_geographique'
+    | 'epci'
+    | 'libelle_epci'
+    | 'departement'
+    | 'region'
+    | 'annee'
+    | 'surface_parcourue'
+    | 'surface_foret'
+    | 'surface_maquis_garrigues'
+    | 'autres_surfaces_naturelles_hors_foret'
+    | 'surfaces_agricoles'
+    | 'surfaces_non_boisees'
+    | 'surfaces_non_boisees_artificialisees'
+    | 'surfaces_non_boisees_naturelles'
+    | 'surface_autres_terres_boisees'
+    | 'autres_surfaces',
+    ExtArgs['result']['incendies_foret']
+  >;
+
+  export type $incendies_foretPayload<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    name: 'incendies_foret';
+    objects: {};
+    scalars: $Extensions.GetPayloadResult<
+      {
+        index: bigint;
+        code_geographique: string;
+        libelle_geographique: string;
+        epci: string;
+        libelle_epci: string;
+        departement: string;
+        region: number;
+        annee: bigint;
+        surface_parcourue: number;
+        surface_foret: number | null;
+        surface_maquis_garrigues: number | null;
+        autres_surfaces_naturelles_hors_foret: number | null;
+        surfaces_agricoles: number | null;
+        surfaces_non_boisees: number | null;
+        surfaces_non_boisees_artificialisees: number | null;
+        surfaces_non_boisees_naturelles: number | null;
+        surface_autres_terres_boisees: number | null;
+        autres_surfaces: number | null;
+      },
+      ExtArgs['result']['incendies_foret']
+    >;
+    composites: {};
+  };
+
+  type incendies_foretGetPayload<
+    S extends boolean | null | undefined | incendies_foretDefaultArgs
+  > = $Result.GetResult<Prisma.$incendies_foretPayload, S>;
+
+  type incendies_foretCountArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = Omit<
+    incendies_foretFindManyArgs,
+    'select' | 'include' | 'distinct' | 'omit'
+  > & {
+    select?: Incendies_foretCountAggregateInputType | true;
+  };
+
+  export interface incendies_foretDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['incendies_foret'];
+      meta: { name: 'incendies_foret' };
+    };
+    /**
+     * Find zero or one Incendies_foret that matches the filter.
+     * @param {incendies_foretFindUniqueArgs} args - Arguments to find a Incendies_foret
+     * @example
+     * // Get one Incendies_foret
+     * const incendies_foret = await prisma.incendies_foret.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends incendies_foretFindUniqueArgs>(
+      args: SelectSubset<T, incendies_foretFindUniqueArgs<ExtArgs>>
+    ): Prisma__incendies_foretClient<
+      $Result.GetResult<
+        Prisma.$incendies_foretPayload<ExtArgs>,
+        T,
+        'findUnique',
+        ClientOptions
+      > | null,
+      null,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find one Incendies_foret that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {incendies_foretFindUniqueOrThrowArgs} args - Arguments to find a Incendies_foret
+     * @example
+     * // Get one Incendies_foret
+     * const incendies_foret = await prisma.incendies_foret.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends incendies_foretFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, incendies_foretFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__incendies_foretClient<
+      $Result.GetResult<
+        Prisma.$incendies_foretPayload<ExtArgs>,
+        T,
+        'findUniqueOrThrow',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find the first Incendies_foret that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {incendies_foretFindFirstArgs} args - Arguments to find a Incendies_foret
+     * @example
+     * // Get one Incendies_foret
+     * const incendies_foret = await prisma.incendies_foret.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends incendies_foretFindFirstArgs>(
+      args?: SelectSubset<T, incendies_foretFindFirstArgs<ExtArgs>>
+    ): Prisma__incendies_foretClient<
+      $Result.GetResult<
+        Prisma.$incendies_foretPayload<ExtArgs>,
+        T,
+        'findFirst',
+        ClientOptions
+      > | null,
+      null,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find the first Incendies_foret that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {incendies_foretFindFirstOrThrowArgs} args - Arguments to find a Incendies_foret
+     * @example
+     * // Get one Incendies_foret
+     * const incendies_foret = await prisma.incendies_foret.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends incendies_foretFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, incendies_foretFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__incendies_foretClient<
+      $Result.GetResult<
+        Prisma.$incendies_foretPayload<ExtArgs>,
+        T,
+        'findFirstOrThrow',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find zero or more Incendies_forets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {incendies_foretFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Incendies_forets
+     * const incendies_forets = await prisma.incendies_foret.findMany()
+     *
+     * // Get first 10 Incendies_forets
+     * const incendies_forets = await prisma.incendies_foret.findMany({ take: 10 })
+     *
+     * // Only select the `index`
+     * const incendies_foretWithIndexOnly = await prisma.incendies_foret.findMany({ select: { index: true } })
+     *
+     */
+    findMany<T extends incendies_foretFindManyArgs>(
+      args?: SelectSubset<T, incendies_foretFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$incendies_foretPayload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Create a Incendies_foret.
+     * @param {incendies_foretCreateArgs} args - Arguments to create a Incendies_foret.
+     * @example
+     * // Create one Incendies_foret
+     * const Incendies_foret = await prisma.incendies_foret.create({
+     *   data: {
+     *     // ... data to create a Incendies_foret
+     *   }
+     * })
+     *
+     */
+    create<T extends incendies_foretCreateArgs>(
+      args: SelectSubset<T, incendies_foretCreateArgs<ExtArgs>>
+    ): Prisma__incendies_foretClient<
+      $Result.GetResult<
+        Prisma.$incendies_foretPayload<ExtArgs>,
+        T,
+        'create',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Create many Incendies_forets.
+     * @param {incendies_foretCreateManyArgs} args - Arguments to create many Incendies_forets.
+     * @example
+     * // Create many Incendies_forets
+     * const incendies_foret = await prisma.incendies_foret.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends incendies_foretCreateManyArgs>(
+      args?: SelectSubset<T, incendies_foretCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create many Incendies_forets and returns the data saved in the database.
+     * @param {incendies_foretCreateManyAndReturnArgs} args - Arguments to create many Incendies_forets.
+     * @example
+     * // Create many Incendies_forets
+     * const incendies_foret = await prisma.incendies_foret.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Incendies_forets and only return the `index`
+     * const incendies_foretWithIndexOnly = await prisma.incendies_foret.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends incendies_foretCreateManyAndReturnArgs>(
+      args?: SelectSubset<T, incendies_foretCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$incendies_foretPayload<ExtArgs>,
+        T,
+        'createManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Delete a Incendies_foret.
+     * @param {incendies_foretDeleteArgs} args - Arguments to delete one Incendies_foret.
+     * @example
+     * // Delete one Incendies_foret
+     * const Incendies_foret = await prisma.incendies_foret.delete({
+     *   where: {
+     *     // ... filter to delete one Incendies_foret
+     *   }
+     * })
+     *
+     */
+    delete<T extends incendies_foretDeleteArgs>(
+      args: SelectSubset<T, incendies_foretDeleteArgs<ExtArgs>>
+    ): Prisma__incendies_foretClient<
+      $Result.GetResult<
+        Prisma.$incendies_foretPayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Update one Incendies_foret.
+     * @param {incendies_foretUpdateArgs} args - Arguments to update one Incendies_foret.
+     * @example
+     * // Update one Incendies_foret
+     * const incendies_foret = await prisma.incendies_foret.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends incendies_foretUpdateArgs>(
+      args: SelectSubset<T, incendies_foretUpdateArgs<ExtArgs>>
+    ): Prisma__incendies_foretClient<
+      $Result.GetResult<
+        Prisma.$incendies_foretPayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Delete zero or more Incendies_forets.
+     * @param {incendies_foretDeleteManyArgs} args - Arguments to filter Incendies_forets to delete.
+     * @example
+     * // Delete a few Incendies_forets
+     * const { count } = await prisma.incendies_foret.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends incendies_foretDeleteManyArgs>(
+      args?: SelectSubset<T, incendies_foretDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Incendies_forets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {incendies_foretUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Incendies_forets
+     * const incendies_foret = await prisma.incendies_foret.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends incendies_foretUpdateManyArgs>(
+      args: SelectSubset<T, incendies_foretUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Incendies_forets and returns the data updated in the database.
+     * @param {incendies_foretUpdateManyAndReturnArgs} args - Arguments to update many Incendies_forets.
+     * @example
+     * // Update many Incendies_forets
+     * const incendies_foret = await prisma.incendies_foret.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Incendies_forets and only return the `index`
+     * const incendies_foretWithIndexOnly = await prisma.incendies_foret.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends incendies_foretUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, incendies_foretUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$incendies_foretPayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Create or update one Incendies_foret.
+     * @param {incendies_foretUpsertArgs} args - Arguments to update or create a Incendies_foret.
+     * @example
+     * // Update or create a Incendies_foret
+     * const incendies_foret = await prisma.incendies_foret.upsert({
+     *   create: {
+     *     // ... data to create a Incendies_foret
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Incendies_foret we want to update
+     *   }
+     * })
+     */
+    upsert<T extends incendies_foretUpsertArgs>(
+      args: SelectSubset<T, incendies_foretUpsertArgs<ExtArgs>>
+    ): Prisma__incendies_foretClient<
+      $Result.GetResult<
+        Prisma.$incendies_foretPayload<ExtArgs>,
+        T,
+        'upsert',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Count the number of Incendies_forets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {incendies_foretCountArgs} args - Arguments to filter Incendies_forets to count.
+     * @example
+     * // Count the number of Incendies_forets
+     * const count = await prisma.incendies_foret.count({
+     *   where: {
+     *     // ... the filter for the Incendies_forets we want to count
+     *   }
+     * })
+     **/
+    count<T extends incendies_foretCountArgs>(
+      args?: Subset<T, incendies_foretCountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Incendies_foretCountAggregateOutputType>
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a Incendies_foret.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Incendies_foretAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends Incendies_foretAggregateArgs>(
+      args: Subset<T, Incendies_foretAggregateArgs>
+    ): Prisma.PrismaPromise<GetIncendies_foretAggregateType<T>>;
+
+    /**
+     * Group by Incendies_foret.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {incendies_foretGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends incendies_foretGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: incendies_foretGroupByArgs['orderBy'] }
+        : { orderBy?: incendies_foretGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<
+        Keys<MaybeTupleToUnion<T['orderBy']>>
+      >,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`
+                    ];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+    >(
+      args: SubsetIntersection<T, incendies_foretGroupByArgs, OrderByArg> &
+        InputErrors
+    ): {} extends InputErrors
+      ? GetIncendies_foretGroupByPayload<T>
+      : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the incendies_foret model
+     */
+    readonly fields: incendies_foretFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for incendies_foret.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__incendies_foretClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?:
+        | ((value: T) => TResult1 | PromiseLike<TResult1>)
+        | undefined
+        | null,
+      onrejected?:
+        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?:
+        | ((reason: any) => TResult | PromiseLike<TResult>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the incendies_foret model
+   */
+  interface incendies_foretFieldRefs {
+    readonly index: FieldRef<'incendies_foret', 'BigInt'>;
+    readonly code_geographique: FieldRef<'incendies_foret', 'String'>;
+    readonly libelle_geographique: FieldRef<'incendies_foret', 'String'>;
+    readonly epci: FieldRef<'incendies_foret', 'String'>;
+    readonly libelle_epci: FieldRef<'incendies_foret', 'String'>;
+    readonly departement: FieldRef<'incendies_foret', 'String'>;
+    readonly region: FieldRef<'incendies_foret', 'Float'>;
+    readonly annee: FieldRef<'incendies_foret', 'BigInt'>;
+    readonly surface_parcourue: FieldRef<'incendies_foret', 'Float'>;
+    readonly surface_foret: FieldRef<'incendies_foret', 'Float'>;
+    readonly surface_maquis_garrigues: FieldRef<'incendies_foret', 'Float'>;
+    readonly autres_surfaces_naturelles_hors_foret: FieldRef<
+      'incendies_foret',
+      'Float'
+    >;
+    readonly surfaces_agricoles: FieldRef<'incendies_foret', 'Float'>;
+    readonly surfaces_non_boisees: FieldRef<'incendies_foret', 'Float'>;
+    readonly surfaces_non_boisees_artificialisees: FieldRef<
+      'incendies_foret',
+      'Float'
+    >;
+    readonly surfaces_non_boisees_naturelles: FieldRef<
+      'incendies_foret',
+      'Float'
+    >;
+    readonly surface_autres_terres_boisees: FieldRef<
+      'incendies_foret',
+      'Float'
+    >;
+    readonly autres_surfaces: FieldRef<'incendies_foret', 'Float'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * incendies_foret findUnique
+   */
+  export type incendies_foretFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the incendies_foret
+     */
+    select?: incendies_foretSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the incendies_foret
+     */
+    omit?: incendies_foretOmit<ExtArgs> | null;
+    /**
+     * Filter, which incendies_foret to fetch.
+     */
+    where: incendies_foretWhereUniqueInput;
+  };
+
+  /**
+   * incendies_foret findUniqueOrThrow
+   */
+  export type incendies_foretFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the incendies_foret
+     */
+    select?: incendies_foretSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the incendies_foret
+     */
+    omit?: incendies_foretOmit<ExtArgs> | null;
+    /**
+     * Filter, which incendies_foret to fetch.
+     */
+    where: incendies_foretWhereUniqueInput;
+  };
+
+  /**
+   * incendies_foret findFirst
+   */
+  export type incendies_foretFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the incendies_foret
+     */
+    select?: incendies_foretSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the incendies_foret
+     */
+    omit?: incendies_foretOmit<ExtArgs> | null;
+    /**
+     * Filter, which incendies_foret to fetch.
+     */
+    where?: incendies_foretWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of incendies_forets to fetch.
+     */
+    orderBy?:
+      | incendies_foretOrderByWithRelationInput
+      | incendies_foretOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for incendies_forets.
+     */
+    cursor?: incendies_foretWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` incendies_forets from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` incendies_forets.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of incendies_forets.
+     */
+    distinct?:
+      | Incendies_foretScalarFieldEnum
+      | Incendies_foretScalarFieldEnum[];
+  };
+
+  /**
+   * incendies_foret findFirstOrThrow
+   */
+  export type incendies_foretFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the incendies_foret
+     */
+    select?: incendies_foretSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the incendies_foret
+     */
+    omit?: incendies_foretOmit<ExtArgs> | null;
+    /**
+     * Filter, which incendies_foret to fetch.
+     */
+    where?: incendies_foretWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of incendies_forets to fetch.
+     */
+    orderBy?:
+      | incendies_foretOrderByWithRelationInput
+      | incendies_foretOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for incendies_forets.
+     */
+    cursor?: incendies_foretWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` incendies_forets from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` incendies_forets.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of incendies_forets.
+     */
+    distinct?:
+      | Incendies_foretScalarFieldEnum
+      | Incendies_foretScalarFieldEnum[];
+  };
+
+  /**
+   * incendies_foret findMany
+   */
+  export type incendies_foretFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the incendies_foret
+     */
+    select?: incendies_foretSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the incendies_foret
+     */
+    omit?: incendies_foretOmit<ExtArgs> | null;
+    /**
+     * Filter, which incendies_forets to fetch.
+     */
+    where?: incendies_foretWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of incendies_forets to fetch.
+     */
+    orderBy?:
+      | incendies_foretOrderByWithRelationInput
+      | incendies_foretOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing incendies_forets.
+     */
+    cursor?: incendies_foretWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` incendies_forets from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` incendies_forets.
+     */
+    skip?: number;
+    distinct?:
+      | Incendies_foretScalarFieldEnum
+      | Incendies_foretScalarFieldEnum[];
+  };
+
+  /**
+   * incendies_foret create
+   */
+  export type incendies_foretCreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the incendies_foret
+     */
+    select?: incendies_foretSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the incendies_foret
+     */
+    omit?: incendies_foretOmit<ExtArgs> | null;
+    /**
+     * The data needed to create a incendies_foret.
+     */
+    data: XOR<incendies_foretCreateInput, incendies_foretUncheckedCreateInput>;
+  };
+
+  /**
+   * incendies_foret createMany
+   */
+  export type incendies_foretCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to create many incendies_forets.
+     */
+    data: incendies_foretCreateManyInput | incendies_foretCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * incendies_foret createManyAndReturn
+   */
+  export type incendies_foretCreateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the incendies_foret
+     */
+    select?: incendies_foretSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the incendies_foret
+     */
+    omit?: incendies_foretOmit<ExtArgs> | null;
+    /**
+     * The data used to create many incendies_forets.
+     */
+    data: incendies_foretCreateManyInput | incendies_foretCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * incendies_foret update
+   */
+  export type incendies_foretUpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the incendies_foret
+     */
+    select?: incendies_foretSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the incendies_foret
+     */
+    omit?: incendies_foretOmit<ExtArgs> | null;
+    /**
+     * The data needed to update a incendies_foret.
+     */
+    data: XOR<incendies_foretUpdateInput, incendies_foretUncheckedUpdateInput>;
+    /**
+     * Choose, which incendies_foret to update.
+     */
+    where: incendies_foretWhereUniqueInput;
+  };
+
+  /**
+   * incendies_foret updateMany
+   */
+  export type incendies_foretUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to update incendies_forets.
+     */
+    data: XOR<
+      incendies_foretUpdateManyMutationInput,
+      incendies_foretUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which incendies_forets to update
+     */
+    where?: incendies_foretWhereInput;
+    /**
+     * Limit how many incendies_forets to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * incendies_foret updateManyAndReturn
+   */
+  export type incendies_foretUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the incendies_foret
+     */
+    select?: incendies_foretSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the incendies_foret
+     */
+    omit?: incendies_foretOmit<ExtArgs> | null;
+    /**
+     * The data used to update incendies_forets.
+     */
+    data: XOR<
+      incendies_foretUpdateManyMutationInput,
+      incendies_foretUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which incendies_forets to update
+     */
+    where?: incendies_foretWhereInput;
+    /**
+     * Limit how many incendies_forets to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * incendies_foret upsert
+   */
+  export type incendies_foretUpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the incendies_foret
+     */
+    select?: incendies_foretSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the incendies_foret
+     */
+    omit?: incendies_foretOmit<ExtArgs> | null;
+    /**
+     * The filter to search for the incendies_foret to update in case it exists.
+     */
+    where: incendies_foretWhereUniqueInput;
+    /**
+     * In case the incendies_foret found by the `where` argument doesn't exist, create a new incendies_foret with this data.
+     */
+    create: XOR<
+      incendies_foretCreateInput,
+      incendies_foretUncheckedCreateInput
+    >;
+    /**
+     * In case the incendies_foret was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<
+      incendies_foretUpdateInput,
+      incendies_foretUncheckedUpdateInput
+    >;
+  };
+
+  /**
+   * incendies_foret delete
+   */
+  export type incendies_foretDeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the incendies_foret
+     */
+    select?: incendies_foretSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the incendies_foret
+     */
+    omit?: incendies_foretOmit<ExtArgs> | null;
+    /**
+     * Filter which incendies_foret to delete.
+     */
+    where: incendies_foretWhereUniqueInput;
+  };
+
+  /**
+   * incendies_foret deleteMany
+   */
+  export type incendies_foretDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which incendies_forets to delete
+     */
+    where?: incendies_foretWhereInput;
+    /**
+     * Limit how many incendies_forets to delete.
+     */
+    limit?: number;
+  };
+
+  /**
+   * incendies_foret without action
+   */
+  export type incendies_foretDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the incendies_foret
+     */
+    select?: incendies_foretSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the incendies_foret
+     */
+    omit?: incendies_foretOmit<ExtArgs> | null;
+  };
+
+  /**
    * Enums
    */
 
@@ -32367,6 +33987,30 @@ export namespace Prisma {
 
   export type AgricultureScalarFieldEnum =
     (typeof AgricultureScalarFieldEnum)[keyof typeof AgricultureScalarFieldEnum];
+
+  export const Incendies_foretScalarFieldEnum: {
+    index: 'index';
+    code_geographique: 'code_geographique';
+    libelle_geographique: 'libelle_geographique';
+    epci: 'epci';
+    libelle_epci: 'libelle_epci';
+    departement: 'departement';
+    region: 'region';
+    annee: 'annee';
+    surface_parcourue: 'surface_parcourue';
+    surface_foret: 'surface_foret';
+    surface_maquis_garrigues: 'surface_maquis_garrigues';
+    autres_surfaces_naturelles_hors_foret: 'autres_surfaces_naturelles_hors_foret';
+    surfaces_agricoles: 'surfaces_agricoles';
+    surfaces_non_boisees: 'surfaces_non_boisees';
+    surfaces_non_boisees_artificialisees: 'surfaces_non_boisees_artificialisees';
+    surfaces_non_boisees_naturelles: 'surfaces_non_boisees_naturelles';
+    surface_autres_terres_boisees: 'surface_autres_terres_boisees';
+    autres_surfaces: 'autres_surfaces';
+  };
+
+  export type Incendies_foretScalarFieldEnum =
+    (typeof Incendies_foretScalarFieldEnum)[keyof typeof Incendies_foretScalarFieldEnum];
 
   export const SortOrder: {
     asc: 'asc';
@@ -35640,6 +37284,200 @@ export namespace Prisma {
       | null;
   };
 
+  export type incendies_foretWhereInput = {
+    AND?: incendies_foretWhereInput | incendies_foretWhereInput[];
+    OR?: incendies_foretWhereInput[];
+    NOT?: incendies_foretWhereInput | incendies_foretWhereInput[];
+    index?: BigIntFilter<'incendies_foret'> | bigint | number;
+    code_geographique?: StringFilter<'incendies_foret'> | string;
+    libelle_geographique?: StringFilter<'incendies_foret'> | string;
+    epci?: StringFilter<'incendies_foret'> | string;
+    libelle_epci?: StringFilter<'incendies_foret'> | string;
+    departement?: StringFilter<'incendies_foret'> | string;
+    region?: FloatFilter<'incendies_foret'> | number;
+    annee?: BigIntFilter<'incendies_foret'> | bigint | number;
+    surface_parcourue?: FloatFilter<'incendies_foret'> | number;
+    surface_foret?: FloatNullableFilter<'incendies_foret'> | number | null;
+    surface_maquis_garrigues?:
+      | FloatNullableFilter<'incendies_foret'>
+      | number
+      | null;
+    autres_surfaces_naturelles_hors_foret?:
+      | FloatNullableFilter<'incendies_foret'>
+      | number
+      | null;
+    surfaces_agricoles?: FloatNullableFilter<'incendies_foret'> | number | null;
+    surfaces_non_boisees?:
+      | FloatNullableFilter<'incendies_foret'>
+      | number
+      | null;
+    surfaces_non_boisees_artificialisees?:
+      | FloatNullableFilter<'incendies_foret'>
+      | number
+      | null;
+    surfaces_non_boisees_naturelles?:
+      | FloatNullableFilter<'incendies_foret'>
+      | number
+      | null;
+    surface_autres_terres_boisees?:
+      | FloatNullableFilter<'incendies_foret'>
+      | number
+      | null;
+    autres_surfaces?: FloatNullableFilter<'incendies_foret'> | number | null;
+  };
+
+  export type incendies_foretOrderByWithRelationInput = {
+    index?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
+    epci?: SortOrder;
+    libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
+    annee?: SortOrder;
+    surface_parcourue?: SortOrder;
+    surface_foret?: SortOrderInput | SortOrder;
+    surface_maquis_garrigues?: SortOrderInput | SortOrder;
+    autres_surfaces_naturelles_hors_foret?: SortOrderInput | SortOrder;
+    surfaces_agricoles?: SortOrderInput | SortOrder;
+    surfaces_non_boisees?: SortOrderInput | SortOrder;
+    surfaces_non_boisees_artificialisees?: SortOrderInput | SortOrder;
+    surfaces_non_boisees_naturelles?: SortOrderInput | SortOrder;
+    surface_autres_terres_boisees?: SortOrderInput | SortOrder;
+    autres_surfaces?: SortOrderInput | SortOrder;
+  };
+
+  export type incendies_foretWhereUniqueInput = Prisma.AtLeast<
+    {
+      index?: bigint | number;
+      AND?: incendies_foretWhereInput | incendies_foretWhereInput[];
+      OR?: incendies_foretWhereInput[];
+      NOT?: incendies_foretWhereInput | incendies_foretWhereInput[];
+      code_geographique?: StringFilter<'incendies_foret'> | string;
+      libelle_geographique?: StringFilter<'incendies_foret'> | string;
+      epci?: StringFilter<'incendies_foret'> | string;
+      libelle_epci?: StringFilter<'incendies_foret'> | string;
+      departement?: StringFilter<'incendies_foret'> | string;
+      region?: FloatFilter<'incendies_foret'> | number;
+      annee?: BigIntFilter<'incendies_foret'> | bigint | number;
+      surface_parcourue?: FloatFilter<'incendies_foret'> | number;
+      surface_foret?: FloatNullableFilter<'incendies_foret'> | number | null;
+      surface_maquis_garrigues?:
+        | FloatNullableFilter<'incendies_foret'>
+        | number
+        | null;
+      autres_surfaces_naturelles_hors_foret?:
+        | FloatNullableFilter<'incendies_foret'>
+        | number
+        | null;
+      surfaces_agricoles?:
+        | FloatNullableFilter<'incendies_foret'>
+        | number
+        | null;
+      surfaces_non_boisees?:
+        | FloatNullableFilter<'incendies_foret'>
+        | number
+        | null;
+      surfaces_non_boisees_artificialisees?:
+        | FloatNullableFilter<'incendies_foret'>
+        | number
+        | null;
+      surfaces_non_boisees_naturelles?:
+        | FloatNullableFilter<'incendies_foret'>
+        | number
+        | null;
+      surface_autres_terres_boisees?:
+        | FloatNullableFilter<'incendies_foret'>
+        | number
+        | null;
+      autres_surfaces?: FloatNullableFilter<'incendies_foret'> | number | null;
+    },
+    'index'
+  >;
+
+  export type incendies_foretOrderByWithAggregationInput = {
+    index?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
+    epci?: SortOrder;
+    libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
+    annee?: SortOrder;
+    surface_parcourue?: SortOrder;
+    surface_foret?: SortOrderInput | SortOrder;
+    surface_maquis_garrigues?: SortOrderInput | SortOrder;
+    autres_surfaces_naturelles_hors_foret?: SortOrderInput | SortOrder;
+    surfaces_agricoles?: SortOrderInput | SortOrder;
+    surfaces_non_boisees?: SortOrderInput | SortOrder;
+    surfaces_non_boisees_artificialisees?: SortOrderInput | SortOrder;
+    surfaces_non_boisees_naturelles?: SortOrderInput | SortOrder;
+    surface_autres_terres_boisees?: SortOrderInput | SortOrder;
+    autres_surfaces?: SortOrderInput | SortOrder;
+    _count?: incendies_foretCountOrderByAggregateInput;
+    _avg?: incendies_foretAvgOrderByAggregateInput;
+    _max?: incendies_foretMaxOrderByAggregateInput;
+    _min?: incendies_foretMinOrderByAggregateInput;
+    _sum?: incendies_foretSumOrderByAggregateInput;
+  };
+
+  export type incendies_foretScalarWhereWithAggregatesInput = {
+    AND?:
+      | incendies_foretScalarWhereWithAggregatesInput
+      | incendies_foretScalarWhereWithAggregatesInput[];
+    OR?: incendies_foretScalarWhereWithAggregatesInput[];
+    NOT?:
+      | incendies_foretScalarWhereWithAggregatesInput
+      | incendies_foretScalarWhereWithAggregatesInput[];
+    index?: BigIntWithAggregatesFilter<'incendies_foret'> | bigint | number;
+    code_geographique?: StringWithAggregatesFilter<'incendies_foret'> | string;
+    libelle_geographique?:
+      | StringWithAggregatesFilter<'incendies_foret'>
+      | string;
+    epci?: StringWithAggregatesFilter<'incendies_foret'> | string;
+    libelle_epci?: StringWithAggregatesFilter<'incendies_foret'> | string;
+    departement?: StringWithAggregatesFilter<'incendies_foret'> | string;
+    region?: FloatWithAggregatesFilter<'incendies_foret'> | number;
+    annee?: BigIntWithAggregatesFilter<'incendies_foret'> | bigint | number;
+    surface_parcourue?: FloatWithAggregatesFilter<'incendies_foret'> | number;
+    surface_foret?:
+      | FloatNullableWithAggregatesFilter<'incendies_foret'>
+      | number
+      | null;
+    surface_maquis_garrigues?:
+      | FloatNullableWithAggregatesFilter<'incendies_foret'>
+      | number
+      | null;
+    autres_surfaces_naturelles_hors_foret?:
+      | FloatNullableWithAggregatesFilter<'incendies_foret'>
+      | number
+      | null;
+    surfaces_agricoles?:
+      | FloatNullableWithAggregatesFilter<'incendies_foret'>
+      | number
+      | null;
+    surfaces_non_boisees?:
+      | FloatNullableWithAggregatesFilter<'incendies_foret'>
+      | number
+      | null;
+    surfaces_non_boisees_artificialisees?:
+      | FloatNullableWithAggregatesFilter<'incendies_foret'>
+      | number
+      | null;
+    surfaces_non_boisees_naturelles?:
+      | FloatNullableWithAggregatesFilter<'incendies_foret'>
+      | number
+      | null;
+    surface_autres_terres_boisees?:
+      | FloatNullableWithAggregatesFilter<'incendies_foret'>
+      | number
+      | null;
+    autres_surfaces?:
+      | FloatNullableWithAggregatesFilter<'incendies_foret'>
+      | number
+      | null;
+  };
+
   export type inconfort_thermiqueCreateInput = {
     index: bigint | number;
     code_geographique: string;
@@ -38592,6 +40430,237 @@ export namespace Prisma {
     part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null;
   };
 
+  export type incendies_foretCreateInput = {
+    index: bigint | number;
+    code_geographique: string;
+    libelle_geographique: string;
+    epci: string;
+    libelle_epci: string;
+    departement: string;
+    region: number;
+    annee: bigint | number;
+    surface_parcourue: number;
+    surface_foret?: number | null;
+    surface_maquis_garrigues?: number | null;
+    autres_surfaces_naturelles_hors_foret?: number | null;
+    surfaces_agricoles?: number | null;
+    surfaces_non_boisees?: number | null;
+    surfaces_non_boisees_artificialisees?: number | null;
+    surfaces_non_boisees_naturelles?: number | null;
+    surface_autres_terres_boisees?: number | null;
+    autres_surfaces?: number | null;
+  };
+
+  export type incendies_foretUncheckedCreateInput = {
+    index: bigint | number;
+    code_geographique: string;
+    libelle_geographique: string;
+    epci: string;
+    libelle_epci: string;
+    departement: string;
+    region: number;
+    annee: bigint | number;
+    surface_parcourue: number;
+    surface_foret?: number | null;
+    surface_maquis_garrigues?: number | null;
+    autres_surfaces_naturelles_hors_foret?: number | null;
+    surfaces_agricoles?: number | null;
+    surfaces_non_boisees?: number | null;
+    surfaces_non_boisees_artificialisees?: number | null;
+    surfaces_non_boisees_naturelles?: number | null;
+    surface_autres_terres_boisees?: number | null;
+    autres_surfaces?: number | null;
+  };
+
+  export type incendies_foretUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
+    epci?: StringFieldUpdateOperationsInput | string;
+    libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: FloatFieldUpdateOperationsInput | number;
+    annee?: BigIntFieldUpdateOperationsInput | bigint | number;
+    surface_parcourue?: FloatFieldUpdateOperationsInput | number;
+    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null;
+    surface_maquis_garrigues?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    autres_surfaces_naturelles_hors_foret?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_agricoles?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_non_boisees?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_non_boisees_artificialisees?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_non_boisees_naturelles?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surface_autres_terres_boisees?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
+  export type incendies_foretUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
+    epci?: StringFieldUpdateOperationsInput | string;
+    libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: FloatFieldUpdateOperationsInput | number;
+    annee?: BigIntFieldUpdateOperationsInput | bigint | number;
+    surface_parcourue?: FloatFieldUpdateOperationsInput | number;
+    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null;
+    surface_maquis_garrigues?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    autres_surfaces_naturelles_hors_foret?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_agricoles?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_non_boisees?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_non_boisees_artificialisees?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_non_boisees_naturelles?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surface_autres_terres_boisees?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
+  export type incendies_foretCreateManyInput = {
+    index: bigint | number;
+    code_geographique: string;
+    libelle_geographique: string;
+    epci: string;
+    libelle_epci: string;
+    departement: string;
+    region: number;
+    annee: bigint | number;
+    surface_parcourue: number;
+    surface_foret?: number | null;
+    surface_maquis_garrigues?: number | null;
+    autres_surfaces_naturelles_hors_foret?: number | null;
+    surfaces_agricoles?: number | null;
+    surfaces_non_boisees?: number | null;
+    surfaces_non_boisees_artificialisees?: number | null;
+    surfaces_non_boisees_naturelles?: number | null;
+    surface_autres_terres_boisees?: number | null;
+    autres_surfaces?: number | null;
+  };
+
+  export type incendies_foretUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
+    epci?: StringFieldUpdateOperationsInput | string;
+    libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: FloatFieldUpdateOperationsInput | number;
+    annee?: BigIntFieldUpdateOperationsInput | bigint | number;
+    surface_parcourue?: FloatFieldUpdateOperationsInput | number;
+    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null;
+    surface_maquis_garrigues?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    autres_surfaces_naturelles_hors_foret?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_agricoles?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_non_boisees?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_non_boisees_artificialisees?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_non_boisees_naturelles?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surface_autres_terres_boisees?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
+  export type incendies_foretUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
+    epci?: StringFieldUpdateOperationsInput | string;
+    libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: FloatFieldUpdateOperationsInput | number;
+    annee?: BigIntFieldUpdateOperationsInput | bigint | number;
+    surface_parcourue?: FloatFieldUpdateOperationsInput | number;
+    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null;
+    surface_maquis_garrigues?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    autres_surfaces_naturelles_hors_foret?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_agricoles?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_non_boisees?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_non_boisees_artificialisees?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surfaces_non_boisees_naturelles?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    surface_autres_terres_boisees?:
+      | NullableFloatFieldUpdateOperationsInput
+      | number
+      | null;
+    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>;
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>;
@@ -40656,6 +42725,101 @@ export namespace Prisma {
     REG?: SortOrder;
     part_irr_SAU_2020?: SortOrder;
     part_over_55?: SortOrder;
+  };
+
+  export type incendies_foretCountOrderByAggregateInput = {
+    index?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
+    epci?: SortOrder;
+    libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
+    annee?: SortOrder;
+    surface_parcourue?: SortOrder;
+    surface_foret?: SortOrder;
+    surface_maquis_garrigues?: SortOrder;
+    autres_surfaces_naturelles_hors_foret?: SortOrder;
+    surfaces_agricoles?: SortOrder;
+    surfaces_non_boisees?: SortOrder;
+    surfaces_non_boisees_artificialisees?: SortOrder;
+    surfaces_non_boisees_naturelles?: SortOrder;
+    surface_autres_terres_boisees?: SortOrder;
+    autres_surfaces?: SortOrder;
+  };
+
+  export type incendies_foretAvgOrderByAggregateInput = {
+    index?: SortOrder;
+    region?: SortOrder;
+    annee?: SortOrder;
+    surface_parcourue?: SortOrder;
+    surface_foret?: SortOrder;
+    surface_maquis_garrigues?: SortOrder;
+    autres_surfaces_naturelles_hors_foret?: SortOrder;
+    surfaces_agricoles?: SortOrder;
+    surfaces_non_boisees?: SortOrder;
+    surfaces_non_boisees_artificialisees?: SortOrder;
+    surfaces_non_boisees_naturelles?: SortOrder;
+    surface_autres_terres_boisees?: SortOrder;
+    autres_surfaces?: SortOrder;
+  };
+
+  export type incendies_foretMaxOrderByAggregateInput = {
+    index?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
+    epci?: SortOrder;
+    libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
+    annee?: SortOrder;
+    surface_parcourue?: SortOrder;
+    surface_foret?: SortOrder;
+    surface_maquis_garrigues?: SortOrder;
+    autres_surfaces_naturelles_hors_foret?: SortOrder;
+    surfaces_agricoles?: SortOrder;
+    surfaces_non_boisees?: SortOrder;
+    surfaces_non_boisees_artificialisees?: SortOrder;
+    surfaces_non_boisees_naturelles?: SortOrder;
+    surface_autres_terres_boisees?: SortOrder;
+    autres_surfaces?: SortOrder;
+  };
+
+  export type incendies_foretMinOrderByAggregateInput = {
+    index?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
+    epci?: SortOrder;
+    libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
+    annee?: SortOrder;
+    surface_parcourue?: SortOrder;
+    surface_foret?: SortOrder;
+    surface_maquis_garrigues?: SortOrder;
+    autres_surfaces_naturelles_hors_foret?: SortOrder;
+    surfaces_agricoles?: SortOrder;
+    surfaces_non_boisees?: SortOrder;
+    surfaces_non_boisees_artificialisees?: SortOrder;
+    surfaces_non_boisees_naturelles?: SortOrder;
+    surface_autres_terres_boisees?: SortOrder;
+    autres_surfaces?: SortOrder;
+  };
+
+  export type incendies_foretSumOrderByAggregateInput = {
+    index?: SortOrder;
+    region?: SortOrder;
+    annee?: SortOrder;
+    surface_parcourue?: SortOrder;
+    surface_foret?: SortOrder;
+    surface_maquis_garrigues?: SortOrder;
+    autres_surfaces_naturelles_hors_foret?: SortOrder;
+    surfaces_agricoles?: SortOrder;
+    surfaces_non_boisees?: SortOrder;
+    surfaces_non_boisees_artificialisees?: SortOrder;
+    surfaces_non_boisees_naturelles?: SortOrder;
+    surface_autres_terres_boisees?: SortOrder;
+    autres_surfaces?: SortOrder;
   };
 
   export type BigIntFieldUpdateOperationsInput = {

@@ -110,7 +110,7 @@ export const MapCatnat = (props: {
   const codgeo = searchParams.get('codgeo');
   const codepci = searchParams.get('codepci')!;
   const mapRef = useRef(null);
-  const all_coordinates = carteCommunes.map(
+  const allCoordinates = carteCommunes.map(
     (el) => el.geometry.coordinates?.[0]?.[0]
   );
   const commune = codgeo
@@ -118,7 +118,7 @@ export const MapCatnat = (props: {
     : null;
   const centerCoord: number[] = commune
     ? getCentroid(commune.geometry.coordinates?.[0][0])
-    : getCoordinates(all_coordinates);
+    : getCoordinates(allCoordinates);
 
   const style: StyleFunction<Any> = (feature) => {
     const typedFeature = feature as CommunesIndicateursDto;

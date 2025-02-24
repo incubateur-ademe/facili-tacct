@@ -145,6 +145,7 @@ export type CarteCommunes = {
   surface: number;
   surfacesIrriguees?: number;
   chefsExploitation55Ans?: number;
+  incendiesForet?: number;
 };
 
 export type EpciContours = {
@@ -409,4 +410,25 @@ export type Agriculture = {
   REG: number;
   part_irr_SAU_2020: number | null;
   part_over_55: number | null;
+};
+
+export type IncendiesForet = {
+  index: bigint;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  region: number;
+  annee: bigint;
+  surface_parcourue: number;
+  surface_foret: number | null;
+  surface_maquis_garrigues: number | null;
+  autres_surfaces_naturelles_hors_foret: number | null;
+  surfaces_agricoles: number | null;
+  surfaces_non_boisees: number | null;
+  surfaces_non_boisees_artificialisees: number | null;
+  surfaces_non_boisees_naturelles: number | null;
+  surface_autres_terres_boisees: number | null;
+  autres_surfaces: number | null;
 };

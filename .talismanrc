@@ -48,11 +48,13 @@ fileignoreconfig:
 - filename: src/generated/client/index-browser.js
   checksum: 7b74293a3420207806aa8cc3bf6edd34110b6b5aae64483f9e0a49cf926c77f8
 - filename: src/generated/client/package.json
-  checksum: 116ecee1592b7b16959b2b2c8aed965ad9826bc9bf235adb4c3d21e3285249ce
+  checksum: f3c8a8ddaa7e73709da1ff8a3d70da275c7b004922af76818c8779ec36e87e5d
 - filename: src/generated/client/index.js
-  checksum: 778b507337fa68b44073a925e8f2d36d475b52c97a189730dd5ffda5c326c9a6
+  checksum: 2f9df8d80ac66ca9dfb6db1d0878e31c789aff9d97ab58e769535233cba74734
 - filename: src/generated/client/edge.js
-  checksum: 457045da8e00ae1c012a600d1734e41ef86f07a32e623ca2b49919fd745f9fc3
+  checksum: e73ecff361f0a1725a6b3e8dd005920272d7a031c5671d5f6a4a81d092a0b823
+- filename: src/components/maps/mapFeuxDeForet.tsx
+  checksum: dc123bcd68cb900d79af04208dc9440bae9833fc9eba9b7e0d8014d6b6be9fe9
 - filename: src/generated/client/index.d.ts
-  checksum: e6bb153e6be728a71d90592296623c0576c3a9745b12cb5596dd21cdb069ca7f
+  checksum: b2f4c531bcafaacd5773b05275ee9605533f8331079c0692295dcc61fe7d5061
 version: ""
