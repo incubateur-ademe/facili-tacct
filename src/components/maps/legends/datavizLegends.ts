@@ -85,3 +85,67 @@ export const aot40Legends = [
     color: '#5EEDF3'
   }
 ];
+
+const getColor = (d: number) => {
+  return d <= 0.0005
+    ? '#ECD8FE'
+    : d > 0.0005 && d <= 0.001
+      ? '#C48EF6'
+      : d > 0.002
+        ? '#8C58BB'
+        : d > 0.005
+          ? '#6E3F99'
+          : d > 0.01
+            ? '#42255C'
+            : 'transparent';
+};
+
+export const feuxForetLegend = [
+  {
+    value: '< 500 m²',
+    color: '#ECD8FE'
+  },
+  {
+    value: '500 - 1000 m²',
+    color: '#C48EF6'
+  },
+  {
+    value: '1000 - 2000 m²',
+    color: '#8C58BB'
+  },
+  {
+    value: '2000 - 5000 m²',
+    color: '#6E3F99'
+  },
+  {
+    value: '> 5000 m²',
+    color: '#42255C'
+  }
+];
+
+export const chefsExploitationLegend = [
+  {
+    value: '< 30 ans',
+    color: '#ECD8FE'
+  },
+  {
+    value: '30 - 40 ans',
+    color: '#C48EF6'
+  },
+  {
+    value: '40 - 50 ans',
+    color: '#A05DE4'
+  },
+  {
+    value: '50 - 55 ans',
+    color: '#7F2CBF'
+  },
+  {
+    value: '> 55 ans',
+    color: '#4A1D7C'
+  },
+  {
+    value: 'Valeurs manquantes ou sous secret statistique',
+    color: 'transparent'
+  }
+];

@@ -528,6 +528,28 @@ exports.Prisma.AgricultureScalarFieldEnum = {
   part_over_55: 'part_over_55'
 };
 
+exports.Prisma.Incendies_foretScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  region: 'region',
+  annee: 'annee',
+  surface_parcourue: 'surface_parcourue',
+  surface_foret: 'surface_foret',
+  surface_maquis_garrigues: 'surface_maquis_garrigues',
+  autres_surfaces_naturelles_hors_foret:
+    'autres_surfaces_naturelles_hors_foret',
+  surfaces_agricoles: 'surfaces_agricoles',
+  surfaces_non_boisees: 'surfaces_non_boisees',
+  surfaces_non_boisees_artificialisees: 'surfaces_non_boisees_artificialisees',
+  surfaces_non_boisees_naturelles: 'surfaces_non_boisees_naturelles',
+  surface_autres_terres_boisees: 'surface_autres_terres_boisees',
+  autres_surfaces: 'autres_surfaces'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -563,7 +585,8 @@ exports.Prisma.ModelName = {
   aot_40: 'aot_40',
   users: 'users',
   qualite_sites_baignade: 'qualite_sites_baignade',
-  agriculture: 'agriculture'
+  agriculture: 'agriculture',
+  incendies_foret: 'incendies_foret'
 };
 
 /**

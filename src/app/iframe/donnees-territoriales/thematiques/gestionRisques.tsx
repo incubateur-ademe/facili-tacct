@@ -1,9 +1,9 @@
+import { GetGestionRisques } from '@/lib/queries/databases/gestionRisques';
 import {
   GetCommunes,
   GetEpci,
   GetErosionCotiere
 } from '@/lib/queries/postgis/cartographie';
-import { GetGestionRisques } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/themes';
 import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
