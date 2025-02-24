@@ -1,31 +1,26 @@
-import { GetRessourceEau } from '@/lib/queries/databases/ressourcesEau';
 import { GetCommunes, GetEpci } from '@/lib/queries/postgis/cartographie';
 import { themes } from '@/lib/themes';
 import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
-import RessourcesEauComp from './ressourcesEauComp';
+import AgricultureComp from './agricultureComp';
 
-const RessourcesEau = async (props: { searchParams: SearchParams }) => {
-  const theme = themes.ressourcesEau;
+const Agriculture = async (props: { searchParams: SearchParams }) => {
+  const theme = themes.agriculture;
   const { codepci } = await props.searchParams;
-  const dbRessourcesEau = await GetRessourceEau(codepci);
   const carteCommunes = await GetCommunes(codepci);
   const epciContours = await GetEpci(codepci);
-  // const qualiteEauxBaignadeByDepmt = await GetQualiteEauxBaignade(codepci);
 
   return (
     <div className={styles.container}>
       <Suspense>
-        <RessourcesEauComp
+        <AgricultureComp
           data={theme}
-          ressourcesEau={dbRessourcesEau}
           carteCommunes={carteCommunes}
           epciContours={epciContours}
-          // qualiteEauxBaignade={qualiteEauxBaignadeByDepmt}
         />
       </Suspense>
     </div>
   );
 };
 
-export default RessourcesEau;
+export default Agriculture;
