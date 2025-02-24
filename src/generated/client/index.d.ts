@@ -121,6 +121,11 @@ export type users = $Result.DefaultSelection<Prisma.$usersPayload>;
  */
 export type qualite_sites_baignade =
   $Result.DefaultSelection<Prisma.$qualite_sites_baignadePayload>;
+/**
+ * Model agriculture
+ *
+ */
+export type agriculture = $Result.DefaultSelection<Prisma.$agriculturePayload>;
 
 /**
  * ##  Prisma Client ʲˢ
@@ -502,6 +507,16 @@ export class PrismaClient<
     ExtArgs,
     ClientOptions
   >;
+
+  /**
+   * `prisma.agriculture`: Exposes CRUD operations for the **agriculture** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Agricultures
+   * const agricultures = await prisma.agriculture.findMany()
+   * ```
+   */
+  get agriculture(): Prisma.agricultureDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -979,6 +994,7 @@ export namespace Prisma {
     aot_40: 'aot_40';
     users: 'users';
     qualite_sites_baignade: 'qualite_sites_baignade';
+    agriculture: 'agriculture';
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -1022,7 +1038,8 @@ export namespace Prisma {
         | 'etat_cours_d_eau'
         | 'aot_40'
         | 'users'
-        | 'qualite_sites_baignade';
+        | 'qualite_sites_baignade'
+        | 'agriculture';
       txIsolationLevel: Prisma.TransactionIsolationLevel;
     };
     model: {
@@ -2398,6 +2415,82 @@ export namespace Prisma {
           };
         };
       };
+      agriculture: {
+        payload: Prisma.$agriculturePayload<ExtArgs>;
+        fields: Prisma.agricultureFieldRefs;
+        operations: {
+          findUnique: {
+            args: Prisma.agricultureFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload> | null;
+          };
+          findUniqueOrThrow: {
+            args: Prisma.agricultureFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>;
+          };
+          findFirst: {
+            args: Prisma.agricultureFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload> | null;
+          };
+          findFirstOrThrow: {
+            args: Prisma.agricultureFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>;
+          };
+          findMany: {
+            args: Prisma.agricultureFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>[];
+          };
+          create: {
+            args: Prisma.agricultureCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>;
+          };
+          createMany: {
+            args: Prisma.agricultureCreateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          createManyAndReturn: {
+            args: Prisma.agricultureCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>[];
+          };
+          delete: {
+            args: Prisma.agricultureDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>;
+          };
+          update: {
+            args: Prisma.agricultureUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>;
+          };
+          deleteMany: {
+            args: Prisma.agricultureDeleteManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateMany: {
+            args: Prisma.agricultureUpdateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateManyAndReturn: {
+            args: Prisma.agricultureUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>[];
+          };
+          upsert: {
+            args: Prisma.agricultureUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>;
+          };
+          aggregate: {
+            args: Prisma.AgricultureAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregateAgriculture>;
+          };
+          groupBy: {
+            args: Prisma.agricultureGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<AgricultureGroupByOutputType>[];
+          };
+          count: {
+            args: Prisma.agricultureCountArgs<ExtArgs>;
+            result:
+              | $Utils.Optional<AgricultureCountAggregateOutputType>
+              | number;
+          };
+        };
+      };
     };
   } & {
     other: {
@@ -2505,6 +2598,7 @@ export namespace Prisma {
     aot_40?: aot_40Omit;
     users?: usersOmit;
     qualite_sites_baignade?: qualite_sites_baignadeOmit;
+    agriculture?: agricultureOmit;
   };
 
   /* Types for Logging */
@@ -30450,6 +30544,1342 @@ export namespace Prisma {
   };
 
   /**
+   * Model agriculture
+   */
+
+  export type AggregateAgriculture = {
+    _count: AgricultureCountAggregateOutputType | null;
+    _avg: AgricultureAvgAggregateOutputType | null;
+    _sum: AgricultureSumAggregateOutputType | null;
+    _min: AgricultureMinAggregateOutputType | null;
+    _max: AgricultureMaxAggregateOutputType | null;
+  };
+
+  export type AgricultureAvgAggregateOutputType = {
+    index: number | null;
+    REG: number | null;
+    part_irr_SAU_2020: number | null;
+    part_over_55: number | null;
+  };
+
+  export type AgricultureSumAggregateOutputType = {
+    index: bigint | null;
+    REG: number | null;
+    part_irr_SAU_2020: number | null;
+    part_over_55: number | null;
+  };
+
+  export type AgricultureMinAggregateOutputType = {
+    index: bigint | null;
+    CODGEO: string | null;
+    LIBGEO: string | null;
+    EPCI: string | null;
+    LIBEPCI: string | null;
+    DEP: string | null;
+    REG: number | null;
+    part_irr_SAU_2020: number | null;
+    part_over_55: number | null;
+  };
+
+  export type AgricultureMaxAggregateOutputType = {
+    index: bigint | null;
+    CODGEO: string | null;
+    LIBGEO: string | null;
+    EPCI: string | null;
+    LIBEPCI: string | null;
+    DEP: string | null;
+    REG: number | null;
+    part_irr_SAU_2020: number | null;
+    part_over_55: number | null;
+  };
+
+  export type AgricultureCountAggregateOutputType = {
+    index: number;
+    CODGEO: number;
+    LIBGEO: number;
+    EPCI: number;
+    LIBEPCI: number;
+    DEP: number;
+    REG: number;
+    part_irr_SAU_2020: number;
+    part_over_55: number;
+    _all: number;
+  };
+
+  export type AgricultureAvgAggregateInputType = {
+    index?: true;
+    REG?: true;
+    part_irr_SAU_2020?: true;
+    part_over_55?: true;
+  };
+
+  export type AgricultureSumAggregateInputType = {
+    index?: true;
+    REG?: true;
+    part_irr_SAU_2020?: true;
+    part_over_55?: true;
+  };
+
+  export type AgricultureMinAggregateInputType = {
+    index?: true;
+    CODGEO?: true;
+    LIBGEO?: true;
+    EPCI?: true;
+    LIBEPCI?: true;
+    DEP?: true;
+    REG?: true;
+    part_irr_SAU_2020?: true;
+    part_over_55?: true;
+  };
+
+  export type AgricultureMaxAggregateInputType = {
+    index?: true;
+    CODGEO?: true;
+    LIBGEO?: true;
+    EPCI?: true;
+    LIBEPCI?: true;
+    DEP?: true;
+    REG?: true;
+    part_irr_SAU_2020?: true;
+    part_over_55?: true;
+  };
+
+  export type AgricultureCountAggregateInputType = {
+    index?: true;
+    CODGEO?: true;
+    LIBGEO?: true;
+    EPCI?: true;
+    LIBEPCI?: true;
+    DEP?: true;
+    REG?: true;
+    part_irr_SAU_2020?: true;
+    part_over_55?: true;
+    _all?: true;
+  };
+
+  export type AgricultureAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which agriculture to aggregate.
+     */
+    where?: agricultureWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of agricultures to fetch.
+     */
+    orderBy?:
+      | agricultureOrderByWithRelationInput
+      | agricultureOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: agricultureWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` agricultures from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` agricultures.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned agricultures
+     **/
+    _count?: true | AgricultureCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: AgricultureAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: AgricultureSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: AgricultureMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: AgricultureMaxAggregateInputType;
+  };
+
+  export type GetAgricultureAggregateType<T extends AgricultureAggregateArgs> =
+    {
+      [P in keyof T & keyof AggregateAgriculture]: P extends '_count' | 'count'
+        ? T[P] extends true
+          ? number
+          : GetScalarType<T[P], AggregateAgriculture[P]>
+        : GetScalarType<T[P], AggregateAgriculture[P]>;
+    };
+
+  export type agricultureGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    where?: agricultureWhereInput;
+    orderBy?:
+      | agricultureOrderByWithAggregationInput
+      | agricultureOrderByWithAggregationInput[];
+    by: AgricultureScalarFieldEnum[] | AgricultureScalarFieldEnum;
+    having?: agricultureScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: AgricultureCountAggregateInputType | true;
+    _avg?: AgricultureAvgAggregateInputType;
+    _sum?: AgricultureSumAggregateInputType;
+    _min?: AgricultureMinAggregateInputType;
+    _max?: AgricultureMaxAggregateInputType;
+  };
+
+  export type AgricultureGroupByOutputType = {
+    index: bigint;
+    CODGEO: string;
+    LIBGEO: string;
+    EPCI: string;
+    LIBEPCI: string;
+    DEP: string;
+    REG: number;
+    part_irr_SAU_2020: number | null;
+    part_over_55: number | null;
+    _count: AgricultureCountAggregateOutputType | null;
+    _avg: AgricultureAvgAggregateOutputType | null;
+    _sum: AgricultureSumAggregateOutputType | null;
+    _min: AgricultureMinAggregateOutputType | null;
+    _max: AgricultureMaxAggregateOutputType | null;
+  };
+
+  type GetAgricultureGroupByPayload<T extends agricultureGroupByArgs> =
+    Prisma.PrismaPromise<
+      Array<
+        PickEnumerable<AgricultureGroupByOutputType, T['by']> & {
+          [P in keyof T &
+            keyof AgricultureGroupByOutputType]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AgricultureGroupByOutputType[P]>
+            : GetScalarType<T[P], AgricultureGroupByOutputType[P]>;
+        }
+      >
+    >;
+
+  export type agricultureSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      CODGEO?: boolean;
+      LIBGEO?: boolean;
+      EPCI?: boolean;
+      LIBEPCI?: boolean;
+      DEP?: boolean;
+      REG?: boolean;
+      part_irr_SAU_2020?: boolean;
+      part_over_55?: boolean;
+    },
+    ExtArgs['result']['agriculture']
+  >;
+
+  export type agricultureSelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      CODGEO?: boolean;
+      LIBGEO?: boolean;
+      EPCI?: boolean;
+      LIBEPCI?: boolean;
+      DEP?: boolean;
+      REG?: boolean;
+      part_irr_SAU_2020?: boolean;
+      part_over_55?: boolean;
+    },
+    ExtArgs['result']['agriculture']
+  >;
+
+  export type agricultureSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      CODGEO?: boolean;
+      LIBGEO?: boolean;
+      EPCI?: boolean;
+      LIBEPCI?: boolean;
+      DEP?: boolean;
+      REG?: boolean;
+      part_irr_SAU_2020?: boolean;
+      part_over_55?: boolean;
+    },
+    ExtArgs['result']['agriculture']
+  >;
+
+  export type agricultureSelectScalar = {
+    index?: boolean;
+    CODGEO?: boolean;
+    LIBGEO?: boolean;
+    EPCI?: boolean;
+    LIBEPCI?: boolean;
+    DEP?: boolean;
+    REG?: boolean;
+    part_irr_SAU_2020?: boolean;
+    part_over_55?: boolean;
+  };
+
+  export type agricultureOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'index'
+    | 'CODGEO'
+    | 'LIBGEO'
+    | 'EPCI'
+    | 'LIBEPCI'
+    | 'DEP'
+    | 'REG'
+    | 'part_irr_SAU_2020'
+    | 'part_over_55',
+    ExtArgs['result']['agriculture']
+  >;
+
+  export type $agriculturePayload<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    name: 'agriculture';
+    objects: {};
+    scalars: $Extensions.GetPayloadResult<
+      {
+        index: bigint;
+        CODGEO: string;
+        LIBGEO: string;
+        EPCI: string;
+        LIBEPCI: string;
+        DEP: string;
+        REG: number;
+        part_irr_SAU_2020: number | null;
+        part_over_55: number | null;
+      },
+      ExtArgs['result']['agriculture']
+    >;
+    composites: {};
+  };
+
+  type agricultureGetPayload<
+    S extends boolean | null | undefined | agricultureDefaultArgs
+  > = $Result.GetResult<Prisma.$agriculturePayload, S>;
+
+  type agricultureCountArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = Omit<
+    agricultureFindManyArgs,
+    'select' | 'include' | 'distinct' | 'omit'
+  > & {
+    select?: AgricultureCountAggregateInputType | true;
+  };
+
+  export interface agricultureDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['agriculture'];
+      meta: { name: 'agriculture' };
+    };
+    /**
+     * Find zero or one Agriculture that matches the filter.
+     * @param {agricultureFindUniqueArgs} args - Arguments to find a Agriculture
+     * @example
+     * // Get one Agriculture
+     * const agriculture = await prisma.agriculture.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends agricultureFindUniqueArgs>(
+      args: SelectSubset<T, agricultureFindUniqueArgs<ExtArgs>>
+    ): Prisma__agricultureClient<
+      $Result.GetResult<
+        Prisma.$agriculturePayload<ExtArgs>,
+        T,
+        'findUnique',
+        ClientOptions
+      > | null,
+      null,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find one Agriculture that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {agricultureFindUniqueOrThrowArgs} args - Arguments to find a Agriculture
+     * @example
+     * // Get one Agriculture
+     * const agriculture = await prisma.agriculture.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends agricultureFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, agricultureFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__agricultureClient<
+      $Result.GetResult<
+        Prisma.$agriculturePayload<ExtArgs>,
+        T,
+        'findUniqueOrThrow',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find the first Agriculture that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agricultureFindFirstArgs} args - Arguments to find a Agriculture
+     * @example
+     * // Get one Agriculture
+     * const agriculture = await prisma.agriculture.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends agricultureFindFirstArgs>(
+      args?: SelectSubset<T, agricultureFindFirstArgs<ExtArgs>>
+    ): Prisma__agricultureClient<
+      $Result.GetResult<
+        Prisma.$agriculturePayload<ExtArgs>,
+        T,
+        'findFirst',
+        ClientOptions
+      > | null,
+      null,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find the first Agriculture that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agricultureFindFirstOrThrowArgs} args - Arguments to find a Agriculture
+     * @example
+     * // Get one Agriculture
+     * const agriculture = await prisma.agriculture.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends agricultureFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, agricultureFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__agricultureClient<
+      $Result.GetResult<
+        Prisma.$agriculturePayload<ExtArgs>,
+        T,
+        'findFirstOrThrow',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find zero or more Agricultures that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agricultureFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Agricultures
+     * const agricultures = await prisma.agriculture.findMany()
+     *
+     * // Get first 10 Agricultures
+     * const agricultures = await prisma.agriculture.findMany({ take: 10 })
+     *
+     * // Only select the `index`
+     * const agricultureWithIndexOnly = await prisma.agriculture.findMany({ select: { index: true } })
+     *
+     */
+    findMany<T extends agricultureFindManyArgs>(
+      args?: SelectSubset<T, agricultureFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$agriculturePayload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Create a Agriculture.
+     * @param {agricultureCreateArgs} args - Arguments to create a Agriculture.
+     * @example
+     * // Create one Agriculture
+     * const Agriculture = await prisma.agriculture.create({
+     *   data: {
+     *     // ... data to create a Agriculture
+     *   }
+     * })
+     *
+     */
+    create<T extends agricultureCreateArgs>(
+      args: SelectSubset<T, agricultureCreateArgs<ExtArgs>>
+    ): Prisma__agricultureClient<
+      $Result.GetResult<
+        Prisma.$agriculturePayload<ExtArgs>,
+        T,
+        'create',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Create many Agricultures.
+     * @param {agricultureCreateManyArgs} args - Arguments to create many Agricultures.
+     * @example
+     * // Create many Agricultures
+     * const agriculture = await prisma.agriculture.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends agricultureCreateManyArgs>(
+      args?: SelectSubset<T, agricultureCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create many Agricultures and returns the data saved in the database.
+     * @param {agricultureCreateManyAndReturnArgs} args - Arguments to create many Agricultures.
+     * @example
+     * // Create many Agricultures
+     * const agriculture = await prisma.agriculture.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Agricultures and only return the `index`
+     * const agricultureWithIndexOnly = await prisma.agriculture.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends agricultureCreateManyAndReturnArgs>(
+      args?: SelectSubset<T, agricultureCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$agriculturePayload<ExtArgs>,
+        T,
+        'createManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Delete a Agriculture.
+     * @param {agricultureDeleteArgs} args - Arguments to delete one Agriculture.
+     * @example
+     * // Delete one Agriculture
+     * const Agriculture = await prisma.agriculture.delete({
+     *   where: {
+     *     // ... filter to delete one Agriculture
+     *   }
+     * })
+     *
+     */
+    delete<T extends agricultureDeleteArgs>(
+      args: SelectSubset<T, agricultureDeleteArgs<ExtArgs>>
+    ): Prisma__agricultureClient<
+      $Result.GetResult<
+        Prisma.$agriculturePayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Update one Agriculture.
+     * @param {agricultureUpdateArgs} args - Arguments to update one Agriculture.
+     * @example
+     * // Update one Agriculture
+     * const agriculture = await prisma.agriculture.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends agricultureUpdateArgs>(
+      args: SelectSubset<T, agricultureUpdateArgs<ExtArgs>>
+    ): Prisma__agricultureClient<
+      $Result.GetResult<
+        Prisma.$agriculturePayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Delete zero or more Agricultures.
+     * @param {agricultureDeleteManyArgs} args - Arguments to filter Agricultures to delete.
+     * @example
+     * // Delete a few Agricultures
+     * const { count } = await prisma.agriculture.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends agricultureDeleteManyArgs>(
+      args?: SelectSubset<T, agricultureDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Agricultures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agricultureUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Agricultures
+     * const agriculture = await prisma.agriculture.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends agricultureUpdateManyArgs>(
+      args: SelectSubset<T, agricultureUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Agricultures and returns the data updated in the database.
+     * @param {agricultureUpdateManyAndReturnArgs} args - Arguments to update many Agricultures.
+     * @example
+     * // Update many Agricultures
+     * const agriculture = await prisma.agriculture.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Agricultures and only return the `index`
+     * const agricultureWithIndexOnly = await prisma.agriculture.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends agricultureUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, agricultureUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$agriculturePayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Create or update one Agriculture.
+     * @param {agricultureUpsertArgs} args - Arguments to update or create a Agriculture.
+     * @example
+     * // Update or create a Agriculture
+     * const agriculture = await prisma.agriculture.upsert({
+     *   create: {
+     *     // ... data to create a Agriculture
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Agriculture we want to update
+     *   }
+     * })
+     */
+    upsert<T extends agricultureUpsertArgs>(
+      args: SelectSubset<T, agricultureUpsertArgs<ExtArgs>>
+    ): Prisma__agricultureClient<
+      $Result.GetResult<
+        Prisma.$agriculturePayload<ExtArgs>,
+        T,
+        'upsert',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Count the number of Agricultures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agricultureCountArgs} args - Arguments to filter Agricultures to count.
+     * @example
+     * // Count the number of Agricultures
+     * const count = await prisma.agriculture.count({
+     *   where: {
+     *     // ... the filter for the Agricultures we want to count
+     *   }
+     * })
+     **/
+    count<T extends agricultureCountArgs>(
+      args?: Subset<T, agricultureCountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AgricultureCountAggregateOutputType>
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a Agriculture.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgricultureAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends AgricultureAggregateArgs>(
+      args: Subset<T, AgricultureAggregateArgs>
+    ): Prisma.PrismaPromise<GetAgricultureAggregateType<T>>;
+
+    /**
+     * Group by Agriculture.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agricultureGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends agricultureGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: agricultureGroupByArgs['orderBy'] }
+        : { orderBy?: agricultureGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<
+        Keys<MaybeTupleToUnion<T['orderBy']>>
+      >,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`
+                    ];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+    >(
+      args: SubsetIntersection<T, agricultureGroupByArgs, OrderByArg> &
+        InputErrors
+    ): {} extends InputErrors
+      ? GetAgricultureGroupByPayload<T>
+      : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the agriculture model
+     */
+    readonly fields: agricultureFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for agriculture.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__agricultureClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?:
+        | ((value: T) => TResult1 | PromiseLike<TResult1>)
+        | undefined
+        | null,
+      onrejected?:
+        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?:
+        | ((reason: any) => TResult | PromiseLike<TResult>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the agriculture model
+   */
+  interface agricultureFieldRefs {
+    readonly index: FieldRef<'agriculture', 'BigInt'>;
+    readonly CODGEO: FieldRef<'agriculture', 'String'>;
+    readonly LIBGEO: FieldRef<'agriculture', 'String'>;
+    readonly EPCI: FieldRef<'agriculture', 'String'>;
+    readonly LIBEPCI: FieldRef<'agriculture', 'String'>;
+    readonly DEP: FieldRef<'agriculture', 'String'>;
+    readonly REG: FieldRef<'agriculture', 'Float'>;
+    readonly part_irr_SAU_2020: FieldRef<'agriculture', 'Float'>;
+    readonly part_over_55: FieldRef<'agriculture', 'Float'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * agriculture findUnique
+   */
+  export type agricultureFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null;
+    /**
+     * Filter, which agriculture to fetch.
+     */
+    where: agricultureWhereUniqueInput;
+  };
+
+  /**
+   * agriculture findUniqueOrThrow
+   */
+  export type agricultureFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null;
+    /**
+     * Filter, which agriculture to fetch.
+     */
+    where: agricultureWhereUniqueInput;
+  };
+
+  /**
+   * agriculture findFirst
+   */
+  export type agricultureFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null;
+    /**
+     * Filter, which agriculture to fetch.
+     */
+    where?: agricultureWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of agricultures to fetch.
+     */
+    orderBy?:
+      | agricultureOrderByWithRelationInput
+      | agricultureOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for agricultures.
+     */
+    cursor?: agricultureWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` agricultures from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` agricultures.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of agricultures.
+     */
+    distinct?: AgricultureScalarFieldEnum | AgricultureScalarFieldEnum[];
+  };
+
+  /**
+   * agriculture findFirstOrThrow
+   */
+  export type agricultureFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null;
+    /**
+     * Filter, which agriculture to fetch.
+     */
+    where?: agricultureWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of agricultures to fetch.
+     */
+    orderBy?:
+      | agricultureOrderByWithRelationInput
+      | agricultureOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for agricultures.
+     */
+    cursor?: agricultureWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` agricultures from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` agricultures.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of agricultures.
+     */
+    distinct?: AgricultureScalarFieldEnum | AgricultureScalarFieldEnum[];
+  };
+
+  /**
+   * agriculture findMany
+   */
+  export type agricultureFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null;
+    /**
+     * Filter, which agricultures to fetch.
+     */
+    where?: agricultureWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of agricultures to fetch.
+     */
+    orderBy?:
+      | agricultureOrderByWithRelationInput
+      | agricultureOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing agricultures.
+     */
+    cursor?: agricultureWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` agricultures from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` agricultures.
+     */
+    skip?: number;
+    distinct?: AgricultureScalarFieldEnum | AgricultureScalarFieldEnum[];
+  };
+
+  /**
+   * agriculture create
+   */
+  export type agricultureCreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null;
+    /**
+     * The data needed to create a agriculture.
+     */
+    data: XOR<agricultureCreateInput, agricultureUncheckedCreateInput>;
+  };
+
+  /**
+   * agriculture createMany
+   */
+  export type agricultureCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to create many agricultures.
+     */
+    data: agricultureCreateManyInput | agricultureCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * agriculture createManyAndReturn
+   */
+  export type agricultureCreateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null;
+    /**
+     * The data used to create many agricultures.
+     */
+    data: agricultureCreateManyInput | agricultureCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * agriculture update
+   */
+  export type agricultureUpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null;
+    /**
+     * The data needed to update a agriculture.
+     */
+    data: XOR<agricultureUpdateInput, agricultureUncheckedUpdateInput>;
+    /**
+     * Choose, which agriculture to update.
+     */
+    where: agricultureWhereUniqueInput;
+  };
+
+  /**
+   * agriculture updateMany
+   */
+  export type agricultureUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to update agricultures.
+     */
+    data: XOR<
+      agricultureUpdateManyMutationInput,
+      agricultureUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which agricultures to update
+     */
+    where?: agricultureWhereInput;
+    /**
+     * Limit how many agricultures to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * agriculture updateManyAndReturn
+   */
+  export type agricultureUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null;
+    /**
+     * The data used to update agricultures.
+     */
+    data: XOR<
+      agricultureUpdateManyMutationInput,
+      agricultureUncheckedUpdateManyInput
+    >;
+    /**
+     * Filter which agricultures to update
+     */
+    where?: agricultureWhereInput;
+    /**
+     * Limit how many agricultures to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * agriculture upsert
+   */
+  export type agricultureUpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null;
+    /**
+     * The filter to search for the agriculture to update in case it exists.
+     */
+    where: agricultureWhereUniqueInput;
+    /**
+     * In case the agriculture found by the `where` argument doesn't exist, create a new agriculture with this data.
+     */
+    create: XOR<agricultureCreateInput, agricultureUncheckedCreateInput>;
+    /**
+     * In case the agriculture was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<agricultureUpdateInput, agricultureUncheckedUpdateInput>;
+  };
+
+  /**
+   * agriculture delete
+   */
+  export type agricultureDeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null;
+    /**
+     * Filter which agriculture to delete.
+     */
+    where: agricultureWhereUniqueInput;
+  };
+
+  /**
+   * agriculture deleteMany
+   */
+  export type agricultureDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which agricultures to delete
+     */
+    where?: agricultureWhereInput;
+    /**
+     * Limit how many agricultures to delete.
+     */
+    limit?: number;
+  };
+
+  /**
+   * agriculture without action
+   */
+  export type agricultureDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the agriculture
+     */
+    select?: agricultureSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the agriculture
+     */
+    omit?: agricultureOmit<ExtArgs> | null;
+  };
+
+  /**
    * Enums
    */
 
@@ -30922,6 +32352,21 @@ export namespace Prisma {
 
   export type Qualite_sites_baignadeScalarFieldEnum =
     (typeof Qualite_sites_baignadeScalarFieldEnum)[keyof typeof Qualite_sites_baignadeScalarFieldEnum];
+
+  export const AgricultureScalarFieldEnum: {
+    index: 'index';
+    CODGEO: 'CODGEO';
+    LIBGEO: 'LIBGEO';
+    EPCI: 'EPCI';
+    LIBEPCI: 'LIBEPCI';
+    DEP: 'DEP';
+    REG: 'REG';
+    part_irr_SAU_2020: 'part_irr_SAU_2020';
+    part_over_55: 'part_over_55';
+  };
+
+  export type AgricultureScalarFieldEnum =
+    (typeof AgricultureScalarFieldEnum)[keyof typeof AgricultureScalarFieldEnum];
 
   export const SortOrder: {
     asc: 'asc';
@@ -34108,6 +35553,93 @@ export namespace Prisma {
       | null;
   };
 
+  export type agricultureWhereInput = {
+    AND?: agricultureWhereInput | agricultureWhereInput[];
+    OR?: agricultureWhereInput[];
+    NOT?: agricultureWhereInput | agricultureWhereInput[];
+    index?: BigIntFilter<'agriculture'> | bigint | number;
+    CODGEO?: StringFilter<'agriculture'> | string;
+    LIBGEO?: StringFilter<'agriculture'> | string;
+    EPCI?: StringFilter<'agriculture'> | string;
+    LIBEPCI?: StringFilter<'agriculture'> | string;
+    DEP?: StringFilter<'agriculture'> | string;
+    REG?: FloatFilter<'agriculture'> | number;
+    part_irr_SAU_2020?: FloatNullableFilter<'agriculture'> | number | null;
+    part_over_55?: FloatNullableFilter<'agriculture'> | number | null;
+  };
+
+  export type agricultureOrderByWithRelationInput = {
+    index?: SortOrder;
+    CODGEO?: SortOrder;
+    LIBGEO?: SortOrder;
+    EPCI?: SortOrder;
+    LIBEPCI?: SortOrder;
+    DEP?: SortOrder;
+    REG?: SortOrder;
+    part_irr_SAU_2020?: SortOrderInput | SortOrder;
+    part_over_55?: SortOrderInput | SortOrder;
+  };
+
+  export type agricultureWhereUniqueInput = Prisma.AtLeast<
+    {
+      index?: bigint | number;
+      AND?: agricultureWhereInput | agricultureWhereInput[];
+      OR?: agricultureWhereInput[];
+      NOT?: agricultureWhereInput | agricultureWhereInput[];
+      CODGEO?: StringFilter<'agriculture'> | string;
+      LIBGEO?: StringFilter<'agriculture'> | string;
+      EPCI?: StringFilter<'agriculture'> | string;
+      LIBEPCI?: StringFilter<'agriculture'> | string;
+      DEP?: StringFilter<'agriculture'> | string;
+      REG?: FloatFilter<'agriculture'> | number;
+      part_irr_SAU_2020?: FloatNullableFilter<'agriculture'> | number | null;
+      part_over_55?: FloatNullableFilter<'agriculture'> | number | null;
+    },
+    'index'
+  >;
+
+  export type agricultureOrderByWithAggregationInput = {
+    index?: SortOrder;
+    CODGEO?: SortOrder;
+    LIBGEO?: SortOrder;
+    EPCI?: SortOrder;
+    LIBEPCI?: SortOrder;
+    DEP?: SortOrder;
+    REG?: SortOrder;
+    part_irr_SAU_2020?: SortOrderInput | SortOrder;
+    part_over_55?: SortOrderInput | SortOrder;
+    _count?: agricultureCountOrderByAggregateInput;
+    _avg?: agricultureAvgOrderByAggregateInput;
+    _max?: agricultureMaxOrderByAggregateInput;
+    _min?: agricultureMinOrderByAggregateInput;
+    _sum?: agricultureSumOrderByAggregateInput;
+  };
+
+  export type agricultureScalarWhereWithAggregatesInput = {
+    AND?:
+      | agricultureScalarWhereWithAggregatesInput
+      | agricultureScalarWhereWithAggregatesInput[];
+    OR?: agricultureScalarWhereWithAggregatesInput[];
+    NOT?:
+      | agricultureScalarWhereWithAggregatesInput
+      | agricultureScalarWhereWithAggregatesInput[];
+    index?: BigIntWithAggregatesFilter<'agriculture'> | bigint | number;
+    CODGEO?: StringWithAggregatesFilter<'agriculture'> | string;
+    LIBGEO?: StringWithAggregatesFilter<'agriculture'> | string;
+    EPCI?: StringWithAggregatesFilter<'agriculture'> | string;
+    LIBEPCI?: StringWithAggregatesFilter<'agriculture'> | string;
+    DEP?: StringWithAggregatesFilter<'agriculture'> | string;
+    REG?: FloatWithAggregatesFilter<'agriculture'> | number;
+    part_irr_SAU_2020?:
+      | FloatNullableWithAggregatesFilter<'agriculture'>
+      | number
+      | null;
+    part_over_55?:
+      | FloatNullableWithAggregatesFilter<'agriculture'>
+      | number
+      | null;
+  };
+
   export type inconfort_thermiqueCreateInput = {
     index: bigint | number;
     code_geographique: string;
@@ -36976,6 +38508,90 @@ export namespace Prisma {
     QEB_2020?: NullableStringFieldUpdateOperationsInput | string | null;
   };
 
+  export type agricultureCreateInput = {
+    index: bigint | number;
+    CODGEO: string;
+    LIBGEO: string;
+    EPCI: string;
+    LIBEPCI: string;
+    DEP: string;
+    REG: number;
+    part_irr_SAU_2020?: number | null;
+    part_over_55?: number | null;
+  };
+
+  export type agricultureUncheckedCreateInput = {
+    index: bigint | number;
+    CODGEO: string;
+    LIBGEO: string;
+    EPCI: string;
+    LIBEPCI: string;
+    DEP: string;
+    REG: number;
+    part_irr_SAU_2020?: number | null;
+    part_over_55?: number | null;
+  };
+
+  export type agricultureUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    CODGEO?: StringFieldUpdateOperationsInput | string;
+    LIBGEO?: StringFieldUpdateOperationsInput | string;
+    EPCI?: StringFieldUpdateOperationsInput | string;
+    LIBEPCI?: StringFieldUpdateOperationsInput | string;
+    DEP?: StringFieldUpdateOperationsInput | string;
+    REG?: FloatFieldUpdateOperationsInput | number;
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null;
+    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
+  export type agricultureUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    CODGEO?: StringFieldUpdateOperationsInput | string;
+    LIBGEO?: StringFieldUpdateOperationsInput | string;
+    EPCI?: StringFieldUpdateOperationsInput | string;
+    LIBEPCI?: StringFieldUpdateOperationsInput | string;
+    DEP?: StringFieldUpdateOperationsInput | string;
+    REG?: FloatFieldUpdateOperationsInput | number;
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null;
+    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
+  export type agricultureCreateManyInput = {
+    index: bigint | number;
+    CODGEO: string;
+    LIBGEO: string;
+    EPCI: string;
+    LIBEPCI: string;
+    DEP: string;
+    REG: number;
+    part_irr_SAU_2020?: number | null;
+    part_over_55?: number | null;
+  };
+
+  export type agricultureUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    CODGEO?: StringFieldUpdateOperationsInput | string;
+    LIBGEO?: StringFieldUpdateOperationsInput | string;
+    EPCI?: StringFieldUpdateOperationsInput | string;
+    LIBEPCI?: StringFieldUpdateOperationsInput | string;
+    DEP?: StringFieldUpdateOperationsInput | string;
+    REG?: FloatFieldUpdateOperationsInput | number;
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null;
+    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
+  export type agricultureUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    CODGEO?: StringFieldUpdateOperationsInput | string;
+    LIBGEO?: StringFieldUpdateOperationsInput | string;
+    EPCI?: StringFieldUpdateOperationsInput | string;
+    LIBEPCI?: StringFieldUpdateOperationsInput | string;
+    DEP?: StringFieldUpdateOperationsInput | string;
+    REG?: FloatFieldUpdateOperationsInput | number;
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null;
+    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null;
+  };
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>;
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>;
@@ -38990,6 +40606,56 @@ export namespace Prisma {
     index?: SortOrder;
     LONG?: SortOrder;
     LAT?: SortOrder;
+  };
+
+  export type agricultureCountOrderByAggregateInput = {
+    index?: SortOrder;
+    CODGEO?: SortOrder;
+    LIBGEO?: SortOrder;
+    EPCI?: SortOrder;
+    LIBEPCI?: SortOrder;
+    DEP?: SortOrder;
+    REG?: SortOrder;
+    part_irr_SAU_2020?: SortOrder;
+    part_over_55?: SortOrder;
+  };
+
+  export type agricultureAvgOrderByAggregateInput = {
+    index?: SortOrder;
+    REG?: SortOrder;
+    part_irr_SAU_2020?: SortOrder;
+    part_over_55?: SortOrder;
+  };
+
+  export type agricultureMaxOrderByAggregateInput = {
+    index?: SortOrder;
+    CODGEO?: SortOrder;
+    LIBGEO?: SortOrder;
+    EPCI?: SortOrder;
+    LIBEPCI?: SortOrder;
+    DEP?: SortOrder;
+    REG?: SortOrder;
+    part_irr_SAU_2020?: SortOrder;
+    part_over_55?: SortOrder;
+  };
+
+  export type agricultureMinOrderByAggregateInput = {
+    index?: SortOrder;
+    CODGEO?: SortOrder;
+    LIBGEO?: SortOrder;
+    EPCI?: SortOrder;
+    LIBEPCI?: SortOrder;
+    DEP?: SortOrder;
+    REG?: SortOrder;
+    part_irr_SAU_2020?: SortOrder;
+    part_over_55?: SortOrder;
+  };
+
+  export type agricultureSumOrderByAggregateInput = {
+    index?: SortOrder;
+    REG?: SortOrder;
+    part_irr_SAU_2020?: SortOrder;
+    part_over_55?: SortOrder;
   };
 
   export type BigIntFieldUpdateOperationsInput = {

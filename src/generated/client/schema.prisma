@@ -482,3 +482,18 @@ model qualite_sites_baignade {
   @@index([index], map: "ix_qualite_sites_baignade_index")
   @@schema("databases")
 }
+
+model agriculture {
+  index             BigInt @id
+  CODGEO            String
+  LIBGEO            String
+  EPCI              String
+  LIBEPCI           String
+  DEP               String
+  REG               Float
+  part_irr_SAU_2020 Float?
+  part_over_55      Float?
+
+  @@index([index], map: "ix_agriculture_index")
+  @@schema("databases")
+}

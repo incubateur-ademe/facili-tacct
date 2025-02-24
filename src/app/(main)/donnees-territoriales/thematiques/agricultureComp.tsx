@@ -1,6 +1,12 @@
 'use client';
 
-import { CarteCommunes, EpciContours } from '@/lib/postgres/models';
+import { ChefsExploitation } from '@/components/themes/agriculture/chefsExploitation';
+import { SurfacesIrriguees } from '@/components/themes/agriculture/surfacesIrriguees';
+import {
+  Agriculture,
+  CarteCommunes,
+  EpciContours
+} from '@/lib/postgres/models';
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
@@ -19,24 +25,42 @@ interface Props {
   }>;
   carteCommunes: CarteCommunes[];
   epciContours: EpciContours[];
+  agriculture: Agriculture[];
 }
 
 const allComps = [
   {
     titre: "Chefs d'exploitation de plus de 55 ans",
-    Component: ({ data }: Props & { activeDataTab: string }) => (
-      <div>Chefs d'exploitation de plus de 55 ans</div>
+    Component: ({
+      agriculture,
+      carteCommunes
+    }: Props & { activeDataTab: string }) => (
+      <ChefsExploitation
+        agriculture={agriculture}
+        carteCommunes={carteCommunes}
+      />
     )
   },
   {
     titre: 'Surfaces irriguées SAU',
-    Component: ({ data }: Props & { activeDataTab: string }) => (
-      <div>Surfaces irriguées SAU</div>
+    Component: ({
+      agriculture,
+      carteCommunes
+    }: Props & { activeDataTab: string }) => (
+      <SurfacesIrriguees
+        agriculture={agriculture}
+        carteCommunes={carteCommunes}
+      />
     )
   }
 ];
 
-const AgricultureComp = ({ data, carteCommunes, epciContours }: Props) => {
+const AgricultureComp = ({
+  data,
+  carteCommunes,
+  epciContours,
+  agriculture
+}: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Renouvellement agricole');
   const [selectedSubTab, setSelectedSubTab] = useState(
     "Chefs d'exploitation de plus de 55 ans"
@@ -143,6 +167,7 @@ const AgricultureComp = ({ data, carteCommunes, epciContours }: Props) => {
                       activeDataTab={selectedSubTab}
                       epciContours={epciContours}
                       carteCommunes={carteCommunes}
+                      agriculture={agriculture}
                     />
                   </Suspense>
                 );

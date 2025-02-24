@@ -15,7 +15,9 @@ export const CommunesIndicateursMapper = (
       precarite_logement: commune.precarite_logement ?? NaN,
       densite_bati: commune.densite_bati ?? NaN,
       coordinates: commune.coordinates,
-      naf: commune.naf
+      naf: commune.naf,
+      surfacesIrriguees: commune.surfacesIrriguees ?? NaN,
+      chefsExploitation55Ans: commune.chefsExploitation55Ans ?? NaN
     },
     geometry: JSON.parse(commune.geometry)
   };
