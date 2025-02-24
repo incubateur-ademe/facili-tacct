@@ -4,7 +4,7 @@ import {
   GetErosionCotiere
 } from '@/lib/queries/postgis/cartographie';
 import { GetGestionRisques } from '@/lib/queries/thematiques';
-import { themes } from '@/lib/utils/themes';
+import { themes } from '@/lib/themes';
 import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
 import GestionRisquesComp from './gestionRisquesComp';

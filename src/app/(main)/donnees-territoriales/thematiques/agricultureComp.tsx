@@ -1,23 +1,9 @@
 'use client';
 
-import { Loader } from '@/components/loader';
-import { AgeBati } from '@/components/themes/inconfortThermique/age-bati';
-import { DensiteBati } from '@/components/themes/inconfortThermique/densite-bati';
-import { FragiliteEconomique } from '@/components/themes/inconfortThermique/fragilite-economique';
-import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grand-age-isolement';
-import { TravailExterieur } from '@/components/themes/inconfortThermique/travail-exterieur';
-import { TabTooltip } from '@/components/utils/TabTooltip';
-import {
-  CarteCommunes,
-  CLC,
-  CollectivitesSearchbar,
-  InconfortThermique
-} from '@/lib/postgres/models';
-import { GetClcEpci } from '@/lib/queries/postgis/cartographie';
+import { CarteCommunes, EpciContours } from '@/lib/postgres/models';
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
-import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
@@ -32,93 +18,32 @@ interface Props {
     titre: string;
   }>;
   carteCommunes: CarteCommunes[];
-  inconfortThermique: InconfortThermique[];
-  collectivite: CollectivitesSearchbar[];
-  departement?: InconfortThermique[];
+  epciContours: EpciContours[];
 }
-
-const DynamicVegetalisation = dynamic(
-  () =>
-    import('../../../../components/themes/inconfortThermique/vegetalisation'),
-  {
-    loading: () => <Loader />
-  }
-);
 
 const allComps = [
   {
-    titre: 'Grand âge',
-    Component: ({
-      inconfortThermique,
-      data
-    }: Props & { activeDataTab: string }) => (
-      <GrandAgeIsolement inconfortThermique={inconfortThermique} data={data} />
+    titre: "Chefs d'exploitation de plus de 55 ans",
+    Component: ({ data }: Props & { activeDataTab: string }) => (
+      <div>Chefs d'exploitation de plus de 55 ans</div>
     )
   },
   {
-    titre: 'Fragilité économique',
-    Component: ({ carteCommunes }: Props & { activeDataTab: string }) => (
-      <FragiliteEconomique carteCommunes={carteCommunes} />
-    )
-  },
-  {
-    titre: 'Travail en extérieur',
-    Component: ({ inconfortThermique }: Props & { activeDataTab: string }) => (
-      <TravailExterieur inconfortThermique={inconfortThermique} />
-    )
-  },
-  {
-    titre: 'Age du bâtiment',
-    Component: ({ inconfortThermique }: Props & { activeDataTab: string }) => (
-      <AgeBati inconfortThermique={inconfortThermique} />
-    )
-  },
-  {
-    titre: 'Densité du bâti',
-    Component: ({ carteCommunes }: Props & { activeDataTab: string }) => (
-      <DensiteBati carteCommunes={carteCommunes} />
-    )
-  },
-  // {
-  //   titre: 'LCZ',
-  //   Component: ({
-  //     carteCommunes,
-  //     collectivite
-  //     // LCZBayonne
-  //   }: Props & { activeDataTab: string }) => (
-  //     <LCZ
-  //       carteCommunes={carteCommunes}
-  //       collectivite={collectivite}
-  //       // LCZBayonne={LCZBayonne}
-  //     />
-  //   )
-  // },
-  {
-    titre: 'Végétalisation',
-    Component: ({
-      clc,
-      inconfortThermique
-    }: Props & { activeDataTab: string; clc: CLC[] }) => (
-      <DynamicVegetalisation
-        inconfortThermique={inconfortThermique}
-        clc={clc}
-      />
+    titre: 'Surfaces irriguées SAU',
+    Component: ({ data }: Props & { activeDataTab: string }) => (
+      <div>Surfaces irriguées SAU</div>
     )
   }
 ];
 
-const InconfortThermiqueComp = ({
-  data,
-  carteCommunes,
-  inconfortThermique,
-  collectivite,
-  departement
-}: Props) => {
-  const [clc, setClc] = useState<CLC[]>();
-  const [selectedTabId, setSelectedTabId] = useState('Population');
-  const [selectedSubTab, setSelectedSubTab] = useState('Grand âge');
+const AgricultureComp = ({ data, carteCommunes, epciContours }: Props) => {
+  const [selectedTabId, setSelectedTabId] = useState('Renouvellement agricole');
+  const [selectedSubTab, setSelectedSubTab] = useState(
+    "Chefs d'exploitation de plus de 55 ans"
+  );
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
+  const codgeo = searchParams.get('codgeo')!;
   const { isDark } = useIsDark();
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
@@ -141,34 +66,16 @@ const InconfortThermiqueComp = ({
     setSelectedSubTab(
       data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
-    void (async () => {
-      const temp = await GetClcEpci(codepci);
-      temp && codepci ? setClc(temp) : void 0;
-    })();
   }, [selectedTabId, codepci]);
 
   return (
-    <div className={styles.container}>
+    <div className="w-full">
       <Tabs
         selectedTabId={selectedTabId}
         tabs={[
           {
-            tabId: 'Population',
-            label: (
-              <TabTooltip
-                selectedTab={selectedTabId}
-                tooltip="Santé et emploi des populations sont des indicateurs de sensibilité aux fortes chaleurs."
-                titre="Population"
-              />
-            )
-          },
-          {
-            tabId: 'Bâtiment',
-            label: 'Bâtiment'
-          },
-          {
-            tabId: 'Urbanisme',
-            label: 'Urbanisme'
+            tabId: 'Renouvellement agricole',
+            label: 'Renouvellement agricole'
           }
         ]}
         onTabChange={setSelectedTabId}
@@ -233,12 +140,9 @@ const InconfortThermiqueComp = ({
                   <Suspense>
                     <Component
                       data={data}
-                      inconfortThermique={inconfortThermique}
-                      carteCommunes={carteCommunes}
                       activeDataTab={selectedSubTab}
-                      clc={clc || []}
-                      collectivite={collectivite}
-                      departement={departement}
+                      epciContours={epciContours}
+                      carteCommunes={carteCommunes}
                     />
                   </Suspense>
                 );
@@ -252,4 +156,4 @@ const InconfortThermiqueComp = ({
 };
 
 // eslint-disable-next-line import/no-default-export
-export default InconfortThermiqueComp;
+export default AgricultureComp;
