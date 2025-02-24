@@ -83,12 +83,10 @@ const allComps = [
   {
     titre: "Consommation d'espaces NAF",
     Component: ({
-      data,
       consommationNAF,
       carteCommunes
     }: Props & { activeDataTab: string }) => (
       <ConsommationEspacesNAF
-        data={data}
         consommationNAF={consommationNAF}
         carteCommunes={carteCommunes}
       />

@@ -12,13 +12,6 @@ import { ConsommationEspacesNAFDataviz } from './consommationEspacesNAFDataviz';
 export const ConsommationEspacesNAF = (props: {
   consommationNAF: ConsommationNAF[];
   carteCommunes: CarteCommunes[];
-  data: Array<{
-    donnee: string;
-    facteurSensibilite: string;
-    id: number;
-    risque: string;
-    titre: string;
-  }>;
 }) => {
   const { consommationNAF, carteCommunes } = props;
   const searchParams = useSearchParams();

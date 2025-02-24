@@ -516,6 +516,18 @@ exports.Prisma.Qualite_sites_baignadeScalarFieldEnum = {
   QEB_2020: 'QEB_2020'
 };
 
+exports.Prisma.AgricultureScalarFieldEnum = {
+  index: 'index',
+  CODGEO: 'CODGEO',
+  LIBGEO: 'LIBGEO',
+  EPCI: 'EPCI',
+  LIBEPCI: 'LIBEPCI',
+  DEP: 'DEP',
+  REG: 'REG',
+  part_irr_SAU_2020: 'part_irr_SAU_2020',
+  part_over_55: 'part_over_55'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -550,7 +562,8 @@ exports.Prisma.ModelName = {
   etat_cours_d_eau: 'etat_cours_d_eau',
   aot_40: 'aot_40',
   users: 'users',
-  qualite_sites_baignade: 'qualite_sites_baignade'
+  qualite_sites_baignade: 'qualite_sites_baignade',
+  agriculture: 'agriculture'
 };
 
 /**

@@ -1,3 +1,4 @@
+import { GetAgriculture } from '@/lib/queries/databases/agriculture';
 import { GetCommunes, GetEpci } from '@/lib/queries/postgis/cartographie';
 import { themes } from '@/lib/themes';
 import { Suspense } from 'react';
@@ -9,6 +10,7 @@ const Agriculture = async (props: { searchParams: SearchParams }) => {
   const { codepci } = await props.searchParams;
   const carteCommunes = await GetCommunes(codepci);
   const epciContours = await GetEpci(codepci);
+  const dbAgriculture = await GetAgriculture(codepci);
 
   return (
     <div className={styles.container}>
@@ -17,6 +19,7 @@ const Agriculture = async (props: { searchParams: SearchParams }) => {
           data={theme}
           carteCommunes={carteCommunes}
           epciContours={epciContours}
+          agriculture={dbAgriculture}
         />
       </Suspense>
     </div>

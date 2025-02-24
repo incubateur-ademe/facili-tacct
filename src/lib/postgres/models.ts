@@ -143,6 +143,8 @@ export type CarteCommunes = {
   catnat?: Object;
   naf?: number;
   surface: number;
+  surfacesIrriguees?: number;
+  chefsExploitation55Ans?: number;
 };
 
 export type EpciContours = {
@@ -395,4 +397,16 @@ export type QualiteSitesBaignade = {
   QEB_2018: string | null;
   QEB_2019: string | null;
   QEB_2020: string | null;
+};
+
+export type Agriculture = {
+  index: bigint;
+  CODGEO: string;
+  LIBGEO: string;
+  EPCI: string;
+  LIBEPCI: string;
+  DEP: string;
+  REG: number;
+  part_irr_SAU_2020: number | null;
+  part_over_55: number | null;
 };
