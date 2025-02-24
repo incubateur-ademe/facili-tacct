@@ -27,7 +27,7 @@ import styles from '../donnees.module.scss';
 interface Props {
   data: Array<{
     donnee: string;
-    facteur_sensibilite: string;
+    facteurSensibilite: string;
     id: number;
     risque: string;
     titre: string;
@@ -139,7 +139,7 @@ const InconfortThermiqueComp = ({
 
   useEffect(() => {
     setSelectedSubTab(
-      data.filter((el) => el.facteur_sensibilite === selectedTabId)[0].titre
+      data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
     void (async () => {
       const temp = await GetClcEpci(codepci);
@@ -205,7 +205,7 @@ const InconfortThermiqueComp = ({
         <div className={styles.formContainer}>
           <div className={styles.titles}>
             {data
-              .filter((el) => el.facteur_sensibilite === selectedTabId)
+              .filter((el) => el.facteurSensibilite === selectedTabId)
               .map((element, i) => (
                 <button
                   key={i}

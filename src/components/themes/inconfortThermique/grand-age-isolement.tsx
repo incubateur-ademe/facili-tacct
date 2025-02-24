@@ -47,7 +47,7 @@ export const GrandAgeIsolement = (props: {
   inconfortThermique: InconfortThermique[];
   data: Array<{
     donnee: string;
-    facteur_sensibilite: string;
+    facteurSensibilite: string;
     id: number;
     risque: string;
     titre: string;
