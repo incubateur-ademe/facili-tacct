@@ -1,9 +1,12 @@
 import {
+  GetGestionRisques,
+  GetIncendiesForet
+} from '@/lib/queries/databases/gestionRisques';
+import {
   GetCommunes,
   GetEpci,
   GetErosionCotiere
 } from '@/lib/queries/postgis/cartographie';
-import { GetGestionRisques } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/themes';
 import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
@@ -20,6 +23,7 @@ const GestionRisques = async (props: { searchParams: SearchParams }) => {
   const carteCommunes = await GetCommunes(codepci);
   const erosionCotiere = await GetErosionCotiere(codepci, codgeo ?? undefined);
   const epciContours = await GetEpci(codepci, codgeo ?? undefined);
+  const dbIncendiesForet = await GetIncendiesForet(codepci);
 
   return (
     <div>
@@ -31,6 +35,7 @@ const GestionRisques = async (props: { searchParams: SearchParams }) => {
             carteCommunes={carteCommunes}
             erosionCotiere={erosionCotiere}
             epciContours={epciContours}
+            incendiesForet={dbIncendiesForet}
           />
         </Suspense>
       </div>

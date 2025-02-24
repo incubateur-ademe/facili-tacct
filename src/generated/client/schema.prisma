@@ -497,3 +497,27 @@ model agriculture {
   @@index([index], map: "ix_agriculture_index")
   @@schema("databases")
 }
+
+model incendies_foret {
+  index                                 BigInt @id
+  code_geographique                     String
+  libelle_geographique                  String
+  epci                                  String
+  libelle_epci                          String
+  departement                           String
+  region                                Float
+  annee                                 BigInt
+  surface_parcourue                     Float
+  surface_foret                         Float?
+  surface_maquis_garrigues              Float?
+  autres_surfaces_naturelles_hors_foret Float?
+  surfaces_agricoles                    Float?
+  surfaces_non_boisees                  Float?
+  surfaces_non_boisees_artificialisees  Float?
+  surfaces_non_boisees_naturelles       Float?
+  surface_autres_terres_boisees         Float?
+  autres_surfaces                       Float?
+
+  @@index([index], map: "ix_incendies_foret_index")
+  @@schema("databases")
+}
