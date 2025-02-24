@@ -1,5 +1,6 @@
 import SubTabs from '@/components/SubTabs';
 import PieChartChefsExploitation from '@/components/charts/agriculture/pieChartChefsExploitation';
+import { chefsExploitationLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapChefsExploitation } from '@/components/maps/mapChefsExploitation';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
@@ -13,33 +14,6 @@ type Props = {
   datavizTab: string;
   setDatavizTab: (value: string) => void;
 };
-
-const legends = [
-  {
-    value: '< 30 ans',
-    color: '#ECD8FE'
-  },
-  {
-    value: '30 - 40 ans',
-    color: '#C48EF6'
-  },
-  {
-    value: '40 - 50 ans',
-    color: '#A05DE4'
-  },
-  {
-    value: '50 - 55 ans',
-    color: '#7F2CBF'
-  },
-  {
-    value: '> 55 ans',
-    color: '#4A1D7C'
-  },
-  {
-    value: 'Valeurs manquantes ou sous secret statistique',
-    color: 'transparent'
-  }
-];
 
 const RenouvellementAgricoleDataViz = (props: Props) => {
   const { carteCommunes, datavizTab, setDatavizTab, agriculture } = props;
@@ -75,7 +49,7 @@ const RenouvellementAgricoleDataViz = (props: Props) => {
             className={styles.legend}
             style={{ width: 'auto', justifyContent: 'center' }}
           >
-            <LegendCompColor legends={legends} />
+            <LegendCompColor legends={chefsExploitationLegend} />
           </div>
         </>
       ) : (
