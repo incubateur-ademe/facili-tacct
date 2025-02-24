@@ -14,7 +14,7 @@ export const ConsommationEspacesNAF = (props: {
   carteCommunes: CarteCommunes[];
   data: Array<{
     donnee: string;
-    facteur_sensibilite: string;
+    facteurSensibilite: string;
     id: number;
     risque: string;
     titre: string;
