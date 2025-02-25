@@ -97,9 +97,11 @@ const AOT40Dataviz = (props: {
     featureCollection,
     circle
   );
-  const maxValueInStations = stationsWithinCircle.features
-    .map((f) => f.properties?.value)
-    .reduce((a, b) => Math.max(Number(a), Number(b)));
+  const maxValueInStations = stationsWithinCircle.features.length
+    ? stationsWithinCircle.features
+        .map((f) => f.properties?.value)
+        .reduce((a, b) => Math.max(Number(a), Number(b)))
+    : null;
   const maxStation = stationsWithinCircle.features.find(
     (f) => f.properties?.value === maxValueInStations
   );
