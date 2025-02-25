@@ -83,12 +83,10 @@ const allComps = [
   {
     titre: "Consommation d'espaces NAF",
     Component: ({
-      data,
       consommationNAF,
       carteCommunes
     }: Props & { activeDataTab: string }) => (
       <ConsommationEspacesNAF
-        data={data}
         consommationNAF={consommationNAF}
         carteCommunes={carteCommunes}
       />
@@ -199,7 +197,7 @@ const BiodiversiteComp = ({
             label: (
               <TabTooltip
                 selectedTab={selectedTabId}
-                tooltip="Le bon fonctionnement des milieux aquatiques est évalué à partir d’éléments physico-chimiques (composition de l’eau, polluants…) mais aussi de la présence de la faune et de la flore (poissons, invertébrés, plantes aquatiques), ainsi que des propriétés hydromorphologiques (état des berges, continuité de la rivière, etc.)."
+                tooltip="La pollution de l’air et de l’eau par des substances dangereuses est l’une des cinq pressions responsables de l’effondrement de la biodiversité."
                 titre="État écologique des cours d'eau"
               />
             )
