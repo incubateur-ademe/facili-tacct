@@ -45,6 +45,8 @@ const AgricultureBiologique = (props: {
           <li>
             les superficies en conversion (la durée de conversion variant de 2
             ans pour les cultures annuelles à 3 ans pour les cultures pérennes).
+            Certaines données peuvent être incomplètes (non transmission des
+            données en provenance d’un organisme certificateur).
           </li>
         </ul>
       </div>
