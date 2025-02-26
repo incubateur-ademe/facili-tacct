@@ -1,6 +1,7 @@
 'use client';
 
 import { ConsommationEspacesNAFBarChart } from '@/components/charts/amenagement/consommationEspacesNAFBarChart';
+import { espacesNAFBarChartLegend } from '@/components/maps/legends/datavizLegends';
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
 import { CommunesIndicateursDto } from '@/lib/dto';
@@ -8,33 +9,6 @@ import { ConsommationNAF } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import styles from './amenagement.module.scss';
-
-const legends = [
-  {
-    variable: 'Activité',
-    couleur: '#F66E19'
-  },
-  {
-    variable: 'Habitat',
-    couleur: '#009ADC'
-  },
-  {
-    variable: 'Mixte',
-    couleur: '#FFCF5E'
-  },
-  {
-    variable: 'Routes',
-    couleur: '#7A49BE'
-  },
-  {
-    variable: 'Ferroviaire',
-    couleur: '#BB43BD'
-  },
-  {
-    variable: 'Inconnu',
-    couleur: '#00C2CC'
-  }
-];
 
 export const ConsommationEspacesNAFDataviz = (props: {
   consommationNAF: ConsommationNAF[];
@@ -99,7 +73,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
             filterValue={typeValue}
           />
           <div className={styles.NafBarLegendWrapper}>
-            {legends.map((e) => (
+            {espacesNAFBarChartLegend.map((e) => (
               <div key={e.variable} className={styles.legendNafBar}>
                 <div
                   className={styles.colorNafBar}

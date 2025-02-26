@@ -104,8 +104,8 @@ export const themes = {
     },
     {
       id: 1,
-      titre: "État écologique des cours d'eau",
-      facteurSensibilite: "État écologique des cours d'eau",
+      titre: 'Qualité de l’eau',
+      facteurSensibilite: 'Qualité de l’eau',
       risque: '',
       donnee: ''
     },
