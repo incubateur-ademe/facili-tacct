@@ -1,12 +1,7 @@
 'use client';
 
-import qualiteBon from '@/assets/icons/qualite_baignade_bon.svg';
-import qualiteExcellent from '@/assets/icons/qualite_baignade_excellent.svg';
-import qualiteInsuffisant from '@/assets/icons/qualite_baignade_insuffisant.svg';
-import qualiteManquePrelevement from '@/assets/icons/qualite_baignade_manque_prelevement.svg';
-import qualiteNonClasse from '@/assets/icons/qualite_baignade_non_classe.svg';
-import qualiteSuffisant from '@/assets/icons/qualite_baignade_suffisant.svg';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { qualiteEauxBaignadelegends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompIcons } from '@/components/maps/legends/legendComp';
 import { MapQualiteEauxBaignade } from '@/components/maps/mapQualiteEauxBaignade';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
@@ -19,33 +14,6 @@ import {
 } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
 import styles from './ressourcesEau.module.scss';
-
-const legends = [
-  {
-    value: 'Excellent',
-    icon: qualiteExcellent
-  },
-  {
-    value: 'Bon',
-    icon: qualiteBon
-  },
-  {
-    value: 'Suffisant',
-    icon: qualiteSuffisant
-  },
-  {
-    value: 'Insuffisant',
-    icon: qualiteInsuffisant
-  },
-  {
-    value: 'Site non classé',
-    icon: qualiteNonClasse
-  },
-  {
-    value: 'Insuffisamment de prélèvement',
-    icon: qualiteManquePrelevement
-  }
-];
 
 export const QualiteEauxBaignade = (props: {
   qualiteEauxBaignade: QualiteSitesBaignade[];
@@ -119,7 +87,7 @@ export const QualiteEauxBaignade = (props: {
                 className={styles.legend}
                 style={{ width: 'auto', justifyContent: 'center' }}
               >
-                <LegendCompIcons legends={legends} />
+                <LegendCompIcons legends={qualiteEauxBaignadelegends} />
               </div>
               <p style={{ padding: '1em', margin: '0' }}>Source : </p>
             </div>
