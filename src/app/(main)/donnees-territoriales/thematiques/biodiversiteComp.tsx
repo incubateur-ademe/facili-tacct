@@ -1,9 +1,5 @@
 'use client';
 
-import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
-import { useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useState } from 'react';
-
 import AgricultureBiologique from '@/components/themes/biodiversite/agricultureBio';
 import AOT40Dataviz from '@/components/themes/biodiversite/AOT40';
 import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
@@ -19,6 +15,9 @@ import {
   EtatCoursDeau,
   QualiteSitesBaignade
 } from '@/lib/postgres/models';
+import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
+import { useSearchParams } from 'next/navigation';
+import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import EtatQualiteCoursDeau from '../../../../components/themes/biodiversite/etatCoursDeau';
 import styles from '../donnees.module.scss';
