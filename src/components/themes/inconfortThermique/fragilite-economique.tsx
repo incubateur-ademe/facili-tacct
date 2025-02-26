@@ -2,35 +2,13 @@ import { useSearchParams } from 'next/navigation';
 
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
+import { fragiliteEcoLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { Map } from '@/components/maps/map';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes } from '@/lib/postgres/models';
 import styles from './themes.module.scss';
-
-const legends = [
-  {
-    value: '> 30 %',
-    color: '#FF5E54'
-  },
-  {
-    value: '20 % - 30 %',
-    color: '#FFBD00'
-  },
-  {
-    value: '10 % - 20 %',
-    color: '#FFFA6A'
-  },
-  {
-    value: '0 - 10 %',
-    color: '#D5F4A3'
-  },
-  {
-    value: '0 %',
-    color: '#5CFF54'
-  }
-];
 
 export const FragiliteEconomique = ({
   carteCommunes
@@ -159,7 +137,7 @@ export const FragiliteEconomique = ({
                     className={styles.legend}
                     style={{ width: 'auto', justifyContent: 'center' }}
                   >
-                    <LegendCompColor legends={legends} />
+                    <LegendCompColor legends={fragiliteEcoLegend} />
                   </div>
                   <p style={{ padding: '1em', margin: '0' }}>
                     Source : Observation de la précarité énergétique (ONPE),

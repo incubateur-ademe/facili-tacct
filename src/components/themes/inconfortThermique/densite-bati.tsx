@@ -2,35 +2,13 @@ import { useSearchParams } from 'next/navigation';
 
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
+import { densiteBatiLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { Map } from '@/components/maps/map';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes } from '@/lib/postgres/models';
 import styles from './themes.module.scss';
-
-const legends = [
-  {
-    value: '> 0.2',
-    color: '#FF5E54'
-  },
-  {
-    value: '0.1 - 0.2',
-    color: '#FFBD00'
-  },
-  {
-    value: '0.05 - 0.1',
-    color: '#FFFA6A'
-  },
-  {
-    value: '0 - 0.05',
-    color: '#D5F4A3'
-  },
-  {
-    value: '0',
-    color: '#5CFF54'
-  }
-];
 
 const average = (array: number[]) =>
   array.reduce((a: number, b: number) => a + b) / array.length;
@@ -104,7 +82,7 @@ export const DensiteBati = ({
                     className={styles.legend}
                     style={{ width: 'auto', justifyContent: 'center' }}
                   >
-                    <LegendCompColor legends={legends} />
+                    <LegendCompColor legends={densiteBatiLegend} />
                   </div>
                   <p style={{ padding: '1em', margin: '0' }}>
                     Source : Base de Données Nationale Des Bâtiments – BDNB
