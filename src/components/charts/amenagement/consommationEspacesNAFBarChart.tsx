@@ -1,37 +1,11 @@
 'use client';
 
+import { espacesNAFBarChartLegend } from '@/components/maps/legends/datavizLegends';
 import styles from '@/components/themes/biodiversite/biodiversite.module.scss';
 import { ConsommationNAF } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { BarDatum, BarTooltipProps } from '@nivo/bar';
 import { NivoBarChart } from '../NivoBarChart';
-
-const legends = [
-  {
-    variable: 'Activité',
-    couleur: '#F66E19'
-  },
-  {
-    variable: 'Habitat',
-    couleur: '#009ADC'
-  },
-  {
-    variable: 'Mixte',
-    couleur: '#FFCF5E'
-  },
-  {
-    variable: 'Routes',
-    couleur: '#7A49BE'
-  },
-  {
-    variable: 'Ferroviaire',
-    couleur: '#BB43BD'
-  },
-  {
-    variable: 'Inconnu',
-    couleur: '#00C2CC'
-  }
-];
 
 const subObjectByKeys = (obj: ConsommationNAF, arr: string[]) =>
   Object.fromEntries(Object.entries(obj).filter(([k]) => arr.includes(k)));
@@ -122,7 +96,8 @@ export const ConsommationEspacesNAFBarChart = (props: {
       return {
         titre: el[0],
         value: el[1],
-        color: legends.find((e) => e.variable === el[0])?.couleur
+        color: espacesNAFBarChartLegend.find((e) => e.variable === el[0])
+          ?.couleur
       };
     });
 
@@ -153,7 +128,7 @@ export const ConsommationEspacesNAFBarChart = (props: {
       style={{ height: '500px', minWidth: '450px', backgroundColor: 'white' }}
     >
       <NivoBarChart
-        colors={legends.map((e) => e.couleur)}
+        colors={espacesNAFBarChartLegend.map((e) => e.couleur)}
         graphData={graphData}
         keys={Object.keys(graphData[0]).slice(0, -1)}
         indexBy="annee"
