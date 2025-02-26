@@ -48,7 +48,7 @@ const allComps = [
     )
   },
   {
-    titre: "État écologique des cours d'eau",
+    titre: 'Qualité de l’eau',
     Component: ({
       etatCoursDeau,
       epciContours,
@@ -119,8 +119,8 @@ const RessourcesEauComp = ({
             )
           },
           {
-            tabId: "État écologique des cours d'eau",
-            label: "État écologique des cours d'eau"
+            tabId: 'Qualité de l’eau',
+            label: 'Qualité de l’eau'
           }
         ]}
         onTabChange={setSelectedTabId}
