@@ -2,53 +2,13 @@ import { useSearchParams } from 'next/navigation';
 
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
+import { surfacesIrrigueesLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapSurfacesIrriguees } from '@/components/maps/mapSurfacesIrriguees';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
 import styles from './agriculture.module.scss';
-
-const getColor = (d: number) => {
-  return d === 0
-    ? '#D8EFFA'
-    : d > 0
-      ? '#3DB6EA'
-      : d > 20
-        ? '#0072B5'
-        : d > 40
-          ? '#03508B'
-          : d > 60 && d <= 100
-            ? '#093454'
-            : 'transparent';
-};
-
-const legends = [
-  {
-    value: '0 %',
-    color: '#D8EFFA'
-  },
-  {
-    value: '0 - 20 %',
-    color: '#3DB6EA'
-  },
-  {
-    value: '20 - 40 %',
-    color: '#0072B5'
-  },
-  {
-    value: '40 - 60 %',
-    color: '#03508B'
-  },
-  {
-    value: '60 - 100 %',
-    color: '#093454'
-  },
-  {
-    value: 'Valeurs manquantes ou sous secret statistique',
-    color: 'transparent'
-  }
-];
 
 export const SurfacesIrriguees = ({
   carteCommunes,
@@ -127,7 +87,7 @@ export const SurfacesIrriguees = ({
                     className={styles.legend}
                     style={{ width: 'auto', justifyContent: 'center' }}
                   >
-                    <LegendCompColor legends={legends} />
+                    <LegendCompColor legends={surfacesIrrigueesLegend} />
                   </div>
                   <p style={{ padding: '1em', margin: '0' }}>Source : XXXXXX</p>
                 </div>
