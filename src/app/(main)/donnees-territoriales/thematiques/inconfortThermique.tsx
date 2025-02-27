@@ -1,21 +1,15 @@
-import { Loader } from '@/components/loader';
 import { NoticeComp } from '@/dsfr/base/Notice';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { GetCollectivite } from '@/lib/queries/searchBar';
 import { GetInconfortThermiqueDepartment } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/utils/themes';
-import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
+import InconfortThermiqueComp from './inconfortThermiqueComp';
 
-const DynamicPageComp = dynamic(() => import('./inconfortThermiqueComp'), {
-  ssr: false,
-  loading: () => <Loader />
-});
-
-const InconfortThermique = async (searchParams: SearchParams) => {
+const InconfortThermique = async (props: { searchParams: SearchParams }) => {
+  const { codepci, codgeo } = await props.searchParams;
   const theme = themes.inconfortThermique;
-  const codepci = searchParams.searchParams.codepci;
-  const codgeo = searchParams.searchParams.codgeo;
   const dbInconfortThermique = await GetInconfortThermiqueDepartment(codepci);
 
   const collectivite = codgeo
@@ -32,12 +26,14 @@ const InconfortThermique = async (searchParams: SearchParams) => {
         Explorez ici des leviers d'action possibles vous permettant de réduire la sensibilité de votre territoire à l'inconfort thermique."
       />
       <div className={styles.container}>
-        <DynamicPageComp
-          data={theme}
-          inconfortThermique={dbInconfortThermique!}
-          carteCommunes={carteCommunes}
-          collectivite={collectivite!}
-        />
+        <Suspense>
+          <InconfortThermiqueComp
+            data={theme}
+            inconfortThermique={dbInconfortThermique!}
+            carteCommunes={carteCommunes}
+            collectivite={collectivite!}
+          />
+        </Suspense>
       </div>
     </div>
   );
