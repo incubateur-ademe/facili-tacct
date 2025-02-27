@@ -2,7 +2,7 @@
 import { thematiques } from '@/lib/utils/thematiques';
 import Badge from '@codegouvfr/react-dsfr/Badge';
 import { Card } from '@codegouvfr/react-dsfr/Card';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { CardComp } from './card';
 import styles from './thematiques.module.scss';
 
@@ -16,14 +16,16 @@ export const Cards = () => {
   return (
     <div className={styles.cardWrapper}>
       {thematiques.disponible.map((thematique) => (
-        <CardComp
-          key={thematique.id}
-          imageUrl={thematique.imageUrl}
-          thematique={thematique.thematique}
-          badgeSeverity="success"
-          badge="Disponible"
-          title={thematique.thematique}
-        />
+        <Suspense>
+          <CardComp
+            key={thematique.id}
+            imageUrl={thematique.imageUrl}
+            thematique={thematique.thematique}
+            badgeSeverity="success"
+            badge="Disponible"
+            title={thematique.thematique}
+          />
+        </Suspense>
       ))}
       {thematiques.bientot_disponible.map((thematique) => (
         <div

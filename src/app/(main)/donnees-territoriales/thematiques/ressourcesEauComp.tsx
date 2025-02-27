@@ -4,11 +4,19 @@ import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
+import { Loader } from '@/components/loader';
 import { PrelevementEau } from '@/components/themes/ressourcesEau/prelevementEau';
-import { RessourcesEau } from '@/lib/postgres/models';
-import { TabTooltip } from '@/lib/utils/TabTooltip';
+import { TabTooltip } from '@/components/utils/TabTooltip';
+import {
+  CarteCommunes,
+  EpciContours,
+  EtatCoursDeau,
+  RessourcesEau
+} from '@/lib/postgres/models';
+import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
+import dynamic from 'next/dynamic';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -21,7 +29,16 @@ interface Props {
     titre: string;
   }>;
   ressourcesEau: RessourcesEau[];
+  carteCommunes: CarteCommunes[];
+  epciContours: EpciContours[];
 }
+
+const DynamicCoursDeau = dynamic(
+  () => import('../../../../components/themes/ressourcesEau/etatCoursDeau'),
+  {
+    loading: () => <Loader />
+  }
+);
 
 const allComps = [
   {
@@ -29,14 +46,35 @@ const allComps = [
     Component: ({ data, ressourcesEau }: Props & { activeDataTab: string }) => (
       <PrelevementEau data={data} ressourcesEau={ressourcesEau} />
     )
+  },
+  {
+    titre: 'Qualité de l’eau',
+    Component: ({
+      etatCoursDeau,
+      epciContours,
+      carteCommunes
+    }: Props & { activeDataTab: string; etatCoursDeau: EtatCoursDeau[] }) => (
+      <DynamicCoursDeau
+        etatCoursDeau={etatCoursDeau}
+        epciContours={epciContours}
+        carteCommunes={carteCommunes}
+      />
+    )
   }
 ];
 
-const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
+const RessourcesEauComp = ({
+  data,
+  ressourcesEau,
+  carteCommunes,
+  epciContours
+}: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Prélèvements en eau');
   const [selectedSubTab, setSelectedSubTab] = useState('Prélèvements en eau');
+  const [etatCoursDeau, setEtatCoursDeau] = useState<EtatCoursDeau[]>();
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
+  const codgeo = searchParams.get('codgeo')!;
   const { isDark } = useIsDark();
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
@@ -59,10 +97,14 @@ const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
     setSelectedSubTab(
       data.filter((el) => el.facteur_sensibilite === selectedTabId)[0].titre
     );
+    void (async () => {
+      const temp = await GetEtatCoursDeau(codepci, codgeo);
+      temp && codepci ? setEtatCoursDeau(temp) : void 0;
+    })();
   }, [selectedTabId, codepci]);
 
   return (
-    <div className={styles.container}>
+    <div className="w-full">
       <Tabs
         selectedTabId={selectedTabId}
         tabs={[
@@ -75,6 +117,10 @@ const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
                 titre="Prélèvements en eau"
               />
             )
+          },
+          {
+            tabId: 'Qualité de l’eau',
+            label: 'Qualité de l’eau'
           }
         ]}
         onTabChange={setSelectedTabId}
@@ -109,21 +155,6 @@ const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
         })}
       >
         <div className={styles.formContainer}>
-          {/* <div className={styles.titles}>
-            {data
-              .filter(el => el.facteur_sensibilite === selectedTabId)
-              .map((element, i) => (
-                <button
-                  key={i}
-                  className={selectedSubTab === element.titre ? styles.selectedButton : styles.button}
-                  onClick={() => {
-                    setSelectedSubTab(element.titre);
-                  }}
-                >
-                  {element.titre}
-                </button>
-              ))}
-          </div> */}
           <div className={styles.bubble}>
             <div className={styles.bubbleContent} style={darkClass}>
               {(() => {
@@ -132,11 +163,16 @@ const RessourcesEauComp = ({ data, ressourcesEau }: Props) => {
                 )?.Component;
                 if (!Component) return null;
                 return (
-                  <Component
-                    data={data}
-                    ressourcesEau={ressourcesEau}
-                    activeDataTab={selectedSubTab}
-                  />
+                  <Suspense>
+                    <Component
+                      data={data}
+                      ressourcesEau={ressourcesEau}
+                      activeDataTab={selectedSubTab}
+                      epciContours={epciContours}
+                      carteCommunes={carteCommunes}
+                      etatCoursDeau={etatCoursDeau || []}
+                    />
+                  </Suspense>
                 );
               })()}
             </div>

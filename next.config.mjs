@@ -1,14 +1,19 @@
+//https://github.com/incubateur-ademe/pages-legales-faciles/blob/dev/next.config.mjs
 import createMDX from '@next/mdx';
 import { withSentryConfig } from '@sentry/nextjs';
-import remarkFrontmatter from 'remark-frontmatter';
-import remarkGfm from 'remark-gfm';
-import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 
 import packageJson from './package.json' assert { type: 'json' };
 
 const { version } = packageJson;
 
-const isDeployment = !!process.env.VERCEL_URL;
+const isDeployment = !!process.env.SOURCE_VERSION;
+
+const env = {
+    NEXT_PUBLIC_APP_VERSION: version,
+    NEXT_PUBLIC_APP_VERSION_COMMIT: isDeployment
+        ? process.env.SOURCE_VERSION
+        : 'dev'
+};
 
 const csp = {
     'default-src': ["'none'"],
@@ -51,7 +56,6 @@ const ContentSecurityPolicy = Object.entries(csp)
 /** @type {import('next').NextConfig} */
 const config = {
     poweredByHeader: false,
-    swcMinify: true,
     webpack: (config) => {
         config.module.rules.push({
             test: /\.(woff2|webmanifest)$/,
@@ -62,7 +66,6 @@ const config = {
     },
     productionBrowserSourceMaps: false,
     experimental: {
-        typedRoutes: true,
         serverSourceMaps: false,
         serverActions: {
             allowedOrigins: ['*.beta.gouv.fr']
@@ -133,14 +136,7 @@ const config = {
 };
 
 const withMDX = createMDX({
-    extension: /\.mdx?$/,
-    options: {
-        remarkPlugins: [
-            remarkFrontmatter,
-            remarkGfm,
-            [remarkMdxFrontmatter, { name: 'metadata' }]
-        ]
-    }
+    extension: /\.mdx?$/
 });
 
 export default withSentryConfig(withMDX(config), {

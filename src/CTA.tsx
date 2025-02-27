@@ -6,7 +6,7 @@ import ButtonsGroup from '@codegouvfr/react-dsfr/ButtonsGroup';
 import { config } from '@/config';
 
 const DEFAULT_CTA_HREF = config.formUrl;
-const DEFAULT_CTA_TITLE = 'Je souhaite recevoir ma Carte Verte';
+const DEFAULT_CTA_TITLE = '';
 
 export interface CTAProps {
   buttons: any[];
