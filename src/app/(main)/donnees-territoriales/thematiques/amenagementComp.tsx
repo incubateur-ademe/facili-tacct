@@ -1,13 +1,11 @@
 'use client';
 
-import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
-import { useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useState } from 'react';
-
 import { ConsommationEspacesNAF } from '@/components/themes/amenagement/consommationEspacesNAF';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
-import { TabTooltip } from '@/lib/utils/TabTooltip';
+import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
+import { useSearchParams } from 'next/navigation';
+import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
