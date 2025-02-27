@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 
 import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
@@ -106,7 +107,7 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNat[] }) => {
           </animated.tspan>
           <animated.tspan>
             ({((100 * datum.value) / Sum(Object.values(countTypes))).toFixed(1)}
-            %)
+             %)
           </animated.tspan>
         </animated.text>
       </animated.g>

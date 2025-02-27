@@ -1,7 +1,7 @@
 import surfaceCertifeeIcon from '@/assets/icons/agriculture_bio_surface_certifiee_icon.svg';
 import surfaceEnConversionIcon from '@/assets/icons/agriculture_bio_surface_conversion_icon.svg';
+import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
 import { AgricultureBio } from '@/lib/postgres/models';
-import { HtmlTooltip } from '@/lib/utils/HtmlTooltip';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Progress } from 'antd';
 import Image from 'next/image';

@@ -78,6 +78,20 @@ export const themes = {
       facteur_sensibilite: "Consommation d'espaces NAF",
       risque: '',
       donnee: ''
+    },
+    {
+      id: 4,
+      titre: "État écologique des cours d'eau",
+      facteur_sensibilite: 'Pollutions',
+      risque: '',
+      donnee: ''
+    },
+    {
+      id: 5,
+      titre: 'Ozone et végétation',
+      facteur_sensibilite: 'Pollutions',
+      risque: '',
+      donnee: ''
     }
   ],
   ressourcesEau: [
@@ -87,13 +101,18 @@ export const themes = {
       facteur_sensibilite: 'Prélèvements en eau',
       risque: '',
       donnee: ''
-    }
-  ],
-  amenagement: [
+    },
     {
-      id: 0,
-      titre: "Consommation d'espaces NAF",
-      facteur_sensibilite: "Consommation d'espaces NAF",
+      id: 1,
+      titre: 'Qualité de l’eau',
+      facteur_sensibilite: 'Qualité de l’eau',
+      risque: '',
+      donnee: ''
+    },
+    {
+      id: 2,
+      titre: 'Qualité des eaux de baignade',
+      facteur_sensibilite: 'Qualité des eaux de baignade',
       risque: '',
       donnee: ''
     }
@@ -110,6 +129,15 @@ export const themes = {
       id: 1,
       titre: 'Érosion côtière',
       facteur_sensibilite: 'Érosion côtière',
+      risque: '',
+      donnee: ''
+    }
+  ],
+  amenagement: [
+    {
+      id: 0,
+      titre: "Consommation d'espaces NAF",
+      facteur_sensibilite: "Consommation d'espaces NAF",
       risque: '',
       donnee: ''
     }

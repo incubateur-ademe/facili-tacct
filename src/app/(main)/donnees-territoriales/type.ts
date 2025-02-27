@@ -1,10 +1,8 @@
-type SearchParams = {
-  searchParams: {
-    codepci: string;
-    codgeo: string;
-    thematique: string;
-  };
-};
+type SearchParams = Promise<{
+  codepci: string;
+  codgeo: string;
+  thematique: string;
+}>;
 
 // export type DataCommune = {
 //   features: CommunesTypes[];

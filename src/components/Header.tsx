@@ -4,7 +4,7 @@ import { config } from '@/config';
 import Badge from '@codegouvfr/react-dsfr/Badge';
 import Header from '@codegouvfr/react-dsfr/Header';
 import { Button } from '@mui/material';
-import Image, { type StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -83,22 +83,16 @@ export const HeaderComp = () => {
       }}
       quickAccessItems={[
         commune && codgeo ? (
-          <>
-            <Localisation libelle={commune} code={codgeo} />
-          </>
+          <Localisation libelle={commune} code={codgeo} />
         ) : epci && codepci ? (
-          <>
-            <Localisation libelle={epci} code={codepci} />
-          </>
+          <Localisation libelle={epci} code={codepci} />
         ) : null,
         params.includes('ressources') ? null : (
           <Button
             key="0"
             variant="outlined"
             href="/ressources"
-            startIcon={
-              <Image src={ressourcesIcon as StaticImageData} alt=""></Image>
-            }
+            startIcon={<Image src={ressourcesIcon} alt="" />}
             sx={{
               textTransform: 'none',
               color: '#0063CB',

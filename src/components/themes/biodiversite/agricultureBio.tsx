@@ -1,6 +1,6 @@
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { AgricultureBio } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
@@ -45,6 +45,8 @@ const AgricultureBiologique = (props: {
           <li>
             les superficies en conversion (la durée de conversion variant de 2
             ans pour les cultures annuelles à 3 ans pour les cultures pérennes).
+            Certaines données peuvent être incomplètes (non transmission des
+            données en provenance d’un organisme certificateur).
           </li>
         </ul>
       </div>

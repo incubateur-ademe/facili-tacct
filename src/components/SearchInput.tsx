@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { cx } from "@codegouvfr/react-dsfr/tools/cx";
-import { Box } from "@mui/material";
-import Autocomplete from "@mui/material/Autocomplete";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { cx } from '@codegouvfr/react-dsfr/tools/cx';
+import { Box } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
-import { GetCollectivite } from "@/lib/queries/searchBar";
+import { GetCollectivite } from '@/lib/queries/searchBar';
 
 type MySearchInputProps = {
   className?: string;
@@ -25,22 +25,40 @@ type Options = {
 };
 
 export const MySearchInput = (props: MySearchInputProps) => {
-  const { className, id, type, searchCodeFromSearchBar, searchEpciCodeFromSearchBar } = props;
+  const {
+    className,
+    id,
+    type,
+    searchCodeFromSearchBar,
+    searchEpciCodeFromSearchBar
+  } = props;
   const router = useRouter();
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState<Options[]>([]);
-  const [epciCode, setEpciCode] = useState<string>("");
-  const [searchCode, setSearchCode] = useState<string>("");
+  const [epciCode, setEpciCode] = useState<string>('');
+  const [searchCode, setSearchCode] = useState<string>('');
 
   // supprime les doublons pour les objects
   const filteredCollectivite = options.filter(
-    (value, index, self) => index === self.findIndex(t => t.searchLibelle === value.searchLibelle && t.searchCode === value.searchCode),
+    (value, index, self) =>
+      index ===
+      self.findIndex(
+        (t) =>
+          t.searchLibelle === value.searchLibelle &&
+          t.searchCode === value.searchCode
+      )
   );
-  const collectivites = [...filteredCollectivite.sort((a, b) => a.searchLibelle.localeCompare(b.searchLibelle))];
+  const collectivites = [
+    ...filteredCollectivite.sort((a, b) =>
+      a.searchLibelle.localeCompare(b.searchLibelle)
+    )
+  ];
 
   const handleClick = () => {
     if (epciCode) {
-      searchCode?.length < 7 ? router.push(`/thematiques?codgeo=${searchCode}&codepci=${epciCode}`) : router.push(`/thematiques?codepci=${epciCode}`);
+      searchCode?.length < 7
+        ? router.push(`/thematiques?codgeo=${searchCode}&codepci=${epciCode}`)
+        : router.push(`/thematiques?codepci=${epciCode}`);
     }
   };
 
@@ -51,9 +69,9 @@ export const MySearchInput = (props: MySearchInputProps) => {
         getCollectivite.map((el, i) => ({
           searchLibelle: el.search_libelle,
           searchCode: el.search_code,
-          codeCommune: el.code_commune ?? "",
+          codeCommune: el.code_commune ?? '',
           codeEpci: el.code_epci
-        })),
+        }))
       );
     })();
     searchCodeFromSearchBar(searchCode);
@@ -64,50 +82,55 @@ export const MySearchInput = (props: MySearchInputProps) => {
     <Autocomplete
       id={id}
       autoHighlight
-      filterOptions={x => x}
+      filterOptions={(x) => x}
       options={collectivites}
       // value={collectivites}
       noOptionsText="Aucune collectivité trouvée"
       onChange={(event, newValue: Options | null) => {
         setOptions(newValue ? [newValue, ...options] : options);
-        setEpciCode(newValue?.codeEpci ?? "");
-        setSearchCode(newValue?.searchCode ?? "");
+        setEpciCode(newValue?.codeEpci ?? '');
+        setSearchCode(newValue?.searchCode ?? '');
       }}
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
       }}
-      getOptionLabel={option => {
+      getOptionLabel={(option) => {
         if (option) {
           return `${option.searchLibelle} (${option.searchCode})`;
         }
-        return "";
+        return '';
       }}
-      onKeyDown={e => {
-        if (e.code === "Enter") {
+      onKeyDown={(e) => {
+        if (e.code === 'Enter') {
           handleClick();
         }
       }}
       renderOption={(props, option) => {
         const { ...optionProps } = props;
         return (
-          <Box component="li" sx={{ height: "fit-content" }} {...optionProps}>
-            <p style={{ margin: "0" }}>
+          <Box
+            component="li"
+            sx={{ height: 'fit-content' }}
+            {...optionProps}
+            key={option.searchCode}
+          >
+            <p style={{ margin: '0' }}>
               <b>{option.searchLibelle} </b> ({option.searchCode})
             </p>
           </Box>
         );
       }}
-      renderInput={params => (
+      renderInput={(params) => (
         <div ref={params.InputProps.ref}>
           <input
-            {...params.inputProps}
+            {...(params.inputProps as React.InputHTMLAttributes<HTMLInputElement>)}
             className={cx(params.inputProps.className, className)}
-            placeholder={"Rechercher une commune ou un EPCI"}
+            placeholder={'Rechercher une commune ou un EPCI'}
             type={type}
           />
         </div>
       )}
-      sx={{ width: "inherit" }}
+      sx={{ width: 'inherit' }}
     />
   );
 };

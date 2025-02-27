@@ -1,7 +1,9 @@
+'use client';
+
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import styles from './biodiversite.module.scss';
@@ -34,13 +36,13 @@ export const ConsommationEspacesNAF = (props: {
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
   const sumNaf = codgeo
     ? consommationNAF.filter((item) => item.code_geographique === codgeo)[0]
-        .naf09art23
+        ?.naf09art23
     : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
   const title = (
     <div>
       Le suivi de cet indicateur est réalisé par le CEREMA dans le cadre de
-      l’objectif “zéro artificialisation nette” de la loi « Climat et résilience
-      ». La consommation d’espaces NAF est calculée à partir des fichiers
+      l’objectif “zéro artificialisation nette” de la loi « Climat et résilience
+       ». La consommation d’espaces NAF est calculée à partir des fichiers
       fonciers entre 2009 et 2023, présentée ici toute destination confondue.
       Les données sont traitées pour donner des tendances de façon uniforme sur
       toute la France ; ponctuellement, il est possible que les documents de
@@ -71,10 +73,12 @@ export const ConsommationEspacesNAF = (props: {
                 en outre à une homogénéisation de la biodiversité qui affecte la
                 résilience des milieux.
               </p>
-              <p>
-                La consommation d’ENAF a des conséquences dramatiques pour le
-                climat :
-                <ul>
+              <div>
+                <p>
+                  La consommation d’ENAF a des conséquences dramatiques pour le
+                  climat :
+                </p>
+                <ul className="text-[1rem] leading-[1.5rem]">
                   <li>
                     Les sols perdent leur rôle de puits de carbone et leur
                     capacité d’infiltration ce qui perturbe le cycle naturel de
@@ -88,9 +92,9 @@ export const ConsommationEspacesNAF = (props: {
                     épuratoires des milieux.
                   </li>
                 </ul>
-              </p>
+              </div>
               <p>
-                ⇒ 24 000 hectares par an d’espaces naturels, agricoles et
+                ⇒ 24 000 hectares par an d’espaces naturels, agricoles et
                 forestiers sont consommés depuis dix ans, soit l’équivalent de
                 10 fois la superficie de Marseille.
               </p>
