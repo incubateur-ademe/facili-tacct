@@ -2,22 +2,25 @@
 
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 import AgricultureBiologique from '@/components/themes/biodiversite/agricultureBio';
+import AOT40Dataviz from '@/components/themes/biodiversite/AOT40';
 import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
 import { StationsClassees } from '@/components/themes/biodiversite/stationsClassees';
-import SurfacesProtegees from '@/components/themes/biodiversite/surfacesProtegees';
+import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   AgricultureBio,
+  AOT40,
   Biodiversite,
   CarteCommunes,
   ConsommationNAF,
   EpciContours,
-  SurfacesProtegeesByCol
+  EtatCoursDeau,
+  QualiteSitesBaignade
 } from '@/lib/postgres/models';
-import { TabTooltip } from '@/lib/utils/TabTooltip';
 import { useStyles } from 'tss-react/dsfr';
+import EtatQualiteCoursDeau from '../../../../components/themes/biodiversite/etatCoursDeau';
 import styles from '../donnees.module.scss';
 
 interface Props {
@@ -31,9 +34,12 @@ interface Props {
   biodiversite: Biodiversite[];
   carteCommunes: CarteCommunes[];
   agricultureBio: AgricultureBio[];
-  surfacesProtegees: SurfacesProtegeesByCol[];
+  // surfacesProtegees: SurfacesProtegeesByCol[];
   consommationNAF: ConsommationNAF[];
   epciContours: EpciContours[];
+  aot40: AOT40[];
+  etatCoursDeau: EtatCoursDeau[];
+  qualiteEauxBaignade: QualiteSitesBaignade[];
 }
 
 const allComps = [
@@ -60,20 +66,20 @@ const allComps = [
       <AgricultureBiologique data={data} agricultureBio={agricultureBio} />
     )
   },
-  {
-    titre: 'Surfaces protégées',
-    Component: ({
-      data,
-      surfacesProtegees,
-      carteCommunes
-    }: Props & { activeDataTab: string }) => (
-      <SurfacesProtegees
-        data={data}
-        surfacesProtegees={surfacesProtegees}
-        carteCommunes={carteCommunes}
-      />
-    )
-  },
+  // {
+  //   titre: 'Surfaces protégées',
+  //   Component: ({
+  //     data,
+  //     surfacesProtegees,
+  //     carteCommunes
+  //   }: Props & { activeDataTab: string }) => (
+  //     <SurfacesProtegees
+  //       data={data}
+  //       surfacesProtegees={surfacesProtegees}
+  //       carteCommunes={carteCommunes}
+  //     />
+  //   )
+  // },
   {
     titre: "Consommation d'espaces NAF",
     Component: ({
@@ -87,6 +93,36 @@ const allComps = [
         carteCommunes={carteCommunes}
       />
     )
+  },
+  {
+    titre: "État écologique des cours d'eau",
+    Component: ({
+      etatCoursDeau,
+      epciContours,
+      carteCommunes,
+      qualiteEauxBaignade
+    }: Props & { activeDataTab: string; etatCoursDeau: EtatCoursDeau[] }) => (
+      <EtatQualiteCoursDeau
+        etatCoursDeau={etatCoursDeau}
+        epciContours={epciContours}
+        carteCommunes={carteCommunes}
+        qualiteEauxBaignade={qualiteEauxBaignade}
+      />
+    )
+  },
+  {
+    titre: 'Ozone et végétation',
+    Component: ({
+      aot40,
+      epciContours,
+      carteCommunes
+    }: Props & { activeDataTab: string }) => (
+      <AOT40Dataviz
+        aot40={aot40}
+        epciContours={epciContours}
+        carteCommunes={carteCommunes}
+      />
+    )
   }
 ];
 
@@ -95,9 +131,12 @@ const BiodiversiteComp = ({
   biodiversite,
   carteCommunes,
   agricultureBio,
-  surfacesProtegees,
+  // surfacesProtegees,
   consommationNAF,
-  epciContours
+  epciContours,
+  aot40,
+  etatCoursDeau,
+  qualiteEauxBaignade
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState(
     "Consommation d'espaces NAF"
@@ -105,6 +144,7 @@ const BiodiversiteComp = ({
   const [selectedSubTab, setSelectedSubTab] = useState(
     "Consommation d'espaces NAF"
   );
+  // const [etatCoursDeau, setEtatCoursDeau] = useState<EtatCoursDeau[]>();
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
   const { css } = useStyles();
@@ -113,6 +153,10 @@ const BiodiversiteComp = ({
     setSelectedSubTab(
       data.filter((el) => el.facteur_sensibilite === selectedTabId)[0].titre
     );
+    // void (async () => {
+    //   const temp = await GetEtatCoursDeau(codepci, codgeo);
+    //   temp && codepci ? setEtatCoursDeau(temp) : void 0;
+    // })();
   }, [selectedTabId, codepci]);
 
   return (
@@ -122,7 +166,13 @@ const BiodiversiteComp = ({
         tabs={[
           // {
           //   tabId: 'Surfaces protégées',
-          //   label: 'Surfaces protégées'
+          //   label: (
+          //     <TabTooltip
+          //       selectedTab={selectedTabId}
+          //       tooltip="Espaces d’inventaire et de protection."
+          //       titre="Surfaces protégées"
+          //     />
+          //   )
           // },
           {
             tabId: "Consommation d'espaces NAF",
@@ -141,6 +191,16 @@ const BiodiversiteComp = ({
                 selectedTab={selectedTabId}
                 tooltip="L’agriculture biologique fait partie d’un ensemble de pratiques agricoles respectueuses des équilibres écologiques qui contribue à la préservation des sols et des ressources naturelles. "
                 titre="Surfaces en bio"
+              />
+            )
+          },
+          {
+            tabId: 'Pollutions',
+            label: (
+              <TabTooltip
+                selectedTab={selectedTabId}
+                tooltip="La pollution de l’air et de l’eau par des substances dangereuses est l’une des cinq pressions responsables de l’effondrement de la biodiversité."
+                titre="Pollutions"
               />
             )
           }
@@ -177,6 +237,27 @@ const BiodiversiteComp = ({
         })}
       >
         <div className={styles.formContainer}>
+          <div className={styles.titles}>
+            {selectedTabId === 'Pollutions'
+              ? data
+                  .filter((el) => el.facteur_sensibilite === selectedTabId)
+                  .map((element, i) => (
+                    <button
+                      key={i}
+                      className={
+                        selectedSubTab === element.titre
+                          ? styles.selectedButton
+                          : styles.button
+                      }
+                      onClick={() => {
+                        setSelectedSubTab(element.titre);
+                      }}
+                    >
+                      {element.titre}
+                    </button>
+                  ))
+              : ''}
+          </div>
           <div className={styles.bubble}>
             <div className={styles.bubbleContent}>
               {(() => {
@@ -185,16 +266,21 @@ const BiodiversiteComp = ({
                 )?.Component;
                 if (!Component) return null;
                 return (
-                  <Component
-                    data={data}
-                    biodiversite={biodiversite}
-                    activeDataTab={selectedSubTab}
-                    carteCommunes={carteCommunes}
-                    agricultureBio={agricultureBio}
-                    surfacesProtegees={surfacesProtegees}
-                    consommationNAF={consommationNAF}
-                    epciContours={epciContours}
-                  />
+                  <Suspense>
+                    <Component
+                      data={data}
+                      biodiversite={biodiversite}
+                      activeDataTab={selectedSubTab}
+                      carteCommunes={carteCommunes}
+                      agricultureBio={agricultureBio}
+                      // surfacesProtegees={surfacesProtegees}
+                      consommationNAF={consommationNAF}
+                      epciContours={epciContours}
+                      etatCoursDeau={etatCoursDeau || []}
+                      qualiteEauxBaignade={qualiteEauxBaignade}
+                      aot40={aot40}
+                    />
+                  </Suspense>
                 );
               })()}
             </div>

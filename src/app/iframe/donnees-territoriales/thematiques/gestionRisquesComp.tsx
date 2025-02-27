@@ -4,17 +4,17 @@ import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 import { Catnat } from '@/components/themes/gestionRisques/catnat';
 import ErosionCotes from '@/components/themes/gestionRisques/erosionCotiere';
+import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   CarteCommunes,
   EpciContours,
   ErosionCotiere,
   GestionRisques
 } from '@/lib/postgres/models';
-import { TabTooltip } from '@/lib/utils/TabTooltip';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -183,14 +183,16 @@ const GestionRisquesComp = ({
                 )?.Component;
                 if (!Component) return null;
                 return (
-                  <Component
-                    data={data}
-                    gestionRisques={gestionRisques}
-                    activeDataTab={selectedSubTab}
-                    carteCommunes={carteCommunes}
-                    erosionCotiere={erosionCotiere}
-                    epciContours={epciContours}
-                  />
+                  <Suspense>
+                    <Component
+                      data={data}
+                      gestionRisques={gestionRisques}
+                      activeDataTab={selectedSubTab}
+                      carteCommunes={carteCommunes}
+                      erosionCotiere={erosionCotiere}
+                      epciContours={epciContours}
+                    />
+                  </Suspense>
                 );
               })()}
             </div>

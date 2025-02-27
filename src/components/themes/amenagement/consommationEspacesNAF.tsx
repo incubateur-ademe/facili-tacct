@@ -1,7 +1,7 @@
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import styles from './amenagement.module.scss';
@@ -34,14 +34,14 @@ export const ConsommationEspacesNAF = (props: {
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
   const sumNaf = codgeo
     ? consommationNAF.filter((item) => item.code_geographique === codgeo)[0]
-        .naf09art23
+        ?.naf09art23
     : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
   const title = (
     <div>
       <p>
         Le suivi de cet indicateur est réalisé par le CEREMA dans le cadre de
-        l’objectif “zéro artificialisation nette” de la loi « Climat et
-        résilience ». La consommation d’espaces NAF est calculée à partir des
+        l’objectif “zéro artificialisation nette” de la loi « Climat et
+        résilience ». La consommation d’espaces NAF est calculée à partir des
         fichiers fonciers entre 2009 et 2023. Les données sont traitées pour
         donner des tendances de façon uniforme sur toute la France ;
         ponctuellement, il est possible que les documents de planification de
@@ -90,7 +90,7 @@ export const ConsommationEspacesNAF = (props: {
                 logements par hectare
               </p>
               <p>
-                ⇒ 7 820 communes consomment de l’espace alors qu’elles perdent
+                ⇒ 7 820 communes consomment de l’espace alors qu’elles perdent
                 des ménages : une consommation d’ENAF déconnectée des besoins
                 réels des territoires !
               </p>

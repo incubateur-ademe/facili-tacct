@@ -15,9 +15,9 @@ export const Cards = () => {
   }, []);
   return (
     <div className={styles.cardWrapper}>
-      {thematiques.disponible.map((thematique) => (
+      {thematiques.disponible.map((thematique, i) => (
         <CardComp
-          key={thematique.id}
+          key={`thematiqueDispo${i}`}
           imageUrl={thematique.imageUrl}
           thematique={thematique.thematique}
           badgeSeverity="success"
@@ -25,13 +25,8 @@ export const Cards = () => {
           title={thematique.thematique}
         />
       ))}
-      {thematiques.bientot_disponible.map((thematique) => (
-        <div
-          style={{
-            width: 360
-          }}
-          key={thematique.id}
-        >
+      {thematiques.bientot_disponible.map((thematique, i) => (
+        <div style={{ width: 360 }} key={`thematiqueBientotDispo${i}`}>
           <Card
             background
             border
@@ -45,13 +40,9 @@ export const Cards = () => {
               imgTag: 'fr-ratio-32x9'
             }}
             end={
-              <ul className="fr-badges-group">
-                <li>
-                  <Badge noIcon severity="new">
-                    Bientôt disponible
-                  </Badge>
-                </li>
-              </ul>
+              <Badge noIcon severity="new">
+                Bientôt disponible
+              </Badge>
             }
           />
         </div>
