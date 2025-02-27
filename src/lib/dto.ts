@@ -161,3 +161,15 @@ export type SurfacesProtegeesDto = {
     children?: SurfacesProtegessChildren[];
   }[];
 };
+
+export type EtatCoursDeauDto = {
+  geometry: {
+    coordinates: number[][][];
+    type: string;
+  };
+  type: string;
+  properties: {
+    etateco: string | null;
+    name: string;
+  };
+};
