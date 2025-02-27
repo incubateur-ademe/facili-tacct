@@ -2,3 +2,7 @@
     width: -webkit-fill-available;
     width: -moz-available;
 }
+
+.fr-btn {
+    display: none;
+}

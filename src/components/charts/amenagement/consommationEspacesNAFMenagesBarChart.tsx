@@ -46,7 +46,6 @@ export const ConsommationEspacesNAFMenagesBarChart = (props: {
   filterValue: string;
 }) => {
   const { consommationEspacesNAF } = props;
-  console.log('consommationEspacesNAF', consommationEspacesNAF);
   const graphData: GraphData[] = [];
   const allYears: string[] = ['09-10', '14-15', '20-21'];
 

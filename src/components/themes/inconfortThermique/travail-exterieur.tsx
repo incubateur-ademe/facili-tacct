@@ -5,10 +5,10 @@ import { useSearchParams } from 'next/navigation';
 import { PieChart1 } from '@/components/charts/inconfortThermique/pieChartTravailExt';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { travailExtDto } from '@/lib/dto';
 import { travailExtMapper } from '@/lib/mapper/inconfortThermique';
 import { InconfortThermique } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import styles from './themes.module.scss';
 
@@ -131,7 +131,7 @@ export const TravailExterieur = (props: {
                   L’agriculture et la construction représentent une grande part
                   de postes en extérieur. La part cumulée des emplois de votre
                   territoire dans ces deux secteurs à risque est de 
-                  <b>{travailExt?.toFixed(1)}%</b>, soit{' '}
+                  <b>{travailExt?.toFixed(1)} %</b>, soit{' '}
                   <b>
                     {(sums.sumAgriculture + sums.sumConstruction).toFixed(0)}
                   </b>{' '}
@@ -164,7 +164,7 @@ export const TravailExterieur = (props: {
                 de serre, proche de la trajectoire de réchauffement de référence
                 (TRACC) de la France et sans mesure d’adaptation, la
                 productivité du travail à l’extérieur pourrait diminuer de 5 à
-                10% d’ici la fin du siècle.
+                10 % d’ici la fin du siècle.
               </p>
               <p>
                 ⇒ Un tiers des décès liés à la chaleur concerne des personnes de
@@ -172,7 +172,7 @@ export const TravailExterieur = (props: {
                 population, pas seulement les plus âgés !
               </p>
               <p>
-                ⇒ Près de 20 000 passages aux urgences causés par les fortes
+                ⇒ Près de 20 000 passages aux urgences causés par les fortes
                 chaleurs entre juin et septembre 2023. Entre 2015 et 2019, le
                 recours aux soins en excès a couté 31 millions d’euros.
               </p>

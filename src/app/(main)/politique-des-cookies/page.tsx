@@ -8,11 +8,11 @@ const CookiePolicyPage = () => {
     <div className={fr.cx('fr-container', 'fr-my-4w')}>
       <CookiesPolicy
         analyticTool={{
-          name: 'None',
-          cookieListUrl: '',
+          name: 'Potshog',
+          cookieListUrl: 'https://posthog.com/docs/privacy/gdpr-compliance',
           policyUrl: ''
         }}
-        cookieConsentButton={<CookieConsentButton>CLICK</CookieConsentButton>}
+        cookieConsentButton={<CookieConsentButton />}
         siteName="Facili-TACCT"
       />
     </div>

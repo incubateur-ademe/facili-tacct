@@ -8,11 +8,11 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("SCALINGO_POSTGRESQL_URL")
-  schemas  = ["analytics", "databases", "postgis"]
+  schemas  = ["analytics", "databases", "postgis", "ressources"]
 }
 
 model inconfort_thermique {
-  index                    BigInt @id
+  index                    BigInt  @id(map: "inconfort_thermique2_pkey")
   code_geographique        String
   libelle_geographique     String
   epci                     String
@@ -24,33 +24,33 @@ model inconfort_thermique {
   age_bati_46_90           Float?
   age_bati_19_45           Float?
   age_bati_pre_19          Float?
-  under_4_sum_1968         Float?
-  to_80_sum_1968           Float? @map("4_to_80_sum_1968")
-  over_80_sum_1968         Float?
-  under_4_sum_1975         Float?
-  to_80_sum_1975           Float? @map("4_to_80_sum_1975")
-  over_80_sum_1975         Float?
-  under_4_sum_1982         Float?
-  to_80_sum_1982           Float? @map("4_to_80_sum_1982")
-  over_80_sum_1982         Float?
-  under_4_sum_1990         Float?
-  to_80_sum_1990           Float? @map("4_to_80_sum_1990")
-  over_80_sum_1990         Float?
-  under_4_sum_1999         Float?
-  to_80_sum_1999           Float? @map("4_to_80_sum_1999")
-  over_80_sum_1999         Float?
-  under_4_sum_2009         Float?
-  to_80_sum_2009           Float? @map("4_to_80_sum_2009")
-  over_80_sum_2009         Float?
-  under_4_sum_2014         Float?
-  to_80_sum_2014           Float? @map("4_to_80_sum_2014")
-  over_80_sum_2014         Float?
-  under_4_sum_2020         Float?
-  to_80_sum_2020           Float? @map("4_to_80_sum_2020")
-  over_80_sum_2020         Float?
-  P20_POP80P               Float?
-  P20_POP80P_PSEUL         Float?
-  P20_POP80P_PSEUL_PERCENT Float?
+  under_4_sum_1968         String?
+  to_80_sum_1968           String? @map("4_to_80_sum_1968")
+  over_80_sum_1968         String?
+  under_4_sum_1975         String?
+  to_80_sum_1975           String? @map("4_to_80_sum_1975")
+  over_80_sum_1975         String?
+  under_4_sum_1982         String?
+  to_80_sum_1982           String? @map("4_to_80_sum_1982")
+  over_80_sum_1982         String?
+  under_4_sum_1990         String?
+  to_80_sum_1990           String? @map("4_to_80_sum_1990")
+  over_80_sum_1990         String?
+  under_4_sum_1999         String?
+  to_80_sum_1999           String? @map("4_to_80_sum_1999")
+  over_80_sum_1999         String?
+  under_4_sum_2009         String?
+  to_80_sum_2009           String? @map("4_to_80_sum_2009")
+  over_80_sum_2009         String?
+  under_4_sum_2014         String?
+  to_80_sum_2014           String? @map("4_to_80_sum_2014")
+  over_80_sum_2014         String?
+  under_4_sum_2020         String?
+  to_80_sum_2020           String? @map("4_to_80_sum_2020")
+  over_80_sum_2020         String?
+  P20_POP80P               String?
+  P20_POP80P_PSEUL         String?
+  P20_POP80P_PSEUL_PERCENT String?
   tee_log                  Float?
   tee_mob                  Float?
   precarite_logement       Float?
@@ -59,18 +59,21 @@ model inconfort_thermique {
   NA5FZ_sum                Float?
   NA5GU_sum                Float?
   NA5OQ_sum                Float?
-  superf_choro             Float?
   s_geom_cstr_bati         Float?
   hauteur                  Float?
   h_x_s                    Float?
   densite_bati             Float?
+  clc_1_artificialise      Float?
   clc_2_agricole           Float?
   clc_3_foret_semiNaturel  Float?
   clc_4_humide             Float?
   clc_5_eau                Float?
-  clc_1_artificialise      Float?
+  superf_choro             Float?
 
-  @@index([index], map: "ix_inconfort_thermique_index")
+  @@index([code_geographique], map: "inconfort_thermique_communes_index")
+  @@index([departement], map: "inconfort_thermique_departement_index")
+  @@index([epci], map: "inconfort_thermique_epci_index")
+  @@index([index], map: "ix_inconfort_thermique2_index")
   @@schema("databases")
 }
 
@@ -81,6 +84,7 @@ model clc_epci {
   geometry  Unsupported("geometry")?
 
   @@index([geometry], map: "clc_epci_geometry_geom_idx", type: Gist)
+  @@index([epci_code], map: "clc_epci_index")
   @@schema("postgis")
 }
 
@@ -142,6 +146,8 @@ model communes_drom {
   geometry           Unsupported("geometry")
 
   @@index([geometry], map: "communes_drom_geometry_geom_idx", type: Gist)
+  @@index([epci], map: "communes_drom_codepci_index")
+  @@index([code_commune], map: "communes_drom_codgeo_index", type: Brin)
   @@schema("postgis")
 }
 
@@ -170,6 +176,8 @@ model ressources_eau {
   region               Float?
 
   @@index([index], map: "ix_ressources_eau_index")
+  @@index([epci], map: "ressources_eau_codepci_index")
+  @@index([departement], map: "ressources_eau_departement_index", type: Brin)
   @@schema("databases")
 }
 
@@ -419,20 +427,58 @@ model north_star_metric {
 }
 
 model etat_cours_d_eau {
-  pk         Int                     @id @default(autoincrement())
-  code_eu_md String                  @db.VarChar
-  name       String                  @db.VarChar
-  longueur   Float?
-  statut     String?                 @db.VarChar
-  ordre      Float?
-  etateco    String?                 @db.VarChar
-  qmoyaval   Float?
-  distmer    Float?
-  distsrce   Float?
-  gid        BigInt
-  annee      String                  @db.VarChar
-  geometry   Unsupported("geometry")
+  pk       Int                     @id @default(autoincrement())
+  name     String                  @db.VarChar
+  longueur Float
+  etateco  String?                 @db.VarChar
+  geometry Unsupported("geometry")
 
   @@index([geometry], map: "etat_cours_d_eau_geometry_geom_idx", type: Gist)
   @@schema("postgis")
+}
+
+model aot_40 {
+  index               BigInt @id
+  nom_site            String @map("nom site")
+  type_d_implantation String @map("type d'implantation")
+  valeur_brute        Float  @map("valeur brute")
+  Latitude            Float
+  Longitude           Float
+
+  @@index([index], map: "ix_aot_40_index")
+  @@schema("databases")
+}
+
+model users {
+  pk              Int       @id @default(autoincrement())
+  email           String    @unique(map: "email") @db.VarChar(256)
+  username        String    @unique(map: "username") @db.VarChar(256)
+  password        String    @db.VarChar(256)
+  created_at      DateTime  @db.Timestamp(6)
+  last_connection DateTime? @db.Timestamptz(6)
+  role            String    @db.VarChar(8)
+
+  @@schema("ressources")
+}
+
+model qualite_sites_baignade {
+  index    BigInt  @id
+  DEP_NOM  String
+  DEP_NUM  String
+  TYPE     String
+  COMMUNE  String
+  POINT    String
+  LONG     Float
+  LAT      Float
+  QEB_2013 String?
+  QEB_2014 String?
+  QEB_2015 String?
+  QEB_2016 String?
+  QEB_2017 String?
+  QEB_2018 String?
+  QEB_2019 String?
+  QEB_2020 String?
+
+  @@index([index], map: "ix_qualite_sites_baignade_index")
+  @@schema("databases")
 }

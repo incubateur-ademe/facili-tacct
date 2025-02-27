@@ -4,7 +4,7 @@ import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 import { Loader } from '@/components/loader';
 import { AgeBati } from '@/components/themes/inconfortThermique/age-bati';
@@ -12,6 +12,7 @@ import { DensiteBati } from '@/components/themes/inconfortThermique/densite-bati
 import { FragiliteEconomique } from '@/components/themes/inconfortThermique/fragilite-economique';
 import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grand-age-isolement';
 import { TravailExterieur } from '@/components/themes/inconfortThermique/travail-exterieur';
+import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   CarteCommunes,
   CLC,
@@ -19,7 +20,6 @@ import {
   InconfortThermique
 } from '@/lib/postgres/models';
 import { GetClcEpci } from '@/lib/queries/postgis/cartographie';
-import { TabTooltip } from '@/lib/utils/TabTooltip';
 import dynamic from 'next/dynamic';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
@@ -46,7 +46,6 @@ const DynamicVegetalisation = dynamic(
   () =>
     import('../../../../components/themes/inconfortThermique/vegetalisation'),
   {
-    ssr: false,
     loading: () => <Loader />
   }
 );
@@ -85,6 +84,15 @@ const allComps = [
       <DensiteBati carteCommunes={carteCommunes} />
     )
   },
+  // {
+  //   titre: 'LCZ',
+  //   Component: ({
+  //     carteCommunes,
+  //     collectivite
+  //   }: Props & { activeDataTab: string }) => (
+  //     <LCZ carteCommunes={carteCommunes} collectivite={collectivite} />
+  //   )
+  // },
   {
     titre: 'Végétalisation',
     Component: ({
@@ -99,7 +107,7 @@ const allComps = [
   }
 ];
 
-const PageComp = ({
+const InconfortThermiqueComp = ({
   data,
   carteCommunes,
   inconfortThermique,
@@ -222,15 +230,17 @@ const PageComp = ({
                 )?.Component;
                 if (!Component) return null;
                 return (
-                  <Component
-                    data={data}
-                    inconfortThermique={inconfortThermique}
-                    carteCommunes={carteCommunes}
-                    activeDataTab={selectedSubTab}
-                    clc={clc || []}
-                    collectivite={collectivite}
-                    departement={departement}
-                  />
+                  <Suspense>
+                    <Component
+                      data={data}
+                      inconfortThermique={inconfortThermique}
+                      carteCommunes={carteCommunes}
+                      activeDataTab={selectedSubTab}
+                      clc={clc || []}
+                      collectivite={collectivite}
+                      departement={departement}
+                    />
+                  </Suspense>
                 );
               })()}
             </div>
@@ -242,4 +252,4 @@ const PageComp = ({
 };
 
 // eslint-disable-next-line import/no-default-export
-export default PageComp;
+export default InconfortThermiqueComp;

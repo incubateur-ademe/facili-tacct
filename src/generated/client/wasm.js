@@ -15,12 +15,12 @@ exports.Prisma = Prisma;
 exports.$Enums = {};
 
 /**
- * Prisma Client JS version: 6.1.0
- * Query Engine version: 11f085a2012c0f4778414c8db2651556ee0ef959
+ * Prisma Client JS version: 6.3.0
+ * Query Engine version: a9055b89e58b4b5bfb59600785423b1db3d0e75d
  */
 Prisma.prismaVersion = {
-  client: '6.1.0',
-  engine: '11f085a2012c0f4778414c8db2651556ee0ef959'
+  client: '6.3.0',
+  engine: 'a9055b89e58b4b5bfb59600785423b1db3d0e75d'
 };
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -161,16 +161,16 @@ exports.Prisma.Inconfort_thermiqueScalarFieldEnum = {
   NA5FZ_sum: 'NA5FZ_sum',
   NA5GU_sum: 'NA5GU_sum',
   NA5OQ_sum: 'NA5OQ_sum',
-  superf_choro: 'superf_choro',
   s_geom_cstr_bati: 's_geom_cstr_bati',
   hauteur: 'hauteur',
   h_x_s: 'h_x_s',
   densite_bati: 'densite_bati',
+  clc_1_artificialise: 'clc_1_artificialise',
   clc_2_agricole: 'clc_2_agricole',
   clc_3_foret_semiNaturel: 'clc_3_foret_semiNaturel',
   clc_4_humide: 'clc_4_humide',
   clc_5_eau: 'clc_5_eau',
-  clc_1_artificialise: 'clc_1_artificialise'
+  superf_choro: 'superf_choro'
 };
 
 exports.Prisma.Clc_epciScalarFieldEnum = {
@@ -473,17 +473,47 @@ exports.Prisma.North_star_metricScalarFieldEnum = {
 
 exports.Prisma.Etat_cours_d_eauScalarFieldEnum = {
   pk: 'pk',
-  code_eu_md: 'code_eu_md',
   name: 'name',
   longueur: 'longueur',
-  statut: 'statut',
-  ordre: 'ordre',
-  etateco: 'etateco',
-  qmoyaval: 'qmoyaval',
-  distmer: 'distmer',
-  distsrce: 'distsrce',
-  gid: 'gid',
-  annee: 'annee'
+  etateco: 'etateco'
+};
+
+exports.Prisma.Aot_40ScalarFieldEnum = {
+  index: 'index',
+  nom_site: 'nom_site',
+  type_d_implantation: 'type_d_implantation',
+  valeur_brute: 'valeur_brute',
+  Latitude: 'Latitude',
+  Longitude: 'Longitude'
+};
+
+exports.Prisma.UsersScalarFieldEnum = {
+  pk: 'pk',
+  email: 'email',
+  username: 'username',
+  password: 'password',
+  created_at: 'created_at',
+  last_connection: 'last_connection',
+  role: 'role'
+};
+
+exports.Prisma.Qualite_sites_baignadeScalarFieldEnum = {
+  index: 'index',
+  DEP_NOM: 'DEP_NOM',
+  DEP_NUM: 'DEP_NUM',
+  TYPE: 'TYPE',
+  COMMUNE: 'COMMUNE',
+  POINT: 'POINT',
+  LONG: 'LONG',
+  LAT: 'LAT',
+  QEB_2013: 'QEB_2013',
+  QEB_2014: 'QEB_2014',
+  QEB_2015: 'QEB_2015',
+  QEB_2016: 'QEB_2016',
+  QEB_2017: 'QEB_2017',
+  QEB_2018: 'QEB_2018',
+  QEB_2019: 'QEB_2019',
+  QEB_2020: 'QEB_2020'
 };
 
 exports.Prisma.SortOrder = {
@@ -517,7 +547,10 @@ exports.Prisma.ModelName = {
   consommation_espaces_naf: 'consommation_espaces_naf',
   lcz_bayonne_test: 'lcz_bayonne_test',
   north_star_metric: 'north_star_metric',
-  etat_cours_d_eau: 'etat_cours_d_eau'
+  etat_cours_d_eau: 'etat_cours_d_eau',
+  aot_40: 'aot_40',
+  users: 'users',
+  qualite_sites_baignade: 'qualite_sites_baignade'
 };
 
 /**

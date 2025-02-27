@@ -1,43 +1,45 @@
-import { Loader } from '@/components/loader';
 import {
-  GetConsommationNAF,
-  GetSurfacesProtegees
+  GetAOT40,
+  GetConsommationNAF
 } from '@/lib/queries/databases/biodiversite';
+import { GetQualiteEauxBaignade } from '@/lib/queries/databases/ressourcesEau';
 import { GetCommunes, GetEpci } from '@/lib/queries/postgis/cartographie';
+import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
 import { GetAgricultureBio, GetBiodiversite } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/utils/themes';
-import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
+import BiodiversiteComp from './biodiversiteComp';
 
-const DynamicPageComp = dynamic(() => import('./biodiversiteComp'), {
-  ssr: false,
-  loading: () => <Loader />
-});
-
-const Biodiversite = async (searchParams: SearchParams) => {
+const Biodiversite = async (props: { searchParams: SearchParams }) => {
   const theme = themes.biodiversite;
-  const codepci = searchParams.searchParams.codepci;
-  const codgeo = searchParams.searchParams.codgeo;
+  const { codepci, codgeo } = await props.searchParams;
   const dbBiodiversite = await GetBiodiversite(codepci);
   const carteCommunes = await GetCommunes(codepci);
   const dbAgricultureBio = await GetAgricultureBio(codepci);
-  const dbSurfacesProtegees = await GetSurfacesProtegees(codepci);
+  // const dbSurfacesProtegees = await GetSurfacesProtegees(codepci);
   const dbConsommationNAF = await GetConsommationNAF(codepci);
   const epciContours = await GetEpci(codepci);
+  const dbAOT40 = await GetAOT40();
+  const dbEtatCoursDeau = await GetEtatCoursDeau(codepci, codgeo);
+  const qualiteEauxBaignadeByDepmt = await GetQualiteEauxBaignade(codepci);
 
   return (
-    <div>
-      <div className={styles.container}>
-        <DynamicPageComp
+    <div className={styles.container}>
+      <Suspense>
+        <BiodiversiteComp
           data={theme}
           biodiversite={dbBiodiversite!}
           carteCommunes={carteCommunes}
           agricultureBio={dbAgricultureBio!}
-          surfacesProtegees={dbSurfacesProtegees}
+          // surfacesProtegees={dbSurfacesProtegees}
           consommationNAF={dbConsommationNAF}
           epciContours={epciContours}
+          aot40={dbAOT40}
+          etatCoursDeau={dbEtatCoursDeau}
+          qualiteEauxBaignade={qualiteEauxBaignadeByDepmt}
         />
-      </div>
+      </Suspense>
     </div>
   );
 };

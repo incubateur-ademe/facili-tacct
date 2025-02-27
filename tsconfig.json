@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "tailwind.config.js",
-    "./src/lib/json-db/types.d.ts"
+    "./src/lib/json-db/types.d.ts",
+    "next.config.mjs"
   ],
   "exclude": ["node_modules"]
 }

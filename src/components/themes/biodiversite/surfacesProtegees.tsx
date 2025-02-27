@@ -18,10 +18,12 @@
 // espaces de protection contractuel : BIO    	réserves de biosphère
 // autres types d’espaces de protection : CELRL    	conservatoire du littoral et des rivages lacustres
 
+'use client';
+
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CarteCommunes, SurfacesProtegeesByCol } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
-import { DarkClass } from '@/lib/utils/DarkClass';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import styles from './biodiversite.module.scss';
 import SurfacesProtegeesDataviz from './surfacesProtegeesDataviz';
@@ -44,15 +46,55 @@ const SurfacesProtegees = (props: {
   const surfaceTerritoire = codgeo
     ? carteCommunes.filter((e) => e.code_commune === codgeo)[0].surface
     : carteCommunes.map((el) => el.surface).reduce((a, b) => a + b, 0);
+  const filteredData = codgeo
+    ? surfacesProtegees.filter((e) => e.code_geographique === codgeo)
+    : surfacesProtegees;
+  const sommeSurfaces = filteredData
+    .map((e) => {
+      return {
+        FOR_PRO: Number(e.FOR_PRO),
+        TOU_PRO: Number(e.TOU_PRO),
+        NATURA: Number(e.NATURA),
+        CELRL: Number(e.CELRL),
+        ZZZ: Number(e.ZZZ)
+      };
+    })
+    .map((e) => e.CELRL + e.FOR_PRO + e.NATURA + e.TOU_PRO + e.ZZZ)
+    .reduce((a, b) => a + b, 0);
+  const forpro = filteredData
+    .map((e) => Number(e.FOR_PRO))
+    .reduce((a, b) => a + b, 0);
+  const percentSurfaceForpro = Round(100 * (forpro / surfaceTerritoire), 1);
+  const percentSurfacesProtegees = Round(
+    100 * (sommeSurfaces / surfaceTerritoire),
+    1
+  );
 
-  const darkClass = DarkClass();
   const title = (
     <div>
-      Les aires protégées de nature réglementaire concernent les parcs
-      nationaux, les réserves naturelles nationales, régionales et de Corse, les
-      arrêtés préfectoraux de biotope / géotope / habitats naturels, les
-      réserves nationales de chasse et de faune sauvage et les réserves
-      biologiques.
+      <div>
+        <p>Les zones d’aires protégées prises en compte sont :</p>
+        <ul>
+          <li>
+            de nature réglementaire, dite “de protection forte” (cœur des parcs
+            nationaux, réserves naturelles nationales, régionales et de Corse,
+            arrêtés préfectoraux de biotope/géotope/habitats naturels, les
+            réserves nationales de chasse et de faune sauvage, réserves
+            biologiques) ;
+          </li>
+          <li>
+            de nature contractuelle (PNR, aires d’adhésion des parcs nationaux,
+            réserves de biosphère, zones RAMSAR ainsi que surfaces Natura 2000)
+          </li>
+          <li>
+            protégées par la maîtrise foncière (acquisition par le Conservatoire
+            du littoral)
+          </li>
+          <li>
+            des sites d’inventaires patrimoniaux (ZNIEFF type 1 et 2, ZICO)
+          </li>
+        </ul>
+      </div>
     </div>
   );
 
@@ -60,44 +102,52 @@ const SurfacesProtegees = (props: {
     <>
       {surfacesProtegees ? (
         <div className={styles.container}>
-          <div className="w-1/3">
+          <div className="w-2/5">
             <div className={styles.explicationWrapper}>
               <p>
-                La surface totale du territoire est de {surfaceTerritoire} ha.
+                {percentSurfacesProtegees} % de votre territoire sont couverts
+                par un zonage d’inventaire ou de protection de la biodiversité
+                reconnus par un statut, dont {percentSurfaceForpro} % en
+                protection forte, de nature réglementaire.
               </p>
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
             </div>
             <div className="px-4">
               <p>
-                Les aires protégées constituent un rempart essentiel pour
-                préserver la biodiversité. Face à l'érosion des écosystèmes et
-                au changement climatique, les aires protégées offrent des
-                sanctuaires où la nature peut s'adapter et se régénérer. La
-                France porte une responsabilité particulière avec ses
-                territoires abritant 10% des espèces connues sur la planète.
+                La multiplicité des aires communément appelées « protégées » est
+                le reflet de la diversité des politiques de conservation et des
+                relations homme/nature sur lesquelles ces dernières reposent.
+                L’importance des aires protégées repose tant sur leur capacité
+                de préservation de la diversité écologique existante que sur
+                leur potentiel pour fournir de nouvelles zones d’accueil, en
+                anticipation du déplacement des aires de répartition de
+                nombreuses espèces. En complément, l’existence de voies de
+                transit (trame verte et bleue, par exemple) est essentielle à
+                cette réorganisation.
               </p>
               <p>
-                Sur 33 % du territoire français, les aires protégées
-                accomplissent des missions vitales : stocker le carbone dans les
-                forêts et zones humides, faciliter la migration des espèces,
-                maintenir des écosystèmes résilients capables de s’adapter au
-                changement climatique, etc. Un défi qui implique de penser
-                l'équilibre entre préservation stricte et accès au public, pour
-                faire de ces espaces des lieux de sensibilisation aux enjeux
-                climatiques, tout en garantissant leur fonction première :
-                protéger la biodiversité.
+                Les aires protégées terrestres (33 % du territoire français)
+                participent aussi à la régulation du climat par l’intermédiaire
+                des milieux qui les composent (captation du carbone par les
+                forêts, rôle tampon des zones humides, ...).
+              </p>
+              <p>
+                ⇒ 10 % des espèces recensées sur la planète sont présentes sur
+                le territoire national
+              </p>
+              <p>
+                ⇒ L’outre-mer abrite plus de 80 % de la biodiversité française
               </p>
               <p>
                 - - - - <br></br>
-                La Stratégie Nationale pour les Aires Protégées (SNAP) vise à
-                doter la France d'un réseau cohérent d'aires protégées
-                terrestres et marines couvrant, d'ici 2030, au moins 30 % de
-                l'ensemble du territoire national et de l'espace maritime
-                français, dont au moins 10 % en protection forte.
+                Objectifs de la Stratégie Nationale pour les Aires Protégées
+                (SNAP) : au moins 30 % du territoire et de l&apos;espace
+                maritime français protégés d&apos;ici 2030, dont au moins 10 %
+                en protection forte.
               </p>
             </div>
           </div>
-          <div className="w-2/3">
+          <div className="w-3/5">
             <SurfacesProtegeesDataviz
               surfacesProtegees={surfacesProtegees}
               carteCommunes={carteCommunes}

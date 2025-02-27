@@ -2,7 +2,7 @@ import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
 import { BarChartCatnat } from '@/components/charts/gestionRisques/BarChartCatnat';
 import PieChartCatnat from '@/components/charts/gestionRisques/pieChartCatnat';
-import { LegendCatnat } from '@/components/maps/components/legendCatnat';
+import { LegendCatnat } from '@/components/maps/legends/legendCatnat';
 import { MapCatnat } from '@/components/maps/mapCatnat';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { useSearchParams } from 'next/navigation';

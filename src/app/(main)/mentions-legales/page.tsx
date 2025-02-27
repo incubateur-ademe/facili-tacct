@@ -16,8 +16,10 @@ const LegalNoticePage = () => {
           country: 'France',
           email: 'hello@scalingo.com'
         }}
+        contactEmail=""
       />
     </div>
   );
 };
+
 export default LegalNoticePage;

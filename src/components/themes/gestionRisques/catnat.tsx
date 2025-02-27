@@ -1,9 +1,9 @@
 'use client';
 
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, GestionRisques } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
@@ -155,15 +155,15 @@ export const Catnat = (props: {
                 Chaque hausse de 0,5 °C de la température mondiale est
                 susceptible d’augmenter l'intensité et/ou la fréquence des
                 phénomènes extrêmes. Entre 1900 et début 2022, la France
-                métropolitaine a concentré 14 % des événements naturels très
+                métropolitaine a concentré 14 % des événements naturels très
                 graves recensés en Europe, en particulier des inondations et des
                 cyclones/tempêtes. Avec l’Italie, elle figure parmi les pays les
                 plus touchés, loin devant les autres pays européens.
               </p>
               <p>
-                ⇒ 257 500, c’est le nombre d'arrêtés liés aux événements
+                ⇒ 257 500, c’est le nombre d'arrêtés liés aux événements
                 climatiques depuis la création du régime CatNat en 1982. Les
-                inondations représentent plus de 56% du total.
+                inondations représentent plus de 56 % du total.
               </p>
               <p>
                 ⇒ 8 : c'est le nombre moyen d’arrêtés CatNat par commune entre

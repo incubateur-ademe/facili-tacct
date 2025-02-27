@@ -1,7 +1,14 @@
-import { AgeBatiDto, GrandAgeIsolementDto, travailExtDto, type VegetalisationDto } from "../dto";
-import { type InconfortThermique } from "../postgres/models";
+import {
+  AgeBatiDto,
+  GrandAgeIsolementDto,
+  travailExtDto,
+  type VegetalisationDto
+} from '../dto';
+import { type InconfortThermique } from '../postgres/models';
 
-export const vegetalisationMapper = (vegetalisation: InconfortThermique): VegetalisationDto => ({
+export const vegetalisationMapper = (
+  vegetalisation: InconfortThermique
+): VegetalisationDto => ({
   code_commune: vegetalisation.code_geographique,
   libelle_geographique: vegetalisation.libelle_geographique,
   epci: vegetalisation.epci,
@@ -11,6 +18,7 @@ export const vegetalisationMapper = (vegetalisation: InconfortThermique): Vegeta
   clc_3_foret_semiNaturel: Number(vegetalisation.clc_3_foret_semiNaturel),
   clc_4_humide: Number(vegetalisation.clc_4_humide),
   clc_5_eau: Number(vegetalisation.clc_5_eau),
+  superf_choro: Number(vegetalisation.superf_choro)
 });
 
 export const ageBatiMapper = (ageBati: InconfortThermique): AgeBatiDto => ({
@@ -22,10 +30,12 @@ export const ageBatiMapper = (ageBati: InconfortThermique): AgeBatiDto => ({
   age_bati_19_45: Number(ageBati.age_bati_19_45),
   age_bati_46_90: Number(ageBati.age_bati_46_90),
   age_bati_91_05: Number(ageBati.age_bati_91_05),
-  age_bati_post06: Number(ageBati.age_bati_post06),
-})
+  age_bati_post06: Number(ageBati.age_bati_post06)
+});
 
-export const travailExtMapper = (travailExt: InconfortThermique): travailExtDto => ({
+export const travailExtMapper = (
+  travailExt: InconfortThermique
+): travailExtDto => ({
   code_commune: travailExt.code_geographique,
   libelle_geographique: travailExt.libelle_geographique,
   epci: travailExt.epci,
@@ -35,15 +45,17 @@ export const travailExtMapper = (travailExt: InconfortThermique): travailExtDto 
   NA5FZ_sum: Number(travailExt.NA5FZ_sum),
   NA5GU_sum: Number(travailExt.NA5GU_sum),
   NA5OQ_sum: Number(travailExt.NA5OQ_sum)
-})
+});
 
-export const grandAgeIsolementMapper = (grandAgeIsolement: InconfortThermique): GrandAgeIsolementDto => ({
+export const grandAgeIsolementMapper = (
+  grandAgeIsolement: InconfortThermique
+): GrandAgeIsolementDto => ({
   code_commune: grandAgeIsolement.code_geographique,
   libelle_geographique: grandAgeIsolement.libelle_geographique,
   epci: grandAgeIsolement.epci,
   libelle_epci: grandAgeIsolement.libelle_epci,
-  P20_POP80P: Number(grandAgeIsolement["P20_POP80P"]),
-  P20_POP80P_PSEUL: Number(grandAgeIsolement["P20_POP80P_PSEUL"]),
+  P20_POP80P: Number(grandAgeIsolement['P20_POP80P']),
+  P20_POP80P_PSEUL: Number(grandAgeIsolement['P20_POP80P_PSEUL']),
   under_4_sum_1968: Number(grandAgeIsolement.under_4_sum_1968),
   to_80_sum_1968: Number(grandAgeIsolement.to_80_sum_1968),
   over_80_sum_1968: Number(grandAgeIsolement.over_80_sum_1968),
@@ -67,5 +79,5 @@ export const grandAgeIsolementMapper = (grandAgeIsolement: InconfortThermique): 
   over_80_sum_2014: Number(grandAgeIsolement.over_80_sum_2014),
   under_4_sum_2020: Number(grandAgeIsolement.under_4_sum_2020),
   to_80_sum_2020: Number(grandAgeIsolement.to_80_sum_2020),
-  over_80_sum_2020: Number(grandAgeIsolement.over_80_sum_2020),
-})
+  over_80_sum_2020: Number(grandAgeIsolement.over_80_sum_2020)
+});

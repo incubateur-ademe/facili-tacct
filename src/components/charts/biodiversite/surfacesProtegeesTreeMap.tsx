@@ -1,7 +1,7 @@
 'use client';
 
+import { HtmlTooltipMousePosition } from '@/components/utils/HtmlTooltip';
 import { SurfacesProtegeesDto } from '@/lib/dto';
-import { HtmlTooltipMousePosition } from '@/lib/utils/HtmlTooltip';
 import { Any } from '@/lib/utils/types';
 import { ResponsiveTreeMap } from '@nivo/treemap';
 import styles from '../../themes/biodiversite/biodiversite.module.scss';

@@ -9,13 +9,10 @@ const RessourcesCards = () => {
   const [selectedTabId, setSelectedTabId] = useState(
     'Vous voulez réviser un diagnostic connu'
   );
-
+  const [selectedThemeId, setSelectedThemeId] = useState('Inconfort thermique');
   const handleTab = (tab: string) => {
     setSelectedTabId(tab);
   };
-
-  const [selectedThemeId, setSelectedThemeId] = useState('Inconfort thermique');
-
   const handleTheme = (tab: string) => {
     setSelectedThemeId(tab);
   };

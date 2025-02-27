@@ -2,12 +2,35 @@ import { useSearchParams } from 'next/navigation';
 
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
-import LegendInconfortThermique from '@/components/maps/components/legendInconfortThermique';
+import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { Map } from '@/components/maps/map';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes } from '@/lib/postgres/models';
-import { CustomTooltip } from '@/lib/utils/CalculTooltip';
 import styles from './themes.module.scss';
+
+const legends = [
+  {
+    value: '> 0.2',
+    color: '#FF5E54'
+  },
+  {
+    value: '0.1 - 0.2',
+    color: '#FFBD00'
+  },
+  {
+    value: '0.05 - 0.1',
+    color: '#FFFA6A'
+  },
+  {
+    value: '0 - 0.05',
+    color: '#D5F4A3'
+  },
+  {
+    value: '0',
+    color: '#5CFF54'
+  }
+];
 
 const average = (array: number[]) =>
   array.reduce((a: number, b: number) => a + b) / array.length;
@@ -70,7 +93,6 @@ export const DensiteBati = ({
               </div>
               <div className="w-3/5">
                 <div className={styles.graphWrapper}>
-                  <LegendInconfortThermique data={'densite_bati'} />
                   <p style={{ padding: '1em', margin: '0' }}>
                     <b>
                       Répartition de la densité du bâti par commune au sein de
@@ -78,6 +100,12 @@ export const DensiteBati = ({
                     </b>
                   </p>
                   <Map data={'densite_bati'} carteCommunes={communesMap} />
+                  <div
+                    className={styles.legend}
+                    style={{ width: 'auto', justifyContent: 'center' }}
+                  >
+                    <LegendCompColor legends={legends} />
+                  </div>
                   <p style={{ padding: '1em', margin: '0' }}>
                     Source : Base de Données Nationale Des Bâtiments – BDNB
                   </p>
