@@ -119,17 +119,19 @@ model biodiversite {
 }
 
 model gestion_risques {
-  index                BigInt  @id
-  code_geographique    String?
-  lib_risque_jo        String?
-  dat_pub_arrete       String?
-  libelle_geographique String?
-  epci                 String?
-  libelle_epci         String?
-  departement          String?
-  region               Float?
+  index                BigInt @id
+  code_geographique    String
+  lib_risque_jo        String
+  dat_pub_arrete       String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  region               Float
 
   @@index([index], map: "ix_gestion_risques_index")
+  @@index([code_geographique], map: "gestion_risques_communes_index")
+  @@index([epci], map: "gestion_risques_epci_index")
   @@schema("databases")
 }
 

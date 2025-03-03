@@ -9072,14 +9072,14 @@ export namespace Prisma {
 
   export type Gestion_risquesGroupByOutputType = {
     index: bigint;
-    code_geographique: string | null;
-    lib_risque_jo: string | null;
-    dat_pub_arrete: string | null;
-    libelle_geographique: string | null;
-    epci: string | null;
-    libelle_epci: string | null;
-    departement: string | null;
-    region: number | null;
+    code_geographique: string;
+    lib_risque_jo: string;
+    dat_pub_arrete: string;
+    libelle_geographique: string;
+    epci: string;
+    libelle_epci: string;
+    departement: string;
+    region: number;
     _count: Gestion_risquesCountAggregateOutputType | null;
     _avg: Gestion_risquesAvgAggregateOutputType | null;
     _sum: Gestion_risquesSumAggregateOutputType | null;
@@ -9187,14 +9187,14 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<
       {
         index: bigint;
-        code_geographique: string | null;
-        lib_risque_jo: string | null;
-        dat_pub_arrete: string | null;
-        libelle_geographique: string | null;
-        epci: string | null;
-        libelle_epci: string | null;
-        departement: string | null;
-        region: number | null;
+        code_geographique: string;
+        lib_risque_jo: string;
+        dat_pub_arrete: string;
+        libelle_geographique: string;
+        epci: string;
+        libelle_epci: string;
+        departement: string;
+        region: number;
       },
       ExtArgs['result']['gestion_risques']
     >;
@@ -35082,29 +35082,26 @@ export namespace Prisma {
     OR?: gestion_risquesWhereInput[];
     NOT?: gestion_risquesWhereInput | gestion_risquesWhereInput[];
     index?: BigIntFilter<'gestion_risques'> | bigint | number;
-    code_geographique?: StringNullableFilter<'gestion_risques'> | string | null;
-    lib_risque_jo?: StringNullableFilter<'gestion_risques'> | string | null;
-    dat_pub_arrete?: StringNullableFilter<'gestion_risques'> | string | null;
-    libelle_geographique?:
-      | StringNullableFilter<'gestion_risques'>
-      | string
-      | null;
-    epci?: StringNullableFilter<'gestion_risques'> | string | null;
-    libelle_epci?: StringNullableFilter<'gestion_risques'> | string | null;
-    departement?: StringNullableFilter<'gestion_risques'> | string | null;
-    region?: FloatNullableFilter<'gestion_risques'> | number | null;
+    code_geographique?: StringFilter<'gestion_risques'> | string;
+    lib_risque_jo?: StringFilter<'gestion_risques'> | string;
+    dat_pub_arrete?: StringFilter<'gestion_risques'> | string;
+    libelle_geographique?: StringFilter<'gestion_risques'> | string;
+    epci?: StringFilter<'gestion_risques'> | string;
+    libelle_epci?: StringFilter<'gestion_risques'> | string;
+    departement?: StringFilter<'gestion_risques'> | string;
+    region?: FloatFilter<'gestion_risques'> | number;
   };
 
   export type gestion_risquesOrderByWithRelationInput = {
     index?: SortOrder;
-    code_geographique?: SortOrderInput | SortOrder;
-    lib_risque_jo?: SortOrderInput | SortOrder;
-    dat_pub_arrete?: SortOrderInput | SortOrder;
-    libelle_geographique?: SortOrderInput | SortOrder;
-    epci?: SortOrderInput | SortOrder;
-    libelle_epci?: SortOrderInput | SortOrder;
-    departement?: SortOrderInput | SortOrder;
-    region?: SortOrderInput | SortOrder;
+    code_geographique?: SortOrder;
+    lib_risque_jo?: SortOrder;
+    dat_pub_arrete?: SortOrder;
+    libelle_geographique?: SortOrder;
+    epci?: SortOrder;
+    libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
   };
 
   export type gestion_risquesWhereUniqueInput = Prisma.AtLeast<
@@ -35113,34 +35110,28 @@ export namespace Prisma {
       AND?: gestion_risquesWhereInput | gestion_risquesWhereInput[];
       OR?: gestion_risquesWhereInput[];
       NOT?: gestion_risquesWhereInput | gestion_risquesWhereInput[];
-      code_geographique?:
-        | StringNullableFilter<'gestion_risques'>
-        | string
-        | null;
-      lib_risque_jo?: StringNullableFilter<'gestion_risques'> | string | null;
-      dat_pub_arrete?: StringNullableFilter<'gestion_risques'> | string | null;
-      libelle_geographique?:
-        | StringNullableFilter<'gestion_risques'>
-        | string
-        | null;
-      epci?: StringNullableFilter<'gestion_risques'> | string | null;
-      libelle_epci?: StringNullableFilter<'gestion_risques'> | string | null;
-      departement?: StringNullableFilter<'gestion_risques'> | string | null;
-      region?: FloatNullableFilter<'gestion_risques'> | number | null;
+      code_geographique?: StringFilter<'gestion_risques'> | string;
+      lib_risque_jo?: StringFilter<'gestion_risques'> | string;
+      dat_pub_arrete?: StringFilter<'gestion_risques'> | string;
+      libelle_geographique?: StringFilter<'gestion_risques'> | string;
+      epci?: StringFilter<'gestion_risques'> | string;
+      libelle_epci?: StringFilter<'gestion_risques'> | string;
+      departement?: StringFilter<'gestion_risques'> | string;
+      region?: FloatFilter<'gestion_risques'> | number;
     },
     'index'
   >;
 
   export type gestion_risquesOrderByWithAggregationInput = {
     index?: SortOrder;
-    code_geographique?: SortOrderInput | SortOrder;
-    lib_risque_jo?: SortOrderInput | SortOrder;
-    dat_pub_arrete?: SortOrderInput | SortOrder;
-    libelle_geographique?: SortOrderInput | SortOrder;
-    epci?: SortOrderInput | SortOrder;
-    libelle_epci?: SortOrderInput | SortOrder;
-    departement?: SortOrderInput | SortOrder;
-    region?: SortOrderInput | SortOrder;
+    code_geographique?: SortOrder;
+    lib_risque_jo?: SortOrder;
+    dat_pub_arrete?: SortOrder;
+    libelle_geographique?: SortOrder;
+    epci?: SortOrder;
+    libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
     _count?: gestion_risquesCountOrderByAggregateInput;
     _avg?: gestion_risquesAvgOrderByAggregateInput;
     _max?: gestion_risquesMaxOrderByAggregateInput;
@@ -35157,38 +35148,16 @@ export namespace Prisma {
       | gestion_risquesScalarWhereWithAggregatesInput
       | gestion_risquesScalarWhereWithAggregatesInput[];
     index?: BigIntWithAggregatesFilter<'gestion_risques'> | bigint | number;
-    code_geographique?:
-      | StringNullableWithAggregatesFilter<'gestion_risques'>
-      | string
-      | null;
-    lib_risque_jo?:
-      | StringNullableWithAggregatesFilter<'gestion_risques'>
-      | string
-      | null;
-    dat_pub_arrete?:
-      | StringNullableWithAggregatesFilter<'gestion_risques'>
-      | string
-      | null;
+    code_geographique?: StringWithAggregatesFilter<'gestion_risques'> | string;
+    lib_risque_jo?: StringWithAggregatesFilter<'gestion_risques'> | string;
+    dat_pub_arrete?: StringWithAggregatesFilter<'gestion_risques'> | string;
     libelle_geographique?:
-      | StringNullableWithAggregatesFilter<'gestion_risques'>
-      | string
-      | null;
-    epci?:
-      | StringNullableWithAggregatesFilter<'gestion_risques'>
-      | string
-      | null;
-    libelle_epci?:
-      | StringNullableWithAggregatesFilter<'gestion_risques'>
-      | string
-      | null;
-    departement?:
-      | StringNullableWithAggregatesFilter<'gestion_risques'>
-      | string
-      | null;
-    region?:
-      | FloatNullableWithAggregatesFilter<'gestion_risques'>
-      | number
-      | null;
+      | StringWithAggregatesFilter<'gestion_risques'>
+      | string;
+    epci?: StringWithAggregatesFilter<'gestion_risques'> | string;
+    libelle_epci?: StringWithAggregatesFilter<'gestion_risques'> | string;
+    departement?: StringWithAggregatesFilter<'gestion_risques'> | string;
+    region?: FloatWithAggregatesFilter<'gestion_risques'> | number;
   };
 
   export type communes_dromWhereInput = {
@@ -38179,110 +38148,86 @@ export namespace Prisma {
 
   export type gestion_risquesCreateInput = {
     index: bigint | number;
-    code_geographique?: string | null;
-    lib_risque_jo?: string | null;
-    dat_pub_arrete?: string | null;
-    libelle_geographique?: string | null;
-    epci?: string | null;
-    libelle_epci?: string | null;
-    departement?: string | null;
-    region?: number | null;
+    code_geographique: string;
+    lib_risque_jo: string;
+    dat_pub_arrete: string;
+    libelle_geographique: string;
+    epci: string;
+    libelle_epci: string;
+    departement: string;
+    region: number;
   };
 
   export type gestion_risquesUncheckedCreateInput = {
     index: bigint | number;
-    code_geographique?: string | null;
-    lib_risque_jo?: string | null;
-    dat_pub_arrete?: string | null;
-    libelle_geographique?: string | null;
-    epci?: string | null;
-    libelle_epci?: string | null;
-    departement?: string | null;
-    region?: number | null;
+    code_geographique: string;
+    lib_risque_jo: string;
+    dat_pub_arrete: string;
+    libelle_geographique: string;
+    epci: string;
+    libelle_epci: string;
+    departement: string;
+    region: number;
   };
 
   export type gestion_risquesUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    lib_risque_jo?: NullableStringFieldUpdateOperationsInput | string | null;
-    dat_pub_arrete?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    departement?: NullableStringFieldUpdateOperationsInput | string | null;
-    region?: NullableFloatFieldUpdateOperationsInput | number | null;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    lib_risque_jo?: StringFieldUpdateOperationsInput | string;
+    dat_pub_arrete?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
+    epci?: StringFieldUpdateOperationsInput | string;
+    libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: FloatFieldUpdateOperationsInput | number;
   };
 
   export type gestion_risquesUncheckedUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    lib_risque_jo?: NullableStringFieldUpdateOperationsInput | string | null;
-    dat_pub_arrete?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    departement?: NullableStringFieldUpdateOperationsInput | string | null;
-    region?: NullableFloatFieldUpdateOperationsInput | number | null;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    lib_risque_jo?: StringFieldUpdateOperationsInput | string;
+    dat_pub_arrete?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
+    epci?: StringFieldUpdateOperationsInput | string;
+    libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: FloatFieldUpdateOperationsInput | number;
   };
 
   export type gestion_risquesCreateManyInput = {
     index: bigint | number;
-    code_geographique?: string | null;
-    lib_risque_jo?: string | null;
-    dat_pub_arrete?: string | null;
-    libelle_geographique?: string | null;
-    epci?: string | null;
-    libelle_epci?: string | null;
-    departement?: string | null;
-    region?: number | null;
+    code_geographique: string;
+    lib_risque_jo: string;
+    dat_pub_arrete: string;
+    libelle_geographique: string;
+    epci: string;
+    libelle_epci: string;
+    departement: string;
+    region: number;
   };
 
   export type gestion_risquesUpdateManyMutationInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    lib_risque_jo?: NullableStringFieldUpdateOperationsInput | string | null;
-    dat_pub_arrete?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    departement?: NullableStringFieldUpdateOperationsInput | string | null;
-    region?: NullableFloatFieldUpdateOperationsInput | number | null;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    lib_risque_jo?: StringFieldUpdateOperationsInput | string;
+    dat_pub_arrete?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
+    epci?: StringFieldUpdateOperationsInput | string;
+    libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: FloatFieldUpdateOperationsInput | number;
   };
 
   export type gestion_risquesUncheckedUpdateManyInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    lib_risque_jo?: NullableStringFieldUpdateOperationsInput | string | null;
-    dat_pub_arrete?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    departement?: NullableStringFieldUpdateOperationsInput | string | null;
-    region?: NullableFloatFieldUpdateOperationsInput | number | null;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    lib_risque_jo?: StringFieldUpdateOperationsInput | string;
+    dat_pub_arrete?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
+    epci?: StringFieldUpdateOperationsInput | string;
+    libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: FloatFieldUpdateOperationsInput | number;
   };
 
   export type communes_dromUpdateInput = {
@@ -41197,6 +41142,17 @@ export namespace Prisma {
     region?: SortOrder;
   };
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>;
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>;
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>;
+    lt?: number | FloatFieldRefInput<$PrismaModel>;
+    lte?: number | FloatFieldRefInput<$PrismaModel>;
+    gt?: number | FloatFieldRefInput<$PrismaModel>;
+    gte?: number | FloatFieldRefInput<$PrismaModel>;
+    not?: NestedFloatFilter<$PrismaModel> | number;
+  };
+
   export type gestion_risquesCountOrderByAggregateInput = {
     index?: SortOrder;
     code_geographique?: SortOrder;
@@ -41241,6 +41197,22 @@ export namespace Prisma {
   export type gestion_risquesSumOrderByAggregateInput = {
     index?: SortOrder;
     region?: SortOrder;
+  };
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>;
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>;
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>;
+    lt?: number | FloatFieldRefInput<$PrismaModel>;
+    lte?: number | FloatFieldRefInput<$PrismaModel>;
+    gt?: number | FloatFieldRefInput<$PrismaModel>;
+    gte?: number | FloatFieldRefInput<$PrismaModel>;
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number;
+    _count?: NestedIntFilter<$PrismaModel>;
+    _avg?: NestedFloatFilter<$PrismaModel>;
+    _sum?: NestedFloatFilter<$PrismaModel>;
+    _min?: NestedFloatFilter<$PrismaModel>;
+    _max?: NestedFloatFilter<$PrismaModel>;
   };
 
   export type communes_dromCountOrderByAggregateInput = {
@@ -41404,17 +41376,6 @@ export namespace Prisma {
     region?: SortOrder;
   };
 
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatFilter<$PrismaModel> | number;
-  };
-
   export type agriculture_bioCountOrderByAggregateInput = {
     index?: SortOrder;
     epci?: SortOrder;
@@ -41485,22 +41446,6 @@ export namespace Prisma {
     nombre_2021?: SortOrder;
     nombre_2020?: SortOrder;
     nombre_2019?: SortOrder;
-  };
-
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number;
-    _count?: NestedIntFilter<$PrismaModel>;
-    _avg?: NestedFloatFilter<$PrismaModel>;
-    _sum?: NestedFloatFilter<$PrismaModel>;
-    _min?: NestedFloatFilter<$PrismaModel>;
-    _max?: NestedFloatFilter<$PrismaModel>;
   };
 
   export type erosion_cotiereCountOrderByAggregateInput = {
