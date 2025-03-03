@@ -26,19 +26,17 @@ const GestionRisques = async (props: { searchParams: SearchParams }) => {
   const dbIncendiesForet = await GetIncendiesForet(codepci);
 
   return (
-    <div>
-      <div className={styles.container}>
-        <Suspense>
-          <GestionRisquesComp
-            data={theme}
-            gestionRisques={dbGestionRisques!}
-            carteCommunes={carteCommunes}
-            erosionCotiere={erosionCotiere}
-            epciContours={epciContours}
-            incendiesForet={dbIncendiesForet}
-          />
-        </Suspense>
-      </div>
+    <div className={styles.container}>
+      <Suspense>
+        <GestionRisquesComp
+          data={theme}
+          gestionRisques={dbGestionRisques!}
+          carteCommunes={carteCommunes}
+          erosionCotiere={erosionCotiere}
+          epciContours={epciContours}
+          incendiesForet={dbIncendiesForet}
+        />
+      </Suspense>
     </div>
   );
 };
