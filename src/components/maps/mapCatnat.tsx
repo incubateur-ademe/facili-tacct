@@ -1,22 +1,19 @@
 'use client';
 
-import 'leaflet/dist/leaflet.css';
-
+import { CommunesIndicateursDto } from '@/lib/dto';
+import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
+import { Sum } from '@/lib/utils/reusableFunctions/sum';
+import { type Any } from '@/lib/utils/types';
+import { Feature, GeoJsonObject } from 'geojson';
 import {
   FeatureGroup,
   Layer,
   LeafletMouseEventHandlerFn,
   type StyleFunction
 } from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
-
-import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
-import { type Any } from '@/lib/utils/types';
-
-import { CommunesIndicateursDto } from '@/lib/dto';
-import { Sum } from '@/lib/utils/reusableFunctions/sum';
-import { Feature, GeoJsonObject } from 'geojson';
 import { GraphDataNotFound } from '../graph-data-not-found';
 
 const colors: { [key: string]: string[] } = {

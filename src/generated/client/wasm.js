@@ -536,6 +536,7 @@ exports.Prisma.Incendies_foretScalarFieldEnum = {
   libelle_epci: 'libelle_epci',
   departement: 'departement',
   region: 'region',
+  nature: 'nature',
   annee: 'annee',
   surface_parcourue: 'surface_parcourue',
   surface_foret: 'surface_foret',

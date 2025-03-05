@@ -48,11 +48,15 @@ fileignoreconfig:
 - filename: src/generated/client/index-browser.js
   checksum: 7b74293a3420207806aa8cc3bf6edd34110b6b5aae64483f9e0a49cf926c77f8
 - filename: src/generated/client/package.json
-  checksum: aa1fff7bfb8921b9d1351b1704aecaf343004a4be86e41ac630448dcb407d524
+  checksum: 5a4b6bbd40a0bdd735546b422390919ec4e3be16374a477f21113d6103b067f1
 - filename: src/generated/client/edge.js
-  checksum: 33c24cc69671ee46ee078d7ae6e569295901955ade457f44ca79c71578d3d3b4
+  checksum: e9d36fb6075ab078ba0123f345e0fe048e75c562a5a3d34a999c75c3513afb95
 - filename: src/generated/client/index.js
-  checksum: 9f914f76e6b09d87aa5aebbf89bd1d622c56f77389d52e3a1ad14406c487b681
+  checksum: d16b6548a5c2d73fdfb420103e8083c6e7c9dd9ddd81b8f01660903fff4cbca6
+- filename: src/components/charts/gestionRisques/BarLineChart.tsx
+  checksum: d1fa246112a65f72d2783be56daa5584455a335767a464a57b291f3df50815fb
+- filename: src/components/charts/gestionRisques/BarLineFeuxForet.tsx
+  checksum: b114a43312798945ca3e008db1f9feed87bacb642b3eb7cb8ef20b9d2d60a3d3
 - filename: src/components/maps/mapFeuxDeForet.tsx
   checksum: dc123bcd68cb900d79af04208dc9440bae9833fc9eba9b7e0d8014d6b6be9fe9
 - filename: src/generated/client/index.d.ts

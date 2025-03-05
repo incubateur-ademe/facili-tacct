@@ -1,3 +1,4 @@
+import { BarLineFeuxForet } from '@/components/charts/gestionRisques/BarLineFeuxForet';
 import { feuxForetLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapFeuxDeForet } from '@/components/maps/mapFeuxDeForet';
@@ -54,7 +55,8 @@ const FeuxForetDataviz = (props: Props) => {
         </>
       ) : datavizTab === 'Évolution' ? (
         <>
-          <div>EVOLUTION CHART</div>
+          {/* <BarLineChart/> */}
+          <BarLineFeuxForet incendiesForet={incendiesForet} />
         </>
       ) : datavizTab === 'Cartographie' ? (
         <>

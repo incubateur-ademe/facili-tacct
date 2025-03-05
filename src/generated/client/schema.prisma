@@ -501,14 +501,15 @@ model agriculture {
 }
 
 model incendies_foret {
-  index                                 BigInt @id
+  index                                 BigInt  @id
   code_geographique                     String
   libelle_geographique                  String
   epci                                  String
   libelle_epci                          String
   departement                           String
   region                                Float
-  annee                                 BigInt
+  nature                                String?
+  annee                                 Int
   surface_parcourue                     Float
   surface_foret                         Float?
   surface_maquis_garrigues              Float?
@@ -521,5 +522,7 @@ model incendies_foret {
   autres_surfaces                       Float?
 
   @@index([index], map: "ix_incendies_foret_index")
+  @@index([code_geographique], map: "incendies_foret_communes_index")
+  @@index([epci], map: "incendies_foret_epci_index")
   @@schema("databases")
 }
