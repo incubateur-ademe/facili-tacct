@@ -34,6 +34,7 @@
     "@next/mdx": "^15",
     "@nivo/bar": "^0.88.0",
     "@nivo/core": "^0.88.0",
+    "@nivo/legends": "^0.88.0",
     "@nivo/line": "^0.88.0",
     "@nivo/pie": "^0.88.0",
     "@nivo/treemap": "^0.88.0",
