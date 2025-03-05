@@ -23,7 +23,7 @@ const GestionRisques = async (props: { searchParams: SearchParams }) => {
   const carteCommunes = await GetCommunes(codepci);
   const erosionCotiere = await GetErosionCotiere(codepci, codgeo ?? undefined);
   const epciContours = await GetEpci(codepci, codgeo ?? undefined);
-  const dbIncendiesForet = await GetIncendiesForet(codepci);
+  const dbIncendiesForet = await GetIncendiesForet(codgeo ?? codepci);
 
   return (
     <div className={styles.container}>
