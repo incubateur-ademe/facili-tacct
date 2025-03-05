@@ -326,3 +326,10 @@ export const vegetalisationLegend = [
     color: '#386cb0'
   }
 ];
+
+export const feuxForetBarChartLegend = [
+  {
+    variable: 'Feux de forêt',
+    couleur: '#038278'
+  }
+];
