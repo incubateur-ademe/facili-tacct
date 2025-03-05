@@ -103,16 +103,6 @@ export const BarLineFeuxForet = (props: {
     }
   ];
 
-  // Polynôme pour calculer les margins autour du LineGraph
-  const margins = (x: number) =>
-    -0.00171608 * Math.pow(x, 5) +
-    0.101171 * Math.pow(x, 4) -
-    2.31346 * Math.pow(x, 3) +
-    25.7411 * Math.pow(x, 2) -
-    143.533 * x +
-    458.873;
-
-  console.log(lineGraphData[0].data.length);
   return (
     <div
       style={{
@@ -138,7 +128,7 @@ export const BarLineFeuxForet = (props: {
       <div className="absolute" style={{ height: '95%', width: '100%' }}>
         <NivoLineChart
           graphData={lineGraphData}
-          margins={margins(lineGraphData[0].data.length)}
+          dataLength={lineGraphData[0].data.length}
           axisRightLegend="Nombre d'incendies"
           colors={['#ED8DAE']}
           tooltip={({ point }) => {
