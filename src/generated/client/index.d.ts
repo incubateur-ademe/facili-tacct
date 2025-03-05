@@ -32005,7 +32005,7 @@ export namespace Prisma {
   export type Incendies_foretSumAggregateOutputType = {
     index: bigint | null;
     region: number | null;
-    annee: bigint | null;
+    annee: number | null;
     surface_parcourue: number | null;
     surface_foret: number | null;
     surface_maquis_garrigues: number | null;
@@ -32026,7 +32026,8 @@ export namespace Prisma {
     libelle_epci: string | null;
     departement: string | null;
     region: number | null;
-    annee: bigint | null;
+    nature: string | null;
+    annee: number | null;
     surface_parcourue: number | null;
     surface_foret: number | null;
     surface_maquis_garrigues: number | null;
@@ -32047,7 +32048,8 @@ export namespace Prisma {
     libelle_epci: string | null;
     departement: string | null;
     region: number | null;
-    annee: bigint | null;
+    nature: string | null;
+    annee: number | null;
     surface_parcourue: number | null;
     surface_foret: number | null;
     surface_maquis_garrigues: number | null;
@@ -32068,6 +32070,7 @@ export namespace Prisma {
     libelle_epci: number;
     departement: number;
     region: number;
+    nature: number;
     annee: number;
     surface_parcourue: number;
     surface_foret: number;
@@ -32122,6 +32125,7 @@ export namespace Prisma {
     libelle_epci?: true;
     departement?: true;
     region?: true;
+    nature?: true;
     annee?: true;
     surface_parcourue?: true;
     surface_foret?: true;
@@ -32143,6 +32147,7 @@ export namespace Prisma {
     libelle_epci?: true;
     departement?: true;
     region?: true;
+    nature?: true;
     annee?: true;
     surface_parcourue?: true;
     surface_foret?: true;
@@ -32164,6 +32169,7 @@ export namespace Prisma {
     libelle_epci?: true;
     departement?: true;
     region?: true;
+    nature?: true;
     annee?: true;
     surface_parcourue?: true;
     surface_foret?: true;
@@ -32281,7 +32287,8 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
-    annee: bigint;
+    nature: string | null;
+    annee: number;
     surface_parcourue: number;
     surface_foret: number | null;
     surface_maquis_garrigues: number | null;
@@ -32324,6 +32331,7 @@ export namespace Prisma {
       libelle_epci?: boolean;
       departement?: boolean;
       region?: boolean;
+      nature?: boolean;
       annee?: boolean;
       surface_parcourue?: boolean;
       surface_foret?: boolean;
@@ -32350,6 +32358,7 @@ export namespace Prisma {
       libelle_epci?: boolean;
       departement?: boolean;
       region?: boolean;
+      nature?: boolean;
       annee?: boolean;
       surface_parcourue?: boolean;
       surface_foret?: boolean;
@@ -32376,6 +32385,7 @@ export namespace Prisma {
       libelle_epci?: boolean;
       departement?: boolean;
       region?: boolean;
+      nature?: boolean;
       annee?: boolean;
       surface_parcourue?: boolean;
       surface_foret?: boolean;
@@ -32399,6 +32409,7 @@ export namespace Prisma {
     libelle_epci?: boolean;
     departement?: boolean;
     region?: boolean;
+    nature?: boolean;
     annee?: boolean;
     surface_parcourue?: boolean;
     surface_foret?: boolean;
@@ -32422,6 +32433,7 @@ export namespace Prisma {
     | 'libelle_epci'
     | 'departement'
     | 'region'
+    | 'nature'
     | 'annee'
     | 'surface_parcourue'
     | 'surface_foret'
@@ -32450,7 +32462,8 @@ export namespace Prisma {
         libelle_epci: string;
         departement: string;
         region: number;
-        annee: bigint;
+        nature: string | null;
+        annee: number;
         surface_parcourue: number;
         surface_foret: number | null;
         surface_maquis_garrigues: number | null;
@@ -33058,7 +33071,8 @@ export namespace Prisma {
     readonly libelle_epci: FieldRef<'incendies_foret', 'String'>;
     readonly departement: FieldRef<'incendies_foret', 'String'>;
     readonly region: FieldRef<'incendies_foret', 'Float'>;
-    readonly annee: FieldRef<'incendies_foret', 'BigInt'>;
+    readonly nature: FieldRef<'incendies_foret', 'String'>;
+    readonly annee: FieldRef<'incendies_foret', 'Int'>;
     readonly surface_parcourue: FieldRef<'incendies_foret', 'Float'>;
     readonly surface_foret: FieldRef<'incendies_foret', 'Float'>;
     readonly surface_maquis_garrigues: FieldRef<'incendies_foret', 'Float'>;
@@ -33996,6 +34010,7 @@ export namespace Prisma {
     libelle_epci: 'libelle_epci';
     departement: 'departement';
     region: 'region';
+    nature: 'nature';
     annee: 'annee';
     surface_parcourue: 'surface_parcourue';
     surface_foret: 'surface_foret';
@@ -37264,7 +37279,8 @@ export namespace Prisma {
     libelle_epci?: StringFilter<'incendies_foret'> | string;
     departement?: StringFilter<'incendies_foret'> | string;
     region?: FloatFilter<'incendies_foret'> | number;
-    annee?: BigIntFilter<'incendies_foret'> | bigint | number;
+    nature?: StringNullableFilter<'incendies_foret'> | string | null;
+    annee?: IntFilter<'incendies_foret'> | number;
     surface_parcourue?: FloatFilter<'incendies_foret'> | number;
     surface_foret?: FloatNullableFilter<'incendies_foret'> | number | null;
     surface_maquis_garrigues?:
@@ -37303,6 +37319,7 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    nature?: SortOrderInput | SortOrder;
     annee?: SortOrder;
     surface_parcourue?: SortOrder;
     surface_foret?: SortOrderInput | SortOrder;
@@ -37328,7 +37345,8 @@ export namespace Prisma {
       libelle_epci?: StringFilter<'incendies_foret'> | string;
       departement?: StringFilter<'incendies_foret'> | string;
       region?: FloatFilter<'incendies_foret'> | number;
-      annee?: BigIntFilter<'incendies_foret'> | bigint | number;
+      nature?: StringNullableFilter<'incendies_foret'> | string | null;
+      annee?: IntFilter<'incendies_foret'> | number;
       surface_parcourue?: FloatFilter<'incendies_foret'> | number;
       surface_foret?: FloatNullableFilter<'incendies_foret'> | number | null;
       surface_maquis_garrigues?:
@@ -37372,6 +37390,7 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    nature?: SortOrderInput | SortOrder;
     annee?: SortOrder;
     surface_parcourue?: SortOrder;
     surface_foret?: SortOrderInput | SortOrder;
@@ -37407,7 +37426,11 @@ export namespace Prisma {
     libelle_epci?: StringWithAggregatesFilter<'incendies_foret'> | string;
     departement?: StringWithAggregatesFilter<'incendies_foret'> | string;
     region?: FloatWithAggregatesFilter<'incendies_foret'> | number;
-    annee?: BigIntWithAggregatesFilter<'incendies_foret'> | bigint | number;
+    nature?:
+      | StringNullableWithAggregatesFilter<'incendies_foret'>
+      | string
+      | null;
+    annee?: IntWithAggregatesFilter<'incendies_foret'> | number;
     surface_parcourue?: FloatWithAggregatesFilter<'incendies_foret'> | number;
     surface_foret?:
       | FloatNullableWithAggregatesFilter<'incendies_foret'>
@@ -40383,7 +40406,8 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
-    annee: bigint | number;
+    nature?: string | null;
+    annee: number;
     surface_parcourue: number;
     surface_foret?: number | null;
     surface_maquis_garrigues?: number | null;
@@ -40404,7 +40428,8 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
-    annee: bigint | number;
+    nature?: string | null;
+    annee: number;
     surface_parcourue: number;
     surface_foret?: number | null;
     surface_maquis_garrigues?: number | null;
@@ -40425,7 +40450,8 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: FloatFieldUpdateOperationsInput | number;
-    annee?: BigIntFieldUpdateOperationsInput | bigint | number;
+    nature?: NullableStringFieldUpdateOperationsInput | string | null;
+    annee?: IntFieldUpdateOperationsInput | number;
     surface_parcourue?: FloatFieldUpdateOperationsInput | number;
     surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null;
     surface_maquis_garrigues?:
@@ -40467,7 +40493,8 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: FloatFieldUpdateOperationsInput | number;
-    annee?: BigIntFieldUpdateOperationsInput | bigint | number;
+    nature?: NullableStringFieldUpdateOperationsInput | string | null;
+    annee?: IntFieldUpdateOperationsInput | number;
     surface_parcourue?: FloatFieldUpdateOperationsInput | number;
     surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null;
     surface_maquis_garrigues?:
@@ -40509,7 +40536,8 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
-    annee: bigint | number;
+    nature?: string | null;
+    annee: number;
     surface_parcourue: number;
     surface_foret?: number | null;
     surface_maquis_garrigues?: number | null;
@@ -40530,7 +40558,8 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: FloatFieldUpdateOperationsInput | number;
-    annee?: BigIntFieldUpdateOperationsInput | bigint | number;
+    nature?: NullableStringFieldUpdateOperationsInput | string | null;
+    annee?: IntFieldUpdateOperationsInput | number;
     surface_parcourue?: FloatFieldUpdateOperationsInput | number;
     surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null;
     surface_maquis_garrigues?:
@@ -40572,7 +40601,8 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: FloatFieldUpdateOperationsInput | number;
-    annee?: BigIntFieldUpdateOperationsInput | bigint | number;
+    nature?: NullableStringFieldUpdateOperationsInput | string | null;
+    annee?: IntFieldUpdateOperationsInput | number;
     surface_parcourue?: FloatFieldUpdateOperationsInput | number;
     surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null;
     surface_maquis_garrigues?:
@@ -42680,6 +42710,7 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    nature?: SortOrder;
     annee?: SortOrder;
     surface_parcourue?: SortOrder;
     surface_foret?: SortOrder;
@@ -42717,6 +42748,7 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    nature?: SortOrder;
     annee?: SortOrder;
     surface_parcourue?: SortOrder;
     surface_foret?: SortOrder;
@@ -42738,6 +42770,7 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    nature?: SortOrder;
     annee?: SortOrder;
     surface_parcourue?: SortOrder;
     surface_foret?: SortOrder;
