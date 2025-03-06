@@ -3,49 +3,49 @@ export const themes = {
     {
       id: 0,
       titre: 'Grand âge',
-      facteur_sensibilite: 'Population',
+      facteurSensibilite: 'Population',
       risque: 'Élevé',
       donnee: ''
     },
     {
       id: 1,
       titre: 'Fragilité économique',
-      facteur_sensibilite: 'Population',
+      facteurSensibilite: 'Population',
       risque: 'Élevé',
       donnee: ''
     },
     {
       id: 2,
       titre: 'Travail en extérieur',
-      facteur_sensibilite: 'Population',
+      facteurSensibilite: 'Population',
       risque: 'Moyen',
       donnee: 'LOREM IPSUM du TRAVAIL EN EXTERIEUR'
     },
     {
       id: 3,
       titre: 'Age du bâtiment',
-      facteur_sensibilite: 'Bâtiment',
+      facteurSensibilite: 'Bâtiment',
       risque: 'Moyen',
       donnee: "LOREM IPSUM de L'AGE DU BATIMENT"
     },
     {
       id: 4,
       titre: 'Densité du bâti',
-      facteur_sensibilite: 'Urbanisme',
+      facteurSensibilite: 'Urbanisme',
       risque: 'Moyen',
       donnee: 'LOREM IPSUM DE LA DENSITE DE BATIMENTS'
     },
     {
       id: 5,
       titre: 'Végétalisation',
-      facteur_sensibilite: 'Urbanisme',
+      facteurSensibilite: 'Urbanisme',
       risque: 'Moyen',
       donnee: 'LOREM IPSUM DE LA VEGETALISATION'
     }
     // {
     //   id: 6,
     //   titre: 'LCZ',
-    //   facteur_sensibilite: 'Urbanisme',
+    //   facteurSensibilite: 'Urbanisme',
     //   risque: 'Moyen',
     //   donnee: 'LOREM IPSUM DE LA VEGETALISATION'
     // }
@@ -54,42 +54,42 @@ export const themes = {
     {
       id: 0,
       titre: 'Stations classées',
-      facteur_sensibilite: 'A déterminer',
+      facteurSensibilite: 'A déterminer',
       risque: '',
       donnee: ''
     },
     {
       id: 1,
       titre: 'Surfaces en bio',
-      facteur_sensibilite: 'Surfaces en bio',
+      facteurSensibilite: 'Surfaces en bio',
       risque: '',
       donnee: ''
     },
     {
       id: 2,
       titre: 'Surfaces protégées',
-      facteur_sensibilite: 'Surfaces protégées',
+      facteurSensibilite: 'Surfaces protégées',
       risque: '',
       donnee: ''
     },
     {
       id: 3,
       titre: "Consommation d'espaces NAF",
-      facteur_sensibilite: "Consommation d'espaces NAF",
+      facteurSensibilite: "Consommation d'espaces NAF",
       risque: '',
       donnee: ''
     },
     {
       id: 4,
       titre: "État écologique des cours d'eau",
-      facteur_sensibilite: 'Pollutions',
+      facteurSensibilite: 'Pollutions',
       risque: '',
       donnee: ''
     },
     {
       id: 5,
       titre: 'Ozone et végétation',
-      facteur_sensibilite: 'Pollutions',
+      facteurSensibilite: 'Pollutions',
       risque: '',
       donnee: ''
     }
@@ -98,21 +98,21 @@ export const themes = {
     {
       id: 0,
       titre: 'Prélèvements en eau',
-      facteur_sensibilite: 'Prélèvements en eau',
+      facteurSensibilite: 'Prélèvements en eau',
       risque: '',
       donnee: ''
     },
     {
       id: 1,
       titre: 'Qualité de l’eau',
-      facteur_sensibilite: 'Qualité de l’eau',
+      facteurSensibilite: 'Qualité de l’eau',
       risque: '',
       donnee: ''
     },
     {
       id: 2,
       titre: 'Qualité des eaux de baignade',
-      facteur_sensibilite: 'Qualité des eaux de baignade',
+      facteurSensibilite: 'Qualité des eaux de baignade',
       risque: '',
       donnee: ''
     }
@@ -121,14 +121,42 @@ export const themes = {
     {
       id: 0,
       titre: 'catnat',
-      facteur_sensibilite: 'Arrêtés catastrophes naturelles',
+      facteurSensibilite: 'Arrêtés catastrophes naturelles',
       risque: '',
       donnee: ''
     },
     {
       id: 1,
       titre: 'Érosion côtière',
-      facteur_sensibilite: 'Érosion côtière',
+      facteurSensibilite: 'Érosion côtière',
+      risque: '',
+      donnee: ''
+    },
+    {
+      id: 2,
+      titre: 'Feux de forêt',
+      facteurSensibilite: 'Feux de forêt',
+      risque: '',
+      donnee: ''
+    },
+    {
+      id: 3,
+      titre: 'Inondations',
+      facteurSensibilite: 'Inondations',
+      risque: '',
+      donnee: ''
+    },
+    {
+      id: 4,
+      titre: 'Mouvements de terrain',
+      facteurSensibilite: 'Mouvements de terrain',
+      risque: '',
+      donnee: ''
+    },
+    {
+      id: 5,
+      titre: 'Sécheresse',
+      facteurSensibilite: 'Sécheresse',
       risque: '',
       donnee: ''
     }
@@ -137,7 +165,23 @@ export const themes = {
     {
       id: 0,
       titre: "Consommation d'espaces NAF",
-      facteur_sensibilite: "Consommation d'espaces NAF",
+      facteurSensibilite: "Consommation d'espaces NAF",
+      risque: '',
+      donnee: ''
+    }
+  ],
+  agriculture: [
+    {
+      id: 0,
+      titre: "Chefs d'exploitation de plus de 55 ans",
+      facteurSensibilite: 'Renouvellement agricole',
+      risque: '',
+      donnee: ''
+    },
+    {
+      id: 1,
+      titre: 'Surfaces irriguées SAU',
+      facteurSensibilite: 'Renouvellement agricole',
       risque: '',
       donnee: ''
     }

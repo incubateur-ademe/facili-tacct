@@ -1,5 +1,5 @@
 'use client';
-import { thematiques } from '@/lib/utils/thematiques';
+import { thematiques } from '@/lib/thematiques';
 import Badge from '@codegouvfr/react-dsfr/Badge';
 import { Card } from '@codegouvfr/react-dsfr/Card';
 import { Suspense, useEffect } from 'react';
