@@ -69,7 +69,7 @@ export const MapEtatCoursDeau = (props: {
     const typedFeature = feature as EtatCoursDeauDto;
     return {
       fillColor: getColor(typedFeature?.properties.etateco),
-      weight: 2,
+      weight: 3,
       opacity: 1,
       color: getColor(typedFeature?.properties.etateco),
       fillOpacity: 0.95
@@ -123,7 +123,7 @@ export const MapEtatCoursDeau = (props: {
   const mouseOutHandler: LeafletMouseEventHandlerFn = (e) => {
     const layer = e.target as FeatureGroup<EtatCoursDeauDto['properties']>;
     layer.setStyle({
-      weight: 2,
+      weight: 3,
       // color: getColor(layer.feature?.properties.etateco),
       fillOpacity: 0.95
     });
@@ -149,7 +149,7 @@ export const MapEtatCoursDeau = (props: {
       style={{ height: '500px', width: '100%', cursor: 'pointer' }}
       attributionControl={false}
       zoomControl={false}
-      minZoom={9}
+      // minZoom={9}
     >
       {process.env.NEXT_PUBLIC_ENV === 'preprod' ? (
         <TileLayer
