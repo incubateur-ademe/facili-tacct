@@ -80,7 +80,7 @@ export const SurfacesIrriguees = ({
               <div className="w-3/5">
                 <div className={styles.graphWrapper}>
                   <p style={{ padding: '1em', margin: '0' }}>
-                    <b>Surfaces irriguées</b>
+                    <b>Part de la superficie irriguée dans la SAU en 2020</b>
                   </p>
                   <MapSurfacesIrriguees carteCommunes={communesMap} />
                   <div
