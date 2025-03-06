@@ -1,12 +1,12 @@
 type ArreteCatNat = {
   annee_arrete: number;
-  lib_risque_jo: string | null;
-  dat_pub_arrete: string | null;
-  code_geographique: string | null;
-  departement: string | null;
-  epci: string | null;
-  index: bigint | null;
-  libelle_epci: string | null;
-  libelle_geographique: string | null;
-  region: number | null;
-}
+  lib_risque_jo: string;
+  dat_pub_arrete: string;
+  code_geographique: string;
+  departement: string;
+  epci: string;
+  index: bigint;
+  libelle_epci: string;
+  libelle_geographique: string;
+  region: number;
+};
