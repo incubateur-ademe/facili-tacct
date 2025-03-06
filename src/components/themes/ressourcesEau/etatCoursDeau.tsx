@@ -1,4 +1,5 @@
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { etatCoursDeauLegends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
@@ -12,33 +13,6 @@ import {
 } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
 import styles from './ressourcesEau.module.scss';
-
-const legends = [
-  {
-    value: 'Très bon état',
-    color: '#0095C8'
-  },
-  {
-    value: 'Bon état',
-    color: '#00C190'
-  },
-  {
-    value: 'État moyen',
-    color: '#FFCF5E'
-  },
-  {
-    value: 'État médiocre',
-    color: '#F66E19'
-  },
-  {
-    value: 'État mauvais',
-    color: '#B5000E'
-  },
-  {
-    value: 'Indéterminé/pas de données',
-    color: '#9D9C9C'
-  }
-];
 
 const EtatQualiteCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeau[];
@@ -142,7 +116,7 @@ const EtatQualiteCoursDeau = (props: {
                 className={styles.legend}
                 style={{ width: 'auto', justifyContent: 'center' }}
               >
-                <LegendCompColor legends={legends} />
+                <LegendCompColor legends={etatCoursDeauLegends} />
               </div>
               <p style={{ padding: '1em', margin: '0' }}>
                 Source : Agences de l'eau
