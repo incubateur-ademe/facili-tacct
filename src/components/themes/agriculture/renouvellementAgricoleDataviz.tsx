@@ -33,7 +33,7 @@ const RenouvellementAgricoleDataViz = (props: Props) => {
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.chefsExploitationGraphTitleWrapper}>
-        <h2>Chefs d'exploitation &gt; 55 ans en 2020</h2>
+        <h2>Chefs d'exploitation de plus de 55 ans en 2020</h2>
         <SubTabs
           data={['Répartition', 'Cartographie']}
           defaultTab={datavizTab}
