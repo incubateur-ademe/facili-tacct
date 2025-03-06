@@ -26,7 +26,7 @@ import styles from '../donnees.module.scss';
 interface Props {
   data: Array<{
     donnee: string;
-    facteur_sensibilite: string;
+    facteurSensibilite: string;
     id: number;
     risque: string;
     titre: string;
@@ -83,12 +83,10 @@ const allComps = [
   {
     titre: "Consommation d'espaces NAF",
     Component: ({
-      data,
       consommationNAF,
       carteCommunes
     }: Props & { activeDataTab: string }) => (
       <ConsommationEspacesNAF
-        data={data}
         consommationNAF={consommationNAF}
         carteCommunes={carteCommunes}
       />
@@ -151,7 +149,7 @@ const BiodiversiteComp = ({
 
   useEffect(() => {
     setSelectedSubTab(
-      data.filter((el) => el.facteur_sensibilite === selectedTabId)[0].titre
+      data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
     // void (async () => {
     //   const temp = await GetEtatCoursDeau(codepci, codgeo);
@@ -243,7 +241,7 @@ const BiodiversiteComp = ({
         <div className={styles.formContainer}>
           <div className={styles.titles}>
             {/* {data
-              .filter(el => el.facteur_sensibilite === selectedTabId)
+              .filter(el => el.facteurSensibilite === selectedTabId)
               .map((element, i) => (
                 <button
                   key={i}

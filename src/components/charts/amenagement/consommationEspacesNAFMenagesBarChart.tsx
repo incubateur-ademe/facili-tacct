@@ -1,35 +1,9 @@
 'use client';
 
+import { espacesNAFMenagesBarChartLegend } from '@/components/maps/legends/datavizLegends';
 import { ConsommationNAF } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { NivoBarChart } from '../NivoBarChart';
-
-const legends = [
-  {
-    variable: 'Habitat',
-    couleur: '#009ADC'
-  },
-  {
-    variable: 'Activité',
-    couleur: '#FFCF5E'
-  },
-  {
-    variable: 'Mixte',
-    couleur: '#FF6F61'
-  },
-  {
-    variable: 'Inconnu',
-    couleur: '#BB43BD'
-  },
-  {
-    variable: 'Routes',
-    couleur: '#00C2CC'
-  },
-  {
-    variable: 'Ferroviaire',
-    couleur: '#00949D'
-  }
-];
 
 const subObjectByKeys = (obj: ConsommationNAF, arr: string[]) =>
   Object.fromEntries(Object.entries(obj).filter(([k]) => arr.includes(k)));
@@ -99,7 +73,7 @@ export const ConsommationEspacesNAFMenagesBarChart = (props: {
       style={{ height: '500px', minWidth: '450px', backgroundColor: 'white' }}
     >
       <NivoBarChart
-        colors={legends.map((e) => e.couleur)}
+        colors={espacesNAFMenagesBarChartLegend.map((e) => e.couleur)}
         graphData={graphData}
         keys={Object.keys(graphData[0]).slice(0, -1)}
         indexBy="annee"

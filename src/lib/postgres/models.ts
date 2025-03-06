@@ -67,15 +67,15 @@ export type Biodiversite = {
 };
 
 export type GestionRisques = {
-  lib_risque_jo: string | null;
-  dat_pub_arrete: string | null;
-  code_geographique: string | null;
-  departement: string | null;
-  epci: string | null;
-  index: bigint | null;
-  libelle_epci: string | null;
-  libelle_geographique: string | null;
-  region: number | null;
+  lib_risque_jo: string;
+  dat_pub_arrete: string;
+  code_geographique: string;
+  departement: string;
+  epci: string;
+  index: bigint;
+  libelle_epci: string;
+  libelle_geographique: string;
+  region: number;
 };
 
 export type RessourcesEau = {
@@ -122,13 +122,13 @@ export type AgricultureBio = {
 export type CollectivitesSearchbar = {
   code_commune?: string | null;
   coordinates?: string | null;
-  code_epci: string; // | null;
+  code_epci: string;
   libelle_commune?: string | null;
-  libelle_epci: string; // | null;
-  search_libelle: string; // | null;
-  search_code: string; // | null;
-  departement: string; // | null;
-  region: string; // | null;
+  libelle_epci: string;
+  search_libelle: string;
+  search_code: string;
+  departement: string;
+  region: string;
 };
 
 export type CarteCommunes = {
@@ -143,6 +143,9 @@ export type CarteCommunes = {
   catnat?: Object;
   naf?: number;
   surface: number;
+  surfacesIrriguees?: number;
+  chefsExploitation55Ans?: number;
+  incendiesForet?: number;
 };
 
 export type EpciContours = {
@@ -395,4 +398,38 @@ export type QualiteSitesBaignade = {
   QEB_2018: string | null;
   QEB_2019: string | null;
   QEB_2020: string | null;
+};
+
+export type Agriculture = {
+  index: bigint;
+  CODGEO: string;
+  LIBGEO: string;
+  EPCI: string;
+  LIBEPCI: string;
+  DEP: string;
+  REG: number;
+  part_irr_SAU_2020: number | null;
+  part_over_55: number | null;
+};
+
+export type IncendiesForet = {
+  index: bigint;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  region: number;
+  nature: string | null;
+  annee: number;
+  surface_parcourue: number;
+  surface_foret: number | null;
+  surface_maquis_garrigues: number | null;
+  autres_surfaces_naturelles_hors_foret: number | null;
+  surfaces_agricoles: number | null;
+  surfaces_non_boisees: number | null;
+  surfaces_non_boisees_artificialisees: number | null;
+  surfaces_non_boisees_naturelles: number | null;
+  surface_autres_terres_boisees: number | null;
+  autres_surfaces: number | null;
 };

@@ -13,7 +13,7 @@ import styles from '../donnees.module.scss';
 interface Props {
   data: Array<{
     donnee: string;
-    facteur_sensibilite: string;
+    facteurSensibilite: string;
     id: number;
     risque: string;
     titre: string;
@@ -59,7 +59,7 @@ const AmenagementComp = ({ data, carteCommunes, consommationNAF }: Props) => {
 
   useEffect(() => {
     setSelectedSubTab(
-      data.filter((el) => el.facteur_sensibilite === selectedTabId)[0].titre
+      data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
   }, [selectedTabId, codepci]);
 

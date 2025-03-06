@@ -119,17 +119,19 @@ model biodiversite {
 }
 
 model gestion_risques {
-  index                BigInt  @id
-  code_geographique    String?
-  lib_risque_jo        String?
-  dat_pub_arrete       String?
-  libelle_geographique String?
-  epci                 String?
-  libelle_epci         String?
-  departement          String?
-  region               Float?
+  index                BigInt @id
+  code_geographique    String
+  lib_risque_jo        String
+  dat_pub_arrete       String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  region               Float
 
   @@index([index], map: "ix_gestion_risques_index")
+  @@index([code_geographique], map: "gestion_risques_communes_index")
+  @@index([epci], map: "gestion_risques_epci_index")
   @@schema("databases")
 }
 
@@ -480,5 +482,47 @@ model qualite_sites_baignade {
   QEB_2020 String?
 
   @@index([index], map: "ix_qualite_sites_baignade_index")
+  @@schema("databases")
+}
+
+model agriculture {
+  index             BigInt @id
+  CODGEO            String
+  LIBGEO            String
+  EPCI              String
+  LIBEPCI           String
+  DEP               String
+  REG               Float
+  part_irr_SAU_2020 Float?
+  part_over_55      Float?
+
+  @@index([index], map: "ix_agriculture_index")
+  @@schema("databases")
+}
+
+model incendies_foret {
+  index                                 BigInt  @id
+  code_geographique                     String
+  libelle_geographique                  String
+  epci                                  String
+  libelle_epci                          String
+  departement                           String
+  region                                Float
+  nature                                String?
+  annee                                 Int
+  surface_parcourue                     Float
+  surface_foret                         Float?
+  surface_maquis_garrigues              Float?
+  autres_surfaces_naturelles_hors_foret Float?
+  surfaces_agricoles                    Float?
+  surfaces_non_boisees                  Float?
+  surfaces_non_boisees_artificialisees  Float?
+  surfaces_non_boisees_naturelles       Float?
+  surface_autres_terres_boisees         Float?
+  autres_surfaces                       Float?
+
+  @@index([index], map: "ix_incendies_foret_index")
+  @@index([code_geographique], map: "incendies_foret_communes_index")
+  @@index([epci], map: "incendies_foret_epci_index")
   @@schema("databases")
 }

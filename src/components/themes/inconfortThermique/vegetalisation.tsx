@@ -8,6 +8,7 @@ import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { CLC, InconfortThermique } from '@/lib/postgres/models';
 
 import GraphNotFound from '@/assets/images/no_data_on_territory.svg';
+import { vegetalisationLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { VegetalisationDto } from '@/lib/dto';
 import { Round } from '@/lib/utils/reusableFunctions/round';
@@ -30,29 +31,6 @@ const sumProperty = (
     return a + b[property];
   }, 0);
 };
-
-const legends = [
-  {
-    value: 'Territoires artificialisés',
-    color: '#ffff99'
-  },
-  {
-    value: 'Territoires agricoles',
-    color: '#fdc086'
-  },
-  {
-    value: 'Zones végétalisées et milieux semi-naturels',
-    color: '#7fc97f'
-  },
-  {
-    value: 'Zones humides',
-    color: '#beaed4'
-  },
-  {
-    value: 'Surfaces en eau',
-    color: '#386cb0'
-  }
-];
 
 const Vegetalisation = (props: {
   clc: CLC[];
@@ -134,7 +112,7 @@ const Vegetalisation = (props: {
                       className={styles.legend}
                       style={{ width: 'auto', justifyContent: 'center' }}
                     >
-                      <LegendCompColor legends={legends} />
+                      <LegendCompColor legends={vegetalisationLegend} />
                     </div>
                     <p style={{ padding: '1em', margin: '0' }}>
                       Source : CORINE Land Cover

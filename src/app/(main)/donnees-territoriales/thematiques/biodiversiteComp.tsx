@@ -1,9 +1,5 @@
 'use client';
 
-import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
-import { useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useState } from 'react';
-
 import AgricultureBiologique from '@/components/themes/biodiversite/agricultureBio';
 import AOT40Dataviz from '@/components/themes/biodiversite/AOT40';
 import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
@@ -19,6 +15,9 @@ import {
   EtatCoursDeau,
   QualiteSitesBaignade
 } from '@/lib/postgres/models';
+import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
+import { useSearchParams } from 'next/navigation';
+import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import EtatQualiteCoursDeau from '../../../../components/themes/biodiversite/etatCoursDeau';
 import styles from '../donnees.module.scss';
@@ -26,7 +25,7 @@ import styles from '../donnees.module.scss';
 interface Props {
   data: Array<{
     donnee: string;
-    facteur_sensibilite: string;
+    facteurSensibilite: string;
     id: number;
     risque: string;
     titre: string;
@@ -83,12 +82,10 @@ const allComps = [
   {
     titre: "Consommation d'espaces NAF",
     Component: ({
-      data,
       consommationNAF,
       carteCommunes
     }: Props & { activeDataTab: string }) => (
       <ConsommationEspacesNAF
-        data={data}
         consommationNAF={consommationNAF}
         carteCommunes={carteCommunes}
       />
@@ -151,7 +148,7 @@ const BiodiversiteComp = ({
 
   useEffect(() => {
     setSelectedSubTab(
-      data.filter((el) => el.facteur_sensibilite === selectedTabId)[0].titre
+      data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
     // void (async () => {
     //   const temp = await GetEtatCoursDeau(codepci, codgeo);
@@ -240,7 +237,7 @@ const BiodiversiteComp = ({
           <div className={styles.titles}>
             {selectedTabId === 'Pollutions'
               ? data
-                  .filter((el) => el.facteur_sensibilite === selectedTabId)
+                  .filter((el) => el.facteurSensibilite === selectedTabId)
                   .map((element, i) => (
                     <button
                       key={i}

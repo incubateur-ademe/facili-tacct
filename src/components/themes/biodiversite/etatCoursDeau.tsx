@@ -151,7 +151,7 @@ const EtatQualiteCoursDeau = (props: {
                 <LegendCompColor legends={etatCoursDeauLegends} />
               </div>
               <div className={styles.legendCoursDeau}>
-                <h3>- Sites de baignade -</h3>
+                <h3>- Plans d'eau -</h3>
                 <LegendCompIcons legends={qualiteEauxBaignadelegends} />
               </div>
               <p style={{ padding: '1em', margin: '0' }}>

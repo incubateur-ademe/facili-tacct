@@ -49,6 +49,9 @@ importers:
       '@nivo/core':
         specifier: ^0.88.0
         version: 0.88.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@nivo/legends':
+        specifier: ^0.88.0
+        version: 0.88.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@nivo/line':
         specifier: ^0.88.0
         version: 0.88.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
