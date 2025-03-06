@@ -144,7 +144,7 @@ const PrelevementEauProgressBars = ({
     ? ressourcesEau.filter((obj) => obj.code_geographique === codgeo)[0]
         ?.libelle_geographique
     : ressourcesEau.filter((obj) => obj.epci === codepci)[0]?.libelle_epci;
-  const departement = ressourcesEau[0].departement;
+  const departement = ressourcesEau[0]?.departement;
 
   return (
     <div className={styles.ressourcesEauWrapper}>
