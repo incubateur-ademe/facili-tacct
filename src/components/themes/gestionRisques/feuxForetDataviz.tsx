@@ -1,4 +1,5 @@
 import { BarLineFeuxForet } from '@/components/charts/gestionRisques/BarLineFeuxForet';
+import PieChartFeuxForet from '@/components/charts/gestionRisques/pieChartFeuxForet';
 import { feuxForetLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapFeuxDeForet } from '@/components/maps/mapFeuxDeForet';
@@ -40,24 +41,9 @@ const FeuxForetDataviz = (props: Props) => {
         />
       </div>
       {datavizTab === 'Répartition' ? (
-        <>
-          <div className={styles.catnatGraphFiltersWrapper}>
-            <RangeSlider
-              firstValue={2006}
-              lastValue={2023}
-              minDist={1}
-              setSliderValue={setSliderValue}
-              sliderValue={sliderValue}
-              width={750}
-            />
-          </div>
-          <div>PIE CHART</div>
-        </>
+        <PieChartFeuxForet incendiesForet={incendiesForet} />
       ) : datavizTab === 'Évolution' ? (
-        <>
-          {/* <BarLineChart/> */}
-          <BarLineFeuxForet incendiesForet={incendiesForet} />
-        </>
+        <BarLineFeuxForet incendiesForet={incendiesForet} />
       ) : datavizTab === 'Cartographie' ? (
         <>
           <div className={styles.catnatGraphFiltersWrapper}>
@@ -96,7 +82,10 @@ const FeuxForetDataviz = (props: Props) => {
       ) : (
         ''
       )}
-      <p style={{ padding: '1em', margin: '0' }}>Source : BDIFF</p>
+      <p style={{ padding: '1em', margin: '0' }}>
+        Source : Base de Données sur les Incendies de Forêts en France,
+        consultée en 2024 (derniers chiffres disponibles : 2023)
+      </p>
     </div>
   );
 };
