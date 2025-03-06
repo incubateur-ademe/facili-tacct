@@ -9,23 +9,34 @@ export const GetRessourceEau = async (
   code: string
 ): Promise<RessourcesEau[]> => {
   try {
-    console.time('Query Execution Time PRELEVEMENT EAUX');
-    const departement = await PrismaPostgres.ressources_eau.findFirst({
-      where: {
-        epci: code
-      }
-    });
-    console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
-    console.time('Query Execution Time PRELEVEMENT EAUX 2');
+    if (code === 'ZZZZZZZZZ') {
+      console.time('Query Execution Time RESSOURCES EAUX');
+      const value = await PrismaPostgres.ressources_eau.findMany({
+        where: {
+          epci: code
+        }
+      });
+      console.timeEnd('Query Execution Time RESSOURCES EAUX');
+      return value;
+    } else {
+      console.time('Query Execution Time PRELEVEMENT EAUX');
+      const departement = await PrismaPostgres.ressources_eau.findFirst({
+        where: {
+          epci: code
+        }
+      });
+      console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
+      console.time('Query Execution Time PRELEVEMENT EAUX 2');
 
-    const value = await PrismaPostgres.ressources_eau.findMany({
-      where: {
-        departement: departement?.departement
-      }
-    });
-    console.timeEnd('Query Execution Time PRELEVEMENT EAUX 2');
+      const value = await PrismaPostgres.ressources_eau.findMany({
+        where: {
+          departement: departement?.departement
+        }
+      });
+      console.timeEnd('Query Execution Time PRELEVEMENT EAUX 2');
 
-    return value;
+      return value;
+    }
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
@@ -38,19 +49,36 @@ export const GetQualiteEauxBaignade = async (
   code: string
 ): Promise<QualiteSitesBaignade[]> => {
   try {
-    console.time('Query Execution Time QUALITE EAUX BAIGNADE');
-    const departement = await PrismaPostgres.collectivites_searchbar.findFirst({
-      where: {
-        code_epci: code
-      }
-    });
-    const value = await PrismaPostgres.qualite_sites_baignade.findMany({
-      where: {
-        DEP_NUM: departement?.departement
-      }
-    });
-    console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
-    return value;
+    if (code === 'ZZZZZZZZZ') {
+      console.time('Query Execution Time QUALITE EAUX BAIGNADE');
+      const value = await PrismaPostgres.qualite_sites_baignade.findMany({
+        where: {
+          OR: [
+            { COMMUNE: "ile-d'yeu (l')" },
+            { COMMUNE: 'ile-de-brehat' },
+            { COMMUNE: 'ouessant' },
+            { COMMUNE: 'ile-de-sein' }
+          ]
+        }
+      });
+      console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
+      return value;
+    } else {
+      console.time('Query Execution Time QUALITE EAUX BAIGNADE');
+      const departement =
+        await PrismaPostgres.collectivites_searchbar.findFirst({
+          where: {
+            code_epci: code
+          }
+        });
+      const value = await PrismaPostgres.qualite_sites_baignade.findMany({
+        where: {
+          DEP_NUM: departement?.departement
+        }
+      });
+      console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
+      return value;
+    }
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
