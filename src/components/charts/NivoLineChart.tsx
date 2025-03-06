@@ -61,8 +61,8 @@ export const NivoLineChart = ({
       enableGridX={false}
       enableGridY={false}
       yScale={{ type: 'linear', min: 'auto', max: 'auto' }}
-      enableCrosshair={false}
-      // crosshairType="bottom-right"
+      enableCrosshair={true}
+      crosshairType="bottom"
       axisRight={{
         tickSize: 5,
         tickPadding: 5,
