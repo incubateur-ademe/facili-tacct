@@ -35,7 +35,7 @@ const FeuxForetDataviz = (props: Props) => {
       <div className={styles.catnatGraphTitleWrapper}>
         <h2>Feux de forêt</h2>
         <SubTabs
-          data={['Répartition', 'Évolution', 'Cartographie']}
+          data={['Répartition', 'Évolution']}
           defaultTab={datavizTab}
           setValue={setDatavizTab}
         />
