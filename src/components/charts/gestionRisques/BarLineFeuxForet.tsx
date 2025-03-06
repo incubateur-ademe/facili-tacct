@@ -1,13 +1,12 @@
 'use client';
 
 import { feuxForetBarChartLegend } from '@/components/maps/legends/datavizLegends';
-import styles from '@/components/themes/biodiversite/biodiversite.module.scss';
 import { IncendiesForet } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
-import { BarDatum, BarTooltipProps } from '@nivo/bar';
-import { Point } from '@nivo/line';
+import { BarDatum } from '@nivo/bar';
 import { NivoBarChart } from '../NivoBarChart';
 import { NivoLineChart } from '../NivoLineChart';
+import styles from './gestionRisquesCharts.module.scss';
 
 interface IncendiesEnriched extends IncendiesForet {
   nombreIncendies: number;
@@ -17,56 +16,6 @@ export const BarLineFeuxForet = (props: {
   incendiesForet: IncendiesForet[];
 }) => {
   const { incendiesForet } = props;
-
-  const LineTooltip = (point: Point) => {
-    return (
-      <div
-        style={{
-          background: 'white',
-          padding: '0.5rem',
-          border: '1px solid #ccc',
-          position: 'relative',
-          right: '4rem',
-          boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px'
-        }}
-      >
-        {point.data.xFormatted} : <b>{point.data.yFormatted}%</b>
-      </div>
-    );
-  };
-
-  const CustomTooltip = ({ data }: BarTooltipProps<BarDatum>) => {
-    const dataArray = Object.entries(data).map((el) => {
-      return {
-        titre: el[0],
-        value: el[1],
-        color: feuxForetBarChartLegend.find((e) => e.variable === el[0])
-          ?.couleur
-      };
-    });
-
-    return (
-      <div className={styles.tooltipEvolutionWrapper}>
-        {dataArray.slice(0, -1).map((el, i) => {
-          return (
-            <div className={styles.itemWrapper} key={i}>
-              <div className={styles.titre}>
-                <div
-                  className={styles.colorSquare}
-                  style={{ background: el.color }}
-                />
-                <p>{el.titre}</p>
-              </div>
-              <div className={styles.value}>
-                <p>{Round(Number(el.value), 0)} ha</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
-
   const incendiesForetEnriched = incendiesForet.map((el) => {
     return {
       ...el,
@@ -104,16 +53,8 @@ export const BarLineFeuxForet = (props: {
   ];
 
   return (
-    <div
-      style={{
-        height: '500px',
-        backgroundColor: 'white',
-        display: 'flex',
-        flexDirection: 'column',
-        position: 'relative'
-      }}
-    >
-      <div className="absolute" style={{ height: '95%', width: '100%' }}>
+    <div className={styles.graphContainer}>
+      <div className="absolute h-[95%] w-full">
         <NivoBarChart
           colors={feuxForetBarChartLegend.map((e) => e.couleur)}
           graphData={barGraphData as unknown as BarDatum[]}
@@ -122,10 +63,9 @@ export const BarLineFeuxForet = (props: {
           axisLeftLegend="Surface en ha"
           axisBottomLegend="Années"
           showLegend={false}
-          tooltip={CustomTooltip}
         />
       </div>
-      <div className="absolute" style={{ height: '95%', width: '100%' }}>
+      <div className="absolute h-[95%] w-full">
         <NivoLineChart
           graphData={lineGraphData}
           dataLength={lineGraphData[0].data.length}
@@ -133,18 +73,28 @@ export const BarLineFeuxForet = (props: {
           colors={['#ED8DAE']}
           tooltip={({ point }) => {
             return (
-              <div
-                style={{
-                  background: 'white',
-                  padding: '0.5rem',
-                  border: '1px solid #ccc',
-                  position: 'relative',
-                  right: '4rem',
-                  boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px'
-                }}
-              >
-                {point.data.xFormatted} :{' '}
-                <b>{point.data.yFormatted} départs d'incendies</b>
+              <div className={styles.barLineTooltipContainer}>
+                <p>
+                  <b>{point.data.xFormatted}</b>
+                </p>
+                <div className={styles.line}>
+                  <div className={styles.circle} />
+                  <p>{point.data.yFormatted} départ(s) d'incendies</p>
+                </div>
+                <div className={styles.line}>
+                  <div className={styles.square} />
+                  <p>
+                    {Round(
+                      100 *
+                        barGraphData.find(
+                          (el) =>
+                            Number(el.annee) === Number(point.data.xFormatted)
+                        )?.surface_parcourue!,
+                      2
+                    )}{' '}
+                    ha consommé(s)
+                  </p>
+                </div>
               </div>
             );
           }}
