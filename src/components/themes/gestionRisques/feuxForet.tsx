@@ -22,7 +22,7 @@ export const FeuxForet = (props: {
   const surfaceTotale = incendiesForet
     .map((el) => el.surface_parcourue)
     .reduce((a, b) => a + b, 0);
-  const departement = incendiesForet[0].departement;
+  const departement = incendiesForet[0]?.departement;
 
   const title = (
     <div>
