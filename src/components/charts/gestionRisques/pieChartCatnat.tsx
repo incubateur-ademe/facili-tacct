@@ -45,7 +45,7 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNat[] }) => {
       <>
         <text
           x={centerX}
-          y={centerY}
+          y={centerY - 10}
           textAnchor="middle"
           dominantBaseline="central"
           style={{
@@ -57,7 +57,7 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNat[] }) => {
         </text>
         <text
           x={centerX}
-          y={centerY + 30}
+          y={centerY + 20}
           textAnchor="middle"
           dominantBaseline="central"
           style={{
