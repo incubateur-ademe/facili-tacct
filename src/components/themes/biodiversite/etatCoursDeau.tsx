@@ -73,7 +73,7 @@ const EtatQualiteCoursDeau = (props: {
 
   return (
     <>
-      {etatCoursDeau.length ? (
+      {etatCoursDeau.length && qualiteEauxBaignade.length ? (
         <div className={styles.container}>
           <div className="w-5/12">
             <div className={styles.explicationWrapper}>

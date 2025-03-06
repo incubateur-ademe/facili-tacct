@@ -25,7 +25,9 @@ export const GetCollectivite = async (
       code_commune,
       departement,
       region
-      FROM databases."collectivites_searchbar" WHERE unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) LIMIT 20;`; // OR libelle_epci ILIKE ${variableEpci}
+      FROM databases."collectivites_searchbar" WHERE 
+        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
+        LIMIT 20;`; // OR libelle_epci ILIKE ${variableEpci}
       console.timeEnd(`Query Execution Time COLLECTIVITE ${collectivite}`);
       // console.log(value);
       if (value.length > 0) {
