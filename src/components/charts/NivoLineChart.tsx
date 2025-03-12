@@ -22,26 +22,26 @@ export const NivoLineChart = ({
 }: NivoLiveChartProps) => {
   // Polynôme pour calculer les margins autour du LineGraph
   const margins =
-    -0.00171608 * Math.pow(dataLength, 5) +
-    0.101171 * Math.pow(dataLength, 4) -
-    2.31346 * Math.pow(dataLength, 3) +
-    25.7411 * Math.pow(dataLength, 2) -
-    143.533 * dataLength +
-    458.873;
+    -0.00158153 * Math.pow(dataLength, 5) +
+    0.091504 * Math.pow(dataLength, 4) -
+    2.03904 * Math.pow(dataLength, 3) +
+    22.1197 * Math.pow(dataLength, 2) -
+    121.577 * dataLength +
+    403.657;
   const offset =
-    -0.0017381 * Math.pow(dataLength, 5) +
-    0.0996665 * Math.pow(dataLength, 4) -
-    2.22964 * Math.pow(dataLength, 3) +
-    24.5342 * Math.pow(dataLength, 2) -
-    137.122 * dataLength +
-    423.84;
+    -0.00113423 * Math.pow(dataLength, 5) +
+    0.0713663 * Math.pow(dataLength, 4) -
+    1.72579 * Math.pow(dataLength, 3) +
+    20.137 * Math.pow(dataLength, 2) -
+    116.472 * dataLength +
+    373.599;
   const marginX =
-    -0.000876112 * Math.pow(dataLength, 5) +
-    0.0629644 * Math.pow(dataLength, 4) -
-    1.70081 * Math.pow(dataLength, 3) +
-    21.6781 * Math.pow(dataLength, 2) -
-    133.583 * dataLength +
-    393.712;
+    -0.00112558 * Math.pow(dataLength, 5) +
+    0.0717194 * Math.pow(dataLength, 4) -
+    1.75742 * Math.pow(dataLength, 3) +
+    20.7823 * Math.pow(dataLength, 2) -
+    121.556 * dataLength +
+    347.038;
 
   return (
     <ResponsiveLine
