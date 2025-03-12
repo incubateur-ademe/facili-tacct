@@ -64,14 +64,8 @@ const allComps = [
   },
   {
     titre: 'Feux de forêt',
-    Component: ({
-      incendiesForet,
-      carteCommunes
-    }: Props & { activeDataTab: string }) => (
-      <FeuxForet
-        incendiesForet={incendiesForet}
-        carteCommunes={carteCommunes}
-      />
+    Component: ({ incendiesForet }: Props & { activeDataTab: string }) => (
+      <FeuxForet incendiesForet={incendiesForet} />
     )
   }
 ];
