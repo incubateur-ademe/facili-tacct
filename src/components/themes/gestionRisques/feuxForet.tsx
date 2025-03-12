@@ -2,20 +2,16 @@
 
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
-import { CarteCommunes, IncendiesForet } from '@/lib/postgres/models';
+import { IncendiesForet } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import FeuxForetDataviz from './feuxForetDataviz';
 import styles from './gestionRisques.module.scss';
 
-export const FeuxForet = (props: {
-  incendiesForet: IncendiesForet[];
-  carteCommunes: CarteCommunes[];
-}) => {
-  const { incendiesForet, carteCommunes } = props;
+export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
+  const { incendiesForet } = props;
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
-  const [sliderValue, setSliderValue] = useState<number[]>([2006, 2023]);
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
@@ -52,7 +48,7 @@ export const FeuxForet = (props: {
     <>
       {incendiesForet.length !== 0 ? (
         <div className={styles.container}>
-          <div className="w-1/3">
+          <div className="w-2/5">
             <div className={styles.explicationWrapper}>
               <p>
                 Depuis 2006, votre collectivité a connu{' '}
@@ -69,9 +65,9 @@ export const FeuxForet = (props: {
               ) : (
                 ''
               )}
-              <CustomTooltip title={title} texte="Définition ?" />
+              <CustomTooltip title={title} texte="Définition" />
             </div>
-            <div className="px-4">
+            <div className={styles.textWrapper}>
               <p>
                 Un climat plus chaud et plus sec sont des conditions propices
                 aux départs de feux et les vents potentiellement plus violents
@@ -92,10 +88,14 @@ export const FeuxForet = (props: {
                 prévention, qui ont permis de diviser par cinq les surfaces
                 brûlées annuellement, par rapport aux années 1980.
               </p>
-              <p>
+              {/* <p>
                 ⇒ 90 % des départs de feu sont d’origine humaine dont près de la
                 moitié causée par des imprudences et un quart du à des actes de
                 malveillance.
+              </p> */}
+              <p>
+                ⇒ En 2023, parmi les feux de forêts dont la cause a été
+                identifiée, 9 feux sur 10 départs sont d’origine humaine
               </p>
               <p>
                 ⇒ 4 feux sur 5 se déclenchent à moins de 50 mètres des
@@ -103,13 +103,10 @@ export const FeuxForet = (props: {
               </p>
             </div>
           </div>
-          <div className="w-2/3">
+          <div className="w-3/5">
             <FeuxForetDataviz
-              carteCommunes={carteCommunes}
               datavizTab={datavizTab}
               setDatavizTab={setDatavizTab}
-              setSliderValue={setSliderValue}
-              sliderValue={sliderValue}
               incendiesForet={incendiesForet}
             />
           </div>

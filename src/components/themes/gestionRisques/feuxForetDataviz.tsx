@@ -1,86 +1,50 @@
 import { BarLineFeuxForet } from '@/components/charts/gestionRisques/BarLineFeuxForet';
 import PieChartFeuxForet from '@/components/charts/gestionRisques/pieChartFeuxForet';
-import { feuxForetLegend } from '@/components/maps/legends/datavizLegends';
-import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import { MapFeuxDeForet } from '@/components/maps/mapFeuxDeForet';
-import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
-import { CarteCommunes, IncendiesForet } from '@/lib/postgres/models';
-import { useSearchParams } from 'next/navigation';
+import { IncendiesForet } from '@/lib/postgres/models';
+import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
 import styles from './gestionRisques.module.scss';
 
 type Props = {
-  carteCommunes: CarteCommunes[];
   datavizTab: string;
   setDatavizTab: (value: string) => void;
-  setSliderValue: (value: number[]) => void;
-  sliderValue: number[];
   incendiesForet: IncendiesForet[];
 };
 
 const FeuxForetDataviz = (props: Props) => {
-  const {
-    carteCommunes,
-    datavizTab,
-    setDatavizTab,
-    setSliderValue,
-    sliderValue,
-    incendiesForet
-  } = props;
-  const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo')!;
+  const { datavizTab, setDatavizTab, incendiesForet } = props;
+  const sumTypes = Object.values(CountOcc(incendiesForet, 'nature')).reduce(
+    (a, b) => a + b,
+    0
+  );
 
   return (
     <div className={styles.graphWrapper}>
-      <div className={styles.catnatGraphTitleWrapper}>
-        <h2>Feux de forêt</h2>
-        <SubTabs
-          data={['Répartition', 'Évolution']}
-          defaultTab={datavizTab}
-          setValue={setDatavizTab}
-        />
-      </div>
-      {datavizTab === 'Répartition' ? (
-        <PieChartFeuxForet incendiesForet={incendiesForet} />
-      ) : datavizTab === 'Évolution' ? (
-        <BarLineFeuxForet incendiesForet={incendiesForet} />
-      ) : datavizTab === 'Cartographie' ? (
+      {sumTypes <= 3 ? (
         <>
-          <div className={styles.catnatGraphFiltersWrapper}>
-            <div
-              style={{
-                padding: '0 3rem',
-                maxWidth: '65%',
-                borderRight: 'solid 1px #D6D6F0'
-              }}
-            >
-              Legend nombre feux
-            </div>
-            <RangeSlider
-              firstValue={2006}
-              lastValue={2023}
-              minDist={1}
-              setSliderValue={setSliderValue}
-              sliderValue={sliderValue}
-              width={'-webkit-fill-available'}
-              padding={'0 1rem 0 2rem'}
-              maxWidth="50%"
-            />
+          <div className={styles.graphTitleWrapper}>
+            <h2>Feux de forêt</h2>
           </div>
-          <MapFeuxDeForet
-            carteCommunes={carteCommunes}
-            sliderValue={sliderValue}
-            incendiesForet={incendiesForet}
-          />
-          <div
-            className={styles.legend}
-            style={{ width: 'auto', justifyContent: 'center' }}
-          >
-            <LegendCompColor legends={feuxForetLegend} />
-          </div>
+          <BarLineFeuxForet incendiesForet={incendiesForet} />
         </>
       ) : (
-        ''
+        <>
+          <div className={styles.catnatGraphTitleWrapper}>
+            <h2>Feux de forêt</h2>
+            <SubTabs
+              data={['Répartition', 'Évolution']}
+              defaultTab={datavizTab}
+              setValue={setDatavizTab}
+            />
+          </div>
+          {datavizTab === 'Répartition' ? (
+            <PieChartFeuxForet incendiesForet={incendiesForet} />
+          ) : datavizTab === 'Évolution' ? (
+            <BarLineFeuxForet incendiesForet={incendiesForet} />
+          ) : (
+            ''
+          )}
+        </>
       )}
       <p style={{ padding: '1em', margin: '0' }}>
         Source : Base de Données sur les Incendies de Forêts en France,

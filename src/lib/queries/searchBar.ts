@@ -25,7 +25,10 @@ export const GetCollectivite = async (
       code_commune,
       departement,
       region
-      FROM databases."collectivites_searchbar" WHERE unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) LIMIT 20;`; // OR libelle_epci ILIKE ${variableEpci}
+      FROM databases."collectivites_searchbar" WHERE 
+        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', ')) 
+        LIMIT 20;`; // OR libelle_epci ILIKE ${variableEpci}
       console.timeEnd(`Query Execution Time COLLECTIVITE ${collectivite}`);
       // console.log(value);
       if (value.length > 0) {
@@ -42,7 +45,10 @@ export const GetCollectivite = async (
         code_commune,
         departement,
         region
-        FROM databases."collectivites_searchbar" WHERE unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite}) LIMIT 20;`;
+        FROM databases."collectivites_searchbar" WHERE 
+          unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite}) 
+          OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', ')) 
+          LIMIT 20;`;
         return value;
       }
     } else if (typeof parseInt(collectivite) === 'number') {

@@ -6,6 +6,8 @@ import { surfacesIrrigueesLegend } from '@/components/maps/legends/datavizLegend
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapSurfacesIrriguees } from '@/components/maps/mapSurfacesIrriguees';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
+import { DefinitionTooltip } from '@/components/utils/HtmlTooltip';
+import { irrigable } from '@/lib/definitions';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
 import styles from './agriculture.module.scss';
@@ -64,23 +66,62 @@ export const SurfacesIrriguees = ({
                     texte="D'où vient ce chiffre ?"
                   />
                 </div>
-                <div className="px-4">
+                <div className={styles.textWrapper}>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nullam nec purus nec nunc tincidunt tincidunt. Nullam
+                    En France métropolitaine, 6,8 % de la surface agricole utile
+                    (SAU) était irriguée en 2020, soit 15 % de plus qu’en 2010.
+                    Face aux sécheresses de plus en plus marquées, les surfaces{' '}
+                    <DefinitionTooltip title={irrigable}>
+                      irrigables
+                    </DefinitionTooltip>{' '}
+                    ont aussi progressé de 23 % en dix ans, atteignant 11 % de
+                    la SAU. Mais cette tendance interroge : l’eau prélevée pour
+                    l’irrigation représente déjà 10 % des prélèvements totaux et
+                    jusqu’à 23 % des eaux souterraines, modifiant localement le
+                    cycle de l’eau.
                   </p>
                   <p>
-                    - - - - <br></br>
-                    Adapter les logements au risque de forte chaleur est la
-                    mesure 9 du Plan national d’adaptation au changement
-                    climatique (PNACC 3).
+                    L’irrigation permet de sécuriser les rendements, mais peut
+                    aussi accentuer les tensions locales sur la ressource, en
+                    particulier en été, période où la demande est forte pour
+                    l’agriculture, mais aussi pour l’eau potable, le tourisme et
+                    les écosystèmes. En prélevant l’eau des cours d’eau et des
+                    nappes, l’irrigation peut fragiliser les milieux aquatiques,
+                    déjà mis à l’épreuve par le changement climatique. Entre
+                    2010 et 2020, certaines régions du nord et de l’est ont
+                    fortement accru leurs surfaces irriguées, alors que d’autres
+                    restent très peu équipées. Ainsi, certains territoires
+                    irriguent plus de 40 % de leur SAU, tandis que d’autres n’en
+                    irriguent que 1 %.
                   </p>
+                  <p>
+                    Avec une ressource en eau qui diminue et des usages
+                    multiples, ce modèle peut-il tenir dans le temps ? À
+                    l’échelle locale, les territoires devront questionner la
+                    pérennité de l’irrigation face aux évolutions climatiques et
+                    aux autres besoins en eau.
+                  </p>
+                  <ul>
+                    <li>
+                      Les prélèvements agricoles ont augmenté de 13 % entre 2010
+                      et 2020.
+                    </li>
+                    <li>
+                      En 2020, 1 million d’hectares équipés pour l’irrigation
+                      n’ont finalement pas été irrigués.
+                    </li>
+                    <li>
+                      En 2020, l’eau prélevée pour l’irrigation varie fortement
+                      : de 40 m³/ha en Meurthe-et-Moselle à plus de 9 700 m³/ha
+                      dans les Pyrénées-Orientales.
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div className="w-3/5">
                 <div className={styles.graphWrapper}>
                   <p style={{ padding: '1em', margin: '0' }}>
-                    <b>Part de la superficie irriguée dans la SAU en 2020</b>
+                    <b>Part des surfaces irriguées</b>
                   </p>
                   <MapSurfacesIrriguees carteCommunes={communesMap} />
                   <div
@@ -89,7 +130,9 @@ export const SurfacesIrriguees = ({
                   >
                     <LegendCompColor legends={surfacesIrrigueesLegend} />
                   </div>
-                  <p style={{ padding: '1em', margin: '0' }}>Source : XXXXXX</p>
+                  <p style={{ padding: '1em', margin: '0' }}>
+                    Source : Agreste - Recensement agricole 2020
+                  </p>
                 </div>
               </div>
             </>

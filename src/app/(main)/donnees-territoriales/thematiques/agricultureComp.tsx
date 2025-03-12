@@ -30,7 +30,7 @@ interface Props {
 
 const allComps = [
   {
-    titre: "Chefs d'exploitation de plus de 55 ans",
+    titre: "Chefs d'exploitation",
     Component: ({
       agriculture,
       carteCommunes
@@ -62,9 +62,7 @@ const AgricultureComp = ({
   agriculture
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Renouvellement agricole');
-  const [selectedSubTab, setSelectedSubTab] = useState(
-    "Chefs d'exploitation de plus de 55 ans"
-  );
+  const [selectedSubTab, setSelectedSubTab] = useState("Chefs d'exploitation");
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
   const codgeo = searchParams.get('codgeo')!;
