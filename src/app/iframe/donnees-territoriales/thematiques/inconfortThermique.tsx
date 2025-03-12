@@ -32,7 +32,6 @@ const InconfortThermique = async (props: { searchParams: SearchParams }) => {
             data={theme}
             inconfortThermique={dbInconfortThermique!}
             carteCommunes={carteCommunes}
-            collectivite={collectivite!}
             // departement={departement}
           />
         </Suspense>
