@@ -16,11 +16,11 @@ exports.$Enums = {};
 
 /**
  * Prisma Client JS version: 6.3.0
- * Query Engine version: a9055b89e58b4b5bfb59600785423b1db3d0e75d
+ * Query Engine version: 173f8d54f8d52e692c7e27e72a88314ec7aeff60
  */
 Prisma.prismaVersion = {
   client: '6.3.0',
-  engine: 'a9055b89e58b4b5bfb59600785423b1db3d0e75d'
+  engine: '173f8d54f8d52e692c7e27e72a88314ec7aeff60'
 };
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -181,13 +181,16 @@ exports.Prisma.Clc_epciScalarFieldEnum = {
 
 exports.Prisma.Collectivites_searchbarScalarFieldEnum = {
   index: 'index',
-  code_commune: 'code_commune',
-  coordinates: 'coordinates',
-  libelle_commune: 'libelle_commune',
-  code_epci: 'code_epci',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
   libelle_epci: 'libelle_epci',
   departement: 'departement',
   region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
   search_code: 'search_code',
   search_libelle: 'search_libelle'
 };
@@ -326,6 +329,10 @@ exports.Prisma.Consommation_espaces_nafScalarFieldEnum = {
   libelle_epci: 'libelle_epci',
   departement: 'departement',
   region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
   naf09art10: 'naf09art10',
   art09act10: 'art09act10',
   art09hab10: 'art09hab10',

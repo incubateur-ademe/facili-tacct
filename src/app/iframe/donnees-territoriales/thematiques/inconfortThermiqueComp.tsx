@@ -13,12 +13,7 @@ import { FragiliteEconomique } from '@/components/themes/inconfortThermique/frag
 import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grand-age-isolement';
 import { TravailExterieur } from '@/components/themes/inconfortThermique/travail-exterieur';
 import { TabTooltip } from '@/components/utils/TabTooltip';
-import {
-  CarteCommunes,
-  CLC,
-  CollectivitesSearchbar,
-  InconfortThermique
-} from '@/lib/postgres/models';
+import { CarteCommunes, CLC, InconfortThermique } from '@/lib/postgres/models';
 import { GetClcEpci } from '@/lib/queries/postgis/cartographie';
 import dynamic from 'next/dynamic';
 import { useStyles } from 'tss-react/dsfr';
@@ -34,7 +29,6 @@ interface Props {
   }>;
   carteCommunes: CarteCommunes[];
   inconfortThermique: InconfortThermique[];
-  collectivite: CollectivitesSearchbar[];
   departement?: InconfortThermique[];
 }
 
@@ -111,7 +105,6 @@ const InconfortThermiqueComp = ({
   data,
   carteCommunes,
   inconfortThermique,
-  collectivite,
   departement
 }: Props) => {
   const [clc, setClc] = useState<CLC[]>();
@@ -237,7 +230,6 @@ const InconfortThermiqueComp = ({
                       carteCommunes={carteCommunes}
                       activeDataTab={selectedSubTab}
                       clc={clc || []}
-                      collectivite={collectivite}
                       departement={departement}
                     />
                   </Suspense>

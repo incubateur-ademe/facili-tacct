@@ -68,12 +68,12 @@ export const GetQualiteEauxBaignade = async (
       const departement =
         await PrismaPostgres.collectivites_searchbar.findFirst({
           where: {
-            code_epci: code
+            epci: code
           }
         });
       const value = await PrismaPostgres.qualite_sites_baignade.findMany({
         where: {
-          DEP_NUM: departement?.departement
+          DEP_NUM: departement?.departement ?? ''
         }
       });
       console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
