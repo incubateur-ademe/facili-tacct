@@ -13,14 +13,17 @@ const colors: { [key: string]: string } = {
   Accidentelle: '#038278',
   'Involontaire (particulier)': '#095D55',
   'Involontaire (travaux)': '#05413B',
-  Naturelle: '#D3EDEB'
+  Naturelle: '#D3EDEB',
+  Inconnue: '#d7f8ff'
 };
 
 const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
   const { incendiesForet } = props;
   const countTypes = CountOcc(incendiesForet, 'nature');
+  countTypes['Inconnue'] = countTypes['null'] ?? 0;
   const causesInconnues = countTypes['null'];
   delete countTypes['null'];
+
   const graphData = Object.entries(countTypes).map(([id, value]) => ({
     id,
     value
@@ -79,7 +82,7 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
           }}
         >
           <animated.tspan>{label} </animated.tspan>
-          <animated.tspan style={{ fontWeight: 600 }}>
+          <animated.tspan style={{ fontWeight: 600 }} x="0" dy="1.2em">
             {datum.value}{' '}
           </animated.tspan>
           <animated.tspan>
@@ -99,7 +102,7 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
         data={graphData}
         margin={{ top: 60, right: 80, bottom: 60, left: 80 }}
         colors={(graphData) => colors[graphData.id]}
-        isInteractive={false}
+        isInteractive={true}
         innerRadius={0.5}
         padAngle={1}
         cornerRadius={3}
