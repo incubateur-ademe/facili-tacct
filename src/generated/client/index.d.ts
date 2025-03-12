@@ -590,7 +590,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 6.3.0
-   * Query Engine version: a9055b89e58b4b5bfb59600785423b1db3d0e75d
+   * Query Engine version: 173f8d54f8d52e692c7e27e72a88314ec7aeff60
    */
   export type PrismaVersion = {
     client: string;
@@ -6187,39 +6187,48 @@ export namespace Prisma {
 
   export type Collectivites_searchbarMinAggregateOutputType = {
     index: bigint | null;
-    code_commune: string | null;
-    coordinates: string | null;
-    libelle_commune: string | null;
-    code_epci: string | null;
+    code_geographique: string | null;
+    libelle_geographique: string | null;
+    epci: string | null;
     libelle_epci: string | null;
     departement: string | null;
     region: string | null;
+    ept: string | null;
+    libelle_petr: string | null;
+    code_pnr: string | null;
+    libelle_pnr: string | null;
     search_code: string | null;
     search_libelle: string | null;
   };
 
   export type Collectivites_searchbarMaxAggregateOutputType = {
     index: bigint | null;
-    code_commune: string | null;
-    coordinates: string | null;
-    libelle_commune: string | null;
-    code_epci: string | null;
+    code_geographique: string | null;
+    libelle_geographique: string | null;
+    epci: string | null;
     libelle_epci: string | null;
     departement: string | null;
     region: string | null;
+    ept: string | null;
+    libelle_petr: string | null;
+    code_pnr: string | null;
+    libelle_pnr: string | null;
     search_code: string | null;
     search_libelle: string | null;
   };
 
   export type Collectivites_searchbarCountAggregateOutputType = {
     index: number;
-    code_commune: number;
-    coordinates: number;
-    libelle_commune: number;
-    code_epci: number;
+    code_geographique: number;
+    libelle_geographique: number;
+    epci: number;
     libelle_epci: number;
     departement: number;
     region: number;
+    ept: number;
+    libelle_petr: number;
+    code_pnr: number;
+    libelle_pnr: number;
     search_code: number;
     search_libelle: number;
     _all: number;
@@ -6235,39 +6244,48 @@ export namespace Prisma {
 
   export type Collectivites_searchbarMinAggregateInputType = {
     index?: true;
-    code_commune?: true;
-    coordinates?: true;
-    libelle_commune?: true;
-    code_epci?: true;
+    code_geographique?: true;
+    libelle_geographique?: true;
+    epci?: true;
     libelle_epci?: true;
     departement?: true;
     region?: true;
+    ept?: true;
+    libelle_petr?: true;
+    code_pnr?: true;
+    libelle_pnr?: true;
     search_code?: true;
     search_libelle?: true;
   };
 
   export type Collectivites_searchbarMaxAggregateInputType = {
     index?: true;
-    code_commune?: true;
-    coordinates?: true;
-    libelle_commune?: true;
-    code_epci?: true;
+    code_geographique?: true;
+    libelle_geographique?: true;
+    epci?: true;
     libelle_epci?: true;
     departement?: true;
     region?: true;
+    ept?: true;
+    libelle_petr?: true;
+    code_pnr?: true;
+    libelle_pnr?: true;
     search_code?: true;
     search_libelle?: true;
   };
 
   export type Collectivites_searchbarCountAggregateInputType = {
     index?: true;
-    code_commune?: true;
-    coordinates?: true;
-    libelle_commune?: true;
-    code_epci?: true;
+    code_geographique?: true;
+    libelle_geographique?: true;
+    epci?: true;
     libelle_epci?: true;
     departement?: true;
     region?: true;
+    ept?: true;
+    libelle_petr?: true;
+    code_pnr?: true;
+    libelle_pnr?: true;
     search_code?: true;
     search_libelle?: true;
     _all?: true;
@@ -6372,15 +6390,18 @@ export namespace Prisma {
 
   export type Collectivites_searchbarGroupByOutputType = {
     index: bigint;
-    code_commune: string | null;
-    coordinates: string | null;
-    libelle_commune: string | null;
-    code_epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: string;
-    search_code: string;
-    search_libelle: string;
+    code_geographique: string | null;
+    libelle_geographique: string | null;
+    epci: string | null;
+    libelle_epci: string | null;
+    departement: string | null;
+    region: string | null;
+    ept: string | null;
+    libelle_petr: string | null;
+    code_pnr: string | null;
+    libelle_pnr: string | null;
+    search_code: string | null;
+    search_libelle: string | null;
     _count: Collectivites_searchbarCountAggregateOutputType | null;
     _avg: Collectivites_searchbarAvgAggregateOutputType | null;
     _sum: Collectivites_searchbarSumAggregateOutputType | null;
@@ -6408,13 +6429,16 @@ export namespace Prisma {
   > = $Extensions.GetSelect<
     {
       index?: boolean;
-      code_commune?: boolean;
-      coordinates?: boolean;
-      libelle_commune?: boolean;
-      code_epci?: boolean;
+      code_geographique?: boolean;
+      libelle_geographique?: boolean;
+      epci?: boolean;
       libelle_epci?: boolean;
       departement?: boolean;
       region?: boolean;
+      ept?: boolean;
+      libelle_petr?: boolean;
+      code_pnr?: boolean;
+      libelle_pnr?: boolean;
       search_code?: boolean;
       search_libelle?: boolean;
     },
@@ -6426,13 +6450,16 @@ export namespace Prisma {
   > = $Extensions.GetSelect<
     {
       index?: boolean;
-      code_commune?: boolean;
-      coordinates?: boolean;
-      libelle_commune?: boolean;
-      code_epci?: boolean;
+      code_geographique?: boolean;
+      libelle_geographique?: boolean;
+      epci?: boolean;
       libelle_epci?: boolean;
       departement?: boolean;
       region?: boolean;
+      ept?: boolean;
+      libelle_petr?: boolean;
+      code_pnr?: boolean;
+      libelle_pnr?: boolean;
       search_code?: boolean;
       search_libelle?: boolean;
     },
@@ -6444,13 +6471,16 @@ export namespace Prisma {
   > = $Extensions.GetSelect<
     {
       index?: boolean;
-      code_commune?: boolean;
-      coordinates?: boolean;
-      libelle_commune?: boolean;
-      code_epci?: boolean;
+      code_geographique?: boolean;
+      libelle_geographique?: boolean;
+      epci?: boolean;
       libelle_epci?: boolean;
       departement?: boolean;
       region?: boolean;
+      ept?: boolean;
+      libelle_petr?: boolean;
+      code_pnr?: boolean;
+      libelle_pnr?: boolean;
       search_code?: boolean;
       search_libelle?: boolean;
     },
@@ -6459,13 +6489,16 @@ export namespace Prisma {
 
   export type collectivites_searchbarSelectScalar = {
     index?: boolean;
-    code_commune?: boolean;
-    coordinates?: boolean;
-    libelle_commune?: boolean;
-    code_epci?: boolean;
+    code_geographique?: boolean;
+    libelle_geographique?: boolean;
+    epci?: boolean;
     libelle_epci?: boolean;
     departement?: boolean;
     region?: boolean;
+    ept?: boolean;
+    libelle_petr?: boolean;
+    code_pnr?: boolean;
+    libelle_pnr?: boolean;
     search_code?: boolean;
     search_libelle?: boolean;
   };
@@ -6474,13 +6507,16 @@ export namespace Prisma {
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = $Extensions.GetOmit<
     | 'index'
-    | 'code_commune'
-    | 'coordinates'
-    | 'libelle_commune'
-    | 'code_epci'
+    | 'code_geographique'
+    | 'libelle_geographique'
+    | 'epci'
     | 'libelle_epci'
     | 'departement'
     | 'region'
+    | 'ept'
+    | 'libelle_petr'
+    | 'code_pnr'
+    | 'libelle_pnr'
     | 'search_code'
     | 'search_libelle',
     ExtArgs['result']['collectivites_searchbar']
@@ -6494,15 +6530,18 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<
       {
         index: bigint;
-        code_commune: string | null;
-        coordinates: string | null;
-        libelle_commune: string | null;
-        code_epci: string;
-        libelle_epci: string;
-        departement: string;
-        region: string;
-        search_code: string;
-        search_libelle: string;
+        code_geographique: string | null;
+        libelle_geographique: string | null;
+        epci: string | null;
+        libelle_epci: string | null;
+        departement: string | null;
+        region: string | null;
+        ept: string | null;
+        libelle_petr: string | null;
+        code_pnr: string | null;
+        libelle_pnr: string | null;
+        search_code: string | null;
+        search_libelle: string | null;
       },
       ExtArgs['result']['collectivites_searchbar']
     >;
@@ -7117,13 +7156,19 @@ export namespace Prisma {
    */
   interface collectivites_searchbarFieldRefs {
     readonly index: FieldRef<'collectivites_searchbar', 'BigInt'>;
-    readonly code_commune: FieldRef<'collectivites_searchbar', 'String'>;
-    readonly coordinates: FieldRef<'collectivites_searchbar', 'String'>;
-    readonly libelle_commune: FieldRef<'collectivites_searchbar', 'String'>;
-    readonly code_epci: FieldRef<'collectivites_searchbar', 'String'>;
+    readonly code_geographique: FieldRef<'collectivites_searchbar', 'String'>;
+    readonly libelle_geographique: FieldRef<
+      'collectivites_searchbar',
+      'String'
+    >;
+    readonly epci: FieldRef<'collectivites_searchbar', 'String'>;
     readonly libelle_epci: FieldRef<'collectivites_searchbar', 'String'>;
     readonly departement: FieldRef<'collectivites_searchbar', 'String'>;
     readonly region: FieldRef<'collectivites_searchbar', 'String'>;
+    readonly ept: FieldRef<'collectivites_searchbar', 'String'>;
+    readonly libelle_petr: FieldRef<'collectivites_searchbar', 'String'>;
+    readonly code_pnr: FieldRef<'collectivites_searchbar', 'String'>;
+    readonly libelle_pnr: FieldRef<'collectivites_searchbar', 'String'>;
     readonly search_code: FieldRef<'collectivites_searchbar', 'String'>;
     readonly search_libelle: FieldRef<'collectivites_searchbar', 'String'>;
   }
@@ -19576,6 +19621,10 @@ export namespace Prisma {
     libelle_epci: string | null;
     departement: string | null;
     region: number | null;
+    ept: string | null;
+    libelle_petr: string | null;
+    code_pnr: string | null;
+    libelle_pnr: string | null;
     naf09art10: number | null;
     art09act10: number | null;
     art09hab10: number | null;
@@ -19708,6 +19757,10 @@ export namespace Prisma {
     libelle_epci: string | null;
     departement: string | null;
     region: number | null;
+    ept: string | null;
+    libelle_petr: string | null;
+    code_pnr: string | null;
+    libelle_pnr: string | null;
     naf09art10: number | null;
     art09act10: number | null;
     art09hab10: number | null;
@@ -19840,6 +19893,10 @@ export namespace Prisma {
     libelle_epci: number;
     departement: number;
     region: number;
+    ept: number;
+    libelle_petr: number;
+    code_pnr: number;
+    libelle_pnr: number;
     naf09art10: number;
     art09act10: number;
     art09hab10: number;
@@ -20227,6 +20284,10 @@ export namespace Prisma {
     libelle_epci?: true;
     departement?: true;
     region?: true;
+    ept?: true;
+    libelle_petr?: true;
+    code_pnr?: true;
+    libelle_pnr?: true;
     naf09art10?: true;
     art09act10?: true;
     art09hab10?: true;
@@ -20359,6 +20420,10 @@ export namespace Prisma {
     libelle_epci?: true;
     departement?: true;
     region?: true;
+    ept?: true;
+    libelle_petr?: true;
+    code_pnr?: true;
+    libelle_pnr?: true;
     naf09art10?: true;
     art09act10?: true;
     art09hab10?: true;
@@ -20491,6 +20556,10 @@ export namespace Prisma {
     libelle_epci?: true;
     departement?: true;
     region?: true;
+    ept?: true;
+    libelle_petr?: true;
+    code_pnr?: true;
+    libelle_pnr?: true;
     naf09art10?: true;
     art09act10?: true;
     art09hab10?: true;
@@ -20721,6 +20790,10 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
+    ept: string | null;
+    libelle_petr: string | null;
+    code_pnr: string | null;
+    libelle_pnr: string | null;
     naf09art10: number;
     art09act10: number;
     art09hab10: number;
@@ -20876,6 +20949,10 @@ export namespace Prisma {
       libelle_epci?: boolean;
       departement?: boolean;
       region?: boolean;
+      ept?: boolean;
+      libelle_petr?: boolean;
+      code_pnr?: boolean;
+      libelle_pnr?: boolean;
       naf09art10?: boolean;
       art09act10?: boolean;
       art09hab10?: boolean;
@@ -21013,6 +21090,10 @@ export namespace Prisma {
       libelle_epci?: boolean;
       departement?: boolean;
       region?: boolean;
+      ept?: boolean;
+      libelle_petr?: boolean;
+      code_pnr?: boolean;
+      libelle_pnr?: boolean;
       naf09art10?: boolean;
       art09act10?: boolean;
       art09hab10?: boolean;
@@ -21150,6 +21231,10 @@ export namespace Prisma {
       libelle_epci?: boolean;
       departement?: boolean;
       region?: boolean;
+      ept?: boolean;
+      libelle_petr?: boolean;
+      code_pnr?: boolean;
+      libelle_pnr?: boolean;
       naf09art10?: boolean;
       art09act10?: boolean;
       art09hab10?: boolean;
@@ -21284,6 +21369,10 @@ export namespace Prisma {
     libelle_epci?: boolean;
     departement?: boolean;
     region?: boolean;
+    ept?: boolean;
+    libelle_petr?: boolean;
+    code_pnr?: boolean;
+    libelle_pnr?: boolean;
     naf09art10?: boolean;
     art09act10?: boolean;
     art09hab10?: boolean;
@@ -21418,6 +21507,10 @@ export namespace Prisma {
     | 'libelle_epci'
     | 'departement'
     | 'region'
+    | 'ept'
+    | 'libelle_petr'
+    | 'code_pnr'
+    | 'libelle_pnr'
     | 'naf09art10'
     | 'art09act10'
     | 'art09hab10'
@@ -21557,6 +21650,10 @@ export namespace Prisma {
         libelle_epci: string;
         departement: string;
         region: number;
+        ept: string | null;
+        libelle_petr: string | null;
+        code_pnr: string | null;
+        libelle_pnr: string | null;
         naf09art10: number;
         art09act10: number;
         art09hab10: number;
@@ -22302,6 +22399,10 @@ export namespace Prisma {
     readonly libelle_epci: FieldRef<'consommation_espaces_naf', 'String'>;
     readonly departement: FieldRef<'consommation_espaces_naf', 'String'>;
     readonly region: FieldRef<'consommation_espaces_naf', 'Int'>;
+    readonly ept: FieldRef<'consommation_espaces_naf', 'String'>;
+    readonly libelle_petr: FieldRef<'consommation_espaces_naf', 'String'>;
+    readonly code_pnr: FieldRef<'consommation_espaces_naf', 'String'>;
+    readonly libelle_pnr: FieldRef<'consommation_espaces_naf', 'String'>;
     readonly naf09art10: FieldRef<'consommation_espaces_naf', 'Float'>;
     readonly art09act10: FieldRef<'consommation_espaces_naf', 'Float'>;
     readonly art09hab10: FieldRef<'consommation_espaces_naf', 'Float'>;
@@ -33601,13 +33702,16 @@ export namespace Prisma {
 
   export const Collectivites_searchbarScalarFieldEnum: {
     index: 'index';
-    code_commune: 'code_commune';
-    coordinates: 'coordinates';
-    libelle_commune: 'libelle_commune';
-    code_epci: 'code_epci';
+    code_geographique: 'code_geographique';
+    libelle_geographique: 'libelle_geographique';
+    epci: 'epci';
     libelle_epci: 'libelle_epci';
     departement: 'departement';
     region: 'region';
+    ept: 'ept';
+    libelle_petr: 'libelle_petr';
+    code_pnr: 'code_pnr';
+    libelle_pnr: 'libelle_pnr';
     search_code: 'search_code';
     search_libelle: 'search_libelle';
   };
@@ -33776,6 +33880,10 @@ export namespace Prisma {
     libelle_epci: 'libelle_epci';
     departement: 'departement';
     region: 'region';
+    ept: 'ept';
+    libelle_petr: 'libelle_petr';
+    code_pnr: 'code_pnr';
+    libelle_pnr: 'libelle_pnr';
     naf09art10: 'naf09art10';
     art09act10: 'art09act10';
     art09hab10: 'art09hab10';
@@ -34875,37 +34983,58 @@ export namespace Prisma {
       | collectivites_searchbarWhereInput
       | collectivites_searchbarWhereInput[];
     index?: BigIntFilter<'collectivites_searchbar'> | bigint | number;
-    code_commune?:
+    code_geographique?:
       | StringNullableFilter<'collectivites_searchbar'>
       | string
       | null;
-    coordinates?:
+    libelle_geographique?:
       | StringNullableFilter<'collectivites_searchbar'>
       | string
       | null;
-    libelle_commune?:
+    epci?: StringNullableFilter<'collectivites_searchbar'> | string | null;
+    libelle_epci?:
       | StringNullableFilter<'collectivites_searchbar'>
       | string
       | null;
-    code_epci?: StringFilter<'collectivites_searchbar'> | string;
-    libelle_epci?: StringFilter<'collectivites_searchbar'> | string;
-    departement?: StringFilter<'collectivites_searchbar'> | string;
-    region?: StringFilter<'collectivites_searchbar'> | string;
-    search_code?: StringFilter<'collectivites_searchbar'> | string;
-    search_libelle?: StringFilter<'collectivites_searchbar'> | string;
+    departement?:
+      | StringNullableFilter<'collectivites_searchbar'>
+      | string
+      | null;
+    region?: StringNullableFilter<'collectivites_searchbar'> | string | null;
+    ept?: StringNullableFilter<'collectivites_searchbar'> | string | null;
+    libelle_petr?:
+      | StringNullableFilter<'collectivites_searchbar'>
+      | string
+      | null;
+    code_pnr?: StringNullableFilter<'collectivites_searchbar'> | string | null;
+    libelle_pnr?:
+      | StringNullableFilter<'collectivites_searchbar'>
+      | string
+      | null;
+    search_code?:
+      | StringNullableFilter<'collectivites_searchbar'>
+      | string
+      | null;
+    search_libelle?:
+      | StringNullableFilter<'collectivites_searchbar'>
+      | string
+      | null;
   };
 
   export type collectivites_searchbarOrderByWithRelationInput = {
     index?: SortOrder;
-    code_commune?: SortOrderInput | SortOrder;
-    coordinates?: SortOrderInput | SortOrder;
-    libelle_commune?: SortOrderInput | SortOrder;
-    code_epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    search_code?: SortOrder;
-    search_libelle?: SortOrder;
+    code_geographique?: SortOrderInput | SortOrder;
+    libelle_geographique?: SortOrderInput | SortOrder;
+    epci?: SortOrderInput | SortOrder;
+    libelle_epci?: SortOrderInput | SortOrder;
+    departement?: SortOrderInput | SortOrder;
+    region?: SortOrderInput | SortOrder;
+    ept?: SortOrderInput | SortOrder;
+    libelle_petr?: SortOrderInput | SortOrder;
+    code_pnr?: SortOrderInput | SortOrder;
+    libelle_pnr?: SortOrderInput | SortOrder;
+    search_code?: SortOrderInput | SortOrder;
+    search_libelle?: SortOrderInput | SortOrder;
   };
 
   export type collectivites_searchbarWhereUniqueInput = Prisma.AtLeast<
@@ -34918,39 +35047,63 @@ export namespace Prisma {
       NOT?:
         | collectivites_searchbarWhereInput
         | collectivites_searchbarWhereInput[];
-      code_commune?:
+      code_geographique?:
         | StringNullableFilter<'collectivites_searchbar'>
         | string
         | null;
-      coordinates?:
+      libelle_geographique?:
         | StringNullableFilter<'collectivites_searchbar'>
         | string
         | null;
-      libelle_commune?:
+      epci?: StringNullableFilter<'collectivites_searchbar'> | string | null;
+      libelle_epci?:
         | StringNullableFilter<'collectivites_searchbar'>
         | string
         | null;
-      code_epci?: StringFilter<'collectivites_searchbar'> | string;
-      libelle_epci?: StringFilter<'collectivites_searchbar'> | string;
-      departement?: StringFilter<'collectivites_searchbar'> | string;
-      region?: StringFilter<'collectivites_searchbar'> | string;
-      search_code?: StringFilter<'collectivites_searchbar'> | string;
-      search_libelle?: StringFilter<'collectivites_searchbar'> | string;
+      departement?:
+        | StringNullableFilter<'collectivites_searchbar'>
+        | string
+        | null;
+      region?: StringNullableFilter<'collectivites_searchbar'> | string | null;
+      ept?: StringNullableFilter<'collectivites_searchbar'> | string | null;
+      libelle_petr?:
+        | StringNullableFilter<'collectivites_searchbar'>
+        | string
+        | null;
+      code_pnr?:
+        | StringNullableFilter<'collectivites_searchbar'>
+        | string
+        | null;
+      libelle_pnr?:
+        | StringNullableFilter<'collectivites_searchbar'>
+        | string
+        | null;
+      search_code?:
+        | StringNullableFilter<'collectivites_searchbar'>
+        | string
+        | null;
+      search_libelle?:
+        | StringNullableFilter<'collectivites_searchbar'>
+        | string
+        | null;
     },
     'index'
   >;
 
   export type collectivites_searchbarOrderByWithAggregationInput = {
     index?: SortOrder;
-    code_commune?: SortOrderInput | SortOrder;
-    coordinates?: SortOrderInput | SortOrder;
-    libelle_commune?: SortOrderInput | SortOrder;
-    code_epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    search_code?: SortOrder;
-    search_libelle?: SortOrder;
+    code_geographique?: SortOrderInput | SortOrder;
+    libelle_geographique?: SortOrderInput | SortOrder;
+    epci?: SortOrderInput | SortOrder;
+    libelle_epci?: SortOrderInput | SortOrder;
+    departement?: SortOrderInput | SortOrder;
+    region?: SortOrderInput | SortOrder;
+    ept?: SortOrderInput | SortOrder;
+    libelle_petr?: SortOrderInput | SortOrder;
+    code_pnr?: SortOrderInput | SortOrder;
+    libelle_pnr?: SortOrderInput | SortOrder;
+    search_code?: SortOrderInput | SortOrder;
+    search_libelle?: SortOrderInput | SortOrder;
     _count?: collectivites_searchbarCountOrderByAggregateInput;
     _avg?: collectivites_searchbarAvgOrderByAggregateInput;
     _max?: collectivites_searchbarMaxOrderByAggregateInput;
@@ -34970,32 +35123,54 @@ export namespace Prisma {
       | BigIntWithAggregatesFilter<'collectivites_searchbar'>
       | bigint
       | number;
-    code_commune?:
+    code_geographique?:
       | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
       | string
       | null;
-    coordinates?:
+    libelle_geographique?:
       | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
       | string
       | null;
-    libelle_commune?:
+    epci?:
       | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
       | string
       | null;
-    code_epci?: StringWithAggregatesFilter<'collectivites_searchbar'> | string;
     libelle_epci?:
-      | StringWithAggregatesFilter<'collectivites_searchbar'>
-      | string;
+      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
+      | string
+      | null;
     departement?:
-      | StringWithAggregatesFilter<'collectivites_searchbar'>
-      | string;
-    region?: StringWithAggregatesFilter<'collectivites_searchbar'> | string;
+      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
+      | string
+      | null;
+    region?:
+      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
+      | string
+      | null;
+    ept?:
+      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
+      | string
+      | null;
+    libelle_petr?:
+      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
+      | string
+      | null;
+    code_pnr?:
+      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
+      | string
+      | null;
+    libelle_pnr?:
+      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
+      | string
+      | null;
     search_code?:
-      | StringWithAggregatesFilter<'collectivites_searchbar'>
-      | string;
+      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
+      | string
+      | null;
     search_libelle?:
-      | StringWithAggregatesFilter<'collectivites_searchbar'>
-      | string;
+      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
+      | string
+      | null;
   };
 
   export type biodiversiteWhereInput = {
@@ -35973,6 +36148,16 @@ export namespace Prisma {
     libelle_epci?: StringFilter<'consommation_espaces_naf'> | string;
     departement?: StringFilter<'consommation_espaces_naf'> | string;
     region?: IntFilter<'consommation_espaces_naf'> | number;
+    ept?: StringNullableFilter<'consommation_espaces_naf'> | string | null;
+    libelle_petr?:
+      | StringNullableFilter<'consommation_espaces_naf'>
+      | string
+      | null;
+    code_pnr?: StringNullableFilter<'consommation_espaces_naf'> | string | null;
+    libelle_pnr?:
+      | StringNullableFilter<'consommation_espaces_naf'>
+      | string
+      | null;
     naf09art10?: FloatFilter<'consommation_espaces_naf'> | number;
     art09act10?: FloatFilter<'consommation_espaces_naf'> | number;
     art09hab10?: FloatFilter<'consommation_espaces_naf'> | number;
@@ -36108,6 +36293,10 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrderInput | SortOrder;
+    libelle_petr?: SortOrderInput | SortOrder;
+    code_pnr?: SortOrderInput | SortOrder;
+    libelle_pnr?: SortOrderInput | SortOrder;
     naf09art10?: SortOrder;
     art09act10?: SortOrder;
     art09hab10?: SortOrder;
@@ -36248,6 +36437,19 @@ export namespace Prisma {
       libelle_epci?: StringFilter<'consommation_espaces_naf'> | string;
       departement?: StringFilter<'consommation_espaces_naf'> | string;
       region?: IntFilter<'consommation_espaces_naf'> | number;
+      ept?: StringNullableFilter<'consommation_espaces_naf'> | string | null;
+      libelle_petr?:
+        | StringNullableFilter<'consommation_espaces_naf'>
+        | string
+        | null;
+      code_pnr?:
+        | StringNullableFilter<'consommation_espaces_naf'>
+        | string
+        | null;
+      libelle_pnr?:
+        | StringNullableFilter<'consommation_espaces_naf'>
+        | string
+        | null;
       naf09art10?: FloatFilter<'consommation_espaces_naf'> | number;
       art09act10?: FloatFilter<'consommation_espaces_naf'> | number;
       art09hab10?: FloatFilter<'consommation_espaces_naf'> | number;
@@ -36385,6 +36587,10 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrderInput | SortOrder;
+    libelle_petr?: SortOrderInput | SortOrder;
+    code_pnr?: SortOrderInput | SortOrder;
+    libelle_pnr?: SortOrderInput | SortOrder;
     naf09art10?: SortOrder;
     art09act10?: SortOrder;
     art09hab10?: SortOrder;
@@ -36540,6 +36746,22 @@ export namespace Prisma {
       | StringWithAggregatesFilter<'consommation_espaces_naf'>
       | string;
     region?: IntWithAggregatesFilter<'consommation_espaces_naf'> | number;
+    ept?:
+      | StringNullableWithAggregatesFilter<'consommation_espaces_naf'>
+      | string
+      | null;
+    libelle_petr?:
+      | StringNullableWithAggregatesFilter<'consommation_espaces_naf'>
+      | string
+      | null;
+    code_pnr?:
+      | StringNullableWithAggregatesFilter<'consommation_espaces_naf'>
+      | string
+      | null;
+    libelle_pnr?:
+      | StringNullableWithAggregatesFilter<'consommation_espaces_naf'>
+      | string
+      | null;
     naf09art10?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
     art09act10?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
     art09hab10?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
@@ -37979,93 +38201,138 @@ export namespace Prisma {
 
   export type collectivites_searchbarCreateInput = {
     index: bigint | number;
-    code_commune?: string | null;
-    coordinates?: string | null;
-    libelle_commune?: string | null;
-    code_epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: string;
-    search_code: string;
-    search_libelle: string;
+    code_geographique?: string | null;
+    libelle_geographique?: string | null;
+    epci?: string | null;
+    libelle_epci?: string | null;
+    departement?: string | null;
+    region?: string | null;
+    ept?: string | null;
+    libelle_petr?: string | null;
+    code_pnr?: string | null;
+    libelle_pnr?: string | null;
+    search_code?: string | null;
+    search_libelle?: string | null;
   };
 
   export type collectivites_searchbarUncheckedCreateInput = {
     index: bigint | number;
-    code_commune?: string | null;
-    coordinates?: string | null;
-    libelle_commune?: string | null;
-    code_epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: string;
-    search_code: string;
-    search_libelle: string;
+    code_geographique?: string | null;
+    libelle_geographique?: string | null;
+    epci?: string | null;
+    libelle_epci?: string | null;
+    departement?: string | null;
+    region?: string | null;
+    ept?: string | null;
+    libelle_petr?: string | null;
+    code_pnr?: string | null;
+    libelle_pnr?: string | null;
+    search_code?: string | null;
+    search_libelle?: string | null;
   };
 
   export type collectivites_searchbarUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_commune?: NullableStringFieldUpdateOperationsInput | string | null;
-    coordinates?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: StringFieldUpdateOperationsInput | string;
-    search_code?: StringFieldUpdateOperationsInput | string;
-    search_libelle?: StringFieldUpdateOperationsInput | string;
+    code_geographique?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    libelle_geographique?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    epci?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
+    departement?: NullableStringFieldUpdateOperationsInput | string | null;
+    region?: NullableStringFieldUpdateOperationsInput | string | null;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_code?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null;
   };
 
   export type collectivites_searchbarUncheckedUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_commune?: NullableStringFieldUpdateOperationsInput | string | null;
-    coordinates?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: StringFieldUpdateOperationsInput | string;
-    search_code?: StringFieldUpdateOperationsInput | string;
-    search_libelle?: StringFieldUpdateOperationsInput | string;
+    code_geographique?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    libelle_geographique?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    epci?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
+    departement?: NullableStringFieldUpdateOperationsInput | string | null;
+    region?: NullableStringFieldUpdateOperationsInput | string | null;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_code?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null;
   };
 
   export type collectivites_searchbarCreateManyInput = {
     index: bigint | number;
-    code_commune?: string | null;
-    coordinates?: string | null;
-    libelle_commune?: string | null;
-    code_epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: string;
-    search_code: string;
-    search_libelle: string;
+    code_geographique?: string | null;
+    libelle_geographique?: string | null;
+    epci?: string | null;
+    libelle_epci?: string | null;
+    departement?: string | null;
+    region?: string | null;
+    ept?: string | null;
+    libelle_petr?: string | null;
+    code_pnr?: string | null;
+    libelle_pnr?: string | null;
+    search_code?: string | null;
+    search_libelle?: string | null;
   };
 
   export type collectivites_searchbarUpdateManyMutationInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_commune?: NullableStringFieldUpdateOperationsInput | string | null;
-    coordinates?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: StringFieldUpdateOperationsInput | string;
-    search_code?: StringFieldUpdateOperationsInput | string;
-    search_libelle?: StringFieldUpdateOperationsInput | string;
+    code_geographique?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    libelle_geographique?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    epci?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
+    departement?: NullableStringFieldUpdateOperationsInput | string | null;
+    region?: NullableStringFieldUpdateOperationsInput | string | null;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_code?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null;
   };
 
   export type collectivites_searchbarUncheckedUpdateManyInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_commune?: NullableStringFieldUpdateOperationsInput | string | null;
-    coordinates?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_commune?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: StringFieldUpdateOperationsInput | string;
-    search_code?: StringFieldUpdateOperationsInput | string;
-    search_libelle?: StringFieldUpdateOperationsInput | string;
+    code_geographique?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    libelle_geographique?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
+    epci?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
+    departement?: NullableStringFieldUpdateOperationsInput | string | null;
+    region?: NullableStringFieldUpdateOperationsInput | string | null;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_code?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null;
   };
 
   export type biodiversiteCreateInput = {
@@ -38949,6 +39216,10 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
+    ept?: string | null;
+    libelle_petr?: string | null;
+    code_pnr?: string | null;
+    libelle_pnr?: string | null;
     naf09art10: number;
     art09act10: number;
     art09hab10: number;
@@ -39081,6 +39352,10 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
+    ept?: string | null;
+    libelle_petr?: string | null;
+    code_pnr?: string | null;
+    libelle_pnr?: string | null;
     naf09art10: number;
     art09act10: number;
     art09hab10: number;
@@ -39213,6 +39488,10 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     naf09art10?: FloatFieldUpdateOperationsInput | number;
     art09act10?: FloatFieldUpdateOperationsInput | number;
     art09hab10?: FloatFieldUpdateOperationsInput | number;
@@ -39345,6 +39624,10 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     naf09art10?: FloatFieldUpdateOperationsInput | number;
     art09act10?: FloatFieldUpdateOperationsInput | number;
     art09hab10?: FloatFieldUpdateOperationsInput | number;
@@ -39477,6 +39760,10 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
+    ept?: string | null;
+    libelle_petr?: string | null;
+    code_pnr?: string | null;
+    libelle_pnr?: string | null;
     naf09art10: number;
     art09act10: number;
     art09hab10: number;
@@ -39609,6 +39896,10 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     naf09art10?: FloatFieldUpdateOperationsInput | number;
     art09act10?: FloatFieldUpdateOperationsInput | number;
     art09hab10?: FloatFieldUpdateOperationsInput | number;
@@ -39741,6 +40032,10 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     naf09art10?: FloatFieldUpdateOperationsInput | number;
     art09act10?: FloatFieldUpdateOperationsInput | number;
     art09hab10?: FloatFieldUpdateOperationsInput | number;
@@ -41084,13 +41379,16 @@ export namespace Prisma {
 
   export type collectivites_searchbarCountOrderByAggregateInput = {
     index?: SortOrder;
-    code_commune?: SortOrder;
-    coordinates?: SortOrder;
-    libelle_commune?: SortOrder;
-    code_epci?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
+    epci?: SortOrder;
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrder;
+    libelle_petr?: SortOrder;
+    code_pnr?: SortOrder;
+    libelle_pnr?: SortOrder;
     search_code?: SortOrder;
     search_libelle?: SortOrder;
   };
@@ -41101,26 +41399,32 @@ export namespace Prisma {
 
   export type collectivites_searchbarMaxOrderByAggregateInput = {
     index?: SortOrder;
-    code_commune?: SortOrder;
-    coordinates?: SortOrder;
-    libelle_commune?: SortOrder;
-    code_epci?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
+    epci?: SortOrder;
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrder;
+    libelle_petr?: SortOrder;
+    code_pnr?: SortOrder;
+    libelle_pnr?: SortOrder;
     search_code?: SortOrder;
     search_libelle?: SortOrder;
   };
 
   export type collectivites_searchbarMinOrderByAggregateInput = {
     index?: SortOrder;
-    code_commune?: SortOrder;
-    coordinates?: SortOrder;
-    libelle_commune?: SortOrder;
-    code_epci?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
+    epci?: SortOrder;
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrder;
+    libelle_petr?: SortOrder;
+    code_pnr?: SortOrder;
+    libelle_pnr?: SortOrder;
     search_code?: SortOrder;
     search_libelle?: SortOrder;
   };
@@ -41680,6 +41984,10 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrder;
+    libelle_petr?: SortOrder;
+    code_pnr?: SortOrder;
+    libelle_pnr?: SortOrder;
     naf09art10?: SortOrder;
     art09act10?: SortOrder;
     art09hab10?: SortOrder;
@@ -41939,6 +42247,10 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrder;
+    libelle_petr?: SortOrder;
+    code_pnr?: SortOrder;
+    libelle_pnr?: SortOrder;
     naf09art10?: SortOrder;
     art09act10?: SortOrder;
     art09hab10?: SortOrder;
@@ -42071,6 +42383,10 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrder;
+    libelle_petr?: SortOrder;
+    code_pnr?: SortOrder;
+    libelle_pnr?: SortOrder;
     naf09art10?: SortOrder;
     art09act10?: SortOrder;
     art09hab10?: SortOrder;
