@@ -10,6 +10,7 @@ import {
 import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { DefinitionTooltip } from '@/components/utils/HtmlTooltip';
+import { eutrophisation } from '@/lib/definitions';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EpciContoursMapper } from '@/lib/mapper/epci';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
@@ -62,18 +63,9 @@ const EtatQualiteCoursDeau = (props: {
     </div>
   );
 
-  const eutrophisation = (
-    <span>
-      L’eutrophisation est un phénomène causé par un excès de nutriments (azote,
-      phosphore) dans l’eau, favorisant la prolifération d’algues. Leur
-      décomposition appauvrit l’oxygène du milieu, asphyxiant la faune et
-      dégradant les écosystèmes aquatiques.
-    </span>
-  );
-
   return (
     <>
-      {etatCoursDeau.length ? (
+      {etatCoursDeau.length && qualiteEauxBaignade.length ? (
         <div className={styles.container}>
           <div className="w-5/12">
             <div className={styles.explicationWrapper}>

@@ -173,7 +173,7 @@ export const themes = {
   agriculture: [
     {
       id: 0,
-      titre: "Chefs d'exploitation de plus de 55 ans",
+      titre: "Chefs d'exploitation",
       facteurSensibilite: 'Renouvellement agricole',
       risque: '',
       donnee: ''
