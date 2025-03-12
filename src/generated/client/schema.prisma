@@ -89,18 +89,23 @@ model clc_epci {
 }
 
 model collectivites_searchbar {
-  index           BigInt  @id
-  code_commune    String?
-  coordinates     String?
-  libelle_commune String?
-  code_epci       String
-  libelle_epci    String
-  departement     String
-  region          String
-  search_code     String
-  search_libelle  String
+  index                BigInt  @id
+  code_geographique    String?
+  libelle_geographique String?
+  epci                 String?
+  libelle_epci         String?
+  departement          String?
+  region               String?
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  search_code          String?
+  search_libelle       String?
 
   @@index([index], map: "ix_collectivites_searchbar_index")
+  @@index([code_geographique], map: "collectivites_searchbar_communes_index")
+  @@index([epci], map: "collectivites_searchbar_epci_index")
   @@schema("databases")
 }
 
@@ -267,13 +272,17 @@ model spatial_ref_sys {
 }
 
 model consommation_espaces_naf {
-  index                BigInt @id
+  index                BigInt  @id
   code_geographique    String
   libelle_geographique String
   epci                 String
   libelle_epci         String
   departement          String
   region               Int
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
   naf09art10           Float
   art09act10           Float
   art09hab10           Float
@@ -398,6 +407,8 @@ model consommation_espaces_naf {
   C21_MEN              Float?
 
   @@index([index], map: "ix_consommation_espaces_naf_index")
+  @@index([code_geographique], map: "consommation_espaces_naf_communes_index")
+  @@index([epci], map: "consommation_espaces_naf_epci_index")
   @@schema("databases")
 }
 
