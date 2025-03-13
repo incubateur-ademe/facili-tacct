@@ -15,6 +15,7 @@ type MySearchInputProps = {
   id: string;
   placeholder: string;
   type: string;
+  typeTerritoire: string | undefined;
 };
 
 type Options = {
@@ -33,6 +34,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
     className,
     id,
     type,
+    typeTerritoire,
     searchCodeFromSearchBar,
     searchEpciCodeFromSearchBar
   } = props;
@@ -68,7 +70,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
 
   useEffect(() => {
     void (async () => {
-      const getCollectivite = await GetCollectivite(inputValue);
+      const getCollectivite = await GetCollectivite(typeTerritoire, inputValue);
       setOptions(
         getCollectivite.map((el) => ({
           searchLibelle: el.search_libelle,
@@ -84,7 +86,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
     })();
     searchCodeFromSearchBar(searchCode);
     searchEpciCodeFromSearchBar(epciCode);
-  }, [inputValue]);
+  }, [inputValue, typeTerritoire]);
 
   return (
     <Autocomplete
@@ -143,6 +145,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
             className={cx(params.inputProps.className, className)}
             placeholder={'Rechercher une commune ou un EPCI'}
             type={type}
+            disabled={typeTerritoire ? false : true}
           />
         </div>
       )}
