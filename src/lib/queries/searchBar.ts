@@ -11,10 +11,8 @@ export const GetCollectivite = async (
   typeTerritoire: string | undefined,
   collectivite: string
 ): Promise<CollectivitesSearchbar[]> => {
-  console.log('typeTerritoire', typeTerritoire);
   try {
     console.time(`Query Execution Time ${typeTerritoire} ${collectivite}`);
-
     if (typeTerritoire === 'pnr') {
       const variableCollectivite = '%' + collectivite + '%';
       const value = await PNR(variableCollectivite);
