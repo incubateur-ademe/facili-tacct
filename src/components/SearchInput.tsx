@@ -1,16 +1,16 @@
 'use client';
 
+import { GetCollectivite } from '@/lib/queries/searchBar';
 import { cx } from '@codegouvfr/react-dsfr/tools/cx';
 import { Box } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { GetCollectivite } from '@/lib/queries/searchBar';
-
 type MySearchInputProps = {
   className?: string;
   searchCodeFromSearchBar: (a: string) => void;
+  searchLibelleFromSearchBar: (a: string) => void;
   searchEpciCodeFromSearchBar: (a: string) => void;
   id: string;
   placeholder: string;
@@ -29,6 +29,12 @@ type Options = {
   codePnr: string;
 };
 
+const ReplaceStringEpci = (libelleEpci: string) => {
+  return libelleEpci
+    .replace("Communauté d'agglomération", 'CA')
+    .replace('Communauté de communes', 'CC');
+};
+
 export const MySearchInput = (props: MySearchInputProps) => {
   const {
     className,
@@ -36,6 +42,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
     type,
     typeTerritoire,
     searchCodeFromSearchBar,
+    searchLibelleFromSearchBar,
     searchEpciCodeFromSearchBar
   } = props;
   const router = useRouter();
@@ -59,7 +66,6 @@ export const MySearchInput = (props: MySearchInputProps) => {
       a.searchLibelle.localeCompare(b.searchLibelle)
     )
   ];
-
   const handleClick = () => {
     if (epciCode) {
       searchCode?.length < 7
@@ -85,6 +91,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
       );
     })();
     searchCodeFromSearchBar(searchCode);
+    searchLibelleFromSearchBar(inputValue);
     searchEpciCodeFromSearchBar(epciCode);
   }, [inputValue, typeTerritoire]);
 
@@ -107,7 +114,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
       getOptionLabel={(option) => {
         if (option) {
           return option.searchCode?.length !== 0
-            ? `${option.searchLibelle} (${option.searchCode})`
+            ? `${ReplaceStringEpci(option.searchLibelle)} (${option.searchCode})`
             : `${option.searchLibelle}`;
         }
         return '';
@@ -128,11 +135,12 @@ export const MySearchInput = (props: MySearchInputProps) => {
           >
             {option.searchCode?.length !== 0 ? (
               <p style={{ margin: '0' }}>
-                <b>{option.searchLibelle} </b> ({option.searchCode})
+                <b>{ReplaceStringEpci(option.searchLibelle)} </b> (
+                {option.searchCode})
               </p>
             ) : (
               <p>
-                <b>{option.searchLibelle}</b>
+                <b>{ReplaceStringEpci(option.searchLibelle)}</b>
               </p>
             )}
           </Box>
@@ -143,7 +151,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
           <input
             {...(params.inputProps as React.InputHTMLAttributes<HTMLInputElement>)}
             className={cx(params.inputProps.className, className)}
-            placeholder={'Rechercher une commune ou un EPCI'}
+            placeholder={'Saisir un territoire'}
             type={type}
             disabled={typeTerritoire ? false : true}
           />
