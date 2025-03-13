@@ -3,73 +3,39 @@
 import * as Sentry from '@sentry/nextjs';
 import { PrismaClient as PostgresClient } from '../../generated/client';
 import { CollectivitesSearchbar } from '../postgres/models';
+import { Commune, EPCI, PETR, PNR } from './territoiresQueries';
 
 const PrismaPostgres = new PostgresClient();
 
 export const GetCollectivite = async (
+  typeTerritoire: string | undefined,
   collectivite: string
 ): Promise<CollectivitesSearchbar[]> => {
+  console.log('typeTerritoire', typeTerritoire);
   try {
-    console.time(`Query Execution Time COLLECTIVITE ${collectivite}`);
-    const variableCollectivite = '%' + collectivite + '%';
-    const variableCollectiviteNumber = collectivite + '%';
-    if (isNaN(parseInt(collectivite))) {
-      const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
-      SELECT 
-      search_code,
-      search_libelle,
-      epci, 
-      libelle_epci,
-      libelle_geographique,
-      code_geographique,
-      departement,
-      region,
-      ept,
-      libelle_petr,
-      libelle_pnr,
-      code_pnr
-      FROM databases."collectivites_searchbar" WHERE 
-        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', ')) 
-        LIMIT 20;`; // OR libelle_epci ILIKE ${variableEpci}
-      console.timeEnd(`Query Execution Time COLLECTIVITE ${collectivite}`);
-      // console.log(value);
-      if (value.length > 0) {
-        return value;
-      } else {
-        const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
-        SELECT 
-        search_code,
-        search_libelle,
-        epci, 
-        libelle_epci,
-        libelle_geographique,
-        code_geographique,
-        departement,
-        region,
-        ept,
-        libelle_petr,
-        libelle_pnr,
-        code_pnr
-        FROM databases."collectivites_searchbar" WHERE 
-          unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite}) 
-          OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', ')) 
-          LIMIT 20;`;
-        return value;
-      }
-    } else if (typeof parseInt(collectivite) === 'number') {
-      const value = await PrismaPostgres.collectivites_searchbar.findMany({
-        take: 20,
-        where: {
-          search_code: {
-            startsWith: variableCollectiviteNumber
-          }
-        }
-      });
-      console.timeEnd(`Query Execution Time COLLECTIVITE ${collectivite}`);
-      return value as CollectivitesSearchbar[];
+    console.time(`Query Execution Time ${typeTerritoire} ${collectivite}`);
+
+    if (typeTerritoire === 'pnr') {
+      const variableCollectivite = '%' + collectivite + '%';
+      const value = await PNR(variableCollectivite);
+      console.timeEnd(`Query Execution Time ${typeTerritoire} ${collectivite}`);
+      return value;
+    } else if (typeTerritoire === 'petr') {
+      const variableCollectivite = '%' + collectivite + '%';
+      const value = await PETR(variableCollectivite);
+      console.timeEnd(`Query Execution Time ${typeTerritoire} ${collectivite}`);
+      return value;
+    } else if (typeTerritoire === 'epci') {
+      const variableCollectivite = '%' + collectivite + '%';
+      const value = await EPCI(variableCollectivite);
+      console.timeEnd(`Query Execution Time ${typeTerritoire} ${collectivite}`);
+      return value;
+    } else if (typeTerritoire === 'commune') {
+      const variableCollectivite = '%' + collectivite + '%';
+      const value = await Commune(variableCollectivite);
+      console.timeEnd(`Query Execution Time ${typeTerritoire} ${collectivite}`);
+      return value;
     } else {
-      Sentry.captureMessage(`Collectivite ${collectivite} not found`);
       return [
         {
           code_geographique: '',
