@@ -51,6 +51,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState<Options[]>([]);
 
+  console.log('inputValue', inputValue);
   // supprime les doublons pour les objects
   const filteredCollectivite = options.filter(
     (value, index, self) =>
