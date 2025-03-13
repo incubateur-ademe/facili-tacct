@@ -47,7 +47,7 @@
 }
 .collectiviteWrapper {
     position: absolute;
-    width: 46dvw;
+    width: 51dvw;
     max-width: 53em;
     left: calc(50dvw - 23dvw);
     top: var(--height-notice);
@@ -180,7 +180,7 @@
     .collectiviteWrapper {
         width: 90dvw;
         max-width: none;
-        left: calc(50dvw - 45dvw);
+        left: calc(49dvw - 45dvw);
         top: calc(var(--heightWrapper) + 6em);
     }
 }
