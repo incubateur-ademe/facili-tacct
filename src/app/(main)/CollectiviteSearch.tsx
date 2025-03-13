@@ -6,11 +6,7 @@ import styles from '../root.module.scss';
 export const CollectiviteSearch = () => {
   return (
     <div className={styles.collectiviteWrapper}>
-      <h5>Quel territoire représentez-vous ?</h5>
-      <p>
-        Cette information nous aidera à vous apporter les informations
-        pertinentes pour votre territoire
-      </p>
+      <h5 className="text-center">Quel territoire représentez-vous ?</h5>
       <div>
         <SearchBarComp />
       </div>

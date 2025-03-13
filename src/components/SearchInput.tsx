@@ -51,6 +51,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
   const [epciCode, setEpciCode] = useState<string>('');
   const [searchCode, setSearchCode] = useState<string>('');
 
+  console.log('inputValue', inputValue);
   // supprime les doublons pour les objects
   const filteredCollectivite = options.filter(
     (value, index, self) =>
@@ -135,7 +136,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
           >
             {option.searchCode?.length !== 0 ? (
               <p style={{ margin: '0' }}>
-                <b>{ReplaceStringEpci(option.searchLibelle)} </b> (
+                <b>{ReplaceStringEpci(option.searchLibelle)}</b> (
                 {option.searchCode})
               </p>
             ) : (
