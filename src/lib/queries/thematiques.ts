@@ -30,9 +30,21 @@ export const GetInconfortThermique = async (
   }
 };
 
-export const GetInconfortThermiqueDepartment = async (code: string) => {
+export const GetInconfortThermiqueDepartment = async (
+  code: string | undefined,
+  libelle: string,
+  type: string
+) => {
   try {
     console.time('Query Execution Time INCONFORT DEPARTEMENT');
+    const colonneTerritoire =
+      type === 'epci'
+        ? 'epci'
+        : type === 'commune'
+          ? 'code_geographique'
+          : type === 'pnr'
+            ? 'code_pnr'
+            : 'libelle_petr';
     if (code === '200054781') {
       const value = await PrismaPostgres.inconfort_thermique.findMany({
         where: {
@@ -51,7 +63,7 @@ export const GetInconfortThermiqueDepartment = async (code: string) => {
     } else {
       const departement = await PrismaPostgres.inconfort_thermique.findFirst({
         where: {
-          epci: code
+          [colonneTerritoire]: code ?? libelle
         }
       });
       const value = await PrismaPostgres.inconfort_thermique.findMany({
@@ -71,14 +83,24 @@ export const GetInconfortThermiqueDepartment = async (code: string) => {
 };
 
 export const GetBiodiversite = async (
-  code: string
+  code: string | undefined,
+  libelle: string,
+  type: string
 ): Promise<Biodiversite[]> => {
   try {
     console.time('Query Execution Time BIODIVERSITE');
+    const colonneTerritoire =
+      type === 'epci'
+        ? 'epci'
+        : type === 'commune'
+          ? 'code_geographique'
+          : type === 'pnr'
+            ? 'code_pnr'
+            : 'libelle_petr';
     const value = await PrismaPostgres.biodiversite.findMany({
       where: {
         AND: [
-          { epci: code },
+          { [colonneTerritoire]: code ?? libelle },
           {
             type_touristique: {
               not: null
@@ -98,7 +120,9 @@ export const GetBiodiversite = async (
 };
 
 export const GetAgricultureBio = async (
-  code: string
+  code: string,
+  libelle: string,
+  type: string
 ): Promise<AgricultureBio[]> => {
   try {
     const value = await PrismaPostgres.agriculture_bio.findMany({

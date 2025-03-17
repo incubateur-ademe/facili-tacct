@@ -9,9 +9,10 @@ import { useEffect, useState } from 'react';
 
 type MySearchInputProps = {
   className?: string;
-  searchCodeFromSearchBar: (a: string) => void;
-  searchLibelleFromSearchBar: (a: string) => void;
-  searchEpciCodeFromSearchBar: (a: string) => void;
+  setSearchCode: (a: string) => void;
+  setSearchLibelle: (a: string) => void;
+  searchCode: string;
+  searchLibelle: string;
   id: string;
   placeholder: string;
   type: string;
@@ -41,17 +42,15 @@ export const MySearchInput = (props: MySearchInputProps) => {
     id,
     type,
     typeTerritoire,
-    searchCodeFromSearchBar,
-    searchLibelleFromSearchBar,
-    searchEpciCodeFromSearchBar
+    setSearchCode,
+    setSearchLibelle,
+    searchCode,
+    searchLibelle
   } = props;
   const router = useRouter();
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState<Options[]>([]);
-  const [epciCode, setEpciCode] = useState<string>('');
-  const [searchCode, setSearchCode] = useState<string>('');
 
-  console.log('inputValue', inputValue);
   // supprime les doublons pour les objects
   const filteredCollectivite = options.filter(
     (value, index, self) =>
@@ -68,10 +67,14 @@ export const MySearchInput = (props: MySearchInputProps) => {
     )
   ];
   const handleClick = () => {
-    if (epciCode) {
-      searchCode?.length < 7
-        ? router.push(`/thematiques?codgeo=${searchCode}&codepci=${epciCode}`)
-        : router.push(`/thematiques?codepci=${epciCode}`);
+    if (searchCode.length !== 0 || searchLibelle.length !== 0) {
+      searchCode.length !== 0
+        ? router.push(
+            `/thematiques?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
+          )
+        : router.push(
+            `/thematiques?libelle=${searchLibelle}&type=${typeTerritoire}`
+          );
     }
   };
 
@@ -91,9 +94,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
         }))
       );
     })();
-    searchCodeFromSearchBar(searchCode);
-    searchLibelleFromSearchBar(inputValue);
-    searchEpciCodeFromSearchBar(epciCode);
+    setSearchCode(searchCode);
   }, [inputValue, typeTerritoire]);
 
   return (
@@ -102,12 +103,11 @@ export const MySearchInput = (props: MySearchInputProps) => {
       autoHighlight
       filterOptions={(x) => x}
       options={collectivites}
-      // value={collectivites}
       noOptionsText="Aucune collectivité trouvée"
       onChange={(event, newValue: Options | null) => {
         setOptions(newValue ? [newValue, ...options] : options);
-        setEpciCode(newValue?.codeEpci ?? '');
         setSearchCode(newValue?.searchCode ?? '');
+        setSearchLibelle(newValue?.searchLibelle ?? '');
       }}
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
@@ -140,7 +140,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
                 {option.searchCode})
               </p>
             ) : (
-              <p>
+              <p style={{ margin: '0' }}>
                 <b>{ReplaceStringEpci(option.searchLibelle)}</b>
               </p>
             )}
