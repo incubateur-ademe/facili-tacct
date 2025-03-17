@@ -1,7 +1,8 @@
 type SearchParams = Promise<{
-  codepci: string;
-  codgeo: string;
+  code: string;
+  libelle: string;
   thematique: string;
+  type: string;
 }>;
 
 // export type DataCommune = {
