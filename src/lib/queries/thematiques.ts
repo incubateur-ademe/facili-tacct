@@ -37,6 +37,7 @@ export const GetInconfortThermiqueDepartment = async (
 ) => {
   try {
     console.time('Query Execution Time INCONFORT DEPARTEMENT');
+
     const colonneTerritoire =
       type === 'epci'
         ? 'epci'
@@ -45,6 +46,7 @@ export const GetInconfortThermiqueDepartment = async (
           : type === 'pnr'
             ? 'code_pnr'
             : 'libelle_petr';
+
     if (code === '200054781') {
       const value = await PrismaPostgres.inconfort_thermique.findMany({
         where: {
