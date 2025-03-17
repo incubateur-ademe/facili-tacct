@@ -2876,6 +2876,10 @@ export namespace Prisma {
     libelle_epci: string | null;
     departement: string | null;
     region: number | null;
+    ept: string | null;
+    libelle_petr: string | null;
+    code_pnr: string | null;
+    libelle_pnr: string | null;
     age_bati_post06: number | null;
     age_bati_91_05: number | null;
     age_bati_46_90: number | null;
@@ -2936,6 +2940,10 @@ export namespace Prisma {
     libelle_epci: string | null;
     departement: string | null;
     region: number | null;
+    ept: string | null;
+    libelle_petr: string | null;
+    code_pnr: string | null;
+    libelle_pnr: string | null;
     age_bati_post06: number | null;
     age_bati_91_05: number | null;
     age_bati_46_90: number | null;
@@ -2996,6 +3004,10 @@ export namespace Prisma {
     libelle_epci: number;
     departement: number;
     region: number;
+    ept: number;
+    libelle_petr: number;
+    code_pnr: number;
+    libelle_pnr: number;
     age_bati_post06: number;
     age_bati_91_05: number;
     age_bati_46_90: number;
@@ -3113,6 +3125,10 @@ export namespace Prisma {
     libelle_epci?: true;
     departement?: true;
     region?: true;
+    ept?: true;
+    libelle_petr?: true;
+    code_pnr?: true;
+    libelle_pnr?: true;
     age_bati_post06?: true;
     age_bati_91_05?: true;
     age_bati_46_90?: true;
@@ -3173,6 +3189,10 @@ export namespace Prisma {
     libelle_epci?: true;
     departement?: true;
     region?: true;
+    ept?: true;
+    libelle_petr?: true;
+    code_pnr?: true;
+    libelle_pnr?: true;
     age_bati_post06?: true;
     age_bati_91_05?: true;
     age_bati_46_90?: true;
@@ -3233,6 +3253,10 @@ export namespace Prisma {
     libelle_epci?: true;
     departement?: true;
     region?: true;
+    ept?: true;
+    libelle_petr?: true;
+    code_pnr?: true;
+    libelle_pnr?: true;
     age_bati_post06?: true;
     age_bati_91_05?: true;
     age_bati_46_90?: true;
@@ -3391,6 +3415,10 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
+    ept: string | null;
+    libelle_petr: string | null;
+    code_pnr: string | null;
+    libelle_pnr: string | null;
     age_bati_post06: number | null;
     age_bati_91_05: number | null;
     age_bati_46_90: number | null;
@@ -3474,6 +3502,10 @@ export namespace Prisma {
       libelle_epci?: boolean;
       departement?: boolean;
       region?: boolean;
+      ept?: boolean;
+      libelle_petr?: boolean;
+      code_pnr?: boolean;
+      libelle_pnr?: boolean;
       age_bati_post06?: boolean;
       age_bati_91_05?: boolean;
       age_bati_46_90?: boolean;
@@ -3539,6 +3571,10 @@ export namespace Prisma {
       libelle_epci?: boolean;
       departement?: boolean;
       region?: boolean;
+      ept?: boolean;
+      libelle_petr?: boolean;
+      code_pnr?: boolean;
+      libelle_pnr?: boolean;
       age_bati_post06?: boolean;
       age_bati_91_05?: boolean;
       age_bati_46_90?: boolean;
@@ -3604,6 +3640,10 @@ export namespace Prisma {
       libelle_epci?: boolean;
       departement?: boolean;
       region?: boolean;
+      ept?: boolean;
+      libelle_petr?: boolean;
+      code_pnr?: boolean;
+      libelle_pnr?: boolean;
       age_bati_post06?: boolean;
       age_bati_91_05?: boolean;
       age_bati_46_90?: boolean;
@@ -3666,6 +3706,10 @@ export namespace Prisma {
     libelle_epci?: boolean;
     departement?: boolean;
     region?: boolean;
+    ept?: boolean;
+    libelle_petr?: boolean;
+    code_pnr?: boolean;
+    libelle_pnr?: boolean;
     age_bati_post06?: boolean;
     age_bati_91_05?: boolean;
     age_bati_46_90?: boolean;
@@ -3728,6 +3772,10 @@ export namespace Prisma {
     | 'libelle_epci'
     | 'departement'
     | 'region'
+    | 'ept'
+    | 'libelle_petr'
+    | 'code_pnr'
+    | 'libelle_pnr'
     | 'age_bati_post06'
     | 'age_bati_91_05'
     | 'age_bati_46_90'
@@ -3795,6 +3843,10 @@ export namespace Prisma {
         libelle_epci: string;
         departement: string;
         region: number;
+        ept: string | null;
+        libelle_petr: string | null;
+        code_pnr: string | null;
+        libelle_pnr: string | null;
         age_bati_post06: number | null;
         age_bati_91_05: number | null;
         age_bati_46_90: number | null;
@@ -4448,6 +4500,10 @@ export namespace Prisma {
     readonly libelle_epci: FieldRef<'inconfort_thermique', 'String'>;
     readonly departement: FieldRef<'inconfort_thermique', 'String'>;
     readonly region: FieldRef<'inconfort_thermique', 'Int'>;
+    readonly ept: FieldRef<'inconfort_thermique', 'String'>;
+    readonly libelle_petr: FieldRef<'inconfort_thermique', 'String'>;
+    readonly code_pnr: FieldRef<'inconfort_thermique', 'String'>;
+    readonly libelle_pnr: FieldRef<'inconfort_thermique', 'String'>;
     readonly age_bati_post06: FieldRef<'inconfort_thermique', 'Float'>;
     readonly age_bati_91_05: FieldRef<'inconfort_thermique', 'Float'>;
     readonly age_bati_46_90: FieldRef<'inconfort_thermique', 'Float'>;
@@ -6401,7 +6457,7 @@ export namespace Prisma {
     code_pnr: string | null;
     libelle_pnr: string | null;
     search_code: string | null;
-    search_libelle: string | null;
+    search_libelle: string;
     _count: Collectivites_searchbarCountAggregateOutputType | null;
     _avg: Collectivites_searchbarAvgAggregateOutputType | null;
     _sum: Collectivites_searchbarSumAggregateOutputType | null;
@@ -6541,7 +6597,7 @@ export namespace Prisma {
         code_pnr: string | null;
         libelle_pnr: string | null;
         search_code: string | null;
-        search_libelle: string | null;
+        search_libelle: string;
       },
       ExtArgs['result']['collectivites_searchbar']
     >;
@@ -33636,6 +33692,10 @@ export namespace Prisma {
     libelle_epci: 'libelle_epci';
     departement: 'departement';
     region: 'region';
+    ept: 'ept';
+    libelle_petr: 'libelle_petr';
+    code_pnr: 'code_pnr';
+    libelle_pnr: 'libelle_pnr';
     age_bati_post06: 'age_bati_post06';
     age_bati_91_05: 'age_bati_91_05';
     age_bati_46_90: 'age_bati_46_90';
@@ -34255,6 +34315,10 @@ export namespace Prisma {
     libelle_epci?: StringFilter<'inconfort_thermique'> | string;
     departement?: StringFilter<'inconfort_thermique'> | string;
     region?: IntFilter<'inconfort_thermique'> | number;
+    ept?: StringNullableFilter<'inconfort_thermique'> | string | null;
+    libelle_petr?: StringNullableFilter<'inconfort_thermique'> | string | null;
+    code_pnr?: StringNullableFilter<'inconfort_thermique'> | string | null;
+    libelle_pnr?: StringNullableFilter<'inconfort_thermique'> | string | null;
     age_bati_post06?:
       | FloatNullableFilter<'inconfort_thermique'>
       | number
@@ -34411,6 +34475,10 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrderInput | SortOrder;
+    libelle_petr?: SortOrderInput | SortOrder;
+    code_pnr?: SortOrderInput | SortOrder;
+    libelle_pnr?: SortOrderInput | SortOrder;
     age_bati_post06?: SortOrderInput | SortOrder;
     age_bati_91_05?: SortOrderInput | SortOrder;
     age_bati_46_90?: SortOrderInput | SortOrder;
@@ -34475,6 +34543,13 @@ export namespace Prisma {
       libelle_epci?: StringFilter<'inconfort_thermique'> | string;
       departement?: StringFilter<'inconfort_thermique'> | string;
       region?: IntFilter<'inconfort_thermique'> | number;
+      ept?: StringNullableFilter<'inconfort_thermique'> | string | null;
+      libelle_petr?:
+        | StringNullableFilter<'inconfort_thermique'>
+        | string
+        | null;
+      code_pnr?: StringNullableFilter<'inconfort_thermique'> | string | null;
+      libelle_pnr?: StringNullableFilter<'inconfort_thermique'> | string | null;
       age_bati_post06?:
         | FloatNullableFilter<'inconfort_thermique'>
         | number
@@ -34645,6 +34720,10 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrderInput | SortOrder;
+    libelle_petr?: SortOrderInput | SortOrder;
+    code_pnr?: SortOrderInput | SortOrder;
+    libelle_pnr?: SortOrderInput | SortOrder;
     age_bati_post06?: SortOrderInput | SortOrder;
     age_bati_91_05?: SortOrderInput | SortOrder;
     age_bati_46_90?: SortOrderInput | SortOrder;
@@ -34721,6 +34800,22 @@ export namespace Prisma {
     libelle_epci?: StringWithAggregatesFilter<'inconfort_thermique'> | string;
     departement?: StringWithAggregatesFilter<'inconfort_thermique'> | string;
     region?: IntWithAggregatesFilter<'inconfort_thermique'> | number;
+    ept?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
+      | string
+      | null;
+    libelle_petr?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
+      | string
+      | null;
+    code_pnr?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
+      | string
+      | null;
+    libelle_pnr?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
+      | string
+      | null;
     age_bati_post06?:
       | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
       | number
@@ -35015,10 +35110,7 @@ export namespace Prisma {
       | StringNullableFilter<'collectivites_searchbar'>
       | string
       | null;
-    search_libelle?:
-      | StringNullableFilter<'collectivites_searchbar'>
-      | string
-      | null;
+    search_libelle?: StringFilter<'collectivites_searchbar'> | string;
   };
 
   export type collectivites_searchbarOrderByWithRelationInput = {
@@ -35034,7 +35126,7 @@ export namespace Prisma {
     code_pnr?: SortOrderInput | SortOrder;
     libelle_pnr?: SortOrderInput | SortOrder;
     search_code?: SortOrderInput | SortOrder;
-    search_libelle?: SortOrderInput | SortOrder;
+    search_libelle?: SortOrder;
   };
 
   export type collectivites_searchbarWhereUniqueInput = Prisma.AtLeast<
@@ -35082,10 +35174,7 @@ export namespace Prisma {
         | StringNullableFilter<'collectivites_searchbar'>
         | string
         | null;
-      search_libelle?:
-        | StringNullableFilter<'collectivites_searchbar'>
-        | string
-        | null;
+      search_libelle?: StringFilter<'collectivites_searchbar'> | string;
     },
     'index'
   >;
@@ -35103,7 +35192,7 @@ export namespace Prisma {
     code_pnr?: SortOrderInput | SortOrder;
     libelle_pnr?: SortOrderInput | SortOrder;
     search_code?: SortOrderInput | SortOrder;
-    search_libelle?: SortOrderInput | SortOrder;
+    search_libelle?: SortOrder;
     _count?: collectivites_searchbarCountOrderByAggregateInput;
     _avg?: collectivites_searchbarAvgOrderByAggregateInput;
     _max?: collectivites_searchbarMaxOrderByAggregateInput;
@@ -35168,9 +35257,8 @@ export namespace Prisma {
       | string
       | null;
     search_libelle?:
-      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
-      | string
-      | null;
+      | StringWithAggregatesFilter<'collectivites_searchbar'>
+      | string;
   };
 
   export type biodiversiteWhereInput = {
@@ -37700,6 +37788,10 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
+    ept?: string | null;
+    libelle_petr?: string | null;
+    code_pnr?: string | null;
+    libelle_pnr?: string | null;
     age_bati_post06?: number | null;
     age_bati_91_05?: number | null;
     age_bati_46_90?: number | null;
@@ -37760,6 +37852,10 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
+    ept?: string | null;
+    libelle_petr?: string | null;
+    code_pnr?: string | null;
+    libelle_pnr?: string | null;
     age_bati_post06?: number | null;
     age_bati_91_05?: number | null;
     age_bati_46_90?: number | null;
@@ -37820,6 +37916,10 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
@@ -37892,6 +37992,10 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
@@ -37964,6 +38068,10 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
+    ept?: string | null;
+    libelle_petr?: string | null;
+    code_pnr?: string | null;
+    libelle_pnr?: string | null;
     age_bati_post06?: number | null;
     age_bati_91_05?: number | null;
     age_bati_46_90?: number | null;
@@ -38024,6 +38132,10 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
@@ -38096,6 +38208,10 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
@@ -38212,7 +38328,7 @@ export namespace Prisma {
     code_pnr?: string | null;
     libelle_pnr?: string | null;
     search_code?: string | null;
-    search_libelle?: string | null;
+    search_libelle: string;
   };
 
   export type collectivites_searchbarUncheckedCreateInput = {
@@ -38228,7 +38344,7 @@ export namespace Prisma {
     code_pnr?: string | null;
     libelle_pnr?: string | null;
     search_code?: string | null;
-    search_libelle?: string | null;
+    search_libelle: string;
   };
 
   export type collectivites_searchbarUpdateInput = {
@@ -38250,7 +38366,7 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     search_code?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_libelle?: StringFieldUpdateOperationsInput | string;
   };
 
   export type collectivites_searchbarUncheckedUpdateInput = {
@@ -38272,7 +38388,7 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     search_code?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_libelle?: StringFieldUpdateOperationsInput | string;
   };
 
   export type collectivites_searchbarCreateManyInput = {
@@ -38288,7 +38404,7 @@ export namespace Prisma {
     code_pnr?: string | null;
     libelle_pnr?: string | null;
     search_code?: string | null;
-    search_libelle?: string | null;
+    search_libelle: string;
   };
 
   export type collectivites_searchbarUpdateManyMutationInput = {
@@ -38310,7 +38426,7 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     search_code?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_libelle?: StringFieldUpdateOperationsInput | string;
   };
 
   export type collectivites_searchbarUncheckedUpdateManyInput = {
@@ -38332,7 +38448,7 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     search_code?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_libelle?: StringFieldUpdateOperationsInput | string;
   };
 
   export type biodiversiteCreateInput = {
@@ -40968,17 +41084,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number;
   };
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null;
-  };
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null;
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
@@ -40994,6 +41099,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null;
   };
 
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    lt?: number | FloatFieldRefInput<$PrismaModel>;
+    lte?: number | FloatFieldRefInput<$PrismaModel>;
+    gt?: number | FloatFieldRefInput<$PrismaModel>;
+    gte?: number | FloatFieldRefInput<$PrismaModel>;
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null;
+  };
+
   export type SortOrderInput = {
     sort: SortOrder;
     nulls?: NullsOrder;
@@ -41007,6 +41123,10 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrder;
+    libelle_petr?: SortOrder;
+    code_pnr?: SortOrder;
+    libelle_pnr?: SortOrder;
     age_bati_post06?: SortOrder;
     age_bati_91_05?: SortOrder;
     age_bati_46_90?: SortOrder;
@@ -41095,6 +41215,10 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrder;
+    libelle_petr?: SortOrder;
+    code_pnr?: SortOrder;
+    libelle_pnr?: SortOrder;
     age_bati_post06?: SortOrder;
     age_bati_91_05?: SortOrder;
     age_bati_46_90?: SortOrder;
@@ -41155,6 +41279,10 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrder;
+    libelle_petr?: SortOrder;
+    code_pnr?: SortOrder;
+    libelle_pnr?: SortOrder;
     age_bati_post06?: SortOrder;
     age_bati_91_05?: SortOrder;
     age_bati_46_90?: SortOrder;
@@ -41285,22 +41413,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>;
   };
 
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null;
-    _count?: NestedIntNullableFilter<$PrismaModel>;
-    _avg?: NestedFloatNullableFilter<$PrismaModel>;
-    _sum?: NestedFloatNullableFilter<$PrismaModel>;
-    _min?: NestedFloatNullableFilter<$PrismaModel>;
-    _max?: NestedFloatNullableFilter<$PrismaModel>;
-  };
-
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null;
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
@@ -41320,6 +41432,22 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>;
     _min?: NestedStringNullableFilter<$PrismaModel>;
     _max?: NestedStringNullableFilter<$PrismaModel>;
+  };
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    lt?: number | FloatFieldRefInput<$PrismaModel>;
+    lte?: number | FloatFieldRefInput<$PrismaModel>;
+    gt?: number | FloatFieldRefInput<$PrismaModel>;
+    gte?: number | FloatFieldRefInput<$PrismaModel>;
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null;
+    _count?: NestedIntNullableFilter<$PrismaModel>;
+    _avg?: NestedFloatNullableFilter<$PrismaModel>;
+    _sum?: NestedFloatNullableFilter<$PrismaModel>;
+    _min?: NestedFloatNullableFilter<$PrismaModel>;
+    _max?: NestedFloatNullableFilter<$PrismaModel>;
   };
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -43136,16 +43264,16 @@ export namespace Prisma {
     divide?: number;
   };
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null;
+  };
+
   export type NullableFloatFieldUpdateOperationsInput = {
     set?: number | null;
     increment?: number;
     decrement?: number;
     multiply?: number;
     divide?: number;
-  };
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null;
   };
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -43208,17 +43336,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number;
   };
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null;
-  };
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null;
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
@@ -43231,6 +43348,17 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>;
     endsWith?: string | StringFieldRefInput<$PrismaModel>;
     not?: NestedStringNullableFilter<$PrismaModel> | string | null;
+  };
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    lt?: number | FloatFieldRefInput<$PrismaModel>;
+    lte?: number | FloatFieldRefInput<$PrismaModel>;
+    gt?: number | FloatFieldRefInput<$PrismaModel>;
+    gte?: number | FloatFieldRefInput<$PrismaModel>;
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null;
   };
 
   export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -43293,33 +43421,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>;
   };
 
-  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null;
-    _count?: NestedIntNullableFilter<$PrismaModel>;
-    _avg?: NestedFloatNullableFilter<$PrismaModel>;
-    _sum?: NestedFloatNullableFilter<$PrismaModel>;
-    _min?: NestedFloatNullableFilter<$PrismaModel>;
-    _max?: NestedFloatNullableFilter<$PrismaModel>;
-  };
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    lt?: number | IntFieldRefInput<$PrismaModel>;
-    lte?: number | IntFieldRefInput<$PrismaModel>;
-    gt?: number | IntFieldRefInput<$PrismaModel>;
-    gte?: number | IntFieldRefInput<$PrismaModel>;
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null;
-  };
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null;
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
@@ -43338,6 +43439,33 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>;
     _min?: NestedStringNullableFilter<$PrismaModel>;
     _max?: NestedStringNullableFilter<$PrismaModel>;
+  };
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null;
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
+    lt?: number | IntFieldRefInput<$PrismaModel>;
+    lte?: number | IntFieldRefInput<$PrismaModel>;
+    gt?: number | IntFieldRefInput<$PrismaModel>;
+    gte?: number | IntFieldRefInput<$PrismaModel>;
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null;
+  };
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    lt?: number | FloatFieldRefInput<$PrismaModel>;
+    lte?: number | FloatFieldRefInput<$PrismaModel>;
+    gt?: number | FloatFieldRefInput<$PrismaModel>;
+    gte?: number | FloatFieldRefInput<$PrismaModel>;
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null;
+    _count?: NestedIntNullableFilter<$PrismaModel>;
+    _avg?: NestedFloatNullableFilter<$PrismaModel>;
+    _sum?: NestedFloatNullableFilter<$PrismaModel>;
+    _min?: NestedFloatNullableFilter<$PrismaModel>;
+    _max?: NestedFloatNullableFilter<$PrismaModel>;
   };
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {

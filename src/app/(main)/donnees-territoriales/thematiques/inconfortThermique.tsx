@@ -11,7 +11,6 @@ const InconfortThermique = async (props: { searchParams: SearchParams }) => {
     libelle,
     type
   );
-  console.log('dbInconfortThermique', dbInconfortThermique);
   // const carteCommunes = await GetCommunes(code, libelle, type);
 
   return (
