@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const Page = async (props: { searchParams: SearchParams }) => {
-  const { thematique, codepci, codgeo } = await props.searchParams;
+  const { thematique, code, libelle, type } = await props.searchParams;
   return (
     <Container size="xl" className="mb-24">
       <ClientOnly>
@@ -23,9 +23,9 @@ const Page = async (props: { searchParams: SearchParams }) => {
             {
               label: 'Thématiques',
               linkProps: {
-                href: codgeo
-                  ? `/thematiques?codgeo=${codgeo}&codepci=${codepci}`
-                  : `/thematiques?codepci=${codepci}`
+                href: code
+                  ? `/thematiques?code=${code}&libelle=${libelle}&type=${type}`
+                  : `/thematiques?libelle=${libelle}&type=${type}`
               }
             }
           ]}
