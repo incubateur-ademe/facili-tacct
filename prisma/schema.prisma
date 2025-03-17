@@ -12,13 +12,17 @@ datasource db {
 }
 
 model inconfort_thermique {
-  index                    BigInt  @id(map: "inconfort_thermique2_pkey")
+  index                    BigInt  @id
   code_geographique        String
   libelle_geographique     String
   epci                     String
   libelle_epci             String
   departement              String
   region                   Int
+  ept                      String?
+  libelle_petr             String?
+  code_pnr                 String?
+  libelle_pnr              String?
   age_bati_post06          Float?
   age_bati_91_05           Float?
   age_bati_46_90           Float?
@@ -71,9 +75,8 @@ model inconfort_thermique {
   superf_choro             Float?
 
   @@index([code_geographique], map: "inconfort_thermique_communes_index")
-  @@index([departement], map: "inconfort_thermique_departement_index")
   @@index([epci], map: "inconfort_thermique_epci_index")
-  @@index([index], map: "ix_inconfort_thermique2_index")
+  @@index([index], map: "ix_inconfort_thermique_index")
   @@schema("databases")
 }
 
@@ -101,7 +104,7 @@ model collectivites_searchbar {
   code_pnr             String?
   libelle_pnr          String?
   search_code          String?
-  search_libelle       String?
+  search_libelle       String
 
   @@index([index], map: "ix_collectivites_searchbar_index")
   @@index([code_geographique], map: "collectivites_searchbar_communes_index")

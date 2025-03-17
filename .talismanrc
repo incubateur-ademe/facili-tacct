@@ -46,15 +46,15 @@ fileignoreconfig:
 - filename: src/generated/client/index-browser.js
   checksum: 556f04644993b7ad6e72ebfad79f438b88a8e7d9d3cb364be1c15f04f52ae068
 - filename: src/generated/client/package.json
-  checksum: 99d329cfc5bbe9a15066f80610715c35b63b7b8caddbb37f4df193976e86875f
+  checksum: 8166bfc4e8c975e937f8e630f9cedd333f2098081b919c61ce599bb590731b7d
+- filename: src/generated/client/index.js
+  checksum: 2d36f17622317a9f90c885ec69917827c54c1f0cf1b4d4b3b0a86125d2079b45
+- filename: src/generated/client/edge.js
+  checksum: bcb7d1c0012b55774ee187f08acb308cc9e546f7b767b02b59a85d413ed96779
 - filename: src/generated/client/wasm.js
   checksum: fcbf771de65035051cf0b6709d957d6a3ba6d774c13de05624fd93f1183d245a
-- filename: src/generated/client/edge.js
-  checksum: 198b0c5cebe6c2f1c57695a886cf002f62491a5647635636c75070ab9fd57922
 - filename: src/generated/client/index.d.ts
   checksum: 8ab6e9708cea34ad13e6ca37fac02f0bd62082e97acefbbf1b96c7c9d5f430ae
-- filename: src/generated/client/index.js
-  checksum: 72429ae892f45af0877039b93685736626fdffac3de248e29e8f5f8b35dc245c
 - filename: src/components/SearchInput.tsx
   checksum: 34f2059c58474fa3c5f7f5e38ea87a5d5eff0bc529f6681199105e4060492cf9
 - filename: src/generated/client/index.js
