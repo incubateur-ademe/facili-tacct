@@ -12,7 +12,7 @@ import { MySearchInput } from './SearchInput';
 export const SearchBarComp = () => {
   const router = useRouter();
   const { css } = useStyles();
-  const [epciCode, setEpciCode] = useState<string>('');
+  // const [epciCode, setEpciCode] = useState<string>('');
   const [searchCode, setSearchCode] = useState<string>('');
   const [searchLibelle, setSearchLibelle] = useState<string>('');
   const [typeTerritoire, setTypeTerritoire] = useState<
@@ -20,10 +20,14 @@ export const SearchBarComp = () => {
   >('epci');
 
   const handleClick = () => {
-    if (searchCode.length !== 0) {
-      searchCode?.length < 7
-        ? router.push(`/thematiques?codgeo=${searchCode}&codepci=${epciCode}`)
-        : router.push(`/thematiques?codepci=${epciCode}`);
+    if (searchCode.length !== 0 || searchLibelle.length !== 0) {
+      searchCode.length !== 0
+        ? router.push(
+            `/thematiques?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
+          )
+        : router.push(
+            `/thematiques?libelle=${searchLibelle}&type=${typeTerritoire}`
+          );
     }
   };
 
@@ -184,9 +188,10 @@ export const SearchBarComp = () => {
               placeholder={placeholder}
               type={type}
               typeTerritoire={typeTerritoire}
-              searchCodeFromSearchBar={setSearchCode}
-              searchLibelleFromSearchBar={setSearchLibelle}
-              searchEpciCodeFromSearchBar={setEpciCode}
+              setSearchCode={setSearchCode}
+              setSearchLibelle={setSearchLibelle}
+              searchCode={searchCode}
+              searchLibelle={searchLibelle}
             />
           )}
         />
