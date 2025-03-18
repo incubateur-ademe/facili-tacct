@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "20.x",
-    "pnpm": "9.11.0"
+    "node": "23.x",
+    "pnpm": "9.15.3"
   },
-  "engines.pnpm": "9.11.0",
+  "engines.pnpm": "9.15.3",
   "husky": {
     "hooks": {
       "pre-commit": "bash -c '\"%TALISMAN_HOME%\\talisman_windows_amd64.exe\" --githook pre-commit'"
@@ -30,6 +30,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@iframe-resizer/child": "^5.3.2",
     "@incubateur-ademe/legal-pages-react": "^0.3.0",
+    "@mui/icons-material": "^6.4.8",
     "@mui/material": "^6.3.0",
     "@next/mdx": "^15",
     "@nivo/bar": "^0.88.0",

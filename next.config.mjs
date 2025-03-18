@@ -1,11 +1,10 @@
 //https://github.com/incubateur-ademe/pages-legales-faciles/blob/dev/next.config.mjs
 import createMDX from '@next/mdx';
 import { withSentryConfig } from '@sentry/nextjs';
+import fs from 'fs';
 
-import packageJson from './package.json' assert { type: 'json' };
-
+const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 const { version } = packageJson;
-
 const isDeployment = !!process.env.SOURCE_VERSION;
 
 const env = {
