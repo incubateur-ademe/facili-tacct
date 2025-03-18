@@ -1,15 +1,19 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
-
+import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import { PieChart1 } from '@/components/charts/inconfortThermique/pieChartTravailExt';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
+import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
+import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { travailExtDto } from '@/lib/dto';
 import { travailExtMapper } from '@/lib/mapper/inconfortThermique';
-import { InconfortThermique } from '@/lib/postgres/models';
+import { InconfortThermique, Patch4 } from '@/lib/postgres/models';
+import { GetPatch4 } from '@/lib/queries/patch4';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import styles from './themes.module.scss';
 
 const sumProperty = (
@@ -28,6 +32,7 @@ export const TravailExterieur = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo');
   const codepci = searchParams.get('codepci')!;
+  const [patch4, setPatch4] = useState<Patch4[]>();
   const travailExterieurMapped = inconfortThermique.map(travailExtMapper);
   const travailExterieurCommune = codgeo
     ? travailExterieurMapped.filter((e) => e.code_commune === codgeo)
@@ -102,6 +107,17 @@ export const TravailExterieur = (props: {
     ) +
     Number(((100 * sums.sumAgriculture) / Sum(Object.values(sums))).toFixed(1));
 
+  useEffect(() => {
+    void (async () => {
+      const temp = await GetPatch4(codgeo ?? codepci);
+      temp && codepci ? setPatch4(temp) : void 0;
+    })();
+  }, [codgeo, codepci]);
+
+  const fortesChaleurs = patch4
+    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
+    : null;
+
   const title = (
     <>
       <div>
@@ -130,13 +146,25 @@ export const TravailExterieur = (props: {
                 <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                   L’agriculture et la construction représentent une grande part
                   de postes en extérieur. La part cumulée des emplois de votre
-                  territoire dans ces deux secteurs à risque est de 
+                  territoire dans ces deux secteurs à risque est de
                   <b>{travailExt?.toFixed(1)} %</b>, soit{' '}
                   <b>
                     {(sums.sumAgriculture + sums.sumConstruction).toFixed(0)}
                   </b>{' '}
                   personnes.
                 </p>
+                <div className={styles.patch4Wrapper}>
+                  {fortesChaleurs === 'Intensité très forte' ||
+                  fortesChaleurs === 'Intensité forte' ? (
+                    <div>
+                      <TagItem
+                        icon={fortesChaleursIcon}
+                        indice="Fortes chaleurs"
+                        tag={fortesChaleurs}
+                      />
+                    </div>
+                  ) : null}
+                </div>
                 <CustomTooltip title={title} />
               </div>
             ) : (

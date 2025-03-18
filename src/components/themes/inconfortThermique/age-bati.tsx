@@ -1,12 +1,18 @@
 'use client';
+import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
+import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import { BarChart } from '@/components/charts/inconfortThermique/BarChartAgeBati';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
+import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
+import { TagItem } from '@/components/patch4/TagItem';
 import { AgeBatiDto } from '@/lib/dto';
 import { ageBatiMapper } from '@/lib/mapper/inconfortThermique';
-import { InconfortThermique } from '@/lib/postgres/models';
+import { InconfortThermique, Patch4 } from '@/lib/postgres/models';
+import { GetPatch4 } from '@/lib/queries/patch4';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import styles from './themes.module.scss';
 
 interface ChartData {
@@ -34,6 +40,7 @@ export const AgeBati = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo');
   const codepci = searchParams.get('codepci')!;
+  const [patch4, setPatch4] = useState<Patch4[]>();
   const ageBatiMapped = inconfortThermique.map(ageBatiMapper);
   const ageBatiCommune = codgeo
     ? ageBatiMapped.filter((e) => e.code_commune === codgeo)
@@ -93,6 +100,18 @@ export const AgeBati = (props: {
     }
   ];
 
+  useEffect(() => {
+    void (async () => {
+      const temp = await GetPatch4(codgeo ?? codepci);
+      temp && codepci ? setPatch4(temp) : void 0;
+    })();
+  }, [codgeo, codepci]);
+
+  const fortesChaleurs = patch4
+    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
+    : null;
+  const secheresse = patch4 ? AlgoPatch4(patch4[0], 'secheresse_sols') : null;
+
   return (
     <>
       {inconfortThermique.length &&
@@ -115,6 +134,24 @@ export const AgeBati = (props: {
                   principales sont construites avant 2006.
                 </p>
               )}
+              <div className={styles.patch4Wrapper}>
+                {fortesChaleurs === 'Intensité très forte' ||
+                fortesChaleurs === 'Intensité forte' ? (
+                  <TagItem
+                    icon={fortesChaleursIcon}
+                    indice="Fortes chaleurs"
+                    tag={fortesChaleurs}
+                  />
+                ) : null}
+                {secheresse === 'Intensité très forte' ||
+                secheresse === 'Intensité forte' ? (
+                  <TagItem
+                    icon={secheresseIcon}
+                    indice="Sécheresse des sols"
+                    tag={secheresse}
+                  />
+                ) : null}
+              </div>
             </div>
             <p className="px-4">
               La robustesse des logements face aux températures élevées dépend

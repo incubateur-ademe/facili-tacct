@@ -71,3 +71,12 @@
     border: solid 1px #d6d6f0;
     border-radius: 0.5em;
 }
+
+.patch4Wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-bottom: solid 1px #d6d6f0;
+    padding: 20px 0;
+    margin: 0 0 20px;
+}

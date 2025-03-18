@@ -1,12 +1,15 @@
 'use client';
-
+import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
+import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
-import { RessourcesEau } from '@/lib/postgres/models';
+import { Patch4, RessourcesEau } from '@/lib/postgres/models';
+import { GetPatch4 } from '@/lib/queries/patch4';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PrelevementEauDataViz from './prelevementEauDataviz';
 import styles from './ressourcesEau.module.scss';
 
@@ -51,6 +54,7 @@ export const PrelevementEau = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
+  const [patch4, setPatch4] = useState<Patch4[]>();
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
   const volumeTotalPreleve = Round(
     SumFiltered(ressourcesEau, codgeo, codepci, 'total', true) / 1000000,
@@ -79,6 +83,17 @@ export const PrelevementEau = (props: {
       ].reduce((a, b) => a + b, 0);
     })
     .reduce((a, b) => a + b, 0);
+
+  useEffect(() => {
+    void (async () => {
+      const temp = await GetPatch4(codgeo ?? codepci);
+      temp && codepci ? setPatch4(temp) : void 0;
+    })();
+  }, [codgeo, codepci]);
+
+  const fortesChaleurs = patch4
+    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
+    : null;
 
   const title = (
     <>
@@ -109,6 +124,16 @@ export const PrelevementEau = (props: {
                 de <b>{Round((1000000 * volumeTotalPreleve) / 3750, 0)}</b>{' '}
                 piscines olympiques.
               </p>
+              <div className={styles.patch4Wrapper}>
+                {fortesChaleurs === 'Intensité très forte' ||
+                fortesChaleurs === 'Intensité forte' ? (
+                  <TagItem
+                    icon={fortesChaleursIcon}
+                    indice="Fortes chaleurs"
+                    tag={fortesChaleurs}
+                  />
+                ) : null}
+              </div>
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
             </div>
             <div className="px-4">

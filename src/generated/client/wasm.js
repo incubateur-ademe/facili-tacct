@@ -16,11 +16,11 @@ exports.$Enums = {};
 
 /**
  * Prisma Client JS version: 6.3.0
- * Query Engine version: acc0b9dd43eb689cbd20c9470515d719db10d0b0
+ * Query Engine version: 173f8d54f8d52e692c7e27e72a88314ec7aeff60
  */
 Prisma.prismaVersion = {
   client: '6.3.0',
-  engine: 'acc0b9dd43eb689cbd20c9470515d719db10d0b0'
+  engine: '173f8d54f8d52e692c7e27e72a88314ec7aeff60'
 };
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -121,6 +121,10 @@ exports.Prisma.Inconfort_thermiqueScalarFieldEnum = {
   libelle_epci: 'libelle_epci',
   departement: 'departement',
   region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
   age_bati_post06: 'age_bati_post06',
   age_bati_91_05: 'age_bati_91_05',
   age_bati_46_90: 'age_bati_46_90',
@@ -558,6 +562,16 @@ exports.Prisma.Incendies_foretScalarFieldEnum = {
   autres_surfaces: 'autres_surfaces'
 };
 
+exports.Prisma.Patch4cScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  niveaux_marins: 'niveaux_marins',
+  feux_foret: 'feux_foret',
+  secheresse_sols: 'secheresse_sols',
+  fortes_precipitations: 'fortes_precipitations',
+  fortes_chaleurs: 'fortes_chaleurs'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -594,7 +608,8 @@ exports.Prisma.ModelName = {
   users: 'users',
   qualite_sites_baignade: 'qualite_sites_baignade',
   agriculture: 'agriculture',
-  incendies_foret: 'incendies_foret'
+  incendies_foret: 'incendies_foret',
+  patch4c: 'patch4c'
 };
 
 /**

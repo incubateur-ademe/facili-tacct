@@ -1,13 +1,17 @@
-import { useSearchParams } from 'next/navigation';
-
+import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
 import { fragiliteEcoLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { Map } from '@/components/maps/map';
+import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
+import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { CarteCommunes } from '@/lib/postgres/models';
+import { CarteCommunes, Patch4 } from '@/lib/postgres/models';
+import { GetPatch4 } from '@/lib/queries/patch4';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import styles from './themes.module.scss';
 
 export const FragiliteEconomique = ({
@@ -18,6 +22,7 @@ export const FragiliteEconomique = ({
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo');
   const codepci = searchParams.get('codepci')!;
+  const [patch4, setPatch4] = useState<Patch4[]>();
   const communesMap = carteCommunes
     .map(CommunesIndicateursMapper)
     .filter((e) => !isNaN(e.properties.precarite_logement));
@@ -33,6 +38,17 @@ export const FragiliteEconomique = ({
   const precariteCommune: number = Number(
     commune ? commune.properties['precarite_logement'] : 0
   );
+
+  useEffect(() => {
+    void (async () => {
+      const temp = await GetPatch4(codgeo ?? codepci);
+      temp && codepci ? setPatch4(temp) : void 0;
+    })();
+  }, [codgeo, codepci]);
+
+  const fortesChaleurs = patch4
+    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
+    : null;
 
   const title = (
     <>
@@ -80,6 +96,16 @@ export const FragiliteEconomique = ({
                       <b>{(100 * precariteLogEpci).toPrecision(3)} %. </b>
                     </p>
                   )}
+                  <div className={styles.patch4Wrapper}>
+                    {fortesChaleurs === 'Intensité très forte' ||
+                    fortesChaleurs === 'Intensité forte' ? (
+                      <TagItem
+                        icon={fortesChaleursIcon}
+                        indice="Fortes chaleurs"
+                        tag={fortesChaleurs}
+                      />
+                    ) : null}
+                  </div>
                   <CustomTooltip
                     title={title}
                     texte="D'où vient ce chiffre ?"
