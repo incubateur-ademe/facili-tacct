@@ -440,3 +440,13 @@ export type IncendiesForet = {
   surface_autres_terres_boisees: number | null;
   autres_surfaces: number | null;
 };
+
+export type Patch4 = {
+  index: bigint;
+  code_geographique: string;
+  niveaux_marins: number | null;
+  feux_foret: number;
+  secheresse_sols: number;
+  fortes_precipitations: number;
+  fortes_chaleurs: number;
+};

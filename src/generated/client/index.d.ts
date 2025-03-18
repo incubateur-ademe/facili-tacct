@@ -132,6 +132,11 @@ export type agriculture = $Result.DefaultSelection<Prisma.$agriculturePayload>;
  */
 export type incendies_foret =
   $Result.DefaultSelection<Prisma.$incendies_foretPayload>;
+/**
+ * Model patch4c
+ *
+ */
+export type patch4c = $Result.DefaultSelection<Prisma.$patch4cPayload>;
 
 /**
  * ##  Prisma Client ʲˢ
@@ -533,6 +538,16 @@ export class PrismaClient<
    * ```
    */
   get incendies_foret(): Prisma.incendies_foretDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.patch4c`: Exposes CRUD operations for the **patch4c** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Patch4cs
+   * const patch4cs = await prisma.patch4c.findMany()
+   * ```
+   */
+  get patch4c(): Prisma.patch4cDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -590,7 +605,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 6.3.0
-   * Query Engine version: acc0b9dd43eb689cbd20c9470515d719db10d0b0
+   * Query Engine version: 173f8d54f8d52e692c7e27e72a88314ec7aeff60
    */
   export type PrismaVersion = {
     client: string;
@@ -1012,6 +1027,7 @@ export namespace Prisma {
     qualite_sites_baignade: 'qualite_sites_baignade';
     agriculture: 'agriculture';
     incendies_foret: 'incendies_foret';
+    patch4c: 'patch4c';
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -1057,7 +1073,8 @@ export namespace Prisma {
         | 'users'
         | 'qualite_sites_baignade'
         | 'agriculture'
-        | 'incendies_foret';
+        | 'incendies_foret'
+        | 'patch4c';
       txIsolationLevel: Prisma.TransactionIsolationLevel;
     };
     model: {
@@ -2585,6 +2602,80 @@ export namespace Prisma {
           };
         };
       };
+      patch4c: {
+        payload: Prisma.$patch4cPayload<ExtArgs>;
+        fields: Prisma.patch4cFieldRefs;
+        operations: {
+          findUnique: {
+            args: Prisma.patch4cFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload> | null;
+          };
+          findUniqueOrThrow: {
+            args: Prisma.patch4cFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>;
+          };
+          findFirst: {
+            args: Prisma.patch4cFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload> | null;
+          };
+          findFirstOrThrow: {
+            args: Prisma.patch4cFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>;
+          };
+          findMany: {
+            args: Prisma.patch4cFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>[];
+          };
+          create: {
+            args: Prisma.patch4cCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>;
+          };
+          createMany: {
+            args: Prisma.patch4cCreateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          createManyAndReturn: {
+            args: Prisma.patch4cCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>[];
+          };
+          delete: {
+            args: Prisma.patch4cDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>;
+          };
+          update: {
+            args: Prisma.patch4cUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>;
+          };
+          deleteMany: {
+            args: Prisma.patch4cDeleteManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateMany: {
+            args: Prisma.patch4cUpdateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateManyAndReturn: {
+            args: Prisma.patch4cUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>[];
+          };
+          upsert: {
+            args: Prisma.patch4cUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>;
+          };
+          aggregate: {
+            args: Prisma.Patch4cAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregatePatch4c>;
+          };
+          groupBy: {
+            args: Prisma.patch4cGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<Patch4cGroupByOutputType>[];
+          };
+          count: {
+            args: Prisma.patch4cCountArgs<ExtArgs>;
+            result: $Utils.Optional<Patch4cCountAggregateOutputType> | number;
+          };
+        };
+      };
     };
   } & {
     other: {
@@ -2694,6 +2785,7 @@ export namespace Prisma {
     qualite_sites_baignade?: qualite_sites_baignadeOmit;
     agriculture?: agricultureOmit;
     incendies_foret?: incendies_foretOmit;
+    patch4c?: patch4cOmit;
   };
 
   /* Types for Logging */
@@ -2876,6 +2968,10 @@ export namespace Prisma {
     libelle_epci: string | null;
     departement: string | null;
     region: number | null;
+    ept: string | null;
+    libelle_petr: string | null;
+    code_pnr: string | null;
+    libelle_pnr: string | null;
     age_bati_post06: number | null;
     age_bati_91_05: number | null;
     age_bati_46_90: number | null;
@@ -2936,6 +3032,10 @@ export namespace Prisma {
     libelle_epci: string | null;
     departement: string | null;
     region: number | null;
+    ept: string | null;
+    libelle_petr: string | null;
+    code_pnr: string | null;
+    libelle_pnr: string | null;
     age_bati_post06: number | null;
     age_bati_91_05: number | null;
     age_bati_46_90: number | null;
@@ -2996,6 +3096,10 @@ export namespace Prisma {
     libelle_epci: number;
     departement: number;
     region: number;
+    ept: number;
+    libelle_petr: number;
+    code_pnr: number;
+    libelle_pnr: number;
     age_bati_post06: number;
     age_bati_91_05: number;
     age_bati_46_90: number;
@@ -3113,6 +3217,10 @@ export namespace Prisma {
     libelle_epci?: true;
     departement?: true;
     region?: true;
+    ept?: true;
+    libelle_petr?: true;
+    code_pnr?: true;
+    libelle_pnr?: true;
     age_bati_post06?: true;
     age_bati_91_05?: true;
     age_bati_46_90?: true;
@@ -3173,6 +3281,10 @@ export namespace Prisma {
     libelle_epci?: true;
     departement?: true;
     region?: true;
+    ept?: true;
+    libelle_petr?: true;
+    code_pnr?: true;
+    libelle_pnr?: true;
     age_bati_post06?: true;
     age_bati_91_05?: true;
     age_bati_46_90?: true;
@@ -3233,6 +3345,10 @@ export namespace Prisma {
     libelle_epci?: true;
     departement?: true;
     region?: true;
+    ept?: true;
+    libelle_petr?: true;
+    code_pnr?: true;
+    libelle_pnr?: true;
     age_bati_post06?: true;
     age_bati_91_05?: true;
     age_bati_46_90?: true;
@@ -3391,6 +3507,10 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
+    ept: string | null;
+    libelle_petr: string | null;
+    code_pnr: string | null;
+    libelle_pnr: string | null;
     age_bati_post06: number | null;
     age_bati_91_05: number | null;
     age_bati_46_90: number | null;
@@ -3474,6 +3594,10 @@ export namespace Prisma {
       libelle_epci?: boolean;
       departement?: boolean;
       region?: boolean;
+      ept?: boolean;
+      libelle_petr?: boolean;
+      code_pnr?: boolean;
+      libelle_pnr?: boolean;
       age_bati_post06?: boolean;
       age_bati_91_05?: boolean;
       age_bati_46_90?: boolean;
@@ -3539,6 +3663,10 @@ export namespace Prisma {
       libelle_epci?: boolean;
       departement?: boolean;
       region?: boolean;
+      ept?: boolean;
+      libelle_petr?: boolean;
+      code_pnr?: boolean;
+      libelle_pnr?: boolean;
       age_bati_post06?: boolean;
       age_bati_91_05?: boolean;
       age_bati_46_90?: boolean;
@@ -3604,6 +3732,10 @@ export namespace Prisma {
       libelle_epci?: boolean;
       departement?: boolean;
       region?: boolean;
+      ept?: boolean;
+      libelle_petr?: boolean;
+      code_pnr?: boolean;
+      libelle_pnr?: boolean;
       age_bati_post06?: boolean;
       age_bati_91_05?: boolean;
       age_bati_46_90?: boolean;
@@ -3666,6 +3798,10 @@ export namespace Prisma {
     libelle_epci?: boolean;
     departement?: boolean;
     region?: boolean;
+    ept?: boolean;
+    libelle_petr?: boolean;
+    code_pnr?: boolean;
+    libelle_pnr?: boolean;
     age_bati_post06?: boolean;
     age_bati_91_05?: boolean;
     age_bati_46_90?: boolean;
@@ -3728,6 +3864,10 @@ export namespace Prisma {
     | 'libelle_epci'
     | 'departement'
     | 'region'
+    | 'ept'
+    | 'libelle_petr'
+    | 'code_pnr'
+    | 'libelle_pnr'
     | 'age_bati_post06'
     | 'age_bati_91_05'
     | 'age_bati_46_90'
@@ -3795,6 +3935,10 @@ export namespace Prisma {
         libelle_epci: string;
         departement: string;
         region: number;
+        ept: string | null;
+        libelle_petr: string | null;
+        code_pnr: string | null;
+        libelle_pnr: string | null;
         age_bati_post06: number | null;
         age_bati_91_05: number | null;
         age_bati_46_90: number | null;
@@ -4448,6 +4592,10 @@ export namespace Prisma {
     readonly libelle_epci: FieldRef<'inconfort_thermique', 'String'>;
     readonly departement: FieldRef<'inconfort_thermique', 'String'>;
     readonly region: FieldRef<'inconfort_thermique', 'Int'>;
+    readonly ept: FieldRef<'inconfort_thermique', 'String'>;
+    readonly libelle_petr: FieldRef<'inconfort_thermique', 'String'>;
+    readonly code_pnr: FieldRef<'inconfort_thermique', 'String'>;
+    readonly libelle_pnr: FieldRef<'inconfort_thermique', 'String'>;
     readonly age_bati_post06: FieldRef<'inconfort_thermique', 'Float'>;
     readonly age_bati_91_05: FieldRef<'inconfort_thermique', 'Float'>;
     readonly age_bati_46_90: FieldRef<'inconfort_thermique', 'Float'>;
@@ -6401,7 +6549,7 @@ export namespace Prisma {
     code_pnr: string | null;
     libelle_pnr: string | null;
     search_code: string | null;
-    search_libelle: string | null;
+    search_libelle: string;
     _count: Collectivites_searchbarCountAggregateOutputType | null;
     _avg: Collectivites_searchbarAvgAggregateOutputType | null;
     _sum: Collectivites_searchbarSumAggregateOutputType | null;
@@ -6541,7 +6689,7 @@ export namespace Prisma {
         code_pnr: string | null;
         libelle_pnr: string | null;
         search_code: string | null;
-        search_libelle: string | null;
+        search_libelle: string;
       },
       ExtArgs['result']['collectivites_searchbar']
     >;
@@ -33615,6 +33763,1310 @@ export namespace Prisma {
   };
 
   /**
+   * Model patch4c
+   */
+
+  export type AggregatePatch4c = {
+    _count: Patch4cCountAggregateOutputType | null;
+    _avg: Patch4cAvgAggregateOutputType | null;
+    _sum: Patch4cSumAggregateOutputType | null;
+    _min: Patch4cMinAggregateOutputType | null;
+    _max: Patch4cMaxAggregateOutputType | null;
+  };
+
+  export type Patch4cAvgAggregateOutputType = {
+    index: number | null;
+    niveaux_marins: number | null;
+    feux_foret: number | null;
+    secheresse_sols: number | null;
+    fortes_precipitations: number | null;
+    fortes_chaleurs: number | null;
+  };
+
+  export type Patch4cSumAggregateOutputType = {
+    index: bigint | null;
+    niveaux_marins: number | null;
+    feux_foret: number | null;
+    secheresse_sols: number | null;
+    fortes_precipitations: number | null;
+    fortes_chaleurs: number | null;
+  };
+
+  export type Patch4cMinAggregateOutputType = {
+    index: bigint | null;
+    code_geographique: string | null;
+    niveaux_marins: number | null;
+    feux_foret: number | null;
+    secheresse_sols: number | null;
+    fortes_precipitations: number | null;
+    fortes_chaleurs: number | null;
+  };
+
+  export type Patch4cMaxAggregateOutputType = {
+    index: bigint | null;
+    code_geographique: string | null;
+    niveaux_marins: number | null;
+    feux_foret: number | null;
+    secheresse_sols: number | null;
+    fortes_precipitations: number | null;
+    fortes_chaleurs: number | null;
+  };
+
+  export type Patch4cCountAggregateOutputType = {
+    index: number;
+    code_geographique: number;
+    niveaux_marins: number;
+    feux_foret: number;
+    secheresse_sols: number;
+    fortes_precipitations: number;
+    fortes_chaleurs: number;
+    _all: number;
+  };
+
+  export type Patch4cAvgAggregateInputType = {
+    index?: true;
+    niveaux_marins?: true;
+    feux_foret?: true;
+    secheresse_sols?: true;
+    fortes_precipitations?: true;
+    fortes_chaleurs?: true;
+  };
+
+  export type Patch4cSumAggregateInputType = {
+    index?: true;
+    niveaux_marins?: true;
+    feux_foret?: true;
+    secheresse_sols?: true;
+    fortes_precipitations?: true;
+    fortes_chaleurs?: true;
+  };
+
+  export type Patch4cMinAggregateInputType = {
+    index?: true;
+    code_geographique?: true;
+    niveaux_marins?: true;
+    feux_foret?: true;
+    secheresse_sols?: true;
+    fortes_precipitations?: true;
+    fortes_chaleurs?: true;
+  };
+
+  export type Patch4cMaxAggregateInputType = {
+    index?: true;
+    code_geographique?: true;
+    niveaux_marins?: true;
+    feux_foret?: true;
+    secheresse_sols?: true;
+    fortes_precipitations?: true;
+    fortes_chaleurs?: true;
+  };
+
+  export type Patch4cCountAggregateInputType = {
+    index?: true;
+    code_geographique?: true;
+    niveaux_marins?: true;
+    feux_foret?: true;
+    secheresse_sols?: true;
+    fortes_precipitations?: true;
+    fortes_chaleurs?: true;
+    _all?: true;
+  };
+
+  export type Patch4cAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which patch4c to aggregate.
+     */
+    where?: patch4cWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of patch4cs to fetch.
+     */
+    orderBy?:
+      | patch4cOrderByWithRelationInput
+      | patch4cOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: patch4cWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` patch4cs from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` patch4cs.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned patch4cs
+     **/
+    _count?: true | Patch4cCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: Patch4cAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: Patch4cSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: Patch4cMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: Patch4cMaxAggregateInputType;
+  };
+
+  export type GetPatch4cAggregateType<T extends Patch4cAggregateArgs> = {
+    [P in keyof T & keyof AggregatePatch4c]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePatch4c[P]>
+      : GetScalarType<T[P], AggregatePatch4c[P]>;
+  };
+
+  export type patch4cGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    where?: patch4cWhereInput;
+    orderBy?:
+      | patch4cOrderByWithAggregationInput
+      | patch4cOrderByWithAggregationInput[];
+    by: Patch4cScalarFieldEnum[] | Patch4cScalarFieldEnum;
+    having?: patch4cScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: Patch4cCountAggregateInputType | true;
+    _avg?: Patch4cAvgAggregateInputType;
+    _sum?: Patch4cSumAggregateInputType;
+    _min?: Patch4cMinAggregateInputType;
+    _max?: Patch4cMaxAggregateInputType;
+  };
+
+  export type Patch4cGroupByOutputType = {
+    index: bigint;
+    code_geographique: string;
+    niveaux_marins: number | null;
+    feux_foret: number;
+    secheresse_sols: number;
+    fortes_precipitations: number;
+    fortes_chaleurs: number;
+    _count: Patch4cCountAggregateOutputType | null;
+    _avg: Patch4cAvgAggregateOutputType | null;
+    _sum: Patch4cSumAggregateOutputType | null;
+    _min: Patch4cMinAggregateOutputType | null;
+    _max: Patch4cMaxAggregateOutputType | null;
+  };
+
+  type GetPatch4cGroupByPayload<T extends patch4cGroupByArgs> =
+    Prisma.PrismaPromise<
+      Array<
+        PickEnumerable<Patch4cGroupByOutputType, T['by']> & {
+          [P in keyof T & keyof Patch4cGroupByOutputType]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Patch4cGroupByOutputType[P]>
+            : GetScalarType<T[P], Patch4cGroupByOutputType[P]>;
+        }
+      >
+    >;
+
+  export type patch4cSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_geographique?: boolean;
+      niveaux_marins?: boolean;
+      feux_foret?: boolean;
+      secheresse_sols?: boolean;
+      fortes_precipitations?: boolean;
+      fortes_chaleurs?: boolean;
+    },
+    ExtArgs['result']['patch4c']
+  >;
+
+  export type patch4cSelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_geographique?: boolean;
+      niveaux_marins?: boolean;
+      feux_foret?: boolean;
+      secheresse_sols?: boolean;
+      fortes_precipitations?: boolean;
+      fortes_chaleurs?: boolean;
+    },
+    ExtArgs['result']['patch4c']
+  >;
+
+  export type patch4cSelectUpdateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetSelect<
+    {
+      index?: boolean;
+      code_geographique?: boolean;
+      niveaux_marins?: boolean;
+      feux_foret?: boolean;
+      secheresse_sols?: boolean;
+      fortes_precipitations?: boolean;
+      fortes_chaleurs?: boolean;
+    },
+    ExtArgs['result']['patch4c']
+  >;
+
+  export type patch4cSelectScalar = {
+    index?: boolean;
+    code_geographique?: boolean;
+    niveaux_marins?: boolean;
+    feux_foret?: boolean;
+    secheresse_sols?: boolean;
+    fortes_precipitations?: boolean;
+    fortes_chaleurs?: boolean;
+  };
+
+  export type patch4cOmit<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = $Extensions.GetOmit<
+    | 'index'
+    | 'code_geographique'
+    | 'niveaux_marins'
+    | 'feux_foret'
+    | 'secheresse_sols'
+    | 'fortes_precipitations'
+    | 'fortes_chaleurs',
+    ExtArgs['result']['patch4c']
+  >;
+
+  export type $patch4cPayload<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    name: 'patch4c';
+    objects: {};
+    scalars: $Extensions.GetPayloadResult<
+      {
+        index: bigint;
+        code_geographique: string;
+        niveaux_marins: number | null;
+        feux_foret: number;
+        secheresse_sols: number;
+        fortes_precipitations: number;
+        fortes_chaleurs: number;
+      },
+      ExtArgs['result']['patch4c']
+    >;
+    composites: {};
+  };
+
+  type patch4cGetPayload<
+    S extends boolean | null | undefined | patch4cDefaultArgs
+  > = $Result.GetResult<Prisma.$patch4cPayload, S>;
+
+  type patch4cCountArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = Omit<patch4cFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: Patch4cCountAggregateInputType | true;
+  };
+
+  export interface patch4cDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['patch4c'];
+      meta: { name: 'patch4c' };
+    };
+    /**
+     * Find zero or one Patch4c that matches the filter.
+     * @param {patch4cFindUniqueArgs} args - Arguments to find a Patch4c
+     * @example
+     * // Get one Patch4c
+     * const patch4c = await prisma.patch4c.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends patch4cFindUniqueArgs>(
+      args: SelectSubset<T, patch4cFindUniqueArgs<ExtArgs>>
+    ): Prisma__patch4cClient<
+      $Result.GetResult<
+        Prisma.$patch4cPayload<ExtArgs>,
+        T,
+        'findUnique',
+        ClientOptions
+      > | null,
+      null,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find one Patch4c that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {patch4cFindUniqueOrThrowArgs} args - Arguments to find a Patch4c
+     * @example
+     * // Get one Patch4c
+     * const patch4c = await prisma.patch4c.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends patch4cFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, patch4cFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__patch4cClient<
+      $Result.GetResult<
+        Prisma.$patch4cPayload<ExtArgs>,
+        T,
+        'findUniqueOrThrow',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find the first Patch4c that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {patch4cFindFirstArgs} args - Arguments to find a Patch4c
+     * @example
+     * // Get one Patch4c
+     * const patch4c = await prisma.patch4c.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends patch4cFindFirstArgs>(
+      args?: SelectSubset<T, patch4cFindFirstArgs<ExtArgs>>
+    ): Prisma__patch4cClient<
+      $Result.GetResult<
+        Prisma.$patch4cPayload<ExtArgs>,
+        T,
+        'findFirst',
+        ClientOptions
+      > | null,
+      null,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find the first Patch4c that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {patch4cFindFirstOrThrowArgs} args - Arguments to find a Patch4c
+     * @example
+     * // Get one Patch4c
+     * const patch4c = await prisma.patch4c.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends patch4cFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, patch4cFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__patch4cClient<
+      $Result.GetResult<
+        Prisma.$patch4cPayload<ExtArgs>,
+        T,
+        'findFirstOrThrow',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Find zero or more Patch4cs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {patch4cFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Patch4cs
+     * const patch4cs = await prisma.patch4c.findMany()
+     *
+     * // Get first 10 Patch4cs
+     * const patch4cs = await prisma.patch4c.findMany({ take: 10 })
+     *
+     * // Only select the `index`
+     * const patch4cWithIndexOnly = await prisma.patch4c.findMany({ select: { index: true } })
+     *
+     */
+    findMany<T extends patch4cFindManyArgs>(
+      args?: SelectSubset<T, patch4cFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$patch4cPayload<ExtArgs>,
+        T,
+        'findMany',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Create a Patch4c.
+     * @param {patch4cCreateArgs} args - Arguments to create a Patch4c.
+     * @example
+     * // Create one Patch4c
+     * const Patch4c = await prisma.patch4c.create({
+     *   data: {
+     *     // ... data to create a Patch4c
+     *   }
+     * })
+     *
+     */
+    create<T extends patch4cCreateArgs>(
+      args: SelectSubset<T, patch4cCreateArgs<ExtArgs>>
+    ): Prisma__patch4cClient<
+      $Result.GetResult<
+        Prisma.$patch4cPayload<ExtArgs>,
+        T,
+        'create',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Create many Patch4cs.
+     * @param {patch4cCreateManyArgs} args - Arguments to create many Patch4cs.
+     * @example
+     * // Create many Patch4cs
+     * const patch4c = await prisma.patch4c.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends patch4cCreateManyArgs>(
+      args?: SelectSubset<T, patch4cCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create many Patch4cs and returns the data saved in the database.
+     * @param {patch4cCreateManyAndReturnArgs} args - Arguments to create many Patch4cs.
+     * @example
+     * // Create many Patch4cs
+     * const patch4c = await prisma.patch4c.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Patch4cs and only return the `index`
+     * const patch4cWithIndexOnly = await prisma.patch4c.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends patch4cCreateManyAndReturnArgs>(
+      args?: SelectSubset<T, patch4cCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$patch4cPayload<ExtArgs>,
+        T,
+        'createManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Delete a Patch4c.
+     * @param {patch4cDeleteArgs} args - Arguments to delete one Patch4c.
+     * @example
+     * // Delete one Patch4c
+     * const Patch4c = await prisma.patch4c.delete({
+     *   where: {
+     *     // ... filter to delete one Patch4c
+     *   }
+     * })
+     *
+     */
+    delete<T extends patch4cDeleteArgs>(
+      args: SelectSubset<T, patch4cDeleteArgs<ExtArgs>>
+    ): Prisma__patch4cClient<
+      $Result.GetResult<
+        Prisma.$patch4cPayload<ExtArgs>,
+        T,
+        'delete',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Update one Patch4c.
+     * @param {patch4cUpdateArgs} args - Arguments to update one Patch4c.
+     * @example
+     * // Update one Patch4c
+     * const patch4c = await prisma.patch4c.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends patch4cUpdateArgs>(
+      args: SelectSubset<T, patch4cUpdateArgs<ExtArgs>>
+    ): Prisma__patch4cClient<
+      $Result.GetResult<
+        Prisma.$patch4cPayload<ExtArgs>,
+        T,
+        'update',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Delete zero or more Patch4cs.
+     * @param {patch4cDeleteManyArgs} args - Arguments to filter Patch4cs to delete.
+     * @example
+     * // Delete a few Patch4cs
+     * const { count } = await prisma.patch4c.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends patch4cDeleteManyArgs>(
+      args?: SelectSubset<T, patch4cDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Patch4cs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {patch4cUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Patch4cs
+     * const patch4c = await prisma.patch4c.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends patch4cUpdateManyArgs>(
+      args: SelectSubset<T, patch4cUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Patch4cs and returns the data updated in the database.
+     * @param {patch4cUpdateManyAndReturnArgs} args - Arguments to update many Patch4cs.
+     * @example
+     * // Update many Patch4cs
+     * const patch4c = await prisma.patch4c.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Patch4cs and only return the `index`
+     * const patch4cWithIndexOnly = await prisma.patch4c.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends patch4cUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, patch4cUpdateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<
+        Prisma.$patch4cPayload<ExtArgs>,
+        T,
+        'updateManyAndReturn',
+        ClientOptions
+      >
+    >;
+
+    /**
+     * Create or update one Patch4c.
+     * @param {patch4cUpsertArgs} args - Arguments to update or create a Patch4c.
+     * @example
+     * // Update or create a Patch4c
+     * const patch4c = await prisma.patch4c.upsert({
+     *   create: {
+     *     // ... data to create a Patch4c
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Patch4c we want to update
+     *   }
+     * })
+     */
+    upsert<T extends patch4cUpsertArgs>(
+      args: SelectSubset<T, patch4cUpsertArgs<ExtArgs>>
+    ): Prisma__patch4cClient<
+      $Result.GetResult<
+        Prisma.$patch4cPayload<ExtArgs>,
+        T,
+        'upsert',
+        ClientOptions
+      >,
+      never,
+      ExtArgs,
+      ClientOptions
+    >;
+
+    /**
+     * Count the number of Patch4cs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {patch4cCountArgs} args - Arguments to filter Patch4cs to count.
+     * @example
+     * // Count the number of Patch4cs
+     * const count = await prisma.patch4c.count({
+     *   where: {
+     *     // ... the filter for the Patch4cs we want to count
+     *   }
+     * })
+     **/
+    count<T extends patch4cCountArgs>(
+      args?: Subset<T, patch4cCountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Patch4cCountAggregateOutputType>
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a Patch4c.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Patch4cAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends Patch4cAggregateArgs>(
+      args: Subset<T, Patch4cAggregateArgs>
+    ): Prisma.PrismaPromise<GetPatch4cAggregateType<T>>;
+
+    /**
+     * Group by Patch4c.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {patch4cGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends patch4cGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: patch4cGroupByArgs['orderBy'] }
+        : { orderBy?: patch4cGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<
+        Keys<MaybeTupleToUnion<T['orderBy']>>
+      >,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [
+                      Error,
+                      'Field ',
+                      P,
+                      ` in "having" needs to be provided in "by"`
+                    ];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+    >(
+      args: SubsetIntersection<T, patch4cGroupByArgs, OrderByArg> & InputErrors
+    ): {} extends InputErrors
+      ? GetPatch4cGroupByPayload<T>
+      : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the patch4c model
+     */
+    readonly fields: patch4cFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for patch4c.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__patch4cClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+    ClientOptions = {}
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?:
+        | ((value: T) => TResult1 | PromiseLike<TResult1>)
+        | undefined
+        | null,
+      onrejected?:
+        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?:
+        | ((reason: any) => TResult | PromiseLike<TResult>)
+        | undefined
+        | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the patch4c model
+   */
+  interface patch4cFieldRefs {
+    readonly index: FieldRef<'patch4c', 'BigInt'>;
+    readonly code_geographique: FieldRef<'patch4c', 'String'>;
+    readonly niveaux_marins: FieldRef<'patch4c', 'Float'>;
+    readonly feux_foret: FieldRef<'patch4c', 'Float'>;
+    readonly secheresse_sols: FieldRef<'patch4c', 'Float'>;
+    readonly fortes_precipitations: FieldRef<'patch4c', 'Float'>;
+    readonly fortes_chaleurs: FieldRef<'patch4c', 'Float'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * patch4c findUnique
+   */
+  export type patch4cFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the patch4c
+     */
+    select?: patch4cSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the patch4c
+     */
+    omit?: patch4cOmit<ExtArgs> | null;
+    /**
+     * Filter, which patch4c to fetch.
+     */
+    where: patch4cWhereUniqueInput;
+  };
+
+  /**
+   * patch4c findUniqueOrThrow
+   */
+  export type patch4cFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the patch4c
+     */
+    select?: patch4cSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the patch4c
+     */
+    omit?: patch4cOmit<ExtArgs> | null;
+    /**
+     * Filter, which patch4c to fetch.
+     */
+    where: patch4cWhereUniqueInput;
+  };
+
+  /**
+   * patch4c findFirst
+   */
+  export type patch4cFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the patch4c
+     */
+    select?: patch4cSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the patch4c
+     */
+    omit?: patch4cOmit<ExtArgs> | null;
+    /**
+     * Filter, which patch4c to fetch.
+     */
+    where?: patch4cWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of patch4cs to fetch.
+     */
+    orderBy?:
+      | patch4cOrderByWithRelationInput
+      | patch4cOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for patch4cs.
+     */
+    cursor?: patch4cWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` patch4cs from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` patch4cs.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of patch4cs.
+     */
+    distinct?: Patch4cScalarFieldEnum | Patch4cScalarFieldEnum[];
+  };
+
+  /**
+   * patch4c findFirstOrThrow
+   */
+  export type patch4cFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the patch4c
+     */
+    select?: patch4cSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the patch4c
+     */
+    omit?: patch4cOmit<ExtArgs> | null;
+    /**
+     * Filter, which patch4c to fetch.
+     */
+    where?: patch4cWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of patch4cs to fetch.
+     */
+    orderBy?:
+      | patch4cOrderByWithRelationInput
+      | patch4cOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for patch4cs.
+     */
+    cursor?: patch4cWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` patch4cs from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` patch4cs.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of patch4cs.
+     */
+    distinct?: Patch4cScalarFieldEnum | Patch4cScalarFieldEnum[];
+  };
+
+  /**
+   * patch4c findMany
+   */
+  export type patch4cFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the patch4c
+     */
+    select?: patch4cSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the patch4c
+     */
+    omit?: patch4cOmit<ExtArgs> | null;
+    /**
+     * Filter, which patch4cs to fetch.
+     */
+    where?: patch4cWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of patch4cs to fetch.
+     */
+    orderBy?:
+      | patch4cOrderByWithRelationInput
+      | patch4cOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing patch4cs.
+     */
+    cursor?: patch4cWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` patch4cs from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` patch4cs.
+     */
+    skip?: number;
+    distinct?: Patch4cScalarFieldEnum | Patch4cScalarFieldEnum[];
+  };
+
+  /**
+   * patch4c create
+   */
+  export type patch4cCreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the patch4c
+     */
+    select?: patch4cSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the patch4c
+     */
+    omit?: patch4cOmit<ExtArgs> | null;
+    /**
+     * The data needed to create a patch4c.
+     */
+    data: XOR<patch4cCreateInput, patch4cUncheckedCreateInput>;
+  };
+
+  /**
+   * patch4c createMany
+   */
+  export type patch4cCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to create many patch4cs.
+     */
+    data: patch4cCreateManyInput | patch4cCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * patch4c createManyAndReturn
+   */
+  export type patch4cCreateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the patch4c
+     */
+    select?: patch4cSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the patch4c
+     */
+    omit?: patch4cOmit<ExtArgs> | null;
+    /**
+     * The data used to create many patch4cs.
+     */
+    data: patch4cCreateManyInput | patch4cCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * patch4c update
+   */
+  export type patch4cUpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the patch4c
+     */
+    select?: patch4cSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the patch4c
+     */
+    omit?: patch4cOmit<ExtArgs> | null;
+    /**
+     * The data needed to update a patch4c.
+     */
+    data: XOR<patch4cUpdateInput, patch4cUncheckedUpdateInput>;
+    /**
+     * Choose, which patch4c to update.
+     */
+    where: patch4cWhereUniqueInput;
+  };
+
+  /**
+   * patch4c updateMany
+   */
+  export type patch4cUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * The data used to update patch4cs.
+     */
+    data: XOR<patch4cUpdateManyMutationInput, patch4cUncheckedUpdateManyInput>;
+    /**
+     * Filter which patch4cs to update
+     */
+    where?: patch4cWhereInput;
+    /**
+     * Limit how many patch4cs to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * patch4c updateManyAndReturn
+   */
+  export type patch4cUpdateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the patch4c
+     */
+    select?: patch4cSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the patch4c
+     */
+    omit?: patch4cOmit<ExtArgs> | null;
+    /**
+     * The data used to update patch4cs.
+     */
+    data: XOR<patch4cUpdateManyMutationInput, patch4cUncheckedUpdateManyInput>;
+    /**
+     * Filter which patch4cs to update
+     */
+    where?: patch4cWhereInput;
+    /**
+     * Limit how many patch4cs to update.
+     */
+    limit?: number;
+  };
+
+  /**
+   * patch4c upsert
+   */
+  export type patch4cUpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the patch4c
+     */
+    select?: patch4cSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the patch4c
+     */
+    omit?: patch4cOmit<ExtArgs> | null;
+    /**
+     * The filter to search for the patch4c to update in case it exists.
+     */
+    where: patch4cWhereUniqueInput;
+    /**
+     * In case the patch4c found by the `where` argument doesn't exist, create a new patch4c with this data.
+     */
+    create: XOR<patch4cCreateInput, patch4cUncheckedCreateInput>;
+    /**
+     * In case the patch4c was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<patch4cUpdateInput, patch4cUncheckedUpdateInput>;
+  };
+
+  /**
+   * patch4c delete
+   */
+  export type patch4cDeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the patch4c
+     */
+    select?: patch4cSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the patch4c
+     */
+    omit?: patch4cOmit<ExtArgs> | null;
+    /**
+     * Filter which patch4c to delete.
+     */
+    where: patch4cWhereUniqueInput;
+  };
+
+  /**
+   * patch4c deleteMany
+   */
+  export type patch4cDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Filter which patch4cs to delete
+     */
+    where?: patch4cWhereInput;
+    /**
+     * Limit how many patch4cs to delete.
+     */
+    limit?: number;
+  };
+
+  /**
+   * patch4c without action
+   */
+  export type patch4cDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the patch4c
+     */
+    select?: patch4cSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the patch4c
+     */
+    omit?: patch4cOmit<ExtArgs> | null;
+  };
+
+  /**
    * Enums
    */
 
@@ -33636,6 +35088,10 @@ export namespace Prisma {
     libelle_epci: 'libelle_epci';
     departement: 'departement';
     region: 'region';
+    ept: 'ept';
+    libelle_petr: 'libelle_petr';
+    code_pnr: 'code_pnr';
+    libelle_pnr: 'libelle_pnr';
     age_bati_post06: 'age_bati_post06';
     age_bati_91_05: 'age_bati_91_05';
     age_bati_46_90: 'age_bati_46_90';
@@ -34135,6 +35591,19 @@ export namespace Prisma {
   export type Incendies_foretScalarFieldEnum =
     (typeof Incendies_foretScalarFieldEnum)[keyof typeof Incendies_foretScalarFieldEnum];
 
+  export const Patch4cScalarFieldEnum: {
+    index: 'index';
+    code_geographique: 'code_geographique';
+    niveaux_marins: 'niveaux_marins';
+    feux_foret: 'feux_foret';
+    secheresse_sols: 'secheresse_sols';
+    fortes_precipitations: 'fortes_precipitations';
+    fortes_chaleurs: 'fortes_chaleurs';
+  };
+
+  export type Patch4cScalarFieldEnum =
+    (typeof Patch4cScalarFieldEnum)[keyof typeof Patch4cScalarFieldEnum];
+
   export const SortOrder: {
     asc: 'asc';
     desc: 'desc';
@@ -34255,6 +35724,10 @@ export namespace Prisma {
     libelle_epci?: StringFilter<'inconfort_thermique'> | string;
     departement?: StringFilter<'inconfort_thermique'> | string;
     region?: IntFilter<'inconfort_thermique'> | number;
+    ept?: StringNullableFilter<'inconfort_thermique'> | string | null;
+    libelle_petr?: StringNullableFilter<'inconfort_thermique'> | string | null;
+    code_pnr?: StringNullableFilter<'inconfort_thermique'> | string | null;
+    libelle_pnr?: StringNullableFilter<'inconfort_thermique'> | string | null;
     age_bati_post06?:
       | FloatNullableFilter<'inconfort_thermique'>
       | number
@@ -34411,6 +35884,10 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrderInput | SortOrder;
+    libelle_petr?: SortOrderInput | SortOrder;
+    code_pnr?: SortOrderInput | SortOrder;
+    libelle_pnr?: SortOrderInput | SortOrder;
     age_bati_post06?: SortOrderInput | SortOrder;
     age_bati_91_05?: SortOrderInput | SortOrder;
     age_bati_46_90?: SortOrderInput | SortOrder;
@@ -34475,6 +35952,13 @@ export namespace Prisma {
       libelle_epci?: StringFilter<'inconfort_thermique'> | string;
       departement?: StringFilter<'inconfort_thermique'> | string;
       region?: IntFilter<'inconfort_thermique'> | number;
+      ept?: StringNullableFilter<'inconfort_thermique'> | string | null;
+      libelle_petr?:
+        | StringNullableFilter<'inconfort_thermique'>
+        | string
+        | null;
+      code_pnr?: StringNullableFilter<'inconfort_thermique'> | string | null;
+      libelle_pnr?: StringNullableFilter<'inconfort_thermique'> | string | null;
       age_bati_post06?:
         | FloatNullableFilter<'inconfort_thermique'>
         | number
@@ -34645,6 +36129,10 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrderInput | SortOrder;
+    libelle_petr?: SortOrderInput | SortOrder;
+    code_pnr?: SortOrderInput | SortOrder;
+    libelle_pnr?: SortOrderInput | SortOrder;
     age_bati_post06?: SortOrderInput | SortOrder;
     age_bati_91_05?: SortOrderInput | SortOrder;
     age_bati_46_90?: SortOrderInput | SortOrder;
@@ -34721,6 +36209,22 @@ export namespace Prisma {
     libelle_epci?: StringWithAggregatesFilter<'inconfort_thermique'> | string;
     departement?: StringWithAggregatesFilter<'inconfort_thermique'> | string;
     region?: IntWithAggregatesFilter<'inconfort_thermique'> | number;
+    ept?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
+      | string
+      | null;
+    libelle_petr?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
+      | string
+      | null;
+    code_pnr?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
+      | string
+      | null;
+    libelle_pnr?:
+      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
+      | string
+      | null;
     age_bati_post06?:
       | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
       | number
@@ -35015,10 +36519,7 @@ export namespace Prisma {
       | StringNullableFilter<'collectivites_searchbar'>
       | string
       | null;
-    search_libelle?:
-      | StringNullableFilter<'collectivites_searchbar'>
-      | string
-      | null;
+    search_libelle?: StringFilter<'collectivites_searchbar'> | string;
   };
 
   export type collectivites_searchbarOrderByWithRelationInput = {
@@ -35034,7 +36535,7 @@ export namespace Prisma {
     code_pnr?: SortOrderInput | SortOrder;
     libelle_pnr?: SortOrderInput | SortOrder;
     search_code?: SortOrderInput | SortOrder;
-    search_libelle?: SortOrderInput | SortOrder;
+    search_libelle?: SortOrder;
   };
 
   export type collectivites_searchbarWhereUniqueInput = Prisma.AtLeast<
@@ -35082,10 +36583,7 @@ export namespace Prisma {
         | StringNullableFilter<'collectivites_searchbar'>
         | string
         | null;
-      search_libelle?:
-        | StringNullableFilter<'collectivites_searchbar'>
-        | string
-        | null;
+      search_libelle?: StringFilter<'collectivites_searchbar'> | string;
     },
     'index'
   >;
@@ -35103,7 +36601,7 @@ export namespace Prisma {
     code_pnr?: SortOrderInput | SortOrder;
     libelle_pnr?: SortOrderInput | SortOrder;
     search_code?: SortOrderInput | SortOrder;
-    search_libelle?: SortOrderInput | SortOrder;
+    search_libelle?: SortOrder;
     _count?: collectivites_searchbarCountOrderByAggregateInput;
     _avg?: collectivites_searchbarAvgOrderByAggregateInput;
     _max?: collectivites_searchbarMaxOrderByAggregateInput;
@@ -35168,9 +36666,8 @@ export namespace Prisma {
       | string
       | null;
     search_libelle?:
-      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
-      | string
-      | null;
+      | StringWithAggregatesFilter<'collectivites_searchbar'>
+      | string;
   };
 
   export type biodiversiteWhereInput = {
@@ -37692,6 +39189,80 @@ export namespace Prisma {
       | null;
   };
 
+  export type patch4cWhereInput = {
+    AND?: patch4cWhereInput | patch4cWhereInput[];
+    OR?: patch4cWhereInput[];
+    NOT?: patch4cWhereInput | patch4cWhereInput[];
+    index?: BigIntFilter<'patch4c'> | bigint | number;
+    code_geographique?: StringFilter<'patch4c'> | string;
+    niveaux_marins?: FloatNullableFilter<'patch4c'> | number | null;
+    feux_foret?: FloatFilter<'patch4c'> | number;
+    secheresse_sols?: FloatFilter<'patch4c'> | number;
+    fortes_precipitations?: FloatFilter<'patch4c'> | number;
+    fortes_chaleurs?: FloatFilter<'patch4c'> | number;
+  };
+
+  export type patch4cOrderByWithRelationInput = {
+    index?: SortOrder;
+    code_geographique?: SortOrder;
+    niveaux_marins?: SortOrderInput | SortOrder;
+    feux_foret?: SortOrder;
+    secheresse_sols?: SortOrder;
+    fortes_precipitations?: SortOrder;
+    fortes_chaleurs?: SortOrder;
+  };
+
+  export type patch4cWhereUniqueInput = Prisma.AtLeast<
+    {
+      index?: bigint | number;
+      AND?: patch4cWhereInput | patch4cWhereInput[];
+      OR?: patch4cWhereInput[];
+      NOT?: patch4cWhereInput | patch4cWhereInput[];
+      code_geographique?: StringFilter<'patch4c'> | string;
+      niveaux_marins?: FloatNullableFilter<'patch4c'> | number | null;
+      feux_foret?: FloatFilter<'patch4c'> | number;
+      secheresse_sols?: FloatFilter<'patch4c'> | number;
+      fortes_precipitations?: FloatFilter<'patch4c'> | number;
+      fortes_chaleurs?: FloatFilter<'patch4c'> | number;
+    },
+    'index'
+  >;
+
+  export type patch4cOrderByWithAggregationInput = {
+    index?: SortOrder;
+    code_geographique?: SortOrder;
+    niveaux_marins?: SortOrderInput | SortOrder;
+    feux_foret?: SortOrder;
+    secheresse_sols?: SortOrder;
+    fortes_precipitations?: SortOrder;
+    fortes_chaleurs?: SortOrder;
+    _count?: patch4cCountOrderByAggregateInput;
+    _avg?: patch4cAvgOrderByAggregateInput;
+    _max?: patch4cMaxOrderByAggregateInput;
+    _min?: patch4cMinOrderByAggregateInput;
+    _sum?: patch4cSumOrderByAggregateInput;
+  };
+
+  export type patch4cScalarWhereWithAggregatesInput = {
+    AND?:
+      | patch4cScalarWhereWithAggregatesInput
+      | patch4cScalarWhereWithAggregatesInput[];
+    OR?: patch4cScalarWhereWithAggregatesInput[];
+    NOT?:
+      | patch4cScalarWhereWithAggregatesInput
+      | patch4cScalarWhereWithAggregatesInput[];
+    index?: BigIntWithAggregatesFilter<'patch4c'> | bigint | number;
+    code_geographique?: StringWithAggregatesFilter<'patch4c'> | string;
+    niveaux_marins?:
+      | FloatNullableWithAggregatesFilter<'patch4c'>
+      | number
+      | null;
+    feux_foret?: FloatWithAggregatesFilter<'patch4c'> | number;
+    secheresse_sols?: FloatWithAggregatesFilter<'patch4c'> | number;
+    fortes_precipitations?: FloatWithAggregatesFilter<'patch4c'> | number;
+    fortes_chaleurs?: FloatWithAggregatesFilter<'patch4c'> | number;
+  };
+
   export type inconfort_thermiqueCreateInput = {
     index: bigint | number;
     code_geographique: string;
@@ -37700,6 +39271,10 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
+    ept?: string | null;
+    libelle_petr?: string | null;
+    code_pnr?: string | null;
+    libelle_pnr?: string | null;
     age_bati_post06?: number | null;
     age_bati_91_05?: number | null;
     age_bati_46_90?: number | null;
@@ -37760,6 +39335,10 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
+    ept?: string | null;
+    libelle_petr?: string | null;
+    code_pnr?: string | null;
+    libelle_pnr?: string | null;
     age_bati_post06?: number | null;
     age_bati_91_05?: number | null;
     age_bati_46_90?: number | null;
@@ -37820,6 +39399,10 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
@@ -37892,6 +39475,10 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
@@ -37964,6 +39551,10 @@ export namespace Prisma {
     libelle_epci: string;
     departement: string;
     region: number;
+    ept?: string | null;
+    libelle_petr?: string | null;
+    code_pnr?: string | null;
+    libelle_pnr?: string | null;
     age_bati_post06?: number | null;
     age_bati_91_05?: number | null;
     age_bati_46_90?: number | null;
@@ -38024,6 +39615,10 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
@@ -38096,6 +39691,10 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
     age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
@@ -38212,7 +39811,7 @@ export namespace Prisma {
     code_pnr?: string | null;
     libelle_pnr?: string | null;
     search_code?: string | null;
-    search_libelle?: string | null;
+    search_libelle: string;
   };
 
   export type collectivites_searchbarUncheckedCreateInput = {
@@ -38228,7 +39827,7 @@ export namespace Prisma {
     code_pnr?: string | null;
     libelle_pnr?: string | null;
     search_code?: string | null;
-    search_libelle?: string | null;
+    search_libelle: string;
   };
 
   export type collectivites_searchbarUpdateInput = {
@@ -38250,7 +39849,7 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     search_code?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_libelle?: StringFieldUpdateOperationsInput | string;
   };
 
   export type collectivites_searchbarUncheckedUpdateInput = {
@@ -38272,7 +39871,7 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     search_code?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_libelle?: StringFieldUpdateOperationsInput | string;
   };
 
   export type collectivites_searchbarCreateManyInput = {
@@ -38288,7 +39887,7 @@ export namespace Prisma {
     code_pnr?: string | null;
     libelle_pnr?: string | null;
     search_code?: string | null;
-    search_libelle?: string | null;
+    search_libelle: string;
   };
 
   export type collectivites_searchbarUpdateManyMutationInput = {
@@ -38310,7 +39909,7 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     search_code?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_libelle?: StringFieldUpdateOperationsInput | string;
   };
 
   export type collectivites_searchbarUncheckedUpdateManyInput = {
@@ -38332,7 +39931,7 @@ export namespace Prisma {
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     search_code?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_libelle?: NullableStringFieldUpdateOperationsInput | string | null;
+    search_libelle?: StringFieldUpdateOperationsInput | string;
   };
 
   export type biodiversiteCreateInput = {
@@ -40931,6 +42530,76 @@ export namespace Prisma {
     autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null;
   };
 
+  export type patch4cCreateInput = {
+    index: bigint | number;
+    code_geographique: string;
+    niveaux_marins?: number | null;
+    feux_foret: number;
+    secheresse_sols: number;
+    fortes_precipitations: number;
+    fortes_chaleurs: number;
+  };
+
+  export type patch4cUncheckedCreateInput = {
+    index: bigint | number;
+    code_geographique: string;
+    niveaux_marins?: number | null;
+    feux_foret: number;
+    secheresse_sols: number;
+    fortes_precipitations: number;
+    fortes_chaleurs: number;
+  };
+
+  export type patch4cUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null;
+    feux_foret?: FloatFieldUpdateOperationsInput | number;
+    secheresse_sols?: FloatFieldUpdateOperationsInput | number;
+    fortes_precipitations?: FloatFieldUpdateOperationsInput | number;
+    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number;
+  };
+
+  export type patch4cUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null;
+    feux_foret?: FloatFieldUpdateOperationsInput | number;
+    secheresse_sols?: FloatFieldUpdateOperationsInput | number;
+    fortes_precipitations?: FloatFieldUpdateOperationsInput | number;
+    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number;
+  };
+
+  export type patch4cCreateManyInput = {
+    index: bigint | number;
+    code_geographique: string;
+    niveaux_marins?: number | null;
+    feux_foret: number;
+    secheresse_sols: number;
+    fortes_precipitations: number;
+    fortes_chaleurs: number;
+  };
+
+  export type patch4cUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null;
+    feux_foret?: FloatFieldUpdateOperationsInput | number;
+    secheresse_sols?: FloatFieldUpdateOperationsInput | number;
+    fortes_precipitations?: FloatFieldUpdateOperationsInput | number;
+    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number;
+  };
+
+  export type patch4cUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null;
+    feux_foret?: FloatFieldUpdateOperationsInput | number;
+    secheresse_sols?: FloatFieldUpdateOperationsInput | number;
+    fortes_precipitations?: FloatFieldUpdateOperationsInput | number;
+    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number;
+  };
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>;
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>;
@@ -40968,17 +42637,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number;
   };
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null;
-  };
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null;
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
@@ -40994,6 +42652,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null;
   };
 
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    lt?: number | FloatFieldRefInput<$PrismaModel>;
+    lte?: number | FloatFieldRefInput<$PrismaModel>;
+    gt?: number | FloatFieldRefInput<$PrismaModel>;
+    gte?: number | FloatFieldRefInput<$PrismaModel>;
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null;
+  };
+
   export type SortOrderInput = {
     sort: SortOrder;
     nulls?: NullsOrder;
@@ -41007,6 +42676,10 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrder;
+    libelle_petr?: SortOrder;
+    code_pnr?: SortOrder;
+    libelle_pnr?: SortOrder;
     age_bati_post06?: SortOrder;
     age_bati_91_05?: SortOrder;
     age_bati_46_90?: SortOrder;
@@ -41095,6 +42768,10 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrder;
+    libelle_petr?: SortOrder;
+    code_pnr?: SortOrder;
+    libelle_pnr?: SortOrder;
     age_bati_post06?: SortOrder;
     age_bati_91_05?: SortOrder;
     age_bati_46_90?: SortOrder;
@@ -41155,6 +42832,10 @@ export namespace Prisma {
     libelle_epci?: SortOrder;
     departement?: SortOrder;
     region?: SortOrder;
+    ept?: SortOrder;
+    libelle_petr?: SortOrder;
+    code_pnr?: SortOrder;
+    libelle_pnr?: SortOrder;
     age_bati_post06?: SortOrder;
     age_bati_91_05?: SortOrder;
     age_bati_46_90?: SortOrder;
@@ -41285,22 +42966,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>;
   };
 
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null;
-    _count?: NestedIntNullableFilter<$PrismaModel>;
-    _avg?: NestedFloatNullableFilter<$PrismaModel>;
-    _sum?: NestedFloatNullableFilter<$PrismaModel>;
-    _min?: NestedFloatNullableFilter<$PrismaModel>;
-    _max?: NestedFloatNullableFilter<$PrismaModel>;
-  };
-
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null;
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
@@ -41320,6 +42985,22 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>;
     _min?: NestedStringNullableFilter<$PrismaModel>;
     _max?: NestedStringNullableFilter<$PrismaModel>;
+  };
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    lt?: number | FloatFieldRefInput<$PrismaModel>;
+    lte?: number | FloatFieldRefInput<$PrismaModel>;
+    gt?: number | FloatFieldRefInput<$PrismaModel>;
+    gte?: number | FloatFieldRefInput<$PrismaModel>;
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null;
+    _count?: NestedIntNullableFilter<$PrismaModel>;
+    _avg?: NestedFloatNullableFilter<$PrismaModel>;
+    _sum?: NestedFloatNullableFilter<$PrismaModel>;
+    _min?: NestedFloatNullableFilter<$PrismaModel>;
+    _max?: NestedFloatNullableFilter<$PrismaModel>;
   };
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -43116,6 +44797,54 @@ export namespace Prisma {
     autres_surfaces?: SortOrder;
   };
 
+  export type patch4cCountOrderByAggregateInput = {
+    index?: SortOrder;
+    code_geographique?: SortOrder;
+    niveaux_marins?: SortOrder;
+    feux_foret?: SortOrder;
+    secheresse_sols?: SortOrder;
+    fortes_precipitations?: SortOrder;
+    fortes_chaleurs?: SortOrder;
+  };
+
+  export type patch4cAvgOrderByAggregateInput = {
+    index?: SortOrder;
+    niveaux_marins?: SortOrder;
+    feux_foret?: SortOrder;
+    secheresse_sols?: SortOrder;
+    fortes_precipitations?: SortOrder;
+    fortes_chaleurs?: SortOrder;
+  };
+
+  export type patch4cMaxOrderByAggregateInput = {
+    index?: SortOrder;
+    code_geographique?: SortOrder;
+    niveaux_marins?: SortOrder;
+    feux_foret?: SortOrder;
+    secheresse_sols?: SortOrder;
+    fortes_precipitations?: SortOrder;
+    fortes_chaleurs?: SortOrder;
+  };
+
+  export type patch4cMinOrderByAggregateInput = {
+    index?: SortOrder;
+    code_geographique?: SortOrder;
+    niveaux_marins?: SortOrder;
+    feux_foret?: SortOrder;
+    secheresse_sols?: SortOrder;
+    fortes_precipitations?: SortOrder;
+    fortes_chaleurs?: SortOrder;
+  };
+
+  export type patch4cSumOrderByAggregateInput = {
+    index?: SortOrder;
+    niveaux_marins?: SortOrder;
+    feux_foret?: SortOrder;
+    secheresse_sols?: SortOrder;
+    fortes_precipitations?: SortOrder;
+    fortes_chaleurs?: SortOrder;
+  };
+
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number;
     increment?: bigint | number;
@@ -43136,16 +44865,16 @@ export namespace Prisma {
     divide?: number;
   };
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null;
+  };
+
   export type NullableFloatFieldUpdateOperationsInput = {
     set?: number | null;
     increment?: number;
     decrement?: number;
     multiply?: number;
     divide?: number;
-  };
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null;
   };
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -43208,17 +44937,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number;
   };
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null;
-  };
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null;
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
@@ -43231,6 +44949,17 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>;
     endsWith?: string | StringFieldRefInput<$PrismaModel>;
     not?: NestedStringNullableFilter<$PrismaModel> | string | null;
+  };
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    lt?: number | FloatFieldRefInput<$PrismaModel>;
+    lte?: number | FloatFieldRefInput<$PrismaModel>;
+    gt?: number | FloatFieldRefInput<$PrismaModel>;
+    gte?: number | FloatFieldRefInput<$PrismaModel>;
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null;
   };
 
   export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -43293,33 +45022,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>;
   };
 
-  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null;
-    _count?: NestedIntNullableFilter<$PrismaModel>;
-    _avg?: NestedFloatNullableFilter<$PrismaModel>;
-    _sum?: NestedFloatNullableFilter<$PrismaModel>;
-    _min?: NestedFloatNullableFilter<$PrismaModel>;
-    _max?: NestedFloatNullableFilter<$PrismaModel>;
-  };
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    lt?: number | IntFieldRefInput<$PrismaModel>;
-    lte?: number | IntFieldRefInput<$PrismaModel>;
-    gt?: number | IntFieldRefInput<$PrismaModel>;
-    gte?: number | IntFieldRefInput<$PrismaModel>;
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null;
-  };
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null;
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
@@ -43338,6 +45040,33 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>;
     _min?: NestedStringNullableFilter<$PrismaModel>;
     _max?: NestedStringNullableFilter<$PrismaModel>;
+  };
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null;
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
+    lt?: number | IntFieldRefInput<$PrismaModel>;
+    lte?: number | IntFieldRefInput<$PrismaModel>;
+    gt?: number | IntFieldRefInput<$PrismaModel>;
+    gte?: number | IntFieldRefInput<$PrismaModel>;
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null;
+  };
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
+    lt?: number | FloatFieldRefInput<$PrismaModel>;
+    lte?: number | FloatFieldRefInput<$PrismaModel>;
+    gt?: number | FloatFieldRefInput<$PrismaModel>;
+    gte?: number | FloatFieldRefInput<$PrismaModel>;
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null;
+    _count?: NestedIntNullableFilter<$PrismaModel>;
+    _avg?: NestedFloatNullableFilter<$PrismaModel>;
+    _sum?: NestedFloatNullableFilter<$PrismaModel>;
+    _min?: NestedFloatNullableFilter<$PrismaModel>;
+    _max?: NestedFloatNullableFilter<$PrismaModel>;
   };
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
