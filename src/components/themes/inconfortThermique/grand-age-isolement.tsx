@@ -1,13 +1,21 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
-
+import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import { LineChart1 } from '@/components/charts/inconfortThermique/lineChartGrandAge';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
+import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
+import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { grandAgeIsolementMapper } from '@/lib/mapper/inconfortThermique';
-import { DataGrandAge, InconfortThermique } from '@/lib/postgres/models';
+import {
+  DataGrandAge,
+  InconfortThermique,
+  Patch4
+} from '@/lib/postgres/models';
+import { GetPatch4 } from '@/lib/queries/patch4';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import styles from './themes.module.scss';
 
 const sumProperty = (
@@ -58,6 +66,7 @@ export const GrandAgeIsolement = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
+  const [patch4, setPatch4] = useState<Patch4[]>();
   const xData = [
     '1968',
     '1975',
@@ -140,6 +149,17 @@ export const GrandAgeIsolement = (props: {
   const methodeCalcul =
     'Nombre de personnes de plus de 80 ans divisé par la population totale à chaque recensement INSEE.';
 
+  useEffect(() => {
+    void (async () => {
+      const temp = await GetPatch4(codgeo ?? codepci);
+      temp && codepci ? setPatch4(temp) : void 0;
+    })();
+  }, [codgeo, codepci]);
+
+  const fortesChaleurs = patch4
+    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
+    : null;
+
   return (
     <>
       {inconfortThermique.length &&
@@ -172,6 +192,16 @@ export const GrandAgeIsolement = (props: {
                   dans votre département.
                 </p>
               )}
+              <div className={styles.patch4Wrapper}>
+                {fortesChaleurs === 'Intensité très forte' ||
+                fortesChaleurs === 'Intensité forte' ? (
+                  <TagItem
+                    icon={fortesChaleursIcon}
+                    indice="Fortes chaleurs"
+                    tag={fortesChaleurs}
+                  />
+                ) : null}
+              </div>
               <CustomTooltip title={methodeCalcul} />
             </div>
             <div className="px-4">

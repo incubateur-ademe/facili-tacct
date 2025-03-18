@@ -1,11 +1,14 @@
 'use client';
-
+import feuxForetIcon from '@/assets/icons/feu_foret_icon_black.svg';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
+import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
-import { IncendiesForet } from '@/lib/postgres/models';
+import { IncendiesForet, Patch4 } from '@/lib/postgres/models';
+import { GetPatch4 } from '@/lib/queries/patch4';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FeuxForetDataviz from './feuxForetDataviz';
 import styles from './gestionRisques.module.scss';
 
@@ -15,10 +18,19 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
+  const [patch4, setPatch4] = useState<Patch4[]>();
   const surfaceTotale = incendiesForet
     .map((el) => el.surface_parcourue)
     .reduce((a, b) => a + b, 0);
   const departement = incendiesForet[0]?.departement;
+
+  useEffect(() => {
+    void (async () => {
+      const temp = await GetPatch4(codgeo ?? codepci);
+      temp && codepci ? setPatch4(temp) : void 0;
+    })();
+  }, [codgeo, codepci]);
+  const feuxForet = patch4 ? AlgoPatch4(patch4[0], 'feux_foret') : null;
 
   const title = (
     <div>
@@ -65,6 +77,16 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
               ) : (
                 ''
               )}
+              <div className={styles.patch4Wrapper}>
+                {feuxForet === 'Intensité très forte' ||
+                feuxForet === 'Intensité forte' ? (
+                  <TagItem
+                    icon={feuxForetIcon}
+                    indice="Feux de forêt"
+                    tag={feuxForet}
+                  />
+                ) : null}
+              </div>
               <CustomTooltip title={title} texte="Définition" />
             </div>
             <div className={styles.textWrapper}>

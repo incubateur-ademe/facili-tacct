@@ -66,13 +66,86 @@
     width: -moz-available;
 }
 
+// Accordion
+
+.accordionHeader {
+    width: 100%;
+    padding: 1rem;
+    h2 {
+        margin: 0 0 1.5rem;
+        font-weight: 700;
+        line-height: 24px;
+        font-size: 18px;
+        color: #000091;
+    }
+    .wrapper {
+        display: flex;
+        flex-direction: row;
+        .indiceRow {
+            display: flex;
+            flex-direction: row;
+            gap: 4rem;
+        }
+    }
+}
+
+.indiceItem {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+    align-items: center;
+    p {
+        font-size: 0.75rem;
+        line-height: 12.14px;
+        font-weight: 700;
+        margin: 0;
+    }
+}
+
+.indiceWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 0 0 40px;
+    p {
+        font-size: 0.75rem;
+        line-height: 20px;
+        margin: 0;
+    }
+    .indiceExplication {
+        display: flex;
+        flex-direction: row;
+        gap: 0.75rem;
+        align-items: center;
+    }
+}
+
+.tagWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tagExplication {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    p {
+        font-size: 0.75rem;
+        line-height: 12.14px;
+        margin: 0;
+    }
+}
 .tag {
-    font-weight: 700;
-    line-height: 12.14px;
-    text-align: center;
-    padding: 0.25em;
+    padding: 0.25rem;
     border-radius: 4px;
     height: fit-content;
     min-width: fit-content;
-    margin: 0;
+    p {
+        margin: 0;
+        font-weight: 700;
+        line-height: 12.14px;
+        font-size: 0.75rem;
+    }
 }
