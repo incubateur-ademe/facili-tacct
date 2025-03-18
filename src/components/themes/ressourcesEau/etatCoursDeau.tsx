@@ -1,7 +1,11 @@
+import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
+import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { etatCoursDeauLegends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
+import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
+import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EpciContoursMapper } from '@/lib/mapper/epci';
@@ -9,9 +13,12 @@ import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
 import {
   CarteCommunes,
   EpciContours,
-  EtatCoursDeau
+  EtatCoursDeau,
+  Patch4
 } from '@/lib/postgres/models';
+import { GetPatch4 } from '@/lib/queries/patch4';
 import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import styles from './ressourcesEau.module.scss';
 
 const EtatQualiteCoursDeau = (props: {
@@ -23,9 +30,25 @@ const EtatQualiteCoursDeau = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
+  const [patch4, setPatch4] = useState<Patch4[]>();
   const etatCoursDeauMap = etatCoursDeau.map(EtatCoursDeauMapper);
   const epciContoursMap = epciContours.map(EpciContoursMapper);
   const carteCommunesMap = carteCommunes.map(CommunesIndicateursMapper);
+
+  useEffect(() => {
+    void (async () => {
+      const temp = await GetPatch4(codgeo ?? codepci);
+      temp && codepci ? setPatch4(temp) : void 0;
+    })();
+  }, [codgeo, codepci]);
+
+  const fortesChaleurs = patch4
+    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
+    : null;
+  const precipitation = patch4
+    ? AlgoPatch4(patch4[0], 'fortes_precipitations')
+    : null;
+
   const title = (
     <div>
       <p>
@@ -66,6 +89,24 @@ const EtatQualiteCoursDeau = (props: {
                 aquatiques), ainsi que des propriétés hydromorphologiques (état
                 des berges, continuité de la rivière, etc.).
               </p>
+              <div className={styles.patch4Wrapper}>
+                {fortesChaleurs === 'Intensité très forte' ||
+                fortesChaleurs === 'Intensité forte' ? (
+                  <TagItem
+                    icon={fortesChaleursIcon}
+                    indice="Fortes chaleurs"
+                    tag={fortesChaleurs}
+                  />
+                ) : null}
+                {precipitation === 'Intensité très forte' ||
+                precipitation === 'Intensité forte' ? (
+                  <TagItem
+                    icon={precipitationIcon}
+                    indice="Fortes précipitations"
+                    tag={precipitation}
+                  />
+                ) : null}
+              </div>
               <CustomTooltip
                 title={title}
                 texte="Sur quoi repose ce classement ?"

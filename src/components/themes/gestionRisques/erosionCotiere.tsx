@@ -1,10 +1,15 @@
+import niveauxMarinsIcon from '@/assets/icons/niveau_marin_icon_black.svg';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { MapErosionCotiere } from '@/components/maps/mapErosionCotiere';
+import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
+import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { EpciContoursMapper } from '@/lib/mapper/epci';
 import { ErosionCotiereMapper } from '@/lib/mapper/erosionCotiere';
-import { EpciContours, ErosionCotiere } from '@/lib/postgres/models';
+import { EpciContours, ErosionCotiere, Patch4 } from '@/lib/postgres/models';
+import { GetPatch4 } from '@/lib/queries/patch4';
 import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { LegendErosionCotiere } from '../../maps/legends/legendErosionCotiere';
 import styles from './gestionRisques.module.scss';
 
@@ -16,8 +21,19 @@ const ErosionCotes = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
+  const [patch4, setPatch4] = useState<Patch4[]>();
   const erosionCotiereMap = erosionCotiere.map(ErosionCotiereMapper);
   const epciContoursMap = epciContours.map(EpciContoursMapper);
+
+  useEffect(() => {
+    void (async () => {
+      const temp = await GetPatch4(codgeo ?? codepci);
+      temp && codepci ? setPatch4(temp) : void 0;
+    })();
+  }, [codgeo, codepci]);
+
+  const niveauxMarins = patch4 ? AlgoPatch4(patch4[0], 'niveaux_marins') : null;
+
   const title = (
     <>
       <div>
@@ -41,6 +57,16 @@ const ErosionCotes = (props: {
                 longs mais peut connaître des épisodes brutaux selon les
                 endroits.
               </p>
+              <div className={styles.patch4Wrapper}>
+                {niveauxMarins === 'Intensité très forte' ||
+                niveauxMarins === 'Intensité forte' ? (
+                  <TagItem
+                    icon={niveauxMarinsIcon}
+                    indice="Sécheresse des sols"
+                    tag={niveauxMarins}
+                  />
+                ) : null}
+              </div>
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
             </div>
             <div className="px-4">

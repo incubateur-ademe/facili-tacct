@@ -1,15 +1,25 @@
+import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { aot40Legends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapAOT40 } from '@/components/maps/mapAOT40';
+import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
+import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EpciContoursMapper } from '@/lib/mapper/epci';
-import { AOT40, CarteCommunes, EpciContours } from '@/lib/postgres/models';
+import {
+  AOT40,
+  CarteCommunes,
+  EpciContours,
+  Patch4
+} from '@/lib/postgres/models';
+import { GetPatch4 } from '@/lib/queries/patch4';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import * as turf from '@turf/turf';
 import L from 'leaflet';
 import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import styles from './biodiversite.module.scss';
 
 const color = (valeur: number) => {
@@ -47,6 +57,7 @@ const AOT40Dataviz = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
+  const [patch4, setPatch4] = useState<Patch4[]>();
   const commune = carteCommunesMap.find(
     (commune) => commune.properties.code_commune === codgeo
   );
@@ -105,6 +116,17 @@ const AOT40Dataviz = (props: {
   const maxStation = stationsWithinCircle.features.find(
     (f) => f.properties?.value === maxValueInStations
   );
+
+  useEffect(() => {
+    void (async () => {
+      const temp = await GetPatch4(codgeo ?? codepci);
+      temp && codepci ? setPatch4(temp) : void 0;
+    })();
+  }, [codgeo, codepci]);
+
+  const fortesChaleurs = patch4
+    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
+    : null;
 
   const title = (
     <div>
@@ -169,6 +191,18 @@ const AOT40Dataviz = (props: {
                   l’objectif fixé pour 2050 est de 6 000 µg/m³ par heure.
                 </p>
               )}
+              <div className={styles.patch4Wrapper}>
+                {fortesChaleurs === 'Intensité très forte' ||
+                fortesChaleurs === 'Intensité forte' ? (
+                  <div>
+                    <TagItem
+                      icon={fortesChaleursIcon}
+                      indice="Fortes chaleurs"
+                      tag={fortesChaleurs}
+                    />
+                  </div>
+                ) : null}
+              </div>
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
             </div>
             <div className="px-4">
