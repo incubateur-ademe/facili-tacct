@@ -1,9 +1,13 @@
 'use client';
-
+import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
+import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
+import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { CarteCommunes, GestionRisques } from '@/lib/postgres/models';
+import { CarteCommunes, GestionRisques, Patch4 } from '@/lib/postgres/models';
+import { GetPatch4 } from '@/lib/queries/patch4';
 import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
@@ -23,6 +27,7 @@ export const Catnat = (props: {
   }>;
 }) => {
   const { gestionRisques, carteCommunes } = props;
+  const [patch4, setPatch4] = useState<Patch4[]>();
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
   const [sliderValue, setSliderValue] = useState<number[]>([1982, 2024]);
   const [typeRisqueValue, setTypeRisqueValue] =
@@ -99,6 +104,18 @@ export const Catnat = (props: {
     setArretesCatnatBarChart(gestionRisquesEnrichBarChart);
   }, [sliderValue, typeRisqueValue, datavizTab]);
 
+  useEffect(() => {
+    void (async () => {
+      const temp = await GetPatch4(codgeo ?? codepci);
+      temp && codepci ? setPatch4(temp) : void 0;
+    })();
+  }, [codgeo, codepci]);
+
+  const secheresse = patch4 ? AlgoPatch4(patch4[0], 'secheresse_sols') : null;
+  const precipitation = patch4
+    ? AlgoPatch4(patch4[0], 'fortes_precipitations')
+    : null;
+
   const title = (
     <>
       <div>
@@ -148,6 +165,24 @@ export const Catnat = (props: {
                   de catastrophe naturelle sur votre territoire.
                 </p>
               )}
+              <div className={styles.patch4Wrapper}>
+                {secheresse === 'Intensité très forte' ||
+                secheresse === 'Intensité forte' ? (
+                  <TagItem
+                    icon={secheresseIcon}
+                    indice="Fortes chaleurs"
+                    tag={secheresse}
+                  />
+                ) : null}
+                {precipitation === 'Intensité très forte' ||
+                precipitation === 'Intensité forte' ? (
+                  <TagItem
+                    icon={precipitationIcon}
+                    indice="Fortes précipitations"
+                    tag={precipitation}
+                  />
+                ) : null}
+              </div>
               <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
             </div>
             <div className="px-4">
