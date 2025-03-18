@@ -16,11 +16,11 @@ exports.$Enums = {};
 
 /**
  * Prisma Client JS version: 6.3.0
- * Query Engine version: 173f8d54f8d52e692c7e27e72a88314ec7aeff60
+ * Query Engine version: acc0b9dd43eb689cbd20c9470515d719db10d0b0
  */
 Prisma.prismaVersion = {
   client: '6.3.0',
-  engine: '173f8d54f8d52e692c7e27e72a88314ec7aeff60'
+  engine: 'acc0b9dd43eb689cbd20c9470515d719db10d0b0'
 };
 
 Prisma.PrismaClientKnownRequestError = () => {
