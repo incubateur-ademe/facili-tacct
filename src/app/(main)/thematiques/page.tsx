@@ -3,6 +3,7 @@ import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { type Metadata } from 'next';
 import { Container } from '../../../dsfr/server';
 import { Cards } from './cards';
+import { Patch4Accordion } from './patch4Accordion';
 
 export const metadata: Metadata = {
   title: 'Thématiques',
@@ -20,6 +21,7 @@ const Thematiques = () => {
           }}
           segments={[]}
         />
+        <Patch4Accordion />
         <h1>Quelle thématique vous intéresse ?</h1>
         {/* <NoticeComp title="Les thématiques suivantes ont été choisies selon " /> */}
         <Cards />
