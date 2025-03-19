@@ -1,7 +1,10 @@
 import { NoticeComp } from '@/dsfr/base/Notice';
+import { GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { GetInconfortThermiqueDepartment } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/themes';
+import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
+import InconfortThermiqueComp from './inconfortThermiqueComp';
 
 const InconfortThermique = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type } = await props.searchParams;
@@ -11,8 +14,8 @@ const InconfortThermique = async (props: { searchParams: SearchParams }) => {
     libelle,
     type
   );
-  console.log('dbInconfortThermique', dbInconfortThermique);
-  // const carteCommunes = await GetCommunes(code, libelle, type);
+  console.log('dbInconfortThermique', dbInconfortThermique.length);
+  const carteCommunes = await GetCommunes(code, libelle, type);
 
   return (
     <div>
@@ -21,13 +24,13 @@ const InconfortThermique = async (props: { searchParams: SearchParams }) => {
         Explorez ici des leviers d'action possibles vous permettant de réduire la sensibilité de votre territoire à l'inconfort thermique."
       />
       <div className={styles.container}>
-        {/* <Suspense>
+        <Suspense>
           <InconfortThermiqueComp
             data={theme}
             inconfortThermique={dbInconfortThermique!}
             carteCommunes={carteCommunes}
           />
-        </Suspense> */}
+        </Suspense>
       </div>
     </div>
   );

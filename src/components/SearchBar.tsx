@@ -16,7 +16,7 @@ export const SearchBarComp = () => {
   const [searchCode, setSearchCode] = useState<string>('');
   const [searchLibelle, setSearchLibelle] = useState<string>('');
   const [typeTerritoire, setTypeTerritoire] = useState<
-    'epci' | 'commune' | 'petr' | 'pnr'
+    'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
   >('epci');
 
   const handleClick = () => {
@@ -82,6 +82,16 @@ export const SearchBarComp = () => {
               }
             }
           }
+          // {
+          //   label: 'Département',
+          //   nativeInputProps: {
+          //     checked: typeTerritoire === 'departement',
+          //     onChange: () => {
+          //       setTypeTerritoire('departement');
+          //       setSearchLibelle('');
+          //     }
+          //   }
+          // }
         ]}
         orientation="horizontal"
         className={css({

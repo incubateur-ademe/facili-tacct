@@ -113,7 +113,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
         setInputValue(newInputValue);
       }}
       getOptionLabel={(option) => {
-        if (option) {
+        if (option && searchLibelle) {
           return option.searchCode?.length !== 0
             ? `${ReplaceStringEpci(option.searchLibelle)} (${option.searchCode})`
             : `${option.searchLibelle}`;
