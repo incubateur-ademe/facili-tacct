@@ -46,7 +46,7 @@ const Vegetalisation = (props: {
   const [patch4, setPatch4] = useState<Patch4[]>();
   const vegetalisationMapped = inconfortThermique.map(vegetalisationMapper);
   const vegetalisationCollectivite = codgeo
-    ? vegetalisationMapped.filter((e) => e.code_commune === codgeo)
+    ? vegetalisationMapped.filter((e) => e.code_geographique === codgeo)
     : vegetalisationMapped.filter((e) => e.epci === codepci);
 
   const foretSum = sumProperty(
