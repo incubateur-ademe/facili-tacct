@@ -4,9 +4,9 @@
   "private": true,
   "engines": {
     "node": "23.x",
-    "pnpm": "9.15.3"
+    "pnpm": "^10"
   },
-  "engines.pnpm": "9.15.3",
+  "engines.pnpm": "^10",
   "husky": {
     "hooks": {
       "pre-commit": "bash -c '\"%TALISMAN_HOME%\\talisman_windows_amd64.exe\" --githook pre-commit'"

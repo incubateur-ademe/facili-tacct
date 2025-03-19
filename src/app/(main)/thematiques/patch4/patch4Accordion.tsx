@@ -7,11 +7,17 @@ import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { Patch4 } from '@/lib/postgres/models';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Accordion from '@mui/material/Accordion';
+import { styled } from '@mui/material';
+import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
+import MuiAccordionSummary, {
+  AccordionSummaryProps,
+  accordionSummaryClasses
+} from '@mui/material/AccordionSummary';
 import Image, { StaticImageData } from 'next/image';
+import { useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { TagPatch4 } from '../../../../components/patch4/Tag';
 import styles from '../thematiques.module.scss';
@@ -43,7 +49,39 @@ const tagIntensite = [
   'Intensité non déterminée'
 ];
 
+const Accordion = styled((props: AccordionProps) => (
+  <MuiAccordion disableGutters elevation={0} square {...props} />
+))(({ theme }) => ({
+  backgroundColor: 'white',
+  border: `1px solid ${theme.palette.divider}`,
+  '&:not(:last-child)': {
+    borderRight: 0,
+    borderLeft: 0
+  },
+  '&::before': {
+    display: 'none'
+  }
+}));
+
+const AccordionSummary = styled((props: AccordionSummaryProps) => (
+  <MuiAccordionSummary {...props} />
+))(() => ({
+  backgroundColor: 'white',
+  borderRadius: '0',
+  alignItems: 'flex-start',
+  [`& .${accordionSummaryClasses.expandIconWrapper}.${accordionSummaryClasses.expanded}`]:
+    {
+      transition: 'none',
+      webkitTransition: 'none'
+    },
+  [`& .${accordionSummaryClasses.expandIconWrapper}`]: {
+    transition: 'none',
+    webkitTransition: 'none'
+  }
+}));
+
 export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
+  const [expanded, setExpanded] = useState(false);
   const { css } = useStyles();
   const precipitation = AlgoPatch4(patch4, 'fortes_precipitations');
   const secheresse = AlgoPatch4(patch4, 'secheresse_sols');
@@ -54,33 +92,56 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
   return (
     <Accordion
       className={css({
-        boxShadow: 'none',
-        borderTop: '1px solid var(--border-default-grey)',
-        borderBottom: '1px solid var(--border-default-grey)',
-        borderRadius: '0',
-        marginBottom: '2.5rem',
-        '.MuiPaper-root': {
-          borderRadius: '0 !important',
-          backgroundColor: 'orange !important',
-          '.MuiAccordion-root': {
-            backgroundColor: 'red !important'
-          }
-        }
+        marginBottom: '2.5rem'
       })}
-      disableGutters={true}
     >
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1-content"
         id="panel1-header"
-        className={css({
-          borderRadius: '0'
-        })}
+        expandIcon={
+          <>
+            {!expanded ? (
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  gap: '10px',
+                  marginTop: '18px',
+                  backgroundColor: '#FBFBFF',
+                  color: '#000091',
+                  padding: '10px',
+                  borderRadius: '1rem'
+                }}
+              >
+                <p style={{ margin: '0' }}>En savoir plus</p>
+                <ExpandMoreIcon />
+              </div>
+            ) : (
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  gap: '10px',
+                  marginBottom: '18px',
+                  rotate: '180deg',
+                  backgroundColor: '#FBFBFF',
+                  color: '#000091',
+                  padding: '10px',
+                  borderRadius: '1rem'
+                }}
+              >
+                <p style={{ margin: '0' }}>Masquer</p>
+                <ExpandLessIcon />
+              </div>
+            )}
+          </>
+        }
+        onClick={() => setExpanded(!expanded)}
       >
         <div className={styles.accordionHeader}>
           <h2>Évolution d’intensité climatique sur votre territoire :</h2>
           <div className={styles.wrapper}>
-            <div className="w-1/2 flex flex-col gap-4">
+            <div className="flex flex-col gap-4 w-[512px]">
               <TagItem
                 icon={precipitationIcon}
                 indice="Précipitations"
@@ -97,7 +158,7 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
                 tag={niveauxMarins}
               />
             </div>
-            <div className="w-1/2 flex flex-col gap-4">
+            <div className="flex flex-col gap-4">
               <TagItem
                 icon={feuxForetIcon}
                 indice="Feux de foret"
