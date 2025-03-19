@@ -50,14 +50,7 @@ export const GetInconfortThermiqueDepartment = async (
     if (code === '200054781') {
       const value = await PrismaPostgres.inconfort_thermique.findMany({
         where: {
-          OR: [
-            { departement: '75' },
-            { departement: '91' },
-            { departement: '92' },
-            { departement: '93' },
-            { departement: '94' },
-            { departement: '95' }
-          ]
+          epci: '200054781'
         }
       });
       console.timeEnd('Query Execution Time INCONFORT DEPARTEMENT');
