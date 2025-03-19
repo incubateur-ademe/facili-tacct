@@ -26,6 +26,7 @@ export const GetCommunes = async (
           : type === 'pnr'
             ? 'code_pnr'
             : 'libelle_petr';
+    console.log('colonneTerritoire', colonneTerritoire);
     const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
       SELECT 
       epci, 
