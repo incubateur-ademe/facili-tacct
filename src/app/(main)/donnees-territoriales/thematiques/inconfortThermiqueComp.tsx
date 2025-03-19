@@ -134,11 +134,14 @@ const InconfortThermiqueComp = ({
     setSelectedSubTab(
       data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
+  }, [selectedTabId]);
+
+  useEffect(() => {
     void (async () => {
       const temp = await GetClcEpci(codepci);
       temp && codepci ? setClc(temp) : void 0;
     })();
-  }, [selectedTabId, codepci]);
+  }, [codepci]);
 
   return (
     <div className={styles.container}>
