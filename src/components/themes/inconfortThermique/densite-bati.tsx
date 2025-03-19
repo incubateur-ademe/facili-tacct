@@ -30,7 +30,7 @@ export const DensiteBati = ({
     .map(CommunesIndicateursMapper)
     .filter((e) => !isNaN(e.properties.densite_bati));
   const commune = codgeo
-    ? communesMap.find((obj) => obj.properties['code_commune'] === codgeo)
+    ? communesMap.find((obj) => obj.properties['code_geographique'] === codgeo)
     : undefined;
   const densiteEpci = communesMap.map((el, i) => el.properties.densite_bati);
 
@@ -57,8 +57,9 @@ export const DensiteBati = ({
                 <div className={styles.explicationWrapper}>
                   {commune ? (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      Dans la commune de {commune.properties.libelle_commune},
-                      la densité moyenne du bâtiment est de{' '}
+                      Dans la commune de{' '}
+                      {commune.properties.libelle_geographique}, la densité
+                      moyenne du bâtiment est de{' '}
                       <b>{commune.properties.densite_bati.toFixed(2)}. </b>À
                       l'échelle de l'EPCI, ce taux est de{' '}
                       <b>{average(densiteEpci).toFixed(2)}.</b>
