@@ -64,7 +64,7 @@ export const Catnat = (props: {
     return {
       ...el,
       catnat: dataByCodeGeographique.find(
-        (item) => item.indexName === el.code_commune
+        (item) => item.indexName === el.code_geographique
       )
     };
   });
