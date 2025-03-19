@@ -1,4 +1,3 @@
-import { hash } from 'bcrypt';
 import { NextResponse } from 'next/server';
 import { PrismaClient as PostgresClient } from '../../../../generated/client';
 
@@ -7,7 +6,8 @@ const prisma = new PostgresClient();
 export async function POST(request: Request) {
   try {
     const { username, password } = await request.json();
-    const hashedPassword = await hash(password, 10);
+    const bcrypt = require('bcryptjs');
+    const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await prisma.users.create({
       data: {
         username: username,

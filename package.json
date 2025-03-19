@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "23.x",
+    "node": "23.9.0",
     "pnpm": "^10"
   },
   "engines.pnpm": "^10",
@@ -45,7 +45,7 @@
     "@turf/turf": "^7.1.0",
     "@vercel/postgres": "^0.9.0",
     "antd": "^5.21.5",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "cookies-next": "^4.1.1",
     "cross-env": "^7.0.3",
     "d3": "^7.9.0",
