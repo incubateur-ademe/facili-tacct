@@ -37,6 +37,7 @@ export const GetInconfortThermiqueDepartment = async (
 ) => {
   try {
     console.time('Query Execution Time INCONFORT DEPARTEMENT');
+    const re = new RegExp('T([1-9]|1[0-2])\\b'); //check if T + nombre entre 1 et 12
     const colonneTerritoire =
       type === 'epci'
         ? 'epci'
@@ -45,17 +46,10 @@ export const GetInconfortThermiqueDepartment = async (
           : type === 'pnr'
             ? 'code_pnr'
             : 'libelle_petr';
-    if (code === '200054781') {
+    if (type === 'epci' && code && re.test(code)) {
       const value = await PrismaPostgres.inconfort_thermique.findMany({
         where: {
-          OR: [
-            { departement: '75' },
-            { departement: '91' },
-            { departement: '92' },
-            { departement: '93' },
-            { departement: '94' },
-            { departement: '95' }
-          ]
+          epci: '200054781'
         }
       });
       console.timeEnd('Query Execution Time INCONFORT DEPARTEMENT');
