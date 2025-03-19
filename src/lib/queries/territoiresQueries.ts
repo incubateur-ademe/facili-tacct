@@ -110,3 +110,25 @@ export const Commune = async (variableCollectivite: string) => {
     `;
   return value;
 };
+
+export const Departement = async (variableCollectivite: string) => {
+  const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
+    SELECT 
+    search_code,
+    search_libelle,
+    epci, 
+    libelle_epci,
+    libelle_geographique,
+    code_geographique,
+    departement,
+    region,
+    ept,
+    libelle_petr,
+    libelle_pnr,
+    code_pnr
+    FROM databases."collectivites_searchbar" WHERE (departement IS NOT NULL) AND 
+      departement ILIKE ${variableCollectivite}
+      LIMIT 20;
+    `;
+  return value;
+};
