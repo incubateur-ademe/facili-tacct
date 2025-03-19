@@ -72,28 +72,24 @@ export const GrandAgeIsolement = (props: {
   const grandAgeIsolementMapped = inconfortThermique.map(
     grandAgeIsolementMapper
   );
+  const re = new RegExp('T([1-9]|1[0-2])\\b');
 
   const grandAgeIsolementTerritoire =
     type === 'commune'
       ? grandAgeIsolementMapped.filter((e) => e.code_geographique === code)
-      : type === 'epci'
-        ? grandAgeIsolementMapped.filter((e) => e.epci === code)
-        : type === 'pnr'
-          ? grandAgeIsolementMapped.filter((e) => e.code_pnr === code)
-          : grandAgeIsolementMapped.filter((e) => e.libelle_petr === libelle);
+      : type === 'epci' && re.test(code)
+        ? grandAgeIsolementMapped.filter((e) => e.ept === libelle)
+        : type === 'epci'
+          ? grandAgeIsolementMapped.filter((e) => e.epci === code)
+          : type === 'pnr'
+            ? grandAgeIsolementMapped.filter((e) => e.code_pnr === code)
+            : grandAgeIsolementMapped.filter((e) => e.libelle_petr === libelle);
 
-  const epci = grandAgeIsolementTerritoire[0]?.epci;
-
-  const grandAgeIsolementCommune =
-    type === 'commune'
-      ? grandAgeIsolementMapped.filter((e) => e.code_geographique === code)
-      : null;
   const grandAgeIsolementEpci = grandAgeIsolementMapped.filter(
-    (e) => e.epci === epci
+    (e) => e.epci === grandAgeIsolementTerritoire[0]?.epci
   );
+
   const grandAgeIsolementDptmt = grandAgeIsolementMapped;
-  const grandAgeCollectivite =
-    grandAgeIsolementCommune ?? grandAgeIsolementEpci;
 
   const yData = {
     over_80_1968_percent: (
@@ -171,30 +167,27 @@ export const GrandAgeIsolement = (props: {
         <div className={styles.container}>
           <div className="w-2/5">
             <div className={styles.explicationWrapper}>
-              {code ? (
+              <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                En 2020, <b>{yData.over_80_2020_percent} %</b> de la population
+                de votre collectivité est constitué de personnes âgées de plus
+                de 80 ans (soit{' '}
+                <b>
+                  {sumProperty(grandAgeIsolementTerritoire, 'over_80_sum_2020')}
+                </b>{' '}
+                personnes).
+              </p>
+              {type === 'commune' || re.test(code) ? (
                 <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                  En 2020, <b>{yData.over_80_2020_percent} %</b> de la
-                  population de votre collectivité est constitué de personnes
-                  âgées de plus de 80 ans (soit{' '}
-                  <b>{sumProperty(grandAgeCollectivite, 'over_80_sum_2020')}</b>{' '}
-                  personnes).
-                  <br></br>
                   Ce taux est de <b>{yData.over_80_2020_percent_epci} %</b> dans
                   votre EPCI.
                 </p>
-              ) : (
+              ) : type === 'epci' ? (
                 <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                  En 2020, <b>{yData.over_80_2020_percent} %</b> de la
-                  population de votre collectivité est constitué de personnes
-                  âgées de plus de 80 ans (soit{' '}
-                  <b>{sumProperty(grandAgeCollectivite, 'over_80_sum_2020')}</b>{' '}
-                  personnes).
-                  <br></br>
-                  Ce taux est de <b>
-                    {yData.over_80_2020_percent_dptmt} %
-                  </b>{' '}
+                  Ce taux est de <b> {yData.over_80_2020_percent_dptmt} %</b>{' '}
                   dans votre département.
                 </p>
+              ) : (
+                ''
               )}
               {/* <div className={styles.patch4Wrapper}>
                 {fortesChaleurs === 'Intensité très forte' ||
