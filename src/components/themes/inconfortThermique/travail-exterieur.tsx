@@ -35,7 +35,7 @@ export const TravailExterieur = (props: {
   const [patch4, setPatch4] = useState<Patch4[]>();
   const travailExterieurMapped = inconfortThermique.map(travailExtMapper);
   const travailExterieurCommune = codgeo
-    ? travailExterieurMapped.filter((e) => e.code_commune === codgeo)
+    ? travailExterieurMapped.filter((e) => e.code_geographique === codgeo)
     : null;
   const travailExterieurEpci = travailExterieurMapped.filter(
     (e) => e.epci === codepci

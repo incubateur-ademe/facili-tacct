@@ -41,7 +41,7 @@ export const MapEtatCoursDeau = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const commune = carteCommunes.find(
-    (commune) => commune.properties.code_commune === codgeo
+    (commune) => commune.properties.code_geographique === codgeo
   );
   const mapRef = useRef(null);
 
@@ -78,7 +78,7 @@ export const MapEtatCoursDeau = (props: {
 
   const territoireStyle: StyleFunction<Any> = (e) => {
     return {
-      weight: e?.properties.code_commune === codgeo ? 2 : 0.5,
+      weight: e?.properties.code_geographique === codgeo ? 2 : 0.5,
       opacity: 0.9,
       color: '#161616',
       fillOpacity: 0
