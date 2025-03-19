@@ -101,6 +101,7 @@ export const GetBiodiversite = async (
       where: {
         AND: [
           { [colonneTerritoire]: code ?? libelle },
+          { [colonneTerritoire]: code ?? libelle },
           {
             type_touristique: {
               not: null

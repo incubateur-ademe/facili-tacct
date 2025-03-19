@@ -11,6 +11,7 @@ import { MySearchInput } from './SearchInput';
 
 export const SearchBarComp = () => {
   const router = useRouter();
+
   const { css } = useStyles();
   // const [epciCode, setEpciCode] = useState<string>('');
   const [searchCode, setSearchCode] = useState<string>('');
@@ -20,6 +21,15 @@ export const SearchBarComp = () => {
   >('epci');
 
   const handleClick = () => {
+    if (searchCode.length !== 0 || searchLibelle.length !== 0) {
+      searchCode.length !== 0
+        ? router.push(
+            `/thematiques?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
+          )
+        : router.push(
+            `/thematiques?libelle=${searchLibelle}&type=${typeTerritoire}`
+          );
+    }
     if (searchCode.length !== 0 || searchLibelle.length !== 0) {
       searchCode.length !== 0
         ? router.push(
