@@ -3,7 +3,7 @@
 import * as Sentry from '@sentry/nextjs';
 import { PrismaClient as PostgresClient } from '../../generated/client';
 import { CollectivitesSearchbar } from '../postgres/models';
-import { Commune, EPCI, PETR, PNR } from './territoiresQueries';
+import { Commune, Departement, EPCI, PETR, PNR } from './territoiresQueries';
 
 const PrismaPostgres = new PostgresClient();
 
@@ -31,6 +31,11 @@ export const GetCollectivite = async (
     } else if (typeTerritoire === 'commune') {
       const variableCollectivite = '%' + collectivite + '%';
       const value = await Commune(variableCollectivite);
+      console.timeEnd(`Query Execution Time ${typeTerritoire} ${collectivite}`);
+      return value;
+    } else if (typeTerritoire === 'departement') {
+      const variableCollectivite = '%' + collectivite + '%';
+      const value = await Departement(variableCollectivite);
       console.timeEnd(`Query Execution Time ${typeTerritoire} ${collectivite}`);
       return value;
     } else {
