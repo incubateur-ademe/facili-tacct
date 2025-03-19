@@ -26,14 +26,14 @@ export const SurfacesIrriguees = ({
     return {
       ...el,
       surfacesIrriguees:
-        agriculture.find((item) => item.CODGEO === el.code_commune)
+        agriculture.find((item) => item.CODGEO === el.code_geographique)
           ?.part_irr_SAU_2020 ?? NaN
     };
   });
 
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
   const commune = codgeo
-    ? communesMap.find((obj) => obj.properties['code_commune'] === codgeo)
+    ? communesMap.find((obj) => obj.properties['code_geographique'] === codgeo)
     : undefined;
 
   const title = (

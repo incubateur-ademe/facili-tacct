@@ -63,7 +63,9 @@ export const MapSurfacesIrriguees = (props: {
     (el) => el.geometry.coordinates?.[0]?.[0]
   );
   const commune = codgeo
-    ? carteCommunesFiltered.find((el) => el.properties.code_commune === codgeo)
+    ? carteCommunesFiltered.find(
+        (el) => el.properties.code_geographique === codgeo
+      )
     : null;
   const centerCoord: number[] = commune
     ? getCentroid(commune.geometry.coordinates?.[0][0])
@@ -73,7 +75,7 @@ export const MapSurfacesIrriguees = (props: {
     const typedFeature = feature as CommunesIndicateursDto;
     return {
       fillColor: getColor(typedFeature?.properties.surfacesIrriguees ?? 0),
-      weight: typedFeature.properties.code_commune === codgeo ? 3 : 1,
+      weight: typedFeature.properties.code_geographique === codgeo ? 3 : 1,
       opacity: 1,
       color: '#161616',
       fillOpacity: 1
@@ -99,7 +101,7 @@ export const MapSurfacesIrriguees = (props: {
     >;
     const commune_name =
       layer.feature && 'properties' in layer.feature
-        ? layer.feature.properties.libelle_commune
+        ? layer.feature.properties.libelle_geographique
         : undefined;
     const surfacesIrriguees =
       layer.feature && 'properties' in layer.feature
@@ -126,7 +128,7 @@ export const MapSurfacesIrriguees = (props: {
     const layer = e.target as FeatureGroup<
       CommunesIndicateursDto['properties']
     >;
-    const codeCommune = e.sourceTarget.feature.properties.code_commune;
+    const codeCommune = e.sourceTarget.feature.properties.code_geographique;
     layer.setStyle({
       weight: codeCommune === codgeo ? 3 : 1,
       color: '#000000',

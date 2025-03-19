@@ -81,7 +81,7 @@ export const GrandAgeIsolement = (props: {
     grandAgeIsolementMapper
   );
   const grandAgeIsolementCommune = codgeo
-    ? grandAgeIsolementMapped.filter((e) => e.code_commune === codgeo)
+    ? grandAgeIsolementMapped.filter((e) => e.code_geographique === codgeo)
     : null;
   const grandAgeIsolementEpci = grandAgeIsolementMapped.filter(
     (e) => e.epci === codepci

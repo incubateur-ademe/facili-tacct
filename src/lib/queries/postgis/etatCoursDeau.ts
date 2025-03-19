@@ -18,7 +18,7 @@ export const GetEtatCoursDeau = async (
         epci,
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsText(geometry) geometry
-        FROM postgis."communes_drom" WHERE code_commune=${codgeo};`;
+        FROM postgis."communes_drom" WHERE code_geographique=${codgeo};`;
       const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
         SELECT
         name,

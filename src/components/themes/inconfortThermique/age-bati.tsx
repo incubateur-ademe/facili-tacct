@@ -43,7 +43,7 @@ export const AgeBati = (props: {
   const [patch4, setPatch4] = useState<Patch4[]>();
   const ageBatiMapped = inconfortThermique.map(ageBatiMapper);
   const ageBatiCommune = codgeo
-    ? ageBatiMapped.filter((e) => e.code_commune === codgeo)
+    ? ageBatiMapped.filter((e) => e.code_geographique === codgeo)
     : null;
   const ageBatiEpci = ageBatiMapped.filter((e) => e.epci === codepci);
   const ageBatiDptmt = ageBatiMapped;

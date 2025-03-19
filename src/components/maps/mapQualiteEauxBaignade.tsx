@@ -63,7 +63,7 @@ export const MapQualiteEauxBaignade = (props: {
   const markerRef = useRef(null);
 
   const commune = carteCommunes.find(
-    (commune) => commune.properties.code_commune === codgeo
+    (commune) => commune.properties.code_geographique === codgeo
   );
   const centerCoord: number[] = commune
     ? commune.properties.coordinates.split(',').map(Number)

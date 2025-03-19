@@ -71,7 +71,7 @@ export const MapFeuxDeForet = (props: {
         ...el,
         incendiesForet:
           cartographieData.find(
-            (item) => item.code_geographique === el.code_commune
+            (item) => item.code_geographique === el.code_geographique
           )?.surface_parcourue ?? NaN
       };
     })
@@ -81,7 +81,9 @@ export const MapFeuxDeForet = (props: {
     (el) => el.geometry.coordinates?.[0]?.[0]
   );
   const commune = codgeo
-    ? carteCommunesEnriched.find((el) => el.properties.code_commune === codgeo)
+    ? carteCommunesEnriched.find(
+        (el) => el.properties.code_geographique === codgeo
+      )
     : null;
   const centerCoord: number[] = commune
     ? getCentroid(commune.geometry.coordinates?.[0][0])
@@ -91,14 +93,15 @@ export const MapFeuxDeForet = (props: {
     const typedFeature = feature as CommunesIndicateursDto;
     const sumSurfacesParCommunes = cartographieData
       .filter(
-        (el) => el.code_geographique === typedFeature.properties.code_commune
+        (el) =>
+          el.code_geographique === typedFeature.properties.code_geographique
       )
       .map((el) => el.surface_parcourue);
     return {
       fillColor: sumSurfacesParCommunes.length
         ? getColor(Sum(sumSurfacesParCommunes))
         : 'transparent',
-      weight: typedFeature.properties.code_commune === codgeo ? 3 : 1,
+      weight: typedFeature.properties.code_geographique === codgeo ? 3 : 1,
       opacity: 1,
       color: '#161616',
       fillOpacity: 1
@@ -124,11 +127,11 @@ export const MapFeuxDeForet = (props: {
     >;
     const communeName =
       layer.feature && 'properties' in layer.feature
-        ? layer.feature.properties.libelle_commune
+        ? layer.feature.properties.libelle_geographique
         : undefined;
     const codeGeo =
       layer.feature && 'properties' in layer.feature
-        ? layer.feature.properties.code_commune
+        ? layer.feature.properties.code_geographique
         : undefined;
     const surfaceParcourue =
       layer.feature && 'properties' in layer.feature
@@ -159,7 +162,7 @@ export const MapFeuxDeForet = (props: {
     const layer = e.target as FeatureGroup<
       CommunesIndicateursDto['properties']
     >;
-    const codeCommune = e.sourceTarget.feature.properties.code_commune;
+    const codeCommune = e.sourceTarget.feature.properties.code_geographique;
     layer.setStyle({
       weight: codeCommune === codgeo ? 3 : 1,
       color: '#000000',
