@@ -10419,6 +10419,7 @@ export namespace Prisma {
 
   export type Communes_dromAvgAggregateOutputType = {
     pk: number | null;
+    region: number | null;
     densite_bati: number | null;
     precarite_logement: number | null;
     surface: number | null;
@@ -10426,6 +10427,7 @@ export namespace Prisma {
 
   export type Communes_dromSumAggregateOutputType = {
     pk: number | null;
+    region: bigint | null;
     densite_bati: number | null;
     precarite_logement: number | null;
     surface: number | null;
@@ -10433,10 +10435,16 @@ export namespace Prisma {
 
   export type Communes_dromMinAggregateOutputType = {
     pk: number | null;
-    code_commune: string | null;
-    libelle_commune: string | null;
+    code_geographique: string | null;
+    libelle_geographique: string | null;
     epci: string | null;
     libelle_epci: string | null;
+    departement: string | null;
+    region: bigint | null;
+    ept: string | null;
+    libelle_petr: string | null;
+    code_pnr: string | null;
+    libelle_pnr: string | null;
     coordinates: string | null;
     densite_bati: number | null;
     precarite_logement: number | null;
@@ -10445,10 +10453,16 @@ export namespace Prisma {
 
   export type Communes_dromMaxAggregateOutputType = {
     pk: number | null;
-    code_commune: string | null;
-    libelle_commune: string | null;
+    code_geographique: string | null;
+    libelle_geographique: string | null;
     epci: string | null;
     libelle_epci: string | null;
+    departement: string | null;
+    region: bigint | null;
+    ept: string | null;
+    libelle_petr: string | null;
+    code_pnr: string | null;
+    libelle_pnr: string | null;
     coordinates: string | null;
     densite_bati: number | null;
     precarite_logement: number | null;
@@ -10457,10 +10471,16 @@ export namespace Prisma {
 
   export type Communes_dromCountAggregateOutputType = {
     pk: number;
-    code_commune: number;
-    libelle_commune: number;
+    code_geographique: number;
+    libelle_geographique: number;
     epci: number;
     libelle_epci: number;
+    departement: number;
+    region: number;
+    ept: number;
+    libelle_petr: number;
+    code_pnr: number;
+    libelle_pnr: number;
     coordinates: number;
     densite_bati: number;
     precarite_logement: number;
@@ -10470,6 +10490,7 @@ export namespace Prisma {
 
   export type Communes_dromAvgAggregateInputType = {
     pk?: true;
+    region?: true;
     densite_bati?: true;
     precarite_logement?: true;
     surface?: true;
@@ -10477,6 +10498,7 @@ export namespace Prisma {
 
   export type Communes_dromSumAggregateInputType = {
     pk?: true;
+    region?: true;
     densite_bati?: true;
     precarite_logement?: true;
     surface?: true;
@@ -10484,10 +10506,16 @@ export namespace Prisma {
 
   export type Communes_dromMinAggregateInputType = {
     pk?: true;
-    code_commune?: true;
-    libelle_commune?: true;
+    code_geographique?: true;
+    libelle_geographique?: true;
     epci?: true;
     libelle_epci?: true;
+    departement?: true;
+    region?: true;
+    ept?: true;
+    libelle_petr?: true;
+    code_pnr?: true;
+    libelle_pnr?: true;
     coordinates?: true;
     densite_bati?: true;
     precarite_logement?: true;
@@ -10496,10 +10524,16 @@ export namespace Prisma {
 
   export type Communes_dromMaxAggregateInputType = {
     pk?: true;
-    code_commune?: true;
-    libelle_commune?: true;
+    code_geographique?: true;
+    libelle_geographique?: true;
     epci?: true;
     libelle_epci?: true;
+    departement?: true;
+    region?: true;
+    ept?: true;
+    libelle_petr?: true;
+    code_pnr?: true;
+    libelle_pnr?: true;
     coordinates?: true;
     densite_bati?: true;
     precarite_logement?: true;
@@ -10508,10 +10542,16 @@ export namespace Prisma {
 
   export type Communes_dromCountAggregateInputType = {
     pk?: true;
-    code_commune?: true;
-    libelle_commune?: true;
+    code_geographique?: true;
+    libelle_geographique?: true;
     epci?: true;
     libelle_epci?: true;
+    departement?: true;
+    region?: true;
+    ept?: true;
+    libelle_petr?: true;
+    code_pnr?: true;
+    libelle_pnr?: true;
     coordinates?: true;
     densite_bati?: true;
     precarite_logement?: true;
@@ -10614,10 +10654,16 @@ export namespace Prisma {
 
   export type Communes_dromGroupByOutputType = {
     pk: number;
-    code_commune: string;
-    libelle_commune: string;
+    code_geographique: string;
+    libelle_geographique: string;
     epci: string;
     libelle_epci: string;
+    departement: string;
+    region: bigint;
+    ept: string | null;
+    libelle_petr: string | null;
+    code_pnr: string | null;
+    libelle_pnr: string | null;
     coordinates: string;
     densite_bati: number | null;
     precarite_logement: number | null;
@@ -10648,10 +10694,16 @@ export namespace Prisma {
   > = $Extensions.GetSelect<
     {
       pk?: boolean;
-      code_commune?: boolean;
-      libelle_commune?: boolean;
+      code_geographique?: boolean;
+      libelle_geographique?: boolean;
       epci?: boolean;
       libelle_epci?: boolean;
+      departement?: boolean;
+      region?: boolean;
+      ept?: boolean;
+      libelle_petr?: boolean;
+      code_pnr?: boolean;
+      libelle_pnr?: boolean;
       coordinates?: boolean;
       densite_bati?: boolean;
       precarite_logement?: boolean;
@@ -10665,10 +10717,16 @@ export namespace Prisma {
   > = $Extensions.GetSelect<
     {
       pk?: boolean;
-      code_commune?: boolean;
-      libelle_commune?: boolean;
+      code_geographique?: boolean;
+      libelle_geographique?: boolean;
       epci?: boolean;
       libelle_epci?: boolean;
+      departement?: boolean;
+      region?: boolean;
+      ept?: boolean;
+      libelle_petr?: boolean;
+      code_pnr?: boolean;
+      libelle_pnr?: boolean;
       coordinates?: boolean;
       densite_bati?: boolean;
       precarite_logement?: boolean;
@@ -10679,10 +10737,16 @@ export namespace Prisma {
 
   export type communes_dromSelectScalar = {
     pk?: boolean;
-    code_commune?: boolean;
-    libelle_commune?: boolean;
+    code_geographique?: boolean;
+    libelle_geographique?: boolean;
     epci?: boolean;
     libelle_epci?: boolean;
+    departement?: boolean;
+    region?: boolean;
+    ept?: boolean;
+    libelle_petr?: boolean;
+    code_pnr?: boolean;
+    libelle_pnr?: boolean;
     coordinates?: boolean;
     densite_bati?: boolean;
     precarite_logement?: boolean;
@@ -10693,10 +10757,16 @@ export namespace Prisma {
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = $Extensions.GetOmit<
     | 'pk'
-    | 'code_commune'
-    | 'libelle_commune'
+    | 'code_geographique'
+    | 'libelle_geographique'
     | 'epci'
     | 'libelle_epci'
+    | 'departement'
+    | 'region'
+    | 'ept'
+    | 'libelle_petr'
+    | 'code_pnr'
+    | 'libelle_pnr'
     | 'coordinates'
     | 'densite_bati'
     | 'precarite_logement'
@@ -10712,10 +10782,16 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<
       {
         pk: number;
-        code_commune: string;
-        libelle_commune: string;
+        code_geographique: string;
+        libelle_geographique: string;
         epci: string;
         libelle_epci: string;
+        departement: string;
+        region: bigint;
+        ept: string | null;
+        libelle_petr: string | null;
+        code_pnr: string | null;
+        libelle_pnr: string | null;
         coordinates: string;
         densite_bati: number | null;
         precarite_logement: number | null;
@@ -11205,10 +11281,16 @@ export namespace Prisma {
    */
   interface communes_dromFieldRefs {
     readonly pk: FieldRef<'communes_drom', 'Int'>;
-    readonly code_commune: FieldRef<'communes_drom', 'String'>;
-    readonly libelle_commune: FieldRef<'communes_drom', 'String'>;
+    readonly code_geographique: FieldRef<'communes_drom', 'String'>;
+    readonly libelle_geographique: FieldRef<'communes_drom', 'String'>;
     readonly epci: FieldRef<'communes_drom', 'String'>;
     readonly libelle_epci: FieldRef<'communes_drom', 'String'>;
+    readonly departement: FieldRef<'communes_drom', 'String'>;
+    readonly region: FieldRef<'communes_drom', 'BigInt'>;
+    readonly ept: FieldRef<'communes_drom', 'String'>;
+    readonly libelle_petr: FieldRef<'communes_drom', 'String'>;
+    readonly code_pnr: FieldRef<'communes_drom', 'String'>;
+    readonly libelle_pnr: FieldRef<'communes_drom', 'String'>;
     readonly coordinates: FieldRef<'communes_drom', 'String'>;
     readonly densite_bati: FieldRef<'communes_drom', 'Float'>;
     readonly precarite_logement: FieldRef<'communes_drom', 'Float'>;
@@ -35206,10 +35288,16 @@ export namespace Prisma {
 
   export const Communes_dromScalarFieldEnum: {
     pk: 'pk';
-    code_commune: 'code_commune';
-    libelle_commune: 'libelle_commune';
+    code_geographique: 'code_geographique';
+    libelle_geographique: 'libelle_geographique';
     epci: 'epci';
     libelle_epci: 'libelle_epci';
+    departement: 'departement';
+    region: 'region';
+    ept: 'ept';
+    libelle_petr: 'libelle_petr';
+    code_pnr: 'code_pnr';
+    libelle_pnr: 'libelle_pnr';
     coordinates: 'coordinates';
     densite_bati: 'densite_bati';
     precarite_logement: 'precarite_logement';
@@ -36852,10 +36940,16 @@ export namespace Prisma {
     OR?: communes_dromWhereInput[];
     NOT?: communes_dromWhereInput | communes_dromWhereInput[];
     pk?: IntFilter<'communes_drom'> | number;
-    code_commune?: StringFilter<'communes_drom'> | string;
-    libelle_commune?: StringFilter<'communes_drom'> | string;
+    code_geographique?: StringFilter<'communes_drom'> | string;
+    libelle_geographique?: StringFilter<'communes_drom'> | string;
     epci?: StringFilter<'communes_drom'> | string;
     libelle_epci?: StringFilter<'communes_drom'> | string;
+    departement?: StringFilter<'communes_drom'> | string;
+    region?: BigIntFilter<'communes_drom'> | bigint | number;
+    ept?: StringNullableFilter<'communes_drom'> | string | null;
+    libelle_petr?: StringNullableFilter<'communes_drom'> | string | null;
+    code_pnr?: StringNullableFilter<'communes_drom'> | string | null;
+    libelle_pnr?: StringNullableFilter<'communes_drom'> | string | null;
     coordinates?: StringFilter<'communes_drom'> | string;
     densite_bati?: FloatNullableFilter<'communes_drom'> | number | null;
     precarite_logement?: FloatNullableFilter<'communes_drom'> | number | null;
@@ -36864,10 +36958,16 @@ export namespace Prisma {
 
   export type communes_dromOrderByWithRelationInput = {
     pk?: SortOrder;
-    code_commune?: SortOrder;
-    libelle_commune?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
     epci?: SortOrder;
     libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
+    ept?: SortOrderInput | SortOrder;
+    libelle_petr?: SortOrderInput | SortOrder;
+    code_pnr?: SortOrderInput | SortOrder;
+    libelle_pnr?: SortOrderInput | SortOrder;
     coordinates?: SortOrder;
     densite_bati?: SortOrderInput | SortOrder;
     precarite_logement?: SortOrderInput | SortOrder;
@@ -36880,10 +36980,16 @@ export namespace Prisma {
       AND?: communes_dromWhereInput | communes_dromWhereInput[];
       OR?: communes_dromWhereInput[];
       NOT?: communes_dromWhereInput | communes_dromWhereInput[];
-      code_commune?: StringFilter<'communes_drom'> | string;
-      libelle_commune?: StringFilter<'communes_drom'> | string;
+      code_geographique?: StringFilter<'communes_drom'> | string;
+      libelle_geographique?: StringFilter<'communes_drom'> | string;
       epci?: StringFilter<'communes_drom'> | string;
       libelle_epci?: StringFilter<'communes_drom'> | string;
+      departement?: StringFilter<'communes_drom'> | string;
+      region?: BigIntFilter<'communes_drom'> | bigint | number;
+      ept?: StringNullableFilter<'communes_drom'> | string | null;
+      libelle_petr?: StringNullableFilter<'communes_drom'> | string | null;
+      code_pnr?: StringNullableFilter<'communes_drom'> | string | null;
+      libelle_pnr?: StringNullableFilter<'communes_drom'> | string | null;
       coordinates?: StringFilter<'communes_drom'> | string;
       densite_bati?: FloatNullableFilter<'communes_drom'> | number | null;
       precarite_logement?: FloatNullableFilter<'communes_drom'> | number | null;
@@ -36894,10 +37000,16 @@ export namespace Prisma {
 
   export type communes_dromOrderByWithAggregationInput = {
     pk?: SortOrder;
-    code_commune?: SortOrder;
-    libelle_commune?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
     epci?: SortOrder;
     libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
+    ept?: SortOrderInput | SortOrder;
+    libelle_petr?: SortOrderInput | SortOrder;
+    code_pnr?: SortOrderInput | SortOrder;
+    libelle_pnr?: SortOrderInput | SortOrder;
     coordinates?: SortOrder;
     densite_bati?: SortOrderInput | SortOrder;
     precarite_logement?: SortOrderInput | SortOrder;
@@ -36918,10 +37030,25 @@ export namespace Prisma {
       | communes_dromScalarWhereWithAggregatesInput
       | communes_dromScalarWhereWithAggregatesInput[];
     pk?: IntWithAggregatesFilter<'communes_drom'> | number;
-    code_commune?: StringWithAggregatesFilter<'communes_drom'> | string;
-    libelle_commune?: StringWithAggregatesFilter<'communes_drom'> | string;
+    code_geographique?: StringWithAggregatesFilter<'communes_drom'> | string;
+    libelle_geographique?: StringWithAggregatesFilter<'communes_drom'> | string;
     epci?: StringWithAggregatesFilter<'communes_drom'> | string;
     libelle_epci?: StringWithAggregatesFilter<'communes_drom'> | string;
+    departement?: StringWithAggregatesFilter<'communes_drom'> | string;
+    region?: BigIntWithAggregatesFilter<'communes_drom'> | bigint | number;
+    ept?: StringNullableWithAggregatesFilter<'communes_drom'> | string | null;
+    libelle_petr?:
+      | StringNullableWithAggregatesFilter<'communes_drom'>
+      | string
+      | null;
+    code_pnr?:
+      | StringNullableWithAggregatesFilter<'communes_drom'>
+      | string
+      | null;
+    libelle_pnr?:
+      | StringNullableWithAggregatesFilter<'communes_drom'>
+      | string
+      | null;
     coordinates?: StringWithAggregatesFilter<'communes_drom'> | string;
     densite_bati?:
       | FloatNullableWithAggregatesFilter<'communes_drom'>
@@ -40120,10 +40247,16 @@ export namespace Prisma {
   };
 
   export type communes_dromUpdateInput = {
-    code_commune?: StringFieldUpdateOperationsInput | string;
-    libelle_commune?: StringFieldUpdateOperationsInput | string;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
     epci?: StringFieldUpdateOperationsInput | string;
     libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: BigIntFieldUpdateOperationsInput | bigint | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     coordinates?: StringFieldUpdateOperationsInput | string;
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
     precarite_logement?:
@@ -40135,10 +40268,16 @@ export namespace Prisma {
 
   export type communes_dromUncheckedUpdateInput = {
     pk?: IntFieldUpdateOperationsInput | number;
-    code_commune?: StringFieldUpdateOperationsInput | string;
-    libelle_commune?: StringFieldUpdateOperationsInput | string;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
     epci?: StringFieldUpdateOperationsInput | string;
     libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: BigIntFieldUpdateOperationsInput | bigint | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     coordinates?: StringFieldUpdateOperationsInput | string;
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
     precarite_logement?:
@@ -40149,10 +40288,16 @@ export namespace Prisma {
   };
 
   export type communes_dromUpdateManyMutationInput = {
-    code_commune?: StringFieldUpdateOperationsInput | string;
-    libelle_commune?: StringFieldUpdateOperationsInput | string;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
     epci?: StringFieldUpdateOperationsInput | string;
     libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: BigIntFieldUpdateOperationsInput | bigint | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     coordinates?: StringFieldUpdateOperationsInput | string;
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
     precarite_logement?:
@@ -40164,10 +40309,16 @@ export namespace Prisma {
 
   export type communes_dromUncheckedUpdateManyInput = {
     pk?: IntFieldUpdateOperationsInput | number;
-    code_commune?: StringFieldUpdateOperationsInput | string;
-    libelle_commune?: StringFieldUpdateOperationsInput | string;
+    code_geographique?: StringFieldUpdateOperationsInput | string;
+    libelle_geographique?: StringFieldUpdateOperationsInput | string;
     epci?: StringFieldUpdateOperationsInput | string;
     libelle_epci?: StringFieldUpdateOperationsInput | string;
+    departement?: StringFieldUpdateOperationsInput | string;
+    region?: BigIntFieldUpdateOperationsInput | bigint | number;
+    ept?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
     coordinates?: StringFieldUpdateOperationsInput | string;
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
     precarite_logement?:
@@ -43232,10 +43383,16 @@ export namespace Prisma {
 
   export type communes_dromCountOrderByAggregateInput = {
     pk?: SortOrder;
-    code_commune?: SortOrder;
-    libelle_commune?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
     epci?: SortOrder;
     libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
+    ept?: SortOrder;
+    libelle_petr?: SortOrder;
+    code_pnr?: SortOrder;
+    libelle_pnr?: SortOrder;
     coordinates?: SortOrder;
     densite_bati?: SortOrder;
     precarite_logement?: SortOrder;
@@ -43244,6 +43401,7 @@ export namespace Prisma {
 
   export type communes_dromAvgOrderByAggregateInput = {
     pk?: SortOrder;
+    region?: SortOrder;
     densite_bati?: SortOrder;
     precarite_logement?: SortOrder;
     surface?: SortOrder;
@@ -43251,10 +43409,16 @@ export namespace Prisma {
 
   export type communes_dromMaxOrderByAggregateInput = {
     pk?: SortOrder;
-    code_commune?: SortOrder;
-    libelle_commune?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
     epci?: SortOrder;
     libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
+    ept?: SortOrder;
+    libelle_petr?: SortOrder;
+    code_pnr?: SortOrder;
+    libelle_pnr?: SortOrder;
     coordinates?: SortOrder;
     densite_bati?: SortOrder;
     precarite_logement?: SortOrder;
@@ -43263,10 +43427,16 @@ export namespace Prisma {
 
   export type communes_dromMinOrderByAggregateInput = {
     pk?: SortOrder;
-    code_commune?: SortOrder;
-    libelle_commune?: SortOrder;
+    code_geographique?: SortOrder;
+    libelle_geographique?: SortOrder;
     epci?: SortOrder;
     libelle_epci?: SortOrder;
+    departement?: SortOrder;
+    region?: SortOrder;
+    ept?: SortOrder;
+    libelle_petr?: SortOrder;
+    code_pnr?: SortOrder;
+    libelle_pnr?: SortOrder;
     coordinates?: SortOrder;
     densite_bati?: SortOrder;
     precarite_logement?: SortOrder;
@@ -43275,6 +43445,7 @@ export namespace Prisma {
 
   export type communes_dromSumOrderByAggregateInput = {
     pk?: SortOrder;
+    region?: SortOrder;
     densite_bati?: SortOrder;
     precarite_logement?: SortOrder;
     surface?: SortOrder;

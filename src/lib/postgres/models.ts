@@ -135,12 +135,12 @@ export type CollectivitesSearchbar = {
 };
 
 export type CarteCommunes = {
-  code_commune: string;
+  code_geographique: string;
   coordinates: string;
   densite_bati?: number;
   epci: string;
   geometry: string;
-  libelle_commune: string;
+  libelle_geographique: string;
   libelle_epci: string;
   precarite_logement?: number;
   catnat?: Object;
@@ -178,7 +178,7 @@ export type ErosionCotiere = {
 export type DataGrandAge = {
   P20_POP80P?: number;
   P20_POP80P_PSEUL?: number;
-  code_commune: string;
+  code_geographique: string;
   epci: string;
   libelle_epci: string;
   libelle_geographique: string;

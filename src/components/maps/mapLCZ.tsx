@@ -71,7 +71,7 @@
 //   );
 
 //   const commune = codgeo
-//     ? carteCommunes.find((el) => el.properties.code_commune === codgeo)
+//     ? carteCommunes.find((el) => el.properties.code_geographique === codgeo)
 //     : null;
 //   const centerCoord: number[] = collectivite[0].coordinates
 //     ? swapNumbers(collectivite[0].coordinates.split(',').map(Number), 0, 1)

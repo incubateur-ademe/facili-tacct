@@ -59,7 +59,7 @@ const AOT40Dataviz = (props: {
   const codepci = searchParams.get('codepci')!;
   const [patch4, setPatch4] = useState<Patch4[]>();
   const commune = carteCommunesMap.find(
-    (commune) => commune.properties.code_commune === codgeo
+    (commune) => commune.properties.code_geographique === codgeo
   );
   const centerCoord: number[] = commune
     ? commune.properties.coordinates.split(',').map(Number)

@@ -29,9 +29,9 @@ export const Map = (props: {
   const mapRef = useRef(null);
   const mapData = carteCommunes.filter(
     (e) =>
-      e.properties.code_commune !== '75056' &&
-      e.properties.code_commune !== '13055' &&
-      e.properties.code_commune !== '69123'
+      e.properties.code_geographique !== '75056' &&
+      e.properties.code_geographique !== '13055' &&
+      e.properties.code_geographique !== '69123'
   );
 
   const all_coordinates = carteCommunes.map(
@@ -56,7 +56,7 @@ export const Map = (props: {
   };
 
   const commune = codgeo
-    ? carteCommunes.find((el) => el.properties.code_commune === codgeo)
+    ? carteCommunes.find((el) => el.properties.code_geographique === codgeo)
     : null;
   const centerCoord: number[] = commune
     ? getCentroid(commune.geometry.coordinates?.[0][0])
@@ -115,7 +115,7 @@ export const Map = (props: {
     >;
     const commune_name =
       layer.feature && 'properties' in layer.feature
-        ? layer.feature.properties.libelle_commune
+        ? layer.feature.properties.libelle_geographique
         : undefined;
     const precarite_logement =
       layer.feature && 'properties' in layer.feature
