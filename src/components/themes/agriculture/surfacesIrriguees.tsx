@@ -33,11 +33,17 @@ export const SurfacesIrriguees = ({
   });
 
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
+<<<<<<< HEAD
 
   const surfaceTerritoire = communesMap
     .map((obj) => obj.properties.surfacesIrriguees)
     .map((value) => (isNaN(value!) ? 0 : value))
     .reduce((acc, value) => acc! + value!, 0);
+=======
+  const commune = codgeo
+    ? communesMap.find((obj) => obj.properties['code_geographique'] === codgeo)
+    : undefined;
+>>>>>>> 816a0d7 (db: nouvelle base carte communes)
 
   const title = (
     <>
