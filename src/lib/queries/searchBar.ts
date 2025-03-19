@@ -9,6 +9,7 @@ const PrismaPostgres = new PostgresClient();
 
 export const GetCollectivite = async (
   typeTerritoire: string | undefined,
+  typeTerritoire: string | undefined,
   collectivite: string
 ): Promise<CollectivitesSearchbar[]> => {
   try {
