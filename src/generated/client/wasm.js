@@ -224,10 +224,16 @@ exports.Prisma.Gestion_risquesScalarFieldEnum = {
 
 exports.Prisma.Communes_dromScalarFieldEnum = {
   pk: 'pk',
-  code_commune: 'code_commune',
-  libelle_commune: 'libelle_commune',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
   epci: 'epci',
   libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
   coordinates: 'coordinates',
   densite_bati: 'densite_bati',
   precarite_logement: 'precarite_logement',

@@ -9,7 +9,7 @@ import { type InconfortThermique } from '../postgres/models';
 export const vegetalisationMapper = (
   vegetalisation: InconfortThermique
 ): VegetalisationDto => ({
-  code_commune: vegetalisation.code_geographique,
+  code_geographique: vegetalisation.code_geographique,
   libelle_geographique: vegetalisation.libelle_geographique,
   epci: vegetalisation.epci,
   libelle_epci: vegetalisation.libelle_epci,
@@ -22,7 +22,7 @@ export const vegetalisationMapper = (
 });
 
 export const ageBatiMapper = (ageBati: InconfortThermique): AgeBatiDto => ({
-  code_commune: ageBati.code_geographique,
+  code_geographique: ageBati.code_geographique,
   libelle_geographique: ageBati.libelle_geographique,
   epci: ageBati.epci,
   libelle_epci: ageBati.libelle_epci,
@@ -36,7 +36,7 @@ export const ageBatiMapper = (ageBati: InconfortThermique): AgeBatiDto => ({
 export const travailExtMapper = (
   travailExt: InconfortThermique
 ): travailExtDto => ({
-  code_commune: travailExt.code_geographique,
+  code_geographique: travailExt.code_geographique,
   libelle_geographique: travailExt.libelle_geographique,
   epci: travailExt.epci,
   libelle_epci: travailExt.libelle_epci,
@@ -50,7 +50,7 @@ export const travailExtMapper = (
 export const grandAgeIsolementMapper = (
   grandAgeIsolement: InconfortThermique
 ): GrandAgeIsolementDto => ({
-  code_commune: grandAgeIsolement.code_geographique,
+  code_geographique: grandAgeIsolement.code_geographique,
   libelle_geographique: grandAgeIsolement.libelle_geographique,
   epci: grandAgeIsolement.epci,
   libelle_epci: grandAgeIsolement.libelle_epci,
