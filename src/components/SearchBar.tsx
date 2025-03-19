@@ -11,9 +11,7 @@ import { MySearchInput } from './SearchInput';
 
 export const SearchBarComp = () => {
   const router = useRouter();
-
   const { css } = useStyles();
-  // const [epciCode, setEpciCode] = useState<string>('');
   const [searchCode, setSearchCode] = useState<string>('');
   const [searchLibelle, setSearchLibelle] = useState<string>('');
   const [typeTerritoire, setTypeTerritoire] = useState<
@@ -91,17 +89,17 @@ export const SearchBarComp = () => {
                 setSearchLibelle('');
               }
             }
+          },
+          {
+            label: 'Département',
+            nativeInputProps: {
+              checked: typeTerritoire === 'departement',
+              onChange: () => {
+                setTypeTerritoire('departement');
+                setSearchLibelle('');
+              }
+            }
           }
-          // {
-          //   label: 'Département',
-          //   nativeInputProps: {
-          //     checked: typeTerritoire === 'departement',
-          //     onChange: () => {
-          //       setTypeTerritoire('departement');
-          //       setSearchLibelle('');
-          //     }
-          //   }
-          // }
         ]}
         orientation="horizontal"
         className={css({
