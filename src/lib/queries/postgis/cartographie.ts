@@ -30,8 +30,8 @@ export const GetCommunes = async (
       SELECT 
       epci, 
       libelle_epci,
-      libelle_commune,
-      code_commune,
+      libelle_geographique,
+      code_geographique,
       coordinates, 
       precarite_logement,
       densite_bati,
@@ -100,7 +100,7 @@ export const GetErosionCotiere = async (
         epci,
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsText(geometry) geometry
-        FROM postgis."communes_drom" WHERE code_commune=${codgeo};`;
+        FROM postgis."communes_drom" WHERE code_geographique=${codgeo};`;
       const valueIntersect = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
         SELECT 
         taux, 
@@ -134,7 +134,7 @@ export const GetEpci = async (
         SELECT 
         epci, 
         ST_AsGeoJSON(geometry) geometry
-        FROM postgis."communes_drom" WHERE code_commune=${codgeo};`;
+        FROM postgis."communes_drom" WHERE code_geographique=${codgeo};`;
       // console.log(value);
       console.timeEnd('Query Execution Time GetEpci');
       return value;
