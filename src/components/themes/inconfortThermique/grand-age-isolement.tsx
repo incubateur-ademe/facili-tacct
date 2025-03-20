@@ -62,7 +62,7 @@ export const GrandAgeIsolement = (props: {
   }>;
   departement?: InconfortThermique[];
 }) => {
-  const { inconfortThermique, departement } = props;
+  const { inconfortThermique } = props;
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
@@ -162,121 +162,133 @@ export const GrandAgeIsolement = (props: {
 
   return (
     <>
-      {inconfortThermique.length &&
-      !Object.values(yData).slice(0, -2).includes('NaN') ? (
-        <div className={styles.container}>
-          <div className="w-2/5">
-            <div className={styles.explicationWrapper}>
-              {codgeo ? (
-                <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                  En 2020, <b>{yData.over_80_2020_percent} %</b> de la
-                  population de votre collectivité est constitué de personnes
-                  âgées de plus de 80 ans (soit{' '}
-                  <b>{sumProperty(grandAgeCollectivite, 'over_80_sum_2020')}</b>{' '}
-                  personnes).
-                  <br></br>
-                  Ce taux est de <b>{yData.over_80_2020_percent_epci} %</b> dans
-                  votre EPCI.
-                </p>
-              ) : (
-                <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                  En 2020, <b>{yData.over_80_2020_percent} %</b> de la
-                  population de votre collectivité est constitué de personnes
-                  âgées de plus de 80 ans (soit{' '}
-                  <b>{sumProperty(grandAgeCollectivite, 'over_80_sum_2020')}</b>{' '}
-                  personnes).
-                  <br></br>
-                  Ce taux est de <b>
-                    {yData.over_80_2020_percent_dptmt} %
-                  </b>{' '}
-                  dans votre département.
-                </p>
-              )}
-              <div className={styles.patch4Wrapper}>
-                {fortesChaleurs === 'Intensité très forte' ||
-                fortesChaleurs === 'Intensité forte' ? (
-                  <TagItem
-                    icon={fortesChaleursIcon}
-                    indice="Fortes chaleurs"
-                    tag={fortesChaleurs}
-                  />
-                ) : null}
-              </div>
-              <CustomTooltip title={methodeCalcul} />
-            </div>
-            <div className="px-4">
-              <p>
-                Les personnes âgées représentent les deux tiers de la
-                surmortalité en période de fortes chaleurs.
-                <br></br>Le corps des personnes âgées régule moins bien la
-                température, ce qui les rend plus sensibles aux fortes chaleurs.
-                Elles ressentent également moins la soif, ce qui augmente les
-                risques de déshydratation. S'ajoutent souvent des problèmes de
-                santé chroniques, comme les maladies cardiovasculaires ou
-                respiratoires, aggravés par la chaleur.
-              </p>
-              <p>
-                Cette vulnérabilité est exacerbée par plusieurs facteurs :
-                précarité énergétique, isolement social, et conditions de
-                logement inadéquates. Plus ces facteurs se cumulent, plus le
-                risque d’une surmortalité en période de chaleur augmente. Ces
-                conditions créent un "cercle vicieux" qui accroît leur fragilité
-                face à l’inconfort thermique.
-              </p>
-              <p>
-                ⇒ C’est toujours beaucoup trop !{' '}
-                <b>33 000 décès ont été attribués à la chaleur</b> entre 2014 et
-                2022, dont <b>23 000</b> chez les personnes âgées de 75 ans et
-                plus.
-              </p>
-              <p>
-                ⇒ <b>28 % seulement des décès</b> liés à la chaleur se
-                produisent pendant les canicules, qui ne représente que 6 % des
-                jours de l’été. Soyons vigilants aussi en dehors des périodes de
-                canicule.
-              </p>
-              <p>
-                ⇒Tous concernés : les personnes de moins de 75 ans, c’est 71 %
-                des consultations SOS Médecins en lien avec la chaleur entre le
-                1er juin et le 15 septembre 2022, et un tiers des décès liés à
-                la chaleur entre 2014 et 2022.
-              </p>
-              <p>
-                ⇒ Seuls 12 % des Français se considèrent fragiles ou très
-                fragiles pendant une canicule. La perception du risque personnel
-                lié à la chaleur est faible.
-              </p>
-            </div>
-          </div>
-          <div className="w-3/5">
-            <div className={styles.graphWrapper}>
-              <p style={{ padding: '1em', margin: '0' }}>
-                <b>
-                  Évolution de la part de population de plus de 80 ans depuis
-                  1968
-                </b>
-              </p>
-              {yData.over_80_2020_percent ? (
-                <div
-                  style={{
-                    backgroundColor: 'white',
-                    height: '500px',
-                    width: '100%'
-                  }}
-                >
-                  <LineChart1 xData={xData} yData={yGraphData} />
+      {fortesChaleurs ? (
+        <>
+          {inconfortThermique.length &&
+          !Object.values(yData).slice(0, -2).includes('NaN') ? (
+            <div className={styles.container}>
+              <div className="w-2/5">
+                <div className={styles.explicationWrapper}>
+                  {codgeo ? (
+                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                      En 2020, <b>{yData.over_80_2020_percent} %</b> de la
+                      population de votre collectivité est constitué de
+                      personnes âgées de plus de 80 ans (soit{' '}
+                      <b>
+                        {sumProperty(grandAgeCollectivite, 'over_80_sum_2020')}
+                      </b>{' '}
+                      personnes).
+                      <br></br>
+                      Ce taux est de <b>
+                        {yData.over_80_2020_percent_epci} %
+                      </b>{' '}
+                      dans votre EPCI.
+                    </p>
+                  ) : (
+                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                      En 2020, <b>{yData.over_80_2020_percent} %</b> de la
+                      population de votre collectivité est constitué de
+                      personnes âgées de plus de 80 ans (soit{' '}
+                      <b>
+                        {sumProperty(grandAgeCollectivite, 'over_80_sum_2020')}
+                      </b>{' '}
+                      personnes).
+                      <br></br>
+                      Ce taux est de <b>
+                        {yData.over_80_2020_percent_dptmt} %
+                      </b>{' '}
+                      dans votre département.
+                    </p>
+                  )}
+                  <div className={styles.patch4Wrapper}>
+                    {fortesChaleurs === 'Intensité très forte' ||
+                    fortesChaleurs === 'Intensité forte' ? (
+                      <TagItem
+                        icon={fortesChaleursIcon}
+                        indice="Fortes chaleurs"
+                        tag={fortesChaleurs}
+                      />
+                    ) : null}
+                  </div>
+                  <CustomTooltip title={methodeCalcul} />
                 </div>
-              ) : (
-                <Loader />
-              )}
-              <p style={{ padding: '1em', margin: '0' }}>
-                Source : Observatoire des territoires
-              </p>
+                <div className="px-4">
+                  <p>
+                    Les personnes âgées représentent les deux tiers de la
+                    surmortalité en période de fortes chaleurs.
+                    <br></br>Le corps des personnes âgées régule moins bien la
+                    température, ce qui les rend plus sensibles aux fortes
+                    chaleurs. Elles ressentent également moins la soif, ce qui
+                    augmente les risques de déshydratation. S'ajoutent souvent
+                    des problèmes de santé chroniques, comme les maladies
+                    cardiovasculaires ou respiratoires, aggravés par la chaleur.
+                  </p>
+                  <p>
+                    Cette vulnérabilité est exacerbée par plusieurs facteurs :
+                    précarité énergétique, isolement social, et conditions de
+                    logement inadéquates. Plus ces facteurs se cumulent, plus le
+                    risque d’une surmortalité en période de chaleur augmente.
+                    Ces conditions créent un "cercle vicieux" qui accroît leur
+                    fragilité face à l’inconfort thermique.
+                  </p>
+                  <p>
+                    ⇒ C’est toujours beaucoup trop !{' '}
+                    <b>33 000 décès ont été attribués à la chaleur</b> entre
+                    2014 et 2022, dont <b>23 000</b> chez les personnes âgées de
+                    75 ans et plus.
+                  </p>
+                  <p>
+                    ⇒ <b>28 % seulement des décès</b> liés à la chaleur se
+                    produisent pendant les canicules, qui ne représente que 6 %
+                    des jours de l’été. Soyons vigilants aussi en dehors des
+                    périodes de canicule.
+                  </p>
+                  <p>
+                    ⇒Tous concernés : les personnes de moins de 75 ans, c’est
+                    71 % des consultations SOS Médecins en lien avec la chaleur
+                    entre le 1er juin et le 15 septembre 2022, et un tiers des
+                    décès liés à la chaleur entre 2014 et 2022.
+                  </p>
+                  <p>
+                    ⇒ Seuls 12 % des Français se considèrent fragiles ou très
+                    fragiles pendant une canicule. La perception du risque
+                    personnel lié à la chaleur est faible.
+                  </p>
+                </div>
+              </div>
+              <div className="w-3/5">
+                <div className={styles.graphWrapper}>
+                  <p style={{ padding: '1em', margin: '0' }}>
+                    <b>
+                      Évolution de la part de population de plus de 80 ans
+                      depuis 1968
+                    </b>
+                  </p>
+                  {yData.over_80_2020_percent ? (
+                    <div
+                      style={{
+                        backgroundColor: 'white',
+                        height: '500px',
+                        width: '100%'
+                      }}
+                    >
+                      <LineChart1 xData={xData} yData={yGraphData} />
+                    </div>
+                  ) : (
+                    <Loader />
+                  )}
+                  <p style={{ padding: '1em', margin: '0' }}>
+                    Source : Observatoire des territoires
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          ) : (
+            <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+          )}
+        </>
       ) : (
-        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        <Loader />
       )}
     </>
   );
