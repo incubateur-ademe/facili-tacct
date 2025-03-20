@@ -129,27 +129,28 @@
 
 // Patch4°C
 .tag {
-    padding: 0.25rem;
+    padding: 0.25rem 0.5rem;
     border-radius: 4px;
     height: fit-content;
     min-width: fit-content;
+    font-weight: 700;
+    font-size: 12px;
     p {
         margin: 0;
-        font-weight: 700;
-        line-height: 12.14px;
-        font-size: 0.75rem;
     }
 }
 
 .indiceItem {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
     .indiceLeft {
         display: flex;
         flex-direction: row;
         gap: 1rem;
         align-items: center;
+        min-width: 200px;
         p {
             font-size: 1rem;
             line-height: 12.14px;

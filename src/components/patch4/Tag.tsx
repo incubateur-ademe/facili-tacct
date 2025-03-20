@@ -21,7 +21,7 @@ export const TagPatch4 = ({ children }: TagPatch4Props) => {
   return (
     <Tag
       className={styles.tag}
-      style={{ backgroundColor: color, color: textColor }}
+      style={{ backgroundColor: color, color: textColor, lineHeight: '12px' }}
     >
       {children}
     </Tag>

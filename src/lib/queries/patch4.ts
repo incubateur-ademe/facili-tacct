@@ -8,11 +8,13 @@ const PrismaPostgres = new PostgresClient();
 
 export const GetPatch4 = async (code: string): Promise<Patch4[]> => {
   try {
+    // console.time(`PATCH4`);
     const value = await PrismaPostgres.patch4c.findMany({
       where: {
         code_geographique: code
       }
     });
+    // console.timeEnd(`PATCH4`);
     return value;
   } catch (error) {
     console.error(error);
