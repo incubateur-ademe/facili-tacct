@@ -180,8 +180,8 @@ export const themes = {
     // },
     {
       id: 1,
-      titre: 'Surfaces irriguées SAU',
-      facteurSensibilite: 'Renouvellement agricole',
+      titre: 'Superficies irriguées',
+      facteurSensibilite: 'Superficies irriguées',
       risque: '',
       donnee: ''
     }

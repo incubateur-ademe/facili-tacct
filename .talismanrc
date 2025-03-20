@@ -12,7 +12,7 @@ fileignoreconfig:
     - filename: src/generated/client/index.d.ts
       checksum: f722074f386753b5b5c1947d5a777ed5c7a2318995576850dedb1fb0a58e14ce
     - filename: src/app/(main)/thematiques/patch4/patch4Accordion.tsx
-      checksum: 0165fb55ba061b0cf08ede54ccad92d5416c40bf960375d4303b2d8077b24177
+      checksum: ec2cb4192db1af0bde179e368a37f2344b93a6b55ed1be5a99f9371cd08dfed7
     - filename: src/app/api/auth/register/route.ts
       checksum: 530adf7d31eef40de701544897022c541e3c2d1d54f43a7b868b9339ad2e9954
     - filename: src/lib/auth/authOptions.ts

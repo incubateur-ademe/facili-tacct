@@ -10,6 +10,7 @@ import { DefinitionTooltip } from '@/components/utils/HtmlTooltip';
 import { irrigable } from '@/lib/definitions';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import styles from './agriculture.module.scss';
 
 export const SurfacesIrriguees = ({
@@ -32,15 +33,33 @@ export const SurfacesIrriguees = ({
   });
 
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
-  const commune = codgeo
-    ? communesMap.find((obj) => obj.properties['code_geographique'] === codgeo)
-    : undefined;
+
+  const surfaceTerritoire = communesMap
+    .map((obj) => obj.properties.surfacesIrriguees)
+    .map((value) => (isNaN(value!) ? 0 : value))
+    .reduce((acc, value) => acc! + value!, 0);
 
   const title = (
     <>
-      <div>Lorem ipsum : </div>
-      <br></br>
-      <div>...............</div>
+      <div>
+        <p>
+          Cet indicateur est calculé en divisant la superficie irriguée par la
+          surface agricole utilisée (SAU). Il est disponible sur le site AGRESTE
+          pour le recensement agricole de 2020. Plus d’un quart des observations
+          sont sous secret statistique.
+        </p>
+        <p>
+          La superficie irriguée est déterminée quel que soit le mode
+          d'irrigation (aspersion, goutte-à-goutte…) et quelle que soit
+          l'origine de l'eau. Les surfaces irriguées uniquement dans le cadre
+          d'une protection contre le gel ou d'une lutte phytosanitaire (contre
+          le phylloxera de la vigne par exemple) sont exclues de ce calcul.
+        </p>
+        <p>
+          Une surface est dite « irrigable » si elle est munie d’un moyen
+          d’irrigation.
+        </p>
+      </div>
     </>
   );
 
@@ -52,15 +71,11 @@ export const SurfacesIrriguees = ({
             <>
               <div className="w-2/5">
                 <div className={styles.explicationWrapper}>
-                  {commune ? (
-                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      Commune
-                    </p>
-                  ) : (
-                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      EPCI
-                    </p>
-                  )}
+                  <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                    En 2020, la part de la superficie irriguée dans la SAU sur
+                    votre territoire était de{' '}
+                    {Round(surfaceTerritoire! / communesMap.length, 1)} %.
+                  </p>
                   <CustomTooltip
                     title={title}
                     texte="D'où vient ce chiffre ?"
@@ -101,27 +116,15 @@ export const SurfacesIrriguees = ({
                     pérennité de l’irrigation face aux évolutions climatiques et
                     aux autres besoins en eau.
                   </p>
-                  <ul>
-                    <li>
-                      Les prélèvements agricoles ont augmenté de 13 % entre 2010
-                      et 2020.
-                    </li>
-                    <li>
-                      En 2020, 1 million d’hectares équipés pour l’irrigation
-                      n’ont finalement pas été irrigués.
-                    </li>
-                    <li>
-                      En 2020, l’eau prélevée pour l’irrigation varie fortement
-                      : de 40 m³/ha en Meurthe-et-Moselle à plus de 9 700 m³/ha
-                      dans les Pyrénées-Orientales.
-                    </li>
-                  </ul>
                 </div>
               </div>
               <div className="w-3/5">
                 <div className={styles.graphWrapper}>
                   <p style={{ padding: '1em', margin: '0' }}>
-                    <b>Part des surfaces irriguées</b>
+                    <b>
+                      Part de la superficie irriguée dans la superficie agricole
+                      utilisée (SAU) en 2020 (%)
+                    </b>
                   </p>
                   <MapSurfacesIrriguees carteCommunes={communesMap} />
                   <div
@@ -131,7 +134,7 @@ export const SurfacesIrriguees = ({
                     <LegendCompColor legends={surfacesIrrigueesLegend} />
                   </div>
                   <p style={{ padding: '1em', margin: '0' }}>
-                    Source : Agreste - Recensement agricole 2020
+                    Source : AGRESTE (2020)
                   </p>
                 </div>
               </div>

@@ -101,13 +101,11 @@ export const GetAgricultureBio = async (
   code: string
 ): Promise<AgricultureBio[]> => {
   try {
-    console.time('Query Execution Time AGRICULTURE BIO');
     const value = await PrismaPostgres.agriculture_bio.findMany({
       where: {
         epci: code
       }
     });
-    console.timeEnd('Query Execution Time AGRICULTURE BIO');
     return value;
   } catch (error) {
     console.error(error);
