@@ -114,65 +114,72 @@ export const AgeBati = (props: {
 
   return (
     <>
-      {inconfortThermique.length &&
-      !Object.values(averages).includes(NaN) &&
-      Sum(Object.values(averages)) != 0 ? (
-        <div className={styles.container}>
-          <div className="w-2/5">
-            <div className={styles.explicationWrapper}>
-              {codgeo ? (
-                <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                  Dans la commune de{' '}
-                  {ageBatiCollectivite[0]?.libelle_geographique},{' '}
-                  <b>{constructionBefore2006?.toFixed(1)} %</b> des résidences
-                  principales sont construites avant 2006.
+      {secheresse && fortesChaleurs ? (
+        <>
+          {inconfortThermique.length &&
+          !Object.values(averages).includes(NaN) &&
+          Sum(Object.values(averages)) != 0 ? (
+            <div className={styles.container}>
+              <div className="w-2/5">
+                <div className={styles.explicationWrapper}>
+                  {codgeo ? (
+                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                      Dans la commune de{' '}
+                      {ageBatiCollectivite[0]?.libelle_geographique},{' '}
+                      <b>{constructionBefore2006?.toFixed(1)} %</b> des
+                      résidences principales sont construites avant 2006.
+                    </p>
+                  ) : (
+                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                      Dans l'EPCI {ageBatiCollectivite[0]?.libelle_epci},{' '}
+                      <b>{constructionBefore2006?.toFixed(1)} %</b> des
+                      résidences principales sont construites avant 2006.
+                    </p>
+                  )}
+                  <div className={styles.patch4Wrapper}>
+                    {fortesChaleurs === 'Intensité très forte' ||
+                    fortesChaleurs === 'Intensité forte' ? (
+                      <TagItem
+                        icon={fortesChaleursIcon}
+                        indice="Fortes chaleurs"
+                        tag={fortesChaleurs}
+                      />
+                    ) : null}
+                    {secheresse === 'Intensité très forte' ||
+                    secheresse === 'Intensité forte' ? (
+                      <TagItem
+                        icon={secheresseIcon}
+                        indice="Sécheresse des sols"
+                        tag={secheresse}
+                      />
+                    ) : null}
+                  </div>
+                </div>
+                <p className="px-4">
+                  La robustesse des logements face aux températures élevées
+                  dépend leur qualité intrinsèque (inertie thermique, présence
+                  de volets extérieurs, qualité des rénovations...). Si vous ne
+                  disposez pas d'étude spécifique sur le sujet, la période de
+                  construction, fournie par l'INSEE, vous donne une première
+                  approximation.
                 </p>
-              ) : (
-                <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                  Dans l'EPCI {ageBatiCollectivite[0]?.libelle_epci},{' '}
-                  <b>{constructionBefore2006?.toFixed(1)} %</b> des résidences
-                  principales sont construites avant 2006.
-                </p>
-              )}
-              <div className={styles.patch4Wrapper}>
-                {fortesChaleurs === 'Intensité très forte' ||
-                fortesChaleurs === 'Intensité forte' ? (
-                  <TagItem
-                    icon={fortesChaleursIcon}
-                    indice="Fortes chaleurs"
-                    tag={fortesChaleurs}
-                  />
-                ) : null}
-                {secheresse === 'Intensité très forte' ||
-                secheresse === 'Intensité forte' ? (
-                  <TagItem
-                    icon={secheresseIcon}
-                    indice="Sécheresse des sols"
-                    tag={secheresse}
-                  />
-                ) : null}
+              </div>
+              <div className="w-3/5">
+                <div className={styles.graphWrapper}>
+                  <p style={{ padding: '1em', margin: '0' }}>
+                    <b>Périodes de construction des bâtiments</b>
+                  </p>
+                  {chartData ? <BarChart chartData={chartData} /> : <Loader />}
+                  <p style={{ padding: '1em', margin: '0' }}>Source : INSEE</p>
+                </div>
               </div>
             </div>
-            <p className="px-4">
-              La robustesse des logements face aux températures élevées dépend
-              leur qualité intrinsèque (inertie thermique, présence de volets
-              extérieurs, qualité des rénovations...). Si vous ne disposez pas
-              d'étude spécifique sur le sujet, la période de construction,
-              fournie par l'INSEE, vous donne une première approximation.
-            </p>
-          </div>
-          <div className="w-3/5">
-            <div className={styles.graphWrapper}>
-              <p style={{ padding: '1em', margin: '0' }}>
-                <b>Périodes de construction des bâtiments</b>
-              </p>
-              {chartData ? <BarChart chartData={chartData} /> : <Loader />}
-              <p style={{ padding: '1em', margin: '0' }}>Source : INSEE</p>
-            </div>
-          </div>
-        </div>
+          ) : (
+            <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+          )}
+        </>
       ) : (
-        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        <Loader />
       )}
     </>
   );
