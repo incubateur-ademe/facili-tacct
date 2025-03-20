@@ -49,7 +49,7 @@ export const DensiteBati = ({
     '(surface au sol de la construction x hauteur du bâtiment) / surface totale de la commune';
   return (
     <>
-      {communesMap ? (
+      {communesMap && fortesChaleurs ? (
         <div className={styles.container}>
           {communesMap.length ? (
             <>

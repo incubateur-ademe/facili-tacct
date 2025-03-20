@@ -68,7 +68,7 @@ const Vegetalisation = (props: {
 
   return (
     <>
-      {vegetalisationCollectivite ? (
+      {vegetalisationCollectivite && secheresse ? (
         <div className={styles.container}>
           {vegetalisationCollectivite.length ? (
             <>

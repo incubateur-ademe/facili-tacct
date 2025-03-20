@@ -74,7 +74,7 @@ export const FragiliteEconomique = ({
 
   return (
     <>
-      {communesMap ? (
+      {communesMap && fortesChaleurs ? (
         <div className={styles.container}>
           {communesMap.length ? (
             <>

@@ -1,6 +1,5 @@
 'use client';
 
-import { ChefsExploitation } from '@/components/themes/agriculture/chefsExploitation';
 import { SurfacesIrriguees } from '@/components/themes/agriculture/surfacesIrriguees';
 import {
   Agriculture,
@@ -29,18 +28,18 @@ interface Props {
 }
 
 const allComps = [
-  {
-    titre: "Chefs d'exploitation",
-    Component: ({
-      agriculture,
-      carteCommunes
-    }: Props & { activeDataTab: string }) => (
-      <ChefsExploitation
-        agriculture={agriculture}
-        carteCommunes={carteCommunes}
-      />
-    )
-  },
+  // {
+  //   titre: "Chefs d'exploitation",
+  //   Component: ({
+  //     agriculture,
+  //     carteCommunes
+  //   }: Props & { activeDataTab: string }) => (
+  //     <ChefsExploitation
+  //       agriculture={agriculture}
+  //       carteCommunes={carteCommunes}
+  //     />
+  //   )
+  // },
   {
     titre: 'Surfaces irriguées SAU',
     Component: ({
@@ -62,7 +61,9 @@ const AgricultureComp = ({
   agriculture
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Renouvellement agricole');
-  const [selectedSubTab, setSelectedSubTab] = useState("Chefs d'exploitation");
+  const [selectedSubTab, setSelectedSubTab] = useState(
+    'Surfaces irriguées SAU'
+  );
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
   const codgeo = searchParams.get('codgeo')!;

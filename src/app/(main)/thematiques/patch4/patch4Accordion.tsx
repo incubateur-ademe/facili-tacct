@@ -113,7 +113,7 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
                   borderRadius: '1rem'
                 }}
               >
-                <p style={{ margin: '0' }}>En savoir plus</p>
+                <p style={{ margin: '0', fontSize: '12px' }}>En savoir plus</p>
                 <ExpandMoreIcon />
               </div>
             ) : (
@@ -130,7 +130,7 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
                   borderRadius: '1rem'
                 }}
               >
-                <p style={{ margin: '0' }}>Masquer</p>
+                <p style={{ margin: '0', fontSize: '12px' }}>Masquer</p>
                 <ExpandLessIcon />
               </div>
             )}
@@ -152,16 +152,18 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
                 indice="Sécheresse"
                 tag={secheresse}
               />
-              <TagItem
-                icon={niveauxMarinsIcon}
-                indice="Niveaux marins"
-                tag={niveauxMarins}
-              />
+              {patch4.niveaux_marins === null ? null : (
+                <TagItem
+                  icon={niveauxMarinsIcon}
+                  indice="Niveaux marins"
+                  tag={niveauxMarins}
+                />
+              )}
             </div>
             <div className="flex flex-col gap-4">
               <TagItem
                 icon={feuxForetIcon}
-                indice="Feux de foret"
+                indice="Feux de forêt"
                 tag={feuxForet}
               />
               <TagItem
