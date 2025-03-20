@@ -35,7 +35,8 @@ module.exports = {
     // include prettier config which avoid conflict
     'prettier',
     // disable conflicting rules with plugin (not config!)
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    'plugin:@creedengo/recommended'
   ],
   plugins: ['prettier', 'unused-imports', 'simple-import-sort', 'lodash'],
   ignorePatterns: ['!**/.*.js?(x)', 'node_modules'],
