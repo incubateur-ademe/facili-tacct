@@ -113,7 +113,7 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
                   borderRadius: '1rem'
                 }}
               >
-                <p style={{ margin: '0', fontSize: '12px' }}>En savoir plus</p>
+                <p style={{ margin: '0', fontSize: '14px' }}>En savoir plus</p>
                 <ExpandMoreIcon />
               </div>
             ) : (
@@ -130,7 +130,7 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
                   borderRadius: '1rem'
                 }}
               >
-                <p style={{ margin: '0', fontSize: '12px' }}>Masquer</p>
+                <p style={{ margin: '0', fontSize: '14px' }}>Masquer</p>
                 <ExpandLessIcon />
               </div>
             )}
@@ -262,7 +262,9 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
             </p>
             {tagIntensite.map((item, index) => (
               <div key={index} className={styles.tagExplication}>
-                <TagPatch4>{item}</TagPatch4>
+                <div className="w-[200px]">
+                  <TagPatch4>{item}</TagPatch4>
+                </div>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna.

@@ -95,9 +95,9 @@
     flex-direction: row;
     gap: 1rem;
     align-items: center;
-    min-width: 125px;
+    min-width: 150px;
     p {
-        font-size: 0.75rem;
+        font-size: 14px;
         line-height: 12.14px;
         font-weight: 700;
         margin: 0;
@@ -110,7 +110,7 @@
     gap: 1.25rem;
     padding: 0 0 40px;
     p {
-        font-size: 0.75rem;
+        font-size: 14px;
         line-height: 20px;
         margin: 0;
     }
@@ -134,7 +134,7 @@
     gap: 0.5rem;
     align-items: center;
     p {
-        font-size: 0.75rem;
+        font-size: 14px;
         line-height: 12.14px;
         margin: 0;
     }
@@ -148,6 +148,6 @@
         margin: 0;
         font-weight: 700;
         line-height: 12.14px;
-        font-size: 0.75rem;
+        font-size: 14px;
     }
 }
