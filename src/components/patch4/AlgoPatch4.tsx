@@ -11,7 +11,7 @@ export const AlgoPatch4 = (
 ) => {
   const intensite =
     patch4[indice] === null
-      ? 'Intensité non déterminée'
+      ? 'null'
       : patch4[indice] === 0
         ? 'Intensité non déterminée'
         : patch4[indice] < 0.33
