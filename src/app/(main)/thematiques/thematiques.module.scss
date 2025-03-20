@@ -69,9 +69,8 @@
 
 // Accordion
 
-.accordionHeader {
-    width: 100%;
-    padding: 1rem 0;
+.accordion {
+    margin-bottom: 2.5rem;
     h2 {
         margin: 0 0 1.5rem;
         font-weight: 700;
@@ -79,28 +78,38 @@
         font-size: 18px;
         color: #000091;
     }
-    .wrapper {
+    p {
+        margin: 0;
+        font-size: 14px;
+    }
+    .iconNotExpanded {
         display: flex;
         flex-direction: row;
-        .indiceRow {
+        gap: 10px;
+        background-color: #fbfbff;
+        margin-top: 18px;
+        color: #000091;
+        padding: 10px;
+        border-radius: 1rem;
+    }
+    .iconExpanded {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        color: #000091;
+        margin-bottom: 18px;
+        rotate: 180deg;
+        background-color: #fbfbff;
+        padding: 10px;
+        border-radius: 1rem;
+    }
+    .accordionHeader {
+        width: 100%;
+        padding: 1rem 0;
+        .wrapper {
             display: flex;
             flex-direction: row;
-            gap: 1rem;
         }
-    }
-}
-
-.indiceItem {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    align-items: center;
-    min-width: 150px;
-    p {
-        font-size: 14px;
-        line-height: 12.14px;
-        font-weight: 700;
-        margin: 0;
     }
 }
 
@@ -109,11 +118,6 @@
     flex-direction: column;
     gap: 1.25rem;
     padding: 0 0 40px;
-    p {
-        font-size: 14px;
-        line-height: 20px;
-        margin: 0;
-    }
     .indiceExplication {
         display: flex;
         flex-direction: row;
@@ -122,23 +126,34 @@
     }
 }
 
-.tagWrapper {
+.bottomTagsWrapper {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-.tagExplication {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    align-items: center;
-    p {
-        font-size: 14px;
-        line-height: 12.14px;
-        margin: 0;
+    .tagExplication {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: center;
     }
 }
+
+.indiceRow {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    .indiceItem {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        align-items: center;
+        min-width: 150px;
+        p {
+            font-weight: 700;
+        }
+    }
+}
+
 .tag {
     padding: 0.25rem;
     border-radius: 4px;

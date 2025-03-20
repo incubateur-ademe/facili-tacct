@@ -90,47 +90,20 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
   const fortesChaleurs = AlgoPatch4(patch4, 'fortes_chaleurs');
 
   return (
-    <Accordion
-      className={css({
-        marginBottom: '2.5rem'
-      })}
-    >
+    <Accordion className={styles.accordion}>
       <AccordionSummary
         aria-controls="panel1-content"
         id="panel1-header"
         expandIcon={
           <>
             {!expanded ? (
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  gap: '10px',
-                  marginTop: '18px',
-                  backgroundColor: '#FBFBFF',
-                  color: '#000091',
-                  padding: '10px',
-                  borderRadius: '1rem'
-                }}
-              >
-                <p style={{ margin: '0', fontSize: '14px' }}>En savoir plus</p>
+              <div className={styles.iconNotExpanded}>
+                <p>En savoir plus</p>
                 <ExpandMoreIcon />
               </div>
             ) : (
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  gap: '10px',
-                  marginBottom: '18px',
-                  rotate: '180deg',
-                  backgroundColor: '#FBFBFF',
-                  color: '#000091',
-                  padding: '10px',
-                  borderRadius: '1rem'
-                }}
-              >
-                <p style={{ margin: '0', fontSize: '14px' }}>Masquer</p>
+              <div className={styles.iconExpanded}>
+                <p>Masquer</p>
                 <ExpandLessIcon />
               </div>
             )}
@@ -176,49 +149,40 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
         </div>
       </AccordionSummary>
       <AccordionDetails>
-        <div className="px-4">
-          <h2
-            style={{
-              fontWeight: 700,
-              lineHeight: '24px',
-              fontSize: '18px',
-              margin: '0 0 24px',
-              color: '#000091'
-            }}
-          >
-            Pour en savoir plus :
-          </h2>
-          <p style={{ fontSize: '14px' }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna.
-          </p>
-          <div className={styles.indiceWrapper}>
-            <div className={styles.indiceExplication}>
-              <Image src={precipitationIcon} alt="" />
-              <p>
-                <b>Précipitations : </b>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum
-                dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna. Lorem ipsum dolor
-                sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna.
-              </p>
-            </div>
-            <div className={styles.indiceExplication}>
-              <Image src={secheresseIcon} alt="" />
-              <p>
-                <b>Sécheresse : </b>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum
-                dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna. Lorem ipsum dolor
-                sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna.
-              </p>
-            </div>
+        <h2>Pour en savoir plus :</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor
+          sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna.
+        </p>
+        <br></br>
+        <div className={styles.indiceWrapper}>
+          <div className={styles.indiceExplication}>
+            <Image src={precipitationIcon} alt="" />
+            <p>
+              <b>Précipitations : </b>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna.
+            </p>
+          </div>
+          <div className={styles.indiceExplication}>
+            <Image src={secheresseIcon} alt="" />
+            <p>
+              <b>Sécheresse : </b>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna.
+            </p>
+          </div>
+          {patch4.niveaux_marins === null ? null : (
             <div className={styles.indiceExplication}>
               <Image src={niveauxMarinsIcon} alt="" />
               <p>
@@ -231,47 +195,47 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
                 incididunt ut labore et dolore magna.
               </p>
             </div>
-            <div className={styles.indiceExplication}>
-              <Image src={feuxForetIcon} alt="" />
-              <p>
-                <b>Feux de foret : </b>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum
-                dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna. Lorem ipsum dolor
-                sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna.
-              </p>
-            </div>
-            <div className={styles.indiceExplication}>
-              <Image src={fortesChaleursIcon} alt="" />
-              <p>
-                <b>Fortes chaleurs : </b>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum
-                dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna. Lorem ipsum dolor
-                sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna.
-              </p>
-            </div>
-          </div>
-          <div className={styles.tagWrapper}>
-            <p style={{ fontSize: '14px', margin: 0 }}>
-              <b>Les quatre niveaux d’intensité sont les suivants :</b>
+          )}
+          <div className={styles.indiceExplication}>
+            <Image src={feuxForetIcon} alt="" />
+            <p>
+              <b>Feux de foret : </b>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna.
             </p>
-            {tagIntensite.map((item, index) => (
-              <div key={index} className={styles.tagExplication}>
-                <div className="w-[200px]">
-                  <TagPatch4>{item}</TagPatch4>
-                </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna.
-                </p>
-              </div>
-            ))}
           </div>
+          <div className={styles.indiceExplication}>
+            <Image src={fortesChaleursIcon} alt="" />
+            <p>
+              <b>Fortes chaleurs : </b>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna.
+            </p>
+          </div>
+        </div>
+        <div className={styles.bottomTagsWrapper}>
+          <p>
+            <b>Les quatre niveaux d’intensité sont les suivants :</b>
+          </p>
+          {tagIntensite.map((item, index) => (
+            <div key={index} className={styles.tagExplication}>
+              <div className="w-[200px]">
+                <TagPatch4>{item}</TagPatch4>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna.
+              </p>
+            </div>
+          ))}
         </div>
       </AccordionDetails>
     </Accordion>
