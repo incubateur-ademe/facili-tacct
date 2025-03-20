@@ -1,6 +1,7 @@
 'use client';
 
 import { SurfacesIrriguees } from '@/components/themes/agriculture/surfacesIrriguees';
+import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   Agriculture,
   CarteCommunes,
@@ -41,7 +42,7 @@ const allComps = [
   //   )
   // },
   {
-    titre: 'Surfaces irriguées SAU',
+    titre: 'Superficies irriguées',
     Component: ({
       agriculture,
       carteCommunes
@@ -60,13 +61,10 @@ const AgricultureComp = ({
   epciContours,
   agriculture
 }: Props) => {
-  const [selectedTabId, setSelectedTabId] = useState('Renouvellement agricole');
-  const [selectedSubTab, setSelectedSubTab] = useState(
-    'Surfaces irriguées SAU'
-  );
+  const [selectedTabId, setSelectedTabId] = useState('Superficies irriguées');
+  const [selectedSubTab, setSelectedSubTab] = useState('Superficies irriguées');
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
-  const codgeo = searchParams.get('codgeo')!;
   const { isDark } = useIsDark();
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
@@ -97,8 +95,14 @@ const AgricultureComp = ({
         selectedTabId={selectedTabId}
         tabs={[
           {
-            tabId: 'Renouvellement agricole',
-            label: 'Renouvellement agricole'
+            tabId: 'Superficies irriguées',
+            label: (
+              <TabTooltip
+                selectedTab={selectedTabId}
+                tooltip="Une surface est dite « irriguée » si elle a été arrosée, au moins une fois au cours de la campagne agricole, par un apport d'eau volontaire venant en complément des pluies."
+                titre="Superficies irriguées"
+              />
+            )
           }
         ]}
         onTabChange={setSelectedTabId}
@@ -133,25 +137,6 @@ const AgricultureComp = ({
         })}
       >
         <div className={styles.formContainer}>
-          <div className={styles.titles}>
-            {data
-              .filter((el) => el.facteurSensibilite === selectedTabId)
-              .map((element, i) => (
-                <button
-                  key={i}
-                  className={
-                    selectedSubTab === element.titre
-                      ? styles.selectedButton
-                      : styles.button
-                  }
-                  onClick={() => {
-                    setSelectedSubTab(element.titre);
-                  }}
-                >
-                  {element.titre}
-                </button>
-              ))}
-          </div>
           <div className={styles.bubble}>
             <div className={styles.bubbleContent} style={darkClass}>
               {(() => {
