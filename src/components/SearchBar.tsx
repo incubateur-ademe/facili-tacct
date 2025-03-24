@@ -17,8 +17,8 @@ export const SearchBarComp = () => {
   const [typeTerritoire, setTypeTerritoire] = useState<
     'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
   >('epci');
+  const re = new RegExp('T([1-9]|1[0-2])\\b');
 
-  console.log('typeTerritoire', typeTerritoire);
   const handleClick = () => {
     if (searchCode.length !== 0 || searchLibelle.length !== 0) {
       searchCode.length !== 0
