@@ -18,29 +18,133 @@ export const GetCommunes = async (
 ): Promise<CarteCommunes[]> => {
   try {
     console.time(`Query Execution Time carte communes ${code}`);
-    const colonneTerritoire =
-      type === 'epci'
-        ? 'epci'
-        : type === 'commune'
-          ? 'code_geographique'
-          : type === 'pnr'
-            ? 'code_pnr'
-            : 'libelle_petr';
-    console.log('colonneTerritoire', colonneTerritoire);
-    const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
-      SELECT 
-      epci, 
-      libelle_epci,
-      libelle_geographique,
-      code_geographique,
-      coordinates, 
-      precarite_logement,
-      densite_bati,
-      surface,
-      ST_AsGeoJSON(geometry) geometry 
-      FROM postgis."communes_drom" WHERE ${colonneTerritoire}=${code ?? libelle};`;
-    console.timeEnd(`Query Execution Time carte communes ${code}`);
-    return value;
+    const re = new RegExp('T([1-9]|1[0-2])\\b');
+    if (type === 'commune') {
+      const epci = await PrismaPostgres.communes_drom.findFirst({
+        where: {
+          epci: code
+        }
+      });
+      const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        SELECT 
+        epci, 
+        libelle_epci,
+        libelle_geographique,
+        code_geographique,
+        ept,
+        libelle_petr,
+        code_pnr,
+        libelle_pnr,
+        departement,
+        coordinates, 
+        precarite_logement,
+        densite_bati,
+        surface,
+        ST_AsGeoJSON(geometry) geometry 
+        FROM postgis."communes_drom" WHERE epci=${epci};`;
+      console.timeEnd(`Query Execution Time carte communes ${code}`);
+      return value;
+    } else if (type === 'epci' && re.test(libelle)) {
+      const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        SELECT 
+          epci, 
+          libelle_epci,
+          libelle_geographique,
+          code_geographique,
+          ept,
+          libelle_petr,
+          code_pnr,
+          libelle_pnr,
+          departement,
+          coordinates, 
+          precarite_logement,
+          densite_bati,
+          surface,
+          ST_AsGeoJSON(geometry) geometry 
+          FROM postgis."communes_drom" WHERE epci='200054781';`;
+      console.timeEnd(`Query Execution Time carte communes ${code}`);
+      return value;
+    } else if (type === 'epci') {
+      const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        SELECT 
+          epci, 
+          libelle_epci,
+          libelle_geographique,
+          code_geographique,
+          ept,
+          libelle_petr,
+          code_pnr,
+          libelle_pnr,
+          departement,
+          coordinates, 
+          precarite_logement,
+          densite_bati,
+          surface,
+          ST_AsGeoJSON(geometry) geometry 
+          FROM postgis."communes_drom" WHERE epci=${code};`;
+      console.timeEnd(`Query Execution Time carte communes ${code}`);
+      return value;
+    } else if (type === 'pnr') {
+      const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        SELECT 
+          epci, 
+          libelle_epci,
+          libelle_geographique,
+          code_geographique,
+          ept,
+          libelle_petr,
+          code_pnr,
+          libelle_pnr,
+          departement,
+          coordinates, 
+          precarite_logement,
+          densite_bati,
+          surface,
+          ST_AsGeoJSON(geometry) geometry 
+          FROM postgis."communes_drom" WHERE code_pnr=${code};`;
+      console.timeEnd(`Query Execution Time carte communes ${code}`);
+      return value;
+    } else if (type === 'petr') {
+      const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        SELECT 
+          epci, 
+          libelle_epci,
+          libelle_geographique,
+          code_geographique,
+          ept,
+          libelle_petr,
+          code_pnr,
+          libelle_pnr,
+          departement,
+          coordinates, 
+          precarite_logement,
+          densite_bati,
+          surface,
+          ST_AsGeoJSON(geometry) geometry 
+          FROM postgis."communes_drom" WHERE libelle_petr=${libelle};`;
+      console.timeEnd(`Query Execution Time carte communes ${code}`);
+      return value;
+    } else {
+      const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        SELECT 
+          epci, 
+          libelle_epci,
+          libelle_geographique,
+          code_geographique,
+          ept,
+          libelle_petr,
+          code_pnr,
+          libelle_pnr,
+          departement,
+          coordinates,
+          precarite_logement,
+          densite_bati,
+          surface,
+          ST_AsGeoJSON(geometry) geometry 
+          FROM postgis."communes_drom" WHERE departement=${code};`;
+      console.timeEnd(`Query Execution Time carte communes ${code}`);
+      return value;
+    }
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
