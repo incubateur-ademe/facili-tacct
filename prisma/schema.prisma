@@ -18,6 +18,7 @@ model inconfort_thermique {
   epci                     String
   libelle_epci             String
   departement              String
+  libelle_departement      String
   region                   Int
   ept                      String?
   libelle_petr             String?
@@ -54,7 +55,7 @@ model inconfort_thermique {
   over_80_sum_2020         String?
   P20_POP80P               String?
   P20_POP80P_PSEUL         String?
-  P20_POP80P_PSEUL_PERCENT String?
+  P20_POP80P_PSEUL_PERCENT Float?
   tee_log                  Float?
   tee_mob                  Float?
   precarite_logement       Float?
@@ -65,8 +66,8 @@ model inconfort_thermique {
   NA5OQ_sum                Float?
   s_geom_cstr_bati         Float?
   hauteur                  Float?
-  h_x_s                    Float?
   densite_bati             Float?
+  h_x_s                    Float?
   clc_1_artificialise      Float?
   clc_2_agricole           Float?
   clc_3_foret_semiNaturel  Float?
@@ -77,6 +78,7 @@ model inconfort_thermique {
   @@index([code_geographique], map: "inconfort_thermique_communes_index")
   @@index([epci], map: "inconfort_thermique_epci_index")
   @@index([index], map: "ix_inconfort_thermique_index")
+  @@index([departement], map: "inconfort_thermique_departement_index")
   @@schema("databases")
 }
 
@@ -98,6 +100,7 @@ model collectivites_searchbar {
   epci                 String?
   libelle_epci         String?
   departement          String?
+  libelle_departement  String?
   region               String?
   ept                  String?
   libelle_petr         String?
@@ -107,8 +110,8 @@ model collectivites_searchbar {
   search_libelle       String
 
   @@index([index], map: "ix_collectivites_searchbar_index")
-  @@index([code_geographique], map: "collectivites_searchbar_communes_index")
-  @@index([epci], map: "collectivites_searchbar_epci_index")
+  @@index([search_code], map: "collectivites_searchbar_search_code_index")
+  @@index([search_libelle], map: "collectivites_searchbar_search_libelle_index")
   @@schema("databases")
 }
 

@@ -19,6 +19,7 @@ export type InconfortThermique = {
   code_geographique: string;
   densite_bati: number | null;
   departement: string;
+  libelle_departement: string;
   epci: string;
   index: bigint;
   libelle_epci: string;
@@ -131,6 +132,7 @@ export type CollectivitesSearchbar = {
   search_libelle: string;
   search_code: string;
   departement: string | null;
+  libelle_departement: string | null;
   region: string | null;
   ept: string | null;
   code_pnr: string | null;
