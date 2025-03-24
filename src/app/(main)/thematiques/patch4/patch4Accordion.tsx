@@ -112,7 +112,15 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
         onClick={() => setExpanded(!expanded)}
       >
         <div className={styles.accordionHeader}>
-          <h2>Évolution d’intensité climatique sur votre territoire :</h2>
+          <div className={styles.accordionHeaderTitles}>
+            <h2>Évolution d’intensité climatique sur votre territoire :</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
           <div className={styles.wrapper}>
             <div className="flex flex-col gap-4 w-[512px]">
               <TagItem
