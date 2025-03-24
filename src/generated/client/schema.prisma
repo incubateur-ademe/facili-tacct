@@ -98,6 +98,7 @@ model collectivites_searchbar {
   epci                 String?
   libelle_epci         String?
   departement          String?
+  libelle_departement  String?
   region               String?
   ept                  String?
   libelle_petr         String?
@@ -107,8 +108,8 @@ model collectivites_searchbar {
   search_libelle       String
 
   @@index([index], map: "ix_collectivites_searchbar_index")
-  @@index([code_geographique], map: "collectivites_searchbar_communes_index")
-  @@index([epci], map: "collectivites_searchbar_epci_index")
+  @@index([search_code], map: "collectivites_searchbar_search_code_index")
+  @@index([search_libelle], map: "collectivites_searchbar_search_libelle_index")
   @@schema("databases")
 }
 
