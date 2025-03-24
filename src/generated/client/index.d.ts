@@ -2912,6 +2912,7 @@ export namespace Prisma {
     age_bati_46_90: number | null;
     age_bati_19_45: number | null;
     age_bati_pre_19: number | null;
+    P20_POP80P_PSEUL_PERCENT: number | null;
     tee_log: number | null;
     tee_mob: number | null;
     precarite_logement: number | null;
@@ -2922,8 +2923,8 @@ export namespace Prisma {
     NA5OQ_sum: number | null;
     s_geom_cstr_bati: number | null;
     hauteur: number | null;
-    h_x_s: number | null;
     densite_bati: number | null;
+    h_x_s: number | null;
     clc_1_artificialise: number | null;
     clc_2_agricole: number | null;
     clc_3_foret_semiNaturel: number | null;
@@ -2940,6 +2941,7 @@ export namespace Prisma {
     age_bati_46_90: number | null;
     age_bati_19_45: number | null;
     age_bati_pre_19: number | null;
+    P20_POP80P_PSEUL_PERCENT: number | null;
     tee_log: number | null;
     tee_mob: number | null;
     precarite_logement: number | null;
@@ -2950,8 +2952,8 @@ export namespace Prisma {
     NA5OQ_sum: number | null;
     s_geom_cstr_bati: number | null;
     hauteur: number | null;
-    h_x_s: number | null;
     densite_bati: number | null;
+    h_x_s: number | null;
     clc_1_artificialise: number | null;
     clc_2_agricole: number | null;
     clc_3_foret_semiNaturel: number | null;
@@ -2967,6 +2969,7 @@ export namespace Prisma {
     epci: string | null;
     libelle_epci: string | null;
     departement: string | null;
+    libelle_departement: string | null;
     region: number | null;
     ept: string | null;
     libelle_petr: string | null;
@@ -3003,7 +3006,7 @@ export namespace Prisma {
     over_80_sum_2020: string | null;
     P20_POP80P: string | null;
     P20_POP80P_PSEUL: string | null;
-    P20_POP80P_PSEUL_PERCENT: string | null;
+    P20_POP80P_PSEUL_PERCENT: number | null;
     tee_log: number | null;
     tee_mob: number | null;
     precarite_logement: number | null;
@@ -3014,8 +3017,8 @@ export namespace Prisma {
     NA5OQ_sum: number | null;
     s_geom_cstr_bati: number | null;
     hauteur: number | null;
-    h_x_s: number | null;
     densite_bati: number | null;
+    h_x_s: number | null;
     clc_1_artificialise: number | null;
     clc_2_agricole: number | null;
     clc_3_foret_semiNaturel: number | null;
@@ -3031,6 +3034,7 @@ export namespace Prisma {
     epci: string | null;
     libelle_epci: string | null;
     departement: string | null;
+    libelle_departement: string | null;
     region: number | null;
     ept: string | null;
     libelle_petr: string | null;
@@ -3067,7 +3071,7 @@ export namespace Prisma {
     over_80_sum_2020: string | null;
     P20_POP80P: string | null;
     P20_POP80P_PSEUL: string | null;
-    P20_POP80P_PSEUL_PERCENT: string | null;
+    P20_POP80P_PSEUL_PERCENT: number | null;
     tee_log: number | null;
     tee_mob: number | null;
     precarite_logement: number | null;
@@ -3078,8 +3082,8 @@ export namespace Prisma {
     NA5OQ_sum: number | null;
     s_geom_cstr_bati: number | null;
     hauteur: number | null;
-    h_x_s: number | null;
     densite_bati: number | null;
+    h_x_s: number | null;
     clc_1_artificialise: number | null;
     clc_2_agricole: number | null;
     clc_3_foret_semiNaturel: number | null;
@@ -3095,6 +3099,7 @@ export namespace Prisma {
     epci: number;
     libelle_epci: number;
     departement: number;
+    libelle_departement: number;
     region: number;
     ept: number;
     libelle_petr: number;
@@ -3142,8 +3147,8 @@ export namespace Prisma {
     NA5OQ_sum: number;
     s_geom_cstr_bati: number;
     hauteur: number;
-    h_x_s: number;
     densite_bati: number;
+    h_x_s: number;
     clc_1_artificialise: number;
     clc_2_agricole: number;
     clc_3_foret_semiNaturel: number;
@@ -3161,6 +3166,7 @@ export namespace Prisma {
     age_bati_46_90?: true;
     age_bati_19_45?: true;
     age_bati_pre_19?: true;
+    P20_POP80P_PSEUL_PERCENT?: true;
     tee_log?: true;
     tee_mob?: true;
     precarite_logement?: true;
@@ -3171,8 +3177,8 @@ export namespace Prisma {
     NA5OQ_sum?: true;
     s_geom_cstr_bati?: true;
     hauteur?: true;
-    h_x_s?: true;
     densite_bati?: true;
+    h_x_s?: true;
     clc_1_artificialise?: true;
     clc_2_agricole?: true;
     clc_3_foret_semiNaturel?: true;
@@ -3189,6 +3195,7 @@ export namespace Prisma {
     age_bati_46_90?: true;
     age_bati_19_45?: true;
     age_bati_pre_19?: true;
+    P20_POP80P_PSEUL_PERCENT?: true;
     tee_log?: true;
     tee_mob?: true;
     precarite_logement?: true;
@@ -3199,8 +3206,8 @@ export namespace Prisma {
     NA5OQ_sum?: true;
     s_geom_cstr_bati?: true;
     hauteur?: true;
-    h_x_s?: true;
     densite_bati?: true;
+    h_x_s?: true;
     clc_1_artificialise?: true;
     clc_2_agricole?: true;
     clc_3_foret_semiNaturel?: true;
@@ -3216,6 +3223,7 @@ export namespace Prisma {
     epci?: true;
     libelle_epci?: true;
     departement?: true;
+    libelle_departement?: true;
     region?: true;
     ept?: true;
     libelle_petr?: true;
@@ -3263,8 +3271,8 @@ export namespace Prisma {
     NA5OQ_sum?: true;
     s_geom_cstr_bati?: true;
     hauteur?: true;
-    h_x_s?: true;
     densite_bati?: true;
+    h_x_s?: true;
     clc_1_artificialise?: true;
     clc_2_agricole?: true;
     clc_3_foret_semiNaturel?: true;
@@ -3280,6 +3288,7 @@ export namespace Prisma {
     epci?: true;
     libelle_epci?: true;
     departement?: true;
+    libelle_departement?: true;
     region?: true;
     ept?: true;
     libelle_petr?: true;
@@ -3327,8 +3336,8 @@ export namespace Prisma {
     NA5OQ_sum?: true;
     s_geom_cstr_bati?: true;
     hauteur?: true;
-    h_x_s?: true;
     densite_bati?: true;
+    h_x_s?: true;
     clc_1_artificialise?: true;
     clc_2_agricole?: true;
     clc_3_foret_semiNaturel?: true;
@@ -3344,6 +3353,7 @@ export namespace Prisma {
     epci?: true;
     libelle_epci?: true;
     departement?: true;
+    libelle_departement?: true;
     region?: true;
     ept?: true;
     libelle_petr?: true;
@@ -3391,8 +3401,8 @@ export namespace Prisma {
     NA5OQ_sum?: true;
     s_geom_cstr_bati?: true;
     hauteur?: true;
-    h_x_s?: true;
     densite_bati?: true;
+    h_x_s?: true;
     clc_1_artificialise?: true;
     clc_2_agricole?: true;
     clc_3_foret_semiNaturel?: true;
@@ -3506,6 +3516,7 @@ export namespace Prisma {
     epci: string;
     libelle_epci: string;
     departement: string;
+    libelle_departement: string;
     region: number;
     ept: string | null;
     libelle_petr: string | null;
@@ -3542,7 +3553,7 @@ export namespace Prisma {
     over_80_sum_2020: string | null;
     P20_POP80P: string | null;
     P20_POP80P_PSEUL: string | null;
-    P20_POP80P_PSEUL_PERCENT: string | null;
+    P20_POP80P_PSEUL_PERCENT: number | null;
     tee_log: number | null;
     tee_mob: number | null;
     precarite_logement: number | null;
@@ -3553,8 +3564,8 @@ export namespace Prisma {
     NA5OQ_sum: number | null;
     s_geom_cstr_bati: number | null;
     hauteur: number | null;
-    h_x_s: number | null;
     densite_bati: number | null;
+    h_x_s: number | null;
     clc_1_artificialise: number | null;
     clc_2_agricole: number | null;
     clc_3_foret_semiNaturel: number | null;
@@ -3593,6 +3604,7 @@ export namespace Prisma {
       epci?: boolean;
       libelle_epci?: boolean;
       departement?: boolean;
+      libelle_departement?: boolean;
       region?: boolean;
       ept?: boolean;
       libelle_petr?: boolean;
@@ -3640,8 +3652,8 @@ export namespace Prisma {
       NA5OQ_sum?: boolean;
       s_geom_cstr_bati?: boolean;
       hauteur?: boolean;
-      h_x_s?: boolean;
       densite_bati?: boolean;
+      h_x_s?: boolean;
       clc_1_artificialise?: boolean;
       clc_2_agricole?: boolean;
       clc_3_foret_semiNaturel?: boolean;
@@ -3662,6 +3674,7 @@ export namespace Prisma {
       epci?: boolean;
       libelle_epci?: boolean;
       departement?: boolean;
+      libelle_departement?: boolean;
       region?: boolean;
       ept?: boolean;
       libelle_petr?: boolean;
@@ -3709,8 +3722,8 @@ export namespace Prisma {
       NA5OQ_sum?: boolean;
       s_geom_cstr_bati?: boolean;
       hauteur?: boolean;
-      h_x_s?: boolean;
       densite_bati?: boolean;
+      h_x_s?: boolean;
       clc_1_artificialise?: boolean;
       clc_2_agricole?: boolean;
       clc_3_foret_semiNaturel?: boolean;
@@ -3731,6 +3744,7 @@ export namespace Prisma {
       epci?: boolean;
       libelle_epci?: boolean;
       departement?: boolean;
+      libelle_departement?: boolean;
       region?: boolean;
       ept?: boolean;
       libelle_petr?: boolean;
@@ -3778,8 +3792,8 @@ export namespace Prisma {
       NA5OQ_sum?: boolean;
       s_geom_cstr_bati?: boolean;
       hauteur?: boolean;
-      h_x_s?: boolean;
       densite_bati?: boolean;
+      h_x_s?: boolean;
       clc_1_artificialise?: boolean;
       clc_2_agricole?: boolean;
       clc_3_foret_semiNaturel?: boolean;
@@ -3797,6 +3811,7 @@ export namespace Prisma {
     epci?: boolean;
     libelle_epci?: boolean;
     departement?: boolean;
+    libelle_departement?: boolean;
     region?: boolean;
     ept?: boolean;
     libelle_petr?: boolean;
@@ -3844,8 +3859,8 @@ export namespace Prisma {
     NA5OQ_sum?: boolean;
     s_geom_cstr_bati?: boolean;
     hauteur?: boolean;
-    h_x_s?: boolean;
     densite_bati?: boolean;
+    h_x_s?: boolean;
     clc_1_artificialise?: boolean;
     clc_2_agricole?: boolean;
     clc_3_foret_semiNaturel?: boolean;
@@ -3863,6 +3878,7 @@ export namespace Prisma {
     | 'epci'
     | 'libelle_epci'
     | 'departement'
+    | 'libelle_departement'
     | 'region'
     | 'ept'
     | 'libelle_petr'
@@ -3910,8 +3926,8 @@ export namespace Prisma {
     | 'NA5OQ_sum'
     | 's_geom_cstr_bati'
     | 'hauteur'
-    | 'h_x_s'
     | 'densite_bati'
+    | 'h_x_s'
     | 'clc_1_artificialise'
     | 'clc_2_agricole'
     | 'clc_3_foret_semiNaturel'
@@ -3934,6 +3950,7 @@ export namespace Prisma {
         epci: string;
         libelle_epci: string;
         departement: string;
+        libelle_departement: string;
         region: number;
         ept: string | null;
         libelle_petr: string | null;
@@ -3970,7 +3987,7 @@ export namespace Prisma {
         over_80_sum_2020: string | null;
         P20_POP80P: string | null;
         P20_POP80P_PSEUL: string | null;
-        P20_POP80P_PSEUL_PERCENT: string | null;
+        P20_POP80P_PSEUL_PERCENT: number | null;
         tee_log: number | null;
         tee_mob: number | null;
         precarite_logement: number | null;
@@ -3981,8 +3998,8 @@ export namespace Prisma {
         NA5OQ_sum: number | null;
         s_geom_cstr_bati: number | null;
         hauteur: number | null;
-        h_x_s: number | null;
         densite_bati: number | null;
+        h_x_s: number | null;
         clc_1_artificialise: number | null;
         clc_2_agricole: number | null;
         clc_3_foret_semiNaturel: number | null;
@@ -4591,6 +4608,7 @@ export namespace Prisma {
     readonly epci: FieldRef<'inconfort_thermique', 'String'>;
     readonly libelle_epci: FieldRef<'inconfort_thermique', 'String'>;
     readonly departement: FieldRef<'inconfort_thermique', 'String'>;
+    readonly libelle_departement: FieldRef<'inconfort_thermique', 'String'>;
     readonly region: FieldRef<'inconfort_thermique', 'Int'>;
     readonly ept: FieldRef<'inconfort_thermique', 'String'>;
     readonly libelle_petr: FieldRef<'inconfort_thermique', 'String'>;
@@ -4627,10 +4645,7 @@ export namespace Prisma {
     readonly over_80_sum_2020: FieldRef<'inconfort_thermique', 'String'>;
     readonly P20_POP80P: FieldRef<'inconfort_thermique', 'String'>;
     readonly P20_POP80P_PSEUL: FieldRef<'inconfort_thermique', 'String'>;
-    readonly P20_POP80P_PSEUL_PERCENT: FieldRef<
-      'inconfort_thermique',
-      'String'
-    >;
+    readonly P20_POP80P_PSEUL_PERCENT: FieldRef<'inconfort_thermique', 'Float'>;
     readonly tee_log: FieldRef<'inconfort_thermique', 'Float'>;
     readonly tee_mob: FieldRef<'inconfort_thermique', 'Float'>;
     readonly precarite_logement: FieldRef<'inconfort_thermique', 'Float'>;
@@ -4641,8 +4656,8 @@ export namespace Prisma {
     readonly NA5OQ_sum: FieldRef<'inconfort_thermique', 'Float'>;
     readonly s_geom_cstr_bati: FieldRef<'inconfort_thermique', 'Float'>;
     readonly hauteur: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly h_x_s: FieldRef<'inconfort_thermique', 'Float'>;
     readonly densite_bati: FieldRef<'inconfort_thermique', 'Float'>;
+    readonly h_x_s: FieldRef<'inconfort_thermique', 'Float'>;
     readonly clc_1_artificialise: FieldRef<'inconfort_thermique', 'Float'>;
     readonly clc_2_agricole: FieldRef<'inconfort_thermique', 'Float'>;
     readonly clc_3_foret_semiNaturel: FieldRef<'inconfort_thermique', 'Float'>;
@@ -6340,6 +6355,7 @@ export namespace Prisma {
     epci: string | null;
     libelle_epci: string | null;
     departement: string | null;
+    libelle_departement: string | null;
     region: string | null;
     ept: string | null;
     libelle_petr: string | null;
@@ -6356,6 +6372,7 @@ export namespace Prisma {
     epci: string | null;
     libelle_epci: string | null;
     departement: string | null;
+    libelle_departement: string | null;
     region: string | null;
     ept: string | null;
     libelle_petr: string | null;
@@ -6372,6 +6389,7 @@ export namespace Prisma {
     epci: number;
     libelle_epci: number;
     departement: number;
+    libelle_departement: number;
     region: number;
     ept: number;
     libelle_petr: number;
@@ -6397,6 +6415,7 @@ export namespace Prisma {
     epci?: true;
     libelle_epci?: true;
     departement?: true;
+    libelle_departement?: true;
     region?: true;
     ept?: true;
     libelle_petr?: true;
@@ -6413,6 +6432,7 @@ export namespace Prisma {
     epci?: true;
     libelle_epci?: true;
     departement?: true;
+    libelle_departement?: true;
     region?: true;
     ept?: true;
     libelle_petr?: true;
@@ -6429,6 +6449,7 @@ export namespace Prisma {
     epci?: true;
     libelle_epci?: true;
     departement?: true;
+    libelle_departement?: true;
     region?: true;
     ept?: true;
     libelle_petr?: true;
@@ -6543,6 +6564,7 @@ export namespace Prisma {
     epci: string | null;
     libelle_epci: string | null;
     departement: string | null;
+    libelle_departement: string | null;
     region: string | null;
     ept: string | null;
     libelle_petr: string | null;
@@ -6582,6 +6604,7 @@ export namespace Prisma {
       epci?: boolean;
       libelle_epci?: boolean;
       departement?: boolean;
+      libelle_departement?: boolean;
       region?: boolean;
       ept?: boolean;
       libelle_petr?: boolean;
@@ -6603,6 +6626,7 @@ export namespace Prisma {
       epci?: boolean;
       libelle_epci?: boolean;
       departement?: boolean;
+      libelle_departement?: boolean;
       region?: boolean;
       ept?: boolean;
       libelle_petr?: boolean;
@@ -6624,6 +6648,7 @@ export namespace Prisma {
       epci?: boolean;
       libelle_epci?: boolean;
       departement?: boolean;
+      libelle_departement?: boolean;
       region?: boolean;
       ept?: boolean;
       libelle_petr?: boolean;
@@ -6642,6 +6667,7 @@ export namespace Prisma {
     epci?: boolean;
     libelle_epci?: boolean;
     departement?: boolean;
+    libelle_departement?: boolean;
     region?: boolean;
     ept?: boolean;
     libelle_petr?: boolean;
@@ -6660,6 +6686,7 @@ export namespace Prisma {
     | 'epci'
     | 'libelle_epci'
     | 'departement'
+    | 'libelle_departement'
     | 'region'
     | 'ept'
     | 'libelle_petr'
@@ -6683,6 +6710,7 @@ export namespace Prisma {
         epci: string | null;
         libelle_epci: string | null;
         departement: string | null;
+        libelle_departement: string | null;
         region: string | null;
         ept: string | null;
         libelle_petr: string | null;
@@ -7312,6 +7340,7 @@ export namespace Prisma {
     readonly epci: FieldRef<'collectivites_searchbar', 'String'>;
     readonly libelle_epci: FieldRef<'collectivites_searchbar', 'String'>;
     readonly departement: FieldRef<'collectivites_searchbar', 'String'>;
+    readonly libelle_departement: FieldRef<'collectivites_searchbar', 'String'>;
     readonly region: FieldRef<'collectivites_searchbar', 'String'>;
     readonly ept: FieldRef<'collectivites_searchbar', 'String'>;
     readonly libelle_petr: FieldRef<'collectivites_searchbar', 'String'>;
@@ -35169,6 +35198,7 @@ export namespace Prisma {
     epci: 'epci';
     libelle_epci: 'libelle_epci';
     departement: 'departement';
+    libelle_departement: 'libelle_departement';
     region: 'region';
     ept: 'ept';
     libelle_petr: 'libelle_petr';
@@ -35216,8 +35246,8 @@ export namespace Prisma {
     NA5OQ_sum: 'NA5OQ_sum';
     s_geom_cstr_bati: 's_geom_cstr_bati';
     hauteur: 'hauteur';
-    h_x_s: 'h_x_s';
     densite_bati: 'densite_bati';
+    h_x_s: 'h_x_s';
     clc_1_artificialise: 'clc_1_artificialise';
     clc_2_agricole: 'clc_2_agricole';
     clc_3_foret_semiNaturel: 'clc_3_foret_semiNaturel';
@@ -35245,6 +35275,7 @@ export namespace Prisma {
     epci: 'epci';
     libelle_epci: 'libelle_epci';
     departement: 'departement';
+    libelle_departement: 'libelle_departement';
     region: 'region';
     ept: 'ept';
     libelle_petr: 'libelle_petr';
@@ -35811,6 +35842,7 @@ export namespace Prisma {
     epci?: StringFilter<'inconfort_thermique'> | string;
     libelle_epci?: StringFilter<'inconfort_thermique'> | string;
     departement?: StringFilter<'inconfort_thermique'> | string;
+    libelle_departement?: StringFilter<'inconfort_thermique'> | string;
     region?: IntFilter<'inconfort_thermique'> | number;
     ept?: StringNullableFilter<'inconfort_thermique'> | string | null;
     libelle_petr?: StringNullableFilter<'inconfort_thermique'> | string | null;
@@ -35929,8 +35961,8 @@ export namespace Prisma {
       | string
       | null;
     P20_POP80P_PSEUL_PERCENT?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
+      | FloatNullableFilter<'inconfort_thermique'>
+      | number
       | null;
     tee_log?: FloatNullableFilter<'inconfort_thermique'> | number | null;
     tee_mob?: FloatNullableFilter<'inconfort_thermique'> | number | null;
@@ -35948,8 +35980,8 @@ export namespace Prisma {
       | number
       | null;
     hauteur?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    h_x_s?: FloatNullableFilter<'inconfort_thermique'> | number | null;
     densite_bati?: FloatNullableFilter<'inconfort_thermique'> | number | null;
+    h_x_s?: FloatNullableFilter<'inconfort_thermique'> | number | null;
     clc_1_artificialise?:
       | FloatNullableFilter<'inconfort_thermique'>
       | number
@@ -35971,6 +36003,7 @@ export namespace Prisma {
     epci?: SortOrder;
     libelle_epci?: SortOrder;
     departement?: SortOrder;
+    libelle_departement?: SortOrder;
     region?: SortOrder;
     ept?: SortOrderInput | SortOrder;
     libelle_petr?: SortOrderInput | SortOrder;
@@ -36018,8 +36051,8 @@ export namespace Prisma {
     NA5OQ_sum?: SortOrderInput | SortOrder;
     s_geom_cstr_bati?: SortOrderInput | SortOrder;
     hauteur?: SortOrderInput | SortOrder;
-    h_x_s?: SortOrderInput | SortOrder;
     densite_bati?: SortOrderInput | SortOrder;
+    h_x_s?: SortOrderInput | SortOrder;
     clc_1_artificialise?: SortOrderInput | SortOrder;
     clc_2_agricole?: SortOrderInput | SortOrder;
     clc_3_foret_semiNaturel?: SortOrderInput | SortOrder;
@@ -36039,6 +36072,7 @@ export namespace Prisma {
       epci?: StringFilter<'inconfort_thermique'> | string;
       libelle_epci?: StringFilter<'inconfort_thermique'> | string;
       departement?: StringFilter<'inconfort_thermique'> | string;
+      libelle_departement?: StringFilter<'inconfort_thermique'> | string;
       region?: IntFilter<'inconfort_thermique'> | number;
       ept?: StringNullableFilter<'inconfort_thermique'> | string | null;
       libelle_petr?:
@@ -36169,8 +36203,8 @@ export namespace Prisma {
         | string
         | null;
       P20_POP80P_PSEUL_PERCENT?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
+        | FloatNullableFilter<'inconfort_thermique'>
+        | number
         | null;
       tee_log?: FloatNullableFilter<'inconfort_thermique'> | number | null;
       tee_mob?: FloatNullableFilter<'inconfort_thermique'> | number | null;
@@ -36188,8 +36222,8 @@ export namespace Prisma {
         | number
         | null;
       hauteur?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-      h_x_s?: FloatNullableFilter<'inconfort_thermique'> | number | null;
       densite_bati?: FloatNullableFilter<'inconfort_thermique'> | number | null;
+      h_x_s?: FloatNullableFilter<'inconfort_thermique'> | number | null;
       clc_1_artificialise?:
         | FloatNullableFilter<'inconfort_thermique'>
         | number
@@ -36216,6 +36250,7 @@ export namespace Prisma {
     epci?: SortOrder;
     libelle_epci?: SortOrder;
     departement?: SortOrder;
+    libelle_departement?: SortOrder;
     region?: SortOrder;
     ept?: SortOrderInput | SortOrder;
     libelle_petr?: SortOrderInput | SortOrder;
@@ -36263,8 +36298,8 @@ export namespace Prisma {
     NA5OQ_sum?: SortOrderInput | SortOrder;
     s_geom_cstr_bati?: SortOrderInput | SortOrder;
     hauteur?: SortOrderInput | SortOrder;
-    h_x_s?: SortOrderInput | SortOrder;
     densite_bati?: SortOrderInput | SortOrder;
+    h_x_s?: SortOrderInput | SortOrder;
     clc_1_artificialise?: SortOrderInput | SortOrder;
     clc_2_agricole?: SortOrderInput | SortOrder;
     clc_3_foret_semiNaturel?: SortOrderInput | SortOrder;
@@ -36296,6 +36331,9 @@ export namespace Prisma {
     epci?: StringWithAggregatesFilter<'inconfort_thermique'> | string;
     libelle_epci?: StringWithAggregatesFilter<'inconfort_thermique'> | string;
     departement?: StringWithAggregatesFilter<'inconfort_thermique'> | string;
+    libelle_departement?:
+      | StringWithAggregatesFilter<'inconfort_thermique'>
+      | string;
     region?: IntWithAggregatesFilter<'inconfort_thermique'> | number;
     ept?:
       | StringNullableWithAggregatesFilter<'inconfort_thermique'>
@@ -36438,8 +36476,8 @@ export namespace Prisma {
       | string
       | null;
     P20_POP80P_PSEUL_PERCENT?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
+      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
+      | number
       | null;
     tee_log?:
       | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
@@ -36481,11 +36519,11 @@ export namespace Prisma {
       | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
       | number
       | null;
-    h_x_s?:
+    densite_bati?:
       | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
       | number
       | null;
-    densite_bati?:
+    h_x_s?:
       | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
       | number
       | null;
@@ -36592,6 +36630,10 @@ export namespace Prisma {
       | StringNullableFilter<'collectivites_searchbar'>
       | string
       | null;
+    libelle_departement?:
+      | StringNullableFilter<'collectivites_searchbar'>
+      | string
+      | null;
     region?: StringNullableFilter<'collectivites_searchbar'> | string | null;
     ept?: StringNullableFilter<'collectivites_searchbar'> | string | null;
     libelle_petr?:
@@ -36617,6 +36659,7 @@ export namespace Prisma {
     epci?: SortOrderInput | SortOrder;
     libelle_epci?: SortOrderInput | SortOrder;
     departement?: SortOrderInput | SortOrder;
+    libelle_departement?: SortOrderInput | SortOrder;
     region?: SortOrderInput | SortOrder;
     ept?: SortOrderInput | SortOrder;
     libelle_petr?: SortOrderInput | SortOrder;
@@ -36653,6 +36696,10 @@ export namespace Prisma {
         | StringNullableFilter<'collectivites_searchbar'>
         | string
         | null;
+      libelle_departement?:
+        | StringNullableFilter<'collectivites_searchbar'>
+        | string
+        | null;
       region?: StringNullableFilter<'collectivites_searchbar'> | string | null;
       ept?: StringNullableFilter<'collectivites_searchbar'> | string | null;
       libelle_petr?:
@@ -36683,6 +36730,7 @@ export namespace Prisma {
     epci?: SortOrderInput | SortOrder;
     libelle_epci?: SortOrderInput | SortOrder;
     departement?: SortOrderInput | SortOrder;
+    libelle_departement?: SortOrderInput | SortOrder;
     region?: SortOrderInput | SortOrder;
     ept?: SortOrderInput | SortOrder;
     libelle_petr?: SortOrderInput | SortOrder;
@@ -36726,6 +36774,10 @@ export namespace Prisma {
       | string
       | null;
     departement?:
+      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
+      | string
+      | null;
+    libelle_departement?:
       | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
       | string
       | null;
@@ -39397,6 +39449,7 @@ export namespace Prisma {
     epci: string;
     libelle_epci: string;
     departement: string;
+    libelle_departement: string;
     region: number;
     ept?: string | null;
     libelle_petr?: string | null;
@@ -39433,7 +39486,7 @@ export namespace Prisma {
     over_80_sum_2020?: string | null;
     P20_POP80P?: string | null;
     P20_POP80P_PSEUL?: string | null;
-    P20_POP80P_PSEUL_PERCENT?: string | null;
+    P20_POP80P_PSEUL_PERCENT?: number | null;
     tee_log?: number | null;
     tee_mob?: number | null;
     precarite_logement?: number | null;
@@ -39444,8 +39497,8 @@ export namespace Prisma {
     NA5OQ_sum?: number | null;
     s_geom_cstr_bati?: number | null;
     hauteur?: number | null;
-    h_x_s?: number | null;
     densite_bati?: number | null;
+    h_x_s?: number | null;
     clc_1_artificialise?: number | null;
     clc_2_agricole?: number | null;
     clc_3_foret_semiNaturel?: number | null;
@@ -39461,6 +39514,7 @@ export namespace Prisma {
     epci: string;
     libelle_epci: string;
     departement: string;
+    libelle_departement: string;
     region: number;
     ept?: string | null;
     libelle_petr?: string | null;
@@ -39497,7 +39551,7 @@ export namespace Prisma {
     over_80_sum_2020?: string | null;
     P20_POP80P?: string | null;
     P20_POP80P_PSEUL?: string | null;
-    P20_POP80P_PSEUL_PERCENT?: string | null;
+    P20_POP80P_PSEUL_PERCENT?: number | null;
     tee_log?: number | null;
     tee_mob?: number | null;
     precarite_logement?: number | null;
@@ -39508,8 +39562,8 @@ export namespace Prisma {
     NA5OQ_sum?: number | null;
     s_geom_cstr_bati?: number | null;
     hauteur?: number | null;
-    h_x_s?: number | null;
     densite_bati?: number | null;
+    h_x_s?: number | null;
     clc_1_artificialise?: number | null;
     clc_2_agricole?: number | null;
     clc_3_foret_semiNaturel?: number | null;
@@ -39525,6 +39579,7 @@ export namespace Prisma {
     epci?: StringFieldUpdateOperationsInput | string;
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
+    libelle_departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
     ept?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -39562,8 +39617,8 @@ export namespace Prisma {
     P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null;
     P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null;
     P20_POP80P_PSEUL_PERCENT?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
+      | NullableFloatFieldUpdateOperationsInput
+      | number
       | null;
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null;
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null;
@@ -39578,8 +39633,8 @@ export namespace Prisma {
     NA5OQ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
     s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
     hauteur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
+    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
     clc_1_artificialise?:
       | NullableFloatFieldUpdateOperationsInput
       | number
@@ -39601,6 +39656,7 @@ export namespace Prisma {
     epci?: StringFieldUpdateOperationsInput | string;
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
+    libelle_departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
     ept?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -39638,8 +39694,8 @@ export namespace Prisma {
     P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null;
     P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null;
     P20_POP80P_PSEUL_PERCENT?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
+      | NullableFloatFieldUpdateOperationsInput
+      | number
       | null;
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null;
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null;
@@ -39654,8 +39710,8 @@ export namespace Prisma {
     NA5OQ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
     s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
     hauteur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
+    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
     clc_1_artificialise?:
       | NullableFloatFieldUpdateOperationsInput
       | number
@@ -39677,6 +39733,7 @@ export namespace Prisma {
     epci: string;
     libelle_epci: string;
     departement: string;
+    libelle_departement: string;
     region: number;
     ept?: string | null;
     libelle_petr?: string | null;
@@ -39713,7 +39770,7 @@ export namespace Prisma {
     over_80_sum_2020?: string | null;
     P20_POP80P?: string | null;
     P20_POP80P_PSEUL?: string | null;
-    P20_POP80P_PSEUL_PERCENT?: string | null;
+    P20_POP80P_PSEUL_PERCENT?: number | null;
     tee_log?: number | null;
     tee_mob?: number | null;
     precarite_logement?: number | null;
@@ -39724,8 +39781,8 @@ export namespace Prisma {
     NA5OQ_sum?: number | null;
     s_geom_cstr_bati?: number | null;
     hauteur?: number | null;
-    h_x_s?: number | null;
     densite_bati?: number | null;
+    h_x_s?: number | null;
     clc_1_artificialise?: number | null;
     clc_2_agricole?: number | null;
     clc_3_foret_semiNaturel?: number | null;
@@ -39741,6 +39798,7 @@ export namespace Prisma {
     epci?: StringFieldUpdateOperationsInput | string;
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
+    libelle_departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
     ept?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -39778,8 +39836,8 @@ export namespace Prisma {
     P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null;
     P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null;
     P20_POP80P_PSEUL_PERCENT?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
+      | NullableFloatFieldUpdateOperationsInput
+      | number
       | null;
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null;
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null;
@@ -39794,8 +39852,8 @@ export namespace Prisma {
     NA5OQ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
     s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
     hauteur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
+    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
     clc_1_artificialise?:
       | NullableFloatFieldUpdateOperationsInput
       | number
@@ -39817,6 +39875,7 @@ export namespace Prisma {
     epci?: StringFieldUpdateOperationsInput | string;
     libelle_epci?: StringFieldUpdateOperationsInput | string;
     departement?: StringFieldUpdateOperationsInput | string;
+    libelle_departement?: StringFieldUpdateOperationsInput | string;
     region?: IntFieldUpdateOperationsInput | number;
     ept?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -39854,8 +39913,8 @@ export namespace Prisma {
     P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null;
     P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null;
     P20_POP80P_PSEUL_PERCENT?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
+      | NullableFloatFieldUpdateOperationsInput
+      | number
       | null;
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null;
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null;
@@ -39870,8 +39929,8 @@ export namespace Prisma {
     NA5OQ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
     s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
     hauteur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
     densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
+    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
     clc_1_artificialise?:
       | NullableFloatFieldUpdateOperationsInput
       | number
@@ -39932,6 +39991,7 @@ export namespace Prisma {
     epci?: string | null;
     libelle_epci?: string | null;
     departement?: string | null;
+    libelle_departement?: string | null;
     region?: string | null;
     ept?: string | null;
     libelle_petr?: string | null;
@@ -39948,6 +40008,7 @@ export namespace Prisma {
     epci?: string | null;
     libelle_epci?: string | null;
     departement?: string | null;
+    libelle_departement?: string | null;
     region?: string | null;
     ept?: string | null;
     libelle_petr?: string | null;
@@ -39970,6 +40031,10 @@ export namespace Prisma {
     epci?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
     departement?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_departement?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
     region?: NullableStringFieldUpdateOperationsInput | string | null;
     ept?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -39992,6 +40057,10 @@ export namespace Prisma {
     epci?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
     departement?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_departement?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
     region?: NullableStringFieldUpdateOperationsInput | string | null;
     ept?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -40008,6 +40077,7 @@ export namespace Prisma {
     epci?: string | null;
     libelle_epci?: string | null;
     departement?: string | null;
+    libelle_departement?: string | null;
     region?: string | null;
     ept?: string | null;
     libelle_petr?: string | null;
@@ -40030,6 +40100,10 @@ export namespace Prisma {
     epci?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
     departement?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_departement?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
     region?: NullableStringFieldUpdateOperationsInput | string | null;
     ept?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -40052,6 +40126,10 @@ export namespace Prisma {
     epci?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
     departement?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_departement?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
     region?: NullableStringFieldUpdateOperationsInput | string | null;
     ept?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -42826,6 +42904,7 @@ export namespace Prisma {
     epci?: SortOrder;
     libelle_epci?: SortOrder;
     departement?: SortOrder;
+    libelle_departement?: SortOrder;
     region?: SortOrder;
     ept?: SortOrder;
     libelle_petr?: SortOrder;
@@ -42873,8 +42952,8 @@ export namespace Prisma {
     NA5OQ_sum?: SortOrder;
     s_geom_cstr_bati?: SortOrder;
     hauteur?: SortOrder;
-    h_x_s?: SortOrder;
     densite_bati?: SortOrder;
+    h_x_s?: SortOrder;
     clc_1_artificialise?: SortOrder;
     clc_2_agricole?: SortOrder;
     clc_3_foret_semiNaturel?: SortOrder;
@@ -42891,6 +42970,7 @@ export namespace Prisma {
     age_bati_46_90?: SortOrder;
     age_bati_19_45?: SortOrder;
     age_bati_pre_19?: SortOrder;
+    P20_POP80P_PSEUL_PERCENT?: SortOrder;
     tee_log?: SortOrder;
     tee_mob?: SortOrder;
     precarite_logement?: SortOrder;
@@ -42901,8 +42981,8 @@ export namespace Prisma {
     NA5OQ_sum?: SortOrder;
     s_geom_cstr_bati?: SortOrder;
     hauteur?: SortOrder;
-    h_x_s?: SortOrder;
     densite_bati?: SortOrder;
+    h_x_s?: SortOrder;
     clc_1_artificialise?: SortOrder;
     clc_2_agricole?: SortOrder;
     clc_3_foret_semiNaturel?: SortOrder;
@@ -42918,6 +42998,7 @@ export namespace Prisma {
     epci?: SortOrder;
     libelle_epci?: SortOrder;
     departement?: SortOrder;
+    libelle_departement?: SortOrder;
     region?: SortOrder;
     ept?: SortOrder;
     libelle_petr?: SortOrder;
@@ -42965,8 +43046,8 @@ export namespace Prisma {
     NA5OQ_sum?: SortOrder;
     s_geom_cstr_bati?: SortOrder;
     hauteur?: SortOrder;
-    h_x_s?: SortOrder;
     densite_bati?: SortOrder;
+    h_x_s?: SortOrder;
     clc_1_artificialise?: SortOrder;
     clc_2_agricole?: SortOrder;
     clc_3_foret_semiNaturel?: SortOrder;
@@ -42982,6 +43063,7 @@ export namespace Prisma {
     epci?: SortOrder;
     libelle_epci?: SortOrder;
     departement?: SortOrder;
+    libelle_departement?: SortOrder;
     region?: SortOrder;
     ept?: SortOrder;
     libelle_petr?: SortOrder;
@@ -43029,8 +43111,8 @@ export namespace Prisma {
     NA5OQ_sum?: SortOrder;
     s_geom_cstr_bati?: SortOrder;
     hauteur?: SortOrder;
-    h_x_s?: SortOrder;
     densite_bati?: SortOrder;
+    h_x_s?: SortOrder;
     clc_1_artificialise?: SortOrder;
     clc_2_agricole?: SortOrder;
     clc_3_foret_semiNaturel?: SortOrder;
@@ -43047,6 +43129,7 @@ export namespace Prisma {
     age_bati_46_90?: SortOrder;
     age_bati_19_45?: SortOrder;
     age_bati_pre_19?: SortOrder;
+    P20_POP80P_PSEUL_PERCENT?: SortOrder;
     tee_log?: SortOrder;
     tee_mob?: SortOrder;
     precarite_logement?: SortOrder;
@@ -43057,8 +43140,8 @@ export namespace Prisma {
     NA5OQ_sum?: SortOrder;
     s_geom_cstr_bati?: SortOrder;
     hauteur?: SortOrder;
-    h_x_s?: SortOrder;
     densite_bati?: SortOrder;
+    h_x_s?: SortOrder;
     clc_1_artificialise?: SortOrder;
     clc_2_agricole?: SortOrder;
     clc_3_foret_semiNaturel?: SortOrder;
@@ -43216,6 +43299,7 @@ export namespace Prisma {
     epci?: SortOrder;
     libelle_epci?: SortOrder;
     departement?: SortOrder;
+    libelle_departement?: SortOrder;
     region?: SortOrder;
     ept?: SortOrder;
     libelle_petr?: SortOrder;
@@ -43236,6 +43320,7 @@ export namespace Prisma {
     epci?: SortOrder;
     libelle_epci?: SortOrder;
     departement?: SortOrder;
+    libelle_departement?: SortOrder;
     region?: SortOrder;
     ept?: SortOrder;
     libelle_petr?: SortOrder;
@@ -43252,6 +43337,7 @@ export namespace Prisma {
     epci?: SortOrder;
     libelle_epci?: SortOrder;
     departement?: SortOrder;
+    libelle_departement?: SortOrder;
     region?: SortOrder;
     ept?: SortOrder;
     libelle_petr?: SortOrder;

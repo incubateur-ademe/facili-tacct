@@ -18,6 +18,7 @@ export const SearchBarComp = () => {
     'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
   >('epci');
 
+  console.log('typeTerritoire', typeTerritoire);
   const handleClick = () => {
     if (searchCode.length !== 0 || searchLibelle.length !== 0) {
       searchCode.length !== 0
