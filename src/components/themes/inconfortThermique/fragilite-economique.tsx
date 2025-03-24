@@ -20,31 +20,62 @@ export const FragiliteEconomique = ({
   carteCommunes: CarteCommunes[];
 }) => {
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo');
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4[]>();
+  const re = new RegExp('T([1-9]|1[0-2])\\b');
+
   const communesMap = carteCommunes
     .map(CommunesIndicateursMapper)
     .filter((e) => !isNaN(e.properties.precarite_logement));
-  const commune = codgeo
-    ? communesMap.find((obj) => obj.properties['code_geographique'] === codgeo)
-    : undefined;
+
+  const carteTerritoire =
+    type === 'commune'
+      ? communesMap
+      : type === 'epci' && re.test(libelle)
+        ? communesMap.filter((e) => e.properties.ept === libelle)
+        : type === 'epci'
+          ? communesMap.filter((e) => e.properties.epci === code)
+          : type === 'pnr'
+            ? communesMap.filter((e) => e.properties.code_pnr === code)
+            : type === 'departement'
+              ? communesMap.filter((e) => e.properties.departement === code)
+              : communesMap.filter(
+                  (e) => e.properties.libelle_petr === libelle
+                );
+
   //Mean of all ratio_precarite_log of municipalities in epci
-  const precariteLogEpci: number = Number(
-    communesMap.reduce(function (a, b) {
-      return a + b.properties['precarite_logement'];
-    }, 0) / carteCommunes.length
-  );
-  const precariteCommune: number = Number(
-    commune ? commune.properties['precarite_logement'] : 0
-  );
+  const precariteLogTerritoire: number =
+    type === 'commune'
+      ? Number(
+          carteTerritoire.find(
+            (obj) => obj.properties['code_geographique'] === code
+          )?.properties['precarite_logement']
+        )
+      : Number(
+          carteTerritoire.reduce(function (a, b) {
+            return a + b.properties['precarite_logement'];
+          }, 0) / carteTerritoire.length
+        );
+
+  const precariteLogEpci =
+    type === 'commune' || re.test(libelle)
+      ? Number(
+          communesMap.reduce(function (a, b) {
+            return a + b.properties['precarite_logement'];
+          }, 0) / communesMap.length
+        )
+      : null;
 
   useEffect(() => {
-    void (async () => {
-      const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
-    })();
-  }, [codgeo, codepci]);
+    (type === 'epci' || type === 'communes') && re.test(code)
+      ? void (async () => {
+          const temp = await GetPatch4(code);
+          temp && code ? setPatch4(temp) : void 0;
+        })()
+      : void 0;
+  }, [code]);
 
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
@@ -80,21 +111,19 @@ export const FragiliteEconomique = ({
             <>
               <div className="w-2/5">
                 <div className={styles.explicationWrapper}>
-                  {commune ? (
+                  <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                    La part des ménages en situation de précarité énergétique
+                    logement sur votre territoire est de{' '}
+                    <b>{(100 * precariteLogTerritoire).toPrecision(3)} %. </b>
+                  </p>
+                  {type === 'commune' || re.test(libelle) ? (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      La part des ménages en situation de précarité énergétique
-                      logement sur votre territoire est de{' '}
-                      <b>{(100 * precariteCommune).toPrecision(3)} %. </b>
                       Ce taux est de{' '}
-                      <b>{(100 * precariteLogEpci).toPrecision(3)} %</b> dans
+                      <b>{(100 * precariteLogEpci!).toPrecision(3)} %</b> dans
                       votre EPCI.
                     </p>
                   ) : (
-                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      La part des ménages en situation de précarité énergétique
-                      logement sur votre territoire est de{' '}
-                      <b>{(100 * precariteLogEpci).toPrecision(3)} %. </b>
-                    </p>
+                    ''
                   )}
                   <div className={styles.patch4Wrapper}>
                     {fortesChaleurs === 'Intensité très forte' ||
@@ -158,7 +187,7 @@ export const FragiliteEconomique = ({
                     </b>
                   </p>
                   {/* <LegendInconfortThermique data={'precarite_log'} /> */}
-                  <Map data={'precarite_log'} carteCommunes={communesMap} />
+                  <Map data={'precarite_log'} carteCommunes={carteTerritoire} />
                   <div
                     className={styles.legend}
                     style={{ width: 'auto', justifyContent: 'center' }}
@@ -173,7 +202,7 @@ export const FragiliteEconomique = ({
               </div>
             </>
           ) : (
-            <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+            <GraphDataNotFound code={code} />
           )}
         </div>
       ) : (
