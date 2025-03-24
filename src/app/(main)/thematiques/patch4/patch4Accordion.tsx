@@ -18,7 +18,6 @@ import MuiAccordionSummary, {
 } from '@mui/material/AccordionSummary';
 import Image, { StaticImageData } from 'next/image';
 import { useState } from 'react';
-import { useStyles } from 'tss-react/dsfr';
 import { TagPatch4 } from '../../../../components/patch4/Tag';
 import styles from '../thematiques.module.scss';
 
@@ -63,6 +62,20 @@ const Accordion = styled((props: AccordionProps) => (
   }
 }));
 
+const SubAccordion = styled((props: AccordionProps) => (
+  <MuiAccordion disableGutters elevation={0} square {...props} />
+))(({ theme }) => ({
+  backgroundColor: 'white',
+  border: `none`,
+  '&:not(:last-child)': {
+    borderRight: 0,
+    borderLeft: 0
+  },
+  '&::before': {
+    display: 'none'
+  }
+}));
+
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
   <MuiAccordionSummary {...props} />
 ))(() => ({
@@ -82,7 +95,6 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 
 export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
   const [expanded, setExpanded] = useState(false);
-  const { css } = useStyles();
   const precipitation = AlgoPatch4(patch4, 'fortes_precipitations');
   const secheresse = AlgoPatch4(patch4, 'secheresse_sols');
   const niveauxMarins = AlgoPatch4(patch4, 'niveaux_marins');
@@ -166,6 +178,38 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
         </p>
         <br></br>
         <div className={styles.indiceWrapper}>
+          <SubAccordion>
+            <AccordionSummary
+              aria-controls="panel1-content"
+              id="panel1-header"
+              expandIcon={
+                <>
+                  <div className={styles.iconNotExpanded}>
+                    <ExpandMoreIcon />
+                  </div>
+                </>
+              }
+            >
+              <div className={styles.indiceExplication}>
+                <Image src={precipitationIcon} alt="" />
+                <p>
+                  <b>Précipitations : </b>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna.
+                </p>
+              </div>
+            </AccordionSummary>
+            <AccordionDetails>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum
+                dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna. Lorem ipsum dolor
+                sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna.
+              </p>
+            </AccordionDetails>
+          </SubAccordion>
           <div className={styles.indiceExplication}>
             <Image src={precipitationIcon} alt="" />
             <p>
