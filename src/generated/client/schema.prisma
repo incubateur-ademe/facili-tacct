@@ -79,9 +79,13 @@ model inconfort_thermique {
   @@index([epci], map: "inconfort_thermique_epci_index")
   @@index([index], map: "ix_inconfort_thermique_index")
 <<<<<<< HEAD
+<<<<<<< HEAD
   @@index([departement], map: "inconfort_thermique_departement_index")
 =======
 >>>>>>> 946b599 (feat: nouveaux territoires inconfort thermique)
+=======
+  @@index([departement], map: "inconfort_thermique_departement_index")
+>>>>>>> dd60777 (feat: add departements nouveaux territoires)
   @@schema("databases")
 }
 
