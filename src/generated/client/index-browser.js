@@ -190,6 +190,7 @@ exports.Prisma.Collectivites_searchbarScalarFieldEnum = {
   epci: 'epci',
   libelle_epci: 'libelle_epci',
   departement: 'departement',
+  libelle_departement: 'libelle_departement',
   region: 'region',
   ept: 'ept',
   libelle_petr: 'libelle_petr',
