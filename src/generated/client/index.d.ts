@@ -6340,6 +6340,7 @@ export namespace Prisma {
     epci: string | null;
     libelle_epci: string | null;
     departement: string | null;
+    libelle_departement: string | null;
     region: string | null;
     ept: string | null;
     libelle_petr: string | null;
@@ -6356,6 +6357,7 @@ export namespace Prisma {
     epci: string | null;
     libelle_epci: string | null;
     departement: string | null;
+    libelle_departement: string | null;
     region: string | null;
     ept: string | null;
     libelle_petr: string | null;
@@ -6372,6 +6374,7 @@ export namespace Prisma {
     epci: number;
     libelle_epci: number;
     departement: number;
+    libelle_departement: number;
     region: number;
     ept: number;
     libelle_petr: number;
@@ -6397,6 +6400,7 @@ export namespace Prisma {
     epci?: true;
     libelle_epci?: true;
     departement?: true;
+    libelle_departement?: true;
     region?: true;
     ept?: true;
     libelle_petr?: true;
@@ -6413,6 +6417,7 @@ export namespace Prisma {
     epci?: true;
     libelle_epci?: true;
     departement?: true;
+    libelle_departement?: true;
     region?: true;
     ept?: true;
     libelle_petr?: true;
@@ -6429,6 +6434,7 @@ export namespace Prisma {
     epci?: true;
     libelle_epci?: true;
     departement?: true;
+    libelle_departement?: true;
     region?: true;
     ept?: true;
     libelle_petr?: true;
@@ -6543,6 +6549,7 @@ export namespace Prisma {
     epci: string | null;
     libelle_epci: string | null;
     departement: string | null;
+    libelle_departement: string | null;
     region: string | null;
     ept: string | null;
     libelle_petr: string | null;
@@ -6582,6 +6589,7 @@ export namespace Prisma {
       epci?: boolean;
       libelle_epci?: boolean;
       departement?: boolean;
+      libelle_departement?: boolean;
       region?: boolean;
       ept?: boolean;
       libelle_petr?: boolean;
@@ -6603,6 +6611,7 @@ export namespace Prisma {
       epci?: boolean;
       libelle_epci?: boolean;
       departement?: boolean;
+      libelle_departement?: boolean;
       region?: boolean;
       ept?: boolean;
       libelle_petr?: boolean;
@@ -6624,6 +6633,7 @@ export namespace Prisma {
       epci?: boolean;
       libelle_epci?: boolean;
       departement?: boolean;
+      libelle_departement?: boolean;
       region?: boolean;
       ept?: boolean;
       libelle_petr?: boolean;
@@ -6642,6 +6652,7 @@ export namespace Prisma {
     epci?: boolean;
     libelle_epci?: boolean;
     departement?: boolean;
+    libelle_departement?: boolean;
     region?: boolean;
     ept?: boolean;
     libelle_petr?: boolean;
@@ -6660,6 +6671,7 @@ export namespace Prisma {
     | 'epci'
     | 'libelle_epci'
     | 'departement'
+    | 'libelle_departement'
     | 'region'
     | 'ept'
     | 'libelle_petr'
@@ -6683,6 +6695,7 @@ export namespace Prisma {
         epci: string | null;
         libelle_epci: string | null;
         departement: string | null;
+        libelle_departement: string | null;
         region: string | null;
         ept: string | null;
         libelle_petr: string | null;
@@ -7312,6 +7325,7 @@ export namespace Prisma {
     readonly epci: FieldRef<'collectivites_searchbar', 'String'>;
     readonly libelle_epci: FieldRef<'collectivites_searchbar', 'String'>;
     readonly departement: FieldRef<'collectivites_searchbar', 'String'>;
+    readonly libelle_departement: FieldRef<'collectivites_searchbar', 'String'>;
     readonly region: FieldRef<'collectivites_searchbar', 'String'>;
     readonly ept: FieldRef<'collectivites_searchbar', 'String'>;
     readonly libelle_petr: FieldRef<'collectivites_searchbar', 'String'>;
@@ -35245,6 +35259,7 @@ export namespace Prisma {
     epci: 'epci';
     libelle_epci: 'libelle_epci';
     departement: 'departement';
+    libelle_departement: 'libelle_departement';
     region: 'region';
     ept: 'ept';
     libelle_petr: 'libelle_petr';
@@ -36592,6 +36607,10 @@ export namespace Prisma {
       | StringNullableFilter<'collectivites_searchbar'>
       | string
       | null;
+    libelle_departement?:
+      | StringNullableFilter<'collectivites_searchbar'>
+      | string
+      | null;
     region?: StringNullableFilter<'collectivites_searchbar'> | string | null;
     ept?: StringNullableFilter<'collectivites_searchbar'> | string | null;
     libelle_petr?:
@@ -36617,6 +36636,7 @@ export namespace Prisma {
     epci?: SortOrderInput | SortOrder;
     libelle_epci?: SortOrderInput | SortOrder;
     departement?: SortOrderInput | SortOrder;
+    libelle_departement?: SortOrderInput | SortOrder;
     region?: SortOrderInput | SortOrder;
     ept?: SortOrderInput | SortOrder;
     libelle_petr?: SortOrderInput | SortOrder;
@@ -36653,6 +36673,10 @@ export namespace Prisma {
         | StringNullableFilter<'collectivites_searchbar'>
         | string
         | null;
+      libelle_departement?:
+        | StringNullableFilter<'collectivites_searchbar'>
+        | string
+        | null;
       region?: StringNullableFilter<'collectivites_searchbar'> | string | null;
       ept?: StringNullableFilter<'collectivites_searchbar'> | string | null;
       libelle_petr?:
@@ -36683,6 +36707,7 @@ export namespace Prisma {
     epci?: SortOrderInput | SortOrder;
     libelle_epci?: SortOrderInput | SortOrder;
     departement?: SortOrderInput | SortOrder;
+    libelle_departement?: SortOrderInput | SortOrder;
     region?: SortOrderInput | SortOrder;
     ept?: SortOrderInput | SortOrder;
     libelle_petr?: SortOrderInput | SortOrder;
@@ -36726,6 +36751,10 @@ export namespace Prisma {
       | string
       | null;
     departement?:
+      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
+      | string
+      | null;
+    libelle_departement?:
       | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
       | string
       | null;
@@ -39932,6 +39961,7 @@ export namespace Prisma {
     epci?: string | null;
     libelle_epci?: string | null;
     departement?: string | null;
+    libelle_departement?: string | null;
     region?: string | null;
     ept?: string | null;
     libelle_petr?: string | null;
@@ -39948,6 +39978,7 @@ export namespace Prisma {
     epci?: string | null;
     libelle_epci?: string | null;
     departement?: string | null;
+    libelle_departement?: string | null;
     region?: string | null;
     ept?: string | null;
     libelle_petr?: string | null;
@@ -39970,6 +40001,10 @@ export namespace Prisma {
     epci?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
     departement?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_departement?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
     region?: NullableStringFieldUpdateOperationsInput | string | null;
     ept?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -39992,6 +40027,10 @@ export namespace Prisma {
     epci?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
     departement?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_departement?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
     region?: NullableStringFieldUpdateOperationsInput | string | null;
     ept?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -40008,6 +40047,7 @@ export namespace Prisma {
     epci?: string | null;
     libelle_epci?: string | null;
     departement?: string | null;
+    libelle_departement?: string | null;
     region?: string | null;
     ept?: string | null;
     libelle_petr?: string | null;
@@ -40030,6 +40070,10 @@ export namespace Prisma {
     epci?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
     departement?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_departement?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
     region?: NullableStringFieldUpdateOperationsInput | string | null;
     ept?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -40052,6 +40096,10 @@ export namespace Prisma {
     epci?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
     departement?: NullableStringFieldUpdateOperationsInput | string | null;
+    libelle_departement?:
+      | NullableStringFieldUpdateOperationsInput
+      | string
+      | null;
     region?: NullableStringFieldUpdateOperationsInput | string | null;
     ept?: NullableStringFieldUpdateOperationsInput | string | null;
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
@@ -43216,6 +43264,7 @@ export namespace Prisma {
     epci?: SortOrder;
     libelle_epci?: SortOrder;
     departement?: SortOrder;
+    libelle_departement?: SortOrder;
     region?: SortOrder;
     ept?: SortOrder;
     libelle_petr?: SortOrder;
@@ -43236,6 +43285,7 @@ export namespace Prisma {
     epci?: SortOrder;
     libelle_epci?: SortOrder;
     departement?: SortOrder;
+    libelle_departement?: SortOrder;
     region?: SortOrder;
     ept?: SortOrder;
     libelle_petr?: SortOrder;
@@ -43252,6 +43302,7 @@ export namespace Prisma {
     epci?: SortOrder;
     libelle_epci?: SortOrder;
     departement?: SortOrder;
+    libelle_departement?: SortOrder;
     region?: SortOrder;
     ept?: SortOrder;
     libelle_petr?: SortOrder;

@@ -91,6 +91,7 @@
         color: #000091;
         padding: 10px;
         border-radius: 1rem;
+        width: max-content;
     }
     .iconExpanded {
         display: flex;
@@ -102,10 +103,15 @@
         background-color: #fbfbff;
         padding: 10px;
         border-radius: 1rem;
+        width: max-content;
     }
     .accordionHeader {
         width: 100%;
         padding: 1rem 0;
+        .accordionHeaderTitles {
+            max-width: 90%;
+            padding: 0 0 1rem;
+        }
         .wrapper {
             display: flex;
             flex-direction: row;
