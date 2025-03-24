@@ -127,6 +127,7 @@ export type CollectivitesSearchbar = {
   search_libelle: string;
   search_code: string;
   departement: string | null;
+  departement_libelle: string | null;
   region: string | null;
   ept: string | null;
   code_pnr: string | null;
