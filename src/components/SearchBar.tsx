@@ -17,19 +17,14 @@ export const SearchBarComp = () => {
   const [typeTerritoire, setTypeTerritoire] = useState<
     'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
   >('epci');
+  const re = new RegExp('T([1-9]|1[0-2])\\b');
 
-  console.log('typeTerritoire', typeTerritoire);
   const handleClick = () => {
-    if (searchCode.length !== 0 || searchLibelle.length !== 0) {
-      searchCode.length !== 0
-        ? router.push(
-            `/thematiques?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
-          )
-        : router.push(
-            `/thematiques?libelle=${searchLibelle}&type=${typeTerritoire}`
-          );
-    }
-    if (searchCode.length !== 0 || searchLibelle.length !== 0) {
+    if (typeTerritoire === 'epci' && re.test(searchLibelle)) {
+      router.push(
+        `/thematiques?code=200054781&libelle=${searchLibelle}&type=epci`
+      );
+    } else if (searchCode.length !== 0 || searchLibelle.length !== 0) {
       searchCode.length !== 0
         ? router.push(
             `/thematiques?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`

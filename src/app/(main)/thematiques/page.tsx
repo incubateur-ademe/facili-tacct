@@ -12,8 +12,9 @@ export const metadata: Metadata = {
 };
 
 const Thematiques = async (props: { searchParams: SearchParams }) => {
-  const { codgeo, codepci } = await props.searchParams;
-  const patch4 = codgeo ? await GetPatch4(codgeo) : await GetPatch4(codepci);
+  const { code, libelle, type } = await props.searchParams;
+  const patch4 =
+    type === 'epci' || type === 'communes' ? await GetPatch4(code) : null;
 
   return (
     <Container size="xl" className="mb-24">
@@ -25,7 +26,7 @@ const Thematiques = async (props: { searchParams: SearchParams }) => {
           }}
           segments={[]}
         />
-        {patch4.length > 0 && <Patch4Accordion patch4={patch4[0]} />}
+        {patch4 && patch4.length > 0 && <Patch4Accordion patch4={patch4[0]} />}
         <h1>Quelle thématique vous intéresse ?</h1>
         <Cards />
       </ClientOnly>

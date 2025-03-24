@@ -148,6 +148,12 @@ export type CarteCommunes = {
   geometry: string;
   libelle_geographique: string;
   libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  ept: string;
+  libelle_petr: string;
+  code_pnr: string;
+  libelle_pnr: string;
   precarite_logement?: number;
   catnat?: Object;
   naf?: number;

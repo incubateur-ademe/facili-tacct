@@ -46,7 +46,8 @@ export const GetInconfortThermiqueDepartment = async (
           : type === 'pnr'
             ? 'code_pnr'
             : 'libelle_petr';
-    if (type === 'epci' && code && re.test(code)) {
+
+    if (type === 'epci' && re.test(libelle)) {
       const value = await PrismaPostgres.inconfort_thermique.findMany({
         where: {
           epci: '200054781'
