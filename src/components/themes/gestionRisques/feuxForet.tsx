@@ -116,7 +116,7 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
               </p>
               <p>
                 ⇒ En 2023, parmi les feux de forêts dont la cause a été
-                identifiée, 9 feux sur 10 départs sont d’origine humaine
+                identifiée, 9 départs sur 10 sont d’origine humaine.
               </p>
               <p>
                 ⇒ 4 feux sur 5 se déclenchent à moins de 50 mètres des

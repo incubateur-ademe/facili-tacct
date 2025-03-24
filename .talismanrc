@@ -2,11 +2,11 @@ fileignoreconfig:
     - filename: src/generated/client/index-browser.js
       checksum: d67e8b89a288ce6693efc170e370f13a779af54836c3d0450e3a03e18016e7e7
     - filename: src/generated/client/package.json
-      checksum: 8a8002382d5a48ec19caa642254adbd3707a30e893c17977a62f9418d83180e5
+      checksum: 5b4bf8ec6a6622f4e613d7db12e2c2597f36dc18729c49c5dcd713dddf86b585
     - filename: src/generated/client/edge.js
-      checksum: 3ed6404eeb494711dc85fb8d6448a3d7800b0194f2bb02606013b323ae32cef8
+      checksum: 30a91c9721ea6497ea9cf38c823b8d82dd1434f1115b86663b2d7ea074c897d8
     - filename: src/generated/client/index.js
-      checksum: 1396088fac1e6a9f262aa1c674c403ba0a44b6f2f293b6f4b14e41392b271012
+      checksum: f01a262a427661b32acbe5403784cd427fdc49cbce250ac96fef607ce18147e3
     - filename: src/generated/client/wasm.js
       checksum: d49686d586c2ff564e02757b024ae981a30db1e814ac91b5d5e212eda2a75428
     - filename: src/generated/client/index.d.ts
