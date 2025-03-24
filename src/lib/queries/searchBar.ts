@@ -48,6 +48,7 @@ export const GetCollectivite = async (
           libelle_geographique: '',
           libelle_epci: '',
           departement: '',
+          libelle_departement: '',
           region: '',
           ept: '',
           libelle_petr: '',
