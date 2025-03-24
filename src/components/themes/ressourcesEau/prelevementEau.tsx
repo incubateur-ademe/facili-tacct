@@ -121,7 +121,7 @@ export const PrelevementEau = (props: {
               <p>
                 Le volume total des prélèvements en eau de votre territoire en
                 2020 est de <b>{volumeTotalPreleve} Mm3</b>, soit l’équivalent
-                de <b>{Round((1000000 * volumeTotalPreleve) / 3750, 0)}</b>{' '}
+                de <b>{Round((1000000 * volumeTotalPreleve) / 3750, 3)}</b>{' '}
                 piscines olympiques.
               </p>
               <div className={styles.patch4Wrapper}>

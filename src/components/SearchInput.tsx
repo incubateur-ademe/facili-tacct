@@ -50,6 +50,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
   const router = useRouter();
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState<Options[]>([]);
+  const re = new RegExp('T([1-9]|1[0-2])\\b');
 
   // supprime les doublons pour les objects
   const filteredCollectivite = options.filter(
@@ -67,7 +68,11 @@ export const MySearchInput = (props: MySearchInputProps) => {
     )
   ];
   const handleClick = () => {
-    if (searchCode.length !== 0 || searchLibelle.length !== 0) {
+    if (typeTerritoire === 'epci' && re.test(searchLibelle)) {
+      router.push(
+        `/thematiques?code=200054781&libelle=${searchLibelle}&type=epci`
+      );
+    } else if (searchCode.length !== 0 || searchLibelle.length !== 0) {
       searchCode.length !== 0
         ? router.push(
             `/thematiques?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
