@@ -92,6 +92,12 @@ export type CommunesIndicateursDto = {
     libelle_epci: string;
     libelle_geographique: string;
     code_geographique: string;
+    ept: string;
+    libelle_petr: string;
+    code_pnr: string;
+    libelle_pnr: string;
+    departement: string;
+    libelle_departement: string;
     precarite_logement: number;
     densite_bati: number;
     coordinates: string;
