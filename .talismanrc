@@ -1,96 +1,72 @@
 fileignoreconfig:
-<<<<<<< HEAD
-    - filename: src/generated/client/index-browser.js
-      checksum: d67e8b89a288ce6693efc170e370f13a779af54836c3d0450e3a03e18016e7e7
-    - filename: src/generated/client/wasm.js
-      checksum: d49686d586c2ff564e02757b024ae981a30db1e814ac91b5d5e212eda2a75428
-    - filename: src/generated/client/index.d.ts
-      checksum: f722074f386753b5b5c1947d5a777ed5c7a2318995576850dedb1fb0a58e14ce
-    - filename: src/app/(main)/thematiques/patch4/patch4Accordion.tsx
-      checksum: 0165fb55ba061b0cf08ede54ccad92d5416c40bf960375d4303b2d8077b24177
-    - filename: pnpm-lock.yaml
-      checksum: 53e1969c6feceec7e857c3b11e4ea6b1df73351160ffa097c08b0d10e85fa40b
-    - filename: src/app/api/auth/register/route.ts
-      checksum: 530adf7d31eef40de701544897022c541e3c2d1d54f43a7b868b9339ad2e9954
+    - filename: src/generated/client/runtime/edge-esm.js
+      checksum: 274fe11ab5690937c5b76aa106665fba618991f3fb14b96f7a6844873818955e
+    - filename: src/generated/client/runtime/react-native.js
+      checksum: 0e1af8308b5084625442574285eb8e395919db58b9dab412854a6f2e3ef1b734
+    - filename: src/generated/client/runtime/wasm.js
+      checksum: 91982683886d6c28a52c9dc07020fe8e4b08e03976f55a2cfb45611ae748898c
+    - filename: src/generated/client/runtime/library.js
+      checksum: 1098e3cbcfa7e65acd87a04815b41e1366881422d52e6489ab6b009219a04c80
+    - filename: src/generated/client/runtime/edge.js
+      checksum: dd492c7eabd32b66f20f5fd3b44af182e1caff374381f4956dbbc39a5352066b
+    - filename: src/app/(main)/thematiques/page.tsx
+      checksum: f29555dd0da8a0401506a380dbd935048780b960c41cbbc480f232a7e5ba7d76
+    - filename: src/app/(main)/layout.tsx
+      checksum: bebd900d7689763bd886a800e9aa47db5ba33ff2d2c5bf1ce8aad047da8cb6f2
+    - filename: src/app/iframe/layout.tsx
+      checksum: bfe0aa4a0d7877b190914c46967c007dd1ccd9e1a22e5c3606b29baa6504df83
+    - filename: src/generated/client/runtime/index-browser.d.ts
+      checksum: 2288585aa7f4cade736912d075bf08b1d9a8ad6d2a59e0faee31667130535ce4
+    - filename: src/app/_iframe/thematiques/cards.tsx
+      checksum: 6a15cac397de48145e1d0ffccde66371a7ecb9c9bb96ca341970fdc9141b0d6d
+    - filename: src/components/themes/biodiversite/AOT40.tsx
+      checksum: 99fa67361c11ec26ed2f3649613298ccf25bc2725533a222a3fbf0e5334c8bc3
+    - filename: src/app/_api/auth/register/route.ts
+      checksum: 98d0a8b7e17be6740284355017b2541bcd1edace1024bb1769d58e7d893e27b4
+    - filename: src/app/register/form.tsx
+      checksum: b1f46eda6277d8677ded7fb1e0840eeb128e6c1071f773cd944df9cba28fef92
+    - filename: src/app/login/form.tsx
+      checksum: 667712a1193ce17e63fb4c868c37d58265cf8d689870daca1b66e6074a7880ff
     - filename: src/lib/auth/authOptions.ts
-      checksum: 6f7173cdf9e4c4a2075b63f4ebbb87a99b6999d9d43497f20e048a910ddcf197
+      checksum: e7fb99bb2be5c34c6c501952defa547c6ac4383bf140dcbcbbeaf14336b24cca
+    - filename: pnpm-lock.yaml
+      checksum: 0b9c776f532aa2789aaaa0f83b48015182870f8a6bf52c2ed6e4e3d7ba2bad7b
+    - filename: src/components/maps/legends/legendComp.tsx
+      checksum: 44a1d880689a63cb51bd7fb9a79ebbe41dbb64c56357469a008e85e282b10e7f
+    - filename: src/components/themes/gestionRisques/catnat.tsx
+      checksum: 7adc680c52851b8984cc5cda440ab2e5df7ca7675a2a0196f1484fbf03dfb458
+    - filename: src/components/themes/biodiversite/surfacesProtegeesDataviz.tsx
+      checksum: 4700af7186b6420305c071447d830b19a27980111048b412de361b6e3a4b10cc
+    - filename: src/components/charts/stats/BarChart.tsx
+      checksum: e72162794b7a525e11539311e3e95cd4288ea4dde72032fcf6514a04f323b49a
+    - filename: src/components/charts/agriculture/pieChartChefsExploitation.tsx
+      checksum: 5b030f9fc82520627fa8983c0669c76f55cbaa74323a4a55cc65d291e8cf2ace
+    - filename: .eslintrc.js
+      checksum: 54817f7570ce9a6a56e62f32af26244743cb7fd63b808bf2c7c3a5adf7a348ba
+    - filename: src/generated/client/index-browser.js
+      checksum: 556f04644993b7ad6e72ebfad79f438b88a8e7d9d3cb364be1c15f04f52ae068
     - filename: src/generated/client/package.json
-      checksum: 567418ff239e80739dcc3013eaf5e32bce3276ce2b59bf4c252955762ebd93e5
+      checksum: 5b4bf8ec6a6622f4e613d7db12e2c2597f36dc18729c49c5dcd713dddf86b585
     - filename: src/generated/client/edge.js
-      checksum: fca435902609350efa05997ee0f3c6b50badad730219c2f816f838b6d9916a96
+      checksum: 30a91c9721ea6497ea9cf38c823b8d82dd1434f1115b86663b2d7ea074c897d8
     - filename: src/generated/client/index.js
-      checksum: 99f38ed207f0961614b02c4a3222b7979c5bd7667af5075f3c460cb997e376af
+      checksum: f01a262a427661b32acbe5403784cd427fdc49cbce250ac96fef607ce18147e3
+    - filename: src/generated/client/wasm.js
+      checksum: fcbf771de65035051cf0b6709d957d6a3ba6d774c13de05624fd93f1183d245a
+    - filename: src/generated/client/index.d.ts
+      checksum: 8ab6e9708cea34ad13e6ca37fac02f0bd62082e97acefbbf1b96c7c9d5f430ae
+    - filename: src/components/SearchInput.tsx
+      checksum: 34f2059c58474fa3c5f7f5e38ea87a5d5eff0bc529f6681199105e4060492cf9
+    - filename: src/generated/client/index.js
+      checksum: d16b6548a5c2d73fdfb420103e8083c6e7c9dd9ddd81b8f01660903fff4cbca6
+    - filename: src/components/charts/gestionRisques/BarLineChart.tsx
+      checksum: d1fa246112a65f72d2783be56daa5584455a335767a464a57b291f3df50815fb
+    - filename: src/components/charts/gestionRisques/BarLineFeuxForet.tsx
+      checksum: b114a43312798945ca3e008db1f9feed87bacb642b3eb7cb8ef20b9d2d60a3d3
+    - filename: src/components/maps/mapFeuxDeForet.tsx
+      checksum: dc123bcd68cb900d79af04208dc9440bae9833fc9eba9b7e0d8014d6b6be9fe9
+    - filename: src/generated/client/index.d.ts
+      checksum: b2f4c531bcafaacd5773b05275ee9605533f8331079c0692295dcc61fe7d5061
+    - filename: src/components/charts/gestionRisques/pieChartFeuxForet.tsx
+      checksum: b8891e62f25561c7182cc8006abc959a60810cd00471d14d34fade577e0dc5d9
 version: ''
-=======
-- filename: src/generated/client/runtime/edge-esm.js
-  checksum: 274fe11ab5690937c5b76aa106665fba618991f3fb14b96f7a6844873818955e
-- filename: src/generated/client/runtime/react-native.js
-  checksum: 0e1af8308b5084625442574285eb8e395919db58b9dab412854a6f2e3ef1b734
-- filename: src/generated/client/runtime/wasm.js
-  checksum: 91982683886d6c28a52c9dc07020fe8e4b08e03976f55a2cfb45611ae748898c
-- filename: src/generated/client/runtime/library.js
-  checksum: 1098e3cbcfa7e65acd87a04815b41e1366881422d52e6489ab6b009219a04c80
-- filename: src/generated/client/runtime/edge.js
-  checksum: dd492c7eabd32b66f20f5fd3b44af182e1caff374381f4956dbbc39a5352066b
-- filename: src/app/(main)/thematiques/page.tsx
-  checksum: f29555dd0da8a0401506a380dbd935048780b960c41cbbc480f232a7e5ba7d76
-- filename: src/app/(main)/layout.tsx
-  checksum: bebd900d7689763bd886a800e9aa47db5ba33ff2d2c5bf1ce8aad047da8cb6f2
-- filename: src/app/iframe/layout.tsx
-  checksum: bfe0aa4a0d7877b190914c46967c007dd1ccd9e1a22e5c3606b29baa6504df83
-- filename: src/generated/client/runtime/index-browser.d.ts
-  checksum: 2288585aa7f4cade736912d075bf08b1d9a8ad6d2a59e0faee31667130535ce4
-- filename: src/app/_iframe/thematiques/cards.tsx
-  checksum: 6a15cac397de48145e1d0ffccde66371a7ecb9c9bb96ca341970fdc9141b0d6d
-- filename: src/components/themes/biodiversite/AOT40.tsx
-  checksum: 99fa67361c11ec26ed2f3649613298ccf25bc2725533a222a3fbf0e5334c8bc3
-- filename: src/app/_api/auth/register/route.ts
-  checksum: 98d0a8b7e17be6740284355017b2541bcd1edace1024bb1769d58e7d893e27b4
-- filename: src/app/register/form.tsx
-  checksum: b1f46eda6277d8677ded7fb1e0840eeb128e6c1071f773cd944df9cba28fef92
-- filename: src/app/login/form.tsx
-  checksum: 667712a1193ce17e63fb4c868c37d58265cf8d689870daca1b66e6074a7880ff
-- filename: src/lib/auth/authOptions.ts
-  checksum: e7fb99bb2be5c34c6c501952defa547c6ac4383bf140dcbcbbeaf14336b24cca
-- filename: pnpm-lock.yaml
-  checksum: 0b9c776f532aa2789aaaa0f83b48015182870f8a6bf52c2ed6e4e3d7ba2bad7b
-- filename: src/components/maps/legends/legendComp.tsx
-  checksum: 44a1d880689a63cb51bd7fb9a79ebbe41dbb64c56357469a008e85e282b10e7f
-- filename: src/components/themes/gestionRisques/catnat.tsx
-  checksum: 7adc680c52851b8984cc5cda440ab2e5df7ca7675a2a0196f1484fbf03dfb458
-- filename: src/components/themes/biodiversite/surfacesProtegeesDataviz.tsx
-  checksum: 4700af7186b6420305c071447d830b19a27980111048b412de361b6e3a4b10cc
-- filename: src/components/charts/stats/BarChart.tsx
-  checksum: e72162794b7a525e11539311e3e95cd4288ea4dde72032fcf6514a04f323b49a
-- filename: src/components/charts/agriculture/pieChartChefsExploitation.tsx
-  checksum: 5b030f9fc82520627fa8983c0669c76f55cbaa74323a4a55cc65d291e8cf2ace
-- filename: .eslintrc.js
-  checksum: 54817f7570ce9a6a56e62f32af26244743cb7fd63b808bf2c7c3a5adf7a348ba
-- filename: src/generated/client/index-browser.js
-  checksum: 556f04644993b7ad6e72ebfad79f438b88a8e7d9d3cb364be1c15f04f52ae068
-- filename: src/generated/client/package.json
-  checksum: 8166bfc4e8c975e937f8e630f9cedd333f2098081b919c61ce599bb590731b7d
-- filename: src/generated/client/index.js
-  checksum: 2d36f17622317a9f90c885ec69917827c54c1f0cf1b4d4b3b0a86125d2079b45
-- filename: src/generated/client/edge.js
-  checksum: bcb7d1c0012b55774ee187f08acb308cc9e546f7b767b02b59a85d413ed96779
-- filename: src/generated/client/wasm.js
-  checksum: fcbf771de65035051cf0b6709d957d6a3ba6d774c13de05624fd93f1183d245a
-- filename: src/generated/client/index.d.ts
-  checksum: 8ab6e9708cea34ad13e6ca37fac02f0bd62082e97acefbbf1b96c7c9d5f430ae
-- filename: src/components/SearchInput.tsx
-  checksum: 34f2059c58474fa3c5f7f5e38ea87a5d5eff0bc529f6681199105e4060492cf9
-- filename: src/generated/client/index.js
-  checksum: d16b6548a5c2d73fdfb420103e8083c6e7c9dd9ddd81b8f01660903fff4cbca6
-- filename: src/components/charts/gestionRisques/BarLineChart.tsx
-  checksum: d1fa246112a65f72d2783be56daa5584455a335767a464a57b291f3df50815fb
-- filename: src/components/charts/gestionRisques/BarLineFeuxForet.tsx
-  checksum: b114a43312798945ca3e008db1f9feed87bacb642b3eb7cb8ef20b9d2d60a3d3
-- filename: src/components/maps/mapFeuxDeForet.tsx
-  checksum: dc123bcd68cb900d79af04208dc9440bae9833fc9eba9b7e0d8014d6b6be9fe9
-- filename: src/generated/client/index.d.ts
-  checksum: b2f4c531bcafaacd5773b05275ee9605533f8331079c0692295dcc61fe7d5061
-- filename: src/components/charts/gestionRisques/pieChartFeuxForet.tsx
-  checksum: b8891e62f25561c7182cc8006abc959a60810cd00471d14d34fade577e0dc5d9
-version: ""
->>>>>>> 946b5993e6ce50abf20aba0a00b024ba177869cd
