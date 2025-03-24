@@ -99,16 +99,25 @@ export const PrelevementEau = (props: {
   const title = (
     <>
       <div>
-        L'indicateur représente le volume annuel d'eau prélevée (pour les
-        prélèvements soumis à redevance), par grands usages. Cependant, les
-        usages exonérés de redevance (aquaculture, géothermie, lutte antigel de
-        cultures pérennes, réalimentation de milieux naturels, etc.) ne figurent
-        pas dans la base de données.
+        L'indicateur représente le volume annuel d'eau prélevée, par grands
+        usages,
+        <u>
+          {' '}
+          pour les prélèvements soumis à redevance, sur la base de déclarations
+          auprès des agences et offices de l’eau.
+        </u>{' '}
+        Cette redevance est due par les personnes qui prélèvent un volume annuel
+        d'eau supérieur à 10 000 m3 d'eau. Ce volume est ramené à 7 000 m3 dans
+        les zones dites de répartition des eaux (zones pour lesquelles a été
+        identifiée une insuffisance chronique des ressources par rapport aux
+        besoins).
       </div>
       <br></br>
       <div>
-        En outre-mer, la lutte contre les incendies et la production d’énergie
-        renouvelable sont également exonérées.
+        Certains usages sont exonérés de redevance : aquaculture, géothermie,
+        lutte antigel de cultures pérennes, réalimentation de milieux naturels,
+        etc. En Outre-mer, la lutte contre les incendies et la production
+        d’énergie renouvelable sont également exonérées.
       </div>
     </>
   );
@@ -153,27 +162,28 @@ export const PrelevementEau = (props: {
                   </p>
                   <p>
                     Attention aux chiffres bruts : les prélèvements ne reflètent
-                    pas les consommations réelles. L'industrie rejette une
-                    partie de l'eau prélevée, tandis que l'agriculture consomme
-                    la quasi-totalité de ses prélèvements, concentrés sur trois
-                    mois d'été. Dans les zones géographiques en tension,
-                    l'agriculture peut représenter jusqu'à 80 % de l'eau
-                    consommée. Cette situation fragilise la ressource locale. Le
-                    prix de l'eau est susceptible d'augmenter pour deux raisons
-                    : la rareté de la ressource et le besoin de traitements plus
-                    sophistiqués (dénitrification, élimination des
-                    micropolluants, etc.).
+                    ni les consommations réelles, ni le lieu de consommation.
+                    L'industrie rejette une partie de l'eau prélevée, tandis que
+                    l'agriculture consomme la quasi-totalité de ses
+                    prélèvements, concentrés sur trois mois d'été. Dans les
+                    zones géographiques en tension, l'agriculture peut
+                    représenter jusqu'à 80 % de l'eau consommée. Cette situation
+                    fragilise la ressource locale. Le prix de l'eau est
+                    susceptible d'augmenter pour deux raisons : la rareté de la
+                    ressource et le besoin de traitements plus sophistiqués
+                    (dénitrification, élimination des micropolluants, etc.).
                   </p>
                   <p>
                     ⇒ Lors de la sécheresse 2022, 2000 communes ont été en
-                    tension sur l’eau potable.
+                    tension sur l’eau potable ; environ 550 ont dû être
+                    ravitaillées par camions-citerne.
                   </p>
                   <p>
-                    ⇒ 30 milliards de m3 d’eau ont été prélevés en France en
-                    2021 (hors production hydroélectrique), soit l’équivalent de
-                    plus d’un tiers du volume du Lac Léman. 82 % des
-                    prélèvements proviennent d'eaux de surface, 18 % d'eaux
-                    souterraines
+                    ⇒ 29,3 milliards de m3 d’eau ont été prélevés en France en
+                    2022 (hors production hydroélectrique), soit l’équivalent de
+                    plus d’un tiers du volume du Lac Léman. 80 % des
+                    prélèvements proviennent d'eaux de surface, 20 % d'eaux
+                    souterraines.
                   </p>
                   <p>
                     ⇒ 20 % des prélèvements d’eau potable sont perdus à cause
