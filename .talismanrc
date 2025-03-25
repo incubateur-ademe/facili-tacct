@@ -16,7 +16,7 @@ fileignoreconfig:
     - filename: src/lib/auth/authOptions.ts
       checksum: 6f7173cdf9e4c4a2075b63f4ebbb87a99b6999d9d43497f20e048a910ddcf197
     - filename: pnpm-lock.yaml
-      checksum: fc08082240aeb67635528016e602980d9a6dc9eb0e1c7fa0501cfe0cb2091d2a
+      checksum: 1ae1fdeafb1a5b75bdcf7e5f282d0af684a85075290b874e3ce0745b9b46a896
     - filename: src/app/(main)/thematiques/patch4/patch4Accordion.tsx
       checksum: 88075c9c733175e47421e08937399f0cd6e2b4c4dfbece45203d851e48422d6c
 version: ''

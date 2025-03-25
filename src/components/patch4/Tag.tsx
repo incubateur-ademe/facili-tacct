@@ -16,12 +16,17 @@ export const TagPatch4 = ({ children }: TagPatch4Props) => {
         ? '#F66E19'
         : children === 'Intensité modérée'
           ? '#FFCF5E'
-          : '#E5E5E5';
+          : '#FFF';
   const textColor = children === 'Intensité très forte' ? 'white' : 'black';
   return (
     <Tag
       className={styles.tag}
-      style={{ backgroundColor: color, color: textColor, lineHeight: '12px' }}
+      style={{
+        backgroundColor: color,
+        color: textColor,
+        lineHeight: '12px',
+        border: color === '#FFF' ? '1px solid #161616' : 'none'
+      }}
     >
       {children}
     </Tag>

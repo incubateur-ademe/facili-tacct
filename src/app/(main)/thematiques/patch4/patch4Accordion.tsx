@@ -46,7 +46,7 @@ const tagIntensite = [
   'Intensité très forte',
   'Intensité forte',
   'Intensité modérée',
-  'Intensité non déterminée'
+  "Pas d'évolution"
 ];
 
 const Accordion = styled((props: AccordionProps) => (
@@ -199,13 +199,13 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
         <div className={styles.indiceWrapper}>
           <SubAccordionComp
             icon={precipitationIcon}
-            titre="Précipitations"
+            titre="Fortes précipitations"
             textHeader="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
             textContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
           />
           <SubAccordionComp
             icon={secheresseIcon}
-            titre="Sécheresse"
+            titre="Sécheresse des sols"
             textHeader="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
             textContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
           />
