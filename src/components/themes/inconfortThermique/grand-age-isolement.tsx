@@ -86,7 +86,7 @@ export const GrandAgeIsolement = (props: {
   const grandAgeIsolementTerritoire =
     type === 'commune'
       ? grandAgeIsolementMapped.filter((e) => e.code_geographique === code)
-      : type === 'epci' && re.test(code)
+      : type === 'epci' && re.test(libelle)
         ? grandAgeIsolementMapped.filter((e) => e.ept === libelle)
         : type === 'epci'
           ? grandAgeIsolementMapped.filter((e) => e.epci === code)
