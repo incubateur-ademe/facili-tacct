@@ -13,7 +13,7 @@ export const AlgoPatch4 = (
     patch4[indice] === null
       ? 'null'
       : patch4[indice] === 0
-        ? 'Intensité non déterminée'
+        ? "Pas d'évolution"
         : patch4[indice] < 0.33
           ? 'Intensité modérée'
           : 0.3 <= patch4[indice] && patch4[indice] <= 0.66

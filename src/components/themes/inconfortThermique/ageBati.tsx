@@ -137,20 +137,30 @@ export const AgeBati = (props: {
                     </p>
                   )}
                   <div className={styles.patch4Wrapper}>
-                    {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                    {secheresse === 'Intensité très forte' ? (
+                      <TagItem
+                        icon={secheresseIcon}
+                        indice="Sécheresse des sols"
+                        tag={secheresse}
+                      />
+                    ) : fortesChaleurs === 'Intensité très forte' ? (
                       <TagItem
                         icon={fortesChaleursIcon}
                         indice="Fortes chaleurs"
                         tag={fortesChaleurs}
                       />
                     ) : null}
-                    {secheresse === 'Intensité très forte' ||
-                    secheresse === 'Intensité forte' ? (
+                    {secheresse === 'Intensité forte' ? (
                       <TagItem
                         icon={secheresseIcon}
                         indice="Sécheresse des sols"
                         tag={secheresse}
+                      />
+                    ) : fortesChaleurs === 'Intensité forte' ? (
+                      <TagItem
+                        icon={fortesChaleursIcon}
+                        indice="Fortes chaleurs"
+                        tag={fortesChaleurs}
                       />
                     ) : null}
                   </div>
