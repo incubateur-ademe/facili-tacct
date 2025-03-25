@@ -98,9 +98,8 @@ export const PrelevementEau = (props: {
     <>
       <div>
         L'indicateur représente le volume annuel d'eau prélevée, par grands
-        usages,
+        usages,{' '}
         <u>
-          {' '}
           pour les prélèvements soumis à redevance, sur la base de déclarations
           auprès des agences et offices de l’eau.
         </u>{' '}
@@ -163,13 +162,14 @@ export const PrelevementEau = (props: {
                     ni les consommations réelles, ni le lieu de consommation.
                     L'industrie rejette une partie de l'eau prélevée, tandis que
                     l'agriculture consomme la quasi-totalité de ses
-                    prélèvements, concentrés sur trois mois d'été. Dans les
-                    zones géographiques en tension, l'agriculture peut
-                    représenter jusqu'à 80 % de l'eau consommée. Cette situation
-                    fragilise la ressource locale. Le prix de l'eau est
-                    susceptible d'augmenter pour deux raisons : la rareté de la
-                    ressource et le besoin de traitements plus sophistiqués
-                    (dénitrification, élimination des micropolluants, etc.).
+                    prélèvements, concentrés sur les mois les plus chaud de
+                    l’année. Dans les zones géographiques en tension,
+                    l'agriculture peut représenter jusqu'à 80 % de l'eau
+                    consommée. Cette situation fragilise la ressource locale. Le
+                    prix de l'eau est susceptible d'augmenter pour deux raisons
+                    : la rareté de la ressource et le besoin de traitements plus
+                    sophistiqués (dénitrification, élimination des
+                    micropolluants, etc.).
                   </p>
                   <p>
                     ⇒ Lors de la sécheresse 2022, 2000 communes ont été en

@@ -1,7 +1,7 @@
 'use client';
 
 import { Loader } from '@/components/loader';
-import { AgeBati } from '@/components/themes/inconfortThermique/age-bati';
+import { AgeBati } from '@/components/themes/inconfortThermique/ageBati';
 import { DensiteBati } from '@/components/themes/inconfortThermique/densite-bati';
 import { FragiliteEconomique } from '@/components/themes/inconfortThermique/fragilite-economique';
 import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grand-age-isolement';
