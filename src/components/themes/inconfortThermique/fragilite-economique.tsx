@@ -113,7 +113,7 @@ export const FragiliteEconomique = ({
                 <div className={styles.explicationWrapper}>
                   <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                     La part des ménages en situation de précarité énergétique
-                    logement sur votre territoire est de{' '}
+                    liée au logement sur votre territoire est de{' '}
                     <b>{(100 * precariteLogTerritoire).toPrecision(3)} %. </b>
                   </p>
                   {type === 'commune' || re.test(libelle) ? (
@@ -182,8 +182,8 @@ export const FragiliteEconomique = ({
                 <div className={styles.graphWrapper}>
                   <p style={{ padding: '1em', margin: '0' }}>
                     <b>
-                      Répartition de la précarité énergétique logement par
-                      commune au sein de l'EPCI
+                      Répartition de la précarité énergétique liée au logement
+                      par commune au sein de l'EPCI
                     </b>
                   </p>
                   {/* <LegendInconfortThermique data={'precarite_log'} /> */}
