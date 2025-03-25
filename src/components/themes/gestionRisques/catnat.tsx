@@ -147,6 +147,7 @@ export const Catnat = (props: {
       </div>
     </>
   );
+
   return (
     <>
       {secheresse && precipitation ? (
@@ -169,16 +170,26 @@ export const Catnat = (props: {
                     </p>
                   )}
                   <div className={styles.patch4Wrapper}>
-                    {secheresse === 'Intensité très forte' ||
-                    secheresse === 'Intensité forte' ? (
+                    {secheresse === 'Intensité très forte' ? (
                       <TagItem
                         icon={secheresseIcon}
-                        indice="Fortes chaleurs"
+                        indice="Sécheresse des sols"
                         tag={secheresse}
                       />
+                    ) : precipitation === 'Intensité très forte' ? (
+                      <TagItem
+                        icon={precipitationIcon}
+                        indice="Fortes précipitations"
+                        tag={precipitation}
+                      />
                     ) : null}
-                    {precipitation === 'Intensité très forte' ||
-                    precipitation === 'Intensité forte' ? (
+                    {secheresse === 'Intensité forte' ? (
+                      <TagItem
+                        icon={secheresseIcon}
+                        indice="Sécheresse des sols"
+                        tag={secheresse}
+                      />
+                    ) : precipitation === 'Intensité forte' ? (
                       <TagItem
                         icon={precipitationIcon}
                         indice="Fortes précipitations"

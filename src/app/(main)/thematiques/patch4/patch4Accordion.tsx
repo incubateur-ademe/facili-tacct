@@ -20,6 +20,7 @@ import Image, { StaticImageData } from 'next/image';
 import { useState } from 'react';
 import { TagPatch4 } from '../../../../components/patch4/Tag';
 import styles from '../thematiques.module.scss';
+import { SubAccordionComp } from './subAccordion';
 
 const TagItem = ({
   icon,
@@ -136,13 +137,13 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
           <div className={styles.wrapper}>
             <div className="flex flex-col gap-4 w-[512px]">
               <TagItem
-                icon={precipitationIcon}
-                indice="Précipitations"
-                tag={precipitation}
+                icon={fortesChaleursIcon}
+                indice="Fortes chaleurs"
+                tag={fortesChaleurs}
               />
               <TagItem
                 icon={secheresseIcon}
-                indice="Sécheresse"
+                indice="Sécheresse des sols"
                 tag={secheresse}
               />
               {patch4.niveaux_marins === null ? null : (
@@ -155,14 +156,14 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
             </div>
             <div className="flex flex-col gap-4">
               <TagItem
+                icon={precipitationIcon}
+                indice="Fortes précipitations"
+                tag={precipitation}
+              />
+              <TagItem
                 icon={feuxForetIcon}
                 indice="Feux de forêt"
                 tag={feuxForet}
-              />
-              <TagItem
-                icon={fortesChaleursIcon}
-                indice="Fortes chaleurs"
-                tag={fortesChaleurs}
               />
             </div>
           </div>
@@ -177,40 +178,58 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
           incididunt ut labore et dolore magna.
         </p>
         <br></br>
-        <div className={styles.indiceWrapper}>
-          <SubAccordion>
-            <AccordionSummary
-              aria-controls="panel1-content"
-              id="panel1-header"
-              expandIcon={
-                <>
-                  <div className={styles.iconNotExpanded}>
-                    <ExpandMoreIcon />
-                  </div>
-                </>
-              }
-            >
-              <div className={styles.indiceExplication}>
-                <Image src={precipitationIcon} alt="" />
-                <p>
-                  <b>Précipitations : </b>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna.
-                </p>
+        <div className={styles.bottomTagsWrapper}>
+          <p>
+            <b>Les quatre niveaux d’intensité sont les suivants :</b>
+          </p>
+          {tagIntensite.map((item, index) => (
+            <div key={index} className={styles.tagExplication}>
+              <div className="w-[200px]">
+                <TagPatch4>{item}</TagPatch4>
               </div>
-            </AccordionSummary>
-            <AccordionDetails>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum
-                dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna. Lorem ipsum dolor
-                sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna.
+                eiusmod tempor incididunt ut labore et dolore magna.
               </p>
-            </AccordionDetails>
-          </SubAccordion>
-          <div className={styles.indiceExplication}>
+            </div>
+          ))}
+        </div>
+        <br></br>
+        <br></br>
+        <div className={styles.indiceWrapper}>
+          <SubAccordionComp
+            icon={precipitationIcon}
+            titre="Précipitations"
+            textHeader="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+            textContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+          />
+          <SubAccordionComp
+            icon={secheresseIcon}
+            titre="Sécheresse"
+            textHeader="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+            textContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+          />
+          {patch4.niveaux_marins === null ? null : (
+            <SubAccordionComp
+              icon={niveauxMarinsIcon}
+              titre="Niveaux marins"
+              textHeader="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+              textContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+            />
+          )}
+          <SubAccordionComp
+            icon={feuxForetIcon}
+            titre="Feux de forêt"
+            textHeader="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+            textContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+          />
+          <SubAccordionComp
+            icon={fortesChaleursIcon}
+            titre="Fortes chaleurs"
+            textHeader="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+            textContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+          />
+          {/* <div className={styles.indiceExplication}>
             <Image src={precipitationIcon} alt="" />
             <p>
               <b>Précipitations : </b>
@@ -271,23 +290,7 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
               consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
               labore et dolore magna.
             </p>
-          </div>
-        </div>
-        <div className={styles.bottomTagsWrapper}>
-          <p>
-            <b>Les quatre niveaux d’intensité sont les suivants :</b>
-          </p>
-          {tagIntensite.map((item, index) => (
-            <div key={index} className={styles.tagExplication}>
-              <div className="w-[200px]">
-                <TagPatch4>{item}</TagPatch4>
-              </div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna.
-              </p>
-            </div>
-          ))}
+          </div> */}
         </div>
       </AccordionDetails>
     </Accordion>

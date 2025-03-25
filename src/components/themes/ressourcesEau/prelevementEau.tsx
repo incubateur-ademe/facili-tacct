@@ -57,10 +57,8 @@ export const PrelevementEau = (props: {
   const codepci = searchParams.get('codepci')!;
   const [patch4, setPatch4] = useState<Patch4[]>();
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
-  const volumeTotalPreleve = Round(
-    SumFiltered(ressourcesEau, codgeo, codepci, 'total', true) / 1000000,
-    0
-  );
+  const volumeTotalPreleve =
+    SumFiltered(ressourcesEau, codgeo, codepci, 'total', true) / 1000000;
   const dataParMaille = codgeo
     ? ressourcesEau.filter((obj) => obj.code_geographique === codgeo)
     : ressourcesEau.filter((obj) => obj.epci === codepci);
@@ -132,9 +130,9 @@ export const PrelevementEau = (props: {
                 <div className={styles.explicationWrapper}>
                   <p>
                     Le volume total des prélèvements en eau de votre territoire
-                    en 2020 est de <b>{volumeTotalPreleve} Mm3</b>, soit
-                    l’équivalent de{' '}
-                    <b>{Round((1000000 * volumeTotalPreleve) / 3750, 3)}</b>{' '}
+                    en 2020 est de <b>{Round(volumeTotalPreleve, 3)} Mm3</b>,
+                    soit l’équivalent de{' '}
+                    <b>{Round((1000000 * volumeTotalPreleve) / 3750, 0)}</b>{' '}
                     piscines olympiques.
                   </p>
                   <div className={styles.patch4Wrapper}>
