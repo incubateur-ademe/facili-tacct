@@ -10,8 +10,8 @@ import styles from '../thematiques.module.scss';
 export const ExplicationIndices = ({ patch4 }: { patch4: Patch4 }) => {
   return (
     <div className={styles.indiceWrapper}>
-      <h3 style={{ fontSize: '1rem', margin: 0 }}>
-        <b>Ces indices représentent chacun l’évolution d’un phénomène climatique précis, sur la  base d’un ou
+      <h3 style={{ fontSize: '1rem', margin: 0, lineHeight: '1.5rem' }}>
+        <b>Ces indices représentent chacun l’évolution d’un phénomène climatique précis, sur la base d’un ou
           plusieurs indicateurs issus des projections de la TRACC.</b>
       </h3>
       <div className={styles.indiceExplication}>
@@ -24,6 +24,15 @@ export const ExplicationIndices = ({ patch4 }: { patch4: Patch4 }) => {
         </p>
       </div>
       <div className={styles.indiceExplication}>
+        <Image src={precipitationIcon} alt="" />
+        <p>
+          <b>Fortes précipitations : </b>
+          L’indice prend en compte la valeur maximale de deux indicateurs : l’évolution du
+          nombre de jours par saison avec fortes précipitations, et l’évolution du
+          cumul de précipitations quotidiennes remarquables.
+        </p>
+      </div>
+      <div className={styles.indiceExplication}>
         <Image src={secheresseIcon} alt="" />
         <p>
           <b>Sécheresse des sols : </b>
@@ -31,24 +40,6 @@ export const ExplicationIndices = ({ patch4 }: { patch4: Patch4 }) => {
           lui-même basé sur le Soil Wetness Index (SWI04) représentant une humidité des sols inférieure à 0,4
           (valeur définie comme seuil critique pour l’état de la réserve en eau du sol par rapport à
           la réserve utile disponible pour l’alimentation des plantes).
-        </p>
-      </div>
-      {patch4.niveaux_marins === null ? null : (
-        <div className={styles.indiceExplication}>
-          <Image src={niveauxMarinsIcon} alt="" />
-          <p>
-            <b>Niveaux marins : </b>
-            L’indice s’appuie sur l’indicateur d’évolution de l’élévation du niveau moyen de la mer.
-          </p>
-        </div>
-      )}
-      <div className={styles.indiceExplication}>
-        <Image src={precipitationIcon} alt="" />
-        <p>
-          <b>Fortes précipitations : </b>
-          L’indice prend en compte la valeur maximale de deux indicateurs : l’évolution du
-          nombre de jours par saison avec fortes précipitations, et l’évolution du
-          cumul de précipitations quotidiennes remarquables.
         </p>
       </div>
       <div className={styles.indiceExplication}>
@@ -61,6 +52,15 @@ export const ExplicationIndices = ({ patch4 }: { patch4: Patch4 }) => {
           données météorologiques : température, humidité de l'air, vitesse du vent et précipitations.
         </p>
       </div>
+      {patch4.niveaux_marins === null ? null : (
+        <div className={styles.indiceExplication}>
+          <Image src={niveauxMarinsIcon} alt="" />
+          <p>
+            <b>Niveaux marins : </b>
+            L’indice s’appuie sur l’indicateur d’évolution de l’élévation du niveau moyen de la mer.
+          </p>
+        </div>
+      )}
 
     </div>
   )
