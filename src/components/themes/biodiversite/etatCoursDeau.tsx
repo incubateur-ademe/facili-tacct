@@ -81,7 +81,11 @@ const EtatQualiteCoursDeau = (props: {
       </ul>
       <p>
         Attention, le bon état écologique d’une rivière ne signifie pas une
-        qualité sanitaire suffisante pour s’y baigner.
+        qualité sanitaire suffisante pour s’y baigner. Cette évaluation se
+        fait en fonction de données microbiologiques. Le classement des
+        eaux de qualité insuffisante, suffisante, bonne ou excellente est
+        établi conformément aux critères de l’annexe II de la directive
+        2006/7/CE concernant la gestion de la qualité des eaux de baignade.
       </p>
       <br></br>
     </div>
@@ -98,11 +102,13 @@ const EtatQualiteCoursDeau = (props: {
                   <p>
                     La biodiversité en eau douce est particulièrement menacée.
                     La carte ci-contre reflète l’état écologique des cours d’eau
-                    présents sur votre territoire.
+                    présents sur votre territoire. La qualité des plans d’eau utilisés
+                    pour la baignade est également référencée car la baignade, et
+                    les activités associées (kayak, …), ont un impact sur les écosystèmes aquatiques.
                   </p>
                   <div className={styles.patch4Wrapper}>
                     {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                      fortesChaleurs === 'Intensité forte' ? (
                       <TagItem
                         icon={fortesChaleursIcon}
                         indice="Fortes chaleurs"
@@ -110,7 +116,7 @@ const EtatQualiteCoursDeau = (props: {
                       />
                     ) : null}
                     {precipitation === 'Intensité très forte' ||
-                    precipitation === 'Intensité forte' ? (
+                      precipitation === 'Intensité forte' ? (
                       <TagItem
                         icon={precipitationIcon}
                         indice="Fortes précipitations"
@@ -188,7 +194,7 @@ const EtatQualiteCoursDeau = (props: {
                     <LegendCompColor legends={etatCoursDeauLegends} />
                   </div>
                   <div className={styles.legendCoursDeau}>
-                    <h3>- Plans d'eau -</h3>
+                    <h3>- État des plans d’eau utilisés pour la baignade -</h3>
                     <LegendCompIcons legends={qualiteEauxBaignadelegends} />
                   </div>
                   <p style={{ padding: '1em', margin: '0' }}>
