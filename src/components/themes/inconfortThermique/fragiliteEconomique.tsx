@@ -31,22 +31,11 @@ export const FragiliteEconomique = ({
     .filter((e) => !isNaN(e.properties.precarite_logement));
 
   const carteTerritoire =
-    type === 'commune'
-      ? communesMap
-      : type === 'epci' && re.test(libelle)
-        ? communesMap.filter((e) => e.properties.ept === libelle)
-        : type === 'epci'
-          ? communesMap.filter((e) => e.properties.epci === code)
-          : type === 'pnr'
-            ? communesMap.filter((e) => e.properties.code_pnr === code)
-            : type === 'departement'
-              ? communesMap.filter((e) => e.properties.departement === code)
-              : communesMap.filter(
-                  (e) => e.properties.libelle_petr === libelle
-                );
+    type === 'epci' && re.test(libelle)
+      ? communesMap.filter((e) => e.properties.ept === libelle)
+      : communesMap;
 
-  //Mean of all ratio_precarite_log of municipalities in epci
-  const precariteLogTerritoire: number =
+  const precariteLogTerritoire =
     type === 'commune'
       ? Number(
           carteTerritoire.find(
@@ -59,20 +48,22 @@ export const FragiliteEconomique = ({
           }, 0) / carteTerritoire.length
         );
 
-  const precariteLogEpci =
-    type === 'commune' || re.test(libelle)
-      ? Number(
-          communesMap.reduce(function (a, b) {
-            return a + b.properties['precarite_logement'];
-          }, 0) / communesMap.length
-        )
-      : null;
+  const precariteLogTerritoireSup = Number(
+    communesMap.reduce(function (a, b) {
+      return a + b.properties['precarite_logement'];
+    }, 0) / communesMap.length
+  );
 
   useEffect(() => {
-    (type === 'epci' || type === 'communes') && re.test(code)
+    !(
+      type === 'petr' ||
+      type === 'pnr' ||
+      type === 'departement' ||
+      re.test(libelle)
+    )
       ? void (async () => {
           const temp = await GetPatch4(code);
-          temp && code ? setPatch4(temp) : void 0;
+          setPatch4(temp);
         })()
       : void 0;
   }, [code]);
@@ -119,8 +110,10 @@ export const FragiliteEconomique = ({
                   {type === 'commune' || re.test(libelle) ? (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       Ce taux est de{' '}
-                      <b>{(100 * precariteLogEpci!).toPrecision(3)} %</b> dans
-                      votre EPCI.
+                      <b>
+                        {(100 * precariteLogTerritoireSup).toPrecision(3)} %
+                      </b>{' '}
+                      dans votre EPCI.
                     </p>
                   ) : (
                     ''
@@ -186,7 +179,6 @@ export const FragiliteEconomique = ({
                       par commune au sein de l'EPCI
                     </b>
                   </p>
-                  {/* <LegendInconfortThermique data={'precarite_log'} /> */}
                   <Map data={'precarite_log'} carteCommunes={carteTerritoire} />
                   <div
                     className={styles.legend}

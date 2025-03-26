@@ -2,7 +2,6 @@
 import ressourcesIcon from '@/assets/icons/ressources_icon_blue.svg';
 import { config } from '@/config';
 import { DarkClass } from '@/lib/utils/DarkClass';
-import Badge from '@codegouvfr/react-dsfr/Badge';
 import Header from '@codegouvfr/react-dsfr/Header';
 import { Button } from '@mui/material';
 import Image from 'next/image';
@@ -59,14 +58,7 @@ export const HeaderComp = () => {
         href: '/',
         title: `Accueil - ${config.name}`
       }}
-      serviceTitle={
-        <>
-          {config.name}{' '}
-          <Badge as="span" noIcon severity="success">
-            Beta
-          </Badge>
-        </>
-      }
+      serviceTitle={config.name}
       operatorLogo={{
         alt: "Logo de l'ADEME",
         imgUrl: '/logo-ademe.svg',
