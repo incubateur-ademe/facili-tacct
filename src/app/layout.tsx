@@ -17,6 +17,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
       lang="fr"
       {...getHtmlAttributes({ defaultColorScheme, lang: 'fr' })}
       className={cx(styles.app)}
+      title=''
     >
       <head>
         <StartDsfr />
