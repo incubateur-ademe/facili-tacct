@@ -1,10 +1,6 @@
 'use server';
 
-import {
-  AgricultureBio,
-  Biodiversite,
-  InconfortThermique
-} from '@/lib/postgres/models';
+import { AgricultureBio, Biodiversite } from '@/lib/postgres/models';
 import * as Sentry from '@sentry/nextjs';
 import { PrismaClient as PostgresClient } from '../../generated/client';
 
