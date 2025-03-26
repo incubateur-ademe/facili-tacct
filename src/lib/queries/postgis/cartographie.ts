@@ -22,7 +22,7 @@ export const GetCommunes = async (
     if (type === 'commune') {
       const epci = await PrismaPostgres.communes_drom.findFirst({
         where: {
-          epci: code
+          code_geographique: code
         }
       });
       const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
@@ -41,7 +41,7 @@ export const GetCommunes = async (
         densite_bati,
         surface,
         ST_AsGeoJSON(geometry) geometry 
-        FROM postgis."communes_drom" WHERE epci=${epci};`;
+        FROM postgis."communes_drom" WHERE epci=${epci?.epci};`;
       console.timeEnd(`Query Execution Time carte communes ${code}`);
       return value;
     } else if (type === 'epci' && re.test(libelle)) {
@@ -64,7 +64,7 @@ export const GetCommunes = async (
           FROM postgis."communes_drom" WHERE epci='200054781';`;
       console.timeEnd(`Query Execution Time carte communes ${code}`);
       return value;
-    } else if (type === 'epci') {
+    } else if (type === 'epci' && !re.test(libelle)) {
       const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
           epci, 
