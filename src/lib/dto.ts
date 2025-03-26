@@ -35,6 +35,11 @@ export type travailExtDto = {
   epci: string;
   libelle_epci: string;
   libelle_geographique: string;
+  ept: string | null;
+  libelle_petr: string | null;
+  libelle_pnr: string | null;
+  code_pnr: string | null;
+  departement: string;
 };
 
 export type GrandAgeIsolementDto = {
