@@ -86,11 +86,11 @@
         display: flex;
         flex-direction: row;
         gap: 10px;
-        background-color: #fbfbff;
+        background-color: #f4f4ff;
         margin-top: 18px;
         color: #000091;
         padding: 10px;
-        border-radius: 1rem;
+        border-radius: 3rem;
         width: max-content;
     }
     .iconExpanded {
@@ -100,9 +100,9 @@
         color: #000091;
         margin-bottom: 18px;
         rotate: 180deg;
-        background-color: #fbfbff;
+        background-color: #f4f4ff;
         padding: 10px;
-        border-radius: 1rem;
+        border-radius: 3rem;
         width: max-content;
     }
     .accordionHeader {
@@ -132,16 +132,17 @@
     }
 }
 
-.bottomTagsWrapper {
+.intensiteTagsWrapper {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    .tagExplication {
-        display: flex;
-        flex-direction: row;
-        gap: 0.5rem;
-        align-items: center;
-    }
+}
+
+.tagExplication {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
 }
 
 .indiceRow {
