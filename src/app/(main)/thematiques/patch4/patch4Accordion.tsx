@@ -13,6 +13,7 @@ import MuiAccordionSummary, {
 } from '@mui/material/AccordionSummary';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useStyles } from 'tss-react/dsfr';
 import { TagPatch4 } from '../../../../components/patch4/Tag';
 import styles from '../thematiques.module.scss';
 import { AccordionHeader } from './accordionHeader';
@@ -54,7 +55,7 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 
 export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
   const [expanded, setExpanded] = useState(false);
-
+  const { css } = useStyles();
   return (
     <Accordion className={styles.accordion}>
       <AccordionSummary
@@ -76,6 +77,16 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
           </>
         }
         onClick={() => setExpanded(!expanded)}
+        className={css({
+          ".MuiAccordionSummary-expandIconWrapper": {
+            width: '325px',
+            display: 'flex',
+            justifyContent: "flex-end",
+            "&.Mui-expanded": {
+              justifyContent: "flex-start"
+            }
+          },
+        })}
       >
         <AccordionHeader patch4={patch4} />
       </AccordionSummary>
@@ -97,7 +108,6 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
           <h3 style={{ fontSize: '1rem', margin: 0 }}>
             <b>À chaque niveau d’intensité, ses recommandations.</b>
           </h3>
-          <p>Lorsque l'évolution de long terme (2050-2100) est :</p>
           {tagIntensite.map((item, index) => (
             <SubAccordionComp
               key={index}
@@ -107,10 +117,17 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
             />
           ))}
           <div className={styles.tagExplication} style={{ padding: '0 1rem' }}>
-            <div className="w-[150px]">
+            <div className="min-w-[160px]">
+              <TagPatch4>Intensité modérée</TagPatch4>
+            </div>
+            <p>Lorsque l’évolution de long terme (2050-2100) est inférieure à la valeur sur la période 2030-2050, il n’y a pas de correctif spécifique à apporter à court terme.
+            </p>
+          </div>
+          <div className={styles.tagExplication} style={{ padding: '0 1rem' }}>
+            <div className="min-w-[160px]">
               <TagPatch4>Pas d'évolution</TagPatch4>
             </div>
-            <p>en cas de stabilité ou de baisse de l’indicateur entre 2030 et 2100, l’intensité est considérée comme faible.</p>
+            <p>En cas de stabilité ou de baisse de l’indicateur entre 2030 et 2100, l’intensité est considérée comme faible.</p>
           </div>
         </div>
         <br></br><br></br>
