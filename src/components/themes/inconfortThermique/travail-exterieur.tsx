@@ -30,27 +30,29 @@ export const TravailExterieur = (props: {
 }) => {
   const { inconfortThermique } = props;
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo');
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4[]>();
+  const re = new RegExp('T([1-9]|1[0-2])\\b');
+
   const travailExterieurMapped = inconfortThermique.map(travailExtMapper);
-  const travailExterieurCommune = codgeo
-    ? travailExterieurMapped.filter((e) => e.code_geographique === codgeo)
-    : null;
-  const travailExterieurEpci = travailExterieurMapped.filter(
-    (e) => e.epci === codepci
-  );
-  const travailExterieurDptmt = travailExterieurMapped;
-  const travailExterieurCollectivite = travailExterieurCommune
-    ? travailExterieurCommune
-    : travailExterieurEpci;
+
+  const travailExterieurTerritoire =
+    type === 'commune'
+      ? travailExterieurMapped.filter((e) => e.code_geographique === code)
+      : type === 'epci' && re.test(libelle)
+        ? travailExterieurMapped.filter((e) => e.ept === libelle)
+        : type === 'epci' && !re.test(libelle)
+          ? travailExterieurMapped.filter((e) => e.epci === code)
+          : travailExterieurMapped;
 
   const sums = {
-    sumAgriculture: sumProperty(travailExterieurCollectivite, 'NA5AZ_sum'),
-    sumIndustries: sumProperty(travailExterieurCollectivite, 'NA5BE_sum'),
-    sumConstruction: sumProperty(travailExterieurCollectivite, 'NA5FZ_sum'),
-    sumCommerce: sumProperty(travailExterieurCollectivite, 'NA5GU_sum'),
-    sumAdministration: sumProperty(travailExterieurCollectivite, 'NA5OQ_sum')
+    sumAgriculture: sumProperty(travailExterieurTerritoire, 'NA5AZ_sum'),
+    sumIndustries: sumProperty(travailExterieurTerritoire, 'NA5BE_sum'),
+    sumConstruction: sumProperty(travailExterieurTerritoire, 'NA5FZ_sum'),
+    sumCommerce: sumProperty(travailExterieurTerritoire, 'NA5GU_sum'),
+    sumAdministration: sumProperty(travailExterieurTerritoire, 'NA5OQ_sum')
   };
 
   const graphData = [
@@ -107,12 +109,21 @@ export const TravailExterieur = (props: {
     ) +
     Number(((100 * sums.sumAgriculture) / Sum(Object.values(sums))).toFixed(1));
 
+  console.log('travailExt', travailExt);
+
   useEffect(() => {
-    void (async () => {
-      const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
-    })();
-  }, [codgeo, codepci]);
+    !(
+      type === 'petr' ||
+      type === 'pnr' ||
+      type === 'departement' ||
+      re.test(libelle)
+    )
+      ? void (async () => {
+          const temp = await GetPatch4(code);
+          setPatch4(temp);
+        })()
+      : void 0;
+  }, [code]);
 
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4[0], 'fortes_chaleurs')

@@ -3,8 +3,8 @@
 import { Loader } from '@/components/loader';
 import { AgeBati } from '@/components/themes/inconfortThermique/ageBati';
 import { DensiteBati } from '@/components/themes/inconfortThermique/densite-bati';
-import { FragiliteEconomique } from '@/components/themes/inconfortThermique/fragilite-economique';
-import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grand-age-isolement';
+import { FragiliteEconomique } from '@/components/themes/inconfortThermique/fragiliteEconomique';
+import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grandAgeIsolement';
 import { TravailExterieur } from '@/components/themes/inconfortThermique/travail-exterieur';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import { CarteCommunes, CLC, InconfortThermique } from '@/lib/postgres/models';
