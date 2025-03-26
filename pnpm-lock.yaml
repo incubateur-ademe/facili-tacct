@@ -101,7 +101,7 @@ importers:
         specifier: ^1.9.4
         version: 1.9.4
       next:
-        specifier: ^15
+        specifier: 15.1.6
         version: 15.1.6(@babel/core@7.26.7)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.83.4)
       next-auth:
         specifier: ^4.24.11
@@ -170,6 +170,9 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.6.0
         version: 19.6.0
+      '@creedengo/eslint-plugin':
+        specifier: ^2.0.0
+        version: 2.0.0(eslint@8.57.1)
       '@mdx-js/loader':
         specifier: ^3.0.0
         version: 3.1.0(acorn@8.14.0)(webpack@5.97.1)
@@ -571,6 +574,15 @@ packages:
         integrity: sha512-DSHae2obMSMkAtTBSOulg5X7/z+rGLxcXQIkg3OmWvY6wifojge5uVMydfhUvs7yQj+V7jNmRZ2Xzl8GJyqRgg==
       }
     engines: { node: '>=v18' }
+
+  '@creedengo/eslint-plugin@2.0.0':
+    resolution:
+      {
+        integrity: sha512-1CIpneqooCuiPw1LP3rXhShrzw7nkJh6dDT3jbRCcGtNbBMj4uyq6ZFWYgYviW9lvK1bR/JkvSk5nlfk6w7Jjw==
+      }
+    engines: { node: ^14.17.0 || ^16.0.0 || >= 18.0.0 }
+    peerDependencies:
+      eslint: '>=7'
 
   '@cspotcode/source-map-support@0.8.1':
     resolution:
@@ -9864,6 +9876,10 @@ snapshots:
     dependencies:
       '@types/conventional-commits-parser': 5.0.1
       chalk: 5.4.1
+
+  '@creedengo/eslint-plugin@2.0.0(eslint@8.57.1)':
+    dependencies:
+      eslint: 8.57.1
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
