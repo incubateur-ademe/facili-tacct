@@ -1,7 +1,6 @@
 'use client';
 
 import useWindowDimensions from '@/hooks/windowDimensions';
-import { DarkClass } from '@/lib/utils/DarkClass';
 import Image from 'next/image';
 import Constellation2Img from '../../assets/images/constellation2.png';
 import Constellation3Img from '../../assets/images/constellation3.png';
@@ -12,7 +11,6 @@ import styles from '../root.module.scss';
 import { CollectiviteSearch } from './CollectiviteSearch';
 
 const Home = () => {
-  const darkClass = DarkClass();
   const window = useWindowDimensions();
   return (
     <div className="mb-24">
