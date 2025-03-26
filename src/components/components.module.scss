@@ -151,7 +151,8 @@
         flex-direction: row;
         gap: 1rem;
         align-items: center;
-        min-width: 200px;
+        width: 200px;
+        min-width: fit-content;
         p {
             font-size: 14px;
             line-height: 12.14px;
