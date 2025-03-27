@@ -47,21 +47,21 @@ type SearchParams = Promise<{
 // };
 
 // export type CarteCommunes = {
-//   code_commune: string;
+//   code_geographique: string;
 //   coordinates: string;
 //   densite_bati: number;
 //   epci: string;
 //   geometry: string;
-//   libelle_commune: string;
+//   libelle_geographique: string;
 //   libelle_epci: string;
 
 //   precarite_logement: number;
 //   // properties: {
-//   //   code_commune: string;
+//   //   code_geographique: string;
 //   //   coordinates: string;
 //   //   densite_bati: number;
 //   //   epci: string;
-//   //   libelle_commune: string;
+//   //   libelle_geographique: string;
 //   //   libelle_epci: string;
 //   //   precarite_logement: number;
 //   //   }
@@ -95,7 +95,7 @@ type SearchParams = Promise<{
 //   clc_3_foret_semiNaturel: number | null | undefined;
 //   clc_4_humide: number | null | undefined;
 //   clc_5_eau: number | null | undefined;
-//   code_commune: string | null | undefined;
+//   code_geographique: string | null | undefined;
 //   densite_bati: number | null | undefined;
 //   departement: string | null | undefined;
 //   epci: string | null | undefined;

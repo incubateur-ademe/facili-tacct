@@ -7,19 +7,6 @@ import { Any } from '@/lib/utils/types';
 import { DefaultRawDatum, PieCustomLayerProps, ResponsivePie } from '@nivo/pie';
 import { animated } from '@react-spring/web';
 
-type ArreteCatNat = {
-  annee_arrete: number;
-  lib_risque_jo: string | null;
-  dat_pub_arrete: string | null;
-  code_geographique: string | null;
-  departement: string | null;
-  epci: string | null;
-  index: bigint | null;
-  libelle_epci: string | null;
-  libelle_geographique: string | null;
-  region: number | null;
-};
-
 const colors: { [key: string]: string } = {
   Inondations: '#009ADC',
   Sécheresse: '#FFCF5E',
@@ -58,7 +45,7 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNat[] }) => {
       <>
         <text
           x={centerX}
-          y={centerY}
+          y={centerY - 10}
           textAnchor="middle"
           dominantBaseline="central"
           style={{
@@ -70,7 +57,7 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNat[] }) => {
         </text>
         <text
           x={centerX}
-          y={centerY + 30}
+          y={centerY + 20}
           textAnchor="middle"
           dominantBaseline="central"
           style={{
