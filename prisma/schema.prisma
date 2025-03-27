@@ -201,14 +201,13 @@ model agriculture_bio {
 }
 
 model erosion_cotiere {
-  pk         Int                     @id @default(autoincrement())
+  pk         Int                     @id
   taux       Float
   duree      Float
   tdc_ancien BigInt
   tdc_rec    BigInt
   geometry   Unsupported("geometry")
 
-  @@index([geometry], map: "erosion_cotiere_geometry_geom_idx", type: Gist)
   @@schema("postgis")
 }
 
@@ -251,17 +250,6 @@ model surfaces_protegees {
 
   @@index([index], map: "ix_surfaces_protegees_index")
   @@schema("databases")
-}
-
-/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
-model spatial_ref_sys {
-  srid      Int     @id
-  auth_name String? @db.VarChar(256)
-  auth_srid Int?
-  srtext    String? @db.VarChar(2048)
-  proj4text String? @db.VarChar(2048)
-
-  @@schema("postgis")
 }
 
 model consommation_espaces_naf {
@@ -399,29 +387,10 @@ model consommation_espaces_naf {
   @@schema("databases")
 }
 
-model lcz_bayonne_test {
-  pk         Int                      @id @default(autoincrement())
-  identifier String?                  @db.VarChar
-  hre        Float?
-  are        Float?
-  bur        Float?
-  ror        Float?
-  bsr        Float?
-  war        Float?
-  ver        Float?
-  vhr        Float?
-  lcz        String?                  @db.VarChar
-  lcz_int    Int?
-  geometry   Unsupported("geometry")?
-
-  @@index([geometry], map: "lcz_bayonne_test_geometry_geom_idx", type: Gist)
-  @@schema("postgis")
-}
-
 model north_star_metric {
+  pk    Int      @id
   value String   @db.VarChar(32)
   date  DateTime @db.Timestamp(6)
-  pk    Int      @id
 
   @@schema("analytics")
 }
@@ -449,18 +418,6 @@ model aot_40 {
   @@schema("databases")
 }
 
-model users {
-  pk              Int       @id @default(autoincrement())
-  email           String    @unique(map: "email") @db.VarChar(256)
-  username        String    @unique(map: "username") @db.VarChar(256)
-  password        String    @db.VarChar(256)
-  created_at      DateTime  @db.Timestamp(6)
-  last_connection DateTime? @db.Timestamptz(6)
-  role            String    @db.VarChar(8)
-
-  @@schema("ressources")
-}
-
 model qualite_sites_baignade {
   index    BigInt  @id
   DEP_NOM  String
@@ -480,5 +437,80 @@ model qualite_sites_baignade {
   QEB_2020 String?
 
   @@index([index], map: "ix_qualite_sites_baignade_index")
+  @@schema("databases")
+}
+
+/// This table has subclasses and requires additional setup for migrations. Visit https://pris.ly/d/table-inheritance for more info.
+model communes {
+  pk                 Int                      @id @default(autoincrement())
+  code_commune       String?                  @db.VarChar
+  libelle_commune    String?                  @db.VarChar
+  epci               String?                  @db.VarChar
+  libelle_epci       String?                  @db.VarChar
+  libgeo             String?                  @db.VarChar
+  coordinates        String?                  @db.VarChar
+  densite_bati       Float?
+  precarite_logement Float?
+  geometry           Unsupported("geometry")?
+
+  @@index([geometry], map: "communes_geometry_geom_idx", type: Gist)
+  @@schema("postgis")
+}
+
+model patch4c {
+  index                 BigInt @id
+  code_geographique     String
+  niveaux_marins        Float?
+  feux_foret            Float
+  secheresse_sols       Float
+  fortes_precipitations Float
+  fortes_chaleurs       Float
+
+  @@index([index], map: "ix_patch4c_index")
+  @@index([code_geographique], map: "patch4c_communes_index")
+  @@schema("databases")
+}
+
+model agriculture {
+  index             BigInt @id
+  CODGEO            String
+  LIBGEO            String
+  EPCI              String
+  LIBEPCI           String
+  DEP               String
+  REG               Float
+  part_irr_SAU_2020 Float?
+  part_over_55      Float?
+
+  @@index([CODGEO], map: "agriculture_communes_index")
+  @@index([EPCI], map: "agriculture_epci_index")
+  @@index([index], map: "ix_agriculture_index")
+  @@schema("databases")
+}
+
+model incendies_foret {
+  index                                 BigInt  @id
+  code_geographique                     String
+  libelle_geographique                  String
+  epci                                  String
+  libelle_epci                          String
+  departement                           String
+  region                                Float
+  nature                                String?
+  annee                                 Int
+  surface_parcourue                     Float
+  surface_foret                         Float?
+  surface_maquis_garrigues              Float?
+  autres_surfaces_naturelles_hors_foret Float?
+  surfaces_agricoles                    Float?
+  surfaces_non_boisees                  Float?
+  surfaces_non_boisees_artificialisees  Float?
+  surfaces_non_boisees_naturelles       Float?
+  surface_autres_terres_boisees         Float?
+  autres_surfaces                       Float?
+
+  @@index([code_geographique], map: "incendies_foret_communes_index")
+  @@index([epci], map: "incendies_foret_epci_index")
+  @@index([index], map: "ix_incendies_foret_index")
   @@schema("databases")
 }
