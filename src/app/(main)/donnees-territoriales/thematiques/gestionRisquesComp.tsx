@@ -8,12 +8,14 @@ import { Suspense, useEffect, useState } from 'react';
 
 import { Catnat } from '@/components/themes/gestionRisques/catnat';
 import ErosionCotes from '@/components/themes/gestionRisques/erosionCotiere';
+import { FeuxForet } from '@/components/themes/gestionRisques/feuxForet';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   CarteCommunes,
   EpciContours,
   ErosionCotiere,
-  GestionRisques
+  GestionRisques,
+  IncendiesForet
 } from '@/lib/postgres/models';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
@@ -21,7 +23,7 @@ import styles from '../donnees.module.scss';
 interface Props {
   data: Array<{
     donnee: string;
-    facteur_sensibilite: string;
+    facteurSensibilite: string;
     id: number;
     risque: string;
     titre: string;
@@ -30,6 +32,7 @@ interface Props {
   carteCommunes: CarteCommunes[];
   erosionCotiere: ErosionCotiere[][];
   epciContours: EpciContours[];
+  incendiesForet: IncendiesForet[];
 }
 
 const allComps = [
@@ -58,6 +61,12 @@ const allComps = [
         epciContours={epciContours}
       />
     )
+  },
+  {
+    titre: 'Feux de forêt',
+    Component: ({ incendiesForet }: Props & { activeDataTab: string }) => (
+      <FeuxForet incendiesForet={incendiesForet} />
+    )
   }
 ];
 
@@ -66,7 +75,8 @@ const GestionRisquesComp = ({
   gestionRisques,
   carteCommunes,
   erosionCotiere,
-  epciContours
+  epciContours,
+  incendiesForet
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState(
     'Arrêtés catastrophes naturelles'
@@ -94,7 +104,7 @@ const GestionRisquesComp = ({
 
   useEffect(() => {
     setSelectedSubTab(
-      data.filter((el) => el.facteur_sensibilite === selectedTabId)[0].titre
+      data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
   }, [selectedTabId, codepci]);
 
@@ -112,6 +122,10 @@ const GestionRisquesComp = ({
                 titre="Arrêtés catastrophes naturelles"
               />
             )
+          },
+          {
+            tabId: 'Feux de forêt',
+            label: 'Feux de forêt'
           },
           ...(erosionCotiere[0].length > 0
             ? [
@@ -162,7 +176,7 @@ const GestionRisquesComp = ({
         <div className={styles.formContainer}>
           {/* <div className={styles.titles}>
             {data
-              .filter(el => el.facteur_sensibilite === selectedTabId)
+              .filter(el => el.facteurSensibilite === selectedTabId)
               .map((element, i) => (
                 <button
                   key={i}
@@ -191,6 +205,7 @@ const GestionRisquesComp = ({
                       carteCommunes={carteCommunes}
                       erosionCotiere={erosionCotiere}
                       epciContours={epciContours}
+                      incendiesForet={incendiesForet}
                     />
                   </Suspense>
                 );

@@ -3,7 +3,6 @@
 import {
   AgricultureBio,
   Biodiversite,
-  GestionRisques,
   InconfortThermique
 } from '@/lib/postgres/models';
 import * as Sentry from '@sentry/nextjs';
@@ -71,26 +70,6 @@ export const GetInconfortThermiqueDepartment = async (code: string) => {
   }
 };
 
-export const GetGestionRisques = async (
-  code: string
-): Promise<GestionRisques[]> => {
-  try {
-    console.time('Query Execution Time GESTIONRISQUES');
-    const value = await PrismaPostgres.gestion_risques.findMany({
-      where: {
-        OR: [{ epci: code }, { code_geographique: code }]
-      }
-    });
-    console.timeEnd('Query Execution Time GESTIONRISQUES');
-    return value;
-  } catch (error) {
-    console.error(error);
-    Sentry.captureException(error);
-    await PrismaPostgres.$disconnect();
-    process.exit(1);
-  }
-};
-
 export const GetBiodiversite = async (
   code: string
 ): Promise<Biodiversite[]> => {
@@ -122,13 +101,11 @@ export const GetAgricultureBio = async (
   code: string
 ): Promise<AgricultureBio[]> => {
   try {
-    console.time('Query Execution Time AGRICULTURE BIO');
     const value = await PrismaPostgres.agriculture_bio.findMany({
       where: {
         epci: code
       }
     });
-    console.timeEnd('Query Execution Time AGRICULTURE BIO');
     return value;
   } catch (error) {
     console.error(error);

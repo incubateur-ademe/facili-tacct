@@ -41,7 +41,7 @@ export const MapEtatCoursDeau = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const commune = carteCommunes.find(
-    (commune) => commune.properties.code_commune === codgeo
+    (commune) => commune.properties.code_geographique === codgeo
   );
   console.log('commune', commune);
   const mapRef = useRef(null);
@@ -70,7 +70,7 @@ export const MapEtatCoursDeau = (props: {
     const typedFeature = feature as EtatCoursDeauDto;
     return {
       fillColor: getColor(typedFeature?.properties.etateco),
-      weight: 2,
+      weight: 3,
       opacity: 1,
       color: getColor(typedFeature?.properties.etateco),
       fillOpacity: 0.95
@@ -79,7 +79,7 @@ export const MapEtatCoursDeau = (props: {
 
   const territoireStyle: StyleFunction<Any> = (e) => {
     return {
-      weight: e?.properties.code_commune === codgeo ? 2 : 0.5,
+      weight: e?.properties.code_geographique === codgeo ? 2 : 0.5,
       opacity: 0.9,
       color: '#161616',
       fillOpacity: 0
@@ -101,6 +101,9 @@ export const MapEtatCoursDeau = (props: {
 
   const mouseOnHandler: LeafletMouseEventHandlerFn = (e) => {
     const layer = e.target as FeatureGroup<EtatCoursDeauDto['properties']>;
+    //close residual opened tooltip
+    layer.unbindTooltip();
+    layer.closeTooltip();
     const coursDeau =
       layer.feature && 'properties' in layer.feature
         ? layer.feature.properties.name
@@ -108,7 +111,6 @@ export const MapEtatCoursDeau = (props: {
     layer.setStyle({
       weight: 7
     });
-    // console.log("e.originalEvent", e.originalEvent, e.target.options.color);
     layer.bindTooltip(
       CustomTooltip(coursDeau as string, e.target.options.color),
       {
@@ -123,12 +125,12 @@ export const MapEtatCoursDeau = (props: {
   //make style after hover disappear
   const mouseOutHandler: LeafletMouseEventHandlerFn = (e) => {
     const layer = e.target as FeatureGroup<EtatCoursDeauDto['properties']>;
+    layer.closeTooltip();
     layer.setStyle({
-      weight: 2,
+      weight: 3,
       // color: getColor(layer.feature?.properties.etateco),
       fillOpacity: 0.95
     });
-    layer.closeTooltip();
   };
 
   const onEachFeature = (feature: Feature<Any>, layer: Layer) => {
@@ -150,7 +152,7 @@ export const MapEtatCoursDeau = (props: {
       style={{ height: '500px', width: '100%', cursor: 'pointer' }}
       attributionControl={false}
       zoomControl={false}
-      minZoom={9}
+      // minZoom={9}
     >
       {process.env.NEXT_PUBLIC_ENV === 'preprod' ? (
         <TileLayer

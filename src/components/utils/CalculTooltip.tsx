@@ -39,7 +39,8 @@ export const CustomTooltip = ({
           alignItems: 'center',
           gap: '4px',
           width: 'fit-content',
-          cursor: 'pointer'
+          cursor: 'pointer',
+          margin: '1em 0 0'
         }}
       >
         <Image src={CalculatorIcon as StaticImageData} alt="" />

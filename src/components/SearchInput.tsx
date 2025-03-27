@@ -22,6 +22,10 @@ type Options = {
   codeEpci: string;
   searchCode: string;
   searchLibelle: string;
+  ept: string;
+  libellePetr: string;
+  libellePnr: string;
+  codePnr: string;
 };
 
 export const MySearchInput = (props: MySearchInputProps) => {
@@ -66,7 +70,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
     void (async () => {
       const getCollectivite = await GetCollectivite(inputValue);
       setOptions(
-        getCollectivite.map((el, i) => ({
+        getCollectivite.map((el) => ({
           searchLibelle: el.search_libelle,
           searchCode: el.search_code ?? '',
           codeCommune: el.code_commune ?? '',
@@ -96,7 +100,9 @@ export const MySearchInput = (props: MySearchInputProps) => {
       }}
       getOptionLabel={(option) => {
         if (option) {
-          return `${option.searchLibelle} (${option.searchCode})`;
+          return option.searchCode?.length !== 0
+            ? `${option.searchLibelle} (${option.searchCode})`
+            : `${option.searchLibelle}`;
         }
         return '';
       }}
@@ -112,11 +118,17 @@ export const MySearchInput = (props: MySearchInputProps) => {
             component="li"
             sx={{ height: 'fit-content' }}
             {...optionProps}
-            key={option.searchCode}
+            key={option.searchLibelle + option.searchCode}
           >
-            <p style={{ margin: '0' }}>
-              <b>{option.searchLibelle} </b> ({option.searchCode})
-            </p>
+            {option.searchCode?.length !== 0 ? (
+              <p style={{ margin: '0' }}>
+                <b>{option.searchLibelle} </b> ({option.searchCode})
+              </p>
+            ) : (
+              <p>
+                <b>{option.searchLibelle}</b>
+              </p>
+            )}
           </Box>
         );
       }}
