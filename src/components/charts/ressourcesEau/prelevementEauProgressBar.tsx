@@ -144,7 +144,7 @@ const PrelevementEauProgressBars = ({
     ? ressourcesEau.filter((obj) => obj.code_geographique === codgeo)[0]
         ?.libelle_geographique
     : ressourcesEau.filter((obj) => obj.epci === codepci)[0]?.libelle_epci;
-  const departement = ressourcesEau[0].departement;
+  const departement = ressourcesEau[0]?.departement;
 
   return (
     <div className={styles.ressourcesEauWrapper}>
@@ -162,12 +162,12 @@ const PrelevementEauProgressBars = ({
                       <b>
                         {((100 * item.sumCollectivite) / total).toFixed(1)}%
                       </b>{' '}
-                      ({(item.sumCollectivite / 1000000).toFixed(1)} Mm³)
+                      ({(item.sumCollectivite / 1000000).toFixed(2)} Mm³)
                     </p>
                     <p>
                       Département {departement} :{' '}
                       <b>{((100 * item.sumDptmt) / totalDptmt).toFixed(1)}%</b>{' '}
-                      ({(item.sumDptmt / 1000000).toFixed(1)} Mm³)
+                      ({(item.sumDptmt / 1000000).toFixed(2)} Mm³)
                     </p>
                   </div>
                 }
@@ -207,7 +207,7 @@ const PrelevementEauProgressBars = ({
                         {((100 * item.sumCollectivite) / total).toFixed(1)}%
                       </b>
                     </p>
-                    <p>{(item.sumCollectivite / 1000000).toFixed(1)} Mm³</p>
+                    <p>{(item.sumCollectivite / 1000000).toFixed(2)} Mm³</p>
                   </div>
                 </div>
               </HtmlTooltip>

@@ -33,12 +33,6 @@ export const SearchBarComp = () => {
     <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
       <SearchBar
         style={{ width: 'inherit' }}
-        // className={css({
-        //   width: "inherit",
-        //   ".fr-btn": {
-        //     display: "none",
-        //   },
-        // })}
         renderInput={({ className, id, placeholder, type }) => (
           <MySearchInput
             className={className}

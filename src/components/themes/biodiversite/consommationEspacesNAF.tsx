@@ -12,13 +12,6 @@ import { ConsommationEspacesNAFDataviz } from './consommationEspacesNAFDataviz';
 export const ConsommationEspacesNAF = (props: {
   consommationNAF: ConsommationNAF[];
   carteCommunes: CarteCommunes[];
-  data: Array<{
-    donnee: string;
-    facteur_sensibilite: string;
-    id: number;
-    risque: string;
-    titre: string;
-  }>;
 }) => {
   const { consommationNAF, carteCommunes } = props;
   const searchParams = useSearchParams();
@@ -29,7 +22,7 @@ export const ConsommationEspacesNAF = (props: {
     return {
       ...el,
       naf: consommationNAF.find(
-        (item) => item.code_geographique === el.code_commune
+        (item) => item.code_geographique === el.code_geographique
       )?.naf09art23
     };
   });

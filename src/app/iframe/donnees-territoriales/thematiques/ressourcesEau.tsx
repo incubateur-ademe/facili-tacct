@@ -1,6 +1,6 @@
 import { GetRessourceEau } from '@/lib/queries/databases/ressourcesEau';
 import { GetCommunes, GetEpci } from '@/lib/queries/postgis/cartographie';
-import { themes } from '@/lib/utils/themes';
+import { themes } from '@/lib/themes';
 import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
 import RessourcesEauComp from './ressourcesEauComp';

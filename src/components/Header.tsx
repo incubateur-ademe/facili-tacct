@@ -1,16 +1,15 @@
 'use client';
 import ressourcesIcon from '@/assets/icons/ressources_icon_blue.svg';
 import { config } from '@/config';
-import Badge from '@codegouvfr/react-dsfr/Badge';
+import { GetInconfortThermique } from '@/lib/queries/thematiques';
+import { DarkClass } from '@/lib/utils/DarkClass';
 import Header from '@codegouvfr/react-dsfr/Header';
 import { Button } from '@mui/material';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-
-import { GetInconfortThermique } from '@/lib/queries/thematiques';
-import { DarkClass } from '@/lib/utils/DarkClass';
 import { usePostHog } from 'posthog-js/react';
+import { useEffect, useState } from 'react';
+import { useStyles } from 'tss-react/dsfr';
 import { Brand } from './Brand';
 import styles from './components.module.scss';
 
@@ -38,6 +37,7 @@ export const HeaderComp = () => {
   const [epci, setEpci] = useState('');
   const [commune, setCommune] = useState('');
   const posthog = usePostHog();
+  const { css } = useStyles();
 
   useEffect(() => {
     void (async () => {
@@ -63,19 +63,15 @@ export const HeaderComp = () => {
 
   return (
     <Header
+      className={css({
+        zIndex: '500'
+      })}
       brandTop={<Brand />}
       homeLinkProps={{
         href: '/',
         title: `Accueil - ${config.name}`
       }}
-      serviceTitle={
-        <>
-          {config.name}{' '}
-          <Badge as="span" noIcon severity="success">
-            Beta
-          </Badge>
-        </>
-      }
+      serviceTitle={config.name}
       operatorLogo={{
         alt: "Logo de l'ADEME",
         imgUrl: '/logo-ademe.svg',

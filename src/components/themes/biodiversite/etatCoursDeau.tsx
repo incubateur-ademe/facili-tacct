@@ -1,4 +1,7 @@
+import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
+import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { Loader } from '@/components/loader';
 import {
   etatCoursDeauLegends,
   qualiteEauxBaignadelegends
@@ -8,8 +11,11 @@ import {
   LegendCompIcons
 } from '@/components/maps/legends/legendComp';
 import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
+import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
+import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { DefinitionTooltip } from '@/components/utils/HtmlTooltip';
+import { eutrophisation } from '@/lib/definitions';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EpciContoursMapper } from '@/lib/mapper/epci';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
@@ -17,9 +23,12 @@ import {
   CarteCommunes,
   EpciContours,
   EtatCoursDeau,
+  Patch4,
   QualiteSitesBaignade
 } from '@/lib/postgres/models';
+import { GetPatch4 } from '@/lib/queries/patch4';
 import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import styles from './biodiversite.module.scss';
 
 const EtatQualiteCoursDeau = (props: {
@@ -33,9 +42,25 @@ const EtatQualiteCoursDeau = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
+  const [patch4, setPatch4] = useState<Patch4[]>();
   const etatCoursDeauMap = etatCoursDeau.map(EtatCoursDeauMapper);
   const epciContoursMap = epciContours.map(EpciContoursMapper);
   const carteCommunesMap = carteCommunes.map(CommunesIndicateursMapper);
+
+  useEffect(() => {
+    void (async () => {
+      const temp = await GetPatch4(codgeo ?? codepci);
+      temp && codepci ? setPatch4(temp) : void 0;
+    })();
+  }, [codgeo, codepci]);
+
+  const fortesChaleurs = patch4
+    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
+    : null;
+  const precipitation = patch4
+    ? AlgoPatch4(patch4[0], 'fortes_precipitations')
+    : null;
+
   const title = (
     <div>
       <p>
@@ -56,112 +81,134 @@ const EtatQualiteCoursDeau = (props: {
       </ul>
       <p>
         Attention, le bon état écologique d’une rivière ne signifie pas une
-        qualité sanitaire suffisante pour s’y baigner.
+        qualité sanitaire suffisante pour s’y baigner. Cette évaluation se
+        fait en fonction de données microbiologiques. Le classement des
+        eaux de qualité insuffisante, suffisante, bonne ou excellente est
+        établi conformément aux critères de l’annexe II de la directive
+        2006/7/CE concernant la gestion de la qualité des eaux de baignade.
       </p>
       <br></br>
     </div>
   );
 
-  const eutrophisation = (
-    <span>
-      L’eutrophisation est un phénomène causé par un excès de nutriments (azote,
-      phosphore) dans l’eau, favorisant la prolifération d’algues. Leur
-      décomposition appauvrit l’oxygène du milieu, asphyxiant la faune et
-      dégradant les écosystèmes aquatiques.
-    </span>
-  );
-
   return (
     <>
-      {etatCoursDeau.length ? (
-        <div className={styles.container}>
-          <div className="w-5/12">
-            <div className={styles.explicationWrapper}>
-              <p>
-                La biodiversité en eau douce est particulièrement menacée. La
-                carte ci-contre reflète l’état écologique des cours d’eau
-                présents sur votre territoire.
-              </p>
-              <CustomTooltip
-                title={title}
-                texte="Sur quoi repose ce classement ?"
-              />
+      {fortesChaleurs && precipitation ? (
+        <>
+          {etatCoursDeau.length && qualiteEauxBaignade.length ? (
+            <div className={styles.container}>
+              <div className="w-5/12">
+                <div className={styles.explicationWrapper}>
+                  <p>
+                    La biodiversité en eau douce est particulièrement menacée.
+                    La carte ci-contre reflète l’état écologique des cours d’eau
+                    présents sur votre territoire. La qualité des plans d’eau utilisés
+                    pour la baignade est également référencée car la baignade, et
+                    les activités associées (kayak, …), ont un impact sur les écosystèmes aquatiques.
+                  </p>
+                  <div className={styles.patch4Wrapper}>
+                    {fortesChaleurs === 'Intensité très forte' ||
+                      fortesChaleurs === 'Intensité forte' ? (
+                      <TagItem
+                        icon={fortesChaleursIcon}
+                        indice="Fortes chaleurs"
+                        tag={fortesChaleurs}
+                      />
+                    ) : null}
+                    {precipitation === 'Intensité très forte' ||
+                      precipitation === 'Intensité forte' ? (
+                      <TagItem
+                        icon={precipitationIcon}
+                        indice="Fortes précipitations"
+                        tag={precipitation}
+                      />
+                    ) : null}
+                  </div>
+                  <CustomTooltip
+                    title={title}
+                    texte="Sur quoi repose ce classement ?"
+                  />
+                </div>
+                <div className="px-4">
+                  <p>
+                    Seuls 43 % des cours d’eau français sont en bon état
+                    écologique. Si les principaux facteurs de dégradation de la
+                    qualité des eaux sont les pollutions (nitrates, pesticides)
+                    et les altérations physiques des rivières (seuils et
+                    barrages, endiguement….), le réchauffement climatique
+                    aggrave les déséquilibres en cours. La hausse des
+                    températures et les sécheresses prolongées entraînent la
+                    chute des débits, voire assecs, la prolifération d'espèces
+                    exotiques envahissantes, la concentration des polluants
+                    (massivement relâchés lors des crues) ; la hausse des
+                    température de l’eau et l’ensoleillement sont des conditions
+                    favorables à{' '}
+                    <DefinitionTooltip title={eutrophisation}>
+                      l’eutrophisation
+                    </DefinitionTooltip>
+                    .
+                  </p>
+                  <p>
+                    Un mauvais état écologique a des impacts graves sur la
+                    biodiversité : il perturbe les conditions de vie des espèces
+                    aquatiques et dégrade leurs habitats. En 20 ans :
+                  </p>
+                  <ul className="text-[1rem] leading-[1.5rem]">
+                    <li>
+                      Les populations de truites de rivière ont diminué de 44 %.
+                    </li>
+                    <li>
+                      L’abondance de l’anguille européenne est tombée à 10 % de
+                      son niveau historique.
+                    </li>
+                  </ul>
+                  <p>
+                    - - - - <br></br>
+                    L’objectif de la Directive Cadre sur l’Eau (2000) était
+                    d’atteindre un bon état général des eaux d’ici 2027 : il
+                    semble hors d’atteinte désormais.
+                  </p>
+                </div>
+              </div>
+              <div className="w-7/12">
+                <div className={styles.graphWrapper}>
+                  <div
+                    className={styles.biodiversiteGraphTitleWrapper}
+                    style={{ padding: '1rem' }}
+                  >
+                    <h2>État écologique des cours d’eau</h2>
+                  </div>
+                  <div>
+                    <MapEtatCoursDeau
+                      etatCoursDeau={etatCoursDeauMap}
+                      epciContours={epciContoursMap}
+                      carteCommunes={carteCommunesMap}
+                      qualiteEauxBaignade={qualiteEauxBaignade}
+                    />
+                  </div>
+                  <div
+                    className={styles.legendCoursDeau}
+                    style={{ margin: '0 1em' }}
+                  >
+                    <h3>- État des cours d'eau -</h3>
+                    <LegendCompColor legends={etatCoursDeauLegends} />
+                  </div>
+                  <div className={styles.legendCoursDeau}>
+                    <h3>- État des plans d’eau utilisés pour la baignade -</h3>
+                    <LegendCompIcons legends={qualiteEauxBaignadelegends} />
+                  </div>
+                  <p style={{ padding: '1em', margin: '0' }}>
+                    Source : Agences de l'eau
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="px-4">
-              <p>
-                Seuls 43 % des cours d’eau français sont en bon état écologique.
-                Si les principaux facteurs de dégradation de la qualité des eaux
-                sont les pollutions (nitrates, pesticides) et les altérations
-                physiques des rivières (seuils et barrages, endiguement….), le
-                réchauffement climatique aggrave les déséquilibres en cours. La
-                hausse des températures et les sécheresses prolongées entraînent
-                la chute des débits, voire assecs, la prolifération d'espèces
-                exotiques envahissantes, la concentration des polluants
-                (massivement relâchés lors des crues) ; la hausse des
-                température de l’eau et l’ensoleillement sont des conditions
-                favorables à{' '}
-                <DefinitionTooltip title={eutrophisation}>
-                  l’eutrophisation
-                </DefinitionTooltip>
-                .
-              </p>
-              <p>
-                Un mauvais état écologique a des impacts graves sur la
-                biodiversité : il perturbe les conditions de vie des espèces
-                aquatiques et dégrade leurs habitats. En 20 ans :
-              </p>
-              <ul className="text-[1rem] leading-[1.5rem]">
-                <li>
-                  Les populations de truites de rivière ont diminué de 44 %.
-                </li>
-                <li>
-                  L’abondance de l’anguille européenne est tombée à 10 % de son
-                  niveau historique.
-                </li>
-              </ul>
-              <p>
-                - - - - <br></br>
-                L’objectif de la Directive Cadre sur l’Eau (2000) était
-                d’atteindre un bon état général des eaux d’ici 2027 : il semble
-                hors d’atteinte désormais.
-              </p>
-            </div>
-          </div>
-          <div className="w-7/12">
-            <div className={styles.graphWrapper}>
-              <div
-                className={styles.biodiversiteGraphTitleWrapper}
-                style={{ padding: '1rem' }}
-              >
-                <h2>État écologique des cours d’eau</h2>
-              </div>
-              <div>
-                <MapEtatCoursDeau
-                  etatCoursDeau={etatCoursDeauMap}
-                  epciContours={epciContoursMap}
-                  carteCommunes={carteCommunesMap}
-                  qualiteEauxBaignade={qualiteEauxBaignade}
-                />
-              </div>
-              <div
-                className={styles.legendCoursDeau}
-                style={{ margin: '0 1em' }}
-              >
-                <h3>- État des cours d'eau -</h3>
-                <LegendCompColor legends={etatCoursDeauLegends} />
-              </div>
-              <div className={styles.legendCoursDeau}>
-                <h3>- Sites de baignade -</h3>
-                <LegendCompIcons legends={qualiteEauxBaignadelegends} />
-              </div>
-              <p style={{ padding: '1em', margin: '0' }}>
-                Source : Agences de l'eau
-              </p>
-            </div>
-          </div>
-        </div>
+          ) : (
+            <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+          )}
+        </>
       ) : (
-        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        <Loader />
       )}
     </>
   );

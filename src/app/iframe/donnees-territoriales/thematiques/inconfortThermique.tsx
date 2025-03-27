@@ -2,7 +2,7 @@ import { NoticeComp } from '@/dsfr/base/Notice';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { GetCollectivite } from '@/lib/queries/searchBar';
 import { GetInconfortThermiqueDepartment } from '@/lib/queries/thematiques';
-import { themes } from '@/lib/utils/themes';
+import { themes } from '@/lib/themes';
 import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
 import InconfortThermiqueComp from './inconfortThermiqueComp';
@@ -32,7 +32,6 @@ const InconfortThermique = async (props: { searchParams: SearchParams }) => {
             data={theme}
             inconfortThermique={dbInconfortThermique!}
             carteCommunes={carteCommunes}
-            collectivite={collectivite!}
             // departement={departement}
           />
         </Suspense>

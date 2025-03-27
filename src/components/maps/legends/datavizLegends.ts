@@ -134,15 +134,15 @@ export const chefsExploitationLegend = [
   },
   {
     value: '40 - 50 ans',
-    color: '#A05DE4'
+    color: '#8C58BB'
   },
   {
     value: '50 - 55 ans',
-    color: '#7F2CBF'
+    color: '#6E3F99'
   },
   {
     value: '> 55 ans',
-    color: '#4A1D7C'
+    color: '#42255C'
   },
   {
     value: 'Valeurs manquantes ou sous secret statistique',
@@ -324,5 +324,12 @@ export const vegetalisationLegend = [
   {
     value: 'Surfaces en eau',
     color: '#386cb0'
+  }
+];
+
+export const feuxForetBarChartLegend = [
+  {
+    variable: 'Feux de forêt',
+    couleur: '#038278'
   }
 ];

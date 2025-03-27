@@ -102,7 +102,7 @@
     gap: 0.25em;
     justify-content: center;
     align-items: center;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border-radius: 25px;
     margin: 0 0.5em;
     padding: 0.2em 1em;
@@ -124,5 +124,40 @@
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+// Patch4°C
+.tag {
+    padding: 8px;
+    border-radius: 4px;
+    min-height: fit-content;
+    min-width: fit-content;
+    font-weight: 700;
+    font-size: 14px;
+    p {
+        margin: 0;
+    }
+}
+
+.indiceItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    .indiceLeft {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        align-items: center;
+        width: 200px;
+        min-width: fit-content;
+        p {
+            font-size: 14px;
+            line-height: 12.14px;
+            font-weight: 700;
+            margin: 0;
+        }
     }
 }

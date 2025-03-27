@@ -16,6 +16,22 @@ const Home = () => {
   const window = useWindowDimensions();
   return (
     <div className="mb-24">
+      {/* <Notice
+        description=""
+        isClosable={true}
+        onClose={() => { }}
+        title={
+          <>
+            <p>
+              Facili-TACCT intègre un nouveau jeu de données créé par Météo-France. Il vise à montrer comment cinq aléas
+              climatiques (fortes chaleurs, fortes pluies, sécheresse des sols, feux de forêt et niveaux marins) vont évoluer entre 2050 et 2100.
+            </p>
+            <p>
+              Retrouvez également de nouveaux indicateurs : “Surfaces irriguées” (et sa thématique Agriculture) et “Feux de forêt”.
+            </p>
+          </>
+        }
+      /> */}
       <div className={styles.wrapper}>
         <Container size="xl">
           <div className={styles.titles}>

@@ -17,15 +17,21 @@ export const GetCollectivite = async (
       const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
       SELECT 
       search_code,
-      coordinates,
       search_libelle,
-      code_epci, 
+      epci, 
       libelle_epci,
-      libelle_commune,
-      code_commune,
+      libelle_geographique,
+      code_geographique,
       departement,
-      region
-      FROM databases."collectivites_searchbar" WHERE unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) LIMIT 20;`; // OR libelle_epci ILIKE ${variableEpci}
+      region,
+      ept,
+      libelle_petr,
+      libelle_pnr,
+      code_pnr
+      FROM databases."collectivites_searchbar" WHERE 
+        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', ')) 
+        LIMIT 20;`; // OR libelle_epci ILIKE ${variableEpci}
       console.timeEnd(`Query Execution Time COLLECTIVITE ${collectivite}`);
       // console.log(value);
       if (value.length > 0) {
@@ -34,15 +40,21 @@ export const GetCollectivite = async (
         const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
         SELECT 
         search_code,
-        coordinates,
         search_libelle,
-        code_epci, 
+        epci, 
         libelle_epci,
-        libelle_commune,
-        code_commune,
+        libelle_geographique,
+        code_geographique,
         departement,
-        region
-        FROM databases."collectivites_searchbar" WHERE unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite}) LIMIT 20;`;
+        region,
+        ept,
+        libelle_petr,
+        libelle_pnr,
+        code_pnr
+        FROM databases."collectivites_searchbar" WHERE 
+          unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite}) 
+          OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', ')) 
+          LIMIT 20;`;
         return value;
       }
     } else if (typeof parseInt(collectivite) === 'number') {
@@ -60,15 +72,19 @@ export const GetCollectivite = async (
       Sentry.captureMessage(`Collectivite ${collectivite} not found`);
       return [
         {
-          code_commune: '',
-          coordinates: '',
+          code_geographique: '',
           search_code: '',
           search_libelle: '',
-          code_epci: '',
-          libelle_commune: '',
+          epci: '',
+          libelle_geographique: '',
           libelle_epci: '',
           departement: '',
-          region: ''
+          libelle_departement: '',
+          region: '',
+          ept: '',
+          libelle_petr: '',
+          libelle_pnr: '',
+          code_pnr: ''
         }
       ];
     }

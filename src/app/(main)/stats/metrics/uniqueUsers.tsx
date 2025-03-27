@@ -18,7 +18,7 @@ const UniqueUsers = async () => {
             margin: '0 0 15rem'
           }}
         >
-          <h2>Utilsateurs uniques</h2>
+          <h2>Utilisateurs uniques</h2>
           <div className={styles.graphWrapper}>
             <div
               className={styles.graphTitleWrapper}

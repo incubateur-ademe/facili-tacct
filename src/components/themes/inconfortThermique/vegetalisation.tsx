@@ -1,18 +1,21 @@
 'use client';
-import { useSearchParams } from 'next/navigation';
-
+import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
+import GraphNotFound from '@/assets/images/no_data_on_territory.svg';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
 import { CLCMap } from '@/components/maps/CLC';
-import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
-import { CLC, InconfortThermique } from '@/lib/postgres/models';
-
-import GraphNotFound from '@/assets/images/no_data_on_territory.svg';
 import { vegetalisationLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
+import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
+import { TagItem } from '@/components/patch4/TagItem';
 import { VegetalisationDto } from '@/lib/dto';
+import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
+import { CLC, InconfortThermique, Patch4 } from '@/lib/postgres/models';
+import { GetPatch4 } from '@/lib/queries/patch4';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import styles from './themes.module.scss';
 
 const GraphImage = GraphNotFound as HTMLImageElement;
@@ -40,9 +43,10 @@ const Vegetalisation = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo');
   const codepci = searchParams.get('codepci')!;
+  const [patch4, setPatch4] = useState<Patch4[]>();
   const vegetalisationMapped = inconfortThermique.map(vegetalisationMapper);
   const vegetalisationCollectivite = codgeo
-    ? vegetalisationMapped.filter((e) => e.code_commune === codgeo)
+    ? vegetalisationMapped.filter((e) => e.code_geographique === codgeo)
     : vegetalisationMapped.filter((e) => e.epci === codepci);
 
   const foretSum = sumProperty(
@@ -53,9 +57,18 @@ const Vegetalisation = (props: {
     (100 * sumProperty(vegetalisationCollectivite, 'clc_3_foret_semiNaturel')) /
     (100 * sumProperty(vegetalisationCollectivite, 'superf_choro'));
 
+  useEffect(() => {
+    void (async () => {
+      const temp = await GetPatch4(codgeo ?? codepci);
+      temp && codepci ? setPatch4(temp) : void 0;
+    })();
+  }, [codgeo, codepci]);
+
+  const secheresse = patch4 ? AlgoPatch4(patch4[0], 'secheresse_sols') : null;
+
   return (
     <>
-      {vegetalisationCollectivite ? (
+      {vegetalisationCollectivite && secheresse ? (
         <div className={styles.container}>
           {vegetalisationCollectivite.length ? (
             <>
@@ -82,6 +95,16 @@ const Vegetalisation = (props: {
                       <b>{Round(foretSum, 1)}</b> hectares.
                     </p>
                   )}
+                  <div className={styles.patch4Wrapper}>
+                    {secheresse === 'Intensité très forte' ||
+                    secheresse === 'Intensité forte' ? (
+                      <TagItem
+                        icon={secheresseIcon}
+                        indice="Sécheresse des sols"
+                        tag={secheresse}
+                      />
+                    ) : null}
+                  </div>
                 </div>
                 <div className="px-4">
                   <p>

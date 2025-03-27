@@ -7,14 +7,14 @@ export type VegetalisationDto = {
   clc_4_humide: number;
   clc_5_eau: number;
   superf_choro: number;
-  code_commune: string;
+  code_geographique: string;
   epci: string;
   libelle_epci: string;
   libelle_geographique: string;
 };
 
 export type AgeBatiDto = {
-  code_commune: string;
+  code_geographique: string;
   libelle_geographique: string;
   epci: string;
   libelle_epci: string;
@@ -31,7 +31,7 @@ export type travailExtDto = {
   NA5FZ_sum: number;
   NA5GU_sum: number;
   NA5OQ_sum: number;
-  code_commune: string;
+  code_geographique: string;
   epci: string;
   libelle_epci: string;
   libelle_geographique: string;
@@ -40,7 +40,7 @@ export type travailExtDto = {
 export type GrandAgeIsolementDto = {
   P20_POP80P?: number;
   P20_POP80P_PSEUL?: number;
-  code_commune: string;
+  code_geographique: string;
   epci: string;
   libelle_epci: string;
   libelle_geographique: string;
@@ -86,12 +86,15 @@ export type CommunesIndicateursDto = {
     };
     epci: string;
     libelle_epci: string;
-    libelle_commune: string;
-    code_commune: string;
+    libelle_geographique: string;
+    code_geographique: string;
     precarite_logement: number;
     densite_bati: number;
     coordinates: string;
     naf?: number;
+    surfacesIrriguees?: number;
+    chefsExploitation55Ans?: number;
+    incendiesForet?: number | null;
   };
   geometry: {
     coordinates: number[][][][];
@@ -104,8 +107,8 @@ export type CommunesContoursDto = {
   properties: {
     epci: string;
     libelle_epci: string;
-    libelle_commune: string;
-    code_commune: string;
+    libelle_geographique: string;
+    code_geographique: string;
     coordinates: string;
   };
   geometry: {

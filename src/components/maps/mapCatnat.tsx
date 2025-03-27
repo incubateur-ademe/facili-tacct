@@ -1,22 +1,19 @@
 'use client';
 
-import 'leaflet/dist/leaflet.css';
-
+import { CommunesIndicateursDto } from '@/lib/dto';
+import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
+import { Sum } from '@/lib/utils/reusableFunctions/sum';
+import { type Any } from '@/lib/utils/types';
+import { Feature, GeoJsonObject } from 'geojson';
 import {
   FeatureGroup,
   Layer,
   LeafletMouseEventHandlerFn,
   type StyleFunction
 } from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
-
-import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
-import { type Any } from '@/lib/utils/types';
-
-import { CommunesIndicateursDto } from '@/lib/dto';
-import { Sum } from '@/lib/utils/reusableFunctions/sum';
-import { Feature, GeoJsonObject } from 'geojson';
 import { GraphDataNotFound } from '../graph-data-not-found';
 
 const colors: { [key: string]: string[] } = {
@@ -110,15 +107,15 @@ export const MapCatnat = (props: {
   const codgeo = searchParams.get('codgeo');
   const codepci = searchParams.get('codepci')!;
   const mapRef = useRef(null);
-  const all_coordinates = carteCommunes.map(
+  const allCoordinates = carteCommunes.map(
     (el) => el.geometry.coordinates?.[0]?.[0]
   );
   const commune = codgeo
-    ? carteCommunes.find((el) => el.properties.code_commune === codgeo)
+    ? carteCommunes.find((el) => el.properties.code_geographique === codgeo)
     : null;
   const centerCoord: number[] = commune
     ? getCentroid(commune.geometry.coordinates?.[0][0])
-    : getCoordinates(all_coordinates);
+    : getCoordinates(allCoordinates);
 
   const style: StyleFunction<Any> = (feature) => {
     const typedFeature = feature as CommunesIndicateursDto;
@@ -196,7 +193,7 @@ export const MapCatnat = (props: {
     >;
     const commune_name =
       layer.feature && 'properties' in layer.feature
-        ? layer.feature.properties.libelle_commune
+        ? layer.feature.properties.libelle_geographique
         : undefined;
     const catnat =
       layer.feature && 'properties' in layer.feature
