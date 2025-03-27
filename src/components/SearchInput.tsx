@@ -22,10 +22,6 @@ type Options = {
   codeEpci: string;
   searchCode: string;
   searchLibelle: string;
-  ept: string;
-  libellePetr: string;
-  libellePnr: string;
-  codePnr: string;
 };
 
 export const MySearchInput = (props: MySearchInputProps) => {

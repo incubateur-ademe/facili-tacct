@@ -132,12 +132,12 @@ export type CollectivitesSearchbar = {
 };
 
 export type CarteCommunes = {
-  code_geographique: string;
+  code_commune: string;
   coordinates: string;
   densite_bati?: number;
   epci: string;
   geometry: string;
-  libelle_geographique: string;
+  libelle_commune: string;
   libelle_epci: string;
   precarite_logement?: number;
   catnat?: Object;
@@ -241,10 +241,6 @@ export type ConsommationNAF = {
   libelle_epci: string;
   departement: string;
   region: number;
-  ept: string | null;
-  libelle_petr: string | null;
-  code_pnr: string | null;
-  libelle_pnr: string | null;
   naf09art10: number;
   art09act10: number;
   art09hab10: number;

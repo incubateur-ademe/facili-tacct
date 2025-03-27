@@ -68,7 +68,7 @@ export const GetQualiteEauxBaignade = async (
       const departement =
         await PrismaPostgres.collectivites_searchbar.findFirst({
           where: {
-            epci: code
+            code_epci: code
           }
         });
       const value = await PrismaPostgres.qualite_sites_baignade.findMany({

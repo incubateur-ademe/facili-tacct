@@ -31,7 +31,7 @@ const SurfacesProtegeesDataviz = (props: {
       )
     : territoireContourMap;
   const surfaceTerritoire = codgeo
-    ? carteCommunes.filter((e) => e.code_geographique === codgeo)[0].surface
+    ? carteCommunes.filter((e) => e.code_commune === codgeo)[0].surface
     : carteCommunes.map((el) => el.surface).reduce((a, b) => a + b, 0);
   const data = SurfacesProtegeesGraphMapper(filteredData);
   const sommeSurfaces = filteredData

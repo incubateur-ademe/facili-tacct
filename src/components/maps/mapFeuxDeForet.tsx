@@ -71,7 +71,7 @@ export const MapFeuxDeForet = (props: {
         ...el,
         incendiesForet:
           cartographieData.find(
-            (item) => item.code_geographique === el.code_geographique
+            (item) => item.code_geographique === el.code_commune
           )?.surface_parcourue ?? NaN
       };
     })
