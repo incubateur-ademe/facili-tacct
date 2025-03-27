@@ -92,18 +92,7 @@ export type aot_40 = $Result.DefaultSelection<Prisma.$aot_40Payload>
  * Model qualite_sites_baignade
  * 
  */
-<<<<<<< HEAD
 export type qualite_sites_baignade = $Result.DefaultSelection<Prisma.$qualite_sites_baignadePayload>
-/**
- * Model communes
- * This table has subclasses and requires additional setup for migrations. Visit https://pris.ly/d/table-inheritance for more info.
- */
-export type communes = $Result.DefaultSelection<Prisma.$communesPayload>
-/**
- * Model patch4c
- * 
- */
-export type patch4c = $Result.DefaultSelection<Prisma.$patch4cPayload>
 /**
  * Model agriculture
  * 
@@ -114,26 +103,21 @@ export type agriculture = $Result.DefaultSelection<Prisma.$agriculturePayload>
  * 
  */
 export type incendies_foret = $Result.DefaultSelection<Prisma.$incendies_foretPayload>
-=======
-export type qualite_sites_baignade =
-  $Result.DefaultSelection<Prisma.$qualite_sites_baignadePayload>;
-/**
- * Model agriculture
- *
- */
-export type agriculture = $Result.DefaultSelection<Prisma.$agriculturePayload>;
-/**
- * Model incendies_foret
- *
- */
-export type incendies_foret =
-  $Result.DefaultSelection<Prisma.$incendies_foretPayload>;
 /**
  * Model patch4c
- *
+ * 
  */
-export type patch4c = $Result.DefaultSelection<Prisma.$patch4cPayload>;
->>>>>>> dev
+export type patch4c = $Result.DefaultSelection<Prisma.$patch4cPayload>
+/**
+ * Model communes
+ * This table has subclasses and requires additional setup for migrations. Visit https://pris.ly/d/table-inheritance for more info.
+ */
+export type communes = $Result.DefaultSelection<Prisma.$communesPayload>
+/**
+ * Model users
+ * 
+ */
+export type users = $Result.DefaultSelection<Prisma.$usersPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -421,15 +405,24 @@ export class PrismaClient<
   get qualite_sites_baignade(): Prisma.qualite_sites_baignadeDelegate<ExtArgs, ClientOptions>;
 
   /**
-<<<<<<< HEAD
-   * `prisma.communes`: Exposes CRUD operations for the **communes** model.
+   * `prisma.agriculture`: Exposes CRUD operations for the **agriculture** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Communes
-    * const communes = await prisma.communes.findMany()
+    * // Fetch zero or more Agricultures
+    * const agricultures = await prisma.agriculture.findMany()
     * ```
     */
-  get communes(): Prisma.communesDelegate<ExtArgs, ClientOptions>;
+  get agriculture(): Prisma.agricultureDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.incendies_foret`: Exposes CRUD operations for the **incendies_foret** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Incendies_forets
+    * const incendies_forets = await prisma.incendies_foret.findMany()
+    * ```
+    */
+  get incendies_foret(): Prisma.incendies_foretDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.patch4c`: Exposes CRUD operations for the **patch4c** model.
@@ -442,66 +435,24 @@ export class PrismaClient<
   get patch4c(): Prisma.patch4cDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.agriculture`: Exposes CRUD operations for the **agriculture** model.
+   * `prisma.communes`: Exposes CRUD operations for the **communes** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Agricultures
-    * const agricultures = await prisma.agriculture.findMany()
+    * // Fetch zero or more Communes
+    * const communes = await prisma.communes.findMany()
     * ```
     */
-=======
-   * `prisma.qualite_sites_baignade`: Exposes CRUD operations for the **qualite_sites_baignade** model.
-   * Example usage:
-   * ```ts
-   * // Fetch zero or more Qualite_sites_baignades
-   * const qualite_sites_baignades = await prisma.qualite_sites_baignade.findMany()
-   * ```
-   */
-  get qualite_sites_baignade(): Prisma.qualite_sites_baignadeDelegate<
-    ExtArgs,
-    ClientOptions
-  >;
+  get communes(): Prisma.communesDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.agriculture`: Exposes CRUD operations for the **agriculture** model.
-   * Example usage:
-   * ```ts
-   * // Fetch zero or more Agricultures
-   * const agricultures = await prisma.agriculture.findMany()
-   * ```
-   */
->>>>>>> dev
-  get agriculture(): Prisma.agricultureDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.incendies_foret`: Exposes CRUD operations for the **incendies_foret** model.
-<<<<<<< HEAD
+   * `prisma.users`: Exposes CRUD operations for the **users** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Incendies_forets
-    * const incendies_forets = await prisma.incendies_foret.findMany()
+    * // Fetch zero or more Users
+    * const users = await prisma.users.findMany()
     * ```
     */
-  get incendies_foret(): Prisma.incendies_foretDelegate<ExtArgs, ClientOptions>;
-=======
-   * Example usage:
-   * ```ts
-   * // Fetch zero or more Incendies_forets
-   * const incendies_forets = await prisma.incendies_foret.findMany()
-   * ```
-   */
-  get incendies_foret(): Prisma.incendies_foretDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.patch4c`: Exposes CRUD operations for the **patch4c** model.
-   * Example usage:
-   * ```ts
-   * // Fetch zero or more Patch4cs
-   * const patch4cs = await prisma.patch4c.findMany()
-   * ```
-   */
-  get patch4c(): Prisma.patch4cDelegate<ExtArgs, ClientOptions>;
->>>>>>> dev
+  get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -942,7 +893,6 @@ export namespace Prisma {
 
 
   export const ModelName: {
-<<<<<<< HEAD
     inconfort_thermique: 'inconfort_thermique',
     clc_epci: 'clc_epci',
     collectivites_searchbar: 'collectivites_searchbar',
@@ -959,34 +909,11 @@ export namespace Prisma {
     etat_cours_d_eau: 'etat_cours_d_eau',
     aot_40: 'aot_40',
     qualite_sites_baignade: 'qualite_sites_baignade',
-    communes: 'communes',
-    patch4c: 'patch4c',
     agriculture: 'agriculture',
-    incendies_foret: 'incendies_foret'
-=======
-    inconfort_thermique: 'inconfort_thermique';
-    clc_epci: 'clc_epci';
-    collectivites_searchbar: 'collectivites_searchbar';
-    biodiversite: 'biodiversite';
-    gestion_risques: 'gestion_risques';
-    communes_drom: 'communes_drom';
-    ressources_eau: 'ressources_eau';
-    agriculture_bio: 'agriculture_bio';
-    erosion_cotiere: 'erosion_cotiere';
-    epci: 'epci';
-    surfaces_protegees: 'surfaces_protegees';
-    spatial_ref_sys: 'spatial_ref_sys';
-    consommation_espaces_naf: 'consommation_espaces_naf';
-    lcz_bayonne_test: 'lcz_bayonne_test';
-    north_star_metric: 'north_star_metric';
-    etat_cours_d_eau: 'etat_cours_d_eau';
-    aot_40: 'aot_40';
-    users: 'users';
-    qualite_sites_baignade: 'qualite_sites_baignade';
-    agriculture: 'agriculture';
-    incendies_foret: 'incendies_foret';
-    patch4c: 'patch4c';
->>>>>>> dev
+    incendies_foret: 'incendies_foret',
+    patch4c: 'patch4c',
+    communes: 'communes',
+    users: 'users'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1002,37 +929,9 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-<<<<<<< HEAD
-      modelProps: "inconfort_thermique" | "clc_epci" | "collectivites_searchbar" | "biodiversite" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio" | "erosion_cotiere" | "epci" | "surfaces_protegees" | "consommation_espaces_naf" | "north_star_metric" | "etat_cours_d_eau" | "aot_40" | "qualite_sites_baignade" | "communes" | "patch4c" | "agriculture" | "incendies_foret"
+      modelProps: "inconfort_thermique" | "clc_epci" | "collectivites_searchbar" | "biodiversite" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio" | "erosion_cotiere" | "epci" | "surfaces_protegees" | "consommation_espaces_naf" | "north_star_metric" | "etat_cours_d_eau" | "aot_40" | "qualite_sites_baignade" | "agriculture" | "incendies_foret" | "patch4c" | "communes" | "users"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
-=======
-      modelProps:
-        | 'inconfort_thermique'
-        | 'clc_epci'
-        | 'collectivites_searchbar'
-        | 'biodiversite'
-        | 'gestion_risques'
-        | 'communes_drom'
-        | 'ressources_eau'
-        | 'agriculture_bio'
-        | 'erosion_cotiere'
-        | 'epci'
-        | 'surfaces_protegees'
-        | 'spatial_ref_sys'
-        | 'consommation_espaces_naf'
-        | 'lcz_bayonne_test'
-        | 'north_star_metric'
-        | 'etat_cours_d_eau'
-        | 'aot_40'
-        | 'users'
-        | 'qualite_sites_baignade'
-        | 'agriculture'
-        | 'incendies_foret'
-        | 'patch4c';
-      txIsolationLevel: Prisma.TransactionIsolationLevel;
-    };
->>>>>>> dev
     model: {
       inconfort_thermique: {
         payload: Prisma.$inconfort_thermiquePayload<ExtArgs>
@@ -2149,157 +2048,8 @@ export namespace Prisma {
             result: $Utils.Optional<Qualite_sites_baignadeGroupByOutputType>[]
           }
           count: {
-<<<<<<< HEAD
             args: Prisma.qualite_sites_baignadeCountArgs<ExtArgs>
             result: $Utils.Optional<Qualite_sites_baignadeCountAggregateOutputType> | number
-          }
-        }
-      }
-      communes: {
-        payload: Prisma.$communesPayload<ExtArgs>
-        fields: Prisma.communesFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.communesFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.communesFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          findFirst: {
-            args: Prisma.communesFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.communesFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          findMany: {
-            args: Prisma.communesFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>[]
-          }
-          create: {
-            args: Prisma.communesCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          createMany: {
-            args: Prisma.communesCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.communesCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>[]
-          }
-          delete: {
-            args: Prisma.communesDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          update: {
-            args: Prisma.communesUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          deleteMany: {
-            args: Prisma.communesDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.communesUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.communesUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>[]
-          }
-          upsert: {
-            args: Prisma.communesUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$communesPayload>
-          }
-          aggregate: {
-            args: Prisma.CommunesAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCommunes>
-          }
-          groupBy: {
-            args: Prisma.communesGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CommunesGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.communesCountArgs<ExtArgs>
-            result: $Utils.Optional<CommunesCountAggregateOutputType> | number
-          }
-        }
-      }
-      patch4c: {
-        payload: Prisma.$patch4cPayload<ExtArgs>
-        fields: Prisma.patch4cFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.patch4cFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.patch4cFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>
-          }
-          findFirst: {
-            args: Prisma.patch4cFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.patch4cFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>
-          }
-          findMany: {
-            args: Prisma.patch4cFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>[]
-          }
-          create: {
-            args: Prisma.patch4cCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>
-          }
-          createMany: {
-            args: Prisma.patch4cCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.patch4cCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>[]
-          }
-          delete: {
-            args: Prisma.patch4cDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>
-          }
-          update: {
-            args: Prisma.patch4cUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>
-          }
-          deleteMany: {
-            args: Prisma.patch4cDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.patch4cUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.patch4cUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>[]
-          }
-          upsert: {
-            args: Prisma.patch4cUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>
-          }
-          aggregate: {
-            args: Prisma.Patch4cAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePatch4c>
-          }
-          groupBy: {
-            args: Prisma.patch4cGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Patch4cGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.patch4cCountArgs<ExtArgs>
-            result: $Utils.Optional<Patch4cCountAggregateOutputType> | number
           }
         }
       }
@@ -2451,243 +2201,229 @@ export namespace Prisma {
           }
         }
       }
-    }
-=======
-            args: Prisma.qualite_sites_baignadeCountArgs<ExtArgs>;
-            result:
-              | $Utils.Optional<Qualite_sites_baignadeCountAggregateOutputType>
-              | number;
-          };
-        };
-      };
-      agriculture: {
-        payload: Prisma.$agriculturePayload<ExtArgs>;
-        fields: Prisma.agricultureFieldRefs;
-        operations: {
-          findUnique: {
-            args: Prisma.agricultureFindUniqueArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$agriculturePayload> | null;
-          };
-          findUniqueOrThrow: {
-            args: Prisma.agricultureFindUniqueOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>;
-          };
-          findFirst: {
-            args: Prisma.agricultureFindFirstArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$agriculturePayload> | null;
-          };
-          findFirstOrThrow: {
-            args: Prisma.agricultureFindFirstOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>;
-          };
-          findMany: {
-            args: Prisma.agricultureFindManyArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>[];
-          };
-          create: {
-            args: Prisma.agricultureCreateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>;
-          };
-          createMany: {
-            args: Prisma.agricultureCreateManyArgs<ExtArgs>;
-            result: BatchPayload;
-          };
-          createManyAndReturn: {
-            args: Prisma.agricultureCreateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>[];
-          };
-          delete: {
-            args: Prisma.agricultureDeleteArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>;
-          };
-          update: {
-            args: Prisma.agricultureUpdateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>;
-          };
-          deleteMany: {
-            args: Prisma.agricultureDeleteManyArgs<ExtArgs>;
-            result: BatchPayload;
-          };
-          updateMany: {
-            args: Prisma.agricultureUpdateManyArgs<ExtArgs>;
-            result: BatchPayload;
-          };
-          updateManyAndReturn: {
-            args: Prisma.agricultureUpdateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>[];
-          };
-          upsert: {
-            args: Prisma.agricultureUpsertArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$agriculturePayload>;
-          };
-          aggregate: {
-            args: Prisma.AgricultureAggregateArgs<ExtArgs>;
-            result: $Utils.Optional<AggregateAgriculture>;
-          };
-          groupBy: {
-            args: Prisma.agricultureGroupByArgs<ExtArgs>;
-            result: $Utils.Optional<AgricultureGroupByOutputType>[];
-          };
-          count: {
-            args: Prisma.agricultureCountArgs<ExtArgs>;
-            result:
-              | $Utils.Optional<AgricultureCountAggregateOutputType>
-              | number;
-          };
-        };
-      };
-      incendies_foret: {
-        payload: Prisma.$incendies_foretPayload<ExtArgs>;
-        fields: Prisma.incendies_foretFieldRefs;
-        operations: {
-          findUnique: {
-            args: Prisma.incendies_foretFindUniqueArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload> | null;
-          };
-          findUniqueOrThrow: {
-            args: Prisma.incendies_foretFindUniqueOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>;
-          };
-          findFirst: {
-            args: Prisma.incendies_foretFindFirstArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload> | null;
-          };
-          findFirstOrThrow: {
-            args: Prisma.incendies_foretFindFirstOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>;
-          };
-          findMany: {
-            args: Prisma.incendies_foretFindManyArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>[];
-          };
-          create: {
-            args: Prisma.incendies_foretCreateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>;
-          };
-          createMany: {
-            args: Prisma.incendies_foretCreateManyArgs<ExtArgs>;
-            result: BatchPayload;
-          };
-          createManyAndReturn: {
-            args: Prisma.incendies_foretCreateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>[];
-          };
-          delete: {
-            args: Prisma.incendies_foretDeleteArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>;
-          };
-          update: {
-            args: Prisma.incendies_foretUpdateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>;
-          };
-          deleteMany: {
-            args: Prisma.incendies_foretDeleteManyArgs<ExtArgs>;
-            result: BatchPayload;
-          };
-          updateMany: {
-            args: Prisma.incendies_foretUpdateManyArgs<ExtArgs>;
-            result: BatchPayload;
-          };
-          updateManyAndReturn: {
-            args: Prisma.incendies_foretUpdateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>[];
-          };
-          upsert: {
-            args: Prisma.incendies_foretUpsertArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$incendies_foretPayload>;
-          };
-          aggregate: {
-            args: Prisma.Incendies_foretAggregateArgs<ExtArgs>;
-            result: $Utils.Optional<AggregateIncendies_foret>;
-          };
-          groupBy: {
-            args: Prisma.incendies_foretGroupByArgs<ExtArgs>;
-            result: $Utils.Optional<Incendies_foretGroupByOutputType>[];
-          };
-          count: {
-            args: Prisma.incendies_foretCountArgs<ExtArgs>;
-            result:
-              | $Utils.Optional<Incendies_foretCountAggregateOutputType>
-              | number;
-          };
-        };
-      };
       patch4c: {
-        payload: Prisma.$patch4cPayload<ExtArgs>;
-        fields: Prisma.patch4cFieldRefs;
+        payload: Prisma.$patch4cPayload<ExtArgs>
+        fields: Prisma.patch4cFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.patch4cFindUniqueArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload> | null;
-          };
+            args: Prisma.patch4cFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload> | null
+          }
           findUniqueOrThrow: {
-            args: Prisma.patch4cFindUniqueOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>;
-          };
+            args: Prisma.patch4cFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>
+          }
           findFirst: {
-            args: Prisma.patch4cFindFirstArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload> | null;
-          };
+            args: Prisma.patch4cFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload> | null
+          }
           findFirstOrThrow: {
-            args: Prisma.patch4cFindFirstOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>;
-          };
+            args: Prisma.patch4cFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>
+          }
           findMany: {
-            args: Prisma.patch4cFindManyArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>[];
-          };
+            args: Prisma.patch4cFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>[]
+          }
           create: {
-            args: Prisma.patch4cCreateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>;
-          };
+            args: Prisma.patch4cCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>
+          }
           createMany: {
-            args: Prisma.patch4cCreateManyArgs<ExtArgs>;
-            result: BatchPayload;
-          };
+            args: Prisma.patch4cCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
           createManyAndReturn: {
-            args: Prisma.patch4cCreateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>[];
-          };
+            args: Prisma.patch4cCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>[]
+          }
           delete: {
-            args: Prisma.patch4cDeleteArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>;
-          };
+            args: Prisma.patch4cDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>
+          }
           update: {
-            args: Prisma.patch4cUpdateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>;
-          };
+            args: Prisma.patch4cUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>
+          }
           deleteMany: {
-            args: Prisma.patch4cDeleteManyArgs<ExtArgs>;
-            result: BatchPayload;
-          };
+            args: Prisma.patch4cDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
           updateMany: {
-            args: Prisma.patch4cUpdateManyArgs<ExtArgs>;
-            result: BatchPayload;
-          };
+            args: Prisma.patch4cUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
           updateManyAndReturn: {
-            args: Prisma.patch4cUpdateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>[];
-          };
+            args: Prisma.patch4cUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>[]
+          }
           upsert: {
-            args: Prisma.patch4cUpsertArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>;
-          };
+            args: Prisma.patch4cUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patch4cPayload>
+          }
           aggregate: {
-            args: Prisma.Patch4cAggregateArgs<ExtArgs>;
-            result: $Utils.Optional<AggregatePatch4c>;
-          };
+            args: Prisma.Patch4cAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePatch4c>
+          }
           groupBy: {
-            args: Prisma.patch4cGroupByArgs<ExtArgs>;
-            result: $Utils.Optional<Patch4cGroupByOutputType>[];
-          };
+            args: Prisma.patch4cGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Patch4cGroupByOutputType>[]
+          }
           count: {
-            args: Prisma.patch4cCountArgs<ExtArgs>;
-            result: $Utils.Optional<Patch4cCountAggregateOutputType> | number;
-          };
-        };
-      };
-    };
->>>>>>> dev
+            args: Prisma.patch4cCountArgs<ExtArgs>
+            result: $Utils.Optional<Patch4cCountAggregateOutputType> | number
+          }
+        }
+      }
+      communes: {
+        payload: Prisma.$communesPayload<ExtArgs>
+        fields: Prisma.communesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.communesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.communesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>
+          }
+          findFirst: {
+            args: Prisma.communesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.communesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>
+          }
+          findMany: {
+            args: Prisma.communesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>[]
+          }
+          create: {
+            args: Prisma.communesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>
+          }
+          createMany: {
+            args: Prisma.communesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.communesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>[]
+          }
+          delete: {
+            args: Prisma.communesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>
+          }
+          update: {
+            args: Prisma.communesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>
+          }
+          deleteMany: {
+            args: Prisma.communesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.communesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.communesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>[]
+          }
+          upsert: {
+            args: Prisma.communesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$communesPayload>
+          }
+          aggregate: {
+            args: Prisma.CommunesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCommunes>
+          }
+          groupBy: {
+            args: Prisma.communesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CommunesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.communesCountArgs<ExtArgs>
+            result: $Utils.Optional<CommunesCountAggregateOutputType> | number
+          }
+        }
+      }
+      users: {
+        payload: Prisma.$usersPayload<ExtArgs>
+        fields: Prisma.usersFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.usersFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.usersFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          findFirst: {
+            args: Prisma.usersFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.usersFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          findMany: {
+            args: Prisma.usersFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
+          }
+          create: {
+            args: Prisma.usersCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          createMany: {
+            args: Prisma.usersCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.usersCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
+          }
+          delete: {
+            args: Prisma.usersDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          update: {
+            args: Prisma.usersUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          deleteMany: {
+            args: Prisma.usersDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.usersUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.usersUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
+          }
+          upsert: {
+            args: Prisma.usersUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          aggregate: {
+            args: Prisma.UsersAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUsers>
+          }
+          groupBy: {
+            args: Prisma.usersGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UsersGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.usersCountArgs<ExtArgs>
+            result: $Utils.Optional<UsersCountAggregateOutputType> | number
+          }
+        }
+      }
+    }
   } & {
     other: {
       payload: any
@@ -2771,7 +2507,6 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-<<<<<<< HEAD
     inconfort_thermique?: inconfort_thermiqueOmit
     clc_epci?: clc_epciOmit
     collectivites_searchbar?: collectivites_searchbarOmit
@@ -2788,36 +2523,12 @@ export namespace Prisma {
     etat_cours_d_eau?: etat_cours_d_eauOmit
     aot_40?: aot_40Omit
     qualite_sites_baignade?: qualite_sites_baignadeOmit
-    communes?: communesOmit
-    patch4c?: patch4cOmit
     agriculture?: agricultureOmit
     incendies_foret?: incendies_foretOmit
+    patch4c?: patch4cOmit
+    communes?: communesOmit
+    users?: usersOmit
   }
-=======
-    inconfort_thermique?: inconfort_thermiqueOmit;
-    clc_epci?: clc_epciOmit;
-    collectivites_searchbar?: collectivites_searchbarOmit;
-    biodiversite?: biodiversiteOmit;
-    gestion_risques?: gestion_risquesOmit;
-    communes_drom?: communes_dromOmit;
-    ressources_eau?: ressources_eauOmit;
-    agriculture_bio?: agriculture_bioOmit;
-    erosion_cotiere?: erosion_cotiereOmit;
-    epci?: epciOmit;
-    surfaces_protegees?: surfaces_protegeesOmit;
-    spatial_ref_sys?: spatial_ref_sysOmit;
-    consommation_espaces_naf?: consommation_espaces_nafOmit;
-    lcz_bayonne_test?: lcz_bayonne_testOmit;
-    north_star_metric?: north_star_metricOmit;
-    etat_cours_d_eau?: etat_cours_d_eauOmit;
-    aot_40?: aot_40Omit;
-    users?: usersOmit;
-    qualite_sites_baignade?: qualite_sites_baignadeOmit;
-    agriculture?: agricultureOmit;
-    incendies_foret?: incendies_foretOmit;
-    patch4c?: patch4cOmit;
-  };
->>>>>>> dev
 
   /* Types for Logging */
   export type LogLevel = 'info' | 'query' | 'warn' | 'error'
@@ -2924,7 +2635,6 @@ export namespace Prisma {
   }
 
   export type Inconfort_thermiqueAvgAggregateOutputType = {
-<<<<<<< HEAD
     index: number | null
     region: number | null
     age_bati_post06: number | null
@@ -3398,514 +3108,6 @@ export namespace Prisma {
     superf_choro?: true
     _all?: true
   }
-=======
-    index: number | null;
-    region: number | null;
-    age_bati_post06: number | null;
-    age_bati_91_05: number | null;
-    age_bati_46_90: number | null;
-    age_bati_19_45: number | null;
-    age_bati_pre_19: number | null;
-    P20_POP80P_PSEUL_PERCENT: number | null;
-    tee_log: number | null;
-    tee_mob: number | null;
-    precarite_logement: number | null;
-    NA5AZ_sum: number | null;
-    NA5BE_sum: number | null;
-    NA5FZ_sum: number | null;
-    NA5GU_sum: number | null;
-    NA5OQ_sum: number | null;
-    s_geom_cstr_bati: number | null;
-    hauteur: number | null;
-    densite_bati: number | null;
-    h_x_s: number | null;
-    clc_1_artificialise: number | null;
-    clc_2_agricole: number | null;
-    clc_3_foret_semiNaturel: number | null;
-    clc_4_humide: number | null;
-    clc_5_eau: number | null;
-    superf_choro: number | null;
-  };
-
-  export type Inconfort_thermiqueSumAggregateOutputType = {
-    index: bigint | null;
-    region: number | null;
-    age_bati_post06: number | null;
-    age_bati_91_05: number | null;
-    age_bati_46_90: number | null;
-    age_bati_19_45: number | null;
-    age_bati_pre_19: number | null;
-    P20_POP80P_PSEUL_PERCENT: number | null;
-    tee_log: number | null;
-    tee_mob: number | null;
-    precarite_logement: number | null;
-    NA5AZ_sum: number | null;
-    NA5BE_sum: number | null;
-    NA5FZ_sum: number | null;
-    NA5GU_sum: number | null;
-    NA5OQ_sum: number | null;
-    s_geom_cstr_bati: number | null;
-    hauteur: number | null;
-    densite_bati: number | null;
-    h_x_s: number | null;
-    clc_1_artificialise: number | null;
-    clc_2_agricole: number | null;
-    clc_3_foret_semiNaturel: number | null;
-    clc_4_humide: number | null;
-    clc_5_eau: number | null;
-    superf_choro: number | null;
-  };
-
-  export type Inconfort_thermiqueMinAggregateOutputType = {
-    index: bigint | null;
-    code_geographique: string | null;
-    libelle_geographique: string | null;
-    epci: string | null;
-    libelle_epci: string | null;
-    departement: string | null;
-    libelle_departement: string | null;
-    region: number | null;
-    ept: string | null;
-    libelle_petr: string | null;
-    code_pnr: string | null;
-    libelle_pnr: string | null;
-    age_bati_post06: number | null;
-    age_bati_91_05: number | null;
-    age_bati_46_90: number | null;
-    age_bati_19_45: number | null;
-    age_bati_pre_19: number | null;
-    under_4_sum_1968: string | null;
-    to_80_sum_1968: string | null;
-    over_80_sum_1968: string | null;
-    under_4_sum_1975: string | null;
-    to_80_sum_1975: string | null;
-    over_80_sum_1975: string | null;
-    under_4_sum_1982: string | null;
-    to_80_sum_1982: string | null;
-    over_80_sum_1982: string | null;
-    under_4_sum_1990: string | null;
-    to_80_sum_1990: string | null;
-    over_80_sum_1990: string | null;
-    under_4_sum_1999: string | null;
-    to_80_sum_1999: string | null;
-    over_80_sum_1999: string | null;
-    under_4_sum_2009: string | null;
-    to_80_sum_2009: string | null;
-    over_80_sum_2009: string | null;
-    under_4_sum_2014: string | null;
-    to_80_sum_2014: string | null;
-    over_80_sum_2014: string | null;
-    under_4_sum_2020: string | null;
-    to_80_sum_2020: string | null;
-    over_80_sum_2020: string | null;
-    P20_POP80P: string | null;
-    P20_POP80P_PSEUL: string | null;
-    P20_POP80P_PSEUL_PERCENT: number | null;
-    tee_log: number | null;
-    tee_mob: number | null;
-    precarite_logement: number | null;
-    NA5AZ_sum: number | null;
-    NA5BE_sum: number | null;
-    NA5FZ_sum: number | null;
-    NA5GU_sum: number | null;
-    NA5OQ_sum: number | null;
-    s_geom_cstr_bati: number | null;
-    hauteur: number | null;
-    densite_bati: number | null;
-    h_x_s: number | null;
-    clc_1_artificialise: number | null;
-    clc_2_agricole: number | null;
-    clc_3_foret_semiNaturel: number | null;
-    clc_4_humide: number | null;
-    clc_5_eau: number | null;
-    superf_choro: number | null;
-  };
-
-  export type Inconfort_thermiqueMaxAggregateOutputType = {
-    index: bigint | null;
-    code_geographique: string | null;
-    libelle_geographique: string | null;
-    epci: string | null;
-    libelle_epci: string | null;
-    departement: string | null;
-    libelle_departement: string | null;
-    region: number | null;
-    ept: string | null;
-    libelle_petr: string | null;
-    code_pnr: string | null;
-    libelle_pnr: string | null;
-    age_bati_post06: number | null;
-    age_bati_91_05: number | null;
-    age_bati_46_90: number | null;
-    age_bati_19_45: number | null;
-    age_bati_pre_19: number | null;
-    under_4_sum_1968: string | null;
-    to_80_sum_1968: string | null;
-    over_80_sum_1968: string | null;
-    under_4_sum_1975: string | null;
-    to_80_sum_1975: string | null;
-    over_80_sum_1975: string | null;
-    under_4_sum_1982: string | null;
-    to_80_sum_1982: string | null;
-    over_80_sum_1982: string | null;
-    under_4_sum_1990: string | null;
-    to_80_sum_1990: string | null;
-    over_80_sum_1990: string | null;
-    under_4_sum_1999: string | null;
-    to_80_sum_1999: string | null;
-    over_80_sum_1999: string | null;
-    under_4_sum_2009: string | null;
-    to_80_sum_2009: string | null;
-    over_80_sum_2009: string | null;
-    under_4_sum_2014: string | null;
-    to_80_sum_2014: string | null;
-    over_80_sum_2014: string | null;
-    under_4_sum_2020: string | null;
-    to_80_sum_2020: string | null;
-    over_80_sum_2020: string | null;
-    P20_POP80P: string | null;
-    P20_POP80P_PSEUL: string | null;
-    P20_POP80P_PSEUL_PERCENT: number | null;
-    tee_log: number | null;
-    tee_mob: number | null;
-    precarite_logement: number | null;
-    NA5AZ_sum: number | null;
-    NA5BE_sum: number | null;
-    NA5FZ_sum: number | null;
-    NA5GU_sum: number | null;
-    NA5OQ_sum: number | null;
-    s_geom_cstr_bati: number | null;
-    hauteur: number | null;
-    densite_bati: number | null;
-    h_x_s: number | null;
-    clc_1_artificialise: number | null;
-    clc_2_agricole: number | null;
-    clc_3_foret_semiNaturel: number | null;
-    clc_4_humide: number | null;
-    clc_5_eau: number | null;
-    superf_choro: number | null;
-  };
-
-  export type Inconfort_thermiqueCountAggregateOutputType = {
-    index: number;
-    code_geographique: number;
-    libelle_geographique: number;
-    epci: number;
-    libelle_epci: number;
-    departement: number;
-    libelle_departement: number;
-    region: number;
-    ept: number;
-    libelle_petr: number;
-    code_pnr: number;
-    libelle_pnr: number;
-    age_bati_post06: number;
-    age_bati_91_05: number;
-    age_bati_46_90: number;
-    age_bati_19_45: number;
-    age_bati_pre_19: number;
-    under_4_sum_1968: number;
-    to_80_sum_1968: number;
-    over_80_sum_1968: number;
-    under_4_sum_1975: number;
-    to_80_sum_1975: number;
-    over_80_sum_1975: number;
-    under_4_sum_1982: number;
-    to_80_sum_1982: number;
-    over_80_sum_1982: number;
-    under_4_sum_1990: number;
-    to_80_sum_1990: number;
-    over_80_sum_1990: number;
-    under_4_sum_1999: number;
-    to_80_sum_1999: number;
-    over_80_sum_1999: number;
-    under_4_sum_2009: number;
-    to_80_sum_2009: number;
-    over_80_sum_2009: number;
-    under_4_sum_2014: number;
-    to_80_sum_2014: number;
-    over_80_sum_2014: number;
-    under_4_sum_2020: number;
-    to_80_sum_2020: number;
-    over_80_sum_2020: number;
-    P20_POP80P: number;
-    P20_POP80P_PSEUL: number;
-    P20_POP80P_PSEUL_PERCENT: number;
-    tee_log: number;
-    tee_mob: number;
-    precarite_logement: number;
-    NA5AZ_sum: number;
-    NA5BE_sum: number;
-    NA5FZ_sum: number;
-    NA5GU_sum: number;
-    NA5OQ_sum: number;
-    s_geom_cstr_bati: number;
-    hauteur: number;
-    densite_bati: number;
-    h_x_s: number;
-    clc_1_artificialise: number;
-    clc_2_agricole: number;
-    clc_3_foret_semiNaturel: number;
-    clc_4_humide: number;
-    clc_5_eau: number;
-    superf_choro: number;
-    _all: number;
-  };
-
-  export type Inconfort_thermiqueAvgAggregateInputType = {
-    index?: true;
-    region?: true;
-    age_bati_post06?: true;
-    age_bati_91_05?: true;
-    age_bati_46_90?: true;
-    age_bati_19_45?: true;
-    age_bati_pre_19?: true;
-    P20_POP80P_PSEUL_PERCENT?: true;
-    tee_log?: true;
-    tee_mob?: true;
-    precarite_logement?: true;
-    NA5AZ_sum?: true;
-    NA5BE_sum?: true;
-    NA5FZ_sum?: true;
-    NA5GU_sum?: true;
-    NA5OQ_sum?: true;
-    s_geom_cstr_bati?: true;
-    hauteur?: true;
-    densite_bati?: true;
-    h_x_s?: true;
-    clc_1_artificialise?: true;
-    clc_2_agricole?: true;
-    clc_3_foret_semiNaturel?: true;
-    clc_4_humide?: true;
-    clc_5_eau?: true;
-    superf_choro?: true;
-  };
-
-  export type Inconfort_thermiqueSumAggregateInputType = {
-    index?: true;
-    region?: true;
-    age_bati_post06?: true;
-    age_bati_91_05?: true;
-    age_bati_46_90?: true;
-    age_bati_19_45?: true;
-    age_bati_pre_19?: true;
-    P20_POP80P_PSEUL_PERCENT?: true;
-    tee_log?: true;
-    tee_mob?: true;
-    precarite_logement?: true;
-    NA5AZ_sum?: true;
-    NA5BE_sum?: true;
-    NA5FZ_sum?: true;
-    NA5GU_sum?: true;
-    NA5OQ_sum?: true;
-    s_geom_cstr_bati?: true;
-    hauteur?: true;
-    densite_bati?: true;
-    h_x_s?: true;
-    clc_1_artificialise?: true;
-    clc_2_agricole?: true;
-    clc_3_foret_semiNaturel?: true;
-    clc_4_humide?: true;
-    clc_5_eau?: true;
-    superf_choro?: true;
-  };
-
-  export type Inconfort_thermiqueMinAggregateInputType = {
-    index?: true;
-    code_geographique?: true;
-    libelle_geographique?: true;
-    epci?: true;
-    libelle_epci?: true;
-    departement?: true;
-    libelle_departement?: true;
-    region?: true;
-    ept?: true;
-    libelle_petr?: true;
-    code_pnr?: true;
-    libelle_pnr?: true;
-    age_bati_post06?: true;
-    age_bati_91_05?: true;
-    age_bati_46_90?: true;
-    age_bati_19_45?: true;
-    age_bati_pre_19?: true;
-    under_4_sum_1968?: true;
-    to_80_sum_1968?: true;
-    over_80_sum_1968?: true;
-    under_4_sum_1975?: true;
-    to_80_sum_1975?: true;
-    over_80_sum_1975?: true;
-    under_4_sum_1982?: true;
-    to_80_sum_1982?: true;
-    over_80_sum_1982?: true;
-    under_4_sum_1990?: true;
-    to_80_sum_1990?: true;
-    over_80_sum_1990?: true;
-    under_4_sum_1999?: true;
-    to_80_sum_1999?: true;
-    over_80_sum_1999?: true;
-    under_4_sum_2009?: true;
-    to_80_sum_2009?: true;
-    over_80_sum_2009?: true;
-    under_4_sum_2014?: true;
-    to_80_sum_2014?: true;
-    over_80_sum_2014?: true;
-    under_4_sum_2020?: true;
-    to_80_sum_2020?: true;
-    over_80_sum_2020?: true;
-    P20_POP80P?: true;
-    P20_POP80P_PSEUL?: true;
-    P20_POP80P_PSEUL_PERCENT?: true;
-    tee_log?: true;
-    tee_mob?: true;
-    precarite_logement?: true;
-    NA5AZ_sum?: true;
-    NA5BE_sum?: true;
-    NA5FZ_sum?: true;
-    NA5GU_sum?: true;
-    NA5OQ_sum?: true;
-    s_geom_cstr_bati?: true;
-    hauteur?: true;
-    densite_bati?: true;
-    h_x_s?: true;
-    clc_1_artificialise?: true;
-    clc_2_agricole?: true;
-    clc_3_foret_semiNaturel?: true;
-    clc_4_humide?: true;
-    clc_5_eau?: true;
-    superf_choro?: true;
-  };
-
-  export type Inconfort_thermiqueMaxAggregateInputType = {
-    index?: true;
-    code_geographique?: true;
-    libelle_geographique?: true;
-    epci?: true;
-    libelle_epci?: true;
-    departement?: true;
-    libelle_departement?: true;
-    region?: true;
-    ept?: true;
-    libelle_petr?: true;
-    code_pnr?: true;
-    libelle_pnr?: true;
-    age_bati_post06?: true;
-    age_bati_91_05?: true;
-    age_bati_46_90?: true;
-    age_bati_19_45?: true;
-    age_bati_pre_19?: true;
-    under_4_sum_1968?: true;
-    to_80_sum_1968?: true;
-    over_80_sum_1968?: true;
-    under_4_sum_1975?: true;
-    to_80_sum_1975?: true;
-    over_80_sum_1975?: true;
-    under_4_sum_1982?: true;
-    to_80_sum_1982?: true;
-    over_80_sum_1982?: true;
-    under_4_sum_1990?: true;
-    to_80_sum_1990?: true;
-    over_80_sum_1990?: true;
-    under_4_sum_1999?: true;
-    to_80_sum_1999?: true;
-    over_80_sum_1999?: true;
-    under_4_sum_2009?: true;
-    to_80_sum_2009?: true;
-    over_80_sum_2009?: true;
-    under_4_sum_2014?: true;
-    to_80_sum_2014?: true;
-    over_80_sum_2014?: true;
-    under_4_sum_2020?: true;
-    to_80_sum_2020?: true;
-    over_80_sum_2020?: true;
-    P20_POP80P?: true;
-    P20_POP80P_PSEUL?: true;
-    P20_POP80P_PSEUL_PERCENT?: true;
-    tee_log?: true;
-    tee_mob?: true;
-    precarite_logement?: true;
-    NA5AZ_sum?: true;
-    NA5BE_sum?: true;
-    NA5FZ_sum?: true;
-    NA5GU_sum?: true;
-    NA5OQ_sum?: true;
-    s_geom_cstr_bati?: true;
-    hauteur?: true;
-    densite_bati?: true;
-    h_x_s?: true;
-    clc_1_artificialise?: true;
-    clc_2_agricole?: true;
-    clc_3_foret_semiNaturel?: true;
-    clc_4_humide?: true;
-    clc_5_eau?: true;
-    superf_choro?: true;
-  };
-
-  export type Inconfort_thermiqueCountAggregateInputType = {
-    index?: true;
-    code_geographique?: true;
-    libelle_geographique?: true;
-    epci?: true;
-    libelle_epci?: true;
-    departement?: true;
-    libelle_departement?: true;
-    region?: true;
-    ept?: true;
-    libelle_petr?: true;
-    code_pnr?: true;
-    libelle_pnr?: true;
-    age_bati_post06?: true;
-    age_bati_91_05?: true;
-    age_bati_46_90?: true;
-    age_bati_19_45?: true;
-    age_bati_pre_19?: true;
-    under_4_sum_1968?: true;
-    to_80_sum_1968?: true;
-    over_80_sum_1968?: true;
-    under_4_sum_1975?: true;
-    to_80_sum_1975?: true;
-    over_80_sum_1975?: true;
-    under_4_sum_1982?: true;
-    to_80_sum_1982?: true;
-    over_80_sum_1982?: true;
-    under_4_sum_1990?: true;
-    to_80_sum_1990?: true;
-    over_80_sum_1990?: true;
-    under_4_sum_1999?: true;
-    to_80_sum_1999?: true;
-    over_80_sum_1999?: true;
-    under_4_sum_2009?: true;
-    to_80_sum_2009?: true;
-    over_80_sum_2009?: true;
-    under_4_sum_2014?: true;
-    to_80_sum_2014?: true;
-    over_80_sum_2014?: true;
-    under_4_sum_2020?: true;
-    to_80_sum_2020?: true;
-    over_80_sum_2020?: true;
-    P20_POP80P?: true;
-    P20_POP80P_PSEUL?: true;
-    P20_POP80P_PSEUL_PERCENT?: true;
-    tee_log?: true;
-    tee_mob?: true;
-    precarite_logement?: true;
-    NA5AZ_sum?: true;
-    NA5BE_sum?: true;
-    NA5FZ_sum?: true;
-    NA5GU_sum?: true;
-    NA5OQ_sum?: true;
-    s_geom_cstr_bati?: true;
-    hauteur?: true;
-    densite_bati?: true;
-    h_x_s?: true;
-    clc_1_artificialise?: true;
-    clc_2_agricole?: true;
-    clc_3_foret_semiNaturel?: true;
-    clc_4_humide?: true;
-    clc_5_eau?: true;
-    superf_choro?: true;
-    _all?: true;
-  };
->>>>>>> dev
 
   export type Inconfort_thermiqueAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
@@ -3994,7 +3196,6 @@ export namespace Prisma {
   }
 
   export type Inconfort_thermiqueGroupByOutputType = {
-<<<<<<< HEAD
     index: bigint
     code_geographique: string
     libelle_geographique: string
@@ -4058,76 +3259,6 @@ export namespace Prisma {
     _min: Inconfort_thermiqueMinAggregateOutputType | null
     _max: Inconfort_thermiqueMaxAggregateOutputType | null
   }
-=======
-    index: bigint;
-    code_geographique: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    libelle_departement: string;
-    region: number;
-    ept: string | null;
-    libelle_petr: string | null;
-    code_pnr: string | null;
-    libelle_pnr: string | null;
-    age_bati_post06: number | null;
-    age_bati_91_05: number | null;
-    age_bati_46_90: number | null;
-    age_bati_19_45: number | null;
-    age_bati_pre_19: number | null;
-    under_4_sum_1968: string | null;
-    to_80_sum_1968: string | null;
-    over_80_sum_1968: string | null;
-    under_4_sum_1975: string | null;
-    to_80_sum_1975: string | null;
-    over_80_sum_1975: string | null;
-    under_4_sum_1982: string | null;
-    to_80_sum_1982: string | null;
-    over_80_sum_1982: string | null;
-    under_4_sum_1990: string | null;
-    to_80_sum_1990: string | null;
-    over_80_sum_1990: string | null;
-    under_4_sum_1999: string | null;
-    to_80_sum_1999: string | null;
-    over_80_sum_1999: string | null;
-    under_4_sum_2009: string | null;
-    to_80_sum_2009: string | null;
-    over_80_sum_2009: string | null;
-    under_4_sum_2014: string | null;
-    to_80_sum_2014: string | null;
-    over_80_sum_2014: string | null;
-    under_4_sum_2020: string | null;
-    to_80_sum_2020: string | null;
-    over_80_sum_2020: string | null;
-    P20_POP80P: string | null;
-    P20_POP80P_PSEUL: string | null;
-    P20_POP80P_PSEUL_PERCENT: number | null;
-    tee_log: number | null;
-    tee_mob: number | null;
-    precarite_logement: number | null;
-    NA5AZ_sum: number | null;
-    NA5BE_sum: number | null;
-    NA5FZ_sum: number | null;
-    NA5GU_sum: number | null;
-    NA5OQ_sum: number | null;
-    s_geom_cstr_bati: number | null;
-    hauteur: number | null;
-    densite_bati: number | null;
-    h_x_s: number | null;
-    clc_1_artificialise: number | null;
-    clc_2_agricole: number | null;
-    clc_3_foret_semiNaturel: number | null;
-    clc_4_humide: number | null;
-    clc_5_eau: number | null;
-    superf_choro: number | null;
-    _count: Inconfort_thermiqueCountAggregateOutputType | null;
-    _avg: Inconfort_thermiqueAvgAggregateOutputType | null;
-    _sum: Inconfort_thermiqueSumAggregateOutputType | null;
-    _min: Inconfort_thermiqueMinAggregateOutputType | null;
-    _max: Inconfort_thermiqueMaxAggregateOutputType | null;
-  };
->>>>>>> dev
 
   type GetInconfort_thermiqueGroupByPayload<T extends inconfort_thermiqueGroupByArgs> = Prisma.PrismaPromise<
     Array<
@@ -4142,7 +3273,6 @@ export namespace Prisma {
       >
     >
 
-<<<<<<< HEAD
 
   export type inconfort_thermiqueSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     index?: boolean
@@ -4450,425 +3580,6 @@ export namespace Prisma {
     }, ExtArgs["result"]["inconfort_thermique"]>
     composites: {}
   }
-=======
-  export type inconfort_thermiqueSelect<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      code_geographique?: boolean;
-      libelle_geographique?: boolean;
-      epci?: boolean;
-      libelle_epci?: boolean;
-      departement?: boolean;
-      libelle_departement?: boolean;
-      region?: boolean;
-      ept?: boolean;
-      libelle_petr?: boolean;
-      code_pnr?: boolean;
-      libelle_pnr?: boolean;
-      age_bati_post06?: boolean;
-      age_bati_91_05?: boolean;
-      age_bati_46_90?: boolean;
-      age_bati_19_45?: boolean;
-      age_bati_pre_19?: boolean;
-      under_4_sum_1968?: boolean;
-      to_80_sum_1968?: boolean;
-      over_80_sum_1968?: boolean;
-      under_4_sum_1975?: boolean;
-      to_80_sum_1975?: boolean;
-      over_80_sum_1975?: boolean;
-      under_4_sum_1982?: boolean;
-      to_80_sum_1982?: boolean;
-      over_80_sum_1982?: boolean;
-      under_4_sum_1990?: boolean;
-      to_80_sum_1990?: boolean;
-      over_80_sum_1990?: boolean;
-      under_4_sum_1999?: boolean;
-      to_80_sum_1999?: boolean;
-      over_80_sum_1999?: boolean;
-      under_4_sum_2009?: boolean;
-      to_80_sum_2009?: boolean;
-      over_80_sum_2009?: boolean;
-      under_4_sum_2014?: boolean;
-      to_80_sum_2014?: boolean;
-      over_80_sum_2014?: boolean;
-      under_4_sum_2020?: boolean;
-      to_80_sum_2020?: boolean;
-      over_80_sum_2020?: boolean;
-      P20_POP80P?: boolean;
-      P20_POP80P_PSEUL?: boolean;
-      P20_POP80P_PSEUL_PERCENT?: boolean;
-      tee_log?: boolean;
-      tee_mob?: boolean;
-      precarite_logement?: boolean;
-      NA5AZ_sum?: boolean;
-      NA5BE_sum?: boolean;
-      NA5FZ_sum?: boolean;
-      NA5GU_sum?: boolean;
-      NA5OQ_sum?: boolean;
-      s_geom_cstr_bati?: boolean;
-      hauteur?: boolean;
-      densite_bati?: boolean;
-      h_x_s?: boolean;
-      clc_1_artificialise?: boolean;
-      clc_2_agricole?: boolean;
-      clc_3_foret_semiNaturel?: boolean;
-      clc_4_humide?: boolean;
-      clc_5_eau?: boolean;
-      superf_choro?: boolean;
-    },
-    ExtArgs['result']['inconfort_thermique']
-  >;
-
-  export type inconfort_thermiqueSelectCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      code_geographique?: boolean;
-      libelle_geographique?: boolean;
-      epci?: boolean;
-      libelle_epci?: boolean;
-      departement?: boolean;
-      libelle_departement?: boolean;
-      region?: boolean;
-      ept?: boolean;
-      libelle_petr?: boolean;
-      code_pnr?: boolean;
-      libelle_pnr?: boolean;
-      age_bati_post06?: boolean;
-      age_bati_91_05?: boolean;
-      age_bati_46_90?: boolean;
-      age_bati_19_45?: boolean;
-      age_bati_pre_19?: boolean;
-      under_4_sum_1968?: boolean;
-      to_80_sum_1968?: boolean;
-      over_80_sum_1968?: boolean;
-      under_4_sum_1975?: boolean;
-      to_80_sum_1975?: boolean;
-      over_80_sum_1975?: boolean;
-      under_4_sum_1982?: boolean;
-      to_80_sum_1982?: boolean;
-      over_80_sum_1982?: boolean;
-      under_4_sum_1990?: boolean;
-      to_80_sum_1990?: boolean;
-      over_80_sum_1990?: boolean;
-      under_4_sum_1999?: boolean;
-      to_80_sum_1999?: boolean;
-      over_80_sum_1999?: boolean;
-      under_4_sum_2009?: boolean;
-      to_80_sum_2009?: boolean;
-      over_80_sum_2009?: boolean;
-      under_4_sum_2014?: boolean;
-      to_80_sum_2014?: boolean;
-      over_80_sum_2014?: boolean;
-      under_4_sum_2020?: boolean;
-      to_80_sum_2020?: boolean;
-      over_80_sum_2020?: boolean;
-      P20_POP80P?: boolean;
-      P20_POP80P_PSEUL?: boolean;
-      P20_POP80P_PSEUL_PERCENT?: boolean;
-      tee_log?: boolean;
-      tee_mob?: boolean;
-      precarite_logement?: boolean;
-      NA5AZ_sum?: boolean;
-      NA5BE_sum?: boolean;
-      NA5FZ_sum?: boolean;
-      NA5GU_sum?: boolean;
-      NA5OQ_sum?: boolean;
-      s_geom_cstr_bati?: boolean;
-      hauteur?: boolean;
-      densite_bati?: boolean;
-      h_x_s?: boolean;
-      clc_1_artificialise?: boolean;
-      clc_2_agricole?: boolean;
-      clc_3_foret_semiNaturel?: boolean;
-      clc_4_humide?: boolean;
-      clc_5_eau?: boolean;
-      superf_choro?: boolean;
-    },
-    ExtArgs['result']['inconfort_thermique']
-  >;
-
-  export type inconfort_thermiqueSelectUpdateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      code_geographique?: boolean;
-      libelle_geographique?: boolean;
-      epci?: boolean;
-      libelle_epci?: boolean;
-      departement?: boolean;
-      libelle_departement?: boolean;
-      region?: boolean;
-      ept?: boolean;
-      libelle_petr?: boolean;
-      code_pnr?: boolean;
-      libelle_pnr?: boolean;
-      age_bati_post06?: boolean;
-      age_bati_91_05?: boolean;
-      age_bati_46_90?: boolean;
-      age_bati_19_45?: boolean;
-      age_bati_pre_19?: boolean;
-      under_4_sum_1968?: boolean;
-      to_80_sum_1968?: boolean;
-      over_80_sum_1968?: boolean;
-      under_4_sum_1975?: boolean;
-      to_80_sum_1975?: boolean;
-      over_80_sum_1975?: boolean;
-      under_4_sum_1982?: boolean;
-      to_80_sum_1982?: boolean;
-      over_80_sum_1982?: boolean;
-      under_4_sum_1990?: boolean;
-      to_80_sum_1990?: boolean;
-      over_80_sum_1990?: boolean;
-      under_4_sum_1999?: boolean;
-      to_80_sum_1999?: boolean;
-      over_80_sum_1999?: boolean;
-      under_4_sum_2009?: boolean;
-      to_80_sum_2009?: boolean;
-      over_80_sum_2009?: boolean;
-      under_4_sum_2014?: boolean;
-      to_80_sum_2014?: boolean;
-      over_80_sum_2014?: boolean;
-      under_4_sum_2020?: boolean;
-      to_80_sum_2020?: boolean;
-      over_80_sum_2020?: boolean;
-      P20_POP80P?: boolean;
-      P20_POP80P_PSEUL?: boolean;
-      P20_POP80P_PSEUL_PERCENT?: boolean;
-      tee_log?: boolean;
-      tee_mob?: boolean;
-      precarite_logement?: boolean;
-      NA5AZ_sum?: boolean;
-      NA5BE_sum?: boolean;
-      NA5FZ_sum?: boolean;
-      NA5GU_sum?: boolean;
-      NA5OQ_sum?: boolean;
-      s_geom_cstr_bati?: boolean;
-      hauteur?: boolean;
-      densite_bati?: boolean;
-      h_x_s?: boolean;
-      clc_1_artificialise?: boolean;
-      clc_2_agricole?: boolean;
-      clc_3_foret_semiNaturel?: boolean;
-      clc_4_humide?: boolean;
-      clc_5_eau?: boolean;
-      superf_choro?: boolean;
-    },
-    ExtArgs['result']['inconfort_thermique']
-  >;
-
-  export type inconfort_thermiqueSelectScalar = {
-    index?: boolean;
-    code_geographique?: boolean;
-    libelle_geographique?: boolean;
-    epci?: boolean;
-    libelle_epci?: boolean;
-    departement?: boolean;
-    libelle_departement?: boolean;
-    region?: boolean;
-    ept?: boolean;
-    libelle_petr?: boolean;
-    code_pnr?: boolean;
-    libelle_pnr?: boolean;
-    age_bati_post06?: boolean;
-    age_bati_91_05?: boolean;
-    age_bati_46_90?: boolean;
-    age_bati_19_45?: boolean;
-    age_bati_pre_19?: boolean;
-    under_4_sum_1968?: boolean;
-    to_80_sum_1968?: boolean;
-    over_80_sum_1968?: boolean;
-    under_4_sum_1975?: boolean;
-    to_80_sum_1975?: boolean;
-    over_80_sum_1975?: boolean;
-    under_4_sum_1982?: boolean;
-    to_80_sum_1982?: boolean;
-    over_80_sum_1982?: boolean;
-    under_4_sum_1990?: boolean;
-    to_80_sum_1990?: boolean;
-    over_80_sum_1990?: boolean;
-    under_4_sum_1999?: boolean;
-    to_80_sum_1999?: boolean;
-    over_80_sum_1999?: boolean;
-    under_4_sum_2009?: boolean;
-    to_80_sum_2009?: boolean;
-    over_80_sum_2009?: boolean;
-    under_4_sum_2014?: boolean;
-    to_80_sum_2014?: boolean;
-    over_80_sum_2014?: boolean;
-    under_4_sum_2020?: boolean;
-    to_80_sum_2020?: boolean;
-    over_80_sum_2020?: boolean;
-    P20_POP80P?: boolean;
-    P20_POP80P_PSEUL?: boolean;
-    P20_POP80P_PSEUL_PERCENT?: boolean;
-    tee_log?: boolean;
-    tee_mob?: boolean;
-    precarite_logement?: boolean;
-    NA5AZ_sum?: boolean;
-    NA5BE_sum?: boolean;
-    NA5FZ_sum?: boolean;
-    NA5GU_sum?: boolean;
-    NA5OQ_sum?: boolean;
-    s_geom_cstr_bati?: boolean;
-    hauteur?: boolean;
-    densite_bati?: boolean;
-    h_x_s?: boolean;
-    clc_1_artificialise?: boolean;
-    clc_2_agricole?: boolean;
-    clc_3_foret_semiNaturel?: boolean;
-    clc_4_humide?: boolean;
-    clc_5_eau?: boolean;
-    superf_choro?: boolean;
-  };
-
-  export type inconfort_thermiqueOmit<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetOmit<
-    | 'index'
-    | 'code_geographique'
-    | 'libelle_geographique'
-    | 'epci'
-    | 'libelle_epci'
-    | 'departement'
-    | 'libelle_departement'
-    | 'region'
-    | 'ept'
-    | 'libelle_petr'
-    | 'code_pnr'
-    | 'libelle_pnr'
-    | 'age_bati_post06'
-    | 'age_bati_91_05'
-    | 'age_bati_46_90'
-    | 'age_bati_19_45'
-    | 'age_bati_pre_19'
-    | 'under_4_sum_1968'
-    | 'to_80_sum_1968'
-    | 'over_80_sum_1968'
-    | 'under_4_sum_1975'
-    | 'to_80_sum_1975'
-    | 'over_80_sum_1975'
-    | 'under_4_sum_1982'
-    | 'to_80_sum_1982'
-    | 'over_80_sum_1982'
-    | 'under_4_sum_1990'
-    | 'to_80_sum_1990'
-    | 'over_80_sum_1990'
-    | 'under_4_sum_1999'
-    | 'to_80_sum_1999'
-    | 'over_80_sum_1999'
-    | 'under_4_sum_2009'
-    | 'to_80_sum_2009'
-    | 'over_80_sum_2009'
-    | 'under_4_sum_2014'
-    | 'to_80_sum_2014'
-    | 'over_80_sum_2014'
-    | 'under_4_sum_2020'
-    | 'to_80_sum_2020'
-    | 'over_80_sum_2020'
-    | 'P20_POP80P'
-    | 'P20_POP80P_PSEUL'
-    | 'P20_POP80P_PSEUL_PERCENT'
-    | 'tee_log'
-    | 'tee_mob'
-    | 'precarite_logement'
-    | 'NA5AZ_sum'
-    | 'NA5BE_sum'
-    | 'NA5FZ_sum'
-    | 'NA5GU_sum'
-    | 'NA5OQ_sum'
-    | 's_geom_cstr_bati'
-    | 'hauteur'
-    | 'densite_bati'
-    | 'h_x_s'
-    | 'clc_1_artificialise'
-    | 'clc_2_agricole'
-    | 'clc_3_foret_semiNaturel'
-    | 'clc_4_humide'
-    | 'clc_5_eau'
-    | 'superf_choro',
-    ExtArgs['result']['inconfort_thermique']
-  >;
-
-  export type $inconfort_thermiquePayload<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    name: 'inconfort_thermique';
-    objects: {};
-    scalars: $Extensions.GetPayloadResult<
-      {
-        index: bigint;
-        code_geographique: string;
-        libelle_geographique: string;
-        epci: string;
-        libelle_epci: string;
-        departement: string;
-        libelle_departement: string;
-        region: number;
-        ept: string | null;
-        libelle_petr: string | null;
-        code_pnr: string | null;
-        libelle_pnr: string | null;
-        age_bati_post06: number | null;
-        age_bati_91_05: number | null;
-        age_bati_46_90: number | null;
-        age_bati_19_45: number | null;
-        age_bati_pre_19: number | null;
-        under_4_sum_1968: string | null;
-        to_80_sum_1968: string | null;
-        over_80_sum_1968: string | null;
-        under_4_sum_1975: string | null;
-        to_80_sum_1975: string | null;
-        over_80_sum_1975: string | null;
-        under_4_sum_1982: string | null;
-        to_80_sum_1982: string | null;
-        over_80_sum_1982: string | null;
-        under_4_sum_1990: string | null;
-        to_80_sum_1990: string | null;
-        over_80_sum_1990: string | null;
-        under_4_sum_1999: string | null;
-        to_80_sum_1999: string | null;
-        over_80_sum_1999: string | null;
-        under_4_sum_2009: string | null;
-        to_80_sum_2009: string | null;
-        over_80_sum_2009: string | null;
-        under_4_sum_2014: string | null;
-        to_80_sum_2014: string | null;
-        over_80_sum_2014: string | null;
-        under_4_sum_2020: string | null;
-        to_80_sum_2020: string | null;
-        over_80_sum_2020: string | null;
-        P20_POP80P: string | null;
-        P20_POP80P_PSEUL: string | null;
-        P20_POP80P_PSEUL_PERCENT: number | null;
-        tee_log: number | null;
-        tee_mob: number | null;
-        precarite_logement: number | null;
-        NA5AZ_sum: number | null;
-        NA5BE_sum: number | null;
-        NA5FZ_sum: number | null;
-        NA5GU_sum: number | null;
-        NA5OQ_sum: number | null;
-        s_geom_cstr_bati: number | null;
-        hauteur: number | null;
-        densite_bati: number | null;
-        h_x_s: number | null;
-        clc_1_artificialise: number | null;
-        clc_2_agricole: number | null;
-        clc_3_foret_semiNaturel: number | null;
-        clc_4_humide: number | null;
-        clc_5_eau: number | null;
-        superf_choro: number | null;
-      },
-      ExtArgs['result']['inconfort_thermique']
-    >;
-    composites: {};
-  };
->>>>>>> dev
 
   type inconfort_thermiqueGetPayload<S extends boolean | null | undefined | inconfort_thermiqueDefaultArgs> = $Result.GetResult<Prisma.$inconfort_thermiquePayload, S>
 
@@ -5289,7 +4000,6 @@ export namespace Prisma {
    * Fields of the inconfort_thermique model
    */ 
   interface inconfort_thermiqueFieldRefs {
-<<<<<<< HEAD
     readonly index: FieldRef<"inconfort_thermique", 'BigInt'>
     readonly code_geographique: FieldRef<"inconfort_thermique", 'String'>
     readonly libelle_geographique: FieldRef<"inconfort_thermique", 'String'>
@@ -5347,70 +4057,6 @@ export namespace Prisma {
     readonly clc_4_humide: FieldRef<"inconfort_thermique", 'Float'>
     readonly clc_5_eau: FieldRef<"inconfort_thermique", 'Float'>
     readonly superf_choro: FieldRef<"inconfort_thermique", 'Float'>
-=======
-    readonly index: FieldRef<'inconfort_thermique', 'BigInt'>;
-    readonly code_geographique: FieldRef<'inconfort_thermique', 'String'>;
-    readonly libelle_geographique: FieldRef<'inconfort_thermique', 'String'>;
-    readonly epci: FieldRef<'inconfort_thermique', 'String'>;
-    readonly libelle_epci: FieldRef<'inconfort_thermique', 'String'>;
-    readonly departement: FieldRef<'inconfort_thermique', 'String'>;
-    readonly libelle_departement: FieldRef<'inconfort_thermique', 'String'>;
-    readonly region: FieldRef<'inconfort_thermique', 'Int'>;
-    readonly ept: FieldRef<'inconfort_thermique', 'String'>;
-    readonly libelle_petr: FieldRef<'inconfort_thermique', 'String'>;
-    readonly code_pnr: FieldRef<'inconfort_thermique', 'String'>;
-    readonly libelle_pnr: FieldRef<'inconfort_thermique', 'String'>;
-    readonly age_bati_post06: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly age_bati_91_05: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly age_bati_46_90: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly age_bati_19_45: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly age_bati_pre_19: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly under_4_sum_1968: FieldRef<'inconfort_thermique', 'String'>;
-    readonly to_80_sum_1968: FieldRef<'inconfort_thermique', 'String'>;
-    readonly over_80_sum_1968: FieldRef<'inconfort_thermique', 'String'>;
-    readonly under_4_sum_1975: FieldRef<'inconfort_thermique', 'String'>;
-    readonly to_80_sum_1975: FieldRef<'inconfort_thermique', 'String'>;
-    readonly over_80_sum_1975: FieldRef<'inconfort_thermique', 'String'>;
-    readonly under_4_sum_1982: FieldRef<'inconfort_thermique', 'String'>;
-    readonly to_80_sum_1982: FieldRef<'inconfort_thermique', 'String'>;
-    readonly over_80_sum_1982: FieldRef<'inconfort_thermique', 'String'>;
-    readonly under_4_sum_1990: FieldRef<'inconfort_thermique', 'String'>;
-    readonly to_80_sum_1990: FieldRef<'inconfort_thermique', 'String'>;
-    readonly over_80_sum_1990: FieldRef<'inconfort_thermique', 'String'>;
-    readonly under_4_sum_1999: FieldRef<'inconfort_thermique', 'String'>;
-    readonly to_80_sum_1999: FieldRef<'inconfort_thermique', 'String'>;
-    readonly over_80_sum_1999: FieldRef<'inconfort_thermique', 'String'>;
-    readonly under_4_sum_2009: FieldRef<'inconfort_thermique', 'String'>;
-    readonly to_80_sum_2009: FieldRef<'inconfort_thermique', 'String'>;
-    readonly over_80_sum_2009: FieldRef<'inconfort_thermique', 'String'>;
-    readonly under_4_sum_2014: FieldRef<'inconfort_thermique', 'String'>;
-    readonly to_80_sum_2014: FieldRef<'inconfort_thermique', 'String'>;
-    readonly over_80_sum_2014: FieldRef<'inconfort_thermique', 'String'>;
-    readonly under_4_sum_2020: FieldRef<'inconfort_thermique', 'String'>;
-    readonly to_80_sum_2020: FieldRef<'inconfort_thermique', 'String'>;
-    readonly over_80_sum_2020: FieldRef<'inconfort_thermique', 'String'>;
-    readonly P20_POP80P: FieldRef<'inconfort_thermique', 'String'>;
-    readonly P20_POP80P_PSEUL: FieldRef<'inconfort_thermique', 'String'>;
-    readonly P20_POP80P_PSEUL_PERCENT: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly tee_log: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly tee_mob: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly precarite_logement: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly NA5AZ_sum: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly NA5BE_sum: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly NA5FZ_sum: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly NA5GU_sum: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly NA5OQ_sum: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly s_geom_cstr_bati: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly hauteur: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly densite_bati: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly h_x_s: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly clc_1_artificialise: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly clc_2_agricole: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly clc_3_foret_semiNaturel: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly clc_4_humide: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly clc_5_eau: FieldRef<'inconfort_thermique', 'Float'>;
-    readonly superf_choro: FieldRef<'inconfort_thermique', 'Float'>;
->>>>>>> dev
   }
     
 
@@ -6805,7 +5451,6 @@ export namespace Prisma {
   }
 
   export type Collectivites_searchbarMinAggregateOutputType = {
-<<<<<<< HEAD
     index: bigint | null
     code_commune: string | null
     coordinates: string | null
@@ -6845,58 +5490,6 @@ export namespace Prisma {
     _all: number
   }
 
-=======
-    index: bigint | null;
-    code_geographique: string | null;
-    libelle_geographique: string | null;
-    epci: string | null;
-    libelle_epci: string | null;
-    departement: string | null;
-    libelle_departement: string | null;
-    region: string | null;
-    ept: string | null;
-    libelle_petr: string | null;
-    code_pnr: string | null;
-    libelle_pnr: string | null;
-    search_code: string | null;
-    search_libelle: string | null;
-  };
-
-  export type Collectivites_searchbarMaxAggregateOutputType = {
-    index: bigint | null;
-    code_geographique: string | null;
-    libelle_geographique: string | null;
-    epci: string | null;
-    libelle_epci: string | null;
-    departement: string | null;
-    libelle_departement: string | null;
-    region: string | null;
-    ept: string | null;
-    libelle_petr: string | null;
-    code_pnr: string | null;
-    libelle_pnr: string | null;
-    search_code: string | null;
-    search_libelle: string | null;
-  };
-
-  export type Collectivites_searchbarCountAggregateOutputType = {
-    index: number;
-    code_geographique: number;
-    libelle_geographique: number;
-    epci: number;
-    libelle_epci: number;
-    departement: number;
-    libelle_departement: number;
-    region: number;
-    ept: number;
-    libelle_petr: number;
-    code_pnr: number;
-    libelle_pnr: number;
-    search_code: number;
-    search_libelle: number;
-    _all: number;
-  };
->>>>>>> dev
 
   export type Collectivites_searchbarAvgAggregateInputType = {
     index?: true
@@ -6907,7 +5500,6 @@ export namespace Prisma {
   }
 
   export type Collectivites_searchbarMinAggregateInputType = {
-<<<<<<< HEAD
     index?: true
     code_commune?: true
     coordinates?: true
@@ -6946,58 +5538,6 @@ export namespace Prisma {
     search_libelle?: true
     _all?: true
   }
-=======
-    index?: true;
-    code_geographique?: true;
-    libelle_geographique?: true;
-    epci?: true;
-    libelle_epci?: true;
-    departement?: true;
-    libelle_departement?: true;
-    region?: true;
-    ept?: true;
-    libelle_petr?: true;
-    code_pnr?: true;
-    libelle_pnr?: true;
-    search_code?: true;
-    search_libelle?: true;
-  };
-
-  export type Collectivites_searchbarMaxAggregateInputType = {
-    index?: true;
-    code_geographique?: true;
-    libelle_geographique?: true;
-    epci?: true;
-    libelle_epci?: true;
-    departement?: true;
-    libelle_departement?: true;
-    region?: true;
-    ept?: true;
-    libelle_petr?: true;
-    code_pnr?: true;
-    libelle_pnr?: true;
-    search_code?: true;
-    search_libelle?: true;
-  };
-
-  export type Collectivites_searchbarCountAggregateInputType = {
-    index?: true;
-    code_geographique?: true;
-    libelle_geographique?: true;
-    epci?: true;
-    libelle_epci?: true;
-    departement?: true;
-    libelle_departement?: true;
-    region?: true;
-    ept?: true;
-    libelle_petr?: true;
-    code_pnr?: true;
-    libelle_pnr?: true;
-    search_code?: true;
-    search_libelle?: true;
-    _all?: true;
-  };
->>>>>>> dev
 
   export type Collectivites_searchbarAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
@@ -7086,7 +5626,6 @@ export namespace Prisma {
   }
 
   export type Collectivites_searchbarGroupByOutputType = {
-<<<<<<< HEAD
     index: bigint
     code_commune: string | null
     coordinates: string | null
@@ -7103,28 +5642,6 @@ export namespace Prisma {
     _min: Collectivites_searchbarMinAggregateOutputType | null
     _max: Collectivites_searchbarMaxAggregateOutputType | null
   }
-=======
-    index: bigint;
-    code_geographique: string | null;
-    libelle_geographique: string | null;
-    epci: string | null;
-    libelle_epci: string | null;
-    departement: string | null;
-    libelle_departement: string | null;
-    region: string | null;
-    ept: string | null;
-    libelle_petr: string | null;
-    code_pnr: string | null;
-    libelle_pnr: string | null;
-    search_code: string | null;
-    search_libelle: string;
-    _count: Collectivites_searchbarCountAggregateOutputType | null;
-    _avg: Collectivites_searchbarAvgAggregateOutputType | null;
-    _sum: Collectivites_searchbarSumAggregateOutputType | null;
-    _min: Collectivites_searchbarMinAggregateOutputType | null;
-    _max: Collectivites_searchbarMaxAggregateOutputType | null;
-  };
->>>>>>> dev
 
   type GetCollectivites_searchbarGroupByPayload<T extends collectivites_searchbarGroupByArgs> = Prisma.PrismaPromise<
     Array<
@@ -7139,7 +5656,6 @@ export namespace Prisma {
       >
     >
 
-<<<<<<< HEAD
 
   export type collectivites_searchbarSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     index?: boolean
@@ -7212,137 +5728,6 @@ export namespace Prisma {
     }, ExtArgs["result"]["collectivites_searchbar"]>
     composites: {}
   }
-=======
-  export type collectivites_searchbarSelect<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      code_geographique?: boolean;
-      libelle_geographique?: boolean;
-      epci?: boolean;
-      libelle_epci?: boolean;
-      departement?: boolean;
-      libelle_departement?: boolean;
-      region?: boolean;
-      ept?: boolean;
-      libelle_petr?: boolean;
-      code_pnr?: boolean;
-      libelle_pnr?: boolean;
-      search_code?: boolean;
-      search_libelle?: boolean;
-    },
-    ExtArgs['result']['collectivites_searchbar']
-  >;
-
-  export type collectivites_searchbarSelectCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      code_geographique?: boolean;
-      libelle_geographique?: boolean;
-      epci?: boolean;
-      libelle_epci?: boolean;
-      departement?: boolean;
-      libelle_departement?: boolean;
-      region?: boolean;
-      ept?: boolean;
-      libelle_petr?: boolean;
-      code_pnr?: boolean;
-      libelle_pnr?: boolean;
-      search_code?: boolean;
-      search_libelle?: boolean;
-    },
-    ExtArgs['result']['collectivites_searchbar']
-  >;
-
-  export type collectivites_searchbarSelectUpdateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      code_geographique?: boolean;
-      libelle_geographique?: boolean;
-      epci?: boolean;
-      libelle_epci?: boolean;
-      departement?: boolean;
-      libelle_departement?: boolean;
-      region?: boolean;
-      ept?: boolean;
-      libelle_petr?: boolean;
-      code_pnr?: boolean;
-      libelle_pnr?: boolean;
-      search_code?: boolean;
-      search_libelle?: boolean;
-    },
-    ExtArgs['result']['collectivites_searchbar']
-  >;
-
-  export type collectivites_searchbarSelectScalar = {
-    index?: boolean;
-    code_geographique?: boolean;
-    libelle_geographique?: boolean;
-    epci?: boolean;
-    libelle_epci?: boolean;
-    departement?: boolean;
-    libelle_departement?: boolean;
-    region?: boolean;
-    ept?: boolean;
-    libelle_petr?: boolean;
-    code_pnr?: boolean;
-    libelle_pnr?: boolean;
-    search_code?: boolean;
-    search_libelle?: boolean;
-  };
-
-  export type collectivites_searchbarOmit<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetOmit<
-    | 'index'
-    | 'code_geographique'
-    | 'libelle_geographique'
-    | 'epci'
-    | 'libelle_epci'
-    | 'departement'
-    | 'libelle_departement'
-    | 'region'
-    | 'ept'
-    | 'libelle_petr'
-    | 'code_pnr'
-    | 'libelle_pnr'
-    | 'search_code'
-    | 'search_libelle',
-    ExtArgs['result']['collectivites_searchbar']
-  >;
-
-  export type $collectivites_searchbarPayload<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    name: 'collectivites_searchbar';
-    objects: {};
-    scalars: $Extensions.GetPayloadResult<
-      {
-        index: bigint;
-        code_geographique: string | null;
-        libelle_geographique: string | null;
-        epci: string | null;
-        libelle_epci: string | null;
-        departement: string | null;
-        libelle_departement: string | null;
-        region: string | null;
-        ept: string | null;
-        libelle_petr: string | null;
-        code_pnr: string | null;
-        libelle_pnr: string | null;
-        search_code: string | null;
-        search_libelle: string;
-      },
-      ExtArgs['result']['collectivites_searchbar']
-    >;
-    composites: {};
-  };
->>>>>>> dev
 
   type collectivites_searchbarGetPayload<S extends boolean | null | undefined | collectivites_searchbarDefaultArgs> = $Result.GetResult<Prisma.$collectivites_searchbarPayload, S>
 
@@ -7763,7 +6148,6 @@ export namespace Prisma {
    * Fields of the collectivites_searchbar model
    */ 
   interface collectivites_searchbarFieldRefs {
-<<<<<<< HEAD
     readonly index: FieldRef<"collectivites_searchbar", 'BigInt'>
     readonly code_commune: FieldRef<"collectivites_searchbar", 'String'>
     readonly coordinates: FieldRef<"collectivites_searchbar", 'String'>
@@ -7774,25 +6158,6 @@ export namespace Prisma {
     readonly region: FieldRef<"collectivites_searchbar", 'String'>
     readonly search_code: FieldRef<"collectivites_searchbar", 'String'>
     readonly search_libelle: FieldRef<"collectivites_searchbar", 'String'>
-=======
-    readonly index: FieldRef<'collectivites_searchbar', 'BigInt'>;
-    readonly code_geographique: FieldRef<'collectivites_searchbar', 'String'>;
-    readonly libelle_geographique: FieldRef<
-      'collectivites_searchbar',
-      'String'
-    >;
-    readonly epci: FieldRef<'collectivites_searchbar', 'String'>;
-    readonly libelle_epci: FieldRef<'collectivites_searchbar', 'String'>;
-    readonly departement: FieldRef<'collectivites_searchbar', 'String'>;
-    readonly libelle_departement: FieldRef<'collectivites_searchbar', 'String'>;
-    readonly region: FieldRef<'collectivites_searchbar', 'String'>;
-    readonly ept: FieldRef<'collectivites_searchbar', 'String'>;
-    readonly libelle_petr: FieldRef<'collectivites_searchbar', 'String'>;
-    readonly code_pnr: FieldRef<'collectivites_searchbar', 'String'>;
-    readonly libelle_pnr: FieldRef<'collectivites_searchbar', 'String'>;
-    readonly search_code: FieldRef<'collectivites_searchbar', 'String'>;
-    readonly search_libelle: FieldRef<'collectivites_searchbar', 'String'>;
->>>>>>> dev
   }
     
 
@@ -9425,39 +7790,21 @@ export namespace Prisma {
   }
 
   export type Gestion_risquesGroupByOutputType = {
-<<<<<<< HEAD
     index: bigint
-    code_geographique: string | null
-    lib_risque_jo: string | null
-    dat_pub_arrete: string | null
-    libelle_geographique: string | null
-    epci: string | null
-    libelle_epci: string | null
-    departement: string | null
-    region: number | null
+    code_geographique: string
+    lib_risque_jo: string
+    dat_pub_arrete: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
     _count: Gestion_risquesCountAggregateOutputType | null
     _avg: Gestion_risquesAvgAggregateOutputType | null
     _sum: Gestion_risquesSumAggregateOutputType | null
     _min: Gestion_risquesMinAggregateOutputType | null
     _max: Gestion_risquesMaxAggregateOutputType | null
   }
-=======
-    index: bigint;
-    code_geographique: string;
-    lib_risque_jo: string;
-    dat_pub_arrete: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: number;
-    _count: Gestion_risquesCountAggregateOutputType | null;
-    _avg: Gestion_risquesAvgAggregateOutputType | null;
-    _sum: Gestion_risquesSumAggregateOutputType | null;
-    _min: Gestion_risquesMinAggregateOutputType | null;
-    _max: Gestion_risquesMaxAggregateOutputType | null;
-  };
->>>>>>> dev
 
   type GetGestion_risquesGroupByPayload<T extends gestion_risquesGroupByArgs> = Prisma.PrismaPromise<
     Array<
@@ -9523,46 +7870,22 @@ export namespace Prisma {
 
   export type gestion_risquesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "lib_risque_jo" | "dat_pub_arrete" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "region", ExtArgs["result"]["gestion_risques"]>
 
-<<<<<<< HEAD
   export type $gestion_risquesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "gestion_risques"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       index: bigint
-      code_geographique: string | null
-      lib_risque_jo: string | null
-      dat_pub_arrete: string | null
-      libelle_geographique: string | null
-      epci: string | null
-      libelle_epci: string | null
-      departement: string | null
-      region: number | null
+      code_geographique: string
+      lib_risque_jo: string
+      dat_pub_arrete: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      region: number
     }, ExtArgs["result"]["gestion_risques"]>
     composites: {}
   }
-=======
-  export type $gestion_risquesPayload<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    name: 'gestion_risques';
-    objects: {};
-    scalars: $Extensions.GetPayloadResult<
-      {
-        index: bigint;
-        code_geographique: string;
-        lib_risque_jo: string;
-        dat_pub_arrete: string;
-        libelle_geographique: string;
-        epci: string;
-        libelle_epci: string;
-        departement: string;
-        region: number;
-      },
-      ExtArgs['result']['gestion_risques']
-    >;
-    composites: {};
-  };
->>>>>>> dev
 
   type gestion_risquesGetPayload<S extends boolean | null | undefined | gestion_risquesDefaultArgs> = $Result.GetResult<Prisma.$gestion_risquesPayload, S>
 
@@ -10371,7 +8694,6 @@ export namespace Prisma {
   }
 
   export type Communes_dromAvgAggregateOutputType = {
-<<<<<<< HEAD
     pk: number | null
     densite_bati: number | null
     precarite_logement: number | null
@@ -10473,148 +8795,6 @@ export namespace Prisma {
     surface?: true
     _all?: true
   }
-=======
-    pk: number | null;
-    region: number | null;
-    densite_bati: number | null;
-    precarite_logement: number | null;
-    surface: number | null;
-  };
-
-  export type Communes_dromSumAggregateOutputType = {
-    pk: number | null;
-    region: bigint | null;
-    densite_bati: number | null;
-    precarite_logement: number | null;
-    surface: number | null;
-  };
-
-  export type Communes_dromMinAggregateOutputType = {
-    pk: number | null;
-    code_geographique: string | null;
-    libelle_geographique: string | null;
-    epci: string | null;
-    libelle_epci: string | null;
-    departement: string | null;
-    region: bigint | null;
-    ept: string | null;
-    libelle_petr: string | null;
-    code_pnr: string | null;
-    libelle_pnr: string | null;
-    coordinates: string | null;
-    densite_bati: number | null;
-    precarite_logement: number | null;
-    surface: number | null;
-  };
-
-  export type Communes_dromMaxAggregateOutputType = {
-    pk: number | null;
-    code_geographique: string | null;
-    libelle_geographique: string | null;
-    epci: string | null;
-    libelle_epci: string | null;
-    departement: string | null;
-    region: bigint | null;
-    ept: string | null;
-    libelle_petr: string | null;
-    code_pnr: string | null;
-    libelle_pnr: string | null;
-    coordinates: string | null;
-    densite_bati: number | null;
-    precarite_logement: number | null;
-    surface: number | null;
-  };
-
-  export type Communes_dromCountAggregateOutputType = {
-    pk: number;
-    code_geographique: number;
-    libelle_geographique: number;
-    epci: number;
-    libelle_epci: number;
-    departement: number;
-    region: number;
-    ept: number;
-    libelle_petr: number;
-    code_pnr: number;
-    libelle_pnr: number;
-    coordinates: number;
-    densite_bati: number;
-    precarite_logement: number;
-    surface: number;
-    _all: number;
-  };
-
-  export type Communes_dromAvgAggregateInputType = {
-    pk?: true;
-    region?: true;
-    densite_bati?: true;
-    precarite_logement?: true;
-    surface?: true;
-  };
-
-  export type Communes_dromSumAggregateInputType = {
-    pk?: true;
-    region?: true;
-    densite_bati?: true;
-    precarite_logement?: true;
-    surface?: true;
-  };
-
-  export type Communes_dromMinAggregateInputType = {
-    pk?: true;
-    code_geographique?: true;
-    libelle_geographique?: true;
-    epci?: true;
-    libelle_epci?: true;
-    departement?: true;
-    region?: true;
-    ept?: true;
-    libelle_petr?: true;
-    code_pnr?: true;
-    libelle_pnr?: true;
-    coordinates?: true;
-    densite_bati?: true;
-    precarite_logement?: true;
-    surface?: true;
-  };
-
-  export type Communes_dromMaxAggregateInputType = {
-    pk?: true;
-    code_geographique?: true;
-    libelle_geographique?: true;
-    epci?: true;
-    libelle_epci?: true;
-    departement?: true;
-    region?: true;
-    ept?: true;
-    libelle_petr?: true;
-    code_pnr?: true;
-    libelle_pnr?: true;
-    coordinates?: true;
-    densite_bati?: true;
-    precarite_logement?: true;
-    surface?: true;
-  };
-
-  export type Communes_dromCountAggregateInputType = {
-    pk?: true;
-    code_geographique?: true;
-    libelle_geographique?: true;
-    epci?: true;
-    libelle_epci?: true;
-    departement?: true;
-    region?: true;
-    ept?: true;
-    libelle_petr?: true;
-    code_pnr?: true;
-    libelle_pnr?: true;
-    coordinates?: true;
-    densite_bati?: true;
-    precarite_logement?: true;
-    surface?: true;
-    _all?: true;
-  };
->>>>>>> dev
 
   export type Communes_dromAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
@@ -10703,7 +8883,6 @@ export namespace Prisma {
   }
 
   export type Communes_dromGroupByOutputType = {
-<<<<<<< HEAD
     pk: number
     code_commune: string
     libelle_commune: string
@@ -10719,29 +8898,6 @@ export namespace Prisma {
     _min: Communes_dromMinAggregateOutputType | null
     _max: Communes_dromMaxAggregateOutputType | null
   }
-=======
-    pk: number;
-    code_geographique: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: bigint;
-    ept: string | null;
-    libelle_petr: string | null;
-    code_pnr: string | null;
-    libelle_pnr: string | null;
-    coordinates: string;
-    densite_bati: number | null;
-    precarite_logement: number | null;
-    surface: number | null;
-    _count: Communes_dromCountAggregateOutputType | null;
-    _avg: Communes_dromAvgAggregateOutputType | null;
-    _sum: Communes_dromSumAggregateOutputType | null;
-    _min: Communes_dromMinAggregateOutputType | null;
-    _max: Communes_dromMaxAggregateOutputType | null;
-  };
->>>>>>> dev
 
   type GetCommunes_dromGroupByPayload<T extends communes_dromGroupByArgs> = Prisma.PrismaPromise<
     Array<
@@ -10756,7 +8912,6 @@ export namespace Prisma {
       >
     >
 
-<<<<<<< HEAD
 
   export type communes_dromSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     pk?: boolean
@@ -10813,120 +8968,6 @@ export namespace Prisma {
     }, ExtArgs["result"]["communes_drom"]>
     composites: {}
   }
-=======
-  export type communes_dromSelect<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      pk?: boolean;
-      code_geographique?: boolean;
-      libelle_geographique?: boolean;
-      epci?: boolean;
-      libelle_epci?: boolean;
-      departement?: boolean;
-      region?: boolean;
-      ept?: boolean;
-      libelle_petr?: boolean;
-      code_pnr?: boolean;
-      libelle_pnr?: boolean;
-      coordinates?: boolean;
-      densite_bati?: boolean;
-      precarite_logement?: boolean;
-      surface?: boolean;
-    },
-    ExtArgs['result']['communes_drom']
-  >;
-
-  export type communes_dromSelectUpdateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      pk?: boolean;
-      code_geographique?: boolean;
-      libelle_geographique?: boolean;
-      epci?: boolean;
-      libelle_epci?: boolean;
-      departement?: boolean;
-      region?: boolean;
-      ept?: boolean;
-      libelle_petr?: boolean;
-      code_pnr?: boolean;
-      libelle_pnr?: boolean;
-      coordinates?: boolean;
-      densite_bati?: boolean;
-      precarite_logement?: boolean;
-      surface?: boolean;
-    },
-    ExtArgs['result']['communes_drom']
-  >;
-
-  export type communes_dromSelectScalar = {
-    pk?: boolean;
-    code_geographique?: boolean;
-    libelle_geographique?: boolean;
-    epci?: boolean;
-    libelle_epci?: boolean;
-    departement?: boolean;
-    region?: boolean;
-    ept?: boolean;
-    libelle_petr?: boolean;
-    code_pnr?: boolean;
-    libelle_pnr?: boolean;
-    coordinates?: boolean;
-    densite_bati?: boolean;
-    precarite_logement?: boolean;
-    surface?: boolean;
-  };
-
-  export type communes_dromOmit<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetOmit<
-    | 'pk'
-    | 'code_geographique'
-    | 'libelle_geographique'
-    | 'epci'
-    | 'libelle_epci'
-    | 'departement'
-    | 'region'
-    | 'ept'
-    | 'libelle_petr'
-    | 'code_pnr'
-    | 'libelle_pnr'
-    | 'coordinates'
-    | 'densite_bati'
-    | 'precarite_logement'
-    | 'surface',
-    ExtArgs['result']['communes_drom']
-  >;
-
-  export type $communes_dromPayload<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    name: 'communes_drom';
-    objects: {};
-    scalars: $Extensions.GetPayloadResult<
-      {
-        pk: number;
-        code_geographique: string;
-        libelle_geographique: string;
-        epci: string;
-        libelle_epci: string;
-        departement: string;
-        region: bigint;
-        ept: string | null;
-        libelle_petr: string | null;
-        code_pnr: string | null;
-        libelle_pnr: string | null;
-        coordinates: string;
-        densite_bati: number | null;
-        precarite_logement: number | null;
-        surface: number | null;
-      },
-      ExtArgs['result']['communes_drom']
-    >;
-    composites: {};
-  };
->>>>>>> dev
 
   type communes_dromGetPayload<S extends boolean | null | undefined | communes_dromDefaultArgs> = $Result.GetResult<Prisma.$communes_dromPayload, S>
 
@@ -11276,7 +9317,6 @@ export namespace Prisma {
    * Fields of the communes_drom model
    */ 
   interface communes_dromFieldRefs {
-<<<<<<< HEAD
     readonly pk: FieldRef<"communes_drom", 'Int'>
     readonly code_commune: FieldRef<"communes_drom", 'String'>
     readonly libelle_commune: FieldRef<"communes_drom", 'String'>
@@ -11286,23 +9326,6 @@ export namespace Prisma {
     readonly densite_bati: FieldRef<"communes_drom", 'Float'>
     readonly precarite_logement: FieldRef<"communes_drom", 'Float'>
     readonly surface: FieldRef<"communes_drom", 'Float'>
-=======
-    readonly pk: FieldRef<'communes_drom', 'Int'>;
-    readonly code_geographique: FieldRef<'communes_drom', 'String'>;
-    readonly libelle_geographique: FieldRef<'communes_drom', 'String'>;
-    readonly epci: FieldRef<'communes_drom', 'String'>;
-    readonly libelle_epci: FieldRef<'communes_drom', 'String'>;
-    readonly departement: FieldRef<'communes_drom', 'String'>;
-    readonly region: FieldRef<'communes_drom', 'BigInt'>;
-    readonly ept: FieldRef<'communes_drom', 'String'>;
-    readonly libelle_petr: FieldRef<'communes_drom', 'String'>;
-    readonly code_pnr: FieldRef<'communes_drom', 'String'>;
-    readonly libelle_pnr: FieldRef<'communes_drom', 'String'>;
-    readonly coordinates: FieldRef<'communes_drom', 'String'>;
-    readonly densite_bati: FieldRef<'communes_drom', 'Float'>;
-    readonly precarite_logement: FieldRef<'communes_drom', 'Float'>;
-    readonly surface: FieldRef<'communes_drom', 'Float'>;
->>>>>>> dev
   }
     
 
@@ -17373,7 +15396,6 @@ export namespace Prisma {
   }
 
   export type Consommation_espaces_nafMinAggregateOutputType = {
-<<<<<<< HEAD
     index: bigint | null
     code_geographique: string | null
     libelle_geographique: string | null
@@ -17770,415 +15792,6 @@ export namespace Prisma {
     _all: number
   }
 
-=======
-    index: bigint | null;
-    code_geographique: string | null;
-    libelle_geographique: string | null;
-    epci: string | null;
-    libelle_epci: string | null;
-    departement: string | null;
-    region: number | null;
-    ept: string | null;
-    libelle_petr: string | null;
-    code_pnr: string | null;
-    libelle_pnr: string | null;
-    naf09art10: number | null;
-    art09act10: number | null;
-    art09hab10: number | null;
-    art09mix10: number | null;
-    art09rou10: number | null;
-    art09fer10: number | null;
-    art09inc10: number | null;
-    naf10art11: number | null;
-    art10act11: number | null;
-    art10hab11: number | null;
-    art10mix11: number | null;
-    art10rou11: number | null;
-    art10fer11: number | null;
-    art10inc11: number | null;
-    naf11art12: number | null;
-    art11act12: number | null;
-    art11hab12: number | null;
-    art11mix12: number | null;
-    art11rou12: number | null;
-    art11fer12: number | null;
-    art11inc12: number | null;
-    naf12art13: number | null;
-    art12act13: number | null;
-    art12hab13: number | null;
-    art12mix13: number | null;
-    art12rou13: number | null;
-    art12fer13: number | null;
-    art12inc13: number | null;
-    naf13art14: number | null;
-    art13act14: number | null;
-    art13hab14: number | null;
-    art13mix14: number | null;
-    art13rou14: number | null;
-    art13fer14: number | null;
-    art13inc14: number | null;
-    naf14art15: number | null;
-    art14act15: number | null;
-    art14hab15: number | null;
-    art14mix15: number | null;
-    art14rou15: number | null;
-    art14fer15: number | null;
-    art14inc15: number | null;
-    naf15art16: number | null;
-    art15act16: number | null;
-    art15hab16: number | null;
-    art15mix16: number | null;
-    art15rou16: number | null;
-    art15fer16: number | null;
-    art15inc16: number | null;
-    naf16art17: number | null;
-    art16act17: number | null;
-    art16hab17: number | null;
-    art16mix17: number | null;
-    art16rou17: number | null;
-    art16fer17: number | null;
-    art16inc17: number | null;
-    naf17art18: number | null;
-    art17act18: number | null;
-    art17hab18: number | null;
-    art17mix18: number | null;
-    art17rou18: number | null;
-    art17fer18: number | null;
-    art17inc18: number | null;
-    naf18art19: number | null;
-    art18act19: number | null;
-    art18hab19: number | null;
-    art18mix19: number | null;
-    art18rou19: number | null;
-    art18fer19: number | null;
-    art18inc19: number | null;
-    naf19art20: number | null;
-    art19act20: number | null;
-    art19hab20: number | null;
-    art19mix20: number | null;
-    art19rou20: number | null;
-    art19fer20: number | null;
-    art19inc20: number | null;
-    naf20art21: number | null;
-    art20act21: number | null;
-    art20hab21: number | null;
-    art20mix21: number | null;
-    art20rou21: number | null;
-    art20fer21: number | null;
-    art20inc21: number | null;
-    naf21art22: number | null;
-    art21act22: number | null;
-    art21hab22: number | null;
-    art21mix22: number | null;
-    art21rou22: number | null;
-    art21fer22: number | null;
-    art21inc22: number | null;
-    naf22art23: number | null;
-    art22act23: number | null;
-    art22hab23: number | null;
-    art22mix23: number | null;
-    art22rou23: number | null;
-    art22fer23: number | null;
-    art22inc23: number | null;
-    naf09art23: number | null;
-    art09act23: number | null;
-    art09hab23: number | null;
-    art09mix23: number | null;
-    art09inc23: number | null;
-    art09rou23: number | null;
-    art09fer23: number | null;
-    artcom0923: number | null;
-    pop14: number | null;
-    pop20: number | null;
-    pop1420: number | null;
-    men14: number | null;
-    men20: number | null;
-    men1420: number | null;
-    emp14: number | null;
-    emp20: number | null;
-    emp1420: number | null;
-    mepart1420: number | null;
-    menhab1420: number | null;
-    artpop1420: number | null;
-    surfcom2023: number | null;
-    C10_MEN: number | null;
-    C15_MEN: number | null;
-    C21_MEN: number | null;
-  };
-
-  export type Consommation_espaces_nafMaxAggregateOutputType = {
-    index: bigint | null;
-    code_geographique: string | null;
-    libelle_geographique: string | null;
-    epci: string | null;
-    libelle_epci: string | null;
-    departement: string | null;
-    region: number | null;
-    ept: string | null;
-    libelle_petr: string | null;
-    code_pnr: string | null;
-    libelle_pnr: string | null;
-    naf09art10: number | null;
-    art09act10: number | null;
-    art09hab10: number | null;
-    art09mix10: number | null;
-    art09rou10: number | null;
-    art09fer10: number | null;
-    art09inc10: number | null;
-    naf10art11: number | null;
-    art10act11: number | null;
-    art10hab11: number | null;
-    art10mix11: number | null;
-    art10rou11: number | null;
-    art10fer11: number | null;
-    art10inc11: number | null;
-    naf11art12: number | null;
-    art11act12: number | null;
-    art11hab12: number | null;
-    art11mix12: number | null;
-    art11rou12: number | null;
-    art11fer12: number | null;
-    art11inc12: number | null;
-    naf12art13: number | null;
-    art12act13: number | null;
-    art12hab13: number | null;
-    art12mix13: number | null;
-    art12rou13: number | null;
-    art12fer13: number | null;
-    art12inc13: number | null;
-    naf13art14: number | null;
-    art13act14: number | null;
-    art13hab14: number | null;
-    art13mix14: number | null;
-    art13rou14: number | null;
-    art13fer14: number | null;
-    art13inc14: number | null;
-    naf14art15: number | null;
-    art14act15: number | null;
-    art14hab15: number | null;
-    art14mix15: number | null;
-    art14rou15: number | null;
-    art14fer15: number | null;
-    art14inc15: number | null;
-    naf15art16: number | null;
-    art15act16: number | null;
-    art15hab16: number | null;
-    art15mix16: number | null;
-    art15rou16: number | null;
-    art15fer16: number | null;
-    art15inc16: number | null;
-    naf16art17: number | null;
-    art16act17: number | null;
-    art16hab17: number | null;
-    art16mix17: number | null;
-    art16rou17: number | null;
-    art16fer17: number | null;
-    art16inc17: number | null;
-    naf17art18: number | null;
-    art17act18: number | null;
-    art17hab18: number | null;
-    art17mix18: number | null;
-    art17rou18: number | null;
-    art17fer18: number | null;
-    art17inc18: number | null;
-    naf18art19: number | null;
-    art18act19: number | null;
-    art18hab19: number | null;
-    art18mix19: number | null;
-    art18rou19: number | null;
-    art18fer19: number | null;
-    art18inc19: number | null;
-    naf19art20: number | null;
-    art19act20: number | null;
-    art19hab20: number | null;
-    art19mix20: number | null;
-    art19rou20: number | null;
-    art19fer20: number | null;
-    art19inc20: number | null;
-    naf20art21: number | null;
-    art20act21: number | null;
-    art20hab21: number | null;
-    art20mix21: number | null;
-    art20rou21: number | null;
-    art20fer21: number | null;
-    art20inc21: number | null;
-    naf21art22: number | null;
-    art21act22: number | null;
-    art21hab22: number | null;
-    art21mix22: number | null;
-    art21rou22: number | null;
-    art21fer22: number | null;
-    art21inc22: number | null;
-    naf22art23: number | null;
-    art22act23: number | null;
-    art22hab23: number | null;
-    art22mix23: number | null;
-    art22rou23: number | null;
-    art22fer23: number | null;
-    art22inc23: number | null;
-    naf09art23: number | null;
-    art09act23: number | null;
-    art09hab23: number | null;
-    art09mix23: number | null;
-    art09inc23: number | null;
-    art09rou23: number | null;
-    art09fer23: number | null;
-    artcom0923: number | null;
-    pop14: number | null;
-    pop20: number | null;
-    pop1420: number | null;
-    men14: number | null;
-    men20: number | null;
-    men1420: number | null;
-    emp14: number | null;
-    emp20: number | null;
-    emp1420: number | null;
-    mepart1420: number | null;
-    menhab1420: number | null;
-    artpop1420: number | null;
-    surfcom2023: number | null;
-    C10_MEN: number | null;
-    C15_MEN: number | null;
-    C21_MEN: number | null;
-  };
-
-  export type Consommation_espaces_nafCountAggregateOutputType = {
-    index: number;
-    code_geographique: number;
-    libelle_geographique: number;
-    epci: number;
-    libelle_epci: number;
-    departement: number;
-    region: number;
-    ept: number;
-    libelle_petr: number;
-    code_pnr: number;
-    libelle_pnr: number;
-    naf09art10: number;
-    art09act10: number;
-    art09hab10: number;
-    art09mix10: number;
-    art09rou10: number;
-    art09fer10: number;
-    art09inc10: number;
-    naf10art11: number;
-    art10act11: number;
-    art10hab11: number;
-    art10mix11: number;
-    art10rou11: number;
-    art10fer11: number;
-    art10inc11: number;
-    naf11art12: number;
-    art11act12: number;
-    art11hab12: number;
-    art11mix12: number;
-    art11rou12: number;
-    art11fer12: number;
-    art11inc12: number;
-    naf12art13: number;
-    art12act13: number;
-    art12hab13: number;
-    art12mix13: number;
-    art12rou13: number;
-    art12fer13: number;
-    art12inc13: number;
-    naf13art14: number;
-    art13act14: number;
-    art13hab14: number;
-    art13mix14: number;
-    art13rou14: number;
-    art13fer14: number;
-    art13inc14: number;
-    naf14art15: number;
-    art14act15: number;
-    art14hab15: number;
-    art14mix15: number;
-    art14rou15: number;
-    art14fer15: number;
-    art14inc15: number;
-    naf15art16: number;
-    art15act16: number;
-    art15hab16: number;
-    art15mix16: number;
-    art15rou16: number;
-    art15fer16: number;
-    art15inc16: number;
-    naf16art17: number;
-    art16act17: number;
-    art16hab17: number;
-    art16mix17: number;
-    art16rou17: number;
-    art16fer17: number;
-    art16inc17: number;
-    naf17art18: number;
-    art17act18: number;
-    art17hab18: number;
-    art17mix18: number;
-    art17rou18: number;
-    art17fer18: number;
-    art17inc18: number;
-    naf18art19: number;
-    art18act19: number;
-    art18hab19: number;
-    art18mix19: number;
-    art18rou19: number;
-    art18fer19: number;
-    art18inc19: number;
-    naf19art20: number;
-    art19act20: number;
-    art19hab20: number;
-    art19mix20: number;
-    art19rou20: number;
-    art19fer20: number;
-    art19inc20: number;
-    naf20art21: number;
-    art20act21: number;
-    art20hab21: number;
-    art20mix21: number;
-    art20rou21: number;
-    art20fer21: number;
-    art20inc21: number;
-    naf21art22: number;
-    art21act22: number;
-    art21hab22: number;
-    art21mix22: number;
-    art21rou22: number;
-    art21fer22: number;
-    art21inc22: number;
-    naf22art23: number;
-    art22act23: number;
-    art22hab23: number;
-    art22mix23: number;
-    art22rou23: number;
-    art22fer23: number;
-    art22inc23: number;
-    naf09art23: number;
-    art09act23: number;
-    art09hab23: number;
-    art09mix23: number;
-    art09inc23: number;
-    art09rou23: number;
-    art09fer23: number;
-    artcom0923: number;
-    pop14: number;
-    pop20: number;
-    pop1420: number;
-    men14: number;
-    men20: number;
-    men1420: number;
-    emp14: number;
-    emp20: number;
-    emp1420: number;
-    mepart1420: number;
-    menhab1420: number;
-    artpop1420: number;
-    surfcom2023: number;
-    C10_MEN: number;
-    C15_MEN: number;
-    C21_MEN: number;
-    _all: number;
-  };
->>>>>>> dev
 
   export type Consommation_espaces_nafAvgAggregateInputType = {
     index?: true
@@ -18435,7 +16048,6 @@ export namespace Prisma {
   }
 
   export type Consommation_espaces_nafMinAggregateInputType = {
-<<<<<<< HEAD
     index?: true
     code_geographique?: true
     libelle_geographique?: true
@@ -18831,415 +16443,6 @@ export namespace Prisma {
     C21_MEN?: true
     _all?: true
   }
-=======
-    index?: true;
-    code_geographique?: true;
-    libelle_geographique?: true;
-    epci?: true;
-    libelle_epci?: true;
-    departement?: true;
-    region?: true;
-    ept?: true;
-    libelle_petr?: true;
-    code_pnr?: true;
-    libelle_pnr?: true;
-    naf09art10?: true;
-    art09act10?: true;
-    art09hab10?: true;
-    art09mix10?: true;
-    art09rou10?: true;
-    art09fer10?: true;
-    art09inc10?: true;
-    naf10art11?: true;
-    art10act11?: true;
-    art10hab11?: true;
-    art10mix11?: true;
-    art10rou11?: true;
-    art10fer11?: true;
-    art10inc11?: true;
-    naf11art12?: true;
-    art11act12?: true;
-    art11hab12?: true;
-    art11mix12?: true;
-    art11rou12?: true;
-    art11fer12?: true;
-    art11inc12?: true;
-    naf12art13?: true;
-    art12act13?: true;
-    art12hab13?: true;
-    art12mix13?: true;
-    art12rou13?: true;
-    art12fer13?: true;
-    art12inc13?: true;
-    naf13art14?: true;
-    art13act14?: true;
-    art13hab14?: true;
-    art13mix14?: true;
-    art13rou14?: true;
-    art13fer14?: true;
-    art13inc14?: true;
-    naf14art15?: true;
-    art14act15?: true;
-    art14hab15?: true;
-    art14mix15?: true;
-    art14rou15?: true;
-    art14fer15?: true;
-    art14inc15?: true;
-    naf15art16?: true;
-    art15act16?: true;
-    art15hab16?: true;
-    art15mix16?: true;
-    art15rou16?: true;
-    art15fer16?: true;
-    art15inc16?: true;
-    naf16art17?: true;
-    art16act17?: true;
-    art16hab17?: true;
-    art16mix17?: true;
-    art16rou17?: true;
-    art16fer17?: true;
-    art16inc17?: true;
-    naf17art18?: true;
-    art17act18?: true;
-    art17hab18?: true;
-    art17mix18?: true;
-    art17rou18?: true;
-    art17fer18?: true;
-    art17inc18?: true;
-    naf18art19?: true;
-    art18act19?: true;
-    art18hab19?: true;
-    art18mix19?: true;
-    art18rou19?: true;
-    art18fer19?: true;
-    art18inc19?: true;
-    naf19art20?: true;
-    art19act20?: true;
-    art19hab20?: true;
-    art19mix20?: true;
-    art19rou20?: true;
-    art19fer20?: true;
-    art19inc20?: true;
-    naf20art21?: true;
-    art20act21?: true;
-    art20hab21?: true;
-    art20mix21?: true;
-    art20rou21?: true;
-    art20fer21?: true;
-    art20inc21?: true;
-    naf21art22?: true;
-    art21act22?: true;
-    art21hab22?: true;
-    art21mix22?: true;
-    art21rou22?: true;
-    art21fer22?: true;
-    art21inc22?: true;
-    naf22art23?: true;
-    art22act23?: true;
-    art22hab23?: true;
-    art22mix23?: true;
-    art22rou23?: true;
-    art22fer23?: true;
-    art22inc23?: true;
-    naf09art23?: true;
-    art09act23?: true;
-    art09hab23?: true;
-    art09mix23?: true;
-    art09inc23?: true;
-    art09rou23?: true;
-    art09fer23?: true;
-    artcom0923?: true;
-    pop14?: true;
-    pop20?: true;
-    pop1420?: true;
-    men14?: true;
-    men20?: true;
-    men1420?: true;
-    emp14?: true;
-    emp20?: true;
-    emp1420?: true;
-    mepart1420?: true;
-    menhab1420?: true;
-    artpop1420?: true;
-    surfcom2023?: true;
-    C10_MEN?: true;
-    C15_MEN?: true;
-    C21_MEN?: true;
-  };
-
-  export type Consommation_espaces_nafMaxAggregateInputType = {
-    index?: true;
-    code_geographique?: true;
-    libelle_geographique?: true;
-    epci?: true;
-    libelle_epci?: true;
-    departement?: true;
-    region?: true;
-    ept?: true;
-    libelle_petr?: true;
-    code_pnr?: true;
-    libelle_pnr?: true;
-    naf09art10?: true;
-    art09act10?: true;
-    art09hab10?: true;
-    art09mix10?: true;
-    art09rou10?: true;
-    art09fer10?: true;
-    art09inc10?: true;
-    naf10art11?: true;
-    art10act11?: true;
-    art10hab11?: true;
-    art10mix11?: true;
-    art10rou11?: true;
-    art10fer11?: true;
-    art10inc11?: true;
-    naf11art12?: true;
-    art11act12?: true;
-    art11hab12?: true;
-    art11mix12?: true;
-    art11rou12?: true;
-    art11fer12?: true;
-    art11inc12?: true;
-    naf12art13?: true;
-    art12act13?: true;
-    art12hab13?: true;
-    art12mix13?: true;
-    art12rou13?: true;
-    art12fer13?: true;
-    art12inc13?: true;
-    naf13art14?: true;
-    art13act14?: true;
-    art13hab14?: true;
-    art13mix14?: true;
-    art13rou14?: true;
-    art13fer14?: true;
-    art13inc14?: true;
-    naf14art15?: true;
-    art14act15?: true;
-    art14hab15?: true;
-    art14mix15?: true;
-    art14rou15?: true;
-    art14fer15?: true;
-    art14inc15?: true;
-    naf15art16?: true;
-    art15act16?: true;
-    art15hab16?: true;
-    art15mix16?: true;
-    art15rou16?: true;
-    art15fer16?: true;
-    art15inc16?: true;
-    naf16art17?: true;
-    art16act17?: true;
-    art16hab17?: true;
-    art16mix17?: true;
-    art16rou17?: true;
-    art16fer17?: true;
-    art16inc17?: true;
-    naf17art18?: true;
-    art17act18?: true;
-    art17hab18?: true;
-    art17mix18?: true;
-    art17rou18?: true;
-    art17fer18?: true;
-    art17inc18?: true;
-    naf18art19?: true;
-    art18act19?: true;
-    art18hab19?: true;
-    art18mix19?: true;
-    art18rou19?: true;
-    art18fer19?: true;
-    art18inc19?: true;
-    naf19art20?: true;
-    art19act20?: true;
-    art19hab20?: true;
-    art19mix20?: true;
-    art19rou20?: true;
-    art19fer20?: true;
-    art19inc20?: true;
-    naf20art21?: true;
-    art20act21?: true;
-    art20hab21?: true;
-    art20mix21?: true;
-    art20rou21?: true;
-    art20fer21?: true;
-    art20inc21?: true;
-    naf21art22?: true;
-    art21act22?: true;
-    art21hab22?: true;
-    art21mix22?: true;
-    art21rou22?: true;
-    art21fer22?: true;
-    art21inc22?: true;
-    naf22art23?: true;
-    art22act23?: true;
-    art22hab23?: true;
-    art22mix23?: true;
-    art22rou23?: true;
-    art22fer23?: true;
-    art22inc23?: true;
-    naf09art23?: true;
-    art09act23?: true;
-    art09hab23?: true;
-    art09mix23?: true;
-    art09inc23?: true;
-    art09rou23?: true;
-    art09fer23?: true;
-    artcom0923?: true;
-    pop14?: true;
-    pop20?: true;
-    pop1420?: true;
-    men14?: true;
-    men20?: true;
-    men1420?: true;
-    emp14?: true;
-    emp20?: true;
-    emp1420?: true;
-    mepart1420?: true;
-    menhab1420?: true;
-    artpop1420?: true;
-    surfcom2023?: true;
-    C10_MEN?: true;
-    C15_MEN?: true;
-    C21_MEN?: true;
-  };
-
-  export type Consommation_espaces_nafCountAggregateInputType = {
-    index?: true;
-    code_geographique?: true;
-    libelle_geographique?: true;
-    epci?: true;
-    libelle_epci?: true;
-    departement?: true;
-    region?: true;
-    ept?: true;
-    libelle_petr?: true;
-    code_pnr?: true;
-    libelle_pnr?: true;
-    naf09art10?: true;
-    art09act10?: true;
-    art09hab10?: true;
-    art09mix10?: true;
-    art09rou10?: true;
-    art09fer10?: true;
-    art09inc10?: true;
-    naf10art11?: true;
-    art10act11?: true;
-    art10hab11?: true;
-    art10mix11?: true;
-    art10rou11?: true;
-    art10fer11?: true;
-    art10inc11?: true;
-    naf11art12?: true;
-    art11act12?: true;
-    art11hab12?: true;
-    art11mix12?: true;
-    art11rou12?: true;
-    art11fer12?: true;
-    art11inc12?: true;
-    naf12art13?: true;
-    art12act13?: true;
-    art12hab13?: true;
-    art12mix13?: true;
-    art12rou13?: true;
-    art12fer13?: true;
-    art12inc13?: true;
-    naf13art14?: true;
-    art13act14?: true;
-    art13hab14?: true;
-    art13mix14?: true;
-    art13rou14?: true;
-    art13fer14?: true;
-    art13inc14?: true;
-    naf14art15?: true;
-    art14act15?: true;
-    art14hab15?: true;
-    art14mix15?: true;
-    art14rou15?: true;
-    art14fer15?: true;
-    art14inc15?: true;
-    naf15art16?: true;
-    art15act16?: true;
-    art15hab16?: true;
-    art15mix16?: true;
-    art15rou16?: true;
-    art15fer16?: true;
-    art15inc16?: true;
-    naf16art17?: true;
-    art16act17?: true;
-    art16hab17?: true;
-    art16mix17?: true;
-    art16rou17?: true;
-    art16fer17?: true;
-    art16inc17?: true;
-    naf17art18?: true;
-    art17act18?: true;
-    art17hab18?: true;
-    art17mix18?: true;
-    art17rou18?: true;
-    art17fer18?: true;
-    art17inc18?: true;
-    naf18art19?: true;
-    art18act19?: true;
-    art18hab19?: true;
-    art18mix19?: true;
-    art18rou19?: true;
-    art18fer19?: true;
-    art18inc19?: true;
-    naf19art20?: true;
-    art19act20?: true;
-    art19hab20?: true;
-    art19mix20?: true;
-    art19rou20?: true;
-    art19fer20?: true;
-    art19inc20?: true;
-    naf20art21?: true;
-    art20act21?: true;
-    art20hab21?: true;
-    art20mix21?: true;
-    art20rou21?: true;
-    art20fer21?: true;
-    art20inc21?: true;
-    naf21art22?: true;
-    art21act22?: true;
-    art21hab22?: true;
-    art21mix22?: true;
-    art21rou22?: true;
-    art21fer22?: true;
-    art21inc22?: true;
-    naf22art23?: true;
-    art22act23?: true;
-    art22hab23?: true;
-    art22mix23?: true;
-    art22rou23?: true;
-    art22fer23?: true;
-    art22inc23?: true;
-    naf09art23?: true;
-    art09act23?: true;
-    art09hab23?: true;
-    art09mix23?: true;
-    art09inc23?: true;
-    art09rou23?: true;
-    art09fer23?: true;
-    artcom0923?: true;
-    pop14?: true;
-    pop20?: true;
-    pop1420?: true;
-    men14?: true;
-    men20?: true;
-    men1420?: true;
-    emp14?: true;
-    emp20?: true;
-    emp1420?: true;
-    mepart1420?: true;
-    menhab1420?: true;
-    artpop1420?: true;
-    surfcom2023?: true;
-    C10_MEN?: true;
-    C15_MEN?: true;
-    C21_MEN?: true;
-    _all?: true;
-  };
->>>>>>> dev
 
   export type Consommation_espaces_nafAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
@@ -19328,7 +16531,6 @@ export namespace Prisma {
   }
 
   export type Consommation_espaces_nafGroupByOutputType = {
-<<<<<<< HEAD
     index: bigint
     code_geographique: string
     libelle_geographique: string
@@ -19464,147 +16666,6 @@ export namespace Prisma {
     _min: Consommation_espaces_nafMinAggregateOutputType | null
     _max: Consommation_espaces_nafMaxAggregateOutputType | null
   }
-=======
-    index: bigint;
-    code_geographique: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: number;
-    ept: string | null;
-    libelle_petr: string | null;
-    code_pnr: string | null;
-    libelle_pnr: string | null;
-    naf09art10: number;
-    art09act10: number;
-    art09hab10: number;
-    art09mix10: number;
-    art09rou10: number;
-    art09fer10: number;
-    art09inc10: number;
-    naf10art11: number;
-    art10act11: number;
-    art10hab11: number;
-    art10mix11: number;
-    art10rou11: number;
-    art10fer11: number;
-    art10inc11: number;
-    naf11art12: number;
-    art11act12: number;
-    art11hab12: number;
-    art11mix12: number;
-    art11rou12: number;
-    art11fer12: number;
-    art11inc12: number;
-    naf12art13: number;
-    art12act13: number;
-    art12hab13: number;
-    art12mix13: number;
-    art12rou13: number;
-    art12fer13: number;
-    art12inc13: number;
-    naf13art14: number;
-    art13act14: number;
-    art13hab14: number;
-    art13mix14: number;
-    art13rou14: number;
-    art13fer14: number;
-    art13inc14: number;
-    naf14art15: number;
-    art14act15: number;
-    art14hab15: number;
-    art14mix15: number;
-    art14rou15: number;
-    art14fer15: number;
-    art14inc15: number;
-    naf15art16: number;
-    art15act16: number;
-    art15hab16: number;
-    art15mix16: number;
-    art15rou16: number;
-    art15fer16: number;
-    art15inc16: number;
-    naf16art17: number;
-    art16act17: number;
-    art16hab17: number;
-    art16mix17: number;
-    art16rou17: number;
-    art16fer17: number;
-    art16inc17: number;
-    naf17art18: number;
-    art17act18: number;
-    art17hab18: number;
-    art17mix18: number;
-    art17rou18: number;
-    art17fer18: number;
-    art17inc18: number;
-    naf18art19: number;
-    art18act19: number;
-    art18hab19: number;
-    art18mix19: number;
-    art18rou19: number;
-    art18fer19: number;
-    art18inc19: number;
-    naf19art20: number;
-    art19act20: number;
-    art19hab20: number;
-    art19mix20: number;
-    art19rou20: number;
-    art19fer20: number;
-    art19inc20: number;
-    naf20art21: number;
-    art20act21: number;
-    art20hab21: number;
-    art20mix21: number;
-    art20rou21: number;
-    art20fer21: number;
-    art20inc21: number;
-    naf21art22: number;
-    art21act22: number;
-    art21hab22: number;
-    art21mix22: number;
-    art21rou22: number;
-    art21fer22: number;
-    art21inc22: number;
-    naf22art23: number;
-    art22act23: number;
-    art22hab23: number;
-    art22mix23: number;
-    art22rou23: number;
-    art22fer23: number;
-    art22inc23: number;
-    naf09art23: number;
-    art09act23: number;
-    art09hab23: number;
-    art09mix23: number;
-    art09inc23: number;
-    art09rou23: number;
-    art09fer23: number;
-    artcom0923: number;
-    pop14: number;
-    pop20: number;
-    pop1420: number;
-    men14: number;
-    men20: number;
-    men1420: number;
-    emp14: number;
-    emp20: number;
-    emp1420: number;
-    mepart1420: number;
-    menhab1420: number;
-    artpop1420: number | null;
-    surfcom2023: number;
-    C10_MEN: number | null;
-    C15_MEN: number | null;
-    C21_MEN: number | null;
-    _count: Consommation_espaces_nafCountAggregateOutputType | null;
-    _avg: Consommation_espaces_nafAvgAggregateOutputType | null;
-    _sum: Consommation_espaces_nafSumAggregateOutputType | null;
-    _min: Consommation_espaces_nafMinAggregateOutputType | null;
-    _max: Consommation_espaces_nafMaxAggregateOutputType | null;
-  };
->>>>>>> dev
 
   type GetConsommation_espaces_nafGroupByPayload<T extends consommation_espaces_nafGroupByArgs> = Prisma.PrismaPromise<
     Array<
@@ -19619,7 +16680,6 @@ export namespace Prisma {
       >
     >
 
-<<<<<<< HEAD
 
   export type consommation_espaces_nafSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     index?: boolean
@@ -20287,851 +17347,6 @@ export namespace Prisma {
     }, ExtArgs["result"]["consommation_espaces_naf"]>
     composites: {}
   }
-=======
-  export type consommation_espaces_nafSelect<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      code_geographique?: boolean;
-      libelle_geographique?: boolean;
-      epci?: boolean;
-      libelle_epci?: boolean;
-      departement?: boolean;
-      region?: boolean;
-      ept?: boolean;
-      libelle_petr?: boolean;
-      code_pnr?: boolean;
-      libelle_pnr?: boolean;
-      naf09art10?: boolean;
-      art09act10?: boolean;
-      art09hab10?: boolean;
-      art09mix10?: boolean;
-      art09rou10?: boolean;
-      art09fer10?: boolean;
-      art09inc10?: boolean;
-      naf10art11?: boolean;
-      art10act11?: boolean;
-      art10hab11?: boolean;
-      art10mix11?: boolean;
-      art10rou11?: boolean;
-      art10fer11?: boolean;
-      art10inc11?: boolean;
-      naf11art12?: boolean;
-      art11act12?: boolean;
-      art11hab12?: boolean;
-      art11mix12?: boolean;
-      art11rou12?: boolean;
-      art11fer12?: boolean;
-      art11inc12?: boolean;
-      naf12art13?: boolean;
-      art12act13?: boolean;
-      art12hab13?: boolean;
-      art12mix13?: boolean;
-      art12rou13?: boolean;
-      art12fer13?: boolean;
-      art12inc13?: boolean;
-      naf13art14?: boolean;
-      art13act14?: boolean;
-      art13hab14?: boolean;
-      art13mix14?: boolean;
-      art13rou14?: boolean;
-      art13fer14?: boolean;
-      art13inc14?: boolean;
-      naf14art15?: boolean;
-      art14act15?: boolean;
-      art14hab15?: boolean;
-      art14mix15?: boolean;
-      art14rou15?: boolean;
-      art14fer15?: boolean;
-      art14inc15?: boolean;
-      naf15art16?: boolean;
-      art15act16?: boolean;
-      art15hab16?: boolean;
-      art15mix16?: boolean;
-      art15rou16?: boolean;
-      art15fer16?: boolean;
-      art15inc16?: boolean;
-      naf16art17?: boolean;
-      art16act17?: boolean;
-      art16hab17?: boolean;
-      art16mix17?: boolean;
-      art16rou17?: boolean;
-      art16fer17?: boolean;
-      art16inc17?: boolean;
-      naf17art18?: boolean;
-      art17act18?: boolean;
-      art17hab18?: boolean;
-      art17mix18?: boolean;
-      art17rou18?: boolean;
-      art17fer18?: boolean;
-      art17inc18?: boolean;
-      naf18art19?: boolean;
-      art18act19?: boolean;
-      art18hab19?: boolean;
-      art18mix19?: boolean;
-      art18rou19?: boolean;
-      art18fer19?: boolean;
-      art18inc19?: boolean;
-      naf19art20?: boolean;
-      art19act20?: boolean;
-      art19hab20?: boolean;
-      art19mix20?: boolean;
-      art19rou20?: boolean;
-      art19fer20?: boolean;
-      art19inc20?: boolean;
-      naf20art21?: boolean;
-      art20act21?: boolean;
-      art20hab21?: boolean;
-      art20mix21?: boolean;
-      art20rou21?: boolean;
-      art20fer21?: boolean;
-      art20inc21?: boolean;
-      naf21art22?: boolean;
-      art21act22?: boolean;
-      art21hab22?: boolean;
-      art21mix22?: boolean;
-      art21rou22?: boolean;
-      art21fer22?: boolean;
-      art21inc22?: boolean;
-      naf22art23?: boolean;
-      art22act23?: boolean;
-      art22hab23?: boolean;
-      art22mix23?: boolean;
-      art22rou23?: boolean;
-      art22fer23?: boolean;
-      art22inc23?: boolean;
-      naf09art23?: boolean;
-      art09act23?: boolean;
-      art09hab23?: boolean;
-      art09mix23?: boolean;
-      art09inc23?: boolean;
-      art09rou23?: boolean;
-      art09fer23?: boolean;
-      artcom0923?: boolean;
-      pop14?: boolean;
-      pop20?: boolean;
-      pop1420?: boolean;
-      men14?: boolean;
-      men20?: boolean;
-      men1420?: boolean;
-      emp14?: boolean;
-      emp20?: boolean;
-      emp1420?: boolean;
-      mepart1420?: boolean;
-      menhab1420?: boolean;
-      artpop1420?: boolean;
-      surfcom2023?: boolean;
-      C10_MEN?: boolean;
-      C15_MEN?: boolean;
-      C21_MEN?: boolean;
-    },
-    ExtArgs['result']['consommation_espaces_naf']
-  >;
-
-  export type consommation_espaces_nafSelectCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      code_geographique?: boolean;
-      libelle_geographique?: boolean;
-      epci?: boolean;
-      libelle_epci?: boolean;
-      departement?: boolean;
-      region?: boolean;
-      ept?: boolean;
-      libelle_petr?: boolean;
-      code_pnr?: boolean;
-      libelle_pnr?: boolean;
-      naf09art10?: boolean;
-      art09act10?: boolean;
-      art09hab10?: boolean;
-      art09mix10?: boolean;
-      art09rou10?: boolean;
-      art09fer10?: boolean;
-      art09inc10?: boolean;
-      naf10art11?: boolean;
-      art10act11?: boolean;
-      art10hab11?: boolean;
-      art10mix11?: boolean;
-      art10rou11?: boolean;
-      art10fer11?: boolean;
-      art10inc11?: boolean;
-      naf11art12?: boolean;
-      art11act12?: boolean;
-      art11hab12?: boolean;
-      art11mix12?: boolean;
-      art11rou12?: boolean;
-      art11fer12?: boolean;
-      art11inc12?: boolean;
-      naf12art13?: boolean;
-      art12act13?: boolean;
-      art12hab13?: boolean;
-      art12mix13?: boolean;
-      art12rou13?: boolean;
-      art12fer13?: boolean;
-      art12inc13?: boolean;
-      naf13art14?: boolean;
-      art13act14?: boolean;
-      art13hab14?: boolean;
-      art13mix14?: boolean;
-      art13rou14?: boolean;
-      art13fer14?: boolean;
-      art13inc14?: boolean;
-      naf14art15?: boolean;
-      art14act15?: boolean;
-      art14hab15?: boolean;
-      art14mix15?: boolean;
-      art14rou15?: boolean;
-      art14fer15?: boolean;
-      art14inc15?: boolean;
-      naf15art16?: boolean;
-      art15act16?: boolean;
-      art15hab16?: boolean;
-      art15mix16?: boolean;
-      art15rou16?: boolean;
-      art15fer16?: boolean;
-      art15inc16?: boolean;
-      naf16art17?: boolean;
-      art16act17?: boolean;
-      art16hab17?: boolean;
-      art16mix17?: boolean;
-      art16rou17?: boolean;
-      art16fer17?: boolean;
-      art16inc17?: boolean;
-      naf17art18?: boolean;
-      art17act18?: boolean;
-      art17hab18?: boolean;
-      art17mix18?: boolean;
-      art17rou18?: boolean;
-      art17fer18?: boolean;
-      art17inc18?: boolean;
-      naf18art19?: boolean;
-      art18act19?: boolean;
-      art18hab19?: boolean;
-      art18mix19?: boolean;
-      art18rou19?: boolean;
-      art18fer19?: boolean;
-      art18inc19?: boolean;
-      naf19art20?: boolean;
-      art19act20?: boolean;
-      art19hab20?: boolean;
-      art19mix20?: boolean;
-      art19rou20?: boolean;
-      art19fer20?: boolean;
-      art19inc20?: boolean;
-      naf20art21?: boolean;
-      art20act21?: boolean;
-      art20hab21?: boolean;
-      art20mix21?: boolean;
-      art20rou21?: boolean;
-      art20fer21?: boolean;
-      art20inc21?: boolean;
-      naf21art22?: boolean;
-      art21act22?: boolean;
-      art21hab22?: boolean;
-      art21mix22?: boolean;
-      art21rou22?: boolean;
-      art21fer22?: boolean;
-      art21inc22?: boolean;
-      naf22art23?: boolean;
-      art22act23?: boolean;
-      art22hab23?: boolean;
-      art22mix23?: boolean;
-      art22rou23?: boolean;
-      art22fer23?: boolean;
-      art22inc23?: boolean;
-      naf09art23?: boolean;
-      art09act23?: boolean;
-      art09hab23?: boolean;
-      art09mix23?: boolean;
-      art09inc23?: boolean;
-      art09rou23?: boolean;
-      art09fer23?: boolean;
-      artcom0923?: boolean;
-      pop14?: boolean;
-      pop20?: boolean;
-      pop1420?: boolean;
-      men14?: boolean;
-      men20?: boolean;
-      men1420?: boolean;
-      emp14?: boolean;
-      emp20?: boolean;
-      emp1420?: boolean;
-      mepart1420?: boolean;
-      menhab1420?: boolean;
-      artpop1420?: boolean;
-      surfcom2023?: boolean;
-      C10_MEN?: boolean;
-      C15_MEN?: boolean;
-      C21_MEN?: boolean;
-    },
-    ExtArgs['result']['consommation_espaces_naf']
-  >;
-
-  export type consommation_espaces_nafSelectUpdateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      code_geographique?: boolean;
-      libelle_geographique?: boolean;
-      epci?: boolean;
-      libelle_epci?: boolean;
-      departement?: boolean;
-      region?: boolean;
-      ept?: boolean;
-      libelle_petr?: boolean;
-      code_pnr?: boolean;
-      libelle_pnr?: boolean;
-      naf09art10?: boolean;
-      art09act10?: boolean;
-      art09hab10?: boolean;
-      art09mix10?: boolean;
-      art09rou10?: boolean;
-      art09fer10?: boolean;
-      art09inc10?: boolean;
-      naf10art11?: boolean;
-      art10act11?: boolean;
-      art10hab11?: boolean;
-      art10mix11?: boolean;
-      art10rou11?: boolean;
-      art10fer11?: boolean;
-      art10inc11?: boolean;
-      naf11art12?: boolean;
-      art11act12?: boolean;
-      art11hab12?: boolean;
-      art11mix12?: boolean;
-      art11rou12?: boolean;
-      art11fer12?: boolean;
-      art11inc12?: boolean;
-      naf12art13?: boolean;
-      art12act13?: boolean;
-      art12hab13?: boolean;
-      art12mix13?: boolean;
-      art12rou13?: boolean;
-      art12fer13?: boolean;
-      art12inc13?: boolean;
-      naf13art14?: boolean;
-      art13act14?: boolean;
-      art13hab14?: boolean;
-      art13mix14?: boolean;
-      art13rou14?: boolean;
-      art13fer14?: boolean;
-      art13inc14?: boolean;
-      naf14art15?: boolean;
-      art14act15?: boolean;
-      art14hab15?: boolean;
-      art14mix15?: boolean;
-      art14rou15?: boolean;
-      art14fer15?: boolean;
-      art14inc15?: boolean;
-      naf15art16?: boolean;
-      art15act16?: boolean;
-      art15hab16?: boolean;
-      art15mix16?: boolean;
-      art15rou16?: boolean;
-      art15fer16?: boolean;
-      art15inc16?: boolean;
-      naf16art17?: boolean;
-      art16act17?: boolean;
-      art16hab17?: boolean;
-      art16mix17?: boolean;
-      art16rou17?: boolean;
-      art16fer17?: boolean;
-      art16inc17?: boolean;
-      naf17art18?: boolean;
-      art17act18?: boolean;
-      art17hab18?: boolean;
-      art17mix18?: boolean;
-      art17rou18?: boolean;
-      art17fer18?: boolean;
-      art17inc18?: boolean;
-      naf18art19?: boolean;
-      art18act19?: boolean;
-      art18hab19?: boolean;
-      art18mix19?: boolean;
-      art18rou19?: boolean;
-      art18fer19?: boolean;
-      art18inc19?: boolean;
-      naf19art20?: boolean;
-      art19act20?: boolean;
-      art19hab20?: boolean;
-      art19mix20?: boolean;
-      art19rou20?: boolean;
-      art19fer20?: boolean;
-      art19inc20?: boolean;
-      naf20art21?: boolean;
-      art20act21?: boolean;
-      art20hab21?: boolean;
-      art20mix21?: boolean;
-      art20rou21?: boolean;
-      art20fer21?: boolean;
-      art20inc21?: boolean;
-      naf21art22?: boolean;
-      art21act22?: boolean;
-      art21hab22?: boolean;
-      art21mix22?: boolean;
-      art21rou22?: boolean;
-      art21fer22?: boolean;
-      art21inc22?: boolean;
-      naf22art23?: boolean;
-      art22act23?: boolean;
-      art22hab23?: boolean;
-      art22mix23?: boolean;
-      art22rou23?: boolean;
-      art22fer23?: boolean;
-      art22inc23?: boolean;
-      naf09art23?: boolean;
-      art09act23?: boolean;
-      art09hab23?: boolean;
-      art09mix23?: boolean;
-      art09inc23?: boolean;
-      art09rou23?: boolean;
-      art09fer23?: boolean;
-      artcom0923?: boolean;
-      pop14?: boolean;
-      pop20?: boolean;
-      pop1420?: boolean;
-      men14?: boolean;
-      men20?: boolean;
-      men1420?: boolean;
-      emp14?: boolean;
-      emp20?: boolean;
-      emp1420?: boolean;
-      mepart1420?: boolean;
-      menhab1420?: boolean;
-      artpop1420?: boolean;
-      surfcom2023?: boolean;
-      C10_MEN?: boolean;
-      C15_MEN?: boolean;
-      C21_MEN?: boolean;
-    },
-    ExtArgs['result']['consommation_espaces_naf']
-  >;
-
-  export type consommation_espaces_nafSelectScalar = {
-    index?: boolean;
-    code_geographique?: boolean;
-    libelle_geographique?: boolean;
-    epci?: boolean;
-    libelle_epci?: boolean;
-    departement?: boolean;
-    region?: boolean;
-    ept?: boolean;
-    libelle_petr?: boolean;
-    code_pnr?: boolean;
-    libelle_pnr?: boolean;
-    naf09art10?: boolean;
-    art09act10?: boolean;
-    art09hab10?: boolean;
-    art09mix10?: boolean;
-    art09rou10?: boolean;
-    art09fer10?: boolean;
-    art09inc10?: boolean;
-    naf10art11?: boolean;
-    art10act11?: boolean;
-    art10hab11?: boolean;
-    art10mix11?: boolean;
-    art10rou11?: boolean;
-    art10fer11?: boolean;
-    art10inc11?: boolean;
-    naf11art12?: boolean;
-    art11act12?: boolean;
-    art11hab12?: boolean;
-    art11mix12?: boolean;
-    art11rou12?: boolean;
-    art11fer12?: boolean;
-    art11inc12?: boolean;
-    naf12art13?: boolean;
-    art12act13?: boolean;
-    art12hab13?: boolean;
-    art12mix13?: boolean;
-    art12rou13?: boolean;
-    art12fer13?: boolean;
-    art12inc13?: boolean;
-    naf13art14?: boolean;
-    art13act14?: boolean;
-    art13hab14?: boolean;
-    art13mix14?: boolean;
-    art13rou14?: boolean;
-    art13fer14?: boolean;
-    art13inc14?: boolean;
-    naf14art15?: boolean;
-    art14act15?: boolean;
-    art14hab15?: boolean;
-    art14mix15?: boolean;
-    art14rou15?: boolean;
-    art14fer15?: boolean;
-    art14inc15?: boolean;
-    naf15art16?: boolean;
-    art15act16?: boolean;
-    art15hab16?: boolean;
-    art15mix16?: boolean;
-    art15rou16?: boolean;
-    art15fer16?: boolean;
-    art15inc16?: boolean;
-    naf16art17?: boolean;
-    art16act17?: boolean;
-    art16hab17?: boolean;
-    art16mix17?: boolean;
-    art16rou17?: boolean;
-    art16fer17?: boolean;
-    art16inc17?: boolean;
-    naf17art18?: boolean;
-    art17act18?: boolean;
-    art17hab18?: boolean;
-    art17mix18?: boolean;
-    art17rou18?: boolean;
-    art17fer18?: boolean;
-    art17inc18?: boolean;
-    naf18art19?: boolean;
-    art18act19?: boolean;
-    art18hab19?: boolean;
-    art18mix19?: boolean;
-    art18rou19?: boolean;
-    art18fer19?: boolean;
-    art18inc19?: boolean;
-    naf19art20?: boolean;
-    art19act20?: boolean;
-    art19hab20?: boolean;
-    art19mix20?: boolean;
-    art19rou20?: boolean;
-    art19fer20?: boolean;
-    art19inc20?: boolean;
-    naf20art21?: boolean;
-    art20act21?: boolean;
-    art20hab21?: boolean;
-    art20mix21?: boolean;
-    art20rou21?: boolean;
-    art20fer21?: boolean;
-    art20inc21?: boolean;
-    naf21art22?: boolean;
-    art21act22?: boolean;
-    art21hab22?: boolean;
-    art21mix22?: boolean;
-    art21rou22?: boolean;
-    art21fer22?: boolean;
-    art21inc22?: boolean;
-    naf22art23?: boolean;
-    art22act23?: boolean;
-    art22hab23?: boolean;
-    art22mix23?: boolean;
-    art22rou23?: boolean;
-    art22fer23?: boolean;
-    art22inc23?: boolean;
-    naf09art23?: boolean;
-    art09act23?: boolean;
-    art09hab23?: boolean;
-    art09mix23?: boolean;
-    art09inc23?: boolean;
-    art09rou23?: boolean;
-    art09fer23?: boolean;
-    artcom0923?: boolean;
-    pop14?: boolean;
-    pop20?: boolean;
-    pop1420?: boolean;
-    men14?: boolean;
-    men20?: boolean;
-    men1420?: boolean;
-    emp14?: boolean;
-    emp20?: boolean;
-    emp1420?: boolean;
-    mepart1420?: boolean;
-    menhab1420?: boolean;
-    artpop1420?: boolean;
-    surfcom2023?: boolean;
-    C10_MEN?: boolean;
-    C15_MEN?: boolean;
-    C21_MEN?: boolean;
-  };
-
-  export type consommation_espaces_nafOmit<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetOmit<
-    | 'index'
-    | 'code_geographique'
-    | 'libelle_geographique'
-    | 'epci'
-    | 'libelle_epci'
-    | 'departement'
-    | 'region'
-    | 'ept'
-    | 'libelle_petr'
-    | 'code_pnr'
-    | 'libelle_pnr'
-    | 'naf09art10'
-    | 'art09act10'
-    | 'art09hab10'
-    | 'art09mix10'
-    | 'art09rou10'
-    | 'art09fer10'
-    | 'art09inc10'
-    | 'naf10art11'
-    | 'art10act11'
-    | 'art10hab11'
-    | 'art10mix11'
-    | 'art10rou11'
-    | 'art10fer11'
-    | 'art10inc11'
-    | 'naf11art12'
-    | 'art11act12'
-    | 'art11hab12'
-    | 'art11mix12'
-    | 'art11rou12'
-    | 'art11fer12'
-    | 'art11inc12'
-    | 'naf12art13'
-    | 'art12act13'
-    | 'art12hab13'
-    | 'art12mix13'
-    | 'art12rou13'
-    | 'art12fer13'
-    | 'art12inc13'
-    | 'naf13art14'
-    | 'art13act14'
-    | 'art13hab14'
-    | 'art13mix14'
-    | 'art13rou14'
-    | 'art13fer14'
-    | 'art13inc14'
-    | 'naf14art15'
-    | 'art14act15'
-    | 'art14hab15'
-    | 'art14mix15'
-    | 'art14rou15'
-    | 'art14fer15'
-    | 'art14inc15'
-    | 'naf15art16'
-    | 'art15act16'
-    | 'art15hab16'
-    | 'art15mix16'
-    | 'art15rou16'
-    | 'art15fer16'
-    | 'art15inc16'
-    | 'naf16art17'
-    | 'art16act17'
-    | 'art16hab17'
-    | 'art16mix17'
-    | 'art16rou17'
-    | 'art16fer17'
-    | 'art16inc17'
-    | 'naf17art18'
-    | 'art17act18'
-    | 'art17hab18'
-    | 'art17mix18'
-    | 'art17rou18'
-    | 'art17fer18'
-    | 'art17inc18'
-    | 'naf18art19'
-    | 'art18act19'
-    | 'art18hab19'
-    | 'art18mix19'
-    | 'art18rou19'
-    | 'art18fer19'
-    | 'art18inc19'
-    | 'naf19art20'
-    | 'art19act20'
-    | 'art19hab20'
-    | 'art19mix20'
-    | 'art19rou20'
-    | 'art19fer20'
-    | 'art19inc20'
-    | 'naf20art21'
-    | 'art20act21'
-    | 'art20hab21'
-    | 'art20mix21'
-    | 'art20rou21'
-    | 'art20fer21'
-    | 'art20inc21'
-    | 'naf21art22'
-    | 'art21act22'
-    | 'art21hab22'
-    | 'art21mix22'
-    | 'art21rou22'
-    | 'art21fer22'
-    | 'art21inc22'
-    | 'naf22art23'
-    | 'art22act23'
-    | 'art22hab23'
-    | 'art22mix23'
-    | 'art22rou23'
-    | 'art22fer23'
-    | 'art22inc23'
-    | 'naf09art23'
-    | 'art09act23'
-    | 'art09hab23'
-    | 'art09mix23'
-    | 'art09inc23'
-    | 'art09rou23'
-    | 'art09fer23'
-    | 'artcom0923'
-    | 'pop14'
-    | 'pop20'
-    | 'pop1420'
-    | 'men14'
-    | 'men20'
-    | 'men1420'
-    | 'emp14'
-    | 'emp20'
-    | 'emp1420'
-    | 'mepart1420'
-    | 'menhab1420'
-    | 'artpop1420'
-    | 'surfcom2023'
-    | 'C10_MEN'
-    | 'C15_MEN'
-    | 'C21_MEN',
-    ExtArgs['result']['consommation_espaces_naf']
-  >;
-
-  export type $consommation_espaces_nafPayload<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    name: 'consommation_espaces_naf';
-    objects: {};
-    scalars: $Extensions.GetPayloadResult<
-      {
-        index: bigint;
-        code_geographique: string;
-        libelle_geographique: string;
-        epci: string;
-        libelle_epci: string;
-        departement: string;
-        region: number;
-        ept: string | null;
-        libelle_petr: string | null;
-        code_pnr: string | null;
-        libelle_pnr: string | null;
-        naf09art10: number;
-        art09act10: number;
-        art09hab10: number;
-        art09mix10: number;
-        art09rou10: number;
-        art09fer10: number;
-        art09inc10: number;
-        naf10art11: number;
-        art10act11: number;
-        art10hab11: number;
-        art10mix11: number;
-        art10rou11: number;
-        art10fer11: number;
-        art10inc11: number;
-        naf11art12: number;
-        art11act12: number;
-        art11hab12: number;
-        art11mix12: number;
-        art11rou12: number;
-        art11fer12: number;
-        art11inc12: number;
-        naf12art13: number;
-        art12act13: number;
-        art12hab13: number;
-        art12mix13: number;
-        art12rou13: number;
-        art12fer13: number;
-        art12inc13: number;
-        naf13art14: number;
-        art13act14: number;
-        art13hab14: number;
-        art13mix14: number;
-        art13rou14: number;
-        art13fer14: number;
-        art13inc14: number;
-        naf14art15: number;
-        art14act15: number;
-        art14hab15: number;
-        art14mix15: number;
-        art14rou15: number;
-        art14fer15: number;
-        art14inc15: number;
-        naf15art16: number;
-        art15act16: number;
-        art15hab16: number;
-        art15mix16: number;
-        art15rou16: number;
-        art15fer16: number;
-        art15inc16: number;
-        naf16art17: number;
-        art16act17: number;
-        art16hab17: number;
-        art16mix17: number;
-        art16rou17: number;
-        art16fer17: number;
-        art16inc17: number;
-        naf17art18: number;
-        art17act18: number;
-        art17hab18: number;
-        art17mix18: number;
-        art17rou18: number;
-        art17fer18: number;
-        art17inc18: number;
-        naf18art19: number;
-        art18act19: number;
-        art18hab19: number;
-        art18mix19: number;
-        art18rou19: number;
-        art18fer19: number;
-        art18inc19: number;
-        naf19art20: number;
-        art19act20: number;
-        art19hab20: number;
-        art19mix20: number;
-        art19rou20: number;
-        art19fer20: number;
-        art19inc20: number;
-        naf20art21: number;
-        art20act21: number;
-        art20hab21: number;
-        art20mix21: number;
-        art20rou21: number;
-        art20fer21: number;
-        art20inc21: number;
-        naf21art22: number;
-        art21act22: number;
-        art21hab22: number;
-        art21mix22: number;
-        art21rou22: number;
-        art21fer22: number;
-        art21inc22: number;
-        naf22art23: number;
-        art22act23: number;
-        art22hab23: number;
-        art22mix23: number;
-        art22rou23: number;
-        art22fer23: number;
-        art22inc23: number;
-        naf09art23: number;
-        art09act23: number;
-        art09hab23: number;
-        art09mix23: number;
-        art09inc23: number;
-        art09rou23: number;
-        art09fer23: number;
-        artcom0923: number;
-        pop14: number;
-        pop20: number;
-        pop1420: number;
-        men14: number;
-        men20: number;
-        men1420: number;
-        emp14: number;
-        emp20: number;
-        emp1420: number;
-        mepart1420: number;
-        menhab1420: number;
-        artpop1420: number | null;
-        surfcom2023: number;
-        C10_MEN: number | null;
-        C15_MEN: number | null;
-        C21_MEN: number | null;
-      },
-      ExtArgs['result']['consommation_espaces_naf']
-    >;
-    composites: {};
-  };
->>>>>>> dev
 
   type consommation_espaces_nafGetPayload<S extends boolean | null | undefined | consommation_espaces_nafDefaultArgs> = $Result.GetResult<Prisma.$consommation_espaces_nafPayload, S>
 
@@ -21552,7 +17767,6 @@ export namespace Prisma {
    * Fields of the consommation_espaces_naf model
    */ 
   interface consommation_espaces_nafFieldRefs {
-<<<<<<< HEAD
     readonly index: FieldRef<"consommation_espaces_naf", 'BigInt'>
     readonly code_geographique: FieldRef<"consommation_espaces_naf", 'String'>
     readonly libelle_geographique: FieldRef<"consommation_espaces_naf", 'String'>
@@ -21682,144 +17896,6 @@ export namespace Prisma {
     readonly C10_MEN: FieldRef<"consommation_espaces_naf", 'Float'>
     readonly C15_MEN: FieldRef<"consommation_espaces_naf", 'Float'>
     readonly C21_MEN: FieldRef<"consommation_espaces_naf", 'Float'>
-=======
-    readonly index: FieldRef<'consommation_espaces_naf', 'BigInt'>;
-    readonly code_geographique: FieldRef<'consommation_espaces_naf', 'String'>;
-    readonly libelle_geographique: FieldRef<
-      'consommation_espaces_naf',
-      'String'
-    >;
-    readonly epci: FieldRef<'consommation_espaces_naf', 'String'>;
-    readonly libelle_epci: FieldRef<'consommation_espaces_naf', 'String'>;
-    readonly departement: FieldRef<'consommation_espaces_naf', 'String'>;
-    readonly region: FieldRef<'consommation_espaces_naf', 'Int'>;
-    readonly ept: FieldRef<'consommation_espaces_naf', 'String'>;
-    readonly libelle_petr: FieldRef<'consommation_espaces_naf', 'String'>;
-    readonly code_pnr: FieldRef<'consommation_espaces_naf', 'String'>;
-    readonly libelle_pnr: FieldRef<'consommation_espaces_naf', 'String'>;
-    readonly naf09art10: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art09act10: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art09hab10: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art09mix10: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art09rou10: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art09fer10: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art09inc10: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly naf10art11: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art10act11: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art10hab11: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art10mix11: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art10rou11: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art10fer11: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art10inc11: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly naf11art12: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art11act12: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art11hab12: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art11mix12: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art11rou12: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art11fer12: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art11inc12: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly naf12art13: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art12act13: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art12hab13: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art12mix13: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art12rou13: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art12fer13: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art12inc13: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly naf13art14: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art13act14: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art13hab14: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art13mix14: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art13rou14: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art13fer14: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art13inc14: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly naf14art15: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art14act15: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art14hab15: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art14mix15: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art14rou15: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art14fer15: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art14inc15: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly naf15art16: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art15act16: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art15hab16: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art15mix16: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art15rou16: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art15fer16: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art15inc16: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly naf16art17: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art16act17: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art16hab17: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art16mix17: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art16rou17: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art16fer17: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art16inc17: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly naf17art18: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art17act18: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art17hab18: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art17mix18: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art17rou18: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art17fer18: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art17inc18: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly naf18art19: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art18act19: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art18hab19: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art18mix19: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art18rou19: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art18fer19: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art18inc19: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly naf19art20: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art19act20: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art19hab20: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art19mix20: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art19rou20: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art19fer20: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art19inc20: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly naf20art21: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art20act21: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art20hab21: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art20mix21: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art20rou21: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art20fer21: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art20inc21: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly naf21art22: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art21act22: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art21hab22: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art21mix22: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art21rou22: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art21fer22: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art21inc22: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly naf22art23: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art22act23: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art22hab23: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art22mix23: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art22rou23: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art22fer23: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art22inc23: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly naf09art23: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art09act23: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art09hab23: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art09mix23: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art09inc23: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art09rou23: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly art09fer23: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly artcom0923: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly pop14: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly pop20: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly pop1420: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly men14: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly men20: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly men1420: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly emp14: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly emp20: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly emp1420: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly mepart1420: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly menhab1420: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly artpop1420: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly surfcom2023: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly C10_MEN: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly C15_MEN: FieldRef<'consommation_espaces_naf', 'Float'>;
-    readonly C21_MEN: FieldRef<'consommation_espaces_naf', 'Float'>;
->>>>>>> dev
   }
     
 
@@ -26293,2170 +22369,6 @@ export namespace Prisma {
 
 
   /**
-   * Model communes
-   */
-
-  export type AggregateCommunes = {
-    _count: CommunesCountAggregateOutputType | null
-    _avg: CommunesAvgAggregateOutputType | null
-    _sum: CommunesSumAggregateOutputType | null
-    _min: CommunesMinAggregateOutputType | null
-    _max: CommunesMaxAggregateOutputType | null
-  }
-
-  export type CommunesAvgAggregateOutputType = {
-    pk: number | null
-    densite_bati: number | null
-    precarite_logement: number | null
-  }
-
-  export type CommunesSumAggregateOutputType = {
-    pk: number | null
-    densite_bati: number | null
-    precarite_logement: number | null
-  }
-
-  export type CommunesMinAggregateOutputType = {
-    pk: number | null
-    code_commune: string | null
-    libelle_commune: string | null
-    epci: string | null
-    libelle_epci: string | null
-    libgeo: string | null
-    coordinates: string | null
-    densite_bati: number | null
-    precarite_logement: number | null
-  }
-
-  export type CommunesMaxAggregateOutputType = {
-    pk: number | null
-    code_commune: string | null
-    libelle_commune: string | null
-    epci: string | null
-    libelle_epci: string | null
-    libgeo: string | null
-    coordinates: string | null
-    densite_bati: number | null
-    precarite_logement: number | null
-  }
-
-  export type CommunesCountAggregateOutputType = {
-    pk: number
-    code_commune: number
-    libelle_commune: number
-    epci: number
-    libelle_epci: number
-    libgeo: number
-    coordinates: number
-    densite_bati: number
-    precarite_logement: number
-    _all: number
-  }
-
-
-  export type CommunesAvgAggregateInputType = {
-    pk?: true
-    densite_bati?: true
-    precarite_logement?: true
-  }
-
-  export type CommunesSumAggregateInputType = {
-    pk?: true
-    densite_bati?: true
-    precarite_logement?: true
-  }
-
-  export type CommunesMinAggregateInputType = {
-    pk?: true
-    code_commune?: true
-    libelle_commune?: true
-    epci?: true
-    libelle_epci?: true
-    libgeo?: true
-    coordinates?: true
-    densite_bati?: true
-    precarite_logement?: true
-  }
-
-  export type CommunesMaxAggregateInputType = {
-    pk?: true
-    code_commune?: true
-    libelle_commune?: true
-    epci?: true
-    libelle_epci?: true
-    libgeo?: true
-    coordinates?: true
-    densite_bati?: true
-    precarite_logement?: true
-  }
-
-  export type CommunesCountAggregateInputType = {
-    pk?: true
-    code_commune?: true
-    libelle_commune?: true
-    epci?: true
-    libelle_epci?: true
-    libgeo?: true
-    coordinates?: true
-    densite_bati?: true
-    precarite_logement?: true
-    _all?: true
-  }
-
-  export type CommunesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which communes to aggregate.
-     */
-    where?: communesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of communes to fetch.
-     */
-    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: communesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` communes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` communes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned communes
-    **/
-    _count?: true | CommunesCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: CommunesAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: CommunesSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: CommunesMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: CommunesMaxAggregateInputType
-  }
-
-  export type GetCommunesAggregateType<T extends CommunesAggregateArgs> = {
-        [P in keyof T & keyof AggregateCommunes]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCommunes[P]>
-      : GetScalarType<T[P], AggregateCommunes[P]>
-  }
-
-
-
-
-  export type communesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: communesWhereInput
-    orderBy?: communesOrderByWithAggregationInput | communesOrderByWithAggregationInput[]
-    by: CommunesScalarFieldEnum[] | CommunesScalarFieldEnum
-    having?: communesScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: CommunesCountAggregateInputType | true
-    _avg?: CommunesAvgAggregateInputType
-    _sum?: CommunesSumAggregateInputType
-    _min?: CommunesMinAggregateInputType
-    _max?: CommunesMaxAggregateInputType
-  }
-
-  export type CommunesGroupByOutputType = {
-    pk: number
-    code_commune: string | null
-    libelle_commune: string | null
-    epci: string | null
-    libelle_epci: string | null
-    libgeo: string | null
-    coordinates: string | null
-    densite_bati: number | null
-    precarite_logement: number | null
-    _count: CommunesCountAggregateOutputType | null
-    _avg: CommunesAvgAggregateOutputType | null
-    _sum: CommunesSumAggregateOutputType | null
-    _min: CommunesMinAggregateOutputType | null
-    _max: CommunesMaxAggregateOutputType | null
-  }
-
-  type GetCommunesGroupByPayload<T extends communesGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<CommunesGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof CommunesGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], CommunesGroupByOutputType[P]>
-            : GetScalarType<T[P], CommunesGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type communesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pk?: boolean
-    code_commune?: boolean
-    libelle_commune?: boolean
-    epci?: boolean
-    libelle_epci?: boolean
-    libgeo?: boolean
-    coordinates?: boolean
-    densite_bati?: boolean
-    precarite_logement?: boolean
-  }, ExtArgs["result"]["communes"]>
-
-  export type communesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pk?: boolean
-    code_commune?: boolean
-    libelle_commune?: boolean
-    epci?: boolean
-    libelle_epci?: boolean
-    libgeo?: boolean
-    coordinates?: boolean
-    densite_bati?: boolean
-    precarite_logement?: boolean
-  }, ExtArgs["result"]["communes"]>
-
-  export type communesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pk?: boolean
-    code_commune?: boolean
-    libelle_commune?: boolean
-    epci?: boolean
-    libelle_epci?: boolean
-    libgeo?: boolean
-    coordinates?: boolean
-    densite_bati?: boolean
-    precarite_logement?: boolean
-  }, ExtArgs["result"]["communes"]>
-
-  export type communesSelectScalar = {
-    pk?: boolean
-    code_commune?: boolean
-    libelle_commune?: boolean
-    epci?: boolean
-    libelle_epci?: boolean
-    libgeo?: boolean
-    coordinates?: boolean
-    densite_bati?: boolean
-    precarite_logement?: boolean
-  }
-
-  export type communesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "code_commune" | "libelle_commune" | "epci" | "libelle_epci" | "libgeo" | "coordinates" | "densite_bati" | "precarite_logement", ExtArgs["result"]["communes"]>
-
-  export type $communesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "communes"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      pk: number
-      code_commune: string | null
-      libelle_commune: string | null
-      epci: string | null
-      libelle_epci: string | null
-      libgeo: string | null
-      coordinates: string | null
-      densite_bati: number | null
-      precarite_logement: number | null
-    }, ExtArgs["result"]["communes"]>
-    composites: {}
-  }
-
-  type communesGetPayload<S extends boolean | null | undefined | communesDefaultArgs> = $Result.GetResult<Prisma.$communesPayload, S>
-
-  type communesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<communesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CommunesCountAggregateInputType | true
-    }
-
-  export interface communesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['communes'], meta: { name: 'communes' } }
-    /**
-     * Find zero or one Communes that matches the filter.
-     * @param {communesFindUniqueArgs} args - Arguments to find a Communes
-     * @example
-     * // Get one Communes
-     * const communes = await prisma.communes.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends communesFindUniqueArgs>(args: SelectSubset<T, communesFindUniqueArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
-
-    /**
-     * Find one Communes that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {communesFindUniqueOrThrowArgs} args - Arguments to find a Communes
-     * @example
-     * // Get one Communes
-     * const communes = await prisma.communes.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends communesFindUniqueOrThrowArgs>(args: SelectSubset<T, communesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Find the first Communes that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesFindFirstArgs} args - Arguments to find a Communes
-     * @example
-     * // Get one Communes
-     * const communes = await prisma.communes.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends communesFindFirstArgs>(args?: SelectSubset<T, communesFindFirstArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
-
-    /**
-     * Find the first Communes that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesFindFirstOrThrowArgs} args - Arguments to find a Communes
-     * @example
-     * // Get one Communes
-     * const communes = await prisma.communes.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends communesFindFirstOrThrowArgs>(args?: SelectSubset<T, communesFindFirstOrThrowArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Find zero or more Communes that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Communes
-     * const communes = await prisma.communes.findMany()
-     * 
-     * // Get first 10 Communes
-     * const communes = await prisma.communes.findMany({ take: 10 })
-     * 
-     * // Only select the `pk`
-     * const communesWithPkOnly = await prisma.communes.findMany({ select: { pk: true } })
-     * 
-     */
-    findMany<T extends communesFindManyArgs>(args?: SelectSubset<T, communesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "findMany", ClientOptions>>
-
-    /**
-     * Create a Communes.
-     * @param {communesCreateArgs} args - Arguments to create a Communes.
-     * @example
-     * // Create one Communes
-     * const Communes = await prisma.communes.create({
-     *   data: {
-     *     // ... data to create a Communes
-     *   }
-     * })
-     * 
-     */
-    create<T extends communesCreateArgs>(args: SelectSubset<T, communesCreateArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Create many Communes.
-     * @param {communesCreateManyArgs} args - Arguments to create many Communes.
-     * @example
-     * // Create many Communes
-     * const communes = await prisma.communes.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends communesCreateManyArgs>(args?: SelectSubset<T, communesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Communes and returns the data saved in the database.
-     * @param {communesCreateManyAndReturnArgs} args - Arguments to create many Communes.
-     * @example
-     * // Create many Communes
-     * const communes = await prisma.communes.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Communes and only return the `pk`
-     * const communesWithPkOnly = await prisma.communes.createManyAndReturn({
-     *   select: { pk: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends communesCreateManyAndReturnArgs>(args?: SelectSubset<T, communesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
-
-    /**
-     * Delete a Communes.
-     * @param {communesDeleteArgs} args - Arguments to delete one Communes.
-     * @example
-     * // Delete one Communes
-     * const Communes = await prisma.communes.delete({
-     *   where: {
-     *     // ... filter to delete one Communes
-     *   }
-     * })
-     * 
-     */
-    delete<T extends communesDeleteArgs>(args: SelectSubset<T, communesDeleteArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Update one Communes.
-     * @param {communesUpdateArgs} args - Arguments to update one Communes.
-     * @example
-     * // Update one Communes
-     * const communes = await prisma.communes.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends communesUpdateArgs>(args: SelectSubset<T, communesUpdateArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Delete zero or more Communes.
-     * @param {communesDeleteManyArgs} args - Arguments to filter Communes to delete.
-     * @example
-     * // Delete a few Communes
-     * const { count } = await prisma.communes.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends communesDeleteManyArgs>(args?: SelectSubset<T, communesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Communes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Communes
-     * const communes = await prisma.communes.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends communesUpdateManyArgs>(args: SelectSubset<T, communesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Communes and returns the data updated in the database.
-     * @param {communesUpdateManyAndReturnArgs} args - Arguments to update many Communes.
-     * @example
-     * // Update many Communes
-     * const communes = await prisma.communes.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Communes and only return the `pk`
-     * const communesWithPkOnly = await prisma.communes.updateManyAndReturn({
-     *   select: { pk: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends communesUpdateManyAndReturnArgs>(args: SelectSubset<T, communesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
-
-    /**
-     * Create or update one Communes.
-     * @param {communesUpsertArgs} args - Arguments to update or create a Communes.
-     * @example
-     * // Update or create a Communes
-     * const communes = await prisma.communes.upsert({
-     *   create: {
-     *     // ... data to create a Communes
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Communes we want to update
-     *   }
-     * })
-     */
-    upsert<T extends communesUpsertArgs>(args: SelectSubset<T, communesUpsertArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
-
-
-    /**
-     * Count the number of Communes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesCountArgs} args - Arguments to filter Communes to count.
-     * @example
-     * // Count the number of Communes
-     * const count = await prisma.communes.count({
-     *   where: {
-     *     // ... the filter for the Communes we want to count
-     *   }
-     * })
-    **/
-    count<T extends communesCountArgs>(
-      args?: Subset<T, communesCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], CommunesCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Communes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CommunesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends CommunesAggregateArgs>(args: Subset<T, CommunesAggregateArgs>): Prisma.PrismaPromise<GetCommunesAggregateType<T>>
-
-    /**
-     * Group by Communes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {communesGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends communesGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: communesGroupByArgs['orderBy'] }
-        : { orderBy?: communesGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, communesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommunesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the communes model
-   */
-  readonly fields: communesFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for communes.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__communesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the communes model
-   */ 
-  interface communesFieldRefs {
-    readonly pk: FieldRef<"communes", 'Int'>
-    readonly code_commune: FieldRef<"communes", 'String'>
-    readonly libelle_commune: FieldRef<"communes", 'String'>
-    readonly epci: FieldRef<"communes", 'String'>
-    readonly libelle_epci: FieldRef<"communes", 'String'>
-    readonly libgeo: FieldRef<"communes", 'String'>
-    readonly coordinates: FieldRef<"communes", 'String'>
-    readonly densite_bati: FieldRef<"communes", 'Float'>
-    readonly precarite_logement: FieldRef<"communes", 'Float'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * communes findUnique
-   */
-  export type communesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the communes
-     */
-    omit?: communesOmit<ExtArgs> | null
-    /**
-     * Filter, which communes to fetch.
-     */
-    where: communesWhereUniqueInput
-  }
-
-  /**
-   * communes findUniqueOrThrow
-   */
-  export type communesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the communes
-     */
-    omit?: communesOmit<ExtArgs> | null
-    /**
-     * Filter, which communes to fetch.
-     */
-    where: communesWhereUniqueInput
-  }
-
-  /**
-   * communes findFirst
-   */
-  export type communesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the communes
-     */
-    omit?: communesOmit<ExtArgs> | null
-    /**
-     * Filter, which communes to fetch.
-     */
-    where?: communesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of communes to fetch.
-     */
-    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for communes.
-     */
-    cursor?: communesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` communes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` communes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of communes.
-     */
-    distinct?: CommunesScalarFieldEnum | CommunesScalarFieldEnum[]
-  }
-
-  /**
-   * communes findFirstOrThrow
-   */
-  export type communesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the communes
-     */
-    omit?: communesOmit<ExtArgs> | null
-    /**
-     * Filter, which communes to fetch.
-     */
-    where?: communesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of communes to fetch.
-     */
-    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for communes.
-     */
-    cursor?: communesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` communes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` communes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of communes.
-     */
-    distinct?: CommunesScalarFieldEnum | CommunesScalarFieldEnum[]
-  }
-
-  /**
-   * communes findMany
-   */
-  export type communesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the communes
-     */
-    omit?: communesOmit<ExtArgs> | null
-    /**
-     * Filter, which communes to fetch.
-     */
-    where?: communesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of communes to fetch.
-     */
-    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing communes.
-     */
-    cursor?: communesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` communes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` communes.
-     */
-    skip?: number
-    distinct?: CommunesScalarFieldEnum | CommunesScalarFieldEnum[]
-  }
-
-  /**
-   * communes create
-   */
-  export type communesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the communes
-     */
-    omit?: communesOmit<ExtArgs> | null
-    /**
-     * The data needed to create a communes.
-     */
-    data?: XOR<communesCreateInput, communesUncheckedCreateInput>
-  }
-
-  /**
-   * communes createMany
-   */
-  export type communesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many communes.
-     */
-    data: communesCreateManyInput | communesCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * communes createManyAndReturn
-   */
-  export type communesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the communes
-     */
-    omit?: communesOmit<ExtArgs> | null
-    /**
-     * The data used to create many communes.
-     */
-    data: communesCreateManyInput | communesCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * communes update
-   */
-  export type communesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the communes
-     */
-    omit?: communesOmit<ExtArgs> | null
-    /**
-     * The data needed to update a communes.
-     */
-    data: XOR<communesUpdateInput, communesUncheckedUpdateInput>
-    /**
-     * Choose, which communes to update.
-     */
-    where: communesWhereUniqueInput
-  }
-
-  /**
-   * communes updateMany
-   */
-  export type communesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update communes.
-     */
-    data: XOR<communesUpdateManyMutationInput, communesUncheckedUpdateManyInput>
-    /**
-     * Filter which communes to update
-     */
-    where?: communesWhereInput
-    /**
-     * Limit how many communes to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * communes updateManyAndReturn
-   */
-  export type communesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the communes
-     */
-    omit?: communesOmit<ExtArgs> | null
-    /**
-     * The data used to update communes.
-     */
-    data: XOR<communesUpdateManyMutationInput, communesUncheckedUpdateManyInput>
-    /**
-     * Filter which communes to update
-     */
-    where?: communesWhereInput
-    /**
-     * Limit how many communes to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * communes upsert
-   */
-  export type communesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the communes
-     */
-    omit?: communesOmit<ExtArgs> | null
-    /**
-     * The filter to search for the communes to update in case it exists.
-     */
-    where: communesWhereUniqueInput
-    /**
-     * In case the communes found by the `where` argument doesn't exist, create a new communes with this data.
-     */
-    create: XOR<communesCreateInput, communesUncheckedCreateInput>
-    /**
-     * In case the communes was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<communesUpdateInput, communesUncheckedUpdateInput>
-  }
-
-  /**
-   * communes delete
-   */
-  export type communesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the communes
-     */
-    omit?: communesOmit<ExtArgs> | null
-    /**
-     * Filter which communes to delete.
-     */
-    where: communesWhereUniqueInput
-  }
-
-  /**
-   * communes deleteMany
-   */
-  export type communesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which communes to delete
-     */
-    where?: communesWhereInput
-    /**
-     * Limit how many communes to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * communes without action
-   */
-  export type communesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the communes
-     */
-    select?: communesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the communes
-     */
-    omit?: communesOmit<ExtArgs> | null
-  }
-
-
-  /**
-   * Model patch4c
-   */
-
-  export type AggregatePatch4c = {
-    _count: Patch4cCountAggregateOutputType | null
-    _avg: Patch4cAvgAggregateOutputType | null
-    _sum: Patch4cSumAggregateOutputType | null
-    _min: Patch4cMinAggregateOutputType | null
-    _max: Patch4cMaxAggregateOutputType | null
-  }
-
-  export type Patch4cAvgAggregateOutputType = {
-    index: number | null
-    niveaux_marins: number | null
-    feux_foret: number | null
-    secheresse_sols: number | null
-    fortes_precipitations: number | null
-    fortes_chaleurs: number | null
-  }
-
-  export type Patch4cSumAggregateOutputType = {
-    index: bigint | null
-    niveaux_marins: number | null
-    feux_foret: number | null
-    secheresse_sols: number | null
-    fortes_precipitations: number | null
-    fortes_chaleurs: number | null
-  }
-
-  export type Patch4cMinAggregateOutputType = {
-    index: bigint | null
-    code_geographique: string | null
-    niveaux_marins: number | null
-    feux_foret: number | null
-    secheresse_sols: number | null
-    fortes_precipitations: number | null
-    fortes_chaleurs: number | null
-  }
-
-  export type Patch4cMaxAggregateOutputType = {
-    index: bigint | null
-    code_geographique: string | null
-    niveaux_marins: number | null
-    feux_foret: number | null
-    secheresse_sols: number | null
-    fortes_precipitations: number | null
-    fortes_chaleurs: number | null
-  }
-
-  export type Patch4cCountAggregateOutputType = {
-    index: number
-    code_geographique: number
-    niveaux_marins: number
-    feux_foret: number
-    secheresse_sols: number
-    fortes_precipitations: number
-    fortes_chaleurs: number
-    _all: number
-  }
-
-
-  export type Patch4cAvgAggregateInputType = {
-    index?: true
-    niveaux_marins?: true
-    feux_foret?: true
-    secheresse_sols?: true
-    fortes_precipitations?: true
-    fortes_chaleurs?: true
-  }
-
-  export type Patch4cSumAggregateInputType = {
-    index?: true
-    niveaux_marins?: true
-    feux_foret?: true
-    secheresse_sols?: true
-    fortes_precipitations?: true
-    fortes_chaleurs?: true
-  }
-
-  export type Patch4cMinAggregateInputType = {
-    index?: true
-    code_geographique?: true
-    niveaux_marins?: true
-    feux_foret?: true
-    secheresse_sols?: true
-    fortes_precipitations?: true
-    fortes_chaleurs?: true
-  }
-
-  export type Patch4cMaxAggregateInputType = {
-    index?: true
-    code_geographique?: true
-    niveaux_marins?: true
-    feux_foret?: true
-    secheresse_sols?: true
-    fortes_precipitations?: true
-    fortes_chaleurs?: true
-  }
-
-  export type Patch4cCountAggregateInputType = {
-    index?: true
-    code_geographique?: true
-    niveaux_marins?: true
-    feux_foret?: true
-    secheresse_sols?: true
-    fortes_precipitations?: true
-    fortes_chaleurs?: true
-    _all?: true
-  }
-
-  export type Patch4cAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which patch4c to aggregate.
-     */
-    where?: patch4cWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of patch4cs to fetch.
-     */
-    orderBy?: patch4cOrderByWithRelationInput | patch4cOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: patch4cWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` patch4cs from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` patch4cs.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned patch4cs
-    **/
-    _count?: true | Patch4cCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Patch4cAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Patch4cSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Patch4cMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Patch4cMaxAggregateInputType
-  }
-
-  export type GetPatch4cAggregateType<T extends Patch4cAggregateArgs> = {
-        [P in keyof T & keyof AggregatePatch4c]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePatch4c[P]>
-      : GetScalarType<T[P], AggregatePatch4c[P]>
-  }
-
-
-
-
-  export type patch4cGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: patch4cWhereInput
-    orderBy?: patch4cOrderByWithAggregationInput | patch4cOrderByWithAggregationInput[]
-    by: Patch4cScalarFieldEnum[] | Patch4cScalarFieldEnum
-    having?: patch4cScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Patch4cCountAggregateInputType | true
-    _avg?: Patch4cAvgAggregateInputType
-    _sum?: Patch4cSumAggregateInputType
-    _min?: Patch4cMinAggregateInputType
-    _max?: Patch4cMaxAggregateInputType
-  }
-
-  export type Patch4cGroupByOutputType = {
-    index: bigint
-    code_geographique: string
-    niveaux_marins: number | null
-    feux_foret: number
-    secheresse_sols: number
-    fortes_precipitations: number
-    fortes_chaleurs: number
-    _count: Patch4cCountAggregateOutputType | null
-    _avg: Patch4cAvgAggregateOutputType | null
-    _sum: Patch4cSumAggregateOutputType | null
-    _min: Patch4cMinAggregateOutputType | null
-    _max: Patch4cMaxAggregateOutputType | null
-  }
-
-  type GetPatch4cGroupByPayload<T extends patch4cGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Patch4cGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Patch4cGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Patch4cGroupByOutputType[P]>
-            : GetScalarType<T[P], Patch4cGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type patch4cSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    index?: boolean
-    code_geographique?: boolean
-    niveaux_marins?: boolean
-    feux_foret?: boolean
-    secheresse_sols?: boolean
-    fortes_precipitations?: boolean
-    fortes_chaleurs?: boolean
-  }, ExtArgs["result"]["patch4c"]>
-
-  export type patch4cSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    index?: boolean
-    code_geographique?: boolean
-    niveaux_marins?: boolean
-    feux_foret?: boolean
-    secheresse_sols?: boolean
-    fortes_precipitations?: boolean
-    fortes_chaleurs?: boolean
-  }, ExtArgs["result"]["patch4c"]>
-
-  export type patch4cSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    index?: boolean
-    code_geographique?: boolean
-    niveaux_marins?: boolean
-    feux_foret?: boolean
-    secheresse_sols?: boolean
-    fortes_precipitations?: boolean
-    fortes_chaleurs?: boolean
-  }, ExtArgs["result"]["patch4c"]>
-
-  export type patch4cSelectScalar = {
-    index?: boolean
-    code_geographique?: boolean
-    niveaux_marins?: boolean
-    feux_foret?: boolean
-    secheresse_sols?: boolean
-    fortes_precipitations?: boolean
-    fortes_chaleurs?: boolean
-  }
-
-  export type patch4cOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "niveaux_marins" | "feux_foret" | "secheresse_sols" | "fortes_precipitations" | "fortes_chaleurs", ExtArgs["result"]["patch4c"]>
-
-  export type $patch4cPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "patch4c"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      index: bigint
-      code_geographique: string
-      niveaux_marins: number | null
-      feux_foret: number
-      secheresse_sols: number
-      fortes_precipitations: number
-      fortes_chaleurs: number
-    }, ExtArgs["result"]["patch4c"]>
-    composites: {}
-  }
-
-  type patch4cGetPayload<S extends boolean | null | undefined | patch4cDefaultArgs> = $Result.GetResult<Prisma.$patch4cPayload, S>
-
-  type patch4cCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<patch4cFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Patch4cCountAggregateInputType | true
-    }
-
-  export interface patch4cDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['patch4c'], meta: { name: 'patch4c' } }
-    /**
-     * Find zero or one Patch4c that matches the filter.
-     * @param {patch4cFindUniqueArgs} args - Arguments to find a Patch4c
-     * @example
-     * // Get one Patch4c
-     * const patch4c = await prisma.patch4c.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends patch4cFindUniqueArgs>(args: SelectSubset<T, patch4cFindUniqueArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
-
-    /**
-     * Find one Patch4c that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {patch4cFindUniqueOrThrowArgs} args - Arguments to find a Patch4c
-     * @example
-     * // Get one Patch4c
-     * const patch4c = await prisma.patch4c.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends patch4cFindUniqueOrThrowArgs>(args: SelectSubset<T, patch4cFindUniqueOrThrowArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Find the first Patch4c that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {patch4cFindFirstArgs} args - Arguments to find a Patch4c
-     * @example
-     * // Get one Patch4c
-     * const patch4c = await prisma.patch4c.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends patch4cFindFirstArgs>(args?: SelectSubset<T, patch4cFindFirstArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
-
-    /**
-     * Find the first Patch4c that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {patch4cFindFirstOrThrowArgs} args - Arguments to find a Patch4c
-     * @example
-     * // Get one Patch4c
-     * const patch4c = await prisma.patch4c.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends patch4cFindFirstOrThrowArgs>(args?: SelectSubset<T, patch4cFindFirstOrThrowArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Find zero or more Patch4cs that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {patch4cFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Patch4cs
-     * const patch4cs = await prisma.patch4c.findMany()
-     * 
-     * // Get first 10 Patch4cs
-     * const patch4cs = await prisma.patch4c.findMany({ take: 10 })
-     * 
-     * // Only select the `index`
-     * const patch4cWithIndexOnly = await prisma.patch4c.findMany({ select: { index: true } })
-     * 
-     */
-    findMany<T extends patch4cFindManyArgs>(args?: SelectSubset<T, patch4cFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "findMany", ClientOptions>>
-
-    /**
-     * Create a Patch4c.
-     * @param {patch4cCreateArgs} args - Arguments to create a Patch4c.
-     * @example
-     * // Create one Patch4c
-     * const Patch4c = await prisma.patch4c.create({
-     *   data: {
-     *     // ... data to create a Patch4c
-     *   }
-     * })
-     * 
-     */
-    create<T extends patch4cCreateArgs>(args: SelectSubset<T, patch4cCreateArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Create many Patch4cs.
-     * @param {patch4cCreateManyArgs} args - Arguments to create many Patch4cs.
-     * @example
-     * // Create many Patch4cs
-     * const patch4c = await prisma.patch4c.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends patch4cCreateManyArgs>(args?: SelectSubset<T, patch4cCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Patch4cs and returns the data saved in the database.
-     * @param {patch4cCreateManyAndReturnArgs} args - Arguments to create many Patch4cs.
-     * @example
-     * // Create many Patch4cs
-     * const patch4c = await prisma.patch4c.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Patch4cs and only return the `index`
-     * const patch4cWithIndexOnly = await prisma.patch4c.createManyAndReturn({
-     *   select: { index: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends patch4cCreateManyAndReturnArgs>(args?: SelectSubset<T, patch4cCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
-
-    /**
-     * Delete a Patch4c.
-     * @param {patch4cDeleteArgs} args - Arguments to delete one Patch4c.
-     * @example
-     * // Delete one Patch4c
-     * const Patch4c = await prisma.patch4c.delete({
-     *   where: {
-     *     // ... filter to delete one Patch4c
-     *   }
-     * })
-     * 
-     */
-    delete<T extends patch4cDeleteArgs>(args: SelectSubset<T, patch4cDeleteArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Update one Patch4c.
-     * @param {patch4cUpdateArgs} args - Arguments to update one Patch4c.
-     * @example
-     * // Update one Patch4c
-     * const patch4c = await prisma.patch4c.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends patch4cUpdateArgs>(args: SelectSubset<T, patch4cUpdateArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Delete zero or more Patch4cs.
-     * @param {patch4cDeleteManyArgs} args - Arguments to filter Patch4cs to delete.
-     * @example
-     * // Delete a few Patch4cs
-     * const { count } = await prisma.patch4c.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends patch4cDeleteManyArgs>(args?: SelectSubset<T, patch4cDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Patch4cs.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {patch4cUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Patch4cs
-     * const patch4c = await prisma.patch4c.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends patch4cUpdateManyArgs>(args: SelectSubset<T, patch4cUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Patch4cs and returns the data updated in the database.
-     * @param {patch4cUpdateManyAndReturnArgs} args - Arguments to update many Patch4cs.
-     * @example
-     * // Update many Patch4cs
-     * const patch4c = await prisma.patch4c.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Patch4cs and only return the `index`
-     * const patch4cWithIndexOnly = await prisma.patch4c.updateManyAndReturn({
-     *   select: { index: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends patch4cUpdateManyAndReturnArgs>(args: SelectSubset<T, patch4cUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
-
-    /**
-     * Create or update one Patch4c.
-     * @param {patch4cUpsertArgs} args - Arguments to update or create a Patch4c.
-     * @example
-     * // Update or create a Patch4c
-     * const patch4c = await prisma.patch4c.upsert({
-     *   create: {
-     *     // ... data to create a Patch4c
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Patch4c we want to update
-     *   }
-     * })
-     */
-    upsert<T extends patch4cUpsertArgs>(args: SelectSubset<T, patch4cUpsertArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
-
-
-    /**
-     * Count the number of Patch4cs.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {patch4cCountArgs} args - Arguments to filter Patch4cs to count.
-     * @example
-     * // Count the number of Patch4cs
-     * const count = await prisma.patch4c.count({
-     *   where: {
-     *     // ... the filter for the Patch4cs we want to count
-     *   }
-     * })
-    **/
-    count<T extends patch4cCountArgs>(
-      args?: Subset<T, patch4cCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Patch4cCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Patch4c.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Patch4cAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Patch4cAggregateArgs>(args: Subset<T, Patch4cAggregateArgs>): Prisma.PrismaPromise<GetPatch4cAggregateType<T>>
-
-    /**
-     * Group by Patch4c.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {patch4cGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends patch4cGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: patch4cGroupByArgs['orderBy'] }
-        : { orderBy?: patch4cGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, patch4cGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPatch4cGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the patch4c model
-   */
-  readonly fields: patch4cFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for patch4c.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__patch4cClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the patch4c model
-   */ 
-  interface patch4cFieldRefs {
-    readonly index: FieldRef<"patch4c", 'BigInt'>
-    readonly code_geographique: FieldRef<"patch4c", 'String'>
-    readonly niveaux_marins: FieldRef<"patch4c", 'Float'>
-    readonly feux_foret: FieldRef<"patch4c", 'Float'>
-    readonly secheresse_sols: FieldRef<"patch4c", 'Float'>
-    readonly fortes_precipitations: FieldRef<"patch4c", 'Float'>
-    readonly fortes_chaleurs: FieldRef<"patch4c", 'Float'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * patch4c findUnique
-   */
-  export type patch4cFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the patch4c
-     */
-    select?: patch4cSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the patch4c
-     */
-    omit?: patch4cOmit<ExtArgs> | null
-    /**
-     * Filter, which patch4c to fetch.
-     */
-    where: patch4cWhereUniqueInput
-  }
-
-  /**
-   * patch4c findUniqueOrThrow
-   */
-  export type patch4cFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the patch4c
-     */
-    select?: patch4cSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the patch4c
-     */
-    omit?: patch4cOmit<ExtArgs> | null
-    /**
-     * Filter, which patch4c to fetch.
-     */
-    where: patch4cWhereUniqueInput
-  }
-
-  /**
-   * patch4c findFirst
-   */
-  export type patch4cFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the patch4c
-     */
-    select?: patch4cSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the patch4c
-     */
-    omit?: patch4cOmit<ExtArgs> | null
-    /**
-     * Filter, which patch4c to fetch.
-     */
-    where?: patch4cWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of patch4cs to fetch.
-     */
-    orderBy?: patch4cOrderByWithRelationInput | patch4cOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for patch4cs.
-     */
-    cursor?: patch4cWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` patch4cs from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` patch4cs.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of patch4cs.
-     */
-    distinct?: Patch4cScalarFieldEnum | Patch4cScalarFieldEnum[]
-  }
-
-  /**
-   * patch4c findFirstOrThrow
-   */
-  export type patch4cFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the patch4c
-     */
-    select?: patch4cSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the patch4c
-     */
-    omit?: patch4cOmit<ExtArgs> | null
-    /**
-     * Filter, which patch4c to fetch.
-     */
-    where?: patch4cWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of patch4cs to fetch.
-     */
-    orderBy?: patch4cOrderByWithRelationInput | patch4cOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for patch4cs.
-     */
-    cursor?: patch4cWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` patch4cs from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` patch4cs.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of patch4cs.
-     */
-    distinct?: Patch4cScalarFieldEnum | Patch4cScalarFieldEnum[]
-  }
-
-  /**
-   * patch4c findMany
-   */
-  export type patch4cFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the patch4c
-     */
-    select?: patch4cSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the patch4c
-     */
-    omit?: patch4cOmit<ExtArgs> | null
-    /**
-     * Filter, which patch4cs to fetch.
-     */
-    where?: patch4cWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of patch4cs to fetch.
-     */
-    orderBy?: patch4cOrderByWithRelationInput | patch4cOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing patch4cs.
-     */
-    cursor?: patch4cWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` patch4cs from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` patch4cs.
-     */
-    skip?: number
-    distinct?: Patch4cScalarFieldEnum | Patch4cScalarFieldEnum[]
-  }
-
-  /**
-   * patch4c create
-   */
-  export type patch4cCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the patch4c
-     */
-    select?: patch4cSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the patch4c
-     */
-    omit?: patch4cOmit<ExtArgs> | null
-    /**
-     * The data needed to create a patch4c.
-     */
-    data: XOR<patch4cCreateInput, patch4cUncheckedCreateInput>
-  }
-
-  /**
-   * patch4c createMany
-   */
-  export type patch4cCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many patch4cs.
-     */
-    data: patch4cCreateManyInput | patch4cCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * patch4c createManyAndReturn
-   */
-  export type patch4cCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the patch4c
-     */
-    select?: patch4cSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the patch4c
-     */
-    omit?: patch4cOmit<ExtArgs> | null
-    /**
-     * The data used to create many patch4cs.
-     */
-    data: patch4cCreateManyInput | patch4cCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * patch4c update
-   */
-  export type patch4cUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the patch4c
-     */
-    select?: patch4cSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the patch4c
-     */
-    omit?: patch4cOmit<ExtArgs> | null
-    /**
-     * The data needed to update a patch4c.
-     */
-    data: XOR<patch4cUpdateInput, patch4cUncheckedUpdateInput>
-    /**
-     * Choose, which patch4c to update.
-     */
-    where: patch4cWhereUniqueInput
-  }
-
-  /**
-   * patch4c updateMany
-   */
-  export type patch4cUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update patch4cs.
-     */
-    data: XOR<patch4cUpdateManyMutationInput, patch4cUncheckedUpdateManyInput>
-    /**
-     * Filter which patch4cs to update
-     */
-    where?: patch4cWhereInput
-    /**
-     * Limit how many patch4cs to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * patch4c updateManyAndReturn
-   */
-  export type patch4cUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the patch4c
-     */
-    select?: patch4cSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the patch4c
-     */
-    omit?: patch4cOmit<ExtArgs> | null
-    /**
-     * The data used to update patch4cs.
-     */
-    data: XOR<patch4cUpdateManyMutationInput, patch4cUncheckedUpdateManyInput>
-    /**
-     * Filter which patch4cs to update
-     */
-    where?: patch4cWhereInput
-    /**
-     * Limit how many patch4cs to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * patch4c upsert
-   */
-  export type patch4cUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the patch4c
-     */
-    select?: patch4cSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the patch4c
-     */
-    omit?: patch4cOmit<ExtArgs> | null
-    /**
-     * The filter to search for the patch4c to update in case it exists.
-     */
-    where: patch4cWhereUniqueInput
-    /**
-     * In case the patch4c found by the `where` argument doesn't exist, create a new patch4c with this data.
-     */
-    create: XOR<patch4cCreateInput, patch4cUncheckedCreateInput>
-    /**
-     * In case the patch4c was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<patch4cUpdateInput, patch4cUncheckedUpdateInput>
-  }
-
-  /**
-   * patch4c delete
-   */
-  export type patch4cDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the patch4c
-     */
-    select?: patch4cSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the patch4c
-     */
-    omit?: patch4cOmit<ExtArgs> | null
-    /**
-     * Filter which patch4c to delete.
-     */
-    where: patch4cWhereUniqueInput
-  }
-
-  /**
-   * patch4c deleteMany
-   */
-  export type patch4cDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which patch4cs to delete
-     */
-    where?: patch4cWhereInput
-    /**
-     * Limit how many patch4cs to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * patch4c without action
-   */
-  export type patch4cDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the patch4c
-     */
-    select?: patch4cSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the patch4c
-     */
-    omit?: patch4cOmit<ExtArgs> | null
-  }
-
-
-  /**
    * Model agriculture
    */
 
@@ -30809,3215 +24721,297 @@ export namespace Prisma {
 
 
   /**
-   * Model agriculture
-   */
-
-  export type AggregateAgriculture = {
-    _count: AgricultureCountAggregateOutputType | null;
-    _avg: AgricultureAvgAggregateOutputType | null;
-    _sum: AgricultureSumAggregateOutputType | null;
-    _min: AgricultureMinAggregateOutputType | null;
-    _max: AgricultureMaxAggregateOutputType | null;
-  };
-
-  export type AgricultureAvgAggregateOutputType = {
-    index: number | null;
-    REG: number | null;
-    part_irr_SAU_2020: number | null;
-    part_over_55: number | null;
-  };
-
-  export type AgricultureSumAggregateOutputType = {
-    index: bigint | null;
-    REG: number | null;
-    part_irr_SAU_2020: number | null;
-    part_over_55: number | null;
-  };
-
-  export type AgricultureMinAggregateOutputType = {
-    index: bigint | null;
-    CODGEO: string | null;
-    LIBGEO: string | null;
-    EPCI: string | null;
-    LIBEPCI: string | null;
-    DEP: string | null;
-    REG: number | null;
-    part_irr_SAU_2020: number | null;
-    part_over_55: number | null;
-  };
-
-  export type AgricultureMaxAggregateOutputType = {
-    index: bigint | null;
-    CODGEO: string | null;
-    LIBGEO: string | null;
-    EPCI: string | null;
-    LIBEPCI: string | null;
-    DEP: string | null;
-    REG: number | null;
-    part_irr_SAU_2020: number | null;
-    part_over_55: number | null;
-  };
-
-  export type AgricultureCountAggregateOutputType = {
-    index: number;
-    CODGEO: number;
-    LIBGEO: number;
-    EPCI: number;
-    LIBEPCI: number;
-    DEP: number;
-    REG: number;
-    part_irr_SAU_2020: number;
-    part_over_55: number;
-    _all: number;
-  };
-
-  export type AgricultureAvgAggregateInputType = {
-    index?: true;
-    REG?: true;
-    part_irr_SAU_2020?: true;
-    part_over_55?: true;
-  };
-
-  export type AgricultureSumAggregateInputType = {
-    index?: true;
-    REG?: true;
-    part_irr_SAU_2020?: true;
-    part_over_55?: true;
-  };
-
-  export type AgricultureMinAggregateInputType = {
-    index?: true;
-    CODGEO?: true;
-    LIBGEO?: true;
-    EPCI?: true;
-    LIBEPCI?: true;
-    DEP?: true;
-    REG?: true;
-    part_irr_SAU_2020?: true;
-    part_over_55?: true;
-  };
-
-  export type AgricultureMaxAggregateInputType = {
-    index?: true;
-    CODGEO?: true;
-    LIBGEO?: true;
-    EPCI?: true;
-    LIBEPCI?: true;
-    DEP?: true;
-    REG?: true;
-    part_irr_SAU_2020?: true;
-    part_over_55?: true;
-  };
-
-  export type AgricultureCountAggregateInputType = {
-    index?: true;
-    CODGEO?: true;
-    LIBGEO?: true;
-    EPCI?: true;
-    LIBEPCI?: true;
-    DEP?: true;
-    REG?: true;
-    part_irr_SAU_2020?: true;
-    part_over_55?: true;
-    _all?: true;
-  };
-
-  export type AgricultureAggregateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Filter which agriculture to aggregate.
-     */
-    where?: agricultureWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of agricultures to fetch.
-     */
-    orderBy?:
-      | agricultureOrderByWithRelationInput
-      | agricultureOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the start position
-     */
-    cursor?: agricultureWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` agricultures from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` agricultures.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Count returned agricultures
-     **/
-    _count?: true | AgricultureCountAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to average
-     **/
-    _avg?: AgricultureAvgAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to sum
-     **/
-    _sum?: AgricultureSumAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to find the minimum value
-     **/
-    _min?: AgricultureMinAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to find the maximum value
-     **/
-    _max?: AgricultureMaxAggregateInputType;
-  };
-
-  export type GetAgricultureAggregateType<T extends AgricultureAggregateArgs> =
-    {
-      [P in keyof T & keyof AggregateAgriculture]: P extends '_count' | 'count'
-        ? T[P] extends true
-          ? number
-          : GetScalarType<T[P], AggregateAgriculture[P]>
-        : GetScalarType<T[P], AggregateAgriculture[P]>;
-    };
-
-  export type agricultureGroupByArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    where?: agricultureWhereInput;
-    orderBy?:
-      | agricultureOrderByWithAggregationInput
-      | agricultureOrderByWithAggregationInput[];
-    by: AgricultureScalarFieldEnum[] | AgricultureScalarFieldEnum;
-    having?: agricultureScalarWhereWithAggregatesInput;
-    take?: number;
-    skip?: number;
-    _count?: AgricultureCountAggregateInputType | true;
-    _avg?: AgricultureAvgAggregateInputType;
-    _sum?: AgricultureSumAggregateInputType;
-    _min?: AgricultureMinAggregateInputType;
-    _max?: AgricultureMaxAggregateInputType;
-  };
-
-  export type AgricultureGroupByOutputType = {
-    index: bigint;
-    CODGEO: string;
-    LIBGEO: string;
-    EPCI: string;
-    LIBEPCI: string;
-    DEP: string;
-    REG: number;
-    part_irr_SAU_2020: number | null;
-    part_over_55: number | null;
-    _count: AgricultureCountAggregateOutputType | null;
-    _avg: AgricultureAvgAggregateOutputType | null;
-    _sum: AgricultureSumAggregateOutputType | null;
-    _min: AgricultureMinAggregateOutputType | null;
-    _max: AgricultureMaxAggregateOutputType | null;
-  };
-
-  type GetAgricultureGroupByPayload<T extends agricultureGroupByArgs> =
-    Prisma.PrismaPromise<
-      Array<
-        PickEnumerable<AgricultureGroupByOutputType, T['by']> & {
-          [P in keyof T &
-            keyof AgricultureGroupByOutputType]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], AgricultureGroupByOutputType[P]>
-            : GetScalarType<T[P], AgricultureGroupByOutputType[P]>;
-        }
-      >
-    >;
-
-  export type agricultureSelect<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      CODGEO?: boolean;
-      LIBGEO?: boolean;
-      EPCI?: boolean;
-      LIBEPCI?: boolean;
-      DEP?: boolean;
-      REG?: boolean;
-      part_irr_SAU_2020?: boolean;
-      part_over_55?: boolean;
-    },
-    ExtArgs['result']['agriculture']
-  >;
-
-  export type agricultureSelectCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      CODGEO?: boolean;
-      LIBGEO?: boolean;
-      EPCI?: boolean;
-      LIBEPCI?: boolean;
-      DEP?: boolean;
-      REG?: boolean;
-      part_irr_SAU_2020?: boolean;
-      part_over_55?: boolean;
-    },
-    ExtArgs['result']['agriculture']
-  >;
-
-  export type agricultureSelectUpdateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      CODGEO?: boolean;
-      LIBGEO?: boolean;
-      EPCI?: boolean;
-      LIBEPCI?: boolean;
-      DEP?: boolean;
-      REG?: boolean;
-      part_irr_SAU_2020?: boolean;
-      part_over_55?: boolean;
-    },
-    ExtArgs['result']['agriculture']
-  >;
-
-  export type agricultureSelectScalar = {
-    index?: boolean;
-    CODGEO?: boolean;
-    LIBGEO?: boolean;
-    EPCI?: boolean;
-    LIBEPCI?: boolean;
-    DEP?: boolean;
-    REG?: boolean;
-    part_irr_SAU_2020?: boolean;
-    part_over_55?: boolean;
-  };
-
-  export type agricultureOmit<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetOmit<
-    | 'index'
-    | 'CODGEO'
-    | 'LIBGEO'
-    | 'EPCI'
-    | 'LIBEPCI'
-    | 'DEP'
-    | 'REG'
-    | 'part_irr_SAU_2020'
-    | 'part_over_55',
-    ExtArgs['result']['agriculture']
-  >;
-
-  export type $agriculturePayload<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    name: 'agriculture';
-    objects: {};
-    scalars: $Extensions.GetPayloadResult<
-      {
-        index: bigint;
-        CODGEO: string;
-        LIBGEO: string;
-        EPCI: string;
-        LIBEPCI: string;
-        DEP: string;
-        REG: number;
-        part_irr_SAU_2020: number | null;
-        part_over_55: number | null;
-      },
-      ExtArgs['result']['agriculture']
-    >;
-    composites: {};
-  };
-
-  type agricultureGetPayload<
-    S extends boolean | null | undefined | agricultureDefaultArgs
-  > = $Result.GetResult<Prisma.$agriculturePayload, S>;
-
-  type agricultureCountArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<
-    agricultureFindManyArgs,
-    'select' | 'include' | 'distinct' | 'omit'
-  > & {
-    select?: AgricultureCountAggregateInputType | true;
-  };
-
-  export interface agricultureDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-    ClientOptions = {}
-  > {
-    [K: symbol]: {
-      types: Prisma.TypeMap<ExtArgs>['model']['agriculture'];
-      meta: { name: 'agriculture' };
-    };
-    /**
-     * Find zero or one Agriculture that matches the filter.
-     * @param {agricultureFindUniqueArgs} args - Arguments to find a Agriculture
-     * @example
-     * // Get one Agriculture
-     * const agriculture = await prisma.agriculture.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends agricultureFindUniqueArgs>(
-      args: SelectSubset<T, agricultureFindUniqueArgs<ExtArgs>>
-    ): Prisma__agricultureClient<
-      $Result.GetResult<
-        Prisma.$agriculturePayload<ExtArgs>,
-        T,
-        'findUnique',
-        ClientOptions
-      > | null,
-      null,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find one Agriculture that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {agricultureFindUniqueOrThrowArgs} args - Arguments to find a Agriculture
-     * @example
-     * // Get one Agriculture
-     * const agriculture = await prisma.agriculture.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends agricultureFindUniqueOrThrowArgs>(
-      args: SelectSubset<T, agricultureFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__agricultureClient<
-      $Result.GetResult<
-        Prisma.$agriculturePayload<ExtArgs>,
-        T,
-        'findUniqueOrThrow',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find the first Agriculture that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {agricultureFindFirstArgs} args - Arguments to find a Agriculture
-     * @example
-     * // Get one Agriculture
-     * const agriculture = await prisma.agriculture.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends agricultureFindFirstArgs>(
-      args?: SelectSubset<T, agricultureFindFirstArgs<ExtArgs>>
-    ): Prisma__agricultureClient<
-      $Result.GetResult<
-        Prisma.$agriculturePayload<ExtArgs>,
-        T,
-        'findFirst',
-        ClientOptions
-      > | null,
-      null,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find the first Agriculture that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {agricultureFindFirstOrThrowArgs} args - Arguments to find a Agriculture
-     * @example
-     * // Get one Agriculture
-     * const agriculture = await prisma.agriculture.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends agricultureFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, agricultureFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__agricultureClient<
-      $Result.GetResult<
-        Prisma.$agriculturePayload<ExtArgs>,
-        T,
-        'findFirstOrThrow',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find zero or more Agricultures that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {agricultureFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Agricultures
-     * const agricultures = await prisma.agriculture.findMany()
-     *
-     * // Get first 10 Agricultures
-     * const agricultures = await prisma.agriculture.findMany({ take: 10 })
-     *
-     * // Only select the `index`
-     * const agricultureWithIndexOnly = await prisma.agriculture.findMany({ select: { index: true } })
-     *
-     */
-    findMany<T extends agricultureFindManyArgs>(
-      args?: SelectSubset<T, agricultureFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<
-        Prisma.$agriculturePayload<ExtArgs>,
-        T,
-        'findMany',
-        ClientOptions
-      >
-    >;
-
-    /**
-     * Create a Agriculture.
-     * @param {agricultureCreateArgs} args - Arguments to create a Agriculture.
-     * @example
-     * // Create one Agriculture
-     * const Agriculture = await prisma.agriculture.create({
-     *   data: {
-     *     // ... data to create a Agriculture
-     *   }
-     * })
-     *
-     */
-    create<T extends agricultureCreateArgs>(
-      args: SelectSubset<T, agricultureCreateArgs<ExtArgs>>
-    ): Prisma__agricultureClient<
-      $Result.GetResult<
-        Prisma.$agriculturePayload<ExtArgs>,
-        T,
-        'create',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Create many Agricultures.
-     * @param {agricultureCreateManyArgs} args - Arguments to create many Agricultures.
-     * @example
-     * // Create many Agricultures
-     * const agriculture = await prisma.agriculture.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     */
-    createMany<T extends agricultureCreateManyArgs>(
-      args?: SelectSubset<T, agricultureCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Create many Agricultures and returns the data saved in the database.
-     * @param {agricultureCreateManyAndReturnArgs} args - Arguments to create many Agricultures.
-     * @example
-     * // Create many Agricultures
-     * const agriculture = await prisma.agriculture.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     * // Create many Agricultures and only return the `index`
-     * const agricultureWithIndexOnly = await prisma.agriculture.createManyAndReturn({
-     *   select: { index: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     *
-     */
-    createManyAndReturn<T extends agricultureCreateManyAndReturnArgs>(
-      args?: SelectSubset<T, agricultureCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<
-        Prisma.$agriculturePayload<ExtArgs>,
-        T,
-        'createManyAndReturn',
-        ClientOptions
-      >
-    >;
-
-    /**
-     * Delete a Agriculture.
-     * @param {agricultureDeleteArgs} args - Arguments to delete one Agriculture.
-     * @example
-     * // Delete one Agriculture
-     * const Agriculture = await prisma.agriculture.delete({
-     *   where: {
-     *     // ... filter to delete one Agriculture
-     *   }
-     * })
-     *
-     */
-    delete<T extends agricultureDeleteArgs>(
-      args: SelectSubset<T, agricultureDeleteArgs<ExtArgs>>
-    ): Prisma__agricultureClient<
-      $Result.GetResult<
-        Prisma.$agriculturePayload<ExtArgs>,
-        T,
-        'delete',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Update one Agriculture.
-     * @param {agricultureUpdateArgs} args - Arguments to update one Agriculture.
-     * @example
-     * // Update one Agriculture
-     * const agriculture = await prisma.agriculture.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     *
-     */
-    update<T extends agricultureUpdateArgs>(
-      args: SelectSubset<T, agricultureUpdateArgs<ExtArgs>>
-    ): Prisma__agricultureClient<
-      $Result.GetResult<
-        Prisma.$agriculturePayload<ExtArgs>,
-        T,
-        'update',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Delete zero or more Agricultures.
-     * @param {agricultureDeleteManyArgs} args - Arguments to filter Agricultures to delete.
-     * @example
-     * // Delete a few Agricultures
-     * const { count } = await prisma.agriculture.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     *
-     */
-    deleteMany<T extends agricultureDeleteManyArgs>(
-      args?: SelectSubset<T, agricultureDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Update zero or more Agricultures.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {agricultureUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Agricultures
-     * const agriculture = await prisma.agriculture.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     *
-     */
-    updateMany<T extends agricultureUpdateManyArgs>(
-      args: SelectSubset<T, agricultureUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Update zero or more Agricultures and returns the data updated in the database.
-     * @param {agricultureUpdateManyAndReturnArgs} args - Arguments to update many Agricultures.
-     * @example
-     * // Update many Agricultures
-     * const agriculture = await prisma.agriculture.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     * // Update zero or more Agricultures and only return the `index`
-     * const agricultureWithIndexOnly = await prisma.agriculture.updateManyAndReturn({
-     *   select: { index: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     *
-     */
-    updateManyAndReturn<T extends agricultureUpdateManyAndReturnArgs>(
-      args: SelectSubset<T, agricultureUpdateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<
-        Prisma.$agriculturePayload<ExtArgs>,
-        T,
-        'updateManyAndReturn',
-        ClientOptions
-      >
-    >;
-
-    /**
-     * Create or update one Agriculture.
-     * @param {agricultureUpsertArgs} args - Arguments to update or create a Agriculture.
-     * @example
-     * // Update or create a Agriculture
-     * const agriculture = await prisma.agriculture.upsert({
-     *   create: {
-     *     // ... data to create a Agriculture
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Agriculture we want to update
-     *   }
-     * })
-     */
-    upsert<T extends agricultureUpsertArgs>(
-      args: SelectSubset<T, agricultureUpsertArgs<ExtArgs>>
-    ): Prisma__agricultureClient<
-      $Result.GetResult<
-        Prisma.$agriculturePayload<ExtArgs>,
-        T,
-        'upsert',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Count the number of Agricultures.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {agricultureCountArgs} args - Arguments to filter Agricultures to count.
-     * @example
-     * // Count the number of Agricultures
-     * const count = await prisma.agriculture.count({
-     *   where: {
-     *     // ... the filter for the Agricultures we want to count
-     *   }
-     * })
-     **/
-    count<T extends agricultureCountArgs>(
-      args?: Subset<T, agricultureCountArgs>
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], AgricultureCountAggregateOutputType>
-        : number
-    >;
-
-    /**
-     * Allows you to perform aggregations operations on a Agriculture.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AgricultureAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-     **/
-    aggregate<T extends AgricultureAggregateArgs>(
-      args: Subset<T, AgricultureAggregateArgs>
-    ): Prisma.PrismaPromise<GetAgricultureAggregateType<T>>;
-
-    /**
-     * Group by Agriculture.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {agricultureGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     *
-     **/
-    groupBy<
-      T extends agricultureGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: agricultureGroupByArgs['orderBy'] }
-        : { orderBy?: agricultureGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<
-        Keys<MaybeTupleToUnion<T['orderBy']>>
-      >,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-        ? `Error: "by" must not be empty.`
-        : HavingValid extends False
-          ? {
-              [P in HavingFields]: P extends ByFields
-                ? never
-                : P extends string
-                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                  : [
-                      Error,
-                      'Field ',
-                      P,
-                      ` in "having" needs to be provided in "by"`
-                    ];
-            }[HavingFields]
-          : 'take' extends Keys<T>
-            ? 'orderBy' extends Keys<T>
-              ? ByValid extends True
-                ? {}
-                : {
-                    [P in OrderFields]: P extends ByFields
-                      ? never
-                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-                  }[OrderFields]
-              : 'Error: If you provide "take", you also need to provide "orderBy"'
-            : 'skip' extends Keys<T>
-              ? 'orderBy' extends Keys<T>
-                ? ByValid extends True
-                  ? {}
-                  : {
-                      [P in OrderFields]: P extends ByFields
-                        ? never
-                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-                    }[OrderFields]
-                : 'Error: If you provide "skip", you also need to provide "orderBy"'
-              : ByValid extends True
-                ? {}
-                : {
-                    [P in OrderFields]: P extends ByFields
-                      ? never
-                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-                  }[OrderFields]
-    >(
-      args: SubsetIntersection<T, agricultureGroupByArgs, OrderByArg> &
-        InputErrors
-    ): {} extends InputErrors
-      ? GetAgricultureGroupByPayload<T>
-      : Prisma.PrismaPromise<InputErrors>;
-    /**
-     * Fields of the agriculture model
-     */
-    readonly fields: agricultureFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for agriculture.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__agricultureClient<
-    T,
-    Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-    ClientOptions = {}
-  > extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(
-      onfulfilled?:
-        | ((value: T) => TResult1 | PromiseLike<TResult1>)
-        | undefined
-        | null,
-      onrejected?:
-        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-        | undefined
-        | null
-    ): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(
-      onrejected?:
-        | ((reason: any) => TResult | PromiseLike<TResult>)
-        | undefined
-        | null
-    ): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-  /**
-   * Fields of the agriculture model
-   */
-  interface agricultureFieldRefs {
-    readonly index: FieldRef<'agriculture', 'BigInt'>;
-    readonly CODGEO: FieldRef<'agriculture', 'String'>;
-    readonly LIBGEO: FieldRef<'agriculture', 'String'>;
-    readonly EPCI: FieldRef<'agriculture', 'String'>;
-    readonly LIBEPCI: FieldRef<'agriculture', 'String'>;
-    readonly DEP: FieldRef<'agriculture', 'String'>;
-    readonly REG: FieldRef<'agriculture', 'Float'>;
-    readonly part_irr_SAU_2020: FieldRef<'agriculture', 'Float'>;
-    readonly part_over_55: FieldRef<'agriculture', 'Float'>;
-  }
-
-  // Custom InputTypes
-  /**
-   * agriculture findUnique
-   */
-  export type agricultureFindUniqueArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the agriculture
-     */
-    select?: agricultureSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the agriculture
-     */
-    omit?: agricultureOmit<ExtArgs> | null;
-    /**
-     * Filter, which agriculture to fetch.
-     */
-    where: agricultureWhereUniqueInput;
-  };
-
-  /**
-   * agriculture findUniqueOrThrow
-   */
-  export type agricultureFindUniqueOrThrowArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the agriculture
-     */
-    select?: agricultureSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the agriculture
-     */
-    omit?: agricultureOmit<ExtArgs> | null;
-    /**
-     * Filter, which agriculture to fetch.
-     */
-    where: agricultureWhereUniqueInput;
-  };
-
-  /**
-   * agriculture findFirst
-   */
-  export type agricultureFindFirstArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the agriculture
-     */
-    select?: agricultureSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the agriculture
-     */
-    omit?: agricultureOmit<ExtArgs> | null;
-    /**
-     * Filter, which agriculture to fetch.
-     */
-    where?: agricultureWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of agricultures to fetch.
-     */
-    orderBy?:
-      | agricultureOrderByWithRelationInput
-      | agricultureOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for searching for agricultures.
-     */
-    cursor?: agricultureWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` agricultures from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` agricultures.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     *
-     * Filter by unique combinations of agricultures.
-     */
-    distinct?: AgricultureScalarFieldEnum | AgricultureScalarFieldEnum[];
-  };
-
-  /**
-   * agriculture findFirstOrThrow
-   */
-  export type agricultureFindFirstOrThrowArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the agriculture
-     */
-    select?: agricultureSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the agriculture
-     */
-    omit?: agricultureOmit<ExtArgs> | null;
-    /**
-     * Filter, which agriculture to fetch.
-     */
-    where?: agricultureWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of agricultures to fetch.
-     */
-    orderBy?:
-      | agricultureOrderByWithRelationInput
-      | agricultureOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for searching for agricultures.
-     */
-    cursor?: agricultureWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` agricultures from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` agricultures.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     *
-     * Filter by unique combinations of agricultures.
-     */
-    distinct?: AgricultureScalarFieldEnum | AgricultureScalarFieldEnum[];
-  };
-
-  /**
-   * agriculture findMany
-   */
-  export type agricultureFindManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the agriculture
-     */
-    select?: agricultureSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the agriculture
-     */
-    omit?: agricultureOmit<ExtArgs> | null;
-    /**
-     * Filter, which agricultures to fetch.
-     */
-    where?: agricultureWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of agricultures to fetch.
-     */
-    orderBy?:
-      | agricultureOrderByWithRelationInput
-      | agricultureOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for listing agricultures.
-     */
-    cursor?: agricultureWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` agricultures from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` agricultures.
-     */
-    skip?: number;
-    distinct?: AgricultureScalarFieldEnum | AgricultureScalarFieldEnum[];
-  };
-
-  /**
-   * agriculture create
-   */
-  export type agricultureCreateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the agriculture
-     */
-    select?: agricultureSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the agriculture
-     */
-    omit?: agricultureOmit<ExtArgs> | null;
-    /**
-     * The data needed to create a agriculture.
-     */
-    data: XOR<agricultureCreateInput, agricultureUncheckedCreateInput>;
-  };
-
-  /**
-   * agriculture createMany
-   */
-  export type agricultureCreateManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * The data used to create many agricultures.
-     */
-    data: agricultureCreateManyInput | agricultureCreateManyInput[];
-    skipDuplicates?: boolean;
-  };
-
-  /**
-   * agriculture createManyAndReturn
-   */
-  export type agricultureCreateManyAndReturnArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the agriculture
-     */
-    select?: agricultureSelectCreateManyAndReturn<ExtArgs> | null;
-    /**
-     * Omit specific fields from the agriculture
-     */
-    omit?: agricultureOmit<ExtArgs> | null;
-    /**
-     * The data used to create many agricultures.
-     */
-    data: agricultureCreateManyInput | agricultureCreateManyInput[];
-    skipDuplicates?: boolean;
-  };
-
-  /**
-   * agriculture update
-   */
-  export type agricultureUpdateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the agriculture
-     */
-    select?: agricultureSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the agriculture
-     */
-    omit?: agricultureOmit<ExtArgs> | null;
-    /**
-     * The data needed to update a agriculture.
-     */
-    data: XOR<agricultureUpdateInput, agricultureUncheckedUpdateInput>;
-    /**
-     * Choose, which agriculture to update.
-     */
-    where: agricultureWhereUniqueInput;
-  };
-
-  /**
-   * agriculture updateMany
-   */
-  export type agricultureUpdateManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * The data used to update agricultures.
-     */
-    data: XOR<
-      agricultureUpdateManyMutationInput,
-      agricultureUncheckedUpdateManyInput
-    >;
-    /**
-     * Filter which agricultures to update
-     */
-    where?: agricultureWhereInput;
-    /**
-     * Limit how many agricultures to update.
-     */
-    limit?: number;
-  };
-
-  /**
-   * agriculture updateManyAndReturn
-   */
-  export type agricultureUpdateManyAndReturnArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the agriculture
-     */
-    select?: agricultureSelectUpdateManyAndReturn<ExtArgs> | null;
-    /**
-     * Omit specific fields from the agriculture
-     */
-    omit?: agricultureOmit<ExtArgs> | null;
-    /**
-     * The data used to update agricultures.
-     */
-    data: XOR<
-      agricultureUpdateManyMutationInput,
-      agricultureUncheckedUpdateManyInput
-    >;
-    /**
-     * Filter which agricultures to update
-     */
-    where?: agricultureWhereInput;
-    /**
-     * Limit how many agricultures to update.
-     */
-    limit?: number;
-  };
-
-  /**
-   * agriculture upsert
-   */
-  export type agricultureUpsertArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the agriculture
-     */
-    select?: agricultureSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the agriculture
-     */
-    omit?: agricultureOmit<ExtArgs> | null;
-    /**
-     * The filter to search for the agriculture to update in case it exists.
-     */
-    where: agricultureWhereUniqueInput;
-    /**
-     * In case the agriculture found by the `where` argument doesn't exist, create a new agriculture with this data.
-     */
-    create: XOR<agricultureCreateInput, agricultureUncheckedCreateInput>;
-    /**
-     * In case the agriculture was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<agricultureUpdateInput, agricultureUncheckedUpdateInput>;
-  };
-
-  /**
-   * agriculture delete
-   */
-  export type agricultureDeleteArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the agriculture
-     */
-    select?: agricultureSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the agriculture
-     */
-    omit?: agricultureOmit<ExtArgs> | null;
-    /**
-     * Filter which agriculture to delete.
-     */
-    where: agricultureWhereUniqueInput;
-  };
-
-  /**
-   * agriculture deleteMany
-   */
-  export type agricultureDeleteManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Filter which agricultures to delete
-     */
-    where?: agricultureWhereInput;
-    /**
-     * Limit how many agricultures to delete.
-     */
-    limit?: number;
-  };
-
-  /**
-   * agriculture without action
-   */
-  export type agricultureDefaultArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the agriculture
-     */
-    select?: agricultureSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the agriculture
-     */
-    omit?: agricultureOmit<ExtArgs> | null;
-  };
-
-  /**
-   * Model incendies_foret
-   */
-
-  export type AggregateIncendies_foret = {
-    _count: Incendies_foretCountAggregateOutputType | null;
-    _avg: Incendies_foretAvgAggregateOutputType | null;
-    _sum: Incendies_foretSumAggregateOutputType | null;
-    _min: Incendies_foretMinAggregateOutputType | null;
-    _max: Incendies_foretMaxAggregateOutputType | null;
-  };
-
-  export type Incendies_foretAvgAggregateOutputType = {
-    index: number | null;
-    region: number | null;
-    annee: number | null;
-    surface_parcourue: number | null;
-    surface_foret: number | null;
-    surface_maquis_garrigues: number | null;
-    autres_surfaces_naturelles_hors_foret: number | null;
-    surfaces_agricoles: number | null;
-    surfaces_non_boisees: number | null;
-    surfaces_non_boisees_artificialisees: number | null;
-    surfaces_non_boisees_naturelles: number | null;
-    surface_autres_terres_boisees: number | null;
-    autres_surfaces: number | null;
-  };
-
-  export type Incendies_foretSumAggregateOutputType = {
-    index: bigint | null;
-    region: number | null;
-    annee: number | null;
-    surface_parcourue: number | null;
-    surface_foret: number | null;
-    surface_maquis_garrigues: number | null;
-    autres_surfaces_naturelles_hors_foret: number | null;
-    surfaces_agricoles: number | null;
-    surfaces_non_boisees: number | null;
-    surfaces_non_boisees_artificialisees: number | null;
-    surfaces_non_boisees_naturelles: number | null;
-    surface_autres_terres_boisees: number | null;
-    autres_surfaces: number | null;
-  };
-
-  export type Incendies_foretMinAggregateOutputType = {
-    index: bigint | null;
-    code_geographique: string | null;
-    libelle_geographique: string | null;
-    epci: string | null;
-    libelle_epci: string | null;
-    departement: string | null;
-    region: number | null;
-    nature: string | null;
-    annee: number | null;
-    surface_parcourue: number | null;
-    surface_foret: number | null;
-    surface_maquis_garrigues: number | null;
-    autres_surfaces_naturelles_hors_foret: number | null;
-    surfaces_agricoles: number | null;
-    surfaces_non_boisees: number | null;
-    surfaces_non_boisees_artificialisees: number | null;
-    surfaces_non_boisees_naturelles: number | null;
-    surface_autres_terres_boisees: number | null;
-    autres_surfaces: number | null;
-  };
-
-  export type Incendies_foretMaxAggregateOutputType = {
-    index: bigint | null;
-    code_geographique: string | null;
-    libelle_geographique: string | null;
-    epci: string | null;
-    libelle_epci: string | null;
-    departement: string | null;
-    region: number | null;
-    nature: string | null;
-    annee: number | null;
-    surface_parcourue: number | null;
-    surface_foret: number | null;
-    surface_maquis_garrigues: number | null;
-    autres_surfaces_naturelles_hors_foret: number | null;
-    surfaces_agricoles: number | null;
-    surfaces_non_boisees: number | null;
-    surfaces_non_boisees_artificialisees: number | null;
-    surfaces_non_boisees_naturelles: number | null;
-    surface_autres_terres_boisees: number | null;
-    autres_surfaces: number | null;
-  };
-
-  export type Incendies_foretCountAggregateOutputType = {
-    index: number;
-    code_geographique: number;
-    libelle_geographique: number;
-    epci: number;
-    libelle_epci: number;
-    departement: number;
-    region: number;
-    nature: number;
-    annee: number;
-    surface_parcourue: number;
-    surface_foret: number;
-    surface_maquis_garrigues: number;
-    autres_surfaces_naturelles_hors_foret: number;
-    surfaces_agricoles: number;
-    surfaces_non_boisees: number;
-    surfaces_non_boisees_artificialisees: number;
-    surfaces_non_boisees_naturelles: number;
-    surface_autres_terres_boisees: number;
-    autres_surfaces: number;
-    _all: number;
-  };
-
-  export type Incendies_foretAvgAggregateInputType = {
-    index?: true;
-    region?: true;
-    annee?: true;
-    surface_parcourue?: true;
-    surface_foret?: true;
-    surface_maquis_garrigues?: true;
-    autres_surfaces_naturelles_hors_foret?: true;
-    surfaces_agricoles?: true;
-    surfaces_non_boisees?: true;
-    surfaces_non_boisees_artificialisees?: true;
-    surfaces_non_boisees_naturelles?: true;
-    surface_autres_terres_boisees?: true;
-    autres_surfaces?: true;
-  };
-
-  export type Incendies_foretSumAggregateInputType = {
-    index?: true;
-    region?: true;
-    annee?: true;
-    surface_parcourue?: true;
-    surface_foret?: true;
-    surface_maquis_garrigues?: true;
-    autres_surfaces_naturelles_hors_foret?: true;
-    surfaces_agricoles?: true;
-    surfaces_non_boisees?: true;
-    surfaces_non_boisees_artificialisees?: true;
-    surfaces_non_boisees_naturelles?: true;
-    surface_autres_terres_boisees?: true;
-    autres_surfaces?: true;
-  };
-
-  export type Incendies_foretMinAggregateInputType = {
-    index?: true;
-    code_geographique?: true;
-    libelle_geographique?: true;
-    epci?: true;
-    libelle_epci?: true;
-    departement?: true;
-    region?: true;
-    nature?: true;
-    annee?: true;
-    surface_parcourue?: true;
-    surface_foret?: true;
-    surface_maquis_garrigues?: true;
-    autres_surfaces_naturelles_hors_foret?: true;
-    surfaces_agricoles?: true;
-    surfaces_non_boisees?: true;
-    surfaces_non_boisees_artificialisees?: true;
-    surfaces_non_boisees_naturelles?: true;
-    surface_autres_terres_boisees?: true;
-    autres_surfaces?: true;
-  };
-
-  export type Incendies_foretMaxAggregateInputType = {
-    index?: true;
-    code_geographique?: true;
-    libelle_geographique?: true;
-    epci?: true;
-    libelle_epci?: true;
-    departement?: true;
-    region?: true;
-    nature?: true;
-    annee?: true;
-    surface_parcourue?: true;
-    surface_foret?: true;
-    surface_maquis_garrigues?: true;
-    autres_surfaces_naturelles_hors_foret?: true;
-    surfaces_agricoles?: true;
-    surfaces_non_boisees?: true;
-    surfaces_non_boisees_artificialisees?: true;
-    surfaces_non_boisees_naturelles?: true;
-    surface_autres_terres_boisees?: true;
-    autres_surfaces?: true;
-  };
-
-  export type Incendies_foretCountAggregateInputType = {
-    index?: true;
-    code_geographique?: true;
-    libelle_geographique?: true;
-    epci?: true;
-    libelle_epci?: true;
-    departement?: true;
-    region?: true;
-    nature?: true;
-    annee?: true;
-    surface_parcourue?: true;
-    surface_foret?: true;
-    surface_maquis_garrigues?: true;
-    autres_surfaces_naturelles_hors_foret?: true;
-    surfaces_agricoles?: true;
-    surfaces_non_boisees?: true;
-    surfaces_non_boisees_artificialisees?: true;
-    surfaces_non_boisees_naturelles?: true;
-    surface_autres_terres_boisees?: true;
-    autres_surfaces?: true;
-    _all?: true;
-  };
-
-  export type Incendies_foretAggregateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Filter which incendies_foret to aggregate.
-     */
-    where?: incendies_foretWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of incendies_forets to fetch.
-     */
-    orderBy?:
-      | incendies_foretOrderByWithRelationInput
-      | incendies_foretOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the start position
-     */
-    cursor?: incendies_foretWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` incendies_forets from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` incendies_forets.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Count returned incendies_forets
-     **/
-    _count?: true | Incendies_foretCountAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to average
-     **/
-    _avg?: Incendies_foretAvgAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to sum
-     **/
-    _sum?: Incendies_foretSumAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to find the minimum value
-     **/
-    _min?: Incendies_foretMinAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to find the maximum value
-     **/
-    _max?: Incendies_foretMaxAggregateInputType;
-  };
-
-  export type GetIncendies_foretAggregateType<
-    T extends Incendies_foretAggregateArgs
-  > = {
-    [P in keyof T & keyof AggregateIncendies_foret]: P extends
-      | '_count'
-      | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateIncendies_foret[P]>
-      : GetScalarType<T[P], AggregateIncendies_foret[P]>;
-  };
-
-  export type incendies_foretGroupByArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    where?: incendies_foretWhereInput;
-    orderBy?:
-      | incendies_foretOrderByWithAggregationInput
-      | incendies_foretOrderByWithAggregationInput[];
-    by: Incendies_foretScalarFieldEnum[] | Incendies_foretScalarFieldEnum;
-    having?: incendies_foretScalarWhereWithAggregatesInput;
-    take?: number;
-    skip?: number;
-    _count?: Incendies_foretCountAggregateInputType | true;
-    _avg?: Incendies_foretAvgAggregateInputType;
-    _sum?: Incendies_foretSumAggregateInputType;
-    _min?: Incendies_foretMinAggregateInputType;
-    _max?: Incendies_foretMaxAggregateInputType;
-  };
-
-  export type Incendies_foretGroupByOutputType = {
-    index: bigint;
-    code_geographique: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: number;
-    nature: string | null;
-    annee: number;
-    surface_parcourue: number;
-    surface_foret: number | null;
-    surface_maquis_garrigues: number | null;
-    autres_surfaces_naturelles_hors_foret: number | null;
-    surfaces_agricoles: number | null;
-    surfaces_non_boisees: number | null;
-    surfaces_non_boisees_artificialisees: number | null;
-    surfaces_non_boisees_naturelles: number | null;
-    surface_autres_terres_boisees: number | null;
-    autres_surfaces: number | null;
-    _count: Incendies_foretCountAggregateOutputType | null;
-    _avg: Incendies_foretAvgAggregateOutputType | null;
-    _sum: Incendies_foretSumAggregateOutputType | null;
-    _min: Incendies_foretMinAggregateOutputType | null;
-    _max: Incendies_foretMaxAggregateOutputType | null;
-  };
-
-  type GetIncendies_foretGroupByPayload<T extends incendies_foretGroupByArgs> =
-    Prisma.PrismaPromise<
-      Array<
-        PickEnumerable<Incendies_foretGroupByOutputType, T['by']> & {
-          [P in keyof T &
-            keyof Incendies_foretGroupByOutputType]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Incendies_foretGroupByOutputType[P]>
-            : GetScalarType<T[P], Incendies_foretGroupByOutputType[P]>;
-        }
-      >
-    >;
-
-  export type incendies_foretSelect<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      code_geographique?: boolean;
-      libelle_geographique?: boolean;
-      epci?: boolean;
-      libelle_epci?: boolean;
-      departement?: boolean;
-      region?: boolean;
-      nature?: boolean;
-      annee?: boolean;
-      surface_parcourue?: boolean;
-      surface_foret?: boolean;
-      surface_maquis_garrigues?: boolean;
-      autres_surfaces_naturelles_hors_foret?: boolean;
-      surfaces_agricoles?: boolean;
-      surfaces_non_boisees?: boolean;
-      surfaces_non_boisees_artificialisees?: boolean;
-      surfaces_non_boisees_naturelles?: boolean;
-      surface_autres_terres_boisees?: boolean;
-      autres_surfaces?: boolean;
-    },
-    ExtArgs['result']['incendies_foret']
-  >;
-
-  export type incendies_foretSelectCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      code_geographique?: boolean;
-      libelle_geographique?: boolean;
-      epci?: boolean;
-      libelle_epci?: boolean;
-      departement?: boolean;
-      region?: boolean;
-      nature?: boolean;
-      annee?: boolean;
-      surface_parcourue?: boolean;
-      surface_foret?: boolean;
-      surface_maquis_garrigues?: boolean;
-      autres_surfaces_naturelles_hors_foret?: boolean;
-      surfaces_agricoles?: boolean;
-      surfaces_non_boisees?: boolean;
-      surfaces_non_boisees_artificialisees?: boolean;
-      surfaces_non_boisees_naturelles?: boolean;
-      surface_autres_terres_boisees?: boolean;
-      autres_surfaces?: boolean;
-    },
-    ExtArgs['result']['incendies_foret']
-  >;
-
-  export type incendies_foretSelectUpdateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      code_geographique?: boolean;
-      libelle_geographique?: boolean;
-      epci?: boolean;
-      libelle_epci?: boolean;
-      departement?: boolean;
-      region?: boolean;
-      nature?: boolean;
-      annee?: boolean;
-      surface_parcourue?: boolean;
-      surface_foret?: boolean;
-      surface_maquis_garrigues?: boolean;
-      autres_surfaces_naturelles_hors_foret?: boolean;
-      surfaces_agricoles?: boolean;
-      surfaces_non_boisees?: boolean;
-      surfaces_non_boisees_artificialisees?: boolean;
-      surfaces_non_boisees_naturelles?: boolean;
-      surface_autres_terres_boisees?: boolean;
-      autres_surfaces?: boolean;
-    },
-    ExtArgs['result']['incendies_foret']
-  >;
-
-  export type incendies_foretSelectScalar = {
-    index?: boolean;
-    code_geographique?: boolean;
-    libelle_geographique?: boolean;
-    epci?: boolean;
-    libelle_epci?: boolean;
-    departement?: boolean;
-    region?: boolean;
-    nature?: boolean;
-    annee?: boolean;
-    surface_parcourue?: boolean;
-    surface_foret?: boolean;
-    surface_maquis_garrigues?: boolean;
-    autres_surfaces_naturelles_hors_foret?: boolean;
-    surfaces_agricoles?: boolean;
-    surfaces_non_boisees?: boolean;
-    surfaces_non_boisees_artificialisees?: boolean;
-    surfaces_non_boisees_naturelles?: boolean;
-    surface_autres_terres_boisees?: boolean;
-    autres_surfaces?: boolean;
-  };
-
-  export type incendies_foretOmit<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetOmit<
-    | 'index'
-    | 'code_geographique'
-    | 'libelle_geographique'
-    | 'epci'
-    | 'libelle_epci'
-    | 'departement'
-    | 'region'
-    | 'nature'
-    | 'annee'
-    | 'surface_parcourue'
-    | 'surface_foret'
-    | 'surface_maquis_garrigues'
-    | 'autres_surfaces_naturelles_hors_foret'
-    | 'surfaces_agricoles'
-    | 'surfaces_non_boisees'
-    | 'surfaces_non_boisees_artificialisees'
-    | 'surfaces_non_boisees_naturelles'
-    | 'surface_autres_terres_boisees'
-    | 'autres_surfaces',
-    ExtArgs['result']['incendies_foret']
-  >;
-
-  export type $incendies_foretPayload<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    name: 'incendies_foret';
-    objects: {};
-    scalars: $Extensions.GetPayloadResult<
-      {
-        index: bigint;
-        code_geographique: string;
-        libelle_geographique: string;
-        epci: string;
-        libelle_epci: string;
-        departement: string;
-        region: number;
-        nature: string | null;
-        annee: number;
-        surface_parcourue: number;
-        surface_foret: number | null;
-        surface_maquis_garrigues: number | null;
-        autres_surfaces_naturelles_hors_foret: number | null;
-        surfaces_agricoles: number | null;
-        surfaces_non_boisees: number | null;
-        surfaces_non_boisees_artificialisees: number | null;
-        surfaces_non_boisees_naturelles: number | null;
-        surface_autres_terres_boisees: number | null;
-        autres_surfaces: number | null;
-      },
-      ExtArgs['result']['incendies_foret']
-    >;
-    composites: {};
-  };
-
-  type incendies_foretGetPayload<
-    S extends boolean | null | undefined | incendies_foretDefaultArgs
-  > = $Result.GetResult<Prisma.$incendies_foretPayload, S>;
-
-  type incendies_foretCountArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<
-    incendies_foretFindManyArgs,
-    'select' | 'include' | 'distinct' | 'omit'
-  > & {
-    select?: Incendies_foretCountAggregateInputType | true;
-  };
-
-  export interface incendies_foretDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-    ClientOptions = {}
-  > {
-    [K: symbol]: {
-      types: Prisma.TypeMap<ExtArgs>['model']['incendies_foret'];
-      meta: { name: 'incendies_foret' };
-    };
-    /**
-     * Find zero or one Incendies_foret that matches the filter.
-     * @param {incendies_foretFindUniqueArgs} args - Arguments to find a Incendies_foret
-     * @example
-     * // Get one Incendies_foret
-     * const incendies_foret = await prisma.incendies_foret.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends incendies_foretFindUniqueArgs>(
-      args: SelectSubset<T, incendies_foretFindUniqueArgs<ExtArgs>>
-    ): Prisma__incendies_foretClient<
-      $Result.GetResult<
-        Prisma.$incendies_foretPayload<ExtArgs>,
-        T,
-        'findUnique',
-        ClientOptions
-      > | null,
-      null,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find one Incendies_foret that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {incendies_foretFindUniqueOrThrowArgs} args - Arguments to find a Incendies_foret
-     * @example
-     * // Get one Incendies_foret
-     * const incendies_foret = await prisma.incendies_foret.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends incendies_foretFindUniqueOrThrowArgs>(
-      args: SelectSubset<T, incendies_foretFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__incendies_foretClient<
-      $Result.GetResult<
-        Prisma.$incendies_foretPayload<ExtArgs>,
-        T,
-        'findUniqueOrThrow',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find the first Incendies_foret that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {incendies_foretFindFirstArgs} args - Arguments to find a Incendies_foret
-     * @example
-     * // Get one Incendies_foret
-     * const incendies_foret = await prisma.incendies_foret.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends incendies_foretFindFirstArgs>(
-      args?: SelectSubset<T, incendies_foretFindFirstArgs<ExtArgs>>
-    ): Prisma__incendies_foretClient<
-      $Result.GetResult<
-        Prisma.$incendies_foretPayload<ExtArgs>,
-        T,
-        'findFirst',
-        ClientOptions
-      > | null,
-      null,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find the first Incendies_foret that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {incendies_foretFindFirstOrThrowArgs} args - Arguments to find a Incendies_foret
-     * @example
-     * // Get one Incendies_foret
-     * const incendies_foret = await prisma.incendies_foret.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends incendies_foretFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, incendies_foretFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__incendies_foretClient<
-      $Result.GetResult<
-        Prisma.$incendies_foretPayload<ExtArgs>,
-        T,
-        'findFirstOrThrow',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find zero or more Incendies_forets that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {incendies_foretFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Incendies_forets
-     * const incendies_forets = await prisma.incendies_foret.findMany()
-     *
-     * // Get first 10 Incendies_forets
-     * const incendies_forets = await prisma.incendies_foret.findMany({ take: 10 })
-     *
-     * // Only select the `index`
-     * const incendies_foretWithIndexOnly = await prisma.incendies_foret.findMany({ select: { index: true } })
-     *
-     */
-    findMany<T extends incendies_foretFindManyArgs>(
-      args?: SelectSubset<T, incendies_foretFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<
-        Prisma.$incendies_foretPayload<ExtArgs>,
-        T,
-        'findMany',
-        ClientOptions
-      >
-    >;
-
-    /**
-     * Create a Incendies_foret.
-     * @param {incendies_foretCreateArgs} args - Arguments to create a Incendies_foret.
-     * @example
-     * // Create one Incendies_foret
-     * const Incendies_foret = await prisma.incendies_foret.create({
-     *   data: {
-     *     // ... data to create a Incendies_foret
-     *   }
-     * })
-     *
-     */
-    create<T extends incendies_foretCreateArgs>(
-      args: SelectSubset<T, incendies_foretCreateArgs<ExtArgs>>
-    ): Prisma__incendies_foretClient<
-      $Result.GetResult<
-        Prisma.$incendies_foretPayload<ExtArgs>,
-        T,
-        'create',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Create many Incendies_forets.
-     * @param {incendies_foretCreateManyArgs} args - Arguments to create many Incendies_forets.
-     * @example
-     * // Create many Incendies_forets
-     * const incendies_foret = await prisma.incendies_foret.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     */
-    createMany<T extends incendies_foretCreateManyArgs>(
-      args?: SelectSubset<T, incendies_foretCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Create many Incendies_forets and returns the data saved in the database.
-     * @param {incendies_foretCreateManyAndReturnArgs} args - Arguments to create many Incendies_forets.
-     * @example
-     * // Create many Incendies_forets
-     * const incendies_foret = await prisma.incendies_foret.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     * // Create many Incendies_forets and only return the `index`
-     * const incendies_foretWithIndexOnly = await prisma.incendies_foret.createManyAndReturn({
-     *   select: { index: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     *
-     */
-    createManyAndReturn<T extends incendies_foretCreateManyAndReturnArgs>(
-      args?: SelectSubset<T, incendies_foretCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<
-        Prisma.$incendies_foretPayload<ExtArgs>,
-        T,
-        'createManyAndReturn',
-        ClientOptions
-      >
-    >;
-
-    /**
-     * Delete a Incendies_foret.
-     * @param {incendies_foretDeleteArgs} args - Arguments to delete one Incendies_foret.
-     * @example
-     * // Delete one Incendies_foret
-     * const Incendies_foret = await prisma.incendies_foret.delete({
-     *   where: {
-     *     // ... filter to delete one Incendies_foret
-     *   }
-     * })
-     *
-     */
-    delete<T extends incendies_foretDeleteArgs>(
-      args: SelectSubset<T, incendies_foretDeleteArgs<ExtArgs>>
-    ): Prisma__incendies_foretClient<
-      $Result.GetResult<
-        Prisma.$incendies_foretPayload<ExtArgs>,
-        T,
-        'delete',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Update one Incendies_foret.
-     * @param {incendies_foretUpdateArgs} args - Arguments to update one Incendies_foret.
-     * @example
-     * // Update one Incendies_foret
-     * const incendies_foret = await prisma.incendies_foret.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     *
-     */
-    update<T extends incendies_foretUpdateArgs>(
-      args: SelectSubset<T, incendies_foretUpdateArgs<ExtArgs>>
-    ): Prisma__incendies_foretClient<
-      $Result.GetResult<
-        Prisma.$incendies_foretPayload<ExtArgs>,
-        T,
-        'update',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Delete zero or more Incendies_forets.
-     * @param {incendies_foretDeleteManyArgs} args - Arguments to filter Incendies_forets to delete.
-     * @example
-     * // Delete a few Incendies_forets
-     * const { count } = await prisma.incendies_foret.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     *
-     */
-    deleteMany<T extends incendies_foretDeleteManyArgs>(
-      args?: SelectSubset<T, incendies_foretDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Update zero or more Incendies_forets.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {incendies_foretUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Incendies_forets
-     * const incendies_foret = await prisma.incendies_foret.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     *
-     */
-    updateMany<T extends incendies_foretUpdateManyArgs>(
-      args: SelectSubset<T, incendies_foretUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Update zero or more Incendies_forets and returns the data updated in the database.
-     * @param {incendies_foretUpdateManyAndReturnArgs} args - Arguments to update many Incendies_forets.
-     * @example
-     * // Update many Incendies_forets
-     * const incendies_foret = await prisma.incendies_foret.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     * // Update zero or more Incendies_forets and only return the `index`
-     * const incendies_foretWithIndexOnly = await prisma.incendies_foret.updateManyAndReturn({
-     *   select: { index: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     *
-     */
-    updateManyAndReturn<T extends incendies_foretUpdateManyAndReturnArgs>(
-      args: SelectSubset<T, incendies_foretUpdateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<
-        Prisma.$incendies_foretPayload<ExtArgs>,
-        T,
-        'updateManyAndReturn',
-        ClientOptions
-      >
-    >;
-
-    /**
-     * Create or update one Incendies_foret.
-     * @param {incendies_foretUpsertArgs} args - Arguments to update or create a Incendies_foret.
-     * @example
-     * // Update or create a Incendies_foret
-     * const incendies_foret = await prisma.incendies_foret.upsert({
-     *   create: {
-     *     // ... data to create a Incendies_foret
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Incendies_foret we want to update
-     *   }
-     * })
-     */
-    upsert<T extends incendies_foretUpsertArgs>(
-      args: SelectSubset<T, incendies_foretUpsertArgs<ExtArgs>>
-    ): Prisma__incendies_foretClient<
-      $Result.GetResult<
-        Prisma.$incendies_foretPayload<ExtArgs>,
-        T,
-        'upsert',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Count the number of Incendies_forets.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {incendies_foretCountArgs} args - Arguments to filter Incendies_forets to count.
-     * @example
-     * // Count the number of Incendies_forets
-     * const count = await prisma.incendies_foret.count({
-     *   where: {
-     *     // ... the filter for the Incendies_forets we want to count
-     *   }
-     * })
-     **/
-    count<T extends incendies_foretCountArgs>(
-      args?: Subset<T, incendies_foretCountArgs>
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Incendies_foretCountAggregateOutputType>
-        : number
-    >;
-
-    /**
-     * Allows you to perform aggregations operations on a Incendies_foret.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Incendies_foretAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-     **/
-    aggregate<T extends Incendies_foretAggregateArgs>(
-      args: Subset<T, Incendies_foretAggregateArgs>
-    ): Prisma.PrismaPromise<GetIncendies_foretAggregateType<T>>;
-
-    /**
-     * Group by Incendies_foret.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {incendies_foretGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     *
-     **/
-    groupBy<
-      T extends incendies_foretGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: incendies_foretGroupByArgs['orderBy'] }
-        : { orderBy?: incendies_foretGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<
-        Keys<MaybeTupleToUnion<T['orderBy']>>
-      >,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-        ? `Error: "by" must not be empty.`
-        : HavingValid extends False
-          ? {
-              [P in HavingFields]: P extends ByFields
-                ? never
-                : P extends string
-                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                  : [
-                      Error,
-                      'Field ',
-                      P,
-                      ` in "having" needs to be provided in "by"`
-                    ];
-            }[HavingFields]
-          : 'take' extends Keys<T>
-            ? 'orderBy' extends Keys<T>
-              ? ByValid extends True
-                ? {}
-                : {
-                    [P in OrderFields]: P extends ByFields
-                      ? never
-                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-                  }[OrderFields]
-              : 'Error: If you provide "take", you also need to provide "orderBy"'
-            : 'skip' extends Keys<T>
-              ? 'orderBy' extends Keys<T>
-                ? ByValid extends True
-                  ? {}
-                  : {
-                      [P in OrderFields]: P extends ByFields
-                        ? never
-                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-                    }[OrderFields]
-                : 'Error: If you provide "skip", you also need to provide "orderBy"'
-              : ByValid extends True
-                ? {}
-                : {
-                    [P in OrderFields]: P extends ByFields
-                      ? never
-                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-                  }[OrderFields]
-    >(
-      args: SubsetIntersection<T, incendies_foretGroupByArgs, OrderByArg> &
-        InputErrors
-    ): {} extends InputErrors
-      ? GetIncendies_foretGroupByPayload<T>
-      : Prisma.PrismaPromise<InputErrors>;
-    /**
-     * Fields of the incendies_foret model
-     */
-    readonly fields: incendies_foretFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for incendies_foret.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__incendies_foretClient<
-    T,
-    Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-    ClientOptions = {}
-  > extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(
-      onfulfilled?:
-        | ((value: T) => TResult1 | PromiseLike<TResult1>)
-        | undefined
-        | null,
-      onrejected?:
-        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-        | undefined
-        | null
-    ): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(
-      onrejected?:
-        | ((reason: any) => TResult | PromiseLike<TResult>)
-        | undefined
-        | null
-    ): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-  /**
-   * Fields of the incendies_foret model
-   */
-  interface incendies_foretFieldRefs {
-    readonly index: FieldRef<'incendies_foret', 'BigInt'>;
-    readonly code_geographique: FieldRef<'incendies_foret', 'String'>;
-    readonly libelle_geographique: FieldRef<'incendies_foret', 'String'>;
-    readonly epci: FieldRef<'incendies_foret', 'String'>;
-    readonly libelle_epci: FieldRef<'incendies_foret', 'String'>;
-    readonly departement: FieldRef<'incendies_foret', 'String'>;
-    readonly region: FieldRef<'incendies_foret', 'Float'>;
-    readonly nature: FieldRef<'incendies_foret', 'String'>;
-    readonly annee: FieldRef<'incendies_foret', 'Int'>;
-    readonly surface_parcourue: FieldRef<'incendies_foret', 'Float'>;
-    readonly surface_foret: FieldRef<'incendies_foret', 'Float'>;
-    readonly surface_maquis_garrigues: FieldRef<'incendies_foret', 'Float'>;
-    readonly autres_surfaces_naturelles_hors_foret: FieldRef<
-      'incendies_foret',
-      'Float'
-    >;
-    readonly surfaces_agricoles: FieldRef<'incendies_foret', 'Float'>;
-    readonly surfaces_non_boisees: FieldRef<'incendies_foret', 'Float'>;
-    readonly surfaces_non_boisees_artificialisees: FieldRef<
-      'incendies_foret',
-      'Float'
-    >;
-    readonly surfaces_non_boisees_naturelles: FieldRef<
-      'incendies_foret',
-      'Float'
-    >;
-    readonly surface_autres_terres_boisees: FieldRef<
-      'incendies_foret',
-      'Float'
-    >;
-    readonly autres_surfaces: FieldRef<'incendies_foret', 'Float'>;
-  }
-
-  // Custom InputTypes
-  /**
-   * incendies_foret findUnique
-   */
-  export type incendies_foretFindUniqueArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the incendies_foret
-     */
-    select?: incendies_foretSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the incendies_foret
-     */
-    omit?: incendies_foretOmit<ExtArgs> | null;
-    /**
-     * Filter, which incendies_foret to fetch.
-     */
-    where: incendies_foretWhereUniqueInput;
-  };
-
-  /**
-   * incendies_foret findUniqueOrThrow
-   */
-  export type incendies_foretFindUniqueOrThrowArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the incendies_foret
-     */
-    select?: incendies_foretSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the incendies_foret
-     */
-    omit?: incendies_foretOmit<ExtArgs> | null;
-    /**
-     * Filter, which incendies_foret to fetch.
-     */
-    where: incendies_foretWhereUniqueInput;
-  };
-
-  /**
-   * incendies_foret findFirst
-   */
-  export type incendies_foretFindFirstArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the incendies_foret
-     */
-    select?: incendies_foretSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the incendies_foret
-     */
-    omit?: incendies_foretOmit<ExtArgs> | null;
-    /**
-     * Filter, which incendies_foret to fetch.
-     */
-    where?: incendies_foretWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of incendies_forets to fetch.
-     */
-    orderBy?:
-      | incendies_foretOrderByWithRelationInput
-      | incendies_foretOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for searching for incendies_forets.
-     */
-    cursor?: incendies_foretWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` incendies_forets from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` incendies_forets.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     *
-     * Filter by unique combinations of incendies_forets.
-     */
-    distinct?:
-      | Incendies_foretScalarFieldEnum
-      | Incendies_foretScalarFieldEnum[];
-  };
-
-  /**
-   * incendies_foret findFirstOrThrow
-   */
-  export type incendies_foretFindFirstOrThrowArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the incendies_foret
-     */
-    select?: incendies_foretSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the incendies_foret
-     */
-    omit?: incendies_foretOmit<ExtArgs> | null;
-    /**
-     * Filter, which incendies_foret to fetch.
-     */
-    where?: incendies_foretWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of incendies_forets to fetch.
-     */
-    orderBy?:
-      | incendies_foretOrderByWithRelationInput
-      | incendies_foretOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for searching for incendies_forets.
-     */
-    cursor?: incendies_foretWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` incendies_forets from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` incendies_forets.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     *
-     * Filter by unique combinations of incendies_forets.
-     */
-    distinct?:
-      | Incendies_foretScalarFieldEnum
-      | Incendies_foretScalarFieldEnum[];
-  };
-
-  /**
-   * incendies_foret findMany
-   */
-  export type incendies_foretFindManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the incendies_foret
-     */
-    select?: incendies_foretSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the incendies_foret
-     */
-    omit?: incendies_foretOmit<ExtArgs> | null;
-    /**
-     * Filter, which incendies_forets to fetch.
-     */
-    where?: incendies_foretWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of incendies_forets to fetch.
-     */
-    orderBy?:
-      | incendies_foretOrderByWithRelationInput
-      | incendies_foretOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for listing incendies_forets.
-     */
-    cursor?: incendies_foretWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` incendies_forets from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` incendies_forets.
-     */
-    skip?: number;
-    distinct?:
-      | Incendies_foretScalarFieldEnum
-      | Incendies_foretScalarFieldEnum[];
-  };
-
-  /**
-   * incendies_foret create
-   */
-  export type incendies_foretCreateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the incendies_foret
-     */
-    select?: incendies_foretSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the incendies_foret
-     */
-    omit?: incendies_foretOmit<ExtArgs> | null;
-    /**
-     * The data needed to create a incendies_foret.
-     */
-    data: XOR<incendies_foretCreateInput, incendies_foretUncheckedCreateInput>;
-  };
-
-  /**
-   * incendies_foret createMany
-   */
-  export type incendies_foretCreateManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * The data used to create many incendies_forets.
-     */
-    data: incendies_foretCreateManyInput | incendies_foretCreateManyInput[];
-    skipDuplicates?: boolean;
-  };
-
-  /**
-   * incendies_foret createManyAndReturn
-   */
-  export type incendies_foretCreateManyAndReturnArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the incendies_foret
-     */
-    select?: incendies_foretSelectCreateManyAndReturn<ExtArgs> | null;
-    /**
-     * Omit specific fields from the incendies_foret
-     */
-    omit?: incendies_foretOmit<ExtArgs> | null;
-    /**
-     * The data used to create many incendies_forets.
-     */
-    data: incendies_foretCreateManyInput | incendies_foretCreateManyInput[];
-    skipDuplicates?: boolean;
-  };
-
-  /**
-   * incendies_foret update
-   */
-  export type incendies_foretUpdateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the incendies_foret
-     */
-    select?: incendies_foretSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the incendies_foret
-     */
-    omit?: incendies_foretOmit<ExtArgs> | null;
-    /**
-     * The data needed to update a incendies_foret.
-     */
-    data: XOR<incendies_foretUpdateInput, incendies_foretUncheckedUpdateInput>;
-    /**
-     * Choose, which incendies_foret to update.
-     */
-    where: incendies_foretWhereUniqueInput;
-  };
-
-  /**
-   * incendies_foret updateMany
-   */
-  export type incendies_foretUpdateManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * The data used to update incendies_forets.
-     */
-    data: XOR<
-      incendies_foretUpdateManyMutationInput,
-      incendies_foretUncheckedUpdateManyInput
-    >;
-    /**
-     * Filter which incendies_forets to update
-     */
-    where?: incendies_foretWhereInput;
-    /**
-     * Limit how many incendies_forets to update.
-     */
-    limit?: number;
-  };
-
-  /**
-   * incendies_foret updateManyAndReturn
-   */
-  export type incendies_foretUpdateManyAndReturnArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the incendies_foret
-     */
-    select?: incendies_foretSelectUpdateManyAndReturn<ExtArgs> | null;
-    /**
-     * Omit specific fields from the incendies_foret
-     */
-    omit?: incendies_foretOmit<ExtArgs> | null;
-    /**
-     * The data used to update incendies_forets.
-     */
-    data: XOR<
-      incendies_foretUpdateManyMutationInput,
-      incendies_foretUncheckedUpdateManyInput
-    >;
-    /**
-     * Filter which incendies_forets to update
-     */
-    where?: incendies_foretWhereInput;
-    /**
-     * Limit how many incendies_forets to update.
-     */
-    limit?: number;
-  };
-
-  /**
-   * incendies_foret upsert
-   */
-  export type incendies_foretUpsertArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the incendies_foret
-     */
-    select?: incendies_foretSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the incendies_foret
-     */
-    omit?: incendies_foretOmit<ExtArgs> | null;
-    /**
-     * The filter to search for the incendies_foret to update in case it exists.
-     */
-    where: incendies_foretWhereUniqueInput;
-    /**
-     * In case the incendies_foret found by the `where` argument doesn't exist, create a new incendies_foret with this data.
-     */
-    create: XOR<
-      incendies_foretCreateInput,
-      incendies_foretUncheckedCreateInput
-    >;
-    /**
-     * In case the incendies_foret was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<
-      incendies_foretUpdateInput,
-      incendies_foretUncheckedUpdateInput
-    >;
-  };
-
-  /**
-   * incendies_foret delete
-   */
-  export type incendies_foretDeleteArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the incendies_foret
-     */
-    select?: incendies_foretSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the incendies_foret
-     */
-    omit?: incendies_foretOmit<ExtArgs> | null;
-    /**
-     * Filter which incendies_foret to delete.
-     */
-    where: incendies_foretWhereUniqueInput;
-  };
-
-  /**
-   * incendies_foret deleteMany
-   */
-  export type incendies_foretDeleteManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Filter which incendies_forets to delete
-     */
-    where?: incendies_foretWhereInput;
-    /**
-     * Limit how many incendies_forets to delete.
-     */
-    limit?: number;
-  };
-
-  /**
-   * incendies_foret without action
-   */
-  export type incendies_foretDefaultArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the incendies_foret
-     */
-    select?: incendies_foretSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the incendies_foret
-     */
-    omit?: incendies_foretOmit<ExtArgs> | null;
-  };
-
-  /**
    * Model patch4c
    */
 
   export type AggregatePatch4c = {
-    _count: Patch4cCountAggregateOutputType | null;
-    _avg: Patch4cAvgAggregateOutputType | null;
-    _sum: Patch4cSumAggregateOutputType | null;
-    _min: Patch4cMinAggregateOutputType | null;
-    _max: Patch4cMaxAggregateOutputType | null;
-  };
+    _count: Patch4cCountAggregateOutputType | null
+    _avg: Patch4cAvgAggregateOutputType | null
+    _sum: Patch4cSumAggregateOutputType | null
+    _min: Patch4cMinAggregateOutputType | null
+    _max: Patch4cMaxAggregateOutputType | null
+  }
 
   export type Patch4cAvgAggregateOutputType = {
-    index: number | null;
-    niveaux_marins: number | null;
-    feux_foret: number | null;
-    secheresse_sols: number | null;
-    fortes_precipitations: number | null;
-    fortes_chaleurs: number | null;
-  };
+    index: number | null
+    niveaux_marins: number | null
+    feux_foret: number | null
+    secheresse_sols: number | null
+    fortes_precipitations: number | null
+    fortes_chaleurs: number | null
+  }
 
   export type Patch4cSumAggregateOutputType = {
-    index: bigint | null;
-    niveaux_marins: number | null;
-    feux_foret: number | null;
-    secheresse_sols: number | null;
-    fortes_precipitations: number | null;
-    fortes_chaleurs: number | null;
-  };
+    index: bigint | null
+    niveaux_marins: number | null
+    feux_foret: number | null
+    secheresse_sols: number | null
+    fortes_precipitations: number | null
+    fortes_chaleurs: number | null
+  }
 
   export type Patch4cMinAggregateOutputType = {
-    index: bigint | null;
-    code_geographique: string | null;
-    niveaux_marins: number | null;
-    feux_foret: number | null;
-    secheresse_sols: number | null;
-    fortes_precipitations: number | null;
-    fortes_chaleurs: number | null;
-  };
+    index: bigint | null
+    code_geographique: string | null
+    niveaux_marins: number | null
+    feux_foret: number | null
+    secheresse_sols: number | null
+    fortes_precipitations: number | null
+    fortes_chaleurs: number | null
+  }
 
   export type Patch4cMaxAggregateOutputType = {
-    index: bigint | null;
-    code_geographique: string | null;
-    niveaux_marins: number | null;
-    feux_foret: number | null;
-    secheresse_sols: number | null;
-    fortes_precipitations: number | null;
-    fortes_chaleurs: number | null;
-  };
+    index: bigint | null
+    code_geographique: string | null
+    niveaux_marins: number | null
+    feux_foret: number | null
+    secheresse_sols: number | null
+    fortes_precipitations: number | null
+    fortes_chaleurs: number | null
+  }
 
   export type Patch4cCountAggregateOutputType = {
-    index: number;
-    code_geographique: number;
-    niveaux_marins: number;
-    feux_foret: number;
-    secheresse_sols: number;
-    fortes_precipitations: number;
-    fortes_chaleurs: number;
-    _all: number;
-  };
+    index: number
+    code_geographique: number
+    niveaux_marins: number
+    feux_foret: number
+    secheresse_sols: number
+    fortes_precipitations: number
+    fortes_chaleurs: number
+    _all: number
+  }
+
 
   export type Patch4cAvgAggregateInputType = {
-    index?: true;
-    niveaux_marins?: true;
-    feux_foret?: true;
-    secheresse_sols?: true;
-    fortes_precipitations?: true;
-    fortes_chaleurs?: true;
-  };
+    index?: true
+    niveaux_marins?: true
+    feux_foret?: true
+    secheresse_sols?: true
+    fortes_precipitations?: true
+    fortes_chaleurs?: true
+  }
 
   export type Patch4cSumAggregateInputType = {
-    index?: true;
-    niveaux_marins?: true;
-    feux_foret?: true;
-    secheresse_sols?: true;
-    fortes_precipitations?: true;
-    fortes_chaleurs?: true;
-  };
+    index?: true
+    niveaux_marins?: true
+    feux_foret?: true
+    secheresse_sols?: true
+    fortes_precipitations?: true
+    fortes_chaleurs?: true
+  }
 
   export type Patch4cMinAggregateInputType = {
-    index?: true;
-    code_geographique?: true;
-    niveaux_marins?: true;
-    feux_foret?: true;
-    secheresse_sols?: true;
-    fortes_precipitations?: true;
-    fortes_chaleurs?: true;
-  };
+    index?: true
+    code_geographique?: true
+    niveaux_marins?: true
+    feux_foret?: true
+    secheresse_sols?: true
+    fortes_precipitations?: true
+    fortes_chaleurs?: true
+  }
 
   export type Patch4cMaxAggregateInputType = {
-    index?: true;
-    code_geographique?: true;
-    niveaux_marins?: true;
-    feux_foret?: true;
-    secheresse_sols?: true;
-    fortes_precipitations?: true;
-    fortes_chaleurs?: true;
-  };
+    index?: true
+    code_geographique?: true
+    niveaux_marins?: true
+    feux_foret?: true
+    secheresse_sols?: true
+    fortes_precipitations?: true
+    fortes_chaleurs?: true
+  }
 
   export type Patch4cCountAggregateInputType = {
-    index?: true;
-    code_geographique?: true;
-    niveaux_marins?: true;
-    feux_foret?: true;
-    secheresse_sols?: true;
-    fortes_precipitations?: true;
-    fortes_chaleurs?: true;
-    _all?: true;
-  };
+    index?: true
+    code_geographique?: true
+    niveaux_marins?: true
+    feux_foret?: true
+    secheresse_sols?: true
+    fortes_precipitations?: true
+    fortes_chaleurs?: true
+    _all?: true
+  }
 
-  export type Patch4cAggregateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type Patch4cAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which patch4c to aggregate.
      */
-    where?: patch4cWhereInput;
+    where?: patch4cWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
+     * 
      * Determine the order of patch4cs to fetch.
      */
-    orderBy?:
-      | patch4cOrderByWithRelationInput
-      | patch4cOrderByWithRelationInput[];
+    orderBy?: patch4cOrderByWithRelationInput | patch4cOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
+     * 
      * Sets the start position
      */
-    cursor?: patch4cWhereUniqueInput;
+    cursor?: patch4cWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
+     * 
      * Take `±n` patch4cs from the position of the cursor.
      */
-    take?: number;
+    take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
+     * 
      * Skip the first `n` patch4cs.
      */
-    skip?: number;
+    skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
+     * 
      * Count returned patch4cs
-     **/
-    _count?: true | Patch4cCountAggregateInputType;
+    **/
+    _count?: true | Patch4cCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
+     * 
      * Select which fields to average
-     **/
-    _avg?: Patch4cAvgAggregateInputType;
+    **/
+    _avg?: Patch4cAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
+     * 
      * Select which fields to sum
-     **/
-    _sum?: Patch4cSumAggregateInputType;
+    **/
+    _sum?: Patch4cSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
+     * 
      * Select which fields to find the minimum value
-     **/
-    _min?: Patch4cMinAggregateInputType;
+    **/
+    _min?: Patch4cMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
+     * 
      * Select which fields to find the maximum value
-     **/
-    _max?: Patch4cMaxAggregateInputType;
-  };
+    **/
+    _max?: Patch4cMaxAggregateInputType
+  }
 
   export type GetPatch4cAggregateType<T extends Patch4cAggregateArgs> = {
-    [P in keyof T & keyof AggregatePatch4c]: P extends '_count' | 'count'
+        [P in keyof T & keyof AggregatePatch4c]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregatePatch4c[P]>
-      : GetScalarType<T[P], AggregatePatch4c[P]>;
-  };
+      : GetScalarType<T[P], AggregatePatch4c[P]>
+  }
 
-  export type patch4cGroupByArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    where?: patch4cWhereInput;
-    orderBy?:
-      | patch4cOrderByWithAggregationInput
-      | patch4cOrderByWithAggregationInput[];
-    by: Patch4cScalarFieldEnum[] | Patch4cScalarFieldEnum;
-    having?: patch4cScalarWhereWithAggregatesInput;
-    take?: number;
-    skip?: number;
-    _count?: Patch4cCountAggregateInputType | true;
-    _avg?: Patch4cAvgAggregateInputType;
-    _sum?: Patch4cSumAggregateInputType;
-    _min?: Patch4cMinAggregateInputType;
-    _max?: Patch4cMaxAggregateInputType;
-  };
+
+
+
+  export type patch4cGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: patch4cWhereInput
+    orderBy?: patch4cOrderByWithAggregationInput | patch4cOrderByWithAggregationInput[]
+    by: Patch4cScalarFieldEnum[] | Patch4cScalarFieldEnum
+    having?: patch4cScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Patch4cCountAggregateInputType | true
+    _avg?: Patch4cAvgAggregateInputType
+    _sum?: Patch4cSumAggregateInputType
+    _min?: Patch4cMinAggregateInputType
+    _max?: Patch4cMaxAggregateInputType
+  }
 
   export type Patch4cGroupByOutputType = {
-    index: bigint;
-    code_geographique: string;
-    niveaux_marins: number | null;
-    feux_foret: number;
-    secheresse_sols: number;
-    fortes_precipitations: number;
-    fortes_chaleurs: number;
-    _count: Patch4cCountAggregateOutputType | null;
-    _avg: Patch4cAvgAggregateOutputType | null;
-    _sum: Patch4cSumAggregateOutputType | null;
-    _min: Patch4cMinAggregateOutputType | null;
-    _max: Patch4cMaxAggregateOutputType | null;
-  };
+    index: bigint
+    code_geographique: string
+    niveaux_marins: number | null
+    feux_foret: number
+    secheresse_sols: number
+    fortes_precipitations: number
+    fortes_chaleurs: number
+    _count: Patch4cCountAggregateOutputType | null
+    _avg: Patch4cAvgAggregateOutputType | null
+    _sum: Patch4cSumAggregateOutputType | null
+    _min: Patch4cMinAggregateOutputType | null
+    _max: Patch4cMaxAggregateOutputType | null
+  }
 
-  type GetPatch4cGroupByPayload<T extends patch4cGroupByArgs> =
-    Prisma.PrismaPromise<
-      Array<
-        PickEnumerable<Patch4cGroupByOutputType, T['by']> & {
-          [P in keyof T & keyof Patch4cGroupByOutputType]: P extends '_count'
+  type GetPatch4cGroupByPayload<T extends patch4cGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Patch4cGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Patch4cGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
               : GetScalarType<T[P], Patch4cGroupByOutputType[P]>
-            : GetScalarType<T[P], Patch4cGroupByOutputType[P]>;
+            : GetScalarType<T[P], Patch4cGroupByOutputType[P]>
         }
       >
-    >;
+    >
 
-  export type patch4cSelect<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      code_geographique?: boolean;
-      niveaux_marins?: boolean;
-      feux_foret?: boolean;
-      secheresse_sols?: boolean;
-      fortes_precipitations?: boolean;
-      fortes_chaleurs?: boolean;
-    },
-    ExtArgs['result']['patch4c']
-  >;
 
-  export type patch4cSelectCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      code_geographique?: boolean;
-      niveaux_marins?: boolean;
-      feux_foret?: boolean;
-      secheresse_sols?: boolean;
-      fortes_precipitations?: boolean;
-      fortes_chaleurs?: boolean;
-    },
-    ExtArgs['result']['patch4c']
-  >;
+  export type patch4cSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    niveaux_marins?: boolean
+    feux_foret?: boolean
+    secheresse_sols?: boolean
+    fortes_precipitations?: boolean
+    fortes_chaleurs?: boolean
+  }, ExtArgs["result"]["patch4c"]>
 
-  export type patch4cSelectUpdateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      index?: boolean;
-      code_geographique?: boolean;
-      niveaux_marins?: boolean;
-      feux_foret?: boolean;
-      secheresse_sols?: boolean;
-      fortes_precipitations?: boolean;
-      fortes_chaleurs?: boolean;
-    },
-    ExtArgs['result']['patch4c']
-  >;
+  export type patch4cSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    niveaux_marins?: boolean
+    feux_foret?: boolean
+    secheresse_sols?: boolean
+    fortes_precipitations?: boolean
+    fortes_chaleurs?: boolean
+  }, ExtArgs["result"]["patch4c"]>
+
+  export type patch4cSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    niveaux_marins?: boolean
+    feux_foret?: boolean
+    secheresse_sols?: boolean
+    fortes_precipitations?: boolean
+    fortes_chaleurs?: boolean
+  }, ExtArgs["result"]["patch4c"]>
 
   export type patch4cSelectScalar = {
-    index?: boolean;
-    code_geographique?: boolean;
-    niveaux_marins?: boolean;
-    feux_foret?: boolean;
-    secheresse_sols?: boolean;
-    fortes_precipitations?: boolean;
-    fortes_chaleurs?: boolean;
-  };
+    index?: boolean
+    code_geographique?: boolean
+    niveaux_marins?: boolean
+    feux_foret?: boolean
+    secheresse_sols?: boolean
+    fortes_precipitations?: boolean
+    fortes_chaleurs?: boolean
+  }
 
-  export type patch4cOmit<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetOmit<
-    | 'index'
-    | 'code_geographique'
-    | 'niveaux_marins'
-    | 'feux_foret'
-    | 'secheresse_sols'
-    | 'fortes_precipitations'
-    | 'fortes_chaleurs',
-    ExtArgs['result']['patch4c']
-  >;
+  export type patch4cOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "niveaux_marins" | "feux_foret" | "secheresse_sols" | "fortes_precipitations" | "fortes_chaleurs", ExtArgs["result"]["patch4c"]>
 
-  export type $patch4cPayload<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    name: 'patch4c';
-    objects: {};
-    scalars: $Extensions.GetPayloadResult<
-      {
-        index: bigint;
-        code_geographique: string;
-        niveaux_marins: number | null;
-        feux_foret: number;
-        secheresse_sols: number;
-        fortes_precipitations: number;
-        fortes_chaleurs: number;
-      },
-      ExtArgs['result']['patch4c']
-    >;
-    composites: {};
-  };
+  export type $patch4cPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "patch4c"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string
+      niveaux_marins: number | null
+      feux_foret: number
+      secheresse_sols: number
+      fortes_precipitations: number
+      fortes_chaleurs: number
+    }, ExtArgs["result"]["patch4c"]>
+    composites: {}
+  }
 
-  type patch4cGetPayload<
-    S extends boolean | null | undefined | patch4cDefaultArgs
-  > = $Result.GetResult<Prisma.$patch4cPayload, S>;
+  type patch4cGetPayload<S extends boolean | null | undefined | patch4cDefaultArgs> = $Result.GetResult<Prisma.$patch4cPayload, S>
 
-  type patch4cCountArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<patch4cFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-    select?: Patch4cCountAggregateInputType | true;
-  };
+  type patch4cCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<patch4cFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Patch4cCountAggregateInputType | true
+    }
 
-  export interface patch4cDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-    ClientOptions = {}
-  > {
-    [K: symbol]: {
-      types: Prisma.TypeMap<ExtArgs>['model']['patch4c'];
-      meta: { name: 'patch4c' };
-    };
+  export interface patch4cDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['patch4c'], meta: { name: 'patch4c' } }
     /**
      * Find zero or one Patch4c that matches the filter.
      * @param {patch4cFindUniqueArgs} args - Arguments to find a Patch4c
@@ -34029,19 +25023,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends patch4cFindUniqueArgs>(
-      args: SelectSubset<T, patch4cFindUniqueArgs<ExtArgs>>
-    ): Prisma__patch4cClient<
-      $Result.GetResult<
-        Prisma.$patch4cPayload<ExtArgs>,
-        T,
-        'findUnique',
-        ClientOptions
-      > | null,
-      null,
-      ExtArgs,
-      ClientOptions
-    >;
+    findUnique<T extends patch4cFindUniqueArgs>(args: SelectSubset<T, patch4cFindUniqueArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
 
     /**
      * Find one Patch4c that matches the filter or throw an error with `error.code='P2025'`
@@ -34055,19 +25037,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends patch4cFindUniqueOrThrowArgs>(
-      args: SelectSubset<T, patch4cFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__patch4cClient<
-      $Result.GetResult<
-        Prisma.$patch4cPayload<ExtArgs>,
-        T,
-        'findUniqueOrThrow',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
+    findUniqueOrThrow<T extends patch4cFindUniqueOrThrowArgs>(args: SelectSubset<T, patch4cFindUniqueOrThrowArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
 
     /**
      * Find the first Patch4c that matches the filter.
@@ -34082,19 +25052,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends patch4cFindFirstArgs>(
-      args?: SelectSubset<T, patch4cFindFirstArgs<ExtArgs>>
-    ): Prisma__patch4cClient<
-      $Result.GetResult<
-        Prisma.$patch4cPayload<ExtArgs>,
-        T,
-        'findFirst',
-        ClientOptions
-      > | null,
-      null,
-      ExtArgs,
-      ClientOptions
-    >;
+    findFirst<T extends patch4cFindFirstArgs>(args?: SelectSubset<T, patch4cFindFirstArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
 
     /**
      * Find the first Patch4c that matches the filter or
@@ -34110,19 +25068,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends patch4cFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, patch4cFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__patch4cClient<
-      $Result.GetResult<
-        Prisma.$patch4cPayload<ExtArgs>,
-        T,
-        'findFirstOrThrow',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
+    findFirstOrThrow<T extends patch4cFindFirstOrThrowArgs>(args?: SelectSubset<T, patch4cFindFirstOrThrowArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
 
     /**
      * Find zero or more Patch4cs that matches the filter.
@@ -34132,24 +25078,15 @@ export namespace Prisma {
      * @example
      * // Get all Patch4cs
      * const patch4cs = await prisma.patch4c.findMany()
-     *
+     * 
      * // Get first 10 Patch4cs
      * const patch4cs = await prisma.patch4c.findMany({ take: 10 })
-     *
+     * 
      * // Only select the `index`
      * const patch4cWithIndexOnly = await prisma.patch4c.findMany({ select: { index: true } })
-     *
+     * 
      */
-    findMany<T extends patch4cFindManyArgs>(
-      args?: SelectSubset<T, patch4cFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<
-        Prisma.$patch4cPayload<ExtArgs>,
-        T,
-        'findMany',
-        ClientOptions
-      >
-    >;
+    findMany<T extends patch4cFindManyArgs>(args?: SelectSubset<T, patch4cFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "findMany", ClientOptions>>
 
     /**
      * Create a Patch4c.
@@ -34161,21 +25098,9 @@ export namespace Prisma {
      *     // ... data to create a Patch4c
      *   }
      * })
-     *
+     * 
      */
-    create<T extends patch4cCreateArgs>(
-      args: SelectSubset<T, patch4cCreateArgs<ExtArgs>>
-    ): Prisma__patch4cClient<
-      $Result.GetResult<
-        Prisma.$patch4cPayload<ExtArgs>,
-        T,
-        'create',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
+    create<T extends patch4cCreateArgs>(args: SelectSubset<T, patch4cCreateArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
 
     /**
      * Create many Patch4cs.
@@ -34187,11 +25112,9 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *
+     *     
      */
-    createMany<T extends patch4cCreateManyArgs>(
-      args?: SelectSubset<T, patch4cCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
+    createMany<T extends patch4cCreateManyArgs>(args?: SelectSubset<T, patch4cCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create many Patch4cs and returns the data saved in the database.
@@ -34203,7 +25126,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *
+     * 
      * // Create many Patch4cs and only return the `index`
      * const patch4cWithIndexOnly = await prisma.patch4c.createManyAndReturn({
      *   select: { index: true },
@@ -34213,18 +25136,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     *
+     * 
      */
-    createManyAndReturn<T extends patch4cCreateManyAndReturnArgs>(
-      args?: SelectSubset<T, patch4cCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<
-        Prisma.$patch4cPayload<ExtArgs>,
-        T,
-        'createManyAndReturn',
-        ClientOptions
-      >
-    >;
+    createManyAndReturn<T extends patch4cCreateManyAndReturnArgs>(args?: SelectSubset<T, patch4cCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
 
     /**
      * Delete a Patch4c.
@@ -34236,21 +25150,9 @@ export namespace Prisma {
      *     // ... filter to delete one Patch4c
      *   }
      * })
-     *
+     * 
      */
-    delete<T extends patch4cDeleteArgs>(
-      args: SelectSubset<T, patch4cDeleteArgs<ExtArgs>>
-    ): Prisma__patch4cClient<
-      $Result.GetResult<
-        Prisma.$patch4cPayload<ExtArgs>,
-        T,
-        'delete',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
+    delete<T extends patch4cDeleteArgs>(args: SelectSubset<T, patch4cDeleteArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
 
     /**
      * Update one Patch4c.
@@ -34265,21 +25167,9 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     *
+     * 
      */
-    update<T extends patch4cUpdateArgs>(
-      args: SelectSubset<T, patch4cUpdateArgs<ExtArgs>>
-    ): Prisma__patch4cClient<
-      $Result.GetResult<
-        Prisma.$patch4cPayload<ExtArgs>,
-        T,
-        'update',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
+    update<T extends patch4cUpdateArgs>(args: SelectSubset<T, patch4cUpdateArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
 
     /**
      * Delete zero or more Patch4cs.
@@ -34291,11 +25181,9 @@ export namespace Prisma {
      *     // ... provide filter here
      *   }
      * })
-     *
+     * 
      */
-    deleteMany<T extends patch4cDeleteManyArgs>(
-      args?: SelectSubset<T, patch4cDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
+    deleteMany<T extends patch4cDeleteManyArgs>(args?: SelectSubset<T, patch4cDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Patch4cs.
@@ -34312,11 +25200,9 @@ export namespace Prisma {
      *     // ... provide data here
      *   }
      * })
-     *
+     * 
      */
-    updateMany<T extends patch4cUpdateManyArgs>(
-      args: SelectSubset<T, patch4cUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
+    updateMany<T extends patch4cUpdateManyArgs>(args: SelectSubset<T, patch4cUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Patch4cs and returns the data updated in the database.
@@ -34331,7 +25217,7 @@ export namespace Prisma {
      *     // ... provide data here
      *   ]
      * })
-     *
+     * 
      * // Update zero or more Patch4cs and only return the `index`
      * const patch4cWithIndexOnly = await prisma.patch4c.updateManyAndReturn({
      *   select: { index: true },
@@ -34344,18 +25230,9 @@ export namespace Prisma {
      * })
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     *
+     * 
      */
-    updateManyAndReturn<T extends patch4cUpdateManyAndReturnArgs>(
-      args: SelectSubset<T, patch4cUpdateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<
-        Prisma.$patch4cPayload<ExtArgs>,
-        T,
-        'updateManyAndReturn',
-        ClientOptions
-      >
-    >;
+    updateManyAndReturn<T extends patch4cUpdateManyAndReturnArgs>(args: SelectSubset<T, patch4cUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
 
     /**
      * Create or update one Patch4c.
@@ -34374,19 +25251,8 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends patch4cUpsertArgs>(
-      args: SelectSubset<T, patch4cUpsertArgs<ExtArgs>>
-    ): Prisma__patch4cClient<
-      $Result.GetResult<
-        Prisma.$patch4cPayload<ExtArgs>,
-        T,
-        'upsert',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
+    upsert<T extends patch4cUpsertArgs>(args: SelectSubset<T, patch4cUpsertArgs<ExtArgs>>): Prisma__patch4cClient<$Result.GetResult<Prisma.$patch4cPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
 
     /**
      * Count the number of Patch4cs.
@@ -34400,16 +25266,16 @@ export namespace Prisma {
      *     // ... the filter for the Patch4cs we want to count
      *   }
      * })
-     **/
+    **/
     count<T extends patch4cCountArgs>(
-      args?: Subset<T, patch4cCountArgs>
+      args?: Subset<T, patch4cCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
           : GetScalarType<T['select'], Patch4cCountAggregateOutputType>
         : number
-    >;
+    >
 
     /**
      * Allows you to perform aggregations operations on a Patch4c.
@@ -34434,10 +25300,8 @@ export namespace Prisma {
      *   },
      *   take: 10,
      * })
-     **/
-    aggregate<T extends Patch4cAggregateArgs>(
-      args: Subset<T, Patch4cAggregateArgs>
-    ): Prisma.PrismaPromise<GetPatch4cAggregateType<T>>;
+    **/
+    aggregate<T extends Patch4cAggregateArgs>(args: Subset<T, Patch4cAggregateArgs>): Prisma.PrismaPromise<GetPatch4cAggregateType<T>>
 
     /**
      * Group by Patch4c.
@@ -34455,8 +25319,8 @@ export namespace Prisma {
      *     _all: true
      *   },
      * })
-     *
-     **/
+     * 
+    **/
     groupBy<
       T extends patch4cGroupByArgs,
       HasSelectOrTake extends Or<
@@ -34466,65 +25330,59 @@ export namespace Prisma {
       OrderByArg extends True extends HasSelectOrTake
         ? { orderBy: patch4cGroupByArgs['orderBy'] }
         : { orderBy?: patch4cGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<
-        Keys<MaybeTupleToUnion<T['orderBy']>>
-      >,
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
       HavingFields extends GetHavingFields<T['having']>,
       HavingValid extends Has<ByFields, HavingFields>,
       ByEmpty extends T['by'] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-        ? `Error: "by" must not be empty.`
-        : HavingValid extends False
-          ? {
-              [P in HavingFields]: P extends ByFields
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
                 ? never
-                : P extends string
-                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                  : [
-                      Error,
-                      'Field ',
-                      P,
-                      ` in "having" needs to be provided in "by"`
-                    ];
-            }[HavingFields]
-          : 'take' extends Keys<T>
-            ? 'orderBy' extends Keys<T>
-              ? ByValid extends True
-                ? {}
-                : {
-                    [P in OrderFields]: P extends ByFields
-                      ? never
-                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-                  }[OrderFields]
-              : 'Error: If you provide "take", you also need to provide "orderBy"'
-            : 'skip' extends Keys<T>
-              ? 'orderBy' extends Keys<T>
-                ? ByValid extends True
-                  ? {}
-                  : {
-                      [P in OrderFields]: P extends ByFields
-                        ? never
-                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-                    }[OrderFields]
-                : 'Error: If you provide "skip", you also need to provide "orderBy"'
-              : ByValid extends True
-                ? {}
-                : {
-                    [P in OrderFields]: P extends ByFields
-                      ? never
-                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-                  }[OrderFields]
-    >(
-      args: SubsetIntersection<T, patch4cGroupByArgs, OrderByArg> & InputErrors
-    ): {} extends InputErrors
-      ? GetPatch4cGroupByPayload<T>
-      : Prisma.PrismaPromise<InputErrors>;
-    /**
-     * Fields of the patch4c model
-     */
-    readonly fields: patch4cFieldRefs;
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, patch4cGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPatch4cGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the patch4c model
+   */
+  readonly fields: patch4cFieldRefs;
   }
 
   /**
@@ -34533,459 +25391,2553 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__patch4cClient<
-    T,
-    Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-    ClientOptions = {}
-  > extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
+  export interface Prisma__patch4cClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of which ever callback is executed.
      */
-    then<TResult1 = T, TResult2 = never>(
-      onfulfilled?:
-        | ((value: T) => TResult1 | PromiseLike<TResult1>)
-        | undefined
-        | null,
-      onrejected?:
-        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-        | undefined
-        | null
-    ): $Utils.JsPromise<TResult1 | TResult2>;
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
     /**
      * Attaches a callback for only the rejection of the Promise.
      * @param onrejected The callback to execute when the Promise is rejected.
      * @returns A Promise for the completion of the callback.
      */
-    catch<TResult = never>(
-      onrejected?:
-        | ((reason: any) => TResult | PromiseLike<TResult>)
-        | undefined
-        | null
-    ): $Utils.JsPromise<T | TResult>;
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
     /**
      * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
      * resolved value cannot be modified from the callback.
      * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
      * @returns A Promise for the completion of the callback.
      */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
   }
+
+
+
 
   /**
    * Fields of the patch4c model
-   */
+   */ 
   interface patch4cFieldRefs {
-    readonly index: FieldRef<'patch4c', 'BigInt'>;
-    readonly code_geographique: FieldRef<'patch4c', 'String'>;
-    readonly niveaux_marins: FieldRef<'patch4c', 'Float'>;
-    readonly feux_foret: FieldRef<'patch4c', 'Float'>;
-    readonly secheresse_sols: FieldRef<'patch4c', 'Float'>;
-    readonly fortes_precipitations: FieldRef<'patch4c', 'Float'>;
-    readonly fortes_chaleurs: FieldRef<'patch4c', 'Float'>;
+    readonly index: FieldRef<"patch4c", 'BigInt'>
+    readonly code_geographique: FieldRef<"patch4c", 'String'>
+    readonly niveaux_marins: FieldRef<"patch4c", 'Float'>
+    readonly feux_foret: FieldRef<"patch4c", 'Float'>
+    readonly secheresse_sols: FieldRef<"patch4c", 'Float'>
+    readonly fortes_precipitations: FieldRef<"patch4c", 'Float'>
+    readonly fortes_chaleurs: FieldRef<"patch4c", 'Float'>
   }
+    
 
   // Custom InputTypes
   /**
    * patch4c findUnique
    */
-  export type patch4cFindUniqueArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type patch4cFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the patch4c
      */
-    select?: patch4cSelect<ExtArgs> | null;
+    select?: patch4cSelect<ExtArgs> | null
     /**
      * Omit specific fields from the patch4c
      */
-    omit?: patch4cOmit<ExtArgs> | null;
+    omit?: patch4cOmit<ExtArgs> | null
     /**
      * Filter, which patch4c to fetch.
      */
-    where: patch4cWhereUniqueInput;
-  };
+    where: patch4cWhereUniqueInput
+  }
 
   /**
    * patch4c findUniqueOrThrow
    */
-  export type patch4cFindUniqueOrThrowArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type patch4cFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the patch4c
      */
-    select?: patch4cSelect<ExtArgs> | null;
+    select?: patch4cSelect<ExtArgs> | null
     /**
      * Omit specific fields from the patch4c
      */
-    omit?: patch4cOmit<ExtArgs> | null;
+    omit?: patch4cOmit<ExtArgs> | null
     /**
      * Filter, which patch4c to fetch.
      */
-    where: patch4cWhereUniqueInput;
-  };
+    where: patch4cWhereUniqueInput
+  }
 
   /**
    * patch4c findFirst
    */
-  export type patch4cFindFirstArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type patch4cFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the patch4c
      */
-    select?: patch4cSelect<ExtArgs> | null;
+    select?: patch4cSelect<ExtArgs> | null
     /**
      * Omit specific fields from the patch4c
      */
-    omit?: patch4cOmit<ExtArgs> | null;
+    omit?: patch4cOmit<ExtArgs> | null
     /**
      * Filter, which patch4c to fetch.
      */
-    where?: patch4cWhereInput;
+    where?: patch4cWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
+     * 
      * Determine the order of patch4cs to fetch.
      */
-    orderBy?:
-      | patch4cOrderByWithRelationInput
-      | patch4cOrderByWithRelationInput[];
+    orderBy?: patch4cOrderByWithRelationInput | patch4cOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
+     * 
      * Sets the position for searching for patch4cs.
      */
-    cursor?: patch4cWhereUniqueInput;
+    cursor?: patch4cWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
+     * 
      * Take `±n` patch4cs from the position of the cursor.
      */
-    take?: number;
+    take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
+     * 
      * Skip the first `n` patch4cs.
      */
-    skip?: number;
+    skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     *
+     * 
      * Filter by unique combinations of patch4cs.
      */
-    distinct?: Patch4cScalarFieldEnum | Patch4cScalarFieldEnum[];
-  };
+    distinct?: Patch4cScalarFieldEnum | Patch4cScalarFieldEnum[]
+  }
 
   /**
    * patch4c findFirstOrThrow
    */
-  export type patch4cFindFirstOrThrowArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type patch4cFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the patch4c
      */
-    select?: patch4cSelect<ExtArgs> | null;
+    select?: patch4cSelect<ExtArgs> | null
     /**
      * Omit specific fields from the patch4c
      */
-    omit?: patch4cOmit<ExtArgs> | null;
+    omit?: patch4cOmit<ExtArgs> | null
     /**
      * Filter, which patch4c to fetch.
      */
-    where?: patch4cWhereInput;
+    where?: patch4cWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
+     * 
      * Determine the order of patch4cs to fetch.
      */
-    orderBy?:
-      | patch4cOrderByWithRelationInput
-      | patch4cOrderByWithRelationInput[];
+    orderBy?: patch4cOrderByWithRelationInput | patch4cOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
+     * 
      * Sets the position for searching for patch4cs.
      */
-    cursor?: patch4cWhereUniqueInput;
+    cursor?: patch4cWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
+     * 
      * Take `±n` patch4cs from the position of the cursor.
      */
-    take?: number;
+    take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
+     * 
      * Skip the first `n` patch4cs.
      */
-    skip?: number;
+    skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     *
+     * 
      * Filter by unique combinations of patch4cs.
      */
-    distinct?: Patch4cScalarFieldEnum | Patch4cScalarFieldEnum[];
-  };
+    distinct?: Patch4cScalarFieldEnum | Patch4cScalarFieldEnum[]
+  }
 
   /**
    * patch4c findMany
    */
-  export type patch4cFindManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type patch4cFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the patch4c
      */
-    select?: patch4cSelect<ExtArgs> | null;
+    select?: patch4cSelect<ExtArgs> | null
     /**
      * Omit specific fields from the patch4c
      */
-    omit?: patch4cOmit<ExtArgs> | null;
+    omit?: patch4cOmit<ExtArgs> | null
     /**
      * Filter, which patch4cs to fetch.
      */
-    where?: patch4cWhereInput;
+    where?: patch4cWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
+     * 
      * Determine the order of patch4cs to fetch.
      */
-    orderBy?:
-      | patch4cOrderByWithRelationInput
-      | patch4cOrderByWithRelationInput[];
+    orderBy?: patch4cOrderByWithRelationInput | patch4cOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
+     * 
      * Sets the position for listing patch4cs.
      */
-    cursor?: patch4cWhereUniqueInput;
+    cursor?: patch4cWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
+     * 
      * Take `±n` patch4cs from the position of the cursor.
      */
-    take?: number;
+    take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
+     * 
      * Skip the first `n` patch4cs.
      */
-    skip?: number;
-    distinct?: Patch4cScalarFieldEnum | Patch4cScalarFieldEnum[];
-  };
+    skip?: number
+    distinct?: Patch4cScalarFieldEnum | Patch4cScalarFieldEnum[]
+  }
 
   /**
    * patch4c create
    */
-  export type patch4cCreateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type patch4cCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the patch4c
      */
-    select?: patch4cSelect<ExtArgs> | null;
+    select?: patch4cSelect<ExtArgs> | null
     /**
      * Omit specific fields from the patch4c
      */
-    omit?: patch4cOmit<ExtArgs> | null;
+    omit?: patch4cOmit<ExtArgs> | null
     /**
      * The data needed to create a patch4c.
      */
-    data: XOR<patch4cCreateInput, patch4cUncheckedCreateInput>;
-  };
+    data: XOR<patch4cCreateInput, patch4cUncheckedCreateInput>
+  }
 
   /**
    * patch4c createMany
    */
-  export type patch4cCreateManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type patch4cCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many patch4cs.
      */
-    data: patch4cCreateManyInput | patch4cCreateManyInput[];
-    skipDuplicates?: boolean;
-  };
+    data: patch4cCreateManyInput | patch4cCreateManyInput[]
+    skipDuplicates?: boolean
+  }
 
   /**
    * patch4c createManyAndReturn
    */
-  export type patch4cCreateManyAndReturnArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type patch4cCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the patch4c
      */
-    select?: patch4cSelectCreateManyAndReturn<ExtArgs> | null;
+    select?: patch4cSelectCreateManyAndReturn<ExtArgs> | null
     /**
      * Omit specific fields from the patch4c
      */
-    omit?: patch4cOmit<ExtArgs> | null;
+    omit?: patch4cOmit<ExtArgs> | null
     /**
      * The data used to create many patch4cs.
      */
-    data: patch4cCreateManyInput | patch4cCreateManyInput[];
-    skipDuplicates?: boolean;
-  };
+    data: patch4cCreateManyInput | patch4cCreateManyInput[]
+    skipDuplicates?: boolean
+  }
 
   /**
    * patch4c update
    */
-  export type patch4cUpdateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type patch4cUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the patch4c
      */
-    select?: patch4cSelect<ExtArgs> | null;
+    select?: patch4cSelect<ExtArgs> | null
     /**
      * Omit specific fields from the patch4c
      */
-    omit?: patch4cOmit<ExtArgs> | null;
+    omit?: patch4cOmit<ExtArgs> | null
     /**
      * The data needed to update a patch4c.
      */
-    data: XOR<patch4cUpdateInput, patch4cUncheckedUpdateInput>;
+    data: XOR<patch4cUpdateInput, patch4cUncheckedUpdateInput>
     /**
      * Choose, which patch4c to update.
      */
-    where: patch4cWhereUniqueInput;
-  };
+    where: patch4cWhereUniqueInput
+  }
 
   /**
    * patch4c updateMany
    */
-  export type patch4cUpdateManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type patch4cUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to update patch4cs.
      */
-    data: XOR<patch4cUpdateManyMutationInput, patch4cUncheckedUpdateManyInput>;
+    data: XOR<patch4cUpdateManyMutationInput, patch4cUncheckedUpdateManyInput>
     /**
      * Filter which patch4cs to update
      */
-    where?: patch4cWhereInput;
+    where?: patch4cWhereInput
     /**
      * Limit how many patch4cs to update.
      */
-    limit?: number;
-  };
+    limit?: number
+  }
 
   /**
    * patch4c updateManyAndReturn
    */
-  export type patch4cUpdateManyAndReturnArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type patch4cUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the patch4c
      */
-    select?: patch4cSelectUpdateManyAndReturn<ExtArgs> | null;
+    select?: patch4cSelectUpdateManyAndReturn<ExtArgs> | null
     /**
      * Omit specific fields from the patch4c
      */
-    omit?: patch4cOmit<ExtArgs> | null;
+    omit?: patch4cOmit<ExtArgs> | null
     /**
      * The data used to update patch4cs.
      */
-    data: XOR<patch4cUpdateManyMutationInput, patch4cUncheckedUpdateManyInput>;
+    data: XOR<patch4cUpdateManyMutationInput, patch4cUncheckedUpdateManyInput>
     /**
      * Filter which patch4cs to update
      */
-    where?: patch4cWhereInput;
+    where?: patch4cWhereInput
     /**
      * Limit how many patch4cs to update.
      */
-    limit?: number;
-  };
+    limit?: number
+  }
 
   /**
    * patch4c upsert
    */
-  export type patch4cUpsertArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type patch4cUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the patch4c
      */
-    select?: patch4cSelect<ExtArgs> | null;
+    select?: patch4cSelect<ExtArgs> | null
     /**
      * Omit specific fields from the patch4c
      */
-    omit?: patch4cOmit<ExtArgs> | null;
+    omit?: patch4cOmit<ExtArgs> | null
     /**
      * The filter to search for the patch4c to update in case it exists.
      */
-    where: patch4cWhereUniqueInput;
+    where: patch4cWhereUniqueInput
     /**
      * In case the patch4c found by the `where` argument doesn't exist, create a new patch4c with this data.
      */
-    create: XOR<patch4cCreateInput, patch4cUncheckedCreateInput>;
+    create: XOR<patch4cCreateInput, patch4cUncheckedCreateInput>
     /**
      * In case the patch4c was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<patch4cUpdateInput, patch4cUncheckedUpdateInput>;
-  };
+    update: XOR<patch4cUpdateInput, patch4cUncheckedUpdateInput>
+  }
 
   /**
    * patch4c delete
    */
-  export type patch4cDeleteArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type patch4cDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the patch4c
      */
-    select?: patch4cSelect<ExtArgs> | null;
+    select?: patch4cSelect<ExtArgs> | null
     /**
      * Omit specific fields from the patch4c
      */
-    omit?: patch4cOmit<ExtArgs> | null;
+    omit?: patch4cOmit<ExtArgs> | null
     /**
      * Filter which patch4c to delete.
      */
-    where: patch4cWhereUniqueInput;
-  };
+    where: patch4cWhereUniqueInput
+  }
 
   /**
    * patch4c deleteMany
    */
-  export type patch4cDeleteManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type patch4cDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which patch4cs to delete
      */
-    where?: patch4cWhereInput;
+    where?: patch4cWhereInput
     /**
      * Limit how many patch4cs to delete.
      */
-    limit?: number;
-  };
+    limit?: number
+  }
 
   /**
    * patch4c without action
    */
-  export type patch4cDefaultArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
+  export type patch4cDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the patch4c
      */
-    select?: patch4cSelect<ExtArgs> | null;
+    select?: patch4cSelect<ExtArgs> | null
     /**
      * Omit specific fields from the patch4c
      */
-    omit?: patch4cOmit<ExtArgs> | null;
-  };
+    omit?: patch4cOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model communes
+   */
+
+  export type AggregateCommunes = {
+    _count: CommunesCountAggregateOutputType | null
+    _avg: CommunesAvgAggregateOutputType | null
+    _sum: CommunesSumAggregateOutputType | null
+    _min: CommunesMinAggregateOutputType | null
+    _max: CommunesMaxAggregateOutputType | null
+  }
+
+  export type CommunesAvgAggregateOutputType = {
+    pk: number | null
+    densite_bati: number | null
+    precarite_logement: number | null
+  }
+
+  export type CommunesSumAggregateOutputType = {
+    pk: number | null
+    densite_bati: number | null
+    precarite_logement: number | null
+  }
+
+  export type CommunesMinAggregateOutputType = {
+    pk: number | null
+    code_commune: string | null
+    libelle_commune: string | null
+    epci: string | null
+    libelle_epci: string | null
+    libgeo: string | null
+    coordinates: string | null
+    densite_bati: number | null
+    precarite_logement: number | null
+  }
+
+  export type CommunesMaxAggregateOutputType = {
+    pk: number | null
+    code_commune: string | null
+    libelle_commune: string | null
+    epci: string | null
+    libelle_epci: string | null
+    libgeo: string | null
+    coordinates: string | null
+    densite_bati: number | null
+    precarite_logement: number | null
+  }
+
+  export type CommunesCountAggregateOutputType = {
+    pk: number
+    code_commune: number
+    libelle_commune: number
+    epci: number
+    libelle_epci: number
+    libgeo: number
+    coordinates: number
+    densite_bati: number
+    precarite_logement: number
+    _all: number
+  }
+
+
+  export type CommunesAvgAggregateInputType = {
+    pk?: true
+    densite_bati?: true
+    precarite_logement?: true
+  }
+
+  export type CommunesSumAggregateInputType = {
+    pk?: true
+    densite_bati?: true
+    precarite_logement?: true
+  }
+
+  export type CommunesMinAggregateInputType = {
+    pk?: true
+    code_commune?: true
+    libelle_commune?: true
+    epci?: true
+    libelle_epci?: true
+    libgeo?: true
+    coordinates?: true
+    densite_bati?: true
+    precarite_logement?: true
+  }
+
+  export type CommunesMaxAggregateInputType = {
+    pk?: true
+    code_commune?: true
+    libelle_commune?: true
+    epci?: true
+    libelle_epci?: true
+    libgeo?: true
+    coordinates?: true
+    densite_bati?: true
+    precarite_logement?: true
+  }
+
+  export type CommunesCountAggregateInputType = {
+    pk?: true
+    code_commune?: true
+    libelle_commune?: true
+    epci?: true
+    libelle_epci?: true
+    libgeo?: true
+    coordinates?: true
+    densite_bati?: true
+    precarite_logement?: true
+    _all?: true
+  }
+
+  export type CommunesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which communes to aggregate.
+     */
+    where?: communesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes to fetch.
+     */
+    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: communesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned communes
+    **/
+    _count?: true | CommunesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CommunesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CommunesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CommunesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CommunesMaxAggregateInputType
+  }
+
+  export type GetCommunesAggregateType<T extends CommunesAggregateArgs> = {
+        [P in keyof T & keyof AggregateCommunes]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCommunes[P]>
+      : GetScalarType<T[P], AggregateCommunes[P]>
+  }
+
+
+
+
+  export type communesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: communesWhereInput
+    orderBy?: communesOrderByWithAggregationInput | communesOrderByWithAggregationInput[]
+    by: CommunesScalarFieldEnum[] | CommunesScalarFieldEnum
+    having?: communesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CommunesCountAggregateInputType | true
+    _avg?: CommunesAvgAggregateInputType
+    _sum?: CommunesSumAggregateInputType
+    _min?: CommunesMinAggregateInputType
+    _max?: CommunesMaxAggregateInputType
+  }
+
+  export type CommunesGroupByOutputType = {
+    pk: number
+    code_commune: string | null
+    libelle_commune: string | null
+    epci: string | null
+    libelle_epci: string | null
+    libgeo: string | null
+    coordinates: string | null
+    densite_bati: number | null
+    precarite_logement: number | null
+    _count: CommunesCountAggregateOutputType | null
+    _avg: CommunesAvgAggregateOutputType | null
+    _sum: CommunesSumAggregateOutputType | null
+    _min: CommunesMinAggregateOutputType | null
+    _max: CommunesMaxAggregateOutputType | null
+  }
+
+  type GetCommunesGroupByPayload<T extends communesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CommunesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CommunesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CommunesGroupByOutputType[P]>
+            : GetScalarType<T[P], CommunesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type communesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    code_commune?: boolean
+    libelle_commune?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    libgeo?: boolean
+    coordinates?: boolean
+    densite_bati?: boolean
+    precarite_logement?: boolean
+  }, ExtArgs["result"]["communes"]>
+
+  export type communesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    code_commune?: boolean
+    libelle_commune?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    libgeo?: boolean
+    coordinates?: boolean
+    densite_bati?: boolean
+    precarite_logement?: boolean
+  }, ExtArgs["result"]["communes"]>
+
+  export type communesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    code_commune?: boolean
+    libelle_commune?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    libgeo?: boolean
+    coordinates?: boolean
+    densite_bati?: boolean
+    precarite_logement?: boolean
+  }, ExtArgs["result"]["communes"]>
+
+  export type communesSelectScalar = {
+    pk?: boolean
+    code_commune?: boolean
+    libelle_commune?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    libgeo?: boolean
+    coordinates?: boolean
+    densite_bati?: boolean
+    precarite_logement?: boolean
+  }
+
+  export type communesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "code_commune" | "libelle_commune" | "epci" | "libelle_epci" | "libgeo" | "coordinates" | "densite_bati" | "precarite_logement", ExtArgs["result"]["communes"]>
+
+  export type $communesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "communes"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      code_commune: string | null
+      libelle_commune: string | null
+      epci: string | null
+      libelle_epci: string | null
+      libgeo: string | null
+      coordinates: string | null
+      densite_bati: number | null
+      precarite_logement: number | null
+    }, ExtArgs["result"]["communes"]>
+    composites: {}
+  }
+
+  type communesGetPayload<S extends boolean | null | undefined | communesDefaultArgs> = $Result.GetResult<Prisma.$communesPayload, S>
+
+  type communesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<communesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CommunesCountAggregateInputType | true
+    }
+
+  export interface communesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['communes'], meta: { name: 'communes' } }
+    /**
+     * Find zero or one Communes that matches the filter.
+     * @param {communesFindUniqueArgs} args - Arguments to find a Communes
+     * @example
+     * // Get one Communes
+     * const communes = await prisma.communes.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends communesFindUniqueArgs>(args: SelectSubset<T, communesFindUniqueArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Communes that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {communesFindUniqueOrThrowArgs} args - Arguments to find a Communes
+     * @example
+     * // Get one Communes
+     * const communes = await prisma.communes.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends communesFindUniqueOrThrowArgs>(args: SelectSubset<T, communesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Communes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communesFindFirstArgs} args - Arguments to find a Communes
+     * @example
+     * // Get one Communes
+     * const communes = await prisma.communes.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends communesFindFirstArgs>(args?: SelectSubset<T, communesFindFirstArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Communes that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communesFindFirstOrThrowArgs} args - Arguments to find a Communes
+     * @example
+     * // Get one Communes
+     * const communes = await prisma.communes.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends communesFindFirstOrThrowArgs>(args?: SelectSubset<T, communesFindFirstOrThrowArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Communes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Communes
+     * const communes = await prisma.communes.findMany()
+     * 
+     * // Get first 10 Communes
+     * const communes = await prisma.communes.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const communesWithPkOnly = await prisma.communes.findMany({ select: { pk: true } })
+     * 
+     */
+    findMany<T extends communesFindManyArgs>(args?: SelectSubset<T, communesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Communes.
+     * @param {communesCreateArgs} args - Arguments to create a Communes.
+     * @example
+     * // Create one Communes
+     * const Communes = await prisma.communes.create({
+     *   data: {
+     *     // ... data to create a Communes
+     *   }
+     * })
+     * 
+     */
+    create<T extends communesCreateArgs>(args: SelectSubset<T, communesCreateArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Communes.
+     * @param {communesCreateManyArgs} args - Arguments to create many Communes.
+     * @example
+     * // Create many Communes
+     * const communes = await prisma.communes.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends communesCreateManyArgs>(args?: SelectSubset<T, communesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Communes and returns the data saved in the database.
+     * @param {communesCreateManyAndReturnArgs} args - Arguments to create many Communes.
+     * @example
+     * // Create many Communes
+     * const communes = await prisma.communes.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Communes and only return the `pk`
+     * const communesWithPkOnly = await prisma.communes.createManyAndReturn({
+     *   select: { pk: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends communesCreateManyAndReturnArgs>(args?: SelectSubset<T, communesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Communes.
+     * @param {communesDeleteArgs} args - Arguments to delete one Communes.
+     * @example
+     * // Delete one Communes
+     * const Communes = await prisma.communes.delete({
+     *   where: {
+     *     // ... filter to delete one Communes
+     *   }
+     * })
+     * 
+     */
+    delete<T extends communesDeleteArgs>(args: SelectSubset<T, communesDeleteArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Communes.
+     * @param {communesUpdateArgs} args - Arguments to update one Communes.
+     * @example
+     * // Update one Communes
+     * const communes = await prisma.communes.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends communesUpdateArgs>(args: SelectSubset<T, communesUpdateArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Communes.
+     * @param {communesDeleteManyArgs} args - Arguments to filter Communes to delete.
+     * @example
+     * // Delete a few Communes
+     * const { count } = await prisma.communes.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends communesDeleteManyArgs>(args?: SelectSubset<T, communesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Communes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Communes
+     * const communes = await prisma.communes.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends communesUpdateManyArgs>(args: SelectSubset<T, communesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Communes and returns the data updated in the database.
+     * @param {communesUpdateManyAndReturnArgs} args - Arguments to update many Communes.
+     * @example
+     * // Update many Communes
+     * const communes = await prisma.communes.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Communes and only return the `pk`
+     * const communesWithPkOnly = await prisma.communes.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends communesUpdateManyAndReturnArgs>(args: SelectSubset<T, communesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Communes.
+     * @param {communesUpsertArgs} args - Arguments to update or create a Communes.
+     * @example
+     * // Update or create a Communes
+     * const communes = await prisma.communes.upsert({
+     *   create: {
+     *     // ... data to create a Communes
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Communes we want to update
+     *   }
+     * })
+     */
+    upsert<T extends communesUpsertArgs>(args: SelectSubset<T, communesUpsertArgs<ExtArgs>>): Prisma__communesClient<$Result.GetResult<Prisma.$communesPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Communes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communesCountArgs} args - Arguments to filter Communes to count.
+     * @example
+     * // Count the number of Communes
+     * const count = await prisma.communes.count({
+     *   where: {
+     *     // ... the filter for the Communes we want to count
+     *   }
+     * })
+    **/
+    count<T extends communesCountArgs>(
+      args?: Subset<T, communesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CommunesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Communes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CommunesAggregateArgs>(args: Subset<T, CommunesAggregateArgs>): Prisma.PrismaPromise<GetCommunesAggregateType<T>>
+
+    /**
+     * Group by Communes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {communesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends communesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: communesGroupByArgs['orderBy'] }
+        : { orderBy?: communesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, communesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommunesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the communes model
+   */
+  readonly fields: communesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for communes.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__communesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the communes model
+   */ 
+  interface communesFieldRefs {
+    readonly pk: FieldRef<"communes", 'Int'>
+    readonly code_commune: FieldRef<"communes", 'String'>
+    readonly libelle_commune: FieldRef<"communes", 'String'>
+    readonly epci: FieldRef<"communes", 'String'>
+    readonly libelle_epci: FieldRef<"communes", 'String'>
+    readonly libgeo: FieldRef<"communes", 'String'>
+    readonly coordinates: FieldRef<"communes", 'String'>
+    readonly densite_bati: FieldRef<"communes", 'Float'>
+    readonly precarite_logement: FieldRef<"communes", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * communes findUnique
+   */
+  export type communesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes
+     */
+    omit?: communesOmit<ExtArgs> | null
+    /**
+     * Filter, which communes to fetch.
+     */
+    where: communesWhereUniqueInput
+  }
+
+  /**
+   * communes findUniqueOrThrow
+   */
+  export type communesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes
+     */
+    omit?: communesOmit<ExtArgs> | null
+    /**
+     * Filter, which communes to fetch.
+     */
+    where: communesWhereUniqueInput
+  }
+
+  /**
+   * communes findFirst
+   */
+  export type communesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes
+     */
+    omit?: communesOmit<ExtArgs> | null
+    /**
+     * Filter, which communes to fetch.
+     */
+    where?: communesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes to fetch.
+     */
+    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for communes.
+     */
+    cursor?: communesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of communes.
+     */
+    distinct?: CommunesScalarFieldEnum | CommunesScalarFieldEnum[]
+  }
+
+  /**
+   * communes findFirstOrThrow
+   */
+  export type communesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes
+     */
+    omit?: communesOmit<ExtArgs> | null
+    /**
+     * Filter, which communes to fetch.
+     */
+    where?: communesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes to fetch.
+     */
+    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for communes.
+     */
+    cursor?: communesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of communes.
+     */
+    distinct?: CommunesScalarFieldEnum | CommunesScalarFieldEnum[]
+  }
+
+  /**
+   * communes findMany
+   */
+  export type communesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes
+     */
+    omit?: communesOmit<ExtArgs> | null
+    /**
+     * Filter, which communes to fetch.
+     */
+    where?: communesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of communes to fetch.
+     */
+    orderBy?: communesOrderByWithRelationInput | communesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing communes.
+     */
+    cursor?: communesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` communes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` communes.
+     */
+    skip?: number
+    distinct?: CommunesScalarFieldEnum | CommunesScalarFieldEnum[]
+  }
+
+  /**
+   * communes create
+   */
+  export type communesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes
+     */
+    omit?: communesOmit<ExtArgs> | null
+    /**
+     * The data needed to create a communes.
+     */
+    data?: XOR<communesCreateInput, communesUncheckedCreateInput>
+  }
+
+  /**
+   * communes createMany
+   */
+  export type communesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many communes.
+     */
+    data: communesCreateManyInput | communesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * communes createManyAndReturn
+   */
+  export type communesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes
+     */
+    omit?: communesOmit<ExtArgs> | null
+    /**
+     * The data used to create many communes.
+     */
+    data: communesCreateManyInput | communesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * communes update
+   */
+  export type communesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes
+     */
+    omit?: communesOmit<ExtArgs> | null
+    /**
+     * The data needed to update a communes.
+     */
+    data: XOR<communesUpdateInput, communesUncheckedUpdateInput>
+    /**
+     * Choose, which communes to update.
+     */
+    where: communesWhereUniqueInput
+  }
+
+  /**
+   * communes updateMany
+   */
+  export type communesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update communes.
+     */
+    data: XOR<communesUpdateManyMutationInput, communesUncheckedUpdateManyInput>
+    /**
+     * Filter which communes to update
+     */
+    where?: communesWhereInput
+    /**
+     * Limit how many communes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * communes updateManyAndReturn
+   */
+  export type communesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes
+     */
+    omit?: communesOmit<ExtArgs> | null
+    /**
+     * The data used to update communes.
+     */
+    data: XOR<communesUpdateManyMutationInput, communesUncheckedUpdateManyInput>
+    /**
+     * Filter which communes to update
+     */
+    where?: communesWhereInput
+    /**
+     * Limit how many communes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * communes upsert
+   */
+  export type communesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes
+     */
+    omit?: communesOmit<ExtArgs> | null
+    /**
+     * The filter to search for the communes to update in case it exists.
+     */
+    where: communesWhereUniqueInput
+    /**
+     * In case the communes found by the `where` argument doesn't exist, create a new communes with this data.
+     */
+    create: XOR<communesCreateInput, communesUncheckedCreateInput>
+    /**
+     * In case the communes was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<communesUpdateInput, communesUncheckedUpdateInput>
+  }
+
+  /**
+   * communes delete
+   */
+  export type communesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes
+     */
+    omit?: communesOmit<ExtArgs> | null
+    /**
+     * Filter which communes to delete.
+     */
+    where: communesWhereUniqueInput
+  }
+
+  /**
+   * communes deleteMany
+   */
+  export type communesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which communes to delete
+     */
+    where?: communesWhereInput
+    /**
+     * Limit how many communes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * communes without action
+   */
+  export type communesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the communes
+     */
+    select?: communesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the communes
+     */
+    omit?: communesOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model users
+   */
+
+  export type AggregateUsers = {
+    _count: UsersCountAggregateOutputType | null
+    _avg: UsersAvgAggregateOutputType | null
+    _sum: UsersSumAggregateOutputType | null
+    _min: UsersMinAggregateOutputType | null
+    _max: UsersMaxAggregateOutputType | null
+  }
+
+  export type UsersAvgAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type UsersSumAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type UsersMinAggregateOutputType = {
+    pk: number | null
+    email: string | null
+    username: string | null
+    password: string | null
+    created_at: Date | null
+    last_connection: Date | null
+    role: string | null
+  }
+
+  export type UsersMaxAggregateOutputType = {
+    pk: number | null
+    email: string | null
+    username: string | null
+    password: string | null
+    created_at: Date | null
+    last_connection: Date | null
+    role: string | null
+  }
+
+  export type UsersCountAggregateOutputType = {
+    pk: number
+    email: number
+    username: number
+    password: number
+    created_at: number
+    last_connection: number
+    role: number
+    _all: number
+  }
+
+
+  export type UsersAvgAggregateInputType = {
+    pk?: true
+  }
+
+  export type UsersSumAggregateInputType = {
+    pk?: true
+  }
+
+  export type UsersMinAggregateInputType = {
+    pk?: true
+    email?: true
+    username?: true
+    password?: true
+    created_at?: true
+    last_connection?: true
+    role?: true
+  }
+
+  export type UsersMaxAggregateInputType = {
+    pk?: true
+    email?: true
+    username?: true
+    password?: true
+    created_at?: true
+    last_connection?: true
+    role?: true
+  }
+
+  export type UsersCountAggregateInputType = {
+    pk?: true
+    email?: true
+    username?: true
+    password?: true
+    created_at?: true
+    last_connection?: true
+    role?: true
+    _all?: true
+  }
+
+  export type UsersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which users to aggregate.
+     */
+    where?: usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users to fetch.
+     */
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned users
+    **/
+    _count?: true | UsersCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UsersAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UsersSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UsersMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UsersMaxAggregateInputType
+  }
+
+  export type GetUsersAggregateType<T extends UsersAggregateArgs> = {
+        [P in keyof T & keyof AggregateUsers]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUsers[P]>
+      : GetScalarType<T[P], AggregateUsers[P]>
+  }
+
+
+
+
+  export type usersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: usersWhereInput
+    orderBy?: usersOrderByWithAggregationInput | usersOrderByWithAggregationInput[]
+    by: UsersScalarFieldEnum[] | UsersScalarFieldEnum
+    having?: usersScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UsersCountAggregateInputType | true
+    _avg?: UsersAvgAggregateInputType
+    _sum?: UsersSumAggregateInputType
+    _min?: UsersMinAggregateInputType
+    _max?: UsersMaxAggregateInputType
+  }
+
+  export type UsersGroupByOutputType = {
+    pk: number
+    email: string
+    username: string
+    password: string
+    created_at: Date
+    last_connection: Date | null
+    role: string
+    _count: UsersCountAggregateOutputType | null
+    _avg: UsersAvgAggregateOutputType | null
+    _sum: UsersSumAggregateOutputType | null
+    _min: UsersMinAggregateOutputType | null
+    _max: UsersMaxAggregateOutputType | null
+  }
+
+  type GetUsersGroupByPayload<T extends usersGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UsersGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UsersGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UsersGroupByOutputType[P]>
+            : GetScalarType<T[P], UsersGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type usersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    email?: boolean
+    username?: boolean
+    password?: boolean
+    created_at?: boolean
+    last_connection?: boolean
+    role?: boolean
+  }, ExtArgs["result"]["users"]>
+
+  export type usersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    email?: boolean
+    username?: boolean
+    password?: boolean
+    created_at?: boolean
+    last_connection?: boolean
+    role?: boolean
+  }, ExtArgs["result"]["users"]>
+
+  export type usersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    email?: boolean
+    username?: boolean
+    password?: boolean
+    created_at?: boolean
+    last_connection?: boolean
+    role?: boolean
+  }, ExtArgs["result"]["users"]>
+
+  export type usersSelectScalar = {
+    pk?: boolean
+    email?: boolean
+    username?: boolean
+    password?: boolean
+    created_at?: boolean
+    last_connection?: boolean
+    role?: boolean
+  }
+
+  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "email" | "username" | "password" | "created_at" | "last_connection" | "role", ExtArgs["result"]["users"]>
+
+  export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "users"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      email: string
+      username: string
+      password: string
+      created_at: Date
+      last_connection: Date | null
+      role: string
+    }, ExtArgs["result"]["users"]>
+    composites: {}
+  }
+
+  type usersGetPayload<S extends boolean | null | undefined | usersDefaultArgs> = $Result.GetResult<Prisma.$usersPayload, S>
+
+  type usersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<usersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UsersCountAggregateInputType | true
+    }
+
+  export interface usersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['users'], meta: { name: 'users' } }
+    /**
+     * Find zero or one Users that matches the filter.
+     * @param {usersFindUniqueArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends usersFindUniqueArgs>(args: SelectSubset<T, usersFindUniqueArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Users that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {usersFindUniqueOrThrowArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends usersFindUniqueOrThrowArgs>(args: SelectSubset<T, usersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersFindFirstArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends usersFindFirstArgs>(args?: SelectSubset<T, usersFindFirstArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Users that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersFindFirstOrThrowArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends usersFindFirstOrThrowArgs>(args?: SelectSubset<T, usersFindFirstOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Users
+     * const users = await prisma.users.findMany()
+     * 
+     * // Get first 10 Users
+     * const users = await prisma.users.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const usersWithPkOnly = await prisma.users.findMany({ select: { pk: true } })
+     * 
+     */
+    findMany<T extends usersFindManyArgs>(args?: SelectSubset<T, usersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Users.
+     * @param {usersCreateArgs} args - Arguments to create a Users.
+     * @example
+     * // Create one Users
+     * const Users = await prisma.users.create({
+     *   data: {
+     *     // ... data to create a Users
+     *   }
+     * })
+     * 
+     */
+    create<T extends usersCreateArgs>(args: SelectSubset<T, usersCreateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Users.
+     * @param {usersCreateManyArgs} args - Arguments to create many Users.
+     * @example
+     * // Create many Users
+     * const users = await prisma.users.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends usersCreateManyArgs>(args?: SelectSubset<T, usersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Users and returns the data saved in the database.
+     * @param {usersCreateManyAndReturnArgs} args - Arguments to create many Users.
+     * @example
+     * // Create many Users
+     * const users = await prisma.users.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Users and only return the `pk`
+     * const usersWithPkOnly = await prisma.users.createManyAndReturn({
+     *   select: { pk: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends usersCreateManyAndReturnArgs>(args?: SelectSubset<T, usersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Users.
+     * @param {usersDeleteArgs} args - Arguments to delete one Users.
+     * @example
+     * // Delete one Users
+     * const Users = await prisma.users.delete({
+     *   where: {
+     *     // ... filter to delete one Users
+     *   }
+     * })
+     * 
+     */
+    delete<T extends usersDeleteArgs>(args: SelectSubset<T, usersDeleteArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Users.
+     * @param {usersUpdateArgs} args - Arguments to update one Users.
+     * @example
+     * // Update one Users
+     * const users = await prisma.users.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends usersUpdateArgs>(args: SelectSubset<T, usersUpdateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Users.
+     * @param {usersDeleteManyArgs} args - Arguments to filter Users to delete.
+     * @example
+     * // Delete a few Users
+     * const { count } = await prisma.users.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends usersDeleteManyArgs>(args?: SelectSubset<T, usersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Users
+     * const users = await prisma.users.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends usersUpdateManyArgs>(args: SelectSubset<T, usersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users and returns the data updated in the database.
+     * @param {usersUpdateManyAndReturnArgs} args - Arguments to update many Users.
+     * @example
+     * // Update many Users
+     * const users = await prisma.users.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Users and only return the `pk`
+     * const usersWithPkOnly = await prisma.users.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends usersUpdateManyAndReturnArgs>(args: SelectSubset<T, usersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Users.
+     * @param {usersUpsertArgs} args - Arguments to update or create a Users.
+     * @example
+     * // Update or create a Users
+     * const users = await prisma.users.upsert({
+     *   create: {
+     *     // ... data to create a Users
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Users we want to update
+     *   }
+     * })
+     */
+    upsert<T extends usersUpsertArgs>(args: SelectSubset<T, usersUpsertArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersCountArgs} args - Arguments to filter Users to count.
+     * @example
+     * // Count the number of Users
+     * const count = await prisma.users.count({
+     *   where: {
+     *     // ... the filter for the Users we want to count
+     *   }
+     * })
+    **/
+    count<T extends usersCountArgs>(
+      args?: Subset<T, usersCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UsersCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UsersAggregateArgs>(args: Subset<T, UsersAggregateArgs>): Prisma.PrismaPromise<GetUsersAggregateType<T>>
+
+    /**
+     * Group by Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends usersGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: usersGroupByArgs['orderBy'] }
+        : { orderBy?: usersGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, usersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUsersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the users model
+   */
+  readonly fields: usersFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for users.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the users model
+   */ 
+  interface usersFieldRefs {
+    readonly pk: FieldRef<"users", 'Int'>
+    readonly email: FieldRef<"users", 'String'>
+    readonly username: FieldRef<"users", 'String'>
+    readonly password: FieldRef<"users", 'String'>
+    readonly created_at: FieldRef<"users", 'DateTime'>
+    readonly last_connection: FieldRef<"users", 'DateTime'>
+    readonly role: FieldRef<"users", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * users findUnique
+   */
+  export type usersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where: usersWhereUniqueInput
+  }
+
+  /**
+   * users findUniqueOrThrow
+   */
+  export type usersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where: usersWhereUniqueInput
+  }
+
+  /**
+   * users findFirst
+   */
+  export type usersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where?: usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users to fetch.
+     */
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for users.
+     */
+    cursor?: usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of users.
+     */
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+  /**
+   * users findFirstOrThrow
+   */
+  export type usersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where?: usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users to fetch.
+     */
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for users.
+     */
+    cursor?: usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of users.
+     */
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+  /**
+   * users findMany
+   */
+  export type usersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where?: usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users to fetch.
+     */
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing users.
+     */
+    cursor?: usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` users.
+     */
+    skip?: number
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+  /**
+   * users create
+   */
+  export type usersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * The data needed to create a users.
+     */
+    data: XOR<usersCreateInput, usersUncheckedCreateInput>
+  }
+
+  /**
+   * users createMany
+   */
+  export type usersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many users.
+     */
+    data: usersCreateManyInput | usersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * users createManyAndReturn
+   */
+  export type usersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * The data used to create many users.
+     */
+    data: usersCreateManyInput | usersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * users update
+   */
+  export type usersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * The data needed to update a users.
+     */
+    data: XOR<usersUpdateInput, usersUncheckedUpdateInput>
+    /**
+     * Choose, which users to update.
+     */
+    where: usersWhereUniqueInput
+  }
+
+  /**
+   * users updateMany
+   */
+  export type usersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update users.
+     */
+    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyInput>
+    /**
+     * Filter which users to update
+     */
+    where?: usersWhereInput
+    /**
+     * Limit how many users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * users updateManyAndReturn
+   */
+  export type usersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * The data used to update users.
+     */
+    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyInput>
+    /**
+     * Filter which users to update
+     */
+    where?: usersWhereInput
+    /**
+     * Limit how many users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * users upsert
+   */
+  export type usersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * The filter to search for the users to update in case it exists.
+     */
+    where: usersWhereUniqueInput
+    /**
+     * In case the users found by the `where` argument doesn't exist, create a new users with this data.
+     */
+    create: XOR<usersCreateInput, usersUncheckedCreateInput>
+    /**
+     * In case the users was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<usersUpdateInput, usersUncheckedUpdateInput>
+  }
+
+  /**
+   * users delete
+   */
+  export type usersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter which users to delete.
+     */
+    where: usersWhereUniqueInput
+  }
+
+  /**
+   * users deleteMany
+   */
+  export type usersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which users to delete
+     */
+    where?: usersWhereInput
+    /**
+     * Limit how many users to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * users without action
+   */
+  export type usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+  }
+
 
   /**
    * Enums
@@ -35002,7 +27954,6 @@ export namespace Prisma {
 
 
   export const Inconfort_thermiqueScalarFieldEnum: {
-<<<<<<< HEAD
     index: 'index',
     code_geographique: 'code_geographique',
     libelle_geographique: 'libelle_geographique',
@@ -35060,70 +28011,6 @@ export namespace Prisma {
     clc_4_humide: 'clc_4_humide',
     clc_5_eau: 'clc_5_eau',
     superf_choro: 'superf_choro'
-=======
-    index: 'index';
-    code_geographique: 'code_geographique';
-    libelle_geographique: 'libelle_geographique';
-    epci: 'epci';
-    libelle_epci: 'libelle_epci';
-    departement: 'departement';
-    libelle_departement: 'libelle_departement';
-    region: 'region';
-    ept: 'ept';
-    libelle_petr: 'libelle_petr';
-    code_pnr: 'code_pnr';
-    libelle_pnr: 'libelle_pnr';
-    age_bati_post06: 'age_bati_post06';
-    age_bati_91_05: 'age_bati_91_05';
-    age_bati_46_90: 'age_bati_46_90';
-    age_bati_19_45: 'age_bati_19_45';
-    age_bati_pre_19: 'age_bati_pre_19';
-    under_4_sum_1968: 'under_4_sum_1968';
-    to_80_sum_1968: 'to_80_sum_1968';
-    over_80_sum_1968: 'over_80_sum_1968';
-    under_4_sum_1975: 'under_4_sum_1975';
-    to_80_sum_1975: 'to_80_sum_1975';
-    over_80_sum_1975: 'over_80_sum_1975';
-    under_4_sum_1982: 'under_4_sum_1982';
-    to_80_sum_1982: 'to_80_sum_1982';
-    over_80_sum_1982: 'over_80_sum_1982';
-    under_4_sum_1990: 'under_4_sum_1990';
-    to_80_sum_1990: 'to_80_sum_1990';
-    over_80_sum_1990: 'over_80_sum_1990';
-    under_4_sum_1999: 'under_4_sum_1999';
-    to_80_sum_1999: 'to_80_sum_1999';
-    over_80_sum_1999: 'over_80_sum_1999';
-    under_4_sum_2009: 'under_4_sum_2009';
-    to_80_sum_2009: 'to_80_sum_2009';
-    over_80_sum_2009: 'over_80_sum_2009';
-    under_4_sum_2014: 'under_4_sum_2014';
-    to_80_sum_2014: 'to_80_sum_2014';
-    over_80_sum_2014: 'over_80_sum_2014';
-    under_4_sum_2020: 'under_4_sum_2020';
-    to_80_sum_2020: 'to_80_sum_2020';
-    over_80_sum_2020: 'over_80_sum_2020';
-    P20_POP80P: 'P20_POP80P';
-    P20_POP80P_PSEUL: 'P20_POP80P_PSEUL';
-    P20_POP80P_PSEUL_PERCENT: 'P20_POP80P_PSEUL_PERCENT';
-    tee_log: 'tee_log';
-    tee_mob: 'tee_mob';
-    precarite_logement: 'precarite_logement';
-    NA5AZ_sum: 'NA5AZ_sum';
-    NA5BE_sum: 'NA5BE_sum';
-    NA5FZ_sum: 'NA5FZ_sum';
-    NA5GU_sum: 'NA5GU_sum';
-    NA5OQ_sum: 'NA5OQ_sum';
-    s_geom_cstr_bati: 's_geom_cstr_bati';
-    hauteur: 'hauteur';
-    densite_bati: 'densite_bati';
-    h_x_s: 'h_x_s';
-    clc_1_artificialise: 'clc_1_artificialise';
-    clc_2_agricole: 'clc_2_agricole';
-    clc_3_foret_semiNaturel: 'clc_3_foret_semiNaturel';
-    clc_4_humide: 'clc_4_humide';
-    clc_5_eau: 'clc_5_eau';
-    superf_choro: 'superf_choro';
->>>>>>> dev
   };
 
   export type Inconfort_thermiqueScalarFieldEnum = (typeof Inconfort_thermiqueScalarFieldEnum)[keyof typeof Inconfort_thermiqueScalarFieldEnum]
@@ -35139,7 +28026,6 @@ export namespace Prisma {
 
 
   export const Collectivites_searchbarScalarFieldEnum: {
-<<<<<<< HEAD
     index: 'index',
     code_commune: 'code_commune',
     coordinates: 'coordinates',
@@ -35150,22 +28036,6 @@ export namespace Prisma {
     region: 'region',
     search_code: 'search_code',
     search_libelle: 'search_libelle'
-=======
-    index: 'index';
-    code_geographique: 'code_geographique';
-    libelle_geographique: 'libelle_geographique';
-    epci: 'epci';
-    libelle_epci: 'libelle_epci';
-    departement: 'departement';
-    libelle_departement: 'libelle_departement';
-    region: 'region';
-    ept: 'ept';
-    libelle_petr: 'libelle_petr';
-    code_pnr: 'code_pnr';
-    libelle_pnr: 'libelle_pnr';
-    search_code: 'search_code';
-    search_libelle: 'search_libelle';
->>>>>>> dev
   };
 
   export type Collectivites_searchbarScalarFieldEnum = (typeof Collectivites_searchbarScalarFieldEnum)[keyof typeof Collectivites_searchbarScalarFieldEnum]
@@ -35201,7 +28071,6 @@ export namespace Prisma {
 
 
   export const Communes_dromScalarFieldEnum: {
-<<<<<<< HEAD
     pk: 'pk',
     code_commune: 'code_commune',
     libelle_commune: 'libelle_commune',
@@ -35211,23 +28080,6 @@ export namespace Prisma {
     densite_bati: 'densite_bati',
     precarite_logement: 'precarite_logement',
     surface: 'surface'
-=======
-    pk: 'pk';
-    code_geographique: 'code_geographique';
-    libelle_geographique: 'libelle_geographique';
-    epci: 'epci';
-    libelle_epci: 'libelle_epci';
-    departement: 'departement';
-    region: 'region';
-    ept: 'ept';
-    libelle_petr: 'libelle_petr';
-    code_pnr: 'code_pnr';
-    libelle_pnr: 'libelle_pnr';
-    coordinates: 'coordinates';
-    densite_bati: 'densite_bati';
-    precarite_logement: 'precarite_logement';
-    surface: 'surface';
->>>>>>> dev
   };
 
   export type Communes_dromScalarFieldEnum = (typeof Communes_dromScalarFieldEnum)[keyof typeof Communes_dromScalarFieldEnum]
@@ -35332,7 +28184,6 @@ export namespace Prisma {
 
 
   export const Consommation_espaces_nafScalarFieldEnum: {
-<<<<<<< HEAD
     index: 'index',
     code_geographique: 'code_geographique',
     libelle_geographique: 'libelle_geographique',
@@ -35462,141 +28313,6 @@ export namespace Prisma {
     C10_MEN: 'C10_MEN',
     C15_MEN: 'C15_MEN',
     C21_MEN: 'C21_MEN'
-=======
-    index: 'index';
-    code_geographique: 'code_geographique';
-    libelle_geographique: 'libelle_geographique';
-    epci: 'epci';
-    libelle_epci: 'libelle_epci';
-    departement: 'departement';
-    region: 'region';
-    ept: 'ept';
-    libelle_petr: 'libelle_petr';
-    code_pnr: 'code_pnr';
-    libelle_pnr: 'libelle_pnr';
-    naf09art10: 'naf09art10';
-    art09act10: 'art09act10';
-    art09hab10: 'art09hab10';
-    art09mix10: 'art09mix10';
-    art09rou10: 'art09rou10';
-    art09fer10: 'art09fer10';
-    art09inc10: 'art09inc10';
-    naf10art11: 'naf10art11';
-    art10act11: 'art10act11';
-    art10hab11: 'art10hab11';
-    art10mix11: 'art10mix11';
-    art10rou11: 'art10rou11';
-    art10fer11: 'art10fer11';
-    art10inc11: 'art10inc11';
-    naf11art12: 'naf11art12';
-    art11act12: 'art11act12';
-    art11hab12: 'art11hab12';
-    art11mix12: 'art11mix12';
-    art11rou12: 'art11rou12';
-    art11fer12: 'art11fer12';
-    art11inc12: 'art11inc12';
-    naf12art13: 'naf12art13';
-    art12act13: 'art12act13';
-    art12hab13: 'art12hab13';
-    art12mix13: 'art12mix13';
-    art12rou13: 'art12rou13';
-    art12fer13: 'art12fer13';
-    art12inc13: 'art12inc13';
-    naf13art14: 'naf13art14';
-    art13act14: 'art13act14';
-    art13hab14: 'art13hab14';
-    art13mix14: 'art13mix14';
-    art13rou14: 'art13rou14';
-    art13fer14: 'art13fer14';
-    art13inc14: 'art13inc14';
-    naf14art15: 'naf14art15';
-    art14act15: 'art14act15';
-    art14hab15: 'art14hab15';
-    art14mix15: 'art14mix15';
-    art14rou15: 'art14rou15';
-    art14fer15: 'art14fer15';
-    art14inc15: 'art14inc15';
-    naf15art16: 'naf15art16';
-    art15act16: 'art15act16';
-    art15hab16: 'art15hab16';
-    art15mix16: 'art15mix16';
-    art15rou16: 'art15rou16';
-    art15fer16: 'art15fer16';
-    art15inc16: 'art15inc16';
-    naf16art17: 'naf16art17';
-    art16act17: 'art16act17';
-    art16hab17: 'art16hab17';
-    art16mix17: 'art16mix17';
-    art16rou17: 'art16rou17';
-    art16fer17: 'art16fer17';
-    art16inc17: 'art16inc17';
-    naf17art18: 'naf17art18';
-    art17act18: 'art17act18';
-    art17hab18: 'art17hab18';
-    art17mix18: 'art17mix18';
-    art17rou18: 'art17rou18';
-    art17fer18: 'art17fer18';
-    art17inc18: 'art17inc18';
-    naf18art19: 'naf18art19';
-    art18act19: 'art18act19';
-    art18hab19: 'art18hab19';
-    art18mix19: 'art18mix19';
-    art18rou19: 'art18rou19';
-    art18fer19: 'art18fer19';
-    art18inc19: 'art18inc19';
-    naf19art20: 'naf19art20';
-    art19act20: 'art19act20';
-    art19hab20: 'art19hab20';
-    art19mix20: 'art19mix20';
-    art19rou20: 'art19rou20';
-    art19fer20: 'art19fer20';
-    art19inc20: 'art19inc20';
-    naf20art21: 'naf20art21';
-    art20act21: 'art20act21';
-    art20hab21: 'art20hab21';
-    art20mix21: 'art20mix21';
-    art20rou21: 'art20rou21';
-    art20fer21: 'art20fer21';
-    art20inc21: 'art20inc21';
-    naf21art22: 'naf21art22';
-    art21act22: 'art21act22';
-    art21hab22: 'art21hab22';
-    art21mix22: 'art21mix22';
-    art21rou22: 'art21rou22';
-    art21fer22: 'art21fer22';
-    art21inc22: 'art21inc22';
-    naf22art23: 'naf22art23';
-    art22act23: 'art22act23';
-    art22hab23: 'art22hab23';
-    art22mix23: 'art22mix23';
-    art22rou23: 'art22rou23';
-    art22fer23: 'art22fer23';
-    art22inc23: 'art22inc23';
-    naf09art23: 'naf09art23';
-    art09act23: 'art09act23';
-    art09hab23: 'art09hab23';
-    art09mix23: 'art09mix23';
-    art09inc23: 'art09inc23';
-    art09rou23: 'art09rou23';
-    art09fer23: 'art09fer23';
-    artcom0923: 'artcom0923';
-    pop14: 'pop14';
-    pop20: 'pop20';
-    pop1420: 'pop1420';
-    men14: 'men14';
-    men20: 'men20';
-    men1420: 'men1420';
-    emp14: 'emp14';
-    emp20: 'emp20';
-    emp1420: 'emp1420';
-    mepart1420: 'mepart1420';
-    menhab1420: 'menhab1420';
-    artpop1420: 'artpop1420';
-    surfcom2023: 'surfcom2023';
-    C10_MEN: 'C10_MEN';
-    C15_MEN: 'C15_MEN';
-    C21_MEN: 'C21_MEN';
->>>>>>> dev
   };
 
   export type Consommation_espaces_nafScalarFieldEnum = (typeof Consommation_espaces_nafScalarFieldEnum)[keyof typeof Consommation_espaces_nafScalarFieldEnum]
@@ -35655,34 +28371,6 @@ export namespace Prisma {
   export type Qualite_sites_baignadeScalarFieldEnum = (typeof Qualite_sites_baignadeScalarFieldEnum)[keyof typeof Qualite_sites_baignadeScalarFieldEnum]
 
 
-  export const CommunesScalarFieldEnum: {
-    pk: 'pk',
-    code_commune: 'code_commune',
-    libelle_commune: 'libelle_commune',
-    epci: 'epci',
-    libelle_epci: 'libelle_epci',
-    libgeo: 'libgeo',
-    coordinates: 'coordinates',
-    densite_bati: 'densite_bati',
-    precarite_logement: 'precarite_logement'
-  };
-
-  export type CommunesScalarFieldEnum = (typeof CommunesScalarFieldEnum)[keyof typeof CommunesScalarFieldEnum]
-
-
-  export const Patch4cScalarFieldEnum: {
-    index: 'index',
-    code_geographique: 'code_geographique',
-    niveaux_marins: 'niveaux_marins',
-    feux_foret: 'feux_foret',
-    secheresse_sols: 'secheresse_sols',
-    fortes_precipitations: 'fortes_precipitations',
-    fortes_chaleurs: 'fortes_chaleurs'
-  };
-
-  export type Patch4cScalarFieldEnum = (typeof Patch4cScalarFieldEnum)[keyof typeof Patch4cScalarFieldEnum]
-
-
   export const AgricultureScalarFieldEnum: {
     index: 'index',
     CODGEO: 'CODGEO',
@@ -35723,58 +28411,46 @@ export namespace Prisma {
   export type Incendies_foretScalarFieldEnum = (typeof Incendies_foretScalarFieldEnum)[keyof typeof Incendies_foretScalarFieldEnum]
 
 
-  export const AgricultureScalarFieldEnum: {
-    index: 'index';
-    CODGEO: 'CODGEO';
-    LIBGEO: 'LIBGEO';
-    EPCI: 'EPCI';
-    LIBEPCI: 'LIBEPCI';
-    DEP: 'DEP';
-    REG: 'REG';
-    part_irr_SAU_2020: 'part_irr_SAU_2020';
-    part_over_55: 'part_over_55';
-  };
-
-  export type AgricultureScalarFieldEnum =
-    (typeof AgricultureScalarFieldEnum)[keyof typeof AgricultureScalarFieldEnum];
-
-  export const Incendies_foretScalarFieldEnum: {
-    index: 'index';
-    code_geographique: 'code_geographique';
-    libelle_geographique: 'libelle_geographique';
-    epci: 'epci';
-    libelle_epci: 'libelle_epci';
-    departement: 'departement';
-    region: 'region';
-    nature: 'nature';
-    annee: 'annee';
-    surface_parcourue: 'surface_parcourue';
-    surface_foret: 'surface_foret';
-    surface_maquis_garrigues: 'surface_maquis_garrigues';
-    autres_surfaces_naturelles_hors_foret: 'autres_surfaces_naturelles_hors_foret';
-    surfaces_agricoles: 'surfaces_agricoles';
-    surfaces_non_boisees: 'surfaces_non_boisees';
-    surfaces_non_boisees_artificialisees: 'surfaces_non_boisees_artificialisees';
-    surfaces_non_boisees_naturelles: 'surfaces_non_boisees_naturelles';
-    surface_autres_terres_boisees: 'surface_autres_terres_boisees';
-    autres_surfaces: 'autres_surfaces';
-  };
-
-  export type Incendies_foretScalarFieldEnum =
-    (typeof Incendies_foretScalarFieldEnum)[keyof typeof Incendies_foretScalarFieldEnum];
-
   export const Patch4cScalarFieldEnum: {
-    index: 'index';
-    code_geographique: 'code_geographique';
-    niveaux_marins: 'niveaux_marins';
-    feux_foret: 'feux_foret';
-    secheresse_sols: 'secheresse_sols';
-    fortes_precipitations: 'fortes_precipitations';
-    fortes_chaleurs: 'fortes_chaleurs';
+    index: 'index',
+    code_geographique: 'code_geographique',
+    niveaux_marins: 'niveaux_marins',
+    feux_foret: 'feux_foret',
+    secheresse_sols: 'secheresse_sols',
+    fortes_precipitations: 'fortes_precipitations',
+    fortes_chaleurs: 'fortes_chaleurs'
   };
 
-  export type Patch4cScalarFieldEnum =
-    (typeof Patch4cScalarFieldEnum)[keyof typeof Patch4cScalarFieldEnum];
+  export type Patch4cScalarFieldEnum = (typeof Patch4cScalarFieldEnum)[keyof typeof Patch4cScalarFieldEnum]
+
+
+  export const CommunesScalarFieldEnum: {
+    pk: 'pk',
+    code_commune: 'code_commune',
+    libelle_commune: 'libelle_commune',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    libgeo: 'libgeo',
+    coordinates: 'coordinates',
+    densite_bati: 'densite_bati',
+    precarite_logement: 'precarite_logement'
+  };
+
+  export type CommunesScalarFieldEnum = (typeof CommunesScalarFieldEnum)[keyof typeof CommunesScalarFieldEnum]
+
+
+  export const UsersScalarFieldEnum: {
+    pk: 'pk',
+    email: 'email',
+    username: 'username',
+    password: 'password',
+    created_at: 'created_at',
+    last_connection: 'last_connection',
+    role: 'role'
+  };
+
+  export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
+
 
   export const SortOrder: {
     asc: 'asc',
@@ -35879,7 +28555,6 @@ export namespace Prisma {
 
 
   export type inconfort_thermiqueWhereInput = {
-<<<<<<< HEAD
     AND?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[]
     OR?: inconfort_thermiqueWhereInput[]
     NOT?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[]
@@ -36192,727 +28867,6 @@ export namespace Prisma {
     clc_5_eau?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
     superf_choro?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
   }
-=======
-    AND?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[];
-    OR?: inconfort_thermiqueWhereInput[];
-    NOT?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[];
-    index?: BigIntFilter<'inconfort_thermique'> | bigint | number;
-    code_geographique?: StringFilter<'inconfort_thermique'> | string;
-    libelle_geographique?: StringFilter<'inconfort_thermique'> | string;
-    epci?: StringFilter<'inconfort_thermique'> | string;
-    libelle_epci?: StringFilter<'inconfort_thermique'> | string;
-    departement?: StringFilter<'inconfort_thermique'> | string;
-    libelle_departement?: StringFilter<'inconfort_thermique'> | string;
-    region?: IntFilter<'inconfort_thermique'> | number;
-    ept?: StringNullableFilter<'inconfort_thermique'> | string | null;
-    libelle_petr?: StringNullableFilter<'inconfort_thermique'> | string | null;
-    code_pnr?: StringNullableFilter<'inconfort_thermique'> | string | null;
-    libelle_pnr?: StringNullableFilter<'inconfort_thermique'> | string | null;
-    age_bati_post06?:
-      | FloatNullableFilter<'inconfort_thermique'>
-      | number
-      | null;
-    age_bati_91_05?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    age_bati_46_90?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    age_bati_19_45?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    age_bati_pre_19?:
-      | FloatNullableFilter<'inconfort_thermique'>
-      | number
-      | null;
-    under_4_sum_1968?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_1968?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_1968?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    under_4_sum_1975?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_1975?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_1975?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    under_4_sum_1982?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_1982?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_1982?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    under_4_sum_1990?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_1990?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_1990?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    under_4_sum_1999?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_1999?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_1999?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    under_4_sum_2009?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_2009?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_2009?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    under_4_sum_2014?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_2014?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_2014?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    under_4_sum_2020?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_2020?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_2020?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    P20_POP80P?: StringNullableFilter<'inconfort_thermique'> | string | null;
-    P20_POP80P_PSEUL?:
-      | StringNullableFilter<'inconfort_thermique'>
-      | string
-      | null;
-    P20_POP80P_PSEUL_PERCENT?:
-      | FloatNullableFilter<'inconfort_thermique'>
-      | number
-      | null;
-    tee_log?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    tee_mob?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    precarite_logement?:
-      | FloatNullableFilter<'inconfort_thermique'>
-      | number
-      | null;
-    NA5AZ_sum?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    NA5BE_sum?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    NA5FZ_sum?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    NA5GU_sum?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    NA5OQ_sum?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    s_geom_cstr_bati?:
-      | FloatNullableFilter<'inconfort_thermique'>
-      | number
-      | null;
-    hauteur?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    densite_bati?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    h_x_s?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    clc_1_artificialise?:
-      | FloatNullableFilter<'inconfort_thermique'>
-      | number
-      | null;
-    clc_2_agricole?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    clc_3_foret_semiNaturel?:
-      | FloatNullableFilter<'inconfort_thermique'>
-      | number
-      | null;
-    clc_4_humide?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    clc_5_eau?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    superf_choro?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-  };
-
-  export type inconfort_thermiqueOrderByWithRelationInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    libelle_departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrderInput | SortOrder;
-    libelle_petr?: SortOrderInput | SortOrder;
-    code_pnr?: SortOrderInput | SortOrder;
-    libelle_pnr?: SortOrderInput | SortOrder;
-    age_bati_post06?: SortOrderInput | SortOrder;
-    age_bati_91_05?: SortOrderInput | SortOrder;
-    age_bati_46_90?: SortOrderInput | SortOrder;
-    age_bati_19_45?: SortOrderInput | SortOrder;
-    age_bati_pre_19?: SortOrderInput | SortOrder;
-    under_4_sum_1968?: SortOrderInput | SortOrder;
-    to_80_sum_1968?: SortOrderInput | SortOrder;
-    over_80_sum_1968?: SortOrderInput | SortOrder;
-    under_4_sum_1975?: SortOrderInput | SortOrder;
-    to_80_sum_1975?: SortOrderInput | SortOrder;
-    over_80_sum_1975?: SortOrderInput | SortOrder;
-    under_4_sum_1982?: SortOrderInput | SortOrder;
-    to_80_sum_1982?: SortOrderInput | SortOrder;
-    over_80_sum_1982?: SortOrderInput | SortOrder;
-    under_4_sum_1990?: SortOrderInput | SortOrder;
-    to_80_sum_1990?: SortOrderInput | SortOrder;
-    over_80_sum_1990?: SortOrderInput | SortOrder;
-    under_4_sum_1999?: SortOrderInput | SortOrder;
-    to_80_sum_1999?: SortOrderInput | SortOrder;
-    over_80_sum_1999?: SortOrderInput | SortOrder;
-    under_4_sum_2009?: SortOrderInput | SortOrder;
-    to_80_sum_2009?: SortOrderInput | SortOrder;
-    over_80_sum_2009?: SortOrderInput | SortOrder;
-    under_4_sum_2014?: SortOrderInput | SortOrder;
-    to_80_sum_2014?: SortOrderInput | SortOrder;
-    over_80_sum_2014?: SortOrderInput | SortOrder;
-    under_4_sum_2020?: SortOrderInput | SortOrder;
-    to_80_sum_2020?: SortOrderInput | SortOrder;
-    over_80_sum_2020?: SortOrderInput | SortOrder;
-    P20_POP80P?: SortOrderInput | SortOrder;
-    P20_POP80P_PSEUL?: SortOrderInput | SortOrder;
-    P20_POP80P_PSEUL_PERCENT?: SortOrderInput | SortOrder;
-    tee_log?: SortOrderInput | SortOrder;
-    tee_mob?: SortOrderInput | SortOrder;
-    precarite_logement?: SortOrderInput | SortOrder;
-    NA5AZ_sum?: SortOrderInput | SortOrder;
-    NA5BE_sum?: SortOrderInput | SortOrder;
-    NA5FZ_sum?: SortOrderInput | SortOrder;
-    NA5GU_sum?: SortOrderInput | SortOrder;
-    NA5OQ_sum?: SortOrderInput | SortOrder;
-    s_geom_cstr_bati?: SortOrderInput | SortOrder;
-    hauteur?: SortOrderInput | SortOrder;
-    densite_bati?: SortOrderInput | SortOrder;
-    h_x_s?: SortOrderInput | SortOrder;
-    clc_1_artificialise?: SortOrderInput | SortOrder;
-    clc_2_agricole?: SortOrderInput | SortOrder;
-    clc_3_foret_semiNaturel?: SortOrderInput | SortOrder;
-    clc_4_humide?: SortOrderInput | SortOrder;
-    clc_5_eau?: SortOrderInput | SortOrder;
-    superf_choro?: SortOrderInput | SortOrder;
-  };
-
-  export type inconfort_thermiqueWhereUniqueInput = Prisma.AtLeast<
-    {
-      index?: bigint | number;
-      AND?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[];
-      OR?: inconfort_thermiqueWhereInput[];
-      NOT?: inconfort_thermiqueWhereInput | inconfort_thermiqueWhereInput[];
-      code_geographique?: StringFilter<'inconfort_thermique'> | string;
-      libelle_geographique?: StringFilter<'inconfort_thermique'> | string;
-      epci?: StringFilter<'inconfort_thermique'> | string;
-      libelle_epci?: StringFilter<'inconfort_thermique'> | string;
-      departement?: StringFilter<'inconfort_thermique'> | string;
-      libelle_departement?: StringFilter<'inconfort_thermique'> | string;
-      region?: IntFilter<'inconfort_thermique'> | number;
-      ept?: StringNullableFilter<'inconfort_thermique'> | string | null;
-      libelle_petr?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      code_pnr?: StringNullableFilter<'inconfort_thermique'> | string | null;
-      libelle_pnr?: StringNullableFilter<'inconfort_thermique'> | string | null;
-      age_bati_post06?:
-        | FloatNullableFilter<'inconfort_thermique'>
-        | number
-        | null;
-      age_bati_91_05?:
-        | FloatNullableFilter<'inconfort_thermique'>
-        | number
-        | null;
-      age_bati_46_90?:
-        | FloatNullableFilter<'inconfort_thermique'>
-        | number
-        | null;
-      age_bati_19_45?:
-        | FloatNullableFilter<'inconfort_thermique'>
-        | number
-        | null;
-      age_bati_pre_19?:
-        | FloatNullableFilter<'inconfort_thermique'>
-        | number
-        | null;
-      under_4_sum_1968?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      to_80_sum_1968?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      over_80_sum_1968?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      under_4_sum_1975?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      to_80_sum_1975?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      over_80_sum_1975?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      under_4_sum_1982?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      to_80_sum_1982?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      over_80_sum_1982?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      under_4_sum_1990?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      to_80_sum_1990?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      over_80_sum_1990?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      under_4_sum_1999?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      to_80_sum_1999?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      over_80_sum_1999?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      under_4_sum_2009?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      to_80_sum_2009?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      over_80_sum_2009?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      under_4_sum_2014?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      to_80_sum_2014?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      over_80_sum_2014?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      under_4_sum_2020?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      to_80_sum_2020?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      over_80_sum_2020?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      P20_POP80P?: StringNullableFilter<'inconfort_thermique'> | string | null;
-      P20_POP80P_PSEUL?:
-        | StringNullableFilter<'inconfort_thermique'>
-        | string
-        | null;
-      P20_POP80P_PSEUL_PERCENT?:
-        | FloatNullableFilter<'inconfort_thermique'>
-        | number
-        | null;
-      tee_log?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-      tee_mob?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-      precarite_logement?:
-        | FloatNullableFilter<'inconfort_thermique'>
-        | number
-        | null;
-      NA5AZ_sum?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-      NA5BE_sum?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-      NA5FZ_sum?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-      NA5GU_sum?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-      NA5OQ_sum?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-      s_geom_cstr_bati?:
-        | FloatNullableFilter<'inconfort_thermique'>
-        | number
-        | null;
-      hauteur?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-      densite_bati?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-      h_x_s?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-      clc_1_artificialise?:
-        | FloatNullableFilter<'inconfort_thermique'>
-        | number
-        | null;
-      clc_2_agricole?:
-        | FloatNullableFilter<'inconfort_thermique'>
-        | number
-        | null;
-      clc_3_foret_semiNaturel?:
-        | FloatNullableFilter<'inconfort_thermique'>
-        | number
-        | null;
-      clc_4_humide?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-      clc_5_eau?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-      superf_choro?: FloatNullableFilter<'inconfort_thermique'> | number | null;
-    },
-    'index'
-  >;
-
-  export type inconfort_thermiqueOrderByWithAggregationInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    libelle_departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrderInput | SortOrder;
-    libelle_petr?: SortOrderInput | SortOrder;
-    code_pnr?: SortOrderInput | SortOrder;
-    libelle_pnr?: SortOrderInput | SortOrder;
-    age_bati_post06?: SortOrderInput | SortOrder;
-    age_bati_91_05?: SortOrderInput | SortOrder;
-    age_bati_46_90?: SortOrderInput | SortOrder;
-    age_bati_19_45?: SortOrderInput | SortOrder;
-    age_bati_pre_19?: SortOrderInput | SortOrder;
-    under_4_sum_1968?: SortOrderInput | SortOrder;
-    to_80_sum_1968?: SortOrderInput | SortOrder;
-    over_80_sum_1968?: SortOrderInput | SortOrder;
-    under_4_sum_1975?: SortOrderInput | SortOrder;
-    to_80_sum_1975?: SortOrderInput | SortOrder;
-    over_80_sum_1975?: SortOrderInput | SortOrder;
-    under_4_sum_1982?: SortOrderInput | SortOrder;
-    to_80_sum_1982?: SortOrderInput | SortOrder;
-    over_80_sum_1982?: SortOrderInput | SortOrder;
-    under_4_sum_1990?: SortOrderInput | SortOrder;
-    to_80_sum_1990?: SortOrderInput | SortOrder;
-    over_80_sum_1990?: SortOrderInput | SortOrder;
-    under_4_sum_1999?: SortOrderInput | SortOrder;
-    to_80_sum_1999?: SortOrderInput | SortOrder;
-    over_80_sum_1999?: SortOrderInput | SortOrder;
-    under_4_sum_2009?: SortOrderInput | SortOrder;
-    to_80_sum_2009?: SortOrderInput | SortOrder;
-    over_80_sum_2009?: SortOrderInput | SortOrder;
-    under_4_sum_2014?: SortOrderInput | SortOrder;
-    to_80_sum_2014?: SortOrderInput | SortOrder;
-    over_80_sum_2014?: SortOrderInput | SortOrder;
-    under_4_sum_2020?: SortOrderInput | SortOrder;
-    to_80_sum_2020?: SortOrderInput | SortOrder;
-    over_80_sum_2020?: SortOrderInput | SortOrder;
-    P20_POP80P?: SortOrderInput | SortOrder;
-    P20_POP80P_PSEUL?: SortOrderInput | SortOrder;
-    P20_POP80P_PSEUL_PERCENT?: SortOrderInput | SortOrder;
-    tee_log?: SortOrderInput | SortOrder;
-    tee_mob?: SortOrderInput | SortOrder;
-    precarite_logement?: SortOrderInput | SortOrder;
-    NA5AZ_sum?: SortOrderInput | SortOrder;
-    NA5BE_sum?: SortOrderInput | SortOrder;
-    NA5FZ_sum?: SortOrderInput | SortOrder;
-    NA5GU_sum?: SortOrderInput | SortOrder;
-    NA5OQ_sum?: SortOrderInput | SortOrder;
-    s_geom_cstr_bati?: SortOrderInput | SortOrder;
-    hauteur?: SortOrderInput | SortOrder;
-    densite_bati?: SortOrderInput | SortOrder;
-    h_x_s?: SortOrderInput | SortOrder;
-    clc_1_artificialise?: SortOrderInput | SortOrder;
-    clc_2_agricole?: SortOrderInput | SortOrder;
-    clc_3_foret_semiNaturel?: SortOrderInput | SortOrder;
-    clc_4_humide?: SortOrderInput | SortOrder;
-    clc_5_eau?: SortOrderInput | SortOrder;
-    superf_choro?: SortOrderInput | SortOrder;
-    _count?: inconfort_thermiqueCountOrderByAggregateInput;
-    _avg?: inconfort_thermiqueAvgOrderByAggregateInput;
-    _max?: inconfort_thermiqueMaxOrderByAggregateInput;
-    _min?: inconfort_thermiqueMinOrderByAggregateInput;
-    _sum?: inconfort_thermiqueSumOrderByAggregateInput;
-  };
-
-  export type inconfort_thermiqueScalarWhereWithAggregatesInput = {
-    AND?:
-      | inconfort_thermiqueScalarWhereWithAggregatesInput
-      | inconfort_thermiqueScalarWhereWithAggregatesInput[];
-    OR?: inconfort_thermiqueScalarWhereWithAggregatesInput[];
-    NOT?:
-      | inconfort_thermiqueScalarWhereWithAggregatesInput
-      | inconfort_thermiqueScalarWhereWithAggregatesInput[];
-    index?: BigIntWithAggregatesFilter<'inconfort_thermique'> | bigint | number;
-    code_geographique?:
-      | StringWithAggregatesFilter<'inconfort_thermique'>
-      | string;
-    libelle_geographique?:
-      | StringWithAggregatesFilter<'inconfort_thermique'>
-      | string;
-    epci?: StringWithAggregatesFilter<'inconfort_thermique'> | string;
-    libelle_epci?: StringWithAggregatesFilter<'inconfort_thermique'> | string;
-    departement?: StringWithAggregatesFilter<'inconfort_thermique'> | string;
-    libelle_departement?:
-      | StringWithAggregatesFilter<'inconfort_thermique'>
-      | string;
-    region?: IntWithAggregatesFilter<'inconfort_thermique'> | number;
-    ept?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    libelle_petr?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    code_pnr?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    libelle_pnr?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    age_bati_post06?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    age_bati_91_05?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    age_bati_46_90?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    age_bati_19_45?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    age_bati_pre_19?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    under_4_sum_1968?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_1968?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_1968?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    under_4_sum_1975?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_1975?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_1975?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    under_4_sum_1982?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_1982?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_1982?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    under_4_sum_1990?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_1990?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_1990?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    under_4_sum_1999?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_1999?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_1999?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    under_4_sum_2009?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_2009?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_2009?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    under_4_sum_2014?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_2014?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_2014?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    under_4_sum_2020?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    to_80_sum_2020?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    over_80_sum_2020?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    P20_POP80P?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    P20_POP80P_PSEUL?:
-      | StringNullableWithAggregatesFilter<'inconfort_thermique'>
-      | string
-      | null;
-    P20_POP80P_PSEUL_PERCENT?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    tee_log?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    tee_mob?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    precarite_logement?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    NA5AZ_sum?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    NA5BE_sum?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    NA5FZ_sum?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    NA5GU_sum?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    NA5OQ_sum?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    s_geom_cstr_bati?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    hauteur?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    densite_bati?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    h_x_s?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    clc_1_artificialise?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    clc_2_agricole?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    clc_3_foret_semiNaturel?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    clc_4_humide?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    clc_5_eau?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-    superf_choro?:
-      | FloatNullableWithAggregatesFilter<'inconfort_thermique'>
-      | number
-      | null;
-  };
->>>>>>> dev
 
   export type clc_epciWhereInput = {
     AND?: clc_epciWhereInput | clc_epciWhereInput[]
@@ -36959,7 +28913,6 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarWhereInput = {
-<<<<<<< HEAD
     AND?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
     OR?: collectivites_searchbarWhereInput[]
     NOT?: collectivites_searchbarWhereInput | collectivites_searchbarWhereInput[]
@@ -37037,212 +28990,6 @@ export namespace Prisma {
     search_code?: StringWithAggregatesFilter<"collectivites_searchbar"> | string
     search_libelle?: StringWithAggregatesFilter<"collectivites_searchbar"> | string
   }
-=======
-    AND?:
-      | collectivites_searchbarWhereInput
-      | collectivites_searchbarWhereInput[];
-    OR?: collectivites_searchbarWhereInput[];
-    NOT?:
-      | collectivites_searchbarWhereInput
-      | collectivites_searchbarWhereInput[];
-    index?: BigIntFilter<'collectivites_searchbar'> | bigint | number;
-    code_geographique?:
-      | StringNullableFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    libelle_geographique?:
-      | StringNullableFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    epci?: StringNullableFilter<'collectivites_searchbar'> | string | null;
-    libelle_epci?:
-      | StringNullableFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    departement?:
-      | StringNullableFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    libelle_departement?:
-      | StringNullableFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    region?: StringNullableFilter<'collectivites_searchbar'> | string | null;
-    ept?: StringNullableFilter<'collectivites_searchbar'> | string | null;
-    libelle_petr?:
-      | StringNullableFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    code_pnr?: StringNullableFilter<'collectivites_searchbar'> | string | null;
-    libelle_pnr?:
-      | StringNullableFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    search_code?:
-      | StringNullableFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    search_libelle?: StringFilter<'collectivites_searchbar'> | string;
-  };
-
-  export type collectivites_searchbarOrderByWithRelationInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrderInput | SortOrder;
-    libelle_geographique?: SortOrderInput | SortOrder;
-    epci?: SortOrderInput | SortOrder;
-    libelle_epci?: SortOrderInput | SortOrder;
-    departement?: SortOrderInput | SortOrder;
-    libelle_departement?: SortOrderInput | SortOrder;
-    region?: SortOrderInput | SortOrder;
-    ept?: SortOrderInput | SortOrder;
-    libelle_petr?: SortOrderInput | SortOrder;
-    code_pnr?: SortOrderInput | SortOrder;
-    libelle_pnr?: SortOrderInput | SortOrder;
-    search_code?: SortOrderInput | SortOrder;
-    search_libelle?: SortOrder;
-  };
-
-  export type collectivites_searchbarWhereUniqueInput = Prisma.AtLeast<
-    {
-      index?: bigint | number;
-      AND?:
-        | collectivites_searchbarWhereInput
-        | collectivites_searchbarWhereInput[];
-      OR?: collectivites_searchbarWhereInput[];
-      NOT?:
-        | collectivites_searchbarWhereInput
-        | collectivites_searchbarWhereInput[];
-      code_geographique?:
-        | StringNullableFilter<'collectivites_searchbar'>
-        | string
-        | null;
-      libelle_geographique?:
-        | StringNullableFilter<'collectivites_searchbar'>
-        | string
-        | null;
-      epci?: StringNullableFilter<'collectivites_searchbar'> | string | null;
-      libelle_epci?:
-        | StringNullableFilter<'collectivites_searchbar'>
-        | string
-        | null;
-      departement?:
-        | StringNullableFilter<'collectivites_searchbar'>
-        | string
-        | null;
-      libelle_departement?:
-        | StringNullableFilter<'collectivites_searchbar'>
-        | string
-        | null;
-      region?: StringNullableFilter<'collectivites_searchbar'> | string | null;
-      ept?: StringNullableFilter<'collectivites_searchbar'> | string | null;
-      libelle_petr?:
-        | StringNullableFilter<'collectivites_searchbar'>
-        | string
-        | null;
-      code_pnr?:
-        | StringNullableFilter<'collectivites_searchbar'>
-        | string
-        | null;
-      libelle_pnr?:
-        | StringNullableFilter<'collectivites_searchbar'>
-        | string
-        | null;
-      search_code?:
-        | StringNullableFilter<'collectivites_searchbar'>
-        | string
-        | null;
-      search_libelle?: StringFilter<'collectivites_searchbar'> | string;
-    },
-    'index'
-  >;
-
-  export type collectivites_searchbarOrderByWithAggregationInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrderInput | SortOrder;
-    libelle_geographique?: SortOrderInput | SortOrder;
-    epci?: SortOrderInput | SortOrder;
-    libelle_epci?: SortOrderInput | SortOrder;
-    departement?: SortOrderInput | SortOrder;
-    libelle_departement?: SortOrderInput | SortOrder;
-    region?: SortOrderInput | SortOrder;
-    ept?: SortOrderInput | SortOrder;
-    libelle_petr?: SortOrderInput | SortOrder;
-    code_pnr?: SortOrderInput | SortOrder;
-    libelle_pnr?: SortOrderInput | SortOrder;
-    search_code?: SortOrderInput | SortOrder;
-    search_libelle?: SortOrder;
-    _count?: collectivites_searchbarCountOrderByAggregateInput;
-    _avg?: collectivites_searchbarAvgOrderByAggregateInput;
-    _max?: collectivites_searchbarMaxOrderByAggregateInput;
-    _min?: collectivites_searchbarMinOrderByAggregateInput;
-    _sum?: collectivites_searchbarSumOrderByAggregateInput;
-  };
-
-  export type collectivites_searchbarScalarWhereWithAggregatesInput = {
-    AND?:
-      | collectivites_searchbarScalarWhereWithAggregatesInput
-      | collectivites_searchbarScalarWhereWithAggregatesInput[];
-    OR?: collectivites_searchbarScalarWhereWithAggregatesInput[];
-    NOT?:
-      | collectivites_searchbarScalarWhereWithAggregatesInput
-      | collectivites_searchbarScalarWhereWithAggregatesInput[];
-    index?:
-      | BigIntWithAggregatesFilter<'collectivites_searchbar'>
-      | bigint
-      | number;
-    code_geographique?:
-      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    libelle_geographique?:
-      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    epci?:
-      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    libelle_epci?:
-      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    departement?:
-      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    libelle_departement?:
-      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    region?:
-      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    ept?:
-      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    libelle_petr?:
-      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    code_pnr?:
-      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    libelle_pnr?:
-      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    search_code?:
-      | StringNullableWithAggregatesFilter<'collectivites_searchbar'>
-      | string
-      | null;
-    search_libelle?:
-      | StringWithAggregatesFilter<'collectivites_searchbar'>
-      | string;
-  };
->>>>>>> dev
 
   export type biodiversiteWhereInput = {
     AND?: biodiversiteWhereInput | biodiversiteWhereInput[]
@@ -37314,31 +29061,30 @@ export namespace Prisma {
   }
 
   export type gestion_risquesWhereInput = {
-<<<<<<< HEAD
     AND?: gestion_risquesWhereInput | gestion_risquesWhereInput[]
     OR?: gestion_risquesWhereInput[]
     NOT?: gestion_risquesWhereInput | gestion_risquesWhereInput[]
     index?: BigIntFilter<"gestion_risques"> | bigint | number
-    code_geographique?: StringNullableFilter<"gestion_risques"> | string | null
-    lib_risque_jo?: StringNullableFilter<"gestion_risques"> | string | null
-    dat_pub_arrete?: StringNullableFilter<"gestion_risques"> | string | null
-    libelle_geographique?: StringNullableFilter<"gestion_risques"> | string | null
-    epci?: StringNullableFilter<"gestion_risques"> | string | null
-    libelle_epci?: StringNullableFilter<"gestion_risques"> | string | null
-    departement?: StringNullableFilter<"gestion_risques"> | string | null
-    region?: FloatNullableFilter<"gestion_risques"> | number | null
+    code_geographique?: StringFilter<"gestion_risques"> | string
+    lib_risque_jo?: StringFilter<"gestion_risques"> | string
+    dat_pub_arrete?: StringFilter<"gestion_risques"> | string
+    libelle_geographique?: StringFilter<"gestion_risques"> | string
+    epci?: StringFilter<"gestion_risques"> | string
+    libelle_epci?: StringFilter<"gestion_risques"> | string
+    departement?: StringFilter<"gestion_risques"> | string
+    region?: FloatFilter<"gestion_risques"> | number
   }
 
   export type gestion_risquesOrderByWithRelationInput = {
     index?: SortOrder
-    code_geographique?: SortOrderInput | SortOrder
-    lib_risque_jo?: SortOrderInput | SortOrder
-    dat_pub_arrete?: SortOrderInput | SortOrder
-    libelle_geographique?: SortOrderInput | SortOrder
-    epci?: SortOrderInput | SortOrder
-    libelle_epci?: SortOrderInput | SortOrder
-    departement?: SortOrderInput | SortOrder
-    region?: SortOrderInput | SortOrder
+    code_geographique?: SortOrder
+    lib_risque_jo?: SortOrder
+    dat_pub_arrete?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
   }
 
   export type gestion_risquesWhereUniqueInput = Prisma.AtLeast<{
@@ -37346,26 +29092,26 @@ export namespace Prisma {
     AND?: gestion_risquesWhereInput | gestion_risquesWhereInput[]
     OR?: gestion_risquesWhereInput[]
     NOT?: gestion_risquesWhereInput | gestion_risquesWhereInput[]
-    code_geographique?: StringNullableFilter<"gestion_risques"> | string | null
-    lib_risque_jo?: StringNullableFilter<"gestion_risques"> | string | null
-    dat_pub_arrete?: StringNullableFilter<"gestion_risques"> | string | null
-    libelle_geographique?: StringNullableFilter<"gestion_risques"> | string | null
-    epci?: StringNullableFilter<"gestion_risques"> | string | null
-    libelle_epci?: StringNullableFilter<"gestion_risques"> | string | null
-    departement?: StringNullableFilter<"gestion_risques"> | string | null
-    region?: FloatNullableFilter<"gestion_risques"> | number | null
+    code_geographique?: StringFilter<"gestion_risques"> | string
+    lib_risque_jo?: StringFilter<"gestion_risques"> | string
+    dat_pub_arrete?: StringFilter<"gestion_risques"> | string
+    libelle_geographique?: StringFilter<"gestion_risques"> | string
+    epci?: StringFilter<"gestion_risques"> | string
+    libelle_epci?: StringFilter<"gestion_risques"> | string
+    departement?: StringFilter<"gestion_risques"> | string
+    region?: FloatFilter<"gestion_risques"> | number
   }, "index">
 
   export type gestion_risquesOrderByWithAggregationInput = {
     index?: SortOrder
-    code_geographique?: SortOrderInput | SortOrder
-    lib_risque_jo?: SortOrderInput | SortOrder
-    dat_pub_arrete?: SortOrderInput | SortOrder
-    libelle_geographique?: SortOrderInput | SortOrder
-    epci?: SortOrderInput | SortOrder
-    libelle_epci?: SortOrderInput | SortOrder
-    departement?: SortOrderInput | SortOrder
-    region?: SortOrderInput | SortOrder
+    code_geographique?: SortOrder
+    lib_risque_jo?: SortOrder
+    dat_pub_arrete?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
     _count?: gestion_risquesCountOrderByAggregateInput
     _avg?: gestion_risquesAvgOrderByAggregateInput
     _max?: gestion_risquesMaxOrderByAggregateInput
@@ -37378,14 +29124,14 @@ export namespace Prisma {
     OR?: gestion_risquesScalarWhereWithAggregatesInput[]
     NOT?: gestion_risquesScalarWhereWithAggregatesInput | gestion_risquesScalarWhereWithAggregatesInput[]
     index?: BigIntWithAggregatesFilter<"gestion_risques"> | bigint | number
-    code_geographique?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
-    lib_risque_jo?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
-    dat_pub_arrete?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
-    libelle_geographique?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
-    epci?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
-    libelle_epci?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
-    departement?: StringNullableWithAggregatesFilter<"gestion_risques"> | string | null
-    region?: FloatNullableWithAggregatesFilter<"gestion_risques"> | number | null
+    code_geographique?: StringWithAggregatesFilter<"gestion_risques"> | string
+    lib_risque_jo?: StringWithAggregatesFilter<"gestion_risques"> | string
+    dat_pub_arrete?: StringWithAggregatesFilter<"gestion_risques"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"gestion_risques"> | string
+    epci?: StringWithAggregatesFilter<"gestion_risques"> | string
+    libelle_epci?: StringWithAggregatesFilter<"gestion_risques"> | string
+    departement?: StringWithAggregatesFilter<"gestion_risques"> | string
+    region?: FloatWithAggregatesFilter<"gestion_risques"> | number
   }
 
   export type communes_dromWhereInput = {
@@ -37461,218 +29207,6 @@ export namespace Prisma {
     precarite_logement?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
     surface?: FloatNullableWithAggregatesFilter<"communes_drom"> | number | null
   }
-=======
-    AND?: gestion_risquesWhereInput | gestion_risquesWhereInput[];
-    OR?: gestion_risquesWhereInput[];
-    NOT?: gestion_risquesWhereInput | gestion_risquesWhereInput[];
-    index?: BigIntFilter<'gestion_risques'> | bigint | number;
-    code_geographique?: StringFilter<'gestion_risques'> | string;
-    lib_risque_jo?: StringFilter<'gestion_risques'> | string;
-    dat_pub_arrete?: StringFilter<'gestion_risques'> | string;
-    libelle_geographique?: StringFilter<'gestion_risques'> | string;
-    epci?: StringFilter<'gestion_risques'> | string;
-    libelle_epci?: StringFilter<'gestion_risques'> | string;
-    departement?: StringFilter<'gestion_risques'> | string;
-    region?: FloatFilter<'gestion_risques'> | number;
-  };
-
-  export type gestion_risquesOrderByWithRelationInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    lib_risque_jo?: SortOrder;
-    dat_pub_arrete?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-  };
-
-  export type gestion_risquesWhereUniqueInput = Prisma.AtLeast<
-    {
-      index?: bigint | number;
-      AND?: gestion_risquesWhereInput | gestion_risquesWhereInput[];
-      OR?: gestion_risquesWhereInput[];
-      NOT?: gestion_risquesWhereInput | gestion_risquesWhereInput[];
-      code_geographique?: StringFilter<'gestion_risques'> | string;
-      lib_risque_jo?: StringFilter<'gestion_risques'> | string;
-      dat_pub_arrete?: StringFilter<'gestion_risques'> | string;
-      libelle_geographique?: StringFilter<'gestion_risques'> | string;
-      epci?: StringFilter<'gestion_risques'> | string;
-      libelle_epci?: StringFilter<'gestion_risques'> | string;
-      departement?: StringFilter<'gestion_risques'> | string;
-      region?: FloatFilter<'gestion_risques'> | number;
-    },
-    'index'
-  >;
-
-  export type gestion_risquesOrderByWithAggregationInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    lib_risque_jo?: SortOrder;
-    dat_pub_arrete?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    _count?: gestion_risquesCountOrderByAggregateInput;
-    _avg?: gestion_risquesAvgOrderByAggregateInput;
-    _max?: gestion_risquesMaxOrderByAggregateInput;
-    _min?: gestion_risquesMinOrderByAggregateInput;
-    _sum?: gestion_risquesSumOrderByAggregateInput;
-  };
-
-  export type gestion_risquesScalarWhereWithAggregatesInput = {
-    AND?:
-      | gestion_risquesScalarWhereWithAggregatesInput
-      | gestion_risquesScalarWhereWithAggregatesInput[];
-    OR?: gestion_risquesScalarWhereWithAggregatesInput[];
-    NOT?:
-      | gestion_risquesScalarWhereWithAggregatesInput
-      | gestion_risquesScalarWhereWithAggregatesInput[];
-    index?: BigIntWithAggregatesFilter<'gestion_risques'> | bigint | number;
-    code_geographique?: StringWithAggregatesFilter<'gestion_risques'> | string;
-    lib_risque_jo?: StringWithAggregatesFilter<'gestion_risques'> | string;
-    dat_pub_arrete?: StringWithAggregatesFilter<'gestion_risques'> | string;
-    libelle_geographique?:
-      | StringWithAggregatesFilter<'gestion_risques'>
-      | string;
-    epci?: StringWithAggregatesFilter<'gestion_risques'> | string;
-    libelle_epci?: StringWithAggregatesFilter<'gestion_risques'> | string;
-    departement?: StringWithAggregatesFilter<'gestion_risques'> | string;
-    region?: FloatWithAggregatesFilter<'gestion_risques'> | number;
-  };
-
-  export type communes_dromWhereInput = {
-    AND?: communes_dromWhereInput | communes_dromWhereInput[];
-    OR?: communes_dromWhereInput[];
-    NOT?: communes_dromWhereInput | communes_dromWhereInput[];
-    pk?: IntFilter<'communes_drom'> | number;
-    code_geographique?: StringFilter<'communes_drom'> | string;
-    libelle_geographique?: StringFilter<'communes_drom'> | string;
-    epci?: StringFilter<'communes_drom'> | string;
-    libelle_epci?: StringFilter<'communes_drom'> | string;
-    departement?: StringFilter<'communes_drom'> | string;
-    region?: BigIntFilter<'communes_drom'> | bigint | number;
-    ept?: StringNullableFilter<'communes_drom'> | string | null;
-    libelle_petr?: StringNullableFilter<'communes_drom'> | string | null;
-    code_pnr?: StringNullableFilter<'communes_drom'> | string | null;
-    libelle_pnr?: StringNullableFilter<'communes_drom'> | string | null;
-    coordinates?: StringFilter<'communes_drom'> | string;
-    densite_bati?: FloatNullableFilter<'communes_drom'> | number | null;
-    precarite_logement?: FloatNullableFilter<'communes_drom'> | number | null;
-    surface?: FloatNullableFilter<'communes_drom'> | number | null;
-  };
-
-  export type communes_dromOrderByWithRelationInput = {
-    pk?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrderInput | SortOrder;
-    libelle_petr?: SortOrderInput | SortOrder;
-    code_pnr?: SortOrderInput | SortOrder;
-    libelle_pnr?: SortOrderInput | SortOrder;
-    coordinates?: SortOrder;
-    densite_bati?: SortOrderInput | SortOrder;
-    precarite_logement?: SortOrderInput | SortOrder;
-    surface?: SortOrderInput | SortOrder;
-  };
-
-  export type communes_dromWhereUniqueInput = Prisma.AtLeast<
-    {
-      pk?: number;
-      AND?: communes_dromWhereInput | communes_dromWhereInput[];
-      OR?: communes_dromWhereInput[];
-      NOT?: communes_dromWhereInput | communes_dromWhereInput[];
-      code_geographique?: StringFilter<'communes_drom'> | string;
-      libelle_geographique?: StringFilter<'communes_drom'> | string;
-      epci?: StringFilter<'communes_drom'> | string;
-      libelle_epci?: StringFilter<'communes_drom'> | string;
-      departement?: StringFilter<'communes_drom'> | string;
-      region?: BigIntFilter<'communes_drom'> | bigint | number;
-      ept?: StringNullableFilter<'communes_drom'> | string | null;
-      libelle_petr?: StringNullableFilter<'communes_drom'> | string | null;
-      code_pnr?: StringNullableFilter<'communes_drom'> | string | null;
-      libelle_pnr?: StringNullableFilter<'communes_drom'> | string | null;
-      coordinates?: StringFilter<'communes_drom'> | string;
-      densite_bati?: FloatNullableFilter<'communes_drom'> | number | null;
-      precarite_logement?: FloatNullableFilter<'communes_drom'> | number | null;
-      surface?: FloatNullableFilter<'communes_drom'> | number | null;
-    },
-    'pk'
-  >;
-
-  export type communes_dromOrderByWithAggregationInput = {
-    pk?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrderInput | SortOrder;
-    libelle_petr?: SortOrderInput | SortOrder;
-    code_pnr?: SortOrderInput | SortOrder;
-    libelle_pnr?: SortOrderInput | SortOrder;
-    coordinates?: SortOrder;
-    densite_bati?: SortOrderInput | SortOrder;
-    precarite_logement?: SortOrderInput | SortOrder;
-    surface?: SortOrderInput | SortOrder;
-    _count?: communes_dromCountOrderByAggregateInput;
-    _avg?: communes_dromAvgOrderByAggregateInput;
-    _max?: communes_dromMaxOrderByAggregateInput;
-    _min?: communes_dromMinOrderByAggregateInput;
-    _sum?: communes_dromSumOrderByAggregateInput;
-  };
-
-  export type communes_dromScalarWhereWithAggregatesInput = {
-    AND?:
-      | communes_dromScalarWhereWithAggregatesInput
-      | communes_dromScalarWhereWithAggregatesInput[];
-    OR?: communes_dromScalarWhereWithAggregatesInput[];
-    NOT?:
-      | communes_dromScalarWhereWithAggregatesInput
-      | communes_dromScalarWhereWithAggregatesInput[];
-    pk?: IntWithAggregatesFilter<'communes_drom'> | number;
-    code_geographique?: StringWithAggregatesFilter<'communes_drom'> | string;
-    libelle_geographique?: StringWithAggregatesFilter<'communes_drom'> | string;
-    epci?: StringWithAggregatesFilter<'communes_drom'> | string;
-    libelle_epci?: StringWithAggregatesFilter<'communes_drom'> | string;
-    departement?: StringWithAggregatesFilter<'communes_drom'> | string;
-    region?: BigIntWithAggregatesFilter<'communes_drom'> | bigint | number;
-    ept?: StringNullableWithAggregatesFilter<'communes_drom'> | string | null;
-    libelle_petr?:
-      | StringNullableWithAggregatesFilter<'communes_drom'>
-      | string
-      | null;
-    code_pnr?:
-      | StringNullableWithAggregatesFilter<'communes_drom'>
-      | string
-      | null;
-    libelle_pnr?:
-      | StringNullableWithAggregatesFilter<'communes_drom'>
-      | string
-      | null;
-    coordinates?: StringWithAggregatesFilter<'communes_drom'> | string;
-    densite_bati?:
-      | FloatNullableWithAggregatesFilter<'communes_drom'>
-      | number
-      | null;
-    precarite_logement?:
-      | FloatNullableWithAggregatesFilter<'communes_drom'>
-      | number
-      | null;
-    surface?:
-      | FloatNullableWithAggregatesFilter<'communes_drom'>
-      | number
-      | null;
-  };
->>>>>>> dev
 
   export type ressources_eauWhereInput = {
     AND?: ressources_eauWhereInput | ressources_eauWhereInput[]
@@ -38160,7 +29694,6 @@ export namespace Prisma {
   }
 
   export type consommation_espaces_nafWhereInput = {
-<<<<<<< HEAD
     AND?: consommation_espaces_nafWhereInput | consommation_espaces_nafWhereInput[]
     OR?: consommation_espaces_nafWhereInput[]
     NOT?: consommation_espaces_nafWhereInput | consommation_espaces_nafWhereInput[]
@@ -38833,878 +30366,6 @@ export namespace Prisma {
     C15_MEN?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
     C21_MEN?: FloatNullableWithAggregatesFilter<"consommation_espaces_naf"> | number | null
   }
-=======
-    AND?:
-      | consommation_espaces_nafWhereInput
-      | consommation_espaces_nafWhereInput[];
-    OR?: consommation_espaces_nafWhereInput[];
-    NOT?:
-      | consommation_espaces_nafWhereInput
-      | consommation_espaces_nafWhereInput[];
-    index?: BigIntFilter<'consommation_espaces_naf'> | bigint | number;
-    code_geographique?: StringFilter<'consommation_espaces_naf'> | string;
-    libelle_geographique?: StringFilter<'consommation_espaces_naf'> | string;
-    epci?: StringFilter<'consommation_espaces_naf'> | string;
-    libelle_epci?: StringFilter<'consommation_espaces_naf'> | string;
-    departement?: StringFilter<'consommation_espaces_naf'> | string;
-    region?: IntFilter<'consommation_espaces_naf'> | number;
-    ept?: StringNullableFilter<'consommation_espaces_naf'> | string | null;
-    libelle_petr?:
-      | StringNullableFilter<'consommation_espaces_naf'>
-      | string
-      | null;
-    code_pnr?: StringNullableFilter<'consommation_espaces_naf'> | string | null;
-    libelle_pnr?:
-      | StringNullableFilter<'consommation_espaces_naf'>
-      | string
-      | null;
-    naf09art10?: FloatFilter<'consommation_espaces_naf'> | number;
-    art09act10?: FloatFilter<'consommation_espaces_naf'> | number;
-    art09hab10?: FloatFilter<'consommation_espaces_naf'> | number;
-    art09mix10?: FloatFilter<'consommation_espaces_naf'> | number;
-    art09rou10?: FloatFilter<'consommation_espaces_naf'> | number;
-    art09fer10?: FloatFilter<'consommation_espaces_naf'> | number;
-    art09inc10?: FloatFilter<'consommation_espaces_naf'> | number;
-    naf10art11?: FloatFilter<'consommation_espaces_naf'> | number;
-    art10act11?: FloatFilter<'consommation_espaces_naf'> | number;
-    art10hab11?: FloatFilter<'consommation_espaces_naf'> | number;
-    art10mix11?: FloatFilter<'consommation_espaces_naf'> | number;
-    art10rou11?: FloatFilter<'consommation_espaces_naf'> | number;
-    art10fer11?: FloatFilter<'consommation_espaces_naf'> | number;
-    art10inc11?: FloatFilter<'consommation_espaces_naf'> | number;
-    naf11art12?: FloatFilter<'consommation_espaces_naf'> | number;
-    art11act12?: FloatFilter<'consommation_espaces_naf'> | number;
-    art11hab12?: FloatFilter<'consommation_espaces_naf'> | number;
-    art11mix12?: FloatFilter<'consommation_espaces_naf'> | number;
-    art11rou12?: FloatFilter<'consommation_espaces_naf'> | number;
-    art11fer12?: FloatFilter<'consommation_espaces_naf'> | number;
-    art11inc12?: FloatFilter<'consommation_espaces_naf'> | number;
-    naf12art13?: FloatFilter<'consommation_espaces_naf'> | number;
-    art12act13?: FloatFilter<'consommation_espaces_naf'> | number;
-    art12hab13?: FloatFilter<'consommation_espaces_naf'> | number;
-    art12mix13?: FloatFilter<'consommation_espaces_naf'> | number;
-    art12rou13?: FloatFilter<'consommation_espaces_naf'> | number;
-    art12fer13?: FloatFilter<'consommation_espaces_naf'> | number;
-    art12inc13?: FloatFilter<'consommation_espaces_naf'> | number;
-    naf13art14?: FloatFilter<'consommation_espaces_naf'> | number;
-    art13act14?: FloatFilter<'consommation_espaces_naf'> | number;
-    art13hab14?: FloatFilter<'consommation_espaces_naf'> | number;
-    art13mix14?: FloatFilter<'consommation_espaces_naf'> | number;
-    art13rou14?: FloatFilter<'consommation_espaces_naf'> | number;
-    art13fer14?: FloatFilter<'consommation_espaces_naf'> | number;
-    art13inc14?: FloatFilter<'consommation_espaces_naf'> | number;
-    naf14art15?: FloatFilter<'consommation_espaces_naf'> | number;
-    art14act15?: FloatFilter<'consommation_espaces_naf'> | number;
-    art14hab15?: FloatFilter<'consommation_espaces_naf'> | number;
-    art14mix15?: FloatFilter<'consommation_espaces_naf'> | number;
-    art14rou15?: FloatFilter<'consommation_espaces_naf'> | number;
-    art14fer15?: FloatFilter<'consommation_espaces_naf'> | number;
-    art14inc15?: FloatFilter<'consommation_espaces_naf'> | number;
-    naf15art16?: FloatFilter<'consommation_espaces_naf'> | number;
-    art15act16?: FloatFilter<'consommation_espaces_naf'> | number;
-    art15hab16?: FloatFilter<'consommation_espaces_naf'> | number;
-    art15mix16?: FloatFilter<'consommation_espaces_naf'> | number;
-    art15rou16?: FloatFilter<'consommation_espaces_naf'> | number;
-    art15fer16?: FloatFilter<'consommation_espaces_naf'> | number;
-    art15inc16?: FloatFilter<'consommation_espaces_naf'> | number;
-    naf16art17?: FloatFilter<'consommation_espaces_naf'> | number;
-    art16act17?: FloatFilter<'consommation_espaces_naf'> | number;
-    art16hab17?: FloatFilter<'consommation_espaces_naf'> | number;
-    art16mix17?: FloatFilter<'consommation_espaces_naf'> | number;
-    art16rou17?: FloatFilter<'consommation_espaces_naf'> | number;
-    art16fer17?: FloatFilter<'consommation_espaces_naf'> | number;
-    art16inc17?: FloatFilter<'consommation_espaces_naf'> | number;
-    naf17art18?: FloatFilter<'consommation_espaces_naf'> | number;
-    art17act18?: FloatFilter<'consommation_espaces_naf'> | number;
-    art17hab18?: FloatFilter<'consommation_espaces_naf'> | number;
-    art17mix18?: FloatFilter<'consommation_espaces_naf'> | number;
-    art17rou18?: FloatFilter<'consommation_espaces_naf'> | number;
-    art17fer18?: FloatFilter<'consommation_espaces_naf'> | number;
-    art17inc18?: FloatFilter<'consommation_espaces_naf'> | number;
-    naf18art19?: FloatFilter<'consommation_espaces_naf'> | number;
-    art18act19?: FloatFilter<'consommation_espaces_naf'> | number;
-    art18hab19?: FloatFilter<'consommation_espaces_naf'> | number;
-    art18mix19?: FloatFilter<'consommation_espaces_naf'> | number;
-    art18rou19?: FloatFilter<'consommation_espaces_naf'> | number;
-    art18fer19?: FloatFilter<'consommation_espaces_naf'> | number;
-    art18inc19?: FloatFilter<'consommation_espaces_naf'> | number;
-    naf19art20?: FloatFilter<'consommation_espaces_naf'> | number;
-    art19act20?: FloatFilter<'consommation_espaces_naf'> | number;
-    art19hab20?: FloatFilter<'consommation_espaces_naf'> | number;
-    art19mix20?: FloatFilter<'consommation_espaces_naf'> | number;
-    art19rou20?: FloatFilter<'consommation_espaces_naf'> | number;
-    art19fer20?: FloatFilter<'consommation_espaces_naf'> | number;
-    art19inc20?: FloatFilter<'consommation_espaces_naf'> | number;
-    naf20art21?: FloatFilter<'consommation_espaces_naf'> | number;
-    art20act21?: FloatFilter<'consommation_espaces_naf'> | number;
-    art20hab21?: FloatFilter<'consommation_espaces_naf'> | number;
-    art20mix21?: FloatFilter<'consommation_espaces_naf'> | number;
-    art20rou21?: FloatFilter<'consommation_espaces_naf'> | number;
-    art20fer21?: FloatFilter<'consommation_espaces_naf'> | number;
-    art20inc21?: FloatFilter<'consommation_espaces_naf'> | number;
-    naf21art22?: FloatFilter<'consommation_espaces_naf'> | number;
-    art21act22?: FloatFilter<'consommation_espaces_naf'> | number;
-    art21hab22?: FloatFilter<'consommation_espaces_naf'> | number;
-    art21mix22?: FloatFilter<'consommation_espaces_naf'> | number;
-    art21rou22?: FloatFilter<'consommation_espaces_naf'> | number;
-    art21fer22?: FloatFilter<'consommation_espaces_naf'> | number;
-    art21inc22?: FloatFilter<'consommation_espaces_naf'> | number;
-    naf22art23?: FloatFilter<'consommation_espaces_naf'> | number;
-    art22act23?: FloatFilter<'consommation_espaces_naf'> | number;
-    art22hab23?: FloatFilter<'consommation_espaces_naf'> | number;
-    art22mix23?: FloatFilter<'consommation_espaces_naf'> | number;
-    art22rou23?: FloatFilter<'consommation_espaces_naf'> | number;
-    art22fer23?: FloatFilter<'consommation_espaces_naf'> | number;
-    art22inc23?: FloatFilter<'consommation_espaces_naf'> | number;
-    naf09art23?: FloatFilter<'consommation_espaces_naf'> | number;
-    art09act23?: FloatFilter<'consommation_espaces_naf'> | number;
-    art09hab23?: FloatFilter<'consommation_espaces_naf'> | number;
-    art09mix23?: FloatFilter<'consommation_espaces_naf'> | number;
-    art09inc23?: FloatFilter<'consommation_espaces_naf'> | number;
-    art09rou23?: FloatFilter<'consommation_espaces_naf'> | number;
-    art09fer23?: FloatFilter<'consommation_espaces_naf'> | number;
-    artcom0923?: FloatFilter<'consommation_espaces_naf'> | number;
-    pop14?: FloatFilter<'consommation_espaces_naf'> | number;
-    pop20?: FloatFilter<'consommation_espaces_naf'> | number;
-    pop1420?: FloatFilter<'consommation_espaces_naf'> | number;
-    men14?: FloatFilter<'consommation_espaces_naf'> | number;
-    men20?: FloatFilter<'consommation_espaces_naf'> | number;
-    men1420?: FloatFilter<'consommation_espaces_naf'> | number;
-    emp14?: FloatFilter<'consommation_espaces_naf'> | number;
-    emp20?: FloatFilter<'consommation_espaces_naf'> | number;
-    emp1420?: FloatFilter<'consommation_espaces_naf'> | number;
-    mepart1420?: FloatFilter<'consommation_espaces_naf'> | number;
-    menhab1420?: FloatFilter<'consommation_espaces_naf'> | number;
-    artpop1420?:
-      | FloatNullableFilter<'consommation_espaces_naf'>
-      | number
-      | null;
-    surfcom2023?: FloatFilter<'consommation_espaces_naf'> | number;
-    C10_MEN?: FloatNullableFilter<'consommation_espaces_naf'> | number | null;
-    C15_MEN?: FloatNullableFilter<'consommation_espaces_naf'> | number | null;
-    C21_MEN?: FloatNullableFilter<'consommation_espaces_naf'> | number | null;
-  };
-
-  export type consommation_espaces_nafOrderByWithRelationInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrderInput | SortOrder;
-    libelle_petr?: SortOrderInput | SortOrder;
-    code_pnr?: SortOrderInput | SortOrder;
-    libelle_pnr?: SortOrderInput | SortOrder;
-    naf09art10?: SortOrder;
-    art09act10?: SortOrder;
-    art09hab10?: SortOrder;
-    art09mix10?: SortOrder;
-    art09rou10?: SortOrder;
-    art09fer10?: SortOrder;
-    art09inc10?: SortOrder;
-    naf10art11?: SortOrder;
-    art10act11?: SortOrder;
-    art10hab11?: SortOrder;
-    art10mix11?: SortOrder;
-    art10rou11?: SortOrder;
-    art10fer11?: SortOrder;
-    art10inc11?: SortOrder;
-    naf11art12?: SortOrder;
-    art11act12?: SortOrder;
-    art11hab12?: SortOrder;
-    art11mix12?: SortOrder;
-    art11rou12?: SortOrder;
-    art11fer12?: SortOrder;
-    art11inc12?: SortOrder;
-    naf12art13?: SortOrder;
-    art12act13?: SortOrder;
-    art12hab13?: SortOrder;
-    art12mix13?: SortOrder;
-    art12rou13?: SortOrder;
-    art12fer13?: SortOrder;
-    art12inc13?: SortOrder;
-    naf13art14?: SortOrder;
-    art13act14?: SortOrder;
-    art13hab14?: SortOrder;
-    art13mix14?: SortOrder;
-    art13rou14?: SortOrder;
-    art13fer14?: SortOrder;
-    art13inc14?: SortOrder;
-    naf14art15?: SortOrder;
-    art14act15?: SortOrder;
-    art14hab15?: SortOrder;
-    art14mix15?: SortOrder;
-    art14rou15?: SortOrder;
-    art14fer15?: SortOrder;
-    art14inc15?: SortOrder;
-    naf15art16?: SortOrder;
-    art15act16?: SortOrder;
-    art15hab16?: SortOrder;
-    art15mix16?: SortOrder;
-    art15rou16?: SortOrder;
-    art15fer16?: SortOrder;
-    art15inc16?: SortOrder;
-    naf16art17?: SortOrder;
-    art16act17?: SortOrder;
-    art16hab17?: SortOrder;
-    art16mix17?: SortOrder;
-    art16rou17?: SortOrder;
-    art16fer17?: SortOrder;
-    art16inc17?: SortOrder;
-    naf17art18?: SortOrder;
-    art17act18?: SortOrder;
-    art17hab18?: SortOrder;
-    art17mix18?: SortOrder;
-    art17rou18?: SortOrder;
-    art17fer18?: SortOrder;
-    art17inc18?: SortOrder;
-    naf18art19?: SortOrder;
-    art18act19?: SortOrder;
-    art18hab19?: SortOrder;
-    art18mix19?: SortOrder;
-    art18rou19?: SortOrder;
-    art18fer19?: SortOrder;
-    art18inc19?: SortOrder;
-    naf19art20?: SortOrder;
-    art19act20?: SortOrder;
-    art19hab20?: SortOrder;
-    art19mix20?: SortOrder;
-    art19rou20?: SortOrder;
-    art19fer20?: SortOrder;
-    art19inc20?: SortOrder;
-    naf20art21?: SortOrder;
-    art20act21?: SortOrder;
-    art20hab21?: SortOrder;
-    art20mix21?: SortOrder;
-    art20rou21?: SortOrder;
-    art20fer21?: SortOrder;
-    art20inc21?: SortOrder;
-    naf21art22?: SortOrder;
-    art21act22?: SortOrder;
-    art21hab22?: SortOrder;
-    art21mix22?: SortOrder;
-    art21rou22?: SortOrder;
-    art21fer22?: SortOrder;
-    art21inc22?: SortOrder;
-    naf22art23?: SortOrder;
-    art22act23?: SortOrder;
-    art22hab23?: SortOrder;
-    art22mix23?: SortOrder;
-    art22rou23?: SortOrder;
-    art22fer23?: SortOrder;
-    art22inc23?: SortOrder;
-    naf09art23?: SortOrder;
-    art09act23?: SortOrder;
-    art09hab23?: SortOrder;
-    art09mix23?: SortOrder;
-    art09inc23?: SortOrder;
-    art09rou23?: SortOrder;
-    art09fer23?: SortOrder;
-    artcom0923?: SortOrder;
-    pop14?: SortOrder;
-    pop20?: SortOrder;
-    pop1420?: SortOrder;
-    men14?: SortOrder;
-    men20?: SortOrder;
-    men1420?: SortOrder;
-    emp14?: SortOrder;
-    emp20?: SortOrder;
-    emp1420?: SortOrder;
-    mepart1420?: SortOrder;
-    menhab1420?: SortOrder;
-    artpop1420?: SortOrderInput | SortOrder;
-    surfcom2023?: SortOrder;
-    C10_MEN?: SortOrderInput | SortOrder;
-    C15_MEN?: SortOrderInput | SortOrder;
-    C21_MEN?: SortOrderInput | SortOrder;
-  };
-
-  export type consommation_espaces_nafWhereUniqueInput = Prisma.AtLeast<
-    {
-      index?: bigint | number;
-      AND?:
-        | consommation_espaces_nafWhereInput
-        | consommation_espaces_nafWhereInput[];
-      OR?: consommation_espaces_nafWhereInput[];
-      NOT?:
-        | consommation_espaces_nafWhereInput
-        | consommation_espaces_nafWhereInput[];
-      code_geographique?: StringFilter<'consommation_espaces_naf'> | string;
-      libelle_geographique?: StringFilter<'consommation_espaces_naf'> | string;
-      epci?: StringFilter<'consommation_espaces_naf'> | string;
-      libelle_epci?: StringFilter<'consommation_espaces_naf'> | string;
-      departement?: StringFilter<'consommation_espaces_naf'> | string;
-      region?: IntFilter<'consommation_espaces_naf'> | number;
-      ept?: StringNullableFilter<'consommation_espaces_naf'> | string | null;
-      libelle_petr?:
-        | StringNullableFilter<'consommation_espaces_naf'>
-        | string
-        | null;
-      code_pnr?:
-        | StringNullableFilter<'consommation_espaces_naf'>
-        | string
-        | null;
-      libelle_pnr?:
-        | StringNullableFilter<'consommation_espaces_naf'>
-        | string
-        | null;
-      naf09art10?: FloatFilter<'consommation_espaces_naf'> | number;
-      art09act10?: FloatFilter<'consommation_espaces_naf'> | number;
-      art09hab10?: FloatFilter<'consommation_espaces_naf'> | number;
-      art09mix10?: FloatFilter<'consommation_espaces_naf'> | number;
-      art09rou10?: FloatFilter<'consommation_espaces_naf'> | number;
-      art09fer10?: FloatFilter<'consommation_espaces_naf'> | number;
-      art09inc10?: FloatFilter<'consommation_espaces_naf'> | number;
-      naf10art11?: FloatFilter<'consommation_espaces_naf'> | number;
-      art10act11?: FloatFilter<'consommation_espaces_naf'> | number;
-      art10hab11?: FloatFilter<'consommation_espaces_naf'> | number;
-      art10mix11?: FloatFilter<'consommation_espaces_naf'> | number;
-      art10rou11?: FloatFilter<'consommation_espaces_naf'> | number;
-      art10fer11?: FloatFilter<'consommation_espaces_naf'> | number;
-      art10inc11?: FloatFilter<'consommation_espaces_naf'> | number;
-      naf11art12?: FloatFilter<'consommation_espaces_naf'> | number;
-      art11act12?: FloatFilter<'consommation_espaces_naf'> | number;
-      art11hab12?: FloatFilter<'consommation_espaces_naf'> | number;
-      art11mix12?: FloatFilter<'consommation_espaces_naf'> | number;
-      art11rou12?: FloatFilter<'consommation_espaces_naf'> | number;
-      art11fer12?: FloatFilter<'consommation_espaces_naf'> | number;
-      art11inc12?: FloatFilter<'consommation_espaces_naf'> | number;
-      naf12art13?: FloatFilter<'consommation_espaces_naf'> | number;
-      art12act13?: FloatFilter<'consommation_espaces_naf'> | number;
-      art12hab13?: FloatFilter<'consommation_espaces_naf'> | number;
-      art12mix13?: FloatFilter<'consommation_espaces_naf'> | number;
-      art12rou13?: FloatFilter<'consommation_espaces_naf'> | number;
-      art12fer13?: FloatFilter<'consommation_espaces_naf'> | number;
-      art12inc13?: FloatFilter<'consommation_espaces_naf'> | number;
-      naf13art14?: FloatFilter<'consommation_espaces_naf'> | number;
-      art13act14?: FloatFilter<'consommation_espaces_naf'> | number;
-      art13hab14?: FloatFilter<'consommation_espaces_naf'> | number;
-      art13mix14?: FloatFilter<'consommation_espaces_naf'> | number;
-      art13rou14?: FloatFilter<'consommation_espaces_naf'> | number;
-      art13fer14?: FloatFilter<'consommation_espaces_naf'> | number;
-      art13inc14?: FloatFilter<'consommation_espaces_naf'> | number;
-      naf14art15?: FloatFilter<'consommation_espaces_naf'> | number;
-      art14act15?: FloatFilter<'consommation_espaces_naf'> | number;
-      art14hab15?: FloatFilter<'consommation_espaces_naf'> | number;
-      art14mix15?: FloatFilter<'consommation_espaces_naf'> | number;
-      art14rou15?: FloatFilter<'consommation_espaces_naf'> | number;
-      art14fer15?: FloatFilter<'consommation_espaces_naf'> | number;
-      art14inc15?: FloatFilter<'consommation_espaces_naf'> | number;
-      naf15art16?: FloatFilter<'consommation_espaces_naf'> | number;
-      art15act16?: FloatFilter<'consommation_espaces_naf'> | number;
-      art15hab16?: FloatFilter<'consommation_espaces_naf'> | number;
-      art15mix16?: FloatFilter<'consommation_espaces_naf'> | number;
-      art15rou16?: FloatFilter<'consommation_espaces_naf'> | number;
-      art15fer16?: FloatFilter<'consommation_espaces_naf'> | number;
-      art15inc16?: FloatFilter<'consommation_espaces_naf'> | number;
-      naf16art17?: FloatFilter<'consommation_espaces_naf'> | number;
-      art16act17?: FloatFilter<'consommation_espaces_naf'> | number;
-      art16hab17?: FloatFilter<'consommation_espaces_naf'> | number;
-      art16mix17?: FloatFilter<'consommation_espaces_naf'> | number;
-      art16rou17?: FloatFilter<'consommation_espaces_naf'> | number;
-      art16fer17?: FloatFilter<'consommation_espaces_naf'> | number;
-      art16inc17?: FloatFilter<'consommation_espaces_naf'> | number;
-      naf17art18?: FloatFilter<'consommation_espaces_naf'> | number;
-      art17act18?: FloatFilter<'consommation_espaces_naf'> | number;
-      art17hab18?: FloatFilter<'consommation_espaces_naf'> | number;
-      art17mix18?: FloatFilter<'consommation_espaces_naf'> | number;
-      art17rou18?: FloatFilter<'consommation_espaces_naf'> | number;
-      art17fer18?: FloatFilter<'consommation_espaces_naf'> | number;
-      art17inc18?: FloatFilter<'consommation_espaces_naf'> | number;
-      naf18art19?: FloatFilter<'consommation_espaces_naf'> | number;
-      art18act19?: FloatFilter<'consommation_espaces_naf'> | number;
-      art18hab19?: FloatFilter<'consommation_espaces_naf'> | number;
-      art18mix19?: FloatFilter<'consommation_espaces_naf'> | number;
-      art18rou19?: FloatFilter<'consommation_espaces_naf'> | number;
-      art18fer19?: FloatFilter<'consommation_espaces_naf'> | number;
-      art18inc19?: FloatFilter<'consommation_espaces_naf'> | number;
-      naf19art20?: FloatFilter<'consommation_espaces_naf'> | number;
-      art19act20?: FloatFilter<'consommation_espaces_naf'> | number;
-      art19hab20?: FloatFilter<'consommation_espaces_naf'> | number;
-      art19mix20?: FloatFilter<'consommation_espaces_naf'> | number;
-      art19rou20?: FloatFilter<'consommation_espaces_naf'> | number;
-      art19fer20?: FloatFilter<'consommation_espaces_naf'> | number;
-      art19inc20?: FloatFilter<'consommation_espaces_naf'> | number;
-      naf20art21?: FloatFilter<'consommation_espaces_naf'> | number;
-      art20act21?: FloatFilter<'consommation_espaces_naf'> | number;
-      art20hab21?: FloatFilter<'consommation_espaces_naf'> | number;
-      art20mix21?: FloatFilter<'consommation_espaces_naf'> | number;
-      art20rou21?: FloatFilter<'consommation_espaces_naf'> | number;
-      art20fer21?: FloatFilter<'consommation_espaces_naf'> | number;
-      art20inc21?: FloatFilter<'consommation_espaces_naf'> | number;
-      naf21art22?: FloatFilter<'consommation_espaces_naf'> | number;
-      art21act22?: FloatFilter<'consommation_espaces_naf'> | number;
-      art21hab22?: FloatFilter<'consommation_espaces_naf'> | number;
-      art21mix22?: FloatFilter<'consommation_espaces_naf'> | number;
-      art21rou22?: FloatFilter<'consommation_espaces_naf'> | number;
-      art21fer22?: FloatFilter<'consommation_espaces_naf'> | number;
-      art21inc22?: FloatFilter<'consommation_espaces_naf'> | number;
-      naf22art23?: FloatFilter<'consommation_espaces_naf'> | number;
-      art22act23?: FloatFilter<'consommation_espaces_naf'> | number;
-      art22hab23?: FloatFilter<'consommation_espaces_naf'> | number;
-      art22mix23?: FloatFilter<'consommation_espaces_naf'> | number;
-      art22rou23?: FloatFilter<'consommation_espaces_naf'> | number;
-      art22fer23?: FloatFilter<'consommation_espaces_naf'> | number;
-      art22inc23?: FloatFilter<'consommation_espaces_naf'> | number;
-      naf09art23?: FloatFilter<'consommation_espaces_naf'> | number;
-      art09act23?: FloatFilter<'consommation_espaces_naf'> | number;
-      art09hab23?: FloatFilter<'consommation_espaces_naf'> | number;
-      art09mix23?: FloatFilter<'consommation_espaces_naf'> | number;
-      art09inc23?: FloatFilter<'consommation_espaces_naf'> | number;
-      art09rou23?: FloatFilter<'consommation_espaces_naf'> | number;
-      art09fer23?: FloatFilter<'consommation_espaces_naf'> | number;
-      artcom0923?: FloatFilter<'consommation_espaces_naf'> | number;
-      pop14?: FloatFilter<'consommation_espaces_naf'> | number;
-      pop20?: FloatFilter<'consommation_espaces_naf'> | number;
-      pop1420?: FloatFilter<'consommation_espaces_naf'> | number;
-      men14?: FloatFilter<'consommation_espaces_naf'> | number;
-      men20?: FloatFilter<'consommation_espaces_naf'> | number;
-      men1420?: FloatFilter<'consommation_espaces_naf'> | number;
-      emp14?: FloatFilter<'consommation_espaces_naf'> | number;
-      emp20?: FloatFilter<'consommation_espaces_naf'> | number;
-      emp1420?: FloatFilter<'consommation_espaces_naf'> | number;
-      mepart1420?: FloatFilter<'consommation_espaces_naf'> | number;
-      menhab1420?: FloatFilter<'consommation_espaces_naf'> | number;
-      artpop1420?:
-        | FloatNullableFilter<'consommation_espaces_naf'>
-        | number
-        | null;
-      surfcom2023?: FloatFilter<'consommation_espaces_naf'> | number;
-      C10_MEN?: FloatNullableFilter<'consommation_espaces_naf'> | number | null;
-      C15_MEN?: FloatNullableFilter<'consommation_espaces_naf'> | number | null;
-      C21_MEN?: FloatNullableFilter<'consommation_espaces_naf'> | number | null;
-    },
-    'index'
-  >;
-
-  export type consommation_espaces_nafOrderByWithAggregationInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrderInput | SortOrder;
-    libelle_petr?: SortOrderInput | SortOrder;
-    code_pnr?: SortOrderInput | SortOrder;
-    libelle_pnr?: SortOrderInput | SortOrder;
-    naf09art10?: SortOrder;
-    art09act10?: SortOrder;
-    art09hab10?: SortOrder;
-    art09mix10?: SortOrder;
-    art09rou10?: SortOrder;
-    art09fer10?: SortOrder;
-    art09inc10?: SortOrder;
-    naf10art11?: SortOrder;
-    art10act11?: SortOrder;
-    art10hab11?: SortOrder;
-    art10mix11?: SortOrder;
-    art10rou11?: SortOrder;
-    art10fer11?: SortOrder;
-    art10inc11?: SortOrder;
-    naf11art12?: SortOrder;
-    art11act12?: SortOrder;
-    art11hab12?: SortOrder;
-    art11mix12?: SortOrder;
-    art11rou12?: SortOrder;
-    art11fer12?: SortOrder;
-    art11inc12?: SortOrder;
-    naf12art13?: SortOrder;
-    art12act13?: SortOrder;
-    art12hab13?: SortOrder;
-    art12mix13?: SortOrder;
-    art12rou13?: SortOrder;
-    art12fer13?: SortOrder;
-    art12inc13?: SortOrder;
-    naf13art14?: SortOrder;
-    art13act14?: SortOrder;
-    art13hab14?: SortOrder;
-    art13mix14?: SortOrder;
-    art13rou14?: SortOrder;
-    art13fer14?: SortOrder;
-    art13inc14?: SortOrder;
-    naf14art15?: SortOrder;
-    art14act15?: SortOrder;
-    art14hab15?: SortOrder;
-    art14mix15?: SortOrder;
-    art14rou15?: SortOrder;
-    art14fer15?: SortOrder;
-    art14inc15?: SortOrder;
-    naf15art16?: SortOrder;
-    art15act16?: SortOrder;
-    art15hab16?: SortOrder;
-    art15mix16?: SortOrder;
-    art15rou16?: SortOrder;
-    art15fer16?: SortOrder;
-    art15inc16?: SortOrder;
-    naf16art17?: SortOrder;
-    art16act17?: SortOrder;
-    art16hab17?: SortOrder;
-    art16mix17?: SortOrder;
-    art16rou17?: SortOrder;
-    art16fer17?: SortOrder;
-    art16inc17?: SortOrder;
-    naf17art18?: SortOrder;
-    art17act18?: SortOrder;
-    art17hab18?: SortOrder;
-    art17mix18?: SortOrder;
-    art17rou18?: SortOrder;
-    art17fer18?: SortOrder;
-    art17inc18?: SortOrder;
-    naf18art19?: SortOrder;
-    art18act19?: SortOrder;
-    art18hab19?: SortOrder;
-    art18mix19?: SortOrder;
-    art18rou19?: SortOrder;
-    art18fer19?: SortOrder;
-    art18inc19?: SortOrder;
-    naf19art20?: SortOrder;
-    art19act20?: SortOrder;
-    art19hab20?: SortOrder;
-    art19mix20?: SortOrder;
-    art19rou20?: SortOrder;
-    art19fer20?: SortOrder;
-    art19inc20?: SortOrder;
-    naf20art21?: SortOrder;
-    art20act21?: SortOrder;
-    art20hab21?: SortOrder;
-    art20mix21?: SortOrder;
-    art20rou21?: SortOrder;
-    art20fer21?: SortOrder;
-    art20inc21?: SortOrder;
-    naf21art22?: SortOrder;
-    art21act22?: SortOrder;
-    art21hab22?: SortOrder;
-    art21mix22?: SortOrder;
-    art21rou22?: SortOrder;
-    art21fer22?: SortOrder;
-    art21inc22?: SortOrder;
-    naf22art23?: SortOrder;
-    art22act23?: SortOrder;
-    art22hab23?: SortOrder;
-    art22mix23?: SortOrder;
-    art22rou23?: SortOrder;
-    art22fer23?: SortOrder;
-    art22inc23?: SortOrder;
-    naf09art23?: SortOrder;
-    art09act23?: SortOrder;
-    art09hab23?: SortOrder;
-    art09mix23?: SortOrder;
-    art09inc23?: SortOrder;
-    art09rou23?: SortOrder;
-    art09fer23?: SortOrder;
-    artcom0923?: SortOrder;
-    pop14?: SortOrder;
-    pop20?: SortOrder;
-    pop1420?: SortOrder;
-    men14?: SortOrder;
-    men20?: SortOrder;
-    men1420?: SortOrder;
-    emp14?: SortOrder;
-    emp20?: SortOrder;
-    emp1420?: SortOrder;
-    mepart1420?: SortOrder;
-    menhab1420?: SortOrder;
-    artpop1420?: SortOrderInput | SortOrder;
-    surfcom2023?: SortOrder;
-    C10_MEN?: SortOrderInput | SortOrder;
-    C15_MEN?: SortOrderInput | SortOrder;
-    C21_MEN?: SortOrderInput | SortOrder;
-    _count?: consommation_espaces_nafCountOrderByAggregateInput;
-    _avg?: consommation_espaces_nafAvgOrderByAggregateInput;
-    _max?: consommation_espaces_nafMaxOrderByAggregateInput;
-    _min?: consommation_espaces_nafMinOrderByAggregateInput;
-    _sum?: consommation_espaces_nafSumOrderByAggregateInput;
-  };
-
-  export type consommation_espaces_nafScalarWhereWithAggregatesInput = {
-    AND?:
-      | consommation_espaces_nafScalarWhereWithAggregatesInput
-      | consommation_espaces_nafScalarWhereWithAggregatesInput[];
-    OR?: consommation_espaces_nafScalarWhereWithAggregatesInput[];
-    NOT?:
-      | consommation_espaces_nafScalarWhereWithAggregatesInput
-      | consommation_espaces_nafScalarWhereWithAggregatesInput[];
-    index?:
-      | BigIntWithAggregatesFilter<'consommation_espaces_naf'>
-      | bigint
-      | number;
-    code_geographique?:
-      | StringWithAggregatesFilter<'consommation_espaces_naf'>
-      | string;
-    libelle_geographique?:
-      | StringWithAggregatesFilter<'consommation_espaces_naf'>
-      | string;
-    epci?: StringWithAggregatesFilter<'consommation_espaces_naf'> | string;
-    libelle_epci?:
-      | StringWithAggregatesFilter<'consommation_espaces_naf'>
-      | string;
-    departement?:
-      | StringWithAggregatesFilter<'consommation_espaces_naf'>
-      | string;
-    region?: IntWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    ept?:
-      | StringNullableWithAggregatesFilter<'consommation_espaces_naf'>
-      | string
-      | null;
-    libelle_petr?:
-      | StringNullableWithAggregatesFilter<'consommation_espaces_naf'>
-      | string
-      | null;
-    code_pnr?:
-      | StringNullableWithAggregatesFilter<'consommation_espaces_naf'>
-      | string
-      | null;
-    libelle_pnr?:
-      | StringNullableWithAggregatesFilter<'consommation_espaces_naf'>
-      | string
-      | null;
-    naf09art10?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art09act10?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art09hab10?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art09mix10?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art09rou10?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art09fer10?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art09inc10?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    naf10art11?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art10act11?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art10hab11?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art10mix11?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art10rou11?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art10fer11?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art10inc11?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    naf11art12?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art11act12?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art11hab12?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art11mix12?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art11rou12?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art11fer12?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art11inc12?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    naf12art13?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art12act13?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art12hab13?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art12mix13?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art12rou13?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art12fer13?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art12inc13?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    naf13art14?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art13act14?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art13hab14?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art13mix14?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art13rou14?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art13fer14?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art13inc14?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    naf14art15?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art14act15?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art14hab15?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art14mix15?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art14rou15?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art14fer15?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art14inc15?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    naf15art16?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art15act16?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art15hab16?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art15mix16?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art15rou16?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art15fer16?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art15inc16?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    naf16art17?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art16act17?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art16hab17?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art16mix17?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art16rou17?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art16fer17?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art16inc17?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    naf17art18?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art17act18?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art17hab18?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art17mix18?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art17rou18?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art17fer18?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art17inc18?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    naf18art19?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art18act19?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art18hab19?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art18mix19?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art18rou19?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art18fer19?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art18inc19?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    naf19art20?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art19act20?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art19hab20?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art19mix20?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art19rou20?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art19fer20?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art19inc20?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    naf20art21?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art20act21?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art20hab21?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art20mix21?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art20rou21?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art20fer21?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art20inc21?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    naf21art22?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art21act22?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art21hab22?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art21mix22?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art21rou22?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art21fer22?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art21inc22?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    naf22art23?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art22act23?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art22hab23?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art22mix23?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art22rou23?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art22fer23?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art22inc23?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    naf09art23?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art09act23?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art09hab23?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art09mix23?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art09inc23?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art09rou23?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    art09fer23?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    artcom0923?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    pop14?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    pop20?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    pop1420?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    men14?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    men20?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    men1420?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    emp14?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    emp20?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    emp1420?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    mepart1420?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    menhab1420?: FloatWithAggregatesFilter<'consommation_espaces_naf'> | number;
-    artpop1420?:
-      | FloatNullableWithAggregatesFilter<'consommation_espaces_naf'>
-      | number
-      | null;
-    surfcom2023?:
-      | FloatWithAggregatesFilter<'consommation_espaces_naf'>
-      | number;
-    C10_MEN?:
-      | FloatNullableWithAggregatesFilter<'consommation_espaces_naf'>
-      | number
-      | null;
-    C15_MEN?:
-      | FloatNullableWithAggregatesFilter<'consommation_espaces_naf'>
-      | number
-      | null;
-    C21_MEN?:
-      | FloatNullableWithAggregatesFilter<'consommation_espaces_naf'>
-      | number
-      | null;
-  };
-
-  export type lcz_bayonne_testWhereInput = {
-    AND?: lcz_bayonne_testWhereInput | lcz_bayonne_testWhereInput[];
-    OR?: lcz_bayonne_testWhereInput[];
-    NOT?: lcz_bayonne_testWhereInput | lcz_bayonne_testWhereInput[];
-    pk?: IntFilter<'lcz_bayonne_test'> | number;
-    identifier?: StringNullableFilter<'lcz_bayonne_test'> | string | null;
-    hre?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-    are?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-    bur?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-    ror?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-    bsr?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-    war?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-    ver?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-    vhr?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-    lcz?: StringNullableFilter<'lcz_bayonne_test'> | string | null;
-    lcz_int?: IntNullableFilter<'lcz_bayonne_test'> | number | null;
-  };
-
-  export type lcz_bayonne_testOrderByWithRelationInput = {
-    pk?: SortOrder;
-    identifier?: SortOrderInput | SortOrder;
-    hre?: SortOrderInput | SortOrder;
-    are?: SortOrderInput | SortOrder;
-    bur?: SortOrderInput | SortOrder;
-    ror?: SortOrderInput | SortOrder;
-    bsr?: SortOrderInput | SortOrder;
-    war?: SortOrderInput | SortOrder;
-    ver?: SortOrderInput | SortOrder;
-    vhr?: SortOrderInput | SortOrder;
-    lcz?: SortOrderInput | SortOrder;
-    lcz_int?: SortOrderInput | SortOrder;
-  };
-
-  export type lcz_bayonne_testWhereUniqueInput = Prisma.AtLeast<
-    {
-      pk?: number;
-      AND?: lcz_bayonne_testWhereInput | lcz_bayonne_testWhereInput[];
-      OR?: lcz_bayonne_testWhereInput[];
-      NOT?: lcz_bayonne_testWhereInput | lcz_bayonne_testWhereInput[];
-      identifier?: StringNullableFilter<'lcz_bayonne_test'> | string | null;
-      hre?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-      are?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-      bur?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-      ror?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-      bsr?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-      war?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-      ver?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-      vhr?: FloatNullableFilter<'lcz_bayonne_test'> | number | null;
-      lcz?: StringNullableFilter<'lcz_bayonne_test'> | string | null;
-      lcz_int?: IntNullableFilter<'lcz_bayonne_test'> | number | null;
-    },
-    'pk'
-  >;
-
-  export type lcz_bayonne_testOrderByWithAggregationInput = {
-    pk?: SortOrder;
-    identifier?: SortOrderInput | SortOrder;
-    hre?: SortOrderInput | SortOrder;
-    are?: SortOrderInput | SortOrder;
-    bur?: SortOrderInput | SortOrder;
-    ror?: SortOrderInput | SortOrder;
-    bsr?: SortOrderInput | SortOrder;
-    war?: SortOrderInput | SortOrder;
-    ver?: SortOrderInput | SortOrder;
-    vhr?: SortOrderInput | SortOrder;
-    lcz?: SortOrderInput | SortOrder;
-    lcz_int?: SortOrderInput | SortOrder;
-    _count?: lcz_bayonne_testCountOrderByAggregateInput;
-    _avg?: lcz_bayonne_testAvgOrderByAggregateInput;
-    _max?: lcz_bayonne_testMaxOrderByAggregateInput;
-    _min?: lcz_bayonne_testMinOrderByAggregateInput;
-    _sum?: lcz_bayonne_testSumOrderByAggregateInput;
-  };
-
-  export type lcz_bayonne_testScalarWhereWithAggregatesInput = {
-    AND?:
-      | lcz_bayonne_testScalarWhereWithAggregatesInput
-      | lcz_bayonne_testScalarWhereWithAggregatesInput[];
-    OR?: lcz_bayonne_testScalarWhereWithAggregatesInput[];
-    NOT?:
-      | lcz_bayonne_testScalarWhereWithAggregatesInput
-      | lcz_bayonne_testScalarWhereWithAggregatesInput[];
-    pk?: IntWithAggregatesFilter<'lcz_bayonne_test'> | number;
-    identifier?:
-      | StringNullableWithAggregatesFilter<'lcz_bayonne_test'>
-      | string
-      | null;
-    hre?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
-    are?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
-    bur?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
-    ror?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
-    bsr?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
-    war?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
-    ver?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
-    vhr?: FloatNullableWithAggregatesFilter<'lcz_bayonne_test'> | number | null;
-    lcz?:
-      | StringNullableWithAggregatesFilter<'lcz_bayonne_test'>
-      | string
-      | null;
-    lcz_int?:
-      | IntNullableWithAggregatesFilter<'lcz_bayonne_test'>
-      | number
-      | null;
-  };
->>>>>>> dev
 
   export type north_star_metricWhereInput = {
     AND?: north_star_metricWhereInput | north_star_metricWhereInput[]
@@ -39967,144 +30628,6 @@ export namespace Prisma {
     QEB_2020?: StringNullableWithAggregatesFilter<"qualite_sites_baignade"> | string | null
   }
 
-  export type communesWhereInput = {
-    AND?: communesWhereInput | communesWhereInput[]
-    OR?: communesWhereInput[]
-    NOT?: communesWhereInput | communesWhereInput[]
-    pk?: IntFilter<"communes"> | number
-    code_commune?: StringNullableFilter<"communes"> | string | null
-    libelle_commune?: StringNullableFilter<"communes"> | string | null
-    epci?: StringNullableFilter<"communes"> | string | null
-    libelle_epci?: StringNullableFilter<"communes"> | string | null
-    libgeo?: StringNullableFilter<"communes"> | string | null
-    coordinates?: StringNullableFilter<"communes"> | string | null
-    densite_bati?: FloatNullableFilter<"communes"> | number | null
-    precarite_logement?: FloatNullableFilter<"communes"> | number | null
-  }
-
-  export type communesOrderByWithRelationInput = {
-    pk?: SortOrder
-    code_commune?: SortOrderInput | SortOrder
-    libelle_commune?: SortOrderInput | SortOrder
-    epci?: SortOrderInput | SortOrder
-    libelle_epci?: SortOrderInput | SortOrder
-    libgeo?: SortOrderInput | SortOrder
-    coordinates?: SortOrderInput | SortOrder
-    densite_bati?: SortOrderInput | SortOrder
-    precarite_logement?: SortOrderInput | SortOrder
-  }
-
-  export type communesWhereUniqueInput = Prisma.AtLeast<{
-    pk?: number
-    AND?: communesWhereInput | communesWhereInput[]
-    OR?: communesWhereInput[]
-    NOT?: communesWhereInput | communesWhereInput[]
-    code_commune?: StringNullableFilter<"communes"> | string | null
-    libelle_commune?: StringNullableFilter<"communes"> | string | null
-    epci?: StringNullableFilter<"communes"> | string | null
-    libelle_epci?: StringNullableFilter<"communes"> | string | null
-    libgeo?: StringNullableFilter<"communes"> | string | null
-    coordinates?: StringNullableFilter<"communes"> | string | null
-    densite_bati?: FloatNullableFilter<"communes"> | number | null
-    precarite_logement?: FloatNullableFilter<"communes"> | number | null
-  }, "pk">
-
-  export type communesOrderByWithAggregationInput = {
-    pk?: SortOrder
-    code_commune?: SortOrderInput | SortOrder
-    libelle_commune?: SortOrderInput | SortOrder
-    epci?: SortOrderInput | SortOrder
-    libelle_epci?: SortOrderInput | SortOrder
-    libgeo?: SortOrderInput | SortOrder
-    coordinates?: SortOrderInput | SortOrder
-    densite_bati?: SortOrderInput | SortOrder
-    precarite_logement?: SortOrderInput | SortOrder
-    _count?: communesCountOrderByAggregateInput
-    _avg?: communesAvgOrderByAggregateInput
-    _max?: communesMaxOrderByAggregateInput
-    _min?: communesMinOrderByAggregateInput
-    _sum?: communesSumOrderByAggregateInput
-  }
-
-  export type communesScalarWhereWithAggregatesInput = {
-    AND?: communesScalarWhereWithAggregatesInput | communesScalarWhereWithAggregatesInput[]
-    OR?: communesScalarWhereWithAggregatesInput[]
-    NOT?: communesScalarWhereWithAggregatesInput | communesScalarWhereWithAggregatesInput[]
-    pk?: IntWithAggregatesFilter<"communes"> | number
-    code_commune?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    libelle_commune?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    epci?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    libelle_epci?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    libgeo?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    coordinates?: StringNullableWithAggregatesFilter<"communes"> | string | null
-    densite_bati?: FloatNullableWithAggregatesFilter<"communes"> | number | null
-    precarite_logement?: FloatNullableWithAggregatesFilter<"communes"> | number | null
-  }
-
-  export type patch4cWhereInput = {
-    AND?: patch4cWhereInput | patch4cWhereInput[]
-    OR?: patch4cWhereInput[]
-    NOT?: patch4cWhereInput | patch4cWhereInput[]
-    index?: BigIntFilter<"patch4c"> | bigint | number
-    code_geographique?: StringFilter<"patch4c"> | string
-    niveaux_marins?: FloatNullableFilter<"patch4c"> | number | null
-    feux_foret?: FloatFilter<"patch4c"> | number
-    secheresse_sols?: FloatFilter<"patch4c"> | number
-    fortes_precipitations?: FloatFilter<"patch4c"> | number
-    fortes_chaleurs?: FloatFilter<"patch4c"> | number
-  }
-
-  export type patch4cOrderByWithRelationInput = {
-    index?: SortOrder
-    code_geographique?: SortOrder
-    niveaux_marins?: SortOrderInput | SortOrder
-    feux_foret?: SortOrder
-    secheresse_sols?: SortOrder
-    fortes_precipitations?: SortOrder
-    fortes_chaleurs?: SortOrder
-  }
-
-  export type patch4cWhereUniqueInput = Prisma.AtLeast<{
-    index?: bigint | number
-    AND?: patch4cWhereInput | patch4cWhereInput[]
-    OR?: patch4cWhereInput[]
-    NOT?: patch4cWhereInput | patch4cWhereInput[]
-    code_geographique?: StringFilter<"patch4c"> | string
-    niveaux_marins?: FloatNullableFilter<"patch4c"> | number | null
-    feux_foret?: FloatFilter<"patch4c"> | number
-    secheresse_sols?: FloatFilter<"patch4c"> | number
-    fortes_precipitations?: FloatFilter<"patch4c"> | number
-    fortes_chaleurs?: FloatFilter<"patch4c"> | number
-  }, "index">
-
-  export type patch4cOrderByWithAggregationInput = {
-    index?: SortOrder
-    code_geographique?: SortOrder
-    niveaux_marins?: SortOrderInput | SortOrder
-    feux_foret?: SortOrder
-    secheresse_sols?: SortOrder
-    fortes_precipitations?: SortOrder
-    fortes_chaleurs?: SortOrder
-    _count?: patch4cCountOrderByAggregateInput
-    _avg?: patch4cAvgOrderByAggregateInput
-    _max?: patch4cMaxOrderByAggregateInput
-    _min?: patch4cMinOrderByAggregateInput
-    _sum?: patch4cSumOrderByAggregateInput
-  }
-
-  export type patch4cScalarWhereWithAggregatesInput = {
-    AND?: patch4cScalarWhereWithAggregatesInput | patch4cScalarWhereWithAggregatesInput[]
-    OR?: patch4cScalarWhereWithAggregatesInput[]
-    NOT?: patch4cScalarWhereWithAggregatesInput | patch4cScalarWhereWithAggregatesInput[]
-    index?: BigIntWithAggregatesFilter<"patch4c"> | bigint | number
-    code_geographique?: StringWithAggregatesFilter<"patch4c"> | string
-    niveaux_marins?: FloatNullableWithAggregatesFilter<"patch4c"> | number | null
-    feux_foret?: FloatWithAggregatesFilter<"patch4c"> | number
-    secheresse_sols?: FloatWithAggregatesFilter<"patch4c"> | number
-    fortes_precipitations?: FloatWithAggregatesFilter<"patch4c"> | number
-    fortes_chaleurs?: FloatWithAggregatesFilter<"patch4c"> | number
-  }
-
   export type agricultureWhereInput = {
     AND?: agricultureWhereInput | agricultureWhereInput[]
     OR?: agricultureWhereInput[]
@@ -40303,371 +30826,209 @@ export namespace Prisma {
     autres_surfaces?: FloatNullableWithAggregatesFilter<"incendies_foret"> | number | null
   }
 
-  export type agricultureWhereInput = {
-    AND?: agricultureWhereInput | agricultureWhereInput[];
-    OR?: agricultureWhereInput[];
-    NOT?: agricultureWhereInput | agricultureWhereInput[];
-    index?: BigIntFilter<'agriculture'> | bigint | number;
-    CODGEO?: StringFilter<'agriculture'> | string;
-    LIBGEO?: StringFilter<'agriculture'> | string;
-    EPCI?: StringFilter<'agriculture'> | string;
-    LIBEPCI?: StringFilter<'agriculture'> | string;
-    DEP?: StringFilter<'agriculture'> | string;
-    REG?: FloatFilter<'agriculture'> | number;
-    part_irr_SAU_2020?: FloatNullableFilter<'agriculture'> | number | null;
-    part_over_55?: FloatNullableFilter<'agriculture'> | number | null;
-  };
-
-  export type agricultureOrderByWithRelationInput = {
-    index?: SortOrder;
-    CODGEO?: SortOrder;
-    LIBGEO?: SortOrder;
-    EPCI?: SortOrder;
-    LIBEPCI?: SortOrder;
-    DEP?: SortOrder;
-    REG?: SortOrder;
-    part_irr_SAU_2020?: SortOrderInput | SortOrder;
-    part_over_55?: SortOrderInput | SortOrder;
-  };
-
-  export type agricultureWhereUniqueInput = Prisma.AtLeast<
-    {
-      index?: bigint | number;
-      AND?: agricultureWhereInput | agricultureWhereInput[];
-      OR?: agricultureWhereInput[];
-      NOT?: agricultureWhereInput | agricultureWhereInput[];
-      CODGEO?: StringFilter<'agriculture'> | string;
-      LIBGEO?: StringFilter<'agriculture'> | string;
-      EPCI?: StringFilter<'agriculture'> | string;
-      LIBEPCI?: StringFilter<'agriculture'> | string;
-      DEP?: StringFilter<'agriculture'> | string;
-      REG?: FloatFilter<'agriculture'> | number;
-      part_irr_SAU_2020?: FloatNullableFilter<'agriculture'> | number | null;
-      part_over_55?: FloatNullableFilter<'agriculture'> | number | null;
-    },
-    'index'
-  >;
-
-  export type agricultureOrderByWithAggregationInput = {
-    index?: SortOrder;
-    CODGEO?: SortOrder;
-    LIBGEO?: SortOrder;
-    EPCI?: SortOrder;
-    LIBEPCI?: SortOrder;
-    DEP?: SortOrder;
-    REG?: SortOrder;
-    part_irr_SAU_2020?: SortOrderInput | SortOrder;
-    part_over_55?: SortOrderInput | SortOrder;
-    _count?: agricultureCountOrderByAggregateInput;
-    _avg?: agricultureAvgOrderByAggregateInput;
-    _max?: agricultureMaxOrderByAggregateInput;
-    _min?: agricultureMinOrderByAggregateInput;
-    _sum?: agricultureSumOrderByAggregateInput;
-  };
-
-  export type agricultureScalarWhereWithAggregatesInput = {
-    AND?:
-      | agricultureScalarWhereWithAggregatesInput
-      | agricultureScalarWhereWithAggregatesInput[];
-    OR?: agricultureScalarWhereWithAggregatesInput[];
-    NOT?:
-      | agricultureScalarWhereWithAggregatesInput
-      | agricultureScalarWhereWithAggregatesInput[];
-    index?: BigIntWithAggregatesFilter<'agriculture'> | bigint | number;
-    CODGEO?: StringWithAggregatesFilter<'agriculture'> | string;
-    LIBGEO?: StringWithAggregatesFilter<'agriculture'> | string;
-    EPCI?: StringWithAggregatesFilter<'agriculture'> | string;
-    LIBEPCI?: StringWithAggregatesFilter<'agriculture'> | string;
-    DEP?: StringWithAggregatesFilter<'agriculture'> | string;
-    REG?: FloatWithAggregatesFilter<'agriculture'> | number;
-    part_irr_SAU_2020?:
-      | FloatNullableWithAggregatesFilter<'agriculture'>
-      | number
-      | null;
-    part_over_55?:
-      | FloatNullableWithAggregatesFilter<'agriculture'>
-      | number
-      | null;
-  };
-
-  export type incendies_foretWhereInput = {
-    AND?: incendies_foretWhereInput | incendies_foretWhereInput[];
-    OR?: incendies_foretWhereInput[];
-    NOT?: incendies_foretWhereInput | incendies_foretWhereInput[];
-    index?: BigIntFilter<'incendies_foret'> | bigint | number;
-    code_geographique?: StringFilter<'incendies_foret'> | string;
-    libelle_geographique?: StringFilter<'incendies_foret'> | string;
-    epci?: StringFilter<'incendies_foret'> | string;
-    libelle_epci?: StringFilter<'incendies_foret'> | string;
-    departement?: StringFilter<'incendies_foret'> | string;
-    region?: FloatFilter<'incendies_foret'> | number;
-    nature?: StringNullableFilter<'incendies_foret'> | string | null;
-    annee?: IntFilter<'incendies_foret'> | number;
-    surface_parcourue?: FloatFilter<'incendies_foret'> | number;
-    surface_foret?: FloatNullableFilter<'incendies_foret'> | number | null;
-    surface_maquis_garrigues?:
-      | FloatNullableFilter<'incendies_foret'>
-      | number
-      | null;
-    autres_surfaces_naturelles_hors_foret?:
-      | FloatNullableFilter<'incendies_foret'>
-      | number
-      | null;
-    surfaces_agricoles?: FloatNullableFilter<'incendies_foret'> | number | null;
-    surfaces_non_boisees?:
-      | FloatNullableFilter<'incendies_foret'>
-      | number
-      | null;
-    surfaces_non_boisees_artificialisees?:
-      | FloatNullableFilter<'incendies_foret'>
-      | number
-      | null;
-    surfaces_non_boisees_naturelles?:
-      | FloatNullableFilter<'incendies_foret'>
-      | number
-      | null;
-    surface_autres_terres_boisees?:
-      | FloatNullableFilter<'incendies_foret'>
-      | number
-      | null;
-    autres_surfaces?: FloatNullableFilter<'incendies_foret'> | number | null;
-  };
-
-  export type incendies_foretOrderByWithRelationInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    nature?: SortOrderInput | SortOrder;
-    annee?: SortOrder;
-    surface_parcourue?: SortOrder;
-    surface_foret?: SortOrderInput | SortOrder;
-    surface_maquis_garrigues?: SortOrderInput | SortOrder;
-    autres_surfaces_naturelles_hors_foret?: SortOrderInput | SortOrder;
-    surfaces_agricoles?: SortOrderInput | SortOrder;
-    surfaces_non_boisees?: SortOrderInput | SortOrder;
-    surfaces_non_boisees_artificialisees?: SortOrderInput | SortOrder;
-    surfaces_non_boisees_naturelles?: SortOrderInput | SortOrder;
-    surface_autres_terres_boisees?: SortOrderInput | SortOrder;
-    autres_surfaces?: SortOrderInput | SortOrder;
-  };
-
-  export type incendies_foretWhereUniqueInput = Prisma.AtLeast<
-    {
-      index?: bigint | number;
-      AND?: incendies_foretWhereInput | incendies_foretWhereInput[];
-      OR?: incendies_foretWhereInput[];
-      NOT?: incendies_foretWhereInput | incendies_foretWhereInput[];
-      code_geographique?: StringFilter<'incendies_foret'> | string;
-      libelle_geographique?: StringFilter<'incendies_foret'> | string;
-      epci?: StringFilter<'incendies_foret'> | string;
-      libelle_epci?: StringFilter<'incendies_foret'> | string;
-      departement?: StringFilter<'incendies_foret'> | string;
-      region?: FloatFilter<'incendies_foret'> | number;
-      nature?: StringNullableFilter<'incendies_foret'> | string | null;
-      annee?: IntFilter<'incendies_foret'> | number;
-      surface_parcourue?: FloatFilter<'incendies_foret'> | number;
-      surface_foret?: FloatNullableFilter<'incendies_foret'> | number | null;
-      surface_maquis_garrigues?:
-        | FloatNullableFilter<'incendies_foret'>
-        | number
-        | null;
-      autres_surfaces_naturelles_hors_foret?:
-        | FloatNullableFilter<'incendies_foret'>
-        | number
-        | null;
-      surfaces_agricoles?:
-        | FloatNullableFilter<'incendies_foret'>
-        | number
-        | null;
-      surfaces_non_boisees?:
-        | FloatNullableFilter<'incendies_foret'>
-        | number
-        | null;
-      surfaces_non_boisees_artificialisees?:
-        | FloatNullableFilter<'incendies_foret'>
-        | number
-        | null;
-      surfaces_non_boisees_naturelles?:
-        | FloatNullableFilter<'incendies_foret'>
-        | number
-        | null;
-      surface_autres_terres_boisees?:
-        | FloatNullableFilter<'incendies_foret'>
-        | number
-        | null;
-      autres_surfaces?: FloatNullableFilter<'incendies_foret'> | number | null;
-    },
-    'index'
-  >;
-
-  export type incendies_foretOrderByWithAggregationInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    nature?: SortOrderInput | SortOrder;
-    annee?: SortOrder;
-    surface_parcourue?: SortOrder;
-    surface_foret?: SortOrderInput | SortOrder;
-    surface_maquis_garrigues?: SortOrderInput | SortOrder;
-    autres_surfaces_naturelles_hors_foret?: SortOrderInput | SortOrder;
-    surfaces_agricoles?: SortOrderInput | SortOrder;
-    surfaces_non_boisees?: SortOrderInput | SortOrder;
-    surfaces_non_boisees_artificialisees?: SortOrderInput | SortOrder;
-    surfaces_non_boisees_naturelles?: SortOrderInput | SortOrder;
-    surface_autres_terres_boisees?: SortOrderInput | SortOrder;
-    autres_surfaces?: SortOrderInput | SortOrder;
-    _count?: incendies_foretCountOrderByAggregateInput;
-    _avg?: incendies_foretAvgOrderByAggregateInput;
-    _max?: incendies_foretMaxOrderByAggregateInput;
-    _min?: incendies_foretMinOrderByAggregateInput;
-    _sum?: incendies_foretSumOrderByAggregateInput;
-  };
-
-  export type incendies_foretScalarWhereWithAggregatesInput = {
-    AND?:
-      | incendies_foretScalarWhereWithAggregatesInput
-      | incendies_foretScalarWhereWithAggregatesInput[];
-    OR?: incendies_foretScalarWhereWithAggregatesInput[];
-    NOT?:
-      | incendies_foretScalarWhereWithAggregatesInput
-      | incendies_foretScalarWhereWithAggregatesInput[];
-    index?: BigIntWithAggregatesFilter<'incendies_foret'> | bigint | number;
-    code_geographique?: StringWithAggregatesFilter<'incendies_foret'> | string;
-    libelle_geographique?:
-      | StringWithAggregatesFilter<'incendies_foret'>
-      | string;
-    epci?: StringWithAggregatesFilter<'incendies_foret'> | string;
-    libelle_epci?: StringWithAggregatesFilter<'incendies_foret'> | string;
-    departement?: StringWithAggregatesFilter<'incendies_foret'> | string;
-    region?: FloatWithAggregatesFilter<'incendies_foret'> | number;
-    nature?:
-      | StringNullableWithAggregatesFilter<'incendies_foret'>
-      | string
-      | null;
-    annee?: IntWithAggregatesFilter<'incendies_foret'> | number;
-    surface_parcourue?: FloatWithAggregatesFilter<'incendies_foret'> | number;
-    surface_foret?:
-      | FloatNullableWithAggregatesFilter<'incendies_foret'>
-      | number
-      | null;
-    surface_maquis_garrigues?:
-      | FloatNullableWithAggregatesFilter<'incendies_foret'>
-      | number
-      | null;
-    autres_surfaces_naturelles_hors_foret?:
-      | FloatNullableWithAggregatesFilter<'incendies_foret'>
-      | number
-      | null;
-    surfaces_agricoles?:
-      | FloatNullableWithAggregatesFilter<'incendies_foret'>
-      | number
-      | null;
-    surfaces_non_boisees?:
-      | FloatNullableWithAggregatesFilter<'incendies_foret'>
-      | number
-      | null;
-    surfaces_non_boisees_artificialisees?:
-      | FloatNullableWithAggregatesFilter<'incendies_foret'>
-      | number
-      | null;
-    surfaces_non_boisees_naturelles?:
-      | FloatNullableWithAggregatesFilter<'incendies_foret'>
-      | number
-      | null;
-    surface_autres_terres_boisees?:
-      | FloatNullableWithAggregatesFilter<'incendies_foret'>
-      | number
-      | null;
-    autres_surfaces?:
-      | FloatNullableWithAggregatesFilter<'incendies_foret'>
-      | number
-      | null;
-  };
-
   export type patch4cWhereInput = {
-    AND?: patch4cWhereInput | patch4cWhereInput[];
-    OR?: patch4cWhereInput[];
-    NOT?: patch4cWhereInput | patch4cWhereInput[];
-    index?: BigIntFilter<'patch4c'> | bigint | number;
-    code_geographique?: StringFilter<'patch4c'> | string;
-    niveaux_marins?: FloatNullableFilter<'patch4c'> | number | null;
-    feux_foret?: FloatFilter<'patch4c'> | number;
-    secheresse_sols?: FloatFilter<'patch4c'> | number;
-    fortes_precipitations?: FloatFilter<'patch4c'> | number;
-    fortes_chaleurs?: FloatFilter<'patch4c'> | number;
-  };
+    AND?: patch4cWhereInput | patch4cWhereInput[]
+    OR?: patch4cWhereInput[]
+    NOT?: patch4cWhereInput | patch4cWhereInput[]
+    index?: BigIntFilter<"patch4c"> | bigint | number
+    code_geographique?: StringFilter<"patch4c"> | string
+    niveaux_marins?: FloatNullableFilter<"patch4c"> | number | null
+    feux_foret?: FloatFilter<"patch4c"> | number
+    secheresse_sols?: FloatFilter<"patch4c"> | number
+    fortes_precipitations?: FloatFilter<"patch4c"> | number
+    fortes_chaleurs?: FloatFilter<"patch4c"> | number
+  }
 
   export type patch4cOrderByWithRelationInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    niveaux_marins?: SortOrderInput | SortOrder;
-    feux_foret?: SortOrder;
-    secheresse_sols?: SortOrder;
-    fortes_precipitations?: SortOrder;
-    fortes_chaleurs?: SortOrder;
-  };
+    index?: SortOrder
+    code_geographique?: SortOrder
+    niveaux_marins?: SortOrderInput | SortOrder
+    feux_foret?: SortOrder
+    secheresse_sols?: SortOrder
+    fortes_precipitations?: SortOrder
+    fortes_chaleurs?: SortOrder
+  }
 
-  export type patch4cWhereUniqueInput = Prisma.AtLeast<
-    {
-      index?: bigint | number;
-      AND?: patch4cWhereInput | patch4cWhereInput[];
-      OR?: patch4cWhereInput[];
-      NOT?: patch4cWhereInput | patch4cWhereInput[];
-      code_geographique?: StringFilter<'patch4c'> | string;
-      niveaux_marins?: FloatNullableFilter<'patch4c'> | number | null;
-      feux_foret?: FloatFilter<'patch4c'> | number;
-      secheresse_sols?: FloatFilter<'patch4c'> | number;
-      fortes_precipitations?: FloatFilter<'patch4c'> | number;
-      fortes_chaleurs?: FloatFilter<'patch4c'> | number;
-    },
-    'index'
-  >;
+  export type patch4cWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: patch4cWhereInput | patch4cWhereInput[]
+    OR?: patch4cWhereInput[]
+    NOT?: patch4cWhereInput | patch4cWhereInput[]
+    code_geographique?: StringFilter<"patch4c"> | string
+    niveaux_marins?: FloatNullableFilter<"patch4c"> | number | null
+    feux_foret?: FloatFilter<"patch4c"> | number
+    secheresse_sols?: FloatFilter<"patch4c"> | number
+    fortes_precipitations?: FloatFilter<"patch4c"> | number
+    fortes_chaleurs?: FloatFilter<"patch4c"> | number
+  }, "index">
 
   export type patch4cOrderByWithAggregationInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    niveaux_marins?: SortOrderInput | SortOrder;
-    feux_foret?: SortOrder;
-    secheresse_sols?: SortOrder;
-    fortes_precipitations?: SortOrder;
-    fortes_chaleurs?: SortOrder;
-    _count?: patch4cCountOrderByAggregateInput;
-    _avg?: patch4cAvgOrderByAggregateInput;
-    _max?: patch4cMaxOrderByAggregateInput;
-    _min?: patch4cMinOrderByAggregateInput;
-    _sum?: patch4cSumOrderByAggregateInput;
-  };
+    index?: SortOrder
+    code_geographique?: SortOrder
+    niveaux_marins?: SortOrderInput | SortOrder
+    feux_foret?: SortOrder
+    secheresse_sols?: SortOrder
+    fortes_precipitations?: SortOrder
+    fortes_chaleurs?: SortOrder
+    _count?: patch4cCountOrderByAggregateInput
+    _avg?: patch4cAvgOrderByAggregateInput
+    _max?: patch4cMaxOrderByAggregateInput
+    _min?: patch4cMinOrderByAggregateInput
+    _sum?: patch4cSumOrderByAggregateInput
+  }
 
   export type patch4cScalarWhereWithAggregatesInput = {
-    AND?:
-      | patch4cScalarWhereWithAggregatesInput
-      | patch4cScalarWhereWithAggregatesInput[];
-    OR?: patch4cScalarWhereWithAggregatesInput[];
-    NOT?:
-      | patch4cScalarWhereWithAggregatesInput
-      | patch4cScalarWhereWithAggregatesInput[];
-    index?: BigIntWithAggregatesFilter<'patch4c'> | bigint | number;
-    code_geographique?: StringWithAggregatesFilter<'patch4c'> | string;
-    niveaux_marins?:
-      | FloatNullableWithAggregatesFilter<'patch4c'>
-      | number
-      | null;
-    feux_foret?: FloatWithAggregatesFilter<'patch4c'> | number;
-    secheresse_sols?: FloatWithAggregatesFilter<'patch4c'> | number;
-    fortes_precipitations?: FloatWithAggregatesFilter<'patch4c'> | number;
-    fortes_chaleurs?: FloatWithAggregatesFilter<'patch4c'> | number;
-  };
+    AND?: patch4cScalarWhereWithAggregatesInput | patch4cScalarWhereWithAggregatesInput[]
+    OR?: patch4cScalarWhereWithAggregatesInput[]
+    NOT?: patch4cScalarWhereWithAggregatesInput | patch4cScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"patch4c"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"patch4c"> | string
+    niveaux_marins?: FloatNullableWithAggregatesFilter<"patch4c"> | number | null
+    feux_foret?: FloatWithAggregatesFilter<"patch4c"> | number
+    secheresse_sols?: FloatWithAggregatesFilter<"patch4c"> | number
+    fortes_precipitations?: FloatWithAggregatesFilter<"patch4c"> | number
+    fortes_chaleurs?: FloatWithAggregatesFilter<"patch4c"> | number
+  }
+
+  export type communesWhereInput = {
+    AND?: communesWhereInput | communesWhereInput[]
+    OR?: communesWhereInput[]
+    NOT?: communesWhereInput | communesWhereInput[]
+    pk?: IntFilter<"communes"> | number
+    code_commune?: StringNullableFilter<"communes"> | string | null
+    libelle_commune?: StringNullableFilter<"communes"> | string | null
+    epci?: StringNullableFilter<"communes"> | string | null
+    libelle_epci?: StringNullableFilter<"communes"> | string | null
+    libgeo?: StringNullableFilter<"communes"> | string | null
+    coordinates?: StringNullableFilter<"communes"> | string | null
+    densite_bati?: FloatNullableFilter<"communes"> | number | null
+    precarite_logement?: FloatNullableFilter<"communes"> | number | null
+  }
+
+  export type communesOrderByWithRelationInput = {
+    pk?: SortOrder
+    code_commune?: SortOrderInput | SortOrder
+    libelle_commune?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    libgeo?: SortOrderInput | SortOrder
+    coordinates?: SortOrderInput | SortOrder
+    densite_bati?: SortOrderInput | SortOrder
+    precarite_logement?: SortOrderInput | SortOrder
+  }
+
+  export type communesWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: communesWhereInput | communesWhereInput[]
+    OR?: communesWhereInput[]
+    NOT?: communesWhereInput | communesWhereInput[]
+    code_commune?: StringNullableFilter<"communes"> | string | null
+    libelle_commune?: StringNullableFilter<"communes"> | string | null
+    epci?: StringNullableFilter<"communes"> | string | null
+    libelle_epci?: StringNullableFilter<"communes"> | string | null
+    libgeo?: StringNullableFilter<"communes"> | string | null
+    coordinates?: StringNullableFilter<"communes"> | string | null
+    densite_bati?: FloatNullableFilter<"communes"> | number | null
+    precarite_logement?: FloatNullableFilter<"communes"> | number | null
+  }, "pk">
+
+  export type communesOrderByWithAggregationInput = {
+    pk?: SortOrder
+    code_commune?: SortOrderInput | SortOrder
+    libelle_commune?: SortOrderInput | SortOrder
+    epci?: SortOrderInput | SortOrder
+    libelle_epci?: SortOrderInput | SortOrder
+    libgeo?: SortOrderInput | SortOrder
+    coordinates?: SortOrderInput | SortOrder
+    densite_bati?: SortOrderInput | SortOrder
+    precarite_logement?: SortOrderInput | SortOrder
+    _count?: communesCountOrderByAggregateInput
+    _avg?: communesAvgOrderByAggregateInput
+    _max?: communesMaxOrderByAggregateInput
+    _min?: communesMinOrderByAggregateInput
+    _sum?: communesSumOrderByAggregateInput
+  }
+
+  export type communesScalarWhereWithAggregatesInput = {
+    AND?: communesScalarWhereWithAggregatesInput | communesScalarWhereWithAggregatesInput[]
+    OR?: communesScalarWhereWithAggregatesInput[]
+    NOT?: communesScalarWhereWithAggregatesInput | communesScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"communes"> | number
+    code_commune?: StringNullableWithAggregatesFilter<"communes"> | string | null
+    libelle_commune?: StringNullableWithAggregatesFilter<"communes"> | string | null
+    epci?: StringNullableWithAggregatesFilter<"communes"> | string | null
+    libelle_epci?: StringNullableWithAggregatesFilter<"communes"> | string | null
+    libgeo?: StringNullableWithAggregatesFilter<"communes"> | string | null
+    coordinates?: StringNullableWithAggregatesFilter<"communes"> | string | null
+    densite_bati?: FloatNullableWithAggregatesFilter<"communes"> | number | null
+    precarite_logement?: FloatNullableWithAggregatesFilter<"communes"> | number | null
+  }
+
+  export type usersWhereInput = {
+    AND?: usersWhereInput | usersWhereInput[]
+    OR?: usersWhereInput[]
+    NOT?: usersWhereInput | usersWhereInput[]
+    pk?: IntFilter<"users"> | number
+    email?: StringFilter<"users"> | string
+    username?: StringFilter<"users"> | string
+    password?: StringFilter<"users"> | string
+    created_at?: DateTimeFilter<"users"> | Date | string
+    last_connection?: DateTimeNullableFilter<"users"> | Date | string | null
+    role?: StringFilter<"users"> | string
+  }
+
+  export type usersOrderByWithRelationInput = {
+    pk?: SortOrder
+    email?: SortOrder
+    username?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+    last_connection?: SortOrderInput | SortOrder
+    role?: SortOrder
+  }
+
+  export type usersWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    email?: string
+    username?: string
+    AND?: usersWhereInput | usersWhereInput[]
+    OR?: usersWhereInput[]
+    NOT?: usersWhereInput | usersWhereInput[]
+    password?: StringFilter<"users"> | string
+    created_at?: DateTimeFilter<"users"> | Date | string
+    last_connection?: DateTimeNullableFilter<"users"> | Date | string | null
+    role?: StringFilter<"users"> | string
+  }, "pk" | "email" | "username">
+
+  export type usersOrderByWithAggregationInput = {
+    pk?: SortOrder
+    email?: SortOrder
+    username?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+    last_connection?: SortOrderInput | SortOrder
+    role?: SortOrder
+    _count?: usersCountOrderByAggregateInput
+    _avg?: usersAvgOrderByAggregateInput
+    _max?: usersMaxOrderByAggregateInput
+    _min?: usersMinOrderByAggregateInput
+    _sum?: usersSumOrderByAggregateInput
+  }
+
+  export type usersScalarWhereWithAggregatesInput = {
+    AND?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
+    OR?: usersScalarWhereWithAggregatesInput[]
+    NOT?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"users"> | number
+    email?: StringWithAggregatesFilter<"users"> | string
+    username?: StringWithAggregatesFilter<"users"> | string
+    password?: StringWithAggregatesFilter<"users"> | string
+    created_at?: DateTimeWithAggregatesFilter<"users"> | Date | string
+    last_connection?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
+    role?: StringWithAggregatesFilter<"users"> | string
+  }
 
   export type inconfort_thermiqueCreateInput = {
-<<<<<<< HEAD
     index: bigint | number
     code_geographique: string
     libelle_geographique: string
@@ -41086,509 +31447,6 @@ export namespace Prisma {
     clc_5_eau?: NullableFloatFieldUpdateOperationsInput | number | null
     superf_choro?: NullableFloatFieldUpdateOperationsInput | number | null
   }
-=======
-    index: bigint | number;
-    code_geographique: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    libelle_departement: string;
-    region: number;
-    ept?: string | null;
-    libelle_petr?: string | null;
-    code_pnr?: string | null;
-    libelle_pnr?: string | null;
-    age_bati_post06?: number | null;
-    age_bati_91_05?: number | null;
-    age_bati_46_90?: number | null;
-    age_bati_19_45?: number | null;
-    age_bati_pre_19?: number | null;
-    under_4_sum_1968?: string | null;
-    to_80_sum_1968?: string | null;
-    over_80_sum_1968?: string | null;
-    under_4_sum_1975?: string | null;
-    to_80_sum_1975?: string | null;
-    over_80_sum_1975?: string | null;
-    under_4_sum_1982?: string | null;
-    to_80_sum_1982?: string | null;
-    over_80_sum_1982?: string | null;
-    under_4_sum_1990?: string | null;
-    to_80_sum_1990?: string | null;
-    over_80_sum_1990?: string | null;
-    under_4_sum_1999?: string | null;
-    to_80_sum_1999?: string | null;
-    over_80_sum_1999?: string | null;
-    under_4_sum_2009?: string | null;
-    to_80_sum_2009?: string | null;
-    over_80_sum_2009?: string | null;
-    under_4_sum_2014?: string | null;
-    to_80_sum_2014?: string | null;
-    over_80_sum_2014?: string | null;
-    under_4_sum_2020?: string | null;
-    to_80_sum_2020?: string | null;
-    over_80_sum_2020?: string | null;
-    P20_POP80P?: string | null;
-    P20_POP80P_PSEUL?: string | null;
-    P20_POP80P_PSEUL_PERCENT?: number | null;
-    tee_log?: number | null;
-    tee_mob?: number | null;
-    precarite_logement?: number | null;
-    NA5AZ_sum?: number | null;
-    NA5BE_sum?: number | null;
-    NA5FZ_sum?: number | null;
-    NA5GU_sum?: number | null;
-    NA5OQ_sum?: number | null;
-    s_geom_cstr_bati?: number | null;
-    hauteur?: number | null;
-    densite_bati?: number | null;
-    h_x_s?: number | null;
-    clc_1_artificialise?: number | null;
-    clc_2_agricole?: number | null;
-    clc_3_foret_semiNaturel?: number | null;
-    clc_4_humide?: number | null;
-    clc_5_eau?: number | null;
-    superf_choro?: number | null;
-  };
-
-  export type inconfort_thermiqueUncheckedCreateInput = {
-    index: bigint | number;
-    code_geographique: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    libelle_departement: string;
-    region: number;
-    ept?: string | null;
-    libelle_petr?: string | null;
-    code_pnr?: string | null;
-    libelle_pnr?: string | null;
-    age_bati_post06?: number | null;
-    age_bati_91_05?: number | null;
-    age_bati_46_90?: number | null;
-    age_bati_19_45?: number | null;
-    age_bati_pre_19?: number | null;
-    under_4_sum_1968?: string | null;
-    to_80_sum_1968?: string | null;
-    over_80_sum_1968?: string | null;
-    under_4_sum_1975?: string | null;
-    to_80_sum_1975?: string | null;
-    over_80_sum_1975?: string | null;
-    under_4_sum_1982?: string | null;
-    to_80_sum_1982?: string | null;
-    over_80_sum_1982?: string | null;
-    under_4_sum_1990?: string | null;
-    to_80_sum_1990?: string | null;
-    over_80_sum_1990?: string | null;
-    under_4_sum_1999?: string | null;
-    to_80_sum_1999?: string | null;
-    over_80_sum_1999?: string | null;
-    under_4_sum_2009?: string | null;
-    to_80_sum_2009?: string | null;
-    over_80_sum_2009?: string | null;
-    under_4_sum_2014?: string | null;
-    to_80_sum_2014?: string | null;
-    over_80_sum_2014?: string | null;
-    under_4_sum_2020?: string | null;
-    to_80_sum_2020?: string | null;
-    over_80_sum_2020?: string | null;
-    P20_POP80P?: string | null;
-    P20_POP80P_PSEUL?: string | null;
-    P20_POP80P_PSEUL_PERCENT?: number | null;
-    tee_log?: number | null;
-    tee_mob?: number | null;
-    precarite_logement?: number | null;
-    NA5AZ_sum?: number | null;
-    NA5BE_sum?: number | null;
-    NA5FZ_sum?: number | null;
-    NA5GU_sum?: number | null;
-    NA5OQ_sum?: number | null;
-    s_geom_cstr_bati?: number | null;
-    hauteur?: number | null;
-    densite_bati?: number | null;
-    h_x_s?: number | null;
-    clc_1_artificialise?: number | null;
-    clc_2_agricole?: number | null;
-    clc_3_foret_semiNaturel?: number | null;
-    clc_4_humide?: number | null;
-    clc_5_eau?: number | null;
-    superf_choro?: number | null;
-  };
-
-  export type inconfort_thermiqueUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    libelle_departement?: StringFieldUpdateOperationsInput | string;
-    region?: IntFieldUpdateOperationsInput | number;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null;
-    under_4_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
-    P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null;
-    P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null;
-    P20_POP80P_PSEUL_PERCENT?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    tee_log?: NullableFloatFieldUpdateOperationsInput | number | null;
-    tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null;
-    precarite_logement?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    NA5AZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5BE_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5FZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5GU_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5OQ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
-    hauteur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
-    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
-    clc_1_artificialise?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    clc_2_agricole?: NullableFloatFieldUpdateOperationsInput | number | null;
-    clc_3_foret_semiNaturel?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    clc_4_humide?: NullableFloatFieldUpdateOperationsInput | number | null;
-    clc_5_eau?: NullableFloatFieldUpdateOperationsInput | number | null;
-    superf_choro?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type inconfort_thermiqueUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    libelle_departement?: StringFieldUpdateOperationsInput | string;
-    region?: IntFieldUpdateOperationsInput | number;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null;
-    under_4_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
-    P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null;
-    P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null;
-    P20_POP80P_PSEUL_PERCENT?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    tee_log?: NullableFloatFieldUpdateOperationsInput | number | null;
-    tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null;
-    precarite_logement?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    NA5AZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5BE_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5FZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5GU_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5OQ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
-    hauteur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
-    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
-    clc_1_artificialise?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    clc_2_agricole?: NullableFloatFieldUpdateOperationsInput | number | null;
-    clc_3_foret_semiNaturel?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    clc_4_humide?: NullableFloatFieldUpdateOperationsInput | number | null;
-    clc_5_eau?: NullableFloatFieldUpdateOperationsInput | number | null;
-    superf_choro?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type inconfort_thermiqueCreateManyInput = {
-    index: bigint | number;
-    code_geographique: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    libelle_departement: string;
-    region: number;
-    ept?: string | null;
-    libelle_petr?: string | null;
-    code_pnr?: string | null;
-    libelle_pnr?: string | null;
-    age_bati_post06?: number | null;
-    age_bati_91_05?: number | null;
-    age_bati_46_90?: number | null;
-    age_bati_19_45?: number | null;
-    age_bati_pre_19?: number | null;
-    under_4_sum_1968?: string | null;
-    to_80_sum_1968?: string | null;
-    over_80_sum_1968?: string | null;
-    under_4_sum_1975?: string | null;
-    to_80_sum_1975?: string | null;
-    over_80_sum_1975?: string | null;
-    under_4_sum_1982?: string | null;
-    to_80_sum_1982?: string | null;
-    over_80_sum_1982?: string | null;
-    under_4_sum_1990?: string | null;
-    to_80_sum_1990?: string | null;
-    over_80_sum_1990?: string | null;
-    under_4_sum_1999?: string | null;
-    to_80_sum_1999?: string | null;
-    over_80_sum_1999?: string | null;
-    under_4_sum_2009?: string | null;
-    to_80_sum_2009?: string | null;
-    over_80_sum_2009?: string | null;
-    under_4_sum_2014?: string | null;
-    to_80_sum_2014?: string | null;
-    over_80_sum_2014?: string | null;
-    under_4_sum_2020?: string | null;
-    to_80_sum_2020?: string | null;
-    over_80_sum_2020?: string | null;
-    P20_POP80P?: string | null;
-    P20_POP80P_PSEUL?: string | null;
-    P20_POP80P_PSEUL_PERCENT?: number | null;
-    tee_log?: number | null;
-    tee_mob?: number | null;
-    precarite_logement?: number | null;
-    NA5AZ_sum?: number | null;
-    NA5BE_sum?: number | null;
-    NA5FZ_sum?: number | null;
-    NA5GU_sum?: number | null;
-    NA5OQ_sum?: number | null;
-    s_geom_cstr_bati?: number | null;
-    hauteur?: number | null;
-    densite_bati?: number | null;
-    h_x_s?: number | null;
-    clc_1_artificialise?: number | null;
-    clc_2_agricole?: number | null;
-    clc_3_foret_semiNaturel?: number | null;
-    clc_4_humide?: number | null;
-    clc_5_eau?: number | null;
-    superf_choro?: number | null;
-  };
-
-  export type inconfort_thermiqueUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    libelle_departement?: StringFieldUpdateOperationsInput | string;
-    region?: IntFieldUpdateOperationsInput | number;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null;
-    under_4_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
-    P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null;
-    P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null;
-    P20_POP80P_PSEUL_PERCENT?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    tee_log?: NullableFloatFieldUpdateOperationsInput | number | null;
-    tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null;
-    precarite_logement?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    NA5AZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5BE_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5FZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5GU_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5OQ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
-    hauteur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
-    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
-    clc_1_artificialise?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    clc_2_agricole?: NullableFloatFieldUpdateOperationsInput | number | null;
-    clc_3_foret_semiNaturel?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    clc_4_humide?: NullableFloatFieldUpdateOperationsInput | number | null;
-    clc_5_eau?: NullableFloatFieldUpdateOperationsInput | number | null;
-    superf_choro?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type inconfort_thermiqueUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    libelle_departement?: StringFieldUpdateOperationsInput | string;
-    region?: IntFieldUpdateOperationsInput | number;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    age_bati_post06?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_91_05?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null;
-    age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null;
-    under_4_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null;
-    under_4_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
-    to_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
-    over_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null;
-    P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null;
-    P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null;
-    P20_POP80P_PSEUL_PERCENT?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    tee_log?: NullableFloatFieldUpdateOperationsInput | number | null;
-    tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null;
-    precarite_logement?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    NA5AZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5BE_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5FZ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5GU_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    NA5OQ_sum?: NullableFloatFieldUpdateOperationsInput | number | null;
-    s_geom_cstr_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
-    hauteur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
-    h_x_s?: NullableFloatFieldUpdateOperationsInput | number | null;
-    clc_1_artificialise?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    clc_2_agricole?: NullableFloatFieldUpdateOperationsInput | number | null;
-    clc_3_foret_semiNaturel?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    clc_4_humide?: NullableFloatFieldUpdateOperationsInput | number | null;
-    clc_5_eau?: NullableFloatFieldUpdateOperationsInput | number | null;
-    superf_choro?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
->>>>>>> dev
 
   export type clc_epciCreateInput = {
     legend?: string | null
@@ -41630,7 +31488,6 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarCreateInput = {
-<<<<<<< HEAD
     index: bigint | number
     code_commune?: string | null
     coordinates?: string | null
@@ -41720,161 +31577,6 @@ export namespace Prisma {
     search_code?: StringFieldUpdateOperationsInput | string
     search_libelle?: StringFieldUpdateOperationsInput | string
   }
-=======
-    index: bigint | number;
-    code_geographique?: string | null;
-    libelle_geographique?: string | null;
-    epci?: string | null;
-    libelle_epci?: string | null;
-    departement?: string | null;
-    libelle_departement?: string | null;
-    region?: string | null;
-    ept?: string | null;
-    libelle_petr?: string | null;
-    code_pnr?: string | null;
-    libelle_pnr?: string | null;
-    search_code?: string | null;
-    search_libelle: string;
-  };
-
-  export type collectivites_searchbarUncheckedCreateInput = {
-    index: bigint | number;
-    code_geographique?: string | null;
-    libelle_geographique?: string | null;
-    epci?: string | null;
-    libelle_epci?: string | null;
-    departement?: string | null;
-    libelle_departement?: string | null;
-    region?: string | null;
-    ept?: string | null;
-    libelle_petr?: string | null;
-    code_pnr?: string | null;
-    libelle_pnr?: string | null;
-    search_code?: string | null;
-    search_libelle: string;
-  };
-
-  export type collectivites_searchbarUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    libelle_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    departement?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_departement?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    region?: NullableStringFieldUpdateOperationsInput | string | null;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_code?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_libelle?: StringFieldUpdateOperationsInput | string;
-  };
-
-  export type collectivites_searchbarUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    libelle_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    departement?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_departement?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    region?: NullableStringFieldUpdateOperationsInput | string | null;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_code?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_libelle?: StringFieldUpdateOperationsInput | string;
-  };
-
-  export type collectivites_searchbarCreateManyInput = {
-    index: bigint | number;
-    code_geographique?: string | null;
-    libelle_geographique?: string | null;
-    epci?: string | null;
-    libelle_epci?: string | null;
-    departement?: string | null;
-    libelle_departement?: string | null;
-    region?: string | null;
-    ept?: string | null;
-    libelle_petr?: string | null;
-    code_pnr?: string | null;
-    libelle_pnr?: string | null;
-    search_code?: string | null;
-    search_libelle: string;
-  };
-
-  export type collectivites_searchbarUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    libelle_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    departement?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_departement?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    region?: NullableStringFieldUpdateOperationsInput | string | null;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_code?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_libelle?: StringFieldUpdateOperationsInput | string;
-  };
-
-  export type collectivites_searchbarUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    libelle_geographique?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null;
-    departement?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_departement?:
-      | NullableStringFieldUpdateOperationsInput
-      | string
-      | null;
-    region?: NullableStringFieldUpdateOperationsInput | string | null;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_code?: NullableStringFieldUpdateOperationsInput | string | null;
-    search_libelle?: StringFieldUpdateOperationsInput | string;
-  };
->>>>>>> dev
 
   export type biodiversiteCreateInput = {
     index: bigint | number
@@ -41954,88 +31656,87 @@ export namespace Prisma {
   }
 
   export type gestion_risquesCreateInput = {
-<<<<<<< HEAD
     index: bigint | number
-    code_geographique?: string | null
-    lib_risque_jo?: string | null
-    dat_pub_arrete?: string | null
-    libelle_geographique?: string | null
-    epci?: string | null
-    libelle_epci?: string | null
-    departement?: string | null
-    region?: number | null
+    code_geographique: string
+    lib_risque_jo: string
+    dat_pub_arrete: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
   }
 
   export type gestion_risquesUncheckedCreateInput = {
     index: bigint | number
-    code_geographique?: string | null
-    lib_risque_jo?: string | null
-    dat_pub_arrete?: string | null
-    libelle_geographique?: string | null
-    epci?: string | null
-    libelle_epci?: string | null
-    departement?: string | null
-    region?: number | null
+    code_geographique: string
+    lib_risque_jo: string
+    dat_pub_arrete: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
   }
 
   export type gestion_risquesUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
-    lib_risque_jo?: NullableStringFieldUpdateOperationsInput | string | null
-    dat_pub_arrete?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
-    departement?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableFloatFieldUpdateOperationsInput | number | null
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    lib_risque_jo?: StringFieldUpdateOperationsInput | string
+    dat_pub_arrete?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
   }
 
   export type gestion_risquesUncheckedUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
-    lib_risque_jo?: NullableStringFieldUpdateOperationsInput | string | null
-    dat_pub_arrete?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
-    departement?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableFloatFieldUpdateOperationsInput | number | null
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    lib_risque_jo?: StringFieldUpdateOperationsInput | string
+    dat_pub_arrete?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
   }
 
   export type gestion_risquesCreateManyInput = {
     index: bigint | number
-    code_geographique?: string | null
-    lib_risque_jo?: string | null
-    dat_pub_arrete?: string | null
-    libelle_geographique?: string | null
-    epci?: string | null
-    libelle_epci?: string | null
-    departement?: string | null
-    region?: number | null
+    code_geographique: string
+    lib_risque_jo: string
+    dat_pub_arrete: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
   }
 
   export type gestion_risquesUpdateManyMutationInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
-    lib_risque_jo?: NullableStringFieldUpdateOperationsInput | string | null
-    dat_pub_arrete?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
-    departement?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableFloatFieldUpdateOperationsInput | number | null
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    lib_risque_jo?: StringFieldUpdateOperationsInput | string
+    dat_pub_arrete?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
   }
 
   export type gestion_risquesUncheckedUpdateManyInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: NullableStringFieldUpdateOperationsInput | string | null
-    lib_risque_jo?: NullableStringFieldUpdateOperationsInput | string | null
-    dat_pub_arrete?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_geographique?: NullableStringFieldUpdateOperationsInput | string | null
-    epci?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
-    departement?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableFloatFieldUpdateOperationsInput | number | null
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    lib_risque_jo?: StringFieldUpdateOperationsInput | string
+    dat_pub_arrete?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
   }
 
   export type communes_dromUpdateInput = {
@@ -42083,172 +31784,6 @@ export namespace Prisma {
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
     surface?: NullableFloatFieldUpdateOperationsInput | number | null
   }
-=======
-    index: bigint | number;
-    code_geographique: string;
-    lib_risque_jo: string;
-    dat_pub_arrete: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: number;
-  };
-
-  export type gestion_risquesUncheckedCreateInput = {
-    index: bigint | number;
-    code_geographique: string;
-    lib_risque_jo: string;
-    dat_pub_arrete: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: number;
-  };
-
-  export type gestion_risquesUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    lib_risque_jo?: StringFieldUpdateOperationsInput | string;
-    dat_pub_arrete?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: FloatFieldUpdateOperationsInput | number;
-  };
-
-  export type gestion_risquesUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    lib_risque_jo?: StringFieldUpdateOperationsInput | string;
-    dat_pub_arrete?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: FloatFieldUpdateOperationsInput | number;
-  };
-
-  export type gestion_risquesCreateManyInput = {
-    index: bigint | number;
-    code_geographique: string;
-    lib_risque_jo: string;
-    dat_pub_arrete: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: number;
-  };
-
-  export type gestion_risquesUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    lib_risque_jo?: StringFieldUpdateOperationsInput | string;
-    dat_pub_arrete?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: FloatFieldUpdateOperationsInput | number;
-  };
-
-  export type gestion_risquesUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    lib_risque_jo?: StringFieldUpdateOperationsInput | string;
-    dat_pub_arrete?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: FloatFieldUpdateOperationsInput | number;
-  };
-
-  export type communes_dromUpdateInput = {
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: BigIntFieldUpdateOperationsInput | bigint | number;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    coordinates?: StringFieldUpdateOperationsInput | string;
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
-    precarite_logement?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surface?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type communes_dromUncheckedUpdateInput = {
-    pk?: IntFieldUpdateOperationsInput | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: BigIntFieldUpdateOperationsInput | bigint | number;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    coordinates?: StringFieldUpdateOperationsInput | string;
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
-    precarite_logement?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surface?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type communes_dromUpdateManyMutationInput = {
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: BigIntFieldUpdateOperationsInput | bigint | number;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    coordinates?: StringFieldUpdateOperationsInput | string;
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
-    precarite_logement?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surface?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type communes_dromUncheckedUpdateManyInput = {
-    pk?: IntFieldUpdateOperationsInput | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: BigIntFieldUpdateOperationsInput | bigint | number;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    coordinates?: StringFieldUpdateOperationsInput | string;
-    densite_bati?: NullableFloatFieldUpdateOperationsInput | number | null;
-    precarite_logement?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surface?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
->>>>>>> dev
 
   export type ressources_eauCreateInput = {
     index: bigint | number
@@ -42791,7 +32326,6 @@ export namespace Prisma {
   }
 
   export type consommation_espaces_nafCreateInput = {
-<<<<<<< HEAD
     index: bigint | number
     code_geographique: string
     libelle_geographique: string
@@ -43714,1060 +33248,6 @@ export namespace Prisma {
     C15_MEN?: NullableFloatFieldUpdateOperationsInput | number | null
     C21_MEN?: NullableFloatFieldUpdateOperationsInput | number | null
   }
-=======
-    index: bigint | number;
-    code_geographique: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: number;
-    ept?: string | null;
-    libelle_petr?: string | null;
-    code_pnr?: string | null;
-    libelle_pnr?: string | null;
-    naf09art10: number;
-    art09act10: number;
-    art09hab10: number;
-    art09mix10: number;
-    art09rou10: number;
-    art09fer10: number;
-    art09inc10: number;
-    naf10art11: number;
-    art10act11: number;
-    art10hab11: number;
-    art10mix11: number;
-    art10rou11: number;
-    art10fer11: number;
-    art10inc11: number;
-    naf11art12: number;
-    art11act12: number;
-    art11hab12: number;
-    art11mix12: number;
-    art11rou12: number;
-    art11fer12: number;
-    art11inc12: number;
-    naf12art13: number;
-    art12act13: number;
-    art12hab13: number;
-    art12mix13: number;
-    art12rou13: number;
-    art12fer13: number;
-    art12inc13: number;
-    naf13art14: number;
-    art13act14: number;
-    art13hab14: number;
-    art13mix14: number;
-    art13rou14: number;
-    art13fer14: number;
-    art13inc14: number;
-    naf14art15: number;
-    art14act15: number;
-    art14hab15: number;
-    art14mix15: number;
-    art14rou15: number;
-    art14fer15: number;
-    art14inc15: number;
-    naf15art16: number;
-    art15act16: number;
-    art15hab16: number;
-    art15mix16: number;
-    art15rou16: number;
-    art15fer16: number;
-    art15inc16: number;
-    naf16art17: number;
-    art16act17: number;
-    art16hab17: number;
-    art16mix17: number;
-    art16rou17: number;
-    art16fer17: number;
-    art16inc17: number;
-    naf17art18: number;
-    art17act18: number;
-    art17hab18: number;
-    art17mix18: number;
-    art17rou18: number;
-    art17fer18: number;
-    art17inc18: number;
-    naf18art19: number;
-    art18act19: number;
-    art18hab19: number;
-    art18mix19: number;
-    art18rou19: number;
-    art18fer19: number;
-    art18inc19: number;
-    naf19art20: number;
-    art19act20: number;
-    art19hab20: number;
-    art19mix20: number;
-    art19rou20: number;
-    art19fer20: number;
-    art19inc20: number;
-    naf20art21: number;
-    art20act21: number;
-    art20hab21: number;
-    art20mix21: number;
-    art20rou21: number;
-    art20fer21: number;
-    art20inc21: number;
-    naf21art22: number;
-    art21act22: number;
-    art21hab22: number;
-    art21mix22: number;
-    art21rou22: number;
-    art21fer22: number;
-    art21inc22: number;
-    naf22art23: number;
-    art22act23: number;
-    art22hab23: number;
-    art22mix23: number;
-    art22rou23: number;
-    art22fer23: number;
-    art22inc23: number;
-    naf09art23: number;
-    art09act23: number;
-    art09hab23: number;
-    art09mix23: number;
-    art09inc23: number;
-    art09rou23: number;
-    art09fer23: number;
-    artcom0923: number;
-    pop14: number;
-    pop20: number;
-    pop1420: number;
-    men14: number;
-    men20: number;
-    men1420: number;
-    emp14: number;
-    emp20: number;
-    emp1420: number;
-    mepart1420: number;
-    menhab1420: number;
-    artpop1420?: number | null;
-    surfcom2023: number;
-    C10_MEN?: number | null;
-    C15_MEN?: number | null;
-    C21_MEN?: number | null;
-  };
-
-  export type consommation_espaces_nafUncheckedCreateInput = {
-    index: bigint | number;
-    code_geographique: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: number;
-    ept?: string | null;
-    libelle_petr?: string | null;
-    code_pnr?: string | null;
-    libelle_pnr?: string | null;
-    naf09art10: number;
-    art09act10: number;
-    art09hab10: number;
-    art09mix10: number;
-    art09rou10: number;
-    art09fer10: number;
-    art09inc10: number;
-    naf10art11: number;
-    art10act11: number;
-    art10hab11: number;
-    art10mix11: number;
-    art10rou11: number;
-    art10fer11: number;
-    art10inc11: number;
-    naf11art12: number;
-    art11act12: number;
-    art11hab12: number;
-    art11mix12: number;
-    art11rou12: number;
-    art11fer12: number;
-    art11inc12: number;
-    naf12art13: number;
-    art12act13: number;
-    art12hab13: number;
-    art12mix13: number;
-    art12rou13: number;
-    art12fer13: number;
-    art12inc13: number;
-    naf13art14: number;
-    art13act14: number;
-    art13hab14: number;
-    art13mix14: number;
-    art13rou14: number;
-    art13fer14: number;
-    art13inc14: number;
-    naf14art15: number;
-    art14act15: number;
-    art14hab15: number;
-    art14mix15: number;
-    art14rou15: number;
-    art14fer15: number;
-    art14inc15: number;
-    naf15art16: number;
-    art15act16: number;
-    art15hab16: number;
-    art15mix16: number;
-    art15rou16: number;
-    art15fer16: number;
-    art15inc16: number;
-    naf16art17: number;
-    art16act17: number;
-    art16hab17: number;
-    art16mix17: number;
-    art16rou17: number;
-    art16fer17: number;
-    art16inc17: number;
-    naf17art18: number;
-    art17act18: number;
-    art17hab18: number;
-    art17mix18: number;
-    art17rou18: number;
-    art17fer18: number;
-    art17inc18: number;
-    naf18art19: number;
-    art18act19: number;
-    art18hab19: number;
-    art18mix19: number;
-    art18rou19: number;
-    art18fer19: number;
-    art18inc19: number;
-    naf19art20: number;
-    art19act20: number;
-    art19hab20: number;
-    art19mix20: number;
-    art19rou20: number;
-    art19fer20: number;
-    art19inc20: number;
-    naf20art21: number;
-    art20act21: number;
-    art20hab21: number;
-    art20mix21: number;
-    art20rou21: number;
-    art20fer21: number;
-    art20inc21: number;
-    naf21art22: number;
-    art21act22: number;
-    art21hab22: number;
-    art21mix22: number;
-    art21rou22: number;
-    art21fer22: number;
-    art21inc22: number;
-    naf22art23: number;
-    art22act23: number;
-    art22hab23: number;
-    art22mix23: number;
-    art22rou23: number;
-    art22fer23: number;
-    art22inc23: number;
-    naf09art23: number;
-    art09act23: number;
-    art09hab23: number;
-    art09mix23: number;
-    art09inc23: number;
-    art09rou23: number;
-    art09fer23: number;
-    artcom0923: number;
-    pop14: number;
-    pop20: number;
-    pop1420: number;
-    men14: number;
-    men20: number;
-    men1420: number;
-    emp14: number;
-    emp20: number;
-    emp1420: number;
-    mepart1420: number;
-    menhab1420: number;
-    artpop1420?: number | null;
-    surfcom2023: number;
-    C10_MEN?: number | null;
-    C15_MEN?: number | null;
-    C21_MEN?: number | null;
-  };
-
-  export type consommation_espaces_nafUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: IntFieldUpdateOperationsInput | number;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    naf09art10?: FloatFieldUpdateOperationsInput | number;
-    art09act10?: FloatFieldUpdateOperationsInput | number;
-    art09hab10?: FloatFieldUpdateOperationsInput | number;
-    art09mix10?: FloatFieldUpdateOperationsInput | number;
-    art09rou10?: FloatFieldUpdateOperationsInput | number;
-    art09fer10?: FloatFieldUpdateOperationsInput | number;
-    art09inc10?: FloatFieldUpdateOperationsInput | number;
-    naf10art11?: FloatFieldUpdateOperationsInput | number;
-    art10act11?: FloatFieldUpdateOperationsInput | number;
-    art10hab11?: FloatFieldUpdateOperationsInput | number;
-    art10mix11?: FloatFieldUpdateOperationsInput | number;
-    art10rou11?: FloatFieldUpdateOperationsInput | number;
-    art10fer11?: FloatFieldUpdateOperationsInput | number;
-    art10inc11?: FloatFieldUpdateOperationsInput | number;
-    naf11art12?: FloatFieldUpdateOperationsInput | number;
-    art11act12?: FloatFieldUpdateOperationsInput | number;
-    art11hab12?: FloatFieldUpdateOperationsInput | number;
-    art11mix12?: FloatFieldUpdateOperationsInput | number;
-    art11rou12?: FloatFieldUpdateOperationsInput | number;
-    art11fer12?: FloatFieldUpdateOperationsInput | number;
-    art11inc12?: FloatFieldUpdateOperationsInput | number;
-    naf12art13?: FloatFieldUpdateOperationsInput | number;
-    art12act13?: FloatFieldUpdateOperationsInput | number;
-    art12hab13?: FloatFieldUpdateOperationsInput | number;
-    art12mix13?: FloatFieldUpdateOperationsInput | number;
-    art12rou13?: FloatFieldUpdateOperationsInput | number;
-    art12fer13?: FloatFieldUpdateOperationsInput | number;
-    art12inc13?: FloatFieldUpdateOperationsInput | number;
-    naf13art14?: FloatFieldUpdateOperationsInput | number;
-    art13act14?: FloatFieldUpdateOperationsInput | number;
-    art13hab14?: FloatFieldUpdateOperationsInput | number;
-    art13mix14?: FloatFieldUpdateOperationsInput | number;
-    art13rou14?: FloatFieldUpdateOperationsInput | number;
-    art13fer14?: FloatFieldUpdateOperationsInput | number;
-    art13inc14?: FloatFieldUpdateOperationsInput | number;
-    naf14art15?: FloatFieldUpdateOperationsInput | number;
-    art14act15?: FloatFieldUpdateOperationsInput | number;
-    art14hab15?: FloatFieldUpdateOperationsInput | number;
-    art14mix15?: FloatFieldUpdateOperationsInput | number;
-    art14rou15?: FloatFieldUpdateOperationsInput | number;
-    art14fer15?: FloatFieldUpdateOperationsInput | number;
-    art14inc15?: FloatFieldUpdateOperationsInput | number;
-    naf15art16?: FloatFieldUpdateOperationsInput | number;
-    art15act16?: FloatFieldUpdateOperationsInput | number;
-    art15hab16?: FloatFieldUpdateOperationsInput | number;
-    art15mix16?: FloatFieldUpdateOperationsInput | number;
-    art15rou16?: FloatFieldUpdateOperationsInput | number;
-    art15fer16?: FloatFieldUpdateOperationsInput | number;
-    art15inc16?: FloatFieldUpdateOperationsInput | number;
-    naf16art17?: FloatFieldUpdateOperationsInput | number;
-    art16act17?: FloatFieldUpdateOperationsInput | number;
-    art16hab17?: FloatFieldUpdateOperationsInput | number;
-    art16mix17?: FloatFieldUpdateOperationsInput | number;
-    art16rou17?: FloatFieldUpdateOperationsInput | number;
-    art16fer17?: FloatFieldUpdateOperationsInput | number;
-    art16inc17?: FloatFieldUpdateOperationsInput | number;
-    naf17art18?: FloatFieldUpdateOperationsInput | number;
-    art17act18?: FloatFieldUpdateOperationsInput | number;
-    art17hab18?: FloatFieldUpdateOperationsInput | number;
-    art17mix18?: FloatFieldUpdateOperationsInput | number;
-    art17rou18?: FloatFieldUpdateOperationsInput | number;
-    art17fer18?: FloatFieldUpdateOperationsInput | number;
-    art17inc18?: FloatFieldUpdateOperationsInput | number;
-    naf18art19?: FloatFieldUpdateOperationsInput | number;
-    art18act19?: FloatFieldUpdateOperationsInput | number;
-    art18hab19?: FloatFieldUpdateOperationsInput | number;
-    art18mix19?: FloatFieldUpdateOperationsInput | number;
-    art18rou19?: FloatFieldUpdateOperationsInput | number;
-    art18fer19?: FloatFieldUpdateOperationsInput | number;
-    art18inc19?: FloatFieldUpdateOperationsInput | number;
-    naf19art20?: FloatFieldUpdateOperationsInput | number;
-    art19act20?: FloatFieldUpdateOperationsInput | number;
-    art19hab20?: FloatFieldUpdateOperationsInput | number;
-    art19mix20?: FloatFieldUpdateOperationsInput | number;
-    art19rou20?: FloatFieldUpdateOperationsInput | number;
-    art19fer20?: FloatFieldUpdateOperationsInput | number;
-    art19inc20?: FloatFieldUpdateOperationsInput | number;
-    naf20art21?: FloatFieldUpdateOperationsInput | number;
-    art20act21?: FloatFieldUpdateOperationsInput | number;
-    art20hab21?: FloatFieldUpdateOperationsInput | number;
-    art20mix21?: FloatFieldUpdateOperationsInput | number;
-    art20rou21?: FloatFieldUpdateOperationsInput | number;
-    art20fer21?: FloatFieldUpdateOperationsInput | number;
-    art20inc21?: FloatFieldUpdateOperationsInput | number;
-    naf21art22?: FloatFieldUpdateOperationsInput | number;
-    art21act22?: FloatFieldUpdateOperationsInput | number;
-    art21hab22?: FloatFieldUpdateOperationsInput | number;
-    art21mix22?: FloatFieldUpdateOperationsInput | number;
-    art21rou22?: FloatFieldUpdateOperationsInput | number;
-    art21fer22?: FloatFieldUpdateOperationsInput | number;
-    art21inc22?: FloatFieldUpdateOperationsInput | number;
-    naf22art23?: FloatFieldUpdateOperationsInput | number;
-    art22act23?: FloatFieldUpdateOperationsInput | number;
-    art22hab23?: FloatFieldUpdateOperationsInput | number;
-    art22mix23?: FloatFieldUpdateOperationsInput | number;
-    art22rou23?: FloatFieldUpdateOperationsInput | number;
-    art22fer23?: FloatFieldUpdateOperationsInput | number;
-    art22inc23?: FloatFieldUpdateOperationsInput | number;
-    naf09art23?: FloatFieldUpdateOperationsInput | number;
-    art09act23?: FloatFieldUpdateOperationsInput | number;
-    art09hab23?: FloatFieldUpdateOperationsInput | number;
-    art09mix23?: FloatFieldUpdateOperationsInput | number;
-    art09inc23?: FloatFieldUpdateOperationsInput | number;
-    art09rou23?: FloatFieldUpdateOperationsInput | number;
-    art09fer23?: FloatFieldUpdateOperationsInput | number;
-    artcom0923?: FloatFieldUpdateOperationsInput | number;
-    pop14?: FloatFieldUpdateOperationsInput | number;
-    pop20?: FloatFieldUpdateOperationsInput | number;
-    pop1420?: FloatFieldUpdateOperationsInput | number;
-    men14?: FloatFieldUpdateOperationsInput | number;
-    men20?: FloatFieldUpdateOperationsInput | number;
-    men1420?: FloatFieldUpdateOperationsInput | number;
-    emp14?: FloatFieldUpdateOperationsInput | number;
-    emp20?: FloatFieldUpdateOperationsInput | number;
-    emp1420?: FloatFieldUpdateOperationsInput | number;
-    mepart1420?: FloatFieldUpdateOperationsInput | number;
-    menhab1420?: FloatFieldUpdateOperationsInput | number;
-    artpop1420?: NullableFloatFieldUpdateOperationsInput | number | null;
-    surfcom2023?: FloatFieldUpdateOperationsInput | number;
-    C10_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
-    C15_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
-    C21_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type consommation_espaces_nafUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: IntFieldUpdateOperationsInput | number;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    naf09art10?: FloatFieldUpdateOperationsInput | number;
-    art09act10?: FloatFieldUpdateOperationsInput | number;
-    art09hab10?: FloatFieldUpdateOperationsInput | number;
-    art09mix10?: FloatFieldUpdateOperationsInput | number;
-    art09rou10?: FloatFieldUpdateOperationsInput | number;
-    art09fer10?: FloatFieldUpdateOperationsInput | number;
-    art09inc10?: FloatFieldUpdateOperationsInput | number;
-    naf10art11?: FloatFieldUpdateOperationsInput | number;
-    art10act11?: FloatFieldUpdateOperationsInput | number;
-    art10hab11?: FloatFieldUpdateOperationsInput | number;
-    art10mix11?: FloatFieldUpdateOperationsInput | number;
-    art10rou11?: FloatFieldUpdateOperationsInput | number;
-    art10fer11?: FloatFieldUpdateOperationsInput | number;
-    art10inc11?: FloatFieldUpdateOperationsInput | number;
-    naf11art12?: FloatFieldUpdateOperationsInput | number;
-    art11act12?: FloatFieldUpdateOperationsInput | number;
-    art11hab12?: FloatFieldUpdateOperationsInput | number;
-    art11mix12?: FloatFieldUpdateOperationsInput | number;
-    art11rou12?: FloatFieldUpdateOperationsInput | number;
-    art11fer12?: FloatFieldUpdateOperationsInput | number;
-    art11inc12?: FloatFieldUpdateOperationsInput | number;
-    naf12art13?: FloatFieldUpdateOperationsInput | number;
-    art12act13?: FloatFieldUpdateOperationsInput | number;
-    art12hab13?: FloatFieldUpdateOperationsInput | number;
-    art12mix13?: FloatFieldUpdateOperationsInput | number;
-    art12rou13?: FloatFieldUpdateOperationsInput | number;
-    art12fer13?: FloatFieldUpdateOperationsInput | number;
-    art12inc13?: FloatFieldUpdateOperationsInput | number;
-    naf13art14?: FloatFieldUpdateOperationsInput | number;
-    art13act14?: FloatFieldUpdateOperationsInput | number;
-    art13hab14?: FloatFieldUpdateOperationsInput | number;
-    art13mix14?: FloatFieldUpdateOperationsInput | number;
-    art13rou14?: FloatFieldUpdateOperationsInput | number;
-    art13fer14?: FloatFieldUpdateOperationsInput | number;
-    art13inc14?: FloatFieldUpdateOperationsInput | number;
-    naf14art15?: FloatFieldUpdateOperationsInput | number;
-    art14act15?: FloatFieldUpdateOperationsInput | number;
-    art14hab15?: FloatFieldUpdateOperationsInput | number;
-    art14mix15?: FloatFieldUpdateOperationsInput | number;
-    art14rou15?: FloatFieldUpdateOperationsInput | number;
-    art14fer15?: FloatFieldUpdateOperationsInput | number;
-    art14inc15?: FloatFieldUpdateOperationsInput | number;
-    naf15art16?: FloatFieldUpdateOperationsInput | number;
-    art15act16?: FloatFieldUpdateOperationsInput | number;
-    art15hab16?: FloatFieldUpdateOperationsInput | number;
-    art15mix16?: FloatFieldUpdateOperationsInput | number;
-    art15rou16?: FloatFieldUpdateOperationsInput | number;
-    art15fer16?: FloatFieldUpdateOperationsInput | number;
-    art15inc16?: FloatFieldUpdateOperationsInput | number;
-    naf16art17?: FloatFieldUpdateOperationsInput | number;
-    art16act17?: FloatFieldUpdateOperationsInput | number;
-    art16hab17?: FloatFieldUpdateOperationsInput | number;
-    art16mix17?: FloatFieldUpdateOperationsInput | number;
-    art16rou17?: FloatFieldUpdateOperationsInput | number;
-    art16fer17?: FloatFieldUpdateOperationsInput | number;
-    art16inc17?: FloatFieldUpdateOperationsInput | number;
-    naf17art18?: FloatFieldUpdateOperationsInput | number;
-    art17act18?: FloatFieldUpdateOperationsInput | number;
-    art17hab18?: FloatFieldUpdateOperationsInput | number;
-    art17mix18?: FloatFieldUpdateOperationsInput | number;
-    art17rou18?: FloatFieldUpdateOperationsInput | number;
-    art17fer18?: FloatFieldUpdateOperationsInput | number;
-    art17inc18?: FloatFieldUpdateOperationsInput | number;
-    naf18art19?: FloatFieldUpdateOperationsInput | number;
-    art18act19?: FloatFieldUpdateOperationsInput | number;
-    art18hab19?: FloatFieldUpdateOperationsInput | number;
-    art18mix19?: FloatFieldUpdateOperationsInput | number;
-    art18rou19?: FloatFieldUpdateOperationsInput | number;
-    art18fer19?: FloatFieldUpdateOperationsInput | number;
-    art18inc19?: FloatFieldUpdateOperationsInput | number;
-    naf19art20?: FloatFieldUpdateOperationsInput | number;
-    art19act20?: FloatFieldUpdateOperationsInput | number;
-    art19hab20?: FloatFieldUpdateOperationsInput | number;
-    art19mix20?: FloatFieldUpdateOperationsInput | number;
-    art19rou20?: FloatFieldUpdateOperationsInput | number;
-    art19fer20?: FloatFieldUpdateOperationsInput | number;
-    art19inc20?: FloatFieldUpdateOperationsInput | number;
-    naf20art21?: FloatFieldUpdateOperationsInput | number;
-    art20act21?: FloatFieldUpdateOperationsInput | number;
-    art20hab21?: FloatFieldUpdateOperationsInput | number;
-    art20mix21?: FloatFieldUpdateOperationsInput | number;
-    art20rou21?: FloatFieldUpdateOperationsInput | number;
-    art20fer21?: FloatFieldUpdateOperationsInput | number;
-    art20inc21?: FloatFieldUpdateOperationsInput | number;
-    naf21art22?: FloatFieldUpdateOperationsInput | number;
-    art21act22?: FloatFieldUpdateOperationsInput | number;
-    art21hab22?: FloatFieldUpdateOperationsInput | number;
-    art21mix22?: FloatFieldUpdateOperationsInput | number;
-    art21rou22?: FloatFieldUpdateOperationsInput | number;
-    art21fer22?: FloatFieldUpdateOperationsInput | number;
-    art21inc22?: FloatFieldUpdateOperationsInput | number;
-    naf22art23?: FloatFieldUpdateOperationsInput | number;
-    art22act23?: FloatFieldUpdateOperationsInput | number;
-    art22hab23?: FloatFieldUpdateOperationsInput | number;
-    art22mix23?: FloatFieldUpdateOperationsInput | number;
-    art22rou23?: FloatFieldUpdateOperationsInput | number;
-    art22fer23?: FloatFieldUpdateOperationsInput | number;
-    art22inc23?: FloatFieldUpdateOperationsInput | number;
-    naf09art23?: FloatFieldUpdateOperationsInput | number;
-    art09act23?: FloatFieldUpdateOperationsInput | number;
-    art09hab23?: FloatFieldUpdateOperationsInput | number;
-    art09mix23?: FloatFieldUpdateOperationsInput | number;
-    art09inc23?: FloatFieldUpdateOperationsInput | number;
-    art09rou23?: FloatFieldUpdateOperationsInput | number;
-    art09fer23?: FloatFieldUpdateOperationsInput | number;
-    artcom0923?: FloatFieldUpdateOperationsInput | number;
-    pop14?: FloatFieldUpdateOperationsInput | number;
-    pop20?: FloatFieldUpdateOperationsInput | number;
-    pop1420?: FloatFieldUpdateOperationsInput | number;
-    men14?: FloatFieldUpdateOperationsInput | number;
-    men20?: FloatFieldUpdateOperationsInput | number;
-    men1420?: FloatFieldUpdateOperationsInput | number;
-    emp14?: FloatFieldUpdateOperationsInput | number;
-    emp20?: FloatFieldUpdateOperationsInput | number;
-    emp1420?: FloatFieldUpdateOperationsInput | number;
-    mepart1420?: FloatFieldUpdateOperationsInput | number;
-    menhab1420?: FloatFieldUpdateOperationsInput | number;
-    artpop1420?: NullableFloatFieldUpdateOperationsInput | number | null;
-    surfcom2023?: FloatFieldUpdateOperationsInput | number;
-    C10_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
-    C15_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
-    C21_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type consommation_espaces_nafCreateManyInput = {
-    index: bigint | number;
-    code_geographique: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: number;
-    ept?: string | null;
-    libelle_petr?: string | null;
-    code_pnr?: string | null;
-    libelle_pnr?: string | null;
-    naf09art10: number;
-    art09act10: number;
-    art09hab10: number;
-    art09mix10: number;
-    art09rou10: number;
-    art09fer10: number;
-    art09inc10: number;
-    naf10art11: number;
-    art10act11: number;
-    art10hab11: number;
-    art10mix11: number;
-    art10rou11: number;
-    art10fer11: number;
-    art10inc11: number;
-    naf11art12: number;
-    art11act12: number;
-    art11hab12: number;
-    art11mix12: number;
-    art11rou12: number;
-    art11fer12: number;
-    art11inc12: number;
-    naf12art13: number;
-    art12act13: number;
-    art12hab13: number;
-    art12mix13: number;
-    art12rou13: number;
-    art12fer13: number;
-    art12inc13: number;
-    naf13art14: number;
-    art13act14: number;
-    art13hab14: number;
-    art13mix14: number;
-    art13rou14: number;
-    art13fer14: number;
-    art13inc14: number;
-    naf14art15: number;
-    art14act15: number;
-    art14hab15: number;
-    art14mix15: number;
-    art14rou15: number;
-    art14fer15: number;
-    art14inc15: number;
-    naf15art16: number;
-    art15act16: number;
-    art15hab16: number;
-    art15mix16: number;
-    art15rou16: number;
-    art15fer16: number;
-    art15inc16: number;
-    naf16art17: number;
-    art16act17: number;
-    art16hab17: number;
-    art16mix17: number;
-    art16rou17: number;
-    art16fer17: number;
-    art16inc17: number;
-    naf17art18: number;
-    art17act18: number;
-    art17hab18: number;
-    art17mix18: number;
-    art17rou18: number;
-    art17fer18: number;
-    art17inc18: number;
-    naf18art19: number;
-    art18act19: number;
-    art18hab19: number;
-    art18mix19: number;
-    art18rou19: number;
-    art18fer19: number;
-    art18inc19: number;
-    naf19art20: number;
-    art19act20: number;
-    art19hab20: number;
-    art19mix20: number;
-    art19rou20: number;
-    art19fer20: number;
-    art19inc20: number;
-    naf20art21: number;
-    art20act21: number;
-    art20hab21: number;
-    art20mix21: number;
-    art20rou21: number;
-    art20fer21: number;
-    art20inc21: number;
-    naf21art22: number;
-    art21act22: number;
-    art21hab22: number;
-    art21mix22: number;
-    art21rou22: number;
-    art21fer22: number;
-    art21inc22: number;
-    naf22art23: number;
-    art22act23: number;
-    art22hab23: number;
-    art22mix23: number;
-    art22rou23: number;
-    art22fer23: number;
-    art22inc23: number;
-    naf09art23: number;
-    art09act23: number;
-    art09hab23: number;
-    art09mix23: number;
-    art09inc23: number;
-    art09rou23: number;
-    art09fer23: number;
-    artcom0923: number;
-    pop14: number;
-    pop20: number;
-    pop1420: number;
-    men14: number;
-    men20: number;
-    men1420: number;
-    emp14: number;
-    emp20: number;
-    emp1420: number;
-    mepart1420: number;
-    menhab1420: number;
-    artpop1420?: number | null;
-    surfcom2023: number;
-    C10_MEN?: number | null;
-    C15_MEN?: number | null;
-    C21_MEN?: number | null;
-  };
-
-  export type consommation_espaces_nafUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: IntFieldUpdateOperationsInput | number;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    naf09art10?: FloatFieldUpdateOperationsInput | number;
-    art09act10?: FloatFieldUpdateOperationsInput | number;
-    art09hab10?: FloatFieldUpdateOperationsInput | number;
-    art09mix10?: FloatFieldUpdateOperationsInput | number;
-    art09rou10?: FloatFieldUpdateOperationsInput | number;
-    art09fer10?: FloatFieldUpdateOperationsInput | number;
-    art09inc10?: FloatFieldUpdateOperationsInput | number;
-    naf10art11?: FloatFieldUpdateOperationsInput | number;
-    art10act11?: FloatFieldUpdateOperationsInput | number;
-    art10hab11?: FloatFieldUpdateOperationsInput | number;
-    art10mix11?: FloatFieldUpdateOperationsInput | number;
-    art10rou11?: FloatFieldUpdateOperationsInput | number;
-    art10fer11?: FloatFieldUpdateOperationsInput | number;
-    art10inc11?: FloatFieldUpdateOperationsInput | number;
-    naf11art12?: FloatFieldUpdateOperationsInput | number;
-    art11act12?: FloatFieldUpdateOperationsInput | number;
-    art11hab12?: FloatFieldUpdateOperationsInput | number;
-    art11mix12?: FloatFieldUpdateOperationsInput | number;
-    art11rou12?: FloatFieldUpdateOperationsInput | number;
-    art11fer12?: FloatFieldUpdateOperationsInput | number;
-    art11inc12?: FloatFieldUpdateOperationsInput | number;
-    naf12art13?: FloatFieldUpdateOperationsInput | number;
-    art12act13?: FloatFieldUpdateOperationsInput | number;
-    art12hab13?: FloatFieldUpdateOperationsInput | number;
-    art12mix13?: FloatFieldUpdateOperationsInput | number;
-    art12rou13?: FloatFieldUpdateOperationsInput | number;
-    art12fer13?: FloatFieldUpdateOperationsInput | number;
-    art12inc13?: FloatFieldUpdateOperationsInput | number;
-    naf13art14?: FloatFieldUpdateOperationsInput | number;
-    art13act14?: FloatFieldUpdateOperationsInput | number;
-    art13hab14?: FloatFieldUpdateOperationsInput | number;
-    art13mix14?: FloatFieldUpdateOperationsInput | number;
-    art13rou14?: FloatFieldUpdateOperationsInput | number;
-    art13fer14?: FloatFieldUpdateOperationsInput | number;
-    art13inc14?: FloatFieldUpdateOperationsInput | number;
-    naf14art15?: FloatFieldUpdateOperationsInput | number;
-    art14act15?: FloatFieldUpdateOperationsInput | number;
-    art14hab15?: FloatFieldUpdateOperationsInput | number;
-    art14mix15?: FloatFieldUpdateOperationsInput | number;
-    art14rou15?: FloatFieldUpdateOperationsInput | number;
-    art14fer15?: FloatFieldUpdateOperationsInput | number;
-    art14inc15?: FloatFieldUpdateOperationsInput | number;
-    naf15art16?: FloatFieldUpdateOperationsInput | number;
-    art15act16?: FloatFieldUpdateOperationsInput | number;
-    art15hab16?: FloatFieldUpdateOperationsInput | number;
-    art15mix16?: FloatFieldUpdateOperationsInput | number;
-    art15rou16?: FloatFieldUpdateOperationsInput | number;
-    art15fer16?: FloatFieldUpdateOperationsInput | number;
-    art15inc16?: FloatFieldUpdateOperationsInput | number;
-    naf16art17?: FloatFieldUpdateOperationsInput | number;
-    art16act17?: FloatFieldUpdateOperationsInput | number;
-    art16hab17?: FloatFieldUpdateOperationsInput | number;
-    art16mix17?: FloatFieldUpdateOperationsInput | number;
-    art16rou17?: FloatFieldUpdateOperationsInput | number;
-    art16fer17?: FloatFieldUpdateOperationsInput | number;
-    art16inc17?: FloatFieldUpdateOperationsInput | number;
-    naf17art18?: FloatFieldUpdateOperationsInput | number;
-    art17act18?: FloatFieldUpdateOperationsInput | number;
-    art17hab18?: FloatFieldUpdateOperationsInput | number;
-    art17mix18?: FloatFieldUpdateOperationsInput | number;
-    art17rou18?: FloatFieldUpdateOperationsInput | number;
-    art17fer18?: FloatFieldUpdateOperationsInput | number;
-    art17inc18?: FloatFieldUpdateOperationsInput | number;
-    naf18art19?: FloatFieldUpdateOperationsInput | number;
-    art18act19?: FloatFieldUpdateOperationsInput | number;
-    art18hab19?: FloatFieldUpdateOperationsInput | number;
-    art18mix19?: FloatFieldUpdateOperationsInput | number;
-    art18rou19?: FloatFieldUpdateOperationsInput | number;
-    art18fer19?: FloatFieldUpdateOperationsInput | number;
-    art18inc19?: FloatFieldUpdateOperationsInput | number;
-    naf19art20?: FloatFieldUpdateOperationsInput | number;
-    art19act20?: FloatFieldUpdateOperationsInput | number;
-    art19hab20?: FloatFieldUpdateOperationsInput | number;
-    art19mix20?: FloatFieldUpdateOperationsInput | number;
-    art19rou20?: FloatFieldUpdateOperationsInput | number;
-    art19fer20?: FloatFieldUpdateOperationsInput | number;
-    art19inc20?: FloatFieldUpdateOperationsInput | number;
-    naf20art21?: FloatFieldUpdateOperationsInput | number;
-    art20act21?: FloatFieldUpdateOperationsInput | number;
-    art20hab21?: FloatFieldUpdateOperationsInput | number;
-    art20mix21?: FloatFieldUpdateOperationsInput | number;
-    art20rou21?: FloatFieldUpdateOperationsInput | number;
-    art20fer21?: FloatFieldUpdateOperationsInput | number;
-    art20inc21?: FloatFieldUpdateOperationsInput | number;
-    naf21art22?: FloatFieldUpdateOperationsInput | number;
-    art21act22?: FloatFieldUpdateOperationsInput | number;
-    art21hab22?: FloatFieldUpdateOperationsInput | number;
-    art21mix22?: FloatFieldUpdateOperationsInput | number;
-    art21rou22?: FloatFieldUpdateOperationsInput | number;
-    art21fer22?: FloatFieldUpdateOperationsInput | number;
-    art21inc22?: FloatFieldUpdateOperationsInput | number;
-    naf22art23?: FloatFieldUpdateOperationsInput | number;
-    art22act23?: FloatFieldUpdateOperationsInput | number;
-    art22hab23?: FloatFieldUpdateOperationsInput | number;
-    art22mix23?: FloatFieldUpdateOperationsInput | number;
-    art22rou23?: FloatFieldUpdateOperationsInput | number;
-    art22fer23?: FloatFieldUpdateOperationsInput | number;
-    art22inc23?: FloatFieldUpdateOperationsInput | number;
-    naf09art23?: FloatFieldUpdateOperationsInput | number;
-    art09act23?: FloatFieldUpdateOperationsInput | number;
-    art09hab23?: FloatFieldUpdateOperationsInput | number;
-    art09mix23?: FloatFieldUpdateOperationsInput | number;
-    art09inc23?: FloatFieldUpdateOperationsInput | number;
-    art09rou23?: FloatFieldUpdateOperationsInput | number;
-    art09fer23?: FloatFieldUpdateOperationsInput | number;
-    artcom0923?: FloatFieldUpdateOperationsInput | number;
-    pop14?: FloatFieldUpdateOperationsInput | number;
-    pop20?: FloatFieldUpdateOperationsInput | number;
-    pop1420?: FloatFieldUpdateOperationsInput | number;
-    men14?: FloatFieldUpdateOperationsInput | number;
-    men20?: FloatFieldUpdateOperationsInput | number;
-    men1420?: FloatFieldUpdateOperationsInput | number;
-    emp14?: FloatFieldUpdateOperationsInput | number;
-    emp20?: FloatFieldUpdateOperationsInput | number;
-    emp1420?: FloatFieldUpdateOperationsInput | number;
-    mepart1420?: FloatFieldUpdateOperationsInput | number;
-    menhab1420?: FloatFieldUpdateOperationsInput | number;
-    artpop1420?: NullableFloatFieldUpdateOperationsInput | number | null;
-    surfcom2023?: FloatFieldUpdateOperationsInput | number;
-    C10_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
-    C15_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
-    C21_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type consommation_espaces_nafUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: IntFieldUpdateOperationsInput | number;
-    ept?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null;
-    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null;
-    naf09art10?: FloatFieldUpdateOperationsInput | number;
-    art09act10?: FloatFieldUpdateOperationsInput | number;
-    art09hab10?: FloatFieldUpdateOperationsInput | number;
-    art09mix10?: FloatFieldUpdateOperationsInput | number;
-    art09rou10?: FloatFieldUpdateOperationsInput | number;
-    art09fer10?: FloatFieldUpdateOperationsInput | number;
-    art09inc10?: FloatFieldUpdateOperationsInput | number;
-    naf10art11?: FloatFieldUpdateOperationsInput | number;
-    art10act11?: FloatFieldUpdateOperationsInput | number;
-    art10hab11?: FloatFieldUpdateOperationsInput | number;
-    art10mix11?: FloatFieldUpdateOperationsInput | number;
-    art10rou11?: FloatFieldUpdateOperationsInput | number;
-    art10fer11?: FloatFieldUpdateOperationsInput | number;
-    art10inc11?: FloatFieldUpdateOperationsInput | number;
-    naf11art12?: FloatFieldUpdateOperationsInput | number;
-    art11act12?: FloatFieldUpdateOperationsInput | number;
-    art11hab12?: FloatFieldUpdateOperationsInput | number;
-    art11mix12?: FloatFieldUpdateOperationsInput | number;
-    art11rou12?: FloatFieldUpdateOperationsInput | number;
-    art11fer12?: FloatFieldUpdateOperationsInput | number;
-    art11inc12?: FloatFieldUpdateOperationsInput | number;
-    naf12art13?: FloatFieldUpdateOperationsInput | number;
-    art12act13?: FloatFieldUpdateOperationsInput | number;
-    art12hab13?: FloatFieldUpdateOperationsInput | number;
-    art12mix13?: FloatFieldUpdateOperationsInput | number;
-    art12rou13?: FloatFieldUpdateOperationsInput | number;
-    art12fer13?: FloatFieldUpdateOperationsInput | number;
-    art12inc13?: FloatFieldUpdateOperationsInput | number;
-    naf13art14?: FloatFieldUpdateOperationsInput | number;
-    art13act14?: FloatFieldUpdateOperationsInput | number;
-    art13hab14?: FloatFieldUpdateOperationsInput | number;
-    art13mix14?: FloatFieldUpdateOperationsInput | number;
-    art13rou14?: FloatFieldUpdateOperationsInput | number;
-    art13fer14?: FloatFieldUpdateOperationsInput | number;
-    art13inc14?: FloatFieldUpdateOperationsInput | number;
-    naf14art15?: FloatFieldUpdateOperationsInput | number;
-    art14act15?: FloatFieldUpdateOperationsInput | number;
-    art14hab15?: FloatFieldUpdateOperationsInput | number;
-    art14mix15?: FloatFieldUpdateOperationsInput | number;
-    art14rou15?: FloatFieldUpdateOperationsInput | number;
-    art14fer15?: FloatFieldUpdateOperationsInput | number;
-    art14inc15?: FloatFieldUpdateOperationsInput | number;
-    naf15art16?: FloatFieldUpdateOperationsInput | number;
-    art15act16?: FloatFieldUpdateOperationsInput | number;
-    art15hab16?: FloatFieldUpdateOperationsInput | number;
-    art15mix16?: FloatFieldUpdateOperationsInput | number;
-    art15rou16?: FloatFieldUpdateOperationsInput | number;
-    art15fer16?: FloatFieldUpdateOperationsInput | number;
-    art15inc16?: FloatFieldUpdateOperationsInput | number;
-    naf16art17?: FloatFieldUpdateOperationsInput | number;
-    art16act17?: FloatFieldUpdateOperationsInput | number;
-    art16hab17?: FloatFieldUpdateOperationsInput | number;
-    art16mix17?: FloatFieldUpdateOperationsInput | number;
-    art16rou17?: FloatFieldUpdateOperationsInput | number;
-    art16fer17?: FloatFieldUpdateOperationsInput | number;
-    art16inc17?: FloatFieldUpdateOperationsInput | number;
-    naf17art18?: FloatFieldUpdateOperationsInput | number;
-    art17act18?: FloatFieldUpdateOperationsInput | number;
-    art17hab18?: FloatFieldUpdateOperationsInput | number;
-    art17mix18?: FloatFieldUpdateOperationsInput | number;
-    art17rou18?: FloatFieldUpdateOperationsInput | number;
-    art17fer18?: FloatFieldUpdateOperationsInput | number;
-    art17inc18?: FloatFieldUpdateOperationsInput | number;
-    naf18art19?: FloatFieldUpdateOperationsInput | number;
-    art18act19?: FloatFieldUpdateOperationsInput | number;
-    art18hab19?: FloatFieldUpdateOperationsInput | number;
-    art18mix19?: FloatFieldUpdateOperationsInput | number;
-    art18rou19?: FloatFieldUpdateOperationsInput | number;
-    art18fer19?: FloatFieldUpdateOperationsInput | number;
-    art18inc19?: FloatFieldUpdateOperationsInput | number;
-    naf19art20?: FloatFieldUpdateOperationsInput | number;
-    art19act20?: FloatFieldUpdateOperationsInput | number;
-    art19hab20?: FloatFieldUpdateOperationsInput | number;
-    art19mix20?: FloatFieldUpdateOperationsInput | number;
-    art19rou20?: FloatFieldUpdateOperationsInput | number;
-    art19fer20?: FloatFieldUpdateOperationsInput | number;
-    art19inc20?: FloatFieldUpdateOperationsInput | number;
-    naf20art21?: FloatFieldUpdateOperationsInput | number;
-    art20act21?: FloatFieldUpdateOperationsInput | number;
-    art20hab21?: FloatFieldUpdateOperationsInput | number;
-    art20mix21?: FloatFieldUpdateOperationsInput | number;
-    art20rou21?: FloatFieldUpdateOperationsInput | number;
-    art20fer21?: FloatFieldUpdateOperationsInput | number;
-    art20inc21?: FloatFieldUpdateOperationsInput | number;
-    naf21art22?: FloatFieldUpdateOperationsInput | number;
-    art21act22?: FloatFieldUpdateOperationsInput | number;
-    art21hab22?: FloatFieldUpdateOperationsInput | number;
-    art21mix22?: FloatFieldUpdateOperationsInput | number;
-    art21rou22?: FloatFieldUpdateOperationsInput | number;
-    art21fer22?: FloatFieldUpdateOperationsInput | number;
-    art21inc22?: FloatFieldUpdateOperationsInput | number;
-    naf22art23?: FloatFieldUpdateOperationsInput | number;
-    art22act23?: FloatFieldUpdateOperationsInput | number;
-    art22hab23?: FloatFieldUpdateOperationsInput | number;
-    art22mix23?: FloatFieldUpdateOperationsInput | number;
-    art22rou23?: FloatFieldUpdateOperationsInput | number;
-    art22fer23?: FloatFieldUpdateOperationsInput | number;
-    art22inc23?: FloatFieldUpdateOperationsInput | number;
-    naf09art23?: FloatFieldUpdateOperationsInput | number;
-    art09act23?: FloatFieldUpdateOperationsInput | number;
-    art09hab23?: FloatFieldUpdateOperationsInput | number;
-    art09mix23?: FloatFieldUpdateOperationsInput | number;
-    art09inc23?: FloatFieldUpdateOperationsInput | number;
-    art09rou23?: FloatFieldUpdateOperationsInput | number;
-    art09fer23?: FloatFieldUpdateOperationsInput | number;
-    artcom0923?: FloatFieldUpdateOperationsInput | number;
-    pop14?: FloatFieldUpdateOperationsInput | number;
-    pop20?: FloatFieldUpdateOperationsInput | number;
-    pop1420?: FloatFieldUpdateOperationsInput | number;
-    men14?: FloatFieldUpdateOperationsInput | number;
-    men20?: FloatFieldUpdateOperationsInput | number;
-    men1420?: FloatFieldUpdateOperationsInput | number;
-    emp14?: FloatFieldUpdateOperationsInput | number;
-    emp20?: FloatFieldUpdateOperationsInput | number;
-    emp1420?: FloatFieldUpdateOperationsInput | number;
-    mepart1420?: FloatFieldUpdateOperationsInput | number;
-    menhab1420?: FloatFieldUpdateOperationsInput | number;
-    artpop1420?: NullableFloatFieldUpdateOperationsInput | number | null;
-    surfcom2023?: FloatFieldUpdateOperationsInput | number;
-    C10_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
-    C15_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
-    C21_MEN?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type lcz_bayonne_testCreateInput = {
-    identifier?: string | null;
-    hre?: number | null;
-    are?: number | null;
-    bur?: number | null;
-    ror?: number | null;
-    bsr?: number | null;
-    war?: number | null;
-    ver?: number | null;
-    vhr?: number | null;
-    lcz?: string | null;
-    lcz_int?: number | null;
-  };
-
-  export type lcz_bayonne_testUncheckedCreateInput = {
-    pk?: number;
-    identifier?: string | null;
-    hre?: number | null;
-    are?: number | null;
-    bur?: number | null;
-    ror?: number | null;
-    bsr?: number | null;
-    war?: number | null;
-    ver?: number | null;
-    vhr?: number | null;
-    lcz?: string | null;
-    lcz_int?: number | null;
-  };
-
-  export type lcz_bayonne_testUpdateInput = {
-    identifier?: NullableStringFieldUpdateOperationsInput | string | null;
-    hre?: NullableFloatFieldUpdateOperationsInput | number | null;
-    are?: NullableFloatFieldUpdateOperationsInput | number | null;
-    bur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    ror?: NullableFloatFieldUpdateOperationsInput | number | null;
-    bsr?: NullableFloatFieldUpdateOperationsInput | number | null;
-    war?: NullableFloatFieldUpdateOperationsInput | number | null;
-    ver?: NullableFloatFieldUpdateOperationsInput | number | null;
-    vhr?: NullableFloatFieldUpdateOperationsInput | number | null;
-    lcz?: NullableStringFieldUpdateOperationsInput | string | null;
-    lcz_int?: NullableIntFieldUpdateOperationsInput | number | null;
-  };
-
-  export type lcz_bayonne_testUncheckedUpdateInput = {
-    pk?: IntFieldUpdateOperationsInput | number;
-    identifier?: NullableStringFieldUpdateOperationsInput | string | null;
-    hre?: NullableFloatFieldUpdateOperationsInput | number | null;
-    are?: NullableFloatFieldUpdateOperationsInput | number | null;
-    bur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    ror?: NullableFloatFieldUpdateOperationsInput | number | null;
-    bsr?: NullableFloatFieldUpdateOperationsInput | number | null;
-    war?: NullableFloatFieldUpdateOperationsInput | number | null;
-    ver?: NullableFloatFieldUpdateOperationsInput | number | null;
-    vhr?: NullableFloatFieldUpdateOperationsInput | number | null;
-    lcz?: NullableStringFieldUpdateOperationsInput | string | null;
-    lcz_int?: NullableIntFieldUpdateOperationsInput | number | null;
-  };
-
-  export type lcz_bayonne_testCreateManyInput = {
-    pk?: number;
-    identifier?: string | null;
-    hre?: number | null;
-    are?: number | null;
-    bur?: number | null;
-    ror?: number | null;
-    bsr?: number | null;
-    war?: number | null;
-    ver?: number | null;
-    vhr?: number | null;
-    lcz?: string | null;
-    lcz_int?: number | null;
-  };
-
-  export type lcz_bayonne_testUpdateManyMutationInput = {
-    identifier?: NullableStringFieldUpdateOperationsInput | string | null;
-    hre?: NullableFloatFieldUpdateOperationsInput | number | null;
-    are?: NullableFloatFieldUpdateOperationsInput | number | null;
-    bur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    ror?: NullableFloatFieldUpdateOperationsInput | number | null;
-    bsr?: NullableFloatFieldUpdateOperationsInput | number | null;
-    war?: NullableFloatFieldUpdateOperationsInput | number | null;
-    ver?: NullableFloatFieldUpdateOperationsInput | number | null;
-    vhr?: NullableFloatFieldUpdateOperationsInput | number | null;
-    lcz?: NullableStringFieldUpdateOperationsInput | string | null;
-    lcz_int?: NullableIntFieldUpdateOperationsInput | number | null;
-  };
-
-  export type lcz_bayonne_testUncheckedUpdateManyInput = {
-    pk?: IntFieldUpdateOperationsInput | number;
-    identifier?: NullableStringFieldUpdateOperationsInput | string | null;
-    hre?: NullableFloatFieldUpdateOperationsInput | number | null;
-    are?: NullableFloatFieldUpdateOperationsInput | number | null;
-    bur?: NullableFloatFieldUpdateOperationsInput | number | null;
-    ror?: NullableFloatFieldUpdateOperationsInput | number | null;
-    bsr?: NullableFloatFieldUpdateOperationsInput | number | null;
-    war?: NullableFloatFieldUpdateOperationsInput | number | null;
-    ver?: NullableFloatFieldUpdateOperationsInput | number | null;
-    vhr?: NullableFloatFieldUpdateOperationsInput | number | null;
-    lcz?: NullableStringFieldUpdateOperationsInput | string | null;
-    lcz_int?: NullableIntFieldUpdateOperationsInput | number | null;
-  };
->>>>>>> dev
 
   export type north_star_metricCreateInput = {
     pk: number
@@ -45033,6 +33513,314 @@ export namespace Prisma {
     QEB_2020?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type agricultureCreateInput = {
+    index: bigint | number
+    CODGEO: string
+    LIBGEO: string
+    EPCI: string
+    LIBEPCI: string
+    DEP: string
+    REG: number
+    part_irr_SAU_2020?: number | null
+    part_over_55?: number | null
+  }
+
+  export type agricultureUncheckedCreateInput = {
+    index: bigint | number
+    CODGEO: string
+    LIBGEO: string
+    EPCI: string
+    LIBEPCI: string
+    DEP: string
+    REG: number
+    part_irr_SAU_2020?: number | null
+    part_over_55?: number | null
+  }
+
+  export type agricultureUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    CODGEO?: StringFieldUpdateOperationsInput | string
+    LIBGEO?: StringFieldUpdateOperationsInput | string
+    EPCI?: StringFieldUpdateOperationsInput | string
+    LIBEPCI?: StringFieldUpdateOperationsInput | string
+    DEP?: StringFieldUpdateOperationsInput | string
+    REG?: FloatFieldUpdateOperationsInput | number
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type agricultureUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    CODGEO?: StringFieldUpdateOperationsInput | string
+    LIBGEO?: StringFieldUpdateOperationsInput | string
+    EPCI?: StringFieldUpdateOperationsInput | string
+    LIBEPCI?: StringFieldUpdateOperationsInput | string
+    DEP?: StringFieldUpdateOperationsInput | string
+    REG?: FloatFieldUpdateOperationsInput | number
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type agricultureCreateManyInput = {
+    index: bigint | number
+    CODGEO: string
+    LIBGEO: string
+    EPCI: string
+    LIBEPCI: string
+    DEP: string
+    REG: number
+    part_irr_SAU_2020?: number | null
+    part_over_55?: number | null
+  }
+
+  export type agricultureUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    CODGEO?: StringFieldUpdateOperationsInput | string
+    LIBGEO?: StringFieldUpdateOperationsInput | string
+    EPCI?: StringFieldUpdateOperationsInput | string
+    LIBEPCI?: StringFieldUpdateOperationsInput | string
+    DEP?: StringFieldUpdateOperationsInput | string
+    REG?: FloatFieldUpdateOperationsInput | number
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type agricultureUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    CODGEO?: StringFieldUpdateOperationsInput | string
+    LIBGEO?: StringFieldUpdateOperationsInput | string
+    EPCI?: StringFieldUpdateOperationsInput | string
+    LIBEPCI?: StringFieldUpdateOperationsInput | string
+    DEP?: StringFieldUpdateOperationsInput | string
+    REG?: FloatFieldUpdateOperationsInput | number
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type incendies_foretCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
+    nature?: string | null
+    annee: number
+    surface_parcourue: number
+    surface_foret?: number | null
+    surface_maquis_garrigues?: number | null
+    autres_surfaces_naturelles_hors_foret?: number | null
+    surfaces_agricoles?: number | null
+    surfaces_non_boisees?: number | null
+    surfaces_non_boisees_artificialisees?: number | null
+    surfaces_non_boisees_naturelles?: number | null
+    surface_autres_terres_boisees?: number | null
+    autres_surfaces?: number | null
+  }
+
+  export type incendies_foretUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
+    nature?: string | null
+    annee: number
+    surface_parcourue: number
+    surface_foret?: number | null
+    surface_maquis_garrigues?: number | null
+    autres_surfaces_naturelles_hors_foret?: number | null
+    surfaces_agricoles?: number | null
+    surfaces_non_boisees?: number | null
+    surfaces_non_boisees_artificialisees?: number | null
+    surfaces_non_boisees_naturelles?: number | null
+    surface_autres_terres_boisees?: number | null
+    autres_surfaces?: number | null
+  }
+
+  export type incendies_foretUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    nature?: NullableStringFieldUpdateOperationsInput | string | null
+    annee?: IntFieldUpdateOperationsInput | number
+    surface_parcourue?: FloatFieldUpdateOperationsInput | number
+    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces_naturelles_hors_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_agricoles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_artificialisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_naturelles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_autres_terres_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type incendies_foretUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    nature?: NullableStringFieldUpdateOperationsInput | string | null
+    annee?: IntFieldUpdateOperationsInput | number
+    surface_parcourue?: FloatFieldUpdateOperationsInput | number
+    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces_naturelles_hors_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_agricoles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_artificialisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_naturelles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_autres_terres_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type incendies_foretCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    region: number
+    nature?: string | null
+    annee: number
+    surface_parcourue: number
+    surface_foret?: number | null
+    surface_maquis_garrigues?: number | null
+    autres_surfaces_naturelles_hors_foret?: number | null
+    surfaces_agricoles?: number | null
+    surfaces_non_boisees?: number | null
+    surfaces_non_boisees_artificialisees?: number | null
+    surfaces_non_boisees_naturelles?: number | null
+    surface_autres_terres_boisees?: number | null
+    autres_surfaces?: number | null
+  }
+
+  export type incendies_foretUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    nature?: NullableStringFieldUpdateOperationsInput | string | null
+    annee?: IntFieldUpdateOperationsInput | number
+    surface_parcourue?: FloatFieldUpdateOperationsInput | number
+    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces_naturelles_hors_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_agricoles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_artificialisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_naturelles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_autres_terres_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type incendies_foretUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    nature?: NullableStringFieldUpdateOperationsInput | string | null
+    annee?: IntFieldUpdateOperationsInput | number
+    surface_parcourue?: FloatFieldUpdateOperationsInput | number
+    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces_naturelles_hors_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_agricoles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_artificialisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_naturelles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_autres_terres_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type patch4cCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    niveaux_marins?: number | null
+    feux_foret: number
+    secheresse_sols: number
+    fortes_precipitations: number
+    fortes_chaleurs: number
+  }
+
+  export type patch4cUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    niveaux_marins?: number | null
+    feux_foret: number
+    secheresse_sols: number
+    fortes_precipitations: number
+    fortes_chaleurs: number
+  }
+
+  export type patch4cUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
+    feux_foret?: FloatFieldUpdateOperationsInput | number
+    secheresse_sols?: FloatFieldUpdateOperationsInput | number
+    fortes_precipitations?: FloatFieldUpdateOperationsInput | number
+    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type patch4cUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
+    feux_foret?: FloatFieldUpdateOperationsInput | number
+    secheresse_sols?: FloatFieldUpdateOperationsInput | number
+    fortes_precipitations?: FloatFieldUpdateOperationsInput | number
+    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type patch4cCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    niveaux_marins?: number | null
+    feux_foret: number
+    secheresse_sols: number
+    fortes_precipitations: number
+    fortes_chaleurs: number
+  }
+
+  export type patch4cUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
+    feux_foret?: FloatFieldUpdateOperationsInput | number
+    secheresse_sols?: FloatFieldUpdateOperationsInput | number
+    fortes_precipitations?: FloatFieldUpdateOperationsInput | number
+    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type patch4cUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
+    feux_foret?: FloatFieldUpdateOperationsInput | number
+    secheresse_sols?: FloatFieldUpdateOperationsInput | number
+    fortes_precipitations?: FloatFieldUpdateOperationsInput | number
+    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number
+  }
+
   export type communesCreateInput = {
     code_commune?: string | null
     libelle_commune?: string | null
@@ -45114,705 +33902,72 @@ export namespace Prisma {
     precarite_logement?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
-  export type patch4cCreateInput = {
-    index: bigint | number
-    code_geographique: string
-    niveaux_marins?: number | null
-    feux_foret: number
-    secheresse_sols: number
-    fortes_precipitations: number
-    fortes_chaleurs: number
+  export type usersCreateInput = {
+    email: string
+    username: string
+    password: string
+    created_at: Date | string
+    last_connection?: Date | string | null
+    role: string
   }
 
-  export type patch4cUncheckedCreateInput = {
-    index: bigint | number
-    code_geographique: string
-    niveaux_marins?: number | null
-    feux_foret: number
-    secheresse_sols: number
-    fortes_precipitations: number
-    fortes_chaleurs: number
+  export type usersUncheckedCreateInput = {
+    pk?: number
+    email: string
+    username: string
+    password: string
+    created_at: Date | string
+    last_connection?: Date | string | null
+    role: string
   }
 
-  export type patch4cUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: StringFieldUpdateOperationsInput | string
-    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
-    feux_foret?: FloatFieldUpdateOperationsInput | number
-    secheresse_sols?: FloatFieldUpdateOperationsInput | number
-    fortes_precipitations?: FloatFieldUpdateOperationsInput | number
-    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number
+  export type usersUpdateInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_connection?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: StringFieldUpdateOperationsInput | string
   }
 
-  export type patch4cUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: StringFieldUpdateOperationsInput | string
-    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
-    feux_foret?: FloatFieldUpdateOperationsInput | number
-    secheresse_sols?: FloatFieldUpdateOperationsInput | number
-    fortes_precipitations?: FloatFieldUpdateOperationsInput | number
-    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number
+  export type usersUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_connection?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: StringFieldUpdateOperationsInput | string
   }
 
-  export type patch4cCreateManyInput = {
-    index: bigint | number
-    code_geographique: string
-    niveaux_marins?: number | null
-    feux_foret: number
-    secheresse_sols: number
-    fortes_precipitations: number
-    fortes_chaleurs: number
+  export type usersCreateManyInput = {
+    pk?: number
+    email: string
+    username: string
+    password: string
+    created_at: Date | string
+    last_connection?: Date | string | null
+    role: string
   }
 
-  export type patch4cUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: StringFieldUpdateOperationsInput | string
-    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
-    feux_foret?: FloatFieldUpdateOperationsInput | number
-    secheresse_sols?: FloatFieldUpdateOperationsInput | number
-    fortes_precipitations?: FloatFieldUpdateOperationsInput | number
-    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number
+  export type usersUpdateManyMutationInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_connection?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: StringFieldUpdateOperationsInput | string
   }
 
-  export type patch4cUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: StringFieldUpdateOperationsInput | string
-    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
-    feux_foret?: FloatFieldUpdateOperationsInput | number
-    secheresse_sols?: FloatFieldUpdateOperationsInput | number
-    fortes_precipitations?: FloatFieldUpdateOperationsInput | number
-    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number
+  export type usersUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_connection?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: StringFieldUpdateOperationsInput | string
   }
-
-  export type agricultureCreateInput = {
-    index: bigint | number
-    CODGEO: string
-    LIBGEO: string
-    EPCI: string
-    LIBEPCI: string
-    DEP: string
-    REG: number
-    part_irr_SAU_2020?: number | null
-    part_over_55?: number | null
-  }
-
-  export type agricultureUncheckedCreateInput = {
-    index: bigint | number
-    CODGEO: string
-    LIBGEO: string
-    EPCI: string
-    LIBEPCI: string
-    DEP: string
-    REG: number
-    part_irr_SAU_2020?: number | null
-    part_over_55?: number | null
-  }
-
-  export type agricultureUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    CODGEO?: StringFieldUpdateOperationsInput | string
-    LIBGEO?: StringFieldUpdateOperationsInput | string
-    EPCI?: StringFieldUpdateOperationsInput | string
-    LIBEPCI?: StringFieldUpdateOperationsInput | string
-    DEP?: StringFieldUpdateOperationsInput | string
-    REG?: FloatFieldUpdateOperationsInput | number
-    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
-    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type agricultureUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    CODGEO?: StringFieldUpdateOperationsInput | string
-    LIBGEO?: StringFieldUpdateOperationsInput | string
-    EPCI?: StringFieldUpdateOperationsInput | string
-    LIBEPCI?: StringFieldUpdateOperationsInput | string
-    DEP?: StringFieldUpdateOperationsInput | string
-    REG?: FloatFieldUpdateOperationsInput | number
-    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
-    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type agricultureCreateManyInput = {
-    index: bigint | number
-    CODGEO: string
-    LIBGEO: string
-    EPCI: string
-    LIBEPCI: string
-    DEP: string
-    REG: number
-    part_irr_SAU_2020?: number | null
-    part_over_55?: number | null
-  }
-
-  export type agricultureUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    CODGEO?: StringFieldUpdateOperationsInput | string
-    LIBGEO?: StringFieldUpdateOperationsInput | string
-    EPCI?: StringFieldUpdateOperationsInput | string
-    LIBEPCI?: StringFieldUpdateOperationsInput | string
-    DEP?: StringFieldUpdateOperationsInput | string
-    REG?: FloatFieldUpdateOperationsInput | number
-    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
-    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type agricultureUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    CODGEO?: StringFieldUpdateOperationsInput | string
-    LIBGEO?: StringFieldUpdateOperationsInput | string
-    EPCI?: StringFieldUpdateOperationsInput | string
-    LIBEPCI?: StringFieldUpdateOperationsInput | string
-    DEP?: StringFieldUpdateOperationsInput | string
-    REG?: FloatFieldUpdateOperationsInput | number
-    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
-    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type incendies_foretCreateInput = {
-    index: bigint | number
-    code_geographique: string
-    libelle_geographique: string
-    epci: string
-    libelle_epci: string
-    departement: string
-    region: number
-    nature?: string | null
-    annee: number
-    surface_parcourue: number
-    surface_foret?: number | null
-    surface_maquis_garrigues?: number | null
-    autres_surfaces_naturelles_hors_foret?: number | null
-    surfaces_agricoles?: number | null
-    surfaces_non_boisees?: number | null
-    surfaces_non_boisees_artificialisees?: number | null
-    surfaces_non_boisees_naturelles?: number | null
-    surface_autres_terres_boisees?: number | null
-    autres_surfaces?: number | null
-  }
-
-  export type incendies_foretUncheckedCreateInput = {
-    index: bigint | number
-    code_geographique: string
-    libelle_geographique: string
-    epci: string
-    libelle_epci: string
-    departement: string
-    region: number
-    nature?: string | null
-    annee: number
-    surface_parcourue: number
-    surface_foret?: number | null
-    surface_maquis_garrigues?: number | null
-    autres_surfaces_naturelles_hors_foret?: number | null
-    surfaces_agricoles?: number | null
-    surfaces_non_boisees?: number | null
-    surfaces_non_boisees_artificialisees?: number | null
-    surfaces_non_boisees_naturelles?: number | null
-    surface_autres_terres_boisees?: number | null
-    autres_surfaces?: number | null
-  }
-
-  export type incendies_foretUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: StringFieldUpdateOperationsInput | string
-    libelle_geographique?: StringFieldUpdateOperationsInput | string
-    epci?: StringFieldUpdateOperationsInput | string
-    libelle_epci?: StringFieldUpdateOperationsInput | string
-    departement?: StringFieldUpdateOperationsInput | string
-    region?: FloatFieldUpdateOperationsInput | number
-    nature?: NullableStringFieldUpdateOperationsInput | string | null
-    annee?: IntFieldUpdateOperationsInput | number
-    surface_parcourue?: FloatFieldUpdateOperationsInput | number
-    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
-    surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
-    autres_surfaces_naturelles_hors_foret?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_agricoles?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_non_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_non_boisees_artificialisees?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_non_boisees_naturelles?: NullableFloatFieldUpdateOperationsInput | number | null
-    surface_autres_terres_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
-    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type incendies_foretUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: StringFieldUpdateOperationsInput | string
-    libelle_geographique?: StringFieldUpdateOperationsInput | string
-    epci?: StringFieldUpdateOperationsInput | string
-    libelle_epci?: StringFieldUpdateOperationsInput | string
-    departement?: StringFieldUpdateOperationsInput | string
-    region?: FloatFieldUpdateOperationsInput | number
-    nature?: NullableStringFieldUpdateOperationsInput | string | null
-    annee?: IntFieldUpdateOperationsInput | number
-    surface_parcourue?: FloatFieldUpdateOperationsInput | number
-    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
-    surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
-    autres_surfaces_naturelles_hors_foret?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_agricoles?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_non_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_non_boisees_artificialisees?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_non_boisees_naturelles?: NullableFloatFieldUpdateOperationsInput | number | null
-    surface_autres_terres_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
-    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type incendies_foretCreateManyInput = {
-    index: bigint | number
-    code_geographique: string
-    libelle_geographique: string
-    epci: string
-    libelle_epci: string
-    departement: string
-    region: number
-    nature?: string | null
-    annee: number
-    surface_parcourue: number
-    surface_foret?: number | null
-    surface_maquis_garrigues?: number | null
-    autres_surfaces_naturelles_hors_foret?: number | null
-    surfaces_agricoles?: number | null
-    surfaces_non_boisees?: number | null
-    surfaces_non_boisees_artificialisees?: number | null
-    surfaces_non_boisees_naturelles?: number | null
-    surface_autres_terres_boisees?: number | null
-    autres_surfaces?: number | null
-  }
-
-  export type incendies_foretUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: StringFieldUpdateOperationsInput | string
-    libelle_geographique?: StringFieldUpdateOperationsInput | string
-    epci?: StringFieldUpdateOperationsInput | string
-    libelle_epci?: StringFieldUpdateOperationsInput | string
-    departement?: StringFieldUpdateOperationsInput | string
-    region?: FloatFieldUpdateOperationsInput | number
-    nature?: NullableStringFieldUpdateOperationsInput | string | null
-    annee?: IntFieldUpdateOperationsInput | number
-    surface_parcourue?: FloatFieldUpdateOperationsInput | number
-    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
-    surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
-    autres_surfaces_naturelles_hors_foret?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_agricoles?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_non_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_non_boisees_artificialisees?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_non_boisees_naturelles?: NullableFloatFieldUpdateOperationsInput | number | null
-    surface_autres_terres_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
-    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type incendies_foretUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number
-    code_geographique?: StringFieldUpdateOperationsInput | string
-    libelle_geographique?: StringFieldUpdateOperationsInput | string
-    epci?: StringFieldUpdateOperationsInput | string
-    libelle_epci?: StringFieldUpdateOperationsInput | string
-    departement?: StringFieldUpdateOperationsInput | string
-    region?: FloatFieldUpdateOperationsInput | number
-    nature?: NullableStringFieldUpdateOperationsInput | string | null
-    annee?: IntFieldUpdateOperationsInput | number
-    surface_parcourue?: FloatFieldUpdateOperationsInput | number
-    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
-    surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
-    autres_surfaces_naturelles_hors_foret?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_agricoles?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_non_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_non_boisees_artificialisees?: NullableFloatFieldUpdateOperationsInput | number | null
-    surfaces_non_boisees_naturelles?: NullableFloatFieldUpdateOperationsInput | number | null
-    surface_autres_terres_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
-    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type agricultureCreateInput = {
-    index: bigint | number;
-    CODGEO: string;
-    LIBGEO: string;
-    EPCI: string;
-    LIBEPCI: string;
-    DEP: string;
-    REG: number;
-    part_irr_SAU_2020?: number | null;
-    part_over_55?: number | null;
-  };
-
-  export type agricultureUncheckedCreateInput = {
-    index: bigint | number;
-    CODGEO: string;
-    LIBGEO: string;
-    EPCI: string;
-    LIBEPCI: string;
-    DEP: string;
-    REG: number;
-    part_irr_SAU_2020?: number | null;
-    part_over_55?: number | null;
-  };
-
-  export type agricultureUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    CODGEO?: StringFieldUpdateOperationsInput | string;
-    LIBGEO?: StringFieldUpdateOperationsInput | string;
-    EPCI?: StringFieldUpdateOperationsInput | string;
-    LIBEPCI?: StringFieldUpdateOperationsInput | string;
-    DEP?: StringFieldUpdateOperationsInput | string;
-    REG?: FloatFieldUpdateOperationsInput | number;
-    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null;
-    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type agricultureUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    CODGEO?: StringFieldUpdateOperationsInput | string;
-    LIBGEO?: StringFieldUpdateOperationsInput | string;
-    EPCI?: StringFieldUpdateOperationsInput | string;
-    LIBEPCI?: StringFieldUpdateOperationsInput | string;
-    DEP?: StringFieldUpdateOperationsInput | string;
-    REG?: FloatFieldUpdateOperationsInput | number;
-    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null;
-    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type agricultureCreateManyInput = {
-    index: bigint | number;
-    CODGEO: string;
-    LIBGEO: string;
-    EPCI: string;
-    LIBEPCI: string;
-    DEP: string;
-    REG: number;
-    part_irr_SAU_2020?: number | null;
-    part_over_55?: number | null;
-  };
-
-  export type agricultureUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    CODGEO?: StringFieldUpdateOperationsInput | string;
-    LIBGEO?: StringFieldUpdateOperationsInput | string;
-    EPCI?: StringFieldUpdateOperationsInput | string;
-    LIBEPCI?: StringFieldUpdateOperationsInput | string;
-    DEP?: StringFieldUpdateOperationsInput | string;
-    REG?: FloatFieldUpdateOperationsInput | number;
-    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null;
-    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type agricultureUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    CODGEO?: StringFieldUpdateOperationsInput | string;
-    LIBGEO?: StringFieldUpdateOperationsInput | string;
-    EPCI?: StringFieldUpdateOperationsInput | string;
-    LIBEPCI?: StringFieldUpdateOperationsInput | string;
-    DEP?: StringFieldUpdateOperationsInput | string;
-    REG?: FloatFieldUpdateOperationsInput | number;
-    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null;
-    part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type incendies_foretCreateInput = {
-    index: bigint | number;
-    code_geographique: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: number;
-    nature?: string | null;
-    annee: number;
-    surface_parcourue: number;
-    surface_foret?: number | null;
-    surface_maquis_garrigues?: number | null;
-    autres_surfaces_naturelles_hors_foret?: number | null;
-    surfaces_agricoles?: number | null;
-    surfaces_non_boisees?: number | null;
-    surfaces_non_boisees_artificialisees?: number | null;
-    surfaces_non_boisees_naturelles?: number | null;
-    surface_autres_terres_boisees?: number | null;
-    autres_surfaces?: number | null;
-  };
-
-  export type incendies_foretUncheckedCreateInput = {
-    index: bigint | number;
-    code_geographique: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: number;
-    nature?: string | null;
-    annee: number;
-    surface_parcourue: number;
-    surface_foret?: number | null;
-    surface_maquis_garrigues?: number | null;
-    autres_surfaces_naturelles_hors_foret?: number | null;
-    surfaces_agricoles?: number | null;
-    surfaces_non_boisees?: number | null;
-    surfaces_non_boisees_artificialisees?: number | null;
-    surfaces_non_boisees_naturelles?: number | null;
-    surface_autres_terres_boisees?: number | null;
-    autres_surfaces?: number | null;
-  };
-
-  export type incendies_foretUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: FloatFieldUpdateOperationsInput | number;
-    nature?: NullableStringFieldUpdateOperationsInput | string | null;
-    annee?: IntFieldUpdateOperationsInput | number;
-    surface_parcourue?: FloatFieldUpdateOperationsInput | number;
-    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null;
-    surface_maquis_garrigues?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    autres_surfaces_naturelles_hors_foret?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_agricoles?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_non_boisees?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_non_boisees_artificialisees?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_non_boisees_naturelles?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surface_autres_terres_boisees?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type incendies_foretUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: FloatFieldUpdateOperationsInput | number;
-    nature?: NullableStringFieldUpdateOperationsInput | string | null;
-    annee?: IntFieldUpdateOperationsInput | number;
-    surface_parcourue?: FloatFieldUpdateOperationsInput | number;
-    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null;
-    surface_maquis_garrigues?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    autres_surfaces_naturelles_hors_foret?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_agricoles?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_non_boisees?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_non_boisees_artificialisees?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_non_boisees_naturelles?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surface_autres_terres_boisees?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type incendies_foretCreateManyInput = {
-    index: bigint | number;
-    code_geographique: string;
-    libelle_geographique: string;
-    epci: string;
-    libelle_epci: string;
-    departement: string;
-    region: number;
-    nature?: string | null;
-    annee: number;
-    surface_parcourue: number;
-    surface_foret?: number | null;
-    surface_maquis_garrigues?: number | null;
-    autres_surfaces_naturelles_hors_foret?: number | null;
-    surfaces_agricoles?: number | null;
-    surfaces_non_boisees?: number | null;
-    surfaces_non_boisees_artificialisees?: number | null;
-    surfaces_non_boisees_naturelles?: number | null;
-    surface_autres_terres_boisees?: number | null;
-    autres_surfaces?: number | null;
-  };
-
-  export type incendies_foretUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: FloatFieldUpdateOperationsInput | number;
-    nature?: NullableStringFieldUpdateOperationsInput | string | null;
-    annee?: IntFieldUpdateOperationsInput | number;
-    surface_parcourue?: FloatFieldUpdateOperationsInput | number;
-    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null;
-    surface_maquis_garrigues?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    autres_surfaces_naturelles_hors_foret?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_agricoles?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_non_boisees?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_non_boisees_artificialisees?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_non_boisees_naturelles?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surface_autres_terres_boisees?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type incendies_foretUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    libelle_geographique?: StringFieldUpdateOperationsInput | string;
-    epci?: StringFieldUpdateOperationsInput | string;
-    libelle_epci?: StringFieldUpdateOperationsInput | string;
-    departement?: StringFieldUpdateOperationsInput | string;
-    region?: FloatFieldUpdateOperationsInput | number;
-    nature?: NullableStringFieldUpdateOperationsInput | string | null;
-    annee?: IntFieldUpdateOperationsInput | number;
-    surface_parcourue?: FloatFieldUpdateOperationsInput | number;
-    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null;
-    surface_maquis_garrigues?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    autres_surfaces_naturelles_hors_foret?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_agricoles?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_non_boisees?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_non_boisees_artificialisees?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surfaces_non_boisees_naturelles?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    surface_autres_terres_boisees?:
-      | NullableFloatFieldUpdateOperationsInput
-      | number
-      | null;
-    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null;
-  };
-
-  export type patch4cCreateInput = {
-    index: bigint | number;
-    code_geographique: string;
-    niveaux_marins?: number | null;
-    feux_foret: number;
-    secheresse_sols: number;
-    fortes_precipitations: number;
-    fortes_chaleurs: number;
-  };
-
-  export type patch4cUncheckedCreateInput = {
-    index: bigint | number;
-    code_geographique: string;
-    niveaux_marins?: number | null;
-    feux_foret: number;
-    secheresse_sols: number;
-    fortes_precipitations: number;
-    fortes_chaleurs: number;
-  };
-
-  export type patch4cUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null;
-    feux_foret?: FloatFieldUpdateOperationsInput | number;
-    secheresse_sols?: FloatFieldUpdateOperationsInput | number;
-    fortes_precipitations?: FloatFieldUpdateOperationsInput | number;
-    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number;
-  };
-
-  export type patch4cUncheckedUpdateInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null;
-    feux_foret?: FloatFieldUpdateOperationsInput | number;
-    secheresse_sols?: FloatFieldUpdateOperationsInput | number;
-    fortes_precipitations?: FloatFieldUpdateOperationsInput | number;
-    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number;
-  };
-
-  export type patch4cCreateManyInput = {
-    index: bigint | number;
-    code_geographique: string;
-    niveaux_marins?: number | null;
-    feux_foret: number;
-    secheresse_sols: number;
-    fortes_precipitations: number;
-    fortes_chaleurs: number;
-  };
-
-  export type patch4cUpdateManyMutationInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null;
-    feux_foret?: FloatFieldUpdateOperationsInput | number;
-    secheresse_sols?: FloatFieldUpdateOperationsInput | number;
-    fortes_precipitations?: FloatFieldUpdateOperationsInput | number;
-    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number;
-  };
-
-  export type patch4cUncheckedUpdateManyInput = {
-    index?: BigIntFieldUpdateOperationsInput | bigint | number;
-    code_geographique?: StringFieldUpdateOperationsInput | string;
-    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null;
-    feux_foret?: FloatFieldUpdateOperationsInput | number;
-    secheresse_sols?: FloatFieldUpdateOperationsInput | number;
-    fortes_precipitations?: FloatFieldUpdateOperationsInput | number;
-    fortes_chaleurs?: FloatFieldUpdateOperationsInput | number;
-  };
 
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
@@ -45851,7 +34006,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-<<<<<<< HEAD
   export type FloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -45863,8 +34017,6 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-=======
->>>>>>> dev
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -45880,24 +34032,12 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null;
-  };
-
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type inconfort_thermiqueCountOrderByAggregateInput = {
-<<<<<<< HEAD
     index?: SortOrder
     code_geographique?: SortOrder
     libelle_geographique?: SortOrder
@@ -46132,259 +34272,6 @@ export namespace Prisma {
     clc_5_eau?: SortOrder
     superf_choro?: SortOrder
   }
-=======
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    libelle_departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrder;
-    libelle_petr?: SortOrder;
-    code_pnr?: SortOrder;
-    libelle_pnr?: SortOrder;
-    age_bati_post06?: SortOrder;
-    age_bati_91_05?: SortOrder;
-    age_bati_46_90?: SortOrder;
-    age_bati_19_45?: SortOrder;
-    age_bati_pre_19?: SortOrder;
-    under_4_sum_1968?: SortOrder;
-    to_80_sum_1968?: SortOrder;
-    over_80_sum_1968?: SortOrder;
-    under_4_sum_1975?: SortOrder;
-    to_80_sum_1975?: SortOrder;
-    over_80_sum_1975?: SortOrder;
-    under_4_sum_1982?: SortOrder;
-    to_80_sum_1982?: SortOrder;
-    over_80_sum_1982?: SortOrder;
-    under_4_sum_1990?: SortOrder;
-    to_80_sum_1990?: SortOrder;
-    over_80_sum_1990?: SortOrder;
-    under_4_sum_1999?: SortOrder;
-    to_80_sum_1999?: SortOrder;
-    over_80_sum_1999?: SortOrder;
-    under_4_sum_2009?: SortOrder;
-    to_80_sum_2009?: SortOrder;
-    over_80_sum_2009?: SortOrder;
-    under_4_sum_2014?: SortOrder;
-    to_80_sum_2014?: SortOrder;
-    over_80_sum_2014?: SortOrder;
-    under_4_sum_2020?: SortOrder;
-    to_80_sum_2020?: SortOrder;
-    over_80_sum_2020?: SortOrder;
-    P20_POP80P?: SortOrder;
-    P20_POP80P_PSEUL?: SortOrder;
-    P20_POP80P_PSEUL_PERCENT?: SortOrder;
-    tee_log?: SortOrder;
-    tee_mob?: SortOrder;
-    precarite_logement?: SortOrder;
-    NA5AZ_sum?: SortOrder;
-    NA5BE_sum?: SortOrder;
-    NA5FZ_sum?: SortOrder;
-    NA5GU_sum?: SortOrder;
-    NA5OQ_sum?: SortOrder;
-    s_geom_cstr_bati?: SortOrder;
-    hauteur?: SortOrder;
-    densite_bati?: SortOrder;
-    h_x_s?: SortOrder;
-    clc_1_artificialise?: SortOrder;
-    clc_2_agricole?: SortOrder;
-    clc_3_foret_semiNaturel?: SortOrder;
-    clc_4_humide?: SortOrder;
-    clc_5_eau?: SortOrder;
-    superf_choro?: SortOrder;
-  };
-
-  export type inconfort_thermiqueAvgOrderByAggregateInput = {
-    index?: SortOrder;
-    region?: SortOrder;
-    age_bati_post06?: SortOrder;
-    age_bati_91_05?: SortOrder;
-    age_bati_46_90?: SortOrder;
-    age_bati_19_45?: SortOrder;
-    age_bati_pre_19?: SortOrder;
-    P20_POP80P_PSEUL_PERCENT?: SortOrder;
-    tee_log?: SortOrder;
-    tee_mob?: SortOrder;
-    precarite_logement?: SortOrder;
-    NA5AZ_sum?: SortOrder;
-    NA5BE_sum?: SortOrder;
-    NA5FZ_sum?: SortOrder;
-    NA5GU_sum?: SortOrder;
-    NA5OQ_sum?: SortOrder;
-    s_geom_cstr_bati?: SortOrder;
-    hauteur?: SortOrder;
-    densite_bati?: SortOrder;
-    h_x_s?: SortOrder;
-    clc_1_artificialise?: SortOrder;
-    clc_2_agricole?: SortOrder;
-    clc_3_foret_semiNaturel?: SortOrder;
-    clc_4_humide?: SortOrder;
-    clc_5_eau?: SortOrder;
-    superf_choro?: SortOrder;
-  };
-
-  export type inconfort_thermiqueMaxOrderByAggregateInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    libelle_departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrder;
-    libelle_petr?: SortOrder;
-    code_pnr?: SortOrder;
-    libelle_pnr?: SortOrder;
-    age_bati_post06?: SortOrder;
-    age_bati_91_05?: SortOrder;
-    age_bati_46_90?: SortOrder;
-    age_bati_19_45?: SortOrder;
-    age_bati_pre_19?: SortOrder;
-    under_4_sum_1968?: SortOrder;
-    to_80_sum_1968?: SortOrder;
-    over_80_sum_1968?: SortOrder;
-    under_4_sum_1975?: SortOrder;
-    to_80_sum_1975?: SortOrder;
-    over_80_sum_1975?: SortOrder;
-    under_4_sum_1982?: SortOrder;
-    to_80_sum_1982?: SortOrder;
-    over_80_sum_1982?: SortOrder;
-    under_4_sum_1990?: SortOrder;
-    to_80_sum_1990?: SortOrder;
-    over_80_sum_1990?: SortOrder;
-    under_4_sum_1999?: SortOrder;
-    to_80_sum_1999?: SortOrder;
-    over_80_sum_1999?: SortOrder;
-    under_4_sum_2009?: SortOrder;
-    to_80_sum_2009?: SortOrder;
-    over_80_sum_2009?: SortOrder;
-    under_4_sum_2014?: SortOrder;
-    to_80_sum_2014?: SortOrder;
-    over_80_sum_2014?: SortOrder;
-    under_4_sum_2020?: SortOrder;
-    to_80_sum_2020?: SortOrder;
-    over_80_sum_2020?: SortOrder;
-    P20_POP80P?: SortOrder;
-    P20_POP80P_PSEUL?: SortOrder;
-    P20_POP80P_PSEUL_PERCENT?: SortOrder;
-    tee_log?: SortOrder;
-    tee_mob?: SortOrder;
-    precarite_logement?: SortOrder;
-    NA5AZ_sum?: SortOrder;
-    NA5BE_sum?: SortOrder;
-    NA5FZ_sum?: SortOrder;
-    NA5GU_sum?: SortOrder;
-    NA5OQ_sum?: SortOrder;
-    s_geom_cstr_bati?: SortOrder;
-    hauteur?: SortOrder;
-    densite_bati?: SortOrder;
-    h_x_s?: SortOrder;
-    clc_1_artificialise?: SortOrder;
-    clc_2_agricole?: SortOrder;
-    clc_3_foret_semiNaturel?: SortOrder;
-    clc_4_humide?: SortOrder;
-    clc_5_eau?: SortOrder;
-    superf_choro?: SortOrder;
-  };
-
-  export type inconfort_thermiqueMinOrderByAggregateInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    libelle_departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrder;
-    libelle_petr?: SortOrder;
-    code_pnr?: SortOrder;
-    libelle_pnr?: SortOrder;
-    age_bati_post06?: SortOrder;
-    age_bati_91_05?: SortOrder;
-    age_bati_46_90?: SortOrder;
-    age_bati_19_45?: SortOrder;
-    age_bati_pre_19?: SortOrder;
-    under_4_sum_1968?: SortOrder;
-    to_80_sum_1968?: SortOrder;
-    over_80_sum_1968?: SortOrder;
-    under_4_sum_1975?: SortOrder;
-    to_80_sum_1975?: SortOrder;
-    over_80_sum_1975?: SortOrder;
-    under_4_sum_1982?: SortOrder;
-    to_80_sum_1982?: SortOrder;
-    over_80_sum_1982?: SortOrder;
-    under_4_sum_1990?: SortOrder;
-    to_80_sum_1990?: SortOrder;
-    over_80_sum_1990?: SortOrder;
-    under_4_sum_1999?: SortOrder;
-    to_80_sum_1999?: SortOrder;
-    over_80_sum_1999?: SortOrder;
-    under_4_sum_2009?: SortOrder;
-    to_80_sum_2009?: SortOrder;
-    over_80_sum_2009?: SortOrder;
-    under_4_sum_2014?: SortOrder;
-    to_80_sum_2014?: SortOrder;
-    over_80_sum_2014?: SortOrder;
-    under_4_sum_2020?: SortOrder;
-    to_80_sum_2020?: SortOrder;
-    over_80_sum_2020?: SortOrder;
-    P20_POP80P?: SortOrder;
-    P20_POP80P_PSEUL?: SortOrder;
-    P20_POP80P_PSEUL_PERCENT?: SortOrder;
-    tee_log?: SortOrder;
-    tee_mob?: SortOrder;
-    precarite_logement?: SortOrder;
-    NA5AZ_sum?: SortOrder;
-    NA5BE_sum?: SortOrder;
-    NA5FZ_sum?: SortOrder;
-    NA5GU_sum?: SortOrder;
-    NA5OQ_sum?: SortOrder;
-    s_geom_cstr_bati?: SortOrder;
-    hauteur?: SortOrder;
-    densite_bati?: SortOrder;
-    h_x_s?: SortOrder;
-    clc_1_artificialise?: SortOrder;
-    clc_2_agricole?: SortOrder;
-    clc_3_foret_semiNaturel?: SortOrder;
-    clc_4_humide?: SortOrder;
-    clc_5_eau?: SortOrder;
-    superf_choro?: SortOrder;
-  };
-
-  export type inconfort_thermiqueSumOrderByAggregateInput = {
-    index?: SortOrder;
-    region?: SortOrder;
-    age_bati_post06?: SortOrder;
-    age_bati_91_05?: SortOrder;
-    age_bati_46_90?: SortOrder;
-    age_bati_19_45?: SortOrder;
-    age_bati_pre_19?: SortOrder;
-    P20_POP80P_PSEUL_PERCENT?: SortOrder;
-    tee_log?: SortOrder;
-    tee_mob?: SortOrder;
-    precarite_logement?: SortOrder;
-    NA5AZ_sum?: SortOrder;
-    NA5BE_sum?: SortOrder;
-    NA5FZ_sum?: SortOrder;
-    NA5GU_sum?: SortOrder;
-    NA5OQ_sum?: SortOrder;
-    s_geom_cstr_bati?: SortOrder;
-    hauteur?: SortOrder;
-    densite_bati?: SortOrder;
-    h_x_s?: SortOrder;
-    clc_1_artificialise?: SortOrder;
-    clc_2_agricole?: SortOrder;
-    clc_3_foret_semiNaturel?: SortOrder;
-    clc_4_humide?: SortOrder;
-    clc_5_eau?: SortOrder;
-    superf_choro?: SortOrder;
-  };
->>>>>>> dev
 
   export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
@@ -46436,7 +34323,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-<<<<<<< HEAD
   export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -46453,8 +34339,6 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
-=======
->>>>>>> dev
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -46472,22 +34356,6 @@ export namespace Prisma {
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
-
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null;
-    _count?: NestedIntNullableFilter<$PrismaModel>;
-    _avg?: NestedFloatNullableFilter<$PrismaModel>;
-    _sum?: NestedFloatNullableFilter<$PrismaModel>;
-    _min?: NestedFloatNullableFilter<$PrismaModel>;
-    _max?: NestedFloatNullableFilter<$PrismaModel>;
-  };
 
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
@@ -46545,7 +34413,6 @@ export namespace Prisma {
   }
 
   export type collectivites_searchbarCountOrderByAggregateInput = {
-<<<<<<< HEAD
     index?: SortOrder
     code_commune?: SortOrder
     coordinates?: SortOrder
@@ -46557,30 +34424,12 @@ export namespace Prisma {
     search_code?: SortOrder
     search_libelle?: SortOrder
   }
-=======
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    libelle_departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrder;
-    libelle_petr?: SortOrder;
-    code_pnr?: SortOrder;
-    libelle_pnr?: SortOrder;
-    search_code?: SortOrder;
-    search_libelle?: SortOrder;
-  };
->>>>>>> dev
 
   export type collectivites_searchbarAvgOrderByAggregateInput = {
     index?: SortOrder
   }
 
   export type collectivites_searchbarMaxOrderByAggregateInput = {
-<<<<<<< HEAD
     index?: SortOrder
     code_commune?: SortOrder
     coordinates?: SortOrder
@@ -46605,40 +34454,6 @@ export namespace Prisma {
     search_code?: SortOrder
     search_libelle?: SortOrder
   }
-=======
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    libelle_departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrder;
-    libelle_petr?: SortOrder;
-    code_pnr?: SortOrder;
-    libelle_pnr?: SortOrder;
-    search_code?: SortOrder;
-    search_libelle?: SortOrder;
-  };
-
-  export type collectivites_searchbarMinOrderByAggregateInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    libelle_departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrder;
-    libelle_petr?: SortOrder;
-    code_pnr?: SortOrder;
-    libelle_pnr?: SortOrder;
-    search_code?: SortOrder;
-    search_libelle?: SortOrder;
-  };
->>>>>>> dev
 
   export type collectivites_searchbarSumOrderByAggregateInput = {
     index?: SortOrder
@@ -46688,15 +34503,15 @@ export namespace Prisma {
   }
 
   export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatFilter<$PrismaModel> | number;
-  };
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
 
   export type gestion_risquesCountOrderByAggregateInput = {
     index?: SortOrder
@@ -46745,23 +34560,22 @@ export namespace Prisma {
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number;
-    _count?: NestedIntFilter<$PrismaModel>;
-    _avg?: NestedFloatFilter<$PrismaModel>;
-    _sum?: NestedFloatFilter<$PrismaModel>;
-    _min?: NestedFloatFilter<$PrismaModel>;
-    _max?: NestedFloatFilter<$PrismaModel>;
-  };
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
 
   export type communes_dromCountOrderByAggregateInput = {
-<<<<<<< HEAD
     pk?: SortOrder
     code_commune?: SortOrder
     libelle_commune?: SortOrder
@@ -46810,76 +34624,6 @@ export namespace Prisma {
     precarite_logement?: SortOrder
     surface?: SortOrder
   }
-=======
-    pk?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrder;
-    libelle_petr?: SortOrder;
-    code_pnr?: SortOrder;
-    libelle_pnr?: SortOrder;
-    coordinates?: SortOrder;
-    densite_bati?: SortOrder;
-    precarite_logement?: SortOrder;
-    surface?: SortOrder;
-  };
-
-  export type communes_dromAvgOrderByAggregateInput = {
-    pk?: SortOrder;
-    region?: SortOrder;
-    densite_bati?: SortOrder;
-    precarite_logement?: SortOrder;
-    surface?: SortOrder;
-  };
-
-  export type communes_dromMaxOrderByAggregateInput = {
-    pk?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrder;
-    libelle_petr?: SortOrder;
-    code_pnr?: SortOrder;
-    libelle_pnr?: SortOrder;
-    coordinates?: SortOrder;
-    densite_bati?: SortOrder;
-    precarite_logement?: SortOrder;
-    surface?: SortOrder;
-  };
-
-  export type communes_dromMinOrderByAggregateInput = {
-    pk?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrder;
-    libelle_petr?: SortOrder;
-    code_pnr?: SortOrder;
-    libelle_pnr?: SortOrder;
-    coordinates?: SortOrder;
-    densite_bati?: SortOrder;
-    precarite_logement?: SortOrder;
-    surface?: SortOrder;
-  };
-
-  export type communes_dromSumOrderByAggregateInput = {
-    pk?: SortOrder;
-    region?: SortOrder;
-    densite_bati?: SortOrder;
-    precarite_logement?: SortOrder;
-    surface?: SortOrder;
-  };
->>>>>>> dev
 
   export type ressources_eauCountOrderByAggregateInput = {
     index?: SortOrder
@@ -46992,20 +34736,6 @@ export namespace Prisma {
     region?: SortOrder
   }
 
-<<<<<<< HEAD
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-=======
->>>>>>> dev
   export type agriculture_bioCountOrderByAggregateInput = {
     index?: SortOrder
     epci?: SortOrder
@@ -47078,25 +34808,6 @@ export namespace Prisma {
     nombre_2019?: SortOrder
   }
 
-<<<<<<< HEAD
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
-  }
-
-=======
->>>>>>> dev
   export type erosion_cotiereCountOrderByAggregateInput = {
     pk?: SortOrder
     taux?: SortOrder
@@ -47258,7 +34969,6 @@ export namespace Prisma {
   }
 
   export type consommation_espaces_nafCountOrderByAggregateInput = {
-<<<<<<< HEAD
     index?: SortOrder
     code_geographique?: SortOrder
     libelle_geographique?: SortOrder
@@ -47389,142 +35099,6 @@ export namespace Prisma {
     C15_MEN?: SortOrder
     C21_MEN?: SortOrder
   }
-=======
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrder;
-    libelle_petr?: SortOrder;
-    code_pnr?: SortOrder;
-    libelle_pnr?: SortOrder;
-    naf09art10?: SortOrder;
-    art09act10?: SortOrder;
-    art09hab10?: SortOrder;
-    art09mix10?: SortOrder;
-    art09rou10?: SortOrder;
-    art09fer10?: SortOrder;
-    art09inc10?: SortOrder;
-    naf10art11?: SortOrder;
-    art10act11?: SortOrder;
-    art10hab11?: SortOrder;
-    art10mix11?: SortOrder;
-    art10rou11?: SortOrder;
-    art10fer11?: SortOrder;
-    art10inc11?: SortOrder;
-    naf11art12?: SortOrder;
-    art11act12?: SortOrder;
-    art11hab12?: SortOrder;
-    art11mix12?: SortOrder;
-    art11rou12?: SortOrder;
-    art11fer12?: SortOrder;
-    art11inc12?: SortOrder;
-    naf12art13?: SortOrder;
-    art12act13?: SortOrder;
-    art12hab13?: SortOrder;
-    art12mix13?: SortOrder;
-    art12rou13?: SortOrder;
-    art12fer13?: SortOrder;
-    art12inc13?: SortOrder;
-    naf13art14?: SortOrder;
-    art13act14?: SortOrder;
-    art13hab14?: SortOrder;
-    art13mix14?: SortOrder;
-    art13rou14?: SortOrder;
-    art13fer14?: SortOrder;
-    art13inc14?: SortOrder;
-    naf14art15?: SortOrder;
-    art14act15?: SortOrder;
-    art14hab15?: SortOrder;
-    art14mix15?: SortOrder;
-    art14rou15?: SortOrder;
-    art14fer15?: SortOrder;
-    art14inc15?: SortOrder;
-    naf15art16?: SortOrder;
-    art15act16?: SortOrder;
-    art15hab16?: SortOrder;
-    art15mix16?: SortOrder;
-    art15rou16?: SortOrder;
-    art15fer16?: SortOrder;
-    art15inc16?: SortOrder;
-    naf16art17?: SortOrder;
-    art16act17?: SortOrder;
-    art16hab17?: SortOrder;
-    art16mix17?: SortOrder;
-    art16rou17?: SortOrder;
-    art16fer17?: SortOrder;
-    art16inc17?: SortOrder;
-    naf17art18?: SortOrder;
-    art17act18?: SortOrder;
-    art17hab18?: SortOrder;
-    art17mix18?: SortOrder;
-    art17rou18?: SortOrder;
-    art17fer18?: SortOrder;
-    art17inc18?: SortOrder;
-    naf18art19?: SortOrder;
-    art18act19?: SortOrder;
-    art18hab19?: SortOrder;
-    art18mix19?: SortOrder;
-    art18rou19?: SortOrder;
-    art18fer19?: SortOrder;
-    art18inc19?: SortOrder;
-    naf19art20?: SortOrder;
-    art19act20?: SortOrder;
-    art19hab20?: SortOrder;
-    art19mix20?: SortOrder;
-    art19rou20?: SortOrder;
-    art19fer20?: SortOrder;
-    art19inc20?: SortOrder;
-    naf20art21?: SortOrder;
-    art20act21?: SortOrder;
-    art20hab21?: SortOrder;
-    art20mix21?: SortOrder;
-    art20rou21?: SortOrder;
-    art20fer21?: SortOrder;
-    art20inc21?: SortOrder;
-    naf21art22?: SortOrder;
-    art21act22?: SortOrder;
-    art21hab22?: SortOrder;
-    art21mix22?: SortOrder;
-    art21rou22?: SortOrder;
-    art21fer22?: SortOrder;
-    art21inc22?: SortOrder;
-    naf22art23?: SortOrder;
-    art22act23?: SortOrder;
-    art22hab23?: SortOrder;
-    art22mix23?: SortOrder;
-    art22rou23?: SortOrder;
-    art22fer23?: SortOrder;
-    art22inc23?: SortOrder;
-    naf09art23?: SortOrder;
-    art09act23?: SortOrder;
-    art09hab23?: SortOrder;
-    art09mix23?: SortOrder;
-    art09inc23?: SortOrder;
-    art09rou23?: SortOrder;
-    art09fer23?: SortOrder;
-    artcom0923?: SortOrder;
-    pop14?: SortOrder;
-    pop20?: SortOrder;
-    pop1420?: SortOrder;
-    men14?: SortOrder;
-    men20?: SortOrder;
-    men1420?: SortOrder;
-    emp14?: SortOrder;
-    emp20?: SortOrder;
-    emp1420?: SortOrder;
-    mepart1420?: SortOrder;
-    menhab1420?: SortOrder;
-    artpop1420?: SortOrder;
-    surfcom2023?: SortOrder;
-    C10_MEN?: SortOrder;
-    C15_MEN?: SortOrder;
-    C21_MEN?: SortOrder;
-  };
->>>>>>> dev
 
   export type consommation_espaces_nafAvgOrderByAggregateInput = {
     index?: SortOrder
@@ -47654,7 +35228,6 @@ export namespace Prisma {
   }
 
   export type consommation_espaces_nafMaxOrderByAggregateInput = {
-<<<<<<< HEAD
     index?: SortOrder
     code_geographique?: SortOrder
     libelle_geographique?: SortOrder
@@ -47917,278 +35490,6 @@ export namespace Prisma {
     C15_MEN?: SortOrder
     C21_MEN?: SortOrder
   }
-=======
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrder;
-    libelle_petr?: SortOrder;
-    code_pnr?: SortOrder;
-    libelle_pnr?: SortOrder;
-    naf09art10?: SortOrder;
-    art09act10?: SortOrder;
-    art09hab10?: SortOrder;
-    art09mix10?: SortOrder;
-    art09rou10?: SortOrder;
-    art09fer10?: SortOrder;
-    art09inc10?: SortOrder;
-    naf10art11?: SortOrder;
-    art10act11?: SortOrder;
-    art10hab11?: SortOrder;
-    art10mix11?: SortOrder;
-    art10rou11?: SortOrder;
-    art10fer11?: SortOrder;
-    art10inc11?: SortOrder;
-    naf11art12?: SortOrder;
-    art11act12?: SortOrder;
-    art11hab12?: SortOrder;
-    art11mix12?: SortOrder;
-    art11rou12?: SortOrder;
-    art11fer12?: SortOrder;
-    art11inc12?: SortOrder;
-    naf12art13?: SortOrder;
-    art12act13?: SortOrder;
-    art12hab13?: SortOrder;
-    art12mix13?: SortOrder;
-    art12rou13?: SortOrder;
-    art12fer13?: SortOrder;
-    art12inc13?: SortOrder;
-    naf13art14?: SortOrder;
-    art13act14?: SortOrder;
-    art13hab14?: SortOrder;
-    art13mix14?: SortOrder;
-    art13rou14?: SortOrder;
-    art13fer14?: SortOrder;
-    art13inc14?: SortOrder;
-    naf14art15?: SortOrder;
-    art14act15?: SortOrder;
-    art14hab15?: SortOrder;
-    art14mix15?: SortOrder;
-    art14rou15?: SortOrder;
-    art14fer15?: SortOrder;
-    art14inc15?: SortOrder;
-    naf15art16?: SortOrder;
-    art15act16?: SortOrder;
-    art15hab16?: SortOrder;
-    art15mix16?: SortOrder;
-    art15rou16?: SortOrder;
-    art15fer16?: SortOrder;
-    art15inc16?: SortOrder;
-    naf16art17?: SortOrder;
-    art16act17?: SortOrder;
-    art16hab17?: SortOrder;
-    art16mix17?: SortOrder;
-    art16rou17?: SortOrder;
-    art16fer17?: SortOrder;
-    art16inc17?: SortOrder;
-    naf17art18?: SortOrder;
-    art17act18?: SortOrder;
-    art17hab18?: SortOrder;
-    art17mix18?: SortOrder;
-    art17rou18?: SortOrder;
-    art17fer18?: SortOrder;
-    art17inc18?: SortOrder;
-    naf18art19?: SortOrder;
-    art18act19?: SortOrder;
-    art18hab19?: SortOrder;
-    art18mix19?: SortOrder;
-    art18rou19?: SortOrder;
-    art18fer19?: SortOrder;
-    art18inc19?: SortOrder;
-    naf19art20?: SortOrder;
-    art19act20?: SortOrder;
-    art19hab20?: SortOrder;
-    art19mix20?: SortOrder;
-    art19rou20?: SortOrder;
-    art19fer20?: SortOrder;
-    art19inc20?: SortOrder;
-    naf20art21?: SortOrder;
-    art20act21?: SortOrder;
-    art20hab21?: SortOrder;
-    art20mix21?: SortOrder;
-    art20rou21?: SortOrder;
-    art20fer21?: SortOrder;
-    art20inc21?: SortOrder;
-    naf21art22?: SortOrder;
-    art21act22?: SortOrder;
-    art21hab22?: SortOrder;
-    art21mix22?: SortOrder;
-    art21rou22?: SortOrder;
-    art21fer22?: SortOrder;
-    art21inc22?: SortOrder;
-    naf22art23?: SortOrder;
-    art22act23?: SortOrder;
-    art22hab23?: SortOrder;
-    art22mix23?: SortOrder;
-    art22rou23?: SortOrder;
-    art22fer23?: SortOrder;
-    art22inc23?: SortOrder;
-    naf09art23?: SortOrder;
-    art09act23?: SortOrder;
-    art09hab23?: SortOrder;
-    art09mix23?: SortOrder;
-    art09inc23?: SortOrder;
-    art09rou23?: SortOrder;
-    art09fer23?: SortOrder;
-    artcom0923?: SortOrder;
-    pop14?: SortOrder;
-    pop20?: SortOrder;
-    pop1420?: SortOrder;
-    men14?: SortOrder;
-    men20?: SortOrder;
-    men1420?: SortOrder;
-    emp14?: SortOrder;
-    emp20?: SortOrder;
-    emp1420?: SortOrder;
-    mepart1420?: SortOrder;
-    menhab1420?: SortOrder;
-    artpop1420?: SortOrder;
-    surfcom2023?: SortOrder;
-    C10_MEN?: SortOrder;
-    C15_MEN?: SortOrder;
-    C21_MEN?: SortOrder;
-  };
-
-  export type consommation_espaces_nafMinOrderByAggregateInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    ept?: SortOrder;
-    libelle_petr?: SortOrder;
-    code_pnr?: SortOrder;
-    libelle_pnr?: SortOrder;
-    naf09art10?: SortOrder;
-    art09act10?: SortOrder;
-    art09hab10?: SortOrder;
-    art09mix10?: SortOrder;
-    art09rou10?: SortOrder;
-    art09fer10?: SortOrder;
-    art09inc10?: SortOrder;
-    naf10art11?: SortOrder;
-    art10act11?: SortOrder;
-    art10hab11?: SortOrder;
-    art10mix11?: SortOrder;
-    art10rou11?: SortOrder;
-    art10fer11?: SortOrder;
-    art10inc11?: SortOrder;
-    naf11art12?: SortOrder;
-    art11act12?: SortOrder;
-    art11hab12?: SortOrder;
-    art11mix12?: SortOrder;
-    art11rou12?: SortOrder;
-    art11fer12?: SortOrder;
-    art11inc12?: SortOrder;
-    naf12art13?: SortOrder;
-    art12act13?: SortOrder;
-    art12hab13?: SortOrder;
-    art12mix13?: SortOrder;
-    art12rou13?: SortOrder;
-    art12fer13?: SortOrder;
-    art12inc13?: SortOrder;
-    naf13art14?: SortOrder;
-    art13act14?: SortOrder;
-    art13hab14?: SortOrder;
-    art13mix14?: SortOrder;
-    art13rou14?: SortOrder;
-    art13fer14?: SortOrder;
-    art13inc14?: SortOrder;
-    naf14art15?: SortOrder;
-    art14act15?: SortOrder;
-    art14hab15?: SortOrder;
-    art14mix15?: SortOrder;
-    art14rou15?: SortOrder;
-    art14fer15?: SortOrder;
-    art14inc15?: SortOrder;
-    naf15art16?: SortOrder;
-    art15act16?: SortOrder;
-    art15hab16?: SortOrder;
-    art15mix16?: SortOrder;
-    art15rou16?: SortOrder;
-    art15fer16?: SortOrder;
-    art15inc16?: SortOrder;
-    naf16art17?: SortOrder;
-    art16act17?: SortOrder;
-    art16hab17?: SortOrder;
-    art16mix17?: SortOrder;
-    art16rou17?: SortOrder;
-    art16fer17?: SortOrder;
-    art16inc17?: SortOrder;
-    naf17art18?: SortOrder;
-    art17act18?: SortOrder;
-    art17hab18?: SortOrder;
-    art17mix18?: SortOrder;
-    art17rou18?: SortOrder;
-    art17fer18?: SortOrder;
-    art17inc18?: SortOrder;
-    naf18art19?: SortOrder;
-    art18act19?: SortOrder;
-    art18hab19?: SortOrder;
-    art18mix19?: SortOrder;
-    art18rou19?: SortOrder;
-    art18fer19?: SortOrder;
-    art18inc19?: SortOrder;
-    naf19art20?: SortOrder;
-    art19act20?: SortOrder;
-    art19hab20?: SortOrder;
-    art19mix20?: SortOrder;
-    art19rou20?: SortOrder;
-    art19fer20?: SortOrder;
-    art19inc20?: SortOrder;
-    naf20art21?: SortOrder;
-    art20act21?: SortOrder;
-    art20hab21?: SortOrder;
-    art20mix21?: SortOrder;
-    art20rou21?: SortOrder;
-    art20fer21?: SortOrder;
-    art20inc21?: SortOrder;
-    naf21art22?: SortOrder;
-    art21act22?: SortOrder;
-    art21hab22?: SortOrder;
-    art21mix22?: SortOrder;
-    art21rou22?: SortOrder;
-    art21fer22?: SortOrder;
-    art21inc22?: SortOrder;
-    naf22art23?: SortOrder;
-    art22act23?: SortOrder;
-    art22hab23?: SortOrder;
-    art22mix23?: SortOrder;
-    art22rou23?: SortOrder;
-    art22fer23?: SortOrder;
-    art22inc23?: SortOrder;
-    naf09art23?: SortOrder;
-    art09act23?: SortOrder;
-    art09hab23?: SortOrder;
-    art09mix23?: SortOrder;
-    art09inc23?: SortOrder;
-    art09rou23?: SortOrder;
-    art09fer23?: SortOrder;
-    artcom0923?: SortOrder;
-    pop14?: SortOrder;
-    pop20?: SortOrder;
-    pop1420?: SortOrder;
-    men14?: SortOrder;
-    men20?: SortOrder;
-    men1420?: SortOrder;
-    emp14?: SortOrder;
-    emp20?: SortOrder;
-    emp1420?: SortOrder;
-    mepart1420?: SortOrder;
-    menhab1420?: SortOrder;
-    artpop1420?: SortOrder;
-    surfcom2023?: SortOrder;
-    C10_MEN?: SortOrder;
-    C15_MEN?: SortOrder;
-    C21_MEN?: SortOrder;
-  };
->>>>>>> dev
 
   export type consommation_espaces_nafSumOrderByAggregateInput = {
     index?: SortOrder
@@ -48509,6 +35810,202 @@ export namespace Prisma {
     LAT?: SortOrder
   }
 
+  export type agricultureCountOrderByAggregateInput = {
+    index?: SortOrder
+    CODGEO?: SortOrder
+    LIBGEO?: SortOrder
+    EPCI?: SortOrder
+    LIBEPCI?: SortOrder
+    DEP?: SortOrder
+    REG?: SortOrder
+    part_irr_SAU_2020?: SortOrder
+    part_over_55?: SortOrder
+  }
+
+  export type agricultureAvgOrderByAggregateInput = {
+    index?: SortOrder
+    REG?: SortOrder
+    part_irr_SAU_2020?: SortOrder
+    part_over_55?: SortOrder
+  }
+
+  export type agricultureMaxOrderByAggregateInput = {
+    index?: SortOrder
+    CODGEO?: SortOrder
+    LIBGEO?: SortOrder
+    EPCI?: SortOrder
+    LIBEPCI?: SortOrder
+    DEP?: SortOrder
+    REG?: SortOrder
+    part_irr_SAU_2020?: SortOrder
+    part_over_55?: SortOrder
+  }
+
+  export type agricultureMinOrderByAggregateInput = {
+    index?: SortOrder
+    CODGEO?: SortOrder
+    LIBGEO?: SortOrder
+    EPCI?: SortOrder
+    LIBEPCI?: SortOrder
+    DEP?: SortOrder
+    REG?: SortOrder
+    part_irr_SAU_2020?: SortOrder
+    part_over_55?: SortOrder
+  }
+
+  export type agricultureSumOrderByAggregateInput = {
+    index?: SortOrder
+    REG?: SortOrder
+    part_irr_SAU_2020?: SortOrder
+    part_over_55?: SortOrder
+  }
+
+  export type incendies_foretCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    nature?: SortOrder
+    annee?: SortOrder
+    surface_parcourue?: SortOrder
+    surface_foret?: SortOrder
+    surface_maquis_garrigues?: SortOrder
+    autres_surfaces_naturelles_hors_foret?: SortOrder
+    surfaces_agricoles?: SortOrder
+    surfaces_non_boisees?: SortOrder
+    surfaces_non_boisees_artificialisees?: SortOrder
+    surfaces_non_boisees_naturelles?: SortOrder
+    surface_autres_terres_boisees?: SortOrder
+    autres_surfaces?: SortOrder
+  }
+
+  export type incendies_foretAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    annee?: SortOrder
+    surface_parcourue?: SortOrder
+    surface_foret?: SortOrder
+    surface_maquis_garrigues?: SortOrder
+    autres_surfaces_naturelles_hors_foret?: SortOrder
+    surfaces_agricoles?: SortOrder
+    surfaces_non_boisees?: SortOrder
+    surfaces_non_boisees_artificialisees?: SortOrder
+    surfaces_non_boisees_naturelles?: SortOrder
+    surface_autres_terres_boisees?: SortOrder
+    autres_surfaces?: SortOrder
+  }
+
+  export type incendies_foretMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    nature?: SortOrder
+    annee?: SortOrder
+    surface_parcourue?: SortOrder
+    surface_foret?: SortOrder
+    surface_maquis_garrigues?: SortOrder
+    autres_surfaces_naturelles_hors_foret?: SortOrder
+    surfaces_agricoles?: SortOrder
+    surfaces_non_boisees?: SortOrder
+    surfaces_non_boisees_artificialisees?: SortOrder
+    surfaces_non_boisees_naturelles?: SortOrder
+    surface_autres_terres_boisees?: SortOrder
+    autres_surfaces?: SortOrder
+  }
+
+  export type incendies_foretMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    region?: SortOrder
+    nature?: SortOrder
+    annee?: SortOrder
+    surface_parcourue?: SortOrder
+    surface_foret?: SortOrder
+    surface_maquis_garrigues?: SortOrder
+    autres_surfaces_naturelles_hors_foret?: SortOrder
+    surfaces_agricoles?: SortOrder
+    surfaces_non_boisees?: SortOrder
+    surfaces_non_boisees_artificialisees?: SortOrder
+    surfaces_non_boisees_naturelles?: SortOrder
+    surface_autres_terres_boisees?: SortOrder
+    autres_surfaces?: SortOrder
+  }
+
+  export type incendies_foretSumOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    annee?: SortOrder
+    surface_parcourue?: SortOrder
+    surface_foret?: SortOrder
+    surface_maquis_garrigues?: SortOrder
+    autres_surfaces_naturelles_hors_foret?: SortOrder
+    surfaces_agricoles?: SortOrder
+    surfaces_non_boisees?: SortOrder
+    surfaces_non_boisees_artificialisees?: SortOrder
+    surfaces_non_boisees_naturelles?: SortOrder
+    surface_autres_terres_boisees?: SortOrder
+    autres_surfaces?: SortOrder
+  }
+
+  export type patch4cCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    niveaux_marins?: SortOrder
+    feux_foret?: SortOrder
+    secheresse_sols?: SortOrder
+    fortes_precipitations?: SortOrder
+    fortes_chaleurs?: SortOrder
+  }
+
+  export type patch4cAvgOrderByAggregateInput = {
+    index?: SortOrder
+    niveaux_marins?: SortOrder
+    feux_foret?: SortOrder
+    secheresse_sols?: SortOrder
+    fortes_precipitations?: SortOrder
+    fortes_chaleurs?: SortOrder
+  }
+
+  export type patch4cMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    niveaux_marins?: SortOrder
+    feux_foret?: SortOrder
+    secheresse_sols?: SortOrder
+    fortes_precipitations?: SortOrder
+    fortes_chaleurs?: SortOrder
+  }
+
+  export type patch4cMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    niveaux_marins?: SortOrder
+    feux_foret?: SortOrder
+    secheresse_sols?: SortOrder
+    fortes_precipitations?: SortOrder
+    fortes_chaleurs?: SortOrder
+  }
+
+  export type patch4cSumOrderByAggregateInput = {
+    index?: SortOrder
+    niveaux_marins?: SortOrder
+    feux_foret?: SortOrder
+    secheresse_sols?: SortOrder
+    fortes_precipitations?: SortOrder
+    fortes_chaleurs?: SortOrder
+  }
+
   export type communesCountOrderByAggregateInput = {
     pk?: SortOrder
     code_commune?: SortOrder
@@ -48557,397 +36054,68 @@ export namespace Prisma {
     precarite_logement?: SortOrder
   }
 
-  export type patch4cCountOrderByAggregateInput = {
-    index?: SortOrder
-    code_geographique?: SortOrder
-    niveaux_marins?: SortOrder
-    feux_foret?: SortOrder
-    secheresse_sols?: SortOrder
-    fortes_precipitations?: SortOrder
-    fortes_chaleurs?: SortOrder
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type patch4cAvgOrderByAggregateInput = {
-    index?: SortOrder
-    niveaux_marins?: SortOrder
-    feux_foret?: SortOrder
-    secheresse_sols?: SortOrder
-    fortes_precipitations?: SortOrder
-    fortes_chaleurs?: SortOrder
+  export type usersCountOrderByAggregateInput = {
+    pk?: SortOrder
+    email?: SortOrder
+    username?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+    last_connection?: SortOrder
+    role?: SortOrder
   }
 
-  export type patch4cMaxOrderByAggregateInput = {
-    index?: SortOrder
-    code_geographique?: SortOrder
-    niveaux_marins?: SortOrder
-    feux_foret?: SortOrder
-    secheresse_sols?: SortOrder
-    fortes_precipitations?: SortOrder
-    fortes_chaleurs?: SortOrder
+  export type usersAvgOrderByAggregateInput = {
+    pk?: SortOrder
   }
 
-  export type patch4cMinOrderByAggregateInput = {
-    index?: SortOrder
-    code_geographique?: SortOrder
-    niveaux_marins?: SortOrder
-    feux_foret?: SortOrder
-    secheresse_sols?: SortOrder
-    fortes_precipitations?: SortOrder
-    fortes_chaleurs?: SortOrder
+  export type usersMaxOrderByAggregateInput = {
+    pk?: SortOrder
+    email?: SortOrder
+    username?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+    last_connection?: SortOrder
+    role?: SortOrder
   }
 
-  export type patch4cSumOrderByAggregateInput = {
-    index?: SortOrder
-    niveaux_marins?: SortOrder
-    feux_foret?: SortOrder
-    secheresse_sols?: SortOrder
-    fortes_precipitations?: SortOrder
-    fortes_chaleurs?: SortOrder
+  export type usersMinOrderByAggregateInput = {
+    pk?: SortOrder
+    email?: SortOrder
+    username?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+    last_connection?: SortOrder
+    role?: SortOrder
   }
 
-  export type agricultureCountOrderByAggregateInput = {
-    index?: SortOrder
-    CODGEO?: SortOrder
-    LIBGEO?: SortOrder
-    EPCI?: SortOrder
-    LIBEPCI?: SortOrder
-    DEP?: SortOrder
-    REG?: SortOrder
-    part_irr_SAU_2020?: SortOrder
-    part_over_55?: SortOrder
+  export type usersSumOrderByAggregateInput = {
+    pk?: SortOrder
   }
 
-  export type agricultureAvgOrderByAggregateInput = {
-    index?: SortOrder
-    REG?: SortOrder
-    part_irr_SAU_2020?: SortOrder
-    part_over_55?: SortOrder
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
-
-  export type agricultureMaxOrderByAggregateInput = {
-    index?: SortOrder
-    CODGEO?: SortOrder
-    LIBGEO?: SortOrder
-    EPCI?: SortOrder
-    LIBEPCI?: SortOrder
-    DEP?: SortOrder
-    REG?: SortOrder
-    part_irr_SAU_2020?: SortOrder
-    part_over_55?: SortOrder
-  }
-
-  export type agricultureMinOrderByAggregateInput = {
-    index?: SortOrder
-    CODGEO?: SortOrder
-    LIBGEO?: SortOrder
-    EPCI?: SortOrder
-    LIBEPCI?: SortOrder
-    DEP?: SortOrder
-    REG?: SortOrder
-    part_irr_SAU_2020?: SortOrder
-    part_over_55?: SortOrder
-  }
-
-  export type agricultureSumOrderByAggregateInput = {
-    index?: SortOrder
-    REG?: SortOrder
-    part_irr_SAU_2020?: SortOrder
-    part_over_55?: SortOrder
-  }
-
-  export type incendies_foretCountOrderByAggregateInput = {
-    index?: SortOrder
-    code_geographique?: SortOrder
-    libelle_geographique?: SortOrder
-    epci?: SortOrder
-    libelle_epci?: SortOrder
-    departement?: SortOrder
-    region?: SortOrder
-    nature?: SortOrder
-    annee?: SortOrder
-    surface_parcourue?: SortOrder
-    surface_foret?: SortOrder
-    surface_maquis_garrigues?: SortOrder
-    autres_surfaces_naturelles_hors_foret?: SortOrder
-    surfaces_agricoles?: SortOrder
-    surfaces_non_boisees?: SortOrder
-    surfaces_non_boisees_artificialisees?: SortOrder
-    surfaces_non_boisees_naturelles?: SortOrder
-    surface_autres_terres_boisees?: SortOrder
-    autres_surfaces?: SortOrder
-  }
-
-  export type incendies_foretAvgOrderByAggregateInput = {
-    index?: SortOrder
-    region?: SortOrder
-    annee?: SortOrder
-    surface_parcourue?: SortOrder
-    surface_foret?: SortOrder
-    surface_maquis_garrigues?: SortOrder
-    autres_surfaces_naturelles_hors_foret?: SortOrder
-    surfaces_agricoles?: SortOrder
-    surfaces_non_boisees?: SortOrder
-    surfaces_non_boisees_artificialisees?: SortOrder
-    surfaces_non_boisees_naturelles?: SortOrder
-    surface_autres_terres_boisees?: SortOrder
-    autres_surfaces?: SortOrder
-  }
-
-  export type incendies_foretMaxOrderByAggregateInput = {
-    index?: SortOrder
-    code_geographique?: SortOrder
-    libelle_geographique?: SortOrder
-    epci?: SortOrder
-    libelle_epci?: SortOrder
-    departement?: SortOrder
-    region?: SortOrder
-    nature?: SortOrder
-    annee?: SortOrder
-    surface_parcourue?: SortOrder
-    surface_foret?: SortOrder
-    surface_maquis_garrigues?: SortOrder
-    autres_surfaces_naturelles_hors_foret?: SortOrder
-    surfaces_agricoles?: SortOrder
-    surfaces_non_boisees?: SortOrder
-    surfaces_non_boisees_artificialisees?: SortOrder
-    surfaces_non_boisees_naturelles?: SortOrder
-    surface_autres_terres_boisees?: SortOrder
-    autres_surfaces?: SortOrder
-  }
-
-  export type incendies_foretMinOrderByAggregateInput = {
-    index?: SortOrder
-    code_geographique?: SortOrder
-    libelle_geographique?: SortOrder
-    epci?: SortOrder
-    libelle_epci?: SortOrder
-    departement?: SortOrder
-    region?: SortOrder
-    nature?: SortOrder
-    annee?: SortOrder
-    surface_parcourue?: SortOrder
-    surface_foret?: SortOrder
-    surface_maquis_garrigues?: SortOrder
-    autres_surfaces_naturelles_hors_foret?: SortOrder
-    surfaces_agricoles?: SortOrder
-    surfaces_non_boisees?: SortOrder
-    surfaces_non_boisees_artificialisees?: SortOrder
-    surfaces_non_boisees_naturelles?: SortOrder
-    surface_autres_terres_boisees?: SortOrder
-    autres_surfaces?: SortOrder
-  }
-
-  export type incendies_foretSumOrderByAggregateInput = {
-    index?: SortOrder
-    region?: SortOrder
-    annee?: SortOrder
-    surface_parcourue?: SortOrder
-    surface_foret?: SortOrder
-    surface_maquis_garrigues?: SortOrder
-    autres_surfaces_naturelles_hors_foret?: SortOrder
-    surfaces_agricoles?: SortOrder
-    surfaces_non_boisees?: SortOrder
-    surfaces_non_boisees_artificialisees?: SortOrder
-    surfaces_non_boisees_naturelles?: SortOrder
-    surface_autres_terres_boisees?: SortOrder
-    autres_surfaces?: SortOrder
-  }
-
-  export type agricultureCountOrderByAggregateInput = {
-    index?: SortOrder;
-    CODGEO?: SortOrder;
-    LIBGEO?: SortOrder;
-    EPCI?: SortOrder;
-    LIBEPCI?: SortOrder;
-    DEP?: SortOrder;
-    REG?: SortOrder;
-    part_irr_SAU_2020?: SortOrder;
-    part_over_55?: SortOrder;
-  };
-
-  export type agricultureAvgOrderByAggregateInput = {
-    index?: SortOrder;
-    REG?: SortOrder;
-    part_irr_SAU_2020?: SortOrder;
-    part_over_55?: SortOrder;
-  };
-
-  export type agricultureMaxOrderByAggregateInput = {
-    index?: SortOrder;
-    CODGEO?: SortOrder;
-    LIBGEO?: SortOrder;
-    EPCI?: SortOrder;
-    LIBEPCI?: SortOrder;
-    DEP?: SortOrder;
-    REG?: SortOrder;
-    part_irr_SAU_2020?: SortOrder;
-    part_over_55?: SortOrder;
-  };
-
-  export type agricultureMinOrderByAggregateInput = {
-    index?: SortOrder;
-    CODGEO?: SortOrder;
-    LIBGEO?: SortOrder;
-    EPCI?: SortOrder;
-    LIBEPCI?: SortOrder;
-    DEP?: SortOrder;
-    REG?: SortOrder;
-    part_irr_SAU_2020?: SortOrder;
-    part_over_55?: SortOrder;
-  };
-
-  export type agricultureSumOrderByAggregateInput = {
-    index?: SortOrder;
-    REG?: SortOrder;
-    part_irr_SAU_2020?: SortOrder;
-    part_over_55?: SortOrder;
-  };
-
-  export type incendies_foretCountOrderByAggregateInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    nature?: SortOrder;
-    annee?: SortOrder;
-    surface_parcourue?: SortOrder;
-    surface_foret?: SortOrder;
-    surface_maquis_garrigues?: SortOrder;
-    autres_surfaces_naturelles_hors_foret?: SortOrder;
-    surfaces_agricoles?: SortOrder;
-    surfaces_non_boisees?: SortOrder;
-    surfaces_non_boisees_artificialisees?: SortOrder;
-    surfaces_non_boisees_naturelles?: SortOrder;
-    surface_autres_terres_boisees?: SortOrder;
-    autres_surfaces?: SortOrder;
-  };
-
-  export type incendies_foretAvgOrderByAggregateInput = {
-    index?: SortOrder;
-    region?: SortOrder;
-    annee?: SortOrder;
-    surface_parcourue?: SortOrder;
-    surface_foret?: SortOrder;
-    surface_maquis_garrigues?: SortOrder;
-    autres_surfaces_naturelles_hors_foret?: SortOrder;
-    surfaces_agricoles?: SortOrder;
-    surfaces_non_boisees?: SortOrder;
-    surfaces_non_boisees_artificialisees?: SortOrder;
-    surfaces_non_boisees_naturelles?: SortOrder;
-    surface_autres_terres_boisees?: SortOrder;
-    autres_surfaces?: SortOrder;
-  };
-
-  export type incendies_foretMaxOrderByAggregateInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    nature?: SortOrder;
-    annee?: SortOrder;
-    surface_parcourue?: SortOrder;
-    surface_foret?: SortOrder;
-    surface_maquis_garrigues?: SortOrder;
-    autres_surfaces_naturelles_hors_foret?: SortOrder;
-    surfaces_agricoles?: SortOrder;
-    surfaces_non_boisees?: SortOrder;
-    surfaces_non_boisees_artificialisees?: SortOrder;
-    surfaces_non_boisees_naturelles?: SortOrder;
-    surface_autres_terres_boisees?: SortOrder;
-    autres_surfaces?: SortOrder;
-  };
-
-  export type incendies_foretMinOrderByAggregateInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    libelle_geographique?: SortOrder;
-    epci?: SortOrder;
-    libelle_epci?: SortOrder;
-    departement?: SortOrder;
-    region?: SortOrder;
-    nature?: SortOrder;
-    annee?: SortOrder;
-    surface_parcourue?: SortOrder;
-    surface_foret?: SortOrder;
-    surface_maquis_garrigues?: SortOrder;
-    autres_surfaces_naturelles_hors_foret?: SortOrder;
-    surfaces_agricoles?: SortOrder;
-    surfaces_non_boisees?: SortOrder;
-    surfaces_non_boisees_artificialisees?: SortOrder;
-    surfaces_non_boisees_naturelles?: SortOrder;
-    surface_autres_terres_boisees?: SortOrder;
-    autres_surfaces?: SortOrder;
-  };
-
-  export type incendies_foretSumOrderByAggregateInput = {
-    index?: SortOrder;
-    region?: SortOrder;
-    annee?: SortOrder;
-    surface_parcourue?: SortOrder;
-    surface_foret?: SortOrder;
-    surface_maquis_garrigues?: SortOrder;
-    autres_surfaces_naturelles_hors_foret?: SortOrder;
-    surfaces_agricoles?: SortOrder;
-    surfaces_non_boisees?: SortOrder;
-    surfaces_non_boisees_artificialisees?: SortOrder;
-    surfaces_non_boisees_naturelles?: SortOrder;
-    surface_autres_terres_boisees?: SortOrder;
-    autres_surfaces?: SortOrder;
-  };
-
-  export type patch4cCountOrderByAggregateInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    niveaux_marins?: SortOrder;
-    feux_foret?: SortOrder;
-    secheresse_sols?: SortOrder;
-    fortes_precipitations?: SortOrder;
-    fortes_chaleurs?: SortOrder;
-  };
-
-  export type patch4cAvgOrderByAggregateInput = {
-    index?: SortOrder;
-    niveaux_marins?: SortOrder;
-    feux_foret?: SortOrder;
-    secheresse_sols?: SortOrder;
-    fortes_precipitations?: SortOrder;
-    fortes_chaleurs?: SortOrder;
-  };
-
-  export type patch4cMaxOrderByAggregateInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    niveaux_marins?: SortOrder;
-    feux_foret?: SortOrder;
-    secheresse_sols?: SortOrder;
-    fortes_precipitations?: SortOrder;
-    fortes_chaleurs?: SortOrder;
-  };
-
-  export type patch4cMinOrderByAggregateInput = {
-    index?: SortOrder;
-    code_geographique?: SortOrder;
-    niveaux_marins?: SortOrder;
-    feux_foret?: SortOrder;
-    secheresse_sols?: SortOrder;
-    fortes_precipitations?: SortOrder;
-    fortes_chaleurs?: SortOrder;
-  };
-
-  export type patch4cSumOrderByAggregateInput = {
-    index?: SortOrder;
-    niveaux_marins?: SortOrder;
-    feux_foret?: SortOrder;
-    secheresse_sols?: SortOrder;
-    fortes_precipitations?: SortOrder;
-    fortes_chaleurs?: SortOrder;
-  };
 
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number
@@ -48969,10 +36137,6 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null;
-  };
-
   export type NullableFloatFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -48981,13 +36145,10 @@ export namespace Prisma {
     divide?: number
   }
 
-<<<<<<< HEAD
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
 
-=======
->>>>>>> dev
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -49006,6 +36167,10 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type NestedBigIntFilter<$PrismaModel = never> = {
@@ -49044,7 +36209,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-<<<<<<< HEAD
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -49056,8 +36220,6 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-=======
->>>>>>> dev
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -49071,17 +36233,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null;
-  };
 
   export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
@@ -49143,7 +36294,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-<<<<<<< HEAD
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -49171,8 +36321,6 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-=======
->>>>>>> dev
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -49189,33 +36337,6 @@ export namespace Prisma {
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    lt?: number | IntFieldRefInput<$PrismaModel>;
-    lte?: number | IntFieldRefInput<$PrismaModel>;
-    gt?: number | IntFieldRefInput<$PrismaModel>;
-    gte?: number | IntFieldRefInput<$PrismaModel>;
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null;
-  };
-
-  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null;
-    _count?: NestedIntNullableFilter<$PrismaModel>;
-    _avg?: NestedFloatNullableFilter<$PrismaModel>;
-    _sum?: NestedFloatNullableFilter<$PrismaModel>;
-    _min?: NestedFloatNullableFilter<$PrismaModel>;
-    _max?: NestedFloatNullableFilter<$PrismaModel>;
-  };
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
@@ -49272,6 +36393,31 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
 
