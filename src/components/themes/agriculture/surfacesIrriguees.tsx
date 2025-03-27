@@ -1,16 +1,20 @@
-import { useSearchParams } from 'next/navigation';
-
+import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
 import { surfacesIrrigueesLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapSurfacesIrriguees } from '@/components/maps/mapSurfacesIrriguees';
+import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
+import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { DefinitionTooltip } from '@/components/utils/HtmlTooltip';
 import { irrigable } from '@/lib/definitions';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
+import { Agriculture, CarteCommunes, Patch4 } from '@/lib/postgres/models';
+import { GetPatch4 } from '@/lib/queries/patch4';
 import { Round } from '@/lib/utils/reusableFunctions/round';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import styles from './agriculture.module.scss';
 
 export const SurfacesIrriguees = ({
@@ -23,6 +27,7 @@ export const SurfacesIrriguees = ({
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo');
   const codepci = searchParams.get('codepci')!;
+  const [patch4, setPatch4] = useState<Patch4[]>();
   const carteCommunesEnriched = carteCommunes.map((el) => {
     return {
       ...el,
@@ -34,14 +39,22 @@ export const SurfacesIrriguees = ({
 
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
 
-  const surfaceTerritoire = codgeo ? 
+  const surfaceTerritoire = codgeo ?
     communesMap.find((obj) => obj.properties.code_geographique === codgeo)?.properties.surfacesIrriguees
     : communesMap
-    .map((obj) => obj.properties.surfacesIrriguees)
-    .map((value) => (isNaN(value!) ? 0 : value))
-    .reduce((acc, value) => acc! + value!, 0);
+      .map((obj) => obj.properties.surfacesIrriguees)
+      .map((value) => (isNaN(value!) ? 0 : value))
+      .reduce((acc, value) => acc! + value!, 0);
 
-    console.log("surfaceTerritoire", surfaceTerritoire);
+  useEffect(() => {
+    void (async () => {
+      const temp = await GetPatch4(codgeo ?? codepci);
+      temp && codepci ? setPatch4(temp) : void 0;
+    })();
+  }, [codgeo, codepci]);
+
+  const secheresse = patch4 ? AlgoPatch4(patch4[0], 'secheresse_sols') : null;
+
   const title = (
     <>
       <div>
@@ -68,6 +81,9 @@ export const SurfacesIrriguees = ({
 
   return (
     <>
+    {
+      secheresse ?
+    <>
       {communesMap ? (
         <div className={styles.container}>
           {communesMap.length ? (
@@ -79,6 +95,16 @@ export const SurfacesIrriguees = ({
                     votre territoire était de{' '}
                     {codgeo ? surfaceTerritoire : Round(surfaceTerritoire! / communesMap.length, 1)} %.
                   </p>
+                  <div className={styles.patch4Wrapper}>
+                    {secheresse === 'Intensité très forte' ||
+                    secheresse === 'Intensité forte' ? (
+                      <TagItem
+                        icon={secheresseIcon}
+                        indice="Sécheresse des sols"
+                        tag={secheresse}
+                      />
+                    ) : null}
+                  </div>
                   <CustomTooltip
                     title={title}
                     texte="D'où vient ce chiffre ?"
@@ -149,6 +175,9 @@ export const SurfacesIrriguees = ({
       ) : (
         <Loader />
       )}
+    </>
+    : <Loader />
+    }
     </>
   );
 };

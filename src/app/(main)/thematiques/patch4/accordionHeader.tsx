@@ -42,7 +42,7 @@ export const AccordionHeader = ({ patch4 }: { patch4: Patch4 }) => {
         <p>
           Météo France propose un nouveau jeu de données basé sur la trajectoire de réchauffement
           de référence pour l'adaptation au changement climatique (TRACC) disponible sur le service
-          Climadiag Commune. Son objectif est de préciser l’intensité de l’évolution de cinq aléas
+          Climadiag Commune. Son objectif est de préciser l’intensité de l’évolution de plusieurs aléas
           climatiques sur votre territoire, en 2100 par rapport à 2050.
         </p>
       </div>
