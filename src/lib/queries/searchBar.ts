@@ -17,17 +17,14 @@ export const GetCollectivite = async (
       const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
       SELECT 
       search_code,
+      coordinates,
       search_libelle,
-      epci, 
+      code_epci, 
       libelle_epci,
-      libelle_geographique,
-      code_geographique,
+      libelle_commune,
+      code_commune,
       departement,
-      region,
-      ept,
-      libelle_petr,
-      libelle_pnr,
-      code_pnr
+      region
       FROM databases."collectivites_searchbar" WHERE 
         unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', ')) 
@@ -40,17 +37,14 @@ export const GetCollectivite = async (
         const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
         SELECT 
         search_code,
+        coordinates,
         search_libelle,
-        epci, 
+        code_epci, 
         libelle_epci,
-        libelle_geographique,
-        code_geographique,
+        libelle_commune,
+        code_commune,
         departement,
-        region,
-        ept,
-        libelle_petr,
-        libelle_pnr,
-        code_pnr
+        region
         FROM databases."collectivites_searchbar" WHERE 
           unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite}) 
           OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', ')) 
@@ -72,19 +66,14 @@ export const GetCollectivite = async (
       Sentry.captureMessage(`Collectivite ${collectivite} not found`);
       return [
         {
-          code_geographique: '',
+          code_commune: '',
           search_code: '',
           search_libelle: '',
-          epci: '',
-          libelle_geographique: '',
+          code_epci: '',
+          libelle_commune: '',
           libelle_epci: '',
           departement: '',
-          libelle_departement: '',
           region: '',
-          ept: '',
-          libelle_petr: '',
-          libelle_pnr: '',
-          code_pnr: ''
         }
       ];
     }
