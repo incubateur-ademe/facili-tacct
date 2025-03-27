@@ -18,18 +18,12 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 6.3.0
- * Query Engine version: a9055b89e58b4b5bfb59600785423b1db3d0e75d
+ * Query Engine version: 173f8d54f8d52e692c7e27e72a88314ec7aeff60
  */
 Prisma.prismaVersion = {
-<<<<<<< Updated upstream
-  client: '6.3.0',
-  engine: 'a9055b89e58b4b5bfb59600785423b1db3d0e75d'
-};
-=======
   client: "6.3.0",
   engine: "173f8d54f8d52e692c7e27e72a88314ec7aeff60"
 }
->>>>>>> Stashed changes
 
 Prisma.PrismaClientKnownRequestError = () => {
   const runtimeName = getRuntime().prettyName;
@@ -493,8 +487,6 @@ exports.Prisma.Qualite_sites_baignadeScalarFieldEnum = {
   QEB_2020: 'QEB_2020'
 };
 
-<<<<<<< Updated upstream
-=======
 exports.Prisma.CommunesScalarFieldEnum = {
   pk: 'pk',
   code_commune: 'code_commune',
@@ -551,7 +543,6 @@ exports.Prisma.Incendies_foretScalarFieldEnum = {
   autres_surfaces: 'autres_surfaces'
 };
 
->>>>>>> Stashed changes
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -584,16 +575,11 @@ exports.Prisma.ModelName = {
   north_star_metric: 'north_star_metric',
   etat_cours_d_eau: 'etat_cours_d_eau',
   aot_40: 'aot_40',
-<<<<<<< Updated upstream
-  users: 'users',
-  qualite_sites_baignade: 'qualite_sites_baignade'
-=======
   qualite_sites_baignade: 'qualite_sites_baignade',
   communes: 'communes',
   patch4c: 'patch4c',
   agriculture: 'agriculture',
   incendies_foret: 'incendies_foret'
->>>>>>> Stashed changes
 };
 
 /**
