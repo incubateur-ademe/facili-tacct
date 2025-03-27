@@ -34,11 +34,14 @@ export const SurfacesIrriguees = ({
 
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
 
-  const surfaceTerritoire = communesMap
+  const surfaceTerritoire = codgeo ? 
+    communesMap.find((obj) => obj.properties.code_geographique === codgeo)?.properties.surfacesIrriguees
+    : communesMap
     .map((obj) => obj.properties.surfacesIrriguees)
     .map((value) => (isNaN(value!) ? 0 : value))
     .reduce((acc, value) => acc! + value!, 0);
 
+    console.log("surfaceTerritoire", surfaceTerritoire);
   const title = (
     <>
       <div>
@@ -74,7 +77,7 @@ export const SurfacesIrriguees = ({
                   <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                     En 2020, la part de la superficie irriguée dans la SAU sur
                     votre territoire était de{' '}
-                    {Round(surfaceTerritoire! / communesMap.length, 1)} %.
+                    {codgeo ? surfaceTerritoire : Round(surfaceTerritoire! / communesMap.length, 1)} %.
                   </p>
                   <CustomTooltip
                     title={title}
