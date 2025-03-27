@@ -12,7 +12,7 @@ datasource db {
 }
 
 model inconfort_thermique {
-  index                    BigInt  @id(map: "inconfort_thermique2_pkey")
+  index                    BigInt  @id
   code_geographique        String
   libelle_geographique     String
   epci                     String
@@ -73,7 +73,7 @@ model inconfort_thermique {
   @@index([code_geographique], map: "inconfort_thermique_communes_index")
   @@index([departement], map: "inconfort_thermique_departement_index")
   @@index([epci], map: "inconfort_thermique_epci_index")
-  @@index([index], map: "ix_inconfort_thermique2_index")
+  @@index([index], map: "ix_inconfort_thermique_index")
   @@schema("databases")
 }
 
