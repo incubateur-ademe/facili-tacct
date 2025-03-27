@@ -7,18 +7,13 @@ import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 
 import { Loader } from '@/components/loader';
-import { AgeBati } from '@/components/themes/inconfortThermique/age-bati';
+import { AgeBati } from '@/components/themes/inconfortThermique/ageBati';
 import { DensiteBati } from '@/components/themes/inconfortThermique/densite-bati';
 import { FragiliteEconomique } from '@/components/themes/inconfortThermique/fragilite-economique';
 import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grand-age-isolement';
 import { TravailExterieur } from '@/components/themes/inconfortThermique/travail-exterieur';
 import { TabTooltip } from '@/components/utils/TabTooltip';
-import {
-  CarteCommunes,
-  CLC,
-  CollectivitesSearchbar,
-  InconfortThermique
-} from '@/lib/postgres/models';
+import { CarteCommunes, CLC, InconfortThermique } from '@/lib/postgres/models';
 import { GetClcEpci } from '@/lib/queries/postgis/cartographie';
 import dynamic from 'next/dynamic';
 import { useStyles } from 'tss-react/dsfr';
@@ -27,14 +22,13 @@ import styles from '../donnees.module.scss';
 interface Props {
   data: Array<{
     donnee: string;
-    facteur_sensibilite: string;
+    facteurSensibilite: string;
     id: number;
     risque: string;
     titre: string;
   }>;
   carteCommunes: CarteCommunes[];
   inconfortThermique: InconfortThermique[];
-  collectivite: CollectivitesSearchbar[];
   departement?: InconfortThermique[];
 }
 
@@ -111,7 +105,6 @@ const InconfortThermiqueComp = ({
   data,
   carteCommunes,
   inconfortThermique,
-  collectivite,
   departement
 }: Props) => {
   const [clc, setClc] = useState<CLC[]>();
@@ -139,13 +132,16 @@ const InconfortThermiqueComp = ({
 
   useEffect(() => {
     setSelectedSubTab(
-      data.filter((el) => el.facteur_sensibilite === selectedTabId)[0].titre
+      data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
+  }, [selectedTabId]);
+
+  useEffect(() => {
     void (async () => {
       const temp = await GetClcEpci(codepci);
       temp && codepci ? setClc(temp) : void 0;
     })();
-  }, [selectedTabId, codepci]);
+  }, [codepci]);
 
   return (
     <div className={styles.container}>
@@ -205,7 +201,7 @@ const InconfortThermiqueComp = ({
         <div className={styles.formContainer}>
           <div className={styles.titles}>
             {data
-              .filter((el) => el.facteur_sensibilite === selectedTabId)
+              .filter((el) => el.facteurSensibilite === selectedTabId)
               .map((element, i) => (
                 <button
                   key={i}
@@ -237,7 +233,6 @@ const InconfortThermiqueComp = ({
                       carteCommunes={carteCommunes}
                       activeDataTab={selectedSubTab}
                       clc={clc || []}
-                      collectivite={collectivite}
                       departement={departement}
                     />
                   </Suspense>

@@ -67,15 +67,15 @@ export type Biodiversite = {
 };
 
 export type GestionRisques = {
-  lib_risque_jo: string | null;
-  dat_pub_arrete: string | null;
-  code_geographique: string | null;
-  departement: string | null;
-  epci: string | null;
-  index: bigint | null;
-  libelle_epci: string | null;
-  libelle_geographique: string | null;
-  region: number | null;
+  lib_risque_jo: string;
+  dat_pub_arrete: string;
+  code_geographique: string;
+  departement: string;
+  epci: string;
+  index: bigint;
+  libelle_epci: string;
+  libelle_geographique: string;
+  region: number;
 };
 
 export type RessourcesEau = {
@@ -132,17 +132,20 @@ export type CollectivitesSearchbar = {
 };
 
 export type CarteCommunes = {
-  code_commune: string;
+  code_geographique: string;
   coordinates: string;
   densite_bati?: number;
   epci: string;
   geometry: string;
-  libelle_commune: string;
+  libelle_geographique: string;
   libelle_epci: string;
   precarite_logement?: number;
   catnat?: Object;
   naf?: number;
   surface: number;
+  surfacesIrriguees?: number;
+  chefsExploitation55Ans?: number;
+  incendiesForet?: number;
 };
 
 export type EpciContours = {
@@ -172,7 +175,7 @@ export type ErosionCotiere = {
 export type DataGrandAge = {
   P20_POP80P?: number;
   P20_POP80P_PSEUL?: number;
-  code_commune: string;
+  code_geographique: string;
   epci: string;
   libelle_epci: string;
   libelle_geographique: string;
@@ -238,6 +241,10 @@ export type ConsommationNAF = {
   libelle_epci: string;
   departement: string;
   region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
   naf09art10: number;
   art09act10: number;
   art09hab10: number;
@@ -395,4 +402,48 @@ export type QualiteSitesBaignade = {
   QEB_2018: string | null;
   QEB_2019: string | null;
   QEB_2020: string | null;
+};
+
+export type Agriculture = {
+  index: bigint;
+  CODGEO: string;
+  LIBGEO: string;
+  EPCI: string;
+  LIBEPCI: string;
+  DEP: string;
+  REG: number;
+  part_irr_SAU_2020: number | null;
+  part_over_55: number | null;
+};
+
+export type IncendiesForet = {
+  index: bigint;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  region: number;
+  nature: string | null;
+  annee: number;
+  surface_parcourue: number;
+  surface_foret: number | null;
+  surface_maquis_garrigues: number | null;
+  autres_surfaces_naturelles_hors_foret: number | null;
+  surfaces_agricoles: number | null;
+  surfaces_non_boisees: number | null;
+  surfaces_non_boisees_artificialisees: number | null;
+  surfaces_non_boisees_naturelles: number | null;
+  surface_autres_terres_boisees: number | null;
+  autres_surfaces: number | null;
+};
+
+export type Patch4 = {
+  index: bigint;
+  code_geographique: string;
+  niveaux_marins: number | null;
+  feux_foret: number;
+  secheresse_sols: number;
+  fortes_precipitations: number;
+  fortes_chaleurs: number;
 };

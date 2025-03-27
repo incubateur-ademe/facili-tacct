@@ -1,6 +1,6 @@
 import { GetConsommationNAF } from '@/lib/queries/databases/biodiversite';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
-import { themes } from '@/lib/utils/themes';
+import { themes } from '@/lib/themes';
 import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
 import AmenagementComp from './amenagementComp';
