@@ -1,4 +1,3 @@
-import { compare } from 'bcrypt';
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
@@ -35,7 +34,8 @@ export const AuthOptions: NextAuthOptions = {
           }
         });
         if (user) {
-          const comparedPasswords = await compare(
+          const bcrypt = require('bcryptjs');
+          const comparedPasswords = await bcrypt.compare(
             credentials!.password,
             user.password
           );

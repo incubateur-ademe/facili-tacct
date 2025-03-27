@@ -21,9 +21,15 @@ exports.$Enums = {}
  * Query Engine version: 173f8d54f8d52e692c7e27e72a88314ec7aeff60
  */
 Prisma.prismaVersion = {
+<<<<<<< HEAD
   client: "6.3.0",
   engine: "173f8d54f8d52e692c7e27e72a88314ec7aeff60"
 }
+=======
+  client: '6.3.0',
+  engine: '173f8d54f8d52e692c7e27e72a88314ec7aeff60'
+};
+>>>>>>> dev
 
 Prisma.PrismaClientKnownRequestError = () => {
   const runtimeName = getRuntime().prettyName;
@@ -124,7 +130,12 @@ exports.Prisma.Inconfort_thermiqueScalarFieldEnum = {
   epci: 'epci',
   libelle_epci: 'libelle_epci',
   departement: 'departement',
+  libelle_departement: 'libelle_departement',
   region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
   age_bati_post06: 'age_bati_post06',
   age_bati_91_05: 'age_bati_91_05',
   age_bati_46_90: 'age_bati_46_90',
@@ -167,8 +178,8 @@ exports.Prisma.Inconfort_thermiqueScalarFieldEnum = {
   NA5OQ_sum: 'NA5OQ_sum',
   s_geom_cstr_bati: 's_geom_cstr_bati',
   hauteur: 'hauteur',
-  h_x_s: 'h_x_s',
   densite_bati: 'densite_bati',
+  h_x_s: 'h_x_s',
   clc_1_artificialise: 'clc_1_artificialise',
   clc_2_agricole: 'clc_2_agricole',
   clc_3_foret_semiNaturel: 'clc_3_foret_semiNaturel',
@@ -185,13 +196,17 @@ exports.Prisma.Clc_epciScalarFieldEnum = {
 
 exports.Prisma.Collectivites_searchbarScalarFieldEnum = {
   index: 'index',
-  code_commune: 'code_commune',
-  coordinates: 'coordinates',
-  libelle_commune: 'libelle_commune',
-  code_epci: 'code_epci',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
   libelle_epci: 'libelle_epci',
   departement: 'departement',
+  libelle_departement: 'libelle_departement',
   region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
   search_code: 'search_code',
   search_libelle: 'search_libelle'
 };
@@ -221,10 +236,16 @@ exports.Prisma.Gestion_risquesScalarFieldEnum = {
 
 exports.Prisma.Communes_dromScalarFieldEnum = {
   pk: 'pk',
-  code_commune: 'code_commune',
-  libelle_commune: 'libelle_commune',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
   epci: 'epci',
   libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
   coordinates: 'coordinates',
   densite_bati: 'densite_bati',
   precarite_logement: 'precarite_logement',
@@ -322,6 +343,10 @@ exports.Prisma.Consommation_espaces_nafScalarFieldEnum = {
   libelle_epci: 'libelle_epci',
   departement: 'departement',
   region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
   naf09art10: 'naf09art10',
   art09act10: 'art09act10',
   art09hab10: 'art09hab10',
@@ -487,6 +512,7 @@ exports.Prisma.Qualite_sites_baignadeScalarFieldEnum = {
   QEB_2020: 'QEB_2020'
 };
 
+<<<<<<< HEAD
 exports.Prisma.CommunesScalarFieldEnum = {
   pk: 'pk',
   code_commune: 'code_commune',
@@ -509,6 +535,8 @@ exports.Prisma.Patch4cScalarFieldEnum = {
   fortes_chaleurs: 'fortes_chaleurs'
 };
 
+=======
+>>>>>>> dev
 exports.Prisma.AgricultureScalarFieldEnum = {
   index: 'index',
   CODGEO: 'CODGEO',
@@ -534,7 +562,12 @@ exports.Prisma.Incendies_foretScalarFieldEnum = {
   surface_parcourue: 'surface_parcourue',
   surface_foret: 'surface_foret',
   surface_maquis_garrigues: 'surface_maquis_garrigues',
+<<<<<<< HEAD
   autres_surfaces_naturelles_hors_foret: 'autres_surfaces_naturelles_hors_foret',
+=======
+  autres_surfaces_naturelles_hors_foret:
+    'autres_surfaces_naturelles_hors_foret',
+>>>>>>> dev
   surfaces_agricoles: 'surfaces_agricoles',
   surfaces_non_boisees: 'surfaces_non_boisees',
   surfaces_non_boisees_artificialisees: 'surfaces_non_boisees_artificialisees',
@@ -543,6 +576,19 @@ exports.Prisma.Incendies_foretScalarFieldEnum = {
   autres_surfaces: 'autres_surfaces'
 };
 
+<<<<<<< HEAD
+=======
+exports.Prisma.Patch4cScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  niveaux_marins: 'niveaux_marins',
+  feux_foret: 'feux_foret',
+  secheresse_sols: 'secheresse_sols',
+  fortes_precipitations: 'fortes_precipitations',
+  fortes_chaleurs: 'fortes_chaleurs'
+};
+
+>>>>>>> dev
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -575,11 +621,19 @@ exports.Prisma.ModelName = {
   north_star_metric: 'north_star_metric',
   etat_cours_d_eau: 'etat_cours_d_eau',
   aot_40: 'aot_40',
+<<<<<<< HEAD
   qualite_sites_baignade: 'qualite_sites_baignade',
   communes: 'communes',
   patch4c: 'patch4c',
   agriculture: 'agriculture',
   incendies_foret: 'incendies_foret'
+=======
+  users: 'users',
+  qualite_sites_baignade: 'qualite_sites_baignade',
+  agriculture: 'agriculture',
+  incendies_foret: 'incendies_foret',
+  patch4c: 'patch4c'
+>>>>>>> dev
 };
 
 /**
