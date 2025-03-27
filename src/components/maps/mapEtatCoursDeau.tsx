@@ -43,6 +43,7 @@ export const MapEtatCoursDeau = (props: {
   const commune = carteCommunes.find(
     (commune) => commune.properties.code_commune === codgeo
   );
+  console.log('commune', commune);
   const mapRef = useRef(null);
 
   const centerCoord: number[] = commune

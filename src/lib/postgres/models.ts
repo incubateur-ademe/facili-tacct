@@ -122,13 +122,13 @@ export type AgricultureBio = {
 export type CollectivitesSearchbar = {
   code_commune?: string | null;
   coordinates?: string | null;
-  code_epci: string; // | null;
+  code_epci: string;
   libelle_commune?: string | null;
-  libelle_epci: string; // | null;
-  search_libelle: string; // | null;
-  search_code: string; // | null;
-  departement: string; // | null;
-  region: string; // | null;
+  libelle_epci: string;
+  search_libelle: string;
+  search_code: string;
+  departement: string;
+  region: string;
 };
 
 export type CarteCommunes = {

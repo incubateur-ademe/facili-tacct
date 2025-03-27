@@ -10,8 +10,8 @@ export const CommunesIndicateursMapper = (
       catnat: commune.catnat,
       epci: commune.epci,
       libelle_epci: commune.libelle_epci,
-      libelle_commune: commune.libelle_commune,
-      code_commune: commune.code_commune,
+      libelle_geographique: commune.libelle_commune,
+      code_geographique: commune.code_commune,
       precarite_logement: commune.precarite_logement ?? NaN,
       densite_bati: commune.densite_bati ?? NaN,
       coordinates: commune.coordinates,
@@ -29,8 +29,8 @@ export const CommunesContourMapper = (
   properties: {
     epci: commune.epci,
     libelle_epci: commune.libelle_epci,
-    libelle_commune: commune.libelle_commune,
-    code_commune: commune.code_commune,
+    libelle_geographique: commune.libelle_commune,
+    code_geographique: commune.code_commune,
     coordinates: commune.coordinates
   },
   geometry: JSON.parse(commune.geometry)
