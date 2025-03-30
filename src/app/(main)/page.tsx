@@ -1,8 +1,10 @@
 'use client';
 
 import useWindowDimensions from '@/hooks/windowDimensions';
-import { DarkClass } from '@/lib/utils/DarkClass';
+import Notice from '@codegouvfr/react-dsfr/Notice';
 import Image from 'next/image';
+import { useState } from 'react';
+import { useStyles } from 'tss-react/dsfr';
 import Constellation2Img from '../../assets/images/constellation2.png';
 import Constellation3Img from '../../assets/images/constellation3.png';
 import PeopleImg from '../../assets/images/landing-page-group.png';
@@ -12,14 +14,20 @@ import styles from '../root.module.scss';
 import { CollectiviteSearch } from './CollectiviteSearch';
 
 const Home = () => {
-  const darkClass = DarkClass();
+  const { css } = useStyles();
+  const [noticeClosed, setNoticeClosed] = useState(false);
   const window = useWindowDimensions();
   return (
-    <div className="mb-24">
-      {/* <Notice
+    <div className={css({
+      margin: "0 0 3em",
+      ".fr-btn": {
+        display: 'inline-block',
+      }
+    })}>
+      <Notice
         description=""
         isClosable={true}
-        onClose={() => { }}
+        onClose={() => setNoticeClosed(true)}
         title={
           <>
             <p>
@@ -31,7 +39,7 @@ const Home = () => {
             </p>
           </>
         }
-      /> */}
+      />
       <div className={styles.wrapper}>
         <Container size="xl">
           <div className={styles.titles}>
@@ -46,7 +54,7 @@ const Home = () => {
           </div>
         </Container>
       </div>
-      <CollectiviteSearch />
+      <CollectiviteSearch noticeClosed={noticeClosed} />
       <div className={styles.cardBackground}>
         <Container size="xl">
           <div className={styles.cardWrapper}>
