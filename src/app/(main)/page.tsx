@@ -3,7 +3,7 @@
 import useWindowDimensions from '@/hooks/windowDimensions';
 import Notice from '@codegouvfr/react-dsfr/Notice';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import Constellation2Img from '../../assets/images/constellation2.png';
 import Constellation3Img from '../../assets/images/constellation3.png';
@@ -17,6 +17,16 @@ const Home = () => {
   const { css } = useStyles();
   const [noticeClosed, setNoticeClosed] = useState(false);
   const window = useWindowDimensions();
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      const style = document.documentElement.style;
+      noticeClosed ?
+        style.setProperty('--height-notice', "415px")
+        : style.setProperty('--height-notice', '543px');
+    }
+  }, [noticeClosed]);
+
   return (
     <div className={css({
       margin: "0 0 3em",
@@ -34,7 +44,7 @@ const Home = () => {
               Facili-TACCT intègre un nouveau jeu de données créé par Météo-France. Il vise à montrer comment cinq aléas
               climatiques (fortes chaleurs, fortes pluies, sécheresse des sols, feux de forêt et niveaux marins) vont évoluer entre 2050 et 2100.
             </span>
-            <br/><br/>
+            <br /><br />
             <span>
               {" "}Retrouvez également de nouveaux indicateurs : “Surfaces irriguées” (et sa thématique Agriculture) et “Feux de forêt”.
             </span>
@@ -55,7 +65,7 @@ const Home = () => {
           </div>
         </Container>
       </div>
-      <CollectiviteSearch noticeClosed={noticeClosed} />
+      <CollectiviteSearch />
       <div className={styles.cardBackground}>
         <Container size="xl">
           <div className={styles.cardWrapper}>
