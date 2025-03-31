@@ -18,6 +18,12 @@ export type AgeBatiDto = {
   libelle_geographique: string;
   epci: string;
   libelle_epci: string;
+  ept: string | null;
+  libelle_petr: string | null;
+  libelle_pnr: string | null;
+  code_pnr: string | null;
+  departement: string;
+  libelle_departement: string;
   age_bati_pre_19: number;
   age_bati_19_45: number;
   age_bati_46_90: number;
@@ -40,6 +46,7 @@ export type travailExtDto = {
   libelle_pnr: string | null;
   code_pnr: string | null;
   departement: string;
+  libelle_departement: string;
 };
 
 export type GrandAgeIsolementDto = {

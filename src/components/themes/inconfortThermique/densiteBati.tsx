@@ -23,23 +23,46 @@ export const DensiteBati = ({
   carteCommunes: CarteCommunes[];
 }) => {
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo');
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4[]>();
+  const re = new RegExp('T([1-9]|1[0-2])\\b');
+
   const communesMap = carteCommunes
     .map(CommunesIndicateursMapper)
     .filter((e) => !isNaN(e.properties.densite_bati));
-  const commune = codgeo
-    ? communesMap.find((obj) => obj.properties['code_geographique'] === codgeo)
-    : undefined;
-  const densiteEpci = communesMap.map((el, i) => el.properties.densite_bati);
+
+  const carteTerritoire =
+    type === 'epci' && re.test(libelle)
+      ? communesMap.filter((e) => e.properties.ept === libelle)
+      : communesMap;
+
+  console.log("carteTerritoire", carteTerritoire);
+  console.log("type", type);
+  console.log("re.test(libelle)", re.test(libelle));
+
+  const densiteTerritoire = type === 'epci' && re.test(libelle) ?
+    average(carteTerritoire.filter((e => e.properties.ept === libelle)).map((e) => e.properties.densite_bati))
+    : type === 'commune'
+      ? communesMap.find((obj) => obj.properties['code_geographique'] === code)?.properties.densite_bati
+      : average(carteTerritoire.map((e) => e.properties.densite_bati));
+
+  const densiteTerritoireSup = average(communesMap.map((e) => e.properties.densite_bati));
 
   useEffect(() => {
-    void (async () => {
-      const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
-    })();
-  }, [codgeo, codepci]);
+    !(
+      type === 'petr' ||
+      type === 'pnr' ||
+      type === 'departement' ||
+      re.test(libelle)
+    )
+      ? void (async () => {
+        const temp = await GetPatch4(code);
+        setPatch4(temp);
+      })()
+      : void 0;
+  }, [code, libelle]);
 
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
@@ -47,33 +70,38 @@ export const DensiteBati = ({
 
   const title =
     '(surface au sol de la construction x hauteur du bâtiment) / surface totale de la commune';
+
   return (
     <>
+<<<<<<< HEAD:src/components/themes/inconfortThermique/densite-bati.tsx
       {communesMap && fortesChaleurs ? (
+=======
+      {fortesChaleurs ||
+        type === 'pnr' ||
+        type === 'petr' ||
+        type === 'departement' ||
+        re.test(libelle) ? (
+>>>>>>> 303ebf1 (indicator: densite bati + age bati):src/components/themes/inconfortThermique/densiteBati.tsx
         <div className={styles.container}>
-          {communesMap.length ? (
+          {carteTerritoire.length ? (
             <>
               <div className="w-2/5">
                 <div className={styles.explicationWrapper}>
-                  {commune ? (
+                  <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                    Sur votre territoire, la densité moyenne du bâtiment est de
+                    <b> {densiteTerritoire?.toFixed(2)}. </b>
+                  </p>
+                  {type === "commune" || re.test(libelle) ? (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      Dans la commune de{' '}
-                      {commune.properties.libelle_geographique}, la densité
-                      moyenne du bâtiment est de{' '}
-                      <b>{commune.properties.densite_bati.toFixed(2)}. </b>À
-                      l'échelle de l'EPCI, ce taux est de{' '}
-                      <b>{average(densiteEpci).toFixed(2)}.</b>
+                      À l'échelle de l'EPCI, ce taux est de
+                      <b> {densiteTerritoireSup.toFixed(2)}.</b>
                     </p>
                   ) : (
-                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      Dans l'EPCI {communesMap[0]?.properties['libelle_epci']},
-                      la densité moyenne du bâtiment est de{' '}
-                      <b>{average(densiteEpci).toFixed(2)}.</b>
-                    </p>
+                    ""
                   )}
                   <div className={styles.patch4Wrapper}>
                     {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                      fortesChaleurs === 'Intensité forte' ? (
                       <div>
                         <TagItem
                           icon={fortesChaleursIcon}
@@ -106,7 +134,7 @@ export const DensiteBati = ({
                       l'EPCI
                     </b>
                   </p>
-                  <Map data={'densite_bati'} carteCommunes={communesMap} />
+                  <Map data={'densite_bati'} carteCommunes={carteTerritoire} />
                   <div
                     className={styles.legend}
                     style={{ width: 'auto', justifyContent: 'center' }}
@@ -120,7 +148,7 @@ export const DensiteBati = ({
               </div>
             </>
           ) : (
-            <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+            <GraphDataNotFound code={code ?? libelle} />
           )}
         </div>
       ) : (
