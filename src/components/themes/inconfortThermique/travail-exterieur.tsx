@@ -109,8 +109,6 @@ export const TravailExterieur = (props: {
     ) +
     Number(((100 * sums.sumAgriculture) / Sum(Object.values(sums))).toFixed(1));
 
-  console.log('travailExt', travailExt);
-
   useEffect(() => {
     !(
       type === 'petr' ||
