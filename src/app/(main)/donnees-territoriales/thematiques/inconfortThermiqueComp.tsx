@@ -2,7 +2,7 @@
 
 import { Loader } from '@/components/loader';
 import { AgeBati } from '@/components/themes/inconfortThermique/ageBati';
-import { DensiteBati } from '@/components/themes/inconfortThermique/densite-bati';
+import { DensiteBati } from '@/components/themes/inconfortThermique/densiteBati';
 import { FragiliteEconomique } from '@/components/themes/inconfortThermique/fragiliteEconomique';
 import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grandAgeIsolement';
 import { TravailExterieur } from '@/components/themes/inconfortThermique/travail-exterieur';
