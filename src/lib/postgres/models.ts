@@ -178,6 +178,23 @@ export type CLC = {
   shape_length: number;
 };
 
+export type CLCTerritoires = {
+  centroid: string;
+  geometry: string;
+  legend: string;
+  pk: number;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+};
+
 export type ErosionCotiere = {
   pk: number;
   taux: number;
