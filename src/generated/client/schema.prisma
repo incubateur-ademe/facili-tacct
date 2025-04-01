@@ -82,17 +82,6 @@ model inconfort_thermique {
   @@schema("databases")
 }
 
-model clc_epci {
-  pk        Int                      @id @default(autoincrement())
-  legend    String?                  @db.VarChar
-  epci_code Int?
-  geometry  Unsupported("geometry")?
-
-  @@index([geometry], map: "clc_epci_geometry_geom_idx", type: Gist)
-  @@index([epci_code], map: "clc_epci_index")
-  @@schema("postgis")
-}
-
 model collectivites_searchbar {
   index                BigInt  @id
   code_geographique    String?
@@ -288,7 +277,8 @@ model consommation_espaces_naf {
   epci                 String
   libelle_epci         String
   departement          String
-  region               Int
+  libelle_departement  String
+  region               Float
   ept                  String?
   libelle_petr         String?
   code_pnr             String?
@@ -399,22 +389,6 @@ model consommation_espaces_naf {
   art09rou23           Float
   art09fer23           Float
   artcom0923           Float
-  pop14                Float
-  pop20                Float
-  pop1420              Float
-  men14                Float
-  men20                Float
-  men1420              Float
-  emp14                Float
-  emp20                Float
-  emp1420              Float
-  mepart1420           Float
-  menhab1420           Float
-  artpop1420           Float?
-  surfcom2023          Float
-  C10_MEN              Float?
-  C15_MEN              Float?
-  C21_MEN              Float?
 
   @@index([index], map: "ix_consommation_espaces_naf_index")
   @@index([code_geographique], map: "consommation_espaces_naf_communes_index")
