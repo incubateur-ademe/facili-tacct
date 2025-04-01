@@ -38,10 +38,6 @@ export const DensiteBati = ({
       ? communesMap.filter((e) => e.properties.ept === libelle)
       : communesMap;
 
-  console.log("carteTerritoire", carteTerritoire);
-  console.log("type", type);
-  console.log("re.test(libelle)", re.test(libelle));
-
   const densiteTerritoire = type === 'epci' && re.test(libelle) ?
     average(carteTerritoire.filter((e => e.properties.ept === libelle)).map((e) => e.properties.densite_bati))
     : type === 'commune'
