@@ -182,12 +182,6 @@ exports.Prisma.Inconfort_thermiqueScalarFieldEnum = {
   superf_choro: 'superf_choro'
 };
 
-exports.Prisma.Clc_epciScalarFieldEnum = {
-  pk: 'pk',
-  legend: 'legend',
-  epci_code: 'epci_code'
-};
-
 exports.Prisma.Collectivites_searchbarScalarFieldEnum = {
   index: 'index',
   code_geographique: 'code_geographique',
@@ -344,6 +338,7 @@ exports.Prisma.Consommation_espaces_nafScalarFieldEnum = {
   epci: 'epci',
   libelle_epci: 'libelle_epci',
   departement: 'departement',
+  libelle_departement: 'libelle_departement',
   region: 'region',
   ept: 'ept',
   libelle_petr: 'libelle_petr',
@@ -454,23 +449,7 @@ exports.Prisma.Consommation_espaces_nafScalarFieldEnum = {
   art09inc23: 'art09inc23',
   art09rou23: 'art09rou23',
   art09fer23: 'art09fer23',
-  artcom0923: 'artcom0923',
-  pop14: 'pop14',
-  pop20: 'pop20',
-  pop1420: 'pop1420',
-  men14: 'men14',
-  men20: 'men20',
-  men1420: 'men1420',
-  emp14: 'emp14',
-  emp20: 'emp20',
-  emp1420: 'emp1420',
-  mepart1420: 'mepart1420',
-  menhab1420: 'menhab1420',
-  artpop1420: 'artpop1420',
-  surfcom2023: 'surfcom2023',
-  C10_MEN: 'C10_MEN',
-  C15_MEN: 'C15_MEN',
-  C21_MEN: 'C21_MEN'
+  artcom0923: 'artcom0923'
 };
 
 exports.Prisma.North_star_metricScalarFieldEnum = {
@@ -602,7 +581,6 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   inconfort_thermique: 'inconfort_thermique',
-  clc_epci: 'clc_epci',
   collectivites_searchbar: 'collectivites_searchbar',
   biodiversite: 'biodiversite',
   gestion_risques: 'gestion_risques',
