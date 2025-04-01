@@ -1,24 +1,16 @@
 import { NoticeComp } from '@/dsfr/base/Notice';
+import { GetInconfortThermique } from '@/lib/queries/databases/inconfortThermique';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
-import { GetCollectivite } from '@/lib/queries/searchBar';
-import { GetInconfortThermiqueDepartment } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/themes';
 import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
 import InconfortThermiqueComp from './inconfortThermiqueComp';
 
 const InconfortThermique = async (props: { searchParams: SearchParams }) => {
+  const { code, libelle, type } = await props.searchParams;
   const theme = themes.inconfortThermique;
-  const { codepci, codgeo } = await props.searchParams;
-  const dbInconfortThermique = await GetInconfortThermiqueDepartment(codepci);
-
-  const collectivite = codgeo
-    ? await GetCollectivite(codgeo)
-    : codepci
-      ? await GetCollectivite(codepci)
-      : void 0;
-  const carteCommunes = await GetCommunes(codepci);
-  // const departement = !codgeo ? await GetInconfortThermiqueDepartment(codepci) : [];
+  const dbInconfortThermique = await GetInconfortThermique(code, libelle, type);
+  const carteCommunes = await GetCommunes(code, libelle, type);
 
   return (
     <div>
@@ -32,7 +24,6 @@ const InconfortThermique = async (props: { searchParams: SearchParams }) => {
             data={theme}
             inconfortThermique={dbInconfortThermique!}
             carteCommunes={carteCommunes}
-            // departement={departement}
           />
         </Suspense>
       </div>

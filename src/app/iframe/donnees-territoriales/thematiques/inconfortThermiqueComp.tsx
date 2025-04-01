@@ -1,11 +1,5 @@
 'use client';
 
-import { fr } from '@codegouvfr/react-dsfr';
-import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
-import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
-import { useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useState } from 'react';
-
 import { Loader } from '@/components/loader';
 import { AgeBati } from '@/components/themes/inconfortThermique/ageBati';
 import { DensiteBati } from '@/components/themes/inconfortThermique/densiteBati';
@@ -13,9 +7,14 @@ import { FragiliteEconomique } from '@/components/themes/inconfortThermique/frag
 import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grandAgeIsolement';
 import { TravailExterieur } from '@/components/themes/inconfortThermique/travail-exterieur';
 import { TabTooltip } from '@/components/utils/TabTooltip';
-import { CarteCommunes, CLC, InconfortThermique } from '@/lib/postgres/models';
-import { GetClcEpci } from '@/lib/queries/postgis/cartographie';
+import { CarteCommunes, CLCTerritoires, InconfortThermique } from '@/lib/postgres/models';
+import { GetClcTerritoires } from '@/lib/queries/postgis/cartographie';
+import { fr } from '@codegouvfr/react-dsfr';
+import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
+import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import dynamic from 'next/dynamic';
+import { useSearchParams } from 'next/navigation';
+import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -30,10 +29,6 @@ interface Props {
   carteCommunes: CarteCommunes[];
   inconfortThermique: InconfortThermique[];
   departement?: InconfortThermique[];
-}
-
-interface VegetalisationProps {
-  clc: CLC[];
 }
 
 const DynamicVegetalisation = dynamic(
@@ -78,21 +73,12 @@ const allComps = [
       <DensiteBati carteCommunes={carteCommunes} />
     )
   },
-  // {
-  //   titre: 'LCZ',
-  //   Component: ({
-  //     carteCommunes,
-  //     collectivite
-  //   }: Props & { activeDataTab: string }) => (
-  //     <LCZ carteCommunes={carteCommunes} collectivite={collectivite} />
-  //   )
-  // },
   {
     titre: 'Végétalisation',
     Component: ({
       clc,
       inconfortThermique
-    }: Props & VegetalisationProps & { activeDataTab: string }) => (
+    }: Props & { activeDataTab: string; clc: CLCTerritoires[] }) => (
       <DynamicVegetalisation
         inconfortThermique={inconfortThermique}
         clc={clc}
@@ -107,11 +93,13 @@ const InconfortThermiqueComp = ({
   inconfortThermique,
   departement
 }: Props) => {
-  const [clc, setClc] = useState<CLC[]>();
+  const [clc, setClc] = useState<CLCTerritoires[]>();
   const [selectedTabId, setSelectedTabId] = useState('Population');
   const [selectedSubTab, setSelectedSubTab] = useState('Grand âge');
   const searchParams = useSearchParams();
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const { isDark } = useIsDark();
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
@@ -138,10 +126,10 @@ const InconfortThermiqueComp = ({
 
   useEffect(() => {
     void (async () => {
-      const temp = await GetClcEpci(codepci);
-      temp && codepci ? setClc(temp) : void 0;
+      const temp = await GetClcTerritoires(libelle, type, code);
+      temp ? setClc(temp) : void 0;
     })();
-  }, [codepci]);
+  }, [code]);
 
   return (
     <div className={styles.container}>
