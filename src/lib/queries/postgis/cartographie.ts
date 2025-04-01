@@ -2,7 +2,6 @@
 
 import {
   CarteCommunes,
-  CLC,
   CLCTerritoires,
   EpciContours,
   ErosionCotiere
@@ -154,27 +153,6 @@ export const GetCommunes = async (
   }
 };
 
-export const GetClcEpci = async (code: string): Promise<CLC[]> => {
-  try {
-    console.time('Query Execution Time GetClcEpci');
-    const code_number = Number(code);
-    const value = await PrismaPostgres.$queryRaw<CLC[]>`
-      SELECT 
-      legend, 
-      pk,
-      ST_AsText(ST_Centroid(geometry)) centroid,
-      ST_AsGeoJSON(geometry) geometry
-      FROM postgis."clc_epci" WHERE epci_code=${code_number};`;
-    // console.log(value);
-    console.timeEnd('Query Execution Time GetClcEpci');
-    return value;
-  } catch (error) {
-    console.error(error);
-    await PrismaPostgres.$disconnect();
-    process.exit(1);
-  }
-};
-
 export const GetClcTerritoires = async (
   libelle: string,
   type: string,
@@ -182,9 +160,6 @@ export const GetClcTerritoires = async (
 ): Promise<CLCTerritoires[]> => {
   try {
     const re = new RegExp('T([1-9]|1[0-2])\\b');
-    console.log('code', code);
-    console.log('libelle', libelle);
-    console.log('type', type);
     console.time('Query Execution Time GetClcTerritoires');
     if (type === 'commune') {
       const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`

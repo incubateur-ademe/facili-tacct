@@ -18,8 +18,6 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './themes.module.scss';
 
-const GraphImage = GraphNotFound as HTMLImageElement;
-
 const sumProperty = (
   items: VegetalisationDto[],
   property:
@@ -46,7 +44,6 @@ const Vegetalisation = (props: {
   const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4[]>();
   const re = new RegExp('T([1-9]|1[0-2])\\b');
-  console.log("clc", clc);
 
   const vegetalisationMapped = inconfortThermique.map(vegetalisationMapper);
   const vegetalisationTerritoire =
@@ -62,8 +59,7 @@ const Vegetalisation = (props: {
     vegetalisationTerritoire,
     'clc_3_foret_semiNaturel'
   );
-  const foretPercent =
-    (100 * sumProperty(vegetalisationTerritoire, 'clc_3_foret_semiNaturel')) /
+  const foretPercent = (100 * foretSum) /
     (100 * sumProperty(vegetalisationTerritoire, 'superf_choro'));
 
   useEffect(() => {
@@ -95,20 +91,11 @@ const Vegetalisation = (props: {
                       Sur le territoire, la forêt et les espaces semi-naturels
                       recouvrent <b>{Round(foretSum, 1)}</b> hectares.
                     </p>
-                  ) : code ? (
-                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      Dans la commune de{' '}
-                      {vegetalisationTerritoire[0]?.libelle_geographique},{' '}
-                      <b>{Round(foretPercent, 1)} %</b> du territoire est de la
-                      forêt ou des espaces semi-naturels. Cela correspond à{' '}
-                      <b>{Round(foretSum, 1)}</b> hectares.
-                    </p>
                   ) : (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      Dans l'EPCI {vegetalisationTerritoire[0]?.libelle_epci},{' '}
-                      <b>{Round(foretPercent, 1)} %</b> du territoire est de la
-                      forêt ou des espaces semi-naturels. Cela correspond à{' '}
-                      <b>{Round(foretSum, 1)}</b> hectares.
+                      Sur votre territoire, <b>{Round(foretPercent, 1)} %</b> est
+                      recouvert par de la forêt ou des espaces semi-naturels. Cela correspond à
+                      <b> {Round(foretSum, 1)}</b> hectares.
                     </p>
                   )}
                   <div className={styles.patch4Wrapper}>
@@ -160,7 +147,7 @@ const Vegetalisation = (props: {
                 ) : clc ? (
                   <div className={styles.nodataWrapper}>
                     <Image
-                      src={GraphImage}
+                      src={GraphNotFound}
                       alt=""
                       width={0}
                       height={0}
