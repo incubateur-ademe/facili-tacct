@@ -10,7 +10,7 @@ import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
 import { VegetalisationDto } from '@/lib/dto';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
-import { CLC, InconfortThermique, Patch4 } from '@/lib/postgres/models';
+import { CLCTerritoires, InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
@@ -36,41 +36,57 @@ const sumProperty = (
 };
 
 const Vegetalisation = (props: {
-  clc: CLC[];
+  clc: CLCTerritoires[];
   inconfortThermique: InconfortThermique[];
 }) => {
   const { inconfortThermique, clc } = props;
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo');
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4[]>();
+  const re = new RegExp('T([1-9]|1[0-2])\\b');
+  console.log("clc", clc);
+
   const vegetalisationMapped = inconfortThermique.map(vegetalisationMapper);
-  const vegetalisationCollectivite = codgeo
-    ? vegetalisationMapped.filter((e) => e.code_geographique === codgeo)
-    : vegetalisationMapped.filter((e) => e.epci === codepci);
+  const vegetalisationTerritoire =
+    type === 'commune'
+      ? vegetalisationMapped.filter((e) => e.code_geographique === code)
+      : type === 'epci' && re.test(libelle)
+        ? vegetalisationMapped.filter((e) => e.ept === libelle)
+        : type === 'epci' && !re.test(libelle)
+          ? vegetalisationMapped.filter((e) => e.epci === code)
+          : vegetalisationMapped;
 
   const foretSum = sumProperty(
-    vegetalisationCollectivite,
+    vegetalisationTerritoire,
     'clc_3_foret_semiNaturel'
   );
   const foretPercent =
-    (100 * sumProperty(vegetalisationCollectivite, 'clc_3_foret_semiNaturel')) /
-    (100 * sumProperty(vegetalisationCollectivite, 'superf_choro'));
+    (100 * sumProperty(vegetalisationTerritoire, 'clc_3_foret_semiNaturel')) /
+    (100 * sumProperty(vegetalisationTerritoire, 'superf_choro'));
 
   useEffect(() => {
-    void (async () => {
-      const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
-    })();
-  }, [codgeo, codepci]);
+    !(
+      type === 'petr' ||
+      type === 'pnr' ||
+      type === 'departement' ||
+      re.test(libelle)
+    )
+      ? void (async () => {
+        const temp = await GetPatch4(code);
+        setPatch4(temp);
+      })()
+      : void 0;
+  }, [code]);
 
   const secheresse = patch4 ? AlgoPatch4(patch4[0], 'secheresse_sols') : null;
 
   return (
     <>
-      {vegetalisationCollectivite ? (
+      {vegetalisationTerritoire ? (
         <div className={styles.container}>
-          {vegetalisationCollectivite.length ? (
+          {vegetalisationTerritoire.length ? (
             <>
               <div className="w-2/5">
                 <div className={styles.explicationWrapper}>
@@ -79,17 +95,17 @@ const Vegetalisation = (props: {
                       Sur le territoire, la forêt et les espaces semi-naturels
                       recouvrent <b>{Round(foretSum, 1)}</b> hectares.
                     </p>
-                  ) : codgeo ? (
+                  ) : code ? (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       Dans la commune de{' '}
-                      {vegetalisationCollectivite[0]?.libelle_geographique},{' '}
+                      {vegetalisationTerritoire[0]?.libelle_geographique},{' '}
                       <b>{Round(foretPercent, 1)} %</b> du territoire est de la
                       forêt ou des espaces semi-naturels. Cela correspond à{' '}
                       <b>{Round(foretSum, 1)}</b> hectares.
                     </p>
                   ) : (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      Dans l'EPCI {vegetalisationCollectivite[0]?.libelle_epci},{' '}
+                      Dans l'EPCI {vegetalisationTerritoire[0]?.libelle_epci},{' '}
                       <b>{Round(foretPercent, 1)} %</b> du territoire est de la
                       forêt ou des espaces semi-naturels. Cela correspond à{' '}
                       <b>{Round(foretSum, 1)}</b> hectares.
@@ -97,7 +113,7 @@ const Vegetalisation = (props: {
                   )}
                   <div className={styles.patch4Wrapper}>
                     {secheresse === 'Intensité très forte' ||
-                    secheresse === 'Intensité forte' ? (
+                      secheresse === 'Intensité forte' ? (
                       <TagItem
                         icon={secheresseIcon}
                         indice="Sécheresse des sols"
@@ -157,7 +173,7 @@ const Vegetalisation = (props: {
               </div>
             </>
           ) : (
-            <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+            <GraphDataNotFound code={code ?? libelle} />
           )}
         </div>
       ) : (
