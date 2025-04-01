@@ -7,7 +7,7 @@ import { useRef } from 'react';
 
 import { ClcDto } from '@/lib/dto';
 import { ClcMapper } from '@/lib/mapper/clc';
-import { CLC } from '@/lib/postgres/models';
+import { CLCTerritoires } from '@/lib/postgres/models';
 import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
 import { type Any } from '@/lib/utils/types';
 import { GeoJsonObject } from 'geojson';
@@ -21,7 +21,7 @@ const getCentroid = (arr: number[][]) => {
   );
 };
 
-export const CLCMap = (props: { clc: CLC[] }) => {
+export const CLCMap = (props: { clc: CLCTerritoires[] }) => {
   const { clc } = props;
   const clc_parsed = clc.map(ClcMapper);
   const mapRef = useRef(null);
