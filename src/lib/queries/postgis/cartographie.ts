@@ -3,6 +3,7 @@
 import {
   CarteCommunes,
   CLC,
+  CLCTerritoires,
   EpciContours,
   ErosionCotiere
 } from '@/lib/postgres/models';
@@ -167,6 +168,79 @@ export const GetClcEpci = async (code: string): Promise<CLC[]> => {
     // console.log(value);
     console.timeEnd('Query Execution Time GetClcEpci');
     return value;
+  } catch (error) {
+    console.error(error);
+    await PrismaPostgres.$disconnect();
+    process.exit(1);
+  }
+};
+
+export const GetClcTerritoires = async (
+  libelle: string,
+  type: string,
+  code?: string
+): Promise<CLCTerritoires[]> => {
+  try {
+    const re = new RegExp('T([1-9]|1[0-2])\\b');
+    console.log('code', code);
+    console.log('libelle', libelle);
+    console.log('type', type);
+    console.time('Query Execution Time GetClcTerritoires');
+    if (type === 'commune') {
+      const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
+        SELECT 
+        legend, 
+        ST_AsText(ST_Centroid(geometry)) centroid,
+        ST_AsGeoJSON(geometry) geometry
+        FROM postgis."clc_territoires" WHERE code_geographique=${code};`;
+      console.timeEnd('Query Execution Time GetClcTerritoires');
+      return value;
+    } else if (type === 'epci' && re.test(libelle)) {
+      const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
+        SELECT 
+        legend, 
+        ST_AsText(ST_Centroid(geometry)) centroid,
+        ST_AsGeoJSON(geometry) geometry
+        FROM postgis."clc_territoires" WHERE ept=${libelle};`;
+      console.timeEnd('Query Execution Time GetClcTerritoires');
+      return value;
+    } else if (type === 'epci' && !re.test(libelle)) {
+      const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
+        SELECT 
+        legend, 
+        ST_AsText(ST_Centroid(geometry)) centroid,
+        ST_AsGeoJSON(geometry) geometry
+        FROM postgis."clc_territoires" WHERE epci=${code};`;
+      console.timeEnd('Query Execution Time GetClcTerritoires');
+      return value;
+    } else if (type === 'pnr') {
+      const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
+        SELECT 
+        legend, 
+        ST_AsText(ST_Centroid(geometry)) centroid,
+        ST_AsGeoJSON(geometry) geometry
+        FROM postgis."clc_territoires" WHERE code_pnr=${code};`;
+      console.timeEnd('Query Execution Time GetClcTerritoires');
+      return value;
+    } else if (type === 'petr') {
+      const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
+        SELECT 
+        legend, 
+        ST_AsText(ST_Centroid(geometry)) centroid,
+        ST_AsGeoJSON(geometry) geometry
+        FROM postgis."clc_territoires" WHERE libelle_petr=${libelle};`;
+      console.timeEnd('Query Execution Time GetClcTerritoires');
+      return value;
+    } else {
+      const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
+        SELECT 
+        legend, 
+        ST_AsText(ST_Centroid(geometry)) centroid,
+        ST_AsGeoJSON(geometry) geometry
+        FROM postgis."clc_territoires" WHERE departement=${code};`;
+      console.timeEnd('Query Execution Time GetClcTerritoires');
+      return value;
+    }
   } catch (error) {
     console.error(error);
     await PrismaPostgres.$disconnect();
