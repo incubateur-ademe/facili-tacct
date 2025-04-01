@@ -1,11 +1,12 @@
 import {
+  GetAgricultureBio,
   GetAOT40,
+  GetBiodiversite,
   GetConsommationNAF
 } from '@/lib/queries/databases/biodiversite';
 import { GetQualiteEauxBaignade } from '@/lib/queries/databases/ressourcesEau';
 import { GetCommunes, GetEpci } from '@/lib/queries/postgis/cartographie';
 import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
-import { GetAgricultureBio, GetBiodiversite } from '@/lib/queries/thematiques';
 import { themes } from '@/lib/themes';
 import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
