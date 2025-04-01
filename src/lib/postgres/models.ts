@@ -272,6 +272,7 @@ export type ConsommationNAF = {
   epci: string;
   libelle_epci: string;
   departement: string;
+  libelle_departement: string;
   region: number;
   ept: string | null;
   libelle_petr: string | null;
@@ -382,22 +383,6 @@ export type ConsommationNAF = {
   art09rou23: number;
   art09fer23: number;
   artcom0923: number;
-  pop14: number;
-  pop20: number;
-  pop1420: number;
-  men14: number;
-  men20: number;
-  men1420: number;
-  emp14: number;
-  emp20: number;
-  emp1420: number;
-  mepart1420: number;
-  menhab1420: number;
-  artpop1420: number | null;
-  surfcom2023: number;
-  C10_MEN: number | null;
-  C15_MEN: number | null;
-  C21_MEN: number | null;
 };
 
 export type EtatCoursDeau = {
