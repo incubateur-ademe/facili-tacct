@@ -1,8 +1,10 @@
 'use client';
 
 import useWindowDimensions from '@/hooks/windowDimensions';
-import { DarkClass } from '@/lib/utils/DarkClass';
+import Notice from '@codegouvfr/react-dsfr/Notice';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { useStyles } from 'tss-react/dsfr';
 import Constellation2Img from '../../assets/images/constellation2.png';
 import Constellation3Img from '../../assets/images/constellation3.png';
 import PeopleImg from '../../assets/images/landing-page-group.png';
@@ -12,26 +14,50 @@ import styles from '../root.module.scss';
 import { CollectiviteSearch } from './CollectiviteSearch';
 
 const Home = () => {
-  const darkClass = DarkClass();
+  const [noticeClosed, setNoticeClosed] = useState(false);
   const window = useWindowDimensions();
+  const { css } = useStyles();
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      const style = document.documentElement.style;
+      noticeClosed
+        ? style.setProperty('--height-notice', '415px')
+        : style.setProperty('--height-notice', '543px');
+    }
+  }, [noticeClosed]);
+
   return (
-    <div className="mb-24">
-      {/* <Notice
+    <div
+      className={css({
+        margin: '0 0 3em',
+        '.fr-btn': {
+          display: 'inline-block'
+        }
+      })}
+    >
+      <Notice
         description=""
         isClosable={true}
-        onClose={() => { }}
+        onClose={() => setNoticeClosed(true)}
         title={
           <>
-            <p>
-              Facili-TACCT intègre un nouveau jeu de données créé par Météo-France. Il vise à montrer comment cinq aléas
-              climatiques (fortes chaleurs, fortes pluies, sécheresse des sols, feux de forêt et niveaux marins) vont évoluer entre 2050 et 2100.
-            </p>
-            <p>
-              Retrouvez également de nouveaux indicateurs : “Surfaces irriguées” (et sa thématique Agriculture) et “Feux de forêt”.
-            </p>
+            <span>
+              Facili-TACCT intègre un nouveau jeu de données créé par
+              Météo-France. Il vise à montrer comment cinq aléas climatiques
+              (fortes chaleurs, fortes pluies, sécheresse des sols, feux de
+              forêt et niveaux marins) vont évoluer entre 2050 et 2100.
+            </span>
+            <br />
+            <br />
+            <span>
+              {' '}
+              Retrouvez également de nouveaux indicateurs : “Surfaces irriguées”
+              (et sa thématique Agriculture) et “Feux de forêt”.
+            </span>
           </>
         }
-      /> */}
+      />
       <div className={styles.wrapper}>
         <Container size="xl">
           <div className={styles.titles}>
