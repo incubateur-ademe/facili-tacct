@@ -7,8 +7,8 @@ import { FragiliteEconomique } from '@/components/themes/inconfortThermique/frag
 import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grandAgeIsolement';
 import { TravailExterieur } from '@/components/themes/inconfortThermique/travail-exterieur';
 import { TabTooltip } from '@/components/utils/TabTooltip';
-import { CarteCommunes, CLC, InconfortThermique } from '@/lib/postgres/models';
-import { GetClcEpci } from '@/lib/queries/postgis/cartographie';
+import { CarteCommunes, CLCTerritoires, InconfortThermique } from '@/lib/postgres/models';
+import { GetClcTerritoires } from '@/lib/queries/postgis/cartographie';
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
@@ -73,26 +73,12 @@ const allComps = [
       <DensiteBati carteCommunes={carteCommunes} />
     )
   },
-  // {
-  //   titre: 'LCZ',
-  //   Component: ({
-  //     carteCommunes,
-  //     collectivite
-  //     // LCZBayonne
-  //   }: Props & { activeDataTab: string }) => (
-  //     <LCZ
-  //       carteCommunes={carteCommunes}
-  //       collectivite={collectivite}
-  //       // LCZBayonne={LCZBayonne}
-  //     />
-  //   )
-  // },
   {
     titre: 'Végétalisation',
     Component: ({
       clc,
       inconfortThermique
-    }: Props & { activeDataTab: string; clc: CLC[] }) => (
+    }: Props & { activeDataTab: string; clc: CLCTerritoires[] }) => (
       <DynamicVegetalisation
         inconfortThermique={inconfortThermique}
         clc={clc}
@@ -107,11 +93,13 @@ const InconfortThermiqueComp = ({
   inconfortThermique,
   departement
 }: Props) => {
-  const [clc, setClc] = useState<CLC[]>();
+  const [clc, setClc] = useState<CLCTerritoires[]>();
   const [selectedTabId, setSelectedTabId] = useState('Population');
   const [selectedSubTab, setSelectedSubTab] = useState('Grand âge');
   const searchParams = useSearchParams();
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const { isDark } = useIsDark();
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
@@ -138,10 +126,10 @@ const InconfortThermiqueComp = ({
 
   useEffect(() => {
     void (async () => {
-      const temp = await GetClcEpci(codepci);
-      temp && codepci ? setClc(temp) : void 0;
+      const temp = await GetClcTerritoires(libelle, type, code);
+      temp ? setClc(temp) : void 0;
     })();
-  }, [codepci]);
+  }, [code]);
 
   return (
     <div className={styles.container}>

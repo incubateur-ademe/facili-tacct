@@ -429,25 +429,6 @@ model consommation_espaces_naf {
   @@schema("databases")
 }
 
-model lcz_bayonne_test {
-  pk         Int                      @id @default(autoincrement())
-  identifier String?                  @db.VarChar
-  hre        Float?
-  are        Float?
-  bur        Float?
-  ror        Float?
-  bsr        Float?
-  war        Float?
-  ver        Float?
-  vhr        Float?
-  lcz        String?                  @db.VarChar
-  lcz_int    Int?
-  geometry   Unsupported("geometry")?
-
-  @@index([geometry], map: "lcz_bayonne_test_geometry_geom_idx", type: Gist)
-  @@schema("postgis")
-}
-
 model north_star_metric {
   value String   @db.VarChar(32)
   date  DateTime @db.Timestamp(6)
@@ -567,4 +548,24 @@ model patch4c {
   @@index([index], map: "ix_patch4c_index")
   @@index([code_geographique], map: "patch4c_communes_index")
   @@schema("databases")
+}
+
+model clc_territoires {
+  pk                   Int                     @id @default(autoincrement())
+  code_geographique    String                  @db.VarChar
+  libelle_geographique String                  @db.VarChar
+  epci                 String                  @db.VarChar
+  libelle_epci         String                  @db.VarChar
+  departement          String                  @db.VarChar
+  libelle_departement  String                  @db.VarChar
+  region               Int
+  ept                  String?                 @db.VarChar
+  libelle_petr         String?                 @db.VarChar
+  code_pnr             String?                 @db.VarChar
+  libelle_pnr          String?                 @db.VarChar
+  legend               String                  @db.VarChar
+  geometry             Unsupported("geometry")
+
+  @@index([geometry], map: "clc_territoires_geometry_geom_idx", type: Gist)
+  @@schema("postgis")
 }
