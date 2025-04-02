@@ -19,11 +19,6 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type inconfort_thermique = $Result.DefaultSelection<Prisma.$inconfort_thermiquePayload>
 /**
- * Model clc_epci
- * 
- */
-export type clc_epci = $Result.DefaultSelection<Prisma.$clc_epciPayload>
-/**
  * Model collectivites_searchbar
  * 
  */
@@ -118,6 +113,11 @@ export type communes = $Result.DefaultSelection<Prisma.$communesPayload>
  * 
  */
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>
+/**
+ * Model clc_epci
+ * 
+ */
+export type clc_epci = $Result.DefaultSelection<Prisma.$clc_epciPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -253,16 +253,6 @@ export class PrismaClient<
     * ```
     */
   get inconfort_thermique(): Prisma.inconfort_thermiqueDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.clc_epci`: Exposes CRUD operations for the **clc_epci** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Clc_epcis
-    * const clc_epcis = await prisma.clc_epci.findMany()
-    * ```
-    */
-  get clc_epci(): Prisma.clc_epciDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.collectivites_searchbar`: Exposes CRUD operations for the **collectivites_searchbar** model.
@@ -453,6 +443,16 @@ export class PrismaClient<
     * ```
     */
   get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.clc_epci`: Exposes CRUD operations for the **clc_epci** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Clc_epcis
+    * const clc_epcis = await prisma.clc_epci.findMany()
+    * ```
+    */
+  get clc_epci(): Prisma.clc_epciDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -894,7 +894,6 @@ export namespace Prisma {
 
   export const ModelName: {
     inconfort_thermique: 'inconfort_thermique',
-    clc_epci: 'clc_epci',
     collectivites_searchbar: 'collectivites_searchbar',
     biodiversite: 'biodiversite',
     gestion_risques: 'gestion_risques',
@@ -913,7 +912,8 @@ export namespace Prisma {
     incendies_foret: 'incendies_foret',
     patch4c: 'patch4c',
     communes: 'communes',
-    users: 'users'
+    users: 'users',
+    clc_epci: 'clc_epci'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -929,7 +929,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "inconfort_thermique" | "clc_epci" | "collectivites_searchbar" | "biodiversite" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio" | "erosion_cotiere" | "epci" | "surfaces_protegees" | "consommation_espaces_naf" | "north_star_metric" | "etat_cours_d_eau" | "aot_40" | "qualite_sites_baignade" | "agriculture" | "incendies_foret" | "patch4c" | "communes" | "users"
+      modelProps: "inconfort_thermique" | "collectivites_searchbar" | "biodiversite" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio" | "erosion_cotiere" | "epci" | "surfaces_protegees" | "consommation_espaces_naf" | "north_star_metric" | "etat_cours_d_eau" | "aot_40" | "qualite_sites_baignade" | "agriculture" | "incendies_foret" | "patch4c" | "communes" | "users" | "clc_epci"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1004,80 +1004,6 @@ export namespace Prisma {
           count: {
             args: Prisma.inconfort_thermiqueCountArgs<ExtArgs>
             result: $Utils.Optional<Inconfort_thermiqueCountAggregateOutputType> | number
-          }
-        }
-      }
-      clc_epci: {
-        payload: Prisma.$clc_epciPayload<ExtArgs>
-        fields: Prisma.clc_epciFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.clc_epciFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.clc_epciFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
-          }
-          findFirst: {
-            args: Prisma.clc_epciFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.clc_epciFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
-          }
-          findMany: {
-            args: Prisma.clc_epciFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>[]
-          }
-          create: {
-            args: Prisma.clc_epciCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
-          }
-          createMany: {
-            args: Prisma.clc_epciCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.clc_epciCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>[]
-          }
-          delete: {
-            args: Prisma.clc_epciDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
-          }
-          update: {
-            args: Prisma.clc_epciUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
-          }
-          deleteMany: {
-            args: Prisma.clc_epciDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.clc_epciUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.clc_epciUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>[]
-          }
-          upsert: {
-            args: Prisma.clc_epciUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
-          }
-          aggregate: {
-            args: Prisma.Clc_epciAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateClc_epci>
-          }
-          groupBy: {
-            args: Prisma.clc_epciGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Clc_epciGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.clc_epciCountArgs<ExtArgs>
-            result: $Utils.Optional<Clc_epciCountAggregateOutputType> | number
           }
         }
       }
@@ -2423,6 +2349,80 @@ export namespace Prisma {
           }
         }
       }
+      clc_epci: {
+        payload: Prisma.$clc_epciPayload<ExtArgs>
+        fields: Prisma.clc_epciFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.clc_epciFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.clc_epciFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
+          }
+          findFirst: {
+            args: Prisma.clc_epciFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.clc_epciFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
+          }
+          findMany: {
+            args: Prisma.clc_epciFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>[]
+          }
+          create: {
+            args: Prisma.clc_epciCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
+          }
+          createMany: {
+            args: Prisma.clc_epciCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.clc_epciCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>[]
+          }
+          delete: {
+            args: Prisma.clc_epciDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
+          }
+          update: {
+            args: Prisma.clc_epciUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
+          }
+          deleteMany: {
+            args: Prisma.clc_epciDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.clc_epciUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.clc_epciUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>[]
+          }
+          upsert: {
+            args: Prisma.clc_epciUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
+          }
+          aggregate: {
+            args: Prisma.Clc_epciAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateClc_epci>
+          }
+          groupBy: {
+            args: Prisma.clc_epciGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Clc_epciGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.clc_epciCountArgs<ExtArgs>
+            result: $Utils.Optional<Clc_epciCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2508,7 +2508,6 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     inconfort_thermique?: inconfort_thermiqueOmit
-    clc_epci?: clc_epciOmit
     collectivites_searchbar?: collectivites_searchbarOmit
     biodiversite?: biodiversiteOmit
     gestion_risques?: gestion_risquesOmit
@@ -2528,6 +2527,7 @@ export namespace Prisma {
     patch4c?: patch4cOmit
     communes?: communesOmit
     users?: usersOmit
+    clc_epci?: clc_epciOmit
   }
 
   /* Types for Logging */
@@ -4420,1013 +4420,6 @@ export namespace Prisma {
      * Omit specific fields from the inconfort_thermique
      */
     omit?: inconfort_thermiqueOmit<ExtArgs> | null
-  }
-
-
-  /**
-   * Model clc_epci
-   */
-
-  export type AggregateClc_epci = {
-    _count: Clc_epciCountAggregateOutputType | null
-    _avg: Clc_epciAvgAggregateOutputType | null
-    _sum: Clc_epciSumAggregateOutputType | null
-    _min: Clc_epciMinAggregateOutputType | null
-    _max: Clc_epciMaxAggregateOutputType | null
-  }
-
-  export type Clc_epciAvgAggregateOutputType = {
-    pk: number | null
-    epci_code: number | null
-  }
-
-  export type Clc_epciSumAggregateOutputType = {
-    pk: number | null
-    epci_code: number | null
-  }
-
-  export type Clc_epciMinAggregateOutputType = {
-    pk: number | null
-    legend: string | null
-    epci_code: number | null
-  }
-
-  export type Clc_epciMaxAggregateOutputType = {
-    pk: number | null
-    legend: string | null
-    epci_code: number | null
-  }
-
-  export type Clc_epciCountAggregateOutputType = {
-    pk: number
-    legend: number
-    epci_code: number
-    _all: number
-  }
-
-
-  export type Clc_epciAvgAggregateInputType = {
-    pk?: true
-    epci_code?: true
-  }
-
-  export type Clc_epciSumAggregateInputType = {
-    pk?: true
-    epci_code?: true
-  }
-
-  export type Clc_epciMinAggregateInputType = {
-    pk?: true
-    legend?: true
-    epci_code?: true
-  }
-
-  export type Clc_epciMaxAggregateInputType = {
-    pk?: true
-    legend?: true
-    epci_code?: true
-  }
-
-  export type Clc_epciCountAggregateInputType = {
-    pk?: true
-    legend?: true
-    epci_code?: true
-    _all?: true
-  }
-
-  export type Clc_epciAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which clc_epci to aggregate.
-     */
-    where?: clc_epciWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of clc_epcis to fetch.
-     */
-    orderBy?: clc_epciOrderByWithRelationInput | clc_epciOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: clc_epciWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` clc_epcis from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` clc_epcis.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned clc_epcis
-    **/
-    _count?: true | Clc_epciCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Clc_epciAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Clc_epciSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Clc_epciMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Clc_epciMaxAggregateInputType
-  }
-
-  export type GetClc_epciAggregateType<T extends Clc_epciAggregateArgs> = {
-        [P in keyof T & keyof AggregateClc_epci]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateClc_epci[P]>
-      : GetScalarType<T[P], AggregateClc_epci[P]>
-  }
-
-
-
-
-  export type clc_epciGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: clc_epciWhereInput
-    orderBy?: clc_epciOrderByWithAggregationInput | clc_epciOrderByWithAggregationInput[]
-    by: Clc_epciScalarFieldEnum[] | Clc_epciScalarFieldEnum
-    having?: clc_epciScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Clc_epciCountAggregateInputType | true
-    _avg?: Clc_epciAvgAggregateInputType
-    _sum?: Clc_epciSumAggregateInputType
-    _min?: Clc_epciMinAggregateInputType
-    _max?: Clc_epciMaxAggregateInputType
-  }
-
-  export type Clc_epciGroupByOutputType = {
-    pk: number
-    legend: string | null
-    epci_code: number | null
-    _count: Clc_epciCountAggregateOutputType | null
-    _avg: Clc_epciAvgAggregateOutputType | null
-    _sum: Clc_epciSumAggregateOutputType | null
-    _min: Clc_epciMinAggregateOutputType | null
-    _max: Clc_epciMaxAggregateOutputType | null
-  }
-
-  type GetClc_epciGroupByPayload<T extends clc_epciGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Clc_epciGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Clc_epciGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Clc_epciGroupByOutputType[P]>
-            : GetScalarType<T[P], Clc_epciGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type clc_epciSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pk?: boolean
-    legend?: boolean
-    epci_code?: boolean
-  }, ExtArgs["result"]["clc_epci"]>
-
-  export type clc_epciSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pk?: boolean
-    legend?: boolean
-    epci_code?: boolean
-  }, ExtArgs["result"]["clc_epci"]>
-
-  export type clc_epciSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    pk?: boolean
-    legend?: boolean
-    epci_code?: boolean
-  }, ExtArgs["result"]["clc_epci"]>
-
-  export type clc_epciSelectScalar = {
-    pk?: boolean
-    legend?: boolean
-    epci_code?: boolean
-  }
-
-  export type clc_epciOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "legend" | "epci_code", ExtArgs["result"]["clc_epci"]>
-
-  export type $clc_epciPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "clc_epci"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      pk: number
-      legend: string | null
-      epci_code: number | null
-    }, ExtArgs["result"]["clc_epci"]>
-    composites: {}
-  }
-
-  type clc_epciGetPayload<S extends boolean | null | undefined | clc_epciDefaultArgs> = $Result.GetResult<Prisma.$clc_epciPayload, S>
-
-  type clc_epciCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<clc_epciFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Clc_epciCountAggregateInputType | true
-    }
-
-  export interface clc_epciDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['clc_epci'], meta: { name: 'clc_epci' } }
-    /**
-     * Find zero or one Clc_epci that matches the filter.
-     * @param {clc_epciFindUniqueArgs} args - Arguments to find a Clc_epci
-     * @example
-     * // Get one Clc_epci
-     * const clc_epci = await prisma.clc_epci.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends clc_epciFindUniqueArgs>(args: SelectSubset<T, clc_epciFindUniqueArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
-
-    /**
-     * Find one Clc_epci that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {clc_epciFindUniqueOrThrowArgs} args - Arguments to find a Clc_epci
-     * @example
-     * // Get one Clc_epci
-     * const clc_epci = await prisma.clc_epci.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends clc_epciFindUniqueOrThrowArgs>(args: SelectSubset<T, clc_epciFindUniqueOrThrowArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Find the first Clc_epci that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_epciFindFirstArgs} args - Arguments to find a Clc_epci
-     * @example
-     * // Get one Clc_epci
-     * const clc_epci = await prisma.clc_epci.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends clc_epciFindFirstArgs>(args?: SelectSubset<T, clc_epciFindFirstArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
-
-    /**
-     * Find the first Clc_epci that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_epciFindFirstOrThrowArgs} args - Arguments to find a Clc_epci
-     * @example
-     * // Get one Clc_epci
-     * const clc_epci = await prisma.clc_epci.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends clc_epciFindFirstOrThrowArgs>(args?: SelectSubset<T, clc_epciFindFirstOrThrowArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Find zero or more Clc_epcis that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_epciFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Clc_epcis
-     * const clc_epcis = await prisma.clc_epci.findMany()
-     * 
-     * // Get first 10 Clc_epcis
-     * const clc_epcis = await prisma.clc_epci.findMany({ take: 10 })
-     * 
-     * // Only select the `pk`
-     * const clc_epciWithPkOnly = await prisma.clc_epci.findMany({ select: { pk: true } })
-     * 
-     */
-    findMany<T extends clc_epciFindManyArgs>(args?: SelectSubset<T, clc_epciFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "findMany", ClientOptions>>
-
-    /**
-     * Create a Clc_epci.
-     * @param {clc_epciCreateArgs} args - Arguments to create a Clc_epci.
-     * @example
-     * // Create one Clc_epci
-     * const Clc_epci = await prisma.clc_epci.create({
-     *   data: {
-     *     // ... data to create a Clc_epci
-     *   }
-     * })
-     * 
-     */
-    create<T extends clc_epciCreateArgs>(args: SelectSubset<T, clc_epciCreateArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Create many Clc_epcis.
-     * @param {clc_epciCreateManyArgs} args - Arguments to create many Clc_epcis.
-     * @example
-     * // Create many Clc_epcis
-     * const clc_epci = await prisma.clc_epci.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends clc_epciCreateManyArgs>(args?: SelectSubset<T, clc_epciCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Clc_epcis and returns the data saved in the database.
-     * @param {clc_epciCreateManyAndReturnArgs} args - Arguments to create many Clc_epcis.
-     * @example
-     * // Create many Clc_epcis
-     * const clc_epci = await prisma.clc_epci.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Clc_epcis and only return the `pk`
-     * const clc_epciWithPkOnly = await prisma.clc_epci.createManyAndReturn({
-     *   select: { pk: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends clc_epciCreateManyAndReturnArgs>(args?: SelectSubset<T, clc_epciCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
-
-    /**
-     * Delete a Clc_epci.
-     * @param {clc_epciDeleteArgs} args - Arguments to delete one Clc_epci.
-     * @example
-     * // Delete one Clc_epci
-     * const Clc_epci = await prisma.clc_epci.delete({
-     *   where: {
-     *     // ... filter to delete one Clc_epci
-     *   }
-     * })
-     * 
-     */
-    delete<T extends clc_epciDeleteArgs>(args: SelectSubset<T, clc_epciDeleteArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Update one Clc_epci.
-     * @param {clc_epciUpdateArgs} args - Arguments to update one Clc_epci.
-     * @example
-     * // Update one Clc_epci
-     * const clc_epci = await prisma.clc_epci.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends clc_epciUpdateArgs>(args: SelectSubset<T, clc_epciUpdateArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
-
-    /**
-     * Delete zero or more Clc_epcis.
-     * @param {clc_epciDeleteManyArgs} args - Arguments to filter Clc_epcis to delete.
-     * @example
-     * // Delete a few Clc_epcis
-     * const { count } = await prisma.clc_epci.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends clc_epciDeleteManyArgs>(args?: SelectSubset<T, clc_epciDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Clc_epcis.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_epciUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Clc_epcis
-     * const clc_epci = await prisma.clc_epci.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends clc_epciUpdateManyArgs>(args: SelectSubset<T, clc_epciUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Clc_epcis and returns the data updated in the database.
-     * @param {clc_epciUpdateManyAndReturnArgs} args - Arguments to update many Clc_epcis.
-     * @example
-     * // Update many Clc_epcis
-     * const clc_epci = await prisma.clc_epci.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Clc_epcis and only return the `pk`
-     * const clc_epciWithPkOnly = await prisma.clc_epci.updateManyAndReturn({
-     *   select: { pk: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends clc_epciUpdateManyAndReturnArgs>(args: SelectSubset<T, clc_epciUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
-
-    /**
-     * Create or update one Clc_epci.
-     * @param {clc_epciUpsertArgs} args - Arguments to update or create a Clc_epci.
-     * @example
-     * // Update or create a Clc_epci
-     * const clc_epci = await prisma.clc_epci.upsert({
-     *   create: {
-     *     // ... data to create a Clc_epci
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Clc_epci we want to update
-     *   }
-     * })
-     */
-    upsert<T extends clc_epciUpsertArgs>(args: SelectSubset<T, clc_epciUpsertArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
-
-
-    /**
-     * Count the number of Clc_epcis.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_epciCountArgs} args - Arguments to filter Clc_epcis to count.
-     * @example
-     * // Count the number of Clc_epcis
-     * const count = await prisma.clc_epci.count({
-     *   where: {
-     *     // ... the filter for the Clc_epcis we want to count
-     *   }
-     * })
-    **/
-    count<T extends clc_epciCountArgs>(
-      args?: Subset<T, clc_epciCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Clc_epciCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Clc_epci.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Clc_epciAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Clc_epciAggregateArgs>(args: Subset<T, Clc_epciAggregateArgs>): Prisma.PrismaPromise<GetClc_epciAggregateType<T>>
-
-    /**
-     * Group by Clc_epci.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {clc_epciGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends clc_epciGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: clc_epciGroupByArgs['orderBy'] }
-        : { orderBy?: clc_epciGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, clc_epciGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClc_epciGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the clc_epci model
-   */
-  readonly fields: clc_epciFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for clc_epci.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__clc_epciClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the clc_epci model
-   */ 
-  interface clc_epciFieldRefs {
-    readonly pk: FieldRef<"clc_epci", 'Int'>
-    readonly legend: FieldRef<"clc_epci", 'String'>
-    readonly epci_code: FieldRef<"clc_epci", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * clc_epci findUnique
-   */
-  export type clc_epciFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_epci
-     */
-    select?: clc_epciSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the clc_epci
-     */
-    omit?: clc_epciOmit<ExtArgs> | null
-    /**
-     * Filter, which clc_epci to fetch.
-     */
-    where: clc_epciWhereUniqueInput
-  }
-
-  /**
-   * clc_epci findUniqueOrThrow
-   */
-  export type clc_epciFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_epci
-     */
-    select?: clc_epciSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the clc_epci
-     */
-    omit?: clc_epciOmit<ExtArgs> | null
-    /**
-     * Filter, which clc_epci to fetch.
-     */
-    where: clc_epciWhereUniqueInput
-  }
-
-  /**
-   * clc_epci findFirst
-   */
-  export type clc_epciFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_epci
-     */
-    select?: clc_epciSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the clc_epci
-     */
-    omit?: clc_epciOmit<ExtArgs> | null
-    /**
-     * Filter, which clc_epci to fetch.
-     */
-    where?: clc_epciWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of clc_epcis to fetch.
-     */
-    orderBy?: clc_epciOrderByWithRelationInput | clc_epciOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for clc_epcis.
-     */
-    cursor?: clc_epciWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` clc_epcis from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` clc_epcis.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of clc_epcis.
-     */
-    distinct?: Clc_epciScalarFieldEnum | Clc_epciScalarFieldEnum[]
-  }
-
-  /**
-   * clc_epci findFirstOrThrow
-   */
-  export type clc_epciFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_epci
-     */
-    select?: clc_epciSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the clc_epci
-     */
-    omit?: clc_epciOmit<ExtArgs> | null
-    /**
-     * Filter, which clc_epci to fetch.
-     */
-    where?: clc_epciWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of clc_epcis to fetch.
-     */
-    orderBy?: clc_epciOrderByWithRelationInput | clc_epciOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for clc_epcis.
-     */
-    cursor?: clc_epciWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` clc_epcis from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` clc_epcis.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of clc_epcis.
-     */
-    distinct?: Clc_epciScalarFieldEnum | Clc_epciScalarFieldEnum[]
-  }
-
-  /**
-   * clc_epci findMany
-   */
-  export type clc_epciFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_epci
-     */
-    select?: clc_epciSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the clc_epci
-     */
-    omit?: clc_epciOmit<ExtArgs> | null
-    /**
-     * Filter, which clc_epcis to fetch.
-     */
-    where?: clc_epciWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of clc_epcis to fetch.
-     */
-    orderBy?: clc_epciOrderByWithRelationInput | clc_epciOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing clc_epcis.
-     */
-    cursor?: clc_epciWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` clc_epcis from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` clc_epcis.
-     */
-    skip?: number
-    distinct?: Clc_epciScalarFieldEnum | Clc_epciScalarFieldEnum[]
-  }
-
-  /**
-   * clc_epci create
-   */
-  export type clc_epciCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_epci
-     */
-    select?: clc_epciSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the clc_epci
-     */
-    omit?: clc_epciOmit<ExtArgs> | null
-    /**
-     * The data needed to create a clc_epci.
-     */
-    data?: XOR<clc_epciCreateInput, clc_epciUncheckedCreateInput>
-  }
-
-  /**
-   * clc_epci createMany
-   */
-  export type clc_epciCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many clc_epcis.
-     */
-    data: clc_epciCreateManyInput | clc_epciCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * clc_epci createManyAndReturn
-   */
-  export type clc_epciCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_epci
-     */
-    select?: clc_epciSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the clc_epci
-     */
-    omit?: clc_epciOmit<ExtArgs> | null
-    /**
-     * The data used to create many clc_epcis.
-     */
-    data: clc_epciCreateManyInput | clc_epciCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * clc_epci update
-   */
-  export type clc_epciUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_epci
-     */
-    select?: clc_epciSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the clc_epci
-     */
-    omit?: clc_epciOmit<ExtArgs> | null
-    /**
-     * The data needed to update a clc_epci.
-     */
-    data: XOR<clc_epciUpdateInput, clc_epciUncheckedUpdateInput>
-    /**
-     * Choose, which clc_epci to update.
-     */
-    where: clc_epciWhereUniqueInput
-  }
-
-  /**
-   * clc_epci updateMany
-   */
-  export type clc_epciUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update clc_epcis.
-     */
-    data: XOR<clc_epciUpdateManyMutationInput, clc_epciUncheckedUpdateManyInput>
-    /**
-     * Filter which clc_epcis to update
-     */
-    where?: clc_epciWhereInput
-    /**
-     * Limit how many clc_epcis to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * clc_epci updateManyAndReturn
-   */
-  export type clc_epciUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_epci
-     */
-    select?: clc_epciSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the clc_epci
-     */
-    omit?: clc_epciOmit<ExtArgs> | null
-    /**
-     * The data used to update clc_epcis.
-     */
-    data: XOR<clc_epciUpdateManyMutationInput, clc_epciUncheckedUpdateManyInput>
-    /**
-     * Filter which clc_epcis to update
-     */
-    where?: clc_epciWhereInput
-    /**
-     * Limit how many clc_epcis to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * clc_epci upsert
-   */
-  export type clc_epciUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_epci
-     */
-    select?: clc_epciSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the clc_epci
-     */
-    omit?: clc_epciOmit<ExtArgs> | null
-    /**
-     * The filter to search for the clc_epci to update in case it exists.
-     */
-    where: clc_epciWhereUniqueInput
-    /**
-     * In case the clc_epci found by the `where` argument doesn't exist, create a new clc_epci with this data.
-     */
-    create: XOR<clc_epciCreateInput, clc_epciUncheckedCreateInput>
-    /**
-     * In case the clc_epci was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<clc_epciUpdateInput, clc_epciUncheckedUpdateInput>
-  }
-
-  /**
-   * clc_epci delete
-   */
-  export type clc_epciDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_epci
-     */
-    select?: clc_epciSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the clc_epci
-     */
-    omit?: clc_epciOmit<ExtArgs> | null
-    /**
-     * Filter which clc_epci to delete.
-     */
-    where: clc_epciWhereUniqueInput
-  }
-
-  /**
-   * clc_epci deleteMany
-   */
-  export type clc_epciDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which clc_epcis to delete
-     */
-    where?: clc_epciWhereInput
-    /**
-     * Limit how many clc_epcis to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * clc_epci without action
-   */
-  export type clc_epciDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the clc_epci
-     */
-    select?: clc_epciSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the clc_epci
-     */
-    omit?: clc_epciOmit<ExtArgs> | null
   }
 
 
@@ -27940,6 +26933,1013 @@ export namespace Prisma {
 
 
   /**
+   * Model clc_epci
+   */
+
+  export type AggregateClc_epci = {
+    _count: Clc_epciCountAggregateOutputType | null
+    _avg: Clc_epciAvgAggregateOutputType | null
+    _sum: Clc_epciSumAggregateOutputType | null
+    _min: Clc_epciMinAggregateOutputType | null
+    _max: Clc_epciMaxAggregateOutputType | null
+  }
+
+  export type Clc_epciAvgAggregateOutputType = {
+    pk: number | null
+    epci_code: number | null
+  }
+
+  export type Clc_epciSumAggregateOutputType = {
+    pk: number | null
+    epci_code: number | null
+  }
+
+  export type Clc_epciMinAggregateOutputType = {
+    pk: number | null
+    legend: string | null
+    epci_code: number | null
+  }
+
+  export type Clc_epciMaxAggregateOutputType = {
+    pk: number | null
+    legend: string | null
+    epci_code: number | null
+  }
+
+  export type Clc_epciCountAggregateOutputType = {
+    pk: number
+    legend: number
+    epci_code: number
+    _all: number
+  }
+
+
+  export type Clc_epciAvgAggregateInputType = {
+    pk?: true
+    epci_code?: true
+  }
+
+  export type Clc_epciSumAggregateInputType = {
+    pk?: true
+    epci_code?: true
+  }
+
+  export type Clc_epciMinAggregateInputType = {
+    pk?: true
+    legend?: true
+    epci_code?: true
+  }
+
+  export type Clc_epciMaxAggregateInputType = {
+    pk?: true
+    legend?: true
+    epci_code?: true
+  }
+
+  export type Clc_epciCountAggregateInputType = {
+    pk?: true
+    legend?: true
+    epci_code?: true
+    _all?: true
+  }
+
+  export type Clc_epciAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which clc_epci to aggregate.
+     */
+    where?: clc_epciWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_epcis to fetch.
+     */
+    orderBy?: clc_epciOrderByWithRelationInput | clc_epciOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: clc_epciWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_epcis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_epcis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned clc_epcis
+    **/
+    _count?: true | Clc_epciCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Clc_epciAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Clc_epciSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Clc_epciMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Clc_epciMaxAggregateInputType
+  }
+
+  export type GetClc_epciAggregateType<T extends Clc_epciAggregateArgs> = {
+        [P in keyof T & keyof AggregateClc_epci]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateClc_epci[P]>
+      : GetScalarType<T[P], AggregateClc_epci[P]>
+  }
+
+
+
+
+  export type clc_epciGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: clc_epciWhereInput
+    orderBy?: clc_epciOrderByWithAggregationInput | clc_epciOrderByWithAggregationInput[]
+    by: Clc_epciScalarFieldEnum[] | Clc_epciScalarFieldEnum
+    having?: clc_epciScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Clc_epciCountAggregateInputType | true
+    _avg?: Clc_epciAvgAggregateInputType
+    _sum?: Clc_epciSumAggregateInputType
+    _min?: Clc_epciMinAggregateInputType
+    _max?: Clc_epciMaxAggregateInputType
+  }
+
+  export type Clc_epciGroupByOutputType = {
+    pk: number
+    legend: string | null
+    epci_code: number | null
+    _count: Clc_epciCountAggregateOutputType | null
+    _avg: Clc_epciAvgAggregateOutputType | null
+    _sum: Clc_epciSumAggregateOutputType | null
+    _min: Clc_epciMinAggregateOutputType | null
+    _max: Clc_epciMaxAggregateOutputType | null
+  }
+
+  type GetClc_epciGroupByPayload<T extends clc_epciGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Clc_epciGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Clc_epciGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Clc_epciGroupByOutputType[P]>
+            : GetScalarType<T[P], Clc_epciGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type clc_epciSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    legend?: boolean
+    epci_code?: boolean
+  }, ExtArgs["result"]["clc_epci"]>
+
+  export type clc_epciSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    legend?: boolean
+    epci_code?: boolean
+  }, ExtArgs["result"]["clc_epci"]>
+
+  export type clc_epciSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    legend?: boolean
+    epci_code?: boolean
+  }, ExtArgs["result"]["clc_epci"]>
+
+  export type clc_epciSelectScalar = {
+    pk?: boolean
+    legend?: boolean
+    epci_code?: boolean
+  }
+
+  export type clc_epciOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "legend" | "epci_code", ExtArgs["result"]["clc_epci"]>
+
+  export type $clc_epciPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "clc_epci"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      legend: string | null
+      epci_code: number | null
+    }, ExtArgs["result"]["clc_epci"]>
+    composites: {}
+  }
+
+  type clc_epciGetPayload<S extends boolean | null | undefined | clc_epciDefaultArgs> = $Result.GetResult<Prisma.$clc_epciPayload, S>
+
+  type clc_epciCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<clc_epciFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Clc_epciCountAggregateInputType | true
+    }
+
+  export interface clc_epciDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['clc_epci'], meta: { name: 'clc_epci' } }
+    /**
+     * Find zero or one Clc_epci that matches the filter.
+     * @param {clc_epciFindUniqueArgs} args - Arguments to find a Clc_epci
+     * @example
+     * // Get one Clc_epci
+     * const clc_epci = await prisma.clc_epci.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends clc_epciFindUniqueArgs>(args: SelectSubset<T, clc_epciFindUniqueArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Clc_epci that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {clc_epciFindUniqueOrThrowArgs} args - Arguments to find a Clc_epci
+     * @example
+     * // Get one Clc_epci
+     * const clc_epci = await prisma.clc_epci.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends clc_epciFindUniqueOrThrowArgs>(args: SelectSubset<T, clc_epciFindUniqueOrThrowArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Clc_epci that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_epciFindFirstArgs} args - Arguments to find a Clc_epci
+     * @example
+     * // Get one Clc_epci
+     * const clc_epci = await prisma.clc_epci.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends clc_epciFindFirstArgs>(args?: SelectSubset<T, clc_epciFindFirstArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Clc_epci that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_epciFindFirstOrThrowArgs} args - Arguments to find a Clc_epci
+     * @example
+     * // Get one Clc_epci
+     * const clc_epci = await prisma.clc_epci.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends clc_epciFindFirstOrThrowArgs>(args?: SelectSubset<T, clc_epciFindFirstOrThrowArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Clc_epcis that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_epciFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Clc_epcis
+     * const clc_epcis = await prisma.clc_epci.findMany()
+     * 
+     * // Get first 10 Clc_epcis
+     * const clc_epcis = await prisma.clc_epci.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const clc_epciWithPkOnly = await prisma.clc_epci.findMany({ select: { pk: true } })
+     * 
+     */
+    findMany<T extends clc_epciFindManyArgs>(args?: SelectSubset<T, clc_epciFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Clc_epci.
+     * @param {clc_epciCreateArgs} args - Arguments to create a Clc_epci.
+     * @example
+     * // Create one Clc_epci
+     * const Clc_epci = await prisma.clc_epci.create({
+     *   data: {
+     *     // ... data to create a Clc_epci
+     *   }
+     * })
+     * 
+     */
+    create<T extends clc_epciCreateArgs>(args: SelectSubset<T, clc_epciCreateArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Clc_epcis.
+     * @param {clc_epciCreateManyArgs} args - Arguments to create many Clc_epcis.
+     * @example
+     * // Create many Clc_epcis
+     * const clc_epci = await prisma.clc_epci.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends clc_epciCreateManyArgs>(args?: SelectSubset<T, clc_epciCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Clc_epcis and returns the data saved in the database.
+     * @param {clc_epciCreateManyAndReturnArgs} args - Arguments to create many Clc_epcis.
+     * @example
+     * // Create many Clc_epcis
+     * const clc_epci = await prisma.clc_epci.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Clc_epcis and only return the `pk`
+     * const clc_epciWithPkOnly = await prisma.clc_epci.createManyAndReturn({
+     *   select: { pk: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends clc_epciCreateManyAndReturnArgs>(args?: SelectSubset<T, clc_epciCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Clc_epci.
+     * @param {clc_epciDeleteArgs} args - Arguments to delete one Clc_epci.
+     * @example
+     * // Delete one Clc_epci
+     * const Clc_epci = await prisma.clc_epci.delete({
+     *   where: {
+     *     // ... filter to delete one Clc_epci
+     *   }
+     * })
+     * 
+     */
+    delete<T extends clc_epciDeleteArgs>(args: SelectSubset<T, clc_epciDeleteArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Clc_epci.
+     * @param {clc_epciUpdateArgs} args - Arguments to update one Clc_epci.
+     * @example
+     * // Update one Clc_epci
+     * const clc_epci = await prisma.clc_epci.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends clc_epciUpdateArgs>(args: SelectSubset<T, clc_epciUpdateArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Clc_epcis.
+     * @param {clc_epciDeleteManyArgs} args - Arguments to filter Clc_epcis to delete.
+     * @example
+     * // Delete a few Clc_epcis
+     * const { count } = await prisma.clc_epci.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends clc_epciDeleteManyArgs>(args?: SelectSubset<T, clc_epciDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Clc_epcis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_epciUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Clc_epcis
+     * const clc_epci = await prisma.clc_epci.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends clc_epciUpdateManyArgs>(args: SelectSubset<T, clc_epciUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Clc_epcis and returns the data updated in the database.
+     * @param {clc_epciUpdateManyAndReturnArgs} args - Arguments to update many Clc_epcis.
+     * @example
+     * // Update many Clc_epcis
+     * const clc_epci = await prisma.clc_epci.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Clc_epcis and only return the `pk`
+     * const clc_epciWithPkOnly = await prisma.clc_epci.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends clc_epciUpdateManyAndReturnArgs>(args: SelectSubset<T, clc_epciUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Clc_epci.
+     * @param {clc_epciUpsertArgs} args - Arguments to update or create a Clc_epci.
+     * @example
+     * // Update or create a Clc_epci
+     * const clc_epci = await prisma.clc_epci.upsert({
+     *   create: {
+     *     // ... data to create a Clc_epci
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Clc_epci we want to update
+     *   }
+     * })
+     */
+    upsert<T extends clc_epciUpsertArgs>(args: SelectSubset<T, clc_epciUpsertArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Clc_epcis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_epciCountArgs} args - Arguments to filter Clc_epcis to count.
+     * @example
+     * // Count the number of Clc_epcis
+     * const count = await prisma.clc_epci.count({
+     *   where: {
+     *     // ... the filter for the Clc_epcis we want to count
+     *   }
+     * })
+    **/
+    count<T extends clc_epciCountArgs>(
+      args?: Subset<T, clc_epciCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Clc_epciCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Clc_epci.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Clc_epciAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Clc_epciAggregateArgs>(args: Subset<T, Clc_epciAggregateArgs>): Prisma.PrismaPromise<GetClc_epciAggregateType<T>>
+
+    /**
+     * Group by Clc_epci.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_epciGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends clc_epciGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: clc_epciGroupByArgs['orderBy'] }
+        : { orderBy?: clc_epciGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, clc_epciGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClc_epciGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the clc_epci model
+   */
+  readonly fields: clc_epciFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for clc_epci.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__clc_epciClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the clc_epci model
+   */ 
+  interface clc_epciFieldRefs {
+    readonly pk: FieldRef<"clc_epci", 'Int'>
+    readonly legend: FieldRef<"clc_epci", 'String'>
+    readonly epci_code: FieldRef<"clc_epci", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * clc_epci findUnique
+   */
+  export type clc_epciFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * Filter, which clc_epci to fetch.
+     */
+    where: clc_epciWhereUniqueInput
+  }
+
+  /**
+   * clc_epci findUniqueOrThrow
+   */
+  export type clc_epciFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * Filter, which clc_epci to fetch.
+     */
+    where: clc_epciWhereUniqueInput
+  }
+
+  /**
+   * clc_epci findFirst
+   */
+  export type clc_epciFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * Filter, which clc_epci to fetch.
+     */
+    where?: clc_epciWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_epcis to fetch.
+     */
+    orderBy?: clc_epciOrderByWithRelationInput | clc_epciOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for clc_epcis.
+     */
+    cursor?: clc_epciWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_epcis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_epcis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of clc_epcis.
+     */
+    distinct?: Clc_epciScalarFieldEnum | Clc_epciScalarFieldEnum[]
+  }
+
+  /**
+   * clc_epci findFirstOrThrow
+   */
+  export type clc_epciFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * Filter, which clc_epci to fetch.
+     */
+    where?: clc_epciWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_epcis to fetch.
+     */
+    orderBy?: clc_epciOrderByWithRelationInput | clc_epciOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for clc_epcis.
+     */
+    cursor?: clc_epciWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_epcis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_epcis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of clc_epcis.
+     */
+    distinct?: Clc_epciScalarFieldEnum | Clc_epciScalarFieldEnum[]
+  }
+
+  /**
+   * clc_epci findMany
+   */
+  export type clc_epciFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * Filter, which clc_epcis to fetch.
+     */
+    where?: clc_epciWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_epcis to fetch.
+     */
+    orderBy?: clc_epciOrderByWithRelationInput | clc_epciOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing clc_epcis.
+     */
+    cursor?: clc_epciWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_epcis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_epcis.
+     */
+    skip?: number
+    distinct?: Clc_epciScalarFieldEnum | Clc_epciScalarFieldEnum[]
+  }
+
+  /**
+   * clc_epci create
+   */
+  export type clc_epciCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * The data needed to create a clc_epci.
+     */
+    data?: XOR<clc_epciCreateInput, clc_epciUncheckedCreateInput>
+  }
+
+  /**
+   * clc_epci createMany
+   */
+  export type clc_epciCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many clc_epcis.
+     */
+    data: clc_epciCreateManyInput | clc_epciCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * clc_epci createManyAndReturn
+   */
+  export type clc_epciCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * The data used to create many clc_epcis.
+     */
+    data: clc_epciCreateManyInput | clc_epciCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * clc_epci update
+   */
+  export type clc_epciUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * The data needed to update a clc_epci.
+     */
+    data: XOR<clc_epciUpdateInput, clc_epciUncheckedUpdateInput>
+    /**
+     * Choose, which clc_epci to update.
+     */
+    where: clc_epciWhereUniqueInput
+  }
+
+  /**
+   * clc_epci updateMany
+   */
+  export type clc_epciUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update clc_epcis.
+     */
+    data: XOR<clc_epciUpdateManyMutationInput, clc_epciUncheckedUpdateManyInput>
+    /**
+     * Filter which clc_epcis to update
+     */
+    where?: clc_epciWhereInput
+    /**
+     * Limit how many clc_epcis to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * clc_epci updateManyAndReturn
+   */
+  export type clc_epciUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * The data used to update clc_epcis.
+     */
+    data: XOR<clc_epciUpdateManyMutationInput, clc_epciUncheckedUpdateManyInput>
+    /**
+     * Filter which clc_epcis to update
+     */
+    where?: clc_epciWhereInput
+    /**
+     * Limit how many clc_epcis to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * clc_epci upsert
+   */
+  export type clc_epciUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * The filter to search for the clc_epci to update in case it exists.
+     */
+    where: clc_epciWhereUniqueInput
+    /**
+     * In case the clc_epci found by the `where` argument doesn't exist, create a new clc_epci with this data.
+     */
+    create: XOR<clc_epciCreateInput, clc_epciUncheckedCreateInput>
+    /**
+     * In case the clc_epci was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<clc_epciUpdateInput, clc_epciUncheckedUpdateInput>
+  }
+
+  /**
+   * clc_epci delete
+   */
+  export type clc_epciDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * Filter which clc_epci to delete.
+     */
+    where: clc_epciWhereUniqueInput
+  }
+
+  /**
+   * clc_epci deleteMany
+   */
+  export type clc_epciDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which clc_epcis to delete
+     */
+    where?: clc_epciWhereInput
+    /**
+     * Limit how many clc_epcis to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * clc_epci without action
+   */
+  export type clc_epciDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -28014,15 +28014,6 @@ export namespace Prisma {
   };
 
   export type Inconfort_thermiqueScalarFieldEnum = (typeof Inconfort_thermiqueScalarFieldEnum)[keyof typeof Inconfort_thermiqueScalarFieldEnum]
-
-
-  export const Clc_epciScalarFieldEnum: {
-    pk: 'pk',
-    legend: 'legend',
-    epci_code: 'epci_code'
-  };
-
-  export type Clc_epciScalarFieldEnum = (typeof Clc_epciScalarFieldEnum)[keyof typeof Clc_epciScalarFieldEnum]
 
 
   export const Collectivites_searchbarScalarFieldEnum: {
@@ -28452,6 +28443,15 @@ export namespace Prisma {
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
 
 
+  export const Clc_epciScalarFieldEnum: {
+    pk: 'pk',
+    legend: 'legend',
+    epci_code: 'epci_code'
+  };
+
+  export type Clc_epciScalarFieldEnum = (typeof Clc_epciScalarFieldEnum)[keyof typeof Clc_epciScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -28866,50 +28866,6 @@ export namespace Prisma {
     clc_4_humide?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
     clc_5_eau?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
     superf_choro?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
-  }
-
-  export type clc_epciWhereInput = {
-    AND?: clc_epciWhereInput | clc_epciWhereInput[]
-    OR?: clc_epciWhereInput[]
-    NOT?: clc_epciWhereInput | clc_epciWhereInput[]
-    pk?: IntFilter<"clc_epci"> | number
-    legend?: StringNullableFilter<"clc_epci"> | string | null
-    epci_code?: IntNullableFilter<"clc_epci"> | number | null
-  }
-
-  export type clc_epciOrderByWithRelationInput = {
-    pk?: SortOrder
-    legend?: SortOrderInput | SortOrder
-    epci_code?: SortOrderInput | SortOrder
-  }
-
-  export type clc_epciWhereUniqueInput = Prisma.AtLeast<{
-    pk?: number
-    AND?: clc_epciWhereInput | clc_epciWhereInput[]
-    OR?: clc_epciWhereInput[]
-    NOT?: clc_epciWhereInput | clc_epciWhereInput[]
-    legend?: StringNullableFilter<"clc_epci"> | string | null
-    epci_code?: IntNullableFilter<"clc_epci"> | number | null
-  }, "pk">
-
-  export type clc_epciOrderByWithAggregationInput = {
-    pk?: SortOrder
-    legend?: SortOrderInput | SortOrder
-    epci_code?: SortOrderInput | SortOrder
-    _count?: clc_epciCountOrderByAggregateInput
-    _avg?: clc_epciAvgOrderByAggregateInput
-    _max?: clc_epciMaxOrderByAggregateInput
-    _min?: clc_epciMinOrderByAggregateInput
-    _sum?: clc_epciSumOrderByAggregateInput
-  }
-
-  export type clc_epciScalarWhereWithAggregatesInput = {
-    AND?: clc_epciScalarWhereWithAggregatesInput | clc_epciScalarWhereWithAggregatesInput[]
-    OR?: clc_epciScalarWhereWithAggregatesInput[]
-    NOT?: clc_epciScalarWhereWithAggregatesInput | clc_epciScalarWhereWithAggregatesInput[]
-    pk?: IntWithAggregatesFilter<"clc_epci"> | number
-    legend?: StringNullableWithAggregatesFilter<"clc_epci"> | string | null
-    epci_code?: IntNullableWithAggregatesFilter<"clc_epci"> | number | null
   }
 
   export type collectivites_searchbarWhereInput = {
@@ -31028,6 +30984,50 @@ export namespace Prisma {
     role?: StringWithAggregatesFilter<"users"> | string
   }
 
+  export type clc_epciWhereInput = {
+    AND?: clc_epciWhereInput | clc_epciWhereInput[]
+    OR?: clc_epciWhereInput[]
+    NOT?: clc_epciWhereInput | clc_epciWhereInput[]
+    pk?: IntFilter<"clc_epci"> | number
+    legend?: StringNullableFilter<"clc_epci"> | string | null
+    epci_code?: IntNullableFilter<"clc_epci"> | number | null
+  }
+
+  export type clc_epciOrderByWithRelationInput = {
+    pk?: SortOrder
+    legend?: SortOrderInput | SortOrder
+    epci_code?: SortOrderInput | SortOrder
+  }
+
+  export type clc_epciWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: clc_epciWhereInput | clc_epciWhereInput[]
+    OR?: clc_epciWhereInput[]
+    NOT?: clc_epciWhereInput | clc_epciWhereInput[]
+    legend?: StringNullableFilter<"clc_epci"> | string | null
+    epci_code?: IntNullableFilter<"clc_epci"> | number | null
+  }, "pk">
+
+  export type clc_epciOrderByWithAggregationInput = {
+    pk?: SortOrder
+    legend?: SortOrderInput | SortOrder
+    epci_code?: SortOrderInput | SortOrder
+    _count?: clc_epciCountOrderByAggregateInput
+    _avg?: clc_epciAvgOrderByAggregateInput
+    _max?: clc_epciMaxOrderByAggregateInput
+    _min?: clc_epciMinOrderByAggregateInput
+    _sum?: clc_epciSumOrderByAggregateInput
+  }
+
+  export type clc_epciScalarWhereWithAggregatesInput = {
+    AND?: clc_epciScalarWhereWithAggregatesInput | clc_epciScalarWhereWithAggregatesInput[]
+    OR?: clc_epciScalarWhereWithAggregatesInput[]
+    NOT?: clc_epciScalarWhereWithAggregatesInput | clc_epciScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"clc_epci"> | number
+    legend?: StringNullableWithAggregatesFilter<"clc_epci"> | string | null
+    epci_code?: IntNullableWithAggregatesFilter<"clc_epci"> | number | null
+  }
+
   export type inconfort_thermiqueCreateInput = {
     index: bigint | number
     code_geographique: string
@@ -31446,45 +31446,6 @@ export namespace Prisma {
     clc_4_humide?: NullableFloatFieldUpdateOperationsInput | number | null
     clc_5_eau?: NullableFloatFieldUpdateOperationsInput | number | null
     superf_choro?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type clc_epciCreateInput = {
-    legend?: string | null
-    epci_code?: number | null
-  }
-
-  export type clc_epciUncheckedCreateInput = {
-    pk?: number
-    legend?: string | null
-    epci_code?: number | null
-  }
-
-  export type clc_epciUpdateInput = {
-    legend?: NullableStringFieldUpdateOperationsInput | string | null
-    epci_code?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type clc_epciUncheckedUpdateInput = {
-    pk?: IntFieldUpdateOperationsInput | number
-    legend?: NullableStringFieldUpdateOperationsInput | string | null
-    epci_code?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type clc_epciCreateManyInput = {
-    pk?: number
-    legend?: string | null
-    epci_code?: number | null
-  }
-
-  export type clc_epciUpdateManyMutationInput = {
-    legend?: NullableStringFieldUpdateOperationsInput | string | null
-    epci_code?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type clc_epciUncheckedUpdateManyInput = {
-    pk?: IntFieldUpdateOperationsInput | number
-    legend?: NullableStringFieldUpdateOperationsInput | string | null
-    epci_code?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type collectivites_searchbarCreateInput = {
@@ -33903,6 +33864,7 @@ export namespace Prisma {
   }
 
   export type usersCreateInput = {
+    pk: number
     email: string
     username: string
     password: string
@@ -33912,7 +33874,7 @@ export namespace Prisma {
   }
 
   export type usersUncheckedCreateInput = {
-    pk?: number
+    pk: number
     email: string
     username: string
     password: string
@@ -33922,6 +33884,7 @@ export namespace Prisma {
   }
 
   export type usersUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -33941,7 +33904,7 @@ export namespace Prisma {
   }
 
   export type usersCreateManyInput = {
-    pk?: number
+    pk: number
     email: string
     username: string
     password: string
@@ -33951,6 +33914,7 @@ export namespace Prisma {
   }
 
   export type usersUpdateManyMutationInput = {
+    pk?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -33967,6 +33931,45 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     last_connection?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type clc_epciCreateInput = {
+    legend?: string | null
+    epci_code?: number | null
+  }
+
+  export type clc_epciUncheckedCreateInput = {
+    pk?: number
+    legend?: string | null
+    epci_code?: number | null
+  }
+
+  export type clc_epciUpdateInput = {
+    legend?: NullableStringFieldUpdateOperationsInput | string | null
+    epci_code?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type clc_epciUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    legend?: NullableStringFieldUpdateOperationsInput | string | null
+    epci_code?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type clc_epciCreateManyInput = {
+    pk?: number
+    legend?: string | null
+    epci_code?: number | null
+  }
+
+  export type clc_epciUpdateManyMutationInput = {
+    legend?: NullableStringFieldUpdateOperationsInput | string | null
+    epci_code?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type clc_epciUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    legend?: NullableStringFieldUpdateOperationsInput | string | null
+    epci_code?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type BigIntFilter<$PrismaModel = never> = {
@@ -34355,61 +34358,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type clc_epciCountOrderByAggregateInput = {
-    pk?: SortOrder
-    legend?: SortOrder
-    epci_code?: SortOrder
-  }
-
-  export type clc_epciAvgOrderByAggregateInput = {
-    pk?: SortOrder
-    epci_code?: SortOrder
-  }
-
-  export type clc_epciMaxOrderByAggregateInput = {
-    pk?: SortOrder
-    legend?: SortOrder
-    epci_code?: SortOrder
-  }
-
-  export type clc_epciMinOrderByAggregateInput = {
-    pk?: SortOrder
-    legend?: SortOrder
-    epci_code?: SortOrder
-  }
-
-  export type clc_epciSumOrderByAggregateInput = {
-    pk?: SortOrder
-    epci_code?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type collectivites_searchbarCountOrderByAggregateInput = {
@@ -36117,6 +36065,61 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type clc_epciCountOrderByAggregateInput = {
+    pk?: SortOrder
+    legend?: SortOrder
+    epci_code?: SortOrder
+  }
+
+  export type clc_epciAvgOrderByAggregateInput = {
+    pk?: SortOrder
+    epci_code?: SortOrder
+  }
+
+  export type clc_epciMaxOrderByAggregateInput = {
+    pk?: SortOrder
+    legend?: SortOrder
+    epci_code?: SortOrder
+  }
+
+  export type clc_epciMinOrderByAggregateInput = {
+    pk?: SortOrder
+    legend?: SortOrder
+    epci_code?: SortOrder
+  }
+
+  export type clc_epciSumOrderByAggregateInput = {
+    pk?: SortOrder
+    epci_code?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number
     increment?: bigint | number
@@ -36149,14 +36152,6 @@ export namespace Prisma {
     set?: string | null
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -36171,6 +36166,14 @@ export namespace Prisma {
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NestedBigIntFilter<$PrismaModel = never> = {
@@ -36338,22 +36341,6 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -36418,6 +36405,22 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
 
