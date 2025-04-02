@@ -177,12 +177,6 @@ exports.Prisma.Inconfort_thermiqueScalarFieldEnum = {
   superf_choro: 'superf_choro'
 };
 
-exports.Prisma.Clc_epciScalarFieldEnum = {
-  pk: 'pk',
-  legend: 'legend',
-  epci_code: 'epci_code'
-};
-
 exports.Prisma.Collectivites_searchbarScalarFieldEnum = {
   index: 'index',
   code_commune: 'code_commune',
@@ -553,6 +547,12 @@ exports.Prisma.UsersScalarFieldEnum = {
   role: 'role'
 };
 
+exports.Prisma.Clc_epciScalarFieldEnum = {
+  pk: 'pk',
+  legend: 'legend',
+  epci_code: 'epci_code'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -571,7 +571,6 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   inconfort_thermique: 'inconfort_thermique',
-  clc_epci: 'clc_epci',
   collectivites_searchbar: 'collectivites_searchbar',
   biodiversite: 'biodiversite',
   gestion_risques: 'gestion_risques',
@@ -590,7 +589,8 @@ exports.Prisma.ModelName = {
   incendies_foret: 'incendies_foret',
   patch4c: 'patch4c',
   communes: 'communes',
-  users: 'users'
+  users: 'users',
+  clc_epci: 'clc_epci'
 };
 
 /**
