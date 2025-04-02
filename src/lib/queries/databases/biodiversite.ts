@@ -56,21 +56,38 @@ export const GetAgricultureBio = async (
 ): Promise<AgricultureBio[]> => {
   try {
     console.time('Query Execution Time AGRICULTURE BIO');
-    const colonneTerritoire =
-      type === 'epci'
-        ? 'epci'
-        : type === 'commune'
-          ? 'code_geographique'
-          : type === 'pnr'
-            ? 'code_pnr'
-            : 'libelle_petr';
-    const value = await PrismaPostgres.agriculture_bio.findMany({
-      where: {
-        [colonneTerritoire]: code ?? libelle
-      }
-    });
-    console.timeEnd('Query Execution Time AGRICULTURE BIO');
-    return value;
+    const re = new RegExp('T([1-9]|1[0-2])\\b'); //check if T + nombre entre 1 et 12
+    if (type === 'epci' && re.test(libelle)) {
+      //pour les ept
+      const value = await PrismaPostgres.agriculture_bio.findMany({
+        where: {
+          epci: '200054781'
+        }
+      });
+      console.timeEnd('Query Execution Time AGRICULTURE BIO');
+      return value;
+    } else if (type === 'commune') {
+      const commune = await PrismaPostgres.collectivites_searchbar.findFirst({
+        where: {
+          code_geographique: code
+        }
+      });
+      const value = await PrismaPostgres.agriculture_bio.findMany({
+        where: {
+          epci: commune?.epci ?? ''
+        }
+      });
+      console.timeEnd('Query Execution Time AGRICULTURE BIO');
+      return value;
+    } else if (type === 'epci' && !re.test(libelle)) {
+      const value = await PrismaPostgres.agriculture_bio.findMany({
+        where: {
+          epci: code
+        }
+      });
+      console.timeEnd('Query Execution Time AGRICULTURE BIO');
+      return value;
+    } else return [];
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
@@ -115,18 +132,29 @@ export const GetConsommationNAF = async (
       });
       console.timeEnd('Query Execution Time CONSOMMATION NAF');
       return value;
+    } else if (type === 'commune') {
+      const commune = await PrismaPostgres.collectivites_searchbar.findFirst({
+        where: {
+          code_geographique: code
+        }
+      });
+      const value = await PrismaPostgres.consommation_espaces_naf.findMany({
+        where: {
+          epci: commune?.epci ?? ''
+        }
+      });
+      console.timeEnd('Query Execution Time CONSOMMATION NAF');
+      return value;
     } else {
       const value = await PrismaPostgres.consommation_espaces_naf.findMany({
         where: {
-          [type === 'commune'
-            ? 'code_geographique'
-            : type === 'epci'
-              ? 'epci'
-              : type === 'pnr'
-                ? 'code_pnr'
-                : type === 'departement'
-                  ? 'departement'
-                  : '']: code
+          [type === 'epci'
+            ? 'epci'
+            : type === 'pnr'
+              ? 'code_pnr'
+              : type === 'departement'
+                ? 'departement'
+                : '']: code
         }
       });
       console.timeEnd('Query Execution Time CONSOMMATION NAF');
