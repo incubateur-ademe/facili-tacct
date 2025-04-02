@@ -505,7 +505,7 @@ model communes {
 }
 
 model users {
-  pk              Int       @id
+  pk              Int       @id @default(autoincrement())
   email           String    @unique(map: "email") @db.VarChar(256)
   username        String    @unique(map: "username") @db.VarChar(256)
   password        String    @db.VarChar(256)
