@@ -56,17 +56,18 @@ export const MapEspacesNaf = (props: {
     (el) => el.properties.naf != undefined
   );
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo');
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
 
   const all_coordinates = carteCommunesFiltered.map(
     (el) => el.geometry.coordinates?.[0]?.[0]
   );
-  const commune = codgeo
+  const commune = type === "commune"
     ? carteCommunesFiltered.find(
-        (el) => el.properties.code_geographique === codgeo
-      )
+      (el) => el.properties.code_geographique === code
+    )
     : null;
   const centerCoord: number[] = commune
     ? getCentroid(commune.geometry.coordinates?.[0][0])
@@ -76,7 +77,7 @@ export const MapEspacesNaf = (props: {
     const typedFeature = feature as CommunesIndicateursDto;
     return {
       fillColor: getColor(typedFeature?.properties.naf ?? 0),
-      weight: typedFeature.properties.code_geographique === codgeo ? 3 : 1,
+      weight: typedFeature.properties.code_geographique === code ? 3 : 1,
       opacity: 1,
       color: '#161616',
       fillOpacity: 1
@@ -126,7 +127,7 @@ export const MapEspacesNaf = (props: {
     >;
     const codeCommune = e.sourceTarget.feature.properties.code_geographique;
     layer.setStyle({
-      weight: codeCommune === codgeo ? 3 : 1,
+      weight: codeCommune === code ? 3 : 1,
       color: '#000000',
       fillOpacity: 1
     });
@@ -143,7 +144,7 @@ export const MapEspacesNaf = (props: {
   return (
     <>
       {carteCommunesFiltered === null ? (
-        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        <GraphDataNotFound code={code ?? libelle} />
       ) : (
         <MapContainer
           center={[centerCoord[1], centerCoord[0]]}

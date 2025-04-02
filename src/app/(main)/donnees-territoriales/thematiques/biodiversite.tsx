@@ -1,6 +1,5 @@
 import {
   GetAgricultureBio,
-  GetBiodiversite,
   GetConsommationNAF
 } from '@/lib/queries/databases/biodiversite';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
@@ -12,10 +11,8 @@ import BiodiversiteComp from './biodiversiteComp';
 const Biodiversite = async (props: { searchParams: SearchParams }) => {
   const theme = themes.biodiversite;
   const { code, libelle, type } = await props.searchParams;
-  const dbBiodiversite = await GetBiodiversite(code, libelle, type);
   const carteCommunes = await GetCommunes(code, libelle, type);
   const dbAgricultureBio = await GetAgricultureBio(code, libelle, type);
-  // const dbSurfacesProtegees = await GetSurfacesProtegees(codepci);
   const dbConsommationNAF = await GetConsommationNAF(code, libelle, type);
   // const epciContours = await GetEpci(codepci);
   // const dbAOT40 = await GetAOT40();
@@ -27,10 +24,8 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
       <Suspense>
         <BiodiversiteComp
           data={theme}
-          biodiversite={dbBiodiversite!}
           carteCommunes={carteCommunes}
           agricultureBio={dbAgricultureBio!}
-          // surfacesProtegees={dbSurfacesProtegees}
           consommationNAF={dbConsommationNAF}
         // epciContours={epciContours}
         // aot40={dbAOT40}
