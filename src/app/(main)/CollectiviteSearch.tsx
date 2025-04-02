@@ -9,9 +9,7 @@ export const CollectiviteSearch = () => {
       <h2 className="text-center text-[1.5rem] font-bold">
         Quel territoire représentez-vous ?
       </h2>
-      <div>
-        <SearchBarComp />
-      </div>
+      <SearchBarComp />
     </div>
   );
 };

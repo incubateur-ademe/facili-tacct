@@ -137,7 +137,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
         );
       }}
       renderInput={(params) => (
-        <div ref={params.InputProps.ref}>
+        <div ref={params.InputProps.ref as React.Ref<HTMLDivElement>}>
           <input
             {...(params.inputProps as React.InputHTMLAttributes<HTMLInputElement>)}
             className={cx(params.inputProps.className, className)}
