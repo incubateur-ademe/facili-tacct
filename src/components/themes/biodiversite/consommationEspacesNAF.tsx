@@ -15,8 +15,9 @@ export const ConsommationEspacesNAF = (props: {
 }) => {
   const { consommationNAF, carteCommunes } = props;
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo')!;
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
 
   const carteCommunesEnriched = carteCommunes.map((el) => {
     return {
@@ -27,15 +28,17 @@ export const ConsommationEspacesNAF = (props: {
     };
   });
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
-  const sumNaf = codgeo
-    ? consommationNAF.filter((item) => item.code_geographique === codgeo)[0]
-        ?.naf09art23
+
+  const sumNaf = type === "commune"
+    ? consommationNAF.filter((item) => item.code_geographique === code)[0]
+      ?.naf09art23
     : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
+
   const title = (
     <div>
       Le suivi de cet indicateur est réalisé par le CEREMA dans le cadre de
       l’objectif “zéro artificialisation nette” de la loi « Climat et résilience
-       ». La consommation d’espaces NAF est calculée à partir des fichiers
+      ». La consommation d’espaces NAF est calculée à partir des fichiers
       fonciers entre 2009 et 2023, présentée ici toute destination confondue.
       Les données sont traitées pour donner des tendances de façon uniforme sur
       toute la France ; ponctuellement, il est possible que les documents de
@@ -109,7 +112,7 @@ export const ConsommationEspacesNAF = (props: {
           </div>
         </div>
       ) : (
-        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        <GraphDataNotFound code={code ?? libelle} />
       )}
     </>
   );

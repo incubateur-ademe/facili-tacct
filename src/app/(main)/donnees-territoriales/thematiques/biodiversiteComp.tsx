@@ -1,25 +1,17 @@
 'use client';
 
 import AgricultureBiologique from '@/components/themes/biodiversite/agricultureBio';
-import AOT40Dataviz from '@/components/themes/biodiversite/AOT40';
 import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
-import { StationsClassees } from '@/components/themes/biodiversite/stationsClassees';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   AgricultureBio,
-  AOT40,
-  Biodiversite,
   CarteCommunes,
-  ConsommationNAF,
-  EpciContours,
-  EtatCoursDeau,
-  QualiteSitesBaignade
+  ConsommationNAF
 } from '@/lib/postgres/models';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
-import EtatQualiteCoursDeau from '../../../../components/themes/biodiversite/etatCoursDeau';
 import styles from '../donnees.module.scss';
 
 interface Props {
@@ -30,32 +22,16 @@ interface Props {
     risque: string;
     titre: string;
   }>;
-  biodiversite: Biodiversite[];
   carteCommunes: CarteCommunes[];
   agricultureBio: AgricultureBio[];
-  // surfacesProtegees: SurfacesProtegeesByCol[];
   consommationNAF: ConsommationNAF[];
-  epciContours: EpciContours[];
-  aot40: AOT40[];
-  etatCoursDeau: EtatCoursDeau[];
-  qualiteEauxBaignade: QualiteSitesBaignade[];
+  // epciContours: EpciContours[];
+  // aot40: AOT40[];
+  // etatCoursDeau: EtatCoursDeau[];
+  // qualiteEauxBaignade: QualiteSitesBaignade[];
 }
 
 const allComps = [
-  {
-    titre: 'Stations classées',
-    Component: ({
-      biodiversite,
-      data,
-      carteCommunes
-    }: Props & { activeDataTab: string }) => (
-      <StationsClassees
-        biodiversite={biodiversite}
-        data={data}
-        carteCommunes={carteCommunes}
-      />
-    )
-  },
   {
     titre: 'Surfaces en bio',
     Component: ({
@@ -65,20 +41,6 @@ const allComps = [
       <AgricultureBiologique data={data} agricultureBio={agricultureBio} />
     )
   },
-  // {
-  //   titre: 'Surfaces protégées',
-  //   Component: ({
-  //     data,
-  //     surfacesProtegees,
-  //     carteCommunes
-  //   }: Props & { activeDataTab: string }) => (
-  //     <SurfacesProtegees
-  //       data={data}
-  //       surfacesProtegees={surfacesProtegees}
-  //       carteCommunes={carteCommunes}
-  //     />
-  //   )
-  // },
   {
     titre: "Consommation d'espaces NAF",
     Component: ({
@@ -91,49 +53,47 @@ const allComps = [
       />
     )
   },
-  {
-    titre: "État écologique des cours d'eau",
-    Component: ({
-      etatCoursDeau,
-      epciContours,
-      carteCommunes,
-      qualiteEauxBaignade
-    }: Props & { activeDataTab: string; etatCoursDeau: EtatCoursDeau[] }) => (
-      <EtatQualiteCoursDeau
-        etatCoursDeau={etatCoursDeau}
-        epciContours={epciContours}
-        carteCommunes={carteCommunes}
-        qualiteEauxBaignade={qualiteEauxBaignade}
-      />
-    )
-  },
-  {
-    titre: 'Ozone et végétation',
-    Component: ({
-      aot40,
-      epciContours,
-      carteCommunes
-    }: Props & { activeDataTab: string }) => (
-      <AOT40Dataviz
-        aot40={aot40}
-        epciContours={epciContours}
-        carteCommunes={carteCommunes}
-      />
-    )
-  }
+  // {
+  //   titre: "État écologique des cours d'eau",
+  //   Component: ({
+  //     etatCoursDeau,
+  //     epciContours,
+  //     carteCommunes,
+  //     qualiteEauxBaignade
+  //   }: Props & { activeDataTab: string; etatCoursDeau: EtatCoursDeau[] }) => (
+  //     <EtatQualiteCoursDeau
+  //       etatCoursDeau={etatCoursDeau}
+  //       epciContours={epciContours}
+  //       carteCommunes={carteCommunes}
+  //       qualiteEauxBaignade={qualiteEauxBaignade}
+  //     />
+  //   )
+  // },
+  // {
+  //   titre: 'Ozone et végétation',
+  //   Component: ({
+  //     aot40,
+  //     epciContours,
+  //     carteCommunes
+  //   }: Props & { activeDataTab: string }) => (
+  //     <AOT40Dataviz
+  //       aot40={aot40}
+  //       epciContours={epciContours}
+  //       carteCommunes={carteCommunes}
+  //     />
+  //   )
+  // }
 ];
 
 const BiodiversiteComp = ({
   data,
-  biodiversite,
   carteCommunes,
   agricultureBio,
-  // surfacesProtegees,
   consommationNAF,
-  epciContours,
-  aot40,
-  etatCoursDeau,
-  qualiteEauxBaignade
+  // epciContours,
+  // aot40,
+  // etatCoursDeau,
+  // qualiteEauxBaignade
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState(
     "Consommation d'espaces NAF"
@@ -237,22 +197,22 @@ const BiodiversiteComp = ({
           <div className={styles.titles}>
             {selectedTabId === 'Pollutions'
               ? data
-                  .filter((el) => el.facteurSensibilite === selectedTabId)
-                  .map((element, i) => (
-                    <button
-                      key={i}
-                      className={
-                        selectedSubTab === element.titre
-                          ? styles.selectedButton
-                          : styles.button
-                      }
-                      onClick={() => {
-                        setSelectedSubTab(element.titre);
-                      }}
-                    >
-                      {element.titre}
-                    </button>
-                  ))
+                .filter((el) => el.facteurSensibilite === selectedTabId)
+                .map((element, i) => (
+                  <button
+                    key={i}
+                    className={
+                      selectedSubTab === element.titre
+                        ? styles.selectedButton
+                        : styles.button
+                    }
+                    onClick={() => {
+                      setSelectedSubTab(element.titre);
+                    }}
+                  >
+                    {element.titre}
+                  </button>
+                ))
               : ''}
           </div>
           <div className={styles.bubble}>
@@ -266,16 +226,14 @@ const BiodiversiteComp = ({
                   <Suspense>
                     <Component
                       data={data}
-                      biodiversite={biodiversite}
                       activeDataTab={selectedSubTab}
                       carteCommunes={carteCommunes}
                       agricultureBio={agricultureBio}
-                      // surfacesProtegees={surfacesProtegees}
                       consommationNAF={consommationNAF}
-                      epciContours={epciContours}
-                      etatCoursDeau={etatCoursDeau || []}
-                      qualiteEauxBaignade={qualiteEauxBaignade}
-                      aot40={aot40}
+                    // epciContours={epciContours}
+                    // etatCoursDeau={etatCoursDeau || []}
+                    // qualiteEauxBaignade={qualiteEauxBaignade}
+                    // aot40={aot40}
                     />
                   </Suspense>
                 );
