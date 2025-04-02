@@ -24,7 +24,7 @@ export function GraphDataNotFound({ code }: Props) {
       <GridCol lg={5}>
         <h4>Données indisponibles</h4>
         <p>
-          Pour la collectivité que vous avez renseignée (code : {code}), nous ne
+          Pour le territoire que vous avez renseigné ({code}), nous ne
           disposons pas de cette donnée.
         </p>
       </GridCol>
