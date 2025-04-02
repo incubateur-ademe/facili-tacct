@@ -33864,7 +33864,6 @@ export namespace Prisma {
   }
 
   export type usersCreateInput = {
-    pk: number
     email: string
     username: string
     password: string
@@ -33874,7 +33873,7 @@ export namespace Prisma {
   }
 
   export type usersUncheckedCreateInput = {
-    pk: number
+    pk?: number
     email: string
     username: string
     password: string
@@ -33884,7 +33883,6 @@ export namespace Prisma {
   }
 
   export type usersUpdateInput = {
-    pk?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -33904,7 +33902,7 @@ export namespace Prisma {
   }
 
   export type usersCreateManyInput = {
-    pk: number
+    pk?: number
     email: string
     username: string
     password: string
@@ -33914,7 +33912,6 @@ export namespace Prisma {
   }
 
   export type usersUpdateManyMutationInput = {
-    pk?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
