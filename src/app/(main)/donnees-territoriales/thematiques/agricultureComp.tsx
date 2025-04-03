@@ -3,14 +3,12 @@
 import { SurfacesIrriguees } from '@/components/themes/agriculture/surfacesIrriguees';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
-  Agriculture,
-  CarteCommunes,
-  EpciContours
+  AgricultureNew,
+  CarteCommunes
 } from '@/lib/postgres/models';
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
-import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
@@ -24,8 +22,7 @@ interface Props {
     titre: string;
   }>;
   carteCommunes: CarteCommunes[];
-  epciContours: EpciContours[];
-  agriculture: Agriculture[];
+  agriculture: AgricultureNew[];
 }
 
 const allComps = [
@@ -58,13 +55,10 @@ const allComps = [
 const AgricultureComp = ({
   data,
   carteCommunes,
-  epciContours,
   agriculture
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Superficies irriguées');
   const [selectedSubTab, setSelectedSubTab] = useState('Superficies irriguées');
-  const searchParams = useSearchParams();
-  const codepci = searchParams.get('codepci')!;
   const { isDark } = useIsDark();
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
@@ -87,7 +81,7 @@ const AgricultureComp = ({
     setSelectedSubTab(
       data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
-  }, [selectedTabId, codepci]);
+  }, [selectedTabId]);
 
   return (
     <div className="w-full">
@@ -149,7 +143,6 @@ const AgricultureComp = ({
                     <Component
                       data={data}
                       activeDataTab={selectedSubTab}
-                      epciContours={epciContours}
                       carteCommunes={carteCommunes}
                       agriculture={agriculture}
                     />

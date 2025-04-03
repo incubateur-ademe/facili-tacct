@@ -5,16 +5,20 @@ import PieChartCatnat from '@/components/charts/gestionRisques/pieChartCatnat';
 import { LegendCatnat } from '@/components/maps/legends/legendCatnat';
 import { MapCatnat } from '@/components/maps/mapCatnat';
 import { CommunesIndicateursDto } from '@/lib/dto';
+import { ArreteCatNat } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
 import styles from './gestionRisques.module.scss';
 
+type ArreteCatNatEnriched = ArreteCatNat & {
+  annee_arrete: number;
+};
 type Props = {
   carteCommunes: CommunesIndicateursDto[];
   datavizTab: string;
   setDatavizTab: (value: string) => void;
   typeRisqueValue: CatnatTypes;
-  gestionRisquesPieChart: ArreteCatNat[];
-  gestionRisquesBarChart: ArreteCatNat[];
+  gestionRisquesPieChart: ArreteCatNatEnriched[];
+  gestionRisquesBarChart: ArreteCatNatEnriched[];
   typesRisques: (string | null)[];
   setTypeRisqueValue: (value: CatnatTypes) => void;
   setSliderValue: (value: number[]) => void;
@@ -35,7 +39,7 @@ const CatnatDataViz = (props: Props) => {
     sliderValue
   } = props;
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo')!;
+  const type = searchParams.get('type')!;
 
   return (
     <div className={styles.graphWrapper}>
@@ -43,7 +47,7 @@ const CatnatDataViz = (props: Props) => {
         <h2>Arrêtés catastrophes naturelles</h2>
         <SubTabs
           data={
-            codgeo
+            type === "commune"
               ? ['Répartition', 'Évolution']
               : ['Répartition', 'Évolution', 'Cartographie']
           }

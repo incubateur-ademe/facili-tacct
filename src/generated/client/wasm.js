@@ -563,6 +563,45 @@ exports.Prisma.Clc_territoiresScalarFieldEnum = {
   legend: 'legend'
 };
 
+exports.Prisma.Agriculture_cleanedScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  part_irr_SAU_2020: 'part_irr_SAU_2020'
+};
+
+exports.Prisma.Clc_epciScalarFieldEnum = {
+  pk: 'pk',
+  legend: 'legend',
+  epci_code: 'epci_code'
+};
+
+exports.Prisma.Arretes_catnatScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  lib_risque_jo: 'lib_risque_jo',
+  dat_pub_arrete: 'dat_pub_arrete'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -600,7 +639,10 @@ exports.Prisma.ModelName = {
   agriculture: 'agriculture',
   incendies_foret: 'incendies_foret',
   patch4c: 'patch4c',
-  clc_territoires: 'clc_territoires'
+  clc_territoires: 'clc_territoires',
+  agriculture_cleaned: 'agriculture_cleaned',
+  clc_epci: 'clc_epci',
+  arretes_catnat: 'arretes_catnat'
 };
 
 /**
