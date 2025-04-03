@@ -1,10 +1,8 @@
 import {
-  GetGestionRisques,
-  GetIncendiesForet
+  GetArretesCatnat
 } from '@/lib/queries/databases/gestionRisques';
 import {
   GetCommunes,
-  GetEpci,
   GetErosionCotiere
 } from '@/lib/queries/postgis/cartographie';
 import { themes } from '@/lib/themes';
@@ -14,16 +12,11 @@ import GestionRisquesComp from './gestionRisquesComp';
 
 const GestionRisques = async (props: { searchParams: SearchParams }) => {
   const theme = themes.gestionRisques;
-  const { codepci, codgeo } = await props.searchParams;
-  const dbGestionRisques = codgeo
-    ? await GetGestionRisques(codgeo)
-    : codepci
-      ? await GetGestionRisques(codepci)
-      : void 0;
-  const carteCommunes = await GetCommunes(codepci);
-  const erosionCotiere = await GetErosionCotiere(codepci, codgeo ?? undefined);
-  const epciContours = await GetEpci(codepci, codgeo ?? undefined);
-  const dbIncendiesForet = await GetIncendiesForet(codgeo ?? codepci);
+  const { code, libelle, type } = await props.searchParams;
+  const dbGestionRisques = await GetArretesCatnat(code, libelle, type);
+  const carteCommunes = await GetCommunes(code, libelle, type);
+  const erosionCotiere = await GetErosionCotiere(code, libelle, type);
+  // const dbIncendiesForet = await GetIncendiesForet(codgeo ?? codepci);
 
   return (
     <div className={styles.container}>
@@ -33,8 +26,7 @@ const GestionRisques = async (props: { searchParams: SearchParams }) => {
           gestionRisques={dbGestionRisques!}
           carteCommunes={carteCommunes}
           erosionCotiere={erosionCotiere}
-          epciContours={epciContours}
-          incendiesForet={dbIncendiesForet}
+          // incendiesForet={dbIncendiesForet}
         />
       </Suspense>
     </div>
