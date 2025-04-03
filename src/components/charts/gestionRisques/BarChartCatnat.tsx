@@ -2,6 +2,7 @@
 
 import styles from '@/components/themes/gestionRisques/gestionRisques.module.scss';
 import { BarDatum, ResponsiveBar } from '@/lib/nivo/bar';
+import { ArreteCatNat } from '@/lib/postgres/models';
 import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
 
 const colors: { [key: string]: string } = {
@@ -14,7 +15,11 @@ const colors: { [key: string]: string } = {
   Avalanche: '#7A49BE'
 };
 
-export const BarChartCatnat = (props: { gestionRisques: ArreteCatNat[] }) => {
+type ArreteCatNatEnriched = ArreteCatNat & {
+  annee_arrete: number;
+};
+
+export const BarChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
   const { gestionRisques } = props;
   const typesRisques = [
     ...new Set(gestionRisques.map((item) => item.lib_risque_jo))

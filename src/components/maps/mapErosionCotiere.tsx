@@ -1,8 +1,9 @@
 'use client';
 
-import { EpciContoursDto, ErosionCotiereDto } from '@/lib/dto';
+import { CommunesIndicateursDto, ErosionCotiereDto } from '@/lib/dto';
 import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
 import { Any } from '@/lib/utils/types';
+import { GeoJsonObject } from 'geojson';
 import { StyleFunction } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
@@ -17,17 +18,39 @@ const getCentroid = (arr: number[][]) => {
   );
 };
 
+//TODO : clean all functions in code
+
+const getCoordinates = (coords: number[][][]) => {
+  const coords_arr = [];
+  for (let i = 0; i < coords.length; i++) {
+    const center = getCentroid(coords[i]);
+    coords_arr.push(center);
+  }
+  return getCentroid(coords_arr);
+};
+
 export const MapErosionCotiere = (props: {
   erosionCotiere: ErosionCotiereDto[];
-  epciContours: EpciContoursDto[];
+  carteCommunes: CommunesIndicateursDto[];
 }) => {
-  const { erosionCotiere, epciContours } = props;
+  const { erosionCotiere, carteCommunes } = props;
   const searchParams = useSearchParams();
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
-  const centerCoord: number[] = getCentroid(
-    epciContours[0]?.geometry?.coordinates[0][0]
+
+  const allCoordinates = carteCommunes.map(
+    (el) => el.geometry.coordinates?.[0]?.[0]
   );
+  const commune = type === "commune"
+    ? carteCommunes.find(
+      (el) => el.properties.code_geographique === code
+    )
+    : null;
+  const centerCoord: number[] = type === "commune" && commune
+    ? getCentroid(commune.geometry.coordinates?.[0][0])
+    : getCoordinates(allCoordinates);
 
   const getColor = (d: number) => {
     if (d >= 3) {
@@ -64,10 +87,10 @@ export const MapErosionCotiere = (props: {
     };
   };
 
-  const epciStyle: StyleFunction<Any> = () => {
+  const territoireStyle: StyleFunction<Any> = () => {
     return {
-      weight: 1,
-      opacity: 1,
+      weight: 0.5,
+      opacity: 0.5,
       color: '#161616',
       fillOpacity: 0
     };
@@ -95,7 +118,11 @@ export const MapErosionCotiere = (props: {
         />
       )}
       <GeoJSON ref={mapRef} data={erosionCotiere as Any} style={style} />
-      <GeoJSON ref={mapRef} data={epciContours as Any} style={epciStyle} />
+      <GeoJSON
+        ref={mapRef}
+        data={carteCommunes as unknown as GeoJsonObject}
+        style={territoireStyle}
+      />
     </MapContainer>
   );
 };
