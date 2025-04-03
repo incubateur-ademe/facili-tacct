@@ -83,6 +83,24 @@ export type GestionRisques = {
   region: number;
 };
 
+export type ArreteCatNat = {
+  lib_risque_jo: string;
+  dat_pub_arrete: string;
+  code_geographique: string;
+  departement: string;
+  libelle_departement: string;
+  epci: string;
+  index: bigint;
+  libelle_epci: string;
+  libelle_geographique: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+};
+
+
 export type RessourcesEau = {
   LIBELLE_SOUS_CHAMP: string | null;
   SOUS_CHAMP: string | null;
@@ -431,6 +449,22 @@ export type Agriculture = {
   REG: number;
   part_irr_SAU_2020: number | null;
   part_over_55: number | null;
+};
+
+export type AgricultureNew = {
+  index: bigint;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  part_irr_SAU_2020: number | null;
 };
 
 export type IncendiesForet = {

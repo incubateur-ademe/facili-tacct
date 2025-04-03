@@ -4,9 +4,9 @@ import { MapErosionCotiere } from '@/components/maps/mapErosionCotiere';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
-import { EpciContoursMapper } from '@/lib/mapper/epci';
+import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { ErosionCotiereMapper } from '@/lib/mapper/erosionCotiere';
-import { EpciContours, ErosionCotiere, Patch4 } from '@/lib/postgres/models';
+import { CarteCommunes, ErosionCotiere, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -15,22 +15,31 @@ import styles from './gestionRisques.module.scss';
 
 const ErosionCotes = (props: {
   erosionCotiere: ErosionCotiere[];
-  epciContours: EpciContours[];
+  carteCommunes: CarteCommunes[];
 }) => {
-  const { erosionCotiere, epciContours } = props;
+  const { erosionCotiere, carteCommunes } = props;
+  const re = new RegExp('T([1-9]|1[0-2])\\b');
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo')!;
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4[]>();
   const erosionCotiereMap = erosionCotiere.map(ErosionCotiereMapper);
-  const epciContoursMap = epciContours.map(EpciContoursMapper);
-
+  const communesMap = carteCommunes.map(CommunesIndicateursMapper);
+  
   useEffect(() => {
-    void (async () => {
-      const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
-    })();
-  }, [codgeo, codepci]);
+    !(
+      type === 'petr' ||
+      type === 'pnr' ||
+      type === 'departement' ||
+      re.test(libelle)
+    )
+      ? void (async () => {
+        const temp = await GetPatch4(code);
+        setPatch4(temp);
+      })()
+      : void 0;
+  }, [code, libelle]);
 
   const niveauxMarins = patch4 ? AlgoPatch4(patch4[0], 'niveaux_marins') : null;
 
@@ -130,7 +139,7 @@ const ErosionCotes = (props: {
               <div>
                 <MapErosionCotiere
                   erosionCotiere={erosionCotiereMap}
-                  epciContours={epciContoursMap}
+                  carteCommunes={communesMap}
                 />
               </div>
               <LegendErosionCotiere />
@@ -139,7 +148,7 @@ const ErosionCotes = (props: {
           </div>
         </div>
       ) : (
-        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        <GraphDataNotFound code={code ?? libelle} />
       )}
     </>
   );

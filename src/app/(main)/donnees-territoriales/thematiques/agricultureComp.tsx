@@ -1,16 +1,13 @@
 'use client';
 
-import { ChefsExploitation } from '@/components/themes/agriculture/chefsExploitation';
 import { SurfacesIrriguees } from '@/components/themes/agriculture/surfacesIrriguees';
 import {
-  Agriculture,
-  CarteCommunes,
-  EpciContours
+  AgricultureNew,
+  CarteCommunes
 } from '@/lib/postgres/models';
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
-import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
@@ -24,23 +21,22 @@ interface Props {
     titre: string;
   }>;
   carteCommunes: CarteCommunes[];
-  epciContours: EpciContours[];
-  agriculture: Agriculture[];
+  agriculture: AgricultureNew[];
 }
 
 const allComps = [
-  {
-    titre: "Chefs d'exploitation",
-    Component: ({
-      agriculture,
-      carteCommunes
-    }: Props & { activeDataTab: string }) => (
-      <ChefsExploitation
-        agriculture={agriculture}
-        carteCommunes={carteCommunes}
-      />
-    )
-  },
+  // {
+  //   titre: "Chefs d'exploitation",
+  //   Component: ({
+  //     agriculture,
+  //     carteCommunes
+  //   }: Props & { activeDataTab: string }) => (
+  //     <ChefsExploitation
+  //       agriculture={agriculture}
+  //       carteCommunes={carteCommunes}
+  //     />
+  //   )
+  // },
   {
     titre: 'Surfaces irriguées SAU',
     Component: ({
@@ -58,14 +54,11 @@ const allComps = [
 const AgricultureComp = ({
   data,
   carteCommunes,
-  epciContours,
   agriculture
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Renouvellement agricole');
-  const [selectedSubTab, setSelectedSubTab] = useState("Chefs d'exploitation");
-  const searchParams = useSearchParams();
-  const codepci = searchParams.get('codepci')!;
-  const codgeo = searchParams.get('codgeo')!;
+  const [selectedSubTab, setSelectedSubTab] = useState("Surfaces irriguées SAU");
+
   const { isDark } = useIsDark();
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
@@ -88,7 +81,7 @@ const AgricultureComp = ({
     setSelectedSubTab(
       data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
-  }, [selectedTabId, codepci]);
+  }, [selectedTabId]);
 
   return (
     <div className="w-full">
@@ -163,7 +156,6 @@ const AgricultureComp = ({
                     <Component
                       data={data}
                       activeDataTab={selectedSubTab}
-                      epciContours={epciContours}
                       carteCommunes={carteCommunes}
                       agriculture={agriculture}
                     />

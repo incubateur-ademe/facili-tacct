@@ -171,13 +171,13 @@ export const themes = {
     }
   ],
   agriculture: [
-    {
-      id: 0,
-      titre: "Chefs d'exploitation",
-      facteurSensibilite: 'Renouvellement agricole',
-      risque: '',
-      donnee: ''
-    },
+    // {
+    //   id: 0,
+    //   titre: "Chefs d'exploitation",
+    //   facteurSensibilite: 'Renouvellement agricole',
+    //   risque: '',
+    //   donnee: ''
+    // },
     {
       id: 1,
       titre: 'Surfaces irriguées SAU',

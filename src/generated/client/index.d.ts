@@ -118,6 +118,21 @@ export type patch4c = $Result.DefaultSelection<Prisma.$patch4cPayload>
  * 
  */
 export type clc_territoires = $Result.DefaultSelection<Prisma.$clc_territoiresPayload>
+/**
+ * Model agriculture_cleaned
+ * 
+ */
+export type agriculture_cleaned = $Result.DefaultSelection<Prisma.$agriculture_cleanedPayload>
+/**
+ * Model clc_epci
+ * 
+ */
+export type clc_epci = $Result.DefaultSelection<Prisma.$clc_epciPayload>
+/**
+ * Model arretes_catnat
+ * 
+ */
+export type arretes_catnat = $Result.DefaultSelection<Prisma.$arretes_catnatPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -453,6 +468,36 @@ export class PrismaClient<
     * ```
     */
   get clc_territoires(): Prisma.clc_territoiresDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.agriculture_cleaned`: Exposes CRUD operations for the **agriculture_cleaned** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Agriculture_cleaneds
+    * const agriculture_cleaneds = await prisma.agriculture_cleaned.findMany()
+    * ```
+    */
+  get agriculture_cleaned(): Prisma.agriculture_cleanedDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.clc_epci`: Exposes CRUD operations for the **clc_epci** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Clc_epcis
+    * const clc_epcis = await prisma.clc_epci.findMany()
+    * ```
+    */
+  get clc_epci(): Prisma.clc_epciDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.arretes_catnat`: Exposes CRUD operations for the **arretes_catnat** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Arretes_catnats
+    * const arretes_catnats = await prisma.arretes_catnat.findMany()
+    * ```
+    */
+  get arretes_catnat(): Prisma.arretes_catnatDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -913,7 +958,10 @@ export namespace Prisma {
     agriculture: 'agriculture',
     incendies_foret: 'incendies_foret',
     patch4c: 'patch4c',
-    clc_territoires: 'clc_territoires'
+    clc_territoires: 'clc_territoires',
+    agriculture_cleaned: 'agriculture_cleaned',
+    clc_epci: 'clc_epci',
+    arretes_catnat: 'arretes_catnat'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -929,7 +977,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "inconfort_thermique" | "collectivites_searchbar" | "biodiversite" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio" | "erosion_cotiere" | "epci" | "surfaces_protegees" | "spatial_ref_sys" | "consommation_espaces_naf" | "north_star_metric" | "etat_cours_d_eau" | "aot_40" | "users" | "qualite_sites_baignade" | "agriculture" | "incendies_foret" | "patch4c" | "clc_territoires"
+      modelProps: "inconfort_thermique" | "collectivites_searchbar" | "biodiversite" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio" | "erosion_cotiere" | "epci" | "surfaces_protegees" | "spatial_ref_sys" | "consommation_espaces_naf" | "north_star_metric" | "etat_cours_d_eau" | "aot_40" | "users" | "qualite_sites_baignade" | "agriculture" | "incendies_foret" | "patch4c" | "clc_territoires" | "agriculture_cleaned" | "clc_epci" | "arretes_catnat"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2407,6 +2455,228 @@ export namespace Prisma {
           }
         }
       }
+      agriculture_cleaned: {
+        payload: Prisma.$agriculture_cleanedPayload<ExtArgs>
+        fields: Prisma.agriculture_cleanedFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.agriculture_cleanedFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculture_cleanedPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.agriculture_cleanedFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculture_cleanedPayload>
+          }
+          findFirst: {
+            args: Prisma.agriculture_cleanedFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculture_cleanedPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.agriculture_cleanedFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculture_cleanedPayload>
+          }
+          findMany: {
+            args: Prisma.agriculture_cleanedFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculture_cleanedPayload>[]
+          }
+          create: {
+            args: Prisma.agriculture_cleanedCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculture_cleanedPayload>
+          }
+          createMany: {
+            args: Prisma.agriculture_cleanedCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.agriculture_cleanedCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculture_cleanedPayload>[]
+          }
+          delete: {
+            args: Prisma.agriculture_cleanedDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculture_cleanedPayload>
+          }
+          update: {
+            args: Prisma.agriculture_cleanedUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculture_cleanedPayload>
+          }
+          deleteMany: {
+            args: Prisma.agriculture_cleanedDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.agriculture_cleanedUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.agriculture_cleanedUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculture_cleanedPayload>[]
+          }
+          upsert: {
+            args: Prisma.agriculture_cleanedUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$agriculture_cleanedPayload>
+          }
+          aggregate: {
+            args: Prisma.Agriculture_cleanedAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAgriculture_cleaned>
+          }
+          groupBy: {
+            args: Prisma.agriculture_cleanedGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Agriculture_cleanedGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.agriculture_cleanedCountArgs<ExtArgs>
+            result: $Utils.Optional<Agriculture_cleanedCountAggregateOutputType> | number
+          }
+        }
+      }
+      clc_epci: {
+        payload: Prisma.$clc_epciPayload<ExtArgs>
+        fields: Prisma.clc_epciFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.clc_epciFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.clc_epciFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
+          }
+          findFirst: {
+            args: Prisma.clc_epciFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.clc_epciFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
+          }
+          findMany: {
+            args: Prisma.clc_epciFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>[]
+          }
+          create: {
+            args: Prisma.clc_epciCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
+          }
+          createMany: {
+            args: Prisma.clc_epciCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.clc_epciCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>[]
+          }
+          delete: {
+            args: Prisma.clc_epciDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
+          }
+          update: {
+            args: Prisma.clc_epciUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
+          }
+          deleteMany: {
+            args: Prisma.clc_epciDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.clc_epciUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.clc_epciUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>[]
+          }
+          upsert: {
+            args: Prisma.clc_epciUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$clc_epciPayload>
+          }
+          aggregate: {
+            args: Prisma.Clc_epciAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateClc_epci>
+          }
+          groupBy: {
+            args: Prisma.clc_epciGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Clc_epciGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.clc_epciCountArgs<ExtArgs>
+            result: $Utils.Optional<Clc_epciCountAggregateOutputType> | number
+          }
+        }
+      }
+      arretes_catnat: {
+        payload: Prisma.$arretes_catnatPayload<ExtArgs>
+        fields: Prisma.arretes_catnatFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.arretes_catnatFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$arretes_catnatPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.arretes_catnatFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$arretes_catnatPayload>
+          }
+          findFirst: {
+            args: Prisma.arretes_catnatFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$arretes_catnatPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.arretes_catnatFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$arretes_catnatPayload>
+          }
+          findMany: {
+            args: Prisma.arretes_catnatFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$arretes_catnatPayload>[]
+          }
+          create: {
+            args: Prisma.arretes_catnatCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$arretes_catnatPayload>
+          }
+          createMany: {
+            args: Prisma.arretes_catnatCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.arretes_catnatCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$arretes_catnatPayload>[]
+          }
+          delete: {
+            args: Prisma.arretes_catnatDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$arretes_catnatPayload>
+          }
+          update: {
+            args: Prisma.arretes_catnatUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$arretes_catnatPayload>
+          }
+          deleteMany: {
+            args: Prisma.arretes_catnatDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.arretes_catnatUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.arretes_catnatUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$arretes_catnatPayload>[]
+          }
+          upsert: {
+            args: Prisma.arretes_catnatUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$arretes_catnatPayload>
+          }
+          aggregate: {
+            args: Prisma.Arretes_catnatAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateArretes_catnat>
+          }
+          groupBy: {
+            args: Prisma.arretes_catnatGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Arretes_catnatGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.arretes_catnatCountArgs<ExtArgs>
+            result: $Utils.Optional<Arretes_catnatCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2512,6 +2782,9 @@ export namespace Prisma {
     incendies_foret?: incendies_foretOmit
     patch4c?: patch4cOmit
     clc_territoires?: clc_territoiresOmit
+    agriculture_cleaned?: agriculture_cleanedOmit
+    clc_epci?: clc_epciOmit
+    arretes_catnat?: arretes_catnatOmit
   }
 
   /* Types for Logging */
@@ -27828,6 +28101,3304 @@ export namespace Prisma {
 
 
   /**
+   * Model agriculture_cleaned
+   */
+
+  export type AggregateAgriculture_cleaned = {
+    _count: Agriculture_cleanedCountAggregateOutputType | null
+    _avg: Agriculture_cleanedAvgAggregateOutputType | null
+    _sum: Agriculture_cleanedSumAggregateOutputType | null
+    _min: Agriculture_cleanedMinAggregateOutputType | null
+    _max: Agriculture_cleanedMaxAggregateOutputType | null
+  }
+
+  export type Agriculture_cleanedAvgAggregateOutputType = {
+    index: number | null
+    region: number | null
+    part_irr_SAU_2020: number | null
+  }
+
+  export type Agriculture_cleanedSumAggregateOutputType = {
+    index: bigint | null
+    region: number | null
+    part_irr_SAU_2020: number | null
+  }
+
+  export type Agriculture_cleanedMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    part_irr_SAU_2020: number | null
+  }
+
+  export type Agriculture_cleanedMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    part_irr_SAU_2020: number | null
+  }
+
+  export type Agriculture_cleanedCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
+    part_irr_SAU_2020: number
+    _all: number
+  }
+
+
+  export type Agriculture_cleanedAvgAggregateInputType = {
+    index?: true
+    region?: true
+    part_irr_SAU_2020?: true
+  }
+
+  export type Agriculture_cleanedSumAggregateInputType = {
+    index?: true
+    region?: true
+    part_irr_SAU_2020?: true
+  }
+
+  export type Agriculture_cleanedMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    part_irr_SAU_2020?: true
+  }
+
+  export type Agriculture_cleanedMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    part_irr_SAU_2020?: true
+  }
+
+  export type Agriculture_cleanedCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    part_irr_SAU_2020?: true
+    _all?: true
+  }
+
+  export type Agriculture_cleanedAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which agriculture_cleaned to aggregate.
+     */
+    where?: agriculture_cleanedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of agriculture_cleaneds to fetch.
+     */
+    orderBy?: agriculture_cleanedOrderByWithRelationInput | agriculture_cleanedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: agriculture_cleanedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` agriculture_cleaneds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` agriculture_cleaneds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned agriculture_cleaneds
+    **/
+    _count?: true | Agriculture_cleanedCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Agriculture_cleanedAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Agriculture_cleanedSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Agriculture_cleanedMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Agriculture_cleanedMaxAggregateInputType
+  }
+
+  export type GetAgriculture_cleanedAggregateType<T extends Agriculture_cleanedAggregateArgs> = {
+        [P in keyof T & keyof AggregateAgriculture_cleaned]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAgriculture_cleaned[P]>
+      : GetScalarType<T[P], AggregateAgriculture_cleaned[P]>
+  }
+
+
+
+
+  export type agriculture_cleanedGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: agriculture_cleanedWhereInput
+    orderBy?: agriculture_cleanedOrderByWithAggregationInput | agriculture_cleanedOrderByWithAggregationInput[]
+    by: Agriculture_cleanedScalarFieldEnum[] | Agriculture_cleanedScalarFieldEnum
+    having?: agriculture_cleanedScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Agriculture_cleanedCountAggregateInputType | true
+    _avg?: Agriculture_cleanedAvgAggregateInputType
+    _sum?: Agriculture_cleanedSumAggregateInputType
+    _min?: Agriculture_cleanedMinAggregateInputType
+    _max?: Agriculture_cleanedMaxAggregateInputType
+  }
+
+  export type Agriculture_cleanedGroupByOutputType = {
+    index: bigint
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    part_irr_SAU_2020: number | null
+    _count: Agriculture_cleanedCountAggregateOutputType | null
+    _avg: Agriculture_cleanedAvgAggregateOutputType | null
+    _sum: Agriculture_cleanedSumAggregateOutputType | null
+    _min: Agriculture_cleanedMinAggregateOutputType | null
+    _max: Agriculture_cleanedMaxAggregateOutputType | null
+  }
+
+  type GetAgriculture_cleanedGroupByPayload<T extends agriculture_cleanedGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Agriculture_cleanedGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Agriculture_cleanedGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Agriculture_cleanedGroupByOutputType[P]>
+            : GetScalarType<T[P], Agriculture_cleanedGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type agriculture_cleanedSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    part_irr_SAU_2020?: boolean
+  }, ExtArgs["result"]["agriculture_cleaned"]>
+
+  export type agriculture_cleanedSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    part_irr_SAU_2020?: boolean
+  }, ExtArgs["result"]["agriculture_cleaned"]>
+
+  export type agriculture_cleanedSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    part_irr_SAU_2020?: boolean
+  }, ExtArgs["result"]["agriculture_cleaned"]>
+
+  export type agriculture_cleanedSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    part_irr_SAU_2020?: boolean
+  }
+
+  export type agriculture_cleanedOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "part_irr_SAU_2020", ExtArgs["result"]["agriculture_cleaned"]>
+
+  export type $agriculture_cleanedPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "agriculture_cleaned"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      libelle_departement: string
+      region: number
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
+      part_irr_SAU_2020: number | null
+    }, ExtArgs["result"]["agriculture_cleaned"]>
+    composites: {}
+  }
+
+  type agriculture_cleanedGetPayload<S extends boolean | null | undefined | agriculture_cleanedDefaultArgs> = $Result.GetResult<Prisma.$agriculture_cleanedPayload, S>
+
+  type agriculture_cleanedCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<agriculture_cleanedFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Agriculture_cleanedCountAggregateInputType | true
+    }
+
+  export interface agriculture_cleanedDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['agriculture_cleaned'], meta: { name: 'agriculture_cleaned' } }
+    /**
+     * Find zero or one Agriculture_cleaned that matches the filter.
+     * @param {agriculture_cleanedFindUniqueArgs} args - Arguments to find a Agriculture_cleaned
+     * @example
+     * // Get one Agriculture_cleaned
+     * const agriculture_cleaned = await prisma.agriculture_cleaned.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends agriculture_cleanedFindUniqueArgs>(args: SelectSubset<T, agriculture_cleanedFindUniqueArgs<ExtArgs>>): Prisma__agriculture_cleanedClient<$Result.GetResult<Prisma.$agriculture_cleanedPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Agriculture_cleaned that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {agriculture_cleanedFindUniqueOrThrowArgs} args - Arguments to find a Agriculture_cleaned
+     * @example
+     * // Get one Agriculture_cleaned
+     * const agriculture_cleaned = await prisma.agriculture_cleaned.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends agriculture_cleanedFindUniqueOrThrowArgs>(args: SelectSubset<T, agriculture_cleanedFindUniqueOrThrowArgs<ExtArgs>>): Prisma__agriculture_cleanedClient<$Result.GetResult<Prisma.$agriculture_cleanedPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Agriculture_cleaned that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agriculture_cleanedFindFirstArgs} args - Arguments to find a Agriculture_cleaned
+     * @example
+     * // Get one Agriculture_cleaned
+     * const agriculture_cleaned = await prisma.agriculture_cleaned.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends agriculture_cleanedFindFirstArgs>(args?: SelectSubset<T, agriculture_cleanedFindFirstArgs<ExtArgs>>): Prisma__agriculture_cleanedClient<$Result.GetResult<Prisma.$agriculture_cleanedPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Agriculture_cleaned that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agriculture_cleanedFindFirstOrThrowArgs} args - Arguments to find a Agriculture_cleaned
+     * @example
+     * // Get one Agriculture_cleaned
+     * const agriculture_cleaned = await prisma.agriculture_cleaned.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends agriculture_cleanedFindFirstOrThrowArgs>(args?: SelectSubset<T, agriculture_cleanedFindFirstOrThrowArgs<ExtArgs>>): Prisma__agriculture_cleanedClient<$Result.GetResult<Prisma.$agriculture_cleanedPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Agriculture_cleaneds that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agriculture_cleanedFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Agriculture_cleaneds
+     * const agriculture_cleaneds = await prisma.agriculture_cleaned.findMany()
+     * 
+     * // Get first 10 Agriculture_cleaneds
+     * const agriculture_cleaneds = await prisma.agriculture_cleaned.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const agriculture_cleanedWithIndexOnly = await prisma.agriculture_cleaned.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends agriculture_cleanedFindManyArgs>(args?: SelectSubset<T, agriculture_cleanedFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$agriculture_cleanedPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Agriculture_cleaned.
+     * @param {agriculture_cleanedCreateArgs} args - Arguments to create a Agriculture_cleaned.
+     * @example
+     * // Create one Agriculture_cleaned
+     * const Agriculture_cleaned = await prisma.agriculture_cleaned.create({
+     *   data: {
+     *     // ... data to create a Agriculture_cleaned
+     *   }
+     * })
+     * 
+     */
+    create<T extends agriculture_cleanedCreateArgs>(args: SelectSubset<T, agriculture_cleanedCreateArgs<ExtArgs>>): Prisma__agriculture_cleanedClient<$Result.GetResult<Prisma.$agriculture_cleanedPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Agriculture_cleaneds.
+     * @param {agriculture_cleanedCreateManyArgs} args - Arguments to create many Agriculture_cleaneds.
+     * @example
+     * // Create many Agriculture_cleaneds
+     * const agriculture_cleaned = await prisma.agriculture_cleaned.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends agriculture_cleanedCreateManyArgs>(args?: SelectSubset<T, agriculture_cleanedCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Agriculture_cleaneds and returns the data saved in the database.
+     * @param {agriculture_cleanedCreateManyAndReturnArgs} args - Arguments to create many Agriculture_cleaneds.
+     * @example
+     * // Create many Agriculture_cleaneds
+     * const agriculture_cleaned = await prisma.agriculture_cleaned.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Agriculture_cleaneds and only return the `index`
+     * const agriculture_cleanedWithIndexOnly = await prisma.agriculture_cleaned.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends agriculture_cleanedCreateManyAndReturnArgs>(args?: SelectSubset<T, agriculture_cleanedCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$agriculture_cleanedPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Agriculture_cleaned.
+     * @param {agriculture_cleanedDeleteArgs} args - Arguments to delete one Agriculture_cleaned.
+     * @example
+     * // Delete one Agriculture_cleaned
+     * const Agriculture_cleaned = await prisma.agriculture_cleaned.delete({
+     *   where: {
+     *     // ... filter to delete one Agriculture_cleaned
+     *   }
+     * })
+     * 
+     */
+    delete<T extends agriculture_cleanedDeleteArgs>(args: SelectSubset<T, agriculture_cleanedDeleteArgs<ExtArgs>>): Prisma__agriculture_cleanedClient<$Result.GetResult<Prisma.$agriculture_cleanedPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Agriculture_cleaned.
+     * @param {agriculture_cleanedUpdateArgs} args - Arguments to update one Agriculture_cleaned.
+     * @example
+     * // Update one Agriculture_cleaned
+     * const agriculture_cleaned = await prisma.agriculture_cleaned.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends agriculture_cleanedUpdateArgs>(args: SelectSubset<T, agriculture_cleanedUpdateArgs<ExtArgs>>): Prisma__agriculture_cleanedClient<$Result.GetResult<Prisma.$agriculture_cleanedPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Agriculture_cleaneds.
+     * @param {agriculture_cleanedDeleteManyArgs} args - Arguments to filter Agriculture_cleaneds to delete.
+     * @example
+     * // Delete a few Agriculture_cleaneds
+     * const { count } = await prisma.agriculture_cleaned.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends agriculture_cleanedDeleteManyArgs>(args?: SelectSubset<T, agriculture_cleanedDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Agriculture_cleaneds.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agriculture_cleanedUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Agriculture_cleaneds
+     * const agriculture_cleaned = await prisma.agriculture_cleaned.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends agriculture_cleanedUpdateManyArgs>(args: SelectSubset<T, agriculture_cleanedUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Agriculture_cleaneds and returns the data updated in the database.
+     * @param {agriculture_cleanedUpdateManyAndReturnArgs} args - Arguments to update many Agriculture_cleaneds.
+     * @example
+     * // Update many Agriculture_cleaneds
+     * const agriculture_cleaned = await prisma.agriculture_cleaned.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Agriculture_cleaneds and only return the `index`
+     * const agriculture_cleanedWithIndexOnly = await prisma.agriculture_cleaned.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends agriculture_cleanedUpdateManyAndReturnArgs>(args: SelectSubset<T, agriculture_cleanedUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$agriculture_cleanedPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Agriculture_cleaned.
+     * @param {agriculture_cleanedUpsertArgs} args - Arguments to update or create a Agriculture_cleaned.
+     * @example
+     * // Update or create a Agriculture_cleaned
+     * const agriculture_cleaned = await prisma.agriculture_cleaned.upsert({
+     *   create: {
+     *     // ... data to create a Agriculture_cleaned
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Agriculture_cleaned we want to update
+     *   }
+     * })
+     */
+    upsert<T extends agriculture_cleanedUpsertArgs>(args: SelectSubset<T, agriculture_cleanedUpsertArgs<ExtArgs>>): Prisma__agriculture_cleanedClient<$Result.GetResult<Prisma.$agriculture_cleanedPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Agriculture_cleaneds.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agriculture_cleanedCountArgs} args - Arguments to filter Agriculture_cleaneds to count.
+     * @example
+     * // Count the number of Agriculture_cleaneds
+     * const count = await prisma.agriculture_cleaned.count({
+     *   where: {
+     *     // ... the filter for the Agriculture_cleaneds we want to count
+     *   }
+     * })
+    **/
+    count<T extends agriculture_cleanedCountArgs>(
+      args?: Subset<T, agriculture_cleanedCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Agriculture_cleanedCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Agriculture_cleaned.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Agriculture_cleanedAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Agriculture_cleanedAggregateArgs>(args: Subset<T, Agriculture_cleanedAggregateArgs>): Prisma.PrismaPromise<GetAgriculture_cleanedAggregateType<T>>
+
+    /**
+     * Group by Agriculture_cleaned.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {agriculture_cleanedGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends agriculture_cleanedGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: agriculture_cleanedGroupByArgs['orderBy'] }
+        : { orderBy?: agriculture_cleanedGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, agriculture_cleanedGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAgriculture_cleanedGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the agriculture_cleaned model
+   */
+  readonly fields: agriculture_cleanedFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for agriculture_cleaned.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__agriculture_cleanedClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the agriculture_cleaned model
+   */ 
+  interface agriculture_cleanedFieldRefs {
+    readonly index: FieldRef<"agriculture_cleaned", 'BigInt'>
+    readonly code_geographique: FieldRef<"agriculture_cleaned", 'String'>
+    readonly libelle_geographique: FieldRef<"agriculture_cleaned", 'String'>
+    readonly epci: FieldRef<"agriculture_cleaned", 'String'>
+    readonly libelle_epci: FieldRef<"agriculture_cleaned", 'String'>
+    readonly departement: FieldRef<"agriculture_cleaned", 'String'>
+    readonly libelle_departement: FieldRef<"agriculture_cleaned", 'String'>
+    readonly region: FieldRef<"agriculture_cleaned", 'Float'>
+    readonly ept: FieldRef<"agriculture_cleaned", 'String'>
+    readonly libelle_petr: FieldRef<"agriculture_cleaned", 'String'>
+    readonly code_pnr: FieldRef<"agriculture_cleaned", 'String'>
+    readonly libelle_pnr: FieldRef<"agriculture_cleaned", 'String'>
+    readonly part_irr_SAU_2020: FieldRef<"agriculture_cleaned", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * agriculture_cleaned findUnique
+   */
+  export type agriculture_cleanedFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture_cleaned
+     */
+    select?: agriculture_cleanedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture_cleaned
+     */
+    omit?: agriculture_cleanedOmit<ExtArgs> | null
+    /**
+     * Filter, which agriculture_cleaned to fetch.
+     */
+    where: agriculture_cleanedWhereUniqueInput
+  }
+
+  /**
+   * agriculture_cleaned findUniqueOrThrow
+   */
+  export type agriculture_cleanedFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture_cleaned
+     */
+    select?: agriculture_cleanedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture_cleaned
+     */
+    omit?: agriculture_cleanedOmit<ExtArgs> | null
+    /**
+     * Filter, which agriculture_cleaned to fetch.
+     */
+    where: agriculture_cleanedWhereUniqueInput
+  }
+
+  /**
+   * agriculture_cleaned findFirst
+   */
+  export type agriculture_cleanedFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture_cleaned
+     */
+    select?: agriculture_cleanedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture_cleaned
+     */
+    omit?: agriculture_cleanedOmit<ExtArgs> | null
+    /**
+     * Filter, which agriculture_cleaned to fetch.
+     */
+    where?: agriculture_cleanedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of agriculture_cleaneds to fetch.
+     */
+    orderBy?: agriculture_cleanedOrderByWithRelationInput | agriculture_cleanedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for agriculture_cleaneds.
+     */
+    cursor?: agriculture_cleanedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` agriculture_cleaneds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` agriculture_cleaneds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of agriculture_cleaneds.
+     */
+    distinct?: Agriculture_cleanedScalarFieldEnum | Agriculture_cleanedScalarFieldEnum[]
+  }
+
+  /**
+   * agriculture_cleaned findFirstOrThrow
+   */
+  export type agriculture_cleanedFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture_cleaned
+     */
+    select?: agriculture_cleanedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture_cleaned
+     */
+    omit?: agriculture_cleanedOmit<ExtArgs> | null
+    /**
+     * Filter, which agriculture_cleaned to fetch.
+     */
+    where?: agriculture_cleanedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of agriculture_cleaneds to fetch.
+     */
+    orderBy?: agriculture_cleanedOrderByWithRelationInput | agriculture_cleanedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for agriculture_cleaneds.
+     */
+    cursor?: agriculture_cleanedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` agriculture_cleaneds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` agriculture_cleaneds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of agriculture_cleaneds.
+     */
+    distinct?: Agriculture_cleanedScalarFieldEnum | Agriculture_cleanedScalarFieldEnum[]
+  }
+
+  /**
+   * agriculture_cleaned findMany
+   */
+  export type agriculture_cleanedFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture_cleaned
+     */
+    select?: agriculture_cleanedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture_cleaned
+     */
+    omit?: agriculture_cleanedOmit<ExtArgs> | null
+    /**
+     * Filter, which agriculture_cleaneds to fetch.
+     */
+    where?: agriculture_cleanedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of agriculture_cleaneds to fetch.
+     */
+    orderBy?: agriculture_cleanedOrderByWithRelationInput | agriculture_cleanedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing agriculture_cleaneds.
+     */
+    cursor?: agriculture_cleanedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` agriculture_cleaneds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` agriculture_cleaneds.
+     */
+    skip?: number
+    distinct?: Agriculture_cleanedScalarFieldEnum | Agriculture_cleanedScalarFieldEnum[]
+  }
+
+  /**
+   * agriculture_cleaned create
+   */
+  export type agriculture_cleanedCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture_cleaned
+     */
+    select?: agriculture_cleanedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture_cleaned
+     */
+    omit?: agriculture_cleanedOmit<ExtArgs> | null
+    /**
+     * The data needed to create a agriculture_cleaned.
+     */
+    data: XOR<agriculture_cleanedCreateInput, agriculture_cleanedUncheckedCreateInput>
+  }
+
+  /**
+   * agriculture_cleaned createMany
+   */
+  export type agriculture_cleanedCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many agriculture_cleaneds.
+     */
+    data: agriculture_cleanedCreateManyInput | agriculture_cleanedCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * agriculture_cleaned createManyAndReturn
+   */
+  export type agriculture_cleanedCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture_cleaned
+     */
+    select?: agriculture_cleanedSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture_cleaned
+     */
+    omit?: agriculture_cleanedOmit<ExtArgs> | null
+    /**
+     * The data used to create many agriculture_cleaneds.
+     */
+    data: agriculture_cleanedCreateManyInput | agriculture_cleanedCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * agriculture_cleaned update
+   */
+  export type agriculture_cleanedUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture_cleaned
+     */
+    select?: agriculture_cleanedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture_cleaned
+     */
+    omit?: agriculture_cleanedOmit<ExtArgs> | null
+    /**
+     * The data needed to update a agriculture_cleaned.
+     */
+    data: XOR<agriculture_cleanedUpdateInput, agriculture_cleanedUncheckedUpdateInput>
+    /**
+     * Choose, which agriculture_cleaned to update.
+     */
+    where: agriculture_cleanedWhereUniqueInput
+  }
+
+  /**
+   * agriculture_cleaned updateMany
+   */
+  export type agriculture_cleanedUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update agriculture_cleaneds.
+     */
+    data: XOR<agriculture_cleanedUpdateManyMutationInput, agriculture_cleanedUncheckedUpdateManyInput>
+    /**
+     * Filter which agriculture_cleaneds to update
+     */
+    where?: agriculture_cleanedWhereInput
+    /**
+     * Limit how many agriculture_cleaneds to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * agriculture_cleaned updateManyAndReturn
+   */
+  export type agriculture_cleanedUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture_cleaned
+     */
+    select?: agriculture_cleanedSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture_cleaned
+     */
+    omit?: agriculture_cleanedOmit<ExtArgs> | null
+    /**
+     * The data used to update agriculture_cleaneds.
+     */
+    data: XOR<agriculture_cleanedUpdateManyMutationInput, agriculture_cleanedUncheckedUpdateManyInput>
+    /**
+     * Filter which agriculture_cleaneds to update
+     */
+    where?: agriculture_cleanedWhereInput
+    /**
+     * Limit how many agriculture_cleaneds to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * agriculture_cleaned upsert
+   */
+  export type agriculture_cleanedUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture_cleaned
+     */
+    select?: agriculture_cleanedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture_cleaned
+     */
+    omit?: agriculture_cleanedOmit<ExtArgs> | null
+    /**
+     * The filter to search for the agriculture_cleaned to update in case it exists.
+     */
+    where: agriculture_cleanedWhereUniqueInput
+    /**
+     * In case the agriculture_cleaned found by the `where` argument doesn't exist, create a new agriculture_cleaned with this data.
+     */
+    create: XOR<agriculture_cleanedCreateInput, agriculture_cleanedUncheckedCreateInput>
+    /**
+     * In case the agriculture_cleaned was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<agriculture_cleanedUpdateInput, agriculture_cleanedUncheckedUpdateInput>
+  }
+
+  /**
+   * agriculture_cleaned delete
+   */
+  export type agriculture_cleanedDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture_cleaned
+     */
+    select?: agriculture_cleanedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture_cleaned
+     */
+    omit?: agriculture_cleanedOmit<ExtArgs> | null
+    /**
+     * Filter which agriculture_cleaned to delete.
+     */
+    where: agriculture_cleanedWhereUniqueInput
+  }
+
+  /**
+   * agriculture_cleaned deleteMany
+   */
+  export type agriculture_cleanedDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which agriculture_cleaneds to delete
+     */
+    where?: agriculture_cleanedWhereInput
+    /**
+     * Limit how many agriculture_cleaneds to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * agriculture_cleaned without action
+   */
+  export type agriculture_cleanedDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the agriculture_cleaned
+     */
+    select?: agriculture_cleanedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the agriculture_cleaned
+     */
+    omit?: agriculture_cleanedOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model clc_epci
+   */
+
+  export type AggregateClc_epci = {
+    _count: Clc_epciCountAggregateOutputType | null
+    _avg: Clc_epciAvgAggregateOutputType | null
+    _sum: Clc_epciSumAggregateOutputType | null
+    _min: Clc_epciMinAggregateOutputType | null
+    _max: Clc_epciMaxAggregateOutputType | null
+  }
+
+  export type Clc_epciAvgAggregateOutputType = {
+    pk: number | null
+    epci_code: number | null
+  }
+
+  export type Clc_epciSumAggregateOutputType = {
+    pk: number | null
+    epci_code: number | null
+  }
+
+  export type Clc_epciMinAggregateOutputType = {
+    pk: number | null
+    legend: string | null
+    epci_code: number | null
+  }
+
+  export type Clc_epciMaxAggregateOutputType = {
+    pk: number | null
+    legend: string | null
+    epci_code: number | null
+  }
+
+  export type Clc_epciCountAggregateOutputType = {
+    pk: number
+    legend: number
+    epci_code: number
+    _all: number
+  }
+
+
+  export type Clc_epciAvgAggregateInputType = {
+    pk?: true
+    epci_code?: true
+  }
+
+  export type Clc_epciSumAggregateInputType = {
+    pk?: true
+    epci_code?: true
+  }
+
+  export type Clc_epciMinAggregateInputType = {
+    pk?: true
+    legend?: true
+    epci_code?: true
+  }
+
+  export type Clc_epciMaxAggregateInputType = {
+    pk?: true
+    legend?: true
+    epci_code?: true
+  }
+
+  export type Clc_epciCountAggregateInputType = {
+    pk?: true
+    legend?: true
+    epci_code?: true
+    _all?: true
+  }
+
+  export type Clc_epciAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which clc_epci to aggregate.
+     */
+    where?: clc_epciWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_epcis to fetch.
+     */
+    orderBy?: clc_epciOrderByWithRelationInput | clc_epciOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: clc_epciWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_epcis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_epcis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned clc_epcis
+    **/
+    _count?: true | Clc_epciCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Clc_epciAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Clc_epciSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Clc_epciMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Clc_epciMaxAggregateInputType
+  }
+
+  export type GetClc_epciAggregateType<T extends Clc_epciAggregateArgs> = {
+        [P in keyof T & keyof AggregateClc_epci]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateClc_epci[P]>
+      : GetScalarType<T[P], AggregateClc_epci[P]>
+  }
+
+
+
+
+  export type clc_epciGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: clc_epciWhereInput
+    orderBy?: clc_epciOrderByWithAggregationInput | clc_epciOrderByWithAggregationInput[]
+    by: Clc_epciScalarFieldEnum[] | Clc_epciScalarFieldEnum
+    having?: clc_epciScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Clc_epciCountAggregateInputType | true
+    _avg?: Clc_epciAvgAggregateInputType
+    _sum?: Clc_epciSumAggregateInputType
+    _min?: Clc_epciMinAggregateInputType
+    _max?: Clc_epciMaxAggregateInputType
+  }
+
+  export type Clc_epciGroupByOutputType = {
+    pk: number
+    legend: string | null
+    epci_code: number | null
+    _count: Clc_epciCountAggregateOutputType | null
+    _avg: Clc_epciAvgAggregateOutputType | null
+    _sum: Clc_epciSumAggregateOutputType | null
+    _min: Clc_epciMinAggregateOutputType | null
+    _max: Clc_epciMaxAggregateOutputType | null
+  }
+
+  type GetClc_epciGroupByPayload<T extends clc_epciGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Clc_epciGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Clc_epciGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Clc_epciGroupByOutputType[P]>
+            : GetScalarType<T[P], Clc_epciGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type clc_epciSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    legend?: boolean
+    epci_code?: boolean
+  }, ExtArgs["result"]["clc_epci"]>
+
+  export type clc_epciSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    legend?: boolean
+    epci_code?: boolean
+  }, ExtArgs["result"]["clc_epci"]>
+
+  export type clc_epciSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    pk?: boolean
+    legend?: boolean
+    epci_code?: boolean
+  }, ExtArgs["result"]["clc_epci"]>
+
+  export type clc_epciSelectScalar = {
+    pk?: boolean
+    legend?: boolean
+    epci_code?: boolean
+  }
+
+  export type clc_epciOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pk" | "legend" | "epci_code", ExtArgs["result"]["clc_epci"]>
+
+  export type $clc_epciPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "clc_epci"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      pk: number
+      legend: string | null
+      epci_code: number | null
+    }, ExtArgs["result"]["clc_epci"]>
+    composites: {}
+  }
+
+  type clc_epciGetPayload<S extends boolean | null | undefined | clc_epciDefaultArgs> = $Result.GetResult<Prisma.$clc_epciPayload, S>
+
+  type clc_epciCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<clc_epciFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Clc_epciCountAggregateInputType | true
+    }
+
+  export interface clc_epciDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['clc_epci'], meta: { name: 'clc_epci' } }
+    /**
+     * Find zero or one Clc_epci that matches the filter.
+     * @param {clc_epciFindUniqueArgs} args - Arguments to find a Clc_epci
+     * @example
+     * // Get one Clc_epci
+     * const clc_epci = await prisma.clc_epci.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends clc_epciFindUniqueArgs>(args: SelectSubset<T, clc_epciFindUniqueArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Clc_epci that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {clc_epciFindUniqueOrThrowArgs} args - Arguments to find a Clc_epci
+     * @example
+     * // Get one Clc_epci
+     * const clc_epci = await prisma.clc_epci.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends clc_epciFindUniqueOrThrowArgs>(args: SelectSubset<T, clc_epciFindUniqueOrThrowArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Clc_epci that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_epciFindFirstArgs} args - Arguments to find a Clc_epci
+     * @example
+     * // Get one Clc_epci
+     * const clc_epci = await prisma.clc_epci.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends clc_epciFindFirstArgs>(args?: SelectSubset<T, clc_epciFindFirstArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Clc_epci that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_epciFindFirstOrThrowArgs} args - Arguments to find a Clc_epci
+     * @example
+     * // Get one Clc_epci
+     * const clc_epci = await prisma.clc_epci.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends clc_epciFindFirstOrThrowArgs>(args?: SelectSubset<T, clc_epciFindFirstOrThrowArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Clc_epcis that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_epciFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Clc_epcis
+     * const clc_epcis = await prisma.clc_epci.findMany()
+     * 
+     * // Get first 10 Clc_epcis
+     * const clc_epcis = await prisma.clc_epci.findMany({ take: 10 })
+     * 
+     * // Only select the `pk`
+     * const clc_epciWithPkOnly = await prisma.clc_epci.findMany({ select: { pk: true } })
+     * 
+     */
+    findMany<T extends clc_epciFindManyArgs>(args?: SelectSubset<T, clc_epciFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Clc_epci.
+     * @param {clc_epciCreateArgs} args - Arguments to create a Clc_epci.
+     * @example
+     * // Create one Clc_epci
+     * const Clc_epci = await prisma.clc_epci.create({
+     *   data: {
+     *     // ... data to create a Clc_epci
+     *   }
+     * })
+     * 
+     */
+    create<T extends clc_epciCreateArgs>(args: SelectSubset<T, clc_epciCreateArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Clc_epcis.
+     * @param {clc_epciCreateManyArgs} args - Arguments to create many Clc_epcis.
+     * @example
+     * // Create many Clc_epcis
+     * const clc_epci = await prisma.clc_epci.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends clc_epciCreateManyArgs>(args?: SelectSubset<T, clc_epciCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Clc_epcis and returns the data saved in the database.
+     * @param {clc_epciCreateManyAndReturnArgs} args - Arguments to create many Clc_epcis.
+     * @example
+     * // Create many Clc_epcis
+     * const clc_epci = await prisma.clc_epci.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Clc_epcis and only return the `pk`
+     * const clc_epciWithPkOnly = await prisma.clc_epci.createManyAndReturn({
+     *   select: { pk: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends clc_epciCreateManyAndReturnArgs>(args?: SelectSubset<T, clc_epciCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Clc_epci.
+     * @param {clc_epciDeleteArgs} args - Arguments to delete one Clc_epci.
+     * @example
+     * // Delete one Clc_epci
+     * const Clc_epci = await prisma.clc_epci.delete({
+     *   where: {
+     *     // ... filter to delete one Clc_epci
+     *   }
+     * })
+     * 
+     */
+    delete<T extends clc_epciDeleteArgs>(args: SelectSubset<T, clc_epciDeleteArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Clc_epci.
+     * @param {clc_epciUpdateArgs} args - Arguments to update one Clc_epci.
+     * @example
+     * // Update one Clc_epci
+     * const clc_epci = await prisma.clc_epci.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends clc_epciUpdateArgs>(args: SelectSubset<T, clc_epciUpdateArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Clc_epcis.
+     * @param {clc_epciDeleteManyArgs} args - Arguments to filter Clc_epcis to delete.
+     * @example
+     * // Delete a few Clc_epcis
+     * const { count } = await prisma.clc_epci.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends clc_epciDeleteManyArgs>(args?: SelectSubset<T, clc_epciDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Clc_epcis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_epciUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Clc_epcis
+     * const clc_epci = await prisma.clc_epci.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends clc_epciUpdateManyArgs>(args: SelectSubset<T, clc_epciUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Clc_epcis and returns the data updated in the database.
+     * @param {clc_epciUpdateManyAndReturnArgs} args - Arguments to update many Clc_epcis.
+     * @example
+     * // Update many Clc_epcis
+     * const clc_epci = await prisma.clc_epci.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Clc_epcis and only return the `pk`
+     * const clc_epciWithPkOnly = await prisma.clc_epci.updateManyAndReturn({
+     *   select: { pk: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends clc_epciUpdateManyAndReturnArgs>(args: SelectSubset<T, clc_epciUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Clc_epci.
+     * @param {clc_epciUpsertArgs} args - Arguments to update or create a Clc_epci.
+     * @example
+     * // Update or create a Clc_epci
+     * const clc_epci = await prisma.clc_epci.upsert({
+     *   create: {
+     *     // ... data to create a Clc_epci
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Clc_epci we want to update
+     *   }
+     * })
+     */
+    upsert<T extends clc_epciUpsertArgs>(args: SelectSubset<T, clc_epciUpsertArgs<ExtArgs>>): Prisma__clc_epciClient<$Result.GetResult<Prisma.$clc_epciPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Clc_epcis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_epciCountArgs} args - Arguments to filter Clc_epcis to count.
+     * @example
+     * // Count the number of Clc_epcis
+     * const count = await prisma.clc_epci.count({
+     *   where: {
+     *     // ... the filter for the Clc_epcis we want to count
+     *   }
+     * })
+    **/
+    count<T extends clc_epciCountArgs>(
+      args?: Subset<T, clc_epciCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Clc_epciCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Clc_epci.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Clc_epciAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Clc_epciAggregateArgs>(args: Subset<T, Clc_epciAggregateArgs>): Prisma.PrismaPromise<GetClc_epciAggregateType<T>>
+
+    /**
+     * Group by Clc_epci.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {clc_epciGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends clc_epciGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: clc_epciGroupByArgs['orderBy'] }
+        : { orderBy?: clc_epciGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, clc_epciGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClc_epciGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the clc_epci model
+   */
+  readonly fields: clc_epciFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for clc_epci.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__clc_epciClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the clc_epci model
+   */ 
+  interface clc_epciFieldRefs {
+    readonly pk: FieldRef<"clc_epci", 'Int'>
+    readonly legend: FieldRef<"clc_epci", 'String'>
+    readonly epci_code: FieldRef<"clc_epci", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * clc_epci findUnique
+   */
+  export type clc_epciFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * Filter, which clc_epci to fetch.
+     */
+    where: clc_epciWhereUniqueInput
+  }
+
+  /**
+   * clc_epci findUniqueOrThrow
+   */
+  export type clc_epciFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * Filter, which clc_epci to fetch.
+     */
+    where: clc_epciWhereUniqueInput
+  }
+
+  /**
+   * clc_epci findFirst
+   */
+  export type clc_epciFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * Filter, which clc_epci to fetch.
+     */
+    where?: clc_epciWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_epcis to fetch.
+     */
+    orderBy?: clc_epciOrderByWithRelationInput | clc_epciOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for clc_epcis.
+     */
+    cursor?: clc_epciWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_epcis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_epcis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of clc_epcis.
+     */
+    distinct?: Clc_epciScalarFieldEnum | Clc_epciScalarFieldEnum[]
+  }
+
+  /**
+   * clc_epci findFirstOrThrow
+   */
+  export type clc_epciFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * Filter, which clc_epci to fetch.
+     */
+    where?: clc_epciWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_epcis to fetch.
+     */
+    orderBy?: clc_epciOrderByWithRelationInput | clc_epciOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for clc_epcis.
+     */
+    cursor?: clc_epciWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_epcis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_epcis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of clc_epcis.
+     */
+    distinct?: Clc_epciScalarFieldEnum | Clc_epciScalarFieldEnum[]
+  }
+
+  /**
+   * clc_epci findMany
+   */
+  export type clc_epciFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * Filter, which clc_epcis to fetch.
+     */
+    where?: clc_epciWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of clc_epcis to fetch.
+     */
+    orderBy?: clc_epciOrderByWithRelationInput | clc_epciOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing clc_epcis.
+     */
+    cursor?: clc_epciWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` clc_epcis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` clc_epcis.
+     */
+    skip?: number
+    distinct?: Clc_epciScalarFieldEnum | Clc_epciScalarFieldEnum[]
+  }
+
+  /**
+   * clc_epci create
+   */
+  export type clc_epciCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * The data needed to create a clc_epci.
+     */
+    data?: XOR<clc_epciCreateInput, clc_epciUncheckedCreateInput>
+  }
+
+  /**
+   * clc_epci createMany
+   */
+  export type clc_epciCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many clc_epcis.
+     */
+    data: clc_epciCreateManyInput | clc_epciCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * clc_epci createManyAndReturn
+   */
+  export type clc_epciCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * The data used to create many clc_epcis.
+     */
+    data: clc_epciCreateManyInput | clc_epciCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * clc_epci update
+   */
+  export type clc_epciUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * The data needed to update a clc_epci.
+     */
+    data: XOR<clc_epciUpdateInput, clc_epciUncheckedUpdateInput>
+    /**
+     * Choose, which clc_epci to update.
+     */
+    where: clc_epciWhereUniqueInput
+  }
+
+  /**
+   * clc_epci updateMany
+   */
+  export type clc_epciUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update clc_epcis.
+     */
+    data: XOR<clc_epciUpdateManyMutationInput, clc_epciUncheckedUpdateManyInput>
+    /**
+     * Filter which clc_epcis to update
+     */
+    where?: clc_epciWhereInput
+    /**
+     * Limit how many clc_epcis to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * clc_epci updateManyAndReturn
+   */
+  export type clc_epciUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * The data used to update clc_epcis.
+     */
+    data: XOR<clc_epciUpdateManyMutationInput, clc_epciUncheckedUpdateManyInput>
+    /**
+     * Filter which clc_epcis to update
+     */
+    where?: clc_epciWhereInput
+    /**
+     * Limit how many clc_epcis to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * clc_epci upsert
+   */
+  export type clc_epciUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * The filter to search for the clc_epci to update in case it exists.
+     */
+    where: clc_epciWhereUniqueInput
+    /**
+     * In case the clc_epci found by the `where` argument doesn't exist, create a new clc_epci with this data.
+     */
+    create: XOR<clc_epciCreateInput, clc_epciUncheckedCreateInput>
+    /**
+     * In case the clc_epci was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<clc_epciUpdateInput, clc_epciUncheckedUpdateInput>
+  }
+
+  /**
+   * clc_epci delete
+   */
+  export type clc_epciDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+    /**
+     * Filter which clc_epci to delete.
+     */
+    where: clc_epciWhereUniqueInput
+  }
+
+  /**
+   * clc_epci deleteMany
+   */
+  export type clc_epciDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which clc_epcis to delete
+     */
+    where?: clc_epciWhereInput
+    /**
+     * Limit how many clc_epcis to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * clc_epci without action
+   */
+  export type clc_epciDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the clc_epci
+     */
+    select?: clc_epciSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the clc_epci
+     */
+    omit?: clc_epciOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model arretes_catnat
+   */
+
+  export type AggregateArretes_catnat = {
+    _count: Arretes_catnatCountAggregateOutputType | null
+    _avg: Arretes_catnatAvgAggregateOutputType | null
+    _sum: Arretes_catnatSumAggregateOutputType | null
+    _min: Arretes_catnatMinAggregateOutputType | null
+    _max: Arretes_catnatMaxAggregateOutputType | null
+  }
+
+  export type Arretes_catnatAvgAggregateOutputType = {
+    index: number | null
+    region: number | null
+  }
+
+  export type Arretes_catnatSumAggregateOutputType = {
+    index: bigint | null
+    region: number | null
+  }
+
+  export type Arretes_catnatMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    lib_risque_jo: string | null
+    dat_pub_arrete: string | null
+  }
+
+  export type Arretes_catnatMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    lib_risque_jo: string | null
+    dat_pub_arrete: string | null
+  }
+
+  export type Arretes_catnatCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
+    lib_risque_jo: number
+    dat_pub_arrete: number
+    _all: number
+  }
+
+
+  export type Arretes_catnatAvgAggregateInputType = {
+    index?: true
+    region?: true
+  }
+
+  export type Arretes_catnatSumAggregateInputType = {
+    index?: true
+    region?: true
+  }
+
+  export type Arretes_catnatMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    lib_risque_jo?: true
+    dat_pub_arrete?: true
+  }
+
+  export type Arretes_catnatMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    lib_risque_jo?: true
+    dat_pub_arrete?: true
+  }
+
+  export type Arretes_catnatCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    lib_risque_jo?: true
+    dat_pub_arrete?: true
+    _all?: true
+  }
+
+  export type Arretes_catnatAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which arretes_catnat to aggregate.
+     */
+    where?: arretes_catnatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of arretes_catnats to fetch.
+     */
+    orderBy?: arretes_catnatOrderByWithRelationInput | arretes_catnatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: arretes_catnatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` arretes_catnats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` arretes_catnats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned arretes_catnats
+    **/
+    _count?: true | Arretes_catnatCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Arretes_catnatAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Arretes_catnatSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Arretes_catnatMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Arretes_catnatMaxAggregateInputType
+  }
+
+  export type GetArretes_catnatAggregateType<T extends Arretes_catnatAggregateArgs> = {
+        [P in keyof T & keyof AggregateArretes_catnat]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateArretes_catnat[P]>
+      : GetScalarType<T[P], AggregateArretes_catnat[P]>
+  }
+
+
+
+
+  export type arretes_catnatGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: arretes_catnatWhereInput
+    orderBy?: arretes_catnatOrderByWithAggregationInput | arretes_catnatOrderByWithAggregationInput[]
+    by: Arretes_catnatScalarFieldEnum[] | Arretes_catnatScalarFieldEnum
+    having?: arretes_catnatScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Arretes_catnatCountAggregateInputType | true
+    _avg?: Arretes_catnatAvgAggregateInputType
+    _sum?: Arretes_catnatSumAggregateInputType
+    _min?: Arretes_catnatMinAggregateInputType
+    _max?: Arretes_catnatMaxAggregateInputType
+  }
+
+  export type Arretes_catnatGroupByOutputType = {
+    index: bigint
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    lib_risque_jo: string
+    dat_pub_arrete: string
+    _count: Arretes_catnatCountAggregateOutputType | null
+    _avg: Arretes_catnatAvgAggregateOutputType | null
+    _sum: Arretes_catnatSumAggregateOutputType | null
+    _min: Arretes_catnatMinAggregateOutputType | null
+    _max: Arretes_catnatMaxAggregateOutputType | null
+  }
+
+  type GetArretes_catnatGroupByPayload<T extends arretes_catnatGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Arretes_catnatGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Arretes_catnatGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Arretes_catnatGroupByOutputType[P]>
+            : GetScalarType<T[P], Arretes_catnatGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type arretes_catnatSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    lib_risque_jo?: boolean
+    dat_pub_arrete?: boolean
+  }, ExtArgs["result"]["arretes_catnat"]>
+
+  export type arretes_catnatSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    lib_risque_jo?: boolean
+    dat_pub_arrete?: boolean
+  }, ExtArgs["result"]["arretes_catnat"]>
+
+  export type arretes_catnatSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    lib_risque_jo?: boolean
+    dat_pub_arrete?: boolean
+  }, ExtArgs["result"]["arretes_catnat"]>
+
+  export type arretes_catnatSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    lib_risque_jo?: boolean
+    dat_pub_arrete?: boolean
+  }
+
+  export type arretes_catnatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "lib_risque_jo" | "dat_pub_arrete", ExtArgs["result"]["arretes_catnat"]>
+
+  export type $arretes_catnatPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "arretes_catnat"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      libelle_departement: string
+      region: number
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
+      lib_risque_jo: string
+      dat_pub_arrete: string
+    }, ExtArgs["result"]["arretes_catnat"]>
+    composites: {}
+  }
+
+  type arretes_catnatGetPayload<S extends boolean | null | undefined | arretes_catnatDefaultArgs> = $Result.GetResult<Prisma.$arretes_catnatPayload, S>
+
+  type arretes_catnatCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<arretes_catnatFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Arretes_catnatCountAggregateInputType | true
+    }
+
+  export interface arretes_catnatDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['arretes_catnat'], meta: { name: 'arretes_catnat' } }
+    /**
+     * Find zero or one Arretes_catnat that matches the filter.
+     * @param {arretes_catnatFindUniqueArgs} args - Arguments to find a Arretes_catnat
+     * @example
+     * // Get one Arretes_catnat
+     * const arretes_catnat = await prisma.arretes_catnat.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends arretes_catnatFindUniqueArgs>(args: SelectSubset<T, arretes_catnatFindUniqueArgs<ExtArgs>>): Prisma__arretes_catnatClient<$Result.GetResult<Prisma.$arretes_catnatPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Arretes_catnat that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {arretes_catnatFindUniqueOrThrowArgs} args - Arguments to find a Arretes_catnat
+     * @example
+     * // Get one Arretes_catnat
+     * const arretes_catnat = await prisma.arretes_catnat.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends arretes_catnatFindUniqueOrThrowArgs>(args: SelectSubset<T, arretes_catnatFindUniqueOrThrowArgs<ExtArgs>>): Prisma__arretes_catnatClient<$Result.GetResult<Prisma.$arretes_catnatPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Arretes_catnat that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {arretes_catnatFindFirstArgs} args - Arguments to find a Arretes_catnat
+     * @example
+     * // Get one Arretes_catnat
+     * const arretes_catnat = await prisma.arretes_catnat.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends arretes_catnatFindFirstArgs>(args?: SelectSubset<T, arretes_catnatFindFirstArgs<ExtArgs>>): Prisma__arretes_catnatClient<$Result.GetResult<Prisma.$arretes_catnatPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Arretes_catnat that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {arretes_catnatFindFirstOrThrowArgs} args - Arguments to find a Arretes_catnat
+     * @example
+     * // Get one Arretes_catnat
+     * const arretes_catnat = await prisma.arretes_catnat.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends arretes_catnatFindFirstOrThrowArgs>(args?: SelectSubset<T, arretes_catnatFindFirstOrThrowArgs<ExtArgs>>): Prisma__arretes_catnatClient<$Result.GetResult<Prisma.$arretes_catnatPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Arretes_catnats that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {arretes_catnatFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Arretes_catnats
+     * const arretes_catnats = await prisma.arretes_catnat.findMany()
+     * 
+     * // Get first 10 Arretes_catnats
+     * const arretes_catnats = await prisma.arretes_catnat.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const arretes_catnatWithIndexOnly = await prisma.arretes_catnat.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends arretes_catnatFindManyArgs>(args?: SelectSubset<T, arretes_catnatFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$arretes_catnatPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Arretes_catnat.
+     * @param {arretes_catnatCreateArgs} args - Arguments to create a Arretes_catnat.
+     * @example
+     * // Create one Arretes_catnat
+     * const Arretes_catnat = await prisma.arretes_catnat.create({
+     *   data: {
+     *     // ... data to create a Arretes_catnat
+     *   }
+     * })
+     * 
+     */
+    create<T extends arretes_catnatCreateArgs>(args: SelectSubset<T, arretes_catnatCreateArgs<ExtArgs>>): Prisma__arretes_catnatClient<$Result.GetResult<Prisma.$arretes_catnatPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Arretes_catnats.
+     * @param {arretes_catnatCreateManyArgs} args - Arguments to create many Arretes_catnats.
+     * @example
+     * // Create many Arretes_catnats
+     * const arretes_catnat = await prisma.arretes_catnat.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends arretes_catnatCreateManyArgs>(args?: SelectSubset<T, arretes_catnatCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Arretes_catnats and returns the data saved in the database.
+     * @param {arretes_catnatCreateManyAndReturnArgs} args - Arguments to create many Arretes_catnats.
+     * @example
+     * // Create many Arretes_catnats
+     * const arretes_catnat = await prisma.arretes_catnat.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Arretes_catnats and only return the `index`
+     * const arretes_catnatWithIndexOnly = await prisma.arretes_catnat.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends arretes_catnatCreateManyAndReturnArgs>(args?: SelectSubset<T, arretes_catnatCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$arretes_catnatPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Arretes_catnat.
+     * @param {arretes_catnatDeleteArgs} args - Arguments to delete one Arretes_catnat.
+     * @example
+     * // Delete one Arretes_catnat
+     * const Arretes_catnat = await prisma.arretes_catnat.delete({
+     *   where: {
+     *     // ... filter to delete one Arretes_catnat
+     *   }
+     * })
+     * 
+     */
+    delete<T extends arretes_catnatDeleteArgs>(args: SelectSubset<T, arretes_catnatDeleteArgs<ExtArgs>>): Prisma__arretes_catnatClient<$Result.GetResult<Prisma.$arretes_catnatPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Arretes_catnat.
+     * @param {arretes_catnatUpdateArgs} args - Arguments to update one Arretes_catnat.
+     * @example
+     * // Update one Arretes_catnat
+     * const arretes_catnat = await prisma.arretes_catnat.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends arretes_catnatUpdateArgs>(args: SelectSubset<T, arretes_catnatUpdateArgs<ExtArgs>>): Prisma__arretes_catnatClient<$Result.GetResult<Prisma.$arretes_catnatPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Arretes_catnats.
+     * @param {arretes_catnatDeleteManyArgs} args - Arguments to filter Arretes_catnats to delete.
+     * @example
+     * // Delete a few Arretes_catnats
+     * const { count } = await prisma.arretes_catnat.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends arretes_catnatDeleteManyArgs>(args?: SelectSubset<T, arretes_catnatDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Arretes_catnats.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {arretes_catnatUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Arretes_catnats
+     * const arretes_catnat = await prisma.arretes_catnat.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends arretes_catnatUpdateManyArgs>(args: SelectSubset<T, arretes_catnatUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Arretes_catnats and returns the data updated in the database.
+     * @param {arretes_catnatUpdateManyAndReturnArgs} args - Arguments to update many Arretes_catnats.
+     * @example
+     * // Update many Arretes_catnats
+     * const arretes_catnat = await prisma.arretes_catnat.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Arretes_catnats and only return the `index`
+     * const arretes_catnatWithIndexOnly = await prisma.arretes_catnat.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends arretes_catnatUpdateManyAndReturnArgs>(args: SelectSubset<T, arretes_catnatUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$arretes_catnatPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Arretes_catnat.
+     * @param {arretes_catnatUpsertArgs} args - Arguments to update or create a Arretes_catnat.
+     * @example
+     * // Update or create a Arretes_catnat
+     * const arretes_catnat = await prisma.arretes_catnat.upsert({
+     *   create: {
+     *     // ... data to create a Arretes_catnat
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Arretes_catnat we want to update
+     *   }
+     * })
+     */
+    upsert<T extends arretes_catnatUpsertArgs>(args: SelectSubset<T, arretes_catnatUpsertArgs<ExtArgs>>): Prisma__arretes_catnatClient<$Result.GetResult<Prisma.$arretes_catnatPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Arretes_catnats.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {arretes_catnatCountArgs} args - Arguments to filter Arretes_catnats to count.
+     * @example
+     * // Count the number of Arretes_catnats
+     * const count = await prisma.arretes_catnat.count({
+     *   where: {
+     *     // ... the filter for the Arretes_catnats we want to count
+     *   }
+     * })
+    **/
+    count<T extends arretes_catnatCountArgs>(
+      args?: Subset<T, arretes_catnatCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Arretes_catnatCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Arretes_catnat.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Arretes_catnatAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Arretes_catnatAggregateArgs>(args: Subset<T, Arretes_catnatAggregateArgs>): Prisma.PrismaPromise<GetArretes_catnatAggregateType<T>>
+
+    /**
+     * Group by Arretes_catnat.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {arretes_catnatGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends arretes_catnatGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: arretes_catnatGroupByArgs['orderBy'] }
+        : { orderBy?: arretes_catnatGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, arretes_catnatGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetArretes_catnatGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the arretes_catnat model
+   */
+  readonly fields: arretes_catnatFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for arretes_catnat.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__arretes_catnatClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the arretes_catnat model
+   */ 
+  interface arretes_catnatFieldRefs {
+    readonly index: FieldRef<"arretes_catnat", 'BigInt'>
+    readonly code_geographique: FieldRef<"arretes_catnat", 'String'>
+    readonly libelle_geographique: FieldRef<"arretes_catnat", 'String'>
+    readonly epci: FieldRef<"arretes_catnat", 'String'>
+    readonly libelle_epci: FieldRef<"arretes_catnat", 'String'>
+    readonly departement: FieldRef<"arretes_catnat", 'String'>
+    readonly libelle_departement: FieldRef<"arretes_catnat", 'String'>
+    readonly region: FieldRef<"arretes_catnat", 'Float'>
+    readonly ept: FieldRef<"arretes_catnat", 'String'>
+    readonly libelle_petr: FieldRef<"arretes_catnat", 'String'>
+    readonly code_pnr: FieldRef<"arretes_catnat", 'String'>
+    readonly libelle_pnr: FieldRef<"arretes_catnat", 'String'>
+    readonly lib_risque_jo: FieldRef<"arretes_catnat", 'String'>
+    readonly dat_pub_arrete: FieldRef<"arretes_catnat", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * arretes_catnat findUnique
+   */
+  export type arretes_catnatFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the arretes_catnat
+     */
+    select?: arretes_catnatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the arretes_catnat
+     */
+    omit?: arretes_catnatOmit<ExtArgs> | null
+    /**
+     * Filter, which arretes_catnat to fetch.
+     */
+    where: arretes_catnatWhereUniqueInput
+  }
+
+  /**
+   * arretes_catnat findUniqueOrThrow
+   */
+  export type arretes_catnatFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the arretes_catnat
+     */
+    select?: arretes_catnatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the arretes_catnat
+     */
+    omit?: arretes_catnatOmit<ExtArgs> | null
+    /**
+     * Filter, which arretes_catnat to fetch.
+     */
+    where: arretes_catnatWhereUniqueInput
+  }
+
+  /**
+   * arretes_catnat findFirst
+   */
+  export type arretes_catnatFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the arretes_catnat
+     */
+    select?: arretes_catnatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the arretes_catnat
+     */
+    omit?: arretes_catnatOmit<ExtArgs> | null
+    /**
+     * Filter, which arretes_catnat to fetch.
+     */
+    where?: arretes_catnatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of arretes_catnats to fetch.
+     */
+    orderBy?: arretes_catnatOrderByWithRelationInput | arretes_catnatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for arretes_catnats.
+     */
+    cursor?: arretes_catnatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` arretes_catnats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` arretes_catnats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of arretes_catnats.
+     */
+    distinct?: Arretes_catnatScalarFieldEnum | Arretes_catnatScalarFieldEnum[]
+  }
+
+  /**
+   * arretes_catnat findFirstOrThrow
+   */
+  export type arretes_catnatFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the arretes_catnat
+     */
+    select?: arretes_catnatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the arretes_catnat
+     */
+    omit?: arretes_catnatOmit<ExtArgs> | null
+    /**
+     * Filter, which arretes_catnat to fetch.
+     */
+    where?: arretes_catnatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of arretes_catnats to fetch.
+     */
+    orderBy?: arretes_catnatOrderByWithRelationInput | arretes_catnatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for arretes_catnats.
+     */
+    cursor?: arretes_catnatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` arretes_catnats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` arretes_catnats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of arretes_catnats.
+     */
+    distinct?: Arretes_catnatScalarFieldEnum | Arretes_catnatScalarFieldEnum[]
+  }
+
+  /**
+   * arretes_catnat findMany
+   */
+  export type arretes_catnatFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the arretes_catnat
+     */
+    select?: arretes_catnatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the arretes_catnat
+     */
+    omit?: arretes_catnatOmit<ExtArgs> | null
+    /**
+     * Filter, which arretes_catnats to fetch.
+     */
+    where?: arretes_catnatWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of arretes_catnats to fetch.
+     */
+    orderBy?: arretes_catnatOrderByWithRelationInput | arretes_catnatOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing arretes_catnats.
+     */
+    cursor?: arretes_catnatWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` arretes_catnats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` arretes_catnats.
+     */
+    skip?: number
+    distinct?: Arretes_catnatScalarFieldEnum | Arretes_catnatScalarFieldEnum[]
+  }
+
+  /**
+   * arretes_catnat create
+   */
+  export type arretes_catnatCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the arretes_catnat
+     */
+    select?: arretes_catnatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the arretes_catnat
+     */
+    omit?: arretes_catnatOmit<ExtArgs> | null
+    /**
+     * The data needed to create a arretes_catnat.
+     */
+    data: XOR<arretes_catnatCreateInput, arretes_catnatUncheckedCreateInput>
+  }
+
+  /**
+   * arretes_catnat createMany
+   */
+  export type arretes_catnatCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many arretes_catnats.
+     */
+    data: arretes_catnatCreateManyInput | arretes_catnatCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * arretes_catnat createManyAndReturn
+   */
+  export type arretes_catnatCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the arretes_catnat
+     */
+    select?: arretes_catnatSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the arretes_catnat
+     */
+    omit?: arretes_catnatOmit<ExtArgs> | null
+    /**
+     * The data used to create many arretes_catnats.
+     */
+    data: arretes_catnatCreateManyInput | arretes_catnatCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * arretes_catnat update
+   */
+  export type arretes_catnatUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the arretes_catnat
+     */
+    select?: arretes_catnatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the arretes_catnat
+     */
+    omit?: arretes_catnatOmit<ExtArgs> | null
+    /**
+     * The data needed to update a arretes_catnat.
+     */
+    data: XOR<arretes_catnatUpdateInput, arretes_catnatUncheckedUpdateInput>
+    /**
+     * Choose, which arretes_catnat to update.
+     */
+    where: arretes_catnatWhereUniqueInput
+  }
+
+  /**
+   * arretes_catnat updateMany
+   */
+  export type arretes_catnatUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update arretes_catnats.
+     */
+    data: XOR<arretes_catnatUpdateManyMutationInput, arretes_catnatUncheckedUpdateManyInput>
+    /**
+     * Filter which arretes_catnats to update
+     */
+    where?: arretes_catnatWhereInput
+    /**
+     * Limit how many arretes_catnats to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * arretes_catnat updateManyAndReturn
+   */
+  export type arretes_catnatUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the arretes_catnat
+     */
+    select?: arretes_catnatSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the arretes_catnat
+     */
+    omit?: arretes_catnatOmit<ExtArgs> | null
+    /**
+     * The data used to update arretes_catnats.
+     */
+    data: XOR<arretes_catnatUpdateManyMutationInput, arretes_catnatUncheckedUpdateManyInput>
+    /**
+     * Filter which arretes_catnats to update
+     */
+    where?: arretes_catnatWhereInput
+    /**
+     * Limit how many arretes_catnats to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * arretes_catnat upsert
+   */
+  export type arretes_catnatUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the arretes_catnat
+     */
+    select?: arretes_catnatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the arretes_catnat
+     */
+    omit?: arretes_catnatOmit<ExtArgs> | null
+    /**
+     * The filter to search for the arretes_catnat to update in case it exists.
+     */
+    where: arretes_catnatWhereUniqueInput
+    /**
+     * In case the arretes_catnat found by the `where` argument doesn't exist, create a new arretes_catnat with this data.
+     */
+    create: XOR<arretes_catnatCreateInput, arretes_catnatUncheckedCreateInput>
+    /**
+     * In case the arretes_catnat was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<arretes_catnatUpdateInput, arretes_catnatUncheckedUpdateInput>
+  }
+
+  /**
+   * arretes_catnat delete
+   */
+  export type arretes_catnatDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the arretes_catnat
+     */
+    select?: arretes_catnatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the arretes_catnat
+     */
+    omit?: arretes_catnatOmit<ExtArgs> | null
+    /**
+     * Filter which arretes_catnat to delete.
+     */
+    where: arretes_catnatWhereUniqueInput
+  }
+
+  /**
+   * arretes_catnat deleteMany
+   */
+  export type arretes_catnatDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which arretes_catnats to delete
+     */
+    where?: arretes_catnatWhereInput
+    /**
+     * Limit how many arretes_catnats to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * arretes_catnat without action
+   */
+  export type arretes_catnatDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the arretes_catnat
+     */
+    select?: arretes_catnatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the arretes_catnat
+     */
+    omit?: arretes_catnatOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -28348,6 +31919,54 @@ export namespace Prisma {
   };
 
   export type Clc_territoiresScalarFieldEnum = (typeof Clc_territoiresScalarFieldEnum)[keyof typeof Clc_territoiresScalarFieldEnum]
+
+
+  export const Agriculture_cleanedScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    libelle_departement: 'libelle_departement',
+    region: 'region',
+    ept: 'ept',
+    libelle_petr: 'libelle_petr',
+    code_pnr: 'code_pnr',
+    libelle_pnr: 'libelle_pnr',
+    part_irr_SAU_2020: 'part_irr_SAU_2020'
+  };
+
+  export type Agriculture_cleanedScalarFieldEnum = (typeof Agriculture_cleanedScalarFieldEnum)[keyof typeof Agriculture_cleanedScalarFieldEnum]
+
+
+  export const Clc_epciScalarFieldEnum: {
+    pk: 'pk',
+    legend: 'legend',
+    epci_code: 'epci_code'
+  };
+
+  export type Clc_epciScalarFieldEnum = (typeof Clc_epciScalarFieldEnum)[keyof typeof Clc_epciScalarFieldEnum]
+
+
+  export const Arretes_catnatScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    libelle_departement: 'libelle_departement',
+    region: 'region',
+    ept: 'ept',
+    libelle_petr: 'libelle_petr',
+    code_pnr: 'code_pnr',
+    libelle_pnr: 'libelle_pnr',
+    lib_risque_jo: 'lib_risque_jo',
+    dat_pub_arrete: 'dat_pub_arrete'
+  };
+
+  export type Arretes_catnatScalarFieldEnum = (typeof Arretes_catnatScalarFieldEnum)[keyof typeof Arretes_catnatScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -30974,6 +34593,243 @@ export namespace Prisma {
     code_pnr?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
     libelle_pnr?: StringNullableWithAggregatesFilter<"clc_territoires"> | string | null
     legend?: StringWithAggregatesFilter<"clc_territoires"> | string
+  }
+
+  export type agriculture_cleanedWhereInput = {
+    AND?: agriculture_cleanedWhereInput | agriculture_cleanedWhereInput[]
+    OR?: agriculture_cleanedWhereInput[]
+    NOT?: agriculture_cleanedWhereInput | agriculture_cleanedWhereInput[]
+    index?: BigIntFilter<"agriculture_cleaned"> | bigint | number
+    code_geographique?: StringFilter<"agriculture_cleaned"> | string
+    libelle_geographique?: StringFilter<"agriculture_cleaned"> | string
+    epci?: StringFilter<"agriculture_cleaned"> | string
+    libelle_epci?: StringFilter<"agriculture_cleaned"> | string
+    departement?: StringFilter<"agriculture_cleaned"> | string
+    libelle_departement?: StringFilter<"agriculture_cleaned"> | string
+    region?: FloatFilter<"agriculture_cleaned"> | number
+    ept?: StringNullableFilter<"agriculture_cleaned"> | string | null
+    libelle_petr?: StringNullableFilter<"agriculture_cleaned"> | string | null
+    code_pnr?: StringNullableFilter<"agriculture_cleaned"> | string | null
+    libelle_pnr?: StringNullableFilter<"agriculture_cleaned"> | string | null
+    part_irr_SAU_2020?: FloatNullableFilter<"agriculture_cleaned"> | number | null
+  }
+
+  export type agriculture_cleanedOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    part_irr_SAU_2020?: SortOrderInput | SortOrder
+  }
+
+  export type agriculture_cleanedWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: agriculture_cleanedWhereInput | agriculture_cleanedWhereInput[]
+    OR?: agriculture_cleanedWhereInput[]
+    NOT?: agriculture_cleanedWhereInput | agriculture_cleanedWhereInput[]
+    code_geographique?: StringFilter<"agriculture_cleaned"> | string
+    libelle_geographique?: StringFilter<"agriculture_cleaned"> | string
+    epci?: StringFilter<"agriculture_cleaned"> | string
+    libelle_epci?: StringFilter<"agriculture_cleaned"> | string
+    departement?: StringFilter<"agriculture_cleaned"> | string
+    libelle_departement?: StringFilter<"agriculture_cleaned"> | string
+    region?: FloatFilter<"agriculture_cleaned"> | number
+    ept?: StringNullableFilter<"agriculture_cleaned"> | string | null
+    libelle_petr?: StringNullableFilter<"agriculture_cleaned"> | string | null
+    code_pnr?: StringNullableFilter<"agriculture_cleaned"> | string | null
+    libelle_pnr?: StringNullableFilter<"agriculture_cleaned"> | string | null
+    part_irr_SAU_2020?: FloatNullableFilter<"agriculture_cleaned"> | number | null
+  }, "index">
+
+  export type agriculture_cleanedOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    part_irr_SAU_2020?: SortOrderInput | SortOrder
+    _count?: agriculture_cleanedCountOrderByAggregateInput
+    _avg?: agriculture_cleanedAvgOrderByAggregateInput
+    _max?: agriculture_cleanedMaxOrderByAggregateInput
+    _min?: agriculture_cleanedMinOrderByAggregateInput
+    _sum?: agriculture_cleanedSumOrderByAggregateInput
+  }
+
+  export type agriculture_cleanedScalarWhereWithAggregatesInput = {
+    AND?: agriculture_cleanedScalarWhereWithAggregatesInput | agriculture_cleanedScalarWhereWithAggregatesInput[]
+    OR?: agriculture_cleanedScalarWhereWithAggregatesInput[]
+    NOT?: agriculture_cleanedScalarWhereWithAggregatesInput | agriculture_cleanedScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"agriculture_cleaned"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"agriculture_cleaned"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"agriculture_cleaned"> | string
+    epci?: StringWithAggregatesFilter<"agriculture_cleaned"> | string
+    libelle_epci?: StringWithAggregatesFilter<"agriculture_cleaned"> | string
+    departement?: StringWithAggregatesFilter<"agriculture_cleaned"> | string
+    libelle_departement?: StringWithAggregatesFilter<"agriculture_cleaned"> | string
+    region?: FloatWithAggregatesFilter<"agriculture_cleaned"> | number
+    ept?: StringNullableWithAggregatesFilter<"agriculture_cleaned"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"agriculture_cleaned"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"agriculture_cleaned"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"agriculture_cleaned"> | string | null
+    part_irr_SAU_2020?: FloatNullableWithAggregatesFilter<"agriculture_cleaned"> | number | null
+  }
+
+  export type clc_epciWhereInput = {
+    AND?: clc_epciWhereInput | clc_epciWhereInput[]
+    OR?: clc_epciWhereInput[]
+    NOT?: clc_epciWhereInput | clc_epciWhereInput[]
+    pk?: IntFilter<"clc_epci"> | number
+    legend?: StringNullableFilter<"clc_epci"> | string | null
+    epci_code?: IntNullableFilter<"clc_epci"> | number | null
+  }
+
+  export type clc_epciOrderByWithRelationInput = {
+    pk?: SortOrder
+    legend?: SortOrderInput | SortOrder
+    epci_code?: SortOrderInput | SortOrder
+  }
+
+  export type clc_epciWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: clc_epciWhereInput | clc_epciWhereInput[]
+    OR?: clc_epciWhereInput[]
+    NOT?: clc_epciWhereInput | clc_epciWhereInput[]
+    legend?: StringNullableFilter<"clc_epci"> | string | null
+    epci_code?: IntNullableFilter<"clc_epci"> | number | null
+  }, "pk">
+
+  export type clc_epciOrderByWithAggregationInput = {
+    pk?: SortOrder
+    legend?: SortOrderInput | SortOrder
+    epci_code?: SortOrderInput | SortOrder
+    _count?: clc_epciCountOrderByAggregateInput
+    _avg?: clc_epciAvgOrderByAggregateInput
+    _max?: clc_epciMaxOrderByAggregateInput
+    _min?: clc_epciMinOrderByAggregateInput
+    _sum?: clc_epciSumOrderByAggregateInput
+  }
+
+  export type clc_epciScalarWhereWithAggregatesInput = {
+    AND?: clc_epciScalarWhereWithAggregatesInput | clc_epciScalarWhereWithAggregatesInput[]
+    OR?: clc_epciScalarWhereWithAggregatesInput[]
+    NOT?: clc_epciScalarWhereWithAggregatesInput | clc_epciScalarWhereWithAggregatesInput[]
+    pk?: IntWithAggregatesFilter<"clc_epci"> | number
+    legend?: StringNullableWithAggregatesFilter<"clc_epci"> | string | null
+    epci_code?: IntNullableWithAggregatesFilter<"clc_epci"> | number | null
+  }
+
+  export type arretes_catnatWhereInput = {
+    AND?: arretes_catnatWhereInput | arretes_catnatWhereInput[]
+    OR?: arretes_catnatWhereInput[]
+    NOT?: arretes_catnatWhereInput | arretes_catnatWhereInput[]
+    index?: BigIntFilter<"arretes_catnat"> | bigint | number
+    code_geographique?: StringFilter<"arretes_catnat"> | string
+    libelle_geographique?: StringFilter<"arretes_catnat"> | string
+    epci?: StringFilter<"arretes_catnat"> | string
+    libelle_epci?: StringFilter<"arretes_catnat"> | string
+    departement?: StringFilter<"arretes_catnat"> | string
+    libelle_departement?: StringFilter<"arretes_catnat"> | string
+    region?: FloatFilter<"arretes_catnat"> | number
+    ept?: StringNullableFilter<"arretes_catnat"> | string | null
+    libelle_petr?: StringNullableFilter<"arretes_catnat"> | string | null
+    code_pnr?: StringNullableFilter<"arretes_catnat"> | string | null
+    libelle_pnr?: StringNullableFilter<"arretes_catnat"> | string | null
+    lib_risque_jo?: StringFilter<"arretes_catnat"> | string
+    dat_pub_arrete?: StringFilter<"arretes_catnat"> | string
+  }
+
+  export type arretes_catnatOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    lib_risque_jo?: SortOrder
+    dat_pub_arrete?: SortOrder
+  }
+
+  export type arretes_catnatWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: arretes_catnatWhereInput | arretes_catnatWhereInput[]
+    OR?: arretes_catnatWhereInput[]
+    NOT?: arretes_catnatWhereInput | arretes_catnatWhereInput[]
+    code_geographique?: StringFilter<"arretes_catnat"> | string
+    libelle_geographique?: StringFilter<"arretes_catnat"> | string
+    epci?: StringFilter<"arretes_catnat"> | string
+    libelle_epci?: StringFilter<"arretes_catnat"> | string
+    departement?: StringFilter<"arretes_catnat"> | string
+    libelle_departement?: StringFilter<"arretes_catnat"> | string
+    region?: FloatFilter<"arretes_catnat"> | number
+    ept?: StringNullableFilter<"arretes_catnat"> | string | null
+    libelle_petr?: StringNullableFilter<"arretes_catnat"> | string | null
+    code_pnr?: StringNullableFilter<"arretes_catnat"> | string | null
+    libelle_pnr?: StringNullableFilter<"arretes_catnat"> | string | null
+    lib_risque_jo?: StringFilter<"arretes_catnat"> | string
+    dat_pub_arrete?: StringFilter<"arretes_catnat"> | string
+  }, "index">
+
+  export type arretes_catnatOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    lib_risque_jo?: SortOrder
+    dat_pub_arrete?: SortOrder
+    _count?: arretes_catnatCountOrderByAggregateInput
+    _avg?: arretes_catnatAvgOrderByAggregateInput
+    _max?: arretes_catnatMaxOrderByAggregateInput
+    _min?: arretes_catnatMinOrderByAggregateInput
+    _sum?: arretes_catnatSumOrderByAggregateInput
+  }
+
+  export type arretes_catnatScalarWhereWithAggregatesInput = {
+    AND?: arretes_catnatScalarWhereWithAggregatesInput | arretes_catnatScalarWhereWithAggregatesInput[]
+    OR?: arretes_catnatScalarWhereWithAggregatesInput[]
+    NOT?: arretes_catnatScalarWhereWithAggregatesInput | arretes_catnatScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"arretes_catnat"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"arretes_catnat"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"arretes_catnat"> | string
+    epci?: StringWithAggregatesFilter<"arretes_catnat"> | string
+    libelle_epci?: StringWithAggregatesFilter<"arretes_catnat"> | string
+    departement?: StringWithAggregatesFilter<"arretes_catnat"> | string
+    libelle_departement?: StringWithAggregatesFilter<"arretes_catnat"> | string
+    region?: FloatWithAggregatesFilter<"arretes_catnat"> | number
+    ept?: StringNullableWithAggregatesFilter<"arretes_catnat"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"arretes_catnat"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"arretes_catnat"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"arretes_catnat"> | string | null
+    lib_risque_jo?: StringWithAggregatesFilter<"arretes_catnat"> | string
+    dat_pub_arrete?: StringWithAggregatesFilter<"arretes_catnat"> | string
   }
 
   export type inconfort_thermiqueCreateInput = {
@@ -33923,6 +37779,276 @@ export namespace Prisma {
     legend?: StringFieldUpdateOperationsInput | string
   }
 
+  export type agriculture_cleanedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    part_irr_SAU_2020?: number | null
+  }
+
+  export type agriculture_cleanedUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    part_irr_SAU_2020?: number | null
+  }
+
+  export type agriculture_cleanedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type agriculture_cleanedUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type agriculture_cleanedCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    part_irr_SAU_2020?: number | null
+  }
+
+  export type agriculture_cleanedUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type agriculture_cleanedUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type clc_epciCreateInput = {
+    legend?: string | null
+    epci_code?: number | null
+  }
+
+  export type clc_epciUncheckedCreateInput = {
+    pk?: number
+    legend?: string | null
+    epci_code?: number | null
+  }
+
+  export type clc_epciUpdateInput = {
+    legend?: NullableStringFieldUpdateOperationsInput | string | null
+    epci_code?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type clc_epciUncheckedUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    legend?: NullableStringFieldUpdateOperationsInput | string | null
+    epci_code?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type clc_epciCreateManyInput = {
+    pk?: number
+    legend?: string | null
+    epci_code?: number | null
+  }
+
+  export type clc_epciUpdateManyMutationInput = {
+    legend?: NullableStringFieldUpdateOperationsInput | string | null
+    epci_code?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type clc_epciUncheckedUpdateManyInput = {
+    pk?: IntFieldUpdateOperationsInput | number
+    legend?: NullableStringFieldUpdateOperationsInput | string | null
+    epci_code?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type arretes_catnatCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    lib_risque_jo: string
+    dat_pub_arrete: string
+  }
+
+  export type arretes_catnatUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    lib_risque_jo: string
+    dat_pub_arrete: string
+  }
+
+  export type arretes_catnatUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    lib_risque_jo?: StringFieldUpdateOperationsInput | string
+    dat_pub_arrete?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type arretes_catnatUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    lib_risque_jo?: StringFieldUpdateOperationsInput | string
+    dat_pub_arrete?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type arretes_catnatCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    lib_risque_jo: string
+    dat_pub_arrete: string
+  }
+
+  export type arretes_catnatUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    lib_risque_jo?: StringFieldUpdateOperationsInput | string
+    dat_pub_arrete?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type arretes_catnatUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    lib_risque_jo?: StringFieldUpdateOperationsInput | string
+    dat_pub_arrete?: StringFieldUpdateOperationsInput | string
+  }
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -36068,6 +40194,155 @@ export namespace Prisma {
 
   export type clc_territoiresSumOrderByAggregateInput = {
     pk?: SortOrder
+    region?: SortOrder
+  }
+
+  export type agriculture_cleanedCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    part_irr_SAU_2020?: SortOrder
+  }
+
+  export type agriculture_cleanedAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    part_irr_SAU_2020?: SortOrder
+  }
+
+  export type agriculture_cleanedMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    part_irr_SAU_2020?: SortOrder
+  }
+
+  export type agriculture_cleanedMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    part_irr_SAU_2020?: SortOrder
+  }
+
+  export type agriculture_cleanedSumOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    part_irr_SAU_2020?: SortOrder
+  }
+
+  export type clc_epciCountOrderByAggregateInput = {
+    pk?: SortOrder
+    legend?: SortOrder
+    epci_code?: SortOrder
+  }
+
+  export type clc_epciAvgOrderByAggregateInput = {
+    pk?: SortOrder
+    epci_code?: SortOrder
+  }
+
+  export type clc_epciMaxOrderByAggregateInput = {
+    pk?: SortOrder
+    legend?: SortOrder
+    epci_code?: SortOrder
+  }
+
+  export type clc_epciMinOrderByAggregateInput = {
+    pk?: SortOrder
+    legend?: SortOrder
+    epci_code?: SortOrder
+  }
+
+  export type clc_epciSumOrderByAggregateInput = {
+    pk?: SortOrder
+    epci_code?: SortOrder
+  }
+
+  export type arretes_catnatCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    lib_risque_jo?: SortOrder
+    dat_pub_arrete?: SortOrder
+  }
+
+  export type arretes_catnatAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+  }
+
+  export type arretes_catnatMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    lib_risque_jo?: SortOrder
+    dat_pub_arrete?: SortOrder
+  }
+
+  export type arretes_catnatMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    lib_risque_jo?: SortOrder
+    dat_pub_arrete?: SortOrder
+  }
+
+  export type arretes_catnatSumOrderByAggregateInput = {
+    index?: SortOrder
     region?: SortOrder
   }
 

@@ -6,7 +6,9 @@ import { PrismaClient as PostgresClient } from '../../../generated/client';
 
 const PrismaPostgres = new PostgresClient();
 export const GetRessourceEau = async (
-  code: string
+  code: string,
+  libelle: string,
+  type: string
 ): Promise<RessourcesEau[]> => {
   try {
     if (code === 'ZZZZZZZZZ') {

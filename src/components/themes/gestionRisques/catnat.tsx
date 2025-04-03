@@ -6,7 +6,7 @@ import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { CarteCommunes, GestionRisques, Patch4 } from '@/lib/postgres/models';
+import { ArreteCatNat, CarteCommunes, GestionRisques, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
@@ -15,8 +15,12 @@ import { useEffect, useState } from 'react';
 import CatnatDataViz from './catnatDataviz';
 import styles from './gestionRisques.module.scss';
 
+type ArreteCatNatEnriched = ArreteCatNat & {
+  annee_arrete: number;
+};
+
 export const Catnat = (props: {
-  gestionRisques: GestionRisques[];
+  gestionRisques: ArreteCatNat[];
   carteCommunes: CarteCommunes[];
   data: Array<{
     donnee: string;
@@ -27,16 +31,17 @@ export const Catnat = (props: {
   }>;
 }) => {
   const { gestionRisques, carteCommunes } = props;
+  console.log('gestionRisques in catnat', gestionRisques);
   const [patch4, setPatch4] = useState<Patch4[]>();
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
   const [sliderValue, setSliderValue] = useState<number[]>([1982, 2024]);
   const [typeRisqueValue, setTypeRisqueValue] =
     useState<CatnatTypes>('Tous types');
   const [arretesCatnatPieChart, setArretesCatnatPieChart] = useState<
-    ArreteCatNat[]
+    ArreteCatNatEnriched[]
   >([]);
   const [arretesCatnatBarChart, setArretesCatnatBarChart] = useState<
-    ArreteCatNat[]
+    ArreteCatNatEnriched[]
   >([]);
   const [catnatFilteredByType, setCatnatFilteredByType] =
     useState<GestionRisques[]>(gestionRisques);
@@ -45,8 +50,10 @@ export const Catnat = (props: {
     : [''];
 
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo')!;
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
+  const re = new RegExp('T([1-9]|1[0-2])\\b');
   const dataByCodeGeographique = CountOccByIndex<GenericObject>(
     gestionRisques,
     'code_geographique',
@@ -75,8 +82,8 @@ export const Catnat = (props: {
       typeRisqueValue === 'Tous types'
         ? gestionRisques
         : gestionRisques.filter(
-            (item) => item.lib_risque_jo === typeRisqueValue
-          );
+          (item) => item.lib_risque_jo === typeRisqueValue
+        );
     setCatnatFilteredByType(catnatFilteredByType);
     const gestionRisquesEnrichBarChart = catnatFilteredByType
       ?.map((item) => {
@@ -105,11 +112,18 @@ export const Catnat = (props: {
   }, [sliderValue, typeRisqueValue, datavizTab]);
 
   useEffect(() => {
-    void (async () => {
-      const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
-    })();
-  }, [codgeo, codepci]);
+    !(
+      type === 'petr' ||
+      type === 'pnr' ||
+      type === 'departement' ||
+      re.test(libelle)
+    )
+      ? void (async () => {
+        const temp = await GetPatch4(code);
+        setPatch4(temp);
+      })()
+      : void 0;
+  }, [code, libelle]);
 
   const secheresse = patch4 ? AlgoPatch4(patch4[0], 'secheresse_sols') : null;
   const precipitation = patch4
@@ -167,7 +181,7 @@ export const Catnat = (props: {
               )}
               <div className={styles.patch4Wrapper}>
                 {secheresse === 'Intensité très forte' ||
-                secheresse === 'Intensité forte' ? (
+                  secheresse === 'Intensité forte' ? (
                   <TagItem
                     icon={secheresseIcon}
                     indice="Fortes chaleurs"
@@ -175,7 +189,7 @@ export const Catnat = (props: {
                   />
                 ) : null}
                 {precipitation === 'Intensité très forte' ||
-                precipitation === 'Intensité forte' ? (
+                  precipitation === 'Intensité forte' ? (
                   <TagItem
                     icon={precipitationIcon}
                     indice="Fortes précipitations"
@@ -237,7 +251,7 @@ export const Catnat = (props: {
           </div>
         </div>
       ) : (
-        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        <GraphDataNotFound code={code ?? libelle} />
       )}
     </>
   );
