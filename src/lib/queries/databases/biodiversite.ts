@@ -56,7 +56,7 @@ export const GetAgricultureBio = async (
   try {
     console.time('Query Execution Time AGRICULTURE BIO');
     const re = new RegExp('T([1-9]|1[0-2])\\b'); //check if T + nombre entre 1 et 12
-    if (type === 'epci' && re.test(libelle)) {
+    if (type === 'ept' && re.test(libelle)) {
       //pour les ept
       const value = await PrismaPostgres.agriculture_bio.findMany({
         where: {
@@ -92,6 +92,8 @@ export const GetAgricultureBio = async (
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
     process.exit(1);
+  } finally {
+    await PrismaPostgres.$disconnect();
   }
 };
 
@@ -164,6 +166,8 @@ export const GetConsommationNAF = async (
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
     process.exit(1);
+  } finally {
+    await PrismaPostgres.$disconnect();
   }
 };
 
@@ -178,5 +182,7 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
     process.exit(1);
+  } finally {
+    await PrismaPostgres.$disconnect();
   }
 };

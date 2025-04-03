@@ -41,7 +41,7 @@ export const TravailExterieur = (props: {
   const travailExterieurTerritoire =
     type === 'commune'
       ? travailExterieurMapped.filter((e) => e.code_geographique === code)
-      : type === 'epci' && re.test(libelle)
+      : type === 'ept' && re.test(libelle)
         ? travailExterieurMapped.filter((e) => e.ept === libelle)
         : type === 'epci' && !re.test(libelle)
           ? travailExterieurMapped.filter((e) => e.epci === code)
