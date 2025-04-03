@@ -61,7 +61,7 @@ export const MapEspacesNaf = (props: {
   const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
 
-  const all_coordinates = carteCommunesFiltered.map(
+  const allCoordinates = carteCommunesFiltered.map(
     (el) => el.geometry.coordinates?.[0]?.[0]
   );
   const commune = type === "commune"
@@ -71,7 +71,7 @@ export const MapEspacesNaf = (props: {
     : null;
   const centerCoord: number[] = commune
     ? getCentroid(commune.geometry.coordinates?.[0][0])
-    : getCoordinates(all_coordinates);
+    : getCoordinates(allCoordinates);
 
   const style: StyleFunction<Any> = (feature) => {
     const typedFeature = feature as CommunesIndicateursDto;
