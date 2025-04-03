@@ -67,7 +67,7 @@ export const AgeBati = (props: {
   const ageBatiTerritoire =
     type === 'commune'
       ? ageBatiMapped.filter((e) => e.code_geographique === code)
-      : type === 'epci' && re.test(libelle)
+      : type === 'ept' && re.test(libelle)
         ? ageBatiMapped.filter((e) => e.ept === libelle)
         : type === 'epci' && !re.test(libelle)
           ? ageBatiMapped.filter((e) => e.epci === code)

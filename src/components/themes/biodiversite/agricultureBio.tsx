@@ -31,6 +31,7 @@ const AgricultureBiologique = (props: {
   const re = new RegExp('T([1-9]|1[0-2])\\b');
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
 
+  console.log("agricultureBio", agricultureBio);
   const nombreExploitations = agricultureBio.find(
     (obj) => obj.VARIABLE === 'saue'
   )?.nombre_2022!;
@@ -89,10 +90,11 @@ const AgricultureBiologique = (props: {
         secheresse ||
           type === 'pnr' ||
           type === 'petr' ||
-          type === 'departement'
+          type === 'departement' ||
+          type === 'ept'
           ?
           <>
-            {agricultureBio[0] ? (
+            {agricultureBio.length ? (
               <div className={styles.container}>
                 <div className="w-1/2">
                   <div className={styles.explicationWrapper}>

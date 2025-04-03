@@ -49,7 +49,7 @@ const Vegetalisation = (props: {
   const vegetalisationTerritoire =
     type === 'commune'
       ? vegetalisationMapped.filter((e) => e.code_geographique === code)
-      : type === 'epci' && re.test(libelle)
+      : type === 'ept' && re.test(libelle)
         ? vegetalisationMapped.filter((e) => e.ept === libelle)
         : type === 'epci' && !re.test(libelle)
           ? vegetalisationMapped.filter((e) => e.epci === code)

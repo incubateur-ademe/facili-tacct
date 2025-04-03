@@ -62,5 +62,7 @@ export const GetCollectivite = async (
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
     process.exit(1);
+  } finally {
+    await PrismaPostgres.$disconnect();
   }
 };

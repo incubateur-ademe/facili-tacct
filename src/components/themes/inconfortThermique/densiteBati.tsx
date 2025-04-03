@@ -34,11 +34,11 @@ export const DensiteBati = ({
     .filter((e) => !isNaN(e.properties.densite_bati));
 
   const carteTerritoire =
-    type === 'epci' && re.test(libelle)
+    type === 'ept' && re.test(libelle)
       ? communesMap.filter((e) => e.properties.ept === libelle)
       : communesMap;
 
-  const densiteTerritoire = type === 'epci' && re.test(libelle) ?
+  const densiteTerritoire = type === 'ept' && re.test(libelle) ?
     average(carteTerritoire.filter((e => e.properties.ept === libelle)).map((e) => e.properties.densite_bati))
     : type === 'commune'
       ? communesMap.find((obj) => obj.properties['code_geographique'] === code)?.properties.densite_bati
