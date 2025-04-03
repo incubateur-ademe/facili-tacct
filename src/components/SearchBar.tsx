@@ -22,7 +22,7 @@ export const SearchBarComp = () => {
   const handleClick = () => {
     if (typeTerritoire === 'epci' && re.test(searchLibelle)) {
       router.push(
-        `/thematiques?code=200054781&libelle=${searchLibelle}&type=epci`
+        `/thematiques?code=200054781&libelle=${searchLibelle}&type=ept`
       );
     } else if (searchCode.length !== 0 || searchLibelle.length !== 0) {
       searchCode.length !== 0
@@ -113,51 +113,6 @@ export const SearchBarComp = () => {
           height: 42
         }}
       >
-        {/* <Select
-          label=""
-          className={css({
-            '.fr-select': {
-              boxShadow: 'none',
-              border: '1px solid #0063CB',
-              borderRadius: '4px 0 0 4px',
-              backgroundColor: 'white',
-              color: '#0063CB',
-              '&:focus': {
-                outline: 'none'
-              }
-            }
-          })}
-          style={{ width: 370 }}
-          nativeSelectProps={{
-            onChange: (e) => {
-              setTypeTerritoire(e.target.value);
-            }
-          }}
-        >
-          <>
-            <option
-              disabled
-              hidden
-              value=""
-              selected
-              style={{ color: '#161616' }}
-            >
-              Type de territoire
-            </option>
-            <option value="commune" style={{ color: '#161616' }}>
-              Communes
-            </option>
-            <option value="epci" style={{ color: '#161616' }}>
-              EPCI/EPT
-            </option>
-            <option value="petr" style={{ color: '#161616' }}>
-              PETR
-            </option>
-            <option value="pnr" style={{ color: '#161616' }}>
-              PNR
-            </option>
-          </>
-        </Select> */}
         <SearchBar
           className={
             typeTerritoire.length

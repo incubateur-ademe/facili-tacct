@@ -7,11 +7,9 @@ import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { EpciContoursMapper } from '@/lib/mapper/epci';
 import {
   AOT40,
   CarteCommunes,
-  EpciContours,
   Patch4
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
@@ -46,24 +44,45 @@ const getCentroid = (arr: number[][]) => {
   return [centroid[1], centroid[0]];
 };
 
+const getCoordinates = (coords: number[][][]) => {
+  const coords_arr = [];
+  for (let i = 0; i < coords.length; i++) {
+    const center = getCentroid(coords[i]);
+    coords_arr.push(center);
+  }
+  return getCentroid(coords_arr);
+};
+
 const AOT40Dataviz = (props: {
   aot40: AOT40[];
-  epciContours: EpciContours[];
   carteCommunes: CarteCommunes[];
 }) => {
-  const { aot40, epciContours, carteCommunes } = props;
-  const epciContoursMap = epciContours.map(EpciContoursMapper);
+  const { aot40, carteCommunes } = props;
   const carteCommunesMap = carteCommunes.map(CommunesIndicateursMapper);
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo')!;
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
+  const re = new RegExp('T([1-9]|1[0-2])\\b');
   const [patch4, setPatch4] = useState<Patch4[]>();
-  const commune = carteCommunesMap.find(
-    (commune) => commune.properties.code_geographique === codgeo
+
+  const commune = type === "commune"
+    ? carteCommunesMap.find(
+      (commune) => commune.properties.code_geographique === code
+    ) : null;
+
+  const carteCommunesFiltered = type === "ept"
+    ? carteCommunesMap.filter(
+      (el) => el.properties.ept === libelle
+    ) : carteCommunesMap;
+
+  const allCoordinates = carteCommunesFiltered.map(
+    (el) => el.geometry.coordinates?.[0]?.[0]
   );
+
   const centerCoord: number[] = commune
     ? commune.properties.coordinates.split(',').map(Number)
-    : getCentroid(epciContoursMap[0]?.geometry?.coordinates[0][0]);
+    : getCoordinates(allCoordinates);
 
   const aot40map = aot40.map((aot) => {
     return {
@@ -94,6 +113,7 @@ const AOT40Dataviz = (props: {
     turf.point([centerCoord[0], centerCoord[1]]),
     featureCollection
   );
+  
   const neareastStation = aot40map.find(
     (aot) =>
       JSON.stringify(aot.coordinates) ===
@@ -118,11 +138,18 @@ const AOT40Dataviz = (props: {
   );
 
   useEffect(() => {
-    void (async () => {
-      const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
-    })();
-  }, [codgeo, codepci]);
+    !(
+      type === 'petr' ||
+      type === 'pnr' ||
+      type === 'departement' ||
+      re.test(libelle)
+    )
+      ? void (async () => {
+        const temp = await GetPatch4(code);
+        setPatch4(temp);
+      })()
+      : void 0;
+  }, [code, libelle]);
 
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
@@ -259,7 +286,6 @@ const AOT40Dataviz = (props: {
               <div>
                 <MapAOT40
                   aot40={aot40}
-                  epciContours={epciContoursMap}
                   carteCommunes={carteCommunesMap}
                 />
               </div>
@@ -276,7 +302,7 @@ const AOT40Dataviz = (props: {
           </div>
         </div>
       ) : (
-        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        <GraphDataNotFound code={code ?? libelle} />
       )}
     </>
   );

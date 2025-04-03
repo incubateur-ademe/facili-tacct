@@ -44,7 +44,7 @@ export const GetCommunes = async (
         FROM postgis."communes_drom" WHERE epci=${epci?.epci};`;
       console.timeEnd(`Query Execution Time carte communes ${code}`);
       return value;
-    } else if (type === 'epci' && re.test(libelle)) {
+    } else if (type === 'ept' && re.test(libelle)) {
       const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
           epci, 
@@ -277,34 +277,35 @@ export const GetErosionCotiere = async (
   }
 };
 
-export const GetEpci = async (
-  code: string,
-  codgeo?: string
-): Promise<EpciContours[]> => {
-  try {
-    console.time('Query Execution Time GetEpci');
-    if (code === 'ZZZZZZZZZ') {
-      const value = await PrismaPostgres.$queryRaw<EpciContours[]>`
-        SELECT 
-        epci, 
-        ST_AsGeoJSON(geometry) geometry
-        FROM postgis."communes_drom" WHERE code_geographique=${codgeo};`;
-      // console.log(value);
-      console.timeEnd('Query Execution Time GetEpci');
-      return value;
-    } else {
-      const value = await PrismaPostgres.$queryRaw<EpciContours[]>`
-        SELECT 
-        epci_code, 
-        ST_AsGeoJSON(geometry) geometry
-        FROM postgis."epci" WHERE epci_code=${code};`;
-      // console.log(value);
-      console.timeEnd('Query Execution Time GetEpci');
-      return value;
-    }
-  } catch (error) {
-    console.error(error);
-    await PrismaPostgres.$disconnect();
-    process.exit(1);
-  }
-};
+// export const GetEpci = async (
+//   code: string,
+//   libelle: string,
+//   type: string,
+// ): Promise<EpciContours[]> => {
+//   try {
+//     console.time('Query Execution Time GetEpci');
+//     if (code === 'ZZZZZZZZZ') {
+//       const value = await PrismaPostgres.$queryRaw<EpciContours[]>`
+//         SELECT 
+//         epci, 
+//         ST_AsGeoJSON(geometry) geometry
+//         FROM postgis."communes_drom" WHERE code_geographique=${code};`;
+//       // console.log(value);
+//       console.timeEnd('Query Execution Time GetEpci');
+//       return value;
+//     } else {
+//       const value = await PrismaPostgres.$queryRaw<EpciContours[]>`
+//         SELECT 
+//         epci_code, 
+//         ST_AsGeoJSON(geometry) geometry
+//         FROM postgis."epci" WHERE epci_code=${code};`;
+//       // console.log(value);
+//       console.timeEnd('Query Execution Time GetEpci');
+//       return value;
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     await PrismaPostgres.$disconnect();
+//     process.exit(1);
+//   }
+// };

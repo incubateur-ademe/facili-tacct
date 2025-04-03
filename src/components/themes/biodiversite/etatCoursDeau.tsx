@@ -16,11 +16,9 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { DefinitionTooltip } from '@/components/utils/HtmlTooltip';
 import { eutrophisation } from '@/lib/definitions';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { EpciContoursMapper } from '@/lib/mapper/epci';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
 import {
   CarteCommunes,
-  EpciContours,
   EtatCoursDeau,
   Patch4,
   QualiteSitesBaignade
@@ -32,26 +30,33 @@ import styles from './biodiversite.module.scss';
 
 const EtatQualiteCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeau[];
-  epciContours: EpciContours[];
   carteCommunes: CarteCommunes[];
   qualiteEauxBaignade: QualiteSitesBaignade[];
 }) => {
-  const { etatCoursDeau, epciContours, carteCommunes, qualiteEauxBaignade } =
+  const { etatCoursDeau, carteCommunes, qualiteEauxBaignade } =
     props;
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo')!;
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4[]>();
+  const re = new RegExp('T([1-9]|1[0-2])\\b');
   const etatCoursDeauMap = etatCoursDeau.map(EtatCoursDeauMapper);
-  const epciContoursMap = epciContours.map(EpciContoursMapper);
   const carteCommunesMap = carteCommunes.map(CommunesIndicateursMapper);
 
   useEffect(() => {
-    void (async () => {
-      const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
-    })();
-  }, [codgeo, codepci]);
+    !(
+      type === 'petr' ||
+      type === 'pnr' ||
+      type === 'departement' ||
+      re.test(libelle)
+    )
+      ? void (async () => {
+        const temp = await GetPatch4(code);
+        setPatch4(temp);
+      })()
+      : void 0;
+  }, [code, libelle]);
 
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
@@ -88,7 +93,7 @@ const EtatQualiteCoursDeau = (props: {
 
   return (
     <>
-      {etatCoursDeau.length && qualiteEauxBaignade.length ? (
+      {etatCoursDeau.length || qualiteEauxBaignade.length ? (
         <div className={styles.container}>
           <div className="w-5/12">
             <div className={styles.explicationWrapper}>
@@ -171,7 +176,6 @@ const EtatQualiteCoursDeau = (props: {
               <div>
                 <MapEtatCoursDeau
                   etatCoursDeau={etatCoursDeauMap}
-                  epciContours={epciContoursMap}
                   carteCommunes={carteCommunesMap}
                   qualiteEauxBaignade={qualiteEauxBaignade}
                 />
@@ -194,7 +198,7 @@ const EtatQualiteCoursDeau = (props: {
           </div>
         </div>
       ) : (
-        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        <GraphDataNotFound code={code ?? libelle} />
       )}
     </>
   );
