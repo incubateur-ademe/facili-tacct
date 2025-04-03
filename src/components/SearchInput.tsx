@@ -70,7 +70,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
   const handleClick = () => {
     if (typeTerritoire === 'epci' && re.test(searchLibelle)) {
       router.push(
-        `/thematiques?code=200054781&libelle=${searchLibelle}&type=epci`
+        `/thematiques?code=200054781&libelle=${searchLibelle}&type=ept`
       );
     } else if (searchCode.length !== 0 || searchLibelle.length !== 0) {
       searchCode.length !== 0

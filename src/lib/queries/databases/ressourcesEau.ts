@@ -46,9 +46,24 @@ export const GetRessourceEau = async (
 };
 
 export const GetQualiteEauxBaignade = async (
-  code: string
+  code: string,
+  libelle: string,
+  type: string
 ): Promise<QualiteSitesBaignade[]> => {
   try {
+    const re = new RegExp('T([1-9]|1[0-2])\\b'); //check if T + nombre entre 1 et 12
+    const column =
+      type === 'pnr'
+        ? 'libelle_pnr'
+        : type === 'petr'
+          ? 'libelle_petr'
+          : type === 'ept' && re.test(libelle)
+            ? 'ept'
+            : type === 'epci' && !re.test(libelle)
+              ? 'libelle_epci'
+              : type === 'departement'
+                ? 'libelle_departement'
+                : 'libelle_geographique';
     if (code === 'ZZZZZZZZZ') {
       console.time('Query Execution Time QUALITE EAUX BAIGNADE');
       const value = await PrismaPostgres.qualite_sites_baignade.findMany({
@@ -65,20 +80,33 @@ export const GetQualiteEauxBaignade = async (
       return value;
     } else {
       console.time('Query Execution Time QUALITE EAUX BAIGNADE');
-      const departement =
-        await PrismaPostgres.collectivites_searchbar.findFirst({
+      const departement = await PrismaPostgres.collectivites_searchbar.findMany(
+        {
           where: {
-            epci: code
-          }
-        });
+            AND: [
+              {
+                departement: { not: null }
+              },
+              {
+                [column]: libelle
+              }
+            ]
+          },
+          distinct: ['departement']
+        }
+      );
       const value = await PrismaPostgres.qualite_sites_baignade.findMany({
         where: {
-          DEP_NUM: departement?.departement ?? ''
+          DEP_NUM: {
+            in: departement
+              .map((d) => d.departement)
+              .filter((d): d is string => d !== null)
+          }
         }
       });
       console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
       return value;
-    }
+    } 
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
