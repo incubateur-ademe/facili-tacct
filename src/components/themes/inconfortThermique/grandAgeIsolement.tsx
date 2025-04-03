@@ -9,9 +9,9 @@ import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { grandAgeIsolementMapper } from '@/lib/mapper/inconfortThermique';
 import {
-  DataGrandAge,
-  InconfortThermique,
-  Patch4
+    DataGrandAge,
+    InconfortThermique,
+    Patch4
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { useSearchParams } from 'next/navigation';
@@ -86,7 +86,7 @@ export const GrandAgeIsolement = (props: {
   const grandAgeIsolementTerritoire =
     type === 'commune'
       ? grandAgeIsolementMapped.filter((e) => e.code_geographique === code)
-      : type === 'epci' && re.test(libelle)
+      : type === 'ept' && re.test(libelle)
         ? grandAgeIsolementMapped.filter((e) => e.ept === libelle)
         : type === 'epci' && !re.test(libelle)
           ? grandAgeIsolementMapped.filter((e) => e.epci === code)
