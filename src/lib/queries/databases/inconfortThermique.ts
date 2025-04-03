@@ -13,7 +13,7 @@ export const GetInconfortThermique = async (
   try {
     console.time('Query Execution Time INCONFORT THERMIQUE');
     const re = new RegExp('T([1-9]|1[0-2])\\b'); //check if T + nombre entre 1 et 12
-    if (type === 'epci' && re.test(libelle)) {
+    if (type === 'ept' && re.test(libelle)) {
       //pour les ept
       const value = await PrismaPostgres.inconfort_thermique.findMany({
         where: {
