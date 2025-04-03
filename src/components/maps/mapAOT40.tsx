@@ -1,12 +1,14 @@
 'use client';
 
-import { CommunesIndicateursDto, EpciContoursDto } from '@/lib/dto';
+import { CommunesIndicateursDto } from '@/lib/dto';
 import { AOT40 } from '@/lib/postgres/models';
 import {
   GeoJSON,
   MapContainer,
   Marker,
+  Polygon,
   Popup,
+  Rectangle,
   TileLayer
 } from '@/lib/react-leaflet';
 import { Round } from '@/lib/utils/reusableFunctions/round';
@@ -50,23 +52,51 @@ const getCentroid = (arr: number[][]) => {
   return [centroid[1], centroid[0]];
 };
 
+const getCoordinates = (coords: number[][][]) => {
+  const coords_arr = [];
+  for (let i = 0; i < coords.length; i++) {
+    const center = getCentroid(coords[i]);
+    coords_arr.push(center);
+  }
+  return getCentroid(coords_arr);
+};
+//TODO : clean all the turf functions
 export const MapAOT40 = (props: {
   aot40: AOT40[];
-  epciContours: EpciContoursDto[];
   carteCommunes: CommunesIndicateursDto[];
 }) => {
-  const { aot40, epciContours, carteCommunes } = props;
+  const { aot40, carteCommunes } = props;
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
   const markerRef = useRef(null);
 
-  const commune = carteCommunes.find(
-    (commune) => commune.properties.code_geographique === codgeo
+  const commune = type === "commune"
+    ? carteCommunes.find(
+      (commune) => commune.properties.code_geographique === code
+    ) : null;
+
+
+  const carteCommunesFiltered = type === "ept"
+    ? carteCommunes.filter(
+      (el) => el.properties.ept === libelle
+    ) : carteCommunes;
+
+
+  const allCoordinates = carteCommunesFiltered.map(
+    (el) => el.geometry.coordinates?.[0]?.[0]
   );
+
+  const union = turf.union(
+    turf.featureCollection(carteCommunesFiltered as any),
+  );
+
+  console.log("union", turf.featureCollection(carteCommunesFiltered as any).features.map(el => el.geometry.coordinates));
   const centerCoord: number[] = commune
     ? commune.properties.coordinates.split(',').map(Number)
-    : getCentroid(epciContours[0]?.geometry?.coordinates[0][0]);
+    : getCoordinates(allCoordinates);
 
   const aot40map = aot40.map((aot) => {
     return {
@@ -92,29 +122,43 @@ export const MapAOT40 = (props: {
 
   const polygonTerritoire = commune
     ? turf.multiPolygon(commune?.geometry.coordinates as Position[][][])
-    : turf.multiPolygon(
-        epciContours[0]?.geometry.coordinates as Position[][][]
-      );
+    : turf.multiPolygon(union?.geometry.coordinates as Position[][][]);
 
-  const enveloppe = turf
-    .bboxPolygon(turf.bbox(turf.envelope(polygonTerritoire)))
-    .geometry.coordinates[0].map((coord) => [coord[1], coord[0]]);
+  console.log("polygonTerritoire", polygonTerritoire.geometry.coordinates.map((coordsArray) =>
+    coordsArray.map((coord) => [coord[1], coord[0]]) as unknown as Position[]
+  ));
+
+  const newPolygonTerritoire = turf.polygon(
+    polygonTerritoire.geometry.coordinates.map((coordsArray) =>
+      coordsArray.map((coord) => [coord[1], coord[0]]) as unknown as Position[]
+    )
+  );
+  console.log('newPolygonTerritoire', newPolygonTerritoire);
+
+  const enveloppe = turf.envelope(newPolygonTerritoire).geometry.coordinates[0];
+  console.log('enveloppe', enveloppe);
+
   const pointCollection = aot40map.map((aot) => {
     return turf.point(aot.coordinates as number[]);
   });
   const featureCollection = turf.featureCollection(pointCollection);
   const nearestPoint = turf.nearestPoint(
-    turf.point([centerCoord[0], centerCoord[1]]),
+    turf.point([centerCoord[1], centerCoord[0]]),
     featureCollection
   );
   const bbox = turf.bbox(
-    turf.featureCollection([nearestPoint, turf.point(centerCoord)])
+    turf.featureCollection([nearestPoint, union])
   );
+  console.log('bbox', bbox);
   const boundsIfNoPoint = [
-    [bbox[0], bbox[1]],
-    [bbox[2], bbox[3]]
+    [bbox[2], bbox[1]],
+    [bbox[3], bbox[1]],
+    [bbox[3], bbox[0]],
+    [bbox[2], bbox[0]],
+    [bbox[2], bbox[1]]
   ];
 
+  console.log("BOUNDS", boundsIfNoPoint);
   const territoireStyle: StyleFunction<Any> = () => {
     return {
       weight: 1,
@@ -149,6 +193,7 @@ export const MapAOT40 = (props: {
       </div>`;
   };
 
+  console.log("INSIDE", turf.booleanPointInPolygon(nearestPoint, turf.polygon([enveloppe])))
   return (
     <MapContainer
       zoom={commune ? 11 : 9}
@@ -174,8 +219,18 @@ export const MapAOT40 = (props: {
         />
       )}
       <GeoJSON
-        data={commune ?? (epciContours as Any)}
+        data={commune ?? (carteCommunesFiltered as Any)}
         style={territoireStyle}
+      />
+      <Polygon
+        positions={newPolygonTerritoire.geometry.coordinates as LatLngExpression[][]}
+        pathOptions={{
+          color: 'red',
+          fillColor: 'red',
+        }}
+      />
+      <Rectangle
+        bounds={enveloppe as LatLngBoundsExpression}
       />
       <MarkerClusterGroup
         chunkedLoading
