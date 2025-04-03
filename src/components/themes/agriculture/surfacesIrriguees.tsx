@@ -9,7 +9,7 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { DefinitionTooltip } from '@/components/utils/HtmlTooltip';
 import { irrigable } from '@/lib/definitions';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
+import { AgricultureNew, CarteCommunes } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import styles from './agriculture.module.scss';
 
@@ -18,35 +18,51 @@ export const SurfacesIrriguees = ({
   agriculture
 }: {
   carteCommunes: CarteCommunes[];
-  agriculture: Agriculture[];
+  agriculture: AgricultureNew[];
 }) => {
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo');
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const carteCommunesEnriched = carteCommunes.map((el) => {
     return {
       ...el,
       surfacesIrriguees:
-        agriculture.find((item) => item.CODGEO === el.code_geographique)
+        agriculture.find((item) => item.code_geographique === el.code_geographique)
           ?.part_irr_SAU_2020 ?? NaN
     };
   });
 
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
-<<<<<<< HEAD
 
-  const surfaceTerritoire = communesMap
-    .map((obj) => obj.properties.surfacesIrriguees)
-    .map((value) => (isNaN(value!) ? 0 : value))
-    .reduce((acc, value) => acc! + value!, 0);
-=======
-  const commune = codgeo
-    ? communesMap.find((obj) => obj.properties['code_geographique'] === codgeo)
-    : undefined;
->>>>>>> 816a0d7 (db: nouvelle base carte communes)
+  const surfaceTerritoire = type === "commune" ?
+    communesMap.find((obj) => obj.properties.code_geographique === code)?.properties.surfacesIrriguees
+    : communesMap
+      .map((obj) => obj.properties.surfacesIrriguees)
+      .map((value) => (isNaN(value!) ? 0 : value))
+      .reduce((acc, value) => acc! + value!, 0);
 
   const title = (
     <>
+      <div>
+        <p>
+          Cet indicateur est calculé en divisant la superficie irriguée par la
+          surface agricole utilisée (SAU). Il est disponible sur le site AGRESTE
+          pour le recensement agricole de 2020. Plus d’un quart des observations
+          sont sous secret statistique.
+        </p>
+        <p>
+          La superficie irriguée est déterminée quel que soit le mode
+          d'irrigation (aspersion, goutte-à-goutte…) et quelle que soit
+          l'origine de l'eau. Les surfaces irriguées uniquement dans le cadre
+          d'une protection contre le gel ou d'une lutte phytosanitaire (contre
+          le phylloxera de la vigne par exemple) sont exclues de ce calcul.
+        </p>
+        <p>
+          Une surface est dite « irrigable » si elle est munie d’un moyen
+          d’irrigation.
+        </p>
+      </div>
       <div>
         <p>
           Cet indicateur est calculé en divisant la superficie irriguée par la
@@ -80,7 +96,7 @@ export const SurfacesIrriguees = ({
                   <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                     En 2020, la part de la superficie irriguée dans la SAU sur
                     votre territoire était de{' '}
-                    {Round(surfaceTerritoire! / communesMap.length, 1)} %.
+                    {type === "commune" ? surfaceTerritoire : Round(surfaceTerritoire! / communesMap.length, 1)} %.
                   </p>
                   <CustomTooltip
                     title={title}
@@ -146,7 +162,7 @@ export const SurfacesIrriguees = ({
               </div>
             </>
           ) : (
-            <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+            <GraphDataNotFound code={code ?? libelle} />
           )}
         </div>
       ) : (

@@ -14,7 +14,6 @@ import {
   QualiteSitesBaignade
 } from '@/lib/postgres/models';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
-import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
@@ -100,15 +99,13 @@ const BiodiversiteComp = ({
   const [selectedSubTab, setSelectedSubTab] = useState(
     "Consommation d'espaces NAF"
   );
-  const searchParams = useSearchParams();
-  const codepci = searchParams.get('codepci')!;
   const { css } = useStyles();
 
   useEffect(() => {
     setSelectedSubTab(
       data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
-  }, [selectedTabId, codepci]);
+  }, [selectedTabId]);
 
   return (
     <div className={styles.container}>

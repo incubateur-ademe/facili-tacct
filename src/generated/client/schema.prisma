@@ -543,3 +543,56 @@ model clc_territoires {
   @@index([geometry], map: "clc_territoires_geometry_geom_idx", type: Gist)
   @@schema("postgis")
 }
+
+model agriculture_cleaned {
+  index                BigInt  @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  part_irr_SAU_2020    Float?
+
+  @@index([code_geographique], map: "agriculture_cleaned_communes_index")
+  @@index([epci], map: "agriculture_cleaned_epci_index")
+  @@index([index], map: "ix_agriculture_cleaned_index")
+  @@schema("databases")
+}
+
+model clc_epci {
+  pk        Int                      @id @default(autoincrement())
+  legend    String?                  @db.VarChar
+  epci_code Int?
+  geometry  Unsupported("geometry")?
+
+  @@index([geometry], map: "clc_epci_geometry_geom_idx", type: Gist)
+  @@schema("postgis")
+}
+
+model arretes_catnat {
+  index                BigInt  @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  lib_risque_jo        String
+  dat_pub_arrete       String
+
+  @@index([code_geographique], map: "arretes_catnat_communes_index")
+  @@index([epci], map: "arretes_catnat_epci_index")
+  @@index([index], map: "ix_arretes_catnat_index")
+  @@schema("databases")
+}
