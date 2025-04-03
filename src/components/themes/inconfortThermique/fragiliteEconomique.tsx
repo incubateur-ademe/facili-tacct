@@ -31,7 +31,7 @@ export const FragiliteEconomique = ({
     .filter((e) => !isNaN(e.properties.precarite_logement));
 
   const carteTerritoire =
-    type === 'epci' && re.test(libelle)
+    type === 'ept' && re.test(libelle)
       ? communesMap.filter((e) => e.properties.ept === libelle)
       : communesMap;
 
