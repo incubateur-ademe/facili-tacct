@@ -170,7 +170,7 @@ export const GetClcTerritoires = async (
         FROM postgis."clc_territoires" WHERE code_geographique=${code};`;
       console.timeEnd('Query Execution Time GetClcTerritoires');
       return value;
-    } else if (type === 'epci' && re.test(libelle)) {
+    } else if (type === 'ept' && re.test(libelle)) {
       const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
         SELECT 
         legend, 

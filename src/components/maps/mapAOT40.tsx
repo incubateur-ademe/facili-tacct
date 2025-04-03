@@ -6,11 +6,10 @@ import {
   GeoJSON,
   MapContainer,
   Marker,
-  Polygon,
   Popup,
-  Rectangle,
   TileLayer
 } from '@/lib/react-leaflet';
+import { getArrayDepth } from '@/lib/utils/reusableFunctions/arrayDepth';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Any } from '@/lib/utils/types';
 import * as turf from '@turf/turf';
@@ -78,24 +77,22 @@ export const MapAOT40 = (props: {
       (commune) => commune.properties.code_geographique === code
     ) : null;
 
-
   const carteCommunesFiltered = type === "ept"
     ? carteCommunes.filter(
       (el) => el.properties.ept === libelle
-    ) : carteCommunes;
-
+    )
+    : carteCommunes;
 
   const allCoordinates = carteCommunesFiltered.map(
     (el) => el.geometry.coordinates?.[0]?.[0]
   );
 
   const union = turf.union(
-    turf.featureCollection(carteCommunesFiltered as any),
+    turf.featureCollection(carteCommunesFiltered as Any),
   );
 
-  console.log("union", turf.featureCollection(carteCommunesFiltered as any).features.map(el => el.geometry.coordinates));
   const centerCoord: number[] = commune
-    ? commune.properties.coordinates.split(',').map(Number)
+    ? commune.properties.coordinates.split(',').map(Number).sort((a, b) => a - b)
     : getCoordinates(allCoordinates);
 
   const aot40map = aot40.map((aot) => {
@@ -120,23 +117,27 @@ export const MapAOT40 = (props: {
     };
   });
 
-  const polygonTerritoire = commune
+  const polygonTerritoire = type === "commune"
     ? turf.multiPolygon(commune?.geometry.coordinates as Position[][][])
-    : turf.multiPolygon(union?.geometry.coordinates as Position[][][]);
+    : turf.multiPolygon(union?.geometry.coordinates as Position[][][])
 
-  console.log("polygonTerritoire", polygonTerritoire.geometry.coordinates.map((coordsArray) =>
-    coordsArray.map((coord) => [coord[1], coord[0]]) as unknown as Position[]
-  ));
+  // Pour certains multipolygones, on a plusieurs arrays de coordonnées si les territoires sont disjoints
+  const flattenedCoordinates = polygonTerritoire.geometry.coordinates.length > 1
+    ? polygonTerritoire.geometry.coordinates.flat(1)
+    : getArrayDepth(polygonTerritoire.geometry.coordinates) === 4
+      ? polygonTerritoire.geometry.coordinates[0]
+      : polygonTerritoire.geometry.coordinates;
 
-  const newPolygonTerritoire = turf.polygon(
-    polygonTerritoire.geometry.coordinates.map((coordsArray) =>
-      coordsArray.map((coord) => [coord[1], coord[0]]) as unknown as Position[]
+  // On inverse les coordonnées pour les passer à turf.polygon
+  // car turf.polygon attend des coordonnées au format [longitude, latitude]
+  const newPolygonTerritoire = turf.polygon(flattenedCoordinates.map(
+    el => el.map(
+      coords => [coords[1], coords[0]]
     )
+  ) as unknown as Position[][]
   );
-  console.log('newPolygonTerritoire', newPolygonTerritoire);
 
   const enveloppe = turf.envelope(newPolygonTerritoire).geometry.coordinates[0];
-  console.log('enveloppe', enveloppe);
 
   const pointCollection = aot40map.map((aot) => {
     return turf.point(aot.coordinates as number[]);
@@ -147,18 +148,16 @@ export const MapAOT40 = (props: {
     featureCollection
   );
   const bbox = turf.bbox(
-    turf.featureCollection([nearestPoint, union])
+    turf.featureCollection([nearestPoint as Any, newPolygonTerritoire])
   );
-  console.log('bbox', bbox);
   const boundsIfNoPoint = [
+    [bbox[0], bbox[3]],
+    [bbox[0], bbox[1]],
     [bbox[2], bbox[1]],
-    [bbox[3], bbox[1]],
-    [bbox[3], bbox[0]],
-    [bbox[2], bbox[0]],
-    [bbox[2], bbox[1]]
+    [bbox[2], bbox[3]],
+    [bbox[0], bbox[3]]
   ];
 
-  console.log("BOUNDS", boundsIfNoPoint);
   const territoireStyle: StyleFunction<Any> = () => {
     return {
       weight: 1,
@@ -193,7 +192,6 @@ export const MapAOT40 = (props: {
       </div>`;
   };
 
-  console.log("INSIDE", turf.booleanPointInPolygon(nearestPoint, turf.polygon([enveloppe])))
   return (
     <MapContainer
       zoom={commune ? 11 : 9}
@@ -222,7 +220,7 @@ export const MapAOT40 = (props: {
         data={commune ?? (carteCommunesFiltered as Any)}
         style={territoireStyle}
       />
-      <Polygon
+      {/* <Polygon
         positions={newPolygonTerritoire.geometry.coordinates as LatLngExpression[][]}
         pathOptions={{
           color: 'red',
@@ -231,7 +229,7 @@ export const MapAOT40 = (props: {
       />
       <Rectangle
         bounds={enveloppe as LatLngBoundsExpression}
-      />
+      /> */}
       <MarkerClusterGroup
         chunkedLoading
         removeOutsideVisibleBounds={true}
@@ -304,5 +302,6 @@ export const MapAOT40 = (props: {
         })}
       </MarkerClusterGroup>
     </MapContainer>
+
   );
 };
