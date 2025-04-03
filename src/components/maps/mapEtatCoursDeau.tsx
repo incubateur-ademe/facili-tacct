@@ -2,7 +2,6 @@
 
 import {
   CommunesIndicateursDto,
-  EpciContoursDto,
   EtatCoursDeauDto
 } from '@/lib/dto';
 import { QualiteSitesBaignade } from '@/lib/postgres/models';
@@ -30,24 +29,45 @@ const getCentroid = (arr: number[][]) => {
   );
 };
 
+const getCoordinates = (coords: number[][][]) => {
+  const coords_arr = [];
+  for (let i = 0; i < coords.length; i++) {
+    const center = getCentroid(coords[i]);
+    coords_arr.push(center);
+  }
+  return getCentroid(coords_arr);
+};
+
 export const MapEtatCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeauDto[];
-  epciContours: EpciContoursDto[];
   carteCommunes: CommunesIndicateursDto[];
   qualiteEauxBaignade?: QualiteSitesBaignade[];
 }) => {
-  const { etatCoursDeau, epciContours, carteCommunes, qualiteEauxBaignade } =
+  const { etatCoursDeau, carteCommunes, qualiteEauxBaignade } =
     props;
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo')!;
-  const commune = carteCommunes.find(
-    (commune) => commune.properties.code_geographique === codgeo
-  );
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
+
+  const commune = type === "commune"
+    ? carteCommunes.find(
+      (commune) => commune.properties.code_geographique === code
+    ) : null;
+
+  const carteCommunesFiltered = type === "ept"
+    ? carteCommunes.filter(
+      (el) => el.properties.ept === libelle
+    ) : carteCommunes;
+
+  const allCoordinates = carteCommunesFiltered.map(
+    (el) => el.geometry.coordinates?.[0]?.[0]
+  );
 
   const centerCoord: number[] = commune
     ? commune.properties.coordinates.split(',').map(Number)
-    : getCentroid(epciContours[0]?.geometry?.coordinates[0][0]);
+    : getCoordinates(allCoordinates);
 
   const getColor = (d: string | null) => {
     if (d === '1') {
@@ -78,7 +98,7 @@ export const MapEtatCoursDeau = (props: {
 
   const territoireStyle: StyleFunction<Any> = (e) => {
     return {
-      weight: e?.properties.code_geographique === codgeo ? 2 : 0.5,
+      weight: e?.properties.code_geographique === code ? 2 : 0.5,
       opacity: 0.9,
       color: '#161616',
       fillOpacity: 0
@@ -146,12 +166,17 @@ export const MapEtatCoursDeau = (props: {
           ? (centerCoord as LatLngExpression)
           : [centerCoord[1], centerCoord[0]]
       }
-      zoom={codgeo ? 12 : 10}
+      zoom={
+        type === "commune"
+          ? 12
+          : type === "ept"
+            ? 11
+            : 10
+      }
       ref={mapRef}
       style={{ height: '500px', width: '100%', cursor: 'pointer' }}
       attributionControl={false}
       zoomControl={false}
-      // minZoom={9}
     >
       {process.env.NEXT_PUBLIC_ENV === 'preprod' ? (
         <TileLayer
@@ -181,7 +206,7 @@ export const MapEtatCoursDeau = (props: {
       `}
         <GeoJSON
           ref={mapRef}
-          data={carteCommunes as Any}
+          data={carteCommunesFiltered as Any}
           style={territoireStyle}
         />
         <GeoJSON

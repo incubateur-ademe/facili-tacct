@@ -148,7 +148,7 @@ export const MapEspacesNaf = (props: {
       ) : (
         <MapContainer
           center={[centerCoord[1], centerCoord[0]]}
-          zoom={commune ? 11 : 9}
+          zoom={commune || type === "ept" ? 11 : 9}
           ref={mapRef}
           style={{ height: '500px', width: '100%' }}
           attributionControl={false}
