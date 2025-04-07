@@ -38,15 +38,15 @@ export const FragiliteEconomique = ({
   const precariteLogTerritoire =
     type === 'commune'
       ? Number(
-          carteTerritoire.find(
-            (obj) => obj.properties['code_geographique'] === code
-          )?.properties['precarite_logement']
-        )
+        carteTerritoire.find(
+          (obj) => obj.properties['code_geographique'] === code
+        )?.properties['precarite_logement']
+      )
       : Number(
-          carteTerritoire.reduce(function (a, b) {
-            return a + b.properties['precarite_logement'];
-          }, 0) / carteTerritoire.length
-        );
+        carteTerritoire.reduce(function (a, b) {
+          return a + b.properties['precarite_logement'];
+        }, 0) / carteTerritoire.length
+      );
 
   const precariteLogTerritoireSup = Number(
     communesMap.reduce(function (a, b) {
@@ -62,9 +62,9 @@ export const FragiliteEconomique = ({
       re.test(libelle)
     )
       ? void (async () => {
-          const temp = await GetPatch4(code);
-          setPatch4(temp);
-        })()
+        const temp = await GetPatch4(code);
+        setPatch4(temp);
+      })()
       : void 0;
   }, [code]);
 
@@ -96,7 +96,11 @@ export const FragiliteEconomique = ({
 
   return (
     <>
-      {communesMap && fortesChaleurs ? (
+      {(communesMap && fortesChaleurs) ||
+        type === 'pnr' ||
+        type === 'petr' ||
+        type === 'departement' ||
+        re.test(libelle) ? (
         <div className={styles.container}>
           {communesMap.length ? (
             <>
@@ -120,7 +124,7 @@ export const FragiliteEconomique = ({
                   )}
                   <div className={styles.patch4Wrapper}>
                     {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                      fortesChaleurs === 'Intensité forte' ? (
                       <TagItem
                         icon={fortesChaleursIcon}
                         indice="Fortes chaleurs"

@@ -133,7 +133,11 @@ export const PrelevementEau = (props: {
   return (
     <>
       {
-        fortesChaleurs ?
+        fortesChaleurs ||
+          type === 'pnr' ||
+          type === 'petr' ||
+          type === 'departement' ||
+          eptRegex.test(libelle) ?
           <>
             {dataParMaille.length !== 0 && sumAllYears !== 0 ? (
               <div className={styles.container}>

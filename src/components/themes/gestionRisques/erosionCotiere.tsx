@@ -9,6 +9,7 @@ import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { ErosionCotiereMapper } from '@/lib/mapper/erosionCotiere';
 import { CarteCommunes, ErosionCotiere, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { eptRegex } from '@/lib/utils/regex';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { LegendErosionCotiere } from '../../maps/legends/legendErosionCotiere';
@@ -58,7 +59,11 @@ const ErosionCotes = (props: {
   return (
     <>
       {
-        niveauxMarins ?
+        niveauxMarins ||
+          type === 'pnr' ||
+          type === 'petr' ||
+          type === 'departement' ||
+          eptRegex.test(libelle) ?
           <>
             {erosionCotiere ? (
               <div className={styles.container}>

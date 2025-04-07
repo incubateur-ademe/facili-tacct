@@ -12,6 +12,7 @@ import { VegetalisationDto } from '@/lib/dto';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { CLCTerritoires, InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
@@ -80,7 +81,11 @@ const Vegetalisation = (props: {
 
   return (
     <>
-      {vegetalisationTerritoire && secheresse ? (
+      {(vegetalisationTerritoire && secheresse) ||
+        type === 'pnr' ||
+        type === 'petr' ||
+        type === 'departement' ||
+        eptRegex.test(libelle) ? (
         <div className={styles.container}>
           {vegetalisationTerritoire.length ? (
             <>
