@@ -58,8 +58,9 @@ export const MapFeuxDeForet = (props: {
 }) => {
   const { carteCommunes, incendiesForet, sliderValue } = props;
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo');
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
 
   const cartographieData = incendiesForet.filter(
@@ -80,9 +81,9 @@ export const MapFeuxDeForet = (props: {
   const allCoordinates = carteCommunesEnriched.map(
     (el) => el.geometry.coordinates?.[0]?.[0]
   );
-  const commune = codgeo
+  const commune = type === 'commune'
     ? carteCommunesEnriched.find(
-        (el) => el.properties.code_geographique === codgeo
+        (el) => el.properties.code_geographique === code
       )
     : null;
   const centerCoord: number[] = commune
@@ -101,7 +102,7 @@ export const MapFeuxDeForet = (props: {
       fillColor: sumSurfacesParCommunes.length
         ? getColor(Sum(sumSurfacesParCommunes))
         : 'transparent',
-      weight: typedFeature.properties.code_geographique === codgeo ? 3 : 1,
+      weight: typedFeature.properties.code_geographique === code ? 3 : 1,
       opacity: 1,
       color: '#161616',
       fillOpacity: 1
@@ -164,7 +165,7 @@ export const MapFeuxDeForet = (props: {
     >;
     const codeCommune = e.sourceTarget.feature.properties.code_geographique;
     layer.setStyle({
-      weight: codeCommune === codgeo ? 3 : 1,
+      weight: codeCommune === code ? 3 : 1,
       color: '#000000',
       fillOpacity: 1
     });
@@ -181,7 +182,7 @@ export const MapFeuxDeForet = (props: {
   return (
     <>
       {carteCommunesEnriched.length === 0 ? (
-        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        <GraphDataNotFound code={code ?? libelle} />
       ) : (
         <MapContainer
           center={[centerCoord[1], centerCoord[0]]}
