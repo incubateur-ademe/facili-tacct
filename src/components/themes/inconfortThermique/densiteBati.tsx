@@ -69,15 +69,11 @@ export const DensiteBati = ({
 
   return (
     <>
-<<<<<<< HEAD:src/components/themes/inconfortThermique/densite-bati.tsx
-      {communesMap && fortesChaleurs ? (
-=======
       {fortesChaleurs ||
         type === 'pnr' ||
         type === 'petr' ||
         type === 'departement' ||
         re.test(libelle) ? (
->>>>>>> 303ebf1 (indicator: densite bati + age bati):src/components/themes/inconfortThermique/densiteBati.tsx
         <div className={styles.container}>
           {carteTerritoire.length ? (
             <>

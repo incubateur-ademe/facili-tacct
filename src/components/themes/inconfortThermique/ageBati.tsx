@@ -38,24 +38,6 @@ export const AgeBati = (props: {
 }) => {
   const { inconfortThermique } = props;
   const searchParams = useSearchParams();
-<<<<<<< HEAD
-  const codgeo = searchParams.get('codgeo');
-  const codepci = searchParams.get('codepci')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
-  const ageBatiMapped = inconfortThermique.map(ageBatiMapper);
-  const ageBatiCommune = codgeo
-    ? ageBatiMapped.filter((e) => e.code_geographique === codgeo)
-    : null;
-  const ageBatiEpci = ageBatiMapped.filter((e) => e.epci === codepci);
-  const ageBatiDptmt = ageBatiMapped;
-  const ageBatiCollectivite = ageBatiCommune ? ageBatiCommune : ageBatiEpci;
-  const averages = {
-    averageAgeBatiPre19: average(ageBatiCollectivite, 'age_bati_pre_19'),
-    averageAgeBati1945: average(ageBatiCollectivite, 'age_bati_19_45'),
-    averageAgeBati4690: average(ageBatiCollectivite, 'age_bati_46_90'),
-    averageAgeBati9105: average(ageBatiCollectivite, 'age_bati_91_05'),
-    averageAgeBatiPost06: average(ageBatiCollectivite, 'age_bati_post06')
-=======
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
@@ -79,7 +61,6 @@ export const AgeBati = (props: {
     averageAgeBati4690: average(ageBatiTerritoire, 'age_bati_46_90'),
     averageAgeBati9105: average(ageBatiTerritoire, 'age_bati_91_05'),
     averageAgeBatiPost06: average(ageBatiTerritoire, 'age_bati_post06')
->>>>>>> 303ebf1 (indicator: densite bati + age bati)
   };
 
   const constructionBefore2006 =
@@ -127,17 +108,6 @@ export const AgeBati = (props: {
   ];
 
   useEffect(() => {
-<<<<<<< HEAD
-    void (async () => {
-      const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
-    })();
-  }, [codgeo, codepci]);
-
-  const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
-=======
     !(
       type === 'petr' ||
       type === 'pnr' ||
@@ -152,43 +122,10 @@ export const AgeBati = (props: {
   }, [code, libelle]);
 
   const fortesChaleurs = patch4 ? AlgoPatch4(patch4[0], 'fortes_chaleurs') : null;
->>>>>>> 303ebf1 (indicator: densite bati + age bati)
   const secheresse = patch4 ? AlgoPatch4(patch4[0], 'secheresse_sols') : null;
 
   return (
     <>
-<<<<<<< HEAD
-      {secheresse && fortesChaleurs ? (
-        <>
-          {inconfortThermique.length &&
-          !Object.values(averages).includes(NaN) &&
-          Sum(Object.values(averages)) != 0 ? (
-            <div className={styles.container}>
-              <div className="w-2/5">
-                <div className={styles.explicationWrapper}>
-                  {codgeo ? (
-                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      Dans la commune de{' '}
-                      {ageBatiCollectivite[0]?.libelle_geographique},{' '}
-                      <b>{constructionBefore2006?.toFixed(1)} %</b> des
-                      résidences principales sont construites avant 2006.
-                    </p>
-                  ) : (
-                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      Dans l'EPCI {ageBatiCollectivite[0]?.libelle_epci},{' '}
-                      <b>{constructionBefore2006?.toFixed(1)} %</b> des
-                      résidences principales sont construites avant 2006.
-                    </p>
-                  )}
-                  <div className={styles.patch4Wrapper}>
-                    {secheresse === 'Intensité très forte' ? (
-                      <TagItem
-                        icon={secheresseIcon}
-                        indice="Sécheresse des sols"
-                        tag={secheresse}
-                      />
-                    ) : fortesChaleurs === 'Intensité très forte' ? (
-=======
       {(fortesChaleurs && secheresse) ||
         type === 'pnr' ||
         type === 'petr' ||
@@ -209,51 +146,28 @@ export const AgeBati = (props: {
                   <div className={styles.patch4Wrapper}>
                     {fortesChaleurs === 'Intensité très forte' ||
                       fortesChaleurs === 'Intensité forte' ? (
->>>>>>> 303ebf1 (indicator: densite bati + age bati)
                       <TagItem
                         icon={fortesChaleursIcon}
                         indice="Fortes chaleurs"
                         tag={fortesChaleurs}
                       />
                     ) : null}
-<<<<<<< HEAD
-                    {secheresse === 'Intensité forte' ? (
-=======
                     {secheresse === 'Intensité très forte' ||
                       secheresse === 'Intensité forte' ? (
->>>>>>> 303ebf1 (indicator: densite bati + age bati)
                       <TagItem
                         icon={secheresseIcon}
                         indice="Sécheresse des sols"
                         tag={secheresse}
                       />
-<<<<<<< HEAD
-                    ) : fortesChaleurs === 'Intensité forte' ? (
-                      <TagItem
-                        icon={fortesChaleursIcon}
-                        indice="Fortes chaleurs"
-                        tag={fortesChaleurs}
-                      />
-=======
->>>>>>> 303ebf1 (indicator: densite bati + age bati)
                     ) : null}
                   </div>
                 </div>
                 <p className="px-4">
-<<<<<<< HEAD
-                  La robustesse des logements face aux températures élevées
-                  dépend leur qualité intrinsèque (inertie thermique, présence
-                  de volets extérieurs, qualité des rénovations...). Si vous ne
-                  disposez pas d'étude spécifique sur le sujet, la période de
-                  construction, fournie par l'INSEE, vous donne une première
-                  approximation.
-=======
                   La robustesse des logements face aux températures élevées dépend
                   leur qualité intrinsèque (inertie thermique, présence de volets
                   extérieurs, qualité des rénovations...). Si vous ne disposez pas
                   d'étude spécifique sur le sujet, la période de construction,
                   fournie par l'INSEE, vous donne une première approximation.
->>>>>>> 303ebf1 (indicator: densite bati + age bati)
                 </p>
               </div>
               <div className="w-3/5">
@@ -267,19 +181,10 @@ export const AgeBati = (props: {
               </div>
             </div>
           ) : (
-<<<<<<< HEAD
-            <GraphDataNotFound code={codgeo ? codgeo : codepci} />
-          )}
-        </>
-      ) : (
-        <Loader />
-      )}
-=======
             <GraphDataNotFound code={code ?? libelle} />
           )}
         </>
       ) : <Loader />}
->>>>>>> 303ebf1 (indicator: densite bati + age bati)
     </>
   );
 };
