@@ -164,7 +164,11 @@ export const Catnat = (props: {
   return (
     <>
       {
-        secheresse ?
+        secheresse ||
+          type === 'pnr' ||
+          type === 'petr' ||
+          type === 'departement' ||
+          eptRegex.test(libelle) ?
           <>
             {gestionRisques.length !== 0 ? (
               <div className={styles.container}>

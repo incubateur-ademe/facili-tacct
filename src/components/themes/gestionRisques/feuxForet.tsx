@@ -71,7 +71,11 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
 
   return (
     <>
-      {feuxForet ? (
+      {feuxForet ||
+        type === 'pnr' ||
+        type === 'petr' ||
+        type === 'departement' ||
+        eptRegex.test(libelle) ? (
         <div className={styles.container}>
           <div className={incendiesForet.length !== 0 ? 'w-2/5' : 'w-1/2'}>
             <div className={styles.explicationWrapper}>
