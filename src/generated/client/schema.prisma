@@ -596,3 +596,35 @@ model arretes_catnat {
   @@index([index], map: "ix_arretes_catnat_index")
   @@schema("databases")
 }
+
+model feux_foret {
+  index                                 BigInt  @id
+  code_geographique                     String
+  libelle_geographique                  String
+  epci                                  String
+  libelle_epci                          String
+  departement                           String
+  libelle_departement                   String
+  region                                Float
+  ept                                   String?
+  libelle_petr                          String?
+  code_pnr                              String?
+  libelle_pnr                           String?
+  nature                                String?
+  annee                                 Float
+  surface_parcourue                     Float
+  surface_foret                         Float?
+  surface_maquis_garrigues              Float?
+  autres_surfaces_naturelles_hors_foret Float?
+  surfaces_agricoles                    Float?
+  surfaces_non_boisees                  Float?
+  surfaces_non_boisees_artificialisees  Float?
+  surfaces_non_boisees_naturelles       Float?
+  surface_autres_terres_boisees         Float?
+  autres_surfaces                       Float?
+
+  @@index([code_geographique], map: "feux_foret_communes_index")
+  @@index([epci], map: "feux_foret_epci_index")
+  @@index([index], map: "ix_feux_foret_index")
+  @@schema("databases")
+}
