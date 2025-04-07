@@ -167,6 +167,7 @@ exports.Prisma.Agriculture_cleanedScalarFieldEnum = {
   part_irr_SAU_2020: 'part_irr_SAU_2020'
 };
 
+<<<<<<< HEAD
 exports.Prisma.Aot_40ScalarFieldEnum = {
   index: 'index',
   nom_site: 'nom_site',
@@ -204,6 +205,8 @@ exports.Prisma.BiodiversiteScalarFieldEnum = {
   region: 'region'
 };
 
+=======
+>>>>>>> b825fa391c6e168eaa32bab16f65a78fc4b4c06a
 exports.Prisma.Collectivites_searchbarScalarFieldEnum = {
   index: 'index',
   code_geographique: 'code_geographique',
@@ -342,7 +345,24 @@ exports.Prisma.Consommation_espaces_nafScalarFieldEnum = {
   artcom0923: 'artcom0923'
 };
 
+<<<<<<< HEAD
 exports.Prisma.Feux_foretScalarFieldEnum = {
+=======
+exports.Prisma.North_star_metricScalarFieldEnum = {
+  value: 'value',
+  date: 'date',
+  pk: 'pk'
+};
+
+exports.Prisma.Etat_cours_d_eauScalarFieldEnum = {
+  pk: 'pk',
+  name: 'name',
+  longueur: 'longueur',
+  etateco: 'etateco'
+};
+
+exports.Prisma.Aot_40ScalarFieldEnum = {
+>>>>>>> b825fa391c6e168eaa32bab16f65a78fc4b4c06a
   index: 'index',
   code_geographique: 'code_geographique',
   libelle_geographique: 'libelle_geographique',
@@ -581,6 +601,7 @@ exports.Prisma.Communes_dromScalarFieldEnum = {
   libelle_epci: 'libelle_epci',
   departement: 'departement',
   region: 'region',
+<<<<<<< HEAD
   ept: 'ept',
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
@@ -589,6 +610,20 @@ exports.Prisma.Communes_dromScalarFieldEnum = {
   densite_bati: 'densite_bati',
   precarite_logement: 'precarite_logement',
   surface: 'surface'
+=======
+  nature: 'nature',
+  annee: 'annee',
+  surface_parcourue: 'surface_parcourue',
+  surface_foret: 'surface_foret',
+  surface_maquis_garrigues: 'surface_maquis_garrigues',
+  autres_surfaces_naturelles_hors_foret: 'autres_surfaces_naturelles_hors_foret',
+  surfaces_agricoles: 'surfaces_agricoles',
+  surfaces_non_boisees: 'surfaces_non_boisees',
+  surfaces_non_boisees_artificialisees: 'surfaces_non_boisees_artificialisees',
+  surfaces_non_boisees_naturelles: 'surfaces_non_boisees_naturelles',
+  surface_autres_terres_boisees: 'surface_autres_terres_boisees',
+  autres_surfaces: 'autres_surfaces'
+>>>>>>> b825fa391c6e168eaa32bab16f65a78fc4b4c06a
 };
 
 exports.Prisma.EpciScalarFieldEnum = {
@@ -629,6 +664,28 @@ exports.Prisma.UsersScalarFieldEnum = {
   role: 'role'
 };
 
+exports.Prisma.Clc_territoiresScalarFieldEnum = {
+  pk: 'pk',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  legend: 'legend'
+};
+
+exports.Prisma.Clc_epciScalarFieldEnum = {
+  pk: 'pk',
+  legend: 'legend',
+  epci_code: 'epci_code'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -646,6 +703,21 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
+<<<<<<< HEAD
+=======
+  inconfort_thermique: 'inconfort_thermique',
+  collectivites_searchbar: 'collectivites_searchbar',
+  biodiversite: 'biodiversite',
+  gestion_risques: 'gestion_risques',
+  communes_drom: 'communes_drom',
+  ressources_eau: 'ressources_eau',
+  agriculture_bio: 'agriculture_bio',
+  erosion_cotiere: 'erosion_cotiere',
+  epci: 'epci',
+  surfaces_protegees: 'surfaces_protegees',
+  spatial_ref_sys: 'spatial_ref_sys',
+  consommation_espaces_naf: 'consommation_espaces_naf',
+>>>>>>> b825fa391c6e168eaa32bab16f65a78fc4b4c06a
   north_star_metric: 'north_star_metric',
   agriculture: 'agriculture',
   agriculture_bio: 'agriculture_bio',
@@ -658,6 +730,7 @@ exports.Prisma.ModelName = {
   feux_foret: 'feux_foret',
   gestion_risques: 'gestion_risques',
   incendies_foret: 'incendies_foret',
+<<<<<<< HEAD
   inconfort_thermique: 'inconfort_thermique',
   patch4c: 'patch4c',
   qualite_sites_baignade: 'qualite_sites_baignade',
@@ -671,6 +744,11 @@ exports.Prisma.ModelName = {
   etat_cours_d_eau: 'etat_cours_d_eau',
   spatial_ref_sys: 'spatial_ref_sys',
   users: 'users'
+=======
+  patch4c: 'patch4c',
+  clc_territoires: 'clc_territoires',
+  clc_epci: 'clc_epci'
+>>>>>>> b825fa391c6e168eaa32bab16f65a78fc4b4c06a
 };
 
 /**

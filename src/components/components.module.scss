@@ -146,6 +146,7 @@
     justify-content: space-between;
     gap: 1rem;
     align-items: center;
+    flex-wrap: wrap;
     .indiceLeft {
         display: flex;
         flex-direction: row;

@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     --heightWrapper: 375px;
-    --height-notice: 543px
+    --height-notice: 543px;
     color: #3a3a3a;
 }
 
@@ -66,17 +66,18 @@
 }
 
 .cardWrapper {
-    display: flex !important;
+    display: flex;
     flex-direction: row;
-    justify-content: space-between !important;
-    padding: 12em 3.75em 3.75em !important;
-    gap: 1.5em !important;
+    justify-content: space-between;
+    padding: 12em 3.75em 3.75em;
+    gap: 1.5em;
 }
 
 .card {
     display: flex;
     flex-direction: row;
     max-width: 45%;
+    height: inherit;
     gap: 2rem;
     background-color: white !important;
     border-radius: 8px;
@@ -90,6 +91,11 @@
         display: flex;
         flex-direction: column;
         padding: 1em;
+    }
+    .cardImage {
+        border-radius: 0.5em 0 0 0.5em;
+        height: inherit;
+        width: 100%;
     }
 }
 
@@ -105,28 +111,6 @@
     justify-content: center;
     max-width: 40%;
     padding: 2em 0;
-}
-
-@media screen and (max-width: 1280px) {
-    .constellationWrapper {
-        margin: 0;
-    }
-}
-@media screen and (max-width: 900px) {
-    .constellationWrapper {
-        flex-direction: column;
-        align-items: center;
-    }
-    .constellationText {
-        max-width: 80%;
-    }
-    .cardWrapper {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .card {
-        max-width: 80dvw;
-    }
 }
 
 .cookieConsentWrapper {
@@ -176,11 +160,48 @@
     }
 }
 
+@media screen and (max-width: 1280px) {
+    .constellationWrapper {
+        margin: 0;
+    }
+}
+@media screen and (max-width: 1015px) {
+    .constellationWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .constellationText {
+        max-width: 80%;
+    }
+    .cardWrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .card {
+        max-width: 80dvw;
+        width: -webkit-fill-available;
+        width: -moz-available;
+        width: stretch;
+        .cardImage {
+            max-height: 400px;
+            max-width: 138px;
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .card {
+        .cardImage {
+            display: none;
+        }
+    }
+}
+
 @media screen and (max-width: 1135px) {
     .collectiviteWrapper {
         width: 90dvw;
         max-width: none;
-        left: calc(49dvw - 45dvw);
+        left: calc(50dvw - 45dvw);
         // top: var(--height-notice) + 6em;
     }
 }

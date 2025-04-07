@@ -47,7 +47,7 @@ export const AccordionHeader = ({ patch4 }: { patch4: Patch4 }) => {
         </p>
       </div>
       <div className={styles.wrapper}>
-        <div className="flex flex-col gap-4 w-[512px]">
+        <div className={styles.indiceCol}>
           <TagItem
             icon={fortesChaleursIcon}
             indice="Fortes chaleurs"
@@ -66,7 +66,7 @@ export const AccordionHeader = ({ patch4 }: { patch4: Patch4 }) => {
             />
           )}
         </div>
-        <div className="flex flex-col gap-4">
+        <div className={styles.indiceCol}>
           <TagItem
             icon={precipitationIcon}
             indice="Fortes précipitations"
