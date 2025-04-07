@@ -1,20 +1,19 @@
 'use client';
 
+import { Catnat } from '@/components/themes/gestionRisques/catnat';
+import ErosionCotes from '@/components/themes/gestionRisques/erosionCotiere';
+import { FeuxForet } from '@/components/themes/gestionRisques/feuxForet';
+import { TabTooltip } from '@/components/utils/TabTooltip';
+import {
+  ArreteCatNat,
+  CarteCommunes,
+  ErosionCotiere,
+  IncendiesForet
+} from '@/lib/postgres/models';
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
-import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
-
-import { Catnat } from '@/components/themes/gestionRisques/catnat';
-import ErosionCotes from '@/components/themes/gestionRisques/erosionCotiere';
-import { TabTooltip } from '@/components/utils/TabTooltip';
-import {
-  CarteCommunes,
-  EpciContours,
-  ErosionCotiere,
-  GestionRisques
-} from '@/lib/postgres/models';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -26,10 +25,10 @@ interface Props {
     risque: string;
     titre: string;
   }>;
-  gestionRisques: GestionRisques[];
+  gestionRisques: ArreteCatNat[];
   carteCommunes: CarteCommunes[];
-  erosionCotiere: ErosionCotiere[][];
-  epciContours: EpciContours[];
+  erosionCotiere: ErosionCotiere[];
+  incendiesForet: IncendiesForet[];
 }
 
 const allComps = [
@@ -51,12 +50,18 @@ const allComps = [
     titre: 'Érosion côtière',
     Component: ({
       erosionCotiere,
-      epciContours
+      carteCommunes
     }: Props & { activeDataTab: string }) => (
       <ErosionCotes
-        erosionCotiere={erosionCotiere[1]}
-        epciContours={epciContours}
+        erosionCotiere={erosionCotiere}
+        carteCommunes={carteCommunes}
       />
+    )
+  },
+  {
+    titre: 'Feux de forêt',
+    Component: ({ incendiesForet }: Props & { activeDataTab: string }) => (
+      <FeuxForet incendiesForet={incendiesForet} />
     )
   }
 ];
@@ -66,14 +71,12 @@ const GestionRisquesComp = ({
   gestionRisques,
   carteCommunes,
   erosionCotiere,
-  epciContours
+  incendiesForet
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState(
     'Arrêtés catastrophes naturelles'
   );
   const [selectedSubTab, setSelectedSubTab] = useState('catnat');
-  const searchParams = useSearchParams();
-  const codepci = searchParams.get('codepci')!;
   const { isDark } = useIsDark();
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
@@ -96,7 +99,7 @@ const GestionRisquesComp = ({
     setSelectedSubTab(
       data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
-  }, [selectedTabId, codepci]);
+  }, [selectedTabId]);
 
   return (
     <div className={styles.container}>
@@ -113,7 +116,11 @@ const GestionRisquesComp = ({
               />
             )
           },
-          ...(erosionCotiere[0].length > 0
+          {
+            tabId: 'Feux de forêt',
+            label: 'Feux de forêt'
+          },
+          ...(erosionCotiere.length > 0
             ? [
                 {
                   tabId: 'Érosion côtière',
@@ -160,21 +167,6 @@ const GestionRisquesComp = ({
         })}
       >
         <div className={styles.formContainer}>
-          {/* <div className={styles.titles}>
-            {data
-              .filter(el => el.facteurSensibilite === selectedTabId)
-              .map((element, i) => (
-                <button
-                  key={i}
-                  className={selectedSubTab === element.titre ? styles.selectedButton : styles.button}
-                  onClick={() => {
-                    setSelectedSubTab(element.titre);
-                  }}
-                >
-                  {element.titre}
-                </button>
-              ))}
-          </div> */}
           <div className={styles.bubble}>
             <div className={styles.bubbleContent} style={darkClass}>
               {(() => {
@@ -190,7 +182,7 @@ const GestionRisquesComp = ({
                       activeDataTab={selectedSubTab}
                       carteCommunes={carteCommunes}
                       erosionCotiere={erosionCotiere}
-                      epciContours={epciContours}
+                      incendiesForet={incendiesForet}
                     />
                   </Suspense>
                 );

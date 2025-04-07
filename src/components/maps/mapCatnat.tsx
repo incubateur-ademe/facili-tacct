@@ -104,15 +104,17 @@ export const MapCatnat = (props: {
 }) => {
   const { carteCommunes, typeRisqueValue } = props;
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo');
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
   const allCoordinates = carteCommunes.map(
     (el) => el.geometry.coordinates?.[0]?.[0]
   );
-  const commune = codgeo
-    ? carteCommunes.find((el) => el.properties.code_geographique === codgeo)
+  const commune = type === 'commune'
+    ? carteCommunes.find((el) => el.properties.code_geographique === code)
     : null;
+
   const centerCoord: number[] = commune
     ? getCentroid(commune.geometry.coordinates?.[0][0])
     : getCoordinates(allCoordinates);
@@ -191,7 +193,7 @@ export const MapCatnat = (props: {
     const layer = e.target as FeatureGroup<
       CommunesIndicateursDto['properties']
     >;
-    const commune_name =
+    const communeName =
       layer.feature && 'properties' in layer.feature
         ? layer.feature.properties.libelle_geographique
         : undefined;
@@ -206,7 +208,7 @@ export const MapCatnat = (props: {
       color: '#0D2100',
       fillOpacity: 0.9
     });
-    layer.bindTooltip(CustomTooltip(restCatnat, commune_name as string), {
+    layer.bindTooltip(CustomTooltip(restCatnat, communeName as string), {
       direction: e.originalEvent.offsetY > 250 ? 'top' : 'bottom',
       opacity: 0.97
     });
@@ -237,7 +239,7 @@ export const MapCatnat = (props: {
   return (
     <>
       {carteCommunes === null ? (
-        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        <GraphDataNotFound code={code ?? libelle} />
       ) : (
         <MapContainer
           center={[centerCoord[1], centerCoord[0]]}
