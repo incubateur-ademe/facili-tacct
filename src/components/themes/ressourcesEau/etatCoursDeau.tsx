@@ -83,7 +83,11 @@ const EtatQualiteCoursDeau = (props: {
   return (
     <>
       {
-        fortesChaleurs && precipitation ?
+        (fortesChaleurs && precipitation) ||
+          type === 'pnr' ||
+          type === 'petr' ||
+          type === 'departement' ||
+          eptRegex.test(libelle) ?
           <>
             {etatCoursDeau.length ? (
               <div className={styles.container}>
