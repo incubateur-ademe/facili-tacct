@@ -181,6 +181,6 @@
         width: 90dvw;
         max-width: none;
         left: calc(49dvw - 45dvw);
-        top: calc(var(--heightWrapper) + 6em);
+        // top: var(--height-notice) + 6em;
     }
 }
