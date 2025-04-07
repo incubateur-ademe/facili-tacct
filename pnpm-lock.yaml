@@ -144,15 +144,6 @@ importers:
         specifier: ^4.9.14
         version: 4.9.15(@emotion/react@11.14.0(@types/react@19.0.8)(react@19.0.0))(@mui/material@6.4.2(@emotion/react@11.14.0(@types/react@19.0.8)(react@19.0.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.0.8)(react@19.0.0))(@types/react@19.0.8)(react@19.0.0))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@types/react@19.0.8)(react@19.0.0)
     devDependencies:
-<<<<<<< HEAD
-=======
-      '@commitlint/cli':
-        specifier: ^19.6.0
-        version: 19.6.1(@types/node@20.17.16)(typescript@5.7.3)
-      '@commitlint/config-conventional':
-        specifier: ^19.6.0
-        version: 19.6.0
->>>>>>> eaf3441 (feat: nouveaux territoires requetes + travail ext)
       '@creedengo/eslint-plugin':
         specifier: ^2.0.0
         version: 2.0.0(eslint@8.57.1)
@@ -358,15 +349,6 @@ packages:
   '@creedengo/eslint-plugin@2.0.0':
     resolution: {integrity: sha512-1CIpneqooCuiPw1LP3rXhShrzw7nkJh6dDT3jbRCcGtNbBMj4uyq6ZFWYgYviW9lvK1bR/JkvSk5nlfk6w7Jjw==}
     engines: {node: ^14.17.0 || ^16.0.0 || >= 18.0.0}
-    peerDependencies:
-      eslint: '>=7'
-
-  '@creedengo/eslint-plugin@2.0.0':
-    resolution:
-      {
-        integrity: sha512-1CIpneqooCuiPw1LP3rXhShrzw7nkJh6dDT3jbRCcGtNbBMj4uyq6ZFWYgYviW9lvK1bR/JkvSk5nlfk6w7Jjw==
-      }
-    engines: { node: ^14.17.0 || ^16.0.0 || >= 18.0.0 }
     peerDependencies:
       eslint: '>=7'
 
@@ -5454,10 +5436,6 @@ snapshots:
     dependencies:
       tsafe: 1.8.5
       yargs-parser: 21.1.1
-
-  '@creedengo/eslint-plugin@2.0.0(eslint@8.57.1)':
-    dependencies:
-      eslint: 8.57.1
 
   '@creedengo/eslint-plugin@2.0.0(eslint@8.57.1)':
     dependencies:
