@@ -19,7 +19,6 @@ model north_star_metric {
   @@schema("analytics")
 }
 
-<<<<<<< HEAD
 model agriculture {
   index             BigInt @id
   CODGEO            String
@@ -32,110 +31,6 @@ model agriculture {
   part_over_55      Float?
 
   @@index([index], map: "ix_agriculture_index")
-=======
-model collectivites_searchbar {
-  index                BigInt  @id
-  code_geographique    String?
-  libelle_geographique String?
-  epci                 String?
-  libelle_epci         String?
-  departement          String?
-  libelle_departement  String?
-  region               String?
-  ept                  String?
-  libelle_petr         String?
-  code_pnr             String?
-  libelle_pnr          String?
-  search_code          String?
-  search_libelle       String
-
-  @@index([index], map: "ix_collectivites_searchbar_index")
-  @@index([search_code], map: "collectivites_searchbar_search_code_index")
-  @@index([search_libelle], map: "collectivites_searchbar_search_libelle_index")
-  @@schema("databases")
-}
-
-model biodiversite {
-  index                BigInt  @id
-  code_geographique    String?
-  type_touristique     String?
-  libelle_geographique String?
-  epci                 String?
-  libelle_epci         String?
-  departement          String?
-  region               Float?
-
-  @@index([index], map: "ix_biodiversite_index")
-  @@schema("databases")
-}
-
-model gestion_risques {
-  index                BigInt @id
-  code_geographique    String
-  lib_risque_jo        String
-  dat_pub_arrete       String
-  libelle_geographique String
-  epci                 String
-  libelle_epci         String
-  departement          String
-  region               Float
-
-  @@index([index], map: "ix_gestion_risques_index")
-  @@index([code_geographique], map: "gestion_risques_communes_index")
-  @@index([epci], map: "gestion_risques_epci_index")
-  @@schema("databases")
-}
-
-model communes_drom {
-  pk                   Int                     @id @default(autoincrement())
-  code_geographique    String                  @db.VarChar
-  libelle_geographique String                  @db.VarChar
-  epci                 String                  @db.VarChar
-  libelle_epci         String                  @db.VarChar
-  departement          String                  @db.VarChar
-  region               BigInt
-  ept                  String?                 @db.VarChar
-  libelle_petr         String?                 @db.VarChar
-  code_pnr             String?                 @db.VarChar
-  libelle_pnr          String?                 @db.VarChar
-  coordinates          String                  @db.VarChar
-  densite_bati         Float?
-  precarite_logement   Float?
-  surface              Float?
-  geometry             Unsupported("geometry")
-
-  @@index([geometry], map: "communes_drom_geometry_geom_idx", type: Gist)
-  @@schema("postgis")
-}
-
-model ressources_eau {
-  index                BigInt  @id
-  code_geographique    String
-  LIBELLE_SOUS_CHAMP   String?
-  SOUS_CHAMP           String?
-  A2020                Float?
-  A2019                Float?
-  A2018                Float?
-  A2017                Float?
-  A2016                Float?
-  A2015                Float?
-  A2014                Float?
-  A2013                Float?
-  A2012                Float?
-  A2011                Float?
-  A2010                Float?
-  A2009                Float?
-  A2008                Float?
-  libelle_geographique String?
-  epci                 String?
-  libelle_epci         String?
-  departement          String?
-  region               Float?
-
-  @@index([index], map: "ix_ressources_eau_index")
-  @@index([epci], map: "ressources_eau_codepci_index")
-  @@index([departement], map: "ressources_eau_departement_index", type: Brin)
->>>>>>> b825fa391c6e168eaa32bab16f65a78fc4b4c06a
   @@schema("databases")
 }
 
@@ -375,7 +270,6 @@ model consommation_espaces_naf {
   @@schema("databases")
 }
 
-<<<<<<< HEAD
 model feux_foret {
   index                                 BigInt  @id
   code_geographique                     String
@@ -405,36 +299,6 @@ model feux_foret {
   @@index([code_geographique], map: "feux_foret_communes_index")
   @@index([epci], map: "feux_foret_epci_index")
   @@index([index], map: "ix_feux_foret_index")
-=======
-model north_star_metric {
-  value String   @db.VarChar(32)
-  date  DateTime @db.Timestamp(6)
-  pk    Int      @id
-
-  @@schema("analytics")
-}
-
-model etat_cours_d_eau {
-  pk       Int                     @id @default(autoincrement())
-  name     String                  @db.VarChar
-  longueur Float
-  etateco  String?                 @db.VarChar
-  geometry Unsupported("geometry")
-
-  @@index([geometry], map: "etat_cours_d_eau_geometry_geom_idx", type: Gist)
-  @@schema("postgis")
-}
-
-model aot_40 {
-  index               BigInt @id
-  nom_site            String @map("nom site")
-  type_d_implantation String @map("type d'implantation")
-  valeur_brute        Float  @map("valeur brute")
-  Latitude            Float
-  Longitude           Float
-
-  @@index([index], map: "ix_aot_40_index")
->>>>>>> b825fa391c6e168eaa32bab16f65a78fc4b4c06a
   @@schema("databases")
 }
 
@@ -567,7 +431,6 @@ model patch4c {
   @@schema("databases")
 }
 
-<<<<<<< HEAD
 model qualite_sites_baignade {
   index    BigInt  @id
   DEP_NOM  String
@@ -662,8 +525,6 @@ model clc_epci {
   @@schema("postgis")
 }
 
-=======
->>>>>>> b825fa391c6e168eaa32bab16f65a78fc4b4c06a
 model clc_territoires {
   pk                   Int                     @id @default(autoincrement())
   code_geographique    String                  @db.VarChar
@@ -684,7 +545,6 @@ model clc_territoires {
   @@schema("postgis")
 }
 
-<<<<<<< HEAD
 model communes_drom {
   pk                   Int                     @id @default(autoincrement())
   code_geographique    String                  @db.VarChar
@@ -761,14 +621,3 @@ model users {
 
   @@schema("ressources")
 }
-=======
-model clc_epci {
-  pk        Int                      @id @default(autoincrement())
-  legend    String?                  @db.VarChar
-  epci_code Int?
-  geometry  Unsupported("geometry")?
-
-  @@index([geometry], map: "clc_epci_geometry_geom_idx", type: Gist)
-  @@schema("postgis")
-}
->>>>>>> b825fa391c6e168eaa32bab16f65a78fc4b4c06a
