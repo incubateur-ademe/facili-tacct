@@ -20,7 +20,7 @@ export const GetRessourceEau = async (
       });
       console.timeEnd('Query Execution Time RESSOURCES EAUX');
       return value;
-    } else {
+    } else if (type === 'epci') {
       console.time('Query Execution Time PRELEVEMENT EAUX');
       const departement = await PrismaPostgres.ressources_eau.findFirst({
         where: {
@@ -38,7 +38,7 @@ export const GetRessourceEau = async (
       console.timeEnd('Query Execution Time PRELEVEMENT EAUX 2');
 
       return value;
-    }
+    } else return [];
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
