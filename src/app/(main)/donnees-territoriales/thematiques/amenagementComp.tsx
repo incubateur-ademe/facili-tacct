@@ -1,12 +1,11 @@
 'use client';
 
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
-import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 
 import { ConsommationEspacesNAF } from '@/components/themes/amenagement/consommationEspacesNAF';
 import { TabTooltip } from '@/components/utils/TabTooltip';
-import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
+import { ConsommationNAF } from '@/lib/postgres/models';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -19,35 +18,28 @@ interface Props {
     titre: string;
   }>;
   consommationNAF: ConsommationNAF[];
-  carteCommunes: CarteCommunes[];
 }
 
 const allComps = [
   {
     titre: "Consommation d'espaces NAF",
     Component: ({
-      data,
-      consommationNAF,
-      carteCommunes
+      consommationNAF
     }: Props & { activeDataTab: string }) => (
       <ConsommationEspacesNAF
-        data={data}
         consommationNAF={consommationNAF}
-        carteCommunes={carteCommunes}
       />
     )
   }
 ];
 
-const AmenagementComp = ({ data, carteCommunes, consommationNAF }: Props) => {
+const AmenagementComp = ({ data, consommationNAF }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState(
     "Consommation d'espaces NAF"
   );
   const [selectedSubTab, setSelectedSubTab] = useState(
     "Consommation d'espaces NAF"
   );
-  const searchParams = useSearchParams();
-  const codepci = searchParams.get('codepci')!;
   const { css } = useStyles();
 
   useEffect(() => {
@@ -61,7 +53,7 @@ const AmenagementComp = ({ data, carteCommunes, consommationNAF }: Props) => {
     setSelectedSubTab(
       data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
-  }, [selectedTabId, codepci]);
+  }, [selectedTabId]);
 
   return (
     <div className={styles.container}>
@@ -123,7 +115,6 @@ const AmenagementComp = ({ data, carteCommunes, consommationNAF }: Props) => {
                     <Component
                       data={data}
                       activeDataTab={selectedSubTab}
-                      carteCommunes={carteCommunes}
                       consommationNAF={consommationNAF}
                     />
                   </Suspense>

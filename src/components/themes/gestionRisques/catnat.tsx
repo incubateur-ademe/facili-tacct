@@ -2,12 +2,14 @@
 import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { ArreteCatNat, CarteCommunes, GestionRisques, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { eptRegex } from '@/lib/utils/regex';
 import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
@@ -31,7 +33,6 @@ export const Catnat = (props: {
   }>;
 }) => {
   const { gestionRisques, carteCommunes } = props;
-  console.log('gestionRisques in catnat', gestionRisques);
   const [patch4, setPatch4] = useState<Patch4[]>();
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
   const [sliderValue, setSliderValue] = useState<number[]>([1982, 2024]);
@@ -53,7 +54,6 @@ export const Catnat = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const re = new RegExp('T([1-9]|1[0-2])\\b');
   const dataByCodeGeographique = CountOccByIndex<GenericObject>(
     gestionRisques,
     'code_geographique',
@@ -116,7 +116,7 @@ export const Catnat = (props: {
       type === 'petr' ||
       type === 'pnr' ||
       type === 'departement' ||
-      re.test(libelle)
+      eptRegex.test(libelle)
     )
       ? void (async () => {
         const temp = await GetPatch4(code);
@@ -163,97 +163,103 @@ export const Catnat = (props: {
 
   return (
     <>
-      {gestionRisques.length !== 0 ? (
-        <div className={styles.container}>
-          <div className="w-1/3">
-            <div className={styles.explicationWrapper}>
-              {dataByCodeGeographique[0]?.sumCatnat === 0 ? (
-                <p>
-                  L’absence d’arrêté CatNat ne signifie pas que votre territoire
-                  n’a jamais connu d’événements climatiques importants, ni subis
-                  de dégâts significatifs.
-                </p>
-              ) : (
-                <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                  Depuis 1982, <b>{gestionRisques.length}</b> événement(s)
-                  climatique(s) sont à l’origine d’une reconnaissance de l'état
-                  de catastrophe naturelle sur votre territoire.
-                </p>
-              )}
-              <div className={styles.patch4Wrapper}>
-                {secheresse === 'Intensité très forte' ||
-                  secheresse === 'Intensité forte' ? (
-                  <TagItem
-                    icon={secheresseIcon}
-                    indice="Fortes chaleurs"
-                    tag={secheresse}
+      {
+        secheresse ?
+          <>
+            {gestionRisques.length !== 0 ? (
+              <div className={styles.container}>
+                <div className="w-1/3">
+                  <div className={styles.explicationWrapper}>
+                    {dataByCodeGeographique[0]?.sumCatnat === 0 ? (
+                      <p>
+                        L’absence d’arrêté CatNat ne signifie pas que votre territoire
+                        n’a jamais connu d’événements climatiques importants, ni subis
+                        de dégâts significatifs.
+                      </p>
+                    ) : (
+                      <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                        Depuis 1982, <b>{gestionRisques.length}</b> événement(s)
+                        climatique(s) sont à l’origine d’une reconnaissance de l'état
+                        de catastrophe naturelle sur votre territoire.
+                      </p>
+                    )}
+                    <div className={styles.patch4Wrapper}>
+                      {secheresse === 'Intensité très forte' ||
+                        secheresse === 'Intensité forte' ? (
+                        <TagItem
+                          icon={secheresseIcon}
+                          indice="Fortes chaleurs"
+                          tag={secheresse}
+                        />
+                      ) : null}
+                      {precipitation === 'Intensité très forte' ||
+                        precipitation === 'Intensité forte' ? (
+                        <TagItem
+                          icon={precipitationIcon}
+                          indice="Fortes précipitations"
+                          tag={precipitation}
+                        />
+                      ) : null}
+                    </div>
+                    <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
+                  </div>
+                  <div className="px-4">
+                    <p>
+                      Chaque hausse de 0,5 °C de la température mondiale est
+                      susceptible d’augmenter l'intensité et/ou la fréquence des
+                      phénomènes extrêmes. Entre 1900 et début 2022, la France
+                      métropolitaine a concentré 14 % des événements naturels très
+                      graves recensés en Europe, en particulier des inondations et des
+                      cyclones/tempêtes. Avec l’Italie, elle figure parmi les pays les
+                      plus touchés, loin devant les autres pays européens.
+                    </p>
+                    <p>
+                      ⇒ 257 500, c’est le nombre d'arrêtés liés aux événements
+                      climatiques depuis la création du régime CatNat en 1982. Les
+                      inondations représentent plus de 56 % du total.
+                    </p>
+                    <p>
+                      ⇒ 8 : c'est le nombre moyen d’arrêtés CatNat par commune entre
+                      1982 et septembre 2024. Mais une commune détient le triste
+                      record de 135 arrêtés sur cette période !
+                    </p>
+                    <p>
+                      ⇒ 10,6 milliards d’euros : c’est le coût d’indemnisations des
+                      dommages liés à des aléas climatiques en France en 2022.
+                    </p>
+                    <p>
+                      ⇒ 4,8 milliards d’euros : montant moyen annuel des pertes
+                      économiques directes attribuées aux événements naturels en
+                      France entre 2015 et 2019, soit : <br></br>- deux fois le budget
+                      annuel des Agences de l’eau, ou <br></br>- 20 fois les besoins
+                      annuels pour adapter les biens exposés au risque d’érosion en
+                      France au cours des 25 prochaines années (estimation de
+                      l’Inspection générale de l'environnement et du développement
+                      durable).
+                    </p>
+                  </div>
+                </div>
+                <div className="w-2/3">
+                  <CatnatDataViz
+                    carteCommunes={communesMap}
+                    datavizTab={datavizTab}
+                    setDatavizTab={setDatavizTab}
+                    typeRisqueValue={typeRisqueValue}
+                    gestionRisquesBarChart={arretesCatnatBarChart}
+                    gestionRisquesPieChart={arretesCatnatPieChart}
+                    typesRisques={typesRisques}
+                    setTypeRisqueValue={setTypeRisqueValue}
+                    setSliderValue={setSliderValue}
+                    sliderValue={sliderValue}
                   />
-                ) : null}
-                {precipitation === 'Intensité très forte' ||
-                  precipitation === 'Intensité forte' ? (
-                  <TagItem
-                    icon={precipitationIcon}
-                    indice="Fortes précipitations"
-                    tag={precipitation}
-                  />
-                ) : null}
+                </div>
               </div>
-              <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
-            </div>
-            <div className="px-4">
-              <p>
-                Chaque hausse de 0,5 °C de la température mondiale est
-                susceptible d’augmenter l'intensité et/ou la fréquence des
-                phénomènes extrêmes. Entre 1900 et début 2022, la France
-                métropolitaine a concentré 14 % des événements naturels très
-                graves recensés en Europe, en particulier des inondations et des
-                cyclones/tempêtes. Avec l’Italie, elle figure parmi les pays les
-                plus touchés, loin devant les autres pays européens.
-              </p>
-              <p>
-                ⇒ 257 500, c’est le nombre d'arrêtés liés aux événements
-                climatiques depuis la création du régime CatNat en 1982. Les
-                inondations représentent plus de 56 % du total.
-              </p>
-              <p>
-                ⇒ 8 : c'est le nombre moyen d’arrêtés CatNat par commune entre
-                1982 et septembre 2024. Mais une commune détient le triste
-                record de 135 arrêtés sur cette période !
-              </p>
-              <p>
-                ⇒ 10,6 milliards d’euros : c’est le coût d’indemnisations des
-                dommages liés à des aléas climatiques en France en 2022.
-              </p>
-              <p>
-                ⇒ 4,8 milliards d’euros : montant moyen annuel des pertes
-                économiques directes attribuées aux événements naturels en
-                France entre 2015 et 2019, soit : <br></br>- deux fois le budget
-                annuel des Agences de l’eau, ou <br></br>- 20 fois les besoins
-                annuels pour adapter les biens exposés au risque d’érosion en
-                France au cours des 25 prochaines années (estimation de
-                l’Inspection générale de l'environnement et du développement
-                durable).
-              </p>
-            </div>
-          </div>
-          <div className="w-2/3">
-            <CatnatDataViz
-              carteCommunes={communesMap}
-              datavizTab={datavizTab}
-              setDatavizTab={setDatavizTab}
-              typeRisqueValue={typeRisqueValue}
-              gestionRisquesBarChart={arretesCatnatBarChart}
-              gestionRisquesPieChart={arretesCatnatPieChart}
-              typesRisques={typesRisques}
-              setTypeRisqueValue={setTypeRisqueValue}
-              setSliderValue={setSliderValue}
-              sliderValue={sliderValue}
-            />
-          </div>
-        </div>
-      ) : (
-        <GraphDataNotFound code={code ?? libelle} />
-      )}
+            ) : (
+              <GraphDataNotFound code={code ?? libelle} />
+            )}
+          </>
+          : <Loader />
+      }
     </>
   );
 };

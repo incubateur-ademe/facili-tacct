@@ -6,6 +6,7 @@ import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { AgricultureBio, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -23,15 +24,14 @@ const AgricultureBiologique = (props: {
   }>;
 }) => {
   const { agricultureBio } = props;
+  console.log('agricultureBio', agricultureBio);
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4[]>();
-  const re = new RegExp('T([1-9]|1[0-2])\\b');
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
 
-  console.log("agricultureBio", agricultureBio);
   const nombreExploitations = agricultureBio.find(
     (obj) => obj.VARIABLE === 'saue'
   )?.nombre_2022!;
@@ -47,7 +47,7 @@ const AgricultureBiologique = (props: {
       type === 'petr' ||
       type === 'pnr' ||
       type === 'departement' ||
-      re.test(libelle)
+      eptRegex.test(libelle)
     )
       ? void (async () => {
         const temp = await GetPatch4(code);
