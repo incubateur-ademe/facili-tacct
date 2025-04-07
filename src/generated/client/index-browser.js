@@ -602,6 +602,33 @@ exports.Prisma.Arretes_catnatScalarFieldEnum = {
   dat_pub_arrete: 'dat_pub_arrete'
 };
 
+exports.Prisma.Feux_foretScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  nature: 'nature',
+  annee: 'annee',
+  surface_parcourue: 'surface_parcourue',
+  surface_foret: 'surface_foret',
+  surface_maquis_garrigues: 'surface_maquis_garrigues',
+  autres_surfaces_naturelles_hors_foret: 'autres_surfaces_naturelles_hors_foret',
+  surfaces_agricoles: 'surfaces_agricoles',
+  surfaces_non_boisees: 'surfaces_non_boisees',
+  surfaces_non_boisees_artificialisees: 'surfaces_non_boisees_artificialisees',
+  surfaces_non_boisees_naturelles: 'surfaces_non_boisees_naturelles',
+  surface_autres_terres_boisees: 'surface_autres_terres_boisees',
+  autres_surfaces: 'autres_surfaces'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -642,7 +669,8 @@ exports.Prisma.ModelName = {
   clc_territoires: 'clc_territoires',
   agriculture_cleaned: 'agriculture_cleaned',
   clc_epci: 'clc_epci',
-  arretes_catnat: 'arretes_catnat'
+  arretes_catnat: 'arretes_catnat',
+  feux_foret: 'feux_foret'
 };
 
 /**

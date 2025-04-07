@@ -4,7 +4,6 @@ import { ConsommationEspacesNAFBarChart } from '@/components/charts/amenagement/
 import { espacesNAFBarChartLegend } from '@/components/maps/legends/datavizLegends';
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
-import { CommunesIndicateursDto } from '@/lib/dto';
 import { ConsommationNAF } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
@@ -12,18 +11,18 @@ import styles from './amenagement.module.scss';
 
 export const ConsommationEspacesNAFDataviz = (props: {
   consommationNAF: ConsommationNAF[];
-  carteCommunes: CommunesIndicateursDto[];
 }) => {
   const { consommationNAF } = props;
   const searchParams = useSearchParams();
-  const codepci = searchParams.get('codepci')!;
-  const codgeo = searchParams.get('codgeo')!;
-  const filteredConsommationNAF = codgeo
-    ? consommationNAF.filter((item) => item.code_geographique === codgeo)
-    : consommationNAF.filter((item) => item.epci === codepci);
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
   const [typeValue, setTypeValue] = useState<string>('Tous types');
   const [sliderValue, setSliderValue] = useState<number[]>([2009, 2023]);
+
+  const filteredConsommationNAF = type === 'commune'
+    ? consommationNAF.filter((item) => item.code_geographique === code)
+    : consommationNAF;
 
   return (
     <div className={styles.graphWrapper}>

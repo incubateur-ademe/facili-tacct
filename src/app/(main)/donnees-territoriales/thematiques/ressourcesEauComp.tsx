@@ -1,22 +1,20 @@
 'use client';
 
-import { fr } from '@codegouvfr/react-dsfr';
-import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
-import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
-import { useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useState } from 'react';
-
 import { Loader } from '@/components/loader';
 import { PrelevementEau } from '@/components/themes/ressourcesEau/prelevementEau';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   CarteCommunes,
-  EpciContours,
   EtatCoursDeau,
   RessourcesEau
 } from '@/lib/postgres/models';
 import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
+import { fr } from '@codegouvfr/react-dsfr';
+import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
+import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import dynamic from 'next/dynamic';
+import { useSearchParams } from 'next/navigation';
+import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -30,7 +28,6 @@ interface Props {
   }>;
   ressourcesEau: RessourcesEau[];
   carteCommunes: CarteCommunes[];
-  epciContours: EpciContours[];
 }
 
 const DynamicCoursDeau = dynamic(
@@ -51,12 +48,10 @@ const allComps = [
     titre: 'Qualité de l’eau',
     Component: ({
       etatCoursDeau,
-      epciContours,
       carteCommunes
     }: Props & { activeDataTab: string; etatCoursDeau: EtatCoursDeau[] }) => (
       <DynamicCoursDeau
         etatCoursDeau={etatCoursDeau}
-        epciContours={epciContours}
         carteCommunes={carteCommunes}
       />
     )
@@ -67,14 +62,14 @@ const RessourcesEauComp = ({
   data,
   ressourcesEau,
   carteCommunes,
-  epciContours
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Prélèvements en eau');
   const [selectedSubTab, setSelectedSubTab] = useState('Prélèvements en eau');
   const [etatCoursDeau, setEtatCoursDeau] = useState<EtatCoursDeau[]>();
   const searchParams = useSearchParams();
-  const codepci = searchParams.get('codepci')!;
-  const codgeo = searchParams.get('codgeo')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const { isDark } = useIsDark();
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
@@ -98,10 +93,10 @@ const RessourcesEauComp = ({
       data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
     void (async () => {
-      const temp = await GetEtatCoursDeau(codepci, codgeo);
-      temp && codepci ? setEtatCoursDeau(temp) : void 0;
+      const temp = await GetEtatCoursDeau(code, libelle, type);
+      temp ? setEtatCoursDeau(temp) : void 0;
     })();
-  }, [selectedTabId, codepci]);
+  }, [selectedTabId]);
 
   return (
     <div className="w-full">
@@ -168,7 +163,6 @@ const RessourcesEauComp = ({
                       data={data}
                       ressourcesEau={ressourcesEau}
                       activeDataTab={selectedSubTab}
-                      epciContours={epciContours}
                       carteCommunes={carteCommunes}
                       etatCoursDeau={etatCoursDeau || []}
                     />

@@ -6,6 +6,7 @@ import {
   ConsommationNAF,
   SurfacesProtegeesByCol
 } from '@/lib/postgres/models';
+import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
 import { PrismaClient as PostgresClient } from '../../../generated/client';
 
@@ -55,8 +56,7 @@ export const GetAgricultureBio = async (
 ): Promise<AgricultureBio[]> => {
   try {
     console.time('Query Execution Time AGRICULTURE BIO');
-    const re = new RegExp('T([1-9]|1[0-2])\\b'); //check if T + nombre entre 1 et 12
-    if (type === 'ept' && re.test(libelle)) {
+    if (type === 'ept' && eptRegex.test(libelle)) {
       //pour les ept
       const value = await PrismaPostgres.agriculture_bio.findMany({
         where: {
@@ -78,7 +78,7 @@ export const GetAgricultureBio = async (
       });
       console.timeEnd('Query Execution Time AGRICULTURE BIO');
       return value;
-    } else if (type === 'epci' && !re.test(libelle)) {
+    } else if (type === 'epci' && !eptRegex.test(libelle)) {
       const value = await PrismaPostgres.agriculture_bio.findMany({
         where: {
           epci: code
