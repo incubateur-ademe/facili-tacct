@@ -106,7 +106,6 @@ export const ConsommationEspacesNAF = (props: {
           </div>
           <div className="w-3/5">
             <ConsommationEspacesNAFDataviz
-              consommationNAF={consommationNAF}
               carteCommunes={communesMap}
             />
           </div>

@@ -1,7 +1,8 @@
 'use client';
 
-import 'leaflet/dist/leaflet.css';
-
+import { CommunesIndicateursDto } from '@/lib/dto';
+import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
+import { type Any } from '@/lib/utils/types';
 import { GeoJsonObject, type Feature } from 'geojson';
 import {
   type FeatureGroup,
@@ -9,13 +10,9 @@ import {
   type LeafletMouseEventHandlerFn,
   type StyleFunction
 } from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
-
-import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
-import { type Any } from '@/lib/utils/types';
-
-import { CommunesIndicateursDto } from '@/lib/dto';
 import { GraphDataNotFound } from '../graph-data-not-found';
 
 export const Map = (props: {
@@ -24,8 +21,9 @@ export const Map = (props: {
 }) => {
   const { data, carteCommunes } = props;
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo');
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
   const mapData = carteCommunes.filter(
     (e) =>
@@ -55,8 +53,8 @@ export const Map = (props: {
     return getCentroid(coords_arr);
   };
 
-  const commune = codgeo
-    ? carteCommunes.find((el) => el.properties.code_geographique === codgeo)
+  const commune = type === "commune"
+    ? carteCommunes.find((el) => el.properties.code_geographique === code)
     : null;
   const centerCoord: number[] = commune
     ? getCentroid(commune.geometry.coordinates?.[0][0])
@@ -175,7 +173,7 @@ export const Map = (props: {
   return (
     <>
       {carteCommunes === null ? (
-        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        <GraphDataNotFound code={code ?? libelle} />
       ) : (
         <MapContainer
           center={[centerCoord[1], centerCoord[0]]}

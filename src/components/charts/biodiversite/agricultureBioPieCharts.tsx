@@ -54,7 +54,6 @@ export const AgricultureBioPieCharts = ({
     (surfaceEnConversion / surfaceTotale) * 100,
     1
   );
-  const partSurfaceRestante = Round(100 - partCertifiee - partEnConversion, 1);
   const evolutionCertifiee =
     ((surfaceCertifiee - surfaceCertifiee2019) / surfaceCertifiee2019) * 100;
   const evolutionConversion =
@@ -73,6 +72,7 @@ export const AgricultureBioPieCharts = ({
     100 - partEnConversion < partCertifiee
       ? 100 - partEnConversion
       : partCertifiee;
+
   return (
     <div className="flex flex-row justify-center gap-20 p-12 bg-white">
       <div className={styles.dataWrapper}>

@@ -24,7 +24,6 @@ const AgricultureBiologique = (props: {
   }>;
 }) => {
   const { agricultureBio } = props;
-  console.log('agricultureBio', agricultureBio);
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -35,9 +34,6 @@ const AgricultureBiologique = (props: {
   const nombreExploitations = agricultureBio.find(
     (obj) => obj.VARIABLE === 'saue'
   )?.nombre_2022!;
-  const surfaceTotale = agricultureBio.find(
-    (obj) => obj.VARIABLE === 'saue'
-  )?.surface_2022!;
   const surfaceAgriBio = agricultureBio.find(
     (obj) => obj.LIBELLE_SOUS_CHAMP === 'Surface totale'
   )?.surface_2022!;
