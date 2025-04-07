@@ -8,7 +8,7 @@ import RessourcesEauComp from './ressourcesEauComp';
 const RessourcesEau = async (props: { searchParams: SearchParams }) => {
   const theme = themes.ressourcesEau;
   const { code, libelle, type } = await props.searchParams;
-  const dbRessourcesEau = await GetRessourceEau(code);
+  const dbRessourcesEau = await GetRessourceEau(code, libelle, type);
   const carteCommunes = await GetCommunes(code, libelle, type);
 
   return (

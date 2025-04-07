@@ -133,6 +133,11 @@ export type clc_epci = $Result.DefaultSelection<Prisma.$clc_epciPayload>
  * 
  */
 export type arretes_catnat = $Result.DefaultSelection<Prisma.$arretes_catnatPayload>
+/**
+ * Model feux_foret
+ * 
+ */
+export type feux_foret = $Result.DefaultSelection<Prisma.$feux_foretPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -498,6 +503,16 @@ export class PrismaClient<
     * ```
     */
   get arretes_catnat(): Prisma.arretes_catnatDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.feux_foret`: Exposes CRUD operations for the **feux_foret** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Feux_forets
+    * const feux_forets = await prisma.feux_foret.findMany()
+    * ```
+    */
+  get feux_foret(): Prisma.feux_foretDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -961,7 +976,8 @@ export namespace Prisma {
     clc_territoires: 'clc_territoires',
     agriculture_cleaned: 'agriculture_cleaned',
     clc_epci: 'clc_epci',
-    arretes_catnat: 'arretes_catnat'
+    arretes_catnat: 'arretes_catnat',
+    feux_foret: 'feux_foret'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -977,7 +993,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "inconfort_thermique" | "collectivites_searchbar" | "biodiversite" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio" | "erosion_cotiere" | "epci" | "surfaces_protegees" | "spatial_ref_sys" | "consommation_espaces_naf" | "north_star_metric" | "etat_cours_d_eau" | "aot_40" | "users" | "qualite_sites_baignade" | "agriculture" | "incendies_foret" | "patch4c" | "clc_territoires" | "agriculture_cleaned" | "clc_epci" | "arretes_catnat"
+      modelProps: "inconfort_thermique" | "collectivites_searchbar" | "biodiversite" | "gestion_risques" | "communes_drom" | "ressources_eau" | "agriculture_bio" | "erosion_cotiere" | "epci" | "surfaces_protegees" | "spatial_ref_sys" | "consommation_espaces_naf" | "north_star_metric" | "etat_cours_d_eau" | "aot_40" | "users" | "qualite_sites_baignade" | "agriculture" | "incendies_foret" | "patch4c" | "clc_territoires" | "agriculture_cleaned" | "clc_epci" | "arretes_catnat" | "feux_foret"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2677,6 +2693,80 @@ export namespace Prisma {
           }
         }
       }
+      feux_foret: {
+        payload: Prisma.$feux_foretPayload<ExtArgs>
+        fields: Prisma.feux_foretFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.feux_foretFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$feux_foretPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.feux_foretFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$feux_foretPayload>
+          }
+          findFirst: {
+            args: Prisma.feux_foretFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$feux_foretPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.feux_foretFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$feux_foretPayload>
+          }
+          findMany: {
+            args: Prisma.feux_foretFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$feux_foretPayload>[]
+          }
+          create: {
+            args: Prisma.feux_foretCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$feux_foretPayload>
+          }
+          createMany: {
+            args: Prisma.feux_foretCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.feux_foretCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$feux_foretPayload>[]
+          }
+          delete: {
+            args: Prisma.feux_foretDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$feux_foretPayload>
+          }
+          update: {
+            args: Prisma.feux_foretUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$feux_foretPayload>
+          }
+          deleteMany: {
+            args: Prisma.feux_foretDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.feux_foretUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.feux_foretUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$feux_foretPayload>[]
+          }
+          upsert: {
+            args: Prisma.feux_foretUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$feux_foretPayload>
+          }
+          aggregate: {
+            args: Prisma.Feux_foretAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFeux_foret>
+          }
+          groupBy: {
+            args: Prisma.feux_foretGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Feux_foretGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.feux_foretCountArgs<ExtArgs>
+            result: $Utils.Optional<Feux_foretCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2785,6 +2875,7 @@ export namespace Prisma {
     agriculture_cleaned?: agriculture_cleanedOmit
     clc_epci?: clc_epciOmit
     arretes_catnat?: arretes_catnatOmit
+    feux_foret?: feux_foretOmit
   }
 
   /* Types for Logging */
@@ -31399,6 +31490,1330 @@ export namespace Prisma {
 
 
   /**
+   * Model feux_foret
+   */
+
+  export type AggregateFeux_foret = {
+    _count: Feux_foretCountAggregateOutputType | null
+    _avg: Feux_foretAvgAggregateOutputType | null
+    _sum: Feux_foretSumAggregateOutputType | null
+    _min: Feux_foretMinAggregateOutputType | null
+    _max: Feux_foretMaxAggregateOutputType | null
+  }
+
+  export type Feux_foretAvgAggregateOutputType = {
+    index: number | null
+    region: number | null
+    annee: number | null
+    surface_parcourue: number | null
+    surface_foret: number | null
+    surface_maquis_garrigues: number | null
+    autres_surfaces_naturelles_hors_foret: number | null
+    surfaces_agricoles: number | null
+    surfaces_non_boisees: number | null
+    surfaces_non_boisees_artificialisees: number | null
+    surfaces_non_boisees_naturelles: number | null
+    surface_autres_terres_boisees: number | null
+    autres_surfaces: number | null
+  }
+
+  export type Feux_foretSumAggregateOutputType = {
+    index: bigint | null
+    region: number | null
+    annee: number | null
+    surface_parcourue: number | null
+    surface_foret: number | null
+    surface_maquis_garrigues: number | null
+    autres_surfaces_naturelles_hors_foret: number | null
+    surfaces_agricoles: number | null
+    surfaces_non_boisees: number | null
+    surfaces_non_boisees_artificialisees: number | null
+    surfaces_non_boisees_naturelles: number | null
+    surface_autres_terres_boisees: number | null
+    autres_surfaces: number | null
+  }
+
+  export type Feux_foretMinAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    nature: string | null
+    annee: number | null
+    surface_parcourue: number | null
+    surface_foret: number | null
+    surface_maquis_garrigues: number | null
+    autres_surfaces_naturelles_hors_foret: number | null
+    surfaces_agricoles: number | null
+    surfaces_non_boisees: number | null
+    surfaces_non_boisees_artificialisees: number | null
+    surfaces_non_boisees_naturelles: number | null
+    surface_autres_terres_boisees: number | null
+    autres_surfaces: number | null
+  }
+
+  export type Feux_foretMaxAggregateOutputType = {
+    index: bigint | null
+    code_geographique: string | null
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    nature: string | null
+    annee: number | null
+    surface_parcourue: number | null
+    surface_foret: number | null
+    surface_maquis_garrigues: number | null
+    autres_surfaces_naturelles_hors_foret: number | null
+    surfaces_agricoles: number | null
+    surfaces_non_boisees: number | null
+    surfaces_non_boisees_artificialisees: number | null
+    surfaces_non_boisees_naturelles: number | null
+    surface_autres_terres_boisees: number | null
+    autres_surfaces: number | null
+  }
+
+  export type Feux_foretCountAggregateOutputType = {
+    index: number
+    code_geographique: number
+    libelle_geographique: number
+    epci: number
+    libelle_epci: number
+    departement: number
+    libelle_departement: number
+    region: number
+    ept: number
+    libelle_petr: number
+    code_pnr: number
+    libelle_pnr: number
+    nature: number
+    annee: number
+    surface_parcourue: number
+    surface_foret: number
+    surface_maquis_garrigues: number
+    autres_surfaces_naturelles_hors_foret: number
+    surfaces_agricoles: number
+    surfaces_non_boisees: number
+    surfaces_non_boisees_artificialisees: number
+    surfaces_non_boisees_naturelles: number
+    surface_autres_terres_boisees: number
+    autres_surfaces: number
+    _all: number
+  }
+
+
+  export type Feux_foretAvgAggregateInputType = {
+    index?: true
+    region?: true
+    annee?: true
+    surface_parcourue?: true
+    surface_foret?: true
+    surface_maquis_garrigues?: true
+    autres_surfaces_naturelles_hors_foret?: true
+    surfaces_agricoles?: true
+    surfaces_non_boisees?: true
+    surfaces_non_boisees_artificialisees?: true
+    surfaces_non_boisees_naturelles?: true
+    surface_autres_terres_boisees?: true
+    autres_surfaces?: true
+  }
+
+  export type Feux_foretSumAggregateInputType = {
+    index?: true
+    region?: true
+    annee?: true
+    surface_parcourue?: true
+    surface_foret?: true
+    surface_maquis_garrigues?: true
+    autres_surfaces_naturelles_hors_foret?: true
+    surfaces_agricoles?: true
+    surfaces_non_boisees?: true
+    surfaces_non_boisees_artificialisees?: true
+    surfaces_non_boisees_naturelles?: true
+    surface_autres_terres_boisees?: true
+    autres_surfaces?: true
+  }
+
+  export type Feux_foretMinAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    nature?: true
+    annee?: true
+    surface_parcourue?: true
+    surface_foret?: true
+    surface_maquis_garrigues?: true
+    autres_surfaces_naturelles_hors_foret?: true
+    surfaces_agricoles?: true
+    surfaces_non_boisees?: true
+    surfaces_non_boisees_artificialisees?: true
+    surfaces_non_boisees_naturelles?: true
+    surface_autres_terres_boisees?: true
+    autres_surfaces?: true
+  }
+
+  export type Feux_foretMaxAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    nature?: true
+    annee?: true
+    surface_parcourue?: true
+    surface_foret?: true
+    surface_maquis_garrigues?: true
+    autres_surfaces_naturelles_hors_foret?: true
+    surfaces_agricoles?: true
+    surfaces_non_boisees?: true
+    surfaces_non_boisees_artificialisees?: true
+    surfaces_non_boisees_naturelles?: true
+    surface_autres_terres_boisees?: true
+    autres_surfaces?: true
+  }
+
+  export type Feux_foretCountAggregateInputType = {
+    index?: true
+    code_geographique?: true
+    libelle_geographique?: true
+    epci?: true
+    libelle_epci?: true
+    departement?: true
+    libelle_departement?: true
+    region?: true
+    ept?: true
+    libelle_petr?: true
+    code_pnr?: true
+    libelle_pnr?: true
+    nature?: true
+    annee?: true
+    surface_parcourue?: true
+    surface_foret?: true
+    surface_maquis_garrigues?: true
+    autres_surfaces_naturelles_hors_foret?: true
+    surfaces_agricoles?: true
+    surfaces_non_boisees?: true
+    surfaces_non_boisees_artificialisees?: true
+    surfaces_non_boisees_naturelles?: true
+    surface_autres_terres_boisees?: true
+    autres_surfaces?: true
+    _all?: true
+  }
+
+  export type Feux_foretAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which feux_foret to aggregate.
+     */
+    where?: feux_foretWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of feux_forets to fetch.
+     */
+    orderBy?: feux_foretOrderByWithRelationInput | feux_foretOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: feux_foretWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` feux_forets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` feux_forets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned feux_forets
+    **/
+    _count?: true | Feux_foretCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Feux_foretAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Feux_foretSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Feux_foretMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Feux_foretMaxAggregateInputType
+  }
+
+  export type GetFeux_foretAggregateType<T extends Feux_foretAggregateArgs> = {
+        [P in keyof T & keyof AggregateFeux_foret]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFeux_foret[P]>
+      : GetScalarType<T[P], AggregateFeux_foret[P]>
+  }
+
+
+
+
+  export type feux_foretGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: feux_foretWhereInput
+    orderBy?: feux_foretOrderByWithAggregationInput | feux_foretOrderByWithAggregationInput[]
+    by: Feux_foretScalarFieldEnum[] | Feux_foretScalarFieldEnum
+    having?: feux_foretScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Feux_foretCountAggregateInputType | true
+    _avg?: Feux_foretAvgAggregateInputType
+    _sum?: Feux_foretSumAggregateInputType
+    _min?: Feux_foretMinAggregateInputType
+    _max?: Feux_foretMaxAggregateInputType
+  }
+
+  export type Feux_foretGroupByOutputType = {
+    index: bigint
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    nature: string | null
+    annee: number
+    surface_parcourue: number
+    surface_foret: number | null
+    surface_maquis_garrigues: number | null
+    autres_surfaces_naturelles_hors_foret: number | null
+    surfaces_agricoles: number | null
+    surfaces_non_boisees: number | null
+    surfaces_non_boisees_artificialisees: number | null
+    surfaces_non_boisees_naturelles: number | null
+    surface_autres_terres_boisees: number | null
+    autres_surfaces: number | null
+    _count: Feux_foretCountAggregateOutputType | null
+    _avg: Feux_foretAvgAggregateOutputType | null
+    _sum: Feux_foretSumAggregateOutputType | null
+    _min: Feux_foretMinAggregateOutputType | null
+    _max: Feux_foretMaxAggregateOutputType | null
+  }
+
+  type GetFeux_foretGroupByPayload<T extends feux_foretGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Feux_foretGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Feux_foretGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Feux_foretGroupByOutputType[P]>
+            : GetScalarType<T[P], Feux_foretGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type feux_foretSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    nature?: boolean
+    annee?: boolean
+    surface_parcourue?: boolean
+    surface_foret?: boolean
+    surface_maquis_garrigues?: boolean
+    autres_surfaces_naturelles_hors_foret?: boolean
+    surfaces_agricoles?: boolean
+    surfaces_non_boisees?: boolean
+    surfaces_non_boisees_artificialisees?: boolean
+    surfaces_non_boisees_naturelles?: boolean
+    surface_autres_terres_boisees?: boolean
+    autres_surfaces?: boolean
+  }, ExtArgs["result"]["feux_foret"]>
+
+  export type feux_foretSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    nature?: boolean
+    annee?: boolean
+    surface_parcourue?: boolean
+    surface_foret?: boolean
+    surface_maquis_garrigues?: boolean
+    autres_surfaces_naturelles_hors_foret?: boolean
+    surfaces_agricoles?: boolean
+    surfaces_non_boisees?: boolean
+    surfaces_non_boisees_artificialisees?: boolean
+    surfaces_non_boisees_naturelles?: boolean
+    surface_autres_terres_boisees?: boolean
+    autres_surfaces?: boolean
+  }, ExtArgs["result"]["feux_foret"]>
+
+  export type feux_foretSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    nature?: boolean
+    annee?: boolean
+    surface_parcourue?: boolean
+    surface_foret?: boolean
+    surface_maquis_garrigues?: boolean
+    autres_surfaces_naturelles_hors_foret?: boolean
+    surfaces_agricoles?: boolean
+    surfaces_non_boisees?: boolean
+    surfaces_non_boisees_artificialisees?: boolean
+    surfaces_non_boisees_naturelles?: boolean
+    surface_autres_terres_boisees?: boolean
+    autres_surfaces?: boolean
+  }, ExtArgs["result"]["feux_foret"]>
+
+  export type feux_foretSelectScalar = {
+    index?: boolean
+    code_geographique?: boolean
+    libelle_geographique?: boolean
+    epci?: boolean
+    libelle_epci?: boolean
+    departement?: boolean
+    libelle_departement?: boolean
+    region?: boolean
+    ept?: boolean
+    libelle_petr?: boolean
+    code_pnr?: boolean
+    libelle_pnr?: boolean
+    nature?: boolean
+    annee?: boolean
+    surface_parcourue?: boolean
+    surface_foret?: boolean
+    surface_maquis_garrigues?: boolean
+    autres_surfaces_naturelles_hors_foret?: boolean
+    surfaces_agricoles?: boolean
+    surfaces_non_boisees?: boolean
+    surfaces_non_boisees_artificialisees?: boolean
+    surfaces_non_boisees_naturelles?: boolean
+    surface_autres_terres_boisees?: boolean
+    autres_surfaces?: boolean
+  }
+
+  export type feux_foretOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nature" | "annee" | "surface_parcourue" | "surface_foret" | "surface_maquis_garrigues" | "autres_surfaces_naturelles_hors_foret" | "surfaces_agricoles" | "surfaces_non_boisees" | "surfaces_non_boisees_artificialisees" | "surfaces_non_boisees_naturelles" | "surface_autres_terres_boisees" | "autres_surfaces", ExtArgs["result"]["feux_foret"]>
+
+  export type $feux_foretPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "feux_foret"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      code_geographique: string
+      libelle_geographique: string
+      epci: string
+      libelle_epci: string
+      departement: string
+      libelle_departement: string
+      region: number
+      ept: string | null
+      libelle_petr: string | null
+      code_pnr: string | null
+      libelle_pnr: string | null
+      nature: string | null
+      annee: number
+      surface_parcourue: number
+      surface_foret: number | null
+      surface_maquis_garrigues: number | null
+      autres_surfaces_naturelles_hors_foret: number | null
+      surfaces_agricoles: number | null
+      surfaces_non_boisees: number | null
+      surfaces_non_boisees_artificialisees: number | null
+      surfaces_non_boisees_naturelles: number | null
+      surface_autres_terres_boisees: number | null
+      autres_surfaces: number | null
+    }, ExtArgs["result"]["feux_foret"]>
+    composites: {}
+  }
+
+  type feux_foretGetPayload<S extends boolean | null | undefined | feux_foretDefaultArgs> = $Result.GetResult<Prisma.$feux_foretPayload, S>
+
+  type feux_foretCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<feux_foretFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Feux_foretCountAggregateInputType | true
+    }
+
+  export interface feux_foretDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['feux_foret'], meta: { name: 'feux_foret' } }
+    /**
+     * Find zero or one Feux_foret that matches the filter.
+     * @param {feux_foretFindUniqueArgs} args - Arguments to find a Feux_foret
+     * @example
+     * // Get one Feux_foret
+     * const feux_foret = await prisma.feux_foret.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends feux_foretFindUniqueArgs>(args: SelectSubset<T, feux_foretFindUniqueArgs<ExtArgs>>): Prisma__feux_foretClient<$Result.GetResult<Prisma.$feux_foretPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Feux_foret that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {feux_foretFindUniqueOrThrowArgs} args - Arguments to find a Feux_foret
+     * @example
+     * // Get one Feux_foret
+     * const feux_foret = await prisma.feux_foret.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends feux_foretFindUniqueOrThrowArgs>(args: SelectSubset<T, feux_foretFindUniqueOrThrowArgs<ExtArgs>>): Prisma__feux_foretClient<$Result.GetResult<Prisma.$feux_foretPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Feux_foret that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {feux_foretFindFirstArgs} args - Arguments to find a Feux_foret
+     * @example
+     * // Get one Feux_foret
+     * const feux_foret = await prisma.feux_foret.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends feux_foretFindFirstArgs>(args?: SelectSubset<T, feux_foretFindFirstArgs<ExtArgs>>): Prisma__feux_foretClient<$Result.GetResult<Prisma.$feux_foretPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Feux_foret that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {feux_foretFindFirstOrThrowArgs} args - Arguments to find a Feux_foret
+     * @example
+     * // Get one Feux_foret
+     * const feux_foret = await prisma.feux_foret.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends feux_foretFindFirstOrThrowArgs>(args?: SelectSubset<T, feux_foretFindFirstOrThrowArgs<ExtArgs>>): Prisma__feux_foretClient<$Result.GetResult<Prisma.$feux_foretPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Feux_forets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {feux_foretFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Feux_forets
+     * const feux_forets = await prisma.feux_foret.findMany()
+     * 
+     * // Get first 10 Feux_forets
+     * const feux_forets = await prisma.feux_foret.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const feux_foretWithIndexOnly = await prisma.feux_foret.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends feux_foretFindManyArgs>(args?: SelectSubset<T, feux_foretFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$feux_foretPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Feux_foret.
+     * @param {feux_foretCreateArgs} args - Arguments to create a Feux_foret.
+     * @example
+     * // Create one Feux_foret
+     * const Feux_foret = await prisma.feux_foret.create({
+     *   data: {
+     *     // ... data to create a Feux_foret
+     *   }
+     * })
+     * 
+     */
+    create<T extends feux_foretCreateArgs>(args: SelectSubset<T, feux_foretCreateArgs<ExtArgs>>): Prisma__feux_foretClient<$Result.GetResult<Prisma.$feux_foretPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Feux_forets.
+     * @param {feux_foretCreateManyArgs} args - Arguments to create many Feux_forets.
+     * @example
+     * // Create many Feux_forets
+     * const feux_foret = await prisma.feux_foret.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends feux_foretCreateManyArgs>(args?: SelectSubset<T, feux_foretCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Feux_forets and returns the data saved in the database.
+     * @param {feux_foretCreateManyAndReturnArgs} args - Arguments to create many Feux_forets.
+     * @example
+     * // Create many Feux_forets
+     * const feux_foret = await prisma.feux_foret.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Feux_forets and only return the `index`
+     * const feux_foretWithIndexOnly = await prisma.feux_foret.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends feux_foretCreateManyAndReturnArgs>(args?: SelectSubset<T, feux_foretCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$feux_foretPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Feux_foret.
+     * @param {feux_foretDeleteArgs} args - Arguments to delete one Feux_foret.
+     * @example
+     * // Delete one Feux_foret
+     * const Feux_foret = await prisma.feux_foret.delete({
+     *   where: {
+     *     // ... filter to delete one Feux_foret
+     *   }
+     * })
+     * 
+     */
+    delete<T extends feux_foretDeleteArgs>(args: SelectSubset<T, feux_foretDeleteArgs<ExtArgs>>): Prisma__feux_foretClient<$Result.GetResult<Prisma.$feux_foretPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Feux_foret.
+     * @param {feux_foretUpdateArgs} args - Arguments to update one Feux_foret.
+     * @example
+     * // Update one Feux_foret
+     * const feux_foret = await prisma.feux_foret.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends feux_foretUpdateArgs>(args: SelectSubset<T, feux_foretUpdateArgs<ExtArgs>>): Prisma__feux_foretClient<$Result.GetResult<Prisma.$feux_foretPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Feux_forets.
+     * @param {feux_foretDeleteManyArgs} args - Arguments to filter Feux_forets to delete.
+     * @example
+     * // Delete a few Feux_forets
+     * const { count } = await prisma.feux_foret.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends feux_foretDeleteManyArgs>(args?: SelectSubset<T, feux_foretDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Feux_forets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {feux_foretUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Feux_forets
+     * const feux_foret = await prisma.feux_foret.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends feux_foretUpdateManyArgs>(args: SelectSubset<T, feux_foretUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Feux_forets and returns the data updated in the database.
+     * @param {feux_foretUpdateManyAndReturnArgs} args - Arguments to update many Feux_forets.
+     * @example
+     * // Update many Feux_forets
+     * const feux_foret = await prisma.feux_foret.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Feux_forets and only return the `index`
+     * const feux_foretWithIndexOnly = await prisma.feux_foret.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends feux_foretUpdateManyAndReturnArgs>(args: SelectSubset<T, feux_foretUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$feux_foretPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Feux_foret.
+     * @param {feux_foretUpsertArgs} args - Arguments to update or create a Feux_foret.
+     * @example
+     * // Update or create a Feux_foret
+     * const feux_foret = await prisma.feux_foret.upsert({
+     *   create: {
+     *     // ... data to create a Feux_foret
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Feux_foret we want to update
+     *   }
+     * })
+     */
+    upsert<T extends feux_foretUpsertArgs>(args: SelectSubset<T, feux_foretUpsertArgs<ExtArgs>>): Prisma__feux_foretClient<$Result.GetResult<Prisma.$feux_foretPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Feux_forets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {feux_foretCountArgs} args - Arguments to filter Feux_forets to count.
+     * @example
+     * // Count the number of Feux_forets
+     * const count = await prisma.feux_foret.count({
+     *   where: {
+     *     // ... the filter for the Feux_forets we want to count
+     *   }
+     * })
+    **/
+    count<T extends feux_foretCountArgs>(
+      args?: Subset<T, feux_foretCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Feux_foretCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Feux_foret.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Feux_foretAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Feux_foretAggregateArgs>(args: Subset<T, Feux_foretAggregateArgs>): Prisma.PrismaPromise<GetFeux_foretAggregateType<T>>
+
+    /**
+     * Group by Feux_foret.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {feux_foretGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends feux_foretGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: feux_foretGroupByArgs['orderBy'] }
+        : { orderBy?: feux_foretGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, feux_foretGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFeux_foretGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the feux_foret model
+   */
+  readonly fields: feux_foretFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for feux_foret.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__feux_foretClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the feux_foret model
+   */ 
+  interface feux_foretFieldRefs {
+    readonly index: FieldRef<"feux_foret", 'BigInt'>
+    readonly code_geographique: FieldRef<"feux_foret", 'String'>
+    readonly libelle_geographique: FieldRef<"feux_foret", 'String'>
+    readonly epci: FieldRef<"feux_foret", 'String'>
+    readonly libelle_epci: FieldRef<"feux_foret", 'String'>
+    readonly departement: FieldRef<"feux_foret", 'String'>
+    readonly libelle_departement: FieldRef<"feux_foret", 'String'>
+    readonly region: FieldRef<"feux_foret", 'Float'>
+    readonly ept: FieldRef<"feux_foret", 'String'>
+    readonly libelle_petr: FieldRef<"feux_foret", 'String'>
+    readonly code_pnr: FieldRef<"feux_foret", 'String'>
+    readonly libelle_pnr: FieldRef<"feux_foret", 'String'>
+    readonly nature: FieldRef<"feux_foret", 'String'>
+    readonly annee: FieldRef<"feux_foret", 'Float'>
+    readonly surface_parcourue: FieldRef<"feux_foret", 'Float'>
+    readonly surface_foret: FieldRef<"feux_foret", 'Float'>
+    readonly surface_maquis_garrigues: FieldRef<"feux_foret", 'Float'>
+    readonly autres_surfaces_naturelles_hors_foret: FieldRef<"feux_foret", 'Float'>
+    readonly surfaces_agricoles: FieldRef<"feux_foret", 'Float'>
+    readonly surfaces_non_boisees: FieldRef<"feux_foret", 'Float'>
+    readonly surfaces_non_boisees_artificialisees: FieldRef<"feux_foret", 'Float'>
+    readonly surfaces_non_boisees_naturelles: FieldRef<"feux_foret", 'Float'>
+    readonly surface_autres_terres_boisees: FieldRef<"feux_foret", 'Float'>
+    readonly autres_surfaces: FieldRef<"feux_foret", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * feux_foret findUnique
+   */
+  export type feux_foretFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the feux_foret
+     */
+    select?: feux_foretSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the feux_foret
+     */
+    omit?: feux_foretOmit<ExtArgs> | null
+    /**
+     * Filter, which feux_foret to fetch.
+     */
+    where: feux_foretWhereUniqueInput
+  }
+
+  /**
+   * feux_foret findUniqueOrThrow
+   */
+  export type feux_foretFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the feux_foret
+     */
+    select?: feux_foretSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the feux_foret
+     */
+    omit?: feux_foretOmit<ExtArgs> | null
+    /**
+     * Filter, which feux_foret to fetch.
+     */
+    where: feux_foretWhereUniqueInput
+  }
+
+  /**
+   * feux_foret findFirst
+   */
+  export type feux_foretFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the feux_foret
+     */
+    select?: feux_foretSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the feux_foret
+     */
+    omit?: feux_foretOmit<ExtArgs> | null
+    /**
+     * Filter, which feux_foret to fetch.
+     */
+    where?: feux_foretWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of feux_forets to fetch.
+     */
+    orderBy?: feux_foretOrderByWithRelationInput | feux_foretOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for feux_forets.
+     */
+    cursor?: feux_foretWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` feux_forets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` feux_forets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of feux_forets.
+     */
+    distinct?: Feux_foretScalarFieldEnum | Feux_foretScalarFieldEnum[]
+  }
+
+  /**
+   * feux_foret findFirstOrThrow
+   */
+  export type feux_foretFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the feux_foret
+     */
+    select?: feux_foretSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the feux_foret
+     */
+    omit?: feux_foretOmit<ExtArgs> | null
+    /**
+     * Filter, which feux_foret to fetch.
+     */
+    where?: feux_foretWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of feux_forets to fetch.
+     */
+    orderBy?: feux_foretOrderByWithRelationInput | feux_foretOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for feux_forets.
+     */
+    cursor?: feux_foretWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` feux_forets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` feux_forets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of feux_forets.
+     */
+    distinct?: Feux_foretScalarFieldEnum | Feux_foretScalarFieldEnum[]
+  }
+
+  /**
+   * feux_foret findMany
+   */
+  export type feux_foretFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the feux_foret
+     */
+    select?: feux_foretSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the feux_foret
+     */
+    omit?: feux_foretOmit<ExtArgs> | null
+    /**
+     * Filter, which feux_forets to fetch.
+     */
+    where?: feux_foretWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of feux_forets to fetch.
+     */
+    orderBy?: feux_foretOrderByWithRelationInput | feux_foretOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing feux_forets.
+     */
+    cursor?: feux_foretWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` feux_forets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` feux_forets.
+     */
+    skip?: number
+    distinct?: Feux_foretScalarFieldEnum | Feux_foretScalarFieldEnum[]
+  }
+
+  /**
+   * feux_foret create
+   */
+  export type feux_foretCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the feux_foret
+     */
+    select?: feux_foretSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the feux_foret
+     */
+    omit?: feux_foretOmit<ExtArgs> | null
+    /**
+     * The data needed to create a feux_foret.
+     */
+    data: XOR<feux_foretCreateInput, feux_foretUncheckedCreateInput>
+  }
+
+  /**
+   * feux_foret createMany
+   */
+  export type feux_foretCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many feux_forets.
+     */
+    data: feux_foretCreateManyInput | feux_foretCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * feux_foret createManyAndReturn
+   */
+  export type feux_foretCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the feux_foret
+     */
+    select?: feux_foretSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the feux_foret
+     */
+    omit?: feux_foretOmit<ExtArgs> | null
+    /**
+     * The data used to create many feux_forets.
+     */
+    data: feux_foretCreateManyInput | feux_foretCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * feux_foret update
+   */
+  export type feux_foretUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the feux_foret
+     */
+    select?: feux_foretSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the feux_foret
+     */
+    omit?: feux_foretOmit<ExtArgs> | null
+    /**
+     * The data needed to update a feux_foret.
+     */
+    data: XOR<feux_foretUpdateInput, feux_foretUncheckedUpdateInput>
+    /**
+     * Choose, which feux_foret to update.
+     */
+    where: feux_foretWhereUniqueInput
+  }
+
+  /**
+   * feux_foret updateMany
+   */
+  export type feux_foretUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update feux_forets.
+     */
+    data: XOR<feux_foretUpdateManyMutationInput, feux_foretUncheckedUpdateManyInput>
+    /**
+     * Filter which feux_forets to update
+     */
+    where?: feux_foretWhereInput
+    /**
+     * Limit how many feux_forets to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * feux_foret updateManyAndReturn
+   */
+  export type feux_foretUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the feux_foret
+     */
+    select?: feux_foretSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the feux_foret
+     */
+    omit?: feux_foretOmit<ExtArgs> | null
+    /**
+     * The data used to update feux_forets.
+     */
+    data: XOR<feux_foretUpdateManyMutationInput, feux_foretUncheckedUpdateManyInput>
+    /**
+     * Filter which feux_forets to update
+     */
+    where?: feux_foretWhereInput
+    /**
+     * Limit how many feux_forets to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * feux_foret upsert
+   */
+  export type feux_foretUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the feux_foret
+     */
+    select?: feux_foretSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the feux_foret
+     */
+    omit?: feux_foretOmit<ExtArgs> | null
+    /**
+     * The filter to search for the feux_foret to update in case it exists.
+     */
+    where: feux_foretWhereUniqueInput
+    /**
+     * In case the feux_foret found by the `where` argument doesn't exist, create a new feux_foret with this data.
+     */
+    create: XOR<feux_foretCreateInput, feux_foretUncheckedCreateInput>
+    /**
+     * In case the feux_foret was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<feux_foretUpdateInput, feux_foretUncheckedUpdateInput>
+  }
+
+  /**
+   * feux_foret delete
+   */
+  export type feux_foretDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the feux_foret
+     */
+    select?: feux_foretSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the feux_foret
+     */
+    omit?: feux_foretOmit<ExtArgs> | null
+    /**
+     * Filter which feux_foret to delete.
+     */
+    where: feux_foretWhereUniqueInput
+  }
+
+  /**
+   * feux_foret deleteMany
+   */
+  export type feux_foretDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which feux_forets to delete
+     */
+    where?: feux_foretWhereInput
+    /**
+     * Limit how many feux_forets to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * feux_foret without action
+   */
+  export type feux_foretDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the feux_foret
+     */
+    select?: feux_foretSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the feux_foret
+     */
+    omit?: feux_foretOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -31967,6 +33382,36 @@ export namespace Prisma {
   };
 
   export type Arretes_catnatScalarFieldEnum = (typeof Arretes_catnatScalarFieldEnum)[keyof typeof Arretes_catnatScalarFieldEnum]
+
+
+  export const Feux_foretScalarFieldEnum: {
+    index: 'index',
+    code_geographique: 'code_geographique',
+    libelle_geographique: 'libelle_geographique',
+    epci: 'epci',
+    libelle_epci: 'libelle_epci',
+    departement: 'departement',
+    libelle_departement: 'libelle_departement',
+    region: 'region',
+    ept: 'ept',
+    libelle_petr: 'libelle_petr',
+    code_pnr: 'code_pnr',
+    libelle_pnr: 'libelle_pnr',
+    nature: 'nature',
+    annee: 'annee',
+    surface_parcourue: 'surface_parcourue',
+    surface_foret: 'surface_foret',
+    surface_maquis_garrigues: 'surface_maquis_garrigues',
+    autres_surfaces_naturelles_hors_foret: 'autres_surfaces_naturelles_hors_foret',
+    surfaces_agricoles: 'surfaces_agricoles',
+    surfaces_non_boisees: 'surfaces_non_boisees',
+    surfaces_non_boisees_artificialisees: 'surfaces_non_boisees_artificialisees',
+    surfaces_non_boisees_naturelles: 'surfaces_non_boisees_naturelles',
+    surface_autres_terres_boisees: 'surface_autres_terres_boisees',
+    autres_surfaces: 'autres_surfaces'
+  };
+
+  export type Feux_foretScalarFieldEnum = (typeof Feux_foretScalarFieldEnum)[keyof typeof Feux_foretScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -34830,6 +36275,155 @@ export namespace Prisma {
     libelle_pnr?: StringNullableWithAggregatesFilter<"arretes_catnat"> | string | null
     lib_risque_jo?: StringWithAggregatesFilter<"arretes_catnat"> | string
     dat_pub_arrete?: StringWithAggregatesFilter<"arretes_catnat"> | string
+  }
+
+  export type feux_foretWhereInput = {
+    AND?: feux_foretWhereInput | feux_foretWhereInput[]
+    OR?: feux_foretWhereInput[]
+    NOT?: feux_foretWhereInput | feux_foretWhereInput[]
+    index?: BigIntFilter<"feux_foret"> | bigint | number
+    code_geographique?: StringFilter<"feux_foret"> | string
+    libelle_geographique?: StringFilter<"feux_foret"> | string
+    epci?: StringFilter<"feux_foret"> | string
+    libelle_epci?: StringFilter<"feux_foret"> | string
+    departement?: StringFilter<"feux_foret"> | string
+    libelle_departement?: StringFilter<"feux_foret"> | string
+    region?: FloatFilter<"feux_foret"> | number
+    ept?: StringNullableFilter<"feux_foret"> | string | null
+    libelle_petr?: StringNullableFilter<"feux_foret"> | string | null
+    code_pnr?: StringNullableFilter<"feux_foret"> | string | null
+    libelle_pnr?: StringNullableFilter<"feux_foret"> | string | null
+    nature?: StringNullableFilter<"feux_foret"> | string | null
+    annee?: FloatFilter<"feux_foret"> | number
+    surface_parcourue?: FloatFilter<"feux_foret"> | number
+    surface_foret?: FloatNullableFilter<"feux_foret"> | number | null
+    surface_maquis_garrigues?: FloatNullableFilter<"feux_foret"> | number | null
+    autres_surfaces_naturelles_hors_foret?: FloatNullableFilter<"feux_foret"> | number | null
+    surfaces_agricoles?: FloatNullableFilter<"feux_foret"> | number | null
+    surfaces_non_boisees?: FloatNullableFilter<"feux_foret"> | number | null
+    surfaces_non_boisees_artificialisees?: FloatNullableFilter<"feux_foret"> | number | null
+    surfaces_non_boisees_naturelles?: FloatNullableFilter<"feux_foret"> | number | null
+    surface_autres_terres_boisees?: FloatNullableFilter<"feux_foret"> | number | null
+    autres_surfaces?: FloatNullableFilter<"feux_foret"> | number | null
+  }
+
+  export type feux_foretOrderByWithRelationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    nature?: SortOrderInput | SortOrder
+    annee?: SortOrder
+    surface_parcourue?: SortOrder
+    surface_foret?: SortOrderInput | SortOrder
+    surface_maquis_garrigues?: SortOrderInput | SortOrder
+    autres_surfaces_naturelles_hors_foret?: SortOrderInput | SortOrder
+    surfaces_agricoles?: SortOrderInput | SortOrder
+    surfaces_non_boisees?: SortOrderInput | SortOrder
+    surfaces_non_boisees_artificialisees?: SortOrderInput | SortOrder
+    surfaces_non_boisees_naturelles?: SortOrderInput | SortOrder
+    surface_autres_terres_boisees?: SortOrderInput | SortOrder
+    autres_surfaces?: SortOrderInput | SortOrder
+  }
+
+  export type feux_foretWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: feux_foretWhereInput | feux_foretWhereInput[]
+    OR?: feux_foretWhereInput[]
+    NOT?: feux_foretWhereInput | feux_foretWhereInput[]
+    code_geographique?: StringFilter<"feux_foret"> | string
+    libelle_geographique?: StringFilter<"feux_foret"> | string
+    epci?: StringFilter<"feux_foret"> | string
+    libelle_epci?: StringFilter<"feux_foret"> | string
+    departement?: StringFilter<"feux_foret"> | string
+    libelle_departement?: StringFilter<"feux_foret"> | string
+    region?: FloatFilter<"feux_foret"> | number
+    ept?: StringNullableFilter<"feux_foret"> | string | null
+    libelle_petr?: StringNullableFilter<"feux_foret"> | string | null
+    code_pnr?: StringNullableFilter<"feux_foret"> | string | null
+    libelle_pnr?: StringNullableFilter<"feux_foret"> | string | null
+    nature?: StringNullableFilter<"feux_foret"> | string | null
+    annee?: FloatFilter<"feux_foret"> | number
+    surface_parcourue?: FloatFilter<"feux_foret"> | number
+    surface_foret?: FloatNullableFilter<"feux_foret"> | number | null
+    surface_maquis_garrigues?: FloatNullableFilter<"feux_foret"> | number | null
+    autres_surfaces_naturelles_hors_foret?: FloatNullableFilter<"feux_foret"> | number | null
+    surfaces_agricoles?: FloatNullableFilter<"feux_foret"> | number | null
+    surfaces_non_boisees?: FloatNullableFilter<"feux_foret"> | number | null
+    surfaces_non_boisees_artificialisees?: FloatNullableFilter<"feux_foret"> | number | null
+    surfaces_non_boisees_naturelles?: FloatNullableFilter<"feux_foret"> | number | null
+    surface_autres_terres_boisees?: FloatNullableFilter<"feux_foret"> | number | null
+    autres_surfaces?: FloatNullableFilter<"feux_foret"> | number | null
+  }, "index">
+
+  export type feux_foretOrderByWithAggregationInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrderInput | SortOrder
+    libelle_petr?: SortOrderInput | SortOrder
+    code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
+    nature?: SortOrderInput | SortOrder
+    annee?: SortOrder
+    surface_parcourue?: SortOrder
+    surface_foret?: SortOrderInput | SortOrder
+    surface_maquis_garrigues?: SortOrderInput | SortOrder
+    autres_surfaces_naturelles_hors_foret?: SortOrderInput | SortOrder
+    surfaces_agricoles?: SortOrderInput | SortOrder
+    surfaces_non_boisees?: SortOrderInput | SortOrder
+    surfaces_non_boisees_artificialisees?: SortOrderInput | SortOrder
+    surfaces_non_boisees_naturelles?: SortOrderInput | SortOrder
+    surface_autres_terres_boisees?: SortOrderInput | SortOrder
+    autres_surfaces?: SortOrderInput | SortOrder
+    _count?: feux_foretCountOrderByAggregateInput
+    _avg?: feux_foretAvgOrderByAggregateInput
+    _max?: feux_foretMaxOrderByAggregateInput
+    _min?: feux_foretMinOrderByAggregateInput
+    _sum?: feux_foretSumOrderByAggregateInput
+  }
+
+  export type feux_foretScalarWhereWithAggregatesInput = {
+    AND?: feux_foretScalarWhereWithAggregatesInput | feux_foretScalarWhereWithAggregatesInput[]
+    OR?: feux_foretScalarWhereWithAggregatesInput[]
+    NOT?: feux_foretScalarWhereWithAggregatesInput | feux_foretScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"feux_foret"> | bigint | number
+    code_geographique?: StringWithAggregatesFilter<"feux_foret"> | string
+    libelle_geographique?: StringWithAggregatesFilter<"feux_foret"> | string
+    epci?: StringWithAggregatesFilter<"feux_foret"> | string
+    libelle_epci?: StringWithAggregatesFilter<"feux_foret"> | string
+    departement?: StringWithAggregatesFilter<"feux_foret"> | string
+    libelle_departement?: StringWithAggregatesFilter<"feux_foret"> | string
+    region?: FloatWithAggregatesFilter<"feux_foret"> | number
+    ept?: StringNullableWithAggregatesFilter<"feux_foret"> | string | null
+    libelle_petr?: StringNullableWithAggregatesFilter<"feux_foret"> | string | null
+    code_pnr?: StringNullableWithAggregatesFilter<"feux_foret"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"feux_foret"> | string | null
+    nature?: StringNullableWithAggregatesFilter<"feux_foret"> | string | null
+    annee?: FloatWithAggregatesFilter<"feux_foret"> | number
+    surface_parcourue?: FloatWithAggregatesFilter<"feux_foret"> | number
+    surface_foret?: FloatNullableWithAggregatesFilter<"feux_foret"> | number | null
+    surface_maquis_garrigues?: FloatNullableWithAggregatesFilter<"feux_foret"> | number | null
+    autres_surfaces_naturelles_hors_foret?: FloatNullableWithAggregatesFilter<"feux_foret"> | number | null
+    surfaces_agricoles?: FloatNullableWithAggregatesFilter<"feux_foret"> | number | null
+    surfaces_non_boisees?: FloatNullableWithAggregatesFilter<"feux_foret"> | number | null
+    surfaces_non_boisees_artificialisees?: FloatNullableWithAggregatesFilter<"feux_foret"> | number | null
+    surfaces_non_boisees_naturelles?: FloatNullableWithAggregatesFilter<"feux_foret"> | number | null
+    surface_autres_terres_boisees?: FloatNullableWithAggregatesFilter<"feux_foret"> | number | null
+    autres_surfaces?: FloatNullableWithAggregatesFilter<"feux_foret"> | number | null
   }
 
   export type inconfort_thermiqueCreateInput = {
@@ -38049,6 +39643,195 @@ export namespace Prisma {
     dat_pub_arrete?: StringFieldUpdateOperationsInput | string
   }
 
+  export type feux_foretCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    nature?: string | null
+    annee: number
+    surface_parcourue: number
+    surface_foret?: number | null
+    surface_maquis_garrigues?: number | null
+    autres_surfaces_naturelles_hors_foret?: number | null
+    surfaces_agricoles?: number | null
+    surfaces_non_boisees?: number | null
+    surfaces_non_boisees_artificialisees?: number | null
+    surfaces_non_boisees_naturelles?: number | null
+    surface_autres_terres_boisees?: number | null
+    autres_surfaces?: number | null
+  }
+
+  export type feux_foretUncheckedCreateInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    nature?: string | null
+    annee: number
+    surface_parcourue: number
+    surface_foret?: number | null
+    surface_maquis_garrigues?: number | null
+    autres_surfaces_naturelles_hors_foret?: number | null
+    surfaces_agricoles?: number | null
+    surfaces_non_boisees?: number | null
+    surfaces_non_boisees_artificialisees?: number | null
+    surfaces_non_boisees_naturelles?: number | null
+    surface_autres_terres_boisees?: number | null
+    autres_surfaces?: number | null
+  }
+
+  export type feux_foretUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    nature?: NullableStringFieldUpdateOperationsInput | string | null
+    annee?: FloatFieldUpdateOperationsInput | number
+    surface_parcourue?: FloatFieldUpdateOperationsInput | number
+    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces_naturelles_hors_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_agricoles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_artificialisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_naturelles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_autres_terres_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type feux_foretUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    nature?: NullableStringFieldUpdateOperationsInput | string | null
+    annee?: FloatFieldUpdateOperationsInput | number
+    surface_parcourue?: FloatFieldUpdateOperationsInput | number
+    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces_naturelles_hors_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_agricoles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_artificialisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_naturelles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_autres_terres_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type feux_foretCreateManyInput = {
+    index: bigint | number
+    code_geographique: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
+    departement: string
+    libelle_departement: string
+    region: number
+    ept?: string | null
+    libelle_petr?: string | null
+    code_pnr?: string | null
+    libelle_pnr?: string | null
+    nature?: string | null
+    annee: number
+    surface_parcourue: number
+    surface_foret?: number | null
+    surface_maquis_garrigues?: number | null
+    autres_surfaces_naturelles_hors_foret?: number | null
+    surfaces_agricoles?: number | null
+    surfaces_non_boisees?: number | null
+    surfaces_non_boisees_artificialisees?: number | null
+    surfaces_non_boisees_naturelles?: number | null
+    surface_autres_terres_boisees?: number | null
+    autres_surfaces?: number | null
+  }
+
+  export type feux_foretUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    nature?: NullableStringFieldUpdateOperationsInput | string | null
+    annee?: FloatFieldUpdateOperationsInput | number
+    surface_parcourue?: FloatFieldUpdateOperationsInput | number
+    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces_naturelles_hors_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_agricoles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_artificialisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_naturelles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_autres_terres_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type feux_foretUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    code_geographique?: StringFieldUpdateOperationsInput | string
+    libelle_geographique?: StringFieldUpdateOperationsInput | string
+    epci?: StringFieldUpdateOperationsInput | string
+    libelle_epci?: StringFieldUpdateOperationsInput | string
+    departement?: StringFieldUpdateOperationsInput | string
+    libelle_departement?: StringFieldUpdateOperationsInput | string
+    region?: FloatFieldUpdateOperationsInput | number
+    ept?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
+    code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    nature?: NullableStringFieldUpdateOperationsInput | string | null
+    annee?: FloatFieldUpdateOperationsInput | number
+    surface_parcourue?: FloatFieldUpdateOperationsInput | number
+    surface_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_maquis_garrigues?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces_naturelles_hors_foret?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_agricoles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_artificialisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    surfaces_non_boisees_naturelles?: NullableFloatFieldUpdateOperationsInput | number | null
+    surface_autres_terres_boisees?: NullableFloatFieldUpdateOperationsInput | number | null
+    autres_surfaces?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -40344,6 +42127,119 @@ export namespace Prisma {
   export type arretes_catnatSumOrderByAggregateInput = {
     index?: SortOrder
     region?: SortOrder
+  }
+
+  export type feux_foretCountOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    nature?: SortOrder
+    annee?: SortOrder
+    surface_parcourue?: SortOrder
+    surface_foret?: SortOrder
+    surface_maquis_garrigues?: SortOrder
+    autres_surfaces_naturelles_hors_foret?: SortOrder
+    surfaces_agricoles?: SortOrder
+    surfaces_non_boisees?: SortOrder
+    surfaces_non_boisees_artificialisees?: SortOrder
+    surfaces_non_boisees_naturelles?: SortOrder
+    surface_autres_terres_boisees?: SortOrder
+    autres_surfaces?: SortOrder
+  }
+
+  export type feux_foretAvgOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    annee?: SortOrder
+    surface_parcourue?: SortOrder
+    surface_foret?: SortOrder
+    surface_maquis_garrigues?: SortOrder
+    autres_surfaces_naturelles_hors_foret?: SortOrder
+    surfaces_agricoles?: SortOrder
+    surfaces_non_boisees?: SortOrder
+    surfaces_non_boisees_artificialisees?: SortOrder
+    surfaces_non_boisees_naturelles?: SortOrder
+    surface_autres_terres_boisees?: SortOrder
+    autres_surfaces?: SortOrder
+  }
+
+  export type feux_foretMaxOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    nature?: SortOrder
+    annee?: SortOrder
+    surface_parcourue?: SortOrder
+    surface_foret?: SortOrder
+    surface_maquis_garrigues?: SortOrder
+    autres_surfaces_naturelles_hors_foret?: SortOrder
+    surfaces_agricoles?: SortOrder
+    surfaces_non_boisees?: SortOrder
+    surfaces_non_boisees_artificialisees?: SortOrder
+    surfaces_non_boisees_naturelles?: SortOrder
+    surface_autres_terres_boisees?: SortOrder
+    autres_surfaces?: SortOrder
+  }
+
+  export type feux_foretMinOrderByAggregateInput = {
+    index?: SortOrder
+    code_geographique?: SortOrder
+    libelle_geographique?: SortOrder
+    epci?: SortOrder
+    libelle_epci?: SortOrder
+    departement?: SortOrder
+    libelle_departement?: SortOrder
+    region?: SortOrder
+    ept?: SortOrder
+    libelle_petr?: SortOrder
+    code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
+    nature?: SortOrder
+    annee?: SortOrder
+    surface_parcourue?: SortOrder
+    surface_foret?: SortOrder
+    surface_maquis_garrigues?: SortOrder
+    autres_surfaces_naturelles_hors_foret?: SortOrder
+    surfaces_agricoles?: SortOrder
+    surfaces_non_boisees?: SortOrder
+    surfaces_non_boisees_artificialisees?: SortOrder
+    surfaces_non_boisees_naturelles?: SortOrder
+    surface_autres_terres_boisees?: SortOrder
+    autres_surfaces?: SortOrder
+  }
+
+  export type feux_foretSumOrderByAggregateInput = {
+    index?: SortOrder
+    region?: SortOrder
+    annee?: SortOrder
+    surface_parcourue?: SortOrder
+    surface_foret?: SortOrder
+    surface_maquis_garrigues?: SortOrder
+    autres_surfaces_naturelles_hors_foret?: SortOrder
+    surfaces_agricoles?: SortOrder
+    surfaces_non_boisees?: SortOrder
+    surfaces_non_boisees_artificialisees?: SortOrder
+    surfaces_non_boisees_naturelles?: SortOrder
+    surface_autres_terres_boisees?: SortOrder
+    autres_surfaces?: SortOrder
   }
 
   export type BigIntFieldUpdateOperationsInput = {
