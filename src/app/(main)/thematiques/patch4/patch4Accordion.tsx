@@ -1,6 +1,7 @@
 'use client';
 
 import patch4Formula from '@/assets/images/patch4_formula.svg';
+import useWindowDimensions from '@/hooks/windowDimensions';
 import { Patch4 } from '@/lib/postgres/models';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -36,6 +37,7 @@ const Accordion = styled((props: AccordionProps) => (
 }));
 
 
+
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
   <MuiAccordionSummary {...props} />
 ))(() => ({
@@ -56,6 +58,8 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
   const [expanded, setExpanded] = useState(false);
   const { css } = useStyles();
+  const window = useWindowDimensions();
+
   return (
     <Accordion className={styles.accordion}>
       <AccordionSummary
@@ -65,12 +69,12 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
           <>
             {!expanded ? (
               <div className={styles.iconNotExpanded}>
-                <p>En savoir plus</p>
+                {window.width && window.width > 650 ? <p>En savoir plus</p> : ""}
                 <ExpandMoreIcon />
               </div>
             ) : (
               <div className={styles.iconExpanded}>
-                <p>Masquer</p>
+                {window.width && window.width > 650 ? <p>Masquer</p> : ""}
                 <ExpandLessIcon />
               </div>
             )}
