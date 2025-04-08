@@ -1,5 +1,6 @@
 'use server';
 
+import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
 import { PrismaClient as PostgresClient } from '../../../generated/client';
 
@@ -12,8 +13,7 @@ export const GetInconfortThermique = async (
 ) => {
   try {
     console.time('Query Execution Time INCONFORT THERMIQUE');
-    const re = new RegExp('T([1-9]|1[0-2])\\b'); //check if T + nombre entre 1 et 12
-    if (type === 'ept' && re.test(libelle)) {
+    if (type === 'ept' && eptRegex.test(libelle)) {
       //pour les ept
       const value = await PrismaPostgres.inconfort_thermique.findMany({
         where: {

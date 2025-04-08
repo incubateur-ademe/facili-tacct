@@ -16,6 +16,7 @@ import {
   Patch4
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { etatCoursDeauTooltipTextEau } from '@/lib/tooltipTexts';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './ressourcesEau.module.scss';
@@ -49,31 +50,6 @@ const EtatQualiteCoursDeau = (props: {
     ? AlgoPatch4(patch4, 'fortes_precipitations')
     : undefined;
 
-  const title = (
-    <div>
-      <p>
-        En application de la directive-cadre européenne sur l’eau, l’état
-        écologique global de chaque rivière est évalué tous les 6 ans par les
-        agences de l’eau, à partir de relevés sur 3 ans (N-1, N-2, N-3) issus
-        des stations de mesure de la qualité de l’eau (par modélisation en leur
-        absence). Plusieurs critères concourent à cette évaluation :
-      </p>
-      <ul>
-        <li>température et acidité de l’eau,</li>
-        <li>bilan de l’oxygène,</li>
-        <li>hydro-morphologie du cours d’eau,</li>
-        <li>
-          présence de poissons, de plantes aquatiques, de microalgues, de
-          micropolluants, de nutriments (eutrophisation), etc.
-        </li>
-      </ul>
-      <p>
-        Attention, le bon état écologique d’une rivière ne signifie pas une
-        qualité sanitaire suffisante pour s’y baigner.
-      </p>
-      <br></br>
-    </div>
-  );
   return (
     <>
       {
@@ -111,7 +87,7 @@ const EtatQualiteCoursDeau = (props: {
                       ) : null}
                     </div>
                     <CustomTooltip
-                      title={title}
+                      title={etatCoursDeauTooltipTextEau}
                       texte="Sur quoi repose ce classement ?"
                     />
                   </div>

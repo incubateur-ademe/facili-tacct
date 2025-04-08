@@ -10,6 +10,7 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { densiteBatiTooltipText } from '@/lib/tooltipTexts';
 import { eptRegex } from '@/lib/utils/regex';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -61,9 +62,6 @@ export const DensiteBati = ({
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : undefined;
 
-  const title =
-    '(surface au sol de la construction x hauteur du bâtiment) / surface totale de la commune';
-
   return (
     <>
       {!isLoadingPatch4 ? (
@@ -96,7 +94,7 @@ export const DensiteBati = ({
                       </div>
                     ) : null}
                   </div>
-                  <CustomTooltip title={title} />
+                  <CustomTooltip title={densiteBatiTooltipText} />
                 </div>
                 <div className="px-4">
                   <p>

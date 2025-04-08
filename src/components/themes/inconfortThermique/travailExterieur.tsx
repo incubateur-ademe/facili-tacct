@@ -11,6 +11,7 @@ import { travailExtDto } from '@/lib/dto';
 import { travailExtMapper } from '@/lib/mapper/inconfortThermique';
 import { InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { travailExterieurTooltipText } from '@/lib/tooltipTexts';
 import { eptRegex } from '@/lib/utils/regex';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
@@ -122,24 +123,6 @@ export const TravailExterieur = (props: {
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : undefined;
 
-  const title = (
-    <>
-      <div>
-        La base de données EMP3 de l’INSEE recense les emplois au lieu de
-        travail par sexe, secteur d'activité économique et catégorie
-        socioprofessionnelle.
-      </div>
-      <br></br>
-      <div>
-        Les emplois cumulés des secteurs de l’agriculture et de la construction
-        fournissent une image approximative de la part des emplois en extérieur
-        sur le territoire. Une partie des transports, du tourisme, voire la
-        collecte des déchets sont aussi concernés. Bien sûr, tout emploi amenant
-        à évoluer dans des environnements marqués par des températures élevées,
-        en extérieur comme en intérieur, est potentiellement à risque.
-      </div>
-    </>
-  );
   return (
     <>
       {
@@ -173,7 +156,7 @@ export const TravailExterieur = (props: {
                             </div>
                           ) : null}
                         </div>
-                        <CustomTooltip title={title} />
+                        <CustomTooltip title={travailExterieurTooltipText} />
                       </div>
                     ) : (
                       ''

@@ -122,11 +122,10 @@ export const MapAOT40 = (props: {
     : turf.multiPolygon(union?.geometry.coordinates as Position[][][])
 
   // Pour certains multipolygones, on a plusieurs arrays de coordonnées si les territoires sont disjoints
-  const flattenedCoordinates = polygonTerritoire.geometry.coordinates.length > 1
-    ? polygonTerritoire.geometry.coordinates.flat(1)
-    : getArrayDepth(polygonTerritoire.geometry.coordinates) === 4
-      ? polygonTerritoire.geometry.coordinates[0]
-      : polygonTerritoire.geometry.coordinates;
+  const flattenedCoordinates = getArrayDepth(polygonTerritoire.geometry.coordinates) === 4
+    ? polygonTerritoire.geometry.coordinates[0]
+    : polygonTerritoire.geometry.coordinates;
+
 
   // On inverse les coordonnées pour les passer à turf.polygon
   // car turf.polygon attend des coordonnées au format [longitude, latitude]

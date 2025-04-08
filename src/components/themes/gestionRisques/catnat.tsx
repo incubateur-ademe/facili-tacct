@@ -9,6 +9,7 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { ArreteCatNat, CarteCommunes, GestionRisques, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { catnatTooltipText } from '@/lib/tooltipTexts';
 import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
@@ -124,37 +125,6 @@ export const Catnat = (props: {
     ? AlgoPatch4(patch4, 'fortes_precipitations')
     : undefined;
 
-  const title = (
-    <>
-      <div>
-        Il s’agit du nombre total d'arrêtés de catastrophes naturelles d’origine
-        climatique publiés au Journal Officiel par commune depuis la création de
-        la garantie Cat-Nat en 1982 (loi du 13 juillet 1982). Sont considérés
-        comme risques naturels d’origine climatique : les avalanches, les
-        phénomènes atmosphériques tels que les vents cycloniques, les tempêtes
-        (exclues à partir de 1989), la grêle et la neige (exclues à partir de
-        2010), les inondations (coulée de boue, inondations par remontée de
-        nappe, et inondations par choc mécanique des vagues), les mouvements de
-        terrain (regroupant les chocs mécaniques liés à l’action des vagues,
-        l’éboulement rocheux, la chute de blocs, l’effondrement de terrain,
-        l’affaissement et le glissement de terrain), la sécheresse (notamment le
-        retrait-gonflement des argiles).
-      </div>
-      <br></br>
-      <div>
-        Les dommages dus aux vents cycloniques ne sont intégrés dans la garantie
-        des catastrophes naturelles que depuis la fin de l'année 2000, lorsque
-        la vitesse du vent dépasse 145 km/h pendant dix minutes, ou 215 km/h par
-        rafale.
-      </div>
-      <div>
-        Les catastrophes naturelles d’origine non climatiques (séismes,
-        éruptions volcaniques, lave torrentielle, raz de marée) sont exclues du
-        décompte.
-      </div>
-    </>
-  );
-
   return (
     <>
       {
@@ -195,7 +165,7 @@ export const Catnat = (props: {
                         />
                       ) : null}
                     </div>
-                    <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
+                    <CustomTooltip title={catnatTooltipText} texte="D'où vient ce chiffre ?" />
                   </div>
                   <div className="px-4">
                     <p>
