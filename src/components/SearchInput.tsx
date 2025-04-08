@@ -1,6 +1,7 @@
 'use client';
 
 import { GetCollectivite } from '@/lib/queries/searchBar';
+import { eptRegex } from '@/lib/utils/regex';
 import { cx } from '@codegouvfr/react-dsfr/tools/cx';
 import { Box } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -50,7 +51,6 @@ export const MySearchInput = (props: MySearchInputProps) => {
   const router = useRouter();
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState<Options[]>([]);
-  const re = new RegExp('T([1-9]|1[0-2])\\b');
 
   // supprime les doublons pour les objects
   const filteredCollectivite = options.filter(
@@ -68,18 +68,18 @@ export const MySearchInput = (props: MySearchInputProps) => {
     )
   ];
   const handleClick = () => {
-    if (typeTerritoire === 'epci' && re.test(searchLibelle)) {
+    if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
       router.push(
         `/thematiques?code=200054781&libelle=${searchLibelle}&type=ept`
       );
-    } else if (searchCode.length !== 0 || searchLibelle.length !== 0) {
-      searchCode.length !== 0
-        ? router.push(
-            `/thematiques?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
-          )
-        : router.push(
-            `/thematiques?libelle=${searchLibelle}&type=${typeTerritoire}`
-          );
+    } else if (searchCode.length !== 0) {
+      router.push(
+        `/thematiques?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
+      )
+    } else if (searchLibelle.length !== 0) {
+      router.push(
+        `/thematiques?libelle=${searchLibelle}&type=${typeTerritoire}`
+      );
     }
   };
 
@@ -108,7 +108,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
       autoHighlight
       filterOptions={(x) => x}
       options={collectivites}
-      noOptionsText="Aucune collectivité trouvée"
+      noOptionsText="Aucun territoire trouvé"
       onChange={(event, newValue: Options | null) => {
         setOptions(newValue ? [newValue, ...options] : options);
         setSearchCode(newValue?.searchCode ?? '');
