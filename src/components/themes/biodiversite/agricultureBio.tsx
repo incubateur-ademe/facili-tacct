@@ -26,7 +26,8 @@ const AgricultureBiologique = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
   const nombreExploitations = agricultureBio.find(
     (obj) => obj.VARIABLE === 'saue'
@@ -41,11 +42,12 @@ const AgricultureBiologique = (props: {
   useEffect(() => {
     void (async () => {
       const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
     })();
   }, [codgeo, codepci]);
 
-  const secheresse = patch4 ? AlgoPatch4(patch4[0], 'secheresse_sols') : null;
+  const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
 
   const title = (
     <>
@@ -75,7 +77,7 @@ const AgricultureBiologique = (props: {
 
   return (
     <>
-      {secheresse ? (
+      {!isLoadingPatch4 ? (
         <>
           {agricultureBio[0] ? (
             <div className={styles.container}>
@@ -100,7 +102,7 @@ const AgricultureBiologique = (props: {
                   )}
                   <div className={styles.patch4Wrapper}>
                     {secheresse === 'Intensité très forte' ||
-                    secheresse === 'Intensité forte' ? (
+                      secheresse === 'Intensité forte' ? (
                       <TagItem
                         icon={secheresseIcon}
                         indice="Sécheresse des sols"

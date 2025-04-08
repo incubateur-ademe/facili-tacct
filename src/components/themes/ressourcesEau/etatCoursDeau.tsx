@@ -31,7 +31,8 @@ const EtatQualiteCoursDeau = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const etatCoursDeauMap = etatCoursDeau.map(EtatCoursDeauMapper);
   const epciContoursMap = epciContours.map(EpciContoursMapper);
   const carteCommunesMap = carteCommunes.map(CommunesIndicateursMapper);
@@ -39,16 +40,15 @@ const EtatQualiteCoursDeau = (props: {
   useEffect(() => {
     void (async () => {
       const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
     })();
   }, [codgeo, codepci]);
 
   const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_chaleurs') : undefined;
   const precipitation = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_precipitations')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_precipitations') : undefined;
 
   const title = (
     <div>
@@ -77,7 +77,7 @@ const EtatQualiteCoursDeau = (props: {
   );
   return (
     <>
-      {precipitation && fortesChaleurs ? (
+      {!isLoadingPatch4 ? (
         <>
           {etatCoursDeau.length ? (
             <div className={styles.container}>
@@ -95,7 +95,7 @@ const EtatQualiteCoursDeau = (props: {
                   </p>
                   <div className={styles.patch4Wrapper}>
                     {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                      fortesChaleurs === 'Intensité forte' ? (
                       <TagItem
                         icon={fortesChaleursIcon}
                         indice="Fortes chaleurs"
@@ -103,7 +103,7 @@ const EtatQualiteCoursDeau = (props: {
                       />
                     ) : null}
                     {precipitation === 'Intensité très forte' ||
-                    precipitation === 'Intensité forte' ? (
+                      precipitation === 'Intensité forte' ? (
                       <TagItem
                         icon={precipitationIcon}
                         indice="Fortes précipitations"
