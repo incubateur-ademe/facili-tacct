@@ -23,7 +23,8 @@ export const FragiliteEconomique = ({
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const re = new RegExp('T([1-9]|1[0-2])\\b');
 
   const communesMap = carteCommunes
@@ -55,22 +56,16 @@ export const FragiliteEconomique = ({
   );
 
   useEffect(() => {
-    !(
-      type === 'petr' ||
-      type === 'pnr' ||
-      type === 'departement' ||
-      re.test(libelle)
-    )
-      ? void (async () => {
-        const temp = await GetPatch4(code);
-        setPatch4(temp);
-      })()
-      : void 0;
+    void (async () => {
+      const temp = await GetPatch4(code, type);
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
+    })()
   }, [code]);
 
   const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_chaleurs')
+    : undefined;
 
   const title = (
     <>
@@ -96,11 +91,7 @@ export const FragiliteEconomique = ({
 
   return (
     <>
-      {(communesMap && fortesChaleurs) ||
-        type === 'pnr' ||
-        type === 'petr' ||
-        type === 'departement' ||
-        re.test(libelle) ? (
+      {(communesMap && !isLoadingPatch4) ? (
         <div className={styles.container}>
           {communesMap.length ? (
             <>

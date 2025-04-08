@@ -34,17 +34,17 @@ export const TravailExterieur = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
-  const re = new RegExp('T([1-9]|1[0-2])\\b');
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
   const travailExterieurMapped = inconfortThermique.map(travailExtMapper);
 
   const travailExterieurTerritoire =
     type === 'commune'
       ? travailExterieurMapped.filter((e) => e.code_geographique === code)
-      : type === 'ept' && re.test(libelle)
+      : type === 'ept' && eptRegex.test(libelle)
         ? travailExterieurMapped.filter((e) => e.ept === libelle)
-        : type === 'epci' && !re.test(libelle)
+        : type === 'epci' && !eptRegex.test(libelle)
           ? travailExterieurMapped.filter((e) => e.epci === code)
           : travailExterieurMapped;
 
@@ -111,22 +111,16 @@ export const TravailExterieur = (props: {
     Number(((100 * sums.sumAgriculture) / Sum(Object.values(sums))).toFixed(1));
 
   useEffect(() => {
-    !(
-      type === 'petr' ||
-      type === 'pnr' ||
-      type === 'departement' ||
-      re.test(libelle)
-    )
-      ? void (async () => {
-        const temp = await GetPatch4(code);
-        setPatch4(temp);
-      })()
-      : void 0;
+    void (async () => {
+      const temp = await GetPatch4(code, type);
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
+    })()
   }, [code]);
 
   const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_chaleurs')
+    : undefined;
 
   const title = (
     <>
@@ -149,11 +143,7 @@ export const TravailExterieur = (props: {
   return (
     <>
       {
-        fortesChaleurs ||
-          type === 'pnr' ||
-          type === 'petr' ||
-          type === 'departement' ||
-          eptRegex.test(libelle) ?
+        !isLoadingPatch4 ?
           <>
             {
               inconfortThermique.length && travailExt ? (
