@@ -7,7 +7,6 @@ import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { ConsommationNAF, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -22,7 +21,8 @@ export const ConsommationEspacesNAF = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
   const sumNaf = type === "commune"
     ? consommationNAF.filter((item) => item.code_geographique === code)[0]
@@ -30,25 +30,19 @@ export const ConsommationEspacesNAF = (props: {
     : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
 
   useEffect(() => {
-    !(
-      type === 'petr' ||
-      type === 'pnr' ||
-      type === 'departement' ||
-      eptRegex.test(libelle)
-    )
-      ? void (async () => {
-        const temp = await GetPatch4(code);
-        setPatch4(temp);
-      })()
-      : void 0;
-  }, [code, libelle]);
+    void (async () => {
+      const temp = await GetPatch4(code, type);
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
+    })()
+  }, [code]);
 
   const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_chaleurs')
+    : undefined;
   const precipitation = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_precipitations')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_precipitations')
+    : undefined;
 
   const title = (
     <div>
@@ -68,11 +62,7 @@ export const ConsommationEspacesNAF = (props: {
   return (
     <>
       {
-        (fortesChaleurs && precipitation) ||
-        type === 'pnr' ||
-        type === 'petr' ||
-        type === 'departement' ||
-        type === 'ept' ?
+        !isLoadingPatch4 ?
           <>
             {consommationNAF.length > 0 ? (
               <div className={styles.container}>
