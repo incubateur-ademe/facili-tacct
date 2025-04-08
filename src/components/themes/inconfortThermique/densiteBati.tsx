@@ -10,6 +10,7 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { eptRegex } from '@/lib/utils/regex';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './themes.module.scss';
@@ -26,54 +27,46 @@ export const DensiteBati = ({
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
-  const re = new RegExp('T([1-9]|1[0-2])\\b');
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
   const communesMap = carteCommunes
     .map(CommunesIndicateursMapper)
     .filter((e) => !isNaN(e.properties.densite_bati));
 
   const carteTerritoire =
-    type === 'ept' && re.test(libelle)
+    type === 'ept' && eptRegex.test(libelle)
       ? communesMap.filter((e) => e.properties.ept === libelle)
       : communesMap;
 
-  const densiteTerritoire = type === 'ept' && re.test(libelle) ?
+  const densiteTerritoire = type === 'ept' && eptRegex.test(libelle) ?
     average(carteTerritoire.filter((e => e.properties.ept === libelle)).map((e) => e.properties.densite_bati))
     : type === 'commune'
       ? communesMap.find((obj) => obj.properties['code_geographique'] === code)?.properties.densite_bati
-      : average(carteTerritoire.map((e) => e.properties.densite_bati));
+      : carteTerritoire.length
+        ? average(carteTerritoire.map((e) => e.properties.densite_bati))
+        : undefined;
 
-  const densiteTerritoireSup = average(communesMap.map((e) => e.properties.densite_bati));
+  const densiteTerritoireSup = carteTerritoire.length ?? average(communesMap.map((e) => e.properties.densite_bati));
 
   useEffect(() => {
-    !(
-      type === 'petr' ||
-      type === 'pnr' ||
-      type === 'departement' ||
-      re.test(libelle)
-    )
-      ? void (async () => {
-        const temp = await GetPatch4(code);
-        setPatch4(temp);
-      })()
-      : void 0;
-  }, [code, libelle]);
+    void (async () => {
+      const temp = await GetPatch4(code, type);
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
+    })()
+  }, [code]);
 
   const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_chaleurs')
+    : undefined;
 
   const title =
     '(surface au sol de la construction x hauteur du bâtiment) / surface totale de la commune';
 
   return (
     <>
-      {fortesChaleurs ||
-        type === 'pnr' ||
-        type === 'petr' ||
-        type === 'departement' ||
-        re.test(libelle) ? (
+      {!isLoadingPatch4 ? (
         <div className={styles.container}>
           {carteTerritoire.length ? (
             <>
@@ -83,7 +76,7 @@ export const DensiteBati = ({
                     Sur votre territoire, la densité moyenne du bâtiment est de
                     <b> {densiteTerritoire?.toFixed(2)}. </b>
                   </p>
-                  {type === "commune" || re.test(libelle) ? (
+                  {type === "commune" || eptRegex.test(libelle) ? (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       À l'échelle de l'EPCI, ce taux est de
                       <b> {densiteTerritoireSup.toFixed(2)}.</b>
