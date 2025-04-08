@@ -9,7 +9,6 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { ArreteCatNat, CarteCommunes, GestionRisques, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { eptRegex } from '@/lib/utils/regex';
 import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
@@ -33,7 +32,8 @@ export const Catnat = (props: {
   }>;
 }) => {
   const { gestionRisques, carteCommunes } = props;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
   const [sliderValue, setSliderValue] = useState<number[]>([1982, 2024]);
   const [typeRisqueValue, setTypeRisqueValue] =
@@ -112,23 +112,17 @@ export const Catnat = (props: {
   }, [sliderValue, typeRisqueValue, datavizTab]);
 
   useEffect(() => {
-    !(
-      type === 'petr' ||
-      type === 'pnr' ||
-      type === 'departement' ||
-      eptRegex.test(libelle)
-    )
-      ? void (async () => {
-        const temp = await GetPatch4(code);
-        setPatch4(temp);
-      })()
-      : void 0;
-  }, [code, libelle]);
+    void (async () => {
+      const temp = await GetPatch4(code, type);
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
+    })()
+  }, [code]);
 
-  const secheresse = patch4 ? AlgoPatch4(patch4[0], 'secheresse_sols') : null;
+  const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
   const precipitation = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_precipitations')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_precipitations')
+    : undefined;
 
   const title = (
     <>
@@ -164,11 +158,7 @@ export const Catnat = (props: {
   return (
     <>
       {
-        secheresse ||
-          type === 'pnr' ||
-          type === 'petr' ||
-          type === 'departement' ||
-          eptRegex.test(libelle) ?
+        !isLoadingPatch4 ?
           <>
             {gestionRisques.length !== 0 ? (
               <div className={styles.container}>

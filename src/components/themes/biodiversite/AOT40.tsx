@@ -65,7 +65,8 @@ const AOT40Dataviz = (props: {
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
   const re = new RegExp('T([1-9]|1[0-2])\\b');
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
   const commune = type === "commune"
     ? carteCommunesMap.find(
@@ -139,22 +140,16 @@ const AOT40Dataviz = (props: {
   );
 
   useEffect(() => {
-    !(
-      type === 'petr' ||
-      type === 'pnr' ||
-      type === 'departement' ||
-      re.test(libelle)
-    )
-      ? void (async () => {
-        const temp = await GetPatch4(code);
-        setPatch4(temp);
-      })()
-      : void 0;
-  }, [code, libelle]);
+    void (async () => {
+      const temp = await GetPatch4(code, type);
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
+    })()
+  }, [code]);
 
   const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_chaleurs')
+    : undefined;
 
   const title = (
     <div>
@@ -186,11 +181,7 @@ const AOT40Dataviz = (props: {
   return (
     <>
       {
-        fortesChaleurs ||
-          type === 'pnr' ||
-          type === 'petr' ||
-          type === 'departement' ||
-          type === 'ept' ?
+        !isLoadingPatch4 ?
           <>
             {aot40.length ? (
               <div className={styles.container}>

@@ -14,6 +14,7 @@ import {
   Patch4
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { eptRegex } from '@/lib/utils/regex';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './themes.module.scss';
@@ -82,14 +83,13 @@ export const GrandAgeIsolement = (props: {
   const grandAgeIsolementMapped = inconfortThermique.map(
     grandAgeIsolementMapper
   );
-  const re = new RegExp('T([1-9]|1[0-2])\\b');
 
   const grandAgeIsolementTerritoire =
     type === 'commune'
       ? grandAgeIsolementMapped.filter((e) => e.code_geographique === code)
-      : type === 'ept' && re.test(libelle)
+      : type === 'ept' && eptRegex.test(libelle)
         ? grandAgeIsolementMapped.filter((e) => e.ept === libelle)
-        : type === 'epci' && !re.test(libelle)
+        : type === 'epci' && !eptRegex.test(libelle)
           ? grandAgeIsolementMapped.filter((e) => e.epci === code)
           : grandAgeIsolementMapped;
 
@@ -178,7 +178,7 @@ export const GrandAgeIsolement = (props: {
                     </b>{' '}
                     personnes).
                   </p>
-                  {type === 'commune' || re.test(libelle) ? (
+                  {type === 'commune' || eptRegex.test(libelle) ? (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       Ce taux est de{' '}
                       <b>{over_80_2020_percent_territoire_sup} %</b> dans votre

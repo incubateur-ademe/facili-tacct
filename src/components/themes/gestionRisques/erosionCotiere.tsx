@@ -9,7 +9,6 @@ import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { ErosionCotiereMapper } from '@/lib/mapper/erosionCotiere';
 import { CarteCommunes, ErosionCotiere, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { eptRegex } from '@/lib/utils/regex';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { LegendErosionCotiere } from '../../maps/legends/legendErosionCotiere';
@@ -25,25 +24,20 @@ const ErosionCotes = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const erosionCotiereMap = erosionCotiere.map(ErosionCotiereMapper);
   const communesMap = carteCommunes.map(CommunesIndicateursMapper);
 
   useEffect(() => {
-    !(
-      type === 'petr' ||
-      type === 'pnr' ||
-      type === 'departement' ||
-      re.test(libelle)
-    )
-      ? void (async () => {
-        const temp = await GetPatch4(code);
-        setPatch4(temp);
-      })()
-      : void 0;
-  }, [code, libelle]);
+    void (async () => {
+      const temp = await GetPatch4(code, type);
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
+    })()
+  }, [code]);
 
-  const niveauxMarins = patch4 ? AlgoPatch4(patch4[0], 'niveaux_marins') : null;
+  const niveauxMarins = patch4 ? AlgoPatch4(patch4, 'niveaux_marins') : undefined;
 
   const title = (
     <>
@@ -59,11 +53,7 @@ const ErosionCotes = (props: {
   return (
     <>
       {
-        niveauxMarins ||
-          type === 'pnr' ||
-          type === 'petr' ||
-          type === 'departement' ||
-          eptRegex.test(libelle) ?
+        !isLoadingPatch4 ?
           <>
             {erosionCotiere ? (
               <div className={styles.container}>

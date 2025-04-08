@@ -6,7 +6,6 @@ import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { AgricultureBio, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -28,7 +27,8 @@ const AgricultureBiologique = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
 
   const nombreExploitations = agricultureBio.find(
@@ -39,20 +39,18 @@ const AgricultureBiologique = (props: {
   )?.surface_2022!;
 
   useEffect(() => {
-    !(
-      type === 'petr' ||
-      type === 'pnr' ||
-      type === 'departement' ||
-      eptRegex.test(libelle)
-    )
-      ? void (async () => {
-        const temp = await GetPatch4(code);
-        setPatch4(temp);
-      })()
-      : void 0;
-  }, [code, libelle]);
+    void (async () => {
+      const temp = await GetPatch4(code, type);
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
+    })()
+  }, [code]);
 
-  const secheresse = patch4 ? AlgoPatch4(patch4[0], 'secheresse_sols') : null;
+  console.log('agricultureBio', agricultureBio);
+  console.log('patch4', patch4);
+  console.log("isLoadingPatch4", isLoadingPatch4);
+
+  const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
 
   const title = (
     <>
@@ -83,12 +81,7 @@ const AgricultureBiologique = (props: {
   return (
     <>
       {
-        secheresse ||
-          type === 'pnr' ||
-          type === 'petr' ||
-          type === 'departement' ||
-          type === 'ept'
-          ?
+        !isLoadingPatch4 ?
           <>
             {agricultureBio.length ? (
               <div className={styles.container}>
