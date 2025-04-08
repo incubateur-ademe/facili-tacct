@@ -28,7 +28,8 @@ export const Catnat = (props: {
   }>;
 }) => {
   const { gestionRisques, carteCommunes } = props;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
   const [sliderValue, setSliderValue] = useState<number[]>([1982, 2024]);
   const [typeRisqueValue, setTypeRisqueValue] =
@@ -76,8 +77,8 @@ export const Catnat = (props: {
       typeRisqueValue === 'Tous types'
         ? gestionRisques
         : gestionRisques.filter(
-            (item) => item.lib_risque_jo === typeRisqueValue
-          );
+          (item) => item.lib_risque_jo === typeRisqueValue
+        );
     setCatnatFilteredByType(catnatFilteredByType);
     const gestionRisquesEnrichBarChart = catnatFilteredByType
       ?.map((item) => {
@@ -108,14 +109,13 @@ export const Catnat = (props: {
   useEffect(() => {
     void (async () => {
       const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
     })();
   }, [codgeo, codepci]);
 
-  const secheresse = patch4 ? AlgoPatch4(patch4[0], 'secheresse_sols') : null;
-  const precipitation = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_precipitations')
-    : null;
+  const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
+  const precipitation = patch4 ? AlgoPatch4(patch4, 'fortes_precipitations') : undefined;
 
   const title = (
     <>
@@ -150,7 +150,7 @@ export const Catnat = (props: {
 
   return (
     <>
-      {secheresse && precipitation ? (
+      {!isLoadingPatch4 ? (
         <>
           {gestionRisques.length !== 0 ? (
             <div className={styles.container}>

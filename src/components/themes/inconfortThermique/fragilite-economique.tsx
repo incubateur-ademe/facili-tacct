@@ -22,7 +22,8 @@ export const FragiliteEconomique = ({
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo');
   const codepci = searchParams.get('codepci')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const communesMap = carteCommunes
     .map(CommunesIndicateursMapper)
     .filter((e) => !isNaN(e.properties.precarite_logement));
@@ -42,13 +43,14 @@ export const FragiliteEconomique = ({
   useEffect(() => {
     void (async () => {
       const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
     })();
   }, [codgeo, codepci]);
 
   const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_chaleurs')
+    : undefined;
 
   const title = (
     <>
@@ -74,7 +76,7 @@ export const FragiliteEconomique = ({
 
   return (
     <>
-      {communesMap && fortesChaleurs ? (
+      {communesMap && !isLoadingPatch4 ? (
         <div className={styles.container}>
           {communesMap.length ? (
             <>
@@ -98,7 +100,7 @@ export const FragiliteEconomique = ({
                   )}
                   <div className={styles.patch4Wrapper}>
                     {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                      fortesChaleurs === 'Intensité forte' ? (
                       <TagItem
                         icon={fortesChaleursIcon}
                         indice="Fortes chaleurs"
