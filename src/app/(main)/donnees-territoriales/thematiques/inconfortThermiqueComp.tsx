@@ -5,7 +5,7 @@ import { AgeBati } from '@/components/themes/inconfortThermique/ageBati';
 import { DensiteBati } from '@/components/themes/inconfortThermique/densiteBati';
 import { FragiliteEconomique } from '@/components/themes/inconfortThermique/fragiliteEconomique';
 import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grandAgeIsolement';
-import { TravailExterieur } from '@/components/themes/inconfortThermique/travail-exterieur';
+import { TravailExterieur } from '@/components/themes/inconfortThermique/travailExterieur';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import { CarteCommunes, CLCTerritoires, InconfortThermique } from '@/lib/postgres/models';
 import { GetClcTerritoires } from '@/lib/queries/postgis/cartographie';
@@ -78,7 +78,7 @@ const allComps = [
     Component: ({
       clc,
       inconfortThermique
-    }: Props & { activeDataTab: string; clc: CLCTerritoires[] }) => (
+    }: Props & { activeDataTab: string; clc: CLCTerritoires[] | undefined }) => (
       <DynamicVegetalisation
         inconfortThermique={inconfortThermique}
         clc={clc}
@@ -93,7 +93,7 @@ const InconfortThermiqueComp = ({
   inconfortThermique,
   departement
 }: Props) => {
-  const [clc, setClc] = useState<CLCTerritoires[]>();
+  const [clc, setClc] = useState<CLCTerritoires[] | undefined>();
   const [selectedTabId, setSelectedTabId] = useState('Population');
   const [selectedSubTab, setSelectedSubTab] = useState('Grand âge');
   const searchParams = useSearchParams();
@@ -220,7 +220,7 @@ const InconfortThermiqueComp = ({
                       inconfortThermique={inconfortThermique}
                       carteCommunes={carteCommunes}
                       activeDataTab={selectedSubTab}
-                      clc={clc || []}
+                      clc={clc}
                       departement={departement}
                     />
                   </Suspense>

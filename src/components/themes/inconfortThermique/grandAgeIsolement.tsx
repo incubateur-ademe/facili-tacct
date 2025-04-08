@@ -9,9 +9,9 @@ import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { grandAgeIsolementMapper } from '@/lib/mapper/inconfortThermique';
 import {
-    DataGrandAge,
-    InconfortThermique,
-    Patch4
+  DataGrandAge,
+  InconfortThermique,
+  Patch4
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { useSearchParams } from 'next/navigation';
@@ -67,7 +67,8 @@ export const GrandAgeIsolement = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const xData = [
     '1968',
     '1975',
@@ -147,33 +148,21 @@ export const GrandAgeIsolement = (props: {
     'Nombre de personnes de plus de 80 ans divisé par la population totale à chaque recensement INSEE.';
 
   useEffect(() => {
-    !(
-      type === 'petr' ||
-      type === 'pnr' ||
-      type === 'departement' ||
-      re.test(libelle)
-    )
-      ? void (async () => {
-          const temp = await GetPatch4(code);
-          setPatch4(temp);
-        })()
-      : void 0;
+    void (async () => {
+      const temp = await GetPatch4(code, type);
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
+    })()
   }, [code]);
 
-  const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
+  const fortesChaleurs = patch4 ? AlgoPatch4(patch4, 'fortes_chaleurs') : undefined;
 
   return (
     <>
-      {fortesChaleurs ||
-      type === 'pnr' ||
-      type === 'petr' ||
-      type === 'departement' ||
-      re.test(libelle) ? (
+      {!isLoadingPatch4 ? (
         <>
           {inconfortThermique.length &&
-          !Object.values(yData).slice(0, -2).includes('NaN') ? (
+            !Object.values(yData).slice(0, -2).includes('NaN') ? (
             <div className={styles.container}>
               <div className="w-2/5">
                 <div className={styles.explicationWrapper}>
@@ -206,7 +195,7 @@ export const GrandAgeIsolement = (props: {
                   )}
                   <div className={styles.patch4Wrapper}>
                     {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                      fortesChaleurs === 'Intensité forte' ? (
                       <TagItem
                         icon={fortesChaleursIcon}
                         indice="Fortes chaleurs"
