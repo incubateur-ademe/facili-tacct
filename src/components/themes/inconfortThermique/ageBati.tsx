@@ -10,6 +10,7 @@ import { AgeBatiDto } from '@/lib/dto';
 import { ageBatiMapper } from '@/lib/mapper/inconfortThermique';
 import { InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { eptRegex } from '@/lib/utils/regex';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -41,17 +42,17 @@ export const AgeBati = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
-  const re = new RegExp('T([1-9]|1[0-2])\\b');
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
   const ageBatiMapped = inconfortThermique.map(ageBatiMapper);
 
   const ageBatiTerritoire =
     type === 'commune'
       ? ageBatiMapped.filter((e) => e.code_geographique === code)
-      : type === 'ept' && re.test(libelle)
+      : type === 'ept' && eptRegex.test(libelle)
         ? ageBatiMapped.filter((e) => e.ept === libelle)
-        : type === 'epci' && !re.test(libelle)
+        : type === 'epci' && !eptRegex.test(libelle)
           ? ageBatiMapped.filter((e) => e.epci === code)
           : ageBatiMapped;
 
@@ -108,29 +109,19 @@ export const AgeBati = (props: {
   ];
 
   useEffect(() => {
-    !(
-      type === 'petr' ||
-      type === 'pnr' ||
-      type === 'departement' ||
-      re.test(libelle)
-    )
-      ? void (async () => {
-        const temp = await GetPatch4(code);
-        setPatch4(temp);
-      })()
-      : void 0;
-  }, [code, libelle]);
+    void (async () => {
+      const temp = await GetPatch4(code, type);
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
+    })()
+  }, [code]);
 
-  const fortesChaleurs = patch4 ? AlgoPatch4(patch4[0], 'fortes_chaleurs') : null;
-  const secheresse = patch4 ? AlgoPatch4(patch4[0], 'secheresse_sols') : null;
+  const fortesChaleurs = patch4 ? AlgoPatch4(patch4, 'fortes_chaleurs') : undefined;
+  const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
 
   return (
     <>
-      {(fortesChaleurs && secheresse) ||
-        type === 'pnr' ||
-        type === 'petr' ||
-        type === 'departement' ||
-        re.test(libelle) ? (
+      {!isLoadingPatch4 ? (
         <>
           {inconfortThermique.length &&
             !Object.values(averages).includes(NaN) &&

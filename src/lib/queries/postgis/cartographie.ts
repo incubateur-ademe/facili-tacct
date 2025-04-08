@@ -6,6 +6,7 @@ import {
   EpciContours,
   ErosionCotiere
 } from '@/lib/postgres/models';
+import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
 import { PrismaClient as PostgresClient } from '../../../generated/client';
 
@@ -157,9 +158,8 @@ export const GetClcTerritoires = async (
   libelle: string,
   type: string,
   code?: string
-): Promise<CLCTerritoires[]> => {
+): Promise<CLCTerritoires[] | undefined> => {
   try {
-    const re = new RegExp('T([1-9]|1[0-2])\\b');
     console.time('Query Execution Time GetClcTerritoires');
     if (type === 'commune') {
       const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
@@ -169,8 +169,8 @@ export const GetClcTerritoires = async (
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE code_geographique=${code};`;
       console.timeEnd('Query Execution Time GetClcTerritoires');
-      return value;
-    } else if (type === 'ept' && re.test(libelle)) {
+      return value.length ? value : undefined;
+    } else if (type === 'ept' && eptRegex.test(libelle)) {
       const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
         SELECT 
         legend, 
@@ -178,8 +178,8 @@ export const GetClcTerritoires = async (
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE ept=${libelle};`;
       console.timeEnd('Query Execution Time GetClcTerritoires');
-      return value;
-    } else if (type === 'epci' && !re.test(libelle)) {
+      return value.length ? value : undefined;
+    } else if (type === 'epci' && !eptRegex.test(libelle)) {
       const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
         SELECT 
         legend, 
@@ -187,7 +187,8 @@ export const GetClcTerritoires = async (
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE epci=${code};`;
       console.timeEnd('Query Execution Time GetClcTerritoires');
-      return value;
+      console.log('epci', value);
+      return value.length ? value : undefined;
     } else if (type === 'pnr') {
       const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
         SELECT 
@@ -196,7 +197,7 @@ export const GetClcTerritoires = async (
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE code_pnr=${code};`;
       console.timeEnd('Query Execution Time GetClcTerritoires');
-      return value;
+      return value.length ? value : undefined;
     } else if (type === 'petr') {
       const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
         SELECT 
@@ -205,8 +206,8 @@ export const GetClcTerritoires = async (
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE libelle_petr=${libelle};`;
       console.timeEnd('Query Execution Time GetClcTerritoires');
-      return value;
-    } else {
+      return value.length ? value : undefined;
+    } else if (type === 'departement') {
       const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
         SELECT 
         legend, 
@@ -214,8 +215,8 @@ export const GetClcTerritoires = async (
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE departement=${code};`;
       console.timeEnd('Query Execution Time GetClcTerritoires');
-      return value;
-    }
+      return value.length ? value : undefined;
+    } else return undefined;
   } catch (error) {
     console.error(error);
     await PrismaPostgres.$disconnect();
@@ -226,13 +227,13 @@ export const GetClcTerritoires = async (
 export const GetErosionCotiere = async (
   code: string,
   libelle: string,
-  type: string,
+  type: string
 ): Promise<ErosionCotiere[]> => {
   try {
     console.time('Query Execution Time ErosionCotiere');
     const re = new RegExp('T([1-9]|1[0-2])\\b');
     if (type === 'commune') {
-          console.time('Query Execution Time EtatCoursDeau');
+      console.time('Query Execution Time EtatCoursDeau');
       const commune = await PrismaPostgres.collectivites_searchbar.findFirst({
         where: {
           code_geographique: code
@@ -250,22 +251,22 @@ export const GetErosionCotiere = async (
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."erosion_cotiere" 
         WHERE ST_Intersects(geometry, ST_GeomFromText(${carte[0].geometry}, 4326));`;
-        console.timeEnd('Query Execution Time ErosionCotiere');
-        return value;
+      console.timeEnd('Query Execution Time ErosionCotiere');
+      return value;
     } else if (type === 'epci' && !re.test(libelle)) {
-        const epci = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+      const epci = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
           SELECT 
           epci,
           ST_AsText(ST_Union(geometry)) as geometry
           FROM postgis."communes_drom" WHERE epci=${code} GROUP BY epci;`;
-        const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
+      const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
           SELECT
           taux,
           ST_AsGeoJSON(geometry) geometry
           FROM postgis."erosion_cotiere" 
           WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`;
-          console.timeEnd('Query Execution Time ErosionCotiere');
-          return value;
+      console.timeEnd('Query Execution Time ErosionCotiere');
+      return value;
     } else if (code === 'ZZZZZZZZZ') {
       const ile = await PrismaPostgres.$queryRaw<EpciContours[]>`
         SELECT 
@@ -304,8 +305,8 @@ export const GetErosionCotiere = async (
 //     console.time('Query Execution Time GetEpci');
 //     if (code === 'ZZZZZZZZZ') {
 //       const value = await PrismaPostgres.$queryRaw<EpciContours[]>`
-//         SELECT 
-//         epci, 
+//         SELECT
+//         epci,
 //         ST_AsGeoJSON(geometry) geometry
 //         FROM postgis."communes_drom" WHERE code_geographique=${code};`;
 //       // console.log(value);
@@ -313,8 +314,8 @@ export const GetErosionCotiere = async (
 //       return value;
 //     } else {
 //       const value = await PrismaPostgres.$queryRaw<EpciContours[]>`
-//         SELECT 
-//         epci_code, 
+//         SELECT
+//         epci_code,
 //         ST_AsGeoJSON(geometry) geometry
 //         FROM postgis."epci" WHERE epci_code=${code};`;
 //       // console.log(value);

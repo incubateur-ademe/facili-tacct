@@ -35,7 +35,7 @@ const sumProperty = (
 };
 
 const Vegetalisation = (props: {
-  clc: CLCTerritoires[];
+  clc: CLCTerritoires[] | undefined;
   inconfortThermique: InconfortThermique[];
 }) => {
   const { inconfortThermique, clc } = props;
@@ -43,16 +43,18 @@ const Vegetalisation = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
-  const re = new RegExp('T([1-9]|1[0-2])\\b');
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
+
+  console.log("clc", clc)
 
   const vegetalisationMapped = inconfortThermique.map(vegetalisationMapper);
   const vegetalisationTerritoire =
     type === 'commune'
       ? vegetalisationMapped.filter((e) => e.code_geographique === code)
-      : type === 'ept' && re.test(libelle)
+      : type === 'ept' && eptRegex.test(libelle)
         ? vegetalisationMapped.filter((e) => e.ept === libelle)
-        : type === 'epci' && !re.test(libelle)
+        : type === 'epci' && !eptRegex.test(libelle)
           ? vegetalisationMapped.filter((e) => e.epci === code)
           : vegetalisationMapped;
 
@@ -64,28 +66,18 @@ const Vegetalisation = (props: {
     (100 * sumProperty(vegetalisationTerritoire, 'superf_choro'));
 
   useEffect(() => {
-    !(
-      type === 'petr' ||
-      type === 'pnr' ||
-      type === 'departement' ||
-      re.test(libelle)
-    )
-      ? void (async () => {
-        const temp = await GetPatch4(code);
-        setPatch4(temp);
-      })()
-      : void 0;
+    void (async () => {
+      const temp = await GetPatch4(code, type);
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
+    })()
   }, [code]);
 
-  const secheresse = patch4 ? AlgoPatch4(patch4[0], 'secheresse_sols') : null;
+  const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
 
   return (
     <>
-      {(vegetalisationTerritoire && secheresse) ||
-        type === 'pnr' ||
-        type === 'petr' ||
-        type === 'departement' ||
-        eptRegex.test(libelle) ? (
+      {(vegetalisationTerritoire && !isLoadingPatch4) ? (
         <div className={styles.container}>
           {vegetalisationTerritoire.length ? (
             <>
@@ -133,35 +125,41 @@ const Vegetalisation = (props: {
                 </div>
               </div>
               <div className="w-3/5">
-                {clc && clc.length > 0 ? (
-                  <div className={styles.graphWrapper}>
-                    <p style={{ padding: '1em', margin: '0' }}>
-                      <b>Cartographie des différents types de sols</b>
-                    </p>
-                    <CLCMap clc={clc} />
-                    <div
-                      className={styles.legend}
-                      style={{ width: 'auto', justifyContent: 'center' }}
-                    >
-                      <LegendCompColor legends={vegetalisationLegend} />
-                    </div>
-                    <p style={{ padding: '1em', margin: '0' }}>
-                      Source : CORINE Land Cover
-                    </p>
-                  </div>
-                ) : clc ? (
-                  <div className={styles.nodataWrapper}>
-                    <Image
-                      src={GraphNotFound}
-                      alt=""
-                      width={0}
-                      height={0}
-                      style={{ width: '90%', height: 'auto' }}
-                    />
-                  </div>
-                ) : (
-                  <Loader />
-                )}
+                {
+                  clc ?
+                    <>
+                      {clc.length ? (
+                        <div className={styles.graphWrapper}>
+                          <p style={{ padding: '1em', margin: '0' }}>
+                            <b>Cartographie des différents types de sols</b>
+                          </p>
+                          <CLCMap clc={clc} />
+                          <div
+                            className={styles.legend}
+                            style={{ width: 'auto', justifyContent: 'center' }}
+                          >
+                            <LegendCompColor legends={vegetalisationLegend} />
+                          </div>
+                          <p style={{ padding: '1em', margin: '0' }}>
+                            Source : CORINE Land Cover
+                          </p>
+                        </div>
+                      ) : (
+                        <Loader />
+                      )}
+                    </>
+                    : (
+                      <div className={styles.noData}>
+                        <Image
+                          src={GraphNotFound}
+                          alt=""
+                          width={0}
+                          height={0}
+                          style={{ width: '90%', height: 'auto' }}
+                        />
+                      </div>
+                    )
+                }
               </div>
             </>
           ) : (
