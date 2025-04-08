@@ -10,6 +10,8 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { fragiliteEconomiqueTooltipText } from '@/lib/tooltipTexts';
+import { eptRegex } from '@/lib/utils/regex';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './themes.module.scss';
@@ -25,14 +27,13 @@ export const FragiliteEconomique = ({
   const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
-  const re = new RegExp('T([1-9]|1[0-2])\\b');
 
   const communesMap = carteCommunes
     .map(CommunesIndicateursMapper)
     .filter((e) => !isNaN(e.properties.precarite_logement));
 
   const carteTerritoire =
-    type === 'ept' && re.test(libelle)
+    type === 'ept' && eptRegex.test(libelle)
       ? communesMap.filter((e) => e.properties.ept === libelle)
       : communesMap;
 
@@ -67,28 +68,6 @@ export const FragiliteEconomique = ({
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : undefined;
 
-  const title = (
-    <>
-      <div>La précarité énergétique liée au logement concerne : </div>
-      <br></br>
-      <div>
-        - les ménages des 3 premiers déciles(*) c'est-à-dire les 30 % de la
-        population ayant les revenus les plus modestes,
-      </div>
-      <div>
-        - parmi ces 30 %, les ménages qui consacrent plus de 8 % de leurs
-        revenus aux dépenses énergétiques liées à leur logement (chauffage, eau
-        chaude, et ventilation).
-      </div>
-      <br></br>
-      <div>
-        (*)Les déciles divisent les revenus de la population en dix parties
-        égales. Dans la modélisation effectuée pour l’ONPE, le 3è décile
-        correspond à des revenus inférieurs à 19 600€ par an.
-      </div>
-    </>
-  );
-
   return (
     <>
       {(communesMap && !isLoadingPatch4) ? (
@@ -102,7 +81,7 @@ export const FragiliteEconomique = ({
                     liée au logement sur votre territoire est de{' '}
                     <b>{(100 * precariteLogTerritoire).toPrecision(3)} %. </b>
                   </p>
-                  {type === 'commune' || re.test(libelle) ? (
+                  {type === 'commune' || eptRegex.test(libelle) ? (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       Ce taux est de{' '}
                       <b>
@@ -124,7 +103,7 @@ export const FragiliteEconomique = ({
                     ) : null}
                   </div>
                   <CustomTooltip
-                    title={title}
+                    title={fragiliteEconomiqueTooltipText}
                     texte="D'où vient ce chiffre ?"
                   />
                 </div>

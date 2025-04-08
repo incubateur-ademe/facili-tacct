@@ -7,6 +7,7 @@ import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { ConsommationNAF, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -44,21 +45,6 @@ export const ConsommationEspacesNAF = (props: {
     ? AlgoPatch4(patch4, 'fortes_precipitations')
     : undefined;
 
-  const title = (
-    <div>
-      <p>
-        Le suivi de cet indicateur est réalisé par le CEREMA dans le cadre de
-        l’objectif “zéro artificialisation nette” de la loi « Climat et
-        résilience ». La consommation d’espaces NAF est calculée à partir des
-        fichiers fonciers entre 2009 et 2023. Les données sont traitées pour
-        donner des tendances de façon uniforme sur toute la France ;
-        ponctuellement, il est possible que les documents de planification de
-        certaines collectivités territoriales fassent référence à des données
-        locales de consommation d'espaces différentes de celles fournies par le
-        CEREMA.
-      </p>
-    </div>
-  );
   return (
     <>
       {
@@ -91,7 +77,7 @@ export const ConsommationEspacesNAF = (props: {
                         />
                       ) : null}
                     </div>
-                    <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
+                    <CustomTooltip title={espacesNAFTooltipText} texte="D'où vient ce chiffre ?" />
                   </div>
                   <div className="px-4">
                     <p>
