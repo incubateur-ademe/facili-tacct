@@ -9,6 +9,7 @@ import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { ErosionCotiereMapper } from '@/lib/mapper/erosionCotiere';
 import { CarteCommunes, ErosionCotiere, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { erosionCotiereTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { LegendErosionCotiere } from '../../maps/legends/legendErosionCotiere';
@@ -39,17 +40,6 @@ const ErosionCotes = (props: {
 
   const niveauxMarins = patch4 ? AlgoPatch4(patch4, 'niveaux_marins') : undefined;
 
-  const title = (
-    <>
-      <div>
-        Elaboré dans le cadre de la stratégie nationale de gestion intégrée du
-        trait de côte,  cet indicateur national donne un aperçu quantifié des
-        phénomènes d’érosion, sur la base de la mobilité passée du trait de côte
-        sur une période de 50 ans.
-      </div>
-      <br></br>
-    </>
-  );
   return (
     <>
       {
@@ -75,7 +65,7 @@ const ErosionCotes = (props: {
                         />
                       ) : null}
                     </div>
-                    <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
+                    <CustomTooltip title={erosionCotiereTooltipText} texte="D'où vient ce chiffre ?" />
                   </div>
                   <div className="px-4">
                     <p>
