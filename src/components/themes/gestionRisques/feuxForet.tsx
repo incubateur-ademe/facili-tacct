@@ -7,6 +7,7 @@ import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { IncendiesForet, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { feuxForetTooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
@@ -38,30 +39,6 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
   }, [code]);
 
   const feuxForet = patch4 ? AlgoPatch4(patch4, 'feux_foret') : undefined;
-
-  const title = (
-    <div>
-      <p>
-        Un incendie de forêt est un incendie qui démarre en forêt ou qui se
-        propage en forêt ou au sein de terres boisées au cours de son évolution
-        (y compris dans les maquis ou garrigues dans l’aire méditerranéenne).
-      </p>
-      <p>
-        La surface parcourue est la surface totale parcourue par le feu au cours
-        de son évolution et quelle que soit la végétation touchée. Ces surfaces
-        sont soit :
-      </p>
-      <ul>
-        <li>
-          estimées (renseignées dans la BDIFF sans être issues de mesures),
-        </li>
-        <li>
-          mesurées (issues de mesures sur le terrain ou d’un Système
-          d’Information Géographique).
-        </li>
-      </ul>
-    </div>
-  );
 
   return (
     <>
@@ -96,7 +73,7 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
                   />
                 </div>
               ) : null}
-              <CustomTooltip title={title} texte="Définition" />
+              <CustomTooltip title={feuxForetTooltipText} texte="Définition" />
             </div>
             <div className={styles.textWrapper}>
               <p>

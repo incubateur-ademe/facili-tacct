@@ -14,6 +14,7 @@ import {
   Patch4
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { AOT40TooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import * as turf from '@turf/turf';
 import L from 'leaflet';
@@ -64,7 +65,6 @@ const AOT40Dataviz = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const re = new RegExp('T([1-9]|1[0-2])\\b');
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
@@ -151,33 +151,6 @@ const AOT40Dataviz = (props: {
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : undefined;
 
-  const title = (
-    <div>
-      <p>
-        L’AOT40 (Accumulated Exposure Over Threshold 40) est un indicateur
-        estimant l’impact de la pollution à l’ozone sur la végétation. Il mesure
-        l’accumulation des concentrations d’ozone dépassant 40 ppb (80 µg/m³) :
-      </p>
-      <p>
-        Il est calculé par la somme des différences entre les concentrations
-        horaires d'ozone supérieures à 80 µg/m3 et le seuil de 80 µg/m3,
-        mesurées quotidiennement entre 8 h et 20 h, de mai à juillet pour tenir
-        compte de la période de photosynthèse.
-      </p>
-      <p>
-        Une valeur cible(*) de 18 000 µg/m³ par heure, en moyenne calculée sur 5
-        ans, est fixée dans la directive 2024/2881 du 23 octobre 2024 concernant
-        la qualité de l’air ambiant et un air pur pour l’Europe.
-      </p>
-      <p>
-        <i>
-          (*) Valeur cible : niveau à atteindre, dans la mesure du possible,
-          afin d'éviter, de prévenir ou de réduire les effets nocifs sur
-          l'environnement.
-        </i>
-      </p>
-    </div>
-  );
   return (
     <>
       {
@@ -229,7 +202,7 @@ const AOT40Dataviz = (props: {
                         </div>
                       ) : null}
                     </div>
-                    <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
+                    <CustomTooltip title={AOT40TooltipText} texte="D'où vient ce chiffre ?" />
                   </div>
                   <div className="px-4">
                     <p>
