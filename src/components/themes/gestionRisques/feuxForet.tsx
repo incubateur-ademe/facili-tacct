@@ -7,7 +7,6 @@ import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { IncendiesForet, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
@@ -22,7 +21,8 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
   const surfaceTotale = incendiesForet
     .map((el) => el.surface_parcourue)
@@ -30,20 +30,14 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
   const departement = incendiesForet[0]?.departement;
 
   useEffect(() => {
-    !(
-      type === 'petr' ||
-      type === 'pnr' ||
-      type === 'departement' ||
-      eptRegex.test(libelle)
-    )
-      ? void (async () => {
-        const temp = await GetPatch4(code);
-        setPatch4(temp);
-      })()
-      : void 0;
-  }, [code, libelle]);
+    void (async () => {
+      const temp = await GetPatch4(code, type);
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
+    })()
+  }, [code]);
 
-  const feuxForet = patch4 ? AlgoPatch4(patch4[0], 'feux_foret') : null;
+  const feuxForet = patch4 ? AlgoPatch4(patch4, 'feux_foret') : undefined;
 
   const title = (
     <div>
@@ -71,11 +65,7 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
 
   return (
     <>
-      {feuxForet ||
-        type === 'pnr' ||
-        type === 'petr' ||
-        type === 'departement' ||
-        eptRegex.test(libelle) ? (
+      {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <div className={incendiesForet.length !== 0 ? 'w-2/5' : 'w-1/2'}>
             <div className={styles.explicationWrapper}>
