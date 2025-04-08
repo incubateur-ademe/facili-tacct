@@ -3,7 +3,6 @@
 import {
   CarteCommunes,
   CLCTerritoires,
-  EpciContours,
   ErosionCotiere
 } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
@@ -227,102 +226,127 @@ export const GetErosionCotiere = async (
   libelle: string,
   type: string
 ): Promise<ErosionCotiere[]> => {
+  const distance =
+    type === 'commune'
+      ? 0.28 // calcul fait pour la plus vaste commune : Arles
+      : type === 'epci'
+        ? 0.6 // calcul fait pour la plus vaste epci : pays Basque
+        : type === 'pnr'
+          ? 0.8 // calcul fait pour le PNR de Corse
+          : type === 'petr'
+            ? 0.6
+            : type === 'departement'
+              ? 1
+              : 0.3;
   try {
     console.time('Query Execution Time ErosionCotiere');
-    const re = new RegExp('T([1-9]|1[0-2])\\b');
     if (type === 'commune') {
       console.time('Query Execution Time EtatCoursDeau');
-      const commune = await PrismaPostgres.collectivites_searchbar.findFirst({
-        where: {
-          code_geographique: code
-        }
-      });
-      const carte = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
-        SELECT 
-        epci,
-        ST_AsText(ST_Centroid(geometry)) centroid,
-        ST_AsText(geometry) geometry
-        FROM postgis."communes_drom" WHERE epci=${commune?.epci};`;
-      const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
+      const commune = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT
-        taux,
+        code_geographique,
+        ST_AsText(geometry) geometry
+        FROM postgis."communes_drom" 
+        WHERE code_geographique=${code} LIMIT 1;`;
+      const intersect = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        SELECT
         ST_AsGeoJSON(geometry) geometry
-        FROM postgis."erosion_cotiere" 
-        WHERE ST_Intersects(geometry, ST_GeomFromText(${carte[0].geometry}, 4326));`;
-      console.timeEnd('Query Execution Time ErosionCotiere');
-      return value;
-    } else if (type === 'epci' && !re.test(libelle)) {
-      const epci = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
-          SELECT 
-          epci,
-          ST_AsText(ST_Union(geometry)) as geometry
-          FROM postgis."communes_drom" WHERE epci=${code} GROUP BY epci;`;
-      const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
+        FROM postgis."erosion_cotiere"
+        WHERE ST_Intersects(geometry, ST_GeomFromText(${commune[0].geometry}, 4326)) LIMIT 1;`;
+      if (intersect.length) {
+        const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
           SELECT
           taux,
           ST_AsGeoJSON(geometry) geometry
           FROM postgis."erosion_cotiere" 
-          WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`;
-      console.timeEnd('Query Execution Time ErosionCotiere');
-      return value;
-    } else if (code === 'ZZZZZZZZZ') {
-      const ile = await PrismaPostgres.$queryRaw<EpciContours[]>`
-        SELECT 
-        epci,
-        ST_AsText(ST_Centroid(geometry)) centroid,
-        ST_AsText(geometry) geometry
-        FROM postgis."communes_drom" WHERE code_geographique=${code};`;
-      const valueIntersect = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
-        SELECT 
-        taux, 
+          WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${commune[0].geometry})), 4326), ${distance});`;
+        console.timeEnd('Query Execution Time ErosionCotiere');
+        return value;
+      } else return [];
+    } else if (type === 'epci' && !eptRegex.test(libelle)) {
+      const epci = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        SELECT
+        ST_AsText(ST_Union(geometry)) as geometry
+        FROM postgis."communes_drom" WHERE epci=${code};`;
+      const intersect = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        SELECT
         ST_AsGeoJSON(geometry) geometry
-        FROM postgis."erosion_cotiere" WHERE ST_Intersects(geometry, ST_GeomFromText(${ile[0].geometry}, 4326));`;
-      const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
+        FROM postgis."erosion_cotiere"
+        WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326))`;
+      if (intersect.length) {
+        const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
+          SELECT
+          taux,
+          ST_AsGeoJSON(geometry) geometry
+          FROM postgis."erosion_cotiere" 
+          WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${epci[0].geometry})), 4326), ${distance});`;
+        console.timeEnd('Query Execution Time ErosionCotiere');
+        return value;
+      } else return [];
+    } else if (type === 'pnr') {
+      const pnr = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
-        taux, 
+        ST_AsText(ST_Union(geometry)) as geometry
+        FROM postgis."communes_drom" WHERE code_pnr=${code};`;
+      const intersect = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        SELECT
         ST_AsGeoJSON(geometry) geometry
-        FROM postgis."erosion_cotiere" WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${ile[0].geometry})), 4326), 0.6);`;
-      console.timeEnd('Query Execution Time ErosionCotiere');
-      return value;
-    } else {
-      return [];
-    }
+        FROM postgis."erosion_cotiere"
+        WHERE ST_Intersects(geometry, ST_GeomFromText(${pnr[0].geometry}, 4326))`;
+      if (intersect.length) {
+        const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
+          SELECT
+          taux,
+          ST_AsGeoJSON(geometry) geometry
+          FROM postgis."erosion_cotiere"
+          WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${pnr[0].geometry})), 4326), ${distance});`;
+        console.timeEnd('Query Execution Time ErosionCotiere');
+        return value;
+      } else return [];
+    } else if (type === 'petr') {
+      const petr = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        SELECT 
+        ST_AsText(ST_Union(geometry)) as geometry
+        FROM postgis."communes_drom" WHERE libelle_petr=${libelle};`;
+      const intersect = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        SELECT
+        ST_AsGeoJSON(geometry) geometry
+        FROM postgis."erosion_cotiere"
+        WHERE ST_Intersects(geometry, ST_GeomFromText(${petr[0].geometry}, 4326)) LIMIT 1`;
+      if (intersect.length) {
+        const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
+          SELECT
+          taux,
+          ST_AsGeoJSON(geometry) geometry
+          FROM postgis."erosion_cotiere"
+          WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${petr[0].geometry})), 4326), ${distance});`;
+        console.timeEnd('Query Execution Time ErosionCotiere');
+        return value;
+      } else return [];
+    } else if (type === 'departement') {
+      const departement = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        SELECT 
+        ST_AsText(ST_Union(geometry)) as geometry
+        FROM postgis."communes_drom" WHERE departement=${code};`;
+      const intersect = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        SELECT
+        ST_AsGeoJSON(geometry) geometry
+        FROM postgis."erosion_cotiere"
+        WHERE ST_Intersects(geometry, ST_GeomFromText(${departement[0].geometry}, 4326))`;
+      if (intersect.length) {
+        const value = await PrismaPostgres.$queryRaw<ErosionCotiere[]>`
+          SELECT
+          taux,
+          ST_AsGeoJSON(geometry) geometry
+          FROM postgis."erosion_cotiere"
+          WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${departement[0].geometry})), 4326), ${distance});`; //ST_Intersects(geometry, ST_GeomFromText(${departement[0].geometry}, 4326));
+        console.timeEnd('Query Execution Time ErosionCotiere');
+        return value;
+      } else return [];
+    } else return [];
   } catch (error) {
     console.error(error);
     await PrismaPostgres.$disconnect();
     process.exit(1);
   }
 };
-
-// export const GetEpci = async (
-//   code: string,
-//   libelle: string,
-//   type: string,
-// ): Promise<EpciContours[]> => {
-//   try {
-//     console.time('Query Execution Time GetEpci');
-//     if (code === 'ZZZZZZZZZ') {
-//       const value = await PrismaPostgres.$queryRaw<EpciContours[]>`
-//         SELECT
-//         epci,
-//         ST_AsGeoJSON(geometry) geometry
-//         FROM postgis."communes_drom" WHERE code_geographique=${code};`;
-//       // console.log(value);
-//       console.timeEnd('Query Execution Time GetEpci');
-//       return value;
-//     } else {
-//       const value = await PrismaPostgres.$queryRaw<EpciContours[]>`
-//         SELECT
-//         epci_code,
-//         ST_AsGeoJSON(geometry) geometry
-//         FROM postgis."epci" WHERE epci_code=${code};`;
-//       // console.log(value);
-//       console.timeEnd('Query Execution Time GetEpci');
-//       return value;
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     await PrismaPostgres.$disconnect();
-//     process.exit(1);
-//   }
-// };
