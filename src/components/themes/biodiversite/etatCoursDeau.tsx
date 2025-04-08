@@ -40,31 +40,26 @@ const EtatQualiteCoursDeau = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const re = new RegExp('T([1-9]|1[0-2])\\b');
   const etatCoursDeauMap = etatCoursDeau.map(EtatCoursDeauMapper);
   const carteCommunesMap = carteCommunes.map(CommunesIndicateursMapper);
 
   useEffect(() => {
-    !(
-      type === 'petr' ||
-      type === 'pnr' ||
-      type === 'departement' ||
-      re.test(libelle)
-    )
-      ? void (async () => {
-        const temp = await GetPatch4(code);
-        setPatch4(temp);
-      })()
-      : void 0;
-  }, [code, libelle]);
+    void (async () => {
+      const temp = await GetPatch4(code, type);
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
+    })()
+  }, [code]);
 
   const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_chaleurs')
+    : undefined;
   const precipitation = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_precipitations')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_precipitations')
+    : undefined;
 
   const title = (
     <div>
@@ -99,11 +94,7 @@ const EtatQualiteCoursDeau = (props: {
   return (
     <>
       {
-        (fortesChaleurs && precipitation) ||
-          type === 'pnr' ||
-          type === 'petr' ||
-          type === 'departement' ||
-          type === 'ept' ?
+        !isLoadingPatch4 ?
           <>
             {etatCoursDeau.length || qualiteEauxBaignade.length ? (
               <div className={styles.container}>
