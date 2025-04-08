@@ -3,7 +3,7 @@
 import useWindowDimensions from '@/hooks/windowDimensions';
 import Notice from '@codegouvfr/react-dsfr/Notice';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import Constellation2Img from '../../assets/images/constellation2.png';
 import Constellation3Img from '../../assets/images/constellation3.png';
@@ -11,7 +11,8 @@ import PeopleImg from '../../assets/images/landing-page-group.png';
 import MapImg from '../../assets/images/landing-page-map.png';
 import { Container } from '../../dsfr/layout';
 import styles from '../root.module.scss';
-import { CollectiviteSearch } from './CollectiviteSearch';
+
+const CollectiviteSearch = lazy(() => import('./CollectiviteSearch'));
 
 const Home = () => {
   const [noticeClosed, setNoticeClosed] = useState(false);
@@ -72,7 +73,7 @@ const Home = () => {
             <div className={styles.card}>
               <Image
                 src={MapImg}
-                alt=""
+                alt="image-cartographie"
                 className={styles.cardImage}
               />
               <div className={styles.cardDescription}>
@@ -86,7 +87,7 @@ const Home = () => {
             <div className={styles.card}>
               <Image
                 src={PeopleImg}
-                alt=""
+                alt="personne-dans-un-atelier"
                 className={styles.cardImage}
               />
               <div className={styles.cardDescription}>
@@ -113,7 +114,7 @@ const Home = () => {
           </div>
           {window.width && window.width < 1280 ? (
             <Image
-              alt=""
+              alt="constellation-de-problematiques"
               src={Constellation2Img}
               width={0}
               height={0}
