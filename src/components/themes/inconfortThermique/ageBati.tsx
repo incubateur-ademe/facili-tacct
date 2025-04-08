@@ -40,7 +40,8 @@ export const AgeBati = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo');
   const codepci = searchParams.get('codepci')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const ageBatiMapped = inconfortThermique.map(ageBatiMapper);
   const ageBatiCommune = codgeo
     ? ageBatiMapped.filter((e) => e.code_geographique === codgeo)
@@ -103,22 +104,22 @@ export const AgeBati = (props: {
   useEffect(() => {
     void (async () => {
       const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
     })();
   }, [codgeo, codepci]);
 
   const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
-  const secheresse = patch4 ? AlgoPatch4(patch4[0], 'secheresse_sols') : null;
+    ? AlgoPatch4(patch4, 'fortes_chaleurs') : undefined;
+  const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
 
   return (
     <>
-      {secheresse && fortesChaleurs ? (
+      {!isLoadingPatch4 ? (
         <>
           {inconfortThermique.length &&
-          !Object.values(averages).includes(NaN) &&
-          Sum(Object.values(averages)) != 0 ? (
+            !Object.values(averages).includes(NaN) &&
+            Sum(Object.values(averages)) != 0 ? (
             <div className={styles.container}>
               <div className="w-2/5">
                 <div className={styles.explicationWrapper}>
