@@ -32,7 +32,8 @@ export const TravailExterieur = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo');
   const codepci = searchParams.get('codepci')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const travailExterieurMapped = inconfortThermique.map(travailExtMapper);
   const travailExterieurCommune = codgeo
     ? travailExterieurMapped.filter((e) => e.code_geographique === codgeo)
@@ -110,13 +111,14 @@ export const TravailExterieur = (props: {
   useEffect(() => {
     void (async () => {
       const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
     })();
   }, [codgeo, codepci]);
 
   const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_chaleurs')
+    : undefined;
 
   const title = (
     <>
@@ -138,7 +140,7 @@ export const TravailExterieur = (props: {
   );
   return (
     <>
-      {fortesChaleurs ? (
+      {!isLoadingPatch4 ? (
         <>
           {inconfortThermique.length && travailExt ? (
             <div className={styles.container}>
@@ -159,7 +161,7 @@ export const TravailExterieur = (props: {
                     </p>
                     <div className={styles.patch4Wrapper}>
                       {fortesChaleurs === 'Intensité très forte' ||
-                      fortesChaleurs === 'Intensité forte' ? (
+                        fortesChaleurs === 'Intensité forte' ? (
                         <div>
                           <TagItem
                             icon={fortesChaleursIcon}
