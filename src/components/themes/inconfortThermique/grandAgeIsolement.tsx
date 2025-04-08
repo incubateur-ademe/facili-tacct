@@ -168,7 +168,7 @@ export const GrandAgeIsolement = (props: {
                 <div className={styles.explicationWrapper}>
                   <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                     En 2020, <b>{yData.over_80_2020_percent} %</b> de la
-                    population de votre collectivité est constitué de personnes
+                    population de votre territoire est constitué de personnes
                     âgées de plus de 80 ans (soit{' '}
                     <b>
                       {sumProperty(

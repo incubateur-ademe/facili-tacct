@@ -3,7 +3,7 @@
 import { SearchBarComp } from '@/components/SearchBar';
 import styles from '../root.module.scss';
 
-export const CollectiviteSearch = () => {
+const CollectiviteSearch = () => {
   return (
     <div className={styles.collectiviteWrapper}  >
       <h2 className="text-center text-[1.5rem] font-bold">
@@ -13,3 +13,5 @@ export const CollectiviteSearch = () => {
     </div>
   );
 };
+
+export default CollectiviteSearch;

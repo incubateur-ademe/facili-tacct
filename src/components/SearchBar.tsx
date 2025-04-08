@@ -1,5 +1,6 @@
 'use client';
 
+import { eptRegex } from '@/lib/utils/regex';
 import Button from '@codegouvfr/react-dsfr/Button';
 import { RadioButtons } from '@codegouvfr/react-dsfr/RadioButtons';
 import { SearchBar } from '@codegouvfr/react-dsfr/SearchBar';
@@ -17,17 +18,20 @@ export const SearchBarComp = () => {
   const [typeTerritoire, setTypeTerritoire] = useState<
     'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
   >('epci');
-  const re = new RegExp('T([1-9]|1[0-2])\\b');
 
   const handleClick = () => {
-    if (searchCode.length !== 0 || searchLibelle.length !== 0) {
-      searchCode.length !== 0
-        ? router.push(
-            `/thematiques?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
-          )
-        : router.push(
-            `/thematiques?libelle=${searchLibelle}&type=${typeTerritoire}`
-          );
+    if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
+      router.push(
+        `/thematiques?code=200054781&libelle=${searchLibelle}&type=ept`
+      );
+    } else if (searchCode.length !== 0) {
+      router.push(
+        `/thematiques?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
+      )
+    } else if (searchLibelle.length !== 0) {
+      router.push(
+        `/thematiques?libelle=${searchLibelle}&type=${typeTerritoire}`
+      );
     }
   };
 
@@ -113,37 +117,37 @@ export const SearchBarComp = () => {
           className={
             typeTerritoire.length
               ? css({
-                  border: '1px solid #0063CB',
-                  height: 'inherit',
-                  '.fr-input': {
-                    color: '#0063CB',
-                    backgroundColor: 'white',
-                    boxShadow: 'none',
-                    borderRadius: '0',
-                    '&:focus': {
-                      outline: 'none'
-                    },
-                    '&::placeholder': {
-                      color: '#7B7B7B'
-                    }
+                border: '1px solid #0063CB',
+                height: 'inherit',
+                '.fr-input': {
+                  color: '#0063CB',
+                  backgroundColor: 'white',
+                  boxShadow: 'none',
+                  borderRadius: '0',
+                  '&:focus': {
+                    outline: 'none'
+                  },
+                  '&::placeholder': {
+                    color: '#7B7B7B'
                   }
-                })
+                }
+              })
               : css({
-                  border: '1px solid #EEEEEE',
-                  height: 'inherit',
-                  '.fr-input': {
-                    color: '#0063CB',
-                    backgroundColor: '#EEEEEE',
-                    boxShadow: 'none',
-                    borderRadius: '0',
-                    '&:focus': {
-                      outline: 'none'
-                    },
-                    '&::placeholder': {
-                      color: '#7B7B7B'
-                    }
+                border: '1px solid #EEEEEE',
+                height: 'inherit',
+                '.fr-input': {
+                  color: '#0063CB',
+                  backgroundColor: '#EEEEEE',
+                  boxShadow: 'none',
+                  borderRadius: '0',
+                  '&:focus': {
+                    outline: 'none'
+                  },
+                  '&::placeholder': {
+                    color: '#7B7B7B'
                   }
-                })
+                }
+              })
           }
           style={{ minWidth: 300, width: '100%' }}
           renderInput={({ className, id, placeholder, type }) => (
