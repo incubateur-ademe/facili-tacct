@@ -6,6 +6,7 @@ import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { AgricultureBio, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { agricultureBioTooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -46,37 +47,7 @@ const AgricultureBiologique = (props: {
     })()
   }, [code]);
 
-  console.log('agricultureBio', agricultureBio);
-  console.log('patch4', patch4);
-  console.log("isLoadingPatch4", isLoadingPatch4);
-
   const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
-
-  const title = (
-    <>
-      <div>Les superficies totales en agriculture biologique comprennent :</div>
-      <div>
-        <ul>
-          <li>
-            les surfaces « certifiées bio » qui rassemblent les parcelles dont
-            la période de conversion est terminée et dont la production peut
-            être commercialisée avec la mention « agriculture biologique » ;
-          </li>
-          <li>
-            les superficies en conversion (la durée de conversion variant de 2
-            ans pour les cultures annuelles à 3 ans pour les cultures pérennes).
-            Certaines données peuvent être incomplètes (non transmission des
-            données en provenance d’un organisme certificateur).
-          </li>
-        </ul>
-      </div>
-      <div>
-        Cet indicateur fait partie du kit des indicateurs de développement
-        durable fourni dans le cadre de l’Agenda 2030 et des 17 Objectifs de
-        Développement Durable (ODD).
-      </div>
-    </>
-  );
 
   return (
     <>
@@ -114,7 +85,7 @@ const AgricultureBiologique = (props: {
                         />
                       ) : null}
                     </div>
-                    <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
+                    <CustomTooltip title={agricultureBioTooltipText} texte="D'où vient ce chiffre ?" />
                   </div>
                   <div className="px-4">
                     <p>

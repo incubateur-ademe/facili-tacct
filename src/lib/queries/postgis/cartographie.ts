@@ -19,7 +19,6 @@ export const GetCommunes = async (
 ): Promise<CarteCommunes[]> => {
   try {
     console.time(`Query Execution Time carte communes ${code ?? libelle}`);
-    const re = new RegExp('T([1-9]|1[0-2])\\b');
     if (type === 'commune') {
       const epci = await PrismaPostgres.communes_drom.findFirst({
         where: {
@@ -45,7 +44,7 @@ export const GetCommunes = async (
         FROM postgis."communes_drom" WHERE epci=${epci?.epci};`;
       console.timeEnd(`Query Execution Time carte communes ${code ?? libelle}`);
       return value;
-    } else if (type === 'ept' && re.test(libelle)) {
+    } else if (type === 'ept' && eptRegex.test(libelle)) {
       const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
           epci, 
@@ -65,7 +64,7 @@ export const GetCommunes = async (
           FROM postgis."communes_drom" WHERE epci='200054781';`;
       console.timeEnd(`Query Execution Time carte communes ${code ?? libelle}`);
       return value;
-    } else if (type === 'epci' && !re.test(libelle)) {
+    } else if (type === 'epci' && !eptRegex.test(libelle)) {
       const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
           epci, 
@@ -187,7 +186,6 @@ export const GetClcTerritoires = async (
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE epci=${code};`;
       console.timeEnd('Query Execution Time GetClcTerritoires');
-      console.log('epci', value);
       return value.length ? value : undefined;
     } else if (type === 'pnr') {
       const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`

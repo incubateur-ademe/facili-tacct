@@ -7,6 +7,7 @@ import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { Patch4, RessourcesEau } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { prelevementEauTooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
@@ -99,31 +100,6 @@ export const PrelevementEau = (props: {
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : undefined;
 
-  const title = (
-    <>
-      <div>
-        L'indicateur représente le volume annuel d'eau prélevée, par grands
-        usages,{' '}
-        <u>
-          pour les prélèvements soumis à redevance, sur la base de déclarations
-          auprès des agences et offices de l’eau.
-        </u>{' '}
-        Cette redevance est due par les personnes qui prélèvent un volume annuel
-        d'eau supérieur à 10 000 m3 d'eau. Ce volume est ramené à 7 000 m3 dans
-        les zones dites de répartition des eaux (zones pour lesquelles a été
-        identifiée une insuffisance chronique des ressources par rapport aux
-        besoins).
-      </div>
-      <br></br>
-      <div>
-        Certains usages sont exonérés de redevance : aquaculture, géothermie,
-        lutte antigel de cultures pérennes, réalimentation de milieux naturels,
-        etc. En Outre-mer, la lutte contre les incendies et la production
-        d’énergie renouvelable sont également exonérées.
-      </div>
-    </>
-  );
-
   return (
     <>
       {
@@ -149,7 +125,7 @@ export const PrelevementEau = (props: {
                         />
                       ) : null}
                     </div>
-                    <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
+                    <CustomTooltip title={prelevementEauTooltipText} texte="D'où vient ce chiffre ?" />
                   </div>
                   <div className="px-4">
                     <p>

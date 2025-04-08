@@ -4,6 +4,7 @@ import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
+import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import styles from './biodiversite.module.scss';
@@ -34,19 +35,6 @@ export const ConsommationEspacesNAF = (props: {
       ?.naf09art23
     : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
 
-  const title = (
-    <div>
-      Le suivi de cet indicateur est réalisé par le CEREMA dans le cadre de
-      l’objectif “zéro artificialisation nette” de la loi « Climat et résilience
-      ». La consommation d’espaces NAF est calculée à partir des fichiers
-      fonciers entre 2009 et 2023, présentée ici toute destination confondue.
-      Les données sont traitées pour donner des tendances de façon uniforme sur
-      toute la France ; ponctuellement, il est possible que les documents de
-      planification de certaines collectivités territoriales fassent référence à
-      des données locales de consommation d'espaces différentes de celles
-      fournies par le CEREMA.
-    </div>
-  );
   return (
     <>
       {consommationNAF.length > 0 ? (
@@ -58,7 +46,7 @@ export const ConsommationEspacesNAF = (props: {
                 <b>{Round(sumNaf / 10000, 1)} hectare(s)</b> d’espaces naturels
                 et forestiers.{' '}
               </p>
-              <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
+              <CustomTooltip title={espacesNAFTooltipText} texte="D'où vient ce chiffre ?" />
             </div>
             <div className="px-4">
               <p>
