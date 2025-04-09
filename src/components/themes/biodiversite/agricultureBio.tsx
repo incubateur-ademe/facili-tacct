@@ -70,7 +70,7 @@ const AgricultureBiologique = (props: {
                       </p>
                     ) : (
                       <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                        Dans votre EPCI, <b>{nombreExploitations} exploitations</b>{' '}
+                        Dans votre territoire, <b>{nombreExploitations} exploitations</b>{' '}
                         sont en agriculture biologique ou en conversion, représentant
                         un total de <b>{Round(surfaceAgriBio, 0)} hectares</b>.
                       </p>

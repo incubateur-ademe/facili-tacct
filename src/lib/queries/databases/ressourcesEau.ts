@@ -1,6 +1,7 @@
 'use server';
 
 import { QualiteSitesBaignade, RessourcesEau } from '@/lib/postgres/models';
+import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
 import { PrismaClient as PostgresClient } from '../../../generated/client';
 
@@ -53,15 +54,14 @@ export const GetQualiteEauxBaignade = async (
   type: string
 ): Promise<QualiteSitesBaignade[]> => {
   try {
-    const re = new RegExp('T([1-9]|1[0-2])\\b'); //check if T + nombre entre 1 et 12
     const column =
       type === 'pnr'
         ? 'libelle_pnr'
         : type === 'petr'
           ? 'libelle_petr'
-          : type === 'ept' && re.test(libelle)
+          : type === 'ept' && eptRegex.test(libelle)
             ? 'ept'
-            : type === 'epci' && !re.test(libelle)
+            : type === 'epci' && !eptRegex.test(libelle)
               ? 'libelle_epci'
               : type === 'departement'
                 ? 'libelle_departement'
@@ -108,7 +108,7 @@ export const GetQualiteEauxBaignade = async (
       });
       console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
       return value;
-    } 
+    }
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
