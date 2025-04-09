@@ -26,7 +26,8 @@ export const metadata: Metadata = {
       default: config.name
     },
     ...sharedMetadata.openGraph
-  }
+  },
+  description: config.description
 };
 
 const PostHogPageView = dynamic(() => import('../PostHogPageView'));
