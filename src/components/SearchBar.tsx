@@ -100,8 +100,8 @@ export const SearchBarComp = () => {
         orientation="horizontal"
         className={css({
           '.fr-fieldset__content': {
-            justifyContent: 'center'
-          }
+            justifyContent: 'center',
+          },
         })}
       />
       <div
@@ -114,40 +114,46 @@ export const SearchBarComp = () => {
         }}
       >
         <SearchBar
-          className={
-            typeTerritoire.length
-              ? css({
-                border: '1px solid #0063CB',
-                height: 'inherit',
-                '.fr-input': {
-                  color: '#0063CB',
-                  backgroundColor: 'white',
-                  boxShadow: 'none',
-                  borderRadius: '0',
-                  '&:focus': {
-                    outline: 'none'
-                  },
-                  '&::placeholder': {
-                    color: '#7B7B7B'
-                  }
+          className={typeTerritoire.length ?
+            css({
+              '.fr-btn': {
+                display: 'none',
+              },
+              border: '1px solid #0063CB',
+              borderRadius: "4px 0 0 4px",
+              height: 'inherit',
+              '.fr-input': {
+                color: '#0063CB',
+                backgroundColor: 'white',
+                boxShadow: 'none',
+                borderRadius: '0',
+                '&:focus': {
+                  outline: 'none'
+                },
+                '&::placeholder': {
+                  color: '#7B7B7B'
                 }
-              })
-              : css({
-                border: '1px solid #EEEEEE',
-                height: 'inherit',
-                '.fr-input': {
-                  color: '#0063CB',
-                  backgroundColor: '#EEEEEE',
-                  boxShadow: 'none',
-                  borderRadius: '0',
-                  '&:focus': {
-                    outline: 'none'
-                  },
-                  '&::placeholder': {
-                    color: '#7B7B7B'
-                  }
+              }
+            })
+            : css({
+              '.fr-btn': {
+                display: 'none',
+              },
+              border: '1px solid #EEEEEE',
+              height: 'inherit',
+              '.fr-input': {
+                color: '#0063CB',
+                backgroundColor: '#EEEEEE',
+                boxShadow: 'none',
+                borderRadius: '0',
+                '&:focus': {
+                  outline: 'none'
+                },
+                '&::placeholder': {
+                  color: '#7B7B7B'
                 }
-              })
+              }
+            })
           }
           style={{ minWidth: 300, width: '100%' }}
           renderInput={({ className, id, placeholder, type }) => (

@@ -50,43 +50,50 @@ export const GetBiodiversite = async (
 };
 
 export const GetAgricultureBio = async (
-  code: string,
   libelle: string,
   type: string
 ): Promise<AgricultureBio[]> => {
+  const column =
+    type === 'petr'
+      ? 'libelle_petr'
+      : type === 'ept' && eptRegex.test(libelle)
+        ? 'ept'
+        : type === 'epci' && !eptRegex.test(libelle)
+          ? 'libelle_epci'
+          : type === 'departement'
+            ? 'libelle_departement'
+            : 'libelle_geographique';
   try {
-    console.time('Query Execution Time AGRICULTURE BIO');
-    if (type === 'ept' && eptRegex.test(libelle)) {
-      //pour les ept
+    if (type === 'pnr') {
+      return [];
+    } else {
+      console.time('Query Execution Time AGRICULTURE BIO');
+      const territoire = await PrismaPostgres.collectivites_searchbar.findMany({
+        select: {
+          epci: true
+        },
+        where: {
+          AND: [
+            {
+              epci: { not: null }
+            },
+            {
+              [column]: libelle
+            }
+          ]
+        },
+        distinct: ['epci']
+      });
       const value = await PrismaPostgres.agriculture_bio.findMany({
         where: {
-          epci: '200054781'
+          epci: {
+            in: territoire.map((t) => t.epci) as string[]
+          }
         }
       });
       console.timeEnd('Query Execution Time AGRICULTURE BIO');
       return value;
-    } else if (type === 'commune') {
-      const commune = await PrismaPostgres.collectivites_searchbar.findFirst({
-        where: {
-          code_geographique: code
-        }
-      });
-      const value = await PrismaPostgres.agriculture_bio.findMany({
-        where: {
-          epci: commune?.epci ?? ''
-        }
-      });
-      console.timeEnd('Query Execution Time AGRICULTURE BIO');
-      return value;
-    } else if (type === 'epci' && !eptRegex.test(libelle)) {
-      const value = await PrismaPostgres.agriculture_bio.findMany({
-        where: {
-          epci: code
-        }
-      });
-      console.timeEnd('Query Execution Time AGRICULTURE BIO');
-      return value;
-    } else return [];
+    }
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
