@@ -21,7 +21,8 @@ export const PNR = async (variableCollectivite: string) => {
     code_pnr
     FROM databases."collectivites_searchbar" WHERE (code_geographique IS NULL AND libelle_pnr IS NOT NULL) AND 
       (
-        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
+        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', '))
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${variableCollectivite})
       )
@@ -48,7 +49,8 @@ export const PETR = async (variableCollectivite: string) => {
     code_pnr
     FROM databases."collectivites_searchbar" WHERE (code_geographique IS NULL AND libelle_petr IS NOT NULL) AND 
       (
-        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
+        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', '))
       )
       LIMIT 20;
@@ -79,7 +81,8 @@ export const EPCI = async (variableCollectivite: string) => {
       ) 
       AND 
       (
-        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
+        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', '))
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${variableCollectivite})
       )
@@ -106,7 +109,8 @@ export const Commune = async (variableCollectivite: string) => {
     code_pnr
     FROM databases."collectivites_searchbar" WHERE (code_geographique IS NOT NULL) AND 
       (
-        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
+        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', '))
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${variableCollectivite})
       )
@@ -133,7 +137,8 @@ export const Departement = async (variableCollectivite: string) => {
     code_pnr
     FROM databases."collectivites_searchbar" WHERE (departement IS NOT NULL AND code_geographique IS NULL) AND 
       (
-        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
+        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', '-')) 
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', '))
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${variableCollectivite})
       )
