@@ -38,11 +38,11 @@ const csp = {
     'object-src': ["'self'", 'data:'],
     'frame-ancestors': [
         "'self'",
-        'http://localhost:5174/*',
-        'http://localhost:5174',
-        'http://localhost:5173/*',
-        'http://localhost:5173',
-        'https://mon-espace-collectivite.osc-fr1.scalingo.io'
+        // 'http://localhost:5174/*',
+        // 'http://localhost:5174',
+        // 'http://localhost:5173/*',
+        // 'http://localhost:5173',
+        // 'https://mon-espace-collectivite.osc-fr1.scalingo.io'
     ],
     'base-uri': ["'self'", 'https://*.gouv.fr'],
     'form-action': ["'self'", 'https://*.gouv.fr'],
