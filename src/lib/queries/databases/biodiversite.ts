@@ -99,8 +99,6 @@ export const GetAgricultureBio = async (
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
     process.exit(1);
-  } finally {
-    await PrismaPostgres.$disconnect();
   }
 };
 
@@ -173,8 +171,6 @@ export const GetConsommationNAF = async (
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
     process.exit(1);
-  } finally {
-    await PrismaPostgres.$disconnect();
   }
 };
 
@@ -189,7 +185,5 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
     process.exit(1);
-  } finally {
-    await PrismaPostgres.$disconnect();
   }
 };
