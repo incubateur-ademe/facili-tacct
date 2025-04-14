@@ -1,6 +1,6 @@
 import { type Metadata } from 'next';
+import FilterThemes from '../../(main)/donnees-territoriales/filterThemes';
 import { Container } from '../../../dsfr/server';
-import FilterThemes from './filterThemes';
 
 export const metadata: Metadata = {
   title: 'Données territoriales',

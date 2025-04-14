@@ -59,7 +59,7 @@ export const GetInconfortThermique = async (
       });
       console.timeEnd('Query Execution Time INCONFORT THERMIQUE');
       return value;
-    } else {
+    } else if (type === 'epci') {
       const departement = await PrismaPostgres.inconfort_thermique.findFirst({
         where: {
           epci: code
@@ -72,7 +72,7 @@ export const GetInconfortThermique = async (
       });
       console.timeEnd('Query Execution Time INCONFORT THERMIQUE');
       return value;
-    }
+    } else return [];
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);

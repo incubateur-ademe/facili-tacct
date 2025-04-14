@@ -114,7 +114,7 @@ const config = {
                     },
                     {
                         key: 'Referrer-Policy',
-                        value: 'no-referrer, strict-origin-when-cross-origin' //, strict-origin-when-cross-origin
+                        value: 'no-referrer, strict-origin-when-cross-origin'
                     },
                     {
                         key: 'Permissions-Policy',
