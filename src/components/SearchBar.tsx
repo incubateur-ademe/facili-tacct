@@ -126,7 +126,6 @@ export const SearchBarComp = () => {
                 color: '#0063CB',
                 backgroundColor: 'white',
                 boxShadow: 'none',
-                borderRadius: '0',
                 '&:focus': {
                   outline: 'none'
                 },
@@ -145,7 +144,6 @@ export const SearchBarComp = () => {
                 color: '#0063CB',
                 backgroundColor: '#EEEEEE',
                 boxShadow: 'none',
-                borderRadius: '0',
                 '&:focus': {
                   outline: 'none'
                 },

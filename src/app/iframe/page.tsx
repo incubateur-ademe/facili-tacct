@@ -1,32 +1,38 @@
 'use client';
 
-import { fr } from '@codegouvfr/react-dsfr';
-import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
-import Image from 'next/image';
-
 import useWindowDimensions from '@/hooks/windowDimensions';
+import Image from 'next/image';
+import { lazy, useEffect, useState } from 'react';
+import { useStyles } from 'tss-react/dsfr';
 import Constellation2Img from '../../assets/images/constellation2.png';
 import Constellation3Img from '../../assets/images/constellation3.png';
 import PeopleImg from '../../assets/images/landing-page-group.png';
 import MapImg from '../../assets/images/landing-page-map.png';
 import { Container } from '../../dsfr/layout';
-import { CollectiviteSearch } from './CollectiviteSearch';
 import styles from './root.module.scss';
 
+const CollectiviteSearch = lazy(() => import('../(main)/CollectiviteSearch'));
+
 const Home = () => {
-  const { isDark } = useIsDark();
-  const darkClass = {
-    backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
-      .grey.active,
-    '&:hover': {
-      backgroundColor: fr.colors.getHex({ isDark }).decisions.background.alt
-        .grey.hover
-    }
-  };
+  const [noticeClosed, setNoticeClosed] = useState(false);
+  const { css } = useStyles();
   const window = useWindowDimensions();
+  const heightTopBlock = typeof document !== 'undefined' ? document.querySelector(`.${styles.wrapper}`)?.clientHeight : 0;
+  const heightNotice = typeof document !== 'undefined' ? document.querySelector(`.notice`)?.clientHeight : 0;
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      const style = document.documentElement.style;
+      style.setProperty(
+        '--height-notice', `${(noticeClosed ? 0 : (heightNotice ?? 0)) + (heightTopBlock ?? 0) - 100}px`
+      );
+    }
+  }, [noticeClosed, heightTopBlock, heightNotice]);
 
   return (
-    <div className="mb-24">
+    <div className={css({
+      margin: '0 0 3em'
+    })}>
       <div className={styles.wrapper}>
         <Container size="xl">
           <div className={styles.titles}>
@@ -45,8 +51,12 @@ const Home = () => {
       <div className={styles.cardBackground}>
         <Container size="xl">
           <div className={styles.cardWrapper}>
-            <div className={styles.card} style={darkClass}>
-              <Image src={MapImg} alt="" />
+            <div className={styles.card}>
+              <Image
+                src={MapImg}
+                alt="image-cartographie"
+                className={styles.cardImage}
+              />
               <div className={styles.cardDescription}>
                 <h2>Evaluez la sensibilité de votre territoire</h2>
                 <p>
@@ -55,11 +65,11 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div className={styles.card} style={darkClass}>
+            <div className={styles.card}>
               <Image
                 src={PeopleImg}
-                alt=""
-                style={{ borderRadius: '0.5em 0 0 0.5em' }}
+                alt="personne-dans-un-atelier"
+                className={styles.cardImage}
               />
               <div className={styles.cardDescription}>
                 <h2>Facilitez les conditions du dialogue</h2>
@@ -85,7 +95,7 @@ const Home = () => {
           </div>
           {window.width && window.width < 1280 ? (
             <Image
-              alt=""
+              alt="constellation-de-problematiques"
               src={Constellation2Img}
               width={0}
               height={0}

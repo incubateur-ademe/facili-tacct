@@ -1,3 +1,4 @@
+import { ClientOnly } from '@/components/utils/ClientOnly';
 import { type Metadata } from 'next';
 import { Container } from '../../../dsfr/server';
 import { Cards } from './cards';
@@ -7,12 +8,13 @@ export const metadata: Metadata = {
   description: 'Thématiques'
 };
 
-const Thematiques = () => {
+const Thematiques = async () => {
   return (
-    <Container size="xl">
-      <h1>Quelle thématique vous intéresse ?</h1>
-      {/* <NoticeComp title="Les thématiques suivantes ont été choisies selon " /> */}
-      <Cards />
+    <Container size="xl" className="mb-24">
+      <ClientOnly>
+        <h1>Quelle thématique vous intéresse ?</h1>
+        <Cards />
+      </ClientOnly>
     </Container>
   );
 };

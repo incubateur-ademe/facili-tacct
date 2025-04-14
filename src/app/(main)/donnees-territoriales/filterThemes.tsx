@@ -9,25 +9,31 @@ import InconfortThermique from './thematiques/inconfortThermique';
 import RessourcesEau from './thematiques/ressourcesEau';
 
 const FilterThemes = async (props: { searchParams: SearchParams }) => {
-  const { thematique } = await props.searchParams;
+  const { thematique, code, libelle, type } = await props.searchParams;
   return (
-    <div>
-      {thematique === 'Inconfort thermique' ? (
-        <InconfortThermique {...props} />
-      ) : thematique === 'Biodiversité' ? (
-        <Biodiversite {...props} />
-      ) : thematique === 'Gestion des risques' ? (
-        <GestionRisques {...props} />
-      ) : thematique === 'Ressources en eau' ? (
-        <RessourcesEau {...props} />
-      ) : thematique === 'Aménagement' ? (
-        <Amenagement {...props} />
-      ) : thematique === 'Agriculture' ? (
-        <Agriculture {...props} />
-      ) : (
-        <ErrorDisplay code="404" />
-      )}
-    </div>
+    <>
+      {
+        ((code || libelle) && type) ?
+          <div>
+            {thematique === 'Inconfort thermique' ? (
+              <InconfortThermique {...props} />
+            ) : thematique === 'Biodiversité' ? (
+              <Biodiversite {...props} />
+            ) : thematique === 'Gestion des risques' ? (
+              <GestionRisques {...props} />
+            ) : thematique === 'Ressources en eau' ? (
+              <RessourcesEau {...props} />
+            ) : thematique === 'Aménagement' ? (
+              <Amenagement {...props} />
+            ) : thematique === 'Agriculture' ? (
+              <Agriculture {...props} />
+            ) : (
+              <ErrorDisplay code="404" />
+            )}
+          </div>
+          : <ErrorDisplay code="404" />
+      }
+    </>
   );
 };
 
