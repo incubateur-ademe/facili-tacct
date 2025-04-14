@@ -30,10 +30,10 @@ export const CardComp = ({
   useEffect(() => {
     code
       ? setRoute(
-          `/donnees-territoriales?code=${code}&libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique}`
+          `/iframe/donnees-territoriales?code=${code}&libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique}`
         )
       : setRoute(
-          `/donnees-territoriales?libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique}`
+          `/iframe/donnees-territoriales?libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique}`
         );
   }, [code, libelle, typeTerritoire, thematique]);
 
