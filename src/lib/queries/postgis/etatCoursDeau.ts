@@ -1,6 +1,7 @@
 'use server';
 
 import { CarteCommunes, EtatCoursDeau } from '@/lib/postgres/models';
+import { eptRegex } from '@/lib/utils/regex';
 import { PrismaClient as PostgresClient } from '../../../generated/client';
 
 const PrismaPostgres = new PostgresClient();
@@ -11,7 +12,6 @@ export const GetEtatCoursDeau = async (
   type: string
 ): Promise<EtatCoursDeau[]> => {
   try {
-    const re = new RegExp('T([1-9]|1[0-2])\\b');
     const distance = 0.1;
     if (type === 'commune') {
       console.time('Query Execution Time EtatCoursDeau');
@@ -30,7 +30,7 @@ export const GetEtatCoursDeau = async (
         WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${commune[0].geometry})), 4326), ${distance});`;
       console.timeEnd('Query Execution Time EtatCoursDeau');
       return value;
-    } else if (type === 'ept' && re.test(libelle)) {
+    } else if (type === 'ept' && eptRegex.test(libelle)) {
       console.time('Query Execution Time EtatCoursDeau');
       const ept = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
@@ -46,7 +46,7 @@ export const GetEtatCoursDeau = async (
         WHERE ST_Intersects(geometry, ST_GeomFromText(${ept[0].geometry}, 4326));`; //WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${ept[0].geometry})), 4326), ${distance});`; 
       console.timeEnd('Query Execution Time EtatCoursDeau');
       return value;
-    } else if (type === 'epci' && !re.test(libelle)) {
+    } else if (type === 'epci' && !eptRegex.test(libelle)) {
       console.time('Query Execution Time EtatCoursDeau');
       const epci = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
