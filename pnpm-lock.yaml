@@ -80,6 +80,9 @@ importers:
       bcryptjs:
         specifier: ^2.4.3
         version: 2.4.3
+      classnames:
+        specifier: ^2.5.1
+        version: 2.5.1
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
