@@ -2,46 +2,28 @@
 
 import { GetCollectivite } from '@/lib/queries/searchBar';
 import { eptRegex } from '@/lib/utils/regex';
-import { cx } from '@codegouvfr/react-dsfr/tools/cx';
-import { Box } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { RenderInput } from './renderInput';
+import { RenderOption } from './renderOption';
 
-type MySearchInputProps = {
-  className?: string;
-  setSearchCode: (a: string) => void;
-  setSearchLibelle: (a: string) => void;
-  searchCode: string;
-  searchLibelle: string;
-  id: string;
-  placeholder: string;
-  type: string;
-  typeTerritoire: string | undefined;
-};
-
-type Options = {
-  codeCommune: string;
-  codeEpci: string;
-  searchCode: string;
-  searchLibelle: string;
-  ept: string;
-  libellePetr: string;
-  libellePnr: string;
-  codePnr: string;
-};
-
-const ReplaceStringEpci = (libelleEpci: string) => {
+const ReplaceDisplayEpci = (libelleEpci: string) => {
   return libelleEpci
     .replace("Communauté d'agglomération", 'CA')
     .replace('Communauté de communes', 'CC');
 };
 
-export const MySearchInput = (props: MySearchInputProps) => {
+const ReplaceSearchEpci = (libelleEpci: string) => {
+  return libelleEpci
+    .replace("CA ", "Communauté d'agglomération ")
+    .replace("CC ", "Communauté de communes ")
+};
+
+export const MySearchInput = ((props: SearchInputProps) => {
   const {
     className,
     id,
-    type,
     typeTerritoire,
     setSearchCode,
     setSearchLibelle,
@@ -50,7 +32,7 @@ export const MySearchInput = (props: MySearchInputProps) => {
   } = props;
   const router = useRouter();
   const [inputValue, setInputValue] = useState('');
-  const [options, setOptions] = useState<Options[]>([]);
+  const [options, setOptions] = useState<SearchInputOptions[]>([]);
 
   // supprime les doublons pour les objects
   const filteredCollectivite = options.filter(
@@ -109,18 +91,18 @@ export const MySearchInput = (props: MySearchInputProps) => {
       filterOptions={(x) => x}
       options={collectivites}
       noOptionsText="Aucun territoire trouvé"
-      onChange={(event, newValue: Options | null) => {
+      onChange={(event, newValue: SearchInputOptions | null) => {
         setOptions(newValue ? [newValue, ...options] : options);
         setSearchCode(newValue?.searchCode ?? '');
         setSearchLibelle(newValue?.searchLibelle ?? '');
       }}
       onInputChange={(event, newInputValue) => {
-        setInputValue(newInputValue);
+        setInputValue(ReplaceSearchEpci(newInputValue));
       }}
       getOptionLabel={(option) => {
         if (option && searchLibelle) {
           return option.searchCode?.length !== 0
-            ? `${ReplaceStringEpci(option.searchLibelle)} (${option.searchCode})`
+            ? `${ReplaceDisplayEpci(option.searchLibelle)} (${option.searchCode})`
             : `${option.searchLibelle}`;
         }
         return '';
@@ -130,40 +112,24 @@ export const MySearchInput = (props: MySearchInputProps) => {
           handleClick();
         }
       }}
-      renderOption={(props, option) => {
-        const { ...optionProps } = props;
-        return (
-          <Box
-            component="li"
-            sx={{ height: 'fit-content' }}
-            {...optionProps}
-            key={option.searchLibelle + option.searchCode}
-          >
-            {option.searchCode?.length !== 0 ? (
-              <p style={{ margin: '0' }}>
-                <b>{ReplaceStringEpci(option.searchLibelle)}</b> (
-                {option.searchCode})
-              </p>
-            ) : (
-              <p style={{ margin: '0' }}>
-                <b>{ReplaceStringEpci(option.searchLibelle)}</b>
-              </p>
-            )}
-          </Box>
-        );
-      }}
-      renderInput={(params) => (
-        <div ref={params.InputProps.ref as React.Ref<HTMLDivElement>}>
-          <input
-            {...(params.inputProps as React.InputHTMLAttributes<HTMLInputElement>)}
-            className={cx(params.inputProps.className, className)}
-            placeholder={'Saisir un territoire'}
-            type={type}
-            disabled={typeTerritoire ? false : true}
-          />
-        </div>
-      )}
+      renderOption={(props, option) => 
+        <RenderOption
+          props={props}
+          option={option}
+          key={option.searchLibelle + option.searchCode}
+        />
+      }
+      renderInput={(params) =>
+        <RenderInput
+          className={className}
+          setInputValue={setInputValue}
+          setSearchCode={setSearchCode}
+          setSearchLibelle={setSearchLibelle}
+          params={params}
+          typeTerritoire={typeTerritoire}
+        />
+      }
       sx={{ width: 'inherit' }}
     />
   );
-};
+});

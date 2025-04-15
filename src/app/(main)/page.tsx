@@ -1,5 +1,6 @@
 'use client';
 
+import { Loader } from '@/components/loader';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import Notice from '@codegouvfr/react-dsfr/Notice';
 import Image from 'next/image';
@@ -66,7 +67,9 @@ const Home = () => {
           </div>
         </Container>
       </div>
-      <CollectiviteSearch />
+      {
+        window.width ? <CollectiviteSearch /> : <div className={styles.collectiviteWrapper} style={{height: "218px"}} ><Loader/></div>
+      }
       <div className={styles.cardBackground}>
         <Container size="xl">
           <div className={styles.cardWrapper}>
