@@ -218,7 +218,7 @@ const PrelevementEauBarChart = ({
       />
     </div>
   ) : (
-    <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+    <GraphDataNotFound code={codgeo ? codgeo : codepci} libelle='' />
   );
 };
 
