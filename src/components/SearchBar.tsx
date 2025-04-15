@@ -1,5 +1,6 @@
 'use client';
 
+import useWindowDimensions from '@/hooks/windowDimensions';
 import { eptRegex } from '@/lib/utils/regex';
 import Button from '@codegouvfr/react-dsfr/Button';
 import { RadioButtons } from '@codegouvfr/react-dsfr/RadioButtons';
@@ -13,6 +14,7 @@ import { MySearchInput } from './SearchInput';
 export const SearchBarComp = () => {
   const router = useRouter();
   const { css } = useStyles();
+  const window = useWindowDimensions();
   const [searchCode, setSearchCode] = useState<string>('');
   const [searchLibelle, setSearchLibelle] = useState<string>('');
   const [typeTerritoire, setTypeTerritoire] = useState<
@@ -93,21 +95,27 @@ export const SearchBarComp = () => {
               onChange: () => {
                 setTypeTerritoire('departement');
                 setSearchLibelle('');
+                }
               }
-            }
-          }
-        ]}
-        orientation="horizontal"
-        className={css({
-          '.fr-fieldset__content': {
-            justifyContent: 'center',
-          },
-        })}
-      />
+              }
+            ]}
+            // TODO
+            orientation={window. width && window.width > 520 ? "horizontal" : "vertical"}
+            className={css({
+              '.fr-fieldset__content': {
+              justifyContent: 'center',
+              '.fr-label': {
+                paddingBottom: 0
+              },
+              '@media (max-width: 745px)': {
+                justifyContent: 'flex-start'
+              }}
+            })}
+            />
       <div
         style={{
           display: 'flex',
-          flexDirection: 'row',
+          flexDirection: window.width && window.width > 520 ? 'row' : 'column',
           width: '100%',
           gap: 8,
           height: 42
@@ -153,7 +161,7 @@ export const SearchBarComp = () => {
               }
             })
           }
-          style={{ minWidth: 300, width: '100%' }}
+          style={{ minWidth: window.width && window.width > 520 ? 300 : 0, width: '100%' }}
           renderInput={({ className, id, placeholder, type }) => (
             <MySearchInput
               className={className}
