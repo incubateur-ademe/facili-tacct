@@ -274,7 +274,7 @@ const AOT40Dataviz = (props: {
                 </div>
               </div>
             ) : (
-              <GraphDataNotFound code={code ?? libelle} />
+              <GraphDataNotFound code={code} libelle={libelle} />
             )}
           </>
           : <Loader />

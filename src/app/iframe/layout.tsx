@@ -13,7 +13,7 @@ const RootLayoutIframe = ({ children }: PropsWithChildren) => {
         <PostHogPageView />
       </Suspense>
       <ClientOnly>
-      <main>{children}</main>
+        <main>{children}</main>
       </ClientOnly>
     </NextAppDirEmotionCacheProvider>
   );
