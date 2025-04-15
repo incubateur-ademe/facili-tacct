@@ -100,7 +100,7 @@ export const GetCommunes = async (
           densite_bati,
           surface,
           ST_AsGeoJSON(geometry) geometry 
-          FROM postgis."communes_drom" WHERE code_pnr=${code};`;
+          FROM postgis."communes_drom" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
       console.timeEnd(`Query Execution Time carte communes ${code ?? libelle}`);
       return value;
     } else if (type === 'petr') {
@@ -120,7 +120,7 @@ export const GetCommunes = async (
           densite_bati,
           surface,
           ST_AsGeoJSON(geometry) geometry 
-          FROM postgis."communes_drom" WHERE libelle_petr=${libelle};`;
+          FROM postgis."communes_drom" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
       console.timeEnd(`Query Execution Time carte communes ${code ?? libelle}`);
       return value;
     } else {
@@ -174,7 +174,7 @@ export const GetClcTerritoires = async (
         legend, 
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsGeoJSON(geometry) geometry
-        FROM postgis."clc_territoires" WHERE ept=${libelle};`;
+        FROM postgis."clc_territoires" WHERE ept IS NOT NULL AND ept=${libelle};`;
       console.timeEnd('Query Execution Time GetClcTerritoires');
       return value.length ? value : undefined;
     } else if (type === 'epci' && !eptRegex.test(libelle)) {
@@ -192,7 +192,7 @@ export const GetClcTerritoires = async (
         legend, 
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsGeoJSON(geometry) geometry
-        FROM postgis."clc_territoires" WHERE code_pnr=${code};`;
+        FROM postgis."clc_territoires" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
       console.timeEnd('Query Execution Time GetClcTerritoires');
       return value.length ? value : undefined;
     } else if (type === 'petr') {
@@ -201,7 +201,7 @@ export const GetClcTerritoires = async (
         legend, 
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsGeoJSON(geometry) geometry
-        FROM postgis."clc_territoires" WHERE libelle_petr=${libelle};`;
+        FROM postgis."clc_territoires" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
       console.timeEnd('Query Execution Time GetClcTerritoires');
       return value.length ? value : undefined;
     } else if (type === 'departement') {
