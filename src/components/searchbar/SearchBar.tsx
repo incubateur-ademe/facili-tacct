@@ -24,6 +24,9 @@ export const SearchBarComp = () => {
     'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
   >('epci');
 
+  console.log("Focus", document.getElementById("search-fr-search-bar-«rq»-input"))
+  console.log("Focus2", document.getElementById("search-fr-search-bar-«rm»-input"))
+
   useEffect(() => {
     FocusOnElement("search-fr-search-bar-«rq»-input")
   }, []);
