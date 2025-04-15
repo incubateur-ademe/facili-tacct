@@ -63,7 +63,7 @@ export const GrandAgeIsolement = (props: {
   }>;
   departement?: InconfortThermique[];
 }) => {
-  const { inconfortThermique, departement } = props;
+  const { inconfortThermique } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;

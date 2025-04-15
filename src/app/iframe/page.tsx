@@ -2,7 +2,7 @@
 
 import useWindowDimensions from '@/hooks/windowDimensions';
 import Image from 'next/image';
-import { lazy, useEffect, useState } from 'react';
+import { lazy } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import Constellation2Img from '../../assets/images/constellation2.png';
 import Constellation3Img from '../../assets/images/constellation3.png';
@@ -14,20 +14,8 @@ import styles from './root.module.scss';
 const CollectiviteSearch = lazy(() => import('../(main)/CollectiviteSearch'));
 
 const Home = () => {
-  const [noticeClosed, setNoticeClosed] = useState(false);
   const { css } = useStyles();
   const window = useWindowDimensions();
-  const heightTopBlock = typeof document !== 'undefined' ? document.querySelector(`.${styles.wrapper}`)?.clientHeight : 0;
-  const heightNotice = typeof document !== 'undefined' ? document.querySelector(`.notice`)?.clientHeight : 0;
-
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      const style = document.documentElement.style;
-      style.setProperty(
-        '--height-notice', `${(noticeClosed ? 0 : (heightNotice ?? 0)) + (heightTopBlock ?? 0) - 100}px`
-      );
-    }
-  }, [noticeClosed, heightTopBlock, heightNotice]);
 
   return (
     <div className={css({

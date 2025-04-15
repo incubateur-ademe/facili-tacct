@@ -112,7 +112,7 @@ const InconfortThermiqueComp = ({
   const { css } = useStyles();
 
   useEffect(() => {
-    window.scrollTo({
+    window?.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
