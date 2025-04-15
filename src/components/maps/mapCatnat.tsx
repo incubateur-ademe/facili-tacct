@@ -239,7 +239,7 @@ export const MapCatnat = (props: {
   return (
     <>
       {carteCommunes === null ? (
-        <GraphDataNotFound code={code ?? libelle} />
+        <GraphDataNotFound code={code} libelle={libelle} />
       ) : (
         <MapContainer
           center={[centerCoord[1], centerCoord[0]]}

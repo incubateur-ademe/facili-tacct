@@ -168,7 +168,7 @@ export const FragiliteEconomique = ({
               </div>
             </>
           ) : (
-            <GraphDataNotFound code={code} />
+            <GraphDataNotFound code={code} libelle={libelle} />
           )}
         </div>
       ) : (

@@ -161,7 +161,7 @@ const Vegetalisation = (props: {
               </div>
             </>
           ) : (
-            <GraphDataNotFound code={code ?? libelle} />
+            <GraphDataNotFound code={code} libelle={libelle} />
           )}
         </div>
       ) : (

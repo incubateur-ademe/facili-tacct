@@ -120,7 +120,7 @@ export const SurfacesIrriguees = ({
               </div>
             </>
           ) : (
-            <GraphDataNotFound code={code ?? libelle} />
+            <GraphDataNotFound code={code} libelle={libelle} />
           )}
         </div>
       ) : (

@@ -131,7 +131,7 @@ export const DensiteBati = ({
               </div>
             </>
           ) : (
-            <GraphDataNotFound code={code ?? libelle} />
+            <GraphDataNotFound code={code} libelle={libelle} />
           )}
         </div>
       ) : (

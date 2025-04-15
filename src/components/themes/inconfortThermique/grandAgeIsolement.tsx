@@ -277,7 +277,7 @@ export const GrandAgeIsolement = (props: {
               </div>
             </div>
           ) : (
-            <GraphDataNotFound code={code} />
+            <GraphDataNotFound code={code} libelle={libelle} />
           )}
         </>
       ) : (

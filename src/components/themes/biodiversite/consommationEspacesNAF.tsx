@@ -99,7 +99,7 @@ export const ConsommationEspacesNAF = (props: {
           </div>
         </div>
       ) : (
-        <GraphDataNotFound code={code ?? libelle} />
+        <GraphDataNotFound code={code} libelle={libelle} />
       )}
     </>
   );

@@ -132,6 +132,6 @@ export const AgricultureBioBarChart = (
           axisLeftLegend="Surface en ha"
         />
       </div>
-    ) : <GraphDataNotFound code={code ?? libelle} />
+    ) : <GraphDataNotFound code={code} libelle={libelle} />
   )
 };

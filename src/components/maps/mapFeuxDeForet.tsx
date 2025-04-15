@@ -182,7 +182,7 @@ export const MapFeuxDeForet = (props: {
   return (
     <>
       {carteCommunesEnriched.length === 0 ? (
-        <GraphDataNotFound code={code ?? libelle} />
+        <GraphDataNotFound code={code} libelle={libelle} />
       ) : (
         <MapContainer
           center={[centerCoord[1], centerCoord[0]]}
