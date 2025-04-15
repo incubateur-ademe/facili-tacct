@@ -46,8 +46,6 @@ const Vegetalisation = (props: {
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
-  console.log("clc", clc)
-
   const vegetalisationMapped = inconfortThermique.map(vegetalisationMapper);
   const vegetalisationTerritoire =
     type === 'commune'
