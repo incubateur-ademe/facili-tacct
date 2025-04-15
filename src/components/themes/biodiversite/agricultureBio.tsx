@@ -60,7 +60,7 @@ const AgricultureBiologique = (props: {
                   <div className={styles.explicationWrapper}>
                     {type === "commune" ? (
                       <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                        Cette données n’est disponible qu’à l’échelle de votre EPCI.{' '}
+                        Cette donnée n’est disponible qu’à l’échelle de votre EPCI.{' '}
                         <br></br>
                         Dans votre EPCI, <b>
                           {nombreExploitations} exploitations

@@ -60,7 +60,7 @@ export const MapEtatCoursDeau = (props: {
     ? carteCommunes.filter(
       (el) => el.properties.ept === libelle
     ) : carteCommunes;
-
+    
   const allCoordinates = carteCommunesFiltered.map(
     (el) => el.geometry.coordinates?.[0]?.[0]
   );
@@ -108,12 +108,12 @@ export const MapEtatCoursDeau = (props: {
   const CustomTooltip = (coursDeau: string, color: string) => {
     return `
       <div style="padding: 0.5rem">
-        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0; gap: 0.5rem; align-items: center">
-          <div
-            style="background-color: ${color}; width: 1rem; height: 1rem; border-radius: 2px; border: 0.5px solid #161616"
-          ></div>
-          <p style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; margin: 0">${coursDeau}</p> 
-        </div>
+      <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0; gap: 0.5rem; align-items: center">
+        <div
+        style="background-color: ${color}; width: 1rem; height: 1rem; border-radius: 2px; border: 0.5px solid #161616"
+        ></div>
+        <p style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; margin: 0">${coursDeau.charAt(0).toUpperCase() + coursDeau.slice(1)}</p> 
+      </div>
       </div>
     `;
   };

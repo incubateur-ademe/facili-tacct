@@ -127,6 +127,32 @@
     }
 }
 
+// Search bar
+.searchCompWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.searchbarWrapper {
+    display: flex;
+    width: 100%;
+    height: 42px;
+    gap: 0.5rem;
+}
+
+.activeSearchbarButton {
+    display: block;
+    background-color: #0063cb;
+    color: white;
+    border-radius: 0 4px 4px 0;
+}
+
+.inactiveSearchbarButton {
+    display: block;
+    border-radius: 0 4px 4px 0;
+}
+
 // Patch4°C
 .tag {
     padding: 8px;
@@ -162,3 +188,4 @@
         }
     }
 }
+

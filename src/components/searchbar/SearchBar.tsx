@@ -9,9 +9,9 @@ import { SearchBar } from '@codegouvfr/react-dsfr/SearchBar';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
-import styles from "./components.module.scss";
-import './globalMui.css';
-import { MySearchInput } from './searchbar/SearchInput';
+import styles from "../components.module.scss";
+import '../globalMui.css';
+import { MySearchInput } from './SearchInput';
 
 export const SearchBarComp = () => {
   const router = useRouter();
@@ -23,6 +23,18 @@ export const SearchBarComp = () => {
   const [typeTerritoire, setTypeTerritoire] = useState<
     'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
   >('epci');
+
+  useEffect(() => {
+    FocusOnElement("search-fr-search-bar-«rq»-input")
+  }, []);
+
+  useEffect(() => {
+    setWidth(window.width);
+  }, [window.width]);
+
+  useEffect(() => {
+    FocusOnElement("search-fr-search-bar-«rm»-input")
+  }, [typeTerritoire]);
 
   const handleRadioChange = (territoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement') => {
     setTypeTerritoire(territoire);
@@ -44,14 +56,6 @@ export const SearchBarComp = () => {
       );
     }
   };
-
-  useEffect(() => {
-    setWidth(window.width);
-  }, [window.width]);
-
-  useEffect(() => {
-    FocusOnElement("search-fr-search-bar-«rm»-input")
-  }, [typeTerritoire]);
 
   return (
     <div className={styles.searchCompWrapper}>
