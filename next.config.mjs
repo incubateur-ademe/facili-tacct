@@ -19,7 +19,7 @@ const csp = {
     'connect-src': [
         '*',
         'https://*.gouv.fr',
-        process.env.FACILI_TACCT_ENV === 'preprod' && 'facili-tacct-preprod.osc-fr1.scalingo.io',
+        process.env.FACILI_TACCT_ENV === 'preprod' && 'https://vercel.live',
         process.env.NODE_ENV === 'development' && 'http://localhost'
     ],
     'font-src': ["'self'"],
@@ -29,7 +29,7 @@ const csp = {
         "'self'",
         "'unsafe-inline'",
         'https://stats.beta.gouv.fr',
-        process.env.FACILI_TACCT_ENV === 'preprod',
+        process.env.FACILI_TACCT_ENV === 'preprod' && 'https://vercel.live',
         process.env.NODE_ENV === 'development' &&
             "'unsafe-eval' http://localhost",
         '*.posthog.com'
@@ -143,14 +143,10 @@ const withMDX = createMDX({
 });
 
 export default withSentryConfig(withMDX(config), {
-    // For all available options, see:
-    // https://github.com/getsentry/sentry-webpack-plugin#options
-
     org: 'betagouv',
     project: 'facili-tacct',
     sentryUrl: 'https://sentry.incubateur.net',
     authToken: process.env.SENTRY_AUTH_TOKEN,
-
     silent: false,
 
     // For all available options, see:
