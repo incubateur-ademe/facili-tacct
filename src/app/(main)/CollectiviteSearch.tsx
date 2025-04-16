@@ -1,5 +1,3 @@
-'use client';
-
 import { SearchBarComp } from '@/components/searchbar/SearchBar';
 import styles from '../root.module.scss';
 

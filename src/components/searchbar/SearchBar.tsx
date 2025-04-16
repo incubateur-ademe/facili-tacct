@@ -12,6 +12,7 @@ import { useStyles } from 'tss-react/dsfr';
 import styles from "../components.module.scss";
 import '../globalMui.css';
 import { MySearchInput } from './SearchInput';
+import { radioOptions } from './radioButtons';
 
 export const SearchBarComp = () => {
   const router = useRouter();
@@ -24,20 +25,22 @@ export const SearchBarComp = () => {
     'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
   >('epci');
 
-  console.log("Focus", document.getElementById("search-fr-search-bar-«rq»-input"))
-  console.log("Focus2", document.getElementById("search-fr-search-bar-«rm»-input"))
+  const searchInputId = Array
+    .from(document.querySelectorAll('[id]'))
+    .map(el => el.id)
+    .find(id => id.startsWith("search-fr-search-bar-"));
 
+  // Met le focus sur le champ de recherche lorsque le composant est monté
+  // et lorsque le typeTerritoire change
   useEffect(() => {
-    FocusOnElement("search-fr-search-bar-«rq»-input")
-  }, []);
+    if (searchInputId) {
+      FocusOnElement(searchInputId);
+    }
+  }, [typeTerritoire, searchInputId]);
 
   useEffect(() => {
     setWidth(window.width);
   }, [window.width]);
-
-  useEffect(() => {
-    FocusOnElement("search-fr-search-bar-«rm»-input")
-  }, [typeTerritoire]);
 
   const handleRadioChange = (territoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement') => {
     setTypeTerritoire(territoire);
@@ -64,43 +67,7 @@ export const SearchBarComp = () => {
     <div className={styles.searchCompWrapper}>
       <RadioButtons
         name="radio"
-        options={[
-          {
-            label: 'EPCI/EPT',
-            nativeInputProps: {
-              checked: typeTerritoire === 'epci',
-              onChange: () => handleRadioChange('epci')
-            }
-          },
-          {
-            label: 'Commune',
-            nativeInputProps: {
-              checked: typeTerritoire === 'commune',
-              onChange: () => handleRadioChange('commune')
-            }
-          },
-          {
-            label: 'PETR',
-            nativeInputProps: {
-              checked: typeTerritoire === 'petr',
-              onChange: () => handleRadioChange('petr')
-            }
-          },
-          {
-            label: 'PNR',
-            nativeInputProps: {
-              checked: typeTerritoire === 'pnr',
-              onChange: () => handleRadioChange('pnr')
-            }
-          },
-          {
-            label: 'Département',
-            nativeInputProps: {
-              checked: typeTerritoire === 'departement',
-              onChange: () => handleRadioChange('departement')
-            }
-          }
-        ]}
+        options={radioOptions(typeTerritoire, handleRadioChange)}
         orientation={width && width > 520 ? "horizontal" : "vertical"}
         className={css({
           '.fr-fieldset__content': {
