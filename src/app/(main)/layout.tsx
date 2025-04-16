@@ -1,8 +1,8 @@
-import { Brand } from '@/components/Brand';
+import { Brand } from "@/components/Brand";
 import { HeaderComp as Header } from '@/components/Header';
 import { ClientOnly } from '@/components/utils/ClientOnly';
 import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display';
-import { Footer } from '@codegouvfr/react-dsfr/Footer';
+import { Footer } from "@codegouvfr/react-dsfr/Footer";
 import { type Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { Suspense, type PropsWithChildren } from 'react';
@@ -44,6 +44,47 @@ const LayoutMain = ({ children }: PropsWithChildren) => {
         </Suspense>
       </ClientOnly>
       <main>{children}</main>
+      {/* <CustomFooter
+        logos={[<Image src={logos} alt="Logo de l'ADEME et Météo France" width={150} height={0} />]}//style={{ width: '100%', height: 'auto' }}
+        contentLinks={[
+          {
+            label: 'Ademe',
+            href: 'https://www.ademe.fr',
+            external: true
+          }
+        ]}
+        bottomLinks={[
+          {
+            label: 'Politique de confidentialité',
+            href: '/politique-de-confidentialite'
+          },
+          {
+            label: 'Politique des cookies',
+            href: '/politique-des-cookies'
+          },
+          {
+            label: 'Accessibilité',
+            href: '/accessibilite'
+          },
+          {
+            label: 'Mentions légales',
+            href: '/mentions-legales'
+          }
+        ]}
+        content={
+          <>
+            {config.name} est un service porté par l’Agence de la transition écologique
+            (ADEME), en partenariat avec Météo France.
+            <br></br>
+            Notre mission : Accompagner les territoires pour une meilleure appropriation
+            de leur vulnérabilité aux impacts du changement climatique.
+            Facili-TACCT met à disposition les données climatiques du patch 4°C,
+            mesure 23 du plan national d’adaptation au changement climatique (PNACC 3).
+          </>
+        }
+        id={footerId}
+        bottomContent="Sauf mention explicite de propriété intellectuelle détenue par des tiers, les contenus de ce site sont proposés sous licence etalab-2.0"
+      /> */}
       <Footer
         id={footerId}
         brandTop={<Brand />}
@@ -62,8 +103,8 @@ const LayoutMain = ({ children }: PropsWithChildren) => {
         }
         operatorLogo={{
           alt: "Logo de l'ADEME",
-          imgUrl: '/logo-ademe.svg',
-          orientation: 'vertical'
+          imgUrl: '/logo-ademe-meteofrance.jpg',
+          orientation: 'horizontal',
         }}
         bottomItems={[
           {
