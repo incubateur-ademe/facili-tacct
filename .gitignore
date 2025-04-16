@@ -4,3 +4,8 @@
 # Except index.html
 !index.html
 !.gitignore
+
+# Except the images
+!texte-facili-tacct.png
+!logo-ademe.png
+!republique-francaise-logo.png
