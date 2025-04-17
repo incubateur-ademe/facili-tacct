@@ -10,7 +10,7 @@ interface Props {
   carteCommunes: CommunesIndicateursDto[];
 }
 
-const colors: { [key: string]: string[] } = {
+export const colorsCatnat: { [key: string]: string[] } = {
   'Tous types': ['#FFECEE', '#FF9699', '#E8323B', '#B5000E', '#680000'],
   Inondations: ['#D8EFFA', '#6EC7F7', '#009ADC', '#0072B5', '#003F70'],
   Sécheresse: ['#FFFBE8', '#FEE29C', '#FFCF5E', '#D19800', '#533B00'],
@@ -218,7 +218,7 @@ export const LegendCatnat = (props: Props) => {
   return (
     <div className={styles.legendItemsWrapper}>
       {minMax[1] > 5 ? (
-        colors[typeRisqueValue].map((color, index) => {
+        colorsCatnat[typeRisqueValue].map((color, index) => {
           return (
             <div className={styles.legendItem} key={index}>
               <div
@@ -262,32 +262,32 @@ export const LegendCatnat = (props: Props) => {
           );
         })
       ) : minMax[1] === 1 ? (
-        <LegendBlock color={colors[typeRisqueValue][2]} value={minMax[1]} />
+        <LegendBlock color={colorsCatnat[typeRisqueValue][2]} value={minMax[1]} />
       ) : minMax[1] === 2 ? (
         <>
-          <LegendBlock color={colors[typeRisqueValue][1]} value={1} />
-          <LegendBlock color={colors[typeRisqueValue][3]} value={2} />
+          <LegendBlock color={colorsCatnat[typeRisqueValue][1]} value={1} />
+          <LegendBlock color={colorsCatnat[typeRisqueValue][3]} value={2} />
         </>
       ) : minMax[1] === 3 ? (
         <>
-          <LegendBlock color={colors[typeRisqueValue][0]} value={1} />
-          <LegendBlock color={colors[typeRisqueValue][2]} value={2} />
-          <LegendBlock color={colors[typeRisqueValue][4]} value={3} />
+          <LegendBlock color={colorsCatnat[typeRisqueValue][0]} value={1} />
+          <LegendBlock color={colorsCatnat[typeRisqueValue][2]} value={2} />
+          <LegendBlock color={colorsCatnat[typeRisqueValue][4]} value={3} />
         </>
       ) : minMax[1] === 4 ? (
         <>
-          <LegendBlock color={colors[typeRisqueValue][0]} value={1} />
-          <LegendBlock color={colors[typeRisqueValue][2]} value={2} />
-          <LegendBlock color={colors[typeRisqueValue][3]} value={3} />
-          <LegendBlock color={colors[typeRisqueValue][4]} value={4} />
+          <LegendBlock color={colorsCatnat[typeRisqueValue][0]} value={1} />
+          <LegendBlock color={colorsCatnat[typeRisqueValue][2]} value={2} />
+          <LegendBlock color={colorsCatnat[typeRisqueValue][3]} value={3} />
+          <LegendBlock color={colorsCatnat[typeRisqueValue][4]} value={4} />
         </>
       ) : (
         <>
-          <LegendBlock color={colors[typeRisqueValue][0]} value={1} />
-          <LegendBlock color={colors[typeRisqueValue][1]} value={2} />
-          <LegendBlock color={colors[typeRisqueValue][2]} value={3} />
-          <LegendBlock color={colors[typeRisqueValue][3]} value={4} />
-          <LegendBlock color={colors[typeRisqueValue][4]} value={5} />
+          <LegendBlock color={colorsCatnat[typeRisqueValue][0]} value={1} />
+          <LegendBlock color={colorsCatnat[typeRisqueValue][1]} value={2} />
+          <LegendBlock color={colorsCatnat[typeRisqueValue][2]} value={3} />
+          <LegendBlock color={colorsCatnat[typeRisqueValue][3]} value={4} />
+          <LegendBlock color={colorsCatnat[typeRisqueValue][4]} value={5} />
         </>
       )}
     </div>
