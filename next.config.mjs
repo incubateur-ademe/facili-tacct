@@ -19,7 +19,7 @@ const csp = {
     'connect-src': [
         '*',
         'https://*.gouv.fr',
-        process.env.FACILI_TACCT_ENV === 'preprod' && 'https://vercel.live',
+        process.env.NEXT_PUBLIC_ENV === 'preprod' && 'https://vercel.live',
         process.env.NODE_ENV === 'development' && 'http://localhost'
     ],
     'font-src': ["'self'"],
@@ -29,7 +29,7 @@ const csp = {
         "'self'",
         "'unsafe-inline'",
         'https://stats.beta.gouv.fr',
-        process.env.FACILI_TACCT_ENV === 'preprod' && 'https://vercel.live',
+        process.env.NEXT_PUBLIC_ENV === 'preprod' && 'https://vercel.live',
         process.env.NODE_ENV === 'development' &&
             "'unsafe-eval' http://localhost",
         '*.posthog.com'
