@@ -5,15 +5,17 @@ import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
 import { type Any } from '@/lib/utils/types';
 import { GeoJsonObject, type Feature } from 'geojson';
 import {
+  LatLngBoundsExpression,
   type FeatureGroup,
   type Layer,
   type LeafletMouseEventHandlerFn,
-  type StyleFunction
+  type StyleFunction,
 } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import { GraphDataNotFound } from '../graph-data-not-found';
+import { BoundsFromCollection } from './components/boundsFromCollection';
 
 export const Map = (props: {
   carteCommunes: CommunesIndicateursDto[];
@@ -25,40 +27,14 @@ export const Map = (props: {
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
-  const mapData = carteCommunes.filter(
+
+  const carteCommunesFiltered = carteCommunes.filter(
     (e) =>
       e.properties.code_geographique !== '75056' &&
       e.properties.code_geographique !== '13055' &&
       e.properties.code_geographique !== '69123'
-  );
-
-  const all_coordinates = carteCommunes.map(
-    (el) => el.geometry.coordinates?.[0]?.[0]
-  );
-
-  const getCentroid = (arr: number[][]) => {
-    return arr?.reduce(
-      (x: number[], y: number[]) => {
-        return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
-      },
-      [0, 0]
-    );
-  };
-  const getCoordinates = (coords: number[][][]) => {
-    const coords_arr = [];
-    for (let i = 0; i < coords.length; i++) {
-      const center = getCentroid(coords[i]);
-      coords_arr.push(center);
-    }
-    return getCentroid(coords_arr);
-  };
-
-  const commune = type === "commune"
-    ? carteCommunes.find((el) => el.properties.code_geographique === code)
-    : null;
-  const centerCoord: number[] = commune
-    ? getCentroid(commune.geometry.coordinates?.[0][0])
-    : getCoordinates(all_coordinates);
+  )
+  const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
 
   const getColor = (d: number) => {
     if (data === 'densite_bati') {
@@ -85,26 +61,17 @@ export const Map = (props: {
 
   const style: StyleFunction<Any> = (feature) => {
     const typedFeature = feature as CommunesIndicateursDto;
-
-    if (data === 'densite_bati') {
-      return {
-        fillColor: getColor(typedFeature?.properties.densite_bati),
-        weight: 1,
-        opacity: 1,
-        color: '#161616',
-        // dashArray: "3",
-        fillOpacity: 0.6
-      };
-    } else {
-      return {
-        fillColor: getColor(typedFeature?.properties.precarite_logement),
-        weight: 1,
-        opacity: 1,
-        color: '#161616',
-        // dashArray: "3",
-        fillOpacity: 0.6
-      };
-    }
+    return {
+      fillColor: getColor(data === 'densite_bati' 
+        ? typedFeature?.properties.densite_bati 
+        : typedFeature?.properties.precarite_logement
+      ),
+      weight: typedFeature.properties.code_geographique === code ? 3 : 1,
+      opacity: 1,
+      color: '#161616',
+      // dashArray: "3",
+      fillOpacity: 0.6
+    };
   };
 
   const mouseOnHandler: LeafletMouseEventHandlerFn = (e) => {
@@ -172,16 +139,15 @@ export const Map = (props: {
 
   return (
     <>
-      {carteCommunes === null ? (
+      {carteCommunesFiltered === null ? (
         <GraphDataNotFound code={code} libelle={libelle} />
       ) : (
         <MapContainer
-          center={[centerCoord[1], centerCoord[0]]}
-          zoom={commune ? 11 : 10}
           ref={mapRef}
           style={{ height: '500px', width: '100%' }}
           attributionControl={false}
           zoomControl={false}
+          bounds={enveloppe as LatLngBoundsExpression}
         >
           {process.env.NEXT_PUBLIC_ENV === 'preprod' ? (
             <TileLayer
@@ -196,10 +162,13 @@ export const Map = (props: {
           )}
           <GeoJSON
             ref={mapRef}
-            data={mapData as unknown as GeoJsonObject}
+            data={carteCommunesFiltered as unknown as GeoJsonObject}
             onEachFeature={onEachFeature}
             style={style}
           />
+          {/* <Rectangle
+            bounds={(enveloppe) as LatLngBoundsExpression}
+          /> */}
         </MapContainer>
       )}
     </>

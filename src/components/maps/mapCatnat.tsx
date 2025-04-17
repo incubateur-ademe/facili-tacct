@@ -2,11 +2,12 @@
 
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
-import { Sum } from '@/lib/utils/reusableFunctions/sum';
+import { eptRegex } from '@/lib/utils/regex';
 import { type Any } from '@/lib/utils/types';
 import { Feature, GeoJsonObject } from 'geojson';
 import {
   FeatureGroup,
+  LatLngBoundsExpression,
   Layer,
   LeafletMouseEventHandlerFn,
   type StyleFunction
@@ -15,56 +16,12 @@ import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import { GraphDataNotFound } from '../graph-data-not-found';
-
-const colors: { [key: string]: string[] } = {
-  'Tous types': ['#FFECEE', '#FF9699', '#E8323B', '#B5000E', '#680000'],
-  Inondations: ['#D8EFFA', '#6EC7F7', '#009ADC', '#0072B5', '#003F70'],
-  Sécheresse: ['#FFFBE8', '#FEE29C', '#FFCF5E', '#D19800', '#533B00'],
-  'Mouvements de terrain': [
-    '#FFEEE5',
-    '#FFAF84',
-    '#F66E19',
-    '#B64800',
-    '#5E2000'
-  ],
-  'Retrait-gonflement des argiles': [
-    '#F8E0F8',
-    '#DB7BDD',
-    '#BB43BD',
-    '#89078E',
-    '#560057'
-  ],
-  'Cyclones / Tempêtes': [
-    '#DAFDFF',
-    '#5EEDF3',
-    '#00C2CC',
-    '#00949D',
-    '#005055'
-  ],
-  'Grêle / neige': ['#EBFDF6', '#6AEEC6', '#00C190', '#009770', '#004F3D'],
-  Avalanche: ['#E9E2FA', '#A67FE1', '#7A49BE', '#5524A0', '#270757']
-};
-
-const getCentroid = (arr: number[][]) => {
-  return arr?.reduce(
-    (x: number[], y: number[]) => {
-      return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
-    },
-    [0, 0]
-  );
-};
-
-const getCoordinates = (coords: number[][][]) => {
-  const coords_arr = [];
-  for (let i = 0; i < coords.length; i++) {
-    const center = getCentroid(coords[i]);
-    coords_arr.push(center);
-  }
-  return getCentroid(coords_arr);
-};
+import { BoundsFromCollection } from './components/boundsFromCollection';
+import { CatnatTooltip } from './components/tooltips';
+import { colorsCatnat } from './legends/legendCatnat';
 
 const getColor = (d: number, max: number, typeCatnat: string) => {
-  const colorPalette = colors[typeCatnat];
+  const colorPalette = colorsCatnat[typeCatnat];
   return max > 5
     ? d >= (4 / 5) * max
       ? colorPalette[4]
@@ -108,16 +65,11 @@ export const MapCatnat = (props: {
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
-  const allCoordinates = carteCommunes.map(
-    (el) => el.geometry.coordinates?.[0]?.[0]
-  );
-  const commune = type === 'commune'
-    ? carteCommunes.find((el) => el.properties.code_geographique === code)
-    : null;
-
-  const centerCoord: number[] = commune
-    ? getCentroid(commune.geometry.coordinates?.[0][0])
-    : getCoordinates(allCoordinates);
+  const carteTerritoire =
+    type === 'ept' && eptRegex.test(libelle)
+      ? carteCommunes.filter((e) => e.properties.ept === libelle)
+      : carteCommunes;
+  const enveloppe = BoundsFromCollection(carteTerritoire, type, code);
 
   const style: StyleFunction<Any> = (feature) => {
     const typedFeature = feature as CommunesIndicateursDto;
@@ -164,31 +116,6 @@ export const MapCatnat = (props: {
     }
   };
 
-  const CustomTooltip = (restCatnat: Object, communeName: string) => {
-    const keys = Object.keys(restCatnat);
-    const values = Object.values(restCatnat);
-    const sum = Sum(values);
-    return `<div style="padding: 1.25rem">
-        <div style="font-size: 0.75rem; font-family: Marianne; font-weight: 700; padding: 0 0 1rem">${communeName} : ${sum} arrêté(s) au total</div>
-        ${keys
-          .map(
-            (el, i) => `
-          <div style="
-            margin: 0;
-            padding: 0 0 0.5rem;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            gap: 0.5rem;
-            font-size: 0.75rem;
-            font-family: Marianne;
-            font-weight: 400;
-          ">${el} : <b> ${values[i]}</b></div>`
-          )
-          .join(' ')}
-      </div>`;
-  };
-
   const mouseOnHandler: LeafletMouseEventHandlerFn = (e) => {
     const layer = e.target as FeatureGroup<
       CommunesIndicateursDto['properties']
@@ -208,7 +135,7 @@ export const MapCatnat = (props: {
       color: '#0D2100',
       fillOpacity: 0.9
     });
-    layer.bindTooltip(CustomTooltip(restCatnat, communeName as string), {
+    layer.bindTooltip(CatnatTooltip(restCatnat, communeName as string), {
       direction: e.originalEvent.offsetY > 250 ? 'top' : 'bottom',
       opacity: 0.97
     });
@@ -242,24 +169,20 @@ export const MapCatnat = (props: {
         <GraphDataNotFound code={code} libelle={libelle} />
       ) : (
         <MapContainer
-          center={[centerCoord[1], centerCoord[0]]}
-          zoom={10}
           ref={mapRef}
           style={{ height: '500px', width: '100%' }}
           attributionControl={false}
           zoomControl={false}
+          bounds={enveloppe as LatLngBoundsExpression}
+          
         >
-          {/* <TileLayer
-            attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
-          /> */}
           <TileLayer
-            // attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openma            attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <GeoJSON
             ref={mapRef}
-            data={carteCommunes as unknown as GeoJsonObject}
+            data={carteTerritoire as unknown as GeoJsonObject}
             style={style}
             onEachFeature={onEachFeature}
           />

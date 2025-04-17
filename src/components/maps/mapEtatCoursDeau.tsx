@@ -10,7 +10,7 @@ import { Any } from '@/lib/utils/types';
 import { Feature } from 'geojson';
 import {
   FeatureGroup,
-  LatLngExpression,
+  LatLngBoundsExpression,
   Layer,
   LeafletMouseEventHandlerFn,
   StyleFunction
@@ -18,25 +18,9 @@ import {
 import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
+import { BoundsFromCollection } from './components/boundsFromCollection';
 import SitesBaignadeMarkers from './components/sitesBaignadeMarkers';
-
-const getCentroid = (arr: number[][]) => {
-  return arr?.reduce(
-    (x: number[], y: number[]) => {
-      return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
-    },
-    [0, 0]
-  );
-};
-
-const getCoordinates = (coords: number[][][]) => {
-  const coords_arr = [];
-  for (let i = 0; i < coords.length; i++) {
-    const center = getCentroid(coords[i]);
-    coords_arr.push(center);
-  }
-  return getCentroid(coords_arr);
-};
+import { CoursDeauTooltip } from './components/tooltips';
 
 export const MapEtatCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeauDto[];
@@ -51,23 +35,11 @@ export const MapEtatCoursDeau = (props: {
   const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
 
-  const commune = type === "commune"
-    ? carteCommunes.find(
-      (commune) => commune.properties.code_geographique === code
-    ) : null;
-
   const carteCommunesFiltered = type === "ept"
     ? carteCommunes.filter(
       (el) => el.properties.ept === libelle
     ) : carteCommunes;
-    
-  const allCoordinates = carteCommunesFiltered.map(
-    (el) => el.geometry.coordinates?.[0]?.[0]
-  );
-
-  const centerCoord: number[] = commune
-    ? commune.properties.coordinates.split(',').map(Number)
-    : getCoordinates(allCoordinates);
+  const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
 
   const getColor = (d: string | null) => {
     if (d === '1') {
@@ -105,19 +77,6 @@ export const MapEtatCoursDeau = (props: {
     };
   };
 
-  const CustomTooltip = (coursDeau: string, color: string) => {
-    return `
-      <div style="padding: 0.5rem">
-      <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0; gap: 0.5rem; align-items: center">
-        <div
-        style="background-color: ${color}; width: 1rem; height: 1rem; border-radius: 2px; border: 0.5px solid #161616"
-        ></div>
-        <p style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; margin: 0">${coursDeau.charAt(0).toUpperCase() + coursDeau.slice(1)}</p> 
-      </div>
-      </div>
-    `;
-  };
-
   const mouseOnHandler: LeafletMouseEventHandlerFn = (e) => {
     const layer = e.target as FeatureGroup<EtatCoursDeauDto['properties']>;
     //close residual opened tooltip
@@ -131,7 +90,7 @@ export const MapEtatCoursDeau = (props: {
       weight: 7
     });
     layer.bindTooltip(
-      CustomTooltip(coursDeau as string, e.target.options.color),
+      CoursDeauTooltip(coursDeau as string, e.target.options.color),
       {
         direction: e.originalEvent.offsetY > 250 ? 'top' : 'bottom',
         offset: e.originalEvent.offsetX > 400 ? [-75, 0] : [75, 0]
@@ -161,22 +120,11 @@ export const MapEtatCoursDeau = (props: {
 
   return (
     <MapContainer
-      center={
-        commune
-          ? (centerCoord as LatLngExpression)
-          : [centerCoord[1], centerCoord[0]]
-      }
-      zoom={
-        type === "commune"
-          ? 12
-          : type === "ept"
-            ? 11
-            : 10
-      }
       ref={mapRef}
       style={{ height: '500px', width: '100%', cursor: 'pointer' }}
       attributionControl={false}
       zoomControl={false}
+      bounds={enveloppe as LatLngBoundsExpression}
     >
       {process.env.NEXT_PUBLIC_ENV === 'preprod' ? (
         <TileLayer

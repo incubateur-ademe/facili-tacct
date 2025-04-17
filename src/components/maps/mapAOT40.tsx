@@ -24,6 +24,7 @@ import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import MarkerClusterGroup from 'react-leaflet-cluster';
+import { AOT40Tooltip } from './components/tooltips';
 import './maps.css';
 // documentation : https://akursat.gitbook.io/marker-cluster/api
 
@@ -178,19 +179,6 @@ export const MapAOT40 = (props: {
     });
   };
 
-  const CustomTooltip = (sitesInCluster: string[]) => {
-    const displayedSites = sitesInCluster.slice(0, 10);
-    return `<div style="padding: 0.25rem;">
-        <div style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; border-bottom: 1px solid #B8B8B8; margin-bottom: 0.5rem;">
-          Dans ce regroupement :
-        </div>
-        <div style="display: flex; flex-direction: column; font-size: 10px; font-family: Marianne; font-weight: 700;">
-          ${displayedSites.map((site) => `<div>${site}</div>`).join('')}
-          ${sitesInCluster.length > 10 ? '<div>...</div>' : ''}
-        </div>
-      </div>`;
-  };
-
   return (
     <MapContainer
       zoom={commune ? 11 : 9}
@@ -242,7 +230,7 @@ export const MapAOT40 = (props: {
           const sitesInCluster = e.propagatedFrom
             .getAllChildMarkers()
             .map((el: { options: { title: string } }) => el.options.title);
-          e.propagatedFrom.bindTooltip(CustomTooltip(sitesInCluster), {
+          e.propagatedFrom.bindTooltip(AOT40Tooltip(sitesInCluster), {
             opacity: 0.97,
             direction: e.originalEvent.layerY > 250 ? 'top' : 'bottom',
             offset: [0, e.originalEvent.layerY > 250 ? -25 : 25]

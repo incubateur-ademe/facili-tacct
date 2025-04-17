@@ -32,15 +32,14 @@ export const GetArretesCatnat = async (
   libelle: string,
   type: string
 ): Promise<ArreteCatNat[]> => {
-  const re = new RegExp('T([1-9]|1[0-2])\\b'); //check if T + nombre entre 1 et 12
   const column =
     type === 'pnr'
       ? 'code_pnr'
       : type === 'petr'
         ? 'libelle_petr'
-        : type === 'ept' && re.test(libelle)
+        : type === 'ept' && eptRegex.test(libelle)
           ? 'ept'
-          : type === 'epci' && !re.test(libelle)
+          : type === 'epci' && !eptRegex.test(libelle)
             ? 'epci'
             : type === 'departement'
               ? 'departement'
