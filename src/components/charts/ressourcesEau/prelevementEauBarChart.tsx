@@ -112,25 +112,25 @@ const PrelevementEauBarChart = ({
   const legends = [
     {
       texte_complet: 'Agriculture',
-      texte_raccourci: 'Agriculture',
+      texteRaccourci: 'Agriculture',
       valeur: Sum(graphData.map((e) => e.Agriculture)),
       couleur: '#00C190'
     },
     {
       texte_complet: 'Alimentation des canaux',
-      texte_raccourci: 'Alimentation des canaux',
+      texteRaccourci: 'Alimentation des canaux',
       valeur: Sum(graphData.map((e) => e['Alimentation des canaux'])),
       couleur: '#00C2CC'
     },
     {
       texte_complet: 'Eau potable',
-      texte_raccourci: 'Eau potable',
+      texteRaccourci: 'Eau potable',
       valeur: Sum(graphData.map((e) => e['Eau potable'])),
       couleur: '#009ADC'
     },
     {
       texte_complet: 'Industrie et autres usages économiques',
-      texte_raccourci: 'Industrie',
+      texteRaccourci: 'Industrie',
       valeur: Sum(
         graphData.map((e) => e['Industrie et autres usages économiques'])
       ),
@@ -138,7 +138,7 @@ const PrelevementEauBarChart = ({
     },
     {
       texte_complet: "Production d'électricité (barrages hydro-électriques)",
-      texte_raccourci: 'Barrages hydro-électriques',
+      texteRaccourci: 'Barrages hydro-électriques',
       valeur: Sum(
         graphData.map(
           (e) => e["Production d'électricité (barrages hydro-électriques)"]
@@ -148,7 +148,7 @@ const PrelevementEauBarChart = ({
     },
     {
       texte_complet: 'Refroidissement des centrales électriques',
-      texte_raccourci: 'Refroidissement des centrales',
+      texteRaccourci: 'Refroidissement des centrales',
       valeur: Sum(
         graphData.map((e) => e['Refroidissement des centrales électriques'])
       ),
@@ -209,7 +209,7 @@ const PrelevementEauBarChart = ({
           .filter((e) => e.valeur != 0)
           .map((legend, index) => ({
             id: index,
-            label: legend.texte_raccourci,
+            label: legend.texteRaccourci,
             color: legend.couleur
           }))}
         tooltip={CustomTooltip}
