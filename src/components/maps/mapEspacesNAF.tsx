@@ -2,7 +2,6 @@
 
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
-import { Round } from '@/lib/utils/reusableFunctions/round';
 import { type Any } from '@/lib/utils/types';
 import { Feature, GeoJsonObject } from 'geojson';
 import {
@@ -15,6 +14,7 @@ import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import { GraphDataNotFound } from '../graph-data-not-found';
+import { EspacesNafTooltip } from './components/tooltips';
 
 const getCentroid = (arr: number[][]) => {
   return arr?.reduce(
@@ -84,17 +84,6 @@ export const MapEspacesNaf = (props: {
     };
   };
 
-  const CustomTooltip = (communeName: string, naf: number) => {
-    return `
-      <div style="padding: 0.5rem">
-        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0">
-          <p style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; margin: 0">${communeName} : </p> 
-          <p style="font-size: 0.75rem; font-family: Marianne; font-weight: 700; margin: 0"> ${Round(naf / 10000, 1)} hectare(s)</p>
-        </div>
-      </div>
-    `;
-  };
-
   const mouseOnHandler: LeafletMouseEventHandlerFn = (e) => {
     const layer = e.target as FeatureGroup<
       CommunesIndicateursDto['properties']
@@ -112,7 +101,7 @@ export const MapEspacesNaf = (props: {
       color: '#0D2100',
       fillOpacity: 0.9
     });
-    layer.bindTooltip(CustomTooltip(commune_name as string, naf as number), {
+    layer.bindTooltip(EspacesNafTooltip(commune_name as string, naf as number), {
       direction: e.originalEvent.offsetY > 250 ? 'top' : 'bottom',
       opacity: 0.97
     });
