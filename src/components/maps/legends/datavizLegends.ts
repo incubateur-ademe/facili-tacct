@@ -254,7 +254,7 @@ export const surfacesIrrigueesLegend = [
   },
   {
     value: 'Valeurs manquantes ou sous secret statistique',
-    color: 'transparent'
+    color: 'white'
   }
 ];
 

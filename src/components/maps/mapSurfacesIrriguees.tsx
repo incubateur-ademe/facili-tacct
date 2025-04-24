@@ -29,7 +29,7 @@ const getColor = (d: number) => {
           ? '#03508B'
           : d > 60 && d <= 100
             ? '#093454'
-            : 'transparent';
+            : 'white';
 };
 
 export const MapSurfacesIrriguees = (props: {
