@@ -146,12 +146,13 @@
     justify-content: space-between;
     gap: 1rem;
     align-items: center;
+    flex-wrap: wrap;
     .indiceLeft {
         display: flex;
         flex-direction: row;
         gap: 1rem;
         align-items: center;
-        width: 200px;
+        width: 190px;
         min-width: fit-content;
         p {
             font-size: 14px;

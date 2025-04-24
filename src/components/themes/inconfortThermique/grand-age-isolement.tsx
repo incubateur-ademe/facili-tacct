@@ -66,7 +66,8 @@ export const GrandAgeIsolement = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const xData = [
     '1968',
     '1975',
@@ -152,20 +153,21 @@ export const GrandAgeIsolement = (props: {
   useEffect(() => {
     void (async () => {
       const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
     })();
   }, [codgeo, codepci]);
 
   const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_chaleurs')
+    : undefined;
 
   return (
     <>
-      {fortesChaleurs ? (
+      {!isLoadingPatch4 ? (
         <>
           {inconfortThermique.length &&
-          !Object.values(yData).slice(0, -2).includes('NaN') ? (
+            !Object.values(yData).slice(0, -2).includes('NaN') ? (
             <div className={styles.container}>
               <div className="w-2/5">
                 <div className={styles.explicationWrapper}>
@@ -202,7 +204,7 @@ export const GrandAgeIsolement = (props: {
                   )}
                   <div className={styles.patch4Wrapper}>
                     {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                      fortesChaleurs === 'Intensité forte' ? (
                       <TagItem
                         icon={fortesChaleursIcon}
                         indice="Fortes chaleurs"
