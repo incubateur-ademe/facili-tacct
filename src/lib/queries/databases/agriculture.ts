@@ -1,46 +1,24 @@
 'use server';
-import { Agriculture, AgricultureNew } from '@/lib/postgres/models';
+import { AgricultureNew } from '@/lib/postgres/models';
+import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
 import { PrismaClient as PostgresClient } from '../../../generated/client';
 
 const PrismaPostgres = new PostgresClient();
-
-export const GetAgriculture = async (
-  code: string,
-  libelle: string,
-  type: string
-): Promise<Agriculture[]> => {
-  try {
-    const value = await PrismaPostgres.agriculture.findMany({
-      where: {
-        EPCI: code
-      }
-    });
-    return value;
-  } catch (error) {
-    console.error(error);
-    Sentry.captureException(error);
-    await PrismaPostgres.$disconnect();
-    process.exit(1);
-  } finally {
-    await PrismaPostgres.$disconnect();
-  }
-};
 
 export const GetNewAgriculture = async (
   code: string,
   libelle: string,
   type: string
 ): Promise<AgricultureNew[]> => {
-  const re = new RegExp('T([1-9]|1[0-2])\\b'); //check if T + nombre entre 1 et 12
   const column =
     type === 'pnr'
       ? 'code_pnr'
       : type === 'petr'
         ? 'libelle_petr'
-        : type === 'ept' && re.test(libelle)
+        : type === 'ept' && eptRegex.test(libelle)
           ? 'ept'
-          : type === 'epci' && !re.test(libelle)
+          : type === 'epci' && !eptRegex.test(libelle)
             ? 'epci'
             : type === 'departement'
               ? 'departement'
@@ -82,6 +60,6 @@ export const GetNewAgriculture = async (
     console.error(error);
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
-    process.exit(1);
+    throw new Error('Internal Server Error');
   }
 };
