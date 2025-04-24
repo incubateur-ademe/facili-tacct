@@ -20,7 +20,8 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const surfaceTotale = incendiesForet
     .map((el) => el.surface_parcourue)
     .reduce((a, b) => a + b, 0);
@@ -29,10 +30,11 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
   useEffect(() => {
     void (async () => {
       const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
     })();
   }, [codgeo, codepci]);
-  const feuxForet = patch4 ? AlgoPatch4(patch4[0], 'feux_foret') : null;
+  const feuxForet = patch4 ? AlgoPatch4(patch4, 'feux_foret') : undefined;
 
   const title = (
     <div>
@@ -60,7 +62,7 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
 
   return (
     <>
-      {feuxForet ? (
+      {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <div className={incendiesForet.length !== 0 ? 'w-2/5' : 'w-1/2'}>
             <div className={styles.explicationWrapper}>
@@ -82,7 +84,7 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
                 ''
               )}
               {feuxForet === 'Intensité très forte' ||
-              feuxForet === 'Intensité forte' ? (
+                feuxForet === 'Intensité forte' ? (
                 <div className={styles.patch4Wrapper}>
                   <TagItem
                     icon={feuxForetIcon}

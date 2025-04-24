@@ -58,7 +58,8 @@ const AOT40Dataviz = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const commune = carteCommunesMap.find(
     (commune) => commune.properties.code_geographique === codgeo
   );
@@ -111,8 +112,8 @@ const AOT40Dataviz = (props: {
   );
   const maxValueInStations = stationsWithinCircle.features.length
     ? stationsWithinCircle.features
-        .map((f) => f.properties?.value)
-        .reduce((a, b) => Math.max(Number(a), Number(b)))
+      .map((f) => f.properties?.value)
+      .reduce((a, b) => Math.max(Number(a), Number(b)))
     : null;
   const maxStation = stationsWithinCircle.features.find(
     (f) => f.properties?.value === maxValueInStations
@@ -121,13 +122,13 @@ const AOT40Dataviz = (props: {
   useEffect(() => {
     void (async () => {
       const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
     })();
   }, [codgeo, codepci]);
 
   const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_chaleurs') : undefined;
 
   const title = (
     <div>
@@ -158,7 +159,7 @@ const AOT40Dataviz = (props: {
   );
   return (
     <>
-      {fortesChaleurs ? (
+      {!isLoadingPatch4 ? (
         <>
           {aot40.length ? (
             <div className={styles.container}>
@@ -198,7 +199,7 @@ const AOT40Dataviz = (props: {
                   )}
                   <div className={styles.patch4Wrapper}>
                     {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                      fortesChaleurs === 'Intensité forte' ? (
                       <div>
                         <TagItem
                           icon={fortesChaleursIcon}

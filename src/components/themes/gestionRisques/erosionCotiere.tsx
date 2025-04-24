@@ -22,18 +22,20 @@ const ErosionCotes = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const erosionCotiereMap = erosionCotiere.map(ErosionCotiereMapper);
   const epciContoursMap = epciContours.map(EpciContoursMapper);
 
   useEffect(() => {
     void (async () => {
       const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
     })();
   }, [codgeo, codepci]);
 
-  const niveauxMarins = patch4 ? AlgoPatch4(patch4[0], 'niveaux_marins') : null;
+  const niveauxMarins = patch4 ? AlgoPatch4(patch4, 'niveaux_marins') : undefined;
 
   const title = (
     <>
@@ -48,7 +50,7 @@ const ErosionCotes = (props: {
   );
   return (
     <>
-      {niveauxMarins ? (
+      {!isLoadingPatch4 ? (
         <>
           {erosionCotiere ? (
             <div className={styles.container}>
@@ -62,7 +64,7 @@ const ErosionCotes = (props: {
                   </p>
                   <div className={styles.patch4Wrapper}>
                     {niveauxMarins === 'Intensité très forte' ||
-                    niveauxMarins === 'Intensité forte' ? (
+                      niveauxMarins === 'Intensité forte' ? (
                       <TagItem
                         icon={niveauxMarinsIcon}
                         indice="Sécheresse des sols"
