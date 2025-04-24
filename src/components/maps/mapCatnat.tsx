@@ -174,7 +174,6 @@ export const MapCatnat = (props: {
           attributionControl={false}
           zoomControl={false}
           bounds={enveloppe as LatLngBoundsExpression}
-          
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

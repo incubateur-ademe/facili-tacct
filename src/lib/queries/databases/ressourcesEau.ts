@@ -44,8 +44,8 @@ export const GetRessourceEau = async (
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
-    await PrismaPostgres.$disconnect();
-    process.exit(1);
+    console.error('Database connection error occurred.');
+    return [];
   }
 };
 
@@ -125,8 +125,8 @@ export const GetRessourceEauNew = async (
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
-    await PrismaPostgres.$disconnect();
-    process.exit(1);
+    console.error('Database connection error occurred.');
+    return [];
   }
 };
 
@@ -194,7 +194,7 @@ export const GetQualiteEauxBaignade = async (
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
-    await PrismaPostgres.$disconnect();
-    process.exit(1);
+    console.error('Database connection error occurred.');
+    return [];
   }
 };

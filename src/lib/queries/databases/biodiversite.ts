@@ -45,7 +45,7 @@ export const GetBiodiversite = async (
     console.error(error);
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
-    process.exit(1);
+    throw new Error('Internal Server Error');
   }
 };
 
@@ -98,7 +98,7 @@ export const GetAgricultureBio = async (
     console.error(error);
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
-    process.exit(1);
+    throw new Error('Internal Server Error');
   }
 };
 
@@ -118,7 +118,7 @@ export const GetSurfacesProtegees = async (
     console.error(error);
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
-    process.exit(1);
+    throw new Error('Internal Server Error');
   }
 };
 
@@ -128,9 +128,8 @@ export const GetConsommationNAF = async (
   type: string
 ): Promise<ConsommationNAF[]> => {
   try {
-    const re = new RegExp('T([1-9]|1[0-2])\\b');
     console.time('Query Execution Time CONSOMMATION NAF');
-    if (type === 'petr' || re.test(libelle)) {
+    if (type === 'petr' || eptRegex.test(libelle)) {
       const value = await PrismaPostgres.consommation_espaces_naf.findMany({
         where: {
           [type === 'petr' ? 'libelle_petr' : 'ept']: libelle
@@ -170,7 +169,7 @@ export const GetConsommationNAF = async (
     console.error(error);
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
-    process.exit(1);
+    throw new Error('Internal Server Error');
   }
 };
 
@@ -184,6 +183,6 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
     console.error(error);
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
-    process.exit(1);
+    throw new Error('Internal Server Error');
   }
 };

@@ -23,7 +23,7 @@ export const GetGestionRisques = async (
     console.error(error);
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
-    process.exit(1);
+    throw new Error('Internal Server Error');
   }
 };
 
@@ -57,7 +57,7 @@ export const GetArretesCatnat = async (
     console.error(error);
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
-    process.exit(1);
+    throw new Error('Internal Server Error');
   }
 };
 
@@ -104,6 +104,6 @@ export const GetIncendiesForet = async (
     console.error(error);
     Sentry.captureException(error);
     await PrismaPostgres.$disconnect();
-    process.exit(1);
+    throw new Error('Internal Server Error');
   }
 };

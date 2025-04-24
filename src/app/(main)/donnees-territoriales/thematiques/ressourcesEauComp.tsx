@@ -29,7 +29,6 @@ interface Props {
   ressourcesEau: RessourcesEauNew[];
   carteCommunes: CarteCommunes[];
 }
-
 const DynamicCoursDeau = dynamic(
   () => import('../../../../components/themes/ressourcesEau/etatCoursDeau'),
   {

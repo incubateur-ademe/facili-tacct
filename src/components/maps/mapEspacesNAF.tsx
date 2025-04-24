@@ -6,6 +6,7 @@ import { type Any } from '@/lib/utils/types';
 import { Feature, GeoJsonObject } from 'geojson';
 import {
   FeatureGroup,
+  LatLngBoundsExpression,
   Layer,
   LeafletMouseEventHandlerFn,
   type StyleFunction
@@ -14,25 +15,8 @@ import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import { GraphDataNotFound } from '../graph-data-not-found';
+import { BoundsFromCollection } from './components/boundsFromCollection';
 import { EspacesNafTooltip } from './components/tooltips';
-
-const getCentroid = (arr: number[][]) => {
-  return arr?.reduce(
-    (x: number[], y: number[]) => {
-      return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
-    },
-    [0, 0]
-  );
-};
-
-const getCoordinates = (coords: number[][][]) => {
-  const coords_arr = [];
-  for (let i = 0; i < coords.length; i++) {
-    const center = getCentroid(coords[i]);
-    coords_arr.push(center);
-  }
-  return getCentroid(coords_arr);
-};
 
 const getColor = (d: number) => {
   return d > 200000
@@ -54,24 +38,18 @@ export const MapEspacesNaf = (props: {
   const { carteCommunes } = props;
   const carteCommunesFiltered = carteCommunes.filter(
     (el) => el.properties.naf != undefined
+  ).filter(
+    (e) =>
+      e.properties.code_geographique !== '75056' &&
+      e.properties.code_geographique !== '13055' &&
+      e.properties.code_geographique !== '69123'
   );
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
-
-  const allCoordinates = carteCommunesFiltered.map(
-    (el) => el.geometry.coordinates?.[0]?.[0]
-  );
-  const commune = type === "commune"
-    ? carteCommunesFiltered.find(
-      (el) => el.properties.code_geographique === code
-    )
-    : null;
-  const centerCoord: number[] = commune
-    ? getCentroid(commune.geometry.coordinates?.[0][0])
-    : getCoordinates(allCoordinates);
+  const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
 
   const style: StyleFunction<Any> = (feature) => {
     const typedFeature = feature as CommunesIndicateursDto;
@@ -136,12 +114,11 @@ export const MapEspacesNaf = (props: {
         <GraphDataNotFound code={code} libelle={libelle} />
       ) : (
         <MapContainer
-          center={[centerCoord[1], centerCoord[0]]}
-          zoom={commune || type === "ept" ? 11 : 9}
           ref={mapRef}
           style={{ height: '500px', width: '100%' }}
           attributionControl={false}
           zoomControl={false}
+          bounds={enveloppe as LatLngBoundsExpression}
         >
           <TileLayer
             // attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openma            attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
