@@ -1,7 +1,7 @@
 'use client';
 
+import { Loader } from '@/components/loader';
 import useWindowDimensions from '@/hooks/windowDimensions';
-import Notice from '@codegouvfr/react-dsfr/Notice';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
@@ -33,7 +33,7 @@ const Home = () => {
     <div className={css({
       margin: '0 0 3em'
     })}>
-      <Notice
+      {/* <Notice
         className='notice'
         description=""
         isClosable={true}
@@ -50,7 +50,7 @@ const Home = () => {
             </span>
           </>
         }
-      />
+      /> */}
       <div className={styles.wrapper}>
         <Container size="xl">
           <div className={styles.titles}>
@@ -65,7 +65,15 @@ const Home = () => {
           </div>
         </Container>
       </div>
-      <CollectiviteSearch />
+      {
+        window.width ? <CollectiviteSearch /> 
+        : <div 
+            className={styles.collectiviteWrapper}
+            style={{height: "218px", top: "415px"}} //rm top paramètre si la notice est active
+          >
+            <Loader />
+          </div>
+      }
       <div className={styles.cardBackground}>
         <Container size="xl">
           <div className={styles.cardWrapper}>

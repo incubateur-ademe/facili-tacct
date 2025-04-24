@@ -1,6 +1,6 @@
 import { Brand } from '@/components/Brand';
 import { HeaderComp as Header } from '@/components/Header';
-import { ClientOnly } from '@/components/utils/ClientOnly';
+import { HeaderClientOnly } from '@/components/utils/ClientOnly';
 import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display';
 import { Footer } from '@codegouvfr/react-dsfr/Footer';
 import { type Metadata } from 'next';
@@ -37,11 +37,9 @@ const LayoutMain = ({ children }: PropsWithChildren) => {
       <Suspense>
         <PostHogPageView />
       </Suspense>
-      <ClientOnly>
-        <Suspense>
-          <Header />
-        </Suspense>
-      </ClientOnly>
+      <HeaderClientOnly>
+        <Header />
+      </HeaderClientOnly>
       <main>{children}</main>
       <Footer
         id={footerId}
