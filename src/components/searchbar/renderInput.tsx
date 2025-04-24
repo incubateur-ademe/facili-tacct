@@ -16,7 +16,7 @@ export const RenderInput = (props: SearchInputTagProps) => {
         className={cx(params.inputProps.className, className)}
         placeholder={'Saisir un territoire'}
         disabled={!typeTerritoire}
-        style={{ borderRadius: '4px 0 0 4px' }}
+        style={{ borderRadius: '4px 0 0 4px', padding: '0.5rem 3.5rem 0.5rem 1rem' }}
       />
       {params.InputProps.endAdornment && (
         <div
