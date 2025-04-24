@@ -9,7 +9,7 @@ Sentry.init({
   dsn: SENTRY_DSN ?? '',
   environment: SENTRY_ENV ?? 'development',
   enabled: process.env.NODE_ENV !== 'development',
-  integrations: [Sentry.prismaIntegration()],
+  // integrations: [Sentry.prismaIntegration()],
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 0.1,
   debug: false,
