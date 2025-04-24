@@ -1,5 +1,7 @@
 import * as Sentry from '@sentry/nextjs';
 
+export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
+
 const SENTRY_DSN = process.env.SENTRY_DSN;
 const SENTRY_ENV = process.env.NODE_ENV;
 
