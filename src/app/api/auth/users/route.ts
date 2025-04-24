@@ -12,7 +12,6 @@ export const GET = async () => {
   } catch (error) {
     console.error(error);
     await PrismaPostgres.$disconnect();
-    process.exit(1);
   }
 };
 
