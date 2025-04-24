@@ -1,4 +1,5 @@
 'use client';
+
 import ressourcesIcon from '@/assets/icons/ressources_icon_blue.svg';
 import { config } from '@/config';
 import { DarkClass } from '@/lib/utils/DarkClass';
@@ -39,7 +40,7 @@ const Localisation = (props: { libelle: string; code?: string }) => {
   );
 };
 
-export const HeaderComp = () => {
+const HeaderComp = () => {
   const searchParams = useSearchParams();
   const params = usePathname();
   const code = searchParams.get('code')!;
@@ -104,3 +105,5 @@ export const HeaderComp = () => {
     />
   );
 };
+
+export default HeaderComp;
