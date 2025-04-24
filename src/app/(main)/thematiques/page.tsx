@@ -25,7 +25,7 @@ const Thematiques = async (props: { searchParams: SearchParams }) => {
           }}
           segments={[]}
         />
-        {patch4.length > 0 && <Patch4Accordion patch4={patch4[0]} />}
+        {patch4 ? <Patch4Accordion patch4={patch4} /> : null}
         <h1>Quelle thématique vous intéresse ?</h1>
         <Cards />
       </ClientOnly>

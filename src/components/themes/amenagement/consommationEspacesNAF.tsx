@@ -29,7 +29,8 @@ export const ConsommationEspacesNAF = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
   const carteCommunesEnriched = carteCommunes.map((el) => {
     return {
@@ -42,22 +43,21 @@ export const ConsommationEspacesNAF = (props: {
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
   const sumNaf = codgeo
     ? consommationNAF.filter((item) => item.code_geographique === codgeo)[0]
-        ?.naf09art23
+      ?.naf09art23
     : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
 
   useEffect(() => {
     void (async () => {
       const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
     })();
   }, [codgeo, codepci]);
 
   const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_chaleurs') : undefined;
   const precipitation = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_precipitations')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_precipitations') : undefined;
 
   const title = (
     <div>
@@ -76,7 +76,7 @@ export const ConsommationEspacesNAF = (props: {
   );
   return (
     <>
-      {precipitation && fortesChaleurs ? (
+      {!isLoadingPatch4 ? (
         <>
           {consommationNAF.length > 0 ? (
             <div className={styles.container}>
@@ -89,7 +89,7 @@ export const ConsommationEspacesNAF = (props: {
                   </p>
                   <div className={styles.patch4Wrapper}>
                     {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                      fortesChaleurs === 'Intensité forte' ? (
                       <TagItem
                         icon={fortesChaleursIcon}
                         indice="Fortes chaleurs"
@@ -97,7 +97,7 @@ export const ConsommationEspacesNAF = (props: {
                       />
                     ) : null}
                     {precipitation === 'Intensité très forte' ||
-                    precipitation === 'Intensité forte' ? (
+                      precipitation === 'Intensité forte' ? (
                       <TagItem
                         icon={precipitationIcon}
                         indice="Fortes précipitations"

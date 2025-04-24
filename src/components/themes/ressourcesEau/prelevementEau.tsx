@@ -55,7 +55,8 @@ export const PrelevementEau = (props: {
   const searchParams = useSearchParams();
   const codgeo = searchParams.get('codgeo')!;
   const codepci = searchParams.get('codepci')!;
-  const [patch4, setPatch4] = useState<Patch4[]>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
   const volumeTotalPreleve =
     SumFiltered(ressourcesEau, codgeo, codepci, 'total', true) / 1000000;
@@ -86,13 +87,13 @@ export const PrelevementEau = (props: {
   useEffect(() => {
     void (async () => {
       const temp = await GetPatch4(codgeo ?? codepci);
-      temp && codepci ? setPatch4(temp) : void 0;
+      setPatch4(temp);
+      setIsLoadingPatch4(false);
     })();
   }, [codgeo, codepci]);
 
   const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4[0], 'fortes_chaleurs')
-    : null;
+    ? AlgoPatch4(patch4, 'fortes_chaleurs') : undefined;
 
   const title = (
     <>
@@ -121,7 +122,7 @@ export const PrelevementEau = (props: {
 
   return (
     <>
-      {fortesChaleurs ? (
+      {!isLoadingPatch4 ? (
         <>
           {dataParMaille.length !== 0 && sumAllYears !== 0 ? (
             <div className={styles.container}>
@@ -136,7 +137,7 @@ export const PrelevementEau = (props: {
                   </p>
                   <div className={styles.patch4Wrapper}>
                     {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                      fortesChaleurs === 'Intensité forte' ? (
                       <TagItem
                         icon={fortesChaleursIcon}
                         indice="Fortes chaleurs"

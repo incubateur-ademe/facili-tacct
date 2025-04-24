@@ -77,17 +77,6 @@ model inconfort_thermique {
   @@schema("databases")
 }
 
-model clc_epci {
-  pk        Int                      @id @default(autoincrement())
-  legend    String?                  @db.VarChar
-  epci_code Int?
-  geometry  Unsupported("geometry")?
-
-  @@index([geometry], map: "clc_epci_geometry_geom_idx", type: Gist)
-  @@index([epci_code], map: "clc_epci_index")
-  @@schema("postgis")
-}
-
 model collectivites_searchbar {
   index           BigInt  @id
   code_commune    String?
@@ -525,4 +514,15 @@ model users {
   role            String    @db.VarChar(8)
 
   @@schema("ressources")
+}
+
+model clc_epci {
+  pk        Int                      @id @default(autoincrement())
+  legend    String?                  @db.VarChar
+  epci_code Int?
+  geometry  Unsupported("geometry")?
+
+  @@index([geometry], map: "clc_epci_geometry_geom_idx", type: Gist)
+  @@index([epci_code], map: "clc_epci_index")
+  @@schema("postgis")
 }

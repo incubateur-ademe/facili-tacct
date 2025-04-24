@@ -15,45 +15,38 @@ import { CollectiviteSearch } from './CollectiviteSearch';
 
 const Home = () => {
   const [noticeClosed, setNoticeClosed] = useState(false);
-  const window = useWindowDimensions();
   const { css } = useStyles();
+  const window = useWindowDimensions();
+  const heightTopBlock = typeof document !== 'undefined' ? document.querySelector(`.${styles.wrapper}`)?.clientHeight : 0;
+  const heightNotice = typeof document !== 'undefined' ? document.querySelector(`.notice`)?.clientHeight : 0;
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
       const style = document.documentElement.style;
-      noticeClosed
-        ? style.setProperty('--height-notice', '415px')
-        : style.setProperty('--height-notice', '543px');
+      style.setProperty(
+        '--height-notice', `${(noticeClosed ? 0 : (heightNotice ?? 0)) + (heightTopBlock ?? 0) + 32}px`
+      );
     }
-  }, [noticeClosed]);
+  }, [noticeClosed, heightTopBlock, heightNotice]);
 
   return (
-    <div
-      className={css({
-        margin: '0 0 3em',
-        '.fr-btn': {
-          display: 'inline-block'
-        }
-      })}
-    >
+    <div className={css({
+      margin: '0 0 3em'
+    })}>
       <Notice
+        className='notice'
         description=""
         isClosable={true}
         onClose={() => setNoticeClosed(true)}
         title={
           <>
             <span>
-              Facili-TACCT intègre un nouveau jeu de données créé par
-              Météo-France. Il vise à montrer comment cinq aléas climatiques
-              (fortes chaleurs, fortes pluies, sécheresse des sols, feux de
-              forêt et niveaux marins) vont évoluer entre 2050 et 2100.
+              Facili-TACCT intègre un nouveau jeu de données créé par Météo-France. Il vise à montrer comment cinq aléas
+              climatiques (fortes chaleurs, fortes pluies, sécheresse des sols, feux de forêt et niveaux marins) vont évoluer entre 2050 et 2100.
             </span>
-            <br />
-            <br />
+            <br></br><br></br>
             <span>
-              {' '}
-              Retrouvez également de nouveaux indicateurs : “Surfaces irriguées”
-              (et sa thématique Agriculture) et “Feux de forêt”.
+              Retrouvez également de nouveaux indicateurs : “Surfaces irriguées” (et sa thématique Agriculture) et “Feux de forêt”.
             </span>
           </>
         }
@@ -77,7 +70,11 @@ const Home = () => {
         <Container size="xl">
           <div className={styles.cardWrapper}>
             <div className={styles.card}>
-              <Image src={MapImg} alt="" />
+              <Image
+                src={MapImg}
+                alt=""
+                className={styles.cardImage}
+              />
               <div className={styles.cardDescription}>
                 <h2>Evaluez la sensibilité de votre territoire</h2>
                 <p>
@@ -90,7 +87,7 @@ const Home = () => {
               <Image
                 src={PeopleImg}
                 alt=""
-                style={{ borderRadius: '0.5em 0 0 0.5em' }}
+                className={styles.cardImage}
               />
               <div className={styles.cardDescription}>
                 <h2>Facilitez les conditions du dialogue</h2>

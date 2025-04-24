@@ -3,12 +3,10 @@
 import AgricultureBiologique from '@/components/themes/biodiversite/agricultureBio';
 import AOT40Dataviz from '@/components/themes/biodiversite/AOT40';
 import { ConsommationEspacesNAF } from '@/components/themes/biodiversite/consommationEspacesNAF';
-import { StationsClassees } from '@/components/themes/biodiversite/stationsClassees';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   AgricultureBio,
   AOT40,
-  Biodiversite,
   CarteCommunes,
   ConsommationNAF,
   EpciContours,
@@ -30,10 +28,8 @@ interface Props {
     risque: string;
     titre: string;
   }>;
-  biodiversite: Biodiversite[];
   carteCommunes: CarteCommunes[];
   agricultureBio: AgricultureBio[];
-  // surfacesProtegees: SurfacesProtegeesByCol[];
   consommationNAF: ConsommationNAF[];
   epciContours: EpciContours[];
   aot40: AOT40[];
@@ -43,20 +39,6 @@ interface Props {
 
 const allComps = [
   {
-    titre: 'Stations classées',
-    Component: ({
-      biodiversite,
-      data,
-      carteCommunes
-    }: Props & { activeDataTab: string }) => (
-      <StationsClassees
-        biodiversite={biodiversite}
-        data={data}
-        carteCommunes={carteCommunes}
-      />
-    )
-  },
-  {
     titre: 'Surfaces en bio',
     Component: ({
       data,
@@ -65,20 +47,6 @@ const allComps = [
       <AgricultureBiologique data={data} agricultureBio={agricultureBio} />
     )
   },
-  // {
-  //   titre: 'Surfaces protégées',
-  //   Component: ({
-  //     data,
-  //     surfacesProtegees,
-  //     carteCommunes
-  //   }: Props & { activeDataTab: string }) => (
-  //     <SurfacesProtegees
-  //       data={data}
-  //       surfacesProtegees={surfacesProtegees}
-  //       carteCommunes={carteCommunes}
-  //     />
-  //   )
-  // },
   {
     titre: "Consommation d'espaces NAF",
     Component: ({
@@ -125,10 +93,8 @@ const allComps = [
 
 const BiodiversiteComp = ({
   data,
-  biodiversite,
   carteCommunes,
   agricultureBio,
-  // surfacesProtegees,
   consommationNAF,
   epciContours,
   aot40,
@@ -141,7 +107,6 @@ const BiodiversiteComp = ({
   const [selectedSubTab, setSelectedSubTab] = useState(
     "Consommation d'espaces NAF"
   );
-  // const [etatCoursDeau, setEtatCoursDeau] = useState<EtatCoursDeau[]>();
   const searchParams = useSearchParams();
   const codepci = searchParams.get('codepci')!;
   const { css } = useStyles();
@@ -150,10 +115,6 @@ const BiodiversiteComp = ({
     setSelectedSubTab(
       data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
-    // void (async () => {
-    //   const temp = await GetEtatCoursDeau(codepci, codgeo);
-    //   temp && codepci ? setEtatCoursDeau(temp) : void 0;
-    // })();
   }, [selectedTabId, codepci]);
 
   return (
@@ -161,16 +122,6 @@ const BiodiversiteComp = ({
       <Tabs
         selectedTabId={selectedTabId}
         tabs={[
-          // {
-          //   tabId: 'Surfaces protégées',
-          //   label: (
-          //     <TabTooltip
-          //       selectedTab={selectedTabId}
-          //       tooltip="Espaces d’inventaire et de protection."
-          //       titre="Surfaces protégées"
-          //     />
-          //   )
-          // },
           {
             tabId: "Consommation d'espaces NAF",
             label: (
@@ -237,22 +188,22 @@ const BiodiversiteComp = ({
           <div className={styles.titles}>
             {selectedTabId === 'Pollutions'
               ? data
-                  .filter((el) => el.facteurSensibilite === selectedTabId)
-                  .map((element, i) => (
-                    <button
-                      key={i}
-                      className={
-                        selectedSubTab === element.titre
-                          ? styles.selectedButton
-                          : styles.button
-                      }
-                      onClick={() => {
-                        setSelectedSubTab(element.titre);
-                      }}
-                    >
-                      {element.titre}
-                    </button>
-                  ))
+                .filter((el) => el.facteurSensibilite === selectedTabId)
+                .map((element, i) => (
+                  <button
+                    key={i}
+                    className={
+                      selectedSubTab === element.titre
+                        ? styles.selectedButton
+                        : styles.button
+                    }
+                    onClick={() => {
+                      setSelectedSubTab(element.titre);
+                    }}
+                  >
+                    {element.titre}
+                  </button>
+                ))
               : ''}
           </div>
           <div className={styles.bubble}>
@@ -266,11 +217,9 @@ const BiodiversiteComp = ({
                   <Suspense>
                     <Component
                       data={data}
-                      biodiversite={biodiversite}
                       activeDataTab={selectedSubTab}
                       carteCommunes={carteCommunes}
                       agricultureBio={agricultureBio}
-                      // surfacesProtegees={surfacesProtegees}
                       consommationNAF={consommationNAF}
                       epciContours={epciContours}
                       etatCoursDeau={etatCoursDeau || []}

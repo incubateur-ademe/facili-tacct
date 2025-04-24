@@ -3,19 +3,30 @@
 import { Patch4 } from '@/lib/postgres/models';
 import * as Sentry from '@sentry/nextjs';
 import { PrismaClient as PostgresClient } from '../../generated/client';
+import { dromRegex } from '../utils/regex';
 
 const PrismaPostgres = new PostgresClient();
 
-export const GetPatch4 = async (code: string): Promise<Patch4[]> => {
+export const GetPatch4 = async (code: string): Promise<Patch4 | undefined> => {
   try {
-    // console.time(`PATCH4`);
-    const value = await PrismaPostgres.patch4c.findMany({
+    const departement = await PrismaPostgres.collectivites_searchbar.findFirst({
       where: {
-        code_geographique: code
+        OR: [{ code_commune: code }, { code_epci: code }]
       }
     });
-    // console.timeEnd(`PATCH4`);
-    return value;
+    // Exclusion des DROM puisque le patch4 ne les inclut pas
+    if (
+      departement &&
+      departement.departement &&
+      !dromRegex.test(departement.departement)
+    ) {
+      const value = await PrismaPostgres.patch4c.findFirst({
+        where: {
+          code_geographique: code
+        }
+      });
+      return value == null ? undefined : value;
+    } else return undefined;
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
