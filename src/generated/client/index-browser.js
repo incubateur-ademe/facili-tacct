@@ -17,12 +17,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.3.0
- * Query Engine version: 173f8d54f8d52e692c7e27e72a88314ec7aeff60
+ * Prisma Client JS version: 6.6.0
+ * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
  */
 Prisma.prismaVersion = {
-  client: "6.3.0",
-  engine: "173f8d54f8d52e692c7e27e72a88314ec7aeff60"
+  client: "6.6.0",
+  engine: "f676762280b54cd07c770017ed3711ddde35f37a"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -551,12 +551,6 @@ exports.Prisma.Surfaces_protegeesScalarFieldEnum = {
   region: 'region'
 };
 
-exports.Prisma.Clc_epciScalarFieldEnum = {
-  pk: 'pk',
-  legend: 'legend',
-  epci_code: 'epci_code'
-};
-
 exports.Prisma.Clc_territoiresScalarFieldEnum = {
   pk: 'pk',
   code_geographique: 'code_geographique',
@@ -629,6 +623,36 @@ exports.Prisma.UsersScalarFieldEnum = {
   role: 'role'
 };
 
+exports.Prisma.Ressources_eau_newScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  LIBELLE_SOUS_CHAMP: 'LIBELLE_SOUS_CHAMP',
+  A2020: 'A2020',
+  A2019: 'A2019',
+  A2018: 'A2018',
+  A2017: 'A2017',
+  A2016: 'A2016',
+  A2015: 'A2015',
+  A2014: 'A2014',
+  A2013: 'A2013',
+  A2012: 'A2012',
+  A2011: 'A2011',
+  A2010: 'A2010',
+  A2009: 'A2009',
+  A2008: 'A2008',
+  SOUS_CHAMP: 'SOUS_CHAMP',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -663,14 +687,14 @@ exports.Prisma.ModelName = {
   qualite_sites_baignade: 'qualite_sites_baignade',
   ressources_eau: 'ressources_eau',
   surfaces_protegees: 'surfaces_protegees',
-  clc_epci: 'clc_epci',
   clc_territoires: 'clc_territoires',
   communes_drom: 'communes_drom',
   epci: 'epci',
   erosion_cotiere: 'erosion_cotiere',
   etat_cours_d_eau: 'etat_cours_d_eau',
   spatial_ref_sys: 'spatial_ref_sys',
-  users: 'users'
+  users: 'users',
+  ressources_eau_new: 'ressources_eau_new'
 };
 
 /**
@@ -690,7 +714,7 @@ class PrismaClient {
         } else {
           message = 'PrismaClient is unable to run in this browser environment, or has been bundled for the browser (running in `' + runtime.prettyName + '`).'
         }
-        
+
         message += `
 If this is unexpected, please open an issue: https://pris.ly/prisma-prisma-bug-report`
 
