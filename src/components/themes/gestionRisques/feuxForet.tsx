@@ -48,7 +48,7 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
             <div className={styles.explicationWrapper}>
               {incendiesForet.length !== 0 ? (
                 <p>
-                  Depuis 2006, votre collectivité a connu{' '}
+                  Depuis 2006, votre territoire a connu{' '}
                   <b>{incendiesForet.length}</b> départ(s) de feux pour une
                   surface totale parcourue de{' '}
                   <b>{Round(100 * surfaceTotale, 2)} ha</b>.
