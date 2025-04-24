@@ -3,12 +3,13 @@ import * as Sentry from '@sentry/nextjs';
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
 
 const SENTRY_DSN = process.env.SENTRY_DSN;
-const SENTRY_ENV = process.env.NODE_ENV;
+const SENTRY_ENV = process.env.SENTRY_ENV;
 
 Sentry.init({
   dsn: SENTRY_DSN ?? '',
   environment: SENTRY_ENV ?? 'development',
   enabled: process.env.NODE_ENV !== 'development',
+  integrations: [Sentry.prismaIntegration()],
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 0.1,
   debug: false,
