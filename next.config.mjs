@@ -145,8 +145,7 @@ export default withSentryConfig(withMDX(config), {
     org: 'betagouv',
     project: 'facili-tacct',
     sentryUrl: 'https://sentry.incubateur.net',
-    authToken: process.env.SENTRY_AUTH_TOKEN,
-
+    // authToken: process.env.SENTRY_AUTH_TOKEN,
     silent: false,
 
     // For all available options, see:
@@ -176,5 +175,9 @@ export default withSentryConfig(withMDX(config), {
     // See the following for more information:
     // https://docs.sentry.io/product/crons/
     // https://vercel.com/docs/cron-jobs
-    automaticVercelMonitors: true
+    automaticVercelMonitors: true,
+
+    sourcemaps: {
+        deleteSourcemapsAfterUpload: true,
+    },
 });
