@@ -5,7 +5,7 @@ import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
-import { Patch4, RessourcesEau } from '@/lib/postgres/models';
+import { Patch4, RessourcesEauNew } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { prelevementEauTooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
@@ -15,31 +15,47 @@ import { useEffect, useState } from 'react';
 import PrelevementEauDataViz from './prelevementEauDataviz';
 import styles from './ressourcesEau.module.scss';
 
+type Years = "A2008"
+  | "A2009"
+  | "A2010"
+  | "A2011"
+  | "A2012"
+  | "A2013"
+  | "A2014"
+  | "A2015"
+  | "A2016"
+  | "A2017"
+  | "A2018"
+  | "A2019"
+  | "A2020";
+
 const SumFiltered = (
-  data: RessourcesEau[],
-  codgeo: string,
-  codepci: string,
+  data: RessourcesEauNew[],
+  code: string,
+  libelle: string,
   type: string,
-  collectivite: boolean = false
+  champ: string
 ) => {
-  if (collectivite) {
-    return Sum(
-      data
-        .filter((obj) =>
-          codgeo ? obj.code_geographique === codgeo : obj.epci === codepci
-        )
-        .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(type))
-        .map((e) => e.A2020)
-        .filter((value): value is number => value !== null)
-    );
-  } else {
-    return Sum(
-      data
-        .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(type))
-        .map((e) => e.A2020)
-        .filter((value): value is number => value !== null)
-    );
-  }
+  const columnCode = type === 'epci'
+    ? 'epci'
+    : type === 'commune'
+      ? 'code_geographique'
+      : type === "departement"
+        ? "departement"
+        : undefined
+
+  const columnLibelle = type === "petr"
+    ? "libelle_petr"
+    : "ept"
+
+  return Sum(
+    data
+      .filter((obj) => columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
+      )
+      .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(champ))
+      .map((e) => e.A2020)
+      .filter((value): value is number => value !== null)
+  );
 };
 
 export const PrelevementEau = (props: {
@@ -50,7 +66,7 @@ export const PrelevementEau = (props: {
     risque: string;
     titre: string;
   }>;
-  ressourcesEau: RessourcesEau[];
+  ressourcesEau: RessourcesEauNew[];
 }) => {
   const { ressourcesEau } = props;
   const searchParams = useSearchParams();
@@ -60,33 +76,24 @@ export const PrelevementEau = (props: {
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
-  const volumeTotalPreleve = Round(
-    SumFiltered(ressourcesEau, code, code, 'total', true) / 1000000,
-    0
+  const volumePreleveTerritoire = Round(
+    SumFiltered(ressourcesEau, code, libelle, type, 'total') / 1000000,
+    3
   );
   const dataParMaille = type === 'epci'
     ? ressourcesEau.filter((obj) => obj.epci === code)
-    : ressourcesEau;
+    : type === 'commune'
+      ? ressourcesEau.filter((obj) => obj.code_geographique === code)
+      : type === 'petr'
+        ? ressourcesEau.filter((obj) => obj.libelle_petr === libelle)
+        : type === 'ept'
+          ? ressourcesEau.filter((obj) => obj.ept === libelle)
+          : ressourcesEau;
 
-  const sumAllYears = dataParMaille
-    .map((year) => {
-      return [
-        Number(year.A2008),
-        Number(year.A2009),
-        Number(year.A2010),
-        Number(year.A2011),
-        Number(year.A2012),
-        Number(year.A2013),
-        Number(year.A2014),
-        Number(year.A2015),
-        Number(year.A2016),
-        Number(year.A2017),
-        Number(year.A2018),
-        Number(year.A2019),
-        Number(year.A2020)
-      ].reduce((a, b) => a + b, 0);
-    })
-    .reduce((a, b) => a + b, 0);
+  const sumAllYears = dataParMaille.map((year) =>
+    Array.from({ length: 13 }, (_, i) => Number(year[`A${2008 + i}` as Years]) || 0)
+      .reduce((a, b) => a + b, 0)
+  ).reduce((a, b) => a + b, 0);;
 
   useEffect(() => {
     void (async () => {
@@ -111,8 +118,8 @@ export const PrelevementEau = (props: {
                   <div className={styles.explicationWrapper}>
                     <p>
                       Le volume total des prélèvements en eau de votre territoire en
-                      2020 est de <b>{volumeTotalPreleve} Mm3</b>, soit l’équivalent
-                      de <b>{Round((1000000 * volumeTotalPreleve) / 3750, 3)}</b>{' '}
+                      2020 est de <b>{volumePreleveTerritoire} Mm3</b>, soit l’équivalent
+                      de <b>{Round((1000000 * volumePreleveTerritoire) / 3750, 0)}</b>{' '}
                       piscines olympiques.
                     </p>
                     <div className={styles.patch4Wrapper}>

@@ -126,6 +126,36 @@ export type RessourcesEau = {
   A2020: number | null;
 };
 
+export type RessourcesEauNew = {
+  LIBELLE_SOUS_CHAMP: string;
+  SOUS_CHAMP: string;
+  code_geographique: string;
+  departement: string;
+  libelle_departement: string;
+  epci: string;
+  index: bigint;
+  libelle_epci: string;
+  libelle_geographique: string;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  region: number;
+  A2008: number;
+  A2009: number;
+  A2010: number;
+  A2011: number;
+  A2012: number;
+  A2013: number;
+  A2014: number;
+  A2015: number;
+  A2016: number;
+  A2017: number;
+  A2018: number;
+  A2019: number;
+  A2020: number;
+};
+
 export type AgricultureBio = {
   index: bigint;
   epci: string;

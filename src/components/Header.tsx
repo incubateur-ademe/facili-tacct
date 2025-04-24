@@ -11,6 +11,12 @@ import { useStyles } from 'tss-react/dsfr';
 import { Brand } from './Brand';
 import styles from './components.module.scss';
 
+const ReplaceDisplayEpci = (libelleEpci: string) => {
+  return libelleEpci
+    .replace("Communauté d'agglomération", 'CA')
+    .replace('Communauté de communes', 'CC');
+};
+
 const Localisation = (props: { libelle: string; code?: string }) => {
   const darkClass = DarkClass();
   const { libelle, code } = props;
@@ -23,7 +29,7 @@ const Localisation = (props: { libelle: string; code?: string }) => {
       <p>
         {code ? (
           <>
-            {libelle} - {code}
+            {ReplaceDisplayEpci(libelle)} - {code}
           </>
         ) : (
           libelle

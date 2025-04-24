@@ -1,7 +1,7 @@
 'use client';
 
 import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
-import { RessourcesEau } from '@/lib/postgres/models';
+import { RessourcesEauNew } from '@/lib/postgres/models';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { BarDatum, BarTooltipProps } from '@nivo/bar';
 import { useSearchParams } from 'next/navigation';
@@ -50,7 +50,7 @@ const ressourcesEauYears = [
   'A2020'
 ];
 
-const graphDataFunct = (filteredYears: string[], data: RessourcesEau[]) => {
+const graphDataFunct = (filteredYears: string[], data: RessourcesEauNew[]) => {
   const dataArr: GraphData[] = [];
   filteredYears.forEach((year) => {
     const genericObjects = (text: string) =>
@@ -83,22 +83,26 @@ const PrelevementEauBarChart = ({
   ressourcesEau,
   sliderValue
 }: {
-  ressourcesEau: RessourcesEau[];
+  ressourcesEau: RessourcesEauNew[];
   sliderValue: number[];
 }) => {
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo')!;
-  const codepci = searchParams.get('codepci')!;
-  const dataParMaille = codgeo
-    ? ressourcesEau.filter((obj) => obj.code_geographique === codgeo)
-    : ressourcesEau.filter((obj) => obj.epci === codepci);
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
+  const dataParMaille = type === "commune"
+    ? ressourcesEau.filter((obj) => obj.code_geographique === code)
+    : type === "epci" 
+      ? ressourcesEau.filter((obj) => obj.epci === code)
+      : type === "petr"
+        ? ressourcesEau.filter((obj) => obj.libelle_petr === libelle)
+        : type === "ept"
+          ? ressourcesEau.filter((obj) => obj.ept === libelle)
+          : ressourcesEau;
   const [selectedYears, setSelectedYears] = useState<string[]>(
     ressourcesEauYears.map((year) => year.split('A')[1])
   );
   const graphData = graphDataFunct(selectedYears, dataParMaille);
-  const collectiviteName = codgeo
-    ? dataParMaille[0]?.libelle_geographique
-    : dataParMaille[0]?.libelle_epci;
 
   useEffect(() => {
     setSelectedYears(
@@ -169,7 +173,7 @@ const PrelevementEauBarChart = ({
     return (
       <div className={styles.tooltipEvolutionWrapper}>
         <h3>
-          {collectiviteName} ({dataArray.at(-1)?.value})
+          {libelle} ({dataArray.at(-1)?.value})
         </h3>
         {dataArray.slice(0, -1).map((el, i) => {
           return (
@@ -218,7 +222,7 @@ const PrelevementEauBarChart = ({
       />
     </div>
   ) : (
-    <GraphDataNotFound code={codgeo ? codgeo : codepci} libelle='' />
+    <GraphDataNotFound code={code} libelle={libelle} />
   );
 };
 
