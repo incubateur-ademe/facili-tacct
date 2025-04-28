@@ -87,7 +87,7 @@ const config = {
             : (process.env.NEXT_PUBLIC_APP_REPOSITORY_URL ?? 'no repository'),
         NEXT_PUBLIC_SITE_URL: isDeployment
             ? (process.env.NEXT_PUBLIC_SITE_URL ??
-              `facili-tacct-preprod.osc-fr1.scalingo.io`)
+              `https://facili-tacct-preprod.osc-fr1.scalingo.io`)
             : 'http://localhost:3000'
     },
     pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
