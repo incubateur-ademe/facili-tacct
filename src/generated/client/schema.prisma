@@ -420,6 +420,12 @@ model clc_territoires {
   geometry             Unsupported("geometry")?
 
   @@index([geometry], map: "clc_territoires_geometry_geom_idx", type: Gist)
+  @@index([code_geographique], map: "clc_territoires_communes_index")
+  @@index([departement], map: "clc_territoires_departement_index")
+  @@index([epci], map: "clc_territoires_epci_index")
+  @@index([ept], map: "clc_territoires_ept_index")
+  @@index([libelle_petr], map: "clc_territoires_petr_index")
+  @@index([code_pnr], map: "clc_territoires_pnr_index")
   @@schema("postgis")
 }
 
@@ -442,6 +448,12 @@ model communes_drom {
   geometry             Unsupported("geometry")?
 
   @@index([geometry], map: "communes_drom_geometry_geom_idx", type: Gist)
+  @@index([code_geographique], map: "communes_drom_communes_index")
+  @@index([departement], map: "communes_drom_departement_index")
+  @@index([epci], map: "communes_drom_epci_index")
+  @@index([ept], map: "communes_drom_ept_index")
+  @@index([libelle_petr], map: "communes_drom_petr_index")
+  @@index([code_pnr], map: "communes_drom_pnr_index")
   @@schema("postgis")
 }
 
@@ -488,4 +500,16 @@ model qualite_sites_baignade {
 
   @@index([index], map: "ix_qualite_sites_baignade_index")
   @@schema("databases")
+}
+
+model users {
+  pk              Int       @id @default(autoincrement())
+  email           String    @unique(map: "email") @db.VarChar(256)
+  username        String    @unique(map: "username") @db.VarChar(256)
+  password        String    @db.VarChar(256)
+  created_at      DateTime  @db.Timestamp(6)
+  last_connection DateTime? @db.Timestamp(6)
+  role            String    @db.VarChar(8)
+
+  @@schema("ressources")
 }

@@ -521,6 +521,16 @@ exports.Prisma.Qualite_sites_baignadeScalarFieldEnum = {
   QEB_2020: 'QEB_2020'
 };
 
+exports.Prisma.UsersScalarFieldEnum = {
+  pk: 'pk',
+  email: 'email',
+  username: 'username',
+  password: 'password',
+  created_at: 'created_at',
+  last_connection: 'last_connection',
+  role: 'role'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -553,7 +563,8 @@ exports.Prisma.ModelName = {
   communes_drom: 'communes_drom',
   erosion_cotiere: 'erosion_cotiere',
   etat_cours_d_eau: 'etat_cours_d_eau',
-  qualite_sites_baignade: 'qualite_sites_baignade'
+  qualite_sites_baignade: 'qualite_sites_baignade',
+  users: 'users'
 };
 
 /**
