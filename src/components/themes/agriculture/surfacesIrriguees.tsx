@@ -9,7 +9,7 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { DefinitionTooltip } from '@/components/utils/HtmlTooltip';
 import { irrigable } from '@/lib/definitions';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
-import { AgricultureNew, CarteCommunes } from '@/lib/postgres/models';
+import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
 import { surfacesIrrigueesTooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import styles from './agriculture.module.scss';
@@ -19,7 +19,7 @@ export const SurfacesIrriguees = ({
   agriculture
 }: {
   carteCommunes: CarteCommunes[];
-  agriculture: AgricultureNew[];
+  agriculture: Agriculture[];
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
