@@ -3,7 +3,7 @@
 import { SurfacesIrriguees } from '@/components/themes/agriculture/surfacesIrriguees';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
-  AgricultureNew,
+  Agriculture,
   CarteCommunes
 } from '@/lib/postgres/models';
 import { fr } from '@codegouvfr/react-dsfr';
@@ -22,7 +22,7 @@ interface Props {
     titre: string;
   }>;
   carteCommunes: CarteCommunes[];
-  agriculture: AgricultureNew[];
+  agriculture: Agriculture[];
 }
 
 const allComps = [

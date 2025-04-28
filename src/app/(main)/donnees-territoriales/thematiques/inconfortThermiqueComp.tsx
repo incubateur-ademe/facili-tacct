@@ -14,7 +14,7 @@ import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -214,7 +214,6 @@ const InconfortThermiqueComp = ({
                 )?.Component;
                 if (!Component) return null;
                 return (
-                  <Suspense>
                     <Component
                       data={data}
                       inconfortThermique={inconfortThermique}
@@ -223,7 +222,6 @@ const InconfortThermiqueComp = ({
                       clc={clc}
                       departement={departement}
                     />
-                  </Suspense>
                 );
               })()}
             </div>

@@ -4,8 +4,8 @@ export type InconfortThermique = {
   NA5FZ_sum: number | null;
   NA5GU_sum: number | null;
   NA5OQ_sum: number | null;
-  P20_POP80P: string | null;
-  P20_POP80P_PSEUL: string | null;
+  P20_POP80P: number | null;
+  P20_POP80P_PSEUL: number | null;
   age_bati_19_45: number | null;
   age_bati_46_90: number | null;
   age_bati_91_05: number | null;
@@ -28,36 +28,36 @@ export type InconfortThermique = {
   libelle_pnr: string | null;
   ept: string | null;
   libelle_petr: string | null;
-  over_80_sum_1968: string | null;
-  over_80_sum_1975: string | null;
-  over_80_sum_1982: string | null;
-  over_80_sum_1990: string | null;
-  over_80_sum_1999: string | null;
-  over_80_sum_2009: string | null;
-  over_80_sum_2014: string | null;
-  over_80_sum_2020: string | null;
+  over_80_sum_1968: number | null;
+  over_80_sum_1975: number | null;
+  over_80_sum_1982: number | null;
+  over_80_sum_1990: number | null;
+  over_80_sum_1999: number | null;
+  over_80_sum_2009: number | null;
+  over_80_sum_2014: number | null;
+  over_80_sum_2020: number | null;
   precarite_logement: number | null;
-  region: number;
+  region: bigint;
   s_geom_cstr_bati: number | null;
   superf_choro: number | null;
   tee_log: number | null;
   tee_mob: number | null;
-  to_80_sum_1968: string | null;
-  to_80_sum_1975: string | null;
-  to_80_sum_1982: string | null;
-  to_80_sum_1990: string | null;
-  to_80_sum_1999: string | null;
-  to_80_sum_2009: string | null;
-  to_80_sum_2014: string | null;
-  to_80_sum_2020: string | null;
-  under_4_sum_1968: string | null;
-  under_4_sum_1975: string | null;
-  under_4_sum_1982: string | null;
-  under_4_sum_1990: string | null;
-  under_4_sum_1999: string | null;
-  under_4_sum_2009: string | null;
-  under_4_sum_2014: string | null;
-  under_4_sum_2020: string | null;
+  to_80_sum_1968: number | null;
+  to_80_sum_1975: number | null;
+  to_80_sum_1982: number | null;
+  to_80_sum_1990: number | null;
+  to_80_sum_1999: number | null;
+  to_80_sum_2009: number | null;
+  to_80_sum_2014: number | null;
+  to_80_sum_2020: number | null;
+  under_4_sum_1968: number | null;
+  under_4_sum_1975: number | null;
+  under_4_sum_1982: number | null;
+  under_4_sum_1990: number | null;
+  under_4_sum_1999: number | null;
+  under_4_sum_2009: number | null;
+  under_4_sum_2014: number | null;
+  under_4_sum_2020: number | null;
 };
 
 export type Biodiversite = {
@@ -471,18 +471,6 @@ export type QualiteSitesBaignade = {
 
 export type Agriculture = {
   index: bigint;
-  CODGEO: string;
-  LIBGEO: string;
-  EPCI: string;
-  LIBEPCI: string;
-  DEP: string;
-  REG: number;
-  part_irr_SAU_2020: number | null;
-  part_over_55: number | null;
-};
-
-export type AgricultureNew = {
-  index: bigint;
   code_geographique: string;
   libelle_geographique: string;
   epci: string;
@@ -495,6 +483,7 @@ export type AgricultureNew = {
   code_pnr: string | null;
   libelle_pnr: string | null;
   part_irr_SAU_2020: number | null;
+  part_over_55: number | null
 };
 
 export type IncendiesForet = {
