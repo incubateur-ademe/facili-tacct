@@ -1,6 +1,6 @@
 'use server';
 
-import { QualiteSitesBaignade, RessourcesEau, RessourcesEauNew } from '@/lib/postgres/models';
+import { QualiteSitesBaignade, RessourcesEauNew } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
 import { PrismaClient as PostgresClient } from '../../../generated/client';
@@ -11,13 +11,18 @@ export const GetRessourceEau = async (
   code: string,
   libelle: string,
   type: string
-): Promise<RessourcesEau[]> => {
+): Promise<RessourcesEauNew[]> => {
   try {
-    if (code === 'ZZZZZZZZZ') {
+    if (type === "commune") {
       console.time('Query Execution Time RESSOURCES EAUX');
+      const departement = await PrismaPostgres.ressources_eau.findFirst({
+        where: {
+          code_geographique: code
+        }
+      });
       const value = await PrismaPostgres.ressources_eau.findMany({
         where: {
-          epci: code
+          departement: departement?.departement
         }
       });
       console.timeEnd('Query Execution Time RESSOURCES EAUX');
@@ -29,54 +34,7 @@ export const GetRessourceEau = async (
           epci: code
         }
       });
-      console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
-      console.time('Query Execution Time PRELEVEMENT EAUX 2');
-
       const value = await PrismaPostgres.ressources_eau.findMany({
-        where: {
-          departement: departement?.departement
-        }
-      });
-      console.timeEnd('Query Execution Time PRELEVEMENT EAUX 2');
-
-      return value;
-    } else return [];
-  } catch (error) {
-    console.error(error);
-    Sentry.captureException(error);
-    console.error('Database connection error occurred.');
-    return [];
-  }
-};
-
-export const GetRessourceEauNew = async (
-  code: string,
-  libelle: string,
-  type: string
-): Promise<RessourcesEauNew[]> => {
-  try {
-    if (type === "commune") {
-      console.time('Query Execution Time RESSOURCES EAUX');
-      const departement = await PrismaPostgres.ressources_eau_new.findFirst({
-        where: {
-          code_geographique: code
-        }
-      });
-      const value = await PrismaPostgres.ressources_eau_new.findMany({
-        where: {
-          departement: departement?.departement
-        }
-      });
-      console.timeEnd('Query Execution Time RESSOURCES EAUX');
-      return value;
-    } else if (type === 'epci') {
-      console.time('Query Execution Time PRELEVEMENT EAUX');
-      const departement = await PrismaPostgres.ressources_eau_new.findFirst({
-        where: {
-          epci: code
-        }
-      });
-      const value = await PrismaPostgres.ressources_eau_new.findMany({
         where: {
           departement: departement?.departement
         }
@@ -85,12 +43,12 @@ export const GetRessourceEauNew = async (
       return value;
     } else if (type === "petr") {
       console.time('Query Execution Time RESSOURCES EAUX');
-      const departement = await PrismaPostgres.ressources_eau_new.findFirst({
+      const departement = await PrismaPostgres.ressources_eau.findFirst({
         where: {
           libelle_petr: libelle
         }
       });
-      const value = await PrismaPostgres.ressources_eau_new.findMany({
+      const value = await PrismaPostgres.ressources_eau.findMany({
         where: {
           departement: departement?.departement
         }
@@ -99,12 +57,12 @@ export const GetRessourceEauNew = async (
       return value;
     } else if (type === "ept") {
       console.time('Query Execution Time RESSOURCES EAUX');
-      const departement = await PrismaPostgres.ressources_eau_new.findFirst({
+      const departement = await PrismaPostgres.ressources_eau.findFirst({
         where: {
           ept: libelle
         }
       });
-      const value = await PrismaPostgres.ressources_eau_new.findMany({
+      const value = await PrismaPostgres.ressources_eau.findMany({
         where: {
           departement: departement?.departement
         }
@@ -113,7 +71,7 @@ export const GetRessourceEauNew = async (
       return value;
     } else if (type === "departement") {
       console.time('Query Execution Time RESSOURCES EAUX');
-      const value = await PrismaPostgres.ressources_eau_new.findMany({
+      const value = await PrismaPostgres.ressources_eau.findMany({
         where: {
           departement: code
         }

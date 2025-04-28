@@ -2,52 +2,13 @@
 import {
   AgricultureBio,
   AOT40,
-  Biodiversite,
-  ConsommationNAF,
-  SurfacesProtegeesByCol
+  ConsommationNAF
 } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
 import { PrismaClient as PostgresClient } from '../../../generated/client';
 
 const PrismaPostgres = new PostgresClient();
-
-export const GetBiodiversite = async (
-  code: string | undefined,
-  libelle: string,
-  type: string
-): Promise<Biodiversite[]> => {
-  try {
-    console.time('Query Execution Time BIODIVERSITE');
-    const colonneTerritoire =
-      type === 'epci'
-        ? 'epci'
-        : type === 'commune'
-          ? 'code_geographique'
-          : type === 'pnr'
-            ? 'code_pnr'
-            : 'libelle_petr';
-    const value = await PrismaPostgres.biodiversite.findMany({
-      where: {
-        AND: [
-          { [colonneTerritoire]: code ?? libelle },
-          {
-            type_touristique: {
-              not: null
-            }
-          }
-        ]
-      }
-    });
-    console.timeEnd('Query Execution Time BIODIVERSITE');
-    return value;
-  } catch (error) {
-    console.error(error);
-    Sentry.captureException(error);
-    await PrismaPostgres.$disconnect();
-    throw new Error('Internal Server Error');
-  }
-};
 
 export const GetAgricultureBio = async (
   libelle: string,
@@ -94,26 +55,6 @@ export const GetAgricultureBio = async (
       console.timeEnd('Query Execution Time AGRICULTURE BIO');
       return value;
     }
-  } catch (error) {
-    console.error(error);
-    Sentry.captureException(error);
-    await PrismaPostgres.$disconnect();
-    throw new Error('Internal Server Error');
-  }
-};
-
-export const GetSurfacesProtegees = async (
-  code: string
-): Promise<SurfacesProtegeesByCol[]> => {
-  try {
-    console.time('Query Execution Time SURFACES PROTEGEES');
-    const value = await PrismaPostgres.surfaces_protegees.findMany({
-      where: {
-        epci: code
-      }
-    });
-    console.timeEnd('Query Execution Time SURFACES PROTEGEES');
-    return value;
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
