@@ -109,7 +109,7 @@ const EtatQualiteCoursDeau = (props: {
                       augmente les coûts du service de l’eau.
                     </p>
                     <p>
-                      Concernant spécifiquement l’eau potable, si 2/3 des prélèvement
+                      Concernant spécifiquement l’eau potable, si deux tiers des prélèvements
                       sont fait sur des ressources souterraines, les prélèvements en
                       eaux de surface sont majoritaires en région parisienne, en
                       Bretagne, dans les Pays de la Loire, sur la Côte d’Azur et dans

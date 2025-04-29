@@ -50,7 +50,7 @@ export const ConsommationEspacesNAF = (props: {
             </div>
             <div className="px-4">
               <p>
-                L'artificialisation des sols constitue l’une des première cause
+                L'artificialisation des sols constitue l’une des premières causes
                 de l’effondrement de la biodiversité. Elle porte atteinte aux
                 processus naturels essentiels, comme la pollinisation, fragmente
                 voire détruit les habitats et isole les espèces. Elle participe

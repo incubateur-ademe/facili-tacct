@@ -2,6 +2,7 @@ import surfaceCertifeeIcon from '@/assets/icons/agriculture_bio_surface_certifie
 import surfaceEnConversionIcon from '@/assets/icons/agriculture_bio_surface_conversion_icon.svg';
 import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
 import { AgricultureBio } from '@/lib/postgres/models';
+import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Progress } from 'antd';
 import Image from 'next/image';
@@ -49,10 +50,9 @@ export const AgricultureBioPieCharts = ({
   const nombreExploitations = agricultureBio.find(
     (obj) => obj.VARIABLE === 'saue'
   )?.nombre_2022!;
-  const partCertifiee = Round((surfaceCertifiee / surfaceTotale) * 100, 1);
-  const partEnConversion = Round(
-    (surfaceEnConversion / surfaceTotale) * 100,
-    1
+  const partCertifiee = ((surfaceCertifiee / surfaceTotale) * 100);
+  const partEnConversion = (
+    (surfaceEnConversion / surfaceTotale) * 100
   );
   const evolutionCertifiee =
     ((surfaceCertifiee - surfaceCertifiee2019) / surfaceCertifiee2019) * 100;
@@ -113,7 +113,7 @@ export const AgricultureBioPieCharts = ({
             />
             <div className={styles.progressText}>
               <p style={{ color: '#00949D' }}>
-                <span>{partCertifieeRounded}</span>%
+                <span>{numberWithSpacesRegex(partCertifieeRounded)}</span>%
               </p>
             </div>
           </div>
