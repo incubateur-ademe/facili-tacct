@@ -30,7 +30,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
         className={styles.amenagementGraphTitleWrapper}
         style={{ padding: '1rem' }}
       >
-        <h2>Destination des surfaces artificialisées</h2>
+        <h2>Destination des surfaces imperméabilisées</h2>
         <SubTabs
           data={['Répartition']}
           defaultTab={datavizTab}
