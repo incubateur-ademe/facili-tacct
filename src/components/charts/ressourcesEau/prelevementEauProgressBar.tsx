@@ -10,14 +10,14 @@ import GraphNotFound from '@/assets/images/data_not_found_prelevement.svg';
 import legendEpci from '@/assets/images/legend_prelevement_eau_epci.svg';
 import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
 import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
-import { RessourcesEauNew } from '@/lib/postgres/models';
+import { RessourcesEau } from '@/lib/postgres/models';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { Progress } from 'antd';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 
 const SumFiltered = (
-  data: RessourcesEauNew[],
+  data: RessourcesEau[],
   code: string,
   libelle: string,
   type: string,
@@ -46,7 +46,7 @@ const SumFiltered = (
 };
 
 const TotalSum = (
-  data: RessourcesEauNew[],
+  data: RessourcesEau[],
   champ: string
 ) => {
   return Sum(
@@ -60,7 +60,7 @@ const TotalSum = (
 const PrelevementEauProgressBars = ({
   ressourcesEau
 }: {
-  ressourcesEau: RessourcesEauNew[];
+  ressourcesEau: RessourcesEau[];
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
