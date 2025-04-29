@@ -11,6 +11,7 @@ import { ageBatiMapper } from '@/lib/mapper/inconfortThermique';
 import { InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { eptRegex } from '@/lib/utils/regex';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -123,7 +124,7 @@ export const AgeBati = (props: {
     <>
       {!isLoadingPatch4 ? (
         <>
-          {inconfortThermique.length &&
+          {inconfortThermique.length && constructionBefore2006 &&
             !Object.values(averages).includes(NaN) &&
             Sum(Object.values(averages)) != 0 ? (
             <div className={styles.container}>
@@ -131,7 +132,7 @@ export const AgeBati = (props: {
                 <div className={styles.explicationWrapper}>
                   <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                     Sur votre territoire,{' '}
-                    <b>{constructionBefore2006?.toFixed(1)} %</b> des résidences
+                    <b>{Round(constructionBefore2006, 1)} %</b> des résidences
                     principales sont construites avant 2006.
                   </p>
                   <div className={styles.patch4Wrapper}>

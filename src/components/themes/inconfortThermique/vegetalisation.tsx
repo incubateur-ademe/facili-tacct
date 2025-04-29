@@ -112,9 +112,8 @@ const Vegetalisation = (props: {
                     rafraîchissement en milieu urbain dépend de leur nombre, de
                     la densité de leur feuillage, des essences, de la qualité du
                     sol et de la disponibilité en eau.<br></br> <br></br>
-                    Plus 2 à 3°C sont les effets maximaux d'arbres isolés sur la
-                    température d’air dans les rues ou lorsqu'ils sont alignés
-                    en bordure de route. (source :{' '}
+                    La présence d’arbres peut rafraîchir l’air de 2 à 3° C au maximum, 
+                    notamment dans les rues ou lorsqu’ils sont alignés en bordure de route (source :{' '}
                     <a href="https://plusfraichemaville.fr/" target="_blank">
                       Plus fraiche ma ville
                     </a>
