@@ -19,7 +19,7 @@ export const BarLineFeuxForet = (props: {
   const incendiesForetEnriched = incendiesForet.map((el) => {
     return {
       ...el,
-      surface_parcourue: el.surface_parcourue * 100,
+      surface_parcourue: el.surface_parcourue * 100, //conversion en ha 1km² = 100ha
       nombreIncendies: incendiesForet.filter((item) => item.annee === el.annee)
         .length
     };
@@ -85,11 +85,10 @@ export const BarLineFeuxForet = (props: {
                   <div className={styles.square} />
                   <p>
                     {Round(
-                      100 *
-                        barGraphData.find(
-                          (el) =>
-                            Number(el.annee) === Number(point.data.xFormatted)
-                        )?.surface_parcourue!,
+                      barGraphData.find(
+                        (el) =>
+                          Number(el.annee) === Number(point.data.xFormatted)
+                      )?.surface_parcourue!,
                       2
                     )}{' '}
                     ha consommé(s)
