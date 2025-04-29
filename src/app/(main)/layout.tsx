@@ -21,10 +21,7 @@ export const metadata: Metadata = {
   //   default: config.name
   // },
   openGraph: {
-    title: {
-      template: `${config.name} - %s`,
-      default: config.name
-    },
+    title: config.name,
     ...sharedMetadata.openGraph
   },
   description: config.description
