@@ -212,8 +212,7 @@ export const TravailExterieur = (props: {
                     <div className={styles.graphWrapper}>
                       <p style={{ padding: '1em', margin: '0' }}>
                         <b>
-                          Part des emplois par activités économiques regroupées en 5
-                          postes
+                          Part des emplois par grands secteurs d’activité
                         </b>
                       </p>
                       {graphData ? <PieChart1 graphData={graphData} /> : <Loader />}

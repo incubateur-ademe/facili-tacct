@@ -23,14 +23,14 @@ const FeuxForetDataviz = (props: Props) => {
       {sumTypes <= 3 ? (
         <>
           <div className={styles.graphTitleWrapper}>
-            <h2>Feux de forêt</h2>
+            <h2>Départs de feux et surfaces brûlées depuis 2006</h2>
           </div>
           <BarLineFeuxForet incendiesForet={incendiesForet} />
         </>
       ) : (
         <>
           <div className={styles.catnatGraphTitleWrapper}>
-            <h2>Feux de forêt</h2>
+            <h2>Départs de feux et surfaces brûlées depuis 2006</h2>
             <SubTabs
               data={['Répartition', 'Évolution']}
               defaultTab={datavizTab}
