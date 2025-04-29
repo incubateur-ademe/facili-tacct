@@ -14,7 +14,7 @@ import {
   Patch4
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { eptRegex } from '@/lib/utils/regex';
+import { eptRegex, numberWithSpacesRegex } from '@/lib/utils/regex';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './themes.module.scss';
@@ -167,27 +167,27 @@ export const GrandAgeIsolement = (props: {
               <div className="w-2/5">
                 <div className={styles.explicationWrapper}>
                   <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                    En 2020, <b>{yData.over_80_2020_percent} %</b> de la
+                    En 2020, <b>{numberWithSpacesRegex(yData.over_80_2020_percent)} %</b> de la
                     population de votre territoire est constitué de personnes
                     âgées de plus de 80 ans (soit{' '}
                     <b>
-                      {sumProperty(
+                      {numberWithSpacesRegex(sumProperty(
                         grandAgeIsolementTerritoire,
                         'over_80_sum_2020'
-                      )}
+                      ))}
                     </b>{' '}
                     personnes).
                   </p>
                   {type === 'commune' || eptRegex.test(libelle) ? (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       Ce taux est de{' '}
-                      <b>{over_80_2020_percent_territoire_sup} %</b> dans votre
+                      <b>{numberWithSpacesRegex(over_80_2020_percent_territoire_sup)} %</b> dans votre
                       EPCI.
                     </p>
                   ) : type === 'epci' ? (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       Ce taux est de{' '}
-                      <b> {over_80_2020_percent_territoire_sup} %</b> dans votre
+                      <b> {numberWithSpacesRegex(over_80_2020_percent_territoire_sup)} %</b> dans votre
                       département.
                     </p>
                   ) : (

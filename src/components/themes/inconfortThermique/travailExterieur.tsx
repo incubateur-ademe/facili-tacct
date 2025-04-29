@@ -13,6 +13,7 @@ import { InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { travailExterieurTooltipText } from '@/lib/tooltipTexts';
 import { eptRegex } from '@/lib/utils/regex';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -138,9 +139,9 @@ export const TravailExterieur = (props: {
                           L’agriculture et la construction représentent une grande part
                           de postes en extérieur. La part cumulée des emplois de votre
                           territoire dans ces deux secteurs à risque est de
-                          <b> {travailExt?.toFixed(1)} %</b>, soit{' '}
+                          <b> {Round(travailExt, 1)} %</b>, soit{' '}
                           <b>
-                            {(sums.sumAgriculture + sums.sumConstruction).toFixed(0)}
+                            {Round((sums.sumAgriculture + sums.sumConstruction), 0)}
                           </b>{' '}
                           personnes.
                         </p>
