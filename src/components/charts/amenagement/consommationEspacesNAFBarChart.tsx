@@ -81,12 +81,12 @@ export const ConsommationEspacesNAFBarChart = (props: {
     });
 
     graphData.push({
-      Activité: act ? Round(act / 10000, 0) : 0,
-      Habitat: hab ? Round(hab / 10000, 0) : 0,
-      Mixte: mix ? Round(mix / 10000, 0) : 0,
-      Routes: rou ? Round(rou / 10000, 0) : 0,
-      Ferroviaire: fer ? Round(fer / 10000, 0) : 0,
-      Inconnu: inc ? Round(inc / 10000, 0) : 0,
+      Activité: act ? Number(Round(act / 10000, 0)) : 0,
+      Habitat: hab ? Number(Round(hab / 10000, 0)) : 0,
+      Mixte: mix ? Number(Round(mix / 10000, 0)) : 0,
+      Routes: rou ? Number(Round(rou / 10000, 0)) : 0,
+      Ferroviaire: fer ? Number(Round(fer / 10000, 0)) : 0,
+      Inconnu: inc ? Number(Round(inc / 10000, 0)) : 0,
       annee: year
     });
   });

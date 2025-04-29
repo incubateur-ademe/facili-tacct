@@ -62,7 +62,7 @@ export const ConsommationEspacesNAFMenagesBarChart = (props: {
     });
 
     graphData.push({
-      naf: act ? Round((act + hab + mix + inc + rou + fer) / 10000, 0) : 0,
+      naf: act ? Number(Round((act + hab + mix + inc + rou + fer) / 10000, 0)) : 0,
       nombreMenages: men ?? 0,
       annee: year
     });

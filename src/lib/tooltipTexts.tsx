@@ -179,11 +179,6 @@ export const etatCoursDeauTooltipTextEau = (
         micropolluants, de nutriments (eutrophisation), etc.
       </li>
     </ul>
-    <p>
-      Attention, le bon état écologique d’une rivière ne signifie pas une
-      qualité sanitaire suffisante pour s’y baigner.
-    </p>
-    <br></br>
   </div>
 );
 

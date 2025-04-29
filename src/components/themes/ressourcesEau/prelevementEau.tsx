@@ -8,6 +8,7 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { Patch4, RessourcesEauNew } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { prelevementEauTooltipText } from '@/lib/tooltipTexts';
+import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
@@ -77,10 +78,7 @@ export const PrelevementEau = (props: {
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
-  const volumePreleveTerritoire = Round(
-    SumFiltered(ressourcesEau, code, libelle, type, 'total') / 1000000,
-    3
-  );
+  const volumePreleveTerritoire = (SumFiltered(ressourcesEau, code, libelle, type, 'total') / 1000000).toFixed(3);
   const dataParMaille = type === 'epci'
     ? ressourcesEau.filter((obj) => obj.epci === code)
     : type === 'commune'
@@ -119,8 +117,8 @@ export const PrelevementEau = (props: {
                   <div className={styles.explicationWrapper}>
                     <p>
                       Le volume total des prélèvements en eau de votre territoire en
-                      2020 est de <b>{volumePreleveTerritoire} Mm3</b>, soit l’équivalent
-                      de <b>{Round((1000000 * volumePreleveTerritoire) / 3750, 0)}</b>{' '}
+                      2020 est de <b>{numberWithSpacesRegex(volumePreleveTerritoire)} Mm3</b>, soit l’équivalent
+                      de <b>{Round((1000000 * Number(volumePreleveTerritoire)) / 3750, 0)}</b>{' '}
                       piscines olympiques.
                     </p>
                     <div className={styles.patch4Wrapper}>
