@@ -154,7 +154,7 @@ export const PrelevementEau = (props: {
                       (dénitrification, élimination des micropolluants, etc.).
                     </p>
                     <p>
-                      ⇒ Lors de la sécheresse 2022, 2000 communes ont été en tension
+                      ⇒ Lors de la sécheresse 2022, 2 000 communes ont été en tension
                       sur l’eau potable.
                     </p>
                     <p>
