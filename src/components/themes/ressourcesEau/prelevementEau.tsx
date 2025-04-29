@@ -5,7 +5,7 @@ import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
-import { Patch4, RessourcesEauNew } from '@/lib/postgres/models';
+import { Patch4, RessourcesEau } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { prelevementEauTooltipText } from '@/lib/tooltipTexts';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
@@ -31,7 +31,7 @@ type Years = "A2008"
   | "A2020";
 
 const SumFiltered = (
-  data: RessourcesEauNew[],
+  data: RessourcesEau[],
   code: string,
   libelle: string,
   type: string,
@@ -67,7 +67,7 @@ export const PrelevementEau = (props: {
     risque: string;
     titre: string;
   }>;
-  ressourcesEau: RessourcesEauNew[];
+  ressourcesEau: RessourcesEau[];
 }) => {
   
   const { ressourcesEau } = props;

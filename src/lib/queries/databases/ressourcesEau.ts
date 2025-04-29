@@ -1,6 +1,6 @@
 'use server';
 
-import { QualiteSitesBaignade, RessourcesEauNew } from '@/lib/postgres/models';
+import { QualiteSitesBaignade, RessourcesEau } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
 import { PrismaClient as PostgresClient } from '../../../generated/client';
@@ -11,7 +11,7 @@ export const GetRessourceEau = async (
   code: string,
   libelle: string,
   type: string
-): Promise<RessourcesEauNew[]> => {
+): Promise<RessourcesEau[]> => {
   try {
     if (type === "commune") {
       console.time('Query Execution Time RESSOURCES EAUX');

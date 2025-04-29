@@ -102,31 +102,6 @@ export type ArreteCatNat = {
 
 
 export type RessourcesEau = {
-  LIBELLE_SOUS_CHAMP: string | null;
-  SOUS_CHAMP: string | null;
-  code_geographique: string;
-  departement: string | null;
-  epci: string | null;
-  index: bigint | null;
-  libelle_epci: string | null;
-  libelle_geographique: string | null;
-  region: number | null;
-  A2008: number | null;
-  A2009: number | null;
-  A2010: number | null;
-  A2011: number | null;
-  A2012: number | null;
-  A2013: number | null;
-  A2014: number | null;
-  A2015: number | null;
-  A2016: number | null;
-  A2017: number | null;
-  A2018: number | null;
-  A2019: number | null;
-  A2020: number | null;
-};
-
-export type RessourcesEauNew = {
   LIBELLE_SOUS_CHAMP: string;
   SOUS_CHAMP: string;
   code_geographique: string;
