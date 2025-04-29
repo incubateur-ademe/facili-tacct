@@ -1,6 +1,6 @@
 export const config = {
   host: process.env.NEXT_PUBLIC_SITE_URL!,
-  // name: 'Facili-TACCT',
+  name: 'Facili-TACCT',
   tagline: '',
   env: (process.env.TACCT_ENV || 'dev') as 'dev' | 'prod' | 'staging',
   // appVersion: process.env.NEXT_PUBLIC_APP_VERSION!,
