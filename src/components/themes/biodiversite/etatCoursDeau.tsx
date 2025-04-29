@@ -145,7 +145,7 @@ const EtatQualiteCoursDeau = (props: {
                       className={styles.biodiversiteGraphTitleWrapper}
                       style={{ padding: '1rem' }}
                     >
-                      <h2>État écologique des cours d’eau</h2>
+                      <h2>État écologique des cours d’eau et des plans d’eau</h2>
                     </div>
                     <div>
                       <MapEtatCoursDeau
