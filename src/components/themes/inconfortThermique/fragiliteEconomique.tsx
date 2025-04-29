@@ -12,6 +12,7 @@ import { CarteCommunes, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { fragiliteEconomiqueTooltipText } from '@/lib/tooltipTexts';
 import { eptRegex } from '@/lib/utils/regex';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './themes.module.scss';
@@ -79,13 +80,13 @@ export const FragiliteEconomique = ({
                   <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                     La part des ménages en situation de précarité énergétique
                     liée au logement sur votre territoire est de{' '}
-                    <b>{(100 * precariteLogTerritoire).toPrecision(3)} %. </b>
+                    <b>{Round((100 * precariteLogTerritoire), 1)} %. </b>
                   </p>
                   {type === 'commune' || eptRegex.test(libelle) ? (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       Ce taux est de{' '}
                       <b>
-                        {(100 * precariteLogTerritoireSup).toPrecision(3)} %
+                        {Round((100 * precariteLogTerritoireSup), 1)} %
                       </b>{' '}
                       dans votre EPCI.
                     </p>

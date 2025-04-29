@@ -12,6 +12,7 @@ import { CarteCommunes, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { densiteBatiTooltipText } from '@/lib/tooltipTexts';
 import { eptRegex } from '@/lib/utils/regex';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './themes.module.scss';
@@ -66,13 +67,13 @@ export const DensiteBati = ({
     <>
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
-          {carteTerritoire.length ? (
+          {carteTerritoire.length && densiteTerritoire ? (
             <>
               <div className="w-2/5">
                 <div className={styles.explicationWrapper}>
                   <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                     Sur votre territoire, la densité moyenne du bâtiment est de
-                    <b> {densiteTerritoire?.toFixed(2)}. </b>
+                    <b> {Round(densiteTerritoire, 2)}. </b>
                   </p>
                   {type === "commune" || eptRegex.test(libelle) ? (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
