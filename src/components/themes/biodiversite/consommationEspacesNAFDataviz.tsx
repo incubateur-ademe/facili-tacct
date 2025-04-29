@@ -16,7 +16,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
         className={styles.biodiversiteGraphTitleWrapper}
         style={{ padding: '1rem' }}
       >
-        <h2>Artificialisation des sols entre 2009 et 2023</h2>
+        <h2>Sols imperméabilisés entre 2009 et 2023</h2>
       </div>
       <>
         <MapEspacesNaf carteCommunes={carteCommunes} />

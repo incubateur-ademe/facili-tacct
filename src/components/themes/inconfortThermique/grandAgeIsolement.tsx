@@ -253,8 +253,7 @@ export const GrandAgeIsolement = (props: {
                 <div className={styles.graphWrapper}>
                   <p style={{ padding: '1em', margin: '0' }}>
                     <b>
-                      Évolution de la part de population de plus de 80 ans
-                      depuis 1968
+                      Évolution de la part des 80 ans et plus dans la population
                     </b>
                   </p>
                   {yData.over_80_2020_percent ? (

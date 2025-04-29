@@ -150,8 +150,7 @@ export const FragiliteEconomique = ({
                 <div className={styles.graphWrapper}>
                   <p style={{ padding: '1em', margin: '0' }}>
                     <b>
-                      Répartition de la précarité énergétique liée au logement
-                      par commune au sein de l'EPCI
+                      Part des ménages en précarité énergétique liée au logement
                     </b>
                   </p>
                   <Map data={'precarite_log'} carteCommunes={carteTerritoire} />

@@ -165,7 +165,7 @@ export const AgeBati = (props: {
               <div className="w-3/5">
                 <div className={styles.graphWrapper}>
                   <p style={{ padding: '1em', margin: '0' }}>
-                    <b>Périodes de construction des bâtiments</b>
+                    <b>Part des résidence principales par période de construction</b>
                   </p>
                   {chartData ? <BarChart chartData={chartData} /> : <Loader />}
                   <p style={{ padding: '1em', margin: '0' }}>Source : INSEE</p>

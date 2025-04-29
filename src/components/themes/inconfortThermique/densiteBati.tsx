@@ -114,8 +114,7 @@ export const DensiteBati = ({
                 <div className={styles.graphWrapper}>
                   <p style={{ padding: '1em', margin: '0' }}>
                     <b>
-                      Répartition de la densité du bâti par commune au sein de
-                      l'EPCI
+                      Densité du bâti par commune
                     </b>
                   </p>
                   <Map data={'densite_bati'} carteCommunes={carteTerritoire} />

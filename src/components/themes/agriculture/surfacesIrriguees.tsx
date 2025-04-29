@@ -102,8 +102,7 @@ export const SurfacesIrriguees = ({
                 <div className={styles.graphWrapper}>
                   <p style={{ padding: '1em', margin: '0' }}>
                     <b>
-                      Part de la superficie irriguée dans la superficie agricole
-                      utilisée (SAU) en 2020 (%)
+                      Part de la surface agricole irriguée dans la SAU en 2020
                     </b>
                   </p>
                   <MapSurfacesIrriguees carteCommunes={communesMap} />
