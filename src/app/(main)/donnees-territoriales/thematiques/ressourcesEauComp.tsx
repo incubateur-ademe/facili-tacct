@@ -6,7 +6,7 @@ import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   CarteCommunes,
   EtatCoursDeau,
-  RessourcesEauNew
+  RessourcesEau
 } from '@/lib/postgres/models';
 import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
 import { fr } from '@codegouvfr/react-dsfr';
@@ -26,7 +26,7 @@ interface Props {
     risque: string;
     titre: string;
   }>;
-  ressourcesEau: RessourcesEauNew[];
+  ressourcesEau: RessourcesEau[];
   carteCommunes: CarteCommunes[];
 }
 const DynamicCoursDeau = dynamic(

@@ -81,12 +81,12 @@ export const ConsommationEspacesNAFBarChart = (props: {
     });
 
     graphData.push({
-      Activité: act ? Number(Round(act / 10000, 0)) : 0,
-      Habitat: hab ? Number(Round(hab / 10000, 0)) : 0,
-      Mixte: mix ? Number(Round(mix / 10000, 0)) : 0,
-      Routes: rou ? Number(Round(rou / 10000, 0)) : 0,
-      Ferroviaire: fer ? Number(Round(fer / 10000, 0)) : 0,
-      Inconnu: inc ? Number(Round(inc / 10000, 0)) : 0,
+      Activité: act ? Number((act / 10000)) : 0,
+      Habitat: hab ? Number((hab / 10000)) : 0,
+      Mixte: mix ? Number((mix / 10000)) : 0,
+      Routes: rou ? Number((rou / 10000)) : 0,
+      Ferroviaire: fer ? Number((fer / 10000)) : 0,
+      Inconnu: inc ? Number((inc / 10000)) : 0,
       annee: year
     });
   });
@@ -114,7 +114,7 @@ export const ConsommationEspacesNAFBarChart = (props: {
                 <p>{el.titre}</p>
               </div>
               <div className={styles.value}>
-                <p>{Round(Number(el.value), 0)} ha</p>
+                <p>{Round(Number(el.value), 1)} ha</p>
               </div>
             </div>
           );
