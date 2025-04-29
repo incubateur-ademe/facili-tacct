@@ -2,6 +2,7 @@
 
 import { Loader } from '@/components/loader';
 import useWindowDimensions from '@/hooks/windowDimensions';
+import Notice from '@codegouvfr/react-dsfr/Notice';
 import Image from 'next/image';
 import { lazy, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
@@ -34,24 +35,13 @@ const Home = () => {
     <div className={css({
       margin: '0 0 3em',
     })}>
-      {/* <Notice
+      <Notice
         className='notice'
-        description=""
         isClosable={true}
         onClose={() => setNoticeClosed(true)}
-        title={
-          <>
-            <span>
-              Facili-TACCT intègre un nouveau jeu de données créé par Météo-France. Il vise à montrer comment cinq aléas
-              climatiques (fortes chaleurs, fortes pluies, sécheresse des sols, feux de forêt et niveaux marins) vont évoluer entre 2050 et 2100.
-            </span>
-            <br></br><br></br>
-            <span>
-              Retrouvez également de nouveaux indicateurs : “Surfaces irriguées” (et sa thématique Agriculture) et “Feux de forêt”.
-            </span>
-          </>
-        }
-      /> */}
+        title={"Nouveauté !"}
+        description="Facili-TACCT vous propose désormais 4 types de territoires supplémentaires : les PETR (Pôle d’équilibre territorial et rural), les PNR (Parc naturel régional), les EPT (Établissement public territorial) et les Départements."
+      />
       <div className={styles.wrapper}>
         <Container size="xl">
           <div className={styles.titles}>
@@ -67,12 +57,12 @@ const Home = () => {
         </Container>
       </div>
       {
-        window.width ? <CollectiviteSearch /> 
-        : <div 
+        window.width ? <CollectiviteSearch />
+          : <div
             className={styles.collectiviteWrapper}
-            style={{height: "218px", top: "415px"}} //rm top paramètre si la notice est active
+            style={{ height: "218px", top: "495px" }} //REPLACE update top paramètre si la notice est modifiée
           >
-            <Loader/>
+            <Loader />
           </div>
       }
       <div className={styles.cardBackground}>

@@ -49,7 +49,7 @@
     position: absolute;
     width: 51dvw;
     max-width: 53em;
-    left: calc(50dvw - 23dvw);
+    left: calc(50dvw - 26dvw);
     top: var(--height-notice);
     display: flex;
     flex-direction: column;
@@ -169,7 +169,7 @@
     .collectiviteWrapper {
         width: 90dvw;
         max-width: none;
-        left: calc(50dvw - 45dvw);
+        left: calc(50dvw - 46dvw);
         // top: var(--height-notice) + 6em;
     }
 }
