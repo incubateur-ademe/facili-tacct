@@ -169,13 +169,12 @@ export const Catnat = (props: {
                   </div>
                   <div className="px-4">
                     <p>
-                      Chaque hausse de 0,5 °C de la température mondiale est
-                      susceptible d’augmenter l'intensité et/ou la fréquence des
-                      phénomènes extrêmes. Entre 1900 et début 2022, la France
-                      métropolitaine a concentré 14 % des événements naturels très
-                      graves recensés en Europe, en particulier des inondations et des
-                      cyclones/tempêtes. Avec l’Italie, elle figure parmi les pays les
-                      plus touchés, loin devant les autres pays européens.
+                      Les phénomènes extrêmes s'intensifient. Leur fréquence augmente
+                      à chaque hausse de 0,5°C de la température mondiale. La France
+                      est particulièrement exposée : depuis 1900, elle a subi 14 % des
+                      catastrophes naturelles majeures en Europe. Inondations, cyclones
+                      et tempêtes y sont les plus dévastateurs. La France et l'Italie
+                      sont les pays européens les plus touchés, loin devant les autres.
                     </p>
                     <p>
                       ⇒ 257 500, c’est le nombre d'arrêtés liés aux événements

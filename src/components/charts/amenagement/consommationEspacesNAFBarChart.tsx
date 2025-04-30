@@ -100,7 +100,6 @@ export const ConsommationEspacesNAFBarChart = (props: {
           ?.couleur
       };
     });
-
     return (
       <div className={styles.tooltipEvolutionWrapper}>
         {dataArray.slice(0, -1).map((el, i) => {
@@ -123,20 +122,38 @@ export const ConsommationEspacesNAFBarChart = (props: {
     );
   };
 
+  // Sum all numeric values in all objects of graphData (excluding "annee")
+  const sumAllValues = graphData.reduce((total, obj) => {
+    const { annee, ...numericValues } = obj;
+    return total + Object.values(numericValues).reduce((sum, val) => sum + val, 0);
+  }, 0);
+
   return (
     <div
       style={{ height: '500px', minWidth: '450px', backgroundColor: 'white' }}
     >
-      <NivoBarChart
-        colors={espacesNAFBarChartLegend.map((e) => e.couleur)}
-        graphData={graphData}
-        keys={Object.keys(graphData[0]).slice(0, -1)}
-        indexBy="annee"
-        axisLeftLegend="Surface en ha"
-        axisBottomLegend="Années"
-        showLegend={false}
-        tooltip={CustomTooltip}
-      />
+      {
+        sumAllValues !== 0 ?
+          <NivoBarChart
+            colors={espacesNAFBarChartLegend.map((e) => e.couleur)}
+            graphData={graphData}
+            keys={Object.keys(graphData[0]).slice(0, -1)}
+            indexBy="annee"
+            axisLeftLegend="Surface en ha"
+            axisBottomLegend="Années"
+            showLegend={false}
+            tooltip={CustomTooltip}
+          />
+          : <div
+            style={{
+              height: 'inherit',
+              alignContent: 'center',
+              textAlign: 'center'
+            }}
+          >
+            <p>Aucune donnée disponible avec ces filtres</p>
+          </div>
+      }
     </div>
   );
 };
