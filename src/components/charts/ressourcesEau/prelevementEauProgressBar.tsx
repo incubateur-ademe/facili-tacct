@@ -8,6 +8,7 @@ import usine_icon_black from '@/assets/icons/themes/usine_icon_black.svg';
 import vagues_icon_black from '@/assets/icons/themes/vagues_icon_black.svg';
 import GraphNotFound from '@/assets/images/data_not_found_prelevement.svg';
 import legendEpci from '@/assets/images/legend_prelevement_eau_epci.svg';
+import DataNotFound from '@/components/graphDataNotFound';
 import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
 import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
 import { RessourcesEau } from '@/lib/postgres/models';
@@ -35,14 +36,14 @@ const SumFiltered = (
     ? "libelle_petr"
     : "ept"
 
-    return Sum(
-      data
-        .filter((obj) => columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
-        )
-        .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(champ))
-        .map((e) => e.A2020)
-        .filter((value): value is number => value !== null)
-    );
+  return Sum(
+    data
+      .filter((obj) => columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
+      )
+      .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(champ))
+      .map((e) => e.A2020)
+      .filter((value): value is number => value !== null)
+  );
 };
 
 const TotalSum = (
@@ -179,10 +180,10 @@ const PrelevementEauProgressBars = ({
                     {
                       type !== 'departement' && (
                         <p>
-                        Département ({departement}) :{' '}
-                        <b>{((100 * item.sumDptmt) / totalDptmt).toFixed(2)} %</b>{' '}
-                        ({(item.sumDptmt / 1000000).toFixed(2)} Mm³)
-                      </p>
+                          Département ({departement}) :{' '}
+                          <b>{((100 * item.sumDptmt) / totalDptmt).toFixed(2)} %</b>{' '}
+                          ({(item.sumDptmt / 1000000).toFixed(2)} Mm³)
+                        </p>
                       )
                     }
                   </div>
@@ -231,22 +232,7 @@ const PrelevementEauProgressBars = ({
           <Image src={legendEpci} alt="" style={{ alignSelf: 'end' }} />
         </>
       ) : (
-        <div
-          style={{
-            height: 'inherit',
-            alignContent: 'center',
-            textAlign: 'center'
-          }}
-          key="noData"
-        >
-          <Image
-            src={GraphNotFound}
-            alt=""
-            width={0}
-            height={0}
-            style={{ width: '90%', height: 'auto' }}
-          />
-        </div>
+        <DataNotFound image={GraphNotFound} />
       )}
     </div>
   );

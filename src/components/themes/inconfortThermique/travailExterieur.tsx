@@ -2,7 +2,6 @@
 
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import { PieChart1 } from '@/components/charts/inconfortThermique/pieChartTravailExt';
-import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
@@ -17,6 +16,7 @@ import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { TravailExterieurText } from './staticTexts';
 import styles from './themes.module.scss';
 
 const sumProperty = (
@@ -127,109 +127,56 @@ export const TravailExterieur = (props: {
   return (
     <>
       {
-        !isLoadingPatch4 ?
-          <>
-            {
-              inconfortThermique.length && travailExt ? (
-                <div className={styles.container}>
-                  <div className="w-2/5">
-                    {sums.sumConstruction || sums.sumAgriculture ? (
-                      <div className={styles.explicationWrapper}>
-                        <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                          L’agriculture et la construction représentent une grande part
-                          de postes en extérieur. La part cumulée des emplois de votre
-                          territoire dans ces deux secteurs à risque est de
-                          <b> {Round(travailExt, 1)} %</b>, soit{' '}
-                          <b>
-                            {Round((sums.sumAgriculture + sums.sumConstruction), 0)}
-                          </b>{' '}
-                          personnes.
-                        </p>
-                        <div className={styles.patch4Wrapper}>
-                          {fortesChaleurs === 'Intensité très forte' ||
-                            fortesChaleurs === 'Intensité forte' ? (
-                            <div>
-                              <TagItem
-                                icon={fortesChaleursIcon}
-                                indice="Fortes chaleurs"
-                                tag={fortesChaleurs}
-                              />
-                            </div>
-                          ) : null}
-                        </div>
-                        <CustomTooltip title={travailExterieurTooltipText} />
-                      </div>
-                    ) : (
-                      ''
-                    )}
-                    <div className="px-4">
-                      <p>
-                        <b>La chaleur tue.</b> En 2022 et 2023, 18 travailleurs sont morts
-                        en France à cause des fortes températures. Ces décès touchent
-                        tous les âges, de 19 à 70 ans, principalement dans les secteurs
-                        de la construction et des travaux publics. La moitié de ces accidents
-                        sont survenus hors des périodes de vigilance canicule. La chaleur
-                        reste un danger constant pour les travailleurs en extérieur. Plus
-                        le travail est physique, plus le risque est élevé.
-                      </p>
-                      <p>
-                        Le changement climatique amplifie ces risques, avec des vagues de
-                        chaleur de plus en plus fréquentes et intenses. Les impacts de la
-                        chaleur sur la santé et l’économie restent sous-estimés. Pourtant,
-                        les projections sont inquiétantes : sans adaptation, le travail en
-                        extérieur pourrait perdre 5 à 10% de productivité d’ici 2100 (étude
-                        Joint Research Center, scénario TRACC). Cette baisse menacerait
-                        directement l’économie des territoires.
-                      </p>
-                      <p>
-                        ⇒ Un tiers des décès liés à la chaleur concerne des personnes de
-                        moins de 75 ans. La chaleur touche une grande partie de la
-                        population, pas seulement les plus âgés !
-                      </p>
-                      <p>
-                        ⇒ Près de 20 000 passages aux urgences liés à la chaleur entre
-                        juin et septembre 2023. Entre 2015 et 2019, le
-                        recours aux soins en excès a couté 31 millions d’euros.
-                      </p>
-                      <p>
-                        ⇒ En 2019, 64 conducteurs de bus ont exercé
-                        leur droit de retrait en raison de la chaleur excessive dans
-                        leurs véhicules.
-                      </p>
-                      <p>
-                        - - - - <br></br>
-                        Plan National d’Adaptation au Changement Climatique (PNACC 3) :
-                      </p>
-                      <ul>
-                        <p>
-                          <li>
-                            Adapter les conditions de travail au changement climatique en renforçant les obligations de prévention des employeurs (mesure 11)
-                          </li>
-                        </p>
-                      </ul>
+        !isLoadingPatch4 ? (
+          <div className={styles.container}>
+            <div className="w-2/5">
+              <div className={styles.explicationWrapper}>
+                {
+                  sums.sumConstruction || sums.sumAgriculture ?
+                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                      L’agriculture et la construction représentent une grande part
+                      de postes en extérieur. La part cumulée des emplois de votre
+                      territoire dans ces deux secteurs à risque est de
+                      <b> {Round(travailExt, 1)} %</b>, soit{' '}
+                      <b>
+                        {Round((sums.sumAgriculture + sums.sumConstruction), 0)}
+                      </b>{' '}
+                      personnes.
+                    </p>
+                    : ""
+                }
+                <div className={styles.patch4Wrapper}>
+                  {fortesChaleurs === 'Intensité très forte' ||
+                    fortesChaleurs === 'Intensité forte' ? (
+                    <div>
+                      <TagItem
+                        icon={fortesChaleursIcon}
+                        indice="Fortes chaleurs"
+                        tag={fortesChaleurs}
+                      />
                     </div>
-                  </div>
-                  <div className="w-3/5">
-                    <div className={styles.graphWrapper}>
-                      <p style={{ padding: '1em', margin: '0' }}>
-                        <b>
-                          Part des emplois par grands secteurs d’activité
-                        </b>
-                      </p>
-                      {graphData ? <PieChart1 graphData={graphData} /> : <Loader />}
-                      <p style={{ padding: '1em', margin: '0' }}>
-                        Source : INSEE, Emplois au lieu de travail par sexe, secteur
-                        d'activité économique et catégorie socioprofessionnelle, 2021
-                      </p>
-                    </div>
-                  </div>
+                  ) : null}
                 </div>
-              ) : (
-                <GraphDataNotFound code={code} libelle={libelle} />
-              )
-            }
-          </>
-          : <Loader />
+                <CustomTooltip title={travailExterieurTooltipText} />
+              </div>
+              <TravailExterieurText />
+            </div>
+            <div className="w-3/5">
+              <div className={styles.graphWrapper}>
+                <p style={{ padding: '1em', margin: '0' }}>
+                  <b>
+                    Part des emplois par grands secteurs d’activité
+                  </b>
+                </p>
+                {graphData ? <PieChart1 graphData={graphData} /> : <Loader />}
+                <p style={{ padding: '1em', margin: '0' }}>
+                  Source : INSEE, Emplois au lieu de travail par sexe, secteur
+                  d'activité économique et catégorie socioprofessionnelle, 2021
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : <Loader />
       }
     </>
   );
