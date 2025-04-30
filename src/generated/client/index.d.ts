@@ -451,8 +451,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.6.0
-   * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
+   * Prisma Client JS version: 6.7.0
+   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
    */
   export type PrismaVersion = {
     client: string
@@ -27150,16 +27150,16 @@ export namespace Prisma {
 
   export type usersWhereUniqueInput = Prisma.AtLeast<{
     pk?: number
-    email?: string
-    username?: string
     AND?: usersWhereInput | usersWhereInput[]
     OR?: usersWhereInput[]
     NOT?: usersWhereInput | usersWhereInput[]
+    email?: StringFilter<"users"> | string
+    username?: StringFilter<"users"> | string
     password?: StringFilter<"users"> | string
     created_at?: DateTimeFilter<"users"> | Date | string
     last_connection?: DateTimeNullableFilter<"users"> | Date | string | null
     role?: StringFilter<"users"> | string
-  }, "pk" | "email" | "username">
+  }, "pk">
 
   export type usersOrderByWithAggregationInput = {
     pk?: SortOrder
@@ -30006,6 +30006,7 @@ export namespace Prisma {
   }
 
   export type usersCreateInput = {
+    pk: number
     email: string
     username: string
     password: string
@@ -30015,7 +30016,7 @@ export namespace Prisma {
   }
 
   export type usersUncheckedCreateInput = {
-    pk?: number
+    pk: number
     email: string
     username: string
     password: string
@@ -30025,6 +30026,7 @@ export namespace Prisma {
   }
 
   export type usersUpdateInput = {
+    pk?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -30044,7 +30046,7 @@ export namespace Prisma {
   }
 
   export type usersCreateManyInput = {
-    pk?: number
+    pk: number
     email: string
     username: string
     password: string
@@ -30054,6 +30056,7 @@ export namespace Prisma {
   }
 
   export type usersUpdateManyMutationInput = {
+    pk?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string

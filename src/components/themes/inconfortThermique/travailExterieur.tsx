@@ -164,27 +164,22 @@ export const TravailExterieur = (props: {
                     )}
                     <div className="px-4">
                       <p>
-                        <b>La chaleur tue.</b> En 2022 et 2023,{' '}
-                        <b>18 accidents mortels liés à la chaleur</b> ont été signalés
-                        par la Direction Générale du Travail. Ces accidents ont touché
-                        des hommes âgés de 19 à 70 ans, et ont concerné principalement
-                        des travailleurs dans les secteurs de la construction et des
-                        travaux. La moitié de ces accidents sont survenus{' '}
-                        <b>hors des périodes de vigilance canicule. </b>
-                        La chaleur reste un danger constant pour les travailleurs en
-                        extérieur. Plus le travail est physique, plus le risque est
-                        élevé.
+                        <b>La chaleur tue.</b> En 2022 et 2023, 18 travailleurs sont morts
+                        en France à cause des fortes températures. Ces décès touchent
+                        tous les âges, de 19 à 70 ans, principalement dans les secteurs
+                        de la construction et des travaux publics. La moitié de ces accidents
+                        sont survenus hors des périodes de vigilance canicule. La chaleur
+                        reste un danger constant pour les travailleurs en extérieur. Plus
+                        le travail est physique, plus le risque est élevé.
                       </p>
                       <p>
-                        La sous-estimation des impacts sanitaires des fortes chaleurs,
-                        ainsi que la méconnaissance des répercussions socioéconomiques,
-                        sont des freins à la mise en place d’actions en matière
-                        d’adaptation pertinentes. Selon une étude du Joint Research
-                        Center, avec un scénario pessimiste d’émissions de gaz à effet
-                        de serre, proche de la trajectoire de réchauffement de référence
-                        (TRACC) de la France et sans mesure d’adaptation, la
-                        productivité du travail à l’extérieur pourrait diminuer de 5 à
-                        10 % d’ici la fin du siècle.
+                        Le changement climatique amplifie ces risques, avec des vagues de
+                        chaleur de plus en plus fréquentes et intenses. Les impacts de la
+                        chaleur sur la santé et l’économie restent sous-estimés. Pourtant,
+                        les projections sont inquiétantes : sans adaptation, le travail en
+                        extérieur pourrait perdre 5 à 10% de productivité d’ici 2100 (étude
+                        Joint Research Center, scénario TRACC). Cette baisse menacerait
+                        directement l’économie des territoires.
                       </p>
                       <p>
                         ⇒ Un tiers des décès liés à la chaleur concerne des personnes de
@@ -192,20 +187,26 @@ export const TravailExterieur = (props: {
                         population, pas seulement les plus âgés !
                       </p>
                       <p>
-                        ⇒ Près de 20 000 passages aux urgences causés par les fortes
-                        chaleurs entre juin et septembre 2023. Entre 2015 et 2019, le
+                        ⇒ Près de 20 000 passages aux urgences liés à la chaleur entre
+                        juin et septembre 2023. Entre 2015 et 2019, le
                         recours aux soins en excès a couté 31 millions d’euros.
                       </p>
                       <p>
-                        ⇒ En 2019, 64 conducteurs de bus d’une même métropole ont exercé
+                        ⇒ En 2019, 64 conducteurs de bus ont exercé
                         leur droit de retrait en raison de la chaleur excessive dans
                         leurs véhicules.
                       </p>
                       <p>
                         - - - - <br></br>
-                        La prévention des risques liés à la chaleur est la mesure 11 du
-                        Plan National d'adaptation au changement climatique (PNACC 3).
+                        Plan National d’Adaptation au Changement Climatique (PNACC 3) :
                       </p>
+                      <ul>
+                        <p>
+                          <li>
+                            Adapter les conditions de travail au changement climatique en renforçant les obligations de prévention des employeurs (mesure 11)
+                          </li>
+                        </p>
+                      </ul>
                     </div>
                   </div>
                   <div className="w-3/5">

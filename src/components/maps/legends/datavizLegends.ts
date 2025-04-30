@@ -61,27 +61,27 @@ export const etatCoursDeauLegends = [
 
 export const aot40Legends = [
   {
-    value: '> 36 000',
+    value: '> 36 000 µg/m³',
     color: '#5524A0'
   },
   {
-    value: '36 000 - 27 000',
+    value: '36 000 - 27 000 µg/m³',
     color: '#E8323B'
   },
   {
-    value: '27 000 - 18 000',
+    value: '27 000 - 18 000 µg/m³',
     color: '#FFCF5E'
   },
   {
-    value: '18 000 - 12 000',
+    value: '18 000 - 12 000 µg/m³',
     color: '#3E8F3E'
   },
   {
-    value: '12 000 - 6 000',
+    value: '12 000 - 6 000 µg/m³',
     color: '#009ADC'
   },
   {
-    value: '< 6 000',
+    value: '< 6 000 µg/m³',
     color: '#5EEDF3'
   }
 ];
