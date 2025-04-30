@@ -117,33 +117,40 @@ export const FragiliteEconomique = ({
                     l’été.
                   </p>
                   <p>
-                    Leurs conditions de vie sont directement impactées, avec des
-                    conséquences sur leur santé, leur bien-être et leur capacité
-                    à maintenir une qualité de vie décente. La précarité
-                    énergétique n'est pas seulement une question de confort :
+                    Leurs conditions de vie et leur santé se dégradent. Le
+                    changement climatique amplifie ces inégalités, avec des
+                    vagues de chaleur de plus en plus fréquentes et intenses.
+                    Dans un logement mal isolé, se protéger de la chaleur est
+                    un défi impossible pour les ménages les plus précaires. La
+                    précarité énergétique n'est pas qu’une question de confort :
                     elle est un enjeu de santé publique et de justice sociale.
                   </p>
                   <p>
-                    En 2024 : <br></br>- <b>55 %</b> des Français déclarent
-                    avoir souffert d’un excès de chaleur en été.<br></br>-{' '}
-                    <b>79 %</b> des Français ont dû restreindre leur chauffage.
-                    <br></br>
-                    <br></br>
-                    En 2023 : <br></br>- plus d’un million de ménages ont subi
+                    ⇒ En 2024, <b>55 %</b> des Français déclarent
+                    avoir souffert d’un excès de chaleur en été.
+                  </p>
+                  <p>
+                    ⇒ <b>79 %</b> des Français ont dû restreindre leur chauffage.
+                  </p>
+                  <p>
+                    ⇒ En 2023, plus d’un million de ménages ont subi
                     une intervention de leur fournisseur d’énergie pour cause
-                    d'impayés, une situation qui les expose à une précarité
-                    encore plus grande.
+                    d'impayés, aggravant leur précarité.
                   </p>
                   <p>
                     - - - - <br></br>
-                    Adapter les logements au risque de forte chaleur est la
-                    mesure 9 du Plan national d’adaptation au changement
-                    climatique (PNACC 3).
+                    Plan national d'adaptation au changement climatique (PNACC 3) :
                   </p>
-                  <p>
-                    Protéger les populations précaires des fortes chaleurs est
-                    la mesure n°14 du PNACC 3.
-                  </p>
+                  <ul>
+                    <p>
+                      <li>
+                        Adapter les logements au risque de forte chaleur (mesure 9)
+                      </li>
+                      <li>
+                        Protéger les populations précaires des fortes chaleurs (mesure 14)
+                      </li>
+                    </p>
+                  </ul>
                 </div>
               </div>
               <div className="w-3/5">

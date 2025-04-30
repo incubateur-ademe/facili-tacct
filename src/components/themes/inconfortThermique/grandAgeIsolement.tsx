@@ -208,13 +208,17 @@ export const GrandAgeIsolement = (props: {
                 <div className="px-4">
                   <p>
                     Les personnes âgées représentent les deux tiers de la
-                    surmortalité en période de fortes chaleurs.
-                    <br></br>Le corps des personnes âgées régule moins bien la
-                    température, ce qui les rend plus sensibles aux fortes
-                    chaleurs. Elles ressentent également moins la soif, ce qui
-                    augmente les risques de déshydratation. S'ajoutent souvent
-                    des problèmes de santé chroniques, comme les maladies
-                    cardiovasculaires ou respiratoires, aggravés par la chaleur.
+                    surmortalité en période de fortes chaleurs. Leur corps
+                    régule moins bien la température, ce qui les rend plus vulnérables.
+                    Elles ressentent également moins la soif. Ces facteurs augmentent les risques de déshydratation.
+                    Les problèmes de santé chroniques, comme les maladies cardiovasculaires
+                    ou respiratoires, aggravent leur sensibilité aux températures élevées.
+                  </p>
+                  <p>
+                    Le changement climatique intensifie les vagues de chaleur. La précarité
+                    énergétique, l’isolement social et les logements inadaptés renforcent
+                    l’inconfort thermique. Ces facteurs se cumulent souvent chez les personnes
+                    âgées. Plus elles sont exposées à la chaleur, plus elles deviennent vulnérables.
                   </p>
                   <p>
                     Cette vulnérabilité est exacerbée par plusieurs facteurs :
@@ -231,21 +235,19 @@ export const GrandAgeIsolement = (props: {
                     75 ans et plus.
                   </p>
                   <p>
-                    ⇒ <b>28 % seulement des décès</b> liés à la chaleur se
-                    produisent pendant les canicules, qui ne représente que 6 %
+                    ⇒ Seuls <b>28 % des décès</b> liés à la chaleur se
+                    produisent pendant les canicules, qui ne représentent que 6 %
                     des jours de l’été. Soyons vigilants aussi en dehors des
                     périodes de canicule.
                   </p>
                   <p>
-                    ⇒Tous concernés : les personnes de moins de 75 ans, c’est
-                    71 % des consultations SOS Médecins en lien avec la chaleur
-                    entre le 1er juin et le 15 septembre 2022, et un tiers des
-                    décès liés à la chaleur entre 2014 et 2022.
+                    ⇒ Tous exposés : les moins de 75 ans représentent 71 %
+                    des consultations SOS Médecins liées à la chaleur (juin-septembre 2022)
+                    et un tiers des décès (2014-2022).
                   </p>
                   <p>
-                    ⇒ Seuls 12 % des Français se considèrent fragiles ou très
-                    fragiles pendant une canicule. La perception du risque
-                    personnel lié à la chaleur est faible.
+                    ⇒ Une prise de conscience insuffisante : seuls 12 % des Français se
+                    considèrent fragiles ou très fragiles pendant une canicule.
                   </p>
                 </div>
               </div>

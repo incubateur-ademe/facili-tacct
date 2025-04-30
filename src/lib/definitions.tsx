@@ -14,3 +14,9 @@ export const irrigable = (
     moins une fois dans l’année.
   </span>
 );
+
+export const PNACC = (
+  <span>
+    Plan National d’Adaptation du Changement Climatique.
+  </span>
+);
