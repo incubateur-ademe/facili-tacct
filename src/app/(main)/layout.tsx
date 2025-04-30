@@ -16,10 +16,10 @@ const footerId = 'footer';
 export const metadata: Metadata = {
   metadataBase: new URL(config.host),
   ...sharedMetadata,
-  title: {
-    template: `${config.name} - %s`,
-    default: config.name
-  },
+  // title: {
+  //   template: `${config.name} - %s`,
+  //   default: config.name
+  // },
   openGraph: {
     title: {
       template: `${config.name} - %s`,
@@ -38,48 +38,48 @@ const LayoutMain = ({ children }: PropsWithChildren) => {
       <Suspense>
         <PostHogPageView />
       </Suspense>
-        <HeaderClientOnly>
-          <HeaderComp />
-        </HeaderClientOnly>
-        <main>{children}</main>
-        <Footer
-          id={footerId}
-          brandTop={<Brand />}
-          accessibility="non compliant"
-          accessibilityLinkProps={{ href: '/accessibilite' }}
-          contentDescription={
-            <>
-              {config.name} est un service porté par l’Agence de la transition écologique
-              (ADEME), en partenariat avec Météo France.
-              <br></br>
-              Notre mission : Accompagner les territoires pour une meilleure appropriation
-              de leur vulnérabilité aux impacts du changement climatique.
-              Facili-TACCT met à disposition les données climatiques du patch 4°C,
-              mesure 23 du plan national d’adaptation au changement climatique (PNACC 3).
-            </>
+      <HeaderClientOnly>
+        <HeaderComp />
+      </HeaderClientOnly>
+      <main>{children}</main>
+      <Footer
+        id={footerId}
+        brandTop={<Brand />}
+        accessibility="non compliant"
+        accessibilityLinkProps={{ href: '/accessibilite' }}
+        contentDescription={
+          <>
+            {config.name} est un service porté par l’Agence de la transition écologique
+            (ADEME), en partenariat avec Météo France.
+            <br></br>
+            Notre mission : Accompagner les territoires pour une meilleure appropriation
+            de leur vulnérabilité aux impacts du changement climatique.
+            Facili-TACCT met à disposition les données climatiques du patch 4°C,
+            mesure 23 du plan national d’adaptation au changement climatique (PNACC 3).
+          </>
+        }
+        operatorLogo={{
+          alt: "Logo de l'ADEME",
+          imgUrl: '/logo-ademe-meteofrance.jpg',
+          orientation: 'horizontal',
+        }}
+        bottomItems={[
+          {
+            text: 'Politique de confidentialité',
+            linkProps: { href: '/politique-de-confidentialite' }
+          },
+          {
+            text: 'Politique des cookies',
+            linkProps: { href: '/politique-des-cookies' }
+          },
+          {
+            ...headerFooterDisplayItem,
+            iconId: 'fr-icon-theme-fill'
           }
-          operatorLogo={{
-            alt: "Logo de l'ADEME",
-            imgUrl: '/logo-ademe-meteofrance.jpg',
-            orientation: 'horizontal',
-          }}
-          bottomItems={[
-            {
-              text: 'Politique de confidentialité',
-              linkProps: { href: '/politique-de-confidentialite' }
-            },
-            {
-              text: 'Politique des cookies',
-              linkProps: { href: '/politique-des-cookies' }
-            },
-            {
-              ...headerFooterDisplayItem,
-              iconId: 'fr-icon-theme-fill'
-            }
-          ]}
-          termsLinkProps={{ href: '/mentions-legales' }}
-          homeLinkProps={{ href: '/', title: 'Accueil' }}
-        />
+        ]}
+        termsLinkProps={{ href: '/mentions-legales' }}
+        homeLinkProps={{ href: '/', title: 'Accueil' }}
+      />
       <CookieBanner />
     </NextAppDirEmotionCacheProvider>
   );

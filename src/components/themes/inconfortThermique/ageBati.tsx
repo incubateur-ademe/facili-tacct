@@ -6,6 +6,8 @@ import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
+import { DefinitionTooltip } from '@/components/utils/HtmlTooltip';
+import { PNACC } from '@/lib/definitions';
 import { AgeBatiDto } from '@/lib/dto';
 import { ageBatiMapper } from '@/lib/mapper/inconfortThermique';
 import { InconfortThermique, Patch4 } from '@/lib/postgres/models';
@@ -154,12 +156,24 @@ export const AgeBati = (props: {
                     ) : null}
                   </div>
                 </div>
-                <p className="px-4">
+                <p>
+                  55 % des Français déclarent avoir eu trop chaud pendant au moins
+                  24 heures dans leur logement en 2023. Si la canicule reste la principale
+                  raison évoquée (87 % des cas), près d’un quart des ménages (24 %) identifie
+                  aussi la mauvaise isolation de leur logement.
+                </p>
+                <p>
                   La robustesse des logements face aux températures élevées dépend
-                  leur qualité intrinsèque (inertie thermique, présence de volets
+                  de leur qualité intrinsèque (inertie thermique, présence de volets
                   extérieurs, qualité des rénovations...). Si vous ne disposez pas
                   d'étude spécifique sur le sujet, la période de construction,
                   fournie par l'INSEE, vous donne une première approximation.
+                </p>
+                <p>
+                  Adapter les logements au risque de forte chaleur est la mesure 9 du{' '}
+                  <DefinitionTooltip title={PNACC}>
+                    PNACC
+                  </DefinitionTooltip> 3.
                 </p>
               </div>
               <div className="w-3/5">

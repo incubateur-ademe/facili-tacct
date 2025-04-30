@@ -123,7 +123,7 @@ const ErosionCotes = (props: {
                       className={styles.catnatGraphTitleWrapper}
                       style={{ padding: '1rem' }}
                     >
-                      <h2>Érosion du littoral</h2>
+                      <h2>Mouvement du trait de côte</h2>
                     </div>
                     <div>
                       <MapErosionCotiere
