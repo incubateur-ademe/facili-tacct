@@ -503,12 +503,12 @@ model qualite_sites_baignade {
 }
 
 model users {
-  pk              Int       @id
-  email           String    @db.VarChar(256)
-  username        String    @db.VarChar(256)
+  pk              Int       @id @default(autoincrement())
+  email           String    @unique(map: "email") @db.VarChar(256)
+  username        String    @unique(map: "username") @db.VarChar(256)
   password        String    @db.VarChar(256)
-  created_at      DateTime  @db.Timestamp(6)
-  last_connection DateTime? @db.Timestamp(6)
+  created_at      DateTime  @db.Timestamptz(6)
+  last_connection DateTime? @db.Timestamptz(6)
   role            String    @db.VarChar(8)
 
   @@schema("ressources")
