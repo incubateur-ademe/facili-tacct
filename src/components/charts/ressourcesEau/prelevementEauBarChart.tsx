@@ -194,45 +194,43 @@ const PrelevementEauBarChart = ({
     );
   };
 
-  return graphData && graphData.length ? (
+  return (
     <div
       style={{ height: '500px', minWidth: '450px', backgroundColor: 'white' }}
     >
-      <NivoBarChart
-        bottomTickValues={
-          minValueXTicks != maxValueXTicks
-            ? [`${minValueXTicks}`, `${maxValueXTicks}`]
-            : [`${minValueXTicks}`]
-        }
-        colors={legends.map((e) => e.couleur)}
-        graphData={graphData}
-        keys={legends.map((e) => e.texte_complet)}
-        indexBy="annee"
-        legendData={legends
-          .filter((e) => e.valeur != 0)
-          .map((legend, index) => ({
-            id: index,
-            label: legend.texteRaccourci,
-            color: legend.couleur
-          }))}
-        tooltip={CustomTooltip}
-        axisLeftLegend="Volumétrie en Mm³"
-        axisLeftTickFactor={1000000}
-      />
-    </div>
-  ) : (
-    <div
-      style={{ height: '500px', minWidth: '450px', backgroundColor: 'white' }}
-    >
-    <div
-      style={{
-        height: 'inherit',
-        alignContent: 'center',
-        textAlign: 'center'
-      }}
-    >
-      Aucun prélèvement en eau avec ces filtres
-    </div>
+      {graphData && graphData.length ? (
+        <NivoBarChart
+          bottomTickValues={
+            minValueXTicks != maxValueXTicks
+              ? [`${minValueXTicks}`, `${maxValueXTicks}`]
+              : [`${minValueXTicks}`]
+          }
+          colors={legends.map((e) => e.couleur)}
+          graphData={graphData}
+          keys={legends.map((e) => e.texte_complet)}
+          indexBy="annee"
+          legendData={legends
+            .filter((e) => e.valeur != 0)
+            .map((legend, index) => ({
+              id: index,
+              label: legend.texteRaccourci,
+              color: legend.couleur
+            }))}
+          tooltip={CustomTooltip}
+          axisLeftLegend="Volumétrie en Mm³"
+          axisLeftTickFactor={1000000}
+        />
+      ) : (
+        <div
+          style={{
+            height: 'inherit',
+            alignContent: 'center',
+            textAlign: 'center'
+          }}
+        >
+          Aucun prélèvement en eau avec ces filtres
+        </div>
+      )}
     </div>
   );
 };
