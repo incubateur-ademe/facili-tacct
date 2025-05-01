@@ -1,5 +1,6 @@
 import { DefinitionTooltip } from "@/components/utils/HtmlTooltip";
-import { PNACC } from "@/lib/definitions";
+import { irrigable, PNACC } from "@/lib/definitions";
+import styles from './themes.module.scss';
 
 export const AgeBatiText = () => (
   <div className="px-4">
@@ -184,6 +185,45 @@ export const VegetalisationText = () => (
         Plus fraiche ma ville
       </a>
       )
+    </p>
+  </div>
+);
+
+export const SurfacesIrrigueesText = () => (
+  <div className={styles.textWrapper}>
+    <p>
+      En France métropolitaine, 6,8 % de la surface agricole utile
+      (SAU) était irriguée en 2020, soit 15 % de plus qu’en 2010.
+      Face aux sécheresses de plus en plus marquées, les surfaces{' '}
+      <DefinitionTooltip title={irrigable}>
+        irrigables
+      </DefinitionTooltip>{' '}
+      ont aussi progressé de 23 % en dix ans, atteignant 11 % de
+      la SAU. Mais cette tendance interroge : l’eau prélevée pour
+      l’irrigation représente déjà 10 % des prélèvements totaux et
+      jusqu’à 23 % des eaux souterraines, modifiant localement le
+      cycle de l’eau.
+    </p>
+    <p>
+      L’irrigation permet de sécuriser les rendements, mais peut
+      aussi accentuer les tensions locales sur la ressource, en
+      particulier en été, période où la demande est forte pour
+      l’agriculture, mais aussi pour l’eau potable, le tourisme et
+      les écosystèmes. En prélevant l’eau des cours d’eau et des
+      nappes, l’irrigation peut fragiliser les milieux aquatiques,
+      déjà mis à l’épreuve par le changement climatique. Entre
+      2010 et 2020, certaines régions du nord et de l’est ont
+      fortement accru leurs surfaces irriguées, alors que d’autres
+      restent très peu équipées. Ainsi, certains territoires
+      irriguent plus de 40 % de leur SAU, tandis que d’autres n’en
+      irriguent que 1 %.
+    </p>
+    <p>
+      Avec une ressource en eau qui diminue et des usages
+      multiples, ce modèle peut-il tenir dans le temps ? À
+      l’échelle locale, les territoires devront questionner la
+      pérennité de l’irrigation face aux évolutions climatiques et
+      aux autres besoins en eau.
     </p>
   </div>
 );
