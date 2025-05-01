@@ -1,11 +1,12 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
-import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { densiteBatiLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { Map } from '@/components/maps/map';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
-import { TagItem } from '@/components/patch4/TagItem';
+import TagInIndicator from '@/components/patch4/TagInIndicator';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, Patch4 } from '@/lib/postgres/models';
@@ -61,78 +62,78 @@ export const DensiteBati = ({
 
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
-    : undefined;
+    : "null";
 
+  console.log("densiteTerritoire", densiteTerritoire);
   return (
     <>
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
-          {carteTerritoire.length && densiteTerritoire ? (
-            <>
-              <div className="w-2/5">
-                <div className={styles.explicationWrapper}>
+          <div className="w-2/5">
+            <div className={styles.explicationWrapper}>
+              {communesMap.length && densiteTerritoire ? (
+                <>
                   <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                     Sur votre territoire, la densité moyenne du bâtiment est de
                     <b> {Round(densiteTerritoire, 2)}. </b>
                   </p>
-                  {type === "commune" || eptRegex.test(libelle) ? (
+                  {type === "commune" || eptRegex.test(libelle) && (
                     <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                       À l'échelle de l'EPCI, ce taux est de
                       <b> {densiteTerritoireSup.toFixed(2)}.</b>
                     </p>
-                  ) : (
-                    ""
                   )}
-                  <div className={styles.patch4Wrapper}>
-                    {fortesChaleurs === 'Intensité très forte' ||
-                      fortesChaleurs === 'Intensité forte' ? (
-                      <div>
-                        <TagItem
-                          icon={fortesChaleursIcon}
-                          indice="Fortes chaleurs"
-                          tag={fortesChaleurs}
-                        />
+                </>
+              ) : ""
+              }
+              <TagInIndicator
+                indice={["Fortes Chaleurs"]}
+                icon={[fortesChaleursIcon]}
+                tag={[fortesChaleurs]}
+              />
+              <CustomTooltip title={densiteBatiTooltipText} />
+            </div>
+            <div className="px-4">
+              <p>
+                Il existe de nombreux indicateurs pour mesurer la densité du
+                bâti. La formule de calcul choisie ici est la suivante :{' '}
+                <br></br>
+                <br></br>
+                <b>
+                  (surface au sol de la construction x hauteur du bâtiment)
+                  / surface totale de la commune
+                </b>
+              </p>
+            </div>
+          </div>
+          <div className="w-3/5">
+            <div className={styles.graphWrapper}>
+              <p style={{ padding: '1em', margin: '0' }}>
+                <b>
+                  Densité du bâti par commune
+                </b>
+              </p>
+              <div style={{ height: '500px', width: '100%', backgroundColor: 'white' }}>
+
+                {
+                  densiteTerritoire ?
+                    <>
+                      <Map data={'densite_bati'} carteCommunes={carteTerritoire} />
+                      <div
+                        className={styles.legend}
+                        style={{ width: 'auto', justifyContent: 'center' }}
+                      >
+                        <LegendCompColor legends={densiteBatiLegend} />
                       </div>
-                    ) : null}
-                  </div>
-                  <CustomTooltip title={densiteBatiTooltipText} />
-                </div>
-                <div className="px-4">
-                  <p>
-                    Il existe de nombreux indicateurs pour mesurer la densité du
-                    bâti. La formule de calcul choisie ici est la suivante :{' '}
-                    <br></br>
-                    <br></br>
-                    <b>
-                      (surface au sol de la construction x hauteur du bâtiment)
-                      / surface totale de la commune
-                    </b>
-                  </p>
-                </div>
+                      <p style={{ padding: '1em', margin: '0' }}>
+                        Source : Base de Données Nationale Des Bâtiments – BDNB
+                      </p>
+                    </>
+                    : <DataNotFoundForGraph image={DataNotFound} />
+                }
               </div>
-              <div className="w-3/5">
-                <div className={styles.graphWrapper}>
-                  <p style={{ padding: '1em', margin: '0' }}>
-                    <b>
-                      Densité du bâti par commune
-                    </b>
-                  </p>
-                  <Map data={'densite_bati'} carteCommunes={carteTerritoire} />
-                  <div
-                    className={styles.legend}
-                    style={{ width: 'auto', justifyContent: 'center' }}
-                  >
-                    <LegendCompColor legends={densiteBatiLegend} />
-                  </div>
-                  <p style={{ padding: '1em', margin: '0' }}>
-                    Source : Base de Données Nationale Des Bâtiments – BDNB
-                  </p>
-                </div>
-              </div>
-            </>
-          ) : (
-            <GraphDataNotFound code={code} libelle={libelle} />
-          )}
+            </div>
+          </div>
         </div>
       ) : (
         <Loader />

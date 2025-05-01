@@ -4,7 +4,7 @@ import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import { PieChart1 } from '@/components/charts/inconfortThermique/pieChartTravailExt';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
-import { TagItem } from '@/components/patch4/TagItem';
+import TagInIndicator from '@/components/patch4/TagInIndicator';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { travailExtDto } from '@/lib/dto';
 import { travailExtMapper } from '@/lib/mapper/inconfortThermique';
@@ -122,7 +122,7 @@ export const TravailExterieur = (props: {
 
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
-    : undefined;
+    : "null";
 
   return (
     <>
@@ -145,18 +145,11 @@ export const TravailExterieur = (props: {
                     </p>
                     : ""
                 }
-                <div className={styles.patch4Wrapper}>
-                  {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
-                    <div>
-                      <TagItem
-                        icon={fortesChaleursIcon}
-                        indice="Fortes chaleurs"
-                        tag={fortesChaleurs}
-                      />
-                    </div>
-                  ) : null}
-                </div>
+                <TagInIndicator
+                  indice={["Fortes Chaleurs"]}
+                  icon={[fortesChaleursIcon]}
+                  tag={[fortesChaleurs]}
+                />
                 <CustomTooltip title={travailExterieurTooltipText} />
               </div>
               <TravailExterieurText />

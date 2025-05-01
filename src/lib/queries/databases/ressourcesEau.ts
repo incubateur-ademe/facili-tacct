@@ -13,7 +13,7 @@ export const GetRessourceEau = async (
   type: string
 ): Promise<RessourcesEau[]> => {
   try {
-    if (type === "commune") {
+    if (type === 'commune') {
       console.time('Query Execution Time RESSOURCES EAUX');
       const departement = await PrismaPostgres.ressources_eau.findFirst({
         where: {
@@ -41,7 +41,7 @@ export const GetRessourceEau = async (
       });
       console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
       return value;
-    } else if (type === "petr") {
+    } else if (type === 'petr') {
       console.time('Query Execution Time RESSOURCES EAUX');
       const departement = await PrismaPostgres.ressources_eau.findFirst({
         where: {
@@ -55,7 +55,7 @@ export const GetRessourceEau = async (
       });
       console.timeEnd('Query Execution Time RESSOURCES EAUX');
       return value;
-    } else if (type === "ept") {
+    } else if (type === 'ept') {
       console.time('Query Execution Time RESSOURCES EAUX');
       const departement = await PrismaPostgres.ressources_eau.findFirst({
         where: {
@@ -69,7 +69,7 @@ export const GetRessourceEau = async (
       });
       console.timeEnd('Query Execution Time RESSOURCES EAUX');
       return value;
-    } else if (type === "departement") {
+    } else if (type === 'departement') {
       console.time('Query Execution Time RESSOURCES EAUX');
       const value = await PrismaPostgres.ressources_eau.findMany({
         where: {
@@ -78,8 +78,7 @@ export const GetRessourceEau = async (
       });
       console.timeEnd('Query Execution Time RESSOURCES EAUX');
       return value;
-    }
-    else return [];
+    } else return [];
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);

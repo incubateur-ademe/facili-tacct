@@ -27,3 +27,18 @@ type TabIcons = {
   iconNotSelected: StaticImageData;
   iconSelected: StaticImageData;
 };
+
+type PrelevementsEauYears =
+  | 'A2008'
+  | 'A2009'
+  | 'A2010'
+  | 'A2011'
+  | 'A2012'
+  | 'A2013'
+  | 'A2014'
+  | 'A2015'
+  | 'A2016'
+  | 'A2017'
+  | 'A2018'
+  | 'A2019'
+  | 'A2020';
