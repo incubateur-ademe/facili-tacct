@@ -16,20 +16,6 @@ import { useEffect, useState } from 'react';
 import PrelevementEauDataViz from './prelevementEauDataviz';
 import styles from './ressourcesEau.module.scss';
 
-type Years = "A2008"
-  | "A2009"
-  | "A2010"
-  | "A2011"
-  | "A2012"
-  | "A2013"
-  | "A2014"
-  | "A2015"
-  | "A2016"
-  | "A2017"
-  | "A2018"
-  | "A2019"
-  | "A2020";
-
 const SumFiltered = (
   data: RessourcesEau[],
   code: string,
@@ -69,7 +55,7 @@ export const PrelevementEau = (props: {
   }>;
   ressourcesEau: RessourcesEau[];
 }) => {
-  
+
   const { ressourcesEau } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
@@ -90,7 +76,7 @@ export const PrelevementEau = (props: {
           : ressourcesEau;
 
   const sumAllYears = dataParMaille.map((year) =>
-    Array.from({ length: 13 }, (_, i) => Number(year[`A${2008 + i}` as Years]) || 0)
+    Array.from({ length: 13 }, (_, i) => Number(year[`A${2008 + i}` as PrelevementsEauYears]) || 0)
       .reduce((a, b) => a + b, 0)
   ).reduce((a, b) => a + b, 0);;
 
@@ -105,6 +91,8 @@ export const PrelevementEau = (props: {
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : undefined;
+  console.log("ressourcesEau", ressourcesEau);
+
 
   return (
     <>
