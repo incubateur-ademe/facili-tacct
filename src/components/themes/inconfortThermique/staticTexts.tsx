@@ -1,7 +1,7 @@
 import { DefinitionTooltip } from "@/components/utils/HtmlTooltip";
 import { PNACC } from "@/lib/definitions";
 
-export const FragiliteEconomiqueText = () => (
+export const AgeBatiText = () => (
   <div className="px-4">
     <p>
       55 % des Français déclarent avoir eu trop chaud pendant au moins
@@ -71,5 +71,119 @@ export const TravailExterieurText = () => (
         </li>
       </p>
     </ul>
+  </div>
+);
+
+export const GrandAgeText = () => (
+  <div className="px-4">
+    <p>
+      Les personnes âgées représentent les deux tiers de la
+      surmortalité en période de fortes chaleurs. Leur corps
+      régule moins bien la température, ce qui les rend plus vulnérables.
+      Elles ressentent également moins la soif. Ces facteurs augmentent les risques de déshydratation.
+      Les problèmes de santé chroniques, comme les maladies cardiovasculaires
+      ou respiratoires, aggravent leur sensibilité aux températures élevées.
+    </p>
+    <p>
+      Le changement climatique intensifie les vagues de chaleur. La précarité
+      énergétique, l’isolement social et les logements inadaptés renforcent
+      l’inconfort thermique. Ces facteurs se cumulent souvent chez les personnes
+      âgées. Plus elles sont exposées à la chaleur, plus elles deviennent vulnérables.
+    </p>
+    <p>
+      Cette vulnérabilité est exacerbée par plusieurs facteurs :
+      précarité énergétique, isolement social, et conditions de
+      logement inadéquates. Plus ces facteurs se cumulent, plus le
+      risque d’une surmortalité en période de chaleur augmente.
+      Ces conditions créent un "cercle vicieux" qui accroît leur
+      fragilité face à l’inconfort thermique.
+    </p>
+    <p>
+      ⇒ C’est toujours beaucoup trop !{' '}
+      <b>33 000 décès ont été attribués à la chaleur</b> entre
+      2014 et 2022, dont <b>23 000</b> chez les personnes âgées de
+      75 ans et plus.
+    </p>
+    <p>
+      ⇒ Seuls <b>28 % des décès</b> liés à la chaleur se
+      produisent pendant les canicules, qui ne représentent que 6 %
+      des jours de l’été. Soyons vigilants aussi en dehors des
+      périodes de canicule.
+    </p>
+    <p>
+      ⇒ Tous exposés : les moins de 75 ans représentent 71 %
+      des consultations SOS Médecins liées à la chaleur (juin-septembre 2022)
+      et un tiers des décès (2014-2022).
+    </p>
+    <p>
+      ⇒ Une prise de conscience insuffisante : seuls 12 % des Français se
+      considèrent fragiles ou très fragiles pendant une canicule.
+    </p>
+  </div>
+);
+
+export const FragiliteEconomiqueText = () => (
+  <div className="px-4">
+    <p>
+      Les ménages en précarité énergétique doivent faire des choix
+      difficiles : limiter le chauffage, réduire l’utilisation de
+      l’eau chaude pour éviter des factures trop élevées. Un
+      logement mal isolé l’hiver sera aussi coûteux à rafraîchir
+      l’été.
+    </p>
+    <p>
+      Leurs conditions de vie et leur santé se dégradent. Le
+      changement climatique amplifie ces inégalités, avec des
+      vagues de chaleur de plus en plus fréquentes et intenses.
+      Dans un logement mal isolé, se protéger de la chaleur est
+      un défi impossible pour les ménages les plus précaires. La
+      précarité énergétique n'est pas qu’une question de confort :
+      elle est un enjeu de santé publique et de justice sociale.
+    </p>
+    <p>
+      ⇒ En 2024, <b>55 %</b> des Français déclarent
+      avoir souffert d’un excès de chaleur en été.
+    </p>
+    <p>
+      ⇒ <b>79 %</b> des Français ont dû restreindre leur chauffage.
+    </p>
+    <p>
+      ⇒ En 2023, plus d’un million de ménages ont subi
+      une intervention de leur fournisseur d’énergie pour cause
+      d'impayés, aggravant leur précarité.
+    </p>
+    <p>
+      - - - - <br></br>
+      Plan national d'adaptation au changement climatique (PNACC 3) :
+    </p>
+    <ul>
+      <p>
+        <li>
+          Adapter les logements au risque de forte chaleur (mesure 9)
+        </li>
+        <li>
+          Protéger les populations précaires des fortes chaleurs (mesure 14)
+        </li>
+      </p>
+    </ul>
+  </div>
+);
+
+export const VegetalisationText = () => (
+  <div className="px-4">
+    <p>
+      La présence d’arbres permet d’apporter de l’ombre et
+      rafraichit l’air par évapotranspiration (lorsque plusieurs
+      arbres sont à proximité). Leur efficacité dans le
+      rafraîchissement en milieu urbain dépend de leur nombre, de
+      la densité de leur feuillage, des essences, de la qualité du
+      sol et de la disponibilité en eau.<br></br> <br></br>
+      La présence d’arbres peut rafraîchir l’air de 2 à 3° C au maximum,
+      notamment dans les rues ou lorsqu’ils sont alignés en bordure de route (source :{' '}
+      <a href="https://plusfraichemaville.fr/" target="_blank">
+        Plus fraiche ma ville
+      </a>
+      )
+    </p>
   </div>
 );

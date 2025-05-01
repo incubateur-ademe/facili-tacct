@@ -1,22 +1,22 @@
 'use client';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
-import GraphNotFound from '@/assets/images/no_data_on_territory.svg';
-import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import { default as DataNotFound } from '@/assets/images/no_data_on_territory.svg';
+import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { CLCMap } from '@/components/maps/CLC';
 import { vegetalisationLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
-import { TagItem } from '@/components/patch4/TagItem';
+import TagInIndicator from '@/components/patch4/TagInIndicator';
 import { VegetalisationDto } from '@/lib/dto';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { CLCTerritoires, InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
-import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { VegetalisationText } from './staticTexts';
 import styles from './themes.module.scss';
 
 const sumProperty = (
@@ -71,97 +71,62 @@ const Vegetalisation = (props: {
     })()
   }, [code]);
 
-  const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
+  const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : "null";
 
   return (
     <>
       {(vegetalisationTerritoire && !isLoadingPatch4) ? (
         <div className={styles.container}>
-          {vegetalisationTerritoire.length ? (
-            <>
-              <div className="w-2/5">
-                <div className={styles.explicationWrapper}>
-                  {foretPercent == Infinity ? (
-                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      Sur le territoire, la forêt et les espaces semi-naturels
-                      recouvrent <b>{Round(foretSum, 1)}</b> hectares.
-                    </p>
-                  ) : (
-                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      Sur votre territoire, <b>{Round(foretPercent, 1)} %</b> est
-                      recouvert par de la forêt ou des espaces semi-naturels. Cela correspond à
-                      <b> {Round(foretSum, 1)}</b> hectares.
-                    </p>
-                  )}
-                  <div className={styles.patch4Wrapper}>
-                    {secheresse === 'Intensité très forte' ||
-                      secheresse === 'Intensité forte' ? (
-                      <TagItem
-                        icon={secheresseIcon}
-                        indice="Sécheresse des sols"
-                        tag={secheresse}
-                      />
-                    ) : null}
-                  </div>
-                </div>
-                <div className="px-4">
-                  <p>
-                    La présence d’arbres permet d’apporter de l’ombre et
-                    rafraichit l’air par évapotranspiration (lorsque plusieurs
-                    arbres sont à proximité). Leur efficacité dans le
-                    rafraîchissement en milieu urbain dépend de leur nombre, de
-                    la densité de leur feuillage, des essences, de la qualité du
-                    sol et de la disponibilité en eau.<br></br> <br></br>
-                    La présence d’arbres peut rafraîchir l’air de 2 à 3° C au maximum, 
-                    notamment dans les rues ou lorsqu’ils sont alignés en bordure de route (source :{' '}
-                    <a href="https://plusfraichemaville.fr/" target="_blank">
-                      Plus fraiche ma ville
-                    </a>
-                    )
+          <div className="w-2/5">
+            <div className={styles.explicationWrapper}>
+              {isNaN(foretPercent) ? "" :
+                foretPercent == Infinity ? (
+                  <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                    Sur le territoire, la forêt et les espaces semi-naturels
+                    recouvrent <b>{Round(foretSum, 1)}</b> hectares.
                   </p>
-                </div>
-              </div>
-              <div className="w-3/5">
-                {
-                  clc ?
-                    <>
-                      {clc.length ? (
-                        <div className={styles.graphWrapper}>
-                          <p style={{ padding: '1em', margin: '0' }}>
-                            <b>Cartographie des différents types de sols</b>
-                          </p>
-                          <CLCMap clc={clc} />
-                          <div
-                            className={styles.legend}
-                            style={{ width: 'auto', justifyContent: 'center' }}
-                          >
-                            <LegendCompColor legends={vegetalisationLegend} />
-                          </div>
-                          <p style={{ padding: '1em', margin: '0' }}>
-                            Source : CORINE Land Cover
-                          </p>
-                        </div>
-                      ) : (
-                        <Loader />
-                      )}
-                    </>
-                    : (
-                      <div className={styles.noData}>
-                        <Image
-                          src={GraphNotFound}
-                          alt=""
-                          width={0}
-                          height={0}
-                          style={{ width: '90%', height: 'auto' }}
-                        />
+                ) : (
+                  <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                    Sur votre territoire, <b>{Round(foretPercent, 1)} %</b> est
+                    recouvert par de la forêt ou des espaces semi-naturels. Cela correspond à
+                    <b> {Round(foretSum, 1)}</b> hectares.
+                  </p>
+                )}
+              <TagInIndicator
+                indice={["Sécheresse des sols"]}
+                icon={[secheresseIcon]}
+                tag={[secheresse]}
+              />
+            </div>
+            <VegetalisationText />
+          </div>
+          <div className="w-3/5">
+            {
+              clc ?
+                <>
+                  {clc.length ? (
+                    <div className={styles.graphWrapper}>
+                      <p style={{ padding: '1em', margin: '0' }}>
+                        <b>Cartographie des différents types de sols</b>
+                      </p>
+                      <CLCMap clc={clc} />
+                      <div
+                        className={styles.legend}
+                        style={{ width: 'auto', justifyContent: 'center' }}
+                      >
+                        <LegendCompColor legends={vegetalisationLegend} />
                       </div>
-                    )
-                }
-              </div>
-            </>
-          ) : (
-            <GraphDataNotFound code={code} libelle={libelle} />
-          )}
+                      <p style={{ padding: '1em', margin: '0' }}>
+                        Source : CORINE Land Cover
+                      </p>
+                    </div>
+                  ) : (
+                    <Loader />
+                  )}
+                </>
+                : <DataNotFoundForGraph image={DataNotFound} />
+            }
+          </div>
         </div>
       ) : (
         <Loader />
