@@ -352,7 +352,6 @@ exports.Prisma.Feux_foretScalarFieldEnum = {
 
 exports.Prisma.Inconfort_thermiqueScalarFieldEnum = {
   index: 'index',
-  Unnamed__0: 'Unnamed__0',
   code_geographique: 'code_geographique',
   libelle_geographique: 'libelle_geographique',
   epci: 'epci',
