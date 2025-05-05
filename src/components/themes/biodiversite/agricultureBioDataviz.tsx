@@ -53,7 +53,6 @@ const AgricultureBioDataViz = ({
                 />
               </>
             )}
-
           </div>
         ) : (
           <div className={styles.graphWrapper}>
@@ -67,7 +66,8 @@ const AgricultureBioDataViz = ({
               Source : Agence Bio, Service de la Statistique et de la Prospective (SSP
               - Ministère de l’agriculture) dans Catalogue DiDo (Indicateurs
               territoriaux de développement durable - ITDD)
-            </p>          </div>
+            </p>
+          </div>
         )}
     </>
   );
