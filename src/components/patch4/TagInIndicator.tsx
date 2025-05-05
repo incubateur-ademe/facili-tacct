@@ -11,10 +11,14 @@ const TagInIndicator = ({
   tag: ("Intensité très forte" | "Intensité forte" | "null" | "Pas d'évolution" | "Intensité modérée")[]
 }
 ) => {
+  const tagFiltered = tag
+    .map((item, index) => (item === "null" ? index : -1))
+    .filter(index => index !== -1);
+  const indiceFiltered = indice.filter((_, index) => !tagFiltered.includes(index));
   return (
     <div className={styles.patch4Wrapper}>
       {
-        indice.map((item, index) => (
+        indiceFiltered.map((item, index) => (
           <TagItem
             key={index}
             icon={icon[index]}

@@ -38,8 +38,8 @@ export const CommunesContourMapper = (
   properties: {
     epci: commune.epci,
     libelle_epci: commune.libelle_epci,
-    libelle_geographique: commune.libelle_commune,
-    code_geographique: commune.code_commune,
+    libelle_geographique: commune.libelle_geographique,
+    code_geographique: commune.code_geographique,
     coordinates: commune.coordinates
   },
   geometry: JSON.parse(commune.geometry)
