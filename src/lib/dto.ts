@@ -121,7 +121,6 @@ export type CommunesIndicateursDto = {
     coordinates: string;
     naf?: number;
     surfacesIrriguees?: number;
-    chefsExploitation55Ans?: number;
     incendiesForet?: number | null;
   };
   geometry: {

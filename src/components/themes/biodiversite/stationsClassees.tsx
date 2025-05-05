@@ -33,12 +33,12 @@
 //           <div className="w-1/3">
 //             <div className={styles.explicationWrapper}>
 //               {codgeo ? (
-//                 <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+//                 <p style={{ color: '#161616' }}>
 //                   Dans la commune de {biodiversite[0]?.libelle_geographique},{' '}
 //                   <b>XXXX%</b> .
 //                 </p>
 //               ) : (
-//                 <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+//                 <p style={{ color: '#161616' }}>
 //                   Dans l'EPCI {biodiversite[0]?.libelle_epci}, <b>XXXXX%</b> .
 //                 </p>
 //               )}

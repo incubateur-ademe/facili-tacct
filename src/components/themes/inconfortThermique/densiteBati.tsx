@@ -73,12 +73,12 @@ export const DensiteBati = ({
             <div className={styles.explicationWrapper}>
               {communesMap.length && densiteTerritoire ? (
                 <>
-                  <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                  <p style={{ color: '#161616' }}>
                     Sur votre territoire, la densité moyenne du bâtiment est de
                     <b> {Round(densiteTerritoire, 2)}. </b>
                   </p>
                   {type === "commune" || eptRegex.test(libelle) && (
-                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                    <p style={{ color: '#161616' }}>
                       À l'échelle de l'EPCI, ce taux est de
                       <b> {densiteTerritoireSup.toFixed(2)}.</b>
                     </p>

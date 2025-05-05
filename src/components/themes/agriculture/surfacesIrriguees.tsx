@@ -1,4 +1,5 @@
-import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { surfacesIrrigueesLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
@@ -31,9 +32,7 @@ export const SurfacesIrriguees = ({
           ?.part_irr_SAU_2020 ?? NaN
     };
   });
-
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
-
   const surfaceTerritoire = type === "commune" ?
     communesMap.find((obj) => obj.properties.code_geographique === code)?.properties.surfacesIrriguees
     : communesMap
@@ -45,45 +44,54 @@ export const SurfacesIrriguees = ({
     <>
       {communesMap ? (
         <div className={styles.container}>
-          {communesMap.length && surfaceTerritoire ? (
-            <>
-              <div className="w-2/5">
-                <div className={styles.explicationWrapper}>
-                  <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                    En 2020, la part de la superficie irriguée dans la SAU sur
-                    votre territoire était de{' '}
-                    <b>{type === "commune" ? surfaceTerritoire : Round(surfaceTerritoire! / communesMap.length, 1)} %.</b>
-                  </p>
-                  <CustomTooltip
-                    title={surfacesIrrigueesTooltipText}
-                    texte="D'où vient ce chiffre ?"
-                  />
-                </div>
-                <SurfacesIrrigueesText />
+          <>
+            <div className="w-2/5">
+              <div className={styles.explicationWrapper}>
+                {
+                  communesMap.length > 0 ? (
+                    <p style={{ color: '#161616' }}>
+                      En 2020, la part de la superficie irriguée dans la SAU sur
+                      votre territoire était de{' '}
+                      <b>{type === "commune" ? surfaceTerritoire : Round(surfaceTerritoire! / communesMap.length, 1)} %.</b>
+                    </p>
+                  ) : ""
+                }
+                <CustomTooltip
+                  title={surfacesIrrigueesTooltipText}
+                  texte="D'où vient ce chiffre ?"
+                />
               </div>
-              <div className="w-3/5">
-                <div className={styles.graphWrapper}>
-                  <p style={{ padding: '1em', margin: '0' }}>
-                    <b>
-                      Part de la surface agricole irriguée dans la SAU en 2020
-                    </b>
-                  </p>
-                  <MapSurfacesIrriguees carteCommunes={communesMap} />
-                  <div
-                    className={styles.legend}
-                    style={{ width: 'auto', justifyContent: 'center' }}
-                  >
-                    <LegendCompColor legends={surfacesIrrigueesLegend} />
-                  </div>
-                  <p style={{ padding: '1em', margin: '0' }}>
-                    Source : AGRESTE (2020)
-                  </p>
-                </div>
+              <SurfacesIrrigueesText />
+            </div>
+            <div className="w-3/5">
+              <div className={styles.graphWrapper}>
+                <p style={{ padding: '1em', margin: '0' }}>
+                  <b>
+                    Part de la surface agricole irriguée dans la SAU en 2020
+                  </b>
+                </p>
+                  {
+                    communesMap.length > 0 ? (
+                      <>
+                        <MapSurfacesIrriguees carteCommunes={communesMap} />
+                        <div
+                          className={styles.legend}
+                          style={{ width: 'auto', justifyContent: 'center' }}
+                        >
+                          <LegendCompColor legends={surfacesIrrigueesLegend} />
+                        </div>
+                      </>
+                    ) : (
+                      <DataNotFoundForGraph image={DataNotFound} />
+                    )
+                  }
+                <p style={{ padding: '1em', margin: '0' }}>
+                  Source : AGRESTE (2020)
+                </p>
               </div>
-            </>
-          ) : (
-            <GraphDataNotFound code={code} libelle={libelle} />
-          )}
+            </div>
+          </>
+
         </div>
       ) : (
         <Loader />

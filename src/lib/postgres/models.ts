@@ -183,7 +183,6 @@ export type CarteCommunes = {
   naf?: number;
   surface: number;
   surfacesIrriguees?: number;
-  chefsExploitation55Ans?: number;
   incendiesForet?: number;
 };
 
