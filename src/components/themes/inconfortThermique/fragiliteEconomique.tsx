@@ -71,6 +71,9 @@ export const FragiliteEconomique = ({
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : "null";
 
+  console.log("precariteLogTerritoireSup", precariteLogTerritoireSup);
+  console.log("precariteLogTerritoire", precariteLogTerritoire);
+
   return (
     <>
       {(communesMap && !isLoadingPatch4) ? (
@@ -78,12 +81,16 @@ export const FragiliteEconomique = ({
           <>
             <div className="w-2/5">
               <div className={styles.explicationWrapper}>
-                <p style={{ color: '#161616' }}>
-                  La part des ménages en situation de précarité énergétique
-                  liée au logement sur votre territoire est de{' '}
-                  <b>{Round((100 * precariteLogTerritoire), 1)} %. </b>
-                </p>
-                {type === 'commune' || eptRegex.test(libelle) ? (
+                {
+                  precariteLogTerritoire ? (
+                  <p style={{ color: '#161616' }}>
+                    La part des ménages en situation de précarité énergétique
+                    liée au logement sur votre territoire est de{' '}
+                    <b>{Round((100 * precariteLogTerritoire), 1)} %. </b>
+                  </p>
+                  ) : ""
+                }
+                {(type === 'commune' || eptRegex.test(libelle)) && precariteLogTerritoireSup ? (
                   <p style={{ color: '#161616' }}>
                     Ce taux est de{' '}
                     <b>
@@ -113,22 +120,22 @@ export const FragiliteEconomique = ({
                     Part des ménages en précarité énergétique liée au logement
                   </b>
                 </p>
-                  {
-                    carteTerritoire.length > 0 ? (
-                      <>
-                        <Map
-                          data={'precarite_log'}
-                          carteCommunes={carteTerritoire}
-                        />
-                        <div
-                          className={styles.legend}
-                          style={{ width: 'auto', justifyContent: 'center' }}
-                        >
-                          <LegendCompColor legends={fragiliteEcoLegend} />
-                        </div>
-                      </>
-                    ) : <DataNotFoundForGraph image={DataNotFound} />
-                  }
+                {
+                  carteTerritoire.length > 0 ? (
+                    <>
+                      <Map
+                        data={'precarite_log'}
+                        carteCommunes={carteTerritoire}
+                      />
+                      <div
+                        className={styles.legend}
+                        style={{ width: 'auto', justifyContent: 'center' }}
+                      >
+                        <LegendCompColor legends={fragiliteEcoLegend} />
+                      </div>
+                    </>
+                  ) : <DataNotFoundForGraph image={DataNotFound} />
+                }
                 <p style={{ padding: '1em', margin: '0' }}>
                   Source : Observation de la précarité énergétique (ONPE),
                   GEODIP

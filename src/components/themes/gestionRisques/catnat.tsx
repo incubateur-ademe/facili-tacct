@@ -1,7 +1,9 @@
 'use client';
+
 import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
-import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
@@ -14,6 +16,7 @@ import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { CatNatText } from '../inconfortThermique/staticTexts';
 import CatnatDataViz from './catnatDataviz';
 import styles from './gestionRisques.module.scss';
 
@@ -54,7 +57,6 @@ export const Catnat = (props: {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
-  const libelle = searchParams.get('libelle')!;
   const dataByCodeGeographique = CountOccByIndex<GenericObject>(
     gestionRisques,
     'code_geographique',
@@ -130,96 +132,80 @@ export const Catnat = (props: {
       {
         !isLoadingPatch4 ?
           <>
-            {gestionRisques.length !== 0 ? (
-              <div className={styles.container}>
-                <div className="w-1/3">
-                  <div className={styles.explicationWrapper}>
-                    {dataByCodeGeographique[0]?.sumCatnat === 0 ? (
-                      <p>
-                        L’absence d’arrêté CatNat ne signifie pas que votre territoire
-                        n’a jamais connu d’événements climatiques importants, ni subis
-                        de dégâts significatifs.
-                      </p>
-                    ) : (
-                      <p style={{ color: '#161616' }}>
-                        Depuis 1982, <b>{gestionRisques.length}</b> événement(s)
-                        climatique(s) sont à l’origine d’une reconnaissance de l'état
-                        de catastrophe naturelle sur votre territoire.
-                      </p>
-                    )}
-                    <div className={styles.patch4Wrapper}>
-                      {secheresse === 'Intensité très forte' ||
-                        secheresse === 'Intensité forte' ? (
-                        <TagItem
-                          icon={secheresseIcon}
-                          indice="Fortes chaleurs"
-                          tag={secheresse}
-                        />
-                      ) : null}
-                      {precipitation === 'Intensité très forte' ||
-                        precipitation === 'Intensité forte' ? (
-                        <TagItem
-                          icon={precipitationIcon}
-                          indice="Fortes précipitations"
-                          tag={precipitation}
-                        />
-                      ) : null}
-                    </div>
-                    <CustomTooltip title={catnatTooltipText} texte="D'où vient ce chiffre ?" />
+
+            <div className={styles.container}>
+              <div className="w-1/3">
+                <div className={styles.explicationWrapper}>
+                  {gestionRisques.length !== 0 ? (
+                    <>
+                      {dataByCodeGeographique[0]?.sumCatnat === 0 ? (
+                        <p>
+                          L’absence d’arrêté CatNat ne signifie pas que votre territoire
+                          n’a jamais connu d’événements climatiques importants, ni subis
+                          de dégâts significatifs.
+                        </p>
+                      ) : (
+                        <p style={{ color: '#161616' }}>
+                          Depuis 1982, <b>{gestionRisques.length}</b> événement(s)
+                          climatique(s) sont à l’origine d’une reconnaissance de l'état
+                          de catastrophe naturelle sur votre territoire.
+                        </p>
+                      )}
+                    </>
+                  ) : ""
+                  }
+                  <div className={styles.patch4Wrapper}>
+                    {secheresse === 'Intensité très forte' ||
+                      secheresse === 'Intensité forte' ? (
+                      <TagItem
+                        icon={secheresseIcon}
+                        indice="Fortes chaleurs"
+                        tag={secheresse}
+                      />
+                    ) : null}
+                    {precipitation === 'Intensité très forte' ||
+                      precipitation === 'Intensité forte' ? (
+                      <TagItem
+                        icon={precipitationIcon}
+                        indice="Fortes précipitations"
+                        tag={precipitation}
+                      />
+                    ) : null}
                   </div>
-                  <div className="px-4">
-                    <p>
-                      Les phénomènes extrêmes s'intensifient. Leur fréquence augmente
-                      à chaque hausse de 0,5°C de la température mondiale. La France
-                      est particulièrement exposée : depuis 1900, elle a subi 14 % des
-                      catastrophes naturelles majeures en Europe. Inondations, cyclones
-                      et tempêtes y sont les plus dévastateurs. La France et l'Italie
-                      sont les pays européens les plus touchés, loin devant les autres.
-                    </p>
-                    <p>
-                      ⇒ 257 500, c’est le nombre d'arrêtés liés aux événements
-                      climatiques depuis la création du régime CatNat en 1982. Les
-                      inondations représentent plus de 56 % du total.
-                    </p>
-                    <p>
-                      ⇒ 8 : c'est le nombre moyen d’arrêtés CatNat par commune entre
-                      1982 et septembre 2024. Mais une commune détient le triste
-                      record de 135 arrêtés sur cette période !
-                    </p>
-                    <p>
-                      ⇒ 10,6 milliards d’euros : c’est le coût d’indemnisations des
-                      dommages liés à des aléas climatiques en France en 2022.
-                    </p>
-                    <p>
-                      ⇒ 4,8 milliards d’euros : montant moyen annuel des pertes
-                      économiques directes attribuées aux événements naturels en
-                      France entre 2015 et 2019, soit : <br></br>- deux fois le budget
-                      annuel des Agences de l’eau, ou <br></br>- 20 fois les besoins
-                      annuels pour adapter les biens exposés au risque d’érosion en
-                      France au cours des 25 prochaines années (estimation de
-                      l’Inspection générale de l'environnement et du développement
-                      durable).
-                    </p>
-                  </div>
+                  <CustomTooltip title={catnatTooltipText} texte="D'où vient ce chiffre ?" />
                 </div>
-                <div className="w-2/3">
-                  <CatnatDataViz
-                    carteCommunes={communesMap}
-                    datavizTab={datavizTab}
-                    setDatavizTab={setDatavizTab}
-                    typeRisqueValue={typeRisqueValue}
-                    gestionRisquesBarChart={arretesCatnatBarChart}
-                    gestionRisquesPieChart={arretesCatnatPieChart}
-                    typesRisques={typesRisques}
-                    setTypeRisqueValue={setTypeRisqueValue}
-                    setSliderValue={setSliderValue}
-                    sliderValue={sliderValue}
-                  />
-                </div>
+                <CatNatText />
               </div>
-            ) : (
-              <GraphDataNotFound code={code} libelle={libelle} />
-            )}
+              <div className="w-2/3">
+                {
+                  gestionRisques.length !== 0 ?
+                    <CatnatDataViz
+                      carteCommunes={communesMap}
+                      datavizTab={datavizTab}
+                      setDatavizTab={setDatavizTab}
+                      typeRisqueValue={typeRisqueValue}
+                      gestionRisquesBarChart={arretesCatnatBarChart}
+                      gestionRisquesPieChart={arretesCatnatPieChart}
+                      typesRisques={typesRisques}
+                      setTypeRisqueValue={setTypeRisqueValue}
+                      setSliderValue={setSliderValue}
+                      sliderValue={sliderValue}
+                    /> : (
+                      <div className={styles.graphWrapper}>
+                        <p style={{ padding: '1em', margin: '0' }}>
+                          <b>Arrêtés de catastrophes naturelles</b>
+                        </p>
+                        <DataNotFoundForGraph image={DataNotFound} />
+                        <p style={{ padding: '1em', margin: '0' }}>
+                          Source : Base nationale de Gestion ASsistée des Procédures
+                          Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
+                          septembre 2024.
+                        </p>
+                      </div>
+                    )
+                }
+              </div>
+            </div>
           </>
           : <Loader />
       }
