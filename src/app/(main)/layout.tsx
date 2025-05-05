@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     default: "Facili-TACCT - adaptez votre territoire au changement climatique"
   },
   openGraph: {
-    title: "Facili-TACCT - adaptez votre territoire",
+    title: "Facili-TACCT - adaptez votre territoire au changement climatique",
     ...sharedMetadata.openGraph
   },
   description: config.description
