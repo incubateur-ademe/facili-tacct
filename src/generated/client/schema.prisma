@@ -497,10 +497,10 @@ model qualite_sites_baignade {
 }
 
 model users {
-  pk              Int       @id
+  pk              Int       @id @default(autoincrement())
   email           String    @db.VarChar(256)
-  username        String    @db.VarChar(256)
-  password        String    @db.VarChar(256)
+  username        String    @unique @db.VarChar(256)
+  password        String    @unique @db.VarChar(256)
   created_at      DateTime  @db.Timestamp(6)
   last_connection DateTime? @db.Timestamp(6)
   role            String    @db.VarChar(8)
