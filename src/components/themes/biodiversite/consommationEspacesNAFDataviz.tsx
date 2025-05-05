@@ -4,11 +4,9 @@ import { espacesNAFDatavizLegend } from '@/components/maps/legends/datavizLegend
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapEspacesNaf } from '@/components/maps/mapEspacesNAF';
 import { CommunesIndicateursDto } from '@/lib/dto';
-import { ConsommationNAF } from '@/lib/postgres/models';
 import styles from './biodiversite.module.scss';
 
 export const ConsommationEspacesNAFDataviz = (props: {
-  consommationNAF: ConsommationNAF[];
   carteCommunes: CommunesIndicateursDto[];
 }) => {
   const { carteCommunes } = props;
@@ -18,7 +16,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
         className={styles.biodiversiteGraphTitleWrapper}
         style={{ padding: '1rem' }}
       >
-        <h2>Artificialisation des sols entre 2009 et 2023</h2>
+        <h2>Sols imperméabilisés entre 2009 et 2023</h2>
       </div>
       <>
         <MapEspacesNaf carteCommunes={carteCommunes} />

@@ -11,6 +11,12 @@ export type VegetalisationDto = {
   epci: string;
   libelle_epci: string;
   libelle_geographique: string;
+  ept: string | null;
+  libelle_petr: string | null;
+  libelle_pnr: string | null;
+  code_pnr: string | null;
+  departement: string;
+  libelle_departement: string;
 };
 
 export type AgeBatiDto = {
@@ -18,6 +24,12 @@ export type AgeBatiDto = {
   libelle_geographique: string;
   epci: string;
   libelle_epci: string;
+  ept: string | null;
+  libelle_petr: string | null;
+  libelle_pnr: string | null;
+  code_pnr: string | null;
+  departement: string;
+  libelle_departement: string;
   age_bati_pre_19: number;
   age_bati_19_45: number;
   age_bati_46_90: number;
@@ -35,6 +47,12 @@ export type travailExtDto = {
   epci: string;
   libelle_epci: string;
   libelle_geographique: string;
+  ept: string | null;
+  libelle_petr: string | null;
+  libelle_pnr: string | null;
+  code_pnr: string | null;
+  departement: string;
+  libelle_departement: string;
 };
 
 export type GrandAgeIsolementDto = {
@@ -44,6 +62,10 @@ export type GrandAgeIsolementDto = {
   epci: string;
   libelle_epci: string;
   libelle_geographique: string;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  ept: string | null;
+  libelle_petr: string | null;
   over_80_sum_1968?: number;
   over_80_sum_1975?: number;
   over_80_sum_1982?: number;
@@ -88,6 +110,12 @@ export type CommunesIndicateursDto = {
     libelle_epci: string;
     libelle_geographique: string;
     code_geographique: string;
+    ept: string;
+    libelle_petr: string;
+    code_pnr: string;
+    libelle_pnr: string;
+    departement: string;
+    libelle_departement: string;
     precarite_logement: number;
     densite_bati: number;
     coordinates: string;

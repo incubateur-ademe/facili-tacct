@@ -6,7 +6,6 @@ import SubTabs from '@/components/SubTabs';
 import { SurfacesProtegeesGraphMapper } from '@/lib/mapper/biodiversite';
 import { CommunesContourMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, SurfacesProtegeesByCol } from '@/lib/postgres/models';
-import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './biodiversite.module.scss';
@@ -56,10 +55,7 @@ const SurfacesProtegeesDataviz = (props: {
     setSurfacesProtegeesSurfaces(sum);
   }, []);
 
-  const varSurfacesProtegees = Round(
-    100 * (sommeSurfaces / surfaceTerritoire),
-    1
-  );
+  const varSurfacesProtegees = 100 * (sommeSurfaces / surfaceTerritoire);
   const legends = data.children.map((e) => {
     return {
       name: e.name,

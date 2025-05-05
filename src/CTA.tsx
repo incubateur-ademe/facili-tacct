@@ -22,14 +22,16 @@ export const CTA = ({ buttons, mobile: asGroup }: CTAProps) => {
       buttons={
         buttons.map(
           ({ source, priority, title = DEFAULT_CTA_TITLE, anchor, href }) =>
-            ({
+            (({
               children: title,
               title,
+
               linkProps: {
                 href: href ?? (anchor ? `#${anchor}` : DEFAULT_CTA_HREF)
               },
+
               priority
-            }) as ButtonProps
+            }) as ButtonProps)
         ) as [ButtonProps, ...ButtonProps[]]
       }
     />

@@ -61,27 +61,27 @@ export const etatCoursDeauLegends = [
 
 export const aot40Legends = [
   {
-    value: '> 36000',
+    value: '> 36 000 µg/m³',
     color: '#5524A0'
   },
   {
-    value: '36000 - 27000',
+    value: '36 000 - 27 000 µg/m³',
     color: '#E8323B'
   },
   {
-    value: '27000 - 18000',
+    value: '27 000 - 18 000 µg/m³',
     color: '#FFCF5E'
   },
   {
-    value: '18000 - 12000',
+    value: '18 000 - 12 000 µg/m³',
     color: '#3E8F3E'
   },
   {
-    value: '12000 - 6000',
+    value: '12 000 - 6 000 µg/m³',
     color: '#009ADC'
   },
   {
-    value: '< 6000',
+    value: '< 6 000 µg/m³',
     color: '#5EEDF3'
   }
 ];
@@ -106,19 +106,19 @@ export const feuxForetLegend = [
     color: '#ECD8FE'
   },
   {
-    value: '500 - 1000 m²',
+    value: '500 - 1 000 m²',
     color: '#C48EF6'
   },
   {
-    value: '1000 - 2000 m²',
+    value: '1 000 - 2 000 m²',
     color: '#8C58BB'
   },
   {
-    value: '2000 - 5000 m²',
+    value: '2 000 - 5 000 m²',
     color: '#6E3F99'
   },
   {
-    value: '> 5000 m²',
+    value: '> 5 000 m²',
     color: '#42255C'
   }
 ];
@@ -254,25 +254,25 @@ export const surfacesIrrigueesLegend = [
   },
   {
     value: 'Valeurs manquantes ou sous secret statistique',
-    color: 'transparent'
+    color: 'white'
   }
 ];
 
 export const densiteBatiLegend = [
   {
-    value: '> 0.2',
+    value: '> 0,2',
     color: '#FF5E54'
   },
   {
-    value: '0.1 - 0.2',
+    value: '0,1 - 0,2',
     color: '#FFBD00'
   },
   {
-    value: '0.05 - 0.1',
+    value: '0,05 - 0,1',
     color: '#FFFA6A'
   },
   {
-    value: '0 - 0.05',
+    value: '0 - 0,05',
     color: '#D5F4A3'
   },
   {
@@ -326,6 +326,54 @@ export const vegetalisationLegend = [
     color: '#386cb0'
   }
 ];
+
+export const vegetalisationColors = {
+  'Continuous urban fabric': '#ffff99',
+  'Discontinuous urban fabric': '#ffff99',
+  'Industrial or commercial units': '#ffff99',
+  'Road and rail networks and associated land': '#ffff99', //cc0000
+  'Port areas': '#ffff99',
+  Airports: '#ffff99',
+  'Mineral extraction sites': '#ffff99',
+  'Dump sites': '#ffff99',
+  'Construction sites': '#ffff99',
+  'Green urban areas': '#7fc97f', //ffa6ff
+  'Sport and leisure facilities': '#ffff99',
+  'Non-irrigated arable land': '#fdc086',
+  'Permanently irrigated land': '#fdc086',
+  'Rice fields': '#fdc086',
+  Vineyards: '#fdc086', //e68000
+  'Fruit trees and berry plantations': '#fdc086',
+  'Olive groves': '#fdc086', //e6a600
+  Pastures: '#fdc086',
+  'Annual crops associated with permanent crops': '#fdc086',
+  'Complex cultivation patterns': '#fdc086',
+  'Land principally occupied by agriculture, with significant areas of natural vegetation':
+    '#fdc086',
+  'Agro-forestry areas': '#fdc086', //f2cca6
+  'Broad-leaved forest': '#7fc97f', //80ff00
+  'Coniferous forest': '#7fc97f', //00a600
+  'Mixed forest': '#7fc97f', //4dff00
+  'Natural grasslands': '#7fc97f', //ccf24d
+  'Moors and heathland': '#7fc97f',
+  'Sclerophyllous vegetation': '#7fc97f',
+  'Transitional woodland-shrub': '#7fc97f',
+  'Beaches, dunes, sands': '#7fc97f',
+  'Bare rocks': '#7fc97f',
+  'Sparsely vegetated areas': '#7fc97f',
+  'Burnt areas': '#7fc97f',
+  'Glaciers and perpetual snow': '#7fc97f',
+  'Inland marshes': '#beaed4',
+  'Peat bogs': '#beaed4',
+  'Salt marshes': '#beaed4',
+  Salines: '#beaed4',
+  'Intertidal flats': '#beaed4',
+  'Water courses': '#386cb0',
+  'Water bodies': '#386cb0',
+  'Coastal lagoons': '#386cb0',
+  Estuaries: '#386cb0',
+  'Sea and ocean': '#386cb0'
+};
 
 export const feuxForetBarChartLegend = [
   {
