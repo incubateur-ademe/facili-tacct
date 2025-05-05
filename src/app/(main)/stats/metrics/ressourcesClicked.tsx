@@ -7,14 +7,14 @@ const RessourcesClicked = async () => {
   const ressourcesClicked = await GetInsights('4HSdF87O');
   const graphData = ressourcesClicked
     ? ressourcesClicked
-        .filter((e) => e.action.math === 'total')
-        .map((e) => {
-          return {
-            titre: e.breakdown_value[0],
-            nombre: e.count
-          };
-        })
-        .sort((a, b) => b.nombre - a.nombre)
+      .filter((e) => e.action.math === 'total')
+      .map((e) => {
+        return {
+          titre: e.breakdown_value[0],
+          nombre: e.aggregated_value > 3 ? e.aggregated_value : 0
+        };
+      })
+      .sort((a, b) => b.nombre - a.nombre)
     : null;
 
   return (
@@ -43,7 +43,7 @@ const RessourcesClicked = async () => {
                 borderRadius: '0.5rem'
               }}
             >
-              <BarChartStats graphData={graphData} bottom={230} />
+              <BarChartStats graphData={graphData.filter(el => el.nombre !== 0)} bottom={230} />
             </div>
           </div>
         </div>

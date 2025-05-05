@@ -2,17 +2,19 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import { BarChart } from '@/components/charts/inconfortThermique/BarChartAgeBati';
-import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
-import { TagItem } from '@/components/patch4/TagItem';
+import TagInIndicator from '@/components/patch4/TagInIndicator';
 import { AgeBatiDto } from '@/lib/dto';
 import { ageBatiMapper } from '@/lib/mapper/inconfortThermique';
 import { InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { eptRegex } from '@/lib/utils/regex';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { AgeBatiText } from './staticTexts';
 import styles from './themes.module.scss';
 
 interface ChartData {
@@ -38,23 +40,29 @@ export const AgeBati = (props: {
 }) => {
   const { inconfortThermique } = props;
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo');
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
+
   const ageBatiMapped = inconfortThermique.map(ageBatiMapper);
-  const ageBatiCommune = codgeo
-    ? ageBatiMapped.filter((e) => e.code_geographique === codgeo)
-    : null;
-  const ageBatiEpci = ageBatiMapped.filter((e) => e.epci === codepci);
-  const ageBatiDptmt = ageBatiMapped;
-  const ageBatiCollectivite = ageBatiCommune ? ageBatiCommune : ageBatiEpci;
+
+  const ageBatiTerritoire =
+    type === 'commune'
+      ? ageBatiMapped.filter((e) => e.code_geographique === code)
+      : type === 'ept' && eptRegex.test(libelle)
+        ? ageBatiMapped.filter((e) => e.ept === libelle)
+        : type === 'epci' && !eptRegex.test(libelle)
+          ? ageBatiMapped.filter((e) => e.epci === code)
+          : ageBatiMapped;
+
   const averages = {
-    averageAgeBatiPre19: average(ageBatiCollectivite, 'age_bati_pre_19'),
-    averageAgeBati1945: average(ageBatiCollectivite, 'age_bati_19_45'),
-    averageAgeBati4690: average(ageBatiCollectivite, 'age_bati_46_90'),
-    averageAgeBati9105: average(ageBatiCollectivite, 'age_bati_91_05'),
-    averageAgeBatiPost06: average(ageBatiCollectivite, 'age_bati_post06')
+    averageAgeBatiPre19: average(ageBatiTerritoire, 'age_bati_pre_19'),
+    averageAgeBati1945: average(ageBatiTerritoire, 'age_bati_19_45'),
+    averageAgeBati4690: average(ageBatiTerritoire, 'age_bati_46_90'),
+    averageAgeBati9105: average(ageBatiTerritoire, 'age_bati_91_05'),
+    averageAgeBatiPost06: average(ageBatiTerritoire, 'age_bati_post06')
   };
 
   const constructionBefore2006 =
@@ -103,95 +111,51 @@ export const AgeBati = (props: {
 
   useEffect(() => {
     void (async () => {
-      const temp = await GetPatch4(codgeo ?? codepci);
+      const temp = await GetPatch4(code, type);
       setPatch4(temp);
       setIsLoadingPatch4(false);
-    })();
-  }, [codgeo, codepci]);
+    })()
+  }, [code]);
 
-  const fortesChaleurs = patch4
-    ? AlgoPatch4(patch4, 'fortes_chaleurs') : undefined;
-  const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
+  const fortesChaleurs = patch4 ? AlgoPatch4(patch4, 'fortes_chaleurs') : 'null';
+  const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : 'null';
 
   return (
     <>
       {!isLoadingPatch4 ? (
-        <>
-          {inconfortThermique.length &&
-            !Object.values(averages).includes(NaN) &&
-            Sum(Object.values(averages)) != 0 ? (
-            <div className={styles.container}>
-              <div className="w-2/5">
-                <div className={styles.explicationWrapper}>
-                  {codgeo ? (
-                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      Dans la commune de{' '}
-                      {ageBatiCollectivite[0]?.libelle_geographique},{' '}
-                      <b>{constructionBefore2006?.toFixed(1)} %</b> des
-                      résidences principales sont construites avant 2006.
-                    </p>
-                  ) : (
-                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      Dans l'EPCI {ageBatiCollectivite[0]?.libelle_epci},{' '}
-                      <b>{constructionBefore2006?.toFixed(1)} %</b> des
-                      résidences principales sont construites avant 2006.
-                    </p>
-                  )}
-                  <div className={styles.patch4Wrapper}>
-                    {secheresse === 'Intensité très forte' ? (
-                      <TagItem
-                        icon={secheresseIcon}
-                        indice="Sécheresse des sols"
-                        tag={secheresse}
-                      />
-                    ) : fortesChaleurs === 'Intensité très forte' ? (
-                      <TagItem
-                        icon={fortesChaleursIcon}
-                        indice="Fortes chaleurs"
-                        tag={fortesChaleurs}
-                      />
-                    ) : null}
-                    {secheresse === 'Intensité forte' ? (
-                      <TagItem
-                        icon={secheresseIcon}
-                        indice="Sécheresse des sols"
-                        tag={secheresse}
-                      />
-                    ) : fortesChaleurs === 'Intensité forte' ? (
-                      <TagItem
-                        icon={fortesChaleursIcon}
-                        indice="Fortes chaleurs"
-                        tag={fortesChaleurs}
-                      />
-                    ) : null}
-                  </div>
-                </div>
-                <p className="px-4">
-                  La robustesse des logements face aux températures élevées
-                  dépend leur qualité intrinsèque (inertie thermique, présence
-                  de volets extérieurs, qualité des rénovations...). Si vous ne
-                  disposez pas d'étude spécifique sur le sujet, la période de
-                  construction, fournie par l'INSEE, vous donne une première
-                  approximation.
-                </p>
-              </div>
-              <div className="w-3/5">
-                <div className={styles.graphWrapper}>
-                  <p style={{ padding: '1em', margin: '0' }}>
-                    <b>Périodes de construction des bâtiments</b>
+        <div className={styles.container}>
+          <div className="w-2/5">
+            <div className={styles.explicationWrapper}>
+              {
+                constructionBefore2006 &&
+                  !Object.values(averages).includes(NaN) &&
+                  Sum(Object.values(averages)) != 0 ?
+                  <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                    Sur votre territoire,{' '}
+                    <b>{Round(constructionBefore2006, 1)} %</b> des résidences
+                    principales sont construites avant 2006.
                   </p>
-                  {chartData ? <BarChart chartData={chartData} /> : <Loader />}
-                  <p style={{ padding: '1em', margin: '0' }}>Source : INSEE</p>
-                </div>
-              </div>
+                  : ""
+              }
+              <TagInIndicator
+                indice={["Fortes Chaleurs", "Sécheresse des sols"]}
+                icon={[fortesChaleursIcon, secheresseIcon]}
+                tag={[fortesChaleurs, secheresse]}
+              />
             </div>
-          ) : (
-            <GraphDataNotFound code={codgeo ? codgeo : codepci} />
-          )}
-        </>
-      ) : (
-        <Loader />
-      )}
+            <AgeBatiText />
+          </div>
+          <div className="w-3/5">
+            <div className={styles.graphWrapper}>
+              <p style={{ padding: '1em', margin: '0' }}>
+                <b>Part des résidence principales par période de construction</b>
+              </p>
+              {chartData ? <BarChart chartData={chartData} /> : <Loader />}
+              <p style={{ padding: '1em', margin: '0' }}>Source : INSEE</p>
+            </div>
+          </div>
+        </div>
+      ) : <Loader />}
     </>
   );
 };

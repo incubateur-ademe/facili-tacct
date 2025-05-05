@@ -5,11 +5,12 @@ import { GridCol } from '@/dsfr/layout';
 
 interface Props {
   code: string | undefined;
+  libelle: string;
 }
 
 const GraphImage = GraphNotFound as HTMLImageElement;
 
-export function GraphDataNotFound({ code }: Props) {
+export const GraphDataNotFound = ({ code, libelle }: Props) => {
   return (
     <div
       style={{
@@ -24,7 +25,7 @@ export function GraphDataNotFound({ code }: Props) {
       <GridCol lg={5}>
         <h4>Données indisponibles</h4>
         <p>
-          Pour la collectivité que vous avez renseignée (code : {code}), nous ne
+          Pour le territoire que vous avez renseigné ({libelle} - {code}), nous ne
           disposons pas de cette donnée.
         </p>
       </GridCol>

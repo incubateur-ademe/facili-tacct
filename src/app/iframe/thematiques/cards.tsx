@@ -2,7 +2,7 @@
 import { thematiques } from '@/lib/thematiques';
 import Badge from '@codegouvfr/react-dsfr/Badge';
 import { Card } from '@codegouvfr/react-dsfr/Card';
-import { Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 import { CardComp } from './card';
 import styles from './thematiques.module.scss';
 
@@ -15,25 +15,18 @@ export const Cards = () => {
   }, []);
   return (
     <div className={styles.cardWrapper}>
-      {thematiques.disponible.map((thematique) => (
-        <Suspense>
-          <CardComp
-            key={thematique.id}
-            imageUrl={thematique.imageUrl}
-            thematique={thematique.thematique}
-            badgeSeverity="success"
-            badge="Disponible"
-            title={thematique.thematique}
-          />
-        </Suspense>
+      {thematiques.disponible.map((thematique, i) => (
+        <CardComp
+          key={`thematiqueDispo${i}`}
+          imageUrl={thematique.imageUrl}
+          thematique={thematique.thematique}
+          badgeSeverity="success"
+          badge="Disponible"
+          title={thematique.thematique}
+        />
       ))}
-      {thematiques.bientot_disponible.map((thematique) => (
-        <div
-          style={{
-            width: 360
-          }}
-          key={thematique.id}
-        >
+      {thematiques.bientot_disponible.map((thematique, i) => (
+        <div style={{ width: 360 }} key={`thematiqueBientotDispo${i}`}>
           <Card
             background
             border
@@ -47,13 +40,9 @@ export const Cards = () => {
               imgTag: 'fr-ratio-32x9'
             }}
             end={
-              <ul className="fr-badges-group">
-                <li>
-                  <Badge noIcon severity="new">
-                    Bientôt disponible
-                  </Badge>
-                </li>
-              </ul>
+              <Badge noIcon severity="new">
+                Bientôt disponible
+              </Badge>
             }
           />
         </div>
