@@ -16,12 +16,12 @@ const footerId = 'footer';
 export const metadata: Metadata = {
   metadataBase: new URL(config.host),
   ...sharedMetadata,
-  // title: {
-  //   template: `Facili-TACCT - adaptez votre territoire au changement climatique - %s`,
-  //   default: "Facili-TACCT - adaptez votre territoire au changement climatique"
-  // },
+  title: {
+    template: `Facili-TACCT - adaptez votre territoire au changement climatique - %s`,
+    default: "Facili-TACCT - adaptez votre territoire au changement climatique"
+  },
   openGraph: {
-    title: "Facili-TACCT - adaptez votre territoire au changement climatique",
+    title: "Facili-TACCT - adaptez votre territoire",
     ...sharedMetadata.openGraph
   },
   description: config.description
