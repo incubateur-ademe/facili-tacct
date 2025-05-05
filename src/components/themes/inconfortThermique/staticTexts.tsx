@@ -227,3 +227,130 @@ export const SurfacesIrrigueesText = () => (
     </p>
   </div>
 );
+
+export const ConsommationEspacesNAFAmenagementText = () => (
+  <div className="px-4">
+    <p>
+      Depuis dix ans, 24 000 hectares d’espaces naturels, agricoles et
+      forestiers disparaissent chaque année sous le béton, soit 10
+      fois la superficie de Marseille. Depuis les années 1980, les
+      surfaces artificialisées ont augmenté de 70 %, un rythme bien
+      supérieur à celui de la population française (+19 %). Pire,
+      elles progressent, même là où la population diminue.
+    </p>
+    <p>
+      En périphérie des villes, l’étalement urbain allonge les trajets
+      domicile-travail, renforce la dépendance à la voiture et
+      augmente les émissions de gaz à effet de serre. Chaque hectare
+      artificialisé libère jusqu’à 190 tonnes de CO2, soit l’empreinte
+      carbone annuelle de 20 Français.
+    </p>
+    <p>
+      ⇒ 43 % de la consommation d'espace a lieu dans des zones
+      péri-urbaines peu denses
+    </p>
+    <p>
+      ⇒ 66 % des ENAF consommés sont destinées à l’habitat dont plus
+      de la moitié (51 %) est constitué de constructions de moins de 8
+      logements par hectare
+    </p>
+    <p>
+      ⇒ 7 820 communes consomment de l’espace alors qu’elles perdent
+      des ménages : une consommation d’ENAF déconnectée des besoins
+      réels des territoires !
+    </p>
+  </div>
+);
+
+export const ConsommationEspacesNAFBiodiversiteText = () => (
+  <div className="px-4">
+    <p>
+      L'artificialisation des sols constitue l’une des premières causes
+      de l’effondrement de la biodiversité. Elle porte atteinte aux
+      processus naturels essentiels, comme la pollinisation, fragmente
+      voire détruit les habitats et isole les espèces. Elle participe
+      en outre à une homogénéisation de la biodiversité qui affecte la
+      résilience des milieux.
+    </p>
+    <div>
+      <p>
+        La consommation d’ENAF a des conséquences dramatiques pour le
+        climat :
+      </p>
+      <ul className="text-[1rem] leading-[1.5rem]">
+        <li>
+          Les sols perdent leur rôle de puits de carbone et leur
+          capacité d’infiltration ce qui perturbe le cycle naturel de
+          l'eau, avec pour corollaire une réduction de la recharges
+          des nappes, une réduction du stockage de l’eau dans les sols
+          et une aggravation des risques d’inondations.
+        </li>
+        <li>
+          En détruisant le milieu de vie des micro-organismes des
+          sols, l’artificialisation réduit drastiquement les capacités
+          épuratoires des milieux.
+        </li>
+      </ul>
+    </div>
+    <p>
+      ⇒ 24 000 hectares par an d’espaces naturels, agricoles et
+      forestiers sont consommés depuis dix ans, soit l’équivalent de
+      10 fois la superficie de Marseille.
+    </p>
+    <p>
+      ⇒ Avec 446 m² de terres artificialisées consommées par habitant,
+      la France se place au 4e rang européen.
+    </p>
+    <p>
+      ⇒ Un hectare de sol artificialisé libère jusqu’à 190 tonnes de
+      CO2, soit l’empreinte carbone annuelle de 20 Français.
+    </p>
+  </div>
+);
+
+export const SurfacesEnBioText = () => (
+  <div className="px-4">
+    <p>
+      L'effondrement de la biodiversité n’est pas une fiction : 69 %
+      des espèces sauvages ont disparu à l'échelle de la planète entre
+      1970 et 2018, du fait notamment de la dégradation ou de la
+      disparition de leurs habitats naturels. L’agriculture dispose de
+      deux leviers complémentaires de protection de la biodiversité :
+      adopter des pratiques moins intensives et favoriser la diversité
+      des paysages. Les cultures à bas niveau d’intrants, la
+      non-utilisation de produits chimiques de synthèse, la
+      non-utilisation d'OGM, le recyclage des matières organiques, la
+      rotation des cultures et la lutte biologique participent à ces
+      deux objectifs.
+    </p>
+    <p>
+      Si l’agriculture biologique n’est pas une solution parfaite,
+      elle reste aujourd’hui l’une des meilleures réponses, aux côtés
+      des pratiques à bas-intrants, pour préserver la biodiversité.
+      Alors que 70 % des sols agricoles sont dégradés en Europe, ses
+      effets positifs sur la vie souterraine sont avérés. Des
+      écosystèmes renforcés sont des écosystèmes plus résilients aux
+      impacts du changement climatique.
+    </p>
+    <p>
+      ⇒ Une biodiversité plus riche dans les parcelles en agriculture
+      biologique : +32 % d'individus et +23 % d'espèces par rapport à
+      l’agriculture conventionnelle.
+    </p>
+    <p>
+      ⇒ 70 % des indicateurs biologiques des sols s'améliorent après
+      conversion.
+    </p>
+    <p>
+      ⇒ Une pollinisation 2,4 fois plus efficace qu'en agriculture
+      conventionnelle.
+    </p>
+    <p>
+      ⇒ Une meilleure résistance à la sécheresse : disponibilité en
+      eau dans les sols améliorée de 4 % à 45 %.
+    </p>
+    <p>
+      ⇒ Jusqu'à 35 % de carbone supplémentaire stocké dans les sols.
+    </p>
+  </div>
+);

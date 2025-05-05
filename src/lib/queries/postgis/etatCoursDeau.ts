@@ -21,15 +21,18 @@ export const GetEtatCoursDeau = async (
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsText(geometry) geometry
         FROM postgis."communes_drom" WHERE code_geographique=${code};`;
-      const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
+      if (commune.length !== 0) {
+        const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
         SELECT
         name,
         etateco,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."etat_cours_d_eau" 
         WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${commune[0].geometry})), 4326), ${distance});`;
-      console.timeEnd('Query Execution Time EtatCoursDeau');
-      return value;
+        console.timeEnd('Query Execution Time EtatCoursDeau');
+        return value;
+      }
+      return [];
     } else if (type === 'ept' && eptRegex.test(libelle)) {
       console.time('Query Execution Time EtatCoursDeau');
       const ept = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
@@ -37,15 +40,18 @@ export const GetEtatCoursDeau = async (
         ept,
         ST_AsText(ST_Union(geometry)) as geometry
         FROM postgis."communes_drom" WHERE ept=${libelle} GROUP BY ept;`;
-      const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
+      if (ept.length !== 0) {
+        const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
         SELECT
         name,
         etateco,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."etat_cours_d_eau" 
-        WHERE ST_Intersects(geometry, ST_GeomFromText(${ept[0].geometry}, 4326));`; //WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${ept[0].geometry})), 4326), ${distance});`; 
-      console.timeEnd('Query Execution Time EtatCoursDeau');
-      return value;
+        WHERE ST_Intersects(geometry, ST_GeomFromText(${ept[0].geometry}, 4326));`; //WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${ept[0].geometry})), 4326), ${distance});`;
+        console.timeEnd('Query Execution Time EtatCoursDeau');
+        return value;
+      }
+      return [];
     } else if (type === 'epci' && !eptRegex.test(libelle)) {
       console.time('Query Execution Time EtatCoursDeau');
       const epci = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
@@ -53,15 +59,18 @@ export const GetEtatCoursDeau = async (
         epci,
         ST_AsText(ST_Union(geometry)) as geometry
         FROM postgis."communes_drom" WHERE epci=${code} GROUP BY epci;`;
-      const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
+      if (epci.length !== 0) {
+        const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
         SELECT
         name,
         etateco,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."etat_cours_d_eau" 
         WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`;
-      console.timeEnd('Query Execution Time EtatCoursDeau');
-      return value;
+        console.timeEnd('Query Execution Time EtatCoursDeau');
+        return value;
+      }
+      return [];
     } else if (type === 'petr') {
       console.time('Query Execution Time EtatCoursDeau');
       const petr = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
@@ -69,15 +78,18 @@ export const GetEtatCoursDeau = async (
         libelle_petr,
         ST_AsText(ST_Union(geometry)) as geometry
         FROM postgis."communes_drom" WHERE libelle_petr=${libelle} GROUP BY libelle_petr;`;
-      const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
+      if (petr.length !== 0) {
+        const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
         SELECT
         name,
         etateco,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."etat_cours_d_eau" 
         WHERE ST_Intersects(geometry, ST_GeomFromText(${petr[0].geometry}, 4326));`;
-      console.timeEnd('Query Execution Time EtatCoursDeau');
-      return value;
+        console.timeEnd('Query Execution Time EtatCoursDeau');
+        return value;
+      }
+      return [];
     } else if (type === 'pnr') {
       console.time('Query Execution Time EtatCoursDeau');
       const pnr = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
@@ -85,15 +97,18 @@ export const GetEtatCoursDeau = async (
         code_pnr,
         ST_AsText(ST_Union(geometry)) as geometry
         FROM postgis."communes_drom" WHERE code_pnr=${code} GROUP BY code_pnr;`;
-      const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
+      if (pnr.length !== 0) {
+        const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
         SELECT
         name,
         etateco,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."etat_cours_d_eau" 
         WHERE ST_Intersects(geometry, ST_GeomFromText(${pnr[0].geometry}, 4326));`;
-      console.timeEnd('Query Execution Time EtatCoursDeau');
-      return value;
+        console.timeEnd('Query Execution Time EtatCoursDeau');
+        return value;
+      }
+      return [];
     } else if (type === 'departement') {
       console.time('Query Execution Time EtatCoursDeau');
       const departement = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
@@ -101,21 +116,23 @@ export const GetEtatCoursDeau = async (
         departement, 
         ST_AsText(ST_Union(geometry)) as geometry 
         FROM postgis."communes_drom" WHERE departement=${code} GROUP BY departement;`;
-      const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
+      if (departement.length !== 0) {
+        const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
         SELECT
         name,
         etateco,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."etat_cours_d_eau" 
         WHERE ST_Intersects(geometry, ST_GeomFromText(${departement[0].geometry}, 4326));`;
-      console.timeEnd('Query Execution Time EtatCoursDeau');
-      return value;
+        console.timeEnd('Query Execution Time EtatCoursDeau');
+        return value;
+      }
+      return [];
     } else {
       return [] as EtatCoursDeau[];
     }
   } catch (error) {
     console.error(error);
-    await PrismaPostgres.$disconnect();
     throw new Error('Internal Server Error');
   }
 };

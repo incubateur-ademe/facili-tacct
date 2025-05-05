@@ -141,7 +141,7 @@ export const Catnat = (props: {
                         de dégâts significatifs.
                       </p>
                     ) : (
-                      <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                      <p style={{ color: '#161616' }}>
                         Depuis 1982, <b>{gestionRisques.length}</b> événement(s)
                         climatique(s) sont à l’origine d’une reconnaissance de l'état
                         de catastrophe naturelle sur votre territoire.

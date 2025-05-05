@@ -1,5 +1,7 @@
 'use client';
 
+import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { espacesNAFDatavizLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapEspacesNaf } from '@/components/maps/mapEspacesNAF';
@@ -18,15 +20,19 @@ export const ConsommationEspacesNAFDataviz = (props: {
       >
         <h2>Sols imperméabilisés entre 2009 et 2023</h2>
       </div>
-      <>
-        <MapEspacesNaf carteCommunes={carteCommunes} />
-        <div
-          className={styles.legend}
-          style={{ width: 'auto', justifyContent: 'center' }}
-        >
-          <LegendCompColor legends={espacesNAFDatavizLegend} />
-        </div>
-      </>
+      {
+        carteCommunes.length !== 0 ? (
+          <>
+            <MapEspacesNaf carteCommunes={carteCommunes} />
+            <div
+              className={styles.legend}
+              style={{ width: 'auto', justifyContent: 'center' }}
+            >
+              <LegendCompColor legends={espacesNAFDatavizLegend} />
+            </div>
+          </>
+        ) : <DataNotFoundForGraph image={DataNotFound} />
+      }
       <p style={{ padding: '1em', margin: '0' }}>Source : CEREMA, avril 2024</p>
     </div>
   );

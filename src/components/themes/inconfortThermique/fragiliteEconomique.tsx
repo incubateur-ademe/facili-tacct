@@ -1,5 +1,6 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
-import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { fragiliteEcoLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
@@ -33,8 +34,6 @@ export const FragiliteEconomique = ({
   const communesMap = carteCommunes
     .map(CommunesIndicateursMapper)
     .filter((e) => !isNaN(e.properties.precarite_logement));
-
-
 
   const carteTerritoire =
     type === 'ept' && eptRegex.test(libelle)
@@ -76,62 +75,67 @@ export const FragiliteEconomique = ({
     <>
       {(communesMap && !isLoadingPatch4) ? (
         <div className={styles.container}>
-          {communesMap.length ? (
-            <>
-              <div className="w-2/5">
-                <div className={styles.explicationWrapper}>
-                  <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                    La part des ménages en situation de précarité énergétique
-                    liée au logement sur votre territoire est de{' '}
-                    <b>{Round((100 * precariteLogTerritoire), 1)} %. </b>
-                  </p>
-                  {type === 'commune' || eptRegex.test(libelle) ? (
-                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
-                      Ce taux est de{' '}
-                      <b>
-                        {Round((100 * precariteLogTerritoireSup), 1)} %
-                      </b>{' '}
-                      dans votre EPCI.
-                    </p>
-                  ) : (
-                    ''
-                  )}
-                  <TagInIndicator
-                    indice={["Fortes Chaleurs"]}
-                    icon={[fortesChaleursIcon]}
-                    tag={[fortesChaleurs]}
-                  />
-                  <CustomTooltip
-                    title={fragiliteEconomiqueTooltipText}
-                    texte="D'où vient ce chiffre ?"
-                  />
-                </div>
-                <FragiliteEconomiqueText />
-              </div>
-              <div className="w-3/5">
-                <div className={styles.graphWrapper}>
-                  <p style={{ padding: '1em', margin: '0' }}>
+          <>
+            <div className="w-2/5">
+              <div className={styles.explicationWrapper}>
+                <p style={{ color: '#161616' }}>
+                  La part des ménages en situation de précarité énergétique
+                  liée au logement sur votre territoire est de{' '}
+                  <b>{Round((100 * precariteLogTerritoire), 1)} %. </b>
+                </p>
+                {type === 'commune' || eptRegex.test(libelle) ? (
+                  <p style={{ color: '#161616' }}>
+                    Ce taux est de{' '}
                     <b>
-                      Part des ménages en précarité énergétique liée au logement
-                    </b>
+                      {Round((100 * precariteLogTerritoireSup), 1)} %
+                    </b>{' '}
+                    dans votre EPCI.
                   </p>
-                  <Map data={'precarite_log'} carteCommunes={carteTerritoire} />
-                  <div
-                    className={styles.legend}
-                    style={{ width: 'auto', justifyContent: 'center' }}
-                  >
-                    <LegendCompColor legends={fragiliteEcoLegend} />
-                  </div>
-                  <p style={{ padding: '1em', margin: '0' }}>
-                    Source : Observation de la précarité énergétique (ONPE),
-                    GEODIP
-                  </p>
-                </div>
+                ) : (
+                  ''
+                )}
+                <TagInIndicator
+                  indice={["Fortes Chaleurs"]}
+                  icon={[fortesChaleursIcon]}
+                  tag={[fortesChaleurs]}
+                />
+                <CustomTooltip
+                  title={fragiliteEconomiqueTooltipText}
+                  texte="D'où vient ce chiffre ?"
+                />
               </div>
-            </>
-          ) : (
-            <GraphDataNotFound code={code} libelle={libelle} />
-          )}
+              <FragiliteEconomiqueText />
+            </div>
+            <div className="w-3/5">
+              <div className={styles.graphWrapper}>
+                <p style={{ padding: '1em', margin: '0' }}>
+                  <b>
+                    Part des ménages en précarité énergétique liée au logement
+                  </b>
+                </p>
+                  {
+                    carteTerritoire.length > 0 ? (
+                      <>
+                        <Map
+                          data={'precarite_log'}
+                          carteCommunes={carteTerritoire}
+                        />
+                        <div
+                          className={styles.legend}
+                          style={{ width: 'auto', justifyContent: 'center' }}
+                        >
+                          <LegendCompColor legends={fragiliteEcoLegend} />
+                        </div>
+                      </>
+                    ) : <DataNotFoundForGraph image={DataNotFound} />
+                  }
+                <p style={{ padding: '1em', margin: '0' }}>
+                  Source : Observation de la précarité énergétique (ONPE),
+                  GEODIP
+                </p>
+              </div>
+            </div>
+          </>
         </div>
       ) : (
         <Loader />

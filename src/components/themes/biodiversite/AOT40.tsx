@@ -156,7 +156,7 @@ const AOT40Dataviz = (props: {
       {
         !isLoadingPatch4 ?
           <>
-            {aot40.length ? (
+            {aot40.length && carteCommunes.length ? (
               <div className={styles.container}>
                 <div className="w-5/12">
                   <div className={styles.explicationWrapper}>

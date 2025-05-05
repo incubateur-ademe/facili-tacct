@@ -81,12 +81,12 @@ const Vegetalisation = (props: {
             <div className={styles.explicationWrapper}>
               {isNaN(foretPercent) ? "" :
                 foretPercent == Infinity ? (
-                  <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                  <p style={{ color: '#161616' }}>
                     Sur le territoire, la forêt et les espaces semi-naturels
                     recouvrent <b>{Round(foretSum, 1)}</b> hectares.
                   </p>
                 ) : (
-                  <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                  <p style={{ color: '#161616' }}>
                     Sur votre territoire, <b>{Round(foretPercent, 1)} %</b> est
                     recouvert par de la forêt ou des espaces semi-naturels. Cela correspond à
                     <b> {Round(foretSum, 1)}</b> hectares.

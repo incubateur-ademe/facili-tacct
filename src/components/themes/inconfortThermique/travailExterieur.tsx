@@ -133,7 +133,7 @@ export const TravailExterieur = (props: {
               <div className={styles.explicationWrapper}>
                 {
                   sums.sumConstruction || sums.sumAgriculture ?
-                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                    <p style={{ color: '#161616' }}>
                       L’agriculture et la construction représentent une grande part
                       de postes en extérieur. La part cumulée des emplois de votre
                       territoire dans ces deux secteurs à risque est de
