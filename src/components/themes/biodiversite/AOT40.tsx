@@ -251,8 +251,7 @@ const AOT40Dataviz = (props: {
                       style={{ padding: '1rem' }}
                     >
                       <h2>
-                        Concentration dans l’air durant la période de végétation,
-                        moyenne sur 5 ans 2020-2024 (µg/m³)
+                        Concentration d’ozone pendant la période de végétation (moyenne 2020-2024)
                       </h2>
                     </div>
                     <div>

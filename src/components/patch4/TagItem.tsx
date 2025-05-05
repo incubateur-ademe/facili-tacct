@@ -1,5 +1,5 @@
 import { TagPatch4 } from '@/components/patch4/Tag';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import styles from '../components.module.scss';
 
 export const TagItem = ({
@@ -7,7 +7,7 @@ export const TagItem = ({
   indice,
   tag
 }: {
-  icon: StaticImageData;
+  icon: string;
   indice: string;
   tag: string;
 }) => {

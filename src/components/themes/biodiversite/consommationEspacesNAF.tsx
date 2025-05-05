@@ -37,7 +37,7 @@ export const ConsommationEspacesNAF = (props: {
 
   return (
     <>
-      {consommationNAF.length > 0 ? (
+      {consommationNAF.length > 0 && sumNaf ? (
         <div className={styles.container}>
           <div className="w-2/5">
             <div className={styles.explicationWrapper}>

@@ -5,7 +5,7 @@ import { fragiliteEcoLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { Map } from '@/components/maps/map';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
-import { TagItem } from '@/components/patch4/TagItem';
+import TagInIndicator from '@/components/patch4/TagInIndicator';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, Patch4 } from '@/lib/postgres/models';
@@ -15,6 +15,7 @@ import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { FragiliteEconomiqueText } from './staticTexts';
 import styles from './themes.module.scss';
 
 export const FragiliteEconomique = ({
@@ -32,6 +33,8 @@ export const FragiliteEconomique = ({
   const communesMap = carteCommunes
     .map(CommunesIndicateursMapper)
     .filter((e) => !isNaN(e.properties.precarite_logement));
+
+
 
   const carteTerritoire =
     type === 'ept' && eptRegex.test(libelle)
@@ -67,7 +70,7 @@ export const FragiliteEconomique = ({
 
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
-    : undefined;
+    : "null";
 
   return (
     <>
@@ -93,58 +96,17 @@ export const FragiliteEconomique = ({
                   ) : (
                     ''
                   )}
-                  <div className={styles.patch4Wrapper}>
-                    {fortesChaleurs === 'Intensité très forte' ||
-                      fortesChaleurs === 'Intensité forte' ? (
-                      <TagItem
-                        icon={fortesChaleursIcon}
-                        indice="Fortes chaleurs"
-                        tag={fortesChaleurs}
-                      />
-                    ) : null}
-                  </div>
+                  <TagInIndicator
+                    indice={["Fortes Chaleurs"]}
+                    icon={[fortesChaleursIcon]}
+                    tag={[fortesChaleurs]}
+                  />
                   <CustomTooltip
                     title={fragiliteEconomiqueTooltipText}
                     texte="D'où vient ce chiffre ?"
                   />
                 </div>
-                <div className="px-4">
-                  <p>
-                    Les ménages en précarité énergétique doivent faire des choix
-                    difficiles : limiter le chauffage, réduire l’utilisation de
-                    l’eau chaude pour éviter des factures trop élevées. Un
-                    logement mal isolé l’hiver sera aussi coûteux à rafraîchir
-                    l’été.
-                  </p>
-                  <p>
-                    Leurs conditions de vie sont directement impactées, avec des
-                    conséquences sur leur santé, leur bien-être et leur capacité
-                    à maintenir une qualité de vie décente. La précarité
-                    énergétique n'est pas seulement une question de confort :
-                    elle est un enjeu de santé publique et de justice sociale.
-                  </p>
-                  <p>
-                    En 2024 : <br></br>- <b>55 %</b> des Français déclarent
-                    avoir souffert d’un excès de chaleur en été.<br></br>-{' '}
-                    <b>79 %</b> des Français ont dû restreindre leur chauffage.
-                    <br></br>
-                    <br></br>
-                    En 2023 : <br></br>- plus d’un million de ménages ont subi
-                    une intervention de leur fournisseur d’énergie pour cause
-                    d'impayés, une situation qui les expose à une précarité
-                    encore plus grande.
-                  </p>
-                  <p>
-                    - - - - <br></br>
-                    Adapter les logements au risque de forte chaleur est la
-                    mesure 9 du Plan national d’adaptation au changement
-                    climatique (PNACC 3).
-                  </p>
-                  <p>
-                    Protéger les populations précaires des fortes chaleurs est
-                    la mesure n°14 du PNACC 3.
-                  </p>
-                </div>
+                <FragiliteEconomiqueText />
               </div>
               <div className="w-3/5">
                 <div className={styles.graphWrapper}>

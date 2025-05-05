@@ -142,7 +142,7 @@ export const Departement = async (variableCollectivite: string) => {
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', '))
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${variableCollectivite})
       )
-      LIMIT 20;
+      ORDER BY index ASC LIMIT 20;
     `;
   return value;
 };

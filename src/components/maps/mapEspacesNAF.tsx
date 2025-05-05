@@ -107,6 +107,7 @@ export const MapEspacesNaf = (props: {
       mouseout: mouseOutHandler
     });
   };
+  console.log('carteCommunesFiltered', carteCommunesFiltered);
 
   return (
     <>

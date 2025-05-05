@@ -7,16 +7,18 @@ export const BoundsFromCollection = (
   type: string,
   code: string
 ) => {
-  const boundsData = type === "commune" 
-    ? collection.filter(el => el.properties.code_geographique === code)
-    : collection;
+  const boundsData =
+    type === 'commune'
+      ? collection.filter((el) => el.properties.code_geographique === code)
+      : collection;
   const featureCollection = turf.featureCollection(boundsData as Any);
-  const bbox = turf.bboxPolygon(turf.bbox(featureCollection))
-  const enveloppe = bbox.geometry.coordinates[0].map(
-    ([lng, lat]) => [lat, lng]
-  );
+  const bbox = turf.bboxPolygon(turf.bbox(featureCollection));
+  const enveloppe = bbox.geometry.coordinates[0].map(([lng, lat]) => [
+    lat,
+    lng
+  ]);
   return enveloppe;
-}
+};
 
 export const BoundsFromCollectionCLC = (
   collection: ClcDto[],
@@ -24,9 +26,10 @@ export const BoundsFromCollectionCLC = (
   code: string
 ) => {
   const featureCollection = turf.featureCollection(collection as Any);
-  const bbox = turf.bboxPolygon(turf.bbox(featureCollection))
-  const enveloppe = bbox.geometry.coordinates[0].map(
-    ([lng, lat]) => [lat, lng]
-  );
+  const bbox = turf.bboxPolygon(turf.bbox(featureCollection));
+  const enveloppe = bbox.geometry.coordinates[0].map(([lng, lat]) => [
+    lat,
+    lng
+  ]);
   return enveloppe;
-}
+};

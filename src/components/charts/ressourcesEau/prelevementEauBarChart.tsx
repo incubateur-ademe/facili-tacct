@@ -1,12 +1,11 @@
 'use client';
 
 import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
-import { RessourcesEauNew } from '@/lib/postgres/models';
+import { RessourcesEau } from '@/lib/postgres/models';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { BarDatum, BarTooltipProps } from '@nivo/bar';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { GraphDataNotFound } from '../../graph-data-not-found';
 import { NivoBarChart } from '../NivoBarChart';
 
 type GraphData = {
@@ -50,7 +49,7 @@ const ressourcesEauYears = [
   'A2020'
 ];
 
-const graphDataFunct = (filteredYears: string[], data: RessourcesEauNew[]) => {
+const graphDataFunct = (filteredYears: string[], data: RessourcesEau[]) => {
   const dataArr: GraphData[] = [];
   filteredYears.forEach((year) => {
     const genericObjects = (text: string) =>
@@ -83,7 +82,7 @@ const PrelevementEauBarChart = ({
   ressourcesEau,
   sliderValue
 }: {
-  ressourcesEau: RessourcesEauNew[];
+  ressourcesEau: RessourcesEau[];
   sliderValue: number[];
 }) => {
   const searchParams = useSearchParams();
@@ -92,7 +91,7 @@ const PrelevementEauBarChart = ({
   const libelle = searchParams.get('libelle')!;
   const dataParMaille = type === "commune"
     ? ressourcesEau.filter((obj) => obj.code_geographique === code)
-    : type === "epci" 
+    : type === "epci"
       ? ressourcesEau.filter((obj) => obj.epci === code)
       : type === "petr"
         ? ressourcesEau.filter((obj) => obj.libelle_petr === libelle)
@@ -195,34 +194,44 @@ const PrelevementEauBarChart = ({
     );
   };
 
-  return graphData && graphData.length ? (
+  return (
     <div
       style={{ height: '500px', minWidth: '450px', backgroundColor: 'white' }}
     >
-      <NivoBarChart
-        bottomTickValues={
-          minValueXTicks != maxValueXTicks
-            ? [`${minValueXTicks}`, `${maxValueXTicks}`]
-            : [`${minValueXTicks}`]
-        }
-        colors={legends.map((e) => e.couleur)}
-        graphData={graphData}
-        keys={legends.map((e) => e.texte_complet)}
-        indexBy="annee"
-        legendData={legends
-          .filter((e) => e.valeur != 0)
-          .map((legend, index) => ({
-            id: index,
-            label: legend.texteRaccourci,
-            color: legend.couleur
-          }))}
-        tooltip={CustomTooltip}
-        axisLeftLegend="Volumétrie en Mm³"
-        axisLeftTickFactor={1000000}
-      />
+      {graphData && graphData.length ? (
+        <NivoBarChart
+          bottomTickValues={
+            minValueXTicks != maxValueXTicks
+              ? [`${minValueXTicks}`, `${maxValueXTicks}`]
+              : [`${minValueXTicks}`]
+          }
+          colors={legends.map((e) => e.couleur)}
+          graphData={graphData}
+          keys={legends.map((e) => e.texte_complet)}
+          indexBy="annee"
+          legendData={legends
+            .filter((e) => e.valeur != 0)
+            .map((legend, index) => ({
+              id: index,
+              label: legend.texteRaccourci,
+              color: legend.couleur
+            }))}
+          tooltip={CustomTooltip}
+          axisLeftLegend="Volumétrie en Mm³"
+          axisLeftTickFactor={1000000}
+        />
+      ) : (
+        <div
+          style={{
+            height: 'inherit',
+            alignContent: 'center',
+            textAlign: 'center'
+          }}
+        >
+          Aucun prélèvement en eau avec ces filtres
+        </div>
+      )}
     </div>
-  ) : (
-    <GraphDataNotFound code={code} libelle={libelle} />
   );
 };
 

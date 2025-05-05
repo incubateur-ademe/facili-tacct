@@ -18,7 +18,6 @@ const LegendItem = (props: { text: string; color: string }) => {
 export const LegendErosionCotiere = () => {
   return (
     <div className={styles.ErosionCotiereLegendWrapper}>
-      <h2>Mouvement du trait de côte</h2>
       <div className={styles.bloc}>
         <p
           style={{
