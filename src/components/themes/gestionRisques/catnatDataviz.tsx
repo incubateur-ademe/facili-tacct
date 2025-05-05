@@ -44,7 +44,7 @@ const CatnatDataViz = (props: Props) => {
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.catnatGraphTitleWrapper}>
-        <h2>Arrêtés catastrophes naturelles</h2>
+        <h2>Arrêtés de catastrophes naturelles</h2>
         <SubTabs
           data={
             type === "commune"

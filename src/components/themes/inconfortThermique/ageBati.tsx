@@ -2,10 +2,9 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import { BarChart } from '@/components/charts/inconfortThermique/BarChartAgeBati';
-import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
-import { TagItem } from '@/components/patch4/TagItem';
+import TagInIndicator from '@/components/patch4/TagInIndicator';
 import { AgeBatiDto } from '@/lib/dto';
 import { ageBatiMapper } from '@/lib/mapper/inconfortThermique';
 import { InconfortThermique, Patch4 } from '@/lib/postgres/models';
@@ -15,6 +14,7 @@ import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { AgeBatiText } from './staticTexts';
 import styles from './themes.module.scss';
 
 interface ChartData {
@@ -117,65 +117,44 @@ export const AgeBati = (props: {
     })()
   }, [code]);
 
-  const fortesChaleurs = patch4 ? AlgoPatch4(patch4, 'fortes_chaleurs') : undefined;
-  const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
+  const fortesChaleurs = patch4 ? AlgoPatch4(patch4, 'fortes_chaleurs') : 'null';
+  const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : 'null';
 
   return (
     <>
       {!isLoadingPatch4 ? (
-        <>
-          {inconfortThermique.length && constructionBefore2006 &&
-            !Object.values(averages).includes(NaN) &&
-            Sum(Object.values(averages)) != 0 ? (
-            <div className={styles.container}>
-              <div className="w-2/5">
-                <div className={styles.explicationWrapper}>
+        <div className={styles.container}>
+          <div className="w-2/5">
+            <div className={styles.explicationWrapper}>
+              {
+                constructionBefore2006 &&
+                  !Object.values(averages).includes(NaN) &&
+                  Sum(Object.values(averages)) != 0 ?
                   <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
                     Sur votre territoire,{' '}
                     <b>{Round(constructionBefore2006, 1)} %</b> des résidences
                     principales sont construites avant 2006.
                   </p>
-                  <div className={styles.patch4Wrapper}>
-                    {fortesChaleurs === 'Intensité très forte' ||
-                      fortesChaleurs === 'Intensité forte' ? (
-                      <TagItem
-                        icon={fortesChaleursIcon}
-                        indice="Fortes chaleurs"
-                        tag={fortesChaleurs}
-                      />
-                    ) : null}
-                    {secheresse === 'Intensité très forte' ||
-                      secheresse === 'Intensité forte' ? (
-                      <TagItem
-                        icon={secheresseIcon}
-                        indice="Sécheresse des sols"
-                        tag={secheresse}
-                      />
-                    ) : null}
-                  </div>
-                </div>
-                <p className="px-4">
-                  La robustesse des logements face aux températures élevées dépend
-                  leur qualité intrinsèque (inertie thermique, présence de volets
-                  extérieurs, qualité des rénovations...). Si vous ne disposez pas
-                  d'étude spécifique sur le sujet, la période de construction,
-                  fournie par l'INSEE, vous donne une première approximation.
-                </p>
-              </div>
-              <div className="w-3/5">
-                <div className={styles.graphWrapper}>
-                  <p style={{ padding: '1em', margin: '0' }}>
-                    <b>Part des résidence principales par période de construction</b>
-                  </p>
-                  {chartData ? <BarChart chartData={chartData} /> : <Loader />}
-                  <p style={{ padding: '1em', margin: '0' }}>Source : INSEE</p>
-                </div>
-              </div>
+                  : ""
+              }
+              <TagInIndicator
+                indice={["Fortes Chaleurs", "Sécheresse des sols"]}
+                icon={[fortesChaleursIcon, secheresseIcon]}
+                tag={[fortesChaleurs, secheresse]}
+              />
             </div>
-          ) : (
-            <GraphDataNotFound code={code} libelle={libelle} />
-          )}
-        </>
+            <AgeBatiText />
+          </div>
+          <div className="w-3/5">
+            <div className={styles.graphWrapper}>
+              <p style={{ padding: '1em', margin: '0' }}>
+                <b>Part des résidence principales par période de construction</b>
+              </p>
+              {chartData ? <BarChart chartData={chartData} /> : <Loader />}
+              <p style={{ padding: '1em', margin: '0' }}>Source : INSEE</p>
+            </div>
+          </div>
+        </div>
       ) : <Loader />}
     </>
   );

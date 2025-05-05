@@ -101,7 +101,7 @@ const EtatQualiteCoursDeau = (props: {
                   </div>
                   <div className="px-4">
                     <p>
-                      Seuls 43 % des cours d’eau français sont en bon état écologique.
+                      Seuls 43 % des cours et des plans d’eau français sont en bon état écologique.
                       Si les principaux facteurs de dégradation de la qualité des eaux
                       sont les pollutions (nitrates, pesticides) et les altérations
                       physiques des rivières (seuils et barrages, endiguement….), le
