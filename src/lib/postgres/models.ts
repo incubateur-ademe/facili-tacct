@@ -148,24 +148,29 @@ export type AgricultureBio = {
 };
 
 export type CollectivitesSearchbar = {
-  code_commune?: string | null;
-  coordinates?: string | null;
-  code_epci: string;
-  libelle_commune?: string | null;
-  libelle_epci: string;
+  code_geographique: string | null;
+  coordinates: string | null;
+  epci: string | null;
+  libelle_geographique: string | null;
+  libelle_epci: string | null;
   search_libelle: string;
-  search_code: string;
-  departement: string;
-  region: string;
+  search_code: string | null;
+  departement: string | null;
+  region: string | null;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  libelle_departement: string | null;
 };
 
 export type CarteCommunes = {
-  code_commune: string;
+  code_geographique: string;
   coordinates: string;
   densite_bati?: number;
   epci: string;
   geometry: string;
-  libelle_commune: string;
+  libelle_geographique: string;
   libelle_epci: string;
   departement: string;
   libelle_departement: string;
