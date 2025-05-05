@@ -27042,16 +27042,16 @@ export namespace Prisma {
 
   export type usersWhereUniqueInput = Prisma.AtLeast<{
     pk?: number
+    username?: string
+    password?: string
     AND?: usersWhereInput | usersWhereInput[]
     OR?: usersWhereInput[]
     NOT?: usersWhereInput | usersWhereInput[]
     email?: StringFilter<"users"> | string
-    username?: StringFilter<"users"> | string
-    password?: StringFilter<"users"> | string
     created_at?: DateTimeFilter<"users"> | Date | string
     last_connection?: DateTimeNullableFilter<"users"> | Date | string | null
     role?: StringFilter<"users"> | string
-  }, "pk">
+  }, "pk" | "username" | "password">
 
   export type usersOrderByWithAggregationInput = {
     pk?: SortOrder
@@ -29898,7 +29898,6 @@ export namespace Prisma {
   }
 
   export type usersCreateInput = {
-    pk: number
     email: string
     username: string
     password: string
@@ -29908,7 +29907,7 @@ export namespace Prisma {
   }
 
   export type usersUncheckedCreateInput = {
-    pk: number
+    pk?: number
     email: string
     username: string
     password: string
@@ -29918,7 +29917,6 @@ export namespace Prisma {
   }
 
   export type usersUpdateInput = {
-    pk?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -29938,7 +29936,7 @@ export namespace Prisma {
   }
 
   export type usersCreateManyInput = {
-    pk: number
+    pk?: number
     email: string
     username: string
     password: string
@@ -29948,7 +29946,6 @@ export namespace Prisma {
   }
 
   export type usersUpdateManyMutationInput = {
-    pk?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
