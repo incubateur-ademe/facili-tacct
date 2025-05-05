@@ -22,21 +22,20 @@ export const CardComp = ({
 }: Props) => {
   const [route, setRoute] = useState('');
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo');
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code');
+  const libelle = searchParams.get('libelle');
+  const typeTerritoire = searchParams.get('type');
   const posthog = usePostHog();
 
   useEffect(() => {
-    if (codepci) {
-      codgeo !== null
-        ? setRoute(
-            `/donnees-territoriales?codgeo=${codgeo}&codepci=${codepci}&thematique=${thematique}`
-          )
-        : setRoute(
-            `/donnees-territoriales?codepci=${codepci}&thematique=${thematique}`
-          );
-    }
-  }, [codgeo, codepci]);
+    code
+      ? setRoute(
+          `/donnees-territoriales?code=${code}&libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique}`
+        )
+      : setRoute(
+          `/donnees-territoriales?libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique}`
+        );
+  }, [code, libelle, typeTerritoire, thematique]);
 
   const ThematiquesClick = () => {
     posthog.capture('thematique_clicked', {
