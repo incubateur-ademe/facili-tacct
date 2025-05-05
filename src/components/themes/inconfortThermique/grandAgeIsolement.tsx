@@ -168,7 +168,7 @@ export const GrandAgeIsolement = (props: {
               {
                 !Object.values(yData).slice(0, -2).includes('NaN') && (
                   <>
-                    <p style={{ color: '#161616', margin: '0' }}>
+                    <p style={{ color: '#161616' }}>
                       En 2020, <b>{numberWithSpacesRegex(yData.over_80_2020_percent)} %</b> de la
                       population de votre territoire est constitué de personnes
                       âgées de plus de 80 ans (soit{' '}
@@ -181,13 +181,13 @@ export const GrandAgeIsolement = (props: {
                       personnes).
                     </p>
                     {type === 'commune' || eptRegex.test(libelle) ? (
-                      <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                      <p style={{ color: '#161616' }}>
                         Ce taux est de{' '}
                         <b>{numberWithSpacesRegex(over_80_2020_percent_territoire_sup)} %</b> dans votre
                         EPCI.
                       </p>
                     ) : type === 'epci' ? (
-                      <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                      <p style={{ color: '#161616' }}>
                         Ce taux est de{' '}
                         <b> {numberWithSpacesRegex(over_80_2020_percent_territoire_sup)} %</b> dans votre
                         département.

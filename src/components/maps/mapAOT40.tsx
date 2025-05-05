@@ -77,13 +77,11 @@ export const MapAOT40 = (props: {
     ? carteCommunes.find(
       (commune) => commune.properties.code_geographique === code
     ) : null;
-
   const carteCommunesFiltered = type === "ept"
     ? carteCommunes.filter(
       (el) => el.properties.ept === libelle
     )
     : carteCommunes;
-
   const allCoordinates = carteCommunesFiltered.map(
     (el) => el.geometry.coordinates?.[0]?.[0]
   );
