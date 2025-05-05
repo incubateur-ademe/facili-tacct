@@ -458,7 +458,6 @@ export type Agriculture = {
   code_pnr: string | null;
   libelle_pnr: string | null;
   part_irr_SAU_2020: number | null;
-  part_over_55: number | null;
 };
 
 export type IncendiesForet = {
