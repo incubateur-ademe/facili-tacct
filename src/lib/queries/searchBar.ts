@@ -31,7 +31,7 @@ export const GetCollectivite = async (
       console.timeEnd(`Query Execution Time ${typeTerritoire} ${collectivite}`);
       return value;
     } else if (typeTerritoire === 'departement') {
-      const variableCollectivite = '%' + collectivite + '%';
+      const variableCollectivite = collectivite + '%';
       const value = await Departement(variableCollectivite);
       console.timeEnd(`Query Execution Time ${typeTerritoire} ${collectivite}`);
       return value;

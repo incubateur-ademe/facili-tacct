@@ -61,27 +61,27 @@ export const etatCoursDeauLegends = [
 
 export const aot40Legends = [
   {
-    value: '> 36000',
+    value: '> 36 000 µg/m³',
     color: '#5524A0'
   },
   {
-    value: '36000 - 27000',
+    value: '36 000 - 27 000 µg/m³',
     color: '#E8323B'
   },
   {
-    value: '27000 - 18000',
+    value: '27 000 - 18 000 µg/m³',
     color: '#FFCF5E'
   },
   {
-    value: '18000 - 12000',
+    value: '18 000 - 12 000 µg/m³',
     color: '#3E8F3E'
   },
   {
-    value: '12000 - 6000',
+    value: '12 000 - 6 000 µg/m³',
     color: '#009ADC'
   },
   {
-    value: '< 6000',
+    value: '< 6 000 µg/m³',
     color: '#5EEDF3'
   }
 ];
@@ -106,19 +106,19 @@ export const feuxForetLegend = [
     color: '#ECD8FE'
   },
   {
-    value: '500 - 1000 m²',
+    value: '500 - 1 000 m²',
     color: '#C48EF6'
   },
   {
-    value: '1000 - 2000 m²',
+    value: '1 000 - 2 000 m²',
     color: '#8C58BB'
   },
   {
-    value: '2000 - 5000 m²',
+    value: '2 000 - 5 000 m²',
     color: '#6E3F99'
   },
   {
-    value: '> 5000 m²',
+    value: '> 5 000 m²',
     color: '#42255C'
   }
 ];
@@ -260,19 +260,19 @@ export const surfacesIrrigueesLegend = [
 
 export const densiteBatiLegend = [
   {
-    value: '> 0.2',
+    value: '> 0,2',
     color: '#FF5E54'
   },
   {
-    value: '0.1 - 0.2',
+    value: '0,1 - 0,2',
     color: '#FFBD00'
   },
   {
-    value: '0.05 - 0.1',
+    value: '0,05 - 0,1',
     color: '#FFFA6A'
   },
   {
-    value: '0 - 0.05',
+    value: '0 - 0,05',
     color: '#D5F4A3'
   },
   {
