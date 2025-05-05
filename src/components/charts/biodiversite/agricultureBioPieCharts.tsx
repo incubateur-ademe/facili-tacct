@@ -2,7 +2,6 @@ import surfaceCertifeeIcon from '@/assets/icons/agriculture_bio_surface_certifie
 import surfaceEnConversionIcon from '@/assets/icons/agriculture_bio_surface_conversion_icon.svg';
 import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
 import { AgricultureBio } from '@/lib/postgres/models';
-import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Progress } from 'antd';
 import Image from 'next/image';
@@ -89,11 +88,11 @@ export const AgricultureBioPieCharts = ({
               </p>
               {evolutionCertifiee >= 0 ? (
                 <p>
-                  <b>+{Round(evolutionCertifiee, 1)}</b>% depuis 2019
+                  <b>+{Round(evolutionCertifiee, 1)}</b> % depuis 2019
                 </p>
               ) : (
                 <p>
-                  <b>{Round(evolutionCertifiee, 1)}</b>% depuis 2019
+                  <b>{Round(evolutionCertifiee, 1)}</b> % depuis 2019
                 </p>
               )}
               <p>
@@ -113,7 +112,7 @@ export const AgricultureBioPieCharts = ({
             />
             <div className={styles.progressText}>
               <p style={{ color: '#00949D' }}>
-                <span>{numberWithSpacesRegex(partCertifieeRounded)}</span>%
+                <span>{Round(partCertifieeRounded, 1)}</span> %
               </p>
             </div>
           </div>
@@ -133,11 +132,11 @@ export const AgricultureBioPieCharts = ({
               </p>
               {evolutionConversion >= 0 ? (
                 <p>
-                  <b>+{Round(evolutionConversion, 1)}</b>% depuis 2019
+                  <b>+{Round(evolutionConversion, 1)}</b> % depuis 2019
                 </p>
               ) : (
                 <p>
-                  <b>{Round(evolutionConversion, 1)}</b>% depuis 2019
+                  <b>{Round(evolutionConversion, 1)}</b> % depuis 2019
                 </p>
               )}
               <p>
@@ -158,41 +157,12 @@ export const AgricultureBioPieCharts = ({
             />
             <div className={styles.progressText}>
               <p style={{ color: '#00C2CC' }}>
-                <span>{partEnConversion}</span>%
+                <span>{Round(partEnConversion, 1)}</span> %
               </p>
             </div>
           </div>
         </HtmlTooltip>
       </div>
-      {/* <div className={styles.dataWrapper}>
-        <Image src={surfaceClassiqueIcon} alt="" />
-        <p>Surface <b>restante</b></p>
-        <HtmlTooltip 
-          title={
-            <div className={styles.tooltip}>
-              <h3>Surface restante (2022)</h3>
-              <p><b>{Round(surfaceTotale - surfaceCertifiee - surfaceEnConversion, 0)}</b> {" "} ha</p>
-              {evolutionRestante >= 0 ? <p><b>+{Round(evolutionRestante, 2)}</b>% depuis 2019</p> : <p><b>{Round(evolutionRestante, 2)}</b>% depuis 2019</p>}
-              <p><b>{nombreExploitations}</b> {" "} exploitation(s)</p>
-            </div>
-          }
-          placement="top"
-        >
-          <div className={styles.progressWrapper}>
-            <Progress
-              {...ProgressProps}
-              style={{ transform: `rotate(${(partCertifiee + partEnConversion) * 3.6}deg)` }}
-              aria-label='Circle progress bar'
-              percent={partSurfaceRestante}
-              strokeColor="#BB43BD"
-              trailColor="#BB43BD10"
-            />
-            <div className={styles.progressText}>
-              <p style={{color: "#BB43BD"}}><span>{partSurfaceRestante}</span>%</p>
-            </div>
-          </div>
-        </HtmlTooltip>
-      </div> */}
     </div>
   );
 };

@@ -8,5 +8,5 @@ export const config = {
   repositoryUrl: process.env.NEXT_PUBLIC_REPOSITORY_URL!,
   formUrl: '',
   description:
-    'Facili-TACCT est un outil d’aide à la décision pour les collectivités territoriales. Il permet de mieux comprendre les enjeux liés au changement climatique et d’identifier des solutions adaptées.'
+    'Assurez une compréhension partagée du diagnostic de vulnérabilité de votre territoire avec Facili-TACCT et favoriser le dialogue sur des problématiques clairement identifiées.'
 };
