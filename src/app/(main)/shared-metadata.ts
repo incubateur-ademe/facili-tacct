@@ -10,7 +10,7 @@ export const sharedMetadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     countryName: 'France',
-    siteName: 'Facili-TACCT - adaptez votre territoire au changement climatique'
+    // siteName: 'Facili-TACCT - adaptez votre territoire au changement climatique'
     // images: [
     //   {
     //     url: new URL(``, config.host),
