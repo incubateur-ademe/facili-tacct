@@ -81,12 +81,12 @@ export const ConsommationEspacesNAFBarChart = (props: {
     });
 
     graphData.push({
-      Activité: act ? Round(act / 10000, 0) : 0,
-      Habitat: hab ? Round(hab / 10000, 0) : 0,
-      Mixte: mix ? Round(mix / 10000, 0) : 0,
-      Routes: rou ? Round(rou / 10000, 0) : 0,
-      Ferroviaire: fer ? Round(fer / 10000, 0) : 0,
-      Inconnu: inc ? Round(inc / 10000, 0) : 0,
+      Activité: act ? Number((act / 10000)) : 0,
+      Habitat: hab ? Number((hab / 10000)) : 0,
+      Mixte: mix ? Number((mix / 10000)) : 0,
+      Routes: rou ? Number((rou / 10000)) : 0,
+      Ferroviaire: fer ? Number((fer / 10000)) : 0,
+      Inconnu: inc ? Number((inc / 10000)) : 0,
       annee: year
     });
   });
@@ -100,7 +100,6 @@ export const ConsommationEspacesNAFBarChart = (props: {
           ?.couleur
       };
     });
-
     return (
       <div className={styles.tooltipEvolutionWrapper}>
         {dataArray.slice(0, -1).map((el, i) => {
@@ -114,7 +113,7 @@ export const ConsommationEspacesNAFBarChart = (props: {
                 <p>{el.titre}</p>
               </div>
               <div className={styles.value}>
-                <p>{Round(Number(el.value), 0)} ha</p>
+                <p>{Round(Number(el.value), 1)} ha</p>
               </div>
             </div>
           );
@@ -123,20 +122,38 @@ export const ConsommationEspacesNAFBarChart = (props: {
     );
   };
 
+  // Sum all numeric values in all objects of graphData (excluding "annee")
+  const sumAllValues = graphData.reduce((total, obj) => {
+    const { annee, ...numericValues } = obj;
+    return total + Object.values(numericValues).reduce((sum, val) => sum + val, 0);
+  }, 0);
+
   return (
     <div
       style={{ height: '500px', minWidth: '450px', backgroundColor: 'white' }}
     >
-      <NivoBarChart
-        colors={espacesNAFBarChartLegend.map((e) => e.couleur)}
-        graphData={graphData}
-        keys={Object.keys(graphData[0]).slice(0, -1)}
-        indexBy="annee"
-        axisLeftLegend="Surface en ha"
-        axisBottomLegend="Années"
-        showLegend={false}
-        tooltip={CustomTooltip}
-      />
+      {
+        sumAllValues !== 0 ?
+          <NivoBarChart
+            colors={espacesNAFBarChartLegend.map((e) => e.couleur)}
+            graphData={graphData}
+            keys={Object.keys(graphData[0]).slice(0, -1)}
+            indexBy="annee"
+            axisLeftLegend="Surface en ha"
+            axisBottomLegend="Années"
+            showLegend={false}
+            tooltip={CustomTooltip}
+          />
+          : <div
+            style={{
+              height: 'inherit',
+              alignContent: 'center',
+              textAlign: 'center'
+            }}
+          >
+            <p>Aucune donnée disponible avec ces filtres</p>
+          </div>
+      }
     </div>
   );
 };

@@ -1,19 +1,24 @@
 'use client';
+
 import ressourcesIcon from '@/assets/icons/ressources_icon_blue.svg';
 import { config } from '@/config';
-import { GetInconfortThermique } from '@/lib/queries/thematiques';
 import { DarkClass } from '@/lib/utils/DarkClass';
 import Header from '@codegouvfr/react-dsfr/Header';
 import { Button } from '@mui/material';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { usePostHog } from 'posthog-js/react';
-import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { Brand } from './Brand';
 import styles from './components.module.scss';
 
-const Localisation = (props: { libelle: string; code: string }) => {
+const ReplaceDisplayEpci = (libelleEpci: string) => {
+  return libelleEpci
+    .replace("Communauté d'agglomération", 'CA')
+    .replace('Communauté de communes', 'CC');
+};
+
+const Localisation = (props: { libelle: string; code?: string }) => {
   const darkClass = DarkClass();
   const { libelle, code } = props;
   return (
@@ -23,36 +28,25 @@ const Localisation = (props: { libelle: string; code: string }) => {
         style={{ borderRadius: '25px' }}
       />
       <p>
-        {libelle} - {code}
+        {code ? (
+          <>
+            {ReplaceDisplayEpci(libelle)} - {code}
+          </>
+        ) : (
+          libelle
+        )}
       </p>
     </div>
   );
 };
 
-export const HeaderComp = () => {
+const HeaderComp = () => {
   const searchParams = useSearchParams();
   const params = usePathname();
-  const codgeo = searchParams.get('codgeo');
-  const codepci = searchParams.get('codepci')!;
-  const [epci, setEpci] = useState('');
-  const [commune, setCommune] = useState('');
+  const code = searchParams.get('code')!;
+  const libelle = searchParams.get('libelle')!;
   const posthog = usePostHog();
   const { css } = useStyles();
-
-  useEffect(() => {
-    void (async () => {
-      const temp =
-        codgeo !== null
-          ? await GetInconfortThermique(codgeo)
-          : codepci !== null
-            ? await GetInconfortThermique(codepci)
-            : void 0;
-      temp && codgeo
-        ? setCommune(temp[0]?.libelle_geographique)
-        : setCommune('');
-      temp && !codgeo ? setEpci(temp[0]?.libelle_epci) : setEpci('');
-    })();
-  }, [codepci, codgeo]);
 
   const RessourcesClick = () => {
     posthog.capture('ressources_bouton', {
@@ -78,10 +72,10 @@ export const HeaderComp = () => {
         orientation: 'vertical'
       }}
       quickAccessItems={[
-        commune && codgeo ? (
-          <Localisation libelle={commune} code={codgeo} />
-        ) : epci && codepci ? (
-          <Localisation libelle={epci} code={codepci} />
+        code && libelle ? (
+          <Localisation libelle={libelle} code={code} />
+        ) : libelle ? (
+          <Localisation libelle={libelle} />
         ) : null,
         params.includes('ressources') ? null : (
           <Button
@@ -111,3 +105,5 @@ export const HeaderComp = () => {
     />
   );
 };
+
+export default HeaderComp;

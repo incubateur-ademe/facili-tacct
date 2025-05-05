@@ -6,6 +6,7 @@ export type InconfortThermique = {
   NA5OQ_sum: number | null;
   P20_POP80P: string | null;
   P20_POP80P_PSEUL: string | null;
+  // P20_POP80P_PERCENT: number | null;
   age_bati_19_45: number | null;
   age_bati_46_90: number | null;
   age_bati_91_05: number | null;
@@ -19,10 +20,15 @@ export type InconfortThermique = {
   code_geographique: string;
   densite_bati: number | null;
   departement: string;
+  libelle_departement: string;
   epci: string;
   index: bigint;
   libelle_epci: string;
   libelle_geographique: string;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  ept: string | null;
+  libelle_petr: string | null;
   over_80_sum_1968: string | null;
   over_80_sum_1975: string | null;
   over_80_sum_1982: string | null;
@@ -78,29 +84,51 @@ export type GestionRisques = {
   region: number;
 };
 
-export type RessourcesEau = {
-  LIBELLE_SOUS_CHAMP: string | null;
-  SOUS_CHAMP: string | null;
+export type ArreteCatNat = {
+  lib_risque_jo: string;
+  dat_pub_arrete: string;
   code_geographique: string;
-  departement: string | null;
-  epci: string | null;
-  index: bigint | null;
-  libelle_epci: string | null;
-  libelle_geographique: string | null;
-  region: number | null;
-  A2008: number | null;
-  A2009: number | null;
-  A2010: number | null;
-  A2011: number | null;
-  A2012: number | null;
-  A2013: number | null;
-  A2014: number | null;
-  A2015: number | null;
-  A2016: number | null;
-  A2017: number | null;
-  A2018: number | null;
-  A2019: number | null;
-  A2020: number | null;
+  departement: string;
+  libelle_departement: string;
+  epci: string;
+  index: bigint;
+  libelle_epci: string;
+  libelle_geographique: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+};
+
+export type RessourcesEau = {
+  LIBELLE_SOUS_CHAMP: string;
+  SOUS_CHAMP: string;
+  code_geographique: string;
+  departement: string;
+  libelle_departement: string;
+  epci: string;
+  index: bigint;
+  libelle_epci: string;
+  libelle_geographique: string;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  region: number;
+  A2008: number;
+  A2009: number;
+  A2010: number;
+  A2011: number;
+  A2012: number;
+  A2013: number;
+  A2014: number;
+  A2015: number;
+  A2016: number;
+  A2017: number;
+  A2018: number;
+  A2019: number;
+  A2020: number;
 };
 
 export type AgricultureBio = {
@@ -139,6 +167,12 @@ export type CarteCommunes = {
   geometry: string;
   libelle_commune: string;
   libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  ept: string;
+  libelle_petr: string;
+  code_pnr: string;
+  libelle_pnr: string;
   precarite_logement?: number;
   catnat?: Object;
   naf?: number;
@@ -161,6 +195,23 @@ export type CLC = {
   legend: string;
   pk: number;
   shape_length: number;
+};
+
+export type CLCTerritoires = {
+  centroid: string;
+  geometry: string;
+  legend: string;
+  pk: number;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
 };
 
 export type ErosionCotiere = {
@@ -240,6 +291,7 @@ export type ConsommationNAF = {
   epci: string;
   libelle_epci: string;
   departement: string;
+  libelle_departement: string;
   region: number;
   naf09art10: number;
   art09act10: number;
@@ -386,14 +438,18 @@ export type QualiteSitesBaignade = {
 
 export type Agriculture = {
   index: bigint;
-  CODGEO: string;
-  LIBGEO: string;
-  EPCI: string;
-  LIBEPCI: string;
-  DEP: string;
-  REG: number;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
   part_irr_SAU_2020: number | null;
-  part_over_55: number | null;
 };
 
 export type IncendiesForet = {
