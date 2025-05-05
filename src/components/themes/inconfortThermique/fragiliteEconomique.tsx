@@ -71,12 +71,9 @@ export const FragiliteEconomique = ({
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : "null";
 
-  console.log("precariteLogTerritoireSup", precariteLogTerritoireSup);
-  console.log("precariteLogTerritoire", precariteLogTerritoire);
-
   return (
     <>
-      {(communesMap && !isLoadingPatch4) ? (
+      {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <>
             <div className="w-2/5">
