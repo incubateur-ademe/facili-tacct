@@ -12,79 +12,87 @@ export const GetRessourceEau = async (
   libelle: string,
   type: string
 ): Promise<RessourcesEau[]> => {
-  try {
-    if (type === 'commune') {
-      console.time('Query Execution Time RESSOURCES EAUX');
-      const departement = await PrismaPostgres.ressources_eau.findFirst({
-        where: {
-          code_geographique: code
-        }
-      });
-      const value = await PrismaPostgres.ressources_eau.findMany({
-        where: {
-          departement: departement?.departement
-        }
-      });
-      console.timeEnd('Query Execution Time RESSOURCES EAUX');
-      return value;
-    } else if (type === 'epci') {
-      console.time('Query Execution Time PRELEVEMENT EAUX');
-      const departement = await PrismaPostgres.ressources_eau.findFirst({
-        where: {
-          epci: code
-        }
-      });
-      const value = await PrismaPostgres.ressources_eau.findMany({
-        where: {
-          departement: departement?.departement
-        }
-      });
-      console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
-      return value;
-    } else if (type === 'petr') {
-      console.time('Query Execution Time RESSOURCES EAUX');
-      const departement = await PrismaPostgres.ressources_eau.findFirst({
-        where: {
-          libelle_petr: libelle
-        }
-      });
-      const value = await PrismaPostgres.ressources_eau.findMany({
-        where: {
-          departement: departement?.departement
-        }
-      });
-      console.timeEnd('Query Execution Time RESSOURCES EAUX');
-      return value;
-    } else if (type === 'ept') {
-      console.time('Query Execution Time RESSOURCES EAUX');
-      const departement = await PrismaPostgres.ressources_eau.findFirst({
-        where: {
-          ept: libelle
-        }
-      });
-      const value = await PrismaPostgres.ressources_eau.findMany({
-        where: {
-          departement: departement?.departement
-        }
-      });
-      console.timeEnd('Query Execution Time RESSOURCES EAUX');
-      return value;
-    } else if (type === 'departement') {
-      console.time('Query Execution Time RESSOURCES EAUX');
-      const value = await PrismaPostgres.ressources_eau.findMany({
-        where: {
-          departement: code
-        }
-      });
-      console.timeEnd('Query Execution Time RESSOURCES EAUX');
-      return value;
-    } else return [];
-  } catch (error) {
-    console.error(error);
-    Sentry.captureException(error);
-    console.error('Database connection error occurred.');
-    return [];
-  }
+  //race Promise pour éviter un crash de la requête lorsqu'elle est trop longue
+  const timeoutPromise = new Promise<[]>(resolve => setTimeout(() => {
+    console.log('GetRessourceEau: Timeout reached (10 seconds), returning empty array.');
+    resolve([]);
+  }, 10000));
+  const dbQuery = (async () => {
+    try {
+      if (type === 'commune') {
+        console.time('Query Execution Time RESSOURCES EAUX');
+        const departement = await PrismaPostgres.ressources_eau.findFirst({
+          where: {
+            code_geographique: code
+          }
+        });
+        const value = await PrismaPostgres.ressources_eau.findMany({
+          where: {
+            departement: departement?.departement
+          }
+        });
+        console.timeEnd('Query Execution Time RESSOURCES EAUX');
+        return value;
+      } else if (type === 'epci') {
+        console.time('Query Execution Time PRELEVEMENT EAUX');
+        const departement = await PrismaPostgres.ressources_eau.findFirst({
+          where: {
+            epci: code
+          }
+        });
+        const value = await PrismaPostgres.ressources_eau.findMany({
+          where: {
+            departement: departement?.departement
+          }
+        });
+        console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
+        return value;
+      } else if (type === 'petr') {
+        console.time('Query Execution Time RESSOURCES EAUX');
+        const departement = await PrismaPostgres.ressources_eau.findFirst({
+          where: {
+            libelle_petr: libelle
+          }
+        });
+        const value = await PrismaPostgres.ressources_eau.findMany({
+          where: {
+            departement: departement?.departement
+          }
+        });
+        console.timeEnd('Query Execution Time RESSOURCES EAUX');
+        return value;
+      } else if (type === 'ept') {
+        console.time('Query Execution Time RESSOURCES EAUX');
+        const departement = await PrismaPostgres.ressources_eau.findFirst({
+          where: {
+            ept: libelle
+          }
+        });
+        const value = await PrismaPostgres.ressources_eau.findMany({
+          where: {
+            departement: departement?.departement
+          }
+        });
+        console.timeEnd('Query Execution Time RESSOURCES EAUX');
+        return value;
+      } else if (type === 'departement') {
+        console.time('Query Execution Time RESSOURCES EAUX');
+        const value = await PrismaPostgres.ressources_eau.findMany({
+          where: {
+            departement: code
+          }
+        });
+        console.timeEnd('Query Execution Time RESSOURCES EAUX');
+        return value;
+      } else return [];
+    } catch (error) {
+      console.error(error);
+      Sentry.captureException(error);
+      console.error('Database connection error occurred.');
+      return [];
+    }
+  })();
+  return Promise.race([dbQuery, timeoutPromise]);
 };
 
 export const GetQualiteEauxBaignade = async (
