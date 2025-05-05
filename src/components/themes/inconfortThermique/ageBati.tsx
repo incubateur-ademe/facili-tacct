@@ -130,7 +130,7 @@ export const AgeBati = (props: {
                 constructionBefore2006 &&
                   !Object.values(averages).includes(NaN) &&
                   Sum(Object.values(averages)) != 0 ?
-                  <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                  <p style={{ color: '#161616' }}>
                     Sur votre territoire,{' '}
                     <b>{Round(constructionBefore2006, 1)} %</b> des résidences
                     principales sont construites avant 2006.

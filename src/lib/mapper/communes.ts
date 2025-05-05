@@ -23,7 +23,6 @@ export const CommunesIndicateursMapper = (
       coordinates: commune.coordinates,
       naf: commune.naf,
       surfacesIrriguees: commune.surfacesIrriguees ?? NaN,
-      chefsExploitation55Ans: commune.chefsExploitation55Ans ?? NaN,
       incendiesForet: commune.incendiesForet ?? NaN
     },
     geometry: JSON.parse(commune.geometry)
