@@ -4,7 +4,7 @@ import PrelevementEauBarChart from '@/components/charts/ressourcesEau/prelevemen
 import PrelevementEauProgressBars from '@/components/charts/ressourcesEau/prelevementEauProgressBar';
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
-import { RessourcesEauNew } from '@/lib/postgres/models';
+import { RessourcesEau } from '@/lib/postgres/models';
 import { useState } from 'react';
 import styles from './ressourcesEau.module.scss';
 
@@ -13,7 +13,7 @@ const PrelevementEauDataViz = ({
   datavizTab,
   setDatavizTab
 }: {
-  ressourcesEau: RessourcesEauNew[];
+  ressourcesEau: RessourcesEau[];
   datavizTab: string;
   setDatavizTab: (value: string) => void;
 }) => {

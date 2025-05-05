@@ -4,8 +4,9 @@ export type InconfortThermique = {
   NA5FZ_sum: number | null;
   NA5GU_sum: number | null;
   NA5OQ_sum: number | null;
-  P20_POP80P: number | null;
-  P20_POP80P_PSEUL: number | null;
+  P20_POP80P: string | null;
+  P20_POP80P_PSEUL: string | null;
+  // P20_POP80P_PERCENT: number | null;
   age_bati_19_45: number | null;
   age_bati_46_90: number | null;
   age_bati_91_05: number | null;
@@ -28,36 +29,36 @@ export type InconfortThermique = {
   libelle_pnr: string | null;
   ept: string | null;
   libelle_petr: string | null;
-  over_80_sum_1968: number | null;
-  over_80_sum_1975: number | null;
-  over_80_sum_1982: number | null;
-  over_80_sum_1990: number | null;
-  over_80_sum_1999: number | null;
-  over_80_sum_2009: number | null;
-  over_80_sum_2014: number | null;
-  over_80_sum_2020: number | null;
+  over_80_sum_1968: string | null;
+  over_80_sum_1975: string | null;
+  over_80_sum_1982: string | null;
+  over_80_sum_1990: string | null;
+  over_80_sum_1999: string | null;
+  over_80_sum_2009: string | null;
+  over_80_sum_2014: string | null;
+  over_80_sum_2020: string | null;
   precarite_logement: number | null;
-  region: bigint;
+  region: number;
   s_geom_cstr_bati: number | null;
   superf_choro: number | null;
   tee_log: number | null;
   tee_mob: number | null;
-  to_80_sum_1968: number | null;
-  to_80_sum_1975: number | null;
-  to_80_sum_1982: number | null;
-  to_80_sum_1990: number | null;
-  to_80_sum_1999: number | null;
-  to_80_sum_2009: number | null;
-  to_80_sum_2014: number | null;
-  to_80_sum_2020: number | null;
-  under_4_sum_1968: number | null;
-  under_4_sum_1975: number | null;
-  under_4_sum_1982: number | null;
-  under_4_sum_1990: number | null;
-  under_4_sum_1999: number | null;
-  under_4_sum_2009: number | null;
-  under_4_sum_2014: number | null;
-  under_4_sum_2020: number | null;
+  to_80_sum_1968: string | null;
+  to_80_sum_1975: string | null;
+  to_80_sum_1982: string | null;
+  to_80_sum_1990: string | null;
+  to_80_sum_1999: string | null;
+  to_80_sum_2009: string | null;
+  to_80_sum_2014: string | null;
+  to_80_sum_2020: string | null;
+  under_4_sum_1968: string | null;
+  under_4_sum_1975: string | null;
+  under_4_sum_1982: string | null;
+  under_4_sum_1990: string | null;
+  under_4_sum_1999: string | null;
+  under_4_sum_2009: string | null;
+  under_4_sum_2014: string | null;
+  under_4_sum_2020: string | null;
 };
 
 export type Biodiversite = {
@@ -100,33 +101,7 @@ export type ArreteCatNat = {
   libelle_pnr: string | null;
 };
 
-
 export type RessourcesEau = {
-  LIBELLE_SOUS_CHAMP: string | null;
-  SOUS_CHAMP: string | null;
-  code_geographique: string;
-  departement: string | null;
-  epci: string | null;
-  index: bigint | null;
-  libelle_epci: string | null;
-  libelle_geographique: string | null;
-  region: number | null;
-  A2008: number | null;
-  A2009: number | null;
-  A2010: number | null;
-  A2011: number | null;
-  A2012: number | null;
-  A2013: number | null;
-  A2014: number | null;
-  A2015: number | null;
-  A2016: number | null;
-  A2017: number | null;
-  A2018: number | null;
-  A2019: number | null;
-  A2020: number | null;
-};
-
-export type RessourcesEauNew = {
   LIBELLE_SOUS_CHAMP: string;
   SOUS_CHAMP: string;
   code_geographique: string;
@@ -483,7 +458,7 @@ export type Agriculture = {
   code_pnr: string | null;
   libelle_pnr: string | null;
   part_irr_SAU_2020: number | null;
-  part_over_55: number | null
+  part_over_55: number | null;
 };
 
 export type IncendiesForet = {

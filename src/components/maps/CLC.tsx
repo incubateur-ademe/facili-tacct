@@ -31,7 +31,6 @@ export const CLCMap = (props: { clc: CLCTerritoires[] }) => {
 
   const style: StyleFunction<Any> = (feature) => {
     const typedFeature = feature as ClcDto;
-    console.log(typedFeature?.properties.label)
     return {
       fillColor: getColor(typedFeature?.properties.label),
       weight: 0,

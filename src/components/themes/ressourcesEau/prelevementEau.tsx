@@ -5,7 +5,7 @@ import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
-import { Patch4, RessourcesEauNew } from '@/lib/postgres/models';
+import { Patch4, RessourcesEau } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { prelevementEauTooltipText } from '@/lib/tooltipTexts';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
@@ -16,22 +16,8 @@ import { useEffect, useState } from 'react';
 import PrelevementEauDataViz from './prelevementEauDataviz';
 import styles from './ressourcesEau.module.scss';
 
-type Years = "A2008"
-  | "A2009"
-  | "A2010"
-  | "A2011"
-  | "A2012"
-  | "A2013"
-  | "A2014"
-  | "A2015"
-  | "A2016"
-  | "A2017"
-  | "A2018"
-  | "A2019"
-  | "A2020";
-
 const SumFiltered = (
-  data: RessourcesEauNew[],
+  data: RessourcesEau[],
   code: string,
   libelle: string,
   type: string,
@@ -67,9 +53,9 @@ export const PrelevementEau = (props: {
     risque: string;
     titre: string;
   }>;
-  ressourcesEau: RessourcesEauNew[];
+  ressourcesEau: RessourcesEau[];
 }) => {
-  
+
   const { ressourcesEau } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
@@ -90,7 +76,7 @@ export const PrelevementEau = (props: {
           : ressourcesEau;
 
   const sumAllYears = dataParMaille.map((year) =>
-    Array.from({ length: 13 }, (_, i) => Number(year[`A${2008 + i}` as Years]) || 0)
+    Array.from({ length: 13 }, (_, i) => Number(year[`A${2008 + i}` as PrelevementsEauYears]) || 0)
       .reduce((a, b) => a + b, 0)
   ).reduce((a, b) => a + b, 0);;
 
@@ -105,6 +91,8 @@ export const PrelevementEau = (props: {
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : undefined;
+  console.log("ressourcesEau", ressourcesEau);
+
 
   return (
     <>
@@ -154,7 +142,7 @@ export const PrelevementEau = (props: {
                       (dénitrification, élimination des micropolluants, etc.).
                     </p>
                     <p>
-                      ⇒ Lors de la sécheresse 2022, 2000 communes ont été en tension
+                      ⇒ Lors de la sécheresse 2022, 2 000 communes ont été en tension
                       sur l’eau potable.
                     </p>
                     <p>
