@@ -168,7 +168,7 @@ export const GrandAgeIsolement = (props: {
               {
                 !Object.values(yData).slice(0, -2).includes('NaN') && (
                   <>
-                    <p style={{ color: '#161616', margin: '0 0 0.5em' }}>
+                    <p style={{ color: '#161616', margin: '0' }}>
                       En 2020, <b>{numberWithSpacesRegex(yData.over_80_2020_percent)} %</b> de la
                       population de votre territoire est constitué de personnes
                       âgées de plus de 80 ans (soit{' '}

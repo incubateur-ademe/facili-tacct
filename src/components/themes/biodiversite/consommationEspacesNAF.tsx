@@ -24,7 +24,7 @@ export const ConsommationEspacesNAF = (props: {
     return {
       ...el,
       naf: consommationNAF.find(
-        (item) => item.code_geographique === el.code_commune
+        (item) => item.code_geographique === el.code_geographique
       )?.naf09art23
     };
   });

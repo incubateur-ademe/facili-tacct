@@ -38,14 +38,20 @@ export const GetCollectivite = async (
     } else {
       return [
         {
-          code_commune: '',
+          code_geographique: '',
           search_code: '',
           search_libelle: '',
-          code_epci: '',
-          libelle_commune: '',
+          epci: '',
+          libelle_geographique: '',
           libelle_epci: '',
           departement: '',
           region: '',
+          libelle_departement: '',
+          ept: '',
+          code_pnr: '',
+          libelle_pnr: '',
+          libelle_petr: '',
+          coordinates: '',
         }
       ];
     }
