@@ -58,7 +58,6 @@ export const GetAgricultureBio = async (
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
-    await PrismaPostgres.$disconnect();
     throw new Error('Internal Server Error');
   }
 };
@@ -109,7 +108,6 @@ export const GetConsommationNAF = async (
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
-    await PrismaPostgres.$disconnect();
     throw new Error('Internal Server Error');
   }
 };
@@ -123,7 +121,6 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
-    await PrismaPostgres.$disconnect();
     throw new Error('Internal Server Error');
   }
 };
