@@ -75,7 +75,7 @@ const Vegetalisation = (props: {
 
   return (
     <>
-      {(vegetalisationTerritoire && !isLoadingPatch4) ? (
+      {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <div className="w-2/5">
             <div className={styles.explicationWrapper}>
@@ -101,31 +101,27 @@ const Vegetalisation = (props: {
             <VegetalisationText />
           </div>
           <div className="w-3/5">
-            {
-              clc ?
-                <>
-                  {clc.length ? (
-                    <div className={styles.graphWrapper}>
-                      <p style={{ padding: '1em', margin: '0' }}>
-                        <b>Cartographie des différents types de sols</b>
-                      </p>
-                      <CLCMap clc={clc} />
-                      <div
-                        className={styles.legend}
-                        style={{ width: 'auto', justifyContent: 'center' }}
-                      >
-                        <LegendCompColor legends={vegetalisationLegend} />
-                      </div>
-                      <p style={{ padding: '1em', margin: '0' }}>
-                        Source : CORINE Land Cover
-                      </p>
+            <div className={styles.graphWrapper}>
+              <p style={{ padding: '1em', margin: '0' }}>
+                <b>Cartographie des différents types de sols</b>
+              </p>
+              {
+                clc ? (
+                  <>
+                    <CLCMap clc={clc} />
+                    <div
+                      className={styles.legend}
+                      style={{ width: 'auto', justifyContent: 'center' }}
+                    >
+                      <LegendCompColor legends={vegetalisationLegend} />
                     </div>
-                  ) : (
-                    <Loader />
-                  )}
-                </>
-                : <DataNotFoundForGraph image={DataNotFound} />
-            }
+                  </>
+                ) : <DataNotFoundForGraph image={DataNotFound} />
+              }
+              <p style={{ padding: '1em', margin: '0' }}>
+                Source : CORINE Land Cover
+              </p>
+            </div>
           </div>
         </div>
       ) : (
