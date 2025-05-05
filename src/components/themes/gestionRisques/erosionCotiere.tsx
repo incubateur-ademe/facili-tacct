@@ -13,6 +13,7 @@ import { erosionCotiereTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { LegendErosionCotiere } from '../../maps/legends/legendErosionCotiere';
+import { ErosionCotiereText } from '../staticTexts';
 import styles from './gestionRisques.module.scss';
 
 const ErosionCotes = (props: {
@@ -67,55 +68,7 @@ const ErosionCotes = (props: {
                     </div>
                     <CustomTooltip title={erosionCotiereTooltipText} texte="D'où vient ce chiffre ?" />
                   </div>
-                  <div className="px-4">
-                    <p>
-                      L'érosion grignote nos côtes : près de 20 % du littoral français
-                      recule face à la mer. Ce phénomène naturel s'accélère avec le
-                      changement climatique, la hausse du niveau des mers et la
-                      multiplication des tempêtes notamment. Les chiffres sont
-                      préoccupants. 37 % des côtes sableuses s'érodent, soit 700
-                      kilomètres - la distance Paris-Marseille - qui disparaissent peu
-                      à peu. En 50 ans, la mer a englouti l'équivalent de la ville de
-                      La Rochelle : 30 km² de terres perdues.
-                    </p>
-                    <p>
-                      Impacts locaux sur les milieux :
-                      <li>
-                        Augmentation des intrusions salines des aquifères côtiers,
-                      </li>
-                      <li>Modification des paysages (nouvelles lagunes…),</li>
-                      <li>Appauvrissement des sols dû à la salinisation.</li>
-                    </p>
-                    <p>
-                      Impacts locaux sur les activités humaines :
-                      <li>
-                        Diminution de la disponibilité des eaux douces souterraines
-                        pour les différents usages,
-                      </li>
-                      <li>
-                        Modification des marais salins avec conséquences sur les
-                        activités,
-                      </li>
-                      <li>
-                        Salinisation et réduction des terres par submersion temporaire
-                        ou permanente.
-                      </li>
-                    </p>
-                    <p>
-                      ⇒ 523 communes touchées par le recul du littoral, dont 59
-                      perdent plus d'1,5 mètre de littoral chaque année.
-                    </p>
-                    <p>
-                      ⇒ D'ici 2050 : 5200 logements et 1400 locaux d'activité seront
-                      menacés, pour un coût estimé à 1,2 milliard d'euros.
-                    </p>
-                    <p>
-                      - - - - <br></br>
-                      Plan National d'Adaptation au Changement Climatique (PNACC 3) :
-                      La mesure 35 prévoit d’accompagner l’adaptation du tourisme
-                      culturel, de montagne, littoral et nautique.
-                    </p>
-                  </div>
+                  <ErosionCotiereText />
                 </div>
                 <div className="w-7/12">
                   <div className={styles.graphWrapper}>

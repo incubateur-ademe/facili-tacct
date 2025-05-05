@@ -227,3 +227,101 @@ export const SurfacesIrrigueesText = () => (
     </p>
   </div>
 );
+
+export const ConsommationEspacesNAFBiodiversiteText = () => (
+  <div className="px-4">
+    <p>
+      L'artificialisation des sols constitue l’une des premières causes
+      de l’effondrement de la biodiversité. Elle porte atteinte aux
+      processus naturels essentiels, comme la pollinisation, fragmente
+      voire détruit les habitats et isole les espèces. Elle participe
+      en outre à une homogénéisation de la biodiversité qui affecte la
+      résilience des milieux.
+    </p>
+    <div>
+      <p>
+        La consommation d’ENAF a des conséquences dramatiques pour le
+        climat :
+      </p>
+      <ul className="text-[1rem] leading-[1.5rem]">
+        <li>
+          Les sols perdent leur rôle de puits de carbone et leur
+          capacité d’infiltration ce qui perturbe le cycle naturel de
+          l'eau, avec pour corollaire une réduction de la recharges
+          des nappes, une réduction du stockage de l’eau dans les sols
+          et une aggravation des risques d’inondations.
+        </li>
+        <li>
+          En détruisant le milieu de vie des micro-organismes des
+          sols, l’artificialisation réduit drastiquement les capacités
+          épuratoires des milieux.
+        </li>
+      </ul>
+    </div>
+    <p>
+      ⇒ 24 000 hectares par an d’espaces naturels, agricoles et
+      forestiers sont consommés depuis dix ans, soit l’équivalent de
+      10 fois la superficie de Marseille.
+    </p>
+    <p>
+      ⇒ Avec 446 m² de terres artificialisées consommées par habitant,
+      la France se place au 4e rang européen.
+    </p>
+    <p>
+      ⇒ Un hectare de sol artificialisé libère jusqu’à 190 tonnes de
+      CO2, soit l’empreinte carbone annuelle de 20 Français.
+    </p>
+  </div>
+);
+
+export const ErosionCotiereText = () => (
+  <div className="px-4">
+                    <p>
+                      L'érosion grignote nos côtes : près de 20 % du littoral français
+                      recule face à la mer. Ce phénomène naturel s'accélère avec le
+                      changement climatique, la hausse du niveau des mers et la
+                      multiplication des tempêtes notamment. Les chiffres sont
+                      préoccupants. 37 % des côtes sableuses s'érodent, soit 700
+                      kilomètres - la distance Paris-Marseille - qui disparaissent peu
+                      à peu. En 50 ans, la mer a englouti l'équivalent de la ville de
+                      La Rochelle : 30 km² de terres perdues.
+                    </p>
+                    <p>
+                      Impacts locaux sur les milieux :
+                      <li>
+                        Augmentation des intrusions salines des aquifères côtiers,
+                      </li>
+                      <li>Modification des paysages (nouvelles lagunes…),</li>
+                      <li>Appauvrissement des sols dû à la salinisation.</li>
+                    </p>
+                    <p>
+                      Impacts locaux sur les activités humaines :
+                      <li>
+                        Diminution de la disponibilité des eaux douces souterraines
+                        pour les différents usages,
+                      </li>
+                      <li>
+                        Modification des marais salins avec conséquences sur les
+                        activités,
+                      </li>
+                      <li>
+                        Salinisation et réduction des terres par submersion temporaire
+                        ou permanente.
+                      </li>
+                    </p>
+                    <p>
+                      ⇒ 523 communes touchées par le recul du littoral, dont 59
+                      perdent plus d'1,5 mètre de littoral chaque année.
+                    </p>
+                    <p>
+                      ⇒ D'ici 2050 : 5200 logements et 1400 locaux d'activité seront
+                      menacés, pour un coût estimé à 1,2 milliard d'euros.
+                    </p>
+                    <p>
+                      - - - - <br></br>
+                      Plan National d'Adaptation au Changement Climatique (PNACC 3) :
+                      La mesure 35 prévoit d’accompagner l’adaptation du tourisme
+                      culturel, de montagne, littoral et nautique.
+                    </p>
+                  </div>
+);

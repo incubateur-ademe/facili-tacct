@@ -20,7 +20,7 @@ const FacilitationDateliers = () => {
             Mathilde est responsable du service Nature et Résilience (en charge de l'aménagement paysager du territoire et de la transition écologique).
           </li>
           <li>
-            Louis est conseiller interne en organisation et s’occupe à 50% de missions d'organisation pour les services et à 50%, il accompagne des projets transversaux (accompagnement projet et méthodologique) pour les services de la ville.
+            Louis est conseiller interne en organisation et s’occupe à 50 % de missions d'organisation pour les services et à 50 %, il accompagne des projets transversaux (accompagnement projet et méthodologique) pour les services de la ville.
           </li>
         </ul>
       </div>

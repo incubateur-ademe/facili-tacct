@@ -115,7 +115,6 @@ export const GetEtatCoursDeau = async (
     }
   } catch (error) {
     console.error(error);
-    await PrismaPostgres.$disconnect();
     throw new Error('Internal Server Error');
   }
 };

@@ -11,7 +11,6 @@ export const GET = async () => {
     return new NextResponse(JSON.stringify(users), { status: 200 });
   } catch (error) {
     console.error(error);
-    await PrismaPostgres.$disconnect();
   }
 };
 

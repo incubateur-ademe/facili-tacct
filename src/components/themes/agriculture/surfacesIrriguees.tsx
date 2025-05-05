@@ -10,7 +10,7 @@ import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
 import { surfacesIrrigueesTooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
-import { SurfacesIrrigueesText } from '../inconfortThermique/staticTexts';
+import { SurfacesIrrigueesText } from '../staticTexts';
 import styles from './agriculture.module.scss';
 
 export const SurfacesIrriguees = ({

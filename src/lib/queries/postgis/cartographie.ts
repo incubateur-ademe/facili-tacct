@@ -147,7 +147,6 @@ export const GetCommunes = async (
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
-    await PrismaPostgres.$disconnect();
     throw new Error('Internal Server Error');
   }
 };
@@ -216,7 +215,6 @@ export const GetClcTerritoires = async (
     } else return undefined;
   } catch (error) {
     console.error(error);
-    await PrismaPostgres.$disconnect();
     throw new Error('Internal Server Error');
   }
 };
@@ -346,7 +344,6 @@ export const GetErosionCotiere = async (
     } else return [];
   } catch (error) {
     console.error(error);
-    await PrismaPostgres.$disconnect();
     throw new Error('Internal Server Error');
   }
 };

@@ -15,7 +15,7 @@ import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { FragiliteEconomiqueText } from './staticTexts';
+import { FragiliteEconomiqueText } from '../staticTexts';
 import styles from './themes.module.scss';
 
 export const FragiliteEconomique = ({
