@@ -1,6 +1,6 @@
 'use client';
 
-import { CommunesIndicateursDto, EpciContoursDto } from '@/lib/dto';
+import { CommunesIndicateursDto } from '@/lib/dto';
 import { AOT40 } from '@/lib/postgres/models';
 import {
   GeoJSON,
@@ -9,6 +9,7 @@ import {
   Popup,
   TileLayer
 } from '@/lib/react-leaflet';
+import { getArrayDepth } from '@/lib/utils/reusableFunctions/arrayDepth';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Any } from '@/lib/utils/types';
 import * as turf from '@turf/turf';
@@ -23,6 +24,7 @@ import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import MarkerClusterGroup from 'react-leaflet-cluster';
+import { AOT40Tooltip } from './components/tooltips';
 import './maps.css';
 // documentation : https://akursat.gitbook.io/marker-cluster/api
 
@@ -50,23 +52,49 @@ const getCentroid = (arr: number[][]) => {
   return [centroid[1], centroid[0]];
 };
 
+const getCoordinates = (coords: number[][][]) => {
+  const coords_arr = [];
+  for (let i = 0; i < coords.length; i++) {
+    const center = getCentroid(coords[i]);
+    coords_arr.push(center);
+  }
+  return getCentroid(coords_arr);
+};
+//TODO : clean all the turf functions
 export const MapAOT40 = (props: {
   aot40: AOT40[];
-  epciContours: EpciContoursDto[];
   carteCommunes: CommunesIndicateursDto[];
 }) => {
-  const { aot40, epciContours, carteCommunes } = props;
+  const { aot40, carteCommunes } = props;
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
   const markerRef = useRef(null);
 
-  const commune = carteCommunes.find(
-    (commune) => commune.properties.code_geographique === codgeo
+  const commune = type === "commune"
+    ? carteCommunes.find(
+      (commune) => commune.properties.code_geographique === code
+    ) : null;
+
+  const carteCommunesFiltered = type === "ept"
+    ? carteCommunes.filter(
+      (el) => el.properties.ept === libelle
+    )
+    : carteCommunes;
+
+  const allCoordinates = carteCommunesFiltered.map(
+    (el) => el.geometry.coordinates?.[0]?.[0]
   );
+
+  const union = turf.union(
+    turf.featureCollection(carteCommunesFiltered as Any),
+  );
+
   const centerCoord: number[] = commune
-    ? commune.properties.coordinates.split(',').map(Number)
-    : getCentroid(epciContours[0]?.geometry?.coordinates[0][0]);
+    ? commune.properties.coordinates.split(',').map(Number).sort((a, b) => a - b)
+    : getCoordinates(allCoordinates);
 
   const aot40map = aot40.map((aot) => {
     return {
@@ -90,29 +118,44 @@ export const MapAOT40 = (props: {
     };
   });
 
-  const polygonTerritoire = commune
+  const polygonTerritoire = type === "commune"
     ? turf.multiPolygon(commune?.geometry.coordinates as Position[][][])
-    : turf.multiPolygon(
-        epciContours[0]?.geometry.coordinates as Position[][][]
-      );
+    : turf.multiPolygon(union?.geometry.coordinates as Position[][][])
 
-  const enveloppe = turf
-    .bboxPolygon(turf.bbox(turf.envelope(polygonTerritoire)))
-    .geometry.coordinates[0].map((coord) => [coord[1], coord[0]]);
+  // Pour certains multipolygones, on a plusieurs arrays de coordonnées si les territoires sont disjoints
+  const flattenedCoordinates = getArrayDepth(polygonTerritoire.geometry.coordinates) === 4
+    ? polygonTerritoire.geometry.coordinates[0]
+    : polygonTerritoire.geometry.coordinates;
+
+
+  // On inverse les coordonnées pour les passer à turf.polygon
+  // car turf.polygon attend des coordonnées au format [longitude, latitude]
+  const newPolygonTerritoire = turf.polygon(flattenedCoordinates.map(
+    el => el.map(
+      coords => [coords[1], coords[0]]
+    )
+  ) as unknown as Position[][]
+  );
+
+  const enveloppe = turf.envelope(newPolygonTerritoire).geometry.coordinates[0];
+
   const pointCollection = aot40map.map((aot) => {
     return turf.point(aot.coordinates as number[]);
   });
   const featureCollection = turf.featureCollection(pointCollection);
   const nearestPoint = turf.nearestPoint(
-    turf.point([centerCoord[0], centerCoord[1]]),
+    turf.point([centerCoord[1], centerCoord[0]]),
     featureCollection
   );
   const bbox = turf.bbox(
-    turf.featureCollection([nearestPoint, turf.point(centerCoord)])
+    turf.featureCollection([nearestPoint as Any, newPolygonTerritoire])
   );
   const boundsIfNoPoint = [
+    [bbox[0], bbox[3]],
     [bbox[0], bbox[1]],
-    [bbox[2], bbox[3]]
+    [bbox[2], bbox[1]],
+    [bbox[2], bbox[3]],
+    [bbox[0], bbox[3]]
   ];
 
   const territoireStyle: StyleFunction<Any> = () => {
@@ -134,19 +177,6 @@ export const MapAOT40 = (props: {
       // iconSize: [45, 45],
       // iconAnchor: [15, 15]
     });
-  };
-
-  const CustomTooltip = (sitesInCluster: string[]) => {
-    const displayedSites = sitesInCluster.slice(0, 10);
-    return `<div style="padding: 0.25rem;">
-        <div style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; border-bottom: 1px solid #B8B8B8; margin-bottom: 0.5rem;">
-          Dans ce regroupement :
-        </div>
-        <div style="display: flex; flex-direction: column; font-size: 10px; font-family: Marianne; font-weight: 700;">
-          ${displayedSites.map((site) => `<div>${site}</div>`).join('')}
-          ${sitesInCluster.length > 10 ? '<div>...</div>' : ''}
-        </div>
-      </div>`;
   };
 
   return (
@@ -174,9 +204,19 @@ export const MapAOT40 = (props: {
         />
       )}
       <GeoJSON
-        data={commune ?? (epciContours as Any)}
+        data={commune ?? (carteCommunesFiltered as Any)}
         style={territoireStyle}
       />
+      {/* <Polygon
+        positions={newPolygonTerritoire.geometry.coordinates as LatLngExpression[][]}
+        pathOptions={{
+          color: 'red',
+          fillColor: 'red',
+        }}
+      />
+      <Rectangle
+        bounds={enveloppe as LatLngBoundsExpression}
+      /> */}
       <MarkerClusterGroup
         chunkedLoading
         removeOutsideVisibleBounds={true}
@@ -190,7 +230,7 @@ export const MapAOT40 = (props: {
           const sitesInCluster = e.propagatedFrom
             .getAllChildMarkers()
             .map((el: { options: { title: string } }) => el.options.title);
-          e.propagatedFrom.bindTooltip(CustomTooltip(sitesInCluster), {
+          e.propagatedFrom.bindTooltip(AOT40Tooltip(sitesInCluster), {
             opacity: 0.97,
             direction: e.originalEvent.layerY > 250 ? 'top' : 'bottom',
             offset: [0, e.originalEvent.layerY > 250 ? -25 : 25]
@@ -249,5 +289,6 @@ export const MapAOT40 = (props: {
         })}
       </MarkerClusterGroup>
     </MapContainer>
+
   );
 };

@@ -1,11 +1,11 @@
-import { ClcDto } from "../dto";
-import { CLC } from "../postgres/models";
+import { ClcDto } from '../dto';
+import { CLCTerritoires } from '../postgres/models';
 
-export const ClcMapper = (clc: CLC): ClcDto => ({
-  type: "Feature",
+export const ClcMapper = (clc: CLCTerritoires): ClcDto => ({
+  type: 'Feature',
   properties: {
     label: clc.legend,
-    centroid: clc.centroid,
+    centroid: clc.centroid
   },
-  geometry: JSON.parse(clc.geometry),
+  geometry: JSON.parse(clc.geometry)
 });

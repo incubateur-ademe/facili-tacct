@@ -7,30 +7,35 @@ import { dromRegex } from '../utils/regex';
 
 const PrismaPostgres = new PostgresClient();
 
-export const GetPatch4 = async (code: string): Promise<Patch4 | undefined> => {
+export const GetPatch4 = async (
+  code: string,
+  type: string
+): Promise<Patch4 | undefined> => {
   try {
-    const departement = await PrismaPostgres.collectivites_searchbar.findFirst({
-      where: {
-        OR: [{ code_commune: code }, { code_epci: code }]
+    if (type === 'commune' || type === 'epci') {
+      const departement =
+        await PrismaPostgres.collectivites_searchbar.findFirst({
+          where: {
+            OR: [{ code_geographique: code }, { epci: code }]
+          }
+        });
+      // Exclusion des DROM puisque le patch4 ne les inclut pas
+      if (
+        departement &&
+        departement.departement &&
+        !dromRegex.test(departement.departement)
+      ) {
+        const value = await PrismaPostgres.patch4c.findFirst({
+          where: {
+            code_geographique: code
+          }
+        });
+        return value == null ? undefined : value;
       }
-    });
-    // Exclusion des DROM puisque le patch4 ne les inclut pas
-    if (
-      departement &&
-      departement.departement &&
-      !dromRegex.test(departement.departement)
-    ) {
-      const value = await PrismaPostgres.patch4c.findFirst({
-        where: {
-          code_geographique: code
-        }
-      });
-      return value == null ? undefined : value;
     } else return undefined;
   } catch (error) {
     console.error(error);
     Sentry.captureException(error);
-    await PrismaPostgres.$disconnect();
-    process.exit(1);
+    throw new Error('Internal Server Error');
   }
 };

@@ -1,34 +1,26 @@
 'use client';
 
-import { EpciContoursDto, ErosionCotiereDto } from '@/lib/dto';
+import { CommunesIndicateursDto, ErosionCotiereDto } from '@/lib/dto';
 import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
 import { Any } from '@/lib/utils/types';
-import { StyleFunction } from 'leaflet';
+import { GeoJsonObject } from 'geojson';
+import { LatLngBoundsExpression, StyleFunction } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
-
-const getCentroid = (arr: number[][]) => {
-  return arr?.reduce(
-    (x: number[], y: number[]) => {
-      return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
-    },
-    [0, 0]
-  );
-};
+import { BoundsFromCollection } from './components/boundsFromCollection';
 
 export const MapErosionCotiere = (props: {
   erosionCotiere: ErosionCotiereDto[];
-  epciContours: EpciContoursDto[];
+  carteCommunes: CommunesIndicateursDto[];
 }) => {
-  const { erosionCotiere, epciContours } = props;
+  const { erosionCotiere, carteCommunes } = props;
   const searchParams = useSearchParams();
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
   const mapRef = useRef(null);
-  const centerCoord: number[] = getCentroid(
-    epciContours[0]?.geometry?.coordinates[0][0]
-  );
-
+  const enveloppe = BoundsFromCollection(carteCommunes, type, code);
+  
   const getColor = (d: number) => {
     if (d >= 3) {
       return '#046803';
@@ -64,10 +56,10 @@ export const MapErosionCotiere = (props: {
     };
   };
 
-  const epciStyle: StyleFunction<Any> = () => {
+  const territoireStyle: StyleFunction<Any> = () => {
     return {
-      weight: 1,
-      opacity: 1,
+      weight: 0.5,
+      opacity: 0.5,
       color: '#161616',
       fillOpacity: 0
     };
@@ -75,13 +67,11 @@ export const MapErosionCotiere = (props: {
 
   return (
     <MapContainer
-      center={[centerCoord[1], centerCoord[0]]}
-      zoom={10}
       ref={mapRef}
       style={{ height: '500px', width: '100%' }}
       attributionControl={false}
       zoomControl={false}
-      minZoom={9}
+      bounds={enveloppe as LatLngBoundsExpression}
     >
       {process.env.NEXT_PUBLIC_ENV === 'preprod' ? (
         <TileLayer
@@ -95,7 +85,11 @@ export const MapErosionCotiere = (props: {
         />
       )}
       <GeoJSON ref={mapRef} data={erosionCotiere as Any} style={style} />
-      <GeoJSON ref={mapRef} data={epciContours as Any} style={epciStyle} />
+      <GeoJSON
+        ref={mapRef}
+        data={carteCommunes as unknown as GeoJsonObject}
+        style={territoireStyle}
+      />
     </MapContainer>
   );
 };

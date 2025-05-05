@@ -7,7 +7,6 @@ import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import { BarDatum, BarTooltipProps } from "@nivo/bar";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { GraphDataNotFound } from "../../graph-data-not-found";
 import { NivoBarChart } from "../NivoBarChart";
 
 type GraphData = {
@@ -53,14 +52,19 @@ export const AgricultureBioBarChart = (
   { agricultureBio, sliderValue }: { agricultureBio: AgricultureBio[], sliderValue: number[] }
 ) => {
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get("codgeo")!;
-  const codepci = searchParams.get("codepci")!;
+  const code = searchParams.get('code')!;
+  const libelle = searchParams.get('libelle')!;
   const [selectedYears, setSelectedYears] = useState<string[]>(agricultureBioYears.map(year => year.split("_")[1]));
   const collectiviteName = agricultureBio[0].libelle_epci;
   const graphData = graphDataFunct(selectedYears, agricultureBio)
 
   useEffect(() => {
-    setSelectedYears(agricultureBioYears.slice(agricultureBioYears.indexOf(`surface_${sliderValue[0]}`), agricultureBioYears.indexOf(`surface_${sliderValue[1]}`) + 1))
+    setSelectedYears(
+      agricultureBioYears.slice(
+        agricultureBioYears.indexOf(`surface_${sliderValue[0]}`),
+        agricultureBioYears.indexOf(`surface_${sliderValue[1]}`) + 1
+      )
+    )
   }, [sliderValue]);
 
   const legends = [
@@ -76,12 +80,6 @@ export const AgricultureBioBarChart = (
       valeur: Sum(graphData.map(e => e["Surface en conversion agriculture biologique"])),
       couleur: "#00949D"
     },
-    // {
-    //   variable: "Surface restante à convertir",
-    //   texte_raccourci: "Surface restante",
-    //   valeur: Sum(graphData.map(e => e["Surface restante à convertir"])),
-    //   couleur: "#BB43BD"
-    // },
   ]
 
   const CustomTooltip = ({ data }: BarTooltipProps<BarDatum>) => {
@@ -100,8 +98,8 @@ export const AgricultureBioBarChart = (
           dataArray.slice(0, -1).map((el, i) => {
             return (
               <div className={styles.itemWrapper} key={i}>
-                <div className={styles.titre}> 
-                  <div className={styles.colorSquare} style={{background: el.color}}/>
+                <div className={styles.titre}>
+                  <div className={styles.colorSquare} style={{ background: el.color }} />
                   <p>{el.titre}</p>
                 </div>
                 <div className={styles.value}>
@@ -116,8 +114,8 @@ export const AgricultureBioBarChart = (
   }
 
   return (
-    graphData && graphData.length ? (
-      <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
+    <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
+      {graphData && graphData.length ?
         <NivoBarChart
           colors={legends.map(e => e.couleur)}
           graphData={graphData}
@@ -125,14 +123,23 @@ export const AgricultureBioBarChart = (
           indexBy="annee"
           legendData={legends.filter(e => e.valeur != 0)
             .map((legend, index) => ({
-              id: index, 
+              id: index,
               label: legend.texte_raccourci,
               color: legend.couleur,
             }))}
           tooltip={CustomTooltip}
           axisLeftLegend="Surface en ha"
         />
-      </div>
-    ) : <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        : <div
+          style={{
+            height: 'inherit',
+            alignContent: 'center',
+            textAlign: 'center'
+          }}
+        >
+          <p>Aucune donnée disponible avec ces filtres</p>
+        </div>
+      }
+    </div>
   )
 };

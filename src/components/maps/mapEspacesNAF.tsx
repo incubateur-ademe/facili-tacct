@@ -2,11 +2,11 @@
 
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
-import { Round } from '@/lib/utils/reusableFunctions/round';
 import { type Any } from '@/lib/utils/types';
 import { Feature, GeoJsonObject } from 'geojson';
 import {
   FeatureGroup,
+  LatLngBoundsExpression,
   Layer,
   LeafletMouseEventHandlerFn,
   type StyleFunction
@@ -15,24 +15,8 @@ import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import { GraphDataNotFound } from '../graph-data-not-found';
-
-const getCentroid = (arr: number[][]) => {
-  return arr?.reduce(
-    (x: number[], y: number[]) => {
-      return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
-    },
-    [0, 0]
-  );
-};
-
-const getCoordinates = (coords: number[][][]) => {
-  const coords_arr = [];
-  for (let i = 0; i < coords.length; i++) {
-    const center = getCentroid(coords[i]);
-    coords_arr.push(center);
-  }
-  return getCentroid(coords_arr);
-};
+import { BoundsFromCollection } from './components/boundsFromCollection';
+import { EspacesNafTooltip } from './components/tooltips';
 
 const getColor = (d: number) => {
   return d > 200000
@@ -54,44 +38,28 @@ export const MapEspacesNaf = (props: {
   const { carteCommunes } = props;
   const carteCommunesFiltered = carteCommunes.filter(
     (el) => el.properties.naf != undefined
+  ).filter(
+    (e) =>
+      e.properties.code_geographique !== '75056' &&
+      e.properties.code_geographique !== '13055' &&
+      e.properties.code_geographique !== '69123'
   );
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo');
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
-
-  const all_coordinates = carteCommunesFiltered.map(
-    (el) => el.geometry.coordinates?.[0]?.[0]
-  );
-  const commune = codgeo
-    ? carteCommunesFiltered.find(
-        (el) => el.properties.code_geographique === codgeo
-      )
-    : null;
-  const centerCoord: number[] = commune
-    ? getCentroid(commune.geometry.coordinates?.[0][0])
-    : getCoordinates(all_coordinates);
+  const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
 
   const style: StyleFunction<Any> = (feature) => {
     const typedFeature = feature as CommunesIndicateursDto;
     return {
       fillColor: getColor(typedFeature?.properties.naf ?? 0),
-      weight: typedFeature.properties.code_geographique === codgeo ? 3 : 1,
+      weight: typedFeature.properties.code_geographique === code ? 3 : 1,
       opacity: 1,
       color: '#161616',
       fillOpacity: 1
     };
-  };
-
-  const CustomTooltip = (communeName: string, naf: number) => {
-    return `
-      <div style="padding: 0.5rem">
-        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0">
-          <p style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; margin: 0">${communeName} : </p> 
-          <p style="font-size: 0.75rem; font-family: Marianne; font-weight: 700; margin: 0"> ${Round(naf / 10000, 1)} hectare(s)</p>
-        </div>
-      </div>
-    `;
   };
 
   const mouseOnHandler: LeafletMouseEventHandlerFn = (e) => {
@@ -111,7 +79,7 @@ export const MapEspacesNaf = (props: {
       color: '#0D2100',
       fillOpacity: 0.9
     });
-    layer.bindTooltip(CustomTooltip(commune_name as string, naf as number), {
+    layer.bindTooltip(EspacesNafTooltip(commune_name as string, naf as number), {
       direction: e.originalEvent.offsetY > 250 ? 'top' : 'bottom',
       opacity: 0.97
     });
@@ -126,7 +94,7 @@ export const MapEspacesNaf = (props: {
     >;
     const codeCommune = e.sourceTarget.feature.properties.code_geographique;
     layer.setStyle({
-      weight: codeCommune === codgeo ? 3 : 1,
+      weight: codeCommune === code ? 3 : 1,
       color: '#000000',
       fillOpacity: 1
     });
@@ -139,19 +107,19 @@ export const MapEspacesNaf = (props: {
       mouseout: mouseOutHandler
     });
   };
+  console.log('carteCommunesFiltered', carteCommunesFiltered);
 
   return (
     <>
       {carteCommunesFiltered === null ? (
-        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        <GraphDataNotFound code={code} libelle={libelle} />
       ) : (
         <MapContainer
-          center={[centerCoord[1], centerCoord[0]]}
-          zoom={commune ? 11 : 9}
           ref={mapRef}
           style={{ height: '500px', width: '100%' }}
           attributionControl={false}
           zoomControl={false}
+          bounds={enveloppe as LatLngBoundsExpression}
         >
           <TileLayer
             // attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openma            attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

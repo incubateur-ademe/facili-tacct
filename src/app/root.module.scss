@@ -47,13 +47,13 @@
 }
 .collectiviteWrapper {
     position: absolute;
-    width: 46dvw;
+    width: 51dvw;
     max-width: 53em;
-    left: calc(50dvw - 23dvw);
+    left: calc(50dvw - 26dvw);
     top: var(--height-notice);
     display: flex;
     flex-direction: column;
-    background-color: rgb(248, 248, 248);
+    background-color: rgb(255, 255, 255);
     padding: 2em;
     margin: 0 auto;
     max-width: 60%;
@@ -165,6 +165,15 @@
         margin: 0;
     }
 }
+@media screen and (max-width: 1135px) {
+    .collectiviteWrapper {
+        width: 90dvw;
+        max-width: none;
+        left: calc(50dvw - 46dvw);
+        // top: var(--height-notice) + 6em;
+    }
+}
+
 @media screen and (max-width: 1015px) {
     .constellationWrapper {
         flex-direction: column;
@@ -188,7 +197,6 @@
         }
     }
 }
-
 @media screen and (max-width: 550px) {
     .card {
         .cardImage {
@@ -196,12 +204,15 @@
         }
     }
 }
-
-@media screen and (max-width: 1135px) {
+@media screen and (max-width: 520px) {
     .collectiviteWrapper {
-        width: 90dvw;
-        max-width: none;
-        left: calc(50dvw - 45dvw);
-        // top: var(--height-notice) + 6em;
+        height: 450px;
+    }
+    .cardWrapper {
+        padding-top: 25rem;
     }
 }
+
+
+
+

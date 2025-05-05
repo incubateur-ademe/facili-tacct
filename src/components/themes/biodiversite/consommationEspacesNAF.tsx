@@ -4,6 +4,7 @@ import { GraphDataNotFound } from '@/components/graph-data-not-found';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
+import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import styles from './biodiversite.module.scss';
@@ -15,8 +16,9 @@ export const ConsommationEspacesNAF = (props: {
 }) => {
   const { consommationNAF, carteCommunes } = props;
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo')!;
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
 
   const carteCommunesEnriched = carteCommunes.map((el) => {
     return {
@@ -27,26 +29,15 @@ export const ConsommationEspacesNAF = (props: {
     };
   });
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
-  const sumNaf = codgeo
-    ? consommationNAF.filter((item) => item.code_geographique === codgeo)[0]
-        ?.naf09art23
+
+  const sumNaf = type === "commune"
+    ? consommationNAF.filter((item) => item.code_geographique === code)[0]
+      ?.naf09art23
     : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
-  const title = (
-    <div>
-      Le suivi de cet indicateur est réalisé par le CEREMA dans le cadre de
-      l’objectif “zéro artificialisation nette” de la loi « Climat et résilience
-       ». La consommation d’espaces NAF est calculée à partir des fichiers
-      fonciers entre 2009 et 2023, présentée ici toute destination confondue.
-      Les données sont traitées pour donner des tendances de façon uniforme sur
-      toute la France ; ponctuellement, il est possible que les documents de
-      planification de certaines collectivités territoriales fassent référence à
-      des données locales de consommation d'espaces différentes de celles
-      fournies par le CEREMA.
-    </div>
-  );
+
   return (
     <>
-      {consommationNAF.length > 0 ? (
+      {consommationNAF.length > 0 && sumNaf ? (
         <div className={styles.container}>
           <div className="w-2/5">
             <div className={styles.explicationWrapper}>
@@ -55,11 +46,11 @@ export const ConsommationEspacesNAF = (props: {
                 <b>{Round(sumNaf / 10000, 1)} hectare(s)</b> d’espaces naturels
                 et forestiers.{' '}
               </p>
-              <CustomTooltip title={title} texte="D'où vient ce chiffre ?" />
+              <CustomTooltip title={espacesNAFTooltipText} texte="D'où vient ce chiffre ?" />
             </div>
             <div className="px-4">
               <p>
-                L'artificialisation des sols constitue l’une des première cause
+                L'artificialisation des sols constitue l’une des premières causes
                 de l’effondrement de la biodiversité. Elle porte atteinte aux
                 processus naturels essentiels, comme la pollinisation, fragmente
                 voire détruit les habitats et isole les espèces. Elle participe
@@ -103,13 +94,12 @@ export const ConsommationEspacesNAF = (props: {
           </div>
           <div className="w-3/5">
             <ConsommationEspacesNAFDataviz
-              consommationNAF={consommationNAF}
               carteCommunes={communesMap}
             />
           </div>
         </div>
       ) : (
-        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        <GraphDataNotFound code={code} libelle={libelle} />
       )}
     </>
   );

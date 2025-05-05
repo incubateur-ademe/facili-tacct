@@ -12,8 +12,9 @@ export const metadata: Metadata = {
 };
 
 const Thematiques = async (props: { searchParams: SearchParams }) => {
-  const { codgeo, codepci } = await props.searchParams;
-  const patch4 = codgeo ? await GetPatch4(codgeo) : await GetPatch4(codepci);
+  const { code, type } = await props.searchParams;
+  const patch4 =
+    type === 'epci' || type === 'commune' ? await GetPatch4(code, type) : null;
 
   return (
     <Container size="xl" className="mb-24">

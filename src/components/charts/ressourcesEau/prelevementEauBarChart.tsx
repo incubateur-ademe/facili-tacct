@@ -6,7 +6,6 @@ import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { BarDatum, BarTooltipProps } from '@nivo/bar';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { GraphDataNotFound } from '../../graph-data-not-found';
 import { NivoBarChart } from '../NivoBarChart';
 
 type GraphData = {
@@ -87,18 +86,22 @@ const PrelevementEauBarChart = ({
   sliderValue: number[];
 }) => {
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo')!;
-  const codepci = searchParams.get('codepci')!;
-  const dataParMaille = codgeo
-    ? ressourcesEau.filter((obj) => obj.code_geographique === codgeo)
-    : ressourcesEau.filter((obj) => obj.epci === codepci);
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
+  const dataParMaille = type === "commune"
+    ? ressourcesEau.filter((obj) => obj.code_geographique === code)
+    : type === "epci"
+      ? ressourcesEau.filter((obj) => obj.epci === code)
+      : type === "petr"
+        ? ressourcesEau.filter((obj) => obj.libelle_petr === libelle)
+        : type === "ept"
+          ? ressourcesEau.filter((obj) => obj.ept === libelle)
+          : ressourcesEau;
   const [selectedYears, setSelectedYears] = useState<string[]>(
     ressourcesEauYears.map((year) => year.split('A')[1])
   );
   const graphData = graphDataFunct(selectedYears, dataParMaille);
-  const collectiviteName = codgeo
-    ? dataParMaille[0]?.libelle_geographique
-    : dataParMaille[0]?.libelle_epci;
 
   useEffect(() => {
     setSelectedYears(
@@ -112,25 +115,25 @@ const PrelevementEauBarChart = ({
   const legends = [
     {
       texte_complet: 'Agriculture',
-      texte_raccourci: 'Agriculture',
+      texteRaccourci: 'Agriculture',
       valeur: Sum(graphData.map((e) => e.Agriculture)),
       couleur: '#00C190'
     },
     {
       texte_complet: 'Alimentation des canaux',
-      texte_raccourci: 'Alimentation des canaux',
+      texteRaccourci: 'Alimentation des canaux',
       valeur: Sum(graphData.map((e) => e['Alimentation des canaux'])),
       couleur: '#00C2CC'
     },
     {
       texte_complet: 'Eau potable',
-      texte_raccourci: 'Eau potable',
+      texteRaccourci: 'Eau potable',
       valeur: Sum(graphData.map((e) => e['Eau potable'])),
       couleur: '#009ADC'
     },
     {
       texte_complet: 'Industrie et autres usages économiques',
-      texte_raccourci: 'Industrie',
+      texteRaccourci: 'Industrie',
       valeur: Sum(
         graphData.map((e) => e['Industrie et autres usages économiques'])
       ),
@@ -138,7 +141,7 @@ const PrelevementEauBarChart = ({
     },
     {
       texte_complet: "Production d'électricité (barrages hydro-électriques)",
-      texte_raccourci: 'Barrages hydro-électriques',
+      texteRaccourci: 'Barrages hydro-électriques',
       valeur: Sum(
         graphData.map(
           (e) => e["Production d'électricité (barrages hydro-électriques)"]
@@ -148,7 +151,7 @@ const PrelevementEauBarChart = ({
     },
     {
       texte_complet: 'Refroidissement des centrales électriques',
-      texte_raccourci: 'Refroidissement des centrales',
+      texteRaccourci: 'Refroidissement des centrales',
       valeur: Sum(
         graphData.map((e) => e['Refroidissement des centrales électriques'])
       ),
@@ -169,7 +172,7 @@ const PrelevementEauBarChart = ({
     return (
       <div className={styles.tooltipEvolutionWrapper}>
         <h3>
-          {collectiviteName} ({dataArray.at(-1)?.value})
+          {libelle} ({dataArray.at(-1)?.value})
         </h3>
         {dataArray.slice(0, -1).map((el, i) => {
           return (
@@ -191,34 +194,44 @@ const PrelevementEauBarChart = ({
     );
   };
 
-  return graphData && graphData.length ? (
+  return (
     <div
       style={{ height: '500px', minWidth: '450px', backgroundColor: 'white' }}
     >
-      <NivoBarChart
-        bottomTickValues={
-          minValueXTicks != maxValueXTicks
-            ? [`${minValueXTicks}`, `${maxValueXTicks}`]
-            : [`${minValueXTicks}`]
-        }
-        colors={legends.map((e) => e.couleur)}
-        graphData={graphData}
-        keys={legends.map((e) => e.texte_complet)}
-        indexBy="annee"
-        legendData={legends
-          .filter((e) => e.valeur != 0)
-          .map((legend, index) => ({
-            id: index,
-            label: legend.texte_raccourci,
-            color: legend.couleur
-          }))}
-        tooltip={CustomTooltip}
-        axisLeftLegend="Volumétrie en Mm³"
-        axisLeftTickFactor={1000000}
-      />
+      {graphData && graphData.length ? (
+        <NivoBarChart
+          bottomTickValues={
+            minValueXTicks != maxValueXTicks
+              ? [`${minValueXTicks}`, `${maxValueXTicks}`]
+              : [`${minValueXTicks}`]
+          }
+          colors={legends.map((e) => e.couleur)}
+          graphData={graphData}
+          keys={legends.map((e) => e.texte_complet)}
+          indexBy="annee"
+          legendData={legends
+            .filter((e) => e.valeur != 0)
+            .map((legend, index) => ({
+              id: index,
+              label: legend.texteRaccourci,
+              color: legend.couleur
+            }))}
+          tooltip={CustomTooltip}
+          axisLeftLegend="Volumétrie en Mm³"
+          axisLeftTickFactor={1000000}
+        />
+      ) : (
+        <div
+          style={{
+            height: 'inherit',
+            alignContent: 'center',
+            textAlign: 'center'
+          }}
+        >
+          Aucun prélèvement en eau avec ces filtres
+        </div>
+      )}
     </div>
-  ) : (
-    <GraphDataNotFound code={codgeo ? codgeo : codepci} />
   );
 };
 

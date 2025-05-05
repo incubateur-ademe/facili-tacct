@@ -1,8 +1,8 @@
-import { Brand } from '@/components/Brand';
-import { HeaderComp as Header } from '@/components/Header';
-import { HeaderClientOnly } from '@/components/utils/ClientOnly';
+import { Brand } from "@/components/Brand";
+import HeaderComp from "@/components/Header";
+import { HeaderClientOnly } from "@/components/utils/ClientOnly";
 import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display';
-import { Footer } from '@codegouvfr/react-dsfr/Footer';
+import { Footer } from "@codegouvfr/react-dsfr/Footer";
 import { type Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { Suspense, type PropsWithChildren } from 'react';
@@ -16,17 +16,15 @@ const footerId = 'footer';
 export const metadata: Metadata = {
   metadataBase: new URL(config.host),
   ...sharedMetadata,
-  title: {
-    template: `${config.name} - %s`,
-    default: config.name
-  },
+  // title: {
+  //   template: `${config.name} - %s`,
+  //   default: config.name
+  // },
   openGraph: {
-    title: {
-      template: `${config.name} - %s`,
-      default: config.name
-    },
+    title: config.name,
     ...sharedMetadata.openGraph
-  }
+  },
+  description: config.description
 };
 
 const PostHogPageView = dynamic(() => import('../PostHogPageView'));
@@ -38,7 +36,7 @@ const LayoutMain = ({ children }: PropsWithChildren) => {
         <PostHogPageView />
       </Suspense>
       <HeaderClientOnly>
-        <Header />
+        <HeaderComp />
       </HeaderClientOnly>
       <main>{children}</main>
       <Footer
@@ -46,11 +44,21 @@ const LayoutMain = ({ children }: PropsWithChildren) => {
         brandTop={<Brand />}
         accessibility="non compliant"
         accessibilityLinkProps={{ href: '/accessibilite' }}
-        contentDescription={`${config.name} est un service développé par l'accélérateur de la transition écologique de l'ADEME.`}
+        contentDescription={
+          <>
+            {config.name} est un service porté par l’Agence de la transition écologique
+            (ADEME), en partenariat avec Météo France.
+            <br></br>
+            Notre mission : Accompagner les territoires pour une meilleure appropriation
+            de leur vulnérabilité aux impacts du changement climatique.
+            Facili-TACCT met à disposition les données climatiques du patch 4°C,
+            mesure 23 du plan national d’adaptation au changement climatique (PNACC 3).
+          </>
+        }
         operatorLogo={{
           alt: "Logo de l'ADEME",
-          imgUrl: '/logo-ademe.svg',
-          orientation: 'vertical'
+          imgUrl: '/logo-ademe-meteofrance.jpg',
+          orientation: 'horizontal',
         }}
         bottomItems={[
           {

@@ -12,19 +12,6 @@ type CatnatTypes =
   | 'Tous types'
   | 'Avalanche';
 
-type ArreteCatNat = {
-  annee_arrete: number;
-  lib_risque_jo: string;
-  dat_pub_arrete: string;
-  code_geographique: string;
-  departement: string;
-  epci: string;
-  index: bigint;
-  libelle_epci: string;
-  libelle_geographique: string;
-  region: number;
-};
-
 type DataByCodeGeographique = {
   indexName: string;
   Inondations?: number;
@@ -40,3 +27,18 @@ type TabIcons = {
   iconNotSelected: StaticImageData;
   iconSelected: StaticImageData;
 };
+
+type PrelevementsEauYears =
+  | 'A2008'
+  | 'A2009'
+  | 'A2010'
+  | 'A2011'
+  | 'A2012'
+  | 'A2013'
+  | 'A2014'
+  | 'A2015'
+  | 'A2016'
+  | 'A2017'
+  | 'A2018'
+  | 'A2019'
+  | 'A2020';

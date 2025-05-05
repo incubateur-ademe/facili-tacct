@@ -8,6 +8,7 @@ import usine_icon_black from '@/assets/icons/themes/usine_icon_black.svg';
 import vagues_icon_black from '@/assets/icons/themes/vagues_icon_black.svg';
 import GraphNotFound from '@/assets/images/data_not_found_prelevement.svg';
 import legendEpci from '@/assets/images/legend_prelevement_eau_epci.svg';
+import DataNotFound from '@/components/graphDataNotFound';
 import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
 import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
 import { RessourcesEau } from '@/lib/postgres/models';
@@ -18,30 +19,44 @@ import { useSearchParams } from 'next/navigation';
 
 const SumFiltered = (
   data: RessourcesEau[],
-  codgeo: string,
-  codepci: string,
+  code: string,
+  libelle: string,
   type: string,
-  collectivite: boolean = false
+  champ: string
 ) => {
-  if (collectivite) {
-    return Sum(
-      data
-        .filter((obj) =>
-          codgeo ? obj.code_geographique === codgeo : obj.epci === codepci
-        )
-        .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(type))
-        .map((e) => e.A2020)
-        .filter((value): value is number => value !== null)
-    );
-  } else {
-    return Sum(
-      data
-        .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(type))
-        .map((e) => e.A2020)
-        .filter((value): value is number => value !== null)
-    );
-  }
+  const columnCode = type === 'epci'
+    ? 'epci'
+    : type === 'commune'
+      ? 'code_geographique'
+      : type === "departement"
+        ? "departement"
+        : undefined
+
+  const columnLibelle = type === "petr"
+    ? "libelle_petr"
+    : "ept"
+
+  return Sum(
+    data
+      .filter((obj) => columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
+      )
+      .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(champ))
+      .map((e) => e.A2020)
+      .filter((value): value is number => value !== null)
+  );
 };
+
+const TotalSum = (
+  data: RessourcesEau[],
+  champ: string
+) => {
+  return Sum(
+    data
+      .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(champ))
+      .map((e) => e.A2020)
+      .filter((value): value is number => value !== null)
+  );
+}
 
 const PrelevementEauProgressBars = ({
   ressourcesEau
@@ -49,126 +64,128 @@ const PrelevementEauProgressBars = ({
   ressourcesEau: RessourcesEau[];
 }) => {
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo')!;
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
 
   const data = [
     {
       titre: 'Agriculture',
       icon: <Image src={tracteur_icon_black} alt="" />,
-      sumDptmt: SumFiltered(ressourcesEau, codgeo, codepci, 'agriculture'),
-      sumCollectivite: SumFiltered(
+      sumDptmt: TotalSum(ressourcesEau, 'agriculture'),
+      sumTerritoire: SumFiltered(
         ressourcesEau,
-        codgeo,
-        codepci,
-        'agriculture',
-        true
+        code,
+        libelle,
+        type,
+        'agriculture'
       ),
       color: '#00C190'
     },
     {
       titre: 'Eau potable',
       icon: <Image src={robinet_icon_black} alt="" />,
-      sumDptmt: SumFiltered(ressourcesEau, codgeo, codepci, 'potable'),
-      sumCollectivite: SumFiltered(
+      sumDptmt: TotalSum(ressourcesEau, 'potable'),
+      sumTerritoire: SumFiltered(
         ressourcesEau,
-        codgeo,
-        codepci,
-        'potable',
-        true
+        code,
+        libelle,
+        type,
+        'potable'
       ),
       color: '#009ADC'
     },
     {
       titre: 'Industrie et autres usages économiques',
       icon: <Image src={usine_icon_black} alt="" />,
-      sumDptmt: SumFiltered(ressourcesEau, codgeo, codepci, 'industrie'),
-      sumCollectivite: SumFiltered(
+      sumDptmt: TotalSum(ressourcesEau, 'industrie'),
+      sumTerritoire: SumFiltered(
         ressourcesEau,
-        codgeo,
-        codepci,
-        'industrie',
-        true
+        code,
+        libelle,
+        type,
+        'industrie'
       ),
       color: '#7A49BE'
     },
     {
       titre: 'Refroidissement des centrales électriques',
       icon: <Image src={flocon_icon_black} alt="" />,
-      sumDptmt: SumFiltered(ressourcesEau, codgeo, codepci, 'refroidissement'),
-      sumCollectivite: SumFiltered(
+      sumDptmt: TotalSum(ressourcesEau, 'refroidissement'),
+      sumTerritoire: SumFiltered(
         ressourcesEau,
-        codgeo,
-        codepci,
-        'refroidissement',
-        true
+        code,
+        libelle,
+        type,
+        'refroidissement'
       ),
       color: '#BB43BD'
     },
     {
       titre: 'Alimentation des canaux',
       icon: <Image src={vagues_icon_black} alt="" />,
-      sumDptmt: SumFiltered(ressourcesEau, codgeo, codepci, 'alimentation'),
-      sumCollectivite: SumFiltered(
+      sumDptmt: TotalSum(ressourcesEau, 'alimentation'),
+      sumTerritoire: SumFiltered(
         ressourcesEau,
-        codgeo,
-        codepci,
-        'alimentation',
-        true
+        code,
+        libelle,
+        type,
+        'alimentation'
       ),
       color: '#00C2CC'
     },
     {
       titre: "Production d'électricité (barrages hydro-électriques)",
       icon: <Image src={eclair_icon_black} alt="" />,
-      sumDptmt: SumFiltered(ressourcesEau, codgeo, codepci, 'production'),
-      sumCollectivite: SumFiltered(
+      sumDptmt: TotalSum(ressourcesEau, 'production'),
+      sumTerritoire: SumFiltered(
         ressourcesEau,
-        codgeo,
-        codepci,
-        'production',
-        true
+        code,
+        libelle,
+        type,
+        'production'
       ),
       color: '#FFCF5E'
     }
   ];
   const totalDptmt =
-    SumFiltered(ressourcesEau, codgeo, codepci, 'total') === 0
+    TotalSum(ressourcesEau, 'total') === 0
       ? 1
-      : SumFiltered(ressourcesEau, codgeo, codepci, 'total');
+      : TotalSum(ressourcesEau, 'total');
   const total =
-    SumFiltered(ressourcesEau, codgeo, codepci, 'total', true) === 0
+    SumFiltered(ressourcesEau, code, libelle, type, 'total') === 0
       ? 1
-      : SumFiltered(ressourcesEau, codgeo, codepci, 'total', true);
-  const collectivite = codgeo
-    ? ressourcesEau.filter((obj) => obj.code_geographique === codgeo)[0]
-        ?.libelle_geographique
-    : ressourcesEau.filter((obj) => obj.epci === codepci)[0]?.libelle_epci;
-  const departement = ressourcesEau[0]?.departement;
+      : SumFiltered(ressourcesEau, code, libelle, type, 'total');
+
+  const departement = ressourcesEau[0]?.libelle_departement;
 
   return (
     <div className={styles.ressourcesEauWrapper}>
-      {collectivite && data.find((e) => e.sumCollectivite !== 0) ? (
+      {libelle && data.find((e) => e.sumTerritoire !== 0) ? (
         <>
           {data
-            .sort((a, b) => b.sumCollectivite - a.sumCollectivite)
+            .sort((a, b) => b.sumTerritoire - a.sumTerritoire)
             .map((item, index) => (
               <HtmlTooltip
                 title={
                   <div className={styles.tooltip}>
                     <h3>{item.titre}</h3>
                     <p>
-                      {collectivite} :{' '}
+                      {libelle} :{' '}
                       <b>
-                        {((100 * item.sumCollectivite) / total).toFixed(1)}%
+                        {((100 * item.sumTerritoire) / total).toFixed(2)}%
                       </b>{' '}
-                      ({(item.sumCollectivite / 1000000).toFixed(2)} Mm³)
+                      ({(item.sumTerritoire / 1000000).toFixed(2)} Mm³)
                     </p>
-                    <p>
-                      Département {departement} :{' '}
-                      <b>{((100 * item.sumDptmt) / totalDptmt).toFixed(1)}%</b>{' '}
-                      ({(item.sumDptmt / 1000000).toFixed(2)} Mm³)
-                    </p>
+                    {
+                      type !== 'departement' && (
+                        <p>
+                          Département ({departement}) :{' '}
+                          <b>{((100 * item.sumDptmt) / totalDptmt).toFixed(2)} %</b>{' '}
+                          ({(item.sumDptmt / 1000000).toFixed(2)} Mm³)
+                        </p>
+                      )
+                    }
                   </div>
                 }
                 key={index}
@@ -181,7 +198,7 @@ const PrelevementEauProgressBars = ({
                       <p>{item.titre}</p>
                       <div className={styles.barMarker}>
                         <Progress
-                          percent={Number((100 * item.sumCollectivite) / total)}
+                          percent={Number((100 * item.sumTerritoire) / total)}
                           showInfo={false}
                           strokeColor={item.color}
                           size={['100%', 12]}
@@ -204,10 +221,10 @@ const PrelevementEauProgressBars = ({
                   <div className={styles.progressNumbers}>
                     <p>
                       <b>
-                        {((100 * item.sumCollectivite) / total).toFixed(1)}%
+                        {((100 * item.sumTerritoire) / total).toFixed(2)}%
                       </b>
                     </p>
-                    <p>{(item.sumCollectivite / 1000000).toFixed(2)} Mm³</p>
+                    <p>{(item.sumTerritoire / 1000000).toFixed(2)} Mm³</p>
                   </div>
                 </div>
               </HtmlTooltip>
@@ -215,22 +232,7 @@ const PrelevementEauProgressBars = ({
           <Image src={legendEpci} alt="" style={{ alignSelf: 'end' }} />
         </>
       ) : (
-        <div
-          style={{
-            height: 'inherit',
-            alignContent: 'center',
-            textAlign: 'center'
-          }}
-          key="noData"
-        >
-          <Image
-            src={GraphNotFound}
-            alt=""
-            width={0}
-            height={0}
-            style={{ width: '90%', height: 'auto' }}
-          />
-        </div>
+        <DataNotFound image={GraphNotFound} />
       )}
     </div>
   );

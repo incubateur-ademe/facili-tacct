@@ -2,19 +2,19 @@
 
 import { Loader } from '@/components/loader';
 import { AgeBati } from '@/components/themes/inconfortThermique/ageBati';
-import { DensiteBati } from '@/components/themes/inconfortThermique/densite-bati';
-import { FragiliteEconomique } from '@/components/themes/inconfortThermique/fragilite-economique';
-import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grand-age-isolement';
-import { TravailExterieur } from '@/components/themes/inconfortThermique/travail-exterieur';
+import { DensiteBati } from '@/components/themes/inconfortThermique/densiteBati';
+import { FragiliteEconomique } from '@/components/themes/inconfortThermique/fragiliteEconomique';
+import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grandAgeIsolement';
+import { TravailExterieur } from '@/components/themes/inconfortThermique/travailExterieur';
 import { TabTooltip } from '@/components/utils/TabTooltip';
-import { CarteCommunes, CLC, InconfortThermique } from '@/lib/postgres/models';
-import { GetClcEpci } from '@/lib/queries/postgis/cartographie';
+import { CarteCommunes, CLCTerritoires, InconfortThermique } from '@/lib/postgres/models';
+import { GetClcTerritoires } from '@/lib/queries/postgis/cartographie';
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -73,26 +73,12 @@ const allComps = [
       <DensiteBati carteCommunes={carteCommunes} />
     )
   },
-  // {
-  //   titre: 'LCZ',
-  //   Component: ({
-  //     carteCommunes,
-  //     collectivite
-  //     // LCZBayonne
-  //   }: Props & { activeDataTab: string }) => (
-  //     <LCZ
-  //       carteCommunes={carteCommunes}
-  //       collectivite={collectivite}
-  //       // LCZBayonne={LCZBayonne}
-  //     />
-  //   )
-  // },
   {
     titre: 'Végétalisation',
     Component: ({
       clc,
       inconfortThermique
-    }: Props & { activeDataTab: string; clc: CLC[] }) => (
+    }: Props & { activeDataTab: string; clc: CLCTerritoires[] | undefined }) => (
       <DynamicVegetalisation
         inconfortThermique={inconfortThermique}
         clc={clc}
@@ -107,11 +93,13 @@ const InconfortThermiqueComp = ({
   inconfortThermique,
   departement
 }: Props) => {
-  const [clc, setClc] = useState<CLC[]>();
+  const [clc, setClc] = useState<CLCTerritoires[] | undefined>();
   const [selectedTabId, setSelectedTabId] = useState('Population');
   const [selectedSubTab, setSelectedSubTab] = useState('Grand âge');
   const searchParams = useSearchParams();
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const { isDark } = useIsDark();
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
@@ -124,7 +112,7 @@ const InconfortThermiqueComp = ({
   const { css } = useStyles();
 
   useEffect(() => {
-    window.scrollTo({
+    window?.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
@@ -138,10 +126,10 @@ const InconfortThermiqueComp = ({
 
   useEffect(() => {
     void (async () => {
-      const temp = await GetClcEpci(codepci);
-      temp && codepci ? setClc(temp) : void 0;
+      const temp = await GetClcTerritoires(libelle, type, code);
+      temp ? setClc(temp) : void 0;
     })();
-  }, [codepci]);
+  }, [code]);
 
   return (
     <div className={styles.container}>
@@ -226,16 +214,14 @@ const InconfortThermiqueComp = ({
                 )?.Component;
                 if (!Component) return null;
                 return (
-                  <Suspense>
                     <Component
                       data={data}
                       inconfortThermique={inconfortThermique}
                       carteCommunes={carteCommunes}
                       activeDataTab={selectedSubTab}
-                      clc={clc || []}
+                      clc={clc}
                       departement={departement}
                     />
-                  </Suspense>
                 );
               })()}
             </div>

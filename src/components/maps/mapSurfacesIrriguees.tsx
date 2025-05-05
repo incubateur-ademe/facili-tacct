@@ -6,6 +6,7 @@ import { type Any } from '@/lib/utils/types';
 import { Feature, GeoJsonObject } from 'geojson';
 import {
   FeatureGroup,
+  LatLngBoundsExpression,
   Layer,
   LeafletMouseEventHandlerFn,
   type StyleFunction
@@ -14,24 +15,8 @@ import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import { GraphDataNotFound } from '../graph-data-not-found';
-
-const getCentroid = (arr: number[][]) => {
-  return arr?.reduce(
-    (x: number[], y: number[]) => {
-      return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
-    },
-    [0, 0]
-  );
-};
-
-const getCoordinates = (coords: number[][][]) => {
-  const coords_arr = [];
-  for (let i = 0; i < coords.length; i++) {
-    const center = getCentroid(coords[i]);
-    coords_arr.push(center);
-  }
-  return getCentroid(coords_arr);
-};
+import { BoundsFromCollection } from './components/boundsFromCollection';
+import { SurfacesIrrigueesTooltip } from './components/tooltips';
 
 const getColor = (d: number) => {
   return d === 0
@@ -44,62 +29,40 @@ const getColor = (d: number) => {
           ? '#03508B'
           : d > 60 && d <= 100
             ? '#093454'
-            : 'transparent';
+            : 'white';
 };
 
 export const MapSurfacesIrriguees = (props: {
   carteCommunes: CommunesIndicateursDto[];
 }) => {
   const { carteCommunes } = props;
-  const carteCommunesFiltered = carteCommunes.filter(
-    (el) => el.properties.surfacesIrriguees != undefined
-  );
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo');
-  const codepci = searchParams.get('codepci')!;
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
 
-  const all_coordinates = carteCommunesFiltered.map(
-    (el) => el.geometry.coordinates?.[0]?.[0]
-  );
-  const commune = codgeo
-    ? carteCommunesFiltered.find(
-        (el) => el.properties.code_geographique === codgeo
-      )
-    : null;
-  const centerCoord: number[] = commune
-    ? getCentroid(commune.geometry.coordinates?.[0][0])
-    : getCoordinates(all_coordinates);
-
+  const carteCommunesFiltered = type === "ept" 
+    ? carteCommunes.filter(el => el.properties.ept === libelle)
+    : carteCommunes
+  const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
+  
   const style: StyleFunction<Any> = (feature) => {
     const typedFeature = feature as CommunesIndicateursDto;
     return {
       fillColor: getColor(typedFeature?.properties.surfacesIrriguees ?? 0),
-      weight: typedFeature.properties.code_geographique === codgeo ? 3 : 1,
+      weight: typedFeature.properties.code_geographique === code ? 3 : 1,
       opacity: 1,
       color: '#161616',
       fillOpacity: 1
     };
   };
 
-  const CustomTooltip = (communeName: string, surfacesIrriguees: number) => {
-    return `
-      <div style="padding: 0.5rem">
-        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0">
-          <p style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; margin: 0">${communeName} : </p> 
-          <p style="font-size: 0.75rem; font-family: Marianne; font-weight: 700; margin: 0"> 
-            ${isNaN(surfacesIrriguees) ? 'Aucune donnée' : `${surfacesIrriguees} %`}
-          </p>
-        </div>
-      </div>
-    `;
-  };
-
   const mouseOnHandler: LeafletMouseEventHandlerFn = (e) => {
     const layer = e.target as FeatureGroup<
       CommunesIndicateursDto['properties']
     >;
-    const commune_name =
+    const communeName =
       layer.feature && 'properties' in layer.feature
         ? layer.feature.properties.libelle_geographique
         : undefined;
@@ -113,7 +76,7 @@ export const MapSurfacesIrriguees = (props: {
       fillOpacity: 0.9
     });
     layer.bindTooltip(
-      CustomTooltip(commune_name as string, surfacesIrriguees as number),
+      SurfacesIrrigueesTooltip(communeName as string, surfacesIrriguees as number),
       {
         direction: e.originalEvent.offsetY > 250 ? 'top' : 'bottom',
         opacity: 0.97
@@ -130,7 +93,7 @@ export const MapSurfacesIrriguees = (props: {
     >;
     const codeCommune = e.sourceTarget.feature.properties.code_geographique;
     layer.setStyle({
-      weight: codeCommune === codgeo ? 3 : 1,
+      weight: codeCommune === code ? 3 : 1,
       color: '#000000',
       fillOpacity: 1
     });
@@ -147,15 +110,14 @@ export const MapSurfacesIrriguees = (props: {
   return (
     <>
       {carteCommunesFiltered === null ? (
-        <GraphDataNotFound code={codgeo ? codgeo : codepci} />
+        <GraphDataNotFound code={code} libelle={libelle} />
       ) : (
         <MapContainer
-          center={[centerCoord[1], centerCoord[0]]}
-          zoom={commune ? 11 : 10}
           ref={mapRef}
           style={{ height: '500px', width: '100%' }}
           attributionControl={false}
           zoomControl={false}
+          bounds={enveloppe as LatLngBoundsExpression}
         >
           {process.env.NEXT_PUBLIC_ENV === 'preprod' ? (
             <TileLayer

@@ -2,7 +2,6 @@
 
 import {
   CommunesIndicateursDto,
-  EpciContoursDto,
   EtatCoursDeauDto
 } from '@/lib/dto';
 import { QualiteSitesBaignade } from '@/lib/postgres/models';
@@ -11,7 +10,7 @@ import { Any } from '@/lib/utils/types';
 import { Feature } from 'geojson';
 import {
   FeatureGroup,
-  LatLngExpression,
+  LatLngBoundsExpression,
   Layer,
   LeafletMouseEventHandlerFn,
   StyleFunction
@@ -19,36 +18,28 @@ import {
 import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
+import { BoundsFromCollection } from './components/boundsFromCollection';
 import SitesBaignadeMarkers from './components/sitesBaignadeMarkers';
-
-const getCentroid = (arr: number[][]) => {
-  return arr?.reduce(
-    (x: number[], y: number[]) => {
-      return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
-    },
-    [0, 0]
-  );
-};
+import { CoursDeauTooltip } from './components/tooltips';
 
 export const MapEtatCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeauDto[];
-  epciContours: EpciContoursDto[];
   carteCommunes: CommunesIndicateursDto[];
   qualiteEauxBaignade?: QualiteSitesBaignade[];
 }) => {
-  const { etatCoursDeau, epciContours, carteCommunes, qualiteEauxBaignade } =
+  const { etatCoursDeau, carteCommunes, qualiteEauxBaignade } =
     props;
   const searchParams = useSearchParams();
-  const codgeo = searchParams.get('codgeo')!;
-  const commune = carteCommunes.find(
-    (commune) => commune.properties.code_geographique === codgeo
-  );
-  console.log('commune', commune);
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
 
-  const centerCoord: number[] = commune
-    ? commune.properties.coordinates.split(',').map(Number)
-    : getCentroid(epciContours[0]?.geometry?.coordinates[0][0]);
+  const carteCommunesFiltered = type === "ept"
+    ? carteCommunes.filter(
+      (el) => el.properties.ept === libelle
+    ) : carteCommunes;
+  const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
 
   const getColor = (d: string | null) => {
     if (d === '1') {
@@ -79,24 +70,11 @@ export const MapEtatCoursDeau = (props: {
 
   const territoireStyle: StyleFunction<Any> = (e) => {
     return {
-      weight: e?.properties.code_geographique === codgeo ? 2 : 0.5,
+      weight: e?.properties.code_geographique === code ? 2 : 0.5,
       opacity: 0.9,
       color: '#161616',
       fillOpacity: 0
     };
-  };
-
-  const CustomTooltip = (coursDeau: string, color: string) => {
-    return `
-      <div style="padding: 0.5rem">
-        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0; gap: 0.5rem; align-items: center">
-          <div
-            style="background-color: ${color}; width: 1rem; height: 1rem; border-radius: 2px; border: 0.5px solid #161616"
-          ></div>
-          <p style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; margin: 0">${coursDeau}</p> 
-        </div>
-      </div>
-    `;
   };
 
   const mouseOnHandler: LeafletMouseEventHandlerFn = (e) => {
@@ -112,7 +90,7 @@ export const MapEtatCoursDeau = (props: {
       weight: 7
     });
     layer.bindTooltip(
-      CustomTooltip(coursDeau as string, e.target.options.color),
+      CoursDeauTooltip(coursDeau as string, e.target.options.color),
       {
         direction: e.originalEvent.offsetY > 250 ? 'top' : 'bottom',
         offset: e.originalEvent.offsetX > 400 ? [-75, 0] : [75, 0]
@@ -142,17 +120,11 @@ export const MapEtatCoursDeau = (props: {
 
   return (
     <MapContainer
-      center={
-        commune
-          ? (centerCoord as LatLngExpression)
-          : [centerCoord[1], centerCoord[0]]
-      }
-      zoom={codgeo ? 12 : 10}
       ref={mapRef}
       style={{ height: '500px', width: '100%', cursor: 'pointer' }}
       attributionControl={false}
       zoomControl={false}
-      // minZoom={9}
+      bounds={enveloppe as LatLngBoundsExpression}
     >
       {process.env.NEXT_PUBLIC_ENV === 'preprod' ? (
         <TileLayer
@@ -182,7 +154,7 @@ export const MapEtatCoursDeau = (props: {
       `}
         <GeoJSON
           ref={mapRef}
-          data={carteCommunes as Any}
+          data={carteCommunesFiltered as Any}
           style={territoireStyle}
         />
         <GeoJSON

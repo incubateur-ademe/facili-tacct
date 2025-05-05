@@ -1,6 +1,7 @@
 // @ts-nocheck
 'use client';
 
+import { ArreteCatNat } from '@/lib/postgres/models';
 import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { Any } from '@/lib/utils/types';
@@ -17,7 +18,11 @@ const colors: { [key: string]: string } = {
   Avalanche: '#7A49BE'
 };
 
-const PieChartCatnat = (props: { gestionRisques: ArreteCatNat[] }) => {
+type ArreteCatNatEnriched = ArreteCatNat & {
+  annee_arrete: number;
+};
+
+const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
   const { gestionRisques } = props;
   const countTypes = CountOcc(gestionRisques, 'lib_risque_jo');
   const mapGraphData = gestionRisques?.map((el) => {

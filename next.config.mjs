@@ -19,7 +19,7 @@ const csp = {
     'connect-src': [
         '*',
         'https://*.gouv.fr',
-        process.env.FACILI_TACCT_ENV === 'preprod' && 'https://vercel.live',
+        process.env.NEXT_PUBLIC_ENV === 'preprod' && 'https://vercel.live',
         process.env.NODE_ENV === 'development' && 'http://localhost'
     ],
     'font-src': ["'self'"],
@@ -29,22 +29,27 @@ const csp = {
         "'self'",
         "'unsafe-inline'",
         'https://stats.beta.gouv.fr',
-        process.env.FACILI_TACCT_ENV === 'preprod' && 'https://vercel.live',
+        process.env.NEXT_PUBLIC_ENV === 'preprod' && 'https://vercel.live',
         process.env.NODE_ENV === 'development' &&
             "'unsafe-eval' http://localhost",
         '*.posthog.com'
     ],
     'style-src': ["'self'", "'unsafe-inline'"],
     'object-src': ["'self'", 'data:'],
-    'frame-ancestors': ["'self'"],
+    'frame-ancestors': [
+        "'none'",
+        // 'http://localhost:5174/*',
+        // 'http://localhost:5174',
+        // 'http://localhost:5173/*',
+        // 'http://localhost:5173',
+        // 'https://mon-espace-collectivite.osc-fr1.scalingo.io'
+    ],
     'base-uri': ["'self'", 'https://*.gouv.fr'],
     'form-action': ["'self'", 'https://*.gouv.fr'],
     'block-all-mixed-content': [],
     'upgrade-insecure-requests': [],
     'frame-src': [
-        process.env.FACILI_TACCT_ENV === 'preprod'
-            ? 'https://vercel.live'
-            : "'none'"
+        "'none'" // Iframe source
     ]
 };
 
@@ -77,13 +82,12 @@ const config = {
     env: {
         NEXT_TELEMETRY_DISABLED: '1',
         NEXT_PUBLIC_APP_VERSION: version,
-        // NEXT_PUBLIC_APP_VERSION_COMMIT: isDeployment ? process.env.VERCEL_GIT_COMMIT_SHA : "dev",
         NEXT_PUBLIC_REPOSITORY_URL: isDeployment
             ? `https://github.com/${process.env.VERCEL_GIT_REPO_OWNER}/${process.env.VERCEL_GIT_REPO_SLUG}`
             : (process.env.NEXT_PUBLIC_APP_REPOSITORY_URL ?? 'no repository'),
         NEXT_PUBLIC_SITE_URL: isDeployment
             ? (process.env.NEXT_PUBLIC_SITE_URL ??
-              `https://${process.env.VERCEL_URL}`)
+              `https://facili-tacct-preprod.osc-fr1.scalingo.io`)
             : 'http://localhost:3000'
     },
     pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
@@ -110,7 +114,7 @@ const config = {
                     },
                     {
                         key: 'Referrer-Policy',
-                        value: 'no-referrer, strict-origin-when-cross-origin' //, strict-origin-when-cross-origin
+                        value: 'no-referrer, strict-origin-when-cross-origin'
                     },
                     {
                         key: 'Permissions-Policy',
@@ -139,13 +143,10 @@ const withMDX = createMDX({
 });
 
 export default withSentryConfig(withMDX(config), {
-    // For all available options, see:
-    // https://github.com/getsentry/sentry-webpack-plugin#options
-
     org: 'betagouv',
     project: 'facili-tacct',
     sentryUrl: 'https://sentry.incubateur.net',
-    // authToken: process.env.SENTRY_AUTH_TOKEN,
+    authToken: process.env.SENTRY_AUTH_TOKEN,
     silent: false,
 
     // For all available options, see:
@@ -170,14 +171,5 @@ export default withSentryConfig(withMDX(config), {
 
     // Automatically tree-shake Sentry logger statements to reduce bundle size
     disableLogger: true,
-
-    // Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
-    // See the following for more information:
-    // https://docs.sentry.io/product/crons/
-    // https://vercel.com/docs/cron-jobs
-    automaticVercelMonitors: true,
-
-    sourcemaps: {
-        deleteSourcemapsAfterUpload: true,
-    },
+    automaticVercelMonitors: true
 });
