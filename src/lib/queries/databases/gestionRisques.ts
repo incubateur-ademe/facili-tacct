@@ -24,20 +24,31 @@ export const GetArretesCatnat = async (
             : type === 'departement'
               ? 'departement'
               : 'code_geographique';
-  try {
-    console.time('Query Execution Time GESTIONRISQUES');
-    const value = await PrismaPostgres.arretes_catnat.findMany({
-      where: {
-        [column]: (type === 'petr' || type === "ept") ? libelle : code
-      }
-    });
-    console.timeEnd('Query Execution Time GESTIONRISQUES');
-    return value;
-  } catch (error) {
-    console.error(error);
-    Sentry.captureException(error);
-    throw new Error('Internal Server Error');
-  }
+  const timeoutPromise = new Promise<[]>((resolve) =>
+    setTimeout(() => {
+      console.log(
+        'GetArreteCatnat: Timeout reached (3 seconds), returning empty array.'
+      );
+      resolve([]);
+    }, 3000)
+  );
+  const dbQuery = (async () => {
+    try {
+      console.time('Query Execution Time GESTIONRISQUES');
+      const value = await PrismaPostgres.arretes_catnat.findMany({
+        where: {
+          [column]: type === 'petr' || type === 'ept' ? libelle : code
+        }
+      });
+      console.timeEnd('Query Execution Time GESTIONRISQUES');
+      return value;
+    } catch (error) {
+      console.error(error);
+      Sentry.captureException(error);
+      throw new Error('Internal Server Error');
+    }
+  })();
+  return Promise.race([dbQuery, timeoutPromise]);
 };
 
 export const GetIncendiesForet = async (
@@ -59,29 +70,39 @@ export const GetIncendiesForet = async (
               : type === 'commune'
                 ? 'code_geographique'
                 : '';
-  try {
-    console.time('Query Execution Time GESTIONRISQUES');
-    if (type === "petr" || type === "ept") {
-      const value = await PrismaPostgres.feux_foret.findMany({
-        where: {
-          [column]: libelle
-        }
-      });
-      console.timeEnd('Query Execution Time GESTIONRISQUES');
-      return value;
-    } else {
-      const value = await PrismaPostgres.feux_foret.findMany({
-        where: {
-          [column]: code
-        }
-      });
-      console.timeEnd('Query Execution Time GESTIONRISQUES');
-      return value;
+  const timeoutPromise = new Promise<[]>((resolve) =>
+    setTimeout(() => {
+      console.log(
+        'GetIncendieForet: Timeout reached (3 seconds), returning empty array.'
+      );
+      resolve([]);
+    }, 3000)
+  );
+  const dbQuery = (async () => {
+    try {
+      console.time('Query Execution Time GESTIONRISQUES');
+      if (type === 'petr' || type === 'ept') {
+        const value = await PrismaPostgres.feux_foret.findMany({
+          where: {
+            [column]: libelle
+          }
+        });
+        console.timeEnd('Query Execution Time GESTIONRISQUES');
+        return value;
+      } else {
+        const value = await PrismaPostgres.feux_foret.findMany({
+          where: {
+            [column]: code
+          }
+        });
+        console.timeEnd('Query Execution Time GESTIONRISQUES');
+        return value;
+      }
+    } catch (error) {
+      console.error(error);
+      Sentry.captureException(error);
+      throw new Error('Internal Server Error');
     }
-    
-  } catch (error) {
-    console.error(error);
-    Sentry.captureException(error);
-    throw new Error('Internal Server Error');
-  }
+  })();
+  return Promise.race([dbQuery, timeoutPromise]);
 };
