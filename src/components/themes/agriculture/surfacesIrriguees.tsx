@@ -48,7 +48,7 @@ export const SurfacesIrriguees = ({
             <div className="w-2/5">
               <div className={styles.explicationWrapper}>
                 {
-                  communesMap.length > 0 ? (
+                  surfaceTerritoire && communesMap.length > 0 ? (
                     <p style={{ color: '#161616' }}>
                       En 2020, la part de la superficie irriguée dans la SAU sur
                       votre territoire était de{' '}

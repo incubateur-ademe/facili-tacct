@@ -21,7 +21,6 @@ export const ConsommationEspacesNAF = (props: {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
-  const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
@@ -53,7 +52,7 @@ export const ConsommationEspacesNAF = (props: {
             <div className="w-2/5">
               <div className={styles.explicationWrapper}>
                 {
-                  sumNaf !== 0 ? (
+                  sumNaf && sumNaf !== 0 ? (
                     <p>
                       Entre 2009 et 2023, votre territoire a consommé{' '}
                       <b>{Round(sumNaf / 10000, 1)} hectare(s)</b> d’espaces naturels
