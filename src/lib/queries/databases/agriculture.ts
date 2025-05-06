@@ -24,12 +24,7 @@ export const GetAgriculture = async (
               ? 'departement'
               : 'code_geographique';
   const timeoutPromise = new Promise<[]>((resolve) =>
-    setTimeout(() => {
-      console.log(
-        'GetAgriculture: Timeout reached (3 seconds), returning empty array.'
-      );
-      resolve([]);
-    }, 3000)
+    setTimeout(() => {resolve([])}, 3000)
   );
   const dbQuery = (async () => {
     try {
