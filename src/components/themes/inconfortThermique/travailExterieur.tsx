@@ -58,6 +58,8 @@ export const TravailExterieur = (props: {
     sumAdministration: sumProperty(travailExterieurTerritoire, 'NA5OQ_sum')
   };
 
+  console.log('sums', sums);
+  
   const graphData = [
     {
       id: 'Agriculture, sylviculture et pêche',

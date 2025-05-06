@@ -281,7 +281,7 @@ model inconfort_thermique {
   libelle_epci             String
   departement              String
   libelle_departement      String
-  region                   Int
+  region                   BigInt
   ept                      String?
   libelle_petr             String?
   code_pnr                 String?
@@ -291,32 +291,32 @@ model inconfort_thermique {
   age_bati_46_90           Float?
   age_bati_19_45           Float?
   age_bati_pre_19          Float?
-  under_4_sum_1968         String?
-  to_80_sum_1968           String? @map("4_to_80_sum_1968")
-  over_80_sum_1968         String?
-  under_4_sum_1975         String?
-  to_80_sum_1975           String? @map("4_to_80_sum_1975")
-  over_80_sum_1975         String?
-  under_4_sum_1982         String?
-  to_80_sum_1982           String? @map("4_to_80_sum_1982")
-  over_80_sum_1982         String?
-  under_4_sum_1990         String?
-  to_80_sum_1990           String? @map("4_to_80_sum_1990")
-  over_80_sum_1990         String?
-  under_4_sum_1999         String?
-  to_80_sum_1999           String? @map("4_to_80_sum_1999")
-  over_80_sum_1999         String?
-  under_4_sum_2009         String?
-  to_80_sum_2009           String? @map("4_to_80_sum_2009")
-  over_80_sum_2009         String?
-  under_4_sum_2014         String?
-  to_80_sum_2014           String? @map("4_to_80_sum_2014")
-  over_80_sum_2014         String?
-  under_4_sum_2020         String?
-  to_80_sum_2020           String? @map("4_to_80_sum_2020")
-  over_80_sum_2020         String?
-  P20_POP80P               String?
-  P20_POP80P_PSEUL         String?
+  under_4_sum_1968         Float?
+  to_80_sum_1968           Float?  @map("4_to_80_sum_1968")
+  over_80_sum_1968         Float?
+  under_4_sum_1975         Float?
+  to_80_sum_1975           Float?  @map("4_to_80_sum_1975")
+  over_80_sum_1975         Float?
+  under_4_sum_1982         Float?
+  to_80_sum_1982           Float?  @map("4_to_80_sum_1982")
+  over_80_sum_1982         Float?
+  under_4_sum_1990         Float?
+  to_80_sum_1990           Float?  @map("4_to_80_sum_1990")
+  over_80_sum_1990         Float?
+  under_4_sum_1999         Float?
+  to_80_sum_1999           Float?  @map("4_to_80_sum_1999")
+  over_80_sum_1999         Float?
+  under_4_sum_2009         Float?
+  to_80_sum_2009           Float?  @map("4_to_80_sum_2009")
+  over_80_sum_2009         Float?
+  under_4_sum_2014         Float?
+  to_80_sum_2014           Float?  @map("4_to_80_sum_2014")
+  over_80_sum_2014         Float?
+  under_4_sum_2020         Float?
+  to_80_sum_2020           Float?  @map("4_to_80_sum_2020")
+  over_80_sum_2020         Float?
+  P20_POP80P               Float?
+  P20_POP80P_PSEUL         Float?
   P20_POP80P_PSEUL_PERCENT Float?
   tee_log                  Float?
   tee_mob                  Float?
@@ -341,6 +341,9 @@ model inconfort_thermique {
   @@index([departement], map: "inconfort_thermique_departement_index")
   @@index([epci], map: "inconfort_thermique_epci_index")
   @@index([index], map: "ix_inconfort_thermique_index")
+  @@index([ept], map: "inconfort_thermique_ept_index")
+  @@index([libelle_petr], map: "inconfort_thermique_petr_index")
+  @@index([code_pnr], map: "inconfort_thermique_pnr_index")
   @@schema("databases")
 }
 
