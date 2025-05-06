@@ -1,3 +1,4 @@
+import { config } from '@/config';
 import { type Metadata } from 'next';
 
 const description =
@@ -6,16 +7,17 @@ const description =
 export const sharedMetadata: Metadata = {
   description,
   openGraph: {
+    title: config.name,
     description,
     type: 'website',
     locale: 'fr_FR',
     countryName: 'France',
-    siteName: 'Facili-TACCT - adaptez votre territoire au changement climatique'
-    // images: [
-    //   {
-    //     url: new URL(``, config.host),
-    //     alt: "",
-    //   },
-    // ],
+    siteName: config.name,
+    images: [
+      {
+        url: `${config.host}/logo-tacct-generique-min.jpg`,
+        alt: "logo tacct",
+      },
+    ],
   }
 };
