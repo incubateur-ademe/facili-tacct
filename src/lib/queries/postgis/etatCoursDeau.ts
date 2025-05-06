@@ -70,12 +70,12 @@ export const GetEtatCoursDeau = async (
         FROM postgis."communes_drom" WHERE epci=${code} GROUP BY epci;`;
         if (epci.length !== 0) {
           const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
-        SELECT
-        name,
-        etateco,
-        ST_AsGeoJSON(geometry) geometry
-        FROM postgis."etat_cours_d_eau" 
-        WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`;
+            SELECT
+            name,
+            etateco,
+            ST_AsGeoJSON(geometry) geometry
+            FROM postgis."etat_cours_d_eau" 
+            WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`;
           console.timeEnd('Query Execution Time EtatCoursDeau');
           return value;
         }
