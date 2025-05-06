@@ -22,9 +22,6 @@ export const GetAgricultureBio = async (
             : 'libelle_geographique';
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
-      console.log(
-        'GetAgricultureBio: Timeout reached (3 seconds), returning empty array.'
-      );
       resolve([]);
     }, 3000)
   );
@@ -63,9 +60,9 @@ export const GetAgricultureBio = async (
       }
     } catch (error) {
       console.error(error);
-      PrismaPostgres.$disconnect();
+      // PrismaPostgres.$disconnect();
       Sentry.captureException(error);
-      throw new Error('Internal Server Error');
+      return [];
     }
   })();
   return Promise.race([dbQuery, timeoutPromise]);
@@ -78,9 +75,6 @@ export const GetConsommationNAF = async (
 ): Promise<ConsommationNAF[]> => {
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
-      console.log(
-        'GetNAF: Timeout reached (3 seconds), returning empty array.'
-      );
       resolve([]);
     }, 3000)
   );
@@ -125,9 +119,9 @@ export const GetConsommationNAF = async (
       }
     } catch (error) {
       console.error(error);
-      PrismaPostgres.$disconnect();
+      // PrismaPostgres.$disconnect();
       Sentry.captureException(error);
-      throw new Error('Internal Server Error');
+      return [];
     }
   })();
   return Promise.race([dbQuery, timeoutPromise]);
@@ -136,9 +130,6 @@ export const GetConsommationNAF = async (
 export const GetAOT40 = async (): Promise<AOT40[]> => {
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
-      console.log(
-        'GetAOT40: Timeout reached (3 seconds), returning empty array.'
-      );
       resolve([]);
     }, 3000)
   );
@@ -150,9 +141,9 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
       return value;
     } catch (error) {
       console.error(error);
-      PrismaPostgres.$disconnect();
+      // PrismaPostgres.$disconnect();
       Sentry.captureException(error);
-      throw new Error('Internal Server Error');
+      return [];
     }
   })();
   return Promise.race([dbQuery, timeoutPromise]);

@@ -14,9 +14,8 @@ export const GetRessourceEau = async (
 ): Promise<RessourcesEau[]> => {
   //race Promise pour éviter un crash de la requête lorsqu'elle est trop longue
   const timeoutPromise = new Promise<[]>(resolve => setTimeout(() => {
-    console.log('GetRessourceEau: Timeout reached (8 seconds), returning empty array.');
     resolve([]);
-  }, 8000));
+  }, 6000));
   const dbQuery = (async () => {
     try {
       if (type === 'commune') {
@@ -87,9 +86,8 @@ export const GetRessourceEau = async (
       } else return [];
     } catch (error) {
       console.error(error);
-      PrismaPostgres.$disconnect();
+      // PrismaPostgres.$disconnect();
       Sentry.captureException(error);
-      console.error('Database connection error occurred.');
       return [];
     }
   })();
@@ -159,9 +157,8 @@ export const GetQualiteEauxBaignade = async (
     }
   } catch (error) {
     console.error(error);
-    PrismaPostgres.$disconnect();
+    // PrismaPostgres.$disconnect();
     Sentry.captureException(error);
-    console.error('Database connection error occurred.');
     return [];
   }
 };
