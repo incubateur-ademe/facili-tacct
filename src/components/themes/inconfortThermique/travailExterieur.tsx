@@ -57,8 +57,6 @@ export const TravailExterieur = (props: {
     sumCommerce: sumProperty(travailExterieurTerritoire, 'NA5GU_sum'),
     sumAdministration: sumProperty(travailExterieurTerritoire, 'NA5OQ_sum')
   };
-
-  console.log('sums', sums);
   
   const graphData = [
     {
