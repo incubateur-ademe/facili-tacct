@@ -1,3 +1,4 @@
+import { config } from '@/config';
 import { type Metadata } from 'next';
 
 const description =
@@ -10,12 +11,12 @@ export const sharedMetadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     countryName: 'France',
-    siteName: "Facili-TACCT - adaptez votre territoire au changement climatique"
-    // images: [
-    //   {
-    //     url: new URL(``, config.host),
-    //     alt: "",
-    //   },
-    // ],
+    siteName: "Facili-TACCT - adaptez votre territoire au changement climatique",
+    images: [
+      {
+        url: `${config.host}/logo-tacct-generique-min.jpg`,
+        alt: "logo tacct",
+      },
+    ],
   }
 };
