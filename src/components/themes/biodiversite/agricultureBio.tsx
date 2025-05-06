@@ -27,17 +27,32 @@ const AgricultureBiologique = (props: {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
-  const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
 
-  const nombreExploitations = agricultureBio.find(
-    (obj) => obj.VARIABLE === 'saue'
-  )?.nombre_2022!;
-  const surfaceAgriBio = agricultureBio.find(
-    (obj) => obj.LIBELLE_SOUS_CHAMP === 'Surface totale'
-  )?.surface_2022!;
+  //sum all saue values
+  const nombreExploitations = agricultureBio.reduce((acc, obj) => {
+    if (obj.VARIABLE === 'saue') {
+      return acc + obj.nombre_2022!;
+    }
+    return acc;
+  }, 0);
+
+  //sum surface_2022 values
+  const surfaceAgriBio = agricultureBio.reduce((acc, obj) => {
+    if (obj.LIBELLE_SOUS_CHAMP === 'Surface totale') {
+      return acc + obj.surface_2022!;
+    }
+    return acc;
+  }, 0);
+
+  // const nombreExploitations = agricultureBio.find(
+  //   (obj) => obj.VARIABLE === 'saue'
+  // )?.nombre_2022!;
+  // const surfaceAgriBio = agricultureBio.find(
+  //   (obj) => obj.LIBELLE_SOUS_CHAMP === 'Surface totale'
+  // )?.surface_2022!;
 
   useEffect(() => {
     void (async () => {

@@ -274,10 +274,10 @@ export const GetErosionCotiere = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       console.log(
-        'GetErosionCotiere: Timeout reached (5 seconds), returning empty array.'
+        'GetErosionCotiere: Timeout reached (3 seconds), returning empty array.'
       );
       resolve([]);
-    }, 5000)
+    }, 3000)
   );
   const dbQuery = (async () => {
     try {
