@@ -15,10 +15,10 @@ export const GetInconfortThermique = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       console.log(
-        'GetInconfortThermique: Timeout reached (5 seconds), returning empty array.'
+        'GetInconfortThermique: Timeout reached (3 seconds), returning empty array.'
       );
       resolve([]);
-    }, 5000)
+    }, 3000)
   );
   const dbQuery = (async () => {
     try {

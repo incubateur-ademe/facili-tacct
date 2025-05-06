@@ -44,6 +44,7 @@ export const GetArretesCatnat = async (
       return value;
     } catch (error) {
       console.error(error);
+      PrismaPostgres.$disconnect();
       Sentry.captureException(error);
       throw new Error('Internal Server Error');
     }
@@ -100,6 +101,7 @@ export const GetIncendiesForet = async (
       }
     } catch (error) {
       console.error(error);
+      PrismaPostgres.$disconnect();
       Sentry.captureException(error);
       throw new Error('Internal Server Error');
     }

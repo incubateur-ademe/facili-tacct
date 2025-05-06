@@ -168,6 +168,7 @@ export const GetCommunes = async (
       }
     } catch (error) {
       console.error(error);
+      PrismaPostgres.$disconnect();
       Sentry.captureException(error);
       throw new Error('Internal Server Error');
     }
