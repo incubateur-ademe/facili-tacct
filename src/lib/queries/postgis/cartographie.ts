@@ -19,9 +19,6 @@ export const GetCommunes = async (
   //race Promise pour éviter un crash de la requête lorsqu'elle est trop longue
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
-      console.log(
-        'GetCartesCommunes: Timeout reached (5 seconds), returning empty array.'
-      );
       resolve([]);
     }, 5000)
   );
@@ -168,9 +165,10 @@ export const GetCommunes = async (
       }
     } catch (error) {
       console.error(error);
-      PrismaPostgres.$disconnect();
+      // PrismaPostgres.$disconnect();
       Sentry.captureException(error);
-      throw new Error('Internal Server Error');
+      console.error('Database connection error occurred.');
+      return [];
     }
   })();
   return Promise.race([dbQuery, timeoutPromise]);
@@ -181,12 +179,9 @@ export const GetClcTerritoires = async (
   type: string,
   code?: string
 ): Promise<CLCTerritoires[] | undefined> => {
-  const timeoutPromise = new Promise<[]>((resolve) =>
+  const timeoutPromise = new Promise<CLCTerritoires[] | undefined>((resolve) =>
     setTimeout(() => {
-      console.log(
-        'GetCLC: Timeout reached (5 seconds), returning empty array.'
-      );
-      resolve([]);
+      resolve(undefined);
     }, 5000)
   );
   const dbQuery = (async () => {
@@ -249,10 +244,14 @@ export const GetClcTerritoires = async (
       } else return undefined;
     } catch (error) {
       console.error(error);
-      throw new Error('Internal Server Error');
+      return undefined;
     }
   })();
-  return Promise.race([dbQuery, timeoutPromise]);
+  const result = Promise.race([dbQuery, timeoutPromise]);
+  if (result === undefined) {
+    console.log('GetCLC: Timeout reached (5 seconds), returning undefined.');
+  }
+  return result;
 };
 
 export const GetErosionCotiere = async (
@@ -401,7 +400,7 @@ export const GetErosionCotiere = async (
       } else return [];
     } catch (error) {
       console.error(error);
-      throw new Error('Internal Server Error');
+      return [];
     }
   })();
   return Promise.race([dbQuery, timeoutPromise]);
