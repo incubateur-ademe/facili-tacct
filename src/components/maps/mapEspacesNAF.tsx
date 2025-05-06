@@ -14,8 +14,6 @@ import {
 import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
-import { GraphDataNotFound } from '../graph-data-not-found';
-import { BoundsFromCollection } from './components/boundsFromCollection';
 import { EspacesNafTooltip } from './components/tooltips';
 
 const getColor = (d: number) => {
@@ -33,23 +31,13 @@ const getColor = (d: number) => {
 };
 
 export const MapEspacesNaf = (props: {
-  carteCommunes: CommunesIndicateursDto[];
+  carteCommunesFiltered: CommunesIndicateursDto[];
+  enveloppe: number[][] | undefined;
 }) => {
-  const { carteCommunes } = props;
-  const carteCommunesFiltered = carteCommunes.filter(
-    (el) => el.properties.naf != undefined
-  ).filter(
-    (e) =>
-      e.properties.code_geographique !== '75056' &&
-      e.properties.code_geographique !== '13055' &&
-      e.properties.code_geographique !== '69123'
-  );
+  const { carteCommunesFiltered, enveloppe } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
-  const type = searchParams.get('type')!;
-  const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
-  const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
 
   const style: StyleFunction<Any> = (feature) => {
     const typedFeature = feature as CommunesIndicateursDto;
@@ -107,32 +95,25 @@ export const MapEspacesNaf = (props: {
       mouseout: mouseOutHandler
     });
   };
-  console.log('carteCommunesFiltered', carteCommunesFiltered);
 
   return (
-    <>
-      {carteCommunesFiltered === null ? (
-        <GraphDataNotFound code={code} libelle={libelle} />
-      ) : (
-        <MapContainer
-          ref={mapRef}
-          style={{ height: '500px', width: '100%' }}
-          attributionControl={false}
-          zoomControl={false}
-          bounds={enveloppe as LatLngBoundsExpression}
-        >
-          <TileLayer
-            // attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openma            attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <GeoJSON
-            ref={mapRef}
-            data={carteCommunesFiltered as unknown as GeoJsonObject}
-            style={style}
-            onEachFeature={onEachFeature}
-          />
-        </MapContainer>
-      )}
-    </>
+    <MapContainer
+      ref={mapRef}
+      style={{ height: '500px', width: '100%' }}
+      attributionControl={false}
+      zoomControl={false}
+      bounds={enveloppe as LatLngBoundsExpression}
+    >
+      <TileLayer
+        // attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openma            attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <GeoJSON
+        ref={mapRef}
+        data={carteCommunesFiltered as unknown as GeoJsonObject}
+        style={style}
+        onEachFeature={onEachFeature}
+      />
+    </MapContainer>
   );
 };

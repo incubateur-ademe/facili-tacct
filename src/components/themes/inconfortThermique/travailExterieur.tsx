@@ -57,7 +57,7 @@ export const TravailExterieur = (props: {
     sumCommerce: sumProperty(travailExterieurTerritoire, 'NA5GU_sum'),
     sumAdministration: sumProperty(travailExterieurTerritoire, 'NA5OQ_sum')
   };
-
+  
   const graphData = [
     {
       id: 'Agriculture, sylviculture et pêche',
@@ -114,8 +114,10 @@ export const TravailExterieur = (props: {
 
   useEffect(() => {
     void (async () => {
-      const temp = await GetPatch4(code, type);
-      setPatch4(temp);
+      if (type === 'commune' || type === 'epci') {
+        const temp = await GetPatch4(code, type);
+        setPatch4(temp);
+      }
       setIsLoadingPatch4(false);
     })()
   }, [code]);
