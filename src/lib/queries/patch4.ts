@@ -13,9 +13,6 @@ export const GetPatch4 = async (
 ): Promise<Patch4 | undefined> => {
   const timeoutPromise = new Promise<Patch4 | undefined>((resolve) =>
     setTimeout(() => {
-      console.log(
-        'GetPatch4: Timeout reached (2 second), returning empty array.'
-      );
       resolve(undefined);
     }, 2000)
   );
@@ -45,9 +42,13 @@ export const GetPatch4 = async (
     } catch (error) {
       console.error(error);
       Sentry.captureException(error);
-      PrismaPostgres.$disconnect();
-      throw new Error('Internal Server Error');
+      // PrismaPostgres.$disconnect();
+      return undefined;
     }
   })();
-  return Promise.race([dbQuery, timeoutPromise]);
+  const result = await Promise.race([dbQuery, timeoutPromise]);
+  if (result === undefined) {
+    console.log('GetPatch4: Timeout reached (2 second), returning undefined.');
+  }
+  return result;
 };
