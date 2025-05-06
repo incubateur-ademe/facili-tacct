@@ -26,9 +26,6 @@ export const GetArretesCatnat = async (
               : 'code_geographique';
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
-      console.log(
-        'GetArreteCatnat: Timeout reached (3 seconds), returning empty array.'
-      );
       resolve([]);
     }, 3000)
   );
@@ -44,9 +41,9 @@ export const GetArretesCatnat = async (
       return value;
     } catch (error) {
       console.error(error);
-      PrismaPostgres.$disconnect();
+      // PrismaPostgres.$disconnect();
       Sentry.captureException(error);
-      throw new Error('Internal Server Error');
+      return [];
     }
   })();
   return Promise.race([dbQuery, timeoutPromise]);
@@ -73,9 +70,6 @@ export const GetIncendiesForet = async (
                 : '';
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
-      console.log(
-        'GetIncendieForet: Timeout reached (3 seconds), returning empty array.'
-      );
       resolve([]);
     }, 3000)
   );
@@ -101,9 +95,9 @@ export const GetIncendiesForet = async (
       }
     } catch (error) {
       console.error(error);
-      PrismaPostgres.$disconnect();
+      // PrismaPostgres.$disconnect();
       Sentry.captureException(error);
-      throw new Error('Internal Server Error');
+      return [];
     }
   })();
   return Promise.race([dbQuery, timeoutPromise]);

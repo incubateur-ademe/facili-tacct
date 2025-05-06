@@ -13,11 +13,8 @@ export const GetCollectivite = async (
 ): Promise<CollectivitesSearchbar[]> => {
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
-      console.log(
-        'GetSearchBar: Timeout reached (3 seconds), returning empty array.'
-      );
       resolve([]);
-    }, 3000)
+    }, 1000)
   );
   const dbQuery = (async () => {
     try {
@@ -80,7 +77,7 @@ export const GetCollectivite = async (
     } catch (error) {
       console.error(error);
       Sentry.captureException(error);
-      PrismaPostgres.$disconnect();
+      // PrismaPostgres.$disconnect();
       return [];
     }
   })();
