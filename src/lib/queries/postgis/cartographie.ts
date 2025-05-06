@@ -20,10 +20,10 @@ export const GetCommunes = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       console.log(
-        'GetInconfortThermique: Timeout reached (8 seconds), returning empty array.'
+        'GetCartesCommunes: Timeout reached (5 seconds), returning empty array.'
       );
       resolve([]);
-    }, 8000)
+    }, 5000)
   );
   const dbQuery = (async () => {
     try {
