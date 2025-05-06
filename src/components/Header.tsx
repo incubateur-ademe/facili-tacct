@@ -1,7 +1,6 @@
 'use client';
 
 import ressourcesIcon from '@/assets/icons/ressources_icon_blue.svg';
-import { config } from '@/config';
 import { DarkClass } from '@/lib/utils/DarkClass';
 import Header from '@codegouvfr/react-dsfr/Header';
 import { Button } from '@mui/material';
@@ -63,9 +62,9 @@ const HeaderComp = () => {
       brandTop={<Brand />}
       homeLinkProps={{
         href: '/',
-        title: `Accueil - ${config.name}`
+        title: `Accueil - Facili-TACCT`
       }}
-      serviceTitle={config.name}
+      serviceTitle="Facili-TACCT"
       operatorLogo={{
         alt: "Logo de l'ADEME",
         imgUrl: '/logo-ademe.svg',

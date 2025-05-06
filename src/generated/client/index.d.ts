@@ -13645,6 +13645,32 @@ export namespace Prisma {
     age_bati_46_90: number | null
     age_bati_19_45: number | null
     age_bati_pre_19: number | null
+    under_4_sum_1968: number | null
+    to_80_sum_1968: number | null
+    over_80_sum_1968: number | null
+    under_4_sum_1975: number | null
+    to_80_sum_1975: number | null
+    over_80_sum_1975: number | null
+    under_4_sum_1982: number | null
+    to_80_sum_1982: number | null
+    over_80_sum_1982: number | null
+    under_4_sum_1990: number | null
+    to_80_sum_1990: number | null
+    over_80_sum_1990: number | null
+    under_4_sum_1999: number | null
+    to_80_sum_1999: number | null
+    over_80_sum_1999: number | null
+    under_4_sum_2009: number | null
+    to_80_sum_2009: number | null
+    over_80_sum_2009: number | null
+    under_4_sum_2014: number | null
+    to_80_sum_2014: number | null
+    over_80_sum_2014: number | null
+    under_4_sum_2020: number | null
+    to_80_sum_2020: number | null
+    over_80_sum_2020: number | null
+    P20_POP80P: number | null
+    P20_POP80P_PSEUL: number | null
     P20_POP80P_PSEUL_PERCENT: number | null
     tee_log: number | null
     tee_mob: number | null
@@ -13668,12 +13694,38 @@ export namespace Prisma {
 
   export type Inconfort_thermiqueSumAggregateOutputType = {
     index: bigint | null
-    region: number | null
+    region: bigint | null
     age_bati_post06: number | null
     age_bati_91_05: number | null
     age_bati_46_90: number | null
     age_bati_19_45: number | null
     age_bati_pre_19: number | null
+    under_4_sum_1968: number | null
+    to_80_sum_1968: number | null
+    over_80_sum_1968: number | null
+    under_4_sum_1975: number | null
+    to_80_sum_1975: number | null
+    over_80_sum_1975: number | null
+    under_4_sum_1982: number | null
+    to_80_sum_1982: number | null
+    over_80_sum_1982: number | null
+    under_4_sum_1990: number | null
+    to_80_sum_1990: number | null
+    over_80_sum_1990: number | null
+    under_4_sum_1999: number | null
+    to_80_sum_1999: number | null
+    over_80_sum_1999: number | null
+    under_4_sum_2009: number | null
+    to_80_sum_2009: number | null
+    over_80_sum_2009: number | null
+    under_4_sum_2014: number | null
+    to_80_sum_2014: number | null
+    over_80_sum_2014: number | null
+    under_4_sum_2020: number | null
+    to_80_sum_2020: number | null
+    over_80_sum_2020: number | null
+    P20_POP80P: number | null
+    P20_POP80P_PSEUL: number | null
     P20_POP80P_PSEUL_PERCENT: number | null
     tee_log: number | null
     tee_mob: number | null
@@ -13703,7 +13755,7 @@ export namespace Prisma {
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: number | null
+    region: bigint | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -13713,32 +13765,32 @@ export namespace Prisma {
     age_bati_46_90: number | null
     age_bati_19_45: number | null
     age_bati_pre_19: number | null
-    under_4_sum_1968: string | null
-    to_80_sum_1968: string | null
-    over_80_sum_1968: string | null
-    under_4_sum_1975: string | null
-    to_80_sum_1975: string | null
-    over_80_sum_1975: string | null
-    under_4_sum_1982: string | null
-    to_80_sum_1982: string | null
-    over_80_sum_1982: string | null
-    under_4_sum_1990: string | null
-    to_80_sum_1990: string | null
-    over_80_sum_1990: string | null
-    under_4_sum_1999: string | null
-    to_80_sum_1999: string | null
-    over_80_sum_1999: string | null
-    under_4_sum_2009: string | null
-    to_80_sum_2009: string | null
-    over_80_sum_2009: string | null
-    under_4_sum_2014: string | null
-    to_80_sum_2014: string | null
-    over_80_sum_2014: string | null
-    under_4_sum_2020: string | null
-    to_80_sum_2020: string | null
-    over_80_sum_2020: string | null
-    P20_POP80P: string | null
-    P20_POP80P_PSEUL: string | null
+    under_4_sum_1968: number | null
+    to_80_sum_1968: number | null
+    over_80_sum_1968: number | null
+    under_4_sum_1975: number | null
+    to_80_sum_1975: number | null
+    over_80_sum_1975: number | null
+    under_4_sum_1982: number | null
+    to_80_sum_1982: number | null
+    over_80_sum_1982: number | null
+    under_4_sum_1990: number | null
+    to_80_sum_1990: number | null
+    over_80_sum_1990: number | null
+    under_4_sum_1999: number | null
+    to_80_sum_1999: number | null
+    over_80_sum_1999: number | null
+    under_4_sum_2009: number | null
+    to_80_sum_2009: number | null
+    over_80_sum_2009: number | null
+    under_4_sum_2014: number | null
+    to_80_sum_2014: number | null
+    over_80_sum_2014: number | null
+    under_4_sum_2020: number | null
+    to_80_sum_2020: number | null
+    over_80_sum_2020: number | null
+    P20_POP80P: number | null
+    P20_POP80P_PSEUL: number | null
     P20_POP80P_PSEUL_PERCENT: number | null
     tee_log: number | null
     tee_mob: number | null
@@ -13768,7 +13820,7 @@ export namespace Prisma {
     libelle_epci: string | null
     departement: string | null
     libelle_departement: string | null
-    region: number | null
+    region: bigint | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -13778,32 +13830,32 @@ export namespace Prisma {
     age_bati_46_90: number | null
     age_bati_19_45: number | null
     age_bati_pre_19: number | null
-    under_4_sum_1968: string | null
-    to_80_sum_1968: string | null
-    over_80_sum_1968: string | null
-    under_4_sum_1975: string | null
-    to_80_sum_1975: string | null
-    over_80_sum_1975: string | null
-    under_4_sum_1982: string | null
-    to_80_sum_1982: string | null
-    over_80_sum_1982: string | null
-    under_4_sum_1990: string | null
-    to_80_sum_1990: string | null
-    over_80_sum_1990: string | null
-    under_4_sum_1999: string | null
-    to_80_sum_1999: string | null
-    over_80_sum_1999: string | null
-    under_4_sum_2009: string | null
-    to_80_sum_2009: string | null
-    over_80_sum_2009: string | null
-    under_4_sum_2014: string | null
-    to_80_sum_2014: string | null
-    over_80_sum_2014: string | null
-    under_4_sum_2020: string | null
-    to_80_sum_2020: string | null
-    over_80_sum_2020: string | null
-    P20_POP80P: string | null
-    P20_POP80P_PSEUL: string | null
+    under_4_sum_1968: number | null
+    to_80_sum_1968: number | null
+    over_80_sum_1968: number | null
+    under_4_sum_1975: number | null
+    to_80_sum_1975: number | null
+    over_80_sum_1975: number | null
+    under_4_sum_1982: number | null
+    to_80_sum_1982: number | null
+    over_80_sum_1982: number | null
+    under_4_sum_1990: number | null
+    to_80_sum_1990: number | null
+    over_80_sum_1990: number | null
+    under_4_sum_1999: number | null
+    to_80_sum_1999: number | null
+    over_80_sum_1999: number | null
+    under_4_sum_2009: number | null
+    to_80_sum_2009: number | null
+    over_80_sum_2009: number | null
+    under_4_sum_2014: number | null
+    to_80_sum_2014: number | null
+    over_80_sum_2014: number | null
+    under_4_sum_2020: number | null
+    to_80_sum_2020: number | null
+    over_80_sum_2020: number | null
+    P20_POP80P: number | null
+    P20_POP80P_PSEUL: number | null
     P20_POP80P_PSEUL_PERCENT: number | null
     tee_log: number | null
     tee_mob: number | null
@@ -13900,6 +13952,32 @@ export namespace Prisma {
     age_bati_46_90?: true
     age_bati_19_45?: true
     age_bati_pre_19?: true
+    under_4_sum_1968?: true
+    to_80_sum_1968?: true
+    over_80_sum_1968?: true
+    under_4_sum_1975?: true
+    to_80_sum_1975?: true
+    over_80_sum_1975?: true
+    under_4_sum_1982?: true
+    to_80_sum_1982?: true
+    over_80_sum_1982?: true
+    under_4_sum_1990?: true
+    to_80_sum_1990?: true
+    over_80_sum_1990?: true
+    under_4_sum_1999?: true
+    to_80_sum_1999?: true
+    over_80_sum_1999?: true
+    under_4_sum_2009?: true
+    to_80_sum_2009?: true
+    over_80_sum_2009?: true
+    under_4_sum_2014?: true
+    to_80_sum_2014?: true
+    over_80_sum_2014?: true
+    under_4_sum_2020?: true
+    to_80_sum_2020?: true
+    over_80_sum_2020?: true
+    P20_POP80P?: true
+    P20_POP80P_PSEUL?: true
     P20_POP80P_PSEUL_PERCENT?: true
     tee_log?: true
     tee_mob?: true
@@ -13929,6 +14007,32 @@ export namespace Prisma {
     age_bati_46_90?: true
     age_bati_19_45?: true
     age_bati_pre_19?: true
+    under_4_sum_1968?: true
+    to_80_sum_1968?: true
+    over_80_sum_1968?: true
+    under_4_sum_1975?: true
+    to_80_sum_1975?: true
+    over_80_sum_1975?: true
+    under_4_sum_1982?: true
+    to_80_sum_1982?: true
+    over_80_sum_1982?: true
+    under_4_sum_1990?: true
+    to_80_sum_1990?: true
+    over_80_sum_1990?: true
+    under_4_sum_1999?: true
+    to_80_sum_1999?: true
+    over_80_sum_1999?: true
+    under_4_sum_2009?: true
+    to_80_sum_2009?: true
+    over_80_sum_2009?: true
+    under_4_sum_2014?: true
+    to_80_sum_2014?: true
+    over_80_sum_2014?: true
+    under_4_sum_2020?: true
+    to_80_sum_2020?: true
+    over_80_sum_2020?: true
+    P20_POP80P?: true
+    P20_POP80P_PSEUL?: true
     P20_POP80P_PSEUL_PERCENT?: true
     tee_log?: true
     tee_mob?: true
@@ -14240,7 +14344,7 @@ export namespace Prisma {
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: number
+    region: bigint
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
@@ -14250,32 +14354,32 @@ export namespace Prisma {
     age_bati_46_90: number | null
     age_bati_19_45: number | null
     age_bati_pre_19: number | null
-    under_4_sum_1968: string | null
-    to_80_sum_1968: string | null
-    over_80_sum_1968: string | null
-    under_4_sum_1975: string | null
-    to_80_sum_1975: string | null
-    over_80_sum_1975: string | null
-    under_4_sum_1982: string | null
-    to_80_sum_1982: string | null
-    over_80_sum_1982: string | null
-    under_4_sum_1990: string | null
-    to_80_sum_1990: string | null
-    over_80_sum_1990: string | null
-    under_4_sum_1999: string | null
-    to_80_sum_1999: string | null
-    over_80_sum_1999: string | null
-    under_4_sum_2009: string | null
-    to_80_sum_2009: string | null
-    over_80_sum_2009: string | null
-    under_4_sum_2014: string | null
-    to_80_sum_2014: string | null
-    over_80_sum_2014: string | null
-    under_4_sum_2020: string | null
-    to_80_sum_2020: string | null
-    over_80_sum_2020: string | null
-    P20_POP80P: string | null
-    P20_POP80P_PSEUL: string | null
+    under_4_sum_1968: number | null
+    to_80_sum_1968: number | null
+    over_80_sum_1968: number | null
+    under_4_sum_1975: number | null
+    to_80_sum_1975: number | null
+    over_80_sum_1975: number | null
+    under_4_sum_1982: number | null
+    to_80_sum_1982: number | null
+    over_80_sum_1982: number | null
+    under_4_sum_1990: number | null
+    to_80_sum_1990: number | null
+    over_80_sum_1990: number | null
+    under_4_sum_1999: number | null
+    to_80_sum_1999: number | null
+    over_80_sum_1999: number | null
+    under_4_sum_2009: number | null
+    to_80_sum_2009: number | null
+    over_80_sum_2009: number | null
+    under_4_sum_2014: number | null
+    to_80_sum_2014: number | null
+    over_80_sum_2014: number | null
+    under_4_sum_2020: number | null
+    to_80_sum_2020: number | null
+    over_80_sum_2020: number | null
+    P20_POP80P: number | null
+    P20_POP80P_PSEUL: number | null
     P20_POP80P_PSEUL_PERCENT: number | null
     tee_log: number | null
     tee_mob: number | null
@@ -14589,7 +14693,7 @@ export namespace Prisma {
       libelle_epci: string
       departement: string
       libelle_departement: string
-      region: number
+      region: bigint
       ept: string | null
       libelle_petr: string | null
       code_pnr: string | null
@@ -14599,32 +14703,32 @@ export namespace Prisma {
       age_bati_46_90: number | null
       age_bati_19_45: number | null
       age_bati_pre_19: number | null
-      under_4_sum_1968: string | null
-      to_80_sum_1968: string | null
-      over_80_sum_1968: string | null
-      under_4_sum_1975: string | null
-      to_80_sum_1975: string | null
-      over_80_sum_1975: string | null
-      under_4_sum_1982: string | null
-      to_80_sum_1982: string | null
-      over_80_sum_1982: string | null
-      under_4_sum_1990: string | null
-      to_80_sum_1990: string | null
-      over_80_sum_1990: string | null
-      under_4_sum_1999: string | null
-      to_80_sum_1999: string | null
-      over_80_sum_1999: string | null
-      under_4_sum_2009: string | null
-      to_80_sum_2009: string | null
-      over_80_sum_2009: string | null
-      under_4_sum_2014: string | null
-      to_80_sum_2014: string | null
-      over_80_sum_2014: string | null
-      under_4_sum_2020: string | null
-      to_80_sum_2020: string | null
-      over_80_sum_2020: string | null
-      P20_POP80P: string | null
-      P20_POP80P_PSEUL: string | null
+      under_4_sum_1968: number | null
+      to_80_sum_1968: number | null
+      over_80_sum_1968: number | null
+      under_4_sum_1975: number | null
+      to_80_sum_1975: number | null
+      over_80_sum_1975: number | null
+      under_4_sum_1982: number | null
+      to_80_sum_1982: number | null
+      over_80_sum_1982: number | null
+      under_4_sum_1990: number | null
+      to_80_sum_1990: number | null
+      over_80_sum_1990: number | null
+      under_4_sum_1999: number | null
+      to_80_sum_1999: number | null
+      over_80_sum_1999: number | null
+      under_4_sum_2009: number | null
+      to_80_sum_2009: number | null
+      over_80_sum_2009: number | null
+      under_4_sum_2014: number | null
+      to_80_sum_2014: number | null
+      over_80_sum_2014: number | null
+      under_4_sum_2020: number | null
+      to_80_sum_2020: number | null
+      over_80_sum_2020: number | null
+      P20_POP80P: number | null
+      P20_POP80P_PSEUL: number | null
       P20_POP80P_PSEUL_PERCENT: number | null
       tee_log: number | null
       tee_mob: number | null
@@ -15074,7 +15178,7 @@ export namespace Prisma {
     readonly libelle_epci: FieldRef<"inconfort_thermique", 'String'>
     readonly departement: FieldRef<"inconfort_thermique", 'String'>
     readonly libelle_departement: FieldRef<"inconfort_thermique", 'String'>
-    readonly region: FieldRef<"inconfort_thermique", 'Int'>
+    readonly region: FieldRef<"inconfort_thermique", 'BigInt'>
     readonly ept: FieldRef<"inconfort_thermique", 'String'>
     readonly libelle_petr: FieldRef<"inconfort_thermique", 'String'>
     readonly code_pnr: FieldRef<"inconfort_thermique", 'String'>
@@ -15084,32 +15188,32 @@ export namespace Prisma {
     readonly age_bati_46_90: FieldRef<"inconfort_thermique", 'Float'>
     readonly age_bati_19_45: FieldRef<"inconfort_thermique", 'Float'>
     readonly age_bati_pre_19: FieldRef<"inconfort_thermique", 'Float'>
-    readonly under_4_sum_1968: FieldRef<"inconfort_thermique", 'String'>
-    readonly to_80_sum_1968: FieldRef<"inconfort_thermique", 'String'>
-    readonly over_80_sum_1968: FieldRef<"inconfort_thermique", 'String'>
-    readonly under_4_sum_1975: FieldRef<"inconfort_thermique", 'String'>
-    readonly to_80_sum_1975: FieldRef<"inconfort_thermique", 'String'>
-    readonly over_80_sum_1975: FieldRef<"inconfort_thermique", 'String'>
-    readonly under_4_sum_1982: FieldRef<"inconfort_thermique", 'String'>
-    readonly to_80_sum_1982: FieldRef<"inconfort_thermique", 'String'>
-    readonly over_80_sum_1982: FieldRef<"inconfort_thermique", 'String'>
-    readonly under_4_sum_1990: FieldRef<"inconfort_thermique", 'String'>
-    readonly to_80_sum_1990: FieldRef<"inconfort_thermique", 'String'>
-    readonly over_80_sum_1990: FieldRef<"inconfort_thermique", 'String'>
-    readonly under_4_sum_1999: FieldRef<"inconfort_thermique", 'String'>
-    readonly to_80_sum_1999: FieldRef<"inconfort_thermique", 'String'>
-    readonly over_80_sum_1999: FieldRef<"inconfort_thermique", 'String'>
-    readonly under_4_sum_2009: FieldRef<"inconfort_thermique", 'String'>
-    readonly to_80_sum_2009: FieldRef<"inconfort_thermique", 'String'>
-    readonly over_80_sum_2009: FieldRef<"inconfort_thermique", 'String'>
-    readonly under_4_sum_2014: FieldRef<"inconfort_thermique", 'String'>
-    readonly to_80_sum_2014: FieldRef<"inconfort_thermique", 'String'>
-    readonly over_80_sum_2014: FieldRef<"inconfort_thermique", 'String'>
-    readonly under_4_sum_2020: FieldRef<"inconfort_thermique", 'String'>
-    readonly to_80_sum_2020: FieldRef<"inconfort_thermique", 'String'>
-    readonly over_80_sum_2020: FieldRef<"inconfort_thermique", 'String'>
-    readonly P20_POP80P: FieldRef<"inconfort_thermique", 'String'>
-    readonly P20_POP80P_PSEUL: FieldRef<"inconfort_thermique", 'String'>
+    readonly under_4_sum_1968: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_1968: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_1968: FieldRef<"inconfort_thermique", 'Float'>
+    readonly under_4_sum_1975: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_1975: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_1975: FieldRef<"inconfort_thermique", 'Float'>
+    readonly under_4_sum_1982: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_1982: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_1982: FieldRef<"inconfort_thermique", 'Float'>
+    readonly under_4_sum_1990: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_1990: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_1990: FieldRef<"inconfort_thermique", 'Float'>
+    readonly under_4_sum_1999: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_1999: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_1999: FieldRef<"inconfort_thermique", 'Float'>
+    readonly under_4_sum_2009: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_2009: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_2009: FieldRef<"inconfort_thermique", 'Float'>
+    readonly under_4_sum_2014: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_2014: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_2014: FieldRef<"inconfort_thermique", 'Float'>
+    readonly under_4_sum_2020: FieldRef<"inconfort_thermique", 'Float'>
+    readonly to_80_sum_2020: FieldRef<"inconfort_thermique", 'Float'>
+    readonly over_80_sum_2020: FieldRef<"inconfort_thermique", 'Float'>
+    readonly P20_POP80P: FieldRef<"inconfort_thermique", 'Float'>
+    readonly P20_POP80P_PSEUL: FieldRef<"inconfort_thermique", 'Float'>
     readonly P20_POP80P_PSEUL_PERCENT: FieldRef<"inconfort_thermique", 'Float'>
     readonly tee_log: FieldRef<"inconfort_thermique", 'Float'>
     readonly tee_mob: FieldRef<"inconfort_thermique", 'Float'>
@@ -31627,7 +31731,7 @@ export namespace Prisma {
     libelle_epci?: StringFilter<"inconfort_thermique"> | string
     departement?: StringFilter<"inconfort_thermique"> | string
     libelle_departement?: StringFilter<"inconfort_thermique"> | string
-    region?: IntFilter<"inconfort_thermique"> | number
+    region?: BigIntFilter<"inconfort_thermique"> | bigint | number
     ept?: StringNullableFilter<"inconfort_thermique"> | string | null
     libelle_petr?: StringNullableFilter<"inconfort_thermique"> | string | null
     code_pnr?: StringNullableFilter<"inconfort_thermique"> | string | null
@@ -31637,32 +31741,32 @@ export namespace Prisma {
     age_bati_46_90?: FloatNullableFilter<"inconfort_thermique"> | number | null
     age_bati_19_45?: FloatNullableFilter<"inconfort_thermique"> | number | null
     age_bati_pre_19?: FloatNullableFilter<"inconfort_thermique"> | number | null
-    under_4_sum_1968?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_1968?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_1968?: StringNullableFilter<"inconfort_thermique"> | string | null
-    under_4_sum_1975?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_1975?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_1975?: StringNullableFilter<"inconfort_thermique"> | string | null
-    under_4_sum_1982?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_1982?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_1982?: StringNullableFilter<"inconfort_thermique"> | string | null
-    under_4_sum_1990?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_1990?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_1990?: StringNullableFilter<"inconfort_thermique"> | string | null
-    under_4_sum_1999?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_1999?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_1999?: StringNullableFilter<"inconfort_thermique"> | string | null
-    under_4_sum_2009?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_2009?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_2009?: StringNullableFilter<"inconfort_thermique"> | string | null
-    under_4_sum_2014?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_2014?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_2014?: StringNullableFilter<"inconfort_thermique"> | string | null
-    under_4_sum_2020?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_2020?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_2020?: StringNullableFilter<"inconfort_thermique"> | string | null
-    P20_POP80P?: StringNullableFilter<"inconfort_thermique"> | string | null
-    P20_POP80P_PSEUL?: StringNullableFilter<"inconfort_thermique"> | string | null
+    under_4_sum_1968?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1968?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1968?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1975?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1975?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1975?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1982?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1982?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1982?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1990?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1990?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1990?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1999?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1999?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1999?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2009?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2009?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2009?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2014?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2014?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2014?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2020?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2020?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2020?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    P20_POP80P?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    P20_POP80P_PSEUL?: FloatNullableFilter<"inconfort_thermique"> | number | null
     P20_POP80P_PSEUL_PERCENT?: FloatNullableFilter<"inconfort_thermique"> | number | null
     tee_log?: FloatNullableFilter<"inconfort_thermique"> | number | null
     tee_mob?: FloatNullableFilter<"inconfort_thermique"> | number | null
@@ -31760,7 +31864,7 @@ export namespace Prisma {
     libelle_epci?: StringFilter<"inconfort_thermique"> | string
     departement?: StringFilter<"inconfort_thermique"> | string
     libelle_departement?: StringFilter<"inconfort_thermique"> | string
-    region?: IntFilter<"inconfort_thermique"> | number
+    region?: BigIntFilter<"inconfort_thermique"> | bigint | number
     ept?: StringNullableFilter<"inconfort_thermique"> | string | null
     libelle_petr?: StringNullableFilter<"inconfort_thermique"> | string | null
     code_pnr?: StringNullableFilter<"inconfort_thermique"> | string | null
@@ -31770,32 +31874,32 @@ export namespace Prisma {
     age_bati_46_90?: FloatNullableFilter<"inconfort_thermique"> | number | null
     age_bati_19_45?: FloatNullableFilter<"inconfort_thermique"> | number | null
     age_bati_pre_19?: FloatNullableFilter<"inconfort_thermique"> | number | null
-    under_4_sum_1968?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_1968?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_1968?: StringNullableFilter<"inconfort_thermique"> | string | null
-    under_4_sum_1975?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_1975?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_1975?: StringNullableFilter<"inconfort_thermique"> | string | null
-    under_4_sum_1982?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_1982?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_1982?: StringNullableFilter<"inconfort_thermique"> | string | null
-    under_4_sum_1990?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_1990?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_1990?: StringNullableFilter<"inconfort_thermique"> | string | null
-    under_4_sum_1999?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_1999?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_1999?: StringNullableFilter<"inconfort_thermique"> | string | null
-    under_4_sum_2009?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_2009?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_2009?: StringNullableFilter<"inconfort_thermique"> | string | null
-    under_4_sum_2014?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_2014?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_2014?: StringNullableFilter<"inconfort_thermique"> | string | null
-    under_4_sum_2020?: StringNullableFilter<"inconfort_thermique"> | string | null
-    to_80_sum_2020?: StringNullableFilter<"inconfort_thermique"> | string | null
-    over_80_sum_2020?: StringNullableFilter<"inconfort_thermique"> | string | null
-    P20_POP80P?: StringNullableFilter<"inconfort_thermique"> | string | null
-    P20_POP80P_PSEUL?: StringNullableFilter<"inconfort_thermique"> | string | null
+    under_4_sum_1968?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1968?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1968?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1975?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1975?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1975?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1982?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1982?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1982?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1990?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1990?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1990?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1999?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1999?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1999?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2009?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2009?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2009?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2014?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2014?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2014?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2020?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2020?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2020?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    P20_POP80P?: FloatNullableFilter<"inconfort_thermique"> | number | null
+    P20_POP80P_PSEUL?: FloatNullableFilter<"inconfort_thermique"> | number | null
     P20_POP80P_PSEUL_PERCENT?: FloatNullableFilter<"inconfort_thermique"> | number | null
     tee_log?: FloatNullableFilter<"inconfort_thermique"> | number | null
     tee_mob?: FloatNullableFilter<"inconfort_thermique"> | number | null
@@ -31898,7 +32002,7 @@ export namespace Prisma {
     libelle_epci?: StringWithAggregatesFilter<"inconfort_thermique"> | string
     departement?: StringWithAggregatesFilter<"inconfort_thermique"> | string
     libelle_departement?: StringWithAggregatesFilter<"inconfort_thermique"> | string
-    region?: IntWithAggregatesFilter<"inconfort_thermique"> | number
+    region?: BigIntWithAggregatesFilter<"inconfort_thermique"> | bigint | number
     ept?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
     libelle_petr?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
     code_pnr?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
@@ -31908,32 +32012,32 @@ export namespace Prisma {
     age_bati_46_90?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
     age_bati_19_45?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
     age_bati_pre_19?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
-    under_4_sum_1968?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    to_80_sum_1968?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    over_80_sum_1968?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    under_4_sum_1975?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    to_80_sum_1975?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    over_80_sum_1975?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    under_4_sum_1982?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    to_80_sum_1982?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    over_80_sum_1982?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    under_4_sum_1990?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    to_80_sum_1990?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    over_80_sum_1990?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    under_4_sum_1999?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    to_80_sum_1999?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    over_80_sum_1999?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    under_4_sum_2009?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    to_80_sum_2009?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    over_80_sum_2009?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    under_4_sum_2014?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    to_80_sum_2014?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    over_80_sum_2014?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    under_4_sum_2020?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    to_80_sum_2020?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    over_80_sum_2020?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    P20_POP80P?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
-    P20_POP80P_PSEUL?: StringNullableWithAggregatesFilter<"inconfort_thermique"> | string | null
+    under_4_sum_1968?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1968?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1968?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1975?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1975?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1975?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1982?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1982?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1982?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1990?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1990?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1990?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    under_4_sum_1999?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_1999?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_1999?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2009?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2009?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2009?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2014?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2014?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2014?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    under_4_sum_2020?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    to_80_sum_2020?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    over_80_sum_2020?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    P20_POP80P?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
+    P20_POP80P_PSEUL?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
     P20_POP80P_PSEUL_PERCENT?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
     tee_log?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
     tee_mob?: FloatNullableWithAggregatesFilter<"inconfort_thermique"> | number | null
@@ -34748,7 +34852,7 @@ export namespace Prisma {
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: number
+    region: bigint | number
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
@@ -34758,32 +34862,32 @@ export namespace Prisma {
     age_bati_46_90?: number | null
     age_bati_19_45?: number | null
     age_bati_pre_19?: number | null
-    under_4_sum_1968?: string | null
-    to_80_sum_1968?: string | null
-    over_80_sum_1968?: string | null
-    under_4_sum_1975?: string | null
-    to_80_sum_1975?: string | null
-    over_80_sum_1975?: string | null
-    under_4_sum_1982?: string | null
-    to_80_sum_1982?: string | null
-    over_80_sum_1982?: string | null
-    under_4_sum_1990?: string | null
-    to_80_sum_1990?: string | null
-    over_80_sum_1990?: string | null
-    under_4_sum_1999?: string | null
-    to_80_sum_1999?: string | null
-    over_80_sum_1999?: string | null
-    under_4_sum_2009?: string | null
-    to_80_sum_2009?: string | null
-    over_80_sum_2009?: string | null
-    under_4_sum_2014?: string | null
-    to_80_sum_2014?: string | null
-    over_80_sum_2014?: string | null
-    under_4_sum_2020?: string | null
-    to_80_sum_2020?: string | null
-    over_80_sum_2020?: string | null
-    P20_POP80P?: string | null
-    P20_POP80P_PSEUL?: string | null
+    under_4_sum_1968?: number | null
+    to_80_sum_1968?: number | null
+    over_80_sum_1968?: number | null
+    under_4_sum_1975?: number | null
+    to_80_sum_1975?: number | null
+    over_80_sum_1975?: number | null
+    under_4_sum_1982?: number | null
+    to_80_sum_1982?: number | null
+    over_80_sum_1982?: number | null
+    under_4_sum_1990?: number | null
+    to_80_sum_1990?: number | null
+    over_80_sum_1990?: number | null
+    under_4_sum_1999?: number | null
+    to_80_sum_1999?: number | null
+    over_80_sum_1999?: number | null
+    under_4_sum_2009?: number | null
+    to_80_sum_2009?: number | null
+    over_80_sum_2009?: number | null
+    under_4_sum_2014?: number | null
+    to_80_sum_2014?: number | null
+    over_80_sum_2014?: number | null
+    under_4_sum_2020?: number | null
+    to_80_sum_2020?: number | null
+    over_80_sum_2020?: number | null
+    P20_POP80P?: number | null
+    P20_POP80P_PSEUL?: number | null
     P20_POP80P_PSEUL_PERCENT?: number | null
     tee_log?: number | null
     tee_mob?: number | null
@@ -34813,7 +34917,7 @@ export namespace Prisma {
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: number
+    region: bigint | number
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
@@ -34823,32 +34927,32 @@ export namespace Prisma {
     age_bati_46_90?: number | null
     age_bati_19_45?: number | null
     age_bati_pre_19?: number | null
-    under_4_sum_1968?: string | null
-    to_80_sum_1968?: string | null
-    over_80_sum_1968?: string | null
-    under_4_sum_1975?: string | null
-    to_80_sum_1975?: string | null
-    over_80_sum_1975?: string | null
-    under_4_sum_1982?: string | null
-    to_80_sum_1982?: string | null
-    over_80_sum_1982?: string | null
-    under_4_sum_1990?: string | null
-    to_80_sum_1990?: string | null
-    over_80_sum_1990?: string | null
-    under_4_sum_1999?: string | null
-    to_80_sum_1999?: string | null
-    over_80_sum_1999?: string | null
-    under_4_sum_2009?: string | null
-    to_80_sum_2009?: string | null
-    over_80_sum_2009?: string | null
-    under_4_sum_2014?: string | null
-    to_80_sum_2014?: string | null
-    over_80_sum_2014?: string | null
-    under_4_sum_2020?: string | null
-    to_80_sum_2020?: string | null
-    over_80_sum_2020?: string | null
-    P20_POP80P?: string | null
-    P20_POP80P_PSEUL?: string | null
+    under_4_sum_1968?: number | null
+    to_80_sum_1968?: number | null
+    over_80_sum_1968?: number | null
+    under_4_sum_1975?: number | null
+    to_80_sum_1975?: number | null
+    over_80_sum_1975?: number | null
+    under_4_sum_1982?: number | null
+    to_80_sum_1982?: number | null
+    over_80_sum_1982?: number | null
+    under_4_sum_1990?: number | null
+    to_80_sum_1990?: number | null
+    over_80_sum_1990?: number | null
+    under_4_sum_1999?: number | null
+    to_80_sum_1999?: number | null
+    over_80_sum_1999?: number | null
+    under_4_sum_2009?: number | null
+    to_80_sum_2009?: number | null
+    over_80_sum_2009?: number | null
+    under_4_sum_2014?: number | null
+    to_80_sum_2014?: number | null
+    over_80_sum_2014?: number | null
+    under_4_sum_2020?: number | null
+    to_80_sum_2020?: number | null
+    over_80_sum_2020?: number | null
+    P20_POP80P?: number | null
+    P20_POP80P_PSEUL?: number | null
     P20_POP80P_PSEUL_PERCENT?: number | null
     tee_log?: number | null
     tee_mob?: number | null
@@ -34878,7 +34982,7 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: IntFieldUpdateOperationsInput | number
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -34888,32 +34992,32 @@ export namespace Prisma {
     age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null
     age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null
     age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null
-    under_4_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null
-    P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null
-    P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null
+    under_4_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P_PSEUL?: NullableFloatFieldUpdateOperationsInput | number | null
     P20_POP80P_PSEUL_PERCENT?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -34943,7 +35047,7 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: IntFieldUpdateOperationsInput | number
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -34953,32 +35057,32 @@ export namespace Prisma {
     age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null
     age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null
     age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null
-    under_4_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null
-    P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null
-    P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null
+    under_4_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P_PSEUL?: NullableFloatFieldUpdateOperationsInput | number | null
     P20_POP80P_PSEUL_PERCENT?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -35008,7 +35112,7 @@ export namespace Prisma {
     libelle_epci: string
     departement: string
     libelle_departement: string
-    region: number
+    region: bigint | number
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
@@ -35018,32 +35122,32 @@ export namespace Prisma {
     age_bati_46_90?: number | null
     age_bati_19_45?: number | null
     age_bati_pre_19?: number | null
-    under_4_sum_1968?: string | null
-    to_80_sum_1968?: string | null
-    over_80_sum_1968?: string | null
-    under_4_sum_1975?: string | null
-    to_80_sum_1975?: string | null
-    over_80_sum_1975?: string | null
-    under_4_sum_1982?: string | null
-    to_80_sum_1982?: string | null
-    over_80_sum_1982?: string | null
-    under_4_sum_1990?: string | null
-    to_80_sum_1990?: string | null
-    over_80_sum_1990?: string | null
-    under_4_sum_1999?: string | null
-    to_80_sum_1999?: string | null
-    over_80_sum_1999?: string | null
-    under_4_sum_2009?: string | null
-    to_80_sum_2009?: string | null
-    over_80_sum_2009?: string | null
-    under_4_sum_2014?: string | null
-    to_80_sum_2014?: string | null
-    over_80_sum_2014?: string | null
-    under_4_sum_2020?: string | null
-    to_80_sum_2020?: string | null
-    over_80_sum_2020?: string | null
-    P20_POP80P?: string | null
-    P20_POP80P_PSEUL?: string | null
+    under_4_sum_1968?: number | null
+    to_80_sum_1968?: number | null
+    over_80_sum_1968?: number | null
+    under_4_sum_1975?: number | null
+    to_80_sum_1975?: number | null
+    over_80_sum_1975?: number | null
+    under_4_sum_1982?: number | null
+    to_80_sum_1982?: number | null
+    over_80_sum_1982?: number | null
+    under_4_sum_1990?: number | null
+    to_80_sum_1990?: number | null
+    over_80_sum_1990?: number | null
+    under_4_sum_1999?: number | null
+    to_80_sum_1999?: number | null
+    over_80_sum_1999?: number | null
+    under_4_sum_2009?: number | null
+    to_80_sum_2009?: number | null
+    over_80_sum_2009?: number | null
+    under_4_sum_2014?: number | null
+    to_80_sum_2014?: number | null
+    over_80_sum_2014?: number | null
+    under_4_sum_2020?: number | null
+    to_80_sum_2020?: number | null
+    over_80_sum_2020?: number | null
+    P20_POP80P?: number | null
+    P20_POP80P_PSEUL?: number | null
     P20_POP80P_PSEUL_PERCENT?: number | null
     tee_log?: number | null
     tee_mob?: number | null
@@ -35073,7 +35177,7 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: IntFieldUpdateOperationsInput | number
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35083,32 +35187,32 @@ export namespace Prisma {
     age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null
     age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null
     age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null
-    under_4_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null
-    P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null
-    P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null
+    under_4_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P_PSEUL?: NullableFloatFieldUpdateOperationsInput | number | null
     P20_POP80P_PSEUL_PERCENT?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -35138,7 +35242,7 @@ export namespace Prisma {
     libelle_epci?: StringFieldUpdateOperationsInput | string
     departement?: StringFieldUpdateOperationsInput | string
     libelle_departement?: StringFieldUpdateOperationsInput | string
-    region?: IntFieldUpdateOperationsInput | number
+    region?: BigIntFieldUpdateOperationsInput | bigint | number
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35148,32 +35252,32 @@ export namespace Prisma {
     age_bati_46_90?: NullableFloatFieldUpdateOperationsInput | number | null
     age_bati_19_45?: NullableFloatFieldUpdateOperationsInput | number | null
     age_bati_pre_19?: NullableFloatFieldUpdateOperationsInput | number | null
-    under_4_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1968?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1975?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1982?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1990?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_1999?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_2009?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_2014?: NullableStringFieldUpdateOperationsInput | string | null
-    under_4_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null
-    to_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null
-    over_80_sum_2020?: NullableStringFieldUpdateOperationsInput | string | null
-    P20_POP80P?: NullableStringFieldUpdateOperationsInput | string | null
-    P20_POP80P_PSEUL?: NullableStringFieldUpdateOperationsInput | string | null
+    under_4_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1968?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1975?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1982?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1990?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_1999?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2009?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2014?: NullableFloatFieldUpdateOperationsInput | number | null
+    under_4_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    to_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    over_80_sum_2020?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P?: NullableFloatFieldUpdateOperationsInput | number | null
+    P20_POP80P_PSEUL?: NullableFloatFieldUpdateOperationsInput | number | null
     P20_POP80P_PSEUL_PERCENT?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_log?: NullableFloatFieldUpdateOperationsInput | number | null
     tee_mob?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -37731,6 +37835,32 @@ export namespace Prisma {
     age_bati_46_90?: SortOrder
     age_bati_19_45?: SortOrder
     age_bati_pre_19?: SortOrder
+    under_4_sum_1968?: SortOrder
+    to_80_sum_1968?: SortOrder
+    over_80_sum_1968?: SortOrder
+    under_4_sum_1975?: SortOrder
+    to_80_sum_1975?: SortOrder
+    over_80_sum_1975?: SortOrder
+    under_4_sum_1982?: SortOrder
+    to_80_sum_1982?: SortOrder
+    over_80_sum_1982?: SortOrder
+    under_4_sum_1990?: SortOrder
+    to_80_sum_1990?: SortOrder
+    over_80_sum_1990?: SortOrder
+    under_4_sum_1999?: SortOrder
+    to_80_sum_1999?: SortOrder
+    over_80_sum_1999?: SortOrder
+    under_4_sum_2009?: SortOrder
+    to_80_sum_2009?: SortOrder
+    over_80_sum_2009?: SortOrder
+    under_4_sum_2014?: SortOrder
+    to_80_sum_2014?: SortOrder
+    over_80_sum_2014?: SortOrder
+    under_4_sum_2020?: SortOrder
+    to_80_sum_2020?: SortOrder
+    over_80_sum_2020?: SortOrder
+    P20_POP80P?: SortOrder
+    P20_POP80P_PSEUL?: SortOrder
     P20_POP80P_PSEUL_PERCENT?: SortOrder
     tee_log?: SortOrder
     tee_mob?: SortOrder
@@ -37890,6 +38020,32 @@ export namespace Prisma {
     age_bati_46_90?: SortOrder
     age_bati_19_45?: SortOrder
     age_bati_pre_19?: SortOrder
+    under_4_sum_1968?: SortOrder
+    to_80_sum_1968?: SortOrder
+    over_80_sum_1968?: SortOrder
+    under_4_sum_1975?: SortOrder
+    to_80_sum_1975?: SortOrder
+    over_80_sum_1975?: SortOrder
+    under_4_sum_1982?: SortOrder
+    to_80_sum_1982?: SortOrder
+    over_80_sum_1982?: SortOrder
+    under_4_sum_1990?: SortOrder
+    to_80_sum_1990?: SortOrder
+    over_80_sum_1990?: SortOrder
+    under_4_sum_1999?: SortOrder
+    to_80_sum_1999?: SortOrder
+    over_80_sum_1999?: SortOrder
+    under_4_sum_2009?: SortOrder
+    to_80_sum_2009?: SortOrder
+    over_80_sum_2009?: SortOrder
+    under_4_sum_2014?: SortOrder
+    to_80_sum_2014?: SortOrder
+    over_80_sum_2014?: SortOrder
+    under_4_sum_2020?: SortOrder
+    to_80_sum_2020?: SortOrder
+    over_80_sum_2020?: SortOrder
+    P20_POP80P?: SortOrder
+    P20_POP80P_PSEUL?: SortOrder
     P20_POP80P_PSEUL_PERCENT?: SortOrder
     tee_log?: SortOrder
     tee_mob?: SortOrder

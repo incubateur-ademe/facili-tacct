@@ -17,11 +17,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(config.host),
   ...sharedMetadata,
   title: {
-    template: `Facili-TACCT - adaptez votre territoire au changement climatique - %s`,
-    default: "Facili-TACCT - adaptez votre territoire au changement climatique"
+    template: `${config.name} - %s`,
+    default: config.name
   },
   openGraph: {
-    title: "Facili-TACCT - adaptez votre territoire au changement climatique",
+    title: sharedMetadata.openGraph?.siteName,
     ...sharedMetadata.openGraph
   },
   description: config.description
