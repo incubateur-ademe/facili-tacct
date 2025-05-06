@@ -23,32 +23,69 @@ const ProgressProps: ProgressTypes = {
   showInfo: false
 };
 
+// const filterAgricultureBio = (
+//   agricultureBio: AgricultureBio[],
+//   column: string,
+//   value: string,
+//   subValue: string
+// ) => {
+//   const filtered = agricultureBio.filter((acc, obj) => {
+//     if (obj[column] === value) {
+//       return acc + obj[subValue]!;
+//     }
+//     return acc;
+//   }, 0);
+// }
+  
+
 export const AgricultureBioPieCharts = ({
   agricultureBio
 }: {
   agricultureBio: AgricultureBio[];
 }) => {
-  const surfaceCertifiee = agricultureBio.find(
-    (obj) => obj.LIBELLE_SOUS_CHAMP === 'Surface certifiée'
-  )?.surface_2022!;
-  const surfaceCertifiee2019 = agricultureBio.find(
-    (obj) => obj.LIBELLE_SOUS_CHAMP === 'Surface certifiée'
-  )?.surface_2019!;
-  const surfaceEnConversion = agricultureBio.find(
-    (obj) => obj.LIBELLE_SOUS_CHAMP === 'Surface en conversion'
-  )?.surface_2022!;
-  const surfaceEnConversion2019 = agricultureBio.find(
-    (obj) => obj.LIBELLE_SOUS_CHAMP === 'Surface en conversion'
-  )?.surface_2019!;
-  const surfaceTotale = agricultureBio.find(
-    (obj) => obj.VARIABLE === 'saue'
-  )?.surface_2022!;
-  const surfaceTotale2019 = agricultureBio.find(
-    (obj) => obj.VARIABLE === 'saue'
-  )?.surface_2019!;
-  const nombreExploitations = agricultureBio.find(
-    (obj) => obj.VARIABLE === 'saue'
-  )?.nombre_2022!;
+  const surfaceCertifiee = agricultureBio.reduce((acc, obj) => {
+    if (obj.LIBELLE_SOUS_CHAMP === 'Surface certifiée') {
+      return acc + obj.surface_2022!;
+    }
+    return acc;
+  }, 0);
+  const surfaceCertifiee2019 = agricultureBio.reduce((acc, obj) => {
+    if (obj.LIBELLE_SOUS_CHAMP === 'Surface certifiée') {
+      return acc + obj.surface_2019!;
+    }
+    return acc;
+  }, 0);
+  const surfaceEnConversion = agricultureBio.reduce((acc, obj) => {
+    if (obj.LIBELLE_SOUS_CHAMP === 'Surface en conversion') {
+      return acc + obj.surface_2022!;
+    }
+    return acc;
+  }, 0);
+  const surfaceEnConversion2019 = agricultureBio.reduce((acc, obj) => {
+    if (obj.LIBELLE_SOUS_CHAMP === 'Surface en conversion') {
+      return acc + obj.surface_2019!;
+    }
+    return acc;
+  }, 0);
+  const surfaceTotale = agricultureBio.reduce((acc, obj) => {
+    if (obj.VARIABLE === 'saue') {
+      return acc + obj.surface_2022!;
+    }
+    return acc;
+  }, 0);
+  const surfaceTotale2019 = agricultureBio.reduce((acc, obj) => {
+    if (obj.VARIABLE === 'saue') {
+      return acc + obj.surface_2019!;
+    }
+    return acc;
+  }, 0);
+  const nombreExploitations = agricultureBio.reduce((acc, obj) => {
+    if (obj.VARIABLE === 'saue') {
+      return acc + obj.nombre_2022!;
+    }
+    return acc;
+  }, 0);
+
   const partCertifiee = ((surfaceCertifiee / surfaceTotale) * 100);
   const partEnConversion = (
     (surfaceEnConversion / surfaceTotale) * 100
