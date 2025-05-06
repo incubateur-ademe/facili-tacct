@@ -180,68 +180,78 @@ export const GetClcTerritoires = async (
   type: string,
   code?: string
 ): Promise<CLCTerritoires[] | undefined> => {
-  try {
-    console.time('Query Execution Time GetClcTerritoires');
-    if (type === 'commune') {
-      const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
+  const timeoutPromise = new Promise<[]>((resolve) =>
+    setTimeout(() => {
+      console.log(
+        'GetCLC: Timeout reached (5 seconds), returning empty array.'
+      );
+      resolve([]);
+    }, 5000)
+  );
+  const dbQuery = (async () => {
+    try {
+      console.time('Query Execution Time GetClcTerritoires');
+      if (type === 'commune') {
+        const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
         SELECT 
         legend, 
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE code_geographique=${code};`;
-      console.timeEnd('Query Execution Time GetClcTerritoires');
-      return value.length ? value : undefined;
-    } else if (type === 'ept' && eptRegex.test(libelle)) {
-      const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
+        console.timeEnd('Query Execution Time GetClcTerritoires');
+        return value.length ? value : undefined;
+      } else if (type === 'ept' && eptRegex.test(libelle)) {
+        const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
         SELECT 
         legend, 
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE ept IS NOT NULL AND ept=${libelle};`;
-      console.timeEnd('Query Execution Time GetClcTerritoires');
-      return value.length ? value : undefined;
-    } else if (type === 'epci' && !eptRegex.test(libelle)) {
-      const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
+        console.timeEnd('Query Execution Time GetClcTerritoires');
+        return value.length ? value : undefined;
+      } else if (type === 'epci' && !eptRegex.test(libelle)) {
+        const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
         SELECT 
         legend, 
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE epci=${code};`;
-      console.timeEnd('Query Execution Time GetClcTerritoires');
-      return value.length ? value : undefined;
-    } else if (type === 'pnr') {
-      const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
+        console.timeEnd('Query Execution Time GetClcTerritoires');
+        return value.length ? value : undefined;
+      } else if (type === 'pnr') {
+        const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
         SELECT 
         legend, 
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
-      console.timeEnd('Query Execution Time GetClcTerritoires');
-      return value.length ? value : undefined;
-    } else if (type === 'petr') {
-      const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
+        console.timeEnd('Query Execution Time GetClcTerritoires');
+        return value.length ? value : undefined;
+      } else if (type === 'petr') {
+        const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
         SELECT 
         legend, 
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
-      console.timeEnd('Query Execution Time GetClcTerritoires');
-      return value.length ? value : undefined;
-    } else if (type === 'departement') {
-      const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
+        console.timeEnd('Query Execution Time GetClcTerritoires');
+        return value.length ? value : undefined;
+      } else if (type === 'departement') {
+        const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
         SELECT 
         legend, 
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE departement=${code};`;
-      console.timeEnd('Query Execution Time GetClcTerritoires');
-      return value.length ? value : undefined;
-    } else return undefined;
-  } catch (error) {
-    console.error(error);
-    await PrismaPostgres.$disconnect();
-    throw new Error('Internal Server Error');
-  }
+        console.timeEnd('Query Execution Time GetClcTerritoires');
+        return value.length ? value : undefined;
+      } else return undefined;
+    } catch (error) {
+      console.error(error);
+      throw new Error('Internal Server Error');
+    }
+  })();
+  return Promise.race([dbQuery, timeoutPromise]);
 };
 
 export const GetErosionCotiere = async (
