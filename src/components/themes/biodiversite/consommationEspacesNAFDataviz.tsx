@@ -27,7 +27,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
   );
 
   const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
-  
+
   return (
     <div className={styles.graphWrapper}>
       <div
@@ -37,7 +37,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
         <h2>Sols imperméabilisés entre 2009 et 2023</h2>
       </div>
       {
-        carteCommunes.length !== 0 && !enveloppe && carteCommunesFiltered === null ? (
+        carteCommunes.length !== 0 && enveloppe && carteCommunesFiltered !== null ? (
           <>
             <MapEspacesNaf 
               carteCommunesFiltered={carteCommunesFiltered}
