@@ -14,9 +14,9 @@ export const GetRessourceEau = async (
 ): Promise<RessourcesEau[]> => {
   //race Promise pour éviter un crash de la requête lorsqu'elle est trop longue
   const timeoutPromise = new Promise<[]>(resolve => setTimeout(() => {
-    console.log('GetRessourceEau: Timeout reached (10 seconds), returning empty array.');
+    console.log('GetRessourceEau: Timeout reached (8 seconds), returning empty array.');
     resolve([]);
-  }, 10000));
+  }, 8000));
   const dbQuery = (async () => {
     try {
       if (type === 'commune') {

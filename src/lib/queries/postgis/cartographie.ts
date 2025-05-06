@@ -16,15 +16,25 @@ export const GetCommunes = async (
   libelle: string,
   type: string
 ): Promise<CarteCommunes[]> => {
-  try {
-    console.time(`Query Execution Time carte communes ${code ?? libelle}`);
-    if (type === 'commune') {
-      const epci = await PrismaPostgres.communes_drom.findFirst({
-        where: {
-          code_geographique: code
-        }
-      });
-      const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+  //race Promise pour éviter un crash de la requête lorsqu'elle est trop longue
+  const timeoutPromise = new Promise<[]>((resolve) =>
+    setTimeout(() => {
+      console.log(
+        'GetInconfortThermique: Timeout reached (8 seconds), returning empty array.'
+      );
+      resolve([]);
+    }, 8000)
+  );
+  const dbQuery = (async () => {
+    try {
+      console.time(`Query Execution Time carte communes ${code ?? libelle}`);
+      if (type === 'commune') {
+        const epci = await PrismaPostgres.communes_drom.findFirst({
+          where: {
+            code_geographique: code
+          }
+        });
+        const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
         epci, 
         libelle_epci,
@@ -41,10 +51,12 @@ export const GetCommunes = async (
         surface,
         ST_AsGeoJSON(geometry) geometry 
         FROM postgis."communes_drom" WHERE epci=${epci?.epci};`;
-      console.timeEnd(`Query Execution Time carte communes ${code ?? libelle}`);
-      return value;
-    } else if (type === 'ept' && eptRegex.test(libelle)) {
-      const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        console.timeEnd(
+          `Query Execution Time carte communes ${code ?? libelle}`
+        );
+        return value;
+      } else if (type === 'ept' && eptRegex.test(libelle)) {
+        const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
           epci, 
           libelle_epci,
@@ -61,10 +73,12 @@ export const GetCommunes = async (
           surface,
           ST_AsGeoJSON(geometry) geometry 
           FROM postgis."communes_drom" WHERE epci='200054781';`;
-      console.timeEnd(`Query Execution Time carte communes ${code ?? libelle}`);
-      return value;
-    } else if (type === 'epci' && !eptRegex.test(libelle)) {
-      const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        console.timeEnd(
+          `Query Execution Time carte communes ${code ?? libelle}`
+        );
+        return value;
+      } else if (type === 'epci' && !eptRegex.test(libelle)) {
+        const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
           epci, 
           libelle_epci,
@@ -81,10 +95,12 @@ export const GetCommunes = async (
           surface,
           ST_AsGeoJSON(geometry) geometry 
           FROM postgis."communes_drom" WHERE epci=${code};`;
-      console.timeEnd(`Query Execution Time carte communes ${code ?? libelle}`);
-      return value;
-    } else if (type === 'pnr') {
-      const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        console.timeEnd(
+          `Query Execution Time carte communes ${code ?? libelle}`
+        );
+        return value;
+      } else if (type === 'pnr') {
+        const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
           epci, 
           libelle_epci,
@@ -101,10 +117,12 @@ export const GetCommunes = async (
           surface,
           ST_AsGeoJSON(geometry) geometry 
           FROM postgis."communes_drom" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
-      console.timeEnd(`Query Execution Time carte communes ${code ?? libelle}`);
-      return value;
-    } else if (type === 'petr') {
-      const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        console.timeEnd(
+          `Query Execution Time carte communes ${code ?? libelle}`
+        );
+        return value;
+      } else if (type === 'petr') {
+        const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
           epci, 
           libelle_epci,
@@ -121,10 +139,12 @@ export const GetCommunes = async (
           surface,
           ST_AsGeoJSON(geometry) geometry 
           FROM postgis."communes_drom" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
-      console.timeEnd(`Query Execution Time carte communes ${code ?? libelle}`);
-      return value;
-    } else {
-      const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        console.timeEnd(
+          `Query Execution Time carte communes ${code ?? libelle}`
+        );
+        return value;
+      } else {
+        const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
           epci, 
           libelle_epci,
@@ -141,15 +161,18 @@ export const GetCommunes = async (
           surface,
           ST_AsGeoJSON(geometry) geometry 
           FROM postgis."communes_drom" WHERE departement=${code};`;
-      console.timeEnd(`Query Execution Time carte communes ${code ?? libelle}`);
-      return value;
+        console.timeEnd(
+          `Query Execution Time carte communes ${code ?? libelle}`
+        );
+        return value;
+      }
+    } catch (error) {
+      console.error(error);
+      Sentry.captureException(error);
+      throw new Error('Internal Server Error');
     }
-  } catch (error) {
-    console.error(error);
-    Sentry.captureException(error);
-    await PrismaPostgres.$disconnect();
-    throw new Error('Internal Server Error');
-  }
+  })();
+  return Promise.race([dbQuery, timeoutPromise]);
 };
 
 export const GetClcTerritoires = async (

@@ -34,7 +34,6 @@ export const ConsommationEspacesNAF = (props: {
       ?.naf09art23
     : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
 
-    console.log("sumNaf", sumNaf);
   return (
     <div className={styles.container}>
       <div className="w-2/5">

@@ -64,7 +64,6 @@ export const DensiteBati = ({
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : "null";
 
-  console.log("densiteTerritoire", densiteTerritoire);
   return (
     <>
       {!isLoadingPatch4 ? (
