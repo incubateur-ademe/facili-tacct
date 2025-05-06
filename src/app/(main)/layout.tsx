@@ -16,10 +16,10 @@ const footerId = 'footer';
 export const metadata: Metadata = {
   metadataBase: new URL(config.host),
   ...sharedMetadata,
-  title: {
-    template: `${config.name} - %s`,
-    default: config.name
-  },
+  // title: {
+  //   template: `${config.name} - %s`,
+  //   default: config.name
+  // },
   openGraph: {
     title: sharedMetadata.openGraph?.siteName,
     ...sharedMetadata.openGraph
