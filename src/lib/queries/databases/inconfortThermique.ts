@@ -14,9 +14,6 @@ export const GetInconfortThermique = async (
   //race Promise pour éviter un crash de la requête lorsqu'elle est trop longue
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
-      console.log(
-        'GetInconfortThermique: Timeout reached (3 seconds), returning empty array.'
-      );
       resolve([]);
     }, 3000)
   );
@@ -41,7 +38,8 @@ export const GetInconfortThermique = async (
         const value = await PrismaPostgres.inconfort_thermique.findMany({
           where: {
             epci: commune?.epci
-          }
+          },
+          take: 200
         });
         console.timeEnd('Query Execution Time INCONFORT THERMIQUE');
         return value;
@@ -49,7 +47,8 @@ export const GetInconfortThermique = async (
         const value = await PrismaPostgres.inconfort_thermique.findMany({
           where: {
             libelle_petr: libelle
-          }
+          },
+          take: 1000
         });
         console.timeEnd('Query Execution Time INCONFORT THERMIQUE');
         return value;
@@ -57,7 +56,8 @@ export const GetInconfortThermique = async (
         const value = await PrismaPostgres.inconfort_thermique.findMany({
           where: {
             code_pnr: code
-          }
+          },
+          take: 1000
         });
         console.timeEnd('Query Execution Time INCONFORT THERMIQUE');
         return value;
@@ -65,7 +65,8 @@ export const GetInconfortThermique = async (
         const value = await PrismaPostgres.inconfort_thermique.findMany({
           where: {
             departement: code
-          }
+          },
+          take: 1000
         });
         console.timeEnd('Query Execution Time INCONFORT THERMIQUE');
         return value;
@@ -78,17 +79,19 @@ export const GetInconfortThermique = async (
         const value = await PrismaPostgres.inconfort_thermique.findMany({
           where: {
             departement: departement?.departement
-          }
+          },
+          take: 750
         });
         console.timeEnd('Query Execution Time INCONFORT THERMIQUE');
         return value;
       } else return [];
     } catch (error) {
       console.error(error);
-      PrismaPostgres.$disconnect();
+      // PrismaPostgres.$disconnect();
       Sentry.captureException(error);
-      throw new Error('Internal Server Error');
+      return [];
     }
   })();
-  return Promise.race([dbQuery, timeoutPromise]);
+  const result = Promise.race([dbQuery, timeoutPromise]);
+  return result;
 };

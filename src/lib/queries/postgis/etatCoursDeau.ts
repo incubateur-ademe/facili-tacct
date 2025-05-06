@@ -13,9 +13,6 @@ export const GetEtatCoursDeau = async (
 ): Promise<EtatCoursDeau[]> => {
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
-      console.log(
-        'GetCoursDeau: Timeout reached (5 seconds), returning empty array.'
-      );
       resolve([]);
     }, 5000)
   );
@@ -142,7 +139,7 @@ export const GetEtatCoursDeau = async (
       }
     } catch (error) {
       console.error(error);
-      throw new Error('Internal Server Error');
+      return [];
     }
   })();
   return Promise.race([dbQuery, timeoutPromise]);
