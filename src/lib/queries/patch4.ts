@@ -14,10 +14,10 @@ export const GetPatch4 = async (
   const timeoutPromise = new Promise<Patch4 | undefined>((resolve) =>
     setTimeout(() => {
       console.log(
-        'GetSearchBar: Timeout reached (3 seconds), returning empty array.'
+        'GetPatch4: Timeout reached (1 second), returning empty array.'
       );
       resolve(undefined);
-    }, 3000)
+    }, 1000)
   );
   const dbQuery = (async () => {
     try {
