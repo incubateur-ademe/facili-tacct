@@ -54,8 +54,10 @@ export const DensiteBati = ({
 
   useEffect(() => {
     void (async () => {
-      const temp = await GetPatch4(code, type);
-      setPatch4(temp);
+      if (type === 'commune' || type === 'epci') {
+        const temp = await GetPatch4(code, type);
+        setPatch4(temp);
+      }
       setIsLoadingPatch4(false);
     })()
   }, [code]);
@@ -64,7 +66,6 @@ export const DensiteBati = ({
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : "null";
 
-  console.log("densiteTerritoire", densiteTerritoire);
   return (
     <>
       {!isLoadingPatch4 ? (

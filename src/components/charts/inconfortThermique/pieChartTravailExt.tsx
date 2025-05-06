@@ -49,7 +49,7 @@ export const PieChart1 = ({ graphData }: Props) => {
             modifiers: [['darker', 0.3]]
           }}
           enableArcLinkLabels={false}
-          arcLabel={(d) => `${d.value}%`}
+          arcLabel={(d) => `${d.value} %`}
           // arcLinkLabelsTextColor="#333333"
           // arcLinkLabelsOffset={-10}
           // arcLinkLabelsDiagonalLength={8}
@@ -82,7 +82,7 @@ export const PieChart1 = ({ graphData }: Props) => {
                   <p>{id}</p>
                 </div>
                 <div className={styles.value}>
-                  <p>{value}%</p>
+                  <p>{value} %</p>
                 </div>
               </div>
             </div>

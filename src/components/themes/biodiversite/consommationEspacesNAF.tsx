@@ -39,7 +39,7 @@ export const ConsommationEspacesNAF = (props: {
       <div className="w-2/5">
         <div className={styles.explicationWrapper}>
           {
-            sumNaf !== 0 ? (
+            sumNaf && sumNaf !== 0 ? (
               <p>
                 Entre 2009 et 2023, votre territoire a consommé{' '}
                 <b>{Round(sumNaf / 10000, 1)} hectare(s)</b> d’espaces naturels

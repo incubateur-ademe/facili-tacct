@@ -12,6 +12,7 @@ import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { FeuxForetText } from '../inconfortThermique/staticTexts';
 import FeuxForetDataviz from './feuxForetDataviz';
 import styles from './gestionRisques.module.scss';
 
@@ -32,8 +33,10 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
 
   useEffect(() => {
     void (async () => {
-      const temp = await GetPatch4(code, type);
-      setPatch4(temp);
+      if (type === 'commune' || type === 'epci') {
+        const temp = await GetPatch4(code, type);
+        setPatch4(temp);
+      }
       setIsLoadingPatch4(false);
     })()
   }, [code]);
@@ -75,36 +78,7 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
               ) : null}
               <CustomTooltip title={feuxForetTooltipText} texte="Définition" />
             </div>
-            <div className={styles.textWrapper}>
-              <p>
-                Un climat plus chaud et plus sec sont des conditions propices
-                aux départs de feux et les vents potentiellement plus violents
-                sont sources de propagation rapide. La saison des feux
-                s’allonge. Elle débute désormais au printemps et se prolonge
-                jusqu’à l’automne. Les incendies touchent des territoires
-                considérés jusque-là comme épargnés. Ils ont de graves
-                conséquences : destruction de la biodiversité, pollution de
-                l’air et de l’eau, effets collatéraux sur d’autres aléas
-                naturels (érosion, glissements de terrain, inondations…) et
-                émissions massives de gaz à effet de serre, amplifiant le
-                dérèglement climatique.
-              </p>
-              <p>
-                Si les dégâts socio-économiques des incendies de forêt sont à ce
-                jour relativement contenus en France, c’est au prix d’
-                importants investissements dans les dispositifs d’alerte et de
-                prévention, qui ont permis de diviser par cinq les surfaces
-                brûlées annuellement, par rapport aux années 1980.
-              </p>
-              <p>
-                ⇒ En 2023, parmi les feux de forêts dont la cause a été
-                identifiée, 9 départs sur 10 sont d’origine humaine.
-              </p>
-              <p>
-                ⇒ 4 feux sur 5 se déclenchent à moins de 50 mètres des
-                habitations.
-              </p>
-            </div>
+            <FeuxForetText />
           </div>
           <div className={incendiesForet.length !== 0 ? 'w-3/5' : 'w-1/2'}>
             {incendiesForet.length !== 0 ? (

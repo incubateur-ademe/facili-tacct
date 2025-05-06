@@ -1,5 +1,5 @@
 import { DefinitionTooltip } from "@/components/utils/HtmlTooltip";
-import { irrigable, PNACC } from "@/lib/definitions";
+import { eutrophisation, irrigable, PNACC } from "@/lib/definitions";
 import styles from './themes.module.scss';
 
 export const AgeBatiText = () => (
@@ -351,6 +351,303 @@ export const SurfacesEnBioText = () => (
     </p>
     <p>
       ⇒ Jusqu'à 35 % de carbone supplémentaire stocké dans les sols.
+    </p>
+  </div>
+);
+
+export const EtatsCoursEauBiodiversiteText = () => (
+  <div className="px-4">
+    <p>
+      Seuls 43 % des cours et des plans d’eau français sont en bon état écologique.
+      Si les principaux facteurs de dégradation de la qualité des eaux
+      sont les pollutions (nitrates, pesticides) et les altérations
+      physiques des rivières (seuils et barrages, endiguement….), le
+      réchauffement climatique aggrave les déséquilibres en cours. La
+      hausse des températures et les sécheresses prolongées entraînent
+      la chute des débits, voire assecs, la prolifération d'espèces
+      exotiques envahissantes, la concentration des polluants
+      (massivement relâchés lors des crues) ; la hausse des
+      température de l’eau et l’ensoleillement sont des conditions
+      favorables à{' '}
+      <DefinitionTooltip title={eutrophisation}>
+        l’eutrophisation
+      </DefinitionTooltip>
+      .
+    </p>
+    <p>
+      Un mauvais état écologique a des impacts graves sur la
+      biodiversité : il perturbe les conditions de vie des espèces
+      aquatiques et dégrade leurs habitats. En 20 ans :
+    </p>
+    <ul className="text-[1rem] leading-[1.5rem]">
+      <li>
+        Les populations de truites de rivière ont diminué de 44 %.
+      </li>
+      <li>
+        L’abondance de l’anguille européenne est tombée à 10 % de son
+        niveau historique.
+      </li>
+    </ul>
+    <p>
+      - - - - <br></br>
+      L’objectif de la Directive Cadre sur l’Eau (2000) était
+      d’atteindre un bon état général des eaux d’ici 2027 : il semble
+      hors d’atteinte désormais.
+    </p>
+  </div>
+);
+
+export const EtatCoursEauRessourcesEauText = () => (
+  <div className="px-4">
+    <p>
+      Même pour des cours d’eau en bon état, les événements extrêmes
+      dus au changement climatique aggravent les pollutions : en
+      période de sécheresse, les polluants se concentrent ; lors des
+      crues, ils sont massivement charriés vers les captages,
+      augmentant la contamination.
+    </p>
+    <p>
+      Certaines activités sont directement affectées par la qualité
+      chimique des cours d’eau (pisciculture en eau douce, pêche
+      professionnelle ou de loisir, sports d’eau vive…). Par ailleurs,
+      48 % de l’eau prélevée pour les usages domestiques, agricoles et
+      industriels provient des eaux de surface. Une eau brute plus
+      polluée nécessite des traitements plus complexes, ce qui
+      augmente les coûts du service de l’eau.
+    </p>
+    <p>
+      Concernant spécifiquement l’eau potable, si deux tiers des prélèvements
+      sont fait sur des ressources souterraines, les prélèvements en
+      eaux de surface sont majoritaires en région parisienne, en
+      Bretagne, dans les Pays de la Loire, sur la Côte d’Azur et dans
+      l’ancienne région Midi-Pyrénées.
+    </p>
+  </div>
+);
+
+export const AOT40Text = () => (
+  <div className="px-4">
+    <p>
+      L’ozone de basse altitude est le polluant de l’air le plus
+      destructeur pour la biodiversité. C’est l’un des rares gaz à
+      être à la fois un polluant de l’air et un gaz à effet de serre :
+      les périodes de fortes chaleurs, de plus en plus fréquentes et
+      intenses, favorisent la formation d’ozone de basse altitude,
+      dont les concentrations aggravent le changement climatique.
+    </p>
+    <p>
+      Ce gaz très oxydant s’infiltre dans les plantes, détruit leurs
+      cellules et perturbe leur croissance. Les forêts sont
+      particulièrement touchées. Les arbres affaiblis deviennent plus
+      vulnérables aux maladies et aux sècheresses, et perdent leur
+      capacité à stocker du carbone. L’ozone perturbe la pollinisation
+      des abeilles, essentielles à 75 % des cultures alimentaires.
+    </p>
+    <p>
+      ⇒ 15 % des stations de mesure en milieu rural dépassaient encore
+      le seuil réglementaire d'ozone sur la période 2018-2022.
+    </p>
+    <p>
+      ⇒ Dans certaines régions françaises, des arbres comme le hêtre
+      et l'épicéa enregistrent des pertes de biomasse allant jusqu'à
+      22 %.
+    </p>
+    <p>
+      ⇒ À l’échelle mondiale, environ 90 % des pertes de rendement
+      agricole dues à la pollution atmosphérique sont attribuées à
+      l’ozone.
+    </p>
+    <p>
+      - - - - <br></br>
+      La directive 2024/2881 du 23 octobre 2024 concernant la qualité
+      de l’air ambiant et un air pur pour l’Europe fixe un objectif de
+      protection de la végétation de 6 000 µg/m³ par heure au 1er
+      janvier 2050.
+    </p>
+  </div>
+);
+
+export const PrelevementEauText = () => (
+  <div className="px-4">
+    <p>
+      Les sécheresses 2022 et 2023 sonnent l'alerte : optimiser la
+      ressource en eau disponible devient vital. Face à
+      l'intensification des sécheresses due au changement climatique,
+      chaque territoire doit anticiper. Un prélèvement n'est possible
+      que si la ressource existe !
+    </p>
+    <p>
+      Attention aux chiffres bruts : les prélèvements ne reflètent pas
+      les consommations réelles. L'industrie rejette une partie de
+      l'eau prélevée, tandis que l'agriculture consomme la
+      quasi-totalité de ses prélèvements, concentrés sur trois mois
+      d'été. Dans les zones géographiques en tension, l'agriculture
+      peut représenter jusqu'à 80 % de l'eau consommée. Cette
+      situation fragilise la ressource locale. Le prix de l'eau est
+      susceptible d'augmenter pour deux raisons : la rareté de la
+      ressource et le besoin de traitements plus sophistiqués
+      (dénitrification, élimination des micropolluants, etc.).
+    </p>
+    <p>
+      ⇒ Lors de la sécheresse 2022, 2 000 communes ont été en tension
+      sur l’eau potable.
+    </p>
+    <p>
+      ⇒ 30 milliards de m3 d’eau ont été prélevés en France en 2021
+      (hors production hydroélectrique), soit l’équivalent de plus
+      d’un tiers du volume du Lac Léman. 82 % des prélèvements
+      proviennent d'eaux de surface, 18 % d'eaux souterraines
+    </p>
+    <p>
+      ⇒ 20 % des prélèvements d’eau potable sont perdus à cause des
+      fuites, soit l’équivalent de la consommation de 18,5 millions
+      d’habitants.
+    </p>
+    <p>
+      - - - - <br></br>
+      Le Plan Eau agit pour atteindre -10% d’eau prélevée d’ici 2030 :
+      <li>
+        la mesure 11 prévoit la fin progressive des autorisations de
+        prélèvement non soutenables dans les bassins en déséquilibre
+        (au fur et à mesure du renouvellement des autorisations) ;
+      </li>
+      <li>
+        la mesure 12 prévoit l’installation obligatoire de compteurs
+        connectés pour les prélèvements importants (généralisation
+        prévue d'ici 2027) ;
+      </li>
+      <li>
+        la mesure 13 prévoit le renforcement de l'encadrement des
+        petits prélèvements domestiques.
+      </li>
+    </p>
+    <p>
+      Plan National d’Adaptation au Changement Climatique (PNACC 3) :
+      <br></br>La mesure 21 prévoit une étude spécifique sur les
+      vulnérabilités de l'approvisionnement en eau potable dans les
+      départements et régions d'Outre-mer.
+    </p>
+  </div>
+);
+
+export const CatNatText = () => (
+  <div className="px-4">
+    <p>
+      Les phénomènes extrêmes s'intensifient. Leur fréquence augmente
+      à chaque hausse de 0,5°C de la température mondiale. La France
+      est particulièrement exposée : depuis 1900, elle a subi 14 % des
+      catastrophes naturelles majeures en Europe. Inondations, cyclones
+      et tempêtes y sont les plus dévastateurs. La France et l'Italie
+      sont les pays européens les plus touchés, loin devant les autres.
+    </p>
+    <p>
+      ⇒ 257 500, c’est le nombre d'arrêtés liés aux événements
+      climatiques depuis la création du régime CatNat en 1982. Les
+      inondations représentent plus de 56 % du total.
+    </p>
+    <p>
+      ⇒ 8 : c'est le nombre moyen d’arrêtés CatNat par commune entre
+      1982 et septembre 2024. Mais une commune détient le triste
+      record de 135 arrêtés sur cette période !
+    </p>
+    <p>
+      ⇒ 10,6 milliards d’euros : c’est le coût d’indemnisations des
+      dommages liés à des aléas climatiques en France en 2022.
+    </p>
+    <p>
+      ⇒ 4,8 milliards d’euros : montant moyen annuel des pertes
+      économiques directes attribuées aux événements naturels en
+      France entre 2015 et 2019, soit : <br></br>- deux fois le budget
+      annuel des Agences de l’eau, ou <br></br>- 20 fois les besoins
+      annuels pour adapter les biens exposés au risque d’érosion en
+      France au cours des 25 prochaines années (estimation de
+      l’Inspection générale de l'environnement et du développement
+      durable).
+    </p>
+  </div>
+);
+
+export const ErosionCotiereText = () => (
+  <div className="px-4">
+    <p>
+      L'érosion grignote nos côtes : près de 20 % du littoral français
+      recule face à la mer. Ce phénomène naturel s'accélère avec le
+      changement climatique, la hausse du niveau des mers et la
+      multiplication des tempêtes notamment. Les chiffres sont
+      préoccupants. 37 % des côtes sableuses s'érodent, soit 700
+      kilomètres - la distance Paris-Marseille - qui disparaissent peu
+      à peu. En 50 ans, la mer a englouti l'équivalent de la ville de
+      La Rochelle : 30 km² de terres perdues.
+    </p>
+    <p>
+      Impacts locaux sur les milieux :
+      <li>
+        Augmentation des intrusions salines des aquifères côtiers,
+      </li>
+      <li>Modification des paysages (nouvelles lagunes…),</li>
+      <li>Appauvrissement des sols dû à la salinisation.</li>
+    </p>
+    <p>
+      Impacts locaux sur les activités humaines :
+      <li>
+        Diminution de la disponibilité des eaux douces souterraines
+        pour les différents usages,
+      </li>
+      <li>
+        Modification des marais salins avec conséquences sur les
+        activités,
+      </li>
+      <li>
+        Salinisation et réduction des terres par submersion temporaire
+        ou permanente.
+      </li>
+    </p>
+    <p>
+      ⇒ 523 communes touchées par le recul du littoral, dont 59
+      perdent plus d'1,5 mètre de littoral chaque année.
+    </p>
+    <p>
+      ⇒ D'ici 2050 : 5200 logements et 1400 locaux d'activité seront
+      menacés, pour un coût estimé à 1,2 milliard d'euros.
+    </p>
+    <p>
+      - - - - <br></br>
+      Plan National d'Adaptation au Changement Climatique (PNACC 3) :
+      La mesure 35 prévoit d’accompagner l’adaptation du tourisme
+      culturel, de montagne, littoral et nautique.
+    </p>
+  </div>
+);
+
+export const FeuxForetText = () => (
+  <div className="px-4">
+    <p>
+      Un climat plus chaud et plus sec sont des conditions propices
+      aux départs de feux et les vents potentiellement plus violents
+      sont sources de propagation rapide. La saison des feux
+      s’allonge. Elle débute désormais au printemps et se prolonge
+      jusqu’à l’automne. Les incendies touchent des territoires
+      considérés jusque-là comme épargnés. Ils ont de graves
+      conséquences : destruction de la biodiversité, pollution de
+      l’air et de l’eau, effets collatéraux sur d’autres aléas
+      naturels (érosion, glissements de terrain, inondations…) et
+      émissions massives de gaz à effet de serre, amplifiant le
+      dérèglement climatique.
+    </p>
+    <p>
+      Si les dégâts socio-économiques des incendies de forêt sont à ce
+      jour relativement contenus en France, c’est au prix d’
+      importants investissements dans les dispositifs d’alerte et de
+      prévention, qui ont permis de diviser par cinq les surfaces
+      brûlées annuellement, par rapport aux années 1980.
+    </p>
+    <p>
+      ⇒ En 2023, parmi les feux de forêts dont la cause a été
+      identifiée, 9 départs sur 10 sont d’origine humaine.
+    </p>
+    <p>
+      ⇒ 4 feux sur 5 se déclenchent à moins de 50 mètres des
+      habitations.
     </p>
   </div>
 );

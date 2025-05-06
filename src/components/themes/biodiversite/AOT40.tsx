@@ -1,5 +1,6 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
-import { GraphDataNotFound } from '@/components/graph-data-not-found';
+import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { aot40Legends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
@@ -20,6 +21,7 @@ import * as turf from '@turf/turf';
 import L from 'leaflet';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { AOT40Text } from '../inconfortThermique/staticTexts';
 import styles from './biodiversite.module.scss';
 
 const color = (valeur: number) => {
@@ -141,8 +143,10 @@ const AOT40Dataviz = (props: {
 
   useEffect(() => {
     void (async () => {
-      const temp = await GetPatch4(code, type);
-      setPatch4(temp);
+      if (type === 'commune' || type === 'epci') {
+        const temp = await GetPatch4(code, type);
+        setPatch4(temp);
+      }
       setIsLoadingPatch4(false);
     })()
   }, [code]);
@@ -155,127 +159,87 @@ const AOT40Dataviz = (props: {
     <>
       {
         !isLoadingPatch4 ?
-          <>
-            {aot40.length && carteCommunes.length ? (
-              <div className={styles.container}>
-                <div className="w-5/12">
-                  <div className={styles.explicationWrapper}>
-                    <p>
-                      La pollution à l’ozone ne s'arrête pas aux frontières des
-                      agglomérations. Portée par le vent, la dispersion peut s’étendre
-                      sur plusieurs centaines de kilomètres. Même les territoires
-                      éloignés des sources de pollution en subissent les effets.
-                    </p>
-                    {maxValueInStations == null ? (
-                      <p>
-                        Nous ne disposons pas de données pour les stations proches de
-                        votre territoire
-                      </p>
-                    ) : maxValueInStations < 6000 ? (
-                      <p>
-                        Bravo, le seuil de 6 000 µg/m³ par heure fixé comme objectif
-                        pour 2050 est déjà atteint. Ne relâchez pas vos efforts.
-                      </p>
-                    ) : maxValueInStations > 18000 ? (
-                      <p>
-                        Le cumul d’ozone enregistré ces 5 dernières années pendant la
-                        période de végétation ({Round(maxValueInStations, 0)} µg/m³)
-                        risque d’engendrer des réactions de la part des végétaux de
-                        votre territoire.
-                      </p>
-                    ) : (
-                      <p>
-                        Le seuil actuel de protection de la végétation de 18 000 µg/m³
-                        par heure n’est pas franchi. Poursuivez vos efforts,
-                        l’objectif fixé pour 2050 est de 6 000 µg/m³ par heure.
-                      </p>
-                    )}
-                    <div className={styles.patch4Wrapper}>
-                      {fortesChaleurs === 'Intensité très forte' ||
-                        fortesChaleurs === 'Intensité forte' ? (
-                        <div>
-                          <TagItem
-                            icon={fortesChaleursIcon}
-                            indice="Fortes chaleurs"
-                            tag={fortesChaleurs}
-                          />
-                        </div>
-                      ) : null}
-                    </div>
-                    <CustomTooltip title={AOT40TooltipText} texte="D'où vient ce chiffre ?" />
-                  </div>
-                  <div className="px-4">
-                    <p>
-                      L’ozone de basse altitude est le polluant de l’air le plus
-                      destructeur pour la biodiversité. C’est l’un des rares gaz à
-                      être à la fois un polluant de l’air et un gaz à effet de serre :
-                      les périodes de fortes chaleurs, de plus en plus fréquentes et
-                      intenses, favorisent la formation d’ozone de basse altitude,
-                      dont les concentrations aggravent le changement climatique.
-                    </p>
-                    <p>
-                      Ce gaz très oxydant s’infiltre dans les plantes, détruit leurs
-                      cellules et perturbe leur croissance. Les forêts sont
-                      particulièrement touchées. Les arbres affaiblis deviennent plus
-                      vulnérables aux maladies et aux sècheresses, et perdent leur
-                      capacité à stocker du carbone. L’ozone perturbe la pollinisation
-                      des abeilles, essentielles à 75 % des cultures alimentaires.
-                    </p>
-                    <p>
-                      ⇒ 15 % des stations de mesure en milieu rural dépassaient encore
-                      le seuil réglementaire d'ozone sur la période 2018-2022.
-                    </p>
-                    <p>
-                      ⇒ Dans certaines régions françaises, des arbres comme le hêtre
-                      et l'épicéa enregistrent des pertes de biomasse allant jusqu'à
-                      22 %.
-                    </p>
-                    <p>
-                      ⇒ À l’échelle mondiale, environ 90 % des pertes de rendement
-                      agricole dues à la pollution atmosphérique sont attribuées à
-                      l’ozone.
-                    </p>
-                    <p>
-                      - - - - <br></br>
-                      La directive 2024/2881 du 23 octobre 2024 concernant la qualité
-                      de l’air ambiant et un air pur pour l’Europe fixe un objectif de
-                      protection de la végétation de 6 000 µg/m³ par heure au 1er
-                      janvier 2050.
-                    </p>
-                  </div>
-                </div>
-                <div className="w-7/12">
-                  <div className={styles.graphWrapper}>
-                    <div
-                      className={styles.biodiversiteGraphTitleWrapper}
-                      style={{ padding: '1rem' }}
-                    >
-                      <h2>
-                        Concentration d’ozone pendant la période de végétation (moyenne 2020-2024)
-                      </h2>
-                    </div>
+          <div className={styles.container}>
+            <div className="w-5/12">
+              <div className={styles.explicationWrapper}>
+                <p>
+                  La pollution à l’ozone ne s'arrête pas aux frontières des
+                  agglomérations. Portée par le vent, la dispersion peut s’étendre
+                  sur plusieurs centaines de kilomètres. Même les territoires
+                  éloignés des sources de pollution en subissent les effets.
+                </p>
+                {maxValueInStations == null ? (
+                  <p>
+                    Nous ne disposons pas de données pour les stations proches de
+                    votre territoire
+                  </p>
+                ) : maxValueInStations < 6000 ? (
+                  <p>
+                    Bravo, le seuil de 6 000 µg/m³ par heure fixé comme objectif
+                    pour 2050 est déjà atteint. Ne relâchez pas vos efforts.
+                  </p>
+                ) : maxValueInStations > 18000 ? (
+                  <p>
+                    Le cumul d’ozone enregistré ces 5 dernières années pendant la
+                    période de végétation ({Round(maxValueInStations, 0)} µg/m³)
+                    risque d’engendrer des réactions de la part des végétaux de
+                    votre territoire.
+                  </p>
+                ) : (
+                  <p>
+                    Le seuil actuel de protection de la végétation de 18 000 µg/m³
+                    par heure n’est pas franchi. Poursuivez vos efforts,
+                    l’objectif fixé pour 2050 est de 6 000 µg/m³ par heure.
+                  </p>
+                )}
+                <div className={styles.patch4Wrapper}>
+                  {fortesChaleurs === 'Intensité très forte' ||
+                    fortesChaleurs === 'Intensité forte' ? (
                     <div>
+                      <TagItem
+                        icon={fortesChaleursIcon}
+                        indice="Fortes chaleurs"
+                        tag={fortesChaleurs}
+                      />
+                    </div>
+                  ) : null}
+                </div>
+                <CustomTooltip title={AOT40TooltipText} texte="D'où vient ce chiffre ?" />
+              </div>
+              <AOT40Text />
+            </div>
+            <div className="w-7/12">
+              <div className={styles.graphWrapper}>
+                <div
+                  className={styles.biodiversiteGraphTitleWrapper}
+                  style={{ padding: '1rem' }}
+                >
+                  <h2>
+                    Concentration d’ozone pendant la période de végétation (moyenne 2020-2024)
+                  </h2>
+                </div>
+                {
+                  aot40.length && carteCommunes.length ? (
+                    <>
                       <MapAOT40
                         aot40={aot40}
                         carteCommunes={carteCommunesMap}
                       />
-                    </div>
-                    <div
-                      className={styles.legend}
-                      style={{ width: 'auto', justifyContent: 'center' }}
-                    >
-                      <LegendCompColor legends={aot40Legends} />
-                    </div>
-                    <p style={{ padding: '1em', margin: '0' }}>
-                      Source : Géod’Air (2024)
-                    </p>
-                  </div>
-                </div>
+                      <div
+                        className={styles.legend}
+                        style={{ width: 'auto', justifyContent: 'center' }}
+                      >
+                        <LegendCompColor legends={aot40Legends} />
+                      </div>
+                    </>
+                  ) : <DataNotFoundForGraph image={DataNotFound} />
+                }
+                <p style={{ padding: '1em', margin: '0' }}>
+                  Source : Géod’Air (2024)
+                </p>
               </div>
-            ) : (
-              <GraphDataNotFound code={code} libelle={libelle} />
-            )}
-          </>
+            </div>
+          </div>
           : <Loader />
       }
     </>
