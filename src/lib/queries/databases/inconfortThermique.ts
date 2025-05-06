@@ -85,6 +85,7 @@ export const GetInconfortThermique = async (
       } else return [];
     } catch (error) {
       console.error(error);
+      PrismaPostgres.$disconnect();
       Sentry.captureException(error);
       throw new Error('Internal Server Error');
     }
