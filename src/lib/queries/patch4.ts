@@ -14,10 +14,10 @@ export const GetPatch4 = async (
   const timeoutPromise = new Promise<Patch4 | undefined>((resolve) =>
     setTimeout(() => {
       console.log(
-        'GetPatch4: Timeout reached (1 second), returning empty array.'
+        'GetPatch4: Timeout reached (2 second), returning empty array.'
       );
       resolve(undefined);
-    }, 1000)
+    }, 2000)
   );
   const dbQuery = (async () => {
     try {
@@ -45,6 +45,7 @@ export const GetPatch4 = async (
     } catch (error) {
       console.error(error);
       Sentry.captureException(error);
+      PrismaPostgres.$disconnect();
       throw new Error('Internal Server Error');
     }
   })();
