@@ -70,7 +70,7 @@ export const GrandAgeIsolement = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [patch4, setPatch4] = useState<Patch4 | undefined>(undefined);
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const xData = [
     '1968',
@@ -151,8 +151,10 @@ export const GrandAgeIsolement = (props: {
 
   useEffect(() => {
     void (async () => {
-      const temp = await GetPatch4(code, type);
-      setPatch4(temp);
+      if (type === 'commune' || type === 'epci') {
+        const temp = await GetPatch4(code, type);
+        setPatch4(temp);
+      }
       setIsLoadingPatch4(false);
     })()
   }, [code]);

@@ -7,11 +7,12 @@ const description =
 export const sharedMetadata: Metadata = {
   description,
   openGraph: {
+    title: config.name,
     description,
     type: 'website',
     locale: 'fr_FR',
     countryName: 'France',
-    siteName: "Facili-TACCT - adaptez votre territoire au changement climatique",
+    siteName: config.name,
     images: [
       {
         url: `${config.host}/logo-tacct-generique-min.jpg`,

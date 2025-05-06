@@ -61,8 +61,10 @@ export const FragiliteEconomique = ({
 
   useEffect(() => {
     void (async () => {
-      const temp = await GetPatch4(code, type);
-      setPatch4(temp);
+      if (type === 'commune' || type === 'epci') {
+        const temp = await GetPatch4(code, type);
+        setPatch4(temp);
+      }
       setIsLoadingPatch4(false);
     })()
   }, [code]);
@@ -80,11 +82,11 @@ export const FragiliteEconomique = ({
               <div className={styles.explicationWrapper}>
                 {
                   precariteLogTerritoire ? (
-                  <p style={{ color: '#161616' }}>
-                    La part des ménages en situation de précarité énergétique
-                    liée au logement sur votre territoire est de{' '}
-                    <b>{Round((100 * precariteLogTerritoire), 1)} %. </b>
-                  </p>
+                    <p style={{ color: '#161616' }}>
+                      La part des ménages en situation de précarité énergétique
+                      liée au logement sur votre territoire est de{' '}
+                      <b>{Round((100 * precariteLogTerritoire), 1)} %. </b>
+                    </p>
                   ) : ""
                 }
                 {(type === 'commune' || eptRegex.test(libelle)) && precariteLogTerritoireSup ? (
