@@ -78,7 +78,7 @@ export const FragiliteEconomique = ({
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <>
-            <div className="w-2/5">
+            <div className={carteTerritoire.length > 0 ? 'w-2/5' : 'w-1/2'}>
               <div className={styles.explicationWrapper}>
                 {
                   precariteLogTerritoire ? (
@@ -112,7 +112,7 @@ export const FragiliteEconomique = ({
               </div>
               <FragiliteEconomiqueText />
             </div>
-            <div className="w-3/5">
+            <div className={carteTerritoire.length > 0 ? "w-3/5" : "w-1/2"}>
               <div className={styles.graphWrapper}>
                 <p style={{ padding: '1em', margin: '0' }}>
                   <b>
