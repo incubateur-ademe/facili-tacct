@@ -47,7 +47,6 @@ const csp = {
         'https://les-communs-transition-ecologique-api-staging.osc-fr1.scalingo.io/sandbox/',
         'https://preprod-app.territoiresentransitions.fr',
         'https://staging-app.territoiresentransitions.fr',
-
     ],
     'base-uri': ["'self'", 'https://*.gouv.fr'],
     'form-action': ["'self'", 'https://*.gouv.fr'],

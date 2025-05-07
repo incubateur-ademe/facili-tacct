@@ -1,8 +1,10 @@
 'use client';
 
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import ZeroData from '@/assets/images/zero_data_found.svg';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import styles from '@/components/themes/gestionRisques/gestionRisques.module.scss';
+import { travailExtDto } from '@/lib/dto';
 import { ResponsivePie } from '@/lib/nivo/pie';
 
 type Props = {
@@ -13,9 +15,10 @@ type Props = {
     value: number | undefined;
     count: number;
   }>;
+  travailExterieurTerritoire: travailExtDto[];
 };
 
-export const PieChart1 = ({ graphData }: Props) => {
+export const PieChart1 = ({ graphData, travailExterieurTerritoire }: Props) => {
   const sumAllCount = graphData.reduce((sum, item) => sum + (item.count || 0), 0);
   return (
     <div
@@ -88,7 +91,7 @@ export const PieChart1 = ({ graphData }: Props) => {
             </div>
           )}
         />
-        : <DataNotFoundForGraph image={DataNotFound} />
+        : <DataNotFoundForGraph image={travailExterieurTerritoire.length === 0 ? DataNotFound : ZeroData} />
       }
     </div>
   );

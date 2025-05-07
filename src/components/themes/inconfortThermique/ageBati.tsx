@@ -108,6 +108,7 @@ export const AgeBati = (props: {
       FranceColor: 'hsl(125, 70%, 50%)'
     }
   ];
+  const sumAllCount = chartData.reduce((sum, item) => sum + (Number(item["Votre Collectivité"]) || 0), 0);
 
   useEffect(() => {
     void (async () => {
@@ -126,7 +127,7 @@ export const AgeBati = (props: {
     <>
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
-          <div className="w-2/5">
+          <div className={sumAllCount > 0 ? "w-2/5" : "w-1/2"}>
             <div className={styles.explicationWrapper}>
               {
                 constructionBefore2006 &&
@@ -147,7 +148,7 @@ export const AgeBati = (props: {
             </div>
             <AgeBatiText />
           </div>
-          <div className="w-3/5">
+          <div className={sumAllCount > 0 ? "w-3/5" : "w-1/2"}>
             <div className={styles.graphWrapper}>
               <p style={{ padding: '1em', margin: '0' }}>
                 <b>Part des résidence principales par période de construction</b>
