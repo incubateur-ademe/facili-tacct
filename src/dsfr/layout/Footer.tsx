@@ -124,11 +124,11 @@ export default function AppFooter() {
                 Politique des cookies
               </a>
             </li>
-            <li className="fr-footer__bottom-item">
+            {/* <li className="fr-footer__bottom-item">
               <a className="fr-footer__bottom-link" href="/stats" target="_self">
                 Statistiques
               </a>
-            </li>
+            </li> */}
             <li className="fr-footer__bottom-item">
               <button {...headerFooterDisplayItem.buttonProps}
                 className="fr-footer__bottom-link"
