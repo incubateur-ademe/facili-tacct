@@ -6,6 +6,10 @@ const description =
 
 export const sharedMetadata: Metadata = {
   description,
+  title: {
+    template: `${config.name} - %s`,
+    default: config.name,
+  },
   openGraph: {
     title: config.name,
     description,
