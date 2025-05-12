@@ -1,11 +1,8 @@
 'use server';
 
 import * as Sentry from '@sentry/nextjs';
-import { PrismaClient as PostgresClient } from '../../generated/client';
 import { CollectivitesSearchbar } from '../postgres/models';
 import { Commune, Departement, EPCI, PETR, PNR } from './territoiresQueries';
-
-const PrismaPostgres = new PostgresClient();
 
 export const GetCollectivite = async (
   typeTerritoire: string | undefined,

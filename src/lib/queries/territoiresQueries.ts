@@ -1,7 +1,5 @@
-import { PrismaClient as PostgresClient } from '../../generated/client';
 import { CollectivitesSearchbar } from '../postgres/models';
-
-const PrismaPostgres = new PostgresClient();
+import { PrismaPostgres } from './db';
 
 export const PNR = async (variableCollectivite: string) => {
   const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
