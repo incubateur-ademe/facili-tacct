@@ -67,7 +67,7 @@ const HeaderComp = () => {
       serviceTitle="Facili-TACCT"
       operatorLogo={{
         alt: "Logo de l'ADEME",
-        imgUrl: '/logo-ademe.svg',
+        imgUrl: '/logo-ademe.png',
         orientation: 'vertical'
       }}
       quickAccessItems={[
