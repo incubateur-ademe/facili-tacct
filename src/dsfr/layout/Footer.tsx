@@ -120,11 +120,6 @@ export default function AppFooter() {
               </a>
             </li>
             <li className="fr-footer__bottom-item">
-              <button className="fr-footer__bottom-link" data-fr-opened="false" aria-controls="fr-consent-modal">
-                Gestion des cookies
-              </button>
-            </li>
-            <li className="fr-footer__bottom-item">
               <a className="fr-footer__bottom-link" href="/stats" target="_self">
                 Statistiques
               </a>
