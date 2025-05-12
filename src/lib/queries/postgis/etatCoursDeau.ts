@@ -2,9 +2,7 @@
 
 import { CarteCommunes, EtatCoursDeau } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
-import { PrismaClient as PostgresClient } from '../../../generated/client';
-
-const PrismaPostgres = new PostgresClient();
+import { PrismaPostgres } from '../db';
 
 export const GetEtatCoursDeau = async (
   code: string,
