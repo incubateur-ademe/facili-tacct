@@ -609,3 +609,46 @@ model spatial_ref_sys {
 
   @@schema("postgis")
 }
+
+model rga {
+  index                                    BigInt  @id
+  code_geographique                        String
+  libelle_geographique                     String
+  epci                                     String
+  libelle_epci                             String
+  departement                              String
+  libelle_departement                      String
+  region                                   Float
+  ept                                      String?
+  libelle_petr                             String?
+  code_pnr                                 String?
+  libelle_pnr                              String?
+  nb_logement                              Int
+  nb_logement_alea_moyen_fort              Int
+  nb_logement_alea_faible                  Int
+  nb_logement_sans_alea                    Int
+  nb_logement_alea_moyen_fort_avant_1920   Int
+  nb_logement_alea_moyen_fort_1920_1945    Int
+  nb_logement_alea_moyen_fort_1945_1975    Int
+  nb_logement_alea_moyen_fort_apres_1975   Int
+  nb_logement_alea_faible_avant_1920       Int
+  nb_logement_alea_faible_1920_1945        Int
+  nb_logement_alea_faible_1945_1975        Int
+  nb_logement_alea_faible_apres_1975       Int
+  surface_commune                          Float
+  surface_alea_faible_commune              Float
+  surface_alea_moyen_fort_commune          Float
+  part_logement_alea_moyen_fort_avant_1920 Float
+  part_logement_alea_moyen_fort_1920_1945  Float
+  part_logement_alea_moyen_fort_1945_1975  Float
+  part_logement_alea_moyen_fort_apres_1975 Float
+  part_logement_alea_faible_avant_1920     Float
+  part_logement_alea_faible_1920_1945      Float
+  part_logement_alea_faible_1945_1975      Float
+  part_logement_alea_faible_apres_1975     Float
+  part_alea_faible_commune                 Float
+  part_alea_moyen_fort_commune             Float
+
+  @@index([index], map: "ix_rga_index")
+  @@schema("databases")
+}
