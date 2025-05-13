@@ -95,6 +95,8 @@ const config = {
             : 'http://localhost:3000'
     },
     pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+    // Enable the React DevTools profiler
+    profiler: true,
     async headers() {
         return [
             {
