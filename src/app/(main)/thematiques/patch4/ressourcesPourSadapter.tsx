@@ -37,7 +37,6 @@ const RessourcesPourSadapter = ({ patch4 }: { patch4: Patch4 }) => {
   const niveauxMarins = AlgoPatch4(patch4, 'niveaux_marins');
   const feuxForet = AlgoPatch4(patch4, 'feux_foret');
   const fortesChaleurs = AlgoPatch4(patch4, 'fortes_chaleurs');
-
   return (
     <>
       <h2>
