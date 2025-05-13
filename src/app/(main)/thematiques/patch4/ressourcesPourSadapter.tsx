@@ -40,7 +40,12 @@ const RessourcesPourSadapter = ({ patch4 }: { patch4: Patch4 }) => {
 
   return (
     <>
-      <h2>Ressources pour s'adapter</h2>
+      <h2>
+        Certains aléas climatiques présentent une intensité forte ou très forte 
+        sur votre territoire. Pour vous aider à anticiper leurs effets et mieux 
+        vous adapter, voici des ressources concrètes sélectionnées en 
+        fonction de votre situation.
+      </h2>
       <div className="flex flex-wrap gap-3 mb-8">
         {
           !!precipitation && (precipitation === "Intensité très forte" || precipitation === "Intensité forte") &&
