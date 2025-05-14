@@ -39,13 +39,21 @@ const RessourcesPourSadapter = ({ patch4 }: { patch4: Patch4 }) => {
   const fortesChaleurs = AlgoPatch4(patch4, 'fortes_chaleurs');
   return (
     <>
-      <h2>
+      <h2 style={{ fontSize: '1rem', lineHeight: '1.5rem', fontWeight: 'bold', color: "#161616" }}>
         Certains aléas climatiques présentent une intensité forte ou très forte 
         sur votre territoire. Pour vous aider à anticiper leurs effets et mieux 
         vous adapter, voici des ressources concrètes sélectionnées en 
         fonction de votre situation.
       </h2>
       <div className="flex flex-wrap gap-3 mb-8">
+        {
+          !!fortesChaleurs && (fortesChaleurs === "Intensité très forte" || fortesChaleurs === "Intensité forte") &&
+          <Tile
+            title="Canicule : à quoi s’attendre et comment s’adapter ?"
+            link="https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/canicule#toc-agir"
+            image={Canicule}
+          />
+        }
         {
           !!precipitation && (precipitation === "Intensité très forte" || precipitation === "Intensité forte") &&
           <Tile
@@ -55,19 +63,11 @@ const RessourcesPourSadapter = ({ patch4 }: { patch4: Patch4 }) => {
           />
         }
         {
-          !!fortesChaleurs && (fortesChaleurs === "Intensité très forte" || fortesChaleurs === "Intensité forte") &&
+          !!secheresse && (secheresse === "Intensité très forte" || secheresse === "Intensité forte") &&
           <Tile
-            title="Canicule : à quoi s’attendre et comment s’adapter ?"
-            link="https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/canicule#toc-agirhttps://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/canicule#toc-agir"
-            image={Canicule}
-          />
-        }
-        {
-          !!niveauxMarins && (niveauxMarins === "Intensité très forte" || niveauxMarins === "Intensité forte") &&
-          <Tile
-            title="Érosion du littoral : à quoi s’attendre et comment s’adapter ?"
-            link="https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/erosion-du-littoral#toc-agir"
-            image={ErosionLittoral}
+            title="Retrait gonflement des argiles : à quoi s’attendre et comment s’adapter ?"
+            link="https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/retrait-gonflement-des-argiles#toc-agir"
+            image={RGA}
           />
         }
         {
@@ -79,11 +79,11 @@ const RessourcesPourSadapter = ({ patch4 }: { patch4: Patch4 }) => {
           />
         }
         {
-          !!secheresse && (secheresse === "Intensité très forte" || secheresse === "Intensité forte") &&
+          !!niveauxMarins && (niveauxMarins === "Intensité très forte" || niveauxMarins === "Intensité forte") &&
           <Tile
-            title="Retrait gonflement des argiles : à quoi s’attendre et comment s’adapter ?"
-            link="https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/retrait-gonflement-des-argiles#toc-agir"
-            image={RGA}
+            title="Érosion du littoral : à quoi s’attendre et comment s’adapter ?"
+            link="https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/erosion-du-littoral#toc-agir"
+            image={ErosionLittoral}
           />
         }
       </div>
