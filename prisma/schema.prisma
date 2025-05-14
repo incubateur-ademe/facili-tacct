@@ -350,7 +350,7 @@ model inconfort_thermique {
 model patch4c {
   index                 BigInt @id
   code_geographique     String
-  niveaux_marins        Float
+  niveaux_marins        Float?
   feux_foret            Float
   secheresse_sols       Float
   fortes_precipitations Float
