@@ -2,6 +2,7 @@
 
 import ressourcesIcon from '@/assets/icons/ressources_icon_blue.svg';
 import { DarkClass } from '@/lib/utils/DarkClass';
+import { eptRegex } from '@/lib/utils/regex';
 import Header from '@codegouvfr/react-dsfr/Header';
 import { Button } from '@mui/material';
 import Image from 'next/image';
@@ -27,13 +28,13 @@ const Localisation = (props: { libelle: string; code?: string }) => {
         style={{ borderRadius: '25px' }}
       />
       <p>
-        {code ? (
-          <>
-            {ReplaceDisplayEpci(libelle)} - {code}
-          </>
-        ) : (
-          libelle
-        )}
+        {eptRegex.test(libelle) ? libelle
+          : code ? (
+            <>
+              {ReplaceDisplayEpci(libelle)} - {code}
+            </>
+          ) : libelle
+        }
       </p>
     </div>
   );

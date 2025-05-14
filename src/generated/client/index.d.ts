@@ -15890,7 +15890,7 @@ export namespace Prisma {
   export type Patch4cGroupByOutputType = {
     index: bigint
     code_geographique: string
-    niveaux_marins: number
+    niveaux_marins: number | null
     feux_foret: number
     secheresse_sols: number
     fortes_precipitations: number
@@ -15964,7 +15964,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       index: bigint
       code_geographique: string
-      niveaux_marins: number
+      niveaux_marins: number | null
       feux_foret: number
       secheresse_sols: number
       fortes_precipitations: number
@@ -33748,7 +33748,7 @@ export namespace Prisma {
     NOT?: patch4cWhereInput | patch4cWhereInput[]
     index?: BigIntFilter<"patch4c"> | bigint | number
     code_geographique?: StringFilter<"patch4c"> | string
-    niveaux_marins?: FloatFilter<"patch4c"> | number
+    niveaux_marins?: FloatNullableFilter<"patch4c"> | number | null
     feux_foret?: FloatFilter<"patch4c"> | number
     secheresse_sols?: FloatFilter<"patch4c"> | number
     fortes_precipitations?: FloatFilter<"patch4c"> | number
@@ -33758,7 +33758,7 @@ export namespace Prisma {
   export type patch4cOrderByWithRelationInput = {
     index?: SortOrder
     code_geographique?: SortOrder
-    niveaux_marins?: SortOrder
+    niveaux_marins?: SortOrderInput | SortOrder
     feux_foret?: SortOrder
     secheresse_sols?: SortOrder
     fortes_precipitations?: SortOrder
@@ -33771,7 +33771,7 @@ export namespace Prisma {
     OR?: patch4cWhereInput[]
     NOT?: patch4cWhereInput | patch4cWhereInput[]
     code_geographique?: StringFilter<"patch4c"> | string
-    niveaux_marins?: FloatFilter<"patch4c"> | number
+    niveaux_marins?: FloatNullableFilter<"patch4c"> | number | null
     feux_foret?: FloatFilter<"patch4c"> | number
     secheresse_sols?: FloatFilter<"patch4c"> | number
     fortes_precipitations?: FloatFilter<"patch4c"> | number
@@ -33781,7 +33781,7 @@ export namespace Prisma {
   export type patch4cOrderByWithAggregationInput = {
     index?: SortOrder
     code_geographique?: SortOrder
-    niveaux_marins?: SortOrder
+    niveaux_marins?: SortOrderInput | SortOrder
     feux_foret?: SortOrder
     secheresse_sols?: SortOrder
     fortes_precipitations?: SortOrder
@@ -33799,7 +33799,7 @@ export namespace Prisma {
     NOT?: patch4cScalarWhereWithAggregatesInput | patch4cScalarWhereWithAggregatesInput[]
     index?: BigIntWithAggregatesFilter<"patch4c"> | bigint | number
     code_geographique?: StringWithAggregatesFilter<"patch4c"> | string
-    niveaux_marins?: FloatWithAggregatesFilter<"patch4c"> | number
+    niveaux_marins?: FloatNullableWithAggregatesFilter<"patch4c"> | number | null
     feux_foret?: FloatWithAggregatesFilter<"patch4c"> | number
     secheresse_sols?: FloatWithAggregatesFilter<"patch4c"> | number
     fortes_precipitations?: FloatWithAggregatesFilter<"patch4c"> | number
@@ -37199,7 +37199,7 @@ export namespace Prisma {
   export type patch4cCreateInput = {
     index: bigint | number
     code_geographique: string
-    niveaux_marins: number
+    niveaux_marins?: number | null
     feux_foret: number
     secheresse_sols: number
     fortes_precipitations: number
@@ -37209,7 +37209,7 @@ export namespace Prisma {
   export type patch4cUncheckedCreateInput = {
     index: bigint | number
     code_geographique: string
-    niveaux_marins: number
+    niveaux_marins?: number | null
     feux_foret: number
     secheresse_sols: number
     fortes_precipitations: number
@@ -37219,7 +37219,7 @@ export namespace Prisma {
   export type patch4cUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
-    niveaux_marins?: FloatFieldUpdateOperationsInput | number
+    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
     feux_foret?: FloatFieldUpdateOperationsInput | number
     secheresse_sols?: FloatFieldUpdateOperationsInput | number
     fortes_precipitations?: FloatFieldUpdateOperationsInput | number
@@ -37229,7 +37229,7 @@ export namespace Prisma {
   export type patch4cUncheckedUpdateInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
-    niveaux_marins?: FloatFieldUpdateOperationsInput | number
+    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
     feux_foret?: FloatFieldUpdateOperationsInput | number
     secheresse_sols?: FloatFieldUpdateOperationsInput | number
     fortes_precipitations?: FloatFieldUpdateOperationsInput | number
@@ -37239,7 +37239,7 @@ export namespace Prisma {
   export type patch4cCreateManyInput = {
     index: bigint | number
     code_geographique: string
-    niveaux_marins: number
+    niveaux_marins?: number | null
     feux_foret: number
     secheresse_sols: number
     fortes_precipitations: number
@@ -37249,7 +37249,7 @@ export namespace Prisma {
   export type patch4cUpdateManyMutationInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
-    niveaux_marins?: FloatFieldUpdateOperationsInput | number
+    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
     feux_foret?: FloatFieldUpdateOperationsInput | number
     secheresse_sols?: FloatFieldUpdateOperationsInput | number
     fortes_precipitations?: FloatFieldUpdateOperationsInput | number
@@ -37259,7 +37259,7 @@ export namespace Prisma {
   export type patch4cUncheckedUpdateManyInput = {
     index?: BigIntFieldUpdateOperationsInput | bigint | number
     code_geographique?: StringFieldUpdateOperationsInput | string
-    niveaux_marins?: FloatFieldUpdateOperationsInput | number
+    niveaux_marins?: NullableFloatFieldUpdateOperationsInput | number | null
     feux_foret?: FloatFieldUpdateOperationsInput | number
     secheresse_sols?: FloatFieldUpdateOperationsInput | number
     fortes_precipitations?: FloatFieldUpdateOperationsInput | number
