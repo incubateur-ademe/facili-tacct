@@ -39,12 +39,12 @@ const RessourcesPourSadapter = ({ patch4 }: { patch4: Patch4 }) => {
   const fortesChaleurs = AlgoPatch4(patch4, 'fortes_chaleurs');
   return (
     <>
-      <h2 style={{ fontSize: '1rem', lineHeight: '1.5rem', fontWeight: 'bold', color: "#161616" }}>
+      <h3 style={{ fontSize: '1rem', lineHeight: '1.5rem', fontWeight: 'bold', color: "#161616" }}>
         Certains aléas climatiques présentent une intensité forte ou très forte 
         sur votre territoire. Pour vous aider à anticiper leurs effets et mieux 
         vous adapter, voici des ressources concrètes sélectionnées en 
         fonction de votre situation.
-      </h2>
+      </h3>
       <div className="flex flex-wrap gap-3 mb-8">
         {
           !!fortesChaleurs && (fortesChaleurs === "Intensité très forte" || fortesChaleurs === "Intensité forte") &&
