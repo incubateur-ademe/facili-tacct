@@ -52,7 +52,7 @@ export const ExplicationIndices = ({ patch4 }: { patch4: Patch4 }) => {
           données météorologiques : température, humidité de l'air, vitesse du vent et précipitations.
         </p>
       </div>
-      {patch4.niveaux_marins === 0 ? null : (
+      {patch4.niveaux_marins === null ? null : (
         <div className={styles.indiceExplication}>
           <Image src={niveauxMarinsIcon} alt="" />
           <p>

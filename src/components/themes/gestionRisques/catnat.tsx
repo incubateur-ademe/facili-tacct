@@ -57,6 +57,7 @@ export const Catnat = (props: {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const dataByCodeGeographique = CountOccByIndex<GenericObject>(
     gestionRisques,
     'code_geographique',
@@ -116,8 +117,8 @@ export const Catnat = (props: {
 
   useEffect(() => {
     void (async () => {
-      if (type === 'commune' || type === 'epci') {
-        const temp = await GetPatch4(code, type);
+      if (type === 'commune' || type === 'epci' || type === 'ept') {
+        const temp = await GetPatch4(code, type, libelle);
         setPatch4(temp);
       }
       setIsLoadingPatch4(false);
