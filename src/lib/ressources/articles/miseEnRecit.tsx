@@ -6,6 +6,11 @@ import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import styles from './article.module.scss';
 
+export const articleMetadata = {
+  title: 'Mettre en récit mon territoire pour engager',
+  description: 'Découvrez comment mettre en récit votre territoire pour engager les acteurs locaux dans l’adaptation au changement climatique.'
+};
+
 const MiseEnRecit = () => {
   return (
     <div>
