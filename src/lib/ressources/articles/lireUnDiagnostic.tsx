@@ -2,9 +2,15 @@ import BookIcon from "@/assets/icons/book_icon_black.svg";
 import ForwardArrow from "@/assets/icons/keyboard_arrow_next_icon_black.svg";
 import LightbulbIcon from "@/assets/icons/lightbulb_icon_black.svg";
 import AtelierImg from "@/assets/images/article1.png";
+import { Metadata } from "next";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import styles from "./article.module.scss";
+
+export const metadata: Metadata = {
+  title: 'Lire un diagnostic de vulnérabilité',
+  description: 'Comment lire un diagnostic de vulnérabilité du territoire aux impacts du changement climatique en 10 minutes ?',
+};
 
 const LireUnDiagnostic = () => {
 
