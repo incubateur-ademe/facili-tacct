@@ -1,6 +1,6 @@
 'use client';
 import feuxForetIcon from '@/assets/icons/feu_foret_icon_black.svg';
-import GraphNotFound from '@/assets/images/zero_data_found.svg';
+import GraphNotFound from '@/assets/images/zero_data_found.png';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';

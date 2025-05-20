@@ -32,13 +32,11 @@ export const GetAgriculture = async (
   const dbQuery = (async () => {
     try {
       if (type === 'ept' || type === 'petr') {
-        console.time('Query Execution Time AGRICULTURE');
         const value = await PrismaPostgres.agriculture.findMany({
           where: {
             [column]: libelle
           }
         });
-        console.timeEnd('Query Execution Time AGRICULTURE');
         return value;
       } else if (type === 'commune') {
         const commune = await PrismaPostgres.collectivites_searchbar.findFirst({
@@ -51,16 +49,13 @@ export const GetAgriculture = async (
             epci: commune?.epci ?? ''
           }
         });
-        console.timeEnd('Query Execution Time CONSOMMATION NAF');
         return value;
       } else {
-        console.time('Query Execution Time AGRICULTURE');
         const value = await PrismaPostgres.agriculture.findMany({
           where: {
             [column]: code
           }
         });
-        console.timeEnd('Query Execution Time AGRICULTURE');
         return value;
       }
     } catch (error) {
