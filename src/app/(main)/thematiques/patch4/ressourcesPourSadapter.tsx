@@ -40,10 +40,9 @@ const RessourcesPourSadapter = ({ patch4 }: { patch4: Patch4 }) => {
   return (
     <>
       <h3 style={{ fontSize: '1rem', lineHeight: '1.5rem', fontWeight: 'bold', color: "#161616" }}>
-        Certains aléas climatiques présentent une intensité forte ou très forte 
-        sur votre territoire. Pour vous aider à anticiper leurs effets et mieux 
-        vous adapter, voici des ressources concrètes sélectionnées en 
-        fonction de votre situation.
+        Sur votre territoire, certains aléas climatiques présentent une intensité forte ou très forte. 
+        Il est impératif de prendre en compte leurs effets dès aujourd’hui. Pour vous aider, 
+        le centre de ressources pour l’adaptation au changement climatique vous propose des pistes d’action.
       </h3>
       <div className="flex flex-wrap gap-3 mb-8">
         {
