@@ -122,6 +122,7 @@ export type CommunesIndicateursDto = {
     naf?: number;
     surfacesIrriguees?: number;
     incendiesForet?: number | null;
+    rga?: number;
   };
   geometry: {
     coordinates: number[][][][];
@@ -201,5 +202,17 @@ export type EtatCoursDeauDto = {
   properties: {
     etateco: string | null;
     name: string;
+  };
+};
+
+export type RGADto = {
+  type: string;
+  properties: {
+    code_geographique: string;
+    alea: string;
+  };
+  geometry: {
+    coordinates: number[][][][];
+    type: string;
   };
 };

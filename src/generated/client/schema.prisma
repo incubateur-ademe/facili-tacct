@@ -90,6 +90,9 @@ model arretes_catnat {
   @@index([code_geographique], map: "arretes_catnat_communes_index")
   @@index([epci], map: "arretes_catnat_epci_index")
   @@index([index], map: "ix_arretes_catnat_index")
+  @@index([departement], map: "arretes_catnat_departement_index")
+  @@index([libelle_petr], map: "arretes_catnat_petr_index")
+  @@index([code_pnr], map: "arretes_catnat_pnr_index")
   @@schema("databases")
 }
 
@@ -651,4 +654,16 @@ model rga {
 
   @@index([index], map: "ix_rga_index")
   @@schema("databases")
+}
+
+model postgis_rga {
+  pk                Int                     @id @default(autoincrement())
+  alea              String                  @db.VarChar
+  code_geographique String                  @db.VarChar
+  geometry          Unsupported("geometry")
+
+  @@index([geometry], map: "rga_geometry_geom_idx", type: Gist)
+  @@index([code_geographique], map: "rga_postgis_index")
+  @@map("rga")
+  @@schema("postgis")
 }
