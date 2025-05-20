@@ -15,41 +15,25 @@ export const GetCollectivite = async (
   );
   const dbQuery = (async () => {
     try {
-      console.time(`Query Execution Time ${typeTerritoire} ${collectivite}`);
       if (typeTerritoire === 'pnr') {
         const variableCollectivite = '%' + collectivite + '%';
         const value = await PNR(variableCollectivite);
-        console.timeEnd(
-          `Query Execution Time ${typeTerritoire} ${collectivite}`
-        );
         return value;
       } else if (typeTerritoire === 'petr') {
         const variableCollectivite = '%' + collectivite + '%';
         const value = await PETR(variableCollectivite);
-        console.timeEnd(
-          `Query Execution Time ${typeTerritoire} ${collectivite}`
-        );
         return value;
       } else if (typeTerritoire === 'epci') {
         const variableCollectivite = '%' + collectivite + '%';
         const value = await EPCI(variableCollectivite);
-        console.timeEnd(
-          `Query Execution Time ${typeTerritoire} ${collectivite}`
-        );
         return value;
       } else if (typeTerritoire === 'commune') {
         const variableCollectivite = collectivite + '%';
         const value = await Commune(variableCollectivite);
-        console.timeEnd(
-          `Query Execution Time ${typeTerritoire} ${collectivite}`
-        );
         return value;
       } else if (typeTerritoire === 'departement') {
         const variableCollectivite = collectivite + '%';
         const value = await Departement(variableCollectivite);
-        console.timeEnd(
-          `Query Execution Time ${typeTerritoire} ${collectivite}`
-        );
         return value;
       } else {
         return [

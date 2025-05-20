@@ -1,7 +1,7 @@
 'use client';
 
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import ZeroData from '@/assets/images/zero_data_found.svg';
+import ZeroData from '@/assets/images/zero_data_found.png';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import styles from '@/components/themes/gestionRisques/gestionRisques.module.scss';
 import { travailExtDto } from '@/lib/dto';
