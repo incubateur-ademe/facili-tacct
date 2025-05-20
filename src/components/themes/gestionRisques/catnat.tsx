@@ -2,7 +2,7 @@
 
 import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
-import DataNotFound from '@/assets/images/zero_data_found.svg';
+import DataNotFound from '@/assets/images/zero_data_found.png';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
