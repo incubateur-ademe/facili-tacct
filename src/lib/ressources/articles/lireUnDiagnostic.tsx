@@ -4,6 +4,7 @@ import LightbulbIcon from "@/assets/icons/lightbulb_icon_black.svg";
 import AtelierImg from "@/assets/images/article1.png";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
+import EndPageTrigger from "../../../hooks/EndPageTrigger";
 import styles from "./article.module.scss";
 
 export const articleMetadata = {
@@ -184,8 +185,10 @@ const LireUnDiagnostic = () => {
             {/* <Image src={LinkIcon as StaticImageData} alt="" /> */}
           </div>
         </div>
+        
         <div className="finArticle"/>
       </div>
+      <EndPageTrigger />
     </div>
   );
 };

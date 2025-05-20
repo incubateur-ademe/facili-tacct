@@ -5,7 +5,7 @@ import RessourcesCards from './cards';
 
 export const metadata: Metadata = {
   title: 'Ressources',
-  description: 'Ressources'
+  description: 'Catalogue de ressources Facili-TACCT à destination des collectivités',
 };
 
 const Ressources = () => {
