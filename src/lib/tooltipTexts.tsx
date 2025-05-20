@@ -191,7 +191,7 @@ export const catnatTooltipText = (
       comme risques naturels d’origine climatique : les avalanches, les
       phénomènes atmosphériques tels que les vents cycloniques, les tempêtes
       (exclues à partir de 1989), la grêle et la neige (exclues à partir de
-      2010), les inondations (coulée de boue, lave torrentielle inondations par remontée de
+      2010), les inondations (coulée de boue, lave torrentielle, inondations par remontée de
       nappe, et inondations par choc mécanique des vagues), les mouvements de
       terrain (regroupant les chocs mécaniques liés à l’action des vagues,
       l’éboulement rocheux, la chute de blocs, l’effondrement de terrain,

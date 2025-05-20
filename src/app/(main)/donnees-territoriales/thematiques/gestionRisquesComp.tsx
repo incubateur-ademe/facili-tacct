@@ -8,7 +8,8 @@ import {
   ArreteCatNat,
   CarteCommunes,
   ErosionCotiere,
-  IncendiesForet
+  IncendiesForet,
+  RGACarte
 } from '@/lib/postgres/models';
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
@@ -29,6 +30,7 @@ interface Props {
   carteCommunes: CarteCommunes[];
   erosionCotiere: ErosionCotiere[];
   incendiesForet: IncendiesForet[];
+  rgaCarte: RGACarte[];
 }
 
 const allComps = [
@@ -63,7 +65,16 @@ const allComps = [
     Component: ({ incendiesForet }: Props & { activeDataTab: string }) => (
       <FeuxForet incendiesForet={incendiesForet} />
     )
-  }
+  },
+  // {
+  //   titre: "RGA",
+  //   Component: ({ rgaCarte, carteCommunes }: Props & { activeDataTab: string }) => (
+  //     <RGA
+  //       rgaCarte={rgaCarte}
+  //       carteCommunes={carteCommunes}
+  //     />
+  //   )
+  // }
 ];
 
 const GestionRisquesComp = ({
@@ -71,7 +82,8 @@ const GestionRisquesComp = ({
   gestionRisques,
   carteCommunes,
   erosionCotiere,
-  incendiesForet
+  incendiesForet,
+  rgaCarte
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState(
     'Arrêtés catastrophes naturelles'
@@ -120,6 +132,10 @@ const GestionRisquesComp = ({
             tabId: 'Feux de forêt',
             label: 'Feux de forêt'
           },
+          // {
+          //   tabId: "RGA",
+          //   label: "RGA"
+          // },
           ...(erosionCotiere.length > 0
             ? [
                 {
@@ -183,6 +199,7 @@ const GestionRisquesComp = ({
                       carteCommunes={carteCommunes}
                       erosionCotiere={erosionCotiere}
                       incendiesForet={incendiesForet}
+                      rgaCarte={rgaCarte}
                     />
                   </Suspense>
                 );

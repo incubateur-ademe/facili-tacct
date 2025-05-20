@@ -478,6 +478,13 @@ export type IncendiesForet = {
   autres_surfaces: number | null;
 };
 
+export type RGACarte = {
+  pk: number;
+  alea: string;
+  code_geographique: string;
+  geometry: string;
+}
+
 export type Patch4 = {
   index: bigint;
   code_geographique: string;
