@@ -23,7 +23,6 @@ export const SurfacesIrriguees = ({
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
-  const libelle = searchParams.get('libelle')!;
   const carteCommunesEnriched = carteCommunes.map((el) => {
     return {
       ...el,
