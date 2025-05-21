@@ -2,6 +2,7 @@ import BookIcon from '@/assets/icons/book_icon_black.svg';
 import ForwardArrow from '@/assets/icons/keyboard_arrow_next_icon_black.svg';
 import ArticleImage2 from '@/assets/images/article13.png';
 import ArticleImage from '@/assets/images/article4.png';
+import EndPageTrigger from '@/hooks/EndPageTrigger';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './article.module.scss';
@@ -285,6 +286,7 @@ const PourquoiMobiliser = () => {
           d’adaptation au changement climatique de leur collectivité.
         </p>
       </div>
+      <EndPageTrigger />
     </div>
   );
 };
