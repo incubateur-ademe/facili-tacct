@@ -20,7 +20,7 @@ model north_star_metric {
 }
 
 model agriculture {
-  index                BigInt  @id(map: "agriculture_cleaned_pkey")
+  index                BigInt  @id
   code_geographique    String
   libelle_geographique String
   epci                 String
@@ -33,10 +33,10 @@ model agriculture {
   code_pnr             String?
   libelle_pnr          String?
   part_irr_SAU_2020    Float?
+  part_over_55         Float?
 
-  @@index([code_geographique], map: "agriculture_cleaned_communes_index")
-  @@index([epci], map: "agriculture_cleaned_epci_index")
-  @@index([index], map: "ix_agriculture_cleaned_index")
+  @@index([code_geographique], map: "agriculture_communes_index")
+  @@index([index], map: "ix_agriculture_index")
   @@schema("databases")
 }
 
@@ -103,12 +103,12 @@ model collectivites_searchbar {
   epci                 String?
   libelle_epci         String?
   departement          String?
+  libelle_pnr          String?
   libelle_departement  String?
   region               String?
   ept                  String?
   libelle_petr         String?
   code_pnr             String?
-  libelle_pnr          String?
   search_code          String?
   search_libelle       String
 
@@ -284,7 +284,7 @@ model inconfort_thermique {
   libelle_epci             String
   departement              String
   libelle_departement      String
-  region                   BigInt
+  region                   Int
   ept                      String?
   libelle_petr             String?
   code_pnr                 String?
@@ -294,32 +294,32 @@ model inconfort_thermique {
   age_bati_46_90           Float?
   age_bati_19_45           Float?
   age_bati_pre_19          Float?
-  under_4_sum_1968         Float?
-  to_80_sum_1968           Float?  @map("4_to_80_sum_1968")
-  over_80_sum_1968         Float?
-  under_4_sum_1975         Float?
-  to_80_sum_1975           Float?  @map("4_to_80_sum_1975")
-  over_80_sum_1975         Float?
-  under_4_sum_1982         Float?
-  to_80_sum_1982           Float?  @map("4_to_80_sum_1982")
-  over_80_sum_1982         Float?
-  under_4_sum_1990         Float?
-  to_80_sum_1990           Float?  @map("4_to_80_sum_1990")
-  over_80_sum_1990         Float?
-  under_4_sum_1999         Float?
-  to_80_sum_1999           Float?  @map("4_to_80_sum_1999")
-  over_80_sum_1999         Float?
-  under_4_sum_2009         Float?
-  to_80_sum_2009           Float?  @map("4_to_80_sum_2009")
-  over_80_sum_2009         Float?
-  under_4_sum_2014         Float?
-  to_80_sum_2014           Float?  @map("4_to_80_sum_2014")
-  over_80_sum_2014         Float?
-  under_4_sum_2020         Float?
-  to_80_sum_2020           Float?  @map("4_to_80_sum_2020")
-  over_80_sum_2020         Float?
-  P20_POP80P               Float?
-  P20_POP80P_PSEUL         Float?
+  under_4_sum_1968         String?
+  to_80_sum_1968           String? @map("4_to_80_sum_1968")
+  over_80_sum_1968         String?
+  under_4_sum_1975         String?
+  to_80_sum_1975           String? @map("4_to_80_sum_1975")
+  over_80_sum_1975         String?
+  under_4_sum_1982         String?
+  to_80_sum_1982           String? @map("4_to_80_sum_1982")
+  over_80_sum_1982         String?
+  under_4_sum_1990         String?
+  to_80_sum_1990           String? @map("4_to_80_sum_1990")
+  over_80_sum_1990         String?
+  under_4_sum_1999         String?
+  to_80_sum_1999           String? @map("4_to_80_sum_1999")
+  over_80_sum_1999         String?
+  under_4_sum_2009         String?
+  to_80_sum_2009           String? @map("4_to_80_sum_2009")
+  over_80_sum_2009         String?
+  under_4_sum_2014         String?
+  to_80_sum_2014           String? @map("4_to_80_sum_2014")
+  over_80_sum_2014         String?
+  under_4_sum_2020         String?
+  to_80_sum_2020           String? @map("4_to_80_sum_2020")
+  over_80_sum_2020         String?
+  P20_POP80P               String?
+  P20_POP80P_PSEUL         String?
   P20_POP80P_PSEUL_PERCENT Float?
   tee_log                  Float?
   tee_mob                  Float?
@@ -365,7 +365,7 @@ model patch4c {
 }
 
 model ressources_eau {
-  index                BigInt  @id(map: "ressources_eau_new_pkey")
+  index                BigInt  @id
   code_geographique    String
   LIBELLE_SOUS_CHAMP   String
   A2020                Float
@@ -393,30 +393,30 @@ model ressources_eau {
   code_pnr             String?
   libelle_pnr          String?
 
-  @@index([index], map: "ix_ressources_eau_new_index")
-  @@index([code_geographique], map: "ressources_eau_new_communes_index")
-  @@index([departement], map: "ressources_eau_new_departement_index")
-  @@index([epci], map: "ressources_eau_new_epci_index")
-  @@index([libelle_petr], map: "ressources_eau_new_petr_index")
-  @@index([code_pnr], map: "ressources_eau_new_pnr_index")
+  @@index([index], map: "ix_ressources_eau_index")
+  @@index([code_geographique], map: "ressources_eau_communes_index")
+  @@index([departement], map: "ressources_eau_departement_index")
+  @@index([epci], map: "ressources_eau_epci_index")
+  @@index([libelle_petr], map: "ressources_eau_petr_index")
+  @@index([code_pnr], map: "ressources_eau_pnr_index")
   @@schema("databases")
 }
 
 model clc_territoires {
-  pk                   Int                     @id @default(autoincrement())
-  code_geographique    String                  @db.VarChar
-  libelle_geographique String                  @db.VarChar
-  epci                 String                  @db.VarChar
-  libelle_epci         String                  @db.VarChar
-  departement          String                  @db.VarChar
-  libelle_departement  String                  @db.VarChar
-  region               Int
-  ept                  String?                 @db.VarChar
-  libelle_petr         String?                 @db.VarChar
-  code_pnr             String?                 @db.VarChar
-  libelle_pnr          String?                 @db.VarChar
-  legend               String                  @db.VarChar
-  geometry             Unsupported("geometry")
+  pk                   Int                      @id @default(autoincrement())
+  code_geographique    String?                  @db.VarChar
+  libelle_geographique String?                  @db.VarChar
+  epci                 String?                  @db.VarChar
+  libelle_epci         String?                  @db.VarChar
+  departement          String?                  @db.VarChar
+  libelle_departement  String?                  @db.VarChar
+  region               Int?
+  ept                  String?                  @db.VarChar
+  libelle_petr         String?                  @db.VarChar
+  code_pnr             String?                  @db.VarChar
+  libelle_pnr          String?                  @db.VarChar
+  legend               String?                  @db.VarChar
+  geometry             Unsupported("geometry")?
 
   @@index([geometry], map: "clc_territoires_geometry_geom_idx", type: Gist)
   @@index([code_geographique], map: "clc_territoires_communes_index")
@@ -429,50 +429,46 @@ model clc_territoires {
 }
 
 model communes_drom {
-  pk                   Int                     @id @default(autoincrement())
-  code_geographique    String                  @db.VarChar
-  libelle_geographique String                  @db.VarChar
-  epci                 String                  @db.VarChar
-  libelle_epci         String                  @db.VarChar
-  departement          String                  @db.VarChar
-  region               BigInt
-  ept                  String?                 @db.VarChar
-  libelle_petr         String?                 @db.VarChar
-  code_pnr             String?                 @db.VarChar
-  libelle_pnr          String?                 @db.VarChar
-  coordinates          String                  @db.VarChar
+  pk                   Int                      @id @default(autoincrement())
+  code_geographique    String?                  @db.VarChar
+  libelle_geographique String?                  @db.VarChar
+  epci                 String?                  @db.VarChar
+  libelle_epci         String?                  @db.VarChar
+  departement          String?                  @db.VarChar
+  libelle_departement  String?                  @db.VarChar
+  region               BigInt?
+  ept                  String?                  @db.VarChar
+  libelle_petr         String?                  @db.VarChar
+  code_pnr             String?                  @db.VarChar
+  libelle_pnr          String?                  @db.VarChar
+  coordinates          String?                  @db.VarChar
   densite_bati         Float?
   precarite_logement   Float?
   surface              Float?
-  geometry             Unsupported("geometry")
+  geometry             Unsupported("geometry")?
 
   @@index([geometry], map: "communes_drom_geometry_geom_idx", type: Gist)
-  @@index([code_geographique], map: "communes_drom_communes_index")
-  @@index([departement], map: "communes_drom_departement_index")
-  @@index([epci], map: "communes_drom_epci_index")
-  @@index([libelle_petr], map: "communes_drom_petr_index")
-  @@index([code_pnr], map: "communes_drom_pnr_index")
   @@schema("postgis")
 }
 
 model erosion_cotiere {
-  pk         Int                     @id @default(autoincrement())
-  taux       Float
-  duree      Float
-  tdc_ancien BigInt
-  tdc_rec    BigInt
-  geometry   Unsupported("geometry")
+  pk         Int                      @id @default(autoincrement())
+  taux       Float?
+  duree      Float?
+  tdc_ancien BigInt?
+  tdc_rec    BigInt?
+  geometry   Unsupported("geometry")?
 
   @@index([geometry], map: "erosion_cotiere_geometry_geom_idx", type: Gist)
   @@schema("postgis")
 }
 
 model etat_cours_d_eau {
-  pk       Int                     @id @default(autoincrement())
-  name     String                  @db.VarChar
-  longueur Float
-  etateco  String?                 @db.VarChar
-  geometry Unsupported("geometry")
+  pk       Int                      @id @default(autoincrement())
+  name     String?                  @db.VarChar
+  longueur Float?
+  etateco  String?                  @db.VarChar
+  geometry Unsupported("geometry")?
 
   @@index([geometry], map: "etat_cours_d_eau_geometry_geom_idx", type: Gist)
   @@schema("postgis")
@@ -501,116 +497,15 @@ model qualite_sites_baignade {
 }
 
 model users {
-  pk              Int       @id @default(autoincrement())
-  email           String    @unique(map: "email") @db.VarChar(256)
-  username        String    @unique(map: "username") @db.VarChar(256)
+  pk              Int       @id
+  email           String    @db.VarChar(256)
+  username        String    @db.VarChar(256)
   password        String    @db.VarChar(256)
   created_at      DateTime  @db.Timestamp(6)
-  last_connection DateTime? @db.Timestamptz(6)
+  last_connection DateTime? @db.Timestamp(6)
   role            String    @db.VarChar(8)
 
   @@schema("ressources")
-}
-
-model biodiversite {
-  index                BigInt  @id
-  code_geographique    String?
-  type_touristique     String?
-  libelle_geographique String?
-  epci                 String?
-  libelle_epci         String?
-  departement          String?
-  region               Float?
-
-  @@index([index], map: "ix_biodiversite_index")
-  @@schema("databases")
-}
-
-model gestion_risques {
-  index                BigInt @id
-  code_geographique    String
-  lib_risque_jo        String
-  dat_pub_arrete       String
-  libelle_geographique String
-  epci                 String
-  libelle_epci         String
-  departement          String
-  region               Float
-
-  @@index([code_geographique], map: "gestion_risques_communes_index")
-  @@index([epci], map: "gestion_risques_epci_index")
-  @@index([index], map: "ix_gestion_risques_index")
-  @@schema("databases")
-}
-
-model incendies_foret {
-  index                                 BigInt  @id
-  code_geographique                     String
-  libelle_geographique                  String
-  epci                                  String
-  libelle_epci                          String
-  departement                           String
-  region                                Float
-  nature                                String?
-  annee                                 Int
-  surface_parcourue                     Float
-  surface_foret                         Float?
-  surface_maquis_garrigues              Float?
-  autres_surfaces_naturelles_hors_foret Float?
-  surfaces_agricoles                    Float?
-  surfaces_non_boisees                  Float?
-  surfaces_non_boisees_artificialisees  Float?
-  surfaces_non_boisees_naturelles       Float?
-  surface_autres_terres_boisees         Float?
-  autres_surfaces                       Float?
-
-  @@index([code_geographique], map: "incendies_foret_communes_index")
-  @@index([epci], map: "incendies_foret_epci_index")
-  @@index([index], map: "ix_incendies_foret_index")
-  @@schema("databases")
-}
-
-model surfaces_protegees {
-  index                BigInt  @id
-  code_geographique    String
-  PNC                  String?
-  RAMSAR               String?
-  PNR                  String?
-  PNP                  String?
-  FOR_PRO              String?
-  ZZZ                  String?
-  ZNIEFF2              String?
-  ZNIEFF1              String?
-  RNR                  String?
-  TOU_PRO              String?
-  NATURA               String?
-  ZPS                  String?
-  SIC                  String?
-  CELRL                String?
-  BIO                  String?
-  APB                  String?
-  RN                   String?
-  RBFD                 String?
-  RNCFS                String?
-  libelle_geographique String
-  epci                 String
-  libelle_epci         String
-  departement          String
-  region               Float
-
-  @@index([index], map: "ix_surfaces_protegees_index")
-  @@schema("databases")
-}
-
-/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
-model spatial_ref_sys {
-  srid      Int     @id
-  auth_name String? @db.VarChar(256)
-  auth_srid Int?
-  srtext    String? @db.VarChar(2048)
-  proj4text String? @db.VarChar(2048)
-
-  @@schema("postgis")
 }
 
 model rga {
@@ -654,16 +549,4 @@ model rga {
 
   @@index([index], map: "ix_rga_index")
   @@schema("databases")
-}
-
-model postgis_rga {
-  pk                Int                     @id @default(autoincrement())
-  alea              String                  @db.VarChar
-  code_geographique String                  @db.VarChar
-  geometry          Unsupported("geometry")
-
-  @@index([geometry], map: "rga_geometry_geom_idx", type: Gist)
-  @@index([code_geographique], map: "rga_postgis_index")
-  @@map("rga")
-  @@schema("postgis")
 }
