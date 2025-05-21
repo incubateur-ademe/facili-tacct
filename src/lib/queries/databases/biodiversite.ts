@@ -123,7 +123,7 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 3000)
+    }, 1500)
   );
   const dbQuery = (async () => {
     try {
