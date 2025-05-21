@@ -1,106 +1,171 @@
-import { Button } from '@mui/material';
-import classNames from 'classnames';
+"use client";
 
-export type LinkObject = { label: string; href: string; external?: boolean };
+import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
+import Image from "next/image";
 
-type FooterProps = {
-  id?: string;
-  /** Liste de logos à afficher à gauche du footer.
-   * Utiliser de préférence des composants renvoyant un svg. */
-  logos?: React.ReactNode[];
-  /** Contenu principal, sous forme de chaine de caractères ou de noeud React. */
-  content: React.ReactNode;
-  /** Liste de liens affichés sous le contenu principal. */
-  contentLinks?: LinkObject[];
-  /** Contenu de la partie inférieure, sous forme de chaine de caractères ou de noeud React. */
-  bottomContent?: React.ReactNode;
-  /** Liste de liens affichés dans la partie inférieure du footer. */
-  bottomLinks?: LinkObject[];
-  /** Surcharge des classNames. */
-  className?: string;
-};
-
-/**
- * Composant Footer générique
- */
-
-export const Footer = ({
-  id,
-  logos,
-  content,
-  contentLinks,
-  bottomContent,
-  bottomLinks,
-  className,
-}: FooterProps) => {
+export default function AppFooter() {
   return (
-    <footer
-      id={id}
-      className={classNames('w-full border-t-2 border-t-primary-8', className)}
-    >
-      {/* Partie suppérieure du footer */}
-      <div className="w-full mx-auto px-4 lg:px-6 xl:max-w-7xl 2xl:max-w-8xl xl:px-2 py-8 flex max-md:flex-wrap justify-between md:gap-x-16 lg:gap-x-32 gap-y-6 md:flex-row">
-        {/* Logos */}
-        {!!logos && (
-          <div className="flex h-28 gap-x-1">
-            {logos.map((logo, i) => (
-              <div key={i} className="h-full">
-                {logo}
+    <footer className="fr-footer !mt-0 !pt-0" role="contentinfo" id="footer">
+      <hr className="pb-6" />
+      <div className="fr-container">
+        <div className="fr-footer__body">
+          <div className="fr-footer__brand fr-enlarge-link">
+            {/* Logos/Images */}
+            <a
+              className="fr-footer__brand-link flex flex-row flex-wrap items-center gap-8"
+              href="/"
+              title="Retour à l’accueil du site - Facili-TACCT - République Française"
+            >
+              <div className="fr-logo !text-[1rem]">
+                République
+                <br />
+                Française
               </div>
-            ))}
+              <Image
+                className="fr-footer__logo"
+                height={200}
+                width={80}
+                src={"/logo-ademe.png"}
+                alt={"ADEME logo"}
+              />
+              <Image
+                className="fr-footer__logo max-w-[8rem]"
+                height={200}
+                width={95}
+                src={"/logo-meteo-france.jpg"}
+                alt={"Logo Météo France"}
+              />
+            </a>
           </div>
-        )}
-
-        {/* Contenu principal */}
-        <div>
-          {/* Description */}
-          <p className="text-sm leading-6 text-grey-9">{content}</p>
-
-          {/* Liste de liens */}
-          {!!contentLinks && (
-            <ul className="!list-none flex flex-wrap gap-4 divide-x divide-grey-4 mb-0">
-              {contentLinks.map((link) => (
-                <li key={link.label} className="pl-4 first-of-type:pl-0 pb-0">
-                  <Button
-
-                  >
-                    {link.label}
-                  </Button>
-                </li>
-              ))}
+          <div className="fr-footer__content">
+            {/* Description */}
+            <p className="fr-footer__content-desc">
+              Facili-TACCT est un service porté par l’Agence de la transition écologique
+              (ADEME), en partenariat avec Météo France.
+              <br></br>
+              Notre mission : Accompagner les territoires pour une meilleure appropriation
+              de leur vulnérabilité aux impacts du changement climatique.
+              Facili-TACCT met à disposition les données climatiques du patch 4°C,
+              mesure 23 du plan national d’adaptation au changement climatique (PNACC 3).
+            </p>
+            {/* Liste de liens */}
+            <ul className="fr-footer__content-list">
+              <li className="fr-footer__content-item">
+                <a
+                  className="fr-footer__content-link"
+                  target="_blank"
+                  rel="noopener external"
+                  title="Agir pour la transition - nouvelle fenêtre"
+                  href="https://agirpourlatransition.ademe.fr"
+                >
+                  agirpourlatransition.ademe.fr
+                </a>
+              </li>
+              <li className="fr-footer__content-item">
+                <a
+                  className="fr-footer__content-link"
+                  target="_blank"
+                  rel="noopener external"
+                  title="Data Gouv - nouvelle fenêtre"
+                  href="https://data.gouv.fr"
+                >
+                  data.gouv.fr
+                </a>
+              </li>
+              <li className="fr-footer__content-item">
+                <a
+                  className="fr-footer__content-link"
+                  target="_blank"
+                  rel="noopener external"
+                  title="ADEME - nouvelle fenêtre"
+                  href="https://www.ademe.fr"
+                >
+                  ademe.fr
+                </a>
+              </li>
+              <li className="fr-footer__content-item">
+                <a
+                  className="fr-footer__content-link"
+                  target="_blank"
+                  rel="noopener external"
+                  title="Beta Gouv - nouvelle fenêtre"
+                  href="https://beta.gouv.fr"
+                >
+                  beta.gouv.fr
+                </a>
+              </li>
             </ul>
-          )}
+          </div>
+        </div>
+        <div className="fr-footer__bottom">
+          <ul className="fr-footer__bottom-list">
+            <li className="fr-footer__bottom-item">
+              <a className="fr-footer__bottom-link" href="https://tally.so/r/mJGELz" rel="noopener external" target="_blank">
+                Contactez-nous
+              </a>
+            </li>
+            <li className="fr-footer__bottom-item">
+              <a className="fr-footer__bottom-link" href="/accessibilite">
+                Accessibilité : non conforme
+              </a>
+            </li>
+            <li className="fr-footer__bottom-item">
+              <a className="fr-footer__bottom-link" href="/mentions-legales">
+                Mentions légales
+              </a>
+            </li>
+            <li className="fr-footer__bottom-item">
+              <a className="fr-footer__bottom-link" href="/politique-de-confidentialite">
+                Politique de confidentialité
+              </a>
+            </li>
+            <li className="fr-footer__bottom-item">
+              <a className="fr-footer__bottom-link" href="/politique-des-cookies">
+                Politique des cookies
+              </a>
+            </li>
+            {/* <li className="fr-footer__bottom-item">
+              <a className="fr-footer__bottom-link" href="/stats" target="_self">
+                Statistiques
+              </a>
+            </li> */}
+            <li className="fr-footer__bottom-item">
+              <button {...headerFooterDisplayItem.buttonProps}
+                className="fr-footer__bottom-link"
+                id='fr-theme-modal-control-button'
+                aria-controls='fr-theme-modal'
+                data-fr-opened={false}
+              >
+                <span
+                  className={headerFooterDisplayItem.iconId}
+                  style={{ marginRight: '0.5rem' }}
+                  aria-hidden="true"
+                />
+                <style jsx>{`
+                  .${headerFooterDisplayItem.iconId}::before {
+                  width: 1rem;
+                  }
+                `}</style>
+                {headerFooterDisplayItem.text}
+              </button>
+            </li>
+          </ul>
+          <div className="fr-footer__bottom-copy">
+            <p>
+              Sauf mention explicite de propriété intellectuelle détenue par des tiers, les contenus de ce site sont
+              proposés sous{" "}
+              <a
+                href="https://github.com/etalab/licence-ouverte/blob/master/LO.md"
+                rel="noopener external"
+                title="Voir la licence Etalab 2.0 - nouvelle fenêtre"
+                target="_blank"
+              >
+                licence etalab-2.0
+              </a>
+            </p>
+          </div>
         </div>
       </div>
-
-      {/* Partie inférieure du footer */}
-      {(!!bottomLinks || !!bottomContent) && (
-        <div className="w-full border-t border-t-primary-4">
-          <div className="w-full mx-auto px-4 lg:px-6 xl:max-w-7xl 2xl:max-w-8xl xl:px-2 py-6">
-            {/* Liste de liens */}
-            {!!bottomLinks && (
-              <ul className="!list-none flex flex-wrap gap-2 divide-x divide-grey-4">
-                {bottomLinks.map((link) => (
-                  <li key={link.label} className="pl-2 first-of-type:pl-0 pb-0">
-                    <Button
-                      className="!text-grey-8 border-b-transparent hover:border-b-grey-8 hover:!border-b !font-normal"
-                    >
-                      {link.label}
-                    </Button>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            {/* Description */}
-            {!!bottomContent && (
-              <div className="text-xs leading-5 text-grey-8">
-                {bottomContent}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </footer>
   );
-};
+}

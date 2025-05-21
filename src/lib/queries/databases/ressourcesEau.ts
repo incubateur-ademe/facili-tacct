@@ -3,9 +3,7 @@
 import { QualiteSitesBaignade, RessourcesEau } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
-import { PrismaClient as PostgresClient } from '../../../generated/client';
-
-const PrismaPostgres = new PostgresClient();
+import { PrismaPostgres } from '../db';
 
 export const GetRessourceEau = async (
   code: string,
@@ -15,7 +13,7 @@ export const GetRessourceEau = async (
   //race Promise pour éviter un crash de la requête lorsqu'elle est trop longue
   const timeoutPromise = new Promise<[]>(resolve => setTimeout(() => {
     resolve([]);
-  }, 6000));
+  }, 5000));
   const dbQuery = (async () => {
     try {
       if (type === 'commune') {

@@ -31,15 +31,12 @@ const AgricultureBiologique = (props: {
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
 
-  //sum all saue values
   const nombreExploitations = agricultureBio.reduce((acc, obj) => {
     if (obj.VARIABLE === 'saue') {
       return acc + obj.nombre_2022!;
     }
     return acc;
   }, 0);
-
-  //sum surface_2022 values
   const surfaceAgriBio = agricultureBio.reduce((acc, obj) => {
     if (obj.LIBELLE_SOUS_CHAMP === 'Surface totale') {
       return acc + obj.surface_2022!;
@@ -47,17 +44,10 @@ const AgricultureBiologique = (props: {
     return acc;
   }, 0);
 
-  // const nombreExploitations = agricultureBio.find(
-  //   (obj) => obj.VARIABLE === 'saue'
-  // )?.nombre_2022!;
-  // const surfaceAgriBio = agricultureBio.find(
-  //   (obj) => obj.LIBELLE_SOUS_CHAMP === 'Surface totale'
-  // )?.surface_2022!;
-
   useEffect(() => {
     void (async () => {
-      if (type === 'commune' || type === 'epci') {
-        const temp = await GetPatch4(code, type);
+      if (type === 'commune' || type === 'epci' || type === 'ept') {
+        const temp = await GetPatch4(code, type, libelle);
         setPatch4(temp);
       }
       setIsLoadingPatch4(false);

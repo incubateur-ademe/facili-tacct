@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.7.0
- * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
+ * Prisma Client JS version: 6.8.2
+ * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
  */
 Prisma.prismaVersion = {
-  client: "6.7.0",
-  engine: "3cff47a7f5d65c3ea74883f1d736e41d68ce91ed"
+  client: "6.8.2",
+  engine: "2060c79ba17c6bb9f5823312b6f6b7f4a845738e"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -614,6 +614,52 @@ exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
   proj4text: 'proj4text'
 };
 
+exports.Prisma.RgaScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  nb_logement: 'nb_logement',
+  nb_logement_alea_moyen_fort: 'nb_logement_alea_moyen_fort',
+  nb_logement_alea_faible: 'nb_logement_alea_faible',
+  nb_logement_sans_alea: 'nb_logement_sans_alea',
+  nb_logement_alea_moyen_fort_avant_1920: 'nb_logement_alea_moyen_fort_avant_1920',
+  nb_logement_alea_moyen_fort_1920_1945: 'nb_logement_alea_moyen_fort_1920_1945',
+  nb_logement_alea_moyen_fort_1945_1975: 'nb_logement_alea_moyen_fort_1945_1975',
+  nb_logement_alea_moyen_fort_apres_1975: 'nb_logement_alea_moyen_fort_apres_1975',
+  nb_logement_alea_faible_avant_1920: 'nb_logement_alea_faible_avant_1920',
+  nb_logement_alea_faible_1920_1945: 'nb_logement_alea_faible_1920_1945',
+  nb_logement_alea_faible_1945_1975: 'nb_logement_alea_faible_1945_1975',
+  nb_logement_alea_faible_apres_1975: 'nb_logement_alea_faible_apres_1975',
+  surface_commune: 'surface_commune',
+  surface_alea_faible_commune: 'surface_alea_faible_commune',
+  surface_alea_moyen_fort_commune: 'surface_alea_moyen_fort_commune',
+  part_logement_alea_moyen_fort_avant_1920: 'part_logement_alea_moyen_fort_avant_1920',
+  part_logement_alea_moyen_fort_1920_1945: 'part_logement_alea_moyen_fort_1920_1945',
+  part_logement_alea_moyen_fort_1945_1975: 'part_logement_alea_moyen_fort_1945_1975',
+  part_logement_alea_moyen_fort_apres_1975: 'part_logement_alea_moyen_fort_apres_1975',
+  part_logement_alea_faible_avant_1920: 'part_logement_alea_faible_avant_1920',
+  part_logement_alea_faible_1920_1945: 'part_logement_alea_faible_1920_1945',
+  part_logement_alea_faible_1945_1975: 'part_logement_alea_faible_1945_1975',
+  part_logement_alea_faible_apres_1975: 'part_logement_alea_faible_apres_1975',
+  part_alea_faible_commune: 'part_alea_faible_commune',
+  part_alea_moyen_fort_commune: 'part_alea_moyen_fort_commune'
+};
+
+exports.Prisma.Postgis_rgaScalarFieldEnum = {
+  pk: 'pk',
+  alea: 'alea',
+  code_geographique: 'code_geographique'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -652,7 +698,9 @@ exports.Prisma.ModelName = {
   gestion_risques: 'gestion_risques',
   incendies_foret: 'incendies_foret',
   surfaces_protegees: 'surfaces_protegees',
-  spatial_ref_sys: 'spatial_ref_sys'
+  spatial_ref_sys: 'spatial_ref_sys',
+  rga: 'rga',
+  postgis_rga: 'postgis_rga'
 };
 
 /**

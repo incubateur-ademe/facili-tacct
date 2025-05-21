@@ -2,9 +2,7 @@
 import { Agriculture } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
-import { PrismaClient as PostgresClient } from '../../../generated/client';
-
-const PrismaPostgres = new PostgresClient();
+import { PrismaPostgres } from '../db';
 
 export const GetAgriculture = async (
   code: string,
@@ -29,13 +27,11 @@ export const GetAgriculture = async (
   const dbQuery = (async () => {
     try {
       if (type === 'ept' || type === 'petr') {
-        console.time('Query Execution Time AGRICULTURE');
         const value = await PrismaPostgres.agriculture.findMany({
           where: {
             [column]: libelle
           }
         });
-        console.timeEnd('Query Execution Time AGRICULTURE');
         return value;
       } else if (type === 'commune') {
         const commune = await PrismaPostgres.collectivites_searchbar.findFirst({
@@ -48,16 +44,13 @@ export const GetAgriculture = async (
             epci: commune?.epci ?? ''
           }
         });
-        console.timeEnd('Query Execution Time CONSOMMATION NAF');
         return value;
       } else {
-        console.time('Query Execution Time AGRICULTURE');
         const value = await PrismaPostgres.agriculture.findMany({
           where: {
             [column]: code
           }
         });
-        console.timeEnd('Query Execution Time AGRICULTURE');
         return value;
       }
     } catch (error) {

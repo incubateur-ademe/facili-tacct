@@ -38,9 +38,7 @@ export const TravailExterieur = (props: {
   const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
-
   const travailExterieurMapped = inconfortThermique.map(travailExtMapper);
-
   const travailExterieurTerritoire =
     type === 'commune'
       ? travailExterieurMapped.filter((e) => e.code_geographique === code)
@@ -105,7 +103,7 @@ export const TravailExterieur = (props: {
       )
     }
   ];
-
+  const sumAllCount = graphData.reduce((sum, item) => sum + (item.count || 0), 0);
   const travailExt =
     Number(
       ((100 * sums.sumConstruction) / Sum(Object.values(sums))).toFixed(1)
@@ -114,8 +112,8 @@ export const TravailExterieur = (props: {
 
   useEffect(() => {
     void (async () => {
-      if (type === 'commune' || type === 'epci') {
-        const temp = await GetPatch4(code, type);
+      if (type === 'commune' || type === 'epci' || type === 'ept') {
+        const temp = await GetPatch4(code, type, libelle);
         setPatch4(temp);
       }
       setIsLoadingPatch4(false);
@@ -131,7 +129,7 @@ export const TravailExterieur = (props: {
       {
         !isLoadingPatch4 ? (
           <div className={styles.container}>
-            <div className="w-2/5">
+            <div className={sumAllCount > 0 ? "w-2/5" : "w-1/2"}>
               <div className={styles.explicationWrapper}>
                 {
                   sums.sumConstruction || sums.sumAgriculture ?
@@ -156,14 +154,18 @@ export const TravailExterieur = (props: {
               </div>
               <TravailExterieurText />
             </div>
-            <div className="w-3/5">
+            <div className={sumAllCount > 0 ? "w-3/5" : "w-1/2"}>
               <div className={styles.graphWrapper}>
                 <p style={{ padding: '1em', margin: '0' }}>
                   <b>
                     Part des emplois par grands secteurs d’activité
                   </b>
                 </p>
-                {graphData ? <PieChart1 graphData={graphData} /> : <Loader />}
+                {graphData ? 
+                  <PieChart1 
+                    graphData={graphData}
+                    travailExterieurTerritoire={travailExterieurTerritoire}
+                  /> : <Loader />}
                 <p style={{ padding: '1em', margin: '0' }}>
                   Source : INSEE, Emplois au lieu de travail par sexe, secteur
                   d'activité économique et catégorie socioprofessionnelle, 2021

@@ -36,7 +36,7 @@ export const ConsommationEspacesNAF = (props: {
 
   return (
     <div className={styles.container}>
-      <div className="w-2/5">
+      <div className={carteCommunes.length !== 0 ? "w-2/5" : "w-1/2"}>
         <div className={styles.explicationWrapper}>
           {
             sumNaf && sumNaf !== 0 ? (
@@ -51,7 +51,7 @@ export const ConsommationEspacesNAF = (props: {
         </div>
         <ConsommationEspacesNAFBiodiversiteText />
       </div>
-      <div className="w-3/5">
+      <div className={carteCommunes.length !== 0 ? "w-3/5" : "w-1/2"}>
         <ConsommationEspacesNAFDataviz
           carteCommunes={communesMap}
         />

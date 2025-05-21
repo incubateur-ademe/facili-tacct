@@ -9,7 +9,7 @@ import { Box, Container, Grid, GridCol } from "../dsfr/server";
 const errors = {
   "404": {
     title: "Page non trouvée",
-    headline: "La page que vous cherchez est introuvable. Excusez-nous pour la gène occasionnée.",
+    headline: "La page que vous cherchez est introuvable. Veuillez nous excuser pour la gêne occasionnée.",
     body: (
       <>
         Si vous avez tapé l'adresse web dans le navigateur, vérifiez qu'elle est correcte. La page n’est peut-être plus

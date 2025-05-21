@@ -2,9 +2,7 @@
 import { AgricultureBio, AOT40, ConsommationNAF } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
-import { PrismaClient as PostgresClient } from '../../../generated/client';
-
-const PrismaPostgres = new PostgresClient();
+import { PrismaPostgres } from '../db';
 
 export const GetAgricultureBio = async (
   libelle: string,
@@ -30,7 +28,6 @@ export const GetAgricultureBio = async (
       if (type === 'pnr') {
         return [];
       } else {
-        console.time('Query Execution Time AGRICULTURE BIO');
         const territoire =
           await PrismaPostgres.collectivites_searchbar.findMany({
             select: {
@@ -55,7 +52,6 @@ export const GetAgricultureBio = async (
             }
           }
         });
-        console.timeEnd('Query Execution Time AGRICULTURE BIO');
         return value;
       }
     } catch (error) {
@@ -80,14 +76,12 @@ export const GetConsommationNAF = async (
   );
   const dbQuery = (async () => {
     try {
-      console.time('Query Execution Time CONSOMMATION NAF');
       if (type === 'petr' || eptRegex.test(libelle)) {
         const value = await PrismaPostgres.consommation_espaces_naf.findMany({
           where: {
             [type === 'petr' ? 'libelle_petr' : 'ept']: libelle
           }
         });
-        console.timeEnd('Query Execution Time CONSOMMATION NAF');
         return value;
       } else if (type === 'commune') {
         const commune = await PrismaPostgres.collectivites_searchbar.findFirst({
@@ -100,7 +94,6 @@ export const GetConsommationNAF = async (
             epci: commune?.epci ?? ''
           }
         });
-        console.timeEnd('Query Execution Time CONSOMMATION NAF');
         return value;
       } else {
         const value = await PrismaPostgres.consommation_espaces_naf.findMany({
@@ -114,7 +107,6 @@ export const GetConsommationNAF = async (
                   : '']: code
           }
         });
-        console.timeEnd('Query Execution Time CONSOMMATION NAF');
         return value;
       }
     } catch (error) {
@@ -131,13 +123,11 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 3000)
+    }, 1500)
   );
   const dbQuery = (async () => {
     try {
-      console.time('Query Execution Time AOT40');
       const value = await PrismaPostgres.aot_40.findMany();
-      console.timeEnd('Query Execution Time AOT40');
       return value;
     } catch (error) {
       console.error(error);

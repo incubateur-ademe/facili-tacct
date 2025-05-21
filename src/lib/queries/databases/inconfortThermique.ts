@@ -2,9 +2,7 @@
 
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
-import { PrismaClient as PostgresClient } from '../../../generated/client';
-
-const PrismaPostgres = new PostgresClient();
+import { PrismaPostgres } from '../db';
 
 export const GetInconfortThermique = async (
   code: string | undefined,
@@ -19,7 +17,6 @@ export const GetInconfortThermique = async (
   );
   const dbQuery = (async () => {
     try {
-      console.time('Query Execution Time INCONFORT THERMIQUE');
       if (type === 'ept' && eptRegex.test(libelle)) {
         //pour les ept
         const value = await PrismaPostgres.inconfort_thermique.findMany({
@@ -27,7 +24,6 @@ export const GetInconfortThermique = async (
             epci: '200054781'
           }
         });
-        console.timeEnd('Query Execution Time INCONFORT THERMIQUE');
         return value;
       } else if (type === 'commune') {
         const commune = await PrismaPostgres.inconfort_thermique.findFirst({
@@ -41,7 +37,6 @@ export const GetInconfortThermique = async (
           },
           take: 200
         });
-        console.timeEnd('Query Execution Time INCONFORT THERMIQUE');
         return value;
       } else if (type === 'petr') {
         const value = await PrismaPostgres.inconfort_thermique.findMany({
@@ -50,7 +45,6 @@ export const GetInconfortThermique = async (
           },
           take: 1000
         });
-        console.timeEnd('Query Execution Time INCONFORT THERMIQUE');
         return value;
       } else if (type === 'pnr') {
         const value = await PrismaPostgres.inconfort_thermique.findMany({
@@ -59,7 +53,6 @@ export const GetInconfortThermique = async (
           },
           take: 1000
         });
-        console.timeEnd('Query Execution Time INCONFORT THERMIQUE');
         return value;
       } else if (type === 'departement') {
         const value = await PrismaPostgres.inconfort_thermique.findMany({
@@ -68,7 +61,6 @@ export const GetInconfortThermique = async (
           },
           take: 1000
         });
-        console.timeEnd('Query Execution Time INCONFORT THERMIQUE');
         return value;
       } else if (type === 'epci') {
         const departement = await PrismaPostgres.inconfort_thermique.findFirst({
@@ -82,7 +74,6 @@ export const GetInconfortThermique = async (
           },
           take: 750
         });
-        console.timeEnd('Query Execution Time INCONFORT THERMIQUE');
         return value;
       } else return [];
     } catch (error) {

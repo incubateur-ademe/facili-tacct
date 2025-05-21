@@ -2,7 +2,7 @@
 
 import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
-import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import DataNotFound from '@/assets/images/zero_data_found.png';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
@@ -57,6 +57,7 @@ export const Catnat = (props: {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const dataByCodeGeographique = CountOccByIndex<GenericObject>(
     gestionRisques,
     'code_geographique',
@@ -116,8 +117,8 @@ export const Catnat = (props: {
 
   useEffect(() => {
     void (async () => {
-      if (type === 'commune' || type === 'epci') {
-        const temp = await GetPatch4(code, type);
+      if (type === 'commune' || type === 'epci' || type === 'ept') {
+        const temp = await GetPatch4(code, type, libelle);
         setPatch4(temp);
       }
       setIsLoadingPatch4(false);
@@ -136,7 +137,7 @@ export const Catnat = (props: {
           <>
 
             <div className={styles.container}>
-              <div className="w-1/3">
+              <div className={gestionRisques.length !== 0 ? "w-1/3" : "w-1/2"}>
                 <div className={styles.explicationWrapper}>
                   {gestionRisques.length !== 0 ? (
                     <>
@@ -178,7 +179,7 @@ export const Catnat = (props: {
                 </div>
                 <CatNatText />
               </div>
-              <div className="w-2/3">
+              <div className={gestionRisques.length !== 0 ? "w-2/3" : "w-1/2"}>
                 {
                   gestionRisques.length !== 0 ?
                     <CatnatDataViz
