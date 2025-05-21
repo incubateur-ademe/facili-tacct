@@ -8,7 +8,7 @@ const EndPageTrigger = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.innerHeight + window.scrollY;
-      const threshold = document.body.offsetHeight - 500;
+      const threshold = (3/4) * document.body.offsetHeight;
       setShowEnd(scrollPosition >= threshold);
     };
     window.addEventListener('scroll', handleScroll);

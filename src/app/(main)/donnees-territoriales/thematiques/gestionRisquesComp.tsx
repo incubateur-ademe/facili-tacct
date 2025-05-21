@@ -9,7 +9,6 @@ import {
   CarteCommunes,
   ErosionCotiere,
   IncendiesForet,
-  RGACarte
 } from '@/lib/postgres/models';
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
@@ -30,7 +29,6 @@ interface Props {
   carteCommunes: CarteCommunes[];
   erosionCotiere: ErosionCotiere[];
   incendiesForet: IncendiesForet[];
-  rgaCarte: RGACarte[];
 }
 
 const allComps = [
@@ -83,7 +81,6 @@ const GestionRisquesComp = ({
   carteCommunes,
   erosionCotiere,
   incendiesForet,
-  rgaCarte
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState(
     'Arrêtés catastrophes naturelles'
@@ -199,7 +196,6 @@ const GestionRisquesComp = ({
                       carteCommunes={carteCommunes}
                       erosionCotiere={erosionCotiere}
                       incendiesForet={incendiesForet}
-                      rgaCarte={rgaCarte}
                     />
                   </Suspense>
                 );
