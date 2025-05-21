@@ -9,9 +9,7 @@ const EndPageTrigger = () => {
     const handleScroll = () => {
       const scrollPosition = window.innerHeight + window.scrollY;
       const threshold = document.body.offsetHeight - 500;
-      if (scrollPosition >= threshold) {
-        setShowEnd(true);
-      }
+      setShowEnd(scrollPosition >= threshold);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
