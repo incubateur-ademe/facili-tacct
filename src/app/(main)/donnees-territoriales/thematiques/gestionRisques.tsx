@@ -6,7 +6,6 @@ import {
   GetCommunes,
   GetErosionCotiere
 } from '@/lib/queries/postgis/cartographie';
-import { GetRGACarte } from '@/lib/queries/postgis/rga';
 import { themes } from '@/lib/themes';
 import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
@@ -19,7 +18,6 @@ const GestionRisques = async (props: { searchParams: SearchParams }) => {
   const carteCommunes = await GetCommunes(code, libelle, type);
   const erosionCotiere = await GetErosionCotiere(code, libelle, type);
   const dbIncendiesForet = await GetIncendiesForet(code, libelle, type);
-  const rgaCarte = await GetRGACarte(code, libelle, type);
 
   return (
     <div className={styles.container}>
@@ -30,7 +28,6 @@ const GestionRisques = async (props: { searchParams: SearchParams }) => {
           carteCommunes={carteCommunes}
           erosionCotiere={erosionCotiere}
           incendiesForet={dbIncendiesForet}
-          rgaCarte={rgaCarte}
         />
       </Suspense>
     </div>

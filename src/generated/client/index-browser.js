@@ -139,7 +139,8 @@ exports.Prisma.AgricultureScalarFieldEnum = {
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
-  part_irr_SAU_2020: 'part_irr_SAU_2020'
+  part_irr_SAU_2020: 'part_irr_SAU_2020',
+  part_over_55: 'part_over_55'
 };
 
 exports.Prisma.Agriculture_bioScalarFieldEnum = {
@@ -191,12 +192,12 @@ exports.Prisma.Collectivites_searchbarScalarFieldEnum = {
   epci: 'epci',
   libelle_epci: 'libelle_epci',
   departement: 'departement',
+  libelle_pnr: 'libelle_pnr',
   libelle_departement: 'libelle_departement',
   region: 'region',
   ept: 'ept',
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
-  libelle_pnr: 'libelle_pnr',
   search_code: 'search_code',
   search_libelle: 'search_libelle'
 };
@@ -477,6 +478,7 @@ exports.Prisma.Communes_dromScalarFieldEnum = {
   epci: 'epci',
   libelle_epci: 'libelle_epci',
   departement: 'departement',
+  libelle_departement: 'libelle_departement',
   region: 'region',
   ept: 'ept',
   libelle_petr: 'libelle_petr',
@@ -532,88 +534,6 @@ exports.Prisma.UsersScalarFieldEnum = {
   role: 'role'
 };
 
-exports.Prisma.BiodiversiteScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  type_touristique: 'type_touristique',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  region: 'region'
-};
-
-exports.Prisma.Gestion_risquesScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  lib_risque_jo: 'lib_risque_jo',
-  dat_pub_arrete: 'dat_pub_arrete',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  region: 'region'
-};
-
-exports.Prisma.Incendies_foretScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  region: 'region',
-  nature: 'nature',
-  annee: 'annee',
-  surface_parcourue: 'surface_parcourue',
-  surface_foret: 'surface_foret',
-  surface_maquis_garrigues: 'surface_maquis_garrigues',
-  autres_surfaces_naturelles_hors_foret: 'autres_surfaces_naturelles_hors_foret',
-  surfaces_agricoles: 'surfaces_agricoles',
-  surfaces_non_boisees: 'surfaces_non_boisees',
-  surfaces_non_boisees_artificialisees: 'surfaces_non_boisees_artificialisees',
-  surfaces_non_boisees_naturelles: 'surfaces_non_boisees_naturelles',
-  surface_autres_terres_boisees: 'surface_autres_terres_boisees',
-  autres_surfaces: 'autres_surfaces'
-};
-
-exports.Prisma.Surfaces_protegeesScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  PNC: 'PNC',
-  RAMSAR: 'RAMSAR',
-  PNR: 'PNR',
-  PNP: 'PNP',
-  FOR_PRO: 'FOR_PRO',
-  ZZZ: 'ZZZ',
-  ZNIEFF2: 'ZNIEFF2',
-  ZNIEFF1: 'ZNIEFF1',
-  RNR: 'RNR',
-  TOU_PRO: 'TOU_PRO',
-  NATURA: 'NATURA',
-  ZPS: 'ZPS',
-  SIC: 'SIC',
-  CELRL: 'CELRL',
-  BIO: 'BIO',
-  APB: 'APB',
-  RN: 'RN',
-  RBFD: 'RBFD',
-  RNCFS: 'RNCFS',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  region: 'region'
-};
-
-exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
-  srid: 'srid',
-  auth_name: 'auth_name',
-  auth_srid: 'auth_srid',
-  srtext: 'srtext',
-  proj4text: 'proj4text'
-};
-
 exports.Prisma.RgaScalarFieldEnum = {
   index: 'index',
   code_geographique: 'code_geographique',
@@ -654,12 +574,6 @@ exports.Prisma.RgaScalarFieldEnum = {
   part_alea_moyen_fort_commune: 'part_alea_moyen_fort_commune'
 };
 
-exports.Prisma.Postgis_rgaScalarFieldEnum = {
-  pk: 'pk',
-  alea: 'alea',
-  code_geographique: 'code_geographique'
-};
-
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -694,13 +608,7 @@ exports.Prisma.ModelName = {
   etat_cours_d_eau: 'etat_cours_d_eau',
   qualite_sites_baignade: 'qualite_sites_baignade',
   users: 'users',
-  biodiversite: 'biodiversite',
-  gestion_risques: 'gestion_risques',
-  incendies_foret: 'incendies_foret',
-  surfaces_protegees: 'surfaces_protegees',
-  spatial_ref_sys: 'spatial_ref_sys',
-  rga: 'rga',
-  postgis_rga: 'postgis_rga'
+  rga: 'rga'
 };
 
 /**
