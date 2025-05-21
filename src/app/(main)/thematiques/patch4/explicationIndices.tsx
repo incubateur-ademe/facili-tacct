@@ -61,7 +61,6 @@ export const ExplicationIndices = ({ patch4 }: { patch4: Patch4 }) => {
           </p>
         </div>
       )}
-
     </div>
   )
 }

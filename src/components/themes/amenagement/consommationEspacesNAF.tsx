@@ -21,6 +21,7 @@ export const ConsommationEspacesNAF = (props: {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
@@ -31,8 +32,8 @@ export const ConsommationEspacesNAF = (props: {
 
   useEffect(() => {
     void (async () => {
-      if (type === 'commune' || type === 'epci') {
-        const temp = await GetPatch4(code, type);
+      if (type === 'commune' || type === 'epci' || type === 'ept') {
+        const temp = await GetPatch4(code, type, libelle);
         setPatch4(temp);
       }
       setIsLoadingPatch4(false);
@@ -51,7 +52,7 @@ export const ConsommationEspacesNAF = (props: {
       {
         !isLoadingPatch4 ?
           <div className={styles.container}>
-            <div className="w-2/5">
+            <div className={consommationNAF.length > 0 ? "w-2/5" : "w-1/2"}>
               <div className={styles.explicationWrapper}>
                 {
                   sumNaf && sumNaf !== 0 ? (
@@ -84,7 +85,7 @@ export const ConsommationEspacesNAF = (props: {
               </div>
               <ConsommationEspacesNAFAmenagementText />
             </div>
-            <div className="w-3/5">
+            <div className={consommationNAF.length > 0 ? "w-3/5" : "w-1/2"}>
               <ConsommationEspacesNAFDataviz
                 consommationNAF={consommationNAF}
               />
