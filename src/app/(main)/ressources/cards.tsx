@@ -52,7 +52,7 @@ const RessourcesCards = () => {
                 description={el.description}
                 tag={el.tag}
                 titre={el.titre}
-                link={el.link + '?title=' + el.titre}
+                link={el.link}
               />
             ) : null
           )}

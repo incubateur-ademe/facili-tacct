@@ -20,6 +20,7 @@ import styles from '../thematiques.module.scss';
 import { AccordionHeader } from './accordionHeader';
 import { ExplicationIndices } from './explicationIndices';
 import { tagIntensite } from './explicationIntensite';
+import RessourcesPourSadapter from './ressourcesPourSadapter';
 import { SubAccordionComp } from './subAccordion';
 
 const Accordion = styled((props: AccordionProps) => (
@@ -136,6 +137,7 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
         </div>
         <br></br><br></br>
         <ExplicationIndices patch4={patch4} />
+        <RessourcesPourSadapter patch4={patch4} />
       </AccordionDetails>
     </Accordion>
   );

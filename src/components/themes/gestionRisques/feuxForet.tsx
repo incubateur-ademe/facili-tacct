@@ -1,6 +1,6 @@
 'use client';
 import feuxForetIcon from '@/assets/icons/feu_foret_icon_black.svg';
-import GraphNotFound from '@/assets/images/no_data_on_territory.svg';
+import GraphNotFound from '@/assets/images/zero_data_found.png';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
@@ -22,6 +22,7 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
@@ -33,8 +34,8 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
 
   useEffect(() => {
     void (async () => {
-      if (type === 'commune' || type === 'epci') {
-        const temp = await GetPatch4(code, type);
+      if (type === 'commune' || type === 'epci' || type === 'ept') {
+        const temp = await GetPatch4(code, type, libelle);
         setPatch4(temp);
       }
       setIsLoadingPatch4(false);

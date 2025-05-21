@@ -25,7 +25,6 @@ export const ConsommationEspacesNAFDataviz = (props: {
       e.properties.code_geographique !== '13055' &&
       e.properties.code_geographique !== '69123'
   );
-
   const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
 
   return (
@@ -39,7 +38,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
       {
         carteCommunes.length !== 0 && enveloppe && carteCommunesFiltered !== null ? (
           <>
-            <MapEspacesNaf 
+            <MapEspacesNaf
               carteCommunesFiltered={carteCommunesFiltered}
               enveloppe={enveloppe}
             />

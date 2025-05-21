@@ -1,6 +1,6 @@
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
-export const DataNotFoundForGraph = ({ image }: { image: string }) => {
+const DataNotFoundForGraph = ({ image }: { image: string | StaticImageData }) => {
   return (
     <div
       style={{

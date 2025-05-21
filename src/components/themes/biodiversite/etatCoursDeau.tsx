@@ -43,14 +43,13 @@ const EtatQualiteCoursDeau = (props: {
   const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
-  const re = new RegExp('T([1-9]|1[0-2])\\b');
   const etatCoursDeauMap = etatCoursDeau.map(EtatCoursDeauMapper);
   const carteCommunesMap = carteCommunes.map(CommunesIndicateursMapper);
 
   useEffect(() => {
     void (async () => {
-      if (type === 'commune' || type === 'epci') {
-        const temp = await GetPatch4(code, type);
+      if (type === 'commune' || type === 'epci' || type === 'ept') {
+        const temp = await GetPatch4(code, type, libelle);
         setPatch4(temp);
       }
       setIsLoadingPatch4(false);
@@ -69,7 +68,7 @@ const EtatQualiteCoursDeau = (props: {
       {
         !isLoadingPatch4 ?
           <div className={styles.container}>
-            <div className="w-5/12">
+            <div className={(etatCoursDeau.length || qualiteEauxBaignade.length) ? "w-5/12" : "w-1/2"}>
               <div className={styles.explicationWrapper}>
                 <p>
                   La biodiversité en eau douce est particulièrement menacée. La
@@ -101,7 +100,7 @@ const EtatQualiteCoursDeau = (props: {
               </div>
               <EtatsCoursEauBiodiversiteText />
             </div>
-            <div className="w-7/12">
+            <div className={(etatCoursDeau.length || qualiteEauxBaignade.length) ? "w-7/12" : "w-1/2"}>
               <div className={styles.graphWrapper}>
                 <div
                   className={styles.biodiversiteGraphTitleWrapper}

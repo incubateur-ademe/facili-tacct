@@ -3,6 +3,7 @@ type SearchParams = Promise<{
   libelle: string;
   thematique: string;
   type: string;
+  title?: string;
 }>;
 
 // export type DataCommune = {

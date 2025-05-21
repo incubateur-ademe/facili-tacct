@@ -9,7 +9,8 @@ const PrismaPostgres = new PostgresClient();
 
 export const GetPatch4 = async (
   code: string,
-  type: string
+  type: string,
+  libelle?: string
 ): Promise<Patch4 | undefined> => {
   const timeoutPromise = new Promise<Patch4 | undefined>((resolve) =>
     setTimeout(() => {
@@ -38,6 +39,14 @@ export const GetPatch4 = async (
           });
           return value == null ? undefined : value;
         }
+      } else if (type === "ept") { 
+        const value =
+          await PrismaPostgres.patch4c.findFirst({
+            where: {
+              code_geographique: libelle
+            }
+          });
+        return value == null ? undefined : value;
       } else return undefined;
     } catch (error) {
       console.error(error);

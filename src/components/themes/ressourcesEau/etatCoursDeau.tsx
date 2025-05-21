@@ -39,8 +39,8 @@ const EtatQualiteCoursDeau = (props: {
 
   useEffect(() => {
     void (async () => {
-      if (type === 'commune' || type === 'epci') {
-        const temp = await GetPatch4(code, type);
+      if (type === 'commune' || type === 'epci' || type === 'ept') {
+        const temp = await GetPatch4(code, type, libelle);
         setPatch4(temp);
       }
       setIsLoadingPatch4(false);
@@ -59,7 +59,7 @@ const EtatQualiteCoursDeau = (props: {
       {
         !isLoadingPatch4 ?
           <div className={styles.container}>
-            <div className="w-5/12">
+            <div className={etatCoursDeau.length ? "w-5/12" : "w-1/2"}>
               <div className={styles.explicationWrapper}>
                 <p>
                   La carte ci-contre reflète l’état écologique des cours d’eau
@@ -95,7 +95,7 @@ const EtatQualiteCoursDeau = (props: {
               </div>
               <EtatCoursEauRessourcesEauText />
             </div>
-            <div className="w-7/12">
+            <div className={etatCoursDeau.length ? "w-7/12" : "w-1/2"}>
               <div className={styles.graphWrapper}>
                 <div
                   className={styles.ressourcesEauGraphTitleWrapper}

@@ -151,8 +151,8 @@ export const GrandAgeIsolement = (props: {
 
   useEffect(() => {
     void (async () => {
-      if (type === 'commune' || type === 'epci') {
-        const temp = await GetPatch4(code, type);
+      if (type === 'commune' || type === 'epci' || type === 'ept') {
+        const temp = await GetPatch4(code, type, libelle);
         setPatch4(temp);
       }
       setIsLoadingPatch4(false);
@@ -165,7 +165,7 @@ export const GrandAgeIsolement = (props: {
     <>
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
-          <div className="w-2/5">
+          <div className={!Object.values(yData).slice(0, -2).includes('NaN') ? 'w-2/5' : 'w-1/2'}>
             <div className={styles.explicationWrapper}>
               {
                 !Object.values(yData).slice(0, -2).includes('NaN') && (
@@ -209,7 +209,7 @@ export const GrandAgeIsolement = (props: {
             </div>
             <GrandAgeText />
           </div>
-          <div className="w-3/5">
+          <div className={!Object.values(yData).slice(0, -2).includes('NaN') ? 'w-3/5' : 'w-1/2'}>
             <div className={styles.graphWrapper}>
               <p style={{ padding: '1em', margin: '0' }}>
                 <b>

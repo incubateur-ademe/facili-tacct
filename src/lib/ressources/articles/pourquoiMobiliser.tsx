@@ -6,6 +6,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './article.module.scss';
 
+export const articleMetadata = {
+  title: 'Pourquoi mobiliser en interne et externe ?',
+  description: 'Comprendre l’importance de la mobilisation interne et externe pour la réussite des démarches d’adaptation.'
+};
+
 const PourquoiMobiliser = () => {
   return (
     <div>

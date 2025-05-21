@@ -143,8 +143,8 @@ const AOT40Dataviz = (props: {
 
   useEffect(() => {
     void (async () => {
-      if (type === 'commune' || type === 'epci') {
-        const temp = await GetPatch4(code, type);
+      if (type === 'commune' || type === 'epci' || type === 'ept') {
+        const temp = await GetPatch4(code, type, libelle);
         setPatch4(temp);
       }
       setIsLoadingPatch4(false);
@@ -160,7 +160,7 @@ const AOT40Dataviz = (props: {
       {
         !isLoadingPatch4 ?
           <div className={styles.container}>
-            <div className="w-5/12">
+            <div className={(aot40.length && carteCommunes.length) ? "w-5/12" : "w-1/2"}>
               <div className={styles.explicationWrapper}>
                 <p>
                   La pollution à l’ozone ne s'arrête pas aux frontières des
@@ -208,7 +208,7 @@ const AOT40Dataviz = (props: {
               </div>
               <AOT40Text />
             </div>
-            <div className="w-7/12">
+            <div className={aot40.length && carteCommunes.length ? "w-7/12" : "w-1/2"}>
               <div className={styles.graphWrapper}>
                 <div
                   className={styles.biodiversiteGraphTitleWrapper}

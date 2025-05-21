@@ -92,6 +92,9 @@ importers:
       leaflet:
         specifier: ^1.9.4
         version: 1.9.4
+      leaflet.vectorgrid:
+        specifier: ^1.3.0
+        version: 1.3.0(leaflet@1.9.4)
       next:
         specifier: 15.3.0
         version: 15.3.0(@babel/core@7.26.7)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.83.4)
@@ -3945,6 +3948,9 @@ packages:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
     engines: {node: '>=0.10.0'}
 
+  ieee754@1.2.1:
+    resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
+
   ignore@5.3.2:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
     engines: {node: '>= 4'}
@@ -4395,6 +4401,11 @@ packages:
     resolution: {integrity: sha512-vPTw/Bndq7eQHjLBVlWpnGeLa3t+3zGiuM7fJwCkiMFq+nmRuG3RI3f7f4N4TDX7T4NpbAXpR2+NTRSEGfCSeA==}
     peerDependencies:
       leaflet: ^1.3.1
+
+  leaflet.vectorgrid@1.3.0:
+    resolution: {integrity: sha512-kWmj1pKM+MVdo/7Mg5zsB3YrGZvo/uIuiANV9MvWUFOG+Y2xAJzrteDhoIcCgTjHSSRJ36xdeGdIQVhuWjnCZw==}
+    peerDependencies:
+      leaflet: ^1.0.2
 
   leaflet@1.9.4:
     resolution: {integrity: sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA==}
@@ -4916,6 +4927,10 @@ packages:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
 
+  pbf@3.3.0:
+    resolution: {integrity: sha512-XDF38WCH3z5OV/OVa8GKUNtLAyneuzbCisx7QUCF8Q6Nutx0WnJrQe5O+kOtBlLfRNUws98Y58Lblp+NJG5T4Q==}
+    hasBin: true
+
   pg-cloudflare@1.1.1:
     resolution: {integrity: sha512-xWPagP/4B6BgFO+EKz3JONXv3YDgvkbVrGw2mTo3D6tVDQRh1e7cqVGvyR3BE+eQgAvx1XhW/iEASj4/jCWl3Q==}
 
@@ -4972,6 +4987,10 @@ packages:
   pkg-dir@4.2.0:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
     engines: {node: '>=8'}
+
+  point-geometry@0.0.0:
+    resolution: {integrity: sha512-tXK8bY2l3/CPkyO7+UbOWbVjCpKoYY4t6uY3AYYy4Bagd4Z942gLeQOgtHICwBwgPf8dI6fw4VqKwzSNgvlw4A==}
+    deprecated: 'This module has moved: please install @mapbox/point-geometry instead'
 
   point-in-polygon-hao@1.2.4:
     resolution: {integrity: sha512-x2pcvXeqhRHlNRdhLs/tgFapAbSSe86wa/eqmj1G6pWftbEs5aVRJhRGM6FYSUERKu0PjekJzMq0gsI2XyiclQ==}
@@ -5101,6 +5120,9 @@ packages:
 
   property-information@6.5.0:
     resolution: {integrity: sha512-PgTgs/BlvHxOu8QuEN7wi5A0OmXaBcHpmCSTehcs6Uuu9IkDIEo13Hy7n898RHfrQ49vKCoGeWZSaAK01nwVig==}
+
+  protocol-buffers-schema@3.6.0:
+    resolution: {integrity: sha512-TdDRD+/QNdrCGCE7v8340QyuXd4kIWIgapsE2+n/SaGiSSbomYl4TjHlvIoCWRpE7wFt02EpB35VVA2ImcBVqw==}
 
   proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
@@ -5500,6 +5522,9 @@ packages:
   resolve-pkg-maps@1.0.0:
     resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
 
+  resolve-protobuf-schema@2.1.0:
+    resolution: {integrity: sha512-kI5ffTiZWmJaS/huM8wZfEMer1eRd7oJQhDuxeCLe3t7N7mX3z94CN0xPxBQxFYQTSNz9T0i+v6inKqSdK8xrQ==}
+
   resolve.exports@2.0.3:
     resolution: {integrity: sha512-OcXjMsGdhL4XnbShKpAcSqPMzQoYkYyhbEaeSko47MjRP9NfEQMhZkXL1DoFlt9LWQn4YttrdnV6X2OiyzBi+A==}
     engines: {node: '>=10'}
@@ -5893,6 +5918,10 @@ packages:
   toml@3.0.0:
     resolution: {integrity: sha512-y/mWCZinnvxjTKYhJ+pYxwD0mRLVvOtdS2Awbgxln6iEnt4rk0yBxeSBHkGJcPucRiG0e55mwWp+g/05rsrd6w==}
 
+  topojson-client@2.1.0:
+    resolution: {integrity: sha512-mxXNa6imbsrWXqUKF7iwGl2TkrshZ7dwQF+KuAB4hX9wTmfecNzqSjMmQZNhP2Ztvfwx8rKt0BfQfHF+ki6hQw==}
+    hasBin: true
+
   topojson-client@3.1.0:
     resolution: {integrity: sha512-605uxS6bcYxGXw9qi62XyrV6Q3xwbndjachmNxu8HWTtVPxZfEJN9fd/SZS1Q54Sn2y0TMyMxFj/cJINqGHrKw==}
     hasBin: true
@@ -6114,6 +6143,10 @@ packages:
     resolution: {integrity: sha512-kiGUalWN+rgBJ/1OHZsBtU4rXZOfj/7rKQxULKlIzwzQSvMJUUNgPwJEEh7gU6xEVxC0ahoOBvN2YI8GH6FNgA==}
     engines: {node: '>=10.12.0'}
 
+  vector-tile@1.3.0:
+    resolution: {integrity: sha512-ECpYpDhbgTSGIRwaf4bLbiDHcUHDM+LGrBOmV1tdG+Lde8vajJtywP5vGFmMj0Z3cApTV0+9sLWgBCVsRuoAKQ==}
+    deprecated: 'This module has moved: please install @mapbox/vector-tile instead'
+
   vfile-location@5.0.3:
     resolution: {integrity: sha512-5yXvWDEgqeiYiBe1lbxYF7UMAIm/IcopxMHrMQDq3nvKcjPKIhZklUKL+AE7J7uApI4kwe2snsK+eI6UTj9EHg==}
 
@@ -6155,6 +6188,9 @@ packages:
     peerDependenciesMeta:
       webpack-cli:
         optional: true
+
+  whatwg-fetch@2.0.4:
+    resolution: {integrity: sha512-dcQ1GWpOD/eEQ97k66aiEVpNnapVj90/+R+SXTPYGHpYBBypfKJEQjLrvMZ7YXbKm21gXd4NcuxUTjiv1YtLng==}
 
   whatwg-url@5.0.0:
     resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
@@ -11487,6 +11523,8 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
+  ieee754@1.2.1: {}
+
   ignore@5.3.2: {}
 
   immutable@5.0.3: {}
@@ -12122,6 +12160,14 @@ snapshots:
   leaflet.markercluster@1.5.3(leaflet@1.9.4):
     dependencies:
       leaflet: 1.9.4
+
+  leaflet.vectorgrid@1.3.0(leaflet@1.9.4):
+    dependencies:
+      leaflet: 1.9.4
+      pbf: 3.3.0
+      topojson-client: 2.1.0
+      vector-tile: 1.3.0
+      whatwg-fetch: 2.0.4
 
   leaflet@1.9.4: {}
 
@@ -12908,6 +12954,11 @@ snapshots:
 
   path-type@4.0.0: {}
 
+  pbf@3.3.0:
+    dependencies:
+      ieee754: 1.2.1
+      resolve-protobuf-schema: 2.1.0
+
   pg-cloudflare@1.1.1:
     optional: true
 
@@ -12956,6 +13007,8 @@ snapshots:
   pkg-dir@4.2.0:
     dependencies:
       find-up: 4.1.0
+
+  point-geometry@0.0.0: {}
 
   point-in-polygon-hao@1.2.4:
     dependencies:
@@ -13075,6 +13128,8 @@ snapshots:
       react-is: 16.13.1
 
   property-information@6.5.0: {}
+
+  protocol-buffers-schema@3.6.0: {}
 
   proxy-from-env@1.1.0: {}
 
@@ -13631,6 +13686,10 @@ snapshots:
 
   resolve-pkg-maps@1.0.0: {}
 
+  resolve-protobuf-schema@2.1.0:
+    dependencies:
+      protocol-buffers-schema: 3.6.0
+
   resolve.exports@2.0.3: {}
 
   resolve@1.22.10:
@@ -14130,6 +14189,10 @@ snapshots:
 
   toml@3.0.0: {}
 
+  topojson-client@2.1.0:
+    dependencies:
+      commander: 2.20.3
+
   topojson-client@3.1.0:
     dependencies:
       commander: 2.20.3
@@ -14368,6 +14431,10 @@ snapshots:
       '@types/istanbul-lib-coverage': 2.0.6
       convert-source-map: 2.0.0
 
+  vector-tile@1.3.0:
+    dependencies:
+      point-geometry: 0.0.0
+
   vfile-location@5.0.3:
     dependencies:
       '@types/unist': 3.0.3
@@ -14431,6 +14498,8 @@ snapshots:
       - '@swc/core'
       - esbuild
       - uglify-js
+
+  whatwg-fetch@2.0.4: {}
 
   whatwg-url@5.0.0:
     dependencies:

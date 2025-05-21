@@ -7,9 +7,7 @@ import {
 } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
-import { PrismaClient as PostgresClient } from '../../../generated/client';
-
-const PrismaPostgres = new PostgresClient();
+import { PrismaPostgres } from '../db';
 
 export const GetCommunes = async (
   code: string,
@@ -24,7 +22,6 @@ export const GetCommunes = async (
   );
   const dbQuery = (async () => {
     try {
-      console.time(`Query Execution Time carte communes ${code ?? libelle}`);
       if (type === 'commune') {
         const epci = await PrismaPostgres.communes_drom.findFirst({
           where: {
@@ -48,9 +45,6 @@ export const GetCommunes = async (
         surface,
         ST_AsGeoJSON(geometry) geometry 
         FROM postgis."communes_drom" WHERE epci=${epci?.epci};`;
-        console.timeEnd(
-          `Query Execution Time carte communes ${code ?? libelle}`
-        );
         return value;
       } else if (type === 'ept' && eptRegex.test(libelle)) {
         const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
@@ -70,9 +64,6 @@ export const GetCommunes = async (
           surface,
           ST_AsGeoJSON(geometry) geometry 
           FROM postgis."communes_drom" WHERE epci='200054781';`;
-        console.timeEnd(
-          `Query Execution Time carte communes ${code ?? libelle}`
-        );
         return value;
       } else if (type === 'epci' && !eptRegex.test(libelle)) {
         const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
@@ -92,9 +83,6 @@ export const GetCommunes = async (
           surface,
           ST_AsGeoJSON(geometry) geometry 
           FROM postgis."communes_drom" WHERE epci=${code};`;
-        console.timeEnd(
-          `Query Execution Time carte communes ${code ?? libelle}`
-        );
         return value;
       } else if (type === 'pnr') {
         const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
@@ -114,9 +102,6 @@ export const GetCommunes = async (
           surface,
           ST_AsGeoJSON(geometry) geometry 
           FROM postgis."communes_drom" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
-        console.timeEnd(
-          `Query Execution Time carte communes ${code ?? libelle}`
-        );
         return value;
       } else if (type === 'petr') {
         const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
@@ -136,9 +121,6 @@ export const GetCommunes = async (
           surface,
           ST_AsGeoJSON(geometry) geometry 
           FROM postgis."communes_drom" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
-        console.timeEnd(
-          `Query Execution Time carte communes ${code ?? libelle}`
-        );
         return value;
       } else {
         const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
@@ -158,9 +140,6 @@ export const GetCommunes = async (
           surface,
           ST_AsGeoJSON(geometry) geometry 
           FROM postgis."communes_drom" WHERE departement=${code};`;
-        console.timeEnd(
-          `Query Execution Time carte communes ${code ?? libelle}`
-        );
         return value;
       }
     } catch (error) {
@@ -186,7 +165,7 @@ export const GetClcTerritoires = async (
   );
   const dbQuery = (async () => {
     try {
-      console.time('Query Execution Time GetClcTerritoires');
+      
       if (type === 'commune') {
         const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
         SELECT 
@@ -194,7 +173,6 @@ export const GetClcTerritoires = async (
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE code_geographique=${code};`;
-        console.timeEnd('Query Execution Time GetClcTerritoires');
         return value.length ? value : undefined;
       } else if (type === 'ept' && eptRegex.test(libelle)) {
         const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
@@ -203,7 +181,6 @@ export const GetClcTerritoires = async (
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE ept IS NOT NULL AND ept=${libelle};`;
-        console.timeEnd('Query Execution Time GetClcTerritoires');
         return value.length ? value : undefined;
       } else if (type === 'epci' && !eptRegex.test(libelle)) {
         const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
@@ -212,7 +189,6 @@ export const GetClcTerritoires = async (
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE epci=${code};`;
-        console.timeEnd('Query Execution Time GetClcTerritoires');
         return value.length ? value : undefined;
       } else if (type === 'pnr') {
         const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
@@ -221,7 +197,6 @@ export const GetClcTerritoires = async (
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
-        console.timeEnd('Query Execution Time GetClcTerritoires');
         return value.length ? value : undefined;
       } else if (type === 'petr') {
         const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
@@ -230,7 +205,6 @@ export const GetClcTerritoires = async (
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
-        console.timeEnd('Query Execution Time GetClcTerritoires');
         return value.length ? value : undefined;
       } else if (type === 'departement') {
         const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
@@ -239,7 +213,6 @@ export const GetClcTerritoires = async (
         ST_AsText(ST_Centroid(geometry)) centroid,
         ST_AsGeoJSON(geometry) geometry
         FROM postgis."clc_territoires" WHERE departement=${code};`;
-        console.timeEnd('Query Execution Time GetClcTerritoires');
         return value.length ? value : undefined;
       } else return undefined;
     } catch (error) {
@@ -281,9 +254,7 @@ export const GetErosionCotiere = async (
   );
   const dbQuery = (async () => {
     try {
-      console.time('Query Execution Time ErosionCotiere');
       if (type === 'commune') {
-        console.time('Query Execution Time EtatCoursDeau');
         const commune = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
           SELECT
           code_geographique,
@@ -303,7 +274,6 @@ export const GetErosionCotiere = async (
             ST_AsGeoJSON(geometry) geometry
             FROM postgis."erosion_cotiere" 
             WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${commune[0].geometry})), 4326), ${distance});`;
-            console.timeEnd('Query Execution Time ErosionCotiere');
             return value;
           } else return [];
         }
@@ -326,7 +296,6 @@ export const GetErosionCotiere = async (
             ST_AsGeoJSON(geometry) geometry
             FROM postgis."erosion_cotiere" 
             WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${epci[0].geometry})), 4326), ${distance});`;
-            console.timeEnd('Query Execution Time ErosionCotiere');
             return value;
           } else return [];
         }
@@ -349,7 +318,6 @@ export const GetErosionCotiere = async (
               ST_AsGeoJSON(geometry) geometry
               FROM postgis."erosion_cotiere"
               WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${pnr[0].geometry})), 4326), ${distance});`;
-            console.timeEnd('Query Execution Time ErosionCotiere');
             return value;
           } else return [];
         } else return [];
@@ -371,7 +339,6 @@ export const GetErosionCotiere = async (
               ST_AsGeoJSON(geometry) geometry
               FROM postgis."erosion_cotiere"
               WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${petr[0].geometry})), 4326), ${distance});`;
-            console.timeEnd('Query Execution Time ErosionCotiere');
             return value;
           } else return [];
         } else return [];
@@ -393,7 +360,6 @@ export const GetErosionCotiere = async (
             ST_AsGeoJSON(geometry) geometry
             FROM postgis."erosion_cotiere"
             WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${departement[0].geometry})), 4326), ${distance});`; //ST_Intersects(geometry, ST_GeomFromText(${departement[0].geometry}, 4326));
-            console.timeEnd('Query Execution Time ErosionCotiere');
             return value;
           } else return [];
         } else return [];

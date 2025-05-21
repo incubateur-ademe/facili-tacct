@@ -4,10 +4,15 @@ import LightbulbIcon from "@/assets/icons/lightbulb_icon_black.svg";
 import AtelierImg from "@/assets/images/article1.png";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
+import EndPageTrigger from "../../../hooks/EndPageTrigger";
 import styles from "./article.module.scss";
 
-const LireUnDiagnostic = () => {
+export const articleMetadata = {
+  title: 'Lire un diagnostic de vulnérabilité',
+  description: 'Comment lire un diagnostic de vulnérabilité du territoire aux impacts du changement climatique en 10 minutes ?',
+};
 
+const LireUnDiagnostic = () => {
   return (
     <div>
       <h1>Lire un diagnostic en 10 min</h1>
@@ -180,7 +185,10 @@ const LireUnDiagnostic = () => {
             {/* <Image src={LinkIcon as StaticImageData} alt="" /> */}
           </div>
         </div>
+        
+        <div className="finArticle"/>
       </div>
+      <EndPageTrigger />
     </div>
   );
 };

@@ -82,8 +82,8 @@ export const PrelevementEau = (props: {
 
   useEffect(() => {
     void (async () => {
-      if (type === 'commune' || type === 'epci') {
-        const temp = await GetPatch4(code, type);
+      if (type === 'commune' || type === 'epci' || type === 'ept') {
+        const temp = await GetPatch4(code, type, libelle);
         setPatch4(temp);
       }
       setIsLoadingPatch4(false);
@@ -99,7 +99,7 @@ export const PrelevementEau = (props: {
       {
         !isLoadingPatch4 ?
           <div className={styles.container}>
-            <div className="w-5/12">
+            <div className={ressourcesEau.length > 0 ? "w-5/12" : "w-1/2"}>
               <div className={styles.explicationWrapper}>
                 {dataParMaille.length !== 0 ? (
                   <p>
@@ -124,7 +124,7 @@ export const PrelevementEau = (props: {
               </div>
               <PrelevementEauText />
             </div>
-            <div className="w-7/12">
+            <div className={ressourcesEau.length > 0 ? "w-7/12" : "w-1/2"}>
               <PrelevementEauDataViz
                 ressourcesEau={ressourcesEau}
                 datavizTab={datavizTab}

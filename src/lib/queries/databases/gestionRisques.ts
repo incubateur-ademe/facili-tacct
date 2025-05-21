@@ -3,9 +3,7 @@
 import { ArreteCatNat, IncendiesForet } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
-import { PrismaClient as PostgresClient } from '../../../generated/client';
-
-const PrismaPostgres = new PostgresClient();
+import { PrismaPostgres } from '../db';
 
 export const GetArretesCatnat = async (
   code: string,
@@ -31,13 +29,11 @@ export const GetArretesCatnat = async (
   );
   const dbQuery = (async () => {
     try {
-      console.time('Query Execution Time GESTIONRISQUES');
       const value = await PrismaPostgres.arretes_catnat.findMany({
         where: {
           [column]: type === 'petr' || type === 'ept' ? libelle : code
         }
       });
-      console.timeEnd('Query Execution Time GESTIONRISQUES');
       return value;
     } catch (error) {
       console.error(error);
@@ -75,14 +71,12 @@ export const GetIncendiesForet = async (
   );
   const dbQuery = (async () => {
     try {
-      console.time('Query Execution Time GESTIONRISQUES');
       if (type === 'petr' || type === 'ept') {
         const value = await PrismaPostgres.feux_foret.findMany({
           where: {
             [column]: libelle
           }
         });
-        console.timeEnd('Query Execution Time GESTIONRISQUES');
         return value;
       } else {
         const value = await PrismaPostgres.feux_foret.findMany({
@@ -90,7 +84,6 @@ export const GetIncendiesForet = async (
             [column]: code
           }
         });
-        console.timeEnd('Query Execution Time GESTIONRISQUES');
         return value;
       }
     } catch (error) {

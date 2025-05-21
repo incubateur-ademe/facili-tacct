@@ -1,8 +1,6 @@
-import { Brand } from "@/components/Brand";
 import HeaderComp from "@/components/Header";
 import { HeaderClientOnly } from "@/components/utils/ClientOnly";
-import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display';
-import { Footer } from "@codegouvfr/react-dsfr/Footer";
+import AppFooter from "@/dsfr/layout/Footer";
 import { type Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { Suspense, type PropsWithChildren } from 'react';
@@ -16,10 +14,6 @@ const footerId = 'footer';
 export const metadata: Metadata = {
   metadataBase: new URL(config.host),
   ...sharedMetadata,
-  // title: {
-  //   template: `${config.name} - %s`,
-  //   default: config.name
-  // },
   openGraph: {
     ...sharedMetadata.openGraph
   },
@@ -38,7 +32,8 @@ const LayoutMain = ({ children }: PropsWithChildren) => {
         <HeaderComp />
       </HeaderClientOnly>
       <main>{children}</main>
-      <Footer
+      <AppFooter />
+      {/* <Footer
         id={footerId}
         brandTop={<Brand />}
         accessibility="non compliant"
@@ -75,7 +70,7 @@ const LayoutMain = ({ children }: PropsWithChildren) => {
         ]}
         termsLinkProps={{ href: '/mentions-legales' }}
         homeLinkProps={{ href: '/', title: 'Accueil' }}
-      />
+      /> */}
       <CookieBanner />
     </NextAppDirEmotionCacheProvider>
   );
