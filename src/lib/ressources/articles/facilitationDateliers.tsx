@@ -1,6 +1,7 @@
 import BookIcon from '@/assets/icons/book_icon_black.svg';
 import ForwardArrow from '@/assets/icons/keyboard_arrow_next_icon_black.svg';
 import LightbulbIcon from '@/assets/icons/lightbulb_icon_black.svg';
+import EndPageTrigger from '@/hooks/EndPageTrigger';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import styles from './article.module.scss';
@@ -238,6 +239,7 @@ const FacilitationDateliers = () => {
           </li>
         </ul>
       </div>
+      <EndPageTrigger />
     </div>
   );
 };
