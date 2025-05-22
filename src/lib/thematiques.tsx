@@ -37,20 +37,7 @@ export const thematiques = {
       imageUrl: '../agriculture_bluetile.svg'
     }
   ],
-  bientot_disponible: [
-    {
-      thematique: 'Espaces naturels',
-      id: 2,
-      category: '',
-      imageUrl: '../espacesNaturelsIcon.svg'
-    }
-    // {
-    //   thematique: "Biodiversité",
-    //   id: 1,
-    //   category: "",
-    //   imageUrl: "./biodiversiteIcon.svg"
-    // },
-  ],
+  bientot_disponible: [],
   futur: [
     {
       thematique: 'Infrastructures',
