@@ -185,8 +185,6 @@ const LireUnDiagnostic = () => {
             {/* <Image src={LinkIcon as StaticImageData} alt="" /> */}
           </div>
         </div>
-        
-        <div className="finArticle"/>
       </div>
       <EndPageTrigger />
     </div>
