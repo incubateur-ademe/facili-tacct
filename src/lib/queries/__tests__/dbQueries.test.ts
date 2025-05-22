@@ -1,4 +1,3 @@
-// Mock Prisma client globally for all query tests
 jest.mock('../../../generated/client', () => {
   return {
     PrismaClient: jest.fn().mockImplementation(() => {
@@ -11,14 +10,12 @@ jest.mock('../../../generated/client', () => {
   };
 });
 
-// Import all your query functions here
 import * as biodiversite from '../databases/biodiversite';
 import * as gestionRisques from '../databases/gestionRisques';
 import * as inconfortThermique from '../databases/inconfortThermique';
 import * as cartographie from '../postgis/cartographie';
 import * as etatCoursDeau from '../postgis/etatCoursDeau';
 import * as rga from '../postgis/rga';
-// ...add more imports as needed
 
 describe('Database query functions', () => {
   it('GetInconfortThermique returns mocked result', async () => {
@@ -70,6 +67,4 @@ describe('Database query functions', () => {
     const result = await etatCoursDeau.GetEtatCoursDeau('code', 'libelle', 'type');
     expect(result).toBeDefined();
   });
-
-  // Add more tests for other query functions as needed
 });
