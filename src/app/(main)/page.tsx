@@ -2,7 +2,6 @@
 
 import { Loader } from '@/components/loader';
 import useWindowDimensions from '@/hooks/windowDimensions';
-import Notice from '@codegouvfr/react-dsfr/Notice';
 import Image from 'next/image';
 import { lazy, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
@@ -35,13 +34,13 @@ const Home = () => {
     <div className={css({
       margin: '0 0 3em',
     })}>
-      <Notice
+      {/* <Notice
         className='notice'
         isClosable={true}
         onClose={() => setNoticeClosed(true)}
         title={"Nouveauté !"}
         description="Facili-TACCT vous propose désormais 4 types de territoires supplémentaires : les PETR (Pôle d’équilibre territorial et rural), les PNR (Parc naturel régional), les EPT (Établissement public territorial) et les Départements."
-      />
+      /> */}
       <div className={styles.wrapper}>
         <Container size="xl">
           <div className={styles.titles}>
@@ -60,7 +59,7 @@ const Home = () => {
         window.width ? <CollectiviteSearch />
           : <div
             className={styles.collectiviteWrapper}
-            style={{ height: "218px", top: "495px" }} //REPLACE update top paramètre si la notice est modifiée
+            style={{ height: "218px", top: "415px" }} //REPLACE update top paramètre si la notice est modifiée 415px si pas de notice
           >
             <Loader />
           </div>
