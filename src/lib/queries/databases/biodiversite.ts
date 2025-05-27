@@ -28,31 +28,39 @@ export const GetAgricultureBio = async (
       if (type === 'pnr') {
         return [];
       } else {
-        const territoire =
-          await PrismaPostgres.collectivites_searchbar.findMany({
-            select: {
-              epci: true
-            },
-            where: {
-              AND: [
-                {
-                  epci: { not: null }
-                },
-                {
-                  [column]: libelle
-                }
-              ]
-            },
-            distinct: ['epci']
-          });
-        const value = await PrismaPostgres.agriculture_bio.findMany({
+        const value = await PrismaPostgres.agriculture_bio_with_territoire.findMany({
           where: {
-            epci: {
-              in: territoire.map((t) => t.epci) as string[]
-            }
+            AND: [
+              { epci: { not: null } },
+              { [column]: libelle }
+            ]
           }
         });
-        return value;
+        // const territoire =
+        //   await PrismaPostgres.collectivites_searchbar.findMany({
+        //     select: {
+        //       epci: true
+        //     },
+        //     where: {
+        //       AND: [
+        //         {
+        //           epci: { not: null }
+        //         },
+        //         {
+        //           [column]: libelle
+        //         }
+        //       ]
+        //     },
+        //     distinct: ['epci']
+        //   });
+        // const value = await PrismaPostgres.agriculture_bio.findMany({
+        //   where: {
+        //     epci: {
+        //       in: territoire.map((t) => t.epci) as string[]
+        //     }
+        //   }
+        // });
+        return value as AgricultureBio[];
       }
     } catch (error) {
       console.error(error);

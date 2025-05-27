@@ -23,28 +23,26 @@ export const GetCommunes = async (
   const dbQuery = (async () => {
     try {
       if (type === 'commune') {
-        const epci = await PrismaPostgres.communes_drom.findFirst({
-          where: {
-            code_geographique: code
-          }
-        });
         const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
-        SELECT 
-        epci, 
-        libelle_epci,
-        libelle_geographique,
-        code_geographique,
-        ept,
-        libelle_petr,
-        code_pnr,
-        libelle_pnr,
-        departement,
-        coordinates, 
-        precarite_logement,
-        densite_bati,
-        surface,
-        ST_AsGeoJSON(geometry) geometry 
-        FROM postgis."communes_drom" WHERE epci=${epci?.epci};`;
+          SELECT 
+          epci, 
+          libelle_epci,
+          libelle_geographique,
+          code_geographique,
+          ept,
+          libelle_petr,
+          code_pnr,
+          libelle_pnr,
+          departement,
+          coordinates, 
+          precarite_logement,
+          densite_bati,
+          surface,
+          ST_AsGeoJSON(geometry) geometry 
+          FROM postgis."communes_drom" 
+          WHERE epci = (
+            SELECT epci FROM postgis."communes_drom" WHERE code_geographique = ${code} LIMIT 1
+            );`;
         return value;
       } else if (type === 'ept' && eptRegex.test(libelle)) {
         const value = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
@@ -165,7 +163,6 @@ export const GetClcTerritoires = async (
   );
   const dbQuery = (async () => {
     try {
-      
       if (type === 'commune') {
         const value = await PrismaPostgres.$queryRaw<CLCTerritoires[]>`
         SELECT 

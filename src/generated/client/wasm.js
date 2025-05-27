@@ -660,6 +660,70 @@ exports.Prisma.Postgis_rgaScalarFieldEnum = {
   code_geographique: 'code_geographique'
 };
 
+exports.Prisma.Agriculture_bio_with_territoireScalarFieldEnum = {
+  index: 'index',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  VARIABLE: 'VARIABLE',
+  LIBELLE_SOUS_CHAMP: 'LIBELLE_SOUS_CHAMP',
+  surface_2022: 'surface_2022',
+  surface_2021: 'surface_2021',
+  surface_2020: 'surface_2020',
+  surface_2019: 'surface_2019',
+  nombre_2022: 'nombre_2022',
+  nombre_2021: 'nombre_2021',
+  nombre_2020: 'nombre_2020',
+  nombre_2019: 'nombre_2019',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  libelle_departement: 'libelle_departement',
+  libelle_petr: 'libelle_petr',
+  ept: 'ept'
+};
+
+exports.Prisma.Qualite_sites_baignade_by_territoireScalarFieldEnum = {
+  index: 'index',
+  DEP_NOM: 'DEP_NOM',
+  DEP_NUM: 'DEP_NUM',
+  TYPE: 'TYPE',
+  COMMUNE: 'COMMUNE',
+  POINT: 'POINT',
+  LONG: 'LONG',
+  LAT: 'LAT',
+  QEB_2013: 'QEB_2013',
+  QEB_2014: 'QEB_2014',
+  QEB_2015: 'QEB_2015',
+  QEB_2016: 'QEB_2016',
+  QEB_2017: 'QEB_2017',
+  QEB_2018: 'QEB_2018',
+  QEB_2019: 'QEB_2019',
+  QEB_2020: 'QEB_2020',
+  libelle_pnr: 'libelle_pnr',
+  libelle_petr: 'libelle_petr',
+  ept: 'ept',
+  libelle_epci: 'libelle_epci',
+  libelle_departement: 'libelle_departement',
+  libelle_geographique: 'libelle_geographique'
+};
+
+exports.Prisma.Etat_cours_deau_by_communeScalarFieldEnum = {
+  code_geographique: 'code_geographique',
+  epci: 'epci',
+  centroid: 'centroid',
+  name: 'name',
+  pk: 'pk',
+  etateco: 'etateco',
+  geometry: 'geometry'
+};
+
+exports.Prisma.Etat_cours_deau_by_epciScalarFieldEnum = {
+  pk: 'pk',
+  epci: 'epci',
+  name: 'name',
+  etateco: 'etateco',
+  geometry: 'geometry'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -700,7 +764,11 @@ exports.Prisma.ModelName = {
   surfaces_protegees: 'surfaces_protegees',
   spatial_ref_sys: 'spatial_ref_sys',
   rga: 'rga',
-  postgis_rga: 'postgis_rga'
+  postgis_rga: 'postgis_rga',
+  agriculture_bio_with_territoire: 'agriculture_bio_with_territoire',
+  qualite_sites_baignade_by_territoire: 'qualite_sites_baignade_by_territoire',
+  etat_cours_deau_by_commune: 'etat_cours_deau_by_commune',
+  etat_cours_deau_by_epci: 'etat_cours_deau_by_epci'
 };
 
 /**
