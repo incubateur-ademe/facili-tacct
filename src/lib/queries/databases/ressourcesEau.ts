@@ -3,7 +3,8 @@
 import { QualiteSitesBaignade, RessourcesEau } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
-import { PrismaPostgres } from '../db';
+// import { PrismaPostgres } from '../db';
+import { prisma } from '../redis';
 
 export const GetRessourceEau = async (
   code: string,
@@ -20,10 +21,10 @@ export const GetRessourceEau = async (
     try {
       if (type === 'commune') {
         console.time('Query Execution Time RESSOURCES EAUX');
-        const value = await PrismaPostgres.ressources_eau.findMany({
+        const value = await prisma.ressources_eau.findMany({
           where: {
             departement: (
-              await PrismaPostgres.ressources_eau.findFirst({
+              await prisma.ressources_eau.findFirst({
                 where: { code_geographique: code },
                 select: { departement: true }
               })
@@ -34,10 +35,10 @@ export const GetRessourceEau = async (
         return value;
       } else if (type === 'epci') {
         console.time('Query Execution Time PRELEVEMENT EAUX');
-        const value = await PrismaPostgres.ressources_eau.findMany({
+        const value = await prisma.ressources_eau.findMany({
           where: {
             departement: (
-              await PrismaPostgres.ressources_eau.findFirst({
+              await prisma.ressources_eau.findFirst({
                 where: { epci: code },
                 select: { departement: true }
               })
@@ -48,10 +49,10 @@ export const GetRessourceEau = async (
         return value;
       } else if (type === 'petr') {
         console.time('Query Execution Time RESSOURCES EAUX');
-        const value = await PrismaPostgres.ressources_eau.findMany({
+        const value = await prisma.ressources_eau.findMany({
           where: {
             departement: (
-              await PrismaPostgres.ressources_eau.findFirst({
+              await prisma.ressources_eau.findFirst({
                 where: { libelle_petr: libelle },
                 select: { departement: true }
               })
@@ -62,10 +63,10 @@ export const GetRessourceEau = async (
         return value;
       } else if (type === 'ept') {
         console.time('Query Execution Time RESSOURCES EAUX');
-        const value = await PrismaPostgres.ressources_eau.findMany({
+        const value = await prisma.ressources_eau.findMany({
           where: {
             departement: (
-              await PrismaPostgres.ressources_eau.findFirst({
+              await prisma.ressources_eau.findFirst({
                 where: { ept: libelle },
                 select: { departement: true }
               })
@@ -76,7 +77,7 @@ export const GetRessourceEau = async (
         return value;
       } else if (type === 'departement') {
         console.time('Query Execution Time RESSOURCES EAUX');
-        const value = await PrismaPostgres.ressources_eau.findMany({
+        const value = await prisma.ressources_eau.findMany({
           where: {
             departement: code
           }
@@ -86,7 +87,7 @@ export const GetRessourceEau = async (
       } else return [];
     } catch (error) {
       console.error(error);
-      // PrismaPostgres.$disconnect();
+      // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
     }
@@ -114,7 +115,7 @@ export const GetQualiteEauxBaignade = async (
                 : 'libelle_geographique';
     if (code === 'ZZZZZZZZZ') {
       console.time('Query Execution Time QUALITE EAUX BAIGNADE');
-      const value = await PrismaPostgres.qualite_sites_baignade.findMany({
+      const value = await prisma.qualite_sites_baignade.findMany({
         where: {
           OR: [
             { COMMUNE: "ile-d'yeu (l')" },
@@ -129,7 +130,7 @@ export const GetQualiteEauxBaignade = async (
     } else {
       console.time('Query Execution Time QUALITE EAUX BAIGNADE');
       const value =
-        await PrismaPostgres.qualite_sites_baignade_by_territoire.findMany({
+        await prisma.qualite_sites_baignade_by_territoire.findMany({
           where: {
             [column]: libelle
           }
@@ -139,7 +140,7 @@ export const GetQualiteEauxBaignade = async (
     }
   } catch (error) {
     console.error(error);
-    // PrismaPostgres.$disconnect();
+    // prisma.$disconnect();
     Sentry.captureException(error);
     return [];
   }

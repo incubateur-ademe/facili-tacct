@@ -2,7 +2,8 @@
 
 import { CarteCommunes, EtatCoursDeau } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
-import { PrismaPostgres } from '../db';
+// import { PrismaPostgres } from '../db';
+import { prisma } from '../redis';
 
 export const GetEtatCoursDeau = async (
   code: string,
@@ -18,37 +19,37 @@ export const GetEtatCoursDeau = async (
     try {
       const distance = 0.1;
       if (type === 'commune') {
-        const value = await PrismaPostgres.etat_cours_deau_by_commune.findMany({
-          where: {
-            code_geographique: code
-          },
-        });
-        return value;
-        // const commune = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
-        // SELECT 
-        // epci,
-        // ST_AsText(ST_Centroid(geometry)) centroid,
-        // ST_AsText(geometry) geometry
-        // FROM postgis."communes_drom" WHERE code_geographique=${code};`;
-        // if (commune.length !== 0) {
-        //   const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
-        // SELECT
-        // name,
-        // etateco,
-        // ST_AsGeoJSON(geometry) geometry
-        // FROM postgis."etat_cours_d_eau" 
-        // WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${commune[0].geometry})), 4326), ${distance});`;
-        //   return value;
-        // }
-        // return [];
+        // const value = await PrismaPostgres.etat_cours_deau_by_commune.findMany({
+        //   where: {
+        //     code_geographique: code
+        //   },
+        // });
+        // return value;
+        const commune = await prisma.$queryRaw<CarteCommunes[]>`
+        SELECT 
+        epci,
+        ST_AsText(ST_Centroid(geometry)) centroid,
+        ST_AsText(geometry) geometry
+        FROM postgis."communes_drom" WHERE code_geographique=${code};`;
+        if (commune.length !== 0) {
+          const value = await prisma.$queryRaw<EtatCoursDeau[]>`
+        SELECT
+        name,
+        etateco,
+        ST_AsGeoJSON(geometry) geometry
+        FROM postgis."etat_cours_d_eau" 
+        WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${commune[0].geometry})), 4326), ${distance});`;
+          return value;
+        }
+        return [];
       } else if (type === 'ept' && eptRegex.test(libelle)) {
-        const ept = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        const ept = await prisma.$queryRaw<CarteCommunes[]>`
         SELECT 
         ept,
         ST_AsText(ST_Union(geometry)) as geometry
         FROM postgis."communes_drom" WHERE ept=${libelle} GROUP BY ept;`;
         if (ept.length !== 0) {
-          const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
+          const value = await prisma.$queryRaw<EtatCoursDeau[]>`
         SELECT
         name,
         etateco,
@@ -59,36 +60,36 @@ export const GetEtatCoursDeau = async (
         }
         return [];
       } else if (type === 'epci' && !eptRegex.test(libelle)) {
-        const value = await PrismaPostgres.etat_cours_deau_by_epci.findMany({
-          where: {
-            epci: code
-          },
-        });
-        return value as any;
-        // const epci = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
-        // SELECT 
-        // epci,
-        // ST_AsText(ST_Union(geometry)) as geometry
-        // FROM postgis."communes_drom" WHERE epci=${code} GROUP BY epci;`;
-        // if (epci.length !== 0) {
-        //   const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
-        //     SELECT
-        //     name,
-        //     etateco,
-        //     ST_AsGeoJSON(geometry) geometry
-        //     FROM postgis."etat_cours_d_eau" 
-        //     WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`;
-        //   return value;
-        // }
-        // return [];
+        // const value = await prisma.etat_cours_deau_by_epci.findMany({
+        //   where: {
+        //     epci: code
+        //   },
+        // });
+        // return value as any;
+        const epci = await prisma.$queryRaw<CarteCommunes[]>`
+        SELECT 
+        epci,
+        ST_AsText(ST_Union(geometry)) as geometry
+        FROM postgis."communes_drom" WHERE epci=${code} GROUP BY epci;`;
+        if (epci.length !== 0) {
+          const value = await prisma.$queryRaw<EtatCoursDeau[]>`
+            SELECT
+            name,
+            etateco,
+            ST_AsGeoJSON(geometry) geometry
+            FROM postgis."etat_cours_d_eau" 
+            WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`;
+          return value;
+        }
+        return [];
       } else if (type === 'petr') {
-        const petr = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        const petr = await prisma.$queryRaw<CarteCommunes[]>`
         SELECT 
         libelle_petr,
         ST_AsText(ST_Union(geometry)) as geometry
         FROM postgis."communes_drom" WHERE libelle_petr=${libelle} GROUP BY libelle_petr;`;
         if (petr.length !== 0) {
-          const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
+          const value = await prisma.$queryRaw<EtatCoursDeau[]>`
         SELECT
         name,
         etateco,
@@ -99,13 +100,13 @@ export const GetEtatCoursDeau = async (
         }
         return [];
       } else if (type === 'pnr') {
-        const pnr = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        const pnr = await prisma.$queryRaw<CarteCommunes[]>`
         SELECT 
         code_pnr,
         ST_AsText(ST_Union(geometry)) as geometry
         FROM postgis."communes_drom" WHERE code_pnr=${code} GROUP BY code_pnr;`;
         if (pnr.length !== 0) {
-          const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
+          const value = await prisma.$queryRaw<EtatCoursDeau[]>`
         SELECT
         name,
         etateco,
@@ -116,13 +117,13 @@ export const GetEtatCoursDeau = async (
         }
         return [];
       } else if (type === 'departement') {
-        const departement = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        const departement = await prisma.$queryRaw<CarteCommunes[]>`
         SELECT 
         departement, 
         ST_AsText(ST_Union(geometry)) as geometry 
         FROM postgis."communes_drom" WHERE departement=${code} GROUP BY departement;`;
         if (departement.length !== 0) {
-          const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
+          const value = await prisma.$queryRaw<EtatCoursDeau[]>`
         SELECT
         name,
         etateco,

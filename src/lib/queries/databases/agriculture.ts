@@ -2,7 +2,8 @@
 import { Agriculture } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
-import { PrismaPostgres } from '../db';
+// import { prisma } from '../db';
+import { prisma } from '../redis';
 
 export const GetAgriculture = async (
   code: string,
@@ -32,26 +33,26 @@ export const GetAgriculture = async (
   const dbQuery = (async () => {
     try {
       if (type === 'ept' || type === 'petr') {
-        const value = await PrismaPostgres.agriculture.findMany({
+        const value = await prisma.agriculture.findMany({
           where: {
             [column]: libelle
           }
         });
         return value;
       } else if (type === 'commune') {
-        const commune = await PrismaPostgres.collectivites_searchbar.findFirst({
+        const commune = await prisma.collectivites_searchbar.findFirst({
           where: {
             code_geographique: code
           }
         });
-        const value = await PrismaPostgres.agriculture.findMany({
+        const value = await prisma.agriculture.findMany({
           where: {
             epci: commune?.epci ?? ''
           }
         });
         return value;
       } else {
-        const value = await PrismaPostgres.agriculture.findMany({
+        const value = await prisma.agriculture.findMany({
           where: {
             [column]: code
           }
@@ -61,7 +62,7 @@ export const GetAgriculture = async (
     } catch (error) {
       console.error(error);
       Sentry.captureException(error);
-      // PrismaPostgres.$disconnect();
+      // prisma.$disconnect();
       return [];
     }
   })();

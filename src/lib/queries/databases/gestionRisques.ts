@@ -3,7 +3,7 @@
 import { ArreteCatNat, IncendiesForet } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
-import { PrismaPostgres } from '../db';
+import { prisma } from '../redis';
 
 export const GetArretesCatnat = async (
   code: string,
@@ -29,7 +29,7 @@ export const GetArretesCatnat = async (
   );
   const dbQuery = (async () => {
     try {
-      const value = await PrismaPostgres.arretes_catnat.findMany({
+      const value = await prisma.arretes_catnat.findMany({
         where: {
           [column]: type === 'petr' || type === 'ept' ? libelle : code
         }
@@ -37,7 +37,7 @@ export const GetArretesCatnat = async (
       return value;
     } catch (error) {
       console.error(error);
-      // PrismaPostgres.$disconnect();
+      // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
     }
@@ -72,14 +72,14 @@ export const GetIncendiesForet = async (
   const dbQuery = (async () => {
     try {
       if (type === 'petr' || type === 'ept') {
-        const value = await PrismaPostgres.feux_foret.findMany({
+        const value = await prisma.feux_foret.findMany({
           where: {
             [column]: libelle
           }
         });
         return value;
       } else {
-        const value = await PrismaPostgres.feux_foret.findMany({
+        const value = await prisma.feux_foret.findMany({
           where: {
             [column]: code
           }
@@ -88,7 +88,7 @@ export const GetIncendiesForet = async (
       }
     } catch (error) {
       console.error(error);
-      // PrismaPostgres.$disconnect();
+      // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
     }

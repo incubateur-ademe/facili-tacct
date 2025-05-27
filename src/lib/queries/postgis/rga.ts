@@ -2,7 +2,7 @@
 
 import { RGACarte } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
-import { PrismaPostgres } from '../db';
+import { prisma } from '../redis';
 
 export const GetRGACarte = async (
   code: string,
@@ -20,7 +20,7 @@ export const GetRGACarte = async (
   const dbQuery = (async () => {
     try {
       if (type === 'commune') {
-        const commune = await PrismaPostgres.$queryRaw<RGACarte[]>`
+        const commune = await prisma.$queryRaw<RGACarte[]>`
           SELECT
           code_geographique,
           alea,
@@ -29,12 +29,12 @@ export const GetRGACarte = async (
           WHERE code_geographique=${code} LIMIT 1;`;
         return commune;
       } else if (type === 'epci' && !eptRegex.test(libelle)) {
-        const communes = await PrismaPostgres.collectivites_searchbar.findMany({
+        const communes = await prisma.collectivites_searchbar.findMany({
           where: {
             epci: code
           }
         });
-        const epci = await PrismaPostgres.$queryRaw<RGACarte[]>`
+        const epci = await prisma.$queryRaw<RGACarte[]>`
           SELECT
           code_geographique,
           alea,
