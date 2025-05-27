@@ -11,63 +11,65 @@ export const GetRessourceEau = async (
   type: string
 ): Promise<RessourcesEau[]> => {
   //race Promise pour éviter un crash de la requête lorsqu'elle est trop longue
-  const timeoutPromise = new Promise<[]>(resolve => setTimeout(() => {
-    resolve([]);
-  }, 5000));
+  const timeoutPromise = new Promise<[]>((resolve) =>
+    setTimeout(() => {
+      resolve([]);
+    }, 5000)
+  );
   const dbQuery = (async () => {
     try {
       if (type === 'commune') {
         console.time('Query Execution Time RESSOURCES EAUX');
-        const departement = await PrismaPostgres.ressources_eau.findFirst({
-          where: {
-            code_geographique: code
-          }
-        });
         const value = await PrismaPostgres.ressources_eau.findMany({
           where: {
-            departement: departement?.departement
+            departement: (
+              await PrismaPostgres.ressources_eau.findFirst({
+                where: { code_geographique: code },
+                select: { departement: true }
+              })
+            )?.departement
           }
         });
         console.timeEnd('Query Execution Time RESSOURCES EAUX');
         return value;
       } else if (type === 'epci') {
         console.time('Query Execution Time PRELEVEMENT EAUX');
-        const departement = await PrismaPostgres.ressources_eau.findFirst({
-          where: {
-            epci: code
-          }
-        });
         const value = await PrismaPostgres.ressources_eau.findMany({
           where: {
-            departement: departement?.departement
+            departement: (
+              await PrismaPostgres.ressources_eau.findFirst({
+                where: { epci: code },
+                select: { departement: true }
+              })
+            )?.departement
           }
         });
         console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
         return value;
       } else if (type === 'petr') {
         console.time('Query Execution Time RESSOURCES EAUX');
-        const departement = await PrismaPostgres.ressources_eau.findFirst({
-          where: {
-            libelle_petr: libelle
-          }
-        });
         const value = await PrismaPostgres.ressources_eau.findMany({
           where: {
-            departement: departement?.departement
+            departement: (
+              await PrismaPostgres.ressources_eau.findFirst({
+                where: { libelle_petr: libelle },
+                select: { departement: true }
+              })
+            )?.departement
           }
         });
         console.timeEnd('Query Execution Time RESSOURCES EAUX');
         return value;
       } else if (type === 'ept') {
         console.time('Query Execution Time RESSOURCES EAUX');
-        const departement = await PrismaPostgres.ressources_eau.findFirst({
-          where: {
-            ept: libelle
-          }
-        });
         const value = await PrismaPostgres.ressources_eau.findMany({
           where: {
-            departement: departement?.departement
+            departement: (
+              await PrismaPostgres.ressources_eau.findFirst({
+                where: { ept: libelle },
+                select: { departement: true }
+              })
+            )?.departement
           }
         });
         console.timeEnd('Query Execution Time RESSOURCES EAUX');
@@ -126,32 +128,14 @@ export const GetQualiteEauxBaignade = async (
       return value;
     } else {
       console.time('Query Execution Time QUALITE EAUX BAIGNADE');
-      const departement = await PrismaPostgres.collectivites_searchbar.findMany(
-        {
+      const value =
+        await PrismaPostgres.qualite_sites_baignade_by_territoire.findMany({
           where: {
-            AND: [
-              {
-                departement: { not: null }
-              },
-              {
-                [column]: libelle
-              }
-            ]
-          },
-          distinct: ['departement']
-        }
-      );
-      const value = await PrismaPostgres.qualite_sites_baignade.findMany({
-        where: {
-          DEP_NUM: {
-            in: departement
-              .map((d) => d.departement)
-              .filter((d): d is string => d !== null)
+            [column]: libelle
           }
-        }
-      });
+        });
       console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
-      return value;
+      return value as QualiteSitesBaignade[];
     }
   } catch (error) {
     console.error(error);

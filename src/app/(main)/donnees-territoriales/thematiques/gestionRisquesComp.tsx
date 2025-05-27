@@ -3,6 +3,7 @@
 import { Catnat } from '@/components/themes/gestionRisques/catnat';
 import ErosionCotes from '@/components/themes/gestionRisques/erosionCotiere';
 import { FeuxForet } from '@/components/themes/gestionRisques/feuxForet';
+import { RGA } from '@/components/themes/gestionRisques/rga';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   ArreteCatNat,
@@ -66,15 +67,15 @@ const allComps = [
       <FeuxForet incendiesForet={incendiesForet} />
     )
   },
-  // {
-  //   titre: "RGA",
-  //   Component: ({ rgaCarte, carteCommunes }: Props & { activeDataTab: string }) => (
-  //     <RGA
-  //       rgaCarte={rgaCarte}
-  //       carteCommunes={carteCommunes}
-  //     />
-  //   )
-  // }
+  {
+    titre: "RGA",
+    Component: ({ rgaCarte, carteCommunes }: Props & { activeDataTab: string }) => (
+      <RGA
+        rgaCarte={rgaCarte}
+        carteCommunes={carteCommunes}
+      />
+    )
+  }
 ];
 
 const GestionRisquesComp = ({
@@ -132,10 +133,10 @@ const GestionRisquesComp = ({
             tabId: 'Feux de forêt',
             label: 'Feux de forêt'
           },
-          // {
-          //   tabId: "RGA",
-          //   label: "RGA"
-          // },
+          {
+            tabId: "RGA",
+            label: "RGA"
+          },
           ...(erosionCotiere.length > 0
             ? [
                 {

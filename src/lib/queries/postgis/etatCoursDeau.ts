@@ -18,23 +18,29 @@ export const GetEtatCoursDeau = async (
     try {
       const distance = 0.1;
       if (type === 'commune') {
-        const commune = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
-        SELECT 
-        epci,
-        ST_AsText(ST_Centroid(geometry)) centroid,
-        ST_AsText(geometry) geometry
-        FROM postgis."communes_drom" WHERE code_geographique=${code};`;
-        if (commune.length !== 0) {
-          const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
-        SELECT
-        name,
-        etateco,
-        ST_AsGeoJSON(geometry) geometry
-        FROM postgis."etat_cours_d_eau" 
-        WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${commune[0].geometry})), 4326), ${distance});`;
-          return value;
-        }
-        return [];
+        const value = await PrismaPostgres.etat_cours_deau_by_commune.findMany({
+          where: {
+            code_geographique: code
+          },
+        });
+        return value;
+        // const commune = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        // SELECT 
+        // epci,
+        // ST_AsText(ST_Centroid(geometry)) centroid,
+        // ST_AsText(geometry) geometry
+        // FROM postgis."communes_drom" WHERE code_geographique=${code};`;
+        // if (commune.length !== 0) {
+        //   const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
+        // SELECT
+        // name,
+        // etateco,
+        // ST_AsGeoJSON(geometry) geometry
+        // FROM postgis."etat_cours_d_eau" 
+        // WHERE ST_DWithin(geometry, ST_PointFromText(ST_AsText(ST_Centroid(${commune[0].geometry})), 4326), ${distance});`;
+        //   return value;
+        // }
+        // return [];
       } else if (type === 'ept' && eptRegex.test(libelle)) {
         const ept = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
@@ -53,22 +59,28 @@ export const GetEtatCoursDeau = async (
         }
         return [];
       } else if (type === 'epci' && !eptRegex.test(libelle)) {
-        const epci = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
-        SELECT 
-        epci,
-        ST_AsText(ST_Union(geometry)) as geometry
-        FROM postgis."communes_drom" WHERE epci=${code} GROUP BY epci;`;
-        if (epci.length !== 0) {
-          const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
-            SELECT
-            name,
-            etateco,
-            ST_AsGeoJSON(geometry) geometry
-            FROM postgis."etat_cours_d_eau" 
-            WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`;
-          return value;
-        }
-        return [];
+        const value = await PrismaPostgres.etat_cours_deau_by_epci.findMany({
+          where: {
+            epci: code
+          },
+        });
+        return value as any;
+        // const epci = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
+        // SELECT 
+        // epci,
+        // ST_AsText(ST_Union(geometry)) as geometry
+        // FROM postgis."communes_drom" WHERE epci=${code} GROUP BY epci;`;
+        // if (epci.length !== 0) {
+        //   const value = await PrismaPostgres.$queryRaw<EtatCoursDeau[]>`
+        //     SELECT
+        //     name,
+        //     etateco,
+        //     ST_AsGeoJSON(geometry) geometry
+        //     FROM postgis."etat_cours_d_eau" 
+        //     WHERE ST_Intersects(geometry, ST_GeomFromText(${epci[0].geometry}, 4326));`;
+        //   return value;
+        // }
+        // return [];
       } else if (type === 'petr') {
         const petr = await PrismaPostgres.$queryRaw<CarteCommunes[]>`
         SELECT 
