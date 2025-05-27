@@ -18,7 +18,6 @@ export const GetInconfortThermique = async (
   const dbQuery = (async () => {
     try {
       if (type === 'ept' && eptRegex.test(libelle)) {
-        //pour les ept
         const value = await PrismaPostgres.inconfort_thermique.findMany({
           where: {
             epci: '200054781'

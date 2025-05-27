@@ -173,7 +173,7 @@ export type CarteCommunes = {
   libelle_geographique: string;
   libelle_epci: string;
   departement: string;
-  libelle_departement: string;
+  libelle_departement?: string;
   ept: string;
   libelle_petr: string;
   code_pnr: string;
@@ -184,6 +184,28 @@ export type CarteCommunes = {
   surface: number;
   surfacesIrriguees?: number;
   incendiesForet?: number;
+};
+
+export type CarteCommunesView = {
+  code_geographique: string | null;
+  coordinates: string | null;
+  densite_bati?: number | null;
+  epci: string | null;
+  geometry: string | null;
+  libelle_geographique: string | null;
+  libelle_epci: string | null;
+  departement: string | null;
+  libelle_departement?: string | null;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  precarite_logement?: number | null;
+  catnat?: Object | null;
+  naf?: number | null;
+  surface: number | null;
+  surfacesIrriguees?: number | null;
+  incendiesForet?: number | null;
 };
 
 export type EpciContours = {
