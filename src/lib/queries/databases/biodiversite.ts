@@ -2,7 +2,8 @@
 import { AgricultureBio, AOT40, ConsommationNAF } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
-import { PrismaPostgres } from '../db';
+// import { prisma } from '../db';
+import { prisma } from '../redis';
 
 export const GetAgricultureBio = async (
   libelle: string,
@@ -28,43 +29,43 @@ export const GetAgricultureBio = async (
       if (type === 'pnr') {
         return [];
       } else {
-        const value = await PrismaPostgres.agriculture_bio_with_territoire.findMany({
-          where: {
-            AND: [
-              { epci: { not: null } },
-              { [column]: libelle }
-            ]
-          }
-        });
-        // const territoire =
-        //   await PrismaPostgres.collectivites_searchbar.findMany({
-        //     select: {
-        //       epci: true
-        //     },
-        //     where: {
-        //       AND: [
-        //         {
-        //           epci: { not: null }
-        //         },
-        //         {
-        //           [column]: libelle
-        //         }
-        //       ]
-        //     },
-        //     distinct: ['epci']
-        //   });
-        // const value = await PrismaPostgres.agriculture_bio.findMany({
+        // const value = await prisma.agriculture_bio_with_territoire.findMany({
         //   where: {
-        //     epci: {
-        //       in: territoire.map((t) => t.epci) as string[]
-        //     }
+        //     AND: [
+        //       { epci: { not: null } },
+        //       { [column]: libelle }
+        //     ]
         //   }
         // });
+        const territoire =
+          await prisma.collectivites_searchbar.findMany({
+            select: {
+              epci: true
+            },
+            where: {
+              AND: [
+                {
+                  epci: { not: null }
+                },
+                {
+                  [column]: libelle
+                }
+              ]
+            },
+            distinct: ['epci']
+          });
+        const value = await prisma.agriculture_bio.findMany({
+          where: {
+            epci: {
+              in: territoire.map((t) => t.epci) as string[]
+            }
+          }
+        });
         return value as AgricultureBio[];
       }
     } catch (error) {
       console.error(error);
-      // PrismaPostgres.$disconnect();
+      // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
     }
@@ -85,26 +86,26 @@ export const GetConsommationNAF = async (
   const dbQuery = (async () => {
     try {
       if (type === 'petr' || eptRegex.test(libelle)) {
-        const value = await PrismaPostgres.consommation_espaces_naf.findMany({
+        const value = await prisma.consommation_espaces_naf.findMany({
           where: {
             [type === 'petr' ? 'libelle_petr' : 'ept']: libelle
           }
         });
         return value;
       } else if (type === 'commune') {
-        const commune = await PrismaPostgres.collectivites_searchbar.findFirst({
+        const commune = await prisma.collectivites_searchbar.findFirst({
           where: {
             code_geographique: code
           }
         });
-        const value = await PrismaPostgres.consommation_espaces_naf.findMany({
+        const value = await prisma.consommation_espaces_naf.findMany({
           where: {
             epci: commune?.epci ?? ''
           }
         });
         return value;
       } else {
-        const value = await PrismaPostgres.consommation_espaces_naf.findMany({
+        const value = await prisma.consommation_espaces_naf.findMany({
           where: {
             [type === 'epci'
               ? 'epci'
@@ -119,7 +120,7 @@ export const GetConsommationNAF = async (
       }
     } catch (error) {
       console.error(error);
-      // PrismaPostgres.$disconnect();
+      // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
     }
@@ -135,11 +136,11 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
   );
   const dbQuery = (async () => {
     try {
-      const value = await PrismaPostgres.aot_40.findMany();
+      const value = await prisma.aot_40.findMany();
       return value;
     } catch (error) {
       console.error(error);
-      // PrismaPostgres.$disconnect();
+      // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
     }

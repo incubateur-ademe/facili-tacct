@@ -2,7 +2,7 @@
 
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
-import { PrismaPostgres } from '../db';
+import { prisma } from '../redis';
 
 export const GetInconfortThermique = async (
   code: string | undefined,
@@ -18,19 +18,19 @@ export const GetInconfortThermique = async (
   const dbQuery = (async () => {
     try {
       if (type === 'ept' && eptRegex.test(libelle)) {
-        const value = await PrismaPostgres.inconfort_thermique.findMany({
+        const value = await prisma.inconfort_thermique.findMany({
           where: {
             epci: '200054781'
           }
         });
         return value;
       } else if (type === 'commune') {
-        const commune = await PrismaPostgres.inconfort_thermique.findFirst({
+        const commune = await prisma.inconfort_thermique.findFirst({
           where: {
             code_geographique: code
           }
         });
-        const value = await PrismaPostgres.inconfort_thermique.findMany({
+        const value = await prisma.inconfort_thermique.findMany({
           where: {
             epci: commune?.epci
           },
@@ -38,7 +38,7 @@ export const GetInconfortThermique = async (
         });
         return value;
       } else if (type === 'petr') {
-        const value = await PrismaPostgres.inconfort_thermique.findMany({
+        const value = await prisma.inconfort_thermique.findMany({
           where: {
             libelle_petr: libelle
           },
@@ -46,7 +46,7 @@ export const GetInconfortThermique = async (
         });
         return value;
       } else if (type === 'pnr') {
-        const value = await PrismaPostgres.inconfort_thermique.findMany({
+        const value = await prisma.inconfort_thermique.findMany({
           where: {
             code_pnr: code
           },
@@ -54,7 +54,7 @@ export const GetInconfortThermique = async (
         });
         return value;
       } else if (type === 'departement') {
-        const value = await PrismaPostgres.inconfort_thermique.findMany({
+        const value = await prisma.inconfort_thermique.findMany({
           where: {
             departement: code
           },
@@ -62,12 +62,12 @@ export const GetInconfortThermique = async (
         });
         return value;
       } else if (type === 'epci') {
-        const departement = await PrismaPostgres.inconfort_thermique.findFirst({
+        const departement = await prisma.inconfort_thermique.findFirst({
           where: {
             epci: code
           }
         });
-        const value = await PrismaPostgres.inconfort_thermique.findMany({
+        const value = await prisma.inconfort_thermique.findMany({
           where: {
             departement: departement?.departement
           },
@@ -77,7 +77,7 @@ export const GetInconfortThermique = async (
       } else return [];
     } catch (error) {
       console.error(error);
-      // PrismaPostgres.$disconnect();
+      // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
     }
