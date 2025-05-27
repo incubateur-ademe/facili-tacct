@@ -1,7 +1,7 @@
 generator client {
   provider        = "prisma-client-js"
   output          = "../src/generated/client"
-  previewFeatures = ["multiSchema"]
+  previewFeatures = ["multiSchema", "views"]
   binaryTargets   = ["native", "debian-openssl-3.0.x"]
 }
 
@@ -360,7 +360,6 @@ model patch4c {
   fortes_chaleurs       Float
 
   @@index([index], map: "ix_patch4c_index")
-  @@index([code_geographique], map: "patch4c_communes_index")
   @@schema("databases")
 }
 
@@ -665,5 +664,77 @@ model postgis_rga {
   @@index([geometry], map: "rga_geometry_geom_idx", type: Gist)
   @@index([code_geographique], map: "rga_postgis_index")
   @@map("rga")
+  @@schema("postgis")
+}
+
+view agriculture_bio_with_territoire {
+  index                BigInt  @id
+  epci                 String?
+  libelle_epci         String?
+  VARIABLE             String?
+  LIBELLE_SOUS_CHAMP   String?
+  surface_2022         Float?
+  surface_2021         Float?
+  surface_2020         Float?
+  surface_2019         Float?
+  nombre_2022          Float?
+  nombre_2021          Float?
+  nombre_2020          Float?
+  nombre_2019          Float?
+  code_geographique    String?
+  libelle_geographique String?
+  libelle_departement  String?
+  libelle_petr         String?
+  ept                  String?
+
+  @@schema("databases")
+}
+
+view qualite_sites_baignade_by_territoire {
+  index                BigInt  @id
+  DEP_NOM              String?
+  DEP_NUM              String?
+  TYPE                 String?
+  COMMUNE              String?
+  POINT                String?
+  LONG                 Float?
+  LAT                  Float?
+  QEB_2013             String?
+  QEB_2014             String?
+  QEB_2015             String?
+  QEB_2016             String?
+  QEB_2017             String?
+  QEB_2018             String?
+  QEB_2019             String?
+  QEB_2020             String?
+  libelle_pnr          String?
+  libelle_petr         String?
+  ept                  String?
+  libelle_epci         String?
+  libelle_departement  String?
+  libelle_geographique String?
+
+  @@schema("databases")
+}
+
+view etat_cours_deau_by_commune {
+  code_geographique String? @db.VarChar
+  epci              String? @db.VarChar
+  centroid          String?
+  name              String? @db.VarChar
+  pk                Int @id
+  etateco           String? @db.VarChar
+  geometry          String?
+
+  @@schema("postgis")
+}
+
+view etat_cours_deau_by_epci {
+  pk       Int @id
+  epci     String? @db.VarChar
+  name     String? @db.VarChar
+  etateco  String? @db.VarChar
+  geometry String?
+
   @@schema("postgis")
 }
