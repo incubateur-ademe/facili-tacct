@@ -393,11 +393,12 @@ model ressources_eau {
   libelle_pnr          String?
 
   @@index([index], map: "ix_ressources_eau_new_index")
-  @@index([code_geographique], map: "ressources_eau_new_communes_index")
-  @@index([departement], map: "ressources_eau_new_departement_index")
-  @@index([epci], map: "ressources_eau_new_epci_index")
-  @@index([libelle_petr], map: "ressources_eau_new_petr_index")
-  @@index([code_pnr], map: "ressources_eau_new_pnr_index")
+  @@index([code_geographique], map: "ressources_eau_communes_index")
+  @@index([departement], map: "ressources_eau_departement_index")
+  @@index([epci], map: "ressources_eau_epci_index")
+  @@index([ept], map: "ressources_eau_ept_index")
+  @@index([libelle_petr], map: "ressources_eau_petr_index")
+  @@index([code_pnr], map: "ressources_eau_pnr_index")
   @@schema("databases")
 }
 
@@ -665,6 +666,53 @@ model postgis_rga {
   @@index([code_geographique], map: "rga_postgis_index")
   @@map("rga")
   @@schema("postgis")
+}
+
+model surfaces_agricoles {
+  index                                                  BigInt @id
+  epci                                                   String
+  exploitation_sau                                       Float
+  exploitation_sau_terres_arables                        Float
+  exploitation_sau_terres_arables_cereales               Float
+  exploitation_sau_terres_arables_oleagineux             Float
+  exploitation_sau_terres_arables_fourrageres            Float
+  exploitation_sau_terres_arables_tubercules             Float
+  exploitation_sau_terres_arables_legumes_melons_fraises Float
+  exploitation_sau_terres_arables_fleurs                 Float
+  exploitation_sau_terres_arables_autres                 Float
+  exploitation_sau_cultures_permanentes                  Float
+  exploitation_sau_cultures_permanentes_vigne            Float
+  exploitation_sau_cultures_permanentes_fruits           Float
+  exploitation_sau_cultures_permanentes_autres           Float
+  exploitation_sau_herbe                                 Float
+  exploitation_sau_herbe_prairies_productives            Float
+  exploitation_sau_herbe_prairies_peu_productives        Float
+  exploitation_sau_subventions                           Float
+  exploitation_sau_bois_patures                          Float
+  exploitation_sau_jardins                               Float
+  superficie_sau                                         Float
+  superficie_sau_terres_arables                          Float
+  superficie_sau_terres_arables_cereales                 Float
+  superficie_sau_terres_arables_oleagineux               Float
+  superficie_sau_terres_arables_fourrageres              Float
+  superficie_sau_terres_arables_tubercules               Float
+  superficie_sau_terres_arables_legumes_melons_fraises   Float
+  superficie_sau_terres_arables_fleurs                   Float
+  superficie_sau_terres_arables_autres                   Float
+  superficie_sau_cultures_permanentes                    Float
+  superficie_sau_cultures_permanentes_vigne              Float
+  superficie_sau_cultures_permanentes_fruits             Float
+  superficie_sau_cultures_permanentes_autres             Float
+  superficie_sau_herbe                                   Float
+  superficie_sau_herbe_prairies_productives              Float
+  superficie_sau_herbe_prairies_peu_productives          Float
+  superficie_sau_subventions                             Float
+  superficie_sau_bois_patures                            Float
+  superficie_sau_jardins                                 Float
+
+  @@index([index], map: "ix_surfaces_agricoles_index")
+  @@index([epci], map: "surfaces_agricoles_epci_index")
+  @@schema("databases")
 }
 
 view agriculture_bio_with_territoire {
