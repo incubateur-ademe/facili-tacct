@@ -66,7 +66,7 @@ const EtatQualiteCoursDeau = (props: {
   return (
     <>
       {
-        !isLoadingPatch4 ?
+        !isLoadingPatch4 && etatCoursDeau  ?
           <div className={styles.container}>
             <div className={etatCoursDeau?.length ? "w-5/12" : "w-1/2"}>
               <div className={styles.explicationWrapper}>

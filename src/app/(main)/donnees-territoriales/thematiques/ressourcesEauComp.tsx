@@ -9,7 +9,6 @@ import {
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
-import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import EtatQualiteCoursDeau from '../../../../components/themes/ressourcesEau/etatCoursDeau';
@@ -53,10 +52,6 @@ const RessourcesEauComp = ({
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Prélèvements en eau');
   const [selectedSubTab, setSelectedSubTab] = useState('Prélèvements en eau');
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
-  const type = searchParams.get('type')!;
-  const libelle = searchParams.get('libelle')!;
   const { isDark } = useIsDark();
   const darkClass = {
     backgroundColor: fr.colors.getHex({ isDark }).decisions.background.default
