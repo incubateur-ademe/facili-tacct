@@ -25,7 +25,7 @@ export const GetArretesCatnat = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 3000)
+    }, 2000)
   );
   const dbQuery = (async () => {
     try {
@@ -67,7 +67,7 @@ export const GetIncendiesForet = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 3000)
+    }, 2000)
   );
   const dbQuery = (async () => {
     try {

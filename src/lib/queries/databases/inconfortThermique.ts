@@ -13,8 +13,9 @@ export const GetInconfortThermique = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 3000)
+    }, 2000)
   );
+  console.time('GetInconfortThermique');
   const dbQuery = (async () => {
     try {
       if (type === 'ept' && eptRegex.test(libelle)) {
@@ -83,5 +84,6 @@ export const GetInconfortThermique = async (
     }
   })();
   const result = Promise.race([dbQuery, timeoutPromise]);
+  console.timeEnd('GetInconfortThermique');
   return result;
 };

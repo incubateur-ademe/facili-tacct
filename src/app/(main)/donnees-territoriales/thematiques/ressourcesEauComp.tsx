@@ -1,21 +1,18 @@
 'use client';
 
-import { Loader } from '@/components/loader';
 import { PrelevementEau } from '@/components/themes/ressourcesEau/prelevementEau';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   CarteCommunes,
-  EtatCoursDeau,
   RessourcesEau
 } from '@/lib/postgres/models';
-import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
-import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
+import EtatQualiteCoursDeau from '../../../../components/themes/ressourcesEau/etatCoursDeau';
 import styles from '../donnees.module.scss';
 
 interface Props {
@@ -29,12 +26,6 @@ interface Props {
   ressourcesEau: RessourcesEau[];
   carteCommunes: CarteCommunes[];
 }
-const DynamicCoursDeau = dynamic(
-  () => import('../../../../components/themes/ressourcesEau/etatCoursDeau'),
-  {
-    loading: () => <Loader />
-  }
-);
 
 const allComps = [
   {
@@ -46,11 +37,9 @@ const allComps = [
   {
     titre: 'Qualité de l’eau',
     Component: ({
-      etatCoursDeau,
       carteCommunes
-    }: Props & { activeDataTab: string; etatCoursDeau: EtatCoursDeau[] }) => (
-      <DynamicCoursDeau
-        etatCoursDeau={etatCoursDeau}
+    }: Props & { activeDataTab: string; }) => (
+      <EtatQualiteCoursDeau
         carteCommunes={carteCommunes}
       />
     )
@@ -64,7 +53,6 @@ const RessourcesEauComp = ({
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Prélèvements en eau');
   const [selectedSubTab, setSelectedSubTab] = useState('Prélèvements en eau');
-  const [etatCoursDeau, setEtatCoursDeau] = useState<EtatCoursDeau[]>();
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -91,10 +79,6 @@ const RessourcesEauComp = ({
     setSelectedSubTab(
       data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
-    void (async () => {
-      const temp = await GetEtatCoursDeau(code, libelle, type);
-      temp ? setEtatCoursDeau(temp) : void 0;
-    })();
   }, [selectedTabId]);
 
   return (
@@ -163,7 +147,6 @@ const RessourcesEauComp = ({
                       ressourcesEau={ressourcesEau}
                       activeDataTab={selectedSubTab}
                       carteCommunes={carteCommunes}
-                      etatCoursDeau={etatCoursDeau || []}
                     />
                   </Suspense>
                 );

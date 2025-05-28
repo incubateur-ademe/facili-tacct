@@ -15,8 +15,9 @@ export const GetPatch4 = async (
   const timeoutPromise = new Promise<Patch4 | undefined>((resolve) =>
     setTimeout(() => {
       resolve(undefined);
-    }, 2000)
+    }, 1000)
   );
+  console.time("GetPatch4 Execution Time");
   const dbQuery = (async () => {
     try {
       if (type === 'commune' || type === 'epci') {
@@ -56,8 +57,9 @@ export const GetPatch4 = async (
     }
   })();
   const result = await Promise.race([dbQuery, timeoutPromise]);
+  console.timeEnd("GetPatch4 Execution Time");
   if (result === undefined) {
-    console.log('GetPatch4: Timeout reached (2 second), returning undefined.');
+    console.log('GetPatch4: Timeout reached (1 second), returning undefined.');
   }
   return result;
 };

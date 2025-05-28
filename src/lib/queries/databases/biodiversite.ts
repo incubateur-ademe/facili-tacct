@@ -22,7 +22,7 @@ export const GetAgricultureBio = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 3000)
+    }, 2000)
   );
   const dbQuery = (async () => {
     try {
