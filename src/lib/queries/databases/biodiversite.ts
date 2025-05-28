@@ -37,23 +37,22 @@ export const GetAgricultureBio = async (
         //     ]
         //   }
         // });
-        const territoire =
-          await prisma.collectivites_searchbar.findMany({
-            select: {
-              epci: true
-            },
-            where: {
-              AND: [
-                {
-                  epci: { not: null }
-                },
-                {
-                  [column]: libelle
-                }
-              ]
-            },
-            distinct: ['epci']
-          });
+        const territoire = await prisma.collectivites_searchbar.findMany({
+          select: {
+            epci: true
+          },
+          where: {
+            AND: [
+              {
+                epci: { not: null }
+              },
+              {
+                [column]: libelle
+              }
+            ]
+          },
+          distinct: ['epci']
+        });
         const value = await prisma.agriculture_bio.findMany({
           where: {
             epci: {
@@ -93,17 +92,18 @@ export const GetConsommationNAF = async (
         });
         return value;
       } else if (type === 'commune') {
-        const commune = await prisma.collectivites_searchbar.findFirst({
-          where: {
-            code_geographique: code
-          }
-        });
-        const value = await prisma.consommation_espaces_naf.findMany({
-          where: {
-            epci: commune?.epci ?? ''
-          }
-        });
-        return value;
+        // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
+        const value = await prisma.$queryRaw`
+        SELECT c.*
+        FROM consommation_espaces_naf c
+        WHERE c.epci = (
+          SELECT cs.epci
+          FROM collectivites_searchbar cs
+          WHERE cs.code_geographique = ${code}
+          LIMIT 1
+        )
+      `;
+        return value as ConsommationNAF[];
       } else {
         const value = await prisma.consommation_espaces_naf.findMany({
           where: {

@@ -2,7 +2,6 @@
 import { Agriculture } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
-// import { prisma } from '../db';
 import { prisma } from '../redis';
 
 export const GetAgriculture = async (
@@ -40,17 +39,18 @@ export const GetAgriculture = async (
         });
         return value;
       } else if (type === 'commune') {
-        const commune = await prisma.collectivites_searchbar.findFirst({
-          where: {
-            code_geographique: code
-          }
-        });
-        const value = await prisma.agriculture.findMany({
-          where: {
-            epci: commune?.epci ?? ''
-          }
-        });
-        return value;
+        // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
+        const value = await prisma.$queryRaw`
+        SELECT a.*
+        FROM agriculture a
+        WHERE a.epci = (
+          SELECT c.epci
+          FROM collectivites_searchbar c
+          WHERE c.code_geographique = ${code}
+          LIMIT 1
+        )
+      `;
+        return value as Agriculture[];
       } else {
         const value = await prisma.agriculture.findMany({
           where: {

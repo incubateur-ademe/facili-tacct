@@ -295,28 +295,28 @@ model inconfort_thermique {
   age_bati_19_45           Float?
   age_bati_pre_19          Float?
   under_4_sum_1968         Float?
-  to_80_sum_1968           Float?  @map("4_to_80_sum_1968")
+  to_80_sum_1968           Float?
   over_80_sum_1968         Float?
   under_4_sum_1975         Float?
-  to_80_sum_1975           Float?  @map("4_to_80_sum_1975")
+  to_80_sum_1975           Float?
   over_80_sum_1975         Float?
   under_4_sum_1982         Float?
-  to_80_sum_1982           Float?  @map("4_to_80_sum_1982")
+  to_80_sum_1982           Float?
   over_80_sum_1982         Float?
   under_4_sum_1990         Float?
-  to_80_sum_1990           Float?  @map("4_to_80_sum_1990")
+  to_80_sum_1990           Float?
   over_80_sum_1990         Float?
   under_4_sum_1999         Float?
-  to_80_sum_1999           Float?  @map("4_to_80_sum_1999")
+  to_80_sum_1999           Float?
   over_80_sum_1999         Float?
   under_4_sum_2009         Float?
-  to_80_sum_2009           Float?  @map("4_to_80_sum_2009")
+  to_80_sum_2009           Float?
   over_80_sum_2009         Float?
   under_4_sum_2014         Float?
-  to_80_sum_2014           Float?  @map("4_to_80_sum_2014")
+  to_80_sum_2014           Float?
   over_80_sum_2014         Float?
   under_4_sum_2020         Float?
-  to_80_sum_2020           Float?  @map("4_to_80_sum_2020")
+  to_80_sum_2020           Float?
   over_80_sum_2020         Float?
   P20_POP80P               Float?
   P20_POP80P_PSEUL         Float?
@@ -690,6 +690,55 @@ view agriculture_bio_with_territoire {
   @@schema("databases")
 }
 
+view qualite_sites_baignade_by_territoire {
+  index                BigInt  @id
+  DEP_NOM              String?
+  DEP_NUM              String?
+  TYPE                 String?
+  COMMUNE              String?
+  POINT                String?
+  LONG                 Float?
+  LAT                  Float?
+  QEB_2013             String?
+  QEB_2014             String?
+  QEB_2015             String?
+  QEB_2016             String?
+  QEB_2017             String?
+  QEB_2018             String?
+  QEB_2019             String?
+  QEB_2020             String?
+  libelle_pnr          String?
+  libelle_petr         String?
+  ept                  String?
+  libelle_epci         String?
+  libelle_departement  String?
+  libelle_geographique String?
+
+  @@schema("databases")
+}
+
+view etat_cours_deau_by_commune {
+  code_geographique String? @db.VarChar
+  epci              String? @db.VarChar
+  centroid          String?
+  name              String? @db.VarChar
+  pk                Int     @id
+  etateco           String? @db.VarChar
+  geometry          String?
+
+  @@schema("postgis")
+}
+
+view etat_cours_deau_by_epci {
+  pk       Int     @id
+  epci     String? @db.VarChar
+  name     String? @db.VarChar
+  etateco  String? @db.VarChar
+  geometry String?
+
+  @@schema("postgis")
+}
+
 /// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 view pg_stat_statements {
   userid                 Int?     @db.Oid
@@ -774,54 +823,5 @@ view geometry_columns {
   type              String?              @db.VarChar(30)
 
   @@ignore
-  @@schema("postgis")
-}
-
-view qualite_sites_baignade_by_territoire {
-  index                BigInt  @id
-  DEP_NOM              String?
-  DEP_NUM              String?
-  TYPE                 String?
-  COMMUNE              String?
-  POINT                String?
-  LONG                 Float?
-  LAT                  Float?
-  QEB_2013             String?
-  QEB_2014             String?
-  QEB_2015             String?
-  QEB_2016             String?
-  QEB_2017             String?
-  QEB_2018             String?
-  QEB_2019             String?
-  QEB_2020             String?
-  libelle_pnr          String?
-  libelle_petr         String?
-  ept                  String?
-  libelle_epci         String?
-  libelle_departement  String?
-  libelle_geographique String?
-
-  @@schema("databases")
-}
-
-view etat_cours_deau_by_commune {
-  code_geographique String? @db.VarChar
-  epci              String? @db.VarChar
-  centroid          String?
-  name              String? @db.VarChar
-  pk                Int     @id
-  etateco           String? @db.VarChar
-  geometry          String?
-
-  @@schema("postgis")
-}
-
-view etat_cours_deau_by_epci {
-  pk       Int     @id
-  epci     String? @db.VarChar
-  name     String? @db.VarChar
-  etateco  String? @db.VarChar
-  geometry String?
-
   @@schema("postgis")
 }
