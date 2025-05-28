@@ -28,6 +28,7 @@ const csp = {
     'script-src': [
         "'self'",
         "'unsafe-inline'",
+        'blob:',
         'https://stats.beta.gouv.fr',
         process.env.NEXT_PUBLIC_ENV === 'preprod' && 'https://vercel.live',
         process.env.NODE_ENV === 'development' &&
@@ -54,7 +55,11 @@ const csp = {
     'upgrade-insecure-requests': [],
     'frame-src': [
         "'none'" // Iframe source
-    ]
+    ],
+    'worker-src': [
+        "'self'",
+        'blob:'
+    ],
 };
 
 const ContentSecurityPolicy = Object.entries(csp)
