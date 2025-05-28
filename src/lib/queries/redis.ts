@@ -2,16 +2,13 @@ import { Prisma, PrismaClient } from "@/generated/client";
 import Redis from "ioredis";
 import { createPrismaRedisCache } from "prisma-redis-middleware";
 
-// const ca = fs.readFileSync(path.resolve("src/lib/scalingo-redis-ca.pem"));
 const ca = process.env.REDIS_CA?.replace(/\\n/g, '\n');
-
 const redis = new Redis(process.env.SCALINGO_REDIS_URL!, {
   tls: {
     ca: ca ? [ca] : undefined,
     rejectUnauthorized: false, 
   }
 }); 
-
 export const prisma = new PrismaClient();
 
 const cacheMiddleware: Prisma.Middleware = createPrismaRedisCache({
@@ -43,12 +40,12 @@ const cacheMiddleware: Prisma.Middleware = createPrismaRedisCache({
   cacheTime: 300,
   excludeModels: ["Product", "Cart"],
   excludeMethods: ["count", "groupBy"],
-  onHit: (key) => {
-    console.log("hit");
-  },
-  onMiss: (key) => {
-    console.log("miss");
-  },
+  // onHit: (key) => {
+  //   console.log("hit");
+  // },
+  // onMiss: (key) => {
+  //   console.log("miss");
+  // },
   onError: (key) => {
     console.log("error", key);
   },
@@ -69,5 +66,3 @@ async function setupCacheMiddleware() {
 }
 
 setupCacheMiddleware();
-
-// prisma.$use(cacheMiddleware);
