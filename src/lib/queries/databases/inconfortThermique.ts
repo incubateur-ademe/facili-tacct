@@ -1,5 +1,6 @@
 'use server';
 
+import { InconfortThermique } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
 import { prisma } from '../redis';
@@ -8,7 +9,7 @@ export const GetInconfortThermique = async (
   code: string | undefined,
   libelle: string,
   type: string
-) => {
+): Promise<InconfortThermique[]> => {
   //race Promise pour éviter un crash de la requête lorsqu'elle est trop longue
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
@@ -37,7 +38,7 @@ export const GetInconfortThermique = async (
           )
           LIMIT 200
         `;
-        return value;
+        return value as InconfortThermique[];
       } else if (type === 'petr') {
         const value = await prisma.inconfort_thermique.findMany({
           where: {
