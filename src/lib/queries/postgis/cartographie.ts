@@ -8,6 +8,7 @@ import {
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
 // import { PrismaPostgres } from '../db';
+import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../redis';
 
 export const GetCommunes = async (
@@ -21,10 +22,17 @@ export const GetCommunes = async (
       resolve([]);
     }, 3000)
   );
+  const column = ColumnCodeCheck(type);
   const dbQuery = (async () => {
     try {
-      if (type === 'commune') {
-        const value = await prisma.$queryRaw<CarteCommunes[]>`
+      // Fast existence check
+      const exists = await prisma.communes_drom.findFirst({
+        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+      });
+      if (!exists) return [];
+      else {
+        if (type === 'commune') {
+          const value = await prisma.$queryRaw<CarteCommunes[]>`
           SELECT 
           epci, 
           libelle_epci,
@@ -44,9 +52,9 @@ export const GetCommunes = async (
           WHERE epci = (
             SELECT epci FROM postgis."communes_drom" WHERE code_geographique = ${code} LIMIT 1
             );`;
-        return value;
-      } else if (type === 'ept' && eptRegex.test(libelle)) {
-        const value = await prisma.$queryRaw<CarteCommunes[]>`
+          return value;
+        } else if (type === 'ept' && eptRegex.test(libelle)) {
+          const value = await prisma.$queryRaw<CarteCommunes[]>`
         SELECT 
           epci, 
           libelle_epci,
@@ -63,9 +71,9 @@ export const GetCommunes = async (
           surface,
           ST_AsGeoJSON(geometry) geometry 
           FROM postgis."communes_drom" WHERE epci='200054781';`;
-        return value;
-      } else if (type === 'epci' && !eptRegex.test(libelle)) {
-        const value = await prisma.$queryRaw<CarteCommunes[]>`
+          return value;
+        } else if (type === 'epci' && !eptRegex.test(libelle)) {
+          const value = await prisma.$queryRaw<CarteCommunes[]>`
         SELECT 
           epci, 
           libelle_epci,
@@ -82,9 +90,9 @@ export const GetCommunes = async (
           surface,
           ST_AsGeoJSON(geometry) geometry 
           FROM postgis."communes_drom" WHERE epci=${code};`;
-        return value;
-      } else if (type === 'pnr') {
-        const value = await prisma.$queryRaw<CarteCommunes[]>`
+          return value;
+        } else if (type === 'pnr') {
+          const value = await prisma.$queryRaw<CarteCommunes[]>`
         SELECT 
           epci, 
           libelle_epci,
@@ -101,9 +109,9 @@ export const GetCommunes = async (
           surface,
           ST_AsGeoJSON(geometry) geometry 
           FROM postgis."communes_drom" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
-        return value;
-      } else if (type === 'petr') {
-        const value = await prisma.$queryRaw<CarteCommunes[]>`
+          return value;
+        } else if (type === 'petr') {
+          const value = await prisma.$queryRaw<CarteCommunes[]>`
         SELECT 
           epci, 
           libelle_epci,
@@ -120,9 +128,9 @@ export const GetCommunes = async (
           surface,
           ST_AsGeoJSON(geometry) geometry 
           FROM postgis."communes_drom" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
-        return value;
-      } else {
-        const value = await prisma.$queryRaw<CarteCommunes[]>`
+          return value;
+        } else {
+          const value = await prisma.$queryRaw<CarteCommunes[]>`
         SELECT 
           epci, 
           libelle_epci,
@@ -139,7 +147,8 @@ export const GetCommunes = async (
           surface,
           ST_AsGeoJSON(geometry) geometry 
           FROM postgis."communes_drom" WHERE departement=${code};`;
-        return value;
+          return value;
+        }
       }
     } catch (error) {
       console.error(error);
@@ -163,57 +172,65 @@ export const GetClcTerritoires = async (
       resolve(undefined);
     }, 5000)
   );
+  const column = ColumnCodeCheck(type);
   const dbQuery = (async () => {
     try {
-      if (type === 'commune') {
-        const value = await prisma.$queryRaw<CLCTerritoires[]>`
-        SELECT 
-        legend, 
-        ST_AsText(ST_Centroid(geometry)) centroid,
-        ST_AsGeoJSON(geometry) geometry
-        FROM postgis."clc_territoires" WHERE code_geographique=${code};`;
-        return value.length ? value : undefined;
-      } else if (type === 'ept' && eptRegex.test(libelle)) {
-        const value = await prisma.$queryRaw<CLCTerritoires[]>`
-        SELECT 
-        legend, 
-        ST_AsText(ST_Centroid(geometry)) centroid,
-        ST_AsGeoJSON(geometry) geometry
-        FROM postgis."clc_territoires" WHERE ept IS NOT NULL AND ept=${libelle};`;
-        return value.length ? value : undefined;
-      } else if (type === 'epci' && !eptRegex.test(libelle)) {
-        const value = await prisma.$queryRaw<CLCTerritoires[]>`
-        SELECT 
-        legend, 
-        ST_AsText(ST_Centroid(geometry)) centroid,
-        ST_AsGeoJSON(geometry) geometry
-        FROM postgis."clc_territoires" WHERE epci=${code};`;
-        return value.length ? value : undefined;
-      } else if (type === 'pnr') {
-        const value = await prisma.$queryRaw<CLCTerritoires[]>`
-        SELECT 
-        legend, 
-        ST_AsText(ST_Centroid(geometry)) centroid,
-        ST_AsGeoJSON(geometry) geometry
-        FROM postgis."clc_territoires" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
-        return value.length ? value : undefined;
-      } else if (type === 'petr') {
-        const value = await prisma.$queryRaw<CLCTerritoires[]>`
-        SELECT 
-        legend, 
-        ST_AsText(ST_Centroid(geometry)) centroid,
-        ST_AsGeoJSON(geometry) geometry
-        FROM postgis."clc_territoires" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
-        return value.length ? value : undefined;
-      } else if (type === 'departement') {
-        const value = await prisma.$queryRaw<CLCTerritoires[]>`
-        SELECT 
-        legend, 
-        ST_AsText(ST_Centroid(geometry)) centroid,
-        ST_AsGeoJSON(geometry) geometry
-        FROM postgis."clc_territoires" WHERE departement=${code};`;
-        return value.length ? value : undefined;
-      } else return undefined;
+      // Fast existence check
+      const exists = await prisma.clc_territoires.findFirst({
+        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+      });
+      if (!exists) return undefined;
+      else {
+        if (type === 'commune') {
+          const value = await prisma.$queryRaw<CLCTerritoires[]>`
+            SELECT 
+            legend, 
+            ST_AsText(ST_Centroid(geometry)) centroid,
+            ST_AsGeoJSON(geometry) geometry
+            FROM postgis."clc_territoires" WHERE code_geographique=${code};`;
+          return value.length ? value : undefined;
+        } else if (type === 'ept' && eptRegex.test(libelle)) {
+          const value = await prisma.$queryRaw<CLCTerritoires[]>`
+            SELECT 
+            legend, 
+            ST_AsText(ST_Centroid(geometry)) centroid,
+            ST_AsGeoJSON(geometry) geometry
+            FROM postgis."clc_territoires" WHERE ept IS NOT NULL AND ept=${libelle};`;
+          return value.length ? value : undefined;
+        } else if (type === 'epci' && !eptRegex.test(libelle)) {
+          const value = await prisma.$queryRaw<CLCTerritoires[]>`
+            SELECT 
+            legend, 
+            ST_AsText(ST_Centroid(geometry)) centroid,
+            ST_AsGeoJSON(geometry) geometry
+            FROM postgis."clc_territoires" WHERE epci=${code};`;
+          return value.length ? value : undefined;
+        } else if (type === 'pnr') {
+          const value = await prisma.$queryRaw<CLCTerritoires[]>`
+            SELECT 
+            legend, 
+            ST_AsText(ST_Centroid(geometry)) centroid,
+            ST_AsGeoJSON(geometry) geometry
+            FROM postgis."clc_territoires" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
+          return value.length ? value : undefined;
+        } else if (type === 'petr') {
+          const value = await prisma.$queryRaw<CLCTerritoires[]>`
+            SELECT 
+            legend, 
+            ST_AsText(ST_Centroid(geometry)) centroid,
+            ST_AsGeoJSON(geometry) geometry
+            FROM postgis."clc_territoires" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
+          return value.length ? value : undefined;
+        } else if (type === 'departement') {
+          const value = await prisma.$queryRaw<CLCTerritoires[]>`
+            SELECT 
+            legend, 
+            ST_AsText(ST_Centroid(geometry)) centroid,
+            ST_AsGeoJSON(geometry) geometry
+            FROM postgis."clc_territoires" WHERE departement=${code};`;
+          return value.length ? value : undefined;
+        } else return undefined;
+      }
     } catch (error) {
       console.error(error);
       return undefined;
