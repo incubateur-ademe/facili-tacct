@@ -214,14 +214,14 @@ const InconfortThermiqueComp = ({
                 )?.Component;
                 if (!Component) return null;
                 return (
-                    <Component
-                      data={data}
-                      inconfortThermique={inconfortThermique}
-                      carteCommunes={carteCommunes}
-                      activeDataTab={selectedSubTab}
-                      clc={clc}
-                      departement={departement}
-                    />
+                  <Component
+                    data={data}
+                    inconfortThermique={inconfortThermique}
+                    carteCommunes={carteCommunes}
+                    activeDataTab={selectedSubTab}
+                    clc={clc}
+                    departement={departement}
+                  />
                 );
               })()}
             </div>
