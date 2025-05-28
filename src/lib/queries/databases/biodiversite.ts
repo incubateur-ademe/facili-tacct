@@ -2,23 +2,14 @@
 import { AgricultureBio, AOT40, ConsommationNAF } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
-// import { prisma } from '../db';
+import { ColumnCodeCheck, ColumnLibelleCheck } from '../columns';
 import { prisma } from '../redis';
 
 export const GetAgricultureBio = async (
   libelle: string,
   type: string
 ): Promise<AgricultureBio[]> => {
-  const column =
-    type === 'petr'
-      ? 'libelle_petr'
-      : type === 'ept' && eptRegex.test(libelle)
-        ? 'ept'
-        : type === 'epci' && !eptRegex.test(libelle)
-          ? 'libelle_epci'
-          : type === 'departement'
-            ? 'libelle_departement'
-            : 'libelle_geographique';
+  const column = ColumnLibelleCheck(type);
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
@@ -26,41 +17,48 @@ export const GetAgricultureBio = async (
   );
   const dbQuery = (async () => {
     try {
-      if (type === 'pnr') {
-        return [];
-      } else {
-        // const value = await prisma.agriculture_bio_with_territoire.findMany({
-        //   where: {
-        //     AND: [
-        //       { epci: { not: null } },
-        //       { [column]: libelle }
-        //     ]
-        //   }
-        // });
-        const territoire = await prisma.collectivites_searchbar.findMany({
-          select: {
-            epci: true
-          },
-          where: {
-            AND: [
-              {
-                epci: { not: null }
-              },
-              {
-                [column]: libelle
+      // Fast existence check
+      const exists = await prisma.collectivites_searchbar.findFirst({
+        where: { [column]: libelle }
+      });
+      if (!exists) return [];
+      else {
+        if (type === 'pnr') {
+          return [];
+        } else {
+          // const value = await prisma.agriculture_bio_with_territoire.findMany({
+          //   where: {
+          //     AND: [
+          //       { epci: { not: null } },
+          //       { [column]: libelle }
+          //     ]
+          //   }
+          // });
+          const territoire = await prisma.collectivites_searchbar.findMany({
+            select: {
+              epci: true
+            },
+            where: {
+              AND: [
+                {
+                  epci: { not: null }
+                },
+                {
+                  [column]: libelle
+                }
+              ]
+            },
+            distinct: ['epci']
+          });
+          const value = await prisma.agriculture_bio.findMany({
+            where: {
+              epci: {
+                in: territoire.map((t) => t.epci) as string[]
               }
-            ]
-          },
-          distinct: ['epci']
-        });
-        const value = await prisma.agriculture_bio.findMany({
-          where: {
-            epci: {
-              in: territoire.map((t) => t.epci) as string[]
             }
-          }
-        });
-        return value as AgricultureBio[];
+          });
+          return value as AgricultureBio[];
+        }
       }
     } catch (error) {
       console.error(error);
@@ -82,18 +80,25 @@ export const GetConsommationNAF = async (
       resolve([]);
     }, 3000)
   );
+  const column = ColumnCodeCheck(type);
   const dbQuery = (async () => {
     try {
-      if (type === 'petr' || eptRegex.test(libelle)) {
-        const value = await prisma.consommation_espaces_naf.findMany({
-          where: {
-            [type === 'petr' ? 'libelle_petr' : 'ept']: libelle
-          }
-        });
-        return value;
-      } else if (type === 'commune') {
-        // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
-        const value = await prisma.$queryRaw`
+      // Fast existence check
+      const exists = await prisma.consommation_espaces_naf.findFirst({
+        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+      });
+      if (!exists) return [];
+      else {
+        if (type === 'petr' || eptRegex.test(libelle)) {
+          const value = await prisma.consommation_espaces_naf.findMany({
+            where: {
+              [type === 'petr' ? 'libelle_petr' : 'ept']: libelle
+            }
+          });
+          return value;
+        } else if (type === 'commune') {
+          // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
+          const value = await prisma.$queryRaw`
         SELECT c.*
         FROM consommation_espaces_naf c
         WHERE c.epci = (
@@ -103,20 +108,21 @@ export const GetConsommationNAF = async (
           LIMIT 1
         )
       `;
-        return value as ConsommationNAF[];
-      } else {
-        const value = await prisma.consommation_espaces_naf.findMany({
-          where: {
-            [type === 'epci'
-              ? 'epci'
-              : type === 'pnr'
-                ? 'code_pnr'
-                : type === 'departement'
-                  ? 'departement'
-                  : '']: code
-          }
-        });
-        return value;
+          return value as ConsommationNAF[];
+        } else {
+          const value = await prisma.consommation_espaces_naf.findMany({
+            where: {
+              [type === 'epci'
+                ? 'epci'
+                : type === 'pnr'
+                  ? 'code_pnr'
+                  : type === 'departement'
+                    ? 'departement'
+                    : '']: code
+            }
+          });
+          return value;
+        }
       }
     } catch (error) {
       console.error(error);
