@@ -1,12 +1,12 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
-import { MapRGA } from '@/components/maps/mapRGA';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { RGAMapper } from '@/lib/mapper/gestionRisques';
 import { CarteCommunes, RGACarte } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
 import styles from '../agriculture/agriculture.module.scss';
+import CarteFacileTemplate from './CarteFacile';
 
 export const RGA = ({
   carteCommunes,
@@ -30,6 +30,10 @@ export const RGA = ({
   });
   const rgaMap = rgaCarte.map(RGAMapper);
 
+  const featureCollection = {
+    type: "FeatureCollection",
+    features: rgaMap
+  };
   const surfaceTerritoire = type === "commune" ?
     communesMap.find((obj) => obj.properties.code_geographique === code)?.properties.surfacesIrriguees
     : communesMap
@@ -70,7 +74,7 @@ export const RGA = ({
                 {
                   communesMap.length > 0 ? (
                     <>
-                      <MapRGA carteCommunes={communesMap} rgaCarte={rgaMap} />
+                      <CarteFacileTemplate rgaCarte={featureCollection} carteCommunes={communesMap} />
                     </>
                   ) : (
                     <DataNotFoundForGraph image={DataNotFound} />
