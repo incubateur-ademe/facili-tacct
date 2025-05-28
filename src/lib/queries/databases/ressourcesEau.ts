@@ -15,66 +15,66 @@ export const GetRessourceEau = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 4500)
+    }, 5000)
   );
   const dbQuery = (async () => {
     try {
       if (type === 'commune') {
-        console.time('Query Execution Time RESSOURCES EAUX');
-        const value = await prisma.ressources_eau.findMany({
-          where: {
-            departement: (
-              await prisma.ressources_eau.findFirst({
-                where: { code_geographique: code },
-                select: { departement: true }
-              })
-            )?.departement
-          }
-        });
-        console.timeEnd('Query Execution Time RESSOURCES EAUX');
-        return value;
+        console.time('Query Execution Time PRELEVEMENT EAUX');
+        const value = await prisma.$queryRaw`
+          SELECT *
+          FROM ressources_eau
+          WHERE departement = (
+            SELECT departement
+            FROM ressources_eau
+            WHERE code_geographique = ${code}
+            LIMIT 1
+          )
+        `;
+        console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
+        return value as RessourcesEau[];
       } else if (type === 'epci') {
         console.time('Query Execution Time PRELEVEMENT EAUX');
-        const value = await prisma.ressources_eau.findMany({
-          where: {
-            departement: (
-              await prisma.ressources_eau.findFirst({
-                where: { epci: code },
-                select: { departement: true }
-              })
-            )?.departement
-          }
-        });
+        const value = await prisma.$queryRaw`
+          SELECT *
+          FROM ressources_eau
+          WHERE departement = (
+            SELECT departement
+            FROM ressources_eau
+            WHERE epci = ${code}
+            LIMIT 1
+          )
+        `;
         console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
-        return value;
+        return value as RessourcesEau[];
       } else if (type === 'petr') {
-        console.time('Query Execution Time RESSOURCES EAUX');
-        const value = await prisma.ressources_eau.findMany({
-          where: {
-            departement: (
-              await prisma.ressources_eau.findFirst({
-                where: { libelle_petr: libelle },
-                select: { departement: true }
-              })
-            )?.departement
-          }
-        });
-        console.timeEnd('Query Execution Time RESSOURCES EAUX');
-        return value;
+        console.time('Query Execution Time PRELEVEMENT EAUX');
+        const value = await prisma.$queryRaw`
+          SELECT *
+          FROM ressources_eau
+          WHERE departement = (
+            SELECT departement
+            FROM ressources_eau
+            WHERE libelle_petr = ${libelle}
+            LIMIT 1
+          )
+        `;
+        console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
+        return value as RessourcesEau[];
       } else if (type === 'ept') {
-        console.time('Query Execution Time RESSOURCES EAUX');
-        const value = await prisma.ressources_eau.findMany({
-          where: {
-            departement: (
-              await prisma.ressources_eau.findFirst({
-                where: { ept: libelle },
-                select: { departement: true }
-              })
-            )?.departement
-          }
-        });
-        console.timeEnd('Query Execution Time RESSOURCES EAUX');
-        return value;
+        console.time('Query Execution Time PRELEVEMENT EAUX');
+        const value = await prisma.$queryRaw`
+          SELECT *
+          FROM ressources_eau
+          WHERE departement = (
+            SELECT departement
+            FROM ressources_eau
+            WHERE ept = ${libelle}
+            LIMIT 1
+          )
+        `;
+        console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
+        return value as RessourcesEau[];
       } else if (type === 'departement') {
         console.time('Query Execution Time RESSOURCES EAUX');
         const value = await prisma.ressources_eau.findMany({
@@ -129,12 +129,11 @@ export const GetQualiteEauxBaignade = async (
       return value;
     } else {
       console.time('Query Execution Time QUALITE EAUX BAIGNADE');
-      const value =
-        await prisma.qualite_sites_baignade_by_territoire.findMany({
-          where: {
-            [column]: libelle
-          }
-        });
+      const value = await prisma.qualite_sites_baignade_by_territoire.findMany({
+        where: {
+          [column]: libelle
+        }
+      });
       console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
       return value as QualiteSitesBaignade[];
     }

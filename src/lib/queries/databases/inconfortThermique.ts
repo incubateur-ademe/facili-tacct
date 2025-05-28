@@ -26,17 +26,17 @@ export const GetInconfortThermique = async (
         });
         return value;
       } else if (type === 'commune') {
-        const commune = await prisma.inconfort_thermique.findFirst({
-          where: {
-            code_geographique: code
-          }
-        });
-        const value = await prisma.inconfort_thermique.findMany({
-          where: {
-            epci: commune?.epci
-          },
-          take: 200
-        });
+        const value = await prisma.$queryRaw`
+          SELECT *
+          FROM inconfort_thermique
+          WHERE epci = (
+            SELECT epci
+            FROM inconfort_thermique
+            WHERE code_geographique = ${code}
+            LIMIT 1
+          )
+          LIMIT 200
+        `;
         return value;
       } else if (type === 'petr') {
         const value = await prisma.inconfort_thermique.findMany({
