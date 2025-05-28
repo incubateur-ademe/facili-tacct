@@ -25,10 +25,10 @@ export const GetAgriculture = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       console.log(
-        'GetAgriculture: Timeout reached (3 seconds), returning empty array.'
+        'GetAgriculture: Timeout reached (2 seconds), returning empty array.'
       );
       resolve([]);
-    }, 3000)
+    }, 2000)
   );
   const dbQuery = (async () => {
     try {
