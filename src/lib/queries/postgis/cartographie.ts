@@ -19,7 +19,7 @@ export const GetCommunes = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 5000)
+    }, 3000)
   );
   const dbQuery = (async () => {
     try {
@@ -149,6 +149,7 @@ export const GetCommunes = async (
       return [];
     }
   })();
+
   return Promise.race([dbQuery, timeoutPromise]);
 };
 
