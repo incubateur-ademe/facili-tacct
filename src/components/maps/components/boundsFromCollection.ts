@@ -26,8 +26,6 @@ export const BoundsFromCollection = (
 
 export const BoundsFromCollectionCLC = (
   collection: ClcDto[],
-  type: string,
-  code: string
 ) => {
   const featureCollection = turf.featureCollection(collection as Any);
   const bbox = turf.bboxPolygon(turf.bbox(featureCollection));
