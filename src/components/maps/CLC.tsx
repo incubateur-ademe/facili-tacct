@@ -20,7 +20,7 @@ export const CLCMap = (props: { clc: CLCTerritoires[] }) => {
   const type = searchParams.get('type')!;
   const clcParsed = clc.map(ClcMapper);
   const mapRef = useRef(null);
-  const enveloppe = BoundsFromCollectionCLC(clcParsed, type, code);
+  const enveloppe = BoundsFromCollectionCLC(clcParsed);
 
   const getColor = (d: string) => {
     const color = Object.entries(vegetalisationColors)
