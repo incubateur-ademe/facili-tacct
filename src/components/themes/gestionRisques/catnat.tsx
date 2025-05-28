@@ -162,7 +162,7 @@ export const Catnat = (props: {
                       secheresse === 'Intensité forte' ? (
                       <TagItem
                         icon={secheresseIcon}
-                        indice="Fortes chaleurs"
+                        indice="Sécheresse des sols"
                         tag={secheresse}
                       />
                     ) : null}
