@@ -1,7 +1,7 @@
 'use server';
 import { Agriculture } from '@/lib/postgres/models';
-import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
+import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../redis';
 
 export const GetAgriculture = async (
@@ -9,18 +9,7 @@ export const GetAgriculture = async (
   libelle: string,
   type: string
 ): Promise<Agriculture[]> => {
-  const column =
-    type === 'pnr'
-      ? 'code_pnr'
-      : type === 'petr'
-        ? 'libelle_petr'
-        : type === 'ept' && eptRegex.test(libelle)
-          ? 'ept'
-          : type === 'epci' && !eptRegex.test(libelle)
-            ? 'epci'
-            : type === 'departement'
-              ? 'departement'
-              : 'code_geographique';
+  const column = ColumnCodeCheck(type);
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       console.log(
@@ -31,16 +20,22 @@ export const GetAgriculture = async (
   );
   const dbQuery = (async () => {
     try {
-      if (type === 'ept' || type === 'petr') {
-        const value = await prisma.agriculture.findMany({
-          where: {
-            [column]: libelle
-          }
-        });
-        return value;
-      } else if (type === 'commune') {
-        // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
-        const value = await prisma.$queryRaw`
+      // Fast existence check
+      const exists = await prisma.agriculture.findFirst({
+        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+      });
+      if (!exists) return [];
+      else {
+        if (type === 'ept' || type === 'petr') {
+          const value = await prisma.agriculture.findMany({
+            where: {
+              [column]: libelle
+            }
+          });
+          return value;
+        } else if (type === 'commune') {
+          // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
+          const value = await prisma.$queryRaw`
         SELECT a.*
         FROM agriculture a
         WHERE a.epci = (
@@ -50,14 +45,15 @@ export const GetAgriculture = async (
           LIMIT 1
         )
       `;
-        return value as Agriculture[];
-      } else {
-        const value = await prisma.agriculture.findMany({
-          where: {
-            [column]: code
-          }
-        });
-        return value;
+          return value as Agriculture[];
+        } else {
+          const value = await prisma.agriculture.findMany({
+            where: {
+              [column]: code
+            }
+          });
+          return value;
+        }
       }
     } catch (error) {
       console.error(error);
