@@ -21,11 +21,11 @@ import { SurfacesIrrigueesTooltip } from './components/tooltips';
 const getColor = (d: number) => {
   return d === 0
     ? '#D8EFFA'
-    : d > 0
+    : d > 0 && d <= 20
       ? '#3DB6EA'
-      : d > 20
+      : d > 20 && d <= 40
         ? '#0072B5'
-        : d > 40
+        : d > 40 && d <= 60
           ? '#03508B'
           : d > 60 && d <= 100
             ? '#093454'
