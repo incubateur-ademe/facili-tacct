@@ -87,13 +87,9 @@ const RgaDataViz = (props: Props) => {
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.catnatGraphTitleWrapper}>
-        <h2>Retrait gonflement des argiles</h2>
+        <h2>Retrait-gonflement des argiles</h2>
         <SubTabs
-          data={
-            type === "commune"
-              ? ['Répartition', 'Évolution']
-              : ['Répartition', 'Évolution', 'Cartographie']
-          }
+          data={['Répartition', 'Évolution', 'Cartographie']}
           defaultTab={datavizTab}
           setValue={setDatavizTab}
         />
