@@ -505,7 +505,47 @@ export type RGACarte = {
   alea: string;
   code_geographique: string;
   geometry: string;
-}
+};
+
+export type RGAdb = {
+  index: bigint;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  nb_logement: number;
+  nb_logement_alea_moyen_fort: number;
+  nb_logement_alea_faible: number;
+  nb_logement_sans_alea: number;
+  nb_logement_alea_moyen_fort_avant_1920: number;
+  nb_logement_alea_moyen_fort_1920_1945: number;
+  nb_logement_alea_moyen_fort_1945_1975: number;
+  nb_logement_alea_moyen_fort_apres_1975: number;
+  nb_logement_alea_faible_avant_1920: number;
+  nb_logement_alea_faible_1920_1945: number;
+  nb_logement_alea_faible_1945_1975: number;
+  nb_logement_alea_faible_apres_1975: number;
+  surface_commune: number;
+  surface_alea_faible_commune: number;
+  surface_alea_moyen_fort_commune: number;
+  part_logement_alea_moyen_fort_avant_1920: number;
+  part_logement_alea_moyen_fort_1920_1945: number;
+  part_logement_alea_moyen_fort_1945_1975: number;
+  part_logement_alea_moyen_fort_apres_1975: number;
+  part_logement_alea_faible_avant_1920: number;
+  part_logement_alea_faible_1920_1945: number;
+  part_logement_alea_faible_1945_1975: number;
+  part_logement_alea_faible_apres_1975: number;
+  part_alea_faible_commune: number;
+  part_alea_moyen_fort_commune: number;
+};
 
 export type Patch4 = {
   index: bigint;

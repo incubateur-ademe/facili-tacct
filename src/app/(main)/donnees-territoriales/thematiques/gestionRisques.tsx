@@ -1,6 +1,7 @@
 import {
   GetArretesCatnat,
-  GetIncendiesForet
+  GetIncendiesForet,
+  GetRga
 } from '@/lib/queries/databases/gestionRisques';
 import {
   GetCommunes,
@@ -20,6 +21,7 @@ const GestionRisques = async (props: { searchParams: SearchParams }) => {
   const erosionCotiere = await GetErosionCotiere(code, libelle, type);
   const dbIncendiesForet = await GetIncendiesForet(code, libelle, type);
   const rgaCarte = await GetRGACarte(code, libelle, type);
+  const rgaDb = await GetRga(code, libelle, type);
 
   return (
     <div className={styles.container}>
@@ -31,6 +33,7 @@ const GestionRisques = async (props: { searchParams: SearchParams }) => {
           erosionCotiere={erosionCotiere}
           incendiesForet={dbIncendiesForet}
           rgaCarte={rgaCarte}
+          rga={rgaDb}
         />
       </Suspense>
     </div>

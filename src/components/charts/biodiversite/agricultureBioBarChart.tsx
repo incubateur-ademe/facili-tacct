@@ -5,7 +5,6 @@ import { AgricultureBio } from "@/lib/postgres/models";
 import { Round } from "@/lib/utils/reusableFunctions/round";
 import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import { BarDatum, BarTooltipProps } from "@nivo/bar";
-import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NivoBarChart } from "../NivoBarChart";
 
@@ -51,9 +50,6 @@ const graphDataFunct = (filteredYears: string[], data: AgricultureBio[]) => {
 export const AgricultureBioBarChart = (
   { agricultureBio, sliderValue }: { agricultureBio: AgricultureBio[], sliderValue: number[] }
 ) => {
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
-  const libelle = searchParams.get('libelle')!;
   const [selectedYears, setSelectedYears] = useState<string[]>(agricultureBioYears.map(year => year.split("_")[1]));
   const collectiviteName = agricultureBio[0].libelle_epci;
   const graphData = graphDataFunct(selectedYears, agricultureBio)
@@ -112,7 +108,6 @@ export const AgricultureBioBarChart = (
       </div>
     );
   }
-
   return (
     <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
       {graphData && graphData.length ?
