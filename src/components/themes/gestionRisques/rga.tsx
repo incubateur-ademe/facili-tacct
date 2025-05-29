@@ -7,6 +7,7 @@ import { CarteCommunes, RGACarte, RGAdb } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import styles from '../agriculture/agriculture.module.scss';
+import { RGAText } from '../inconfortThermique/staticTexts';
 import RgaDataViz from './rgaDataviz';
 
 export const RGA = ({
@@ -38,17 +39,9 @@ export const RGA = ({
     type: "FeatureCollection",
     features: rgaMap
   };
-  const surfaceTerritoire = type === "commune" ?
-    communesMap.find((obj) => obj.properties.code_geographique === code)?.properties.surfacesIrriguees
-    : communesMap
-      .map((obj) => obj.properties.surfacesIrriguees)
-      .map((value) => (isNaN(value!) ? 0 : value))
-      .reduce((acc, value) => acc! + value!, 0);
-
 
   console.log("communesMap", communesMap);
   console.log("rgaMap", rgaMap);
-  console.log("surfaceTerritoire", surfaceTerritoire);
 
   return (
     <>
@@ -58,20 +51,14 @@ export const RGA = ({
             <div className={communesMap.length > 0 ? "w-2/5" : "w-1/2"}>
               <div className={styles.explicationWrapper}>
                 {
-                  surfaceTerritoire && communesMap.length > 0 ? (
+                  communesMap.length > 0 ? (
                     <p style={{ color: '#161616' }}>
-                      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                      Sur votre territoire, le retrait-gonflement des argiles est évalué à{' '}
                     </p>
                   ) : ""
                 }
               </div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                irure dolor in reprehenderit in voluptate velit esse cillum
-              </p>
+              <RGAText />
             </div>
             <div className={communesMap.length > 0 ? "w-3/5" : "w-1/2"}>
               {
@@ -88,9 +75,6 @@ export const RGA = ({
                         <b>Retrait gonflement des argiles</b>
                       </p>
                       <DataNotFoundForGraph image={DataNotFound} />
-                      <p style={{ padding: '1em', margin: '0' }}>
-                        XXXXXXXXXXX
-                      </p>
                     </div>
                   )
               }
