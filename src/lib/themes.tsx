@@ -170,6 +170,13 @@ export const themes = {
       facteurSensibilite: 'Superficies irriguées',
       risque: '',
       donnee: ''
+    },
+    {
+      id: 2,
+      titre: 'Surfaces agricoles',
+      facteurSensibilite: 'Surfaces agricoles',
+      risque: '',
+      donnee: ''
     }
   ]
 };

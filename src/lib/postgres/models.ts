@@ -547,6 +547,49 @@ export type RGAdb = {
   part_alea_moyen_fort_commune: number;
 };
 
+export type SurfacesAgricolesModel = {
+  index: bigint;
+  epci: string;
+  exploitation_sau: number;
+  exploitation_sau_terres_arables: number;
+  exploitation_sau_terres_arables_cereales: number;
+  exploitation_sau_terres_arables_oleagineux: number;
+  exploitation_sau_terres_arables_fourrageres: number;
+  exploitation_sau_terres_arables_tubercules: number;
+  exploitation_sau_terres_arables_legumes_melons_fraises: number;
+  exploitation_sau_terres_arables_fleurs: number;
+  exploitation_sau_terres_arables_autres: number;
+  exploitation_sau_cultures_permanentes: number;
+  exploitation_sau_cultures_permanentes_vigne: number;
+  exploitation_sau_cultures_permanentes_fruits: number;
+  exploitation_sau_cultures_permanentes_autres: number;
+  exploitation_sau_herbe: number;
+  exploitation_sau_herbe_prairies_productives: number;
+  exploitation_sau_herbe_prairies_peu_productives: number;
+  exploitation_sau_subventions: number;
+  exploitation_sau_bois_patures: number;
+  exploitation_sau_jardins: number;
+  superficie_sau: number;
+  superficie_sau_terres_arables: number;
+  superficie_sau_terres_arables_cereales: number;
+  superficie_sau_terres_arables_oleagineux: number;
+  superficie_sau_terres_arables_fourrageres: number;
+  superficie_sau_terres_arables_tubercules: number;
+  superficie_sau_terres_arables_legumes_melons_fraises: number;
+  superficie_sau_terres_arables_fleurs: number;
+  superficie_sau_terres_arables_autres: number;
+  superficie_sau_cultures_permanentes: number;
+  superficie_sau_cultures_permanentes_vigne: number;
+  superficie_sau_cultures_permanentes_fruits: number;
+  superficie_sau_cultures_permanentes_autres: number;
+  superficie_sau_herbe: number;
+  superficie_sau_herbe_prairies_productives: number;
+  superficie_sau_herbe_prairies_peu_productives: number;
+  superficie_sau_subventions: number;
+  superficie_sau_bois_patures: number;
+  superficie_sau_jardins: number;
+}
+
 export type Patch4 = {
   index: bigint;
   code_geographique: string;
