@@ -1,10 +1,12 @@
 'use client';
 
+import { SurfacesAgricoles } from '@/components/themes/agriculture/surfacesAgricoles';
 import { SurfacesIrriguees } from '@/components/themes/agriculture/surfacesIrriguees';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   Agriculture,
-  CarteCommunes
+  CarteCommunes,
+  SurfacesAgricolesModel
 } from '@/lib/postgres/models';
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
@@ -23,6 +25,7 @@ interface Props {
   }>;
   carteCommunes: CarteCommunes[];
   agriculture: Agriculture[];
+  surfacesAgricoles: SurfacesAgricolesModel[];
 }
 
 const allComps = [
@@ -49,13 +52,25 @@ const allComps = [
         carteCommunes={carteCommunes}
       />
     )
+  },
+  {
+    titre: 'Surfaces agricoles',
+    Component: ({
+      agriculture,
+      surfacesAgricoles
+    }: Props & { activeDataTab: string }) => (
+      <SurfacesAgricoles
+        surfacesAgricoles={surfacesAgricoles}
+      />
+    )
   }
 ];
 
 const AgricultureComp = ({
   data,
   carteCommunes,
-  agriculture
+  agriculture,
+  surfacesAgricoles
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Superficies irriguées');
   const [selectedSubTab, setSelectedSubTab] = useState('Superficies irriguées');
@@ -97,6 +112,10 @@ const AgricultureComp = ({
                 titre="Superficies irriguées"
               />
             )
+          },
+          {
+            tabId: 'Surfaces agricoles',
+            label: "Surfaces agricoles",
           }
         ]}
         onTabChange={setSelectedTabId}
@@ -145,6 +164,7 @@ const AgricultureComp = ({
                       activeDataTab={selectedSubTab}
                       carteCommunes={carteCommunes}
                       agriculture={agriculture}
+                      surfacesAgricoles={surfacesAgricoles}
                     />
                   </Suspense>
                 );

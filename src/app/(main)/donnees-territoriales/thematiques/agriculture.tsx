@@ -1,4 +1,4 @@
-import { GetAgriculture } from '@/lib/queries/databases/agriculture';
+import { GetAgriculture, GetSurfacesAgricoles } from '@/lib/queries/databases/agriculture';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { themes } from '@/lib/themes';
 import { Suspense } from 'react';
@@ -10,6 +10,7 @@ const Agriculture = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type } = await props.searchParams;
   const carteCommunes = await GetCommunes(code, libelle, type);
   const dbAgriculture = await GetAgriculture(code, libelle, type);
+  const dbSurfacesAgricoles = await GetSurfacesAgricoles(code, libelle, type);
 
   return (
     <div className={styles.container}>
@@ -18,6 +19,7 @@ const Agriculture = async (props: { searchParams: SearchParams }) => {
           data={theme}
           carteCommunes={carteCommunes}
           agriculture={dbAgriculture}
+          surfacesAgricoles={dbSurfacesAgricoles}
         />
       </Suspense>
     </div>
