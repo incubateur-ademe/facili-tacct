@@ -10,7 +10,8 @@ import {
   CarteCommunes,
   ErosionCotiere,
   IncendiesForet,
-  RGACarte
+  RGACarte,
+  RGAdb
 } from '@/lib/postgres/models';
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
@@ -32,6 +33,7 @@ interface Props {
   erosionCotiere: ErosionCotiere[];
   incendiesForet: IncendiesForet[];
   rgaCarte: RGACarte[];
+  rga: RGAdb[];
 }
 
 const allComps = [
@@ -69,10 +71,11 @@ const allComps = [
   },
   {
     titre: "RGA",
-    Component: ({ rgaCarte, carteCommunes }: Props & { activeDataTab: string }) => (
+    Component: ({ rgaCarte, carteCommunes, rga }: Props & { activeDataTab: string }) => (
       <RGA
         rgaCarte={rgaCarte}
         carteCommunes={carteCommunes}
+        rga={rga}
       />
     )
   }
@@ -84,7 +87,8 @@ const GestionRisquesComp = ({
   carteCommunes,
   erosionCotiere,
   incendiesForet,
-  rgaCarte
+  rgaCarte,
+  rga
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState(
     'Arrêtés catastrophes naturelles'
@@ -139,17 +143,17 @@ const GestionRisquesComp = ({
           },
           ...(erosionCotiere.length > 0
             ? [
-                {
-                  tabId: 'Érosion côtière',
-                  label: (
-                    <TabTooltip
-                      selectedTab={selectedTabId}
-                      tooltip="Indicateur national de l’érosion côtière."
-                      titre="Érosion côtière"
-                    />
-                  )
-                }
-              ]
+              {
+                tabId: 'Érosion côtière',
+                label: (
+                  <TabTooltip
+                    selectedTab={selectedTabId}
+                    tooltip="Indicateur national de l’érosion côtière."
+                    titre="Érosion côtière"
+                  />
+                )
+              }
+            ]
             : [])
         ]}
         onTabChange={setSelectedTabId}
@@ -201,6 +205,7 @@ const GestionRisquesComp = ({
                       erosionCotiere={erosionCotiere}
                       incendiesForet={incendiesForet}
                       rgaCarte={rgaCarte}
+                      rga={rga}
                     />
                   </Suspense>
                 );

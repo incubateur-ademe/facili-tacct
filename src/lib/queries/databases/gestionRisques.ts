@@ -1,6 +1,6 @@
 'use server';
 
-import { ArreteCatNat, IncendiesForet } from '@/lib/postgres/models';
+import { ArreteCatNat, IncendiesForet, RGAdb } from '@/lib/postgres/models';
 import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../redis';
@@ -79,6 +79,41 @@ export const GetIncendiesForet = async (
     } catch (error) {
       console.error(error);
       // prisma.$disconnect();
+      Sentry.captureException(error);
+      return [];
+    }
+  })();
+  return Promise.race([dbQuery, timeoutPromise]);
+};
+
+export const GetRga = async (
+  code: string,
+  libelle: string,
+  type: string
+): Promise<RGAdb[]> => {
+  const column = ColumnCodeCheck(type);
+  const timeoutPromise = new Promise<[]>((resolve) =>
+    setTimeout(() => {
+      resolve([]);
+    }, 2000)
+  );
+  const dbQuery = (async () => {
+    try {
+      // Fast existence check
+      const exists = await prisma.rga.findFirst({
+        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+      });
+      if (!exists) return [];
+      else {
+        const value = await prisma.rga.findMany({
+          where: {
+            [column]: type === 'petr' || type === 'ept' ? libelle : code
+          }
+        });
+        return value;
+      }
+    } catch (error) {
+      console.error(error);
       Sentry.captureException(error);
       return [];
     }

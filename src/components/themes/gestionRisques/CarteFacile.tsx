@@ -46,7 +46,7 @@ const RGAMap = (props: {
         const minLat = Math.min(...lats);
         const maxLat = Math.max(...lats);
         map.fitBounds(
-          [ [minLng, minLat], [maxLng, maxLat] ],
+          [[minLng, minLat], [maxLng, maxLat]],
           { padding: 20 }
         );
       }
@@ -65,9 +65,9 @@ const RGAMap = (props: {
             'Moyen', 'orange',
             'Faible', 'green',
             'Fort', 'red',
-            'white' 
+            'white'
           ],
-          'fill-opacity': 0.15,
+          'fill-opacity': 0.25,
           'fill-outline-color': '#161616'
         },
       });

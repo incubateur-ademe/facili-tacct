@@ -3,21 +3,25 @@ import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { RGAMapper } from '@/lib/mapper/gestionRisques';
-import { CarteCommunes, RGACarte } from '@/lib/postgres/models';
+import { CarteCommunes, RGACarte, RGAdb } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import styles from '../agriculture/agriculture.module.scss';
-import CarteFacileTemplate from './CarteFacile';
+import RgaDataViz from './rgaDataviz';
 
 export const RGA = ({
   carteCommunes,
-  rgaCarte
+  rgaCarte,
+  rga
 }: {
   carteCommunes: CarteCommunes[];
   rgaCarte: RGACarte[];
+  rga: RGAdb[];
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
+  const [datavizTab, setDatavizTab] = useState<string>('Répartition');
 
   const carteCommunesEnriched = carteCommunes.map(CommunesIndicateursMapper);
   const communesMap = carteCommunesEnriched.map((el) => {
@@ -40,6 +44,11 @@ export const RGA = ({
       .map((obj) => obj.properties.surfacesIrriguees)
       .map((value) => (isNaN(value!) ? 0 : value))
       .reduce((acc, value) => acc! + value!, 0);
+
+
+  console.log("communesMap", communesMap);
+  console.log("rgaMap", rgaMap);
+  console.log("surfaceTerritoire", surfaceTerritoire);
 
   return (
     <>
@@ -65,25 +74,26 @@ export const RGA = ({
               </p>
             </div>
             <div className={communesMap.length > 0 ? "w-3/5" : "w-1/2"}>
-              <div className={styles.graphWrapper}>
-                <p style={{ padding: '1em', margin: '0' }}>
-                  <b>
-                    XXXXXXXXXXXXXX
-                  </b>
-                </p>
-                {
-                  communesMap.length > 0 ? (
-                    <>
-                      <CarteFacileTemplate rgaCarte={featureCollection} carteCommunes={communesMap} />
-                    </>
-                  ) : (
-                    <DataNotFoundForGraph image={DataNotFound} />
+              {
+                communesMap ?
+                  <RgaDataViz
+                    rgaCarte={featureCollection}
+                    carteCommunes={communesMap}
+                    rga={rga}
+                    datavizTab={datavizTab}
+                    setDatavizTab={setDatavizTab}
+                  /> : (
+                    <div className={styles.graphWrapper}>
+                      <p style={{ padding: '1em', margin: '0' }}>
+                        <b>Retrait gonflement des argiles</b>
+                      </p>
+                      <DataNotFoundForGraph image={DataNotFound} />
+                      <p style={{ padding: '1em', margin: '0' }}>
+                        XXXXXXXXXXX
+                      </p>
+                    </div>
                   )
-                }
-                <p style={{ padding: '1em', margin: '0' }}>
-                  Source : XXXXXXXXX
-                </p>
-              </div>
+              }
             </div>
           </>
 
