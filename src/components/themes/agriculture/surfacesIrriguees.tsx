@@ -47,13 +47,13 @@ export const SurfacesIrriguees = ({
             <div className={communesMap.length > 0 ? "w-2/5" : "w-1/2"}>
               <div className={styles.explicationWrapper}>
                 {
-                  surfaceTerritoire && communesMap.length > 0 ? (
+                  surfaceTerritoire !== undefined && !isNaN(surfaceTerritoire) && communesMap.length > 0 ? (
                     <p style={{ color: '#161616' }}>
                       En 2020, la part de la superficie irriguée dans la SAU sur
                       votre territoire était de{' '}
                       <b>{type === "commune" ? surfaceTerritoire : Round(surfaceTerritoire! / communesMap.length, 1)} %.</b>
                     </p>
-                  ) : ""
+                  ) : <p>Il n’y a pas de données référencées sur le territoire que vous avez sélectionné</p>
                 }
                 <CustomTooltip
                   title={surfacesIrrigueesTooltipText}
