@@ -2,11 +2,24 @@
 
 import { LineChart } from '@/components/charts/stats/lineChart';
 import { Container } from '@/dsfr/layout';
-import GetInsights from '../query';
+import { GetInsightById } from '../query';
 import styles from '../stats.module.scss';
 
+interface UniqueUserResult {
+  data: number[];
+  labels: string[];
+  count: number;
+  aggregated_value: number;
+  label: string;
+  breakdown_value: string[];
+  action: {
+    math: string;
+    type: string;
+  };
+}
+
 const UniqueUsers = async () => {
-  const uniqueUsers = await GetInsights('XZ6d0n8p');
+  const uniqueUsers = await GetInsightById(620831);
   return (
     <Container m="4w">
       {uniqueUsers ? (
