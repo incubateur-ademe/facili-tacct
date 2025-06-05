@@ -99,7 +99,7 @@ const RgaDataViz = (props: Props) => {
   const evolutionRga = barChartEvolution(rga);
   const repartitionRga = barChartRepartition(rga, code);
 
-  const CustomTooltip = ({ data }: BarTooltipProps<BarDatum>) => {
+  const CustomTooltipRepartition = ({ data }: BarTooltipProps<BarDatum>) => {
     const dataArray = Object.entries(data).map(el => {
       return {
         titre: CapitalizeFirstLetter(el[0]),
@@ -120,6 +120,35 @@ const RgaDataViz = (props: Props) => {
                 </div>
                 <div className={styles.value}>
                   <p>{Round(Number(el.value), 1)} %</p>
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
+    );
+  }
+  const CustomTooltipEvolution = ({ data }: BarTooltipProps<BarDatum>) => {
+    const dataArray = Object.entries(data).map(el => {
+      return {
+        titre: CapitalizeFirstLetter(el[0] === "nb_logement_alea_faible" ? "Aléas faibles" : "Aléas moyens / forts"),
+        value: el[1],
+        color: RgaEvolutionLegend.find(e => e.variable === el[0])?.couleur
+      }
+    });
+    return (
+      <div className={styles.tooltipEvolutionWrapper}>
+        <h3>{dataArray.at(-1)?.value}</h3>
+        {
+          dataArray.slice(0, -1).map((el, i) => {
+            return (
+              <div className={styles.itemWrapper} key={i}>
+                <div className={styles.titre}>
+                  <div className={styles.colorSquare} style={{ background: el.color }} />
+                  <p>{el.titre}</p>
+                </div>
+                <div className={styles.value}>
+                  <p>{Round(Number(el.value), 0)} logements</p>
                 </div>
               </div>
             )
@@ -154,7 +183,7 @@ const RgaDataViz = (props: Props) => {
               }))}
             axisLeftLegend="Part des logements (%)"
             groupMode="grouped"
-            tooltip={CustomTooltip}
+            tooltip={CustomTooltipRepartition}
           />
         </div>
       ) : datavizTab === 'Évolution' ? (
@@ -171,6 +200,7 @@ const RgaDataViz = (props: Props) => {
                 color: legend.couleur,
               }))}
             axisLeftLegend="Nombre de logements"
+            tooltip={CustomTooltipEvolution}
           />
         </div>
       ) : datavizTab === 'Cartographie' ? (
