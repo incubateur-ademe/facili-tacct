@@ -20,10 +20,8 @@ export const RGA = ({
   rga: RGAdb[];
 }) => {
   const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
-  const [datavizTab, setDatavizTab] = useState<string>('Répartition');
-
+  const [datavizTab, setDatavizTab] = useState<string>(type === "commune" ? 'Répartition' : "Évolution");
   const carteCommunesEnriched = carteCommunes.map(CommunesIndicateursMapper);
   const communesMap = carteCommunesEnriched.map((el) => {
     return {
@@ -34,14 +32,10 @@ export const RGA = ({
     };
   });
   const rgaMap = rgaCarte.map(RGAMapper);
-
   const featureCollection = {
     type: "FeatureCollection",
     features: rgaMap
   };
-
-  console.log("communesMap", communesMap);
-  console.log("rgaMap", rgaMap);
 
   return (
     <>

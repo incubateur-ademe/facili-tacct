@@ -104,7 +104,19 @@ export const GetRga = async (
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return [];
-      else {
+      else if (type === "commune") {
+        const value = await prisma.$queryRaw`
+          SELECT *
+          FROM "databases"."rga"
+          WHERE epci = (
+            SELECT epci
+            FROM "databases"."rga"
+            WHERE code_geographique = ${code}
+            LIMIT 1
+          )
+        `;
+        return value as RGAdb[];
+      } else {
         const value = await prisma.rga.findMany({
           where: {
             [column]: type === 'petr' || type === 'ept' ? libelle : code

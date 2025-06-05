@@ -701,10 +701,10 @@ export const RGAText = () => (
     <p>
       - - - - <br></br>
       Plan national d’adaptation au changement climatique (PNACC 3) :
-      <p>
+      <li>
         Protéger la population des désordres sur les bâtiments liés au
         retrait-gonflement des argiles (mesure 5)
-      </p>
+      </li>
     </p>
   </div>
 );
