@@ -1,5 +1,4 @@
 "use client";
-import { themes } from "@/lib/themes";
 /** Constellation.js */
 //TODO REPLACE types (any everywhere)
 
@@ -11,230 +10,430 @@ type circle = {
 };
 
 const dimensions = {
-  width: 700,
+  width: 1200,
   height: 800,
-  margin: { top: 16, right: 16, bottom: 16, left: 16 },
+  margin: { top: 100, right: 16, bottom: 16, left: 16 },
 };
 
 const Constellation = () => {
-  const [activeTab, setActiveTab] = useState(0);
-  const [selected, setSelected] = useState<boolean[]>([false, false, false, false, false, false, false, false, false]);
-  const theme = themes.inconfortThermique;
-
-
-
-  const svgRef = useRef(null);
-
-  const [selectedCircle, setSelectedCircle] = useState({
-    Bâtiment: selected.at(0),
-    Tourisme: selected.at(1),
-    Santé: selected.at(2),
-    Aménagement: selected.at(3),
-    "Espaces naturels": selected.at(4),
-    "Gestion de l'eau": selected.at(5),
-    "Inconfort thermique": selected.at(6),
-    "test": selected.at(7),
-  });
-
-  const resetFunction = (obj: circle) => {
-    Object.keys(obj).forEach(function (key) {
-      obj[key] = false;
-    });
-    return obj;
-  };
-
-  const handleCircleSelect = (selectedCircle: circle, themeId: string) => {
-    if (selectedCircle[themeId] === true) {
-      const tempData = resetFunction(selectedCircle);
-      setSelected(Object.values(tempData));
-    } else {
-      const tempData = resetFunction(selectedCircle);
-      tempData[themeId] === true ? (tempData[themeId] = false) : (tempData[themeId] = true);
-      setSelected(Object.values(tempData));
-    }
-  };
+  const svgRef = useRef(null);  
 
   const { width, height, margin } = dimensions;
   const svgWidth = Number(width) + margin.left + margin.right;
   const svgHeight = Number(height) + margin.top + margin.bottom;
-  const mainnodes: any = [];
-  const childnodes: any = [];
-  const links: any = [];
-  const center = { id: "center" };
-  const InconfortThermique = { id: "Inconfort thermique" };
-  const Sante = { id: "Santé" };
-  const Tourisme = { id: "Tourisme" };
-  const EspaceNaturel = { id: "Espaces naturels" };
-  const Batiment = { id: "Bâtiment" };
-  const GestionEau = { id: "Gestion de l'eau" };
-  const Amenagement = { id: "Aménagement" };
-  const test = { id: "test" };
 
-  const addMainNode = (node: any) => {
-    node.size = 50;
-    node.color = "#FFFFFF";
-    node.textColor = "#black";
-    mainnodes.push(node);
+  // Center node
+  const centerNode = {
+    id: "CA du Pays Basque",
+    x: 0,
+    y: 0,
+    size: 70, // Bigger size
+    color: "#222", // Dark grey
+    textColor: "#fff" // White text
   };
 
-  const addChildNode = (
-    parentNode: any,
-    childNode: any,
-    size: number,
-    color: string,
-    distance: number,
-  ) => {
-    childNode.size = size;
-    childNode.color = color;
-    childNode.textColor = "#4F4F4F";
-    childNode.state = false;
-    childnodes.push(childNode);
-    links.push({
-      source: parentNode,
-      target: childNode,
-      distance,
-      color: color, //parentNode.color
+  // Layer 1: 3 nodes with customizable angles (in degrees)
+  const layer1Nodes = [
+    { id: "Cadre de vie", angle: 63, size: 20, color: "#B0B0B0", textColor: "#222", labelX: 120, labelY: 200 },
+    { id: "Ressources naturelles", angle: 200, size: 20, color: "#B0B0B0", textColor: "#222", labelX: -200, labelY: -40 },
+    { id: "Ressources économiques", angle: 300, size: 20, color: "#B0B0B0", textColor: "#222", labelX: 180, labelY: -150 },
+  ];
+  const layer1Radius = 100;
+  // Compute x/y for each node and add as properties
+  layer1Nodes.forEach((node) => {
+    const angleRad = (node.angle * Math.PI) / 180;
+    (node as any).x = layer1Radius * Math.cos(angleRad);
+    (node as any).y = layer1Radius * Math.sin(angleRad);
+  });
+
+  // Layer 2: 17 nodes, distributed evenly around the circle, with real first names
+  const layer2Names = [
+    { label: "Continuité des services", labelRadius: 440 },
+    { label: "Logement", labelRadius: 430 },
+    { label: "Approvisionnement alimentaire", labelRadius: 430 },
+    { label: "Personnes fragiles" },
+    { label: "Inconfort thermique" },
+    { label: "Gestion des risques" },
+    { label: "Santé" },
+    { label: "Alimentation en eau potable", labelRadius: 440 },
+    { label: "Forêts", labelRadius: 410 },
+    { label: "Eau" },
+    { label: "Habitats faunes / flores", labelRadius: 430 },
+    { label: "Air" },
+    { label: "Sols" },
+    { label: "Entreprises" },
+    { label: "Tourisme" },
+    { label: "Agriculture / maraîchage" },
+    { label: "Filière bois", labelRadius: 430 },
+  ];
+  const layer2Count = layer2Names.length;
+  const layer2Radius = 340;
+  const defaultLabelRadius = layer2Radius + 70;
+  const layer2Nodes: { id: string; label: string; x: number; y: number; size: number; color: string; textColor: string; labelRadius?: number }[] = [];
+  for (let i = 0; i < layer2Count; i++) {
+    const angle = (2 * Math.PI * i) / layer2Count;
+    layer2Nodes.push({
+      id: `L2-${i + 1}`,
+      ...layer2Names[i], // Copy label, labelRadius, etc.
+      x: layer2Radius * Math.cos(angle),
+      y: layer2Radius * Math.sin(angle),
+      size: 20,
+      color: "#B0B0B0",
+      textColor: "#222"
     });
-  };
+  }
 
-  const assembleChildNode = (parentNode: any, childNode: any, weight: number, color: string) => {
-    addChildNode(parentNode, childNode, weight, color, 100);
-  };
+  const explicitL2Links = [
+    // Cadre de vie (first 8)
+    { source: "Cadre de vie", target: "L2-1", curve: 1, curveRadius: 0.15 },
+    { source: "Cadre de vie", target: "L2-2", curve: 1, curveRadius: 0.25 },
+    { source: "Cadre de vie", target: "L2-3", curve: 1, curveRadius: 0.25 },
+    { source: "Cadre de vie", target: "L2-4", curve: 1, curveRadius: 0.15 },
+    { source: "Cadre de vie", target: "L2-5", curve: -1, curveRadius: 0.05 },
+    { source: "Cadre de vie", target: "L2-6", curve: -1, curveRadius: 0.25 },
+    { source: "Cadre de vie", target: "L2-7", curve: -1, curveRadius: 0.25 },
+    { source: "Cadre de vie", target: "L2-8", curve: -1, curveRadius: 0.15 },
+    // Ressources naturelles (next 5)
+    { source: "Ressources naturelles", target: "L2-9", curve: -1, curveRadius: 0.25 },
+    { source: "Ressources naturelles", target: "L2-10", curve: -1, curveRadius: 0.25 },
+    { source: "Ressources naturelles", target: "L2-11", curve: 1, curveRadius: 0.25 },
+    { source: "Ressources naturelles", target: "L2-12", curve: 1, curveRadius: 0.25 },
+    { source: "Ressources naturelles", target: "L2-13", curve: 1, curveRadius: 0.25 },
+    // Ressources économiques (last 4)
+    { source: "Ressources économiques", target: "L2-14", curve: -1, curveRadius: 0.25 },
+    { source: "Ressources économiques", target: "L2-15", curve: -1, curveRadius: 0.25 },
+    { source: "Ressources économiques", target: "L2-16", curve: 1, curveRadius: 0.25 },
+    { source: "Ressources économiques", target: "L2-17", curve: 1, curveRadius: 0.25 },
+  ];
 
-  addMainNode(center);
-  assembleChildNode(center, Sante, 20, "#DCE6FF");
-  assembleChildNode(center, Tourisme, 20, "#DCE6FF");
-  assembleChildNode(center, EspaceNaturel, 20, "#DCE6FF");
-  assembleChildNode(center, GestionEau, 20, "#DCE6FF");
-  assembleChildNode(center, Batiment, 20, "#DCE6FF");
-  assembleChildNode(center, Amenagement, 20, "#DCE6FF");
-  assembleChildNode(center, test, 20, "#DCE6FF");
-  assembleChildNode(center, InconfortThermique, 20, "#DCE6FF");
-  const nodes = childnodes.concat(mainnodes);
-  //console.log('nodes', nodes)
+  // New: Layer 2 inter-node links
+  const layer2Links = [
+    { source: "Logement", targets: ["Air", "Eau", "Inconfort thermique", "Santé"] },
+    // Add more links as needed
+  ];
+
+  // New: State for selected layer 2 node
+  const [selectedL2, setSelectedL2] = useState<string | null>(null);
+
+  // Helper: Get all nodes linked to the selected node
+  const getLinkedL2Nodes = (nodeId: string) => {
+    const direct = layer2Links.find(link => link.source === nodeId)?.targets || [];
+    const reverse = layer2Links.filter(link => link.targets.includes(nodeId)).map(link => link.source);
+    return [...direct, ...reverse];
+  };
 
   useEffect(() => {
     const svgEl = d3.select(svgRef.current);
-    svgEl.selectAll("*").remove(); // Clear svg content before adding new elements
-    const svg = svgEl.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
-    const centerX = svgWidth / 2;
-    const centerY = svgHeight / 2;
+    svgEl.selectAll("*").remove();
+    const svg = svgEl.append("g").attr("transform", `translate(${svgWidth / 2},${svgHeight / 2})`);
 
-    // Arrange nodes radially
-    const mainNode = mainnodes[0];
-    mainNode.x = centerX;
-    mainNode.y = centerY;
-    const radius = 180; // Distance from center to child nodes
-    const n = childnodes.length;
-    childnodes.forEach((node: any, i: number) => {
-      const angle = (2 * Math.PI * i) / n;
-      node.x = centerX + radius * Math.cos(angle);
-      node.y = centerY + radius * Math.sin(angle);
-    });
-
-    // Draw a smooth, dashed circular path through all child nodes
-    if (childnodes.length > 1) {
-      const lineGenerator = d3.line()
-        .x((d: any) => d.x)
-        .y((d: any) => d.y)
+    // --- DRAW LINES AND PATHS FIRST ---
+    // Layer 1 closed curve (replace with a perfect dashed circle)
+    svg.append("circle")
+      .attr("r", layer1Radius)
+      .attr("cx", 0)
+      .attr("cy", 0)
+      .attr("fill", "none")
+      .attr("stroke", selectedL2 ? "#800020" : "#B0B0B0")
+      .attr("stroke-width", 2);
+    // Layer 2 closed curve
+    if (layer2Nodes.length > 1) {
+      const lineGen2 = d3.line()
+        .x((d: any) => d[0])
+        .y((d: any) => d[1])
         .curve(d3.curveCardinalClosed);
-      svg
-        .append('path')
-        .attr('d', lineGenerator(childnodes))
-        .attr('fill', 'none')
-        .attr('stroke', '#B0B0B0')
-        .attr('stroke-width', 3)
-        .attr('stroke-dasharray', '8 6');
+      svg.append("path")
+        .attr("d", lineGen2(layer2Nodes.map((n: any) => [n.x, n.y])))
+        .attr("fill", "none")
+        .attr("stroke", "#B0B0B0")
+        .attr("stroke-width", 2)
+        .attr("stroke-dasharray", "8 6");
     }
-
-    // Draw circles
-    svg
-      .selectAll("circle")
-      .data(nodes)
+    // Links from L1 to L2 (curved, now using curve param and curveRadius)
+    svg.selectAll("path.l1tol2")
+      .data(explicitL2Links)
       .enter()
-      .append("circle")
-      .attr("id", (node: any) => node.id)
-      .attr("r", (node: any) => node.size)
-      .attr("fill", (node: any) => node.color)
-      .attr("cx", (node: any) => node.x)
-      .attr("cy", (node: any) => node.y)
-      .on("mouseover", function () {
-        d3.select(this).style("cursor", "pointer");
+      .append("path")
+      .attr("class", "l1tol2")
+      .attr("d", d => {
+        // Use (l1 as any) to access computed x/y
+        const l1 = layer1Nodes.find((n: any) => n.id === d.source) as any;
+        const l2 = layer2Nodes.find((n: any) => n.id === d.target);
+        if (!l1 || !l2) return null;
+        const mx = (l1.x + l2.x) / 2;
+        const my = (l1.y + l2.y) / 2;
+        // Vector from center to midpoint
+        const cx = 0, cy = 0;
+        const vx = mx - cx;
+        const vy = my - cy;
+        // Distance between l1 and l2
+        const dist = Math.sqrt((l2.x - l1.x) ** 2 + (l2.y - l1.y) ** 2);
+        // Curve amount: proportional to distance, now controlled by d.curveRadius
+        const curveStrength = d.curveRadius ?? 0.25;
+        // Perpendicular vector (rotate by 90deg)
+        const perpX = -vy;
+        const perpY = vx;
+        // Normalize
+        const perpLen = Math.sqrt(perpX ** 2 + perpY ** 2) || 1;
+        const perpUnitX = perpX / perpLen;
+        const perpUnitY = perpY / perpLen;
+        // Use curve parameter from link
+        const sign = d.curve || 1;
+        // Control point
+        const cpx = mx + sign * perpUnitX * dist * curveStrength;
+        const cpy = my + sign * perpUnitY * dist * curveStrength;
+        return `M${l1.x},${l1.y} Q${cpx},${cpy} ${l2.x},${l2.y}`;
       })
-      .on("click", function () {
-        const themeId = d3.select(this).attr("id");
-        handleCircleSelect(selectedCircle as circle, themeId);
-        if (this.getAttribute("id") === "Inconfort thermique") {
-          d3.selectAll("circle").attr("fill", (node: any) => node.color);
-        } else {
-          if (this.getAttribute("fill") === "#DCE6FF") {
-            d3.selectAll("circle").attr("fill", (node: any) => node.color);
-            d3.select(this).attr("fill", "#9580FF");
-          } else {
-            d3.selectAll("circle").attr("fill", (node: any) => node.color);
-            d3.select(this).attr("fill", "#DCE6FF");
+      .attr("fill", "none")
+      .attr("stroke", (d: any) => {
+        // Highlight links to selected layer2 node and its virtual links
+        if (selectedL2) {
+          // Get all linked layer2 node labels
+          const linked = getLinkedL2Nodes(selectedL2);
+          const targetLabel = layer2Nodes.find(n => n.id === d.target)?.label;
+          // Highlight if the link is to the selected node, or to a linked node, or to the selected node's own link (e.g. Hugo)
+          if (
+            d.target === selectedL2 ||
+            (targetLabel && linked.includes(targetLabel)) ||
+            (targetLabel === selectedL2)
+          ) {
+            return "#800020";
           }
         }
+        return "#888";
+      })
+      .attr("stroke-width", (d: any) => {
+        if (selectedL2) {
+          const linked = getLinkedL2Nodes(selectedL2);
+          const targetLabel = layer2Nodes.find(n => n.id === d.target)?.label;
+          if (
+            d.target === selectedL2 ||
+            (targetLabel && linked.includes(targetLabel)) ||
+            (targetLabel === selectedL2)
+          ) {
+            return 3;
+          }
+        }
+        return 1.5;
       });
 
-    // Draw text labels for child nodes outside the circle, inside a box
-    const labelRadius = radius + 100;
-    const labelPaddingX = 25;
-    const labelPaddingY = 10;
-    const childLabels = svg
-      .selectAll("g.child-label-group")
-      .data(childnodes)
+    // --- DRAW NODES AND LABELS LAST (ON TOP) ---
+    // Center node
+    svg.append("circle")
+      .attr("r", centerNode.size)
+      .attr("fill", centerNode.color)
+      .attr("cx", centerNode.x)
+      .attr("cy", centerNode.y);
+    svg.append("text")
+      .attr("x", centerNode.x)
+      .attr("y", centerNode.y)
+      .attr("text-anchor", "middle")
+      .attr("fill", centerNode.textColor)
+      .attr("font-size", 20)
+      .attr("font-weight", "bold")
+      .attr("style", "pointer-events:none; white-space:pre-line;")
+      .call(function (text) {
+        // Split long text into multiple lines for better fit
+        const words: string[] = centerNode.id.split(' ');
+        let lines: string[] = [];
+        let currentLine: string[] = [];
+        // Estimate max width for a line
+        const maxLineLength = centerNode.size * 1.7;
+        // Temporary SVG text element for measuring
+        const temp = svg.append("text").attr("font-size", 20).attr("font-weight", "bold").attr("visibility", "hidden");
+        for (let i = 0; i < words.length; i++) {
+          currentLine.push(words[i]);
+          temp.text(currentLine.join(" "));
+          if (temp.node() && temp.node()!.getComputedTextLength() > maxLineLength) {
+            currentLine.pop();
+            lines.push(currentLine.join(" "));
+            currentLine = [words[i]];
+          }
+        }
+        if (currentLine.length) lines.push(currentLine.join(" "));
+        temp.remove();
+        // Now add tspans for each line, centered and spaced
+        lines.forEach((line, i) => {
+          text.append("tspan")
+            .attr("x", centerNode.x)
+            .attr("dy", i === 0 ? `${-(lines.length - 1) / 2}em` : "1.2em")
+            .text(line);
+        });
+      });
+
+    // Layer 1 nodes
+    svg.selectAll("circle.l1")
+      .data(layer1Nodes)
+      .enter()
+      .append("circle")
+      .attr("class", "l1")
+      .attr("r", (d: any) => d.size)
+      .attr("fill", (d: any) => d.color)
+      .attr("cx", (d: any) => d.x)
+      .attr("cy", (d: any) => d.y);
+    // Layer 1 labels with custom x/y per node
+    svg.selectAll("g.l1-label")
+      .data(layer1Nodes)
       .enter()
       .append("g")
-      .attr("class", "child-label-group")
-      .attr("transform", (node: any, i: number) => {
-        const angle = (2 * Math.PI * i) / childnodes.length;
-        const x = centerX + labelRadius * Math.cos(angle);
-        const y = centerY + labelRadius * Math.sin(angle);
-        return `translate(${x},${y})`;
+      .attr("class", "l1-label")
+      .attr("transform", (d: any) => `translate(${d.labelX !== undefined ? d.labelX : d.x * 2},${d.labelY !== undefined ? d.labelY : d.y * 2})`)
+      .each(function (d: any) {
+        // Measure text width for dynamic box sizing
+        const tempText = d3.select(this)
+          .append("text")
+          .attr("font-size", 16)
+          .attr("font-family", "sans-serif")
+          .text(d.id);
+        const textNode = tempText.node();
+        let textWidth = 0;
+        if (textNode && typeof textNode.getComputedTextLength === "function") {
+          textWidth = textNode.getComputedTextLength();
+        }
+        tempText.remove();
+        const boxWidth = textWidth;
+        const boxHeight = 16; // 16px font size, no padding
+        d3.select(this)
+          .append("rect")
+          .attr("x", -boxWidth / 2)
+          .attr("y", -boxHeight / 2)
+          .attr("width", boxWidth)
+          .attr("height", boxHeight)
+          .attr("fill", "#fff")
+          .attr("stroke", "none")
+          .attr("rx", 5)
+          .attr("ry", 5);
+        d3.select(this)
+          .append("text")
+          .attr("text-anchor", "middle")
+          .attr("alignment-baseline", "middle")
+          .attr("fill", d.textColor)
+          .attr("font-size", 16)
+          .attr("font-family", "sans-serif")
+          .attr("y", 1)
+          .text(d.id);
       });
 
-    // Add rect background for each label
-    childLabels
-      .append("rect")
-      .attr("x", (d: any, i: number, nodes: any) => {
-        // Center the rect on the text
-        const text = d.id;
-        // Estimate width: 8px per char, adjust as needed
-        return -((text.length * 8) / 2 + labelPaddingX);
-      })
-      .attr("y", -14)
-      .attr("width", (d: any) => d.id.length * 8 + labelPaddingX * 2)
-      .attr("height", 30 + labelPaddingY * 2)
-      .attr("fill", "#fff")
-      .attr("stroke", "#000")
-      .attr("stroke-width", 1);
-
-    // Add text on top of rect
-    childLabels
-      .append("text")
-      .attr("text-anchor", "middle")
-      .attr("alignment-baseline", "middle")
-      .attr("fill", (node: any) => node.textColor)
-      .style("pointer-events", "none")
-      .attr("y", 10)
-      .text((node: any) => node.id);
-
-    // Draw text labels for main node in the center
-    svg
-      .selectAll("text.main-label")
-      .data(mainnodes)
+    // Layer 2 nodes
+    svg.selectAll("circle.l2")
+      .data(layer2Nodes)
       .enter()
-      .append("text")
-      .attr("class", "main-label")
-      .attr("text-anchor", "middle")
-      .attr("alignment-baseline", "middle")
-      .attr("fill", (node: any) => node.textColor)
-      .style("pointer-events", "none")
-      .attr("x", (node: any) => node.x)
-      .attr("y", (node: any) => node.y)
-      .text((node: any) => node.id);
-  }, []); // Redraw chart if data changes
+      .append("circle")
+      .attr("class", "l2")
+      .attr("r", (d: any) => d.size)
+      .attr("fill", (d: any) => {
+        if (selectedL2 === d.label) return "#800020"; // burgundy
+        // Only the selected node changes fill, linked nodes keep their color
+        return d.color;
+      })
+      .attr("stroke", (d: any) => {
+        if (selectedL2 && getLinkedL2Nodes(selectedL2).includes(d.label)) return "#800020";
+        return "#888";
+      })
+      .attr("stroke-width", (d: any) => {
+        if (selectedL2 && getLinkedL2Nodes(selectedL2).includes(d.label)) return 4;
+        return 1.5;
+      })
+      .attr("cx", (d: any) => d.x)
+      .attr("cy", (d: any) => d.y)
+      .style("cursor", "pointer")
+      .on("click", (event: any, d: any) => {
+        setSelectedL2(selectedL2 === d.label ? null : d.label);
+      });
+
+    // Layer 2 labels (outside the circle)
+    svg.selectAll("g.l2-label")
+      .data(layer2Nodes)
+      .enter()
+      .append("g")
+      .attr("class", "l2-label")
+      .attr("transform", (d: any) => {
+        // Use custom labelRadius if present, otherwise defaultLabelRadius
+        const labelRadius = d.labelRadius ? d.labelRadius : defaultLabelRadius;
+        const angle = Math.atan2(d.y, d.x);
+        const x = labelRadius * Math.cos(angle);
+        const y = labelRadius * Math.sin(angle);
+        return `translate(${x},${y})`;
+      })
+      .each(function (d: any) {
+        // Break label into lines if > 12 chars per line
+        const charsPerLine = 12;
+        const words = d.label.split(' ');
+        let lines: string[] = [];
+        let currentLine = '';
+        words.forEach((word: string) => {
+          if ((currentLine + ' ' + word).trim().length > charsPerLine) {
+            if (currentLine) lines.push(currentLine.trim());
+            currentLine = word;
+          } else {
+            currentLine += ' ' + word;
+          }
+        });
+        if (currentLine) lines.push(currentLine.trim());
+        // Measure max line width
+        const tempText = d3.select(this)
+          .append("text")
+          .attr("font-size", 16)
+          .attr("font-family", "sans-serif");
+        let maxLineWidth = 0;
+        lines.forEach(line => {
+          tempText.text(line);
+          const textNode = tempText.node();
+          let textWidth = 0;
+          if (textNode && typeof textNode.getComputedTextLength === "function") {
+            textWidth = textNode.getComputedTextLength();
+          }
+          if (textWidth > maxLineWidth) maxLineWidth = textWidth;
+        });
+        tempText.remove();
+        let rectFill = "#fff";
+        let rectStroke = "#666666";
+        let textFill = d.textColor;
+        let strokeDasharray = "6 4";
+        let paddingX = 22.5;
+        let paddingY = 12.5;
+        const fontSize = 16;
+        if (selectedL2 === d.label) {
+          rectFill = "#111";
+          rectStroke = "#800020";
+          textFill = "#fff";
+          strokeDasharray = "";
+        } else if (selectedL2 && getLinkedL2Nodes(selectedL2).includes(d.label)) {
+          rectFill = "#E5E5E5";
+          rectStroke = "#800020";
+          // strokeDasharray = "";
+        }
+        const boxWidth = maxLineWidth + paddingX * 2;
+        const boxHeight = lines.length * fontSize + paddingY * 2;
+        d3.select(this)
+          .append("rect")
+          .attr("x", -boxWidth / 2)
+          .attr("y", -boxHeight / 2)
+          .attr("width", boxWidth)
+          .attr("height", boxHeight)
+          .attr("fill", rectFill)
+          .attr("stroke", rectStroke)
+          .attr("stroke-width", 0.8)
+          .attr("stroke-dasharray", strokeDasharray)
+          .attr("rx", 5)
+          .attr("ry", 5);
+        // Add each line as a tspan, aligning text block to top padding
+        const textElem = d3.select(this)
+          .append("text")
+          .attr("text-anchor", "middle")
+          .attr("fill", textFill)
+          .attr("font-size", fontSize)
+          .attr("font-family", "sans-serif")
+          // Align the text block to the top padding (adjust for baseline)
+          .attr("y", -boxHeight / 2 + paddingY + fontSize * 0.8);
+        lines.forEach((line, i) => {
+          textElem.append("tspan")
+            .attr("x", 0)
+            .attr("dy", i === 0 ? 0 : fontSize)
+            .text(line);
+        });
+      });
+  }, [selectedL2, svgWidth, svgHeight]);
 
   return <svg ref={svgRef} width={svgWidth} height={svgHeight} />;
 };
