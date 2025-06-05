@@ -66,13 +66,13 @@ export const AgricultureBioBarChart = (
   const legends = [
     {
       variable: "Surface certifiée agriculture biologique",
-      texte_raccourci: "Surface certifiée",
+      texteRaccourci: "Surface certifiée",
       valeur: Sum(graphData.map(e => e["Surface certifiée agriculture biologique"])),
       couleur: "#00C2CC"
     },
     {
       variable: "Surface en conversion agriculture biologique",
-      texte_raccourci: "Surface en conversion",
+      texteRaccourci: "Surface en conversion",
       valeur: Sum(graphData.map(e => e["Surface en conversion agriculture biologique"])),
       couleur: "#00949D"
     },
@@ -119,7 +119,7 @@ export const AgricultureBioBarChart = (
           legendData={legends.filter(e => e.valeur != 0)
             .map((legend, index) => ({
               id: index,
-              label: legend.texte_raccourci,
+              label: legend.texteRaccourci,
               color: legend.couleur,
             }))}
           tooltip={CustomTooltip}

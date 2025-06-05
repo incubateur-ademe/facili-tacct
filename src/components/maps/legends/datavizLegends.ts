@@ -381,3 +381,48 @@ export const feuxForetBarChartLegend = [
     couleur: '#038278'
   }
 ];
+
+export const RgaRepartitionLegend = [
+  {
+    variable: "commune",
+    texteRaccourci: "Commune",
+    couleur: "#038278"
+  },
+  {
+    variable: "epci",
+    texteRaccourci: "Epci",
+    couleur: "#C48EF6"
+  },
+];
+
+export const RgaEvolutionLegend = [
+  {
+    variable: "nb_logement_alea_faible",
+    texteRaccourci: "Aléas faibles",
+    couleur: "#FFCF5E"
+  },
+  {
+    variable: "nb_logement_alea_moyen_fort",
+    texteRaccourci: "Aléas moyens / forts",
+    couleur: "#E8323B"
+  },
+];
+
+export const RgaMapLegend = [
+  {
+    value: 'Sans aléa',
+    color: '#FFFFFF'
+  },
+  {
+    value: 'Aléas faibles',
+    color: '#FFCF5E'
+  },
+  {
+    value: 'Aléas moyens',
+    color: '#F66E19'
+  },
+  {
+    value: 'Aléas forts',
+    color: '#E8323B'
+  },
+];
