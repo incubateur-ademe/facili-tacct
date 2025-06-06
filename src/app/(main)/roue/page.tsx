@@ -1,5 +1,4 @@
 "use client";
-/** Constellation.js */
 //TODO REPLACE types (any everywhere)
 
 import * as d3 from "d3";
@@ -27,16 +26,16 @@ const Constellation = () => {
     id: "CA du Pays Basque",
     x: 0,
     y: 0,
-    size: 70, // Bigger size
-    color: "#222", // Dark grey
-    textColor: "#fff" // White text
+    size: 70, 
+    color: "#222",
+    textColor: "#fff"
   };
 
   // Layer 1: 3 nodes with customizable angles (in degrees)
   const layer1Nodes = [
-    { id: "Cadre de vie", angle: 63, size: 20, color: "#B0B0B0", textColor: "#222", labelX: 120, labelY: 200 },
-    { id: "Ressources naturelles", angle: 200, size: 20, color: "#B0B0B0", textColor: "#222", labelX: -200, labelY: -40 },
-    { id: "Ressources économiques", angle: 300, size: 20, color: "#B0B0B0", textColor: "#222", labelX: 180, labelY: -150 },
+    { id: "Cadre de vie", angle: 90, size: 20, color: "#D9D9D9", textColor: "#222", labelX: 0, labelY: 200 },
+    { id: "Ressources naturelles", angle: 220, size: 20, color: "#D9D9D9", textColor: "#222", labelX: -180, labelY: -140 },
+    { id: "Ressources économiques", angle: 320, size: 20, color: "#D9D9D9", textColor: "#222", labelX: 180, labelY: -150 },
   ];
   const layer1Radius = 100;
   // Compute x/y for each node and add as properties
@@ -48,9 +47,9 @@ const Constellation = () => {
 
   // Layer 2: 17 nodes, distributed evenly around the circle, with real first names
   const layer2Names = [
-    { label: "Continuité des services", labelRadius: 440 },
+    { label: "Continuité des services (transport, énergie, eau)", labelRadius: 440 },
     { label: "Logement", labelRadius: 430 },
-    { label: "Approvisionnement alimentaire", labelRadius: 430 },
+    { label: "Approvisionnement alimentaire", labelRadius: 440 },
     { label: "Personnes fragiles" },
     { label: "Inconfort thermique" },
     { label: "Gestion des risques" },
@@ -63,22 +62,25 @@ const Constellation = () => {
     { label: "Sols" },
     { label: "Entreprises" },
     { label: "Tourisme" },
-    { label: "Agriculture / maraîchage" },
+    { label: "Agriculture / maraîchage / élevage / pêche / ostréiculture", labelRadius: 450 },
     { label: "Filière bois", labelRadius: 430 },
   ];
   const layer2Count = layer2Names.length;
   const layer2Radius = 340;
   const defaultLabelRadius = layer2Radius + 70;
   const layer2Nodes: { id: string; label: string; x: number; y: number; size: number; color: string; textColor: string; labelRadius?: number }[] = [];
+  // Add a parameter to rotate layer 2 radially (in degrees)
+  const layer2Rotation = 15; 
   for (let i = 0; i < layer2Count; i++) {
-    const angle = (2 * Math.PI * i) / layer2Count;
+    // Apply rotation to layer 2 nodes
+    const angle = (2 * Math.PI * i) / layer2Count + (layer2Rotation * Math.PI / 180);
     layer2Nodes.push({
       id: `L2-${i + 1}`,
       ...layer2Names[i], // Copy label, labelRadius, etc.
       x: layer2Radius * Math.cos(angle),
       y: layer2Radius * Math.sin(angle),
       size: 20,
-      color: "#B0B0B0",
+      color: "#D9D9D9",
       textColor: "#222"
     });
   }
@@ -88,8 +90,8 @@ const Constellation = () => {
     { source: "Cadre de vie", target: "L2-1", curve: 1, curveRadius: 0.15 },
     { source: "Cadre de vie", target: "L2-2", curve: 1, curveRadius: 0.25 },
     { source: "Cadre de vie", target: "L2-3", curve: 1, curveRadius: 0.25 },
-    { source: "Cadre de vie", target: "L2-4", curve: 1, curveRadius: 0.15 },
-    { source: "Cadre de vie", target: "L2-5", curve: -1, curveRadius: 0.05 },
+    { source: "Cadre de vie", target: "L2-4", curve: 1, curveRadius: 0.10 },
+    { source: "Cadre de vie", target: "L2-5", curve: -1, curveRadius: 0.10 },
     { source: "Cadre de vie", target: "L2-6", curve: -1, curveRadius: 0.25 },
     { source: "Cadre de vie", target: "L2-7", curve: -1, curveRadius: 0.25 },
     { source: "Cadre de vie", target: "L2-8", curve: -1, curveRadius: 0.15 },
@@ -134,7 +136,7 @@ const Constellation = () => {
       .attr("cx", 0)
       .attr("cy", 0)
       .attr("fill", "none")
-      .attr("stroke", selectedL2 ? "#800020" : "#B0B0B0")
+      .attr("stroke", selectedL2 ? "#800020" : "#D9D9D9")
       .attr("stroke-width", 2);
     // Layer 2 closed curve
     if (layer2Nodes.length > 1) {
@@ -145,9 +147,9 @@ const Constellation = () => {
       svg.append("path")
         .attr("d", lineGen2(layer2Nodes.map((n: any) => [n.x, n.y])))
         .attr("fill", "none")
-        .attr("stroke", "#B0B0B0")
+        .attr("stroke", "#D9D9D9")
         .attr("stroke-width", 2)
-        .attr("stroke-dasharray", "8 6");
+        .attr("stroke-dasharray", "2 2");
     }
     // Links from L1 to L2 (curved, now using curve param and curveRadius)
     svg.selectAll("path.l1tol2")
@@ -200,7 +202,7 @@ const Constellation = () => {
             return "#800020";
           }
         }
-        return "#888";
+        return "#D9D9D9";
       })
       .attr("stroke-width", (d: any) => {
         if (selectedL2) {
@@ -214,7 +216,7 @@ const Constellation = () => {
             return 3;
           }
         }
-        return 1.5;
+        return 3;
       });
 
     // --- DRAW NODES AND LABELS LAST (ON TOP) ---
@@ -226,14 +228,13 @@ const Constellation = () => {
       .attr("cy", centerNode.y);
     svg.append("text")
       .attr("x", centerNode.x)
-      .attr("y", centerNode.y)
+      .attr("y", centerNode.y + 2)
       .attr("text-anchor", "middle")
       .attr("fill", centerNode.textColor)
-      .attr("font-size", 20)
+      .attr("font-size", 16)
       .attr("font-weight", "bold")
       .attr("style", "pointer-events:none; white-space:pre-line;")
       .call(function (text) {
-        // Split long text into multiple lines for better fit
         const words: string[] = centerNode.id.split(' ');
         let lines: string[] = [];
         let currentLine: string[] = [];
@@ -252,7 +253,6 @@ const Constellation = () => {
         }
         if (currentLine.length) lines.push(currentLine.join(" "));
         temp.remove();
-        // Now add tspans for each line, centered and spaced
         lines.forEach((line, i) => {
           text.append("tspan")
             .attr("x", centerNode.x)
@@ -291,8 +291,11 @@ const Constellation = () => {
           textWidth = textNode.getComputedTextLength();
         }
         tempText.remove();
-        const boxWidth = textWidth;
-        const boxHeight = 16; // 16px font size, no padding
+        // padding box layer 1
+        const paddingX = 4;
+        const paddingY = 4;
+        const boxWidth = textWidth + paddingX * 2;
+        const boxHeight = 16 + paddingY * 2; 
         d3.select(this)
           .append("rect")
           .attr("x", -boxWidth / 2)
@@ -327,12 +330,13 @@ const Constellation = () => {
         return d.color;
       })
       .attr("stroke", (d: any) => {
+        if (selectedL2 === d.label) return "#800020";
         if (selectedL2 && getLinkedL2Nodes(selectedL2).includes(d.label)) return "#800020";
-        return "#888";
+        return "#D9D9D9";
       })
       .attr("stroke-width", (d: any) => {
         if (selectedL2 && getLinkedL2Nodes(selectedL2).includes(d.label)) return 4;
-        return 1.5;
+        return 3;
       })
       .attr("cx", (d: any) => d.x)
       .attr("cy", (d: any) => d.y)
@@ -350,10 +354,16 @@ const Constellation = () => {
       .attr("transform", (d: any) => {
         // Use custom labelRadius if present, otherwise defaultLabelRadius
         const labelRadius = d.labelRadius ? d.labelRadius : defaultLabelRadius;
-        const angle = Math.atan2(d.y, d.x);
-        const x = labelRadius * Math.cos(angle);
-        const y = labelRadius * Math.sin(angle);
+        // Compute the angle for the label, including the rotation
+        const nodeAngle = Math.atan2(d.y, d.x);
+        // Place the label at the rotated position, but keep the box horizontal
+        const x = labelRadius * Math.cos(nodeAngle);
+        const y = labelRadius * Math.sin(nodeAngle);
         return `translate(${x},${y})`;
+      })
+      .style("cursor", "pointer")
+      .on("click", (event: any, d: any) => {
+        setSelectedL2(selectedL2 === d.label ? null : d.label);
       })
       .each(function (d: any) {
         // Break label into lines if > 12 chars per line
@@ -389,13 +399,13 @@ const Constellation = () => {
         let rectFill = "#fff";
         let rectStroke = "#666666";
         let textFill = d.textColor;
-        let strokeDasharray = "6 4";
+        let strokeDasharray = "2 2";
         let paddingX = 22.5;
         let paddingY = 12.5;
         const fontSize = 16;
         if (selectedL2 === d.label) {
           rectFill = "#111";
-          rectStroke = "#800020";
+          rectStroke = "#111";
           textFill = "#fff";
           strokeDasharray = "";
         } else if (selectedL2 && getLinkedL2Nodes(selectedL2).includes(d.label)) {
