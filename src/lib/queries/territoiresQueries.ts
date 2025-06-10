@@ -84,6 +84,7 @@ export const EPCI = async (variableCollectivite: string) => {
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite}, ' ', ', '))
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${variableCollectivite})
       )
+      ORDER BY libelle_epci ASC
       LIMIT 20;
     `;
   return value;
