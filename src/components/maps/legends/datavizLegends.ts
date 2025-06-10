@@ -384,13 +384,13 @@ export const feuxForetBarChartLegend = [
 
 export const RgaRepartitionLegend = [
   {
-    variable: "commune",
-    texteRaccourci: "Commune",
+    variable: "territoire",
+    texteRaccourci: "Territoire",
     couleur: "#038278"
   },
   {
-    variable: "epci",
-    texteRaccourci: "Epci",
+    variable: "territoireSup",
+    texteRaccourci: "Territoire supérieur",
     couleur: "#C48EF6"
   },
 ];

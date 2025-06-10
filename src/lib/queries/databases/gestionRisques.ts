@@ -116,6 +116,18 @@ export const GetRga = async (
           )
         `;
         return value as RGAdb[];
+      } else if (type === "epci") {
+        const value = await prisma.$queryRaw`
+          SELECT *
+          FROM "databases"."rga"
+          WHERE departement = (
+            SELECT departement
+            FROM "databases"."rga"
+            WHERE epci = ${code}
+            LIMIT 1
+          )
+        `;
+        return value as RGAdb[];
       } else {
         const value = await prisma.rga.findMany({
           where: {
@@ -132,3 +144,4 @@ export const GetRga = async (
   })();
   return Promise.race([dbQuery, timeoutPromise]);
 };
+
