@@ -21,7 +21,7 @@ export const RGA = ({
 }) => {
   const searchParams = useSearchParams();
   const type = searchParams.get('type')!;
-  const [datavizTab, setDatavizTab] = useState<string>(type === "commune" ? 'Répartition' : "Évolution");
+  const [datavizTab, setDatavizTab] = useState<string>((type === "commune" || type === "epci" ) ? 'Répartition' : "Évolution");
   const carteCommunesEnriched = carteCommunes.map(CommunesIndicateursMapper);
   const communesMap = carteCommunesEnriched.map((el) => {
     return {
