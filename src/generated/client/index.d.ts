@@ -139,6 +139,11 @@ export type postgis_rga = $Result.DefaultSelection<Prisma.$postgis_rgaPayload>
  */
 export type surfaces_agricoles = $Result.DefaultSelection<Prisma.$surfaces_agricolesPayload>
 /**
+ * Model sandbox_users
+ * 
+ */
+export type sandbox_users = $Result.DefaultSelection<Prisma.$sandbox_usersPayload>
+/**
  * Model agriculture_bio_with_territoire
  * 
  */
@@ -533,6 +538,16 @@ export class PrismaClient<
     * ```
     */
   get surfaces_agricoles(): Prisma.surfaces_agricolesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.sandbox_users`: Exposes CRUD operations for the **sandbox_users** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Sandbox_users
+    * const sandbox_users = await prisma.sandbox_users.findMany()
+    * ```
+    */
+  get sandbox_users(): Prisma.sandbox_usersDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.agriculture_bio_with_territoire`: Exposes CRUD operations for the **agriculture_bio_with_territoire** model.
@@ -1038,6 +1053,7 @@ export namespace Prisma {
     rga: 'rga',
     postgis_rga: 'postgis_rga',
     surfaces_agricoles: 'surfaces_agricoles',
+    sandbox_users: 'sandbox_users',
     agriculture_bio_with_territoire: 'agriculture_bio_with_territoire',
     qualite_sites_baignade_by_territoire: 'qualite_sites_baignade_by_territoire',
     etat_cours_deau_by_commune: 'etat_cours_deau_by_commune',
@@ -1060,7 +1076,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "patch4c" | "ressources_eau" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "qualite_sites_baignade" | "users" | "biodiversite" | "gestion_risques" | "incendies_foret" | "surfaces_protegees" | "spatial_ref_sys" | "rga" | "postgis_rga" | "surfaces_agricoles" | "agriculture_bio_with_territoire" | "qualite_sites_baignade_by_territoire" | "etat_cours_deau_by_commune" | "etat_cours_deau_by_epci"
+      modelProps: "north_star_metric" | "agriculture" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "patch4c" | "ressources_eau" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "qualite_sites_baignade" | "users" | "biodiversite" | "gestion_risques" | "incendies_foret" | "surfaces_protegees" | "spatial_ref_sys" | "rga" | "postgis_rga" | "surfaces_agricoles" | "sandbox_users" | "agriculture_bio_with_territoire" | "qualite_sites_baignade_by_territoire" | "etat_cours_deau_by_commune" | "etat_cours_deau_by_epci"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2834,6 +2850,80 @@ export namespace Prisma {
           }
         }
       }
+      sandbox_users: {
+        payload: Prisma.$sandbox_usersPayload<ExtArgs>
+        fields: Prisma.sandbox_usersFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.sandbox_usersFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.sandbox_usersFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
+          }
+          findFirst: {
+            args: Prisma.sandbox_usersFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.sandbox_usersFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
+          }
+          findMany: {
+            args: Prisma.sandbox_usersFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>[]
+          }
+          create: {
+            args: Prisma.sandbox_usersCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
+          }
+          createMany: {
+            args: Prisma.sandbox_usersCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.sandbox_usersCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>[]
+          }
+          delete: {
+            args: Prisma.sandbox_usersDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
+          }
+          update: {
+            args: Prisma.sandbox_usersUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
+          }
+          deleteMany: {
+            args: Prisma.sandbox_usersDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.sandbox_usersUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.sandbox_usersUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>[]
+          }
+          upsert: {
+            args: Prisma.sandbox_usersUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sandbox_usersPayload>
+          }
+          aggregate: {
+            args: Prisma.Sandbox_usersAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSandbox_users>
+          }
+          groupBy: {
+            args: Prisma.sandbox_usersGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Sandbox_usersGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.sandbox_usersCountArgs<ExtArgs>
+            result: $Utils.Optional<Sandbox_usersCountAggregateOutputType> | number
+          }
+        }
+      }
       agriculture_bio_with_territoire: {
         payload: Prisma.$agriculture_bio_with_territoirePayload<ExtArgs>
         fields: Prisma.agriculture_bio_with_territoireFieldRefs
@@ -3239,6 +3329,7 @@ export namespace Prisma {
     rga?: rgaOmit
     postgis_rga?: postgis_rgaOmit
     surfaces_agricoles?: surfaces_agricolesOmit
+    sandbox_users?: sandbox_usersOmit
     agriculture_bio_with_territoire?: agriculture_bio_with_territoireOmit
     qualite_sites_baignade_by_territoire?: qualite_sites_baignade_by_territoireOmit
     etat_cours_deau_by_commune?: etat_cours_deau_by_communeOmit
@@ -34447,6 +34538,1022 @@ export namespace Prisma {
 
 
   /**
+   * Model sandbox_users
+   */
+
+  export type AggregateSandbox_users = {
+    _count: Sandbox_usersCountAggregateOutputType | null
+    _avg: Sandbox_usersAvgAggregateOutputType | null
+    _sum: Sandbox_usersSumAggregateOutputType | null
+    _min: Sandbox_usersMinAggregateOutputType | null
+    _max: Sandbox_usersMaxAggregateOutputType | null
+  }
+
+  export type Sandbox_usersAvgAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type Sandbox_usersSumAggregateOutputType = {
+    pk: number | null
+  }
+
+  export type Sandbox_usersMinAggregateOutputType = {
+    username: string | null
+    pk: number | null
+    password: string | null
+    created_at: Date | null
+  }
+
+  export type Sandbox_usersMaxAggregateOutputType = {
+    username: string | null
+    pk: number | null
+    password: string | null
+    created_at: Date | null
+  }
+
+  export type Sandbox_usersCountAggregateOutputType = {
+    username: number
+    pk: number
+    password: number
+    created_at: number
+    _all: number
+  }
+
+
+  export type Sandbox_usersAvgAggregateInputType = {
+    pk?: true
+  }
+
+  export type Sandbox_usersSumAggregateInputType = {
+    pk?: true
+  }
+
+  export type Sandbox_usersMinAggregateInputType = {
+    username?: true
+    pk?: true
+    password?: true
+    created_at?: true
+  }
+
+  export type Sandbox_usersMaxAggregateInputType = {
+    username?: true
+    pk?: true
+    password?: true
+    created_at?: true
+  }
+
+  export type Sandbox_usersCountAggregateInputType = {
+    username?: true
+    pk?: true
+    password?: true
+    created_at?: true
+    _all?: true
+  }
+
+  export type Sandbox_usersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which sandbox_users to aggregate.
+     */
+    where?: sandbox_usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sandbox_users to fetch.
+     */
+    orderBy?: sandbox_usersOrderByWithRelationInput | sandbox_usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: sandbox_usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sandbox_users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sandbox_users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned sandbox_users
+    **/
+    _count?: true | Sandbox_usersCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Sandbox_usersAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Sandbox_usersSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Sandbox_usersMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Sandbox_usersMaxAggregateInputType
+  }
+
+  export type GetSandbox_usersAggregateType<T extends Sandbox_usersAggregateArgs> = {
+        [P in keyof T & keyof AggregateSandbox_users]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSandbox_users[P]>
+      : GetScalarType<T[P], AggregateSandbox_users[P]>
+  }
+
+
+
+
+  export type sandbox_usersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: sandbox_usersWhereInput
+    orderBy?: sandbox_usersOrderByWithAggregationInput | sandbox_usersOrderByWithAggregationInput[]
+    by: Sandbox_usersScalarFieldEnum[] | Sandbox_usersScalarFieldEnum
+    having?: sandbox_usersScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Sandbox_usersCountAggregateInputType | true
+    _avg?: Sandbox_usersAvgAggregateInputType
+    _sum?: Sandbox_usersSumAggregateInputType
+    _min?: Sandbox_usersMinAggregateInputType
+    _max?: Sandbox_usersMaxAggregateInputType
+  }
+
+  export type Sandbox_usersGroupByOutputType = {
+    username: string
+    pk: number
+    password: string
+    created_at: Date
+    _count: Sandbox_usersCountAggregateOutputType | null
+    _avg: Sandbox_usersAvgAggregateOutputType | null
+    _sum: Sandbox_usersSumAggregateOutputType | null
+    _min: Sandbox_usersMinAggregateOutputType | null
+    _max: Sandbox_usersMaxAggregateOutputType | null
+  }
+
+  type GetSandbox_usersGroupByPayload<T extends sandbox_usersGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Sandbox_usersGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Sandbox_usersGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Sandbox_usersGroupByOutputType[P]>
+            : GetScalarType<T[P], Sandbox_usersGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type sandbox_usersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    username?: boolean
+    pk?: boolean
+    password?: boolean
+    created_at?: boolean
+  }, ExtArgs["result"]["sandbox_users"]>
+
+  export type sandbox_usersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    username?: boolean
+    pk?: boolean
+    password?: boolean
+    created_at?: boolean
+  }, ExtArgs["result"]["sandbox_users"]>
+
+  export type sandbox_usersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    username?: boolean
+    pk?: boolean
+    password?: boolean
+    created_at?: boolean
+  }, ExtArgs["result"]["sandbox_users"]>
+
+  export type sandbox_usersSelectScalar = {
+    username?: boolean
+    pk?: boolean
+    password?: boolean
+    created_at?: boolean
+  }
+
+  export type sandbox_usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"username" | "pk" | "password" | "created_at", ExtArgs["result"]["sandbox_users"]>
+
+  export type $sandbox_usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "sandbox_users"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      username: string
+      pk: number
+      password: string
+      created_at: Date
+    }, ExtArgs["result"]["sandbox_users"]>
+    composites: {}
+  }
+
+  type sandbox_usersGetPayload<S extends boolean | null | undefined | sandbox_usersDefaultArgs> = $Result.GetResult<Prisma.$sandbox_usersPayload, S>
+
+  type sandbox_usersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<sandbox_usersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Sandbox_usersCountAggregateInputType | true
+    }
+
+  export interface sandbox_usersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['sandbox_users'], meta: { name: 'sandbox_users' } }
+    /**
+     * Find zero or one Sandbox_users that matches the filter.
+     * @param {sandbox_usersFindUniqueArgs} args - Arguments to find a Sandbox_users
+     * @example
+     * // Get one Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends sandbox_usersFindUniqueArgs>(args: SelectSubset<T, sandbox_usersFindUniqueArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Sandbox_users that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {sandbox_usersFindUniqueOrThrowArgs} args - Arguments to find a Sandbox_users
+     * @example
+     * // Get one Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends sandbox_usersFindUniqueOrThrowArgs>(args: SelectSubset<T, sandbox_usersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Sandbox_users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sandbox_usersFindFirstArgs} args - Arguments to find a Sandbox_users
+     * @example
+     * // Get one Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends sandbox_usersFindFirstArgs>(args?: SelectSubset<T, sandbox_usersFindFirstArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Sandbox_users that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sandbox_usersFindFirstOrThrowArgs} args - Arguments to find a Sandbox_users
+     * @example
+     * // Get one Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends sandbox_usersFindFirstOrThrowArgs>(args?: SelectSubset<T, sandbox_usersFindFirstOrThrowArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Sandbox_users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sandbox_usersFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.findMany()
+     * 
+     * // Get first 10 Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.findMany({ take: 10 })
+     * 
+     * // Only select the `username`
+     * const sandbox_usersWithUsernameOnly = await prisma.sandbox_users.findMany({ select: { username: true } })
+     * 
+     */
+    findMany<T extends sandbox_usersFindManyArgs>(args?: SelectSubset<T, sandbox_usersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Sandbox_users.
+     * @param {sandbox_usersCreateArgs} args - Arguments to create a Sandbox_users.
+     * @example
+     * // Create one Sandbox_users
+     * const Sandbox_users = await prisma.sandbox_users.create({
+     *   data: {
+     *     // ... data to create a Sandbox_users
+     *   }
+     * })
+     * 
+     */
+    create<T extends sandbox_usersCreateArgs>(args: SelectSubset<T, sandbox_usersCreateArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Sandbox_users.
+     * @param {sandbox_usersCreateManyArgs} args - Arguments to create many Sandbox_users.
+     * @example
+     * // Create many Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends sandbox_usersCreateManyArgs>(args?: SelectSubset<T, sandbox_usersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Sandbox_users and returns the data saved in the database.
+     * @param {sandbox_usersCreateManyAndReturnArgs} args - Arguments to create many Sandbox_users.
+     * @example
+     * // Create many Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Sandbox_users and only return the `username`
+     * const sandbox_usersWithUsernameOnly = await prisma.sandbox_users.createManyAndReturn({
+     *   select: { username: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends sandbox_usersCreateManyAndReturnArgs>(args?: SelectSubset<T, sandbox_usersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Sandbox_users.
+     * @param {sandbox_usersDeleteArgs} args - Arguments to delete one Sandbox_users.
+     * @example
+     * // Delete one Sandbox_users
+     * const Sandbox_users = await prisma.sandbox_users.delete({
+     *   where: {
+     *     // ... filter to delete one Sandbox_users
+     *   }
+     * })
+     * 
+     */
+    delete<T extends sandbox_usersDeleteArgs>(args: SelectSubset<T, sandbox_usersDeleteArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Sandbox_users.
+     * @param {sandbox_usersUpdateArgs} args - Arguments to update one Sandbox_users.
+     * @example
+     * // Update one Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends sandbox_usersUpdateArgs>(args: SelectSubset<T, sandbox_usersUpdateArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Sandbox_users.
+     * @param {sandbox_usersDeleteManyArgs} args - Arguments to filter Sandbox_users to delete.
+     * @example
+     * // Delete a few Sandbox_users
+     * const { count } = await prisma.sandbox_users.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends sandbox_usersDeleteManyArgs>(args?: SelectSubset<T, sandbox_usersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Sandbox_users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sandbox_usersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends sandbox_usersUpdateManyArgs>(args: SelectSubset<T, sandbox_usersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Sandbox_users and returns the data updated in the database.
+     * @param {sandbox_usersUpdateManyAndReturnArgs} args - Arguments to update many Sandbox_users.
+     * @example
+     * // Update many Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Sandbox_users and only return the `username`
+     * const sandbox_usersWithUsernameOnly = await prisma.sandbox_users.updateManyAndReturn({
+     *   select: { username: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends sandbox_usersUpdateManyAndReturnArgs>(args: SelectSubset<T, sandbox_usersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Sandbox_users.
+     * @param {sandbox_usersUpsertArgs} args - Arguments to update or create a Sandbox_users.
+     * @example
+     * // Update or create a Sandbox_users
+     * const sandbox_users = await prisma.sandbox_users.upsert({
+     *   create: {
+     *     // ... data to create a Sandbox_users
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Sandbox_users we want to update
+     *   }
+     * })
+     */
+    upsert<T extends sandbox_usersUpsertArgs>(args: SelectSubset<T, sandbox_usersUpsertArgs<ExtArgs>>): Prisma__sandbox_usersClient<$Result.GetResult<Prisma.$sandbox_usersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Sandbox_users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sandbox_usersCountArgs} args - Arguments to filter Sandbox_users to count.
+     * @example
+     * // Count the number of Sandbox_users
+     * const count = await prisma.sandbox_users.count({
+     *   where: {
+     *     // ... the filter for the Sandbox_users we want to count
+     *   }
+     * })
+    **/
+    count<T extends sandbox_usersCountArgs>(
+      args?: Subset<T, sandbox_usersCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Sandbox_usersCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Sandbox_users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Sandbox_usersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Sandbox_usersAggregateArgs>(args: Subset<T, Sandbox_usersAggregateArgs>): Prisma.PrismaPromise<GetSandbox_usersAggregateType<T>>
+
+    /**
+     * Group by Sandbox_users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sandbox_usersGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends sandbox_usersGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: sandbox_usersGroupByArgs['orderBy'] }
+        : { orderBy?: sandbox_usersGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, sandbox_usersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSandbox_usersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the sandbox_users model
+   */
+  readonly fields: sandbox_usersFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for sandbox_users.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__sandbox_usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the sandbox_users model
+   */
+  interface sandbox_usersFieldRefs {
+    readonly username: FieldRef<"sandbox_users", 'String'>
+    readonly pk: FieldRef<"sandbox_users", 'Int'>
+    readonly password: FieldRef<"sandbox_users", 'String'>
+    readonly created_at: FieldRef<"sandbox_users", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * sandbox_users findUnique
+   */
+  export type sandbox_usersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * Filter, which sandbox_users to fetch.
+     */
+    where: sandbox_usersWhereUniqueInput
+  }
+
+  /**
+   * sandbox_users findUniqueOrThrow
+   */
+  export type sandbox_usersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * Filter, which sandbox_users to fetch.
+     */
+    where: sandbox_usersWhereUniqueInput
+  }
+
+  /**
+   * sandbox_users findFirst
+   */
+  export type sandbox_usersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * Filter, which sandbox_users to fetch.
+     */
+    where?: sandbox_usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sandbox_users to fetch.
+     */
+    orderBy?: sandbox_usersOrderByWithRelationInput | sandbox_usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for sandbox_users.
+     */
+    cursor?: sandbox_usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sandbox_users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sandbox_users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of sandbox_users.
+     */
+    distinct?: Sandbox_usersScalarFieldEnum | Sandbox_usersScalarFieldEnum[]
+  }
+
+  /**
+   * sandbox_users findFirstOrThrow
+   */
+  export type sandbox_usersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * Filter, which sandbox_users to fetch.
+     */
+    where?: sandbox_usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sandbox_users to fetch.
+     */
+    orderBy?: sandbox_usersOrderByWithRelationInput | sandbox_usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for sandbox_users.
+     */
+    cursor?: sandbox_usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sandbox_users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sandbox_users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of sandbox_users.
+     */
+    distinct?: Sandbox_usersScalarFieldEnum | Sandbox_usersScalarFieldEnum[]
+  }
+
+  /**
+   * sandbox_users findMany
+   */
+  export type sandbox_usersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * Filter, which sandbox_users to fetch.
+     */
+    where?: sandbox_usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sandbox_users to fetch.
+     */
+    orderBy?: sandbox_usersOrderByWithRelationInput | sandbox_usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing sandbox_users.
+     */
+    cursor?: sandbox_usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sandbox_users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sandbox_users.
+     */
+    skip?: number
+    distinct?: Sandbox_usersScalarFieldEnum | Sandbox_usersScalarFieldEnum[]
+  }
+
+  /**
+   * sandbox_users create
+   */
+  export type sandbox_usersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * The data needed to create a sandbox_users.
+     */
+    data: XOR<sandbox_usersCreateInput, sandbox_usersUncheckedCreateInput>
+  }
+
+  /**
+   * sandbox_users createMany
+   */
+  export type sandbox_usersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many sandbox_users.
+     */
+    data: sandbox_usersCreateManyInput | sandbox_usersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * sandbox_users createManyAndReturn
+   */
+  export type sandbox_usersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * The data used to create many sandbox_users.
+     */
+    data: sandbox_usersCreateManyInput | sandbox_usersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * sandbox_users update
+   */
+  export type sandbox_usersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * The data needed to update a sandbox_users.
+     */
+    data: XOR<sandbox_usersUpdateInput, sandbox_usersUncheckedUpdateInput>
+    /**
+     * Choose, which sandbox_users to update.
+     */
+    where: sandbox_usersWhereUniqueInput
+  }
+
+  /**
+   * sandbox_users updateMany
+   */
+  export type sandbox_usersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update sandbox_users.
+     */
+    data: XOR<sandbox_usersUpdateManyMutationInput, sandbox_usersUncheckedUpdateManyInput>
+    /**
+     * Filter which sandbox_users to update
+     */
+    where?: sandbox_usersWhereInput
+    /**
+     * Limit how many sandbox_users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * sandbox_users updateManyAndReturn
+   */
+  export type sandbox_usersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * The data used to update sandbox_users.
+     */
+    data: XOR<sandbox_usersUpdateManyMutationInput, sandbox_usersUncheckedUpdateManyInput>
+    /**
+     * Filter which sandbox_users to update
+     */
+    where?: sandbox_usersWhereInput
+    /**
+     * Limit how many sandbox_users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * sandbox_users upsert
+   */
+  export type sandbox_usersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * The filter to search for the sandbox_users to update in case it exists.
+     */
+    where: sandbox_usersWhereUniqueInput
+    /**
+     * In case the sandbox_users found by the `where` argument doesn't exist, create a new sandbox_users with this data.
+     */
+    create: XOR<sandbox_usersCreateInput, sandbox_usersUncheckedCreateInput>
+    /**
+     * In case the sandbox_users was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<sandbox_usersUpdateInput, sandbox_usersUncheckedUpdateInput>
+  }
+
+  /**
+   * sandbox_users delete
+   */
+  export type sandbox_usersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+    /**
+     * Filter which sandbox_users to delete.
+     */
+    where: sandbox_usersWhereUniqueInput
+  }
+
+  /**
+   * sandbox_users deleteMany
+   */
+  export type sandbox_usersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which sandbox_users to delete
+     */
+    where?: sandbox_usersWhereInput
+    /**
+     * Limit how many sandbox_users to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * sandbox_users without action
+   */
+  export type sandbox_usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the sandbox_users
+     */
+    select?: sandbox_usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the sandbox_users
+     */
+    omit?: sandbox_usersOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model agriculture_bio_with_territoire
    */
 
@@ -39690,6 +40797,16 @@ export namespace Prisma {
   export type Surfaces_agricolesScalarFieldEnum = (typeof Surfaces_agricolesScalarFieldEnum)[keyof typeof Surfaces_agricolesScalarFieldEnum]
 
 
+  export const Sandbox_usersScalarFieldEnum: {
+    username: 'username',
+    pk: 'pk',
+    password: 'password',
+    created_at: 'created_at'
+  };
+
+  export type Sandbox_usersScalarFieldEnum = (typeof Sandbox_usersScalarFieldEnum)[keyof typeof Sandbox_usersScalarFieldEnum]
+
+
   export const Agriculture_bio_with_territoireScalarFieldEnum: {
     index: 'index',
     epci: 'epci',
@@ -43131,6 +44248,55 @@ export namespace Prisma {
     superficie_sau_subventions?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
     superficie_sau_bois_patures?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
     superficie_sau_jardins?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+  }
+
+  export type sandbox_usersWhereInput = {
+    AND?: sandbox_usersWhereInput | sandbox_usersWhereInput[]
+    OR?: sandbox_usersWhereInput[]
+    NOT?: sandbox_usersWhereInput | sandbox_usersWhereInput[]
+    username?: StringFilter<"sandbox_users"> | string
+    pk?: IntFilter<"sandbox_users"> | number
+    password?: StringFilter<"sandbox_users"> | string
+    created_at?: DateTimeFilter<"sandbox_users"> | Date | string
+  }
+
+  export type sandbox_usersOrderByWithRelationInput = {
+    username?: SortOrder
+    pk?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type sandbox_usersWhereUniqueInput = Prisma.AtLeast<{
+    pk?: number
+    AND?: sandbox_usersWhereInput | sandbox_usersWhereInput[]
+    OR?: sandbox_usersWhereInput[]
+    NOT?: sandbox_usersWhereInput | sandbox_usersWhereInput[]
+    username?: StringFilter<"sandbox_users"> | string
+    password?: StringFilter<"sandbox_users"> | string
+    created_at?: DateTimeFilter<"sandbox_users"> | Date | string
+  }, "pk">
+
+  export type sandbox_usersOrderByWithAggregationInput = {
+    username?: SortOrder
+    pk?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+    _count?: sandbox_usersCountOrderByAggregateInput
+    _avg?: sandbox_usersAvgOrderByAggregateInput
+    _max?: sandbox_usersMaxOrderByAggregateInput
+    _min?: sandbox_usersMinOrderByAggregateInput
+    _sum?: sandbox_usersSumOrderByAggregateInput
+  }
+
+  export type sandbox_usersScalarWhereWithAggregatesInput = {
+    AND?: sandbox_usersScalarWhereWithAggregatesInput | sandbox_usersScalarWhereWithAggregatesInput[]
+    OR?: sandbox_usersScalarWhereWithAggregatesInput[]
+    NOT?: sandbox_usersScalarWhereWithAggregatesInput | sandbox_usersScalarWhereWithAggregatesInput[]
+    username?: StringWithAggregatesFilter<"sandbox_users"> | string
+    pk?: IntWithAggregatesFilter<"sandbox_users"> | number
+    password?: StringWithAggregatesFilter<"sandbox_users"> | string
+    created_at?: DateTimeWithAggregatesFilter<"sandbox_users"> | Date | string
   }
 
   export type agriculture_bio_with_territoireWhereInput = {
@@ -47412,6 +48578,52 @@ export namespace Prisma {
     superficie_sau_jardins?: FloatFieldUpdateOperationsInput | number
   }
 
+  export type sandbox_usersCreateInput = {
+    username: string
+    password: string
+    created_at: Date | string
+  }
+
+  export type sandbox_usersUncheckedCreateInput = {
+    username: string
+    pk?: number
+    password: string
+    created_at: Date | string
+  }
+
+  export type sandbox_usersUpdateInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type sandbox_usersUncheckedUpdateInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    pk?: IntFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type sandbox_usersCreateManyInput = {
+    username: string
+    pk?: number
+    password: string
+    created_at: Date | string
+  }
+
+  export type sandbox_usersUpdateManyMutationInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type sandbox_usersUncheckedUpdateManyInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    pk?: IntFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type agriculture_bio_with_territoireCreateInput = {
     index: bigint | number
     epci?: string | null
@@ -50653,6 +51865,35 @@ export namespace Prisma {
     superficie_sau_subventions?: SortOrder
     superficie_sau_bois_patures?: SortOrder
     superficie_sau_jardins?: SortOrder
+  }
+
+  export type sandbox_usersCountOrderByAggregateInput = {
+    username?: SortOrder
+    pk?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type sandbox_usersAvgOrderByAggregateInput = {
+    pk?: SortOrder
+  }
+
+  export type sandbox_usersMaxOrderByAggregateInput = {
+    username?: SortOrder
+    pk?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type sandbox_usersMinOrderByAggregateInput = {
+    username?: SortOrder
+    pk?: SortOrder
+    password?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type sandbox_usersSumOrderByAggregateInput = {
+    pk?: SortOrder
   }
 
   export type agriculture_bio_with_territoireCountOrderByAggregateInput = {
