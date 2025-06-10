@@ -2,9 +2,14 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import RoueSystemique from './roue';
 
-const RouePage = async ({ params }: { params: { user: string } }) => {
+type SegmentParams<T extends Object = any> = T extends Record<string, any>
+  ? { [K in keyof T]: T[K] extends string ? string | string[] | undefined : never }
+  : T
+  
+const RouePage = async ({ params }: { params: Promise<SegmentParams> }) => {
   const session = await getServerSession();
-  const { user } = await params;
+  const resolvedParams = await params;
+  const user = resolvedParams.user as string;
   // Only allow access if the session user is 'audrey' and the URL param is 'audrey'
   if (!session || session.user?.name !== 'audrey' || user !== 'audrey') {
     redirect('/');

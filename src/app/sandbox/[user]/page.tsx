@@ -3,9 +3,14 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import DisconnectButton from './DisconnectButton';
 
-const SandboxUserPage = async ({ params }: { params: { user: string } }) => {
+type SegmentParams<T extends Object = any> = T extends Record<string, any>
+  ? { [K in keyof T]: T[K] extends string ? string | string[] | undefined : never }
+  : T
+
+const SandboxUserPage = async ({ params }: { params: Promise<SegmentParams> }) => {
   const session = await getServerSession();
-  const { user } = await params;
+  const resolvedParams = await params;
+  const user = resolvedParams.user as string;
   // If the session user does not match the URL param, redirect to home
   if (!session || session.user?.name !== user) {
     redirect('/');
