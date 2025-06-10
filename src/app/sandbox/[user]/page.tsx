@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
+import DisconnectButton from './DisconnectButton';
 
 const SandboxUserPage = async ({ params }: { params: { user: string } }) => {
   const session = await getServerSession();
@@ -11,6 +12,9 @@ const SandboxUserPage = async ({ params }: { params: { user: string } }) => {
   }
   return (
     <div className="p-8">
+      <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '1rem' }}>
+        <DisconnectButton />
+      </div>
       <h1>Bienvenue dans l'espace protégé de {user}</h1>
       <p>Contenu réservé à {user}.</p>
       <Button
