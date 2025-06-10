@@ -7,7 +7,9 @@ const PrismaPostgres = new PostgresClient();
 
 export const AuthOptions: NextAuthOptions = {
   session: {
-    strategy: 'jwt'
+    strategy: 'jwt',
+    maxAge: 1800, // 30 minutes in seconds
+    updateAge: 1800 // force session update every 30min
   },
   pages: {
     signIn: '/login'
@@ -27,12 +29,16 @@ export const AuthOptions: NextAuthOptions = {
         username: { label: 'Username', type: 'text' },
         password: { label: 'Password', type: 'password' }
       },
-      async authorize(credentials) {
-        const user = await PrismaPostgres.users.findUnique({
-          where: {
-            username: credentials!.username
-          }
+      async authorize(credentials, req) {
+        let user = null;
+        user = await PrismaPostgres.sandbox_users.findFirst({
+          where: { username: credentials!.username }
         });
+        if (!user) {
+          user = await PrismaPostgres.users.findUnique({
+            where: { username: credentials!.username }
+          });
+        }
         if (user) {
           const bcrypt = require('bcryptjs');
           const comparedPasswords = await bcrypt.compare(
@@ -41,26 +47,13 @@ export const AuthOptions: NextAuthOptions = {
           );
           if (comparedPasswords) {
             return {
-              id: user.pk.toString(),
+              id: user.pk?.toString() ?? user.username,
               name: user.username,
               username: user.username
             };
           }
         }
         return null;
-        // const value = await PrismaPostgres.users.findUnique({
-        //   where: {
-        //     password: hashedPassword,
-        //     username: credentials!.username
-        //   }
-        // });
-        // if (value) {
-        //   return {
-        //     id: value.pk.toString(),
-        //     name: value.username,
-        //     email: value.email,
-        //   };
-        // } return null
       }
     })
   ]

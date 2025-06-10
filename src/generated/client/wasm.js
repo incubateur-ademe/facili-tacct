@@ -703,6 +703,13 @@ exports.Prisma.Surfaces_agricolesScalarFieldEnum = {
   superficie_sau_jardins: 'superficie_sau_jardins'
 };
 
+exports.Prisma.Sandbox_usersScalarFieldEnum = {
+  username: 'username',
+  pk: 'pk',
+  password: 'password',
+  created_at: 'created_at'
+};
+
 exports.Prisma.Agriculture_bio_with_territoireScalarFieldEnum = {
   index: 'index',
   epci: 'epci',
@@ -809,6 +816,7 @@ exports.Prisma.ModelName = {
   rga: 'rga',
   postgis_rga: 'postgis_rga',
   surfaces_agricoles: 'surfaces_agricoles',
+  sandbox_users: 'sandbox_users',
   agriculture_bio_with_territoire: 'agriculture_bio_with_territoire',
   qualite_sites_baignade_by_territoire: 'qualite_sites_baignade_by_territoire',
   etat_cours_deau_by_commune: 'etat_cours_deau_by_commune',
