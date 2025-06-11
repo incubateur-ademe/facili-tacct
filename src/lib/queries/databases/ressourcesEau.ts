@@ -113,7 +113,7 @@ export const GetQualiteEauxBaignade = async (
   const column = ColumnLibelleCheck(type);
   try {
     // Fast existence check
-    const exists = await prisma.qualite_sites_baignade_by_territoire.findFirst({
+    const exists = await prisma.collectivites_searchbar.findFirst({
       where: { [column]: libelle }
     });
     if (!exists) return [];
@@ -134,14 +134,30 @@ export const GetQualiteEauxBaignade = async (
         return value;
       } else {
         console.time('Query Execution Time QUALITE EAUX BAIGNADE');
-        const value =
-          await prisma.qualite_sites_baignade_by_territoire.findMany({
-            where: {
-              [column]: libelle
+        const departement = await prisma.collectivites_searchbar.findMany({
+          where: {
+            AND: [
+              {
+                departement: { not: null }
+              },
+              {
+                [column]: libelle
+              }
+            ]
+          },
+          distinct: ['departement']
+        });
+        const value = await prisma.qualite_sites_baignade.findMany({
+          where: {
+            DEP_NUM: {
+              in: departement
+                .map((d) => d.departement)
+                .filter((d): d is string => d !== null)
             }
-          });
+          }
+        });
         console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
-        return value as QualiteSitesBaignade[];
+        return value;
       }
     }
   } catch (error) {
