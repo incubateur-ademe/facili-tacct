@@ -144,6 +144,50 @@ const config = {
                 ]
             }
         ];
+    },
+    async redirects() {
+        return [
+            {
+                source: '/ressources/articles/lire-un-diagnostic',
+                destination: '/ressources/articles/analyser-diagnostic-vulnerabilite',
+                permanent: true,
+            },
+            {
+                source: '/ressources/articles/cdc',
+                destination: '/ressources/articles/facilitation-cahier-charges',
+                permanent: true,
+            },
+            {
+                source: '/ressources/articles/pourquoi-mobiliser',
+                destination: '/ressources/articles/mobilisation-diagnostic-vulnerabilite',
+                permanent: true,
+            },
+            {
+                source: '/ressources/articles/eviter-precher-desert',
+                destination: '/ressources/articles/reussir-mobilisation-acteurs-adaptation',
+                permanent: true,
+            },
+            {
+                source: '/ressources/articles/adacc',
+                destination: '/ressources/articles/ateliers-adacc-adaptation',
+                permanent: true,
+            },
+            {
+                source: '/ressources/articles/climastory',
+                destination: '/ressources/articles/atelier-climatstory-sensibilisation-adaptation',
+                permanent: true,
+            },
+            {
+                source: '/ressources/articles/mise-en-recit',
+                destination: '/ressources/articles/mise-en-recit-territoire-adaptation-climat',
+                permanent: true,
+            },
+            {
+                source: '/ressources/articles/facilitation-ateliers',
+                destination: '/ressources/articles/facilitation-ateliers-mobilisation',
+                permanent: true,
+            }
+        ];
     }
 };
 
