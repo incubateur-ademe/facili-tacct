@@ -8,8 +8,8 @@ import EndPageTrigger from "../../../hooks/EndPageTrigger";
 import styles from "./article.module.scss";
 
 export const articleMetadata = {
-  title: 'Lire un diagnostic de vulnérabilité',
-  description: 'Comment lire un diagnostic de vulnérabilité du territoire aux impacts du changement climatique en 10 minutes ?',
+  title: 'Analyser un diagnostic de vulnérabilité',
+  description: 'Gagnez du temps dans l’analyse de votre diagnostic de vulnérabilité aux effets du changement climatique. Une méthode pour en extraire l’essentiel en 10 minutes.',
 };
 
 const LireUnDiagnostic = () => {
