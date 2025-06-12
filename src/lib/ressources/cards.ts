@@ -52,7 +52,7 @@ export const cards = {
       tag: 'Article',
       description:
         'Le diagnostic de vulnérabilité est un document clé pour comprendre le territoire et ses spécificités.',
-      link: '/ressources/articles/lire-un-diagnostic'
+      link: '/ressources/articles/analyser-diagnostic-vulnerabilite'
     },
     {
       id: 4,

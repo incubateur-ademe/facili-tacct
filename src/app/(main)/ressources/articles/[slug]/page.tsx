@@ -4,15 +4,19 @@ import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import { allArticles } from '../articlesList';
 
-export async function generateMetadata(
+export const generateMetadata = async (
   { params }: {params: Promise<{ slug: string }>}
-): Promise<Metadata> {
+): Promise<Metadata> => {
   const { slug } = await params;
   const article = allArticles.find(a => a.slug === slug);
   if (!article) return {};
   return {
     title: article.metadata.title,
     description: article.metadata.description,
+    openGraph: {
+      title: article.metadata.title,
+      description: article.metadata.description,
+    },
   };
 }
 
