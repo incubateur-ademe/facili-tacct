@@ -8,6 +8,13 @@ interface MiddlewareTokenOptions {
 }
 
 export async function middleware(req: NextRequest): Promise<NextResponse> {
+  // Redirect /ressources/articles?title=... to /ressources
+  if (
+    req.nextUrl.pathname === '/ressources/articles' &&
+    req.nextUrl.searchParams.has('title')
+  ) {
+    return NextResponse.redirect(new URL('/ressources', req.url));
+  }
   // Only protect /sandbox/* routes
   if (req.nextUrl.pathname.startsWith('/sandbox/')) {
     const token: JWT | null = await getToken({ req } as MiddlewareTokenOptions);
@@ -16,11 +23,9 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
       return NextResponse.redirect(new URL('/', req.url));
     }
   }
-  // Let next-auth handle other protected routes (like /api/ressources)
   return NextResponse.next();
 }
 
 export const config = {
-  // Protect all /sandbox/* routes
-  matcher: ['/api/ressources', '/sandbox/:user*'],
+  matcher: ['/api/ressources', '/sandbox/:user*', '/ressources/articles'],
 };
