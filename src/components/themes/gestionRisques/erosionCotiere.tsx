@@ -22,7 +22,6 @@ const ErosionCotes = (props: {
   carteCommunes: CarteCommunes[];
 }) => {
   const { erosionCotiere, carteCommunes } = props;
-  const re = new RegExp('T([1-9]|1[0-2])\\b');
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -62,7 +61,7 @@ const ErosionCotes = (props: {
                     niveauxMarins === 'Intensité forte' ? (
                     <TagItem
                       icon={niveauxMarinsIcon}
-                      indice="Sécheresse des sols"
+                      indice="Niveaux marins"
                       tag={niveauxMarins}
                     />
                   ) : null}
