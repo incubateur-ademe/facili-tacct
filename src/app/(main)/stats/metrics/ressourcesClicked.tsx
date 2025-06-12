@@ -1,12 +1,25 @@
 import { BarChartStats } from '@/components/charts/stats/BarChart';
 import { Container } from '@/dsfr/layout';
-import GetInsights from '../query';
+import { GetInsightById } from '../query';
 import styles from '../stats.module.scss';
 
+interface RessourceResult {
+  data: number[];
+  labels: string[];
+  count: number;
+  aggregated_value: number;
+  label: string;
+  breakdown_value: string[];
+  action: {
+    math: string;
+    type: string;
+  };
+}
+
 const RessourcesClicked = async () => {
-  const ressourcesClicked = await GetInsights('4HSdF87O');
-  const graphData = ressourcesClicked
-    ? ressourcesClicked
+  const ressourcesClicked = await GetInsightById(627429);
+  const graphData = Array.isArray(ressourcesClicked)
+    ? (ressourcesClicked as RessourceResult[])
       .filter((e) => e.action.math === 'total')
       .map((e) => {
         return {
