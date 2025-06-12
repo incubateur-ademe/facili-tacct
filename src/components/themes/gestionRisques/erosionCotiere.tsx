@@ -62,7 +62,7 @@ const ErosionCotes = (props: {
                     niveauxMarins === 'Intensité forte' ? (
                     <TagItem
                       icon={niveauxMarinsIcon}
-                      indice="Sécheresse des sols"
+                      indice="Niveaux marins"
                       tag={niveauxMarins}
                     />
                   ) : null}
