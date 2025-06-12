@@ -61,7 +61,7 @@ export const cards = {
       tag: 'Article',
       description:
         '« L’humanité est une espèce fabulatrice qui, en se racontant des histoires de plus en plus complexes, développe des capacités de coopération » - Yuval Noah Harrari ; Découvrez la mise en récit.',
-      link: '/ressources/articles/mise-en-recit'
+      link: '/ressources/articles/mise-en-recit-territoire-adaptation-climat'
     },
     {
       id: 5,
@@ -70,7 +70,7 @@ export const cards = {
       tag: 'Article',
       description:
         'Pour réellement engager vos parties prenantes dans votre démarche d’adaptation appuyez-vous sur une démarche éprouvée : la facilitation d’ateliers.',
-      link: '/ressources/articles/facilitation-ateliers'
+      link: '/ressources/articles/facilitation-ateliers-mobilisation'
     },
     {
       id: 6,
@@ -82,7 +82,7 @@ export const cards = {
       tag: 'Article',
       description:
         'Engager vos participants, ça s’anticipe, pour cela intégrez la facilitation d’ateliers (ou l’intelligence collective) dès conception de votre cahier des charges.',
-      link: '/ressources/articles/cdc'
+      link: '/ressources/articles/facilitation-cahier-charges'
     },
     {
       id: 7,
@@ -207,7 +207,7 @@ export const cards = {
       tag: 'Article',
       description:
         'Le climat c’est notre affaire à tous, pour autant la mobilisation autour de ce sujet reste toujours difficile aujourd’hui.',
-      link: '/ressources/articles/pourquoi-mobiliser'
+      link: '/ressources/articles/mobilisation-diagnostic-vulnerabilite'
     },
     {
       id: 19,
@@ -219,7 +219,7 @@ export const cards = {
       tag: 'Article',
       description:
         'La mobilisation n’est jamais simple, nous avons identifiés des freins et des pratiques concrètes à activer pour réaliser une mobilisation efficace.',
-      link: '/ressources/articles/eviter-precher-desert'
+      link: '/ressources/articles/reussir-mobilisation-acteurs-adaptation'
     },
     {
       id: 20,
@@ -232,7 +232,7 @@ export const cards = {
       tag: 'Article',
       description:
         'La sensibilisation, un préalable à la mobilisation ? Retour d’expérience de Sarah Clamens avec la mise en œuvre des Ateliers de l’Adaptation au Changement Climatique à la CA de Saintes.',
-      link: '/ressources/articles/adacc'
+      link: '/ressources/articles/ateliers-adacc-adaptation'
     },
     {
       id: 21,
@@ -244,7 +244,7 @@ export const cards = {
       tag: 'Article',
       description:
         'Approcher l’adaptation au changement climatique via une carte du territoire, fictive ou non : une manière sensible d’aborder le sujet.',
-      link: '/ressources/articles/climastory'
+      link: '/ressources/articles/atelier-climatstory-sensibilisation-adaptation'
     },
     {
       id: 22,
