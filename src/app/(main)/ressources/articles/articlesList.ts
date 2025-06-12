@@ -9,7 +9,7 @@ import PourquoiMobiliser, { articleMetadata as pourquoiMeta } from '@/lib/ressou
 
 export const allArticles = [
   {
-    slug: 'lire-un-diagnostic',
+    slug: 'analyser-diagnostic-vulnerabilite',
     Component: LireUnDiagnostic,
     metadata: lireMeta,
   },
