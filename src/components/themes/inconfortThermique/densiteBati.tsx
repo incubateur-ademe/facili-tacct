@@ -114,8 +114,7 @@ export const DensiteBati = ({
                   Densité du bâti par commune
                 </b>
               </p>
-              <div style={{ height: '500px', width: '100%', backgroundColor: 'white' }}>
-
+              <div style={{ height: '500px', width: '100%' }}>
                 {
                   densiteTerritoire ?
                     <>
