@@ -79,3 +79,11 @@
     padding: 1em 2em;
     justify-content: space-between;
 }
+
+.loadingTextFade {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.loadingTextFade.show {
+  opacity: 1;
+}

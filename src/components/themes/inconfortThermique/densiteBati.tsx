@@ -114,24 +114,22 @@ export const DensiteBati = ({
                   Densité du bâti par commune
                 </b>
               </p>
-              <div style={{ height: '500px', width: '100%' }}>
-                {
-                  densiteTerritoire ?
-                    <>
-                      <Map data={'densite_bati'} carteCommunes={carteTerritoire} />
-                      <div
-                        className={styles.legend}
-                        style={{ width: 'auto', justifyContent: 'center' }}
-                      >
-                        <LegendCompColor legends={densiteBatiLegend} />
-                      </div>
-                      <p style={{ padding: '1em', margin: '0' }}>
-                        Source : Base de Données Nationale Des Bâtiments – BDNB
-                      </p>
-                    </>
-                    : <DataNotFoundForGraph image={DataNotFound} />
-                }
-              </div>
+              {
+                densiteTerritoire ?
+                  <>
+                    <Map data={'densite_bati'} carteCommunes={carteTerritoire} />
+                    <div
+                      className={styles.legend}
+                      style={{ width: 'auto', justifyContent: 'center' }}
+                    >
+                      <LegendCompColor legends={densiteBatiLegend} />
+                    </div>
+                    <p style={{ padding: '1em', margin: '0' }}>
+                      Source : Base de Données Nationale Des Bâtiments – BDNB. Dernière mise à jour : juin 2025.
+                    </p>
+                  </>
+                  : <DataNotFoundForGraph image={DataNotFound} />
+              }
             </div>
           </div>
         </div>
