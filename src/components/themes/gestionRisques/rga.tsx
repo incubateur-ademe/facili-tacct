@@ -21,7 +21,7 @@ export const RGA = ({
 }) => {
   const searchParams = useSearchParams();
   const type = searchParams.get('type')!;
-  const [datavizTab, setDatavizTab] = useState<string>((type === "commune" || type === "epci" ) ? 'Répartition' : "Évolution");
+  const [datavizTab, setDatavizTab] = useState<string>((type === "commune" || type === "epci") ? 'Répartition' : "Évolution");
   const carteCommunesEnriched = carteCommunes.map(CommunesIndicateursMapper);
   const communesMap = carteCommunesEnriched.map((el) => {
     return {
@@ -56,7 +56,7 @@ export const RGA = ({
             </div>
             <div className={communesMap.length > 0 ? "w-3/5" : "w-1/2"}>
               {
-                communesMap ?
+                communesMap && rga.length && rgaCarte.length ?
                   <RgaDataViz
                     rgaCarte={featureCollection}
                     carteCommunes={communesMap}
@@ -74,7 +74,6 @@ export const RGA = ({
               }
             </div>
           </>
-
         </div>
       ) : (
         <Loader />
