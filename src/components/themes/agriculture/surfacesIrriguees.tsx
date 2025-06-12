@@ -85,7 +85,7 @@ export const SurfacesIrriguees = ({
                     )
                   }
                 <p style={{ padding: '1em', margin: '0' }}>
-                  Source : AGRESTE (2020)
+                  Source : AGRESTE, 2020 (prochaine mise à jour de la base prévue en 2030).
                 </p>
               </div>
             </div>
