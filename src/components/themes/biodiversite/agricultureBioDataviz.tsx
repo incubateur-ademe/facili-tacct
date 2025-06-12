@@ -53,6 +53,11 @@ const AgricultureBioDataViz = ({
                 />
               </>
             )}
+            <p style={{ padding: '1em', margin: '0' }}>
+              Source : Agence Bio, Service de la Statistique et de la Prospective (SSP
+              - Ministère de l’agriculture) dans Catalogue DiDo (Indicateurs
+              territoriaux de développement durable - ITDD)
+            </p>
           </div>
         ) : (
           <div className={styles.graphWrapper}>
