@@ -1,5 +1,6 @@
 'use client';
 
+import { LoaderText } from '@/components/loader';
 import { Catnat } from '@/components/themes/gestionRisques/catnat';
 import ErosionCotes from '@/components/themes/gestionRisques/erosionCotiere';
 import { FeuxForet } from '@/components/themes/gestionRisques/feuxForet';
@@ -16,6 +17,7 @@ import {
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
+import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
@@ -32,8 +34,8 @@ interface Props {
   carteCommunes: CarteCommunes[];
   erosionCotiere: ErosionCotiere[];
   incendiesForet: IncendiesForet[];
-  rgaCarte: RGACarte[];
-  rga: RGAdb[];
+  // rgaCarte: RGACarte[];
+  // rga: RGAdb[];
 }
 
 const allComps = [
@@ -69,16 +71,16 @@ const allComps = [
       <FeuxForet incendiesForet={incendiesForet} />
     )
   },
-  {
-    titre: "RGA",
-    Component: ({ rgaCarte, carteCommunes, rga }: Props & { activeDataTab: string }) => (
-      <RGA
-        rgaCarte={rgaCarte}
-        carteCommunes={carteCommunes}
-        rga={rga}
-      />
-    )
-  }
+  // {
+  //   titre: "RGA",
+  //   Component: ({ rgaCarte, carteCommunes, rga }: Props & { activeDataTab: string }) => (
+  //     <RGA
+  //       rgaCarte={rgaCarte}
+  //       carteCommunes={carteCommunes}
+  //       rga={rga}
+  //     />
+  //   )
+  // }
 ];
 
 const GestionRisquesComp = ({
@@ -87,9 +89,16 @@ const GestionRisquesComp = ({
   carteCommunes,
   erosionCotiere,
   incendiesForet,
-  rgaCarte,
-  rga
 }: Props) => {
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code');
+  const libelle = searchParams.get('libelle');
+  const type = searchParams.get('type');
+  const [rgaCarte, setRgaCarte] = useState<RGACarte[]>([]);
+  const [rga, setRga] = useState<RGAdb[]>([]);
+  const [rgaCarteLoading, setRgaCarteLoading] = useState(false);
+  const [loadingRga, setLoadingRga] = useState(false);
+
   const [selectedTabId, setSelectedTabId] = useState(
     'Arrêtés catastrophes naturelles'
   );
@@ -117,6 +126,24 @@ const GestionRisquesComp = ({
       data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
   }, [selectedTabId]);
+
+  useEffect(() => {
+    if (selectedSubTab === 'RGA' && rga.length === 0 && rgaCarte.length === 0) {
+      setLoadingRga(true);
+      setRgaCarteLoading(true);
+      fetch(`/api/rga?code=${code}&libelle=${libelle}&type=${type}`)
+        .then(res => res.json())
+        .then(data => {
+          setRga(data.rga);
+          setRgaCarte(data.rgaCarte);
+        })
+        .finally(() => {
+          setLoadingRga(false);
+          setRgaCarteLoading(false);
+        }
+      );
+    }
+  }, [selectedSubTab, code, libelle, type]);
 
   return (
     <div className={styles.container}>
@@ -191,24 +218,41 @@ const GestionRisquesComp = ({
           <div className={styles.bubble}>
             <div className={styles.bubbleContent} style={darkClass}>
               {(() => {
-                const Component = allComps.find(
-                  (el) => el.titre === selectedSubTab
-                )?.Component;
-                if (!Component) return null;
-                return (
-                  <Suspense>
-                    <Component
-                      data={data}
-                      gestionRisques={gestionRisques}
-                      activeDataTab={selectedSubTab}
-                      carteCommunes={carteCommunes}
-                      erosionCotiere={erosionCotiere}
-                      incendiesForet={incendiesForet}
-                      rgaCarte={rgaCarte}
-                      rga={rga}
-                    />
-                  </Suspense>
-                );
+                if (selectedSubTab === "RGA") {
+                  if (loadingRga || rgaCarteLoading) {
+                    return (
+                      <LoaderText text="Nous chargeons vos données" />
+                    );
+                  }
+                  return (
+                    <Suspense>
+                      <RGA
+                        rgaCarte={rgaCarte}
+                        carteCommunes={carteCommunes}
+                        rga={rga}
+                      />
+                    </Suspense>
+                  );
+                } else {
+                  const Component = allComps.find(
+                    (el) => el.titre === selectedSubTab
+                  )?.Component;
+                  if (!Component) return null;
+                  return (
+                    <Suspense>
+                      <Component
+                        data={data}
+                        gestionRisques={gestionRisques}
+                        activeDataTab={selectedSubTab}
+                        carteCommunes={carteCommunes}
+                        erosionCotiere={erosionCotiere}
+                        incendiesForet={incendiesForet}
+                        // rgaCarte={rgaCarte}
+                        // rga={rga}
+                      />
+                    </Suspense>
+                  );
+                }
               })()}
             </div>
           </div>

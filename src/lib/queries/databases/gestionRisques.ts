@@ -95,7 +95,7 @@ export const GetRga = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 2000)
+    }, 10000)
   );
   const dbQuery = (async () => {
     try {
