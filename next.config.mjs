@@ -38,7 +38,6 @@ const csp = {
     'style-src': ["'self'", "'unsafe-inline'"],
     'object-src': ["'self'", 'data:'],
     'frame-ancestors': [
-        "'none'",
         'http://localhost:5174/*',
         'http://localhost:5174',
         'http://localhost:5173/*',

@@ -127,7 +127,6 @@ export const MapLCZ2 = ({
         y = y * 20037508.34 / 180;
         return { x, y };
       }
-      console.log("zoom", map.getZoom());
       const { x, y } = lngLatToMeters(point.lng, point.lat);
       const size = 10; // meters
       const xmin = x - size / 2;
