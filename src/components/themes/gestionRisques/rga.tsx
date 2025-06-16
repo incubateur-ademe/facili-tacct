@@ -1,9 +1,13 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
+import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { RGAMapper } from '@/lib/mapper/gestionRisques';
 import { CarteCommunes, RGACarte, RGAdb } from '@/lib/postgres/models';
+import { rgaTooltipText } from '@/lib/tooltipTexts';
+import { Average } from '@/lib/utils/reusableFunctions/average';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import styles from '../agriculture/agriculture.module.scss';
@@ -36,6 +40,9 @@ export const RGA = ({
     type: "FeatureCollection",
     features: rgaMap
   };
+  const partMoyenFort = rga.length > 0 && Round(Average(rga.map((el) => el.part_alea_moyen_fort_commune)), 1);
+  const nbLogementsMoyenFort = rga.length > 0 && rga.map((el) => el.nb_logement_alea_moyen_fort).reduce((acc, value) => acc + (value ?? 0), 0);
+  const partMoyenFortApres1975 = rga.length > 0 && Round(Average(rga.map((el) => el.part_logement_alea_moyen_fort_apres_1975)), 1);
 
   return (
     <>
@@ -46,11 +53,16 @@ export const RGA = ({
               <div className={styles.explicationWrapper}>
                 {
                   communesMap.length > 0 ? (
-                    <p style={{ color: '#161616' }}>
-                      Sur votre territoire, le retrait-gonflement des argiles est évalué à{' '}
+                    <p>
+                      <b>{partMoyenFort} %</b> de votre territoire est situé dans une zone où le niveau 
+                      d’exposition au retrait gonflement des argiles est moyen ou fort. Cela 
+                      concerne potentiellement <b>{nbLogementsMoyenFort} logements</b>, parmi 
+                      lesquels <b>{partMoyenFortApres1975} %</b> sont considérés comme plus à 
+                      risque car construits après 1975. 
                     </p>
                   ) : ""
                 }
+                <CustomTooltip title={rgaTooltipText} texte="D’où vient ce chiffre ?" />
               </div>
               <RGAText />
             </div>
@@ -66,7 +78,7 @@ export const RGA = ({
                   /> : (
                     <div className={styles.graphWrapper}>
                       <p style={{ padding: '1em', margin: '0' }}>
-                        <b>Retrait gonflement des argiles</b>
+                        <b>Retrait-gonflement des argiles</b>
                       </p>
                       <DataNotFoundForGraph image={DataNotFound} />
                     </div>

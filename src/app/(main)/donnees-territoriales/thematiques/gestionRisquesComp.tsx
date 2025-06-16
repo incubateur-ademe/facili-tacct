@@ -6,6 +6,7 @@ import ErosionCotes from '@/components/themes/gestionRisques/erosionCotiere';
 import { FeuxForet } from '@/components/themes/gestionRisques/feuxForet';
 import { RGA } from '@/components/themes/gestionRisques/rga';
 import { TabTooltip } from '@/components/utils/TabTooltip';
+import useWindowDimensions from '@/hooks/windowDimensions';
 import {
   ArreteCatNat,
   CarteCommunes,
@@ -34,8 +35,6 @@ interface Props {
   carteCommunes: CarteCommunes[];
   erosionCotiere: ErosionCotiere[];
   incendiesForet: IncendiesForet[];
-  // rgaCarte: RGACarte[];
-  // rga: RGAdb[];
 }
 
 const allComps = [
@@ -71,16 +70,6 @@ const allComps = [
       <FeuxForet incendiesForet={incendiesForet} />
     )
   },
-  // {
-  //   titre: "RGA",
-  //   Component: ({ rgaCarte, carteCommunes, rga }: Props & { activeDataTab: string }) => (
-  //     <RGA
-  //       rgaCarte={rgaCarte}
-  //       carteCommunes={carteCommunes}
-  //       rga={rga}
-  //     />
-  //   )
-  // }
 ];
 
 const GestionRisquesComp = ({
@@ -98,7 +87,6 @@ const GestionRisquesComp = ({
   const [rga, setRga] = useState<RGAdb[]>([]);
   const [rgaCarteLoading, setRgaCarteLoading] = useState(false);
   const [loadingRga, setLoadingRga] = useState(false);
-
   const [selectedTabId, setSelectedTabId] = useState(
     'Arrêtés catastrophes naturelles'
   );
@@ -113,6 +101,7 @@ const GestionRisquesComp = ({
     }
   };
   const { css } = useStyles();
+  const windowDimensions = useWindowDimensions();
 
   useEffect(() => {
     window.scrollTo({
@@ -128,7 +117,7 @@ const GestionRisquesComp = ({
   }, [selectedTabId]);
 
   useEffect(() => {
-    if (selectedSubTab === 'RGA' && rga.length === 0 && rgaCarte.length === 0) {
+    if (selectedSubTab === 'Retrait-gonflement des argiles' && rga.length === 0 && rgaCarte.length === 0) {
       setLoadingRga(true);
       setRgaCarteLoading(true);
       fetch(`/api/rga?code=${code}&libelle=${libelle}&type=${type}`)
@@ -141,7 +130,7 @@ const GestionRisquesComp = ({
           setLoadingRga(false);
           setRgaCarteLoading(false);
         }
-      );
+        );
     }
   }, [selectedSubTab, code, libelle, type]);
 
@@ -165,8 +154,14 @@ const GestionRisquesComp = ({
             label: 'Feux de forêt'
           },
           {
-            tabId: "RGA",
-            label: "RGA"
+            tabId: "Retrait-gonflement des argiles",
+            label: (
+              <TabTooltip
+                selectedTab={selectedTabId}
+                tooltip="Le retrait gonflement des argiles est un phénomène géotechnique lié à l’alternance de sécheresses intenses et de fortes pluies, et exacerbé par les évolutions actuelles du climat. Ces mouvements de sol sont susceptibles d’endommager bâtiments et infrastructures."
+                titre="Retrait-gonflement des argiles"
+              />
+            )
           },
           ...(erosionCotiere.length > 0
             ? [
@@ -218,10 +213,19 @@ const GestionRisquesComp = ({
           <div className={styles.bubble}>
             <div className={styles.bubbleContent} style={darkClass}>
               {(() => {
-                if (selectedSubTab === "RGA") {
+                if (selectedSubTab === "Retrait-gonflement des argiles") {
                   if (loadingRga || rgaCarteLoading) {
                     return (
-                      <LoaderText text="Nous chargeons vos données" />
+                      <div style={{ 
+                        position: 'relative',
+                        minHeight: '40dvh',
+                        width: windowDimensions.width && windowDimensions.width > 1248 ? 1248 : windowDimensions.width
+                        }}
+                      >
+                        <div className={styles.loaderTextWrapperStyle}>
+                          <LoaderText text="Nous chargeons vos données" />
+                        </div>
+                      </div>
                     );
                   }
                   return (
@@ -247,8 +251,6 @@ const GestionRisquesComp = ({
                         carteCommunes={carteCommunes}
                         erosionCotiere={erosionCotiere}
                         incendiesForet={incendiesForet}
-                        // rgaCarte={rgaCarte}
-                        // rga={rga}
                       />
                     </Suspense>
                   );

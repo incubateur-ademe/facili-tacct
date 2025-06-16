@@ -398,31 +398,31 @@ export const RgaRepartitionLegend = [
 export const RgaEvolutionLegend = [
   {
     variable: "nb_logement_alea_faible",
-    texteRaccourci: "Aléas faibles",
+    texteRaccourci: "Exposition faible",
     couleur: "#FFCF5E"
   },
   {
     variable: "nb_logement_alea_moyen_fort",
-    texteRaccourci: "Aléas moyens / forts",
+    texteRaccourci: "Exposition moyennes / fortes",
     couleur: "#E8323B"
   },
 ];
 
 export const RgaMapLegend = [
   {
-    value: 'Sans aléa',
+    value: 'Zone a priori non argileuse',
     color: '#FFFFFF'
   },
   {
-    value: 'Aléas faibles',
+    value: 'Exposition faible',
     color: '#FFCF5E'
   },
   {
-    value: 'Aléas moyens',
+    value: 'Exposition moyenne',
     color: '#F66E19'
   },
   {
-    value: 'Aléas forts',
+    value: 'Exposition forte',
     color: '#E8323B'
   },
 ];
