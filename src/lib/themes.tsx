@@ -41,14 +41,14 @@ export const themes = {
       facteurSensibilite: 'Urbanisme',
       risque: 'Moyen',
       donnee: 'LOREM IPSUM DE LA VEGETALISATION'
+    },
+    {
+      id: 6,
+      titre: 'LCZ',
+      facteurSensibilite: 'Urbanisme',
+      risque: 'Moyen',
+      donnee: 'LOREM IPSUM'
     }
-    // {
-    //   id: 6,
-    //   titre: 'LCZ',
-    //   facteurSensibilite: 'Urbanisme',
-    //   risque: 'Moyen',
-    //   donnee: 'LOREM IPSUM DE LA VEGETALISATION'
-    // }
   ],
   biodiversite: [
     {

@@ -5,6 +5,7 @@ import { AgeBati } from '@/components/themes/inconfortThermique/ageBati';
 import { DensiteBati } from '@/components/themes/inconfortThermique/densiteBati';
 import { FragiliteEconomique } from '@/components/themes/inconfortThermique/fragiliteEconomique';
 import { GrandAgeIsolement } from '@/components/themes/inconfortThermique/grandAgeIsolement';
+import { LCZ } from '@/components/themes/inconfortThermique/lcz';
 import { TravailExterieur } from '@/components/themes/inconfortThermique/travailExterieur';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import { CarteCommunes, CLCTerritoires, InconfortThermique } from '@/lib/postgres/models';
@@ -83,6 +84,12 @@ const allComps = [
         inconfortThermique={inconfortThermique}
         clc={clc}
       />
+    )
+  },
+  {
+    titre: "LCZ",
+    Component: ({ carteCommunes }: Props & { activeDataTab: string }) => (
+      <LCZ carteCommunes={carteCommunes} />
     )
   }
 ];

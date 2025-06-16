@@ -44,7 +44,7 @@ export const allArticles = [
     metadata: adaccMeta,
   },
   {
-    slug: 'atelier-climatstory-sensibilisation-adaptation',
+    slug: 'atelier-climastory-sensibilisation-adaptation',
     Component: ClimaStory,
     metadata: climaMeta,
   },
