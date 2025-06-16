@@ -93,22 +93,22 @@ export const GetCommunes = async (
           return value;
         } else if (type === 'pnr') {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
-        SELECT 
-          epci, 
-          libelle_epci,
-          libelle_geographique,
-          code_geographique,
-          ept,
-          libelle_petr,
-          code_pnr,
-          libelle_pnr,
-          departement,
-          coordinates, 
-          precarite_logement,
-          densite_bati,
-          surface,
-          ST_AsGeoJSON(geometry) geometry 
-          FROM postgis."communes_drom" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
+          SELECT 
+            epci, 
+            libelle_epci,
+            libelle_geographique,
+            code_geographique,
+            ept,
+            libelle_petr,
+            code_pnr,
+            libelle_pnr,
+            departement,
+            coordinates, 
+            precarite_logement,
+            densite_bati,
+            surface,
+            ST_AsGeoJSON(geometry) geometry 
+            FROM postgis."communes_drom" WHERE code_pnr IS NOT NULL AND code_pnr=${code};`;
           return value;
         } else if (type === 'petr') {
           const value = await prisma.$queryRaw<CarteCommunes[]>`

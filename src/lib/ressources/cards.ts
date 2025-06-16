@@ -244,7 +244,7 @@ export const cards = {
       tag: 'Article',
       description:
         'Approcher l’adaptation au changement climatique via une carte du territoire, fictive ou non : une manière sensible d’aborder le sujet.',
-      link: '/ressources/articles/atelier-climatstory-sensibilisation-adaptation'
+      link: '/ressources/articles/atelier-climastory-sensibilisation-adaptation'
     },
     {
       id: 22,
