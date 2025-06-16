@@ -43,7 +43,7 @@ export const RgaRepartitionTooltip = ({ data, type }: { data: BarTooltipProps<Ba
 export const RgaEvolutionTooltip = ({ data }: BarTooltipProps<BarDatum>) => {
     const dataArray = Object.entries(data).map(el => {
       return {
-        titre: el[0] === "nb_logement_alea_faible" ? "Aléas faibles" : "Aléas moyens / forts",
+        titre: el[0] === "nb_logement_alea_faible" ? "Exposition faible" : "Exposition moyenne / forte",
         value: el[1],
         color: RgaEvolutionLegend.find(e => e.variable === el[0])?.couleur
       }

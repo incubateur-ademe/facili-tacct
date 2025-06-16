@@ -655,14 +655,12 @@ export const FeuxForetText = () => (
 export const RGAText = () => (
   <div className="px-4">
     <p>
-      Phénomène lié à l’alternance de sécheresses extrêmes et de
-      fortes pluies, le retrait-gonflement des argiles (RGA) impacte
-      désormais tout le territoire métropolitain à l’exception de la
-      Bretagne et de la Normandie. Il touche surtout les maisons
-      individuelles anciennes. Mais les routes, les écoles, les
-      canalisations ou les équipements municipaux peuvent aussi être
-      affectés, mettant en jeu la sécurité et l’attractivité du
-      territoire.
+      Phénomène lié à l’alternance de sécheresses extrêmes et de fortes pluies, 
+      le retrait gonflement des argiles (RGA) impacte désormais tout le territoire 
+      métropolitain à l’exception de la Bretagne et de la Normandie. Il touche 
+      surtout les maisons individuelles anciennes. Mais les routes, les écoles, 
+      les canalisations ou les équipements municipaux peuvent aussi être affectés, 
+      mettant en jeu la sécurité et l’attractivité du territoire.
     </p>
     <p>
       Si le phénomène est incontestablement amplifié par le changement
@@ -682,8 +680,8 @@ export const RGAText = () => (
       régime des catastrophes naturelles sur les dix dernières années,
       devenant non seulement le péril naturel le plus coûteux devant
       les inondations mais mettant en péril l’équilibre même du régime
-      CatNat. Il est temps de sortir d’une logique « dommages ⇒
-      indemnisations » alors qu’il existe un certain nombre d’actions
+      CatNat. Il est temps de sortir d’une logique « dommages ⇒
+      indemnisations » alors qu’il existe un certain nombre d’actions
       de prévention qui pourraient éviter ou réduire l’apparition de
       dommages.
     </p>
