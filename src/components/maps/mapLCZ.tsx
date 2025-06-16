@@ -1,133 +1,84 @@
-// 'use client';
+'use client';
 
-// import 'leaflet/dist/leaflet.css';
+import L, { LatLngExpression } from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import { useState } from 'react';
+import { MapContainer, Popup, TileLayer, useMapEvent, WMSTileLayer } from 'react-leaflet';
 
-// import { CommunesIndicateursDto } from '@/lib/dto';
-// import { CollectivitesSearchbar } from '@/lib/postgres/models';
-// import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
-// import { swapNumbers } from '@/lib/utils/reusableFunctions/swapItemsInArray';
-// import { type Any } from '@/lib/utils/types';
-// import { GeoJsonObject } from 'geojson';
-// import { type StyleFunction } from 'leaflet';
-// import { useSearchParams } from 'next/navigation';
-// import { useRef } from 'react';
-// import { GraphDataNotFound } from '../graph-data-not-found';
+const ArcGISFeatureInfo = () => {
+  const [popup, setPopup] = useState<null | { latlng: LatLngExpression; content: string }>(null);
 
-// const getCentroid = (arr: number[][]) => {
-//   return arr?.reduce(
-//     (x: number[], y: number[]) => {
-//       return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
-//     },
-//     [0, 0]
-//   );
-// };
+  useMapEvent('click', async (e) => {
+    // Convert latlng to EPSG:3857 (Web Mercator)
+    const point = L.Projection.SphericalMercator.project(e.latlng);
+    const size = 10; // envelope size in meters (adjust for sensitivity)
+    const xmin = point.x - size / 2;
+    const xmax = point.x + size / 2;
+    const ymin = point.y - size / 2;
+    const ymax = point.y + size / 2;
 
-// const getCoordinates = (coords: number[][][]) => {
-//   const coords_arr = [];
-//   for (let i = 0; i < coords.length; i++) {
-//     const center = getCentroid(coords[i]);
-//     coords_arr.push(center);
-//   }
-//   return getCentroid(coords_arr);
-// };
+    const geometry = encodeURIComponent(JSON.stringify({
+      spatialReference: { latestWkid: 3857, wkid: 102100 },
+      xmin, ymin, xmax, ymax
+    }));
 
-// const getColor = (d: any) => {
-//   return d === 2
-//     ? '#FF5733' // red
-//     : d === 3
-//       ? '#33FF57' // green
-//       : d === 5
-//         ? '#3357FF' // blue
-//         : d === 8
-//           ? '#FF33A1' // pink
-//           : d === 9
-//             ? '#33FFF5' // cyan
-//             : d === 'A'
-//               ? '#FFD700' // yellow
-//               : d === 'B'
-//                 ? '#8B4513' // brown
-//                 : d === 'C'
-//                   ? '#800080' // purple
-//                   : d === 'D'
-//                     ? '#FF8C00' // dark orange
-//                     : d === 'E'
-//                       ? '#00FF00' // lime
-//                       : d === 'F'
-//                         ? '#8A33FF' // violet
-//                         : '#FE1E14'; // fallback red
-// };
+    const url = `https://cartagene.cerema.fr/server/rest/services/l_lcz_spot_000_2022_mil/MapServer/0/query?f=json&geometry=${geometry}&maxAllowableOffset=4.777314267945864&outFields=are,bsr,bur,hre,identifier,lcz,ror,ver,vhr,war,FID&spatialRel=esriSpatialRelIntersects&where=1%3D1&geometryType=esriGeometryEnvelope&inSR=102100&outSR=102100`;
 
-// export const MapLCZ = (props: {
-//   carteCommunes: CommunesIndicateursDto[];
-//   collectivite: CollectivitesSearchbar[];
-// }) => {
-//   const { carteCommunes, collectivite } = props;
-//   const searchParams = useSearchParams();
-//   const codgeo = searchParams.get('codgeo');
-//   const codepci = searchParams.get('codepci')!;
-//   const mapRef = useRef(null);
-//   const all_coordinates = carteCommunes.map(
-//     (el) => el.geometry.coordinates?.[0]?.[0]
-//   );
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      if (data.features && data.features.length > 0) {
+        const props = data.features[0].attributes;
+        // Format the popup content as you wish
+        const content = Object.entries(props)
+          .map(([k, v]) => `<b>${k}</b>: ${v}`)
+          .join('<br/>');
+        setPopup({ latlng: e.latlng, content });
+      } else {
+        setPopup({ latlng: e.latlng, content: 'Aucune donnée.' });
+      }
+    } catch (err) {
+      setPopup({ latlng: e.latlng, content: 'Erreur lors de la récupération des données.' });
+    }
+  });
 
-//   const commune = codgeo
-//     ? carteCommunes.find((el) => el.properties.code_geographique === codgeo)
-//     : null;
-//   const centerCoord: number[] = collectivite[0].coordinates
-//     ? swapNumbers(collectivite[0].coordinates.split(',').map(Number), 0, 1)
-//     : getCoordinates(all_coordinates);
+  return popup ? (
+    <Popup position={popup.latlng} eventHandlers={{ remove: () => setPopup(null) }}>
+      <div dangerouslySetInnerHTML={{ __html: popup.content }} />
+    </Popup>
+  ) : null;
+}
 
-//   const style: StyleFunction<Any> = () => {
-//     return {
-//       weight: 1,
-//       opacity: 1,
-//       color: '#161616',
-//       // dashArray: "3",
-//       fillOpacity: 0
-//     };
-//   };
+export const MapLCZ = () => {
+  const center = [46.603354, 1.888334]; // Center of France, adjust as needed
+  const zoom = 10;
 
-//   const style2: StyleFunction<Any> = (feature) => {
-//     const typedFeature = feature;
-//     return {
-//       fillColor: getColor(typedFeature?.properties.lcz ?? 0),
-//       weight: 0,
-//       color: 'transparent',
-//       // dashArray: "3",
-//       fillOpacity: 1
-//     };
-//   };
+  return (
+    <div style={{ width: '100%', height: '500px' }}>
+      <MapContainer
+        center={center as LatLngExpression }
+        zoom={zoom}
+        style={{ width: '100%', height: '100%' }}
+        attributionControl={true}
+        zoomControl={true}
+      >
+        <TileLayer
+          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <WMSTileLayer
+          url="https://cartagene.cerema.fr/server/services/l_lcz_spot_000_2022_mil/MapServer/WMSServer"
+          layers="0"
+          format="image/png"
+          transparent={true}
+          version="1.3.0"
+          attribution='&copy; <a href="https://cartagene.cerema.fr/">Cerema</a>'
+          opacity={0.7}
+        />
+        <ArcGISFeatureInfo />
+      </MapContainer>
+    </div>
+  );
+};
 
-//   return (
-//     <>
-//       {carteCommunes === null ? (
-//         <GraphDataNotFound code={codgeo ? codgeo : codepci} />
-//       ) : (
-//         <MapContainer
-//           center={[centerCoord[1], centerCoord[0]]}
-//           zoom={commune ? 11 : 10}
-//           ref={mapRef}
-//           style={{ height: '500px', width: '100%', cursor: 'grab' }}
-//           attributionControl={false}
-//           zoomControl={false}
-//           maxZoom={13}
-//         >
-//           <TileLayer
-//             // attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openma            attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-//             url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-//           />
-//           <TileLayer
-//             // attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-//             url="https://lcz-generator.rub.de/tms-inverted/global-map-tiles/v3/{z}/{x}/{y}.png"
-//             opacity={0.4}
-//           />
-//           <GeoJSON
-//             ref={mapRef}
-//             data={carteCommunes as unknown as GeoJsonObject}
-//             style={style}
-//           />
-//         </MapContainer>
-//       )}
-//     </>
-//   );
-// };
+export default MapLCZ;

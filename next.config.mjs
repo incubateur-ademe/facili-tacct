@@ -174,7 +174,7 @@ const config = {
             },
             {
                 source: '/ressources/articles/climastory',
-                destination: '/ressources/articles/atelier-climatstory-sensibilisation-adaptation',
+                destination: '/ressources/articles/atelier-climastory-sensibilisation-adaptation',
                 permanent: true,
             },
             {
