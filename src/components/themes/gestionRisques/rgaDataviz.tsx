@@ -97,7 +97,7 @@ const barChartRepartition = (rga: RGAdb[], code: string, type: string) => {
     territoireSup: 100 -
       Average(rga.map(el => el.part_alea_moyen_fort_commune)) -
       Average(rga.map(el => el.part_alea_faible_commune)),
-    alea: "Sans aléa"
+    alea: "Zone a priori non argileuse"
   };
   const aleaFaible = {
     territoire: type === "commune" && isRGAdb(territoireAlea) ?
@@ -106,7 +106,7 @@ const barChartRepartition = (rga: RGAdb[], code: string, type: string) => {
         Average(territoireAlea.map(el => el.part_alea_faible_commune))
       ) : NaN,
     territoireSup: Average(rga.map(el => el.part_alea_faible_commune)),
-    alea: "Aléas faibles",
+    alea: "Exposition faible",
   };
   const aleaMoyenFort = {
     territoire: type === "commune" && isRGAdb(territoireAlea) ?
@@ -115,7 +115,7 @@ const barChartRepartition = (rga: RGAdb[], code: string, type: string) => {
         Average(territoireAlea.map(el => el.part_alea_moyen_fort_commune))
       ) : NaN,
     territoireSup: Average(rga.map(el => el.part_alea_moyen_fort_commune)),
-    alea: "Aléas moyens / forts",
+    alea: "Exposition moyenne / forte",
   };
   return [sansAlea, aleaFaible, aleaMoyenFort];
 }
@@ -229,7 +229,7 @@ const RgaDataViz = (props: Props) => {
         ''
       )}
       <p style={{ padding: '1em', margin: '0' }}>
-        Source : XXXXXXXXXXXXXXX
+        Source : BRGM, 2019 ; Fideli, 2017. Traitements : SDES, 2021
       </p>
     </div>
   );

@@ -141,8 +141,8 @@ export const themes = {
     },
     {
       id: 3,
-      titre: 'RGA',
-      facteurSensibilite: 'RGA',
+      titre: 'Retrait-gonflement des argiles',
+      facteurSensibilite: 'Retrait-gonflement des argiles',
       risque: '',
       donnee: ''
     }

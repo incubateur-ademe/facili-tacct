@@ -20,7 +20,6 @@ export const LoaderText = ({ text }: { text: string }) => {
   const appearRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    // Initial delay before showing text
     timeoutRef.current = setTimeout(() => {
       setShow(true);
       setVisible(true);
@@ -64,7 +63,7 @@ export const LoaderText = ({ text }: { text: string }) => {
 
   return (
     <div className="flex flex-col items-center justify-center" style={{height: "80dvh", position: 'relative'}}>
-      <div className={styles.loader}></div>
+      <div className={styles.loader} style={{ left: "-20px" }}></div>
       <div
         style={{
           position: 'absolute',
@@ -76,6 +75,7 @@ export const LoaderText = ({ text }: { text: string }) => {
           alignItems: 'center',
           justifyContent: 'center',
           pointerEvents: 'none',
+          width: "500px"
         }}
       >
         <div
