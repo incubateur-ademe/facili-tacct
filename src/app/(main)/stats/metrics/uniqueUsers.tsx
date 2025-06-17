@@ -5,24 +5,13 @@ import { Container } from '@/dsfr/layout';
 import { GetInsightById } from '../query';
 import styles from '../stats.module.scss';
 
-interface UniqueUserResult {
-  data: number[];
-  labels: string[];
-  count: number;
-  aggregated_value: number;
-  label: string;
-  breakdown_value: string[];
-  action: {
-    math: string;
-    type: string;
-  };
-}
-
 const UniqueUsers = async () => {
   const uniqueUsers = await GetInsightById(620831);
+  const data = Array.isArray(uniqueUsers) ? uniqueUsers : undefined;
+  // const test = await getInsightIdByShortId("XZ6d0n8p")
   return (
     <Container m="4w">
-      {uniqueUsers ? (
+      {data ? (
         <div
           style={{
             backgroundColor: 'white',
@@ -50,13 +39,13 @@ const UniqueUsers = async () => {
                 borderRadius: '0.5rem'
               }}
             >
-              <LineChart rawData={uniqueUsers} />
+              <LineChart rawData={data} />
             </div>
           </div>
           <p>
-            Depuis le {uniqueUsers ? uniqueUsers[0].labels[0] : ''}, la somme
+            Depuis le {data ? data[0].labels[0] : ''}, la somme
             totale d'utilisateurs uniques est de :{' '}
-            {uniqueUsers ? uniqueUsers[0].count : ''}.
+            {data ? data[0].count : ''}.
           </p>
         </div>
       ) : (
