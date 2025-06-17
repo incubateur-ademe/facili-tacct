@@ -121,12 +121,12 @@ export const MapLCZ2 = ({
       if (map.getZoom() < 13.5) return;
       const point = e.lngLat;
       // Convert lngLat to EPSG:3857 (Web Mercator meters)
-      function lngLatToMeters(lng: number, lat: number) {
+      const lngLatToMeters = (lng: number, lat: number) => {
         const x = lng * 20037508.34 / 180;
         let y = Math.log(Math.tan((90 + lat) * Math.PI / 360)) / (Math.PI / 180);
         y = y * 20037508.34 / 180;
         return { x, y };
-      }
+      };
       const { x, y } = lngLatToMeters(point.lng, point.lat);
       const size = 10; // meters
       const xmin = x - size / 2;

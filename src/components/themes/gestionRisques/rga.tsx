@@ -1,17 +1,22 @@
+import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
+import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
+import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
+import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { RGAMapper } from '@/lib/mapper/gestionRisques';
-import { CarteCommunes, RGACarte, RGAdb } from '@/lib/postgres/models';
+import { CarteCommunes, Patch4, RGACarte, RGAdb } from '@/lib/postgres/models';
+import { GetPatch4 } from '@/lib/queries/patch4';
 import { rgaTooltipText } from '@/lib/tooltipTexts';
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
-import styles from '../agriculture/agriculture.module.scss';
+import { useEffect, useState } from 'react';
 import { RGAText } from '../inconfortThermique/staticTexts';
+import styles from './gestionRisques.module.scss';
 import RgaDataViz from './rgaDataviz';
 
 export const RGA = ({
@@ -25,6 +30,10 @@ export const RGA = ({
 }) => {
   const searchParams = useSearchParams();
   const type = searchParams.get('type')!;
+  const code = searchParams.get('code')!;
+  const libelle = searchParams.get('libelle')!;
+  const [patch4, setPatch4] = useState<Patch4 | undefined>();
+  const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>((type === "commune" || type === "epci") ? 'Répartition' : "Évolution");
   const carteCommunesEnriched = carteCommunes.map(CommunesIndicateursMapper);
   const communesMap = carteCommunesEnriched.map((el) => {
@@ -40,13 +49,29 @@ export const RGA = ({
     type: "FeatureCollection",
     features: rgaMap
   };
+
+  useEffect(() => {
+    void (async () => {
+      if (type === 'commune' || type === 'epci' || type === 'ept') {
+        const temp = await GetPatch4(code, type, libelle);
+        setPatch4(temp);
+      }
+      setIsLoadingPatch4(false);
+    })()
+  }, [code]);
+
   const partMoyenFort = rga.length > 0 && Round(Average(rga.map((el) => el.part_alea_moyen_fort_commune)), 1);
   const nbLogementsMoyenFort = rga.length > 0 && rga.map((el) => el.nb_logement_alea_moyen_fort).reduce((acc, value) => acc + (value ?? 0), 0);
   const partMoyenFortApres1975 = rga.length > 0 && Round(Average(rga.map((el) => el.part_logement_alea_moyen_fort_apres_1975)), 1);
 
+  const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
+  const precipitation = patch4
+    ? AlgoPatch4(patch4, 'fortes_precipitations')
+    : undefined;
+
   return (
     <>
-      {communesMap ? (
+      {communesMap && !isLoadingPatch4 ? (
         <div className={styles.container}>
           <>
             <div className={communesMap.length > 0 ? "w-2/5" : "w-1/2"}>
@@ -54,14 +79,32 @@ export const RGA = ({
                 {
                   communesMap.length > 0 ? (
                     <p>
-                      <b>{partMoyenFort} %</b> de votre territoire est situé dans une zone où le niveau 
-                      d’exposition au retrait gonflement des argiles est moyen ou fort. Cela 
-                      concerne potentiellement <b>{nbLogementsMoyenFort} logements</b>, parmi 
-                      lesquels <b>{partMoyenFortApres1975} %</b> sont considérés comme plus à 
-                      risque car construits après 1975. 
+                      <b>{partMoyenFort} %</b> de votre territoire est situé dans une zone où le niveau
+                      d’exposition au retrait gonflement des argiles est moyen ou fort. Cela
+                      concerne potentiellement <b>{nbLogementsMoyenFort} logements</b>, parmi
+                      lesquels <b>{partMoyenFortApres1975} %</b> sont considérés comme plus à
+                      risque car construits après 1975.
                     </p>
                   ) : ""
                 }
+                <div className={styles.patch4Wrapper}>
+                  {secheresse === 'Intensité très forte' ||
+                    secheresse === 'Intensité forte' ? (
+                    <TagItem
+                      icon={secheresseIcon}
+                      indice="Sécheresse des sols"
+                      tag={secheresse}
+                    />
+                  ) : null}
+                  {precipitation === 'Intensité très forte' ||
+                    precipitation === 'Intensité forte' ? (
+                    <TagItem
+                      icon={precipitationIcon}
+                      indice="Fortes précipitations"
+                      tag={precipitation}
+                    />
+                  ) : null}
+                </div>
                 <CustomTooltip title={rgaTooltipText} texte="D’où vient ce chiffre ?" />
               </div>
               <RGAText />
