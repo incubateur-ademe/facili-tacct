@@ -15,7 +15,7 @@ export const GetPatch4 = async (
   const timeoutPromise = new Promise<Patch4 | undefined>((resolve) =>
     setTimeout(() => {
       resolve(undefined);
-    }, 1000)
+    }, 2000)
   );
   console.time("GetPatch4 Execution Time");
   const dbQuery = (async () => {
@@ -24,8 +24,11 @@ export const GetPatch4 = async (
         const departement =
           await PrismaPostgres.collectivites_searchbar.findFirst({
             where: {
-              OR: [{ code_geographique: code }, { epci: code }]
-            }
+              OR: [{ code_geographique: code }, { epci: code }],
+              departement: {
+                not: null
+              }
+            },
           });
         // Exclusion des DROM puisque le patch4 ne les inclut pas
         if (
@@ -59,7 +62,7 @@ export const GetPatch4 = async (
   const result = await Promise.race([dbQuery, timeoutPromise]);
   console.timeEnd("GetPatch4 Execution Time");
   if (result === undefined) {
-    console.log('GetPatch4: Timeout reached (1 second), returning undefined.');
+    console.log('GetPatch4: Timeout reached (2 seconds), returning undefined.');
   }
   return result;
 };
