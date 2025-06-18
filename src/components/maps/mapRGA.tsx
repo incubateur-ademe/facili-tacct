@@ -79,7 +79,6 @@ const RGAMap = (props: {
             'white'
           ],
           'fill-opacity': 0.45,
-          // 'fill-outline-color': '#161616'
         },
       });
       map.addLayer({
