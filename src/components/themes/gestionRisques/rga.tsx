@@ -11,6 +11,7 @@ import { RGAMapper } from '@/lib/mapper/gestionRisques';
 import { CarteCommunes, Patch4, RGACarte, RGAdb } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { rgaTooltipText } from '@/lib/tooltipTexts';
+import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
@@ -60,9 +61,9 @@ export const RGA = ({
     })()
   }, [code]);
 
-  const partMoyenFort = rga.length > 0 && Round(Average(rga.map((el) => el.part_alea_moyen_fort_commune)), 1);
-  const nbLogementsMoyenFort = rga.length > 0 && rga.map((el) => el.nb_logement_alea_moyen_fort).reduce((acc, value) => acc + (value ?? 0), 0);
-  const partMoyenFortApres1975 = rga.length > 0 && Round(Average(rga.map((el) => el.part_logement_alea_moyen_fort_apres_1975)), 1);
+  const partMoyenFort = rga.length > 0 ? Round(Average(rga.map((el) => el.part_alea_moyen_fort_commune)), 1) : 0;
+  const nbLogementsMoyenFort = rga.length > 0 ? rga.map((el) => el.nb_logement_alea_moyen_fort).reduce((acc, value) => acc + (value ?? 0), 0) : 0;
+  const partMoyenFortApres1975 = rga.length > 0 ? Round(Average(rga.map((el) => el.part_logement_alea_moyen_fort_apres_1975)), 1) : 0;
 
   const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
   const precipitation = patch4
@@ -81,7 +82,7 @@ export const RGA = ({
                     <p>
                       <b>{partMoyenFort} %</b> de votre territoire est situé dans une zone où le niveau
                       d’exposition au retrait gonflement des argiles est moyen ou fort. Cela
-                      concerne potentiellement <b>{nbLogementsMoyenFort} logements</b>, parmi
+                      concerne potentiellement <b>{numberWithSpacesRegex(nbLogementsMoyenFort)} logements</b>, parmi
                       lesquels <b>{partMoyenFortApres1975} %</b> sont considérés comme plus à
                       risque car construits après 1975.
                     </p>
