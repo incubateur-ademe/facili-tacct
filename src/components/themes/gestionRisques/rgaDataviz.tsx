@@ -62,7 +62,6 @@ const barChartEvolution = (rga: RGAdb[]) => {
       ),
     annee: "Avant 1975"
   };
-
   const apres1975 = {
     nb_logement_alea_faible: rga.reduce(
       (sum, item) => sum + Number(item.nb_logement_alea_faible_apres_1975),
@@ -74,7 +73,6 @@ const barChartEvolution = (rga: RGAdb[]) => {
     ),
     annee: "Après 1975"
   };
-
   return [avant1975, apres1975];
 }
 const barChartRepartition = (rga: RGAdb[], code: string, type: string) => {
