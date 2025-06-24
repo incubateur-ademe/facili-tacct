@@ -8,18 +8,17 @@ export async function POST(request: Request) {
     const { username, password } = await request.json();
     const bcrypt = require('bcryptjs');
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = await prisma.users.create({
+    // Insert into public.sandbox_users
+    const newUser = await prisma.sandbox_users.create({
       data: {
         username: username,
         password: hashedPassword,
-        role: '3',
-        email: 'test@mail.com',
         created_at: new Date()
       }
     });
+    return NextResponse.json({ message: 'success', user: newUser });
   } catch (e) {
     console.log({ e });
+    return NextResponse.json({ message: 'error', error: e }, { status: 500 });
   }
-
-  return NextResponse.json({ message: 'success' });
 }

@@ -8,19 +8,15 @@ import { type Any } from '@/lib/utils/types';
 import { GeoJsonObject } from 'geojson';
 import { LatLngBoundsExpression, type StyleFunction } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import { BoundsFromCollectionCLC } from './components/boundsFromCollection';
 import { vegetalisationColors } from './legends/datavizLegends';
 
 export const CLCMap = (props: { clc: CLCTerritoires[] }) => {
   const { clc } = props;
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
-  const type = searchParams.get('type')!;
   const clcParsed = clc.map(ClcMapper);
   const mapRef = useRef(null);
-  const enveloppe = BoundsFromCollectionCLC(clcParsed, type, code);
+  const enveloppe = BoundsFromCollectionCLC(clcParsed);
 
   const getColor = (d: string) => {
     const color = Object.entries(vegetalisationColors)

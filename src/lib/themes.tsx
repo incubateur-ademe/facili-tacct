@@ -41,14 +41,7 @@ export const themes = {
       facteurSensibilite: 'Urbanisme',
       risque: 'Moyen',
       donnee: 'LOREM IPSUM DE LA VEGETALISATION'
-    }
-    // {
-    //   id: 6,
-    //   titre: 'LCZ',
-    //   facteurSensibilite: 'Urbanisme',
-    //   risque: 'Moyen',
-    //   donnee: 'LOREM IPSUM DE LA VEGETALISATION'
-    // }
+    },
   ],
   biodiversite: [
     {
@@ -141,8 +134,8 @@ export const themes = {
     },
     {
       id: 3,
-      titre: 'RGA',
-      facteurSensibilite: 'RGA',
+      titre: 'Retrait-gonflement des argiles',
+      facteurSensibilite: 'Retrait-gonflement des argiles',
       risque: '',
       donnee: ''
     }
@@ -170,6 +163,6 @@ export const themes = {
       facteurSensibilite: 'Superficies irriguées',
       risque: '',
       donnee: ''
-    }
+    },
   ]
 };

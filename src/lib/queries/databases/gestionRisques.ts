@@ -1,43 +1,39 @@
 'use server';
 
-import { ArreteCatNat, IncendiesForet } from '@/lib/postgres/models';
-import { eptRegex } from '@/lib/utils/regex';
+import { ArreteCatNat, IncendiesForet, RGAdb } from '@/lib/postgres/models';
 import * as Sentry from '@sentry/nextjs';
-import { PrismaPostgres } from '../db';
+import { ColumnCodeCheck } from '../columns';
+import { prisma } from '../redis';
 
 export const GetArretesCatnat = async (
   code: string,
   libelle: string,
   type: string
 ): Promise<ArreteCatNat[]> => {
-  const column =
-    type === 'pnr'
-      ? 'code_pnr'
-      : type === 'petr'
-        ? 'libelle_petr'
-        : type === 'ept' && eptRegex.test(libelle)
-          ? 'ept'
-          : type === 'epci' && !eptRegex.test(libelle)
-            ? 'epci'
-            : type === 'departement'
-              ? 'departement'
-              : 'code_geographique';
+  const column = ColumnCodeCheck(type);
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 3000)
+    }, 2000)
   );
   const dbQuery = (async () => {
     try {
-      const value = await PrismaPostgres.arretes_catnat.findMany({
-        where: {
-          [column]: type === 'petr' || type === 'ept' ? libelle : code
-        }
+      // Fast existence check
+      const exists = await prisma.arretes_catnat.findFirst({
+        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
-      return value;
+      if (!exists) return [];
+      else {
+        const value = await prisma.arretes_catnat.findMany({
+          where: {
+            [column]: type === 'petr' || type === 'ept' ? libelle : code
+          }
+        });
+        return value;
+      }
     } catch (error) {
       console.error(error);
-      // PrismaPostgres.$disconnect();
+      // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
     }
@@ -50,48 +46,102 @@ export const GetIncendiesForet = async (
   libelle: string,
   type: string
 ): Promise<IncendiesForet[]> => {
-  const column =
-    type === 'pnr'
-      ? 'code_pnr'
-      : type === 'petr'
-        ? 'libelle_petr'
-        : type === 'ept' && eptRegex.test(libelle)
-          ? 'ept'
-          : type === 'epci' && !eptRegex.test(libelle)
-            ? 'epci'
-            : type === 'departement'
-              ? 'departement'
-              : type === 'commune'
-                ? 'code_geographique'
-                : '';
+  const column = ColumnCodeCheck(type);
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 3000)
+    }, 2000)
   );
   const dbQuery = (async () => {
     try {
-      if (type === 'petr' || type === 'ept') {
-        const value = await PrismaPostgres.feux_foret.findMany({
-          where: {
-            [column]: libelle
-          }
-        });
-        return value;
-      } else {
-        const value = await PrismaPostgres.feux_foret.findMany({
-          where: {
-            [column]: code
-          }
-        });
-        return value;
+      // Fast existence check
+      const exists = await prisma.feux_foret.findFirst({
+        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+      });
+      if (!exists) return [];
+      else {
+        if (type === 'petr' || type === 'ept') {
+          const value = await prisma.feux_foret.findMany({
+            where: {
+              [column]: libelle
+            }
+          });
+          return value;
+        } else {
+          const value = await prisma.feux_foret.findMany({
+            where: {
+              [column]: code
+            }
+          });
+          return value;
+        }
       }
     } catch (error) {
       console.error(error);
-      // PrismaPostgres.$disconnect();
+      // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
     }
   })();
   return Promise.race([dbQuery, timeoutPromise]);
 };
+
+export const GetRga = async (
+  code: string,
+  libelle: string,
+  type: string
+): Promise<RGAdb[]> => {
+  const column = ColumnCodeCheck(type);
+  const timeoutPromise = new Promise<[]>((resolve) =>
+    setTimeout(() => {
+      resolve([]);
+    }, 10000)
+  );
+  const dbQuery = (async () => {
+    try {
+      // Fast existence check
+      const exists = await prisma.rga.findFirst({
+        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+      });
+      if (!exists) return [];
+      else if (type === "commune") {
+        const value = await prisma.$queryRaw`
+          SELECT *
+          FROM "databases"."rga"
+          WHERE epci = (
+            SELECT epci
+            FROM "databases"."rga"
+            WHERE code_geographique = ${code}
+            LIMIT 1
+          )
+        `;
+        return value as RGAdb[];
+      } else if (type === "epci") {
+        const value = await prisma.$queryRaw`
+          SELECT *
+          FROM "databases"."rga"
+          WHERE departement = (
+            SELECT departement
+            FROM "databases"."rga"
+            WHERE epci = ${code}
+            LIMIT 1
+          )
+        `;
+        return value as RGAdb[];
+      } else {
+        const value = await prisma.rga.findMany({
+          where: {
+            [column]: type === 'petr' || type === 'ept' ? libelle : code
+          }
+        });
+        return value;
+      }
+    } catch (error) {
+      console.error(error);
+      Sentry.captureException(error);
+      return [];
+    }
+  })();
+  return Promise.race([dbQuery, timeoutPromise]);
+};
+

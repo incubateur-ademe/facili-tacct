@@ -10,7 +10,7 @@ import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
 import { surfacesIrrigueesTooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
-import { SurfacesIrrigueesText } from '../inconfortThermique/staticTexts';
+import { SurfacesIrrigueesText } from '../../../lib/staticTexts';
 import styles from './agriculture.module.scss';
 
 export const SurfacesIrriguees = ({
@@ -69,21 +69,21 @@ export const SurfacesIrriguees = ({
                     Part de la surface agricole irriguée dans la SAU en 2020
                   </b>
                 </p>
-                  {
-                    communesMap.length > 0 ? (
-                      <>
-                        <MapSurfacesIrriguees carteCommunes={communesMap} />
-                        <div
-                          className={styles.legend}
-                          style={{ width: 'auto', justifyContent: 'center' }}
-                        >
-                          <LegendCompColor legends={surfacesIrrigueesLegend} />
-                        </div>
-                      </>
-                    ) : (
-                      <DataNotFoundForGraph image={DataNotFound} />
-                    )
-                  }
+                {
+                  communesMap.length > 0 ? (
+                    <>
+                      <MapSurfacesIrriguees carteCommunes={communesMap} />
+                      <div
+                        className={styles.legend}
+                        style={{ width: 'auto', justifyContent: 'center' }}
+                      >
+                        <LegendCompColor legends={surfacesIrrigueesLegend} />
+                      </div>
+                    </>
+                  ) : (
+                    <DataNotFoundForGraph image={DataNotFound} />
+                  )
+                }
                 <p style={{ padding: '1em', margin: '0' }}>
                   Source : AGRESTE (2020)
                 </p>

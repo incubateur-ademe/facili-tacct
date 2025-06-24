@@ -17,25 +17,34 @@ import {
   Patch4
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
+import { EtatCoursEauRessourcesEauText } from '@/lib/staticTexts';
 import { etatCoursDeauTooltipTextEau } from '@/lib/tooltipTexts';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { EtatCoursEauRessourcesEauText } from '../inconfortThermique/staticTexts';
 import styles from './ressourcesEau.module.scss';
 
 const EtatQualiteCoursDeau = (props: {
-  etatCoursDeau: EtatCoursDeau[];
   carteCommunes: CarteCommunes[];
 }) => {
-  const { etatCoursDeau, carteCommunes } = props;
+  const { carteCommunes } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
-  const etatCoursDeauMap = etatCoursDeau.map(EtatCoursDeauMapper);
+  const [etatCoursDeau, setEtatCoursDeau] = useState<EtatCoursDeau[]>();
+
+  useEffect(() => {
+    void (async () => {
+      const temp = await GetEtatCoursDeau(code, libelle, type);
+      temp ? setEtatCoursDeau(temp) : void 0;
+    })();
+  }, []);
+
   const carteCommunesMap = carteCommunes.map(CommunesIndicateursMapper);
+  const etatCoursDeauMap = etatCoursDeau?.map(EtatCoursDeauMapper);
 
   useEffect(() => {
     void (async () => {
@@ -57,9 +66,9 @@ const EtatQualiteCoursDeau = (props: {
   return (
     <>
       {
-        !isLoadingPatch4 ?
+        !isLoadingPatch4 && etatCoursDeau ?
           <div className={styles.container}>
-            <div className={etatCoursDeau.length ? "w-5/12" : "w-1/2"}>
+            <div className={etatCoursDeau?.length ? "w-5/12" : "w-1/2"}>
               <div className={styles.explicationWrapper}>
                 <p>
                   La carte ci-contre reflète l’état écologique des cours d’eau
@@ -95,7 +104,7 @@ const EtatQualiteCoursDeau = (props: {
               </div>
               <EtatCoursEauRessourcesEauText />
             </div>
-            <div className={etatCoursDeau.length ? "w-7/12" : "w-1/2"}>
+            <div className={etatCoursDeau?.length ? "w-7/12" : "w-1/2"}>
               <div className={styles.graphWrapper}>
                 <div
                   className={styles.ressourcesEauGraphTitleWrapper}
@@ -103,7 +112,7 @@ const EtatQualiteCoursDeau = (props: {
                 >
                   <h2>État écologique des cours d’eau</h2>
                 </div>
-                {etatCoursDeau.length ? (
+                {etatCoursDeauMap && etatCoursDeau?.length ? (
                   <>
                     <MapEtatCoursDeau
                       etatCoursDeau={etatCoursDeauMap}

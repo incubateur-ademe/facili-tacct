@@ -21,7 +21,7 @@ import * as turf from '@turf/turf';
 import L from 'leaflet';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { AOT40Text } from '../inconfortThermique/staticTexts';
+import { AOT40Text } from '../../../lib/staticTexts';
 import styles from './biodiversite.module.scss';
 
 const color = (valeur: number) => {
