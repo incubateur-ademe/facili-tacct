@@ -56,7 +56,7 @@ export const MapLCZ = () => {
   return (
     <div style={{ width: '100%', height: '500px' }}>
       <MapContainer
-        center={center as LatLngExpression }
+        center={center as LatLngExpression}
         zoom={zoom}
         style={{ width: '100%', height: '100%' }}
         attributionControl={true}
@@ -65,6 +65,10 @@ export const MapLCZ = () => {
         <TileLayer
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <TileLayer
+          url="https://cartagene.cerema.fr/server/rest/services/Hosted/l_lcz_spot_000_2022_tl/MapServer/tile/{z}/{y}/{x}"
+          attribution='&copy; <a href="https://cartagene.cerema.fr/">Cerema</a>'
         />
         <WMSTileLayer
           url="https://cartagene.cerema.fr/server/services/l_lcz_spot_000_2022_mil/MapServer/WMSServer"
