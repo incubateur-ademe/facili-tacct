@@ -384,28 +384,28 @@ export const feuxForetBarChartLegend = [
 
 export const RgaRepartitionLegend = [
   {
-    variable: "territoire",
-    texteRaccourci: "Territoire",
-    couleur: "#038278"
+    variable: 'territoire',
+    texteRaccourci: 'Territoire',
+    couleur: '#038278'
   },
   {
-    variable: "territoireSup",
-    texteRaccourci: "Territoire supérieur",
-    couleur: "#C48EF6"
-  },
+    variable: 'territoireSup',
+    texteRaccourci: 'Territoire supérieur',
+    couleur: '#C48EF6'
+  }
 ];
 
 export const RgaEvolutionLegend = [
   {
-    variable: "nb_logement_alea_faible",
-    texteRaccourci: "Exposition faible",
-    couleur: "#FFCF5E"
+    variable: 'nb_logement_alea_faible',
+    texteRaccourci: 'Exposition faible',
+    couleur: '#FFCF5E'
   },
   {
-    variable: "nb_logement_alea_moyen_fort",
-    texteRaccourci: "Exposition moyennes / fortes",
-    couleur: "#E8323B"
-  },
+    variable: 'nb_logement_alea_moyen_fort',
+    texteRaccourci: 'Exposition moyenne / forte',
+    couleur: '#E8323B'
+  }
 ];
 
 export const RgaMapLegend = [
@@ -424,5 +424,5 @@ export const RgaMapLegend = [
   {
     value: 'Exposition forte',
     color: '#E8323B'
-  },
+  }
 ];

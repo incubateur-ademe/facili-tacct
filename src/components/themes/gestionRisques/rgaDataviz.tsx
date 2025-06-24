@@ -143,18 +143,22 @@ const RgaDataViz = (props: Props) => {
     })();
   }, [type, code]);
 
-  
+
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.catnatGraphTitleWrapper}>
         <h2>Retrait-gonflement des argiles</h2>
         <SubTabs
-          data={(type === "commune" || type === "epci") ? ['Répartition', 'Évolution', 'Cartographie'] : ['Évolution', 'Cartographie']}
+          data={
+            (type === "commune" || type === "epci") ?
+              ['Comparaison', 'Répartition', 'Cartographie'] :
+              ['Répartition', 'Cartographie']
+          }
           defaultTab={datavizTab}
           setValue={setDatavizTab}
         />
       </div>
-      {datavizTab === 'Répartition' ? (
+      {datavizTab === 'Comparaison' ? (
         <>
           <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
             <NewNivoBarChart
@@ -196,7 +200,7 @@ const RgaDataViz = (props: Props) => {
             </div>
           }
         </>
-      ) : datavizTab === 'Évolution' ? (
+      ) : datavizTab === 'Répartition' ? (
         <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
           <NewNivoBarChart
             colors={RgaEvolutionLegend.map(e => e.couleur)}
