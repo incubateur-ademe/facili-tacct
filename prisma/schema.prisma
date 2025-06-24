@@ -294,28 +294,28 @@ model inconfort_thermique {
   age_bati_19_45           Float?
   age_bati_pre_19          Float?
   under_4_sum_1968         Float?
-  to_80_sum_1968           Float?  @map("4_to_80_sum_1968")
+  to_80_sum_1968           Float?
   over_80_sum_1968         Float?
   under_4_sum_1975         Float?
-  to_80_sum_1975           Float?  @map("4_to_80_sum_1975")
+  to_80_sum_1975           Float?
   over_80_sum_1975         Float?
   under_4_sum_1982         Float?
-  to_80_sum_1982           Float?  @map("4_to_80_sum_1982")
+  to_80_sum_1982           Float?
   over_80_sum_1982         Float?
   under_4_sum_1990         Float?
-  to_80_sum_1990           Float?  @map("4_to_80_sum_1990")
+  to_80_sum_1990           Float?
   over_80_sum_1990         Float?
   under_4_sum_1999         Float?
-  to_80_sum_1999           Float?  @map("4_to_80_sum_1999")
+  to_80_sum_1999           Float?
   over_80_sum_1999         Float?
   under_4_sum_2009         Float?
-  to_80_sum_2009           Float?  @map("4_to_80_sum_2009")
+  to_80_sum_2009           Float?
   over_80_sum_2009         Float?
   under_4_sum_2014         Float?
-  to_80_sum_2014           Float?  @map("4_to_80_sum_2014")
+  to_80_sum_2014           Float?
   over_80_sum_2014         Float?
   under_4_sum_2020         Float?
-  to_80_sum_2020           Float?  @map("4_to_80_sum_2020")
+  to_80_sum_2020           Float?
   over_80_sum_2020         Float?
   P20_POP80P               Float?
   P20_POP80P_PSEUL         Float?

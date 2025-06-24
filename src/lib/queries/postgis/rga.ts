@@ -12,10 +12,10 @@ export const GetRGACarte = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       console.log(
-        'GetRGACarte: Timeout reached (12 seconds), returning empty array.'
+        'GetRGACarte: Timeout reached (20 seconds), returning empty array.'
       );
       resolve([]);
-    }, 12000)
+    }, 20000)
   );
   const dbQuery = (async () => {
     try {

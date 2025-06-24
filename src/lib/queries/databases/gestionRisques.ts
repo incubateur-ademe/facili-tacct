@@ -94,8 +94,11 @@ export const GetRga = async (
   const column = ColumnCodeCheck(type);
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
+      console.log(
+        'GetRGA: Timeout reached (15 seconds), returning empty array.'
+      );
       resolve([]);
-    }, 10000)
+    }, 15000)
   );
   const dbQuery = (async () => {
     try {
@@ -104,7 +107,7 @@ export const GetRga = async (
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return [];
-      else if (type === "commune") {
+      else if (type === 'commune') {
         const value = await prisma.$queryRaw`
           SELECT *
           FROM "databases"."rga"
@@ -116,7 +119,7 @@ export const GetRga = async (
           )
         `;
         return value as RGAdb[];
-      } else if (type === "epci") {
+      } else if (type === 'epci') {
         const value = await prisma.$queryRaw`
           SELECT *
           FROM "databases"."rga"
@@ -144,4 +147,3 @@ export const GetRga = async (
   })();
   return Promise.race([dbQuery, timeoutPromise]);
 };
-
