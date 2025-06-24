@@ -4,23 +4,27 @@ import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import { allArticles } from '../articlesList';
 
-export async function generateMetadata(
-  { params }: {params: Promise<{ slug: string }>}
-): Promise<Metadata> {
+export const generateMetadata = async (
+  { params }: { params: Promise<{ slug: string }> }
+): Promise<Metadata> => {
   const { slug } = await params;
   const article = allArticles.find(a => a.slug === slug);
   if (!article) return {};
   return {
     title: article.metadata.title,
     description: article.metadata.description,
+    openGraph: {
+      title: article.metadata.title,
+      description: article.metadata.description,
+    },
   };
 }
 
-export default async function ArticlePage({ params }: { params: Promise<{ slug: string }>}) {
+export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const article = allArticles.find(a => a.slug === slug);
   if (!article) return notFound();
-  const Component = article.Component;
+  const Article = article.Component;
   return (
     <div className="max-w-2xl m-auto pb-24">
       <Breadcrumb
@@ -29,7 +33,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         segments={[{ label: 'Ressources', linkProps: { href: '/ressources' } }]}
       />
       <Suspense>
-        <Component />
+        <Article />
       </Suspense>
     </div>
   );

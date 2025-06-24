@@ -9,7 +9,7 @@ import { agricultureBioTooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { SurfacesEnBioText } from '../inconfortThermique/staticTexts';
+import { SurfacesEnBioText } from '../../../lib/staticTexts';
 import AgricultureBioDataViz from './agricultureBioDataviz';
 import styles from './biodiversite.module.scss';
 

@@ -60,7 +60,7 @@ const CatnatDataViz = (props: Props) => {
           <div className={styles.catnatGraphFiltersWrapper}>
             <RangeSlider
               firstValue={1982}
-              lastValue={2024}
+              lastValue={2025}
               minDist={1}
               setSliderValue={setSliderValue}
               sliderValue={sliderValue}
@@ -81,7 +81,7 @@ const CatnatDataViz = (props: Props) => {
             />
             <RangeSlider
               firstValue={1982}
-              lastValue={2024}
+              lastValue={2025}
               minDist={1}
               setSliderValue={setSliderValue}
               sliderValue={sliderValue}
@@ -122,7 +122,7 @@ const CatnatDataViz = (props: Props) => {
       <p style={{ padding: '1em', margin: '0' }}>
         Source : Base nationale de Gestion ASsistée des Procédures
         Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
-        septembre 2024.
+        février 2025.
       </p>
     </div>
   );

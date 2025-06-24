@@ -9,7 +9,7 @@ import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { usePostHog } from 'posthog-js/react';
 import { useStyles } from 'tss-react/dsfr';
-import { Brand } from './Brand';
+import { Brand } from '../lib/Brand';
 import styles from './components.module.scss';
 
 const ReplaceDisplayEpci = (libelleEpci: string) => {

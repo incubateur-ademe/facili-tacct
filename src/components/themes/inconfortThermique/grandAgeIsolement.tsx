@@ -15,10 +15,10 @@ import {
   Patch4
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { GrandAgeText } from '@/lib/staticTexts';
 import { eptRegex, numberWithSpacesRegex } from '@/lib/utils/regex';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { GrandAgeText } from './staticTexts';
 import styles from './themes.module.scss';
 
 const sumProperty = (

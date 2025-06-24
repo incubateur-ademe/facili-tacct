@@ -186,6 +186,28 @@ export type CarteCommunes = {
   incendiesForet?: number;
 };
 
+export type CarteCommunesView = {
+  code_geographique: string | null;
+  coordinates: string | null;
+  densite_bati?: number | null;
+  epci: string | null;
+  geometry: string | null;
+  libelle_geographique: string | null;
+  libelle_epci: string | null;
+  departement: string | null;
+  libelle_departement?: string | null;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  precarite_logement?: number | null;
+  catnat?: Object | null;
+  naf?: number | null;
+  surface: number | null;
+  surfacesIrriguees?: number | null;
+  incendiesForet?: number | null;
+};
+
 export type EpciContours = {
   epci_code: string;
   geometry: string;
@@ -483,6 +505,89 @@ export type RGACarte = {
   alea: string;
   code_geographique: string;
   geometry: string;
+};
+
+export type RGAdb = {
+  index: bigint;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  nb_logement: number;
+  nb_logement_alea_moyen_fort: number;
+  nb_logement_alea_faible: number;
+  nb_logement_sans_alea: number;
+  nb_logement_alea_moyen_fort_avant_1920: number;
+  nb_logement_alea_moyen_fort_1920_1945: number;
+  nb_logement_alea_moyen_fort_1945_1975: number;
+  nb_logement_alea_moyen_fort_apres_1975: number;
+  nb_logement_alea_faible_avant_1920: number;
+  nb_logement_alea_faible_1920_1945: number;
+  nb_logement_alea_faible_1945_1975: number;
+  nb_logement_alea_faible_apres_1975: number;
+  surface_commune: number;
+  surface_alea_faible_commune: number;
+  surface_alea_moyen_fort_commune: number;
+  part_logement_alea_moyen_fort_avant_1920: number;
+  part_logement_alea_moyen_fort_1920_1945: number;
+  part_logement_alea_moyen_fort_1945_1975: number;
+  part_logement_alea_moyen_fort_apres_1975: number;
+  part_logement_alea_faible_avant_1920: number;
+  part_logement_alea_faible_1920_1945: number;
+  part_logement_alea_faible_1945_1975: number;
+  part_logement_alea_faible_apres_1975: number;
+  part_alea_faible_commune: number;
+  part_alea_moyen_fort_commune: number;
+};
+
+export type SurfacesAgricolesModel = {
+  index: bigint;
+  epci: string;
+  exploitation_sau: number;
+  exploitation_sau_terres_arables: number;
+  exploitation_sau_terres_arables_cereales: number;
+  exploitation_sau_terres_arables_oleagineux: number;
+  exploitation_sau_terres_arables_fourrageres: number;
+  exploitation_sau_terres_arables_tubercules: number;
+  exploitation_sau_terres_arables_legumes_melons_fraises: number;
+  exploitation_sau_terres_arables_fleurs: number;
+  exploitation_sau_terres_arables_autres: number;
+  exploitation_sau_cultures_permanentes: number;
+  exploitation_sau_cultures_permanentes_vigne: number;
+  exploitation_sau_cultures_permanentes_fruits: number;
+  exploitation_sau_cultures_permanentes_autres: number;
+  exploitation_sau_herbe: number;
+  exploitation_sau_herbe_prairies_productives: number;
+  exploitation_sau_herbe_prairies_peu_productives: number;
+  exploitation_sau_subventions: number;
+  exploitation_sau_bois_patures: number;
+  exploitation_sau_jardins: number;
+  superficie_sau: number;
+  superficie_sau_terres_arables: number;
+  superficie_sau_terres_arables_cereales: number;
+  superficie_sau_terres_arables_oleagineux: number;
+  superficie_sau_terres_arables_fourrageres: number;
+  superficie_sau_terres_arables_tubercules: number;
+  superficie_sau_terres_arables_legumes_melons_fraises: number;
+  superficie_sau_terres_arables_fleurs: number;
+  superficie_sau_terres_arables_autres: number;
+  superficie_sau_cultures_permanentes: number;
+  superficie_sau_cultures_permanentes_vigne: number;
+  superficie_sau_cultures_permanentes_fruits: number;
+  superficie_sau_cultures_permanentes_autres: number;
+  superficie_sau_herbe: number;
+  superficie_sau_herbe_prairies_productives: number;
+  superficie_sau_herbe_prairies_peu_productives: number;
+  superficie_sau_subventions: number;
+  superficie_sau_bois_patures: number;
+  superficie_sau_jardins: number;
 }
 
 export type Patch4 = {

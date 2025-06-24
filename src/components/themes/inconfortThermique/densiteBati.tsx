@@ -42,7 +42,7 @@ export const DensiteBati = ({
       ? communesMap.filter((e) => e.properties.ept === libelle)
       : communesMap;
 
-  const densiteTerritoire = type === 'ept' && eptRegex.test(libelle) ?
+  const densiteTerritoire = type === 'ept' && eptRegex.test(libelle) && carteTerritoire.length ?
     average(carteTerritoire.filter((e => e.properties.ept === libelle)).map((e) => e.properties.densite_bati))
     : type === 'commune'
       ? communesMap.find((obj) => obj.properties['code_geographique'] === code)?.properties.densite_bati

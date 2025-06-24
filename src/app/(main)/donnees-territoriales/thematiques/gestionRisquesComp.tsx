@@ -1,18 +1,24 @@
 'use client';
 
+import { LoaderText } from '@/components/loader';
 import { Catnat } from '@/components/themes/gestionRisques/catnat';
 import ErosionCotes from '@/components/themes/gestionRisques/erosionCotiere';
 import { FeuxForet } from '@/components/themes/gestionRisques/feuxForet';
+import { RGA } from '@/components/themes/gestionRisques/rga';
 import { TabTooltip } from '@/components/utils/TabTooltip';
+import useWindowDimensions from '@/hooks/windowDimensions';
 import {
   ArreteCatNat,
   CarteCommunes,
   ErosionCotiere,
   IncendiesForet,
+  RGACarte,
+  RGAdb
 } from '@/lib/postgres/models';
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
+import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
@@ -64,15 +70,6 @@ const allComps = [
       <FeuxForet incendiesForet={incendiesForet} />
     )
   },
-  // {
-  //   titre: "RGA",
-  //   Component: ({ rgaCarte, carteCommunes }: Props & { activeDataTab: string }) => (
-  //     <RGA
-  //       rgaCarte={rgaCarte}
-  //       carteCommunes={carteCommunes}
-  //     />
-  //   )
-  // }
 ];
 
 const GestionRisquesComp = ({
@@ -82,6 +79,14 @@ const GestionRisquesComp = ({
   erosionCotiere,
   incendiesForet,
 }: Props) => {
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code');
+  const libelle = searchParams.get('libelle');
+  const type = searchParams.get('type');
+  const [rgaCarte, setRgaCarte] = useState<RGACarte[]>([]);
+  const [rga, setRga] = useState<RGAdb[]>([]);
+  const [rgaCarteLoading, setRgaCarteLoading] = useState(false);
+  const [loadingRga, setLoadingRga] = useState(false);
   const [selectedTabId, setSelectedTabId] = useState(
     'Arrêtés catastrophes naturelles'
   );
@@ -96,6 +101,7 @@ const GestionRisquesComp = ({
     }
   };
   const { css } = useStyles();
+  const windowDimensions = useWindowDimensions();
 
   useEffect(() => {
     window.scrollTo({
@@ -109,6 +115,24 @@ const GestionRisquesComp = ({
       data.filter((el) => el.facteurSensibilite === selectedTabId)[0].titre
     );
   }, [selectedTabId]);
+
+  useEffect(() => {
+    if (selectedSubTab === 'Retrait-gonflement des argiles' && rga.length === 0 && rgaCarte.length === 0) {
+      setLoadingRga(true);
+      setRgaCarteLoading(true);
+      fetch(`/api/rga?code=${code}&libelle=${libelle}&type=${type}`)
+        .then(res => res.json())
+        .then(data => {
+          setRga(data.rga);
+          setRgaCarte(data.rgaCarte);
+        })
+        .finally(() => {
+          setLoadingRga(false);
+          setRgaCarteLoading(false);
+        }
+        );
+    }
+  }, [selectedSubTab, code, libelle, type]);
 
   return (
     <div className={styles.container}>
@@ -129,23 +153,29 @@ const GestionRisquesComp = ({
             tabId: 'Feux de forêt',
             label: 'Feux de forêt'
           },
-          // {
-          //   tabId: "RGA",
-          //   label: "RGA"
-          // },
+          {
+            tabId: "Retrait-gonflement des argiles",
+            label: (
+              <TabTooltip
+                selectedTab={selectedTabId}
+                tooltip="Le retrait gonflement des argiles est un phénomène géotechnique lié à l’alternance de sécheresses intenses et de fortes pluies, et exacerbé par les évolutions actuelles du climat. Ces mouvements de sol sont susceptibles d’endommager bâtiments et infrastructures."
+                titre="Retrait-gonflement des argiles"
+              />
+            )
+          },
           ...(erosionCotiere.length > 0
             ? [
-                {
-                  tabId: 'Érosion côtière',
-                  label: (
-                    <TabTooltip
-                      selectedTab={selectedTabId}
-                      tooltip="Indicateur national de l’érosion côtière."
-                      titre="Érosion côtière"
-                    />
-                  )
-                }
-              ]
+              {
+                tabId: 'Érosion côtière',
+                label: (
+                  <TabTooltip
+                    selectedTab={selectedTabId}
+                    tooltip="Indicateur national de l’érosion côtière."
+                    titre="Érosion côtière"
+                  />
+                )
+              }
+            ]
             : [])
         ]}
         onTabChange={setSelectedTabId}
@@ -183,22 +213,48 @@ const GestionRisquesComp = ({
           <div className={styles.bubble}>
             <div className={styles.bubbleContent} style={darkClass}>
               {(() => {
-                const Component = allComps.find(
-                  (el) => el.titre === selectedSubTab
-                )?.Component;
-                if (!Component) return null;
-                return (
-                  <Suspense>
-                    <Component
-                      data={data}
-                      gestionRisques={gestionRisques}
-                      activeDataTab={selectedSubTab}
-                      carteCommunes={carteCommunes}
-                      erosionCotiere={erosionCotiere}
-                      incendiesForet={incendiesForet}
-                    />
-                  </Suspense>
-                );
+                if (selectedSubTab === "Retrait-gonflement des argiles") {
+                  if (loadingRga || rgaCarteLoading) {
+                    return (
+                      <div style={{ 
+                        position: 'relative',
+                        minHeight: '40dvh',
+                        width: windowDimensions.width && windowDimensions.width > 1248 ? 1248 : windowDimensions.width
+                        }}
+                      >
+                        <div className={styles.loaderTextWrapperStyle}>
+                          <LoaderText text="Nous chargeons vos données" />
+                        </div>
+                      </div>
+                    );
+                  }
+                  return (
+                    <Suspense>
+                      <RGA
+                        rgaCarte={rgaCarte}
+                        carteCommunes={carteCommunes}
+                        rga={rga}
+                      />
+                    </Suspense>
+                  );
+                } else {
+                  const Component = allComps.find(
+                    (el) => el.titre === selectedSubTab
+                  )?.Component;
+                  if (!Component) return null;
+                  return (
+                    <Suspense>
+                      <Component
+                        data={data}
+                        gestionRisques={gestionRisques}
+                        activeDataTab={selectedSubTab}
+                        carteCommunes={carteCommunes}
+                        erosionCotiere={erosionCotiere}
+                        incendiesForet={incendiesForet}
+                      />
+                    </Suspense>
+                  );
+                }
               })()}
             </div>
           </div>

@@ -381,3 +381,48 @@ export const feuxForetBarChartLegend = [
     couleur: '#038278'
   }
 ];
+
+export const RgaRepartitionLegend = [
+  {
+    variable: 'territoire',
+    texteRaccourci: 'Territoire',
+    couleur: '#038278'
+  },
+  {
+    variable: 'territoireSup',
+    texteRaccourci: 'Territoire supérieur',
+    couleur: '#C48EF6'
+  }
+];
+
+export const RgaEvolutionLegend = [
+  {
+    variable: 'nb_logement_alea_faible',
+    texteRaccourci: 'Exposition faible',
+    couleur: '#FFCF5E'
+  },
+  {
+    variable: 'nb_logement_alea_moyen_fort',
+    texteRaccourci: 'Exposition moyenne / forte',
+    couleur: '#E8323B'
+  }
+];
+
+export const RgaMapLegend = [
+  {
+    value: 'Zone a priori non argileuse',
+    color: '#FFFFFF'
+  },
+  {
+    value: 'Exposition faible',
+    color: '#FFCF5E'
+  },
+  {
+    value: 'Exposition moyenne',
+    color: '#F66E19'
+  },
+  {
+    value: 'Exposition forte',
+    color: '#E8323B'
+  }
+];

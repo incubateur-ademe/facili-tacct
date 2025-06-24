@@ -12,7 +12,7 @@ import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { PrelevementEauText } from '../inconfortThermique/staticTexts';
+import { PrelevementEauText } from '../../../lib/staticTexts';
 import PrelevementEauDataViz from './prelevementEauDataviz';
 import styles from './ressourcesEau.module.scss';
 

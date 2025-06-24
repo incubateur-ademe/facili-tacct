@@ -17,13 +17,17 @@ export const GetPatch4 = async (
       resolve(undefined);
     }, 2000)
   );
+  console.time('GetPatch4 Execution Time');
   const dbQuery = (async () => {
     try {
       if (type === 'commune' || type === 'epci') {
         const departement =
           await PrismaPostgres.collectivites_searchbar.findFirst({
             where: {
-              OR: [{ code_geographique: code }, { epci: code }]
+              OR: [{ code_geographique: code }, { epci: code }],
+              departement: {
+                not: null
+              }
             }
           });
         // Exclusion des DROM puisque le patch4 ne les inclut pas
@@ -39,13 +43,12 @@ export const GetPatch4 = async (
           });
           return value == null ? undefined : value;
         }
-      } else if (type === "ept") { 
-        const value =
-          await PrismaPostgres.patch4c.findFirst({
-            where: {
-              code_geographique: libelle
-            }
-          });
+      } else if (type === 'ept') {
+        const value = await PrismaPostgres.patch4c.findFirst({
+          where: {
+            code_geographique: libelle
+          }
+        });
         return value == null ? undefined : value;
       } else return undefined;
     } catch (error) {
@@ -56,8 +59,9 @@ export const GetPatch4 = async (
     }
   })();
   const result = await Promise.race([dbQuery, timeoutPromise]);
+  console.timeEnd('GetPatch4 Execution Time');
   if (result === undefined) {
-    console.log('GetPatch4: Timeout reached (2 second), returning undefined.');
+    console.log('GetPatch4: Timeout reached (2 seconds), returning undefined.');
   }
   return result;
 };

@@ -1,136 +1,105 @@
-'use client';
-
+import { BoundsFromCollection } from '@/components/maps/components/boundsFromCollection';
 import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
-import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
-import { type Any } from '@/lib/utils/types';
-import { GeoJsonObject } from 'geojson';
-import {
-  LatLngBoundsExpression,
-  type StyleFunction
-} from 'leaflet';
-import 'leaflet.vectorgrid';
-import 'leaflet/dist/leaflet.css';
+import { mapStyles } from 'carte-facile';
+import 'carte-facile/carte-facile.css';
+import { Feature, FeatureCollection, GeoJsonProperties, Geometry } from 'geojson';
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef } from 'react';
-import { useMap } from 'react-leaflet';
-import { GraphDataNotFound } from '../graph-data-not-found';
-import { BoundsFromCollection } from './components/boundsFromCollection';
 
-
-const getColor = (d: string) => {
-  return d === "Moyen"
-    ? 'orange'
-    : d === "Faible"
-      ? 'green'
-      : d === "Fort"
-        ? 'red'
-        : 'transparent';
-};
-
-
-export function VectorGridLayer() {
-  const map = useMap();
-
-  useEffect(() => {
-    // @ts-ignore
-    const vectorTileLayer = window.L.vectorGrid.protobuf(
-      'https://data.geopf.fr/tms/1.0.0/batiment_gpkg_19-12-2024_tms/{z}/{x}/{y}.pbf',
-      {
-        vectorTileLayerStyles: {
-          // You can define styles for your vector features here
-          // Example: 'layerName': { fill: true, fillColor: '#3388ff', fillOpacity: 0.5 }
-        },
-        interactive: true,
-      }
-    );
-    vectorTileLayer.addTo(map);
-
-    return () => {
-      map.removeLayer(vectorTileLayer);
-    };
-  }, [map]);
-
-  return null;
-}
-
-export const MapRGA = (props: {
+const RGAMap = (props: {
   carteCommunes: CommunesIndicateursDto[];
-  rgaCarte: RGADto[];
+  rgaCarte: {
+    type: string;
+    features: RGADto[];
+};
 }) => {
   const { carteCommunes, rgaCarte } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const mapRef = useRef(null);
-
   const carteCommunesFiltered = type === "ept"
     ? carteCommunes.filter(el => el.properties.ept === libelle)
     : carteCommunes
   const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
+  const mapContainer = useRef<HTMLDivElement>(null);
 
-  const style: StyleFunction<Any> = (feature) => {
-    const typedFeature = feature as RGADto;
-    return {
-      fillColor: getColor(typedFeature?.properties.alea),
-      weight: 0.1,
-      opacity: 0.5,
-      color: '#161616',
-      fillOpacity: 0.30
-    };
-  };
+  useEffect(() => {
+    if (!mapContainer.current) return;
+    const map = new maplibregl.Map({
+      container: mapContainer.current,
+      style: mapStyles.desaturated,
+      attributionControl: false,
+    });
 
+    map.on('load', () => {
+      // Compute bounding box from enveloppe polygon
+      if (
+        enveloppe &&
+        Array.isArray(enveloppe) &&
+        enveloppe.length > 1 &&
+        Array.isArray(enveloppe[0]) &&
+        enveloppe[0].length === 2
+      ) {
+        const lons = enveloppe.map(coord => coord[1]);
+        const lats = enveloppe.map(coord => coord[0]);
+        const minLng = Math.min(...lons);
+        const maxLng = Math.max(...lons);
+        const minLat = Math.min(...lats);
+        const maxLat = Math.max(...lats);
+        map.fitBounds(
+          [[minLng, minLat], [maxLng, maxLat]],
+          { padding: 20 }
+        );
+      }
+      map.addSource('rgaCarte', {
+        type: 'geojson',
+        data: rgaCarte as FeatureCollection<Geometry, GeoJsonProperties>,
+      });
+      map.addSource('carteCommunes', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: carteCommunesFiltered as Feature<Geometry, GeoJsonProperties>[]
+        }
+      });
+      map.addLayer({
+        id: 'rgaCarte-layer',
+        type: 'fill',
+        source: 'rgaCarte',
+        paint: {
+          'fill-color': [
+            'match',
+            ['get', 'alea'],
+            'Moyen', '#F66E19',
+            'Faible', '#FFCF5E',
+            'Fort', '#E8323B',
+            'white'
+          ],
+          'fill-opacity': 0.45,
+        },
+      });
+      map.addLayer({
+        id: 'carteCommunes-outline',
+        type: 'line',
+        source: 'carteCommunes',
+        paint: {
+          'line-color': '#161616',
+          'line-width': 1
+        }
+      });
+    });
+
+    // Add navigation control
+    map.addControl(new maplibregl.NavigationControl(), 'top-right');
+    return () => map.remove();
+  }, [rgaCarte, enveloppe]);
 
   return (
-    <>
-      {carteCommunesFiltered === null ? (
-        <GraphDataNotFound code={code} libelle={libelle} />
-      ) : (
-        <MapContainer
-          ref={mapRef}
-          style={{ height: '500px', width: '100%' }}
-          attributionControl={false}
-          zoomControl={false}
-          bounds={enveloppe as LatLngBoundsExpression}
-        >
-          {process.env.NEXT_PUBLIC_ENV === 'preprod' ? (
-            // <TileLayer
-            //   attribution="IGN-F/Geoportail"
-            //   url="https://data.geopf.fr/wms-v/ows?SERVICE=wms&REQUEST=GetMap&VERSION=1.3.0&LAYERS=BDTOPO-GEOPO-ADMINISTRATIF_WLD_WGS84G&STYLE=default-style-BDTOPO-GEOPO-ADMINISTRATIF_WLD_WGS84G&FORMAT=image/gif"
-            //   minZoom={0}
-            //   maxZoom={18}
-              
-            // />
-            // 
-            <>
-              <TileLayer
-              attribution="IGN-F/Geoportail"
-              url="https://data.geopf.fr/tms/1.0.0/GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2/{z}/{x}/{y}.png"
-              minZoom={0}
-              maxZoom={18}
-              />
-              {/* <VectorGridLayer /> */}
-            </>
-            //https://data.geopf.fr/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=ORTHOIMAGERY.ORTHOPHOTOS&format=image/jpeg&style=normal
-            // <TileLayer
-            //   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            //   url="https://data.geopf.fr/wmts?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetCapabilities"
-            // />
-          ) : (
-            <TileLayer
-              attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://data.geopf.fr/wmts?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetCapabilities"
-            />
-          )}
-
-
-          <GeoJSON
-            ref={mapRef}
-            data={rgaCarte as unknown as GeoJsonObject}
-            style={style}
-          />
-        </MapContainer>
-      )}
-    </>
+    <div ref={mapContainer} style={{ height: "500px", width: "100%" }} />
   );
 };
+
+export default RGAMap;

@@ -1,6 +1,5 @@
 import { DefinitionTooltip } from "@/components/utils/HtmlTooltip";
 import { eutrophisation, irrigable, PNACC } from "@/lib/definitions";
-import styles from './themes.module.scss';
 
 export const AgeBatiText = () => (
   <div className="px-4">
@@ -190,7 +189,7 @@ export const VegetalisationText = () => (
 );
 
 export const SurfacesIrrigueesText = () => (
-  <div className={styles.textWrapper}>
+  <div className="px-4">
     <p>
       En France métropolitaine, 6,8 % de la surface agricole utile
       (SAU) était irriguée en 2020, soit 15 % de plus qu’en 2010.
@@ -648,6 +647,98 @@ export const FeuxForetText = () => (
     <p>
       ⇒ 4 feux sur 5 se déclenchent à moins de 50 mètres des
       habitations.
+    </p>
+  </div>
+);
+
+export const RGAText = () => (
+  <div className="px-4">
+    <p>
+      Phénomène lié à l’alternance de sécheresses extrêmes et de fortes pluies,
+      le retrait gonflement des argiles (RGA) impacte désormais tout le territoire
+      métropolitain à l’exception de la Bretagne et de la Normandie. Il touche
+      surtout les maisons individuelles anciennes. Mais les routes, les écoles,
+      les canalisations ou les équipements municipaux peuvent aussi être affectés,
+      mettant en jeu la sécurité et l’attractivité du territoire.
+    </p>
+    <p>
+      Si le phénomène est incontestablement amplifié par le changement
+      climatique, la qualité des constructions est aussi en cause. La
+      fréquence des sinistres RGA des maisons construites après 1975
+      est cinq fois supérieure à celle des maisons construites avant
+      1975, alors même que ces dernières ont subi davantage de cycles
+      de RGA. Multifactoriel, le RGA est donc un sujet complexe qui
+      nécessite une approche combinée sols, bâtiment, urbanisme…
+    </p>
+    <p>
+      Il y a urgence à mieux prendre en compte le RGA dans les
+      politiques d’aménagement car son coût explose : de 400 millions
+      d’euros par an (1989-2015) à 1 milliard d’euros par an (2016-2020),
+      pour atteindre en 2022 un record à 3,5 milliards d’euros. Il
+      représente 52 % du total des indemnisations versées au titre du
+      régime des catastrophes naturelles sur les dix dernières années,
+      devenant non seulement le péril naturel le plus coûteux devant
+      les inondations mais mettant en péril l’équilibre même du régime
+      CatNat. Il est temps de sortir d’une logique « dommages ⇒
+      indemnisations » alors qu’il existe un certain nombre d’actions
+      de prévention qui pourraient éviter ou réduire l’apparition de
+      dommages.
+    </p>
+    <p>
+      ⇒ En France métropolitaine, 48 % du territoire est exposé à un
+      risque RGA moyen ou fort. Cela représente 10,4 millions de
+      logements (près de la moitié du parc de logements) et 20 millions
+      de Français.
+    </p>
+    <p>
+      ⇒ En 2022, le nombre de maisons individuelles touchées par le RGA
+      a été deux fois supérieur au nombre de maisons individuelles
+      construites en 2024.
+    </p>
+    <p>
+      - - - - <br></br>
+      Plan national d’adaptation au changement climatique (PNACC 3) :
+      <li>
+        Protéger la population des désordres sur les bâtiments liés au
+        retrait-gonflement des argiles (mesure 5)
+      </li>
+    </p>
+  </div>
+);
+
+export const SurfacesAgricolesText = () => (
+  <div className="px-4">
+    <p>
+      En 2020, plus de 94 % des terres agricoles françaises étaient consacrées aux grandes cultures et aux cultures fourragères.
+      Le reste, vergers, vignes, légumes, plantes à parfum, ne représentait que 6 % des surfaces, bien qu’il concentre souvent les cultures les plus sensibles aux aléas climatiques. Ces dernières années, des pertes importantes ont été enregistrées dans les vergers d’abricotiers (gel printanier), les vignobles (mildiou, sécheresse) ou les cultures maraîchères (pluies excessives), illustrant une vulnérabilité déjà bien réelle.
+    </p>
+    <p>
+      Une agriculture trop spécialisée peut fragiliser l’ensemble d’un territoire : un seul aléa suffit parfois à mettre en péril une exploitation sous pression.
+      Et avec un climat à +2 °C d’ici 2030, ces épisodes extrêmes deviendront plus fréquents.
+    </p>
+    <p>
+      La diversification est l’une des voies possibles pour renforcer la résilience des territoires agricoles. Si l’agriculture de votre territoire repose surtout sur une ou deux cultures, quelle marge de résilience reste-t-il face aux aléas climatiques ?
+    </p>
+  </div>
+)
+
+export const LCZText = () => (
+  <div className="px-4">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+      do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco
+      laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+      irure dolor in reprehenderit in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur.
+    </p>
+    <p>
+      Excepteur sint occaecat cupidatat non proident, sunt in
+      culpa qui officia deserunt mollit anim id est laborum. Sed ut
+      perspiciatis unde omnis iste natus error sit voluptatem
+      accusantium doloremque laudantium, totam rem aperiam, eaque
+      ipsa quae ab illo inventore veritatis et quasi architecto
+      beatae vitae dicta sunt explicabo.
     </p>
   </div>
 );

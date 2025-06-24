@@ -11,12 +11,12 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { FragiliteEconomiqueText } from '@/lib/staticTexts';
 import { fragiliteEconomiqueTooltipText } from '@/lib/tooltipTexts';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { FragiliteEconomiqueText } from './staticTexts';
 import styles from './themes.module.scss';
 
 export const FragiliteEconomique = ({

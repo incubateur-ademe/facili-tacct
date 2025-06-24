@@ -13,8 +13,8 @@ import { GetPatch4 } from '@/lib/queries/patch4';
 import { erosionCotiereTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { ErosionCotiereText } from '../../../lib/staticTexts';
 import { LegendErosionCotiere } from '../../maps/legends/legendErosionCotiere';
-import { ErosionCotiereText } from '../inconfortThermique/staticTexts';
 import styles from './gestionRisques.module.scss';
 
 const ErosionCotes = (props: {
@@ -22,6 +22,7 @@ const ErosionCotes = (props: {
   carteCommunes: CarteCommunes[];
 }) => {
   const { erosionCotiere, carteCommunes } = props;
+  const re = new RegExp('T([1-9]|1[0-2])\\b');
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;

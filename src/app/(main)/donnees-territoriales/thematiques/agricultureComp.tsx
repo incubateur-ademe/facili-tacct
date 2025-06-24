@@ -26,18 +26,6 @@ interface Props {
 }
 
 const allComps = [
-  // {
-  //   titre: "Chefs d'exploitation",
-  //   Component: ({
-  //     agriculture,
-  //     carteCommunes
-  //   }: Props & { activeDataTab: string }) => (
-  //     <ChefsExploitation
-  //       agriculture={agriculture}
-  //       carteCommunes={carteCommunes}
-  //     />
-  //   )
-  // },
   {
     titre: 'Superficies irriguées',
     Component: ({
@@ -49,13 +37,13 @@ const allComps = [
         carteCommunes={carteCommunes}
       />
     )
-  }
+  },
 ];
 
 const AgricultureComp = ({
   data,
   carteCommunes,
-  agriculture
+  agriculture,
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Superficies irriguées');
   const [selectedSubTab, setSelectedSubTab] = useState('Superficies irriguées');
@@ -85,6 +73,7 @@ const AgricultureComp = ({
 
   return (
     <div className="w-full">
+      {/* <button onClick={() => exportToXLSX(carteCommunes)}>Exporter XLSX</button> */}
       <Tabs
         selectedTabId={selectedTabId}
         tabs={[
