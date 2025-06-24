@@ -1,8 +1,8 @@
 import Image, { ImageProps } from "next/image";
-import React, { useState } from "react";
+import React, { CSSProperties, useState } from "react";
 
 interface ZoomOnClickProps extends Omit<ImageProps, "ref"> {
-  wrapperStyle?: React.CSSProperties;
+  wrapperStyle?: CSSProperties;
 }
 
 const ZoomOnClick: React.FC<ZoomOnClickProps> = ({ wrapperStyle, ...imgProps }) => {

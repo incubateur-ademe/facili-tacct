@@ -48,10 +48,10 @@ export const cards = {
         'Vous voulez réviser un diagnostic connu'
       ],
       titre:
-        '10 minutes pour analyser les 80 pages de votre diagnostic de vulnérabilité',
+        'Que lire en priorité dans votre diagnostic de vulnérabilité aux effets du changement climatique ?',
       tag: 'Article',
       description:
-        'Le diagnostic de vulnérabilité est un document clé pour comprendre le territoire et ses spécificités.',
+        'Relisez votre diagnostic de vulnérabilité en 10 minutes : identifiez les données utiles et les enjeux prioritaires pour enclencher une stratégie d’adaptation concertée.',
       link: '/ressources/articles/analyser-diagnostic-vulnerabilite'
     },
     {
