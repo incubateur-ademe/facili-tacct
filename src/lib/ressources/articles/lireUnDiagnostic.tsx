@@ -11,12 +11,11 @@ import styles from "./article.module.scss";
 
 export const articleMetadata = {
   title: 'Analyser un diagnostic de vulnérabilité',
-  description: 'Gagnez du temps dans l’analyse de votre diagnostic de vulnérabilité aux effets du changement climatique. Une méthode pour en extraire l’essentiel en 10 minutes.',
+  description: 'Relisez votre diagnostic de vulnérabilité aux effets du changement climatique en 10 minutes : repérez les données utiles et les enjeux clés.',
 };
 
 const LireUnDiagnostic = () => {
   const [showModal, setShowModal] = useState(false);
-
   return (
     <>
       <div className={styles.textBloc}>
