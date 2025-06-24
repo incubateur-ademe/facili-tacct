@@ -299,17 +299,17 @@ export const prelevementEauTooltipText = (
 export const rgaTooltipText = (
   <>
     <div>
-      Les informations fournies sont le résultat du croisement géomatique 
-      réalisé par le CGDD/SDES en 2021 de la carte d’exposition au phénomène 
-      de RGA (BRGM, 2019) et des logements figurant dans le fichier démographique 
-      sur les logements et les individus (Base Fidéli -Insee, 2021). 
+      Les informations fournies sont le résultat du croisement géomatique
+      réalisé par le CGDD/SDES en 2021 de la carte d’exposition au phénomène
+      de RGA (BRGM, 2019) et des logements figurant dans le fichier démographique
+      sur les logements et les individus (Base Fidéli -Insee, 2021).
     </div>
     <br></br>
     <div>
-      L’indicateur permet d’identifier le niveau d’exposition des communes au 
-      phénomène mais il n’est pas adapté pour travailler à une échelle plus fine 
-      (parcellaire). Ainsi la visualisation cartographique proposée ne peut en 
-      aucun cas prétendre refléter en tout point l’exacte nature des sols. 
+      L’indicateur permet d’identifier le niveau d’exposition des communes au
+      phénomène mais il n’est pas adapté pour travailler à une échelle plus fine
+      (parcellaire). Ainsi, la visualisation cartographique proposée ne peut en
+      aucun cas prétendre refléter en tout point l’exacte nature des sols.
     </div>
   </>
 );

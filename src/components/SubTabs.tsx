@@ -37,6 +37,11 @@ const tabIcons = [
     iconSelected: camembertIconWhite
   },
   {
+    name: 'Comparaison',
+    iconNotSelected: evolutionIconBlack,
+    iconSelected: evolutionIconWhite
+  },
+  {
     name: 'Évolution',
     iconNotSelected: evolutionIconBlack,
     iconSelected: evolutionIconWhite

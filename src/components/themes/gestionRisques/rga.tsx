@@ -35,7 +35,7 @@ export const RGA = ({
   const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
-  const [datavizTab, setDatavizTab] = useState<string>((type === "commune" || type === "epci") ? 'Répartition' : "Évolution");
+  const [datavizTab, setDatavizTab] = useState<string>((type === "commune" || type === "epci") ? 'Comparaison' : "Répartition");
   const carteCommunesEnriched = carteCommunes.map(CommunesIndicateursMapper);
   const communesMap = carteCommunesEnriched.map((el) => {
     return {
@@ -78,7 +78,7 @@ export const RGA = ({
             <div className={communesMap.length > 0 ? "w-2/5" : "w-1/2"}>
               <div className={styles.explicationWrapper}>
                 {
-                  communesMap.length > 0 ? (
+                  communesMap.length > 0 && rga.length && rgaCarte.length ? (
                     <p>
                       <b>{partMoyenFort} %</b> de votre territoire est situé dans une zone où le niveau
                       d’exposition au retrait gonflement des argiles est moyen ou fort. Cela

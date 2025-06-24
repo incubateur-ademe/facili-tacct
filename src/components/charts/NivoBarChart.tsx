@@ -1,3 +1,4 @@
+import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Any } from '@/lib/utils/types';
 import {
   BarDatum,
@@ -132,7 +133,7 @@ export const NivoBarChart = ({
               >
                 {(e.value / axisLeftTickFactor) % 1 != 0
                   ? ''
-                  : e.value / axisLeftTickFactor}
+                  : numberWithSpacesRegex(e.value / axisLeftTickFactor)}
               </text>
             </g>
           );
@@ -242,7 +243,7 @@ export const NewNivoBarChart = ({
               >
                 {(e.value / axisLeftTickFactor) % 1 != 0
                   ? ''
-                  : e.value / axisLeftTickFactor}
+                  : numberWithSpacesRegex(e.value / axisLeftTickFactor)}
               </text>
             </g>
           );
