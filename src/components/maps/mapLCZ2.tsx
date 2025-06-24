@@ -48,27 +48,21 @@ export const MapLCZ2 = ({
       //   paint: { 'raster-opacity': 0.5 }
       // });
 
-
-      // Add Urban Atlas vector tile layer (pbf)
-      // Cannot use urban-atlas because it requires an authentication. 
-      // map.addSource('urban-atlas', {
-      //   type: 'vector',
-      //   tiles: [
-      //     'https://cartagene.cerema.fr/server/rest/services/Hosted/aires_urbaines_Urban_Atlas_3857/VectorTileServer/tile/{z}/{y}/{x}.pbf'
-      //   ],
-      //   minzoom: 0,
-      //   maxzoom: 14
-      // });
-      // map.addLayer({
-      //   id: 'urban-atlas-layer',
-      //   type: 'fill',
-      //   source: 'urban-atlas',
-      //   'source-layer': 'aires_urbaines_Urban_Atlas_3857',
-      //   paint: {
-      //     'fill-color': '#FF0000', // red, adjust as needed
-      //     'fill-opacity': 0.3
-      //   }
-      // });
+      // Add Cerema LCZ raster tile layer between base and lcz-wms
+      map.addSource('cerema-lcz-tile', {
+        type: 'raster',
+        tiles: [
+          'https://cartagene.cerema.fr/server/rest/services/Hosted/l_lcz_spot_000_2022_tl/MapServer/tile/{z}/{y}/{x}'
+        ],
+        tileSize: 256,
+        attribution: '&copy; <a href="https://cartagene.cerema.fr/">Cerema</a>'
+      });
+      map.addLayer({
+        id: 'cerema-lcz-tile-layer',
+        type: 'raster',
+        source: 'cerema-lcz-tile',
+        paint: { 'raster-opacity': 1 }
+      });
       map.addSource('lcz-wms', {
         type: 'raster',
         tiles: [
@@ -99,6 +93,12 @@ export const MapLCZ2 = ({
           'line-width': 1
         }
       });
+      // Set initial visibility of cerema-lcz-tile-layer based on zoom
+      // if (map.getZoom() >= 13.5) {
+      //   map.setLayoutProperty('cerema-lcz-tile-layer', 'visibility', 'none');
+      // } else {
+      //   map.setLayoutProperty('cerema-lcz-tile-layer', 'visibility', 'visible');
+      // }
       // Fit to enveloppe if available
       if (enveloppe && Array.isArray(enveloppe) && enveloppe.length > 1 && Array.isArray(enveloppe[0]) && enveloppe[0].length === 2) {
         const lons = enveloppe.map(coord => coord[1]);
@@ -159,7 +159,7 @@ export const MapLCZ2 = ({
           const identifier = props.identifier || '';
           const lcz = props.lcz || '';
           let content = `<h5 style='font-size:14px; margin:0px;'><b>Typologie de l'entité ${identifier}</b></h5><b>LCZ</b>: ${lcz}<br/>`;
-          const order = ['are','bur','hre','ror','ver','vhr','bsr','war','FID'];
+          const order = ['are', 'bur', 'hre', 'ror', 'ver', 'vhr', 'bsr', 'war', 'FID'];
           for (const key of order) {
             if (props[key] !== undefined) {
               content += `<b>${labels[key]}</b>: ${props[key]}<br/>`;
@@ -183,12 +183,14 @@ export const MapLCZ2 = ({
       }
     });
 
-    // Change cursor to pointer when zoom >= 13.5, else default
+    // Toggle cerema-lcz-tile-layer visibility on zoom
     map.on('zoom', () => {
       if (map.getZoom() >= 13.5) {
         map.getCanvas().style.cursor = 'pointer';
+        map.setLayoutProperty('cerema-lcz-tile-layer', 'visibility', 'none');
       } else {
         map.getCanvas().style.cursor = '';
+        map.setLayoutProperty('cerema-lcz-tile-layer', 'visibility', 'visible');
       }
     });
 
