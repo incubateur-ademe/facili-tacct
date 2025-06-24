@@ -9,8 +9,8 @@ import InconfortThermiqueComp from './inconfortThermiqueComp';
 const InconfortThermique = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type } = await props.searchParams;
   const theme = themes.inconfortThermique;
-  const dbInconfortThermique = await GetInconfortThermique(code, libelle, type);
   const carteCommunes = await GetCommunes(code, libelle, type);
+  const dbInconfortThermique = await GetInconfortThermique(code, libelle, type);
 
   return (
     <div>

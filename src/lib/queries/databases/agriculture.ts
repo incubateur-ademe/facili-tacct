@@ -1,62 +1,64 @@
 'use server';
 import { Agriculture } from '@/lib/postgres/models';
-import { eptRegex } from '@/lib/utils/regex';
 import * as Sentry from '@sentry/nextjs';
-import { PrismaPostgres } from '../db';
+import { ColumnCodeCheck } from '../columns';
+import { prisma } from '../redis';
 
 export const GetAgriculture = async (
   code: string,
   libelle: string,
   type: string
 ): Promise<Agriculture[]> => {
-  const column =
-    type === 'pnr'
-      ? 'code_pnr'
-      : type === 'petr'
-        ? 'libelle_petr'
-        : type === 'ept' && eptRegex.test(libelle)
-          ? 'ept'
-          : type === 'epci' && !eptRegex.test(libelle)
-            ? 'epci'
-            : type === 'departement'
-              ? 'departement'
-              : 'code_geographique';
+  const column = ColumnCodeCheck(type);
   const timeoutPromise = new Promise<[]>((resolve) =>
-    setTimeout(() => {resolve([])}, 3000)
+    setTimeout(() => {
+      console.log(
+        'GetAgriculture: Timeout reached (2 seconds), returning empty array.'
+      );
+      resolve([]);
+    }, 2000)
   );
   const dbQuery = (async () => {
     try {
-      if (type === 'ept' || type === 'petr') {
-        const value = await PrismaPostgres.agriculture.findMany({
-          where: {
-            [column]: libelle
-          }
-        });
-        return value;
-      } else if (type === 'commune') {
-        const commune = await PrismaPostgres.collectivites_searchbar.findFirst({
-          where: {
-            code_geographique: code
-          }
-        });
-        const value = await PrismaPostgres.agriculture.findMany({
-          where: {
-            epci: commune?.epci ?? ''
-          }
-        });
-        return value;
-      } else {
-        const value = await PrismaPostgres.agriculture.findMany({
-          where: {
-            [column]: code
-          }
-        });
-        return value;
+      // Fast existence check
+      const exists = await prisma.agriculture.findFirst({
+        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+      });
+      if (!exists) return [];
+      else {
+        if (type === 'ept' || type === 'petr') {
+          const value = await prisma.agriculture.findMany({
+            where: {
+              [column]: libelle
+            }
+          });
+          return value;
+        } else if (type === 'commune') {
+          // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
+          const value = await prisma.$queryRaw`
+            SELECT a.*
+            FROM agriculture a
+            WHERE a.epci = (
+              SELECT c.epci
+              FROM databases."collectivites_searchbar" c
+              WHERE c.code_geographique = ${code}
+              LIMIT 1
+            )
+          `;
+          return value as Agriculture[];
+        } else {
+          const value = await prisma.agriculture.findMany({
+            where: {
+              [column]: code
+            }
+          });
+          return value;
+        }
       }
     } catch (error) {
       console.error(error);
       Sentry.captureException(error);
-      // PrismaPostgres.$disconnect();
+      // prisma.$disconnect();
       return [];
     }
   })();

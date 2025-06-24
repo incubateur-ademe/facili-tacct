@@ -28,6 +28,7 @@ const csp = {
     'script-src': [
         "'self'",
         "'unsafe-inline'",
+        'blob:',
         'https://stats.beta.gouv.fr',
         process.env.NEXT_PUBLIC_ENV === 'preprod' && 'https://vercel.live',
         process.env.NODE_ENV === 'development' &&
@@ -38,15 +39,6 @@ const csp = {
     'object-src': ["'self'", 'data:'],
     'frame-ancestors': [
         "'none'",
-        'http://localhost:5174/*',
-        'http://localhost:5174',
-        'http://localhost:5173/*',
-        'http://localhost:5173',
-        'https://mon-espace-collectivite-staging.osc-fr1.scalingo.io',
-        'https://mon-espace-collectivite-demo.osc-secnum-fr1.scalingo.io',
-        'https://les-communs-transition-ecologique-api-staging.osc-fr1.scalingo.io/sandbox/',
-        'https://preprod-app.territoiresentransitions.fr',
-        'https://staging-app.territoiresentransitions.fr',
     ],
     'base-uri': ["'self'", 'https://*.gouv.fr'],
     'form-action': ["'self'", 'https://*.gouv.fr'],
@@ -137,6 +129,50 @@ const config = {
                         value: 'cross-origin'
                     }
                 ]
+            }
+        ];
+    },
+    async redirects() {
+        return [
+            {
+                source: '/ressources/articles/lire-un-diagnostic',
+                destination: '/ressources/articles/analyser-diagnostic-vulnerabilite',
+                permanent: true,
+            },
+            {
+                source: '/ressources/articles/cdc',
+                destination: '/ressources/articles/facilitation-cahier-charges',
+                permanent: true,
+            },
+            {
+                source: '/ressources/articles/pourquoi-mobiliser',
+                destination: '/ressources/articles/mobilisation-diagnostic-vulnerabilite',
+                permanent: true,
+            },
+            {
+                source: '/ressources/articles/eviter-precher-desert',
+                destination: '/ressources/articles/reussir-mobilisation-acteurs-adaptation',
+                permanent: true,
+            },
+            {
+                source: '/ressources/articles/adacc',
+                destination: '/ressources/articles/ateliers-adacc-adaptation',
+                permanent: true,
+            },
+            {
+                source: '/ressources/articles/climastory',
+                destination: '/ressources/articles/atelier-climastory-sensibilisation-adaptation',
+                permanent: true,
+            },
+            {
+                source: '/ressources/articles/mise-en-recit',
+                destination: '/ressources/articles/mise-en-recit-territoire-adaptation-climat',
+                permanent: true,
+            },
+            {
+                source: '/ressources/articles/facilitation-ateliers',
+                destination: '/ressources/articles/facilitation-ateliers-mobilisation',
+                permanent: true,
             }
         ];
     }

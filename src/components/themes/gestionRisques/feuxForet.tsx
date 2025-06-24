@@ -12,7 +12,7 @@ import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { FeuxForetText } from '../inconfortThermique/staticTexts';
+import { FeuxForetText } from '../../../lib/staticTexts';
 import FeuxForetDataviz from './feuxForetDataviz';
 import styles from './gestionRisques.module.scss';
 

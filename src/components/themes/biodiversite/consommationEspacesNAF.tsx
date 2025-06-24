@@ -6,7 +6,7 @@ import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
 import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
-import { ConsommationEspacesNAFBiodiversiteText } from '../inconfortThermique/staticTexts';
+import { ConsommationEspacesNAFBiodiversiteText } from '../../../lib/staticTexts';
 import styles from './biodiversite.module.scss';
 import { ConsommationEspacesNAFDataviz } from './consommationEspacesNAFDataviz';
 

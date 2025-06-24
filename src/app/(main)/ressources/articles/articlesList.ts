@@ -1,51 +1,55 @@
-import Adacc, { articleMetadata as adaccMeta } from '@/lib/ressources/articles/adacc';
-import CDC, { articleMetadata as cdcMeta } from '@/lib/ressources/articles/CDC';
-import ClimaStory, { articleMetadata as climaMeta } from '@/lib/ressources/articles/climaStory';
-import EviterPrecherDesert, { articleMetadata as eviterMeta } from '@/lib/ressources/articles/eviterPrecherDesert';
-import FacilitationDateliers, { articleMetadata as facilitationMeta } from '@/lib/ressources/articles/facilitationDateliers';
-import LireUnDiagnostic, { articleMetadata as lireMeta } from '@/lib/ressources/articles/lireUnDiagnostic';
-import MiseEnRecit, { articleMetadata as miseMeta } from '@/lib/ressources/articles/miseEnRecit';
-import PourquoiMobiliser, { articleMetadata as pourquoiMeta } from '@/lib/ressources/articles/pourquoiMobiliser';
+import Adacc from '@/lib/ressources/articles/adacc';
+import CDC from '@/lib/ressources/articles/CDC';
+import ClimaStory from '@/lib/ressources/articles/climaStory';
+import EviterPrecherDesert from '@/lib/ressources/articles/eviterPrecherDesert';
+import FacilitationDateliers from '@/lib/ressources/articles/facilitationDateliers';
+import LireUnDiagnostic from '@/lib/ressources/articles/lireUnDiagnostic';
+import MiseEnRecit from '@/lib/ressources/articles/miseEnRecit';
+import PourquoiMobiliser from '@/lib/ressources/articles/pourquoiMobiliser';
 
 export const allArticles = [
   {
-    slug: 'lire-un-diagnostic',
+    slug: 'analyser-diagnostic-vulnerabilite',
     Component: LireUnDiagnostic,
-    metadata: lireMeta,
+    metadata: {
+      title: 'Analyser un diagnostic de vulnérabilité',
+      description:
+        'Relisez votre diagnostic de vulnérabilité aux effets du changement climatique en 10 minutes : repérez les données utiles et les enjeux clés.'
+    }
   },
   {
-    slug: 'mise-en-recit',
+    slug: 'mise-en-recit-territoire-adaptation-climat',
     Component: MiseEnRecit,
-    metadata: miseMeta,
+    metadata: {}
   },
   {
-    slug: 'pourquoi-mobiliser',
+    slug: 'mobilisation-diagnostic-vulnerabilite',
     Component: PourquoiMobiliser,
-    metadata: pourquoiMeta,
+    metadata: {}
   },
   {
-    slug: 'facilitation-ateliers',
+    slug: 'facilitation-ateliers-mobilisation',
     Component: FacilitationDateliers,
-    metadata: facilitationMeta,
+    metadata: {}
   },
   {
-    slug: 'cdc',
+    slug: 'facilitation-cahier-charges',
     Component: CDC,
-    metadata: cdcMeta,
+    metadata: {}
   },
   {
-    slug: 'eviter-precher-desert',
+    slug: 'reussir-mobilisation-acteurs-adaptation',
     Component: EviterPrecherDesert,
-    metadata: eviterMeta,
+    metadata: {}
   },
   {
-    slug: 'adacc',
+    slug: 'ateliers-adacc-adaptation',
     Component: Adacc,
-    metadata: adaccMeta,
+    metadata: {}
   },
   {
-    slug: 'climastory',
+    slug: 'atelier-climastory-sensibilisation-adaptation',
     Component: ClimaStory,
-    metadata: climaMeta,
-  },
+    metadata: {}
+  }
 ];

@@ -27,7 +27,7 @@ import { GetPatch4 } from '@/lib/queries/patch4';
 import { etatCoursDeauTooltipTextBiodiv } from '@/lib/tooltipTexts';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { EtatsCoursEauBiodiversiteText } from '../inconfortThermique/staticTexts';
+import { EtatsCoursEauBiodiversiteText } from '../../../lib/staticTexts';
 import styles from './biodiversite.module.scss';
 
 const EtatQualiteCoursDeau = (props: {

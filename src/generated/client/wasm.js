@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.8.2
- * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+ * Prisma Client JS version: 6.10.1
+ * Query Engine version: 9b628578b3b7cae625e8c927178f15a170e74a9c
  */
 Prisma.prismaVersion = {
-  client: "6.8.2",
-  engine: "2060c79ba17c6bb9f5823312b6f6b7f4a845738e"
+  client: "6.10.1",
+  engine: "9b628578b3b7cae625e8c927178f15a170e74a9c"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -124,23 +124,6 @@ exports.Prisma.North_star_metricScalarFieldEnum = {
   value: 'value',
   date: 'date',
   pk: 'pk'
-};
-
-exports.Prisma.AgricultureScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  libelle_departement: 'libelle_departement',
-  region: 'region',
-  ept: 'ept',
-  libelle_petr: 'libelle_petr',
-  code_pnr: 'code_pnr',
-  libelle_pnr: 'libelle_pnr',
-  part_irr_SAU_2020: 'part_irr_SAU_2020',
-  part_over_55: 'part_over_55'
 };
 
 exports.Prisma.Agriculture_bioScalarFieldEnum = {
@@ -574,6 +557,37 @@ exports.Prisma.RgaScalarFieldEnum = {
   part_alea_moyen_fort_commune: 'part_alea_moyen_fort_commune'
 };
 
+exports.Prisma.Postgis_rgaScalarFieldEnum = {
+  pk: 'pk',
+  alea: 'alea',
+  code_geographique: 'code_geographique'
+};
+
+exports.Prisma.Spatial_ref_sysScalarFieldEnum = {
+  srid: 'srid',
+  auth_name: 'auth_name',
+  auth_srid: 'auth_srid',
+  srtext: 'srtext',
+  proj4text: 'proj4text'
+};
+
+exports.Prisma.AgricultureScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  part_irr_SAU_2020: 'part_irr_SAU_2020',
+  part_over_55: 'part_over_55'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -592,7 +606,6 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   north_star_metric: 'north_star_metric',
-  agriculture: 'agriculture',
   agriculture_bio: 'agriculture_bio',
   aot_40: 'aot_40',
   arretes_catnat: 'arretes_catnat',
@@ -608,7 +621,10 @@ exports.Prisma.ModelName = {
   etat_cours_d_eau: 'etat_cours_d_eau',
   qualite_sites_baignade: 'qualite_sites_baignade',
   users: 'users',
-  rga: 'rga'
+  rga: 'rga',
+  postgis_rga: 'postgis_rga',
+  spatial_ref_sys: 'spatial_ref_sys',
+  agriculture: 'agriculture'
 };
 
 /**

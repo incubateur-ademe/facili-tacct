@@ -10,13 +10,13 @@ import { travailExtDto } from '@/lib/dto';
 import { travailExtMapper } from '@/lib/mapper/inconfortThermique';
 import { InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { TravailExterieurText } from '@/lib/staticTexts';
 import { travailExterieurTooltipText } from '@/lib/tooltipTexts';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { TravailExterieurText } from './staticTexts';
 import styles from './themes.module.scss';
 
 const sumProperty = (
@@ -55,7 +55,7 @@ export const TravailExterieur = (props: {
     sumCommerce: sumProperty(travailExterieurTerritoire, 'NA5GU_sum'),
     sumAdministration: sumProperty(travailExterieurTerritoire, 'NA5OQ_sum')
   };
-  
+
   const graphData = [
     {
       id: 'Agriculture, sylviculture et pêche',
@@ -161,8 +161,8 @@ export const TravailExterieur = (props: {
                     Part des emplois par grands secteurs d’activité
                   </b>
                 </p>
-                {graphData ? 
-                  <PieChart1 
+                {graphData ?
+                  <PieChart1
                     graphData={graphData}
                     travailExterieurTerritoire={travailExterieurTerritoire}
                   /> : <Loader />}

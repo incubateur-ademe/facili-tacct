@@ -16,7 +16,7 @@ import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { CatNatText } from '../inconfortThermique/staticTexts';
+import { CatNatText } from '../../../lib/staticTexts';
 import CatnatDataViz from './catnatDataviz';
 import styles from './gestionRisques.module.scss';
 
@@ -39,7 +39,7 @@ export const Catnat = (props: {
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
-  const [sliderValue, setSliderValue] = useState<number[]>([1982, 2024]);
+  const [sliderValue, setSliderValue] = useState<number[]>([1982, 2025]);
   const [typeRisqueValue, setTypeRisqueValue] =
     useState<CatnatTypes>('Tous types');
   const [arretesCatnatPieChart, setArretesCatnatPieChart] = useState<
@@ -202,7 +202,7 @@ export const Catnat = (props: {
                         <p style={{ padding: '1em', margin: '0' }}>
                           Source : Base nationale de Gestion ASsistée des Procédures
                           Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
-                          septembre 2024.
+                          février 2025.
                         </p>
                       </div>
                     )

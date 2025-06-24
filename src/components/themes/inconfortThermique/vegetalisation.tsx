@@ -12,11 +12,11 @@ import { VegetalisationDto } from '@/lib/dto';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { CLCTerritoires, InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { VegetalisationText } from '@/lib/staticTexts';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { VegetalisationText } from './staticTexts';
 import styles from './themes.module.scss';
 
 const sumProperty = (
