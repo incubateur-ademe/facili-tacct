@@ -296,7 +296,7 @@ const LireUnDiagnostic = () => {
         <p>Pour approfondir certains points abordés dans cet article, voici deux ressources utiles :</p>
         <div className={styles.links}>
           <div className={styles.link}>
-            <p>
+            <li>
               Renforcer la dynamique collaborative : lire notre article sur&nbsp;
               <Link
                 href="/ressources/articles/mobilisation-diagnostic-vulnerabilite"
@@ -305,10 +305,10 @@ const LireUnDiagnostic = () => {
               >
                 la facilitation pour mobiliser les parties prenantes.
               </Link>
-            </p>
+            </li>
           </div>
           <div className={styles.link}>
-            <p>
+            <li>
               Pour en savoir plus sur la manière de valoriser vos données, consultez notre article sur&nbsp;
               <Link
                 href="/ressources/articles/mise-en-recit-territoire-adaptation-climat"
@@ -317,7 +317,7 @@ const LireUnDiagnostic = () => {
               >
                 la mise en récit du territoire.
               </Link>
-            </p>
+            </li>
           </div>
         </div>
       </div>

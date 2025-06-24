@@ -37,7 +37,7 @@ export const GetAgriculture = async (
           // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
           const value = await prisma.$queryRaw`
             SELECT a.*
-            FROM agriculture a
+            FROM databases."agriculture" a
             WHERE a.epci = (
               SELECT c.epci
               FROM databases."collectivites_searchbar" c

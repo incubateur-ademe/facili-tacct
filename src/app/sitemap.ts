@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { allArticles } from './(main)/ressources/articles/articlesList';
 
-export const sitemap = (): MetadataRoute.Sitemap => {
+const sitemap = (): MetadataRoute.Sitemap => {
   const baseUrl = 'https://facili-tacct.beta.gouv.fr';
   const articles = allArticles.map((article) => ({
     url: `${baseUrl}/ressources/articles/${article.slug}`,
@@ -19,3 +19,5 @@ export const sitemap = (): MetadataRoute.Sitemap => {
     ...articles
   ];
 };
+
+export default sitemap;
