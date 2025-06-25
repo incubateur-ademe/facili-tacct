@@ -177,6 +177,13 @@ export const themes = {
       facteurSensibilite: 'Surfaces agricoles',
       risque: '',
       donnee: ''
+    },
+    {
+      id: 3,
+      titre: 'Surfaces en bio',
+      facteurSensibilite: 'Surfaces en bio',
+      risque: '',
+      donnee: ''
     }
   ]
 };
