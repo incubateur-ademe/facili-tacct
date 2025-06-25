@@ -5,7 +5,7 @@ import { Suspense } from 'react';
 import { allArticles } from '../articlesList';
 
 export const generateMetadata = async (
-  { params }: { params: Promise<{ slug: string }> }
+  { params }: {params: Promise<{ slug: string }>}
 ): Promise<Metadata> => {
   const { slug } = await params;
   const article = allArticles.find(a => a.slug === slug);
@@ -20,11 +20,11 @@ export const generateMetadata = async (
   };
 }
 
-export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ArticlePage({ params }: { params: Promise<{ slug: string }>}) {
   const { slug } = await params;
   const article = allArticles.find(a => a.slug === slug);
   if (!article) return notFound();
-  const Article = article.Component;
+  const Component = article.Component;
   return (
     <div className="max-w-2xl m-auto pb-24">
       <Breadcrumb
@@ -33,7 +33,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         segments={[{ label: 'Ressources', linkProps: { href: '/ressources' } }]}
       />
       <Suspense>
-        <Article />
+        <Component />
       </Suspense>
     </div>
   );
