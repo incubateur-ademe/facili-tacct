@@ -10,11 +10,12 @@ export const GetAgricultureBio = async (
   type: string
 ): Promise<AgricultureBio[]> => {
   const column = ColumnLibelleCheck(type);
-  const timeoutPromise = new Promise<[]>((resolve) =>
-    setTimeout(() => {
+  let timeoutId: NodeJS.Timeout | undefined;
+  const timeoutPromise = new Promise<[]>((resolve) => {
+    timeoutId = setTimeout(() => {
       resolve([]);
-    }, 2000)
-  );
+    }, 2000);
+  });
   const dbQuery = (async () => {
     try {
       // Fast existence check
@@ -67,7 +68,11 @@ export const GetAgricultureBio = async (
       return [];
     }
   })();
-  return Promise.race([dbQuery, timeoutPromise]);
+  const result = await Promise.race([dbQuery, timeoutPromise]);
+  if (timeoutId !== undefined) {
+    clearTimeout(timeoutId);
+  }
+  return result;
 };
 
 export const GetConsommationNAF = async (
@@ -75,8 +80,9 @@ export const GetConsommationNAF = async (
   libelle: string,
   type: string
 ): Promise<ConsommationNAF[]> => {
+  let timeoutId: NodeJS.Timeout | undefined;
   const timeoutPromise = new Promise<[]>((resolve) =>
-    setTimeout(() => {
+    timeoutId = setTimeout(() => {
       resolve([]);
     }, 3000)
   );
@@ -126,17 +132,21 @@ export const GetConsommationNAF = async (
       }
     } catch (error) {
       console.error(error);
-      // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
     }
   })();
-  return Promise.race([dbQuery, timeoutPromise]);
+  const result = await Promise.race([dbQuery, timeoutPromise]);
+  if (timeoutId !== undefined) {
+    clearTimeout(timeoutId);
+  }
+  return result as ConsommationNAF[];
 };
 
 export const GetAOT40 = async (): Promise<AOT40[]> => {
+  let timeoutId: NodeJS.Timeout | undefined;
   const timeoutPromise = new Promise<[]>((resolve) =>
-    setTimeout(() => {
+    timeoutId = setTimeout(() => {
       resolve([]);
     }, 1500)
   );
@@ -151,5 +161,9 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
       return [];
     }
   })();
-  return Promise.race([dbQuery, timeoutPromise]);
+  const result = await Promise.race([dbQuery, timeoutPromise]);
+  if (timeoutId !== undefined) {
+    clearTimeout(timeoutId);
+  }
+  return result as AOT40[];
 };
