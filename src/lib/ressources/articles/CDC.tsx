@@ -2,11 +2,7 @@ import AtelierImage from "@/assets/images/article2.png";
 import EndPageTrigger from "@/hooks/EndPageTrigger";
 import Image from "next/image";
 import styles from "./article.module.scss";
-
-export const articleMetadata = {
-  title: 'Le cahier des charges, levier pour intégrer la facilitation',
-  description: 'Le rôle du cahier des charges dans l’intégration de la facilitation pour l’adaptation au changement climatique.'
-};
+;
 
 const CDC = () => {
 

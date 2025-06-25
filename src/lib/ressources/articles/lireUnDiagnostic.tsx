@@ -9,11 +9,6 @@ import { useState } from "react";
 import EndPageTrigger from "../../../hooks/EndPageTrigger";
 import styles from "./article.module.scss";
 
-export const articleMetadata = {
-  title: 'Analyser un diagnostic de vulnérabilité',
-  description: 'Relisez votre diagnostic de vulnérabilité aux effets du changement climatique en 10 minutes : repérez les données utiles et les enjeux clés.',
-};
-
 const LireUnDiagnostic = () => {
   const [showModal, setShowModal] = useState(false);
   return (

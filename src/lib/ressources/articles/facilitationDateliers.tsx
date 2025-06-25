@@ -6,11 +6,6 @@ import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import styles from './article.module.scss';
 
-export const articleMetadata = {
-  title: 'La facilitation d’ateliers : une démarche éprouvée d’engagement',
-  description: 'Découvrez comment la facilitation d’ateliers peut renforcer l’engagement des parties prenantes dans l’adaptation.'
-};
-
 const FacilitationDateliers = () => {
   return (
     <div>

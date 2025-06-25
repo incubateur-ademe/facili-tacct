@@ -46,117 +46,117 @@ type NivoBarChartProps = {
   showLegend?: boolean;
 };
 
-export const NivoBarChart = ({
-  graphData,
-  keys,
-  indexBy,
-  bottomTickValues,
-  colors,
-  legendData,
-  tooltip,
-  axisLeftLegend,
-  axisBottomLegend,
-  axisLeftTickFactor = 1,
-  groupMode = 'stacked',
-  showLegend = true
-}: NivoBarChartProps) => {
-  return (
-    <ResponsiveBar
-      data={graphData}
-      keys={keys}
-      isFocusable={true}
-      indexBy={indexBy}
-      colors={colors}
-      margin={
-        showLegend
-          ? { top: 40, right: 200, bottom: 80, left: 80 }
-          : { top: 40, right: 80, bottom: 80, left: 80 }
-      }
-      groupMode={groupMode}
-      padding={0.3}
-      innerPadding={2}
-      borderRadius={1}
-      valueScale={{ type: 'linear' }}
-      indexScale={{ type: 'band', round: true }}
-      borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-      axisTop={null}
-      axisRight={null}
-      axisBottom={{
-        tickValues: bottomTickValues,
-        tickSize: 0,
-        tickPadding: 15,
-        legend: axisBottomLegend,
-        legendOffset: 50,
-        legendPosition: 'middle',
-        renderTick: (e: Any) => {
-          return (
-            <g transform={`translate(${e.x},${e.y})`}>
-              <text
-                x={0}
-                y={10}
-                dy={16}
-                textAnchor="middle"
-                style={{
-                  fill: 'black',
-                  fontSize: 12,
-                  fontWeight: 400
-                }}
-              >
-                {e.value}
-              </text>
-            </g>
-          );
-        }
-      }}
-      gridYValues={5}
-      axisLeft={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: axisLeftLegend,
-        legendPosition: 'middle',
-        legendOffset: -50,
-        truncateTickAt: 0,
-        tickValues: 5, //number of tickvalues displayed along the ax
-        renderTick: (e) => {
-          return (
-            <g transform={`translate(${e.x},${e.y})`}>
-              <text
-                x={-20}
-                y={5}
-                textAnchor="middle"
-                style={{
-                  fill: 'black',
-                  fontSize: 12,
-                  fontWeight: 400
-                }}
-              >
-                {(e.value / axisLeftTickFactor) % 1 != 0
-                  ? ''
-                  : numberWithSpacesRegex(e.value / axisLeftTickFactor)}
-              </text>
-            </g>
-          );
-        }
-      }}
-      enableLabel={false}
-      legends={
-        showLegend
-          ? [
-            {
-              ...legendProps,
-              data: legendData,
-            }
-          ]
-          : []
-      }
-      tooltip={tooltip}
-      role="application"
-    />
-  );
-};
+// export const NivoBarChart = ({
+//   graphData,
+//   keys,
+//   indexBy,
+//   bottomTickValues,
+//   colors,
+//   legendData,
+//   tooltip,
+//   axisLeftLegend,
+//   axisBottomLegend,
+//   axisLeftTickFactor = 1,
+//   groupMode = 'stacked',
+//   showLegend = true
+// }: NivoBarChartProps) => {
+//   return (
+//     <ResponsiveBar
+//       data={graphData}
+//       keys={keys}
+//       isFocusable={true}
+//       indexBy={indexBy}
+//       colors={colors}
+//       margin={
+//         showLegend
+//           ? { top: 40, right: 200, bottom: 80, left: 80 }
+//           : { top: 40, right: 80, bottom: 80, left: 80 }
+//       }
+//       groupMode={groupMode}
+//       padding={0.3}
+//       innerPadding={2}
+//       borderRadius={1}
+//       valueScale={{ type: 'linear' }}
+//       indexScale={{ type: 'band', round: true }}
+//       borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+//       axisTop={null}
+//       axisRight={null}
+//       axisBottom={{
+//         tickValues: bottomTickValues,
+//         tickSize: 0,
+//         tickPadding: 15,
+//         legend: axisBottomLegend,
+//         legendOffset: 50,
+//         legendPosition: 'middle',
+//         renderTick: (e: Any) => {
+//           return (
+//             <g transform={`translate(${e.x},${e.y})`}>
+//               <text
+//                 x={0}
+//                 y={10}
+//                 dy={16}
+//                 textAnchor="middle"
+//                 style={{
+//                   fill: 'black',
+//                   fontSize: 12,
+//                   fontWeight: 400
+//                 }}
+//               >
+//                 {e.value}
+//               </text>
+//             </g>
+//           );
+//         }
+//       }}
+//       gridYValues={5}
+//       axisLeft={{
+//         tickSize: 5,
+//         tickPadding: 5,
+//         tickRotation: 0,
+//         legend: axisLeftLegend,
+//         legendPosition: 'middle',
+//         legendOffset: -50,
+//         truncateTickAt: 0,
+//         tickValues: 5, //number of tickvalues displayed along the ax
+//         renderTick: (e) => {
+//           return (
+//             <g transform={`translate(${e.x},${e.y})`}>
+//               <text
+//                 x={-20}
+//                 y={5}
+//                 textAnchor="middle"
+//                 style={{
+//                   fill: 'black',
+//                   fontSize: 12,
+//                   fontWeight: 400
+//                 }}
+//               >
+//                 {(e.value / axisLeftTickFactor) % 1 != 0
+//                   ? ''
+//                   : numberWithSpacesRegex(e.value / axisLeftTickFactor)}
+//               </text>
+//             </g>
+//           );
+//         }
+//       }}
+//       enableLabel={false}
+//       legends={
+//         showLegend
+//           ? [
+//             {
+//               ...legendProps,
+//               data: legendData,
+//             }
+//           ]
+//           : []
+//       }
+//       tooltip={tooltip}
+//       role="application"
+//     />
+//   );
+// };
 
-export const NewNivoBarChart = ({
+export const NivoBarChart = ({
   graphData,
   keys,
   indexBy,

@@ -9,11 +9,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './article.module.scss';
 
-export const articleMetadata = {
-  title: 'ClimaSTORY, une cartographie pour sensibiliser',
-  description: 'Découvrez ClimaSTORY, un outil cartographique pour sensibiliser à l’adaptation au changement climatique.'
-};
-
 const ClimaStory = () => {
   return (
     <div>
