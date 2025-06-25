@@ -355,6 +355,37 @@ export const SurfacesEnBioText = () => (
   </div>
 );
 
+export const SurfacesEnBioAgricultureText = () => (
+  <div className="px-4">
+    <p>
+      Les défis de l’agriculture sont doubles : réduire ses émissions 
+      de gaz à effet de serre et s'adapter aux impacts du changement 
+      climatique : l’intensification des sécheresses menaçant la disponibilité 
+      en eau, la dégradation des sols, etc. Face à ces enjeux, l'agriculture 
+      biologique, même si elle n’est pas la solution parfaite, apporte des 
+      réponses concrètes, aux côtés de l'agroforesterie et des cultures à bas intrants.
+    </p>
+    <p>
+      Le bio renforce la résistance des exploitations agricoles. Comment ? Par 
+      la non-utilisation des produits chimiques de synthèse et des OGM. 
+      Grâce au recyclage des matières organiques. Par la rotation des cultures. 
+      À travers la lutte biologique. Le compostage et la couverture permanente 
+      des sols enrichissent la vie microbienne. Les résultats parlent d'eux-mêmes : jusqu'à 
+      35 % de carbone supplémentaire dans les sols. Une meilleure disponibilité 
+      en eau pour les plantes, avec des gains de 4 % à 45 %. Un territoire comptant 
+      plus d'exploitations bio résiste mieux aux aléas climatiques. Enfin, à 
+      surface égale, les cultures biologiques végétales émettent 50 % de gaz 
+      à effet de serre en moins que les cultures conventionnelles.
+    </p>
+    <p>
+      - - - - <br></br>
+      Le Plan national d’adaptation au changement climatique (PNACC 3) 
+      prévoit d’accompagner les agriculteurs pour assurer la résilience de 
+      leur exploitation (mesure 37).
+    </p>
+  </div>
+);
+
 export const EtatsCoursEauBiodiversiteText = () => (
   <div className="px-4">
     <p>

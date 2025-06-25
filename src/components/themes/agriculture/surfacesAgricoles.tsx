@@ -15,8 +15,6 @@ export const SurfacesAgricoles = ({
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
 
-  console.log("surfacesAgricoles", surfacesAgricoles);
-
   return (
     <>
       {surfacesAgricoles ? (

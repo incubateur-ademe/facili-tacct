@@ -1,10 +1,12 @@
 'use client';
 
+import AgricultureBiologique from '@/components/themes/agriculture/agricultureBio';
 import { SurfacesAgricoles } from '@/components/themes/agriculture/surfacesAgricoles';
 import { SurfacesIrriguees } from '@/components/themes/agriculture/surfacesIrriguees';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   Agriculture,
+  AgricultureBio,
   CarteCommunes,
   SurfacesAgricolesModel
 } from '@/lib/postgres/models';
@@ -26,6 +28,8 @@ interface Props {
   carteCommunes: CarteCommunes[];
   agriculture: Agriculture[];
   surfacesAgricoles: SurfacesAgricolesModel[];
+  agricultureBio: AgricultureBio[];
+
 }
 
 const allComps = [
@@ -63,7 +67,16 @@ const allComps = [
         surfacesAgricoles={surfacesAgricoles}
       />
     )
-  }
+  },
+  {
+    titre: 'Surfaces en bio',
+    Component: ({
+      data,
+      agricultureBio
+    }: Props & { activeDataTab: string }) => (
+      <AgricultureBiologique data={data} agricultureBio={agricultureBio} />
+    )
+  },
 ];
 
 // import * as XLSX from 'xlsx';
@@ -79,7 +92,8 @@ const AgricultureComp = ({
   data,
   carteCommunes,
   agriculture,
-  surfacesAgricoles
+  surfacesAgricoles,
+  agricultureBio
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Superficies irriguées');
   const [selectedSubTab, setSelectedSubTab] = useState('Superficies irriguées');
@@ -124,9 +138,19 @@ const AgricultureComp = ({
             )
           },
           {
+            tabId: 'Surfaces en bio',
+            label: (
+              <TabTooltip
+                selectedTab={selectedTabId}
+                tooltip="L’agriculture biologique fait partie d’un ensemble de pratiques agricoles respectueuses des équilibres écologiques qui contribue à la préservation des sols et des ressources naturelles. "
+                titre="Surfaces en bio"
+              />
+            )
+          },
+          {
             tabId: 'Surfaces agricoles',
             label: "Surfaces agricoles",
-          }
+          },
         ]}
         onTabChange={setSelectedTabId}
         className={css({
@@ -175,6 +199,7 @@ const AgricultureComp = ({
                       carteCommunes={carteCommunes}
                       agriculture={agriculture}
                       surfacesAgricoles={surfacesAgricoles}
+                      agricultureBio={agricultureBio}
                     />
                   </Suspense>
                 );
