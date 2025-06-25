@@ -9,6 +9,7 @@ const redis = new Redis(process.env.SCALINGO_REDIS_URL!, {
     rejectUnauthorized: false, 
   }
 }); 
+export { redis };
 export const prisma = new PrismaClient();
 
 const cacheMiddleware: Prisma.Middleware = createPrismaRedisCache({
