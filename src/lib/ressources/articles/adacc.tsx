@@ -9,11 +9,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './article.module.scss';
 
-export const articleMetadata = {
-  title: 'Sensibiliser à l’adaptation : les AdACC',
-  description: 'Présentation des Ateliers de l’Adaptation au Changement Climatique (AdACC) pour sensibiliser les acteurs.'
-};
-
 const Adacc = () => {
   return (
     <div>
