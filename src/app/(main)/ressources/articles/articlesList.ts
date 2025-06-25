@@ -20,36 +20,64 @@ export const allArticles = [
   {
     slug: 'mise-en-recit-territoire-adaptation-climat',
     Component: MiseEnRecit,
-    metadata: {}
+    metadata: {
+      title: 'Mettre en récit mon territoire pour engager',
+      description:
+        'Découvrez comment mettre en récit votre territoire pour engager les acteurs locaux dans l’adaptation au changement climatique.'
+    }
   },
   {
     slug: 'mobilisation-diagnostic-vulnerabilite',
     Component: PourquoiMobiliser,
-    metadata: {}
+    metadata: {
+      title: 'Pourquoi mobiliser en interne et externe ?',
+      description:
+        'Comprendre l’importance de la mobilisation interne et externe pour la réussite des démarches d’adaptation.'
+    }
   },
   {
     slug: 'facilitation-ateliers-mobilisation',
     Component: FacilitationDateliers,
-    metadata: {}
+    metadata: {
+      title: 'La facilitation d’ateliers : une démarche éprouvée d’engagement',
+      description:
+        'Découvrez comment la facilitation d’ateliers peut renforcer l’engagement des parties prenantes dans l’adaptation.'
+    }
   },
   {
     slug: 'facilitation-cahier-charges',
     Component: CDC,
-    metadata: {}
+    metadata: {
+      title: 'Le cahier des charges, levier pour intégrer la facilitation',
+      description:
+        'Le rôle du cahier des charges dans l’intégration de la facilitation pour l’adaptation au changement climatique.'
+    }
   },
   {
     slug: 'reussir-mobilisation-acteurs-adaptation',
     Component: EviterPrecherDesert,
-    metadata: {}
+    metadata: {
+      title: 'Comment éviter de prêcher dans le désert ?',
+      description:
+        'Conseils pour éviter de prêcher dans le désert et maximiser l’impact de vos actions d’adaptation.'
+    }
   },
   {
     slug: 'ateliers-adacc-adaptation',
     Component: Adacc,
-    metadata: {}
+    metadata: {
+      title: 'Sensibiliser à l’adaptation : les AdACC',
+      description:
+        'Présentation des Ateliers de l’Adaptation au Changement Climatique (AdACC) pour sensibiliser les acteurs.'
+    }
   },
   {
     slug: 'atelier-climastory-sensibilisation-adaptation',
     Component: ClimaStory,
-    metadata: {}
+    metadata: {
+      title: 'ClimaSTORY, une cartographie pour sensibiliser',
+      description:
+        'Découvrez ClimaSTORY, un outil cartographique pour sensibiliser à l’adaptation au changement climatique.'
+    }
   }
 ];
