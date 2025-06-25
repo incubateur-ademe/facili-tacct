@@ -56,21 +56,21 @@ const AgricultureBioDataViz = ({
             <p style={{ padding: '1em', margin: '0' }}>
               Source : Agence Bio, Service de la Statistique et de la Prospective (SSP
               - Ministère de l’agriculture) dans Catalogue DiDo (Indicateurs
-              territoriaux de développement durable - ITDD)
+              territoriaux de développement durable - ITDD) - AGRESTE, 2020
             </p>
           </div>
         ) : (
           <div className={styles.graphWrapper}>
             <p style={{ padding: '1em', margin: '0' }}>
               <b>
-                Part des surfaces en bio
+                Part de l’agriculture biologique
               </b>
             </p>
             <DataNotFoundForGraph image={DataNotFound} />
             <p style={{ padding: '1em', margin: '0' }}>
               Source : Agence Bio, Service de la Statistique et de la Prospective (SSP
               - Ministère de l’agriculture) dans Catalogue DiDo (Indicateurs
-              territoriaux de développement durable - ITDD)
+              territoriaux de développement durable - ITDD) - AGRESTE, 2020
             </p>
           </div>
         )}
