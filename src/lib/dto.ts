@@ -66,6 +66,8 @@ export type GrandAgeIsolementDto = {
   libelle_pnr: string | null;
   ept: string | null;
   libelle_petr: string | null;
+  departement: string;
+  libelle_departement: string;
   over_80_sum_1968?: number;
   over_80_sum_1975?: number;
   over_80_sum_1982?: number;

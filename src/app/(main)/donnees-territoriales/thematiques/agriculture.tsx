@@ -12,7 +12,7 @@ const Agriculture = async (props: { searchParams: SearchParams }) => {
   const carteCommunes = await GetCommunes(code, libelle, type);
   const dbAgriculture = await GetAgriculture(code, libelle, type);
   const dbSurfacesAgricoles = await GetSurfacesAgricoles(code, libelle, type);
-  const dbAgricultureBio = await GetAgricultureBio(libelle, type);
+  const dbAgricultureBio = await GetAgricultureBio(libelle, type, code);
 
   return (
     <div className={styles.container}>

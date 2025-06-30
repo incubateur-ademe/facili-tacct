@@ -148,7 +148,6 @@ const RgaDataViz = (props: Props) => {
     })();
   }, [type, code]);
 
-
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.catnatGraphTitleWrapper}>

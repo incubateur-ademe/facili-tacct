@@ -8,18 +8,19 @@ import { Map } from '@/components/maps/map';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
+import { ExportButton } from '@/components/utils/ExportButton';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { densiteBatiTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { eptRegex } from '@/lib/utils/regex';
+import { Average } from '@/lib/utils/reusableFunctions/average';
+import { dataFiltered } from '@/lib/utils/reusableFunctions/filterDataTerritories';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './themes.module.scss';
-
-const average = (array: number[]) =>
-  array.reduce((a: number, b: number) => a + b) / array.length;
 
 export const DensiteBati = ({
   carteCommunes
@@ -32,7 +33,7 @@ export const DensiteBati = ({
   const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
-
+  const exportData = IndicatorTransformations.inconfort_thermique.densiteBati(dataFiltered(type, code, libelle, carteCommunes));
   const communesMap = carteCommunes
     .map(CommunesIndicateursMapper)
     .filter((e) => !isNaN(e.properties.densite_bati));
@@ -43,14 +44,14 @@ export const DensiteBati = ({
       : communesMap;
 
   const densiteTerritoire = type === 'ept' && eptRegex.test(libelle) && carteTerritoire.length ?
-    average(carteTerritoire.filter((e => e.properties.ept === libelle)).map((e) => e.properties.densite_bati))
+    Average(carteTerritoire.filter((e => e.properties.ept === libelle)).map((e) => e.properties.densite_bati))
     : type === 'commune'
       ? communesMap.find((obj) => obj.properties['code_geographique'] === code)?.properties.densite_bati
       : carteTerritoire.length
-        ? average(carteTerritoire.map((e) => e.properties.densite_bati))
+        ? Average(carteTerritoire.map((e) => e.properties.densite_bati))
         : undefined;
 
-  const densiteTerritoireSup = carteTerritoire.length ?? average(communesMap.map((e) => e.properties.densite_bati));
+  const densiteTerritoireSup = carteTerritoire.length ?? Average(communesMap.map((e) => e.properties.densite_bati));
 
   useEffect(() => {
     void (async () => {
@@ -71,6 +72,15 @@ export const DensiteBati = ({
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <div className="w-2/5">
+            <div className="mb-4">
+              <ExportButton
+                data={exportData}
+                baseName="densite_bati"
+                type={type}
+                libelle={libelle}
+                sheetName="Densité du bâti"
+              />
+            </div>
             <div className={styles.explicationWrapper}>
               {communesMap.length && densiteTerritoire ? (
                 <>

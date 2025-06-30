@@ -13,9 +13,11 @@ import {
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
 import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
+import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
+
 
 interface Props {
   data: Array<{
@@ -79,15 +81,6 @@ const allComps = [
   },
 ];
 
-// import * as XLSX from 'xlsx';
-
-// function exportToXLSX(data: any, filename = 'export.xlsx') {
-//   const worksheet = XLSX.utils.json_to_sheet(data);
-//   const workbook = XLSX.utils.book_new();
-//   XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
-//   XLSX.writeFile(workbook, filename);
-// }
-
 const AgricultureComp = ({
   data,
   carteCommunes,
@@ -95,6 +88,10 @@ const AgricultureComp = ({
   surfacesAgricoles,
   agricultureBio
 }: Props) => {
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const [selectedTabId, setSelectedTabId] = useState('Superficies irriguées');
   const [selectedSubTab, setSelectedSubTab] = useState('Superficies irriguées');
   const { isDark } = useIsDark();
@@ -123,7 +120,6 @@ const AgricultureComp = ({
 
   return (
     <div className="w-full">
-      {/* <button onClick={() => exportToXLSX(carteCommunes)}>Exporter XLSX</button> */}
       <Tabs
         selectedTabId={selectedTabId}
         tabs={[
