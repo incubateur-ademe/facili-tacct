@@ -7,7 +7,8 @@ import { prisma } from '../redis';
 
 export const GetAgricultureBio = async (
   libelle: string,
-  type: string
+  type: string,
+  code: string
 ): Promise<AgricultureBio[]> => {
   const column = ColumnLibelleCheck(type);
   const timeoutPromise = new Promise<[]>((resolve) =>
@@ -25,15 +26,22 @@ export const GetAgricultureBio = async (
       else {
         if (type === 'pnr') {
           return [];
+        } else if (type === 'commune') {
+          const epci = await prisma.collectivites_searchbar.findFirst({
+            select: {
+              epci: true
+            },
+            where: {
+              code_geographique: code,
+            }
+          }); 
+          const value = await prisma.agriculture_bio.findMany({
+            where: {
+              epci: epci?.epci as string
+            }
+          });
+          return value as AgricultureBio[];
         } else {
-          // const value = await prisma.agriculture_bio_with_territoire.findMany({
-          //   where: {
-          //     AND: [
-          //       { epci: { not: null } },
-          //       { [column]: libelle }
-          //     ]
-          //   }
-          // });
           const territoire = await prisma.collectivites_searchbar.findMany({
             select: {
               epci: true

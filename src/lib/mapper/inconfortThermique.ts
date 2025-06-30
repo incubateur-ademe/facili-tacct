@@ -76,6 +76,8 @@ export const grandAgeIsolementMapper = (
   libelle_pnr: grandAgeIsolement.libelle_pnr,
   ept: grandAgeIsolement.ept,
   libelle_petr: grandAgeIsolement.libelle_petr,
+  departement: grandAgeIsolement.departement,
+  libelle_departement: grandAgeIsolement.libelle_departement,
   P20_POP80P: Number(grandAgeIsolement['P20_POP80P']),
   P20_POP80P_PSEUL: Number(grandAgeIsolement['P20_POP80P_PSEUL']),
   under_4_sum_1968: Number(grandAgeIsolement.under_4_sum_1968),

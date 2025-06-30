@@ -33,63 +33,69 @@ export const GetCommunes = async (
       else {
         if (type === 'commune') {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
-          SELECT 
-          epci, 
-          libelle_epci,
-          libelle_geographique,
-          code_geographique,
-          ept,
-          libelle_petr,
-          code_pnr,
-          libelle_pnr,
-          departement,
-          coordinates, 
-          precarite_logement,
-          densite_bati,
-          surface,
-          ST_AsGeoJSON(geometry) geometry 
-          FROM postgis."communes_drom" 
-          WHERE epci = (
-            SELECT epci FROM postgis."communes_drom" WHERE code_geographique = ${code} LIMIT 1
-            );`;
+            SELECT 
+            epci, 
+            libelle_epci,
+            libelle_geographique,
+            code_geographique,
+            ept,
+            libelle_petr,
+            code_pnr,
+            libelle_pnr,
+            departement,
+            libelle_departement,
+            region,
+            coordinates, 
+            precarite_logement,
+            densite_bati,
+            surface,
+            ST_AsGeoJSON(geometry) geometry 
+            FROM postgis."communes_drom" 
+            WHERE epci = (
+              SELECT epci FROM postgis."communes_drom" WHERE code_geographique = ${code} LIMIT 1
+              );`;
           return value;
         } else if (type === 'ept' && eptRegex.test(libelle)) {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
-        SELECT 
-          epci, 
-          libelle_epci,
-          libelle_geographique,
-          code_geographique,
-          ept,
-          libelle_petr,
-          code_pnr,
-          libelle_pnr,
-          departement,
-          coordinates, 
-          precarite_logement,
-          densite_bati,
-          surface,
-          ST_AsGeoJSON(geometry) geometry 
-          FROM postgis."communes_drom" WHERE epci='200054781';`;
+            SELECT 
+              epci, 
+              libelle_epci,
+              libelle_geographique,
+              code_geographique,
+              ept,
+              libelle_petr,
+              code_pnr,
+              libelle_pnr,
+              departement,
+              libelle_departement,
+              region,
+              coordinates, 
+              precarite_logement,
+              densite_bati,
+              surface,
+              ST_AsGeoJSON(geometry) geometry 
+              FROM postgis."communes_drom" WHERE epci='200054781';`;
           return value;
         } else if (type === 'epci' && !eptRegex.test(libelle)) {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
-        SELECT 
-          epci, 
-          libelle_epci,
-          libelle_geographique,
-          code_geographique,
-          ept,
-          libelle_petr,
-          code_pnr,
-          libelle_pnr,
-          departement,
-          coordinates, 
-          precarite_logement,
-          densite_bati,
-          surface,
-          ST_AsGeoJSON(geometry) geometry 
-          FROM postgis."communes_drom" WHERE epci=${code};`;
+            SELECT 
+            epci, 
+            libelle_epci,
+            libelle_geographique,
+            code_geographique,
+            ept,
+            libelle_petr,
+            code_pnr,
+            libelle_pnr,
+            departement,
+            libelle_departement,
+            region,
+            coordinates, 
+            precarite_logement,
+            densite_bati,
+            surface,
+            ST_AsGeoJSON(geometry) geometry 
+            FROM postgis."communes_drom" WHERE epci=${code};`;
           return value;
         } else if (type === 'pnr') {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
@@ -103,6 +109,8 @@ export const GetCommunes = async (
             code_pnr,
             libelle_pnr,
             departement,
+            libelle_departement,
+            region,
             coordinates, 
             precarite_logement,
             densite_bati,
@@ -112,41 +120,45 @@ export const GetCommunes = async (
           return value;
         } else if (type === 'petr') {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
-        SELECT 
-          epci, 
-          libelle_epci,
-          libelle_geographique,
-          code_geographique,
-          ept,
-          libelle_petr,
-          code_pnr,
-          libelle_pnr,
-          departement,
-          coordinates, 
-          precarite_logement,
-          densite_bati,
-          surface,
-          ST_AsGeoJSON(geometry) geometry 
-          FROM postgis."communes_drom" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
+            SELECT 
+              epci, 
+              libelle_epci,
+              libelle_geographique,
+              code_geographique,
+              ept,
+              libelle_petr,
+              code_pnr,
+              libelle_pnr,
+              departement,
+              libelle_departement,
+              region,
+              coordinates, 
+              precarite_logement,
+              densite_bati,
+              surface,
+              ST_AsGeoJSON(geometry) geometry 
+              FROM postgis."communes_drom" WHERE libelle_petr IS NOT NULL AND libelle_petr=${libelle};`;
           return value;
         } else {
           const value = await prisma.$queryRaw<CarteCommunes[]>`
-        SELECT 
-          epci, 
-          libelle_epci,
-          libelle_geographique,
-          code_geographique,
-          ept,
-          libelle_petr,
-          code_pnr,
-          libelle_pnr,
-          departement,
-          coordinates,
-          precarite_logement,
-          densite_bati,
-          surface,
-          ST_AsGeoJSON(geometry) geometry 
-          FROM postgis."communes_drom" WHERE departement=${code};`;
+            SELECT 
+              epci, 
+              libelle_epci,
+              libelle_geographique,
+              code_geographique,
+              ept,
+              libelle_petr,
+              code_pnr,
+              libelle_pnr,
+              departement,
+              libelle_departement,
+              region,
+              coordinates,
+              precarite_logement,
+              densite_bati,
+              surface,
+              ST_AsGeoJSON(geometry) geometry 
+              FROM postgis."communes_drom" WHERE departement=${code};`;
           return value;
         }
       }
