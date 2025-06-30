@@ -14,7 +14,7 @@ export const GetArretesCatnat = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 2000)
+    }, 3000)
   );
   const dbQuery = (async () => {
     try {
