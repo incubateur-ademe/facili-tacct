@@ -1,6 +1,6 @@
 import { Any } from "../types";
 
-export const dataFiltered = (
+export const FilterDataTerritory = (
   type: string,
   code: string,
   libelle: string,
