@@ -16,7 +16,7 @@ import { densiteBatiTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { eptRegex } from '@/lib/utils/regex';
 import { Average } from '@/lib/utils/reusableFunctions/average';
-import { dataFiltered } from '@/lib/utils/reusableFunctions/filterDataTerritories';
+import { FilterDataTerritory } from '@/lib/utils/reusableFunctions/filterDataTerritories';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -33,7 +33,7 @@ export const DensiteBati = ({
   const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
-  const exportData = IndicatorTransformations.inconfort_thermique.densiteBati(dataFiltered(type, code, libelle, carteCommunes));
+  const exportData = IndicatorTransformations.inconfort_thermique.densiteBati(FilterDataTerritory(type, code, libelle, carteCommunes));
   const communesMap = carteCommunes
     .map(CommunesIndicateursMapper)
     .filter((e) => !isNaN(e.properties.densite_bati));

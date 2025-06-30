@@ -120,11 +120,10 @@ export const GetRga = async (
         const value = await prisma.$queryRaw`
           SELECT *
           FROM "databases"."rga"
-          WHERE departement = (
+          WHERE departement IN (
             SELECT departement
             FROM "databases"."rga"
             WHERE epci = ${code}
-            LIMIT 1
           )
         `;
         return value as RGAdb[];
