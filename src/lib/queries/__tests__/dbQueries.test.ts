@@ -8,7 +8,7 @@ jest.setTimeout(60000); // Increase timeout for heavy queries
 
 describe('Integration: query functions for biodiversite', () => {
   it('GetAgricultureBio returns expected results for EPCI 200054781', async () => {
-    const result = await biodiversite.GetAgricultureBio('Métropole du Grand Paris', 'epci');
+    const result = await biodiversite.GetAgricultureBio('Métropole du Grand Paris', 'epci');//200054781
     expect(Array.isArray(result)).toBe(true);
     expect(result.length).toBe(5);
     expect(result[0]).toHaveProperty('LIBELLE_SOUS_CHAMP', 'Surface certifiée');
@@ -69,7 +69,6 @@ describe('Integration: query functions for inconfortThermique', () => {
     const result = await inconfortThermique.GetInconfortThermique('200070555', 'Communauté de communes de la Veyle', 'epci');
     expect(Array.isArray(result)).toBe(true);
     expect(result.length).toBe(391);
-    console.log(Object.keys(result[0]))
     // S'assurer qu'aucune colonne ne commence par un chiffre (bug entre prisma et postgres)
     expect(Object.keys(result[0]).every(key => !/^\d/.test(key))).toBe(true);
   });

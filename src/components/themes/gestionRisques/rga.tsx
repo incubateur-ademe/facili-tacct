@@ -14,6 +14,7 @@ import { rgaTooltipText } from '@/lib/tooltipTexts';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { Round } from '@/lib/utils/reusableFunctions/round';
+import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { RGAText } from '../inconfortThermique/staticTexts';
@@ -36,6 +37,11 @@ export const RGA = ({
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>((type === "commune" || type === "epci") ? 'Comparaison' : "Répartition");
+  const rgaFilteredByTerritory = type === "commune" ?
+    rga.filter(item => item.code_geographique === code) :
+    type === "epci" ?
+      rga.filter(item => item.epci === code) :
+      rga;
   const carteCommunesEnriched = carteCommunes.map(CommunesIndicateursMapper);
   const communesMap = carteCommunesEnriched.map((el) => {
     return {
@@ -61,9 +67,28 @@ export const RGA = ({
     })()
   }, [code]);
 
-  const partMoyenFort = rga.length > 0 ? Round(Average(rga.map((el) => el.part_alea_moyen_fort_commune)), 1) : 0;
-  const nbLogementsMoyenFort = rga.length > 0 ? rga.map((el) => el.nb_logement_alea_moyen_fort).reduce((acc, value) => acc + (value ?? 0), 0) : 0;
-  const partMoyenFortApres1975 = rga.length > 0 ? Round(Average(rga.map((el) => el.part_logement_alea_moyen_fort_apres_1975)), 1) : 0;
+  console.log("rga", rga);
+
+  const partMoyenFort = rgaFilteredByTerritory.length > 0
+    ? Round(Average(rgaFilteredByTerritory.map((el) => el.part_alea_moyen_fort_commune)), 1)
+        : 0;
+  const nbLogementsMoyenFort = rgaFilteredByTerritory.length > 0 
+    ? Sum(rgaFilteredByTerritory.map((el) => el.nb_logement_alea_moyen_fort))
+        : 0;
+  const partMoyenFortApres1975 = rgaFilteredByTerritory.length > 0
+    ? Round(
+      100 * Sum(
+        rgaFilteredByTerritory.map(
+          (el) => el.nb_logement_alea_moyen_fort_apres_1975
+        )
+      ) / Sum(
+        rgaFilteredByTerritory.map(
+          (el) => el.nb_logement_alea_moyen_fort
+        )
+      ), 1) 
+        : 0;
+
+  console.log("test", partMoyenFortApres1975)
 
   const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
   const precipitation = patch4
