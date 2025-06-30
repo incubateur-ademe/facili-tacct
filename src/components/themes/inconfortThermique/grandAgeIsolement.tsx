@@ -96,11 +96,21 @@ export const GrandAgeIsolement = (props: {
         : type === 'epci' && !eptRegex.test(libelle)
           ? grandAgeIsolementMapped.filter((e) => e.epci === code)
           : grandAgeIsolementMapped;
-  const exportData = IndicatorTransformations.inconfort_thermique.GrandAgeIsolement(grandAgeIsolementTerritoire);
+  const territoireSup = type === "epci" 
+    ? grandAgeIsolementMapped[0].departement 
+    : type === "commune"
+      ? grandAgeIsolementMapped.find((e) => e.code_geographique === code)?.epci
+      : [];
+  const filterTerritoireSup = type === "epci" 
+    ? grandAgeIsolementMapped.filter((e) => e.departement === territoireSup)
+    : type === "commune"
+      ? grandAgeIsolementMapped.filter((e) => e.epci === territoireSup)
+      : grandAgeIsolementMapped;
+
   const over_80_2020_percent_territoire_sup = (
-    (100 * sumProperty(grandAgeIsolementMapped, 'over_80_sum_2020')) /
-    (sumProperty(grandAgeIsolementMapped, 'to_80_sum_2020') +
-      sumProperty(grandAgeIsolementMapped, 'under_4_sum_2020'))
+    (100 * sumProperty(filterTerritoireSup, 'over_80_sum_2020')) /
+    (sumProperty(filterTerritoireSup, 'to_80_sum_2020') +
+      sumProperty(filterTerritoireSup, 'under_4_sum_2020'))
   ).toFixed(2);
 
   const yData = {
@@ -162,6 +172,7 @@ export const GrandAgeIsolement = (props: {
   }, [code]);
 
   const fortesChaleurs = patch4 ? AlgoPatch4(patch4, 'fortes_chaleurs') : "null";
+  const exportData = IndicatorTransformations.inconfort_thermique.GrandAgeIsolement(grandAgeIsolementTerritoire);
 
   return (
     <>

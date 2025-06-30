@@ -43,7 +43,6 @@ export const GetInconfortThermique = async (
             WHERE code_geographique = ${code}
             LIMIT 1
           )
-          LIMIT 200
         `;
           return value as InconfortThermique[];
         } else if (type === 'petr') {
@@ -71,16 +70,22 @@ export const GetInconfortThermique = async (
           });
           return value;
         } else if (type === 'epci') {
-          const departement = await prisma.inconfort_thermique.findFirst({
+          // Get tous les départements associés à l'epci
+          const departements = await prisma.inconfort_thermique.findMany({
+            select: {
+              departement: true
+            },
             where: {
-              epci: code
-            }
+              [column]: code
+            },
+            distinct: ['departement']
           });
           const value = await prisma.inconfort_thermique.findMany({
             where: {
-              departement: departement?.departement
+              departement: {
+                in: departements.map((d) => d.departement) as string[]
+              }
             },
-            take: 750
           });
           return value;
         } else return [];
