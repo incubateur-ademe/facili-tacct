@@ -8,6 +8,7 @@ import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
+import { ExportButton } from '@/components/utils/ExportButton';
 import { grandAgeIsolementMapper } from '@/lib/mapper/inconfortThermique';
 import {
   DataGrandAge,
@@ -15,6 +16,7 @@ import {
   Patch4
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { IndicatorTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { eptRegex, numberWithSpacesRegex } from '@/lib/utils/regex';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -94,7 +96,7 @@ export const GrandAgeIsolement = (props: {
         : type === 'epci' && !eptRegex.test(libelle)
           ? grandAgeIsolementMapped.filter((e) => e.epci === code)
           : grandAgeIsolementMapped;
-
+  const exportData = IndicatorTransformations.inconfort_thermique.GrandAgeIsolement(grandAgeIsolementTerritoire);
   const over_80_2020_percent_territoire_sup = (
     (100 * sumProperty(grandAgeIsolementMapped, 'over_80_sum_2020')) /
     (sumProperty(grandAgeIsolementMapped, 'to_80_sum_2020') +
@@ -166,6 +168,15 @@ export const GrandAgeIsolement = (props: {
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <div className={!Object.values(yData).slice(0, -2).includes('NaN') ? 'w-2/5' : 'w-1/2'}>
+            <div className="mb-4">
+              <ExportButton
+                data={exportData}
+                baseName="grand_age"
+                type={type}
+                libelle={libelle}
+                sheetName="Grand âge"
+              />
+            </div>
             <div className={styles.explicationWrapper}>
               {
                 !Object.values(yData).slice(0, -2).includes('NaN') && (

@@ -8,10 +8,12 @@ import { vegetalisationLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
+import { ExportButton } from '@/components/utils/ExportButton';
 import { VegetalisationDto } from '@/lib/dto';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { CLCTerritoires, InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { IndicatorTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
@@ -55,7 +57,7 @@ const Vegetalisation = (props: {
         : type === 'epci' && !eptRegex.test(libelle)
           ? vegetalisationMapped.filter((e) => e.epci === code)
           : vegetalisationMapped;
-
+  const exportData = IndicatorTransformations.inconfort_thermique.vegetalisation(vegetalisationTerritoire);
   const foretSum = sumProperty(
     vegetalisationTerritoire,
     'clc_3_foret_semiNaturel'
@@ -80,6 +82,15 @@ const Vegetalisation = (props: {
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <div className="w-2/5">
+            <div className="mb-4">
+              <ExportButton
+                data={exportData}
+                baseName="vegetalisation"
+                type={type}
+                libelle={libelle}
+                sheetName="Végétalisation"
+              />
+            </div>
             <div className={styles.explicationWrapper}>
               {isNaN(foretPercent) ? "" :
                 foretPercent == Infinity ? (

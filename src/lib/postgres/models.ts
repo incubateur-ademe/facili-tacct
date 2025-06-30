@@ -174,6 +174,7 @@ export type CarteCommunes = {
   libelle_epci: string;
   departement: string;
   libelle_departement: string;
+  region: number;
   ept: string;
   libelle_petr: string;
   code_pnr: string;

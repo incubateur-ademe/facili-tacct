@@ -15,7 +15,7 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
   const theme = themes.biodiversite;
   const { code, libelle, type } = await props.searchParams;
   const carteCommunes = await GetCommunes(code, libelle, type);
-  const dbAgricultureBio = await GetAgricultureBio(libelle, type);
+  const dbAgricultureBio = await GetAgricultureBio(libelle, type, code);
   const dbConsommationNAF = await GetConsommationNAF(code, libelle, type);
   const dbAOT40 = await GetAOT40();
   const dbEtatCoursDeau = await GetEtatCoursDeau(code, libelle, type);

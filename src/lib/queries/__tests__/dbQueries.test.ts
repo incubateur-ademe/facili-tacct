@@ -8,7 +8,7 @@ jest.setTimeout(60000); // Increase timeout for heavy queries
 
 describe('Integration: query functions for biodiversite', () => {
   it('GetAgricultureBio returns expected results for EPCI 200054781', async () => {
-    const result = await biodiversite.GetAgricultureBio('Métropole du Grand Paris', 'epci');//200054781
+    const result = await biodiversite.GetAgricultureBio('Métropole du Grand Paris', 'epci', "200054781");
     expect(Array.isArray(result)).toBe(true);
     expect(result.length).toBe(5);
     expect(result[0]).toHaveProperty('LIBELLE_SOUS_CHAMP', 'Surface certifiée');

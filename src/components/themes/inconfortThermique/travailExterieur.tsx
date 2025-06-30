@@ -47,7 +47,7 @@ export const TravailExterieur = (props: {
         : type === 'epci' && !eptRegex.test(libelle)
           ? travailExterieurMapped.filter((e) => e.epci === code)
           : travailExterieurMapped;
-
+  const exportData = travailExterieurTerritoire
   const sums = {
     sumAgriculture: sumProperty(travailExterieurTerritoire, 'NA5AZ_sum'),
     sumIndustries: sumProperty(travailExterieurTerritoire, 'NA5BE_sum'),
