@@ -42,6 +42,10 @@ export const RGA = ({
     type === "epci" ?
       rga.filter(item => item.epci === code) :
       rga;
+
+  console.log("length rgaFilteredByTerritory", rgaFilteredByTerritory.length);
+  console.log("length rga", rga);
+
   const carteCommunesEnriched = carteCommunes.map(CommunesIndicateursMapper);
   const communesMap = carteCommunesEnriched.map((el) => {
     return {

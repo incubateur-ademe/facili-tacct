@@ -10,6 +10,7 @@ import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
 import { surfacesIrrigueesTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorTransformations } from '@/lib/utils/export/environmentalDataExport';
+import { FilterDataTerritory } from '@/lib/utils/reusableFunctions/filterDataTerritories';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { SurfacesIrrigueesText } from '../inconfortThermique/staticTexts';
@@ -35,19 +36,7 @@ export const SurfacesIrriguees = ({
     };
   });
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
-  const carteCommunesFiltered = type === "commune" ?
-    carteCommunes.filter((el) => el.code_geographique === code)
-    : type === "epci" ?
-      carteCommunes.filter((el) => el.epci === code)
-      : type === "ept" ?
-        carteCommunes.filter((el) => el.ept === code)
-        : type === "petr" ?
-          carteCommunes.filter((el) => el.libelle_petr === libelle)
-          : type === "pnr" ?
-            carteCommunes.filter((el) => el.code_pnr === code)
-            : type === "departement" ?
-              carteCommunes.filter((el) => el.departement === code)
-              : carteCommunes;
+  const carteCommunesFiltered = FilterDataTerritory(type, code, libelle, carteCommunes);
   const exportData = IndicatorTransformations.agriculture.surfacesIrriguees(carteCommunesFiltered);
 
   const surfaceTerritoire = type === "commune" ?

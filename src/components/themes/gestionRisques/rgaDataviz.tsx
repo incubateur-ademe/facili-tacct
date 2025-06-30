@@ -8,7 +8,6 @@ import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import SubTabs from '@/components/SubTabs';
 import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
 import { RGAdb } from '@/lib/postgres/models';
-import { CheckMultipleDepartementsInEpci } from "@/lib/queries/checks";
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { BarDatum } from '@nivo/bar';
 import Image from 'next/image';
@@ -130,23 +129,27 @@ const RgaDataViz = (props: Props) => {
   const type = searchParams.get('type')!;
   const code = searchParams.get('code')!;
   const [multipleDepartements, setMultipleDepartements] = useState<string[]>([]);
+
+  // options de filtre pour les départements (plusieurs départements possibles pour un EPCI)
+  const departement = type === "epci" ? rga[0]?.libelle_departement : "";
+  const rgaTerritoireSup = type === "epci" ? rga.filter(item => item.libelle_departement === departement) : rga
   const rgaFilteredByTerritory = type === "commune" ?
     rga.filter(item => item.code_geographique === code) :
     type === "epci" ?
       rga.filter(item => item.epci === code) :
       rga;
+
+  // data pour les graphes    
   const evolutionRga = barChartRepartition(rgaFilteredByTerritory);
-  const repartitionRga = barChartComparaison(rga, code, type);
-  const departement = type === "epci" ? rga[0]?.libelle_departement : "";
+  const repartitionRga = barChartComparaison(rgaTerritoireSup, code, type);
 
   useEffect(() => {
-    void (async () => {
-      if (type === "epci" && code) {
-        const value = await CheckMultipleDepartementsInEpci(code, type);
-        setMultipleDepartements(value as string[]);
-      }
-    })();
-  }, [type, code]);
+    if (type === "epci" && code) {
+      const departements = rga.map(item => item.departement);
+      const uniqueDepartements = Array.from(new Set(departements));
+      setMultipleDepartements(uniqueDepartements);
+    }
+  }, [type, code, rga]);
 
   return (
     <div className={styles.graphWrapper}>
