@@ -67,8 +67,6 @@ export const RGA = ({
     })()
   }, [code]);
 
-  console.log("rga", rga);
-
   const partMoyenFort = rgaFilteredByTerritory.length > 0
     ? Round(Average(rgaFilteredByTerritory.map((el) => el.part_alea_moyen_fort_commune)), 1)
         : 0;
@@ -87,8 +85,6 @@ export const RGA = ({
         )
       ), 1) 
         : 0;
-
-  console.log("test", partMoyenFortApres1975)
 
   const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
   const precipitation = patch4
