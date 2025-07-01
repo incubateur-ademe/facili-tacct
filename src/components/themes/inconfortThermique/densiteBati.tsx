@@ -1,5 +1,6 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { densiteBatiLegend } from '@/components/maps/legends/datavizLegends';
@@ -8,12 +9,11 @@ import { Map } from '@/components/maps/map';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
-import { ExportButton } from '@/components/utils/ExportButton';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { densiteBatiTooltipText } from '@/lib/tooltipTexts';
-import { IndicatorTransformations } from '@/lib/utils/export/environmentalDataExport';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { eptRegex } from '@/lib/utils/regex';
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { FilterDataTerritory } from '@/lib/utils/reusableFunctions/filterDataTerritories';
@@ -33,7 +33,7 @@ export const DensiteBati = ({
   const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
-  const exportData = IndicatorTransformations.inconfort_thermique.densiteBati(FilterDataTerritory(type, code, libelle, carteCommunes));
+  const exportData = IndicatorExportTransformations.inconfort_thermique.densiteBati(FilterDataTerritory(type, code, libelle, carteCommunes));
   const communesMap = carteCommunes
     .map(CommunesIndicateursMapper)
     .filter((e) => !isNaN(e.properties.densite_bati));

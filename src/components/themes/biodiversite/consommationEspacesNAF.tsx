@@ -1,9 +1,11 @@
 'use client';
 
+import { ExportButton } from '@/components/exports/ExportButton';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
 import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { ConsommationEspacesNAFBiodiversiteText } from '../inconfortThermique/staticTexts';
@@ -33,10 +35,20 @@ export const ConsommationEspacesNAF = (props: {
     ? consommationNAF.filter((item) => item.code_geographique === code)[0]
       ?.naf09art23
     : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
+  const exportData = IndicatorExportTransformations.biodiversite.EspacesNaf(consommationNAF);
 
   return (
     <div className={styles.container}>
       <div className={carteCommunes.length !== 0 ? "w-2/5" : "w-1/2"}>
+        <div className="mb-4">
+          <ExportButton
+            data={exportData}
+            baseName="consommation_espaces_naf"
+            type={type}
+            libelle={libelle}
+            sheetName="Espaces NAF"
+          />
+        </div>
         <div className={styles.explicationWrapper}>
           {
             sumNaf && sumNaf !== 0 ? (

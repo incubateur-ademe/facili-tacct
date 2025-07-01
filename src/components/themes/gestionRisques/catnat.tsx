@@ -3,6 +3,7 @@
 import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import DataNotFound from '@/assets/images/zero_data_found.png';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
@@ -135,9 +136,17 @@ export const Catnat = (props: {
       {
         !isLoadingPatch4 ?
           <>
-
             <div className={styles.container}>
               <div className={gestionRisques.length !== 0 ? "w-1/3" : "w-1/2"}>
+                <div className="mb-4">
+                  <ExportButton
+                    data={gestionRisques}
+                    baseName="arretes_catnat"
+                    type={type}
+                    libelle={libelle}
+                    sheetName="Arrêtés CatNat"
+                  />
+                </div>
                 <div className={styles.explicationWrapper}>
                   {gestionRisques.length !== 0 ? (
                     <>

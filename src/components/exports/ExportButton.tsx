@@ -1,5 +1,5 @@
 "use client";
-import { exportToXLSX } from '@/lib/utils/export/exportData';
+import { exportToXLSX } from '@/lib/utils/export/exportXlsx';
 import { Button } from '@codegouvfr/react-dsfr/Button';
 import { useState } from 'react';
 
@@ -29,7 +29,6 @@ export const ExportButton = ({
       console.log('Aucune donnée à exporter');
       return;
     }
-
     setIsExporting(true);
     try {
       exportToXLSX(data, baseName, type, libelle, sheetName);
@@ -43,6 +42,10 @@ export const ExportButton = ({
   return (
     <Button
       onClick={handleExport}
+      disabled={isExporting}
+      style={{ 
+        cursor: isExporting ? 'wait' : 'pointer',
+      }}
     >
       {isExporting ? 'Export en cours...' : children}
     </Button>

@@ -1,6 +1,7 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { etatCoursDeauLegends } from '@/components/maps/legends/datavizLegends';
@@ -19,6 +20,7 @@ import {
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
 import { etatCoursDeauTooltipTextEau } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { EtatCoursEauRessourcesEauText } from '../inconfortThermique/staticTexts';
@@ -62,13 +64,23 @@ const EtatQualiteCoursDeau = (props: {
   const precipitation = patch4
     ? AlgoPatch4(patch4, 'fortes_precipitations')
     : undefined;
+  const exportData = etatCoursDeau ? IndicatorExportTransformations.ressourcesEau.EtatCoursEau(etatCoursDeau) : [];
 
   return (
     <>
       {
-        !isLoadingPatch4 && etatCoursDeau  ?
+        !isLoadingPatch4 && etatCoursDeau ?
           <div className={styles.container}>
             <div className={etatCoursDeau?.length ? "w-5/12" : "w-1/2"}>
+              <div className="mb-4">
+                <ExportButton
+                  data={exportData}
+                  baseName="etat_cours_deau"
+                  type={type}
+                  libelle={libelle}
+                  sheetName="État des cours d'eau"
+                />
+              </div>
               <div className={styles.explicationWrapper}>
                 <p>
                   La carte ci-contre reflète l’état écologique des cours d’eau

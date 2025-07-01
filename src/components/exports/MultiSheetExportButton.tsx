@@ -3,27 +3,32 @@ import { exportMultipleSheetToXLSX } from '@/lib/utils/export/exportXlsx';
 import { Button } from '@codegouvfr/react-dsfr/Button';
 import { useEffect, useState } from 'react';
 
-interface FetchAndExportButtonProps<T extends Record<string, unknown[]>> {
-  fetchFunction: () => Promise<T>;
+type ExportDataRow = Record<string, string | number | boolean | null | bigint | undefined>;
+
+interface SheetData {
+  sheetName: string;
+  data: ExportDataRow[];
+}
+
+interface MultiSheetExportButtonProps {
+  sheetsData: SheetData[];
   baseName: string;
   type: string;
   libelle: string;
   children?: React.ReactNode;
 }
 
-export const FetchAndExportButton = <T extends Record<string, unknown[]>>({
-  fetchFunction,
+export const MultiSheetExportButton = ({
+  sheetsData,
   baseName,
   type,
   libelle,
-  children = 'Télécharger les données',
-}: FetchAndExportButtonProps<T>) => {
-  const [isLoading, setIsLoading] = useState(false);
+  children = 'Exporter les données',
+}: MultiSheetExportButtonProps) => {
+  const [isExporting, setIsExporting] = useState(false);
 
   useEffect(() => {
-    // ajout d'un overlay pour éviter les interactions pendant le chargement
-    // et pour afficher un curseur de chargement
-    if (isLoading) {
+    if (isExporting) {
       document.body.style.setProperty('cursor', 'wait', 'important');
       const overlay = document.createElement('div');
       overlay.id = 'export-loading-overlay';
@@ -56,33 +61,38 @@ export const FetchAndExportButton = <T extends Record<string, unknown[]>>({
       }
       document.body.classList.remove('export-loading');
     };
-  }, [isLoading]);
+  }, [isExporting]);
 
-  const handleFetchAndExport = async () => {
-    setIsLoading(true);
+  const handleExport = async () => {
+    const hasData = sheetsData.some(sheet => sheet.data && sheet.data.length > 0);
+    if (!hasData) {
+      console.log('Aucune donnée à exporter');
+      return;
+    }
+
+    setIsExporting(true);
     try {
-      const rawData = await fetchFunction();
-      // Check si la donnée existe
-      const hasData = Object.values(rawData).some(dataArray => dataArray && dataArray.length > 0);
-      if (!hasData) {
-        console.log('Aucune donnée à exporter');
-        return;
-      }
-      // Export XLSX avec plusieurs feuilles
-      exportMultipleSheetToXLSX(rawData, baseName, type, libelle);
+      const dataForExport: Record<string, ExportDataRow[]> = {};
+      sheetsData.forEach(sheet => {
+        if (sheet.data && sheet.data.length > 0) {
+          dataForExport[sheet.sheetName] = sheet.data;
+        }
+      });
+
+      exportMultipleSheetToXLSX(dataForExport, baseName, type, libelle);
     } catch (error) {
-      console.error('Erreur lors de la récupération et de l\'export des données:', error);
+      console.error('Export failed:', error);
     } finally {
-      setIsLoading(false);
+      setIsExporting(false);
     }
   };
 
   return (
     <Button
-      onClick={handleFetchAndExport}
-      disabled={isLoading}
+      onClick={handleExport}
+      disabled={isExporting}
     >
-      {isLoading ? 'Téléchargement en cours...' : children}
+      {isExporting ? 'Export en cours...' : children}
     </Button>
   );
 };

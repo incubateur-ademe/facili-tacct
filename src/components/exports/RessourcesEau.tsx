@@ -1,27 +1,27 @@
 'use client';
 
 import { FetchAndExportButton } from '@/components/exports/FetchAndExportButton';
-import { fetchGestionRisquesForExport } from '@/lib/queries/exports/gestionRisques';
+import { fetchRessourcesEauForExport } from '@/lib/queries/exports/ressourcesEau';
 
-export const GestionRisquesExport = (
-  {
-    code,
-    libelle,
-    type
+export const RessourcesEauExport = (
+  { 
+    code, 
+    libelle, 
+    type 
   }: {
     code: string;
     libelle: string;
     type: string;
-  }) => {
+  } ) => {
   return (
     <div className="mb-4">
       <FetchAndExportButton
-        fetchFunction={() => fetchGestionRisquesForExport(code, libelle, type)}
-        baseName="gestion_risques"
+        fetchFunction={() => fetchRessourcesEauForExport(code, libelle, type)}
+        baseName="ressources_eau"
         type={type}
         libelle={libelle}
       >
-        Export gestion des risques
+        Export ressources en eau
       </FetchAndExportButton>
     </div>
   );

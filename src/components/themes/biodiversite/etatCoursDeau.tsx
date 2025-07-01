@@ -1,6 +1,7 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { MultiSheetExportButton } from '@/components/exports/MultiSheetExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import {
@@ -25,6 +26,7 @@ import {
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { etatCoursDeauTooltipTextBiodiv } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { EtatsCoursEauBiodiversiteText } from '../inconfortThermique/staticTexts';
@@ -63,12 +65,33 @@ const EtatQualiteCoursDeau = (props: {
     ? AlgoPatch4(patch4, 'fortes_precipitations')
     : undefined;
 
+  const exportData = [
+    {
+      sheetName: 'État des cours d\'eau',
+      data: IndicatorExportTransformations.ressourcesEau.EtatCoursEau(etatCoursDeau)
+    },
+    {
+      sheetName: 'Qualité sites de baignade',
+      data: IndicatorExportTransformations.ressourcesEau.QualiteSitesBaignade(qualiteEauxBaignade)
+    }
+  ];
+
   return (
     <>
       {
         !isLoadingPatch4 ?
           <div className={styles.container}>
             <div className={(etatCoursDeau.length || qualiteEauxBaignade.length) ? "w-5/12" : "w-1/2"}>
+            <div className="mb-4">
+              <MultiSheetExportButton
+                sheetsData={exportData}
+                baseName="etat_ecologique_cours_deau"
+                type={type}
+                libelle={libelle}
+              >
+                Exporter les données
+              </MultiSheetExportButton>
+            </div>
               <div className={styles.explicationWrapper}>
                 <p>
                   La biodiversité en eau douce est particulièrement menacée. La
