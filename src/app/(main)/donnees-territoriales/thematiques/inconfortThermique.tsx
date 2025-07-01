@@ -1,4 +1,4 @@
-import { ExportButton } from '@/components/utils/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { NoticeComp } from '@/dsfr/base/Notice';
 import { GetInconfortThermique } from '@/lib/queries/databases/inconfortThermique';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';

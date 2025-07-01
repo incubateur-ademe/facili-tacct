@@ -3,12 +3,12 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { LineChart1 } from '@/components/charts/inconfortThermique/lineChartGrandAge';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
-import { ExportButton } from '@/components/utils/ExportButton';
 import { grandAgeIsolementMapper } from '@/lib/mapper/inconfortThermique';
 import {
   DataGrandAge,
@@ -16,7 +16,7 @@ import {
   Patch4
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { IndicatorTransformations } from '@/lib/utils/export/environmentalDataExport';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { eptRegex, numberWithSpacesRegex } from '@/lib/utils/regex';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -172,7 +172,7 @@ export const GrandAgeIsolement = (props: {
   }, [code]);
 
   const fortesChaleurs = patch4 ? AlgoPatch4(patch4, 'fortes_chaleurs') : "null";
-  const exportData = IndicatorTransformations.inconfort_thermique.GrandAgeIsolement(grandAgeIsolementTerritoire);
+  const exportData = IndicatorExportTransformations.inconfort_thermique.GrandAgeIsolement(grandAgeIsolementTerritoire);
 
   return (
     <>

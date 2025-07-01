@@ -1,5 +1,6 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { aot40Legends } from '@/components/maps/legends/datavizLegends';
@@ -161,6 +162,15 @@ const AOT40Dataviz = (props: {
         !isLoadingPatch4 ?
           <div className={styles.container}>
             <div className={(aot40.length && carteCommunes.length) ? "w-5/12" : "w-1/2"}>
+              <div className="mb-4">
+                <ExportButton
+                  data={aot40}
+                  baseName="aot_40"
+                  type={type}
+                  libelle={libelle}
+                  sheetName="AOT 40"
+                />
+              </div>
               <div className={styles.explicationWrapper}>
                 <p>
                   La pollution à l’ozone ne s'arrête pas aux frontières des
