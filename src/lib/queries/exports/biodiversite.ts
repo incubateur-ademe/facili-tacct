@@ -1,23 +1,18 @@
 'use server';
 
-import {
-  AgricultureBio,
-  AOT40,
-  ConsommationNAF,
-  QualiteSitesBaignade
-} from '@/lib/postgres/models';
 import { ColumnCodeCheck, ColumnLibelleCheck } from '../columns';
 import { prisma } from '../redis';
+import { AgricultureBioExport, AOT40Export, ConsommationNAFExport, QualiteSitesBaignadeExport } from './types';
 
 export const fetchBiodiversiteForExport = async (
   code: string,
   libelle: string,
   type: string
 ): Promise<{
-  espacesNaf: ConsommationNAF[];
-  agricultureBio: AgricultureBio[];
-  aot40: AOT40[];
-  qualiteSitesBaignade: QualiteSitesBaignade[];
+  espacesNaf: ConsommationNAFExport[];
+  agricultureBio: AgricultureBioExport[];
+  aot40: AOT40Export[];
+  qualiteSitesBaignade: QualiteSitesBaignadeExport[];
 }> => {
   const column = ColumnCodeCheck(type);
   const columnLibelle = ColumnLibelleCheck(type);
@@ -90,7 +85,6 @@ export const fetchBiodiversiteForExport = async (
       type_d_eau: item.TYPE
     })
     );
-
     return {
       espacesNaf,
       agricultureBio,
@@ -98,7 +92,7 @@ export const fetchBiodiversiteForExport = async (
       qualiteSitesBaignade
     };
   } catch (error) {
-    console.error('Error fetching gestion risques data:', error);
+    console.error('Error fetching biodiversite data:', error);
     return {
       espacesNaf: [],
       agricultureBio: [],
@@ -107,15 +101,3 @@ export const fetchBiodiversiteForExport = async (
     };
   }
 };
-
-// code_geographique: item.code_geographique,
-//       libelle_geographique: item.libelle_geographique,
-//       code_epci: item.epci,
-//       libelle_epci: item.libelle_epci,
-//       departement: item.departement,
-//       libelle_departement: item.libelle_departement,
-//       region: item.region,
-//       ept: item.ept,
-//       code_pnr: item.code_pnr,
-//       libelle_pnr: item.libelle_pnr,
-//       libelle_petr: item.libelle_petr,

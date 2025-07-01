@@ -1,15 +1,15 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { surfacesIrrigueesLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapSurfacesIrriguees } from '@/components/maps/mapSurfacesIrriguees';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
-import { ExportButton } from '@/components/utils/ExportButton';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
 import { surfacesIrrigueesTooltipText } from '@/lib/tooltipTexts';
-import { IndicatorTransformations } from '@/lib/utils/export/environmentalDataExport';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { FilterDataTerritory } from '@/lib/utils/reusableFunctions/filterDataTerritories';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
@@ -37,7 +37,7 @@ export const SurfacesIrriguees = ({
   });
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
   const carteCommunesFiltered = FilterDataTerritory(type, code, libelle, carteCommunes);
-  const exportData = IndicatorTransformations.agriculture.surfacesIrriguees(carteCommunesFiltered);
+  const exportData = IndicatorExportTransformations.agriculture.surfacesIrriguees(carteCommunesFiltered);
 
   const surfaceTerritoire = type === "commune" ?
     communesMap.find((obj) => obj.properties.code_geographique === code)?.properties.surfacesIrriguees

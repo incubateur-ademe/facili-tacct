@@ -1,6 +1,7 @@
 'use client';
 import feuxForetIcon from '@/assets/icons/feu_foret_icon_black.svg';
 import GraphNotFound from '@/assets/images/zero_data_found.png';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
@@ -49,6 +50,15 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <div className={incendiesForet.length !== 0 ? 'w-2/5' : 'w-1/2'}>
+            <div className="mb-4">
+              <ExportButton
+                data={incendiesForet}
+                baseName="feux_foret"
+                type={type}
+                libelle={libelle}
+                sheetName="Feux de forêt"
+              />
+            </div>
             <div className={styles.explicationWrapper}>
               {incendiesForet.length !== 0 ? (
                 <p>
