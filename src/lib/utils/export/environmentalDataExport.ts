@@ -217,5 +217,6 @@ export const ThematiquesExports = {
         "surface_eau_ha": el.clc_5_eau
       };
     });
-  }
+  },
+  // GestionRisques: (gestionRisques)
 };

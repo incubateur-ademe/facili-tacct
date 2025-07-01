@@ -40,3 +40,33 @@ export const exportToXLSX = (
     throw new Error('Failed to export data to XLSX');
   }
 }
+
+export const exportMultipleSheetToXLSX = <T extends Record<string, unknown[]>>(
+  data: T,
+  baseName: string,
+  type: string,
+  libelle: string
+): void => {
+  try {
+    const filename = generateExportFilename(baseName, type, libelle);
+    const workbook = XLSX.utils.book_new();
+    
+    // Create a sheet for each data array
+    Object.entries(data).forEach(([sheetName, sheetData]) => {
+      if (sheetData && sheetData.length > 0) {
+        const worksheet = XLSX.utils.json_to_sheet(sheetData as any[]);
+        XLSX.utils.book_append_sheet(workbook, worksheet, sheetName);
+      }
+    });
+    
+    // Only export if at least one sheet has data
+    if (workbook.SheetNames.length > 0) {
+      XLSX.writeFile(workbook, filename);
+    } else {
+      console.warn('No data to export in any sheet');
+    }
+  } catch (error) {
+    console.error('Error exporting multiple sheets to XLSX:', error);
+    throw new Error('Failed to export data to XLSX');
+  }
+}
