@@ -186,7 +186,7 @@ const RgaDataViz = (props: Props) => {
                           "Département" : "",
                   color: legend.couleur,
                 }))}
-              axisLeftLegend="Part des logements (%)"
+              axisLeftLegend="Part du territoire (%)"
               groupMode="grouped"
               tooltip={(data) => RgaRepartitionTooltip({ data, type })}
             />
