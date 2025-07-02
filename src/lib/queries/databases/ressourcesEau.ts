@@ -21,6 +21,7 @@ export const GetRessourceEau = async (
   const dbQuery = (async () => {
     try {
       // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.ressources_eau.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code },
         select: { departement: true }
@@ -113,6 +114,7 @@ export const GetQualiteEauxBaignade = async (
   const column = ColumnLibelleCheck(type);
   try {
     // Fast existence check
+    if (!libelle || !type || (!code && type !== 'petr')) return [];
     const exists = await prisma.collectivites_searchbar.findFirst({
       where: { [column]: libelle }
     });

@@ -20,6 +20,7 @@ export const GetPatch4 = async (
   console.time("GetPatch4 Execution Time");
   const dbQuery = (async () => {
     try {
+      if (!libelle || !type || (!code && type !== 'petr')) return undefined;
       if (type === 'commune' || type === 'epci') {
         const departement =
           await PrismaPostgres.collectivites_searchbar.findFirst({

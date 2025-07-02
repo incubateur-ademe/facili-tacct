@@ -7,7 +7,7 @@ import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../redis';
 
 export const GetInconfortThermique = async (
-  code: string | undefined,
+  code: string,
   libelle: string,
   type: string
 ): Promise<InconfortThermique[]> => {
@@ -21,6 +21,7 @@ export const GetInconfortThermique = async (
   const dbQuery = (async () => {
     try {
       // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.inconfort_thermique.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
@@ -102,12 +103,13 @@ export const GetInconfortThermique = async (
 };
 
 export const GetLczCouverture = async (
-  code: string | undefined,
+  code: string,
   libelle: string,
   type: string
 ): Promise<Boolean> => {
   const column = ColumnCodeCheck(type);
     try {
+      if (!libelle || !type || (!code && type !== 'petr')) return false;
       const exists = await prisma.lcz_couverture.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });

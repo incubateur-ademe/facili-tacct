@@ -87,8 +87,6 @@ const AgricultureComp = ({
   surfacesAgricoles,
   agricultureBio
 }: Props) => {
-  console.log("agricultureBio", agricultureBio);
-  console.log("agriculture", agriculture);
   const [selectedTabId, setSelectedTabId] = useState('Superficies irriguées');
   const [selectedSubTab, setSelectedSubTab] = useState('Superficies irriguées');
   const { isDark } = useIsDark();
