@@ -24,7 +24,6 @@ export const MapLCZ2 = ({
   const type = searchParams.get('type')!;
   const [isLoading, setIsLoading] = useState(true);
   const [isLczCovered, setIsLczCovered] = useState<Boolean | undefined>(undefined);
-  console.log("isLczCovered", isLczCovered);
   const carteCommunesEnriched = carteCommunes.map(CommunesIndicateursMapper);
   const enveloppe = BoundsFromCollection(carteCommunesEnriched, type, code);
   const mapContainer = useRef<HTMLDivElement>(null);
