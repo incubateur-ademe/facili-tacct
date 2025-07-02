@@ -85,7 +85,7 @@ export const GetInconfortThermique = async (
               departement: {
                 in: departements.map((d) => d.departement) as string[]
               }
-            },
+            }
           });
           return value;
         } else return [];
@@ -99,4 +99,22 @@ export const GetInconfortThermique = async (
   })();
   const result = Promise.race([dbQuery, timeoutPromise]);
   return result;
+};
+
+export const GetLczCouverture = async (
+  code: string | undefined,
+  libelle: string,
+  type: string
+): Promise<Boolean> => {
+  const column = ColumnCodeCheck(type);
+    try {
+      const exists = await prisma.lcz_couverture.findFirst({
+        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+      });
+      if (exists) return true; else return false;
+    } catch (error) {
+      console.error(error);
+      Sentry.captureException(error);
+      return false;
+    }
 };

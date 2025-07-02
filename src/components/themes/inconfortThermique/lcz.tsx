@@ -2,7 +2,7 @@ import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import { default as DataNotFound } from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from "@/components/loader";
-import MapLCZ2 from "@/components/maps/mapLCZ2";
+import MapLCZ3 from '@/components/maps/mapLCZ3';
 import { AlgoPatch4 } from "@/components/patch4/AlgoPatch4";
 import TagInIndicator from "@/components/patch4/TagInIndicator";
 import { CarteCommunes, Patch4 } from "@/lib/postgres/models";
@@ -60,7 +60,9 @@ export const LCZ = ({
               </p>
               {
                 carteCommunes ? (
-                  <MapLCZ2 carteCommunes={carteCommunes} />
+                  <>
+                    <MapLCZ3 carteCommunes={carteCommunes} />
+                  </>
                 ) : <DataNotFoundForGraph image={DataNotFound} />
               }
               <p style={{ padding: '1em', margin: '0' }}>
