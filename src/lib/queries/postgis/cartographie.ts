@@ -26,6 +26,7 @@ export const GetCommunes = async (
   const dbQuery = (async () => {
     try {
       // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.communes_drom.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
@@ -188,6 +189,7 @@ export const GetClcTerritoires = async (
   const dbQuery = (async () => {
     try {
       // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.clc_territoires.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
@@ -282,6 +284,7 @@ export const GetErosionCotiere = async (
   );
   const dbQuery = (async () => {
     try {
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
       if (type === 'commune') {
         const commune = await prisma.$queryRaw<CarteCommunes[]>`
           SELECT

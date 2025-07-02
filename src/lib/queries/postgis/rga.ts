@@ -19,7 +19,14 @@ export const GetRGACarte = async (
   );
   const dbQuery = (async () => {
     try {
-      if (type === 'commune') {
+      if (
+        !libelle || 
+        !type || 
+        (!code && type !== 'petr') || 
+        libelle === "null" ||
+        (code === "null" && type !== 'petr')  
+      ) return [];
+      else if (type === 'commune') {
         const commune = await prisma.$queryRaw<RGACarte[]>`
           SELECT
             code_geographique,
