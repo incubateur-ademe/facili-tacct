@@ -9,6 +9,7 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { IncendiesForet, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { feuxForetTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
@@ -44,6 +45,7 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
   }, [code]);
 
   const feuxForet = patch4 ? AlgoPatch4(patch4, 'feux_foret') : undefined;
+  const exportData = IndicatorExportTransformations.gestionRisques.FeuxForet(incendiesForet)
 
   return (
     <>
@@ -52,7 +54,7 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
           <div className={incendiesForet.length !== 0 ? 'w-2/5' : 'w-1/2'}>
             <div className="mb-4">
               <ExportButton
-                data={incendiesForet}
+                data={exportData}
                 baseName="feux_foret"
                 type={type}
                 libelle={libelle}

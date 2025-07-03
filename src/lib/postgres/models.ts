@@ -486,7 +486,12 @@ export type IncendiesForet = {
   epci: string;
   libelle_epci: string;
   departement: string;
+  libelle_departement: string;
   region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
   nature: string | null;
   annee: number;
   surface_parcourue: number;

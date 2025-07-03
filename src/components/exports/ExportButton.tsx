@@ -1,6 +1,6 @@
 "use client";
+import { WaveButton } from '@/components/WaveButton';
 import { exportToXLSX } from '@/lib/utils/export/exportXlsx';
-import { Button } from '@codegouvfr/react-dsfr/Button';
 import { useState } from 'react';
 
 type ExportDataRow = Record<string, string | number | boolean | null | bigint | undefined>;
@@ -20,7 +20,7 @@ export const ExportButton = ({
   type,
   libelle,
   sheetName,
-  children = 'Exporter les données',
+  children = 'Exporter la thématique',
 }: ExportButtonProps) => {
   const [isExporting, setIsExporting] = useState(false);
 
@@ -40,7 +40,7 @@ export const ExportButton = ({
   };
 
   return (
-    <Button
+    <WaveButton
       onClick={handleExport}
       disabled={isExporting}
       style={{ 
@@ -48,6 +48,7 @@ export const ExportButton = ({
       }}
     >
       {isExporting ? 'Export en cours...' : children}
-    </Button>
+    </WaveButton>
   );
 };
+

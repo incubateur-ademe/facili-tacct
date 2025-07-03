@@ -82,11 +82,16 @@ export const fetchBiodiversiteForExport = async (
 
     const espacesNaf = espacesNafRaw.map((item) => ({
       code_geographique: item.code_geographique,
+      libelle_geographique: item.libelle_geographique,
       code_epci: item.epci,
       libelle_epci: item.libelle_epci,
       departement: item.departement,
       libelle_departement: item.libelle_departement,
       region: item.region,
+      ept: item.ept,
+      libelle_petr: item.libelle_petr,
+      code_pnr: item.code_pnr,
+      libelle_pnr: item.libelle_pnr,
       naf09art10: item.naf09art10,
       art09act10: item.art09act10,
       art09hab10: item.art09hab10,
