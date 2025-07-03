@@ -1,7 +1,7 @@
 "use client";
 import { exportMultipleSheetToXLSX } from '@/lib/utils/export/exportXlsx';
-import { Button } from '@codegouvfr/react-dsfr/Button';
 import { useEffect, useState } from 'react';
+import { WaveButton } from '../WaveButton';
 
 type ExportDataRow = Record<string, string | number | boolean | null | bigint | undefined>;
 
@@ -88,11 +88,11 @@ export const MultiSheetExportButton = ({
   };
 
   return (
-    <Button
+    <WaveButton
       onClick={handleExport}
       disabled={isExporting}
     >
       {isExporting ? 'Export en cours...' : children}
-    </Button>
+    </WaveButton>
   );
 };
