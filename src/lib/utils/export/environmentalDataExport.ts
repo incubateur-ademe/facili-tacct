@@ -9,9 +9,11 @@ import {
   CarteCommunes,
   ConsommationNAF,
   EtatCoursDeau,
+  IncendiesForet,
   InconfortThermique,
   QualiteSitesBaignade,
-  RessourcesEau
+  RessourcesEau,
+  RGAdb
 } from '@/lib/postgres/models';
 import { Round } from '../reusableFunctions/round';
 
@@ -264,6 +266,46 @@ export const IndicatorExportTransformations = {
           surface_2019_ha: bio.surface_2019
         };
       })
+  },
+  gestionRisques: {
+    RGA: (rga: RGAdb[]) => {
+      return rga.map((el) => {
+        return {
+          ...el
+        };
+      });
+    },
+    FeuxForet: (incendiesForet: IncendiesForet[]) => {
+      return incendiesForet.map((el) => {
+        return {
+          code_geographique: el.code_geographique,
+          libelle_geographique: el.libelle_geographique,
+          code_epci: el.epci,
+          libelle_epci: el.libelle_epci,
+          ept: el.ept,
+          code_pnr: el.code_pnr,
+          libelle_pnr: el.libelle_pnr,
+          libelle_petr: el.libelle_petr,
+          departement: el.departement,
+          libelle_departement: el.libelle_departement,
+          nature: el.nature,
+          annee: el.annee,
+          surface_parcourue_km2: el.surface_parcourue,
+          surface_foret_km2: el.surface_foret,
+          surface_maquis_garrigues_km2: el.surface_maquis_garrigues,
+          autres_surfaces_naturelles_hors_foret_km2:
+            el.autres_surfaces_naturelles_hors_foret,
+          surfaces_agricoles_km2: el.surfaces_agricoles,
+          surfaces_non_boisees_km2: el.surfaces_non_boisees,
+          surfaces_non_boisees_artificialisees_km2:
+            el.surfaces_non_boisees_artificialisees,
+          surfaces_non_boisees_naturelles_km2:
+            el.surfaces_non_boisees_naturelles,
+          surface_autres_terres_boisees_km2: el.surface_autres_terres_boisees,
+          autres_surfaces_km2: el.autres_surfaces
+        };
+      });
+    }
   }
 };
 

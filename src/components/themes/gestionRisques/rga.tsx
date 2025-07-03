@@ -1,6 +1,7 @@
 import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
@@ -11,6 +12,7 @@ import { RGAMapper } from '@/lib/mapper/gestionRisques';
 import { CarteCommunes, Patch4, RGACarte, RGAdb } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { rgaTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { Round } from '@/lib/utils/reusableFunctions/round';
@@ -70,10 +72,10 @@ export const RGA = ({
 
   const partMoyenFort = rgaFilteredByTerritory.length > 0
     ? Round(Average(rgaFilteredByTerritory.map((el) => el.part_alea_moyen_fort_commune)), 1)
-        : 0;
-  const nbLogementsMoyenFort = rgaFilteredByTerritory.length > 0 
+    : 0;
+  const nbLogementsMoyenFort = rgaFilteredByTerritory.length > 0
     ? Sum(rgaFilteredByTerritory.map((el) => el.nb_logement_alea_moyen_fort))
-        : 0;
+    : 0;
   const partMoyenFortApres1975 = rgaFilteredByTerritory.length > 0
     ? Round(
       100 * Sum(
@@ -84,13 +86,14 @@ export const RGA = ({
         rgaFilteredByTerritory.map(
           (el) => el.nb_logement_alea_moyen_fort
         )
-      ), 1) 
-        : 0;
+      ), 1)
+    : 0;
 
   const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
   const precipitation = patch4
     ? AlgoPatch4(patch4, 'fortes_precipitations')
     : undefined;
+  const exportData = IndicatorExportTransformations.gestionRisques.RGA(rgaFilteredByTerritory);
 
   return (
     <>
@@ -98,6 +101,15 @@ export const RGA = ({
         <div className={styles.container}>
           <>
             <div className={communesMap.length > 0 ? "w-2/5" : "w-1/2"}>
+              <div className="mb-4">
+                <ExportButton
+                  data={exportData}
+                  baseName="retrait_gonflement_argiles"
+                  type={type}
+                  libelle={libelle}
+                  sheetName="Retrait-gonflement des argiles"
+                />
+              </div>
               <div className={styles.explicationWrapper}>
                 {
                   communesMap.length > 0 && rga.length && rgaCarte.length ? (
@@ -105,7 +117,7 @@ export const RGA = ({
                       <b>{partMoyenFort} %</b> de votre territoire est situé dans une zone où le niveau
                       d’exposition au retrait gonflement des argiles est moyen ou fort. Cela
                       concerne potentiellement <b>{numberWithSpacesRegex(nbLogementsMoyenFort)} logements</b>, parmi
-                      lesquels <b>{partMoyenFortApres1975} %</b> sont considérés comme plus à
+                      lesquels <b>{nbLogementsMoyenFort === 0 ? 0 : partMoyenFortApres1975} %</b> sont considérés comme plus à
                       risque car construits après 1975.
                     </p>
                   ) : ""

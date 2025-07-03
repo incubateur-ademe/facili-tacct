@@ -28,7 +28,7 @@ export const fetchRessourcesEauForExport = async (
       GetEtatCoursDeau(code, libelle, type)
     ]);
 
-    const prelevementEau = prelevementEauRaw.map(item => ({
+    const prelevementEau = type === 'pnr' ? [] : prelevementEauRaw.map(item => ({
       code_geographique: item.code_geographique,
       libelle_geographique: item.libelle_geographique,
       code_epci: item.epci,
