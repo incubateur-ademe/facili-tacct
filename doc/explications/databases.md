@@ -11,7 +11,7 @@ Cette méthode de vérification par checksum présente plusieurs avantages :
 - **Évite les pg_dump compliqués** : Pas besoin de générer et comparer des dumps complets de base de données
 - **Aucune extension requise** : Pas besoin d'extensions PostgreSQL supplémentaires comme `postgres_fdw` pour faire des comparaisons entre bases
 
-### �🧠 Principe de fonctionnement
+### 🧠 Principe de fonctionnement
 
 L'approche par checksum fonctionne de la manière suivante :
 
