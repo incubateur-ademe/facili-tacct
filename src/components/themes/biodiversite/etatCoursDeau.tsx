@@ -81,7 +81,7 @@ const EtatQualiteCoursDeau = (props: {
       {
         !isLoadingPatch4 ?
           <div className={styles.container}>
-            <div className={(etatCoursDeau.length || qualiteEauxBaignade.length) ? "w-5/12" : "w-1/2"}>
+            <div className={etatCoursDeau.length ? "w-5/12" : "w-1/2"}>
             <div className="mb-4">
               <MultiSheetExportButton
                 sheetsData={exportData}
@@ -123,7 +123,7 @@ const EtatQualiteCoursDeau = (props: {
               </div>
               <EtatsCoursEauBiodiversiteText />
             </div>
-            <div className={(etatCoursDeau.length || qualiteEauxBaignade.length) ? "w-7/12" : "w-1/2"}>
+            <div className={etatCoursDeau.length ? "w-7/12" : "w-1/2"}>
               <div className={styles.graphWrapper}>
                 <div
                   className={styles.biodiversiteGraphTitleWrapper}
@@ -131,7 +131,7 @@ const EtatQualiteCoursDeau = (props: {
                 >
                   <h2>État écologique des cours d’eau et des plans d’eau</h2>
                 </div>
-                {etatCoursDeau.length || qualiteEauxBaignade.length ? (
+                {(etatCoursDeau.length) ? (
                   <>
                     <MapEtatCoursDeau
                       etatCoursDeau={etatCoursDeauMap}
