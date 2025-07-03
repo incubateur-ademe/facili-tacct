@@ -91,14 +91,11 @@ export const GetRga = async (
   libelle: string,
   type: string
 ): Promise<RGAdb[]> => {
-  const column = ColumnCodeCheck(type);
+  const column = type ? ColumnCodeCheck(type) : "";
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
-      console.log(
-        'GetRGA: Timeout reached (15 seconds), returning empty array.'
-      );
       resolve([]);
-    }, 15000)
+    }, 10000)
   );
   const dbQuery = (async () => {
     try {
@@ -106,7 +103,14 @@ export const GetRga = async (
       const exists = await prisma.rga.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
-      if (!exists) return [];
+      if (
+        !libelle || 
+        !type || 
+        (!code && type !== 'petr') || 
+        libelle === "null" ||
+        (code === "null" && type !== 'petr')  
+      ) return [];
+      else if (!exists) return [];
       else if (type === 'commune') {
         const value = await prisma.$queryRaw`
           SELECT *
@@ -123,11 +127,10 @@ export const GetRga = async (
         const value = await prisma.$queryRaw`
           SELECT *
           FROM "databases"."rga"
-          WHERE departement = (
+          WHERE departement IN (
             SELECT departement
             FROM "databases"."rga"
             WHERE epci = ${code}
-            LIMIT 1
           )
         `;
         return value as RGAdb[];
