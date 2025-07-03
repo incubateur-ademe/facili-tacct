@@ -2,7 +2,7 @@
 
 import WarningIcon from "@/assets/icons/exclamation_point_icon_black.png";
 import { RgaEvolutionTooltip, RgaRepartitionTooltip } from "@/components/charts/ChartTooltips";
-import { NivoBarChart } from '@/components/charts/NivoBarChart';
+import { NewNivoBarChart } from '@/components/charts/NivoBarChart';
 import { RgaEvolutionLegend, RgaMapLegend, RgaRepartitionLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import SubTabs from '@/components/SubTabs';
@@ -165,7 +165,7 @@ const RgaDataViz = (props: Props) => {
       {datavizTab === 'Comparaison' ? (
         <>
           <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
-            <NivoBarChart
+            <NewNivoBarChart
               colors={RgaRepartitionLegend.map(e => e.couleur)}
               graphData={repartitionRga as BarDatum[]}
               keys={RgaRepartitionLegend.map(e => e.variable)}
@@ -183,7 +183,7 @@ const RgaDataViz = (props: Props) => {
                           "Département" : "",
                   color: legend.couleur,
                 }))}
-              axisLeftLegend="Part des logements (%)"
+              axisLeftLegend="Part du territoire (%)"
               groupMode="grouped"
               tooltip={(data) => RgaRepartitionTooltip({ data, type })}
             />
@@ -206,7 +206,7 @@ const RgaDataViz = (props: Props) => {
         </>
       ) : datavizTab === 'Répartition' ? (
         <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
-          <NivoBarChart
+          <NewNivoBarChart
             colors={RgaEvolutionLegend.map(e => e.couleur)}
             graphData={evolutionRga}
             keys={RgaEvolutionLegend.map(e => e.variable)}
