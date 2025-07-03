@@ -5,6 +5,7 @@ import * as ressourcesEau from '../databases/ressourcesEau';
 import { prisma, redis } from '../redis';
 
 jest.setTimeout(60000); // Increase timeout for heavy queries
+// PETR Figeac - Quercy - Vallée de la Dordogne 169 communes
 
 describe('Integration: query functions for biodiversite', () => {
   it('GetAgricultureBio returns expected results for EPCI 200054781', async () => {

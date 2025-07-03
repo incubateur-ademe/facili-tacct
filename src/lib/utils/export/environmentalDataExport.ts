@@ -13,6 +13,7 @@ import {
   QualiteSitesBaignade,
   RessourcesEau
 } from '@/lib/postgres/models';
+import { Round } from '../reusableFunctions/round';
 
 export const IndicatorExportTransformations = {
   agriculture: {
@@ -310,12 +311,12 @@ export const ThematiquesExports = {
         '2020_population_de_moins_de_4_ans': el.under_4_sum_2020,
         '2020_population_de_4_a_80_ans': el.to_80_sum_2020,
         '2020_population_de_plus_de_80_ans': el.over_80_sum_2020,
-        travail_agriculture: el.NA5AZ_sum,
-        travail_industries: el.NA5BE_sum,
-        travail_construction: el.NA5FZ_sum,
-        travail_commerces: el.NA5GU_sum,
-        travail_administration: el.NA5OQ_sum,
-        densite_bati: el.densite_bati,
+        travail_agriculture: Round(Number(el.NA5AZ_sum), 0),
+        travail_industries: Round(Number(el.NA5BE_sum), 0),
+        travail_construction: Round(Number(el.NA5FZ_sum), 0),
+        travail_commerces: Round(Number(el.NA5GU_sum), 0),
+        travail_administration: Round(Number(el.NA5OQ_sum), 0),
+        densite_bati: Round(Number(el.densite_bati), 0),
         surface_artificialisee_ha: el.clc_1_artificialise,
         surface_agricole_ha: el.clc_2_agricole,
         surface_foret_et_espaces_semi_naturels_ha: el.clc_3_foret_semiNaturel,
