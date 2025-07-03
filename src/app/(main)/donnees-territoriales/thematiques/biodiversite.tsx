@@ -23,7 +23,7 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
   const qualiteEauxBaignadeParDpmt = await GetQualiteEauxBaignade(code, libelle, type);
   return (
     <div>
-      <BiodiversiteExport code={code} libelle={libelle} type={type} />
+      <BiodiversiteExport code={code} libelle={libelle} type={type} etatCoursDeau={dbEtatCoursDeau} />
       <div className={styles.container}>
         <Suspense>
           <BiodiversiteComp
