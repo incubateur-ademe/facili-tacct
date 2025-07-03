@@ -1,6 +1,6 @@
 export type ConsommationNAFExport = {
   code_geographique: string;
-  epci: string;
+  code_epci: string;
   libelle_epci: string;
   departement: string;
   libelle_departement: string;
@@ -141,28 +141,28 @@ export type QualiteSitesBaignadeExport = {
 export type FeuxForetExport = {
   code_geographique: string;
   libelle_geographique: string;
-  epci: string;
+  code_epci: string;
   libelle_epci: string;
   departement: string;
   region: number;
   nature: string | null;
   annee: number;
-  surface_parcourue: number;
-  surface_foret: number | null;
-  surface_maquis_garrigues: number | null;
-  autres_surfaces_naturelles_hors_foret: number | null;
-  surfaces_agricoles: number | null;
-  surfaces_non_boisees: number | null;
-  surfaces_non_boisees_artificialisees: number | null;
-  surfaces_non_boisees_naturelles: number | null;
-  surface_autres_terres_boisees: number | null;
-  autres_surfaces: number | null;
+  surface_parcourue_km2: number;
+  surface_foret_km2: number | null;
+  surface_maquis_garrigues_km2: number | null;
+  autres_surfaces_naturelles_hors_foret_km2: number | null;
+  surfaces_agricoles_km2: number | null;
+  surfaces_non_boisees_km2: number | null;
+  surfaces_non_boisees_artificialisees_km2: number | null;
+  surfaces_non_boisees_naturelles_km2: number | null;
+  surface_autres_terres_boisees_km2: number | null;
+  autres_surfaces_km2: number | null;
 };
 
 export type RGAdbExport = {
   code_geographique: string;
   libelle_geographique: string;
-  epci: string;
+  code_epci: string;
   libelle_epci: string;
   departement: string;
   libelle_departement: string;
@@ -198,10 +198,10 @@ export type RGAdbExport = {
   part_alea_moyen_fort_commune: number;
 };
 export type AgricultureBioExport = {
-  epci: string;
+  code_epci: string;
   libelle_epci: string;
-  VARIABLE: string;
-  LIBELLE_SOUS_CHAMP: string | null;
+  variable: string;
+  libelle_sous_champ: string | null;
   surface_2022: number;
   surface_2021: number;
   surface_2020: number;
@@ -246,7 +246,67 @@ export type EtatCoursDeauExport = {
   nom_cours_d_eau: string;
 }
 
-// export type SurfacesAgricolesModel = {
+export type RGAdbExport = {
+  code_geographique: string;
+  libelle_geographique: string;
+  code_epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  nb_logement: number;
+  nb_logement_alea_moyen_fort: number;
+  nb_logement_alea_faible: number;
+  nb_logement_sans_alea: number;
+  nb_logement_alea_moyen_fort_avant_1920: number;
+  nb_logement_alea_moyen_fort_1920_1945: number;
+  nb_logement_alea_moyen_fort_1945_1975: number;
+  nb_logement_alea_moyen_fort_apres_1975: number;
+  nb_logement_alea_faible_avant_1920: number;
+  nb_logement_alea_faible_1920_1945: number;
+  nb_logement_alea_faible_1945_1975: number;
+  nb_logement_alea_faible_apres_1975: number;
+  surface_commune: number;
+  surface_alea_faible_commune: number;
+  surface_alea_moyen_fort_commune: number;
+  part_logement_alea_moyen_fort_avant_1920: number;
+  part_logement_alea_moyen_fort_1920_1945: number;
+  part_logement_alea_moyen_fort_1945_1975: number;
+  part_logement_alea_moyen_fort_apres_1975: number;
+  part_logement_alea_faible_avant_1920: number;
+  part_logement_alea_faible_1920_1945: number;
+  part_logement_alea_faible_1945_1975: number;
+  part_logement_alea_faible_apres_1975: number;
+  part_alea_faible_commune: number;
+  part_alea_moyen_fort_commune: number;
+};
+
+export type ArreteCatNatExport = {
+  libelle_risque: string;
+  date_publication_arrete: string;
+  code_geographique: string;
+  departement: string;
+  libelle_departement: string;
+  code_epci: string;
+  libelle_epci: string;
+  libelle_geographique: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+};
+
+export type EtatCoursDeauExport = {
+  nom_cours_d_eau: string | null;
+  etat_cours_d_eau: string;
+};
+
+//  export type SurfacesAgricolesModel = {
 //   epci: string;
 //   exploitation_sau: number;
 //   exploitation_sau_terres_arables: number;
