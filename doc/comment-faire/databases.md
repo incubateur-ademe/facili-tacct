@@ -43,3 +43,13 @@ ogr2ogr -nln <name of layer(table)>
     -lco SCHEMA=<nom schema> Pg:"dbname=<nom de la db> host=<adresse host> user=<user> port=<port>"
     "C:\path\to\file\file.gpkg"
 ```
+## Vérifier si les bases en prod et en preprod sont identiques
+
+```
+-- In both dev and prod, run:
+SELECT md5(string_agg(t::text, '')) AS checksum
+FROM (
+  SELECT * FROM your_table ORDER BY your_primary_key
+) t;
+
+```
