@@ -12,6 +12,7 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { Loader } from '../loader';
 import { BoundsFromCollection } from './components/boundsFromCollection';
+import { CeremaFallbackError, handleCeremaFallback } from './components/ceremaLCZFallback';
 import { LczLegend, LczLegendOpacity70 } from './legends/datavizLegends';
 import { LegendCompColor } from './legends/legendComp';
 import styles from './maps.module.scss';
@@ -47,56 +48,6 @@ export const MapLCZ = ({
     })()
   }, [code]);
 
-  const handleCeremaFallback = (map: maplibregl.Map) => {
-    if (hasTriedFallback.current) return;
-    hasTriedFallback.current = true;
-    try {
-      console.warn('Cerema service failed, switching to global LCZ fallback');
-      // si les layers Cerema sont déjà présents, on les supprime
-      if (map.getLayer('cerema-lcz-tile-layer')) {
-        map.removeLayer('cerema-lcz-tile-layer');
-      }
-      if (map.getLayer('lcz-wms-layer')) {
-        map.removeLayer('lcz-wms-layer');
-      }
-      if (map.getSource('cerema-lcz-tile')) {
-        map.removeSource('cerema-lcz-tile');
-      }
-      if (map.getSource('lcz-wms')) {
-        map.removeSource('lcz-wms');
-      }
-
-      // fallback global
-      if (!map.getSource('lcz-generator-fallback')) {
-        setIsTilesLoading(true);
-        map.addSource('lcz-generator-fallback', {
-          type: 'raster',
-          tiles: [
-            'https://lcz-generator.rub.de/tms/global-map-tiles/v3/{z}/{x}/{y}.png'
-          ],
-          tileSize: 256
-        });
-        map.addLayer({
-          id: 'lcz-generator-fallback-layer',
-          type: 'raster',
-          source: 'lcz-generator-fallback',
-          paint: { 'raster-opacity': 0.7 }
-        });
-      }
-      setServiceStatus({
-        ceremaAvailable: false,
-        fallbackToGlobal: true,
-        errorMessage: 'Données LCZ CEREMA temporairement indisponibles. Affichage de données temporaires moins détaillées.'
-      });
-    } catch (error) {
-      console.error('Error during fallback:', error);
-      setServiceStatus(prev => ({
-        ...prev,
-        errorMessage: 'Erreur lors du chargement des données cartographiques.'
-      }));
-    }
-  };
-
   useEffect(() => {
     if (!mapContainer.current || isLczCovered === undefined) return;
     hasTriedFallback.current = false;
@@ -113,14 +64,14 @@ export const MapLCZ = ({
         e.error?.message?.includes('cartagene') ||
         e.error?.message?.includes('tile') ||
         e.error?.message?.includes('MapServer')) {
-        handleCeremaFallback(map);
+        handleCeremaFallback(map, hasTriedFallback, setIsTilesLoading, setServiceStatus);
       }
     };
 
     const handleSourceData = (e: MapSourceDataEvent) => {
       if ((e.sourceId === 'cerema-lcz-tile' || e.sourceId === 'lcz-wms') &&
         e.isSourceLoaded === false && e.tile && e.tile.state === 'errored') {
-        handleCeremaFallback(map);
+        handleCeremaFallback(map, hasTriedFallback, setIsTilesLoading, setServiceStatus);
       }
       if (e.isSourceLoaded &&
         (e.sourceId === 'lcz-generator' ||
@@ -245,7 +196,7 @@ export const MapLCZ = ({
         } catch (error) {
           console.error('Error adding Cerema layers:', error);
           setIsTilesLoading(false);
-          handleCeremaFallback(map);
+          handleCeremaFallback(map, hasTriedFallback, setIsTilesLoading, setServiceStatus);
         }
         if (enveloppe && Array.isArray(enveloppe) && enveloppe.length > 1 && Array.isArray(enveloppe[0]) && enveloppe[0].length === 2) {
           const lons = enveloppe.map(coord => coord[1]);
@@ -361,7 +312,6 @@ export const MapLCZ = ({
     }
 
     map.addControl(new maplibregl.NavigationControl(), 'top-right');
-
     return () => {
       map.off('error', handleMapError);
       map.off('sourcedata', handleSourceData);
@@ -392,25 +342,11 @@ export const MapLCZ = ({
           100% { transform: rotate(360deg); }
         }
       `}</style>
-      {serviceStatus.errorMessage && (
-        <div
-          className={styles.errorMessageWrapper}
-          style={{
-            background: serviceStatus.fallbackToGlobal ? '#fff2cc' : '#d17981',
-            border: serviceStatus.fallbackToGlobal ? '2px solid rgba(255, 193, 7, 0.9)' : '2px solid #dc3545',
-          }}
-        >
-          {serviceStatus.fallbackToGlobal ? '⚠️' : '❌'} {serviceStatus.errorMessage}
-          {serviceStatus.fallbackToGlobal && (
-            <button
-              className={styles.errorMessageCloseButton}
-              onClick={() => setServiceStatus(prev => ({ ...prev, errorMessage: null }))}
-            >
-              ✕
-            </button>
-          )}
-        </div>
-      )}
+      <CeremaFallbackError
+        serviceStatus={serviceStatus}
+        setServiceStatus={setServiceStatus}
+        styles={styles}
+      />
       {isLoading ? <Loader /> : (
         <>
           <div ref={mapContainer} style={{ width: '100%', height: '500px' }} />
