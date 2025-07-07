@@ -1,6 +1,6 @@
 import { BoundsFromCollection } from '@/components/maps/components/boundsFromCollection';
 import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
-import { mapStyles } from 'carte-facile';
+import { addOverlay, mapStyles, Overlay } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
 import { Feature, FeatureCollection, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
@@ -13,7 +13,7 @@ const RGAMap = (props: {
   rgaCarte: {
     type: string;
     features: RGADto[];
-};
+  };
 }) => {
   const { carteCommunes, rgaCarte } = props;
   const searchParams = useSearchParams();
@@ -26,6 +26,9 @@ const RGAMap = (props: {
   const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
   const mapContainer = useRef<HTMLDivElement>(null);
 
+
+
+
   useEffect(() => {
     if (!mapContainer.current) return;
     const map = new maplibregl.Map({
@@ -33,6 +36,8 @@ const RGAMap = (props: {
       style: mapStyles.desaturated,
       attributionControl: false,
     });
+
+    addOverlay(map, Overlay.administrativeBoundaries);
 
     map.on('load', () => {
       // Compute bounding box from enveloppe polygon
