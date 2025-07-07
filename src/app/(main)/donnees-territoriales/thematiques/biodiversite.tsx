@@ -1,3 +1,4 @@
+import { BiodiversiteExport } from '@/components/exports/BiodiversiteExport';
 import {
   GetAgricultureBio,
   GetAOT40,
@@ -15,25 +16,27 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
   const theme = themes.biodiversite;
   const { code, libelle, type } = await props.searchParams;
   const carteCommunes = await GetCommunes(code, libelle, type);
-  const dbAgricultureBio = await GetAgricultureBio(libelle, type);
+  const dbAgricultureBio = await GetAgricultureBio(libelle, type, code);
   const dbConsommationNAF = await GetConsommationNAF(code, libelle, type);
   const dbAOT40 = await GetAOT40();
   const dbEtatCoursDeau = await GetEtatCoursDeau(code, libelle, type);
   const qualiteEauxBaignadeParDpmt = await GetQualiteEauxBaignade(code, libelle, type);
-
   return (
-    <div className={styles.container}>
-      <Suspense>
-        <BiodiversiteComp
-          data={theme}
-          carteCommunes={carteCommunes}
-          agricultureBio={dbAgricultureBio!}
-          consommationNAF={dbConsommationNAF}
-          aot40={dbAOT40}
-          etatCoursDeau={dbEtatCoursDeau}
-          qualiteEauxBaignade={qualiteEauxBaignadeParDpmt}
-        />
-      </Suspense>
+    <div>
+      <BiodiversiteExport code={code} libelle={libelle} type={type} etatCoursDeau={dbEtatCoursDeau} />
+      <div className={styles.container}>
+        <Suspense>
+          <BiodiversiteComp
+            data={theme}
+            carteCommunes={carteCommunes}
+            agricultureBio={dbAgricultureBio!}
+            consommationNAF={dbConsommationNAF}
+            aot40={dbAOT40}
+            etatCoursDeau={dbEtatCoursDeau}
+            qualiteEauxBaignade={qualiteEauxBaignadeParDpmt}
+          />
+        </Suspense>
+      </div>
     </div>
   );
 };

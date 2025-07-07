@@ -21,6 +21,7 @@ export const GetAgriculture = async (
   const dbQuery = (async () => {
     try {
       // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.agriculture.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
@@ -82,6 +83,7 @@ export const GetSurfacesAgricoles = async (
   const dbQuery = (async () => {
     try {
       // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.collectivites_searchbar.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });

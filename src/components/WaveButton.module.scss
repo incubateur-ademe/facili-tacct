@@ -1,0 +1,152 @@
+.waveButton {
+  position: relative;
+  background: linear-gradient(135deg, #ffc684, #fff1de);
+  color: white;
+  border: none;
+  padding: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 3px solid orange;
+  
+  /* Contour ondulé avec clip-path */
+  clip-path: polygon(
+    0% 20%, 
+    10% 10%, 
+    20% 15%, 
+    30% 5%, 
+    40% 10%, 
+    50% 0%, 
+    60% 8%, 
+    70% 3%, 
+    80% 12%, 
+    90% 5%, 
+    100% 15%, 
+    100% 85%, 
+    90% 95%, 
+    80% 88%, 
+    70% 97%, 
+    60% 90%, 
+    50% 100%, 
+    40% 90%, 
+    30% 95%, 
+    20% 85%, 
+    10% 90%, 
+    0% 80%
+  );
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 145, 0.3);
+    
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &:active,
+  &.pressed {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 0, 145, 0.2);
+  }
+
+  &.disabled {
+    background: #e5e5e5;
+    color: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    
+    &::before {
+      display: none;
+    }
+    
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Animation des vagues au survol */
+@keyframes wave {
+  0%, 100% {
+    clip-path: polygon(
+      0% 20%, 
+      10% 10%, 
+      20% 15%, 
+      30% 5%, 
+      40% 10%, 
+      50% 0%, 
+      60% 8%, 
+      70% 3%, 
+      80% 12%, 
+      90% 5%, 
+      100% 15%, 
+      100% 85%, 
+      90% 95%, 
+      80% 88%, 
+      70% 97%, 
+      60% 90%, 
+      50% 100%, 
+      40% 90%, 
+      30% 95%, 
+      20% 85%, 
+      10% 90%, 
+      0% 80%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      0% 15%, 
+      10% 5%, 
+      20% 10%, 
+      30% 0%, 
+      40% 8%, 
+      50% 3%, 
+      60% 12%, 
+      70% 5%, 
+      80% 15%, 
+      90% 8%, 
+      100% 18%, 
+      100% 82%, 
+      90% 92%, 
+      80% 85%, 
+      70% 95%, 
+      60% 88%, 
+      50% 97%, 
+      40% 88%, 
+      30% 92%, 
+      20% 82%, 
+      10% 88%, 
+      0% 85%
+    );
+  }
+}
+
+.waveButton:hover {
+  animation: wave 2s ease-in-out infinite;
+}

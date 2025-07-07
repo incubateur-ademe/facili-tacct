@@ -1,4 +1,5 @@
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
@@ -6,6 +7,7 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { AgricultureBio, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { agricultureBioTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -57,12 +59,23 @@ const AgricultureBiologique = (props: {
 
   const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
 
+  const exportData = IndicatorExportTransformations.agriculture.agricultureBio(agricultureBio);
+
   return (
     <>
       {
         !isLoadingPatch4 ?
           <div className={styles.container}>
             <div className="w-1/2">
+              <div className="mb-4">
+                <ExportButton
+                  data={exportData}
+                  baseName="agriculture_biologique"
+                  type={type}
+                  libelle={libelle}
+                  sheetName="Agriculture bio"
+                />
+              </div>
               <div className={styles.explicationWrapper}>
                 {agricultureBio.length ?
                   <>

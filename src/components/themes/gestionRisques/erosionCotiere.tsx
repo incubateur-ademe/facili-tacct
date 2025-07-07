@@ -11,8 +11,9 @@ import { ErosionCotiereMapper } from '@/lib/mapper/erosionCotiere';
 import { CarteCommunes, ErosionCotiere, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { erosionCotiereTooltipText } from '@/lib/tooltipTexts';
+import { exportDatavizAsPNG } from '@/lib/utils/export/exportPng';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { LegendErosionCotiere } from '../../maps/legends/legendErosionCotiere';
 import { ErosionCotiereText } from '../inconfortThermique/staticTexts';
 import styles from './gestionRisques.module.scss';
@@ -22,11 +23,11 @@ const ErosionCotes = (props: {
   carteCommunes: CarteCommunes[];
 }) => {
   const { erosionCotiere, carteCommunes } = props;
-  const re = new RegExp('T([1-9]|1[0-2])\\b');
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
+  const exportPNGRef = useRef(null);
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const erosionCotiereMap = erosionCotiere.map(ErosionCotiereMapper);
@@ -81,17 +82,18 @@ const ErosionCotes = (props: {
                 </div>
                 {
                   erosionCotiere ?
-                    <>
+                    <div ref={exportPNGRef}>
                       <MapErosionCotiere
                         erosionCotiere={erosionCotiereMap}
                         carteCommunes={communesMap}
                       />
                       <LegendErosionCotiere />
-                    </>
+                    </div>
                     : <DataNotFoundForGraph image={GraphNotFound} />
                 }
                 <p style={{ padding: '1em', margin: '0' }}>Source : CEREMA</p>
               </div>
+              <button onClick={() => exportDatavizAsPNG(exportPNGRef, 'erosion_cotiere.png')}>Exporter PNG</button>
             </div>
           </div>
           : <Loader />

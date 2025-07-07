@@ -1,5 +1,6 @@
 'use client';
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
@@ -7,6 +8,7 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { Patch4, RessourcesEau } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { prelevementEauTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
@@ -93,6 +95,7 @@ export const PrelevementEau = (props: {
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : undefined;
+  const exportData = IndicatorExportTransformations.ressourcesEau.PrelevementEau(ressourcesEau);
 
   return (
     <>
@@ -100,6 +103,15 @@ export const PrelevementEau = (props: {
         !isLoadingPatch4 ?
           <div className={styles.container}>
             <div className={ressourcesEau.length > 0 ? "w-5/12" : "w-1/2"}>
+              <div className="mb-4">
+                <ExportButton
+                  data={exportData}
+                  baseName="prelevements_eau"
+                  type={type}
+                  libelle={libelle}
+                  sheetName="Prélèvements en eau"
+                />
+              </div>
               <div className={styles.explicationWrapper}>
                 {dataParMaille.length !== 0 ? (
                   <p>
