@@ -307,14 +307,20 @@ export const MapLCZ = ({
             };
             const identifier = props.identifier || '';
             const lcz = props.lcz || '';
-            let content = `<h5 style='font-size:14px; margin:0px;'><b>Typologie de l'entité ${identifier}</b></h5><b>LCZ</b>: ${lcz}<br/>`;
-            const order = ['are', 'bur', 'hre', 'ror', 'ver', 'vhr', 'bsr', 'war', 'FID'];
+            let content = `
+              <h5 style='font-size:18px; margin:0px;'>
+                <b>LCZ ${lcz}</b>
+              </h5>
+            `;
+            const order = ['are', 'bur', 'hre', 'ror', 'ver', 'vhr', 'bsr', 'war'];
             for (const key of order) {
               if (props[key] !== undefined) {
-                content += `<b>${labels[key]}</b>: ${props[key]}<br/>`;
+                content += `<b>${labels[key]}</b> : ${props[key]}<br/>`;
               }
             }
-            new maplibregl.Popup()
+            new maplibregl.Popup({
+              className: 'custom-popup'
+            })
               .setLngLat([point.lng, point.lat])
               .setHTML(content)
               .addTo(map);
@@ -367,6 +373,25 @@ export const MapLCZ = ({
 
   return (
     <div style={{ position: 'relative' }}>
+      <style jsx global>{`
+        .custom-popup .maplibregl-popup-content {
+          font-family: 'Marianne' !important;
+          background-color: #ffffff !important;
+          border-radius: 0.5rem !important;
+          padding: 20px !important;
+          position: relative !important;
+          box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16) !important;
+          min-width: max-content !important;
+          font-size: 12px !important;
+        }
+        .custom-popup .maplibregl-popup-tip {
+          border-top-color: #ffffff !important;
+        }
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
       {serviceStatus.errorMessage && (
         <div
           className={styles.errorMessageWrapper}
@@ -402,12 +427,6 @@ export const MapLCZ = ({
                 marginRight: '0.5rem'
               }} />
               Chargement des données cartographiques...
-              <style jsx>{`
-                @keyframes spin {
-                  0% { transform: rotate(0deg); }
-                  100% { transform: rotate(360deg); }
-                }
-              `}</style>
             </div>
           )}
           <p style={{ padding: '1em', margin: '0' }}>
