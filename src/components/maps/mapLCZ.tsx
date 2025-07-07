@@ -161,7 +161,8 @@ export const MapLCZ = ({
             id: 'cerema-lcz-tile-layer',
             type: 'raster',
             source: 'cerema-lcz-tile',
-            paint: { 'raster-opacity': 1 }
+            paint: { 'raster-opacity': 1 },
+            maxzoom: 13.5
           });
 
           map.addSource('lcz-wms', {
@@ -175,7 +176,8 @@ export const MapLCZ = ({
             id: 'lcz-wms-layer',
             type: 'raster',
             source: 'lcz-wms',
-            paint: { 'raster-opacity': 0.7 }
+            paint: { 'raster-opacity': 0.7 },
+            minzoom: 13.5
           });
           map.addSource('communes-outline', {
             type: 'geojson',
@@ -256,7 +258,7 @@ export const MapLCZ = ({
               bsr: 'Taux de sol nu perméable (%)',
               war: 'Taux de surface en eau (%)',
             };
-            const identifier = props.identifier || '';
+            // const identifier = props.identifier || '';
             const lcz = props.lcz || '';
             let content = `
               <h5 style='font-size:18px; margin:0px;'>
@@ -365,7 +367,7 @@ export const MapLCZ = ({
               Chargement des données cartographiques...
             </div>
           )}
-          <p style={{ padding: '1em', margin: '0' }}>
+          <p style={{ padding: '1em', margin: '0', backgroundColor: '#f9f9ff' }}>
             Source : {
               isLczCovered
                 ? "CEREMA"

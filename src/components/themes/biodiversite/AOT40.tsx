@@ -168,6 +168,7 @@ const AOT40Dataviz = (props: {
                   baseName="aot_40"
                   type={type}
                   libelle={libelle}
+                  code={code}
                   sheetName="AOT 40"
                 />
               </div>
