@@ -1,0 +1,54 @@
+"use client";
+import { WaveButton } from '@/components/WaveButton';
+import { exportToXLSX } from '@/lib/utils/export/exportXlsx';
+import { useState } from 'react';
+
+type ExportDataRow = Record<string, string | number | boolean | null | bigint | undefined>;
+
+interface ExportButtonProps {
+  data: ExportDataRow[];
+  baseName: string;
+  type: string;
+  libelle: string;
+  sheetName: string;
+  children?: React.ReactNode;
+}
+
+export const ExportButton = ({
+  data,
+  baseName,
+  type,
+  libelle,
+  sheetName,
+  children = 'Exporter la thématique',
+}: ExportButtonProps) => {
+  const [isExporting, setIsExporting] = useState(false);
+
+  const handleExport = async () => {
+    if (!data || data.length === 0) {
+      console.log('Aucune donnée à exporter');
+      return;
+    }
+    setIsExporting(true);
+    try {
+      exportToXLSX(data, baseName, type, libelle, sheetName);
+    } catch (error) {
+      console.error('Export failed:', error);
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  return (
+    <WaveButton
+      onClick={handleExport}
+      disabled={isExporting}
+      style={{ 
+        cursor: isExporting ? 'wait' : 'pointer',
+      }}
+    >
+      {isExporting ? 'Export en cours...' : children}
+    </WaveButton>
+  );
+};
+

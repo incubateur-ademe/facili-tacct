@@ -122,7 +122,7 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
         borderWidth={1}
         arcLinkLabelComponent={arcLabelsComponent}
         arcLinkLabel={({ id }) => `${id}`}
-        arcLinkLabelsSkipAngle={7}
+        arcLinkLabelsSkipAngle={10}
         sortByValue={false}
         layers={[
           'arcs',
@@ -138,9 +138,9 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
         arcLinkLabelsTextColor="#333333"
         arcLinkLabelsThickness={2}
         arcLinkLabelsColor={{ from: 'color' }}
-        arcLinkLabelsOffset={10}
-        arcLinkLabelsDiagonalLength={16}
-        arcLinkLabelsStraightLength={20}
+        arcLinkLabelsOffset={15}
+        arcLinkLabelsDiagonalLength={20}
+        arcLinkLabelsStraightLength={5}
         // tooltip={({ datum: { id, value } }: PieTooltipProps<DefaultRawDatum>) => (
         //   <div
         //     style={{

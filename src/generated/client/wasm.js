@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.9.0
- * Query Engine version: 81e4af48011447c3cc503a190e86995b66d2a28e
+ * Prisma Client JS version: 6.11.0
+ * Query Engine version: 9c30299f5a0ea26a96790e13f796dc6094db3173
  */
 Prisma.prismaVersion = {
-  client: "6.9.0",
-  engine: "81e4af48011447c3cc503a190e86995b66d2a28e"
+  client: "6.11.0",
+  engine: "9c30299f5a0ea26a96790e13f796dc6094db3173"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -477,6 +477,7 @@ exports.Prisma.Communes_dromScalarFieldEnum = {
   epci: 'epci',
   libelle_epci: 'libelle_epci',
   departement: 'departement',
+  libelle_departement: 'libelle_departement',
   region: 'region',
   ept: 'ept',
   libelle_petr: 'libelle_petr',
@@ -530,51 +531,6 @@ exports.Prisma.UsersScalarFieldEnum = {
   created_at: 'created_at',
   last_connection: 'last_connection',
   role: 'role'
-};
-
-exports.Prisma.BiodiversiteScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  type_touristique: 'type_touristique',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  region: 'region'
-};
-
-exports.Prisma.Gestion_risquesScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  lib_risque_jo: 'lib_risque_jo',
-  dat_pub_arrete: 'dat_pub_arrete',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  region: 'region'
-};
-
-exports.Prisma.Incendies_foretScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  region: 'region',
-  nature: 'nature',
-  annee: 'annee',
-  surface_parcourue: 'surface_parcourue',
-  surface_foret: 'surface_foret',
-  surface_maquis_garrigues: 'surface_maquis_garrigues',
-  autres_surfaces_naturelles_hors_foret: 'autres_surfaces_naturelles_hors_foret',
-  surfaces_agricoles: 'surfaces_agricoles',
-  surfaces_non_boisees: 'surfaces_non_boisees',
-  surfaces_non_boisees_artificialisees: 'surfaces_non_boisees_artificialisees',
-  surfaces_non_boisees_naturelles: 'surfaces_non_boisees_naturelles',
-  surface_autres_terres_boisees: 'surface_autres_terres_boisees',
-  autres_surfaces: 'autres_surfaces'
 };
 
 exports.Prisma.Surfaces_protegeesScalarFieldEnum = {
@@ -632,25 +588,25 @@ exports.Prisma.RgaScalarFieldEnum = {
   nb_logement_alea_faible: 'nb_logement_alea_faible',
   nb_logement_sans_alea: 'nb_logement_sans_alea',
   nb_logement_alea_moyen_fort_avant_1920: 'nb_logement_alea_moyen_fort_avant_1920',
+  part_logement_alea_moyen_fort_avant_1920: 'part_logement_alea_moyen_fort_avant_1920',
   nb_logement_alea_moyen_fort_1920_1945: 'nb_logement_alea_moyen_fort_1920_1945',
+  part_logement_alea_moyen_fort_1920_1945: 'part_logement_alea_moyen_fort_1920_1945',
   nb_logement_alea_moyen_fort_1945_1975: 'nb_logement_alea_moyen_fort_1945_1975',
+  part_logement_alea_moyen_fort_1945_1975: 'part_logement_alea_moyen_fort_1945_1975',
   nb_logement_alea_moyen_fort_apres_1975: 'nb_logement_alea_moyen_fort_apres_1975',
+  part_logement_alea_moyen_fort_apres_1975: 'part_logement_alea_moyen_fort_apres_1975',
   nb_logement_alea_faible_avant_1920: 'nb_logement_alea_faible_avant_1920',
+  part_logement_alea_faible_avant_1920: 'part_logement_alea_faible_avant_1920',
   nb_logement_alea_faible_1920_1945: 'nb_logement_alea_faible_1920_1945',
+  part_logement_alea_faible_1920_1945: 'part_logement_alea_faible_1920_1945',
   nb_logement_alea_faible_1945_1975: 'nb_logement_alea_faible_1945_1975',
+  part_logement_alea_faible_1945_1975: 'part_logement_alea_faible_1945_1975',
   nb_logement_alea_faible_apres_1975: 'nb_logement_alea_faible_apres_1975',
+  part_logement_alea_faible_apres_1975: 'part_logement_alea_faible_apres_1975',
   surface_commune: 'surface_commune',
   surface_alea_faible_commune: 'surface_alea_faible_commune',
-  surface_alea_moyen_fort_commune: 'surface_alea_moyen_fort_commune',
-  part_logement_alea_moyen_fort_avant_1920: 'part_logement_alea_moyen_fort_avant_1920',
-  part_logement_alea_moyen_fort_1920_1945: 'part_logement_alea_moyen_fort_1920_1945',
-  part_logement_alea_moyen_fort_1945_1975: 'part_logement_alea_moyen_fort_1945_1975',
-  part_logement_alea_moyen_fort_apres_1975: 'part_logement_alea_moyen_fort_apres_1975',
-  part_logement_alea_faible_avant_1920: 'part_logement_alea_faible_avant_1920',
-  part_logement_alea_faible_1920_1945: 'part_logement_alea_faible_1920_1945',
-  part_logement_alea_faible_1945_1975: 'part_logement_alea_faible_1945_1975',
-  part_logement_alea_faible_apres_1975: 'part_logement_alea_faible_apres_1975',
   part_alea_faible_commune: 'part_alea_faible_commune',
+  surface_alea_moyen_fort_commune: 'surface_alea_moyen_fort_commune',
   part_alea_moyen_fort_commune: 'part_alea_moyen_fort_commune'
 };
 
@@ -710,68 +666,20 @@ exports.Prisma.Sandbox_usersScalarFieldEnum = {
   created_at: 'created_at'
 };
 
-exports.Prisma.Agriculture_bio_with_territoireScalarFieldEnum = {
+exports.Prisma.Lcz_couvertureScalarFieldEnum = {
   index: 'index',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  VARIABLE: 'VARIABLE',
-  LIBELLE_SOUS_CHAMP: 'LIBELLE_SOUS_CHAMP',
-  surface_2022: 'surface_2022',
-  surface_2021: 'surface_2021',
-  surface_2020: 'surface_2020',
-  surface_2019: 'surface_2019',
-  nombre_2022: 'nombre_2022',
-  nombre_2021: 'nombre_2021',
-  nombre_2020: 'nombre_2020',
-  nombre_2019: 'nombre_2019',
   code_geographique: 'code_geographique',
   libelle_geographique: 'libelle_geographique',
-  libelle_departement: 'libelle_departement',
-  libelle_petr: 'libelle_petr',
-  ept: 'ept'
-};
-
-exports.Prisma.Qualite_sites_baignade_by_territoireScalarFieldEnum = {
-  index: 'index',
-  DEP_NOM: 'DEP_NOM',
-  DEP_NUM: 'DEP_NUM',
-  TYPE: 'TYPE',
-  COMMUNE: 'COMMUNE',
-  POINT: 'POINT',
-  LONG: 'LONG',
-  LAT: 'LAT',
-  QEB_2013: 'QEB_2013',
-  QEB_2014: 'QEB_2014',
-  QEB_2015: 'QEB_2015',
-  QEB_2016: 'QEB_2016',
-  QEB_2017: 'QEB_2017',
-  QEB_2018: 'QEB_2018',
-  QEB_2019: 'QEB_2019',
-  QEB_2020: 'QEB_2020',
-  libelle_pnr: 'libelle_pnr',
-  libelle_petr: 'libelle_petr',
-  ept: 'ept',
+  epci: 'epci',
   libelle_epci: 'libelle_epci',
+  departement: 'departement',
   libelle_departement: 'libelle_departement',
-  libelle_geographique: 'libelle_geographique'
-};
-
-exports.Prisma.Etat_cours_deau_by_communeScalarFieldEnum = {
-  code_geographique: 'code_geographique',
-  epci: 'epci',
-  centroid: 'centroid',
-  name: 'name',
-  pk: 'pk',
-  etateco: 'etateco',
-  geometry: 'geometry'
-};
-
-exports.Prisma.Etat_cours_deau_by_epciScalarFieldEnum = {
-  pk: 'pk',
-  epci: 'epci',
-  name: 'name',
-  etateco: 'etateco',
-  geometry: 'geometry'
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  couverture_lcz: 'couverture_lcz'
 };
 
 exports.Prisma.SortOrder = {
@@ -808,19 +716,13 @@ exports.Prisma.ModelName = {
   etat_cours_d_eau: 'etat_cours_d_eau',
   qualite_sites_baignade: 'qualite_sites_baignade',
   users: 'users',
-  biodiversite: 'biodiversite',
-  gestion_risques: 'gestion_risques',
-  incendies_foret: 'incendies_foret',
   surfaces_protegees: 'surfaces_protegees',
   spatial_ref_sys: 'spatial_ref_sys',
   rga: 'rga',
   postgis_rga: 'postgis_rga',
   surfaces_agricoles: 'surfaces_agricoles',
   sandbox_users: 'sandbox_users',
-  agriculture_bio_with_territoire: 'agriculture_bio_with_territoire',
-  qualite_sites_baignade_by_territoire: 'qualite_sites_baignade_by_territoire',
-  etat_cours_deau_by_commune: 'etat_cours_deau_by_commune',
-  etat_cours_deau_by_epci: 'etat_cours_deau_by_epci'
+  lcz_couverture: 'lcz_couverture'
 };
 
 /**
