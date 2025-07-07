@@ -39,7 +39,7 @@
     "@turf/turf": "^7.1.0",
     "antd": "^5.21.5",
     "bcryptjs": "^2.4.3",
-    "carte-facile": "^0.5.18",
+    "carte-facile": "^0.7.1",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
     "d3": "^7.9.0",

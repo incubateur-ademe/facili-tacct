@@ -28,10 +28,10 @@ export const GetRGACarte = async (
           FROM postgis."rga"
           WHERE code_geographique = ANY (
             SELECT code_geographique
-            FROM collectivites_searchbar
+            FROM databases."collectivites_searchbar"
             WHERE epci = (
               SELECT epci
-              FROM collectivites_searchbar
+              FROM databases."collectivites_searchbar"
               WHERE code_geographique = ${code}
               LIMIT 1
             )
@@ -39,7 +39,6 @@ export const GetRGACarte = async (
           GROUP BY code_geographique, alea;
         `;
         return commune;
-
       } else if (type === 'epci' && !eptRegex.test(libelle)) {
         const epci = await prisma.$queryRaw<RGACarte[]>`
           SELECT
@@ -49,7 +48,7 @@ export const GetRGACarte = async (
           FROM postgis."rga"
           WHERE code_geographique = ANY (
             SELECT code_geographique
-            FROM collectivites_searchbar
+            FROM databases."collectivites_searchbar"
             WHERE epci = ${code}
           )
           GROUP BY code_geographique, alea;
@@ -64,13 +63,13 @@ export const GetRGACarte = async (
           FROM postgis."rga"
           WHERE code_geographique = ANY (
             SELECT code_geographique
-            FROM collectivites_searchbar
+            FROM databases."collectivites_searchbar"
             WHERE code_pnr = ${code}
           )
           GROUP BY code_geographique, alea;
         `;
         return pnr;
-      } else if (type === "petr") {
+      } else if (type === 'petr') {
         const petr = await prisma.$queryRaw<RGACarte[]>`
           SELECT
             code_geographique,
@@ -79,13 +78,13 @@ export const GetRGACarte = async (
           FROM postgis."rga"
           WHERE code_geographique = ANY (
             SELECT code_geographique
-            FROM collectivites_searchbar
+            FROM databases."collectivites_searchbar"
             WHERE libelle_petr = ${libelle}
           )
           GROUP BY code_geographique, alea;
         `;
         return petr;
-      } else if (type === "departement") {
+      } else if (type === 'departement') {
         const departement = await prisma.$queryRaw<RGACarte[]>`
           SELECT
             code_geographique,
@@ -94,13 +93,13 @@ export const GetRGACarte = async (
           FROM postgis."rga"
           WHERE code_geographique = ANY (
             SELECT code_geographique
-            FROM collectivites_searchbar
+            FROM databases."collectivites_searchbar"
             WHERE departement = ${code}
           )
           GROUP BY code_geographique, alea;
         `;
         return departement;
-      } else if (type === "ept") {
+      } else if (type === 'ept') {
         const ept = await prisma.$queryRaw<RGACarte[]>`
           SELECT
             code_geographique,
@@ -109,7 +108,7 @@ export const GetRGACarte = async (
           FROM postgis."rga"
           WHERE code_geographique = ANY (
             SELECT code_geographique
-            FROM collectivites_searchbar
+            FROM databases."collectivites_searchbar"
             WHERE ept = ${code}
           )
           GROUP BY code_geographique, alea;
