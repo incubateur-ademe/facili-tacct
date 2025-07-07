@@ -201,7 +201,7 @@ export const MapLCZ = ({
           map.addSource('cerema-lcz-tile', {
             type: 'raster',
             tiles: [
-              'https://Acartagene.cerema.fr/server/rest/services/Hosted/l_lcz_spot_000_2022_tl/MapServer/tile/{z}/{y}/{x}'
+              'https://cartagene.cerema.fr/server/rest/services/Hosted/l_lcz_spot_000_2022_tl/MapServer/tile/{z}/{y}/{x}'
             ],
             tileSize: 256,
             attribution: '&copy; <a href="https://cartagene.cerema.fr/">Cerema</a>'
@@ -216,7 +216,7 @@ export const MapLCZ = ({
           map.addSource('lcz-wms', {
             type: 'raster',
             tiles: [
-              'https://Acartagene.cerema.fr/server/services/l_lcz_spot_000_2022_mil/MapServer/WMSServer?service=WMS&request=GetMap&layers=0&styles=&format=image/png&transparent=true&version=1.3.0&width=256&height=256&crs=EPSG:3857&bbox={bbox-epsg-3857}'
+              'https://cartagene.cerema.fr/server/services/l_lcz_spot_000_2022_mil/MapServer/WMSServer?service=WMS&request=GetMap&layers=0&styles=&format=image/png&transparent=true&version=1.3.0&width=256&height=256&crs=EPSG:3857&bbox={bbox-epsg-3857}'
             ],
             tileSize: 256,
           });
