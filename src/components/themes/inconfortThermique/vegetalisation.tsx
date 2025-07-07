@@ -1,7 +1,6 @@
 'use client';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import { default as DataNotFound } from '@/assets/images/no_data_on_territory.svg';
-import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { CLCMap } from '@/components/maps/CLC';
@@ -9,15 +8,18 @@ import { vegetalisationLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
+import { WaveButton } from '@/components/WaveButton';
 import { VegetalisationDto } from '@/lib/dto';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { CLCTerritoires, InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
+import { exportDatavizAsPNG } from '@/lib/utils/export/exportPng';
+import { exportAsZip } from '@/lib/utils/export/exportZipGeneric';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { VegetalisationText } from './staticTexts';
 import styles from './themes.module.scss';
 
@@ -45,6 +47,7 @@ const Vegetalisation = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
+  const exportPNGRef = useRef<HTMLDivElement | null>(null);
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
@@ -82,7 +85,7 @@ const Vegetalisation = (props: {
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <div className="w-2/5">
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <ExportButton
                 data={exportData}
                 baseName="vegetalisation"
@@ -90,6 +93,26 @@ const Vegetalisation = (props: {
                 libelle={libelle}
                 sheetName="Végétalisation"
               />
+            </div> */}
+            <div className="mb-4">
+              <WaveButton
+                onClick={() => exportAsZip({
+                  excelFiles: [{
+                    data: exportData,
+                    baseName: "vegetalisation",
+                    sheetName: "Végétalisation",
+                    type,
+                    libelle
+                  }],
+                  pngFiles: [{
+                    ref: exportPNGRef,
+                    filename: 'végétalisation.png'
+                  }],
+                  zipFilename: `vegetalisation_export_${new Date().toISOString().split('T')[0]}.zip`
+                })}
+              >
+                Exporter l'indicateur
+              </WaveButton>
             </div>
             <div className={styles.explicationWrapper}>
               {isNaN(foretPercent) ? "" :
@@ -120,7 +143,7 @@ const Vegetalisation = (props: {
               </p>
               {
                 clc ? (
-                  <>
+                  <div ref={exportPNGRef}>
                     <CLCMap clc={clc} />
                     <div
                       className={styles.legend}
@@ -128,13 +151,14 @@ const Vegetalisation = (props: {
                     >
                       <LegendCompColor legends={vegetalisationLegend} />
                     </div>
-                  </>
+                  </div>
                 ) : <DataNotFoundForGraph image={DataNotFound} />
               }
               <p style={{ padding: '1em', margin: '0' }}>
                 Source : CORINE Land Cover
               </p>
             </div>
+            <button onClick={() => exportDatavizAsPNG(exportPNGRef, 'végétalisation.png')}>Exporter PNG</button>
           </div>
         </div>
       ) : (

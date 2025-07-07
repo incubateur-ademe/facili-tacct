@@ -12,7 +12,7 @@ import { Average } from '@/lib/utils/reusableFunctions/average';
 import { BarDatum } from '@nivo/bar';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from "react";
+import { RefObject, useEffect, useState } from "react";
 import RGAMap from '../../maps/mapRGA';
 import styles from './gestionRisques.module.scss';
 
@@ -25,6 +25,7 @@ type Props = {
   rga: RGAdb[];
   datavizTab: string;
   setDatavizTab: (value: string) => void;
+  exportPNGRef: RefObject<HTMLDivElement | null>;
 };
 
 const isRGAdb = (obj: unknown): obj is RGAdb => {
@@ -124,12 +125,12 @@ const RgaDataViz = (props: Props) => {
     rga,
     datavizTab,
     setDatavizTab,
+    exportPNGRef
   } = props;
   const searchParams = useSearchParams();
   const type = searchParams.get('type')!;
   const code = searchParams.get('code')!;
   const [multipleDepartements, setMultipleDepartements] = useState<string[]>([]);
-
   // options de filtre pour les départements (plusieurs départements possibles pour un EPCI)
   const departement = type === "epci" ? rga[0]?.libelle_departement : "";
   const rgaTerritoireSup = type === "epci" ? rga.filter(item => item.libelle_departement === departement) : rga
@@ -225,7 +226,7 @@ const RgaDataViz = (props: Props) => {
           />
         </div>
       ) : datavizTab === 'Cartographie' ? (
-        <>
+        <div ref={exportPNGRef}>
           <RGAMap rgaCarte={rgaCarte} carteCommunes={carteCommunes} />
           <div
             className={styles.legend}
@@ -233,7 +234,7 @@ const RgaDataViz = (props: Props) => {
           >
             <LegendCompColor legends={RgaMapLegend} />
           </div>
-        </>
+        </div>
       ) : (
         ''
       )}

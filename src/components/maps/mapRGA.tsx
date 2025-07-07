@@ -26,9 +26,6 @@ const RGAMap = (props: {
   const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
   const mapContainer = useRef<HTMLDivElement>(null);
 
-
-
-
   useEffect(() => {
     if (!mapContainer.current) return;
     const map = new maplibregl.Map({
@@ -36,6 +33,13 @@ const RGAMap = (props: {
       style: mapStyles.desaturated,
       attributionControl: false,
     });
+
+    // const map = new maplibregl.Map({
+    //   container: mapContainer.current,
+    //   style: mapStyles.desaturated,
+    //   attributionControl: false,
+    //   preserveDrawingBuffer: true,
+    // } as any);
 
     addOverlay(map, Overlay.administrativeBoundaries);
 

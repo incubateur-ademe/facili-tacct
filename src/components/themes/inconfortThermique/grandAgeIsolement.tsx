@@ -96,12 +96,12 @@ export const GrandAgeIsolement = (props: {
         : type === 'epci' && !eptRegex.test(libelle)
           ? grandAgeIsolementMapped.filter((e) => e.epci === code)
           : grandAgeIsolementMapped;
-  const territoireSup = type === "epci" 
-    ? grandAgeIsolementMapped[0].departement 
+  const territoireSup = type === "epci"
+    ? grandAgeIsolementMapped[0].departement
     : type === "commune"
       ? grandAgeIsolementMapped.find((e) => e.code_geographique === code)?.epci
       : [];
-  const filterTerritoireSup = type === "epci" 
+  const filterTerritoireSup = type === "epci"
     ? grandAgeIsolementMapped.filter((e) => e.departement === territoireSup)
     : type === "commune"
       ? grandAgeIsolementMapped.filter((e) => e.epci === territoireSup)
@@ -185,6 +185,7 @@ export const GrandAgeIsolement = (props: {
                 baseName="grand_age"
                 type={type}
                 libelle={libelle}
+                code={code}
                 sheetName="Grand âge"
               />
             </div>

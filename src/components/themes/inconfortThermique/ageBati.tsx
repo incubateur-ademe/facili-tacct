@@ -137,6 +137,7 @@ export const AgeBati = (props: {
                 baseName="age_bati"
                 type={type}
                 libelle={libelle}
+                code={code}
                 sheetName="Age du bâti"
               />
             </div>

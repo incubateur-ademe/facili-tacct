@@ -144,6 +144,7 @@ export const Catnat = (props: {
                     baseName="arretes_catnat"
                     type={type}
                     libelle={libelle}
+                    code={code}
                     sheetName="Arrêtés CatNat"
                   />
                 </div>

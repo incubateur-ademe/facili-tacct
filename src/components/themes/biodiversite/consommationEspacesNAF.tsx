@@ -46,6 +46,7 @@ export const ConsommationEspacesNAF = (props: {
             baseName="consommation_espaces_naf"
             type={type}
             libelle={libelle}
+            code={code}
             sheetName="Espaces NAF"
           />
         </div>

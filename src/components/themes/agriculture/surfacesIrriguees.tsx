@@ -59,6 +59,7 @@ export const SurfacesIrriguees = ({
                   baseName="surfaces_irriguees"
                   type={type}
                   libelle={libelle}
+                  code={code}
                   sheetName="Surfaces irriguées"
                 />
               </div>

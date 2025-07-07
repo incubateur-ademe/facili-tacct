@@ -72,6 +72,7 @@ const AgricultureBiologique = (props: {
                   baseName="agriculture_biologique"
                   type={type}
                   libelle={libelle}
+                  code={code}
                   sheetName="Agriculture bio"
                 />
               </div>
