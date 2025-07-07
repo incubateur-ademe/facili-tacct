@@ -2,7 +2,7 @@ import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import { default as DataNotFound } from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from "@/components/loader";
-import MapLCZ3 from '@/components/maps/mapLCZ3';
+import { MapLCZ } from '@/components/maps/mapLCZ';
 import { AlgoPatch4 } from "@/components/patch4/AlgoPatch4";
 import TagInIndicator from "@/components/patch4/TagInIndicator";
 import { CarteCommunes, Patch4 } from "@/lib/postgres/models";
@@ -56,18 +56,15 @@ export const LCZ = ({
           <div className="w-3/5">
             <div className={styles.graphWrapper}>
               <p style={{ padding: '1em', margin: '0' }}>
-                <b>LCZ</b>
+                <b>Cartographie des Zones Climatiques Locales (LCZ)</b>
               </p>
               {
                 carteCommunes ? (
                   <>
-                    <MapLCZ3 carteCommunes={carteCommunes} />
+                    <MapLCZ carteCommunes={carteCommunes} />
                   </>
                 ) : <DataNotFoundForGraph image={DataNotFound} />
               }
-              <p style={{ padding: '1em', margin: '0' }}>
-                Source : CEREMA
-              </p>
             </div>
           </div>
         </div>
