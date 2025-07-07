@@ -29,6 +29,7 @@ const InconfortThermique = async (props: { searchParams: SearchParams }) => {
           baseName="inconfort_thermique"
           type={type}
           libelle={libelle}
+          code={code}
           sheetName="Inconfort thermique"
           children="Export inconfort thermique"
         />

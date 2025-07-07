@@ -58,6 +58,7 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
                 baseName="feux_foret"
                 type={type}
                 libelle={libelle}
+                code={code}
                 sheetName="Feux de forêt"
               />
             </div>

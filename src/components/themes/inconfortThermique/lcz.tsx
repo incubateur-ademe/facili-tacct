@@ -7,8 +7,9 @@ import { AlgoPatch4 } from "@/components/patch4/AlgoPatch4";
 import TagInIndicator from "@/components/patch4/TagInIndicator";
 import { CarteCommunes, Patch4 } from "@/lib/postgres/models";
 import { GetPatch4 } from "@/lib/queries/patch4";
+import { exportDatavizAsPNG } from '@/lib/utils/export/exportPng';
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LCZText } from './staticTexts';
 import styles from './themes.module.scss';
 
@@ -21,6 +22,7 @@ export const LCZ = ({
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
+  const exportPNGRef = useRef<HTMLDivElement | null>(null);
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
@@ -60,12 +62,13 @@ export const LCZ = ({
               </p>
               {
                 carteCommunes ? (
-                  <>
+                  <div ref={exportPNGRef}>
                     <MapLCZ carteCommunes={carteCommunes} />
-                  </>
+                  </div>
                 ) : <DataNotFoundForGraph image={DataNotFound} />
               }
             </div>
+            <button onClick={() => exportDatavizAsPNG(exportPNGRef, 'lcz.png')}>Exporter PNG</button>
           </div>
         </div>
       ) : (
