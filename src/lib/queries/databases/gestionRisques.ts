@@ -14,11 +14,12 @@ export const GetArretesCatnat = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 2000)
+    }, 3000)
   );
   const dbQuery = (async () => {
     try {
       // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.arretes_catnat.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
@@ -55,6 +56,7 @@ export const GetIncendiesForet = async (
   const dbQuery = (async () => {
     try {
       // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.feux_foret.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
@@ -91,7 +93,7 @@ export const GetRga = async (
   libelle: string,
   type: string
 ): Promise<RGAdb[]> => {
-  const column = ColumnCodeCheck(type);
+  const column = type ? ColumnCodeCheck(type) : "";
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
@@ -103,8 +105,15 @@ export const GetRga = async (
       const exists = await prisma.rga.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
-      if (!exists) return [];
-      else if (type === "commune") {
+      if (
+        !libelle || 
+        !type || 
+        (!code && type !== 'petr') || 
+        libelle === "null" ||
+        (code === "null" && type !== 'petr')  
+      ) return [];
+      else if (!exists) return [];
+      else if (type === 'commune') {
         const value = await prisma.$queryRaw`
           SELECT *
           FROM "databases"."rga"
@@ -116,15 +125,14 @@ export const GetRga = async (
           )
         `;
         return value as RGAdb[];
-      } else if (type === "epci") {
+      } else if (type === 'epci') {
         const value = await prisma.$queryRaw`
           SELECT *
           FROM "databases"."rga"
-          WHERE departement = (
+          WHERE departement IN (
             SELECT departement
             FROM "databases"."rga"
             WHERE epci = ${code}
-            LIMIT 1
           )
         `;
         return value as RGAdb[];
@@ -144,4 +152,3 @@ export const GetRga = async (
   })();
   return Promise.race([dbQuery, timeoutPromise]);
 };
-

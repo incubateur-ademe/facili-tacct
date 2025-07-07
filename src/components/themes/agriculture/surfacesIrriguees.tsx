@@ -1,4 +1,5 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { surfacesIrrigueesLegend } from '@/components/maps/legends/datavizLegends';
@@ -8,6 +9,8 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
 import { surfacesIrrigueesTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
+import { FilterDataTerritory } from '@/lib/utils/reusableFunctions/filterDataTerritories';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { SurfacesIrrigueesText } from '../inconfortThermique/staticTexts';
@@ -23,6 +26,7 @@ export const SurfacesIrriguees = ({
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const carteCommunesEnriched = carteCommunes.map((el) => {
     return {
       ...el,
@@ -32,6 +36,9 @@ export const SurfacesIrriguees = ({
     };
   });
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
+  const carteCommunesFiltered = FilterDataTerritory(type, code, libelle, carteCommunes);
+  const exportData = IndicatorExportTransformations.agriculture.surfacesIrriguees(carteCommunesFiltered);
+
   const surfaceTerritoire = type === "commune" ?
     communesMap.find((obj) => obj.properties.code_geographique === code)?.properties.surfacesIrriguees
     : communesMap
@@ -39,12 +46,22 @@ export const SurfacesIrriguees = ({
       .map((value) => (isNaN(value!) ? 0 : value))
       .reduce((acc, value) => acc! + value!, 0);
 
+
   return (
     <>
       {communesMap ? (
         <div className={styles.container}>
           <>
             <div className={communesMap.length > 0 ? "w-2/5" : "w-1/2"}>
+              <div className="mb-4">
+                <ExportButton
+                  data={exportData}
+                  baseName="surfaces_irriguees"
+                  type={type}
+                  libelle={libelle}
+                  sheetName="Surfaces irriguées"
+                />
+              </div>
               <div className={styles.explicationWrapper}>
                 {
                   surfaceTerritoire !== undefined && !isNaN(surfaceTerritoire) && communesMap.length > 0 ? (
@@ -69,21 +86,21 @@ export const SurfacesIrriguees = ({
                     Part de la surface agricole irriguée dans la SAU en 2020
                   </b>
                 </p>
-                  {
-                    communesMap.length > 0 ? (
-                      <>
-                        <MapSurfacesIrriguees carteCommunes={communesMap} />
-                        <div
-                          className={styles.legend}
-                          style={{ width: 'auto', justifyContent: 'center' }}
-                        >
-                          <LegendCompColor legends={surfacesIrrigueesLegend} />
-                        </div>
-                      </>
-                    ) : (
-                      <DataNotFoundForGraph image={DataNotFound} />
-                    )
-                  }
+                {
+                  communesMap.length > 0 ? (
+                    <>
+                      <MapSurfacesIrriguees carteCommunes={communesMap} />
+                      <div
+                        className={styles.legend}
+                        style={{ width: 'auto', justifyContent: 'center' }}
+                      >
+                        <LegendCompColor legends={surfacesIrrigueesLegend} />
+                      </div>
+                    </>
+                  ) : (
+                    <DataNotFoundForGraph image={DataNotFound} />
+                  )
+                }
                 <p style={{ padding: '1em', margin: '0' }}>
                   Source : AGRESTE, 2020.
                 </p>

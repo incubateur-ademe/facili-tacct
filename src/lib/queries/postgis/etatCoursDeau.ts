@@ -20,6 +20,7 @@ export const GetEtatCoursDeau = async (
   const dbQuery = (async () => {
     try {
       // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.communes_drom.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });

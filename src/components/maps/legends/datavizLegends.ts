@@ -375,6 +375,138 @@ export const vegetalisationColors = {
   'Sea and ocean': '#386cb0'
 };
 
+export const LczLegend = [
+  {
+    value: "LCZ 1 : Ensemble compact de tours",
+    color: "#8C0000",
+  },
+  {
+    value: "LCZ 2 : Ensemble compact d'immeubles",
+    color: "#D10000",
+  },{
+    value: "LCZ 3 : Ensemble compact de maisons",
+    color: "#FF0000",
+  },
+  {
+    value: "LCZ 4 : Ensemble de tours espacées",
+    color: "#BF4D00",
+  },
+  {
+    value: "LCZ 5 : Ensemble d'immeubles espacés",
+    color: "#FA6600",
+  },
+  {
+    value: "LCZ 6 : Ensemble de maisons espacées",
+    color: "#FF9955",
+  },
+  {
+    value: "LCZ 7 : Ensemble dense de constructions légères",
+    color: "#FAEE05",
+  },
+  {
+    value: "LCZ 8 : Bâtiments de grande emprise",
+    color: "#BCBCBC",
+  },
+  {
+    value: "LCZ 9 : Implantation diffuse de maisons",
+    color: "#FFCCAA",
+  },
+  {
+    value: "LCZ A : Espace densément arboré",
+    color: "#006A00",
+  },
+  {
+    value: "LCZ B : Espace arboré clairsemé",
+    color: "#00AA00",
+  },
+  {
+    value: "LCZ C : Espace végétalisé hétérogène",
+    color: "#648525",
+  },
+  {
+    value: "LCZ D : Végétation basse",
+    color: "#B9DB79",
+  },
+  {
+    value: "LCZ E : Sol imperméable naturel ou artificiel",
+    color: "#000000",
+  },
+  {
+    value: "LCZ F : Sol nu perméable",
+    color: "#FBF7AE",
+  },
+  {
+    value: "LCZ G : Surface en eau",
+    color: "#6A6AFF"
+  }
+];
+
+export const LczLegendOpacity70 = [
+  {
+    value: "LCZ 1 : Ensemble compact de tours",
+    color: "#AF4D4D",
+  },
+  {
+    value: "LCZ 2 : Ensemble compact d'immeubles",
+    color: "#D74545",
+  },{
+    value: "LCZ 3 : Ensemble compact de maisons",
+    color: "#FF4D4D",
+  },
+  {
+    value: "LCZ 4 : Ensemble de tours espacées",
+    color: "#CD7D47",
+  },
+  {
+    value: "LCZ 5 : Ensemble d'immeubles espacés",
+    color: "#FC944D",
+  },
+  {
+    value: "LCZ 6 : Ensemble de maisons espacées",
+    color: "#FFB888",
+  },
+  {
+    value: "LCZ 7 : Ensemble dense de constructions légères",
+    color: "#9F9811",
+  },
+  {
+    value: "LCZ 8 : Bâtiments de grande emprise",
+    color: "#C6C6C6",
+  },
+  {
+    value: "LCZ 9 : Implantation diffuse de maisons",
+    color: "#FFDCC4",
+  },
+  {
+    value: "LCZ A : Espace densément arboré",
+    color: "#438D43",
+  },
+  {
+    value: "LCZ B : Espace arboré clairsemé",
+    color: "#43BA43",
+  },
+  {
+    value: "LCZ C : Espace végétalisé hétérogène",
+    color: "#89A05D",
+  },
+  {
+    value: "LCZ D : Végétation basse",
+    color: "#798D54",
+  },
+  {
+    value: "LCZ E : Sol imperméable naturel ou artificiel",
+    color: "#4D4D4D",
+  },
+  {
+    value: "LCZ F : Sol nu perméable",
+    color: "#FAF7C4",
+  },
+  {
+    value: "LCZ G : Surface en eau",
+    color: "#8888F0"
+  }
+];
+
 export const feuxForetBarChartLegend = [
   {
     variable: 'Feux de forêt',

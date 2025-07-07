@@ -8,7 +8,6 @@ import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import SubTabs from '@/components/SubTabs';
 import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
 import { RGAdb } from '@/lib/postgres/models';
-import { CheckMultipleDepartementsInEpci } from "@/lib/queries/checks";
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { BarDatum } from '@nivo/bar';
 import Image from 'next/image';
@@ -40,10 +39,10 @@ const isRGAdbArray = (obj: unknown): obj is RGAdb[] => {
       && typeof (el as RGAdb).part_alea_faible_commune === "number"
   );
 }
-const barChartEvolution = (rga: RGAdb[]) => {
+const barChartRepartition = (rgaFilteredByTerritory: RGAdb[]) => {
   const avant1975 = {
     nb_logement_alea_faible:
-      rga.reduce(
+      rgaFilteredByTerritory.reduce(
         (sum, item) =>
           sum +
           Number(item.nb_logement_alea_faible_avant_1920) +
@@ -52,7 +51,7 @@ const barChartEvolution = (rga: RGAdb[]) => {
         0
       ),
     nb_logement_alea_moyen_fort:
-      rga.reduce(
+      rgaFilteredByTerritory.reduce(
         (sum, item) =>
           sum +
           Number(item.nb_logement_alea_moyen_fort_avant_1920) +
@@ -63,11 +62,11 @@ const barChartEvolution = (rga: RGAdb[]) => {
     annee: "Avant 1975"
   };
   const apres1975 = {
-    nb_logement_alea_faible: rga.reduce(
+    nb_logement_alea_faible: rgaFilteredByTerritory.reduce(
       (sum, item) => sum + Number(item.nb_logement_alea_faible_apres_1975),
       0
     ),
-    nb_logement_alea_moyen_fort: rga.reduce(
+    nb_logement_alea_moyen_fort: rgaFilteredByTerritory.reduce(
       (sum, item) => sum + Number(item.nb_logement_alea_moyen_fort_apres_1975),
       0
     ),
@@ -75,7 +74,7 @@ const barChartEvolution = (rga: RGAdb[]) => {
   };
   return [avant1975, apres1975];
 }
-const barChartRepartition = (rga: RGAdb[], code: string, type: string) => {
+const barChartComparaison = (rga: RGAdb[], code: string, type: string) => {
   const territoireAlea = type === "commune" ?
     rga.find(item => item.code_geographique === code) :
     type === "epci" ?
@@ -130,19 +129,27 @@ const RgaDataViz = (props: Props) => {
   const type = searchParams.get('type')!;
   const code = searchParams.get('code')!;
   const [multipleDepartements, setMultipleDepartements] = useState<string[]>([]);
-  const evolutionRga = barChartEvolution(rga);
-  const repartitionRga = barChartRepartition(rga, code, type);
+
+  // options de filtre pour les départements (plusieurs départements possibles pour un EPCI)
   const departement = type === "epci" ? rga[0]?.libelle_departement : "";
+  const rgaTerritoireSup = type === "epci" ? rga.filter(item => item.libelle_departement === departement) : rga
+  const rgaFilteredByTerritory = type === "commune" ?
+    rga.filter(item => item.code_geographique === code) :
+    type === "epci" ?
+      rga.filter(item => item.epci === code) :
+      rga;
+
+  // data pour les graphes    
+  const evolutionRga = barChartRepartition(rgaFilteredByTerritory);
+  const repartitionRga = barChartComparaison(rgaTerritoireSup, code, type);
 
   useEffect(() => {
-    void (async () => {
-      if (type === "epci" && code) {
-        const value = await CheckMultipleDepartementsInEpci(code, type);
-        setMultipleDepartements(value as string[]);
-      }
-    })();
-  }, [type, code]);
-
+    if (type === "epci" && code) {
+      const departements = rga.map(item => item.departement);
+      const uniqueDepartements = Array.from(new Set(departements));
+      setMultipleDepartements(uniqueDepartements);
+    }
+  }, [type, code, rga]);
 
   return (
     <div className={styles.graphWrapper}>
@@ -179,7 +186,7 @@ const RgaDataViz = (props: Props) => {
                           "Département" : "",
                   color: legend.couleur,
                 }))}
-              axisLeftLegend="Part des logements (%)"
+              axisLeftLegend="Part du territoire (%)"
               groupMode="grouped"
               tooltip={(data) => RgaRepartitionTooltip({ data, type })}
             />
