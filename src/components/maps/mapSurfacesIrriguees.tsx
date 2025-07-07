@@ -32,20 +32,6 @@ const getColor = (d: number) => {
             : 'white';
 };
 
-
-// import { toPng } from 'html-to-image';
-
-// function exportChartAsPNG(ref: any, filename = 'chart.png') {
-//   toPng(ref.current)
-//     .then((dataUrl) => {
-//       const link = document.createElement('a');
-//       link.download = filename;
-//       link.href = dataUrl;
-//       link.click();
-//     });
-// }
-
-
 export const MapSurfacesIrriguees = (props: {
   carteCommunes: CommunesIndicateursDto[];
 }) => {
@@ -124,7 +110,6 @@ export const MapSurfacesIrriguees = (props: {
 
   return (
     <>
-    {/* <button onClick={() => exportChartAsPNG(mapWrapperRef)}>Exporter PNG</button> */}
     <div ref={mapWrapperRef}>
       {carteCommunesFiltered === null ? (
         <GraphDataNotFound code={code} libelle={libelle} />

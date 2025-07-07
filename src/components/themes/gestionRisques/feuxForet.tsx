@@ -1,6 +1,7 @@
 'use client';
 import feuxForetIcon from '@/assets/icons/feu_foret_icon_black.svg';
 import GraphNotFound from '@/assets/images/zero_data_found.png';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
@@ -8,6 +9,7 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { IncendiesForet, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { feuxForetTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
@@ -43,12 +45,22 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
   }, [code]);
 
   const feuxForet = patch4 ? AlgoPatch4(patch4, 'feux_foret') : undefined;
+  const exportData = IndicatorExportTransformations.gestionRisques.FeuxForet(incendiesForet)
 
   return (
     <>
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <div className={incendiesForet.length !== 0 ? 'w-2/5' : 'w-1/2'}>
+            <div className="mb-4">
+              <ExportButton
+                data={exportData}
+                baseName="feux_foret"
+                type={type}
+                libelle={libelle}
+                sheetName="Feux de forêt"
+              />
+            </div>
             <div className={styles.explicationWrapper}>
               {incendiesForet.length !== 0 ? (
                 <p>
