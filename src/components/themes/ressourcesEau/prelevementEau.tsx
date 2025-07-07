@@ -109,6 +109,7 @@ export const PrelevementEau = (props: {
                   baseName="prelevements_eau"
                   type={type}
                   libelle={libelle}
+                  code={code}
                   sheetName="Prélèvements en eau"
                 />
               </div>

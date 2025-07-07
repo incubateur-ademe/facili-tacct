@@ -1,6 +1,7 @@
 "use client";
 import { WaveButton } from '@/components/WaveButton';
 import { exportToXLSX } from '@/lib/utils/export/exportXlsx';
+import { usePostHog } from 'posthog-js/react';
 import { useState } from 'react';
 
 type ExportDataRow = Record<string, string | number | boolean | null | bigint | undefined>;
@@ -10,6 +11,7 @@ interface ExportButtonProps {
   baseName: string;
   type: string;
   libelle: string;
+  code: string;
   sheetName: string;
   children?: React.ReactNode;
 }
@@ -19,11 +21,19 @@ export const ExportButton = ({
   baseName,
   type,
   libelle,
+  code,
   sheetName,
-  children = 'Exporter la thématique',
+  children = "Exporter l'indicateur",
 }: ExportButtonProps) => {
+  const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
-
+  posthog.capture('export_xlsx_bouton', {
+    thematique: baseName,
+    code: code,
+    libelle: libelle,
+    type: type,
+    date: new Date()
+  });
   const handleExport = async () => {
     if (!data || data.length === 0) {
       console.log('Aucune donnée à exporter');
@@ -31,7 +41,7 @@ export const ExportButton = ({
     }
     setIsExporting(true);
     try {
-      exportToXLSX(data, baseName, type, libelle, sheetName);
+      exportToXLSX(data, baseName, type, libelle, code, sheetName);
     } catch (error) {
       console.error('Export failed:', error);
     } finally {
@@ -43,7 +53,7 @@ export const ExportButton = ({
     <WaveButton
       onClick={handleExport}
       disabled={isExporting}
-      style={{ 
+      style={{
         cursor: isExporting ? 'wait' : 'pointer',
       }}
     >

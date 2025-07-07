@@ -78,6 +78,7 @@ const EtatQualiteCoursDeau = (props: {
                   baseName="etat_cours_deau"
                   type={type}
                   libelle={libelle}
+                  code={code}
                   sheetName="État des cours d'eau"
                 />
               </div>

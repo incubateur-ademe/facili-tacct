@@ -13,12 +13,13 @@ import { CarteCommunes, Patch4, RGACarte, RGAdb } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { rgaTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
+import { exportDatavizAsPNG } from '@/lib/utils/export/exportPng';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { RGAText } from '../inconfortThermique/staticTexts';
 import styles from './gestionRisques.module.scss';
 import RgaDataViz from './rgaDataviz';
@@ -36,6 +37,7 @@ export const RGA = ({
   const type = searchParams.get('type')!;
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
+  const exportPNGRef = useRef(null);
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>((type === "commune" || type === "epci") ? 'Comparaison' : "Répartition");
@@ -107,6 +109,7 @@ export const RGA = ({
                   baseName="retrait_gonflement_argiles"
                   type={type}
                   libelle={libelle}
+                  code={code}
                   sheetName="Retrait-gonflement des argiles"
                 />
               </div>
@@ -153,6 +156,7 @@ export const RGA = ({
                     rga={rga}
                     datavizTab={datavizTab}
                     setDatavizTab={setDatavizTab}
+                    exportPNGRef={exportPNGRef}
                   /> : (
                     <div className={styles.graphWrapper}>
                       <p style={{ padding: '1em', margin: '0' }}>
@@ -162,6 +166,7 @@ export const RGA = ({
                     </div>
                   )
               }
+              <button onClick={() => exportDatavizAsPNG(exportPNGRef, 'Retrait-gonflement des argiles.png')}>Exporter PNG</button>
             </div>
           </>
         </div>

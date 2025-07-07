@@ -1,31 +1,10 @@
 import * as XLSX from 'xlsx';
+import { calculateColumnWidths } from './calculateColumnWidths';
 
-type ExportDataRow = Record<string, string | number | boolean | null | bigint | undefined>;
-
-const calculateColumnWidths = (worksheet: XLSX.WorkSheet): XLSX.ColInfo[] => {
-  const colWidths: { [key: string]: number } = {};
-    const range = XLSX.utils.decode_range(worksheet['!ref'] || 'A1');
-  
-  for (let col = range.s.c; col <= range.e.c; col++) {
-    const colLetter = XLSX.utils.encode_col(col);
-    let maxWidth = 10; 
-    for (let row = range.s.r; row <= range.e.r; row++) {
-      const cellAddress = colLetter + (row + 1);
-      const cell = worksheet[cellAddress];
-      if (cell && cell.v) {
-        const cellValue = String(cell.v);
-        const cellWidth = cellValue.length;
-        maxWidth = Math.max(maxWidth, cellWidth);
-      }
-    }
-    
-    // set une largeur maximale pour éviter des colonnes trop larges
-    colWidths[col] = Math.min(maxWidth + 2, 50);
-  }
-  return Object.keys(colWidths).map(col => ({
-    wch: colWidths[parseInt(col)]
-  }));
-};
+type ExportDataRow = Record<
+  string,
+  string | number | boolean | null | bigint | undefined
+>;
 
 export const generateExportFilename = (
   baseName: string,
@@ -41,13 +20,14 @@ export const generateExportFilename = (
     .replace(/æ/g, 'ae')
     .replace(/[^a-zA-Z0-9]/g, '_');
   return `${baseName}_${type}_${cleanLibelle}.xlsx`;
-}
+};
 
 export const exportToXLSX = (
   data: ExportDataRow[],
   baseName: string,
   type: string,
   libelle: string,
+  code: string,
   sheetName: string
 ): void => {
   if (!data || data.length === 0) {
@@ -58,7 +38,7 @@ export const exportToXLSX = (
     const filename = generateExportFilename(baseName, type, libelle);
     const worksheet = XLSX.utils.json_to_sheet(data);
     worksheet['!cols'] = calculateColumnWidths(worksheet);
-    
+
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, sheetName);
     XLSX.writeFile(workbook, filename);
@@ -66,7 +46,7 @@ export const exportToXLSX = (
     console.error('Error exporting to XLSX:', error);
     throw new Error('Failed to export data to XLSX');
   }
-}
+};
 
 export const exportMultipleSheetToXLSX = <T extends Record<string, unknown[]>>(
   data: T,
@@ -77,15 +57,15 @@ export const exportMultipleSheetToXLSX = <T extends Record<string, unknown[]>>(
   try {
     const filename = generateExportFilename(baseName, type, libelle);
     const workbook = XLSX.utils.book_new();
-    
+
     Object.entries(data).forEach(([sheetName, sheetData]) => {
       if (sheetData && sheetData.length > 0) {
-        const worksheet = XLSX.utils.json_to_sheet(sheetData as any[]);
+        const worksheet = XLSX.utils.json_to_sheet(sheetData);
         worksheet['!cols'] = calculateColumnWidths(worksheet);
         XLSX.utils.book_append_sheet(workbook, worksheet, sheetName);
       }
     });
-    
+
     if (workbook.SheetNames.length > 0) {
       XLSX.writeFile(workbook, filename);
     } else {
@@ -95,4 +75,4 @@ export const exportMultipleSheetToXLSX = <T extends Record<string, unknown[]>>(
     console.error('Error exporting multiple sheets to XLSX:', error);
     throw new Error('Failed to export data to XLSX');
   }
-}
+};
