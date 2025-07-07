@@ -82,16 +82,17 @@ const EtatQualiteCoursDeau = (props: {
         !isLoadingPatch4 ?
           <div className={styles.container}>
             <div className={etatCoursDeau.length ? "w-5/12" : "w-1/2"}>
-            <div className="mb-4">
-              <MultiSheetExportButton
-                sheetsData={exportData}
-                baseName="etat_ecologique_cours_deau"
-                type={type}
-                libelle={libelle}
-              >
-                Exporter les données
-              </MultiSheetExportButton>
-            </div>
+              <div className="mb-4">
+                <MultiSheetExportButton
+                  sheetsData={exportData}
+                  baseName="etat_ecologique_cours_deau"
+                  type={type}
+                  libelle={libelle}
+                  code={code}
+                >
+                  Exporter les données
+                </MultiSheetExportButton>
+              </div>
               <div className={styles.explicationWrapper}>
                 <p>
                   La biodiversité en eau douce est particulièrement menacée. La

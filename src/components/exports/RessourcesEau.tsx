@@ -4,15 +4,15 @@ import { FetchAndExportButton } from '@/components/exports/FetchAndExportButton'
 import { fetchRessourcesEauForExport } from '@/lib/queries/exports/ressourcesEau';
 
 export const RessourcesEauExport = (
-  { 
-    code, 
-    libelle, 
-    type 
+  {
+    code,
+    libelle,
+    type
   }: {
     code: string;
     libelle: string;
     type: string;
-  } ) => {
+  }) => {
   return (
     <div className="mb-4">
       <FetchAndExportButton
@@ -20,6 +20,7 @@ export const RessourcesEauExport = (
         baseName="ressources_eau"
         type={type}
         libelle={libelle}
+        code={code}
       >
         Export ressources en eau
       </FetchAndExportButton>
