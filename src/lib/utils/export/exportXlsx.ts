@@ -27,7 +27,6 @@ export const exportToXLSX = (
   baseName: string,
   type: string,
   libelle: string,
-  code: string,
   sheetName: string
 ): void => {
   if (!data || data.length === 0) {
@@ -38,7 +37,6 @@ export const exportToXLSX = (
     const filename = generateExportFilename(baseName, type, libelle);
     const worksheet = XLSX.utils.json_to_sheet(data);
     worksheet['!cols'] = calculateColumnWidths(worksheet);
-
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, sheetName);
     XLSX.writeFile(workbook, filename);
