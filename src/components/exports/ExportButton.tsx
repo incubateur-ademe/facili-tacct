@@ -27,7 +27,10 @@ export const ExportButton = ({
 }: ExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
-  posthog.capture('export_xlsx_bouton', {
+  posthog.capture(
+    baseName === "inconfort_thermique"
+      ? "export_xlsx_thematique_bouton"
+      : 'export_xlsx_bouton', {
     thematique: baseName,
     code: code,
     libelle: libelle,
@@ -41,7 +44,7 @@ export const ExportButton = ({
     }
     setIsExporting(true);
     try {
-      exportToXLSX(data, baseName, type, libelle, code, sheetName);
+      exportToXLSX(data, baseName, type, libelle, sheetName);
     } catch (error) {
       console.error('Export failed:', error);
     } finally {

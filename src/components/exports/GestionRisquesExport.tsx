@@ -20,6 +20,7 @@ export const GestionRisquesExport = (
         baseName="gestion_risques"
         type={type}
         libelle={libelle}
+        code={code}
       >
         Export gestion des risques
       </FetchAndExportButton>
