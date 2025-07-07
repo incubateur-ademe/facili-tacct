@@ -82,8 +82,8 @@ importers:
         specifier: ^2.4.3
         version: 2.4.3
       carte-facile:
-        specifier: ^0.5.18
-        version: 0.5.18(maplibre-gl@5.5.0)
+        specifier: ^0.7.1
+        version: 0.7.1(maplibre-gl@5.5.0)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -3117,8 +3117,8 @@ packages:
     resolution: {integrity: sha512-5ON+q7jCTgMp9cjpu4Jo6XbvfYwSB2Ow3kzHKfIyJfaCAOHLbdKPQqGKgfED/R5B+3TFFfe8pegYA+b423SRyA==}
     engines: {node: '>=10.0.0'}
 
-  carte-facile@0.5.18:
-    resolution: {integrity: sha512-WJWyDZLD02EZ936kuITsp897YEarXzgUYF9Iiaf9DylxwT7b7uhwdh9TKRnjZMhRjHIBvPGJEu2BbhnCwrROew==}
+  carte-facile@0.7.1:
+    resolution: {integrity: sha512-bsNG19toA6skGwL3c/cAO4E+FA2fzJAsZ6pA0+tjVtPln7K1VpRGedQj6X+nXWw+VTrRtzw9AaJn0mI/e7t24g==}
     peerDependencies:
       maplibre-gl: ^5.0.0
 
@@ -10809,7 +10809,7 @@ snapshots:
       svg-pathdata: 6.0.3
     optional: true
 
-  carte-facile@0.5.18(maplibre-gl@5.5.0):
+  carte-facile@0.7.1(maplibre-gl@5.5.0):
     dependencies:
       maplibre-gl: 5.5.0
 
