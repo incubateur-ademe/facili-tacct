@@ -23,6 +23,7 @@ export const BiodiversiteExport = (
         baseName="biodiversite"
         type={type}
         libelle={libelle}
+        code={code}
       >
         Export biodiversité
       </FetchAndExportButton>

@@ -1,6 +1,7 @@
 "use client";
 import { exportMultipleSheetToXLSX } from '@/lib/utils/export/exportXlsx';
 import { Button } from '@codegouvfr/react-dsfr/Button';
+import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
 
 interface FetchAndExportButtonProps<T extends Record<string, unknown[]>> {
@@ -8,6 +9,7 @@ interface FetchAndExportButtonProps<T extends Record<string, unknown[]>> {
   baseName: string;
   type: string;
   libelle: string;
+  code: string;
   children?: React.ReactNode;
 }
 
@@ -16,8 +18,17 @@ export const FetchAndExportButton = <T extends Record<string, unknown[]>>({
   baseName,
   type,
   libelle,
+  code,
   children = 'Télécharger les données',
 }: FetchAndExportButtonProps<T>) => {
+  const posthog = usePostHog();
+  posthog.capture('export_xlsx_thematique_bouton', {
+    thematique: baseName,
+    code: code,
+    libelle: libelle,
+    type: type,
+    date: new Date()
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {

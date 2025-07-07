@@ -1,5 +1,6 @@
 "use client";
 import { exportMultipleSheetToXLSX } from '@/lib/utils/export/exportXlsx';
+import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
 import { WaveButton } from '../WaveButton';
 
@@ -15,6 +16,7 @@ interface MultiSheetExportButtonProps {
   baseName: string;
   type: string;
   libelle: string;
+  code: string;
   children?: React.ReactNode;
 }
 
@@ -23,9 +25,18 @@ export const MultiSheetExportButton = ({
   baseName,
   type,
   libelle,
+  code,
   children = 'Exporter les données',
 }: MultiSheetExportButtonProps) => {
+  const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
+  posthog.capture('export_xlsx_bouton', {
+    thematique: baseName,
+    code: code,
+    libelle: libelle,
+    type: type,
+    date: new Date()
+  });
 
   useEffect(() => {
     if (isExporting) {
