@@ -1,8 +1,9 @@
 import { BoundsFromCollection } from '@/components/maps/components/boundsFromCollection';
 import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
-import { addOverlay, mapStyles, Overlay } from 'carte-facile';
+import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
 import { Feature, FeatureCollection, GeoJsonProperties, Geometry } from 'geojson';
+import html2canvas from 'html2canvas';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
@@ -25,6 +26,7 @@ const RGAMap = (props: {
     : carteCommunes
   const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
   const mapContainer = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -34,14 +36,9 @@ const RGAMap = (props: {
       attributionControl: false,
     });
 
-    // const map = new maplibregl.Map({
-    //   container: mapContainer.current,
-    //   style: mapStyles.desaturated,
-    //   attributionControl: false,
-    //   preserveDrawingBuffer: true,
-    // } as any);
+    mapRef.current = map;
 
-    addOverlay(map, Overlay.administrativeBoundaries);
+    // addOverlay(map, Overlay.administrativeBoundaries);
 
     map.on('load', () => {
       // Compute bounding box from enveloppe polygon
@@ -103,11 +100,104 @@ const RGAMap = (props: {
 
     // Add navigation control
     map.addControl(new maplibregl.NavigationControl(), 'top-right');
-    return () => map.remove();
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+    };
   }, [rgaCarte, enveloppe]);
 
+  const handleScreenshot = () => {
+    console.log('Screenshot button clicked');
+    if (mapRef.current && mapContainer.current) {
+      const html = mapRef.current.getContainer();
+      console.log("html", html);
+      if (html) {
+        let captureCompleted = false;
+        
+        // Try to trigger a render event, then capture
+        mapRef.current.once('render', async () => {
+          console.log('Map render event fired');
+          captureCompleted = true;
+          try {
+            const canvas = await html2canvas(html, { useCORS: true });
+            console.log('Canvas created:', canvas);
+            canvas.toBlob((blob) => {
+              if (blob) {
+                console.log('Blob created, downloading...');
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'retrait-gonflement-argiles-carte.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+              }
+            });
+          } catch (error) {
+            console.error('Error capturing canvas:', error);
+          }
+        });
+        
+        // Trigger a map repaint to ensure render event fires
+        mapRef.current.triggerRepaint();
+        
+        // Fallback: if render event doesn't fire within 2 seconds, try direct capture
+        // setTimeout(() => {
+        //   if (!captureCompleted) {
+        //     console.log('Fallback: attempting direct capture');
+        //     html2canvas(html, { useCORS: true })
+        //       .then((canvas) => {
+        //         canvas.toBlob((blob) => {
+        //           if (blob) {
+        //             const url = URL.createObjectURL(blob);
+        //             const link = document.createElement('a');
+        //             link.href = url;
+        //             link.download = 'retrait-gonflement-argiles-carte-fallback.png';
+        //             document.body.appendChild(link);
+        //             link.click();
+        //             document.body.removeChild(link);
+        //             URL.revokeObjectURL(url);
+        //           }
+        //         });
+        //       })
+        //       .catch((error) => {
+        //         console.error('Fallback capture failed:', error);
+        //       });
+        //   } else {
+        //     console.log('Render event already completed, skipping fallback');
+        //   }
+        // }, 2000);
+      }
+    } else {
+      console.log('Map or container not found');
+    }
+  };
+
   return (
-    <div ref={mapContainer} style={{ height: "500px", width: "100%" }} />
+    <div style={{ position: 'relative' }}>
+      <div ref={mapContainer} style={{ height: "500px", width: "100%" }} />
+      <button
+        onClick={handleScreenshot}
+        style={{
+          position: 'absolute',
+          top: '10px',
+          left: '10px',
+          zIndex: 1000,
+          padding: '8px 12px',
+          backgroundColor: 'white',
+          border: '1px solid #ccc',
+          borderRadius: '4px',
+          cursor: 'pointer',
+          fontSize: '14px',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+        }}
+      >
+        📸 Exporter PNG
+      </button>
+    </div>
   );
 };
 

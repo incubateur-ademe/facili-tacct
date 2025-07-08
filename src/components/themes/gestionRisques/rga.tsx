@@ -13,7 +13,7 @@ import { CarteCommunes, Patch4, RGACarte, RGAdb } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { rgaTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
-import { exportDatavizAsPNG } from '@/lib/utils/export/exportPng';
+// import { exportDatavizAsPNG } from '@/lib/utils/export/exportPng';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { Round } from '@/lib/utils/reusableFunctions/round';
@@ -37,7 +37,7 @@ export const RGA = ({
   const type = searchParams.get('type')!;
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
-  const exportPNGRef = useRef(null);
+  const exportPNGRef = useRef<HTMLDivElement>(null);
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>((type === "commune" || type === "epci") ? 'Comparaison' : "Répartition");
@@ -166,7 +166,7 @@ export const RGA = ({
                     </div>
                   )
               }
-              <button onClick={() => exportDatavizAsPNG(exportPNGRef, 'Retrait-gonflement des argiles.png')}>Exporter PNG</button>
+              {/* <button onClick={() => exportDatavizAsPNG(exportPNGRef, 'Retrait-gonflement des argiles.png', null)}>Exporter PNG</button> */}
             </div>
           </>
         </div>
@@ -176,3 +176,16 @@ export const RGA = ({
     </>
   );
 };
+
+// const exportDatavizAsPNG = async (
+//   ref: React.RefObject<HTMLDivElement | null>,
+//   fileName: string,
+//   mapInstance: maplibregl.Map | null
+// ) => {
+//   if (!ref.current || !mapInstance) return;
+
+//   // Find the maplibre canvas
+//   const mapCanvas = ref.current.querySelector('.maplibregl-canvas') as HTMLCanvasElement;
+//   console.log('Map canvas:', mapCanvas);
+
+// };
