@@ -7,7 +7,6 @@ import { AlgoPatch4 } from "@/components/patch4/AlgoPatch4";
 import TagInIndicator from "@/components/patch4/TagInIndicator";
 import { CarteCommunes, Patch4 } from "@/lib/postgres/models";
 import { GetPatch4 } from "@/lib/queries/patch4";
-import { exportDatavizAsPNG } from '@/lib/utils/export/exportPng';
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { LCZText } from './staticTexts';
@@ -68,7 +67,7 @@ export const LCZ = ({
                 ) : <DataNotFoundForGraph image={DataNotFound} />
               }
             </div>
-            <button onClick={() => exportDatavizAsPNG(exportPNGRef, 'lcz.png')}>Exporter PNG</button>
+            {/* <button onClick={() => exportDatavizAsPNG(exportPNGRef, 'lcz.png')}>Exporter PNG</button> */}
           </div>
         </div>
       ) : (
