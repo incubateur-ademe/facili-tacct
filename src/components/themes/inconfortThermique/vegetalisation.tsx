@@ -1,6 +1,7 @@
 'use client';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import { default as DataNotFound } from '@/assets/images/no_data_on_territory.svg';
+import { ZipExportButton } from '@/components/exports/ZipExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { CLCMap } from '@/components/maps/CLC';
@@ -8,7 +9,6 @@ import { vegetalisationLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
-import { WaveButton } from '@/components/WaveButton';
 import { VegetalisationDto } from '@/lib/dto';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { CLCTerritoires, InconfortThermique, Patch4 } from '@/lib/postgres/models';
@@ -85,18 +85,9 @@ const Vegetalisation = (props: {
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <div className="w-2/5">
-            {/* <div className="mb-4">
-              <ExportButton
-                data={exportData}
-                baseName="vegetalisation"
-                type={type}
-                libelle={libelle}
-                sheetName="Végétalisation"
-              />
-            </div> */}
             <div className="mb-4">
-              <WaveButton
-                onClick={() => exportAsZip({
+              <ZipExportButton
+                handleExport={() => exportAsZip({
                   excelFiles: [{
                     data: exportData,
                     baseName: "vegetalisation",
@@ -112,7 +103,7 @@ const Vegetalisation = (props: {
                 })}
               >
                 Exporter l'indicateur
-              </WaveButton>
+              </ZipExportButton>
             </div>
             <div className={styles.explicationWrapper}>
               {isNaN(foretPercent) ? "" :

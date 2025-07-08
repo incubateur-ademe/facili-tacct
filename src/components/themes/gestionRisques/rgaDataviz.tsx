@@ -204,8 +204,8 @@ const RgaDataViz = (props: Props) => {
                   style={{ marginRight: '0.5em', alignItems: 'center' }}
                 />
                 <p style={{ fontSize: 12, margin: 0 }}>
-                  L’EPCI sélectionné s’étend sur 
-                  plusieurs départements. La comparaison proposée est 
+                  L’EPCI sélectionné s’étend sur
+                  plusieurs départements. La comparaison proposée est
                   effectuée avec : {departement}
                 </p>
               </div>
@@ -230,21 +230,23 @@ const RgaDataViz = (props: Props) => {
           />
         </div>
       ) : datavizTab === 'Cartographie' ? (
-        <div ref={exportPNGRef}>
+        <>
           <RGAMap rgaCarte={rgaCarte} carteCommunes={carteCommunes} />
-          <div
-            className={styles.legend}
-            style={{ width: 'auto', justifyContent: 'center' }}
-          >
-            <LegendCompColor legends={RgaMapLegend} />
+          <div className="exportPNGWrapper">
+            <div
+              className={styles.legend}
+              style={{ width: 'auto', justifyContent: 'center' }}
+            >
+              <LegendCompColor legends={RgaMapLegend} />
+            </div>
+            <p style={{ padding: '1em', margin: '0' }}>
+              Source : BRGM, 2019 ; Fideli, 2017. Traitements : SDES, 2021
+            </p>
           </div>
-        </div>
+        </>
       ) : (
         ''
       )}
-      <p style={{ padding: '1em', margin: '0' }}>
-        Source : BRGM, 2019 ; Fideli, 2017. Traitements : SDES, 2021
-      </p>
     </div>
   );
 };
