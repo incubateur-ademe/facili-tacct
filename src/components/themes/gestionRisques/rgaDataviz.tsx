@@ -203,7 +203,11 @@ const RgaDataViz = (props: Props) => {
                   height={24}
                   style={{ marginRight: '0.5em', alignItems: 'center' }}
                 />
-                <p style={{ fontSize: 12, margin: 0 }}>L’EPCI sélectionné s’étend sur plusieurs départements. La comparaison proposée est effectuée avec : {departement}</p>
+                <p style={{ fontSize: 12, margin: 0 }}>
+                  L’EPCI sélectionné s’étend sur 
+                  plusieurs départements. La comparaison proposée est 
+                  effectuée avec : {departement}
+                </p>
               </div>
             </div>
           }
