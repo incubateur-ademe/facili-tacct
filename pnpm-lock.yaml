@@ -75,6 +75,9 @@ importers:
       '@turf/turf':
         specifier: ^7.1.0
         version: 7.2.0
+      '@watergis/maplibre-gl-export':
+        specifier: ^4.0.1
+        version: 4.0.1
       antd:
         specifier: ^5.21.5
         version: 5.25.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -2771,6 +2774,9 @@ packages:
     resolution: {integrity: sha512-friS8NEQfHaDbkThxopGk+LuE5v3iY0StruifjQEt7SLbA46OnfgMO15sOTkbpJkol6RB+1l1TYPXh0sCddpvA==}
     cpu: [x64]
     os: [win32]
+
+  '@watergis/maplibre-gl-export@4.0.1':
+    resolution: {integrity: sha512-9wMbB6N9J/PUPG4Akw7y7FCFy8WAZdBdWOVp5R87NL0rLFqq0C1RGz+H7kt+vEW+l0s6aIaJyFpSX9JCT5YI6A==}
 
   '@webassemblyjs/ast@1.14.1':
     resolution: {integrity: sha512-nuBEDgQfm1ccRp/8bCQrx1frohyufl4JlbMMZ4P1wpeOfDhF6FQkxZJ1b/e+PLwr6X1Nhw6OLme5usuBWYBvuQ==}
@@ -10376,6 +10382,11 @@ snapshots:
 
   '@unrs/resolver-binding-win32-x64-msvc@1.7.2':
     optional: true
+
+  '@watergis/maplibre-gl-export@4.0.1':
+    dependencies:
+      jspdf: 3.0.1
+      maplibre-gl: 5.5.0
 
   '@webassemblyjs/ast@1.14.1':
     dependencies:
