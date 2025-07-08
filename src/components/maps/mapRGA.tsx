@@ -3,11 +3,11 @@ import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
 import { Feature, FeatureCollection, GeoJsonProperties, Geometry } from 'geojson';
-import html2canvas from 'html2canvas';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef } from 'react';
+import { ExportPngMaplibreButton } from '../exports/ExportPng';
 
 const RGAMap = (props: {
   carteCommunes: CommunesIndicateursDto[];
@@ -35,7 +35,6 @@ const RGAMap = (props: {
       style: mapStyles.desaturated,
       attributionControl: false,
     });
-
     mapRef.current = map;
 
     // addOverlay(map, Overlay.administrativeBoundaries);
@@ -108,95 +107,14 @@ const RGAMap = (props: {
     };
   }, [rgaCarte, enveloppe]);
 
-  const handleScreenshot = () => {
-    console.log('Screenshot button clicked');
-    if (mapRef.current && mapContainer.current) {
-      const html = mapRef.current.getContainer();
-      console.log("html", html);
-      if (html) {
-        let captureCompleted = false;
-        
-        // Try to trigger a render event, then capture
-        mapRef.current.once('render', async () => {
-          console.log('Map render event fired');
-          captureCompleted = true;
-          try {
-            const canvas = await html2canvas(html, { useCORS: true });
-            console.log('Canvas created:', canvas);
-            canvas.toBlob((blob) => {
-              if (blob) {
-                console.log('Blob created, downloading...');
-                const url = URL.createObjectURL(blob);
-                const link = document.createElement('a');
-                link.href = url;
-                link.download = 'retrait-gonflement-argiles-carte.png';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                URL.revokeObjectURL(url);
-              }
-            });
-          } catch (error) {
-            console.error('Error capturing canvas:', error);
-          }
-        });
-        
-        // Trigger a map repaint to ensure render event fires
-        mapRef.current.triggerRepaint();
-        
-        // Fallback: if render event doesn't fire within 2 seconds, try direct capture
-        // setTimeout(() => {
-        //   if (!captureCompleted) {
-        //     console.log('Fallback: attempting direct capture');
-        //     html2canvas(html, { useCORS: true })
-        //       .then((canvas) => {
-        //         canvas.toBlob((blob) => {
-        //           if (blob) {
-        //             const url = URL.createObjectURL(blob);
-        //             const link = document.createElement('a');
-        //             link.href = url;
-        //             link.download = 'retrait-gonflement-argiles-carte-fallback.png';
-        //             document.body.appendChild(link);
-        //             link.click();
-        //             document.body.removeChild(link);
-        //             URL.revokeObjectURL(url);
-        //           }
-        //         });
-        //       })
-        //       .catch((error) => {
-        //         console.error('Fallback capture failed:', error);
-        //       });
-        //   } else {
-        //     console.log('Render event already completed, skipping fallback');
-        //   }
-        // }, 2000);
-      }
-    } else {
-      console.log('Map or container not found');
-    }
-  };
-
   return (
     <div style={{ position: 'relative' }}>
       <div ref={mapContainer} style={{ height: "500px", width: "100%" }} />
-      <button
-        onClick={handleScreenshot}
-        style={{
-          position: 'absolute',
-          top: '10px',
-          left: '10px',
-          zIndex: 1000,
-          padding: '8px 12px',
-          backgroundColor: 'white',
-          border: '1px solid #ccc',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          fontSize: '14px',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-        }}
-      >
-        📸 Exporter PNG
-      </button>
+      <ExportPngMaplibreButton
+        mapRef={mapRef}
+        mapContainer={mapContainer}
+        documentDiv=".exportPNGWrapper"
+      />
     </div>
   );
 };

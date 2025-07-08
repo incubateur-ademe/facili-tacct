@@ -10,6 +10,7 @@ import maplibregl, { MapSourceDataEvent } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import { ExportPngMaplibreButton } from '../exports/ExportPng';
 import { Loader } from '../loader';
 import { BoundsFromCollection } from './components/boundsFromCollection';
 import { CeremaFallbackError, handleCeremaFallback } from './components/ceremaLCZFallback';
@@ -39,6 +40,7 @@ export const MapLCZ = ({
   const carteCommunesEnriched = carteCommunes.map(CommunesIndicateursMapper);
   const enveloppe = BoundsFromCollection(carteCommunesEnriched, type, code);
   const mapContainer = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
 
   useEffect(() => {
     void (async () => {
@@ -56,6 +58,7 @@ export const MapLCZ = ({
       style: mapStyles.desaturated,
       attributionControl: false,
     });
+    mapRef.current = map;
 
     const handleMapError = (e: ErrorEvent) => {
       console.error('Map error:', e.error);
@@ -315,6 +318,10 @@ export const MapLCZ = ({
 
     map.addControl(new maplibregl.NavigationControl(), 'top-right');
     return () => {
+      if (mapRef.current) {
+        // mapRef.current.remove();
+        mapRef.current = null;
+      }
       map.off('error', handleMapError);
       map.off('sourcedata', handleSourceData);
       clearTimeout(loadingTimeout);
@@ -352,6 +359,11 @@ export const MapLCZ = ({
       {isLoading ? <Loader /> : (
         <>
           <div ref={mapContainer} style={{ width: '100%', height: '500px' }} />
+          <ExportPngMaplibreButton
+            mapRef={mapRef}
+            mapContainer={mapContainer}
+            documentDiv=".lczLegendWrapper"
+          />
           {isTilesLoading && (
             <div className={styles.tileLoadingWrapper}>
               <div style={{
@@ -367,23 +379,25 @@ export const MapLCZ = ({
               Chargement des données cartographiques...
             </div>
           )}
-          <p style={{ padding: '1em', margin: '0', backgroundColor: '#f9f9ff' }}>
-            Source : {
-              isLczCovered
-                ? "CEREMA"
-                : <a
-                  href="https://doi.org/10.5194/essd-14-3835-2022"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Matthias Demuzere et al. 2022
-                </a>}
-          </p>
-          <div
-            className={styles.legendLCZ}
-            style={{ width: 'auto' }}
-          >
-            <LegendCompColor legends={(zoomMap >= 13.5 || !isLczCovered) ? LczLegendOpacity70 : LczLegend} />
+          <div className='lczLegendWrapper'>
+            <p style={{ padding: '1em', margin: '0', backgroundColor: '#f9f9ff' }}>
+              Source : {
+                isLczCovered
+                  ? "CEREMA"
+                  : <a
+                    href="https://doi.org/10.5194/essd-14-3835-2022"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Matthias Demuzere et al. 2022
+                  </a>}
+            </p>
+            <div
+              className={styles.legendLCZ}
+              style={{ width: 'auto' }}
+            >
+              <LegendCompColor legends={(zoomMap >= 13.5 || !isLczCovered) ? LczLegendOpacity70 : LczLegend} />
+            </div>
           </div>
         </>
       )}

@@ -35,8 +35,9 @@ const SumFiltered = (
 
   const columnLibelle = type === "petr"
     ? "libelle_petr"
-    : "ept"
-
+    : type === "pnr"
+      ? "libelle_pnr"
+      : "ept"
   return Sum(
     data
       .filter((obj) => columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
@@ -75,7 +76,9 @@ export const PrelevementEau = (props: {
         ? ressourcesEau.filter((obj) => obj.libelle_petr === libelle)
         : type === 'ept'
           ? ressourcesEau.filter((obj) => obj.ept === libelle)
-          : ressourcesEau;
+          : type === "pnr"
+            ? ressourcesEau.filter((obj) => obj.libelle_pnr === libelle)
+            : ressourcesEau;
 
   const sumAllYears = dataParMaille.map((year) =>
     Array.from({ length: 13 }, (_, i) => Number(year[`A${2008 + i}` as PrelevementsEauYears]) || 0)

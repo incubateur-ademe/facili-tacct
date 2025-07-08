@@ -2,9 +2,11 @@
 
 import PrelevementEauBarChart from '@/components/charts/ressourcesEau/prelevementEauBarChart';
 import PrelevementEauProgressBars from '@/components/charts/ressourcesEau/prelevementEauProgressBar';
+import PrelevementEauProgressBarsPNR from '@/components/charts/ressourcesEau/prelevementEauProgressBarPNR';
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
 import { RessourcesEau } from '@/lib/postgres/models';
+import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import styles from './ressourcesEau.module.scss';
 
@@ -17,6 +19,8 @@ const PrelevementEauDataViz = ({
   datavizTab: string;
   setDatavizTab: (value: string) => void;
 }) => {
+  const searchParams = useSearchParams();
+  const type = searchParams.get('type')!;
   const [sliderValue, setSliderValue] = useState<number[]>([2008, 2020]);
   return (
     <div className={styles.graphWrapper}>
@@ -29,7 +33,13 @@ const PrelevementEauDataViz = ({
         />
       </div>
       {datavizTab === 'Répartition' ? (
-        <PrelevementEauProgressBars ressourcesEau={ressourcesEau} />
+        <>
+          {
+            type === "pnr" ?
+              <PrelevementEauProgressBarsPNR ressourcesEau={ressourcesEau} />
+              : <PrelevementEauProgressBars ressourcesEau={ressourcesEau} />
+          }
+        </>
       ) : (
         <>
           <div className={styles.ressourcesEauSliderWrapper}>

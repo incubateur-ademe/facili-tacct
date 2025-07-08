@@ -94,6 +94,13 @@ export const GetRessourceEau = async (
           });
           console.timeEnd('Query Execution Time RESSOURCES EAUX');
           return value;
+        } else if (type === 'pnr') {
+          const value = await prisma.ressources_eau.findMany({
+            where: {
+              libelle_pnr: libelle
+            }
+          });
+          return value;
         } else return [];
       }
     } catch (error) {

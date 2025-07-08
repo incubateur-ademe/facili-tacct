@@ -46,7 +46,6 @@ export const RGA = ({
     type === "epci" ?
       rga.filter(item => item.epci === code) :
       rga;
-
   const carteCommunesEnriched = carteCommunes.map(CommunesIndicateursMapper);
   const communesMap = carteCommunesEnriched.map((el) => {
     return {
@@ -166,7 +165,6 @@ export const RGA = ({
                     </div>
                   )
               }
-              {/* <button onClick={() => exportDatavizAsPNG(exportPNGRef, 'Retrait-gonflement des argiles.png', null)}>Exporter PNG</button> */}
             </div>
           </>
         </div>
@@ -176,16 +174,3 @@ export const RGA = ({
     </>
   );
 };
-
-// const exportDatavizAsPNG = async (
-//   ref: React.RefObject<HTMLDivElement | null>,
-//   fileName: string,
-//   mapInstance: maplibregl.Map | null
-// ) => {
-//   if (!ref.current || !mapInstance) return;
-
-//   // Find the maplibre canvas
-//   const mapCanvas = ref.current.querySelector('.maplibregl-canvas') as HTMLCanvasElement;
-//   console.log('Map canvas:', mapCanvas);
-
-// };
