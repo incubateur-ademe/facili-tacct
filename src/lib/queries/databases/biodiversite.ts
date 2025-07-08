@@ -25,9 +25,10 @@ export const GetAgricultureBio = async (
       });
       if (!exists) return [];
       else {
-        if (type === 'pnr') {
-          return [];
-        } else if (type === 'commune') {
+        // if (type === 'pnr') {
+        //   return [];
+        // } else 
+        if (type === 'commune') {
           const epci = await prisma.collectivites_searchbar.findFirst({
             select: {
               epci: true

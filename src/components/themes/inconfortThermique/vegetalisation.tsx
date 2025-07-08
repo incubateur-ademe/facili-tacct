@@ -142,7 +142,7 @@ const Vegetalisation = (props: {
                 <b>Cartographie des différents types de sols</b>
               </p>
               {
-                clc ? (
+                clc && clc.length ? (
                   <div ref={exportPNGRef}>
                     <CLCMap clc={clc} />
                     <div

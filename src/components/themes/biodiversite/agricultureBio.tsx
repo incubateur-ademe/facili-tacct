@@ -6,6 +6,8 @@ import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { AgricultureBio, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { multipleEpciBydepartementLibelle } from '@/lib/territoireData/multipleEpciBydepartement';
+import { multipleEpciByPnrLibelle } from '@/lib/territoireData/multipleEpciByPnr';
 import { agricultureBioTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { Round } from '@/lib/utils/reusableFunctions/round';
@@ -33,6 +35,11 @@ const AgricultureBiologique = (props: {
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
+  const territoiresPartiellementCouverts = type === 'departement' 
+    ? multipleEpciBydepartementLibelle.find(dept => dept.departement === code)?.liste_epci_multi_dept 
+    : type === 'pnr'
+      ? multipleEpciByPnrLibelle.find(pnr => pnr.libelle_pnr === libelle)?.liste_epci_multi_pnr
+      : undefined;
 
   const nombreExploitations = agricultureBio.reduce((acc, obj) => {
     if (obj.VARIABLE === 'saue') {
@@ -88,6 +95,16 @@ const AgricultureBiologique = (props: {
                         </b>{' '}
                         sont en agriculture biologique ou en conversion, représentant
                         un total de <b>{Round(surfaceAgriBio, 0)} hectares</b>.
+                      </p>
+                    ) : type === "departement" || type === "pnr" ? (
+                      <p style={{ color: '#161616' }}>
+                        Cette donnée n’est disponible qu’à l’échelle de l'EPCI. 
+                        Dans votre territoire, <b>{nombreExploitations} exploitations</b>{' '}
+                        sont en agriculture biologique ou en conversion, représentant
+                        un total de <b>{Round(surfaceAgriBio, 0)} hectares</b>. 
+                        <br></br><br></br>
+                        Sur votre territoire, <b>{territoiresPartiellementCouverts?.length} EPCI</b> {territoiresPartiellementCouverts?.length === 1 ? "est" : "sont"} à
+                        cheval sur plusieurs {type === "departement" ? "départements" : "PNR"} : {territoiresPartiellementCouverts?.map(epci => epci).join(", ")}.
                       </p>
                     ) : (
                       <p style={{ color: '#161616' }}>
