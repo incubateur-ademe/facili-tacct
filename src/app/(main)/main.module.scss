@@ -1,4 +1,342 @@
-.cookieConsentContainer {
+// SCSS Variables
+$heightWrapper: 293px;
+$height-notice: 323px;
+
+// 1er bloc
+.homePageTopWrapper{
+        display: flex;
+    flex-direction: column;
+    min-height: $heightWrapper;
+    gap: 2rem;
+    align-items: center;
+    padding: 3.75em 3.75em 7.5em;
+    background-color: #0063cb;
+    .titles {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        color: #FFFFFF;
+        align-items: center;
+        h1 {
+            color: #FFFFFF;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 55.48px;
+        }
+        p {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 24px;
+            text-align: center;
+        }
+    }
+}
+
+// Barre de recherche
+
+.collectiviteWrapper {
+    position: absolute;
+    width: 51dvw;
+    // max-width: 53em;
+    left: calc(50dvw - 26dvw);
+    top: $height-notice;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    padding: 2em;
+    margin: 0 auto;
+    max-width: 60%;
+    border-radius: 8px;
+    box-shadow: 1px 1px 5px rgb(138, 138, 138);
+}
+
+@media screen and (max-width: 1135px) {
+    .collectiviteWrapper {
+        width: 90dvw;
+        max-width: none;
+        left: calc(50dvw - 46dvw);
+        top: $height-notice + 40px;
+    }
+}
+@media screen and (max-width: 650px) {
+    .collectiviteWrapper {
+        top: $height-notice + 100px;
+    }
+}
+@media screen and (max-width: 520px) {
+    .collectiviteWrapper {
+        height: 410px;
+        top: $height-notice + 150px;
+    }
+}
+@media screen and (max-width: 450px) {
+    .collectiviteWrapper {
+        height: 420px;
+        top: $height-notice + 180px;
+    }
+}
+// Patch 4 bloc
+
+.patch4Container {
+    background: repeating-linear-gradient(-45deg, transparent, transparent 12px, #D8EFFA 12px, #D8EFFA 14px);
+}
+.patch4Wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 7rem 0 0;
+}
+
+.patch4img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    max-width: 40%;
+    position: relative;
+    img {
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+        object-fit: contain;
+    }
+}
+.patch4Text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 50%;
+    padding: 1.25em;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    height: fit-content;
+    align-self: center;
+    h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 800;
+    }
+    p {
+        margin: 0;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .patch4Wrapper {
+        margin: 0;
+        padding: 9rem 1rem 2rem;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .patch4Wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .patch4Text {
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .patch4img {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .patch4Wrapper {
+        padding: 21rem 2rem 2rem;
+    }
+    .patch4Text {
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+}
+
+// Tacct bloc
+.tacctContainer {
+    background-color: #D8EFFA;
+}
+
+.tacctWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem 0;
+    h2 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #0063CB;
+        margin: 0 0 1rem;
+        text-align: center;
+    }
+    h3 {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: #0063CB;
+        margin: 0 0 1.25rem;
+        text-align: center;
+    }
+    p {
+        text-align: center;
+    }
+}
+
+.cardWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+    width: 100%;
+}
+
+.homeCard {
+    background-color: #ffffff;
+    border-radius: 1.25em;
+    box-shadow: 0px 4px 12px 0px #0063cb29;
+    padding: 1.5em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 267px;
+    min-width: 267px;
+    h4 {
+        color: #0063CB;
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 700;
+    }
+    p {
+        font-size: 12px;
+        margin: 0;
+        line-height: 1.25rem;
+        font-weight: 400;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .tacctWrapper {
+        padding: 3rem 2rem;
+    }
+    .cardWrapper {
+        justify-content: center;
+        column-gap: 3rem;
+        row-gap: 1rem;
+    }
+}
+@media screen and (max-width: 600px) {
+    .homeCard {
+        width: 80%;
+        min-width: unset;
+    }
+}
+
+// Communauté bloc
+.communauteContainer {
+    background-color: #FFFFFF;
+}
+
+.communauteWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 3rem 2rem;
+    h2 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #0063CB;
+        margin: 0 0 1rem;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .communauteWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .communauteText {
+        max-width: 80%;
+    }
+}
+
+// Diagnostic bloc
+.diagnosticContainer {
+    background-color: #0063CB;
+}
+
+.diagnosticWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5rem 2rem;
+    h2 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #FFFFFF;
+        margin: 0 0 1rem;
+    }
+    p {
+        margin: 0;
+        font-size: 14px;
+        color: #FFFFFF;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .diagnosticWrapper {
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem 2rem;
+    }
+    .diagnosticText {
+        max-width: 80%;
+    }
+}
+
+// Ressources bloc
+.ressourcesContainer {
+    background-color: #D8EFFA;
+}
+
+.ressourcesWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem 2rem;
+    h2 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #0063CB;
+        margin: 0 0 1rem;
+    }
+    p {
+        margin: 0;
+        font-size: 14px;
+    }
+    .ressourcesText {
+            max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .ressourcesWrapper {
+        flex-direction: column;
+        align-items: center;
+        .ressourcesText {
+            max-width: 80%;
+        }
+    } 
+}
+
+// Cookies
+
+.cookieModalConsentContainer {
     display: flex;
     flex-direction: column;
     gap: 3rem;
@@ -7,7 +345,7 @@
     z-index: 1500;
 }
 
-.cookieConsentWrapper {
+.cookieModalConsentWrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -18,5 +356,52 @@
         font-weight: 700;
         margin: 0;
         padding: 0 0 1rem;
+    }
+}
+
+.cookieConsentWrapper {
+    position: fixed;
+    bottom: 2rem;
+    width: 50%;
+    margin: 0 25%;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: '0px 4px 12px 0px #0063CB29';
+    background-color: #fff; //#f9f9ff;
+    border-radius: 0.5em;
+    border: solid 1px #0063cb;
+    z-index: 500;
+    .acceptCookieBtn {
+        color: #0063cb;
+        border-radius: 4px;
+        border: 1px solid #0063cb;
+        padding: 0.5em 1em;
+        font-weight: 500;
+        font-family: 'Marianne';
+        font-size: 1rem;
+        height: 48px;
+        margin: 0 0 0 1em;
+    }
+    .modifyCookieBtn {
+        color: #3e5165;
+        border-radius: 4px;
+        border: 1px solid #3e5165;
+        padding: 0.5em 1em;
+        font-weight: 500;
+        font-family: 'Marianne';
+        font-size: 1rem;
+        height: 48px;
+        margin: 0 0 0 1em;
+    }
+    .declineCookieBtn {
+        color: #3e5165;
+        border-radius: 4px;
+        border: 1px solid #3e5165;
+        padding: 0.5em 1em;
+        font-weight: 500;
+        font-family: 'Marianne';
+        font-size: 1rem;
+        height: 48px;
+        margin: 0 0 0 1em;
     }
 }

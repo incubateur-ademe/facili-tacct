@@ -9,16 +9,16 @@ import { homeCards } from '@/lib/homaCards';
 import Image from 'next/image';
 import { lazy, useEffect, useState } from 'react';
 import { Container } from './../../dsfr/layout';
-import styles from './../root.module.scss';
 import { HomeButton } from './homeButton';
 import { HomeCard } from './homeCard';
+import styles from './main.module.scss';
 
 const CollectiviteSearch = lazy(() => import('./CollectiviteSearch'));
 
 const Home = () => {
   const [noticeClosed, setNoticeClosed] = useState(false);
   const window = useWindowDimensions();
-  const heightTopBlock = typeof document !== 'undefined' ? document.querySelector(`.${styles.wrapper}`)?.clientHeight : 0;
+  const heightTopBlock = typeof document !== 'undefined' ? document.querySelector(`.${styles.homePageTopWrapper}`)?.clientHeight : 0;
   const heightNotice = typeof document !== 'undefined' ? document.querySelector(`.notice`)?.clientHeight : 0;
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className={styles.wrapper}>
+      <div className={styles.homePageTopWrapper}>
         <Container size="xl">
           <div className={styles.titles}>
             <h1>Le climat change. Et vous ?</h1>
@@ -147,7 +147,9 @@ const Home = () => {
             <div className={styles.diagnosticText}>
               <h2>Besoin d’être guidé pour évaluer votre diagnostic ?</h2>
               <p>
-                blabalabla
+                Votre territoire possède déjà un diagnostic de vulnérabilité 
+                climatique ? Exploitez-le ! Évitez de repartir de zéro et gagnez 
+                du temps et des ressources en évaluant d'abord le document existant.
               </p>
               <HomeButton
                 borderColor="#FFFFFF"
