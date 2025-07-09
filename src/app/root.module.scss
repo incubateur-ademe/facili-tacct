@@ -2,7 +2,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    --heightWrapper: 375px;
+    --heightWrapper: 293px;
     --height-notice: 543px;
     color: #3a3a3a;
 }
@@ -29,19 +29,18 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    color: beige;
+    color: #FFFFFF;
     align-items: center;
     h1 {
-        color: beige;
+        color: #FFFFFF;
         font-size: 40px;
         font-weight: 700;
         line-height: 55.48px;
     }
     p {
-        max-width: 650px;
         font-size: 18px;
-        font-weight: 500;
-        line-height: 24.97px;
+        font-weight: 700;
+        line-height: 24px;
         text-align: center;
     }
 }
@@ -82,7 +81,7 @@
     background-color: white !important;
     border-radius: 8px;
     h2 {
-        font-size: 1.4rem;
+        font-size: 1rem;
         line-height: 1.3em;
         font-weight: 700;
         margin: 0 0 1em;
@@ -216,3 +215,111 @@
 
 
 
+// Patch 4 block
+
+.patch4Container {
+    background: repeating-linear-gradient(-45deg, transparent, transparent 12px, #D8EFFA 12px, #D8EFFA 14px);
+}
+.patch4Wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10rem 0 0;
+}
+
+.patch4Text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 50%;
+    padding: 1.25em;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    height: fit-content;
+    align-self: center;
+    h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 800;
+    }
+    p {
+        margin: 0;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .patch4Wrapper {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .patch4Wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .patch4Text {
+        max-width: 80%;
+    }
+}
+
+// Tacct block
+.tacctContainer {
+    background-color: #D8EFFA;
+}
+
+.tacctWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem 0;
+    h2 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #0063CB;
+        margin: 0 0 0.5rem;
+    }
+    h3 {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: #0063CB;
+        margin: 0 0 1.25rem;
+    }
+    p {
+        text-align: center;
+    }
+}
+
+.cardWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    width: 100%;
+}
+
+.homeCard {
+    background-color: #ffffff;
+    border-radius: 1.25em;
+    box-shadow: 0px 4px 12px 0px #0063cb29;
+    padding: 1.5em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 267px;
+    h4 {
+        color: #0063CB;
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 700;
+    }
+    p {
+        font-size: 12px;
+        margin: 0;
+        line-height: 1.25rem;
+        font-weight: 400;
+    }
+}
