@@ -77,7 +77,7 @@ const HeaderComp = () => {
         ) : libelle ? (
           <Localisation libelle={libelle} />
         ) : null,
-        params.includes('ressources') ? null : (
+        params.includes('ressources') || params === "/" ? null : (
           <Button
             key="0"
             variant="outlined"

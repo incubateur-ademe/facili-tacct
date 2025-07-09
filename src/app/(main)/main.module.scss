@@ -1,10 +1,10 @@
 // SCSS Variables
 $heightWrapper: 293px;
-$height-notice: 323px;
+$height-notice: 360px;
 
 // 1er bloc
 .homePageTopWrapper{
-        display: flex;
+    display: flex;
     flex-direction: column;
     min-height: $heightWrapper;
     gap: 2rem;
@@ -119,7 +119,7 @@ $height-notice: 323px;
     }
     p {
         margin: 0;
-        font-size: 14px;
+        font-size: 1rem;
     }
 }
 
@@ -207,12 +207,13 @@ $height-notice: 323px;
     min-width: 267px;
     h4 {
         color: #0063CB;
-        font-size: 14px;
+        font-size: 1rem;
         line-height: 17px;
         font-weight: 700;
+        margin: 0.5rem 0 1rem;
     }
     p {
-        font-size: 12px;
+        font-size: 1rem;
         margin: 0;
         line-height: 1.25rem;
         font-weight: 400;
@@ -282,7 +283,7 @@ $height-notice: 323px;
     }
     p {
         margin: 0;
-        font-size: 14px;
+        font-size: 1rem;
         color: #FFFFFF;
     }
 }
@@ -317,7 +318,7 @@ $height-notice: 323px;
     }
     p {
         margin: 0;
-        font-size: 14px;
+        font-size: 1rem;
     }
     .ressourcesText {
             max-width: 50%;
