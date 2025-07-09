@@ -206,6 +206,7 @@
 @media screen and (max-width: 520px) {
     .collectiviteWrapper {
         height: 450px;
+        padding: 2rem 2rem 0;
     }
     .cardWrapper {
         padding-top: 25rem;
@@ -221,9 +222,23 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 10rem 0 0;
+    padding: 7rem 0 0;
 }
 
+.patch4img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    max-width: 40%;
+    position: relative;
+    img {
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+        object-fit: contain;
+    }
+}
 .patch4Text {
     display: flex;
     flex-direction: column;
@@ -249,6 +264,7 @@
 @media screen and (max-width: 1280px) {
     .patch4Wrapper {
         margin: 0;
+        padding: 9rem 1rem 2rem;
     }
 }
 
@@ -259,6 +275,22 @@
     }
     .patch4Text {
         max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .patch4img {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .patch4Wrapper {
+        padding: 21rem 2rem 2rem;
+    }
+    .patch4Text {
+        max-width: 100%;
+        padding: 1.5rem;
     }
 }
 
@@ -277,12 +309,14 @@
         font-weight: 800;
         color: #0063CB;
         margin: 0 0 0.5rem;
+        text-align: center;
     }
     h3 {
         font-size: 1.25rem;
         font-weight: 800;
         color: #0063CB;
         margin: 0 0 1.25rem;
+        text-align: center;
     }
     p {
         text-align: center;
@@ -293,6 +327,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: 0;
     width: 100%;
 }
@@ -307,6 +342,7 @@
     flex-direction: column;
     align-items: center;
     width: 267px;
+    min-width: 267px;
     h4 {
         color: #0063CB;
         font-size: 14px;
@@ -321,6 +357,22 @@
     }
 }
 
+@media screen and (max-width: 1280px) {
+    .tacctWrapper {
+        padding: 3rem 2rem;
+    }
+    .cardWrapper {
+        justify-content: center;
+        column-gap: 3rem;
+    }
+}
+@media screen and (max-width: 600px) {
+    .homeCard {
+        width: 80%;
+        min-width: unset;
+    }
+}
+
 // Communauté block
 .communauteContainer {
     background-color: #FFFFFF;
@@ -330,12 +382,56 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 2rem 0;
+    padding: 3rem 2rem;
     h2 {
         font-size: 1.75rem;
         font-weight: 800;
         color: #0063CB;
         margin: 0 0 0.5rem;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .communauteWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .communauteText {
+        max-width: 80%;
+    }
+}
+
+// Diagnostic block
+.diagnosticContainer {
+    background-color: #0063CB;
+}
+
+.diagnosticWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5rem 2rem;
+    h2 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #FFFFFF;
+        margin: 0 0 0.5rem;
+    }
+    p {
+        margin: 0;
+        font-size: 14px;
+        color: #FFFFFF;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .diagnosticWrapper {
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem 2rem;
+    }
+    .diagnosticText {
+        max-width: 80%;
     }
 }
 
@@ -349,7 +445,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem 0;
+    padding: 3rem 2rem;
     h2 {
         font-size: 1.75rem;
         font-weight: 800;
@@ -363,4 +459,14 @@
     .ressourcesText {
             max-width: 50%;
     }
+}
+
+@media screen and (max-width: 1015px) {
+    .ressourcesWrapper {
+        flex-direction: column;
+        align-items: center;
+        .ressourcesText {
+            max-width: 80%;
+        }
+    } 
 }
