@@ -74,29 +74,19 @@ export const SearchBarComp = () => {
             justifyContent: 'center',
             '.fr-label': {
               paddingBottom: 0,
-              fontSize: "14px",
+              fontSize: "1rem",
               position: 'relative',
-              '&::before, &::after': {
-                content: 'none',
-                display: 'none',
-              },
+              // '&::before, &::after': {
+              //   content: 'none',
+              //   display: 'none',
+              // },
             },
-            '.fr-radio-group': {
-              '& input[type="radio"]': {
-                display: 'none',
-                // visibility: 'hidden',
-              },
-              '& label.fr-label': {
-                '&::before': {
-                  display: 'none',
-                  content: 'none',
-                },
-                '&::after': {
-                  display: 'none',
-                  content: 'none',
-                },
-              },
-            },
+            // '.fr-radio-group': {
+            //   '& input[type="radio"]': {
+            //     display: 'none',
+            //     // visibility: 'hidden',
+            //   },
+            // },
             
             '@media (max-width: 745px)': {
               justifyContent: 'flex-start'

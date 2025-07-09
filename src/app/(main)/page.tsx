@@ -4,6 +4,7 @@ import CommunauteImg from '@/assets/images/communaute_home.webp';
 import Patch4Img from '@/assets/images/patch4_home.png';
 import RessourcesImg from '@/assets/images/ressources_home.webp';
 import { Loader } from '@/components/loader';
+import OptimalParagraph from '@/components/utils/OptimalParagraph';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { homeCards } from '@/lib/homaCards';
 import Image from 'next/image';
@@ -36,9 +37,9 @@ const Home = () => {
         <Container size="xl">
           <div className={styles.titles}>
             <h1>Le climat change. Et vous ?</h1>
-            <p>
+            <OptimalParagraph>
               Avec Facili-TACCT, identifiez les vulnérabilités de votre territoire aux impacts du changement climatique.
-            </p>
+            </OptimalParagraph>
           </div>
         </Container>
       </div>
@@ -46,7 +47,7 @@ const Home = () => {
         window.width ? <CollectiviteSearch />
           : <div
             className={styles.collectiviteWrapper}
-            style={{ height: "218px", top: "323px" }} //REPLACE update top paramètre si la notice est modifiée 415px si pas de notice
+            style={{ height: "218px", top: "360px" }} //REPLACE update top paramètre si la notice est modifiée 415px si pas de notice
           >
             <Loader />
           </div>
@@ -71,9 +72,9 @@ const Home = () => {
               />
             </div>
             <div className={styles.patch4Text}>
-              <h2>Patch 4° : Pré-identifiez votre exposition future à l’horizon 2100</h2>
+              <h2>Patch 4°C : Pré-identifiez votre exposition future à l’horizon 2100</h2>
               <p>
-                Météo France propose un nouveau jeu de données (Patch 4°) basé sur
+                Météo France propose un nouveau jeu de données (Patch 4°C) basé sur
                 la trajectoire de réchauffement de référence pour l’adaptation au
                 changement climatique (TRACC) disponible sur le service Climadiag Commune.
               </p>
@@ -86,10 +87,10 @@ const Home = () => {
           <div className={styles.tacctWrapper}>
             <h2>Pourquoi suivre la démarche TACCT ?</h2>
             <h3>TACCT : Trajectoires d’Adaptation au Changement Climatique des Territoires</h3>
-            <p>
+            <OptimalParagraph>
               Vous avez des défis complexes à relever face au changement climatique et vous vous
               demandez par où commencer ? TACCT est la méthode qu’il vous faut.
-            </p>
+            </OptimalParagraph>
             <div className={styles.cardWrapper}>
               {homeCards.map((card, index) => (
                 <HomeCard
@@ -187,7 +188,7 @@ const Home = () => {
                 backgroundColor="#0063CB"
                 textColor="#FFFFFF"
                 link="/ressources"
-                text="Décrouvrir les ressources"
+                text="Découvrir les ressources"
               />
             </div>
           </div>
