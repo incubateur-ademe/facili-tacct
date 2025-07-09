@@ -9,7 +9,9 @@ import Card3Icon from '../../../assets/icons/cast_for_education_icon_orange.png'
 import Card4Icon from '../../../assets/icons/library_books_icon_orange.png';
 import Card1Icon from '../../../assets/icons/menu_book_icon_orange.png';
 import Card2Icon from '../../../assets/icons/team_meeting_icon_orange.png';
+import CommunauteImg from '../../../assets/images/communaute_home.webp';
 import Patch4Img from '../../../assets/images/patch4_home.png';
+import RessourcesImg from '../../../assets/images/ressources_home.webp';
 import { Container } from '../../../dsfr/layout';
 import styles from '../../root.module.scss';
 import { HomeCard } from './homeCard';
@@ -56,9 +58,7 @@ const Home = () => {
   }, [noticeClosed, heightTopBlock, heightNotice]);
 
   return (
-    <div className={css({
-      margin: '0 0 3em',
-    })}>
+    <div>
       <div className={styles.wrapper}>
         <Container size="xl">
           <div className={styles.titles}>
@@ -73,7 +73,7 @@ const Home = () => {
         window.width ? <CollectiviteSearch />
           : <div
             className={styles.collectiviteWrapper}
-            style={{ height: "218px", top: "350px" }} //REPLACE update top paramètre si la notice est modifiée 415px si pas de notice
+            style={{ height: "218px", top: "323px" }} //REPLACE update top paramètre si la notice est modifiée 415px si pas de notice
           >
             <Loader />
           </div>
@@ -85,7 +85,7 @@ const Home = () => {
           <div className={styles.patch4Wrapper}>
             {window.width && window.width < 1280 ? (
               <Image
-                alt="constellation-de-problematiques"
+                alt=""
                 src={Patch4Img}
                 width={0}
                 height={0}
@@ -140,7 +140,85 @@ const Home = () => {
           </div>
         </Container>
       </div>
+      <div className={styles.communauteContainer}>
+        <Container size="xl">
+          <div className={styles.communauteWrapper}>
+            <div className={styles.communauteText}>
+              <h2>Rejoignez la communauté Facili-TACCT</h2>
+              <p>
+                La communauté Facili-TACCT offre aux Chargés de Mission Climat un espace pour :
+              </p>
+              <ul>
+                <li>Partager des expériences avec des Chargés de Mission Climat d’autres territoires</li>
+                <li>Participer à des webinaires sur des thématiques liées à l’adaptation au changement climatique.</li>
+              </ul>
+            </div>
+            {window.width && window.width < 1280 ? (
+              <Image
+                alt=""
+                src={CommunauteImg}
+                width={0}
+                height={0}
+                sizes="40vw"
+                style={{
+                  position: 'relative',
+                  maxWidth: '40%',
+                  height: 'auto',
+                  right: '-3.5em'
+                }}
+              />
+            ) : (
+              <Image
+                alt=""
+                src={CommunauteImg}
+                width={0}
+                height={0}
+                sizes="40vw"
+                style={{ maxWidth: '40%', height: 'auto' }}
+              />
+            )}
+          </div>
+        </Container>
+      </div>
+      <div className={styles.ressourcesContainer}>
+        <Container size="xl">
+          <div className={styles.ressourcesWrapper}>
+            {window.width && window.width < 1280 ? (
+              <Image
+                alt=""
+                src={RessourcesImg}
+                width={0}
+                height={0}
+                sizes="40vw"
+                style={{
+                  position: 'relative',
+                  maxWidth: '40%',
+                  height: 'auto',
+                  right: '-3.5em'
+                }}
+              />
+            ) : (
+              <Image
+                alt=""
+                src={RessourcesImg}
+                width={0}
+                height={0}
+                sizes="40vw"
+                style={{ maxWidth: '40%', height: 'auto' }}
+              />
+            )}
+            <div className={styles.ressourcesText}>
+              <h2>Découvrez des ressources utiles</h2>
+              <p>
+                Bénéficiez d'actualités, de retours d'expériences et de bonnes
+                pratiques pour vous accompagner dans la mise en place de votre
+                démarche d’adaptation au changement climatique.
+              </p>
+            </div>
 
+          </div>
+        </Container>
+      </div>
     </div>
   );
 };

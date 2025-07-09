@@ -47,7 +47,7 @@
 .collectiviteWrapper {
     position: absolute;
     width: 51dvw;
-    max-width: 53em;
+    // max-width: 53em;
     left: calc(50dvw - 26dvw);
     top: var(--height-notice);
     display: flex;
@@ -212,9 +212,6 @@
     }
 }
 
-
-
-
 // Patch 4 block
 
 .patch4Container {
@@ -321,5 +318,49 @@
         margin: 0;
         line-height: 1.25rem;
         font-weight: 400;
+    }
+}
+
+// Communauté block
+.communauteContainer {
+    background-color: #FFFFFF;
+}
+
+.communauteWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 2rem 0;
+    h2 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #0063CB;
+        margin: 0 0 0.5rem;
+    }
+}
+
+// Ressources block
+.ressourcesContainer {
+    background-color: #D8EFFA;
+}
+
+.ressourcesWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 0;
+    h2 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #0063CB;
+        margin: 0 0 0.5rem;
+    }
+    p {
+        margin: 0;
+        font-size: 14px;
+    }
+    .ressourcesText {
+            max-width: 50%;
     }
 }
