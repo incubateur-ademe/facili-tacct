@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from 'next/image';
-import styles from '../../root.module.scss';
+import styles from './../root.module.scss';
 
 type HomeCardProps = {
   icone: StaticImageData;

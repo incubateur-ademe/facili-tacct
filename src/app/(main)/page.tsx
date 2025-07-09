@@ -1,22 +1,22 @@
 'use client';
 
+import CommunauteImg from '@/assets/images/communaute_home.webp';
+import Patch4Img from '@/assets/images/patch4_home.png';
+import RessourcesImg from '@/assets/images/ressources_home.webp';
 import { Loader } from '@/components/loader';
 import useWindowDimensions from '@/hooks/windowDimensions';
+import { homeCards } from '@/lib/homaCards';
 import Image from 'next/image';
 import { lazy, useEffect, useState } from 'react';
-import { useStyles } from 'tss-react/dsfr';
-import Constellation2Img from '../../assets/images/constellation2.png';
-import Constellation3Img from '../../assets/images/constellation3.png';
-import PeopleImg from '../../assets/images/landing-page-group.png';
-import MapImg from '../../assets/images/landing-page-map.png';
-import { Container } from '../../dsfr/layout';
-import styles from '../root.module.scss';
+import { Container } from './../../dsfr/layout';
+import styles from './../root.module.scss';
+import { HomeButton } from './homeButton';
+import { HomeCard } from './homeCard';
 
 const CollectiviteSearch = lazy(() => import('./CollectiviteSearch'));
 
 const Home = () => {
   const [noticeClosed, setNoticeClosed] = useState(false);
-  const { css } = useStyles();
   const window = useWindowDimensions();
   const heightTopBlock = typeof document !== 'undefined' ? document.querySelector(`.${styles.wrapper}`)?.clientHeight : 0;
   const heightNotice = typeof document !== 'undefined' ? document.querySelector(`.notice`)?.clientHeight : 0;
@@ -25,32 +25,19 @@ const Home = () => {
     if (typeof document !== 'undefined') {
       const style = document.documentElement.style;
       style.setProperty(
-        '--height-notice', `${(noticeClosed ? 0 : (heightNotice ?? 0)) + (heightTopBlock ?? 0) + 32}px`
+        '--height-notice', `${(noticeClosed ? 0 : (heightNotice ?? 0)) + (heightTopBlock ?? 0) + 16}px`
       );
     }
   }, [noticeClosed, heightTopBlock, heightNotice]);
 
   return (
-    <div className={css({
-      margin: '0 0 3em',
-    })}>
-      {/* <Notice
-        className='notice'
-        isClosable={true}
-        onClose={() => setNoticeClosed(true)}
-        title={"Nouveauté !"}
-        description="Facili-TACCT vous propose désormais 4 types de territoires supplémentaires : les PETR (Pôle d’équilibre territorial et rural), les PNR (Parc naturel régional), les EPT (Établissement public territorial) et les Départements."
-      /> */}
+    <div>
       <div className={styles.wrapper}>
         <Container size="xl">
           <div className={styles.titles}>
-            <h1>Vulnérable aux impacts du changement climatique ?</h1>
+            <h1>Le climat change. Et vous ?</h1>
             <p>
-              <b>Objectivez votre diagnostic</b> avec les données
-              socio-économiques qui rendent votre territoire unique et{' '}
-              <b>découvrez des arguments et ressources pour mobiliser</b> vos
-              collègues et partenaires externes sur l'adaptation au changement
-              climatique
+              Avec Facili-TACCT, identifiez les vulnérabilités de votre territoire aux impacts du changement climatique.
             </p>
           </div>
         </Container>
@@ -59,60 +46,88 @@ const Home = () => {
         window.width ? <CollectiviteSearch />
           : <div
             className={styles.collectiviteWrapper}
-            style={{ height: "218px", top: "415px" }} //REPLACE update top paramètre si la notice est modifiée 415px si pas de notice
+            style={{ height: "218px", top: "323px" }} //REPLACE update top paramètre si la notice est modifiée 415px si pas de notice
           >
             <Loader />
           </div>
       }
-      <div className={styles.cardBackground}>
-        <Container size="xl">
-          <div className={styles.cardWrapper}>
-            <div className={styles.card}>
+      <div className={styles.patch4Container}>
+        <Container
+          size="xl"
+        >
+          <div className={styles.patch4Wrapper}>
+            <div className={styles.patch4img}>
               <Image
-                src={MapImg}
-                alt="image-cartographie"
-                className={styles.cardImage}
+                alt=""
+                src={Patch4Img}
+                width={0}
+                height={0}
+                sizes="40vw"
+                style={{
+                  position: 'relative',
+                  height: 'auto',
+                  margin: '2rem 0 0'
+                }}
               />
-              <div className={styles.cardDescription}>
-                <h2>Evaluez la sensibilité de votre territoire</h2>
-                <p>
-                  Déchiffrez les données socio-économiques qui rendent votre
-                  territoire unique
-                </p>
-              </div>
             </div>
-            <div className={styles.card}>
-              <Image
-                src={PeopleImg}
-                alt="personne-dans-un-atelier"
-                className={styles.cardImage}
-              />
-              <div className={styles.cardDescription}>
-                <h2>Facilitez les conditions du dialogue</h2>
-                <p>
-                  Découvrez des ressources pour faciliter les conditions du
-                  dialogue avec vos élus, services techniques et partenaires
-                </p>
-              </div>
+            <div className={styles.patch4Text}>
+              <h2>Patch 4° : Pré-identifiez votre exposition future à l’horizon 2100</h2>
+              <p>
+                Météo France propose un nouveau jeu de données (Patch 4°) basé sur
+                la trajectoire de réchauffement de référence pour l’adaptation au
+                changement climatique (TRACC) disponible sur le service Climadiag Commune.
+              </p>
             </div>
           </div>
         </Container>
       </div>
-      <Container size="xl">
-        <div className={styles.constellationWrapper}>
-          <div className={styles.constellationText}>
-            <h3>L'adaptation n'est possible qu’en intelligence collective</h3>
+      <div className={styles.tacctContainer}>
+        <Container size="xl">
+          <div className={styles.tacctWrapper}>
+            <h2>Pourquoi suivre la démarche TACCT ?</h2>
+            <h3>TACCT : Trajectoires d’Adaptation au Changement Climatique des Territoires</h3>
             <p>
-              Les initiatives d'adaptation au changement climatique réussissent
-              lorsqu'elles sont abordées de manière{' '}
-              <b>transversale et collaborative</b> en impliquant les élus et
-              différentes expertises thématiques.
+              Vous avez des défis complexes à relever face au changement climatique et vous vous
+              demandez par où commencer ? TACCT est la méthode qu’il vous faut.
             </p>
+            <div className={styles.cardWrapper}>
+              {homeCards.map((card, index) => (
+                <HomeCard
+                  key={index}
+                  icone={card.icone}
+                  titre={card.titre}
+                  description={card.description}
+                />
+              ))}
+            </div>
           </div>
-          {window.width && window.width < 1280 ? (
+        </Container>
+      </div>
+      <div className={styles.communauteContainer}>
+        <Container size="xl">
+          <div className={styles.communauteWrapper}>
+            <div className={styles.communauteText}>
+              <h2>Rejoignez la communauté Facili-TACCT</h2>
+              <p>
+                La communauté Facili-TACCT offre aux Chargés de Mission Climat un espace pour :
+              </p>
+              <ul>
+                <li>Partager des expériences avec des Chargés de Mission Climat d’autres territoires</li>
+                <li>Participer à des webinaires sur des thématiques liées à l’adaptation au changement climatique.</li>
+              </ul>
+              <HomeButton
+                borderColor="#0063CB"
+                backgroundColor="#0063CB"
+                textColor="#FFFFFF"
+                link="https://tally.so/r/n0LrEZ"
+                text="Rejoindre la communauté"
+                target='_blank'
+                rel="noopener noreferrer"
+              />
+            </div>
             <Image
-              alt="constellation-de-problematiques"
-              src={Constellation2Img}
+              alt=""
+              src={CommunauteImg}
               width={0}
               height={0}
               sizes="40vw"
@@ -120,21 +135,62 @@ const Home = () => {
                 position: 'relative',
                 maxWidth: '40%',
                 height: 'auto',
-                right: '-3.5em'
+                margin: '2rem 0 0'
               }}
             />
-          ) : (
+          </div>
+        </Container>
+      </div>
+      <div className={styles.diagnosticContainer}>
+        <Container size="xl">
+          <div className={styles.diagnosticWrapper}>
+            <div className={styles.diagnosticText}>
+              <h2>Besoin d’être guidé pour évaluer votre diagnostic ?</h2>
+              <p>
+                blabalabla
+              </p>
+              <HomeButton
+                borderColor="#FFFFFF"
+                backgroundColor="#0063CB"
+                textColor="#FFFFFF"
+                link="https://tally.so/r/3Nx98W"
+                text="J'évalue mon diagnostic"
+                target='_blank'
+                rel="noopener noreferrer"
+              />
+            </div>
+          </div>
+        </Container>
+      </div>
+      <div className={styles.ressourcesContainer}>
+        <Container size="xl">
+          <div className={styles.ressourcesWrapper}>
             <Image
               alt=""
-              src={Constellation3Img}
+              src={RessourcesImg}
               width={0}
               height={0}
               sizes="40vw"
-              style={{ maxWidth: '40%', height: 'auto' }}
+              style={{ maxWidth: '40%', height: 'auto', margin: '0 0 2rem' }}
             />
-          )}
-        </div>
-      </Container>
+            <div className={styles.ressourcesText}>
+              <h2>Découvrez des ressources utiles</h2>
+              <p>
+                Bénéficiez d'actualités, de retours d'expériences et de bonnes
+                pratiques pour vous accompagner dans la mise en place de votre
+                démarche d’adaptation au changement climatique.
+              </p>
+              <HomeButton
+                borderColor="#0063CB"
+                backgroundColor="#0063CB"
+                textColor="#FFFFFF"
+                link="/ressources"
+                text="Décrouvrir les ressources"
+              />
+            </div>
+          </div>
+        </Container>
+      </div>
     </div>
   );
 };
