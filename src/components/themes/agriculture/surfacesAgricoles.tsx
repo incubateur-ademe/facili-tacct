@@ -3,8 +3,10 @@ import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import { SurfacesAgricolesText } from '../inconfortThermique/staticTexts';
 import styles from './agriculture.module.scss';
+import SurfacesAgricolesDataviz from './surfacesAgricolesDataviz';
 
 export const SurfacesAgricoles = ({
   surfacesAgricoles
@@ -14,6 +16,9 @@ export const SurfacesAgricoles = ({
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
+  const [datavizTab, setDatavizTab] = useState<string>('Pie');
+
+  console.log("SurfacesAgricoles", surfacesAgricoles);
 
   return (
     <>
@@ -43,7 +48,11 @@ export const SurfacesAgricoles = ({
                   {
                     surfacesAgricoles.length > 0 ? (
                       <>
-                        <p>TEST</p>
+                        <SurfacesAgricolesDataviz
+                          surfacesAgricoles={surfacesAgricoles}
+                          datavizTab={datavizTab}
+                          setDatavizTab={setDatavizTab}
+                        />
                       </>
                     ) : (
                       <DataNotFoundForGraph image={DataNotFound} />

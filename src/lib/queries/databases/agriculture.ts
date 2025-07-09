@@ -73,11 +73,8 @@ export const GetSurfacesAgricoles = async (
 ): Promise<SurfacesAgricolesModel[]> => {
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
-      console.log(
-        'GetSurfacesAgricoles: Timeout reached (2 seconds), returning empty array.'
-      );
       resolve([]);
-    }, 2000)
+    }, 4000)
   );
   const column = ColumnCodeCheck(type);
   const dbQuery = (async () => {
@@ -89,27 +86,47 @@ export const GetSurfacesAgricoles = async (
       });
       if (!exists) return [];
       else {
-        if (type === 'epci') {
+        if (type === 'commune') {
+          const epci = await prisma.collectivites_searchbar.findFirst({
+            select: {
+              epci: true
+            },
+            where: {
+              code_geographique: code,
+            }
+          }); 
           const value = await prisma.surfaces_agricoles.findMany({
             where: {
-              epci: code
+              epci: epci?.epci as string
             }
           });
-          return value;
-        } else if (type === 'commune') {
-          // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
-          const value = await prisma.$queryRaw`
-            SELECT a.*
-            FROM surfaces_agricoles a
-            WHERE a.epci = (
-              SELECT c.epci
-              FROM collectivites_searchbar c
-              WHERE c.code_geographique = ${code}
-              LIMIT 1
-            )
-          `;
           return value as SurfacesAgricolesModel[];
-        } else return [];
+        } else {
+          const territoire = await prisma.collectivites_searchbar.findMany({
+            select: {
+              epci: true
+            },
+            where: {
+              AND: [
+                {
+                  epci: { not: null }
+                },
+                {
+                  [column]: type === 'petr' || type === 'ept' ? libelle : code
+                }
+              ]
+            },
+            distinct: ['epci']
+          });
+          const value = await prisma.surfaces_agricoles.findMany({
+            where: {
+              epci: {
+                in: territoire.map((t) => t.epci) as string[]
+              }
+            }
+          });
+          return value as SurfacesAgricolesModel[];
+        }
       }
     } catch (error) {
       console.error(error);
