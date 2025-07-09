@@ -14,6 +14,7 @@ import Patch4Img from '../../../assets/images/patch4_home.png';
 import RessourcesImg from '../../../assets/images/ressources_home.webp';
 import { Container } from '../../../dsfr/layout';
 import styles from '../../root.module.scss';
+import { HomeButton } from './homeButton';
 import { HomeCard } from './homeCard';
 
 const CollectiviteSearch = lazy(() => import('../CollectiviteSearch'));
@@ -83,30 +84,21 @@ const Home = () => {
           size="xl"
         >
           <div className={styles.patch4Wrapper}>
-            {window.width && window.width < 1280 ? (
-              <Image
-                alt=""
-                src={Patch4Img}
-                width={0}
-                height={0}
-                sizes="40vw"
-                style={{
-                  position: 'relative',
-                  maxWidth: '40%',
-                  height: 'auto',
-                  right: '-3.5em'
-                }}
-              />
-            ) : (
-              <Image
-                alt=""
-                src={Patch4Img}
-                width={0}
-                height={0}
-                sizes="40vw"
-                style={{ maxWidth: '40%', height: 'auto' }}
-              />
-            )}
+            <div className={styles.patch4img}>
+             
+                <Image
+                  alt=""
+                  src={Patch4Img}
+                  width={0}
+                  height={0}
+                  sizes="40vw"
+                  style={{
+                    position: 'relative',
+                    height: 'auto',
+                    margin: '2rem 0 0'
+                  }}
+                />
+            </div>
             <div className={styles.patch4Text}>
               <h2>Patch 4° : Pré-identifiez votre exposition future à l’horizon 2100</h2>
               <p>
@@ -152,61 +144,60 @@ const Home = () => {
                 <li>Partager des expériences avec des Chargés de Mission Climat d’autres territoires</li>
                 <li>Participer à des webinaires sur des thématiques liées à l’adaptation au changement climatique.</li>
               </ul>
+              <HomeButton
+                borderColor="#0063CB"
+                backgroundColor="#0063CB"
+                textColor="#FFFFFF"
+                link="/home"
+                text="Rejoindre la communauté"
+              />
             </div>
-            {window.width && window.width < 1280 ? (
-              <Image
-                alt=""
-                src={CommunauteImg}
-                width={0}
-                height={0}
-                sizes="40vw"
-                style={{
-                  position: 'relative',
-                  maxWidth: '40%',
-                  height: 'auto',
-                  right: '-3.5em'
-                }}
+            <Image
+              alt=""
+              src={CommunauteImg}
+              width={0}
+              height={0}
+              sizes="40vw"
+              style={{
+                position: 'relative',
+                maxWidth: '40%',
+                height: 'auto',
+                margin: '2rem 0 0'
+              }}
+            />
+          </div>
+        </Container>
+      </div>
+      <div className={styles.diagnosticContainer}>
+        <Container size="xl">
+          <div className={styles.diagnosticWrapper}>
+            <div className={styles.diagnosticText}>
+              <h2>Besoin d’être guidé pour évaluer votre diagnostic ?</h2>
+              <p>
+                blabalabla
+              </p>
+              <HomeButton
+                borderColor="#FFFFFF"
+                backgroundColor="#0063CB"
+                textColor="#FFFFFF"
+                link="/home"
+                text="J'évalue mon diagnostic"
               />
-            ) : (
-              <Image
-                alt=""
-                src={CommunauteImg}
-                width={0}
-                height={0}
-                sizes="40vw"
-                style={{ maxWidth: '40%', height: 'auto' }}
-              />
-            )}
+            </div>
           </div>
         </Container>
       </div>
       <div className={styles.ressourcesContainer}>
         <Container size="xl">
           <div className={styles.ressourcesWrapper}>
-            {window.width && window.width < 1280 ? (
-              <Image
-                alt=""
-                src={RessourcesImg}
-                width={0}
-                height={0}
-                sizes="40vw"
-                style={{
-                  position: 'relative',
-                  maxWidth: '40%',
-                  height: 'auto',
-                  right: '-3.5em'
-                }}
-              />
-            ) : (
-              <Image
-                alt=""
-                src={RessourcesImg}
-                width={0}
-                height={0}
-                sizes="40vw"
-                style={{ maxWidth: '40%', height: 'auto' }}
-              />
-            )}
+            <Image
+              alt=""
+              src={RessourcesImg}
+              width={0}
+              height={0}
+              sizes="40vw"
+              style={{ maxWidth: '40%', height: 'auto', margin: '0 0 2rem' }}
+            />
             <div className={styles.ressourcesText}>
               <h2>Découvrez des ressources utiles</h2>
               <p>
@@ -214,8 +205,14 @@ const Home = () => {
                 pratiques pour vous accompagner dans la mise en place de votre
                 démarche d’adaptation au changement climatique.
               </p>
+              <HomeButton
+                borderColor="#0063CB"
+                backgroundColor="#0063CB"
+                textColor="#FFFFFF"
+                link="/home"
+                text="Décrouvrir les ressources"
+              />
             </div>
-
           </div>
         </Container>
       </div>
