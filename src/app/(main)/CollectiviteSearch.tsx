@@ -1,5 +1,5 @@
 import { SearchBarComp } from '@/components/searchbar/SearchBar';
-import styles from '../root.module.scss';
+import styles from './main.module.scss';
 
 const CollectiviteSearch = () => {
   return (
