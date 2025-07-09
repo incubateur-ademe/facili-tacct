@@ -6,18 +6,24 @@ export const HomeButton = ({
   textColor,
   link,
   text,
+  target,
+  rel
 }: {
   borderColor: string;
   backgroundColor: string;
   textColor: string;
   link: string;
   text: string;
+  target?: string;
+  rel?: string;
 }) => {
   return (
     <Button
       key="0"
       variant="outlined"
       href={link}
+      target={target}
+      rel={rel}
       sx={{
         textTransform: 'none',
         color: textColor,
