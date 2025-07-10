@@ -1,4 +1,4 @@
-import { RessourcesEauExport } from '@/components/exports/RessourcesEau';
+import { RessourcesEauExport } from '@/components/exports/RessourcesEauExport';
 import { GetRessourceEau } from '@/lib/queries/databases/ressourcesEau';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { themes } from '@/lib/themes';

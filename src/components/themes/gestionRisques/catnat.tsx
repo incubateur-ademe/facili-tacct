@@ -13,6 +13,7 @@ import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { ArreteCatNat, CarteCommunes, GestionRisques, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { catnatTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
@@ -130,6 +131,7 @@ export const Catnat = (props: {
   const precipitation = patch4
     ? AlgoPatch4(patch4, 'fortes_precipitations')
     : undefined;
+  const exportData = IndicatorExportTransformations.gestionRisques.ArretesCatnat(gestionRisques);
 
   return (
     <>
@@ -140,7 +142,7 @@ export const Catnat = (props: {
               <div className={gestionRisques.length !== 0 ? "w-1/3" : "w-1/2"}>
                 <div className="mb-4">
                   <ExportButton
-                    data={gestionRisques}
+                    data={exportData}
                     baseName="arretes_catnat"
                     type={type}
                     libelle={libelle}
