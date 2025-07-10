@@ -572,8 +572,8 @@ export type SurfacesAgricolesModel = {
   exploitation_sau_herbe: number;
   exploitation_sau_herbe_prairies_productives: number;
   exploitation_sau_herbe_prairies_peu_productives: number;
-  exploitation_sau_subventions: number;
-  exploitation_sau_bois_patures: number;
+  exploitation_sau_herbe_subventions: number;
+  exploitation_sau_herbe_bois_patures: number;
   exploitation_sau_jardins: number;
   superficie_sau: number;
   superficie_sau_terres_arables: number;
@@ -591,8 +591,8 @@ export type SurfacesAgricolesModel = {
   superficie_sau_herbe: number;
   superficie_sau_herbe_prairies_productives: number;
   superficie_sau_herbe_prairies_peu_productives: number;
-  superficie_sau_subventions: number;
-  superficie_sau_bois_patures: number;
+  superficie_sau_herbe_subventions: number;
+  superficie_sau_herbe_bois_patures: number;
   superficie_sau_jardins: number;
 }
 
