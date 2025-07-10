@@ -72,11 +72,18 @@ const Home = () => {
               />
             </div>
             <div className={styles.patch4Text}>
-              <h2>Patch 4°C : Pré-identifiez votre exposition future à l’horizon 2100</h2>
+              <h2>
+                Patch 4°C : intégrer la trajectoire de réchauffement de référence (TRACC) dans 
+                votre récent diagnostic de vulnérabilité climatique sans tout refaire
+                </h2>
               <p>
-                Météo France propose un nouveau jeu de données (Patch 4°C) basé sur
-                la trajectoire de réchauffement de référence pour l’adaptation au
-                changement climatique (TRACC) disponible sur le service Climadiag Commune.
+                Le “patch 4°C” est une action du 3è Plan national d’adaptation au 
+                changement climatique (2025). Il s’adresse <b>en priorité aux communes ou EPCI</b> qui 
+                viennent d’achever leurs études de vulnérabilité sur la base d’hypothèses de 
+                réchauffement différentes de celles de la TRACC.
+              </p>
+              <p>
+                Pour accéder aux données, saisissez le nom de  de votre territoire dans le champ ci-dessus.
               </p>
             </div>
           </div>
