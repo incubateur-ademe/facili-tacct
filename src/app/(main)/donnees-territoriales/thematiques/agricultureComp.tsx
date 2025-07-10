@@ -59,7 +59,7 @@ const allComps = [
     )
   },
   {
-    titre: 'Surfaces agricoles',
+    titre: 'Types de culture',
     Component: ({
       agriculture,
       surfacesAgricoles
@@ -139,8 +139,8 @@ const AgricultureComp = ({
             )
           },
           {
-            tabId: 'Surfaces agricoles',
-            label: "Surfaces agricoles",
+            tabId: 'Types de culture',
+            label: "Types de culture",
           },
         ]}
         onTabChange={setSelectedTabId}
