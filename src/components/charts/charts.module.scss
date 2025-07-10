@@ -138,3 +138,26 @@
         line-height: 15px;
     }
 }
+
+.tooltip {
+    max-width: 350px;
+    h3 {
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 20px;
+    }
+    p {
+        font-size: 14px;
+        font-weight: 400;
+        margin: 0;
+    }
+    :after {
+        content: '';
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        border-width: 8px;
+        border-style: solid;
+        border-color: white transparent transparent transparent;
+    }
+}

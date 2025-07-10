@@ -1,5 +1,37 @@
-import { SurfacesAgricolesModel } from "../postgres/models"
-import { Sum } from "../utils/reusableFunctions/sum"
+import { SurfacesAgricolesModel } from "../postgres/models";
+import { Sum } from "../utils/reusableFunctions/sum";
+
+export  const PieChartDataSurfacesAgricoles = (
+  surfacesAgricoles: SurfacesAgricolesModel[],
+) => {
+  const sommeToutesSuperficies = Sum(surfacesAgricoles.map(el => el.superficie_sau))
+  return [
+    {
+      id: "Cultures permanentes",
+      count: Sum(surfacesAgricoles.map(el => el.superficie_sau_cultures_permanentes)),
+      color: '#00C190',
+      value: 100 * Sum(surfacesAgricoles.map(el => el.superficie_sau_cultures_permanentes)) / sommeToutesSuperficies,
+    },
+    {
+      id: "Surfaces toujours en herbe",
+      count: Sum(surfacesAgricoles.map(el => el.superficie_sau_herbe)),
+      color: '#009ADC',
+      value: 100 * Sum(surfacesAgricoles.map(el => el.superficie_sau_herbe)) / sommeToutesSuperficies,
+    },
+    {
+      id: "Terres arables",
+      count: Sum(surfacesAgricoles.map(el => el.superficie_sau_terres_arables)),
+      color: '#7A49BE',
+      value: 100 * Sum(surfacesAgricoles.map(el => el.superficie_sau_terres_arables)) / sommeToutesSuperficies,
+    },
+    {
+      id: "Jardin",
+      count: Sum(surfacesAgricoles.map(el => el.superficie_sau_jardins)) ,
+      color: '#BB43BD',
+      value: 100 * Sum(surfacesAgricoles.map(el => el.superficie_sau_jardins)) / sommeToutesSuperficies,
+    },
+  ];
+}
 
 export const PrograssBarDataSurfacesAgricoles = (surfacesAgricoles: SurfacesAgricolesModel[]) => {
   return [

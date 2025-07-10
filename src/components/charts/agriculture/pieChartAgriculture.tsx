@@ -5,24 +5,15 @@ import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import ZeroData from '@/assets/images/zero_data_found.png';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import styles from '@/components/themes/gestionRisques/gestionRisques.module.scss';
+import { PieChartDataSurfacesAgricoles } from '@/lib/charts/surfacesAgricoles';
 import { ResponsivePie } from '@/lib/nivo/pie';
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Any } from '@/lib/utils/types';
 import { animated } from '@react-spring/web';
 
-type Props = {
-  graphData: Array<{
-    id: string;
-    value: number;
-    color: string;
-    // label: string;
-    count: number;
-  }>;
-  surfacesAgricoles: SurfacesAgricolesModel[];
-};
-
-export const PieChartAgriculture = ({ graphData, surfacesAgricoles }: Props) => {
+export const PieChartAgriculture = ({ surfacesAgricoles }: { surfacesAgricoles: SurfacesAgricolesModel[] }) => {
+  const graphData = PieChartDataSurfacesAgricoles(surfacesAgricoles);
   const sumAllCount = graphData.reduce((sum, item) => sum + (item.count || 0), 0);
 
   const arcLabelsComponent = ({ datum, label, style }: Any) => {

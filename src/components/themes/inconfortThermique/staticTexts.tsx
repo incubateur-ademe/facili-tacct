@@ -741,15 +741,37 @@ export const RGAText = () => (
 export const SurfacesAgricolesText = () => (
   <div className="px-4">
     <p>
-      En 2020, plus de 94 % des terres agricoles françaises étaient consacrées aux grandes cultures et aux cultures fourragères.
-      Le reste, vergers, vignes, légumes, plantes à parfum, ne représentait que 6 % des surfaces, bien qu’il concentre souvent les cultures les plus sensibles aux aléas climatiques. Ces dernières années, des pertes importantes ont été enregistrées dans les vergers d’abricotiers (gel printanier), les vignobles (mildiou, sécheresse) ou les cultures maraîchères (pluies excessives), illustrant une vulnérabilité déjà bien réelle.
+      En 2020, près de deux tiers des terres agricoles françaises étaient 
+      consacrées aux terres arables : grandes cultures, légumes, mais aussi 
+      cultures fourragères destinées à l’élevage. Un tiers correspondait 
+      aux surfaces toujours en herbe (prairies permanentes), également 
+      utilisées pour l’élevage. Les cultures permanentes tels que les vergers, 
+      vignes, plantes à parfum, ainsi que certaines cultures légumières, 
+      bien que minoritaires en surface, concentrent une part importante 
+      des pertes liées aux aléas climatiques : gel printanier sur les 
+      abricotiers, mildiou ou sécheresse sur la vigne, excès d’eau sur 
+      le maraîchage.
     </p>
     <p>
-      Une agriculture trop spécialisée peut fragiliser l’ensemble d’un territoire : un seul aléa suffit parfois à mettre en péril une exploitation sous pression.
-      Et avec un climat à +2 °C d’ici 2030, ces épisodes extrêmes deviendront plus fréquents.
+      Ces pertes illustrent les limites d’un système agricole encore 
+      souvent spécialisé, peu préparé à absorber des chocs climatiques 
+      répétés. Un seul aléa suffit parfois à compromettre plusieurs années 
+      de revenus.
     </p>
     <p>
-      La diversification est l’une des voies possibles pour renforcer la résilience des territoires agricoles. Si l’agriculture de votre territoire repose surtout sur une ou deux cultures, quelle marge de résilience reste-t-il face aux aléas climatiques ?
+      La diversification est l’une des voies possibles pour renforcer la 
+      résilience des territoires agricoles. Si l’agriculture de votre 
+      territoire repose surtout sur une ou deux cultures, quelle marge 
+      de résilience reste-t-il face aux aléas climatiques ?
+    </p>
+    <p>
+      ⇒ Près de 49 % de la surface agricole utile est mobilisée pour l’élevage.
+    </p>
+    <p>
+      ⇒ Les jachères agricoles ont reculé de 29 % entre 2010 et 2020.
+    </p>
+    <p>
+      ⇒ En 2024, la production viticole a chuté de 18 % par rapport à la moyenne 2019-2023.
     </p>
   </div>
 )
