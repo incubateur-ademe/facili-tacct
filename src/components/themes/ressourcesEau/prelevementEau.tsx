@@ -98,7 +98,11 @@ export const PrelevementEau = (props: {
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : undefined;
-  const exportData = IndicatorExportTransformations.ressourcesEau.PrelevementEau(ressourcesEau);
+
+  //sort ascending by code_geographique
+  const exportData = IndicatorExportTransformations.ressourcesEau.PrelevementEau(dataParMaille).sort(
+    (a, b) => a.code_geographique.localeCompare(b.code_geographique)
+  );
 
   return (
     <>

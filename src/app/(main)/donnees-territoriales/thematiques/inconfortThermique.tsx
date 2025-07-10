@@ -14,7 +14,6 @@ const InconfortThermique = async (props: { searchParams: SearchParams }) => {
   const theme = themes.inconfortThermique;
   const carteCommunes = await GetCommunes(code, libelle, type);
   const dbInconfortThermique = await GetInconfortThermique(code, libelle, type);
-
   const exportData = ThematiquesExports.inconfortThermique(FilterDataTerritory(type, code, libelle, dbInconfortThermique));
 
   return (
