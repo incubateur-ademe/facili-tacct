@@ -7,7 +7,7 @@ import { PrograssBarDataSurfacesAgricoles } from '@/lib/charts/surfacesAgricoles
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
-import { SubAccordionGraph } from '../subAccordion';
+import { SubAccordionGraph } from '../subAccordionGraph';
 
 type graphDataItem = {
   [key: string]: {
@@ -33,14 +33,12 @@ const SurfacesAgricolesProgressBar = ({
         <>
           {graphData
             .map((item, index) => (
-                <SubAccordionGraph
-                  key={index}
-                  graphDataItem={item as unknown as graphDataItem}
-                  superficieSau={superficieSau}
-                  isDefaultExpanded={index === 0 ? true : false}
-                  // titre={item.titre}
-                  // category={item.category}
-                />
+              <SubAccordionGraph
+                key={index}
+                graphDataItem={item as unknown as graphDataItem}
+                superficieSau={superficieSau}
+                isDefaultExpanded={index === 0 ? true : false}
+              />
             ))}
         </>
       ) : (

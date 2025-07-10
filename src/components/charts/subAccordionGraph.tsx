@@ -103,7 +103,7 @@ export const SubAccordionGraph = ({
                     <p>
                       {libelle} :{' '}
                       <b>
-                        {Number(100 * item.value / superficieSau)} %
+                        {Round((100 * item.value / superficieSau), 1)} %
                       </b>
                     </p>
                   </div>
