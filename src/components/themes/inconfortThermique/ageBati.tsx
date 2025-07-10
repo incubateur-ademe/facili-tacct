@@ -164,7 +164,7 @@ export const AgeBati = (props: {
           <div className={sumAllCount > 0 ? "w-3/5" : "w-1/2"}>
             <div className={styles.graphWrapper}>
               <p style={{ padding: '1em', margin: '0' }}>
-                <b>Part des résidence principales par période de construction</b>
+                <b>Part des résidences principales par période de construction</b>
               </p>
               {chartData ? <BarChart chartData={chartData} /> : <Loader />}
               <p style={{ padding: '1em', margin: '0' }}>Source : INSEE</p>

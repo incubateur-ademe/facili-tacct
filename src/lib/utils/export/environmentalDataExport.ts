@@ -6,6 +6,7 @@ import {
 } from '@/lib/dto';
 import {
   AgricultureBio,
+  ArreteCatNat,
   CarteCommunes,
   ConsommationNAF,
   EtatCoursDeau,
@@ -73,11 +74,11 @@ export const IndicatorExportTransformations = {
           libelle_petr: el.libelle_petr,
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
-          age_bati_pre_19: el.age_bati_pre_19,
-          age_bati_19_45: el.age_bati_19_45,
-          age_bati_46_90: el.age_bati_46_90,
-          age_bati_91_05: el.age_bati_91_05,
-          age_bati_post06: el.age_bati_post06
+          part_age_bati_pre_1919: el.age_bati_pre_19,
+          part_age_bati_1919_1945: el.age_bati_19_45,
+          part_age_bati_1946_1990: el.age_bati_46_90,
+          part_age_bati_1991_2005: el.age_bati_91_05,
+          part_age_bati_post_2006: el.age_bati_post06
         };
       }),
     GrandAgeIsolement: (grandAgeIsolement: GrandAgeIsolementDto[]) =>
@@ -174,7 +175,7 @@ export const IndicatorExportTransformations = {
           surface_agricole_ha: el.clc_2_agricole,
           surface_foret_et_espaces_semi_naturels_ha: el.clc_3_foret_semiNaturel,
           surface_zone_humide_ha: el.clc_4_humide,
-          surface_eau_ha: el.clc_5_eau
+          surface_en_eau_ha: el.clc_5_eau
         };
       });
     }
@@ -195,19 +196,19 @@ export const IndicatorExportTransformations = {
           libelle_departement: el.libelle_departement,
           sous_champ: el.SOUS_CHAMP,
           libelle_sous_champ: el.LIBELLE_SOUS_CHAMP,
-          prelevement_2008: el.A2008,
-          prelevement_2009: el.A2009,
-          prelevement_2010: el.A2010,
-          prelevement_2011: el.A2011,
-          prelevement_2012: el.A2012,
-          prelevement_2013: el.A2013,
-          prelevement_2014: el.A2014,
-          prelevement_2015: el.A2015,
-          prelevement_2016: el.A2016,
-          prelevement_2017: el.A2017,
-          prelevement_2018: el.A2018,
-          prelevement_2019: el.A2019,
-          prelevement_2020: el.A2020
+          prelevement_2008_m3: el.A2008,
+          prelevement_2009_m3: el.A2009,
+          prelevement_2010_m3: el.A2010,
+          prelevement_2011_m3: el.A2011,
+          prelevement_2012_m3: el.A2012,
+          prelevement_2013_m3: el.A2013,
+          prelevement_2014_m3: el.A2014,
+          prelevement_2015_m3: el.A2015,
+          prelevement_2016_m3: el.A2016,
+          prelevement_2017_m3: el.A2017,
+          prelevement_2018_m3: el.A2018,
+          prelevement_2019_m3: el.A2019,
+          prelevement_2020_m3: el.A2020
         };
       });
     },
@@ -215,7 +216,18 @@ export const IndicatorExportTransformations = {
       return etatCoursDeau.map((el) => {
         return {
           nom_cours_d_eau: el.name,
-          etat_cours_d_eau: el.etateco
+          etat_cours_d_eau:
+            el.etateco === '1'
+              ? 'Très bon'
+              : el.etateco === '2'
+                ? 'Bon'
+                : el.etateco === '3'
+                  ? 'Moyen'
+                  : el.etateco === '4'
+                    ? 'Médiocre'
+                    : el.etateco === '5'
+                      ? 'Mauvais'
+                      : 'Indéterminé'
         };
       });
     },
@@ -245,7 +257,122 @@ export const IndicatorExportTransformations = {
     EspacesNaf: (espacesNaf: ConsommationNAF[]) => {
       return espacesNaf.map((el) => {
         return {
-          ...el
+          code_geographique: el.code_geographique,
+          libelle_geographique: el.libelle_geographique,
+          code_epci: el.epci,
+          libelle_epci: el.libelle_epci,
+          code_departement: el.departement,
+          libelle_departement: el.libelle_departement,
+          region: el.region,
+          ept: el.ept,
+          code_pnr: el.code_pnr,
+          libelle_pnr: el.libelle_pnr,
+          libelle_petr: el.libelle_petr,
+          naf09art10: el.naf09art10,
+          art09act10: el.art09act10,
+          art09hab10: el.art09hab10,
+          art09mix10: el.art09mix10,
+          art09rou10: el.art09rou10,
+          art09fer10: el.art09fer10,
+          art09inc10: el.art09inc10,
+          naf10art11: el.naf10art11,
+          art10act11: el.art10act11,
+          art10hab11: el.art10hab11,
+          art10mix11: el.art10mix11,
+          art10rou11: el.art10rou11,
+          art10fer11: el.art10fer11,
+          naf11art12: el.naf11art12,
+          art11act12: el.art11act12,
+          art11hab12: el.art11hab12,
+          art11mix12: el.art11mix12,
+          art11rou12: el.art11rou12,
+          art11fer12: el.art11fer12,
+          art11inc12: el.art11inc12,
+          naf12art13: el.naf12art13,
+          art12act13: el.art12act13,
+          art12hab13: el.art12hab13,
+          art12mix13: el.art12mix13,
+          art12rou13: el.art12rou13,
+          art12fer13: el.art12fer13,
+          art12inc13: el.art12inc13,
+          naf13art14: el.naf13art14,
+          art13act14: el.art13act14,
+          art13hab14: el.art13hab14,
+          art13mix14: el.art13mix14,
+          art13rou14: el.art13rou14,
+          art13fer14: el.art13fer14,
+          art13inc14: el.art13inc14,
+          naf14art15: el.naf14art15,
+          art14act15: el.art14act15,
+          art14hab15: el.art14hab15,
+          art14mix15: el.art14mix15,
+          art14rou15: el.art14rou15,
+          art14fer15: el.art14fer15,
+          art14inc15: el.art14inc15,
+          naf15art16: el.naf15art16,
+          art15act16: el.art15act16,
+          art15hab16: el.art15hab16,
+          art15mix16: el.art15mix16,
+          art15rou16: el.art15rou16,
+          art15fer16: el.art15fer16,
+          art15inc16: el.art15inc16,
+          naf16art17: el.naf16art17,
+          art16act17: el.art16act17,
+          art16hab17: el.art16hab17,
+          art16mix17: el.art16mix17,
+          art16rou17: el.art16rou17,
+          art16fer17: el.art16fer17,
+          art16inc17: el.art16inc17,
+          naf17art18: el.naf17art18,
+          art17act18: el.art17act18,
+          art17hab18: el.art17hab18,
+          art17mix18: el.art17mix18,
+          art17rou18: el.art17rou18,
+          art17fer18: el.art17fer18,
+          art17inc18: el.art17inc18,
+          naf18art19: el.naf18art19,
+          art18act19: el.art18act19,
+          art18hab19: el.art18hab19,
+          art18mix19: el.art18mix19,
+          art18rou19: el.art18rou19,
+          art18fer19: el.art18fer19,
+          art18inc19: el.art18inc19,
+          naf19art20: el.naf19art20,
+          art19act20: el.art19act20,
+          art19hab20: el.art19hab20,
+          art19mix20: el.art19mix20,
+          art19rou20: el.art19rou20,
+          art19fer20: el.art19fer20,
+          art19inc20: el.art19inc20,
+          naf20art21: el.naf20art21,
+          art20act21: el.art20act21,
+          art20hab21: el.art20hab21,
+          art20mix21: el.art20mix21,
+          art20rou21: el.art20rou21,
+          art20fer21: el.art20fer21,
+          art20inc21: el.art20inc21,
+          naf21art22: el.naf21art22,
+          art21act22: el.art21act22,
+          art21hab22: el.art21hab22,
+          art21mix22: el.art21mix22,
+          art21rou22: el.art21rou22,
+          art21fer22: el.art21fer22,
+          art21inc22: el.art21inc22,
+          naf22art23: el.naf22art23,
+          art22act23: el.art22act23,
+          art22hab23: el.art22hab23,
+          art22mix23: el.art22mix23,
+          art22rou23: el.art22rou23,
+          art22fer23: el.art22fer23,
+          art22inc23: el.art22inc23,
+          naf09art23: el.naf09art23,
+          art09act23: el.art09act23,
+          art09hab23: el.art09hab23,
+          art09mix23: el.art09mix23,
+          art09inc23: el.art09inc23,
+          art09rou23: el.art09rou23,
+          art09fer23: el.art09fer23,
+          artcom0923: el.artcom0923
         };
       });
     },
@@ -305,6 +432,25 @@ export const IndicatorExportTransformations = {
           autres_surfaces_km2: el.autres_surfaces
         };
       });
+    },
+    ArretesCatnat: (arretesCatnat: ArreteCatNat[]) => {
+      return arretesCatnat.map((item) => {
+        return {
+          code_geographique: item.code_geographique,
+          libelle_geographique: item.libelle_geographique,
+          code_epci: item.epci,
+          libelle_epci: item.libelle_epci,
+          departement: item.departement,
+          libelle_departement: item.libelle_departement,
+          region: item.region,
+          ept: item.ept,
+          code_pnr: item.code_pnr,
+          libelle_pnr: item.libelle_pnr,
+          libelle_petr: item.libelle_petr,
+          date_publication_arrete: item.dat_pub_arrete,
+          libelle_risque: item.lib_risque_jo
+        };
+      });
     }
   }
 };
@@ -324,11 +470,11 @@ export const ThematiquesExports = {
         code_departement: el.departement,
         libelle_departement: el.libelle_departement,
         region: el.region,
-        age_bati_pre_19: el.age_bati_pre_19,
-        age_bati_19_45: el.age_bati_19_45,
-        age_bati_46_90: el.age_bati_46_90,
-        age_bati_91_05: el.age_bati_91_05,
-        age_bati_post06: el.age_bati_post06,
+        age_bati_pre_1919: el.age_bati_pre_19,
+        age_bati_1919_1945: el.age_bati_19_45,
+        age_bati_1946_1990: el.age_bati_46_90,
+        age_bati_1991_2005: el.age_bati_91_05,
+        age_bati_post_2006: el.age_bati_post06,
         '1968_population_de_moins_de_4_ans': el.under_4_sum_1968,
         '1968_population_de_4_a_80_ans': el.to_80_sum_1968,
         '1968_population_de_plus_de_80_ans': el.over_80_sum_1968,
@@ -358,12 +504,12 @@ export const ThematiquesExports = {
         travail_construction: Round(Number(el.NA5FZ_sum), 0),
         travail_commerces: Round(Number(el.NA5GU_sum), 0),
         travail_administration: Round(Number(el.NA5OQ_sum), 0),
-        densite_bati: Round(Number(el.densite_bati), 0),
+        densite_bati: el.densite_bati,
         surface_artificialisee_ha: el.clc_1_artificialise,
         surface_agricole_ha: el.clc_2_agricole,
         surface_foret_et_espaces_semi_naturels_ha: el.clc_3_foret_semiNaturel,
         surface_zone_humide_ha: el.clc_4_humide,
-        surface_eau_ha: el.clc_5_eau
+        surface_en_eau_ha: el.clc_5_eau
       };
     });
   }
