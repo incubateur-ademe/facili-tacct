@@ -110,13 +110,13 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
         borderWidth={1}
         arcLinkLabelComponent={arcLabelsComponent}
         // arcLinkLabel={({ id }) => `${id}`}
-        arcLinkLabelsSkipAngle={7}
         sortByValue={false}
         layers={['arcs', 'arcLinkLabels', 'legends']} //, CenteredMetric
         borderColor={{
           from: 'color',
           modifiers: [['darker', 0.2]]
         }}
+        arcLinkLabelsSkipAngle={15}
         arcLinkLabelsTextColor="#333333"
         arcLinkLabelsThickness={2}
         arcLinkLabelsColor={{ from: 'color' }}

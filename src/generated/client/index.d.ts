@@ -556,8 +556,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.11.0
-   * Query Engine version: 9c30299f5a0ea26a96790e13f796dc6094db3173
+   * Prisma Client JS version: 6.11.1
+   * Query Engine version: f40f79ec31188888a2e33acda0ecc8fd10a853a9
    */
   export type PrismaVersion = {
     client: string
@@ -29160,8 +29160,8 @@ export namespace Prisma {
     exploitation_sau_herbe: number | null
     exploitation_sau_herbe_prairies_productives: number | null
     exploitation_sau_herbe_prairies_peu_productives: number | null
-    exploitation_sau_subventions: number | null
-    exploitation_sau_bois_patures: number | null
+    exploitation_sau_herbe_subventions: number | null
+    exploitation_sau_herbe_bois_patures: number | null
     exploitation_sau_jardins: number | null
     superficie_sau: number | null
     superficie_sau_terres_arables: number | null
@@ -29179,8 +29179,8 @@ export namespace Prisma {
     superficie_sau_herbe: number | null
     superficie_sau_herbe_prairies_productives: number | null
     superficie_sau_herbe_prairies_peu_productives: number | null
-    superficie_sau_subventions: number | null
-    superficie_sau_bois_patures: number | null
+    superficie_sau_herbe_subventions: number | null
+    superficie_sau_herbe_bois_patures: number | null
     superficie_sau_jardins: number | null
   }
 
@@ -29202,8 +29202,8 @@ export namespace Prisma {
     exploitation_sau_herbe: number | null
     exploitation_sau_herbe_prairies_productives: number | null
     exploitation_sau_herbe_prairies_peu_productives: number | null
-    exploitation_sau_subventions: number | null
-    exploitation_sau_bois_patures: number | null
+    exploitation_sau_herbe_subventions: number | null
+    exploitation_sau_herbe_bois_patures: number | null
     exploitation_sau_jardins: number | null
     superficie_sau: number | null
     superficie_sau_terres_arables: number | null
@@ -29221,8 +29221,8 @@ export namespace Prisma {
     superficie_sau_herbe: number | null
     superficie_sau_herbe_prairies_productives: number | null
     superficie_sau_herbe_prairies_peu_productives: number | null
-    superficie_sau_subventions: number | null
-    superficie_sau_bois_patures: number | null
+    superficie_sau_herbe_subventions: number | null
+    superficie_sau_herbe_bois_patures: number | null
     superficie_sau_jardins: number | null
   }
 
@@ -29245,8 +29245,8 @@ export namespace Prisma {
     exploitation_sau_herbe: number | null
     exploitation_sau_herbe_prairies_productives: number | null
     exploitation_sau_herbe_prairies_peu_productives: number | null
-    exploitation_sau_subventions: number | null
-    exploitation_sau_bois_patures: number | null
+    exploitation_sau_herbe_subventions: number | null
+    exploitation_sau_herbe_bois_patures: number | null
     exploitation_sau_jardins: number | null
     superficie_sau: number | null
     superficie_sau_terres_arables: number | null
@@ -29264,8 +29264,8 @@ export namespace Prisma {
     superficie_sau_herbe: number | null
     superficie_sau_herbe_prairies_productives: number | null
     superficie_sau_herbe_prairies_peu_productives: number | null
-    superficie_sau_subventions: number | null
-    superficie_sau_bois_patures: number | null
+    superficie_sau_herbe_subventions: number | null
+    superficie_sau_herbe_bois_patures: number | null
     superficie_sau_jardins: number | null
   }
 
@@ -29288,8 +29288,8 @@ export namespace Prisma {
     exploitation_sau_herbe: number | null
     exploitation_sau_herbe_prairies_productives: number | null
     exploitation_sau_herbe_prairies_peu_productives: number | null
-    exploitation_sau_subventions: number | null
-    exploitation_sau_bois_patures: number | null
+    exploitation_sau_herbe_subventions: number | null
+    exploitation_sau_herbe_bois_patures: number | null
     exploitation_sau_jardins: number | null
     superficie_sau: number | null
     superficie_sau_terres_arables: number | null
@@ -29307,8 +29307,8 @@ export namespace Prisma {
     superficie_sau_herbe: number | null
     superficie_sau_herbe_prairies_productives: number | null
     superficie_sau_herbe_prairies_peu_productives: number | null
-    superficie_sau_subventions: number | null
-    superficie_sau_bois_patures: number | null
+    superficie_sau_herbe_subventions: number | null
+    superficie_sau_herbe_bois_patures: number | null
     superficie_sau_jardins: number | null
   }
 
@@ -29331,8 +29331,8 @@ export namespace Prisma {
     exploitation_sau_herbe: number
     exploitation_sau_herbe_prairies_productives: number
     exploitation_sau_herbe_prairies_peu_productives: number
-    exploitation_sau_subventions: number
-    exploitation_sau_bois_patures: number
+    exploitation_sau_herbe_subventions: number
+    exploitation_sau_herbe_bois_patures: number
     exploitation_sau_jardins: number
     superficie_sau: number
     superficie_sau_terres_arables: number
@@ -29350,8 +29350,8 @@ export namespace Prisma {
     superficie_sau_herbe: number
     superficie_sau_herbe_prairies_productives: number
     superficie_sau_herbe_prairies_peu_productives: number
-    superficie_sau_subventions: number
-    superficie_sau_bois_patures: number
+    superficie_sau_herbe_subventions: number
+    superficie_sau_herbe_bois_patures: number
     superficie_sau_jardins: number
     _all: number
   }
@@ -29375,8 +29375,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: true
     exploitation_sau_herbe_prairies_productives?: true
     exploitation_sau_herbe_prairies_peu_productives?: true
-    exploitation_sau_subventions?: true
-    exploitation_sau_bois_patures?: true
+    exploitation_sau_herbe_subventions?: true
+    exploitation_sau_herbe_bois_patures?: true
     exploitation_sau_jardins?: true
     superficie_sau?: true
     superficie_sau_terres_arables?: true
@@ -29394,8 +29394,8 @@ export namespace Prisma {
     superficie_sau_herbe?: true
     superficie_sau_herbe_prairies_productives?: true
     superficie_sau_herbe_prairies_peu_productives?: true
-    superficie_sau_subventions?: true
-    superficie_sau_bois_patures?: true
+    superficie_sau_herbe_subventions?: true
+    superficie_sau_herbe_bois_patures?: true
     superficie_sau_jardins?: true
   }
 
@@ -29417,8 +29417,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: true
     exploitation_sau_herbe_prairies_productives?: true
     exploitation_sau_herbe_prairies_peu_productives?: true
-    exploitation_sau_subventions?: true
-    exploitation_sau_bois_patures?: true
+    exploitation_sau_herbe_subventions?: true
+    exploitation_sau_herbe_bois_patures?: true
     exploitation_sau_jardins?: true
     superficie_sau?: true
     superficie_sau_terres_arables?: true
@@ -29436,8 +29436,8 @@ export namespace Prisma {
     superficie_sau_herbe?: true
     superficie_sau_herbe_prairies_productives?: true
     superficie_sau_herbe_prairies_peu_productives?: true
-    superficie_sau_subventions?: true
-    superficie_sau_bois_patures?: true
+    superficie_sau_herbe_subventions?: true
+    superficie_sau_herbe_bois_patures?: true
     superficie_sau_jardins?: true
   }
 
@@ -29460,8 +29460,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: true
     exploitation_sau_herbe_prairies_productives?: true
     exploitation_sau_herbe_prairies_peu_productives?: true
-    exploitation_sau_subventions?: true
-    exploitation_sau_bois_patures?: true
+    exploitation_sau_herbe_subventions?: true
+    exploitation_sau_herbe_bois_patures?: true
     exploitation_sau_jardins?: true
     superficie_sau?: true
     superficie_sau_terres_arables?: true
@@ -29479,8 +29479,8 @@ export namespace Prisma {
     superficie_sau_herbe?: true
     superficie_sau_herbe_prairies_productives?: true
     superficie_sau_herbe_prairies_peu_productives?: true
-    superficie_sau_subventions?: true
-    superficie_sau_bois_patures?: true
+    superficie_sau_herbe_subventions?: true
+    superficie_sau_herbe_bois_patures?: true
     superficie_sau_jardins?: true
   }
 
@@ -29503,8 +29503,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: true
     exploitation_sau_herbe_prairies_productives?: true
     exploitation_sau_herbe_prairies_peu_productives?: true
-    exploitation_sau_subventions?: true
-    exploitation_sau_bois_patures?: true
+    exploitation_sau_herbe_subventions?: true
+    exploitation_sau_herbe_bois_patures?: true
     exploitation_sau_jardins?: true
     superficie_sau?: true
     superficie_sau_terres_arables?: true
@@ -29522,8 +29522,8 @@ export namespace Prisma {
     superficie_sau_herbe?: true
     superficie_sau_herbe_prairies_productives?: true
     superficie_sau_herbe_prairies_peu_productives?: true
-    superficie_sau_subventions?: true
-    superficie_sau_bois_patures?: true
+    superficie_sau_herbe_subventions?: true
+    superficie_sau_herbe_bois_patures?: true
     superficie_sau_jardins?: true
   }
 
@@ -29546,8 +29546,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: true
     exploitation_sau_herbe_prairies_productives?: true
     exploitation_sau_herbe_prairies_peu_productives?: true
-    exploitation_sau_subventions?: true
-    exploitation_sau_bois_patures?: true
+    exploitation_sau_herbe_subventions?: true
+    exploitation_sau_herbe_bois_patures?: true
     exploitation_sau_jardins?: true
     superficie_sau?: true
     superficie_sau_terres_arables?: true
@@ -29565,8 +29565,8 @@ export namespace Prisma {
     superficie_sau_herbe?: true
     superficie_sau_herbe_prairies_productives?: true
     superficie_sau_herbe_prairies_peu_productives?: true
-    superficie_sau_subventions?: true
-    superficie_sau_bois_patures?: true
+    superficie_sau_herbe_subventions?: true
+    superficie_sau_herbe_bois_patures?: true
     superficie_sau_jardins?: true
     _all?: true
   }
@@ -29676,8 +29676,8 @@ export namespace Prisma {
     exploitation_sau_herbe: number
     exploitation_sau_herbe_prairies_productives: number
     exploitation_sau_herbe_prairies_peu_productives: number
-    exploitation_sau_subventions: number
-    exploitation_sau_bois_patures: number
+    exploitation_sau_herbe_subventions: number
+    exploitation_sau_herbe_bois_patures: number
     exploitation_sau_jardins: number
     superficie_sau: number
     superficie_sau_terres_arables: number
@@ -29695,8 +29695,8 @@ export namespace Prisma {
     superficie_sau_herbe: number
     superficie_sau_herbe_prairies_productives: number
     superficie_sau_herbe_prairies_peu_productives: number
-    superficie_sau_subventions: number
-    superficie_sau_bois_patures: number
+    superficie_sau_herbe_subventions: number
+    superficie_sau_herbe_bois_patures: number
     superficie_sau_jardins: number
     _count: Surfaces_agricolesCountAggregateOutputType | null
     _avg: Surfaces_agricolesAvgAggregateOutputType | null
@@ -29738,8 +29738,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: boolean
     exploitation_sau_herbe_prairies_productives?: boolean
     exploitation_sau_herbe_prairies_peu_productives?: boolean
-    exploitation_sau_subventions?: boolean
-    exploitation_sau_bois_patures?: boolean
+    exploitation_sau_herbe_subventions?: boolean
+    exploitation_sau_herbe_bois_patures?: boolean
     exploitation_sau_jardins?: boolean
     superficie_sau?: boolean
     superficie_sau_terres_arables?: boolean
@@ -29757,8 +29757,8 @@ export namespace Prisma {
     superficie_sau_herbe?: boolean
     superficie_sau_herbe_prairies_productives?: boolean
     superficie_sau_herbe_prairies_peu_productives?: boolean
-    superficie_sau_subventions?: boolean
-    superficie_sau_bois_patures?: boolean
+    superficie_sau_herbe_subventions?: boolean
+    superficie_sau_herbe_bois_patures?: boolean
     superficie_sau_jardins?: boolean
   }, ExtArgs["result"]["surfaces_agricoles"]>
 
@@ -29781,8 +29781,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: boolean
     exploitation_sau_herbe_prairies_productives?: boolean
     exploitation_sau_herbe_prairies_peu_productives?: boolean
-    exploitation_sau_subventions?: boolean
-    exploitation_sau_bois_patures?: boolean
+    exploitation_sau_herbe_subventions?: boolean
+    exploitation_sau_herbe_bois_patures?: boolean
     exploitation_sau_jardins?: boolean
     superficie_sau?: boolean
     superficie_sau_terres_arables?: boolean
@@ -29800,8 +29800,8 @@ export namespace Prisma {
     superficie_sau_herbe?: boolean
     superficie_sau_herbe_prairies_productives?: boolean
     superficie_sau_herbe_prairies_peu_productives?: boolean
-    superficie_sau_subventions?: boolean
-    superficie_sau_bois_patures?: boolean
+    superficie_sau_herbe_subventions?: boolean
+    superficie_sau_herbe_bois_patures?: boolean
     superficie_sau_jardins?: boolean
   }, ExtArgs["result"]["surfaces_agricoles"]>
 
@@ -29824,8 +29824,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: boolean
     exploitation_sau_herbe_prairies_productives?: boolean
     exploitation_sau_herbe_prairies_peu_productives?: boolean
-    exploitation_sau_subventions?: boolean
-    exploitation_sau_bois_patures?: boolean
+    exploitation_sau_herbe_subventions?: boolean
+    exploitation_sau_herbe_bois_patures?: boolean
     exploitation_sau_jardins?: boolean
     superficie_sau?: boolean
     superficie_sau_terres_arables?: boolean
@@ -29843,8 +29843,8 @@ export namespace Prisma {
     superficie_sau_herbe?: boolean
     superficie_sau_herbe_prairies_productives?: boolean
     superficie_sau_herbe_prairies_peu_productives?: boolean
-    superficie_sau_subventions?: boolean
-    superficie_sau_bois_patures?: boolean
+    superficie_sau_herbe_subventions?: boolean
+    superficie_sau_herbe_bois_patures?: boolean
     superficie_sau_jardins?: boolean
   }, ExtArgs["result"]["surfaces_agricoles"]>
 
@@ -29867,8 +29867,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: boolean
     exploitation_sau_herbe_prairies_productives?: boolean
     exploitation_sau_herbe_prairies_peu_productives?: boolean
-    exploitation_sau_subventions?: boolean
-    exploitation_sau_bois_patures?: boolean
+    exploitation_sau_herbe_subventions?: boolean
+    exploitation_sau_herbe_bois_patures?: boolean
     exploitation_sau_jardins?: boolean
     superficie_sau?: boolean
     superficie_sau_terres_arables?: boolean
@@ -29886,12 +29886,12 @@ export namespace Prisma {
     superficie_sau_herbe?: boolean
     superficie_sau_herbe_prairies_productives?: boolean
     superficie_sau_herbe_prairies_peu_productives?: boolean
-    superficie_sau_subventions?: boolean
-    superficie_sau_bois_patures?: boolean
+    superficie_sau_herbe_subventions?: boolean
+    superficie_sau_herbe_bois_patures?: boolean
     superficie_sau_jardins?: boolean
   }
 
-  export type surfaces_agricolesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "epci" | "exploitation_sau" | "exploitation_sau_terres_arables" | "exploitation_sau_terres_arables_cereales" | "exploitation_sau_terres_arables_oleagineux" | "exploitation_sau_terres_arables_fourrageres" | "exploitation_sau_terres_arables_tubercules" | "exploitation_sau_terres_arables_legumes_melons_fraises" | "exploitation_sau_terres_arables_fleurs" | "exploitation_sau_terres_arables_autres" | "exploitation_sau_cultures_permanentes" | "exploitation_sau_cultures_permanentes_vigne" | "exploitation_sau_cultures_permanentes_fruits" | "exploitation_sau_cultures_permanentes_autres" | "exploitation_sau_herbe" | "exploitation_sau_herbe_prairies_productives" | "exploitation_sau_herbe_prairies_peu_productives" | "exploitation_sau_subventions" | "exploitation_sau_bois_patures" | "exploitation_sau_jardins" | "superficie_sau" | "superficie_sau_terres_arables" | "superficie_sau_terres_arables_cereales" | "superficie_sau_terres_arables_oleagineux" | "superficie_sau_terres_arables_fourrageres" | "superficie_sau_terres_arables_tubercules" | "superficie_sau_terres_arables_legumes_melons_fraises" | "superficie_sau_terres_arables_fleurs" | "superficie_sau_terres_arables_autres" | "superficie_sau_cultures_permanentes" | "superficie_sau_cultures_permanentes_vigne" | "superficie_sau_cultures_permanentes_fruits" | "superficie_sau_cultures_permanentes_autres" | "superficie_sau_herbe" | "superficie_sau_herbe_prairies_productives" | "superficie_sau_herbe_prairies_peu_productives" | "superficie_sau_subventions" | "superficie_sau_bois_patures" | "superficie_sau_jardins", ExtArgs["result"]["surfaces_agricoles"]>
+  export type surfaces_agricolesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "epci" | "exploitation_sau" | "exploitation_sau_terres_arables" | "exploitation_sau_terres_arables_cereales" | "exploitation_sau_terres_arables_oleagineux" | "exploitation_sau_terres_arables_fourrageres" | "exploitation_sau_terres_arables_tubercules" | "exploitation_sau_terres_arables_legumes_melons_fraises" | "exploitation_sau_terres_arables_fleurs" | "exploitation_sau_terres_arables_autres" | "exploitation_sau_cultures_permanentes" | "exploitation_sau_cultures_permanentes_vigne" | "exploitation_sau_cultures_permanentes_fruits" | "exploitation_sau_cultures_permanentes_autres" | "exploitation_sau_herbe" | "exploitation_sau_herbe_prairies_productives" | "exploitation_sau_herbe_prairies_peu_productives" | "exploitation_sau_herbe_subventions" | "exploitation_sau_herbe_bois_patures" | "exploitation_sau_jardins" | "superficie_sau" | "superficie_sau_terres_arables" | "superficie_sau_terres_arables_cereales" | "superficie_sau_terres_arables_oleagineux" | "superficie_sau_terres_arables_fourrageres" | "superficie_sau_terres_arables_tubercules" | "superficie_sau_terres_arables_legumes_melons_fraises" | "superficie_sau_terres_arables_fleurs" | "superficie_sau_terres_arables_autres" | "superficie_sau_cultures_permanentes" | "superficie_sau_cultures_permanentes_vigne" | "superficie_sau_cultures_permanentes_fruits" | "superficie_sau_cultures_permanentes_autres" | "superficie_sau_herbe" | "superficie_sau_herbe_prairies_productives" | "superficie_sau_herbe_prairies_peu_productives" | "superficie_sau_herbe_subventions" | "superficie_sau_herbe_bois_patures" | "superficie_sau_jardins", ExtArgs["result"]["surfaces_agricoles"]>
 
   export type $surfaces_agricolesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "surfaces_agricoles"
@@ -29915,8 +29915,8 @@ export namespace Prisma {
       exploitation_sau_herbe: number
       exploitation_sau_herbe_prairies_productives: number
       exploitation_sau_herbe_prairies_peu_productives: number
-      exploitation_sau_subventions: number
-      exploitation_sau_bois_patures: number
+      exploitation_sau_herbe_subventions: number
+      exploitation_sau_herbe_bois_patures: number
       exploitation_sau_jardins: number
       superficie_sau: number
       superficie_sau_terres_arables: number
@@ -29934,8 +29934,8 @@ export namespace Prisma {
       superficie_sau_herbe: number
       superficie_sau_herbe_prairies_productives: number
       superficie_sau_herbe_prairies_peu_productives: number
-      superficie_sau_subventions: number
-      superficie_sau_bois_patures: number
+      superficie_sau_herbe_subventions: number
+      superficie_sau_herbe_bois_patures: number
       superficie_sau_jardins: number
     }, ExtArgs["result"]["surfaces_agricoles"]>
     composites: {}
@@ -30378,8 +30378,8 @@ export namespace Prisma {
     readonly exploitation_sau_herbe: FieldRef<"surfaces_agricoles", 'Float'>
     readonly exploitation_sau_herbe_prairies_productives: FieldRef<"surfaces_agricoles", 'Float'>
     readonly exploitation_sau_herbe_prairies_peu_productives: FieldRef<"surfaces_agricoles", 'Float'>
-    readonly exploitation_sau_subventions: FieldRef<"surfaces_agricoles", 'Float'>
-    readonly exploitation_sau_bois_patures: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_herbe_subventions: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_herbe_bois_patures: FieldRef<"surfaces_agricoles", 'Float'>
     readonly exploitation_sau_jardins: FieldRef<"surfaces_agricoles", 'Float'>
     readonly superficie_sau: FieldRef<"surfaces_agricoles", 'Float'>
     readonly superficie_sau_terres_arables: FieldRef<"surfaces_agricoles", 'Float'>
@@ -30397,8 +30397,8 @@ export namespace Prisma {
     readonly superficie_sau_herbe: FieldRef<"surfaces_agricoles", 'Float'>
     readonly superficie_sau_herbe_prairies_productives: FieldRef<"surfaces_agricoles", 'Float'>
     readonly superficie_sau_herbe_prairies_peu_productives: FieldRef<"surfaces_agricoles", 'Float'>
-    readonly superficie_sau_subventions: FieldRef<"surfaces_agricoles", 'Float'>
-    readonly superficie_sau_bois_patures: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_herbe_subventions: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_herbe_bois_patures: FieldRef<"surfaces_agricoles", 'Float'>
     readonly superficie_sau_jardins: FieldRef<"surfaces_agricoles", 'Float'>
   }
     
@@ -33515,8 +33515,8 @@ export namespace Prisma {
     exploitation_sau_herbe: 'exploitation_sau_herbe',
     exploitation_sau_herbe_prairies_productives: 'exploitation_sau_herbe_prairies_productives',
     exploitation_sau_herbe_prairies_peu_productives: 'exploitation_sau_herbe_prairies_peu_productives',
-    exploitation_sau_subventions: 'exploitation_sau_subventions',
-    exploitation_sau_bois_patures: 'exploitation_sau_bois_patures',
+    exploitation_sau_herbe_subventions: 'exploitation_sau_herbe_subventions',
+    exploitation_sau_herbe_bois_patures: 'exploitation_sau_herbe_bois_patures',
     exploitation_sau_jardins: 'exploitation_sau_jardins',
     superficie_sau: 'superficie_sau',
     superficie_sau_terres_arables: 'superficie_sau_terres_arables',
@@ -33534,8 +33534,8 @@ export namespace Prisma {
     superficie_sau_herbe: 'superficie_sau_herbe',
     superficie_sau_herbe_prairies_productives: 'superficie_sau_herbe_prairies_productives',
     superficie_sau_herbe_prairies_peu_productives: 'superficie_sau_herbe_prairies_peu_productives',
-    superficie_sau_subventions: 'superficie_sau_subventions',
-    superficie_sau_bois_patures: 'superficie_sau_bois_patures',
+    superficie_sau_herbe_subventions: 'superficie_sau_herbe_subventions',
+    superficie_sau_herbe_bois_patures: 'superficie_sau_herbe_bois_patures',
     superficie_sau_jardins: 'superficie_sau_jardins'
   };
 
@@ -36469,8 +36469,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: FloatFilter<"surfaces_agricoles"> | number
     exploitation_sau_herbe_prairies_productives?: FloatFilter<"surfaces_agricoles"> | number
     exploitation_sau_herbe_prairies_peu_productives?: FloatFilter<"surfaces_agricoles"> | number
-    exploitation_sau_subventions?: FloatFilter<"surfaces_agricoles"> | number
-    exploitation_sau_bois_patures?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_subventions?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_bois_patures?: FloatFilter<"surfaces_agricoles"> | number
     exploitation_sau_jardins?: FloatFilter<"surfaces_agricoles"> | number
     superficie_sau?: FloatFilter<"surfaces_agricoles"> | number
     superficie_sau_terres_arables?: FloatFilter<"surfaces_agricoles"> | number
@@ -36488,8 +36488,8 @@ export namespace Prisma {
     superficie_sau_herbe?: FloatFilter<"surfaces_agricoles"> | number
     superficie_sau_herbe_prairies_productives?: FloatFilter<"surfaces_agricoles"> | number
     superficie_sau_herbe_prairies_peu_productives?: FloatFilter<"surfaces_agricoles"> | number
-    superficie_sau_subventions?: FloatFilter<"surfaces_agricoles"> | number
-    superficie_sau_bois_patures?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_subventions?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_bois_patures?: FloatFilter<"surfaces_agricoles"> | number
     superficie_sau_jardins?: FloatFilter<"surfaces_agricoles"> | number
   }
 
@@ -36512,8 +36512,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: SortOrder
     exploitation_sau_herbe_prairies_productives?: SortOrder
     exploitation_sau_herbe_prairies_peu_productives?: SortOrder
-    exploitation_sau_subventions?: SortOrder
-    exploitation_sau_bois_patures?: SortOrder
+    exploitation_sau_herbe_subventions?: SortOrder
+    exploitation_sau_herbe_bois_patures?: SortOrder
     exploitation_sau_jardins?: SortOrder
     superficie_sau?: SortOrder
     superficie_sau_terres_arables?: SortOrder
@@ -36531,8 +36531,8 @@ export namespace Prisma {
     superficie_sau_herbe?: SortOrder
     superficie_sau_herbe_prairies_productives?: SortOrder
     superficie_sau_herbe_prairies_peu_productives?: SortOrder
-    superficie_sau_subventions?: SortOrder
-    superficie_sau_bois_patures?: SortOrder
+    superficie_sau_herbe_subventions?: SortOrder
+    superficie_sau_herbe_bois_patures?: SortOrder
     superficie_sau_jardins?: SortOrder
   }
 
@@ -36558,8 +36558,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: FloatFilter<"surfaces_agricoles"> | number
     exploitation_sau_herbe_prairies_productives?: FloatFilter<"surfaces_agricoles"> | number
     exploitation_sau_herbe_prairies_peu_productives?: FloatFilter<"surfaces_agricoles"> | number
-    exploitation_sau_subventions?: FloatFilter<"surfaces_agricoles"> | number
-    exploitation_sau_bois_patures?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_subventions?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_bois_patures?: FloatFilter<"surfaces_agricoles"> | number
     exploitation_sau_jardins?: FloatFilter<"surfaces_agricoles"> | number
     superficie_sau?: FloatFilter<"surfaces_agricoles"> | number
     superficie_sau_terres_arables?: FloatFilter<"surfaces_agricoles"> | number
@@ -36577,8 +36577,8 @@ export namespace Prisma {
     superficie_sau_herbe?: FloatFilter<"surfaces_agricoles"> | number
     superficie_sau_herbe_prairies_productives?: FloatFilter<"surfaces_agricoles"> | number
     superficie_sau_herbe_prairies_peu_productives?: FloatFilter<"surfaces_agricoles"> | number
-    superficie_sau_subventions?: FloatFilter<"surfaces_agricoles"> | number
-    superficie_sau_bois_patures?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_subventions?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_bois_patures?: FloatFilter<"surfaces_agricoles"> | number
     superficie_sau_jardins?: FloatFilter<"surfaces_agricoles"> | number
   }, "index">
 
@@ -36601,8 +36601,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: SortOrder
     exploitation_sau_herbe_prairies_productives?: SortOrder
     exploitation_sau_herbe_prairies_peu_productives?: SortOrder
-    exploitation_sau_subventions?: SortOrder
-    exploitation_sau_bois_patures?: SortOrder
+    exploitation_sau_herbe_subventions?: SortOrder
+    exploitation_sau_herbe_bois_patures?: SortOrder
     exploitation_sau_jardins?: SortOrder
     superficie_sau?: SortOrder
     superficie_sau_terres_arables?: SortOrder
@@ -36620,8 +36620,8 @@ export namespace Prisma {
     superficie_sau_herbe?: SortOrder
     superficie_sau_herbe_prairies_productives?: SortOrder
     superficie_sau_herbe_prairies_peu_productives?: SortOrder
-    superficie_sau_subventions?: SortOrder
-    superficie_sau_bois_patures?: SortOrder
+    superficie_sau_herbe_subventions?: SortOrder
+    superficie_sau_herbe_bois_patures?: SortOrder
     superficie_sau_jardins?: SortOrder
     _count?: surfaces_agricolesCountOrderByAggregateInput
     _avg?: surfaces_agricolesAvgOrderByAggregateInput
@@ -36652,8 +36652,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
     exploitation_sau_herbe_prairies_productives?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
     exploitation_sau_herbe_prairies_peu_productives?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
-    exploitation_sau_subventions?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
-    exploitation_sau_bois_patures?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_subventions?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_bois_patures?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
     exploitation_sau_jardins?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
     superficie_sau?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
     superficie_sau_terres_arables?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
@@ -36671,8 +36671,8 @@ export namespace Prisma {
     superficie_sau_herbe?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
     superficie_sau_herbe_prairies_productives?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
     superficie_sau_herbe_prairies_peu_productives?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
-    superficie_sau_subventions?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
-    superficie_sau_bois_patures?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_subventions?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_bois_patures?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
     superficie_sau_jardins?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
   }
 
@@ -40185,8 +40185,8 @@ export namespace Prisma {
     exploitation_sau_herbe: number
     exploitation_sau_herbe_prairies_productives: number
     exploitation_sau_herbe_prairies_peu_productives: number
-    exploitation_sau_subventions: number
-    exploitation_sau_bois_patures: number
+    exploitation_sau_herbe_subventions: number
+    exploitation_sau_herbe_bois_patures: number
     exploitation_sau_jardins: number
     superficie_sau: number
     superficie_sau_terres_arables: number
@@ -40204,8 +40204,8 @@ export namespace Prisma {
     superficie_sau_herbe: number
     superficie_sau_herbe_prairies_productives: number
     superficie_sau_herbe_prairies_peu_productives: number
-    superficie_sau_subventions: number
-    superficie_sau_bois_patures: number
+    superficie_sau_herbe_subventions: number
+    superficie_sau_herbe_bois_patures: number
     superficie_sau_jardins: number
   }
 
@@ -40228,8 +40228,8 @@ export namespace Prisma {
     exploitation_sau_herbe: number
     exploitation_sau_herbe_prairies_productives: number
     exploitation_sau_herbe_prairies_peu_productives: number
-    exploitation_sau_subventions: number
-    exploitation_sau_bois_patures: number
+    exploitation_sau_herbe_subventions: number
+    exploitation_sau_herbe_bois_patures: number
     exploitation_sau_jardins: number
     superficie_sau: number
     superficie_sau_terres_arables: number
@@ -40247,8 +40247,8 @@ export namespace Prisma {
     superficie_sau_herbe: number
     superficie_sau_herbe_prairies_productives: number
     superficie_sau_herbe_prairies_peu_productives: number
-    superficie_sau_subventions: number
-    superficie_sau_bois_patures: number
+    superficie_sau_herbe_subventions: number
+    superficie_sau_herbe_bois_patures: number
     superficie_sau_jardins: number
   }
 
@@ -40271,8 +40271,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
-    exploitation_sau_subventions?: FloatFieldUpdateOperationsInput | number
-    exploitation_sau_bois_patures?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_jardins?: FloatFieldUpdateOperationsInput | number
     superficie_sau?: FloatFieldUpdateOperationsInput | number
     superficie_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
@@ -40290,8 +40290,8 @@ export namespace Prisma {
     superficie_sau_herbe?: FloatFieldUpdateOperationsInput | number
     superficie_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
     superficie_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
-    superficie_sau_subventions?: FloatFieldUpdateOperationsInput | number
-    superficie_sau_bois_patures?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
     superficie_sau_jardins?: FloatFieldUpdateOperationsInput | number
   }
 
@@ -40314,8 +40314,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
-    exploitation_sau_subventions?: FloatFieldUpdateOperationsInput | number
-    exploitation_sau_bois_patures?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_jardins?: FloatFieldUpdateOperationsInput | number
     superficie_sau?: FloatFieldUpdateOperationsInput | number
     superficie_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
@@ -40333,8 +40333,8 @@ export namespace Prisma {
     superficie_sau_herbe?: FloatFieldUpdateOperationsInput | number
     superficie_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
     superficie_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
-    superficie_sau_subventions?: FloatFieldUpdateOperationsInput | number
-    superficie_sau_bois_patures?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
     superficie_sau_jardins?: FloatFieldUpdateOperationsInput | number
   }
 
@@ -40357,8 +40357,8 @@ export namespace Prisma {
     exploitation_sau_herbe: number
     exploitation_sau_herbe_prairies_productives: number
     exploitation_sau_herbe_prairies_peu_productives: number
-    exploitation_sau_subventions: number
-    exploitation_sau_bois_patures: number
+    exploitation_sau_herbe_subventions: number
+    exploitation_sau_herbe_bois_patures: number
     exploitation_sau_jardins: number
     superficie_sau: number
     superficie_sau_terres_arables: number
@@ -40376,8 +40376,8 @@ export namespace Prisma {
     superficie_sau_herbe: number
     superficie_sau_herbe_prairies_productives: number
     superficie_sau_herbe_prairies_peu_productives: number
-    superficie_sau_subventions: number
-    superficie_sau_bois_patures: number
+    superficie_sau_herbe_subventions: number
+    superficie_sau_herbe_bois_patures: number
     superficie_sau_jardins: number
   }
 
@@ -40400,8 +40400,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
-    exploitation_sau_subventions?: FloatFieldUpdateOperationsInput | number
-    exploitation_sau_bois_patures?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_jardins?: FloatFieldUpdateOperationsInput | number
     superficie_sau?: FloatFieldUpdateOperationsInput | number
     superficie_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
@@ -40419,8 +40419,8 @@ export namespace Prisma {
     superficie_sau_herbe?: FloatFieldUpdateOperationsInput | number
     superficie_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
     superficie_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
-    superficie_sau_subventions?: FloatFieldUpdateOperationsInput | number
-    superficie_sau_bois_patures?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
     superficie_sau_jardins?: FloatFieldUpdateOperationsInput | number
   }
 
@@ -40443,8 +40443,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
-    exploitation_sau_subventions?: FloatFieldUpdateOperationsInput | number
-    exploitation_sau_bois_patures?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
     exploitation_sau_jardins?: FloatFieldUpdateOperationsInput | number
     superficie_sau?: FloatFieldUpdateOperationsInput | number
     superficie_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
@@ -40462,8 +40462,8 @@ export namespace Prisma {
     superficie_sau_herbe?: FloatFieldUpdateOperationsInput | number
     superficie_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
     superficie_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
-    superficie_sau_subventions?: FloatFieldUpdateOperationsInput | number
-    superficie_sau_bois_patures?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
     superficie_sau_jardins?: FloatFieldUpdateOperationsInput | number
   }
 
@@ -43069,8 +43069,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: SortOrder
     exploitation_sau_herbe_prairies_productives?: SortOrder
     exploitation_sau_herbe_prairies_peu_productives?: SortOrder
-    exploitation_sau_subventions?: SortOrder
-    exploitation_sau_bois_patures?: SortOrder
+    exploitation_sau_herbe_subventions?: SortOrder
+    exploitation_sau_herbe_bois_patures?: SortOrder
     exploitation_sau_jardins?: SortOrder
     superficie_sau?: SortOrder
     superficie_sau_terres_arables?: SortOrder
@@ -43088,8 +43088,8 @@ export namespace Prisma {
     superficie_sau_herbe?: SortOrder
     superficie_sau_herbe_prairies_productives?: SortOrder
     superficie_sau_herbe_prairies_peu_productives?: SortOrder
-    superficie_sau_subventions?: SortOrder
-    superficie_sau_bois_patures?: SortOrder
+    superficie_sau_herbe_subventions?: SortOrder
+    superficie_sau_herbe_bois_patures?: SortOrder
     superficie_sau_jardins?: SortOrder
   }
 
@@ -43111,8 +43111,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: SortOrder
     exploitation_sau_herbe_prairies_productives?: SortOrder
     exploitation_sau_herbe_prairies_peu_productives?: SortOrder
-    exploitation_sau_subventions?: SortOrder
-    exploitation_sau_bois_patures?: SortOrder
+    exploitation_sau_herbe_subventions?: SortOrder
+    exploitation_sau_herbe_bois_patures?: SortOrder
     exploitation_sau_jardins?: SortOrder
     superficie_sau?: SortOrder
     superficie_sau_terres_arables?: SortOrder
@@ -43130,8 +43130,8 @@ export namespace Prisma {
     superficie_sau_herbe?: SortOrder
     superficie_sau_herbe_prairies_productives?: SortOrder
     superficie_sau_herbe_prairies_peu_productives?: SortOrder
-    superficie_sau_subventions?: SortOrder
-    superficie_sau_bois_patures?: SortOrder
+    superficie_sau_herbe_subventions?: SortOrder
+    superficie_sau_herbe_bois_patures?: SortOrder
     superficie_sau_jardins?: SortOrder
   }
 
@@ -43154,8 +43154,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: SortOrder
     exploitation_sau_herbe_prairies_productives?: SortOrder
     exploitation_sau_herbe_prairies_peu_productives?: SortOrder
-    exploitation_sau_subventions?: SortOrder
-    exploitation_sau_bois_patures?: SortOrder
+    exploitation_sau_herbe_subventions?: SortOrder
+    exploitation_sau_herbe_bois_patures?: SortOrder
     exploitation_sau_jardins?: SortOrder
     superficie_sau?: SortOrder
     superficie_sau_terres_arables?: SortOrder
@@ -43173,8 +43173,8 @@ export namespace Prisma {
     superficie_sau_herbe?: SortOrder
     superficie_sau_herbe_prairies_productives?: SortOrder
     superficie_sau_herbe_prairies_peu_productives?: SortOrder
-    superficie_sau_subventions?: SortOrder
-    superficie_sau_bois_patures?: SortOrder
+    superficie_sau_herbe_subventions?: SortOrder
+    superficie_sau_herbe_bois_patures?: SortOrder
     superficie_sau_jardins?: SortOrder
   }
 
@@ -43197,8 +43197,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: SortOrder
     exploitation_sau_herbe_prairies_productives?: SortOrder
     exploitation_sau_herbe_prairies_peu_productives?: SortOrder
-    exploitation_sau_subventions?: SortOrder
-    exploitation_sau_bois_patures?: SortOrder
+    exploitation_sau_herbe_subventions?: SortOrder
+    exploitation_sau_herbe_bois_patures?: SortOrder
     exploitation_sau_jardins?: SortOrder
     superficie_sau?: SortOrder
     superficie_sau_terres_arables?: SortOrder
@@ -43216,8 +43216,8 @@ export namespace Prisma {
     superficie_sau_herbe?: SortOrder
     superficie_sau_herbe_prairies_productives?: SortOrder
     superficie_sau_herbe_prairies_peu_productives?: SortOrder
-    superficie_sau_subventions?: SortOrder
-    superficie_sau_bois_patures?: SortOrder
+    superficie_sau_herbe_subventions?: SortOrder
+    superficie_sau_herbe_bois_patures?: SortOrder
     superficie_sau_jardins?: SortOrder
   }
 
@@ -43239,8 +43239,8 @@ export namespace Prisma {
     exploitation_sau_herbe?: SortOrder
     exploitation_sau_herbe_prairies_productives?: SortOrder
     exploitation_sau_herbe_prairies_peu_productives?: SortOrder
-    exploitation_sau_subventions?: SortOrder
-    exploitation_sau_bois_patures?: SortOrder
+    exploitation_sau_herbe_subventions?: SortOrder
+    exploitation_sau_herbe_bois_patures?: SortOrder
     exploitation_sau_jardins?: SortOrder
     superficie_sau?: SortOrder
     superficie_sau_terres_arables?: SortOrder
@@ -43258,8 +43258,8 @@ export namespace Prisma {
     superficie_sau_herbe?: SortOrder
     superficie_sau_herbe_prairies_productives?: SortOrder
     superficie_sau_herbe_prairies_peu_productives?: SortOrder
-    superficie_sau_subventions?: SortOrder
-    superficie_sau_bois_patures?: SortOrder
+    superficie_sau_herbe_subventions?: SortOrder
+    superficie_sau_herbe_bois_patures?: SortOrder
     superficie_sau_jardins?: SortOrder
   }
 

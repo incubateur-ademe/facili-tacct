@@ -641,8 +641,8 @@ model surfaces_agricoles {
   exploitation_sau_herbe                                 Float
   exploitation_sau_herbe_prairies_productives            Float
   exploitation_sau_herbe_prairies_peu_productives        Float
-  exploitation_sau_subventions                           Float
-  exploitation_sau_bois_patures                          Float
+  exploitation_sau_herbe_subventions                     Float
+  exploitation_sau_herbe_bois_patures                    Float
   exploitation_sau_jardins                               Float
   superficie_sau                                         Float
   superficie_sau_terres_arables                          Float
@@ -660,8 +660,8 @@ model surfaces_agricoles {
   superficie_sau_herbe                                   Float
   superficie_sau_herbe_prairies_productives              Float
   superficie_sau_herbe_prairies_peu_productives          Float
-  superficie_sau_subventions                             Float
-  superficie_sau_bois_patures                            Float
+  superficie_sau_herbe_subventions                       Float
+  superficie_sau_herbe_bois_patures                      Float
   superficie_sau_jardins                                 Float
 
   @@index([index], map: "ix_surfaces_agricoles_index")

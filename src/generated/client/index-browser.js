@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.11.0
- * Query Engine version: 9c30299f5a0ea26a96790e13f796dc6094db3173
+ * Prisma Client JS version: 6.11.1
+ * Query Engine version: f40f79ec31188888a2e33acda0ecc8fd10a853a9
  */
 Prisma.prismaVersion = {
-  client: "6.11.0",
-  engine: "9c30299f5a0ea26a96790e13f796dc6094db3173"
+  client: "6.11.1",
+  engine: "f40f79ec31188888a2e33acda0ecc8fd10a853a9"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -635,8 +635,8 @@ exports.Prisma.Surfaces_agricolesScalarFieldEnum = {
   exploitation_sau_herbe: 'exploitation_sau_herbe',
   exploitation_sau_herbe_prairies_productives: 'exploitation_sau_herbe_prairies_productives',
   exploitation_sau_herbe_prairies_peu_productives: 'exploitation_sau_herbe_prairies_peu_productives',
-  exploitation_sau_subventions: 'exploitation_sau_subventions',
-  exploitation_sau_bois_patures: 'exploitation_sau_bois_patures',
+  exploitation_sau_herbe_subventions: 'exploitation_sau_herbe_subventions',
+  exploitation_sau_herbe_bois_patures: 'exploitation_sau_herbe_bois_patures',
   exploitation_sau_jardins: 'exploitation_sau_jardins',
   superficie_sau: 'superficie_sau',
   superficie_sau_terres_arables: 'superficie_sau_terres_arables',
@@ -654,8 +654,8 @@ exports.Prisma.Surfaces_agricolesScalarFieldEnum = {
   superficie_sau_herbe: 'superficie_sau_herbe',
   superficie_sau_herbe_prairies_productives: 'superficie_sau_herbe_prairies_productives',
   superficie_sau_herbe_prairies_peu_productives: 'superficie_sau_herbe_prairies_peu_productives',
-  superficie_sau_subventions: 'superficie_sau_subventions',
-  superficie_sau_bois_patures: 'superficie_sau_bois_patures',
+  superficie_sau_herbe_subventions: 'superficie_sau_herbe_subventions',
+  superficie_sau_herbe_bois_patures: 'superficie_sau_herbe_bois_patures',
   superficie_sau_jardins: 'superficie_sau_jardins'
 };
 
