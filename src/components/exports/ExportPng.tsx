@@ -70,13 +70,12 @@ export const ExportPngMaplibreButton = ({
           const finalCanvas = document.createElement('canvas');
           const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
           finalCanvas.width = mapCanvas.width;
-          finalCanvas.height = mapCanvas.height + legendCanvas.height + 50;
+          finalCanvas.height = mapCanvas.height + legendCanvas.height;
           ctx.drawImage(mapCanvas, 0, 0);
           ctx.drawImage(legendCanvas, 0, mapCanvas.height);
 
           finalCanvas.toBlob((blob) => {
             if (blob) {
-              console.log('Blob created, downloading...');
               const url = URL.createObjectURL(blob);
               const link = document.createElement('a');
               link.href = url;
@@ -122,7 +121,6 @@ export const ExportPngMaplibreButton = ({
       }}
       disabled={isLoading}
     >
-
       📸 Exporter PNG
     </button>
   );

@@ -226,19 +226,19 @@ export type RessourcesEauExport = {
   ept: string | null;
   sous_champ: string;
   libelle_sous_champ: string | null;
-  prelevement_2008: number | null;
-  prelevement_2009: number | null;
-  prelevement_2010: number | null;
-  prelevement_2011: number | null;
-  prelevement_2012: number | null;
-  prelevement_2013: number | null;
-  prelevement_2014: number | null;
-  prelevement_2015: number | null;
-  prelevement_2016: number | null;
-  prelevement_2017: number | null;
-  prelevement_2018: number | null;
-  prelevement_2019: number | null;
-  prelevement_2020: number | null;
+  prelevement_2008_m3: number | null;
+  prelevement_2009_m3: number | null;
+  prelevement_2010_m3: number | null;
+  prelevement_2011_m3: number | null;
+  prelevement_2012_m3: number | null;
+  prelevement_2013_m3: number | null;
+  prelevement_2014_m3: number | null;
+  prelevement_2015_m3: number | null;
+  prelevement_2016_m3: number | null;
+  prelevement_2017_m3: number | null;
+  prelevement_2018_m3: number | null;
+  prelevement_2019_m3: number | null;
+  prelevement_2020_m3: number | null;
 }
 
 export type EtatCoursDeauExport = {
