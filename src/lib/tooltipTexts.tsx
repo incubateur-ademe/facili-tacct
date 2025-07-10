@@ -313,3 +313,18 @@ export const rgaTooltipText = (
     </div>
   </>
 );
+
+export const surfacesAgricolesTooltipText = (
+  <>
+    <div>
+      Ces chiffres proviennent du recensement agricole de 2020 disponibles sur{' '}
+      <a
+      href="https://agreste.agriculture.gouv.fr/agreste-web/disaron/RA2020_1013_EPCI/detail/"
+      target="_blank"
+      rel="noopener noreferrer"
+      >
+      Agreste
+      </a>.
+    </div>
+  </>
+);

@@ -97,15 +97,23 @@ const AgricultureBiologique = (props: {
                         un total de <b>{Round(surfaceAgriBio, 0)} hectares</b>.
                       </p>
                     ) : type === "departement" || type === "pnr" ? (
-                      <p style={{ color: '#161616' }}>
-                        Cette donnée n’est disponible qu’à l’échelle de l'EPCI.
-                        Dans votre territoire, <b>{nombreExploitations} exploitations</b>{' '}
-                        sont en agriculture biologique ou en conversion, représentant
-                        un total de <b>{Round(surfaceAgriBio, 0)} hectares</b>.
-                        <br></br><br></br>
-                        Sur votre territoire, <b>{territoiresPartiellementCouverts?.length} EPCI</b> {territoiresPartiellementCouverts?.length === 1 ? "est" : "sont"} à
-                        cheval sur plusieurs {type === "departement" ? "départements" : "PNR"} : {territoiresPartiellementCouverts?.map(epci => epci).join(", ")}.
-                      </p>
+                      <>
+                        <p style={{ color: '#161616' }}>
+                          Cette donnée n’est disponible qu’à l’échelle de l'EPCI.
+                          Dans votre territoire, <b>{nombreExploitations} exploitations</b>{' '}
+                          sont en agriculture biologique ou en conversion, représentant
+                          un total de <b>{Round(surfaceAgriBio, 0)} hectares</b>.
+                        </p>
+                        {
+                          territoiresPartiellementCouverts && (
+                            <p>
+                              <br></br>Sur votre territoire, <b>{territoiresPartiellementCouverts?.length} EPCI
+                              </b> {territoiresPartiellementCouverts?.length === 1 ? "est" : "sont"} à
+                              cheval sur plusieurs {type === "departement" ? "départements" : "PNR"} : {territoiresPartiellementCouverts?.map(epci => epci).join(", ")}.
+                            </p>
+                          )
+                        }
+                      </>
                     ) : (
                       <p style={{ color: '#161616' }}>
                         Dans votre territoire, <b>{nombreExploitations} exploitations</b>{' '}

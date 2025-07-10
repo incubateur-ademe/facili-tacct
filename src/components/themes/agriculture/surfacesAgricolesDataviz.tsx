@@ -1,8 +1,14 @@
+"use client";
+
+import WarningIcon from "@/assets/icons/exclamation_point_icon_black.png";
 import { PieChartAgriculture } from '@/components/charts/agriculture/pieChartAgriculture';
 import SurfacesAgricolesProgressBar from '@/components/charts/agriculture/surfacesAgricolesProgressBar';
 import SubTabs from '@/components/SubTabs';
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
-import { Sum } from '@/lib/utils/reusableFunctions/sum';
+import { multipleEpciBydepartementLibelle } from '@/lib/territoireData/multipleEpciBydepartement';
+import { multipleEpciByPnrLibelle } from '@/lib/territoireData/multipleEpciByPnr';
+import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import styles from './agriculture.module.scss';
 
 type Props = {
@@ -13,60 +19,52 @@ type Props = {
 
 const SurfacesAgricolesDataviz = (props: Props) => {
   const { datavizTab, setDatavizTab, surfacesAgricoles } = props;
-
-  const sommeToutesSuperficies = Sum(surfacesAgricoles.map(el => 
-    el.superficie_sau_cultures_permanentes +
-    el.superficie_sau_herbe +
-    el.superficie_sau_terres_arables +
-    el.superficie_sau_jardins
-  ));
-  const graphData = [
-    {
-      id: "Cultures permanentes",
-      // label: 'Cultures permanentes',
-      count: Sum(surfacesAgricoles.map(el => el.superficie_sau_cultures_permanentes)),
-      color: '#00C190',
-      value: 100 * Sum(surfacesAgricoles.map(el => el.superficie_sau_cultures_permanentes))/sommeToutesSuperficies,
-    },
-    {
-      id: "Surfaces toujours en herbe",
-      // label: 'Surfaces toujours en herbe',
-      count: Sum(surfacesAgricoles.map(el => el.superficie_sau_herbe)),
-      color: '#009ADC',
-      value: 100 * Sum(surfacesAgricoles.map(el => el.superficie_sau_herbe)) / sommeToutesSuperficies,
-    },
-    {
-      id: "Terres arables",
-      // label: 'Terres arables',
-      count: Sum(surfacesAgricoles.map(el => el.superficie_sau_terres_arables)),
-      color: '#7A49BE',
-      value: 100 * Sum(surfacesAgricoles.map(el => el.superficie_sau_terres_arables)) / sommeToutesSuperficies,
-    },
-    {
-      id: "Jardin",
-      // label: 'Jardin',
-      count: Sum(surfacesAgricoles.map(el => el.superficie_sau_jardins)) ,
-      color: '#BB43BD',
-      value: 100 * Sum(surfacesAgricoles.map(el => el.superficie_sau_jardins)) / sommeToutesSuperficies,
-    },
-  ];
+    const searchParams = useSearchParams();
+    const code = searchParams.get('code')!;
+    const type = searchParams.get('type')!;
+    const libelle = searchParams.get('libelle')!;
+  const territoiresPartiellementCouverts = type === 'departement'
+    ? multipleEpciBydepartementLibelle.find(dept => dept.departement === code)?.liste_epci_multi_dept
+    : type === 'pnr'
+      ? multipleEpciByPnrLibelle.find(pnr => pnr.libelle_pnr === libelle)?.liste_epci_multi_pnr
+      : undefined;
 
   return (
     <div className={styles.graphWrapper}>
-      <div className={styles.catnatGraphTitleWrapper}>
+      <div className={styles.dataVizGraphTitleWrapper}>
+        <h2>Surface agricole par type de culture</h2>
         <SubTabs
-          data={['Pie', 'Bar']}
+          data={['Répartition', 'Détail']}
           defaultTab={datavizTab}
           setValue={setDatavizTab}
         />
       </div>
-      {datavizTab === 'Pie' ? (
-        <PieChartAgriculture graphData={graphData} surfacesAgricoles={surfacesAgricoles} />
-      ) : datavizTab === 'Bar' ? (
+      {datavizTab === 'Répartition' ? (
+        <PieChartAgriculture surfacesAgricoles={surfacesAgricoles} />
+      ) : datavizTab === 'Détail' ? (
         <SurfacesAgricolesProgressBar surfacesAgricoles={surfacesAgricoles} />
       ) : (
         ''
       )}
+      {
+        territoiresPartiellementCouverts && territoiresPartiellementCouverts.length > 0 &&
+        <div style={{ minWidth: "450px", backgroundColor: "white", padding: "1em" }}>
+          <div className='flex flex-row items-center justify-center'>
+            <Image
+              src={WarningIcon}
+              alt="Attention"
+              width={24}
+              height={24}
+              style={{ marginRight: '0.5em', alignItems: 'center' }}
+            />
+            <p style={{ fontSize: 12, margin: 0 }}>
+              Attention, {territoiresPartiellementCouverts.length} EPCI
+              ne {territoiresPartiellementCouverts.length === 1 ? "fait" : "font"} que
+              partiellement partie de votre territoire
+            </p>
+          </div>
+        </div>
+      }
       <p style={{ padding: '1em', margin: '0' }}>
         Source : Base de Données sur les Incendies de Forêts en France,
         consultée en 2024 (derniers chiffres disponibles : 2023)

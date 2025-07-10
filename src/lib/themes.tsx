@@ -173,8 +173,8 @@ export const themes = {
     },
     {
       id: 2,
-      titre: 'Surfaces agricoles',
-      facteurSensibilite: 'Surfaces agricoles',
+      titre: 'Types de culture',
+      facteurSensibilite: 'Types de culture',
       risque: '',
       donnee: ''
     },
