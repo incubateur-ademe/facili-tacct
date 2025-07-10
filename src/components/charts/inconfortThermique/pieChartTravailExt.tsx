@@ -20,6 +20,7 @@ type Props = {
 
 export const PieChart1 = ({ graphData, travailExterieurTerritoire }: Props) => {
   const sumAllCount = graphData.reduce((sum, item) => sum + (item.count || 0), 0);
+  console.log("graphData", graphData);
   return (
     <div
       style={{
