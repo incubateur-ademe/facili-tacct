@@ -1,6 +1,7 @@
 'use client';
 
 import ressourcesIcon from '@/assets/icons/ressources_icon_blue.svg';
+import useWindowDimensions from '@/hooks/windowDimensions';
 import { DarkClass } from '@/lib/utils/DarkClass';
 import { eptRegex } from '@/lib/utils/regex';
 import Header from '@codegouvfr/react-dsfr/Header';
@@ -47,6 +48,7 @@ const HeaderComp = () => {
   const libelle = searchParams.get('libelle')!;
   const posthog = usePostHog();
   const { css } = useStyles();
+  const window = useWindowDimensions();
 
   const RessourcesClick = () => {
     posthog.capture('ressources_bouton', {
@@ -71,13 +73,13 @@ const HeaderComp = () => {
         imgUrl: '/logo-ademe.png',
         orientation: 'vertical'
       }}
-      quickAccessItems={[
+      quickAccessItems={window.width && window.width < 992 ? [] : [
         code && libelle ? (
           <Localisation libelle={libelle} code={code} />
         ) : libelle ? (
           <Localisation libelle={libelle} />
         ) : null,
-        params.includes('ressources') || params === "/" ? null : (
+        (params.includes('ressources') || params === "/") ? null : (
           <Button
             key="0"
             variant="outlined"
