@@ -117,11 +117,14 @@ const Home = () => {
             <div className={styles.communauteText}>
               <h2>Rejoignez la communauté Facili-TACCT</h2>
               <p>
-                La communauté Facili-TACCT offre aux Chargés de Mission Climat un espace pour :
+                La communauté Facili-TACCT offre aux chargés de mission “Climat” un espace pour : 
               </p>
               <ul>
-                <li>Partager des expériences avec des Chargés de Mission Climat d’autres territoires</li>
-                <li>Participer à des webinaires sur des thématiques liées à l’adaptation au changement climatique.</li>
+                <li>participer à des webinaires sur des thématiques liées à l’adaptation au changement climatique</li>
+                <li>faire connaissance de chargés de mission sur d’autres territoires, à d’autres échelles d’intervention</li>
+                <li>accéder à l’intégralité des comptes rendus des webinaires passés</li>
+                <li>poser des questions entre pairs</li>
+                <li>participer à la construction du produit Facili-TACCT</li>
               </ul>
               <HomeButton
                 borderColor="#0063CB"
