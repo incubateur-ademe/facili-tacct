@@ -7,7 +7,7 @@ export const homeCards = [
   {
     icone: Card1Icon,
     titre: 'Un mode d’emploi pour l’adaptation au changement climatique',
-    description: "TACCT propose un cheminement méthodologique pas à pas et structuré pour aider les collectivités à s’adapter aux impacts du changement climatique. Plus qu’un outil, c’est une véritable démarche. De l’identification des impacts climatiques à la mise en œuvre et au suivi des actions, TACCT propose un cadre complet, adaptable à toutes les réalités territoriales, quelles que soient la taille, la localisation ou les spécificités des collectivités."
+    description: "TACCT propose un cheminement méthodologique pas à pas et structuré pour aider les collectivités à s’adapter aux impacts du changement climatique. De l’identification des impacts climatiques à la mise en œuvre et au suivi des actions, TACCT propose un cadre complet, adaptable à toutes les réalités territoriales."
   },
   {
     icone: Card2Icon,

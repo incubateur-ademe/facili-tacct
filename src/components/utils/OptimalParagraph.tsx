@@ -11,7 +11,7 @@ export const OptimalParagraph: React.FC<OptimalParagraphProps> = ({
   children, 
   className = '', 
   style = {}, 
-  maxWidth = '60ch'
+  maxWidth = '65ch'
 }) => {
   const paragraphStyle = {
     maxWidth,
