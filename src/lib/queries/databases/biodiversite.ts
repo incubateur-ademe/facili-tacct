@@ -110,15 +110,15 @@ export const GetConsommationNAF = async (
         } else if (type === 'commune') {
           // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
           const value = await prisma.$queryRaw`
-        SELECT c.*
-        FROM consommation_espaces_naf c
-        WHERE c.epci = (
-          SELECT cs.epci
-          FROM collectivites_searchbar cs
-          WHERE cs.code_geographique = ${code}
-          LIMIT 1
-        )
-      `;
+          SELECT c.*
+          FROM consommation_espaces_naf c
+          WHERE c.epci = (
+            SELECT cs.epci
+            FROM collectivites_searchbar cs
+            WHERE cs.code_geographique = ${code}
+            LIMIT 1
+          )
+        `;
           return value as ConsommationNAF[];
         } else {
           const value = await prisma.consommation_espaces_naf.findMany({

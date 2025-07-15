@@ -19,12 +19,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
   const type = searchParams.get('type')!;
   const carteCommunesFiltered = carteCommunes.filter(
     (el) => el.properties.naf != undefined
-  ).filter(
-    (e) =>
-      e.properties.code_geographique !== '75056' &&
-      e.properties.code_geographique !== '13055' &&
-      e.properties.code_geographique !== '69123'
-  );
+  )
   const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
 
   return (
