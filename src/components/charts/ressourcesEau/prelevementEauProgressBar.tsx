@@ -12,6 +12,7 @@ import DataNotFound from '@/components/graphDataNotFound';
 import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
 import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
 import { RessourcesEau } from '@/lib/postgres/models';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { Progress } from 'antd';
 import Image from 'next/image';
@@ -175,16 +176,16 @@ const PrelevementEauProgressBars = ({
                     <p>
                       {libelle} :{' '}
                       <b>
-                        {((100 * item.sumTerritoire) / total).toFixed(2)}%
+                        {Round((100 * item.sumTerritoire) / total, 2)} %
                       </b>{' '}
-                      ({(item.sumTerritoire / 1000000).toFixed(2)} Mm³)
+                      ({Round(item.sumTerritoire / 1000000, 2)} Mm³)
                     </p>
                     {
                       type !== 'departement' && (
                         <p>
                           Département ({departement}) :{' '}
-                          <b>{((100 * item.sumDptmt) / totalDptmt).toFixed(2)} %</b>{' '}
-                          ({(item.sumDptmt / 1000000).toFixed(2)} Mm³)
+                          <b>{Round((100 * item.sumDptmt) / totalDptmt, 2)} %</b>{' '}
+                          ({Round(item.sumDptmt / 1000000, 2)} Mm³)
                         </p>
                       )
                     }
@@ -223,10 +224,10 @@ const PrelevementEauProgressBars = ({
                   <div className={styles.progressNumbers}>
                     <p>
                       <b>
-                        {((100 * item.sumTerritoire) / total).toFixed(2)}%
+                        {Round((100 * item.sumTerritoire) / total, 2)} %
                       </b>
                     </p>
-                    <p>{(item.sumTerritoire / 1000000).toFixed(2)} Mm³</p>
+                    <p>{Round(item.sumTerritoire / 1000000, 2)} Mm³</p>
                   </div>
                 </div>
               </HtmlTooltip>
