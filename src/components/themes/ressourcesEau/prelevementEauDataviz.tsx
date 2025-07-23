@@ -25,7 +25,7 @@ const PrelevementEauDataViz = ({
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.ressourcesEauGraphTitleWrapper}>
-        <h2>Répartition des prélèvements d’eau par usages</h2>
+        <h2>Répartition des prélèvements d’eau par usage</h2>
         <SubTabs
           data={['Répartition', 'Évolution']}
           defaultTab={datavizTab}
@@ -35,7 +35,7 @@ const PrelevementEauDataViz = ({
       {datavizTab === 'Répartition' ? (
         <>
           {
-            type === "pnr" ?
+            type === "pnr" || type === "departement" ?
               <PrelevementEauProgressBarsPNR ressourcesEau={ressourcesEau} />
               : <PrelevementEauProgressBars ressourcesEau={ressourcesEau} />
           }
