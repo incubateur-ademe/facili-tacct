@@ -19,10 +19,10 @@ type Props = {
 
 const SurfacesAgricolesDataviz = (props: Props) => {
   const { datavizTab, setDatavizTab, surfacesAgricoles } = props;
-    const searchParams = useSearchParams();
-    const code = searchParams.get('code')!;
-    const type = searchParams.get('type')!;
-    const libelle = searchParams.get('libelle')!;
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const territoiresPartiellementCouverts = type === 'departement'
     ? multipleEpciBydepartementLibelle.find(dept => dept.departement === code)?.liste_epci_multi_dept
     : type === 'pnr'
@@ -34,14 +34,14 @@ const SurfacesAgricolesDataviz = (props: Props) => {
       <div className={styles.dataVizGraphTitleWrapper}>
         <h2>Surface agricole par type de culture</h2>
         <SubTabs
-          data={['Répartition', 'Détail']}
+          data={['Répartition', 'Détail par culture']}
           defaultTab={datavizTab}
           setValue={setDatavizTab}
         />
       </div>
       {datavizTab === 'Répartition' ? (
         <PieChartAgriculture surfacesAgricoles={surfacesAgricoles} />
-      ) : datavizTab === 'Détail' ? (
+      ) : datavizTab === 'Détail par culture' ? (
         <SurfacesAgricolesProgressBar surfacesAgricoles={surfacesAgricoles} />
       ) : (
         ''
@@ -66,8 +66,7 @@ const SurfacesAgricolesDataviz = (props: Props) => {
         </div>
       }
       <p style={{ padding: '1em', margin: '0' }}>
-        Source : Base de Données sur les Incendies de Forêts en France,
-        consultée en 2024 (derniers chiffres disponibles : 2023)
+        Source : AGRESTE, 2020
       </p>
     </div>
   );
