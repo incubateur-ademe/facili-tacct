@@ -3,7 +3,7 @@ import SubTabs from '@/components/SubTabs';
 import { BarChartCatnat } from '@/components/charts/gestionRisques/BarChartCatnat';
 import PieChartCatnat from '@/components/charts/gestionRisques/pieChartCatnat';
 import { LegendCatnat } from '@/components/maps/legends/legendCatnat';
-import { MapCatnat2 } from '@/components/maps/mapCatnat2';
+import { MapCatnat } from '@/components/maps/mapCatnat';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { ArreteCatNat } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
@@ -101,7 +101,7 @@ const CatnatDataViz = (props: Props) => {
               setValue={setTypeRisqueValue}
             />
           </div>
-          <MapCatnat2
+          <MapCatnat
             carteCommunes={carteCommunes}
             typeRisqueValue={typeRisqueValue}
           />

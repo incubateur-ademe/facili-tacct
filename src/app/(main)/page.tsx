@@ -93,7 +93,7 @@ const Home = () => {
         <Container size="xl">
           <div className={styles.tacctWrapper}>
             <h2>Pourquoi suivre la démarche TACCT ?</h2>
-            <h3>TACCT : Trajectoires d’Adaptation au Changement Climatique des Territoires</h3>
+            <h3><span>TACCT</span> : <span>T</span>rajectoires d’<span>A</span>daptation au <span>C</span>hangement <span>C</span>limatique des <span>T</span>erritoires</h3>
             <OptimalParagraph>
               Vous avez des défis complexes à relever face au changement climatique et vous vous
               demandez par où commencer ? TACCT est la méthode qu’il vous faut.
