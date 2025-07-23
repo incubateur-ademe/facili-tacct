@@ -73,17 +73,17 @@ const Home = () => {
             </div>
             <div className={styles.patch4Text}>
               <h2>
-                Patch 4°C : intégrer la trajectoire de réchauffement de référence (TRACC) dans 
-                votre récent diagnostic de vulnérabilité climatique sans tout refaire
-                </h2>
+                Patch 4°C : intégrez la trajectoire de réchauffement de référence (TRACC) dans
+                votre diagnostic de vulnérabilité climatique
+              </h2>
               <p>
-                Le “patch 4°C” est une action du 3è Plan national d’adaptation au 
-                changement climatique (2025). Il s’adresse <b>en priorité aux communes ou EPCI</b> qui 
-                viennent d’achever leurs études de vulnérabilité sur la base d’hypothèses de 
+                Le “patch 4°C” est une action du 3ème Plan national d’adaptation au changement
+                climatique (2025). Il s’adresse <b>en priorité aux communes ou EPCI</b> qui
+                viennent d’achever leurs études de vulnérabilité sur la base d’hypothèses de
                 réchauffement différentes de celles de la TRACC.
               </p>
               <p>
-                Pour accéder aux données, saisissez le nom de  de votre territoire dans le champ ci-dessus.
+                Pour accéder aux données, saisissez le nom de votre territoire dans le champ ci-dessus.
               </p>
             </div>
           </div>
@@ -117,7 +117,7 @@ const Home = () => {
             <div className={styles.communauteText}>
               <h2>Rejoignez la communauté Facili-TACCT</h2>
               <p>
-                La communauté Facili-TACCT offre aux chargés de mission “Climat” un espace pour : 
+                La communauté Facili-TACCT offre aux chargés de mission “Climat” un espace pour :
               </p>
               <ul>
                 <li>participer à des webinaires sur des thématiques liées à l’adaptation au changement climatique</li>
@@ -158,8 +158,8 @@ const Home = () => {
             <div className={styles.diagnosticText}>
               <h2>Besoin d’être guidé pour évaluer votre diagnostic ?</h2>
               <p>
-                Votre territoire possède déjà un diagnostic de vulnérabilité 
-                climatique ? Exploitez-le ! Évitez de repartir de zéro et gagnez 
+                Votre territoire possède déjà un diagnostic de vulnérabilité
+                climatique ? Exploitez-le ! Évitez de repartir de zéro et gagnez
                 du temps et des ressources en évaluant d'abord le document existant.
               </p>
               <HomeButton
