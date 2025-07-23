@@ -35,7 +35,7 @@ const csp = {
             "'unsafe-eval' http://localhost",
         '*.posthog.com'
     ],
-    'style-src': ["'self'", "'unsafe-inline'"],
+    'style-src': ["'self'", "'unsafe-inline'", "https://eu.posthog.com"],
     'object-src': ["'self'", 'data:'],
     'frame-ancestors': [
         'http://localhost:5174/*',
