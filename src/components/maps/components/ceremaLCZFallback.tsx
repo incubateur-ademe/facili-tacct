@@ -63,7 +63,7 @@ export const handleCeremaFallback = (
       ceremaAvailable: false,
       fallbackToGlobal: true,
       errorMessage:
-        'Données LCZ CEREMA temporairement indisponibles. Affichage de données temporaires moins détaillées.'
+        'Les données LCZ du CEREMA sont temporairement indisponibles. Les données affichées sont actuellement moins détaillées.'
     });
   } catch (error) {
     console.error('Error during fallback:', error);

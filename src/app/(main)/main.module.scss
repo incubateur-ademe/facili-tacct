@@ -122,6 +122,7 @@ $height-notice: 360px;
         margin: 0;
         font-size: 1.5rem;
         font-weight: 800;
+        line-height: normal;
     }
     p {
         margin: 0;
@@ -181,13 +182,16 @@ $height-notice: 360px;
     }
     h3 {
         font-size: 1.25rem;
-        font-weight: 800;
+        font-weight: 500;
         color: #0063cb;
         margin: 0 0 1.25rem;
         text-align: center;
     }
     p {
         text-align: center;
+    }
+    span {
+        font-weight: 800;
     }
 }
 
@@ -205,10 +209,10 @@ $height-notice: 360px;
     border-radius: 1.25em;
     box-shadow: 0px 4px 12px 0px #0063cb29;
     padding: 20px;
-    text-align: center;
+    text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     width: 267px;
     min-width: 267px;
     h4 {
@@ -223,6 +227,7 @@ $height-notice: 360px;
         margin: 0;
         line-height: 1.25rem;
         font-weight: 400;
+        text-align: left;
     }
 }
 
@@ -252,7 +257,7 @@ $height-notice: 360px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 3rem 2rem;
+    padding: 3rem 0rem;
     h2 {
         font-size: 1.75rem;
         font-weight: 800;
@@ -280,7 +285,7 @@ $height-notice: 360px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 5rem 2rem;
+    padding: 5rem 0rem;
     h2 {
         font-size: 1.75rem;
         font-weight: 800;
@@ -315,7 +320,7 @@ $height-notice: 360px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 3rem 2rem;
+    padding: 3rem 0rem;
     h2 {
         font-size: 1.75rem;
         font-weight: 800;
