@@ -67,7 +67,7 @@ export const PrelevementEau = (props: {
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
-  const volumePreleveTerritoire = (SumFiltered(ressourcesEau, code, libelle, type, 'total') / 1000000).toFixed(3);
+  const volumePreleveTerritoire = (SumFiltered(ressourcesEau, code, libelle, type, 'total') / 1000000).toFixed(2);
   const dataParMaille = type === 'epci'
     ? ressourcesEau.filter((obj) => obj.epci === code)
     : type === 'commune'
@@ -124,7 +124,7 @@ export const PrelevementEau = (props: {
                 {dataParMaille.length !== 0 ? (
                   <p>
                     Le volume total des prélèvements en eau de votre territoire en
-                    2020 est de <b>{numberWithSpacesRegex(volumePreleveTerritoire)} Mm3</b>, soit l’équivalent
+                    2020 est de <b>{numberWithSpacesRegex(volumePreleveTerritoire)} Mm3</b>, soit l’équivalent
                     de <b>{Round((1000000 * Number(volumePreleveTerritoire)) / 3750, 0)}</b>{' '}
                     piscines olympiques.
                   </p>
