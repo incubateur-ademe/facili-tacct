@@ -15,7 +15,7 @@ import { Loader } from '../loader';
 import { BoundsFromCollection } from './components/boundsFromCollection';
 import { CeremaFallbackError, handleCeremaFallback } from './components/ceremaLCZFallback';
 import { LczLegend, LczLegendOpacity70 } from './legends/datavizLegends';
-import { LegendCompColor } from './legends/legendComp';
+import { LegendCompColorLCZ } from './legends/legendComp';
 import styles from './maps.module.scss';
 
 export const MapLCZ = ({
@@ -396,7 +396,7 @@ export const MapLCZ = ({
               className={styles.legendLCZ}
               style={{ width: 'auto' }}
             >
-              <LegendCompColor legends={(zoomMap >= 13.5 || !isLczCovered) ? LczLegendOpacity70 : LczLegend} />
+              <LegendCompColorLCZ legends={(zoomMap >= 13.5 || !isLczCovered) ? LczLegendOpacity70 : LczLegend} />
             </div>
           </div>
         </>

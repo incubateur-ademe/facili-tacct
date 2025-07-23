@@ -75,9 +75,9 @@ export const SubAccordionGraph = ({
   superficieSau: number;
   isDefaultExpanded?: boolean;
 }) => {
-    const searchParams = useSearchParams();
-    const libelle = searchParams.get('libelle');
-    const [expanded, setExpanded] = useState(isDefaultExpanded);
+  const searchParams = useSearchParams();
+  const libelle = searchParams.get('libelle');
+  const [expanded, setExpanded] = useState(isDefaultExpanded);
   const accordionTitle = Object.keys(graphDataItem)[0];
   const sortedData = [...Object.values(graphDataItem)[0]].sort((a, b) => b.value - a.value);
   return (
@@ -85,9 +85,16 @@ export const SubAccordionGraph = ({
       <AccordionSummary
         aria-controls="panel1-content"
         id="panel1-header"
-        expandIcon={<ExpandMoreIcon sx={{ fontSize: '2rem' }} />}
+        expandIcon={
+          <>
+            {!expanded ? (
+              <ExpandMoreIcon sx={{ fontSize: '2rem', transform: 'rotate(-90deg)' }} />
+            ) : (
+              <ExpandMoreIcon sx={{ fontSize: '2rem', transform: 'rotate(180deg)' }} />
+            )}
+          </>
+        }
         onClick={() => setExpanded(!expanded)}
-        
       >
         <p style={{ margin: '0', textTransform: "uppercase", fontSize: '14px' }}>
           <b style={{ color: "#666666" }}>{accordionTitle}</b>
@@ -97,45 +104,45 @@ export const SubAccordionGraph = ({
         {sortedData.map((item, index) => (
           <AccordionDetails>
             <HtmlTooltip
-                title={
-                  <div className={styles.tooltip}>
-                    <h3>{item.id}</h3>
-                    <p>
-                      {libelle} :{' '}
-                      <b>
-                        {Round((100 * item.value / superficieSau), 1)} %
-                      </b>
-                    </p>
-                  </div>
-                }
-                key={index}
-                placement="top"
-              >
-            <div key={index} className={styles.progressDataWrapper}>
-              <div className={styles.progressDesign}>
-                <div className={styles.progressBar}>
-                  <p>{item.id}</p>
-                  <div>
-                    <Progress
-                      percent={Number(100 * item.value / superficieSau)}
-                      showInfo={false}
-                      strokeColor={item.color}
-                      size={['100%', 12]}
-                      style={{ width: '95%' }}
-                      type="line"
-                      trailColor="#F9F9FF"
-                    />
+              title={
+                <div className={styles.tooltip}>
+                  <h3>{item.id}</h3>
+                  <p>
+                    {libelle} :{' '}
+                    <b>
+                      {Round((100 * item.value / superficieSau), 1)} %
+                    </b>
+                  </p>
+                </div>
+              }
+              key={index}
+              placement="top"
+            >
+              <div key={index} className={styles.progressDataWrapper}>
+                <div className={styles.progressDesign}>
+                  <div className={styles.progressBar}>
+                    <p>{item.id}</p>
+                    <div>
+                      <Progress
+                        percent={Number(100 * item.value / superficieSau)}
+                        showInfo={false}
+                        strokeColor={item.color}
+                        size={['100%', 12]}
+                        style={{ width: '95%' }}
+                        type="line"
+                        trailColor="#F9F9FF"
+                      />
+                    </div>
                   </div>
                 </div>
+                <div className={styles.progressNumbers}>
+                  <p>
+                    <b>
+                      {Round(item.value, 1)} ha
+                    </b>
+                  </p>
+                </div>
               </div>
-              <div className={styles.progressNumbers}>
-                <p>
-                  <b>
-                    {Round(item.value, 1)} ha
-                  </b>
-                </p>
-              </div>
-            </div>
             </HtmlTooltip>
           </AccordionDetails>
 

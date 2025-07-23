@@ -10,22 +10,34 @@ jest.setTimeout(60000); // Increase timeout for heavy queries
 
 describe('Integration: query functions for biodiversite', () => {
   it('GetAgricultureBio returns expected results for EPCI 200054781', async () => {
-    const result = await biodiversite.GetAgricultureBio('Métropole du Grand Paris', 'epci', "200054781");
+    const result = await biodiversite.GetAgricultureBio(
+      'Métropole du Grand Paris',
+      'epci',
+      '200054781'
+    );
     expect(Array.isArray(result)).toBe(true);
     expect(result.length).toBe(5);
     expect(result[0]).toHaveProperty('LIBELLE_SOUS_CHAMP', 'Surface certifiée');
     // S'assurer qu'aucune colonne ne commence par un chiffre (bug entre prisma et postgres)
-    expect(Object.keys(result[0]).every(key => !/^\d/.test(key))).toBe(true);
+    expect(Object.keys(result[0]).every((key) => !/^\d/.test(key))).toBe(true);
   });
   it('GetConsommationNAF returns expected results for EPCI 200054781', async () => {
-    const result = await biodiversite.GetConsommationNAF('200054781', 'Métropole du Grand Paris', 'epci');
+    const result = await biodiversite.GetConsommationNAF(
+      '200054781',
+      'Métropole du Grand Paris',
+      'epci'
+    );
     expect(Array.isArray(result)).toBe(true);
     expect(result.length).toBe(130);
-    const uniqueDepartements = new Set(result.map((item: ConsommationNAF) => item.libelle_departement));
+    const uniqueDepartements = new Set(
+      result.map((item: ConsommationNAF) => item.libelle_departement)
+    );
     expect(uniqueDepartements.size).toBe(6);
-    expect(result.every((item: ConsommationNAF) => item.naf09art23 !== null)).toBe(true);
+    expect(
+      result.every((item: ConsommationNAF) => item.naf09art23 !== null)
+    ).toBe(true);
     // S'assurer qu'aucune colonne ne commence par un chiffre (bug entre prisma et postgres)
-    expect(Object.keys(result[0]).every(key => !/^\d/.test(key))).toBe(true);
+    expect(Object.keys(result[0]).every((key) => !/^\d/.test(key))).toBe(true);
   });
   it('GetAOT40 returns expected results', async () => {
     const result = await biodiversite.GetAOT40();
@@ -33,13 +45,17 @@ describe('Integration: query functions for biodiversite', () => {
     expect(result.length).toBe(291);
     expect(result[0]).toHaveProperty('valeur_brute', 9487.38664050025);
     // S'assurer qu'aucune colonne ne commence par un chiffre (bug entre prisma et postgres)
-    expect(Object.keys(result[0]).every(key => !/^\d/.test(key))).toBe(true);
+    expect(Object.keys(result[0]).every((key) => !/^\d/.test(key))).toBe(true);
   });
 });
 
 describe('Integration: query functions for ressourcesEau', () => {
   it('GetRessourceEau returns expected results for EPCI 200042497', async () => {
-    const result = await ressourcesEau.GetRessourceEau('200042497', 'Communauté de communes Dombes Saône Vallée', 'epci');
+    const result = await ressourcesEau.GetRessourceEau(
+      '200042497',
+      'Communauté de communes Dombes Saône Vallée',
+      'epci'
+    );
     expect(Array.isArray(result)).toBe(true);
     expect(result.length).toBe(6647);
     expect(result[0]).toHaveProperty('A2020');
@@ -56,23 +72,44 @@ describe('Integration: query functions for ressourcesEau', () => {
     expect(result[0]).toHaveProperty('A2009');
     expect(result[0]).toHaveProperty('A2008');
     // S'assurer qu'aucune colonne ne commence par un chiffre (bug entre prisma et postgres)
-    expect(Object.keys(result[0]).every(key => !/^\d/.test(key))).toBe(true);
+    expect(Object.keys(result[0]).every((key) => !/^\d/.test(key))).toBe(true);
   });
   it('GetQualiteEauxBaignade returns array', async () => {
-    const result = await ressourcesEau.GetQualiteEauxBaignade('200067106', "Communauté d'agglomération du Pays Basque", 'epci');
+    const result = await ressourcesEau.GetQualiteEauxBaignade(
+      '200067106',
+      "Communauté d'agglomération du Pays Basque",
+      'epci'
+    );
     expect(Array.isArray(result)).toBe(true);
     // S'assurer qu'aucune colonne ne commence par un chiffre (bug entre prisma et postgres)
-    expect(Object.keys(result[0]).every(key => !/^\d/.test(key))).toBe(true);
+    expect(Object.keys(result[0]).every((key) => !/^\d/.test(key))).toBe(true);
   });
 });
 
 describe('Integration: query functions for inconfortThermique', () => {
   it('GetInconfortThermique returns array', async () => {
-    const result = await inconfortThermique.GetInconfortThermique('200070555', 'Communauté de communes de la Veyle', 'epci');
+    const result = await inconfortThermique.GetInconfortThermique(
+      '200070555',
+      'Communauté de communes de la Veyle',
+      'epci'
+    );
     expect(Array.isArray(result)).toBe(true);
     expect(result.length).toBe(391);
     // S'assurer qu'aucune colonne ne commence par un chiffre (bug entre prisma et postgres)
-    expect(Object.keys(result[0]).every(key => !/^\d/.test(key))).toBe(true);
+    expect(Object.keys(result[0]).every((key) => !/^\d/.test(key))).toBe(true);
+  });
+});
+
+describe('Integration: query functions to check if collectivites_searchbar has right structure', () => {
+  it('collectivites_searchbar table has expected checksum', async () => {
+    const result = await prisma.$queryRaw<[{ checksum: string }]>`
+      SELECT md5(string_agg(t::text, '')) AS checksum
+      FROM (
+        SELECT * FROM databases.collectivites_searchbar ORDER BY index
+      ) t;
+    `;
+    expect(result).toHaveLength(1);
+    expect(result[0].checksum).toBe('4cbd76e64a8e932241ec1ea602a93c02');
   });
 });
 

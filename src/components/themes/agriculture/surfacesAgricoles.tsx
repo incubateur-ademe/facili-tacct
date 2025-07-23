@@ -74,7 +74,8 @@ export const SurfacesAgricoles = ({
                       </p>
                       <br></br>
                       <p>
-                        Sur votre {type === "commune" ? "EPCI" : "territoire"}, le type de surface prédominant est constitué de <b>{maxCategory.id.toLowerCase()}</b>,
+                        Sur votre {type === "commune" ? "EPCI" : "territoire"}, le type de surface
+                        prédominant est constitué de <b>{maxCategory.id.toLowerCase()}</b>,
                         couvrant <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b>, ce qui
                         représente <b>{Round((maxCategory.count / sommeToutesSuperficies) * 100, 1)} %</b> de
                         la surface agricole utile.

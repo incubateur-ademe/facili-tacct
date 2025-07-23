@@ -6,6 +6,7 @@ import FacilitationDateliers from '@/lib/ressources/articles/facilitationDatelie
 import LireUnDiagnostic from '@/lib/ressources/articles/lireUnDiagnostic';
 import MiseEnRecit from '@/lib/ressources/articles/miseEnRecit';
 import PourquoiMobiliser from '@/lib/ressources/articles/pourquoiMobiliser';
+import RecruterStagiaire from '@/lib/ressources/articles/recruterStagiaire';
 
 export const allArticles = [
   {
@@ -78,6 +79,16 @@ export const allArticles = [
       title: 'ClimaSTORY, une cartographie pour sensibiliser',
       description:
         'Découvrez ClimaSTORY, un outil cartographique pour sensibiliser à l’adaptation au changement climatique.'
+    }
+  },
+  {
+    slug: 'stagiaire-diagnostic-vulnerabilite-climat',
+    Component: RecruterStagiaire,
+    metadata: {
+      title:
+        'Recruter un stagiaire sur le diagnostic de vulnérabilité : bonne ou mauvaise idée ?',
+      description:
+        'Vous envisagez de confier le diagnostic de vulnérabilité à votre stagiaire ? Découvrez les erreurs à éviter, les missions possibles, et les bonnes pratiques pour un appui vraiment utile.'
     }
   }
 ];
