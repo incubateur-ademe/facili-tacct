@@ -10,10 +10,10 @@ const RecruterStagiaire = () => {
       <div className={styles.textBloc}>
         <h1>Recruter un stagiaire sur le diagnostic de vulnérabilité : bonne ou mauvaise idée ?</h1>
         <p>
-          Quand on travaille seul sur l’adaptation au sein d’un territoire, sans temps,
-          sans moyens ni relais internes, se lancer dans un diagnostic de vulnérabilité
+          Quand on travaille seul sur l’adaptation au sein d’un territoire, <b>sans temps,
+            sans moyens ni relais internes</b>, se lancer dans un diagnostic de vulnérabilité
           peut vite devenir une mission trop lourde à porter. D’où l’idée, souvent tentante,
-          de confier cette tâche à un stagiaire. Certains territoires l’ont fait. Avec
+          de <b>confier cette tâche à un stagiaire</b>. Certains territoires l’ont fait. Avec
           succès… ou non. Trois retours d’expérience concrets pour aider à se poser les bonnes questions.
         </p>
         <h2>Quand un stage bien cadré débloque un diagnostic de vulnérabilité à l’arrêt</h2>
@@ -36,27 +36,27 @@ const RecruterStagiaire = () => {
           préparation des ateliers stratégiques (cadrage, mobilisation des partenaires),
           qu’elle co-animera une fois embauchée.
         </p>
-        <blockquote>
+        <div className={styles.grayQuoteWrapper}>
           « Ce qui a fait la différence, c’est l’encadrement, complémentaire entre Mathilde
           et notre accompagnateur Acterra, et le fait d’avoir un cadre clair.
           J’ai pu monter en autonomie rapidement », explique-t-elle.
-        </blockquote>
+        </div>
         <p>
           Le binôme fonctionne : <b>la stagiaire sur le diagnostic</b>, les enjeux, la coordination
           technique ; <b>sa responsable sur la mobilisation politique</b>, les élus, le lien avec le PCAET.
         </p>
-        <blockquote>
+        <div className={styles.grayQuoteWrapper}>
           « Si ce n’était pas elle qui le faisait, c’était moi. Et je n’aurais pas le temps », reconnaît Mathilde.
-        </blockquote>
+        </div>
         <p>
           Ombrie et Mathilde en sont convaincues : le stage n’aurait pas suffi sans méthode ni accompagnement.
           Et au-delà des compétences académiques, c’est le savoir-être qui a permis à Ombrie de tenir la barre.
         </p>
-        <blockquote>
+        <div className={styles.grayQuoteWrapper}>
           « Il fallait une personne rigoureuse, capable d’initiatives, pas timide, qui sache aller chercher l’information,
           interagir avec les partenaires, avancer sans attendre qu’on lui tienne la main » insiste Mathilde, avant de conclure :
           « Ce n’est pas un sujet pour un stage de deux mois. Il faut du temps, un bon cadrage… et du savoir-être ».
-        </blockquote>
+        </div>
         <p>
           Faut-il forcément accueillir un stagiaire pendant six mois pour avancer sur le diagnostic de vulnérabilité de son territoire ?
           Dans certains cas, même un stage de courte durée peut suffire à relancer une dynamique d’adaptation au changement climatique.
@@ -97,10 +97,10 @@ const RecruterStagiaire = () => {
           Durée trop courte, sujet trop transversal ou trop politique : le diagnostic de vulnérabilité n’est pas toujours une mission adaptée.
         </p>
         <h2>Un diagnostic de vulnérabilité confié à un stagiaire ? Retour d’expérience d’un parc naturel régional</h2>
-        <blockquote>
+        <div className={styles.grayQuoteWrapper}>
           « Un diagnostic de vulnérabilité, même un bureau d’études a du mal à le monter en six mois. Alors un stagiaire… », lance Jeanne Leroy.« Un
           diagnostic de vulnérabilité, même un bureau d’études a du mal à le monter en six mois. Alors un stagiaire… », lance Jeanne Leroy.
-        </blockquote>
+        </div>
         <p>
           Fin 2020, Jeanne rejoint le Parc naturel régional Périgord-Limousin en tant que chargée de mission transition énergétique. Le sujet de l’adaptation
           commence tout juste à émerger au sein du territoire, poussé par l’ADEME. Un volet “diagnostic de vulnérabilité TACCT” est prévu dans le contrat
@@ -118,27 +118,27 @@ const RecruterStagiaire = () => {
           Paolo s’implique, mène une vingtaine d’entretiens, et s’efforce d’appliquer la méthode.
           Mais pour Jeanne, le constat est net : le rendu final ne correspond pas à ses attentes.
         </p>
-        <blockquote>
+        <div className={styles.grayQuoteWrapper}>
           « Je pense qu’on a sous-estimé ce que demandait vraiment ce type de mission. Même un très
           bon profil ne se sent pas légitime pour poser toutes les questions. Il faut oser aller
           voir les gens, faire parler les services, croiser les regards. »
-        </blockquote>
+        </div>
         <p>
           Le stage permet malgré tout quelques avancées : une restitution auprès des élus, un atelier en interne,
           une base de travail pour la suite. Mais la dynamique n’a pas suivi. Deux ans plus tard, tout est repris à zéro par un bureau d’études,
           avec Jeanne revenue en chef de projet.
         </p>
-        <blockquote>
+        <div className={styles.grayQuoteWrapper}>
           « On a voulu aller trop vite, sur un sujet qu’on ne maîtrisait pas. C’était un peu naïf.
           Le diagnostic n’est pas une mission adaptée à un stage. »
-        </blockquote>
+        </div>
         <p>
           Depuis, elle invite à redimensionner les ambitions. Un stage peut avoir toute sa place… à condition de bien choisir le périmètre.
         </p>
-        <blockquote>
+        <div className={styles.grayQuoteWrapper}>
           « Tester un outil, lancer une action : oui. Mais pas porter seul un diagnostic.
           Ce n’est pas une mission pour débuter, mais une mission d’animation : elle exige d’être déjà implanté, légitime, et à l’aise pour mobiliser. »
-        </blockquote>
+        </div>
         <h2>Clarifier son besoin, pour bien cadrer le stage</h2>
         <p>
           Un stage peut faire levier. Accélérer, débloquer, structurer une démarche d’adaptation.
@@ -146,8 +146,8 @@ const RecruterStagiaire = () => {
         </p>
         <p>
           Que le profil du stagiaire soit choisi ou imposé, il est essentiel de clarifier votre
-          besoin avant son arrivée. De quoi avez vous *vraiment* besoin pour avancer ? Rassembler
-          des données ?Structurer ce qui existe déjà ? Préparer un atelier ou de documenter vos
+          besoin avant son arrivée. De quoi avez vous <i>vraiment</i> besoin pour avancer ? Rassembler
+          des données ? Structurer ce qui existe déjà ? Préparer un atelier ou de documenter vos
           entretiens ? Amorcer une cartographie des acteurs ?
         </p>
         <p>
@@ -158,8 +158,8 @@ const RecruterStagiaire = () => {
         <p>
           <b>Les conseils partagés ici s’appliquent également à une personne recrutée en alternance sur le diagnostic de vulnérabilité.</b>
         </p>
-        <div className={styles.grayWrapper}>
-          <h3 style={{ margin: '1rem 0' }}>Un stagiaire sur le diagnostic de vulnérabilité</h3>
+        <div className={styles.grayWrapper} style={{ padding: '0 2.5rem' }}>
+          <h3>Un stagiaire sur le diagnostic de vulnérabilité</h3>
           <h4>Ce qu’il ou elle peut faire :</h4>
           <ul>
             <li>
