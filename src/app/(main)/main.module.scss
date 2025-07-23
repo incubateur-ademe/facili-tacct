@@ -3,7 +3,7 @@ $heightWrapper: 293px;
 $height-notice: 360px;
 
 // 1er bloc
-.homePageTopWrapper{
+.homePageTopWrapper {
     display: flex;
     flex-direction: column;
     min-height: $heightWrapper;
@@ -15,10 +15,10 @@ $height-notice: 360px;
         display: flex;
         flex-direction: column;
         text-align: center;
-        color: #FFFFFF;
+        color: #ffffff;
         align-items: center;
         h1 {
-            color: #FFFFFF;
+            color: #ffffff;
             font-size: 40px;
             font-weight: 700;
             line-height: 55.48px;
@@ -78,7 +78,13 @@ $height-notice: 360px;
 // Patch 4 bloc
 
 .patch4Container {
-    background: repeating-linear-gradient(-45deg, transparent, transparent 12px, #D8EFFA 12px, #D8EFFA 14px);
+    background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 12px,
+        #d8effa 12px,
+        #d8effa 14px
+    );
 }
 .patch4Wrapper {
     display: flex;
@@ -158,7 +164,7 @@ $height-notice: 360px;
 
 // Tacct bloc
 .tacctContainer {
-    background-color: #D8EFFA;
+    background-color: #d8effa;
 }
 
 .tacctWrapper {
@@ -169,14 +175,14 @@ $height-notice: 360px;
     h2 {
         font-size: 1.75rem;
         font-weight: 800;
-        color: #0063CB;
+        color: #0063cb;
         margin: 0 0 1rem;
         text-align: center;
     }
     h3 {
         font-size: 1.25rem;
         font-weight: 800;
-        color: #0063CB;
+        color: #0063cb;
         margin: 0 0 1.25rem;
         text-align: center;
     }
@@ -198,7 +204,7 @@ $height-notice: 360px;
     background-color: #ffffff;
     border-radius: 1.25em;
     box-shadow: 0px 4px 12px 0px #0063cb29;
-    padding: 1.5em;
+    padding: 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -206,14 +212,14 @@ $height-notice: 360px;
     width: 267px;
     min-width: 267px;
     h4 {
-        color: #0063CB;
+        color: #0063cb;
         font-size: 1rem;
         line-height: 17px;
         font-weight: 700;
         margin: 0.5rem 0 1rem;
     }
     p {
-        font-size: 1rem;
+        font-size: 14px;
         margin: 0;
         line-height: 1.25rem;
         font-weight: 400;
@@ -239,7 +245,7 @@ $height-notice: 360px;
 
 // Communauté bloc
 .communauteContainer {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 
 .communauteWrapper {
@@ -250,7 +256,7 @@ $height-notice: 360px;
     h2 {
         font-size: 1.75rem;
         font-weight: 800;
-        color: #0063CB;
+        color: #0063cb;
         margin: 0 0 1rem;
     }
 }
@@ -267,7 +273,7 @@ $height-notice: 360px;
 
 // Diagnostic bloc
 .diagnosticContainer {
-    background-color: #0063CB;
+    background-color: #0063cb;
 }
 
 .diagnosticWrapper {
@@ -278,13 +284,13 @@ $height-notice: 360px;
     h2 {
         font-size: 1.75rem;
         font-weight: 800;
-        color: #FFFFFF;
+        color: #ffffff;
         margin: 0 0 1rem;
     }
     p {
         margin: 0;
         font-size: 1rem;
-        color: #FFFFFF;
+        color: #ffffff;
     }
 }
 
@@ -301,7 +307,7 @@ $height-notice: 360px;
 
 // Ressources bloc
 .ressourcesContainer {
-    background-color: #D8EFFA;
+    background-color: #d8effa;
 }
 
 .ressourcesWrapper {
@@ -313,7 +319,7 @@ $height-notice: 360px;
     h2 {
         font-size: 1.75rem;
         font-weight: 800;
-        color: #0063CB;
+        color: #0063cb;
         margin: 0 0 1rem;
     }
     p {
@@ -321,7 +327,7 @@ $height-notice: 360px;
         font-size: 1rem;
     }
     .ressourcesText {
-            max-width: 50%;
+        max-width: 50%;
     }
 }
 
@@ -332,7 +338,7 @@ $height-notice: 360px;
         .ressourcesText {
             max-width: 80%;
         }
-    } 
+    }
 }
 
 // Cookies
