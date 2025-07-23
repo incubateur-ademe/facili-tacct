@@ -325,6 +325,48 @@ export const cards = {
       description:
         'Une facette du diagnostic de vulnérabilité, l’analyse de l’exposition. Découvrez l’usage des données climatiques actuelles et futures du PNR des Vosges du Nord',
       link: 'https://librairie.ademe.fr/changement-climatique/7907-presenter-le-diagnostic-de-l-exposition-retour-d-experience-du-pnr-des-vosges-du-nord-67.html'
+    },
+    {
+      id: 29,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        'Vous découvrez le diagnostic pour la 1ère fois',
+        "Vous n'avez pas de diagnostic"
+      ],
+      titre:
+        "TACCT. Une stratégie issue d'une trajectoire d'adaptation au changement climatique",
+      tag: "Retour d'expérience",
+      description:
+        'À la suite du diagnostic de vulnérabilité et pour la mise en oeuvre de sa stratégie. Le Pays Pyrénées Méditerranée a organisé 2 ateliers afin de définir ses trajectoires d’adaptation.',
+      link: 'https://librairie.ademe.fr/changement-climatique/7726-tacct-une-strategie-issue-d-une-trajectoire-d-adaptation-au-changement-climatique.html#'
+    },
+    {
+      id: 30,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        'Vous découvrez le diagnostic pour la 1ère fois',
+        "Vous n'avez pas de diagnostic"
+      ],
+      titre:
+        "TACCT. Confronter la robustesse de la charte d'un Parc Naturel Régional au changement climatique",
+      tag: "Retour d'expérience",
+      description:
+        'À la suite du diagnostic de vulnérabilité, le PNR des Pyrénées Ariégeoises a organisé un atelier pour mesurer la robustesse des actions d’adaptation dans sa charte jusqu’à 2040.',
+      link: 'https://librairie.ademe.fr/changement-climatique/7727-tacct-confronter-la-robustesse-de-la-charte-d-un-parc-naturel-regional-au-changement-climatique.html'
+    },
+    {
+      id: 31,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        'Vous découvrez le diagnostic pour la 1ère fois',
+        "Vous n'avez pas de diagnostic"
+      ],
+      titre:
+        'Recruter un stagiaire sur le diagnostic de vulnérabilité : bonne ou mauvaise idée ?',
+      tag: 'Article',
+      description:
+        'Vous envisagez de confier le diagnostic de vulnérabilité à votre stagiaire ? Découvrez les erreurs à éviter, les missions possibles, et les bonnes pratiques pour un appui vraiment utile.',
+      link: '/ressources/articles/stagiaire-diagnostic-vulnerabilite-climat'
     }
   ],
   inconfortThermique: [
