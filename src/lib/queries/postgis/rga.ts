@@ -15,17 +15,18 @@ export const GetRGACarte = async (
         'GetRGACarte: Timeout reached (12 seconds), returning empty array.'
       );
       resolve([]);
-    }, 12000)
+    }, 14000)
   );
   const dbQuery = (async () => {
     try {
       if (
-        !libelle || 
-        !type || 
-        (!code && type !== 'petr') || 
-        libelle === "null" ||
-        (code === "null" && type !== 'petr')  
-      ) return [];
+        !libelle ||
+        !type ||
+        (!code && type !== 'petr') ||
+        libelle === 'null' ||
+        (code === 'null' && type !== 'petr')
+      )
+        return [];
       else if (type === 'commune') {
         const commune = await prisma.$queryRaw<RGACarte[]>`
           SELECT

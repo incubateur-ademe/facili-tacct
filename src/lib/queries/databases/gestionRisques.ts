@@ -93,11 +93,11 @@ export const GetRga = async (
   libelle: string,
   type: string
 ): Promise<RGAdb[]> => {
-  const column = type ? ColumnCodeCheck(type) : "";
+  const column = type ? ColumnCodeCheck(type) : '';
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 10000)
+    }, 12000)
   );
   const dbQuery = (async () => {
     try {
@@ -106,12 +106,13 @@ export const GetRga = async (
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (
-        !libelle || 
-        !type || 
-        (!code && type !== 'petr') || 
-        libelle === "null" ||
-        (code === "null" && type !== 'petr')  
-      ) return [];
+        !libelle ||
+        !type ||
+        (!code && type !== 'petr') ||
+        libelle === 'null' ||
+        (code === 'null' && type !== 'petr')
+      )
+        return [];
       else if (!exists) return [];
       else if (type === 'commune') {
         const value = await prisma.$queryRaw`
