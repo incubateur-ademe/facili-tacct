@@ -95,8 +95,7 @@ const RecruterStagiaire = () => {
         </p>
         <h2>Un diagnostic de vulnérabilité confié à un stagiaire ? Retour d’expérience d’un parc naturel régional</h2>
         <div className={styles.grayQuoteWrapper}>
-          « Un diagnostic de vulnérabilité, même un bureau d’études a du mal à le monter en six mois. Alors un stagiaire… », lance Jeanne Leroy.« Un
-          diagnostic de vulnérabilité, même un bureau d’études a du mal à le monter en six mois. Alors un stagiaire… », lance Jeanne Leroy.
+          « Un diagnostic de vulnérabilité, même un bureau d’études a du mal à le monter en six mois. Alors un stagiaire… », lance Jeanne Leroy.
         </div>
         <p>
           Fin 2020, Jeanne rejoint le Parc naturel régional Périgord-Limousin en tant que chargée de mission transition énergétique. Le sujet de l’adaptation
@@ -214,6 +213,20 @@ const RecruterStagiaire = () => {
               Prévoir des livrables transmissibles, pour que le travail reste utile après son départ
             </li>
           </ul>
+        </div>
+        <div className={styles.blueWrapper} style={{ margin: '2rem 0 0 0', border: '1px solid #d0d9ff' }}>
+          <p style={{ margin: 0 }}>
+            Vous êtes chargé(e) de mission ou stagiaire en mission sur un diagnostic de vulnérabilité ?
+            En moins d’une minute, racontez-nous ce qui a (ou n’a pas) marché, via ce formulaire :{" "}
+            <a
+              href="https://tally.so/r/w77gX6"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ width: "fit-content" }}
+            >
+              lien
+            </a>
+          </p>
         </div>
       </div>
       <EndPageTrigger />
