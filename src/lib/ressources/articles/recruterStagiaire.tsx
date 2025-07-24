@@ -1,10 +1,8 @@
 "use client";
-import { useState } from "react";
 import EndPageTrigger from "../../../hooks/EndPageTrigger";
 import styles from "./article.module.scss";
 
 const RecruterStagiaire = () => {
-  const [showModal, setShowModal] = useState(false);
   return (
     <>
       <div className={styles.textBloc}>
