@@ -178,14 +178,14 @@ const PrelevementEauProgressBars = ({
                       <b>
                         {Round((100 * item.sumTerritoire) / total, 2)} %
                       </b>{' '}
-                      ({Round(item.sumTerritoire / 1000000, 2)} Mm³)
+                      ({Round(item.sumTerritoire / 1000000, 2)} Mm3)
                     </p>
                     {
                       type !== 'departement' && (
                         <p>
                           Département ({departement}) :{' '}
                           <b>{Round((100 * item.sumDptmt) / totalDptmt, 2)} %</b>{' '}
-                          ({Round(item.sumDptmt / 1000000, 2)} Mm³)
+                          ({Round(item.sumDptmt / 1000000, 2)} Mm3)
                         </p>
                       )
                     }
@@ -227,7 +227,7 @@ const PrelevementEauProgressBars = ({
                         {Round((100 * item.sumTerritoire) / total, 2)} %
                       </b>
                     </p>
-                    <p>{Round(item.sumTerritoire / 1000000, 2)} Mm³</p>
+                    <p>{Round(item.sumTerritoire / 1000000, 2)} Mm3</p>
                   </div>
                 </div>
               </HtmlTooltip>
