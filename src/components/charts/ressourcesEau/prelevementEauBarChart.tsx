@@ -6,7 +6,7 @@ import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { BarDatum, BarTooltipProps } from '@nivo/bar';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { NivoBarChart } from '../NivoBarChart';
+import { NivoBarChartRessourcesEau } from '../NivoBarChart';
 
 type GraphData = {
   Agriculture: number;
@@ -185,7 +185,7 @@ const PrelevementEauBarChart = ({
                 <p>{el.titre}</p>
               </div>
               <div className={styles.value}>
-                <p>{(Number(el.value) / 1000000).toFixed(2)}Mm³</p>
+                <p>{(Number(el.value) / 1000000).toFixed(2)}Mm3</p>
               </div>
             </div>
           );
@@ -199,7 +199,7 @@ const PrelevementEauBarChart = ({
       style={{ height: '500px', minWidth: '450px', backgroundColor: 'white' }}
     >
       {graphData && graphData.length ? (
-        <NivoBarChart
+        <NivoBarChartRessourcesEau
           bottomTickValues={
             minValueXTicks != maxValueXTicks
               ? [`${minValueXTicks}`, `${maxValueXTicks}`]
@@ -217,7 +217,7 @@ const PrelevementEauBarChart = ({
               color: legend.couleur
             }))}
           tooltip={CustomTooltip}
-          axisLeftLegend="Volumétrie en Mm³"
+          axisLeftLegend="Volumétrie en Mm3"
           axisLeftTickFactor={1000000}
         />
       ) : (

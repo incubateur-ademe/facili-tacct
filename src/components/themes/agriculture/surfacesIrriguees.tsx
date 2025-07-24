@@ -7,10 +7,10 @@ import { MapSurfacesIrriguees } from '@/components/maps/mapSurfacesIrriguees';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
+import { SurfacesIrrigueesText } from '@/lib/staticTexts';
 import { surfacesIrrigueesTooltipText } from '@/lib/tooltipTexts';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
-import { SurfacesIrrigueesText } from '../../../lib/staticTexts';
 import styles from './agriculture.module.scss';
 
 export const SurfacesIrriguees = ({
@@ -32,12 +32,14 @@ export const SurfacesIrriguees = ({
     };
   });
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
+
   const surfaceTerritoire = type === "commune" ?
     communesMap.find((obj) => obj.properties.code_geographique === code)?.properties.surfacesIrriguees
     : communesMap
       .map((obj) => obj.properties.surfacesIrriguees)
       .map((value) => (isNaN(value!) ? 0 : value))
       .reduce((acc, value) => acc! + value!, 0);
+
 
   return (
     <>
@@ -85,7 +87,7 @@ export const SurfacesIrriguees = ({
                   )
                 }
                 <p style={{ padding: '1em', margin: '0' }}>
-                  Source : AGRESTE (2020)
+                  Source : AGRESTE, 2020.
                 </p>
               </div>
             </div>

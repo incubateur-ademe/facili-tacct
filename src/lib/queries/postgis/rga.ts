@@ -12,14 +12,22 @@ export const GetRGACarte = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       console.log(
-        'GetRGACarte: Timeout reached (20 seconds), returning empty array.'
+        'GetRGACarte: Timeout reached (12 seconds), returning empty array.'
       );
       resolve([]);
-    }, 20000)
+    }, 14000)
   );
   const dbQuery = (async () => {
     try {
-      if (type === 'commune') {
+      if (
+        !libelle ||
+        !type ||
+        (!code && type !== 'petr') ||
+        libelle === 'null' ||
+        (code === 'null' && type !== 'petr')
+      )
+        return [];
+      else if (type === 'commune') {
         const commune = await prisma.$queryRaw<RGACarte[]>`
           SELECT
             code_geographique,

@@ -174,6 +174,7 @@ export type CarteCommunes = {
   libelle_epci: string;
   departement: string;
   libelle_departement: string;
+  region: number;
   ept: string;
   libelle_petr: string;
   code_pnr: string;
@@ -314,11 +315,16 @@ export type SurfacesProtegeesByCol = {
 export type ConsommationNAF = {
   index: bigint;
   code_geographique: string;
+  libelle_geographique: string;
   epci: string;
   libelle_epci: string;
   departement: string;
   libelle_departement: string;
   region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
   naf09art10: number;
   art09act10: number;
   art09hab10: number;
@@ -485,7 +491,12 @@ export type IncendiesForet = {
   epci: string;
   libelle_epci: string;
   departement: string;
+  libelle_departement: string;
   region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
   nature: string | null;
   annee: number;
   surface_parcourue: number;
@@ -566,8 +577,8 @@ export type SurfacesAgricolesModel = {
   exploitation_sau_herbe: number;
   exploitation_sau_herbe_prairies_productives: number;
   exploitation_sau_herbe_prairies_peu_productives: number;
-  exploitation_sau_subventions: number;
-  exploitation_sau_bois_patures: number;
+  exploitation_sau_herbe_subventions: number;
+  exploitation_sau_herbe_bois_patures: number;
   exploitation_sau_jardins: number;
   superficie_sau: number;
   superficie_sau_terres_arables: number;
@@ -585,8 +596,8 @@ export type SurfacesAgricolesModel = {
   superficie_sau_herbe: number;
   superficie_sau_herbe_prairies_productives: number;
   superficie_sau_herbe_prairies_peu_productives: number;
-  superficie_sau_subventions: number;
-  superficie_sau_bois_patures: number;
+  superficie_sau_herbe_subventions: number;
+  superficie_sau_herbe_bois_patures: number;
   superficie_sau_jardins: number;
 }
 
@@ -598,4 +609,20 @@ export type Patch4 = {
   secheresse_sols: number;
   fortes_precipitations: number;
   fortes_chaleurs: number;
+};
+
+export type LczCouverture = {
+  index: bigint;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  couverture_lcz: number | null;
 };

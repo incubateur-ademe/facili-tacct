@@ -1,10 +1,14 @@
 'use client';
 
+import AgricultureBiologique from '@/components/themes/agriculture/agricultureBio';
+import { SurfacesAgricoles } from '@/components/themes/agriculture/surfacesAgricoles';
 import { SurfacesIrriguees } from '@/components/themes/agriculture/surfacesIrriguees';
 import { TabTooltip } from '@/components/utils/TabTooltip';
 import {
   Agriculture,
-  CarteCommunes
+  AgricultureBio,
+  CarteCommunes,
+  SurfacesAgricolesModel
 } from '@/lib/postgres/models';
 import { fr } from '@codegouvfr/react-dsfr';
 import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
@@ -12,6 +16,7 @@ import { useIsDark } from '@codegouvfr/react-dsfr/useIsDark';
 import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
+
 
 interface Props {
   data: Array<{
@@ -23,9 +28,24 @@ interface Props {
   }>;
   carteCommunes: CarteCommunes[];
   agriculture: Agriculture[];
+  surfacesAgricoles: SurfacesAgricolesModel[];
+  agricultureBio: AgricultureBio[];
+
 }
 
 const allComps = [
+  // {
+  //   titre: "Chefs d'exploitation",
+  //   Component: ({
+  //     agriculture,
+  //     carteCommunes
+  //   }: Props & { activeDataTab: string }) => (
+  //     <ChefsExploitation
+  //       agriculture={agriculture}
+  //       carteCommunes={carteCommunes}
+  //     />
+  //   )
+  // },
   {
     titre: 'Superficies irriguées',
     Component: ({
@@ -38,12 +58,34 @@ const allComps = [
       />
     )
   },
+  {
+    titre: 'Types de culture',
+    Component: ({
+      agriculture,
+      surfacesAgricoles
+    }: Props & { activeDataTab: string }) => (
+      <SurfacesAgricoles
+        surfacesAgricoles={surfacesAgricoles}
+      />
+    )
+  },
+  {
+    titre: 'Surfaces en bio',
+    Component: ({
+      data,
+      agricultureBio
+    }: Props & { activeDataTab: string }) => (
+      <AgricultureBiologique data={data} agricultureBio={agricultureBio} />
+    )
+  },
 ];
 
 const AgricultureComp = ({
   data,
   carteCommunes,
   agriculture,
+  surfacesAgricoles,
+  agricultureBio
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState('Superficies irriguées');
   const [selectedSubTab, setSelectedSubTab] = useState('Superficies irriguées');
@@ -73,7 +115,6 @@ const AgricultureComp = ({
 
   return (
     <div className="w-full">
-      {/* <button onClick={() => exportToXLSX(carteCommunes)}>Exporter XLSX</button> */}
       <Tabs
         selectedTabId={selectedTabId}
         tabs={[
@@ -86,7 +127,21 @@ const AgricultureComp = ({
                 titre="Superficies irriguées"
               />
             )
-          }
+          },
+          {
+            tabId: 'Surfaces en bio',
+            label: (
+              <TabTooltip
+                selectedTab={selectedTabId}
+                tooltip="L’agriculture biologique fait partie d’un ensemble de pratiques agricoles respectueuses des équilibres écologiques qui contribue à la préservation des sols et des ressources naturelles. "
+                titre="Surfaces en bio"
+              />
+            )
+          },
+          {
+            tabId: 'Types de culture',
+            label: "Types de culture",
+          },
         ]}
         onTabChange={setSelectedTabId}
         className={css({
@@ -134,6 +189,8 @@ const AgricultureComp = ({
                       activeDataTab={selectedSubTab}
                       carteCommunes={carteCommunes}
                       agriculture={agriculture}
+                      surfacesAgricoles={surfacesAgricoles}
+                      agricultureBio={agricultureBio}
                     />
                   </Suspense>
                 );

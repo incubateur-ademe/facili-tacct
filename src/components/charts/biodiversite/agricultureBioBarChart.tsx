@@ -1,12 +1,9 @@
 "use client";
 
-import styles from "@/components/themes/biodiversite/biodiversite.module.scss";
 import { AgricultureBio } from "@/lib/postgres/models";
-import { Round } from "@/lib/utils/reusableFunctions/round";
 import { Sum } from "@/lib/utils/reusableFunctions/sum";
-import { BarDatum, BarTooltipProps } from "@nivo/bar";
-import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { agricultureBioBarChartTooltip } from "../ChartTooltips";
 import { NivoBarChart } from "../NivoBarChart";
 
 type GraphData = {
@@ -51,9 +48,6 @@ const graphDataFunct = (filteredYears: string[], data: AgricultureBio[]) => {
 export const AgricultureBioBarChart = (
   { agricultureBio, sliderValue }: { agricultureBio: AgricultureBio[], sliderValue: number[] }
 ) => {
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
-  const libelle = searchParams.get('libelle')!;
   const [selectedYears, setSelectedYears] = useState<string[]>(agricultureBioYears.map(year => year.split("_")[1]));
   const collectiviteName = agricultureBio[0].libelle_epci;
   const graphData = graphDataFunct(selectedYears, agricultureBio)
@@ -70,48 +64,17 @@ export const AgricultureBioBarChart = (
   const legends = [
     {
       variable: "Surface certifiée agriculture biologique",
-      texte_raccourci: "Surface certifiée",
+      texteRaccourci: "Surface certifiée",
       valeur: Sum(graphData.map(e => e["Surface certifiée agriculture biologique"])),
       couleur: "#00C2CC"
     },
     {
       variable: "Surface en conversion agriculture biologique",
-      texte_raccourci: "Surface en conversion",
+      texteRaccourci: "Surface en conversion",
       valeur: Sum(graphData.map(e => e["Surface en conversion agriculture biologique"])),
       couleur: "#00949D"
     },
   ]
-
-  const CustomTooltip = ({ data }: BarTooltipProps<BarDatum>) => {
-    const dataArray = Object.entries(data).map(el => {
-      return {
-        titre: el[0],
-        value: el[1],
-        color: legends.find(e => e.variable === el[0])?.couleur
-      }
-    });
-
-    return (
-      <div className={styles.tooltipEvolutionWrapper}>
-        <h3>{collectiviteName} ({dataArray.at(-1)?.value})</h3>
-        {
-          dataArray.slice(0, -1).map((el, i) => {
-            return (
-              <div className={styles.itemWrapper} key={i}>
-                <div className={styles.titre}>
-                  <div className={styles.colorSquare} style={{ background: el.color }} />
-                  <p>{el.titre}</p>
-                </div>
-                <div className={styles.value}>
-                  <p>{Round(Number(el.value), 0)} ha</p>
-                </div>
-              </div>
-            )
-          })
-        }
-      </div>
-    );
-  }
 
   return (
     <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
@@ -124,10 +87,10 @@ export const AgricultureBioBarChart = (
           legendData={legends.filter(e => e.valeur != 0)
             .map((legend, index) => ({
               id: index,
-              label: legend.texte_raccourci,
+              label: legend.texteRaccourci,
               color: legend.couleur,
             }))}
-          tooltip={CustomTooltip}
+          tooltip={(tooltipProps) => agricultureBioBarChartTooltip({ data: tooltipProps, legends, collectiviteName })}
           axisLeftLegend="Surface en ha"
         />
         : <div

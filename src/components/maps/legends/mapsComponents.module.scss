@@ -7,6 +7,15 @@
     justify-content: center;
 }
 
+.legendItemsLCZWrapper {
+    display: flex;
+    flex-direction: row;
+    column-gap: 2em;
+    flex-wrap: wrap;
+    row-gap: 0.75rem;
+    justify-content: flex-start;
+}
+
 .legendItem {
     display: flex;
     flex-direction: row;

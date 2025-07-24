@@ -113,6 +113,11 @@ export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPa
  * 
  */
 export type agriculture = $Result.DefaultSelection<Prisma.$agriculturePayload>
+/**
+ * Model surfaces_agricoles
+ * 
+ */
+export type surfaces_agricoles = $Result.DefaultSelection<Prisma.$surfaces_agricolesPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -438,6 +443,16 @@ export class PrismaClient<
     * ```
     */
   get agriculture(): Prisma.agricultureDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.surfaces_agricoles`: Exposes CRUD operations for the **surfaces_agricoles** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Surfaces_agricoles
+    * const surfaces_agricoles = await prisma.surfaces_agricoles.findMany()
+    * ```
+    */
+  get surfaces_agricoles(): Prisma.surfaces_agricolesDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -496,8 +511,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.10.1
-   * Query Engine version: 9b628578b3b7cae625e8c927178f15a170e74a9c
+   * Prisma Client JS version: 6.12.0
+   * Query Engine version: 8047c96bbd92db98a2abc7c9323ce77c02c89dbc
    */
   export type PrismaVersion = {
     client: string
@@ -897,7 +912,8 @@ export namespace Prisma {
     rga: 'rga',
     postgis_rga: 'postgis_rga',
     spatial_ref_sys: 'spatial_ref_sys',
-    agriculture: 'agriculture'
+    agriculture: 'agriculture',
+    surfaces_agricoles: 'surfaces_agricoles'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -916,7 +932,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "north_star_metric" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "patch4c" | "ressources_eau" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "qualite_sites_baignade" | "users" | "rga" | "postgis_rga" | "spatial_ref_sys" | "agriculture"
+      modelProps: "north_star_metric" | "agriculture_bio" | "aot_40" | "arretes_catnat" | "collectivites_searchbar" | "consommation_espaces_naf" | "feux_foret" | "inconfort_thermique" | "patch4c" | "ressources_eau" | "clc_territoires" | "communes_drom" | "erosion_cotiere" | "etat_cours_d_eau" | "qualite_sites_baignade" | "users" | "rga" | "postgis_rga" | "spatial_ref_sys" | "agriculture" | "surfaces_agricoles"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2400,6 +2416,80 @@ export namespace Prisma {
           }
         }
       }
+      surfaces_agricoles: {
+        payload: Prisma.$surfaces_agricolesPayload<ExtArgs>
+        fields: Prisma.surfaces_agricolesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.surfaces_agricolesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.surfaces_agricolesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>
+          }
+          findFirst: {
+            args: Prisma.surfaces_agricolesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.surfaces_agricolesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>
+          }
+          findMany: {
+            args: Prisma.surfaces_agricolesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>[]
+          }
+          create: {
+            args: Prisma.surfaces_agricolesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>
+          }
+          createMany: {
+            args: Prisma.surfaces_agricolesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.surfaces_agricolesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>[]
+          }
+          delete: {
+            args: Prisma.surfaces_agricolesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>
+          }
+          update: {
+            args: Prisma.surfaces_agricolesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>
+          }
+          deleteMany: {
+            args: Prisma.surfaces_agricolesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.surfaces_agricolesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.surfaces_agricolesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>[]
+          }
+          upsert: {
+            args: Prisma.surfaces_agricolesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$surfaces_agricolesPayload>
+          }
+          aggregate: {
+            args: Prisma.Surfaces_agricolesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSurfaces_agricoles>
+          }
+          groupBy: {
+            args: Prisma.surfaces_agricolesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Surfaces_agricolesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.surfaces_agricolesCountArgs<ExtArgs>
+            result: $Utils.Optional<Surfaces_agricolesCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2504,6 +2594,7 @@ export namespace Prisma {
     postgis_rga?: postgis_rgaOmit
     spatial_ref_sys?: spatial_ref_sysOmit
     agriculture?: agricultureOmit
+    surfaces_agricoles?: surfaces_agricolesOmit
   }
 
   /* Types for Logging */
@@ -6997,12 +7088,12 @@ export namespace Prisma {
     epci: string | null
     libelle_epci: string | null
     departement: string | null
-    libelle_pnr: string | null
     libelle_departement: string | null
     region: string | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
+    libelle_pnr: string | null
     search_code: string | null
     search_libelle: string | null
   }
@@ -7014,12 +7105,12 @@ export namespace Prisma {
     epci: string | null
     libelle_epci: string | null
     departement: string | null
-    libelle_pnr: string | null
     libelle_departement: string | null
     region: string | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
+    libelle_pnr: string | null
     search_code: string | null
     search_libelle: string | null
   }
@@ -7031,12 +7122,12 @@ export namespace Prisma {
     epci: number
     libelle_epci: number
     departement: number
-    libelle_pnr: number
     libelle_departement: number
     region: number
     ept: number
     libelle_petr: number
     code_pnr: number
+    libelle_pnr: number
     search_code: number
     search_libelle: number
     _all: number
@@ -7058,12 +7149,12 @@ export namespace Prisma {
     epci?: true
     libelle_epci?: true
     departement?: true
-    libelle_pnr?: true
     libelle_departement?: true
     region?: true
     ept?: true
     libelle_petr?: true
     code_pnr?: true
+    libelle_pnr?: true
     search_code?: true
     search_libelle?: true
   }
@@ -7075,12 +7166,12 @@ export namespace Prisma {
     epci?: true
     libelle_epci?: true
     departement?: true
-    libelle_pnr?: true
     libelle_departement?: true
     region?: true
     ept?: true
     libelle_petr?: true
     code_pnr?: true
+    libelle_pnr?: true
     search_code?: true
     search_libelle?: true
   }
@@ -7092,12 +7183,12 @@ export namespace Prisma {
     epci?: true
     libelle_epci?: true
     departement?: true
-    libelle_pnr?: true
     libelle_departement?: true
     region?: true
     ept?: true
     libelle_petr?: true
     code_pnr?: true
+    libelle_pnr?: true
     search_code?: true
     search_libelle?: true
     _all?: true
@@ -7196,12 +7287,12 @@ export namespace Prisma {
     epci: string | null
     libelle_epci: string | null
     departement: string | null
-    libelle_pnr: string | null
     libelle_departement: string | null
     region: string | null
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
+    libelle_pnr: string | null
     search_code: string | null
     search_libelle: string
     _count: Collectivites_searchbarCountAggregateOutputType | null
@@ -7232,12 +7323,12 @@ export namespace Prisma {
     epci?: boolean
     libelle_epci?: boolean
     departement?: boolean
-    libelle_pnr?: boolean
     libelle_departement?: boolean
     region?: boolean
     ept?: boolean
     libelle_petr?: boolean
     code_pnr?: boolean
+    libelle_pnr?: boolean
     search_code?: boolean
     search_libelle?: boolean
   }, ExtArgs["result"]["collectivites_searchbar"]>
@@ -7249,12 +7340,12 @@ export namespace Prisma {
     epci?: boolean
     libelle_epci?: boolean
     departement?: boolean
-    libelle_pnr?: boolean
     libelle_departement?: boolean
     region?: boolean
     ept?: boolean
     libelle_petr?: boolean
     code_pnr?: boolean
+    libelle_pnr?: boolean
     search_code?: boolean
     search_libelle?: boolean
   }, ExtArgs["result"]["collectivites_searchbar"]>
@@ -7266,12 +7357,12 @@ export namespace Prisma {
     epci?: boolean
     libelle_epci?: boolean
     departement?: boolean
-    libelle_pnr?: boolean
     libelle_departement?: boolean
     region?: boolean
     ept?: boolean
     libelle_petr?: boolean
     code_pnr?: boolean
+    libelle_pnr?: boolean
     search_code?: boolean
     search_libelle?: boolean
   }, ExtArgs["result"]["collectivites_searchbar"]>
@@ -7283,17 +7374,17 @@ export namespace Prisma {
     epci?: boolean
     libelle_epci?: boolean
     departement?: boolean
-    libelle_pnr?: boolean
     libelle_departement?: boolean
     region?: boolean
     ept?: boolean
     libelle_petr?: boolean
     code_pnr?: boolean
+    libelle_pnr?: boolean
     search_code?: boolean
     search_libelle?: boolean
   }
 
-  export type collectivites_searchbarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_pnr" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "search_code" | "search_libelle", ExtArgs["result"]["collectivites_searchbar"]>
+  export type collectivites_searchbarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "search_code" | "search_libelle", ExtArgs["result"]["collectivites_searchbar"]>
 
   export type $collectivites_searchbarPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "collectivites_searchbar"
@@ -7305,12 +7396,12 @@ export namespace Prisma {
       epci: string | null
       libelle_epci: string | null
       departement: string | null
-      libelle_pnr: string | null
       libelle_departement: string | null
       region: string | null
       ept: string | null
       libelle_petr: string | null
       code_pnr: string | null
+      libelle_pnr: string | null
       search_code: string | null
       search_libelle: string
     }, ExtArgs["result"]["collectivites_searchbar"]>
@@ -7742,12 +7833,12 @@ export namespace Prisma {
     readonly epci: FieldRef<"collectivites_searchbar", 'String'>
     readonly libelle_epci: FieldRef<"collectivites_searchbar", 'String'>
     readonly departement: FieldRef<"collectivites_searchbar", 'String'>
-    readonly libelle_pnr: FieldRef<"collectivites_searchbar", 'String'>
     readonly libelle_departement: FieldRef<"collectivites_searchbar", 'String'>
     readonly region: FieldRef<"collectivites_searchbar", 'String'>
     readonly ept: FieldRef<"collectivites_searchbar", 'String'>
     readonly libelle_petr: FieldRef<"collectivites_searchbar", 'String'>
     readonly code_pnr: FieldRef<"collectivites_searchbar", 'String'>
+    readonly libelle_pnr: FieldRef<"collectivites_searchbar", 'String'>
     readonly search_code: FieldRef<"collectivites_searchbar", 'String'>
     readonly search_libelle: FieldRef<"collectivites_searchbar", 'String'>
   }
@@ -23431,25 +23522,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number | null
     nb_logement_sans_alea: number | null
     nb_logement_alea_moyen_fort_avant_1920: number | null
+    part_logement_alea_moyen_fort_avant_1920: number | null
     nb_logement_alea_moyen_fort_1920_1945: number | null
+    part_logement_alea_moyen_fort_1920_1945: number | null
     nb_logement_alea_moyen_fort_1945_1975: number | null
+    part_logement_alea_moyen_fort_1945_1975: number | null
     nb_logement_alea_moyen_fort_apres_1975: number | null
+    part_logement_alea_moyen_fort_apres_1975: number | null
     nb_logement_alea_faible_avant_1920: number | null
+    part_logement_alea_faible_avant_1920: number | null
     nb_logement_alea_faible_1920_1945: number | null
+    part_logement_alea_faible_1920_1945: number | null
     nb_logement_alea_faible_1945_1975: number | null
+    part_logement_alea_faible_1945_1975: number | null
     nb_logement_alea_faible_apres_1975: number | null
+    part_logement_alea_faible_apres_1975: number | null
     surface_commune: number | null
     surface_alea_faible_commune: number | null
-    surface_alea_moyen_fort_commune: number | null
-    part_logement_alea_moyen_fort_avant_1920: number | null
-    part_logement_alea_moyen_fort_1920_1945: number | null
-    part_logement_alea_moyen_fort_1945_1975: number | null
-    part_logement_alea_moyen_fort_apres_1975: number | null
-    part_logement_alea_faible_avant_1920: number | null
-    part_logement_alea_faible_1920_1945: number | null
-    part_logement_alea_faible_1945_1975: number | null
-    part_logement_alea_faible_apres_1975: number | null
     part_alea_faible_commune: number | null
+    surface_alea_moyen_fort_commune: number | null
     part_alea_moyen_fort_commune: number | null
   }
 
@@ -23461,25 +23552,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number | null
     nb_logement_sans_alea: number | null
     nb_logement_alea_moyen_fort_avant_1920: number | null
+    part_logement_alea_moyen_fort_avant_1920: number | null
     nb_logement_alea_moyen_fort_1920_1945: number | null
+    part_logement_alea_moyen_fort_1920_1945: number | null
     nb_logement_alea_moyen_fort_1945_1975: number | null
+    part_logement_alea_moyen_fort_1945_1975: number | null
     nb_logement_alea_moyen_fort_apres_1975: number | null
+    part_logement_alea_moyen_fort_apres_1975: number | null
     nb_logement_alea_faible_avant_1920: number | null
+    part_logement_alea_faible_avant_1920: number | null
     nb_logement_alea_faible_1920_1945: number | null
+    part_logement_alea_faible_1920_1945: number | null
     nb_logement_alea_faible_1945_1975: number | null
+    part_logement_alea_faible_1945_1975: number | null
     nb_logement_alea_faible_apres_1975: number | null
+    part_logement_alea_faible_apres_1975: number | null
     surface_commune: number | null
     surface_alea_faible_commune: number | null
-    surface_alea_moyen_fort_commune: number | null
-    part_logement_alea_moyen_fort_avant_1920: number | null
-    part_logement_alea_moyen_fort_1920_1945: number | null
-    part_logement_alea_moyen_fort_1945_1975: number | null
-    part_logement_alea_moyen_fort_apres_1975: number | null
-    part_logement_alea_faible_avant_1920: number | null
-    part_logement_alea_faible_1920_1945: number | null
-    part_logement_alea_faible_1945_1975: number | null
-    part_logement_alea_faible_apres_1975: number | null
     part_alea_faible_commune: number | null
+    surface_alea_moyen_fort_commune: number | null
     part_alea_moyen_fort_commune: number | null
   }
 
@@ -23501,25 +23592,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number | null
     nb_logement_sans_alea: number | null
     nb_logement_alea_moyen_fort_avant_1920: number | null
+    part_logement_alea_moyen_fort_avant_1920: number | null
     nb_logement_alea_moyen_fort_1920_1945: number | null
+    part_logement_alea_moyen_fort_1920_1945: number | null
     nb_logement_alea_moyen_fort_1945_1975: number | null
+    part_logement_alea_moyen_fort_1945_1975: number | null
     nb_logement_alea_moyen_fort_apres_1975: number | null
+    part_logement_alea_moyen_fort_apres_1975: number | null
     nb_logement_alea_faible_avant_1920: number | null
+    part_logement_alea_faible_avant_1920: number | null
     nb_logement_alea_faible_1920_1945: number | null
+    part_logement_alea_faible_1920_1945: number | null
     nb_logement_alea_faible_1945_1975: number | null
+    part_logement_alea_faible_1945_1975: number | null
     nb_logement_alea_faible_apres_1975: number | null
+    part_logement_alea_faible_apres_1975: number | null
     surface_commune: number | null
     surface_alea_faible_commune: number | null
-    surface_alea_moyen_fort_commune: number | null
-    part_logement_alea_moyen_fort_avant_1920: number | null
-    part_logement_alea_moyen_fort_1920_1945: number | null
-    part_logement_alea_moyen_fort_1945_1975: number | null
-    part_logement_alea_moyen_fort_apres_1975: number | null
-    part_logement_alea_faible_avant_1920: number | null
-    part_logement_alea_faible_1920_1945: number | null
-    part_logement_alea_faible_1945_1975: number | null
-    part_logement_alea_faible_apres_1975: number | null
     part_alea_faible_commune: number | null
+    surface_alea_moyen_fort_commune: number | null
     part_alea_moyen_fort_commune: number | null
   }
 
@@ -23541,25 +23632,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number | null
     nb_logement_sans_alea: number | null
     nb_logement_alea_moyen_fort_avant_1920: number | null
+    part_logement_alea_moyen_fort_avant_1920: number | null
     nb_logement_alea_moyen_fort_1920_1945: number | null
+    part_logement_alea_moyen_fort_1920_1945: number | null
     nb_logement_alea_moyen_fort_1945_1975: number | null
+    part_logement_alea_moyen_fort_1945_1975: number | null
     nb_logement_alea_moyen_fort_apres_1975: number | null
+    part_logement_alea_moyen_fort_apres_1975: number | null
     nb_logement_alea_faible_avant_1920: number | null
+    part_logement_alea_faible_avant_1920: number | null
     nb_logement_alea_faible_1920_1945: number | null
+    part_logement_alea_faible_1920_1945: number | null
     nb_logement_alea_faible_1945_1975: number | null
+    part_logement_alea_faible_1945_1975: number | null
     nb_logement_alea_faible_apres_1975: number | null
+    part_logement_alea_faible_apres_1975: number | null
     surface_commune: number | null
     surface_alea_faible_commune: number | null
-    surface_alea_moyen_fort_commune: number | null
-    part_logement_alea_moyen_fort_avant_1920: number | null
-    part_logement_alea_moyen_fort_1920_1945: number | null
-    part_logement_alea_moyen_fort_1945_1975: number | null
-    part_logement_alea_moyen_fort_apres_1975: number | null
-    part_logement_alea_faible_avant_1920: number | null
-    part_logement_alea_faible_1920_1945: number | null
-    part_logement_alea_faible_1945_1975: number | null
-    part_logement_alea_faible_apres_1975: number | null
     part_alea_faible_commune: number | null
+    surface_alea_moyen_fort_commune: number | null
     part_alea_moyen_fort_commune: number | null
   }
 
@@ -23581,25 +23672,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number
     nb_logement_sans_alea: number
     nb_logement_alea_moyen_fort_avant_1920: number
+    part_logement_alea_moyen_fort_avant_1920: number
     nb_logement_alea_moyen_fort_1920_1945: number
+    part_logement_alea_moyen_fort_1920_1945: number
     nb_logement_alea_moyen_fort_1945_1975: number
+    part_logement_alea_moyen_fort_1945_1975: number
     nb_logement_alea_moyen_fort_apres_1975: number
+    part_logement_alea_moyen_fort_apres_1975: number
     nb_logement_alea_faible_avant_1920: number
+    part_logement_alea_faible_avant_1920: number
     nb_logement_alea_faible_1920_1945: number
+    part_logement_alea_faible_1920_1945: number
     nb_logement_alea_faible_1945_1975: number
+    part_logement_alea_faible_1945_1975: number
     nb_logement_alea_faible_apres_1975: number
+    part_logement_alea_faible_apres_1975: number
     surface_commune: number
     surface_alea_faible_commune: number
-    surface_alea_moyen_fort_commune: number
-    part_logement_alea_moyen_fort_avant_1920: number
-    part_logement_alea_moyen_fort_1920_1945: number
-    part_logement_alea_moyen_fort_1945_1975: number
-    part_logement_alea_moyen_fort_apres_1975: number
-    part_logement_alea_faible_avant_1920: number
-    part_logement_alea_faible_1920_1945: number
-    part_logement_alea_faible_1945_1975: number
-    part_logement_alea_faible_apres_1975: number
     part_alea_faible_commune: number
+    surface_alea_moyen_fort_commune: number
     part_alea_moyen_fort_commune: number
     _all: number
   }
@@ -23613,25 +23704,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: true
     nb_logement_sans_alea?: true
     nb_logement_alea_moyen_fort_avant_1920?: true
+    part_logement_alea_moyen_fort_avant_1920?: true
     nb_logement_alea_moyen_fort_1920_1945?: true
+    part_logement_alea_moyen_fort_1920_1945?: true
     nb_logement_alea_moyen_fort_1945_1975?: true
+    part_logement_alea_moyen_fort_1945_1975?: true
     nb_logement_alea_moyen_fort_apres_1975?: true
+    part_logement_alea_moyen_fort_apres_1975?: true
     nb_logement_alea_faible_avant_1920?: true
+    part_logement_alea_faible_avant_1920?: true
     nb_logement_alea_faible_1920_1945?: true
+    part_logement_alea_faible_1920_1945?: true
     nb_logement_alea_faible_1945_1975?: true
+    part_logement_alea_faible_1945_1975?: true
     nb_logement_alea_faible_apres_1975?: true
+    part_logement_alea_faible_apres_1975?: true
     surface_commune?: true
     surface_alea_faible_commune?: true
-    surface_alea_moyen_fort_commune?: true
-    part_logement_alea_moyen_fort_avant_1920?: true
-    part_logement_alea_moyen_fort_1920_1945?: true
-    part_logement_alea_moyen_fort_1945_1975?: true
-    part_logement_alea_moyen_fort_apres_1975?: true
-    part_logement_alea_faible_avant_1920?: true
-    part_logement_alea_faible_1920_1945?: true
-    part_logement_alea_faible_1945_1975?: true
-    part_logement_alea_faible_apres_1975?: true
     part_alea_faible_commune?: true
+    surface_alea_moyen_fort_commune?: true
     part_alea_moyen_fort_commune?: true
   }
 
@@ -23643,25 +23734,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: true
     nb_logement_sans_alea?: true
     nb_logement_alea_moyen_fort_avant_1920?: true
+    part_logement_alea_moyen_fort_avant_1920?: true
     nb_logement_alea_moyen_fort_1920_1945?: true
+    part_logement_alea_moyen_fort_1920_1945?: true
     nb_logement_alea_moyen_fort_1945_1975?: true
+    part_logement_alea_moyen_fort_1945_1975?: true
     nb_logement_alea_moyen_fort_apres_1975?: true
+    part_logement_alea_moyen_fort_apres_1975?: true
     nb_logement_alea_faible_avant_1920?: true
+    part_logement_alea_faible_avant_1920?: true
     nb_logement_alea_faible_1920_1945?: true
+    part_logement_alea_faible_1920_1945?: true
     nb_logement_alea_faible_1945_1975?: true
+    part_logement_alea_faible_1945_1975?: true
     nb_logement_alea_faible_apres_1975?: true
+    part_logement_alea_faible_apres_1975?: true
     surface_commune?: true
     surface_alea_faible_commune?: true
-    surface_alea_moyen_fort_commune?: true
-    part_logement_alea_moyen_fort_avant_1920?: true
-    part_logement_alea_moyen_fort_1920_1945?: true
-    part_logement_alea_moyen_fort_1945_1975?: true
-    part_logement_alea_moyen_fort_apres_1975?: true
-    part_logement_alea_faible_avant_1920?: true
-    part_logement_alea_faible_1920_1945?: true
-    part_logement_alea_faible_1945_1975?: true
-    part_logement_alea_faible_apres_1975?: true
     part_alea_faible_commune?: true
+    surface_alea_moyen_fort_commune?: true
     part_alea_moyen_fort_commune?: true
   }
 
@@ -23683,25 +23774,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: true
     nb_logement_sans_alea?: true
     nb_logement_alea_moyen_fort_avant_1920?: true
+    part_logement_alea_moyen_fort_avant_1920?: true
     nb_logement_alea_moyen_fort_1920_1945?: true
+    part_logement_alea_moyen_fort_1920_1945?: true
     nb_logement_alea_moyen_fort_1945_1975?: true
+    part_logement_alea_moyen_fort_1945_1975?: true
     nb_logement_alea_moyen_fort_apres_1975?: true
+    part_logement_alea_moyen_fort_apres_1975?: true
     nb_logement_alea_faible_avant_1920?: true
+    part_logement_alea_faible_avant_1920?: true
     nb_logement_alea_faible_1920_1945?: true
+    part_logement_alea_faible_1920_1945?: true
     nb_logement_alea_faible_1945_1975?: true
+    part_logement_alea_faible_1945_1975?: true
     nb_logement_alea_faible_apres_1975?: true
+    part_logement_alea_faible_apres_1975?: true
     surface_commune?: true
     surface_alea_faible_commune?: true
-    surface_alea_moyen_fort_commune?: true
-    part_logement_alea_moyen_fort_avant_1920?: true
-    part_logement_alea_moyen_fort_1920_1945?: true
-    part_logement_alea_moyen_fort_1945_1975?: true
-    part_logement_alea_moyen_fort_apres_1975?: true
-    part_logement_alea_faible_avant_1920?: true
-    part_logement_alea_faible_1920_1945?: true
-    part_logement_alea_faible_1945_1975?: true
-    part_logement_alea_faible_apres_1975?: true
     part_alea_faible_commune?: true
+    surface_alea_moyen_fort_commune?: true
     part_alea_moyen_fort_commune?: true
   }
 
@@ -23723,25 +23814,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: true
     nb_logement_sans_alea?: true
     nb_logement_alea_moyen_fort_avant_1920?: true
+    part_logement_alea_moyen_fort_avant_1920?: true
     nb_logement_alea_moyen_fort_1920_1945?: true
+    part_logement_alea_moyen_fort_1920_1945?: true
     nb_logement_alea_moyen_fort_1945_1975?: true
+    part_logement_alea_moyen_fort_1945_1975?: true
     nb_logement_alea_moyen_fort_apres_1975?: true
+    part_logement_alea_moyen_fort_apres_1975?: true
     nb_logement_alea_faible_avant_1920?: true
+    part_logement_alea_faible_avant_1920?: true
     nb_logement_alea_faible_1920_1945?: true
+    part_logement_alea_faible_1920_1945?: true
     nb_logement_alea_faible_1945_1975?: true
+    part_logement_alea_faible_1945_1975?: true
     nb_logement_alea_faible_apres_1975?: true
+    part_logement_alea_faible_apres_1975?: true
     surface_commune?: true
     surface_alea_faible_commune?: true
-    surface_alea_moyen_fort_commune?: true
-    part_logement_alea_moyen_fort_avant_1920?: true
-    part_logement_alea_moyen_fort_1920_1945?: true
-    part_logement_alea_moyen_fort_1945_1975?: true
-    part_logement_alea_moyen_fort_apres_1975?: true
-    part_logement_alea_faible_avant_1920?: true
-    part_logement_alea_faible_1920_1945?: true
-    part_logement_alea_faible_1945_1975?: true
-    part_logement_alea_faible_apres_1975?: true
     part_alea_faible_commune?: true
+    surface_alea_moyen_fort_commune?: true
     part_alea_moyen_fort_commune?: true
   }
 
@@ -23763,25 +23854,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: true
     nb_logement_sans_alea?: true
     nb_logement_alea_moyen_fort_avant_1920?: true
+    part_logement_alea_moyen_fort_avant_1920?: true
     nb_logement_alea_moyen_fort_1920_1945?: true
+    part_logement_alea_moyen_fort_1920_1945?: true
     nb_logement_alea_moyen_fort_1945_1975?: true
+    part_logement_alea_moyen_fort_1945_1975?: true
     nb_logement_alea_moyen_fort_apres_1975?: true
+    part_logement_alea_moyen_fort_apres_1975?: true
     nb_logement_alea_faible_avant_1920?: true
+    part_logement_alea_faible_avant_1920?: true
     nb_logement_alea_faible_1920_1945?: true
+    part_logement_alea_faible_1920_1945?: true
     nb_logement_alea_faible_1945_1975?: true
+    part_logement_alea_faible_1945_1975?: true
     nb_logement_alea_faible_apres_1975?: true
+    part_logement_alea_faible_apres_1975?: true
     surface_commune?: true
     surface_alea_faible_commune?: true
-    surface_alea_moyen_fort_commune?: true
-    part_logement_alea_moyen_fort_avant_1920?: true
-    part_logement_alea_moyen_fort_1920_1945?: true
-    part_logement_alea_moyen_fort_1945_1975?: true
-    part_logement_alea_moyen_fort_apres_1975?: true
-    part_logement_alea_faible_avant_1920?: true
-    part_logement_alea_faible_1920_1945?: true
-    part_logement_alea_faible_1945_1975?: true
-    part_logement_alea_faible_apres_1975?: true
     part_alea_faible_commune?: true
+    surface_alea_moyen_fort_commune?: true
     part_alea_moyen_fort_commune?: true
     _all?: true
   }
@@ -23890,25 +23981,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number
     nb_logement_sans_alea: number
     nb_logement_alea_moyen_fort_avant_1920: number
+    part_logement_alea_moyen_fort_avant_1920: number
     nb_logement_alea_moyen_fort_1920_1945: number
+    part_logement_alea_moyen_fort_1920_1945: number
     nb_logement_alea_moyen_fort_1945_1975: number
+    part_logement_alea_moyen_fort_1945_1975: number
     nb_logement_alea_moyen_fort_apres_1975: number
+    part_logement_alea_moyen_fort_apres_1975: number
     nb_logement_alea_faible_avant_1920: number
+    part_logement_alea_faible_avant_1920: number
     nb_logement_alea_faible_1920_1945: number
+    part_logement_alea_faible_1920_1945: number
     nb_logement_alea_faible_1945_1975: number
+    part_logement_alea_faible_1945_1975: number
     nb_logement_alea_faible_apres_1975: number
+    part_logement_alea_faible_apres_1975: number
     surface_commune: number
     surface_alea_faible_commune: number
-    surface_alea_moyen_fort_commune: number
-    part_logement_alea_moyen_fort_avant_1920: number
-    part_logement_alea_moyen_fort_1920_1945: number
-    part_logement_alea_moyen_fort_1945_1975: number
-    part_logement_alea_moyen_fort_apres_1975: number
-    part_logement_alea_faible_avant_1920: number
-    part_logement_alea_faible_1920_1945: number
-    part_logement_alea_faible_1945_1975: number
-    part_logement_alea_faible_apres_1975: number
     part_alea_faible_commune: number
+    surface_alea_moyen_fort_commune: number
     part_alea_moyen_fort_commune: number
     _count: RgaCountAggregateOutputType | null
     _avg: RgaAvgAggregateOutputType | null
@@ -23949,25 +24040,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: boolean
     nb_logement_sans_alea?: boolean
     nb_logement_alea_moyen_fort_avant_1920?: boolean
+    part_logement_alea_moyen_fort_avant_1920?: boolean
     nb_logement_alea_moyen_fort_1920_1945?: boolean
+    part_logement_alea_moyen_fort_1920_1945?: boolean
     nb_logement_alea_moyen_fort_1945_1975?: boolean
+    part_logement_alea_moyen_fort_1945_1975?: boolean
     nb_logement_alea_moyen_fort_apres_1975?: boolean
+    part_logement_alea_moyen_fort_apres_1975?: boolean
     nb_logement_alea_faible_avant_1920?: boolean
+    part_logement_alea_faible_avant_1920?: boolean
     nb_logement_alea_faible_1920_1945?: boolean
+    part_logement_alea_faible_1920_1945?: boolean
     nb_logement_alea_faible_1945_1975?: boolean
+    part_logement_alea_faible_1945_1975?: boolean
     nb_logement_alea_faible_apres_1975?: boolean
+    part_logement_alea_faible_apres_1975?: boolean
     surface_commune?: boolean
     surface_alea_faible_commune?: boolean
-    surface_alea_moyen_fort_commune?: boolean
-    part_logement_alea_moyen_fort_avant_1920?: boolean
-    part_logement_alea_moyen_fort_1920_1945?: boolean
-    part_logement_alea_moyen_fort_1945_1975?: boolean
-    part_logement_alea_moyen_fort_apres_1975?: boolean
-    part_logement_alea_faible_avant_1920?: boolean
-    part_logement_alea_faible_1920_1945?: boolean
-    part_logement_alea_faible_1945_1975?: boolean
-    part_logement_alea_faible_apres_1975?: boolean
     part_alea_faible_commune?: boolean
+    surface_alea_moyen_fort_commune?: boolean
     part_alea_moyen_fort_commune?: boolean
   }, ExtArgs["result"]["rga"]>
 
@@ -23989,25 +24080,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: boolean
     nb_logement_sans_alea?: boolean
     nb_logement_alea_moyen_fort_avant_1920?: boolean
+    part_logement_alea_moyen_fort_avant_1920?: boolean
     nb_logement_alea_moyen_fort_1920_1945?: boolean
+    part_logement_alea_moyen_fort_1920_1945?: boolean
     nb_logement_alea_moyen_fort_1945_1975?: boolean
+    part_logement_alea_moyen_fort_1945_1975?: boolean
     nb_logement_alea_moyen_fort_apres_1975?: boolean
+    part_logement_alea_moyen_fort_apres_1975?: boolean
     nb_logement_alea_faible_avant_1920?: boolean
+    part_logement_alea_faible_avant_1920?: boolean
     nb_logement_alea_faible_1920_1945?: boolean
+    part_logement_alea_faible_1920_1945?: boolean
     nb_logement_alea_faible_1945_1975?: boolean
+    part_logement_alea_faible_1945_1975?: boolean
     nb_logement_alea_faible_apres_1975?: boolean
+    part_logement_alea_faible_apres_1975?: boolean
     surface_commune?: boolean
     surface_alea_faible_commune?: boolean
-    surface_alea_moyen_fort_commune?: boolean
-    part_logement_alea_moyen_fort_avant_1920?: boolean
-    part_logement_alea_moyen_fort_1920_1945?: boolean
-    part_logement_alea_moyen_fort_1945_1975?: boolean
-    part_logement_alea_moyen_fort_apres_1975?: boolean
-    part_logement_alea_faible_avant_1920?: boolean
-    part_logement_alea_faible_1920_1945?: boolean
-    part_logement_alea_faible_1945_1975?: boolean
-    part_logement_alea_faible_apres_1975?: boolean
     part_alea_faible_commune?: boolean
+    surface_alea_moyen_fort_commune?: boolean
     part_alea_moyen_fort_commune?: boolean
   }, ExtArgs["result"]["rga"]>
 
@@ -24029,25 +24120,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: boolean
     nb_logement_sans_alea?: boolean
     nb_logement_alea_moyen_fort_avant_1920?: boolean
+    part_logement_alea_moyen_fort_avant_1920?: boolean
     nb_logement_alea_moyen_fort_1920_1945?: boolean
+    part_logement_alea_moyen_fort_1920_1945?: boolean
     nb_logement_alea_moyen_fort_1945_1975?: boolean
+    part_logement_alea_moyen_fort_1945_1975?: boolean
     nb_logement_alea_moyen_fort_apres_1975?: boolean
+    part_logement_alea_moyen_fort_apres_1975?: boolean
     nb_logement_alea_faible_avant_1920?: boolean
+    part_logement_alea_faible_avant_1920?: boolean
     nb_logement_alea_faible_1920_1945?: boolean
+    part_logement_alea_faible_1920_1945?: boolean
     nb_logement_alea_faible_1945_1975?: boolean
+    part_logement_alea_faible_1945_1975?: boolean
     nb_logement_alea_faible_apres_1975?: boolean
+    part_logement_alea_faible_apres_1975?: boolean
     surface_commune?: boolean
     surface_alea_faible_commune?: boolean
-    surface_alea_moyen_fort_commune?: boolean
-    part_logement_alea_moyen_fort_avant_1920?: boolean
-    part_logement_alea_moyen_fort_1920_1945?: boolean
-    part_logement_alea_moyen_fort_1945_1975?: boolean
-    part_logement_alea_moyen_fort_apres_1975?: boolean
-    part_logement_alea_faible_avant_1920?: boolean
-    part_logement_alea_faible_1920_1945?: boolean
-    part_logement_alea_faible_1945_1975?: boolean
-    part_logement_alea_faible_apres_1975?: boolean
     part_alea_faible_commune?: boolean
+    surface_alea_moyen_fort_commune?: boolean
     part_alea_moyen_fort_commune?: boolean
   }, ExtArgs["result"]["rga"]>
 
@@ -24069,29 +24160,29 @@ export namespace Prisma {
     nb_logement_alea_faible?: boolean
     nb_logement_sans_alea?: boolean
     nb_logement_alea_moyen_fort_avant_1920?: boolean
+    part_logement_alea_moyen_fort_avant_1920?: boolean
     nb_logement_alea_moyen_fort_1920_1945?: boolean
+    part_logement_alea_moyen_fort_1920_1945?: boolean
     nb_logement_alea_moyen_fort_1945_1975?: boolean
+    part_logement_alea_moyen_fort_1945_1975?: boolean
     nb_logement_alea_moyen_fort_apres_1975?: boolean
+    part_logement_alea_moyen_fort_apres_1975?: boolean
     nb_logement_alea_faible_avant_1920?: boolean
+    part_logement_alea_faible_avant_1920?: boolean
     nb_logement_alea_faible_1920_1945?: boolean
+    part_logement_alea_faible_1920_1945?: boolean
     nb_logement_alea_faible_1945_1975?: boolean
+    part_logement_alea_faible_1945_1975?: boolean
     nb_logement_alea_faible_apres_1975?: boolean
+    part_logement_alea_faible_apres_1975?: boolean
     surface_commune?: boolean
     surface_alea_faible_commune?: boolean
-    surface_alea_moyen_fort_commune?: boolean
-    part_logement_alea_moyen_fort_avant_1920?: boolean
-    part_logement_alea_moyen_fort_1920_1945?: boolean
-    part_logement_alea_moyen_fort_1945_1975?: boolean
-    part_logement_alea_moyen_fort_apres_1975?: boolean
-    part_logement_alea_faible_avant_1920?: boolean
-    part_logement_alea_faible_1920_1945?: boolean
-    part_logement_alea_faible_1945_1975?: boolean
-    part_logement_alea_faible_apres_1975?: boolean
     part_alea_faible_commune?: boolean
+    surface_alea_moyen_fort_commune?: boolean
     part_alea_moyen_fort_commune?: boolean
   }
 
-  export type rgaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nb_logement" | "nb_logement_alea_moyen_fort" | "nb_logement_alea_faible" | "nb_logement_sans_alea" | "nb_logement_alea_moyen_fort_avant_1920" | "nb_logement_alea_moyen_fort_1920_1945" | "nb_logement_alea_moyen_fort_1945_1975" | "nb_logement_alea_moyen_fort_apres_1975" | "nb_logement_alea_faible_avant_1920" | "nb_logement_alea_faible_1920_1945" | "nb_logement_alea_faible_1945_1975" | "nb_logement_alea_faible_apres_1975" | "surface_commune" | "surface_alea_faible_commune" | "surface_alea_moyen_fort_commune" | "part_logement_alea_moyen_fort_avant_1920" | "part_logement_alea_moyen_fort_1920_1945" | "part_logement_alea_moyen_fort_1945_1975" | "part_logement_alea_moyen_fort_apres_1975" | "part_logement_alea_faible_avant_1920" | "part_logement_alea_faible_1920_1945" | "part_logement_alea_faible_1945_1975" | "part_logement_alea_faible_apres_1975" | "part_alea_faible_commune" | "part_alea_moyen_fort_commune", ExtArgs["result"]["rga"]>
+  export type rgaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nb_logement" | "nb_logement_alea_moyen_fort" | "nb_logement_alea_faible" | "nb_logement_sans_alea" | "nb_logement_alea_moyen_fort_avant_1920" | "part_logement_alea_moyen_fort_avant_1920" | "nb_logement_alea_moyen_fort_1920_1945" | "part_logement_alea_moyen_fort_1920_1945" | "nb_logement_alea_moyen_fort_1945_1975" | "part_logement_alea_moyen_fort_1945_1975" | "nb_logement_alea_moyen_fort_apres_1975" | "part_logement_alea_moyen_fort_apres_1975" | "nb_logement_alea_faible_avant_1920" | "part_logement_alea_faible_avant_1920" | "nb_logement_alea_faible_1920_1945" | "part_logement_alea_faible_1920_1945" | "nb_logement_alea_faible_1945_1975" | "part_logement_alea_faible_1945_1975" | "nb_logement_alea_faible_apres_1975" | "part_logement_alea_faible_apres_1975" | "surface_commune" | "surface_alea_faible_commune" | "part_alea_faible_commune" | "surface_alea_moyen_fort_commune" | "part_alea_moyen_fort_commune", ExtArgs["result"]["rga"]>
 
   export type $rgaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "rga"
@@ -24114,25 +24205,25 @@ export namespace Prisma {
       nb_logement_alea_faible: number
       nb_logement_sans_alea: number
       nb_logement_alea_moyen_fort_avant_1920: number
+      part_logement_alea_moyen_fort_avant_1920: number
       nb_logement_alea_moyen_fort_1920_1945: number
+      part_logement_alea_moyen_fort_1920_1945: number
       nb_logement_alea_moyen_fort_1945_1975: number
+      part_logement_alea_moyen_fort_1945_1975: number
       nb_logement_alea_moyen_fort_apres_1975: number
+      part_logement_alea_moyen_fort_apres_1975: number
       nb_logement_alea_faible_avant_1920: number
+      part_logement_alea_faible_avant_1920: number
       nb_logement_alea_faible_1920_1945: number
+      part_logement_alea_faible_1920_1945: number
       nb_logement_alea_faible_1945_1975: number
+      part_logement_alea_faible_1945_1975: number
       nb_logement_alea_faible_apres_1975: number
+      part_logement_alea_faible_apres_1975: number
       surface_commune: number
       surface_alea_faible_commune: number
-      surface_alea_moyen_fort_commune: number
-      part_logement_alea_moyen_fort_avant_1920: number
-      part_logement_alea_moyen_fort_1920_1945: number
-      part_logement_alea_moyen_fort_1945_1975: number
-      part_logement_alea_moyen_fort_apres_1975: number
-      part_logement_alea_faible_avant_1920: number
-      part_logement_alea_faible_1920_1945: number
-      part_logement_alea_faible_1945_1975: number
-      part_logement_alea_faible_apres_1975: number
       part_alea_faible_commune: number
+      surface_alea_moyen_fort_commune: number
       part_alea_moyen_fort_commune: number
     }, ExtArgs["result"]["rga"]>
     composites: {}
@@ -24574,26 +24665,26 @@ export namespace Prisma {
     readonly nb_logement_alea_faible: FieldRef<"rga", 'Int'>
     readonly nb_logement_sans_alea: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_moyen_fort_avant_1920: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_moyen_fort_avant_1920: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_moyen_fort_1920_1945: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_moyen_fort_1920_1945: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_moyen_fort_1945_1975: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_moyen_fort_1945_1975: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_moyen_fort_apres_1975: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_moyen_fort_apres_1975: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_faible_avant_1920: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_faible_avant_1920: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_faible_1920_1945: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_faible_1920_1945: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_faible_1945_1975: FieldRef<"rga", 'Int'>
+    readonly part_logement_alea_faible_1945_1975: FieldRef<"rga", 'Int'>
     readonly nb_logement_alea_faible_apres_1975: FieldRef<"rga", 'Int'>
-    readonly surface_commune: FieldRef<"rga", 'Float'>
-    readonly surface_alea_faible_commune: FieldRef<"rga", 'Float'>
-    readonly surface_alea_moyen_fort_commune: FieldRef<"rga", 'Float'>
-    readonly part_logement_alea_moyen_fort_avant_1920: FieldRef<"rga", 'Float'>
-    readonly part_logement_alea_moyen_fort_1920_1945: FieldRef<"rga", 'Float'>
-    readonly part_logement_alea_moyen_fort_1945_1975: FieldRef<"rga", 'Float'>
-    readonly part_logement_alea_moyen_fort_apres_1975: FieldRef<"rga", 'Float'>
-    readonly part_logement_alea_faible_avant_1920: FieldRef<"rga", 'Float'>
-    readonly part_logement_alea_faible_1920_1945: FieldRef<"rga", 'Float'>
-    readonly part_logement_alea_faible_1945_1975: FieldRef<"rga", 'Float'>
-    readonly part_logement_alea_faible_apres_1975: FieldRef<"rga", 'Float'>
-    readonly part_alea_faible_commune: FieldRef<"rga", 'Float'>
-    readonly part_alea_moyen_fort_commune: FieldRef<"rga", 'Float'>
+    readonly part_logement_alea_faible_apres_1975: FieldRef<"rga", 'Int'>
+    readonly surface_commune: FieldRef<"rga", 'Int'>
+    readonly surface_alea_faible_commune: FieldRef<"rga", 'Int'>
+    readonly part_alea_faible_commune: FieldRef<"rga", 'Int'>
+    readonly surface_alea_moyen_fort_commune: FieldRef<"rga", 'Int'>
+    readonly part_alea_moyen_fort_commune: FieldRef<"rga", 'Int'>
   }
     
 
@@ -28155,6 +28246,1642 @@ export namespace Prisma {
 
 
   /**
+   * Model surfaces_agricoles
+   */
+
+  export type AggregateSurfaces_agricoles = {
+    _count: Surfaces_agricolesCountAggregateOutputType | null
+    _avg: Surfaces_agricolesAvgAggregateOutputType | null
+    _sum: Surfaces_agricolesSumAggregateOutputType | null
+    _min: Surfaces_agricolesMinAggregateOutputType | null
+    _max: Surfaces_agricolesMaxAggregateOutputType | null
+  }
+
+  export type Surfaces_agricolesAvgAggregateOutputType = {
+    index: number | null
+    exploitation_sau: number | null
+    exploitation_sau_terres_arables: number | null
+    exploitation_sau_terres_arables_cereales: number | null
+    exploitation_sau_terres_arables_oleagineux: number | null
+    exploitation_sau_terres_arables_fourrageres: number | null
+    exploitation_sau_terres_arables_tubercules: number | null
+    exploitation_sau_terres_arables_legumes_melons_fraises: number | null
+    exploitation_sau_terres_arables_fleurs: number | null
+    exploitation_sau_terres_arables_autres: number | null
+    exploitation_sau_cultures_permanentes: number | null
+    exploitation_sau_cultures_permanentes_vigne: number | null
+    exploitation_sau_cultures_permanentes_fruits: number | null
+    exploitation_sau_cultures_permanentes_autres: number | null
+    exploitation_sau_herbe: number | null
+    exploitation_sau_herbe_prairies_productives: number | null
+    exploitation_sau_herbe_prairies_peu_productives: number | null
+    exploitation_sau_herbe_subventions: number | null
+    exploitation_sau_herbe_bois_patures: number | null
+    exploitation_sau_jardins: number | null
+    superficie_sau: number | null
+    superficie_sau_terres_arables: number | null
+    superficie_sau_terres_arables_cereales: number | null
+    superficie_sau_terres_arables_oleagineux: number | null
+    superficie_sau_terres_arables_fourrageres: number | null
+    superficie_sau_terres_arables_tubercules: number | null
+    superficie_sau_terres_arables_legumes_melons_fraises: number | null
+    superficie_sau_terres_arables_fleurs: number | null
+    superficie_sau_terres_arables_autres: number | null
+    superficie_sau_cultures_permanentes: number | null
+    superficie_sau_cultures_permanentes_vigne: number | null
+    superficie_sau_cultures_permanentes_fruits: number | null
+    superficie_sau_cultures_permanentes_autres: number | null
+    superficie_sau_herbe: number | null
+    superficie_sau_herbe_prairies_productives: number | null
+    superficie_sau_herbe_prairies_peu_productives: number | null
+    superficie_sau_herbe_subventions: number | null
+    superficie_sau_herbe_bois_patures: number | null
+    superficie_sau_jardins: number | null
+  }
+
+  export type Surfaces_agricolesSumAggregateOutputType = {
+    index: bigint | null
+    exploitation_sau: number | null
+    exploitation_sau_terres_arables: number | null
+    exploitation_sau_terres_arables_cereales: number | null
+    exploitation_sau_terres_arables_oleagineux: number | null
+    exploitation_sau_terres_arables_fourrageres: number | null
+    exploitation_sau_terres_arables_tubercules: number | null
+    exploitation_sau_terres_arables_legumes_melons_fraises: number | null
+    exploitation_sau_terres_arables_fleurs: number | null
+    exploitation_sau_terres_arables_autres: number | null
+    exploitation_sau_cultures_permanentes: number | null
+    exploitation_sau_cultures_permanentes_vigne: number | null
+    exploitation_sau_cultures_permanentes_fruits: number | null
+    exploitation_sau_cultures_permanentes_autres: number | null
+    exploitation_sau_herbe: number | null
+    exploitation_sau_herbe_prairies_productives: number | null
+    exploitation_sau_herbe_prairies_peu_productives: number | null
+    exploitation_sau_herbe_subventions: number | null
+    exploitation_sau_herbe_bois_patures: number | null
+    exploitation_sau_jardins: number | null
+    superficie_sau: number | null
+    superficie_sau_terres_arables: number | null
+    superficie_sau_terres_arables_cereales: number | null
+    superficie_sau_terres_arables_oleagineux: number | null
+    superficie_sau_terres_arables_fourrageres: number | null
+    superficie_sau_terres_arables_tubercules: number | null
+    superficie_sau_terres_arables_legumes_melons_fraises: number | null
+    superficie_sau_terres_arables_fleurs: number | null
+    superficie_sau_terres_arables_autres: number | null
+    superficie_sau_cultures_permanentes: number | null
+    superficie_sau_cultures_permanentes_vigne: number | null
+    superficie_sau_cultures_permanentes_fruits: number | null
+    superficie_sau_cultures_permanentes_autres: number | null
+    superficie_sau_herbe: number | null
+    superficie_sau_herbe_prairies_productives: number | null
+    superficie_sau_herbe_prairies_peu_productives: number | null
+    superficie_sau_herbe_subventions: number | null
+    superficie_sau_herbe_bois_patures: number | null
+    superficie_sau_jardins: number | null
+  }
+
+  export type Surfaces_agricolesMinAggregateOutputType = {
+    index: bigint | null
+    epci: string | null
+    exploitation_sau: number | null
+    exploitation_sau_terres_arables: number | null
+    exploitation_sau_terres_arables_cereales: number | null
+    exploitation_sau_terres_arables_oleagineux: number | null
+    exploitation_sau_terres_arables_fourrageres: number | null
+    exploitation_sau_terres_arables_tubercules: number | null
+    exploitation_sau_terres_arables_legumes_melons_fraises: number | null
+    exploitation_sau_terres_arables_fleurs: number | null
+    exploitation_sau_terres_arables_autres: number | null
+    exploitation_sau_cultures_permanentes: number | null
+    exploitation_sau_cultures_permanentes_vigne: number | null
+    exploitation_sau_cultures_permanentes_fruits: number | null
+    exploitation_sau_cultures_permanentes_autres: number | null
+    exploitation_sau_herbe: number | null
+    exploitation_sau_herbe_prairies_productives: number | null
+    exploitation_sau_herbe_prairies_peu_productives: number | null
+    exploitation_sau_herbe_subventions: number | null
+    exploitation_sau_herbe_bois_patures: number | null
+    exploitation_sau_jardins: number | null
+    superficie_sau: number | null
+    superficie_sau_terres_arables: number | null
+    superficie_sau_terres_arables_cereales: number | null
+    superficie_sau_terres_arables_oleagineux: number | null
+    superficie_sau_terres_arables_fourrageres: number | null
+    superficie_sau_terres_arables_tubercules: number | null
+    superficie_sau_terres_arables_legumes_melons_fraises: number | null
+    superficie_sau_terres_arables_fleurs: number | null
+    superficie_sau_terres_arables_autres: number | null
+    superficie_sau_cultures_permanentes: number | null
+    superficie_sau_cultures_permanentes_vigne: number | null
+    superficie_sau_cultures_permanentes_fruits: number | null
+    superficie_sau_cultures_permanentes_autres: number | null
+    superficie_sau_herbe: number | null
+    superficie_sau_herbe_prairies_productives: number | null
+    superficie_sau_herbe_prairies_peu_productives: number | null
+    superficie_sau_herbe_subventions: number | null
+    superficie_sau_herbe_bois_patures: number | null
+    superficie_sau_jardins: number | null
+  }
+
+  export type Surfaces_agricolesMaxAggregateOutputType = {
+    index: bigint | null
+    epci: string | null
+    exploitation_sau: number | null
+    exploitation_sau_terres_arables: number | null
+    exploitation_sau_terres_arables_cereales: number | null
+    exploitation_sau_terres_arables_oleagineux: number | null
+    exploitation_sau_terres_arables_fourrageres: number | null
+    exploitation_sau_terres_arables_tubercules: number | null
+    exploitation_sau_terres_arables_legumes_melons_fraises: number | null
+    exploitation_sau_terres_arables_fleurs: number | null
+    exploitation_sau_terres_arables_autres: number | null
+    exploitation_sau_cultures_permanentes: number | null
+    exploitation_sau_cultures_permanentes_vigne: number | null
+    exploitation_sau_cultures_permanentes_fruits: number | null
+    exploitation_sau_cultures_permanentes_autres: number | null
+    exploitation_sau_herbe: number | null
+    exploitation_sau_herbe_prairies_productives: number | null
+    exploitation_sau_herbe_prairies_peu_productives: number | null
+    exploitation_sau_herbe_subventions: number | null
+    exploitation_sau_herbe_bois_patures: number | null
+    exploitation_sau_jardins: number | null
+    superficie_sau: number | null
+    superficie_sau_terres_arables: number | null
+    superficie_sau_terres_arables_cereales: number | null
+    superficie_sau_terres_arables_oleagineux: number | null
+    superficie_sau_terres_arables_fourrageres: number | null
+    superficie_sau_terres_arables_tubercules: number | null
+    superficie_sau_terres_arables_legumes_melons_fraises: number | null
+    superficie_sau_terres_arables_fleurs: number | null
+    superficie_sau_terres_arables_autres: number | null
+    superficie_sau_cultures_permanentes: number | null
+    superficie_sau_cultures_permanentes_vigne: number | null
+    superficie_sau_cultures_permanentes_fruits: number | null
+    superficie_sau_cultures_permanentes_autres: number | null
+    superficie_sau_herbe: number | null
+    superficie_sau_herbe_prairies_productives: number | null
+    superficie_sau_herbe_prairies_peu_productives: number | null
+    superficie_sau_herbe_subventions: number | null
+    superficie_sau_herbe_bois_patures: number | null
+    superficie_sau_jardins: number | null
+  }
+
+  export type Surfaces_agricolesCountAggregateOutputType = {
+    index: number
+    epci: number
+    exploitation_sau: number
+    exploitation_sau_terres_arables: number
+    exploitation_sau_terres_arables_cereales: number
+    exploitation_sau_terres_arables_oleagineux: number
+    exploitation_sau_terres_arables_fourrageres: number
+    exploitation_sau_terres_arables_tubercules: number
+    exploitation_sau_terres_arables_legumes_melons_fraises: number
+    exploitation_sau_terres_arables_fleurs: number
+    exploitation_sau_terres_arables_autres: number
+    exploitation_sau_cultures_permanentes: number
+    exploitation_sau_cultures_permanentes_vigne: number
+    exploitation_sau_cultures_permanentes_fruits: number
+    exploitation_sau_cultures_permanentes_autres: number
+    exploitation_sau_herbe: number
+    exploitation_sau_herbe_prairies_productives: number
+    exploitation_sau_herbe_prairies_peu_productives: number
+    exploitation_sau_herbe_subventions: number
+    exploitation_sau_herbe_bois_patures: number
+    exploitation_sau_jardins: number
+    superficie_sau: number
+    superficie_sau_terres_arables: number
+    superficie_sau_terres_arables_cereales: number
+    superficie_sau_terres_arables_oleagineux: number
+    superficie_sau_terres_arables_fourrageres: number
+    superficie_sau_terres_arables_tubercules: number
+    superficie_sau_terres_arables_legumes_melons_fraises: number
+    superficie_sau_terres_arables_fleurs: number
+    superficie_sau_terres_arables_autres: number
+    superficie_sau_cultures_permanentes: number
+    superficie_sau_cultures_permanentes_vigne: number
+    superficie_sau_cultures_permanentes_fruits: number
+    superficie_sau_cultures_permanentes_autres: number
+    superficie_sau_herbe: number
+    superficie_sau_herbe_prairies_productives: number
+    superficie_sau_herbe_prairies_peu_productives: number
+    superficie_sau_herbe_subventions: number
+    superficie_sau_herbe_bois_patures: number
+    superficie_sau_jardins: number
+    _all: number
+  }
+
+
+  export type Surfaces_agricolesAvgAggregateInputType = {
+    index?: true
+    exploitation_sau?: true
+    exploitation_sau_terres_arables?: true
+    exploitation_sau_terres_arables_cereales?: true
+    exploitation_sau_terres_arables_oleagineux?: true
+    exploitation_sau_terres_arables_fourrageres?: true
+    exploitation_sau_terres_arables_tubercules?: true
+    exploitation_sau_terres_arables_legumes_melons_fraises?: true
+    exploitation_sau_terres_arables_fleurs?: true
+    exploitation_sau_terres_arables_autres?: true
+    exploitation_sau_cultures_permanentes?: true
+    exploitation_sau_cultures_permanentes_vigne?: true
+    exploitation_sau_cultures_permanentes_fruits?: true
+    exploitation_sau_cultures_permanentes_autres?: true
+    exploitation_sau_herbe?: true
+    exploitation_sau_herbe_prairies_productives?: true
+    exploitation_sau_herbe_prairies_peu_productives?: true
+    exploitation_sau_herbe_subventions?: true
+    exploitation_sau_herbe_bois_patures?: true
+    exploitation_sau_jardins?: true
+    superficie_sau?: true
+    superficie_sau_terres_arables?: true
+    superficie_sau_terres_arables_cereales?: true
+    superficie_sau_terres_arables_oleagineux?: true
+    superficie_sau_terres_arables_fourrageres?: true
+    superficie_sau_terres_arables_tubercules?: true
+    superficie_sau_terres_arables_legumes_melons_fraises?: true
+    superficie_sau_terres_arables_fleurs?: true
+    superficie_sau_terres_arables_autres?: true
+    superficie_sau_cultures_permanentes?: true
+    superficie_sau_cultures_permanentes_vigne?: true
+    superficie_sau_cultures_permanentes_fruits?: true
+    superficie_sau_cultures_permanentes_autres?: true
+    superficie_sau_herbe?: true
+    superficie_sau_herbe_prairies_productives?: true
+    superficie_sau_herbe_prairies_peu_productives?: true
+    superficie_sau_herbe_subventions?: true
+    superficie_sau_herbe_bois_patures?: true
+    superficie_sau_jardins?: true
+  }
+
+  export type Surfaces_agricolesSumAggregateInputType = {
+    index?: true
+    exploitation_sau?: true
+    exploitation_sau_terres_arables?: true
+    exploitation_sau_terres_arables_cereales?: true
+    exploitation_sau_terres_arables_oleagineux?: true
+    exploitation_sau_terres_arables_fourrageres?: true
+    exploitation_sau_terres_arables_tubercules?: true
+    exploitation_sau_terres_arables_legumes_melons_fraises?: true
+    exploitation_sau_terres_arables_fleurs?: true
+    exploitation_sau_terres_arables_autres?: true
+    exploitation_sau_cultures_permanentes?: true
+    exploitation_sau_cultures_permanentes_vigne?: true
+    exploitation_sau_cultures_permanentes_fruits?: true
+    exploitation_sau_cultures_permanentes_autres?: true
+    exploitation_sau_herbe?: true
+    exploitation_sau_herbe_prairies_productives?: true
+    exploitation_sau_herbe_prairies_peu_productives?: true
+    exploitation_sau_herbe_subventions?: true
+    exploitation_sau_herbe_bois_patures?: true
+    exploitation_sau_jardins?: true
+    superficie_sau?: true
+    superficie_sau_terres_arables?: true
+    superficie_sau_terres_arables_cereales?: true
+    superficie_sau_terres_arables_oleagineux?: true
+    superficie_sau_terres_arables_fourrageres?: true
+    superficie_sau_terres_arables_tubercules?: true
+    superficie_sau_terres_arables_legumes_melons_fraises?: true
+    superficie_sau_terres_arables_fleurs?: true
+    superficie_sau_terres_arables_autres?: true
+    superficie_sau_cultures_permanentes?: true
+    superficie_sau_cultures_permanentes_vigne?: true
+    superficie_sau_cultures_permanentes_fruits?: true
+    superficie_sau_cultures_permanentes_autres?: true
+    superficie_sau_herbe?: true
+    superficie_sau_herbe_prairies_productives?: true
+    superficie_sau_herbe_prairies_peu_productives?: true
+    superficie_sau_herbe_subventions?: true
+    superficie_sau_herbe_bois_patures?: true
+    superficie_sau_jardins?: true
+  }
+
+  export type Surfaces_agricolesMinAggregateInputType = {
+    index?: true
+    epci?: true
+    exploitation_sau?: true
+    exploitation_sau_terres_arables?: true
+    exploitation_sau_terres_arables_cereales?: true
+    exploitation_sau_terres_arables_oleagineux?: true
+    exploitation_sau_terres_arables_fourrageres?: true
+    exploitation_sau_terres_arables_tubercules?: true
+    exploitation_sau_terres_arables_legumes_melons_fraises?: true
+    exploitation_sau_terres_arables_fleurs?: true
+    exploitation_sau_terres_arables_autres?: true
+    exploitation_sau_cultures_permanentes?: true
+    exploitation_sau_cultures_permanentes_vigne?: true
+    exploitation_sau_cultures_permanentes_fruits?: true
+    exploitation_sau_cultures_permanentes_autres?: true
+    exploitation_sau_herbe?: true
+    exploitation_sau_herbe_prairies_productives?: true
+    exploitation_sau_herbe_prairies_peu_productives?: true
+    exploitation_sau_herbe_subventions?: true
+    exploitation_sau_herbe_bois_patures?: true
+    exploitation_sau_jardins?: true
+    superficie_sau?: true
+    superficie_sau_terres_arables?: true
+    superficie_sau_terres_arables_cereales?: true
+    superficie_sau_terres_arables_oleagineux?: true
+    superficie_sau_terres_arables_fourrageres?: true
+    superficie_sau_terres_arables_tubercules?: true
+    superficie_sau_terres_arables_legumes_melons_fraises?: true
+    superficie_sau_terres_arables_fleurs?: true
+    superficie_sau_terres_arables_autres?: true
+    superficie_sau_cultures_permanentes?: true
+    superficie_sau_cultures_permanentes_vigne?: true
+    superficie_sau_cultures_permanentes_fruits?: true
+    superficie_sau_cultures_permanentes_autres?: true
+    superficie_sau_herbe?: true
+    superficie_sau_herbe_prairies_productives?: true
+    superficie_sau_herbe_prairies_peu_productives?: true
+    superficie_sau_herbe_subventions?: true
+    superficie_sau_herbe_bois_patures?: true
+    superficie_sau_jardins?: true
+  }
+
+  export type Surfaces_agricolesMaxAggregateInputType = {
+    index?: true
+    epci?: true
+    exploitation_sau?: true
+    exploitation_sau_terres_arables?: true
+    exploitation_sau_terres_arables_cereales?: true
+    exploitation_sau_terres_arables_oleagineux?: true
+    exploitation_sau_terres_arables_fourrageres?: true
+    exploitation_sau_terres_arables_tubercules?: true
+    exploitation_sau_terres_arables_legumes_melons_fraises?: true
+    exploitation_sau_terres_arables_fleurs?: true
+    exploitation_sau_terres_arables_autres?: true
+    exploitation_sau_cultures_permanentes?: true
+    exploitation_sau_cultures_permanentes_vigne?: true
+    exploitation_sau_cultures_permanentes_fruits?: true
+    exploitation_sau_cultures_permanentes_autres?: true
+    exploitation_sau_herbe?: true
+    exploitation_sau_herbe_prairies_productives?: true
+    exploitation_sau_herbe_prairies_peu_productives?: true
+    exploitation_sau_herbe_subventions?: true
+    exploitation_sau_herbe_bois_patures?: true
+    exploitation_sau_jardins?: true
+    superficie_sau?: true
+    superficie_sau_terres_arables?: true
+    superficie_sau_terres_arables_cereales?: true
+    superficie_sau_terres_arables_oleagineux?: true
+    superficie_sau_terres_arables_fourrageres?: true
+    superficie_sau_terres_arables_tubercules?: true
+    superficie_sau_terres_arables_legumes_melons_fraises?: true
+    superficie_sau_terres_arables_fleurs?: true
+    superficie_sau_terres_arables_autres?: true
+    superficie_sau_cultures_permanentes?: true
+    superficie_sau_cultures_permanentes_vigne?: true
+    superficie_sau_cultures_permanentes_fruits?: true
+    superficie_sau_cultures_permanentes_autres?: true
+    superficie_sau_herbe?: true
+    superficie_sau_herbe_prairies_productives?: true
+    superficie_sau_herbe_prairies_peu_productives?: true
+    superficie_sau_herbe_subventions?: true
+    superficie_sau_herbe_bois_patures?: true
+    superficie_sau_jardins?: true
+  }
+
+  export type Surfaces_agricolesCountAggregateInputType = {
+    index?: true
+    epci?: true
+    exploitation_sau?: true
+    exploitation_sau_terres_arables?: true
+    exploitation_sau_terres_arables_cereales?: true
+    exploitation_sau_terres_arables_oleagineux?: true
+    exploitation_sau_terres_arables_fourrageres?: true
+    exploitation_sau_terres_arables_tubercules?: true
+    exploitation_sau_terres_arables_legumes_melons_fraises?: true
+    exploitation_sau_terres_arables_fleurs?: true
+    exploitation_sau_terres_arables_autres?: true
+    exploitation_sau_cultures_permanentes?: true
+    exploitation_sau_cultures_permanentes_vigne?: true
+    exploitation_sau_cultures_permanentes_fruits?: true
+    exploitation_sau_cultures_permanentes_autres?: true
+    exploitation_sau_herbe?: true
+    exploitation_sau_herbe_prairies_productives?: true
+    exploitation_sau_herbe_prairies_peu_productives?: true
+    exploitation_sau_herbe_subventions?: true
+    exploitation_sau_herbe_bois_patures?: true
+    exploitation_sau_jardins?: true
+    superficie_sau?: true
+    superficie_sau_terres_arables?: true
+    superficie_sau_terres_arables_cereales?: true
+    superficie_sau_terres_arables_oleagineux?: true
+    superficie_sau_terres_arables_fourrageres?: true
+    superficie_sau_terres_arables_tubercules?: true
+    superficie_sau_terres_arables_legumes_melons_fraises?: true
+    superficie_sau_terres_arables_fleurs?: true
+    superficie_sau_terres_arables_autres?: true
+    superficie_sau_cultures_permanentes?: true
+    superficie_sau_cultures_permanentes_vigne?: true
+    superficie_sau_cultures_permanentes_fruits?: true
+    superficie_sau_cultures_permanentes_autres?: true
+    superficie_sau_herbe?: true
+    superficie_sau_herbe_prairies_productives?: true
+    superficie_sau_herbe_prairies_peu_productives?: true
+    superficie_sau_herbe_subventions?: true
+    superficie_sau_herbe_bois_patures?: true
+    superficie_sau_jardins?: true
+    _all?: true
+  }
+
+  export type Surfaces_agricolesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which surfaces_agricoles to aggregate.
+     */
+    where?: surfaces_agricolesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_agricoles to fetch.
+     */
+    orderBy?: surfaces_agricolesOrderByWithRelationInput | surfaces_agricolesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: surfaces_agricolesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_agricoles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` surfaces_agricoles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned surfaces_agricoles
+    **/
+    _count?: true | Surfaces_agricolesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Surfaces_agricolesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Surfaces_agricolesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Surfaces_agricolesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Surfaces_agricolesMaxAggregateInputType
+  }
+
+  export type GetSurfaces_agricolesAggregateType<T extends Surfaces_agricolesAggregateArgs> = {
+        [P in keyof T & keyof AggregateSurfaces_agricoles]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSurfaces_agricoles[P]>
+      : GetScalarType<T[P], AggregateSurfaces_agricoles[P]>
+  }
+
+
+
+
+  export type surfaces_agricolesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: surfaces_agricolesWhereInput
+    orderBy?: surfaces_agricolesOrderByWithAggregationInput | surfaces_agricolesOrderByWithAggregationInput[]
+    by: Surfaces_agricolesScalarFieldEnum[] | Surfaces_agricolesScalarFieldEnum
+    having?: surfaces_agricolesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Surfaces_agricolesCountAggregateInputType | true
+    _avg?: Surfaces_agricolesAvgAggregateInputType
+    _sum?: Surfaces_agricolesSumAggregateInputType
+    _min?: Surfaces_agricolesMinAggregateInputType
+    _max?: Surfaces_agricolesMaxAggregateInputType
+  }
+
+  export type Surfaces_agricolesGroupByOutputType = {
+    index: bigint
+    epci: string
+    exploitation_sau: number
+    exploitation_sau_terres_arables: number
+    exploitation_sau_terres_arables_cereales: number
+    exploitation_sau_terres_arables_oleagineux: number
+    exploitation_sau_terres_arables_fourrageres: number
+    exploitation_sau_terres_arables_tubercules: number
+    exploitation_sau_terres_arables_legumes_melons_fraises: number
+    exploitation_sau_terres_arables_fleurs: number
+    exploitation_sau_terres_arables_autres: number
+    exploitation_sau_cultures_permanentes: number
+    exploitation_sau_cultures_permanentes_vigne: number
+    exploitation_sau_cultures_permanentes_fruits: number
+    exploitation_sau_cultures_permanentes_autres: number
+    exploitation_sau_herbe: number
+    exploitation_sau_herbe_prairies_productives: number
+    exploitation_sau_herbe_prairies_peu_productives: number
+    exploitation_sau_herbe_subventions: number
+    exploitation_sau_herbe_bois_patures: number
+    exploitation_sau_jardins: number
+    superficie_sau: number
+    superficie_sau_terres_arables: number
+    superficie_sau_terres_arables_cereales: number
+    superficie_sau_terres_arables_oleagineux: number
+    superficie_sau_terres_arables_fourrageres: number
+    superficie_sau_terres_arables_tubercules: number
+    superficie_sau_terres_arables_legumes_melons_fraises: number
+    superficie_sau_terres_arables_fleurs: number
+    superficie_sau_terres_arables_autres: number
+    superficie_sau_cultures_permanentes: number
+    superficie_sau_cultures_permanentes_vigne: number
+    superficie_sau_cultures_permanentes_fruits: number
+    superficie_sau_cultures_permanentes_autres: number
+    superficie_sau_herbe: number
+    superficie_sau_herbe_prairies_productives: number
+    superficie_sau_herbe_prairies_peu_productives: number
+    superficie_sau_herbe_subventions: number
+    superficie_sau_herbe_bois_patures: number
+    superficie_sau_jardins: number
+    _count: Surfaces_agricolesCountAggregateOutputType | null
+    _avg: Surfaces_agricolesAvgAggregateOutputType | null
+    _sum: Surfaces_agricolesSumAggregateOutputType | null
+    _min: Surfaces_agricolesMinAggregateOutputType | null
+    _max: Surfaces_agricolesMaxAggregateOutputType | null
+  }
+
+  type GetSurfaces_agricolesGroupByPayload<T extends surfaces_agricolesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Surfaces_agricolesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Surfaces_agricolesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Surfaces_agricolesGroupByOutputType[P]>
+            : GetScalarType<T[P], Surfaces_agricolesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type surfaces_agricolesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    epci?: boolean
+    exploitation_sau?: boolean
+    exploitation_sau_terres_arables?: boolean
+    exploitation_sau_terres_arables_cereales?: boolean
+    exploitation_sau_terres_arables_oleagineux?: boolean
+    exploitation_sau_terres_arables_fourrageres?: boolean
+    exploitation_sau_terres_arables_tubercules?: boolean
+    exploitation_sau_terres_arables_legumes_melons_fraises?: boolean
+    exploitation_sau_terres_arables_fleurs?: boolean
+    exploitation_sau_terres_arables_autres?: boolean
+    exploitation_sau_cultures_permanentes?: boolean
+    exploitation_sau_cultures_permanentes_vigne?: boolean
+    exploitation_sau_cultures_permanentes_fruits?: boolean
+    exploitation_sau_cultures_permanentes_autres?: boolean
+    exploitation_sau_herbe?: boolean
+    exploitation_sau_herbe_prairies_productives?: boolean
+    exploitation_sau_herbe_prairies_peu_productives?: boolean
+    exploitation_sau_herbe_subventions?: boolean
+    exploitation_sau_herbe_bois_patures?: boolean
+    exploitation_sau_jardins?: boolean
+    superficie_sau?: boolean
+    superficie_sau_terres_arables?: boolean
+    superficie_sau_terres_arables_cereales?: boolean
+    superficie_sau_terres_arables_oleagineux?: boolean
+    superficie_sau_terres_arables_fourrageres?: boolean
+    superficie_sau_terres_arables_tubercules?: boolean
+    superficie_sau_terres_arables_legumes_melons_fraises?: boolean
+    superficie_sau_terres_arables_fleurs?: boolean
+    superficie_sau_terres_arables_autres?: boolean
+    superficie_sau_cultures_permanentes?: boolean
+    superficie_sau_cultures_permanentes_vigne?: boolean
+    superficie_sau_cultures_permanentes_fruits?: boolean
+    superficie_sau_cultures_permanentes_autres?: boolean
+    superficie_sau_herbe?: boolean
+    superficie_sau_herbe_prairies_productives?: boolean
+    superficie_sau_herbe_prairies_peu_productives?: boolean
+    superficie_sau_herbe_subventions?: boolean
+    superficie_sau_herbe_bois_patures?: boolean
+    superficie_sau_jardins?: boolean
+  }, ExtArgs["result"]["surfaces_agricoles"]>
+
+  export type surfaces_agricolesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    epci?: boolean
+    exploitation_sau?: boolean
+    exploitation_sau_terres_arables?: boolean
+    exploitation_sau_terres_arables_cereales?: boolean
+    exploitation_sau_terres_arables_oleagineux?: boolean
+    exploitation_sau_terres_arables_fourrageres?: boolean
+    exploitation_sau_terres_arables_tubercules?: boolean
+    exploitation_sau_terres_arables_legumes_melons_fraises?: boolean
+    exploitation_sau_terres_arables_fleurs?: boolean
+    exploitation_sau_terres_arables_autres?: boolean
+    exploitation_sau_cultures_permanentes?: boolean
+    exploitation_sau_cultures_permanentes_vigne?: boolean
+    exploitation_sau_cultures_permanentes_fruits?: boolean
+    exploitation_sau_cultures_permanentes_autres?: boolean
+    exploitation_sau_herbe?: boolean
+    exploitation_sau_herbe_prairies_productives?: boolean
+    exploitation_sau_herbe_prairies_peu_productives?: boolean
+    exploitation_sau_herbe_subventions?: boolean
+    exploitation_sau_herbe_bois_patures?: boolean
+    exploitation_sau_jardins?: boolean
+    superficie_sau?: boolean
+    superficie_sau_terres_arables?: boolean
+    superficie_sau_terres_arables_cereales?: boolean
+    superficie_sau_terres_arables_oleagineux?: boolean
+    superficie_sau_terres_arables_fourrageres?: boolean
+    superficie_sau_terres_arables_tubercules?: boolean
+    superficie_sau_terres_arables_legumes_melons_fraises?: boolean
+    superficie_sau_terres_arables_fleurs?: boolean
+    superficie_sau_terres_arables_autres?: boolean
+    superficie_sau_cultures_permanentes?: boolean
+    superficie_sau_cultures_permanentes_vigne?: boolean
+    superficie_sau_cultures_permanentes_fruits?: boolean
+    superficie_sau_cultures_permanentes_autres?: boolean
+    superficie_sau_herbe?: boolean
+    superficie_sau_herbe_prairies_productives?: boolean
+    superficie_sau_herbe_prairies_peu_productives?: boolean
+    superficie_sau_herbe_subventions?: boolean
+    superficie_sau_herbe_bois_patures?: boolean
+    superficie_sau_jardins?: boolean
+  }, ExtArgs["result"]["surfaces_agricoles"]>
+
+  export type surfaces_agricolesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    index?: boolean
+    epci?: boolean
+    exploitation_sau?: boolean
+    exploitation_sau_terres_arables?: boolean
+    exploitation_sau_terres_arables_cereales?: boolean
+    exploitation_sau_terres_arables_oleagineux?: boolean
+    exploitation_sau_terres_arables_fourrageres?: boolean
+    exploitation_sau_terres_arables_tubercules?: boolean
+    exploitation_sau_terres_arables_legumes_melons_fraises?: boolean
+    exploitation_sau_terres_arables_fleurs?: boolean
+    exploitation_sau_terres_arables_autres?: boolean
+    exploitation_sau_cultures_permanentes?: boolean
+    exploitation_sau_cultures_permanentes_vigne?: boolean
+    exploitation_sau_cultures_permanentes_fruits?: boolean
+    exploitation_sau_cultures_permanentes_autres?: boolean
+    exploitation_sau_herbe?: boolean
+    exploitation_sau_herbe_prairies_productives?: boolean
+    exploitation_sau_herbe_prairies_peu_productives?: boolean
+    exploitation_sau_herbe_subventions?: boolean
+    exploitation_sau_herbe_bois_patures?: boolean
+    exploitation_sau_jardins?: boolean
+    superficie_sau?: boolean
+    superficie_sau_terres_arables?: boolean
+    superficie_sau_terres_arables_cereales?: boolean
+    superficie_sau_terres_arables_oleagineux?: boolean
+    superficie_sau_terres_arables_fourrageres?: boolean
+    superficie_sau_terres_arables_tubercules?: boolean
+    superficie_sau_terres_arables_legumes_melons_fraises?: boolean
+    superficie_sau_terres_arables_fleurs?: boolean
+    superficie_sau_terres_arables_autres?: boolean
+    superficie_sau_cultures_permanentes?: boolean
+    superficie_sau_cultures_permanentes_vigne?: boolean
+    superficie_sau_cultures_permanentes_fruits?: boolean
+    superficie_sau_cultures_permanentes_autres?: boolean
+    superficie_sau_herbe?: boolean
+    superficie_sau_herbe_prairies_productives?: boolean
+    superficie_sau_herbe_prairies_peu_productives?: boolean
+    superficie_sau_herbe_subventions?: boolean
+    superficie_sau_herbe_bois_patures?: boolean
+    superficie_sau_jardins?: boolean
+  }, ExtArgs["result"]["surfaces_agricoles"]>
+
+  export type surfaces_agricolesSelectScalar = {
+    index?: boolean
+    epci?: boolean
+    exploitation_sau?: boolean
+    exploitation_sau_terres_arables?: boolean
+    exploitation_sau_terres_arables_cereales?: boolean
+    exploitation_sau_terres_arables_oleagineux?: boolean
+    exploitation_sau_terres_arables_fourrageres?: boolean
+    exploitation_sau_terres_arables_tubercules?: boolean
+    exploitation_sau_terres_arables_legumes_melons_fraises?: boolean
+    exploitation_sau_terres_arables_fleurs?: boolean
+    exploitation_sau_terres_arables_autres?: boolean
+    exploitation_sau_cultures_permanentes?: boolean
+    exploitation_sau_cultures_permanentes_vigne?: boolean
+    exploitation_sau_cultures_permanentes_fruits?: boolean
+    exploitation_sau_cultures_permanentes_autres?: boolean
+    exploitation_sau_herbe?: boolean
+    exploitation_sau_herbe_prairies_productives?: boolean
+    exploitation_sau_herbe_prairies_peu_productives?: boolean
+    exploitation_sau_herbe_subventions?: boolean
+    exploitation_sau_herbe_bois_patures?: boolean
+    exploitation_sau_jardins?: boolean
+    superficie_sau?: boolean
+    superficie_sau_terres_arables?: boolean
+    superficie_sau_terres_arables_cereales?: boolean
+    superficie_sau_terres_arables_oleagineux?: boolean
+    superficie_sau_terres_arables_fourrageres?: boolean
+    superficie_sau_terres_arables_tubercules?: boolean
+    superficie_sau_terres_arables_legumes_melons_fraises?: boolean
+    superficie_sau_terres_arables_fleurs?: boolean
+    superficie_sau_terres_arables_autres?: boolean
+    superficie_sau_cultures_permanentes?: boolean
+    superficie_sau_cultures_permanentes_vigne?: boolean
+    superficie_sau_cultures_permanentes_fruits?: boolean
+    superficie_sau_cultures_permanentes_autres?: boolean
+    superficie_sau_herbe?: boolean
+    superficie_sau_herbe_prairies_productives?: boolean
+    superficie_sau_herbe_prairies_peu_productives?: boolean
+    superficie_sau_herbe_subventions?: boolean
+    superficie_sau_herbe_bois_patures?: boolean
+    superficie_sau_jardins?: boolean
+  }
+
+  export type surfaces_agricolesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"index" | "epci" | "exploitation_sau" | "exploitation_sau_terres_arables" | "exploitation_sau_terres_arables_cereales" | "exploitation_sau_terres_arables_oleagineux" | "exploitation_sau_terres_arables_fourrageres" | "exploitation_sau_terres_arables_tubercules" | "exploitation_sau_terres_arables_legumes_melons_fraises" | "exploitation_sau_terres_arables_fleurs" | "exploitation_sau_terres_arables_autres" | "exploitation_sau_cultures_permanentes" | "exploitation_sau_cultures_permanentes_vigne" | "exploitation_sau_cultures_permanentes_fruits" | "exploitation_sau_cultures_permanentes_autres" | "exploitation_sau_herbe" | "exploitation_sau_herbe_prairies_productives" | "exploitation_sau_herbe_prairies_peu_productives" | "exploitation_sau_herbe_subventions" | "exploitation_sau_herbe_bois_patures" | "exploitation_sau_jardins" | "superficie_sau" | "superficie_sau_terres_arables" | "superficie_sau_terres_arables_cereales" | "superficie_sau_terres_arables_oleagineux" | "superficie_sau_terres_arables_fourrageres" | "superficie_sau_terres_arables_tubercules" | "superficie_sau_terres_arables_legumes_melons_fraises" | "superficie_sau_terres_arables_fleurs" | "superficie_sau_terres_arables_autres" | "superficie_sau_cultures_permanentes" | "superficie_sau_cultures_permanentes_vigne" | "superficie_sau_cultures_permanentes_fruits" | "superficie_sau_cultures_permanentes_autres" | "superficie_sau_herbe" | "superficie_sau_herbe_prairies_productives" | "superficie_sau_herbe_prairies_peu_productives" | "superficie_sau_herbe_subventions" | "superficie_sau_herbe_bois_patures" | "superficie_sau_jardins", ExtArgs["result"]["surfaces_agricoles"]>
+
+  export type $surfaces_agricolesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "surfaces_agricoles"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      index: bigint
+      epci: string
+      exploitation_sau: number
+      exploitation_sau_terres_arables: number
+      exploitation_sau_terres_arables_cereales: number
+      exploitation_sau_terres_arables_oleagineux: number
+      exploitation_sau_terres_arables_fourrageres: number
+      exploitation_sau_terres_arables_tubercules: number
+      exploitation_sau_terres_arables_legumes_melons_fraises: number
+      exploitation_sau_terres_arables_fleurs: number
+      exploitation_sau_terres_arables_autres: number
+      exploitation_sau_cultures_permanentes: number
+      exploitation_sau_cultures_permanentes_vigne: number
+      exploitation_sau_cultures_permanentes_fruits: number
+      exploitation_sau_cultures_permanentes_autres: number
+      exploitation_sau_herbe: number
+      exploitation_sau_herbe_prairies_productives: number
+      exploitation_sau_herbe_prairies_peu_productives: number
+      exploitation_sau_herbe_subventions: number
+      exploitation_sau_herbe_bois_patures: number
+      exploitation_sau_jardins: number
+      superficie_sau: number
+      superficie_sau_terres_arables: number
+      superficie_sau_terres_arables_cereales: number
+      superficie_sau_terres_arables_oleagineux: number
+      superficie_sau_terres_arables_fourrageres: number
+      superficie_sau_terres_arables_tubercules: number
+      superficie_sau_terres_arables_legumes_melons_fraises: number
+      superficie_sau_terres_arables_fleurs: number
+      superficie_sau_terres_arables_autres: number
+      superficie_sau_cultures_permanentes: number
+      superficie_sau_cultures_permanentes_vigne: number
+      superficie_sau_cultures_permanentes_fruits: number
+      superficie_sau_cultures_permanentes_autres: number
+      superficie_sau_herbe: number
+      superficie_sau_herbe_prairies_productives: number
+      superficie_sau_herbe_prairies_peu_productives: number
+      superficie_sau_herbe_subventions: number
+      superficie_sau_herbe_bois_patures: number
+      superficie_sau_jardins: number
+    }, ExtArgs["result"]["surfaces_agricoles"]>
+    composites: {}
+  }
+
+  type surfaces_agricolesGetPayload<S extends boolean | null | undefined | surfaces_agricolesDefaultArgs> = $Result.GetResult<Prisma.$surfaces_agricolesPayload, S>
+
+  type surfaces_agricolesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<surfaces_agricolesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Surfaces_agricolesCountAggregateInputType | true
+    }
+
+  export interface surfaces_agricolesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['surfaces_agricoles'], meta: { name: 'surfaces_agricoles' } }
+    /**
+     * Find zero or one Surfaces_agricoles that matches the filter.
+     * @param {surfaces_agricolesFindUniqueArgs} args - Arguments to find a Surfaces_agricoles
+     * @example
+     * // Get one Surfaces_agricoles
+     * const surfaces_agricoles = await prisma.surfaces_agricoles.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends surfaces_agricolesFindUniqueArgs>(args: SelectSubset<T, surfaces_agricolesFindUniqueArgs<ExtArgs>>): Prisma__surfaces_agricolesClient<$Result.GetResult<Prisma.$surfaces_agricolesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Surfaces_agricoles that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {surfaces_agricolesFindUniqueOrThrowArgs} args - Arguments to find a Surfaces_agricoles
+     * @example
+     * // Get one Surfaces_agricoles
+     * const surfaces_agricoles = await prisma.surfaces_agricoles.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends surfaces_agricolesFindUniqueOrThrowArgs>(args: SelectSubset<T, surfaces_agricolesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__surfaces_agricolesClient<$Result.GetResult<Prisma.$surfaces_agricolesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Surfaces_agricoles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_agricolesFindFirstArgs} args - Arguments to find a Surfaces_agricoles
+     * @example
+     * // Get one Surfaces_agricoles
+     * const surfaces_agricoles = await prisma.surfaces_agricoles.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends surfaces_agricolesFindFirstArgs>(args?: SelectSubset<T, surfaces_agricolesFindFirstArgs<ExtArgs>>): Prisma__surfaces_agricolesClient<$Result.GetResult<Prisma.$surfaces_agricolesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Surfaces_agricoles that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_agricolesFindFirstOrThrowArgs} args - Arguments to find a Surfaces_agricoles
+     * @example
+     * // Get one Surfaces_agricoles
+     * const surfaces_agricoles = await prisma.surfaces_agricoles.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends surfaces_agricolesFindFirstOrThrowArgs>(args?: SelectSubset<T, surfaces_agricolesFindFirstOrThrowArgs<ExtArgs>>): Prisma__surfaces_agricolesClient<$Result.GetResult<Prisma.$surfaces_agricolesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Surfaces_agricoles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_agricolesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Surfaces_agricoles
+     * const surfaces_agricoles = await prisma.surfaces_agricoles.findMany()
+     * 
+     * // Get first 10 Surfaces_agricoles
+     * const surfaces_agricoles = await prisma.surfaces_agricoles.findMany({ take: 10 })
+     * 
+     * // Only select the `index`
+     * const surfaces_agricolesWithIndexOnly = await prisma.surfaces_agricoles.findMany({ select: { index: true } })
+     * 
+     */
+    findMany<T extends surfaces_agricolesFindManyArgs>(args?: SelectSubset<T, surfaces_agricolesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$surfaces_agricolesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Surfaces_agricoles.
+     * @param {surfaces_agricolesCreateArgs} args - Arguments to create a Surfaces_agricoles.
+     * @example
+     * // Create one Surfaces_agricoles
+     * const Surfaces_agricoles = await prisma.surfaces_agricoles.create({
+     *   data: {
+     *     // ... data to create a Surfaces_agricoles
+     *   }
+     * })
+     * 
+     */
+    create<T extends surfaces_agricolesCreateArgs>(args: SelectSubset<T, surfaces_agricolesCreateArgs<ExtArgs>>): Prisma__surfaces_agricolesClient<$Result.GetResult<Prisma.$surfaces_agricolesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Surfaces_agricoles.
+     * @param {surfaces_agricolesCreateManyArgs} args - Arguments to create many Surfaces_agricoles.
+     * @example
+     * // Create many Surfaces_agricoles
+     * const surfaces_agricoles = await prisma.surfaces_agricoles.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends surfaces_agricolesCreateManyArgs>(args?: SelectSubset<T, surfaces_agricolesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Surfaces_agricoles and returns the data saved in the database.
+     * @param {surfaces_agricolesCreateManyAndReturnArgs} args - Arguments to create many Surfaces_agricoles.
+     * @example
+     * // Create many Surfaces_agricoles
+     * const surfaces_agricoles = await prisma.surfaces_agricoles.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Surfaces_agricoles and only return the `index`
+     * const surfaces_agricolesWithIndexOnly = await prisma.surfaces_agricoles.createManyAndReturn({
+     *   select: { index: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends surfaces_agricolesCreateManyAndReturnArgs>(args?: SelectSubset<T, surfaces_agricolesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$surfaces_agricolesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Surfaces_agricoles.
+     * @param {surfaces_agricolesDeleteArgs} args - Arguments to delete one Surfaces_agricoles.
+     * @example
+     * // Delete one Surfaces_agricoles
+     * const Surfaces_agricoles = await prisma.surfaces_agricoles.delete({
+     *   where: {
+     *     // ... filter to delete one Surfaces_agricoles
+     *   }
+     * })
+     * 
+     */
+    delete<T extends surfaces_agricolesDeleteArgs>(args: SelectSubset<T, surfaces_agricolesDeleteArgs<ExtArgs>>): Prisma__surfaces_agricolesClient<$Result.GetResult<Prisma.$surfaces_agricolesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Surfaces_agricoles.
+     * @param {surfaces_agricolesUpdateArgs} args - Arguments to update one Surfaces_agricoles.
+     * @example
+     * // Update one Surfaces_agricoles
+     * const surfaces_agricoles = await prisma.surfaces_agricoles.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends surfaces_agricolesUpdateArgs>(args: SelectSubset<T, surfaces_agricolesUpdateArgs<ExtArgs>>): Prisma__surfaces_agricolesClient<$Result.GetResult<Prisma.$surfaces_agricolesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Surfaces_agricoles.
+     * @param {surfaces_agricolesDeleteManyArgs} args - Arguments to filter Surfaces_agricoles to delete.
+     * @example
+     * // Delete a few Surfaces_agricoles
+     * const { count } = await prisma.surfaces_agricoles.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends surfaces_agricolesDeleteManyArgs>(args?: SelectSubset<T, surfaces_agricolesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Surfaces_agricoles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_agricolesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Surfaces_agricoles
+     * const surfaces_agricoles = await prisma.surfaces_agricoles.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends surfaces_agricolesUpdateManyArgs>(args: SelectSubset<T, surfaces_agricolesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Surfaces_agricoles and returns the data updated in the database.
+     * @param {surfaces_agricolesUpdateManyAndReturnArgs} args - Arguments to update many Surfaces_agricoles.
+     * @example
+     * // Update many Surfaces_agricoles
+     * const surfaces_agricoles = await prisma.surfaces_agricoles.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Surfaces_agricoles and only return the `index`
+     * const surfaces_agricolesWithIndexOnly = await prisma.surfaces_agricoles.updateManyAndReturn({
+     *   select: { index: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends surfaces_agricolesUpdateManyAndReturnArgs>(args: SelectSubset<T, surfaces_agricolesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$surfaces_agricolesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Surfaces_agricoles.
+     * @param {surfaces_agricolesUpsertArgs} args - Arguments to update or create a Surfaces_agricoles.
+     * @example
+     * // Update or create a Surfaces_agricoles
+     * const surfaces_agricoles = await prisma.surfaces_agricoles.upsert({
+     *   create: {
+     *     // ... data to create a Surfaces_agricoles
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Surfaces_agricoles we want to update
+     *   }
+     * })
+     */
+    upsert<T extends surfaces_agricolesUpsertArgs>(args: SelectSubset<T, surfaces_agricolesUpsertArgs<ExtArgs>>): Prisma__surfaces_agricolesClient<$Result.GetResult<Prisma.$surfaces_agricolesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Surfaces_agricoles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_agricolesCountArgs} args - Arguments to filter Surfaces_agricoles to count.
+     * @example
+     * // Count the number of Surfaces_agricoles
+     * const count = await prisma.surfaces_agricoles.count({
+     *   where: {
+     *     // ... the filter for the Surfaces_agricoles we want to count
+     *   }
+     * })
+    **/
+    count<T extends surfaces_agricolesCountArgs>(
+      args?: Subset<T, surfaces_agricolesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Surfaces_agricolesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Surfaces_agricoles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Surfaces_agricolesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Surfaces_agricolesAggregateArgs>(args: Subset<T, Surfaces_agricolesAggregateArgs>): Prisma.PrismaPromise<GetSurfaces_agricolesAggregateType<T>>
+
+    /**
+     * Group by Surfaces_agricoles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {surfaces_agricolesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends surfaces_agricolesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: surfaces_agricolesGroupByArgs['orderBy'] }
+        : { orderBy?: surfaces_agricolesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, surfaces_agricolesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSurfaces_agricolesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the surfaces_agricoles model
+   */
+  readonly fields: surfaces_agricolesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for surfaces_agricoles.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__surfaces_agricolesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the surfaces_agricoles model
+   */
+  interface surfaces_agricolesFieldRefs {
+    readonly index: FieldRef<"surfaces_agricoles", 'BigInt'>
+    readonly epci: FieldRef<"surfaces_agricoles", 'String'>
+    readonly exploitation_sau: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_terres_arables: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_terres_arables_cereales: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_terres_arables_oleagineux: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_terres_arables_fourrageres: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_terres_arables_tubercules: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_terres_arables_legumes_melons_fraises: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_terres_arables_fleurs: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_terres_arables_autres: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_cultures_permanentes: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_cultures_permanentes_vigne: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_cultures_permanentes_fruits: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_cultures_permanentes_autres: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_herbe: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_herbe_prairies_productives: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_herbe_prairies_peu_productives: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_herbe_subventions: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_herbe_bois_patures: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly exploitation_sau_jardins: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_terres_arables: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_terres_arables_cereales: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_terres_arables_oleagineux: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_terres_arables_fourrageres: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_terres_arables_tubercules: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_terres_arables_legumes_melons_fraises: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_terres_arables_fleurs: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_terres_arables_autres: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_cultures_permanentes: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_cultures_permanentes_vigne: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_cultures_permanentes_fruits: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_cultures_permanentes_autres: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_herbe: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_herbe_prairies_productives: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_herbe_prairies_peu_productives: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_herbe_subventions: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_herbe_bois_patures: FieldRef<"surfaces_agricoles", 'Float'>
+    readonly superficie_sau_jardins: FieldRef<"surfaces_agricoles", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * surfaces_agricoles findUnique
+   */
+  export type surfaces_agricolesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_agricoles
+     */
+    select?: surfaces_agricolesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_agricoles
+     */
+    omit?: surfaces_agricolesOmit<ExtArgs> | null
+    /**
+     * Filter, which surfaces_agricoles to fetch.
+     */
+    where: surfaces_agricolesWhereUniqueInput
+  }
+
+  /**
+   * surfaces_agricoles findUniqueOrThrow
+   */
+  export type surfaces_agricolesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_agricoles
+     */
+    select?: surfaces_agricolesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_agricoles
+     */
+    omit?: surfaces_agricolesOmit<ExtArgs> | null
+    /**
+     * Filter, which surfaces_agricoles to fetch.
+     */
+    where: surfaces_agricolesWhereUniqueInput
+  }
+
+  /**
+   * surfaces_agricoles findFirst
+   */
+  export type surfaces_agricolesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_agricoles
+     */
+    select?: surfaces_agricolesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_agricoles
+     */
+    omit?: surfaces_agricolesOmit<ExtArgs> | null
+    /**
+     * Filter, which surfaces_agricoles to fetch.
+     */
+    where?: surfaces_agricolesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_agricoles to fetch.
+     */
+    orderBy?: surfaces_agricolesOrderByWithRelationInput | surfaces_agricolesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for surfaces_agricoles.
+     */
+    cursor?: surfaces_agricolesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_agricoles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` surfaces_agricoles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of surfaces_agricoles.
+     */
+    distinct?: Surfaces_agricolesScalarFieldEnum | Surfaces_agricolesScalarFieldEnum[]
+  }
+
+  /**
+   * surfaces_agricoles findFirstOrThrow
+   */
+  export type surfaces_agricolesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_agricoles
+     */
+    select?: surfaces_agricolesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_agricoles
+     */
+    omit?: surfaces_agricolesOmit<ExtArgs> | null
+    /**
+     * Filter, which surfaces_agricoles to fetch.
+     */
+    where?: surfaces_agricolesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_agricoles to fetch.
+     */
+    orderBy?: surfaces_agricolesOrderByWithRelationInput | surfaces_agricolesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for surfaces_agricoles.
+     */
+    cursor?: surfaces_agricolesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_agricoles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` surfaces_agricoles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of surfaces_agricoles.
+     */
+    distinct?: Surfaces_agricolesScalarFieldEnum | Surfaces_agricolesScalarFieldEnum[]
+  }
+
+  /**
+   * surfaces_agricoles findMany
+   */
+  export type surfaces_agricolesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_agricoles
+     */
+    select?: surfaces_agricolesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_agricoles
+     */
+    omit?: surfaces_agricolesOmit<ExtArgs> | null
+    /**
+     * Filter, which surfaces_agricoles to fetch.
+     */
+    where?: surfaces_agricolesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of surfaces_agricoles to fetch.
+     */
+    orderBy?: surfaces_agricolesOrderByWithRelationInput | surfaces_agricolesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing surfaces_agricoles.
+     */
+    cursor?: surfaces_agricolesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` surfaces_agricoles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` surfaces_agricoles.
+     */
+    skip?: number
+    distinct?: Surfaces_agricolesScalarFieldEnum | Surfaces_agricolesScalarFieldEnum[]
+  }
+
+  /**
+   * surfaces_agricoles create
+   */
+  export type surfaces_agricolesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_agricoles
+     */
+    select?: surfaces_agricolesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_agricoles
+     */
+    omit?: surfaces_agricolesOmit<ExtArgs> | null
+    /**
+     * The data needed to create a surfaces_agricoles.
+     */
+    data: XOR<surfaces_agricolesCreateInput, surfaces_agricolesUncheckedCreateInput>
+  }
+
+  /**
+   * surfaces_agricoles createMany
+   */
+  export type surfaces_agricolesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many surfaces_agricoles.
+     */
+    data: surfaces_agricolesCreateManyInput | surfaces_agricolesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * surfaces_agricoles createManyAndReturn
+   */
+  export type surfaces_agricolesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_agricoles
+     */
+    select?: surfaces_agricolesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_agricoles
+     */
+    omit?: surfaces_agricolesOmit<ExtArgs> | null
+    /**
+     * The data used to create many surfaces_agricoles.
+     */
+    data: surfaces_agricolesCreateManyInput | surfaces_agricolesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * surfaces_agricoles update
+   */
+  export type surfaces_agricolesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_agricoles
+     */
+    select?: surfaces_agricolesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_agricoles
+     */
+    omit?: surfaces_agricolesOmit<ExtArgs> | null
+    /**
+     * The data needed to update a surfaces_agricoles.
+     */
+    data: XOR<surfaces_agricolesUpdateInput, surfaces_agricolesUncheckedUpdateInput>
+    /**
+     * Choose, which surfaces_agricoles to update.
+     */
+    where: surfaces_agricolesWhereUniqueInput
+  }
+
+  /**
+   * surfaces_agricoles updateMany
+   */
+  export type surfaces_agricolesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update surfaces_agricoles.
+     */
+    data: XOR<surfaces_agricolesUpdateManyMutationInput, surfaces_agricolesUncheckedUpdateManyInput>
+    /**
+     * Filter which surfaces_agricoles to update
+     */
+    where?: surfaces_agricolesWhereInput
+    /**
+     * Limit how many surfaces_agricoles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * surfaces_agricoles updateManyAndReturn
+   */
+  export type surfaces_agricolesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_agricoles
+     */
+    select?: surfaces_agricolesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_agricoles
+     */
+    omit?: surfaces_agricolesOmit<ExtArgs> | null
+    /**
+     * The data used to update surfaces_agricoles.
+     */
+    data: XOR<surfaces_agricolesUpdateManyMutationInput, surfaces_agricolesUncheckedUpdateManyInput>
+    /**
+     * Filter which surfaces_agricoles to update
+     */
+    where?: surfaces_agricolesWhereInput
+    /**
+     * Limit how many surfaces_agricoles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * surfaces_agricoles upsert
+   */
+  export type surfaces_agricolesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_agricoles
+     */
+    select?: surfaces_agricolesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_agricoles
+     */
+    omit?: surfaces_agricolesOmit<ExtArgs> | null
+    /**
+     * The filter to search for the surfaces_agricoles to update in case it exists.
+     */
+    where: surfaces_agricolesWhereUniqueInput
+    /**
+     * In case the surfaces_agricoles found by the `where` argument doesn't exist, create a new surfaces_agricoles with this data.
+     */
+    create: XOR<surfaces_agricolesCreateInput, surfaces_agricolesUncheckedCreateInput>
+    /**
+     * In case the surfaces_agricoles was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<surfaces_agricolesUpdateInput, surfaces_agricolesUncheckedUpdateInput>
+  }
+
+  /**
+   * surfaces_agricoles delete
+   */
+  export type surfaces_agricolesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_agricoles
+     */
+    select?: surfaces_agricolesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_agricoles
+     */
+    omit?: surfaces_agricolesOmit<ExtArgs> | null
+    /**
+     * Filter which surfaces_agricoles to delete.
+     */
+    where: surfaces_agricolesWhereUniqueInput
+  }
+
+  /**
+   * surfaces_agricoles deleteMany
+   */
+  export type surfaces_agricolesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which surfaces_agricoles to delete
+     */
+    where?: surfaces_agricolesWhereInput
+    /**
+     * Limit how many surfaces_agricoles to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * surfaces_agricoles without action
+   */
+  export type surfaces_agricolesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the surfaces_agricoles
+     */
+    select?: surfaces_agricolesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the surfaces_agricoles
+     */
+    omit?: surfaces_agricolesOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -28235,12 +29962,12 @@ export namespace Prisma {
     epci: 'epci',
     libelle_epci: 'libelle_epci',
     departement: 'departement',
-    libelle_pnr: 'libelle_pnr',
     libelle_departement: 'libelle_departement',
     region: 'region',
     ept: 'ept',
     libelle_petr: 'libelle_petr',
     code_pnr: 'code_pnr',
+    libelle_pnr: 'libelle_pnr',
     search_code: 'search_code',
     search_libelle: 'search_libelle'
   };
@@ -28631,25 +30358,25 @@ export namespace Prisma {
     nb_logement_alea_faible: 'nb_logement_alea_faible',
     nb_logement_sans_alea: 'nb_logement_sans_alea',
     nb_logement_alea_moyen_fort_avant_1920: 'nb_logement_alea_moyen_fort_avant_1920',
+    part_logement_alea_moyen_fort_avant_1920: 'part_logement_alea_moyen_fort_avant_1920',
     nb_logement_alea_moyen_fort_1920_1945: 'nb_logement_alea_moyen_fort_1920_1945',
+    part_logement_alea_moyen_fort_1920_1945: 'part_logement_alea_moyen_fort_1920_1945',
     nb_logement_alea_moyen_fort_1945_1975: 'nb_logement_alea_moyen_fort_1945_1975',
+    part_logement_alea_moyen_fort_1945_1975: 'part_logement_alea_moyen_fort_1945_1975',
     nb_logement_alea_moyen_fort_apres_1975: 'nb_logement_alea_moyen_fort_apres_1975',
+    part_logement_alea_moyen_fort_apres_1975: 'part_logement_alea_moyen_fort_apres_1975',
     nb_logement_alea_faible_avant_1920: 'nb_logement_alea_faible_avant_1920',
+    part_logement_alea_faible_avant_1920: 'part_logement_alea_faible_avant_1920',
     nb_logement_alea_faible_1920_1945: 'nb_logement_alea_faible_1920_1945',
+    part_logement_alea_faible_1920_1945: 'part_logement_alea_faible_1920_1945',
     nb_logement_alea_faible_1945_1975: 'nb_logement_alea_faible_1945_1975',
+    part_logement_alea_faible_1945_1975: 'part_logement_alea_faible_1945_1975',
     nb_logement_alea_faible_apres_1975: 'nb_logement_alea_faible_apres_1975',
+    part_logement_alea_faible_apres_1975: 'part_logement_alea_faible_apres_1975',
     surface_commune: 'surface_commune',
     surface_alea_faible_commune: 'surface_alea_faible_commune',
-    surface_alea_moyen_fort_commune: 'surface_alea_moyen_fort_commune',
-    part_logement_alea_moyen_fort_avant_1920: 'part_logement_alea_moyen_fort_avant_1920',
-    part_logement_alea_moyen_fort_1920_1945: 'part_logement_alea_moyen_fort_1920_1945',
-    part_logement_alea_moyen_fort_1945_1975: 'part_logement_alea_moyen_fort_1945_1975',
-    part_logement_alea_moyen_fort_apres_1975: 'part_logement_alea_moyen_fort_apres_1975',
-    part_logement_alea_faible_avant_1920: 'part_logement_alea_faible_avant_1920',
-    part_logement_alea_faible_1920_1945: 'part_logement_alea_faible_1920_1945',
-    part_logement_alea_faible_1945_1975: 'part_logement_alea_faible_1945_1975',
-    part_logement_alea_faible_apres_1975: 'part_logement_alea_faible_apres_1975',
     part_alea_faible_commune: 'part_alea_faible_commune',
+    surface_alea_moyen_fort_commune: 'surface_alea_moyen_fort_commune',
     part_alea_moyen_fort_commune: 'part_alea_moyen_fort_commune'
   };
 
@@ -28694,6 +30421,52 @@ export namespace Prisma {
   };
 
   export type AgricultureScalarFieldEnum = (typeof AgricultureScalarFieldEnum)[keyof typeof AgricultureScalarFieldEnum]
+
+
+  export const Surfaces_agricolesScalarFieldEnum: {
+    index: 'index',
+    epci: 'epci',
+    exploitation_sau: 'exploitation_sau',
+    exploitation_sau_terres_arables: 'exploitation_sau_terres_arables',
+    exploitation_sau_terres_arables_cereales: 'exploitation_sau_terres_arables_cereales',
+    exploitation_sau_terres_arables_oleagineux: 'exploitation_sau_terres_arables_oleagineux',
+    exploitation_sau_terres_arables_fourrageres: 'exploitation_sau_terres_arables_fourrageres',
+    exploitation_sau_terres_arables_tubercules: 'exploitation_sau_terres_arables_tubercules',
+    exploitation_sau_terres_arables_legumes_melons_fraises: 'exploitation_sau_terres_arables_legumes_melons_fraises',
+    exploitation_sau_terres_arables_fleurs: 'exploitation_sau_terres_arables_fleurs',
+    exploitation_sau_terres_arables_autres: 'exploitation_sau_terres_arables_autres',
+    exploitation_sau_cultures_permanentes: 'exploitation_sau_cultures_permanentes',
+    exploitation_sau_cultures_permanentes_vigne: 'exploitation_sau_cultures_permanentes_vigne',
+    exploitation_sau_cultures_permanentes_fruits: 'exploitation_sau_cultures_permanentes_fruits',
+    exploitation_sau_cultures_permanentes_autres: 'exploitation_sau_cultures_permanentes_autres',
+    exploitation_sau_herbe: 'exploitation_sau_herbe',
+    exploitation_sau_herbe_prairies_productives: 'exploitation_sau_herbe_prairies_productives',
+    exploitation_sau_herbe_prairies_peu_productives: 'exploitation_sau_herbe_prairies_peu_productives',
+    exploitation_sau_herbe_subventions: 'exploitation_sau_herbe_subventions',
+    exploitation_sau_herbe_bois_patures: 'exploitation_sau_herbe_bois_patures',
+    exploitation_sau_jardins: 'exploitation_sau_jardins',
+    superficie_sau: 'superficie_sau',
+    superficie_sau_terres_arables: 'superficie_sau_terres_arables',
+    superficie_sau_terres_arables_cereales: 'superficie_sau_terres_arables_cereales',
+    superficie_sau_terres_arables_oleagineux: 'superficie_sau_terres_arables_oleagineux',
+    superficie_sau_terres_arables_fourrageres: 'superficie_sau_terres_arables_fourrageres',
+    superficie_sau_terres_arables_tubercules: 'superficie_sau_terres_arables_tubercules',
+    superficie_sau_terres_arables_legumes_melons_fraises: 'superficie_sau_terres_arables_legumes_melons_fraises',
+    superficie_sau_terres_arables_fleurs: 'superficie_sau_terres_arables_fleurs',
+    superficie_sau_terres_arables_autres: 'superficie_sau_terres_arables_autres',
+    superficie_sau_cultures_permanentes: 'superficie_sau_cultures_permanentes',
+    superficie_sau_cultures_permanentes_vigne: 'superficie_sau_cultures_permanentes_vigne',
+    superficie_sau_cultures_permanentes_fruits: 'superficie_sau_cultures_permanentes_fruits',
+    superficie_sau_cultures_permanentes_autres: 'superficie_sau_cultures_permanentes_autres',
+    superficie_sau_herbe: 'superficie_sau_herbe',
+    superficie_sau_herbe_prairies_productives: 'superficie_sau_herbe_prairies_productives',
+    superficie_sau_herbe_prairies_peu_productives: 'superficie_sau_herbe_prairies_peu_productives',
+    superficie_sau_herbe_subventions: 'superficie_sau_herbe_subventions',
+    superficie_sau_herbe_bois_patures: 'superficie_sau_herbe_bois_patures',
+    superficie_sau_jardins: 'superficie_sau_jardins'
+  };
+
+  export type Surfaces_agricolesScalarFieldEnum = (typeof Surfaces_agricolesScalarFieldEnum)[keyof typeof Surfaces_agricolesScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -29104,12 +30877,12 @@ export namespace Prisma {
     epci?: StringNullableFilter<"collectivites_searchbar"> | string | null
     libelle_epci?: StringNullableFilter<"collectivites_searchbar"> | string | null
     departement?: StringNullableFilter<"collectivites_searchbar"> | string | null
-    libelle_pnr?: StringNullableFilter<"collectivites_searchbar"> | string | null
     libelle_departement?: StringNullableFilter<"collectivites_searchbar"> | string | null
     region?: StringNullableFilter<"collectivites_searchbar"> | string | null
     ept?: StringNullableFilter<"collectivites_searchbar"> | string | null
     libelle_petr?: StringNullableFilter<"collectivites_searchbar"> | string | null
     code_pnr?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    libelle_pnr?: StringNullableFilter<"collectivites_searchbar"> | string | null
     search_code?: StringNullableFilter<"collectivites_searchbar"> | string | null
     search_libelle?: StringFilter<"collectivites_searchbar"> | string
   }
@@ -29121,12 +30894,12 @@ export namespace Prisma {
     epci?: SortOrderInput | SortOrder
     libelle_epci?: SortOrderInput | SortOrder
     departement?: SortOrderInput | SortOrder
-    libelle_pnr?: SortOrderInput | SortOrder
     libelle_departement?: SortOrderInput | SortOrder
     region?: SortOrderInput | SortOrder
     ept?: SortOrderInput | SortOrder
     libelle_petr?: SortOrderInput | SortOrder
     code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
     search_code?: SortOrderInput | SortOrder
     search_libelle?: SortOrder
   }
@@ -29141,12 +30914,12 @@ export namespace Prisma {
     epci?: StringNullableFilter<"collectivites_searchbar"> | string | null
     libelle_epci?: StringNullableFilter<"collectivites_searchbar"> | string | null
     departement?: StringNullableFilter<"collectivites_searchbar"> | string | null
-    libelle_pnr?: StringNullableFilter<"collectivites_searchbar"> | string | null
     libelle_departement?: StringNullableFilter<"collectivites_searchbar"> | string | null
     region?: StringNullableFilter<"collectivites_searchbar"> | string | null
     ept?: StringNullableFilter<"collectivites_searchbar"> | string | null
     libelle_petr?: StringNullableFilter<"collectivites_searchbar"> | string | null
     code_pnr?: StringNullableFilter<"collectivites_searchbar"> | string | null
+    libelle_pnr?: StringNullableFilter<"collectivites_searchbar"> | string | null
     search_code?: StringNullableFilter<"collectivites_searchbar"> | string | null
     search_libelle?: StringFilter<"collectivites_searchbar"> | string
   }, "index">
@@ -29158,12 +30931,12 @@ export namespace Prisma {
     epci?: SortOrderInput | SortOrder
     libelle_epci?: SortOrderInput | SortOrder
     departement?: SortOrderInput | SortOrder
-    libelle_pnr?: SortOrderInput | SortOrder
     libelle_departement?: SortOrderInput | SortOrder
     region?: SortOrderInput | SortOrder
     ept?: SortOrderInput | SortOrder
     libelle_petr?: SortOrderInput | SortOrder
     code_pnr?: SortOrderInput | SortOrder
+    libelle_pnr?: SortOrderInput | SortOrder
     search_code?: SortOrderInput | SortOrder
     search_libelle?: SortOrder
     _count?: collectivites_searchbarCountOrderByAggregateInput
@@ -29183,12 +30956,12 @@ export namespace Prisma {
     epci?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
     libelle_epci?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
     departement?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
-    libelle_pnr?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
     libelle_departement?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
     region?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
     ept?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
     libelle_petr?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
     code_pnr?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
+    libelle_pnr?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
     search_code?: StringNullableWithAggregatesFilter<"collectivites_searchbar"> | string | null
     search_libelle?: StringWithAggregatesFilter<"collectivites_searchbar"> | string
   }
@@ -31028,26 +32801,26 @@ export namespace Prisma {
     nb_logement_alea_faible?: IntFilter<"rga"> | number
     nb_logement_sans_alea?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_avant_1920?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_avant_1920?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_1920_1945?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1920_1945?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_1945_1975?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1945_1975?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_apres_1975?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_apres_1975?: IntFilter<"rga"> | number
     nb_logement_alea_faible_avant_1920?: IntFilter<"rga"> | number
+    part_logement_alea_faible_avant_1920?: IntFilter<"rga"> | number
     nb_logement_alea_faible_1920_1945?: IntFilter<"rga"> | number
+    part_logement_alea_faible_1920_1945?: IntFilter<"rga"> | number
     nb_logement_alea_faible_1945_1975?: IntFilter<"rga"> | number
+    part_logement_alea_faible_1945_1975?: IntFilter<"rga"> | number
     nb_logement_alea_faible_apres_1975?: IntFilter<"rga"> | number
-    surface_commune?: FloatFilter<"rga"> | number
-    surface_alea_faible_commune?: FloatFilter<"rga"> | number
-    surface_alea_moyen_fort_commune?: FloatFilter<"rga"> | number
-    part_logement_alea_moyen_fort_avant_1920?: FloatFilter<"rga"> | number
-    part_logement_alea_moyen_fort_1920_1945?: FloatFilter<"rga"> | number
-    part_logement_alea_moyen_fort_1945_1975?: FloatFilter<"rga"> | number
-    part_logement_alea_moyen_fort_apres_1975?: FloatFilter<"rga"> | number
-    part_logement_alea_faible_avant_1920?: FloatFilter<"rga"> | number
-    part_logement_alea_faible_1920_1945?: FloatFilter<"rga"> | number
-    part_logement_alea_faible_1945_1975?: FloatFilter<"rga"> | number
-    part_logement_alea_faible_apres_1975?: FloatFilter<"rga"> | number
-    part_alea_faible_commune?: FloatFilter<"rga"> | number
-    part_alea_moyen_fort_commune?: FloatFilter<"rga"> | number
+    part_logement_alea_faible_apres_1975?: IntFilter<"rga"> | number
+    surface_commune?: IntFilter<"rga"> | number
+    surface_alea_faible_commune?: IntFilter<"rga"> | number
+    part_alea_faible_commune?: IntFilter<"rga"> | number
+    surface_alea_moyen_fort_commune?: IntFilter<"rga"> | number
+    part_alea_moyen_fort_commune?: IntFilter<"rga"> | number
   }
 
   export type rgaOrderByWithRelationInput = {
@@ -31068,25 +32841,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: SortOrder
     nb_logement_sans_alea?: SortOrder
     nb_logement_alea_moyen_fort_avant_1920?: SortOrder
+    part_logement_alea_moyen_fort_avant_1920?: SortOrder
     nb_logement_alea_moyen_fort_1920_1945?: SortOrder
+    part_logement_alea_moyen_fort_1920_1945?: SortOrder
     nb_logement_alea_moyen_fort_1945_1975?: SortOrder
+    part_logement_alea_moyen_fort_1945_1975?: SortOrder
     nb_logement_alea_moyen_fort_apres_1975?: SortOrder
+    part_logement_alea_moyen_fort_apres_1975?: SortOrder
     nb_logement_alea_faible_avant_1920?: SortOrder
+    part_logement_alea_faible_avant_1920?: SortOrder
     nb_logement_alea_faible_1920_1945?: SortOrder
+    part_logement_alea_faible_1920_1945?: SortOrder
     nb_logement_alea_faible_1945_1975?: SortOrder
+    part_logement_alea_faible_1945_1975?: SortOrder
     nb_logement_alea_faible_apres_1975?: SortOrder
+    part_logement_alea_faible_apres_1975?: SortOrder
     surface_commune?: SortOrder
     surface_alea_faible_commune?: SortOrder
-    surface_alea_moyen_fort_commune?: SortOrder
-    part_logement_alea_moyen_fort_avant_1920?: SortOrder
-    part_logement_alea_moyen_fort_1920_1945?: SortOrder
-    part_logement_alea_moyen_fort_1945_1975?: SortOrder
-    part_logement_alea_moyen_fort_apres_1975?: SortOrder
-    part_logement_alea_faible_avant_1920?: SortOrder
-    part_logement_alea_faible_1920_1945?: SortOrder
-    part_logement_alea_faible_1945_1975?: SortOrder
-    part_logement_alea_faible_apres_1975?: SortOrder
     part_alea_faible_commune?: SortOrder
+    surface_alea_moyen_fort_commune?: SortOrder
     part_alea_moyen_fort_commune?: SortOrder
   }
 
@@ -31111,26 +32884,26 @@ export namespace Prisma {
     nb_logement_alea_faible?: IntFilter<"rga"> | number
     nb_logement_sans_alea?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_avant_1920?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_avant_1920?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_1920_1945?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1920_1945?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_1945_1975?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1945_1975?: IntFilter<"rga"> | number
     nb_logement_alea_moyen_fort_apres_1975?: IntFilter<"rga"> | number
+    part_logement_alea_moyen_fort_apres_1975?: IntFilter<"rga"> | number
     nb_logement_alea_faible_avant_1920?: IntFilter<"rga"> | number
+    part_logement_alea_faible_avant_1920?: IntFilter<"rga"> | number
     nb_logement_alea_faible_1920_1945?: IntFilter<"rga"> | number
+    part_logement_alea_faible_1920_1945?: IntFilter<"rga"> | number
     nb_logement_alea_faible_1945_1975?: IntFilter<"rga"> | number
+    part_logement_alea_faible_1945_1975?: IntFilter<"rga"> | number
     nb_logement_alea_faible_apres_1975?: IntFilter<"rga"> | number
-    surface_commune?: FloatFilter<"rga"> | number
-    surface_alea_faible_commune?: FloatFilter<"rga"> | number
-    surface_alea_moyen_fort_commune?: FloatFilter<"rga"> | number
-    part_logement_alea_moyen_fort_avant_1920?: FloatFilter<"rga"> | number
-    part_logement_alea_moyen_fort_1920_1945?: FloatFilter<"rga"> | number
-    part_logement_alea_moyen_fort_1945_1975?: FloatFilter<"rga"> | number
-    part_logement_alea_moyen_fort_apres_1975?: FloatFilter<"rga"> | number
-    part_logement_alea_faible_avant_1920?: FloatFilter<"rga"> | number
-    part_logement_alea_faible_1920_1945?: FloatFilter<"rga"> | number
-    part_logement_alea_faible_1945_1975?: FloatFilter<"rga"> | number
-    part_logement_alea_faible_apres_1975?: FloatFilter<"rga"> | number
-    part_alea_faible_commune?: FloatFilter<"rga"> | number
-    part_alea_moyen_fort_commune?: FloatFilter<"rga"> | number
+    part_logement_alea_faible_apres_1975?: IntFilter<"rga"> | number
+    surface_commune?: IntFilter<"rga"> | number
+    surface_alea_faible_commune?: IntFilter<"rga"> | number
+    part_alea_faible_commune?: IntFilter<"rga"> | number
+    surface_alea_moyen_fort_commune?: IntFilter<"rga"> | number
+    part_alea_moyen_fort_commune?: IntFilter<"rga"> | number
   }, "index">
 
   export type rgaOrderByWithAggregationInput = {
@@ -31151,25 +32924,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: SortOrder
     nb_logement_sans_alea?: SortOrder
     nb_logement_alea_moyen_fort_avant_1920?: SortOrder
+    part_logement_alea_moyen_fort_avant_1920?: SortOrder
     nb_logement_alea_moyen_fort_1920_1945?: SortOrder
+    part_logement_alea_moyen_fort_1920_1945?: SortOrder
     nb_logement_alea_moyen_fort_1945_1975?: SortOrder
+    part_logement_alea_moyen_fort_1945_1975?: SortOrder
     nb_logement_alea_moyen_fort_apres_1975?: SortOrder
+    part_logement_alea_moyen_fort_apres_1975?: SortOrder
     nb_logement_alea_faible_avant_1920?: SortOrder
+    part_logement_alea_faible_avant_1920?: SortOrder
     nb_logement_alea_faible_1920_1945?: SortOrder
+    part_logement_alea_faible_1920_1945?: SortOrder
     nb_logement_alea_faible_1945_1975?: SortOrder
+    part_logement_alea_faible_1945_1975?: SortOrder
     nb_logement_alea_faible_apres_1975?: SortOrder
+    part_logement_alea_faible_apres_1975?: SortOrder
     surface_commune?: SortOrder
     surface_alea_faible_commune?: SortOrder
-    surface_alea_moyen_fort_commune?: SortOrder
-    part_logement_alea_moyen_fort_avant_1920?: SortOrder
-    part_logement_alea_moyen_fort_1920_1945?: SortOrder
-    part_logement_alea_moyen_fort_1945_1975?: SortOrder
-    part_logement_alea_moyen_fort_apres_1975?: SortOrder
-    part_logement_alea_faible_avant_1920?: SortOrder
-    part_logement_alea_faible_1920_1945?: SortOrder
-    part_logement_alea_faible_1945_1975?: SortOrder
-    part_logement_alea_faible_apres_1975?: SortOrder
     part_alea_faible_commune?: SortOrder
+    surface_alea_moyen_fort_commune?: SortOrder
     part_alea_moyen_fort_commune?: SortOrder
     _count?: rgaCountOrderByAggregateInput
     _avg?: rgaAvgOrderByAggregateInput
@@ -31199,26 +32972,26 @@ export namespace Prisma {
     nb_logement_alea_faible?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_sans_alea?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_moyen_fort_avant_1920?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_moyen_fort_avant_1920?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_moyen_fort_1920_1945?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1920_1945?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_moyen_fort_1945_1975?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_moyen_fort_1945_1975?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_moyen_fort_apres_1975?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_moyen_fort_apres_1975?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_faible_avant_1920?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_faible_avant_1920?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_faible_1920_1945?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_faible_1920_1945?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_faible_1945_1975?: IntWithAggregatesFilter<"rga"> | number
+    part_logement_alea_faible_1945_1975?: IntWithAggregatesFilter<"rga"> | number
     nb_logement_alea_faible_apres_1975?: IntWithAggregatesFilter<"rga"> | number
-    surface_commune?: FloatWithAggregatesFilter<"rga"> | number
-    surface_alea_faible_commune?: FloatWithAggregatesFilter<"rga"> | number
-    surface_alea_moyen_fort_commune?: FloatWithAggregatesFilter<"rga"> | number
-    part_logement_alea_moyen_fort_avant_1920?: FloatWithAggregatesFilter<"rga"> | number
-    part_logement_alea_moyen_fort_1920_1945?: FloatWithAggregatesFilter<"rga"> | number
-    part_logement_alea_moyen_fort_1945_1975?: FloatWithAggregatesFilter<"rga"> | number
-    part_logement_alea_moyen_fort_apres_1975?: FloatWithAggregatesFilter<"rga"> | number
-    part_logement_alea_faible_avant_1920?: FloatWithAggregatesFilter<"rga"> | number
-    part_logement_alea_faible_1920_1945?: FloatWithAggregatesFilter<"rga"> | number
-    part_logement_alea_faible_1945_1975?: FloatWithAggregatesFilter<"rga"> | number
-    part_logement_alea_faible_apres_1975?: FloatWithAggregatesFilter<"rga"> | number
-    part_alea_faible_commune?: FloatWithAggregatesFilter<"rga"> | number
-    part_alea_moyen_fort_commune?: FloatWithAggregatesFilter<"rga"> | number
+    part_logement_alea_faible_apres_1975?: IntWithAggregatesFilter<"rga"> | number
+    surface_commune?: IntWithAggregatesFilter<"rga"> | number
+    surface_alea_faible_commune?: IntWithAggregatesFilter<"rga"> | number
+    part_alea_faible_commune?: IntWithAggregatesFilter<"rga"> | number
+    surface_alea_moyen_fort_commune?: IntWithAggregatesFilter<"rga"> | number
+    part_alea_moyen_fort_commune?: IntWithAggregatesFilter<"rga"> | number
   }
 
   export type postgis_rgaWhereInput = {
@@ -31416,6 +33189,235 @@ export namespace Prisma {
     libelle_pnr?: StringNullableWithAggregatesFilter<"agriculture"> | string | null
     part_irr_SAU_2020?: FloatNullableWithAggregatesFilter<"agriculture"> | number | null
     part_over_55?: FloatNullableWithAggregatesFilter<"agriculture"> | number | null
+  }
+
+  export type surfaces_agricolesWhereInput = {
+    AND?: surfaces_agricolesWhereInput | surfaces_agricolesWhereInput[]
+    OR?: surfaces_agricolesWhereInput[]
+    NOT?: surfaces_agricolesWhereInput | surfaces_agricolesWhereInput[]
+    index?: BigIntFilter<"surfaces_agricoles"> | bigint | number
+    epci?: StringFilter<"surfaces_agricoles"> | string
+    exploitation_sau?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_cereales?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_oleagineux?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_fourrageres?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_tubercules?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_legumes_melons_fraises?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_fleurs?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_autres?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_cultures_permanentes?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_cultures_permanentes_vigne?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_cultures_permanentes_fruits?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_cultures_permanentes_autres?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_prairies_productives?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_prairies_peu_productives?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_subventions?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_bois_patures?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_jardins?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_cereales?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_oleagineux?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_fourrageres?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_tubercules?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_legumes_melons_fraises?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_fleurs?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_autres?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_cultures_permanentes?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_cultures_permanentes_vigne?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_cultures_permanentes_fruits?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_cultures_permanentes_autres?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_prairies_productives?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_prairies_peu_productives?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_subventions?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_bois_patures?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_jardins?: FloatFilter<"surfaces_agricoles"> | number
+  }
+
+  export type surfaces_agricolesOrderByWithRelationInput = {
+    index?: SortOrder
+    epci?: SortOrder
+    exploitation_sau?: SortOrder
+    exploitation_sau_terres_arables?: SortOrder
+    exploitation_sau_terres_arables_cereales?: SortOrder
+    exploitation_sau_terres_arables_oleagineux?: SortOrder
+    exploitation_sau_terres_arables_fourrageres?: SortOrder
+    exploitation_sau_terres_arables_tubercules?: SortOrder
+    exploitation_sau_terres_arables_legumes_melons_fraises?: SortOrder
+    exploitation_sau_terres_arables_fleurs?: SortOrder
+    exploitation_sau_terres_arables_autres?: SortOrder
+    exploitation_sau_cultures_permanentes?: SortOrder
+    exploitation_sau_cultures_permanentes_vigne?: SortOrder
+    exploitation_sau_cultures_permanentes_fruits?: SortOrder
+    exploitation_sau_cultures_permanentes_autres?: SortOrder
+    exploitation_sau_herbe?: SortOrder
+    exploitation_sau_herbe_prairies_productives?: SortOrder
+    exploitation_sau_herbe_prairies_peu_productives?: SortOrder
+    exploitation_sau_herbe_subventions?: SortOrder
+    exploitation_sau_herbe_bois_patures?: SortOrder
+    exploitation_sau_jardins?: SortOrder
+    superficie_sau?: SortOrder
+    superficie_sau_terres_arables?: SortOrder
+    superficie_sau_terres_arables_cereales?: SortOrder
+    superficie_sau_terres_arables_oleagineux?: SortOrder
+    superficie_sau_terres_arables_fourrageres?: SortOrder
+    superficie_sau_terres_arables_tubercules?: SortOrder
+    superficie_sau_terres_arables_legumes_melons_fraises?: SortOrder
+    superficie_sau_terres_arables_fleurs?: SortOrder
+    superficie_sau_terres_arables_autres?: SortOrder
+    superficie_sau_cultures_permanentes?: SortOrder
+    superficie_sau_cultures_permanentes_vigne?: SortOrder
+    superficie_sau_cultures_permanentes_fruits?: SortOrder
+    superficie_sau_cultures_permanentes_autres?: SortOrder
+    superficie_sau_herbe?: SortOrder
+    superficie_sau_herbe_prairies_productives?: SortOrder
+    superficie_sau_herbe_prairies_peu_productives?: SortOrder
+    superficie_sau_herbe_subventions?: SortOrder
+    superficie_sau_herbe_bois_patures?: SortOrder
+    superficie_sau_jardins?: SortOrder
+  }
+
+  export type surfaces_agricolesWhereUniqueInput = Prisma.AtLeast<{
+    index?: bigint | number
+    AND?: surfaces_agricolesWhereInput | surfaces_agricolesWhereInput[]
+    OR?: surfaces_agricolesWhereInput[]
+    NOT?: surfaces_agricolesWhereInput | surfaces_agricolesWhereInput[]
+    epci?: StringFilter<"surfaces_agricoles"> | string
+    exploitation_sau?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_cereales?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_oleagineux?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_fourrageres?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_tubercules?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_legumes_melons_fraises?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_fleurs?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_autres?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_cultures_permanentes?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_cultures_permanentes_vigne?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_cultures_permanentes_fruits?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_cultures_permanentes_autres?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_prairies_productives?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_prairies_peu_productives?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_subventions?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_bois_patures?: FloatFilter<"surfaces_agricoles"> | number
+    exploitation_sau_jardins?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_cereales?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_oleagineux?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_fourrageres?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_tubercules?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_legumes_melons_fraises?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_fleurs?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_autres?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_cultures_permanentes?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_cultures_permanentes_vigne?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_cultures_permanentes_fruits?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_cultures_permanentes_autres?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_prairies_productives?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_prairies_peu_productives?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_subventions?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_bois_patures?: FloatFilter<"surfaces_agricoles"> | number
+    superficie_sau_jardins?: FloatFilter<"surfaces_agricoles"> | number
+  }, "index">
+
+  export type surfaces_agricolesOrderByWithAggregationInput = {
+    index?: SortOrder
+    epci?: SortOrder
+    exploitation_sau?: SortOrder
+    exploitation_sau_terres_arables?: SortOrder
+    exploitation_sau_terres_arables_cereales?: SortOrder
+    exploitation_sau_terres_arables_oleagineux?: SortOrder
+    exploitation_sau_terres_arables_fourrageres?: SortOrder
+    exploitation_sau_terres_arables_tubercules?: SortOrder
+    exploitation_sau_terres_arables_legumes_melons_fraises?: SortOrder
+    exploitation_sau_terres_arables_fleurs?: SortOrder
+    exploitation_sau_terres_arables_autres?: SortOrder
+    exploitation_sau_cultures_permanentes?: SortOrder
+    exploitation_sau_cultures_permanentes_vigne?: SortOrder
+    exploitation_sau_cultures_permanentes_fruits?: SortOrder
+    exploitation_sau_cultures_permanentes_autres?: SortOrder
+    exploitation_sau_herbe?: SortOrder
+    exploitation_sau_herbe_prairies_productives?: SortOrder
+    exploitation_sau_herbe_prairies_peu_productives?: SortOrder
+    exploitation_sau_herbe_subventions?: SortOrder
+    exploitation_sau_herbe_bois_patures?: SortOrder
+    exploitation_sau_jardins?: SortOrder
+    superficie_sau?: SortOrder
+    superficie_sau_terres_arables?: SortOrder
+    superficie_sau_terres_arables_cereales?: SortOrder
+    superficie_sau_terres_arables_oleagineux?: SortOrder
+    superficie_sau_terres_arables_fourrageres?: SortOrder
+    superficie_sau_terres_arables_tubercules?: SortOrder
+    superficie_sau_terres_arables_legumes_melons_fraises?: SortOrder
+    superficie_sau_terres_arables_fleurs?: SortOrder
+    superficie_sau_terres_arables_autres?: SortOrder
+    superficie_sau_cultures_permanentes?: SortOrder
+    superficie_sau_cultures_permanentes_vigne?: SortOrder
+    superficie_sau_cultures_permanentes_fruits?: SortOrder
+    superficie_sau_cultures_permanentes_autres?: SortOrder
+    superficie_sau_herbe?: SortOrder
+    superficie_sau_herbe_prairies_productives?: SortOrder
+    superficie_sau_herbe_prairies_peu_productives?: SortOrder
+    superficie_sau_herbe_subventions?: SortOrder
+    superficie_sau_herbe_bois_patures?: SortOrder
+    superficie_sau_jardins?: SortOrder
+    _count?: surfaces_agricolesCountOrderByAggregateInput
+    _avg?: surfaces_agricolesAvgOrderByAggregateInput
+    _max?: surfaces_agricolesMaxOrderByAggregateInput
+    _min?: surfaces_agricolesMinOrderByAggregateInput
+    _sum?: surfaces_agricolesSumOrderByAggregateInput
+  }
+
+  export type surfaces_agricolesScalarWhereWithAggregatesInput = {
+    AND?: surfaces_agricolesScalarWhereWithAggregatesInput | surfaces_agricolesScalarWhereWithAggregatesInput[]
+    OR?: surfaces_agricolesScalarWhereWithAggregatesInput[]
+    NOT?: surfaces_agricolesScalarWhereWithAggregatesInput | surfaces_agricolesScalarWhereWithAggregatesInput[]
+    index?: BigIntWithAggregatesFilter<"surfaces_agricoles"> | bigint | number
+    epci?: StringWithAggregatesFilter<"surfaces_agricoles"> | string
+    exploitation_sau?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_cereales?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_oleagineux?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_fourrageres?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_tubercules?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_legumes_melons_fraises?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_fleurs?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_terres_arables_autres?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_cultures_permanentes?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_cultures_permanentes_vigne?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_cultures_permanentes_fruits?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_cultures_permanentes_autres?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_prairies_productives?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_prairies_peu_productives?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_subventions?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_herbe_bois_patures?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    exploitation_sau_jardins?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_cereales?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_oleagineux?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_fourrageres?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_tubercules?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_legumes_melons_fraises?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_fleurs?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_terres_arables_autres?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_cultures_permanentes?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_cultures_permanentes_vigne?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_cultures_permanentes_fruits?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_cultures_permanentes_autres?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_prairies_productives?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_prairies_peu_productives?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_subventions?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_herbe_bois_patures?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
+    superficie_sau_jardins?: FloatWithAggregatesFilter<"surfaces_agricoles"> | number
   }
 
   export type north_star_metricCreateInput = {
@@ -31761,12 +33763,12 @@ export namespace Prisma {
     epci?: string | null
     libelle_epci?: string | null
     departement?: string | null
-    libelle_pnr?: string | null
     libelle_departement?: string | null
     region?: string | null
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
+    libelle_pnr?: string | null
     search_code?: string | null
     search_libelle: string
   }
@@ -31778,12 +33780,12 @@ export namespace Prisma {
     epci?: string | null
     libelle_epci?: string | null
     departement?: string | null
-    libelle_pnr?: string | null
     libelle_departement?: string | null
     region?: string | null
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
+    libelle_pnr?: string | null
     search_code?: string | null
     search_libelle: string
   }
@@ -31795,12 +33797,12 @@ export namespace Prisma {
     epci?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
     departement?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     search_code?: NullableStringFieldUpdateOperationsInput | string | null
     search_libelle?: StringFieldUpdateOperationsInput | string
   }
@@ -31812,12 +33814,12 @@ export namespace Prisma {
     epci?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
     departement?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     search_code?: NullableStringFieldUpdateOperationsInput | string | null
     search_libelle?: StringFieldUpdateOperationsInput | string
   }
@@ -31829,12 +33831,12 @@ export namespace Prisma {
     epci?: string | null
     libelle_epci?: string | null
     departement?: string | null
-    libelle_pnr?: string | null
     libelle_departement?: string | null
     region?: string | null
     ept?: string | null
     libelle_petr?: string | null
     code_pnr?: string | null
+    libelle_pnr?: string | null
     search_code?: string | null
     search_libelle: string
   }
@@ -31846,12 +33848,12 @@ export namespace Prisma {
     epci?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
     departement?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     search_code?: NullableStringFieldUpdateOperationsInput | string | null
     search_libelle?: StringFieldUpdateOperationsInput | string
   }
@@ -31863,12 +33865,12 @@ export namespace Prisma {
     epci?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_epci?: NullableStringFieldUpdateOperationsInput | string | null
     departement?: NullableStringFieldUpdateOperationsInput | string | null
-    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_departement?: NullableStringFieldUpdateOperationsInput | string | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
     ept?: NullableStringFieldUpdateOperationsInput | string | null
     libelle_petr?: NullableStringFieldUpdateOperationsInput | string | null
     code_pnr?: NullableStringFieldUpdateOperationsInput | string | null
+    libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     search_code?: NullableStringFieldUpdateOperationsInput | string | null
     search_libelle?: StringFieldUpdateOperationsInput | string
   }
@@ -34200,25 +36202,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number
     nb_logement_sans_alea: number
     nb_logement_alea_moyen_fort_avant_1920: number
+    part_logement_alea_moyen_fort_avant_1920: number
     nb_logement_alea_moyen_fort_1920_1945: number
+    part_logement_alea_moyen_fort_1920_1945: number
     nb_logement_alea_moyen_fort_1945_1975: number
+    part_logement_alea_moyen_fort_1945_1975: number
     nb_logement_alea_moyen_fort_apres_1975: number
+    part_logement_alea_moyen_fort_apres_1975: number
     nb_logement_alea_faible_avant_1920: number
+    part_logement_alea_faible_avant_1920: number
     nb_logement_alea_faible_1920_1945: number
+    part_logement_alea_faible_1920_1945: number
     nb_logement_alea_faible_1945_1975: number
+    part_logement_alea_faible_1945_1975: number
     nb_logement_alea_faible_apres_1975: number
+    part_logement_alea_faible_apres_1975: number
     surface_commune: number
     surface_alea_faible_commune: number
-    surface_alea_moyen_fort_commune: number
-    part_logement_alea_moyen_fort_avant_1920: number
-    part_logement_alea_moyen_fort_1920_1945: number
-    part_logement_alea_moyen_fort_1945_1975: number
-    part_logement_alea_moyen_fort_apres_1975: number
-    part_logement_alea_faible_avant_1920: number
-    part_logement_alea_faible_1920_1945: number
-    part_logement_alea_faible_1945_1975: number
-    part_logement_alea_faible_apres_1975: number
     part_alea_faible_commune: number
+    surface_alea_moyen_fort_commune: number
     part_alea_moyen_fort_commune: number
   }
 
@@ -34240,25 +36242,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number
     nb_logement_sans_alea: number
     nb_logement_alea_moyen_fort_avant_1920: number
+    part_logement_alea_moyen_fort_avant_1920: number
     nb_logement_alea_moyen_fort_1920_1945: number
+    part_logement_alea_moyen_fort_1920_1945: number
     nb_logement_alea_moyen_fort_1945_1975: number
+    part_logement_alea_moyen_fort_1945_1975: number
     nb_logement_alea_moyen_fort_apres_1975: number
+    part_logement_alea_moyen_fort_apres_1975: number
     nb_logement_alea_faible_avant_1920: number
+    part_logement_alea_faible_avant_1920: number
     nb_logement_alea_faible_1920_1945: number
+    part_logement_alea_faible_1920_1945: number
     nb_logement_alea_faible_1945_1975: number
+    part_logement_alea_faible_1945_1975: number
     nb_logement_alea_faible_apres_1975: number
+    part_logement_alea_faible_apres_1975: number
     surface_commune: number
     surface_alea_faible_commune: number
-    surface_alea_moyen_fort_commune: number
-    part_logement_alea_moyen_fort_avant_1920: number
-    part_logement_alea_moyen_fort_1920_1945: number
-    part_logement_alea_moyen_fort_1945_1975: number
-    part_logement_alea_moyen_fort_apres_1975: number
-    part_logement_alea_faible_avant_1920: number
-    part_logement_alea_faible_1920_1945: number
-    part_logement_alea_faible_1945_1975: number
-    part_logement_alea_faible_apres_1975: number
     part_alea_faible_commune: number
+    surface_alea_moyen_fort_commune: number
     part_alea_moyen_fort_commune: number
   }
 
@@ -34280,26 +36282,26 @@ export namespace Prisma {
     nb_logement_alea_faible?: IntFieldUpdateOperationsInput | number
     nb_logement_sans_alea?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
-    surface_commune?: FloatFieldUpdateOperationsInput | number
-    surface_alea_faible_commune?: FloatFieldUpdateOperationsInput | number
-    surface_alea_moyen_fort_commune?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_avant_1920?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1920_1945?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1945_1975?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_apres_1975?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_avant_1920?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1920_1945?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1945_1975?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_apres_1975?: FloatFieldUpdateOperationsInput | number
-    part_alea_faible_commune?: FloatFieldUpdateOperationsInput | number
-    part_alea_moyen_fort_commune?: FloatFieldUpdateOperationsInput | number
+    part_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
+    surface_commune?: IntFieldUpdateOperationsInput | number
+    surface_alea_faible_commune?: IntFieldUpdateOperationsInput | number
+    part_alea_faible_commune?: IntFieldUpdateOperationsInput | number
+    surface_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
+    part_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
   }
 
   export type rgaUncheckedUpdateInput = {
@@ -34320,26 +36322,26 @@ export namespace Prisma {
     nb_logement_alea_faible?: IntFieldUpdateOperationsInput | number
     nb_logement_sans_alea?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
-    surface_commune?: FloatFieldUpdateOperationsInput | number
-    surface_alea_faible_commune?: FloatFieldUpdateOperationsInput | number
-    surface_alea_moyen_fort_commune?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_avant_1920?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1920_1945?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1945_1975?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_apres_1975?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_avant_1920?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1920_1945?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1945_1975?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_apres_1975?: FloatFieldUpdateOperationsInput | number
-    part_alea_faible_commune?: FloatFieldUpdateOperationsInput | number
-    part_alea_moyen_fort_commune?: FloatFieldUpdateOperationsInput | number
+    part_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
+    surface_commune?: IntFieldUpdateOperationsInput | number
+    surface_alea_faible_commune?: IntFieldUpdateOperationsInput | number
+    part_alea_faible_commune?: IntFieldUpdateOperationsInput | number
+    surface_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
+    part_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
   }
 
   export type rgaCreateManyInput = {
@@ -34360,25 +36362,25 @@ export namespace Prisma {
     nb_logement_alea_faible: number
     nb_logement_sans_alea: number
     nb_logement_alea_moyen_fort_avant_1920: number
+    part_logement_alea_moyen_fort_avant_1920: number
     nb_logement_alea_moyen_fort_1920_1945: number
+    part_logement_alea_moyen_fort_1920_1945: number
     nb_logement_alea_moyen_fort_1945_1975: number
+    part_logement_alea_moyen_fort_1945_1975: number
     nb_logement_alea_moyen_fort_apres_1975: number
+    part_logement_alea_moyen_fort_apres_1975: number
     nb_logement_alea_faible_avant_1920: number
+    part_logement_alea_faible_avant_1920: number
     nb_logement_alea_faible_1920_1945: number
+    part_logement_alea_faible_1920_1945: number
     nb_logement_alea_faible_1945_1975: number
+    part_logement_alea_faible_1945_1975: number
     nb_logement_alea_faible_apres_1975: number
+    part_logement_alea_faible_apres_1975: number
     surface_commune: number
     surface_alea_faible_commune: number
-    surface_alea_moyen_fort_commune: number
-    part_logement_alea_moyen_fort_avant_1920: number
-    part_logement_alea_moyen_fort_1920_1945: number
-    part_logement_alea_moyen_fort_1945_1975: number
-    part_logement_alea_moyen_fort_apres_1975: number
-    part_logement_alea_faible_avant_1920: number
-    part_logement_alea_faible_1920_1945: number
-    part_logement_alea_faible_1945_1975: number
-    part_logement_alea_faible_apres_1975: number
     part_alea_faible_commune: number
+    surface_alea_moyen_fort_commune: number
     part_alea_moyen_fort_commune: number
   }
 
@@ -34400,26 +36402,26 @@ export namespace Prisma {
     nb_logement_alea_faible?: IntFieldUpdateOperationsInput | number
     nb_logement_sans_alea?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
-    surface_commune?: FloatFieldUpdateOperationsInput | number
-    surface_alea_faible_commune?: FloatFieldUpdateOperationsInput | number
-    surface_alea_moyen_fort_commune?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_avant_1920?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1920_1945?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1945_1975?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_apres_1975?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_avant_1920?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1920_1945?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1945_1975?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_apres_1975?: FloatFieldUpdateOperationsInput | number
-    part_alea_faible_commune?: FloatFieldUpdateOperationsInput | number
-    part_alea_moyen_fort_commune?: FloatFieldUpdateOperationsInput | number
+    part_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
+    surface_commune?: IntFieldUpdateOperationsInput | number
+    surface_alea_faible_commune?: IntFieldUpdateOperationsInput | number
+    part_alea_faible_commune?: IntFieldUpdateOperationsInput | number
+    surface_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
+    part_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
   }
 
   export type rgaUncheckedUpdateManyInput = {
@@ -34440,26 +36442,26 @@ export namespace Prisma {
     nb_logement_alea_faible?: IntFieldUpdateOperationsInput | number
     nb_logement_sans_alea?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_moyen_fort_apres_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_avant_1920?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1920_1945?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
+    part_logement_alea_faible_1945_1975?: IntFieldUpdateOperationsInput | number
     nb_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
-    surface_commune?: FloatFieldUpdateOperationsInput | number
-    surface_alea_faible_commune?: FloatFieldUpdateOperationsInput | number
-    surface_alea_moyen_fort_commune?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_avant_1920?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1920_1945?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_1945_1975?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_moyen_fort_apres_1975?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_avant_1920?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1920_1945?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_1945_1975?: FloatFieldUpdateOperationsInput | number
-    part_logement_alea_faible_apres_1975?: FloatFieldUpdateOperationsInput | number
-    part_alea_faible_commune?: FloatFieldUpdateOperationsInput | number
-    part_alea_moyen_fort_commune?: FloatFieldUpdateOperationsInput | number
+    part_logement_alea_faible_apres_1975?: IntFieldUpdateOperationsInput | number
+    surface_commune?: IntFieldUpdateOperationsInput | number
+    surface_alea_faible_commune?: IntFieldUpdateOperationsInput | number
+    part_alea_faible_commune?: IntFieldUpdateOperationsInput | number
+    surface_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
+    part_alea_moyen_fort_commune?: IntFieldUpdateOperationsInput | number
   }
 
   export type postgis_rgaCreateInput = {
@@ -34674,6 +36676,307 @@ export namespace Prisma {
     libelle_pnr?: NullableStringFieldUpdateOperationsInput | string | null
     part_irr_SAU_2020?: NullableFloatFieldUpdateOperationsInput | number | null
     part_over_55?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type surfaces_agricolesCreateInput = {
+    index: bigint | number
+    epci: string
+    exploitation_sau: number
+    exploitation_sau_terres_arables: number
+    exploitation_sau_terres_arables_cereales: number
+    exploitation_sau_terres_arables_oleagineux: number
+    exploitation_sau_terres_arables_fourrageres: number
+    exploitation_sau_terres_arables_tubercules: number
+    exploitation_sau_terres_arables_legumes_melons_fraises: number
+    exploitation_sau_terres_arables_fleurs: number
+    exploitation_sau_terres_arables_autres: number
+    exploitation_sau_cultures_permanentes: number
+    exploitation_sau_cultures_permanentes_vigne: number
+    exploitation_sau_cultures_permanentes_fruits: number
+    exploitation_sau_cultures_permanentes_autres: number
+    exploitation_sau_herbe: number
+    exploitation_sau_herbe_prairies_productives: number
+    exploitation_sau_herbe_prairies_peu_productives: number
+    exploitation_sau_herbe_subventions: number
+    exploitation_sau_herbe_bois_patures: number
+    exploitation_sau_jardins: number
+    superficie_sau: number
+    superficie_sau_terres_arables: number
+    superficie_sau_terres_arables_cereales: number
+    superficie_sau_terres_arables_oleagineux: number
+    superficie_sau_terres_arables_fourrageres: number
+    superficie_sau_terres_arables_tubercules: number
+    superficie_sau_terres_arables_legumes_melons_fraises: number
+    superficie_sau_terres_arables_fleurs: number
+    superficie_sau_terres_arables_autres: number
+    superficie_sau_cultures_permanentes: number
+    superficie_sau_cultures_permanentes_vigne: number
+    superficie_sau_cultures_permanentes_fruits: number
+    superficie_sau_cultures_permanentes_autres: number
+    superficie_sau_herbe: number
+    superficie_sau_herbe_prairies_productives: number
+    superficie_sau_herbe_prairies_peu_productives: number
+    superficie_sau_herbe_subventions: number
+    superficie_sau_herbe_bois_patures: number
+    superficie_sau_jardins: number
+  }
+
+  export type surfaces_agricolesUncheckedCreateInput = {
+    index: bigint | number
+    epci: string
+    exploitation_sau: number
+    exploitation_sau_terres_arables: number
+    exploitation_sau_terres_arables_cereales: number
+    exploitation_sau_terres_arables_oleagineux: number
+    exploitation_sau_terres_arables_fourrageres: number
+    exploitation_sau_terres_arables_tubercules: number
+    exploitation_sau_terres_arables_legumes_melons_fraises: number
+    exploitation_sau_terres_arables_fleurs: number
+    exploitation_sau_terres_arables_autres: number
+    exploitation_sau_cultures_permanentes: number
+    exploitation_sau_cultures_permanentes_vigne: number
+    exploitation_sau_cultures_permanentes_fruits: number
+    exploitation_sau_cultures_permanentes_autres: number
+    exploitation_sau_herbe: number
+    exploitation_sau_herbe_prairies_productives: number
+    exploitation_sau_herbe_prairies_peu_productives: number
+    exploitation_sau_herbe_subventions: number
+    exploitation_sau_herbe_bois_patures: number
+    exploitation_sau_jardins: number
+    superficie_sau: number
+    superficie_sau_terres_arables: number
+    superficie_sau_terres_arables_cereales: number
+    superficie_sau_terres_arables_oleagineux: number
+    superficie_sau_terres_arables_fourrageres: number
+    superficie_sau_terres_arables_tubercules: number
+    superficie_sau_terres_arables_legumes_melons_fraises: number
+    superficie_sau_terres_arables_fleurs: number
+    superficie_sau_terres_arables_autres: number
+    superficie_sau_cultures_permanentes: number
+    superficie_sau_cultures_permanentes_vigne: number
+    superficie_sau_cultures_permanentes_fruits: number
+    superficie_sau_cultures_permanentes_autres: number
+    superficie_sau_herbe: number
+    superficie_sau_herbe_prairies_productives: number
+    superficie_sau_herbe_prairies_peu_productives: number
+    superficie_sau_herbe_subventions: number
+    superficie_sau_herbe_bois_patures: number
+    superficie_sau_jardins: number
+  }
+
+  export type surfaces_agricolesUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    epci?: StringFieldUpdateOperationsInput | string
+    exploitation_sau?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_cereales?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_oleagineux?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_fourrageres?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_tubercules?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_legumes_melons_fraises?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_fleurs?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_autres?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes_vigne?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes_fruits?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes_autres?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_jardins?: FloatFieldUpdateOperationsInput | number
+    superficie_sau?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_cereales?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_oleagineux?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_fourrageres?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_tubercules?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_legumes_melons_fraises?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_fleurs?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_autres?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes_vigne?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes_fruits?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes_autres?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_jardins?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type surfaces_agricolesUncheckedUpdateInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    epci?: StringFieldUpdateOperationsInput | string
+    exploitation_sau?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_cereales?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_oleagineux?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_fourrageres?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_tubercules?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_legumes_melons_fraises?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_fleurs?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_autres?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes_vigne?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes_fruits?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes_autres?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_jardins?: FloatFieldUpdateOperationsInput | number
+    superficie_sau?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_cereales?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_oleagineux?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_fourrageres?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_tubercules?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_legumes_melons_fraises?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_fleurs?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_autres?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes_vigne?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes_fruits?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes_autres?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_jardins?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type surfaces_agricolesCreateManyInput = {
+    index: bigint | number
+    epci: string
+    exploitation_sau: number
+    exploitation_sau_terres_arables: number
+    exploitation_sau_terres_arables_cereales: number
+    exploitation_sau_terres_arables_oleagineux: number
+    exploitation_sau_terres_arables_fourrageres: number
+    exploitation_sau_terres_arables_tubercules: number
+    exploitation_sau_terres_arables_legumes_melons_fraises: number
+    exploitation_sau_terres_arables_fleurs: number
+    exploitation_sau_terres_arables_autres: number
+    exploitation_sau_cultures_permanentes: number
+    exploitation_sau_cultures_permanentes_vigne: number
+    exploitation_sau_cultures_permanentes_fruits: number
+    exploitation_sau_cultures_permanentes_autres: number
+    exploitation_sau_herbe: number
+    exploitation_sau_herbe_prairies_productives: number
+    exploitation_sau_herbe_prairies_peu_productives: number
+    exploitation_sau_herbe_subventions: number
+    exploitation_sau_herbe_bois_patures: number
+    exploitation_sau_jardins: number
+    superficie_sau: number
+    superficie_sau_terres_arables: number
+    superficie_sau_terres_arables_cereales: number
+    superficie_sau_terres_arables_oleagineux: number
+    superficie_sau_terres_arables_fourrageres: number
+    superficie_sau_terres_arables_tubercules: number
+    superficie_sau_terres_arables_legumes_melons_fraises: number
+    superficie_sau_terres_arables_fleurs: number
+    superficie_sau_terres_arables_autres: number
+    superficie_sau_cultures_permanentes: number
+    superficie_sau_cultures_permanentes_vigne: number
+    superficie_sau_cultures_permanentes_fruits: number
+    superficie_sau_cultures_permanentes_autres: number
+    superficie_sau_herbe: number
+    superficie_sau_herbe_prairies_productives: number
+    superficie_sau_herbe_prairies_peu_productives: number
+    superficie_sau_herbe_subventions: number
+    superficie_sau_herbe_bois_patures: number
+    superficie_sau_jardins: number
+  }
+
+  export type surfaces_agricolesUpdateManyMutationInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    epci?: StringFieldUpdateOperationsInput | string
+    exploitation_sau?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_cereales?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_oleagineux?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_fourrageres?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_tubercules?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_legumes_melons_fraises?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_fleurs?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_autres?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes_vigne?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes_fruits?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes_autres?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_jardins?: FloatFieldUpdateOperationsInput | number
+    superficie_sau?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_cereales?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_oleagineux?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_fourrageres?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_tubercules?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_legumes_melons_fraises?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_fleurs?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_autres?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes_vigne?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes_fruits?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes_autres?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_jardins?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type surfaces_agricolesUncheckedUpdateManyInput = {
+    index?: BigIntFieldUpdateOperationsInput | bigint | number
+    epci?: StringFieldUpdateOperationsInput | string
+    exploitation_sau?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_cereales?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_oleagineux?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_fourrageres?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_tubercules?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_legumes_melons_fraises?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_fleurs?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_terres_arables_autres?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes_vigne?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes_fruits?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_cultures_permanentes_autres?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
+    exploitation_sau_jardins?: FloatFieldUpdateOperationsInput | number
+    superficie_sau?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_cereales?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_oleagineux?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_fourrageres?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_tubercules?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_legumes_melons_fraises?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_fleurs?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_terres_arables_autres?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes_vigne?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes_fruits?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_cultures_permanentes_autres?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_prairies_productives?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_prairies_peu_productives?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_subventions?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_herbe_bois_patures?: FloatFieldUpdateOperationsInput | number
+    superficie_sau_jardins?: FloatFieldUpdateOperationsInput | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -35060,12 +37363,12 @@ export namespace Prisma {
     epci?: SortOrder
     libelle_epci?: SortOrder
     departement?: SortOrder
-    libelle_pnr?: SortOrder
     libelle_departement?: SortOrder
     region?: SortOrder
     ept?: SortOrder
     libelle_petr?: SortOrder
     code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
     search_code?: SortOrder
     search_libelle?: SortOrder
   }
@@ -35081,12 +37384,12 @@ export namespace Prisma {
     epci?: SortOrder
     libelle_epci?: SortOrder
     departement?: SortOrder
-    libelle_pnr?: SortOrder
     libelle_departement?: SortOrder
     region?: SortOrder
     ept?: SortOrder
     libelle_petr?: SortOrder
     code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
     search_code?: SortOrder
     search_libelle?: SortOrder
   }
@@ -35098,12 +37401,12 @@ export namespace Prisma {
     epci?: SortOrder
     libelle_epci?: SortOrder
     departement?: SortOrder
-    libelle_pnr?: SortOrder
     libelle_departement?: SortOrder
     region?: SortOrder
     ept?: SortOrder
     libelle_petr?: SortOrder
     code_pnr?: SortOrder
+    libelle_pnr?: SortOrder
     search_code?: SortOrder
     search_libelle?: SortOrder
   }
@@ -36722,25 +39025,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: SortOrder
     nb_logement_sans_alea?: SortOrder
     nb_logement_alea_moyen_fort_avant_1920?: SortOrder
+    part_logement_alea_moyen_fort_avant_1920?: SortOrder
     nb_logement_alea_moyen_fort_1920_1945?: SortOrder
+    part_logement_alea_moyen_fort_1920_1945?: SortOrder
     nb_logement_alea_moyen_fort_1945_1975?: SortOrder
+    part_logement_alea_moyen_fort_1945_1975?: SortOrder
     nb_logement_alea_moyen_fort_apres_1975?: SortOrder
+    part_logement_alea_moyen_fort_apres_1975?: SortOrder
     nb_logement_alea_faible_avant_1920?: SortOrder
+    part_logement_alea_faible_avant_1920?: SortOrder
     nb_logement_alea_faible_1920_1945?: SortOrder
+    part_logement_alea_faible_1920_1945?: SortOrder
     nb_logement_alea_faible_1945_1975?: SortOrder
+    part_logement_alea_faible_1945_1975?: SortOrder
     nb_logement_alea_faible_apres_1975?: SortOrder
+    part_logement_alea_faible_apres_1975?: SortOrder
     surface_commune?: SortOrder
     surface_alea_faible_commune?: SortOrder
-    surface_alea_moyen_fort_commune?: SortOrder
-    part_logement_alea_moyen_fort_avant_1920?: SortOrder
-    part_logement_alea_moyen_fort_1920_1945?: SortOrder
-    part_logement_alea_moyen_fort_1945_1975?: SortOrder
-    part_logement_alea_moyen_fort_apres_1975?: SortOrder
-    part_logement_alea_faible_avant_1920?: SortOrder
-    part_logement_alea_faible_1920_1945?: SortOrder
-    part_logement_alea_faible_1945_1975?: SortOrder
-    part_logement_alea_faible_apres_1975?: SortOrder
     part_alea_faible_commune?: SortOrder
+    surface_alea_moyen_fort_commune?: SortOrder
     part_alea_moyen_fort_commune?: SortOrder
   }
 
@@ -36752,25 +39055,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: SortOrder
     nb_logement_sans_alea?: SortOrder
     nb_logement_alea_moyen_fort_avant_1920?: SortOrder
+    part_logement_alea_moyen_fort_avant_1920?: SortOrder
     nb_logement_alea_moyen_fort_1920_1945?: SortOrder
+    part_logement_alea_moyen_fort_1920_1945?: SortOrder
     nb_logement_alea_moyen_fort_1945_1975?: SortOrder
+    part_logement_alea_moyen_fort_1945_1975?: SortOrder
     nb_logement_alea_moyen_fort_apres_1975?: SortOrder
+    part_logement_alea_moyen_fort_apres_1975?: SortOrder
     nb_logement_alea_faible_avant_1920?: SortOrder
+    part_logement_alea_faible_avant_1920?: SortOrder
     nb_logement_alea_faible_1920_1945?: SortOrder
+    part_logement_alea_faible_1920_1945?: SortOrder
     nb_logement_alea_faible_1945_1975?: SortOrder
+    part_logement_alea_faible_1945_1975?: SortOrder
     nb_logement_alea_faible_apres_1975?: SortOrder
+    part_logement_alea_faible_apres_1975?: SortOrder
     surface_commune?: SortOrder
     surface_alea_faible_commune?: SortOrder
-    surface_alea_moyen_fort_commune?: SortOrder
-    part_logement_alea_moyen_fort_avant_1920?: SortOrder
-    part_logement_alea_moyen_fort_1920_1945?: SortOrder
-    part_logement_alea_moyen_fort_1945_1975?: SortOrder
-    part_logement_alea_moyen_fort_apres_1975?: SortOrder
-    part_logement_alea_faible_avant_1920?: SortOrder
-    part_logement_alea_faible_1920_1945?: SortOrder
-    part_logement_alea_faible_1945_1975?: SortOrder
-    part_logement_alea_faible_apres_1975?: SortOrder
     part_alea_faible_commune?: SortOrder
+    surface_alea_moyen_fort_commune?: SortOrder
     part_alea_moyen_fort_commune?: SortOrder
   }
 
@@ -36792,25 +39095,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: SortOrder
     nb_logement_sans_alea?: SortOrder
     nb_logement_alea_moyen_fort_avant_1920?: SortOrder
+    part_logement_alea_moyen_fort_avant_1920?: SortOrder
     nb_logement_alea_moyen_fort_1920_1945?: SortOrder
+    part_logement_alea_moyen_fort_1920_1945?: SortOrder
     nb_logement_alea_moyen_fort_1945_1975?: SortOrder
+    part_logement_alea_moyen_fort_1945_1975?: SortOrder
     nb_logement_alea_moyen_fort_apres_1975?: SortOrder
+    part_logement_alea_moyen_fort_apres_1975?: SortOrder
     nb_logement_alea_faible_avant_1920?: SortOrder
+    part_logement_alea_faible_avant_1920?: SortOrder
     nb_logement_alea_faible_1920_1945?: SortOrder
+    part_logement_alea_faible_1920_1945?: SortOrder
     nb_logement_alea_faible_1945_1975?: SortOrder
+    part_logement_alea_faible_1945_1975?: SortOrder
     nb_logement_alea_faible_apres_1975?: SortOrder
+    part_logement_alea_faible_apres_1975?: SortOrder
     surface_commune?: SortOrder
     surface_alea_faible_commune?: SortOrder
-    surface_alea_moyen_fort_commune?: SortOrder
-    part_logement_alea_moyen_fort_avant_1920?: SortOrder
-    part_logement_alea_moyen_fort_1920_1945?: SortOrder
-    part_logement_alea_moyen_fort_1945_1975?: SortOrder
-    part_logement_alea_moyen_fort_apres_1975?: SortOrder
-    part_logement_alea_faible_avant_1920?: SortOrder
-    part_logement_alea_faible_1920_1945?: SortOrder
-    part_logement_alea_faible_1945_1975?: SortOrder
-    part_logement_alea_faible_apres_1975?: SortOrder
     part_alea_faible_commune?: SortOrder
+    surface_alea_moyen_fort_commune?: SortOrder
     part_alea_moyen_fort_commune?: SortOrder
   }
 
@@ -36832,25 +39135,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: SortOrder
     nb_logement_sans_alea?: SortOrder
     nb_logement_alea_moyen_fort_avant_1920?: SortOrder
+    part_logement_alea_moyen_fort_avant_1920?: SortOrder
     nb_logement_alea_moyen_fort_1920_1945?: SortOrder
+    part_logement_alea_moyen_fort_1920_1945?: SortOrder
     nb_logement_alea_moyen_fort_1945_1975?: SortOrder
+    part_logement_alea_moyen_fort_1945_1975?: SortOrder
     nb_logement_alea_moyen_fort_apres_1975?: SortOrder
+    part_logement_alea_moyen_fort_apres_1975?: SortOrder
     nb_logement_alea_faible_avant_1920?: SortOrder
+    part_logement_alea_faible_avant_1920?: SortOrder
     nb_logement_alea_faible_1920_1945?: SortOrder
+    part_logement_alea_faible_1920_1945?: SortOrder
     nb_logement_alea_faible_1945_1975?: SortOrder
+    part_logement_alea_faible_1945_1975?: SortOrder
     nb_logement_alea_faible_apres_1975?: SortOrder
+    part_logement_alea_faible_apres_1975?: SortOrder
     surface_commune?: SortOrder
     surface_alea_faible_commune?: SortOrder
-    surface_alea_moyen_fort_commune?: SortOrder
-    part_logement_alea_moyen_fort_avant_1920?: SortOrder
-    part_logement_alea_moyen_fort_1920_1945?: SortOrder
-    part_logement_alea_moyen_fort_1945_1975?: SortOrder
-    part_logement_alea_moyen_fort_apres_1975?: SortOrder
-    part_logement_alea_faible_avant_1920?: SortOrder
-    part_logement_alea_faible_1920_1945?: SortOrder
-    part_logement_alea_faible_1945_1975?: SortOrder
-    part_logement_alea_faible_apres_1975?: SortOrder
     part_alea_faible_commune?: SortOrder
+    surface_alea_moyen_fort_commune?: SortOrder
     part_alea_moyen_fort_commune?: SortOrder
   }
 
@@ -36862,25 +39165,25 @@ export namespace Prisma {
     nb_logement_alea_faible?: SortOrder
     nb_logement_sans_alea?: SortOrder
     nb_logement_alea_moyen_fort_avant_1920?: SortOrder
+    part_logement_alea_moyen_fort_avant_1920?: SortOrder
     nb_logement_alea_moyen_fort_1920_1945?: SortOrder
+    part_logement_alea_moyen_fort_1920_1945?: SortOrder
     nb_logement_alea_moyen_fort_1945_1975?: SortOrder
+    part_logement_alea_moyen_fort_1945_1975?: SortOrder
     nb_logement_alea_moyen_fort_apres_1975?: SortOrder
+    part_logement_alea_moyen_fort_apres_1975?: SortOrder
     nb_logement_alea_faible_avant_1920?: SortOrder
+    part_logement_alea_faible_avant_1920?: SortOrder
     nb_logement_alea_faible_1920_1945?: SortOrder
+    part_logement_alea_faible_1920_1945?: SortOrder
     nb_logement_alea_faible_1945_1975?: SortOrder
+    part_logement_alea_faible_1945_1975?: SortOrder
     nb_logement_alea_faible_apres_1975?: SortOrder
+    part_logement_alea_faible_apres_1975?: SortOrder
     surface_commune?: SortOrder
     surface_alea_faible_commune?: SortOrder
-    surface_alea_moyen_fort_commune?: SortOrder
-    part_logement_alea_moyen_fort_avant_1920?: SortOrder
-    part_logement_alea_moyen_fort_1920_1945?: SortOrder
-    part_logement_alea_moyen_fort_1945_1975?: SortOrder
-    part_logement_alea_moyen_fort_apres_1975?: SortOrder
-    part_logement_alea_faible_avant_1920?: SortOrder
-    part_logement_alea_faible_1920_1945?: SortOrder
-    part_logement_alea_faible_1945_1975?: SortOrder
-    part_logement_alea_faible_apres_1975?: SortOrder
     part_alea_faible_commune?: SortOrder
+    surface_alea_moyen_fort_commune?: SortOrder
     part_alea_moyen_fort_commune?: SortOrder
   }
 
@@ -37007,6 +39310,219 @@ export namespace Prisma {
     region?: SortOrder
     part_irr_SAU_2020?: SortOrder
     part_over_55?: SortOrder
+  }
+
+  export type surfaces_agricolesCountOrderByAggregateInput = {
+    index?: SortOrder
+    epci?: SortOrder
+    exploitation_sau?: SortOrder
+    exploitation_sau_terres_arables?: SortOrder
+    exploitation_sau_terres_arables_cereales?: SortOrder
+    exploitation_sau_terres_arables_oleagineux?: SortOrder
+    exploitation_sau_terres_arables_fourrageres?: SortOrder
+    exploitation_sau_terres_arables_tubercules?: SortOrder
+    exploitation_sau_terres_arables_legumes_melons_fraises?: SortOrder
+    exploitation_sau_terres_arables_fleurs?: SortOrder
+    exploitation_sau_terres_arables_autres?: SortOrder
+    exploitation_sau_cultures_permanentes?: SortOrder
+    exploitation_sau_cultures_permanentes_vigne?: SortOrder
+    exploitation_sau_cultures_permanentes_fruits?: SortOrder
+    exploitation_sau_cultures_permanentes_autres?: SortOrder
+    exploitation_sau_herbe?: SortOrder
+    exploitation_sau_herbe_prairies_productives?: SortOrder
+    exploitation_sau_herbe_prairies_peu_productives?: SortOrder
+    exploitation_sau_herbe_subventions?: SortOrder
+    exploitation_sau_herbe_bois_patures?: SortOrder
+    exploitation_sau_jardins?: SortOrder
+    superficie_sau?: SortOrder
+    superficie_sau_terres_arables?: SortOrder
+    superficie_sau_terres_arables_cereales?: SortOrder
+    superficie_sau_terres_arables_oleagineux?: SortOrder
+    superficie_sau_terres_arables_fourrageres?: SortOrder
+    superficie_sau_terres_arables_tubercules?: SortOrder
+    superficie_sau_terres_arables_legumes_melons_fraises?: SortOrder
+    superficie_sau_terres_arables_fleurs?: SortOrder
+    superficie_sau_terres_arables_autres?: SortOrder
+    superficie_sau_cultures_permanentes?: SortOrder
+    superficie_sau_cultures_permanentes_vigne?: SortOrder
+    superficie_sau_cultures_permanentes_fruits?: SortOrder
+    superficie_sau_cultures_permanentes_autres?: SortOrder
+    superficie_sau_herbe?: SortOrder
+    superficie_sau_herbe_prairies_productives?: SortOrder
+    superficie_sau_herbe_prairies_peu_productives?: SortOrder
+    superficie_sau_herbe_subventions?: SortOrder
+    superficie_sau_herbe_bois_patures?: SortOrder
+    superficie_sau_jardins?: SortOrder
+  }
+
+  export type surfaces_agricolesAvgOrderByAggregateInput = {
+    index?: SortOrder
+    exploitation_sau?: SortOrder
+    exploitation_sau_terres_arables?: SortOrder
+    exploitation_sau_terres_arables_cereales?: SortOrder
+    exploitation_sau_terres_arables_oleagineux?: SortOrder
+    exploitation_sau_terres_arables_fourrageres?: SortOrder
+    exploitation_sau_terres_arables_tubercules?: SortOrder
+    exploitation_sau_terres_arables_legumes_melons_fraises?: SortOrder
+    exploitation_sau_terres_arables_fleurs?: SortOrder
+    exploitation_sau_terres_arables_autres?: SortOrder
+    exploitation_sau_cultures_permanentes?: SortOrder
+    exploitation_sau_cultures_permanentes_vigne?: SortOrder
+    exploitation_sau_cultures_permanentes_fruits?: SortOrder
+    exploitation_sau_cultures_permanentes_autres?: SortOrder
+    exploitation_sau_herbe?: SortOrder
+    exploitation_sau_herbe_prairies_productives?: SortOrder
+    exploitation_sau_herbe_prairies_peu_productives?: SortOrder
+    exploitation_sau_herbe_subventions?: SortOrder
+    exploitation_sau_herbe_bois_patures?: SortOrder
+    exploitation_sau_jardins?: SortOrder
+    superficie_sau?: SortOrder
+    superficie_sau_terres_arables?: SortOrder
+    superficie_sau_terres_arables_cereales?: SortOrder
+    superficie_sau_terres_arables_oleagineux?: SortOrder
+    superficie_sau_terres_arables_fourrageres?: SortOrder
+    superficie_sau_terres_arables_tubercules?: SortOrder
+    superficie_sau_terres_arables_legumes_melons_fraises?: SortOrder
+    superficie_sau_terres_arables_fleurs?: SortOrder
+    superficie_sau_terres_arables_autres?: SortOrder
+    superficie_sau_cultures_permanentes?: SortOrder
+    superficie_sau_cultures_permanentes_vigne?: SortOrder
+    superficie_sau_cultures_permanentes_fruits?: SortOrder
+    superficie_sau_cultures_permanentes_autres?: SortOrder
+    superficie_sau_herbe?: SortOrder
+    superficie_sau_herbe_prairies_productives?: SortOrder
+    superficie_sau_herbe_prairies_peu_productives?: SortOrder
+    superficie_sau_herbe_subventions?: SortOrder
+    superficie_sau_herbe_bois_patures?: SortOrder
+    superficie_sau_jardins?: SortOrder
+  }
+
+  export type surfaces_agricolesMaxOrderByAggregateInput = {
+    index?: SortOrder
+    epci?: SortOrder
+    exploitation_sau?: SortOrder
+    exploitation_sau_terres_arables?: SortOrder
+    exploitation_sau_terres_arables_cereales?: SortOrder
+    exploitation_sau_terres_arables_oleagineux?: SortOrder
+    exploitation_sau_terres_arables_fourrageres?: SortOrder
+    exploitation_sau_terres_arables_tubercules?: SortOrder
+    exploitation_sau_terres_arables_legumes_melons_fraises?: SortOrder
+    exploitation_sau_terres_arables_fleurs?: SortOrder
+    exploitation_sau_terres_arables_autres?: SortOrder
+    exploitation_sau_cultures_permanentes?: SortOrder
+    exploitation_sau_cultures_permanentes_vigne?: SortOrder
+    exploitation_sau_cultures_permanentes_fruits?: SortOrder
+    exploitation_sau_cultures_permanentes_autres?: SortOrder
+    exploitation_sau_herbe?: SortOrder
+    exploitation_sau_herbe_prairies_productives?: SortOrder
+    exploitation_sau_herbe_prairies_peu_productives?: SortOrder
+    exploitation_sau_herbe_subventions?: SortOrder
+    exploitation_sau_herbe_bois_patures?: SortOrder
+    exploitation_sau_jardins?: SortOrder
+    superficie_sau?: SortOrder
+    superficie_sau_terres_arables?: SortOrder
+    superficie_sau_terres_arables_cereales?: SortOrder
+    superficie_sau_terres_arables_oleagineux?: SortOrder
+    superficie_sau_terres_arables_fourrageres?: SortOrder
+    superficie_sau_terres_arables_tubercules?: SortOrder
+    superficie_sau_terres_arables_legumes_melons_fraises?: SortOrder
+    superficie_sau_terres_arables_fleurs?: SortOrder
+    superficie_sau_terres_arables_autres?: SortOrder
+    superficie_sau_cultures_permanentes?: SortOrder
+    superficie_sau_cultures_permanentes_vigne?: SortOrder
+    superficie_sau_cultures_permanentes_fruits?: SortOrder
+    superficie_sau_cultures_permanentes_autres?: SortOrder
+    superficie_sau_herbe?: SortOrder
+    superficie_sau_herbe_prairies_productives?: SortOrder
+    superficie_sau_herbe_prairies_peu_productives?: SortOrder
+    superficie_sau_herbe_subventions?: SortOrder
+    superficie_sau_herbe_bois_patures?: SortOrder
+    superficie_sau_jardins?: SortOrder
+  }
+
+  export type surfaces_agricolesMinOrderByAggregateInput = {
+    index?: SortOrder
+    epci?: SortOrder
+    exploitation_sau?: SortOrder
+    exploitation_sau_terres_arables?: SortOrder
+    exploitation_sau_terres_arables_cereales?: SortOrder
+    exploitation_sau_terres_arables_oleagineux?: SortOrder
+    exploitation_sau_terres_arables_fourrageres?: SortOrder
+    exploitation_sau_terres_arables_tubercules?: SortOrder
+    exploitation_sau_terres_arables_legumes_melons_fraises?: SortOrder
+    exploitation_sau_terres_arables_fleurs?: SortOrder
+    exploitation_sau_terres_arables_autres?: SortOrder
+    exploitation_sau_cultures_permanentes?: SortOrder
+    exploitation_sau_cultures_permanentes_vigne?: SortOrder
+    exploitation_sau_cultures_permanentes_fruits?: SortOrder
+    exploitation_sau_cultures_permanentes_autres?: SortOrder
+    exploitation_sau_herbe?: SortOrder
+    exploitation_sau_herbe_prairies_productives?: SortOrder
+    exploitation_sau_herbe_prairies_peu_productives?: SortOrder
+    exploitation_sau_herbe_subventions?: SortOrder
+    exploitation_sau_herbe_bois_patures?: SortOrder
+    exploitation_sau_jardins?: SortOrder
+    superficie_sau?: SortOrder
+    superficie_sau_terres_arables?: SortOrder
+    superficie_sau_terres_arables_cereales?: SortOrder
+    superficie_sau_terres_arables_oleagineux?: SortOrder
+    superficie_sau_terres_arables_fourrageres?: SortOrder
+    superficie_sau_terres_arables_tubercules?: SortOrder
+    superficie_sau_terres_arables_legumes_melons_fraises?: SortOrder
+    superficie_sau_terres_arables_fleurs?: SortOrder
+    superficie_sau_terres_arables_autres?: SortOrder
+    superficie_sau_cultures_permanentes?: SortOrder
+    superficie_sau_cultures_permanentes_vigne?: SortOrder
+    superficie_sau_cultures_permanentes_fruits?: SortOrder
+    superficie_sau_cultures_permanentes_autres?: SortOrder
+    superficie_sau_herbe?: SortOrder
+    superficie_sau_herbe_prairies_productives?: SortOrder
+    superficie_sau_herbe_prairies_peu_productives?: SortOrder
+    superficie_sau_herbe_subventions?: SortOrder
+    superficie_sau_herbe_bois_patures?: SortOrder
+    superficie_sau_jardins?: SortOrder
+  }
+
+  export type surfaces_agricolesSumOrderByAggregateInput = {
+    index?: SortOrder
+    exploitation_sau?: SortOrder
+    exploitation_sau_terres_arables?: SortOrder
+    exploitation_sau_terres_arables_cereales?: SortOrder
+    exploitation_sau_terres_arables_oleagineux?: SortOrder
+    exploitation_sau_terres_arables_fourrageres?: SortOrder
+    exploitation_sau_terres_arables_tubercules?: SortOrder
+    exploitation_sau_terres_arables_legumes_melons_fraises?: SortOrder
+    exploitation_sau_terres_arables_fleurs?: SortOrder
+    exploitation_sau_terres_arables_autres?: SortOrder
+    exploitation_sau_cultures_permanentes?: SortOrder
+    exploitation_sau_cultures_permanentes_vigne?: SortOrder
+    exploitation_sau_cultures_permanentes_fruits?: SortOrder
+    exploitation_sau_cultures_permanentes_autres?: SortOrder
+    exploitation_sau_herbe?: SortOrder
+    exploitation_sau_herbe_prairies_productives?: SortOrder
+    exploitation_sau_herbe_prairies_peu_productives?: SortOrder
+    exploitation_sau_herbe_subventions?: SortOrder
+    exploitation_sau_herbe_bois_patures?: SortOrder
+    exploitation_sau_jardins?: SortOrder
+    superficie_sau?: SortOrder
+    superficie_sau_terres_arables?: SortOrder
+    superficie_sau_terres_arables_cereales?: SortOrder
+    superficie_sau_terres_arables_oleagineux?: SortOrder
+    superficie_sau_terres_arables_fourrageres?: SortOrder
+    superficie_sau_terres_arables_tubercules?: SortOrder
+    superficie_sau_terres_arables_legumes_melons_fraises?: SortOrder
+    superficie_sau_terres_arables_fleurs?: SortOrder
+    superficie_sau_terres_arables_autres?: SortOrder
+    superficie_sau_cultures_permanentes?: SortOrder
+    superficie_sau_cultures_permanentes_vigne?: SortOrder
+    superficie_sau_cultures_permanentes_fruits?: SortOrder
+    superficie_sau_cultures_permanentes_autres?: SortOrder
+    superficie_sau_herbe?: SortOrder
+    superficie_sau_herbe_prairies_productives?: SortOrder
+    superficie_sau_herbe_prairies_peu_productives?: SortOrder
+    superficie_sau_herbe_subventions?: SortOrder
+    superficie_sau_herbe_bois_patures?: SortOrder
+    superficie_sau_jardins?: SortOrder
   }
 
   export type StringFieldUpdateOperationsInput = {

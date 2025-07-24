@@ -10,6 +10,12 @@ const RessourcesEau = async (props: { searchParams: SearchParams }) => {
   const dbRessourcesEau = await GetRessourceEau(code, libelle, type);
   const carteCommunes = await GetCommunes(code, libelle, type);
 
+    // const res = await fetch(
+  //   `http://localhost:3000/api/ressources-eau?code=${code}&libelle=${libelle}&type=${type}`,
+  //   { cache: 'no-store' }
+  // );
+  // const dbRessourcesEauTest = await res.json();
+  
   return (
     <div className={styles.container}>
       <RessourcesEauComp

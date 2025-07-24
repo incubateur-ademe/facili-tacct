@@ -1,5 +1,6 @@
 import { DefinitionTooltip } from "@/components/utils/HtmlTooltip";
 import { eutrophisation, irrigable, PNACC } from "@/lib/definitions";
+import styles from './themes.module.scss';
 
 export const AgeBatiText = () => (
   <div className="px-4">
@@ -189,7 +190,7 @@ export const VegetalisationText = () => (
 );
 
 export const SurfacesIrrigueesText = () => (
-  <div className="px-4">
+  <div className={styles.textWrapper}>
     <p>
       En France métropolitaine, 6,8 % de la surface agricole utile
       (SAU) était irriguée en 2020, soit 15 % de plus qu’en 2010.
@@ -350,6 +351,37 @@ export const SurfacesEnBioText = () => (
     </p>
     <p>
       ⇒ Jusqu'à 35 % de carbone supplémentaire stocké dans les sols.
+    </p>
+  </div>
+);
+
+export const SurfacesEnBioAgricultureText = () => (
+  <div className="px-4">
+    <p>
+      Les défis de l’agriculture sont doubles : réduire ses émissions
+      de gaz à effet de serre et s'adapter aux impacts du changement
+      climatique : l’intensification des sécheresses menaçant la disponibilité
+      en eau, la dégradation des sols, etc. Face à ces enjeux, l'agriculture
+      biologique, même si elle n’est pas la solution parfaite, apporte des
+      réponses concrètes, aux côtés de l'agroforesterie et des cultures à bas intrants.
+    </p>
+    <p>
+      Le bio renforce la résistance des exploitations agricoles. Comment ? Par
+      la non-utilisation des produits chimiques de synthèse et des OGM.
+      Grâce au recyclage des matières organiques. Par la rotation des cultures.
+      À travers la lutte biologique. Le compostage et la couverture permanente
+      des sols enrichissent la vie microbienne. Les résultats parlent d'eux-mêmes : jusqu'à
+      35 % de carbone supplémentaire dans les sols. Une meilleure disponibilité
+      en eau pour les plantes, avec des gains de 4 % à 45 %. Un territoire comptant
+      plus d'exploitations bio résiste mieux aux aléas climatiques. Enfin, à
+      surface égale, les cultures biologiques végétales émettent 50 % de gaz
+      à effet de serre en moins que les cultures conventionnelles.
+    </p>
+    <p>
+      - - - - <br></br>
+      Le Plan national d’adaptation au changement climatique (PNACC 3)
+      prévoit d’accompagner les agriculteurs pour assurer la résilience de
+      leur exploitation (mesure 37).
     </p>
   </div>
 );
@@ -709,15 +741,37 @@ export const RGAText = () => (
 export const SurfacesAgricolesText = () => (
   <div className="px-4">
     <p>
-      En 2020, plus de 94 % des terres agricoles françaises étaient consacrées aux grandes cultures et aux cultures fourragères.
-      Le reste, vergers, vignes, légumes, plantes à parfum, ne représentait que 6 % des surfaces, bien qu’il concentre souvent les cultures les plus sensibles aux aléas climatiques. Ces dernières années, des pertes importantes ont été enregistrées dans les vergers d’abricotiers (gel printanier), les vignobles (mildiou, sécheresse) ou les cultures maraîchères (pluies excessives), illustrant une vulnérabilité déjà bien réelle.
+      En 2020, près de deux tiers des terres agricoles françaises étaient
+      consacrées aux terres arables : grandes cultures, légumes, mais aussi
+      cultures fourragères destinées à l’élevage. Un tiers correspondait
+      aux surfaces toujours en herbe (prairies permanentes), également
+      utilisées pour l’élevage. Les cultures permanentes tels que les vergers,
+      vignes, plantes à parfum, ainsi que certaines cultures légumières,
+      bien que minoritaires en surface, concentrent une part importante
+      des pertes liées aux aléas climatiques : gel printanier sur les
+      abricotiers, mildiou ou sécheresse sur la vigne, excès d’eau sur
+      le maraîchage.
     </p>
     <p>
-      Une agriculture trop spécialisée peut fragiliser l’ensemble d’un territoire : un seul aléa suffit parfois à mettre en péril une exploitation sous pression.
-      Et avec un climat à +2 °C d’ici 2030, ces épisodes extrêmes deviendront plus fréquents.
+      Ces pertes illustrent les limites d’un système agricole encore
+      souvent spécialisé, peu préparé à absorber des chocs climatiques
+      répétés. Un seul aléa suffit parfois à compromettre plusieurs années
+      de revenus.
     </p>
     <p>
-      La diversification est l’une des voies possibles pour renforcer la résilience des territoires agricoles. Si l’agriculture de votre territoire repose surtout sur une ou deux cultures, quelle marge de résilience reste-t-il face aux aléas climatiques ?
+      La diversification est l’une des voies possibles pour renforcer la
+      résilience des territoires agricoles. Si l’agriculture de votre
+      territoire repose surtout sur une ou deux cultures, quelle marge
+      de résilience reste-t-il face aux aléas climatiques ?
+    </p>
+    <p>
+      ⇒ Près de 49 % de la surface agricole utile est mobilisée pour l’élevage.
+    </p>
+    <p>
+      ⇒ Les jachères agricoles ont reculé de 29 % entre 2010 et 2020.
+    </p>
+    <p>
+      ⇒ En 2024, la production viticole a chuté de 18 % par rapport à la moyenne 2019-2023.
     </p>
   </div>
 )
@@ -725,20 +779,24 @@ export const SurfacesAgricolesText = () => (
 export const LCZText = () => (
   <div className="px-4">
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-      do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco
-      laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-      irure dolor in reprehenderit in voluptate velit esse cillum
-      dolore eu fugiat nulla pariatur.
+      Les LCZ qui reposent sur des mesures de température de surface
+      ne permettent pas de quantifier le phénomène d’ilot de chaleur
+      urbain (ICU) qui, lui, repose sur des mesures dynamiques de
+      température de l’air. Les LCZ ne reflètent pas non plus les
+      conditions météorologiques locales, ni le confort thermique
+      ressenti par les usagers. Elles contribuent à repérer des
+      zones où une exposition à la surchauffe pourrait être plus
+      marquée, en vue d’y installer des capteurs ou d’orienter
+      des actions de rafraîchissement. Mais en aucun cas ces éléments
+      de pré-diagnostic ne se substituent à des données climatiques
+      dynamiques, ou à une analyse fine des usages de la ville et
+      de la vulnérabilité face à la chaleur.
     </p>
     <p>
-      Excepteur sint occaecat cupidatat non proident, sunt in
-      culpa qui officia deserunt mollit anim id est laborum. Sed ut
-      perspiciatis unde omnis iste natus error sit voluptatem
-      accusantium doloremque laudantium, totam rem aperiam, eaque
-      ipsa quae ab illo inventore veritatis et quasi architecto
-      beatae vitae dicta sunt explicabo.
+      Pour orienter efficacement une stratégies d’adaptation, consultez&nbsp;
+      <a href="https://www.plusfraichemaville.fr/" target="_blank" rel="noreferrer">
+        Plus fraiche ma ville.
+      </a>
     </p>
   </div>
 );
