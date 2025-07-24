@@ -118,7 +118,7 @@ export const SubAccordionGraph = ({
               key={index}
               placement="top"
             >
-              <div key={index} className={styles.progressDataWrapper}>
+              <div key={index} className={styles.progressDataWrapperSurfacesAgricoles}>
                 <div className={styles.progressDesign}>
                   <div className={styles.progressBar}>
                     <p>{item.id}</p>

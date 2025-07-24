@@ -155,7 +155,7 @@ const PrelevementEauProgressBarsPNR = ({
                       <b>
                         {Round((100 * item.sumTerritoire) / total, 2)} %
                       </b>{' '}
-                      ({Round(item.sumTerritoire / 1000000, 2)} Mm³)
+                      ({Round(item.sumTerritoire / 1000000, 2)} Mm3)
                     </p>
                   </div>
                 }
@@ -186,7 +186,7 @@ const PrelevementEauProgressBarsPNR = ({
                         {Round((100 * item.sumTerritoire) / total, 2)} %
                       </b>
                     </p>
-                    <p>{Round(item.sumTerritoire / 1000000, 2)} Mm³</p>
+                    <p>{Round(item.sumTerritoire / 1000000, 2)} Mm3</p>
                   </div>
                 </div>
               </HtmlTooltip>

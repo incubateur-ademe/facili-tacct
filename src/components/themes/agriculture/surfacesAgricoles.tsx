@@ -46,6 +46,11 @@ export const SurfacesAgricoles = ({
       ? multipleEpciByPnrLibelle.find(pnr => pnr.libelle_pnr === libelle)?.liste_epci_multi_pnr
       : undefined;
 
+
+  console.log("Code:", code);
+  console.log("multipleEpciBydepartementLibelle:", multipleEpciBydepartementLibelle.filter(el => el.liste_epci_multi_dept.includes('Sans objet')));
+  console.log("Territoires partiellement couverts:", territoiresPartiellementCouverts);
+
   useEffect(() => {
     void (async () => {
       if (type === 'commune' || type === 'epci' || type === 'ept') {
@@ -82,11 +87,19 @@ export const SurfacesAgricoles = ({
                       </p>
                       {
                         (type === "departement" || type === "pnr") && territoiresPartiellementCouverts && (
-                          <p style={{ color: '#161616' }}>
-                            <br></br>
-                            Sur votre territoire, <b>{territoiresPartiellementCouverts?.length} EPCI</b> {territoiresPartiellementCouverts?.length === 1 ? "est" : "sont"} à
-                            cheval sur plusieurs {type !== "pnr" ? "départements" : "PNR"} : {territoiresPartiellementCouverts?.map(epci => epci).join(", ")}.
-                          </p>
+                          <>
+                            <p style={{ color: '#3a3a3a' }}>
+                              <br></br>
+                              Sur votre territoire, <b>{territoiresPartiellementCouverts?.length} EPCI</b> {territoiresPartiellementCouverts?.length === 1 ? "est" : "sont"} à
+                              cheval sur plusieurs {type !== "pnr" ? "départements" : "PNR"} :
+
+                            </p>
+                            <ul style={{ margin: "0.5rem 0 0 1.5rem" }}>
+                              {territoiresPartiellementCouverts?.map((epci, index) => (
+                                <li key={index} style={{ fontSize: "1rem" }}>{epci}</li>
+                              ))}
+                            </ul>
+                          </>
                         )
                       }
                     </>

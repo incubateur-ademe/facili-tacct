@@ -76,11 +76,11 @@ const RecruterStagiaire = () => {
           Observatoire de l’environnement, Climadiag, etc.), amorce une cartographie des acteurs et commence à préfigurer un comité d’experts local.
           Il produit également des fiches de synthèse par impact, prêtes à être discutées.
         </p>
-        <p>
+        <div className={styles.grayQuoteWrapper}>
           “Il est tout de suite rentré dedans. Je l’ai laissé assez autonome, on faisait des points réguliers.
           C’est lui qui m’a entraînée, pas l’inverse. Je ne serais jamais rentrée dans TACCT seule.
           Le stage m’a obligée à m’y plonger”, reconnaît Isabelle.
-        </p>
+        </div>
         <p>
           Initialement, Isabelle espérait pouvoir réunir un comité local et organiser une restitution en deux mois.
           Mais elle le reconnaît : même avec un bon stagiaire, ce n’était pas réaliste. Le diagnostic reste à finaliser,
@@ -91,7 +91,6 @@ const RecruterStagiaire = () => {
           et un stagiaire autonome et débrouillard. Isabelle reste toutefois lucide : “Tous les stagiaires ne sont pas aussi autonomes.
           Mais quand c’est le cas, ça peut vraiment faire levier.”
         </p>
-        <h3>Des réussites à nuancer</h3>
         <p>
           Si certaines collectivités franchissent une étape décisive grâce à un stage, d'autres alertent sur les limites du format.
           Durée trop courte, sujet trop transversal ou trop politique : le diagnostic de vulnérabilité n’est pas toujours une mission adaptée.

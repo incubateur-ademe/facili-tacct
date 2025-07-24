@@ -2,12 +2,12 @@
 
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
-import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
 import { PrograssBarDataSurfacesAgricoles } from '@/lib/charts/surfacesAgricoles';
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { SubAccordionGraph } from '../subAccordionGraph';
+import styles from './agriculture.module.scss';
 
 type graphDataItem = {
   [key: string]: {
