@@ -2,7 +2,7 @@
 import ICUGuideSurchauffe from "@/assets/images/ICU_Guide_Surchauffe.png";
 import ICUVilles from "@/assets/images/villes_exposees_icu.png";
 import { DefinitionTooltip } from "@/components/utils/HtmlTooltip";
-import { surchauffeUrbaine } from "@/lib/definitions";
+import { albedo, surchauffeUrbaine } from "@/lib/definitions";
 import Image from "next/image";
 import { useRef } from "react";
 import EndPageTrigger from "../../../hooks/EndPageTrigger";
@@ -16,7 +16,7 @@ const IlotChaleurUrbain = () => {
   };
   return (
     <>
-      <div className={styles.textBloc}>
+      <div className={styles.textBloc} style={{ paddingTop: "0rem" }}>
         <div className={styles.grayQuoteWrapper}>
           <p style={{ fontSize: "1.5rem", fontWeight: "700" }}>À retenir</p>
           <ul>
@@ -98,7 +98,7 @@ const IlotChaleurUrbain = () => {
           width={0}
           height={0}
           sizes="100%"
-          style={{ width: '100%', height: 'auto' }}
+          style={{ width: '100%', height: 'auto', paddingTop: "1rem" }}
         />
         <p>
           <a href="#sources" onClick={handleScrollToSources} style={{ cursor: "pointer" }}>
@@ -106,9 +106,9 @@ const IlotChaleurUrbain = () => {
           </a>
         </p>
         <p>
-          Il s’agit d’un phénomène qui s’inscrit dans un ensemble plus large : la {" "}
+          Il s’agit d’un phénomène qui s’inscrit dans un ensemble plus large : {" "}
           <DefinitionTooltip title={surchauffeUrbaine}>
-            surchauffe urbaine.
+            la surchauffe urbaine.
           </DefinitionTooltip>
           {" "} Ce terme regroupe trois réalités différentes, souvent confondues entre elles au moment
           d’analyser ou de cartographier un ICU :
@@ -147,7 +147,7 @@ const IlotChaleurUrbain = () => {
             </tr>
             <tr>
               <td style={{ border: '1px solid #ccc', padding: '12px', fontSize: '0.875rem' }}>
-                <strong>Température de surface</strong>
+                <strong>Surchauffe des surfaces urbaines</strong>
               </td>
               <td style={{ border: '1px solid #ccc', padding: '12px', fontSize: '0.875rem' }}>
                 Thermographie satellitaire ou aérienne
@@ -156,7 +156,7 @@ const IlotChaleurUrbain = () => {
                 En journée, par temps ensoleillé. Parfois aussi la nuit
               </td>
               <td style={{ border: '1px solid #ccc', padding: '12px', fontSize: '0.875rem' }}>
-                <strong>Température des matériaux urbains</strong> (bitume, toitures, tuiles…), liée à leur <strong>capacité à emmagasiner et restituer la chaleur</strong>
+                <strong>Température de surface</strong> (bitume, toitures, tuiles…), liée à leur capacité à emmagasiner et restituer la chaleur
               </td>
             </tr>
             <tr>
@@ -164,13 +164,13 @@ const IlotChaleurUrbain = () => {
                 <strong>Inconfort thermique du piéton</strong>
               </td>
               <td style={{ border: '1px solid #ccc', padding: '12px', fontSize: '0.875rem' }}>
-                Ressenti (chaleur, éblouissement, étouffement)
+                Calcul d’indices de température ressentie, enquêtes auprès des habitants
               </td>
               <td style={{ border: '1px solid #ccc', padding: '12px', fontSize: '0.875rem' }}>
                 En journée, dans l'espace public exposé. Parfois la nuit aussi (ex. nuits chaudes tropicales).
               </td>
               <td style={{ border: '1px solid #ccc', padding: '12px', fontSize: '0.875rem' }}>
-                <strong>Sensation de chaleur ou de gêne physique</strong>, influencée par l'exposition au soleil, l'absence d'ombre, le vent, l'humidité…
+                <strong>Température ressentie</strong> (sensation de chaleur ou de gêne physique influencée par l’exposition au soleil, l’absence d’ombre, le vent, l’humidité…)
               </td>
             </tr>
           </tbody>
@@ -300,7 +300,7 @@ const IlotChaleurUrbain = () => {
         <p>
           À l’inverse, un quartier résidentiel peu ventilé peut apparaître peu problématique sur une carte de température de surface, alors qu’il accumule fortement la chaleur de nuit comme de jour. L’inconfort thermique peut être bien réel, mais absent sur une carte.
         </p>
-        <div className={styles.grayWrapper}>
+        <div className={styles.grayWrapper} style={{ marginBottom: "2rem" }}>
           <p style={{ fontSize: "1.25rem", fontWeight: "700" }}>Exemple : quand une image de température de surface peut induire en erreur</p>
           <p>
             Prenons une zone industrielle : tôle, bitume, pas d’ombre.
@@ -347,13 +347,13 @@ const IlotChaleurUrbain = () => {
         </p>
         <ul>
           <li>
-            certaines collectivités ont lancé des diagnostics lourds et coûteux sans avoir clairement défini leur le besoin ni formalisé un cahier des charges,
+            certaines collectivités ont lancé des diagnostics lourds et coûteux sans avoir clairement défini leur besoin ni formalisé un cahier des charges,
           </li>
           <li>
-            D’autres se sont appuyées uniquement sur la température de surface, pensant diagnostiquer un ICU,
+            d’autres se sont appuyées uniquement sur la température de surface, pensant diagnostiquer un ICU,
           </li>
           <li>
-            Enfin, des diagnostics de surchauffe urbaine ont été engagés sans avoir défini clairement si le besoin relevait de la planification à long terme ou d’un projet urbain concret.
+            enfin, des diagnostics de surchauffe urbaine ont été engagés sans avoir défini clairement si le besoin relevait de la planification à long terme ou d’un projet urbain concret.
           </li>
         </ul>
         <p>
@@ -390,7 +390,7 @@ const IlotChaleurUrbain = () => {
         </p>
         <ul>
           <li>mesurer la <b>température de l’air sur site</b> (avec capteurs fixes et/ou itinérants),</li>
-          <li>prendre en compte l’<b>inconfort thermique du piéton</b> (ombrage, albédo, ventilation…),</li>
+          <li>prendre en compte l’<b>inconfort thermique du piéton</b> (ombrage, <DefinitionTooltip title={albedo}>albédo</DefinitionTooltip>, ventilation…),</li>
           <li>et <b>croiser ces données</b> avec les usages réels et les profils de vulnérabilité.</li>
         </ul>
         <p>

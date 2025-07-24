@@ -29,3 +29,12 @@ export const surchauffeUrbaine = (
     dans les espaces urbains (rayonnement du soleil et des surfaces minérales, manque de ventilation, etc).
   </span>
 );
+
+export const albedo = (
+  <span>
+    Pouvoir réfléchissant d’une surface, c’est-à-dire le rapport de l’énergie solaire réfléchie 
+    à l’énergie solaire incidente. L’albédo dépend de la couleur et de la rugosité de la surface 
+    en question. Un revêtement noir ou foncé aura un albédo proche de 0 alors qu’une surface 
+    blanche aura un albédo se rapprochant de 1.
+  </span>
+);
