@@ -20,3 +20,12 @@ export const PNACC = (
     Plan National d’Adaptation du Changement Climatique.
   </span>
 );
+
+export const surchauffeUrbaine = (
+  <span>
+    Ensemble des phénomènes liés à la dégradation du ressenti thermique en ville en période de forte
+    chaleur, de jour comme de nuit, à l’échelle du piéton jusqu’à l’échelle urbaine. La surchauffe
+    urbaine renvoie à la fois à l’effet d’îlot de chaleur urbain et à l’inconfort des piétons
+    dans les espaces urbains (rayonnement du soleil et des surfaces minérales, manque de ventilation, etc).
+  </span>
+);
