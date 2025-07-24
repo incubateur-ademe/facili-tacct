@@ -381,6 +381,33 @@ export const cards = {
       description:
         'Vous vous interrogez sur la présence d’un îlot de chaleur urbain sur votre territoire ? Voici 4 erreurs fréquentes à éviter avant de lancer un diagnostic.',
       link: '/ressources/articles/ilot-chaleur-urbain-erreurs-a-eviter'
+    },
+    {
+      id: 33,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        'Vous découvrez le diagnostic pour la 1ère fois',
+        "Vous n'avez pas de diagnostic"
+      ],
+      titre:
+        'PNACC, TRACC, Comment suis-je concerné ?',
+      tag: 'Article',
+      description:
+        'PNACC, TRACC autant de documents stratégiques qui orientent l’adaptation au changement climatique en France. Comprendre leur contenu est nécessaire pour anticiper et mettre en oeuvre des stratégies cohérentes.',
+      link: '/ressources/articles/pnacc-tracc-comment-suis-je-concerne'
+    },
+    {
+      id: 34,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        "Vous n'avez pas de diagnostic"
+      ],
+      titre:
+        'Brisez les silos : introduction à l’approche systémique',
+      tag: 'Article',
+      description:
+        'Comprendre les interactions au sein de votre système est essentiel pour éviter les maladaptations. L’approche systémique vous accompagne de l’identification jusqu’à la mobilisation.',
+      link: '/ressources/articles/briser-silos-approche-systemique'
     }
   ],
   inconfortThermique: [
