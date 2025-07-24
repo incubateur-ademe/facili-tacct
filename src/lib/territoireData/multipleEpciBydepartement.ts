@@ -459,7 +459,7 @@ export const multipleEpciBydepartementLibelle = [
   {
     departement: '22',
     liste_epci_multi_dept: [
-      'Sans objet',
+      'ZZZZZZZZZ',
       "Communauté de communes Côte d'Émeraude",
       'Communauté de communes Poher communauté',
       'Communauté de communes Pontivy Communauté'
@@ -518,7 +518,7 @@ export const multipleEpciBydepartementLibelle = [
     departement: '29',
     liste_epci_multi_dept: [
       'Communauté de communes Poher communauté',
-      'Sans objet'
+      'ZZZZZZZZZ'
     ]
   },
   {
@@ -859,7 +859,7 @@ export const multipleEpciBydepartementLibelle = [
   },
   {
     departement: '85',
-    liste_epci_multi_dept: ['Sans objet']
+    liste_epci_multi_dept: ['ZZZZZZZZZ']
   },
   {
     departement: '87',

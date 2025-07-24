@@ -82,12 +82,19 @@
     }
 }
 
-// Prograss Bar 
+// Prograss Bar
 
 .progressDataWrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.progressDataWrapperSurfacesAgricoles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 1rem 0 0.75rem;
 }
 
 .progressDesign {
