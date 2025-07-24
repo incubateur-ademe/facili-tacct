@@ -367,6 +367,20 @@ export const cards = {
       description:
         'Vous envisagez de confier le diagnostic de vulnérabilité à votre stagiaire ? Découvrez les erreurs à éviter, les missions possibles, et les bonnes pratiques pour un appui vraiment utile.',
       link: '/ressources/articles/stagiaire-diagnostic-vulnerabilite-climat'
+    },
+    {
+      id: 32,
+      tab: [
+        'Vous voulez réviser un diagnostic connu',
+        'Vous découvrez le diagnostic pour la 1ère fois',
+        "Vous n'avez pas de diagnostic"
+      ],
+      titre:
+        'Îlot de chaleur urbain : 4 erreurs fréquentes à éviter pour mieux agir sur le terrain',
+      tag: 'Article',
+      description:
+        'Vous vous interrogez sur la présence d’un îlot de chaleur urbain sur votre territoire ? Voici 4 erreurs fréquentes à éviter avant de lancer un diagnostic.',
+      link: '/ressources/articles/ilot-chaleur-urbain-erreurs-a-eviter'
     }
   ],
   inconfortThermique: [

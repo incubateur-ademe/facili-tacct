@@ -3,6 +3,7 @@ import CDC from '@/lib/ressources/articles/CDC';
 import ClimaStory from '@/lib/ressources/articles/climaStory';
 import EviterPrecherDesert from '@/lib/ressources/articles/eviterPrecherDesert';
 import FacilitationDateliers from '@/lib/ressources/articles/facilitationDateliers';
+import IlotChaleurUrbain from '@/lib/ressources/articles/ilotChaleurUrbain';
 import LireUnDiagnostic from '@/lib/ressources/articles/lireUnDiagnostic';
 import MiseEnRecit from '@/lib/ressources/articles/miseEnRecit';
 import PourquoiMobiliser from '@/lib/ressources/articles/pourquoiMobiliser';
@@ -89,6 +90,16 @@ export const allArticles = [
         'Recruter un stagiaire sur le diagnostic de vulnérabilité : bonne ou mauvaise idée ?',
       description:
         'Vous envisagez de confier le diagnostic de vulnérabilité à votre stagiaire ? Découvrez les erreurs à éviter, les missions possibles, et les bonnes pratiques pour un appui vraiment utile.'
+    }
+  },
+  {
+    slug: 'ilot-chaleur-urbain-erreurs-a-eviter',
+    Component: IlotChaleurUrbain,
+    metadata: {
+      title:
+        'Îlot de chaleur urbain : 4 erreurs fréquentes à éviter pour mieux agir sur le terrain',
+      description:
+        'Îlot de chaleur urbain : 4 erreurs fréquentes à éviter pour mieux comprendre le phénomène, cibler les bons diagnostics et adapter l’action aux enjeux'
     }
   }
 ];
