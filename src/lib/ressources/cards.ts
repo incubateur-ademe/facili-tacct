@@ -276,7 +276,7 @@ export const cards = {
         "Des trajectoires d'adaptation pour prévenir les incertitudes du changement climatique – PETR du Pays Barrois (55)",
       tag: "Retour d'expérience",
       description:
-        'Les trajectoires d’adaptations permettent d’anticiper l’évolution climatique. Le PETR du Pays Barrois, c’est basé sur ces trajectoires pour la mise en oeuvre de groupements d’actions.',
+        'Les trajectoires d’adaptations permettent d’anticiper l’évolution climatique. Le PETR du Pays Barrois s’est basé sur ces trajectoires pour la mise en oeuvre de groupements d’actions.',
       link: 'https://librairie.ademe.fr/changement-climatique/7908-des-trajectoires-d-adaptation-pour-prevenir-les-incertitudes-du-changement-climatique-petr-du-pays-barrois-55.html'
     },
     {
