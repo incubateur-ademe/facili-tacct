@@ -7,7 +7,7 @@ import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../redis';
 
 export const GetInconfortThermique = async (
-  code: string | undefined,
+  code: string,
   libelle: string,
   type: string
 ): Promise<InconfortThermique[]> => {
@@ -21,6 +21,7 @@ export const GetInconfortThermique = async (
   const dbQuery = (async () => {
     try {
       // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.inconfort_thermique.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
@@ -36,14 +37,13 @@ export const GetInconfortThermique = async (
         } else if (type === 'commune') {
           const value = await prisma.$queryRaw`
           SELECT *
-          FROM databases."inconfort_thermique"
+          FROM databases.inconfort_thermique
           WHERE epci = (
             SELECT epci
-            FROM databases."inconfort_thermique"
+            FROM databases.inconfort_thermique
             WHERE code_geographique = ${code}
             LIMIT 1
           )
-          LIMIT 200
         `;
           return value as InconfortThermique[];
         } else if (type === 'petr') {
@@ -71,16 +71,22 @@ export const GetInconfortThermique = async (
           });
           return value;
         } else if (type === 'epci') {
-          const departement = await prisma.inconfort_thermique.findFirst({
+          // Get tous les départements associés à l'epci
+          const departements = await prisma.inconfort_thermique.findMany({
+            select: {
+              departement: true
+            },
             where: {
-              epci: code
-            }
+              [column]: code
+            },
+            distinct: ['departement']
           });
           const value = await prisma.inconfort_thermique.findMany({
             where: {
-              departement: departement?.departement
-            },
-            take: 750
+              departement: {
+                in: departements.map((d) => d.departement) as string[]
+              }
+            }
           });
           return value;
         } else return [];

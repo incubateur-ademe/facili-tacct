@@ -35,6 +35,10 @@
     h3 {
         margin: 2.5rem 0 1.5rem;
     }
+    h4 {
+        margin: 0;
+        font-size: 1.25rem;
+    }
     li {
         margin: 0 0 0.5rem;
     }
@@ -56,7 +60,21 @@
     p {
         margin: 0;
     }
-    h4 {
+}
+
+.grayQuoteWrapper {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    gap: 1em;
+    border-radius: 0.5em;
+    background-color: #f6f6f6;
+    padding: 1.5rem;
+    margin: 1rem;
+    li {
+        margin: 0 0 0.5rem;
+    }
+    p {
         margin: 0;
     }
 }
@@ -95,5 +113,21 @@
         a {
             background-image: none;
         }
+    }
+}
+
+.sourcesList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    a {
+        color: #0063cb;
+        font-weight: 500;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    p {
+        margin: 0;
     }
 }

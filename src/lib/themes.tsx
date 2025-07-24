@@ -42,6 +42,13 @@ export const themes = {
       risque: 'Moyen',
       donnee: 'LOREM IPSUM DE LA VEGETALISATION'
     },
+    {
+      id: 6,
+      titre: 'LCZ',
+      facteurSensibilite: 'Urbanisme',
+      risque: 'Moyen',
+      donnee: 'LOREM IPSUM'
+    }
   ],
   biodiversite: [
     {
@@ -164,5 +171,19 @@ export const themes = {
       risque: '',
       donnee: ''
     },
+    {
+      id: 2,
+      titre: 'Types de culture',
+      facteurSensibilite: 'Types de culture',
+      risque: '',
+      donnee: ''
+    },
+    {
+      id: 3,
+      titre: 'Surfaces en bio',
+      facteurSensibilite: 'Surfaces en bio',
+      risque: '',
+      donnee: ''
+    }
   ]
 };

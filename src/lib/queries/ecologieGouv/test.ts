@@ -15,7 +15,7 @@ export const GetPartSurfaceBio = async () => {
             member: 'surface_bio_epci.geocode_epci',
             operator: 'equals',
             values: ['200067106']
-          },
+          }
         ],
         timezone: 'UTC',
         dimensions: ['surface_bio_epci.geocode_epci'],
@@ -60,7 +60,7 @@ export const GetSurfaceBio = async () => {
             member: 'surface_bio_epci.geocode_epci',
             operator: 'equals',
             values: ['200067106']
-          },
+          }
         ],
         timezone: 'UTC',
         dimensions: ['surface_bio_epci.geocode_epci'],
@@ -88,7 +88,6 @@ export const GetSurfaceBio = async () => {
   return response;
 };
 
-
 export const GetNAF = async () => {
   const url = `https://api.indicateurs.ecologie.gouv.fr/cubejs-api/v1/load`;
   console.time('Query Execution Time CUBEJS');
@@ -100,24 +99,31 @@ export const GetNAF = async () => {
     },
     body: JSON.stringify({
       query: {
-        measures: ['surfaces_agricoles.id_611'],
+        measures: ['conso_enaf.id_611'],
         filters: [
           {
-            member: 'surfaces_agricoles.geocode_epci',
+            member: 'conso_enaf.geocode_epci',
             operator: 'equals',
-            values: ['200040350']
+            values: ['200010650']
+            // values: [Array]
           },
+          {
+            member: 'conso_enaf.secteur',
+            operator: 'equals',
+            values: ['Route']
+          }
         ],
         timezone: 'UTC',
-        dimensions: ['surfaces_agricoles.geocode_epci'],
+        dimensions: ['conso_enaf.geocode_epci', 'conso_enaf.secteur'],
         timeDimensions: [
           {
-            dimension: 'surfaces_agricoles.date_mesure',
+            dimension: 'conso_enaf.date_mesure',
             granularity: 'year',
             // dateRange: ['2023-01-01', '2023-12-01']
           }
         ],
-        order: { 'surfaces_agricoles.geocode_epci': 'asc' }
+
+        order: { 'conso_enaf.geocode_epci': 'asc' }
       }
     })
   });

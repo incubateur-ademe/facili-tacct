@@ -43,7 +43,6 @@ ogr2ogr -nln <name of layer(table)>
     -lco SCHEMA=<nom schema> Pg:"dbname=<nom de la db> host=<adresse host> user=<user> port=<port>"
     "C:\path\to\file\file.gpkg"
 ```
-
 ## Vérifier si les bases en prod et en preprod sont identiques
 
 ```
@@ -54,4 +53,3 @@ FROM (
 ) t;
 
 ```
-

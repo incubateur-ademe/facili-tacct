@@ -7,34 +7,43 @@ import { prisma } from '../redis';
 
 export const GetAgricultureBio = async (
   libelle: string,
-  type: string
+  type: string,
+  code: string
 ): Promise<AgricultureBio[]> => {
   const column = ColumnLibelleCheck(type);
-  let timeoutId: NodeJS.Timeout | undefined;
-  const timeoutPromise = new Promise<[]>((resolve) => {
-    timeoutId = setTimeout(() => {
+  const timeoutPromise = new Promise<[]>((resolve) =>
+    setTimeout(() => {
       resolve([]);
-    }, 2000);
-  });
+    }, 2000)
+  );
   const dbQuery = (async () => {
     try {
       // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.collectivites_searchbar.findFirst({
         where: { [column]: libelle }
       });
       if (!exists) return [];
       else {
-        if (type === 'pnr') {
-          return [];
+        // if (type === 'pnr') {
+        //   return [];
+        // } else 
+        if (type === 'commune') {
+          const epci = await prisma.collectivites_searchbar.findFirst({
+            select: {
+              epci: true
+            },
+            where: {
+              code_geographique: code,
+            }
+          }); 
+          const value = await prisma.agriculture_bio.findMany({
+            where: {
+              epci: epci?.epci as string
+            }
+          });
+          return value as AgricultureBio[];
         } else {
-          // const value = await prisma.agriculture_bio_with_territoire.findMany({
-          //   where: {
-          //     AND: [
-          //       { epci: { not: null } },
-          //       { [column]: libelle }
-          //     ]
-          //   }
-          // });
           const territoire = await prisma.collectivites_searchbar.findMany({
             select: {
               epci: true
@@ -68,11 +77,7 @@ export const GetAgricultureBio = async (
       return [];
     }
   })();
-  const result = await Promise.race([dbQuery, timeoutPromise]);
-  if (timeoutId !== undefined) {
-    clearTimeout(timeoutId);
-  }
-  return result;
+  return Promise.race([dbQuery, timeoutPromise]);
 };
 
 export const GetConsommationNAF = async (
@@ -80,9 +85,8 @@ export const GetConsommationNAF = async (
   libelle: string,
   type: string
 ): Promise<ConsommationNAF[]> => {
-  let timeoutId: NodeJS.Timeout | undefined;
   const timeoutPromise = new Promise<[]>((resolve) =>
-    timeoutId = setTimeout(() => {
+    setTimeout(() => {
       resolve([]);
     }, 3000)
   );
@@ -90,6 +94,7 @@ export const GetConsommationNAF = async (
   const dbQuery = (async () => {
     try {
       // Fast existence check
+      if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.consommation_espaces_naf.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
@@ -105,15 +110,15 @@ export const GetConsommationNAF = async (
         } else if (type === 'commune') {
           // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
           const value = await prisma.$queryRaw`
-            SELECT c.*
-            FROM databases."consommation_espaces_naf" c
-            WHERE c.epci = (
-              SELECT cs.epci
-              FROM databases."collectivites_searchbar" cs
-              WHERE cs.code_geographique = ${code}
-              LIMIT 1
-            )
-          `;
+          SELECT c.*
+          FROM consommation_espaces_naf c
+          WHERE c.epci = (
+            SELECT cs.epci
+            FROM collectivites_searchbar cs
+            WHERE cs.code_geographique = ${code}
+            LIMIT 1
+          )
+        `;
           return value as ConsommationNAF[];
         } else {
           const value = await prisma.consommation_espaces_naf.findMany({
@@ -132,21 +137,17 @@ export const GetConsommationNAF = async (
       }
     } catch (error) {
       console.error(error);
+      // prisma.$disconnect();
       Sentry.captureException(error);
       return [];
     }
   })();
-  const result = await Promise.race([dbQuery, timeoutPromise]);
-  if (timeoutId !== undefined) {
-    clearTimeout(timeoutId);
-  }
-  return result as ConsommationNAF[];
+  return Promise.race([dbQuery, timeoutPromise]);
 };
 
 export const GetAOT40 = async (): Promise<AOT40[]> => {
-  let timeoutId: NodeJS.Timeout | undefined;
   const timeoutPromise = new Promise<[]>((resolve) =>
-    timeoutId = setTimeout(() => {
+    setTimeout(() => {
       resolve([]);
     }, 1500)
   );
@@ -161,9 +162,6 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
       return [];
     }
   })();
-  const result = await Promise.race([dbQuery, timeoutPromise]);
-  if (timeoutId !== undefined) {
-    clearTimeout(timeoutId);
-  }
-  return result as AOT40[];
+  return Promise.race([dbQuery, timeoutPromise]);
 };
+

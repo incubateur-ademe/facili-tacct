@@ -124,7 +124,6 @@ export const MapSurfacesIrriguees = (props: {
 
   return (
     <>
-    {/* <button onClick={() => exportChartAsPNG(mapWrapperRef)}>Exporter PNG</button> */}
     <div ref={mapWrapperRef}>
       {carteCommunesFiltered === null ? (
         <GraphDataNotFound code={code} libelle={libelle} />

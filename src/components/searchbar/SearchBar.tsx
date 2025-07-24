@@ -73,11 +73,25 @@ export const SearchBarComp = () => {
           '.fr-fieldset__content': {
             justifyContent: 'center',
             '.fr-label': {
-              paddingBottom: 0
+              paddingBottom: 0,
+              fontSize: "1rem",
+              position: 'relative',
+              // '&::before, &::after': {
+              //   content: 'none',
+              //   display: 'none',
+              // },
             },
+            // '.fr-radio-group': {
+            //   '& input[type="radio"]': {
+            //     display: 'none',
+            //     // visibility: 'hidden',
+            //   },
+            // },
+            
             '@media (max-width: 745px)': {
               justifyContent: 'flex-start'
             }
+
           }
         })}
       />
@@ -145,14 +159,14 @@ export const SearchBarComp = () => {
             disabled
             className={styles.inactiveSearchbarButton}
           >
-            Continuer
+            Rechercher
           </Button>
         ) : (
           <Button
             onClick={handleClick}
             className={styles.activeSearchbarButton}
           >
-            Continuer
+            Rechercher
           </Button>
         )}
       </div>

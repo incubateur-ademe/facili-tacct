@@ -6,13 +6,13 @@ import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { Patch4, RessourcesEau } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { PrelevementEauText } from '@/lib/staticTexts';
 import { prelevementEauTooltipText } from '@/lib/tooltipTexts';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { PrelevementEauText } from '../../../lib/staticTexts';
 import PrelevementEauDataViz from './prelevementEauDataviz';
 import styles from './ressourcesEau.module.scss';
 
@@ -33,8 +33,9 @@ const SumFiltered = (
 
   const columnLibelle = type === "petr"
     ? "libelle_petr"
-    : "ept"
-
+    : type === "pnr"
+      ? "libelle_pnr"
+      : "ept"
   return Sum(
     data
       .filter((obj) => columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
@@ -64,7 +65,7 @@ export const PrelevementEau = (props: {
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
-  const volumePreleveTerritoire = (SumFiltered(ressourcesEau, code, libelle, type, 'total') / 1000000).toFixed(3);
+  const volumePreleveTerritoire = (SumFiltered(ressourcesEau, code, libelle, type, 'total') / 1000000).toFixed(2);
   const dataParMaille = type === 'epci'
     ? ressourcesEau.filter((obj) => obj.epci === code)
     : type === 'commune'
@@ -73,12 +74,9 @@ export const PrelevementEau = (props: {
         ? ressourcesEau.filter((obj) => obj.libelle_petr === libelle)
         : type === 'ept'
           ? ressourcesEau.filter((obj) => obj.ept === libelle)
-          : ressourcesEau;
-
-  const sumAllYears = dataParMaille.map((year) =>
-    Array.from({ length: 13 }, (_, i) => Number(year[`A${2008 + i}` as PrelevementsEauYears]) || 0)
-      .reduce((a, b) => a + b, 0)
-  ).reduce((a, b) => a + b, 0);;
+          : type === "pnr"
+            ? ressourcesEau.filter((obj) => obj.libelle_pnr === libelle)
+            : ressourcesEau;
 
   useEffect(() => {
     void (async () => {
@@ -104,7 +102,7 @@ export const PrelevementEau = (props: {
                 {dataParMaille.length !== 0 ? (
                   <p>
                     Le volume total des prélèvements en eau de votre territoire en
-                    2020 est de <b>{numberWithSpacesRegex(volumePreleveTerritoire)} Mm3</b>, soit l’équivalent
+                    2020 est de <b>{numberWithSpacesRegex(volumePreleveTerritoire)} Mm3</b>, soit l’équivalent
                     de <b>{Round((1000000 * Number(volumePreleveTerritoire)) / 3750, 0)}</b>{' '}
                     piscines olympiques.
                   </p>
