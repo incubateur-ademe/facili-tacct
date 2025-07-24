@@ -7,11 +7,6 @@ import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import styles from './article.module.scss';
 
-export const articleMetadata = {
-  title: 'Comment éviter de prêcher dans le désert ?',
-  description: 'Conseils pour éviter de prêcher dans le désert et maximiser l’impact de vos actions d’adaptation.'
-};
-
 const EviterPrecherDesert = () => {
   return (
     <div>

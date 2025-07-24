@@ -313,3 +313,34 @@ export const rgaTooltipText = (
     </div>
   </>
 );
+
+export const surfacesAgricolesTooltipText = (
+  <>
+    <div>
+      Ces chiffres proviennent du recensement agricole de 2020 disponible sur{' '}
+      <a
+        href="https://agreste.agriculture.gouv.fr/agreste-web/disaron/RA2020_1013_EPCI/detail/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Agreste
+      </a>.
+    </div>
+  </>
+);
+
+export const LCZTooltipText = (
+  <>
+    <div>
+      La typologie LCZ (issue de Stewart et Oke, 2012) est une typologie
+      universelle des zones urbaines La méthode s'appuie sur la corrélation
+      observée entre les conditions climatiques d'une zone spécifique et ses
+      caractéristiques géographiques (morphologie, utilisation des sols).
+    </div>
+    <br></br>
+    <div>
+      Les 17 postes LCZ représentent les espaces bâtis d’une part (de 1 à 10),
+      les espaces non bâtis d’autre part (de A à G).
+    </div>
+  </>
+);

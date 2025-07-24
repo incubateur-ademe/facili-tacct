@@ -112,7 +112,7 @@ export const MySearchInput = ((props: SearchInputProps) => {
           handleClick();
         }
       }}
-      renderOption={(props, option) =>
+      renderOption={(props, option) => 
         <RenderOption
           props={props}
           option={option}

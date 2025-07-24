@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.10.1
- * Query Engine version: 9b628578b3b7cae625e8c927178f15a170e74a9c
+ * Prisma Client JS version: 6.12.0
+ * Query Engine version: 8047c96bbd92db98a2abc7c9323ce77c02c89dbc
  */
 Prisma.prismaVersion = {
-  client: "6.10.1",
-  engine: "9b628578b3b7cae625e8c927178f15a170e74a9c"
+  client: "6.12.0",
+  engine: "8047c96bbd92db98a2abc7c9323ce77c02c89dbc"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -175,12 +175,12 @@ exports.Prisma.Collectivites_searchbarScalarFieldEnum = {
   epci: 'epci',
   libelle_epci: 'libelle_epci',
   departement: 'departement',
-  libelle_pnr: 'libelle_pnr',
   libelle_departement: 'libelle_departement',
   region: 'region',
   ept: 'ept',
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
   search_code: 'search_code',
   search_libelle: 'search_libelle'
 };
@@ -535,25 +535,25 @@ exports.Prisma.RgaScalarFieldEnum = {
   nb_logement_alea_faible: 'nb_logement_alea_faible',
   nb_logement_sans_alea: 'nb_logement_sans_alea',
   nb_logement_alea_moyen_fort_avant_1920: 'nb_logement_alea_moyen_fort_avant_1920',
+  part_logement_alea_moyen_fort_avant_1920: 'part_logement_alea_moyen_fort_avant_1920',
   nb_logement_alea_moyen_fort_1920_1945: 'nb_logement_alea_moyen_fort_1920_1945',
+  part_logement_alea_moyen_fort_1920_1945: 'part_logement_alea_moyen_fort_1920_1945',
   nb_logement_alea_moyen_fort_1945_1975: 'nb_logement_alea_moyen_fort_1945_1975',
+  part_logement_alea_moyen_fort_1945_1975: 'part_logement_alea_moyen_fort_1945_1975',
   nb_logement_alea_moyen_fort_apres_1975: 'nb_logement_alea_moyen_fort_apres_1975',
+  part_logement_alea_moyen_fort_apres_1975: 'part_logement_alea_moyen_fort_apres_1975',
   nb_logement_alea_faible_avant_1920: 'nb_logement_alea_faible_avant_1920',
+  part_logement_alea_faible_avant_1920: 'part_logement_alea_faible_avant_1920',
   nb_logement_alea_faible_1920_1945: 'nb_logement_alea_faible_1920_1945',
+  part_logement_alea_faible_1920_1945: 'part_logement_alea_faible_1920_1945',
   nb_logement_alea_faible_1945_1975: 'nb_logement_alea_faible_1945_1975',
+  part_logement_alea_faible_1945_1975: 'part_logement_alea_faible_1945_1975',
   nb_logement_alea_faible_apres_1975: 'nb_logement_alea_faible_apres_1975',
+  part_logement_alea_faible_apres_1975: 'part_logement_alea_faible_apres_1975',
   surface_commune: 'surface_commune',
   surface_alea_faible_commune: 'surface_alea_faible_commune',
-  surface_alea_moyen_fort_commune: 'surface_alea_moyen_fort_commune',
-  part_logement_alea_moyen_fort_avant_1920: 'part_logement_alea_moyen_fort_avant_1920',
-  part_logement_alea_moyen_fort_1920_1945: 'part_logement_alea_moyen_fort_1920_1945',
-  part_logement_alea_moyen_fort_1945_1975: 'part_logement_alea_moyen_fort_1945_1975',
-  part_logement_alea_moyen_fort_apres_1975: 'part_logement_alea_moyen_fort_apres_1975',
-  part_logement_alea_faible_avant_1920: 'part_logement_alea_faible_avant_1920',
-  part_logement_alea_faible_1920_1945: 'part_logement_alea_faible_1920_1945',
-  part_logement_alea_faible_1945_1975: 'part_logement_alea_faible_1945_1975',
-  part_logement_alea_faible_apres_1975: 'part_logement_alea_faible_apres_1975',
   part_alea_faible_commune: 'part_alea_faible_commune',
+  surface_alea_moyen_fort_commune: 'surface_alea_moyen_fort_commune',
   part_alea_moyen_fort_commune: 'part_alea_moyen_fort_commune'
 };
 
@@ -586,6 +586,49 @@ exports.Prisma.AgricultureScalarFieldEnum = {
   libelle_pnr: 'libelle_pnr',
   part_irr_SAU_2020: 'part_irr_SAU_2020',
   part_over_55: 'part_over_55'
+};
+
+exports.Prisma.Surfaces_agricolesScalarFieldEnum = {
+  index: 'index',
+  epci: 'epci',
+  exploitation_sau: 'exploitation_sau',
+  exploitation_sau_terres_arables: 'exploitation_sau_terres_arables',
+  exploitation_sau_terres_arables_cereales: 'exploitation_sau_terres_arables_cereales',
+  exploitation_sau_terres_arables_oleagineux: 'exploitation_sau_terres_arables_oleagineux',
+  exploitation_sau_terres_arables_fourrageres: 'exploitation_sau_terres_arables_fourrageres',
+  exploitation_sau_terres_arables_tubercules: 'exploitation_sau_terres_arables_tubercules',
+  exploitation_sau_terres_arables_legumes_melons_fraises: 'exploitation_sau_terres_arables_legumes_melons_fraises',
+  exploitation_sau_terres_arables_fleurs: 'exploitation_sau_terres_arables_fleurs',
+  exploitation_sau_terres_arables_autres: 'exploitation_sau_terres_arables_autres',
+  exploitation_sau_cultures_permanentes: 'exploitation_sau_cultures_permanentes',
+  exploitation_sau_cultures_permanentes_vigne: 'exploitation_sau_cultures_permanentes_vigne',
+  exploitation_sau_cultures_permanentes_fruits: 'exploitation_sau_cultures_permanentes_fruits',
+  exploitation_sau_cultures_permanentes_autres: 'exploitation_sau_cultures_permanentes_autres',
+  exploitation_sau_herbe: 'exploitation_sau_herbe',
+  exploitation_sau_herbe_prairies_productives: 'exploitation_sau_herbe_prairies_productives',
+  exploitation_sau_herbe_prairies_peu_productives: 'exploitation_sau_herbe_prairies_peu_productives',
+  exploitation_sau_herbe_subventions: 'exploitation_sau_herbe_subventions',
+  exploitation_sau_herbe_bois_patures: 'exploitation_sau_herbe_bois_patures',
+  exploitation_sau_jardins: 'exploitation_sau_jardins',
+  superficie_sau: 'superficie_sau',
+  superficie_sau_terres_arables: 'superficie_sau_terres_arables',
+  superficie_sau_terres_arables_cereales: 'superficie_sau_terres_arables_cereales',
+  superficie_sau_terres_arables_oleagineux: 'superficie_sau_terres_arables_oleagineux',
+  superficie_sau_terres_arables_fourrageres: 'superficie_sau_terres_arables_fourrageres',
+  superficie_sau_terres_arables_tubercules: 'superficie_sau_terres_arables_tubercules',
+  superficie_sau_terres_arables_legumes_melons_fraises: 'superficie_sau_terres_arables_legumes_melons_fraises',
+  superficie_sau_terres_arables_fleurs: 'superficie_sau_terres_arables_fleurs',
+  superficie_sau_terres_arables_autres: 'superficie_sau_terres_arables_autres',
+  superficie_sau_cultures_permanentes: 'superficie_sau_cultures_permanentes',
+  superficie_sau_cultures_permanentes_vigne: 'superficie_sau_cultures_permanentes_vigne',
+  superficie_sau_cultures_permanentes_fruits: 'superficie_sau_cultures_permanentes_fruits',
+  superficie_sau_cultures_permanentes_autres: 'superficie_sau_cultures_permanentes_autres',
+  superficie_sau_herbe: 'superficie_sau_herbe',
+  superficie_sau_herbe_prairies_productives: 'superficie_sau_herbe_prairies_productives',
+  superficie_sau_herbe_prairies_peu_productives: 'superficie_sau_herbe_prairies_peu_productives',
+  superficie_sau_herbe_subventions: 'superficie_sau_herbe_subventions',
+  superficie_sau_herbe_bois_patures: 'superficie_sau_herbe_bois_patures',
+  superficie_sau_jardins: 'superficie_sau_jardins'
 };
 
 exports.Prisma.SortOrder = {
@@ -624,7 +667,8 @@ exports.Prisma.ModelName = {
   rga: 'rga',
   postgis_rga: 'postgis_rga',
   spatial_ref_sys: 'spatial_ref_sys',
-  agriculture: 'agriculture'
+  agriculture: 'agriculture',
+  surfaces_agricoles: 'surfaces_agricoles'
 };
 
 /**

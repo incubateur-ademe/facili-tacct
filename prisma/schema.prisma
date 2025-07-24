@@ -84,28 +84,18 @@ model collectivites_searchbar {
   epci                 String?
   libelle_epci         String?
   departement          String?
-  libelle_pnr          String?
   libelle_departement  String?
   region               String?
   ept                  String?
   libelle_petr         String?
   code_pnr             String?
+  libelle_pnr          String?
   search_code          String?
   search_libelle       String
 
   @@index([search_code], map: "collectivites_searchbar_search_code_index")
   @@index([search_libelle], map: "collectivites_searchbar_search_libelle_index")
   @@index([index], map: "ix_collectivites_searchbar_index")
-  @@index([code_geographique], map: "collectivites_searchbar_commune_index")
-  @@index([departement], map: "collectivites_searchbar_departement_index")
-  @@index([epci], map: "collectivites_searchbar_epci_index")
-  @@index([ept], map: "collectivites_searchbar_ept_index")
-  @@index([libelle_geographique], map: "collectivites_searchbar_libelle_commune_index")
-  @@index([libelle_departement], map: "collectivites_searchbar_libelle_departement_index")
-  @@index([libelle_epci], map: "collectivites_searchbar_libelle_epci_index")
-  @@index([libelle_pnr], map: "collectivites_searchbar_libelle_pnr_index")
-  @@index([libelle_petr], map: "collectivites_searchbar_petr_index")
-  @@index([code_pnr], map: "collectivites_searchbar_pnr_index")
   @@schema("databases")
 }
 
@@ -534,28 +524,34 @@ model rga {
   nb_logement_alea_faible                  Int
   nb_logement_sans_alea                    Int
   nb_logement_alea_moyen_fort_avant_1920   Int
+  part_logement_alea_moyen_fort_avant_1920 Int
   nb_logement_alea_moyen_fort_1920_1945    Int
+  part_logement_alea_moyen_fort_1920_1945  Int
   nb_logement_alea_moyen_fort_1945_1975    Int
+  part_logement_alea_moyen_fort_1945_1975  Int
   nb_logement_alea_moyen_fort_apres_1975   Int
+  part_logement_alea_moyen_fort_apres_1975 Int
   nb_logement_alea_faible_avant_1920       Int
+  part_logement_alea_faible_avant_1920     Int
   nb_logement_alea_faible_1920_1945        Int
+  part_logement_alea_faible_1920_1945      Int
   nb_logement_alea_faible_1945_1975        Int
+  part_logement_alea_faible_1945_1975      Int
   nb_logement_alea_faible_apres_1975       Int
-  surface_commune                          Float
-  surface_alea_faible_commune              Float
-  surface_alea_moyen_fort_commune          Float
-  part_logement_alea_moyen_fort_avant_1920 Float
-  part_logement_alea_moyen_fort_1920_1945  Float
-  part_logement_alea_moyen_fort_1945_1975  Float
-  part_logement_alea_moyen_fort_apres_1975 Float
-  part_logement_alea_faible_avant_1920     Float
-  part_logement_alea_faible_1920_1945      Float
-  part_logement_alea_faible_1945_1975      Float
-  part_logement_alea_faible_apres_1975     Float
-  part_alea_faible_commune                 Float
-  part_alea_moyen_fort_commune             Float
+  part_logement_alea_faible_apres_1975     Int
+  surface_commune                          Int
+  surface_alea_faible_commune              Int
+  part_alea_faible_commune                 Int
+  surface_alea_moyen_fort_commune          Int
+  part_alea_moyen_fort_commune             Int
 
   @@index([index], map: "ix_rga_index")
+  @@index([code_geographique], map: "rga_communes_index")
+  @@index([departement], map: "rga_departement_index")
+  @@index([epci], map: "rga_epci_index")
+  @@index([ept], map: "rga_ept_index")
+  @@index([libelle_petr], map: "rga_petr_index")
+  @@index([code_pnr], map: "rga_pnr_index")
   @@schema("databases")
 }
 
@@ -618,6 +614,69 @@ model agriculture {
   @@index([code_pnr], map: "agriculture_pnr_index")
   @@index([index], map: "ix_agriculture_index")
   @@schema("databases")
+}
+
+model surfaces_agricoles {
+  index                                                  BigInt @id
+  epci                                                   String
+  exploitation_sau                                       Float
+  exploitation_sau_terres_arables                        Float
+  exploitation_sau_terres_arables_cereales               Float
+  exploitation_sau_terres_arables_oleagineux             Float
+  exploitation_sau_terres_arables_fourrageres            Float
+  exploitation_sau_terres_arables_tubercules             Float
+  exploitation_sau_terres_arables_legumes_melons_fraises Float
+  exploitation_sau_terres_arables_fleurs                 Float
+  exploitation_sau_terres_arables_autres                 Float
+  exploitation_sau_cultures_permanentes                  Float
+  exploitation_sau_cultures_permanentes_vigne            Float
+  exploitation_sau_cultures_permanentes_fruits           Float
+  exploitation_sau_cultures_permanentes_autres           Float
+  exploitation_sau_herbe                                 Float
+  exploitation_sau_herbe_prairies_productives            Float
+  exploitation_sau_herbe_prairies_peu_productives        Float
+  exploitation_sau_herbe_subventions                     Float
+  exploitation_sau_herbe_bois_patures                    Float
+  exploitation_sau_jardins                               Float
+  superficie_sau                                         Float
+  superficie_sau_terres_arables                          Float
+  superficie_sau_terres_arables_cereales                 Float
+  superficie_sau_terres_arables_oleagineux               Float
+  superficie_sau_terres_arables_fourrageres              Float
+  superficie_sau_terres_arables_tubercules               Float
+  superficie_sau_terres_arables_legumes_melons_fraises   Float
+  superficie_sau_terres_arables_fleurs                   Float
+  superficie_sau_terres_arables_autres                   Float
+  superficie_sau_cultures_permanentes                    Float
+  superficie_sau_cultures_permanentes_vigne              Float
+  superficie_sau_cultures_permanentes_fruits             Float
+  superficie_sau_cultures_permanentes_autres             Float
+  superficie_sau_herbe                                   Float
+  superficie_sau_herbe_prairies_productives              Float
+  superficie_sau_herbe_prairies_peu_productives          Float
+  superficie_sau_herbe_subventions                       Float
+  superficie_sau_herbe_bois_patures                      Float
+  superficie_sau_jardins                                 Float
+
+  @@index([index], map: "ix_surfaces_agricoles_index")
+  @@index([epci], map: "surfaces_agricoles_epci_index")
+  @@schema("databases")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model densite_bati_temp {
+  index             BigInt?
+  code_geographique String?
+  libgeo            String?
+  superf_choro      Float?
+  s_geom_cstr       BigInt?
+  hauteur           Float?
+  h_x_s             Float?
+  densite_bati      Float?
+
+  @@index([index], map: "ix_densite_bati_temp_index")
+  @@ignore
+  @@schema("postgis")
 }
 
 /// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.

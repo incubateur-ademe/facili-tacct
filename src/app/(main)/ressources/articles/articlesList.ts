@@ -1,11 +1,15 @@
 import Adacc from '@/lib/ressources/articles/adacc';
+import BriserSilosApprocheSystemique from '@/lib/ressources/articles/briserSilosApprocheSystemique';
 import CDC from '@/lib/ressources/articles/CDC';
 import ClimaStory from '@/lib/ressources/articles/climaStory';
 import EviterPrecherDesert from '@/lib/ressources/articles/eviterPrecherDesert';
 import FacilitationDateliers from '@/lib/ressources/articles/facilitationDateliers';
+import IlotChaleurUrbain from '@/lib/ressources/articles/ilotChaleurUrbain';
 import LireUnDiagnostic from '@/lib/ressources/articles/lireUnDiagnostic';
 import MiseEnRecit from '@/lib/ressources/articles/miseEnRecit';
+import PnaccTracc from '@/lib/ressources/articles/pnaccTracc';
 import PourquoiMobiliser from '@/lib/ressources/articles/pourquoiMobiliser';
+import RecruterStagiaire from '@/lib/ressources/articles/recruterStagiaire';
 
 export const allArticles = [
   {
@@ -78,6 +82,45 @@ export const allArticles = [
       title: 'ClimaSTORY, une cartographie pour sensibiliser',
       description:
         'Découvrez ClimaSTORY, un outil cartographique pour sensibiliser à l’adaptation au changement climatique.'
+    }
+  },
+  {
+    slug: 'stagiaire-diagnostic-vulnerabilite-climat',
+    Component: RecruterStagiaire,
+    metadata: {
+      title:
+        'Recruter un stagiaire sur le diagnostic de vulnérabilité : bonne ou mauvaise idée ?',
+      description:
+        'Vous envisagez de confier le diagnostic de vulnérabilité à votre stagiaire ? Découvrez les erreurs à éviter, les missions possibles, et les bonnes pratiques pour un appui vraiment utile.'
+    }
+  },
+  {
+    slug: 'ilot-chaleur-urbain-erreurs-a-eviter',
+    Component: IlotChaleurUrbain,
+    metadata: {
+      title:
+        'Îlot de chaleur urbain : 4 erreurs fréquentes à éviter pour mieux agir sur le terrain',
+      description:
+        'Îlot de chaleur urbain : 4 erreurs fréquentes à éviter pour mieux comprendre le phénomène, cibler les bons diagnostics et adapter l’action aux enjeux'
+    }
+  },
+  {
+    slug: 'pnacc-tracc-comment-suis-je-concerne',
+    Component: PnaccTracc,
+    metadata: {
+      title: 'PNACC, TRACC, Comment suis-je concerné ?',
+      description:
+        'PNACC, TRACC autant de documents stratégiques qui orientent l’adaptation au changement climatique en France. Comprendre leur contenu est nécessaire pour anticiper et mettre en oeuvre des stratégies cohérentes.'
+    }
+  },
+  {
+    slug: 'briser-silos-approche-systemique',
+    Component: BriserSilosApprocheSystemique,
+    metadata: {
+      title:
+        'Brisez les silos : introduction à l’approche systémique',
+      description:
+        'Comprendre les interactions au sein de votre système est essentiel pour éviter les maladaptations. L’approche systémique vous accompagne de l’identification jusqu’à la mobilisation.'
     }
   }
 ];

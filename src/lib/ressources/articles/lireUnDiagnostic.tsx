@@ -258,7 +258,7 @@ const LireUnDiagnostic = () => {
         </div>
         <ul className="mx-12">
           <li>
-            Compléter les données “manquantes” si vous en avez identifiées,
+            Compléter les données “manquantes” si vous en avez identifié,
             et mobilisez vos services et partenaires si les enjeux n’ont pas encore été clairement priorisés.
           </li>
           <li>
@@ -280,14 +280,7 @@ const LireUnDiagnostic = () => {
           </li>
         </ul>
       </div>
-      <p style={{ margin: '2rem 0', fontWeight: 700, fontSize: 20 }}>À vous de jouer !</p>
-      <p style={{ margin: '1rem 0' }}>
-        <i>
-          Cet article est le fruit de l’atelier CDM Success organisé en mai 2024 avec les
-          membres de la communauté des chargés de mission qui accompagne Facili-TACCT.
-          Merci aux participants pour leurs retours d’expériences qui ont nourri ce contenu.
-        </i>
-      </p>
+      <p style={{ margin: '1rem 0' }}>À vous de jouer !</p>
       <div className={styles.grayWrapper}>
         <div className={styles.h2title}>
           <Image src={BookIcon} alt="" />
@@ -296,7 +289,7 @@ const LireUnDiagnostic = () => {
         <p>Pour approfondir certains points abordés dans cet article, voici deux ressources utiles :</p>
         <div className={styles.links}>
           <div className={styles.link}>
-            <li>
+            <p>
               Renforcer la dynamique collaborative : lire notre article sur&nbsp;
               <Link
                 href="/ressources/articles/mobilisation-diagnostic-vulnerabilite"
@@ -305,10 +298,10 @@ const LireUnDiagnostic = () => {
               >
                 la facilitation pour mobiliser les parties prenantes.
               </Link>
-            </li>
+            </p>
           </div>
           <div className={styles.link}>
-            <li>
+            <p>
               Pour en savoir plus sur la manière de valoriser vos données, consultez notre article sur&nbsp;
               <Link
                 href="/ressources/articles/mise-en-recit-territoire-adaptation-climat"
@@ -317,10 +310,17 @@ const LireUnDiagnostic = () => {
               >
                 la mise en récit du territoire.
               </Link>
-            </li>
+            </p>
           </div>
         </div>
       </div>
+      <p style={{ margin: '1rem 0' }}>
+        <i>
+          Cet article est le fruit de l’atelier CDM Success organisé en mai 2024 avec les
+          membres de la communauté des chargés de mission qui accompagne Facili-TACCT.
+          Merci aux participants pour leurs retours d’expériences qui ont nourri ce contenu.
+        </i>
+      </p>
       <EndPageTrigger />
     </>
   );
