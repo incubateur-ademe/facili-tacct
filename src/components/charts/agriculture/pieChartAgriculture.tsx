@@ -105,8 +105,8 @@ export const PieChartAgriculture = ({ surfacesAgricoles }: { surfacesAgricoles: 
 
           // arcLinkLabelsTextColor="#333333"
           // arcLinkLabelsOffset={10}
-          arcLinkLabelsDiagonalLength={28}
-          arcLinkLabelsStraightLength={20}
+          arcLinkLabelsDiagonalLength={32}
+          arcLinkLabelsStraightLength={24}
           // arcLinkLabelsColor={{ from: 'color' }}
           // legends={[
           //   {
