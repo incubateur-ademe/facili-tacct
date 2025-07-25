@@ -16,7 +16,7 @@ export const GetRessourceEau = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 15000)
+    }, 12000)
   );
   const dbQuery = (async () => {
     try {

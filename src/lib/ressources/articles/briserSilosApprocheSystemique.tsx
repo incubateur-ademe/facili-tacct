@@ -247,7 +247,7 @@ const BriserSilosApprocheSystemique = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      métabief
+                      Métabief
                     </Link>
                   </li>
                   <li>
@@ -291,7 +291,7 @@ const BriserSilosApprocheSystemique = () => {
                     >
                       <i>Le Passeur</i>
                     </Link>
-                    {" "}, écrit par Olivier Erard
+                    , écrit par Olivier Erard
                   </li>
                 </ul>
               </div>
