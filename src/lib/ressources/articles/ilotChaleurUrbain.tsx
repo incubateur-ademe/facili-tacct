@@ -181,7 +181,7 @@ const IlotChaleurUrbain = () => {
         </p>
         <h2>Erreur n°2 : penser que le phénomène d’îlot de chaleur urbain ne concerne que les grandes villes du Sud</h2>
         <div className={styles.grayQuoteWrapper}>
-          “L’îlot de chaleur urbain ? C’est un truc pour Marseille ou Toulouse, non ?”
+          « L’îlot de chaleur urbain ? C’est un truc pour Marseille ou Toulouse, non ? »
         </div>
         <p>C’est une idée reçue tenace…mais trompeuse.</p>
         <Image
@@ -265,7 +265,7 @@ const IlotChaleurUrbain = () => {
         </div>
         <h2>Erreur n°3 : prendre la température de surface pour celle de l’air</h2>
         <p>
-          Sur une carte de température de surface, certaines zones apparaissent “très chaudes” :
+          Sur une carte de température de surface, certaines zones apparaissent « très chaudes » :
           rouge foncé, orange vif… Mais attention : ces images ne mesurent pas le phénomène d’îlot de chaleur urbain (ICU).
         </p>
         <p>
@@ -306,7 +306,7 @@ const IlotChaleurUrbain = () => {
             Prenons une zone industrielle : tôle, bitume, pas d’ombre.
           </p>
           <p>
-            Elle apparaît “en rouge vif” sur une carte de température de surface. Mais faut-il pour autant en faire une priorité d’intervention ?
+            Elle apparaît « en rouge vif » sur une carte de température de surface. Mais faut-il pour autant en faire une priorité d’intervention ?
           </p>
           <ul>
             <li>
