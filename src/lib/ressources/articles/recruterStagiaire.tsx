@@ -75,9 +75,9 @@ const RecruterStagiaire = () => {
           Il produit également des fiches de synthèse par impact, prêtes à être discutées.
         </p>
         <div className={styles.grayQuoteWrapper}>
-          “Il est tout de suite rentré dedans. Je l’ai laissé assez autonome, on faisait des points réguliers.
+          « Il est tout de suite rentré dedans. Je l’ai laissé assez autonome, on faisait des points réguliers.
           C’est lui qui m’a entraînée, pas l’inverse. Je ne serais jamais rentrée dans TACCT seule.
-          Le stage m’a obligée à m’y plonger”, reconnaît Isabelle.
+          Le stage m’a obligée à m’y plonger », reconnaît Isabelle.
         </div>
         <p>
           Initialement, Isabelle espérait pouvoir réunir un comité local et organiser une restitution en deux mois.
