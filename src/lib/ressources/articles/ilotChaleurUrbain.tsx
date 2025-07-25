@@ -77,10 +77,10 @@ const IlotChaleurUrbain = () => {
           </li>
         </ul>
         <p><b>Encore faut-il bien savoir de quoi on parle. Et ne pas se fier aux apparences.</b></p>
-        <h2>Erreur N°1 : confondre îlot de chaleur urbain, température de surface et inconfort thermique</h2>
+        <h2>Erreur n°1 : confondre îlot de chaleur urbain, température de surface et inconfort thermique</h2>
         <p>
           <b>Un îlot de chaleur urbain ne se voit pas à l’œil nu.</b> Il ne se ressent pas toujours directement, et
-          <b>ne peut pas être identifié sur une simple carte thermique,</b> surtout si celle-ci mesure uniquement
+          <b> ne peut pas être identifié sur une simple carte thermique,</b> surtout si celle-ci mesure uniquement
           la température des surfaces (bitume, toitures, tôle…).
         </p>
         <p>
@@ -181,7 +181,7 @@ const IlotChaleurUrbain = () => {
         </p>
         <h2>Erreur n°2 : penser que le phénomène d’îlot de chaleur urbain ne concerne que les grandes villes du Sud</h2>
         <div className={styles.grayQuoteWrapper}>
-          “L’îlot de chaleur urbain ? C’est un truc pour Marseille ou Toulouse, non ?”
+          « L’îlot de chaleur urbain ? C’est un truc pour Marseille ou Toulouse, non ? »
         </div>
         <p>C’est une idée reçue tenace…mais trompeuse.</p>
         <Image
@@ -190,7 +190,7 @@ const IlotChaleurUrbain = () => {
           width={0}
           height={0}
           sizes="100%"
-          style={{ width: '100%', height: 'auto', margin: '2rem 0' }}
+          style={{ width: '100%', height: 'auto', margin: '2rem 0 0' }}
         />
         <p>
           <a href="#sources" onClick={handleScrollToSources} style={{ cursor: "pointer" }}>
@@ -265,7 +265,7 @@ const IlotChaleurUrbain = () => {
         </div>
         <h2>Erreur n°3 : prendre la température de surface pour celle de l’air</h2>
         <p>
-          Sur une carte de température de surface, certaines zones apparaissent “très chaudes” :
+          Sur une carte de température de surface, certaines zones apparaissent « très chaudes » :
           rouge foncé, orange vif… Mais attention : ces images ne mesurent pas le phénomène d’îlot de chaleur urbain (ICU).
         </p>
         <p>
@@ -306,16 +306,16 @@ const IlotChaleurUrbain = () => {
             Prenons une zone industrielle : tôle, bitume, pas d’ombre.
           </p>
           <p>
-            Elle apparaît “en rouge vif” sur une carte de température de surface. Mais faut-il pour autant en faire une priorité d’intervention ?
+            Elle apparaît « en rouge vif » sur une carte de température de surface. Mais faut-il pour autant en faire une priorité d’intervention ?
           </p>
           <ul>
             <li>
-              Pas nécessairement, puisque personne n’y dort ! si l’on se place du point de vue sanitaire, il n’y a pas
+              Pas nécessairement, puisque personne n’y dort ! Si l’on se place du point de vue sanitaire, il n’y a pas
               de risque immédiat pour les habitants.
             </li>
             <li>
               Mais si l’objectif est de réduire la surchauffe urbaine de manière plus globale,
-              ces espaces aussi peuvent être concernés
+              ces espaces aussi peuvent être concernés.
             </li>
           </ul>
         </div>
