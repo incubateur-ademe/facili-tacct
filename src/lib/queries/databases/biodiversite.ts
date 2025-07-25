@@ -111,10 +111,10 @@ export const GetConsommationNAF = async (
           // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
           const value = await prisma.$queryRaw`
           SELECT c.*
-          FROM consommation_espaces_naf c
+          FROM databases.consommation_espaces_naf c
           WHERE c.epci = (
             SELECT cs.epci
-            FROM collectivites_searchbar cs
+            FROM databases.collectivites_searchbar cs
             WHERE cs.code_geographique = ${code}
             LIMIT 1
           )
