@@ -16,7 +16,7 @@ const PnaccTracc = () => {
         <h1>PNACC, TRACC, Comment suis-je concerné ?</h1>
         <div className={styles.blueWrapper}>
           <p style={{ margin: "0" }}>
-            Cet atelier a été réalisé le 28 novembre 24, en compagnie de Jean-Michel Soubeyroux
+            Cet atelier a été réalisé le 28 novembre 2024, en compagnie de Jean-Michel Soubeyroux
             (Directeur Adjoint Scientifique de la Climatologie et des Services Climatiques à Météo France),
             Marine Tranchant (Cheffe de projet territoires et climat au CEREMA) et Aude Bodiguel
             (Coordinatrice ACC et intrapreneuse Facili-TACCT à l’ADEME).
@@ -61,14 +61,14 @@ const PnaccTracc = () => {
             considérer l’échéance 2100 (certains effets du changement climatique ne s’appréhendent que sur le temps long).
           </li>
           <li>
-            La TRACC est constitué de projections issues du scénario RCP8.5, le seul permettant de traiter
+            La TRACC est constituée de projections issues du scénario RCP8.5, le seul permettant de traiter
             des niveaux de réchauffement planétaire à +3°C. Si votre diagnostic ne prend pas en compte un
             scénario de fortes émissions, <b>un complément sera nécessaire.</b>
           </li>
         </ul>
         <p>
-          ➡️ Un “patch 4°C” est en cours de production pour guider sur les territoires en cours de révision
-          de leur PCAET.
+          ➡️ Un « patch 4°C » est disponible sur Facili-TACCT pour guider les territoires en cours de
+          révision de leur PCAET.
         </p>
         <h3>Mesure 25 - la « Mission Adaptation », guichet unique d’ingénierie de l’adaptation à destination des collectivités locales.</h3>
         <p>
@@ -127,7 +127,7 @@ const PnaccTracc = () => {
         </p>
         <ul>
           <li>
-            via le Programme “Territoires adaptés au climat de demain ” qui accompagne aussi bien la réalisation
+            via le Programme « Territoires adaptés au climat de demain » qui accompagne aussi bien la réalisation
             de stratégie territoriale d’adaptation au changement climatique que des focus thématiques (bâtiment,
             infrastructure, ressource en eau, aménagement et risques naturels) ou de gré à gré hors programme
             selon les besoins spécifiques des collectivités
@@ -140,7 +140,7 @@ const PnaccTracc = () => {
         <p>
           Le Cerema s’est ouvert aux collectivités territoriales. Celles-ci peuvent dorénavant adhérer à l’établissement
           et mobiliser plus facilement son expertise et son potentiel d’innovation. Cette adhésion est ouverte en
-          continue, les groupements de collectivités pouvant adhérer au Cerema sont ceux visés à l’article L. 5111-1 du CGCT,
+          continu, les groupements de collectivités pouvant adhérer au Cerema sont ceux visés à l’article L. 5111-1 du CGCT,
           à savoir <i>"les établissements publics de coopération intercommunale et les syndicats mixtes, mentionnés aux
             articles L. 5711-1 et L. 5721-8, les pôles métropolitains, les pôles d'équilibre territoriaux et ruraux,
             les agences départementales, les institutions ou organismes interdépartementaux et les ententes interrégionales".</i>
@@ -151,7 +151,7 @@ const PnaccTracc = () => {
         </p>
         <ul>
           <li>
-            <i>TACCT,</i> la méthode de référence pour permettre l’adaptation au changement climatiques des territoires.
+            <i>TACCT,</i> la méthode de référence pour permettre l’adaptation au changement climatique des territoires.
           </li>
           <li>
             <i>Facili-TACCT,</i> pour soutenir les collectivités territoriales dans leur démarche d’adaptation
@@ -160,7 +160,7 @@ const PnaccTracc = () => {
           </li>
         </ul>
         <h2>Les conseils de nos intervenants</h2>
-        <ol>
+        <ol style={{ margin: "0" }}>
           <li>
             En tant qu’ancien membre de la mission régionale de l’autorité environnementale appelée à émettre un
             avis sur les PCAET, Jean-Michel Soubeyroux rappelle que l’objet du diagnostic de vulnérabilité
@@ -178,9 +178,9 @@ const PnaccTracc = () => {
           </li>
           <li>
             Pour le CEREMA, l’adaptation au changement climatique doit sortir de la stricte compétence
-            du chargé de mission “climat” pour devenir l’affaire de toutes et tous et être abordée en
-            transversalité par l’ensemble des services. Seul ce “réflexe adaptation” permettra à la
-            collectivité de s’assurer que les projets prévus sont compatibles avec les impacts à venir
+            du chargé de mission « climat » pour devenir l’affaire de toutes et tous et être abordée en
+            transversalité par l’ensemble des services. Seul ce « réflexe adaptation » permettra à la
+            collectivité de s’assurer que les projets prévus soient compatibles avec les impacts à venir
             du changement climatique sur le territoire.
           </li>
           <li>
@@ -216,7 +216,7 @@ const PnaccTracc = () => {
                     >
                       lien d’accès
                     </Link>
-                    à la consultation du PNACC ;
+                    {" "}à la consultation du PNACC
                   </li>
                   <li>
                     Le {' '}
@@ -227,7 +227,7 @@ const PnaccTracc = () => {
                     >
                       lien
                     </Link>
-                    pour en savoir plus sur la TRACC ;
+                    {" "}pour en savoir plus sur la TRACC
                   </li>
                   <li>
                     Le lien vers la {' '}
@@ -238,7 +238,6 @@ const PnaccTracc = () => {
                     >
                       mission adaptation
                     </Link>
-                    ;
                   </li>
                   <li>
                     La liste vers les {' '}
@@ -249,18 +248,13 @@ const PnaccTracc = () => {
                     >
                       100 territoires
                     </Link>
-                    bénéficiant la Mission adaptation ;
+                    {" "}bénéficiant la Mission adaptation
                   </li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-
-
-
-
-
       </div>
       <EndPageTrigger />
     </>

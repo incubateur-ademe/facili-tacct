@@ -75,9 +75,9 @@ const RecruterStagiaire = () => {
           Il produit également des fiches de synthèse par impact, prêtes à être discutées.
         </p>
         <div className={styles.grayQuoteWrapper}>
-          “Il est tout de suite rentré dedans. Je l’ai laissé assez autonome, on faisait des points réguliers.
+          « Il est tout de suite rentré dedans. Je l’ai laissé assez autonome, on faisait des points réguliers.
           C’est lui qui m’a entraînée, pas l’inverse. Je ne serais jamais rentrée dans TACCT seule.
-          Le stage m’a obligée à m’y plonger”, reconnaît Isabelle.
+          Le stage m’a obligée à m’y plonger », reconnaît Isabelle.
         </div>
         <p>
           Initialement, Isabelle espérait pouvoir réunir un comité local et organiser une restitution en deux mois.
@@ -215,16 +215,17 @@ const RecruterStagiaire = () => {
           </ul>
         </div>
         <div className={styles.blueWrapper} style={{ margin: '2rem 0 0 0', border: '1px solid #d0d9ff' }}>
+          <h3 style={{ margin: "0 0 1rem  " }}>Racontez-nous votre expérience !</h3>
           <p style={{ margin: 0 }}>
             Vous êtes chargé(e) de mission ou stagiaire en mission sur un diagnostic de vulnérabilité ?
-            En moins d’une minute, racontez-nous ce qui a (ou n’a pas) marché, via ce formulaire :{" "}
+            <b> En moins d’une minute</b>, racontez-nous ce qui a (ou n’a pas) marché, {" "}
             <a
               href="https://tally.so/r/w77gX6"
               target="_blank"
               rel="noopener noreferrer"
               style={{ width: "fit-content" }}
             >
-              lien
+              via ce formulaire
             </a>
           </p>
         </div>
