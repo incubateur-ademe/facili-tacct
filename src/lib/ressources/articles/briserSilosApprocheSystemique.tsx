@@ -5,6 +5,8 @@ import Systemie from "@/assets/images/approche_systemique.png";
 import JardinAnglais from "@/assets/images/jardin_anglais.png";
 import JardinFrancais from "@/assets/images/jardin_francais.png";
 import LogiqueSystemie from "@/assets/images/logique_cartesienne.png";
+import MaterialisationSystemie from "@/assets/images/systemie.png";
+import ZoomOnClick from '@/components/utils/ZoomOnClick';
 import Image from "next/image";
 import Link from 'next/link';
 import EndPageTrigger from "../../../hooks/EndPageTrigger";
@@ -22,7 +24,7 @@ const BriserSilosApprocheSystemique = () => {
           </p>
         </div>
         <h2>L’approche systémique : introduction au concept</h2>
-        <div className={styles.grayWrapper} style={{ margin: "1rem 0 2rem"}} >
+        <div className={styles.grayWrapper} style={{ margin: "1rem 0 2rem" }} >
           <div className='flex items-start flex-row gap-4'>
             <Image src={BulbIcon} alt="" />
             <p style={{ margin: "0" }}>
@@ -35,11 +37,11 @@ const BriserSilosApprocheSystemique = () => {
           </div>
         </div>
         <p>
-          Pour présenter la différence entre ces 2 approches prenons l’exemple de 2
+          Pour présenter la différence entre ces 2 approches, prenons l’exemple de 2
           jardins : le jardin à la française et le jardin à l’anglaise.
         </p>
         <div className='flex flex-row gap-4'>
-            <div style={{ width: "50%" }}>
+          <div style={{ width: "50%" }}>
             <Image
               src={JardinAnglais}
               alt="Jardin à l'anglaise"
@@ -58,7 +60,7 @@ const BriserSilosApprocheSystemique = () => {
               Cette approche est efficace pour décrire et comprendre le fonctionnement de systèmes simples,
               globalement inanimés, dans des environnements stables.
             </p>
-            </div>
+          </div>
           <div style={{ width: "50%" }}>
             <Image
               src={JardinFrancais}
@@ -88,35 +90,35 @@ const BriserSilosApprocheSystemique = () => {
           style={{ width: '100%', height: 'auto', padding: "3rem 0" }}
         />
         <p>
-          Plus largement, l’idée n’est pas d’opposer ces 2 approches. Il est essentiel de jouer avec 
-          la complémentarité : réussir à cumuler une analyse factuelle, tout en liant les sujets 
-          entre eux pour déterminer leurs interactions. Cette double approche est très pertinente 
+          Plus largement, l’idée n’est pas d’opposer ces 2 approches. Il est essentiel de jouer avec
+          la complémentarité : réussir à cumuler une analyse factuelle, tout en liant les sujets
+          entre eux pour déterminer leurs interactions. Cette double approche est très pertinente
           lorsqu’on aborde les sujets et incertitudes liés à l’adaptation au changement climatique.
         </p>
         <h2>Approche systémique : quelle mise en œuvre ?</h2>
-      <p>
-        Les propos rapportés dans cette partie sont issus des expériences terrains et des recherches menées par Olivier Erard.
+        <p>
+          Les propos rapportés dans cette partie sont issus des expériences terrains et des recherches menées par Olivier Erard.
         </p>
         <p>
-          Un premier élément soulevé par Olivier Erard a été de préciser que l’approche systémique n’était 
-          pas un objectif en soi. L’ancien directeur de la station s’y est retrouvé par sérendipité, sa mission 
-          initiale était de travailler sur un projet autour de la neige de culture. Progressivement, son objectif 
+          Un premier élément soulevé par Olivier Erard a été de préciser que l’approche systémique n’était
+          pas un objectif en soi. L’ancien directeur de la station s’y est retrouvé par sérendipité, sa mission
+          initiale était de travailler sur un projet autour de la neige de culture. Progressivement, son objectif
           est devenu celui de raconter la fin du ski à Métabief.
         </p>
         <p>
-          Bien que les données scientifiques aient été là, le message de l’après-ski restait difficile à entendre. 
-          C’est à ce moment que l’approche systémique a pris de l’importance : pendant 1 an, il s’est concentré 
-          sur la compréhension du problème, il a multiplié les modèles et croisé les domaines de compétences. 
-          Lors du partage de ce constat, il avait le sentiment d’avoir fait du “bricolage” avec les données, 
-          les questions soulevées ont élargi la problématique initiale grâce au croisement des regards et des 
-          données, froides (les données scientifiques), mais aussi chaudes (issues du terrain, des ressentis, 
-          etc.). Pour autant, le constat incluant les interactions dans le système validait la fin programmée 
+          Bien que les données scientifiques aient été là, le message de l’après-ski restait difficile à entendre.
+          C’est à ce moment que l’approche systémique a pris de l’importance : pendant 1 an, il s’est concentré
+          sur la compréhension du problème, il a multiplié les modèles et croisé les domaines de compétences.
+          Lors du partage de ce constat, il avait le sentiment d’avoir fait du « bricolage » avec les données,
+          les questions soulevées ont élargi la problématique initiale grâce au croisement des regards et des
+          données, froides (les données scientifiques), mais aussi chaudes (issues du terrain, des ressentis,
+          etc.). Pour autant, le constat incluant les interactions dans le système validait la fin programmée
           du ski à Métabief et donc, le besoin de sortir des réponses simplistes.
         </p>
         <h3>Qu’est-ce que cette logique a changé ?</h3>
         <p>
-          Grace à cette nouvelle logique, Olivier Erard a pu embarquer progressivement les parties prenantes du 
-          territoire sur une problématique plus large que la station : celle de la vision du territoire. 
+          Grâce à cette nouvelle logique, Olivier Erard a pu embarquer progressivement les parties prenantes du
+          territoire sur une problématique plus large que la station : celle de la vision du territoire.
           Ce changement d’échelle a mené à des réflexions autour de la notion de renoncement.
         </p>
         <p>
@@ -126,13 +128,22 @@ const BriserSilosApprocheSystemique = () => {
           <li>
             <b>Diagnostic complet</b> : En combinant les "données froides" (scientifiques) et les "données chaudes" (terrain), on obtient une image plus complète et nuancée de la réalité.
           </li>
-          <li>
+          <li style={{ marginBottom: "1.5rem" }}>
             <b>Acceptation de l'incertitude</b> : Cette définition du système montre sa complexité et permet de sortir de la vision traditionnelle : un problème = une solution ; Cela permet d’éviter la mise en œuvre de solutions simplistes, généralement elles aboutissent à un risque de maladaptation.
             <br />
+            <div style={{ position: 'relative' }}>
+              <div style={{ cursor: 'zoom-in', width: '100%', padding: "2rem 0 0 0" }} >
+                <ZoomOnClick
+                  src={MaterialisationSystemie}
+                  alt="Exemple de matérialisation de la systémie"
+                  sizes="100%"
+                />
+              </div>
+            </div>
             <em>Exemple de matérialisation de la systémie réalisée par Olivier Erard.</em>
           </li>
           <li>
-            <b>Mobilisation des acteurs</b> : La majorité des élus étaient dans le déni, voir même opposé au constat, car ils avaient la volonté de maintenir le système en l’état. Une situation normale puisqu’il  s’agit de leur rôle positionnel : assurer la stabilité et la continuité du système. Olivier Erard n’a alors pas cherché à tous les convaincre, il a focalisé son attention sur les premiers soutiens pour faire bouger les choses par étape. Avec des premières actions et des messages se diffusant, la création d’une ingénierie dédiée aux solutions est devenue clé.
+            <b>Mobilisation des acteurs</b> : La majorité des élus étaient dans le déni, voire même opposé au constat, car ils avaient la volonté de maintenir le système en l’état. Une situation normale puisqu’il  s’agit de leur rôle positionnel : assurer la stabilité et la continuité du système. Olivier Erard n’a alors pas cherché à tous les convaincre, il a focalisé son attention sur les premiers soutiens pour faire bouger les choses par étape. Avec des premières actions et des messages se diffusant, la création d’une ingénierie dédiée aux solutions est devenue clé.
           </li>
         </ol>
         <h3>Comment favoriser la réussite d’une démarche systémique ?</h3>
@@ -144,82 +155,83 @@ const BriserSilosApprocheSystemique = () => {
         </p>
         <ol>
           <li>
-            <b>Soyez stratégique !</b> En passant des messages à des moments ou dans des contextes particuliers. Par exemple Olivier Erard a alterné des passages d’information en huit clos et d’autres en public. Il a su doser les informations partagées et conseille de se greffer à des projets ou des structures existantes.
+            <b>Soyez stratégique !</b> En passant des messages à des moments ou dans des contextes particuliers. Par exemple, Olivier Erard a alterné des passages d’information en huis clos et d’autres en public. Il a su doser les informations partagées et conseille de se greffer à des projets ou des structures existantes.
           </li>
           <li>
             <b>Partage et collaboration</b> : Privilégiez un diagnostic partagé, même imparfait. D’ailleurs, une compréhension complète est impossible. Ce mode de travail vous permettra de favoriser l'engagement et de développer une compréhension collective progressive.
           </li>
           <li>
-            <b>Mobilisation ciblée</b> : Il est impossible d'être exhaustif ou d'impliquer tout le monde dans le processus. Concentrez-vous sur la mobilisation des “bonnes” personnes : celles capables de vous permettre d’avancer et de remonter par “capillarité”.
+            <b>Mobilisation ciblée</b> : Il est impossible d'être exhaustif ou d'impliquer tout le monde dans le processus. Concentrez-vous sur la mobilisation des « bonnes » personnes : celles capables de vous permettre d’avancer et de remonter par « capillarité ».
           </li>
         </ol>
         <h3>En synthèse, voilà les grandes étapes d’une approche systémique :</h3>
-        <Image
-          src={Systemie}
-          alt=""
-          width={0}
-          height={0}
-          sizes="100%"
-          style={{ width: '100%', height: 'auto' }}
-        />
+        <div style={{ position: 'relative' }}>
+          <div style={{ cursor: 'zoom-in', width: '100%', padding: "2rem 0 0 0" }} >
+            <ZoomOnClick
+              src={Systemie}
+              alt="3 étapes de la systémie"
+              sizes="100%"
+            />
+          </div>
+        </div>
         <h2>Comment lier approche systémique et obligations réglementaire ?</h2>
         <p>
-          Les démarches de planification peuvent être des occasions de privilégier une vision systémique. 
-          Bien sûr, ces exercices réglementaires tendent à figer la méthode et ce malgré les séquences 
+          Les démarches de planification peuvent être des occasions de privilégier une vision systémique.
+          Bien sûr, ces exercices réglementaires tendent à figer la méthode et ce malgré les séquences
           participatives, bien souvent très contrôlées.
         </p>
         <p>
-          L’enjeu pour réussir à lier une approche systémique dans un cadre réglementaire est de s’assurer 
+          L’enjeu pour réussir à lier une approche systémique dans un cadre réglementaire est de s’assurer
           de <b>respecter le cadre minimal</b>, celui-ci vous évitera de vous mettre en porte-à-faux.
         </p>
         <p>
-          Parallèlement, introduisez dans votre approche, si possible à budget constant, une 
-          véritable <b>mécanique de la systémique</b> (ne se réduisant pas simplement à l’étape de 
-          modélisation), mais incluant co-construction, partage de la vision systémique, jusqu’à 
+          Parallèlement, introduisez dans votre approche, si possible à budget constant, une
+          véritable <b>mécanique de la systémique</b> (ne se réduisant pas simplement à l’étape de
+          modélisation), mais incluant co-construction, partage de la vision systémique, jusqu’à
           la mise en mouvement "systémique" des parties prenantes.
         </p>
         <p>
-          Evidemment, il faudra aussi parvenir à convaincre les "tenants de la règle", pour cela 
+          Evidemment, il faudra aussi parvenir à convaincre les "tenants de la règle", pour cela
           précisez bien :
         </p>
         <ul>
           <li>le <b>respect de la réglementation</b>,</li>
           <li>le <b>rôle clé des décideurs</b> : ils sont mobilisés dans le processus et seront sécurisés avec un apport de visibilité autour la démarche.</li>
           <li>
-            la <b>dynamique d’émergence</b> : elle permet de faire apparaitre des actions rapides 
-            (malgré le constat de complexité), cela permet de motiver les acteurs. Leur contribution est 
-            suivie d'effets susceptibles de renforcer la légitimité du décideur (il pourra valoriser 
+            la <b>dynamique d’émergence</b> : elle permet de faire apparaitre des actions rapides
+            (malgré le constat de complexité), cela permet de motiver les acteurs. Leur contribution est
+            suivie d'effets susceptibles de renforcer la légitimité du décideur (il pourra valoriser
             des premières actions rapidement).
           </li>
         </ul>
         <p>
-          La phase de cadrage est essentielle : il ne faut pas simplement faire du copié/collé de 
-          cahier des charges. À savoir, chaque situation sera spécifique en fonction de l'historique, 
-          de l'environnement organisationnel, des ressources disponibles, des enjeux territoriaux, des 
+          La phase de cadrage est essentielle : il ne faut pas simplement faire du copié/collé de
+          cahier des charges. À savoir, chaque situation sera spécifique en fonction de l'historique,
+          de l'environnement organisationnel, des ressources disponibles, des enjeux territoriaux, des
           opportunités existantes, etc.
         </p>
         <h2>En conclusion</h2>
         <p>
-          L’approche systémique est idéale pour élargir la compréhension des dynamiques de votre territoire. 
-          Un point essentiel à l'identification des bonnes problématiques et donc, la bonne mise en 
-          oeuvre de votre stratégie d’adaptation au changement climatique.
+          L’approche systémique est idéale pour élargir la compréhension des dynamiques de votre territoire.
+          Un point essentiel à l'identification des bonnes problématiques et donc, la bonne mise en
+          œuvre de votre stratégie d’adaptation au changement climatique.
           <br />
-          Un atout incontestable pour poser les bonnes problématiques auxquelles votre stratégie 
-          d’adaptation au changement climatique doit répondre. Toutefois, cette logique est encore 
-          méconnue, peu de retours d’expériences sont disponibles et ceci malgré la multitudes 
+          Un atout incontestable pour poser les bonnes problématiques auxquelles votre stratégie
+          d’adaptation au changement climatique doit répondre. Toutefois, cette logique est encore
+          méconnue, peu de retours d’expériences sont disponibles et ceci malgré la multitude
           d’outils se revendiquant de la systémie.
         </p>
         <p>
-          Si vous optez pour une démarche systémique, liez-la à un projet existant, tout en donnant 
-          autant de visibilité sur les étapes et apprentissages vécus. Parallèlement, n’oubliez pas 
+          Si vous optez pour une démarche systémique, liez-la à un projet existant, tout en donnant
+          autant de visibilité sur les étapes et apprentissages vécus. Parallèlement, n’oubliez pas
           de vous appuyer sur des données analytiques.
         </p>
         <p>
-          En définitive, le succès de votre approche résidera dans votre capacité à mobiliser les 
-          bonnes personnes dans la durée. Cela vous permettra d’obtenir des résultats progressifs 
+          En définitive, le succès de votre approche résidera dans votre capacité à mobiliser les
+          bonnes personnes dans la durée. Cela vous permettra d’obtenir des résultats progressifs
           qui engageront à leur tour d’autres acteurs.
         </p>
-        <div className={styles.grayWrapper}>
+        <div className={styles.grayWrapper} style={{ margin: "3rem 0 0 0" }}>
           <div className={styles.h2title}>
             <Image src={BookIcon} alt="" />
             <h2>Ressources liées</h2>
@@ -235,7 +247,7 @@ const BriserSilosApprocheSystemique = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      métabief
+                      Métabief
                     </Link>
                   </li>
                   <li>
@@ -263,13 +275,13 @@ const BriserSilosApprocheSystemique = () => {
               <div>
                 <ul>
                   <li>
-                    Pour une pensée systémique, de Donella Meadows
+                    <i>Pour une pensée systémique</i>, de Donella Meadows
                   </li>
                   <li>
-                    L'acteur et le système, de Michel Crozier et Erhard Friedberg
+                    <i>L'acteur et le système</i>, de Michel Crozier et Erhard Friedberg
                   </li>
                   <li>
-                    L’Art de la guerre, de Sun Tzu
+                    <i>L’Art de la guerre</i>, de Sun Tzu
                   </li>
                   <li>
                     <Link
@@ -277,9 +289,9 @@ const BriserSilosApprocheSystemique = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Le Passeur
+                      <i>Le Passeur</i>
                     </Link>
-                    {" "}, écrit par Olivier Erard
+                    , écrit par Olivier Erard
                   </li>
                 </ul>
               </div>
