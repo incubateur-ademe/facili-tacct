@@ -337,7 +337,7 @@ export const cards = {
         "TACCT. Une stratégie issue d'une trajectoire d'adaptation au changement climatique",
       tag: "Retour d'expérience",
       description:
-        'À la suite du diagnostic de vulnérabilité et pour la mise en oeuvre de sa stratégie. Le Pays Pyrénées Méditerranée a organisé 2 ateliers afin de définir ses trajectoires d’adaptation.',
+        'À la suite du diagnostic de vulnérabilité et pour la mise en oeuvre de sa stratégie, le pays Pyrénées Méditerranée a organisé 2 ateliers afin de définir ses trajectoires d’adaptation.',
       link: 'https://librairie.ademe.fr/changement-climatique/7726-tacct-une-strategie-issue-d-une-trajectoire-d-adaptation-au-changement-climatique.html#'
     },
     {
