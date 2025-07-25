@@ -248,7 +248,7 @@ const PnaccTracc = () => {
                     >
                       100 territoires
                     </Link>
-                    {" "}bénéficiant la Mission adaptation
+                    {" "}bénéficiant de la Mission adaptation
                   </li>
                 </ul>
               </div>
