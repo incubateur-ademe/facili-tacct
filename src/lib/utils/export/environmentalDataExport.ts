@@ -133,11 +133,11 @@ export const IndicatorExportTransformations = {
           libelle_petr: el.libelle_petr,
           departement: el.departement,
           libelle_departement: el.libelle_departement,
-          agriculture: el.NA5AZ_sum,
-          industries: el.NA5BE_sum,
-          construction: el.NA5FZ_sum,
-          commerces: el.NA5GU_sum,
-          administration: el.NA5OQ_sum
+          agriculture: Round(el.NA5AZ_sum, 0),
+          industries: Round(el.NA5BE_sum, 0),
+          construction: Round(el.NA5FZ_sum, 0),
+          commerces: Round(el.NA5GU_sum, 0),
+          administration: Round(el.NA5OQ_sum, 0)
         };
       }),
     densiteBati: (carteCommunes: CarteCommunes[]) => {
