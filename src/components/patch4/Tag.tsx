@@ -10,14 +10,14 @@ interface TagPatch4Props {
 
 export const TagPatch4 = ({ children }: TagPatch4Props) => {
   const color =
-    children === 'Intensité très forte'
+    children === 'Aggravation très forte'
       ? '#DA1B5C'
-      : children === 'Intensité forte'
+      : children === 'Aggravation forte'
         ? '#F66E19'
-        : children === 'Intensité modérée'
+        : children === 'Aggravation modérée'
           ? '#FFCF5E'
           : '#FFF';
-  const textColor = children === 'Intensité très forte' ? 'white' : 'black';
+  const textColor = children === 'Aggravation très forte' ? 'white' : 'black';
   return (
     <Tag
       className={styles.tag}
