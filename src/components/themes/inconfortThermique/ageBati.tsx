@@ -47,7 +47,6 @@ export const AgeBati = (props: {
   const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
-
   const ageBatiMapped = inconfortThermique.map(ageBatiMapper);
 
   const ageBatiTerritoire =
