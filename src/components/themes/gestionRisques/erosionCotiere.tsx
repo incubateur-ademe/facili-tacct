@@ -61,8 +61,8 @@ const ErosionCotes = (props: {
                   endroits.
                 </p>
                 <div className={styles.patch4Wrapper}>
-                  {niveauxMarins === 'Intensité très forte' ||
-                    niveauxMarins === 'Intensité forte' ? (
+                  {niveauxMarins === 'Aggravation très forte' ||
+                    niveauxMarins === 'Aggravation forte' ? (
                     <TagItem
                       icon={niveauxMarinsIcon}
                       indice="Niveaux marins"

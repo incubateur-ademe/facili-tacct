@@ -69,8 +69,8 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
               ) : (
                 ''
               )}
-              {feuxForet === 'Intensité très forte' ||
-                feuxForet === 'Intensité forte' ? (
+              {feuxForet === 'Aggravation très forte' ||
+                feuxForet === 'Aggravation forte' ? (
                 <div className={styles.patch4Wrapper}>
                   <TagItem
                     icon={feuxForetIcon}

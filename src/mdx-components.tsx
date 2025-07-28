@@ -20,6 +20,7 @@ export const anchorHeadingMDXComponents: MDXComponents = {
     <AnchorLink
       as="h2"
       anchor={slugify(getLabelFromChildren(props.children))}
+      style={{ margin: '3rem 0 1.5rem' }}
       {...props}
     />
   ),
@@ -27,6 +28,7 @@ export const anchorHeadingMDXComponents: MDXComponents = {
     <AnchorLink
       as="h3"
       anchor={slugify(getLabelFromChildren(props.children))}
+      style={{ margin: '1rem 0 0.5rem' }}
       {...props}
     />
   )

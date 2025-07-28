@@ -1,13 +1,14 @@
 "use client";
 
-import { type PropsWithChildren } from "react";
+import { type CSSProperties, type PropsWithChildren } from "react";
 
 export interface AnchorLinkProps {
   anchor: string;
   as?: "h1" | "h2" | "h3";
   iconSize?: "lg" | "sm" | "xl";
+  style?: CSSProperties;
 }
-export const AnchorLink = ({ anchor, children, as: HtmlTag = "h3", iconSize }: PropsWithChildren<AnchorLinkProps>) => {
+export const AnchorLink = ({ anchor, children, as: HtmlTag = "h3", iconSize, style }: PropsWithChildren<AnchorLinkProps>) => {
   return (
     <>
       <style jsx>{`
@@ -31,6 +32,7 @@ export const AnchorLink = ({ anchor, children, as: HtmlTag = "h3", iconSize }: P
       `}</style>
       <HtmlTag
         id={anchor}
+        style={style}
         onClick={() => {
           location.href = `#${anchor}`;
         }}

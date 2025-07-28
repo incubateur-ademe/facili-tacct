@@ -40,13 +40,13 @@ const RessourcesPourSadapter = ({ patch4 }: { patch4: Patch4 }) => {
   return (
     <>
       <h3 style={{ fontSize: '1rem', lineHeight: '1.5rem', fontWeight: 'bold', color: "#161616" }}>
-        Sur votre territoire, certains aléas climatiques présentent une intensité forte ou très forte. 
-        Il est impératif de prendre en compte leurs effets dès aujourd’hui. Pour vous aider, 
+        Sur votre territoire, certains aléas climatiques présentent une aggravation forte ou très forte.
+        Il est impératif de prendre en compte leurs effets dès aujourd’hui. Pour vous aider,
         le centre de ressources pour l’adaptation au changement climatique vous propose des pistes d’action.
       </h3>
       <div className="flex flex-wrap gap-3 mb-8">
         {
-          !!fortesChaleurs && (fortesChaleurs === "Intensité très forte" || fortesChaleurs === "Intensité forte") &&
+          !!fortesChaleurs && (fortesChaleurs === "Aggravation très forte" || fortesChaleurs === "Aggravation forte") &&
           <Tile
             title="Canicule : à quoi s’attendre et comment s’adapter ?"
             link="https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/canicule#toc-agir"
@@ -54,7 +54,7 @@ const RessourcesPourSadapter = ({ patch4 }: { patch4: Patch4 }) => {
           />
         }
         {
-          !!precipitation && (precipitation === "Intensité très forte" || precipitation === "Intensité forte") &&
+          !!precipitation && (precipitation === "Aggravation très forte" || precipitation === "Aggravation forte") &&
           <Tile
             title="Inondation : à quoi s’attendre et comment s’adapter ?"
             link="https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/inondation#toc-agir"
@@ -62,7 +62,7 @@ const RessourcesPourSadapter = ({ patch4 }: { patch4: Patch4 }) => {
           />
         }
         {
-          !!secheresse && (secheresse === "Intensité très forte" || secheresse === "Intensité forte") &&
+          !!secheresse && (secheresse === "Aggravation très forte" || secheresse === "Aggravation forte") &&
           <Tile
             title="Retrait gonflement des argiles : à quoi s’attendre et comment s’adapter ?"
             link="https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/retrait-gonflement-des-argiles#toc-agir"
@@ -70,7 +70,7 @@ const RessourcesPourSadapter = ({ patch4 }: { patch4: Patch4 }) => {
           />
         }
         {
-          !!feuxForet && (feuxForet === "Intensité très forte" || feuxForet === "Intensité forte") &&
+          !!feuxForet && (feuxForet === "Aggravation très forte" || feuxForet === "Aggravation forte") &&
           <Tile
             title="Feux de forêt : à quoi s’attendre et comment s’adapter ?"
             link="https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/feux-de-foret#toc-agir"
@@ -78,7 +78,7 @@ const RessourcesPourSadapter = ({ patch4 }: { patch4: Patch4 }) => {
           />
         }
         {
-          !!niveauxMarins && (niveauxMarins === "Intensité très forte" || niveauxMarins === "Intensité forte") &&
+          !!niveauxMarins && (niveauxMarins === "Aggravation très forte" || niveauxMarins === "Aggravation forte") &&
           <Tile
             title="Érosion du littoral : à quoi s’attendre et comment s’adapter ?"
             link="https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/erosion-du-littoral#toc-agir"

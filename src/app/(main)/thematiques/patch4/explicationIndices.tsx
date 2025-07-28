@@ -11,9 +11,14 @@ export const ExplicationIndices = ({ patch4 }: { patch4: Patch4 }) => {
   return (
     <div className={styles.indiceWrapper}>
       <h3 style={{ fontSize: '1rem', margin: 0, lineHeight: '1.5rem' }}>
-        <b>Ces indices représentent chacun l’évolution d’un phénomène climatique précis, sur la base d’un ou
-          plusieurs indicateurs issus des projections de la TRACC.</b>
+        <b>D’où vient cette donnée ?</b>
       </h3>
+      <p>
+        Météo France propose un nouveau jeu de données basé sur la trajectoire
+        de réchauffement de référence pour l'adaptation au changement climatique
+        (TRACC). Ces indices représentent chacun l’aggravation de l’évolution
+        d’un phénomène climatique précis, en 2100 par rapport à 2050.
+      </p>
       <div className={styles.indiceExplication}>
         <Image src={fortesChaleursIcon} alt="" />
         <p>
@@ -37,7 +42,7 @@ export const ExplicationIndices = ({ patch4 }: { patch4: Patch4 }) => {
         <p>
           <b>Sécheresse des sols : </b>
           L’indice s’appuie sur l’indicateur d’évolution du nombre de jours par saison avec sol sec,
-          lui-même basé sur le Soil Wetness Index (SWI04) représentant une humidité des sols inférieure à 0,4
+          lui-même basé sur le <i>Soil Wetness Index</i> (SWI04) représentant une humidité des sols inférieure à 0,4
           (valeur définie comme seuil critique pour l’état de la réserve en eau du sol par rapport à
           la réserve utile disponible pour l’alimentation des plantes).
         </p>
@@ -56,7 +61,7 @@ export const ExplicationIndices = ({ patch4 }: { patch4: Patch4 }) => {
         <div className={styles.indiceExplication}>
           <Image src={niveauxMarinsIcon} alt="" />
           <p>
-            <b>Niveaux marins : </b>
+            <b>Montée de la mer : </b>
             L’indice s’appuie sur l’indicateur d’évolution de l’élévation du niveau moyen de la mer.
           </p>
         </div>

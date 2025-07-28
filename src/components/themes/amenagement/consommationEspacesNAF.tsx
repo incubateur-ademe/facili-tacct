@@ -66,16 +66,16 @@ export const ConsommationEspacesNAF = (props: {
                   ) : ""
                 }
                 <div className={styles.patch4Wrapper}>
-                  {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                  {fortesChaleurs === 'Aggravation très forte' ||
+                    fortesChaleurs === 'Aggravation forte' ? (
                     <TagItem
                       icon={fortesChaleursIcon}
                       indice="Fortes chaleurs"
                       tag={fortesChaleurs}
                     />
                   ) : null}
-                  {precipitation === 'Intensité très forte' ||
-                    precipitation === 'Intensité forte' ? (
+                  {precipitation === 'Aggravation très forte' ||
+                    precipitation === 'Aggravation forte' ? (
                     <TagItem
                       icon={precipitationIcon}
                       indice="Fortes précipitations"
