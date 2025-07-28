@@ -194,11 +194,6 @@ export const MapCatnat2 = (props: {
     };
   }, [carteTerritoire]);
 
-
-  console.log("geoJsonData", geoJsonData);
-  console.log("mapLoaded", mapLoaded);
-  console.log("isDoneLoading", doneLoading);
-
   useEffect(() => {
     if (!mapContainer.current) return;
 
@@ -244,37 +239,37 @@ export const MapCatnat2 = (props: {
         generateId: false
       });
 
-          // Add fill layer for catnat data
-    mapLoaded.addLayer({
-      id: 'catnat-fill',
-      type: 'fill',
-      source: 'catnat-communes',
-      paint: {
-        'fill-color': colorExpression,
-        'fill-opacity': hoverExpression
-      }
-    });
+      // Add fill layer for catnat data
+      mapLoaded.addLayer({
+        id: 'catnat-fill',
+        type: 'fill',
+        source: 'catnat-communes',
+        paint: {
+          'fill-color': colorExpression,
+          'fill-opacity': hoverExpression
+        }
+      });
 
-    // Add stroke layer for commune boundaries
-    mapLoaded.addLayer({
-      id: 'catnat-stroke',
-      type: 'line',
-      source: 'catnat-communes',
-      paint: {
-        'line-color': [
-          'case',
-          ['boolean', ['feature-state', 'hover'], false],
-          '#0D2100',
-          '#161616'
-        ],
-        'line-width': [
-          'case',
-          ['boolean', ['feature-state', 'hover'], false],
-          3,
-          1
-        ]
-      }
-    });
+      // Add stroke layer for commune boundaries
+      mapLoaded.addLayer({
+        id: 'catnat-stroke',
+        type: 'line',
+        source: 'catnat-communes',
+        paint: {
+          'line-color': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
+            '#0D2100',
+            '#161616'
+          ],
+          'line-width': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
+            3,
+            1
+          ]
+        }
+      });
 
       //   // Mouse events for hover effects and tooltips
       //   map.on('mouseenter', 'catnat-fill', (e) => {

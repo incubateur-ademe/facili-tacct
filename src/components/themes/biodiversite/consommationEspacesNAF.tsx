@@ -1,6 +1,5 @@
 'use client';
 
-import { ExportButton } from '@/components/exports/ExportButton';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
@@ -40,16 +39,6 @@ export const ConsommationEspacesNAF = (props: {
   return (
     <div className={styles.container}>
       <div className={carteCommunes.length !== 0 ? "w-2/5" : "w-1/2"}>
-        <div className="mb-4">
-          <ExportButton
-            data={exportData}
-            baseName="consommation_espaces_naf"
-            type={type}
-            libelle={libelle}
-            code={code}
-            sheetName="Espaces NAF"
-          />
-        </div>
         <div className={styles.explicationWrapper}>
           {
             sumNaf && sumNaf !== 0 ? (
@@ -67,6 +56,7 @@ export const ConsommationEspacesNAF = (props: {
       <div className={carteCommunes.length !== 0 ? "w-3/5" : "w-1/2"}>
         <ConsommationEspacesNAFDataviz
           carteCommunes={communesMap}
+          exportData={exportData}
         />
       </div>
     </div>

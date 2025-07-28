@@ -179,16 +179,6 @@ export const GrandAgeIsolement = (props: {
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <div className={!Object.values(yData).slice(0, -2).includes('NaN') ? 'w-2/5' : 'w-1/2'}>
-            <div className="mb-4">
-              <ExportButton
-                data={exportData}
-                baseName="grand_age"
-                type={type}
-                libelle={libelle}
-                code={code}
-                sheetName="Grand âge"
-              />
-            </div>
             <div className={styles.explicationWrapper}>
               {
                 !Object.values(yData).slice(0, -2).includes('NaN') && (
@@ -256,9 +246,19 @@ export const GrandAgeIsolement = (props: {
               ) : (
                 <Loader />
               )}
-              <p style={{ padding: '1em', margin: '0' }}>
-                Source : Observatoire des territoires
-              </p>
+              <div className={styles.sourcesExportWrapper}>
+                <p>
+                  Source : Observatoire des territoires
+                </p>
+                <ExportButton
+                  data={exportData}
+                  baseName="grand_age"
+                  type={type}
+                  libelle={libelle}
+                  code={code}
+                  sheetName="Grand âge"
+                />
+              </div>
             </div>
           </div>
         </div>

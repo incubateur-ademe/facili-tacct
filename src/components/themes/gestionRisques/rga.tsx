@@ -1,7 +1,6 @@
 import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
@@ -102,23 +101,13 @@ export const RGA = ({
         <div className={styles.container}>
           <>
             <div className={communesMap.length > 0 ? "w-2/5" : "w-1/2"}>
-              <div className="mb-4">
-                <ExportButton
-                  data={exportData}
-                  baseName="retrait_gonflement_argiles"
-                  type={type}
-                  libelle={libelle}
-                  code={code}
-                  sheetName="Retrait-gonflement des argiles"
-                />
-              </div>
               <div className={styles.explicationWrapper}>
                 {
                   communesMap.length > 0 && rga.length && rgaCarte.length ? (
                     <p>
                       <b>{partMoyenFort} %</b> de votre territoire est situé dans une zone où le niveau
                       d’exposition au retrait gonflement des argiles est moyen ou fort. Cela
-                      concerne potentiellement <b>{numberWithSpacesRegex(nbLogementsMoyenFort)} logements</b>, parmi
+                      concerne potentiellement <b>{numberWithSpacesRegex(nbLogementsMoyenFort)} logement(s)</b>, parmi
                       lesquels <b>{nbLogementsMoyenFort === 0 ? 0 : partMoyenFortApres1975} %</b> sont considérés comme plus à
                       risque car construits après 1975.
                     </p>
@@ -156,6 +145,7 @@ export const RGA = ({
                     datavizTab={datavizTab}
                     setDatavizTab={setDatavizTab}
                     exportPNGRef={exportPNGRef}
+                    exportData={exportData}
                   /> : (
                     <div className={styles.graphWrapper}>
                       <p style={{ padding: '1em', margin: '0' }}>

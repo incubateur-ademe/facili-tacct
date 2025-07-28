@@ -1,4 +1,3 @@
-import { BiodiversiteExport } from '@/components/exports/BiodiversiteExport';
 import {
   GetAgricultureBio,
   GetAOT40,
@@ -24,7 +23,7 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
 
   return (
     <div>
-      <BiodiversiteExport code={code} libelle={libelle} type={type} etatCoursDeau={dbEtatCoursDeau} />
+      {/* <BiodiversiteExport code={code} libelle={libelle} type={type} etatCoursDeau={dbEtatCoursDeau} /> */}
       <div className={styles.container}>
         <Suspense>
           <BiodiversiteComp

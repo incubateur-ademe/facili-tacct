@@ -1,5 +1,4 @@
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
-import { ExportButton } from '@/components/exports/ExportButton';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
@@ -74,16 +73,6 @@ const AgricultureBiologique = (props: {
         !isLoadingPatch4 ?
           <div className={styles.container}>
             <div className="w-1/2">
-              <div className="mb-4">
-                <ExportButton
-                  data={exportData}
-                  baseName="agriculture_biologique"
-                  type={type}
-                  libelle={libelle}
-                  code={code}
-                  sheetName="Agriculture bio"
-                />
-              </div>
               <div className={styles.explicationWrapper}>
                 {agricultureBio.length ?
                   <>
@@ -151,6 +140,7 @@ const AgricultureBiologique = (props: {
                 agricultureBio={agricultureBio}
                 datavizTab={datavizTab}
                 setDatavizTab={setDatavizTab}
+                exportData={exportData}
               />
             </div>
           </div>

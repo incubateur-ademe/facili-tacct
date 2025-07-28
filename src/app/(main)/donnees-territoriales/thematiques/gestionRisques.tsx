@@ -1,4 +1,3 @@
-import { GestionRisquesExport } from '@/components/exports/GestionRisquesExport';
 import {
   GetArretesCatnat,
   GetIncendiesForet
@@ -22,7 +21,7 @@ const GestionRisques = async (props: { searchParams: SearchParams }) => {
 
   return (
     <div>
-      <GestionRisquesExport code={code} libelle={libelle} type={type} />
+      {/* <GestionRisquesExport code={code} libelle={libelle} type={type} /> */}
       <div className={styles.container}>
         <Suspense>
           <GestionRisquesComp

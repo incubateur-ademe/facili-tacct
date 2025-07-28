@@ -599,7 +599,7 @@ export type SurfacesAgricolesModel = {
   superficie_sau_herbe_subventions: number;
   superficie_sau_herbe_bois_patures: number;
   superficie_sau_jardins: number;
-}
+};
 
 export type Patch4 = {
   index: bigint;
