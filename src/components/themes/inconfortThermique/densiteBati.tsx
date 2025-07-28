@@ -72,16 +72,6 @@ export const DensiteBati = ({
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <div className="w-2/5">
-            <div className="mb-4">
-              <ExportButton
-                data={exportData}
-                baseName="densite_bati"
-                type={type}
-                libelle={libelle}
-                code={code}
-                sheetName="Densité du bâti"
-              />
-            </div>
             <div className={styles.explicationWrapper}>
               {communesMap.length && densiteTerritoire ? (
                 <>
@@ -135,9 +125,19 @@ export const DensiteBati = ({
                     >
                       <LegendCompColor legends={densiteBatiLegend} />
                     </div>
-                    <p style={{ padding: '1em', margin: '0' }}>
-                      Source : Base de Données Nationale Des Bâtiments – BDNB. Dernière mise à jour : juin 2025.
-                    </p>
+                    <div className={styles.sourcesExportWrapper}>
+                      <p>
+                        Source : Base de Données Nationale Des Bâtiments – BDNB. Dernière mise à jour : juin 2025.
+                      </p>
+                      <ExportButton
+                        data={exportData}
+                        baseName="densite_bati"
+                        type={type}
+                        libelle={libelle}
+                        code={code}
+                        sheetName="Densité du bâti"
+                      />
+                    </div>
                   </>
                   : <DataNotFoundForGraph image={DataNotFound} />
               }

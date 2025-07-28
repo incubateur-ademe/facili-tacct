@@ -17,6 +17,7 @@ import {
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { AOT40TooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import * as turf from '@turf/turf';
 import L from 'leaflet';
@@ -155,6 +156,7 @@ const AOT40Dataviz = (props: {
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : undefined;
+  const exportData = IndicatorExportTransformations.biodiversite.aot40(aot40);
 
   return (
     <>
@@ -162,16 +164,6 @@ const AOT40Dataviz = (props: {
         !isLoadingPatch4 ?
           <div className={styles.container}>
             <div className={(aot40.length && carteCommunes.length) ? "w-5/12" : "w-1/2"}>
-              <div className="mb-4">
-                <ExportButton
-                  data={aot40}
-                  baseName="aot_40"
-                  type={type}
-                  libelle={libelle}
-                  code={code}
-                  sheetName="AOT 40"
-                />
-              </div>
               <div className={styles.explicationWrapper}>
                 <p>
                   La pollution à l’ozone ne s'arrête pas aux frontières des
@@ -245,9 +237,19 @@ const AOT40Dataviz = (props: {
                     </>
                   ) : <DataNotFoundForGraph image={DataNotFound} />
                 }
-                <p style={{ padding: '1em', margin: '0' }}>
-                  Source : Géod’Air (2024)
-                </p>
+                <div className={styles.sourcesExportWrapper}>
+                  <p>
+                    Source : Géod’Air (2024)
+                  </p>
+                  <ExportButton
+                    data={exportData}
+                    baseName="aot_40"
+                    type={type}
+                    libelle={libelle}
+                    code={code}
+                    sheetName="AOT 40"
+                  />
+                </div>
               </div>
             </div>
           </div>

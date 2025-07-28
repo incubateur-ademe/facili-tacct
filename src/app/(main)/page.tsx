@@ -5,6 +5,7 @@ import Patch4Img from '@/assets/images/patch4_home.png';
 import RessourcesImg from '@/assets/images/ressources_home.webp';
 import { Loader } from '@/components/loader';
 import OptimalParagraph from '@/components/utils/OptimalParagraph';
+import MiddlePageTrigger from '@/hooks/MiddlePageTrigger';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { homeCards } from '@/lib/homaCards';
 import Image from 'next/image';
@@ -98,6 +99,7 @@ const Home = () => {
               Vous avez des défis complexes à relever face au changement climatique et vous vous
               demandez par où commencer ? TACCT est la méthode qu’il vous faut.
             </OptimalParagraph>
+            <MiddlePageTrigger />
             <div className={styles.cardWrapper}>
               {homeCards.map((card, index) => (
                 <HomeCard

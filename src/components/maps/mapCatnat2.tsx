@@ -131,8 +131,6 @@ export const MapCatnat2 = (props: {
   // Memoize enveloppe to prevent unnecessary recalculations
   const enveloppe = BoundsFromCollection(carteTerritoire, type, code);
 
-  console.log("enveloppe", enveloppe);
-
   // Calculate max value for color scaling - memoized to prevent unnecessary recalculations
   const maxValue = useMemo(() => {
     return typeRisqueValue === 'Tous types'
@@ -191,9 +189,6 @@ export const MapCatnat2 = (props: {
       })) as Feature<Geometry, GeoJsonProperties>[]
     };
   }, [carteTerritoire]);
-
-
-  console.log("geoJsonData", geoJsonData);
 
 
   useEffect(() => {
@@ -398,7 +393,6 @@ export const MapCatnat2 = (props: {
   useEffect(() => {
     let map = mapRef.current;
     if (!map || !mapContainer.current || !map.style) return;
-    console.log("map", map.style)
     map.setPaintProperty(
       'catnat-fill',
       'fill-color',

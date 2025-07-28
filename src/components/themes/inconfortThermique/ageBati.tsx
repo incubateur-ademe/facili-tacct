@@ -130,16 +130,6 @@ export const AgeBati = (props: {
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <div className={sumAllCount > 0 ? "w-2/5" : "w-1/2"}>
-            <div className="mb-4">
-              <ExportButton
-                data={exportData}
-                baseName="age_bati"
-                type={type}
-                libelle={libelle}
-                code={code}
-                sheetName="Age du bâti"
-              />
-            </div>
             <div className={styles.explicationWrapper}>
               {
                 constructionBefore2006 &&
@@ -166,7 +156,17 @@ export const AgeBati = (props: {
                 <b>Part des résidences principales par période de construction</b>
               </p>
               {chartData ? <BarChart chartData={chartData} /> : <Loader />}
-              <p style={{ padding: '1em', margin: '0' }}>Source : INSEE</p>
+              <div className={styles.sourcesExportWrapper}>
+                <p>Source : INSEE</p>
+                <ExportButton
+                  data={exportData}
+                  baseName="age_bati"
+                  type={type}
+                  libelle={libelle}
+                  code={code}
+                  sheetName="Age du bâti"
+                />
+              </div>
             </div>
           </div>
         </div>

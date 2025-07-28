@@ -1,6 +1,5 @@
 'use client';
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
-import { ExportButton } from '@/components/exports/ExportButton';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
@@ -110,16 +109,6 @@ export const PrelevementEau = (props: {
         !isLoadingPatch4 ?
           <div className={styles.container}>
             <div className={ressourcesEau.length > 0 ? "w-5/12" : "w-1/2"}>
-              <div className="mb-4">
-                <ExportButton
-                  data={exportData}
-                  baseName="prelevements_eau"
-                  type={type}
-                  libelle={libelle}
-                  code={code}
-                  sheetName="Prélèvements en eau"
-                />
-              </div>
               <div className={styles.explicationWrapper}>
                 {dataParMaille.length !== 0 ? (
                   <p>
@@ -149,6 +138,7 @@ export const PrelevementEau = (props: {
                 ressourcesEau={ressourcesEau}
                 datavizTab={datavizTab}
                 setDatavizTab={setDatavizTab}
+                exportData={exportData}
               />
             </div>
           </div>

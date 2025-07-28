@@ -73,7 +73,7 @@ export const LineChart1 = (props: Props) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: 'Années de rencensement',
+        legend: 'Années de recensement',
         legendOffset: 36,
         legendPosition: 'middle',
         truncateTickAt: 0

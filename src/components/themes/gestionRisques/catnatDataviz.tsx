@@ -2,10 +2,12 @@ import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
 import { BarChartCatnat } from '@/components/charts/gestionRisques/BarChartCatnat';
 import PieChartCatnat from '@/components/charts/gestionRisques/pieChartCatnat';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { LegendCatnat } from '@/components/maps/legends/legendCatnat';
 import { MapCatnat } from '@/components/maps/mapCatnat';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { ArreteCatNat } from '@/lib/postgres/models';
+import { ArreteCatNatExport } from '@/lib/utils/export/exportTypes';
 import { useSearchParams } from 'next/navigation';
 import styles from './gestionRisques.module.scss';
 
@@ -23,6 +25,7 @@ type Props = {
   setTypeRisqueValue: (value: CatnatTypes) => void;
   setSliderValue: (value: number[]) => void;
   sliderValue: number[];
+  exportData: ArreteCatNatExport[]
 };
 
 const CatnatDataViz = (props: Props) => {
@@ -36,10 +39,13 @@ const CatnatDataViz = (props: Props) => {
     typesRisques,
     setTypeRisqueValue,
     setSliderValue,
-    sliderValue
+    sliderValue,
+    exportData
   } = props;
   const searchParams = useSearchParams();
   const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
+  const code = searchParams.get('code')!;
 
   return (
     <div className={styles.graphWrapper}>
@@ -119,11 +125,21 @@ const CatnatDataViz = (props: Props) => {
       ) : (
         ''
       )}
-      <p style={{ padding: '1em', margin: '0' }}>
-        Source : Base nationale de Gestion ASsistée des Procédures
-        Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
-        février 2025.
-      </p>
+      <div className={styles.sourcesExportWrapper}>
+        <p>
+          Source : Base nationale de Gestion ASsistée des Procédures
+          Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
+          février 2025.
+        </p>
+        <ExportButton
+          data={exportData}
+          baseName="arretes_catnat"
+          type={type}
+          libelle={libelle}
+          code={code}
+          sheetName="Arrêtés CatNat"
+        />
+      </div>
     </div>
   );
 };

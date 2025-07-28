@@ -14,7 +14,6 @@ import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { CLCTerritoires, InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
-import { exportDatavizAsPNG } from '@/lib/utils/export/exportPng';
 import { exportAsZip } from '@/lib/utils/export/exportZipGeneric';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
@@ -85,26 +84,6 @@ const Vegetalisation = (props: {
       {!isLoadingPatch4 ? (
         <div className={styles.container}>
           <div className="w-2/5">
-            <div className="mb-4">
-              <ZipExportButton
-                handleExport={() => exportAsZip({
-                  excelFiles: [{
-                    data: exportData,
-                    baseName: "vegetalisation",
-                    sheetName: "Végétalisation",
-                    type,
-                    libelle
-                  }],
-                  pngFiles: [{
-                    ref: exportPNGRef,
-                    filename: 'végétalisation.png'
-                  }],
-                  zipFilename: `vegetalisation_export_${new Date().toISOString().split('T')[0]}.zip`
-                })}
-              >
-                Exporter l'indicateur
-              </ZipExportButton>
-            </div>
             <div className={styles.explicationWrapper}>
               {isNaN(foretPercent) ? "" :
                 foretPercent == Infinity ? (
@@ -145,11 +124,31 @@ const Vegetalisation = (props: {
                   </div>
                 ) : <DataNotFoundForGraph image={DataNotFound} />
               }
-              <p style={{ padding: '1em', margin: '0' }}>
-                Source : CORINE Land Cover
-              </p>
+              <div className={styles.sourcesExportWrapper}>
+                <p>
+                  Source : CORINE Land Cover
+                </p>
+                <ZipExportButton
+                  handleExport={() => exportAsZip({
+                    excelFiles: [{
+                      data: exportData,
+                      baseName: "vegetalisation",
+                      sheetName: "Végétalisation",
+                      type,
+                      libelle
+                    }],
+                    pngFiles: [{
+                      ref: exportPNGRef,
+                      filename: 'végétalisation.png'
+                    }],
+                    zipFilename: `vegetalisation_export_${new Date().toISOString().split('T')[0]}.zip`
+                  })}
+                >
+                  Exporter
+                </ZipExportButton>
+              </div>
             </div>
-            <button onClick={() => exportDatavizAsPNG(exportPNGRef, 'végétalisation.png')}>Exporter PNG</button>
+            {/* <button onClick={() => exportDatavizAsPNG(exportPNGRef, 'végétalisation.png')}>Exporter PNG</button> */}
           </div>
         </div>
       ) : (

@@ -1,8 +1,10 @@
 "use client";
+import ExporterIcon from '@/assets/icons/export_icon_white.png';
 import { exportMultipleSheetToXLSX } from '@/lib/utils/export/exportXlsx';
+import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
-import { WaveButton } from '../WaveButton';
+import styles from "../components.module.scss";
 
 type ExportDataRow = Record<string, string | number | boolean | null | bigint | undefined>;
 
@@ -26,7 +28,7 @@ export const MultiSheetExportButton = ({
   type,
   libelle,
   code,
-  children = 'Exporter les données',
+  children = 'Exporter',
 }: MultiSheetExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
@@ -99,11 +101,18 @@ export const MultiSheetExportButton = ({
   };
 
   return (
-    <WaveButton
+    <button
       onClick={handleExport}
       disabled={isExporting}
+      className={styles.exportIndicatorButton}
     >
       {isExporting ? 'Export en cours...' : children}
-    </WaveButton>
+      <Image
+        alt="Exporter les données"
+        src={ExporterIcon}
+        width={16}
+        height={16}
+      />
+    </button>
   );
 };

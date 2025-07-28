@@ -132,16 +132,6 @@ export const TravailExterieur = (props: {
         !isLoadingPatch4 ? (
           <div className={styles.container}>
             <div className={sumAllCount > 0 ? "w-2/5" : "w-1/2"}>
-              <div className="mb-4">
-                <ExportButton
-                  data={exportData}
-                  baseName="travail_exterieur"
-                  type={type}
-                  libelle={libelle}
-                  code={code}
-                  sheetName="Travail extérieur"
-                />
-              </div>
               <div className={styles.explicationWrapper}>
                 {
                   sums.sumConstruction || sums.sumAgriculture ?
@@ -177,11 +167,23 @@ export const TravailExterieur = (props: {
                   <PieChartTravailExt
                     graphData={graphData}
                     travailExterieurTerritoire={travailExterieurTerritoire}
-                  /> : <Loader />}
-                <p style={{ padding: '1em', margin: '0' }}>
-                  Source : INSEE, Emplois au lieu de travail par sexe, secteur
-                  d'activité économique et catégorie socioprofessionnelle, 2021
-                </p>
+                  /> : <Loader />
+                }
+                <div className={styles.sourcesExportWrapper}>
+                  <p>
+                    Source : INSEE, Emplois au lieu de travail par sexe, secteur
+                    d'activité économique et catégorie socioprofessionnelle, 2021
+                  </p>
+                  <ExportButton
+                    data={exportData}
+                    baseName="travail_exterieur"
+                    type={type}
+                    libelle={libelle}
+                    code={code}
+                    sheetName="Activités économiques"
+                  />
+                </div>
+
               </div>
             </div>
           </div>

@@ -1,8 +1,10 @@
 "use client";
-import { WaveButton } from '@/components/WaveButton';
+import ExporterIcon from '@/assets/icons/export_icon_white.png';
 import { exportToXLSX } from '@/lib/utils/export/exportXlsx';
+import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
 import { useState } from 'react';
+import styles from "../components.module.scss";
 
 type ExportDataRow = Record<string, string | number | boolean | null | bigint | undefined>;
 
@@ -23,7 +25,7 @@ export const ExportButton = ({
   libelle,
   code,
   sheetName,
-  children = "Exporter l'indicateur",
+  children = "Exporter",
 }: ExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
@@ -53,15 +55,22 @@ export const ExportButton = ({
   };
 
   return (
-    <WaveButton
+    <button
       onClick={handleExport}
       disabled={isExporting}
+      className={styles.exportIndicatorButton}
       style={{
         cursor: isExporting ? 'wait' : 'pointer',
       }}
     >
       {isExporting ? 'Export en cours...' : children}
-    </WaveButton>
+      <Image
+        alt="Exporter les données"
+        src={ExporterIcon}
+        width={16}
+        height={16}
+      />
+    </button>
   );
 };
 
