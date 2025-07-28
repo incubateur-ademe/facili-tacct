@@ -1,7 +1,9 @@
 "use client";
+import ExporterIcon from '@/assets/icons/export_icon_white.png';
+import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
-import { WaveButton } from '../WaveButton';
+import styles from "../components.module.scss";
 
 interface ZipExportButtonProps {
   handleExport: () => Promise<void>;
@@ -10,7 +12,7 @@ interface ZipExportButtonProps {
 
 export const ZipExportButton = ({
   handleExport,
-  children = 'Exporter les données',
+  children = 'Exporter',
 }: ZipExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
@@ -68,11 +70,18 @@ export const ZipExportButton = ({
   };
 
   return (
-    <WaveButton
+    <button
+      className={styles.exportIndicatorButton}
       onClick={handleClick}
       disabled={isExporting}
     >
       {isExporting ? 'Export en cours...' : children}
-    </WaveButton>
+      <Image
+        alt="Exporter les données"
+        src={ExporterIcon}
+        width={16}
+        height={16}
+      />
+    </button>
   );
 };

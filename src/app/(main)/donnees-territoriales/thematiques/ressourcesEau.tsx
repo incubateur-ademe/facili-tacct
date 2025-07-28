@@ -1,4 +1,3 @@
-import { RessourcesEauExport } from '@/components/exports/RessourcesEauExport';
 import { GetRessourceEau } from '@/lib/queries/databases/ressourcesEau';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { themes } from '@/lib/themes';
@@ -13,7 +12,7 @@ const RessourcesEau = async (props: { searchParams: SearchParams }) => {
 
   return (
     <div>
-      <RessourcesEauExport code={code} libelle={libelle} type={type} />
+      {/* <RessourcesEauExport code={code} libelle={libelle} type={type} /> */}
       <div className={styles.container}>
         <RessourcesEauComp
           data={theme}

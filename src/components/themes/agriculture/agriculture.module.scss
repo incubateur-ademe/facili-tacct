@@ -71,3 +71,16 @@
     padding: 20px 0;
     margin: 0 0 20px;
 }
+
+// exports de données
+
+.sourcesExportWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 1rem;
+    p {
+        margin: 0;
+    }
+}

@@ -3,11 +3,13 @@
 import WarningIcon from "@/assets/icons/exclamation_point_icon_black.png";
 import { RgaEvolutionTooltip, RgaRepartitionTooltip } from "@/components/charts/ChartTooltips";
 import { NivoBarChart } from '@/components/charts/NivoBarChart';
+import { ExportButton } from "@/components/exports/ExportButton";
 import { RgaEvolutionLegend, RgaMapLegend, RgaRepartitionLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import SubTabs from '@/components/SubTabs';
 import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
 import { RGAdb } from '@/lib/postgres/models';
+import { RGAdbExport } from "@/lib/utils/export/exportTypes";
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { BarDatum } from '@nivo/bar';
 import Image from 'next/image';
@@ -26,6 +28,7 @@ type Props = {
   datavizTab: string;
   setDatavizTab: (value: string) => void;
   exportPNGRef: RefObject<HTMLDivElement | null>;
+  exportData: RGAdbExport[];
 };
 
 const isRGAdb = (obj: unknown): obj is RGAdb => {
@@ -125,11 +128,13 @@ const RgaDataViz = (props: Props) => {
     rga,
     datavizTab,
     setDatavizTab,
-    exportPNGRef
+    exportPNGRef,
+    exportData
   } = props;
   const searchParams = useSearchParams();
   const type = searchParams.get('type')!;
   const code = searchParams.get('code')!;
+  const libelle = searchParams.get('libelle')!;
   const [multipleDepartements, setMultipleDepartements] = useState<string[]>([]);
   // options de filtre pour les départements (plusieurs départements possibles pour un EPCI)
   const departement = type === "epci" ? rga[0]?.libelle_departement : "";
@@ -239,14 +244,24 @@ const RgaDataViz = (props: Props) => {
             >
               <LegendCompColor legends={RgaMapLegend} />
             </div>
-            <p style={{ padding: '1em', margin: '0' }}>
-              Source : BRGM, 2019 ; Fideli, 2017. Traitements : SDES, 2021
-            </p>
           </div>
         </>
       ) : (
         ''
       )}
+      <div className={styles.sourcesExportWrapper}>
+        <p>
+          Source : BRGM, 2019 ; Fideli, 2017. Traitements : SDES, 2021
+        </p>
+        <ExportButton
+          data={exportData}
+          baseName="retrait_gonflement_argiles"
+          type={type}
+          libelle={libelle}
+          code={code}
+          sheetName="Retrait-gonflement des argiles"
+        />
+      </div>
     </div>
   );
 };

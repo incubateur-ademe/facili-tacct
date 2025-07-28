@@ -36,7 +36,7 @@ export const SurfacesIrriguees = ({
     };
   });
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
-  const carteCommunesFiltered = FilterDataTerritory(type, code, libelle, carteCommunes);
+  const carteCommunesFiltered = FilterDataTerritory(type, code, libelle, carteCommunesEnriched);
   const exportData = IndicatorExportTransformations.agriculture.surfacesIrriguees(carteCommunesFiltered);
 
   const surfaceTerritoire = type === "commune" ?
@@ -46,23 +46,12 @@ export const SurfacesIrriguees = ({
       .map((value) => (isNaN(value!) ? 0 : value))
       .reduce((acc, value) => acc! + value!, 0);
 
-
   return (
     <>
       {communesMap ? (
         <div className={styles.container}>
           <>
             <div className={communesMap.length > 0 ? "w-2/5" : "w-1/2"}>
-              <div className="mb-4">
-                <ExportButton
-                  data={exportData}
-                  baseName="surfaces_irriguees"
-                  type={type}
-                  libelle={libelle}
-                  code={code}
-                  sheetName="Surfaces irriguées"
-                />
-              </div>
               <div className={styles.explicationWrapper}>
                 {
                   surfaceTerritoire !== undefined && !isNaN(surfaceTerritoire) && communesMap.length > 0 ? (
@@ -102,13 +91,22 @@ export const SurfacesIrriguees = ({
                     <DataNotFoundForGraph image={DataNotFound} />
                   )
                 }
-                <p style={{ padding: '1em', margin: '0' }}>
-                  Source : AGRESTE, 2020.
-                </p>
+                <div className={styles.sourcesExportWrapper}>
+                  <p>
+                    Source : AGRESTE, 2020.
+                  </p>
+                  <ExportButton
+                    data={exportData}
+                    baseName="surfaces_irriguees"
+                    type={type}
+                    libelle={libelle}
+                    code={code}
+                    sheetName="Surfaces irriguées"
+                  />
+                </div>
               </div>
             </div>
           </>
-
         </div>
       ) : (
         <Loader />
