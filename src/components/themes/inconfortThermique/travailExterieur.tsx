@@ -1,7 +1,8 @@
 'use client';
 
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
-import { PieChart1 } from '@/components/charts/inconfortThermique/pieChartTravailExt';
+import { PieChartTravailExt } from '@/components/charts/inconfortThermique/pieChartTravailExt';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
@@ -11,6 +12,7 @@ import { travailExtMapper } from '@/lib/mapper/inconfortThermique';
 import { InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { travailExterieurTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
@@ -47,7 +49,6 @@ export const TravailExterieur = (props: {
         : type === 'epci' && !eptRegex.test(libelle)
           ? travailExterieurMapped.filter((e) => e.epci === code)
           : travailExterieurMapped;
-  const exportData = travailExterieurTerritoire
   const sums = {
     sumAgriculture: sumProperty(travailExterieurTerritoire, 'NA5AZ_sum'),
     sumIndustries: sumProperty(travailExterieurTerritoire, 'NA5BE_sum'),
@@ -55,7 +56,7 @@ export const TravailExterieur = (props: {
     sumCommerce: sumProperty(travailExterieurTerritoire, 'NA5GU_sum'),
     sumAdministration: sumProperty(travailExterieurTerritoire, 'NA5OQ_sum')
   };
-  
+
   const graphData = [
     {
       id: 'Agriculture, sylviculture et pêche',
@@ -95,7 +96,7 @@ export const TravailExterieur = (props: {
     },
     {
       id: 'Administration publique, enseignement, santé humaine et action sociale',
-      label: 'Administations',
+      label: 'Administrations',
       count: sums.sumAdministration,
       color: '#E3EDFF',
       value: Number(
@@ -123,6 +124,7 @@ export const TravailExterieur = (props: {
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : "null";
+  const exportData = IndicatorExportTransformations.inconfort_thermique.travailExt(travailExterieurTerritoire);
 
   return (
     <>
@@ -130,6 +132,16 @@ export const TravailExterieur = (props: {
         !isLoadingPatch4 ? (
           <div className={styles.container}>
             <div className={sumAllCount > 0 ? "w-2/5" : "w-1/2"}>
+              <div className="mb-4">
+                <ExportButton
+                  data={exportData}
+                  baseName="travail_exterieur"
+                  type={type}
+                  libelle={libelle}
+                  code={code}
+                  sheetName="Travail extérieur"
+                />
+              </div>
               <div className={styles.explicationWrapper}>
                 {
                   sums.sumConstruction || sums.sumAgriculture ?
@@ -161,8 +173,8 @@ export const TravailExterieur = (props: {
                     Part des emplois par grands secteurs d’activité
                   </b>
                 </p>
-                {graphData ? 
-                  <PieChart1 
+                {graphData ?
+                  <PieChartTravailExt
                     graphData={graphData}
                     travailExterieurTerritoire={travailExterieurTerritoire}
                   /> : <Loader />}
