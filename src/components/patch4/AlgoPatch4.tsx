@@ -15,9 +15,9 @@ export const AlgoPatch4 = (
       : patch4[indice] === 0
         ? "Pas d'évolution"
         : patch4[indice] < 0.33
-          ? 'Intensité modérée'
+          ? 'Aggravation modérée'
           : 0.3 <= patch4[indice] && patch4[indice] <= 0.66
-            ? 'Intensité forte'
-            : 'Intensité très forte';
+            ? 'Aggravation forte'
+            : 'Aggravation très forte';
   return intensite;
 };

@@ -8,7 +8,7 @@ const TagInIndicator = ({
 }: {
   indice: string[],
   icon: string[],
-  tag: ("Intensité très forte" | "Intensité forte" | "null" | "Pas d'évolution" | "Intensité modérée")[]
+  tag: ("Aggravation très forte" | "Aggravation forte" | "null" | "Pas d'évolution" | "Aggravation modérée")[]
 }
 ) => {
   const tagFiltered = tag

@@ -103,8 +103,8 @@ export const SurfacesAgricoles = ({
                   ) : <p>Il n’y a pas de données référencées sur le territoire que vous avez sélectionné</p>
                 }
                 <div className={styles.patch4Wrapper}>
-                  {secheresse === 'Intensité très forte' ||
-                    secheresse === 'Intensité forte' ? (
+                  {secheresse === 'Aggravation très forte' ||
+                    secheresse === 'Aggravation forte' ? (
                     <TagItem
                       icon={secheresseIcon}
                       indice="Sécheresse des sols"
