@@ -81,7 +81,7 @@ export const SubAccordionComp = ({
         onClick={() => setExpanded(!expanded)}
       >
         <div className={styles.tagExplication}>
-          <div className="min-w-[160px]">
+          <div className="min-w-[170px]">
             <TagPatch4>{titre}</TagPatch4>
           </div>
           <p>{textHeader}</p>

@@ -114,16 +114,16 @@ export const RGA = ({
                   ) : ""
                 }
                 <div className={styles.patch4Wrapper}>
-                  {secheresse === 'Intensité très forte' ||
-                    secheresse === 'Intensité forte' ? (
+                  {secheresse === 'Aggravation très forte' ||
+                    secheresse === 'Aggravation forte' ? (
                     <TagItem
                       icon={secheresseIcon}
                       indice="Sécheresse des sols"
                       tag={secheresse}
                     />
                   ) : null}
-                  {precipitation === 'Intensité très forte' ||
-                    precipitation === 'Intensité forte' ? (
+                  {precipitation === 'Aggravation très forte' ||
+                    precipitation === 'Aggravation forte' ? (
                     <TagItem
                       icon={precipitationIcon}
                       indice="Fortes précipitations"
