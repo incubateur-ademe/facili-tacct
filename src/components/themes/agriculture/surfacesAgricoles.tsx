@@ -13,6 +13,7 @@ import { GetPatch4 } from '@/lib/queries/patch4';
 import { multipleEpciBydepartementLibelle } from '@/lib/territoireData/multipleEpciBydepartement';
 import { multipleEpciByPnrLibelle } from '@/lib/territoireData/multipleEpciByPnr';
 import { surfacesAgricolesTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
@@ -46,11 +47,6 @@ export const SurfacesAgricoles = ({
       ? multipleEpciByPnrLibelle.find(pnr => pnr.libelle_pnr === libelle)?.liste_epci_multi_pnr
       : undefined;
 
-
-  console.log("Code:", code);
-  console.log("multipleEpciBydepartementLibelle:", multipleEpciBydepartementLibelle.filter(el => el.liste_epci_multi_dept.includes('Sans objet')));
-  console.log("Territoires partiellement couverts:", territoiresPartiellementCouverts);
-
   useEffect(() => {
     void (async () => {
       if (type === 'commune' || type === 'epci' || type === 'ept') {
@@ -62,6 +58,7 @@ export const SurfacesAgricoles = ({
   }, [code]);
 
   const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
+  const exportData = IndicatorExportTransformations.agriculture.surfacesAgricoles(surfacesAgricoles);
 
   return (
     <>
@@ -127,6 +124,7 @@ export const SurfacesAgricoles = ({
                       surfacesAgricoles={surfacesAgricoles}
                       datavizTab={datavizTab}
                       setDatavizTab={setDatavizTab}
+                      exportData={exportData}
                     />
                   </>
                 ) : (

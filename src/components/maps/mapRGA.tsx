@@ -7,7 +7,6 @@ import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef } from 'react';
-import { ExportPngMaplibreButton } from '../exports/ExportPng';
 
 const RGAMap = (props: {
   carteCommunes: CommunesIndicateursDto[];
@@ -110,11 +109,11 @@ const RGAMap = (props: {
   return (
     <div style={{ position: 'relative' }}>
       <div ref={mapContainer} style={{ height: "500px", width: "100%" }} />
-      <ExportPngMaplibreButton
+      {/* <ExportPngMaplibreButton
         mapRef={mapRef}
         mapContainer={mapContainer}
         documentDiv=".exportPNGWrapper"
-      />
+      /> */}
     </div>
   );
 };

@@ -72,16 +72,6 @@ const EtatQualiteCoursDeau = (props: {
         !isLoadingPatch4 && etatCoursDeau ?
           <div className={styles.container}>
             <div className={etatCoursDeau?.length ? "w-5/12" : "w-1/2"}>
-              <div className="mb-4">
-                <ExportButton
-                  data={exportData}
-                  baseName="etat_cours_deau"
-                  type={type}
-                  libelle={libelle}
-                  code={code}
-                  sheetName="État des cours d'eau"
-                />
-              </div>
               <div className={styles.explicationWrapper}>
                 <p>
                   La carte ci-contre reflète l’état écologique des cours d’eau
@@ -140,9 +130,19 @@ const EtatQualiteCoursDeau = (props: {
                   </>
                 ) : <DataNotFoundForGraph image={DataNotFound} />
                 }
-                <p style={{ padding: '1em', margin: '0' }}>
-                  Source : Agences de l'eau
-                </p>
+                <div className={styles.sourcesExportWrapper}>
+                  <p>
+                    Source : Agences de l'eau
+                  </p>
+                  <ExportButton
+                    data={exportData}
+                    baseName="etat_cours_deau"
+                    type={type}
+                    libelle={libelle}
+                    code={code}
+                    sheetName="État des cours d'eau"
+                  />
+                </div>
               </div>
             </div>
           </div>

@@ -1,3 +1,4 @@
+import ExporterIcon from '@/assets/icons/export_icon_white.png';
 import niveauxMarinsIcon from '@/assets/icons/niveau_marin_icon_black.svg';
 import GraphNotFound from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
@@ -12,6 +13,7 @@ import { CarteCommunes, ErosionCotiere, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { erosionCotiereTooltipText } from '@/lib/tooltipTexts';
 import { exportDatavizAsPNG } from '@/lib/utils/export/exportPng';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { LegendErosionCotiere } from '../../maps/legends/legendErosionCotiere';
@@ -91,9 +93,22 @@ const ErosionCotes = (props: {
                     </div>
                     : <DataNotFoundForGraph image={GraphNotFound} />
                 }
-                <p style={{ padding: '1em', margin: '0' }}>Source : CEREMA</p>
+                <div className={styles.sourcesExportWrapper}>
+                  <p>Source : CEREMA</p>
+                  <button
+                    className={styles.exportIndicatorButton}
+                    onClick={() => exportDatavizAsPNG(exportPNGRef, 'erosion_cotiere.png')}
+                  >
+                    Exporter
+                    <Image
+                      alt="Exporter les données"
+                      src={ExporterIcon}
+                      width={16}
+                      height={16}
+                    />
+                  </button>
+                </div>
               </div>
-              <button onClick={() => exportDatavizAsPNG(exportPNGRef, 'erosion_cotiere.png')}>Exporter PNG</button>
             </div>
           </div>
           : <Loader />

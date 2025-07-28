@@ -6,6 +6,7 @@ import {
 } from '@/lib/dto';
 import {
   AgricultureBio,
+  AOT40,
   ArreteCatNat,
   CarteCommunes,
   ConsommationNAF,
@@ -14,7 +15,8 @@ import {
   InconfortThermique,
   QualiteSitesBaignade,
   RessourcesEau,
-  RGAdb
+  RGAdb,
+  SurfacesAgricolesModel
 } from '@/lib/postgres/models';
 import { Round } from '../reusableFunctions/round';
 
@@ -57,6 +59,80 @@ export const IndicatorExportTransformations = {
           surface_2020_ha: bio.surface_2020,
           nombre_exploitations_2019: bio.nombre_2019,
           surface_2019_ha: bio.surface_2019
+        };
+      }),
+    surfacesAgricoles: (surfacesAgricoles: SurfacesAgricolesModel[]) =>
+      surfacesAgricoles.map((el) => {
+        return {
+          code_epci: el.epci,
+          exploitation_sau: el.exploitation_sau,
+          exploitation_sau_terres_arables: el.exploitation_sau_terres_arables,
+          exploitation_sau_terres_arables_cereales:
+            el.exploitation_sau_terres_arables_cereales,
+          exploitation_sau_terres_arables_oleagineux:
+            el.exploitation_sau_terres_arables_oleagineux,
+          exploitation_sau_terres_arables_fourrageres:
+            el.exploitation_sau_terres_arables_fourrageres,
+          exploitation_sau_terres_arables_tubercules:
+            el.exploitation_sau_terres_arables_tubercules,
+          exploitation_sau_terres_arables_legumes_melons_fraises:
+            el.exploitation_sau_terres_arables_legumes_melons_fraises,
+          exploitation_sau_terres_arables_fleurs:
+            el.exploitation_sau_terres_arables_fleurs,
+          exploitation_sau_terres_arables_autres:
+            el.exploitation_sau_terres_arables_autres,
+          exploitation_sau_cultures_permanentes:
+            el.exploitation_sau_cultures_permanentes,
+          exploitation_sau_cultures_permanentes_vigne:
+            el.exploitation_sau_cultures_permanentes_vigne,
+          exploitation_sau_cultures_permanentes_fruits:
+            el.exploitation_sau_cultures_permanentes_fruits,
+          exploitation_sau_cultures_permanentes_autres:
+            el.exploitation_sau_cultures_permanentes_autres,
+          exploitation_sau_herbe: el.exploitation_sau_herbe,
+          exploitation_sau_herbe_prairies_productives:
+            el.exploitation_sau_herbe_prairies_productives,
+          exploitation_sau_herbe_prairies_peu_productives:
+            el.exploitation_sau_herbe_prairies_peu_productives,
+          exploitation_sau_herbe_subventions:
+            el.exploitation_sau_herbe_subventions,
+          exploitation_sau_herbe_bois_patures:
+            el.exploitation_sau_herbe_bois_patures,
+          exploitation_sau_jardins: el.exploitation_sau_jardins,
+          superficie_sau_ha: el.superficie_sau,
+          superficie_sau_terres_arables_ha: el.superficie_sau_terres_arables,
+          superficie_sau_terres_arables_cereales_ha:
+            el.superficie_sau_terres_arables_cereales,
+          superficie_sau_terres_arables_oleagineux_ha:
+            el.superficie_sau_terres_arables_oleagineux,
+          superficie_sau_terres_arables_fourrageres_ha:
+            el.superficie_sau_terres_arables_fourrageres,
+          superficie_sau_terres_arables_tubercules_ha:
+            el.superficie_sau_terres_arables_tubercules,
+          superficie_sau_terres_arables_legumes_melons_fraises_ha:
+            el.superficie_sau_terres_arables_legumes_melons_fraises,
+          superficie_sau_terres_arables_fleurs_ha:
+            el.superficie_sau_terres_arables_fleurs,
+          superficie_sau_terres_arables_autres_ha:
+            el.superficie_sau_terres_arables_autres,
+          superficie_sau_cultures_permanentes_ha:
+            el.superficie_sau_cultures_permanentes,
+          superficie_sau_cultures_permanentes_vigne_ha:
+            el.superficie_sau_cultures_permanentes_vigne,
+          superficie_sau_cultures_permanentes_fruits_ha:
+            el.superficie_sau_cultures_permanentes_fruits,
+          superficie_sau_cultures_permanentes_autres_ha:
+            el.superficie_sau_cultures_permanentes_autres,
+          superficie_sau_herbe_ha: el.superficie_sau_herbe,
+          superficie_sau_herbe_prairies_productives_ha:
+            el.superficie_sau_herbe_prairies_productives,
+          superficie_sau_herbe_prairies_peu_productives_ha:
+            el.superficie_sau_herbe_prairies_peu_productives,
+          superficie_sau_herbe_subventions_ha:
+            el.superficie_sau_herbe_subventions,
+          superficie_sau_herbe_bois_patures_ha:
+            el.superficie_sau_herbe_bois_patures,
+          superficie_sau_jardins_ha: el.superficie_sau_jardins
         };
       })
   },
@@ -194,6 +270,7 @@ export const IndicatorExportTransformations = {
           libelle_petr: el.libelle_petr,
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
+          region: el.region,
           sous_champ: el.SOUS_CHAMP,
           libelle_sous_champ: el.LIBELLE_SOUS_CHAMP,
           prelevement_2008_m3: el.A2008,
@@ -392,13 +469,76 @@ export const IndicatorExportTransformations = {
           nombre_exploitations_2019: bio.nombre_2019,
           surface_2019_ha: bio.surface_2019
         };
-      })
+      }),
+    aot40: (aot40: AOT40[]) => {
+      return aot40.map((el) => {
+        return {
+          nom_site: el.nom_site,
+          type_d_implantation: el.type_d_implantation,
+          'valeur brute (µg/m³)': el.valeur_brute,
+          latitude: el.Latitude,
+          longitude: el.Longitude
+        };
+      });
+    }
   },
   gestionRisques: {
     RGA: (rga: RGAdb[]) => {
       return rga.map((el) => {
         return {
-          ...el
+          code_geographique: el.code_geographique,
+          libelle_geographique: el.libelle_geographique,
+          code_epci: el.epci,
+          libelle_epci: el.libelle_epci,
+          code_departement: el.departement,
+          libelle_departement: el.libelle_departement,
+          region: el.region,
+          ept: el.ept,
+          code_pnr: el.code_pnr,
+          libelle_pnr: el.libelle_pnr,
+          libelle_petr: el.libelle_petr,
+          nb_logement: el.nb_logement,
+          nb_logement_alea_moyen_fort: el.nb_logement_alea_moyen_fort,
+          nb_logement_alea_faible: el.nb_logement_alea_faible,
+          nb_logement_sans_alea: el.nb_logement_sans_alea,
+          nb_logement_alea_moyen_fort_avant_1920:
+            el.nb_logement_alea_moyen_fort_avant_1920,
+          nb_logement_alea_moyen_fort_1920_1945:
+            el.nb_logement_alea_moyen_fort_1920_1945,
+          nb_logement_alea_moyen_fort_1945_1975:
+            el.nb_logement_alea_moyen_fort_1945_1975,
+          nb_logement_alea_moyen_fort_apres_1975:
+            el.nb_logement_alea_moyen_fort_apres_1975,
+          nb_logement_alea_faible_avant_1920:
+            el.nb_logement_alea_faible_avant_1920,
+          nb_logement_alea_faible_1920_1945:
+            el.nb_logement_alea_faible_1920_1945,
+          nb_logement_alea_faible_1945_1975:
+            el.nb_logement_alea_faible_1945_1975,
+          nb_logement_alea_faible_apres_1975:
+            el.nb_logement_alea_faible_apres_1975,
+          surface_commune_m2: el.surface_commune,
+          surface_alea_faible_commune_m2: el.surface_alea_faible_commune,
+          surface_alea_moyen_fort_commune_m2:
+            el.surface_alea_moyen_fort_commune,
+          part_logement_alea_moyen_fort_avant_1920:
+            el.part_logement_alea_moyen_fort_avant_1920,
+          part_logement_alea_moyen_fort_1920_1945:
+            el.part_logement_alea_moyen_fort_1920_1945,
+          part_logement_alea_moyen_fort_1945_1975:
+            el.part_logement_alea_moyen_fort_1945_1975,
+          part_logement_alea_moyen_fort_apres_1975:
+            el.part_logement_alea_moyen_fort_apres_1975,
+          part_logement_alea_faible_avant_1920:
+            el.part_logement_alea_faible_avant_1920,
+          part_logement_alea_faible_1920_1945:
+            el.part_logement_alea_faible_1920_1945,
+          part_logement_alea_faible_1945_1975:
+            el.part_logement_alea_faible_1945_1975,
+          part_logement_alea_faible_apres_1975:
+            el.part_logement_alea_faible_apres_1975,
+          part_alea_faible_commune: el.part_alea_faible_commune,
+          part_alea_moyen_fort_commune: el.part_alea_moyen_fort_commune
         };
       });
     },
@@ -413,8 +553,9 @@ export const IndicatorExportTransformations = {
           code_pnr: el.code_pnr,
           libelle_pnr: el.libelle_pnr,
           libelle_petr: el.libelle_petr,
-          departement: el.departement,
+          code_departement: el.departement,
           libelle_departement: el.libelle_departement,
+          region: el.region,
           nature: el.nature,
           annee: el.annee,
           surface_parcourue_km2: el.surface_parcourue,
@@ -440,7 +581,7 @@ export const IndicatorExportTransformations = {
           libelle_geographique: item.libelle_geographique,
           code_epci: item.epci,
           libelle_epci: item.libelle_epci,
-          departement: item.departement,
+          code_departement: item.departement,
           libelle_departement: item.libelle_departement,
           region: item.region,
           ept: item.ept,
@@ -470,11 +611,6 @@ export const ThematiquesExports = {
         code_departement: el.departement,
         libelle_departement: el.libelle_departement,
         region: el.region,
-        age_bati_pre_1919: el.age_bati_pre_19,
-        age_bati_1919_1945: el.age_bati_19_45,
-        age_bati_1946_1990: el.age_bati_46_90,
-        age_bati_1991_2005: el.age_bati_91_05,
-        age_bati_post_2006: el.age_bati_post06,
         '1968_population_de_moins_de_4_ans': el.under_4_sum_1968,
         '1968_population_de_4_a_80_ans': el.to_80_sum_1968,
         '1968_population_de_plus_de_80_ans': el.over_80_sum_1968,
@@ -504,6 +640,11 @@ export const ThematiquesExports = {
         travail_construction: Round(Number(el.NA5FZ_sum), 0),
         travail_commerces: Round(Number(el.NA5GU_sum), 0),
         travail_administration: Round(Number(el.NA5OQ_sum), 0),
+        age_bati_pre_1919: el.age_bati_pre_19,
+        age_bati_1919_1945: el.age_bati_19_45,
+        age_bati_1946_1990: el.age_bati_46_90,
+        age_bati_1991_2005: el.age_bati_91_05,
+        age_bati_post_2006: el.age_bati_post06,
         densite_bati: el.densite_bati,
         surface_artificialisee_ha: el.clc_1_artificialise,
         surface_agricole_ha: el.clc_2_agricole,

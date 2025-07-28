@@ -1,6 +1,5 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
-import { ExportButton } from '@/components/exports/ExportButton';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
@@ -56,16 +55,6 @@ export const ConsommationEspacesNAF = (props: {
         !isLoadingPatch4 ?
           <div className={styles.container}>
             <div className={consommationNAF.length > 0 ? "w-2/5" : "w-1/2"}>
-              <div className="mb-4">
-                <ExportButton
-                  data={exportData}
-                  baseName="consommation_espaces_naf"
-                  type={type}
-                  libelle={libelle}
-                  code={code}
-                  sheetName="Espaces NAF"
-                />
-              </div>
               <div className={styles.explicationWrapper}>
                 {
                   sumNaf && sumNaf !== 0 ? (
@@ -101,6 +90,7 @@ export const ConsommationEspacesNAF = (props: {
             <div className={consommationNAF.length > 0 ? "w-3/5" : "w-1/2"}>
               <ConsommationEspacesNAFDataviz
                 consommationNAF={consommationNAF}
+                exportData={exportData}
               />
             </div>
           </div>

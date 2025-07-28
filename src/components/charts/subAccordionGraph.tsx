@@ -145,7 +145,6 @@ export const SubAccordionGraph = ({
               </div>
             </HtmlTooltip>
           </AccordionDetails>
-
         ))}
       </div>
 
