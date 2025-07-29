@@ -7,7 +7,6 @@ import styles from '../stats.module.scss';
 
 const UniqueUsers = async () => {
   const uniqueUsers = await GetInsightById(620831);
-  console.log('uniqueUsers', uniqueUsers);
   const data = Array.isArray(uniqueUsers) ? uniqueUsers : undefined;
   return (
     <Container m="4w">
