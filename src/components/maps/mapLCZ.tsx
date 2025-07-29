@@ -359,11 +359,6 @@ export const MapLCZ = ({
       {isLoading ? <Loader /> : (
         <>
           <div ref={mapContainer} style={{ width: '100%', height: '500px' }} />
-          <ExportPngMaplibreButton
-            mapRef={mapRef}
-            mapContainer={mapContainer}
-            documentDiv=".lczLegendWrapper"
-          />
           {isTilesLoading && (
             <div className={styles.tileLoadingWrapper}>
               <div style={{
@@ -380,23 +375,43 @@ export const MapLCZ = ({
             </div>
           )}
           <div className='lczLegendWrapper'>
-            <p style={{ padding: '1em', margin: '0', backgroundColor: '#f9f9ff' }}>
-              Source : {
-                isLczCovered
-                  ? "CEREMA"
-                  : <a
-                    href="https://doi.org/10.5194/essd-14-3835-2022"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Matthias Demuzere et al. 2022
-                  </a>}
-            </p>
-            <div
-              className={styles.legendLCZ}
-              style={{ width: 'auto' }}
-            >
-              <LegendCompColorLCZ legends={(zoomMap >= 13.5 || !isLczCovered) ? LczLegendOpacity70 : LczLegend} />
+            <div className={styles.sourcesExportWrapper}>
+              <p>
+                Source : {
+                  isLczCovered
+                    ? "CEREMA"
+                    : <a
+                      href="https://doi.org/10.5194/essd-14-3835-2022"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Matthias Demuzere et al. 2022
+                    </a>}
+              </p>
+              <ExportPngMaplibreButton
+                mapRef={mapRef}
+                mapContainer={mapContainer}
+                documentDiv=".lczLegendWrapper"
+                fileName={`LCZ_${type}_${libelle}`}
+              />
+            </div>
+            <div className={styles.legendLCZWrapper}>
+              <div
+                className={styles.legendLCZ}
+              >
+                <h3>- Espaces bâtis -</h3>
+                <LegendCompColorLCZ
+                  legends={((zoomMap >= 13.5 || !isLczCovered) ? LczLegendOpacity70 : LczLegend).slice(0, 9)}
+                />
+              </div>
+              <div
+                className={styles.legendLCZ}
+                style={{ borderTop: "solid 1px #d6d6f0", padding: '1rem 0' }}
+              >
+                <h3>- Espaces non bâtis -</h3>
+                <LegendCompColorLCZ legends={((zoomMap >= 13.5 || !isLczCovered) ? LczLegendOpacity70 : LczLegend).slice(9, 16)} />
+              </div>
+
             </div>
           </div>
         </>

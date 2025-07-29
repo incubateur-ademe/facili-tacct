@@ -3,18 +3,19 @@
 import WarningIcon from "@/assets/icons/exclamation_point_icon_black.png";
 import { RgaEvolutionTooltip, RgaRepartitionTooltip } from "@/components/charts/ChartTooltips";
 import { NivoBarChart } from '@/components/charts/NivoBarChart';
-import { ExportButton } from "@/components/exports/ExportButton";
-import { RgaEvolutionLegend, RgaMapLegend, RgaRepartitionLegend } from '@/components/maps/legends/datavizLegends';
-import { LegendCompColor } from '@/components/maps/legends/legendComp';
+import { generateMapPngBlob } from "@/components/exports/ExportPng";
+import { ZipExportButton } from "@/components/exports/ZipExportButton";
+import { RgaEvolutionLegend, RgaRepartitionLegend } from '@/components/maps/legends/datavizLegends';
 import SubTabs from '@/components/SubTabs';
 import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
 import { RGAdb } from '@/lib/postgres/models';
 import { RGAdbExport } from "@/lib/utils/export/exportTypes";
+import { exportAsZip } from "@/lib/utils/export/exportZipGeneric";
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { BarDatum } from '@nivo/bar';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { RefObject, useEffect, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import RGAMap from '../../maps/mapRGA';
 import styles from './gestionRisques.module.scss';
 
@@ -135,6 +136,8 @@ const RgaDataViz = (props: Props) => {
   const type = searchParams.get('type')!;
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
+  const mapRef = useRef<maplibregl.Map | null>(null);
+  const mapContainer = useRef<HTMLDivElement>(null);
   const [multipleDepartements, setMultipleDepartements] = useState<string[]>([]);
   // options de filtre pour les départements (plusieurs départements possibles pour un EPCI)
   const departement = type === "epci" ? rga[0]?.libelle_departement : "";
@@ -218,49 +221,88 @@ const RgaDataViz = (props: Props) => {
           }
         </>
       ) : datavizTab === 'Répartition' ? (
-        <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
-          <NivoBarChart
-            colors={RgaEvolutionLegend.map(e => e.couleur)}
-            graphData={evolutionRga}
-            keys={RgaEvolutionLegend.map(e => e.variable)}
-            indexBy="annee"
-            legendData={RgaEvolutionLegend
-              .map((legend, index) => ({
-                id: index,
-                label: legend.texteRaccourci,
-                color: legend.couleur,
-              }))}
-            axisLeftLegend="Nombre de logements"
-            tooltip={RgaEvolutionTooltip}
-          />
-        </div>
-      ) : datavizTab === 'Cartographie' ? (
         <>
-          <RGAMap rgaCarte={rgaCarte} carteCommunes={carteCommunes} />
-          <div className="exportPNGWrapper">
-            <div
-              className={styles.legend}
-              style={{ width: 'auto', justifyContent: 'center' }}
-            >
-              <LegendCompColor legends={RgaMapLegend} />
-            </div>
+          <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
+            <NivoBarChart
+              colors={RgaEvolutionLegend.map(e => e.couleur)}
+              graphData={evolutionRga}
+              keys={RgaEvolutionLegend.map(e => e.variable)}
+              indexBy="annee"
+              legendData={RgaEvolutionLegend
+                .map((legend, index) => ({
+                  id: index,
+                  label: legend.texteRaccourci,
+                  color: legend.couleur,
+                }))}
+              axisLeftLegend="Nombre de logements"
+              tooltip={RgaEvolutionTooltip}
+            />
           </div>
         </>
+      ) : datavizTab === 'Cartographie' ? (
+        <RGAMap
+          rgaCarte={rgaCarte}
+          carteCommunes={carteCommunes}
+          exportData={exportData}
+          exportPNGRef={exportPNGRef}
+          mapRef={mapRef}
+          mapContainer={mapContainer}
+        />
       ) : (
         ''
       )}
+      {/* Génère une map cachée pour l'export */}
+      <RGAMap
+        rgaCarte={rgaCarte}
+        carteCommunes={carteCommunes}
+        exportData={exportData}
+        exportPNGRef={exportPNGRef}
+        mapRef={mapRef}
+        mapContainer={mapContainer}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '500px',
+          height: '500px',
+          opacity: 0,
+          pointerEvents: 'none',
+          zIndex: -1,
+        }}
+      />
       <div className={styles.sourcesExportWrapper}>
         <p>
           Source : BRGM, 2019 ; Fideli, 2017. Traitements : SDES, 2021
         </p>
-        <ExportButton
-          data={exportData}
-          baseName="retrait_gonflement_argiles"
-          type={type}
-          libelle={libelle}
-          code={code}
-          sheetName="Retrait-gonflement des argiles"
-        />
+        <ZipExportButton
+          handleExport={async () => {
+            const pngBlob = await generateMapPngBlob({
+              mapRef,
+              mapContainer,
+              documentDiv: ".exportPNGWrapper",
+            });
+            if (!pngBlob) {
+              alert("Erreur lors de la génération de l'image PNG.");
+              return;
+            }
+            await exportAsZip({
+              excelFiles: [{
+                data: exportData,
+                baseName: "rga",
+                sheetName: "Retrait-gonflement des argiles",
+                type,
+                libelle
+              }],
+              blobFiles: [{
+                blob: pngBlob,
+                filename: `RGA_${type}_${libelle}.png`
+              }],
+              zipFilename: `rga_export_${new Date().toISOString().split('T')[0]}.zip`
+            })
+          }}
+        >
+          Exporter
+        </ZipExportButton>
       </div>
     </div>
   );
