@@ -38,11 +38,11 @@ const IlotChaleurUrbain = () => {
             </li>
             <li>
               <b>Croiser les données est essentiel</b> (température de l’air, forme urbaine, usages,
-              vulnérabilités) pour guider l’action et éviter les faux diagnostics.
+              vulnérabilités) pour guider l’action et éviter les diagnostics erronés.
             </li>
           </ul>
         </div>
-        <h1 style={{ margin: "3rem 0" }}>Îlot de chaleur urbain : 4 erreurs fréquentes à éviter pour mieux agir sur le terrain</h1>
+        <h1 style={{ margin: "3rem 0" }}>Îlot de chaleur urbain : 4 idées reçues à déjouer pour mieux agir sur le terrain</h1>
         <p>
           Un dôme de chaleur au-dessus des villes : <b>invisible, mais bien réel… et souvent mal interprété.</b>
         </p>
@@ -77,7 +77,7 @@ const IlotChaleurUrbain = () => {
           </li>
         </ul>
         <p><b>Encore faut-il bien savoir de quoi on parle. Et ne pas se fier aux apparences.</b></p>
-        <h2>Erreur n°1 : confondre îlot de chaleur urbain, température de surface et inconfort thermique</h2>
+        <h2>Idée reçue n°1 : confondre îlot de chaleur urbain, température de surface et inconfort thermique</h2>
         <p>
           <b>Un îlot de chaleur urbain ne se voit pas à l’œil nu.</b> Il ne se ressent pas toujours directement, et
           <b> ne peut pas être identifié sur une simple carte thermique,</b> surtout si celle-ci mesure uniquement
@@ -133,7 +133,7 @@ const IlotChaleurUrbain = () => {
           <tbody>
             <tr>
               <td style={{ border: '1px solid #ccc', padding: '12px', fontSize: '0.875rem' }}>
-                <strong>îlot de chaleur urbain (ICU)</strong>
+                <strong>îlot de chaleur urbaine (ICU)</strong>
               </td>
               <td style={{ border: '1px solid #ccc', padding: '12px', fontSize: '0.875rem' }}>
                 Capteurs à environ 2m du sol, en zone urbaine et en zone rurale
@@ -179,11 +179,11 @@ const IlotChaleurUrbain = () => {
           Cette confusion entre les différentes <b>manifestations de la chaleur en ville</b> est fréquente…
           et peut conduire à des diagnostics mal orientés, voire à sous-estimer le phénomène d’ICU sur son propre territoire.
         </p>
-        <h2>Erreur n°2 : penser que le phénomène d’îlot de chaleur urbain ne concerne que les grandes villes du Sud</h2>
+        <h2>Idée reçue n°2 : penser que le phénomène d’îlot de chaleur urbain ne concerne que les grandes villes du Sud</h2>
         <div className={styles.grayQuoteWrapper}>
           « L’îlot de chaleur urbain ? C’est un truc pour Marseille ou Toulouse, non ? »
         </div>
-        <p>C’est une idée reçue tenace…mais trompeuse.</p>
+        <p>C’est une idée reçue tenace… mais trompeuse.</p>
         <Image
           src={ICUVilles}
           alt="10 villes françaises les plus exposées à l'ICU"
@@ -263,7 +263,7 @@ const IlotChaleurUrbain = () => {
             </li>
           </ul>
         </div>
-        <h2>Erreur n°3 : prendre la température de surface pour celle de l’air</h2>
+        <h2>Idée reçue n°3 : prendre la température de surface pour celle de l’air</h2>
         <p>
           Sur une carte de température de surface, certaines zones apparaissent « très chaudes » :
           rouge foncé, orange vif… Mais attention : ces images ne mesurent pas le phénomène d’îlot de chaleur urbain (ICU).
@@ -332,7 +332,7 @@ const IlotChaleurUrbain = () => {
         <p>
           D’où l’importance de bien cadrer son diagnostic en amont.
         </p>
-        <h2>Erreur n°4 : se lancer dans un diagnostic ICU mal calibré</h2>
+        <h2>Idée reçue n°4 : se lancer dans un diagnostic ICU mal calibré</h2>
         <p>
           Ce que l’on appelle souvent un “diagnostic ICU” désigne, en réalité, un diagnostic de surchauffe urbaine qui, selon les cas, peut se centrer uniquement sur l’ICU ou couvrir d’autres dimensions.
         </p>
