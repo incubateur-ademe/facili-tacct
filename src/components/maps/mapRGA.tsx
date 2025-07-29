@@ -1,12 +1,16 @@
 import { BoundsFromCollection } from '@/components/maps/components/boundsFromCollection';
 import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
+import { RGAdbExport } from '@/lib/utils/export/exportTypes';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
 import { Feature, FeatureCollection, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { RefObject, useEffect } from 'react';
+import { RgaMapLegend } from './legends/datavizLegends';
+import { LegendCompColor } from './legends/legendComp';
+import styles from './maps.module.scss';
 
 const RGAMap = (props: {
   carteCommunes: CommunesIndicateursDto[];
@@ -14,8 +18,13 @@ const RGAMap = (props: {
     type: string;
     features: RGADto[];
   };
+  exportPNGRef: RefObject<HTMLDivElement | null>;
+  exportData: RGAdbExport[];
+  mapRef: RefObject<maplibregl.Map | null>;
+  mapContainer: RefObject<HTMLDivElement | null>;
+  style?: React.CSSProperties;
 }) => {
-  const { carteCommunes, rgaCarte } = props;
+  const { carteCommunes, rgaCarte, exportData, mapRef, mapContainer, style } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -24,8 +33,6 @@ const RGAMap = (props: {
     ? carteCommunes.filter(el => el.properties.ept === libelle)
     : carteCommunes
   const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
-  const mapContainer = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<maplibregl.Map | null>(null);
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -107,13 +114,16 @@ const RGAMap = (props: {
   }, [rgaCarte, enveloppe]);
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative', ...style }}>
       <div ref={mapContainer} style={{ height: "500px", width: "100%" }} />
-      {/* <ExportPngMaplibreButton
-        mapRef={mapRef}
-        mapContainer={mapContainer}
-        documentDiv=".exportPNGWrapper"
-      /> */}
+      <div className="exportPNGWrapper">
+        <div
+          className={styles.legendRGA}
+          style={{ width: 'auto', justifyContent: 'center' }}
+        >
+          <LegendCompColor legends={RgaMapLegend} />
+        </div>
+      </div>
     </div>
   );
 };

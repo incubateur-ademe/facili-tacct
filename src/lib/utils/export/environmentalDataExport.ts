@@ -209,11 +209,21 @@ export const IndicatorExportTransformations = {
           libelle_petr: el.libelle_petr,
           departement: el.departement,
           libelle_departement: el.libelle_departement,
-          agriculture: Round(el.NA5AZ_sum, 0),
-          industries: Round(el.NA5BE_sum, 0),
-          construction: Round(el.NA5FZ_sum, 0),
-          commerces: Round(el.NA5GU_sum, 0),
-          administration: Round(el.NA5OQ_sum, 0)
+          agriculture: isFinite(Number(Round(el.NA5AZ_sum, 0))) // pour ne pas avoir une erreur à l'ouverture du fichier xlsx
+            ? Number(Round(el.NA5AZ_sum, 0))
+            : '',
+          industries: isFinite(Number(Round(el.NA5BE_sum, 0)))
+            ? Number(Round(el.NA5BE_sum, 0))
+            : '',
+          construction: isFinite(Number(Round(el.NA5FZ_sum, 0)))
+            ? Number(Round(el.NA5FZ_sum, 0))
+            : '',
+          commerces: isFinite(Number(Round(el.NA5GU_sum, 0)))
+            ? Number(Round(el.NA5GU_sum, 0))
+            : '',
+          administration: isFinite(Number(Round(el.NA5OQ_sum, 0)))
+            ? Number(Round(el.NA5OQ_sum, 0))
+            : ''
         };
       }),
     densiteBati: (carteCommunes: CarteCommunes[]) => {
