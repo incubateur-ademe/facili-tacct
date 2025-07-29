@@ -15,7 +15,7 @@ import { Average } from '@/lib/utils/reusableFunctions/average';
 import { BarDatum } from '@nivo/bar';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { RefObject, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import RGAMap from '../../maps/mapRGA';
 import styles from './gestionRisques.module.scss';
 
@@ -28,7 +28,6 @@ type Props = {
   rga: RGAdb[];
   datavizTab: string;
   setDatavizTab: (value: string) => void;
-  exportPNGRef: RefObject<HTMLDivElement | null>;
   exportData: RGAdbExport[];
 };
 
@@ -129,7 +128,6 @@ const RgaDataViz = (props: Props) => {
     rga,
     datavizTab,
     setDatavizTab,
-    exportPNGRef,
     exportData
   } = props;
   const searchParams = useSearchParams();
@@ -243,8 +241,6 @@ const RgaDataViz = (props: Props) => {
         <RGAMap
           rgaCarte={rgaCarte}
           carteCommunes={carteCommunes}
-          exportData={exportData}
-          exportPNGRef={exportPNGRef}
           mapRef={mapRef}
           mapContainer={mapContainer}
         />
@@ -255,8 +251,6 @@ const RgaDataViz = (props: Props) => {
       <RGAMap
         rgaCarte={rgaCarte}
         carteCommunes={carteCommunes}
-        exportData={exportData}
-        exportPNGRef={exportPNGRef}
         mapRef={mapRef}
         mapContainer={mapContainer}
         style={{
