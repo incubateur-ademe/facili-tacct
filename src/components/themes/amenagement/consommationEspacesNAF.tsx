@@ -1,3 +1,4 @@
+"use client";
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import { Loader } from '@/components/loader';
