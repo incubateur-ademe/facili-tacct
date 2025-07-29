@@ -1,4 +1,4 @@
-import ExporterIcon from '@/assets/icons/export_icon_white.png';
+import ExporterIcon from '@/assets/icons/export_icon_white.svg';
 import niveauxMarinsIcon from '@/assets/icons/niveau_marin_icon_black.svg';
 import GraphNotFound from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';

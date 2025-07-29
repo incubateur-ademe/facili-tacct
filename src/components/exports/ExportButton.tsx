@@ -1,5 +1,5 @@
 "use client";
-import ExporterIcon from '@/assets/icons/export_icon_white.png';
+import ExporterIcon from '@/assets/icons/export_icon_white.svg';
 import { exportToXLSX } from '@/lib/utils/export/exportXlsx';
 import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';

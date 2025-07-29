@@ -82,11 +82,6 @@ export const LCZ = ({
                         rendez-vous sur le site du Cerema
                       </a>.
                     </p>
-                    <TagInIndicator
-                      indice={["Fortes chaleurs"]}
-                      icon={[fortesChaleursIcon]}
-                      tag={[fortesChaleurs]}
-                    />
                   </>
                 ) : (
                   <>
@@ -118,7 +113,6 @@ export const LCZ = ({
                         and urban-scale environmental science
                       </a>.
                     </p>
-
                   </>
                 )
               }

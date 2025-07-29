@@ -154,6 +154,13 @@ export const themes = {
       facteurSensibilite: "Consommation d'espaces NAF",
       risque: '',
       donnee: ''
+    },
+    {
+      id: 1,
+      titre: 'LCZ',
+      facteurSensibilite: 'LCZ',
+      risque: 'Moyen',
+      donnee: 'LOREM IPSUM'
     }
   ],
   agriculture: [

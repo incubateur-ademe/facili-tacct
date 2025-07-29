@@ -133,7 +133,7 @@ const IlotChaleurUrbain = () => {
           <tbody>
             <tr>
               <td style={{ border: '1px solid #ccc', padding: '12px', fontSize: '0.875rem' }}>
-                <strong>îlot de chaleur urbaine (ICU)</strong>
+                <strong>îlot de chaleur urbain (ICU)</strong>
               </td>
               <td style={{ border: '1px solid #ccc', padding: '12px', fontSize: '0.875rem' }}>
                 Capteurs à environ 2m du sol, en zone urbaine et en zone rurale
