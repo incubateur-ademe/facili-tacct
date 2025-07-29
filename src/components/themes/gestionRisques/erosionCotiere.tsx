@@ -1,6 +1,6 @@
-import ExporterIcon from '@/assets/icons/export_icon_white.svg';
 import niveauxMarinsIcon from '@/assets/icons/niveau_marin_icon_black.svg';
 import GraphNotFound from '@/assets/images/no_data_on_territory.svg';
+import { ExportPngMaplibreButton } from '@/components/exports/ExportPng';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { MapErosionCotiere } from '@/components/maps/mapErosionCotiere';
@@ -12,8 +12,6 @@ import { ErosionCotiereMapper } from '@/lib/mapper/erosionCotiere';
 import { CarteCommunes, ErosionCotiere, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { erosionCotiereTooltipText } from '@/lib/tooltipTexts';
-import { exportDatavizAsPNG } from '@/lib/utils/export/exportPng';
-import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { LegendErosionCotiere } from '../../maps/legends/legendErosionCotiere';
@@ -29,7 +27,9 @@ const ErosionCotes = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const exportPNGRef = useRef(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
+  const mapContainer = useRef<HTMLDivElement>(null);
+  // const exportPNGRef = useRef(null);
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const erosionCotiereMap = erosionCotiere.map(ErosionCotiereMapper);
@@ -84,29 +84,27 @@ const ErosionCotes = (props: {
                 </div>
                 {
                   erosionCotiere ?
-                    <div ref={exportPNGRef}>
+                    <>
                       <MapErosionCotiere
                         erosionCotiere={erosionCotiereMap}
                         carteCommunes={communesMap}
+                        mapRef={mapRef}
+                        mapContainer={mapContainer}
                       />
-                      <LegendErosionCotiere />
-                    </div>
+                      <div className='erosionCotiereLegendWrapper'>
+                        <LegendErosionCotiere />
+                      </div>
+                    </>
                     : <DataNotFoundForGraph image={GraphNotFound} />
                 }
                 <div className={styles.sourcesExportWrapper}>
                   <p>Source : CEREMA</p>
-                  <button
-                    className={styles.exportIndicatorButton}
-                    onClick={() => exportDatavizAsPNG(exportPNGRef, 'erosion_cotiere.png')}
-                  >
-                    Exporter
-                    <Image
-                      alt="Exporter les données"
-                      src={ExporterIcon}
-                      width={16}
-                      height={16}
-                    />
-                  </button>
+                  <ExportPngMaplibreButton
+                    mapRef={mapRef}
+                    mapContainer={mapContainer}
+                    documentDiv=".erosionCotiereLegendWrapper"
+                    fileName={`Erosion_cotiere_${type}_${libelle}`}
+                  />
                 </div>
               </div>
             </div>

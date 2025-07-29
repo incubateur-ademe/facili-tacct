@@ -18,7 +18,7 @@ import { Average } from '@/lib/utils/reusableFunctions/average';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RGAText } from '../inconfortThermique/staticTexts';
 import styles from './gestionRisques.module.scss';
 import RgaDataViz from './rgaDataviz';
@@ -36,7 +36,6 @@ export const RGA = ({
   const type = searchParams.get('type')!;
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
-  const exportPNGRef = useRef<HTMLDivElement>(null);
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const [datavizTab, setDatavizTab] = useState<string>((type === "commune" || type === "epci") ? 'Comparaison' : "Répartition");
@@ -144,7 +143,6 @@ export const RGA = ({
                     rga={rga}
                     datavizTab={datavizTab}
                     setDatavizTab={setDatavizTab}
-                    exportPNGRef={exportPNGRef}
                     exportData={exportData}
                   /> : (
                     <div className={styles.graphWrapper}>
