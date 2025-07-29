@@ -1,6 +1,5 @@
 import { BoundsFromCollection } from '@/components/maps/components/boundsFromCollection';
 import { CommunesIndicateursDto, RGADto } from '@/lib/dto';
-import { RGAdbExport } from '@/lib/utils/export/exportTypes';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
 import { Feature, FeatureCollection, GeoJsonProperties, Geometry } from 'geojson';
@@ -18,13 +17,11 @@ const RGAMap = (props: {
     type: string;
     features: RGADto[];
   };
-  exportPNGRef: RefObject<HTMLDivElement | null>;
-  exportData: RGAdbExport[];
   mapRef: RefObject<maplibregl.Map | null>;
   mapContainer: RefObject<HTMLDivElement | null>;
   style?: React.CSSProperties;
 }) => {
-  const { carteCommunes, rgaCarte, exportData, mapRef, mapContainer, style } = props;
+  const { carteCommunes, rgaCarte, mapRef, mapContainer, style } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
