@@ -12,7 +12,7 @@ import {
   LegendCompColor,
   LegendCompIcons
 } from '@/components/maps/legends/legendComp';
-import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
+import { MapEtatCoursDeauLegacy } from '@/components/maps/mapEtatCoursDeauLegacy';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
@@ -123,7 +123,7 @@ const EtatQualiteCoursDeau = (props: {
                 </div>
                 {(etatCoursDeau.length) ? (
                   <>
-                    <MapEtatCoursDeau
+                    <MapEtatCoursDeauLegacy
                       etatCoursDeau={etatCoursDeauMap}
                       carteCommunes={carteCommunesMap}
                       qualiteEauxBaignade={qualiteEauxBaignade}

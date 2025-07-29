@@ -267,7 +267,7 @@ export const MapEspacesNaf = (props: {
         'fill-color',
         colorExpression
       );
-    }, 50);
+    }, 150);
   }, [colorExpression]);
 
   return (
