@@ -1,12 +1,13 @@
 'use client';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import { default as DataNotFound } from '@/assets/images/no_data_on_territory.svg';
+import { generateMapPngBlob } from '@/components/exports/ExportPng';
 import { ZipExportButton } from '@/components/exports/ZipExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
-import { CLCMap } from '@/components/maps/CLC';
 import { vegetalisationLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
+import { MapCLC } from '@/components/maps/mapCLC';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
 import { VegetalisationDto } from '@/lib/dto';
@@ -46,7 +47,9 @@ const Vegetalisation = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const exportPNGRef = useRef<HTMLDivElement | null>(null);
+  const mapContainer = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
+  // const exportPNGRef = useRef<HTMLDivElement | null>(null);
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
@@ -113,15 +116,15 @@ const Vegetalisation = (props: {
               </p>
               {
                 clc && clc.length ? (
-                  <div ref={exportPNGRef}>
-                    <CLCMap clc={clc} />
+                  <>
+                    <MapCLC clc={clc} mapRef={mapRef} mapContainer={mapContainer} />
                     <div
                       className={styles.legend}
                       style={{ width: 'auto', justifyContent: 'center' }}
                     >
                       <LegendCompColor legends={vegetalisationLegend} />
                     </div>
-                  </div>
+                  </>
                 ) : <DataNotFoundForGraph image={DataNotFound} />
               }
               <div className={styles.sourcesExportWrapper}>
@@ -129,6 +132,35 @@ const Vegetalisation = (props: {
                   Source : CORINE Land Cover
                 </p>
                 <ZipExportButton
+                  handleExport={async () => {
+                    const pngBlob = await generateMapPngBlob({
+                      mapRef,
+                      mapContainer,
+                      documentDiv: ".themes_legend__V1biR",
+                    });
+                    if (!pngBlob) {
+                      alert("Erreur lors de la génération de l'image PNG.");
+                      return;
+                    }
+                    await exportAsZip({
+                      excelFiles: [{
+                        data: exportData,
+                        baseName: "vegetalisation",
+                        sheetName: "Végétalisation",
+                        type,
+                        libelle
+                      }],
+                      blobFiles: [{
+                        blob: pngBlob,
+                        filename: `Vegetalisation_${type}_${libelle}.png`
+                      }],
+                      zipFilename: `vegetalisation_export_${new Date().toISOString().split('T')[0]}.zip`
+                    })
+                  }}
+                >
+                  Exporter
+                </ZipExportButton>
+                {/* <ZipExportButton
                   handleExport={() => exportAsZip({
                     excelFiles: [{
                       data: exportData,
@@ -145,7 +177,7 @@ const Vegetalisation = (props: {
                   })}
                 >
                   Exporter
-                </ZipExportButton>
+                </ZipExportButton> */}
               </div>
             </div>
             {/* <button onClick={() => exportDatavizAsPNG(exportPNGRef, 'végétalisation.png')}>Exporter PNG</button> */}
