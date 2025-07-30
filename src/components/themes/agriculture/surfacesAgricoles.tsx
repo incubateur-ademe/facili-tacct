@@ -10,15 +10,16 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { PieChartDataSurfacesAgricoles } from '@/lib/charts/surfacesAgricoles';
 import { Patch4, SurfacesAgricolesModel } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { SurfacesAgricolesText } from '@/lib/staticTexts';
 import { multipleEpciBydepartementLibelle } from '@/lib/territoireData/multipleEpciBydepartement';
 import { multipleEpciByPnrLibelle } from '@/lib/territoireData/multipleEpciByPnr';
 import { surfacesAgricolesTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { SurfacesAgricolesText } from '../inconfortThermique/staticTexts';
 import styles from './agriculture.module.scss';
 import SurfacesAgricolesDataviz from './surfacesAgricolesDataviz';
 
@@ -57,6 +58,7 @@ export const SurfacesAgricoles = ({
   }, [code]);
 
   const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
+  const exportData = IndicatorExportTransformations.agriculture.surfacesAgricoles(surfacesAgricoles);
 
   return (
     <>
@@ -101,8 +103,8 @@ export const SurfacesAgricoles = ({
                   ) : <p>Il n’y a pas de données référencées sur le territoire que vous avez sélectionné</p>
                 }
                 <div className={styles.patch4Wrapper}>
-                  {secheresse === 'Intensité très forte' ||
-                    secheresse === 'Intensité forte' ? (
+                  {secheresse === 'Aggravation très forte' ||
+                    secheresse === 'Aggravation forte' ? (
                     <TagItem
                       icon={secheresseIcon}
                       indice="Sécheresse des sols"
@@ -122,6 +124,7 @@ export const SurfacesAgricoles = ({
                       surfacesAgricoles={surfacesAgricoles}
                       datavizTab={datavizTab}
                       setDatavizTab={setDatavizTab}
+                      exportData={exportData}
                     />
                   </>
                 ) : (

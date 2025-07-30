@@ -1,6 +1,6 @@
 export const tagIntensite = [
   {
-    intensite: 'Intensité très forte',
+    intensite: 'Aggravation très forte',
     textHeader: 'Lorsque l’évolution de long terme (2050-2100) est plus de deux fois plus forte que sur la période 2030-2050 :',
     textContent: (
       <div>
@@ -17,7 +17,7 @@ export const tagIntensite = [
     )
   },
   {
-    intensite: 'Intensité forte',
+    intensite: 'Aggravation forte',
     textHeader: 'Lorsque l’évolution de long terme (2050-2100) est une à deux fois supérieure à la valeur sur la période 2030-2050 :',
     textContent: (
       <div>

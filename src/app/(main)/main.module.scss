@@ -1,6 +1,6 @@
 // SCSS Variables
 $heightWrapper: 293px;
-$height-notice: 360px;
+$height-notice: 461px;
 
 // 1er bloc
 .homePageTopWrapper {
@@ -39,7 +39,7 @@ $height-notice: 360px;
     width: 51dvw;
     // max-width: 53em;
     left: calc(50dvw - 26dvw);
-    top: $height-notice;
+    top: var(--height-notice, $height-notice);
     display: flex;
     flex-direction: column;
     background-color: rgb(255, 255, 255);
@@ -55,24 +55,24 @@ $height-notice: 360px;
         width: 90dvw;
         max-width: none;
         left: calc(50dvw - 46dvw);
-        top: $height-notice + 40px;
+        top: calc(var(--height-notice, $height-notice));
     }
 }
 @media screen and (max-width: 650px) {
     .collectiviteWrapper {
-        top: $height-notice + 100px;
+        top: calc(var(--height-notice, $height-notice));
     }
 }
 @media screen and (max-width: 520px) {
     .collectiviteWrapper {
         height: 410px;
-        top: $height-notice + 150px;
+        top: calc(var(--height-notice, $height-notice));
     }
 }
 @media screen and (max-width: 450px) {
     .collectiviteWrapper {
         height: 420px;
-        top: $height-notice + 180px;
+        top: calc(var(--height-notice, $height-notice));
     }
 }
 // Patch 4 bloc

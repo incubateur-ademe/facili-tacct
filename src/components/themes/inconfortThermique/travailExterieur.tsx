@@ -1,7 +1,8 @@
 'use client';
 
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
-import { PieChart1 } from '@/components/charts/inconfortThermique/pieChartTravailExt';
+import { PieChartTravailExt } from '@/components/charts/inconfortThermique/pieChartTravailExt';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
@@ -10,13 +11,14 @@ import { travailExtDto } from '@/lib/dto';
 import { travailExtMapper } from '@/lib/mapper/inconfortThermique';
 import { InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { TravailExterieurText } from '@/lib/staticTexts';
 import { travailExterieurTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { TravailExterieurText } from './staticTexts';
 import styles from './themes.module.scss';
 
 const sumProperty = (
@@ -47,7 +49,6 @@ export const TravailExterieur = (props: {
         : type === 'epci' && !eptRegex.test(libelle)
           ? travailExterieurMapped.filter((e) => e.epci === code)
           : travailExterieurMapped;
-
   const sums = {
     sumAgriculture: sumProperty(travailExterieurTerritoire, 'NA5AZ_sum'),
     sumIndustries: sumProperty(travailExterieurTerritoire, 'NA5BE_sum'),
@@ -95,7 +96,7 @@ export const TravailExterieur = (props: {
     },
     {
       id: 'Administration publique, enseignement, santé humaine et action sociale',
-      label: 'Administations',
+      label: 'Administrations',
       count: sums.sumAdministration,
       color: '#E3EDFF',
       value: Number(
@@ -123,6 +124,7 @@ export const TravailExterieur = (props: {
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : "null";
+  const exportData = IndicatorExportTransformations.inconfort_thermique.travailExt(travailExterieurTerritoire);
 
   return (
     <>
@@ -162,14 +164,26 @@ export const TravailExterieur = (props: {
                   </b>
                 </p>
                 {graphData ?
-                  <PieChart1
+                  <PieChartTravailExt
                     graphData={graphData}
                     travailExterieurTerritoire={travailExterieurTerritoire}
-                  /> : <Loader />}
-                <p style={{ padding: '1em', margin: '0' }}>
-                  Source : INSEE, Emplois au lieu de travail par sexe, secteur
-                  d'activité économique et catégorie socioprofessionnelle, 2021
-                </p>
+                  /> : <Loader />
+                }
+                <div className={styles.sourcesExportWrapper}>
+                  <p>
+                    Source : INSEE, Emplois au lieu de travail par sexe, secteur
+                    d'activité économique et catégorie socioprofessionnelle, 2021
+                  </p>
+                  <ExportButton
+                    data={exportData}
+                    baseName="travail_exterieur"
+                    type={type}
+                    libelle={libelle}
+                    code={code}
+                    sheetName="Activités économiques"
+                  />
+                </div>
+
               </div>
             </div>
           </div>

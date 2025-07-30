@@ -6,13 +6,14 @@ import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { Patch4, RessourcesEau } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { PrelevementEauText } from '@/lib/staticTexts';
 import { prelevementEauTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { PrelevementEauText } from '../inconfortThermique/staticTexts';
 import PrelevementEauDataViz from './prelevementEauDataviz';
 import styles from './ressourcesEau.module.scss';
 
@@ -78,6 +79,11 @@ export const PrelevementEau = (props: {
             ? ressourcesEau.filter((obj) => obj.libelle_pnr === libelle)
             : ressourcesEau;
 
+  const sumAllYears = dataParMaille.map((year) =>
+    Array.from({ length: 13 }, (_, i) => Number(year[`A${2008 + i}` as PrelevementsEauYears]) || 0)
+      .reduce((a, b) => a + b, 0)
+  ).reduce((a, b) => a + b, 0);;
+
   useEffect(() => {
     void (async () => {
       if (type === 'commune' || type === 'epci' || type === 'ept') {
@@ -91,6 +97,11 @@ export const PrelevementEau = (props: {
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : undefined;
+
+  //sort ascending by code_geographique
+  const exportData = IndicatorExportTransformations.ressourcesEau.PrelevementEau(dataParMaille).sort(
+    (a, b) => a.code_geographique.localeCompare(b.code_geographique)
+  );
 
   return (
     <>
@@ -109,8 +120,8 @@ export const PrelevementEau = (props: {
                 ) : ""
                 }
                 <div className={styles.patch4Wrapper}>
-                  {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                  {fortesChaleurs === 'Aggravation très forte' ||
+                    fortesChaleurs === 'Aggravation forte' ? (
                     <TagItem
                       icon={fortesChaleursIcon}
                       indice="Fortes chaleurs"
@@ -127,6 +138,7 @@ export const PrelevementEau = (props: {
                 ressourcesEau={ressourcesEau}
                 datavizTab={datavizTab}
                 setDatavizTab={setDatavizTab}
+                exportData={exportData}
               />
             </div>
           </div>

@@ -20,16 +20,19 @@ const GestionRisques = async (props: { searchParams: SearchParams }) => {
   const dbIncendiesForet = await GetIncendiesForet(code, libelle, type);
 
   return (
-    <div className={styles.container}>
-      <Suspense>
-        <GestionRisquesComp
-          data={theme}
-          gestionRisques={dbGestionRisques!}
-          carteCommunes={carteCommunes}
-          erosionCotiere={erosionCotiere}
-          incendiesForet={dbIncendiesForet}
-        />
-      </Suspense>
+    <div>
+      {/* <GestionRisquesExport code={code} libelle={libelle} type={type} /> */}
+      <div className={styles.container}>
+        <Suspense>
+          <GestionRisquesComp
+            data={theme}
+            gestionRisques={dbGestionRisques!}
+            carteCommunes={carteCommunes}
+            erosionCotiere={erosionCotiere}
+            incendiesForet={dbIncendiesForet}
+          />
+        </Suspense>
+      </div>
     </div>
   );
 };
