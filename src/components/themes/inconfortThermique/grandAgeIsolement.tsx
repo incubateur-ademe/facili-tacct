@@ -16,6 +16,7 @@ import {
   Patch4
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
+import { grandAgeIsolementDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { eptRegex, numberWithSpacesRegex } from '@/lib/utils/regex';
 import { useSearchParams } from 'next/navigation';
@@ -257,6 +258,7 @@ export const GrandAgeIsolement = (props: {
                   libelle={libelle}
                   code={code}
                   sheetName="Grand âge"
+                  documentation={grandAgeIsolementDoc}
                 />
               </div>
             </div>
