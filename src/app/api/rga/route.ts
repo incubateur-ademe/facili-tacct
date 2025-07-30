@@ -12,9 +12,9 @@ const replacer: Replacer = (key: string, value: unknown): unknown => {
 
 export const GET = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
-  const code = searchParams.get('code') || '';
-  const libelle = searchParams.get('libelle') || '';
-  const type = searchParams.get('type') || '';
+  const code = searchParams.get('code') || "";
+  const libelle = searchParams.get('libelle') || "";
+  const type = searchParams.get('type') || "";
   const rga = await GetRga(code, libelle, type);
   const rgaCarte = await GetRGACarte(code, libelle, type);
   // Convert BigInt to string

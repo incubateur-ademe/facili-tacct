@@ -35,7 +35,7 @@ const csp = {
             "'unsafe-eval' http://localhost",
         '*.posthog.com'
     ],
-    'style-src': ["'self'", "'unsafe-inline'"],
+    'style-src': ["'self'", "'unsafe-inline'", "https://eu.posthog.com"],
     'object-src': ["'self'", 'data:'],
     'frame-ancestors': [
         "'none'",
@@ -46,7 +46,11 @@ const csp = {
     'upgrade-insecure-requests': [],
     'frame-src': [
         "'none'" // Iframe source
-    ]
+    ],
+    'worker-src': [
+        "'self'",
+        'blob:'
+    ],
 };
 
 const ContentSecurityPolicy = Object.entries(csp)

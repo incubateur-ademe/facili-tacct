@@ -15,7 +15,6 @@ const Thematiques = async (props: { searchParams: SearchParams }) => {
   const { code, type, libelle } = await props.searchParams;
   const patch4 =
     (type === 'epci' || type === 'commune' || type === "ept") ? await GetPatch4(code, type, libelle) : null;
-
   return (
     <Container size="xl" className="mb-24">
       <ClientOnly>

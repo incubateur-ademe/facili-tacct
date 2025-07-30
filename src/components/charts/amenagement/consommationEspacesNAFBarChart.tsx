@@ -1,10 +1,8 @@
 'use client';
 
 import { espacesNAFBarChartLegend } from '@/components/maps/legends/datavizLegends';
-import styles from '@/components/themes/biodiversite/biodiversite.module.scss';
 import { ConsommationNAF } from '@/lib/postgres/models';
-import { Round } from '@/lib/utils/reusableFunctions/round';
-import { BarDatum, BarTooltipProps } from '@nivo/bar';
+import { espacesNAFBarChartTooltip } from '../ChartTooltips';
 import { NivoBarChart } from '../NivoBarChart';
 
 const subObjectByKeys = (obj: ConsommationNAF, arr: string[]) =>
@@ -91,37 +89,6 @@ export const ConsommationEspacesNAFBarChart = (props: {
     });
   });
 
-  const CustomTooltip = ({ data }: BarTooltipProps<BarDatum>) => {
-    const dataArray = Object.entries(data).map((el) => {
-      return {
-        titre: el[0],
-        value: el[1],
-        color: espacesNAFBarChartLegend.find((e) => e.variable === el[0])
-          ?.couleur
-      };
-    });
-    return (
-      <div className={styles.tooltipEvolutionWrapper}>
-        {dataArray.slice(0, -1).map((el, i) => {
-          return (
-            <div className={styles.itemWrapper} key={i}>
-              <div className={styles.titre}>
-                <div
-                  className={styles.colorSquare}
-                  style={{ background: el.color }}
-                />
-                <p>{el.titre}</p>
-              </div>
-              <div className={styles.value}>
-                <p>{Round(Number(el.value), 1)} ha</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
-
   // Sum all numeric values in all objects of graphData (excluding "annee")
   const sumAllValues = graphData.reduce((total, obj) => {
     const { annee, ...numericValues } = obj;
@@ -142,7 +109,7 @@ export const ConsommationEspacesNAFBarChart = (props: {
             axisLeftLegend="Surface en ha"
             axisBottomLegend="Années"
             showLegend={false}
-            tooltip={CustomTooltip}
+            tooltip={espacesNAFBarChartTooltip}
           />
           : <div
             style={{

@@ -12,11 +12,12 @@ import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { ArreteCatNat, CarteCommunes, GestionRisques, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { catnatTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { CatNatText } from '../../../lib/staticTexts';
+import { CatNatText } from '../inconfortThermique/staticTexts';
 import CatnatDataViz from './catnatDataviz';
 import styles from './gestionRisques.module.scss';
 
@@ -129,13 +130,13 @@ export const Catnat = (props: {
   const precipitation = patch4
     ? AlgoPatch4(patch4, 'fortes_precipitations')
     : undefined;
+  const exportData = IndicatorExportTransformations.gestionRisques.ArretesCatnat(gestionRisques);
 
   return (
     <>
       {
         !isLoadingPatch4 ?
           <>
-
             <div className={styles.container}>
               <div className={gestionRisques.length !== 0 ? "w-1/3" : "w-1/2"}>
                 <div className={styles.explicationWrapper}>
@@ -158,16 +159,16 @@ export const Catnat = (props: {
                   ) : ""
                   }
                   <div className={styles.patch4Wrapper}>
-                    {secheresse === 'Intensité très forte' ||
-                      secheresse === 'Intensité forte' ? (
+                    {secheresse === 'Aggravation très forte' ||
+                      secheresse === 'Aggravation forte' ? (
                       <TagItem
                         icon={secheresseIcon}
                         indice="Sécheresse des sols"
                         tag={secheresse}
                       />
                     ) : null}
-                    {precipitation === 'Intensité très forte' ||
-                      precipitation === 'Intensité forte' ? (
+                    {precipitation === 'Aggravation très forte' ||
+                      precipitation === 'Aggravation forte' ? (
                       <TagItem
                         icon={precipitationIcon}
                         indice="Fortes précipitations"
@@ -193,6 +194,7 @@ export const Catnat = (props: {
                       setTypeRisqueValue={setTypeRisqueValue}
                       setSliderValue={setSliderValue}
                       sliderValue={sliderValue}
+                      exportData={exportData}
                     /> : (
                       <div className={styles.graphWrapper}>
                         <p style={{ padding: '1em', margin: '0' }}>

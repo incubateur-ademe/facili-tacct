@@ -16,7 +16,7 @@ export const GetRessourceEau = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 12000)
+    }, 9000)
   );
   const dbQuery = (async () => {
     try {
@@ -29,6 +29,7 @@ export const GetRessourceEau = async (
       if (!exists) return [];
       else {
         if (type === 'commune') {
+          console.time('Query Execution Time PRELEVEMENT EAUX');
           const value = await prisma.$queryRaw`
           SELECT *
           FROM databases.ressources_eau
@@ -39,8 +40,10 @@ export const GetRessourceEau = async (
             LIMIT 1
           )
         `;
+          console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
           return value as RessourcesEau[];
         } else if (type === 'epci') {
+          console.time('Query Execution Time PRELEVEMENT EAUX');
           const value = await prisma.$queryRaw`
           SELECT *
           FROM databases.ressources_eau
@@ -51,8 +54,11 @@ export const GetRessourceEau = async (
             LIMIT 1
           )
         `;
+          console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
           return value as RessourcesEau[];
         } else if (type === 'petr') {
+          console.time('Query Execution Time PRELEVEMENT EAUX');
+          // await prisma.$executeRaw`SET statement_timeout = 1000;`;
           const value = await prisma.$queryRaw`
           SELECT *
           FROM databases.ressources_eau
@@ -63,8 +69,10 @@ export const GetRessourceEau = async (
             LIMIT 1
           )
         `;
+          console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
           return value as RessourcesEau[];
         } else if (type === 'ept') {
+          console.time('Query Execution Time PRELEVEMENT EAUX');
           const value = await prisma.$queryRaw`
           SELECT *
           FROM databases.ressources_eau
@@ -75,15 +83,16 @@ export const GetRessourceEau = async (
             LIMIT 1
           )
         `;
+          console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
           return value as RessourcesEau[];
         } else if (type === 'departement') {
-          const before = process.memoryUsage().heapUsed;
-
+          console.time('Query Execution Time RESSOURCES EAUX');
           const value = await prisma.ressources_eau.findMany({
             where: {
               departement: code
             }
           });
+          console.timeEnd('Query Execution Time RESSOURCES EAUX');
           return value;
         } else if (type === 'pnr') {
           const value = await prisma.ressources_eau.findMany({

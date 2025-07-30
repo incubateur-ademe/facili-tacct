@@ -1,6 +1,7 @@
 'use client';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import { default as DataNotFound } from '@/assets/images/no_data_on_territory.svg';
+import { ZipExportButton } from '@/components/exports/ZipExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { CLCMap } from '@/components/maps/CLC';
@@ -12,11 +13,13 @@ import { VegetalisationDto } from '@/lib/dto';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { CLCTerritoires, InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { VegetalisationText } from '@/lib/staticTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
+import { exportAsZip } from '@/lib/utils/export/exportZipGeneric';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { VegetalisationText } from './staticTexts';
 import styles from './themes.module.scss';
 
 const sumProperty = (
@@ -43,6 +46,7 @@ const Vegetalisation = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
+  const exportPNGRef = useRef<HTMLDivElement | null>(null);
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
 
@@ -55,7 +59,7 @@ const Vegetalisation = (props: {
         : type === 'epci' && !eptRegex.test(libelle)
           ? vegetalisationMapped.filter((e) => e.epci === code)
           : vegetalisationMapped;
-
+  const exportData = IndicatorExportTransformations.inconfort_thermique.vegetalisation(vegetalisationTerritoire);
   const foretSum = sumProperty(
     vegetalisationTerritoire,
     'clc_3_foret_semiNaturel'
@@ -108,8 +112,8 @@ const Vegetalisation = (props: {
                 <b>Cartographie des différents types de sols</b>
               </p>
               {
-                clc ? (
-                  <>
+                clc && clc.length ? (
+                  <div ref={exportPNGRef}>
                     <CLCMap clc={clc} />
                     <div
                       className={styles.legend}
@@ -117,13 +121,34 @@ const Vegetalisation = (props: {
                     >
                       <LegendCompColor legends={vegetalisationLegend} />
                     </div>
-                  </>
+                  </div>
                 ) : <DataNotFoundForGraph image={DataNotFound} />
               }
-              <p style={{ padding: '1em', margin: '0' }}>
-                Source : CORINE Land Cover
-              </p>
+              <div className={styles.sourcesExportWrapper}>
+                <p>
+                  Source : CORINE Land Cover
+                </p>
+                <ZipExportButton
+                  handleExport={() => exportAsZip({
+                    excelFiles: [{
+                      data: exportData,
+                      baseName: "vegetalisation",
+                      sheetName: "Végétalisation",
+                      type,
+                      libelle
+                    }],
+                    pngFiles: [{
+                      ref: exportPNGRef,
+                      filename: 'végétalisation.png'
+                    }],
+                    zipFilename: `vegetalisation_export_${new Date().toISOString().split('T')[0]}.zip`
+                  })}
+                >
+                  Exporter
+                </ZipExportButton>
+              </div>
             </div>
+            {/* <button onClick={() => exportDatavizAsPNG(exportPNGRef, 'végétalisation.png')}>Exporter PNG</button> */}
           </div>
         </div>
       ) : (

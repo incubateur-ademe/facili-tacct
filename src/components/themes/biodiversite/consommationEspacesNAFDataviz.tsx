@@ -1,30 +1,29 @@
 'use client';
 
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { BoundsFromCollection } from '@/components/maps/components/boundsFromCollection';
 import { espacesNAFDatavizLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapEspacesNaf } from '@/components/maps/mapEspacesNAF';
 import { CommunesIndicateursDto } from '@/lib/dto';
+import { ConsommationNAFExport } from '@/lib/utils/export/exportTypes';
 import { useSearchParams } from 'next/navigation';
 import styles from './biodiversite.module.scss';
 
 export const ConsommationEspacesNAFDataviz = (props: {
   carteCommunes: CommunesIndicateursDto[];
+  exportData: ConsommationNAFExport[];
 }) => {
-  const { carteCommunes } = props;
+  const { carteCommunes, exportData } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const carteCommunesFiltered = carteCommunes.filter(
     (el) => el.properties.naf != undefined
-  ).filter(
-    (e) =>
-      e.properties.code_geographique !== '75056' &&
-      e.properties.code_geographique !== '13055' &&
-      e.properties.code_geographique !== '69123'
-  );
+  )
   const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
 
   return (
@@ -51,7 +50,17 @@ export const ConsommationEspacesNAFDataviz = (props: {
           </>
         ) : <DataNotFoundForGraph image={DataNotFound} />
       }
-      <p style={{ padding: '1em', margin: '0' }}>Source : CEREMA, avril 2024</p>
+      <div className={styles.sourcesExportWrapper}>
+        <p>Source : CEREMA, avril 2024</p>
+        <ExportButton
+          data={exportData}
+          baseName="consommation_espaces_naf"
+          type={type}
+          libelle={libelle}
+          code={code}
+          sheetName="Espaces NAF"
+        />
+      </div>
     </div>
   );
 };

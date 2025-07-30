@@ -6,16 +6,22 @@ import { Feature, FeatureCollection, GeoJsonProperties, Geometry } from 'geojson
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { RefObject, useEffect } from 'react';
+import { RgaMapLegend } from './legends/datavizLegends';
+import { LegendCompColor } from './legends/legendComp';
+import styles from './maps.module.scss';
 
 const RGAMap = (props: {
   carteCommunes: CommunesIndicateursDto[];
   rgaCarte: {
     type: string;
     features: RGADto[];
-};
+  };
+  mapRef: RefObject<maplibregl.Map | null>;
+  mapContainer: RefObject<HTMLDivElement | null>;
+  style?: React.CSSProperties;
 }) => {
-  const { carteCommunes, rgaCarte } = props;
+  const { carteCommunes, rgaCarte, mapRef, mapContainer, style } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -24,7 +30,6 @@ const RGAMap = (props: {
     ? carteCommunes.filter(el => el.properties.ept === libelle)
     : carteCommunes
   const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
-  const mapContainer = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -33,6 +38,9 @@ const RGAMap = (props: {
       style: mapStyles.desaturated,
       attributionControl: false,
     });
+    mapRef.current = map;
+
+    // addOverlay(map, Overlay.administrativeBoundaries);
 
     map.on('load', () => {
       // Compute bounding box from enveloppe polygon
@@ -94,11 +102,26 @@ const RGAMap = (props: {
 
     // Add navigation control
     map.addControl(new maplibregl.NavigationControl(), 'top-right');
-    return () => map.remove();
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+    };
   }, [rgaCarte, enveloppe]);
 
   return (
-    <div ref={mapContainer} style={{ height: "500px", width: "100%" }} />
+    <div style={{ position: 'relative', ...style }}>
+      <div ref={mapContainer} style={{ height: "500px", width: "100%" }} />
+      <div className="exportPNGWrapper">
+        <div
+          className={styles.legendRGA}
+          style={{ width: 'auto', justifyContent: 'center' }}
+        >
+          <LegendCompColor legends={RgaMapLegend} />
+        </div>
+      </div>
+    </div>
   );
 };
 

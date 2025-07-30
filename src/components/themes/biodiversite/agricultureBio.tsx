@@ -5,14 +5,15 @@ import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { AgricultureBio, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { SurfacesEnBioText } from '@/lib/staticTexts';
 import { multipleEpciBydepartementLibelle } from '@/lib/territoireData/multipleEpciBydepartement';
 import { multipleEpciByPnrLibelle } from '@/lib/territoireData/multipleEpciByPnr';
 import { agricultureBioTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { SurfacesEnBioText } from '../inconfortThermique/staticTexts';
 import AgricultureBioDataViz from './agricultureBioDataviz';
 import styles from './biodiversite.module.scss';
 
@@ -64,6 +65,7 @@ const AgricultureBiologique = (props: {
   }, [code]);
 
   const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
+  const exportData = IndicatorExportTransformations.biodiversite.agricultureBio(agricultureBio)
 
   return (
     <>
@@ -120,8 +122,8 @@ const AgricultureBiologique = (props: {
                   : ""
                 }
                 <div className={styles.patch4Wrapper}>
-                  {secheresse === 'Intensité très forte' ||
-                    secheresse === 'Intensité forte' ? (
+                  {secheresse === 'Aggravation très forte' ||
+                    secheresse === 'Aggravation forte' ? (
                     <TagItem
                       icon={secheresseIcon}
                       indice="Sécheresse des sols"
@@ -138,6 +140,7 @@ const AgricultureBiologique = (props: {
                 agricultureBio={agricultureBio}
                 datavizTab={datavizTab}
                 setDatavizTab={setDatavizTab}
+                exportData={exportData}
               />
             </div>
           </div>

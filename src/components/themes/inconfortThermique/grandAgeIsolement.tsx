@@ -3,6 +3,7 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { LineChart1 } from '@/components/charts/inconfortThermique/lineChartGrandAge';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
@@ -15,10 +16,11 @@ import {
   Patch4
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { GrandAgeText } from '@/lib/staticTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { eptRegex, numberWithSpacesRegex } from '@/lib/utils/regex';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { GrandAgeText } from './staticTexts';
 import styles from './themes.module.scss';
 
 const sumProperty = (
@@ -94,11 +96,21 @@ export const GrandAgeIsolement = (props: {
         : type === 'epci' && !eptRegex.test(libelle)
           ? grandAgeIsolementMapped.filter((e) => e.epci === code)
           : grandAgeIsolementMapped;
+  const territoireSup = type === "epci"
+    ? grandAgeIsolementMapped[0].departement
+    : type === "commune"
+      ? grandAgeIsolementMapped.find((e) => e.code_geographique === code)?.epci
+      : [];
+  const filterTerritoireSup = type === "epci"
+    ? grandAgeIsolementMapped.filter((e) => e.departement === territoireSup)
+    : type === "commune"
+      ? grandAgeIsolementMapped.filter((e) => e.epci === territoireSup)
+      : grandAgeIsolementMapped;
 
   const over_80_2020_percent_territoire_sup = (
-    (100 * sumProperty(grandAgeIsolementMapped, 'over_80_sum_2020')) /
-    (sumProperty(grandAgeIsolementMapped, 'to_80_sum_2020') +
-      sumProperty(grandAgeIsolementMapped, 'under_4_sum_2020'))
+    (100 * sumProperty(filterTerritoireSup, 'over_80_sum_2020')) /
+    (sumProperty(filterTerritoireSup, 'to_80_sum_2020') +
+      sumProperty(filterTerritoireSup, 'under_4_sum_2020'))
   ).toFixed(2);
 
   const yData = {
@@ -160,6 +172,7 @@ export const GrandAgeIsolement = (props: {
   }, [code]);
 
   const fortesChaleurs = patch4 ? AlgoPatch4(patch4, 'fortes_chaleurs') : "null";
+  const exportData = IndicatorExportTransformations.inconfort_thermique.GrandAgeIsolement(grandAgeIsolementTerritoire);
 
   return (
     <>
@@ -233,9 +246,19 @@ export const GrandAgeIsolement = (props: {
               ) : (
                 <Loader />
               )}
-              <p style={{ padding: '1em', margin: '0' }}>
-                Source : Observatoire des territoires
-              </p>
+              <div className={styles.sourcesExportWrapper}>
+                <p>
+                  Source : Observatoire des territoires
+                </p>
+                <ExportButton
+                  data={exportData}
+                  baseName="grand_age"
+                  type={type}
+                  libelle={libelle}
+                  code={code}
+                  sheetName="Grand âge"
+                />
+              </div>
             </div>
           </div>
         </div>

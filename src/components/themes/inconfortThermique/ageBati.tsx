@@ -2,6 +2,7 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import secheresseIcon from '@/assets/icons/secheresse_icon_black.svg';
 import { BarChart } from '@/components/charts/inconfortThermique/BarChartAgeBati';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { Loader } from '@/components/loader';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
@@ -9,12 +10,13 @@ import { AgeBatiDto } from '@/lib/dto';
 import { ageBatiMapper } from '@/lib/mapper/inconfortThermique';
 import { InconfortThermique, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { AgeBatiText } from '@/lib/staticTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { AgeBatiText } from './staticTexts';
 import styles from './themes.module.scss';
 
 interface ChartData {
@@ -45,7 +47,6 @@ export const AgeBati = (props: {
   const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
-
   const ageBatiMapped = inconfortThermique.map(ageBatiMapper);
 
   const ageBatiTerritoire =
@@ -56,6 +57,7 @@ export const AgeBati = (props: {
         : type === 'epci' && !eptRegex.test(libelle)
           ? ageBatiMapped.filter((e) => e.epci === code)
           : ageBatiMapped;
+  const exportData = IndicatorExportTransformations.inconfort_thermique.AgeBati(ageBatiTerritoire);
 
   const averages = {
     averageAgeBatiPre19: average(ageBatiTerritoire, 'age_bati_pre_19'),
@@ -151,10 +153,20 @@ export const AgeBati = (props: {
           <div className={sumAllCount > 0 ? "w-3/5" : "w-1/2"}>
             <div className={styles.graphWrapper}>
               <p style={{ padding: '1em', margin: '0' }}>
-                <b>Part des résidence principales par période de construction</b>
+                <b>Part des résidences principales par période de construction</b>
               </p>
               {chartData ? <BarChart chartData={chartData} /> : <Loader />}
-              <p style={{ padding: '1em', margin: '0' }}>Source : INSEE</p>
+              <div className={styles.sourcesExportWrapper}>
+                <p>Source : INSEE</p>
+                <ExportButton
+                  data={exportData}
+                  baseName="age_bati"
+                  type={type}
+                  libelle={libelle}
+                  code={code}
+                  sheetName="Age du bâti"
+                />
+              </div>
             </div>
           </div>
         </div>

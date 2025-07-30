@@ -92,9 +92,9 @@ export const GetSurfacesAgricoles = async (
               epci: true
             },
             where: {
-              code_geographique: code,
+              code_geographique: code
             }
-          }); 
+          });
           const value = await prisma.surfaces_agricoles.findMany({
             where: {
               epci: epci?.epci as string

@@ -1,3 +1,4 @@
+"use client";
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import { Loader } from '@/components/loader';
@@ -7,10 +8,11 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { ConsommationNAF, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { ConsommationEspacesNAFAmenagementText } from '../../../lib/staticTexts';
+import { ConsommationEspacesNAFAmenagementText } from '../inconfortThermique/staticTexts';
 import styles from './amenagement.module.scss';
 import { ConsommationEspacesNAFDataviz } from './consommationEspacesNAFDataviz';
 
@@ -46,6 +48,7 @@ export const ConsommationEspacesNAF = (props: {
   const precipitation = patch4
     ? AlgoPatch4(patch4, 'fortes_precipitations')
     : undefined;
+  const exportData = IndicatorExportTransformations.biodiversite.EspacesNaf(consommationNAF);
 
   return (
     <>
@@ -64,16 +67,16 @@ export const ConsommationEspacesNAF = (props: {
                   ) : ""
                 }
                 <div className={styles.patch4Wrapper}>
-                  {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                  {fortesChaleurs === 'Aggravation très forte' ||
+                    fortesChaleurs === 'Aggravation forte' ? (
                     <TagItem
                       icon={fortesChaleursIcon}
                       indice="Fortes chaleurs"
                       tag={fortesChaleurs}
                     />
                   ) : null}
-                  {precipitation === 'Intensité très forte' ||
-                    precipitation === 'Intensité forte' ? (
+                  {precipitation === 'Aggravation très forte' ||
+                    precipitation === 'Aggravation forte' ? (
                     <TagItem
                       icon={precipitationIcon}
                       indice="Fortes précipitations"
@@ -88,6 +91,7 @@ export const ConsommationEspacesNAF = (props: {
             <div className={consommationNAF.length > 0 ? "w-3/5" : "w-1/2"}>
               <ConsommationEspacesNAFDataviz
                 consommationNAF={consommationNAF}
+                exportData={exportData}
               />
             </div>
           </div>

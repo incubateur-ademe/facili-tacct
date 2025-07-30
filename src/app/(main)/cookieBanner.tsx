@@ -3,8 +3,8 @@ import { createModal } from '@codegouvfr/react-dsfr/Modal';
 import { useIsModalOpen } from '@codegouvfr/react-dsfr/Modal/useIsModalOpen';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
-import styles from '../root.module.scss';
 import CookieModal from './cookieModal';
+import styles from './main.module.scss';
 
 export const cookieConsentGiven = () => {
   if (!localStorage.getItem('cookie_consent')) {

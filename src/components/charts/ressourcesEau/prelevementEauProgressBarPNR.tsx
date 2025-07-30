@@ -1,14 +1,20 @@
 'use client';
 
+import eclair_icon_black from '@/assets/icons/themes/eclair_icon_black.svg';
+import flocon_icon_black from '@/assets/icons/themes/flocon_icon_black.svg';
+import robinet_icon_black from '@/assets/icons/themes/robinet_icon_black.svg';
+import tracteur_icon_black from '@/assets/icons/themes/tracteur_icon_black.svg';
+import usine_icon_black from '@/assets/icons/themes/usine_icon_black.svg';
+import vagues_icon_black from '@/assets/icons/themes/vagues_icon_black.svg';
 import GraphNotFound from '@/assets/images/data_not_found_prelevement.png';
 import DataNotFound from '@/components/graphDataNotFound';
 import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
 import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
-import { ProgressBarsPNRDataPrelevementEau } from '@/lib/charts/ressourcesEau';
 import { RessourcesEau } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { Progress } from 'antd';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 
 const SumFiltered = (
@@ -52,16 +58,86 @@ const PrelevementEauProgressBarsPNR = ({
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
 
-  const data = ProgressBarsPNRDataPrelevementEau({
-    ressourcesEau,
-    code,
-    libelle,
-    type
-  });
+  const data = [
+    {
+      titre: 'Agriculture',
+      icon: <Image src={tracteur_icon_black} alt="" />,
+      sumTerritoire: SumFiltered(
+        ressourcesEau,
+        code,
+        libelle,
+        type,
+        'agriculture'
+      ),
+      color: '#00C190'
+    },
+    {
+      titre: 'Eau potable',
+      icon: <Image src={robinet_icon_black} alt="" />,
+      sumTerritoire: SumFiltered(
+        ressourcesEau,
+        code,
+        libelle,
+        type,
+        'potable'
+      ),
+      color: '#009ADC'
+    },
+    {
+      titre: 'Industrie et autres usages économiques',
+      icon: <Image src={usine_icon_black} alt="" />,
+      sumTerritoire: SumFiltered(
+        ressourcesEau,
+        code,
+        libelle,
+        type,
+        'industrie'
+      ),
+      color: '#7A49BE'
+    },
+    {
+      titre: 'Refroidissement des centrales électriques',
+      icon: <Image src={flocon_icon_black} alt="" />,
+      sumTerritoire: SumFiltered(
+        ressourcesEau,
+        code,
+        libelle,
+        type,
+        'refroidissement'
+      ),
+      color: '#BB43BD'
+    },
+    {
+      titre: 'Alimentation des canaux',
+      icon: <Image src={vagues_icon_black} alt="" />,
+      sumTerritoire: SumFiltered(
+        ressourcesEau,
+        code,
+        libelle,
+        type,
+        'alimentation'
+      ),
+      color: '#00C2CC'
+    },
+    {
+      titre: "Production d'électricité (barrages hydro-électriques)",
+      icon: <Image src={eclair_icon_black} alt="" />,
+      sumTerritoire: SumFiltered(
+        ressourcesEau,
+        code,
+        libelle,
+        type,
+        'production'
+      ),
+      color: '#FFCF5E'
+    }
+  ];
+
   const total =
     SumFiltered(ressourcesEau, code, libelle, type, 'total') === 0
       ? 1
       : SumFiltered(ressourcesEau, code, libelle, type, 'total');
+
 
   return (
     <div className={styles.ressourcesEauWrapper}>

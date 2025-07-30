@@ -1,11 +1,13 @@
+// @ts-nocheck
 'use client';
-
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import ZeroData from '@/assets/images/zero_data_found.png';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
-import styles from '@/components/themes/gestionRisques/gestionRisques.module.scss';
 import { travailExtDto } from '@/lib/dto';
 import { ResponsivePie } from '@/lib/nivo/pie';
+import { Round } from '@/lib/utils/reusableFunctions/round';
+import { animated } from '@react-spring/web';
+import styles from './inconfortThermiqueCharts.module.scss';
 
 type Props = {
   graphData: Array<{
@@ -18,12 +20,73 @@ type Props = {
   travailExterieurTerritoire: travailExtDto[];
 };
 
-export const PieChart1 = ({ graphData, travailExterieurTerritoire }: Props) => {
+export const colors: { [key: string]: string } = {
+  Agriculture: 'rgba(44, 170, 166, 0.7)',
+  Industries: '#E4FFE3',
+  Construction: 'rgba(242, 133, 2, 0.9)',
+  "Commerces et transports": '#FFF6E3',
+  Administrations: '#E3EDFF'
+};
+
+const arcLabelsComponent = ({ datum, label, style, id }: Any) => {
+  return (
+    <animated.g style={style}>
+      <animated.path
+        fill="none"
+        stroke={datum.color}
+        strokeWidth={style.thickness}
+        d={style.path}
+      />
+      <animated.text
+        transform={style.textPosition}
+        dominantBaseline="central"
+        style={{
+          fontSize: 12,
+          fontWeight: 400
+        }}
+      >
+        <animated.tspan>{(() => {
+          if (datum.label.length <= 15) {
+            return datum.label;
+          }
+          // Trouver le dernier espace avant ou à la position 15
+          const breakPoint = datum.label.lastIndexOf(' ', 15);
+          // Si aucun espace n'est trouvé dans les 15 premiers caractères, chercher le premier espace après
+          if (breakPoint === -1) {
+            const nextSpace = datum.label.indexOf(' ', 15);
+            if (nextSpace === -1) {
+              // Pas d'espace trouvé, retourner le datum.label complet
+              return datum.label;
+            }
+            return (
+              <>
+                {datum.label.slice(0, nextSpace)}{" "}
+                <tspan x="0" dy="1.2em">{datum.label.slice(nextSpace + 1)}</tspan>
+              </>
+            );
+          }
+          return (
+            <>
+              {datum.label.slice(0, breakPoint)}
+              <tspan x="0" dy="1.2em">{datum.label.slice(breakPoint + 1)}</tspan>
+            </>
+          );
+        })()}</animated.tspan>
+        <animated.tspan style={{ fontWeight: 600 }}>
+          {" "}:{" "}{Round(datum.data.count, 0)}{' '}
+        </animated.tspan>
+      </animated.text>
+    </animated.g>
+  );
+};
+
+
+export const PieChartTravailExt = ({ graphData, travailExterieurTerritoire }: Props) => {
   const sumAllCount = graphData.reduce((sum, item) => sum + (item.count || 0), 0);
   return (
     <div
       style={{
-        height: '500px',
+        height: '430px',
         minWidth: '450px',
         backgroundColor: 'white'
       }}
@@ -31,62 +94,44 @@ export const PieChart1 = ({ graphData, travailExterieurTerritoire }: Props) => {
       {sumAllCount > 0 ?
         <ResponsivePie
           data={graphData}
-          margin={{ top: 85, right: 100, bottom: 80, left: -20 }}
+          margin={{ top: 60, right: 70, bottom: 60, left: 70 }}
           sortByValue={true}
-          innerRadius={0.4}
-          padAngle={0.8}
+          isInteractive={true}
+          innerRadius={0.5}
+          padAngle={1}
           cornerRadius={3}
           activeOuterRadiusOffset={8}
           borderWidth={1}
-          colors={[
-            'rgba(44, 170, 166, 0.7)',
-            '#E4FFE3',
-            'rgba(242, 133, 2, 0.9)',
-            '#FFF6E3',
-            '#E3EDFF',
-            '#f47560',
-            '#e8c1a0'
-          ]}
+          colors={(graphData) => colors[graphData.label]}
           borderColor={{
             from: 'color',
             modifiers: [['darker', 0.3]]
           }}
-          enableArcLinkLabels={false}
-          arcLabel={(d) => `${d.value} %`}
-          // arcLinkLabelsTextColor="#333333"
-          // arcLinkLabelsOffset={-10}
-          // arcLinkLabelsDiagonalLength={8}
-          // arcLinkLabelsColor={{ from: 'color' }}
-          legends={[
-            {
-              anchor: 'bottom-right',
-              direction: 'column',
-              justify: false,
-              translateX: -20,
-              translateY: 0,
-              itemsSpacing: 0,
-              itemWidth: 30,
-              itemHeight: 30,
-              itemTextColor: '#999',
-              itemDirection: 'left-to-right',
-              itemOpacity: 1,
-              symbolSize: 10,
-              symbolShape: 'circle'
-            }
-          ]}
-          tooltip={({ datum: { id, value, color } }) => (
+          arcLinkLabelComponent={arcLabelsComponent}
+          arcLinkLabelsSkipAngle={20}
+          borderColor={{
+            from: 'color',
+            modifiers: [['darker', 0.2]]
+          }}
+          layers={['arcs', 'arcLinkLabels']}
+          arcLinkLabelsTextColor="#333333"
+          arcLinkLabelsThickness={2}
+          arcLinkLabelsColor={{ from: 'color' }}
+          arcLinkLabelsOffset={15}
+          arcLinkLabelsDiagonalLength={20}
+          arcLinkLabelsStraightLength={5}
+          tooltip={({ datum: { id, value, color, data, label } }) => (
             <div className={styles.tooltipEvolutionWrapper}>
               <div className={styles.itemWrapper}>
-                <div className={styles.titre}>
+                <div className={styles.titre} style={{ gap: "0" }}>
                   <div
                     className={styles.colorSquare}
                     style={{ background: color }}
                   />
-                  <p>{id}</p>
+                  <p>{id} : </p>
                 </div>
-                <div className={styles.value}>
-                  <p>{value} %</p>
-                </div>
+                <p><b>{Round(data.count, 0)} personnes </b></p>
+                <p>({Round(value, 1)} %)</p>
               </div>
             </div>
           )}

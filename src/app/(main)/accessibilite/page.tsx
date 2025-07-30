@@ -23,7 +23,6 @@ export const metadata: Metadata = {
 
 const Accessibilite = () => (
   <Container my="4w">
-    <h1>{title}</h1>
     <AccessibiliteContent components={anchorHeadingMDXComponents} />
   </Container>
 );

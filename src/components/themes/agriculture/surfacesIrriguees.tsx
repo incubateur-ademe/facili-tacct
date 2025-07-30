@@ -1,4 +1,5 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { surfacesIrrigueesLegend } from '@/components/maps/legends/datavizLegends';
@@ -7,10 +8,12 @@ import { MapSurfacesIrriguees } from '@/components/maps/mapSurfacesIrriguees';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
-import { SurfacesIrrigueesText } from '@/lib/staticTexts';
 import { surfacesIrrigueesTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
+import { FilterDataTerritory } from '@/lib/utils/reusableFunctions/filterDataTerritories';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
+import { SurfacesIrrigueesText } from '../inconfortThermique/staticTexts';
 import styles from './agriculture.module.scss';
 
 export const SurfacesIrriguees = ({
@@ -23,6 +26,7 @@ export const SurfacesIrriguees = ({
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const carteCommunesEnriched = carteCommunes.map((el) => {
     return {
       ...el,
@@ -32,6 +36,8 @@ export const SurfacesIrriguees = ({
     };
   });
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
+  const carteCommunesFiltered = FilterDataTerritory(type, code, libelle, carteCommunesEnriched);
+  const exportData = IndicatorExportTransformations.agriculture.surfacesIrriguees(carteCommunesFiltered);
 
   const surfaceTerritoire = type === "commune" ?
     communesMap.find((obj) => obj.properties.code_geographique === code)?.properties.surfacesIrriguees
@@ -39,7 +45,6 @@ export const SurfacesIrriguees = ({
       .map((obj) => obj.properties.surfacesIrriguees)
       .map((value) => (isNaN(value!) ? 0 : value))
       .reduce((acc, value) => acc! + value!, 0);
-
 
   return (
     <>
@@ -86,13 +91,22 @@ export const SurfacesIrriguees = ({
                     <DataNotFoundForGraph image={DataNotFound} />
                   )
                 }
-                <p style={{ padding: '1em', margin: '0' }}>
-                  Source : AGRESTE, 2020.
-                </p>
+                <div className={styles.sourcesExportWrapper}>
+                  <p>
+                    Source : AGRESTE, 2020.
+                  </p>
+                  <ExportButton
+                    data={exportData}
+                    baseName="surfaces_irriguees"
+                    type={type}
+                    libelle={libelle}
+                    code={code}
+                    sheetName="Surfaces irriguées"
+                  />
+                </div>
               </div>
             </div>
           </>
-
         </div>
       ) : (
         <Loader />
