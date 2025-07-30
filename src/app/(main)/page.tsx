@@ -56,7 +56,7 @@ const Home = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              avantages/défis de l’arrivée d’un stagiaire sur le diagnostic de vulnérabilité
+              avantages et défis de l’arrivée d’un stagiaire sur le diagnostic de vulnérabilité
             </a>
             .
           </>
