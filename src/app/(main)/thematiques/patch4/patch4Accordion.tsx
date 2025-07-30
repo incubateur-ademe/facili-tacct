@@ -96,7 +96,6 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
         <AccordionHeader patch4={patch4} />
       </AccordionSummary>
       <AccordionDetails>
-        <h2>Pour en savoir plus :</h2>
         <div className={styles.intensiteTagsWrapper}>
           <h3 style={{ fontSize: '1rem', margin: 0 }}>
             <b>À chaque niveau d’aggravation, ses recommandations.</b>
