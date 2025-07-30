@@ -3,10 +3,12 @@
 import WarningIcon from "@/assets/icons/exclamation_point_icon_black.png";
 import { PieChartAgriculture } from '@/components/charts/agriculture/pieChartAgriculture';
 import SurfacesAgricolesProgressBar from '@/components/charts/agriculture/surfacesAgricolesProgressBar';
+import { ExportButton } from "@/components/exports/ExportButton";
 import SubTabs from '@/components/SubTabs';
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
 import { multipleEpciBydepartementLibelle } from '@/lib/territoireData/multipleEpciBydepartement';
 import { multipleEpciByPnrLibelle } from '@/lib/territoireData/multipleEpciByPnr';
+import { SurfacesAgricolesExport } from "@/lib/utils/export/exportTypes";
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import styles from './agriculture.module.scss';
@@ -15,10 +17,11 @@ type Props = {
   datavizTab: string;
   setDatavizTab: (value: string) => void;
   surfacesAgricoles: SurfacesAgricolesModel[];
+  exportData: SurfacesAgricolesExport[];
 };
 
 const SurfacesAgricolesDataviz = (props: Props) => {
-  const { datavizTab, setDatavizTab, surfacesAgricoles } = props;
+  const { datavizTab, setDatavizTab, surfacesAgricoles, exportData } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -65,9 +68,17 @@ const SurfacesAgricolesDataviz = (props: Props) => {
           </div>
         </div>
       }
-      <p style={{ padding: '1em', margin: '0' }}>
-        Source : AGRESTE, 2020
-      </p>
+      <div className={styles.sourcesExportWrapper}>
+        <p>Source : AGRESTE, 2020</p>
+        <ExportButton
+          data={exportData}
+          baseName="surfaces_agricoles"
+          type={type}
+          libelle={libelle}
+          code={code}
+          sheetName="Surfaces agricoles"
+        />
+      </div>
     </div>
   );
 };

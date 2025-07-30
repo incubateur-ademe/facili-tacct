@@ -1,5 +1,6 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { aot40Legends } from '@/components/maps/legends/datavizLegends';
@@ -16,12 +17,13 @@ import {
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { AOT40TooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import * as turf from '@turf/turf';
 import L from 'leaflet';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { AOT40Text } from '../../../lib/staticTexts';
+import { AOT40Text } from '../inconfortThermique/staticTexts';
 import styles from './biodiversite.module.scss';
 
 const color = (valeur: number) => {
@@ -154,6 +156,7 @@ const AOT40Dataviz = (props: {
   const fortesChaleurs = patch4
     ? AlgoPatch4(patch4, 'fortes_chaleurs')
     : undefined;
+  const exportData = IndicatorExportTransformations.biodiversite.aot40(aot40);
 
   return (
     <>
@@ -193,8 +196,8 @@ const AOT40Dataviz = (props: {
                   </p>
                 )}
                 <div className={styles.patch4Wrapper}>
-                  {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                  {fortesChaleurs === 'Aggravation très forte' ||
+                    fortesChaleurs === 'Aggravation forte' ? (
                     <div>
                       <TagItem
                         icon={fortesChaleursIcon}
@@ -234,9 +237,19 @@ const AOT40Dataviz = (props: {
                     </>
                   ) : <DataNotFoundForGraph image={DataNotFound} />
                 }
-                <p style={{ padding: '1em', margin: '0' }}>
-                  Source : Géod’Air (2024)
-                </p>
+                <div className={styles.sourcesExportWrapper}>
+                  <p>
+                    Source : Géod’Air (2024)
+                  </p>
+                  <ExportButton
+                    data={exportData}
+                    baseName="aot_40"
+                    type={type}
+                    libelle={libelle}
+                    code={code}
+                    sheetName="AOT 40"
+                  />
+                </div>
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { MultiSheetExportButton } from '@/components/exports/MultiSheetExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import {
@@ -25,9 +26,10 @@ import {
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { etatCoursDeauTooltipTextBiodiv } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { EtatsCoursEauBiodiversiteText } from '../../../lib/staticTexts';
+import { EtatsCoursEauBiodiversiteText } from '../inconfortThermique/staticTexts';
 import styles from './biodiversite.module.scss';
 
 const EtatQualiteCoursDeau = (props: {
@@ -63,12 +65,23 @@ const EtatQualiteCoursDeau = (props: {
     ? AlgoPatch4(patch4, 'fortes_precipitations')
     : undefined;
 
+  const exportData = [
+    {
+      sheetName: 'État des cours d\'eau',
+      data: IndicatorExportTransformations.ressourcesEau.EtatCoursEau(etatCoursDeau)
+    },
+    {
+      sheetName: 'Qualité sites de baignade',
+      data: IndicatorExportTransformations.ressourcesEau.QualiteSitesBaignade(qualiteEauxBaignade)
+    }
+  ];
+
   return (
     <>
       {
         !isLoadingPatch4 ?
           <div className={styles.container}>
-            <div className={(etatCoursDeau.length || qualiteEauxBaignade.length) ? "w-5/12" : "w-1/2"}>
+            <div className={etatCoursDeau.length ? "w-5/12" : "w-1/2"}>
               <div className={styles.explicationWrapper}>
                 <p>
                   La biodiversité en eau douce est particulièrement menacée. La
@@ -76,16 +89,16 @@ const EtatQualiteCoursDeau = (props: {
                   présents sur votre territoire.
                 </p>
                 <div className={styles.patch4Wrapper}>
-                  {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                  {fortesChaleurs === 'Aggravation très forte' ||
+                    fortesChaleurs === 'Aggravation forte' ? (
                     <TagItem
                       icon={fortesChaleursIcon}
                       indice="Fortes chaleurs"
                       tag={fortesChaleurs}
                     />
                   ) : null}
-                  {precipitation === 'Intensité très forte' ||
-                    precipitation === 'Intensité forte' ? (
+                  {precipitation === 'Aggravation très forte' ||
+                    precipitation === 'Aggravation forte' ? (
                     <TagItem
                       icon={precipitationIcon}
                       indice="Fortes précipitations"
@@ -100,7 +113,7 @@ const EtatQualiteCoursDeau = (props: {
               </div>
               <EtatsCoursEauBiodiversiteText />
             </div>
-            <div className={(etatCoursDeau.length || qualiteEauxBaignade.length) ? "w-7/12" : "w-1/2"}>
+            <div className={etatCoursDeau.length ? "w-7/12" : "w-1/2"}>
               <div className={styles.graphWrapper}>
                 <div
                   className={styles.biodiversiteGraphTitleWrapper}
@@ -108,7 +121,7 @@ const EtatQualiteCoursDeau = (props: {
                 >
                   <h2>État écologique des cours d’eau et des plans d’eau</h2>
                 </div>
-                {etatCoursDeau.length || qualiteEauxBaignade.length ? (
+                {(etatCoursDeau.length) ? (
                   <>
                     <MapEtatCoursDeau
                       etatCoursDeau={etatCoursDeauMap}
@@ -129,9 +142,20 @@ const EtatQualiteCoursDeau = (props: {
                   </>
                 ) : <DataNotFoundForGraph image={DataNotFound} />
                 }
-                <p style={{ padding: '1em', margin: '0' }}>
-                  Source : Agences de l'eau
-                </p>
+                <div className={styles.sourcesExportWrapper}>
+                  <p>
+                    Source : Agences de l'eau
+                  </p>
+                  <MultiSheetExportButton
+                    sheetsData={exportData}
+                    baseName="etat_ecologique_cours_deau"
+                    type={type}
+                    libelle={libelle}
+                    code={code}
+                  >
+                    Exporter
+                  </MultiSheetExportButton>
+                </div>
               </div>
             </div>
           </div>

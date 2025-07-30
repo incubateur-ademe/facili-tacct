@@ -27,16 +27,16 @@ export const GetAgricultureBio = async (
       else {
         // if (type === 'pnr') {
         //   return [];
-        // } else 
+        // } else
         if (type === 'commune') {
           const epci = await prisma.collectivites_searchbar.findFirst({
             select: {
               epci: true
             },
             where: {
-              code_geographique: code,
+              code_geographique: code
             }
-          }); 
+          });
           const value = await prisma.agriculture_bio.findMany({
             where: {
               epci: epci?.epci as string
@@ -164,4 +164,3 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
   })();
   return Promise.race([dbQuery, timeoutPromise]);
 };
-

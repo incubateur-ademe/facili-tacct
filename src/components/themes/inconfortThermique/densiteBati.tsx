@@ -1,5 +1,6 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { densiteBatiLegend } from '@/components/maps/legends/datavizLegends';
@@ -12,14 +13,14 @@ import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { densiteBatiTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { eptRegex } from '@/lib/utils/regex';
+import { Average } from '@/lib/utils/reusableFunctions/average';
+import { FilterDataTerritory } from '@/lib/utils/reusableFunctions/filterDataTerritories';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './themes.module.scss';
-
-const average = (array: number[]) =>
-  array.reduce((a: number, b: number) => a + b) / array.length;
 
 export const DensiteBati = ({
   carteCommunes
@@ -32,7 +33,7 @@ export const DensiteBati = ({
   const libelle = searchParams.get('libelle')!;
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
-
+  const exportData = IndicatorExportTransformations.inconfort_thermique.densiteBati(FilterDataTerritory(type, code, libelle, carteCommunes));
   const communesMap = carteCommunes
     .map(CommunesIndicateursMapper)
     .filter((e) => !isNaN(e.properties.densite_bati));
@@ -43,14 +44,14 @@ export const DensiteBati = ({
       : communesMap;
 
   const densiteTerritoire = type === 'ept' && eptRegex.test(libelle) && carteTerritoire.length ?
-    average(carteTerritoire.filter((e => e.properties.ept === libelle)).map((e) => e.properties.densite_bati))
+    Average(carteTerritoire.filter((e => e.properties.ept === libelle)).map((e) => e.properties.densite_bati))
     : type === 'commune'
       ? communesMap.find((obj) => obj.properties['code_geographique'] === code)?.properties.densite_bati
       : carteTerritoire.length
-        ? average(carteTerritoire.map((e) => e.properties.densite_bati))
+        ? Average(carteTerritoire.map((e) => e.properties.densite_bati))
         : undefined;
 
-  const densiteTerritoireSup = carteTerritoire.length ?? average(communesMap.map((e) => e.properties.densite_bati));
+  const densiteTerritoireSup = carteTerritoire.length ?? Average(communesMap.map((e) => e.properties.densite_bati));
 
   useEffect(() => {
     void (async () => {
@@ -124,9 +125,19 @@ export const DensiteBati = ({
                     >
                       <LegendCompColor legends={densiteBatiLegend} />
                     </div>
-                    <p style={{ padding: '1em', margin: '0' }}>
-                      Source : Base de Données Nationale Des Bâtiments – BDNB. Dernière mise à jour : juin 2025.
-                    </p>
+                    <div className={styles.sourcesExportWrapper}>
+                      <p>
+                        Source : Base de Données Nationale Des Bâtiments – BDNB. Dernière mise à jour : juin 2025.
+                      </p>
+                      <ExportButton
+                        data={exportData}
+                        baseName="densite_bati"
+                        type={type}
+                        libelle={libelle}
+                        code={code}
+                        sheetName="Densité du bâti"
+                      />
+                    </div>
                   </>
                   : <DataNotFoundForGraph image={DataNotFound} />
               }

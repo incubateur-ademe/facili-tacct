@@ -2,22 +2,26 @@
 
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { ConsommationEspacesNAFBarChart } from '@/components/charts/amenagement/consommationEspacesNAFBarChart';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { espacesNAFBarChartLegend } from '@/components/maps/legends/datavizLegends';
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
 import { ConsommationNAF } from '@/lib/postgres/models';
+import { ConsommationNAFExport } from '@/lib/utils/export/exportTypes';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import styles from './amenagement.module.scss';
 
 export const ConsommationEspacesNAFDataviz = (props: {
   consommationNAF: ConsommationNAF[];
+  exportData: ConsommationNAFExport[];
 }) => {
-  const { consommationNAF } = props;
+  const { consommationNAF, exportData } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
   const [typeValue, setTypeValue] = useState<string>('Tous types');
   const [sliderValue, setSliderValue] = useState<number[]>([2009, 2023]);
@@ -32,10 +36,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
         filteredConsommationNAF.length > 0 ? (
 
           <div className={styles.graphWrapper}>
-            <div
-              className={styles.amenagementGraphTitleWrapper}
-              style={{ padding: '1rem' }}
-            >
+            <div className={styles.amenagementGraphTitleWrapper}>
               <h2>Destination des surfaces imperméabilisées</h2>
               <SubTabs
                 data={['Répartition']}
@@ -92,7 +93,17 @@ export const ConsommationEspacesNAFDataviz = (props: {
             ) : (
               ''
             )}
-            <p style={{ padding: '1em', margin: '0' }}>Source : CEREMA, avril 2024</p>
+            <div className={styles.sourcesExportWrapper}>
+              <p>Source : CEREMA, avril 2024</p>
+              <ExportButton
+                data={exportData}
+                baseName="consommation_espaces_naf"
+                type={type}
+                libelle={libelle}
+                code={code}
+                sheetName="Espaces NAF"
+              />
+            </div>
           </div>
         ) : (
           <div className={styles.graphWrapper}>

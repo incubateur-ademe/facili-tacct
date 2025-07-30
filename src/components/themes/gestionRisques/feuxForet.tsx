@@ -8,11 +8,12 @@ import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { IncendiesForet, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { feuxForetTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { FeuxForetText } from '../../../lib/staticTexts';
+import { FeuxForetText } from '../inconfortThermique/staticTexts';
 import FeuxForetDataviz from './feuxForetDataviz';
 import styles from './gestionRisques.module.scss';
 
@@ -43,6 +44,7 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
   }, [code]);
 
   const feuxForet = patch4 ? AlgoPatch4(patch4, 'feux_foret') : undefined;
+  const exportData = IndicatorExportTransformations.gestionRisques.FeuxForet(incendiesForet)
 
   return (
     <>
@@ -67,8 +69,8 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
               ) : (
                 ''
               )}
-              {feuxForet === 'Intensité très forte' ||
-                feuxForet === 'Intensité forte' ? (
+              {feuxForet === 'Aggravation très forte' ||
+                feuxForet === 'Aggravation forte' ? (
                 <div className={styles.patch4Wrapper}>
                   <TagItem
                     icon={feuxForetIcon}
@@ -87,6 +89,7 @@ export const FeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
                 datavizTab={datavizTab}
                 setDatavizTab={setDatavizTab}
                 incendiesForet={incendiesForet}
+                exportData={exportData}
               />
             ) : (
               <div className={styles.noData}>
