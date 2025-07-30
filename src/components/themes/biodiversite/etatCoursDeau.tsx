@@ -26,6 +26,7 @@ import {
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { etatCoursDeauTooltipTextBiodiv } from '@/lib/tooltipTexts';
+import { sitesDeBaignadeDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -152,6 +153,7 @@ const EtatQualiteCoursDeau = (props: {
                     type={type}
                     libelle={libelle}
                     code={code}
+                    documentationSheet={sitesDeBaignadeDoc}
                   >
                     Exporter
                   </MultiSheetExportButton>
