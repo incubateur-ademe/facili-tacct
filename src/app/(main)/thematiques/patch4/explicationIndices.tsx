@@ -16,7 +16,7 @@ export const ExplicationIndices = ({ patch4 }: { patch4: Patch4 }) => {
       <p>
         Météo France propose un nouveau jeu de données basé sur la trajectoire
         de réchauffement de référence pour l'adaptation au changement climatique
-        (TRACC). Ces indices représentent chacun l’aggravation de l’évolution
+        (TRACC). Ces indices représentent chacun <b>l’aggravation de l’évolution </b>
         d’un phénomène climatique précis, en 2100 par rapport à 2050.
       </p>
       <div className={styles.indiceExplication}>
