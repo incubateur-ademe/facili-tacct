@@ -1,6 +1,6 @@
 "use client";
 import ExporterIcon from '@/assets/icons/export_icon_white.svg';
-import { exportToXLSX } from '@/lib/utils/export/exportXlsx';
+import { exportMultipleSheetToXLSX, exportToXLSX } from '@/lib/utils/export/exportXlsx';
 import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
 import { useState } from 'react';
@@ -16,6 +16,7 @@ interface ExportButtonProps {
   code: string;
   sheetName: string;
   children?: React.ReactNode;
+  documentation?: { [key: string]: string; }[];
 }
 
 export const ExportButton = ({
@@ -25,6 +26,7 @@ export const ExportButton = ({
   libelle,
   code,
   sheetName,
+  documentation,
   children = "Exporter",
 }: ExportButtonProps) => {
   const posthog = usePostHog();
@@ -46,7 +48,19 @@ export const ExportButton = ({
     }
     setIsExporting(true);
     try {
-      exportToXLSX(data, baseName, type, libelle, sheetName);
+      if (documentation) {
+        exportMultipleSheetToXLSX(
+          {
+            [sheetName]: data,
+            documentation: Array.isArray(documentation) ? documentation : [{ Documentation: documentation }],
+          },
+          baseName,
+          type,
+          libelle
+        );
+      } else {
+        exportToXLSX(data, baseName, type, libelle, sheetName);
+      }
     } catch (error) {
       console.error('Export failed:', error);
     } finally {

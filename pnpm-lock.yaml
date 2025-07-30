@@ -221,7 +221,7 @@ importers:
         specifier: ^19
         version: 19.1.6
       '@types/react-dom':
-        specifier: ^19.1.7
+        specifier: ^19
         version: 19.1.7(@types/react@19.1.6)
       '@typescript-eslint/parser':
         specifier: 8.0.0
