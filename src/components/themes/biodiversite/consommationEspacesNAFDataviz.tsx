@@ -8,6 +8,7 @@ import { espacesNAFDatavizLegend } from '@/components/maps/legends/datavizLegend
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapEspacesNaf } from '@/components/maps/mapEspacesNAF';
 import { CommunesIndicateursDto } from '@/lib/dto';
+import { consommationEspacesNafDoc } from '@/lib/utils/export/documentations';
 import { ConsommationNAFExport } from '@/lib/utils/export/exportTypes';
 import { useSearchParams } from 'next/navigation';
 import styles from './biodiversite.module.scss';
@@ -59,6 +60,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
           libelle={libelle}
           code={code}
           sheetName="Espaces NAF"
+          documentation={consommationEspacesNafDoc}
         />
       </div>
     </div>
