@@ -20,6 +20,7 @@ interface MultiSheetExportButtonProps {
   libelle: string;
   code: string;
   children?: React.ReactNode;
+  documentationSheet?: ExportDataRow[];
 }
 
 export const MultiSheetExportButton = ({
@@ -29,6 +30,7 @@ export const MultiSheetExportButton = ({
   libelle,
   code,
   children = 'Exporter',
+  documentationSheet
 }: MultiSheetExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
@@ -91,6 +93,10 @@ export const MultiSheetExportButton = ({
           dataForExport[sheet.sheetName] = sheet.data;
         }
       });
+
+      if (documentationSheet && documentationSheet.length > 0) {
+        dataForExport['documentation'] = documentationSheet;
+      }
 
       exportMultipleSheetToXLSX(dataForExport, baseName, type, libelle);
     } catch (error) {

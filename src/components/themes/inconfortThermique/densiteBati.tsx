@@ -5,7 +5,7 @@ import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { densiteBatiLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import { Map } from '@/components/maps/map';
+import { MapInconfortThermique } from '@/components/maps/mapInconfortThermique';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
@@ -118,7 +118,7 @@ export const DensiteBati = ({
               {
                 densiteTerritoire ?
                   <>
-                    <Map data={'densite_bati'} carteCommunes={carteTerritoire} />
+                    <MapInconfortThermique data={'densite_bati'} carteCommunes={carteTerritoire} />
                     <div
                       className={styles.legend}
                       style={{ width: 'auto', justifyContent: 'center' }}

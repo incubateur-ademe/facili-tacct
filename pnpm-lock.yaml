@@ -220,6 +220,9 @@ importers:
       '@types/react':
         specifier: ^19
         version: 19.1.6
+      '@types/react-dom':
+        specifier: ^19
+        version: 19.1.7(@types/react@19.1.6)
       '@typescript-eslint/parser':
         specifier: 8.0.0
         version: 8.0.0(eslint@8.57.1)(typescript@5.8.3)
@@ -2486,6 +2489,11 @@ packages:
 
   '@types/raf@3.4.3':
     resolution: {integrity: sha512-c4YAvMedbPZ5tEyxzQdMoOhhJ4RD3rngZIdwC2/qDN3d7JpEhB6fiBRKVY1lg5B7Wk+uPBjn5f39j1/2MY1oOw==}
+
+  '@types/react-dom@19.1.7':
+    resolution: {integrity: sha512-i5ZzwYpqjmrKenzkoLM2Ibzt6mAsM7pxB6BCIouEVVmgiqaMj1TjaK7hnA36hbW5aZv20kx7Lw6hWzPWg0Rurw==}
+    peerDependencies:
+      '@types/react': ^19
 
   '@types/react-transition-group@4.4.12':
     resolution: {integrity: sha512-8TV6R3h2j7a91c+1DXdJi3Syo69zzIZbz7Lg5tORM5LEJG7X/E6a1V3drRyBRZq7/utz7A+c4OgYLiLcYGHG6w==}
@@ -10031,6 +10039,10 @@ snapshots:
 
   '@types/raf@3.4.3':
     optional: true
+
+  '@types/react-dom@19.1.7(@types/react@19.1.6)':
+    dependencies:
+      '@types/react': 19.1.6
 
   '@types/react-transition-group@4.4.12(@types/react@19.1.6)':
     dependencies:

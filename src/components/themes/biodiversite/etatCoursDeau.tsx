@@ -12,7 +12,7 @@ import {
   LegendCompColor,
   LegendCompIcons
 } from '@/components/maps/legends/legendComp';
-import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
+import { MapEtatCoursDeauLegacy } from '@/components/maps/mapEtatCoursDeauLegacy';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
@@ -26,6 +26,7 @@ import {
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { etatCoursDeauTooltipTextBiodiv } from '@/lib/tooltipTexts';
+import { sitesDeBaignadeDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -123,7 +124,7 @@ const EtatQualiteCoursDeau = (props: {
                 </div>
                 {(etatCoursDeau.length) ? (
                   <>
-                    <MapEtatCoursDeau
+                    <MapEtatCoursDeauLegacy
                       etatCoursDeau={etatCoursDeauMap}
                       carteCommunes={carteCommunesMap}
                       qualiteEauxBaignade={qualiteEauxBaignade}
@@ -152,6 +153,7 @@ const EtatQualiteCoursDeau = (props: {
                     type={type}
                     libelle={libelle}
                     code={code}
+                    documentationSheet={sitesDeBaignadeDoc}
                   >
                     Exporter
                   </MultiSheetExportButton>
