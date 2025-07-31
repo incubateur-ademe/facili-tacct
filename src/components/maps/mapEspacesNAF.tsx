@@ -1,19 +1,9 @@
-'use client';
 
 import { CommunesIndicateursDto } from '@/lib/dto';
-import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
-import { type Any } from '@/lib/utils/types';
-import { Feature, GeoJsonObject } from 'geojson';
-import {
-  FeatureGroup,
-  LatLngBoundsExpression,
-  Layer,
-  LeafletMouseEventHandlerFn,
-  type StyleFunction
-} from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import { useSearchParams } from 'next/navigation';
-import { useRef } from 'react';
+import { mapStyles } from 'carte-facile';
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
+import { useEffect, useMemo, useRef } from 'react';
 import { EspacesNafTooltip } from './components/tooltips';
 
 const getColor = (d: number) => {
@@ -35,85 +25,254 @@ export const MapEspacesNaf = (props: {
   enveloppe: number[][] | undefined;
 }) => {
   const { carteCommunesFiltered, enveloppe } = props;
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
-  const mapRef = useRef(null);
+  const mapContainer = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
+  const popupRef = useRef<maplibregl.Popup | null>(null);
+  const hoveredFeatureRef = useRef<string | null>(null);
 
-  const style: StyleFunction<Any> = (feature) => {
-    const typedFeature = feature as CommunesIndicateursDto;
+  const colorExpression = useMemo(() => {
+    const expression: Array<any> = ['case'];
+    carteCommunesFiltered.forEach((commune) => {
+      const color = getColor(commune.properties.naf ?? 0);
+      expression.push(
+        ['==', ['get', 'code_geographique'], commune.properties.code_geographique],
+        color
+      );
+    });
+    expression.push('transparent');
+    return expression;
+  }, [carteCommunesFiltered]);
+
+  const geoJsonData = useMemo(() => {
     return {
-      fillColor: getColor(typedFeature?.properties.naf ?? 0),
-      weight: typedFeature.properties.code_geographique === code ? 3 : 1,
-      opacity: 1,
-      color: '#161616',
-      fillOpacity: 1
+      type: "FeatureCollection" as "FeatureCollection",
+      features: carteCommunesFiltered.map(commune => ({
+        type: "Feature" as "Feature",
+        geometry: commune.geometry as import('geojson').Geometry,
+        properties: commune.properties,
+        id: commune.properties.code_geographique
+      }))
     };
-  };
+  }, [carteCommunesFiltered]);
 
-  const mouseOnHandler: LeafletMouseEventHandlerFn = (e) => {
-    const layer = e.target as FeatureGroup<
-      CommunesIndicateursDto['properties']
-    >;
-    const commune_name =
-      layer.feature && 'properties' in layer.feature
-        ? layer.feature.properties.libelle_geographique
-        : undefined;
-    const naf =
-      layer.feature && 'properties' in layer.feature
-        ? layer.feature.properties.naf
-        : undefined;
-    layer.setStyle({
-      weight: 3,
-      color: '#0D2100',
-      fillOpacity: 0.9
+  useEffect(() => {
+    if (!mapContainer.current) return;
+    const map = new maplibregl.Map({
+      container: mapContainer.current,
+      style: mapStyles.desaturated,
+      attributionControl: false,
     });
-    layer.bindTooltip(EspacesNafTooltip(commune_name as string, naf as number), {
-      direction: e.originalEvent.offsetY > 250 ? 'top' : 'bottom',
-      opacity: 0.97
-    });
-    layer.openTooltip();
-    layer.bringToFront();
-  };
+    mapRef.current = map;
 
-  //make style after hover disappear
-  const mouseOutHandler: LeafletMouseEventHandlerFn = (e) => {
-    const layer = e.target as FeatureGroup<
-      CommunesIndicateursDto['properties']
-    >;
-    const codeCommune = e.sourceTarget.feature.properties.code_geographique;
-    layer.setStyle({
-      weight: codeCommune === code ? 3 : 1,
-      color: '#000000',
-      fillOpacity: 1
-    });
-    layer.closeTooltip();
-  };
+    map.on('load', () => {
+      // Fit bounds
+      if (
+        enveloppe &&
+        Array.isArray(enveloppe) &&
+        enveloppe.length > 1 &&
+        Array.isArray(enveloppe[0]) &&
+        enveloppe[0].length === 2
+      ) {
+        const lons = enveloppe.map((coord: any) => coord[1]);
+        const lats = enveloppe.map((coord: any) => coord[0]);
+        const minLng = Math.min(...lons);
+        const maxLng = Math.max(...lons);
+        const minLat = Math.min(...lats);
+        const maxLat = Math.max(...lats);
+        map.fitBounds(
+          [[minLng, minLat], [maxLng, maxLat]],
+          { padding: 20 },
+        );
+      }
 
-  const onEachFeature = (feature: Feature<Any>, layer: Layer) => {
-    layer.on({
-      mouseover: mouseOnHandler,
-      mouseout: mouseOutHandler
+      // Add source
+      map.addSource('naf-communes', {
+        type: 'geojson',
+        data: geoJsonData,
+        generateId: false
+      });
+
+      // Fill layer
+      map.addLayer({
+        id: 'naf-fill',
+        type: 'fill',
+        source: 'naf-communes',
+        paint: {
+          'fill-color': colorExpression as any,
+          'fill-opacity': 1
+        }
+      });
+
+      // Stroke layer
+      map.addLayer({
+        id: 'naf-stroke',
+        type: 'line',
+        source: 'naf-communes',
+        paint: {
+          'line-color': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
+            '#0D2100',
+            '#161616'
+          ],
+          'line-width': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
+            3,
+            1
+          ]
+        }
+      });
+
+      // Hover and tooltip
+      map.on('mouseenter', 'naf-fill', (e: any) => {
+        if (e.features && e.features.length > 0) {
+          const feature = e.features[0];
+          const properties = feature.properties;
+          if (hoveredFeatureRef.current) {
+            map.setFeatureState(
+              { source: 'naf-communes', id: hoveredFeatureRef.current },
+              { hover: false }
+            );
+          }
+          const newHoveredFeature = properties?.code_geographique;
+          hoveredFeatureRef.current = newHoveredFeature;
+          if (newHoveredFeature) {
+            map.setFeatureState(
+              { source: 'naf-communes', id: newHoveredFeature },
+              { hover: true }
+            );
+          }
+          // Tooltip content
+          const communeName = properties?.libelle_geographique;
+          const naf = properties?.naf;
+          const tooltipContent = EspacesNafTooltip(communeName, naf);
+          // Remove existing popup
+          if (popupRef.current) {
+            popupRef.current.remove();
+          }
+          // Dynamic positioning
+          const containerHeight = mapContainer.current?.clientHeight || 500;
+          const mouseY = e.point.y;
+          const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';
+          popupRef.current = new maplibregl.Popup({
+            closeButton: false,
+            closeOnClick: false,
+            className: 'naf-tooltip',
+            anchor: placement
+          })
+            .setLngLat(e.lngLat)
+            .setHTML(tooltipContent)
+            .addTo(map);
+        }
+      });
+
+      map.on('mouseleave', 'naf-fill', () => {
+        if (hoveredFeatureRef.current) {
+          map.setFeatureState(
+            { source: 'naf-communes', id: hoveredFeatureRef.current },
+            { hover: false }
+          );
+        }
+        hoveredFeatureRef.current = null;
+        if (popupRef.current) {
+          popupRef.current.remove();
+          popupRef.current = null;
+        }
+      });
+
+      map.on('mousemove', 'naf-fill', (e: any) => {
+        if (e.features && e.features.length > 0) {
+          const feature = e.features[0];
+          const properties = feature.properties;
+          const newHoveredFeature = properties?.code_geographique;
+          const containerHeight = mapContainer.current?.clientHeight || 500;
+          const mouseY = e.point.y;
+          const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';
+          if (hoveredFeatureRef.current !== newHoveredFeature) {
+            if (hoveredFeatureRef.current) {
+              map.setFeatureState(
+                { source: 'naf-communes', id: hoveredFeatureRef.current },
+                { hover: false }
+              );
+            }
+            hoveredFeatureRef.current = newHoveredFeature;
+            if (newHoveredFeature) {
+              map.setFeatureState(
+                { source: 'naf-communes', id: newHoveredFeature },
+                { hover: true }
+              );
+            }
+            // Tooltip content
+            const communeName = properties?.libelle_geographique;
+            const naf = properties?.naf;
+            const tooltipContent = EspacesNafTooltip(communeName, naf);
+            if (popupRef.current) popupRef.current.remove();
+            popupRef.current = new maplibregl.Popup({
+              closeButton: false,
+              closeOnClick: false,
+              className: 'naf-tooltip',
+              anchor: placement
+            })
+              .setLngLat(e.lngLat)
+              .setHTML(tooltipContent)
+              .addTo(map);
+          } else if (popupRef.current) {
+            popupRef.current.setLngLat(e.lngLat);
+            const currentAnchor = popupRef.current.getElement()?.getAttribute('class')?.includes('anchor-top') ? 'top' : 'bottom';
+            if (currentAnchor !== placement) {
+              const communeName = properties?.libelle_geographique;
+              const naf = properties?.naf;
+              const tooltipContent = EspacesNafTooltip(communeName, naf);
+              popupRef.current.remove();
+              popupRef.current = new maplibregl.Popup({
+                closeButton: false,
+                closeOnClick: false,
+                className: 'naf-tooltip',
+                anchor: placement
+              })
+                .setLngLat(e.lngLat)
+                .setHTML(tooltipContent)
+                .addTo(map);
+            }
+          }
+        }
+      });
+
+      // Change cursor on hover
+      map.on('mouseenter', 'naf-fill', () => {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+      map.on('mouseleave', 'naf-fill', () => {
+        map.getCanvas().style.cursor = '';
+      });
+
+      map.addControl(new maplibregl.NavigationControl(), 'top-right');
     });
-  };
+
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+    };
+  }, [geoJsonData, colorExpression, enveloppe]);
+
+  useEffect(() => {
+    let map = mapRef.current;
+    if (!map || !mapContainer.current || !map.style) return;
+    setTimeout(() => {
+      map.setPaintProperty(
+        'naf-fill',
+        'fill-color',
+        colorExpression
+      );
+    }, 150);
+  }, [colorExpression]);
 
   return (
-    <MapContainer
-      ref={mapRef}
-      style={{ height: '500px', width: '100%' }}
-      attributionControl={false}
-      zoomControl={false}
-      bounds={enveloppe as LatLngBoundsExpression}
-    >
-      <TileLayer
-        // attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openma            attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <GeoJSON
-        ref={mapRef}
-        data={carteCommunesFiltered as unknown as GeoJsonObject}
-        style={style}
-        onEachFeature={onEachFeature}
-      />
-    </MapContainer>
+    <div style={{ position: 'relative' }}>
+      <div ref={mapContainer} style={{ height: '500px', width: '100%' }} />
+    </div>
   );
 };
