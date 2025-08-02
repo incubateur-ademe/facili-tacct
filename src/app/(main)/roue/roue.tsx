@@ -12,13 +12,18 @@ type circle = {
   [key: string]: boolean;
 };
 
+interface RoueSystemiqueProps {
+  onItemSelect?: (item: string | null) => void;
+  selectedItem?: string | null;
+}
+
 const dimensions = {
-  width: 1200,
-  height: 800,
-  margin: { top: 100, right: 16, bottom: 16, left: 16 },
+  width: 800,
+  height: 600,
+  margin: { top: 48, right: 16, bottom: 16, left: 16 },
 };
 
-const RoueSystemique = () => {
+const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => {
   const svgRef = useRef(null);
 
   const { width, height, margin } = dimensions;
@@ -139,8 +144,23 @@ const RoueSystemique = () => {
     // Add more links as needed
   ];
 
-  // New: State for selected layer 2 node
-  const [selectedL2, setSelectedL2] = useState<string | null>(null);
+  // New: State for selected layer 2 node - utilise la prop ou l'état local
+  const [selectedL2, setSelectedL2] = useState<string | null>(selectedItem || null);
+
+  // Synchroniser avec la prop selectedItem
+  useEffect(() => {
+    if (selectedItem !== undefined) {
+      setSelectedL2(selectedItem);
+    }
+  }, [selectedItem]);
+
+  // Handler pour la sélection d'item
+  const handleItemSelect = (item: string | null) => {
+    setSelectedL2(item);
+    if (onItemSelect) {
+      onItemSelect(item);
+    }
+  };
 
   // State pour stocker les positions des textes de catégories
   const [categoryPositions, setCategoryPositions] = useState<{
@@ -496,7 +516,7 @@ const RoueSystemique = () => {
       })
       .style("cursor", "pointer")
       .on("click", (event: any, d: any) => {
-        setSelectedL2(selectedL2 === d.label ? null : d.label);
+        handleItemSelect(selectedL2 === d.label ? null : d.label);
       })
       .each(function (d: any) {
         // Break label into lines if > 12 chars per line
@@ -591,6 +611,42 @@ const RoueSystemique = () => {
         height={svgHeight}
         style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
       />
+
+      {/* Texte central qui disparaît lors de la sélection */}
+      <div
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
+          textAlign: 'center',
+          maxWidth: '300px',
+          opacity: selectedL2 ? 0 : 1,
+          transition: selectedL2 ? 'none' : 'opacity 0.5s ease-in-out',
+          zIndex: 3,
+          pointerEvents: 'none'
+        }}
+      >
+        <p style={{
+          fontSize: '18px',
+          fontWeight: 'bold',
+          fontFamily: 'Marianne',
+          lineHeight: '1.4',
+          color: '#2D3748',
+          margin: '0 0 16px 0'
+        }}>
+          Votre territoire est un système où tout est lié.
+        </p>
+        <p style={{
+          fontSize: '16px',
+          fontFamily: 'Marianne',
+          lineHeight: '1.5',
+          color: '#4A5568',
+          margin: 0
+        }}>
+          Explorez les thématiques et découvrez comment elles peuvent être impactées par les aléas climatiques
+        </p>
+      </div>
 
       {/* Textes des catégories avec CircleType - contrôle individuel */}
 
