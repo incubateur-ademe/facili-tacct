@@ -1,289 +1,296 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { liensEntreThematiques } from './constantes/categories';
 import RoueSystemique from './roue';
 
 const RouePage = () => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
-
-  // Données des liens entre items (copiées depuis roue.tsx)
-  const itemLinks = [
-    { source: "Continuité des services", target: "Eau" },
-    { source: "Gestion des risques", target: "Santé" },
-    { source: "Confort thermique", target: "Santé" },
-    { source: "Bâtiment & Logement", target: "Santé" },
-    { source: "Continuité des services", target: "Santé" },
-    { source: "Filière bois", target: "Santé" },
-    { source: "Agriculture & pêche", target: "Santé" },
-    { source: "Tourisme", target: "Santé" },
-    { source: "Entreprises", target: "Santé" },
-    { source: "Air", target: "Santé" },
-    { source: "Biodiversité", target: "Santé" },
-    { source: "Eau", target: "Santé" },
-    { source: "Forêts", target: "Santé" },
-    { source: "Aménagement", target: "Santé" },
-  ];
+  const [activeMenu, setActiveMenu] = useState<number>(1); // 1, 2, ou 3
+  const [scrollProgress, setScrollProgress] = useState<number>(0); // 0 à 1
+  const menuContainerRef = useRef<HTMLDivElement>(null);
+  const isScrollingMenus = useRef<boolean>(true);
+  const [isMouseOverMenu, setIsMouseOverMenu] = useState<boolean>(false);
 
   // Fonction pour récupérer les items liés à celui sélectionné
   const getLinkedItems = (selectedItemName: string | null): string[] => {
     if (!selectedItemName) return [];
-
     const linkedItems: string[] = [];
-
-    itemLinks.forEach(link => {
+    liensEntreThematiques.forEach(link => {
       if (link.source === selectedItemName) {
         linkedItems.push(link.target);
       } else if (link.target === selectedItemName) {
         linkedItems.push(link.source);
       }
     });
-
-    return [...new Set(linkedItems)]; // Supprimer les doublons
+    return [...new Set(linkedItems)];
   };
 
-  // Données d'exemple pour chaque item (à remplacer par vos vraies données)
-  const itemInfo: { [key: string]: { title: string; description: string; details: string[] } } = {
-    "Continuité des services": {
-      title: "Continuité des services",
-      description: "Services essentiels maintenus malgré les changements climatiques",
-      details: [
-        "Adaptation des infrastructures publiques",
-        "Plans de continuité d'activité",
-        "Résilience des réseaux de transport",
-        "Maintien des services de santé"
-      ]
-    },
-    "Bâtiment & Logement": {
-      title: "Bâtiment & Logement",
-      description: "Adaptation du parc immobilier aux enjeux climatiques",
-      details: [
-        "Isolation thermique renforcée",
-        "Systèmes de refroidissement passif",
-        "Matériaux durables et locaux",
-        "Rénovation énergétique"
-      ]
-    },
-    "Aménagement": {
-      title: "Aménagement",
-      description: "Planification territoriale adaptée au climat",
-      details: [
-        "Espaces verts urbains",
-        "Gestion des eaux pluviales",
-        "Îlots de fraîcheur",
-        "Urbanisme durable"
-      ]
-    },
-    "Confort thermique": {
-      title: "Confort thermique",
-      description: "Maintien du confort dans les bâtiments",
-      details: [
-        "Solutions de rafraîchissement passif",
-        "Isolation performante",
-        "Ventilation naturelle",
-        "Protection solaire"
-      ]
-    },
-    "Gestion des risques": {
-      title: "Gestion des risques",
-      description: "Prévention et gestion des risques climatiques",
-      details: [
-        "Plans de prévention des risques",
-        "Systèmes d'alerte précoce",
-        "Infrastructure résiliente",
-        "Gestion de crise"
-      ]
-    },
-    "Santé": {
-      title: "Santé",
-      description: "Protection de la santé publique face aux risques climatiques",
-      details: [
-        "Surveillance des maladies vectorielles",
-        "Plans canicule et grand froid",
-        "Qualité de l'air et allergie",
-        "Adaptation des établissements de santé"
-      ]
-    },
-    "Forêts": {
-      title: "Forêts",
-      description: "Gestion durable des écosystèmes forestiers",
-      details: [
-        "Adaptation des essences",
-        "Gestion des risques d'incendie",
-        "Séquestration carbone",
-        "Biodiversité forestière"
-      ]
-    },
-    "Eau": {
-      title: "Eau",
-      description: "Gestion durable de la ressource en eau",
-      details: [
-        "Économies d'eau",
-        "Stockage et réutilisation",
-        "Protection des nappes",
-        "Gestion des sécheresses"
-      ]
-    },
-    "Biodiversité": {
-      title: "Biodiversité",
-      description: "Préservation de la diversité biologique",
-      details: [
-        "Corridors écologiques",
-        "Espèces protégées",
-        "Habitats naturels",
-        "Adaptation écosystémique"
-      ]
-    },
-    "Air": {
-      title: "Air",
-      description: "Amélioration de la qualité de l'air",
-      details: [
-        "Réduction des polluants",
-        "Mobilité durable",
-        "Végétalisation urbaine",
-        "Surveillance de la qualité"
-      ]
-    },
-    "Entreprises": {
-      title: "Entreprises",
-      description: "Adaptation du tissu économique local",
-      details: [
-        "Plans de continuité d'activité",
-        "Innovation climatique",
-        "Emplois verts",
-        "Résilience économique"
-      ]
-    },
-    "Tourisme": {
-      title: "Tourisme",
-      description: "Adaptation du secteur touristique",
-      details: [
-        "Tourisme durable",
-        "Saisonnalité adaptée",
-        "Infrastructures résilientes",
-        "Offre climatique"
-      ]
-    },
-    "Agriculture & pêche": {
-      title: "Agriculture & pêche",
-      description: "Adaptation des pratiques agricoles et halieutiques",
-      details: [
-        "Variétés résistantes",
-        "Gestion de l'eau agricole",
-        "Sols et fertilité",
-        "Pêche durable"
-      ]
-    },
-    "Filière bois": {
-      title: "Filière bois",
-      description: "Développement de la filière bois locale",
-      details: [
-        "Bois construction",
-        "Circuit court",
-        "Transformation locale",
-        "Matériau biosourcé"
-      ]
+  // Gestion du scroll pour les menus déroulants
+  useEffect(() => {
+    const handleScroll = (e: WheelEvent) => {
+      const menuContainer = menuContainerRef.current;
+      if (!menuContainer) return;
+
+      // Vérifier si la souris est sur le menu
+      if (!isMouseOverMenu) {
+        // Si la souris n'est pas sur le menu, permettre le scroll normal
+        isScrollingMenus.current = false;
+        document.body.style.overflow = 'auto';
+        return;
+      }
+
+      // Vérifier si on est dans la zone des menus
+      const rect = menuContainer.getBoundingClientRect();
+      const isInMenuArea = rect.top <= window.innerHeight * 0.3 && rect.bottom >= window.innerHeight * 0.7;
+
+      if (!isInMenuArea) {
+        // Si on n'est pas dans la zone des menus, permettre le scroll normal
+        isScrollingMenus.current = false;
+        document.body.style.overflow = 'auto';
+        return;
+      }
+
+      // On est dans la zone des menus ET la souris est dessus
+      isScrollingMenus.current = true;
+      document.body.style.overflow = 'hidden';
+
+      const delta = e.deltaY > 0 ? 1 : -1; // 1 pour scroll down, -1 pour scroll up
+      const step = 0.15; // Vitesse de progression
+
+      // Calculer la nouvelle progression
+      setScrollProgress(currentProgress => {
+        let newProgress = currentProgress + (delta * step);
+        newProgress = Math.max(0, Math.min(1.2, newProgress));
+
+        // Vérifier les conditions de sortie
+        const isAtStart = currentProgress <= 0;
+        const isAtEnd = currentProgress >= 1.2;
+        const scrollingUp = delta < 0;
+        const scrollingDown = delta > 0;
+
+        // Si on est au début et qu'on scroll vers le haut, permettre de sortir
+        if (isAtStart && scrollingUp) {
+          document.body.style.overflow = 'auto';
+          isScrollingMenus.current = false;
+          // Ne pas empêcher l'événement pour permettre le scroll de la page
+          return currentProgress;
+        }
+
+        // Si on est à la fin et qu'on scroll vers le bas, permettre de sortir
+        if (isAtEnd && scrollingDown) {
+          document.body.style.overflow = 'auto';
+          isScrollingMenus.current = false;
+          // Ne pas empêcher l'événement pour permettre le scroll de la page
+          return currentProgress;
+        }
+
+        // Sinon, on continue avec le scroll dynamique
+        e.preventDefault();
+
+        console.log('Scroll progress:', newProgress, 'Delta:', delta); // Debug
+
+        // Déterminer le menu actif basé sur la progression
+        if (newProgress <= 0.4) {
+          setActiveMenu(1);
+        } else if (newProgress <= 0.8) {
+          setActiveMenu(2);
+        } else {
+          setActiveMenu(3);
+        }
+
+        return newProgress;
+      });
+    };
+
+    // Fonction pour réinitialiser quand la souris quitte le menu
+    const handleMouseLeave = () => {
+      setScrollProgress(0);
+      setActiveMenu(1);
+      isScrollingMenus.current = false;
+      document.body.style.overflow = 'auto';
+    };
+
+    // Attacher les événements
+    window.addEventListener('wheel', handleScroll, { passive: false });
+
+    return () => {
+      window.removeEventListener('wheel', handleScroll);
+      // Nettoyer : réactiver le scroll au démontage du composant
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMouseOverMenu]); // Ajouter isMouseOverMenu comme dépendance
+
+  // Fonction pour calculer l'opacité et la hauteur de chaque menu
+  const getMenuStyle = (menuNumber: number) => {
+    if (menuNumber === activeMenu) {
+      return {
+        opacity: 1,
+        maxHeight: '500px',
+        transition: 'max-height 0.6s ease-in-out', // Transition plus douce, seulement sur la hauteur
+        marginBottom: '2rem'
+      };
+    } else {
+      return {
+        opacity: 1, // Même opacité pour tous
+        maxHeight: '80px',
+        transition: 'max-height 0.6s ease-in-out', // Transition plus douce, seulement sur la hauteur
+        marginBottom: '1rem'
+      };
+    }
+  };
+
+  const getItemsStyle = (menuNumber: number) => {
+    if (menuNumber === activeMenu) {
+      return {
+        opacity: 1,
+        maxHeight: '400px',
+        transition: 'opacity 0.4s ease-in-out, max-height 0.6s ease-in-out', // Transitions plus douces
+        overflow: 'hidden',
+        paddingTop: '1rem'
+      };
+    } else {
+      return {
+        opacity: 0,
+        maxHeight: '0px',
+        transition: 'opacity 0.4s ease-in-out, max-height 0.6s ease-in-out', // Transitions plus douces
+        overflow: 'hidden',
+        paddingTop: '0rem'
+      };
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 transition-all duration-500 ease-in-out">
-      <div className="flex h-screen">
-        {/* Composant RoueSystemique */}
-        <div
-          className={`transition-all duration-500 ease-in-out ${selectedItem ? 'w-2/3' : 'w-full'
-            }`}
-        >
-          <div className="h-full flex items-center justify-center p-4">
-            <RoueSystemique
-              onItemSelect={setSelectedItem}
-              selectedItem={selectedItem}
-            />
+    <>
+      {/* Style global pour cacher la scrollbar */}
+      <style jsx global>{`
+        html, body {
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* Internet Explorer 10+ */
+        }
+        html::-webkit-scrollbar, body::-webkit-scrollbar {
+          display: none; /* WebKit */
+        }
+      `}</style>
+
+      <div className="bg-gray-50">
+        {/* Section principale avec la roue - prend tout l'écran */}
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="w-full">
+            <div className="h-screen flex items-center justify-center p-4">
+              <RoueSystemique
+                onItemSelect={setSelectedItem}
+                selectedItem={selectedItem}
+              />
+            </div>
           </div>
         </div>
 
-        {/* Panneau d'informations (côté droit) */}
+        {/* Section de contenu pour créer de l'espace */}
+        <div className="min-h-screen bg-white flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-gray-800 mb-4">
+              Continuez à scroller
+            </h1>
+            <p className="text-xl text-gray-600">
+              Pour découvrir les menus interactifs
+            </p>
+          </div>
+        </div>
+
+        {/* Section menu déroulant - tout en bas */}
         <div
-          className={`transition-all duration-500 ease-in-out bg-white shadow-xl ${selectedItem ? 'w-1/3 opacity-100' : 'w-0 opacity-0'
-            } overflow-hidden`}
+          ref={menuContainerRef}
+          className='menu-deroulant'
+          onMouseEnter={() => setIsMouseOverMenu(true)}
+          onMouseLeave={() => {
+            setIsMouseOverMenu(false);
+            // Ne pas réinitialiser le scroll progress quand on sort du div
+            // Seulement réactiver le scroll de la page
+            isScrollingMenus.current = false;
+            document.body.style.overflow = 'auto';
+          }}
+          style={{
+            minHeight: '100vh',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '2rem',
+            position: 'relative',
+            backgroundColor: '#f8f9fa',
+            padding: '4rem 2rem'
+          }}
         >
-          {selectedItem && itemInfo[selectedItem] && (
-            <div className="h-full p-6 overflow-y-auto">
-              {/* Bouton de fermeture */}
-              <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  Informations détaillées
-                </h2>
-                <button
-                  onClick={() => setSelectedItem(null)}
-                  className="text-gray-500 hover:text-gray-700 text-xl font-bold"
-                >
-                  ✕
-                </button>
-              </div>
+          {/* Indicateur de debug */}
+          <div style={{
+            position: 'absolute',
+            top: '1rem',
+            left: '1rem',
+            background: 'rgba(0,0,0,0.7)',
+            color: 'white',
+            padding: '0.5rem',
+            borderRadius: '4px',
+            fontSize: '0.8rem',
+            fontFamily: 'monospace'
+          }}>
+            Progress: {scrollProgress.toFixed(2)} | Active: {activeMenu} | Scrolling: {isScrollingMenus.current ? 'ON' : 'OFF'} | Mouse: {isMouseOverMenu ? 'IN' : 'OUT'}
+          </div>
 
-              {/* Contenu de l'item sélectionné */}
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-xl font-semibold text-blue-600 mb-3">
-                    {itemInfo[selectedItem].title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {itemInfo[selectedItem].description}
-                  </p>
-                </div>
+          <div className='menu-1' style={getMenuStyle(1)}>
+            <h2 style={{
+              margin: '0 0 1rem 0',
+              fontSize: '2rem',
+              fontWeight: 'bold',
+              color: '#2D3748', // Couleur fixe pour tous les titres
+              textAlign: 'center'
+            }}>
+              Bonsoir
+            </h2>
+            <ul style={getItemsStyle(1)}>
+              <li style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>Item 1</li>
+              <li style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>Item 2</li>
+              <li style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>Item 3</li>
+            </ul>
+          </div>
 
-                {/* Section des items liés */}
-                <div>
-                  <h4 className="text-lg font-medium text-gray-800 mb-3">
-                    Items liés :
-                  </h4>
-                  {getLinkedItems(selectedItem).length > 0 ? (
-                    <div className="space-y-2">
-                      {getLinkedItems(selectedItem).map((linkedItem, index) => (
-                        <div
-                          key={index}
-                          className="flex items-center p-2 bg-gray-50 rounded-md hover:bg-gray-100 transition-colors cursor-pointer"
-                          onClick={() => setSelectedItem(linkedItem)}
-                        >
-                          <span className="text-blue-500 mr-2">→</span>
-                          <span className="text-gray-700 font-medium">{linkedItem}</span>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="text-gray-500 italic">Aucun item lié</p>
-                  )}
-                </div>
+          <div className='menu-2' style={getMenuStyle(2)}>
+            <h2 style={{
+              margin: '0 0 1rem 0',
+              fontSize: '2rem',
+              fontWeight: 'bold',
+              color: '#2D3748', // Couleur fixe pour tous les titres
+              textAlign: 'center'
+            }}>
+              Je suis un
+            </h2>
+            <ul style={getItemsStyle(2)}>
+              <li style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>COUCOU 1</li>
+              <li style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>COUCOU 2</li>
+              <li style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>COUCOU 3</li>
+            </ul>
+          </div>
 
-                <div>
-                  <h4 className="text-lg font-medium text-gray-800 mb-3">
-                    Points clés :
-                  </h4>
-                  <ul className="space-y-2">
-                    {itemInfo[selectedItem].details.map((detail, index) => (
-                      <li key={index} className="flex items-start">
-                        <span className="text-blue-500 mr-2">•</span>
-                        <span className="text-gray-700">{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Espace pour du contenu supplémentaire */}
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <h4 className="font-medium text-blue-800 mb-2">
-                    Actions recommandées
-                  </h4>
-                  <p className="text-blue-700 text-sm">
-                    Contenu spécifique selon l'item sélectionné...
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
+          <div className='menu-3' style={getMenuStyle(3)}>
+            <h2 style={{
+              margin: '0 0 1rem 0',
+              fontSize: '2rem',
+              fontWeight: 'bold',
+              color: '#2D3748', // Couleur fixe pour tous les titres
+              textAlign: 'center'
+            }}>
+              Menu déroulant
+            </h2>
+            <ul style={getItemsStyle(3)}>
+              <li style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>HELLO 1</li>
+              <li style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>HELLO 2</li>
+              <li style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>HELLO 3</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
