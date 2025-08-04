@@ -4,7 +4,7 @@ import { type Metadata } from 'next';
 import { anchorHeadingMDXComponents } from '@/mdx-components';
 
 import BudgetContent from '../../../../content/budget.mdx';
-import { Container } from '../../../dsfr/server';
+import { Container } from '../../../design-system/server';
 import { sharedMetadata } from '../shared-metadata';
 
 const url = '/budget';

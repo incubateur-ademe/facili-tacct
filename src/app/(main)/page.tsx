@@ -5,13 +5,14 @@ import Patch4Img from '@/assets/images/patch4_home.png';
 import RessourcesImg from '@/assets/images/ressources_home.webp';
 import { Loader } from '@/components/loader';
 import OptimalParagraph from '@/components/utils/OptimalParagraph';
+import { Body } from '@/design-system/base/Textes';
 import MiddlePageTrigger from '@/hooks/MiddlePageTrigger';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { homeCards } from '@/lib/homaCards';
 import Notice from '@codegouvfr/react-dsfr/Notice';
 import Image from 'next/image';
 import { lazy, useEffect, useState } from 'react';
-import { Container } from './../../dsfr/layout';
+import { Container } from '../../design-system/layout';
 import { HomeButton } from './homeButton';
 import { HomeCard } from './homeCard';
 import styles from './main.module.scss';
@@ -105,12 +106,12 @@ const Home = () => {
                 Patch 4°C : intégrez la trajectoire de réchauffement de référence (TRACC) dans
                 votre diagnostic de vulnérabilité climatique
               </h2>
-              <p>
+              <Body>
                 Le “patch 4°C” est une action du 3ème Plan national d’adaptation au changement
                 climatique (2025). Il s’adresse <b>en priorité aux communes ou EPCI</b> qui
                 viennent d’achever leurs études de vulnérabilité sur la base d’hypothèses de
                 réchauffement différentes de celles de la TRACC.
-              </p>
+              </Body>
               <p>
                 Pour accéder aux données, saisissez le nom de votre territoire dans le champ ci-dessus.
               </p>
