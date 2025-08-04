@@ -2,7 +2,7 @@ import { ClientOnly } from '@/components/utils/ClientOnly';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { type Metadata } from 'next';
-import { Container } from '../../../dsfr/server';
+import { Container } from '../../../design-system/server';
 import { Cards } from './cards';
 import { Patch4Accordion } from './patch4/patch4Accordion';
 

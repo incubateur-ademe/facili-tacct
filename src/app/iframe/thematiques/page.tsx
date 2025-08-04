@@ -1,6 +1,6 @@
 import { ClientOnly } from '@/components/utils/ClientOnly';
 import { type Metadata } from 'next';
-import { Container } from '../../../dsfr/server';
+import { Container } from '../../../design-system/server';
 import { Cards } from './cards';
 
 export const metadata: Metadata = {

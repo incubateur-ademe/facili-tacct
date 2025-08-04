@@ -1,4 +1,4 @@
-import { Container } from '@/dsfr/server';
+import { Container } from '@/design-system/server';
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { Metadata } from 'next';
 import UniqueUsers from './metrics/uniqueUsers';
