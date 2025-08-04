@@ -1,7 +1,7 @@
 import { ClientOnly } from '@/components/utils/ClientOnly';
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { type Metadata } from 'next';
-import { Container } from '../../../dsfr/server';
+import { Container } from '../../../design-system/server';
 import FilterThemes from './filterThemes';
 
 export const metadata: Metadata = {

@@ -1,7 +1,7 @@
 'use server';
 
 import { LineChart } from '@/components/charts/stats/lineChart';
-import { Container } from '@/dsfr/layout';
+import { Container } from '@/design-system/layout';
 import { GetUniqueUsersHogQL } from '../query';
 import styles from '../stats.module.scss';
 
