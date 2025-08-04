@@ -17,3 +17,11 @@ export const Container = ({ children, className, fluid, size, ...rest }: Contain
     </Box>
   );
 };
+
+export const NewContainer = ({ children, className, size, ...rest }: ContainerProps) => {
+  return (
+    <div className="w-[1200px] py-12 mx-auto">
+      {children}
+    </div>
+  );
+};

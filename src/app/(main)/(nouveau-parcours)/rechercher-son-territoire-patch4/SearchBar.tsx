@@ -1,20 +1,20 @@
 'use client';
 
+import { BoutonPrimaire } from '@/design-system/base/Boutons';
+import { couleursPrincipales, nuancesGris } from '@/design-system/couleurs';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { eptRegex } from '@/lib/utils/regex';
 import { FocusOnElement } from '@/lib/utils/reusableFunctions/focus';
-import Button from '@codegouvfr/react-dsfr/Button';
 import { RadioButtons } from '@codegouvfr/react-dsfr/RadioButtons';
 import { SearchBar } from '@codegouvfr/react-dsfr/SearchBar';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
-import styles from "../components.module.scss";
-import '../globalMui.css';
+import { activeRadioOptions, disabledRadioOptions } from './radioButtons';
+import styles from "./rechercherTerritoire.module.scss";
 import { MySearchInput } from './SearchInput';
-import { radioOptions } from './radioButtons';
 
-export const SearchBarComp = () => {
+export const BarreDeRecherche = () => {
   const router = useRouter();
   const { css } = useStyles();
   const window = useWindowDimensions();
@@ -24,14 +24,18 @@ export const SearchBarComp = () => {
   const [typeTerritoire, setTypeTerritoire] = useState<
     'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
   >('epci');
+  const [searchInputId, setSearchInputId] = useState<string | undefined>(undefined);
 
-  const searchInputId = Array
-    .from(document.querySelectorAll('[id]'))
-    .map(el => el.id)
-    .find(id => id.startsWith("search-fr-search-bar-"));
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      const inputId = Array
+        .from(document.querySelectorAll('[id]'))
+        .map(el => el.id)
+        .find(id => id.startsWith("search-fr-search-bar-"));
+      setSearchInputId(inputId);
+    }
+  }, []);
 
-  // Met le focus sur le champ de recherche lorsque le composant est monté
-  // et lorsque le typeTerritoire change
   useEffect(() => {
     if (searchInputId) {
       FocusOnElement(searchInputId);
@@ -50,39 +54,63 @@ export const SearchBarComp = () => {
   const handleClick = () => {
     if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
       router.push(
-        `/thematiques?code=200054781&libelle=${searchLibelle}&type=ept`
+        `/patch4c?code=200054781&libelle=${searchLibelle}&type=ept`
       );
-    } else if (searchCode.length !== 0) {
+    } else {
       router.push(
-        `/thematiques?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
+        `/patch4c?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
       )
-    } else if (searchLibelle.length !== 0) {
-      router.push(
-        `/thematiques?libelle=${searchLibelle}&type=${typeTerritoire}`
-      );
     }
   };
 
   return (
     <div className={styles.searchCompWrapper}>
-      <RadioButtons
-        name="radio"
-        options={radioOptions(typeTerritoire, handleRadioChange)}
-        orientation={width && width > 520 ? "horizontal" : "vertical"}
-        className={css({
-          '.fr-fieldset__content': {
-            justifyContent: 'center',
-            '.fr-label': {
-              paddingBottom: 0,
-              fontSize: "1rem",
-              position: 'relative',
-            },
-            '@media (max-width: 745px)': {
-              justifyContent: 'flex-start'
+      <div className='flex flex-row gap-3 justify-center items-center'>
+        <RadioButtons
+          name="radio"
+          options={activeRadioOptions(typeTerritoire, handleRadioChange)}
+          orientation={width && width > 520 ? "horizontal" : "vertical"}
+          className={css({
+            '.fr-fieldset__content': {
+              justifyContent: 'center',
+              '.fr-label': {
+                paddingBottom: 0,
+                fontSize: "1rem",
+                position: 'relative',
+                backgroundImage: "radial-gradient(transparent 10px, var(--gris-dark) 11px, transparent 12px)",
+                color: nuancesGris.dark
+              },
+              'input[type=radio]:checked + .fr-label': {
+                backgroundImage: "radial-gradient(transparent 10px, var(--principales-vert) 11px, transparent 12px), radial-gradient(var(--principales-vert) 5px, transparent 6px);"
+              },
+              '@media (max-width: 745px)': {
+                justifyContent: 'flex-start'
+              }
             }
-          }
-        })}
-      />
+          })}
+        />
+        <RadioButtons
+          name="radio"
+          disabled
+          options={disabledRadioOptions(typeTerritoire)}
+          orientation={width && width > 520 ? "horizontal" : "vertical"}
+          className={css({
+            '.fr-fieldset__content': {
+              justifyContent: 'center',
+              '.fr-label': {
+                paddingBottom: 0,
+                fontSize: "1rem",
+                position: 'relative',
+                backgroundImage: "radial-gradient(transparent 10px, #D3D0D0 11px, transparent 12px)",
+                color: "#D3D0D0"
+              },
+              '@media (max-width: 745px)': {
+                justifyContent: 'flex-start'
+              }
+            }
+          })}
+        />
+      </div>
       <div
         className={styles.searchbarWrapper}
         style={{ flexDirection: width && width < 520 ? 'column' : 'row' }}
@@ -93,11 +121,11 @@ export const SearchBarComp = () => {
               '.fr-btn': {
                 display: 'none',
               },
-              border: '1px solid #0063CB',
-              borderRadius: "4px 0 0 4px",
+              border: `1px solid ${couleursPrincipales.vert}`,
+              borderRadius: "60px",
               height: 'inherit',
               '.fr-input': {
-                color: '#0063CB',
+                color: couleursPrincipales.vert,
                 backgroundColor: 'white',
                 boxShadow: 'none',
                 '&:focus': {
@@ -115,7 +143,7 @@ export const SearchBarComp = () => {
               border: '1px solid #EEEEEE',
               height: 'inherit',
               '.fr-input': {
-                color: '#0063CB',
+                color: couleursPrincipales.vert,
                 backgroundColor: '#EEEEEE',
                 boxShadow: 'none',
                 '&:focus': {
@@ -142,21 +170,12 @@ export const SearchBarComp = () => {
             />
           )}
         />
-        {searchLibelle.length === 0 ? (
-          <Button
-            disabled
-            className={styles.inactiveSearchbarButton}
-          >
-            Rechercher
-          </Button>
-        ) : (
-          <Button
-            onClick={handleClick}
-            className={styles.activeSearchbarButton}
-          >
-            Rechercher
-          </Button>
-        )}
+        <BoutonPrimaire
+          text="Rechercher"
+          size="lg"
+          disabled={searchLibelle.length === 0 ? true : false}
+          onClick={handleClick}
+        />
       </div>
     </div>
   );
