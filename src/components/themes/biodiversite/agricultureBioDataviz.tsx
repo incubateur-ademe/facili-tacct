@@ -11,6 +11,7 @@ import SubTabs from '@/components/SubTabs';
 import { AgricultureBio } from '@/lib/postgres/models';
 import { multipleEpciBydepartementLibelle } from "@/lib/territoireData/multipleEpciBydepartement";
 import { multipleEpciByPnrLibelle } from "@/lib/territoireData/multipleEpciByPnr";
+import { surfacesEnBioDoc } from "@/lib/utils/export/documentations";
 import { AgricultureBioExport } from "@/lib/utils/export/exportTypes";
 import Image from 'next/image';
 import { useSearchParams } from "next/navigation";
@@ -124,6 +125,7 @@ const AgricultureBioDataViz = ({
                 libelle={libelle}
                 code={code}
                 sheetName="Agriculture bio"
+                documentation={surfacesEnBioDoc}
               />
             </div>
           </div>

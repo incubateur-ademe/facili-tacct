@@ -31,7 +31,7 @@ export const MapEspacesNaf = (props: {
   const hoveredFeatureRef = useRef<string | null>(null);
 
   const colorExpression = useMemo(() => {
-    const expression: Array<any> = ['case'];
+    const expression: Array<string | Array<string | Array<string>>> = ['case'];
     carteCommunesFiltered.forEach((commune) => {
       const color = getColor(commune.properties.naf ?? 0);
       expression.push(
@@ -73,8 +73,8 @@ export const MapEspacesNaf = (props: {
         Array.isArray(enveloppe[0]) &&
         enveloppe[0].length === 2
       ) {
-        const lons = enveloppe.map((coord: any) => coord[1]);
-        const lats = enveloppe.map((coord: any) => coord[0]);
+        const lons = enveloppe.map((coord: number[]) => coord[1]);
+        const lats = enveloppe.map((coord: number[]) => coord[0]);
         const minLng = Math.min(...lons);
         const maxLng = Math.max(...lons);
         const minLat = Math.min(...lats);
@@ -98,7 +98,7 @@ export const MapEspacesNaf = (props: {
         type: 'fill',
         source: 'naf-communes',
         paint: {
-          'fill-color': colorExpression as any,
+          'fill-color': colorExpression as unknown as string,
           'fill-opacity': 1
         }
       });
@@ -125,7 +125,7 @@ export const MapEspacesNaf = (props: {
       });
 
       // Hover and tooltip
-      map.on('mouseenter', 'naf-fill', (e: any) => {
+      map.on('mouseenter', 'naf-fill', (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
           const properties = feature.properties;
@@ -159,7 +159,8 @@ export const MapEspacesNaf = (props: {
             closeButton: false,
             closeOnClick: false,
             className: 'naf-tooltip',
-            anchor: placement
+            anchor: placement,
+            maxWidth: 'none'
           })
             .setLngLat(e.lngLat)
             .setHTML(tooltipContent)
@@ -181,7 +182,7 @@ export const MapEspacesNaf = (props: {
         }
       });
 
-      map.on('mousemove', 'naf-fill', (e: any) => {
+      map.on('mousemove', 'naf-fill', (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
           const properties = feature.properties;
@@ -212,7 +213,8 @@ export const MapEspacesNaf = (props: {
               closeButton: false,
               closeOnClick: false,
               className: 'naf-tooltip',
-              anchor: placement
+              anchor: placement,
+              maxWidth: 'none'
             })
               .setLngLat(e.lngLat)
               .setHTML(tooltipContent)
@@ -229,7 +231,8 @@ export const MapEspacesNaf = (props: {
                 closeButton: false,
                 closeOnClick: false,
                 className: 'naf-tooltip',
-                anchor: placement
+                anchor: placement,
+                maxWidth: 'none'
               })
                 .setLngLat(e.lngLat)
                 .setHTML(tooltipContent)
