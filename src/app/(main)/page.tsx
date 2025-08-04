@@ -7,7 +7,7 @@ import { Loader } from '@/components/loader';
 import OptimalParagraph from '@/components/utils/OptimalParagraph';
 import MiddlePageTrigger from '@/hooks/MiddlePageTrigger';
 import useWindowDimensions from '@/hooks/windowDimensions';
-import { homeCards } from '@/lib/homaCards';
+import { homeCards } from '@/lib/homeCards';
 import Notice from '@codegouvfr/react-dsfr/Notice';
 import Image from 'next/image';
 import { lazy, useEffect, useState } from 'react';
