@@ -10,7 +10,6 @@ const RouePage = () => {
   const [scrollProgress, setScrollProgress] = useState<number>(0); // 0 à 1
   const menuContainerRef = useRef<HTMLDivElement>(null);
   const isScrollingMenus = useRef<boolean>(true);
-  const [isMouseOverMenu, setIsMouseOverMenu] = useState<boolean>(false);
 
   // Fonction pour récupérer les items liés à celui sélectionné
   const getLinkedItems = (selectedItemName: string | null): string[] => {
@@ -32,14 +31,6 @@ const RouePage = () => {
       const menuContainer = menuContainerRef.current;
       if (!menuContainer) return;
 
-      // Vérifier si la souris est sur le menu
-      if (!isMouseOverMenu) {
-        // Si la souris n'est pas sur le menu, permettre le scroll normal
-        isScrollingMenus.current = false;
-        document.body.style.overflow = 'auto';
-        return;
-      }
-
       // Vérifier si on est dans la zone des menus
       const rect = menuContainer.getBoundingClientRect();
       const isInMenuArea = rect.top <= window.innerHeight * 0.3 && rect.bottom >= window.innerHeight * 0.7;
@@ -51,7 +42,7 @@ const RouePage = () => {
         return;
       }
 
-      // On est dans la zone des menus ET la souris est dessus
+      // On est dans la zone des menus
       isScrollingMenus.current = true;
       document.body.style.overflow = 'hidden';
 
@@ -73,7 +64,6 @@ const RouePage = () => {
         if (isAtStart && scrollingUp) {
           document.body.style.overflow = 'auto';
           isScrollingMenus.current = false;
-          // Ne pas empêcher l'événement pour permettre le scroll de la page
           return currentProgress;
         }
 
@@ -81,7 +71,6 @@ const RouePage = () => {
         if (isAtEnd && scrollingDown) {
           document.body.style.overflow = 'auto';
           isScrollingMenus.current = false;
-          // Ne pas empêcher l'événement pour permettre le scroll de la page
           return currentProgress;
         }
 
@@ -103,14 +92,6 @@ const RouePage = () => {
       });
     };
 
-    // Fonction pour réinitialiser quand la souris quitte le menu
-    const handleMouseLeave = () => {
-      setScrollProgress(0);
-      setActiveMenu(1);
-      isScrollingMenus.current = false;
-      document.body.style.overflow = 'auto';
-    };
-
     // Attacher les événements
     window.addEventListener('wheel', handleScroll, { passive: false });
 
@@ -119,7 +100,7 @@ const RouePage = () => {
       // Nettoyer : réactiver le scroll au démontage du composant
       document.body.style.overflow = 'auto';
     };
-  }, [isMouseOverMenu]); // Ajouter isMouseOverMenu comme dépendance
+  }, []);
 
   // Fonction pour calculer l'opacité et la hauteur de chaque menu
   const getMenuStyle = (menuNumber: number) => {
@@ -202,14 +183,6 @@ const RouePage = () => {
         <div
           ref={menuContainerRef}
           className='menu-deroulant'
-          onMouseEnter={() => setIsMouseOverMenu(true)}
-          onMouseLeave={() => {
-            setIsMouseOverMenu(false);
-            // Ne pas réinitialiser le scroll progress quand on sort du div
-            // Seulement réactiver le scroll de la page
-            isScrollingMenus.current = false;
-            document.body.style.overflow = 'auto';
-          }}
           style={{
             minHeight: '100vh',
             width: '100%',
@@ -235,7 +208,7 @@ const RouePage = () => {
             fontSize: '0.8rem',
             fontFamily: 'monospace'
           }}>
-            Progress: {scrollProgress.toFixed(2)} | Active: {activeMenu} | Scrolling: {isScrollingMenus.current ? 'ON' : 'OFF'} | Mouse: {isMouseOverMenu ? 'IN' : 'OUT'}
+            Progress: {scrollProgress.toFixed(2)} | Active: {activeMenu} | Scrolling: {isScrollingMenus.current ? 'ON' : 'OFF'}
           </div>
 
           <div className='menu-1' style={getMenuStyle(1)}>
