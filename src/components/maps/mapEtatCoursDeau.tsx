@@ -102,8 +102,8 @@ export const MapEtatCoursDeau = (props: {
         Array.isArray(enveloppe[0]) &&
         enveloppe[0].length === 2
       ) {
-        const lons = enveloppe.map((coord: any) => coord[1]);
-        const lats = enveloppe.map((coord: any) => coord[0]);
+        const lons = enveloppe.map((coord: number[]) => coord[1]);
+        const lats = enveloppe.map((coord: number[]) => coord[0]);
         const minLng = Math.min(...lons);
         const maxLng = Math.max(...lons);
         const minLat = Math.min(...lats);
@@ -172,7 +172,7 @@ export const MapEtatCoursDeau = (props: {
       });
 
       // Hover and tooltip for cours d'eau
-      map.on('mouseenter', 'coursDeau-line', (e: any) => {
+      map.on('mouseenter', 'coursDeau-line', (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
           const properties = feature.properties;
@@ -182,7 +182,7 @@ export const MapEtatCoursDeau = (props: {
               { hover: false }
             );
           }
-          const newHoveredFeature = e.features[0]?.id;
+          const newHoveredFeature = properties.id;
           hoveredFeatureRef.current = newHoveredFeature;
           if (newHoveredFeature) {
             map.setFeatureState(
@@ -229,11 +229,11 @@ export const MapEtatCoursDeau = (props: {
         }
       });
 
-      map.on('mousemove', 'coursDeau-line', (e: any) => {
+      map.on('mousemove', 'coursDeau-line', (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
           const properties = feature.properties;
-          const newHoveredFeature = e.features[0]?.id;
+          const newHoveredFeature = properties.id;
           const containerHeight = mapContainer.current?.clientHeight || 500;
           const mouseY = e.point.y;
           const mouseX = e.point.x;
