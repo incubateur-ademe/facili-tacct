@@ -115,6 +115,13 @@ const Home = () => {
               <p>
                 Pour accéder aux données, saisissez le nom de votre territoire dans le champ ci-dessus.
               </p>
+              <HomeButton
+                link="/rechercher-son-territoire-patch4"
+                borderColor="#0063CB"
+                backgroundColor="#0063CB"
+                textColor="#FFFFFF"
+                text='Accéder au Patch 4°C'
+              />
             </div>
           </div>
         </Container>

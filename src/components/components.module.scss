@@ -54,11 +54,12 @@
     display: flex;
     flex-direction: row;
     gap: 0.5em;
-    background-color: #f6f6f6;
+    background-color: #ffffff !important;
     color: #161616;
     border-radius: 50px;
-    padding: 0.25em 0.75em 0.25em 0.2em;
+    padding: 0.25em 0.75em;
     line-height: 24px;
+    border: 1px solid var(--gris-medium);
 }
 .titles {
     min-width: min-content;

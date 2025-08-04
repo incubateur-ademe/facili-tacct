@@ -36,6 +36,7 @@ export const HomeButton = ({
         fontSize: '18px',
         margin: '2rem 0 0',
         backgroundImage: 'none',
+        width: 'fit-content',
         '&:hover': {
           color: `${backgroundColor} !important`,
           backgroundColor: `${textColor} !important`,
