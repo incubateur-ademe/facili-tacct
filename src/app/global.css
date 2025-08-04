@@ -2,6 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import du système de couleurs */
+/**
+ * Variables CSS personnalisées pour les couleurs
+ * Générées à partir du fichier couleurs.ts
+ */
+
+:root {
+    /* Couleurs principales */
+    --principales-vert: #038278;
+    --principales-rouge: #ce0041;
+    --principales-violet: #971356;
+
+    /* Couleurs secondaires */
+    --secondaires-5: #f66e19;
+    --secondaires-6: #bd0926;
+    --secondaires-7: #afaa3d;
+    --secondaires-8: #838322;
+    --secondaires-9: #f8b334;
+    --secondaires-10: #f08a00;
+
+    /* Couleurs pour boutons */
+    --boutons-primaire-1: #038278;
+    --boutons-primaire-2: #d3edeb;
+    --boutons-primaire-3: #095d55;
+    --boutons-primaire-4: #e5e5e5;
+    --boutons-primaire-5: #89cac6;
+
+    /* Nuances de gris */
+    --gris-light: #f6f6f6;
+    --gris-medium: #e5e5e5;
+    --gris-medium-dark: #7b7b7b;
+    --gris-dark: #666666;
+
+    /* Couleurs pour graphiques et données */
+    --graphiques-bleu-1: #055fa5;
+    --graphiques-bleu-2: #0e93e1;
+    --graphiques-bleu-3: #70d4ff;
+    --graphiques-bleu-4: #d8effa;
+    --graphiques-bleu-5: #093454;
+    --graphiques-turquoise-1: #048188;
+    --graphiques-turquoise-2: #00c2cc;
+    --graphiques-turquoise-3: #5eedf3;
+    --graphiques-turquoise-4: #dafdff;
+    --graphiques-turquoise-5: #014f54;
+    --graphiques-rouge-1: #f80206;
+    --graphiques-rouge-2: #ff4c4f;
+    --graphiques-rouge-3: #ff9fa0;
+    --graphiques-rouge-4: #ffe2e3;
+    --graphiques-rouge-5: #680000;
+    --graphiques-orange-1: #b64800;
+    --graphiques-orange-2: #f66e19;
+    --graphiques-orange-3: #ffaf84;
+    --graphiques-orange-4: #ffeee5;
+    --graphiques-orange-5: #7a330e;
+    --graphiques-violet-1: #6e3f99;
+    --graphiques-violet-2: #a764e3;
+    --graphiques-violet-3: #d2a1ff;
+    --graphiques-violet-4: #f2e4ff;
+    --graphiques-violet-5: #42255c;
+    --graphiques-vert-1: #346c37;
+    --graphiques-vert-2: #5aa65d;
+    --graphiques-vert-3: #9dd9a0;
+    --graphiques-vert-4: #e4ffe6;
+    --graphiques-vert-5: #293e2a;
+    --graphiques-kaki-1: #626218;
+    --graphiques-kaki-2: #9a972f;
+    --graphiques-kaki-3: #d5d264;
+    --graphiques-kaki-4: #f5f3be;
+    --graphiques-kaki-5: #464612;
+    --graphiques-jaune-1: #464612;
+    --graphiques-jaune-2: #df9202;
+    --graphiques-jaune-3: #ffc03f;
+    --graphiques-jaune-4: #ffebb6;
+    --graphiques-jaune-5: #613701;
+    --graphiques-rose-1: #99357e;
+    --graphiques-rose-2: #d149ad;
+    --graphiques-rose-3: #ffa1e6;
+    --graphiques-rose-4: #ffe5f8;
+    --graphiques-rose-5: #5b1648;
+}
+
 /* background */
 
 /* -- custom */

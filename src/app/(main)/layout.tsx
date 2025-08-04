@@ -1,6 +1,6 @@
 import HeaderComp from "@/components/Header";
 import { HeaderClientOnly } from "@/components/utils/ClientOnly";
-import AppFooter from "@/dsfr/layout/Footer";
+import AppFooter from "@/design-system/layout/Footer";
 import { type Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { Suspense, type PropsWithChildren } from 'react';

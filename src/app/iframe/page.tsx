@@ -8,7 +8,7 @@ import Constellation2Img from '../../assets/images/constellation2.png';
 import Constellation3Img from '../../assets/images/constellation3.png';
 import PeopleImg from '../../assets/images/landing-page-group.png';
 import MapImg from '../../assets/images/landing-page-map.png';
-import { Container } from '../../dsfr/layout';
+import { Container } from '../../design-system/layout';
 import styles from './root.module.scss';
 
 const CollectiviteSearch = lazy(() => import('../(main)/CollectiviteSearch'));

@@ -3,7 +3,7 @@ import { type Metadata } from 'next';
 import { anchorHeadingMDXComponents } from '@/mdx-components';
 
 import AccessibiliteContent from '../../../../content/accessibilite.mdx';
-import { Container } from '../../../dsfr/server';
+import { Container } from '../../../design-system/server';
 import { sharedMetadata } from '../shared-metadata';
 
 const title = "Déclaration d'accessibilité";

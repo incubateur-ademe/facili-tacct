@@ -1,7 +1,7 @@
 import './global.css';
 
-import { DsfrProvider, StartDsfrOnHydration } from '@/dsfr';
-import { DsfrHead, getHtmlAttributes } from '@/dsfr/server-only-index';
+import { DsfrProvider, StartDsfrOnHydration } from '@/design-system';
+import { DsfrHead, getHtmlAttributes } from '@/design-system/server-only-index';
 import { cx } from '@codegouvfr/react-dsfr/tools/cx';
 import { type PropsWithChildren } from 'react';
 import { PHProvider } from './providers';
