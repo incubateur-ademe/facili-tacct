@@ -152,7 +152,7 @@ const Vegetalisation = (props: {
                       }],
                       blobFiles: [{
                         blob: pngBlob,
-                        filename: `Vegetalisation_${type}_${libelle}.png`
+                        filename: `Carte_Vegetalisation_${type}_${libelle}.png`
                       }],
                       zipFilename: `vegetalisation_export_${new Date().toISOString().split('T')[0]}.zip`
                     })

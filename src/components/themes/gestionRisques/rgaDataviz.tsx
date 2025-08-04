@@ -289,7 +289,7 @@ const RgaDataViz = (props: Props) => {
               }],
               blobFiles: [{
                 blob: pngBlob,
-                filename: `RGA_${type}_${libelle}.png`
+                filename: `Carte_RGA_${type}_${libelle}.png`
               }],
               zipFilename: `rga_export_${new Date().toISOString().split('T')[0]}.zip`
             })
