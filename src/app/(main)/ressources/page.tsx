@@ -1,6 +1,6 @@
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { Metadata } from 'next';
-import { Container } from '../../../dsfr/server';
+import { Container } from '../../../design-system/server';
 import RessourcesCards from './cards';
 
 export const metadata: Metadata = {

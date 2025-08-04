@@ -6,7 +6,7 @@ import ForwardArrow from '@/assets/icons/keyboard_arrow_next_icon_black.svg';
 import LightbulbIcon from '@/assets/icons/lightbulb_icon_black.svg';
 import ListIcon from '@/assets/icons/list_unordered_icon_black.svg';
 import WarningIcon from '@/assets/icons/warning_icon_black.svg';
-import ControlledAccordion from '@/dsfr/base/client/Accordion';
+import ControlledAccordion from '@/design-system/base/client/Accordion';
 import Notice from '@codegouvfr/react-dsfr/Notice';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
