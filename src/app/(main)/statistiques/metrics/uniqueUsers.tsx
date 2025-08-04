@@ -2,12 +2,13 @@
 
 import { LineChart } from '@/components/charts/stats/lineChart';
 import { Container } from '@/dsfr/layout';
-import { GetInsightById } from '../query';
+import { GetUniqueUsersHogQL } from '../query';
 import styles from '../stats.module.scss';
 
 const UniqueUsers = async () => {
-  const uniqueUsers = await GetInsightById(620831);
-  const data = Array.isArray(uniqueUsers) ? uniqueUsers : undefined;
+  // const uniqueUsers = await GetInsightById(620831);
+  // const data = Array.isArray(uniqueUsers) ? uniqueUsers : undefined;
+  let data = await GetUniqueUsersHogQL();
   return (
     <Container m="4w">
       {data ? (
@@ -26,7 +27,7 @@ const UniqueUsers = async () => {
               style={{ padding: '1rem' }}
             >
               <h2>
-                Évolution des utilisateurs uniques sur les 30 derniers jours
+                Évolution du nombre d'utilisateurs uniques par mois
               </h2>
             </div>
             <div
@@ -42,7 +43,7 @@ const UniqueUsers = async () => {
             </div>
           </div>
           <p>
-            Depuis le {data ? data[0].labels[0] : ''}, la somme
+            Depuis le 1er novembre 2024, la somme
             totale d'utilisateurs uniques est de :{' '}
             {data ? data[0].count : ''}.
           </p>

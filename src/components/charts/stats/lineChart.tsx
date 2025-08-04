@@ -72,7 +72,7 @@ export const LineChart = (props: Props) => {
       // }}
       margin={{
         top: 50,
-        right: 20,
+        right: 50,
         bottom: 50,
         left: 60
       }}
@@ -85,15 +85,15 @@ export const LineChart = (props: Props) => {
         legendPosition: 'middle',
         truncateTickAt: 0
       }}
-      // axisLeft={{
-      //   tickSize: 5,
-      //   tickPadding: 5,
-      //   tickRotation: 0,
-      //   legend: "Pourcentage (%)",
-      //   legendOffset: -40,
-      //   legendPosition: "middle",
-      //   truncateTickAt: 0,
-      // }}
+    // axisLeft={{
+    //   tickSize: 5,
+    //   tickPadding: 5,
+    //   tickRotation: 0,
+    //   legend: "Pourcentage (%)",
+    //   legendOffset: -40,
+    //   legendPosition: "middle",
+    //   truncateTickAt: 0,
+    // }}
     />
   );
 };
