@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import GraphNotFound from '@/assets/images/no_data_on_territory.svg';
-import { GridCol } from '@/dsfr/layout';
+import { GridCol } from '@/design-system/layout';
 
 interface Props {
   code: string | undefined;

@@ -1,4 +1,4 @@
-import { NoticeComp } from '@/dsfr/base/Notice';
+import { NoticeComp } from '@/design-system/base/Notice';
 import { GetInconfortThermique } from '@/lib/queries/databases/inconfortThermique';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { themes } from '@/lib/themes';
