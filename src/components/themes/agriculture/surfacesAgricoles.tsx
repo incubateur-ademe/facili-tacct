@@ -85,11 +85,10 @@ export const SurfacesAgricoles = ({
                       {
                         (type === "departement" || type === "pnr") && territoiresPartiellementCouverts && (
                           <>
-                            <p style={{ color: '#3a3a3a' }}>
-                              <br></br>
-                              Sur votre territoire, <b>{territoiresPartiellementCouverts?.length} EPCI</b> {territoiresPartiellementCouverts?.length === 1 ? "est" : "sont"} à
-                              cheval sur plusieurs {type !== "pnr" ? "départements" : "PNR"} :
-
+                            <p>
+                              <br></br>Attention, <b>{territoiresPartiellementCouverts?.length} EPCI
+                              </b> {territoiresPartiellementCouverts?.length === 1 ? "ne fait" : "ne font"} que
+                              partiellement partie de votre territoire :
                             </p>
                             <ul style={{ margin: "0.5rem 0 0 1.5rem" }}>
                               {territoiresPartiellementCouverts?.map((epci, index) => (
