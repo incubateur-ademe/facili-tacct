@@ -4,24 +4,24 @@ import { couleursBoutons, nuancesGris } from "../couleurs";
 export const BoutonPrimaire = ({
   link,
   text,
-  target,
   rel,
   size,
-  disabled = false
+  disabled = false,
+  onClick
 }: {
-  link: string;
+  link?: string;
   text: string;
   size: 'sm' | 'md' | 'lg';
-  target?: string;
   rel?: string;
   disabled?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   return (
     <Button
       key="0"
       variant="outlined"
       href={link}
-      target={target}
+      onClick={onClick}
       rel={rel}
       disabled={disabled}
       sx={{
@@ -30,7 +30,7 @@ export const BoutonPrimaire = ({
         backgroundColor: disabled ? nuancesGris.light : couleursBoutons.primaire[1],
         borderRadius: '60px',
         border: disabled ? `1px solid ${nuancesGris.light} !important` : `1px solid ${couleursBoutons.primaire[1]}`,
-        padding: '0.5em 1em',
+        padding: '4px 20px',
         fontWeight: 500,
         fontFamily: 'Marianne',
         fontSize: size === 'sm' ? '14px' : size === 'md' ? '16px' : '18px',
@@ -84,7 +84,7 @@ export const BoutonSecondaire = ({
         backgroundColor: disabled ? nuancesGris.light : "white",
         borderRadius: '60px',
         border: disabled ? `1px solid ${nuancesGris.light} !important` : `1px solid ${couleursBoutons.primaire[2]}`,
-        padding: '0.5em 1em',
+        padding: '4px 20px',
         fontWeight: 500,
         fontFamily: 'Marianne',
         fontSize: size === 'sm' ? '14px' : size === 'md' ? '16px' : '18px',
@@ -138,7 +138,7 @@ export const BoutonTertiaire = ({
         backgroundColor: disabled ? nuancesGris.light : "white",
         borderRadius: '60px',
         border: disabled ? `1px solid ${nuancesGris.light} !important` : `1px solid ${couleursBoutons.primaire[1]}`,
-        padding: '0.5em 1em',
+        padding: '4px 20px',
         fontWeight: 500,
         fontFamily: 'Marianne',
         fontSize: size === 'sm' ? '14px' : size === 'md' ? '16px' : '18px',
