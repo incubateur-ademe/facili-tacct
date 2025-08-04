@@ -4,7 +4,7 @@ import artworkTechnicalErrorSvgUrl from "@codegouvfr/react-dsfr/dsfr/artwork/pic
 import { type StaticImageData } from "next/image";
 import { type ReactNode } from "react";
 
-import { Box, Container, Grid, GridCol } from "../dsfr/server";
+import { Box, Container, Grid, GridCol } from "../design-system/server";
 
 const errors = {
   "404": {
@@ -38,19 +38,19 @@ const errors = {
 export type ErrorDisplayProps = {
   noRedirect?: boolean;
 } & (
-  | {
+    | {
       body: ReactNode;
       code: "custom";
       headline: string;
       title: string;
     }
-  | {
+    | {
       body?: never;
       code: keyof typeof errors;
       headline?: never;
       title?: never;
     }
-);
+  );
 
 export const ErrorDisplay = ({ code, noRedirect, body, headline, title }: ErrorDisplayProps) => {
   if (code !== "custom") {
