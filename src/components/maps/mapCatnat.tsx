@@ -218,7 +218,8 @@ export const MapCatnat = (props: {
               closeButton: false,
               closeOnClick: false,
               className: 'catnat-tooltip',
-              anchor: placement
+              anchor: placement,
+              maxWidth: 'none'
             })
               .setLngLat(e.lngLat)
               .setHTML(tooltipContent)
@@ -279,7 +280,8 @@ export const MapCatnat = (props: {
                 closeButton: false,
                 closeOnClick: false,
                 className: 'catnat-tooltip',
-                anchor: placement
+                anchor: placement,
+                maxWidth: 'none'
               })
                 .setLngLat(e.lngLat)
                 .setHTML(tooltipContent)
@@ -301,7 +303,8 @@ export const MapCatnat = (props: {
                   closeButton: false,
                   closeOnClick: false,
                   className: 'catnat-tooltip',
-                  anchor: placement
+                  anchor: placement,
+                  maxWidth: 'none'
                 })
                   .setLngLat(e.lngLat)
                   .setHTML(tooltipContent)

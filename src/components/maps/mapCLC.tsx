@@ -74,8 +74,8 @@ export const MapCLC = (
         Array.isArray(enveloppe[0]) &&
         enveloppe[0].length === 2
       ) {
-        const lons = enveloppe.map((coord: any) => coord[1]);
-        const lats = enveloppe.map((coord: any) => coord[0]);
+        const lons = enveloppe.map((coord: number[]) => coord[1]);
+        const lats = enveloppe.map((coord: number[]) => coord[0]);
         const minLng = Math.min(...lons);
         const maxLng = Math.max(...lons);
         const minLat = Math.min(...lats);
@@ -99,7 +99,7 @@ export const MapCLC = (
         type: 'fill',
         source: 'clc-communes',
         paint: {
-          'fill-color': colorExpression as any,
+          'fill-color': colorExpression as unknown as string,
           'fill-opacity': 0.6
         }
       });

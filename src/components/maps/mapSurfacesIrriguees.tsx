@@ -44,7 +44,7 @@ export const MapSurfacesIrriguees = (props: {
 
   // Color expression for MapLibre
   const colorExpression = useMemo(() => {
-    const expression: Array<any> = ['case'];
+    const expression: Array<string | Array<string | Array<string>>> = ['case'];
     carteCommunesFiltered.forEach((commune) => {
       const color = getColor(commune.properties.surfacesIrriguees ?? 0);
       expression.push(
@@ -88,8 +88,8 @@ export const MapSurfacesIrriguees = (props: {
         Array.isArray(enveloppe[0]) &&
         enveloppe[0].length === 2
       ) {
-        const lons = enveloppe.map((coord: any) => coord[1]);
-        const lats = enveloppe.map((coord: any) => coord[0]);
+        const lons = enveloppe.map((coord: number[]) => coord[1]);
+        const lats = enveloppe.map((coord: number[]) => coord[0]);
         const minLng = Math.min(...lons);
         const maxLng = Math.max(...lons);
         const minLat = Math.min(...lats);
@@ -113,7 +113,7 @@ export const MapSurfacesIrriguees = (props: {
         type: 'fill',
         source: 'surfaces-irriguees-communes',
         paint: {
-          'fill-color': colorExpression as any,
+          'fill-color': colorExpression as unknown as string,
           'fill-opacity': 1
         }
       });
@@ -140,7 +140,7 @@ export const MapSurfacesIrriguees = (props: {
       });
 
       // Hover and tooltip
-      map.on('mouseenter', 'surfaces-irriguees-fill', (e: any) => {
+      map.on('mouseenter', 'surfaces-irriguees-fill', (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
           const properties = feature.properties;
@@ -174,7 +174,8 @@ export const MapSurfacesIrriguees = (props: {
             closeButton: false,
             closeOnClick: false,
             className: 'surfaces-irriguees-tooltip',
-            anchor: placement
+            anchor: placement,
+            maxWidth: 'none'
           })
             .setLngLat(e.lngLat)
             .setHTML(tooltipContent)
@@ -196,7 +197,7 @@ export const MapSurfacesIrriguees = (props: {
         }
       });
 
-      map.on('mousemove', 'surfaces-irriguees-fill', (e: any) => {
+      map.on('mousemove', 'surfaces-irriguees-fill', (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
           const properties = feature.properties;
@@ -227,7 +228,8 @@ export const MapSurfacesIrriguees = (props: {
               closeButton: false,
               closeOnClick: false,
               className: 'surfaces-irriguees-tooltip',
-              anchor: placement
+              anchor: placement,
+              maxWidth: 'none'
             })
               .setLngLat(e.lngLat)
               .setHTML(tooltipContent)
@@ -244,7 +246,8 @@ export const MapSurfacesIrriguees = (props: {
                 closeButton: false,
                 closeOnClick: false,
                 className: 'surfaces-irriguees-tooltip',
-                anchor: placement
+                anchor: placement,
+                maxWidth: 'none'
               })
                 .setLngLat(e.lngLat)
                 .setHTML(tooltipContent)
