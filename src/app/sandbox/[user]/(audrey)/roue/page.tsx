@@ -5,7 +5,7 @@ import RoueSystemique from './roue';
 type SegmentParams<T extends Object = any> = T extends Record<string, any>
   ? { [K in keyof T]: T[K] extends string ? string | string[] | undefined : never }
   : T
-  
+
 const RouePage = async ({ params }: { params: Promise<SegmentParams> }) => {
   const session = await getServerSession();
   const resolvedParams = await params;
