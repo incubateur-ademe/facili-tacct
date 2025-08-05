@@ -14,7 +14,7 @@ export const RenderInput = (props: SearchInputTagProps) => {
       <input
         {...params.inputProps}
         className={cx(params.inputProps.className, className)}
-        placeholder={'Saisissez le nom de votre territoire'}
+        placeholder={'Saisir un territoire'}
         disabled={!typeTerritoire}
         style={{ borderRadius: '60px', padding: '0.5rem 3.5rem 0.5rem 1rem' }}
       />

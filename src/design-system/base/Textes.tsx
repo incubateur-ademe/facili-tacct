@@ -13,12 +13,12 @@ export const H1 = ({
     <h1
       style={{
         color: color,
-        ...style,
         fontSize: "2.5rem",
         fontWeight: 700,
         lineHeight: "3rem",
         letterSpacing: "0.85px",
         fontFamily: "Marianne",
+        ...style
       }}
     >
       {children}
@@ -38,13 +38,13 @@ export const H2 = ({
   return (
     <h2
       style={{
-        ...style,
         color: color,
         fontSize: "2rem",
         fontWeight: 700,
         lineHeight: "2.5rem",
         letterSpacing: "0.85px",
         fontFamily: "Marianne",
+        ...style,
       }}
     >
       {children}
@@ -64,13 +64,13 @@ export const H3 = ({
   return (
     <h3
       style={{
-        ...style,
         color: color,
         fontSize: "1.75rem",
         fontWeight: 700,
         lineHeight: "2rem",
         letterSpacing: "0.85px",
         fontFamily: "Marianne",
+        ...style,
       }}
     >
       {children}
@@ -90,13 +90,13 @@ export const H4 = ({
   return (
     <h4
       style={{
-        ...style,
         color: color,
         fontSize: "1.25rem",
         fontWeight: 700,
         lineHeight: "1.5rem",
         letterSpacing: "0.85px",
         fontFamily: "Marianne",
+        ...style
       }}
     >
       {children}
@@ -116,14 +116,14 @@ export const SousTitre1 = ({
   style?: React.CSSProperties;
 }) => {
   const styles = {
-    ...style,
     color: color,
     fontSize: "1.25rem",
     fontWeight: 400,
     letterSpacing: "0.85px",
     fontFamily: "Marianne",
     textTransform: "uppercase",
-    margin: "0"
+    margin: "0",
+    ...style,
   };
 
   return React.createElement(htmlTag, { style: styles }, children);
@@ -141,14 +141,14 @@ export const SousTitre2 = ({
   style?: React.CSSProperties;
 }) => {
   const styles = {
-    ...style,
     color: color,
     fontSize: "0.75rem",
     fontWeight: 500,
     letterSpacing: "0.85px",
     fontFamily: "Marianne",
     textTransform: "uppercase",
-    margin: "0"
+    margin: "0",
+    ...style,
   };
   return React.createElement(htmlTag, { style: styles }, children);
 };
@@ -169,13 +169,13 @@ export const Body = ({
   return (
     <p
       style={{
-        ...style,
         color: color,
         fontSize: size === 'sm' ? '14px' : size === 'md' ? '1rem' : '18px',
         fontWeight: weight === 'bold' ? 700 : weight === 'medium' ? 500 : 400,
         letterSpacing: "0.4px",
         fontFamily: "Marianne",
-        margin: "0"
+        margin: "0",
+        ...style,
       }}
     >
       {children}
