@@ -24,10 +24,6 @@ const Localisation = (props: { libelle: string; code?: string }) => {
   const { libelle, code } = props;
   return (
     <div className={styles.localisation} style={darkClass}>
-      <span
-        className="fr-icon-map-pin-user-fill"
-        style={{ borderRadius: '25px' }}
-      />
       <p>
         {eptRegex.test(libelle) ? libelle
           : code ? (
@@ -67,7 +63,6 @@ const HeaderComp = () => {
         href: '/',
         title: `Accueil - Facili-TACCT`
       }}
-      serviceTitle="Facili-TACCT"
       operatorLogo={{
         alt: "Logo de l'ADEME",
         imgUrl: '/logo-ademe-tacct.png',
