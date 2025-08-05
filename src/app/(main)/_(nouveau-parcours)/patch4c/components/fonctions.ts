@@ -9,7 +9,7 @@ import FeuxForet from '@/assets/images/feux.webp';
 import Inondation from '@/assets/images/inondation.webp';
 import RGA from '@/assets/images/rga.webp';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
-import { Patch4 } from '../postgres/models';
+import { Patch4 } from '@/lib/postgres/models';
 
 export const patch4Indices = (patch4: Patch4) => [
   {
