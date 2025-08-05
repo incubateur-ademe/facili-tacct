@@ -44,9 +44,10 @@
     .extCircle {
         width: 338px;
         height: 338px;
-        border: 1px solid var(--gris-light);
+        border: 1px solid var(--gris-medium);
         border-radius: 50%;
         position: relative;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.04);
         .CircleItem {
             position: absolute;
             display: flex;
@@ -115,11 +116,12 @@
 .IndicesDetailWrapper {
     display: flex;
     flex-direction: row;
-    border: 1px solid var(--gris-light);
+    border: 1px solid var(--gris-medium);
     border-radius: 1rem;
     padding: 1.875rem;
     margin: 2rem 0;
     column-gap: 1.5rem;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
     .IndiceIcon {
         width: 60px;
         height: 60px;

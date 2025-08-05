@@ -158,13 +158,15 @@ export const Body = ({
   weight = 'regular',
   size = 'md',
   color = "#23282B",
-  style
+  style,
+  margin = "0"
 }: {
   children: React.ReactNode;
   weight?: 'regular' | 'medium' | 'bold';
   size?: 'sm' | 'md' | 'lg';
   color?: string;
   style?: React.CSSProperties;
+  margin?: string;
 }) => {
   return (
     <p
@@ -174,7 +176,7 @@ export const Body = ({
         fontWeight: weight === 'bold' ? 700 : weight === 'medium' ? 500 : 400,
         letterSpacing: "0.4px",
         fontFamily: "Marianne",
-        margin: "0",
+        margin: margin,
         ...style,
       }}
     >

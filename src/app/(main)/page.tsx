@@ -71,6 +71,13 @@ const Home = () => {
               Avec Facili-TACCT, identifiez les vulnérabilités de votre territoire aux impacts du changement climatique.
             </OptimalParagraph>
           </div>
+          <HomeButton
+            link="/rechercher-son-territoire"
+            borderColor="#0063CB"
+            backgroundColor="#0063CB"
+            textColor="#FFFFFF"
+            text='Explorer les données de mon territoire'
+          />
         </Container>
       </div>
       {

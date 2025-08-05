@@ -32,30 +32,44 @@ export const nodeCategoryMapping = {
 };
 
 export const nomThematiques = [
-  { label: 'Continuité des services', labelRadius: 300 },
-  { label: 'Bâtiment & Logement', labelRadius: 290 },
-  { label: 'Confort thermique', labelRadius: 280 },
-  { label: 'Gestion des risques', labelRadius: 280 },
-  { label: 'Santé' },
-  { label: 'Aménagement', labelRadius: 310 },
-  { label: 'Forêts', labelRadius: 270 },
-  { label: 'Eau' },
-  { label: 'Biodiversité', labelRadius: 290 },
-  { label: 'Air' },
-  { label: 'Entreprises' },
-  { label: 'Tourisme', labelRadius: 280 },
-  { label: 'Agriculture & pêche', labelRadius: 300 },
-  { label: 'Filière bois', labelRadius: 290 }
+  { label: 'Continuité des services', labelRadius: 280, icon: '🏥' },
+  { label: 'Bâtiment & Logement', labelRadius: 270, icon: '🏠' },
+  { label: 'Confort thermique', labelRadius: 260, icon: '🌡️' },
+  { label: 'Gestion des risques', labelRadius: 260, icon: '⚠️' },
+  { label: 'Santé', icon: '🏥' },
+  { label: 'Aménagement', labelRadius: 290, icon: '🏗️' },
+  { label: 'Forêts', labelRadius: 250, icon: '🌳' },
+  { label: 'Eau', icon: '💧' },
+  { label: 'Biodiversité', labelRadius: 270, icon: '🌼' },
+  { label: 'Air', labelRadius: 240, icon: '🌬️' },
+  { label: 'Entreprises', labelRadius: 240, icon: '🏢' },
+  { label: 'Tourisme', labelRadius: 260, icon: '🏖️' },
+  { label: 'Agriculture & pêche', labelRadius: 280, icon: '🐟' },
+  { label: 'Filière bois', labelRadius: 270, icon: '🌲' }
 ];
 
+// liens entre les thématiques
 export const liensEntreThematiques = [
-  // liens entre les thématiques
+  // Confort thermique
   {
-    source: 'Continuité des services',
-    target: 'Eau',
+    source: 'Confort thermique',
+    target: 'Bâtiment & Logement',
     curve: 1,
-    curveRadius: 0.15
+    curveRadius: 1
   },
+  {
+    source: 'Confort thermique',
+    target: 'Aménagement',
+    curve: 1,
+    curveRadius: 0.6
+  },
+  {
+    source: 'Confort thermique',
+    target: 'Tourisme',
+    curve: 1,
+    curveRadius: 0.26
+  },
+  // Thématique santé
   {
     source: 'Gestion des risques',
     target: 'Santé',

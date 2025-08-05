@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { liensEntreThematiques } from './constantes/categories';
+import { liensEntreThematiques } from '../constantes/categories';
 import RoueSystemique from './roue';
 
 const RouePage = () => {

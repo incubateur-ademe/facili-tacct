@@ -1,8 +1,8 @@
 "use client";
+import { agravationItems } from '@/app/(main)/_(nouveau-parcours)/patch4c/components/constantes';
 import InfoIcon from '@/assets/icons/info_round_icon_black.svg';
 import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
 import { Body } from "@/design-system/base/Textes";
-import { agravationItems } from '@/lib/patch4/constantes';
 import Image from "next/image";
 import styles from './patch4c.module.scss';
 

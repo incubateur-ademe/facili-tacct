@@ -1,6 +1,6 @@
 
+import { getBackgroundColor, patch4Indices } from '@/app/(main)/_(nouveau-parcours)/patch4c/components/fonctions';
 import { Body, H3 } from '@/design-system/base/Textes';
-import { getBackgroundColor, patch4Indices } from "@/lib/patch4/fonctions";
 import { Patch4 } from "@/lib/postgres/models";
 import Image from 'next/image';
 import { Fragment } from 'react';

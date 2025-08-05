@@ -1,6 +1,6 @@
 "use client";
+import { getBackgroundColor, getItemPosition, patch4Indices } from '@/app/(main)/_(nouveau-parcours)/patch4c/components/fonctions';
 import { Body } from '@/design-system/base/Textes';
-import { getBackgroundColor, getItemPosition, patch4Indices } from '@/lib/patch4/fonctions';
 import { Patch4 } from "@/lib/postgres/models";
 import Image from 'next/image';
 import { useState } from 'react';
@@ -75,8 +75,9 @@ const CircleVisualization = ({
         <div
           className={styles.lateralWrapper}
           style={{
-            border: selectedItem ? '1px solid var(--gris-light)' : 'none',
+            border: selectedItem ? '1px solid var(--gris-medium)' : 'none',
             margin: selectedItem ? '3rem' : '0px',
+            boxShadow: selectedItem ? '0 2px 15px rgba(0, 0, 0, 0.08)' : 'none',
           }}
         >
           <button
@@ -84,12 +85,11 @@ const CircleVisualization = ({
             onClick={handleClose}
             style={{ opacity: showContent ? 1 : 0 }}
           >
-            X
+            ×
           </button>
           <div style={{
             opacity: showContent ? 1 : 0,
             transition: 'opacity 0.3s ease-in-out',
-            transitionDelay: showContent ? '0s' : '0s'
           }}>
             <Body size='lg' weight='bold'>{indices.find(item => item.key === selectedItem)?.label}</Body>
             <br></br>
