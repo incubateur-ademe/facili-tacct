@@ -1,6 +1,6 @@
 import ButtonsGroup from "@codegouvfr/react-dsfr/ButtonsGroup";
-import artworkOvoidSvgUrl from "@codegouvfr/react-dsfr/design-system/artwork/background/ovoid.svg";
-import artworkTechnicalErrorSvgUrl from "@codegouvfr/react-dsfr/design-system/artwork/pictograms/system/technical-error.svg";
+import artworkOvoidSvgUrl from "@codegouvfr/react-dsfr/dsfr/artwork/background/ovoid.svg";
+import artworkTechnicalErrorSvgUrl from "@codegouvfr/react-dsfr/dsfr/artwork/pictograms/system/technical-error.svg";
 import { type StaticImageData } from "next/image";
 import { type ReactNode } from "react";
 

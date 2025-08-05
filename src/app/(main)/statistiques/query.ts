@@ -189,13 +189,18 @@ LIMIT 100000
           // Convert dates to string format and calculate total
           const formattedDates = dates.map((date: any) => {
             if (date instanceof Date) {
-              return date.toISOString().split('T')[0];
+              return date.toISOString().split('T')[0].split('-', 2).join('-');
             } else if (typeof date === 'string') {
-              return new Date(date)
-                .toISOString()
-                .split('T')[0]
-                .split('-', 2)
-                .join('-');
+              return (
+                new Date(date).toLocaleString('default', { month: 'long' }) +
+                ' ' +
+                new Date(date).getFullYear()
+              );
+              // return new Date(date)
+              //   .toISOString()
+              //   .split('T')[0]
+              //   .split('-', 2)
+              //   .join('-');
             }
             return date.toString();
           });

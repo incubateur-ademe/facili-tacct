@@ -73,7 +73,7 @@ export const LineChart = (props: Props) => {
       margin={{
         top: 50,
         right: 50,
-        bottom: 50,
+        bottom: 70,
         left: 60
       }}
       axisBottom={{

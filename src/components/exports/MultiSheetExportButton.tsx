@@ -95,7 +95,7 @@ export const MultiSheetExportButton = ({
       });
 
       if (documentationSheet && documentationSheet.length > 0) {
-        dataForExport['documentation'] = documentationSheet;
+        dataForExport['Documentation'] = documentationSheet;
       }
 
       exportMultipleSheetToXLSX(dataForExport, baseName, type, libelle);
