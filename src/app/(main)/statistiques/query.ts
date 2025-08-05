@@ -192,7 +192,7 @@ LIMIT 100000
               return date.toISOString().split('T')[0].split('-', 2).join('-');
             } else if (typeof date === 'string') {
               return (
-                new Date(date).toLocaleString('default', { month: 'long' }) +
+                new Date(date).toLocaleString('fr', { month: 'long' }) +
                 ' ' +
                 new Date(date).getFullYear()
               );
