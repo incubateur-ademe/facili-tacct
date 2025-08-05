@@ -155,7 +155,7 @@ export const BarreDeRecherche = () => {
               }
             })
           }
-          style={{ minWidth: width && width > 520 ? 300 : 0, width: '100%' }}
+          style={{ minWidth: width && width > 520 ? 300 : 0, width: '100%', alignItems: 'center' }}
           renderInput={({ className, id, placeholder, type }) => (
             <MySearchInput
               className={className}

@@ -18,9 +18,18 @@ export const Container = ({ children, className, fluid, size, ...rest }: Contain
   );
 };
 
-export const NewContainer = ({ children, className, size, ...rest }: ContainerProps) => {
+export const NewContainer = ({
+  children,
+  size = "xl",
+  style
+}: {
+  children: React.ReactNode;
+  size?: "md" | "sm" | "xl";
+  style?: React.CSSProperties;
+}) => {
   return (
-    <div className="w-[1200px] py-12 mx-auto">
+    <div
+      className={`py-12 mx-auto ${size === "md" ? "max-w-[768px]" : size === "sm" ? "max-w-[576px]" : "max-w-[1200px]"}`} style={style}>
       {children}
     </div>
   );
