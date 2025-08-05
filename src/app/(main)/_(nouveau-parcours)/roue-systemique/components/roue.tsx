@@ -1,20 +1,15 @@
 "use client";
-//TODO REPLACE types (any everywhere)
-
+import { Loader } from "@/components/loader";
+import { Body } from "@/design-system/base/Textes";
+import { Any } from "@/lib/utils/types";
 import * as d3 from "d3";
 import { useEffect, useRef, useState } from "react";
-
 // Import CircleType (types seront déclarés en tant que any)
-import { Any } from "@/lib/utils/types";
 // @ts-ignore
 import CircleType from 'circletype';
-import { categoriesNoeuds, liensEntreThematiques, nodeCategoryMapping, nomThematiques, PositionArcsDonut } from "./constantes/categories";
-import { categoryColors, categorySelectedBorderColors, categorySelectedColors } from "./constantes/colors";
-import { categorieTextParametres, DistanceTextes } from "./constantes/textesSVG";
-
-type circle = {
-  [key: string]: boolean;
-};
+import { categoriesNoeuds, liensEntreThematiques, nodeCategoryMapping, nomThematiques, PositionArcsDonut } from "../constantes/categories";
+import { categoryColors, categorySelectedBorderColors, categorySelectedColors } from "../constantes/colors";
+import { categorieTextParametres, DistanceTextes } from "../constantes/textesSVG";
 
 type NoeudRoue = {
   id: string;
@@ -29,27 +24,15 @@ type NoeudRoue = {
   originalIndex?: number;
 };
 
-type ThematiquesRoue = {
-  category: string;
-  color: string;
-  id: string;
-  label: string;
-  labelRadius: number;
-  size: number;
-  textColor: string;
-  x: number;
-  y: number;
-}
-
 interface RoueSystemiqueProps {
   onItemSelect?: (item: string | null) => void;
   selectedItem?: string | null;
 }
 
 const dimensions = {
-  width: 800,
+  width: 655,
   height: 600,
-  margin: { top: 4 * 16, right: 16, bottom: 16, left: 16 },
+  margin: { top: 0, right: 0, bottom: 0, left: 0 },
 };
 
 const getCategoryColor = (label: string) => {
@@ -63,7 +46,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
   const svgWidth = Number(width) + margin.left + margin.right;
   const svgHeight = Number(height) + margin.top + margin.bottom;
   const [selectedThematique, setSelectedThematique] = useState<string | null>(selectedItem || null);
-  const radiusRoueSytemique = 200;
+  const radiusRoueSytemique = 180;
   const defaultLabelRadius = radiusRoueSytemique + 70;
   const NoeudsRoue: NoeudRoue[] = [];
   // Paramètre pour la rotation de la roue (en degrés)
@@ -124,7 +107,6 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
     svgEl.selectAll("*").remove();
     const svg = svgEl.append("g").attr("transform", `translate(${svgWidth / 2},${svgHeight / 2})`);
     const defs = svg.append("defs");
-
     // liens directs entre les cercles des thématiques
     svg.selectAll("path.l2tol2")
       .data(liensEntreThematiques)
@@ -146,7 +128,6 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         const startY = sourceNode.y + circleRadius * Math.sin(sourceAngleToCenter);
         const endX = targetNode.x + circleRadius * Math.cos(targetAngleToCenter);
         const endY = targetNode.y + circleRadius * Math.sin(targetAngleToCenter);
-
         const mx = (startX + endX) / 2;
         const my = (startY + endY) / 2;
 
@@ -199,7 +180,6 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
                 .attr("y1", `${y1}%`)
                 .attr("x2", `${x2}%`)
                 .attr("y2", `${y2}%`);
-
               gradient.append("stop")
                 .attr("offset", "0%")
                 .attr("stop-color", sourceColor);
@@ -228,7 +208,6 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         }
         return 0; // Largeur 0 quand invisible
       });
-
 
     svg.selectAll("circle.l2")
       .data(NoeudsRoue)
@@ -349,7 +328,6 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         newCategoriePositions[category] = { x, y, rotation: 0 };
       }
     });
-
     setCategoriePositions(newCategoriePositions);
 
     // Labels des catégories avec CircleType
@@ -386,7 +364,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         if (currentLine) lines.push(currentLine.trim());
         const tempText = d3.select(this)
           .append("text")
-          .attr("font-size", 16)
+          .attr("font-size", 14)
           .attr("font-family", "Marianne");
         let maxLineWidth = 0;
         lines.forEach(line => {
@@ -405,7 +383,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         let strokeDasharray = "2 2";
         let paddingX = 16;
         let paddingY = 8;
-        const fontSize = 16;
+        const fontSize = 14;
         if (selectedThematique === d.label) {
           // L'item sélectionné utilise la couleur de contour la plus foncée
           const category = nodeCategoryMapping[d.label as keyof typeof nodeCategoryMapping];
@@ -451,6 +429,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       });
   }, [selectedThematique, svgWidth, svgHeight]);
 
+  console.log(svgRef, svgWidth)
   return (
     <div style={{ position: 'relative', width: svgWidth, height: svgHeight, alignSelf: "baseline" }}>
       <svg
@@ -461,43 +440,34 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       />
 
       {/* Texte central qui disparaît lors de la sélection */}
-      <div
-        style={{
-          position: 'absolute',
-          left: '50%',
-          top: '50%',
-          transform: 'translate(-50%, -50%)',
-          textAlign: 'center',
-          maxWidth: '300px',
-          opacity: selectedThematique ? 0 : 1,
-          transition: selectedThematique ? 'none' : 'opacity 0.5s ease-in-out',
-          zIndex: 3,
-          pointerEvents: 'none'
-        }}
-      >
-        <p style={{
-          fontSize: '18px',
-          fontWeight: 'bold',
-          fontFamily: 'Marianne',
-          lineHeight: '1.4',
-          color: '#2D3748',
-          margin: '0 0 16px 0'
-        }}>
-          Votre territoire est un système où tout est lié.
-        </p>
-        <p style={{
-          fontSize: '16px',
-          fontFamily: 'Marianne',
-          lineHeight: '1.5',
-          color: '#4A5568',
-          margin: 0
-        }}>
-          Explorez les thématiques et découvrez comment elles peuvent être impactées par les aléas climatiques
-        </p>
-      </div>
+      {
+        svgRef && svgRef.current ? (
+          <div
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
+              textAlign: 'center',
+              maxWidth: '300px',
+              opacity: selectedThematique ? 0 : 1,
+              transition: selectedThematique ? 'none' : 'opacity 0.5s ease-in-out',
+              zIndex: 3,
+              pointerEvents: 'none'
+            }}
+          >
+            <Body weight="bold">
+              Votre territoire est un système où tout est lié.
+            </Body>
+            <br />
+            <Body>
+              Explorez les thématiques et découvrez comment elles peuvent être impactées par les aléas climatiques
+            </Body>
+          </div>
+        ) : <Loader />
+      }
 
       {/* Textes des catégories avec CircleType - contrôle individuel */}
-
       {/* Cadre de vie */}
       {categoriePositions["Cadre de vie"] && (
         <div
@@ -516,7 +486,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           style={{
             position: 'absolute',
             left: `${categoriePositions["Cadre de vie"].x}px`,
-            top: `${categoriePositions["Cadre de vie"].y - 53}px`,
+            top: `${categoriePositions["Cadre de vie"].y - 75}px`,
             transform: `rotate(0deg)`, // Rotation pour Cadre de vie
             fontSize: '14px',
             fontWeight: 'bold',
@@ -550,9 +520,9 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           }}
           style={{
             position: 'absolute',
-            left: `${categoriePositions["Ressources naturelles"].x + 15}px`,
-            top: `${categoriePositions["Ressources naturelles"].y - 45}px`,
-            transform: `rotate(-58deg)`, // Rotation pour Ressources naturelles
+            left: `${categoriePositions["Ressources naturelles"].x + 34}px`,
+            top: `${categoriePositions["Ressources naturelles"].y - 36}px`,
+            transform: `rotate(-57deg)`, // Rotation pour Ressources naturelles
             fontSize: '14px',
             fontWeight: 'bold',
             fontFamily: 'Marianne',
@@ -584,9 +554,9 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           }}
           style={{
             position: 'absolute',
-            left: `${categoriePositions["Ressources économiques"].x - 11}px`,
-            top: `${categoriePositions["Ressources économiques"].y - 34}px`,
-            transform: `rotate(58deg)`, // Rotation pour Ressources économiques
+            left: `${categoriePositions["Ressources économiques"].x - 30}px`,
+            top: `${categoriePositions["Ressources économiques"].y - 25}px`,
+            transform: `rotate(57deg)`, // Rotation pour Ressources économiques
             fontSize: '14px',
             fontWeight: 'bold',
             fontFamily: 'Marianne',

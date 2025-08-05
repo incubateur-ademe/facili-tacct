@@ -3,7 +3,7 @@ import InfoIcon from '@/assets/icons/info_round_icon_black.svg';
 import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
 import { Body } from "@/design-system/base/Textes";
 import Image from "next/image";
-import { agravationItems } from '../../../../lib/patch4/constantes';
+import { agravationItems } from './components/constantes';
 import styles from './patch4c.module.scss';
 
 const CursorVisualization = () => {
