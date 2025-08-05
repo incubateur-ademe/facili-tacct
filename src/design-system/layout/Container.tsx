@@ -17,3 +17,20 @@ export const Container = ({ children, className, fluid, size, ...rest }: Contain
     </Box>
   );
 };
+
+export const NewContainer = ({
+  children,
+  size = "xl",
+  style
+}: {
+  children: React.ReactNode;
+  size?: "md" | "sm" | "xl";
+  style?: React.CSSProperties;
+}) => {
+  return (
+    <div
+      className={`py-12 mx-auto ${size === "md" ? "max-w-[768px]" : size === "sm" ? "max-w-[576px]" : "max-w-[1200px]"}`} style={style}>
+      {children}
+    </div>
+  );
+};

@@ -22,14 +22,31 @@ const SandboxUserPage = async ({ params }: { params: Promise<SegmentParams> }) =
       </div>
       <h1>Bienvenue dans l'espace protégé de {user}</h1>
       <p>Contenu réservé à {user}.</p>
-      <Button
-        variant="contained"
-        color="primary"
-        href="/sandbox/audrey/roue"
-        sx={{ mt: 2 }}
-      >
-        Accéder à la roue systémique
-      </Button>
+      {
+        user === 'celine' && (
+          <Button
+            variant="contained"
+            color="primary"
+            href="/sandbox/celine/home"
+            sx={{ mt: 2 }}
+          >
+            Accéder à la home page
+          </Button>
+        )
+      }
+      {
+        user === 'audrey' && (
+          <Button
+            variant="contained"
+            color="primary"
+            href="/sandbox/audrey/roue"
+            sx={{ mt: 2 }}
+          >
+            Accéder à la roue systémique
+          </Button>
+        )
+      }
+
     </div>
   );
 }

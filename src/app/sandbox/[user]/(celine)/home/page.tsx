@@ -1,23 +1,23 @@
 'use client';
 
+import { HomeButton } from '@/app/(main)/homeButton';
+import { HomeCard } from '@/app/(main)/homeCard';
+import styles from '@/app/(main)/main.module.scss';
 import CommunauteImg from '@/assets/images/communaute_home.webp';
 import Patch4Img from '@/assets/images/patch4_home.png';
 import RessourcesImg from '@/assets/images/ressources_home.webp';
 import { Loader } from '@/components/loader';
 import OptimalParagraph from '@/components/utils/OptimalParagraph';
 import { Body } from '@/design-system/base/Textes';
+import { Container } from '@/design-system/layout';
 import MiddlePageTrigger from '@/hooks/MiddlePageTrigger';
 import useWindowDimensions from '@/hooks/windowDimensions';
-import { homeCards } from '@/lib/homeCards';
+import { homeCards } from '@/lib/homaCards';
 import Notice from '@codegouvfr/react-dsfr/Notice';
 import Image from 'next/image';
 import { lazy, useEffect, useState } from 'react';
-import { Container } from './../../design-system/layout';
-import { HomeButton } from './homeButton';
-import { HomeCard } from './homeCard';
-import styles from './main.module.scss';
 
-const CollectiviteSearch = lazy(() => import('./CollectiviteSearch'));
+const CollectiviteSearch = lazy(() => import('@/app/(main)/CollectiviteSearch'));
 
 const Home = () => {
   const [noticeClosed, setNoticeClosed] = useState(false);
@@ -115,13 +115,13 @@ const Home = () => {
               <p>
                 Pour accéder aux données, saisissez le nom de votre territoire dans le champ ci-dessus.
               </p>
-              {/* <HomeButton
-                link="/rechercher-son-territoire-patch4"
+              <HomeButton
+                link="/sandbox/celine/rechercher-son-territoire-patch4"
                 borderColor="#0063CB"
                 backgroundColor="#0063CB"
                 textColor="#FFFFFF"
                 text='Accéder au Patch 4°C'
-              /> */}
+              />
             </div>
           </div>
         </Container>
