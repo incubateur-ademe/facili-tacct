@@ -1,7 +1,7 @@
 'use server';
 
 import { LineChart } from '@/components/charts/stats/lineChart';
-import { Container } from '@/design-system/layout';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { GetUniqueUsersHogQL } from '../query';
 import styles from '../stats.module.scss';
 
@@ -10,7 +10,7 @@ const UniqueUsers = async () => {
   // const data = Array.isArray(uniqueUsers) ? uniqueUsers : undefined;
   let data = await GetUniqueUsersHogQL();
   return (
-    <Container m="4w">
+    <div className='my-12'>
       {data ? (
         <div
           style={{
@@ -45,13 +45,13 @@ const UniqueUsers = async () => {
           <p>
             Depuis le 1er novembre 2024, la somme
             totale d'utilisateurs uniques est de :{' '}
-            {data ? data[0].count : ''}.
+            {data ? Round(data[0].count, 0) : ''}.
           </p>
         </div>
       ) : (
         ''
       )}
-    </Container>
+    </div>
   );
 };
 

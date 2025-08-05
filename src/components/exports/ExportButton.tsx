@@ -52,7 +52,7 @@ export const ExportButton = ({
         exportMultipleSheetToXLSX(
           {
             [sheetName]: data,
-            documentation: Array.isArray(documentation) ? documentation : [{ Documentation: documentation }],
+            Documentation: Array.isArray(documentation) ? documentation : [{ Documentation: documentation }],
           },
           baseName,
           type,
