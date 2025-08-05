@@ -1,9 +1,9 @@
 "use client";
 import { Body } from '@/design-system/base/Textes';
-import { getBackgroundColor, getItemPosition, patch4Indices } from '@/lib/patch4/fonctions';
 import { Patch4 } from "@/lib/postgres/models";
 import Image from 'next/image';
 import { useState } from 'react';
+import { getBackgroundColor, getItemPosition, patch4Indices } from './components/fonctions';
 import styles from './patch4c.module.scss';
 
 const CircleVisualization = ({
@@ -74,8 +74,9 @@ const CircleVisualization = ({
         <div
           className={styles.lateralWrapper}
           style={{
-            border: selectedItem ? '1px solid var(--gris-light)' : 'none',
+            border: selectedItem ? '1px solid var(--gris-medium)' : 'none',
             margin: selectedItem ? '3rem' : '0px',
+            boxShadow: selectedItem ? '0 2px 15px rgba(0, 0, 0, 0.08)' : 'none',
           }}
         >
           <button
@@ -83,7 +84,7 @@ const CircleVisualization = ({
             onClick={handleClose}
             style={{ opacity: showContent ? 1 : 0 }}
           >
-            X
+            ×
           </button>
           <div style={{
             opacity: showContent ? 1 : 0,

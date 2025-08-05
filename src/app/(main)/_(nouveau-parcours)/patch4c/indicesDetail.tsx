@@ -1,9 +1,9 @@
 
 import { Body, H3 } from '@/design-system/base/Textes';
-import { getBackgroundColor, patch4Indices } from "@/lib/patch4/fonctions";
 import { Patch4 } from "@/lib/postgres/models";
 import Image from 'next/image';
 import { Fragment } from 'react';
+import { getBackgroundColor, patch4Indices } from "./components/fonctions";
 import styles from './patch4c.module.scss';
 
 const IndicesDetail = ({
