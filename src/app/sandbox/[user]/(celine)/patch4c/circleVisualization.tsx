@@ -55,6 +55,7 @@ const CircleVisualization = ({
                     alt={item.label}
                     width={34}
                     height={34}
+                  // style={{ filter: item.value === "Aggravation très forte" ? 'invert(1) brightness(1)' : 'none' }}
                   />
                 </div>
                 {/* Label */}
