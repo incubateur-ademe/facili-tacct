@@ -27,7 +27,7 @@ const CircleVisualization = ({
   };
 
   return (
-    <div className="flex w-full min-h-[400px]">
+    <div className={styles.CircleVisualizationContainer}>
       <div
         className={styles.CircleVisualizationWrapper}
         style={{ width: selectedItem ? '50%' : '100%' }}

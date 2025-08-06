@@ -1,5 +1,6 @@
 'use client';
 
+import maisonIcon from '@/assets/icons/maison_icon_black.svg';
 import ressourcesIcon from '@/assets/icons/ressources_icon_blue.svg';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { DarkClass } from '@/lib/utils/DarkClass';
@@ -42,6 +43,7 @@ const HeaderComp = () => {
   const params = usePathname();
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
+  console.log("params", params);
   const posthog = usePostHog();
   const { css } = useStyles();
   const window = useWindowDimensions();
@@ -99,6 +101,40 @@ const HeaderComp = () => {
           </Button>
         )
       ]}
+      navigation={params !== "/" ? [
+        {
+          linkProps: {
+            href: '/',
+            target: '_self'
+          },
+          text: <Image src={maisonIcon} alt="Accueil" width={20} height={20} title="Accueil" />
+        },
+        {
+          isActive: [
+            '/donnees-territoriales',
+            "/rechercher-son-territoire",
+          ].includes(params) ? true : false,
+          linkProps: {
+            href: '#',
+            target: '_self'
+          },
+          text: 'Explorer les données de mon territoire'
+        },
+        {
+          linkProps: {
+            href: '#',
+            target: '_self'
+          },
+          text: 'accès direct'
+        },
+        {
+          linkProps: {
+            href: '#',
+            target: '_self'
+          },
+          text: 'accès direct'
+        }
+      ] : []}
     />
   );
 };

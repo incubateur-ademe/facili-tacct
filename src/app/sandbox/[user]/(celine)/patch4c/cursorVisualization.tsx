@@ -1,5 +1,5 @@
 "use client";
-import { agravationItems } from '@/app/(main)/_(nouveau-parcours)/patch4c/components/constantes';
+import { agravationItems } from '@/app/(main)/(nouveau-parcours)/patch4c/components/constantes';
 import InfoIcon from '@/assets/icons/info_round_icon_black.svg';
 import { HtmlTooltip } from '@/components/utils/HtmlTooltip';
 import { Body } from "@/design-system/base/Textes";

@@ -1,4 +1,4 @@
-import { SearchBarComp } from '@/components/searchbar/SearchBar';
+// import { SearchBarComp } from '@/components/searchbar/SearchBar';
 import styles from './main.module.scss';
 
 const CollectiviteSearch = () => {
@@ -7,7 +7,7 @@ const CollectiviteSearch = () => {
       <h2 className="text-center text-[1.5rem] font-weight-700">
         Quel territoire représentez-vous ?
       </h2>
-      <SearchBarComp />
+      {/* <SearchBarComp /> */}
     </div>
   );
 };

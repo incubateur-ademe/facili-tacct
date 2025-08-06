@@ -13,7 +13,7 @@ const IndicesDetail = ({
 }) => {
   const indices = patch4Indices(patch4);
   return (
-    <>
+    <div className={styles.IndicesDetailContainer}>
       {
         indices.map((indice) => (
           <Fragment key={indice.key}>
@@ -51,7 +51,7 @@ const IndicesDetail = ({
                               ))}
                             </ul>
                           )}
-                          <div style={{ border: '1px solid var(--gris-medium-dark)', width: "100%", margin: '1.5rem 0 0' }} />
+                          <div style={{ borderBottom: '1px solid var(--gris-medium-dark)', width: "100%", margin: '1.5rem 0 0' }} />
                           <Body size='lg' weight='bold' style={{ margin: '1.5rem 0 1.125rem' }}>Pistes d'action</Body>
                           {
                             indice.actions.map((action, i) => (
@@ -72,7 +72,7 @@ const IndicesDetail = ({
           </Fragment>
         ))
       }
-    </>
+    </div>
   );
 }
 
