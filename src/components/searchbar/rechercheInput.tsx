@@ -52,15 +52,15 @@ export const MySearchInput = ((props: SearchInputProps) => {
   const handleClick = () => {
     if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
       router.push(
-        `/thematiques?code=200054781&libelle=${searchLibelle}&type=ept`
+        `/roue-systemique?code=200054781&libelle=${searchLibelle}&type=ept`
       );
     } else if (searchCode.length !== 0) {
       router.push(
-        `/thematiques?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
+        `/roue-systemique?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
       )
     } else if (searchLibelle.length !== 0) {
       router.push(
-        `/thematiques?libelle=${searchLibelle}&type=${typeTerritoire}`
+        `/roue-systemique?libelle=${searchLibelle}&type=${typeTerritoire}`
       );
     }
   };
@@ -112,7 +112,7 @@ export const MySearchInput = ((props: SearchInputProps) => {
           handleClick();
         }
       }}
-      renderOption={(props, option) => 
+      renderOption={(props, option) =>
         <RenderOption
           props={props}
           option={option}
