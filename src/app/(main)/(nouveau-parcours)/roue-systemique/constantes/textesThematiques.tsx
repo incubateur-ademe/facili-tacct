@@ -1,6 +1,37 @@
 import { Body } from "@/design-system/base/Textes";
 import { JSX } from "react";
 
+export const menuLateralThematiques = {
+  "Confort thermique": {
+    thematiquesLiees: [
+      {
+        id: "section1",
+        thematique: "Santé",
+        icone: "🏥",
+        sousCategories: ["Grand âge", "Précarité énergétique", "Emplois en extérieur"]
+      },
+      {
+        id: "section2",
+        thematique: "Bâtiment & Logement",
+        icone: "🏠",
+        sousCategories: ["Âge du bâtiment"]
+      },
+      {
+        id: "section3",
+        thematique: "Aménagement",
+        icone: "🏗️",
+        sousCategories: ["Types de sols", "LCZ"]
+      },
+      {
+        id: "section4",
+        thematique: "Tourisme",
+        icone: "🏖️",
+        sousCategories: ["Indicateur tourisme"]
+      }
+    ]
+  }
+};
+
 export const thematiquesInfo: {
   [key: string]: { title: string; description: JSX.Element; link: string };
 } = {
@@ -50,7 +81,7 @@ export const thematiquesInfo: {
         </Body>
       </div>
     ),
-    link: 'Inconfort thermique'
+    link: 'Confort thermique'
   },
   'Gestion des risques': {
     title: 'Gestion des risques',
