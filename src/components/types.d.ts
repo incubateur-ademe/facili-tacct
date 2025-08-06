@@ -19,11 +19,12 @@ type SearchInputProps = {
   placeholder: string;
   type: string;
   typeTerritoire: string | undefined;
+  RechercherRedirection: () => void;
 };
 
 type SearchInputOptionsProps = {
-  props: HTMLAttributes<HTMLLIElement>
-  option: SearchInputOptions
+  props: HTMLAttributes<HTMLLIElement>;
+  option: SearchInputOptions;
 };
 
 type SearchInputTagProps = {

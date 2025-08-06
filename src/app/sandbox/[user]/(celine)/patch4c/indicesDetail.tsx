@@ -1,5 +1,5 @@
 
-import { getBackgroundColor, patch4Indices } from '@/app/(main)/_(nouveau-parcours)/patch4c/components/fonctions';
+import { getBackgroundColor, patch4Indices } from '@/app/(main)/(nouveau-parcours)/patch4c/components/fonctions';
 import { Body, H3 } from '@/design-system/base/Textes';
 import { Patch4 } from "@/lib/postgres/models";
 import Image from 'next/image';

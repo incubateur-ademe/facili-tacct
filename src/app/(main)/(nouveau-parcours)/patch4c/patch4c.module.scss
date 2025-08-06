@@ -36,18 +36,25 @@
     }
 }
 
+.CircleVisualizationContainer {
+    width: 100%;
+    display: flex;
+    min-height: 400px;
+    margin: 1rem 0 1rem;
+}
+
 .CircleVisualizationWrapper {
     transition: width 1s ease-in-out;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 3rem;
-    margin-right: -3rem;
+    padding-left: 4rem;
+    margin-right: -4rem;
     .extCircle {
         width: 338px;
         height: 338px;
         border: 1px solid var(--gris-medium);
-        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.04);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
         border-radius: 50%;
         position: relative;
         .CircleItem {
@@ -113,6 +120,10 @@
         font-size: 1rem;
         font-weight: bold;
     }
+}
+
+.IndicesDetailContainer {
+    margin: 4rem 0;
 }
 
 .IndicesDetailWrapper {

@@ -1,5 +1,5 @@
 "use client";
-import { getBackgroundColor, getItemPosition, patch4Indices } from '@/app/(main)/_(nouveau-parcours)/patch4c/components/fonctions';
+import { getBackgroundColor, getItemPosition, patch4Indices } from '@/app/(main)/(nouveau-parcours)/patch4c/components/fonctions';
 import { Body } from '@/design-system/base/Textes';
 import { Patch4 } from "@/lib/postgres/models";
 import Image from 'next/image';
