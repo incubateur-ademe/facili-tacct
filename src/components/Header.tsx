@@ -1,12 +1,11 @@
 'use client';
 
 import maisonIcon from '@/assets/icons/maison_icon_black.svg';
-import ressourcesIcon from '@/assets/icons/ressources_icon_blue.svg';
+import { handleRedirection } from '@/hooks/Redirections';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { DarkClass } from '@/lib/utils/DarkClass';
 import { eptRegex } from '@/lib/utils/regex';
 import Header from '@codegouvfr/react-dsfr/Header';
-import { Button } from '@mui/material';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { usePostHog } from 'posthog-js/react';
@@ -43,6 +42,7 @@ const HeaderComp = () => {
   const params = usePathname();
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
+  const type = searchParams.get('type')!;
   console.log("params", params);
   const posthog = usePostHog();
   const { css } = useStyles();
@@ -55,10 +55,30 @@ const HeaderComp = () => {
     });
   };
 
+  const redirectionPatch4 = handleRedirection({
+    searchCode: (type === "epci" || type === "commune") ? code : '',
+    searchLibelle: (type === "epci" || type === "commune") ? libelle : '',
+    typeTerritoire: type as 'epci' | 'commune',
+    page: (type === "epci" || type === "commune") ? 'patch4c' : 'rechercher-son-territoire-patch4'
+  });
+
+  const redirectionExplorerMesDonnees = handleRedirection({
+    searchCode: code || '',
+    searchLibelle: libelle || '',
+    typeTerritoire: type as 'epci' | 'commune',
+    page: type ? 'roue-systemique' : 'rechercher-son-territoire'
+  });
+
   return (
     <Header
       className={css({
-        zIndex: '500'
+        zIndex: '500',
+        '.fr-nav__link[aria-current]': {
+          color: 'var(--principales-vert)',
+          ':before': {
+            backgroundColor: 'var(--principales-vert)',
+          }
+        }
       })}
       brandTop={<Brand />}
       homeLinkProps={{
@@ -76,30 +96,30 @@ const HeaderComp = () => {
         ) : libelle ? (
           <Localisation libelle={libelle} />
         ) : null,
-        (params.includes('ressources') || params === "/") ? null : (
-          <Button
-            key="0"
-            variant="outlined"
-            href="/ressources"
-            startIcon={<Image src={ressourcesIcon} alt="" />}
-            sx={{
-              textTransform: 'none',
-              color: '#0063CB',
-              borderRadius: '4px',
-              border: '1px solid #0063CB',
-              padding: '0.5em 1em',
-              fontWeight: 500,
-              fontFamily: 'inherit',
-              fontSize: '1rem',
-              height: '48px',
-              top: '-0.5em',
-              margin: '0 0 0 1em'
-            }}
-            onClick={RessourcesClick}
-          >
-            Ressources
-          </Button>
-        )
+        // (params.includes('ressources') || params === "/") ? null : (
+        //   <Button
+        //     key="0"
+        //     variant="outlined"
+        //     href="/ressources"
+        //     startIcon={<Image src={ressourcesIcon} alt="" />}
+        //     sx={{
+        //       textTransform: 'none',
+        //       color: '#0063CB',
+        //       borderRadius: '4px',
+        //       border: '1px solid #0063CB',
+        //       padding: '0.5em 1em',
+        //       fontWeight: 500,
+        //       fontFamily: 'inherit',
+        //       fontSize: '1rem',
+        //       height: '48px',
+        //       top: '-0.5em',
+        //       margin: '0 0 0 1em'
+        //     }}
+        //     onClick={RessourcesClick}
+        //   >
+        //     Ressources
+        //   </Button>
+        // )
       ]}
       navigation={params !== "/" ? [
         {
@@ -112,27 +132,53 @@ const HeaderComp = () => {
         {
           isActive: [
             '/donnees-territoriales',
-            "/rechercher-son-territoire",
+            '/rechercher-son-territoire',
+            '/roue-systemique',
+            '/explorer-mes-donnees'
           ].includes(params) ? true : false,
           linkProps: {
-            href: '#',
+            href: redirectionExplorerMesDonnees,
             target: '_self'
           },
           text: 'Explorer les données de mon territoire'
         },
+        // ...(type === "epci" || type === "commune" ? [{
+        //   isActive: params === '/patch4c' ? true : false,
+        //   linkProps: {
+        //     href: redirectionPatch4,
+        //     target: '_self'
+        //   },
+        //   text: 'Patch 4°C'
+        // }] : []),
         {
+          isActive: params === '/patch4c' ? true : false,
           linkProps: {
-            href: '#',
+            href: redirectionPatch4,
             target: '_self'
           },
-          text: 'accès direct'
+          text: 'Patch 4°C'
         },
         {
           linkProps: {
             href: '#',
             target: '_self'
           },
-          text: 'accès direct'
+          text: 'À propos de TACCT'
+        },
+        {
+          isActive: params === '/ressources' ? true : false,
+          linkProps: {
+            href: '/ressources',
+            target: '_self'
+          },
+          text: 'Ressources'
+        },
+        {
+          linkProps: {
+            href: 'https://tally.so/r/n0LrEZ',
+            target: '_blank'
+          },
+          text: 'Communauté'
         }
       ] : []}
     />
