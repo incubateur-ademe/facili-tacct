@@ -16,7 +16,7 @@ type Props = {
   }>;
 };
 
-export const BarChart = ({ chartData }: Props) => {
+export const BarChartAgeBatiNouveauParcours = ({ chartData }: Props) => {
   const sumAllCount = chartData.reduce((sum, item) => sum + (Number(item["Votre collectivité"]) || 0), 0);
   return (
     <div style={{ height: '500px', width: '100%', backgroundColor: 'white', borderRadius: '0.5rem' }}>
@@ -51,25 +51,11 @@ export const BarChart = ({ chartData }: Props) => {
           )}
           groupMode="grouped"
           indexBy="periode"
-          margin={{ top: 50, right: 30, bottom: 80, left: 40 }}
+          margin={{ top: 50, right: 30, bottom: 30, left: 40 }}
           valueScale={{ type: 'linear' }}
           colors={[couleurs.graphiques.rouge[3], couleurs.graphiques.bleu[1]]} // F28502 "#2CAAA6"
           innerPadding={2}
-          legends={[
-            {
-              dataFrom: 'keys',
-              anchor: 'bottom',
-              direction: 'row',
-              translateX: 30,
-              translateY: 55,
-              itemsSpacing: 20,
-              itemWidth: 130,
-              itemHeight: 20,
-              itemDirection: 'left-to-right',
-              itemOpacity: 0.85,
-              symbolSize: 20,
-            }
-          ]}
+
         />
         : <DataNotFoundForGraph image={DataNotFound} />
       }

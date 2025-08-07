@@ -3,6 +3,7 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import ZeroData from '@/assets/images/zero_data_found.png';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
+import couleurs from '@/design-system/couleurs';
 import { travailExtDto } from '@/lib/dto';
 import { ResponsivePie } from '@/lib/nivo/pie';
 import { Round } from '@/lib/utils/reusableFunctions/round';
@@ -11,7 +12,6 @@ import styles from './inconfortThermiqueCharts.module.scss';
 
 type Props = {
   graphData: Array<{
-    color: string;
     id: string;
     label: string;
     value: number | undefined;
@@ -21,11 +21,11 @@ type Props = {
 };
 
 export const colors: { [key: string]: string } = {
-  Agriculture: 'rgba(44, 170, 166, 0.7)',
-  Industries: '#E4FFE3',
-  Construction: 'rgba(242, 133, 2, 0.9)',
-  "Commerces et transports": '#FFF6E3',
-  Administrations: '#E3EDFF'
+  Agriculture: couleurs.graphiques.jaune[4],
+  Industries: couleurs.graphiques.orange[3],
+  Construction: couleurs.graphiques.violet[2],
+  "Commerces et transports": couleurs.graphiques.vert[1],
+  Administrations: couleurs.graphiques.bleu[5]
 };
 
 const arcLabelsComponent = ({ datum, label, style, id }: Any) => {
@@ -88,7 +88,8 @@ export const PieChartTravailExt = ({ graphData, travailExterieurTerritoire }: Pr
       style={{
         height: '430px',
         minWidth: '450px',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        borderRadius: '0.5rem 0 0.5rem 0',
       }}
     >
       {sumAllCount > 0 ?
