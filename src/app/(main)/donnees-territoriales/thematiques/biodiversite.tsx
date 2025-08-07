@@ -20,6 +20,7 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
   const dbAOT40 = await GetAOT40();
   const dbEtatCoursDeau = await GetEtatCoursDeau(code, libelle, type);
   const qualiteEauxBaignadeParDpmt = await GetQualiteEauxBaignade(code, libelle, type);
+  // const surfacesProtegees = await GetSurfacesProtegees(code, libelle, type);
 
   return (
     <div>
@@ -34,6 +35,7 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
             aot40={dbAOT40}
             etatCoursDeau={dbEtatCoursDeau}
             qualiteEauxBaignade={qualiteEauxBaignadeParDpmt}
+          // surfacesProtegees={surfacesProtegees}
           />
         </Suspense>
       </div>

@@ -23,7 +23,7 @@ const Patch4C = async (props: { searchParams: SearchParams }) => {
     <NewContainer>
       <H1 style={{ textAlign: 'center' }}>
         Patch 4°C : en un coup d’œil, découvrez le tendanciel d’aggravation
-        des aléas majeurs sur votre territoire
+        des aléas majeurs de votre territoire
       </H1>
       <Body style={{ textAlign: 'center' }}>
         Ce nouveau jeu de données (patch 4°) est calculé par Météo France.

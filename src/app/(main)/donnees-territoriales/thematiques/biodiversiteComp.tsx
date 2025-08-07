@@ -32,6 +32,7 @@ interface Props {
   aot40: AOT40[];
   etatCoursDeau: EtatCoursDeau[];
   qualiteEauxBaignade: QualiteSitesBaignade[];
+  // surfacesProtegees: any[];
 }
 
 const allComps = [
@@ -81,7 +82,19 @@ const allComps = [
         carteCommunes={carteCommunes}
       />
     )
-  }
+  },
+  // {
+  //   titre: 'Surfaces protégées',
+  //   Component: ({
+  //     surfacesProtegees,
+  //     carteCommunes
+  //   }: Props & { activeDataTab: string }) => (
+  //     <SurfacesProtegees
+  //       surfacesProtegees={surfacesProtegees}
+  //       carteCommunes={carteCommunes}
+  //     />
+  //   )
+  // }
 ];
 
 const BiodiversiteComp = ({
@@ -91,7 +104,8 @@ const BiodiversiteComp = ({
   consommationNAF,
   aot40,
   etatCoursDeau,
-  qualiteEauxBaignade
+  qualiteEauxBaignade,
+  // surfacesProtegees
 }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState(
     "Consommation d'espaces NAF"
@@ -214,6 +228,7 @@ const BiodiversiteComp = ({
                       etatCoursDeau={etatCoursDeau || []}
                       qualiteEauxBaignade={qualiteEauxBaignade}
                       aot40={aot40}
+                    // surfacesProtegees={surfacesProtegees}
                     />
                   </Suspense>
                 );

@@ -83,6 +83,10 @@ const config = {
             allowedOrigins: ['*.beta.gouv.fr']
         }
     },
+    serverExternalPackages: [
+        'require-in-the-middle',
+        'import-in-the-middle'
+    ],
     eslint: {
         ignoreDuringBuilds: true
     },

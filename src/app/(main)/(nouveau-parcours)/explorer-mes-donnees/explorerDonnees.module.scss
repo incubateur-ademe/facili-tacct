@@ -94,3 +94,37 @@
         background-color: transparent !important;
     }
 }
+
+// Contenu principal "Explorer mes données"
+
+.retourHautDePageWrapper {
+    position: fixed;
+    right: 2rem;
+    bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.retourHautDePageBouton {
+    border-radius: 50%;
+    background-color: var(--gris-dark);
+    height: 44px;
+    width: 44px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.explorerMesDonneesContainer {
+    margin: 2rem;
+    .sectionType {
+        margin-top: 40px;
+        border: 1px solid var(--gris-medium);
+        border-radius: 0.5rem;
+        .thematiqueWrapper {
+            padding: 2rem 2rem 0 2rem;
+        }
+    }
+}
