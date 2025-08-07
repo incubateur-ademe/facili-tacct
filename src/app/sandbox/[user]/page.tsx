@@ -46,6 +46,18 @@ const SandboxUserPage = async ({ params }: { params: Promise<SegmentParams> }) =
           </Button>
         )
       }
+      {
+        user === 'aude' && (
+          <Button
+            variant="contained"
+            color="primary"
+            href="/sandbox/aude/rechercher-son-territoire-patch4"
+            sx={{ mt: 2 }}
+          >
+            Accéder aux patch 4°C
+          </Button>
+        )
+      }
 
     </div>
   );

@@ -27,16 +27,16 @@ export const GetAgricultureBio = async (
       else {
         // if (type === 'pnr') {
         //   return [];
-        // } else 
+        // } else
         if (type === 'commune') {
           const epci = await prisma.collectivites_searchbar.findFirst({
             select: {
               epci: true
             },
             where: {
-              code_geographique: code,
+              code_geographique: code
             }
-          }); 
+          });
           const value = await prisma.agriculture_bio.findMany({
             where: {
               epci: epci?.epci as string
@@ -111,10 +111,10 @@ export const GetConsommationNAF = async (
           // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
           const value = await prisma.$queryRaw`
           SELECT c.*
-          FROM consommation_espaces_naf c
+          FROM databases.consommation_espaces_naf c
           WHERE c.epci = (
             SELECT cs.epci
-            FROM collectivites_searchbar cs
+            FROM databases.collectivites_searchbar cs
             WHERE cs.code_geographique = ${code}
             LIMIT 1
           )
@@ -165,3 +165,48 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
   return Promise.race([dbQuery, timeoutPromise]);
 };
 
+// export const GetSurfacesProtegees = async (
+//   code: string,
+//   libelle: string,
+//   type: string
+// ): Promise<any[]> => {
+//   const timeoutPromise = new Promise<[]>((resolve) =>
+//     setTimeout(() => {
+//       resolve([]);
+//     }, 3000)
+//   );
+//   const column = ColumnCodeCheck(type);
+//   const dbQuery = (async () => {
+//     try {
+//       // Fast existence check
+//       if (!libelle || !type || (!code && type !== 'petr')) return [];
+//       const exists = await prisma.surfaces_protegees.findFirst({
+//         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+//       });
+//       if (!exists) return [];
+//       else {
+//         if (type === 'petr' || eptRegex.test(libelle)) {
+//           const value = await prisma.surfaces_protegees.findMany({
+//             where: {
+//               [type === 'petr' ? 'libelle_petr' : 'ept']: libelle
+//             }
+//           });
+//           return value;
+//         } else {
+//           const value = await prisma.surfaces_protegees.findMany({
+//             where: {
+//               [column]: type === 'petr' || type === 'ept' ? libelle : code
+//             }
+//           });
+//           return value;
+//         }
+//       }
+//     } catch (error) {
+//       console.error(error);
+//       // prisma.$disconnect();
+//       Sentry.captureException(error);
+//       return [];
+//     }
+//   })();
+//   return Promise.race([dbQuery, timeoutPromise]);
+// };

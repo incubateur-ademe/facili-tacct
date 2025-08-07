@@ -9,7 +9,7 @@ export default function AppFooter() {
       className="fr-footer !mt-0 !pt-0 bg-white relative"
       role="contentinfo"
       id="footer"
-      style={{ zIndex: 9999 }}
+      style={{ zIndex: 100 }}
     >
       <hr className="pb-6" />
       <div className="fr-container">

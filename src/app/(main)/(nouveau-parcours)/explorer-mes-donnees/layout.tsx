@@ -1,11 +1,11 @@
 import { type PropsWithChildren } from 'react';
-import { SideNavigation } from './components/SideNavigation';
+import { MenuLateral } from './components/MenuLateral';
 
 const ExplorerTerritoireLayout = ({ children }: PropsWithChildren) => {
   return (
     <div className="flex">
       {/* Menu latéral fixe */}
-      <SideNavigation />
+      <MenuLateral />
 
       {/* Contenu principal */}
       <div className="flex-1 ml-[322px]">
