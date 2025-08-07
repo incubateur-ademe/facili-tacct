@@ -6,10 +6,10 @@ import { handleRedirection } from '@/hooks/Redirections';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { menuLateralThematiques } from '../../roue-systemique/constantes/textesThematiques';
+import { sommaireThematiques } from '../../roue-systemique/constantes/textesThematiques';
 import styles from '../explorerDonnees.module.scss';
 
-export const SideNavigation = () => {
+export const MenuLateral = () => {
   const [topPosition, setTopPosition] = useState<number>(173);
   const [openEtape1, setOpenEtape1] = useState<boolean>(true);
   const [openEtape2, setOpenEtape2] = useState<boolean>(false);
@@ -19,7 +19,7 @@ export const SideNavigation = () => {
   const type = searchParams.get('type');
   const thematique = searchParams.get('thematique') as "Confort thermique";
 
-  const ongletsMenu = menuLateralThematiques[thematique];
+  const ongletsMenu = sommaireThematiques[thematique];
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(ongletsMenu.thematiquesLiees.map(section => section.id)));
   const [activeAnchor, setActiveAnchor] = useState<string>(ongletsMenu.thematiquesLiees[0].sousCategories[0]);
 

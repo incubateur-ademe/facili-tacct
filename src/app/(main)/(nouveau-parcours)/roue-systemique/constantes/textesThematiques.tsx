@@ -1,7 +1,7 @@
 import { Body } from "@/design-system/base/Textes";
 import { JSX } from "react";
 
-export const menuLateralThematiques = {
+export const sommaireThematiques = {
   "Confort thermique": {
     thematiquesLiees: [
       {
