@@ -1,5 +1,6 @@
 'use client';
 
+import couleurs from '@/design-system/couleurs';
 import { ResponsiveLine } from '@/lib/nivo/line';
 import { useEffect, useState } from 'react';
 
@@ -39,7 +40,7 @@ export const LineChart1 = (props: Props) => {
           data: children
         }
       ]}
-      colors={'rgba(242, 133, 2, 0.9)'}
+      colors={couleurs.graphiques.bleu[2]}
       isInteractive={true}
       useMesh={true}
       tooltip={({ point }) => {
@@ -48,7 +49,6 @@ export const LineChart1 = (props: Props) => {
             style={{
               background: 'white',
               padding: '0.5rem',
-              border: '1px solid #ccc',
               position: 'relative',
               right: '4rem',
               boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px'
@@ -64,9 +64,9 @@ export const LineChart1 = (props: Props) => {
         max: Math.max(...yData.filter((e) => e != null)) + 1
       }}
       margin={{
-        top: 50,
-        right: 20,
-        bottom: 50,
+        top: 30,
+        right: 30,
+        bottom: 60,
         left: 60
       }}
       axisBottom={{
@@ -76,7 +76,7 @@ export const LineChart1 = (props: Props) => {
         legend: 'Années de recensement',
         legendOffset: 36,
         legendPosition: 'middle',
-        truncateTickAt: 0
+        truncateTickAt: 0,
       }}
       axisLeft={{
         tickSize: 5,

@@ -118,13 +118,72 @@
 }
 
 .explorerMesDonneesContainer {
-    margin: 2rem;
+    margin: 2rem 5rem;
     .sectionType {
         margin-top: 40px;
         border: 1px solid var(--gris-medium);
         border-radius: 0.5rem;
-        .thematiqueWrapper {
-            padding: 2rem 2rem 0 2rem;
+        .indicateurWrapper {
+            padding: 2rem 0 0 2rem;
         }
     }
+}
+
+// Données et dataviz
+
+.datavizContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    margin: 1rem 0 0 0;
+    .chiffreDynamiqueWrapper {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        gap: 1.5rem;
+        align-items: flex-start;
+        padding: 0 0 2rem 0;
+    }
+    .datavizWrapper {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        border-radius: 0.5rem 0 0 0;
+        border-left: 1px solid var(--gris-medium);
+        border-top: 1px solid var(--gris-medium);
+        .legend {
+            margin: 0.75rem 0.5rem;
+        }
+    }
+}
+
+.datavizMapContainer {
+    display: flex;
+    flex-direction: column;
+    .chiffreDynamiqueWrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 1.25rem;
+        align-items: flex-start;
+        .text {
+            display: flex;
+            flex-direction: column;
+            max-width: 700px;
+        }
+    }
+    .mapWrapper {
+        padding: 1rem 2rem 0 0;
+        .legend {
+            margin: 0.75rem;
+        }
+    }
+}
+
+.sourcesExportWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    gap: 1rem;
+    align-items: center;
 }

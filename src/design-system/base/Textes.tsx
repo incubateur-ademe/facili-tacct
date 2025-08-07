@@ -169,7 +169,7 @@ export const Body = ({
   margin?: string;
 }) => {
   return (
-    <p
+    <div
       style={{
         color: color,
         fontSize: size === 'sm' ? '14px' : size === 'md' ? '1rem' : '18px',
@@ -181,6 +181,6 @@ export const Body = ({
       }}
     >
       {children}
-    </p>
+    </div>
   );
 }

@@ -1,4 +1,5 @@
 
+import couleurs from '@/design-system/couleurs';
 import { CommunesIndicateursDto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
@@ -52,14 +53,14 @@ export const MapInconfortThermique = (props: {
               : '#5CFF54';
     } else
       return d > 0.3
-        ? '#FF5E54'
+        ? couleurs.graphiques.bleu[5]
         : d > 0.2
-          ? '#FFBD00'
+          ? couleurs.graphiques.bleu[1]
           : d > 0.1
-            ? '#FFFA6A'
+            ? couleurs.graphiques.bleu[2]
             : d > 0
-              ? '#D5F4A3'
-              : '#5CFF54';
+              ? couleurs.graphiques.bleu[3]
+              : couleurs.graphiques.bleu[4];
   };
 
   // Expression couleur pour MapLibre
@@ -135,7 +136,7 @@ export const MapInconfortThermique = (props: {
         source: 'inconfort-thermique-communes',
         paint: {
           'fill-color': colorExpression as unknown as string,
-          'fill-opacity': 0.6
+          'fill-opacity': 1
         }
       });
 

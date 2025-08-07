@@ -1,6 +1,7 @@
 "use client";
 
 import ExporterIcon from '@/assets/icons/export_icon_white.svg';
+import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import html2canvas from "html2canvas";
 import Image from "next/image";
 import { RefObject, useEffect, useState } from "react";
@@ -10,12 +11,14 @@ export const ExportPngMaplibreButton = ({
   mapRef,
   mapContainer,
   documentDiv = ".exportPNGWrapper",
-  fileName = "indicateur-carte.png"
+  fileName = "indicateur-carte.png",
+  style
 }: {
   mapRef: RefObject<maplibregl.Map | null>,
   mapContainer: RefObject<HTMLDivElement | null>,
   documentDiv?: string,
   fileName?: string,
+  style?: React.CSSProperties
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -118,6 +121,7 @@ export const ExportPngMaplibreButton = ({
       onClick={handleExportPng}
       className={styles.exportIndicatorButton}
       disabled={isLoading}
+      style={{ ...style }}
     >
       Exporter
       <Image
@@ -129,6 +133,131 @@ export const ExportPngMaplibreButton = ({
     </button>
   );
 };
+
+export const ExportPngMaplibreButtonNouveauParcours = ({
+  mapRef,
+  mapContainer,
+  documentDiv = ".exportPNGWrapper",
+  fileName = "indicateur-carte.png",
+  style
+}: {
+  mapRef: RefObject<maplibregl.Map | null>,
+  mapContainer: RefObject<HTMLDivElement | null>,
+  documentDiv?: string,
+  fileName?: string,
+  style?: React.CSSProperties
+}) => {
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    // ajout d'un overlay pour éviter les interactions pendant le chargement
+    // et pour afficher un curseur de chargement
+    if (isLoading) {
+      document.body.style.setProperty('cursor', 'wait', 'important');
+      const overlay = document.createElement('div');
+      overlay.id = 'export-loading-overlay';
+      overlay.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: transparent;
+          cursor: wait !important;
+          z-index: 9999;
+          pointer-events: auto;
+        `;
+      document.body.appendChild(overlay);
+      document.body.classList.add('export-loading');
+    } else {
+      document.body.style.removeProperty('cursor');
+      const overlay = document.getElementById('export-loading-overlay');
+      if (overlay) {
+        overlay.remove();
+      }
+      document.body.classList.remove('export-loading');
+    }
+    return () => {
+      document.body.style.removeProperty('cursor');
+      const overlay = document.getElementById('export-loading-overlay');
+      if (overlay) {
+        overlay.remove();
+      }
+      document.body.classList.remove('export-loading');
+    };
+  }, [isLoading]);
+
+  const handleExportPng = async () => {
+    setIsLoading(true);
+    if (mapRef.current && mapContainer.current) {
+      // On cache les contrôles de navigation pour éviter qu'ils n'apparaissent sur le screenshot
+      const navControls = mapContainer.current.querySelectorAll('.maplibregl-ctrl-top-right');
+      navControls.forEach(control => {
+        (control as HTMLElement).style.display = 'none';
+      });
+      // Ajout du div de la légende et de la source pour le screenshot
+      const originalLegendDiv = document.querySelector(documentDiv) as HTMLElement;
+      // Cacher le bouton d'export avant la capture
+      const exportButton = originalLegendDiv?.querySelector('.' + styles.exportIndicatorButton) as HTMLElement;
+      if (exportButton) exportButton.style.display = 'none';
+      // Trigger un render pour que le canvas soit prêt
+      mapRef.current.once('render', async () => {
+        try {
+          const mapCanvas = await html2canvas(mapContainer.current!, { useCORS: true });
+          const legendCanvas = await html2canvas(originalLegendDiv, { useCORS: true });
+          //Combinaison des deux canvases
+          const finalCanvas = document.createElement('canvas');
+          const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
+          finalCanvas.width = mapCanvas.width;
+          finalCanvas.height = mapCanvas.height + legendCanvas.height;
+          ctx.drawImage(mapCanvas, 0, 0);
+          ctx.drawImage(legendCanvas, 0, mapCanvas.height);
+
+          finalCanvas.toBlob((blob) => {
+            if (blob) {
+              const url = URL.createObjectURL(blob);
+              const link = document.createElement('a');
+              link.href = url;
+              link.download = fileName;
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              URL.revokeObjectURL(url);
+            }
+            navControls.forEach(control => {
+              (control as HTMLElement).style.display = '';
+            });
+            if (exportButton) exportButton.style.display = '';
+          });
+        } catch (error) {
+          console.error('Error capturing canvas:', error);
+          navControls.forEach(control => {
+            (control as HTMLElement).style.display = '';
+          });
+          if (exportButton) exportButton.style.display = '';
+        } finally {
+          setIsLoading(false);
+        }
+      });
+      mapRef.current.triggerRepaint();
+    } else {
+      console.log('Map or container not found');
+    }
+  }
+  return (
+    <BoutonPrimaireClassic
+      onClick={handleExportPng}
+      disabled={isLoading}
+      icone={ExporterIcon}
+      size='sm'
+      text={isLoading ? 'Export en cours...' : 'Exporter'}
+      style={{
+        cursor: isLoading ? 'wait' : 'pointer',
+        ...style,
+      }}
+    />
+  );
+};
+
 
 /**
  * Generate a PNG Blob of the map and legend/source, for programmatic export (e.g. ZIP).

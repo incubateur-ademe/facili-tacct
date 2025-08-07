@@ -136,7 +136,7 @@ export const FragiliteEconomique = ({
                   ) : <DataNotFoundForGraph image={DataNotFound} />
                 }
                 <p style={{ padding: '1em', margin: '0' }}>
-                  Source : Observation de la précarité énergétique (ONPE),
+                  Source : Observatoire de la précarité énergétique (ONPE),
                   GEODIP
                 </p>
               </div>
