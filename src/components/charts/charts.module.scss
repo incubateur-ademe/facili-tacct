@@ -168,3 +168,55 @@
         border-color: white transparent transparent transparent;
     }
 }
+
+// Micro Dataviz
+
+.microPieChartWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.microPieChartText {
+    position: absolute;
+    text-align: center;
+    font-family: 'Marianne';
+    p {
+        font-weight: 400;
+        font-size: 1rem;
+        margin: 0;
+    }
+    span {
+        font-weight: 700;
+        max-width: 70px;
+        font-size: 20px;
+        line-height: 27.74px;
+        margin: 0;
+    }
+}
+
+.cercleIndividuel {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 1px;
+}
+
+.microCircleGridWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 83px;
+    padding: 0.5rem;
+    position: relative;
+}
+
+.circleGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 4px;
+    justify-items: center;
+    align-items: center;
+}

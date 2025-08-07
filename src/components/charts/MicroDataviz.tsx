@@ -1,6 +1,6 @@
 import { Body } from "@/design-system/base/Textes";
 import couleurs from "@/design-system/couleurs";
-import { CommunesContoursDto } from '@/lib/dto';
+import { CommunesContoursDto, CommunesIndicateursDto } from '@/lib/dto';
 import { MapContainer } from '@/lib/react-leaflet';
 import { Round } from "@/lib/utils/reusableFunctions/round";
 import * as turf from '@turf/turf';
@@ -14,9 +14,14 @@ import {
 } from 'geojson';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useEffect, useRef, useState } from 'react';
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
+import { useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { GeoJSON } from 'react-leaflet';
-import styles from "./microDataviz.module.scss";
+import { BoundsFromCollection } from "../maps/components/boundsFromCollection";
+import styles from "./charts.module.scss";
+
 
 type MicroPieChartTypes = {
   strokeLinecap: 'butt';
@@ -36,11 +41,11 @@ const ProgressProps: MicroPieChartTypes = {
 
 export const MicroPieChart = ({
   pourcentage,
-  arrondi,
+  arrondi = 0,
   ariaLabel = ""
 }: {
-  pourcentage: number;
-  arrondi: number;
+  pourcentage: number | string;
+  arrondi?: number;
   ariaLabel?: string;
 }) => {
   return (
@@ -48,14 +53,14 @@ export const MicroPieChart = ({
       <Progress
         {...ProgressProps}
         aria-label={ariaLabel}
-        percent={pourcentage}
+        percent={Number(pourcentage)}
         strokeColor={couleurs.gris.dark}
         trailColor={couleurs.gris.medium}
       />
       <div className={styles.microPieChartText}>
-        <p style={{ color: couleurs.gris.dark }}>
-          <span>{Round(pourcentage, arrondi)}</span>
-        </p>
+        <Body style={{ color: couleurs.gris.dark }}>
+          {Round(Number(pourcentage), arrondi)} %
+        </Body>
       </div>
     </div>
   );
@@ -117,9 +122,11 @@ export const MicroCircleGrid = ({
 export const MicroRemplissageTerritoire = (props: {
   territoireContours: CommunesContoursDto[];
   pourcentage: number;
+  height?: number;
+  arrondi?: number;
 }) => {
-  const { territoireContours, pourcentage } = props;
-  const mapRef = useRef(null);
+  const { territoireContours, pourcentage, arrondi = 0, height = 150 } = props;
+  const mapRef = useRef<L.Map | null>(null);
   const [bounds, setBounds] = useState<number[]>([0, 0, 0, 0]);
   const south = bounds[1];
   const north = bounds[3];
@@ -128,10 +135,27 @@ export const MicroRemplissageTerritoire = (props: {
   const hauteurTerritoire = north - south;
   const largeurTerritoire = east - west;
 
-  const containerHeight = 150;
+  // Amélioration du calcul des dimensions
   const aspectRatio = largeurTerritoire / hauteurTerritoire;
-  // Reduce container width to account for Leaflet's internal spacing
-  const containerWidth = Math.max(50, containerHeight * aspectRatio * 0.75);
+
+  // Calcul plus précis pour que le territoire remplisse vraiment l'espace
+  let containerWidth: number;
+  let containerHeight: number;
+
+  // On force toujours la hauteur à être celle demandée
+  containerHeight = height;
+
+  if (aspectRatio > 1) {
+    // Territoire plus large que haut - on calcule la largeur proportionnellement
+    containerWidth = containerHeight * aspectRatio;
+  } else {
+    // Territoire plus haut que large - on utilise un ratio ajusté
+    containerWidth = Math.max(containerHeight * aspectRatio * 0.6, 80); // Largeur min de 80px
+  }
+
+  // Assurer des dimensions minimales
+  containerWidth = Math.max(50, containerWidth);
+  containerHeight = Math.max(50, containerHeight);
 
   const newValue = south + (hauteurTerritoire * pourcentage) / 100;
   const polygon = turf.polygon([
@@ -146,9 +170,10 @@ export const MicroRemplissageTerritoire = (props: {
   const geojsonObject = L.geoJSON(
     territoireContours as unknown as GeoJsonObject
   );
+
   useEffect(() => {
     setBounds(geojsonObject.getBounds().toBBoxString().split(',').map(Number));
-  }, []);
+  }, [territoireContours]);
   const union =
     territoireContours.length > 1
       ? turf.union(
@@ -168,7 +193,6 @@ export const MicroRemplissageTerritoire = (props: {
       ])
     )
     : null;
-
   return (
     <>
       {bounds[0] != 0 ? (
@@ -194,8 +218,9 @@ export const MicroRemplissageTerritoire = (props: {
               [bounds[1], bounds[0]],
               [bounds[3], bounds[2]]
             ]}
-            boundsOptions={{ padding: [-20, -20], maxZoom: 50 }}
-            zoom={50}
+            boundsOptions={{
+              padding: [0, 0],
+            }}
           >
             <div
               style={{
@@ -213,11 +238,10 @@ export const MicroRemplissageTerritoire = (props: {
               }}
             >
               <Body>
-                {pourcentage} %
+                {Round(pourcentage, arrondi)} %
               </Body>
             </div>
             <GeoJSON
-              ref={mapRef}
               data={union as unknown as GeoJsonObject}
               style={{
                 color: 'transparent',
@@ -228,7 +252,6 @@ export const MicroRemplissageTerritoire = (props: {
               }}
             />
             <GeoJSON
-              ref={mapRef}
               data={intersect as unknown as GeoJsonObject}
               style={{
                 color: 'none',
@@ -246,3 +269,85 @@ export const MicroRemplissageTerritoire = (props: {
   );
 };
 
+
+
+export const MicroRemplissageTerritoireMapLibre = (props: {
+  territoireContours: CommunesIndicateursDto[];
+  pourcentage: number;
+  height?: number;
+  arrondi?: number;
+}) => {
+  const { territoireContours, pourcentage, height = 200, arrondi = 0 } = props;
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const enveloppe = BoundsFromCollection(territoireContours, type, code);
+  const mapContainer = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
+
+  // GeoJSON
+  const geoJsonData = useMemo(() => {
+    return {
+      type: 'FeatureCollection',
+      features: territoireContours.map(commune => ({
+        ...commune,
+        id: commune.properties.code_geographique
+      }))
+    };
+  }, [territoireContours]);
+
+  useEffect(() => {
+    if (!mapContainer.current) return;
+
+    const map = new maplibregl.Map({
+      container: mapContainer.current,
+      attributionControl: false,
+    });
+    mapRef.current = map;
+
+    map.on('load', () => {
+      // Fit bounds
+      if (
+        enveloppe &&
+        Array.isArray(enveloppe) &&
+        enveloppe.length > 1 &&
+        Array.isArray(enveloppe[0]) &&
+        enveloppe[0].length === 2
+      ) {
+        const lons = enveloppe.map((coord: number[]) => coord[1]);
+        const lats = enveloppe.map((coord: number[]) => coord[0]);
+        const minLng = Math.min(...lons);
+        const maxLng = Math.max(...lons);
+        const minLat = Math.min(...lats);
+        const maxLat = Math.max(...lats);
+        map.fitBounds(
+          [[minLng, minLat], [maxLng, maxLat]],
+          { padding: 20 },
+        );
+      }
+
+      // Add source
+      map.addSource('inconfort-thermique-communes', {
+        type: 'geojson',
+        data: geoJsonData as unknown as "FeatureCollection",
+        generateId: false
+      });
+
+
+    });
+
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+    };
+  }, [geoJsonData, enveloppe]);
+
+  return (
+
+    <div style={{ position: 'relative' }}>
+      <div ref={mapContainer} style={{ height: '200px', width: '100%' }} />
+    </div>
+  );
+};

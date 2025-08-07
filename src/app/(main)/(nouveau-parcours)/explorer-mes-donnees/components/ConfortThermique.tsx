@@ -1,27 +1,34 @@
 'use client';
 
 import HautDePageIcon from '@/assets/icons/haut_de_page_icon_white.svg';
-import { Body, H2, H3 } from '@/design-system/base/Textes';
-import { CommunesContourMapper } from '@/lib/mapper/communes';
-import { CarteCommunes } from '@/lib/postgres/models';
+import { Body, H2 } from '@/design-system/base/Textes';
+import { CarteCommunes, CLCTerritoires, InconfortThermique } from '@/lib/postgres/models';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 import { sommaireThematiques } from '../../roue-systemique/constantes/textesThematiques';
 import styles from '../explorerDonnees.module.scss';
-import { MicroCircleGrid, MicroRemplissageTerritoire } from './MicroDataviz';
+import { GrandAge } from '../thematiques/1-GrandAge';
+import { PrecariteEnergetique } from '../thematiques/2-PrecariteEnergetique';
+import { EmploisEnExterieur } from '../thematiques/3-EmploisExterieurs';
+import { DateConstructionResidences } from '../thematiques/4-DateConstructionResidences';
+import { TypesDeSols } from '../thematiques/5-TypesDeSols';
+import { LCZ } from '../thematiques/6-LCZ';
+
+
+
 
 const ExplorerConfortThermique = ({
-  carteCommunes
+  carteCommunes,
+  inconfortThermique,
+  clc
 }: {
   carteCommunes: CarteCommunes[];
+  inconfortThermique: InconfortThermique[];
+  clc: CLCTerritoires[] | undefined;
 }) => {
   const searchParams = useSearchParams();
-  const code = searchParams.get('code');
-  const libelle = searchParams.get('libelle');
-  const typeTerritoire = searchParams.get('type');
   const thematique = searchParams.get('thematique') as "Confort thermique";
-  const territoireContourMap = carteCommunes.map(CommunesContourMapper);
   const ongletsMenu = sommaireThematiques[thematique];
 
   useEffect(() => {
@@ -62,142 +69,61 @@ const ExplorerConfortThermique = ({
         </Body>
       </section>
 
-      {/* Première section */}
+      {/* Section Santé */}
       <section className={styles.sectionType}>
-        {/* Premier élément */}
-        <div id="Grand âge" className={styles.thematiqueWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+        {/* Grand âge */}
+        <div id="Grand âge" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 0.75rem" }}>
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
-          <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-            Évolution de la part des 80 ans et plus dans la population
-          </H3>
-          <div className="bg-blue-50 p-6 rounded-lg">
-            <p className="text-gray-700 mb-4">
-              Ceci est le contenu du premier élément. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
-              et dolore magna aliqua.
-            </p>
-            <p className="text-gray-700">
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </p>
-          </div>
+          <GrandAge inconfortThermique={inconfortThermique} />
         </div>
 
-        {/* Deuxième élément */}
-        <div id="Précarité énergétique" className={styles.thematiqueWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">
-            Précarité énergétique
-          </h3>
-          <MicroRemplissageTerritoire
-            territoireContours={territoireContourMap}
-            pourcentage={20}
-          />
-          <MicroCircleGrid
-            pourcentage={29}
-            arrondi={1}
-          />
-          <div className="bg-green-50 p-6 rounded-lg">
-            <p className="text-gray-700 mb-4">
-              Contenu du deuxième élément. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p className="text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam.
-            </p>
-          </div>
+        {/* Précarité énergétique */}
+        <div id="Précarité énergétique" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+          <PrecariteEnergetique carteCommunes={carteCommunes} />
         </div>
 
-        {/* Troisième élément */}
-        <div id="Emplois en extérieur" className={styles.thematiqueWrapper}>
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">
-            Emplois en extérieur
-          </h3>
-          <div className="bg-yellow-50 p-6 rounded-lg">
-            <p className="text-gray-700 mb-4">
-              Contenu du troisième élément. Eaque ipsa quae ab illo inventore
-              veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-            </p>
-            <p className="text-gray-700">
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-              aut fugit, sed quia consequuntur magni dolores eos qui ratione.
-            </p>
-          </div>
+        {/* Emplois en extérieur */}
+        <div id="Emplois en extérieur" className={styles.indicateurWrapper}>
+          <EmploisEnExterieur inconfortThermique={inconfortThermique} />
         </div>
       </section>
 
-      {/* Deuxième section */}
+      {/* Section Bâtiment et logement */}
       <section className={styles.sectionType}>
-        {/* Quatrième élément */}
-        <div id="Âge du bâtiment" className={styles.thematiqueWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+        {/* Âge du bâtiment */}
+        <div id="Âge du bâtiment" className={styles.indicateurWrapper}>
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 0.75rem" }}>
             {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">
-            Âge du bâtiment
-          </h3>
-          <div className="bg-purple-50 p-6 rounded-lg">
-            <p className="text-gray-700 mb-4">
-              Contenu du quatrième élément. Voluptatem sequi nesciunt neque porro
-              quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.
-            </p>
-            <p className="text-gray-700">
-              Adipisci velit, sed quia non numquam eius modi tempora incidunt ut
-              labore et dolore magnam aliquam quaerat voluptatem.
-            </p>
-          </div>
+          <DateConstructionResidences inconfortThermique={inconfortThermique} />
         </div>
       </section>
 
-      {/* Troisième section */}
+      {/* Section Aménagement */}
       <section className={styles.sectionType}>
-
-        {/* Cinquième élément */}
-        <div id="Types de sols" className={styles.thematiqueWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+        {/* Types de sols */}
+        <div id="Types de sols" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 0.75rem" }}>
             {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
           </H2>
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">
-            Types de sols
-          </h3>
-          <div className="bg-red-50 p-6 rounded-lg">
-            <p className="text-gray-700 mb-4">
-              Contenu du cinquième élément. Ut enim ad minima veniam, quis nostrum
-              exercitationem ullam corporis suscipit laboriosam.
-            </p>
-            <p className="text-gray-700">
-              Nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-              reprehenderit qui in ea voluptate velit esse quam nihil molestiae.
-            </p>
-          </div>
+          <TypesDeSols inconfortThermique={inconfortThermique} carteCommunes={carteCommunes} clc={clc} />
         </div>
 
-        {/* Sixième élément */}
-        <div id="LCZ" className={styles.thematiqueWrapper}>
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">
-            LCZ
-          </h3>
-          <div className="bg-indigo-50 p-6 rounded-lg">
-            <p className="text-gray-700 mb-4">
-              Contenu du sixième élément. Consequatur, vel illum qui dolorem eum
-              fugiat quo voluptas nulla pariatur?
-            </p>
-            <p className="text-gray-700">
-              At vero eos et accusamus et iusto odio dignissimos ducimus qui
-              blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.
-            </p>
-          </div>
+        {/* LCZ */}
+        <div id="LCZ" className={styles.indicateurWrapper}>
+          <LCZ
+            carteCommunes={carteCommunes}
+          />
         </div>
       </section>
 
-      {/* Quatrième section */}
+      {/* Section Tourisme */}
       <section className={styles.sectionType}>
 
         {/* Septième élément */}
-        <div id="Indicateur tourisme" className={styles.thematiqueWrapper} >
+        <div id="Indicateur tourisme" className={styles.indicateurWrapper} >
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 0.75rem" }}>
             {ongletsMenu.thematiquesLiees[3].icone}{" "}{ongletsMenu.thematiquesLiees[3].thematique}
           </H2>
