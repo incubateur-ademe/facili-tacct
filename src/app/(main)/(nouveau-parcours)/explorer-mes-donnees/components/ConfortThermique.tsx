@@ -15,9 +15,6 @@ import { DateConstructionResidences } from '../thematiques/4-DateConstructionRes
 import { TypesDeSols } from '../thematiques/5-TypesDeSols';
 import { LCZ } from '../thematiques/6-LCZ';
 
-
-
-
 const ExplorerConfortThermique = ({
   carteCommunes,
   inconfortThermique,
@@ -71,11 +68,11 @@ const ExplorerConfortThermique = ({
 
       {/* Section Santé */}
       <section className={styles.sectionType}>
+        <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
+          {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
+        </H2>
         {/* Grand âge */}
         <div id="Grand âge" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 0.75rem" }}>
-            {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
-          </H2>
           <GrandAge inconfortThermique={inconfortThermique} />
         </div>
 
@@ -92,25 +89,25 @@ const ExplorerConfortThermique = ({
 
       {/* Section Bâtiment et logement */}
       <section className={styles.sectionType}>
+        <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
+          {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
+        </H2>
         {/* Âge du bâtiment */}
         <div id="Âge du bâtiment" className={styles.indicateurWrapper}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 0.75rem" }}>
-            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
-          </H2>
           <DateConstructionResidences inconfortThermique={inconfortThermique} />
         </div>
       </section>
 
       {/* Section Aménagement */}
       <section className={styles.sectionType}>
+        <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
+          {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
+        </H2>
         {/* Types de sols */}
         <div id="Types de sols" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 0.75rem" }}>
-            {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
-          </H2>
+
           <TypesDeSols inconfortThermique={inconfortThermique} carteCommunes={carteCommunes} clc={clc} />
         </div>
-
         {/* LCZ */}
         <div id="LCZ" className={styles.indicateurWrapper}>
           <LCZ
@@ -121,12 +118,12 @@ const ExplorerConfortThermique = ({
 
       {/* Section Tourisme */}
       <section className={styles.sectionType}>
-
+        <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
+          {ongletsMenu.thematiquesLiees[3].icone}{" "}{ongletsMenu.thematiquesLiees[3].thematique}
+        </H2>
         {/* Septième élément */}
         <div id="Indicateur tourisme" className={styles.indicateurWrapper} >
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 0.75rem" }}>
-            {ongletsMenu.thematiquesLiees[3].icone}{" "}{ongletsMenu.thematiquesLiees[3].thematique}
-          </H2>
+
           <h3 className="text-xl font-semibold text-gray-800 mb-4">
             Indicateur tourisme
           </h3>

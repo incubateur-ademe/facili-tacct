@@ -26,9 +26,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     text-align: left;
-    gap: 0.5rem;
+    gap: 1rem;
     padding: 18px 0;
     &:hover {
         background-color: transparent !important;
@@ -50,7 +50,7 @@
     }
 }
 
-.menuEtape1 {
+.menuEtape2 {
     display: flex;
     flex-direction: column;
     padding: 0 3rem 0 2rem;
@@ -58,8 +58,8 @@
         content: '';
         position: absolute;
         left: -27px;
-        top: -60px;
-        bottom: -40px;
+        top: -30px;
+        bottom: -10px;
         width: 1px;
         background-color: var(--gris-medium);
     }
@@ -122,9 +122,12 @@
     .sectionType {
         margin-top: 40px;
         border: 1px solid var(--gris-medium);
-        border-radius: 0.5rem;
+        border-radius: 1rem;
         .indicateurWrapper {
             padding: 2rem 0 0 2rem;
+        }
+        .diagnosticWrapper {
+            padding: 2rem;
         }
     }
 }
@@ -148,7 +151,7 @@
         display: flex;
         flex-direction: column;
         width: 60%;
-        border-radius: 0.5rem 0 0 0;
+        border-radius: 1rem 0 0 0;
         border-left: 1px solid var(--gris-medium);
         border-top: 1px solid var(--gris-medium);
         .legend {
@@ -186,4 +189,63 @@
     padding: 1.25rem 1.5rem;
     gap: 1rem;
     align-items: center;
+}
+
+// Etape 2
+.bdWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    justify-content: space-between;
+    margin-top: 2rem;
+    .bdCardWrapper {
+        display: flex;
+        flex-direction: column;
+        border-radius: 1rem;
+        background-color: var(--gris-light);
+        max-width: 350px;
+        width: 100%;
+    }
+    .bdTextWrapper {
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+}
+
+.donneesNationalesWrapper {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid var(--gris-medium);
+    padding: 2rem 0;
+    .leftData {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        gap: 1.25rem;
+        padding-right: 1.5rem;
+        border-right: 1px solid var(--gris-medium);
+        align-items: flex-start;
+    }
+    .rightData {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        gap: 1.25rem;
+        padding-left: 1.5rem;
+    }
+}
+
+.prendreRDVWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2.5rem;
+    padding: 2rem;
+    .RDVText {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
 }

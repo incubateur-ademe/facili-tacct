@@ -159,13 +159,6 @@ const HeaderComp = () => {
           text: 'Patch 4°C'
         },
         {
-          linkProps: {
-            href: '#',
-            target: '_self'
-          },
-          text: 'À propos de TACCT'
-        },
-        {
           isActive: params === '/ressources' ? true : false,
           linkProps: {
             href: '/ressources',

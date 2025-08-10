@@ -1,10 +1,7 @@
-import { ClientOnly } from '@/components/utils/ClientOnly';
-import { H1 } from '@/design-system/base/Textes';
 import { GetInconfortThermique } from '@/lib/queries/databases/inconfortThermique';
 import { GetClcTerritoires, GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { notFound } from 'next/navigation';
-import ExplorerConfortThermique from './components/ConfortThermique';
-import styles from './explorerDonnees.module.scss';
+import FiltreEtapeWrapper from './components/FiltreEtapeWrapper';
 
 const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type, thematique } = await props.searchParams;
@@ -18,21 +15,11 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
   }
 
   return (
-    <div className='min-h-screen'>
-      <div className={styles.explorerMesDonneesContainer}>
-        <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
-          Ce que les données suggèrent sur votre territoire
-        </H1>
-        <ClientOnly>
-          <ExplorerConfortThermique
-            carteCommunes={carteCommunes}
-            inconfortThermique={dbInconfortThermique}
-            clc={clc}
-          />
-        </ClientOnly>
-        <div style={{ marginTop: "0rem" }} />
-      </div>
-    </div>
+    <FiltreEtapeWrapper
+      carteCommunes={carteCommunes}
+      inconfortThermique={dbInconfortThermique}
+      clc={clc}
+    />
   );
 };
 
