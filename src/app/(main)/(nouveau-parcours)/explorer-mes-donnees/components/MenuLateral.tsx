@@ -7,7 +7,27 @@ import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { sommaireThematiques } from '../../roue-systemique/constantes/textesThematiques';
+import { useExplorer } from '../contexts/ExplorerContext';
 import styles from '../explorerDonnees.module.scss';
+
+const Etape2Sommaire = [
+  {
+    id: "section1",
+    titre: "Exemple",
+  },
+  {
+    id: "section2",
+    titre: "Données clés nationales",
+  },
+  {
+    id: "section3",
+    titre: "Point d’étape avec TACCT",
+  },
+  {
+    id: "section4",
+    titre: "Poursuivez votre exploration",
+  }
+]
 
 export const MenuLateral = () => {
   const [topPosition, setTopPosition] = useState<number>(173);
@@ -18,10 +38,22 @@ export const MenuLateral = () => {
   const libelle = searchParams.get('libelle');
   const type = searchParams.get('type');
   const thematique = searchParams.get('thematique') as "Confort thermique";
-
+  const { showEtape, setShowEtape } = useExplorer();
   const ongletsMenu = sommaireThematiques[thematique];
-  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(ongletsMenu.thematiquesLiees.map(section => section.id)));
-  const [activeAnchor, setActiveAnchor] = useState<string>(ongletsMenu.thematiquesLiees[0].sousCategories[0]);
+  const [activeAnchorEtape1, setActiveAnchorEtape1] = useState<string>(ongletsMenu.thematiquesLiees[0].sousCategories[0]);
+  const [activeAnchorEtape2, setActiveAnchorEtape2] = useState<string>('');
+  const [pendingScroll, setPendingScroll] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (pendingScroll) {
+      const timeoutId = setTimeout(() => {
+        scrollToAnchor(pendingScroll);
+        setPendingScroll(null);
+      }, 10);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [showEtape, pendingScroll]);
 
   const redirectionRetour = handleRedirection({
     searchCode: code || '',
@@ -30,54 +62,49 @@ export const MenuLateral = () => {
     page: 'roue-systemique'
   });
 
-
-  // Fonction pour basculer l'état d'une section
-  const toggleSection = (sectionId: string) => {
-    const newExpanded = new Set(expandedSections);
-    if (newExpanded.has(sectionId)) {
-      newExpanded.delete(sectionId);
-    } else {
-      newExpanded.add(sectionId);
-    }
-    setExpandedSections(newExpanded);
-  };
-
   // Fonction pour gérer le scroll et mettre en surbrillance l'élément actuel
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const headerHeight = 173; // Hauteur du header en pixels
-
-      // Calculer la position du menu en fonction du scroll
+      const headerHeight = 173;
       const newTopPosition = Math.max(0, headerHeight - scrollY);
       setTopPosition(newTopPosition);
 
-      // Gestion du surlignage des éléments
+      // Gestion du surlignage des éléments selon l'étape active
       const scrollPosition = scrollY + 200; // Offset pour la détection
-
-      // Collecter tous les éléments avec des ancres
-      const allAnchors = ongletsMenu.thematiquesLiees.flatMap(section => section.sousCategories);
-
-      for (const item of allAnchors) {
-        const element = document.getElementById(item);
-        if (element) {
-          const elementTop = element.offsetTop;
-          const elementBottom = elementTop + element.offsetHeight;
-
-          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
-            setActiveAnchor(item);
-            break;
+      if (showEtape === 1) {
+        const allAnchors = ongletsMenu.thematiquesLiees.flatMap(section => section.sousCategories);
+        for (const item of allAnchors) {
+          const element = document.getElementById(item);
+          if (element) {
+            const elementTop = element.offsetTop;
+            const elementBottom = elementTop + element.offsetHeight;
+            if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+              setActiveAnchorEtape1(item);
+              break;
+            }
+          }
+        }
+      } else if (showEtape === 2) {
+        const allAnchors = Etape2Sommaire.map(item => item.id);
+        for (const itemId of allAnchors) {
+          const element = document.getElementById(itemId);
+          if (element) {
+            const elementTop = element.offsetTop;
+            const elementBottom = elementTop + element.offsetHeight;
+            if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+              setActiveAnchorEtape2(itemId);
+              break;
+            }
           }
         }
       }
     };
     window.addEventListener('scroll', handleScroll);
     handleScroll();
-
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [showEtape]);
 
-  // Fonction pour naviguer vers une ancre
   const scrollToAnchor = (anchor: string) => {
     const element = document.getElementById(anchor);
     if (element) {
@@ -86,6 +113,23 @@ export const MenuLateral = () => {
         block: 'start'
       });
     }
+  };
+
+  const handleItemClickEtape1 = (item: string) => {
+    setShowEtape(1);
+    setActiveAnchorEtape2('');
+    setPendingScroll(item);
+  };
+  const handleItemClickEtape2 = (item: { id: string; titre: string }) => {
+    setShowEtape(2);
+    setActiveAnchorEtape1('');
+    setPendingScroll(item.id);
+  };
+  const handleEtape1Toggle = () => {
+    setOpenEtape1(!openEtape1);
+  };
+  const handleEtape2Toggle = () => {
+    setOpenEtape2(!openEtape2);
   };
 
   return (
@@ -125,7 +169,7 @@ export const MenuLateral = () => {
       {/* Navigation */}
       <div className="flex flex-col">
         <button
-          onClick={() => openEtape1 ? setOpenEtape1(false) : setOpenEtape1(true)}
+          onClick={handleEtape1Toggle}
           className={styles.BoutonEtapes}
         >
           {openEtape1 ? (
@@ -158,8 +202,8 @@ export const MenuLateral = () => {
                 {thematique.sousCategories.map((item) => (
                   <button
                     key={item}
-                    onClick={() => scrollToAnchor(item)}
-                    className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchor === item
+                    onClick={() => handleItemClickEtape1(item)}
+                    className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === item && showEtape === 1
                       ? styles.itemSurligne
                       : styles.itemNonSurligne
                       }`}
@@ -172,7 +216,7 @@ export const MenuLateral = () => {
           ))}
         </div>
         <button
-          onClick={() => openEtape2 ? setOpenEtape2(false) : setOpenEtape2(true)}
+          onClick={handleEtape2Toggle}
           className={styles.BoutonEtapes}
         >
           {openEtape2 ? (
@@ -190,6 +234,22 @@ export const MenuLateral = () => {
             Étape 2. <br />Diagnostiquez les impacts
           </Body>
         </button>
+        <div className={styles.menuEtape2}>
+          {
+            openEtape2 && Etape2Sommaire.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => handleItemClickEtape2(item)}
+                className={`block w-full text-left ${activeAnchorEtape2 === item.id && showEtape === 2
+                  ? styles.itemSurligne
+                  : styles.itemNonSurligne
+                  }`}
+              >
+                <Body size='sm'>{item.titre}</Body>
+              </button>
+            ))
+          }
+        </div>
       </div>
     </nav>
   );
