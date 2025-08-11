@@ -55,7 +55,9 @@ const Home = () => {
         <NewContainer size="xl">
           <div className={styles.homePageTopWrapper}>
             <div className={styles.titles}>
-              <H1 style={{ color: "white" }}>Facili-TACCT structure votre démarche d’adaptation au changement climatique</H1>
+              <H1 style={{ color: "white" }}>
+                Facili-TACCT structure votre démarche d’adaptation au changement climatique
+              </H1>
               <Body size='lg' style={{ color: "white", margin: "2.5rem 0 2rem" }}>
                 TACCT vous guide pas à pas dans la réalisation de votre diagnostic de vulnérabilité et
                 jusqu'à la mise en œuvre des actions et leur évaluation.
@@ -71,18 +73,20 @@ const Home = () => {
                 text='Explorer les données de mon territoire'
               />
             </div>
-            <Image
-              alt=""
-              src={TopImage}
-              width={0}
-              height={0}
-              sizes="(max-width: 768px) 0, (max-width: 1200px) 50vw, 40vw"
-              style={{
-                width: '100%',
-                height: 'auto',
-                objectFit: 'contain',
-              }}
-            />
+            <div className={styles.topImage}>
+              <Image
+                alt=""
+                src={TopImage}
+                width={0}
+                height={0}
+                // sizes="(max-width: 768px) 0, (max-width: 1200px) 50vw, 40vw"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  objectFit: 'contain',
+                }}
+              />
+            </div>
           </div>
         </NewContainer>
       </div>
@@ -117,8 +121,8 @@ const Home = () => {
       <div className={styles.tacctContainer}>
         <NewContainer size="xl">
           <div className={styles.tacctWrapper}>
-            <H2 style={{ color: "white", margin: 0 }}>Pourquoi suivre la démarche TACCT ?</H2>
-            <H3 style={{ color: "white", fontSize: "1.25rem", fontWeight: 400, marginBottom: "2.5rem" }}>
+            <H2 style={{ color: "white", margin: 0, textAlign: "center" }}>Pourquoi suivre la démarche TACCT ?</H2>
+            <H3 style={{ color: "white", fontSize: "1.25rem", fontWeight: 400, marginBottom: "2.5rem", textAlign: "center" }}>
               <span>TACCT</span> : <span>T</span>rajectoires d’<span>A</span>daptation
               au <span>C</span>hangement <span>C</span>limatique des <span>T</span>erritoires
             </H3>
@@ -214,10 +218,10 @@ const Home = () => {
         <NewContainer size="xl">
           <div className={styles.diagnosticWrapper}>
             <div className={styles.diagnosticText}>
-              <H2>Besoin d’être guidé pour évaluer votre diagnostic ?</H2>
+              <H2>Besoin d’être guidé pour évaluer votre diagnostic ?</H2>
               <Body>
                 Votre territoire possède déjà un diagnostic de vulnérabilité
-                climatique ? Exploitez-le ! Évitez de repartir de zéro et gagnez
+                climatique ? Exploitez-le ! Évitez de repartir de zéro et gagnez
                 du temps et des ressources en évaluant d'abord le document existant.
               </Body>
               <BoutonPrimaireClassic
@@ -251,10 +255,7 @@ const Home = () => {
             <Image
               alt=""
               src={RessourcesImg}
-              width={0}
-              height={0}
-              sizes="40vw"
-              style={{ maxWidth: '40%', height: 'auto', margin: '0 0 2rem' }}
+              className={styles.ressourcesImage}
             />
           </div>
         </NewContainer>

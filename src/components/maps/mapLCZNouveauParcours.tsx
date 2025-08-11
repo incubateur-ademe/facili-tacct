@@ -8,7 +8,7 @@ import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl, { MapSourceDataEvent } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import { Loader } from '../loader';
 import { BoundsFromCollection } from './components/boundsFromCollection';
 import { CeremaFallbackError, handleCeremaFallback } from './components/ceremaLCZFallback';
@@ -19,11 +19,15 @@ import styles from './maps.module.scss';
 export const MapLCZNouveauParcours = ({
   carteCommunes,
   isLoading,
-  isLczCovered
+  isLczCovered,
+  mapRef,
+  mapContainer
 }: {
   carteCommunes: CarteCommunes[];
   isLoading: boolean;
   isLczCovered: boolean | undefined;
+  mapRef: RefObject<maplibregl.Map | null>;
+  mapContainer: RefObject<HTMLDivElement | null>;
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
@@ -39,8 +43,6 @@ export const MapLCZNouveauParcours = ({
   const hasTriedFallback = useRef(false);
   const carteCommunesEnriched = carteCommunes.map(CommunesIndicateursMapper);
   const enveloppe = BoundsFromCollection(carteCommunesEnriched, type, code);
-  const mapContainer = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<maplibregl.Map | null>(null);
 
   useEffect(() => {
     if (!mapContainer.current || isLczCovered === undefined) return;

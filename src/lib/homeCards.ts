@@ -1,7 +1,7 @@
-import Card3Icon from '@/assets/icons/cast_for_education_icon_orange.png';
-import Card4Icon from '@/assets/icons/library_books_icon_orange.png';
-import Card1Icon from '@/assets/icons/menu_book_icon_orange.png';
-import Card2Icon from '@/assets/icons/team_meeting_icon_orange.png';
+import Card1Icon from '@/assets/icons/tacct_icon1.svg';
+import Card2Icon from '@/assets/icons/tacct_icon2.svg';
+import Card3Icon from '@/assets/icons/tacct_icon3.svg';
+import Card4Icon from '@/assets/icons/tacct_icon4.svg';
 
 export const homeCards = [
   {
