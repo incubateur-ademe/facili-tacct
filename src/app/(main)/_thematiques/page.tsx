@@ -4,7 +4,6 @@ import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { type Metadata } from 'next';
 import { Container } from '../../../design-system/server';
 import { Cards } from './cards';
-import { Patch4Accordion } from './patch4/patch4Accordion';
 
 export const metadata: Metadata = {
   title: 'Thématiques',
@@ -25,7 +24,7 @@ const Thematiques = async (props: { searchParams: SearchParams }) => {
           }}
           segments={[]}
         />
-        {patch4 ? <Patch4Accordion patch4={patch4} /> : null}
+        {/* {patch4 ? <Patch4Accordion patch4={patch4} /> : null} */}
         <h1>Quelle thématique vous intéresse ?</h1>
         <Cards />
       </ClientOnly>

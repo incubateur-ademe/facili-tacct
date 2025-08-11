@@ -19,7 +19,7 @@ type Props = {
 export const BarChartAgeBatiNouveauParcours = ({ chartData }: Props) => {
   const sumAllCount = chartData.reduce((sum, item) => sum + (Number(item["Votre collectivité"]) || 0), 0);
   return (
-    <div style={{ height: '500px', width: '100%', backgroundColor: 'white', borderRadius: '0.5rem' }}>
+    <div style={{ height: '500px', width: '100%', backgroundColor: 'white', borderRadius: '1rem' }}>
       {sumAllCount > 0 ?
         <ResponsiveBar
           data={chartData}

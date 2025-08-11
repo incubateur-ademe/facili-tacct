@@ -9,8 +9,9 @@ export const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     color: '#3a3a3a',
     maxWidth: 600,
     boxShadow: '0px 2px 6px 0px rgba(0, 0, 18, 0.16)',
-    padding: '20px',
-    fontFamily: 'Marianne'
+    padding: '1rem',
+    fontFamily: 'Marianne',
+    fontSize: '0.75rem',
   }
 }));
 
