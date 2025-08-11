@@ -15,9 +15,9 @@ import { eptRegex } from "@/lib/utils/regex";
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from "next/navigation";
-import styles from '../explorerDonnees.module.scss';
-import { sumProperty } from './fonctions';
-import { EmploisEnExterieurPieChartData } from './graphData';
+import styles from '../../explorerDonnees.module.scss';
+import { sumProperty } from '../fonctions';
+import { EmploisEnExterieurPieChartData } from '../graphData';
 
 export const EmploisEnExterieur = ({
   inconfortThermique

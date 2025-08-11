@@ -12,9 +12,9 @@ import { InconfortThermique } from "@/lib/postgres/models";
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
 import { eptRegex, numberWithSpacesRegex } from "@/lib/utils/regex";
 import { useSearchParams } from "next/navigation";
-import styles from '../explorerDonnees.module.scss';
-import { sumProperty } from './fonctions';
-import { GrandAgeLineChartYData } from './graphData';
+import styles from '../../explorerDonnees.module.scss';
+import { sumProperty } from '../fonctions';
+import { GrandAgeLineChartYData } from '../graphData';
 
 export const GrandAge = ({
   inconfortThermique
@@ -86,7 +86,7 @@ export const GrandAge = ({
                 backgroundColor: 'white',
                 height: '500px',
                 width: '100%',
-                borderRadius: '0.5rem 0 0 0',
+                borderRadius: '1rem 0 0 0',
                 borderBottom: '1px solid var(--gris-medium)',
               }}
             >

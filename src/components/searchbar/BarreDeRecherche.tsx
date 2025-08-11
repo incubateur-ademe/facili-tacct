@@ -1,6 +1,6 @@
 'use client';
 
-import { BoutonPrimaire } from '@/design-system/base/Boutons';
+import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { couleursPrincipales, nuancesGris } from '@/design-system/couleurs';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { FocusOnElement } from '@/lib/utils/reusableFunctions/focus';
@@ -37,18 +37,18 @@ export const BarreDeRecherche = ({
   const { css } = useStyles();
   const window = useWindowDimensions();
   const [width, setWidth] = useState<number | undefined>(1000);
-  const searchInputId = Array
-    .from(document.querySelectorAll('[id]'))
-    .map(el => el.id)
-    .find(id => id.startsWith("search-fr-search-bar-"));
 
   // Met le focus sur le champ de recherche lorsque le composant est monté
   // et lorsque le typeTerritoire change
   useEffect(() => {
-    if (searchInputId) {
-      FocusOnElement(searchInputId);
+    const foundInputId = Array
+      .from(document.querySelectorAll('[id]'))
+      .map(el => el.id)
+      .find(id => id.startsWith("search-fr-search-bar-"));
+    if (foundInputId) {
+      FocusOnElement(foundInputId);
     }
-  }, [typeTerritoire, searchInputId]);
+  }, [typeTerritoire]);
 
   useEffect(() => {
     setWidth(window.width);
@@ -87,29 +87,6 @@ export const BarreDeRecherche = ({
           ))
         }
       </div>
-      {/* <RadioButtons
-        name="radio"
-        options={radioOptions(typeTerritoire, handleRadioChange)}
-        orientation={width && width > 520 ? "horizontal" : "vertical"}
-        className={css({
-          '.fr-fieldset__content': {
-            justifyContent: 'center',
-            '.fr-label': {
-              paddingBottom: 0,
-              fontSize: "1rem",
-              position: 'relative',
-              backgroundImage: "radial-gradient(transparent 10px, var(--gris-dark) 11px, transparent 12px)",
-              color: nuancesGris.dark
-            },
-            'input[type=radio]:checked + .fr-label': {
-              backgroundImage: "radial-gradient(transparent 10px, var(--principales-vert) 11px, transparent 12px), radial-gradient(var(--principales-vert) 5px, transparent 6px);"
-            },
-            '@media (max-width: 745px)': {
-              justifyContent: 'flex-start'
-            }
-          }
-        })}
-      /> */}
       <div
         className={styles.searchbarWrapper}
         style={{ flexDirection: width && width < 520 ? 'column' : 'row' }}
@@ -170,7 +147,7 @@ export const BarreDeRecherche = ({
             />
           )}
         />
-        <BoutonPrimaire
+        <BoutonPrimaireClassic
           text="Rechercher"
           size="lg"
           disabled={searchLibelle.length === 0 ? true : false}

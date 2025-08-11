@@ -32,20 +32,40 @@ export const nodeCategoryMapping = {
 };
 
 export const nomThematiques = [
-  { label: 'Continuité des services', labelRadius: 280, icon: '🏥' },
-  { label: 'Bâtiment & Logement', labelRadius: 270, icon: '🏠' },
-  { label: 'Confort thermique', labelRadius: 260, icon: '🌡️' },
-  { label: 'Gestion des risques', labelRadius: 260, icon: '⚠️' },
-  { label: 'Santé', icon: '🏥' },
-  { label: 'Aménagement', labelRadius: 290, icon: '🏗️' },
-  { label: 'Forêts', labelRadius: 250, icon: '🌳' },
-  { label: 'Eau', icon: '💧' },
-  { label: 'Biodiversité', labelRadius: 270, icon: '🌼' },
-  { label: 'Air', labelRadius: 240, icon: '🌬️' },
-  { label: 'Entreprises', labelRadius: 240, icon: '🏢' },
-  { label: 'Tourisme', labelRadius: 260, icon: '🏖️' },
-  { label: 'Agriculture & pêche', labelRadius: 280, icon: '🐟' },
-  { label: 'Filière bois', labelRadius: 270, icon: '🌲' }
+  {
+    label: 'Continuité des services',
+    labelRadius: 280,
+    icon: '🏥',
+    disabled: true
+  },
+  {
+    label: 'Bâtiment & Logement',
+    labelRadius: 270,
+    icon: '🏠',
+    disabled: true
+  },
+  { label: 'Confort thermique', labelRadius: 260, icon: '🌡️', disabled: false },
+  {
+    label: 'Gestion des risques',
+    labelRadius: 260,
+    icon: '⚠️',
+    disabled: false
+  },
+  { label: 'Santé', icon: '🏥', disabled: false },
+  { label: 'Aménagement', labelRadius: 290, icon: '🏗️', disabled: false },
+  { label: 'Forêts', labelRadius: 250, icon: '🌳', disabled: true },
+  { label: 'Eau', icon: '💧', disabled: false },
+  { label: 'Biodiversité', labelRadius: 270, icon: '🌼', disabled: false },
+  { label: 'Air', labelRadius: 240, icon: '🌬️', disabled: true },
+  { label: 'Entreprises', labelRadius: 240, icon: '🏢', disabled: true },
+  { label: 'Tourisme', labelRadius: 260, icon: '🏖️', disabled: true },
+  {
+    label: 'Agriculture & pêche',
+    labelRadius: 280,
+    icon: '🐟',
+    disabled: false
+  },
+  { label: 'Filière bois', labelRadius: 270, icon: '🌲', disabled: true }
 ];
 
 // liens entre les thématiques

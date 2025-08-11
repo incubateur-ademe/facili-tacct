@@ -1,5 +1,6 @@
 "use client";
 import { Loader } from "@/components/loader";
+import { HtmlTooltip } from "@/components/utils/HtmlTooltip";
 import { Body } from "@/design-system/base/Textes";
 import { Any } from "@/lib/utils/types";
 import * as d3 from "d3";
@@ -22,6 +23,7 @@ type NoeudRoue = {
   labelRadius?: number;
   category?: string;
   originalIndex?: number;
+  disabled?: boolean;
 };
 
 interface RoueSystemiqueProps {
@@ -38,6 +40,10 @@ const dimensions = {
 const getCategoryColor = (label: string) => {
   const category = nodeCategoryMapping[label as keyof typeof nodeCategoryMapping];
   return category ? categoryColors[category as keyof typeof categoryColors] : "#D9D9D9";
+};
+
+const getDisabledTooltipContent = (label: string) => {
+  return `La thématique "${label}" n'est pas encore disponible.`;
 };
 
 const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => {
@@ -66,11 +72,11 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
     const category = nodeCategoryMapping[label as keyof typeof nodeCategoryMapping];
     NoeudsRoue.push({
       id: `thematique-${i + 1}`,
-      ...nomThematiques[i], // Copy label, labelRadius, etc.
+      ...nomThematiques[i],
       x: radiusRoueSytemique * Math.cos(angle),
       y: radiusRoueSytemique * Math.sin(angle),
       size: 20,
-      color: getCategoryColor(label), // Utilise la couleur de la catégorie
+      color: getCategoryColor(label),
       textColor: "#222",
       category: category
     });
@@ -343,9 +349,39 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         const y = labelRadius * Math.sin(nodeAngle);
         return `translate(${x},${y})`;
       })
-      .style("cursor", "pointer")
+      .style("cursor", (d: NoeudRoue) => {
+        const thematique = nomThematiques.find(t => t.label === d.label);
+        return thematique?.disabled ? "help" : "pointer";
+      })
       .on("click", (event: Any, d: NoeudRoue) => {
-        handleItemSelect(selectedThematique === d.label ? null : d.label);
+        const thematique = nomThematiques.find(t => t.label === d.label);
+        if (!thematique?.disabled) {
+          handleItemSelect(selectedThematique === d.label ? null : d.label);
+        }
+      })
+      .on("mouseenter", function (event: Any, d: NoeudRoue) {
+        const thematique = nomThematiques.find(t => t.label === d.label);
+        if (thematique?.disabled) return;
+        if (selectedThematique !== d.label && !(selectedThematique && getThematiquesLiees(selectedThematique).includes(d.label))) {
+          const category = nodeCategoryMapping[d.label as keyof typeof nodeCategoryMapping];
+          const hoverColor = category ? categoryColors[category as keyof typeof categoryColors] : "#E5E5E5";
+          d3.select(this).select("rect")
+            .transition()
+            .duration(200)
+            .attr("fill", hoverColor)
+            .attr("stroke-dasharray", "");
+        }
+      })
+      .on("mouseleave", function (event: Any, d: NoeudRoue) {
+        const thematique = nomThematiques.find(t => t.label === d.label);
+        if (thematique?.disabled) return;
+        if (selectedThematique !== d.label && !(selectedThematique && getThematiquesLiees(selectedThematique).includes(d.label))) {
+          d3.select(this).select("rect")
+            .transition()
+            .duration(200)
+            .attr("fill", "#fff")
+            .attr("stroke-dasharray", "2 2");
+        }
       })
       .each(function (d: NoeudRoue) {
         // Si le label fait plus de 12 caractères, le diviser en lignes
@@ -377,6 +413,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           if (textWidth > maxLineWidth) maxLineWidth = textWidth;
         });
         tempText.remove();
+        const thematique = nomThematiques.find(t => t.label === d.label);
         let rectFill = "#fff";
         let rectStroke = d.color;
         let textFill = d.textColor;
@@ -384,7 +421,12 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         let paddingX = 16;
         let paddingY = 8;
         const fontSize = 14;
-        if (selectedThematique === d.label) {
+
+        if (thematique?.disabled) {
+          rectStroke = "var(--gris-medium)";
+          textFill = "var(--gris-medium-dark)";
+          strokeDasharray = "2 2";
+        } else if (selectedThematique === d.label) {
           // L'item sélectionné utilise la couleur de contour la plus foncée
           const category = nodeCategoryMapping[d.label as keyof typeof nodeCategoryMapping];
           rectFill = category ? categorySelectedBorderColors[category as keyof typeof categorySelectedBorderColors] : "#800020";
@@ -429,7 +471,6 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       });
   }, [selectedThematique, svgWidth, svgHeight]);
 
-  console.log(svgRef, svgWidth)
   return (
     <div style={{ position: 'relative', width: svgWidth, height: svgHeight, alignSelf: "baseline" }}>
       <svg
@@ -438,6 +479,38 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         height={svgHeight}
         style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
       />
+
+      {/* Tooltip pour les thématiques indisponibles */}
+      {NoeudsRoue.map((node, index) => {
+        const thematique = nomThematiques.find(t => t.label === node.label);
+        if (!thematique?.disabled) return null;
+
+        const labelRadius = node.labelRadius ? node.labelRadius : defaultLabelRadius;
+        const nodeAngle = Math.atan2(node.y, node.x);
+        const x = labelRadius * Math.cos(nodeAngle) + svgWidth / 2;
+        const y = labelRadius * Math.sin(nodeAngle) + svgHeight / 2;
+
+        return (
+          <HtmlTooltip
+            key={`tooltip-${index}`}
+            title={getDisabledTooltipContent(node.label)}
+            placement="top"
+          >
+            <div
+              style={{
+                position: 'absolute',
+                left: x - 80,
+                top: y - 15,
+                width: 160,
+                height: 50,
+                cursor: 'help',
+                zIndex: 2,
+                pointerEvents: thematique?.disabled ? 'auto' : 'none'
+              }}
+            />
+          </HtmlTooltip>
+        );
+      })}
 
       {/* Texte central qui disparaît lors de la sélection */}
       {

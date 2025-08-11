@@ -8,7 +8,7 @@ import { CarteCommunes } from "@/lib/postgres/models";
 import { GetLczCouverture } from '@/lib/queries/databases/inconfortThermique';
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from 'react';
-import styles from '../explorerDonnees.module.scss';
+import styles from '../../explorerDonnees.module.scss';
 
 export const LCZ = ({
   carteCommunes,

@@ -1,19 +1,18 @@
 'use client';
-
 import HautDePageIcon from '@/assets/icons/haut_de_page_icon_white.svg';
 import { Body, H2 } from '@/design-system/base/Textes';
 import { CarteCommunes, CLCTerritoires, InconfortThermique } from '@/lib/postgres/models';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
-import { sommaireThematiques } from '../../roue-systemique/constantes/textesThematiques';
-import styles from '../explorerDonnees.module.scss';
-import { GrandAge } from '../thematiques/1-GrandAge';
-import { PrecariteEnergetique } from '../thematiques/2-PrecariteEnergetique';
-import { EmploisEnExterieur } from '../thematiques/3-EmploisExterieurs';
-import { DateConstructionResidences } from '../thematiques/4-DateConstructionResidences';
-import { TypesDeSols } from '../thematiques/5-TypesDeSols';
-import { LCZ } from '../thematiques/6-LCZ';
+import { sommaireThematiques } from '../../../roue-systemique/constantes/textesThematiques';
+import styles from '../../explorerDonnees.module.scss';
+import { GrandAge } from '../../indicateurs/confortThermique/1-GrandAge';
+import { PrecariteEnergetique } from '../../indicateurs/confortThermique/2-PrecariteEnergetique';
+import { EmploisEnExterieur } from '../../indicateurs/confortThermique/3-EmploisExterieurs';
+import { DateConstructionResidences } from '../../indicateurs/confortThermique/4-DateConstructionResidences';
+import { TypesDeSols } from '../../indicateurs/confortThermique/5-TypesDeSols';
+import { LCZ } from '../../indicateurs/confortThermique/6-LCZ';
 
 const ExplorerConfortThermique = ({
   carteCommunes,

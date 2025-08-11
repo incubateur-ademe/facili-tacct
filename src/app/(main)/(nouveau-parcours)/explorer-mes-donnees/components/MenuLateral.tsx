@@ -1,14 +1,15 @@
 'use client';
 
+import { ErrorDisplay } from '@/app/ErrorDisplay';
 import retourIcon from '@/assets/icons/retour_icon_black.svg';
 import { Body, H2, SousTitre2 } from '@/design-system/base/Textes';
 import { handleRedirection } from '@/hooks/Redirections';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { sommaireThematiques } from '../../roue-systemique/constantes/textesThematiques';
-import { useExplorer } from '../contexts/ExplorerContext';
 import styles from '../explorerDonnees.module.scss';
+import { useExplorer } from './ExplorerContext';
 
 const Etape2Sommaire = [
   {
@@ -31,8 +32,10 @@ const Etape2Sommaire = [
 
 export const MenuLateral = () => {
   const [topPosition, setTopPosition] = useState<number>(173);
+  const [navigationHeight, setNavigationHeight] = useState<number>(0);
   const [openEtape1, setOpenEtape1] = useState<boolean>(true);
   const [openEtape2, setOpenEtape2] = useState<boolean>(false);
+  const navigationRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
   const code = searchParams.get('code');
   const libelle = searchParams.get('libelle');
@@ -40,20 +43,9 @@ export const MenuLateral = () => {
   const thematique = searchParams.get('thematique') as "Confort thermique";
   const { showEtape, setShowEtape } = useExplorer();
   const ongletsMenu = sommaireThematiques[thematique];
-  const [activeAnchorEtape1, setActiveAnchorEtape1] = useState<string>(ongletsMenu.thematiquesLiees[0].sousCategories[0]);
+  const [activeAnchorEtape1, setActiveAnchorEtape1] = useState<string>(ongletsMenu?.thematiquesLiees?.[0].sousCategories[0]);
   const [activeAnchorEtape2, setActiveAnchorEtape2] = useState<string>('');
   const [pendingScroll, setPendingScroll] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (pendingScroll) {
-      const timeoutId = setTimeout(() => {
-        scrollToAnchor(pendingScroll);
-        setPendingScroll(null);
-      }, 10);
-
-      return () => clearTimeout(timeoutId);
-    }
-  }, [showEtape, pendingScroll]);
 
   const redirectionRetour = handleRedirection({
     searchCode: code || '',
@@ -62,12 +54,47 @@ export const MenuLateral = () => {
     page: 'roue-systemique'
   });
 
+  useEffect(() => {
+    if (pendingScroll) {
+      const timeoutId = setTimeout(() => {
+        scrollToAnchor(pendingScroll);
+        setPendingScroll(null);
+      }, 10);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [showEtape, pendingScroll]);
+
+  // Mesurer la hauteur de la div de navigation
+  useEffect(() => {
+    const measureHeight = () => {
+      if (navigationRef.current) {
+        const height = navigationRef.current.offsetHeight;
+        setNavigationHeight(height);
+      }
+    };
+    measureHeight();
+    const timeoutId = setTimeout(measureHeight, 50);
+
+    return () => clearTimeout(timeoutId);
+  }, [openEtape1, openEtape2]);
+
   // Fonction pour gérer le scroll et mettre en surbrillance l'élément actuel
   useEffect(() => {
+    if (ongletsMenu === undefined) return;
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const headerHeight = 173;
-      const newTopPosition = Math.max(0, headerHeight - scrollY);
+      const footerHeight = 330;
+      const documentHeight = document.documentElement.scrollHeight;
+      const windowHeight = window.innerHeight;
+      let newTopPosition = Math.max(0, headerHeight - scrollY);
+      const distanceFromBottom = documentHeight - (scrollY + windowHeight);
+      const screenHeightAboveFooter = windowHeight + (distanceFromBottom - footerHeight)
+      if (distanceFromBottom <= footerHeight &&
+        screenHeightAboveFooter < (navigationHeight + 101)
+      ) {
+        newTopPosition = (screenHeightAboveFooter - (navigationHeight + 150));
+      }
       setTopPosition(newTopPosition);
 
       // Gestion du surlignage des éléments selon l'étape active
@@ -103,7 +130,7 @@ export const MenuLateral = () => {
     window.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [showEtape]);
+  }, [showEtape, navigationHeight]);
 
   const scrollToAnchor = (anchor: string) => {
     const element = document.getElementById(anchor);
@@ -133,124 +160,128 @@ export const MenuLateral = () => {
   };
 
   return (
-    <nav
-      className={styles.sidebarContainer}
-      style={{
-        top: `${topPosition}px`,
-        height: `calc(100vh - ${topPosition}px)`,
-        borderRight: '1px solid var(--gris-medium)',
-        padding: "1.5rem 1.25rem",
-        zIndex: 50
-      }}
-      aria-label="Navigation dans la page"
-      role="navigation"
-    >
-      <div className="sticky top-0">
-        {/* Bouton de retour */}
-        <div
-          style={{ borderBottom: '1px solid var(--gris-medium)' }}
+    <>
+      {ongletsMenu ? (
+        <nav
+          className={styles.sidebarContainer}
+          style={{
+            top: `${topPosition}px`,
+            height: `calc(100vh - ${topPosition}px)`,
+            borderRight: '1px solid var(--gris-medium)',
+            padding: "1.5rem 1.25rem",
+            zIndex: 50
+          }}
+          aria-label="Navigation dans la page"
+          role="navigation"
         >
-          <a
-            href={redirectionRetour}
-            className="flex items-center gap-2"
-            style={{ backgroundImage: 'none' }}
-          >
-            <Image src={retourIcon} alt="" />
-            <Body size='sm' weight='bold'>Retour aux thématiques</Body>
-          </a>
-
-          {/* Titre principal */}
-          <H2 style={{ fontSize: '1.25rem', margin: "18px 0" }}>
-            {thematique}
-          </H2>
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <div className="flex flex-col">
-        <button
-          onClick={handleEtape1Toggle}
-          className={styles.BoutonEtapes}
-        >
-          {openEtape1 ? (
+          <div>
+            {/* Bouton de retour */}
             <div
-              className={styles['chevron-right-green']}
-              style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
-            />
-          ) : (
-            <div
-              className={styles['chevron-right-black']}
-              style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
-            />
-          )}
-          <Body size='lg' weight='bold' style={{ color: openEtape1 ? "var(--principales-vert)" : "black" }}>
-            Étape 1. <br />Données de votre territoire
-          </Body>
-        </button>
-        <div className={styles.menuEtape1}>
-          {openEtape1 && ongletsMenu.thematiquesLiees.map((thematique, id) => (
-            <div key={id} className="mb-4">
-              <SousTitre2
-                style={{
-                  color: "var(--principales-rouge)",
-                  padding: "0 0 0.5rem"
-                }}
+              style={{ borderBottom: '1px solid var(--gris-medium)' }}
+            >
+              <a
+                href={redirectionRetour}
+                className="flex items-center gap-2"
+                style={{ backgroundImage: 'none' }}
               >
-                {thematique.icone}{" "}{thematique.thematique}
-              </SousTitre2>
-              <div className="">
-                {thematique.sousCategories.map((item) => (
+                <Image src={retourIcon} alt="" />
+                <Body size='sm' weight='bold'>Retour aux thématiques</Body>
+              </a>
+
+              {/* Titre principal */}
+              <H2 style={{ fontSize: '1.25rem', margin: "18px 0" }}>
+                {thematique}
+              </H2>
+            </div>
+          </div>
+          {/* Navigation */}
+          <div className="flex flex-col" ref={navigationRef}>
+            <button
+              onClick={handleEtape1Toggle}
+              className={styles.BoutonEtapes}
+            >
+              {openEtape1 ? (
+                <div
+                  className={styles['chevron-right-green']}
+                  style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
+                />
+              ) : (
+                <div
+                  className={styles['chevron-right-black']}
+                  style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
+                />
+              )}
+              <Body size='lg' weight='bold' style={{ color: openEtape1 ? "var(--principales-vert)" : "black" }}>
+                Étape 1. <br />Données de votre territoire
+              </Body>
+            </button>
+            <div className={styles.menuEtape1}>
+              {openEtape1 && ongletsMenu?.thematiquesLiees.map((thematique, id) => (
+                <div key={id} className="mb-4">
+                  <SousTitre2
+                    style={{
+                      color: "var(--principales-rouge)",
+                      padding: "0 0 0.5rem"
+                    }}
+                  >
+                    {thematique.icone}{" "}{thematique.thematique}
+                  </SousTitre2>
+                  <div className="">
+                    {thematique.sousCategories.map((item) => (
+                      <button
+                        key={item}
+                        onClick={() => handleItemClickEtape1(item)}
+                        className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === item && showEtape === 1
+                          ? styles.itemSurligne
+                          : styles.itemNonSurligne
+                          }`}
+                      >
+                        <Body size='sm'>{item}</Body>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <button
+              onClick={handleEtape2Toggle}
+              className={styles.BoutonEtapes}
+            >
+              {openEtape2 ? (
+                <div
+                  className={styles['chevron-right-green']}
+                  style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
+                />
+              ) : (
+                <div
+                  className={styles['chevron-right-black']}
+                  style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
+                />
+              )}
+              <Body size='lg' weight='bold' style={{ color: openEtape2 ? "var(--principales-vert)" : "black" }}>
+                Étape 2. <br />Diagnostiquez les impacts
+              </Body>
+            </button>
+            <div className={styles.menuEtape2}>
+              {
+                openEtape2 && Etape2Sommaire.map((item) => (
                   <button
-                    key={item}
-                    onClick={() => handleItemClickEtape1(item)}
-                    className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === item && showEtape === 1
+                    key={item.id}
+                    onClick={() => handleItemClickEtape2(item)}
+                    className={`block w-full text-left ${activeAnchorEtape2 === item.id && showEtape === 2
                       ? styles.itemSurligne
                       : styles.itemNonSurligne
                       }`}
                   >
-                    <Body size='sm'>{item}</Body>
+                    <Body size='sm'>{item.titre}</Body>
                   </button>
-                ))}
-              </div>
+                ))
+              }
             </div>
-          ))}
-        </div>
-        <button
-          onClick={handleEtape2Toggle}
-          className={styles.BoutonEtapes}
-        >
-          {openEtape2 ? (
-            <div
-              className={styles['chevron-right-green']}
-              style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
-            />
-          ) : (
-            <div
-              className={styles['chevron-right-black']}
-              style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
-            />
-          )}
-          <Body size='lg' weight='bold' style={{ color: openEtape2 ? "var(--principales-vert)" : "black" }}>
-            Étape 2. <br />Diagnostiquez les impacts
-          </Body>
-        </button>
-        <div className={styles.menuEtape2}>
-          {
-            openEtape2 && Etape2Sommaire.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleItemClickEtape2(item)}
-                className={`block w-full text-left ${activeAnchorEtape2 === item.id && showEtape === 2
-                  ? styles.itemSurligne
-                  : styles.itemNonSurligne
-                  }`}
-              >
-                <Body size='sm'>{item.titre}</Body>
-              </button>
-            ))
-          }
-        </div>
-      </div>
-    </nav>
-  );
+          </div>
+        </nav>
+      ) : <ErrorDisplay code="404" />
+      }
+    </>
+  )
 };

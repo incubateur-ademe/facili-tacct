@@ -1,5 +1,5 @@
 "use client";
-import { BoutonPrimaire } from "@/design-system/base/Boutons";
+import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
 import { H2 } from "@/design-system/base/Textes";
 import { useRouter, useSearchParams } from "next/navigation";
 import { thematiquesInfo } from "../constantes/textesThematiques";
@@ -25,7 +25,7 @@ const PanneauLateral = ({
       style={{
         position: 'absolute',
         right: selectedItem ? 'max(0rem, calc((100vw - 1200px) / 2))' : '-400px',
-        top: "21%",
+        top: "28%",
         width: selectedItem ? '385px' : 'fit-content',  // avec 0 pour un déroulé du panneau latéral
         opacity: selectedItem ? 1 : 0,
         border: selectedItem ? '1px solid var(--gris-medium)' : 'none',
@@ -66,12 +66,12 @@ const PanneauLateral = ({
               Aucune connexion directe identifiée pour cette thématique.
             </p>
           )}
-          <BoutonPrimaire
+          <BoutonPrimaireClassic
             text="J'explore cette thématique"
             size="lg"
             onClick={() => {
-              code ? router.push(`/explorer-mes-donnees?code=${code}&libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`)
-                : router.push(`/explorer-mes-donnees?libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`);
+              code ? router.push(`/${thematique.title === "Confort thermique" ? "explorer-mes-donnees" : "donnees-territoriales"}?code=${code}&libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`)
+                : router.push(`/${thematique.title === "Confort thermique" ? "explorer-mes-donnees" : "donnees-territoriales"}?libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`);
             }}
           />
         </div>

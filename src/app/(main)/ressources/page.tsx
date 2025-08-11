@@ -1,4 +1,3 @@
-import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { Metadata } from 'next';
 import { Container } from '../../../design-system/server';
 import RessourcesCards from './cards';
@@ -10,14 +9,7 @@ export const metadata: Metadata = {
 
 const Ressources = () => {
   return (
-    <Container size="xl" className="mb-24">
-      <Breadcrumb
-        currentPageLabel="Ressources"
-        homeLinkProps={{
-          href: '/'
-        }}
-        segments={[]}
-      />
+    <Container size="xl" className="my-16">
       <RessourcesCards />
     </Container>
   );

@@ -1,23 +1,23 @@
 'use client';
 
+import DiagnoticImage from '@/assets/images/diagnostiquer_impacts.png';
 import { ClientOnly } from '@/components/utils/ClientOnly';
-import { H1 } from '@/design-system/base/Textes';
-import { CarteCommunes, CLCTerritoires, InconfortThermique } from '@/lib/postgres/models';
-import { useExplorer } from '../contexts/ExplorerContext';
+import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
+import { Body, H1 } from '@/design-system/base/Textes';
+import Image from 'next/image';
 import styles from '../explorerDonnees.module.scss';
-import { DiagnostiquerImpacts } from './2-DiagnostiquerImpacts';
-import ExplorerConfortThermique from './ConfortThermique';
+import ExplorerConfortThermique from '../thematiques/confortThermique/1-ConfortThermique';
+import { DiagnostiquerImpactsConfortThermique } from '../thematiques/confortThermique/2-DiagnostiquerImpacts';
+import { useExplorer } from './ExplorerContext';
 
 const FiltreEtapeWrapper = ({
-  // children,
-  carteCommunes,
-  inconfortThermique,
-  clc
+  data,
+  h1,
+  thematique
 }: {
-  // children: React.ReactNode;
-  carteCommunes: CarteCommunes[];
-  inconfortThermique: InconfortThermique[];
-  clc: CLCTerritoires[] | undefined;
+  data: any;
+  h1: string;
+  thematique: string;
 }) => {
   const { showEtape } = useExplorer();
 
@@ -27,13 +27,31 @@ const FiltreEtapeWrapper = ({
         {showEtape === 1 && (
           <ClientOnly>
             <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
-              Ce que les données suggèrent sur votre territoire
+              {h1}
             </H1>
-            <ExplorerConfortThermique
-              carteCommunes={carteCommunes}
-              inconfortThermique={inconfortThermique}
-              clc={clc}
-            />
+            {
+              thematique === "Confort thermique" ? (
+                <ExplorerConfortThermique
+                  carteCommunes={data.carteCommunes}
+                  inconfortThermique={data.inconfortThermique}
+                  clc={data.clc}
+                />
+              ) : ""
+            }
+            <div className={styles.redirectionEtape2Wrapper} >
+              <Image
+                src={DiagnoticImage}
+                alt=""
+                style={{ width: '100%', height: 'auto', maxWidth: "180px" }}
+              />
+              <div className={styles.textBloc} >
+                <Body style={{ fontSize: "20px", color: "var(--gris-dark)", fontWeight: 700, maxWidth: "700px" }}>
+                  Ces pistes d'investigation en main, partez découvrir sur le
+                  terrain comment votre territoire vit concrètement les enjeux de confort thermique.
+                </Body>
+                <BoutonPrimaireClassic size='lg' text='Diagnostiquer les impacts' />
+              </div>
+            </div>
           </ClientOnly>
         )}
         {
@@ -42,7 +60,11 @@ const FiltreEtapeWrapper = ({
               <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
                 Les données vous montrent des pistes, le terrain lui, vous montre la réalité !
               </H1>
-              <DiagnostiquerImpacts />
+              {
+                thematique === "Confort thermique" ? (
+                  <DiagnostiquerImpactsConfortThermique />
+                ) : ""
+              }
             </ClientOnly>
           )
         }

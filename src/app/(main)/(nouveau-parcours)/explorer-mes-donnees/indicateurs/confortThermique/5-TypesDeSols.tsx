@@ -17,8 +17,8 @@ import { eptRegex } from "@/lib/utils/regex";
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from "next/navigation";
 import { useRef } from 'react';
-import styles from '../explorerDonnees.module.scss';
-import { sumProperty } from './fonctions';
+import styles from '../../explorerDonnees.module.scss';
+import { sumProperty } from '../fonctions';
 
 export const TypesDeSols = ({
   inconfortThermique,

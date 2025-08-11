@@ -13,9 +13,9 @@ import { eptRegex } from "@/lib/utils/regex";
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from "next/navigation";
-import styles from '../explorerDonnees.module.scss';
-import { averageProperty } from './fonctions';
-import { DateConstructionResidencesBarChartData } from './graphData';
+import styles from '../../explorerDonnees.module.scss';
+import { averageProperty } from '../fonctions';
+import { DateConstructionResidencesBarChartData } from '../graphData';
 
 export const DateConstructionResidences = ({
   inconfortThermique
