@@ -15,11 +15,13 @@ export const HomeCard = ({
 }: HomeCardProps) => {
   return (
     <div className={styles.homeCard}>
-      <Image
-        src={icone}
-        alt="image-cartographie"
-        className={styles.homeCardImage}
-      />
+      <div className={styles.homeCardIcon}>
+        <Image
+          src={icone}
+          alt="image-cartographie"
+          className={styles.homeCardImage}
+        />
+      </div>
       <H4 style={{ color: "var(--principales-vert)", margin: "0.5rem 0 1rem", fontSize: "1rem" }}>{titre}</H4>
       <p>{description}</p>
     </div>

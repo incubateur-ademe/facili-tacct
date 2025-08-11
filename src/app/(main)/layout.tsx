@@ -1,5 +1,4 @@
 import HeaderComp from "@/components/Header";
-import { HeaderClientOnly } from "@/components/utils/ClientOnly";
 import AppFooter from "@/design-system/layout/Footer";
 import { type Metadata } from 'next';
 import dynamic from 'next/dynamic';
@@ -28,9 +27,7 @@ const LayoutMain = ({ children }: PropsWithChildren) => {
       <Suspense>
         <PostHogPageView />
       </Suspense>
-      <HeaderClientOnly>
-        <HeaderComp />
-      </HeaderClientOnly>
+      <HeaderComp />
       <main>{children}</main>
       <AppFooter />
       {/* <Footer

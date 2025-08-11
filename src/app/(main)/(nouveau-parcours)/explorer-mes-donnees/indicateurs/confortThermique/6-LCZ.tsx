@@ -58,7 +58,13 @@ export const LCZ = ({
           {
             carteCommunes ? (
               <div ref={exportPNGRef}>
-                <MapLCZNouveauParcours carteCommunes={carteCommunes} isLoading={isLoading} isLczCovered={isLczCovered} />
+                <MapLCZNouveauParcours
+                  carteCommunes={carteCommunes}
+                  isLoading={isLoading}
+                  isLczCovered={isLczCovered}
+                  mapRef={mapRef}
+                  mapContainer={mapContainer}
+                />
               </div>
             ) : <DataNotFoundForGraph image={DataNotFound} />
           }

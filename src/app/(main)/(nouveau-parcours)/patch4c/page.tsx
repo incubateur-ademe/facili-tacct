@@ -34,7 +34,7 @@ const Patch4C = async (props: { searchParams: SearchParams }) => {
       {patch4 ? <CircleVisualization patch4={patch4} /> : null}
       <H2>En cas d’aggravation forte ou très forte, comment renforcer son plan d’adaptation ?</H2>
       <Body>
-        <b>Si l'un des indices de votre territoire est au niveau d'aggravation "fort" ou "très fort,
+        <b>Si l'un des indices de votre territoire est au niveau d'aggravation "fort" ou "très fort",
           il est impératif de renforcer votre plan d'adaptation.</b> Prenez en compte dès maintenant les
         conséquences possibles de l'aléa. Le tableau ci-dessous propose une liste de thématiques à
         aborder, mais l'analyse reste à effectuer en fonction de vos dynamiques territoriales, des

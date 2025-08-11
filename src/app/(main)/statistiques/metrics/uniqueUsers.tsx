@@ -1,6 +1,7 @@
 'use server';
 
 import { LineChart } from '@/components/charts/stats/lineChart';
+import { Body, H2 } from '@/design-system/base/Textes';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { GetUniqueUsersHogQL } from '../query';
 import styles from '../stats.module.scss';
@@ -20,15 +21,15 @@ const UniqueUsers = async () => {
             margin: '0 0 15rem'
           }}
         >
-          <h2>Utilisateurs uniques</h2>
+          <H2>Utilisateurs uniques</H2>
           <div className={styles.graphWrapper}>
             <div
               className={styles.graphTitleWrapper}
               style={{ padding: '1rem' }}
             >
-              <h2>
+              <Body size='lg' weight='bold'>
                 Évolution du nombre d'utilisateurs uniques par mois
-              </h2>
+              </Body>
             </div>
             <div
               style={{
