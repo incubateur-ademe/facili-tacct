@@ -4,12 +4,12 @@ import BDImage2 from '@/assets/images/bd_confort_thermique2.png';
 import BDImage3 from '@/assets/images/bd_confort_thermique3.png';
 import RDVImage from '@/assets/images/prendreRDV.png';
 import { MicroPieChart } from '@/components/charts/MicroDataviz';
-import { BoutonPrimaire } from '@/design-system/base/Boutons';
+import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H2 } from "@/design-system/base/Textes";
 import Image from "next/image";
-import styles from '../explorerDonnees.module.scss';
+import styles from '../../explorerDonnees.module.scss';
 
-export const DiagnostiquerImpacts = () => {
+export const DiagnostiquerImpactsConfortThermique = () => {
   return (
     <>
       <div className={styles.retourHautDePageWrapper}>
@@ -220,7 +220,7 @@ export const DiagnostiquerImpacts = () => {
               découvertes avec nous. Ce temps d’échange vous aidera à structurer
               vos enjeux avant de passer à l’étape suivante.
             </Body>
-            <BoutonPrimaire
+            <BoutonPrimaireClassic
               size='sm'
               text='Prendre RDV'
             />
@@ -242,7 +242,7 @@ export const DiagnostiquerImpacts = () => {
           <Body>
             Vous pouvez retournez à l’ensemble des thématiques ou bien explorez les thématiques liées à celle-ci.
           </Body>
-          <div className='h-[600px]' />
+
         </div>
       </section>
     </>

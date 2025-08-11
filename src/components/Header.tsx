@@ -43,7 +43,7 @@ const HeaderComp = () => {
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  console.log("params", params);
+  const thematique = searchParams.get('thematique')!;
   const posthog = usePostHog();
   const { css } = useStyles();
   const window = useWindowDimensions();
@@ -74,9 +74,9 @@ const HeaderComp = () => {
       className={css({
         zIndex: '500',
         '.fr-nav__link[aria-current]': {
-          color: 'var(--principales-vert)',
+          color: params === "/donnees-territoriales" ? "#0063CB" : 'var(--principales-vert)',
           ':before': {
-            backgroundColor: 'var(--principales-vert)',
+            backgroundColor: params === "/donnees-territoriales" ? "#0063CB" : 'var(--principales-vert)',
           }
         }
       })}

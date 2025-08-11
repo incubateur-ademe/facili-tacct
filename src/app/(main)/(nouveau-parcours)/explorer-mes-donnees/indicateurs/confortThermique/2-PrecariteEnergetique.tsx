@@ -13,7 +13,7 @@ import { fragiliteEconomiqueTooltipText } from '@/lib/tooltipTexts';
 import { eptRegex } from "@/lib/utils/regex";
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from "next/navigation";
-import styles from '../explorerDonnees.module.scss';
+import styles from '../../explorerDonnees.module.scss';
 
 export const PrecariteEnergetique = ({
   carteCommunes

@@ -48,7 +48,7 @@ export const thematiquesInfo: {
   Aménagement: {
     title: 'Aménagement',
     description: (<div></div>),
-    link: ''
+    link: 'Aménagement'
   },
   'Confort thermique': {
     title: 'Confort thermique',
@@ -86,7 +86,7 @@ export const thematiquesInfo: {
   'Gestion des risques': {
     title: 'Gestion des risques',
     description: (<div></div>),
-    link: ''
+    link: 'Gestion des risques'
   },
   Santé: {
     title: 'Santé',
@@ -101,12 +101,12 @@ export const thematiquesInfo: {
   Eau: {
     title: 'Eau',
     description: (<div></div>),
-    link: ''
+    link: 'Ressources en eau'
   },
   Biodiversité: {
     title: 'Biodiversité',
     description: (<div></div>),
-    link: ''
+    link: 'Biodiversité'
   },
   Air: {
     title: 'Air',
@@ -126,7 +126,7 @@ export const thematiquesInfo: {
   'Agriculture & pêche': {
     title: 'Agriculture & pêche',
     description: (<div></div>),
-    link: ''
+    link: 'Agriculture'
   },
   'Filière bois': {
     title: 'Filière bois',

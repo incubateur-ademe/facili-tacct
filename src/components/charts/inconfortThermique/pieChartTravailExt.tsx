@@ -86,10 +86,10 @@ export const PieChartTravailExt = ({ graphData, travailExterieurTerritoire }: Pr
   return (
     <div
       style={{
-        height: '430px',
-        minWidth: '450px',
+        height: '350px',
+        minWidth: '400px',
         backgroundColor: 'white',
-        borderRadius: '0.5rem 0 0.5rem 0',
+        borderRadius: '1rem 0 1rem 0',
       }}
     >
       {sumAllCount > 0 ?
