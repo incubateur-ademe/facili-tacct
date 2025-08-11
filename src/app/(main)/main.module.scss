@@ -4,19 +4,33 @@ $height-notice: 461px;
 
 // 1er bloc
 .homePageTopContainer {
-    padding: 1.5em 0;
+    padding: 1.5em;
     background-color: var(--principales-vert);
-    .homePageTopWrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 2rem;
-        align-items: flex-start;
-    }
+}
+.homePageTopWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: flex-start;
     .titles {
         display: flex;
         flex-direction: column;
         color: #ffffff;
+    }
+    .topImage {
+        position: relative;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .homePageTopWrapper {
+        .topImage {
+            display: none;
+        }
     }
 }
 
@@ -70,7 +84,8 @@ $height-notice: 461px;
 @media screen and (max-width: 1280px) {
     .patch4Wrapper {
         margin: 0;
-        padding: 9rem 1rem 2rem;
+        padding: 0rem;
+        gap: 2rem;
     }
 }
 
@@ -91,9 +106,6 @@ $height-notice: 461px;
 }
 
 @media screen and (max-width: 520px) {
-    .patch4Wrapper {
-        padding: 21rem 2rem 2rem;
-    }
     .patch4Text {
         max-width: 100%;
         padding: 1.5rem;
@@ -136,11 +148,18 @@ $height-notice: 461px;
     align-items: flex-start;
     width: 267px;
     min-width: 267px;
+    .homeCardIcon {
+        padding: 0.25rem;
+        border-radius: 0.5rem;
+        background-color: var(--boutons-primaire-2);
+        width: 32px;
+        height: 32px;
+    }
 }
 
 @media screen and (max-width: 1280px) {
     .tacctWrapper {
-        padding: 3rem 2rem;
+        padding: 0rem 2rem;
     }
     .cardWrapper {
         justify-content: center;
@@ -177,6 +196,7 @@ $height-notice: 461px;
     .communauteWrapper {
         flex-direction: column;
         align-items: center;
+        padding: 0;
     }
     .communauteText {
         max-width: 80%;
@@ -209,16 +229,18 @@ $height-notice: 461px;
     .diagnosticWrapper {
         flex-direction: column;
         align-items: center;
-        padding: 3rem 2rem;
+        padding: 0;
+        margin: 0 2rem;
     }
     .diagnosticText {
-        max-width: 80%;
+        padding: 0;
     }
 }
 
 // Ressources bloc
 .ressourcesContainer {
     background-color: white;
+    padding: 1.5rem 2rem;
 }
 
 .ressourcesWrapper {
@@ -226,9 +248,16 @@ $height-notice: 461px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 0rem;
+    gap: 2rem;
     .ressourcesText {
-        max-width: 50%;
+        max-width: 60%;
+    }
+    .ressourcesImage {
+        width: 40%;
+        height: auto;
+        max-height: 320px;
+        position: relative;
+        object-fit: contain;
     }
 }
 
@@ -244,7 +273,7 @@ $height-notice: 461px;
 
 .verbatimContainer {
     background-color: var(--principales-vert);
-    padding: 1.5rem 0;
+    padding: 1.5rem 2rem;
     .verbatimCardsWrapper {
         display: flex;
         flex-direction: row;
@@ -262,6 +291,16 @@ $height-notice: 461px;
             justify-content: space-between;
             gap: 1rem;
             width: 384px;
+        }
+    }
+}
+
+@media screen and (max-width: 1264px) {
+    .verbatimContainer {
+        .verbatimCardsWrapper {
+            justify-content: center;
+            column-gap: 3rem;
+            row-gap: 1rem;
         }
     }
 }

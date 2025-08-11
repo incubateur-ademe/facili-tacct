@@ -1,6 +1,8 @@
+import ConnexionIcon from '@/assets/icons/connexion_compte_icon_black.svg';
 import { Button } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
 import { couleursBoutons, nuancesGris } from "../couleurs";
+import { Body } from "./Textes";
 
 export const BoutonPrimaire = ({
   link,
@@ -100,7 +102,7 @@ export const BoutonPrimaireClassic = ({
     color: disabled ? nuancesGris.dark : "white",
     backgroundColor: disabled ? nuancesGris.light : couleursBoutons.primaire[1],
     borderRadius: '60px',
-    height: size === 'sm' ? '32px' : size === 'md' ? '40px' : '48px',
+    minHeight: size === 'sm' ? '32px' : size === 'md' ? '40px' : '48px',
     border: disabled ? `1px solid ${nuancesGris.light}` : `1px solid ${couleursBoutons.primaire[1]}`,
     padding: '4px 12px',
     fontWeight: 500,
@@ -204,7 +206,7 @@ export const BoutonSecondaireClassic = ({
     color: disabled ? `${nuancesGris.dark} !important` : couleursBoutons.primaire[3],
     backgroundColor: disabled ? nuancesGris.light : "white",
     borderRadius: '60px',
-    height: size === 'sm' ? '32px' : size === 'md' ? '40px' : '48px',
+    minHeight: size === 'sm' ? '32px' : size === 'md' ? '40px' : '48px',
     border: disabled ? `1px solid ${nuancesGris.light} !important` : `1px solid ${couleursBoutons.primaire[2]}`,
     padding: '4px 12px',
     fontWeight: 500,
@@ -283,6 +285,22 @@ export const BoutonSecondaireClassic = ({
     </button>
   );
 }
+
+export const ConnexionBouton = () => {
+  return (
+    <button
+      className='flex flex-row gap-2'
+      style={{ borderLeft: '1px solid var(--gris-medium)', paddingLeft: '0.75rem', alignItems: 'center' }}
+      onClick={() => window.open('https://tacct.ademe.fr/create-account', '_blank')}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = "transparent";
+      }}
+    >
+      <Image src={ConnexionIcon} alt="" height={24} width={24} />
+      <Body size='sm'>Connectez-vous</Body>
+    </button>
+  );
+};
 
 export const BoutonSecondaire = ({
   link,

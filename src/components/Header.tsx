@@ -1,6 +1,7 @@
 'use client';
 
 import maisonIcon from '@/assets/icons/maison_icon_black.svg';
+import { ConnexionBouton } from '@/design-system/base/Boutons';
 import { handleRedirection } from '@/hooks/Redirections';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { DarkClass } from '@/lib/utils/DarkClass';
@@ -8,7 +9,6 @@ import { eptRegex } from '@/lib/utils/regex';
 import Header from '@codegouvfr/react-dsfr/Header';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { usePostHog } from 'posthog-js/react';
 import { useStyles } from 'tss-react/dsfr';
 import { Brand } from './Brand';
 import styles from './components.module.scss';
@@ -43,17 +43,8 @@ const HeaderComp = () => {
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const thematique = searchParams.get('thematique')!;
-  const posthog = usePostHog();
   const { css } = useStyles();
-  const window = useWindowDimensions();
-
-  const RessourcesClick = () => {
-    posthog.capture('ressources_bouton', {
-      ressource: 'ressources',
-      date: new Date()
-    });
-  };
+  const windowDimensions = useWindowDimensions();
 
   const redirectionPatch4 = handleRedirection({
     searchCode: (type === "epci" || type === "commune") ? code : '',
@@ -90,12 +81,20 @@ const HeaderComp = () => {
         imgUrl: '/logo-ademe-tacct.png',
         orientation: 'horizontal'
       }}
-      quickAccessItems={window.width && window.width < 992 ? [] : [
+      quickAccessItems={windowDimensions.width && windowDimensions.width < 992 ? [] : [
         code && libelle ? (
-          <Localisation libelle={libelle} code={code} />
+          <div className='flex flex-row gap-3 align-center'>
+            <Localisation libelle={libelle} code={code} />
+            <ConnexionBouton />
+          </div>
         ) : libelle ? (
-          <Localisation libelle={libelle} />
-        ) : null,
+          <div className='flex flex-row gap-3 align-center'>
+            <Localisation libelle={libelle} />
+            <ConnexionBouton />
+          </div>
+        ) : (
+          <ConnexionBouton />
+        ),
         // (params.includes('ressources') || params === "/") ? null : (
         //   <Button
         //     key="0"
@@ -151,7 +150,10 @@ const HeaderComp = () => {
         //   text: 'Patch 4°C'
         // }] : []),
         {
-          isActive: params === '/patch4c' ? true : false,
+          isActive: [
+            '/patch4c',
+            '/rechercher-son-territoire-patch4'
+          ].includes(params),
           linkProps: {
             href: redirectionPatch4,
             target: '_self'

@@ -90,7 +90,7 @@ export const TypesDeSols = ({
               <>
                 <MapCLC clc={clc} mapRef={mapRef} mapContainer={mapContainer} />
                 <div
-                  className={styles.legend}
+                  className={styles.legendTypesDeSols}
                   style={{ width: 'auto', justifyContent: 'center' }}
                 >
                   <LegendCompColor legends={vegetalisationLegend} />
@@ -109,7 +109,7 @@ export const TypesDeSols = ({
             const pngBlob = await generateMapPngBlob({
               mapRef,
               mapContainer,
-              documentDiv: ".themes_legend__V1biR",
+              documentDiv: ".explorerDonnees_legendTypesDeSols__otdtp",
             });
             if (!pngBlob) {
               alert("Erreur lors de la génération de l'image PNG.");

@@ -118,14 +118,41 @@ export const GetInsightById = async (id: number) => {
 // New HogQL-based query for unique users
 export const GetUniqueUsersHogQL = async () => {
   try {
-    const url = `https://eu.posthog.com/api/projects/39308/query/`;
+    const currentDate = new Date();
+    const currentDateString = currentDate
+      .toISOString()
+      .replace('T', ' ')
+      .substring(0, 19);
 
+    const url = `https://eu.posthog.com/api/projects/39308/query/`;
     const payload = {
       query: {
         kind: 'HogQLQuery',
         query: `
         SELECT
-    arrayMap(number -> plus(toStartOfInterval(assumeNotNull(toDateTime('2024-11-14 10:00:18')), toIntervalMonth(1)), toIntervalMonth(number)), range(0, plus(coalesce(dateDiff('month', toStartOfInterval(assumeNotNull(toDateTime('2024-11-14 10:00:18')), toIntervalMonth(1)), toStartOfInterval(assumeNotNull(toDateTime('2025-08-04 23:59:59')), toIntervalMonth(1)))), 1))) AS date,
+    arrayMap(number -> plus(
+      toStartOfInterval(
+        assumeNotNull(
+          toDateTime('2024-11-14 10:00:18')
+        ),
+        toIntervalMonth(1)
+      ),
+      toIntervalMonth(number)
+    ), range(0,
+      plus(
+        coalesce(
+          dateDiff(
+            'month', toStartOfInterval(
+              assumeNotNull(
+                toDateTime('2024-11-14 10:00:18')
+              ),
+              toIntervalMonth(1)
+            ),
+            toStartOfInterval(assumeNotNull(toDateTime('${currentDateString}')), toIntervalMonth(1))
+          )
+        ), 1
+      )
+    )) AS date,
     arrayMap(_match_date -> arraySum(arraySlice(groupArray(ifNull(count, 0)), indexOf(groupArray(day_start) AS _days_for_count, _match_date) AS _index, plus(minus(arrayLastIndex(x -> equals(x, _match_date), _days_for_count), _index), 1))), date) AS total
 FROM
     (SELECT
@@ -138,7 +165,7 @@ FROM
         FROM
             events AS e SAMPLE 1
         WHERE
-            and(greaterOrEquals(timestamp, toStartOfInterval(assumeNotNull(toDateTime('2024-11-14 10:00:18')), toIntervalMonth(1))), lessOrEquals(timestamp, assumeNotNull(toDateTime('2025-08-04 23:59:59'))), equals(event, '$pageview'), ifNull(not(match(toString(properties.$host), '^(localhost|127\\\\.0\\\\.0\\\\.1)($|:)')), 1), notIn(properties.$host, tuple('facili-tacct-preprod.osc-fr1.scalingo.io', 'facili-tacct.osc-secnum-fr1.scalingo.io', 'facili-tacct-nginx.osc-secnum-fr1.scalingo.io', 'facili-tacct.incubateur.ademe.dev')), notIn(person.properties.user, tuple('Thomas Doguet Mac', 'Laurent Barbat Mac', 'Laurent Barbat Phone', 'Audrey Coudrin', 'Audrey ', 'Aude Bodiguel Home', 'Myriam Blal', 'Antoine Conegero PC Portable', 'Céline Vanhautère PC', 'Céline Vanhautère', 'Céline Vanhautère ADEME', 'Antoine Conegero Maison', 'Antoine Conegero port', 'Aude 04/2025', 'Alexandre Joubert', 'Antoine Conegero Home', 'Antoine Conegero work', 'Céline Vanhautère desktop Cardinal')), notEquals(person.properties.User, 'Céline Vanhautère Phone'), notEquals(person.properties.User, 'Céline Vanhautère Phone'), notIn(person.properties.user, tuple('2025-05 Antoine PC portable', '2025-05 Céline', '2025-05 Aude maison', '2025-05 Céline mobile', '2025-05 Laurent pc', '2025-05 Thomas ', '2025-05 Audrey pc', '2025-05 Aude Ademe', '2025-05 Myriam maison')))
+            and(greaterOrEquals(timestamp, toStartOfInterval(assumeNotNull(toDateTime('2024-11-14 10:00:18')), toIntervalMonth(1))), lessOrEquals(timestamp, assumeNotNull(toDateTime('${currentDateString}'))), equals(event, '$pageview'), ifNull(not(match(toString(properties.$host), '^(localhost|127\\\\.0\\\\.0\\\\.1)($|:)')), 1), notIn(properties.$host, tuple('facili-tacct-preprod.osc-fr1.scalingo.io', 'facili-tacct.osc-secnum-fr1.scalingo.io', 'facili-tacct-nginx.osc-secnum-fr1.scalingo.io', 'facili-tacct.incubateur.ademe.dev')), notIn(person.properties.user, tuple('Thomas Doguet Mac', 'Laurent Barbat Mac', 'Laurent Barbat Phone', 'Audrey Coudrin', 'Audrey ', 'Aude Bodiguel Home', 'Myriam Blal', 'Antoine Conegero PC Portable', 'Céline Vanhautère PC', 'Céline Vanhautère', 'Céline Vanhautère ADEME', 'Antoine Conegero Maison', 'Antoine Conegero port', 'Aude 04/2025', 'Alexandre Joubert', 'Antoine Conegero Home', 'Antoine Conegero work', 'Céline Vanhautère desktop Cardinal')), notEquals(person.properties.User, 'Céline Vanhautère Phone'), notEquals(person.properties.User, 'Céline Vanhautère Phone'), notIn(person.properties.user, tuple('2025-05 Antoine PC portable', '2025-05 Céline', '2025-05 Aude maison', '2025-05 Céline mobile', '2025-05 Laurent pc', '2025-05 Thomas ', '2025-05 Audrey pc', '2025-05 Aude Ademe', '2025-05 Myriam maison')))
         GROUP BY
             day_start)
     GROUP BY
@@ -196,11 +223,6 @@ LIMIT 100000
                 ' ' +
                 new Date(date).getFullYear()
               );
-              // return new Date(date)
-              //   .toISOString()
-              //   .split('T')[0]
-              //   .split('-', 2)
-              //   .join('-');
             }
             return date.toString();
           });
@@ -208,8 +230,6 @@ LIMIT 100000
             (sum: number, count: number) => sum + count,
             0
           );
-
-          // Return in the format expected by LineChart component
           return [
             {
               data: totals,
