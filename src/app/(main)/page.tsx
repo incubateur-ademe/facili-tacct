@@ -1,41 +1,30 @@
 'use client';
 
+import CheckedIcon from '@/assets/icons/checked_icon_black.svg';
+import CogwheelIcon from '@/assets/icons/cogwheel_icon_black.svg';
+import GuillemetIcon from '@/assets/icons/guillemet_icon_white.svg';
+import ThreePeopleIcon from '@/assets/icons/three_people_icon_black.svg';
 import CommunauteImg from '@/assets/images/communaute_home.webp';
+import TopImage from '@/assets/images/home_page1.png';
 import Patch4Img from '@/assets/images/patch4_home.png';
-import RessourcesImg from '@/assets/images/ressources_home.webp';
+import RessourcesImg from '@/assets/images/ressources_home.png';
 import OptimalParagraph from '@/components/utils/OptimalParagraph';
-import { Body } from '@/design-system/base/Textes';
+import { BoutonPrimaireClassic, BoutonSecondaireClassic } from '@/design-system/base/Boutons';
+import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import MiddlePageTrigger from '@/hooks/MiddlePageTrigger';
-import useWindowDimensions from '@/hooks/windowDimensions';
-import { homeCards } from '@/lib/homeCards';
-import Notice from '@codegouvfr/react-dsfr/Notice';
+import { homeCards, verbatimCards } from '@/lib/homeCards';
 import Image from 'next/image';
-import { lazy, useEffect, useState } from 'react';
-import { Container } from './../../design-system/layout';
-import { HomeButton } from './homeButton';
+import { useState } from 'react';
+import { NewContainer } from './../../design-system/layout';
 import { HomeCard } from './homeCard';
 import styles from './main.module.scss';
 
-const CollectiviteSearch = lazy(() => import('./CollectiviteSearch'));
-
 const Home = () => {
   const [noticeClosed, setNoticeClosed] = useState(false);
-  const window = useWindowDimensions();
-  const heightTopBlock = typeof document !== 'undefined' ? document.querySelector(`.${styles.homePageTopWrapper}`)?.clientHeight : 0;
-  const heightNotice = typeof document !== 'undefined' ? document.querySelector(`.notice`)?.clientHeight : 0;
-
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      const style = document.documentElement.style;
-      style.setProperty(
-        '--height-notice', `${(noticeClosed ? 0 : (heightNotice ?? 0)) + (heightTopBlock ?? 0) + 16}px`
-      );
-    }
-  }, [noticeClosed, heightTopBlock, heightNotice]);
 
   return (
     <div>
-      <Notice
+      {/* <Notice
         className='notice'
         isClosable={true}
         onClose={() => setNoticeClosed(true)}
@@ -61,76 +50,81 @@ const Home = () => {
             .
           </>
         }
-      />
-      <div className={styles.homePageTopWrapper}>
-        <Container size="xl">
-          <div className={styles.titles}>
-            <h1>Le climat change. Et vous ?</h1>
-            <OptimalParagraph>
-              Avec Facili-TACCT, identifiez les vulnérabilités de votre territoire aux impacts du changement climatique.
-            </OptimalParagraph>
+      /> */}
+      <div className={styles.homePageTopContainer}>
+        <NewContainer size="xl">
+          <div className={styles.homePageTopWrapper}>
+            <div className={styles.titles}>
+              <H1 style={{ color: "white" }}>Facili-TACCT structure votre démarche d’adaptation au changement climatique</H1>
+              <Body size='lg' style={{ color: "white", margin: "2.5rem 0 2rem" }}>
+                TACCT vous guide pas à pas dans la réalisation de votre diagnostic de vulnérabilité et
+                jusqu'à la mise en œuvre des actions et leur évaluation.
+              </Body>
+              <Body size='lg' style={{ color: "white", margin: "0 0 2rem" }}>
+                Explorez les données climatiques, socio-économiques et environnementales, apprenez à
+                identifier les impacts réels sur le terrain, hiérarchisez vos enjeux d'adaptation
+                et enfin déployez votre plan d’action.
+              </Body>
+              <BoutonSecondaireClassic
+                size='lg'
+                link="/rechercher-son-territoire"
+                text='Explorer les données de mon territoire'
+              />
+            </div>
+            <Image
+              alt=""
+              src={TopImage}
+              width={0}
+              height={0}
+              sizes="(max-width: 768px) 0, (max-width: 1200px) 50vw, 40vw"
+              style={{
+                width: '100%',
+                height: 'auto',
+                objectFit: 'contain',
+              }}
+            />
           </div>
-          <HomeButton
-            link="/rechercher-son-territoire"
-            borderColor="#0063CB"
-            backgroundColor="#0063CB"
-            textColor="#FFFFFF"
-            text='Explorer les données de mon territoire'
-          />
-        </Container>
+        </NewContainer>
       </div>
       <div className={styles.patch4Container}>
-        <Container
-          size="xl"
-        >
+        <NewContainer size="xl">
           <div className={styles.patch4Wrapper}>
             <div className={styles.patch4img}>
               <Image
                 alt=""
                 src={Patch4Img}
-                width={0}
-                height={0}
-                sizes="40vw"
-                style={{
-                  position: 'relative',
-                  height: 'auto',
-                  margin: '2rem 0 0'
-                }}
               />
             </div>
             <div className={styles.patch4Text}>
-              <h2>
-                Patch 4°C : intégrez la trajectoire de réchauffement de référence (TRACC) dans
-                votre diagnostic de vulnérabilité climatique
-              </h2>
+              <H2>
+                Avec le Patch 4°C : intégrez la trajectoire de réchauffement de référence dans votre diagnostic existant
+              </H2>
               <Body>
                 Le “patch 4°C” est une action du 3ème Plan national d’adaptation au changement
-                climatique (2025). Il s’adresse <b>en priorité aux communes ou EPCI</b> qui
+                climatique (2025). Il s’adresse en priorité aux communes ou EPCI qui
                 viennent d’achever leurs études de vulnérabilité sur la base d’hypothèses de
                 réchauffement différentes de celles de la TRACC.
               </Body>
-              <p>
-                Pour accéder aux données, saisissez le nom de votre territoire dans le champ ci-dessus.
-              </p>
-              <HomeButton
+              <BoutonPrimaireClassic
+                size='lg'
                 link="/rechercher-son-territoire-patch4"
-                borderColor="#0063CB"
-                backgroundColor="#0063CB"
-                textColor="#FFFFFF"
                 text='Accéder au Patch 4°C'
               />
             </div>
           </div>
-        </Container>
+        </NewContainer>
       </div>
       <div className={styles.tacctContainer}>
-        <Container size="xl">
+        <NewContainer size="xl">
           <div className={styles.tacctWrapper}>
-            <h2>Pourquoi suivre la démarche TACCT ?</h2>
-            <h3><span>TACCT</span> : <span>T</span>rajectoires d’<span>A</span>daptation au <span>C</span>hangement <span>C</span>limatique des <span>T</span>erritoires</h3>
-            <OptimalParagraph>
-              Vous avez des défis complexes à relever face au changement climatique et vous vous
-              demandez par où commencer ? TACCT est la méthode qu’il vous faut.
+            <H2 style={{ color: "white", margin: 0 }}>Pourquoi suivre la démarche TACCT ?</H2>
+            <H3 style={{ color: "white", fontSize: "1.25rem", fontWeight: 400, marginBottom: "2.5rem" }}>
+              <span>TACCT</span> : <span>T</span>rajectoires d’<span>A</span>daptation
+              au <span>C</span>hangement <span>C</span>limatique des <span>T</span>erritoires
+            </H3>
+            <OptimalParagraph style={{ color: "white", textAlign: "center" }}>
+              Face aux défis du changement climatique, vous cherchez une méthode concrète pour
+              agir ? TACCT vous accompagne étape par étape dans votre démarche d'adaptation territoriale.
             </OptimalParagraph>
             <MiddlePageTrigger />
             <div className={styles.cardWrapper}>
@@ -144,33 +138,11 @@ const Home = () => {
               ))}
             </div>
           </div>
-        </Container>
+        </NewContainer>
       </div>
       <div className={styles.communauteContainer}>
-        <Container size="xl">
+        <NewContainer size="xl">
           <div className={styles.communauteWrapper}>
-            <div className={styles.communauteText}>
-              <h2>Rejoignez la communauté Facili-TACCT</h2>
-              <p>
-                La communauté Facili-TACCT offre aux chargés de mission “Climat” un espace pour :
-              </p>
-              <ul>
-                <li>participer à des webinaires sur des thématiques liées à l’adaptation au changement climatique</li>
-                <li>faire connaissance de chargés de mission sur d’autres territoires, à d’autres échelles d’intervention</li>
-                <li>accéder à l’intégralité des comptes rendus des webinaires passés</li>
-                <li>poser des questions entre pairs</li>
-                <li>participer à la construction du produit Facili-TACCT</li>
-              </ul>
-              <HomeButton
-                borderColor="#0063CB"
-                backgroundColor="#0063CB"
-                textColor="#FFFFFF"
-                link="https://tally.so/r/n0LrEZ"
-                text="Rejoindre la communauté"
-                target='_blank'
-                rel="noopener noreferrer"
-              />
-            </div>
             <Image
               alt=""
               src={CommunauteImg}
@@ -184,35 +156,98 @@ const Home = () => {
                 margin: '2rem 0 0'
               }}
             />
-          </div>
-        </Container>
-      </div>
-      <div className={styles.diagnosticContainer}>
-        <Container size="xl">
-          <div className={styles.diagnosticWrapper}>
-            <div className={styles.diagnosticText}>
-              <h2>Besoin d’être guidé pour évaluer votre diagnostic ?</h2>
-              <p>
-                Votre territoire possède déjà un diagnostic de vulnérabilité
-                climatique ? Exploitez-le ! Évitez de repartir de zéro et gagnez
-                du temps et des ressources en évaluant d'abord le document existant.
-              </p>
-              <HomeButton
-                borderColor="#FFFFFF"
-                backgroundColor="#0063CB"
-                textColor="#FFFFFF"
-                link="https://tally.so/r/3Nx98W"
-                text="J'évalue mon diagnostic"
-                target='_blank'
+            <div className={styles.communauteText}>
+              <H2>Facili-TACCT, c’est aussi une communauté de près de 300 chargés de mission climat pour :</H2>
+              <div className='flex flex-row align-center'>
+                <Image
+                  alt=""
+                  src={ThreePeopleIcon}
+                  width={24}
+                  height={24}
+                  style={{ verticalAlign: 'middle', marginRight: '0.5rem' }}
+                />
+                <Body style={{ fontSize: "1.25rem" }}>
+                  Apprendre entre pairs
+                </Body>
+              </div>
+              <ul style={{ margin: '-0.5rem 1rem 0 0' }}>
+                <li>Participer à nos webinaires thématiques sur l’adaptation</li>
+                <li>Accéder aux articles capitalisant les échanges depuis la création de la communauté</li>
+                <li>Questionner d’autres territoires, de la commune au département !</li>
+              </ul>
+              <div className='flex flex-row align-center'>
+                <Image
+                  alt=""
+                  src={CheckedIcon}
+                  width={24}
+                  height={24}
+                  style={{ verticalAlign: 'middle', marginRight: '0.5rem' }}
+                />
+                <Body style={{ fontSize: "1.25rem" }}>
+                  Être accompagné dans votre diagnostic
+                </Body>
+              </div>
+              <div className='flex flex-row align-center'>
+                <Image
+                  alt=""
+                  src={CogwheelIcon}
+                  width={24}
+                  height={24}
+                  style={{ verticalAlign: 'middle', marginRight: '0.5rem' }}
+                />
+                <Body style={{ fontSize: "1.25rem" }}>
+                  Contribuer à l'amélioration de l'outil
+                </Body>
+              </div>
+              <BoutonPrimaireClassic
+                size='lg'
+                link="https://tally.so/r/n0LrEZ"
+                text="Rejoindre la communauté"
                 rel="noopener noreferrer"
               />
             </div>
+
           </div>
-        </Container>
+        </NewContainer>
+      </div>
+      <div className={styles.diagnosticContainer}>
+        <NewContainer size="xl">
+          <div className={styles.diagnosticWrapper}>
+            <div className={styles.diagnosticText}>
+              <H2>Besoin d’être guidé pour évaluer votre diagnostic ?</H2>
+              <Body>
+                Votre territoire possède déjà un diagnostic de vulnérabilité
+                climatique ? Exploitez-le ! Évitez de repartir de zéro et gagnez
+                du temps et des ressources en évaluant d'abord le document existant.
+              </Body>
+              <BoutonPrimaireClassic
+                size='lg'
+                link="https://tally.so/r/3Nx98W"
+                text="J'évalue mon diagnostic"
+                rel="noopener noreferrer"
+                style={{ marginTop: '2rem' }}
+              />
+            </div>
+          </div>
+        </NewContainer>
       </div>
       <div className={styles.ressourcesContainer}>
-        <Container size="xl">
+        <NewContainer size="xl">
           <div className={styles.ressourcesWrapper}>
+            <div className={styles.ressourcesText}>
+              <H2>Découvrez des ressources utiles</H2>
+              <Body>
+                Bénéficiez d'actualités, de retours d'expériences et de bonnes
+                pratiques pour vous accompagner dans la mise en place de votre
+                démarche d’adaptation au changement climatique.
+              </Body>
+              <BoutonPrimaireClassic
+                size='lg'
+                link="/ressources"
+                text="Découvrir les ressources"
+                style={{ marginTop: '2rem' }}
+              />
+            </div>
             <Image
               alt=""
               src={RessourcesImg}
@@ -221,23 +256,21 @@ const Home = () => {
               sizes="40vw"
               style={{ maxWidth: '40%', height: 'auto', margin: '0 0 2rem' }}
             />
-            <div className={styles.ressourcesText}>
-              <h2>Découvrez des ressources utiles</h2>
-              <p>
-                Bénéficiez d'actualités, de retours d'expériences et de bonnes
-                pratiques pour vous accompagner dans la mise en place de votre
-                démarche d’adaptation au changement climatique.
-              </p>
-              <HomeButton
-                borderColor="#0063CB"
-                backgroundColor="#0063CB"
-                textColor="#FFFFFF"
-                link="/ressources"
-                text="Découvrir les ressources"
-              />
-            </div>
           </div>
-        </Container>
+        </NewContainer>
+      </div>
+      <div className={styles.verbatimContainer}>
+        <NewContainer size="xl">
+          <H2 style={{ color: 'white' }}>Facili-TACCT : qu’est-ce qu’on en dit ?</H2>
+          <div className={styles.verbatimCardsWrapper}>
+            {verbatimCards.map((card, index) => (
+              <div key={index} className={styles.verbatimCard}>
+                <Body style={{ color: 'white' }}><Image src={GuillemetIcon} alt="" width={32} height={32} style={{ verticalAlign: 'middle', margin: ' 0 1rem 0rem 0' }} />{card.description}</Body>
+                <Body size='sm' style={{ color: 'white' }}>{card.personne}</Body>
+              </div>
+            ))}
+          </div>
+        </NewContainer>
       </div>
     </div>
   );
