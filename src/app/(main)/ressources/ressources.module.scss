@@ -85,6 +85,27 @@
     }
 }
 
+.selectedTabNouveauParcours {
+    background-color: var(--boutons-primaire-1);
+    border-radius: 25px;
+    padding: 0.2em 1em;
+    color: #eeeeee;
+    &:hover {
+        cursor: pointer;
+        background-color: var(--boutons-primaire-3) !important;
+    }
+}
+.tabNouveauParcours {
+    background-color: #f0fcfa;
+    border-radius: 25px;
+    padding: 0.2em 1em;
+    color: black;
+    &:hover {
+        cursor: pointer;
+        background-color: var(--boutons-primaire-2) !important;
+    }
+}
+
 .tabs {
     display: flex;
     flex-direction: row;

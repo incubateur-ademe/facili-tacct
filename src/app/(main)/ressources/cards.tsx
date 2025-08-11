@@ -1,9 +1,10 @@
 'use client';
+import couleurs from '@/design-system/couleurs';
 import { cards, ressourcesTabs } from '@/lib/ressources/cards';
 import { useState } from 'react';
 import { CardComp } from './CustomCard';
 import styles from './ressources.module.scss';
-import { TabComp } from './tabs';
+import { TabCompNouveauParcours } from './tabs';
 
 const RessourcesCards = () => {
   const [selectedTabId, setSelectedTabId] = useState(
@@ -30,16 +31,16 @@ const RessourcesCards = () => {
               description={el.description}
               titre={el.titre}
               link={el.link}
-              backgroundColor="#E3E3FD"
+              backgroundColor={couleurs.boutons.primaire[2]}
               textColor="#161616"
               titleColor="#161616"
-              logoColor="#000091"
+              logoColor={couleurs.principales.vert}
             />
           ))}
         </div>
       </div>
       <div className={styles.ressourcesWrapper} style={{ padding: '4em 0' }}>
-        <TabComp
+        <TabCompNouveauParcours
           defaultTab="Vous voulez réviser un diagnostic connu"
           data={ressourcesTabs.diagnostic}
           handleTab={handleTab}
@@ -53,13 +54,14 @@ const RessourcesCards = () => {
                 tag={el.tag}
                 titre={el.titre}
                 link={el.link}
+                titleColor={couleurs.boutons.primaire[1]}
               />
             ) : null
           )}
         </div>
       </div>
       <div className={styles.ressourcesWrapper}>
-        <TabComp
+        <TabCompNouveauParcours
           defaultTab="Inconfort thermique"
           data={ressourcesTabs.themes}
           handleTab={handleTheme}
@@ -73,6 +75,7 @@ const RessourcesCards = () => {
                 tag={el.tag}
                 titre={el.titre}
                 link={el.link + '?title=' + el.titre}
+                titleColor={couleurs.boutons.primaire[1]}
               />
             ) : null
           )}
