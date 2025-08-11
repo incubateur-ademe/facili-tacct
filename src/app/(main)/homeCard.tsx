@@ -1,3 +1,4 @@
+import { H4 } from '@/design-system/base/Textes';
 import Image, { StaticImageData } from 'next/image';
 import styles from './main.module.scss';
 
@@ -19,7 +20,7 @@ export const HomeCard = ({
         alt="image-cartographie"
         className={styles.homeCardImage}
       />
-      <h4>{titre}</h4>
+      <H4 style={{ color: "var(--principales-vert)", margin: "0.5rem 0 1rem", fontSize: "1rem" }}>{titre}</H4>
       <p>{description}</p>
     </div>
   )

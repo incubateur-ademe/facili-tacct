@@ -1,3 +1,4 @@
+import { Body } from '@/design-system/base/Textes';
 import React from 'react';
 
 interface OptimalParagraphProps {
@@ -7,10 +8,9 @@ interface OptimalParagraphProps {
   maxWidth?: string;
 }
 
-export const OptimalParagraph: React.FC<OptimalParagraphProps> = ({ 
-  children, 
-  className = '', 
-  style = {}, 
+export const OptimalParagraph: React.FC<OptimalParagraphProps> = ({
+  children,
+  style = {},
   maxWidth = '65ch'
 }) => {
   const paragraphStyle = {
@@ -24,9 +24,9 @@ export const OptimalParagraph: React.FC<OptimalParagraphProps> = ({
   };
 
   return (
-    <p className={className} style={paragraphStyle}>
+    <Body style={paragraphStyle}>
       {children}
-    </p>
+    </Body>
   );
 };
 
