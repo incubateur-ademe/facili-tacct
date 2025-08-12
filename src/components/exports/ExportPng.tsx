@@ -10,12 +10,14 @@ export const ExportPngMaplibreButton = ({
   mapRef,
   mapContainer,
   documentDiv = ".exportPNGWrapper",
-  fileName = "indicateur-carte.png"
+  fileName = "indicateur-carte.png",
+  style
 }: {
   mapRef: RefObject<maplibregl.Map | null>,
   mapContainer: RefObject<HTMLDivElement | null>,
   documentDiv?: string,
   fileName?: string,
+  style?: React.CSSProperties
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -118,6 +120,7 @@ export const ExportPngMaplibreButton = ({
       onClick={handleExportPng}
       className={styles.exportIndicatorButton}
       disabled={isLoading}
+      style={{ ...style }}
     >
       Exporter
       <Image
@@ -129,6 +132,7 @@ export const ExportPngMaplibreButton = ({
     </button>
   );
 };
+
 
 /**
  * Generate a PNG Blob of the map and legend/source, for programmatic export (e.g. ZIP).

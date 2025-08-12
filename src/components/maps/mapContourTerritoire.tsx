@@ -13,7 +13,7 @@ import {
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useRef, useState } from 'react';
-import { GeoJSON, TileLayer } from 'react-leaflet';
+import { GeoJSON } from 'react-leaflet';
 import { Loader } from '../loader';
 
 export const MapContourTerritoire = (props: {
@@ -47,21 +47,21 @@ export const MapContourTerritoire = (props: {
   const union =
     territoireContours.length > 1
       ? turf.union(
-          turf.featureCollection(
-            territoireContours as Feature<
-              Polygon | MultiPolygon,
-              GeoJsonProperties
-            >[]
-          )
+        turf.featureCollection(
+          territoireContours as Feature<
+            Polygon | MultiPolygon,
+            GeoJsonProperties
+          >[]
         )
+      )
       : territoireContours[0];
   const intersect = union
     ? turf.intersect(
-        turf.featureCollection([
-          polygon,
-          union as Feature<Polygon, GeoJsonProperties>
-        ])
-      )
+      turf.featureCollection([
+        polygon,
+        union as Feature<Polygon, GeoJsonProperties>
+      ])
+    )
     : null;
 
   return (
@@ -108,7 +108,7 @@ export const MapContourTerritoire = (props: {
               {pourcentage} %
             </p>
           </div>
-          {process.env.NEXT_PUBLIC_ENV === 'preprod' ? (
+          {/* {process.env.NEXT_PUBLIC_ENV === 'preprod' ? (
             <TileLayer
               attribution='<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://tile.jawg.io/jawg-sunny/{z}/{x}/{y}{r}.png?access-token=MBbcKi3EyFqyyHvvHVbfnE4iOJ34FiUs1yWbVID476VAReeeO0NdrKWg6FljGBIC"
@@ -118,7 +118,7 @@ export const MapContourTerritoire = (props: {
               attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
             />
-          )}
+          )} */}
           <GeoJSON
             ref={mapRef}
             data={union as unknown as GeoJsonObject}

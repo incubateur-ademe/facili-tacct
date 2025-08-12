@@ -21,17 +21,6 @@ const InconfortThermique = async (props: { searchParams: SearchParams }) => {
         title="Auparavant occasionnelles (tous les 5 à 10 ans), les canicules se succèdent tous les étés depuis 2015 (à l'exception de 2021).
         Explorez ici des leviers d'action possibles vous permettant de réduire la sensibilité de votre territoire à l'inconfort thermique."
       />
-      {/* <div className="mb-4">
-        <ExportButton
-          data={exportData}
-          baseName="inconfort_thermique"
-          type={type}
-          libelle={libelle}
-          code={code}
-          sheetName="Inconfort thermique"
-          children="Export inconfort thermique"
-        />
-      </div> */}
       <div className={styles.container}>
         <Suspense>
           <InconfortThermiqueComp

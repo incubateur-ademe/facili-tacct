@@ -4,6 +4,7 @@ import qualiteInsuffisant from '@/assets/icons/qualite_baignade_insuffisant.svg'
 import qualiteManquePrelevement from '@/assets/icons/qualite_baignade_manque_prelevement.svg';
 import qualiteNonClasse from '@/assets/icons/qualite_baignade_non_classe.svg';
 import qualiteSuffisant from '@/assets/icons/qualite_baignade_suffisant.svg';
+import couleurs from '@/design-system/couleurs';
 
 export const qualiteEauxBaignadelegends = [
   {
@@ -284,23 +285,57 @@ export const densiteBatiLegend = [
 export const fragiliteEcoLegend = [
   {
     value: '> 30 %',
-    color: '#FF5E54'
+    color: couleurs.graphiques.bleu[5]
   },
   {
     value: '20 % - 30 %',
-    color: '#FFBD00'
+    color: couleurs.graphiques.bleu[1]
   },
   {
     value: '10 % - 20 %',
-    color: '#FFFA6A'
+    color: couleurs.graphiques.bleu[2]
   },
   {
     value: '0 - 10 %',
-    color: '#D5F4A3'
+    color: couleurs.graphiques.bleu[3]
   },
   {
     value: '0 %',
-    color: '#5CFF54'
+    color: couleurs.graphiques.bleu[4]
+  }
+];
+
+export const emploisEnExterieurLegend = [
+  {
+    value: 'Agriculture',
+    color: couleurs.graphiques.jaune[4]
+  },
+  {
+    value: 'Industries',
+    color: couleurs.graphiques.orange[3]
+  },
+  {
+    value: 'Construction',
+    color: couleurs.graphiques.violet[2]
+  },
+  {
+    value: 'Commerces et transports',
+    color: couleurs.graphiques.vert[1]
+  },
+  {
+    value: 'Administrations',
+    color: couleurs.graphiques.bleu[5]
+  }
+];
+
+export const DateConstructionResidencesLegend = [
+  {
+    value: 'France',
+    color: couleurs.graphiques.bleu[1]
+  },
+  {
+    value: 'Votre collectivité',
+    color: couleurs.graphiques.rouge[3]
   }
 ];
 
@@ -377,133 +412,135 @@ export const vegetalisationColors = {
 
 export const LczLegend = [
   {
-    value: "LCZ 1 : Ensemble compact de tours",
-    color: "#8C0000",
+    value: 'LCZ 1 : Ensemble compact de tours',
+    color: '#8C0000'
   },
   {
     value: "LCZ 2 : Ensemble compact d'immeubles",
-    color: "#D10000",
-  },{
-    value: "LCZ 3 : Ensemble compact de maisons",
-    color: "#FF0000",
+    color: '#D10000'
   },
   {
-    value: "LCZ 4 : Ensemble de tours espacées",
-    color: "#BF4D00",
+    value: 'LCZ 3 : Ensemble compact de maisons',
+    color: '#FF0000'
+  },
+  {
+    value: 'LCZ 4 : Ensemble de tours espacées',
+    color: '#BF4D00'
   },
   {
     value: "LCZ 5 : Ensemble d'immeubles espacés",
-    color: "#FA6600",
+    color: '#FA6600'
   },
   {
-    value: "LCZ 6 : Ensemble de maisons espacées",
-    color: "#FF9955",
+    value: 'LCZ 6 : Ensemble de maisons espacées',
+    color: '#FF9955'
   },
   {
-    value: "LCZ 7 : Ensemble dense de constructions légères",
-    color: "#FAEE05",
+    value: 'LCZ 7 : Ensemble dense de constructions légères',
+    color: '#FAEE05'
   },
   {
-    value: "LCZ 8 : Bâtiments de grande emprise",
-    color: "#BCBCBC",
+    value: 'LCZ 8 : Bâtiments de grande emprise',
+    color: '#BCBCBC'
   },
   {
-    value: "LCZ 9 : Implantation diffuse de maisons",
-    color: "#FFCCAA",
+    value: 'LCZ 9 : Implantation diffuse de maisons',
+    color: '#FFCCAA'
   },
   {
-    value: "LCZ A : Espace densément arboré",
-    color: "#006A00",
+    value: 'LCZ A : Espace densément arboré',
+    color: '#006A00'
   },
   {
-    value: "LCZ B : Espace arboré clairsemé",
-    color: "#00AA00",
+    value: 'LCZ B : Espace arboré clairsemé',
+    color: '#00AA00'
   },
   {
-    value: "LCZ C : Espace végétalisé hétérogène",
-    color: "#648525",
+    value: 'LCZ C : Espace végétalisé hétérogène',
+    color: '#648525'
   },
   {
-    value: "LCZ D : Végétation basse",
-    color: "#B9DB79",
+    value: 'LCZ D : Végétation basse',
+    color: '#B9DB79'
   },
   {
-    value: "LCZ E : Sol imperméable naturel ou artificiel",
-    color: "#000000",
+    value: 'LCZ E : Sol imperméable naturel ou artificiel',
+    color: '#000000'
   },
   {
-    value: "LCZ F : Sol nu perméable",
-    color: "#FBF7AE",
+    value: 'LCZ F : Sol nu perméable',
+    color: '#FBF7AE'
   },
   {
-    value: "LCZ G : Surface en eau",
-    color: "#6A6AFF"
+    value: 'LCZ G : Surface en eau',
+    color: '#6A6AFF'
   }
 ];
 
 export const LczLegendOpacity70 = [
   {
-    value: "LCZ 1 : Ensemble compact de tours",
-    color: "#AF4D4D",
+    value: 'LCZ 1 : Ensemble compact de tours',
+    color: '#AF4D4D'
   },
   {
     value: "LCZ 2 : Ensemble compact d'immeubles",
-    color: "#D74545",
-  },{
-    value: "LCZ 3 : Ensemble compact de maisons",
-    color: "#FF4D4D",
+    color: '#D74545'
   },
   {
-    value: "LCZ 4 : Ensemble de tours espacées",
-    color: "#CD7D47",
+    value: 'LCZ 3 : Ensemble compact de maisons',
+    color: '#FF4D4D'
+  },
+  {
+    value: 'LCZ 4 : Ensemble de tours espacées',
+    color: '#CD7D47'
   },
   {
     value: "LCZ 5 : Ensemble d'immeubles espacés",
-    color: "#FC944D",
+    color: '#FC944D'
   },
   {
-    value: "LCZ 6 : Ensemble de maisons espacées",
-    color: "#FFB888",
+    value: 'LCZ 6 : Ensemble de maisons espacées',
+    color: '#FFB888'
   },
   {
-    value: "LCZ 7 : Ensemble dense de constructions légères",
-    color: "#9F9811",
+    value: 'LCZ 7 : Ensemble dense de constructions légères',
+    color: '#9F9811'
   },
   {
-    value: "LCZ 8 : Bâtiments de grande emprise",
-    color: "#C6C6C6",
+    value: 'LCZ 8 : Bâtiments de grande emprise',
+    color: '#C6C6C6'
   },
   {
-    value: "LCZ 9 : Implantation diffuse de maisons",
-    color: "#FFDCC4",
+    value: 'LCZ 9 : Implantation diffuse de maisons',
+    color: '#FFDCC4'
   },
   {
-    value: "LCZ A : Espace densément arboré",
-    color: "#438D43",
+    value: 'LCZ A : Espace densément arboré',
+    color: '#438D43'
   },
   {
-    value: "LCZ B : Espace arboré clairsemé",
-    color: "#43BA43",
+    value: 'LCZ B : Espace arboré clairsemé',
+    color: '#43BA43'
   },
   {
-    value: "LCZ C : Espace végétalisé hétérogène",
-    color: "#89A05D",
+    value: 'LCZ C : Espace végétalisé hétérogène',
+    color: '#89A05D'
   },
   {
-    value: "LCZ D : Végétation basse",
-    color: "#798D54",
+    value: 'LCZ D : Végétation basse',
+    color: '#798D54'
   },
   {
-    value: "LCZ E : Sol imperméable naturel ou artificiel",
-    color: "#4D4D4D",
+    value: 'LCZ E : Sol imperméable naturel ou artificiel',
+    color: '#4D4D4D'
   },
   {
-    value: "LCZ F : Sol nu perméable",
-    color: "#FAF7C4",
+    value: 'LCZ F : Sol nu perméable',
+    color: '#FAF7C4'
   },
   {
-    value: "LCZ G : Surface en eau",
-    color: "#8888F0"
+    value: 'LCZ G : Surface en eau',
+    color: '#8888F0'
   }
 ];
 

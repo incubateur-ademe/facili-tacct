@@ -1,16 +1,17 @@
 'use server';
 
 import { LineChart } from '@/components/charts/stats/lineChart';
-import { Container } from '@/dsfr/layout';
-import { GetInsightById } from '../query';
+import { Body, H2 } from '@/design-system/base/Textes';
+import { Round } from '@/lib/utils/reusableFunctions/round';
+import { GetUniqueUsersHogQL } from '../query';
 import styles from '../stats.module.scss';
 
 const UniqueUsers = async () => {
-  const uniqueUsers = await GetInsightById(620831);
-  console.log('uniqueUsers', uniqueUsers);
-  const data = Array.isArray(uniqueUsers) ? uniqueUsers : undefined;
+  // const uniqueUsers = await GetInsightById(620831);
+  // const data = Array.isArray(uniqueUsers) ? uniqueUsers : undefined;
+  let data = await GetUniqueUsersHogQL();
   return (
-    <Container m="4w">
+    <div className='my-12'>
       {data ? (
         <div
           style={{
@@ -20,15 +21,15 @@ const UniqueUsers = async () => {
             margin: '0 0 15rem'
           }}
         >
-          <h2>Utilisateurs uniques</h2>
+          <H2>Utilisateurs uniques</H2>
           <div className={styles.graphWrapper}>
             <div
               className={styles.graphTitleWrapper}
               style={{ padding: '1rem' }}
             >
-              <h2>
-                Évolution des utilisateurs uniques sur les 30 derniers jours
-              </h2>
+              <Body size='lg' weight='bold'>
+                Évolution du nombre d'utilisateurs uniques par mois
+              </Body>
             </div>
             <div
               style={{
@@ -43,15 +44,15 @@ const UniqueUsers = async () => {
             </div>
           </div>
           <p>
-            Depuis le {data ? data[0].labels[0] : ''}, la somme
+            Depuis le 1er novembre 2024, la somme
             totale d'utilisateurs uniques est de :{' '}
-            {data ? data[0].count : ''}.
+            {data ? Round(data[0].count, 0) : ''}.
           </p>
         </div>
       ) : (
         ''
       )}
-    </Container>
+    </div>
   );
 };
 
