@@ -8,6 +8,7 @@ import { espacesNAFBarChartLegend } from '@/components/maps/legends/datavizLegen
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
 import { ConsommationNAF } from '@/lib/postgres/models';
+import { consommationEspacesNafDoc } from '@/lib/utils/export/documentations';
 import { ConsommationNAFExport } from '@/lib/utils/export/exportTypes';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
@@ -102,6 +103,7 @@ export const ConsommationEspacesNAFDataviz = (props: {
                 libelle={libelle}
                 code={code}
                 sheetName="Espaces NAF"
+                documentation={consommationEspacesNafDoc}
               />
             </div>
           </div>

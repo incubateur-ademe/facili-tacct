@@ -1,5 +1,6 @@
 'use client';
 
+import { MicroRemplissageTerritoire } from '@/app/(main)/(nouveau-parcours)/explorer-mes-donnees/components/MicroDataviz';
 import { SurfacesProtegeesTreeMap } from '@/components/charts/biodiversite/surfacesProtegeesTreeMap';
 import { MapContourTerritoire } from '@/components/maps/mapContourTerritoire';
 import SubTabs from '@/components/SubTabs';
@@ -26,8 +27,8 @@ const SurfacesProtegeesDataviz = (props: {
     : surfacesProtegees;
   const filteredTerritoire = codgeo
     ? territoireContourMap.filter(
-        (e) => e.properties.code_geographique === codgeo
-      )
+      (e) => e.properties.code_geographique === codgeo
+    )
     : territoireContourMap;
   const surfaceTerritoire = codgeo
     ? carteCommunes.filter((e) => e.code_geographique === codgeo)[0].surface
@@ -64,48 +65,56 @@ const SurfacesProtegeesDataviz = (props: {
   });
 
   return (
-    <div className={styles.graphWrapper}>
-      <div className={styles.dataVizGraphTitleWrapper}>
-        <h2>Espaces d’intérêt écologique ou protégés</h2>
-        <SubTabs
-          data={['Cartographie', 'Répartition']}
-          defaultTab={datavizTab}
-          setValue={setDatavizTab}
+    <>
+      <div className={styles.graphWrapper}>
+        <div className={styles.dataVizGraphTitleWrapper}>
+          <h2>Espaces d’intérêt écologique ou protégés</h2>
+          <SubTabs
+            data={['Cartographie', 'Répartition']}
+            defaultTab={datavizTab}
+            setValue={setDatavizTab}
+          />
+        </div>
+        {datavizTab === 'Répartition' ? (
+          <div>
+            <SurfacesProtegeesTreeMap data={data} />
+            <div className={styles.treemapLegendWrapper}>
+              {legends.map((e, i) => (
+                <div key={i} className={styles.legendTreeMap}>
+                  <div
+                    className={styles.colorTreeMap}
+                    style={{ backgroundColor: e.color }}
+                  />
+                  <p className={styles.legendText}>{e.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : datavizTab === 'Cartographie' ? (
+          <>
+            <div className={styles.surfacesProtegeesMapWrapper}>
+              <MapContourTerritoire
+                territoireContours={filteredTerritoire}
+                pourcentage={varSurfacesProtegees}
+              />
+            </div>
+          </>
+        ) : (
+          ''
+        )}
+        <p className="m-0 p-4">
+          Source : SDES d’après Muséum national d’histoire naturelle dans
+          Catalogue DiDo (Indicateurs territoriaux de développement durable -
+          ITDD)
+        </p>
+      </div>
+      <div className='w-full h-[200px]'>
+        <MicroRemplissageTerritoire
+          territoireContours={filteredTerritoire}
+          pourcentage={50}
         />
       </div>
-      {datavizTab === 'Répartition' ? (
-        <div>
-          <SurfacesProtegeesTreeMap data={data} />
-          <div className={styles.treemapLegendWrapper}>
-            {legends.map((e, i) => (
-              <div key={i} className={styles.legendTreeMap}>
-                <div
-                  className={styles.colorTreeMap}
-                  style={{ backgroundColor: e.color }}
-                />
-                <p className={styles.legendText}>{e.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : datavizTab === 'Cartographie' ? (
-        <>
-          <div className={styles.surfacesProtegeesMapWrapper}>
-            <MapContourTerritoire
-              territoireContours={filteredTerritoire}
-              pourcentage={varSurfacesProtegees}
-            />
-          </div>
-        </>
-      ) : (
-        ''
-      )}
-      <p className="m-0 p-4">
-        Source : SDES d’après Muséum national d’histoire naturelle dans
-        Catalogue DiDo (Indicateurs territoriaux de développement durable -
-        ITDD)
-      </p>
-    </div>
+    </>
   );
 };
 

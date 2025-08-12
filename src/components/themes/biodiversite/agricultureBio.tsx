@@ -98,9 +98,9 @@ const AgricultureBiologique = (props: {
                           territoiresPartiellementCouverts && (
                             <>
                               <p>
-                                <br></br>Sur votre territoire, <b>{territoiresPartiellementCouverts?.length} EPCI
-                                </b> {territoiresPartiellementCouverts?.length === 1 ? "est" : "sont"} à
-                                cheval sur plusieurs {type === "departement" ? "départements" : "PNR"} :
+                                <br></br>Attention, <b>{territoiresPartiellementCouverts?.length} EPCI
+                                </b> {territoiresPartiellementCouverts?.length === 1 ? "ne fait" : "ne font"} que
+                                partiellement partie de votre territoire :
                               </p>
                               <ul style={{ margin: "0.5rem 0 0 1.5rem" }}>
                                 {territoiresPartiellementCouverts?.map((epci, index) => (
