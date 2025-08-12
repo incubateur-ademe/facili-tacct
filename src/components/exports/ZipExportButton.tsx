@@ -8,11 +8,13 @@ import styles from "../components.module.scss";
 interface ZipExportButtonProps {
   handleExport: () => Promise<void>;
   children?: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 export const ZipExportButton = ({
   handleExport,
   children = 'Exporter',
+  style
 }: ZipExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
@@ -74,6 +76,7 @@ export const ZipExportButton = ({
       className={styles.exportIndicatorButton}
       onClick={handleClick}
       disabled={isExporting}
+      style={{ ...style }}
     >
       {isExporting ? 'Export en cours...' : children}
       <Image

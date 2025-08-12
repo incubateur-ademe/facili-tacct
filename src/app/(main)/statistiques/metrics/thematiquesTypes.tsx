@@ -1,5 +1,5 @@
 import { BarChartStats } from '@/components/charts/stats/BarChart';
-import { Container } from '@/dsfr/layout';
+import { Container } from '@/design-system/layout';
 import { GetInsightById } from '../query';
 import styles from '../stats.module.scss';
 
