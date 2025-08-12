@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 import { Container } from '../../../design-system/server';
 import RessourcesCards from './cards';
 
@@ -10,7 +11,9 @@ export const metadata: Metadata = {
 const Ressources = () => {
   return (
     <Container size="xl" className="my-16">
-      <RessourcesCards />
+      <Suspense>
+        <RessourcesCards />
+      </Suspense>
     </Container>
   );
 };
