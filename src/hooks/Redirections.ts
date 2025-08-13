@@ -19,3 +19,25 @@ export const handleRedirection = ({
     return `/${page}?libelle=${searchLibelle}&type=${typeTerritoire}`;
   } else return `/${page}`;
 };
+
+export const handleRedirectionThematique = ({
+  code,
+  libelle,
+  type,
+  page,
+  thematique
+}: {
+  code: string;
+  libelle: string;
+  type: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
+  page: string;
+  thematique: string;
+}) => {
+  if (type === 'epci' && eptRegex.test(libelle)) {
+    return `/${page}?code=200054781&libelle=${libelle}&type=ept&thematique=${thematique}`;
+  } else if (code.length !== 0) {
+    return `/${page}?code=${code}&libelle=${libelle}&type=${type}&thematique=${thematique}`;
+  } else if (libelle.length !== 0) {
+    return `/${page}?libelle=${libelle}&type=${type}&thematique=${thematique}`;
+  } else return `/${page}`;
+};
