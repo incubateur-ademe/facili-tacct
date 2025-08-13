@@ -2,13 +2,13 @@
 
 import { nomThematiques } from '@/app/(main)/(nouveau-parcours)/roue-systemique/constantes/categories';
 import roueImage from '@/assets/images/roue_systemique_shape.png';
-import { BoutonPrimaireClassic, BoutonSecondaireClassic } from '@/design-system/base/Boutons';
+import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
+import { couleursBoutons } from '@/design-system/couleurs';
 import { handleRedirection, handleRedirectionThematique } from '@/hooks/Redirections';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
-import styles from './ThematiquesLieesNavigation.module.scss';
+import styles from '../impacts.module.scss';
 
 interface ThematiquesLieesNavigationProps {
   thematiqueSelectionnee?: string;
@@ -20,32 +20,15 @@ export const ThematiquesLieesNavigation = ({
   onThematiqueClick
 }: ThematiquesLieesNavigationProps) => {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const redirectionRetour = handleRedirection({
-    searchCode: code || '',
-    searchLibelle: libelle || '',
-    typeTerritoire: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
-    page: 'roue-systemique'
-  });
-
-  const redirectionThematique = handleRedirectionThematique({
-    code: code,
-    libelle: libelle,
-    type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
-    page: 'explorer-mes-donnees',
-    thematique: thematiqueSelectionnee
-  });
 
   // Refs pour mesurer les positions des éléments
   const leftSectionRef = useRef<HTMLDivElement>(null);
   const centerSectionRef = useRef<HTMLDivElement>(null);
   const rightSectionRef = useRef<HTMLDivElement>(null);
   const rightButtonsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  // State pour stocker les dimensions calculées
   const [lineCalculations, setLineCalculations] = useState<{
     leftToCenter: { width: number; angle: number };
     rightLines: Array<{ width: number; angle: number; yOffset: number }>;
@@ -54,15 +37,11 @@ export const ThematiquesLieesNavigation = ({
     rightLines: []
   });
 
-  // Trouver la thématique sélectionnée dans les données
   const thematique = nomThematiques.find(t => t.label === thematiqueSelectionnee);
-
   if (!thematique) {
     console.warn(`Thématique "${thematiqueSelectionnee}" non trouvée`);
     return null;
   }
-
-  // Obtenir les thématiques liées (par défaut vide si pas défini)
   const thematiquesLiees = thematique.liens || [];
 
   // Fonction pour calculer les positions des lignes
@@ -72,7 +51,6 @@ export const ThematiquesLieesNavigation = ({
     // Calcul de la ligne gauche vers centre
     const leftRect = leftSectionRef.current.getBoundingClientRect();
     const centerRect = centerSectionRef.current.getBoundingClientRect();
-
     const leftToCenterDistance = centerRect.left - leftRect.right - 30;
     const leftToCenterAngle = 0; // Ligne horizontale
 
@@ -80,43 +58,32 @@ export const ThematiquesLieesNavigation = ({
     const rightLines = thematiquesLiees.map((_, index) => {
       const rightButton = rightButtonsRef.current[index];
       if (!rightButton) return { width: 0, angle: 0, yOffset: 0 };
-
       const buttonRect = rightButton.getBoundingClientRect();
       const centerY = centerRect.top + centerRect.height / 2;
       const buttonY = buttonRect.top + buttonRect.height / 2;
-
       const horizontalDistance = buttonRect.left - centerRect.right;
       const verticalDistance = buttonY - centerY;
-
       const lineLength = Math.sqrt(horizontalDistance * horizontalDistance + verticalDistance * verticalDistance) - 30;
       const angle = Math.atan2(verticalDistance, horizontalDistance) * (180 / Math.PI);
-
       return {
         width: lineLength,
         angle: angle,
         yOffset: verticalDistance
       };
     });
-
     setLineCalculations({
       leftToCenter: { width: leftToCenterDistance, angle: leftToCenterAngle },
       rightLines
     });
   };
 
-  // Effect pour calculer les positions au montage et au redimensionnement
   useEffect(() => {
     const handleResize = () => {
       // Délai pour permettre au DOM de se mettre à jour
       setTimeout(calculateLinePositions, 100);
     };
-
-    // Calcul initial
     handleResize();
-
-    // Écouter les redimensionnements
     window.addEventListener('resize', handleResize);
-
     return () => window.removeEventListener('resize', handleResize);
   }, [thematiquesLiees.length]); // Recalculer si le nombre de thématiques change
 
@@ -142,7 +109,12 @@ export const ThematiquesLieesNavigation = ({
             <BoutonPrimaireClassic
               text="Retour aux thématiques"
               size="md"
-              link={redirectionRetour}
+              link={handleRedirection({
+                searchCode: code || '',
+                searchLibelle: libelle || '',
+                typeTerritoire: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+                page: 'roue-systemique'
+              })}
             />
           </div>
         </div>
@@ -158,11 +130,19 @@ export const ThematiquesLieesNavigation = ({
 
       {/* Partie centrale : Bouton de la thématique principale */}
       <div ref={centerSectionRef} className={styles.centerSection}>
-        <BoutonSecondaireClassic
-          text={thematique.label}
-          size="md"
-          onClick={() => handleThematiqueClick(thematique.label)}
-        />
+        <div
+          style={{
+            color: "var(--principales-vert)",
+            backgroundColor: "white",
+            border: `1px solid ${couleursBoutons.primaire[1]}`,
+            padding: '4px 12px',
+            width: "fit-content",
+            alignItems: 'center',
+            borderRadius: '60px',
+          }}
+        >
+          {thematique.label}
+        </div>
         {/* Conteneur pour les lignes vers la droite */}
         {thematiquesLiees.length > 0 && (
           <div className={styles.rightConnectionLines}>
@@ -198,13 +178,14 @@ export const ThematiquesLieesNavigation = ({
               <BoutonPrimaireClassic
                 text={lieeLabel}
                 size="md"
-              // onClick={() => router.push(handleRedirectionThematique({
-              //   code: code,
-              //   libelle: libelle,
-              //   type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
-              //   page: 'explorer-mes-donnees',
-              //   thematique: lieeLabel
-              // }))}
+                onClick={() => window.location.href = handleRedirectionThematique({
+                  code: code,
+                  libelle: libelle,
+                  type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+                  page: 'donnees',
+                  thematique: lieeLabel,
+                  anchor: ""
+                })}
               />
             </div>
           ))

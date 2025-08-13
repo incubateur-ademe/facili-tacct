@@ -25,19 +25,21 @@ export const handleRedirectionThematique = ({
   libelle,
   type,
   page,
-  thematique
+  thematique,
+  anchor
 }: {
   code: string;
   libelle: string;
   type: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
   page: string;
   thematique: string;
+  anchor: string;
 }) => {
   if (type === 'epci' && eptRegex.test(libelle)) {
-    return `/${page}?code=200054781&libelle=${libelle}&type=ept&thematique=${thematique}`;
+    return `/${page}?code=200054781&libelle=${libelle}&type=ept&thematique=${thematique}#${anchor}`;
   } else if (code.length !== 0) {
-    return `/${page}?code=${code}&libelle=${libelle}&type=${type}&thematique=${thematique}`;
+    return `/${page}?code=${code}&libelle=${libelle}&type=${type}&thematique=${thematique}#${anchor}`;
   } else if (libelle.length !== 0) {
-    return `/${page}?libelle=${libelle}&type=${type}&thematique=${thematique}`;
+    return `/${page}?libelle=${libelle}&type=${type}&thematique=${thematique}#${anchor}`;
   } else return `/${page}`;
 };
