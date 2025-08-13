@@ -18,9 +18,8 @@ import routesIconBlack from '@/assets/icons/route_icon_black.svg';
 import routesIconWhite from '@/assets/icons/route_icon_white.svg';
 import ferroviaireIconBlack from '@/assets/icons/train_icon_black.svg';
 import ferroviaireIconhite from '@/assets/icons/train_icon_white.svg';
-import Image from 'next/image';
+import { BoutonPrimaireClassic, BoutonSecondaireClassic } from '@/design-system/base/Boutons';
 import { useState } from 'react';
-import styles from './components.module.scss';
 
 interface Props {
   data: Array<string | null>;
@@ -106,38 +105,31 @@ const SubTabs = ({
   data,
   defaultTab,
   setValue,
-  maxWidth = '100%',
-  borderRight = 'none'
 }: Props) => {
   const [selectedSubTab, setSelectedSubTab] = useState(defaultTab);
 
+  //set BoutonPrimaireClassic for the selected button & set BoutonSecondaireClassic for the unselected buttons
   return (
-    <div
-      className={styles.titles}
-      style={{ maxWidth: maxWidth, borderRight: borderRight }}
-    >
-      {data.map((element, i) => (
-        <button
-          key={i}
-          className={
-            selectedSubTab === element
-              ? styles.selectedTabButton
-              : styles.tabButton
-          }
-          onClick={() => {
-            setSelectedSubTab(element ? element : '');
-            setValue(element ? (element as CatnatTypes) : 'Tous types');
-          }}
-        >
-          {element && tabsWithIcons(tabIcons, element, selectedSubTab) ? (
-            <Image
-              src={tabsWithIcons(tabIcons, element, selectedSubTab)!}
-              alt=""
-            />
-          ) : null}
-          {element}
-        </button>
-      ))}
+    <div>
+      {data.map((element, i) => {
+        const isSelected = selectedSubTab === element;
+        const ButtonComponent = isSelected
+          ? BoutonPrimaireClassic
+          : BoutonSecondaireClassic;
+        return (
+          <ButtonComponent
+            size="sm"
+            key={i}
+            onClick={() => {
+              setSelectedSubTab(element ? element : '');
+              setValue(element ? (element as CatnatTypes) : 'Tous types');
+            }}
+            text={element!}
+            icone={element ? tabsWithIcons(tabIcons, element, selectedSubTab) : null}
+            style={{ fontWeight: 400 }}
+          />
+        );
+      })}
     </div>
   );
 };
