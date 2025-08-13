@@ -1,3 +1,4 @@
+"use client";
 import { Body } from "@/design-system/base/Textes";
 import couleurs from "@/design-system/couleurs";
 import { CommunesContoursDto, CommunesIndicateursDto } from '@/lib/dto';

@@ -1,4 +1,5 @@
 import { DefinitionTooltip } from "@/components/utils/HtmlTooltip";
+import { Body } from "@/design-system/base/Textes";
 import { eutrophisation, irrigable, PNACC } from "@/lib/definitions";
 import styles from './themes.module.scss';
 
@@ -426,6 +427,47 @@ export const EtatsCoursEauBiodiversiteText = () => (
       hors d’atteinte désormais.
     </p>
   </div>
+);
+
+export const EtatsCoursEauBiodiversiteTextNouveauParcours = () => (
+  <>
+    <Body size="sm">
+      Seuls 43 % des cours et des plans d’eau français sont en bon état écologique.
+      Si les principaux facteurs de dégradation de la qualité des eaux
+      sont les pollutions (nitrates, pesticides) et les altérations
+      physiques des rivières (seuils et barrages, endiguement….), le
+      réchauffement climatique aggrave les déséquilibres en cours. La
+      hausse des températures et les sécheresses prolongées entraînent
+      la chute des débits, voire assecs, la prolifération d'espèces
+      exotiques envahissantes, la concentration des polluants
+      (massivement relâchés lors des crues) ; la hausse des
+      température de l’eau et l’ensoleillement sont des conditions
+      favorables à{' '}
+      <DefinitionTooltip title={eutrophisation}>
+        l’eutrophisation
+      </DefinitionTooltip>
+      .
+    </Body>
+    <Body size="sm">
+      Un mauvais état écologique a des impacts graves sur la
+      biodiversité : il perturbe les conditions de vie des espèces
+      aquatiques et dégrade leurs habitats. En 20 ans :
+    </Body>
+    <ul className="text-[1rem] leading-[1.5rem]">
+      <li>
+        <Body size="sm">Les populations de truites de rivière ont diminué de 44 %.</Body>
+      </li>
+      <li>
+        <Body size="sm">L’abondance de l’anguille européenne est tombée à 10 % de son niveau historique.</Body>
+      </li>
+    </ul>
+    <Body size="sm">
+      - - - - <br></br>
+      L’objectif de la Directive Cadre sur l’Eau (2000) était
+      d’atteindre un bon état général des eaux d’ici 2027 : il semble
+      hors d’atteinte désormais.
+    </Body>
+  </>
 );
 
 export const EtatCoursEauRessourcesEauText = () => (

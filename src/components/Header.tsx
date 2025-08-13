@@ -133,7 +133,9 @@ const HeaderComp = () => {
             '/donnees-territoriales',
             '/rechercher-son-territoire',
             '/roue-systemique',
-            '/explorer-mes-donnees'
+            '/explorer-mes-donnees',
+            '/donnees',
+            '/impacts'
           ].includes(params) ? true : false,
           linkProps: {
             href: redirectionExplorerMesDonnees,

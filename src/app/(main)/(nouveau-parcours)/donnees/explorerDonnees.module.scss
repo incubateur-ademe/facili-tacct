@@ -1,0 +1,171 @@
+// Contenu principal "Explorer mes données"
+
+.retourHautDePageWrapper {
+    position: fixed;
+    right: 2rem;
+    bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+    z-index: 1000;
+}
+
+.retourHautDePageBouton {
+    border-radius: 50%;
+    background-color: var(--gris-dark);
+    height: 44px;
+    width: 44px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.explorerMesDonneesContainer {
+    margin: 2rem 5rem;
+}
+
+.sectionType {
+    margin-top: 40px;
+    border: 1px solid var(--gris-medium);
+    border-radius: 1rem;
+    .indicateurWrapper {
+        padding: 2rem 0 0 2rem;
+    }
+    .diagnosticWrapper {
+        padding: 2rem;
+    }
+}
+
+.redirectionEtape2Wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: 2.5rem 0;
+    gap: 2rem;
+    .textBloc {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+}
+
+// Données et dataviz
+
+.datavizContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    margin: 1rem 0 0 0;
+    .chiffreDynamiqueWrapper {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        gap: 1.5rem;
+        align-items: flex-start;
+        padding: 0 0 2rem 0;
+    }
+    .datavizWrapper {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        border-radius: 1rem 0 0 0;
+        border-left: 1px solid var(--gris-medium);
+        border-top: 1px solid var(--gris-medium);
+        .legend {
+            margin: 0.75rem 0.5rem;
+        }
+    }
+}
+
+.datavizMapContainer {
+    display: flex;
+    flex-direction: column;
+    .chiffreDynamiqueWrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 1.25rem;
+        align-items: flex-start;
+        .text {
+            display: flex;
+            flex-direction: column;
+            max-width: 700px;
+        }
+    }
+    .mapWrapper {
+        padding: 1rem 2rem 0 0;
+        .legend {
+            margin: 0.75rem;
+        }
+        .legendTypesDeSols {
+            padding: 0.75rem;
+        }
+    }
+}
+
+.sourcesExportWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    gap: 1rem;
+    align-items: center;
+}
+
+// Etape 2 : impacts
+.bdWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    justify-content: space-between;
+    margin-top: 2rem;
+    .bdCardWrapper {
+        display: flex;
+        flex-direction: column;
+        border-radius: 1rem;
+        background-color: var(--gris-light);
+        max-width: 350px;
+        width: 100%;
+    }
+    .bdTextWrapper {
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+}
+
+.donneesNationalesWrapper {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid var(--gris-medium);
+    padding: 2rem 0;
+    .leftData {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        gap: 1.25rem;
+        padding-right: 1.5rem;
+        border-right: 1px solid var(--gris-medium);
+        align-items: flex-start;
+    }
+    .rightData {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        gap: 1.25rem;
+        padding-left: 1.5rem;
+    }
+}
+
+.prendreRDVWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2.5rem;
+    padding: 2rem;
+    .RDVText {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}

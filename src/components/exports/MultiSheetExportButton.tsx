@@ -1,5 +1,6 @@
 "use client";
 import ExporterIcon from '@/assets/icons/export_icon_white.svg';
+import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { exportMultipleSheetToXLSX } from '@/lib/utils/export/exportXlsx';
 import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
@@ -120,5 +121,103 @@ export const MultiSheetExportButton = ({
         height={16}
       />
     </button>
+  );
+};
+
+
+export const MultiSheetExportButtonNouveauParcours = ({
+  sheetsData,
+  baseName,
+  type,
+  libelle,
+  code,
+  children = 'Exporter',
+  documentationSheet
+}: MultiSheetExportButtonProps) => {
+  const posthog = usePostHog();
+  const [isExporting, setIsExporting] = useState(false);
+  posthog.capture('export_xlsx_bouton', {
+    thematique: baseName,
+    code: code,
+    libelle: libelle,
+    type: type,
+    date: new Date()
+  });
+
+  useEffect(() => {
+    if (isExporting) {
+      document.body.style.setProperty('cursor', 'wait', 'important');
+      const overlay = document.createElement('div');
+      overlay.id = 'export-loading-overlay';
+      overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: transparent;
+        cursor: wait !important;
+        z-index: 9999;
+        pointer-events: auto;
+      `;
+      document.body.appendChild(overlay);
+      document.body.classList.add('export-loading');
+    } else {
+      document.body.style.removeProperty('cursor');
+      const overlay = document.getElementById('export-loading-overlay');
+      if (overlay) {
+        overlay.remove();
+      }
+      document.body.classList.remove('export-loading');
+    }
+    return () => {
+      document.body.style.removeProperty('cursor');
+      const overlay = document.getElementById('export-loading-overlay');
+      if (overlay) {
+        overlay.remove();
+      }
+      document.body.classList.remove('export-loading');
+    };
+  }, [isExporting]);
+
+  const handleExport = async () => {
+    const hasData = sheetsData.some(sheet => sheet.data && sheet.data.length > 0);
+    if (!hasData) {
+      console.log('Aucune donnée à exporter');
+      return;
+    }
+
+    setIsExporting(true);
+    try {
+      const dataForExport: Record<string, ExportDataRow[]> = {};
+      sheetsData.forEach(sheet => {
+        if (sheet.data && sheet.data.length > 0) {
+          dataForExport[sheet.sheetName] = sheet.data;
+        }
+      });
+
+      if (documentationSheet && documentationSheet.length > 0) {
+        dataForExport['Documentation'] = documentationSheet;
+      }
+
+      exportMultipleSheetToXLSX(dataForExport, baseName, type, libelle);
+    } catch (error) {
+      console.error('Export failed:', error);
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  return (
+    <BoutonPrimaireClassic
+      onClick={handleExport}
+      disabled={isExporting}
+      icone={ExporterIcon}
+      size='sm'
+      text={isExporting ? 'Export en cours...' : children as string}
+      style={{
+        cursor: isExporting ? 'wait' : 'pointer',
+      }}
+    />
   );
 };
