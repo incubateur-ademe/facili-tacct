@@ -1,4 +1,4 @@
-.dataWrapper{
+.dataWrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,7 +21,7 @@
 .progressText {
     position: absolute;
     text-align: center;
-    font-family: "Marianne";
+    font-family: 'Marianne';
     p {
         font-weight: 400;
         font-size: 1rem;
@@ -37,24 +37,31 @@
 }
 
 .tooltip {
-  max-width: 350px;
-  h3 {
-      font-size: 0.75rem;
-      font-weight: 700;
-      line-height: 20px;
-  }
-  p {
-      font-size: 14px;
-      font-weight: 400;
-      margin: 0;
-  }
-  :after {
-      content: "";
-      position: absolute;
-      top: 90%;
-      left: 45%;
-      border-width: 8px;
-      border-style: solid;
-      border-color: white transparent transparent transparent;
-  }
+    max-width: 350px;
+    h3 {
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 20px;
+    }
+    p {
+        font-size: 14px;
+        font-weight: 400;
+        margin: 0;
+    }
+    :after {
+        content: '';
+        position: absolute;
+        top: 90%;
+        left: 45%;
+        border-width: 8px;
+        border-style: solid;
+        border-color: white transparent transparent transparent;
+    }
+}
+
+// onglets de navigation en dataviz + filtres
+
+.graphTabsWrapper {
+    display: flex;
+    align-self: flex-end;
 }

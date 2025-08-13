@@ -55,7 +55,7 @@ export const SurfacesEnBio = (props: {
           {agricultureBio.length ?
             <>
               {type === "commune" ? (
-                <p style={{ color: '#161616' }}>
+                <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
                   Cette donnée n’est disponible qu’à l’échelle de votre EPCI.{' '}
                   <br></br>
                   Dans votre EPCI, <b>
@@ -63,23 +63,23 @@ export const SurfacesEnBio = (props: {
                   </b>{' '}
                   sont en agriculture biologique ou en conversion, représentant
                   un total de <b>{Round(surfaceAgriBio, 0)} hectares</b>.
-                </p>
+                </Body>
               ) : type === "departement" || type === "pnr" || type === "petr" ? (
                 <>
-                  <p style={{ color: '#161616' }}>
+                  <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
                     Cette donnée n’est disponible qu’à l’échelle de l'EPCI.
                     Sur votre territoire, <b>{numberWithSpacesRegex(nombreExploitations)} exploitations</b>{' '}
                     sont en agriculture biologique ou en conversion, représentant
                     un total de <b>{Round(surfaceAgriBio, 0)} hectares</b>.
-                  </p>
+                  </Body>
                   {
                     territoiresPartiellementCouverts && (
                       <>
-                        <p>
+                        <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
                           <br></br>Attention, <b>{territoiresPartiellementCouverts?.length} EPCI
                           </b> {territoiresPartiellementCouverts?.length === 1 ? "ne fait" : "ne font"} que
                           partiellement partie de votre territoire :
-                        </p>
+                        </Body>
                         <ul style={{ margin: "0.5rem 0 0 1.5rem" }}>
                           {territoiresPartiellementCouverts?.map((epci, index) => (
                             <li key={index} style={{ fontSize: "1rem" }}>{epci}</li>
