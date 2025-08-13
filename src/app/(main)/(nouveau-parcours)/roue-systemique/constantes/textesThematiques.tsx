@@ -22,11 +22,27 @@ export const sommaireThematiques = {
         icone: "🏗️",
         sousCategories: ["Types de sols", "LCZ"]
       },
+    ]
+  },
+  "Biodiversité": {
+    thematiquesLiees: [
       {
-        id: "section4",
-        thematique: "Tourisme",
-        icone: "🏖️",
-        sousCategories: ["Indicateur tourisme"]
+        id: "section1",
+        thematique: "Aménagement",
+        icone: "🏗️",
+        sousCategories: ["Consommation d'espaces NAF"]
+      },
+      {
+        id: "section2",
+        thematique: "Agriculture",
+        icone: "🌼",
+        sousCategories: ["Surfaces en bio"]
+      },
+      {
+        id: "section3",
+        thematique: "Eau",
+        icone: "💧",
+        sousCategories: ["État écologique des cours d'eau", "Ozone et végétation"]
       }
     ]
   }

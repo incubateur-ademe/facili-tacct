@@ -1,3 +1,4 @@
+"use client";
 import HautDePageIcon from '@/assets/icons/haut_de_page_icon_white.svg';
 import BDImage1 from '@/assets/images/bd_confort_thermique1.png';
 import BDImage2 from '@/assets/images/bd_confort_thermique2.png';
@@ -8,7 +9,7 @@ import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H2 } from "@/design-system/base/Textes";
 import Image from "next/image";
 import { ThematiquesLieesNavigation } from '../../components/ThematiquesLieesNavigation';
-import styles from '../../explorerDonnees.module.scss';
+import styles from '../../impacts.module.scss';
 
 export const DiagnostiquerImpactsConfortThermique = () => {
   return (
@@ -237,10 +238,10 @@ export const DiagnostiquerImpactsConfortThermique = () => {
       </section>
       <section className={styles.sectionType}>
         <div id="section4" className={styles.diagnosticWrapper}>
-          <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+          <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>
             Poursuivez votre exploration
           </H2>
-          <Body>
+          <Body size='lg'>
             Vous pouvez retournez à l’ensemble des thématiques ou bien explorez les thématiques liées à celle-ci.
           </Body>
           <ThematiquesLieesNavigation />
