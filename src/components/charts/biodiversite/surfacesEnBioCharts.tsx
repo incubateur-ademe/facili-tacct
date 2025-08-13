@@ -38,8 +38,8 @@ const SurfacesEnBioCharts = ({
     <>
       {
         agricultureBio.length !== 0 ? (
-          <div className={styles.graphWrapper}>
-            <div className={styles.dataVizGraphTitleWrapper}>
+          <div className={styles.dataWrapper}>
+            <div className={styles.graphTabsWrapper}>
               <SubTabs
                 data={['Répartition', 'Évolution']}
                 defaultTab={datavizTab}
@@ -109,7 +109,7 @@ const SurfacesEnBioCharts = ({
 
           </div>
         ) : (
-          <div className={styles.graphWrapper}>
+          <div className={styles.dataWrapper}>
             <DataNotFoundForGraph image={DataNotFound} />
 
           </div>
