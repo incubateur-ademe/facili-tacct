@@ -7,6 +7,7 @@ import { MicroPieChart } from '@/components/charts/MicroDataviz';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H2 } from "@/design-system/base/Textes";
 import Image from "next/image";
+import { ThematiquesLieesNavigation } from '../../components/ThematiquesLieesNavigation';
 import styles from '../../explorerDonnees.module.scss';
 
 export const DiagnostiquerImpactsConfortThermique = () => {
@@ -151,7 +152,7 @@ export const DiagnostiquerImpactsConfortThermique = () => {
             <div className={styles.leftData}>
               <MicroPieChart pourcentage={71} ariaLabel="Pourcentage des consultations SOS médecinspour les plus de 75 ans" />
               <Body>
-                "Tous exposés : les moins de 75 ans représentent 71% des consultations
+                "Tous exposés : les moins de 75 ans représentent 71 % des consultations
                 SOS médecins liées à la chaleur ( juin-septembre 2022 ) et un tiers
                 des décès (2014-2022)"
               </Body>
@@ -181,7 +182,7 @@ export const DiagnostiquerImpactsConfortThermique = () => {
             <div className={styles.leftData}>
               <MicroPieChart pourcentage={55} ariaLabel="Pourcentage des Français ayant trop chaud" />
               <Body>
-                "55% des Français déclarent avoir eu trop chaud pendant au moins 24 heures dans leur logement en 2023.
+                "55 % des Français déclarent avoir eu trop chaud pendant au moins 24 heures dans leur logement en 2023.
                 La présence d’arbres peut rafraîchir l’air de 2 à 3°C, notamment dans les rues ou lorsqu’ils sont
                 alignés en bordure de route"
               </Body>
@@ -242,7 +243,7 @@ export const DiagnostiquerImpactsConfortThermique = () => {
           <Body>
             Vous pouvez retournez à l’ensemble des thématiques ou bien explorez les thématiques liées à celle-ci.
           </Body>
-
+          <ThematiquesLieesNavigation />
         </div>
       </section>
     </>
