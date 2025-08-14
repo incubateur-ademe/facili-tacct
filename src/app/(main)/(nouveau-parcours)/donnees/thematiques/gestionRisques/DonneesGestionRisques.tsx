@@ -1,36 +1,31 @@
 "use client";
 import HautDePageIcon from '@/assets/icons/haut_de_page_icon_white.svg';
+import DiagnoticImage from '@/assets/images/diagnostiquer_impacts.png';
+import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
 import { Body, H1, H2 } from "@/design-system/base/Textes";
-import { AgricultureBio, AOT40, CarteCommunes, ConsommationNAF, EtatCoursDeau, QualiteSitesBaignade } from "@/lib/postgres/models";
+import { handleRedirectionThematique } from "@/hooks/Redirections";
+import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet } from "@/lib/postgres/models";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { sommaireThematiques } from "../../../roue-systemique/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
-import { ConsommationEspacesNAF } from '../../indicateurs/biodiversite/1-ConsommationEspacesNAF';
-import { SurfacesEnBio } from '../../indicateurs/biodiversite/2-SurfacesEnBio';
-import { EtatEcoCoursDeau } from '../../indicateurs/biodiversite/3-EtatCoursDeau';
-import { OzoneEtVegetation } from '../../indicateurs/biodiversite/4-AOT40';
 
 interface Props {
+  gestionRisques: ArreteCatNat[];
   carteCommunes: CarteCommunes[];
-  agricultureBio: AgricultureBio[];
-  consommationNAF: ConsommationNAF[];
-  aot40: AOT40[];
-  etatCoursDeau: EtatCoursDeau[];
-  qualiteEauxBaignade: QualiteSitesBaignade[];
+  erosionCotiere: ErosionCotiere[];
+  incendiesForet: IncendiesForet[];
 }
 
-export const DonneesBiodiversite = ({
+export const DonneesGestionRisques = ({
   carteCommunes,
-  agricultureBio,
-  consommationNAF,
-  aot40,
-  etatCoursDeau,
-  qualiteEauxBaignade,
+  gestionRisques,
+  erosionCotiere,
+  incendiesForet
 }: Props) => {
   const searchParams = useSearchParams();
-  const thematique = searchParams.get('thematique') as "Biodiversité";
+  const thematique = searchParams.get('thematique') as "Gestion des risques";
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
@@ -70,7 +65,7 @@ export const DonneesBiodiversite = ({
         {/* Introduction */}
         <section>
           <Body size='lg'>
-            Les indicateurs qui vont suivre vous orientent...........
+            Les indicateurs qui vont suivre vous orientent ..............
             En revanche, seule votre enquête terrain vous révélera les impacts réels.
           </Body>
         </section>
@@ -80,49 +75,62 @@ export const DonneesBiodiversite = ({
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
-          {/* Consommation d'espaces NAF */}
-          <div id="Consommation d'espaces NAF" className={styles.indicateurWrapper}>
-            <ConsommationEspacesNAF
-              consommationNAF={consommationNAF}
-              carteCommunes={carteCommunes}
-            />
+          {/* Arrêtés catnat */}
+          <div id="Arrêtés catnat" className={styles.indicateurWrapper}>
+
           </div>
         </section>
 
-        {/* Section Aménagement */}
+        {/* Section  */}
         <section className={styles.sectionType}>
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
-          {/* État écologique des cours */}
-          <div id="Surfaces en bio" className={styles.indicateurWrapper}>
-            <SurfacesEnBio
-              agricultureBio={agricultureBio}
-            />
+          {/* État  */}
+          <div id="" className={styles.indicateurWrapper}>
+
           </div>
         </section>
 
-        {/* Section Eau */}
+        {/* Section  */}
         <section className={styles.sectionType}>
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
           </H2>
-          {/* État écologique des cours d'eau */}
-          <div id="État écologique des cours d'eau" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
-            <EtatEcoCoursDeau
-              etatCoursDeau={etatCoursDeau}
-              carteCommunes={carteCommunes}
-              qualiteEauxBaignade={qualiteEauxBaignade}
-            />
+          {/*  */}
+          <div id="" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+
           </div>
-          {/* Ozone et végétation */}
-          <div id="Ozone et végétation" className={styles.indicateurWrapper}>
-            <OzoneEtVegetation
-              aot40={aot40}
-              carteCommunes={carteCommunes}
-            />
+          {/*  */}
+          <div id="" className={styles.indicateurWrapper}>
+
           </div>
         </section>
+        <div className={styles.redirectionEtape2Wrapper} >
+          <Image
+            src={DiagnoticImage}
+            alt=""
+            style={{ width: '100%', height: 'auto', maxWidth: "180px" }}
+          />
+          <div className={styles.textBloc} >
+            <Body style={{ fontSize: "20px", color: "var(--gris-dark)", fontWeight: 700, maxWidth: "700px" }}>
+              Ces pistes d'investigation en main, partez découvrir sur le
+              terrain comment votre territoire vit concrètement les enjeux des risques.
+            </Body>
+            <BoutonPrimaireClassic
+              size='lg'
+              text='Diagnostiquer les impacts'
+              link={handleRedirectionThematique({
+                code: code,
+                libelle: libelle,
+                type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+                page: 'impacts',
+                thematique: "Biodiversité",
+                anchor: ""
+              })}
+            />
+          </div>
+        </div>
       </div>
     </>
   );

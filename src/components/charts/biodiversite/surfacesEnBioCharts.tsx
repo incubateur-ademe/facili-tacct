@@ -71,14 +71,13 @@ const SurfacesEnBioCharts = ({
               </>
             ) : (
               <>
-                <div className={styles.prelevementEauSliderWrapper}>
+                <div className={styles.sliderWrapper}>
                   <RangeSlider
                     firstValue={2019}
                     lastValue={2022}
                     minDist={1}
                     setSliderValue={setSliderValue}
                     sliderValue={sliderValue}
-                    width={650}
                   />
                 </div>
                 <AgricultureBioBarChart
@@ -106,12 +105,10 @@ const SurfacesEnBioCharts = ({
                 }
               </>
             )}
-
           </div>
         ) : (
           <div className={styles.dataWrapper}>
             <DataNotFoundForGraph image={DataNotFound} />
-
           </div>
         )}
     </>

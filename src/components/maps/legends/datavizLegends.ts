@@ -153,28 +153,28 @@ export const chefsExploitationLegend = [
 
 export const espacesNAFBarChartLegend = [
   {
-    variable: 'Activité',
-    couleur: '#F66E19'
+    value: 'Activité',
+    color: '#F66E19'
   },
   {
-    variable: 'Habitat',
-    couleur: '#009ADC'
+    value: 'Habitat',
+    color: '#009ADC'
   },
   {
-    variable: 'Mixte',
-    couleur: '#FFCF5E'
+    value: 'Mixte',
+    color: '#FFCF5E'
   },
   {
-    variable: 'Routes',
-    couleur: '#7A49BE'
+    value: 'Routes',
+    color: '#7A49BE'
   },
   {
-    variable: 'Ferroviaire',
-    couleur: '#BB43BD'
+    value: 'Ferroviaire',
+    color: '#BB43BD'
   },
   {
-    variable: 'Inconnu',
-    couleur: '#00C2CC'
+    value: 'Inconnu',
+    color: '#00C2CC'
   }
 ];
 

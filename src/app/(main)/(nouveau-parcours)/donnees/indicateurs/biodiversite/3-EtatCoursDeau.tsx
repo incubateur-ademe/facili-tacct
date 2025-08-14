@@ -46,9 +46,11 @@ export const EtatEcoCoursDeau = (props: {
         État écologique des cours d’eau et des plans d’eau
       </H3>
       <div className={styles.datavizMapContainer}>
-        <EtatsCoursEauBiodiversiteTextNouveauParcours />
+        <div className='pr-5'>
+          <EtatsCoursEauBiodiversiteTextNouveauParcours />
+        </div>
         <div className={styles.mapWrapper}>
-          {(etatCoursDeau.length) ? (
+          {etatCoursDeau.length ? (
             <>
               <MapEtatCoursDeauLegacy
                 etatCoursDeau={etatCoursDeauMap}
@@ -56,15 +58,16 @@ export const EtatEcoCoursDeau = (props: {
                 qualiteEauxBaignade={qualiteEauxBaignade}
               />
               <div
-                className={styles.legendCoursDeau}
-                style={{ margin: '0 1em' }}
+                className={styles.legendCoursDeauWrapper}
               >
-                <h3>- État des cours d'eau -</h3>
-                <LegendCompColor legends={etatCoursDeauLegends} />
-              </div>
-              <div className={styles.legendCoursDeau}>
-                <h3>- Plans d'eau -</h3>
-                <LegendCompIcons legends={qualiteEauxBaignadelegends} />
+                <div className={styles.legendCoursDeau}>
+                  <Body weight='bold' style={{ alignItems: 'center' }}>- État des cours d'eau -</Body>
+                  <LegendCompColor legends={etatCoursDeauLegends} />
+                </div>
+                <div className={styles.legendPlanDeau}>
+                  <Body weight='bold'>- Plans d'eau -</Body>
+                  <LegendCompIcons legends={qualiteEauxBaignadelegends} />
+                </div>
               </div>
             </>
           ) : <DataNotFoundForGraph image={DataNotFound} />

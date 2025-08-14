@@ -1,0 +1,49 @@
+.reduceButtonWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.readMoreFadeWrapper {
+    position: relative;
+    width: 100%;
+    transition: max-height 1s;
+}
+
+.readMoreFadeContent {
+    transition: max-height 1s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: max-height;
+}
+
+.fadeOverlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.85) 70%,
+        rgba(255, 255, 255, 1) 100%
+    );
+}
+
+.readMoreButton {
+    pointer-events: auto;
+    background: white;
+    color: var(--principales-vert);
+    border: none;
+    border-radius: 1rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 1s;
+    align-self: center;
+    &:hover {
+        background: var(--gris-dark);
+    }
+}

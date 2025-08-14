@@ -10,7 +10,7 @@
   "scripts": {
     "predev": "react-dsfr update-icons",
     "prebuild": "react-dsfr update-icons",
-    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev --turbopack",
     "build": "cross-env NODE_OPTIONS=--inspect next build && node copy-assets.js",
     "start": "node .next/standalone/server.js",
     "eslint": "eslint --fix ./src",
@@ -65,7 +65,7 @@
     "react": "^19",
     "react-dom": "^19",
     "react-leaflet": "^5",
-    "react-leaflet-cluster": "^2.1.0",
+    "react-leaflet-cluster": "^3.1.1",
     "react-leaflet-marker": "^2.1.1",
     "rehype-katex": "^7.0.1",
     "remark-frontmatter": "^5.0.0",

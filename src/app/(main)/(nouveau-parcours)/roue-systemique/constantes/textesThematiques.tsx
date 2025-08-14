@@ -12,7 +12,7 @@ export const sommaireThematiques = {
       },
       {
         id: "section2",
-        thematique: "Bâtiment & Logement",
+        thematique: "Bâtiment",
         icone: "🏠",
         sousCategories: ["Âge du bâtiment"]
       },
@@ -45,6 +45,60 @@ export const sommaireThematiques = {
         sousCategories: ["État écologique des cours d'eau", "Ozone et végétation"]
       }
     ]
+  },
+  "Gestion des risques": {
+    thematiquesLiees: [
+      {
+        id: "section1",
+        thematique: "Aménagement",
+        icone: "🏗️",
+        sousCategories: ["Arrêtés CatNat", "Érosion côtière", "Retrait-gonflement des argiles"]
+      },
+      {
+        id: "section2",
+        thematique: "Forêts",
+        icone: "🌳",
+        sousCategories: ["Incendies de forêt"]
+      },
+    ]
+  },
+  "Agriculture et pêche": {
+    thematiquesLiees: [
+      {
+        id: "section1",
+        thematique: "Eau",
+        icone: "💧",
+        sousCategories: ["Superficies irriguées"]
+      },
+      {
+        id: "section2",
+        thematique: "Biodiversité",
+        icone: "🌼",
+        sousCategories: ["Surfaces en bio"]
+      },
+      {
+        id: "section3",
+        thematique: "Santé",
+        icone: "🏥",
+        sousCategories: ["Types de culture"]
+      },
+    ]
+  },
+  "Aménagement": {
+    thematiquesLiees: [
+      {
+        id: "section1",
+        thematique: "Biodiversité",
+        icone: '🌼',
+        sousCategories: ["Consommation d'espaces NAF"]
+      },
+      {
+        id: "section2",
+        thematique: "Santé",
+        icone: "🏥",
+        sousCategories: ["LCZ"]
+      },
+    ]
   }
 };
 
@@ -56,8 +110,8 @@ export const thematiquesInfo: {
     description: (<div></div>),
     link: ''
   },
-  'Bâtiment & Logement': {
-    title: 'Bâtiment & Logement',
+  'Bâtiment': {
+    title: 'Bâtiment',
     description: (<div></div>),
     link: ''
   },
@@ -83,7 +137,7 @@ export const thematiquesInfo: {
             🏥 Santé
           </Body>
           <Body size="sm">
-            🏠 Bâtiment & logements
+            🏠 Bâtiment
           </Body>
           <Body size="sm">
             🏗️ Aménagement
@@ -142,7 +196,7 @@ export const thematiquesInfo: {
   'Agriculture & pêche': {
     title: 'Agriculture & pêche',
     description: (<div></div>),
-    link: 'Agriculture'
+    link: 'Agriculture et pêche'
   },
   'Filière bois': {
     title: 'Filière bois',
