@@ -102,7 +102,7 @@ export const ConsommationEspacesNAFBarChart = (props: {
       {
         sumAllValues !== 0 ?
           <NivoBarChart
-            colors={espacesNAFBarChartLegend.map((e) => e.couleur)}
+            colors={espacesNAFBarChartLegend.map((e) => e.color)}
             graphData={graphData}
             keys={Object.keys(graphData[0]).slice(0, -1)}
             indexBy="annee"

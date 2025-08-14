@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1rem;
     align-items: center;
     p {
         font-size: 14px;
@@ -63,5 +62,17 @@
 
 .graphTabsWrapper {
     display: flex;
-    align-self: flex-end;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 1.25rem;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--gris-light);
+    width: 100%;
+}
+
+.sliderWrapper {
+    display: flex;
+    padding: 1.25rem 2.25rem;
+    width: 100%;
+    border-bottom: 1px solid var(--gris-light);
 }

@@ -14,7 +14,7 @@ type NoeudRoue = {
 export const nodeCategoryMapping = {
   // Cadre de vie
   'Continuité des services': 'Cadre de vie',
-  'Bâtiment & Logement': 'Cadre de vie',
+  Bâtiment: 'Cadre de vie',
   Aménagement: 'Cadre de vie',
   'Confort thermique': 'Cadre de vie',
   'Gestion des risques': 'Cadre de vie',
@@ -40,7 +40,7 @@ export const nomThematiques = [
     liens: []
   },
   {
-    label: 'Bâtiment & Logement',
+    label: 'Bâtiment',
     labelRadius: 270,
     icon: '🏠',
     disabled: true,
@@ -99,7 +99,7 @@ export const liensEntreThematiques = [
   // Confort thermique
   {
     source: 'Confort thermique',
-    target: 'Bâtiment & Logement',
+    target: 'Bâtiment',
     curve: 1,
     curveRadius: 1
   },
@@ -129,7 +129,7 @@ export const liensEntreThematiques = [
     curveRadius: 0.85
   },
   {
-    source: 'Bâtiment & Logement',
+    source: 'Bâtiment',
     target: 'Santé',
     curve: 1,
     curveRadius: 0.6

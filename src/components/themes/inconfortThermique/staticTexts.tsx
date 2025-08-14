@@ -1,7 +1,6 @@
 import { DefinitionTooltip } from "@/components/utils/HtmlTooltip";
 import { Body } from "@/design-system/base/Textes";
 import { eutrophisation, irrigable, PNACC } from "@/lib/definitions";
-import styles from './themes.module.scss';
 
 export const AgeBatiText = () => (
   <div className="px-4">
@@ -191,8 +190,8 @@ export const VegetalisationText = () => (
 );
 
 export const SurfacesIrrigueesText = () => (
-  <div className={styles.textWrapper}>
-    <p>
+  <>
+    <Body size='sm'>
       En France métropolitaine, 6,8 % de la surface agricole utile
       (SAU) était irriguée en 2020, soit 15 % de plus qu’en 2010.
       Face aux sécheresses de plus en plus marquées, les surfaces{' '}
@@ -204,8 +203,8 @@ export const SurfacesIrrigueesText = () => (
       l’irrigation représente déjà 10 % des prélèvements totaux et
       jusqu’à 23 % des eaux souterraines, modifiant localement le
       cycle de l’eau.
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       L’irrigation permet de sécuriser les rendements, mais peut
       aussi accentuer les tensions locales sur la ressource, en
       particulier en été, période où la demande est forte pour
@@ -218,100 +217,104 @@ export const SurfacesIrrigueesText = () => (
       restent très peu équipées. Ainsi, certains territoires
       irriguent plus de 40 % de leur SAU, tandis que d’autres n’en
       irriguent que 1 %.
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       Avec une ressource en eau qui diminue et des usages
       multiples, ce modèle peut-il tenir dans le temps ? À
       l’échelle locale, les territoires devront questionner la
       pérennité de l’irrigation face aux évolutions climatiques et
       aux autres besoins en eau.
-    </p>
-  </div>
+    </Body>
+  </>
 );
 
 export const ConsommationEspacesNAFAmenagementText = () => (
-  <div className="px-4">
-    <p>
+  <>
+    <Body size='sm'>
       Depuis dix ans, 24 000 hectares d’espaces naturels, agricoles et
       forestiers disparaissent chaque année sous le béton, soit 10
       fois la superficie de Marseille. Depuis les années 1980, les
       surfaces artificialisées ont augmenté de 70 %, un rythme bien
       supérieur à celui de la population française (+19 %). Pire,
       elles progressent, même là où la population diminue.
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       En périphérie des villes, l’étalement urbain allonge les trajets
       domicile-travail, renforce la dépendance à la voiture et
       augmente les émissions de gaz à effet de serre. Chaque hectare
       artificialisé libère jusqu’à 190 tonnes de CO2, soit l’empreinte
       carbone annuelle de 20 Français.
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       ⇒ 43 % de la consommation d'espace a lieu dans des zones
       péri-urbaines peu denses
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       ⇒ 66 % des ENAF consommés sont destinées à l’habitat dont plus
       de la moitié (51 %) est constitué de constructions de moins de 8
       logements par hectare
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       ⇒ 7 820 communes consomment de l’espace alors qu’elles perdent
       des ménages : une consommation d’ENAF déconnectée des besoins
       réels des territoires !
-    </p>
-  </div>
+    </Body>
+  </>
 );
 
 export const ConsommationEspacesNAFBiodiversiteText = () => (
-  <div className="px-4">
-    <p>
+  <>
+    <Body size='sm'>
       L'artificialisation des sols constitue l’une des premières causes
       de l’effondrement de la biodiversité. Elle porte atteinte aux
       processus naturels essentiels, comme la pollinisation, fragmente
       voire détruit les habitats et isole les espèces. Elle participe
       en outre à une homogénéisation de la biodiversité qui affecte la
       résilience des milieux.
-    </p>
+    </Body>
     <div>
-      <p>
+      <Body size='sm'>
         La consommation d’ENAF a des conséquences dramatiques pour le
         climat :
-      </p>
+      </Body>
       <ul className="text-[1rem] leading-[1.5rem]">
         <li>
-          Les sols perdent leur rôle de puits de carbone et leur
-          capacité d’infiltration ce qui perturbe le cycle naturel de
-          l'eau, avec pour corollaire une réduction de la recharges
-          des nappes, une réduction du stockage de l’eau dans les sols
-          et une aggravation des risques d’inondations.
+          <Body size='sm'>
+            Les sols perdent leur rôle de puits de carbone et leur
+            capacité d’infiltration ce qui perturbe le cycle naturel de
+            l'eau, avec pour corollaire une réduction de la recharges
+            des nappes, une réduction du stockage de l’eau dans les sols
+            et une aggravation des risques d’inondations.
+          </Body>
         </li>
         <li>
-          En détruisant le milieu de vie des micro-organismes des
-          sols, l’artificialisation réduit drastiquement les capacités
-          épuratoires des milieux.
+          <Body size='sm'>
+            En détruisant le milieu de vie des micro-organismes des
+            sols, l’artificialisation réduit drastiquement les capacités
+            épuratoires des milieux.
+          </Body>
         </li>
       </ul>
     </div>
-    <p>
+    <Body size='sm'>
       ⇒ 24 000 hectares par an d’espaces naturels, agricoles et
       forestiers sont consommés depuis dix ans, soit l’équivalent de
       10 fois la superficie de Marseille.
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       ⇒ Avec 446 m² de terres artificialisées consommées par habitant,
       la France se place au 4e rang européen.
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       ⇒ Un hectare de sol artificialisé libère jusqu’à 190 tonnes de
       CO2, soit l’empreinte carbone annuelle de 20 Français.
-    </p>
-  </div>
+    </Body>
+  </>
 );
 
 export const SurfacesEnBioText = () => (
-  <div className="px-4">
-    <p>
+  <div className="pr-5">
+    <Body size='sm'>
       L'effondrement de la biodiversité n’est pas une fiction : 69 %
       des espèces sauvages ont disparu à l'échelle de la planète entre
       1970 et 2018, du fait notamment de la dégradation ou de la
@@ -323,8 +326,8 @@ export const SurfacesEnBioText = () => (
       non-utilisation d'OGM, le recyclage des matières organiques, la
       rotation des cultures et la lutte biologique participent à ces
       deux objectifs.
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       Si l’agriculture biologique n’est pas une solution parfaite,
       elle reste aujourd’hui l’une des meilleures réponses, aux côtés
       des pratiques à bas-intrants, pour préserver la biodiversité.
@@ -332,41 +335,41 @@ export const SurfacesEnBioText = () => (
       effets positifs sur la vie souterraine sont avérés. Des
       écosystèmes renforcés sont des écosystèmes plus résilients aux
       impacts du changement climatique.
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       ⇒ Une biodiversité plus riche dans les parcelles en agriculture
       biologique : +32 % d'individus et +23 % d'espèces par rapport à
       l’agriculture conventionnelle.
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       ⇒ 70 % des indicateurs biologiques des sols s'améliorent après
       conversion.
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       ⇒ Une pollinisation 2,4 fois plus efficace qu'en agriculture
       conventionnelle.
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       ⇒ Une meilleure résistance à la sécheresse : disponibilité en
       eau dans les sols améliorée de 4 % à 45 %.
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       ⇒ Jusqu'à 35 % de carbone supplémentaire stocké dans les sols.
-    </p>
+    </Body>
   </div>
 );
 
 export const SurfacesEnBioAgricultureText = () => (
-  <div className="px-4">
-    <p>
+  <div>
+    <Body size='sm'>
       Les défis de l’agriculture sont doubles : réduire ses émissions
       de gaz à effet de serre et s'adapter aux impacts du changement
       climatique : l’intensification des sécheresses menaçant la disponibilité
       en eau, la dégradation des sols, etc. Face à ces enjeux, l'agriculture
       biologique, même si elle n’est pas la solution parfaite, apporte des
       réponses concrètes, aux côtés de l'agroforesterie et des cultures à bas intrants.
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       Le bio renforce la résistance des exploitations agricoles. Comment ? Par
       la non-utilisation des produits chimiques de synthèse et des OGM.
       Grâce au recyclage des matières organiques. Par la rotation des cultures.
@@ -377,13 +380,13 @@ export const SurfacesEnBioAgricultureText = () => (
       plus d'exploitations bio résiste mieux aux aléas climatiques. Enfin, à
       surface égale, les cultures biologiques végétales émettent 50 % de gaz
       à effet de serre en moins que les cultures conventionnelles.
-    </p>
-    <p>
+    </Body>
+    <Body size='sm'>
       - - - - <br></br>
       Le Plan national d’adaptation au changement climatique (PNACC 3)
       prévoit d’accompagner les agriculteurs pour assurer la résilience de
       leur exploitation (mesure 37).
-    </p>
+    </Body>
   </div>
 );
 
@@ -781,8 +784,8 @@ export const RGAText = () => (
 );
 
 export const SurfacesAgricolesText = () => (
-  <div className="px-4">
-    <p>
+  <>
+    <Body size="sm">
       En 2020, près de deux tiers des terres agricoles françaises étaient
       consacrées aux terres arables : grandes cultures, légumes, mais aussi
       cultures fourragères destinées à l’élevage. Un tiers correspondait
@@ -793,29 +796,29 @@ export const SurfacesAgricolesText = () => (
       des pertes liées aux aléas climatiques : gel printanier sur les
       abricotiers, mildiou ou sécheresse sur la vigne, excès d’eau sur
       le maraîchage.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       Ces pertes illustrent les limites d’un système agricole encore
       souvent spécialisé, peu préparé à absorber des chocs climatiques
       répétés. Un seul aléa suffit parfois à compromettre plusieurs années
       de revenus.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       La diversification est l’une des voies possibles pour renforcer la
       résilience des territoires agricoles. Si l’agriculture de votre
       territoire repose surtout sur une ou deux cultures, quelle marge
       de résilience reste-t-il face aux aléas climatiques ?
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ Près de 49 % de la surface agricole utile est mobilisée pour l’élevage.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ Les jachères agricoles ont reculé de 29 % entre 2010 et 2020.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ En 2024, la production viticole a chuté de 18 % par rapport à la moyenne 2019-2023.
-    </p>
-  </div>
+    </Body>
+  </>
 )
 
 export const LCZText = () => (

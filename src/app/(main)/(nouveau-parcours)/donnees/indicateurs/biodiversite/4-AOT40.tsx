@@ -29,7 +29,7 @@ const color = (valeur: number) => {
             : '#5EEDF3';
 };
 
-const getCentroid = (arr: number[][]) => {
+const getInverseCentroid = (arr: number[][]) => {
   const centroid = arr?.reduce(
     (x: number[], y: number[]) => {
       return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
@@ -39,13 +39,23 @@ const getCentroid = (arr: number[][]) => {
   return [centroid[1], centroid[0]];
 };
 
+const getNormalCentroid = (arr: number[][]) => {
+  const centroid = arr?.reduce(
+    (x: number[], y: number[]) => {
+      return [x[0] + y[0] / arr.length, x[1] + y[1] / arr.length];
+    },
+    [0, 0]
+  );
+  return centroid;
+};
+
 const getCoordinates = (coords: number[][][]) => {
   const coords_arr = [];
   for (let i = 0; i < coords.length; i++) {
-    const center = getCentroid(coords[i]);
+    const center = getInverseCentroid(coords[i]);
     coords_arr.push(center);
   }
-  return getCentroid(coords_arr);
+  return getNormalCentroid(coords_arr);
 };
 
 export const OzoneEtVegetation = (props: {
@@ -129,35 +139,35 @@ export const OzoneEtVegetation = (props: {
         Concentration d’ozone pendant la période de végétation (moyenne 2020-2024)
       </H3>
       <div className={styles.datavizMapContainer}>
-        <p>
+        <Body size='sm'>
           La pollution à l’ozone ne s'arrête pas aux frontières des
           agglomérations. Portée par le vent, la dispersion peut s’étendre
           sur plusieurs centaines de kilomètres. Même les territoires
           éloignés des sources de pollution en subissent les effets.
-        </p>
+        </Body>
         {maxValueInStations == null ? (
-          <p>
+          <Body size='sm'>
             Nous ne disposons pas de données pour les stations proches de
             votre territoire
-          </p>
+          </Body>
         ) : maxValueInStations < 6000 ? (
-          <p>
+          <Body size='sm'>
             Bravo, le seuil de 6 000 µg/m³ par heure fixé comme objectif
             pour 2050 est déjà atteint. Ne relâchez pas vos efforts.
-          </p>
+          </Body>
         ) : maxValueInStations > 18000 ? (
-          <p>
+          <Body size='sm'>
             Le cumul d’ozone enregistré ces 5 dernières années pendant la
             période de végétation ({Round(maxValueInStations, 0)} µg/m³)
             risque d’engendrer des réactions de la part des végétaux de
             votre territoire.
-          </p>
+          </Body>
         ) : (
-          <p>
+          <Body size='sm'>
             Le seuil actuel de protection de la végétation de 18 000 µg/m³
             par heure n’est pas franchi. Poursuivez vos efforts,
             l’objectif fixé pour 2050 est de 6 000 µg/m³ par heure.
-          </p>
+          </Body>
         )}
         <div className={styles.mapWrapper}>
           {
