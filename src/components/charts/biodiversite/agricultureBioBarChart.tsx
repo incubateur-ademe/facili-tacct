@@ -77,7 +77,7 @@ export const AgricultureBioBarChart = (
   ]
 
   return (
-    <div style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
+    <div style={{ height: "450px", minWidth: "450px", backgroundColor: "white" }}>
       {graphData && graphData.length ?
         <NivoBarChart
           colors={legends.map(e => e.couleur)}

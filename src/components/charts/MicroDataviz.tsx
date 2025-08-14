@@ -270,6 +270,130 @@ export const MicroRemplissageTerritoire = (props: {
   );
 };
 
+export const MicroChiffreTerritoire = (props: {
+  territoireContours: CommunesContoursDto[];
+  value: number;
+  unit: string;
+  height?: number;
+  arrondi?: number;
+}) => {
+  const { territoireContours, value, unit, height = 120, arrondi = 0 } = props;
+  const mapRef = useRef<L.Map | null>(null);
+  const [bounds, setBounds] = useState<number[]>([0, 0, 0, 0]);
+  const south = bounds[1];
+  const north = bounds[3];
+  const west = bounds[0];
+  const east = bounds[2];
+  const hauteurTerritoire = north - south;
+  const largeurTerritoire = east - west;
+
+  // Amélioration du calcul des dimensions
+  const aspectRatio = largeurTerritoire / hauteurTerritoire;
+
+  // Calcul plus précis pour que le territoire remplisse vraiment l'espace
+  let containerWidth: number;
+  let containerHeight: number;
+
+  // On force toujours la hauteur à être celle demandée
+  containerHeight = height;
+
+  if (aspectRatio > 1) {
+    // Territoire plus large que haut - on calcule la largeur proportionnellement
+    containerWidth = containerHeight * aspectRatio;
+  } else {
+    // Territoire plus haut que large - on utilise un ratio ajusté
+    containerWidth = Math.max(containerHeight * aspectRatio * 0.8, 80); // Largeur min de 80px
+  }
+
+  // Assurer des dimensions minimales
+  containerWidth = Math.max(50, containerWidth);
+  containerHeight = Math.max(50, containerHeight);
+
+  const geojsonObject = L.geoJSON(
+    territoireContours as unknown as GeoJsonObject
+  );
+
+  useEffect(() => {
+    setBounds(geojsonObject.getBounds().toBBoxString().split(',').map(Number));
+  }, [territoireContours]);
+  const union =
+    territoireContours.length > 1
+      ? turf.union(
+        turf.featureCollection(
+          territoireContours as Feature<
+            Polygon | MultiPolygon,
+            GeoJsonProperties
+          >[]
+        )
+      )
+      : territoireContours[0];
+
+  return (
+    <>
+      {bounds[0] != 0 ? (
+        <div style={{
+          width: `${containerWidth}px`,
+          height: `${containerHeight}px`,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <MapContainer
+            ref={mapRef}
+            style={{
+              height: '100%',
+              width: '100%',
+              backgroundColor: 'transparent',
+            }}
+            attributionControl={false}
+            zoomControl={false}
+            scrollWheelZoom={false}
+            dragging={false}
+            bounds={[
+              [bounds[1], bounds[0]],
+              [bounds[3], bounds[2]]
+            ]}
+            boundsOptions={{
+              padding: [0, 0],
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignSelf: 'center',
+                zIndex: '501',
+                margin: 'auto',
+                backgroundColor: 'white',
+                padding: '0.1rem 0.3rem',
+                borderRadius: '0.5rem',
+                position: 'relative',
+                marginTop: `${containerHeight / 2.4}px`,
+                boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px',
+                width: 'fit-content',
+              }}
+            >
+              <Body>
+                {Round(value, arrondi)} {unit}
+              </Body>
+            </div>
+            <GeoJSON
+              data={union as unknown as GeoJsonObject}
+              style={{
+                color: 'transparent',
+                weight: 1,
+                fillColor: couleurs.gris.dark,
+                fillOpacity: 1,
+                opacity: 1
+              }}
+            />
+          </MapContainer>
+        </div>
+      ) : (
+        ""
+      )}
+    </>
+  );
+};
 
 
 export const MicroRemplissageTerritoireMapLibre = (props: {

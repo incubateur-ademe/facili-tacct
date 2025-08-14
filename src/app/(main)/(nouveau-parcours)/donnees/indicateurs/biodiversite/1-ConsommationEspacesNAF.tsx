@@ -1,6 +1,7 @@
 'use client';
 
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { MicroChiffreTerritoire } from '@/components/charts/MicroDataviz';
 import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { BoundsFromCollection } from '@/components/maps/components/boundsFromCollection';
@@ -38,7 +39,6 @@ export const ConsommationEspacesNAF = (props: {
     };
   });
   const communesMap = carteCommunesEnriched.map(CommunesIndicateursMapper);
-
   const carteCommunesFiltered = communesMap.filter(
     (el) => el.properties.naf != undefined
   )
@@ -47,8 +47,6 @@ export const ConsommationEspacesNAF = (props: {
     ? consommationNAF.filter((item) => item.code_geographique === code)[0]
       ?.naf09art23
     : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
-
-
   const exportData = IndicatorExportTransformations.biodiversite.EspacesNaf(consommationNAF);
 
   return (
@@ -58,7 +56,12 @@ export const ConsommationEspacesNAF = (props: {
       </H3>
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper}>
-          <Body>LA CHIFFRE EST UN HA</Body>
+          <MicroChiffreTerritoire
+            value={sumNaf / 10000}
+            unit="ha"
+            arrondi={1}
+            territoireContours={carteCommunesFiltered}
+          />
           <div className={styles.text}>
             {
               sumNaf && sumNaf !== 0 ? (
@@ -75,7 +78,9 @@ export const ConsommationEspacesNAF = (props: {
             />
           </div>
         </div>
-        <Body><ConsommationEspacesNAFBiodiversiteText /></Body>
+        <div className='mt-4'>
+          <ConsommationEspacesNAFBiodiversiteText />
+        </div>
         <div className={styles.mapWrapper}>
           {
             carteCommunes.length !== 0 && enveloppe && carteCommunesFiltered !== null ? (

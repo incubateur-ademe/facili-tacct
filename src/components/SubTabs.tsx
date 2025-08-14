@@ -2,11 +2,11 @@
 
 import activiteIconBlack from '@/assets/icons/activite_icon_black.svg';
 import activiteIconWhite from '@/assets/icons/activite_icon_white.svg';
-import camembertIconBlack from '@/assets/icons/camembert_icon_black.svg';
+import camembertIconGreen from '@/assets/icons/camembert_icon_green.svg';
 import camembertIconWhite from '@/assets/icons/camembert_icon_white.svg';
-import cartographieIconBlack from '@/assets/icons/cartographie_icon_black.svg';
+import cartographieIconGreen from '@/assets/icons/cartographie_icon_green.svg';
 import cartographieIconWhite from '@/assets/icons/cartographie_icon_white.svg';
-import evolutionIconBlack from '@/assets/icons/evolution_icon_black.svg';
+import evolutionIconGreen from '@/assets/icons/evolution_icon_green.svg';
 import evolutionIconWhite from '@/assets/icons/evolution_icon_white.svg';
 import habitatIconBlack from '@/assets/icons/habitat_icon_black.svg';
 import habitatIconWhite from '@/assets/icons/habitat_icon_white.svg';
@@ -32,22 +32,22 @@ interface Props {
 const tabIcons = [
   {
     name: 'Répartition',
-    iconNotSelected: camembertIconBlack,
+    iconNotSelected: camembertIconGreen,
     iconSelected: camembertIconWhite
   },
   {
     name: 'Comparaison',
-    iconNotSelected: evolutionIconBlack,
+    iconNotSelected: evolutionIconGreen,
     iconSelected: evolutionIconWhite
   },
   {
     name: 'Évolution',
-    iconNotSelected: evolutionIconBlack,
+    iconNotSelected: evolutionIconGreen,
     iconSelected: evolutionIconWhite
   },
   {
     name: 'Cartographie',
-    iconNotSelected: cartographieIconBlack,
+    iconNotSelected: cartographieIconGreen,
     iconSelected: cartographieIconWhite
   },
   {
@@ -110,7 +110,7 @@ const SubTabs = ({
 
   //set BoutonPrimaireClassic for the selected button & set BoutonSecondaireClassic for the unselected buttons
   return (
-    <div>
+    <>
       {data.map((element, i) => {
         const isSelected = selectedSubTab === element;
         const ButtonComponent = isSelected
@@ -130,7 +130,7 @@ const SubTabs = ({
           />
         );
       })}
-    </div>
+    </>
   );
 };
 

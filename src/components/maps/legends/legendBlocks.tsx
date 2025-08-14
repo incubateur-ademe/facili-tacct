@@ -26,7 +26,7 @@ export const LegendBlockIcons: React.FC<{
       <div className={styles.legenIcon}>
         <Image src={icon} alt="" />
       </div>
-      <p>{value}</p>
+      <Body size='sm'>{value}</Body>
     </div>
   );
 };

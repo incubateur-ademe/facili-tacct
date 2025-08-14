@@ -2,7 +2,7 @@
 import SurfacesEnBioCharts from "@/components/charts/biodiversite/surfacesEnBioCharts";
 import { MicroPieChart } from "@/components/charts/MicroDataviz";
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
-import { SurfacesEnBioText } from "@/components/themes/inconfortThermique/staticTexts";
+import { SurfacesEnBioAgricultureText } from "@/components/themes/inconfortThermique/staticTexts";
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { ReadMoreFade } from "@/components/utils/ReadMoreFade";
 import { Body, H3 } from "@/design-system/base/Textes";
@@ -77,7 +77,7 @@ export const SurfacesEnBio = (props: {
             <MicroPieChart pourcentage={pourcentageTotal} arrondi={1} ariaLabel="Surface certifiée bio ou en conversion" />
             {agricultureBio.length ?
               <>
-                <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                <Body weight='bold' style={{ color: "var(--gris-dark)", marginBottom: "-1rem" }}>
                   {
                     type === "commune" || type === "departement" || type === "pnr" || type === "petr"
                       ? <>Cette donnée n’est disponible qu’à l’échelle de votre EPCI.<br /></>
@@ -103,13 +103,15 @@ export const SurfacesEnBio = (props: {
                     </>
                   )
                 }
+
+
               </>
               : ""
             }
             <CustomTooltipNouveauParcours title={agricultureBioTooltipText} texte="D'où vient ce chiffre ?" />
           </div>
-          <ReadMoreFade maxHeight={400}>
-            <SurfacesEnBioText />
+          <ReadMoreFade maxHeight={300}>
+            <SurfacesEnBioAgricultureText />
           </ReadMoreFade>
         </div>
         <div className={styles.datavizWrapper} style={{ borderRadius: "1rem 0 0 1rem", height: "fit-content" }}>
