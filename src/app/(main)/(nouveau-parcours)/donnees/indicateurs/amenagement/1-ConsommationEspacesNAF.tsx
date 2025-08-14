@@ -1,11 +1,13 @@
 'use client';
 
 import { ConsommationEspacesNAFCharts } from '@/components/charts/amenagement/consommationEspacesNAFCharts';
+import { MicroChiffreTerritoire } from '@/components/charts/MicroDataviz';
 import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import { ConsommationEspacesNAFAmenagementText } from '@/components/themes/inconfortThermique/staticTexts';
 import { CustomTooltipNouveauParcours } from '@/components/utils/CalculTooltip';
 import { Body, H3 } from '@/design-system/base/Textes';
-import { ConsommationNAF } from '@/lib/postgres/models';
+import { CommunesContourMapper } from '@/lib/mapper/communes';
+import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
 import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
 import { consommationEspacesNafDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
@@ -15,8 +17,9 @@ import styles from '../../explorerDonnees.module.scss';
 
 export const ConsommationEspacesNAFAmenagement = (props: {
   consommationNAF: ConsommationNAF[];
+  carteCommunes: CarteCommunes[];
 }) => {
-  const { consommationNAF } = props;
+  const { consommationNAF, carteCommunes } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -26,6 +29,8 @@ export const ConsommationEspacesNAFAmenagement = (props: {
     ? consommationNAF.filter((item) => item.code_geographique === code)[0]
       ?.naf09art23
     : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
+  const territoireContourMap = carteCommunes.map(CommunesContourMapper);
+
   return (
     <>
       <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
@@ -34,12 +39,12 @@ export const ConsommationEspacesNAFAmenagement = (props: {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            {/* <MicroChiffreTerritoire
-            value={sumNaf / 10000}
-            unit="ha"
-            arrondi={1}
-            territoireContours={carteCommunesFiltered}
-          /> */}
+            <MicroChiffreTerritoire
+              value={sumNaf / 10000}
+              unit="ha"
+              arrondi={1}
+              territoireContours={territoireContourMap}
+            />
             <div className={styles.text}>
               {
                 sumNaf && sumNaf !== 0 ? (

@@ -1,3 +1,4 @@
+import { Body } from "@/design-system/base/Textes";
 import { Round } from "@/lib/utils/reusableFunctions/round";
 import { BarDatum, BarTooltipProps } from "@nivo/bar";
 import { espacesNAFBarChartLegend, RgaEvolutionLegend, RgaRepartitionLegend } from "../maps/legends/datavizLegends";
@@ -82,11 +83,14 @@ export const espacesNAFBarChartTooltip = ({ data }: BarTooltipProps<BarDatum>) =
     return {
       titre: el[0],
       value: el[1],
-      color: espacesNAFBarChartLegend.find(e => e.variable === el[0])?.couleur
+      color: espacesNAFBarChartLegend.find(e => e.value === el[0])?.color
     };
   });
   return (
     <div className={styles.tooltipEvolutionWrapper}>
+      <Body weight='bold' size='sm' style={{ marginBottom: '0.5rem' }}>
+        Années {dataArray.at(-1)?.value}
+      </Body>
       {dataArray.slice(0, -1).map((el, i) => {
         return (
           <div className={styles.itemWrapper} key={i}>

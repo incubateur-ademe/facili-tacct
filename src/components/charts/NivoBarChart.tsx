@@ -337,11 +337,11 @@ export const NivoBarChartCatnat = ({
         showLegend
           ? {
             top: 40,
-            right: 80,
+            right: 100,
             bottom: legendData && legendData.length >= 4 ? 120 : 80,
             left: 80
           }
-          : { top: 40, right: 80, bottom: 80, left: 80 }
+          : { top: 40, right: 100, bottom: 80, left: 80 }
       }
       groupMode={groupMode}
       padding={0.3}

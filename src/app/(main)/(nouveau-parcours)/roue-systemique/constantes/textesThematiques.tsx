@@ -52,13 +52,13 @@ export const sommaireThematiques = {
         id: "section1",
         thematique: "Aménagement",
         icone: "🏗️",
-        sousCategories: ["Arrêtés CatNat", "Érosion côtière", "Retrait-gonflement des argiles"]
+        sousCategories: ["Arrêtés CatNat", "Retrait-gonflement des argiles", "Érosion côtière"]
       },
       {
         id: "section2",
         thematique: "Forêts",
         icone: "🌳",
-        sousCategories: ["Incendies de forêt"]
+        sousCategories: ["Feux de forêt"]
       },
     ]
   },
@@ -97,6 +97,22 @@ export const sommaireThematiques = {
         thematique: "Santé",
         icone: "🏥",
         sousCategories: ["LCZ"]
+      },
+    ]
+  },
+  "Eau": {
+    thematiquesLiees: [
+      {
+        id: "section1",
+        thematique: "Biodiversité",
+        icone: '🌼',
+        sousCategories: ["État écologique des cours d'eau"]
+      },
+      {
+        id: "section2",
+        thematique: "Santé",
+        icone: "🏥",
+        sousCategories: ["Ressources en eau"]
       },
     ]
   }
@@ -171,7 +187,7 @@ export const thematiquesInfo: {
   Eau: {
     title: 'Eau',
     description: (<div></div>),
-    link: 'Ressources en eau'
+    link: 'Eau'
   },
   Biodiversité: {
     title: 'Biodiversité',

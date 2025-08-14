@@ -118,7 +118,7 @@ const SubTabs = ({
           : BoutonSecondaireClassic;
         return (
           <ButtonComponent
-            size="sm"
+            size="xs"
             key={i}
             onClick={() => {
               setSelectedSubTab(element ? element : '');

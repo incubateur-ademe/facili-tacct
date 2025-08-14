@@ -1,15 +1,18 @@
 "use client";
 import HautDePageIcon from '@/assets/icons/haut_de_page_icon_white.svg';
-import DiagnoticImage from '@/assets/images/diagnostiquer_impacts.png';
-import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
+import { LoaderText } from '@/components/loader';
 import { Body, H1, H2 } from "@/design-system/base/Textes";
-import { handleRedirectionThematique } from "@/hooks/Redirections";
-import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet } from "@/lib/postgres/models";
+import useWindowDimensions from '@/hooks/windowDimensions';
+import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { sommaireThematiques } from "../../../roue-systemique/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
+import { ArretesCatnat } from '../../indicateurs/gestionDesRisques/1-ArretesCatnat';
+import { RetraitGonflementDesArgiles } from '../../indicateurs/gestionDesRisques/2-RetraitGonflementDesArgiles';
+import { ErosionCotiereComp } from '../../indicateurs/gestionDesRisques/3-ErosionCotiere';
+import { FeuxDeForet } from '../../indicateurs/gestionDesRisques/4-FeuxDeForet';
 
 interface Props {
   gestionRisques: ArreteCatNat[];
@@ -29,7 +32,12 @@ export const DonneesGestionRisques = ({
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
+  const [rgaCarte, setRgaCarte] = useState<RGACarte[]>([]);
+  const [rga, setRga] = useState<RGAdb[]>([]);
+  const [rgaCarteLoading, setRgaCarteLoading] = useState(false);
+  const [loadingRga, setLoadingRga] = useState(false);
   const ongletsMenu = sommaireThematiques[thematique];
+  const windowDimensions = useWindowDimensions();
 
   useEffect(() => {
     const style = document.createElement('style');
@@ -43,6 +51,25 @@ export const DonneesGestionRisques = ({
       document.head.removeChild(style);
     };
   }, []);
+
+  useEffect(() => {
+    if (rga.length === 0 && rgaCarte.length === 0) {
+      setLoadingRga(true);
+      setRgaCarteLoading(true);
+      fetch(`/api/rga?code=${code}&libelle=${libelle}&type=${type}`)
+        .then(res => res.json())
+        .then(data => {
+          setRga(data.rga);
+          setRgaCarte(data.rgaCarte);
+        })
+        .finally(() => {
+          setLoadingRga(false);
+          setRgaCarteLoading(false);
+        }
+        );
+    }
+  }, [code, libelle, type]);
+
   return (
     <>
       <div className={styles.retourHautDePageWrapper}>
@@ -76,61 +103,56 @@ export const DonneesGestionRisques = ({
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
           {/* Arrêtés catnat */}
-          <div id="Arrêtés catnat" className={styles.indicateurWrapper}>
+          <div id="Arrêtés catnat" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+            <ArretesCatnat
+              gestionRisques={gestionRisques}
+              carteCommunes={carteCommunes}
+            />
+          </div>
 
+          {/* Retrait-gonflement des argiles */}
+          <div id="Retrait-gonflement des argiles" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+            {(loadingRga || rgaCarteLoading) ? (
+              <div style={{
+                position: 'relative',
+                minHeight: '40dvh',
+                width: windowDimensions.width && windowDimensions.width > 1248 ? 1248 : windowDimensions.width
+              }}
+              >
+                <div className={styles.loaderTextWrapperStyle}>
+                  <LoaderText text="Nous chargeons vos données" />
+                </div>
+              </div>
+            ) : (
+              <RetraitGonflementDesArgiles
+                rgaCarte={rgaCarte}
+                carteCommunes={carteCommunes}
+                rga={rga}
+              />
+            )}
+          </div>
+
+          {/* Érosion côtière */}
+          <div id="Érosion côtière" className={styles.indicateurWrapper}>
+            <ErosionCotiereComp
+              erosionCotiere={erosionCotiere}
+              carteCommunes={carteCommunes}
+            />
           </div>
         </section>
 
-        {/* Section  */}
+        {/* Section Forêts */}
         <section className={styles.sectionType}>
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
-          {/* État  */}
-          <div id="" className={styles.indicateurWrapper}>
-
-          </div>
-        </section>
-
-        {/* Section  */}
-        <section className={styles.sectionType}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
-            {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
-          </H2>
-          {/*  */}
-          <div id="" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
-
-          </div>
-          {/*  */}
-          <div id="" className={styles.indicateurWrapper}>
-
-          </div>
-        </section>
-        <div className={styles.redirectionEtape2Wrapper} >
-          <Image
-            src={DiagnoticImage}
-            alt=""
-            style={{ width: '100%', height: 'auto', maxWidth: "180px" }}
-          />
-          <div className={styles.textBloc} >
-            <Body style={{ fontSize: "20px", color: "var(--gris-dark)", fontWeight: 700, maxWidth: "700px" }}>
-              Ces pistes d'investigation en main, partez découvrir sur le
-              terrain comment votre territoire vit concrètement les enjeux des risques.
-            </Body>
-            <BoutonPrimaireClassic
-              size='lg'
-              text='Diagnostiquer les impacts'
-              link={handleRedirectionThematique({
-                code: code,
-                libelle: libelle,
-                type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
-                page: 'impacts',
-                thematique: "Biodiversité",
-                anchor: ""
-              })}
+          {/* Faux de forêt */}
+          <div id="Feux de forêt" className={styles.indicateurWrapper}>
+            <FeuxDeForet
+              incendiesForet={incendiesForet}
             />
           </div>
-        </div>
+        </section>
       </div>
     </>
   );

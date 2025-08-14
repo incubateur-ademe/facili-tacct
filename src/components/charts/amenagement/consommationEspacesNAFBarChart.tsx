@@ -94,10 +94,12 @@ export const ConsommationEspacesNAFBarChart = (props: {
     const { annee, ...numericValues } = obj;
     return total + Object.values(numericValues).reduce((sum, val) => sum + val, 0);
   }, 0);
+  const minValueXTicks = graphData.map(e => e.annee).at(0);
+  const maxValueXTicks = graphData.map(e => e.annee).at(-1);
 
   return (
     <div
-      style={{ height: '500px', minWidth: '450px', backgroundColor: 'white' }}
+      style={{ height: '500px', width: '100%', backgroundColor: 'white' }}
     >
       {
         sumAllValues !== 0 ?
@@ -110,6 +112,11 @@ export const ConsommationEspacesNAFBarChart = (props: {
             axisBottomLegend="Années"
             showLegend={false}
             tooltip={espacesNAFBarChartTooltip}
+            bottomTickValues={
+              minValueXTicks != maxValueXTicks
+                ? [`${minValueXTicks}`, `${maxValueXTicks}`]
+                : [`${minValueXTicks}`]
+            }
           />
           : <div
             style={{

@@ -1,6 +1,7 @@
 'use client';
 
 import styles from '@/components/themes/ressourcesEau/ressourcesEau.module.scss';
+import { Body } from '@/design-system/base/Textes';
 import { RessourcesEau } from '@/lib/postgres/models';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { BarDatum, BarTooltipProps } from '@nivo/bar';
@@ -171,9 +172,9 @@ const PrelevementEauBarChart = ({
     });
     return (
       <div className={styles.tooltipEvolutionWrapper}>
-        <h3>
+        <Body weight='bold' size='sm' style={{ marginBottom: '0.5rem' }}>
           {libelle} ({dataArray.at(-1)?.value})
-        </h3>
+        </Body>
         {dataArray.slice(0, -1).map((el, i) => {
           return (
             <div className={styles.itemWrapper} key={i}>

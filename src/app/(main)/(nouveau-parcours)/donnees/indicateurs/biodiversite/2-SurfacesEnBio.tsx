@@ -108,7 +108,7 @@ export const SurfacesEnBio = (props: {
             }
             <CustomTooltipNouveauParcours title={agricultureBioTooltipText} texte="D'où vient ce chiffre ?" />
           </div>
-          <ReadMoreFade maxHeight={400}>
+          <ReadMoreFade maxHeight={300}>
             <SurfacesEnBioText />
           </ReadMoreFade>
         </div>

@@ -6,6 +6,12 @@
     position: relative;
 }
 
+.dataWrapper {
+    .legend {
+        padding: 0.5rem;
+    }
+}
+
 .barLineTooltipContainer {
     background: white;
     padding: 1rem;
@@ -39,4 +45,24 @@
             background-color: #038278;
         }
     }
+}
+
+// onglets de navigation en dataviz + filtres
+
+.graphTabsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 1.25rem;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--gris-medium);
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.sliderWrapper {
+    display: flex;
+    padding: 1.25rem 2.25rem;
+    width: 100%;
+    border-bottom: 1px solid var(--gris-medium);
 }

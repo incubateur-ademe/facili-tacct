@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { sommaireThematiques } from "../../../roue-systemique/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { ConsommationEspacesNAFAmenagement } from '../../indicateurs/amenagement/1-ConsommationEspacesNAF';
+import { LCZ } from '../../indicateurs/amenagement/2-LCZ';
 
 interface Props {
   carteCommunes: CarteCommunes[];
@@ -71,18 +72,23 @@ export const DonneesAmenagement = ({
           </H2>
           {/* Consommation d'espaces NAF */}
           <div id="Consommation d'espaces NAF" className={styles.indicateurWrapper}>
-            <ConsommationEspacesNAFAmenagement consommationNAF={consommationNAF} />
+            <ConsommationEspacesNAFAmenagement
+              consommationNAF={consommationNAF}
+              carteCommunes={carteCommunes}
+            />
           </div>
         </section>
 
-        {/* Section  */}
+        {/* Section Santé */}
         <section className={styles.sectionType}>
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
-          {/* État  */}
-          <div id="" className={styles.indicateurWrapper}>
-
+          {/* État LCZ */}
+          <div id="LCZ" className={styles.indicateurWrapper}>
+            <LCZ
+              carteCommunes={carteCommunes}
+            />
           </div>
         </section>
       </div>

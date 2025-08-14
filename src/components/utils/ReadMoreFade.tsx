@@ -11,8 +11,10 @@ export const ReadMoreFade: React.FC<ReadMoreFadeProps> = ({ children, maxHeight 
   const [showButton, setShowButton] = useState(false);
   const [currentHeight, setCurrentHeight] = useState<number | undefined>(maxHeight);
   const [overflow, setOverflow] = useState<'hidden' | 'visible'>('hidden');
+  const [showFade, setShowFade] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
-  const transitionDuration = 2000; // ms, doit matcher le CSS
+  const transitionDuration = 1000; // ms, doit matcher le CSS
 
   useEffect(() => {
     if (contentRef.current) {
@@ -22,13 +24,15 @@ export const ReadMoreFade: React.FC<ReadMoreFadeProps> = ({ children, maxHeight 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [children, maxHeight]);
 
-  // Animation ouverture/fermeture
+  // Animation ouverture/fermeture + gestion du fade
   useEffect(() => {
     let timer: NodeJS.Timeout | undefined;
     if (expanded && contentRef.current) {
       // OUVERTURE
       setOverflow('hidden');
       setCurrentHeight(maxHeight); // start from collapsed
+      setShowFade(true);
+      setFadeOut(true); // lance l'animation de disparition du fade
       setTimeout(() => {
         if (contentRef.current) {
           setCurrentHeight(contentRef.current.scrollHeight);
@@ -37,17 +41,17 @@ export const ReadMoreFade: React.FC<ReadMoreFadeProps> = ({ children, maxHeight 
       timer = setTimeout(() => {
         setOverflow('visible');
         setCurrentHeight(undefined); // none
+        setShowFade(false); // retire le fade du DOM
+        setFadeOut(false);
       }, transitionDuration + 20);
     } else if (!expanded && contentRef.current) {
       // FERMETURE
       setOverflow('hidden');
       setCurrentHeight(contentRef.current.scrollHeight); // start from expanded
+      setShowFade(true);
+      setFadeOut(false);
       setTimeout(() => {
         setCurrentHeight(maxHeight);
-        // attendre la fin de la transition avant de toucher à overflow/maxHeight
-        timer = setTimeout(() => {
-          setCurrentHeight(maxHeight);
-        }, transitionDuration + 20);
       }, 20);
     }
     return () => { if (timer) clearTimeout(timer); };
@@ -62,7 +66,7 @@ export const ReadMoreFade: React.FC<ReadMoreFadeProps> = ({ children, maxHeight 
           style={{
             maxHeight: currentHeight,
             overflow,
-            transition: 'max-height 1s cubic-bezier(0.4,0,0.2,1)'
+            transition: `max-height ${transitionDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`
           }}
         >
           {children}
@@ -74,14 +78,16 @@ export const ReadMoreFade: React.FC<ReadMoreFadeProps> = ({ children, maxHeight 
             </div>
           )}
         </div>
-        {!expanded && showButton && (
-          <div className={styles.fadeOverlay} />
+        {showFade && showButton && (
+          <div className={styles.fadeOverlay + (fadeOut ? ' ' + styles.fadeOverlayOut : '')} />
         )}
       </div>
       {!expanded && showButton && (
-        <button className={styles.readMoreButton} onClick={() => setExpanded(true)}>
-          Lire la suite
-        </button>
+        <div className={styles.readMoreButtonWrapper}>
+          <button className={styles.readMoreButton} onClick={() => setExpanded(true)}>
+            Lire la suite
+          </button>
+        </div>
       )}
     </>
   );

@@ -90,7 +90,7 @@ export const BoutonPrimaireClassic = ({
 }: {
   link?: string;
   text: string;
-  size: 'sm' | 'md' | 'lg';
+  size: 'xs' | 'sm' | 'md' | 'lg';
   rel?: string;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -102,12 +102,12 @@ export const BoutonPrimaireClassic = ({
     color: disabled ? nuancesGris.dark : "white",
     backgroundColor: disabled ? nuancesGris.light : couleursBoutons.primaire[1],
     borderRadius: '60px',
-    minHeight: size === 'sm' ? '32px' : size === 'md' ? '40px' : '48px',
+    height: size === 'xs' ? '24px' : size === 'sm' ? '32px' : size === 'md' ? '40px' : '48px',
     border: disabled ? `1px solid ${nuancesGris.light}` : `1px solid ${couleursBoutons.primaire[1]}`,
-    padding: '4px 12px',
+    padding: size === 'xs' ? '1px 10px' : '4px 12px',
     fontWeight: 500,
     fontFamily: 'Marianne',
-    fontSize: size === 'sm' ? '14px' : size === 'md' ? '16px' : '18px',
+    fontSize: size === 'xs' ? '12px' : size === 'sm' ? '14px' : size === 'md' ? '16px' : '18px',
     width: 'fit-content',
     alignItems: 'center',
     backgroundImage: 'none',
@@ -172,8 +172,8 @@ export const BoutonPrimaireClassic = ({
               src={icone}
               alt=""
               style={{ marginLeft: '8px' }}
-              width={16}
-              height={16}
+              width={size === 'xs' ? 14 : 16}
+              height={size === 'xs' ? 14 : 16}
             />
           )
         }
@@ -194,7 +194,7 @@ export const BoutonSecondaireClassic = ({
 }: {
   link?: string;
   text: string;
-  size: 'sm' | 'md' | 'lg';
+  size: 'xs' | 'sm' | 'md' | 'lg';
   rel?: string;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -206,12 +206,12 @@ export const BoutonSecondaireClassic = ({
     color: disabled ? `${nuancesGris.dark} !important` : couleursBoutons.primaire[3],
     backgroundColor: disabled ? nuancesGris.light : "white",
     borderRadius: '60px',
-    minHeight: size === 'sm' ? '32px' : size === 'md' ? '40px' : '48px',
+    height: size === 'xs' ? '24px' : size === 'sm' ? '32px' : size === 'md' ? '40px' : '48px',
     border: disabled ? `1px solid ${nuancesGris.light} !important` : `1px solid ${couleursBoutons.primaire[2]}`,
-    padding: '4px 12px',
+    padding: size === 'xs' ? '1px 10px' : '4px 12px',
     fontWeight: 500,
     fontFamily: 'Marianne',
-    fontSize: size === 'sm' ? '14px' : size === 'md' ? '16px' : '18px',
+    fontSize: size === 'xs' ? '12px' : size === 'sm' ? '14px' : size === 'md' ? '16px' : '18px',
     width: 'fit-content',
     alignItems: 'center',
     backgroundImage: 'none',

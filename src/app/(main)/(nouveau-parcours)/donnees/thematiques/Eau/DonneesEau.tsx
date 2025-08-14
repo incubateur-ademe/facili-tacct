@@ -1,31 +1,31 @@
 "use client";
 import HautDePageIcon from '@/assets/icons/haut_de_page_icon_white.svg';
 import { Body, H1, H2 } from "@/design-system/base/Textes";
-import { Agriculture, AgricultureBio, CarteCommunes, SurfacesAgricolesModel } from "@/lib/postgres/models";
+import { CarteCommunes, EtatCoursDeau, RessourcesEau } from "@/lib/postgres/models";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { sommaireThematiques } from "../../../roue-systemique/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
-import { SuperficiesIrriguees } from '../../indicateurs/agricultureEtPeche/1-SuperficiesIrriguees';
-import { SurfacesEnBio } from '../../indicateurs/agricultureEtPeche/2-SurfacesEnBio';
-import { TypesDeCulture } from '../../indicateurs/agricultureEtPeche/3-TypesDeCultures';
+import { EtatEcoCoursDeau } from '../../indicateurs/eau/1-EtatCoursDeau';
+import { PrelevementsEnEau } from '../../indicateurs/eau/2-PrelevementsEnEau';
 
 interface Props {
   carteCommunes: CarteCommunes[];
-  agriculture: Agriculture[];
-  surfacesAgricoles: SurfacesAgricolesModel[];
-  agricultureBio: AgricultureBio[];
+  ressourcesEau: RessourcesEau[];
+  etatCoursDeau: EtatCoursDeau[];
 }
 
-export const DonneesAgricultureEtPeche = ({
+export const DonneesEau = ({
   carteCommunes,
-  agriculture,
-  surfacesAgricoles,
-  agricultureBio
+  ressourcesEau,
+  etatCoursDeau
 }: Props) => {
   const searchParams = useSearchParams();
-  const thematique = searchParams.get('thematique') as "Agriculture et pêche";
+  const thematique = searchParams.get('thematique') as "Eau";
+  const code = searchParams.get('code')!;
+  const libelle = searchParams.get('libelle')!;
+  const type = searchParams.get('type')!;
   const ongletsMenu = sommaireThematiques[thematique];
 
   useEffect(() => {
@@ -67,29 +67,16 @@ export const DonneesAgricultureEtPeche = ({
           </Body>
         </section>
 
-        {/* Section Eau */}
+        {/* Section Biodiversité */}
         <section className={styles.sectionType}>
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
-          {/* Superficies irriguées */}
-          <div id="Superficies irriguées" className={styles.indicateurWrapper}>
-            <SuperficiesIrriguees
-              agriculture={agriculture}
+          {/* État écologique des cours d'eau */}
+          <div id="État écologique des cours d'eau" className={styles.indicateurWrapper}>
+            <EtatEcoCoursDeau
+              etatCoursDeau={etatCoursDeau}
               carteCommunes={carteCommunes}
-            />
-          </div>
-        </section>
-
-        {/* Section Biodiversité */}
-        <section className={styles.sectionType}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
-            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
-          </H2>
-          {/* Surfaces en bio */}
-          <div id="Surfaces en bio" className={styles.indicateurWrapper}>
-            <SurfacesEnBio
-              agricultureBio={agricultureBio}
             />
           </div>
         </section>
@@ -97,12 +84,12 @@ export const DonneesAgricultureEtPeche = ({
         {/* Section Santé */}
         <section className={styles.sectionType}>
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
-            {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
+            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
-          {/* Types de cultures */}
-          <div id="Types de culture" className={styles.indicateurWrapper}>
-            <TypesDeCulture
-              surfacesAgricoles={surfacesAgricoles}
+          {/* Ressources en eau */}
+          <div id="Ressources en eau" className={styles.indicateurWrapper}>
+            <PrelevementsEnEau
+              ressourcesEau={ressourcesEau}
             />
           </div>
         </section>

@@ -146,24 +146,24 @@ export const OzoneEtVegetation = (props: {
           éloignés des sources de pollution en subissent les effets.
         </Body>
         {maxValueInStations == null ? (
-          <Body size='sm'>
+          <Body weight='bold' size='sm'>
             Nous ne disposons pas de données pour les stations proches de
             votre territoire
           </Body>
         ) : maxValueInStations < 6000 ? (
-          <Body size='sm'>
+          <Body weight='bold' size='sm'>
             Bravo, le seuil de 6 000 µg/m³ par heure fixé comme objectif
             pour 2050 est déjà atteint. Ne relâchez pas vos efforts.
           </Body>
         ) : maxValueInStations > 18000 ? (
-          <Body size='sm'>
+          <Body weight='bold' size='sm'>
             Le cumul d’ozone enregistré ces 5 dernières années pendant la
             période de végétation ({Round(maxValueInStations, 0)} µg/m³)
             risque d’engendrer des réactions de la part des végétaux de
             votre territoire.
           </Body>
         ) : (
-          <Body size='sm'>
+          <Body weight='bold' size='sm'>
             Le seuil actuel de protection de la végétation de 18 000 µg/m³
             par heure n’est pas franchi. Poursuivez vos efforts,
             l’objectif fixé pour 2050 est de 6 000 µg/m³ par heure.
