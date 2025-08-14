@@ -474,15 +474,15 @@ export const EtatsCoursEauBiodiversiteTextNouveauParcours = () => (
 );
 
 export const EtatCoursEauRessourcesEauText = () => (
-  <div className="px-4">
-    <p>
+  <div className="pt-5">
+    <Body size="sm">
       Même pour des cours d’eau en bon état, les événements extrêmes
       dus au changement climatique aggravent les pollutions : en
       période de sécheresse, les polluants se concentrent ; lors des
       crues, ils sont massivement charriés vers les captages,
       augmentant la contamination.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       Certaines activités sont directement affectées par la qualité
       chimique des cours d’eau (pisciculture en eau douce, pêche
       professionnelle ou de loisir, sports d’eau vive…). Par ailleurs,
@@ -490,14 +490,14 @@ export const EtatCoursEauRessourcesEauText = () => (
       industriels provient des eaux de surface. Une eau brute plus
       polluée nécessite des traitements plus complexes, ce qui
       augmente les coûts du service de l’eau.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       Concernant spécifiquement l’eau potable, si deux tiers des prélèvements
       sont fait sur des ressources souterraines, les prélèvements en
       eaux de surface sont majoritaires en région parisienne, en
       Bretagne, dans les Pays de la Loire, sur la Côte d’Azur et dans
       l’ancienne région Midi-Pyrénées.
-    </p>
+    </Body>
   </div>
 );
 
@@ -544,15 +544,15 @@ export const AOT40Text = () => (
 );
 
 export const PrelevementEauText = () => (
-  <div className="px-4">
-    <p>
+  <>
+    <Body size="sm">
       Les sécheresses 2022 et 2023 sonnent l'alerte : optimiser la
       ressource en eau disponible devient vital. Face à
       l'intensification des sécheresses due au changement climatique,
       chaque territoire doit anticiper. Un prélèvement n'est possible
       que si la ressource existe !
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       Attention aux chiffres bruts : les prélèvements ne reflètent pas
       les consommations réelles. L'industrie rejette une partie de
       l'eau prélevée, tandis que l'agriculture consomme la
@@ -563,74 +563,77 @@ export const PrelevementEauText = () => (
       susceptible d'augmenter pour deux raisons : la rareté de la
       ressource et le besoin de traitements plus sophistiqués
       (dénitrification, élimination des micropolluants, etc.).
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ Lors de la sécheresse 2022, 2 000 communes ont été en tension
       sur l’eau potable.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ 30 milliards de m3 d’eau ont été prélevés en France en 2021
       (hors production hydroélectrique), soit l’équivalent de plus
       d’un tiers du volume du Lac Léman. 82 % des prélèvements
       proviennent d'eaux de surface, 18 % d'eaux souterraines
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ 20 % des prélèvements d’eau potable sont perdus à cause des
       fuites, soit l’équivalent de la consommation de 18,5 millions
       d’habitants.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       - - - - <br></br>
       Le Plan Eau agit pour atteindre -10% d’eau prélevée d’ici 2030 :
       <li>
+
         la mesure 11 prévoit la fin progressive des autorisations de
         prélèvement non soutenables dans les bassins en déséquilibre
         (au fur et à mesure du renouvellement des autorisations) ;
       </li>
       <li>
+
         la mesure 12 prévoit l’installation obligatoire de compteurs
         connectés pour les prélèvements importants (généralisation
         prévue d'ici 2027) ;
       </li>
       <li>
+
         la mesure 13 prévoit le renforcement de l'encadrement des
         petits prélèvements domestiques.
       </li>
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       Plan National d’Adaptation au Changement Climatique (PNACC 3) :
       <br></br>La mesure 21 prévoit une étude spécifique sur les
       vulnérabilités de l'approvisionnement en eau potable dans les
       départements et régions d'Outre-mer.
-    </p>
-  </div>
+    </Body>
+  </>
 );
 
 export const CatNatText = () => (
-  <div className="px-4">
-    <p>
+  <div className="pt-10">
+    <Body size="sm">
       Les phénomènes extrêmes s'intensifient. Leur fréquence augmente
       à chaque hausse de 0,5°C de la température mondiale. La France
       est particulièrement exposée : depuis 1900, elle a subi 14 % des
       catastrophes naturelles majeures en Europe. Inondations, cyclones
       et tempêtes y sont les plus dévastateurs. La France et l'Italie
       sont les pays européens les plus touchés, loin devant les autres.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ 257 500, c’est le nombre d'arrêtés liés aux événements
       climatiques depuis la création du régime CatNat en 1982. Les
       inondations représentent plus de 56 % du total.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ 8 : c'est le nombre moyen d’arrêtés CatNat par commune entre
       1982 et septembre 2024. Mais une commune détient le triste
       record de 135 arrêtés sur cette période !
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ 10,6 milliards d’euros : c’est le coût d’indemnisations des
       dommages liés à des aléas climatiques en France en 2022.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ 4,8 milliards d’euros : montant moyen annuel des pertes
       économiques directes attribuées aux événements naturels en
       France entre 2015 et 2019, soit : <br></br>- deux fois le budget
@@ -639,13 +642,13 @@ export const CatNatText = () => (
       France au cours des 25 prochaines années (estimation de
       l’Inspection générale de l'environnement et du développement
       durable).
-    </p>
+    </Body>
   </div>
 );
 
 export const ErosionCotiereText = () => (
-  <div className="px-4">
-    <p>
+  <div className="pt-10">
+    <Body size="sm">
       L'érosion grignote nos côtes : près de 20 % du littoral français
       recule face à la mer. Ce phénomène naturel s'accélère avec le
       changement climatique, la hausse du niveau des mers et la
@@ -654,16 +657,16 @@ export const ErosionCotiereText = () => (
       kilomètres - la distance Paris-Marseille - qui disparaissent peu
       à peu. En 50 ans, la mer a englouti l'équivalent de la ville de
       La Rochelle : 30 km² de terres perdues.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       Impacts locaux sur les milieux :
       <li>
         Augmentation des intrusions salines des aquifères côtiers,
       </li>
       <li>Modification des paysages (nouvelles lagunes…),</li>
       <li>Appauvrissement des sols dû à la salinisation.</li>
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       Impacts locaux sur les activités humaines :
       <li>
         Diminution de la disponibilité des eaux douces souterraines
@@ -677,27 +680,27 @@ export const ErosionCotiereText = () => (
         Salinisation et réduction des terres par submersion temporaire
         ou permanente.
       </li>
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ 523 communes touchées par le recul du littoral, dont 59
       perdent plus d'1,5 mètre de littoral chaque année.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ D'ici 2050 : 5200 logements et 1400 locaux d'activité seront
       menacés, pour un coût estimé à 1,2 milliard d'euros.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       - - - - <br></br>
       Plan National d'Adaptation au Changement Climatique (PNACC 3) :
       La mesure 35 prévoit d’accompagner l’adaptation du tourisme
       culturel, de montagne, littoral et nautique.
-    </p>
+    </Body>
   </div>
 );
 
 export const FeuxForetText = () => (
-  <div className="px-4">
-    <p>
+  <>
+    <Body size="sm">
       Un climat plus chaud et plus sec sont des conditions propices
       aux départs de feux et les vents potentiellement plus violents
       sont sources de propagation rapide. La saison des feux
@@ -709,36 +712,36 @@ export const FeuxForetText = () => (
       naturels (érosion, glissements de terrain, inondations…) et
       émissions massives de gaz à effet de serre, amplifiant le
       dérèglement climatique.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       Si les dégâts socio-économiques des incendies de forêt sont à ce
       jour relativement contenus en France, c’est au prix d’
       importants investissements dans les dispositifs d’alerte et de
       prévention, qui ont permis de diviser par cinq les surfaces
       brûlées annuellement, par rapport aux années 1980.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ En 2023, parmi les feux de forêts dont la cause a été
       identifiée, 9 départs sur 10 sont d’origine humaine.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ 4 feux sur 5 se déclenchent à moins de 50 mètres des
       habitations.
-    </p>
-  </div>
+    </Body>
+  </>
 );
 
 export const RGAText = () => (
-  <div className="px-4">
-    <p>
+  <div className="pt-10">
+    <Body size="sm">
       Phénomène lié à l’alternance de sécheresses extrêmes et de fortes pluies,
       le retrait gonflement des argiles (RGA) impacte désormais tout le territoire
       métropolitain à l’exception de la Bretagne et de la Normandie. Il touche
       surtout les maisons individuelles anciennes. Mais les routes, les écoles,
       les canalisations ou les équipements municipaux peuvent aussi être affectés,
       mettant en jeu la sécurité et l’attractivité du territoire.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       Si le phénomène est incontestablement amplifié par le changement
       climatique, la qualité des constructions est aussi en cause. La
       fréquence des sinistres RGA des maisons construites après 1975
@@ -746,8 +749,8 @@ export const RGAText = () => (
       1975, alors même que ces dernières ont subi davantage de cycles
       de RGA. Multifactoriel, le RGA est donc un sujet complexe qui
       nécessite une approche combinée sols, bâtiment, urbanisme…
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       Il y a urgence à mieux prendre en compte le RGA dans les
       politiques d’aménagement car son coût explose : de 400 millions
       d’euros par an (1989-2015) à 1 milliard d’euros par an (2016-2020),
@@ -760,26 +763,26 @@ export const RGAText = () => (
       indemnisations » alors qu’il existe un certain nombre d’actions
       de prévention qui pourraient éviter ou réduire l’apparition de
       dommages.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ En France métropolitaine, 48 % du territoire est exposé à un
       risque RGA moyen ou fort. Cela représente 10,4 millions de
       logements (près de la moitié du parc de logements) et 20 millions
       de Français.
-    </p>
-    <p>
+    </Body>
+    <Body size="sm">
       ⇒ En 2022, le nombre de maisons individuelles touchées par le RGA
       a été deux fois supérieur au nombre de maisons individuelles
       construites en 2024.
-    </p>
-    <p>
-      - - - - <br></br>
+    </Body>
+    <Body size="sm">
+      - - - -
       Plan national d’adaptation au changement climatique (PNACC 3) :
       <li>
         Protéger la population des désordres sur les bâtiments liés au
         retrait-gonflement des argiles (mesure 5)
       </li>
-    </p>
+    </Body>
   </div>
 );
 

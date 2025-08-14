@@ -1,5 +1,6 @@
 'use client';
 
+import { Body } from '@/design-system/base/Textes';
 import styles from '../../themes/gestionRisques/gestionRisques.module.scss';
 
 const LegendItem = (props: { text: string; color: string }) => {
@@ -10,7 +11,7 @@ const LegendItem = (props: { text: string; color: string }) => {
         className={styles.colorSquare}
         style={{ backgroundColor: color }}
       ></div>
-      <p>{text}</p>
+      <Body size='sm'>{text}</Body>
     </div>
   );
 };
@@ -19,16 +20,17 @@ export const LegendErosionCotiere = () => {
   return (
     <div className={styles.ErosionCotiereLegendWrapper}>
       <div className={styles.bloc}>
-        <p
+        <Body
+          size='sm'
+          weight='bold'
           style={{
             width: '85px',
             minWidth: '85px',
-            margin: 0,
             alignSelf: 'center'
           }}
         >
           <b>Recul</b>
-        </p>
+        </Body>
         <div className={styles.legendsWrappers}>
           <div className={styles.legendsLeft}>
             <LegendItem text="Supérieur à 3m/an" color="#A74E10" />
@@ -41,16 +43,17 @@ export const LegendErosionCotiere = () => {
         </div>
       </div>
       <div className={styles.bloc}>
-        <p
+        <Body
+          size='sm'
+          weight='bold'
           style={{
             width: '85px',
             minWidth: '85px',
-            margin: 0,
             alignSelf: 'center'
           }}
         >
           <b>Avancée</b>
-        </p>
+        </Body>
         <div className={styles.legendsWrappers}>
           <div className={styles.legendsLeft}>
             <LegendItem text="Entre 0,1 et 0,5m/an" color="#DCEE9F" />

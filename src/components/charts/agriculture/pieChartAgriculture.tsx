@@ -73,7 +73,7 @@ export const PieChartAgriculture = ({ surfacesAgricoles }: { surfacesAgricoles: 
   return (
     <div
       style={{
-        height: '500px',
+        height: '400px',
         minWidth: '450px',
         backgroundColor: 'white'
       }}

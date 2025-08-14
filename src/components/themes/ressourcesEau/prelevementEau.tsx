@@ -82,7 +82,7 @@ export const PrelevementEau = (props: {
   const sumAllYears = dataParMaille.map((year) =>
     Array.from({ length: 13 }, (_, i) => Number(year[`A${2008 + i}` as PrelevementsEauYears]) || 0)
       .reduce((a, b) => a + b, 0)
-  ).reduce((a, b) => a + b, 0);;
+  ).reduce((a, b) => a + b, 0);
 
   useEffect(() => {
     void (async () => {

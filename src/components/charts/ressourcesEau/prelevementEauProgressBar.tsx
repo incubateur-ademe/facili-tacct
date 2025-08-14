@@ -159,7 +159,6 @@ const PrelevementEauProgressBars = ({
     SumFiltered(ressourcesEau, code, libelle, type, 'total') === 0
       ? 1
       : SumFiltered(ressourcesEau, code, libelle, type, 'total');
-
   const departement = ressourcesEau[0]?.libelle_departement;
 
   return (

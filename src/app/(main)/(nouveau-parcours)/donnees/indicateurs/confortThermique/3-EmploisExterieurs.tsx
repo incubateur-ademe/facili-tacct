@@ -58,25 +58,27 @@ export const EmploisEnExterieur = ({
         Part des emplois par grands secteurs d’activité
       </H3>
       <div className={styles.datavizContainer}>
-        <div className={styles.chiffreDynamiqueWrapper}>
-          <MicroPieChart pourcentage={travailExt} arrondi={1} ariaLabel="Pourcentage de l'emploi en extérieur" />
-          {
-            sums.sumConstruction || sums.sumAgriculture ?
-              <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                L’agriculture et la construction représentent une grande part
-                de postes en extérieur. La part cumulée des emplois de votre
-                territoire dans ces deux secteurs à risque est de
-                {" "}{Round(travailExt, 1)} %, soit{' '}
-                {Round((sums.sumAgriculture + sums.sumConstruction), 0)} personnes.
-              </Body>
-              : ""
-          }
-          <Body size='sm'>
-            La chaleur reste un danger constant pour les travailleurs en extérieur.
-            Plus le travail est physique, plus le risque est élevé. Les impacts
-            de la chaleur sur la santé et l’économie sont actuellement très sous-estimés.
-            <CustomTooltipNouveauParcours title={travailExterieurTooltipText} />
-          </Body>
+        <div className={styles.dataTextWrapper}>
+          <div className={styles.chiffreDynamiqueWrapper}>
+            <MicroPieChart pourcentage={travailExt} arrondi={1} ariaLabel="Pourcentage de l'emploi en extérieur" />
+            {
+              sums.sumConstruction || sums.sumAgriculture ?
+                <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                  L’agriculture et la construction représentent une grande part
+                  de postes en extérieur. La part cumulée des emplois de votre
+                  territoire dans ces deux secteurs à risque est de
+                  {" "}{Round(travailExt, 1)} %, soit{' '}
+                  {Round((sums.sumAgriculture + sums.sumConstruction), 0)} personnes.
+                </Body>
+                : ""
+            }
+            <Body size='sm'>
+              La chaleur reste un danger constant pour les travailleurs en extérieur.
+              Plus le travail est physique, plus le risque est élevé. Les impacts
+              de la chaleur sur la santé et l’économie sont actuellement très sous-estimés.
+              <CustomTooltipNouveauParcours title={travailExterieurTooltipText} />
+            </Body>
+          </div>
         </div>
         <div className={styles.datavizWrapper}>
           {graphData ?

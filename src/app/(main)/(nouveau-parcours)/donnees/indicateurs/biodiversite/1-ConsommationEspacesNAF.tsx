@@ -10,6 +10,7 @@ import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapEspacesNaf } from '@/components/maps/mapEspacesNAF';
 import { ConsommationEspacesNAFBiodiversiteText } from '@/components/themes/inconfortThermique/staticTexts';
 import { CustomTooltipNouveauParcours } from '@/components/utils/CalculTooltip';
+import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { Body, H3 } from '@/design-system/base/Textes';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
@@ -78,8 +79,10 @@ export const ConsommationEspacesNAF = (props: {
             />
           </div>
         </div>
-        <div className='mt-4'>
-          <ConsommationEspacesNAFBiodiversiteText />
+        <div className='mt-4 pr-5'>
+          <ReadMoreFade maxHeight={150}>
+            <ConsommationEspacesNAFBiodiversiteText />
+          </ReadMoreFade>
         </div>
         <div className={styles.mapWrapper}>
           {

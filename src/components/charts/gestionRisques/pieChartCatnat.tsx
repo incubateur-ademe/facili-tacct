@@ -99,7 +99,7 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
           </animated.tspan>
           <animated.tspan>
             ({((100 * datum.value) / Sum(Object.values(countTypes))).toFixed(1)}
-             %)
+            %)
           </animated.tspan>
         </animated.text>
       </animated.g>
@@ -108,7 +108,7 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
 
   return (
     <div
-      style={{ height: '400px', minWidth: '450px', backgroundColor: 'white' }}
+      style={{ height: '380px', width: '100%', backgroundColor: 'white' }}
     >
       <ResponsivePie
         data={graphData}
@@ -141,20 +141,20 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
         arcLinkLabelsOffset={15}
         arcLinkLabelsDiagonalLength={20}
         arcLinkLabelsStraightLength={5}
-        // tooltip={({ datum: { id, value } }: PieTooltipProps<DefaultRawDatum>) => (
-        //   <div
-        //     style={{
-        //       padding: '12px',
-        //       color: 'white',
-        //       background: 'rgba(0, 0, 0, 0.7)',
-        //       borderRadius: '3px'
-        //     }}
-        //   >
-        //     <strong>{id}</strong>
-        //     <br />
-        //     {value} arrêté(s)
-        //   </div>
-        // )}
+      // tooltip={({ datum: { id, value } }: PieTooltipProps<DefaultRawDatum>) => (
+      //   <div
+      //     style={{
+      //       padding: '12px',
+      //       color: 'white',
+      //       background: 'rgba(0, 0, 0, 0.7)',
+      //       borderRadius: '3px'
+      //     }}
+      //   >
+      //     <strong>{id}</strong>
+      //     <br />
+      //     {value} arrêté(s)
+      //   </div>
+      // )}
       />
     </div>
   );
