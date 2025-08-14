@@ -1,4 +1,5 @@
 "use client";
+import WaterDropIcon from "@/assets/icons/water_drop_blue.svg";
 import { Body } from "@/design-system/base/Textes";
 import couleurs from "@/design-system/couleurs";
 import { CommunesContoursDto, CommunesIndicateursDto } from '@/lib/dto';
@@ -17,12 +18,12 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { GeoJSON } from 'react-leaflet';
 import { BoundsFromCollection } from "../maps/components/boundsFromCollection";
 import styles from "./charts.module.scss";
-
 
 type MicroPieChartTypes = {
   strokeLinecap: 'butt';
@@ -119,7 +120,6 @@ export const MicroCircleGrid = ({
   );
 }
 
-
 export const MicroRemplissageTerritoire = (props: {
   territoireContours: CommunesContoursDto[];
   pourcentage: number;
@@ -148,7 +148,7 @@ export const MicroRemplissageTerritoire = (props: {
 
   if (aspectRatio > 1) {
     // Territoire plus large que haut - on calcule la largeur proportionnellement
-    containerWidth = containerHeight * aspectRatio;
+    containerWidth = containerHeight * aspectRatio * 0.6;
   } else {
     // Territoire plus haut que large - on utilise un ratio ajusté
     containerWidth = Math.max(containerHeight * aspectRatio * 0.6, 80); // Largeur min de 80px
@@ -299,7 +299,7 @@ export const MicroChiffreTerritoire = (props: {
 
   if (aspectRatio > 1) {
     // Territoire plus large que haut - on calcule la largeur proportionnellement
-    containerWidth = containerHeight * aspectRatio;
+    containerWidth = containerHeight * aspectRatio * 0.8;
   } else {
     // Territoire plus haut que large - on utilise un ratio ajusté
     containerWidth = Math.max(containerHeight * aspectRatio * 0.8, 80); // Largeur min de 80px
@@ -395,7 +395,6 @@ export const MicroChiffreTerritoire = (props: {
   );
 };
 
-
 export const MicroRemplissageTerritoireMapLibre = (props: {
   territoireContours: CommunesIndicateursDto[];
   pourcentage: number;
@@ -476,3 +475,52 @@ export const MicroRemplissageTerritoireMapLibre = (props: {
     </div>
   );
 };
+
+export const WaterDropNumber = ({
+  value,
+  arrondi = 0,
+}: {
+  value: number;
+  arrondi?: number;
+}) => {
+  return (
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <div style={{
+        position: "relative",
+        width: 110,
+        height: 120,
+        display: "flex",
+      }}>
+        <Image
+          src={WaterDropIcon}
+          alt="Goutte d'eau"
+          width={100}
+          height={120}
+        />
+        <div
+          style={{
+            position: "absolute",
+            top: 60,
+            left: "5%",
+            display: 'flex',
+            alignSelf: 'center',
+            flexDirection: "column",
+            padding: '0.1rem 0.3rem',
+            borderRadius: '0.5rem',
+
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "white",
+            boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px',
+            width: 'fit-content',
+          }}
+        >
+          <Body>
+            {Round(value, arrondi)} Mm³
+          </Body>
+        </div>
+      </div>
+    </div>
+  );
+};
+

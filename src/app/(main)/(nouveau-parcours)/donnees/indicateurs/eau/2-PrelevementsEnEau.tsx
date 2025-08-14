@@ -1,0 +1,137 @@
+"use client";
+import { WaterDropNumber } from "@/components/charts/MicroDataviz";
+import EauCharts from "@/components/charts/ressourcesEau/EauCharts";
+import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
+import { PrelevementEauText } from "@/components/themes/inconfortThermique/staticTexts";
+import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
+import { ReadMoreFade } from "@/components/utils/ReadMoreFade";
+import { Body, H3 } from "@/design-system/base/Textes";
+import { RessourcesEau } from "@/lib/postgres/models";
+import { prelevementEauTooltipText } from "@/lib/tooltipTexts";
+import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
+import { Round } from "@/lib/utils/reusableFunctions/round";
+import { Sum } from "@/lib/utils/reusableFunctions/sum";
+import { useSearchParams } from "next/navigation";
+import { useState } from "react";
+import styles from '../../explorerDonnees.module.scss';
+
+const SumFiltered = (
+  data: RessourcesEau[],
+  code: string,
+  libelle: string,
+  type: string,
+  champ: string
+) => {
+  const columnCode = type === 'epci'
+    ? 'epci'
+    : type === 'commune'
+      ? 'code_geographique'
+      : type === "departement"
+        ? "departement"
+        : undefined
+
+  const columnLibelle = type === "petr"
+    ? "libelle_petr"
+    : type === "pnr"
+      ? "libelle_pnr"
+      : "ept"
+  return Sum(
+    data
+      .filter((obj) => columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
+      )
+      .filter((item) => item.LIBELLE_SOUS_CHAMP?.includes(champ))
+      .map((e) => e.A2020)
+      .filter((value): value is number => value !== null)
+  );
+};
+
+export const PrelevementsEnEau = (props: {
+  ressourcesEau: RessourcesEau[];
+}) => {
+  const { ressourcesEau } = props;
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code')!;
+  const type = searchParams.get('type')!;
+  const libelle = searchParams.get('libelle')!;
+  const [datavizTab, setDatavizTab] = useState<string>('Répartition');
+  const volumePreleveTerritoire = (SumFiltered(ressourcesEau, code, libelle, type, 'total') / 1000000);
+  const dataParMaille = type === 'epci'
+    ? ressourcesEau.filter((obj) => obj.epci === code)
+    : type === 'commune'
+      ? ressourcesEau.filter((obj) => obj.code_geographique === code)
+      : type === 'petr'
+        ? ressourcesEau.filter((obj) => obj.libelle_petr === libelle)
+        : type === 'ept'
+          ? ressourcesEau.filter((obj) => obj.ept === libelle)
+          : type === "pnr"
+            ? ressourcesEau.filter((obj) => obj.libelle_pnr === libelle)
+            : ressourcesEau;
+
+  const sumAllYears = dataParMaille.map((year) =>
+    Array.from({ length: 13 }, (_, i) => Number(year[`A${2008 + i}` as PrelevementsEauYears]) || 0)
+      .reduce((a, b) => a + b, 0)
+  ).reduce((a, b) => a + b, 0);;
+
+  //sort ascending by code_geographique
+  const exportData = IndicatorExportTransformations.ressourcesEau.PrelevementEau(dataParMaille).sort(
+    (a, b) => a.code_geographique.localeCompare(b.code_geographique)
+  );
+
+  return (
+    <>
+      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+        Répartition des prélèvements d’eau par usage
+      </H3>
+      <div className={styles.datavizContainer}>
+        <div className={styles.dataTextWrapper}>
+          <div className={styles.chiffreDynamiqueWrapper}>
+            <WaterDropNumber
+              value={volumePreleveTerritoire}
+              arrondi={2}
+            />
+            {
+              dataParMaille.length !== 0 ? (
+                <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                  Le volume total des prélèvements en eau de votre territoire en
+                  2020 est de <b>{(Round(volumePreleveTerritoire, 2))} Mm3</b>, soit l’équivalent
+                  de <b>{Round((1000000 * Number(volumePreleveTerritoire)) / 3750, 0)}</b>{' '}
+                  piscines olympiques.
+                </Body>
+              ) : ""
+            }
+            <CustomTooltipNouveauParcours title={prelevementEauTooltipText} texte="D'où vient ce chiffre ?" />
+          </div>
+          <ReadMoreFade maxHeight={550}>
+            <PrelevementEauText />
+          </ReadMoreFade>
+        </div>
+        <div className={styles.datavizWrapper} style={{ borderRadius: "1rem 0 0 1rem", height: "fit-content" }}>
+          <EauCharts
+            datavizTab={datavizTab}
+            setDatavizTab={setDatavizTab}
+            ressourcesEau={ressourcesEau}
+          />
+          <div
+            className={styles.sourcesExportWrapper}
+            style={{
+              borderTop: "1px solid var(--gris-medium)",
+              borderBottom: "1px solid var(--gris-medium)",
+              borderRadius: "0 0 0 1rem"
+            }}>
+            <Body size='sm' style={{ color: "var(--gris-dark)" }}>
+              Source : BNPE, Catalogue DiDo (Indicateurs territoriaux de développement durable - ITDD)
+            </Body>
+            <ExportButtonNouveauParcours
+              data={exportData}
+              baseName="prelevements_eau"
+              type={type}
+              libelle={libelle}
+              code={code}
+              sheetName="Prélèvements en eau"
+            />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};

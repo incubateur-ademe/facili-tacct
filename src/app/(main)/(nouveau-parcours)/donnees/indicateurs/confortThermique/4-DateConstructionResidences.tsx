@@ -56,27 +56,29 @@ export const DateConstructionResidences = ({
         Part des résidences principales par période de construction
       </H3>
       <div className={styles.datavizContainer}>
-        <div className={styles.chiffreDynamiqueWrapper}>
-          <MicroCircleGrid pourcentage={constructionBefore2006} arrondi={1} ariaLabel="Pourcentage de constructions avant 2006" />
-          {
-            constructionBefore2006 &&
-              !Object.values(averages).includes(NaN) &&
-              Sum(Object.values(averages)) != 0 ?
-              <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                Sur votre territoire,{' '}
-                <b>{Round(constructionBefore2006, 1)} %</b> des résidences
-                principales sont construites avant 2006.
-              </Body>
-              : ""
-          }
-          <Body size='sm'>
-            La robustesse des logements face aux températures élevées dépend de leur qualité
-            intrinsèque (inertie thermique, présence de volets extérieurs, qualité des
-            rénovations...). Si vous ne disposez pas d'étude spécifique sur le sujet,
-            la période de construction, fournie par l'INSEE, vous donne une première
-            approximation. Adapter les logements au risque de forte chaleur est
-            la mesure 9 du PNACC 3.
-          </Body>
+        <div className={styles.dataTextWrapper}>
+          <div className={styles.chiffreDynamiqueWrapper}>
+            <MicroCircleGrid pourcentage={constructionBefore2006} arrondi={1} ariaLabel="Pourcentage de constructions avant 2006" />
+            {
+              constructionBefore2006 &&
+                !Object.values(averages).includes(NaN) &&
+                Sum(Object.values(averages)) != 0 ?
+                <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                  Sur votre territoire,{' '}
+                  <b>{Round(constructionBefore2006, 1)} %</b> des résidences
+                  principales sont construites avant 2006.
+                </Body>
+                : ""
+            }
+            <Body size='sm'>
+              La robustesse des logements face aux températures élevées dépend de leur qualité
+              intrinsèque (inertie thermique, présence de volets extérieurs, qualité des
+              rénovations...). Si vous ne disposez pas d'étude spécifique sur le sujet,
+              la période de construction, fournie par l'INSEE, vous donne une première
+              approximation. Adapter les logements au risque de forte chaleur est
+              la mesure 9 du PNACC 3.
+            </Body>
+          </div>
         </div>
         <div className={styles.datavizWrapper}>
           {chartData ? <BarChartAgeBatiNouveauParcours chartData={chartData} /> : <Loader />}

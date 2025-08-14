@@ -19,7 +19,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 10rem;
+    height: 7rem;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -30,8 +30,18 @@
         rgba(255, 255, 255, 0.85) 70%,
         rgba(255, 255, 255, 1) 100%
     );
+    opacity: 1;
+    transition: opacity 1s;
 }
 
+.fadeOverlayOut {
+    opacity: 0;
+    transition: opacity 1s;
+}
+.readMoreButtonWrapper {
+    display: flex;
+    justify-content: center;
+}
 .readMoreButton {
     pointer-events: auto;
     background: white;
@@ -39,7 +49,7 @@
     border: none;
     border-radius: 1rem;
     padding: 0.25rem 0.75rem;
-    font-size: 1rem;
+    font-size: 0.8775rem;
     cursor: pointer;
     transition: all 1s;
     align-self: center;

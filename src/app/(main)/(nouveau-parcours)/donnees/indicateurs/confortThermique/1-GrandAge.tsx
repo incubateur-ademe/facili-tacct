@@ -52,32 +52,34 @@ export const GrandAge = ({
         Évolution de la part des 80 ans et plus dans la population
       </H3>
       <div className={styles.datavizContainer}>
-        <div className={styles.chiffreDynamiqueWrapper}>
-          <MicroPieChart pourcentage={yData.over_80_2020_percent} arrondi={2} ariaLabel="Pourcentage de confort thermique" />
-          {
-            !Object.values(yData).slice(0, -2).includes('NaN') && (
-              <>
-                <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                  En 2020, <b>{numberWithSpacesRegex(yData.over_80_2020_percent)} %</b> de la
-                  population de votre territoire est constitué de personnes
-                  âgées de plus de 80 ans (soit{' '}
-                  <b>
-                    {numberWithSpacesRegex(sumProperty(
-                      grandAgeIsolementTerritoire,
-                      'over_80_sum_2020'
-                    ))}
-                  </b>{' '}
-                  personnes).
-                </Body>
-              </>
-            )
-          }
-          <Body size='sm'>
-            Les personnes âgées représentent les deux tiers de la surmortalité en période de fortes
-            chaleurs. Cette fragilité peut être exacerbée par d’autres facteurs : précarité
-            énergétique, isolement, conditions de logement inadéquate.
-            <CustomTooltipNouveauParcours title={methodeCalcul} />
-          </Body>
+        <div className={styles.dataTextWrapper}>
+          <div className={styles.chiffreDynamiqueWrapper}>
+            <MicroPieChart pourcentage={yData.over_80_2020_percent} arrondi={2} ariaLabel="Pourcentage de confort thermique" />
+            {
+              !Object.values(yData).slice(0, -2).includes('NaN') && (
+                <>
+                  <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                    En 2020, <b>{numberWithSpacesRegex(yData.over_80_2020_percent)} %</b> de la
+                    population de votre territoire est constitué de personnes
+                    âgées de plus de 80 ans (soit{' '}
+                    <b>
+                      {numberWithSpacesRegex(sumProperty(
+                        grandAgeIsolementTerritoire,
+                        'over_80_sum_2020'
+                      ))}
+                    </b>{' '}
+                    personnes).
+                  </Body>
+                </>
+              )
+            }
+            <Body size='sm'>
+              Les personnes âgées représentent les deux tiers de la surmortalité en période de fortes
+              chaleurs. Cette fragilité peut être exacerbée par d’autres facteurs : précarité
+              énergétique, isolement, conditions de logement inadéquate.
+              <CustomTooltipNouveauParcours title={methodeCalcul} />
+            </Body>
+          </div>
         </div>
         <div className={styles.datavizWrapper}>
           {yData.over_80_2020_percent ? (

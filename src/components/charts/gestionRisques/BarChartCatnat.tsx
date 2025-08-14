@@ -72,7 +72,7 @@ export const BarChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }
   const maxDate = Math.max(...gestionRisques.map((e) => e.annee_arrete));
   return (
     <div
-      style={{ height: '500px', minWidth: '450px', backgroundColor: 'white' }}
+      style={{ height: '450px', width: '100%', backgroundColor: 'white' }}
     >
       {graphData.length === 0 ? (
         <div
@@ -130,11 +130,6 @@ export const BarChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }
           bottomTickValues={minDate != maxDate
             ? [minDate, maxDate]
             : [minDate]}
-
-        // ariaLabel="Nivo bar chart demo"
-        // barAriaLabel={(e) =>
-        //   e.id + ': ' + e.formattedValue + ' dans CatNat: ' + e.indexValue
-        // }
         />
       )}
     </div>
