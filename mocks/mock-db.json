@@ -1,0 +1,451 @@
+{
+  "analytics": {
+    "north_star_metric": [{}]
+  },
+  "databases": {
+    "agriculture": [
+      {
+        "index": 1,
+        "code_geographique": "12345",
+        "libelle_geographique": "Commune A",
+        "epci": "EPCI1",
+        "libelle_epci": "EPCI Lib 1",
+        "departement": "75",
+        "libelle_departement": "Paris",
+        "region": 11,
+        "ept": null,
+        "libelle_petr": null,
+        "code_pnr": null,
+        "libelle_pnr": null,
+        "part_irr_SAU_2020": 12.5
+      }
+    ],
+    "agriculture_bio": [
+      {
+        "index": 1,
+        "epci": "EPCI1",
+        "libelle_epci": "EPCI Lib 1",
+        "VARIABLE": "Surface",
+        "LIBELLE_SOUS_CHAMP": "Bio",
+        "surface_2022": 100,
+        "surface_2021": 90,
+        "surface_2020": 80,
+        "surface_2019": 70,
+        "nombre_2022": 10,
+        "nombre_2021": 9,
+        "nombre_2020": 8,
+        "nombre_2019": 7
+      }
+    ],
+    "aot_40": [
+      {
+        "index": 1,
+        "nom_site": "Site A",
+        "type_d_implantation": "Type 1",
+        "valeur_brute": 123.4,
+        "Latitude": 48.85,
+        "Longitude": 2.35
+      }
+    ],
+    "arretes_catnat": [
+      {
+        "index": 1,
+        "code_geographique": "12345",
+        "libelle_geographique": "Commune A",
+        "epci": "EPCI1",
+        "libelle_epci": "EPCI Lib 1",
+        "departement": "75",
+        "libelle_departement": "Paris",
+        "region": 11,
+        "ept": null,
+        "libelle_petr": null,
+        "code_pnr": null,
+        "libelle_pnr": null,
+        "lib_risque_jo": "Inondation",
+        "dat_pub_arrete": "2025-01-01"
+      }
+    ],
+    "collectivites_searchbar": [
+      {
+        "index": 1,
+        "code_geographique": "12345",
+        "libelle_geographique": "Commune A",
+        "epci": "EPCI1",
+        "libelle_epci": "EPCI Lib 1",
+        "departement": "75",
+        "libelle_departement": "Paris",
+        "region": "11",
+        "ept": null,
+        "libelle_petr": null,
+        "code_pnr": null,
+        "libelle_pnr": null,
+        "search_code": "C123",
+        "search_libelle": "Commune A"
+      }
+    ],
+    "consommation_espaces_naf": [
+      {
+        "index": 1,
+        "code_geographique": "12345",
+        "libelle_geographique": "Commune A",
+        "epci": "EPCI1",
+        "libelle_epci": "EPCI Lib 1",
+        "departement": "75",
+        "libelle_departement": "Paris",
+        "region": 11,
+        "ept": null,
+        "libelle_petr": null,
+        "code_pnr": null,
+        "libelle_pnr": null,
+        "naf09art10": 1,
+        "art09act10": 2,
+        "art09hab10": 3,
+        "art09mix10": 4,
+        "art09rou10": 5,
+        "art09fer10": 6,
+        "art09inc10": 7
+      }
+    ],
+    "feux_foret": [
+      {
+        "index": 1,
+        "code_geographique": "12345",
+        "libelle_geographique": "Commune A",
+        "epci": "EPCI1",
+        "libelle_epci": "EPCI Lib 1",
+        "departement": "75",
+        "libelle_departement": "Paris",
+        "region": 11,
+        "ept": null,
+        "libelle_petr": null,
+        "code_pnr": null,
+        "libelle_pnr": null,
+        "nature": "Nature 1",
+        "annee": 2025,
+        "surface_parcourue": 10,
+        "surface_foret": 5
+      }
+    ],
+    "inconfort_thermique": [
+      {
+        "index": 1,
+        "code_geographique": "12345",
+        "libelle_geographique": "Commune A",
+        "epci": "EPCI1",
+        "libelle_epci": "EPCI Lib 1",
+        "departement": "75",
+        "libelle_departement": "Paris",
+        "region": 11,
+        "ept": null,
+        "libelle_petr": null,
+        "code_pnr": null,
+        "libelle_pnr": null,
+        "age_bati_post06": 1.1
+      }
+    ],
+    "patch4c": [
+      {
+        "index": 1,
+        "code_geographique": "12345",
+        "niveaux_marins": 1.2,
+        "feux_foret": 2.3,
+        "secheresse_sols": 3.4,
+        "fortes_precipitations": 4.5,
+        "fortes_chaleurs": 5.6
+      }
+    ],
+    "ressources_eau": [
+      {
+        "index": 1,
+        "code_geographique": "12345",
+        "LIBELLE_SOUS_CHAMP": "Champ 1",
+        "A2020": 1,
+        "A2019": 2,
+        "A2018": 3,
+        "A2017": 4,
+        "A2016": 5,
+        "A2015": 6,
+        "A2014": 7,
+        "A2013": 8,
+        "A2012": 9,
+        "A2011": 10,
+        "A2010": 11,
+        "A2009": 12,
+        "A2008": 13,
+        "SOUS_CHAMP": "Sous 1",
+        "libelle_geographique": "Commune A",
+        "epci": "EPCI1",
+        "libelle_epci": "EPCI Lib 1",
+        "departement": "75",
+        "libelle_departement": "Paris",
+        "region": 11,
+        "ept": null,
+        "libelle_petr": null,
+        "code_pnr": null,
+        "libelle_pnr": null
+      }
+    ],
+    "qualite_sites_baignade": [
+      {
+        "index": 1,
+        "DEP_NOM": "Paris",
+        "DEP_NUM": "75",
+        "TYPE": "Type1",
+        "COMMUNE": "Commune A",
+        "POINT": "Point1",
+        "LONG": 2.35,
+        "LAT": 48.85,
+        "QEB_2013": "A"
+      }
+    ],
+    "surfaces_protegees": [
+      {
+        "index": 1,
+        "code_geographique": "12345",
+        "PNC": null,
+        "RAMSAR": null,
+        "PNR": null,
+        "PNP": null,
+        "FOR_PRO": null,
+        "ZZZ": null,
+        "ZNIEFF2": null,
+        "ZNIEFF1": null,
+        "RNR": null,
+        "TOU_PRO": null,
+        "NATURA": null,
+        "ZPS": null,
+        "SIC": null,
+        "CELRL": null,
+        "BIO": null,
+        "APB": null,
+        "RN": null,
+        "RBFD": null,
+        "RNCFS": null,
+        "libelle_geographique": "Commune A",
+        "epci": "EPCI1",
+        "libelle_epci": "EPCI Lib 1",
+        "departement": "75",
+        "region": 11
+      }
+    ],
+    "rga": [
+      {
+        "index": 1,
+        "code_geographique": "12345",
+        "libelle_geographique": "Commune A",
+        "epci": "EPCI1",
+        "libelle_epci": "EPCI Lib 1",
+        "departement": "75",
+        "libelle_departement": "Paris",
+        "region": 11,
+        "ept": null,
+        "libelle_petr": null,
+        "code_pnr": null,
+        "libelle_pnr": null,
+        "nb_logement": 100,
+        "nb_logement_alea_moyen_fort": 10,
+        "nb_logement_alea_faible": 20,
+        "nb_logement_sans_alea": 70,
+        "nb_logement_alea_moyen_fort_avant_1920": 1,
+        "part_logement_alea_moyen_fort_avant_1920": 0.01,
+        "nb_logement_alea_moyen_fort_1920_1945": 2,
+        "part_logement_alea_moyen_fort_1920_1945": 0.02,
+        "nb_logement_alea_moyen_fort_1945_1975": 3,
+        "part_logement_alea_moyen_fort_1945_1975": 0.03,
+        "nb_logement_alea_moyen_fort_apres_1975": 4,
+        "part_logement_alea_moyen_fort_apres_1975": 0.04,
+        "nb_logement_alea_faible_avant_1920": 5,
+        "part_logement_alea_faible_avant_1920": 0.05,
+        "nb_logement_alea_faible_1920_1945": 6,
+        "part_logement_alea_faible_1920_1945": 0.06,
+        "nb_logement_alea_faible_1945_1975": 7,
+        "part_logement_alea_faible_1945_1975": 0.07,
+        "nb_logement_alea_faible_apres_1975": 8,
+        "part_logement_alea_faible_apres_1975": 0.08,
+        "surface_commune": 1000,
+        "surface_alea_faible_commune": 100,
+        "part_alea_faible_commune": 0.1,
+        "surface_alea_moyen_fort_commune": 200,
+        "part_alea_moyen_fort_commune": 0.2
+      }
+    ],
+    "surfaces_agricoles": [
+      {
+        "index": 1,
+        "epci": "EPCI1",
+        "exploitation_sau": 1,
+        "exploitation_sau_terres_arables": 2,
+        "exploitation_sau_terres_arables_cereales": 3,
+        "exploitation_sau_terres_arables_oleagineux": 4,
+        "exploitation_sau_terres_arables_fourrageres": 5,
+        "exploitation_sau_terres_arables_tubercules": 6,
+        "exploitation_sau_terres_arables_legumes_melons_fraises": 7,
+        "exploitation_sau_terres_arables_fleurs": 8,
+        "exploitation_sau_terres_arables_autres": 9,
+        "exploitation_sau_cultures_permanentes": 10,
+        "exploitation_sau_cultures_permanentes_vigne": 11,
+        "exploitation_sau_cultures_permanentes_fruits": 12,
+        "exploitation_sau_cultures_permanentes_autres": 13,
+        "exploitation_sau_herbe": 14,
+        "exploitation_sau_herbe_prairies_productives": 15,
+        "exploitation_sau_herbe_prairies_peu_productives": 16,
+        "exploitation_sau_herbe_subventions": 17,
+        "exploitation_sau_herbe_bois_patures": 18,
+        "exploitation_sau_jardins": 19,
+        "superficie_sau": 20,
+        "superficie_sau_terres_arables": 21,
+        "superficie_sau_terres_arables_cereales": 22,
+        "superficie_sau_terres_arables_oleagineux": 23,
+        "superficie_sau_terres_arables_fourrageres": 24,
+        "superficie_sau_terres_arables_tubercules": 25,
+        "superficie_sau_terres_arables_legumes_melons_fraises": 26,
+        "superficie_sau_terres_arables_fleurs": 27,
+        "superficie_sau_terres_arables_autres": 28,
+        "superficie_sau_cultures_permanentes": 29,
+        "superficie_sau_cultures_permanentes_vigne": 30,
+        "superficie_sau_cultures_permanentes_fruits": 31,
+        "superficie_sau_cultures_permanentes_autres": 32,
+        "superficie_sau_herbe": 33,
+        "superficie_sau_herbe_prairies_productives": 34,
+        "superficie_sau_herbe_prairies_peu_productives": 35,
+        "superficie_sau_herbe_subventions": 36,
+        "superficie_sau_herbe_bois_patures": 37,
+        "superficie_sau_jardins": 38
+      }
+    ],
+    "lcz_couverture": [
+      {
+        "index": 1,
+        "code_geographique": "12345",
+        "libelle_geographique": "Commune A",
+        "epci": "EPCI1",
+        "libelle_epci": "EPCI Lib 1",
+        "departement": "75",
+        "libelle_departement": "Paris",
+        "region": 11,
+        "ept": null,
+        "libelle_petr": null,
+        "code_pnr": null,
+        "libelle_pnr": null,
+        "couverture_lcz": 1.1
+      }
+    ],
+    "temp_update_pnr": [
+      {
+        "index": 1,
+        "code_geographique": "12345",
+        "code_pnr": "PNR1",
+        "libelle_pnr": "PNR Lib 1"
+      }
+    ]
+  },
+  "ressources": {
+    "users": [{}]
+  },
+  "public": {
+    "sandbox_users": [{}]
+  },
+  "postgis": {
+    "clc_territoires": [
+      {
+        "id": 1,
+        "code_insee": "12345",
+        "nom": "Commune A",
+        "surface": 100.5,
+        "geom": "MULTIPOLYGON(((2.35 48.85, 2.36 48.85, 2.36 48.86, 2.35 48.86, 2.35 48.85)))"
+      }
+    ],
+    "communes_drom": [
+      {
+        "id": 1,
+        "code_insee": "98765",
+        "nom": "Commune DROM",
+        "departement": "971",
+        "region": "Guadeloupe",
+        "geom": "POINT(2.35 48.85)"
+      }
+    ],
+    "erosion_cotiere": [
+      {
+        "id": 1,
+        "site": "Site Erosion",
+        "annee": 2025,
+        "taux_erosion": -0.5,
+        "geom": "LINESTRING(2.35 48.85, 2.36 48.86)"
+      }
+    ],
+    "etat_cours_d_eau": [
+      {
+        "id": 1,
+        "nom": "Rivière A",
+        "etat": "Bon",
+        "longueur": 12.3,
+        "geom": "LINESTRING(2.35 48.85, 2.36 48.86)"
+      }
+    ],
+    "spatial_ref_sys": [
+      {
+        "srid": 4326,
+        "auth_name": "EPSG",
+        "auth_srid": 4326,
+        "srtext": "GEOGCS[\"WGS 84\", ...]",
+        "proj4text": "+proj=longlat +datum=WGS84 +no_defs"
+      }
+    ],
+    "postgis_rga": [
+      {
+        "id": 1,
+        "code_insee": "12345",
+        "nb_logement": 100,
+        "geom": "MULTIPOLYGON(((2.35 48.85, 2.36 48.85, 2.36 48.86, 2.35 48.86, 2.35 48.85)))"
+      }
+    ],
+    "densite_bati_temp": [
+      {
+        "id": 1,
+        "code_insee": "12345",
+        "annee": 2025,
+        "densite": 150.2,
+        "geom": "POLYGON((2.35 48.85, 2.36 48.85, 2.36 48.86, 2.35 48.86, 2.35 48.85))"
+      }
+    ],
+    "pg_stat_statements": [
+      {
+        "userid": 10,
+        "dbid": 20,
+        "queryid": 123456,
+        "query": "SELECT * FROM test;",
+        "calls": 5,
+        "total_time": 12.5
+      }
+    ],
+    "pg_stat_statements_info": [
+      {
+        "dealloc": 1,
+        "reset": 0
+      }
+    ],
+    "geography_columns": [
+      {
+        "f_table_catalog": "db",
+        "f_table_schema": "postgis",
+        "f_table_name": "clc_territoires",
+        "f_geography_column": "geom",
+        "coord_dimension": 2,
+        "srid": 4326,
+        "type": "MultiPolygon"
+      }
+    ],
+    "geometry_columns": [
+      {
+        "f_table_catalog": "db",
+        "f_table_schema": "postgis",
+        "f_table_name": "clc_territoires",
+        "f_geometry_column": "geom",
+        "coord_dimension": 2,
+        "srid": 4326,
+        "type": "MultiPolygon"
+      }
+    ]
+  }
+}
