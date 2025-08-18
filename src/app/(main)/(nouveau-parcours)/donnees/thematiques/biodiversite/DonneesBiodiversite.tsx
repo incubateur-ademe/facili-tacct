@@ -131,13 +131,6 @@ export const DonneesBiodiversite = ({
               qualiteEauxBaignade={qualiteEauxBaignade}
             />
           </div>
-          {/* Ozone et végétation */}
-          <div id="Ozone et végétation" className={styles.indicateurWrapper}>
-            <OzoneEtVegetation
-              aot40={aot40}
-              carteCommunes={carteCommunes}
-            />
-          </div>
         </section>
       </div>
     </>

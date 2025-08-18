@@ -520,12 +520,12 @@ export const WaterDropNumber = ({
             flexDirection: "column",
             padding: '0.1rem 0.3rem',
             borderRadius: '0.5rem',
-
             alignItems: "center",
             justifyContent: "center",
             backgroundColor: "white",
             boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px',
             width: 'fit-content',
+            border: '1px solid var(--gris-dark)',
           }}
         >
           <Body>
