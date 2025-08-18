@@ -57,7 +57,7 @@ export const TypesDeSols = ({
   return (
     <>
       <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        Part des ménages en situation de précarité énergétique liée au logement
+        Cartographie des différents types de sols
       </H3>
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper} style={{ alignItems: 'center' }}>
@@ -96,7 +96,7 @@ export const TypesDeSols = ({
                   <LegendCompColor legends={vegetalisationLegend} />
                 </div>
               </>
-            ) : <DataNotFoundForGraph image={DataNotFound} />
+            ) : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
           }
         </div>
       </div>

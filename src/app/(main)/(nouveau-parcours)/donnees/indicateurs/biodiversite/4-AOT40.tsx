@@ -132,7 +132,6 @@ export const OzoneEtVegetation = (props: {
     : null;
 
   const exportData = IndicatorExportTransformations.biodiversite.aot40(aot40);
-
   return (
     <>
       <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
@@ -184,7 +183,7 @@ export const OzoneEtVegetation = (props: {
                   <LegendCompColor legends={aot40Legends} />
                 </div>
               </>
-            ) : <DataNotFoundForGraph image={DataNotFound} />
+            ) : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
           }
         </div>
       </div>
@@ -192,14 +191,17 @@ export const OzoneEtVegetation = (props: {
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
           Source : Géod’Air (2024)
         </Body>
-        <ExportButtonNouveauParcours
-          data={exportData}
-          baseName="aot_40"
-          type={type}
-          libelle={libelle}
-          code={code}
-          sheetName="AOT 40"
-        />
+        {
+          carteCommunes.length > 0 && (
+            <ExportButtonNouveauParcours
+              data={exportData}
+              baseName="aot_40"
+              type={type}
+              libelle={libelle}
+              code={code}
+              sheetName="AOT 40"
+            />
+          )}
       </div>
     </>
   );

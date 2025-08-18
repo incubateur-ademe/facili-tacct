@@ -51,20 +51,26 @@ export const MicroPieChart = ({
   ariaLabel?: string;
 }) => {
   return (
-    <div className={styles.microPieChartWrapper}>
-      <Progress
-        {...ProgressProps}
-        aria-label={ariaLabel}
-        percent={Number(pourcentage)}
-        strokeColor={couleurs.gris.dark}
-        trailColor={couleurs.gris.medium}
-      />
-      <div className={styles.microPieChartText}>
-        <Body style={{ color: couleurs.gris.dark }}>
-          {Round(Number(pourcentage), arrondi)} %
-        </Body>
-      </div>
-    </div>
+    <>
+      {
+        isNaN(Number(pourcentage)) ? null : (
+          <div className={styles.microPieChartWrapper}>
+            <Progress
+              {...ProgressProps}
+              aria-label={ariaLabel}
+              percent={Number(pourcentage)}
+              strokeColor={couleurs.gris.dark}
+              trailColor={couleurs.gris.medium}
+            />
+            <div className={styles.microPieChartText}>
+              <Body style={{ color: couleurs.gris.dark }}>
+                {Round(Number(pourcentage), arrondi)} %
+              </Body>
+            </div>
+          </div>
+        )
+      }
+    </>
   );
 }
 
@@ -108,15 +114,20 @@ export const MicroCircleGrid = ({
   });
 
   return (
-    <div
-      className={styles.microCircleGridWrapper}
-      aria-label={ariaLabel}
-    >
-      <Body weight="bold">{Round(pourcentage, arrondi)} %</Body>
-      <div className={styles.circleGrid}>
-        {cercles}
-      </div>
-    </div>
+    <>
+      {
+        isNaN(Number(pourcentage)) ? null : (
+          <div
+            className={styles.microCircleGridWrapper}
+            aria-label={ariaLabel}
+          >
+            <Body weight="bold">{Round(pourcentage, arrondi)} %</Body>
+            <div className={styles.circleGrid}>
+              {cercles}
+            </div>
+          </div>
+        )}
+    </>
   );
 }
 
@@ -173,6 +184,7 @@ export const MicroRemplissageTerritoire = (props: {
   );
 
   useEffect(() => {
+    if (territoireContours.length === 0) return;
     setBounds(geojsonObject.getBounds().toBBoxString().split(',').map(Number));
   }, [territoireContours]);
   const union =
@@ -196,7 +208,7 @@ export const MicroRemplissageTerritoire = (props: {
     : null;
   return (
     <>
-      {bounds[0] != 0 ? (
+      {territoireContours.length > 0 && bounds[0] != 0 ? (
         <div style={{
           width: `${containerWidth}px`,
           height: `${containerHeight}px`,
@@ -314,6 +326,7 @@ export const MicroChiffreTerritoire = (props: {
   );
 
   useEffect(() => {
+    if (territoireContours.length === 0) return;
     setBounds(geojsonObject.getBounds().toBBoxString().split(',').map(Number));
   }, [territoireContours]);
   const union =
@@ -330,7 +343,7 @@ export const MicroChiffreTerritoire = (props: {
 
   return (
     <>
-      {bounds[0] != 0 ? (
+      {territoireContours.length > 0 && bounds[0] != 0 ? (
         <div style={{
           width: `${containerWidth}px`,
           height: `${containerHeight}px`,

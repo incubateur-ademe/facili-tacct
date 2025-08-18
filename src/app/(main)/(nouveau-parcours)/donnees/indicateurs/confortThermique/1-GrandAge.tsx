@@ -95,7 +95,7 @@ export const GrandAge = ({
               {
                 !Object.values(yData).slice(0, -2).includes('NaN') ?
                   <LineChart1 xData={xData} yData={yGraphData} />
-                  : <DataNotFoundForGraph image={DataNotFound} />
+                  : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
               }
             </div>
           ) : (

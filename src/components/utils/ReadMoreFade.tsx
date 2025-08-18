@@ -3,7 +3,7 @@ import styles from "./ReadMoreFade.module.scss";
 
 interface ReadMoreFadeProps {
   children: React.ReactNode;
-  maxHeight?: number; // in px
+  maxHeight?: number;
 }
 
 export const ReadMoreFade: React.FC<ReadMoreFadeProps> = ({ children, maxHeight = 400 }) => {
@@ -14,14 +14,13 @@ export const ReadMoreFade: React.FC<ReadMoreFadeProps> = ({ children, maxHeight 
   const [showFade, setShowFade] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
-  const transitionDuration = 1000; // ms, doit matcher le CSS
+  const transitionDuration = 1000; 
 
   useEffect(() => {
     if (contentRef.current) {
       setShowButton(contentRef.current.scrollHeight > maxHeight);
-      setCurrentHeight(maxHeight); // reset to maxHeight on children change
+      setCurrentHeight(maxHeight);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [children, maxHeight]);
 
   // Animation ouverture/fermeture + gestion du fade
@@ -30,29 +29,29 @@ export const ReadMoreFade: React.FC<ReadMoreFadeProps> = ({ children, maxHeight 
     if (expanded && contentRef.current) {
       // OUVERTURE
       setOverflow('hidden');
-      setCurrentHeight(maxHeight); // start from collapsed
+      setCurrentHeight(maxHeight); 
       setShowFade(true);
-      setFadeOut(true); // lance l'animation de disparition du fade
+      setFadeOut(true);
       setTimeout(() => {
         if (contentRef.current) {
           setCurrentHeight(contentRef.current.scrollHeight);
         }
-      }, 20);
+      }, 100);
       timer = setTimeout(() => {
         setOverflow('visible');
-        setCurrentHeight(undefined); // none
-        setShowFade(false); // retire le fade du DOM
+        setCurrentHeight(undefined); 
+        setShowFade(false); 
         setFadeOut(false);
       }, transitionDuration + 20);
     } else if (!expanded && contentRef.current) {
       // FERMETURE
       setOverflow('hidden');
-      setCurrentHeight(contentRef.current.scrollHeight); // start from expanded
+      setCurrentHeight(contentRef.current.scrollHeight); 
       setShowFade(true);
       setFadeOut(false);
       setTimeout(() => {
         setCurrentHeight(maxHeight);
-      }, 20);
+      }, 100);
     }
     return () => { if (timer) clearTimeout(timer); };
   }, [expanded, maxHeight]);

@@ -97,18 +97,29 @@ export const DonneesGestionRisques = ({
           </Body>
         </section>
 
-        {/* Section Aménagement */}
+        {/* Section Gestion des risques */}
         <section className={styles.sectionType}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
-            {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
-          </H2>
-          {/* Arrêtés catnat */}
-          <div id="Arrêtés catnat" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+          {/* Arrêtés CatNat */}
+          <div id="Arrêtés CatNat" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
             <ArretesCatnat
               gestionRisques={gestionRisques}
               carteCommunes={carteCommunes}
             />
           </div>
+
+          {/* Faux de forêt */}
+          <div id="Feux de forêt" className={styles.indicateurWrapper}>
+            <FeuxDeForet
+              incendiesForet={incendiesForet}
+            />
+          </div>
+        </section>
+
+        {/* Section Bâtiments et logements */}
+        <section className={styles.sectionType}>
+          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
+            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
+          </H2>
 
           {/* Retrait-gonflement des argiles */}
           <div id="Retrait-gonflement des argiles" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
@@ -131,6 +142,13 @@ export const DonneesGestionRisques = ({
               />
             )}
           </div>
+        </section>
+
+        {/* Section Aménagement */}
+        <section className={styles.sectionType}>
+          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
+            {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
+          </H2>
 
           {/* Érosion côtière */}
           <div id="Érosion côtière" className={styles.indicateurWrapper}>
@@ -141,18 +159,7 @@ export const DonneesGestionRisques = ({
           </div>
         </section>
 
-        {/* Section Forêts */}
-        <section className={styles.sectionType}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
-            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
-          </H2>
-          {/* Faux de forêt */}
-          <div id="Feux de forêt" className={styles.indicateurWrapper}>
-            <FeuxDeForet
-              incendiesForet={incendiesForet}
-            />
-          </div>
-        </section>
+
       </div>
     </>
   );

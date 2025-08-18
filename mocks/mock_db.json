@@ -5,18 +5,18 @@
   "databases": {
     "agriculture": [
       {
-        "index": 1,
-        "code_geographique": "12345",
-        "libelle_geographique": "Commune A",
+        "index": 456794546465,
+        "code_geographique": "75056",
+        "libelle_geographique": "Paris",
         "epci": "EPCI1",
         "libelle_epci": "EPCI Lib 1",
         "departement": "75",
         "libelle_departement": "Paris",
         "region": 11,
-        "ept": null,
-        "libelle_petr": null,
-        "code_pnr": null,
-        "libelle_pnr": null,
+        "ept": "null",
+        "libelle_petr": "null",
+        "code_pnr": "null",
+        "libelle_pnr": "null",
         "part_irr_SAU_2020": 12.5
       }
     ],
@@ -292,8 +292,8 @@
         "exploitation_sau_herbe_subventions": 17,
         "exploitation_sau_herbe_bois_patures": 18,
         "exploitation_sau_jardins": 19,
-        "superficie_sau": 20,
-        "superficie_sau_terres_arables": 21,
+        "superficie_sau": 1000,
+        "superficie_sau_terres_arables": 221,
         "superficie_sau_terres_arables_cereales": 22,
         "superficie_sau_terres_arables_oleagineux": 23,
         "superficie_sau_terres_arables_fourrageres": 24,
@@ -357,12 +357,22 @@
     ],
     "communes_drom": [
       {
-        "id": 1,
-        "code_insee": "98765",
-        "nom": "Commune DROM",
+        "code_geographique": "97105",
+        "libelle_geographique": "Basse-Terre",
+        "epci": "2000814566",
+        "libelle_epci": "EPCI Basse Terre",
         "departement": "971",
-        "region": "Guadeloupe",
-        "geom": "POINT(2.35 48.85)"
+        "libelle_departement": "Guadeloupe",
+        "region": 1,
+        "ept": "",
+        "libelle_petr": "",
+        "code_pnr": "",
+        "libelle_pnr": "",
+        "coordinates": "16.0104,-61.7064",
+        "densite_bati": 0.3,
+        "precarite_logement": 0.2,
+        "surface": 5.2,
+        "geometry": "POLYGON(-61.7064 16.0104)"
       }
     ],
     "erosion_cotiere": [

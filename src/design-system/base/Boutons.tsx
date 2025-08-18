@@ -102,7 +102,7 @@ export const BoutonPrimaireClassic = ({
     color: disabled ? nuancesGris.dark : "white",
     backgroundColor: disabled ? nuancesGris.light : couleursBoutons.primaire[1],
     borderRadius: '60px',
-    height: size === 'xs' ? '24px' : size === 'sm' ? '32px' : size === 'md' ? '40px' : '48px',
+    minHeight: size === 'xs' ? '24px' : size === 'sm' ? '32px' : size === 'md' ? '40px' : '48px',
     border: disabled ? `1px solid ${nuancesGris.light}` : `1px solid ${couleursBoutons.primaire[1]}`,
     padding: size === 'xs' ? '1px 10px' : '4px 12px',
     fontWeight: 500,

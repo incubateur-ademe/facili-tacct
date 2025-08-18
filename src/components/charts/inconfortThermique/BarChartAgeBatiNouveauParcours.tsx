@@ -57,7 +57,7 @@ export const BarChartAgeBatiNouveauParcours = ({ chartData }: Props) => {
           innerPadding={2}
 
         />
-        : <DataNotFoundForGraph image={DataNotFound} />
+        : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
       }
     </div>
   );

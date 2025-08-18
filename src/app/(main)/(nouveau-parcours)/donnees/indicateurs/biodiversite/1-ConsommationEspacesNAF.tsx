@@ -48,7 +48,12 @@ export const ConsommationEspacesNAF = (props: {
     ? consommationNAF.filter((item) => item.code_geographique === code)[0]
       ?.naf09art23
     : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
+  console.log("sumnaf", sumNaf)
   const exportData = IndicatorExportTransformations.biodiversite.EspacesNaf(consommationNAF);
+
+  console.log("test", carteCommunes.length !== 0 && enveloppe && carteCommunesFiltered !== null)
+  console.log("moule", carteCommunesFiltered)
+  console.log("enveloppe", enveloppe)
 
   return (
     <>
@@ -56,33 +61,35 @@ export const ConsommationEspacesNAF = (props: {
         Sols imperméabilisés entre 2009 et 2023
       </H3>
       <div className={styles.datavizMapContainer}>
-        <div className={styles.chiffreDynamiqueWrapper}>
-          <MicroChiffreTerritoire
-            value={sumNaf / 10000}
-            unit="ha"
-            arrondi={1}
-            territoireContours={carteCommunesFiltered}
-          />
-          <div className={styles.text}>
-            {
-              sumNaf && sumNaf !== 0 ? (
-                <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                  Entre 2009 et 2023, votre territoire a consommé{' '}
-                  <b>{Round(sumNaf / 10000, 1)} hectare(s)</b> d’espaces naturels
-                  et forestiers.{' '}
-                </Body>
-              ) : ""
-            }
-            <CustomTooltipNouveauParcours
-              title={espacesNAFTooltipText}
-              texte="D'où vient ce chiffre ?"
+        <div className={styles.dataTextWrapper}>
+          <div className={styles.chiffreDynamiqueWrapper}>
+            <MicroChiffreTerritoire
+              value={sumNaf / 10000}
+              unit="ha"
+              arrondi={1}
+              territoireContours={carteCommunesFiltered}
             />
+            <div className={styles.text}>
+              {
+                sumNaf && sumNaf !== 0 ? (
+                  <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                    Entre 2009 et 2023, votre territoire a consommé{' '}
+                    <b>{Round(sumNaf / 10000, 1)} hectare(s)</b> d’espaces naturels
+                    et forestiers.{' '}
+                  </Body>
+                ) : ""
+              }
+              <CustomTooltipNouveauParcours
+                title={espacesNAFTooltipText}
+                texte="D'où vient ce chiffre ?"
+              />
+            </div>
           </div>
-        </div>
-        <div className='mt-4 pr-5'>
-          <ReadMoreFade maxHeight={150}>
-            <ConsommationEspacesNAFBiodiversiteText />
-          </ReadMoreFade>
+          <div className='mt-4 pr-5'>
+            <ReadMoreFade maxHeight={150}>
+              <ConsommationEspacesNAFBiodiversiteText />
+            </ReadMoreFade>
+          </div>
         </div>
         <div className={styles.mapWrapper}>
           {
@@ -99,7 +106,7 @@ export const ConsommationEspacesNAF = (props: {
                   <LegendCompColor legends={espacesNAFDatavizLegend} />
                 </div>
               </>
-            ) : <DataNotFoundForGraph image={DataNotFound} />
+            ) : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
           }
         </div>
       </div>

@@ -1,6 +1,5 @@
 import { GetInconfortThermique } from "@/lib/queries/databases/inconfortThermique";
 import { GetClcTerritoires, GetCommunes } from "@/lib/queries/postgis/cartographie";
-import { notFound } from "next/navigation";
 import DonneesConfortThermique from "./DonneesConfortThermique";
 
 const ConfortThermiqueServerPage = async (props: { searchParams: SearchParams }) => {
@@ -10,9 +9,9 @@ const ConfortThermiqueServerPage = async (props: { searchParams: SearchParams })
   const clc = await GetClcTerritoires(libelle, type, code);
 
   // Si les données ne sont pas disponibles, on peut soit retourner notFound() soit un message d'erreur
-  if (!clc || !clc.length || !dbInconfortThermique.length || !carteCommunes.length) {
-    notFound();
-  }
+  // if (!clc || !clc.length || !dbInconfortThermique.length || !carteCommunes.length) {
+  //   notFound();
+  // }
 
   return (
     <DonneesConfortThermique

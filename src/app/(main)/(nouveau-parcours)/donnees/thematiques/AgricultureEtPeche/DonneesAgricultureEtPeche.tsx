@@ -67,24 +67,10 @@ export const DonneesAgricultureEtPeche = ({
           </Body>
         </section>
 
-        {/* Section Eau */}
+        {/* Section Agriculture */}
         <section className={styles.sectionType}>
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
-          </H2>
-          {/* Superficies irriguées */}
-          <div id="Superficies irriguées" className={styles.indicateurWrapper}>
-            <SuperficiesIrriguees
-              agriculture={agriculture}
-              carteCommunes={carteCommunes}
-            />
-          </div>
-        </section>
-
-        {/* Section Biodiversité */}
-        <section className={styles.sectionType}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
-            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
           {/* Surfaces en bio */}
           <div id="Surfaces en bio" className={styles.indicateurWrapper}>
@@ -92,17 +78,25 @@ export const DonneesAgricultureEtPeche = ({
               agricultureBio={agricultureBio}
             />
           </div>
-        </section>
 
-        {/* Section Santé */}
-        <section className={styles.sectionType}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
-            {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
-          </H2>
           {/* Types de cultures */}
           <div id="Types de culture" className={styles.indicateurWrapper}>
             <TypesDeCulture
               surfacesAgricoles={surfacesAgricoles}
+            />
+          </div>
+        </section>
+
+        {/* Section Eau */}
+        <section className={styles.sectionType}>
+          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
+            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
+          </H2>
+          {/* Superficies irriguées */}
+          <div id="Superficies irriguées" className={styles.indicateurWrapper}>
+            <SuperficiesIrriguees
+              agriculture={agriculture}
+              carteCommunes={carteCommunes}
             />
           </div>
         </section>

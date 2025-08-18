@@ -28,21 +28,27 @@ export const sommaireThematiques = {
     thematiquesLiees: [
       {
         id: "section1",
+        thematique: "Biodiversité",
+        icone: "🌼",
+        sousCategories: ["Ozone et végétation"]
+      },
+      {
+        id: "section2",
         thematique: "Aménagement",
         icone: "🏗️",
         sousCategories: ["Consommation d'espaces NAF"]
       },
       {
-        id: "section2",
+        id: "section3",
         thematique: "Agriculture",
-        icone: "🌼",
+        icone: "🌾",
         sousCategories: ["Surfaces en bio"]
       },
       {
-        id: "section3",
+        id: "section4",
         thematique: "Eau",
         icone: "💧",
-        sousCategories: ["État écologique des cours d'eau", "Ozone et végétation"]
+        sousCategories: ["État écologique des cours d'eau"]
       }
     ]
   },
@@ -50,15 +56,21 @@ export const sommaireThematiques = {
     thematiquesLiees: [
       {
         id: "section1",
-        thematique: "Aménagement",
-        icone: "🏗️",
-        sousCategories: ["Arrêtés CatNat", "Retrait-gonflement des argiles", "Érosion côtière"]
+        thematique: "",
+        icone: "",
+        sousCategories: ["Arrêtés CatNat", "Feux de forêt"]
       },
       {
         id: "section2",
-        thematique: "Forêts",
-        icone: "🌳",
-        sousCategories: ["Feux de forêt"]
+        thematique: "Bâtiments et logements",
+        icone: "🏠",
+        sousCategories: ["Retrait-gonflement des argiles"]
+      },
+      {
+        id: "section3",
+        thematique: "Aménagement",
+        icone: "🏗️",
+        sousCategories: ["Érosion côtière"]
       },
     ]
   },
@@ -66,21 +78,15 @@ export const sommaireThematiques = {
     thematiquesLiees: [
       {
         id: "section1",
-        thematique: "Eau",
-        icone: "💧",
-        sousCategories: ["Superficies irriguées"]
+        thematique: "",
+        icone: "",
+        sousCategories: ["Surfaces en bio", "Types de culture"]
       },
       {
         id: "section2",
-        thematique: "Biodiversité",
-        icone: "🌼",
-        sousCategories: ["Surfaces en bio"]
-      },
-      {
-        id: "section3",
-        thematique: "Santé",
-        icone: "🏥",
-        sousCategories: ["Types de culture"]
+        thematique: "Eau",
+        icone: "💧",
+        sousCategories: ["Superficies irriguées"]
       },
     ]
   },
@@ -88,15 +94,9 @@ export const sommaireThematiques = {
     thematiquesLiees: [
       {
         id: "section1",
-        thematique: "Biodiversité",
-        icone: '🌼',
-        sousCategories: ["Consommation d'espaces NAF"]
-      },
-      {
-        id: "section2",
-        thematique: "Santé",
-        icone: "🏥",
-        sousCategories: ["LCZ"]
+        thematique: "Aménagement",
+        icone: '🏗️',
+        sousCategories: ["Consommation d'espaces NAF", "LCZ"]
       },
     ]
   },
@@ -104,15 +104,9 @@ export const sommaireThematiques = {
     thematiquesLiees: [
       {
         id: "section1",
-        thematique: "Biodiversité",
-        icone: '🌼',
-        sousCategories: ["État écologique des cours d'eau"]
-      },
-      {
-        id: "section2",
-        thematique: "Santé",
-        icone: "🏥",
-        sousCategories: ["Ressources en eau"]
+        thematique: "Eau",
+        icone: '💧',
+        sousCategories: ["Ressources en eau", "État écologique des cours d'eau"]
       },
     ]
   }

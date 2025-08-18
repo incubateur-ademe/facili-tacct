@@ -57,7 +57,6 @@ export const TypesDeCulture = (props: {
                     Pour le recensement de 2020, les informations détaillées sur les types
                     de cultures ne sont disponibles qu'au niveau des EPCI.
                   </Body>
-                  <br></br>
                   <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
                     Sur votre {type === "commune" ? "EPCI" : "territoire"}, le type de surface
                     prédominant est constitué de <b>{maxCategory.id.toLowerCase()}</b>,
