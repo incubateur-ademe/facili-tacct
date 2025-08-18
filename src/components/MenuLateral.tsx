@@ -4,6 +4,7 @@ import { ErrorDisplay } from '@/app/ErrorDisplay';
 import retourIcon from '@/assets/icons/retour_icon_black.svg';
 import { Body, H2, SousTitre2 } from '@/design-system/base/Textes';
 import { handleRedirection, handleRedirectionThematique } from '@/hooks/Redirections';
+import { GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -32,10 +33,10 @@ const Etape2Sommaire = [
 export const MenuLateral = () => {
   const searchParams = useSearchParams();
   const params = usePathname();
-  const code = searchParams.get('code');
-  const libelle = searchParams.get('libelle');
-  const type = searchParams.get('type');
-  const thematique = searchParams.get('thematique') as "Confort thermique";
+  const code = searchParams.get('code')!;
+  const libelle = searchParams.get('libelle')!;
+  const type = searchParams.get('type')!;
+  const thematique = searchParams.get('thematique') as "Confort thermique" | "Gestion des risques" | "Aménagement" | "Eau" | "Biodiversité" | "Agriculture et pêche";
   const [topPosition, setTopPosition] = useState<number>(173);
   const [navigationHeight, setNavigationHeight] = useState<number>(0);
   const [openEtape1, setOpenEtape1] = useState<boolean>(params === "/donnees" ? true : false);
@@ -46,6 +47,7 @@ export const MenuLateral = () => {
   const [activeAnchorEtape2, setActiveAnchorEtape2] = useState<string>('');
   const [urlAnchor, setUrlAnchor] = useState<string | null>(null);
   const [pendingScroll, setPendingScroll] = useState<string | null>(null);
+  const [isErosionCotiere, setIsErosionCotiere] = useState<boolean>(false);
 
   const redirectionRetour = handleRedirection({
     searchCode: code || '',
@@ -73,6 +75,12 @@ export const MenuLateral = () => {
         scrollToAnchor(anchor);
       }, 500);
     }
+    void (async () => {
+      const erosionCotiere = await GetErosionCotiere(code, libelle, type);
+      if (erosionCotiere.length > 0) {
+        setIsErosionCotiere(true);
+      }
+    })()
   }, []);
 
   // Mesurer la hauteur de la div de navigation
@@ -112,6 +120,7 @@ export const MenuLateral = () => {
       const scrollPosition = scrollY + 200; // Offset pour la détection
       if (params === "/donnees") {
         const allAnchors = ongletsMenu.thematiquesLiees.flatMap(section => section.sousCategories);
+        allAnchors.push("Érosion côtière");
         for (const item of allAnchors) {
           const element = document.getElementById(item);
           if (element) {
@@ -279,6 +288,32 @@ export const MenuLateral = () => {
                   </div>
                 </div>
               ))}
+              {
+                isErosionCotiere && thematique === "Gestion des risques" && (
+                  <>
+                    <SousTitre2
+                      style={{
+                        color: "var(--principales-rouge)",
+                        padding: "0.5rem 0 0.5rem"
+                      }}
+                    >
+                      🏗️ Aménagement
+                    </SousTitre2>
+                    <div className="">
+                      <button
+                        key={"Érosion"}
+                        onClick={() => handleItemClickEtape1("Érosion côtière")}
+                        className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === "Érosion côtière"
+                          ? styles.itemSurligne
+                          : styles.itemNonSurligne
+                          }`}
+                      >
+                        <Body size='sm'>Érosion côtière</Body>
+                      </button>
+                    </div>
+                  </>
+                )
+              }
             </div>
             {thematique === "Confort thermique" ? (
               <>

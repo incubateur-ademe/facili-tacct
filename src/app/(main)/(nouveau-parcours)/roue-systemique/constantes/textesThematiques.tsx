@@ -66,12 +66,12 @@ export const sommaireThematiques = {
         icone: "🏠",
         sousCategories: ["Retrait-gonflement des argiles"]
       },
-      {
-        id: "section3",
-        thematique: "Aménagement",
-        icone: "🏗️",
-        sousCategories: ["Érosion côtière"]
-      },
+      // {
+      //   id: "section3",
+      //   thematique: "Aménagement",
+      //   icone: "🏗️",
+      //   sousCategories: ["Érosion côtière"]
+      // },
     ]
   },
   "Agriculture et pêche": {
