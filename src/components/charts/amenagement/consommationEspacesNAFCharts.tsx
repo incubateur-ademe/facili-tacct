@@ -65,7 +65,7 @@ export const ConsommationEspacesNAFCharts = (props: {
             </div>
           </div>
         ) : (
-          <div className={styles.graphWrapper}>
+          <div className='p-6 flex flex-col justify-center h-full'>
             <DataNotFoundForGraph image={DataNotFound} />
           </div>
         )

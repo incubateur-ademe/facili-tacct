@@ -137,7 +137,7 @@ export const PieChartTravailExt = ({ graphData, travailExterieurTerritoire }: Pr
             </div>
           )}
         />
-        : <DataNotFoundForGraph image={travailExterieurTerritoire.length === 0 ? DataNotFound : ZeroData} />
+        : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={travailExterieurTerritoire.length === 0 ? DataNotFound : ZeroData} /></div>
       }
     </div>
   );

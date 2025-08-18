@@ -209,15 +209,21 @@ export const MultiSheetExportButtonNouveauParcours = ({
   };
 
   return (
-    <BoutonPrimaireClassic
-      onClick={handleExport}
-      disabled={isExporting}
-      icone={ExporterIcon}
-      size='sm'
-      text={isExporting ? 'Export en cours...' : children as string}
-      style={{
-        cursor: isExporting ? 'wait' : 'pointer',
-      }}
-    />
+    <>
+      {
+        sheetsData.map(sheet => sheet.data).flat(1).length === 0 ? null : (
+          <BoutonPrimaireClassic
+            onClick={handleExport}
+            disabled={isExporting}
+            icone={ExporterIcon}
+            size='sm'
+            text={isExporting ? 'Export en cours...' : children as string}
+            style={{
+              cursor: isExporting ? 'wait' : 'pointer',
+            }}
+          />
+        )
+      }
+    </>
   );
 };

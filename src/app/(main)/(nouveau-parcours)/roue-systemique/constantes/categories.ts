@@ -82,7 +82,7 @@ export const nomThematiques = [
   {
     label: 'Agriculture & pêche',
     labelRadius: 280,
-    icon: '🐟',
+    icon: '🌾',
     disabled: false
   },
   {

@@ -23,9 +23,9 @@ export const DonneesEau = ({
 }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Eau";
-  const code = searchParams.get('code')!;
-  const libelle = searchParams.get('libelle')!;
-  const type = searchParams.get('type')!;
+  // const code = searchParams.get('code')!;
+  // const libelle = searchParams.get('libelle')!;
+  // const type = searchParams.get('type')!;
   const ongletsMenu = sommaireThematiques[thematique];
 
   useEffect(() => {
@@ -72,24 +72,18 @@ export const DonneesEau = ({
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
+          {/* Ressources en eau */}
+          <div id="Ressources en eau" className={styles.indicateurWrapper}>
+            <PrelevementsEnEau
+              ressourcesEau={ressourcesEau}
+            />
+          </div>
+
           {/* État écologique des cours d'eau */}
           <div id="État écologique des cours d'eau" className={styles.indicateurWrapper}>
             <EtatEcoCoursDeau
               etatCoursDeau={etatCoursDeau}
               carteCommunes={carteCommunes}
-            />
-          </div>
-        </section>
-
-        {/* Section Santé */}
-        <section className={styles.sectionType}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
-            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
-          </H2>
-          {/* Ressources en eau */}
-          <div id="Ressources en eau" className={styles.indicateurWrapper}>
-            <PrelevementsEnEau
-              ressourcesEau={ressourcesEau}
             />
           </div>
         </section>

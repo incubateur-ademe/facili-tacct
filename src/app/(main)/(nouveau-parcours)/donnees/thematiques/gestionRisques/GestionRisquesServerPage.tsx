@@ -1,6 +1,5 @@
 import { GetArretesCatnat, GetIncendiesForet } from "@/lib/queries/databases/gestionRisques";
 import { GetCommunes, GetErosionCotiere } from "@/lib/queries/postgis/cartographie";
-import { notFound } from "next/navigation";
 import { DonneesGestionRisques } from "./DonneesGestionRisques";
 
 const GestionRisquesServerPage = async (props: { searchParams: SearchParams }) => {
@@ -11,9 +10,9 @@ const GestionRisquesServerPage = async (props: { searchParams: SearchParams }) =
   const dbIncendiesForet = await GetIncendiesForet(code, libelle, type);
 
   // Si les données ne sont pas disponibles, on peut soit retourner notFound() soit un message d'erreur
-  if (!carteCommunes.length || !dbGestionRisques || !dbIncendiesForet) {
-    notFound();
-  }
+  // if (!carteCommunes.length || !dbGestionRisques || !dbIncendiesForet) {
+  //   notFound();
+  // }
 
   return (
     <DonneesGestionRisques

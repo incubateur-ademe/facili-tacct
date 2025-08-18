@@ -2,7 +2,6 @@ import { GetAgricultureBio, GetAOT40, GetConsommationNAF } from "@/lib/queries/d
 import { GetQualiteEauxBaignade } from "@/lib/queries/databases-nouveau-parcours/ressourcesEau";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
 import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";
-import { notFound } from "next/navigation";
 import { DonneesBiodiversite } from "./DonneesBiodiversite";
 
 const BiodiversiteServerPage = async (props: { searchParams: SearchParams }) => {
@@ -15,9 +14,9 @@ const BiodiversiteServerPage = async (props: { searchParams: SearchParams }) => 
   const qualiteEauxBaignadeParDpmt = await GetQualiteEauxBaignade(code, libelle, type);
 
   // Si les données ne sont pas disponibles, on peut soit retourner notFound() soit un message d'erreur
-  if (!carteCommunes.length || !dbAgricultureBio || !dbConsommationNAF || !dbAOT40 || !dbEtatCoursDeau || !qualiteEauxBaignadeParDpmt) {
-    notFound();
-  }
+  // if (!carteCommunes.length || !dbAgricultureBio || !dbConsommationNAF || !dbAOT40 || !dbEtatCoursDeau || !qualiteEauxBaignadeParDpmt) {
+  //   notFound();
+  // }
 
   return (
     <DonneesBiodiversite

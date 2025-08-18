@@ -3,7 +3,7 @@ import AgricultureEtPecheServerPage from './thematiques/agricultureEtPeche/Agric
 import AmenagementServerPage from './thematiques/amenagement/AmenagementServerPage';
 import BiodiversiteServerPage from './thematiques/biodiversite/BiodiversiteServerPage';
 import ConfortThermiqueServerPage from './thematiques/confortThermique/ConfortThermiqueServerPage';
-import EauServerPage from './thematiques/Eau/EauServerPage';
+import EauServerPage from './thematiques/eau/EauServerPage';
 import GestionRisquesServerPage from './thematiques/gestionRisques/GestionRisquesServerPage';
 
 const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => {

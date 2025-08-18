@@ -75,10 +75,26 @@ export const DonneesBiodiversite = ({
           </Body>
         </section>
 
-        {/* Section Aménagement */}
+
+        {/* Section Biodiversité */}
         <section className={styles.sectionType}>
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
+          </H2>
+
+          {/* Ozone et végétation */}
+          <div id="Ozone et végétation" className={styles.indicateurWrapper}>
+            <OzoneEtVegetation
+              aot40={aot40}
+              carteCommunes={carteCommunes}
+            />
+          </div>
+        </section>
+
+        {/* Section Aménagement */}
+        <section className={styles.sectionType}>
+          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
+            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
           {/* Consommation d'espaces NAF */}
           <div id="Consommation d'espaces NAF" className={styles.indicateurWrapper}>
@@ -92,7 +108,7 @@ export const DonneesBiodiversite = ({
         {/* Section Aménagement */}
         <section className={styles.sectionType}>
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
-            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
+            {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
           </H2>
           {/* État écologique des cours */}
           <div id="Surfaces en bio" className={styles.indicateurWrapper}>
@@ -105,7 +121,7 @@ export const DonneesBiodiversite = ({
         {/* Section Eau */}
         <section className={styles.sectionType}>
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
-            {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
+            {ongletsMenu.thematiquesLiees[3].icone}{" "}{ongletsMenu.thematiquesLiees[3].thematique}
           </H2>
           {/* État écologique des cours d'eau */}
           <div id="État écologique des cours d'eau" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>

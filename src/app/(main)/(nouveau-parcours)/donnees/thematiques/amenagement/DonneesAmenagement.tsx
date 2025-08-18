@@ -65,7 +65,7 @@ export const DonneesAmenagement = ({
           </Body>
         </section>
 
-        {/* Section Biodiversité */}
+        {/* Section Aménagement */}
         <section className={styles.sectionType}>
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
@@ -77,13 +77,7 @@ export const DonneesAmenagement = ({
               carteCommunes={carteCommunes}
             />
           </div>
-        </section>
 
-        {/* Section Santé */}
-        <section className={styles.sectionType}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
-            {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
-          </H2>
           {/* État LCZ */}
           <div id="LCZ" className={styles.indicateurWrapper}>
             <LCZ

@@ -103,8 +103,6 @@ export const SurfacesEnBio = (props: {
                     </>
                   )
                 }
-
-
               </>
               : ""
             }

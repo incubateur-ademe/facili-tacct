@@ -56,7 +56,7 @@ export const LCZ = ({
         </Body>
         <div className={styles.mapWrapper}>
           {
-            carteCommunes ? (
+            carteCommunes.length > 0 ? (
               <div ref={exportPNGRef}>
                 <MapLCZNouveauParcours
                   carteCommunes={carteCommunes}
@@ -66,7 +66,7 @@ export const LCZ = ({
                   mapContainer={mapContainer}
                 />
               </div>
-            ) : <DataNotFoundForGraph image={DataNotFound} />
+            ) : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
           }
         </div>
       </div>

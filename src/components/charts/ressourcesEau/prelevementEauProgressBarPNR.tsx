@@ -193,7 +193,7 @@ const PrelevementEauProgressBarsPNR = ({
             ))}
         </>
       ) : (
-        <DataNotFound image={GraphNotFound} />
+        <div className='p-10 flex flex-row justify-center'><DataNotFound image={GraphNotFound} /></div>
       )}
     </div>
   );

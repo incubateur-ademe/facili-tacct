@@ -54,7 +54,7 @@ export const ErosionCotiereComp = ({
         </div>
         <div className={styles.datavizWrapper} style={{ height: 'fit-content' }}>
           {
-            erosionCotiere ?
+            erosionCotiere.length > 0 ?
               <>
                 <MapErosionCotiere
                   erosionCotiere={erosionCotiereMap}
@@ -66,7 +66,7 @@ export const ErosionCotiereComp = ({
                   <LegendErosionCotiere />
                 </div>
               </>
-              : <DataNotFoundForGraph image={GraphNotFound} />
+              : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={GraphNotFound} /></div>
           }
           <div className={styles.sourcesExportWrapper} style={{ borderTop: '1px solid var(--gris-medium)', borderBottom: '1px solid var(--gris-medium)' }}>
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>

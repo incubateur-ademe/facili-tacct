@@ -360,7 +360,7 @@ export const SurfacesEnBioText = () => (
 );
 
 export const SurfacesEnBioAgricultureText = () => (
-  <div>
+  <div className="pt-10">
     <Body size='sm'>
       Les défis de l’agriculture sont doubles : réduire ses émissions
       de gaz à effet de serre et s'adapter aux impacts du changement
@@ -787,7 +787,7 @@ export const RGAText = () => (
 );
 
 export const SurfacesAgricolesText = () => (
-  <>
+  <div className="pt-10">
     <Body size="sm">
       En 2020, près de deux tiers des terres agricoles françaises étaient
       consacrées aux terres arables : grandes cultures, légumes, mais aussi
@@ -821,7 +821,7 @@ export const SurfacesAgricolesText = () => (
     <Body size="sm">
       ⇒ En 2024, la production viticole a chuté de 18 % par rapport à la moyenne 2019-2023.
     </Body>
-  </>
+  </div>
 )
 
 export const LCZText = () => (

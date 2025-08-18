@@ -107,7 +107,7 @@ const SurfacesEnBioCharts = ({
             )}
           </div>
         ) : (
-          <div className={styles.dataWrapper}>
+          <div className={styles.dataWrapper} style={{ padding: "1rem" }}>
             <DataNotFoundForGraph image={DataNotFound} />
           </div>
         )}
