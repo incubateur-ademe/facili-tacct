@@ -143,23 +143,26 @@ export const DonneesGestionRisques = ({
             )}
           </div>
         </section>
+        {
+          erosionCotiere.length > 0 && (
+            <>
+              {/* Section Aménagement */}
+              <section className={styles.sectionType}>
+                <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
+                  🏗️ Aménagement
+                </H2>
 
-        {/* Section Aménagement */}
-        <section className={styles.sectionType}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
-            {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
-          </H2>
-
-          {/* Érosion côtière */}
-          <div id="Érosion côtière" className={styles.indicateurWrapper}>
-            <ErosionCotiereComp
-              erosionCotiere={erosionCotiere}
-              carteCommunes={carteCommunes}
-            />
-          </div>
-        </section>
-
-
+                {/* Érosion côtière */}
+                <div id="Érosion côtière" className={styles.indicateurWrapper}>
+                  <ErosionCotiereComp
+                    erosionCotiere={erosionCotiere}
+                    carteCommunes={carteCommunes}
+                  />
+                </div>
+              </section>
+            </>
+          )
+        }
       </div>
     </>
   );
