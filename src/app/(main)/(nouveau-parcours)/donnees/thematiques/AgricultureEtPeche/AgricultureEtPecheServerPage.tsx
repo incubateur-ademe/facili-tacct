@@ -1,7 +1,6 @@
 import { GetAgriculture, GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
 import { GetAgricultureBio } from "@/lib/queries/databases/biodiversite";
 import { GetCommunes } from "@/lib/queries/postgis/cartographie";
-import { notFound } from "next/navigation";
 import { DonneesAgricultureEtPeche } from "./DonneesAgricultureEtPeche";
 
 const AgricultureEtPecheServerPage = async (props: { searchParams: SearchParams }) => {
@@ -11,10 +10,16 @@ const AgricultureEtPecheServerPage = async (props: { searchParams: SearchParams 
   const dbSurfacesAgricoles = await GetSurfacesAgricoles(code, libelle, type);
   const dbAgricultureBio = await GetAgricultureBio(libelle, type, code);
 
+  // const carteCommunes = [];
+  // const dbAgriculture = mockDb.databases.agriculture;
+  // const dbSurfacesAgricoles = mockDb.databases.surfaces_agricoles;
+  // console.log("dbSurfacesAgricoles", dbSurfacesAgricoles)
+  // const dbAgricultureBio = mockDb.databases.agriculture_bio;
+
   // Si les données ne sont pas disponibles, on peut soit retourner notFound() soit un message d'erreur
-  if (!carteCommunes.length || !dbAgriculture || !dbSurfacesAgricoles || !dbAgricultureBio) {
-    notFound();
-  }
+  // if (!dbAgriculture || !dbSurfacesAgricoles || !dbAgricultureBio) {
+  //   notFound();
+  // }
 
   return (
     <DonneesAgricultureEtPeche

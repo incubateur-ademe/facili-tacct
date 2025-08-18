@@ -60,7 +60,7 @@ export const EtatEcoCoursDeau = (props: {
                 <LegendCompColor legends={etatCoursDeauLegends} />
               </div>
             </>
-          ) : <DataNotFoundForGraph image={DataNotFound} />
+          ) : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
           }
         </div>
       </div>

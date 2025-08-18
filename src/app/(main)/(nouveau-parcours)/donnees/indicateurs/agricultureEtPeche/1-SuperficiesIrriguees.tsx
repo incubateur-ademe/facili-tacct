@@ -48,6 +48,10 @@ export const SuperficiesIrriguees = (props: {
       .map((value) => (isNaN(value!) ? 0 : value))
       .reduce((acc, value) => acc! + value!, 0);
 
+      console.log("surfaceTerritoire", surfaceTerritoire)
+      console.log("agriculture", agriculture)
+
+
   return (
     <>
       <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
@@ -56,7 +60,7 @@ export const SuperficiesIrriguees = (props: {
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper}>
           <MicroPieChart
-            pourcentage={type === "commune" ? surfaceTerritoire! : surfaceTerritoire! / communesMap.length}
+            pourcentage={!surfaceTerritoire ? 0 : type === "commune" ? surfaceTerritoire : surfaceTerritoire / communesMap.length}
             arrondi={1}
             ariaLabel='Part de la superficie irriguée dans la SAU'
           />
@@ -94,7 +98,9 @@ export const SuperficiesIrriguees = (props: {
                 </div>
               </>
             ) : (
-              <DataNotFoundForGraph image={DataNotFound} />
+              <div className={styles.dataNotFoundForMap}>
+                <DataNotFoundForGraph image={DataNotFound} />
+              </div>
             )
           }
         </div>

@@ -5,8 +5,7 @@ const DataNotFoundForGraph = ({ image }: { image: string | StaticImageData }) =>
     <div
       style={{
         backgroundColor: 'white',
-        height: '500px',
-        width: '100%',
+        width: '600px',
         borderRadius: '8px',
       }}
     >
