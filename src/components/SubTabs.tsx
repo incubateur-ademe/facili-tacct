@@ -1,6 +1,6 @@
 'use client';
 
-import activiteIconBlack from '@/assets/icons/activite_icon_black.svg';
+import activiteIconGreen from '@/assets/icons/activite_icon_green.svg';
 import activiteIconWhite from '@/assets/icons/activite_icon_white.svg';
 import camembertIconGreen from '@/assets/icons/camembert_icon_green.svg';
 import camembertIconWhite from '@/assets/icons/camembert_icon_white.svg';
@@ -8,15 +8,15 @@ import cartographieIconGreen from '@/assets/icons/cartographie_icon_green.svg';
 import cartographieIconWhite from '@/assets/icons/cartographie_icon_white.svg';
 import evolutionIconGreen from '@/assets/icons/evolution_icon_green.svg';
 import evolutionIconWhite from '@/assets/icons/evolution_icon_white.svg';
-import habitatIconBlack from '@/assets/icons/habitat_icon_black.svg';
+import habitatIconGreen from '@/assets/icons/habitat_icon_green.svg';
 import habitatIconWhite from '@/assets/icons/habitat_icon_white.svg';
-import inconnuIconBlack from '@/assets/icons/inconnu_icon_black.svg';
+import inconnuIconGreen from '@/assets/icons/inconnu_icon_green.svg';
 import inconnuIconWhite from '@/assets/icons/inconnu_icon_white.svg';
-import mixteIconBlack from '@/assets/icons/mixte_icon_black.svg';
+import mixteIconGreen from '@/assets/icons/mixte_icon_green.svg';
 import mixteIconWhite from '@/assets/icons/mixte_icon_white.svg';
-import routesIconBlack from '@/assets/icons/route_icon_black.svg';
+import routesIconGreen from '@/assets/icons/route_icon_green.svg';
 import routesIconWhite from '@/assets/icons/route_icon_white.svg';
-import ferroviaireIconBlack from '@/assets/icons/train_icon_black.svg';
+import ferroviaireIconGreen from '@/assets/icons/train_icon_green.svg';
 import ferroviaireIconhite from '@/assets/icons/train_icon_white.svg';
 import { BoutonPrimaireClassic, BoutonSecondaireClassic } from '@/design-system/base/Boutons';
 import { useState } from 'react';
@@ -57,32 +57,32 @@ const tabIcons = [
   },
   {
     name: 'Habitat',
-    iconNotSelected: habitatIconBlack,
+    iconNotSelected: habitatIconGreen,
     iconSelected: habitatIconWhite
   },
   {
     name: 'Activité',
-    iconNotSelected: activiteIconBlack,
+    iconNotSelected: activiteIconGreen,
     iconSelected: activiteIconWhite
   },
   {
     name: 'Mixte',
-    iconNotSelected: mixteIconBlack,
+    iconNotSelected: mixteIconGreen,
     iconSelected: mixteIconWhite
   },
   {
     name: 'Routes',
-    iconNotSelected: routesIconBlack,
+    iconNotSelected: routesIconGreen,
     iconSelected: routesIconWhite
   },
   {
     name: 'Ferroviaire',
-    iconNotSelected: ferroviaireIconBlack,
+    iconNotSelected: ferroviaireIconGreen,
     iconSelected: ferroviaireIconhite
   },
   {
     name: 'Inconnu',
-    iconNotSelected: inconnuIconBlack,
+    iconNotSelected: inconnuIconGreen,
     iconSelected: inconnuIconWhite
   }
 ];
