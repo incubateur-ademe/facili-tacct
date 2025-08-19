@@ -2,6 +2,7 @@ import BookIcon from '@/assets/icons/book_icon_black.svg';
 import ForwardArrow from '@/assets/icons/keyboard_arrow_next_icon_black.svg';
 import ArticleImage2 from '@/assets/images/article13.png';
 import ArticleImage from '@/assets/images/article4.png';
+import { RetourHautDePage } from '@/components/RetourHautDePage';
 import EndPageTrigger from '@/hooks/EndPageTrigger';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,6 +11,7 @@ import styles from './article.module.scss';
 const PourquoiMobiliser = () => {
   return (
     <div>
+      <RetourHautDePage />
       <h1>Pourquoi mobiliser en interne et externe ?</h1>
       <div className={styles.textBloc}>
         <h2>

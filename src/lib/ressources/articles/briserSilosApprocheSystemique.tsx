@@ -6,6 +6,7 @@ import JardinAnglais from "@/assets/images/jardin_anglais.png";
 import JardinFrancais from "@/assets/images/jardin_francais.png";
 import LogiqueSystemie from "@/assets/images/logique_cartesienne.png";
 import MaterialisationSystemie from "@/assets/images/systemie.png";
+import { RetourHautDePage } from '@/components/RetourHautDePage';
 import ZoomOnClick from '@/components/utils/ZoomOnClick';
 import Image from "next/image";
 import Link from 'next/link';
@@ -15,6 +16,7 @@ import styles from "./article.module.scss";
 const BriserSilosApprocheSystemique = () => {
   return (
     <>
+      <RetourHautDePage />
       <div className={styles.textBloc} style={{ paddingTop: "0rem" }}>
         <h1>Brisez les silos : introduction à l’approche systémique</h1>
         <div className={styles.blueWrapper}>

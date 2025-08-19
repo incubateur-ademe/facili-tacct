@@ -1,10 +1,12 @@
 "use client";
+import { RetourHautDePage } from "@/components/RetourHautDePage";
 import EndPageTrigger from "../../../hooks/EndPageTrigger";
 import styles from "./article.module.scss";
 
 const RecruterStagiaire = () => {
   return (
     <>
+      <RetourHautDePage />
       <div className={styles.textBloc}>
         <h1>Recruter un stagiaire sur le diagnostic de vulnérabilité : bonne ou mauvaise idée ?</h1>
         <p>

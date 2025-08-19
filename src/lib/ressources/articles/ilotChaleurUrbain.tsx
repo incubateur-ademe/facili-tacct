@@ -1,6 +1,7 @@
 "use client";
 import ICUGuideSurchauffe from "@/assets/images/ICU_Guide_Surchauffe.png";
 import ICUVilles from "@/assets/images/villes_exposees_icu.png";
+import { RetourHautDePage } from "@/components/RetourHautDePage";
 import { DefinitionTooltip } from "@/components/utils/HtmlTooltip";
 import { albedo, surchauffeUrbaine } from "@/lib/definitions";
 import Image from "next/image";
@@ -16,6 +17,7 @@ const IlotChaleurUrbain = () => {
   };
   return (
     <>
+      <RetourHautDePage />
       <div className={styles.textBloc} style={{ paddingTop: "0rem" }}>
         <div className={styles.grayQuoteWrapper}>
           <p style={{ fontSize: "1.5rem", fontWeight: "700" }}>À retenir</p>

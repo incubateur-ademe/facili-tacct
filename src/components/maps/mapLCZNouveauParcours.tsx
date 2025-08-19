@@ -1,5 +1,6 @@
 'use client';
 
+import CeremaLogo from '@/assets/images/cerema_logo.png';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes } from '@/lib/postgres/models';
 import { mapStyles } from 'carte-facile';
@@ -7,6 +8,7 @@ import 'carte-facile/carte-facile.css';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl, { MapSourceDataEvent } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect, useRef, useState } from 'react';
 import { Loader } from '../loader';
@@ -192,6 +194,7 @@ export const MapLCZNouveauParcours = ({
               'line-width': 1
             }
           });
+          // map.addImage('cerema-logo', CeremaLogo as HTMLImageElement);
         } catch (error) {
           console.error('Error adding Cerema layers:', error);
           setIsTilesLoading(false);
@@ -325,7 +328,7 @@ export const MapLCZNouveauParcours = ({
   }, [isLczCovered]);
 
   return (
-    <div style={{ position: 'relative' }}>
+  <div style={{ position: 'relative' }}>
       <style jsx global>{`
         .custom-popup .maplibregl-popup-content {
           font-family: 'Marianne' !important;
@@ -352,7 +355,15 @@ export const MapLCZNouveauParcours = ({
       />
       {isLoading ? <Loader /> : (
         <>
-          <div ref={mapContainer} style={{ width: '100%', height: '500px' }} />
+          <div ref={mapContainer} style={{ width: '100%', height: '500px', position: 'relative' }}>
+            {isLczCovered && (
+              <Image
+                src={CeremaLogo}
+                alt="Cerema logo"
+                className={styles.ceremaLogoBottomRight}
+              />
+            )}
+          </div>
           {isTilesLoading && (
             <div className={styles.tileLoadingWrapper}>
               <div style={{

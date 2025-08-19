@@ -346,3 +346,25 @@
         background-color: transparent !important;
     }
 }
+
+// Bouton retour haut de page 
+.retourHautDePageWrapper {
+    position: fixed;
+    right: 2rem;
+    bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+    z-index: 1000;
+}
+
+.retourHautDePageBouton {
+    border-radius: 50%;
+    background-color: var(--gris-dark);
+    height: 44px;
+    width: 44px;
+    padding: 10px;
+    cursor: pointer;
+}
