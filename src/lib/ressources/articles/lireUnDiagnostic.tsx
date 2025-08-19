@@ -2,6 +2,7 @@
 import BookIcon from "@/assets/icons/book_icon_black.svg";
 import ForwardArrow from "@/assets/icons/keyboard_arrow_next_icon_black.svg";
 import ChaineImpact from "@/assets/images/article15.png";
+import { RetourHautDePage } from "@/components/RetourHautDePage";
 import ZoomOnClick from "@/components/utils/ZoomOnClick";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +14,7 @@ const LireUnDiagnostic = () => {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
+      <RetourHautDePage />
       <div className={styles.textBloc}>
         <h1>Que lire en priorité dans votre diagnostic de vulnérabilité aux effets du changement climatique ?</h1>
         <p>

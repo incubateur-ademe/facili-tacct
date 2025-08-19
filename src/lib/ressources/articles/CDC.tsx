@@ -1,4 +1,5 @@
 import AtelierImage from "@/assets/images/article2.png";
+import { RetourHautDePage } from "@/components/RetourHautDePage";
 import EndPageTrigger from "@/hooks/EndPageTrigger";
 import Image from "next/image";
 import styles from "./article.module.scss";
@@ -8,6 +9,7 @@ const CDC = () => {
 
   return (
     <div>
+      <RetourHautDePage />
       <h1>Le cahier des charges, levier pour intégrer la facilitation</h1>
       <div className={styles.textBloc}>
         <p>

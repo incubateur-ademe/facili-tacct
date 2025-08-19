@@ -824,27 +824,58 @@ export const SurfacesAgricolesText = () => (
   </div>
 )
 
-export const LCZText = () => (
-  <div className="px-4">
-    <p>
-      Les LCZ qui reposent sur des mesures de température de surface
-      ne permettent pas de quantifier le phénomène d’ilot de chaleur
-      urbain (ICU) qui, lui, repose sur des mesures dynamiques de
-      température de l’air. Les LCZ ne reflètent pas non plus les
-      conditions météorologiques locales, ni le confort thermique
-      ressenti par les usagers. Elles contribuent à repérer des
-      zones où une exposition à la surchauffe pourrait être plus
-      marquée, en vue d’y installer des capteurs ou d’orienter
-      des actions de rafraîchissement. Mais en aucun cas ces éléments
-      de pré-diagnostic ne se substituent à des données climatiques
-      dynamiques, ou à une analyse fine des usages de la ville et
-      de la vulnérabilité face à la chaleur.
-    </p>
-    <p>
-      Pour orienter efficacement une stratégies d’adaptation, consultez&nbsp;
-      <a href="https://www.plusfraichemaville.fr/" target="_blank" rel="noreferrer">
-        Plus fraiche ma ville.
+export const LCZCeremaText1 = () => (
+  <>
+    <Body weight='bold'>
+      Comment lire cette carte ?
+    </Body>
+    <Body style={{ marginTop: '1rem', maxWidth: "850px", color: "var(--gris-dark)" }}>
+      Les zones climatiques locales (LCZ en anglais) montrent comment un territoire
+      réagit aux vagues de chaleur estivales. Ces données, fournies par le CEREMA,
+      couvrent 88 aires urbaines en France métropolitaine. Sur les 12 000 communes
+      étudiées, plus de 5 millions d’habitants vivent dans des quartiers très sensibles
+      aux fortes chaleurs.
+    </Body>
+    <Body style={{ marginTop: '1rem', maxWidth: "850px", color: "var(--gris-dark)" }}>
+      Les 17 types de zones aident à identifier les zones qui peuvent  potentiellement
+      devenir très chaudes. Bien que basée sur l’occupation du sol et la forme des villes.
+    </Body>
+    <Body weight='bold' style={{ maxWidth: "850px", color: "var(--gris-dark)" }}>
+      cette cartographie n’est pas une modélisation de l’îlot de chaleur urbain.
+    </Body>
+    <Body style={{ marginTop: '1rem', maxWidth: "850px", color: "var(--gris-dark)" }}>
+      <a
+        href="https://doc.cerema.fr/Default/doc/SYRACUSE/600741/cartographie-nationale-de-donnees-de-zones-climatiques-locales-exploitation-de-l-imagerie-satellite"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Rendez-vous sur le site du Cerema pour en savoir plus sur la méthodologie employée.
       </a>
-    </p>
-  </div>
+    </Body>
+  </>
+);
+
+export const LCZText = () => (
+  <> 
+    <Body size='sm' style={{ marginTop: '2rem', maxWidth: "850px" }}>
+      Les LCZ qui reposent sur des mesures de température de surface ne permettent pas de quantifier 
+      le phénomène d’ilot de chaleur urbain (ICU) qui, lui, repose sur des mesures dynamiques de 
+      température de l’air. Les LCZ ne reflètent pas non plus les conditions météorologiques locales, 
+      ni le confort thermique ressenti par les usagers. Elles contribuent à repérer des zones où une 
+      exposition à la surchauffe pourrait être plus marquée, en vue d’y installer des capteurs ou 
+      d’orienter des actions de rafraîchissement. Mais en aucun cas ces éléments de pré-diagnostic 
+      ne se substituent à des données climatiques dynamiques, ou à une analyse fine des usages de 
+      la ville et de la vulnérabilité face à la chaleur.
+    </Body>
+    <Body size='sm' style={{ marginTop: '1rem', maxWidth: "850px" }}>
+      Pour structurer votre stratégies d’adaptation à la chaleur, consultez{" "}
+      <a
+        href="https://plusfraichemaville.fr/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Plus fraiche ma ville
+      </a>.
+    </Body>
+  </>
 );

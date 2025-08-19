@@ -99,8 +99,11 @@ export const PrecariteEnergetique = ({
       </div>
       <div className={styles.sourcesExportWrapper} style={{ marginLeft: '-2rem', borderTop: '1px solid var(--gris-medium)' }}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : Observatoire de la précarité énergétique (ONPE), GEODIP
+          Source : <a href="https://geodip.onpe.org/" target='_blank' rel='noopener noreferrer'>Observatoire de la précarité énergétique (ONPE), GEODIP</a>
         </Body>
+        <Body size='sm' style={{ color: "var(--gris-dark)" }}>
+          Cette donnée est diffusée sur demande aux territoires par Geodip.
+          </Body>
       </div>
     </>
   );

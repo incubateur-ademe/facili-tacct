@@ -3,9 +3,13 @@ import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { ExportPngMaplibreButtonNouveauParcours } from '@/components/exports/ExportPng';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import MapLCZNouveauParcours from '@/components/maps/mapLCZNouveauParcours';
+import { LCZCeremaText1, LCZText } from '@/components/themes/inconfortThermique/staticTexts';
+import { CustomTooltipNouveauParcours } from '@/components/utils/CalculTooltip';
+import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { Body, H3 } from "@/design-system/base/Textes";
 import { CarteCommunes } from "@/lib/postgres/models";
 import { GetLczCouverture } from '@/lib/queries/databases/inconfortThermique';
+import { LCZTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
@@ -39,21 +43,11 @@ export const LCZ = ({
         Cartographie des zones climatiques locales (LCZ)
       </H3>
       <div className={styles.datavizMapContainer}>
-        <Body size='sm' style={{ marginTop: '1rem', maxWidth: "850px" }}>
-          Les zones climatiques locales (LCZ en anglais) reflètent le comportement
-          thermique d’un territoire aux vagues de chaleur estivale. Elles permettent
-          de spatialiser les enjeux en fonction de plusieurs indicateurs d’occupation
-          du sol et de morphologie urbaine (portion de surface bâtie, perméable et
-          imperméable, hauteur des bâtiments, présence et type de végétation, etc.).
-        </Body>
-        <Body size='sm' style={{ marginTop: '1rem', maxWidth: "850px" }}>
-          Attention : les LCZ ne permettent pas de quantifier le phénomène d’îlot de
-          chaleur urbain (ICU), qui repose sur des mesures dynamiques de température
-          de l’air (et non de surface). Mais elles peuvent, par exemple, orienter
-          l’implantation de ces capteurs de mesure de température. Les LCZ ne reflètent
-          pas non plus les conditions météorologiques locales, ni le confort thermique
-          ressenti par les usagers.
-        </Body>
+        <ReadMoreFade>
+          <LCZCeremaText1 />
+          <CustomTooltipNouveauParcours title={LCZTooltipText} texte='Que sont les LCZ ?' />
+          <LCZText />
+        </ReadMoreFade>
         <div className={styles.mapWrapper}>
           {
             carteCommunes.length > 0 ? (

@@ -1,4 +1,5 @@
 'use client';
+import { RetourHautDePage } from '@/components/RetourHautDePage';
 import couleurs from '@/design-system/couleurs';
 import { cards, ressourcesTabs } from '@/lib/ressources/cards';
 import { useState } from 'react';
@@ -19,7 +20,8 @@ const RessourcesCards = () => {
   };
 
   return (
-    <div>
+    <>
+      <RetourHautDePage />
       <div
         className={styles.ressourcesWrapper}
         style={{ padding: '0 0 4em 0' }}
@@ -81,7 +83,7 @@ const RessourcesCards = () => {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

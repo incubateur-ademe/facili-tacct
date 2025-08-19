@@ -2,6 +2,7 @@ import BookIcon from '@/assets/icons/book_icon_black.svg';
 import ForwardArrow from '@/assets/icons/keyboard_arrow_next_icon_black.svg';
 import LinkIcon from '@/assets/icons/link_icon_blue.svg';
 import AtelierImage from '@/assets/images/article3.png';
+import { RetourHautDePage } from '@/components/RetourHautDePage';
 import EndPageTrigger from '@/hooks/EndPageTrigger';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
@@ -10,6 +11,7 @@ import styles from './article.module.scss';
 const MiseEnRecit = () => {
   return (
     <div>
+      <RetourHautDePage />
       <h1>Mettre en récit mon territoire pour engager</h1>
       <p>
         Cet article a été rédigé avec les précieuses interventions de Violaine
