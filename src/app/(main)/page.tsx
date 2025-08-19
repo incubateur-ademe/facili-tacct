@@ -104,7 +104,7 @@ const Home = () => {
                 Avec le Patch 4°C : intégrez la trajectoire de réchauffement de référence dans votre diagnostic existant
               </H2>
               <Body>
-                Le “patch 4°C” est une action du 3ème Plan national d’adaptation au changement
+                Le “Patch 4°C” est une action du 3ème Plan national d’adaptation au changement
                 climatique (2025). Il s’adresse en priorité aux communes ou EPCI qui
                 viennent d’achever leurs études de vulnérabilité sur la base d’hypothèses de
                 réchauffement différentes de celles de la TRACC.

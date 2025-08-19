@@ -2,6 +2,8 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import RetraitGonflementDesArgilesCharts from '@/components/charts/gestionRisques/RetraitGonflementDesArgilesCharts.tsx';
 import { MicroPieChart } from '@/components/charts/MicroDataviz';
+import { generateMapPngBlob } from '@/components/exports/ExportPng';
+import { ZipExportButtonNouveauParcours } from '@/components/exports/ZipExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { RGAText } from "@/components/themes/inconfortThermique/staticTexts";
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
@@ -12,12 +14,13 @@ import { RGAMapper } from '@/lib/mapper/gestionRisques';
 import { CarteCommunes, RGACarte, RGAdb } from "@/lib/postgres/models";
 import { rgaTooltipText } from "@/lib/tooltipTexts";
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
+import { exportAsZip } from '@/lib/utils/export/exportZipGeneric';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { Round } from "@/lib/utils/reusableFunctions/round";
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from '../../explorerDonnees.module.scss';
 
 export const RetraitGonflementDesArgiles = ({
@@ -33,6 +36,8 @@ export const RetraitGonflementDesArgiles = ({
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
+  const mapRef = useRef<maplibregl.Map | null>(null);
+  const mapContainer = useRef<HTMLDivElement>(null);
   const [datavizTab, setDatavizTab] = useState<string>((type === "commune" || type === "epci") ? 'Comparaison' : "Répartition");
   const rgaFilteredByTerritory = type === "commune" ?
     rga.filter(item => item.code_geographique === code) :
@@ -109,6 +114,8 @@ export const RetraitGonflementDesArgiles = ({
                 rga={rga}
                 datavizTab={datavizTab}
                 setDatavizTab={setDatavizTab}
+                mapRef={mapRef}
+                mapContainer={mapContainer}
               /> : (
                 <div className={styles.graphWrapper}>
                   <DataNotFoundForGraph image={DataNotFound} />
@@ -125,7 +132,35 @@ export const RetraitGonflementDesArgiles = ({
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
               Source : BRGM, 2019 ; Fideli, 2017. Traitements : SDES, 2021
             </Body>
-
+            <ZipExportButtonNouveauParcours
+              handleExport={async () => {
+                const pngBlob = await generateMapPngBlob({
+                  mapRef,
+                  mapContainer,
+                  documentDiv: ".exportPNGWrapper",
+                });
+                if (!pngBlob) {
+                  alert("Erreur lors de la génération de l'image PNG.");
+                  return;
+                }
+                await exportAsZip({
+                  excelFiles: [{
+                    data: exportData,
+                    baseName: "rga",
+                    sheetName: "Retrait-gonflement des argiles",
+                    type,
+                    libelle
+                  }],
+                  blobFiles: [{
+                    blob: pngBlob,
+                    filename: `Carte_RGA_${type}_${libelle}.png`
+                  }],
+                  zipFilename: `rga_export_${new Date().toISOString().split('T')[0]}.zip`
+                })
+              }}
+            >
+              Exporter
+            </ZipExportButtonNouveauParcours>
           </div>
         </div>
       </div>

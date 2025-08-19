@@ -26,13 +26,13 @@ const Patch4C = async (props: { searchParams: SearchParams }) => {
         des aléas majeurs de votre territoire
       </H1>
       <Body style={{ textAlign: 'center' }}>
-        Ce nouveau jeu de données (patch 4°) est calculé par Météo France.<br />
+        Ce nouveau jeu de données (Patch 4°) est calculé par Météo France.<br />
         Il est basé sur la trajectoire de réchauffement de référence pour
         l’adaptation au changement climatique (TRACC).
       </Body>
       <CursorVisualization />
       {patch4 ? <CircleVisualization patch4={patch4} /> : null}
-      <H2>En cas d’aggravation forte ou très forte, comment renforcer son plan d’adaptation ?</H2>
+      <H2>Que faire en cas de niveau d’aggravation "fort" ou "très fort" ?</H2>
       <Body>
         <b>Si l'un des indices de votre territoire est au niveau d'aggravation "fort" ou "très fort",
           il est impératif de renforcer votre plan d'adaptation.</b> Prenez en compte dès maintenant les
