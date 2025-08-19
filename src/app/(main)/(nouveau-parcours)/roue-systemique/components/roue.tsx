@@ -7,7 +7,9 @@ import * as d3 from "d3";
 import { useEffect, useRef, useState } from "react";
 // Import CircleType (types seront déclarés en tant que any)
 // @ts-ignore
+import RessourcesNaturellesTexte from "@/assets/images/ressources_naturelles_texte.svg";
 import CircleType from 'circletype';
+import Image from "next/image";
 import { categoriesNoeuds, liensEntreThematiques, nodeCategoryMapping, nomThematiques, PositionArcsDonut } from "../constantes/categories";
 import { categoryColors, categorySelectedBorderColors, categorySelectedColors } from "../constantes/colors";
 import { categorieTextParametres, DistanceTextes } from "../constantes/textesSVG";
@@ -577,7 +579,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       )}
 
       {/* Ressources naturelles */}
-      {categoriePositions["Ressources naturelles"] && (
+      {/* {categoriePositions["Ressources naturelles"] && (
         <div
           ref={(el) => {
             if (el) {
@@ -608,6 +610,23 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         >
           Ressources naturelles
         </div>
+      )} */}
+      {categoriePositions["Ressources naturelles"] && (
+        <Image
+          src={RessourcesNaturellesTexte}
+          style={{
+            position: 'absolute',
+            left: `${categoriePositions["Ressources naturelles"].x - 116}px`,
+            top: `${categoriePositions["Ressources naturelles"].y - 36}px`,
+            transform: `rotate(-44deg) scale(0.9)`, // Rotation pour Ressources naturelles
+            color: categorySelectedBorderColors["Ressources naturelles"],
+            pointerEvents: 'none',
+            transformOrigin: 'center center',
+            zIndex: 2,
+            whiteSpace: 'nowrap'
+          }}
+          alt="Ressources naturelles"
+        />
       )}
 
       {/* Ressources économiques */}

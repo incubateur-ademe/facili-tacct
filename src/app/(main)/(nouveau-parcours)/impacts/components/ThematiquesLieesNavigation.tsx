@@ -186,6 +186,7 @@ export const ThematiquesLieesNavigation = ({
                   thematique: lieeLabel,
                   anchor: ""
                 })}
+                // disabled={lieeLabel === "Santé" ? true : false}
               />
             </div>
           ))
