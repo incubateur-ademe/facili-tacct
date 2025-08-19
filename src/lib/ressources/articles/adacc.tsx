@@ -4,6 +4,7 @@ import BulbIcon from '@/assets/icons/lightbulb_icon_black.svg';
 import ArticleImage from '@/assets/images/article7.png';
 import ArticleImage2 from '@/assets/images/article8.png';
 import ArticleImage3 from '@/assets/images/article9.png';
+import { RetourHautDePage } from '@/components/RetourHautDePage';
 import EndPageTrigger from '@/hooks/EndPageTrigger';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,6 +13,7 @@ import styles from './article.module.scss';
 const Adacc = () => {
   return (
     <div>
+      <RetourHautDePage />
       <h1>Les Ateliers de l’Adaptation au Changement Climatique (AdACC)</h1>
       <p className="flex justify-center">
         Qu’est-ce que c’est ? à quoi cela sert ?
@@ -226,7 +228,7 @@ const Adacc = () => {
                   >
                     Ateliers de l’Adaptation au Changement Climatique
                   </Link>
-                   ;
+                  ;
                 </li>
                 <li>
                   La synthèse du{' '}
@@ -237,7 +239,7 @@ const Adacc = () => {
                   >
                     rapport de la cour des comptes sur l'ACC
                   </Link>
-                   ;
+                  ;
                 </li>
               </ul>
             </div>

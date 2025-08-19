@@ -1,6 +1,6 @@
 'use client';
-import HautDePageIcon from '@/assets/icons/haut_de_page_icon_white.svg';
 import DiagnoticImage from '@/assets/images/diagnostiquer_impacts.png';
+import { RetourHautDePage } from '@/components/RetourHautDePage';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H1, H2 } from '@/design-system/base/Textes';
 import { handleRedirectionThematique } from '@/hooks/Redirections';
@@ -48,19 +48,7 @@ const DonneesConfortThermique = ({
 
   return (
     <>
-      <div className={styles.retourHautDePageWrapper}>
-        <div className={styles.retourHautDePageBouton} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <Image
-            src={HautDePageIcon}
-            alt="Retour en haut de page"
-            width={24}
-            height={24}
-          />
-        </div>
-        <Body size='sm'>
-          Haut de page
-        </Body>
-      </div>
+      <RetourHautDePage />
       <div className={styles.explorerMesDonneesContainer}>
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
           Ce que les données suggèrent sur votre territoire
