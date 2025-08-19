@@ -30,7 +30,10 @@ const CircleVisualization = ({
     <div className={styles.CircleVisualizationContainer}>
       <div
         className={styles.CircleVisualizationWrapper}
-        style={{ width: selectedItem ? '50%' : '100%' }}
+        style={{ 
+          width: selectedItem ? '50%' : '100%',
+          paddingLeft: selectedItem ? '4rem' : '0',
+        }}
       >
         <div className={styles.extCircle}>
           {activeItems.map((item, index) => {

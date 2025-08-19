@@ -44,11 +44,11 @@
 }
 
 .CircleVisualizationWrapper {
-    transition: width 1s ease-in-out;
+    transition: all 1s ease-in-out;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 4rem;
+    // padding-left: 4rem;
     margin-right: -4rem;
     .extCircle {
         width: 338px;
