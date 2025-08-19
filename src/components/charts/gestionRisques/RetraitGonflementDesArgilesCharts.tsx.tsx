@@ -11,7 +11,7 @@ import { Average } from '@/lib/utils/reusableFunctions/average';
 import { BarDatum } from '@nivo/bar';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useRef, useState } from "react";
+import { RefObject, useEffect, useState } from "react";
 import RGAMap from '../../maps/mapRGA';
 import styles from './gestionRisquesCharts.module.scss';
 
@@ -24,6 +24,8 @@ type Props = {
   rga: RGAdb[];
   datavizTab: string;
   setDatavizTab: (value: string) => void;
+  mapRef: RefObject<maplibregl.Map | null>;
+  mapContainer: RefObject<HTMLDivElement | null>;
 };
 
 const isRGAdb = (obj: unknown): obj is RGAdb => {
@@ -123,13 +125,15 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
     rga,
     datavizTab,
     setDatavizTab,
+    mapRef,
+    mapContainer
   } = props;
   const searchParams = useSearchParams();
   const type = searchParams.get('type')!;
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
-  const mapRef = useRef<maplibregl.Map | null>(null);
-  const mapContainer = useRef<HTMLDivElement>(null);
+  // const mapRef = useRef<maplibregl.Map | null>(null);
+  // const mapContainer = useRef<HTMLDivElement>(null);
   const [multipleDepartements, setMultipleDepartements] = useState<string[]>([]);
   // options de filtre pour les départements (plusieurs départements possibles pour un EPCI)
   const departement = type === "epci" ? rga[0]?.libelle_departement : "";

@@ -11,7 +11,7 @@ export const ExplicationIndices = ({ patch4 }: { patch4: Patch4 }) => {
   return (
     <div className={styles.indiceWrapper}>
       <h3 style={{ fontSize: '1rem', margin: 0, lineHeight: '1.5rem' }}>
-        <b>D’où vient cette donnée ?</b>
+        <b>D’où vient cette donnée :</b>
       </h3>
       <p>
         Météo France propose un nouveau jeu de données basé sur la trajectoire
