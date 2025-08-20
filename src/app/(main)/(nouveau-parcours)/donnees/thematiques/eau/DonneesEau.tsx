@@ -4,7 +4,7 @@ import { Body, H1, H2 } from "@/design-system/base/Textes";
 import { CarteCommunes, EtatCoursDeau, RessourcesEau } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { sommaireThematiques } from "../../../roue-systemique/constantes/textesThematiques";
+import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { EtatEcoCoursDeau } from '../../indicateurs/eau/1-EtatCoursDeau';
 import { PrelevementsEnEau } from '../../indicateurs/eau/2-PrelevementsEnEau';

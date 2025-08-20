@@ -50,20 +50,23 @@ const HeaderComp = () => {
     searchCode: (type === "epci" || type === "commune") ? code : '',
     searchLibelle: (type === "epci" || type === "commune") ? libelle : '',
     typeTerritoire: type as 'epci' | 'commune',
-    page: (type === "epci" || type === "commune") ? 'patch4c' : 'rechercher-son-territoire-patch4'
+    page: (type === "epci" || type === "commune") ? 'patch4c' : 'recherche-territoire-patch4'
   });
 
   const redirectionExplorerMesDonnees = handleRedirection({
     searchCode: code || '',
     searchLibelle: libelle || '',
     typeTerritoire: type as 'epci' | 'commune',
-    page: type ? 'roue-systemique' : 'rechercher-son-territoire'
+    page: type ? 'thematiques' : 'recherche-territoire'
   });
 
   return (
     <Header
       className={css({
         zIndex: '500',
+        '.fr-header__navbar': {
+          display: 'none',
+        },
         '.fr-nav__link[aria-current]': {
           color: params === "/donnees-territoriales" ? "#0063CB" : 'var(--principales-vert)',
           ':before': {
@@ -131,8 +134,8 @@ const HeaderComp = () => {
         {
           isActive: [
             '/donnees-territoriales',
-            '/rechercher-son-territoire',
-            '/roue-systemique',
+            '/recherche-territoire',
+            '/thematiques',
             '/explorer-mes-donnees',
             '/donnees',
             '/impacts'
@@ -154,7 +157,7 @@ const HeaderComp = () => {
         {
           isActive: [
             '/patch4c',
-            '/rechercher-son-territoire-patch4'
+            '/recherche-territoire-patch4'
           ].includes(params),
           linkProps: {
             href: redirectionPatch4,

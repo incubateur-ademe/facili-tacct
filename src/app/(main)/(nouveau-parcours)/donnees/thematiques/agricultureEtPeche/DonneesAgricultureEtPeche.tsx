@@ -4,7 +4,7 @@ import { Body, H1, H2 } from "@/design-system/base/Textes";
 import { Agriculture, AgricultureBio, CarteCommunes, SurfacesAgricolesModel } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { sommaireThematiques } from "../../../roue-systemique/constantes/textesThematiques";
+import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { SuperficiesIrriguees } from '../../indicateurs/agricultureEtPeche/1-SuperficiesIrriguees';
 import { SurfacesEnBio } from '../../indicateurs/agricultureEtPeche/2-SurfacesEnBio';

@@ -4,7 +4,7 @@ import { Body, H1, H2 } from "@/design-system/base/Textes";
 import { CarteCommunes, ConsommationNAF } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { sommaireThematiques } from "../../../roue-systemique/constantes/textesThematiques";
+import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { ConsommationEspacesNAFAmenagement } from '../../indicateurs/amenagement/1-ConsommationEspacesNAF';
 import { LCZ } from '../../indicateurs/amenagement/2-LCZ';

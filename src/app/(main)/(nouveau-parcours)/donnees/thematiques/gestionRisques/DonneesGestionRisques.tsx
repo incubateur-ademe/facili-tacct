@@ -6,7 +6,7 @@ import useWindowDimensions from '@/hooks/windowDimensions';
 import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { sommaireThematiques } from "../../../roue-systemique/constantes/textesThematiques";
+import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { ArretesCatnat } from '../../indicateurs/gestionDesRisques/1-ArretesCatnat';
 import { RetraitGonflementDesArgiles } from '../../indicateurs/gestionDesRisques/2-RetraitGonflementDesArgiles';

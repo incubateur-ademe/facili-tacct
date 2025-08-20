@@ -4,7 +4,7 @@ import { Body, H1, H2 } from "@/design-system/base/Textes";
 import { AgricultureBio, AOT40, CarteCommunes, ConsommationNAF, EtatCoursDeau, QualiteSitesBaignade } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { sommaireThematiques } from "../../../roue-systemique/constantes/textesThematiques";
+import { sommaireThematiques } from "../../../thematiques/constantes/textesThematiques";
 import styles from '../../explorerDonnees.module.scss';
 import { ConsommationEspacesNAF } from '../../indicateurs/biodiversite/1-ConsommationEspacesNAF';
 import { SurfacesEnBio } from '../../indicateurs/biodiversite/2-SurfacesEnBio';

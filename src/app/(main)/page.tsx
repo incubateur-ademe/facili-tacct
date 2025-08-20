@@ -68,7 +68,7 @@ const Home = () => {
               </Body> */}
               <BoutonSecondaireClassic
                 size='lg'
-                link="/rechercher-son-territoire"
+                link="/recherche-territoire"
                 text='Explorer les données de mon territoire'
               />
             </div>
@@ -110,7 +110,7 @@ const Home = () => {
               </Body>
               <BoutonPrimaireClassic
                 size='lg'
-                link="/rechercher-son-territoire-patch4"
+                link="/recherche-territoire-patch4"
                 text='Accéder au Patch 4°C'
               />
             </div>

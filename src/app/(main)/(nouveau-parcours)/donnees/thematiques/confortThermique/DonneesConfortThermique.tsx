@@ -6,9 +6,9 @@ import { Body, H1, H2 } from '@/design-system/base/Textes';
 import { handleRedirectionThematique } from '@/hooks/Redirections';
 import { CarteCommunes, CLCTerritoires, InconfortThermique } from '@/lib/postgres/models';
 import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
-import { sommaireThematiques } from '../../../roue-systemique/constantes/textesThematiques';
+import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
 import { GrandAge } from '../../indicateurs/confortThermique/1-GrandAge';
 import { PrecariteEnergetique } from '../../indicateurs/confortThermique/2-PrecariteEnergetique';
@@ -27,6 +27,8 @@ const DonneesConfortThermique = ({
   clc: CLCTerritoires[] | undefined;
 }) => {
   const searchParams = useSearchParams();
+  const params = usePathname();
+  console.log("params", params)
   const thematique = searchParams.get('thematique') as "Confort thermique";
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
@@ -129,7 +131,7 @@ const DonneesConfortThermique = ({
                 code: code,
                 libelle: libelle,
                 type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
-                page: 'impacts',
+                page: params === "/iframe/donnees" ? "iframe/impacts" : 'impacts',
                 thematique: "Confort thermique",
                 anchor: ""
               })}
