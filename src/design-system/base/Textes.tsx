@@ -163,7 +163,7 @@ export const Body = ({
 }: {
   children: React.ReactNode;
   weight?: 'regular' | 'medium' | 'bold';
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   color?: string;
   style?: React.CSSProperties;
   margin?: string;
@@ -172,7 +172,7 @@ export const Body = ({
     <div
       style={{
         color: color,
-        fontSize: size === 'sm' ? '14px' : size === 'md' ? '1rem' : '18px',
+        fontSize: size === 'xs' ? '12px' : size === 'sm' ? '14px' : size === 'md' ? '1rem' : '18px',
         fontWeight: weight === 'bold' ? 700 : weight === 'medium' ? 500 : 400,
         letterSpacing: "0.4px",
         fontFamily: "Marianne",

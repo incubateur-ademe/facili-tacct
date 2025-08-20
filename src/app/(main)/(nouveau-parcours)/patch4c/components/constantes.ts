@@ -7,14 +7,14 @@ export const agravationItems = [
   },
   {
     label: 'Aggravation modérée',
-    offset: -30,
+    offset: -42,
     values: '33%',
     hover:
       "L'évolution de long terme (2050-2100) est inférieure à celle de la période 2030-2050"
   },
   {
     label: 'Aggravation forte',
-    offset: 35,
+    offset: 40,
     values: '67%',
     hover:
       "L'évolution de long terme (2050-2100) est 1 à 2 fois supérieure à la valeur de l’évolution de la période 2030-2050"

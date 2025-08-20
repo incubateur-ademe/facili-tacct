@@ -15,6 +15,12 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
   ) {
     return NextResponse.redirect(new URL('/ressources', req.url));
   }
+
+  if (req.nextUrl.pathname === '/donnees-territoriales') {
+    const newUrl = new URL(req.url);
+    newUrl.pathname = '/donnees';
+    return NextResponse.redirect(newUrl);
+  }
   // Only protect /sandbox/* routes
   if (req.nextUrl.pathname.startsWith('/sandbox/')) {
     const token: JWT | null = await getToken({ req } as MiddlewareTokenOptions);
@@ -27,5 +33,10 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
 }
 
 export const config = {
-  matcher: ['/api/ressources', '/sandbox/:user*', '/ressources/articles'],
+  matcher: [
+    '/api/ressources',
+    '/sandbox/:user*',
+    '/ressources/articles',
+    '/donnees-territoriales',
+  ],
 };

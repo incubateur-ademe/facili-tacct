@@ -63,7 +63,7 @@ export const LoaderText = ({ text }: { text: string }) => {
 
   return (
     <div className="flex flex-col items-center justify-center" style={{height: "80dvh", position: 'relative'}}>
-      <div className={styles.loader} style={{ left: "-20px" }}></div>
+      <div className={styles.loader} style={{ left: "49%" }}></div>
       <div
         style={{
           position: 'absolute',

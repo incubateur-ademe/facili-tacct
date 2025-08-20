@@ -544,7 +544,7 @@ export const AOT40Text = () => (
 );
 
 export const PrelevementEauText = () => (
-  <>
+  <div className="pt-10">
     <Body size="sm">
       Les sécheresses 2022 et 2023 sonnent l'alerte : optimiser la
       ressource en eau disponible devient vital. Face à
@@ -606,7 +606,7 @@ export const PrelevementEauText = () => (
       vulnérabilités de l'approvisionnement en eau potable dans les
       départements et régions d'Outre-mer.
     </Body>
-  </>
+  </div>
 );
 
 export const CatNatText = () => (
@@ -845,7 +845,7 @@ export const LCZCeremaText1 = () => (
     </Body>
     <Body style={{ marginTop: '1rem', maxWidth: "850px", color: "var(--gris-dark)" }}>
       <a
-        href="https://doc.cerema.fr/Default/doc/SYRACUSE/600741/cartographie-nationale-de-donnees-de-zones-climatiques-locales-exploitation-de-l-imagerie-satellite"
+        href="https://doc.cerema.fr/Default/doc/SYRACUSE/600739/cartographie-nationale-de-donnees-de-zones-climatiques-locales-guide-utilisateurs"
         target="_blank"
         rel="noreferrer"
       >

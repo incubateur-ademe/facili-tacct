@@ -1,4 +1,5 @@
 "use client";
+import RessourcesNaturellesTexte from "@/assets/images/ressources_naturelles_texte.svg";
 import { Loader } from "@/components/loader";
 import { HtmlTooltip } from "@/components/utils/HtmlTooltip";
 import { Body } from "@/design-system/base/Textes";
@@ -7,7 +8,6 @@ import * as d3 from "d3";
 import { useEffect, useRef, useState } from "react";
 // Import CircleType (types seront déclarés en tant que any)
 // @ts-ignore
-import RessourcesNaturellesTexte from "@/assets/images/ressources_naturelles_texte.svg";
 import CircleType from 'circletype';
 import Image from "next/image";
 import { categoriesNoeuds, liensEntreThematiques, nodeCategoryMapping, nomThematiques, PositionArcsDonut } from "../constantes/categories";
