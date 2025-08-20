@@ -7,7 +7,7 @@ import { handleRedirection } from '@/hooks/Redirections';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { sommaireThematiques } from '../../roue-systemique/constantes/textesThematiques';
+import { sommaireThematiques } from '../../thematiques/constantes/textesThematiques';
 import styles from '../explorerDonnees.module.scss';
 import { useExplorer } from './ExplorerContext';
 
@@ -51,7 +51,7 @@ export const MenuLateral = () => {
     searchCode: code || '',
     searchLibelle: libelle || '',
     typeTerritoire: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
-    page: 'roue-systemique'
+    page: 'thematiques'
   });
 
   useEffect(() => {

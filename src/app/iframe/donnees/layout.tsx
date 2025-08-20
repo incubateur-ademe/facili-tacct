@@ -2,7 +2,7 @@ import { Loader } from '@/components/loader';
 import { MenuLateral } from '@/components/MenuLateral';
 import { type PropsWithChildren, Suspense } from 'react';
 
-const ImpactsTerritoireLayout = ({ children }: PropsWithChildren) => {
+const ExplorerTerritoireLayout = ({ children }: PropsWithChildren) => {
   return (
     <Suspense fallback={
       <div className='flex justify-center items-center h-screen'>
@@ -23,4 +23,4 @@ const ImpactsTerritoireLayout = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default ImpactsTerritoireLayout;
+export default ExplorerTerritoireLayout;

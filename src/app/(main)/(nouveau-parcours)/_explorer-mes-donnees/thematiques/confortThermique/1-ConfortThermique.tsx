@@ -5,7 +5,7 @@ import { CarteCommunes, CLCTerritoires, InconfortThermique } from '@/lib/postgre
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
-import { sommaireThematiques } from '../../../roue-systemique/constantes/textesThematiques';
+import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
 import { GrandAge } from '../../indicateurs/confortThermique/1-GrandAge';
 import { PrecariteEnergetique } from '../../indicateurs/confortThermique/2-PrecariteEnergetique';

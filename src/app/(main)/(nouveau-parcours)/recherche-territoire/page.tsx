@@ -20,7 +20,7 @@ const RechercherSonTerritoire = () => {
     searchLibelle,
     typeTerritoire,
     router,
-    page: "roue-systemique"
+    page: "thematiques"
   });
   const handleRadioChange = (territoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement') => {
     setTypeTerritoire(territoire);
