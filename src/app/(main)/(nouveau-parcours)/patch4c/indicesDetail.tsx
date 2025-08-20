@@ -47,7 +47,7 @@ const IndicesDetail = ({
                           {indice.linkedThemes && (
                             <ul className="list-disc pl-8">
                               {indice.linkedThemes.map((theme, index) => (
-                                <li key={index}><Body size='sm'>{theme}</Body></li>
+                                <li key={index}><Body>{theme}</Body></li>
                               ))}
                             </ul>
                           )}

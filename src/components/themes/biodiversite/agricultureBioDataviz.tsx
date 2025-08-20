@@ -84,7 +84,6 @@ const AgricultureBioDataViz = ({
                     minDist={1}
                     setSliderValue={setSliderValue}
                     sliderValue={sliderValue}
-                    width={650}
                   />
                 </div>
                 <AgricultureBioBarChart
