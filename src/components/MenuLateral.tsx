@@ -8,7 +8,7 @@ import { GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { sommaireThematiques } from '../app/(main)/(nouveau-parcours)/roue-systemique/constantes/textesThematiques';
+import { sommaireThematiques } from '../app/(main)/(nouveau-parcours)/thematiques/constantes/textesThematiques';
 import styles from './components.module.scss';
 
 const Etape2Sommaire = [
@@ -53,7 +53,7 @@ export const MenuLateral = () => {
     searchCode: code || '',
     searchLibelle: libelle || '',
     typeTerritoire: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
-    page: 'roue-systemique'
+    page: 'thematiques'
   });
 
   useEffect(() => {

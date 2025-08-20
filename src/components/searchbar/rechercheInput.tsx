@@ -52,15 +52,15 @@ export const MySearchInput = ((props: SearchInputProps) => {
   const handleClick = () => {
     if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
       router.push(
-        `/roue-systemique?code=200054781&libelle=${searchLibelle}&type=ept`
+        `/thematiques?code=200054781&libelle=${searchLibelle}&type=ept`
       );
     } else if (searchCode.length !== 0) {
       router.push(
-        `/roue-systemique?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
+        `/thematiques?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}`
       )
     } else if (searchLibelle.length !== 0) {
       router.push(
-        `/roue-systemique?libelle=${searchLibelle}&type=${typeTerritoire}`
+        `/thematiques?libelle=${searchLibelle}&type=${typeTerritoire}`
       );
     }
   };
