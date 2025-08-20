@@ -69,9 +69,6 @@ export const ConsommationEspacesNAFDataviz = (props: {
                     minDist={1}
                     setSliderValue={setSliderValue}
                     sliderValue={sliderValue}
-                    width={'-webkit-fill-available'}
-                    padding={'0 1rem 0 2rem'}
-                    maxWidth="35%"
                   />
                 </div>
                 <ConsommationEspacesNAFBarChart
@@ -81,12 +78,12 @@ export const ConsommationEspacesNAFDataviz = (props: {
                 />
                 <div className={styles.NafBarLegendWrapper}>
                   {espacesNAFBarChartLegend.map((e) => (
-                    <div key={e.variable} className={styles.legendNafBar}>
+                    <div key={e.value} className={styles.legendNafBar}>
                       <div
                         className={styles.colorNafBar}
-                        style={{ backgroundColor: e.couleur }}
+                        style={{ backgroundColor: e.color }}
                       />
-                      <p className={styles.legendText}>{e.variable}</p>
+                      <p className={styles.legendText}>{e.value}</p>
                     </div>
                   ))}
                 </div>

@@ -56,17 +56,16 @@ const Home = () => {
           <div className={styles.homePageTopWrapper}>
             <div className={styles.titles}>
               <H1 style={{ color: "white" }}>
-                Facili-TACCT structure votre démarche d’adaptation au changement climatique
+                Le climat change. Et vous ?
               </H1>
               <Body size='lg' style={{ color: "white", margin: "2.5rem 0 2rem" }}>
-                TACCT vous guide pas à pas dans la réalisation de votre diagnostic de vulnérabilité et
-                jusqu'à la mise en œuvre des actions et leur évaluation.
+                Avec Facili-TACCT, identifiez les vulnérabilités de votre territoire aux impacts du changement climatique.
               </Body>
-              <Body size='lg' style={{ color: "white", margin: "0 0 2rem" }}>
+              {/* <Body size='lg' style={{ color: "white", margin: "0 0 2rem" }}>
                 Explorez les données climatiques, socio-économiques et environnementales, apprenez à
                 identifier les impacts réels sur le terrain, hiérarchisez vos enjeux d'adaptation
                 et enfin déployez votre plan d’action.
-              </Body>
+              </Body> */}
               <BoutonSecondaireClassic
                 size='lg'
                 link="/rechercher-son-territoire"

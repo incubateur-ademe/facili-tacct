@@ -43,7 +43,7 @@ const CircleVisualization = ({
                 key={item.key}
                 className={styles.CircleItem}
                 style={{
-                  left: position.x - 30,
+                  left: position.x - 35,
                   top: position.y - 30,
                 }}
                 onClick={() => handleClick(item.key)}
@@ -61,7 +61,16 @@ const CircleVisualization = ({
                   />
                 </div>
                 {/* Label */}
-                <p>{item.label}</p>
+                <Body 
+                size='xs' 
+                weight='bold' 
+                style={{
+                  color: '#161616',
+                  maxWidth: '88px',
+                  lineHeight: '1.2'
+                }}>
+                  {item.label}
+                </Body>
               </div>
             );
           })}
