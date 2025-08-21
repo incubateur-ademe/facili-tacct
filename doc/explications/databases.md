@@ -56,3 +56,24 @@ Différentes bases de données peuvent représenter les champs NULL différemmen
 ### 🔒 Limitations de sécurité
 
 Cette méthode n'est **pas cryptographiquement sécurisée** mais est suffisamment fiable pour la détection de changements dans un contexte de vérification de cohérence entre environnements.
+
+
+## Créer une base de données en local fidèle à la base distante
+
+Pour garantir que l’environnement de développement ou de test soit le plus proche possible de la production, nous allons voir comment cloner une base distante en local. Cette démarche permet de se connecter hors ligne, de reproduire les bugs, de valider les migrations, ou de tester des traitements sur des données réalistes.
+
+### Pourquoi générer un dump SQL ciblé ?
+
+On choisit de ne dumper que certains schémas (par exemple `postgis` et `databases`) pour limiter la taille du fichier, accélérer l’import, et éviter d’importer des données ou des structures inutiles (par exemple, des schémas techniques ou des tables temporaires). Cela permet aussi de ne pas embarquer d’utilisateurs ou de secrets de production.
+
+### Pourquoi un script d’initialisation (`init.sh`) ?
+
+Le script d’initialisation permet d’automatiser le chargement du dump lors du premier démarrage du conteneur Postgres. Il garantit que la base locale est toujours initialisée de la même façon, sans intervention manuelle.
+
+### Pourquoi un fichier `pg_hba.conf` personnalisé ?
+
+Le fichier `pg_hba.conf` contrôle les règles d’authentification de Postgres. En développement, on choisit souvent de le configurer en mode « trust » pour simplifier les connexions et éviter les problèmes de mot de passe, tout en sachant que ce n’est pas adapté à la production. Ce choix accélère les tests et évite des blocages liés à la sécurité sur un poste isolé.
+
+### Pourquoi utiliser un volume Docker nommé ?
+
+Le volume Docker permet de persister les données de la base entre les redémarrages du conteneur. Ainsi, l’import du dump n’est fait qu’une seule fois : les fois suivantes, la base est immédiatement disponible, ce qui accélère grandement le cycle de développement.

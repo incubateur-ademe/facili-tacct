@@ -45,11 +45,91 @@ ogr2ogr -nln <name of layer(table)>
 ```
 ## Vérifier si les bases en prod et en preprod sont identiques
 
+Pour les bases de prod et de preprod, faire la commande :
 ```
--- In both dev and prod, run:
 SELECT md5(string_agg(t::text, '')) AS checksum
 FROM (
   SELECT * FROM your_table ORDER BY your_primary_key
 ) t;
 
 ```
+
+Les 2 hashs doivent être identiques.
+
+## Cloner une base PostGIS distante pour l'utiliser en local
+
+1. **Dump de la base distante**
+    Créer un folder à la base du projet db-dump.
+    Faire le dump de la base (peut être long) :
+    ```bash
+    PGPASSWORD='password' pg_dump \
+      --no-owner \
+      --no-privileges \
+      --schema=postgis \
+      --schema=databases \
+      -h <host> -p <port> -U <user> -d <db> \
+      -f ./db-dump/facili-tacct-postgis-databases.sql
+    ```
+
+2. **init.sh**
+    Création du fichier init.sh dans le même dossier : 
+    ```bash
+    #!/bin/bash
+    set -e
+    psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -f /docker-entrypoint-initdb.d/facili-tacct-postgis-databases.sql
+    ```
+
+3. **pg_hba.conf**
+    Création du fichier pg_hba.conf dans le même dossier :
+    ```conf
+    host    all             all             0.0.0.0/0               trust
+    host    all             all             ::/0                    trust
+    ```
+
+4. **docker-compose.yml** (exemple)
+    ```yaml
+    version: '3'
+    services:
+    db:
+        image: postgis/postgis:17-3.5
+        environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+          - POSTGRES_DB=postgres
+        ports:
+          - "5432:5432"
+        volumes:
+          - db-data:/var/lib/postgresql/data
+          - ./db-dump:/docker-entrypoint-initdb.d
+        
+    volumes:
+        db-data:
+    ```
+
+5. **.env**
+    ```env
+    SCALINGO_POSTGRESQL_URL=postgresql://postgres:postgres@127.0.0.1:5432/postgres
+    ```
+
+6. **Dans le dump SQL**
+    Ajouter après `CREATE SCHEMA postgis;` :
+    ```sql
+    CREATE EXTENSION IF NOT EXISTS postgis SCHEMA postgis;
+    ```
+
+7. **Lancer la base**
+    ```bash
+    docker compose down -v
+    docker compose up db
+    ```
+
+8. **Créer l'extension unaccent**
+    Connexion à la db dans docker : 
+    ```bash
+    docker exec -it facili-tacct-db-1 psql -U postgres -d postgres
+    ```
+    ```sql
+    CREATE EXTENSION IF NOT EXISTS unaccent;
+    ```
+
+Votre base locale est prête à l'emploi.
