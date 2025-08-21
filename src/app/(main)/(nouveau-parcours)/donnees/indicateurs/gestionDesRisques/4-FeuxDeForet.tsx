@@ -4,7 +4,7 @@ import FeuxForetCharts from "@/components/charts/gestionRisques/feuxForetCharts"
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import { FeuxForetText } from "@/components/themes/inconfortThermique/staticTexts";
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
-import { Body, H3 } from "@/design-system/base/Textes";
+import { Body } from "@/design-system/base/Textes";
 import { IncendiesForet } from "@/lib/postgres/models";
 import { feuxForetTooltipText } from "@/lib/tooltipTexts";
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
@@ -32,9 +32,6 @@ export const FeuxDeForet = (props: {
 
   return (
     <>
-      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        Départs de feux et surfaces brûlées depuis 2006
-      </H3>
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>

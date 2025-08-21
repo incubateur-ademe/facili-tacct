@@ -5,7 +5,7 @@ import { MicroChiffreTerritoire } from '@/components/charts/MicroDataviz';
 import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import { ConsommationEspacesNAFAmenagementText } from '@/components/themes/inconfortThermique/staticTexts';
 import { CustomTooltipNouveauParcours } from '@/components/utils/CalculTooltip';
-import { Body, H3 } from '@/design-system/base/Textes';
+import { Body } from '@/design-system/base/Textes';
 import { CommunesContourMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
 import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
@@ -33,9 +33,6 @@ export const ConsommationEspacesNAFAmenagement = (props: {
 
   return (
     <>
-      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        Destination des surfaces imperméabilisées
-      </H3>
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>

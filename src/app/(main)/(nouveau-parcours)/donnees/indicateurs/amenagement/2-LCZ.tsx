@@ -6,7 +6,7 @@ import MapLCZNouveauParcours from '@/components/maps/mapLCZNouveauParcours';
 import { LCZCeremaText1, LCZText } from '@/components/themes/inconfortThermique/staticTexts';
 import { CustomTooltipNouveauParcours } from '@/components/utils/CalculTooltip';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
-import { Body, H3 } from "@/design-system/base/Textes";
+import { Body } from "@/design-system/base/Textes";
 import { CarteCommunes } from "@/lib/postgres/models";
 import { GetLczCouverture } from '@/lib/queries/databases/inconfortThermique';
 import { LCZTooltipText } from '@/lib/tooltipTexts';
@@ -39,9 +39,6 @@ export const LCZ = ({
 
   return (
     <>
-      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        Cartographie des zones climatiques locales (LCZ)
-      </H3>
       <div className={styles.datavizMapContainer}>
         <ReadMoreFade>
           <LCZCeremaText1 />

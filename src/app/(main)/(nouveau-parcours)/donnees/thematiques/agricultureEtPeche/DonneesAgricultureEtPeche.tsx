@@ -1,6 +1,7 @@
 "use client";
+import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
 import { RetourHautDePage } from '@/components/RetourHautDePage';
-import { Body, H1, H2 } from "@/design-system/base/Textes";
+import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { Agriculture, AgricultureBio, CarteCommunes, SurfacesAgricolesModel } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
@@ -61,16 +62,24 @@ export const DonneesAgricultureEtPeche = ({
           </H2>
           {/* Surfaces en bio */}
           <div id="Surfaces en bio" className={styles.indicateurWrapper}>
-            <SurfacesEnBio
-              agricultureBio={agricultureBio}
-            />
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Part de l’agriculture biologique
+              </H3>
+              <CopyLinkClipboard anchor="Surfaces en bio" />
+            </div>
+            <SurfacesEnBio agricultureBio={agricultureBio} />
           </div>
 
           {/* Types de cultures */}
           <div id="Types de culture" className={styles.indicateurWrapper}>
-            <TypesDeCulture
-              surfacesAgricoles={surfacesAgricoles}
-            />
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Surface agricole par type de culture
+              </H3>
+              <CopyLinkClipboard anchor="Types de culture" />
+            </div>
+            <TypesDeCulture surfacesAgricoles={surfacesAgricoles} />
           </div>
         </section>
 
@@ -81,6 +90,12 @@ export const DonneesAgricultureEtPeche = ({
           </H2>
           {/* Superficies irriguées */}
           <div id="Superficies irriguées" className={styles.indicateurWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Part de la surface agricole irriguée dans la SAU en 2020
+              </H3>
+              <CopyLinkClipboard anchor="Superficies irriguées" />
+            </div>
             <SuperficiesIrriguees
               agriculture={agriculture}
               carteCommunes={carteCommunes}
