@@ -838,10 +838,8 @@ export const LCZCeremaText1 = () => (
     </Body>
     <Body style={{ marginTop: '1rem', maxWidth: "850px", color: "var(--gris-dark)" }}>
       Les 17 types de zones aident à identifier les zones qui peuvent  potentiellement
-      devenir très chaudes. Bien que basée sur l’occupation du sol et la forme des villes.
-    </Body>
-    <Body weight='bold' style={{ maxWidth: "850px", color: "var(--gris-dark)" }}>
-      cette cartographie n’est pas une modélisation de l’îlot de chaleur urbain.
+      devenir très chaudes. Bien que basée sur l’occupation du sol et la forme des villes,
+      <b>cette cartographie n’est pas une modélisation de l’îlot de chaleur urbain.</b>
     </Body>
     <Body style={{ marginTop: '1rem', maxWidth: "850px", color: "var(--gris-dark)" }}>
       <a
@@ -855,11 +853,47 @@ export const LCZCeremaText1 = () => (
   </>
 );
 
+export const LCZText2 = () => (
+  <>
+    <Body weight='bold'>
+      Comment lire cette carte ?
+    </Body>
+    <Body style={{ marginTop: '1rem', maxWidth: "850px", color: "var(--gris-dark)" }}>
+      Cette carte, issue de multiples jeux de données d'observation de la Terre, vous permet 
+      d'explorer votre territoire à 100 m de résolution spatiale. Les zones climatiques locales 
+      (LCZ en anglais) montrent comment un territoire réagit aux vagues de chaleur estivales. 
+      Les 17 types de zones aident à identifier les zones qui peuvent  potentiellement devenir 
+      très chaudes. 
+      <br></br>
+      Bien que basée sur l’occupation du sol et la forme des villes, <b>cette cartographie n’est 
+      pas une modélisation de l’îlot de chaleur urbain.</b>
+    </Body>
+    <Body style={{ marginTop: '1rem', maxWidth: "850px", color: "var(--gris-dark)" }}>
+      Pour en savoir plus sur la méthodologie scientifique utilisée pour élaborer la carte, consultez 
+      l’article 
+    </Body>
+    <Body style={{ marginTop: '1rem', maxWidth: "850px", color: "var(--gris-dark)" }}>
+      <a
+        href="https://essd.copernicus.org/articles/14/3835/2022/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        A global map of local climate zones to support earth system modelling and urban-scale environmental science.
+      </a>
+    </Body>
+  </>
+);
+
+
+
+ 
+
+
 export const LCZText = () => (
   <> 
     <Body size='sm' style={{ marginTop: '2rem', maxWidth: "850px" }}>
-      Les LCZ qui reposent sur des mesures de température de surface ne permettent pas de quantifier 
-      le phénomène d’ilot de chaleur urbain (ICU) qui, lui, repose sur des mesures dynamiques de 
+      Les LCZ qui reposent sur des mesures de température de surface <b>ne permettent pas de quantifier 
+      le phénomène d’ilot de chaleur urbain </b>(ICU) qui, lui, repose sur des mesures dynamiques de 
       température de l’air. Les LCZ ne reflètent pas non plus les conditions météorologiques locales, 
       ni le confort thermique ressenti par les usagers. Elles contribuent à repérer des zones où une 
       exposition à la surchauffe pourrait être plus marquée, en vue d’y installer des capteurs ou 
@@ -868,7 +902,7 @@ export const LCZText = () => (
       la ville et de la vulnérabilité face à la chaleur.
     </Body>
     <Body size='sm' style={{ marginTop: '1rem', maxWidth: "850px" }}>
-      Pour structurer votre stratégies d’adaptation à la chaleur, consultez{" "}
+      Pour structurer votre stratégie d’adaptation à la chaleur, consultez{" "}
       <a
         href="https://plusfraichemaville.fr/"
         target="_blank"

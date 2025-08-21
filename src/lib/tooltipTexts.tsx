@@ -334,8 +334,8 @@ export const LCZTooltipText = (
     <div>
       La typologie LCZ {" "}
       <a href="https://journals.ametsoc.org/view/journals/bams/93/12/bams-d-11-00019.1.xml" target="_blank" rel="noopener noreferrer">
-        (issue de Stewart et Oke, 2012) {" "}
-      </a>
+        (issue de Stewart et Oke, 2012) 
+      </a>{" "}
       est un référentiel international des zones urbaines.
       La méthode s'appuie sur la corrélation observée entre les conditions climatiques d'une zone spécifique
       et ses caractéristiques géographiques (morphologie, utilisation des sols).
