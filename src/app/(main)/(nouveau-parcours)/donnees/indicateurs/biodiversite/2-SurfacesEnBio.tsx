@@ -5,7 +5,7 @@ import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import { SurfacesEnBioText } from "@/components/themes/inconfortThermique/staticTexts";
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { ReadMoreFade } from "@/components/utils/ReadMoreFade";
-import { Body, H3 } from "@/design-system/base/Textes";
+import { Body } from "@/design-system/base/Textes";
 import { AgricultureBio } from "@/lib/postgres/models";
 import { multipleEpciBydepartementLibelle } from "@/lib/territoireData/multipleEpciBydepartement";
 import { multipleEpciByPnrLibelle } from "@/lib/territoireData/multipleEpciByPnr";
@@ -68,9 +68,6 @@ export const SurfacesEnBio = (props: {
 
   return (
     <>
-      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        Part de l’agriculture biologique
-      </H3>
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>

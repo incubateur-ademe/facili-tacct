@@ -1,6 +1,7 @@
 "use client";
+import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
 import { RetourHautDePage } from '@/components/RetourHautDePage';
-import { Body, H1, H2 } from "@/design-system/base/Textes";
+import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { AgricultureBio, AOT40, CarteCommunes, ConsommationNAF, EtatCoursDeau, QualiteSitesBaignade } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
@@ -30,9 +31,6 @@ export const DonneesBiodiversite = ({
 }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Biodiversité";
-  const code = searchParams.get('code')!;
-  const libelle = searchParams.get('libelle')!;
-  const type = searchParams.get('type')!;
   const ongletsMenu = sommaireThematiques[thematique];
 
   useEffect(() => {
@@ -62,7 +60,6 @@ export const DonneesBiodiversite = ({
           </Body>
         </section>
 
-
         {/* Section Biodiversité */}
         <section className={styles.sectionType}>
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
@@ -71,6 +68,12 @@ export const DonneesBiodiversite = ({
 
           {/* Ozone et végétation */}
           <div id="Ozone et végétation" className={styles.indicateurWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Concentration d’ozone pendant la période de végétation (moyenne 2020-2024)
+              </H3>
+              <CopyLinkClipboard anchor="Ozone et végétation" />
+            </div>
             <OzoneEtVegetation
               aot40={aot40}
               carteCommunes={carteCommunes}
@@ -85,6 +88,12 @@ export const DonneesBiodiversite = ({
           </H2>
           {/* Consommation d'espaces NAF */}
           <div id="Consommation d'espaces NAF" className={styles.indicateurWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Sols imperméabilisés entre 2009 et 2023
+              </H3>
+              <CopyLinkClipboard anchor="Consommation d'espaces NAF" />
+            </div>
             <ConsommationEspacesNAF
               consommationNAF={consommationNAF}
               carteCommunes={carteCommunes}
@@ -97,8 +106,14 @@ export const DonneesBiodiversite = ({
           <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
           </H2>
-          {/* État écologique des cours */}
+          {/* Surfaces en bio */}
           <div id="Surfaces en bio" className={styles.indicateurWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Part de l’agriculture biologique
+              </H3>
+              <CopyLinkClipboard anchor="Surfaces en bio" />
+            </div>
             <SurfacesEnBio
               agricultureBio={agricultureBio}
             />
@@ -112,6 +127,12 @@ export const DonneesBiodiversite = ({
           </H2>
           {/* État écologique des cours d'eau */}
           <div id="État écologique des cours d'eau" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                État écologique des cours d’eau et des plans d’eau
+              </H3>
+              <CopyLinkClipboard anchor="État écologique des cours d'eau" />
+            </div>
             <EtatEcoCoursDeau
               etatCoursDeau={etatCoursDeau}
               carteCommunes={carteCommunes}

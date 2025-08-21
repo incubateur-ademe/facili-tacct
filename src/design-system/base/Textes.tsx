@@ -55,14 +55,17 @@ export const H2 = ({
 export const H3 = ({
   children,
   color = "#23282B",
-  style
+  style,
+  id
 }: {
   children: React.ReactNode;
   color?: string;
   style?: React.CSSProperties;
+  id?: string;
 }) => {
   return (
     <h3
+      id={id}
       style={{
         color: color,
         fontSize: "1.75rem",

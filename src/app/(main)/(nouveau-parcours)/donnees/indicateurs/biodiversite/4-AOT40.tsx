@@ -5,7 +5,7 @@ import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { aot40Legends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapAOT40 } from '@/components/maps/mapAOT40';
-import { Body, H3 } from "@/design-system/base/Textes";
+import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { AOT40, CarteCommunes } from "@/lib/postgres/models";
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
@@ -134,9 +134,6 @@ export const OzoneEtVegetation = (props: {
   const exportData = IndicatorExportTransformations.biodiversite.aot40(aot40);
   return (
     <>
-      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        Concentration d’ozone pendant la période de végétation (moyenne 2020-2024)
-      </H3>
       <div className={styles.datavizMapContainer}>
         <Body size='sm'>
           La pollution à l’ozone ne s'arrête pas aux frontières des
