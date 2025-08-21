@@ -62,16 +62,10 @@ export const sommaireThematiques = {
       },
       {
         id: "section2",
-        thematique: "Bâtiments et logements",
+        thematique: "Bâtiment",
         icone: "🏠",
         sousCategories: ["Retrait-gonflement des argiles"]
       },
-      // {
-      //   id: "section3",
-      //   thematique: "Aménagement",
-      //   icone: "🏗️",
-      //   sousCategories: ["Érosion côtière"]
-      // },
     ]
   },
   "Agriculture et pêche": {
@@ -203,8 +197,8 @@ export const thematiquesInfo: {
     description: (<div></div>),
     link: ''
   },
-  'Agriculture & pêche': {
-    title: 'Agriculture & pêche',
+  'Agriculture et pêche': {
+    title: 'Agriculture et pêche',
     description: (<div></div>),
     link: 'Agriculture et pêche'
   },

@@ -3,7 +3,7 @@ import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { ExportPngMaplibreButtonNouveauParcours } from '@/components/exports/ExportPng';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import MapLCZNouveauParcours from '@/components/maps/mapLCZNouveauParcours';
-import { LCZCeremaText1, LCZText } from '@/components/themes/inconfortThermique/staticTexts';
+import { LCZCeremaText1, LCZText, LCZText2 } from '@/components/themes/inconfortThermique/staticTexts';
 import { CustomTooltipNouveauParcours } from '@/components/utils/CalculTooltip';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { Body } from "@/design-system/base/Textes";
@@ -41,7 +41,7 @@ export const LCZ = ({
     <>
       <div className={styles.datavizMapContainer}>
         <ReadMoreFade>
-          <LCZCeremaText1 />
+          {isLczCovered ? <LCZCeremaText1 /> : <LCZText2 />}
           <CustomTooltipNouveauParcours title={LCZTooltipText} texte='Que sont les LCZ ?' />
           <LCZText />
         </ReadMoreFade>
