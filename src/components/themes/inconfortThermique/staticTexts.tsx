@@ -313,7 +313,7 @@ export const ConsommationEspacesNAFBiodiversiteText = () => (
 );
 
 export const SurfacesEnBioText = () => (
-  <div className="pr-5">
+  <div className="pr-5 pt-10">
     <Body size='sm'>
       L'effondrement de la biodiversité n’est pas une fiction : 69 %
       des espèces sauvages ont disparu à l'échelle de la planète entre

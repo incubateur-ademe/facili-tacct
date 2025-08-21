@@ -110,6 +110,9 @@ export const BarreDeRecherche = ({
                 '&::placeholder': {
                   color: '#7B7B7B'
                 }
+              },
+              '.css-1uhhrmm-MuiAutocomplete-endAdornment': {
+                right: '2px',
               }
             })
             : css({
@@ -128,6 +131,9 @@ export const BarreDeRecherche = ({
                 '&::placeholder': {
                   color: '#7B7B7B'
                 }
+              },
+              '.css-1uhhrmm-MuiAutocomplete-endAdornment': {
+                right: '2px',
               }
             })
           }
