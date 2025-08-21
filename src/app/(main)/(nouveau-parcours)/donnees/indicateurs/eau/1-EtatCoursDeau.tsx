@@ -7,7 +7,7 @@ import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
 import { EtatCoursEauRessourcesEauText } from '@/components/themes/inconfortThermique/staticTexts';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
-import { Body, H3 } from "@/design-system/base/Textes";
+import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
 import { CarteCommunes, EtatCoursDeau } from "@/lib/postgres/models";
@@ -31,9 +31,6 @@ export const EtatEcoCoursDeau = (props: {
 
   return (
     <>
-      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        État écologique des cours d’eau
-      </H3>
       <div className={styles.datavizMapContainer}>
         <div className='pr-5'>
           <Body weight='bold' style={{ color: "var(--gris-dark)" }}>

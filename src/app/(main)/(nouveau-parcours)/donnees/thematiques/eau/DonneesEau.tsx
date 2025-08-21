@@ -1,6 +1,7 @@
 "use client";
+import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
 import { RetourHautDePage } from '@/components/RetourHautDePage';
-import { Body, H1, H2 } from "@/design-system/base/Textes";
+import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { CarteCommunes, EtatCoursDeau, RessourcesEau } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
@@ -22,9 +23,6 @@ export const DonneesEau = ({
 }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Eau";
-  // const code = searchParams.get('code')!;
-  // const libelle = searchParams.get('libelle')!;
-  // const type = searchParams.get('type')!;
   const ongletsMenu = sommaireThematiques[thematique];
 
   useEffect(() => {
@@ -61,13 +59,23 @@ export const DonneesEau = ({
           </H2>
           {/* Ressources en eau */}
           <div id="Ressources en eau" className={styles.indicateurWrapper}>
-            <PrelevementsEnEau
-              ressourcesEau={ressourcesEau}
-            />
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Répartition des prélèvements d’eau par usage
+              </H3>
+              <CopyLinkClipboard anchor="Ressources en eau" />
+            </div>
+            <PrelevementsEnEau ressourcesEau={ressourcesEau} />
           </div>
 
           {/* État écologique des cours d'eau */}
           <div id="État écologique des cours d'eau" className={styles.indicateurWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                État écologique des cours d’eau
+              </H3>
+              <CopyLinkClipboard anchor="État écologique des cours d'eau" />
+            </div>
             <EtatEcoCoursDeau
               etatCoursDeau={etatCoursDeau}
               carteCommunes={carteCommunes}
