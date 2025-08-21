@@ -128,13 +128,23 @@ const DonneesConfortThermique = ({
           </H2>
           {/* Types de sols */}
           <div id="Types de sols" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Cartographie des différents types de sols
+              </H3>
+              <CopyLinkClipboard anchor="Types de sols" />
+            </div>
             <TypesDeSols inconfortThermique={inconfortThermique} carteCommunes={carteCommunes} clc={clc} />
           </div>
           {/* LCZ */}
           <div id="LCZ" className={styles.indicateurWrapper}>
-            <LCZ
-              carteCommunes={carteCommunes}
-            />
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Cartographie des zones climatiques locales (LCZ)
+              </H3>
+              <CopyLinkClipboard anchor="LCZ" />
+            </div>
+            <LCZ carteCommunes={carteCommunes} />
           </div>
         </section>
         <div className={styles.redirectionEtape2Wrapper} >

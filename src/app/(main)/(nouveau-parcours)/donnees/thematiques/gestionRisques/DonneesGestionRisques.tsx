@@ -1,7 +1,8 @@
 "use client";
+import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
 import { LoaderText } from '@/components/loader';
 import { RetourHautDePage } from '@/components/RetourHautDePage';
-import { Body, H1, H2 } from "@/design-system/base/Textes";
+import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { ArreteCatNat, CarteCommunes, ErosionCotiere, IncendiesForet, RGACarte, RGAdb } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
@@ -88,6 +89,12 @@ export const DonneesGestionRisques = ({
         <section className={styles.sectionType}>
           {/* Arrêtés CatNat */}
           <div id="Arrêtés CatNat" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Arrêtés de catastrophes naturelles
+              </H3>
+              <CopyLinkClipboard anchor="Arrêtés CatNat" />
+            </div>
             <ArretesCatnat
               gestionRisques={gestionRisques}
               carteCommunes={carteCommunes}
@@ -96,9 +103,13 @@ export const DonneesGestionRisques = ({
 
           {/* Faux de forêt */}
           <div id="Feux de forêt" className={styles.indicateurWrapper}>
-            <FeuxDeForet
-              incendiesForet={incendiesForet}
-            />
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Départs de feux et surfaces brûlées depuis 2006
+              </H3>
+              <CopyLinkClipboard anchor="Feux de forêt" />
+            </div>
+            <FeuxDeForet incendiesForet={incendiesForet} />
           </div>
         </section>
 
@@ -122,11 +133,19 @@ export const DonneesGestionRisques = ({
                 </div>
               </div>
             ) : (
-              <RetraitGonflementDesArgiles
-                rgaCarte={rgaCarte}
-                carteCommunes={carteCommunes}
-                rga={rga}
-              />
+              <>
+                <div className={styles.h3Titles}>
+                  <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                    Retrait-gonflement des argiles
+                  </H3>
+                  <CopyLinkClipboard anchor="Retrait-gonflement des argiles" />
+                </div>
+                <RetraitGonflementDesArgiles
+                  rgaCarte={rgaCarte}
+                  carteCommunes={carteCommunes}
+                  rga={rga}
+                />
+              </>
             )}
           </div>
         </section>
@@ -141,6 +160,12 @@ export const DonneesGestionRisques = ({
 
                 {/* Érosion côtière */}
                 <div id="Érosion côtière" className={styles.indicateurWrapper}>
+                  <div className={styles.h3Titles}>
+                    <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                      Mouvement du trait de côte
+                    </H3>
+                    <CopyLinkClipboard anchor="Érosion côtière" />
+                  </div>
                   <ErosionCotiereComp
                     erosionCotiere={erosionCotiere}
                     carteCommunes={carteCommunes}

@@ -6,7 +6,7 @@ import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { CatNatText } from "@/components/themes/inconfortThermique/staticTexts";
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
-import { Body, H3 } from "@/design-system/base/Textes";
+import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursMapper } from "@/lib/mapper/communes";
 import { ArreteCatNat, CarteCommunes } from "@/lib/postgres/models";
 import { catnatTooltipText } from "@/lib/tooltipTexts";
@@ -104,9 +104,6 @@ export const ArretesCatnat = (props: {
 
   return (
     <>
-      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        Arrêtés de catastrophes naturelles
-      </H3>
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>

@@ -8,7 +8,7 @@ import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { RGAText } from "@/components/themes/inconfortThermique/staticTexts";
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
-import { Body, H3 } from "@/design-system/base/Textes";
+import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { RGAMapper } from '@/lib/mapper/gestionRisques';
 import { CarteCommunes, RGACarte, RGAdb } from "@/lib/postgres/models";
@@ -81,9 +81,6 @@ export const RetraitGonflementDesArgiles = ({
 
   return (
     <>
-      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        Départs de feux et surfaces brûlées depuis 2006
-      </H3>
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>

@@ -7,7 +7,7 @@ import { MapErosionCotiere } from '@/components/maps/mapErosionCotiere';
 import { ErosionCotiereText } from '@/components/themes/inconfortThermique/staticTexts';
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
-import { Body, H3 } from "@/design-system/base/Textes";
+import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { ErosionCotiereMapper } from '@/lib/mapper/erosionCotiere';
 import { CarteCommunes, ErosionCotiere } from "@/lib/postgres/models";
@@ -24,7 +24,6 @@ export const ErosionCotiereComp = ({
   carteCommunes: CarteCommunes[];
 }) => {
   const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
   const mapRef = useRef<maplibregl.Map | null>(null);
@@ -34,9 +33,6 @@ export const ErosionCotiereComp = ({
 
   return (
     <>
-      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        Mouvement du trait de côte
-      </H3>
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
