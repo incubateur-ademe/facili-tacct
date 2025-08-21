@@ -1,8 +1,9 @@
 'use client';
 import DiagnoticImage from '@/assets/images/diagnostiquer_impacts.png';
+import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
 import { RetourHautDePage } from '@/components/RetourHautDePage';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
-import { Body, H1, H2 } from '@/design-system/base/Textes';
+import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import { handleRedirectionThematique } from '@/hooks/Redirections';
 import { CarteCommunes, CLCTerritoires, InconfortThermique } from '@/lib/postgres/models';
 import Image from 'next/image';
@@ -28,7 +29,6 @@ const DonneesConfortThermique = ({
 }) => {
   const searchParams = useSearchParams();
   const params = usePathname();
-  console.log("params", params)
   const thematique = searchParams.get('thematique') as "Confort thermique";
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
@@ -72,16 +72,34 @@ const DonneesConfortThermique = ({
           </H2>
           {/* Grand âge */}
           <div id="Grand âge" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Évolution de la part des 80 ans et plus dans la population
+              </H3>
+              <CopyLinkClipboard anchor="Grand âge" />
+            </div>
             <GrandAge inconfortThermique={inconfortThermique} />
           </div>
 
           {/* Précarité énergétique */}
           <div id="Précarité énergétique" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Part des ménages en situation de précarité énergétique liée au logement
+              </H3>
+              <CopyLinkClipboard anchor="Précarité énergétique" />
+            </div>
             <PrecariteEnergetique carteCommunes={carteCommunes} />
           </div>
 
           {/* Emplois en extérieur */}
           <div id="Emplois en extérieur" className={styles.indicateurWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Part des emplois par grands secteurs d’activité
+              </H3>
+              <CopyLinkClipboard anchor="Emplois en extérieur" />
+            </div>
             <EmploisEnExterieur inconfortThermique={inconfortThermique} />
           </div>
         </section>
@@ -93,6 +111,12 @@ const DonneesConfortThermique = ({
           </H2>
           {/* Âge du bâtiment */}
           <div id="Âge du bâtiment" className={styles.indicateurWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Part des résidences principales par période de construction
+              </H3>
+              <CopyLinkClipboard anchor="Âge du bâtiment" />
+            </div>
             <DateConstructionResidences inconfortThermique={inconfortThermique} />
           </div>
         </section>

@@ -6,7 +6,7 @@ import { etatCoursDeauLegends, qualiteEauxBaignadelegends } from '@/components/m
 import { LegendCompColor, LegendCompIcons } from '@/components/maps/legends/legendComp';
 import { MapEtatCoursDeauLegacy } from '@/components/maps/mapEtatCoursDeauLegacy';
 import { EtatsCoursEauBiodiversiteTextNouveauParcours } from '@/components/themes/inconfortThermique/staticTexts';
-import { Body, H3 } from "@/design-system/base/Textes";
+import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
 import { CarteCommunes, EtatCoursDeau, QualiteSitesBaignade } from "@/lib/postgres/models";
@@ -42,9 +42,6 @@ export const EtatEcoCoursDeau = (props: {
 
   return (
     <>
-      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        État écologique des cours d’eau et des plans d’eau
-      </H3>
       <div className={styles.datavizMapContainer}>
         <div className='pr-5'>
           <EtatsCoursEauBiodiversiteTextNouveauParcours />

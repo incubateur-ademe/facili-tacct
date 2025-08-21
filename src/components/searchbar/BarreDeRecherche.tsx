@@ -67,6 +67,23 @@ export const BarreDeRecherche = ({
               orientation={width && width > 520 ? "horizontal" : "vertical"}
               className={css({
                 '.fr-fieldset__content': {
+                  '&:hover::after': {
+                    content: '"Le Patch 4°C n’est actuellement pas disponible pour ce type de territoire."',
+                    position: 'absolute',
+                    left: '50%',
+                    top: '-150%',
+                    transform: 'translateX(-28%)',
+                    background: '#FFF',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '0.5rem',
+                    whiteSpace: 'nowrap',
+                    zIndex: 100,
+                    fontSize: '1rem',
+                    fontWeight: '500',
+                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
+                    border: "1px solid var(--gris-medium)"
+                  }
+                ,
                   justifyContent: 'center',
                   '.fr-label': {
                     paddingBottom: 0,
@@ -81,7 +98,7 @@ export const BarreDeRecherche = ({
                   '@media (max-width: 745px)': {
                     justifyContent: 'flex-start'
                   }
-                }
+                },
               })}
             />
           ))
