@@ -28,7 +28,7 @@ const PanneauLateral = ({
           <div
             className={styles.panneauLateralWrapper}
             style={{
-              position: 'absolute',
+              position: selectedItem ? 'absolute' : 'fixed',
               right: selectedItem ? 'max(0rem, calc((100vw - 1200px) / 2))' : '-400px',
               top: 117 + 56 + (windowDimensions.height * 0.10),
               width: selectedItem ? '385px' : 'fit-content',  // avec 0 pour un déroulé du panneau latéral

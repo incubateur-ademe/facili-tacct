@@ -486,11 +486,10 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       {NoeudsRoue.map((node, index) => {
         const thematique = nomThematiques.find(t => t.label === node.label);
         if (!thematique?.disabled) return null;
-
         const labelRadius = node.labelRadius ? node.labelRadius : defaultLabelRadius;
         const nodeAngle = Math.atan2(node.y, node.x);
-        const x = labelRadius * Math.cos(nodeAngle) + svgWidth / 2;
-        const y = labelRadius * Math.sin(nodeAngle) + svgHeight / 2;
+        const x = (labelRadius * Math.cos(nodeAngle) + svgWidth / 2) - 53;
+        const y = (labelRadius * Math.sin(nodeAngle) + svgHeight / 2) - 25;
 
         return (
           <HtmlTooltip
@@ -501,9 +500,9 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
             <div
               style={{
                 position: 'absolute',
-                left: x - 80,
-                top: y - 15,
-                width: 160,
+                left: node.label.length > 10 ? x : x + 10,
+                top: y,
+                width: node.label.length > 10 ? 110 : 80,
                 height: 50,
                 cursor: 'help',
                 zIndex: 2,
@@ -528,7 +527,6 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
               opacity: selectedThematique ? 0 : 1,
               transition: selectedThematique ? 'none' : 'opacity 0.5s ease-in-out',
               zIndex: 3,
-              pointerEvents: 'none'
             }}
           >
             <Body weight="bold">

@@ -27,7 +27,7 @@ export const nodeCategoryMapping = {
   // Ressources économiques
   Entreprises: 'Ressources économiques',
   Tourisme: 'Ressources économiques',
-  'Agriculture & pêche': 'Ressources économiques',
+  'Agriculture et pêche': 'Ressources économiques',
   'Filière bois': 'Ressources économiques'
 };
 
@@ -51,7 +51,7 @@ export const nomThematiques = [
     labelRadius: 260,
     icon: '🌡️',
     disabled: false,
-    liens: ['Santé', 'Aménagement', 'Bâtiments & Logement', 'Tourisme']
+    liens: ['Santé', 'Aménagement', 'Bâtiment', 'Tourisme']
   },
   {
     label: 'Gestion des risques',
@@ -93,7 +93,7 @@ export const nomThematiques = [
     liens: []
   },
   {
-    label: 'Agriculture & pêche',
+    label: 'Agriculture et pêche',
     labelRadius: 280,
     icon: '🌾',
     disabled: false
@@ -122,7 +122,7 @@ export const liensEntreThematiques = [
     curve: 1,
     curveRadius: 0.8
   },
-  // EAU
+  // Eau
   {
     source: 'Santé',
     target: 'Eau',
@@ -135,23 +135,23 @@ export const liensEntreThematiques = [
     curve: 1,
     curveRadius: 0.3
   },
-    // Agriculture & pêche
+  // Agriculture et pêche
   {
-    source: 'Agriculture & pêche',
+    source: 'Agriculture et pêche',
     target: 'Eau',
     curve: 1,
     curveRadius: 0.24
   },
   {
     source: 'Santé',
-    target: 'Agriculture & pêche',
+    target: 'Agriculture et pêche',
     curve: 1,
     curveRadius: 0.07
   },
   // Biodiversité
   {
     source: 'Biodiversité',
-    target: 'Agriculture & pêche',
+    target: 'Agriculture et pêche',
     curve: 1,
     curveRadius: 0.3
   },
@@ -180,6 +180,12 @@ export const liensEntreThematiques = [
     curveRadius: 0.8
   },
   // Confort thermique
+  {
+    source: 'Confort thermique',
+    target: 'Santé',
+    curve: 1,
+    curveRadius: 0.8
+  },
   {
     source: 'Confort thermique',
     target: 'Bâtiment',
@@ -230,7 +236,7 @@ export const liensEntreThematiques = [
     curveRadius: 0.26
   },
   {
-    source: 'Agriculture & pêche',
+    source: 'Agriculture et pêche',
     target: 'Gestion des risques',
     curve: 1,
     curveRadius: 0.15
