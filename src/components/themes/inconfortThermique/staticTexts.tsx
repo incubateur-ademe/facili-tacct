@@ -699,7 +699,7 @@ export const ErosionCotiereText = () => (
 );
 
 export const FeuxForetText = () => (
-  <>
+  <div className="pt-10">
     <Body size="sm">
       Un climat plus chaud et plus sec sont des conditions propices
       aux départs de feux et les vents potentiellement plus violents
@@ -728,7 +728,7 @@ export const FeuxForetText = () => (
       ⇒ 4 feux sur 5 se déclenchent à moins de 50 mètres des
       habitations.
     </Body>
-  </>
+  </div>
 );
 
 export const RGAText = () => (
