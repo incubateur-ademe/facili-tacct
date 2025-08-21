@@ -30,7 +30,7 @@ const CircleVisualization = ({
     <div className={styles.CircleVisualizationContainer}>
       <div
         className={styles.CircleVisualizationWrapper}
-        style={{ 
+        style={{
           width: selectedItem ? '50%' : '100%',
           paddingLeft: selectedItem ? '4rem' : '0',
         }}
@@ -61,14 +61,13 @@ const CircleVisualization = ({
                   />
                 </div>
                 {/* Label */}
-                <Body 
-                size='xs' 
-                weight='bold' 
-                style={{
-                  color: '#161616',
-                  maxWidth: '88px',
-                  lineHeight: '1.2'
-                }}>
+                <Body
+                  size='xs'
+                  weight='bold'
+                  style={{
+                    maxWidth: '88px',
+                    lineHeight: '1.2'
+                  }}>
                   {item.label}
                 </Body>
               </div>
