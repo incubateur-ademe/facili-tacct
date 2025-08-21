@@ -6,7 +6,7 @@ import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { Loader } from "@/components/loader";
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
-import { Body, H3 } from "@/design-system/base/Textes";
+import { Body } from "@/design-system/base/Textes";
 import { grandAgeIsolementMapper } from "@/lib/mapper/inconfortThermique";
 import { InconfortThermique } from "@/lib/postgres/models";
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
@@ -48,9 +48,6 @@ export const GrandAge = ({
 
   return (
     <>
-      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        Évolution de la part des 80 ans et plus dans la population
-      </H3>
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>

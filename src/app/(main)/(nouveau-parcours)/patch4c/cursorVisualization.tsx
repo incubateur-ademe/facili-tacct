@@ -20,7 +20,7 @@ const CursorVisualization = () => {
                   </Body>
                   <HtmlTooltip
                     title={
-                      <Body>
+                      <Body weight='bold'>
                         {item.hover}
                       </Body>
                     }

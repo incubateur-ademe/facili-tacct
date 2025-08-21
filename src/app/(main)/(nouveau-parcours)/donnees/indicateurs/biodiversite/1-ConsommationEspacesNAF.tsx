@@ -11,7 +11,7 @@ import { MapEspacesNaf } from '@/components/maps/mapEspacesNAF';
 import { ConsommationEspacesNAFBiodiversiteText } from '@/components/themes/inconfortThermique/staticTexts';
 import { CustomTooltipNouveauParcours } from '@/components/utils/CalculTooltip';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
-import { Body, H3 } from '@/design-system/base/Textes';
+import { Body } from '@/design-system/base/Textes';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
 import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
@@ -48,18 +48,10 @@ export const ConsommationEspacesNAF = (props: {
     ? consommationNAF.filter((item) => item.code_geographique === code)[0]
       ?.naf09art23
     : consommationNAF.reduce((acc, item) => acc + item.naf09art23, 0);
-  console.log("sumnaf", sumNaf)
   const exportData = IndicatorExportTransformations.biodiversite.EspacesNaf(consommationNAF);
-
-  console.log("test", carteCommunes.length !== 0 && enveloppe && carteCommunesFiltered !== null)
-  console.log("moule", carteCommunesFiltered)
-  console.log("enveloppe", enveloppe)
 
   return (
     <>
-      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        Sols imperméabilisés entre 2009 et 2023
-      </H3>
       <div className={styles.datavizMapContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>

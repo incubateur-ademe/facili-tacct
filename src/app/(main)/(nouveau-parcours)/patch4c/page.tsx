@@ -36,7 +36,38 @@ const Patch4C = async (props: { searchParams: SearchParams }) => {
       <Body>
         <b>Si l'un des indices de votre territoire est au niveau d'aggravation "fort" ou "très fort",
           il est impératif de renforcer votre plan d'adaptation.</b> Prenez en compte dès maintenant les
-        conséquences possibles de l'aléa. Le tableau ci-dessous propose une liste de thématiques à
+        conséquences possibles de l'aléa.
+      </Body>
+      <Body style={{ marginTop: '1rem', padding: "0.75rem 0" }}>
+        <b>Si le niveau d'aggravation de l'aléa est très fort :</b>
+        <ul>
+          <li className='ml-4'>
+            <Body>Dans votre diagnostic de vulnérabilité aux impacts du changement climatique, le niveau d’exposition à l’aléa climatique doit être considéré comme maximal.</Body>
+          </li>
+          <li className='ml-4'>
+            <Body>À défaut de disposer de capacités d’adaptation démontrant le contraire, considérez comme maximal votre niveau de sensibilité face à cette exposition, pour les habitants, les infrastructures, les ressources naturelles et les activités économiques.</Body>
+          </li>
+          <li className='ml-4'>
+            <Body>Vérifier que votre plan d’action comporte des actions visant à réduire vos différents facteurs de sensibilité face à cette exposition. Si ce n’est pas le cas, il convient d’en ajouter.</Body>
+          </li>
+        </ul>
+      </Body>
+      <Body>
+        <b>Si le niveau d'aggravation de l'aléa est fort :</b>
+        <ul className='pb-4'>
+          <li className='ml-4'>
+            <Body>Vérifier que votre diagnostic identifie bien l’aléa climatique suivi par cet indice, sinon l’ajouter.</Body>
+          </li>
+          <li className='ml-4'>
+            <Body>Vérifier que votre diagnostic évalue la sensibilité face à cette exposition, pour les habitants, les infrastructures, les ressources naturelles et les activités économiques.</Body>
+          </li>
+          <li className='ml-4'>
+            <Body>Éventuellement, compléter votre plan d’action.</Body>
+          </li>
+        </ul>
+      </Body>
+      <Body weight='bold'>
+        Le tableau ci-dessous propose une liste de thématiques à
         aborder, mais l'analyse reste à effectuer en fonction de vos dynamiques territoriales, des
         actions déjà entreprises et de vos capacités d’adaptation.
       </Body>

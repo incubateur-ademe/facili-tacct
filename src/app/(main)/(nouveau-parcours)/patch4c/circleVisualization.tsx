@@ -63,7 +63,6 @@ const CircleVisualization = ({
                 {/* Label */}
                 <Body
                   size='xs'
-                  weight='bold'
                   style={{
                     maxWidth: '88px',
                     lineHeight: '1.2'

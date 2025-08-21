@@ -96,6 +96,12 @@
     max-height: fit-content;
 }
 
+.h3Titles {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
 // Etape 2 : impacts
 .bdWrapper {
     display: flex;

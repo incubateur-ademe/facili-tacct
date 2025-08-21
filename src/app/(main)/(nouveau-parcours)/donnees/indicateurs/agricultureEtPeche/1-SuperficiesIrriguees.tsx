@@ -48,10 +48,6 @@ export const SuperficiesIrriguees = (props: {
       .map((value) => (isNaN(value!) ? 0 : value))
       .reduce((acc, value) => acc! + value!, 0);
 
-      console.log("surfaceTerritoire", surfaceTerritoire)
-      console.log("agriculture", agriculture)
-
-
   return (
     <>
       <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
