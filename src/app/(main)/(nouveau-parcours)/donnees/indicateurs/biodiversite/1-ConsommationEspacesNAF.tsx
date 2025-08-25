@@ -78,7 +78,7 @@ export const ConsommationEspacesNAF = (props: {
             </div>
           </div>
           <div className='mt-4 pr-5'>
-            <ReadMoreFade maxHeight={150}>
+            <ReadMoreFade maxHeight={100}>
               <ConsommationEspacesNAFBiodiversiteText />
             </ReadMoreFade>
           </div>

@@ -66,7 +66,7 @@ export const MapContourTerritoire = (props: {
 
   return (
     <>
-      {bounds[0] != 0 ? (
+      {bounds[0] !== 0 ? (
         <MapContainer
           ref={mapRef}
           style={{

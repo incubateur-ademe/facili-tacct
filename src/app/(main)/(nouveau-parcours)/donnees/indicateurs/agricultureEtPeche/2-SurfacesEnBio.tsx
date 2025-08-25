@@ -94,7 +94,7 @@ export const SurfacesEnBio = (props: {
                       </Body>
                       <ul style={{ margin: "0.5rem 0 0 1.5rem" }}>
                         {territoiresPartiellementCouverts?.map((epci, index) => (
-                          <li key={index} style={{ fontSize: "1rem" }}>{epci}</li>
+                          <li key={index}><Body weight='bold' style={{ color: "var(--gris-dark)" }}>{epci}</Body></li>
                         ))}
                       </ul>
                     </>
@@ -105,7 +105,7 @@ export const SurfacesEnBio = (props: {
             }
             <CustomTooltipNouveauParcours title={agricultureBioTooltipText} texte="D'où vient ce chiffre ?" />
           </div>
-          <ReadMoreFade maxHeight={300}>
+          <ReadMoreFade maxHeight={territoiresPartiellementCouverts?.length ? 400 / territoiresPartiellementCouverts?.length : 280}>
             <SurfacesEnBioAgricultureText />
           </ReadMoreFade>
         </div>

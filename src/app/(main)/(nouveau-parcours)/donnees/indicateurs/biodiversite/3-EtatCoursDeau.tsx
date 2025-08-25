@@ -6,6 +6,7 @@ import { etatCoursDeauLegends, qualiteEauxBaignadelegends } from '@/components/m
 import { LegendCompColor, LegendCompIcons } from '@/components/maps/legends/legendComp';
 import { MapEtatCoursDeauLegacy } from '@/components/maps/mapEtatCoursDeauLegacy';
 import { EtatsCoursEauBiodiversiteTextNouveauParcours } from '@/components/themes/inconfortThermique/staticTexts';
+import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { Body } from "@/design-system/base/Textes";
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
@@ -44,7 +45,9 @@ export const EtatEcoCoursDeau = (props: {
     <>
       <div className={styles.datavizMapContainer}>
         <div className='pr-5'>
-          <EtatsCoursEauBiodiversiteTextNouveauParcours />
+          <ReadMoreFade maxHeight={100}>
+            <EtatsCoursEauBiodiversiteTextNouveauParcours />
+          </ReadMoreFade>
         </div>
         <div className={styles.mapWrapper}>
           {etatCoursDeau.length ? (

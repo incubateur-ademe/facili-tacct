@@ -51,7 +51,7 @@ const getDisabledTooltipContent = (label: string) => {
 const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => {
   const svgRef = useRef(null);
   const { width, height, margin } = dimensions;
-  const svgWidth = Number(width) + margin.left + margin.right;
+  const svgWidth = Number(width) + margin.left + margin.right + 15;
   const svgHeight = Number(height) + margin.top + margin.bottom;
   const [selectedThematique, setSelectedThematique] = useState<string | null>(selectedItem || null);
   const radiusRoueSytemique = 180;
@@ -382,7 +382,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
             .transition()
             .duration(200)
             .attr("fill", "#fff")
-            .attr("stroke-dasharray", "2 2");
+            .attr("stroke-dasharray", "5 0");
         }
       })
       .each(function (d: NoeudRoue) {
@@ -419,15 +419,15 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         let rectFill = "#fff";
         let rectStroke = d.color;
         let textFill = d.textColor;
-        let strokeDasharray = "2 2";
+        let strokeDasharray = "5 0";
         let paddingX = 16;
         let paddingY = 8;
         const fontSize = 14;
 
         if (thematique?.disabled) {
           rectStroke = "var(--gris-medium)";
-          textFill = "var(--gris-medium-dark)";
-          strokeDasharray = "2 2";
+          textFill = "var(--gris-medium)";
+          strokeDasharray = "5 0";
         } else if (selectedThematique === d.label) {
           // L'item sélectionné utilise la couleur de contour la plus foncée
           const category = nodeCategoryMapping[d.label as keyof typeof nodeCategoryMapping];
@@ -453,7 +453,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           .attr("height", boxHeight)
           .attr("fill", rectFill)
           .attr("stroke", rectStroke)
-          .attr("stroke-width", 0.8)
+          .attr("stroke-width", 1)
           .attr("stroke-dasharray", strokeDasharray)
           .attr("rx", 15)
           .attr("ry", 100);

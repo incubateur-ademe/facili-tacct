@@ -829,19 +829,19 @@ export const LCZCeremaText1 = () => (
     <Body weight='bold'>
       Comment lire cette carte ?
     </Body>
-    <Body style={{ marginTop: '1rem', maxWidth: "850px", color: "var(--gris-dark)" }}>
+    <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
       Les zones climatiques locales (LCZ en anglais) montrent comment un territoire
       réagit aux vagues de chaleur estivales. Ces données, fournies par le CEREMA,
       couvrent 88 aires urbaines en France métropolitaine. Sur les 12 000 communes
       étudiées, plus de 5 millions d’habitants vivent dans des quartiers très sensibles
       aux fortes chaleurs.
     </Body>
-    <Body style={{ marginTop: '1rem', maxWidth: "850px", color: "var(--gris-dark)" }}>
+    <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
       Les 17 types de zones aident à identifier les zones qui peuvent  potentiellement
       devenir très chaudes. Bien que basée sur l’occupation du sol et la forme des villes,
-      <b>cette cartographie n’est pas une modélisation de l’îlot de chaleur urbain.</b>
+      <b> cette cartographie n’est pas une modélisation de l’îlot de chaleur urbain.</b>
     </Body>
-    <Body style={{ marginTop: '1rem', maxWidth: "850px", color: "var(--gris-dark)" }}>
+    <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
       <a
         href="https://doc.cerema.fr/Default/doc/SYRACUSE/600739/cartographie-nationale-de-donnees-de-zones-climatiques-locales-guide-utilisateurs"
         target="_blank"
@@ -858,7 +858,7 @@ export const LCZText2 = () => (
     <Body weight='bold'>
       Comment lire cette carte ?
     </Body>
-    <Body style={{ marginTop: '1rem', maxWidth: "850px", color: "var(--gris-dark)" }}>
+    <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
       Cette carte, issue de multiples jeux de données d'observation de la Terre, vous permet 
       d'explorer votre territoire à 100 m de résolution spatiale. Les zones climatiques locales 
       (LCZ en anglais) montrent comment un territoire réagit aux vagues de chaleur estivales. 
@@ -868,11 +868,11 @@ export const LCZText2 = () => (
       Bien que basée sur l’occupation du sol et la forme des villes, <b>cette cartographie n’est 
       pas une modélisation de l’îlot de chaleur urbain.</b>
     </Body>
-    <Body style={{ marginTop: '1rem', maxWidth: "850px", color: "var(--gris-dark)" }}>
+    <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
       Pour en savoir plus sur la méthodologie scientifique utilisée pour élaborer la carte, consultez 
       l’article 
     </Body>
-    <Body style={{ marginTop: '1rem', maxWidth: "850px", color: "var(--gris-dark)" }}>
+    <Body style={{ marginTop: '1rem', color: "var(--gris-dark)" }}>
       <a
         href="https://essd.copernicus.org/articles/14/3835/2022/"
         target="_blank"
@@ -890,8 +890,8 @@ export const LCZText2 = () => (
 
 
 export const LCZText = () => (
-  <> 
-    <Body size='sm' style={{ marginTop: '2rem', maxWidth: "850px" }}>
+  <div className="pr-4"> 
+    <Body size='sm' style={{ marginTop: '2rem' }}>
       Les LCZ qui reposent sur des mesures de température de surface <b>ne permettent pas de quantifier 
       le phénomène d’ilot de chaleur urbain </b>(ICU) qui, lui, repose sur des mesures dynamiques de 
       température de l’air. Les LCZ ne reflètent pas non plus les conditions météorologiques locales, 
@@ -901,7 +901,7 @@ export const LCZText = () => (
       ne se substituent à des données climatiques dynamiques, ou à une analyse fine des usages de 
       la ville et de la vulnérabilité face à la chaleur.
     </Body>
-    <Body size='sm' style={{ marginTop: '1rem', maxWidth: "850px" }}>
+    <Body size='sm' style={{ marginTop: '1rem' }}>
       Pour structurer votre stratégie d’adaptation à la chaleur, consultez{" "}
       <a
         href="https://plusfraichemaville.fr/"
@@ -911,5 +911,5 @@ export const LCZText = () => (
         Plus fraiche ma ville
       </a>.
     </Body>
-  </>
+  </div>
 );

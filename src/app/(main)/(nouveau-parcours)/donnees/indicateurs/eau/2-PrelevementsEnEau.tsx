@@ -98,7 +98,7 @@ export const PrelevementsEnEau = (props: {
             }
             <CustomTooltipNouveauParcours title={prelevementEauTooltipText} texte="D'où vient ce chiffre ?" />
           </div>
-          <ReadMoreFade maxHeight={550}>
+          <ReadMoreFade maxHeight={430}>
             <PrelevementEauText />
           </ReadMoreFade>
         </div>

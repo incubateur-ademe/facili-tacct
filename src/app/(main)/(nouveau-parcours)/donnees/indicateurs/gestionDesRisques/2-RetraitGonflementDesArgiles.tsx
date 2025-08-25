@@ -98,7 +98,7 @@ export const RetraitGonflementDesArgiles = ({
             }
             <CustomTooltipNouveauParcours title={rgaTooltipText} texte="D’où vient ce chiffre ?" />
           </div>
-          <ReadMoreFade maxHeight={350}>
+          <ReadMoreFade maxHeight={470}>
             <RGAText />
           </ReadMoreFade>
         </div>

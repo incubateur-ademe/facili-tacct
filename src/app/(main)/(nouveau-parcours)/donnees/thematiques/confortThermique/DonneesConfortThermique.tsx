@@ -67,7 +67,7 @@ const DonneesConfortThermique = ({
 
         {/* Section Santé */}
         <section className={styles.sectionType}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
+          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 -1rem 0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
           {/* Grand âge */}
@@ -106,7 +106,7 @@ const DonneesConfortThermique = ({
 
         {/* Section Bâtiment */}
         <section className={styles.sectionType}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
+          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 -1rem 0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
           {/* Âge du bâtiment */}
@@ -123,7 +123,7 @@ const DonneesConfortThermique = ({
 
         {/* Section Aménagement */}
         <section className={styles.sectionType}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
+          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 -1rem 0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
           </H2>
           {/* Types de sols */}

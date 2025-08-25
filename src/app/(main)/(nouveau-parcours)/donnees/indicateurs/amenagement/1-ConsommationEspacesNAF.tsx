@@ -5,6 +5,7 @@ import { MicroChiffreTerritoire } from '@/components/charts/MicroDataviz';
 import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
 import { ConsommationEspacesNAFAmenagementText } from '@/components/themes/inconfortThermique/staticTexts';
 import { CustomTooltipNouveauParcours } from '@/components/utils/CalculTooltip';
+import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { Body } from '@/design-system/base/Textes';
 import { CommunesContourMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
@@ -59,7 +60,9 @@ export const ConsommationEspacesNAFAmenagement = (props: {
             </div>
           </div>
           <div className='mt-4'>
-            <ConsommationEspacesNAFAmenagementText />
+            <ReadMoreFade maxHeight={500}>
+              <ConsommationEspacesNAFAmenagementText />
+            </ReadMoreFade>
           </div>
         </div>
         <div className={styles.datavizWrapper}>

@@ -87,6 +87,10 @@ export const DonneesGestionRisques = ({
 
         {/* Section Gestion des risques */}
         <section className={styles.sectionType}>
+          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 -1rem 0", padding: "2rem 2rem 0" }}>
+            {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
+          </H2>
+
           {/* Arrêtés CatNat */}
           <div id="Arrêtés CatNat" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
             <div className={styles.h3Titles}>
@@ -115,12 +119,12 @@ export const DonneesGestionRisques = ({
 
         {/* Section Bâtiment */}
         <section className={styles.sectionType}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
+          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 -1rem 0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
 
           {/* Retrait-gonflement des argiles */}
-          <div id="Retrait-gonflement des argiles" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+          <div id="Retrait-gonflement des argiles" className={styles.indicateurWrapper}>
             {(loadingRga || rgaCarteLoading) ? (
               <div style={{
                 position: 'relative',
@@ -154,7 +158,7 @@ export const DonneesGestionRisques = ({
             <>
               {/* Section Aménagement */}
               <section className={styles.sectionType}>
-                <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
+                <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 -1rem 0", padding: "2rem 2rem 0" }}>
                   🏗️ Aménagement
                 </H2>
 
