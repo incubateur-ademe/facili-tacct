@@ -14,31 +14,27 @@ export default function AppFooter() {
       <hr className="pb-6" />
       <div className="fr-container">
         <div className="fr-footer__body">
-          <div className="fr-footer__brand fr-enlarge-link">
-            {/* Logos/Images */}
-            <div
-              className="flex flex-row flex-wrap items-center gap-8"
-            >
-              <div className="fr-logo !text-[1rem]">
-                République
-                <br />
-                Française
-              </div>
-              <Image
-                className="fr-footer__logo"
-                height={200}
-                width={80}
-                src={"/logo-ademe.png"}
-                alt={"ADEME logo"}
-              />
-              <Image
-                className="fr-footer__logo max-w-[8rem]"
-                height={200}
-                width={95}
-                src={"/logo-meteo-france.jpg"}
-                alt={"Logo Météo France"}
-              />
+          {/* Logos/Images */}
+          <div className="fr-footer__brand-logos flex flex-row flex-wrap items-center gap-8">
+            <div className="fr-logo !text-[1rem]">
+              République
+              <br />
+              Française
             </div>
+            <Image
+              className="fr-footer__logo"
+              height={200}
+              width={80}
+              src={"/logo-ademe.png"}
+              alt={"ADEME logo"}
+            />
+            <Image
+              className="fr-footer__logo max-w-[8rem]"
+              height={200}
+              width={95}
+              src={"/logo-meteo-france.jpg"}
+              alt={"Logo Météo France"}
+            />
           </div>
           <div className="fr-footer__content">
             {/* Description */}
