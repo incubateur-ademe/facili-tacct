@@ -82,7 +82,7 @@ export const TypesDeCulture = (props: {
             }
             <CustomTooltipNouveauParcours title={agricultureBioTooltipText} texte="D'où vient ce chiffre ?" />
           </div>
-          <ReadMoreFade maxHeight={300}>
+          <ReadMoreFade maxHeight={territoiresPartiellementCouverts?.length ? 400 / territoiresPartiellementCouverts?.length : 280}>
             <SurfacesAgricolesText />
           </ReadMoreFade>
         </div>

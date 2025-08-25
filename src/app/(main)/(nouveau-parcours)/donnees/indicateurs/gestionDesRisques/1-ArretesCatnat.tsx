@@ -128,7 +128,7 @@ export const ArretesCatnat = (props: {
             }
             <CustomTooltipNouveauParcours title={catnatTooltipText} texte="D'où vient ce chiffre ?" />
           </div>
-          <ReadMoreFade maxHeight={640}>
+          <ReadMoreFade maxHeight={500}>
             <CatNatText />
           </ReadMoreFade>
         </div>

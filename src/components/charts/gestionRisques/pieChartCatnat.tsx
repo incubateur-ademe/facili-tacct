@@ -94,7 +94,7 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
           }}
         >
           <animated.tspan>{label} : </animated.tspan>
-          <animated.tspan style={{ fontWeight: 600 }}>
+          <animated.tspan style={{ fontWeight: 600 }} x="0" dy="1.2em">
             {datum.value}{' '}
           </animated.tspan>
           <animated.tspan>
@@ -112,7 +112,7 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
     >
       <ResponsivePie
         data={graphData}
-        margin={{ top: 60, right: 80, bottom: 60, left: 80 }}
+        margin={{ top: 60, right: 10, bottom: 60, left: 10 }}
         colors={(graphData) => colors[graphData.id]}
         isInteractive={true}
         innerRadius={0.5}

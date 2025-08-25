@@ -264,6 +264,7 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 12'%3E%3Cpath d='M1 3 L3.5 6 L1 9' stroke='%23038278' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-size: contain;
+    align-self: flex-start;
 }
 
 .chevron-right-black {
@@ -272,6 +273,7 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 12'%3E%3Cpath d='M1 3 L3.5 6 L1 9' stroke='%23000000' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-size: contain;
+    align-self: flex-start;
 }
 
 .BoutonEtapes {
@@ -295,8 +297,23 @@
         content: '';
         position: absolute;
         left: -27px;
-        top: -60px;
-        bottom: -40px;
+        top: -80px;
+        bottom: -30px;
+        width: 1px;
+        background-color: var(--gris-medium);
+    }
+}
+
+.menuEtapeDonneesSansImpact {
+    display: flex;
+    flex-direction: column;
+    padding: 0 3rem 0 2rem;
+    ::before {
+        content: '';
+        position: absolute;
+        left: -27px;
+        top: -50px;
+        bottom: -10px;
         width: 1px;
         background-color: var(--gris-medium);
     }
@@ -310,7 +327,7 @@
         content: '';
         position: absolute;
         left: -27px;
-        top: -30px;
+        top: -45px;
         bottom: -10px;
         width: 1px;
         background-color: var(--gris-medium);

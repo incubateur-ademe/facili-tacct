@@ -1,7 +1,7 @@
 // Contenu principal "Explorer mes données"
 
 .explorerMesDonneesContainer {
-    margin: 2rem 5rem;
+    margin: 2rem 3rem;
 }
 
 .sectionType {
@@ -72,7 +72,6 @@
         .text {
             display: flex;
             flex-direction: column;
-            max-width: 700px;
         }
     }
     .mapWrapper {
@@ -195,3 +194,4 @@
     justify-content: center;
     margin: 2rem;
 }
+

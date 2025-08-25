@@ -46,7 +46,6 @@ export const MenuLateral = () => {
   const [activeAnchorEtape1, setActiveAnchorEtape1] = useState<string>('');
   const [activeAnchorEtape2, setActiveAnchorEtape2] = useState<string>('');
   const [urlAnchor, setUrlAnchor] = useState<string | null>(null);
-  const [pendingScroll, setPendingScroll] = useState<string | null>(null);
   const [isErosionCotiere, setIsErosionCotiere] = useState<boolean>(false);
 
   const redirectionRetour = handleRedirection({
@@ -57,23 +56,10 @@ export const MenuLateral = () => {
   });
 
   useEffect(() => {
-    if (pendingScroll) {
-      const timeoutId = setTimeout(() => {
-        scrollToAnchor(pendingScroll);
-        setPendingScroll(null);
-      }, 10);
-      return () => clearTimeout(timeoutId);
-    }
-  }, [pendingScroll]);
-
-  useEffect(() => {
     if (window.location.hash) {
       const anchor = decodeURIComponent(window.location.hash.substring(1));
       setUrlAnchor(anchor);
-      // Petit délai pour s'assurer que le DOM est prêt
-      setTimeout(() => {
-        scrollToAnchor(anchor);
-      }, 50);
+      requestAnimationFrame(() => scrollToAnchor(anchor));
     }
     void (async () => {
       const erosionCotiere = await GetErosionCotiere(code, libelle, type);
@@ -93,7 +79,6 @@ export const MenuLateral = () => {
     };
     measureHeight();
     const timeoutId = setTimeout(measureHeight, 50);
-
     return () => clearTimeout(timeoutId);
   }, [openEtape1, openEtape2]);
 
@@ -156,11 +141,6 @@ export const MenuLateral = () => {
     const decodedAnchor = decodeURIComponent(anchor);
     const element = document.getElementById(decodedAnchor);
     if (element) {
-      // Met à jour l'URL avec l'ancre encodée sans recharger la page
-      const encodedAnchor = encodeURIComponent(decodedAnchor);
-      if (window.location.hash !== `#${encodedAnchor}`) {
-        history.replaceState(null, '', `#${encodedAnchor}`);
-      }
       element.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
@@ -178,10 +158,11 @@ export const MenuLateral = () => {
         thematique: thematique,
         anchor: item ? item : ""
       });
+      return;
     }
     setUrlAnchor(item);
     setActiveAnchorEtape2('');
-    setPendingScroll(item);
+    scrollToAnchor(item);
   };
   const handleItemClickEtape2 = (item: { id: string; titre: string }) => {
     if (params !== "/impacts") {
@@ -193,10 +174,11 @@ export const MenuLateral = () => {
         thematique: thematique,
         anchor: item ? item.id : ""
       });
+      return;
     }
     setUrlAnchor(item.id);
     setActiveAnchorEtape1('');
-    setPendingScroll(item.id);
+    scrollToAnchor(item.id);
   };
   const handleEtape1Toggle = () => {
     setOpenEtape1(!openEtape1);
@@ -261,7 +243,7 @@ export const MenuLateral = () => {
                 {thematique === "Confort thermique" ? <>Étape 1. <br />Données de votre territoire</> : "Données de votre territoire"}
               </Body>
             </button>
-            <div className={styles.menuEtapeDonnees}>
+            <div className={thematique === "Confort thermique" ? styles.menuEtapeDonnees : styles.menuEtapeDonneesSansImpact}>
               {openEtape1 && ongletsMenu?.thematiquesLiees.map((thematique, id) => (
                 <div key={id} className="mb-4">
                   <SousTitre2

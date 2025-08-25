@@ -40,7 +40,7 @@ export const LCZ = ({
   return (
     <>
       <div className={styles.datavizMapContainer}>
-        <ReadMoreFade>
+        <ReadMoreFade maxHeight={350}>
           {isLczCovered ? <LCZCeremaText1 /> : <LCZText2 />}
           <CustomTooltipNouveauParcours title={LCZTooltipText} texte='Que sont les LCZ ?' />
           <LCZText />

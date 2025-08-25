@@ -33,22 +33,18 @@ export const ErosionCotiereComp = ({
 
   return (
     <>
-      <div className={styles.datavizContainer}>
-        <div className={styles.dataTextWrapper}>
-          <div className={styles.chiffreDynamiqueWrapper}>
-            <Body weight='bold' style={{ color: "var(--gris-dark)" }} >
-              L’érosion est un phénomène qui touche inégalement les côtes, en
-              fonction de leur profil géologique. Elle s’observe sur des temps
-              longs mais peut connaître des épisodes brutaux selon les
-              endroits.
-            </Body>
-            <CustomTooltipNouveauParcours title={erosionCotiereTooltipText} texte="D'où vient ce chiffre ?" />
-          </div>
-          <ReadMoreFade maxHeight={640}>
-            <ErosionCotiereText />
-          </ReadMoreFade>
-        </div>
-        <div className={styles.datavizWrapper} style={{ height: 'fit-content' }}>
+      <div className={styles.datavizMapContainer}>
+        <ReadMoreFade maxHeight={250}>
+          <Body weight='bold' style={{ color: "var(--gris-dark)" }} >
+            L’érosion est un phénomène qui touche inégalement les côtes, en
+            fonction de leur profil géologique. Elle s’observe sur des temps
+            longs mais peut connaître des épisodes brutaux selon les
+            endroits.
+          </Body>
+          <CustomTooltipNouveauParcours title={erosionCotiereTooltipText} texte="D'où vient ce chiffre ?" />
+          <ErosionCotiereText />
+        </ReadMoreFade>
+        <div className={styles.mapWrapper} style={{ height: 'fit-content' }}>
           {
             erosionCotiere.length > 0 ?
               <>

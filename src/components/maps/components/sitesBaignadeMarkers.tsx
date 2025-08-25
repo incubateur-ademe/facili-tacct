@@ -115,10 +115,10 @@ const SitesBaignadeMarkers = (props: {
             position={el.coordinates as LatLngExpression}
             ref={markerRef}
             eventHandlers={{
-              mouseover: (event) => {
+              mouseover: (event: LeafletMouseEvent) => {
                 event.target.openPopup();
               },
-              mouseout: (event) => {
+              mouseout: (event: LeafletMouseEvent) => {
                 event.target.closePopup();
               }
             }}

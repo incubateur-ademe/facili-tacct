@@ -34,8 +34,8 @@ const Patch4C = async (props: { searchParams: SearchParams }) => {
       {patch4 ? <CircleVisualization patch4={patch4} /> : null}
       <H2>Que faire en cas de niveau d’aggravation "fort" ou "très fort" ?</H2>
       <Body>
-        <b>Si l'un des indices de votre territoire est au niveau d'aggravation "fort" ou "très fort",
-          il est impératif de renforcer votre plan d'adaptation.</b> Prenez en compte dès maintenant les
+        Si l'un des indices de votre territoire est au niveau d'aggravation "fort" ou "très fort",
+        il est impératif de renforcer votre plan d'adaptation. Prenez en compte dès maintenant les
         conséquences possibles de l'aléa.
       </Body>
       <Body style={{ marginTop: '1rem', padding: "0.75rem 0" }}>

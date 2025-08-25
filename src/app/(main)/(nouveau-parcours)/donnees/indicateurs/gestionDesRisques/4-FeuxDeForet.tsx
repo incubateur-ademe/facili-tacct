@@ -4,6 +4,7 @@ import FeuxForetCharts from "@/components/charts/gestionRisques/feuxForetCharts"
 import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
 import { FeuxForetText } from "@/components/themes/inconfortThermique/staticTexts";
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
+import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { Body } from "@/design-system/base/Textes";
 import { IncendiesForet } from "@/lib/postgres/models";
 import { feuxForetTooltipText } from "@/lib/tooltipTexts";
@@ -55,9 +56,9 @@ export const FeuxDeForet = (props: {
             )}
             <CustomTooltipNouveauParcours title={feuxForetTooltipText} texte="Définition" />
           </div>
-          {/* <ReadMoreFade maxHeight={300}> */}
-          <FeuxForetText />
-          {/* </ReadMoreFade> */}
+          <ReadMoreFade maxHeight={500}>
+            <FeuxForetText />
+          </ReadMoreFade>
         </div>
         <div className={styles.datavizWrapper} style={{ borderRadius: "1rem 0 0 1rem", height: "fit-content" }}>
           {incendiesForet.length !== 0 ? (
@@ -67,7 +68,7 @@ export const FeuxDeForet = (props: {
               incendiesForet={incendiesForet}
             />
           ) : (
-            <div className={styles.noData}>
+            <div className={styles.dataNotFoundForMap}>
               <Image
                 src={GraphNotFound}
                 alt=""

@@ -14,14 +14,15 @@ import {
   MultiPolygon,
   Polygon
 } from 'geojson';
-import L from 'leaflet';
+// Leaflet must not be imported at module scope because it accesses `window`.
+// We load it lazily in hooks where needed.
+import { GeoJSON } from '@/lib/react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { GeoJSON } from 'react-leaflet';
 import { BoundsFromCollection } from "../maps/components/boundsFromCollection";
 import styles from "./charts.module.scss";
 
@@ -138,7 +139,7 @@ export const MicroRemplissageTerritoire = (props: {
   arrondi?: number;
 }) => {
   const { territoireContours, pourcentage, arrondi = 0, height = 150 } = props;
-  const mapRef = useRef<L.Map | null>(null);
+  const mapRef = useRef<any | null>(null);
   const [bounds, setBounds] = useState<number[]>([0, 0, 0, 0]);
   const south = bounds[1];
   const north = bounds[3];
@@ -179,14 +180,18 @@ export const MicroRemplissageTerritoire = (props: {
       [bounds[0], bounds[1]]
     ]
   ]);
-  const geojsonObject = L.geoJSON(
-    territoireContours as unknown as GeoJsonObject
-  );
+  const geojsonObject = useMemo(() => {
+    if (typeof window === 'undefined') return null;
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const L = require('leaflet');
+    return L.geoJSON(territoireContours as unknown as GeoJsonObject);
+  }, [territoireContours]);
 
   useEffect(() => {
-    if (territoireContours.length === 0) return;
+    if (territoireContours.length === 0 || !geojsonObject) return;
     setBounds(geojsonObject.getBounds().toBBoxString().split(',').map(Number));
-  }, [territoireContours]);
+  }, [territoireContours, geojsonObject]);
+
   const union =
     territoireContours.length > 1
       ? turf.union(
@@ -198,6 +203,7 @@ export const MicroRemplissageTerritoire = (props: {
         )
       )
       : territoireContours[0];
+      
   const intersect = union
     ? turf.intersect(
       turf.featureCollection([
@@ -206,9 +212,10 @@ export const MicroRemplissageTerritoire = (props: {
       ])
     )
     : null;
+
   return (
     <>
-      {territoireContours.length > 0 && bounds[0] != 0 ? (
+      {territoireContours.length > 0 && bounds[0] !== 0 ? (
         <div style={{
           width: `${containerWidth}px`,
           height: `${containerHeight}px`,
@@ -321,14 +328,17 @@ export const MicroChiffreTerritoire = (props: {
   containerWidth = Math.max(50, containerWidth);
   containerHeight = Math.max(50, containerHeight);
 
-  const geojsonObject = L.geoJSON(
-    territoireContours as unknown as GeoJsonObject
-  );
+  const geojsonObject = useMemo(() => {
+    if (typeof window === 'undefined') return null;
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const L = require('leaflet');
+    return L.geoJSON(territoireContours as unknown as GeoJsonObject);
+  }, [territoireContours]);
 
   useEffect(() => {
-    if (territoireContours.length === 0) return;
+    if (territoireContours.length === 0 || !geojsonObject) return;
     setBounds(geojsonObject.getBounds().toBBoxString().split(',').map(Number));
-  }, [territoireContours]);
+  }, [territoireContours, geojsonObject]);
   const union =
     territoireContours.length > 1
       ? turf.union(
