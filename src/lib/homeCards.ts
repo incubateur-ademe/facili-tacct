@@ -37,7 +37,7 @@ export const verbatimCards = [
       'Les données disponibles sur Facili-TACCT représentent un super levier pour les échanges avec nos élus.'
   },
   {
-    personne: 'Un membre anonyme (en réponse au questionnaire de satisfaction)',
+    personne: 'Membre anonyme de la communauté',
     description:
       'J’ai pu élargir mon réseau et bénéficier de discussions régulières avec d’autres experts du secteur, ce qui a favorisé le partage d’expériences et de bonnes pratiques.'
   },

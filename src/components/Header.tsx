@@ -1,7 +1,6 @@
 'use client';
 
 import maisonIcon from '@/assets/icons/maison_icon_black.svg';
-import { ConnexionBouton } from '@/design-system/base/Boutons';
 import { handleRedirection } from '@/hooks/Redirections';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { DarkClass } from '@/lib/utils/DarkClass';
@@ -88,15 +87,16 @@ const HeaderComp = () => {
         code && libelle ? (
           <div className='flex flex-row gap-3 align-center'>
             <Localisation libelle={libelle} code={code} />
-            <ConnexionBouton />
+            {/* <ConnexionBouton /> */}
           </div>
         ) : libelle ? (
           <div className='flex flex-row gap-3 align-center'>
             <Localisation libelle={libelle} />
-            <ConnexionBouton />
+            {/* <ConnexionBouton /> */}
           </div>
         ) : (
-          <ConnexionBouton />
+          null
+          // <ConnexionBouton />
         ),
         // (params.includes('ressources') || params === "/") ? null : (
         //   <Button
