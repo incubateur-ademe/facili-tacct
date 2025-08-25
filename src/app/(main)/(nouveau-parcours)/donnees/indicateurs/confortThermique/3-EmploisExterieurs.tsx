@@ -6,7 +6,7 @@ import { Loader } from "@/components/loader";
 import { emploisEnExterieurLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
-import { Body, H3 } from "@/design-system/base/Textes";
+import { Body } from "@/design-system/base/Textes";
 import { travailExtMapper } from "@/lib/mapper/inconfortThermique";
 import { InconfortThermique } from "@/lib/postgres/models";
 import { travailExterieurTooltipText } from '@/lib/tooltipTexts';
@@ -54,9 +54,6 @@ export const EmploisEnExterieur = ({
 
   return (
     <>
-      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        Part des emplois par grands secteurs d’activité
-      </H3>
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>

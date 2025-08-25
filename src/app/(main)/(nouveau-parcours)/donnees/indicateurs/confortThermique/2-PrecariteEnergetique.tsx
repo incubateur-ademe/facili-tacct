@@ -6,7 +6,7 @@ import { fragiliteEcoLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import { MapInconfortThermique } from "@/components/maps/mapInconfortThermique";
 import { CustomTooltipNouveauParcours } from "@/components/utils/CalculTooltip";
-import { Body, H3 } from "@/design-system/base/Textes";
+import { Body } from "@/design-system/base/Textes";
 import { CommunesContourMapper, CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes } from "@/lib/postgres/models";
 import { fragiliteEconomiqueTooltipText } from '@/lib/tooltipTexts';
@@ -49,9 +49,6 @@ export const PrecariteEnergetique = ({
 
   return (
     <>
-      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        Part des ménages en situation de précarité énergétique liée au logement
-      </H3>
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper}>
           <MicroRemplissageTerritoire
