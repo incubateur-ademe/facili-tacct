@@ -268,7 +268,8 @@ const Home = () => {
                 <Body style={{ color: 'white' }}>
                   <Image
                     src={GuillemetIcon}
-                    alt="" width={32}
+                    alt="" 
+                    width={32}
                     height={32}
                     style={{ verticalAlign: 'middle', margin: ' 0 1rem 0rem 0' }}
                   />
@@ -279,7 +280,7 @@ const Home = () => {
                   style={{
                     color: 'white',
                     textAlign: 'right',
-                    fontStyle: 'italic'
+                    fontStyle: 'italic',
                   }}>
                   {card.personne}
                 </Body>

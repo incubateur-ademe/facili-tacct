@@ -56,8 +56,8 @@ export const sommaireThematiques = {
     thematiquesLiees: [
       {
         id: "section1",
-        thematique: "",
-        icone: "",
+        thematique: "Gestion des risques",
+        icone: "⚠️",
         sousCategories: ["Arrêtés CatNat", "Feux de forêt"]
       },
       {
@@ -72,8 +72,8 @@ export const sommaireThematiques = {
     thematiquesLiees: [
       {
         id: "section1",
-        thematique: "",
-        icone: "",
+        thematique: "Agriculture et pêche",
+        icone: "🌾",
         sousCategories: ["Surfaces en bio", "Types de culture"]
       },
       {

@@ -9,6 +9,7 @@ import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapSurfacesIrriguees } from '@/components/maps/mapSurfacesIrriguees';
 import { SurfacesIrrigueesText } from '@/components/themes/inconfortThermique/staticTexts';
 import { CustomTooltipNouveauParcours } from '@/components/utils/CalculTooltip';
+import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { Body } from '@/design-system/base/Textes';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { Agriculture, CarteCommunes } from '@/lib/postgres/models';
@@ -76,7 +77,9 @@ export const SuperficiesIrriguees = (props: {
           </div>
         </div>
         <div className='mt-4 pr-5'>
-          <SurfacesIrrigueesText />
+          <ReadMoreFade maxHeight={100}>
+            <SurfacesIrrigueesText />
+          </ReadMoreFade>
         </div>
         <div className={styles.mapWrapper}>
           {

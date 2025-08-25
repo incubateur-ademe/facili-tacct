@@ -54,7 +54,7 @@ export const DonneesEau = ({
 
         {/* Section Biodiversité */}
         <section className={styles.sectionType}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0", padding: "2rem 2rem 0" }}>
+          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 -1rem 0", padding: "2rem 2rem 0" }}>
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
           {/* Ressources en eau */}

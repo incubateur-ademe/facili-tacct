@@ -133,6 +133,9 @@ export const BarreDeRecherche = ({
               },
               '.css-1uhhrmm-MuiAutocomplete-endAdornment': {
                 right: '2px',
+              },
+              '.css-iuka1o': { // pour la preprod
+                right: '2px',
               }
             })
             : css({

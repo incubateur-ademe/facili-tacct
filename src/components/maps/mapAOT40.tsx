@@ -60,7 +60,7 @@ const getCoordinates = (coords: number[][][]) => {
   }
   return getCentroid(coords_arr);
 };
-//TODO : clean all the turf functions
+
 export const MapAOT40 = (props: {
   aot40: AOT40[];
   carteCommunes: CommunesIndicateursDto[];
@@ -72,7 +72,6 @@ export const MapAOT40 = (props: {
   const libelle = searchParams.get('libelle')!;
   const mapRef = useRef(null);
   const markerRef = useRef(null);
-
   const commune = type === "commune"
     ? carteCommunes.find(
       (commune) => commune.properties.code_geographique === code
@@ -108,10 +107,6 @@ export const MapAOT40 = (props: {
         className: 'svg-marker',
         iconSize: [24, 24],
         iconAnchor: [0, 0]
-        // shadowUrl: "marker_icon_blue.svg",
-        // popupAnchor: [-3, -76],
-        // shadowSize: [0, 0],
-        // shadowAnchor: [22, 94],
       })
     };
   });
@@ -124,7 +119,6 @@ export const MapAOT40 = (props: {
   const flattenedCoordinates = getArrayDepth(polygonTerritoire.geometry.coordinates) === 4
     ? polygonTerritoire.geometry.coordinates[0]
     : polygonTerritoire.geometry.coordinates;
-
 
   // On inverse les coordonnées pour les passer à turf.polygon
   // car turf.polygon attend des coordonnées au format [longitude, latitude]
@@ -245,10 +239,10 @@ export const MapAOT40 = (props: {
               position={aot.coordinates as LatLngExpression}
               ref={markerRef}
               eventHandlers={{
-                mouseover: (event) => {
+                mouseover: (event: LeafletMouseEvent) => {
                   event.target.openPopup();
                 },
-                mouseout: (event) => {
+                mouseout: (event: LeafletMouseEvent) => {
                   event.target.closePopup();
                 }
               }}

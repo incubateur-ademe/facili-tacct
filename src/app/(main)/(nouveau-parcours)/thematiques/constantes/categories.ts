@@ -17,8 +17,8 @@ export const nodeCategoryMapping = {
   Bâtiment: 'Cadre de vie',
   Aménagement: 'Cadre de vie',
   'Confort thermique': 'Cadre de vie',
-  'Gestion des risques': 'Cadre de vie',
   Santé: 'Cadre de vie',
+  'Gestion des risques': 'Cadre de vie',
   // Ressources naturelle
   Forêts: 'Ressources naturelles',
   Eau: 'Ressources naturelles',
@@ -41,31 +41,31 @@ export const nomThematiques = [
   },
   {
     label: 'Bâtiment',
-    labelRadius: 270,
+    labelRadius: 260,
     icon: '🏠',
     disabled: true,
     liens: []
   },
   {
     label: 'Confort thermique',
-    labelRadius: 260,
+    labelRadius: 250,
     icon: '🌡️',
     disabled: false,
     liens: ['Santé', 'Aménagement', 'Bâtiment', 'Tourisme']
   },
+  { label: 'Santé', icon: '🏥', disabled: true },
   {
     label: 'Gestion des risques',
-    labelRadius: 260,
+    labelRadius: 270,
     icon: '⚠️',
     disabled: false
   },
-  { label: 'Santé', icon: '🏥', disabled: true },
   { label: 'Aménagement', labelRadius: 290, icon: '🏗️', disabled: false },
-  { label: 'Forêts', labelRadius: 250, icon: '🌳', disabled: true, liens: [] },
+  { label: 'Forêts', labelRadius: 260, icon: '🌳', disabled: true, liens: [] },
   { label: 'Eau', icon: '💧', disabled: false },
   {
     label: 'Biodiversité',
-    labelRadius: 270,
+    labelRadius: 260,
     icon: '🌼',
     disabled: false,
     liens: [
@@ -79,16 +79,23 @@ export const nomThematiques = [
   },
   { label: 'Air', labelRadius: 240, icon: '🌬️', disabled: true, liens: [] },
   {
-    label: 'Entreprises',
+    label: 'Tourisme',
     labelRadius: 240,
-    icon: '🏢',
+    icon: '🏖️',
     disabled: true,
     liens: []
   },
   {
-    label: 'Tourisme',
+    label: 'Entreprises',
     labelRadius: 260,
-    icon: '🏖️',
+    icon: '🏢',
+    disabled: true,
+    liens: []
+  },
+    {
+    label: 'Filière bois',
+    labelRadius: 280,
+    icon: '🌲',
     disabled: true,
     liens: []
   },
@@ -98,13 +105,7 @@ export const nomThematiques = [
     icon: '🌾',
     disabled: false
   },
-  {
-    label: 'Filière bois',
-    labelRadius: 270,
-    icon: '🌲',
-    disabled: true,
-    liens: []
-  }
+
 ];
 
 // liens entre les thématiques
@@ -120,9 +121,9 @@ export const liensEntreThematiques = [
     source: 'Santé',
     target: 'Aménagement',
     curve: 1,
-    curveRadius: 0.8
+    curveRadius: 0.7
   },
-  // EAU
+  // Eau
   {
     source: 'Santé',
     target: 'Eau',
@@ -133,39 +134,39 @@ export const liensEntreThematiques = [
     source: 'Eau',
     target: 'Tourisme',
     curve: 1,
-    curveRadius: 0.3
+    curveRadius: 0.4
   },
   // Agriculture et pêche
   {
     source: 'Agriculture et pêche',
     target: 'Eau',
     curve: 1,
-    curveRadius: 0.24
+    curveRadius: 0.1
   },
   {
     source: 'Santé',
     target: 'Agriculture et pêche',
     curve: 1,
-    curveRadius: 0.07
+    curveRadius: 0.3
   },
   // Biodiversité
   {
     source: 'Biodiversité',
     target: 'Agriculture et pêche',
     curve: 1,
-    curveRadius: 0.3
+    curveRadius: 0.2
   },
   {
     source: 'Biodiversité',
     target: 'Aménagement',
     curve: 1,
-    curveRadius: 0.5
+    curveRadius: 0.37
   },
   {
     source: 'Biodiversité',
     target: 'Tourisme',
     curve: 1,
-    curveRadius: 0.4
+    curveRadius: 0.6
   },
   {
     source: 'Biodiversité',
@@ -196,15 +197,15 @@ export const liensEntreThematiques = [
     source: 'Confort thermique',
     target: 'Aménagement',
     curve: 1,
-    curveRadius: 0.6
+    curveRadius: 0.5
   },
   {
     source: 'Confort thermique',
     target: 'Tourisme',
     curve: 1,
-    curveRadius: 0.26
+    curveRadius: 0.1
   },
-  // Thématique Gestion des risques
+  // Gestion des risques
   {
     source: 'Gestion des risques',
     target: 'Santé',
@@ -215,31 +216,31 @@ export const liensEntreThematiques = [
     source: 'Confort thermique',
     target: 'Gestion des risques',
     curve: 1,
-    curveRadius: 0.85
+    curveRadius: 0.7
   },
   {
     source: 'Bâtiment',
     target: 'Gestion des risques',
     curve: 1,
-    curveRadius: 0.6
+    curveRadius: 0.5
   },
   {
     source: 'Continuité des services',
     target: 'Gestion des risques',
     curve: 1,
-    curveRadius: 0.4
+    curveRadius: 0.38
   },
   {
     source: 'Filière bois',
     target: 'Gestion des risques',
     curve: 1,
-    curveRadius: 0.26
+    curveRadius: 0.15
   },
   {
     source: 'Agriculture et pêche',
     target: 'Gestion des risques',
     curve: 1,
-    curveRadius: 0.15
+    curveRadius: 0.25
   },
   {
     source: 'Tourisme',
@@ -263,7 +264,7 @@ export const liensEntreThematiques = [
     source: 'Biodiversité',
     target: 'Gestion des risques',
     curve: 1,
-    curveRadius: 0.25
+    curveRadius: 0.28
   },
   {
     source: 'Eau',
@@ -275,13 +276,13 @@ export const liensEntreThematiques = [
     source: 'Forêts',
     target: 'Gestion des risques',
     curve: 1,
-    curveRadius: 0.5
+    curveRadius: 0.6
   },
   {
     source: 'Aménagement',
     target: 'Gestion des risques',
     curve: 1,
-    curveRadius: 0.6
+    curveRadius: 1
   }
 ];
 
