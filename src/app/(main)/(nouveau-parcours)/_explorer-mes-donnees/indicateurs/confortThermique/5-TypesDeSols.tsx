@@ -7,7 +7,7 @@ import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { vegetalisationLegend } from "@/components/maps/legends/datavizLegends";
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import { MapCLC } from '@/components/maps/mapCLC';
-import { Body, H3 } from "@/design-system/base/Textes";
+import { Body } from "@/design-system/base/Textes";
 import { CommunesContourMapper } from '@/lib/mapper/communes';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { CarteCommunes, CLCTerritoires, InconfortThermique } from "@/lib/postgres/models";
@@ -56,9 +56,6 @@ export const TypesDeSols = ({
 
   return (
     <>
-      <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
-        Part des ménages en situation de précarité énergétique liée au logement
-      </H3>
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper} style={{ alignItems: 'center' }}>
           <MicroRemplissageTerritoire
