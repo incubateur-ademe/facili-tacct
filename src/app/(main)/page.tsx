@@ -100,10 +100,10 @@ const Home = () => {
             </div>
             <div className={styles.patch4Text}>
               <H2>
-                Avec le Patch 4°C : intégrez la trajectoire de réchauffement de référence dans votre diagnostic existant
+                Avec le patch 4°C : intégrez la trajectoire de réchauffement de référence dans votre diagnostic existant
               </H2>
               <Body>
-                Le “Patch 4°C” est une action du 3ème Plan national d’adaptation au changement
+                Le “patch 4°C” est une action du 3ème Plan national d’adaptation au changement
                 climatique (2025). Il s’adresse en priorité aux communes ou EPCI qui
                 viennent d’achever leurs études de vulnérabilité sur la base d’hypothèses de
                 réchauffement différentes de celles de la TRACC.
@@ -111,7 +111,7 @@ const Home = () => {
               <BoutonPrimaireClassic
                 size='lg'
                 link="/recherche-territoire-patch4"
-                text='Accéder au Patch 4°C'
+                text='Accéder au patch 4°C'
               />
             </div>
           </div>
@@ -240,9 +240,9 @@ const Home = () => {
             <div className={styles.ressourcesText}>
               <H2>Découvrez des ressources utiles</H2>
               <Body>
-                Bénéficiez d'actualités, de retours d'expériences et de bonnes
-                pratiques pour vous accompagner dans la mise en place de votre
-                démarche d’adaptation au changement climatique.
+                Bénéficiez d'articles et de retours d'expériences pour vous 
+                accompagner dans la mise en place de votre démarche d’adaptation 
+                au changement climatique.
               </Body>
               <BoutonPrimaireClassic
                 size='lg'
@@ -265,8 +265,24 @@ const Home = () => {
           <div className={styles.verbatimCardsWrapper}>
             {verbatimCards.map((card, index) => (
               <div key={index} className={styles.verbatimCard}>
-                <Body style={{ color: 'white' }}><Image src={GuillemetIcon} alt="" width={32} height={32} style={{ verticalAlign: 'middle', margin: ' 0 1rem 0rem 0' }} />{card.description}</Body>
-                <Body size='sm' style={{ color: 'white' }}>{card.personne}</Body>
+                <Body style={{ color: 'white' }}>
+                  <Image
+                    src={GuillemetIcon}
+                    alt="" width={32}
+                    height={32}
+                    style={{ verticalAlign: 'middle', margin: ' 0 1rem 0rem 0' }}
+                  />
+                  {card.description}
+                </Body>
+                <Body
+                  size='sm'
+                  style={{
+                    color: 'white',
+                    textAlign: 'right',
+                    fontStyle: 'italic'
+                  }}>
+                  {card.personne}
+                </Body>
               </div>
             ))}
           </div>

@@ -73,7 +73,7 @@ export const MenuLateral = () => {
       // Petit délai pour s'assurer que le DOM est prêt
       setTimeout(() => {
         scrollToAnchor(anchor);
-      }, 500);
+      }, 50);
     }
     void (async () => {
       const erosionCotiere = await GetErosionCotiere(code, libelle, type);

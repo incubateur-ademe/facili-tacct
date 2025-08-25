@@ -6,6 +6,7 @@ import useWindowDimensions from '@/hooks/windowDimensions';
 import { FocusOnElement } from '@/lib/utils/reusableFunctions/focus';
 import { RadioButtons } from '@codegouvfr/react-dsfr/RadioButtons';
 import { SearchBar } from '@codegouvfr/react-dsfr/SearchBar';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from "../components.module.scss";
@@ -37,6 +38,7 @@ export const BarreDeRecherche = ({
   const { css } = useStyles();
   const window = useWindowDimensions();
   const [width, setWidth] = useState<number | undefined>(1000);
+  const params = usePathname();
 
   // Met le focus sur le champ de recherche lorsque le composant est monté
   // et lorsque le typeTerritoire change
@@ -68,7 +70,9 @@ export const BarreDeRecherche = ({
               className={css({
                 '.fr-fieldset__content': {
                   '&:hover::after': {
-                    content: '"Le Patch 4°C n’est actuellement pas disponible pour ce type de territoire."',
+                    content: params === "/recherche-territoire-patch4" && !options[0].nativeInputProps.onChange
+                      ? '"Le patch 4°C n’est actuellement pas disponible pour ce type de territoire."'
+                      : 'none',
                     position: 'absolute',
                     left: '50%',
                     top: '-150%',
@@ -82,8 +86,7 @@ export const BarreDeRecherche = ({
                     fontWeight: '500',
                     boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
                     border: "1px solid var(--gris-medium)"
-                  }
-                ,
+                  },
                   justifyContent: 'center',
                   '.fr-label': {
                     paddingBottom: 0,

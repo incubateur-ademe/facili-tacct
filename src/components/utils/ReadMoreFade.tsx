@@ -72,7 +72,7 @@ export const ReadMoreFade: React.FC<ReadMoreFadeProps> = ({ children, maxHeight 
           {expanded && showButton && (
             <div className={styles.reduceButtonWrapper}>
               <button className={styles.readMoreButton} onClick={() => setExpanded(false)}>
-                Réduire
+                Voir moins
               </button>
             </div>
           )}
@@ -84,7 +84,7 @@ export const ReadMoreFade: React.FC<ReadMoreFadeProps> = ({ children, maxHeight 
       {!expanded && showButton && (
         <div className={styles.readMoreButtonWrapper}>
           <button className={styles.readMoreButton} onClick={() => setExpanded(true)}>
-            Lire la suite
+            Voir plus
           </button>
         </div>
       )}
