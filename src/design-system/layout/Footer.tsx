@@ -16,10 +16,8 @@ export default function AppFooter() {
         <div className="fr-footer__body">
           <div className="fr-footer__brand fr-enlarge-link">
             {/* Logos/Images */}
-            <a
-              className="fr-footer__brand-link flex flex-row flex-wrap items-center gap-8"
-              href="/"
-              title="Retour à l’accueil du site - Facili-TACCT - République Française"
+            <div
+              className="flex flex-row flex-wrap items-center gap-8"
             >
               <div className="fr-logo !text-[1rem]">
                 République
@@ -40,7 +38,7 @@ export default function AppFooter() {
                 src={"/logo-meteo-france.jpg"}
                 alt={"Logo Météo France"}
               />
-            </a>
+            </div>
           </div>
           <div className="fr-footer__content">
             {/* Description */}
@@ -50,7 +48,7 @@ export default function AppFooter() {
               <br></br>
               Notre mission : Accompagner les territoires pour une meilleure appropriation
               de leur vulnérabilité aux impacts du changement climatique.
-              Facili-TACCT met à disposition les données climatiques du Patch 4°C,
+              Facili-TACCT met à disposition les données climatiques du patch 4°C,
               mesure 23 du plan national d’adaptation au changement climatique (PNACC 3).
             </p>
             {/* Liste de liens */}

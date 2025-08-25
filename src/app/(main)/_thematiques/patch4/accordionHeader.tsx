@@ -40,7 +40,7 @@ export const AccordionHeader = ({ patch4 }: { patch4: Patch4 }) => {
       <div className={styles.accordionHeaderTitles}>
         <h2>Patch 4°C : en un coup d’œil, découvrez le tendanciel d’aggravation de {patch4.niveaux_marins === null ? 4 : 5} aléas majeurs sur votre territoire</h2>
         {/* <p>
-          Météo France propose un nouveau jeu de données (Patch 4°C) basé sur la trajectoire de réchauffement
+          Météo France propose un nouveau jeu de données (patch 4°C) basé sur la trajectoire de réchauffement
           de référence pour l'adaptation au changement climatique (TRACC) disponible sur le service
           Climadiag Commune. Son objectif est de préciser l’intensité de l’évolution de plusieurs aléas
           climatiques sur votre territoire, en 2100 par rapport à 2050.
