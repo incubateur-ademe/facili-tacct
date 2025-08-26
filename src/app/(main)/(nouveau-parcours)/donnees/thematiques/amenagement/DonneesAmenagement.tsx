@@ -21,9 +21,6 @@ export const DonneesAmenagement = ({
 }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as "Aménagement";
-  const code = searchParams.get('code')!;
-  const libelle = searchParams.get('libelle')!;
-  const type = searchParams.get('type')!;
   const ongletsMenu = sommaireThematiques[thematique];
 
   useEffect(() => {
@@ -55,7 +52,14 @@ export const DonneesAmenagement = ({
 
         {/* Section Aménagement */}
         <section className={styles.sectionType}>
-          <H2 style={{ color: "var(--principales-rouge)", textTransform: 'uppercase', fontSize: '1.75rem', margin: "0 0 -1rem 0", padding: "2rem 2rem 0" }}>
+          <H2 style={{
+            color: "var(--principales-rouge)",
+            textTransform: 'uppercase',
+            fontSize: '1.75rem',
+            margin: "0 0 -1rem 0",
+            padding: "2rem 2rem 0",
+            fontWeight: 400
+          }}>
             {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
           {/* Consommation d'espaces NAF */}

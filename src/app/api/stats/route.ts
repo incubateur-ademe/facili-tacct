@@ -48,7 +48,7 @@ export const GET = async (request: NextRequest) => {
     stats: filteredData
   };
 
-  const response = NextResponse.json({ data });
+  const response = NextResponse.json(data);
   
   // Set cache control headers to prevent caching
   response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');

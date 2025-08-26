@@ -73,7 +73,7 @@ const arcLabelsComponent = ({ datum, label, style, id }: Any) => {
           );
         })()}</animated.tspan>
         <animated.tspan style={{ fontWeight: 600 }}>
-          {" "}:{" "}{Round(datum.data.count, 0)}{' '}
+           : {Round(datum.data.count, 0)}{' '}
         </animated.tspan>
       </animated.text>
     </animated.g>
@@ -84,14 +84,7 @@ const arcLabelsComponent = ({ datum, label, style, id }: Any) => {
 export const PieChartTravailExt = ({ graphData, travailExterieurTerritoire }: Props) => {
   const sumAllCount = graphData.reduce((sum, item) => sum + (item.count || 0), 0);
   return (
-    <div
-      style={{
-        height: '350px',
-        minWidth: '400px',
-        backgroundColor: 'white',
-        borderRadius: '1rem 0 1rem 0',
-      }}
-    >
+    <div className={styles.responsivePieContainer}>
       {sumAllCount > 0 ?
         <ResponsivePie
           data={graphData}
