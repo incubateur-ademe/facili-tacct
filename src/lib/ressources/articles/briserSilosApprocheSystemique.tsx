@@ -109,7 +109,7 @@ const BriserSilosApprocheSystemique = () => {
           Bien que les données scientifiques aient été là, le message de l’après-ski restait difficile à entendre.
           C’est à ce moment que l’approche systémique a pris de l’importance : pendant 1 an, il s’est concentré
           sur la compréhension du problème, il a multiplié les modèles et croisé les domaines de compétences.
-          Lors du partage de ce constat, il avait le sentiment d’avoir fait du “bricolage” avec les données,
+          Lors du partage de ce constat, il avait le sentiment d’avoir fait du « bricolage » avec les données,
           les questions soulevées ont élargi la problématique initiale grâce au croisement des regards et des
           données, froides (les données scientifiques), mais aussi chaudes (issues du terrain, des ressentis,
           etc.). Pour autant, le constat incluant les interactions dans le système validait la fin programmée
@@ -161,7 +161,7 @@ const BriserSilosApprocheSystemique = () => {
             <b>Partage et collaboration</b> : Privilégiez un diagnostic partagé, même imparfait. D’ailleurs, une compréhension complète est impossible. Ce mode de travail vous permettra de favoriser l'engagement et de développer une compréhension collective progressive.
           </li>
           <li>
-            <b>Mobilisation ciblée</b> : Il est impossible d'être exhaustif ou d'impliquer tout le monde dans le processus. Concentrez-vous sur la mobilisation des “bonnes” personnes : celles capables de vous permettre d’avancer et de remonter par “capillarité”.
+            <b>Mobilisation ciblée</b> : Il est impossible d'être exhaustif ou d'impliquer tout le monde dans le processus. Concentrez-vous sur la mobilisation des « bonnes » personnes : celles capables de vous permettre d’avancer et de remonter par « capillarité ».
           </li>
         </ol>
         <h3>En synthèse, voilà les grandes étapes d’une approche systémique :</h3>
@@ -247,7 +247,7 @@ const BriserSilosApprocheSystemique = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      métabief
+                      Métabief
                     </Link>
                   </li>
                   <li>
@@ -291,7 +291,7 @@ const BriserSilosApprocheSystemique = () => {
                     >
                       <i>Le Passeur</i>
                     </Link>
-                    {" "}, écrit par Olivier Erard
+                    , écrit par Olivier Erard
                   </li>
                 </ul>
               </div>

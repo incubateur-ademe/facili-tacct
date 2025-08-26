@@ -37,8 +37,8 @@ const CookieModal = ({ modal, setConsentGiven }: CookieModalProps) => {
     <>
       {modal ? (
         <modal.Component title="Personnalisation des préférences">
-          <div className={styles.cookieConsentContainer}>
-            <div className={styles.cookieConsentWrapper}>
+          <div className={styles.cookieModalConsentContainer}>
+            <div className={styles.cookieModalConsentWrapper}>
               <h2>Cookies obligatoires</h2>
               <p>
                 Ces cookies sont nécessaires au bon fonctionnement du site. Vous
@@ -61,7 +61,7 @@ const CookieModal = ({ modal, setConsentGiven }: CookieModalProps) => {
                 />
               </div>
             </div>
-            <div className={styles.cookieConsentWrapper}>
+            <div className={styles.cookieModalConsentWrapper}>
               <h2>Cookies facultatifs</h2>
               <p>
                 Ces cookies correspondent aux suivis d'audience et de

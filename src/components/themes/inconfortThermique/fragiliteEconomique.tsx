@@ -4,19 +4,19 @@ import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { fragiliteEcoLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import { Map } from '@/components/maps/map';
+import { MapInconfortThermique } from '@/components/maps/mapInconfortThermique';
 import { AlgoPatch4 } from '@/components/patch4/AlgoPatch4';
 import TagInIndicator from '@/components/patch4/TagInIndicator';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { CommunesIndicateursMapper } from '@/lib/mapper/communes';
 import { CarteCommunes, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { FragiliteEconomiqueText } from '@/lib/staticTexts';
 import { fragiliteEconomiqueTooltipText } from '@/lib/tooltipTexts';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { FragiliteEconomiqueText } from './staticTexts';
 import styles from './themes.module.scss';
 
 export const FragiliteEconomique = ({
@@ -122,9 +122,9 @@ export const FragiliteEconomique = ({
                 {
                   carteTerritoire.length > 0 ? (
                     <>
-                      <Map
-                        data={'precarite_log'}
+                      <MapInconfortThermique
                         carteCommunes={carteTerritoire}
+                        data={'precarite_log'}
                       />
                       <div
                         className={styles.legend}
@@ -136,7 +136,7 @@ export const FragiliteEconomique = ({
                   ) : <DataNotFoundForGraph image={DataNotFound} />
                 }
                 <p style={{ padding: '1em', margin: '0' }}>
-                  Source : Observation de la précarité énergétique (ONPE),
+                  Source : Observatoire de la précarité énergétique (ONPE),
                   GEODIP
                 </p>
               </div>

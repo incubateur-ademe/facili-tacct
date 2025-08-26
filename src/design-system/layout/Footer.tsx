@@ -5,7 +5,12 @@ import Image from "next/image";
 
 export default function AppFooter() {
   return (
-    <footer className="fr-footer !mt-0 !pt-0" role="contentinfo" id="footer">
+    <footer
+      className="fr-footer !mt-0 !pt-0 bg-white relative"
+      role="contentinfo"
+      id="footer"
+      style={{ zIndex: 999 }}
+    >
       <hr className="pb-6" />
       <div className="fr-container">
         <div className="fr-footer__body">
@@ -45,7 +50,7 @@ export default function AppFooter() {
               <br></br>
               Notre mission : Accompagner les territoires pour une meilleure appropriation
               de leur vulnérabilité aux impacts du changement climatique.
-              Facili-TACCT met à disposition les données climatiques du patch 4°C,
+              Facili-TACCT met à disposition les données climatiques du Patch 4°C,
               mesure 23 du plan national d’adaptation au changement climatique (PNACC 3).
             </p>
             {/* Liste de liens */}
@@ -122,6 +127,11 @@ export default function AppFooter() {
             <li className="fr-footer__bottom-item">
               <a className="fr-footer__bottom-link" href="/politique-des-cookies">
                 Politique des cookies
+              </a>
+            </li>
+            <li className="fr-footer__bottom-item">
+              <a className="fr-footer__bottom-link" href="/statistiques">
+                Statistiques
               </a>
             </li>
             {/* <li className="fr-footer__bottom-item">

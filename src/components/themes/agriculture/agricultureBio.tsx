@@ -5,14 +5,15 @@ import { TagItem } from '@/components/patch4/TagItem';
 import { CustomTooltip } from '@/components/utils/CalculTooltip';
 import { AgricultureBio, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
-import { SurfacesEnBioAgricultureText } from '@/lib/staticTexts';
 import { multipleEpciBydepartementLibelle } from '@/lib/territoireData/multipleEpciBydepartement';
 import { multipleEpciByPnrLibelle } from '@/lib/territoireData/multipleEpciByPnr';
 import { agricultureBioTooltipText } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { SurfacesEnBioAgricultureText } from '../inconfortThermique/staticTexts';
 import styles from './agriculture.module.scss';
 import AgricultureBioDataViz from './agricultureBioDataviz';
 
@@ -64,6 +65,7 @@ const AgricultureBiologique = (props: {
   }, [code]);
 
   const secheresse = patch4 ? AlgoPatch4(patch4, 'secheresse_sols') : undefined;
+  const exportData = IndicatorExportTransformations.agriculture.agricultureBio(agricultureBio);
 
   return (
     <>
@@ -96,9 +98,9 @@ const AgricultureBiologique = (props: {
                           territoiresPartiellementCouverts && (
                             <>
                               <p>
-                                <br></br>Sur votre territoire, <b>{territoiresPartiellementCouverts?.length} EPCI
-                                </b> {territoiresPartiellementCouverts?.length === 1 ? "est" : "sont"} à
-                                cheval sur plusieurs {type === "departement" ? "départements" : "PNR"} :
+                                <br></br>Attention, <b>{territoiresPartiellementCouverts?.length} EPCI
+                                </b> {territoiresPartiellementCouverts?.length === 1 ? "ne fait" : "ne font"} que
+                                partiellement partie de votre territoire :
                               </p>
                               <ul style={{ margin: "0.5rem 0 0 1.5rem" }}>
                                 {territoiresPartiellementCouverts?.map((epci, index) => (
@@ -120,8 +122,8 @@ const AgricultureBiologique = (props: {
                   : ""
                 }
                 <div className={styles.patch4Wrapper}>
-                  {secheresse === 'Intensité très forte' ||
-                    secheresse === 'Intensité forte' ? (
+                  {secheresse === 'Aggravation très forte' ||
+                    secheresse === 'Aggravation forte' ? (
                     <TagItem
                       icon={secheresseIcon}
                       indice="Sécheresse des sols"
@@ -138,6 +140,7 @@ const AgricultureBiologique = (props: {
                 agricultureBio={agricultureBio}
                 datavizTab={datavizTab}
                 setDatavizTab={setDatavizTab}
+                exportData={exportData}
               />
             </div>
           </div>

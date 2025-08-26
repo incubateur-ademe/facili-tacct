@@ -27,16 +27,16 @@ export const GetAgricultureBio = async (
       else {
         // if (type === 'pnr') {
         //   return [];
-        // } else 
+        // } else
         if (type === 'commune') {
           const epci = await prisma.collectivites_searchbar.findFirst({
             select: {
               epci: true
             },
             where: {
-              code_geographique: code,
+              code_geographique: code
             }
-          }); 
+          });
           const value = await prisma.agriculture_bio.findMany({
             where: {
               epci: epci?.epci as string
@@ -111,10 +111,10 @@ export const GetConsommationNAF = async (
           // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
           const value = await prisma.$queryRaw`
           SELECT c.*
-          FROM consommation_espaces_naf c
+          FROM databases.consommation_espaces_naf c
           WHERE c.epci = (
             SELECT cs.epci
-            FROM collectivites_searchbar cs
+            FROM databases.collectivites_searchbar cs
             WHERE cs.code_geographique = ${code}
             LIMIT 1
           )
@@ -164,4 +164,3 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
   })();
   return Promise.race([dbQuery, timeoutPromise]);
 };
-

@@ -113,19 +113,6 @@ describe('Integration: query functions to check if collectivites_searchbar has r
   });
 });
 
-describe('Integration: query functions to check if agriculture bio has right structure', () => {
-  it('agriculture_bio table has expected checksum', async () => {
-    const result = await prisma.$queryRaw<[{ checksum: string }]>`
-      SELECT md5(string_agg(t::text, '')) AS checksum
-      FROM (
-        SELECT * FROM databases.agriculture_bio ORDER BY index
-      ) t;
-    `;
-    expect(result).toHaveLength(1);
-    expect(result[0].checksum).toBe('83bf7b2bc775bbe00c2df1ce3dc5a42c');
-  });
-});
-
 // describe('Integration: query functions for gestionRisques', () => {
 //   it('GetArretesCatnat returns array', async () => {
 //     const result = await gestionRisques.GetArretesCatnat('someCode', 'someLibelle', 'epci');

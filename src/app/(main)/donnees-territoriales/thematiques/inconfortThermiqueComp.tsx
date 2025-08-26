@@ -85,6 +85,12 @@ const allComps = [
       />
     )
   },
+  // {
+  //   titre: "LCZ",
+  //   Component: ({ carteCommunes }: Props & { activeDataTab: string }) => (
+  //     <LCZ carteCommunes={carteCommunes} />
+  //   )
+  // }
 ];
 
 const InconfortThermiqueComp = ({

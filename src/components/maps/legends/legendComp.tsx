@@ -31,3 +31,13 @@ export const LegendCompIcons = ({ legends }: { legends: LegendIcon[] }) => {
     </div>
   );
 };
+
+export const LegendCompColorLCZ = ({ legends }: { legends: LegendColor[] }) => {
+  return (
+    <div className={styles.legendItemsLCZWrapper}>
+      {legends.map((el, index) => (
+        <LegendBlockColor key={index} color={el.color} value={el.value} />
+      ))}
+    </div>
+  );
+};
