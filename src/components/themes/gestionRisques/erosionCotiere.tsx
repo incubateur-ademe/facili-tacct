@@ -1,5 +1,6 @@
 import niveauxMarinsIcon from '@/assets/icons/niveau_marin_icon_black.svg';
 import GraphNotFound from '@/assets/images/no_data_on_territory.svg';
+import { ExportPngMaplibreButton } from '@/components/exports/ExportPng';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { MapErosionCotiere } from '@/components/maps/mapErosionCotiere';
@@ -12,9 +13,9 @@ import { CarteCommunes, ErosionCotiere, Patch4 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { erosionCotiereTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { ErosionCotiereText } from '../../../lib/staticTexts';
+import { useEffect, useRef, useState } from 'react';
 import { LegendErosionCotiere } from '../../maps/legends/legendErosionCotiere';
+import { ErosionCotiereText } from '../inconfortThermique/staticTexts';
 import styles from './gestionRisques.module.scss';
 
 const ErosionCotes = (props: {
@@ -22,11 +23,13 @@ const ErosionCotes = (props: {
   carteCommunes: CarteCommunes[];
 }) => {
   const { erosionCotiere, carteCommunes } = props;
-  const re = new RegExp('T([1-9]|1[0-2])\\b');
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
+  const mapRef = useRef<maplibregl.Map | null>(null);
+  const mapContainer = useRef<HTMLDivElement>(null);
+  // const exportPNGRef = useRef(null);
   const [patch4, setPatch4] = useState<Patch4 | undefined>();
   const [isLoadingPatch4, setIsLoadingPatch4] = useState(true);
   const erosionCotiereMap = erosionCotiere.map(ErosionCotiereMapper);
@@ -58,8 +61,8 @@ const ErosionCotes = (props: {
                   endroits.
                 </p>
                 <div className={styles.patch4Wrapper}>
-                  {niveauxMarins === 'Intensité très forte' ||
-                    niveauxMarins === 'Intensité forte' ? (
+                  {niveauxMarins === 'Aggravation très forte' ||
+                    niveauxMarins === 'Aggravation forte' ? (
                     <TagItem
                       icon={niveauxMarinsIcon}
                       indice="Niveaux marins"
@@ -85,12 +88,24 @@ const ErosionCotes = (props: {
                       <MapErosionCotiere
                         erosionCotiere={erosionCotiereMap}
                         carteCommunes={communesMap}
+                        mapRef={mapRef}
+                        mapContainer={mapContainer}
                       />
-                      <LegendErosionCotiere />
+                      <div className='erosionCotiereLegendWrapper'>
+                        <LegendErosionCotiere />
+                      </div>
                     </>
                     : <DataNotFoundForGraph image={GraphNotFound} />
                 }
-                <p style={{ padding: '1em', margin: '0' }}>Source : CEREMA</p>
+                <div className={styles.sourcesExportWrapper}>
+                  <p>Source : CEREMA</p>
+                  <ExportPngMaplibreButton
+                    mapRef={mapRef}
+                    mapContainer={mapContainer}
+                    documentDiv=".erosionCotiereLegendWrapper"
+                    fileName={`Erosion_cotiere_${type}_${libelle}`}
+                  />
+                </div>
               </div>
             </div>
           </div>

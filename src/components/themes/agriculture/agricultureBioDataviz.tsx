@@ -4,12 +4,15 @@ import WarningIcon from "@/assets/icons/exclamation_point_icon_black.png";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { AgricultureBioBarChart } from '@/components/charts/biodiversite/agricultureBioBarChart';
 import { AgricultureBioPieCharts } from '@/components/charts/biodiversite/agricultureBioPieCharts';
+import { ExportButton } from "@/components/exports/ExportButton";
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/SubTabs';
 import { AgricultureBio } from '@/lib/postgres/models';
 import { multipleEpciBydepartementLibelle } from '@/lib/territoireData/multipleEpciBydepartement';
 import { multipleEpciByPnrLibelle } from '@/lib/territoireData/multipleEpciByPnr';
+import { surfacesEnBioDoc } from "@/lib/utils/export/documentations";
+import { AgricultureBioExport } from "@/lib/utils/export/exportTypes";
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
@@ -18,11 +21,13 @@ import styles from './agriculture.module.scss';
 const AgricultureBioDataViz = ({
   agricultureBio,
   datavizTab,
-  setDatavizTab
+  setDatavizTab,
+  exportData
 }: {
   agricultureBio: AgricultureBio[];
   datavizTab: string;
   setDatavizTab: (value: string) => void;
+  exportData: AgricultureBioExport[];
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
@@ -107,11 +112,22 @@ const AgricultureBioDataViz = ({
                 }
               </>
             )}
-            <p style={{ padding: '1em', margin: '0' }}>
-              Source : Agence Bio, Service de la Statistique et de la Prospective (SSP
-              - Ministère de l’agriculture) dans Catalogue DiDo (Indicateurs
-              territoriaux de développement durable - ITDD) - AGRESTE, 2020
-            </p>
+            <div className={styles.sourcesExportWrapper}>
+              <p>
+                Source : Agence Bio, Service de la Statistique et de la Prospective (SSP
+                - Ministère de l’agriculture) dans Catalogue DiDo (Indicateurs
+                territoriaux de développement durable - ITDD) - AGRESTE, 2020
+              </p>
+              <ExportButton
+                data={exportData}
+                baseName="agriculture_biologique"
+                type={type}
+                libelle={libelle}
+                code={code}
+                sheetName="Agriculture bio"
+                documentation={surfacesEnBioDoc}
+              />
+            </div>
           </div>
         ) : (
           <div className={styles.graphWrapper}>

@@ -1,6 +1,7 @@
 import fortesChaleursIcon from '@/assets/icons/chaleur_icon_black.svg';
 import precipitationIcon from '@/assets/icons/precipitation_icon_black.svg';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { Loader } from '@/components/loader';
 import { etatCoursDeauLegends } from '@/components/maps/legends/datavizLegends';
@@ -18,10 +19,11 @@ import {
 } from '@/lib/postgres/models';
 import { GetPatch4 } from '@/lib/queries/patch4';
 import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
-import { EtatCoursEauRessourcesEauText } from '@/lib/staticTexts';
 import { etatCoursDeauTooltipTextEau } from '@/lib/tooltipTexts';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { EtatCoursEauRessourcesEauText } from '../inconfortThermique/staticTexts';
 import styles from './ressourcesEau.module.scss';
 
 const EtatQualiteCoursDeau = (props: {
@@ -62,6 +64,7 @@ const EtatQualiteCoursDeau = (props: {
   const precipitation = patch4
     ? AlgoPatch4(patch4, 'fortes_precipitations')
     : undefined;
+  const exportData = etatCoursDeau ? IndicatorExportTransformations.ressourcesEau.EtatCoursEau(etatCoursDeau) : [];
 
   return (
     <>
@@ -80,16 +83,16 @@ const EtatQualiteCoursDeau = (props: {
                   des berges, continuité de la rivière, etc.).
                 </p>
                 <div className={styles.patch4Wrapper}>
-                  {fortesChaleurs === 'Intensité très forte' ||
-                    fortesChaleurs === 'Intensité forte' ? (
+                  {fortesChaleurs === 'Aggravation très forte' ||
+                    fortesChaleurs === 'Aggravation forte' ? (
                     <TagItem
                       icon={fortesChaleursIcon}
                       indice="Fortes chaleurs"
                       tag={fortesChaleurs}
                     />
                   ) : null}
-                  {precipitation === 'Intensité très forte' ||
-                    precipitation === 'Intensité forte' ? (
+                  {precipitation === 'Aggravation très forte' ||
+                    precipitation === 'Aggravation forte' ? (
                     <TagItem
                       icon={precipitationIcon}
                       indice="Fortes précipitations"
@@ -127,9 +130,19 @@ const EtatQualiteCoursDeau = (props: {
                   </>
                 ) : <DataNotFoundForGraph image={DataNotFound} />
                 }
-                <p style={{ padding: '1em', margin: '0' }}>
-                  Source : Agences de l'eau
-                </p>
+                <div className={styles.sourcesExportWrapper}>
+                  <p>
+                    Source : Agences de l'eau
+                  </p>
+                  <ExportButton
+                    data={exportData}
+                    baseName="etat_cours_deau"
+                    type={type}
+                    libelle={libelle}
+                    code={code}
+                    sheetName="État des cours d'eau"
+                  />
+                </div>
               </div>
             </div>
           </div>

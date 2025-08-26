@@ -1,11 +1,10 @@
 'use client';
 
-import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
-import { Suspense, useEffect, useState } from 'react';
-
 import { ConsommationEspacesNAF } from '@/components/themes/amenagement/consommationEspacesNAF';
 import { TabTooltip } from '@/components/utils/TabTooltip';
-import { ConsommationNAF } from '@/lib/postgres/models';
+import { CarteCommunes, ConsommationNAF } from '@/lib/postgres/models';
+import { Tabs } from '@codegouvfr/react-dsfr/Tabs';
+import { Suspense, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import styles from '../donnees.module.scss';
 
@@ -18,6 +17,7 @@ interface Props {
     titre: string;
   }>;
   consommationNAF: ConsommationNAF[];
+  carteCommunes: CarteCommunes[];
 }
 
 const allComps = [
@@ -30,10 +30,16 @@ const allComps = [
         consommationNAF={consommationNAF}
       />
     )
-  }
+  },
+  // {
+  //   titre: "LCZ",
+  //   Component: ({ carteCommunes }: Props & { activeDataTab: string }) => (
+  //     <LCZ carteCommunes={carteCommunes} />
+  //   )
+  // }
 ];
 
-const AmenagementComp = ({ data, consommationNAF }: Props) => {
+const AmenagementComp = ({ data, consommationNAF, carteCommunes }: Props) => {
   const [selectedTabId, setSelectedTabId] = useState(
     "Consommation d'espaces NAF"
   );
@@ -69,7 +75,11 @@ const AmenagementComp = ({ data, consommationNAF }: Props) => {
                 titre="Consommation d'espaces NAF"
               />
             )
-          }
+          },
+          // {
+          //   tabId: "LCZ",
+          //   label: "LCZ"
+          // }
         ]}
         onTabChange={setSelectedTabId}
         className={css({
@@ -116,6 +126,7 @@ const AmenagementComp = ({ data, consommationNAF }: Props) => {
                       data={data}
                       activeDataTab={selectedSubTab}
                       consommationNAF={consommationNAF}
+                      carteCommunes={carteCommunes}
                     />
                   </Suspense>
                 );

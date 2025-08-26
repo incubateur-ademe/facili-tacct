@@ -101,3 +101,22 @@ export const GetInconfortThermique = async (
   const result = Promise.race([dbQuery, timeoutPromise]);
   return result;
 };
+
+// export const GetLczCouverture = async (
+//   code: string,
+//   libelle: string,
+//   type: string
+// ): Promise<Boolean> => {
+//   const column = ColumnCodeCheck(type);
+//     try {
+//       if (!libelle || !type || (!code && type !== 'petr')) return false;
+//       const exists = await prisma.lcz_couverture.findFirst({
+//         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+//       });
+//       if (exists) return true; else return false;
+//     } catch (error) {
+//       console.error(error);
+//       Sentry.captureException(error);
+//       return false;
+//     }
+// };

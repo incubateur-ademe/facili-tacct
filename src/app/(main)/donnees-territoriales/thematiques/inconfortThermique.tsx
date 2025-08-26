@@ -2,6 +2,8 @@ import { NoticeComp } from '@/dsfr/base/Notice';
 import { GetInconfortThermique } from '@/lib/queries/databases/inconfortThermique';
 import { GetCommunes } from '@/lib/queries/postgis/cartographie';
 import { themes } from '@/lib/themes';
+import { ThematiquesExports } from '@/lib/utils/export/environmentalDataExport';
+import { FilterDataTerritory } from '@/lib/utils/reusableFunctions/filterDataTerritories';
 import { Suspense } from 'react';
 import styles from '../donnees.module.scss';
 import InconfortThermiqueComp from './inconfortThermiqueComp';
@@ -11,6 +13,7 @@ const InconfortThermique = async (props: { searchParams: SearchParams }) => {
   const theme = themes.inconfortThermique;
   const carteCommunes = await GetCommunes(code, libelle, type);
   const dbInconfortThermique = await GetInconfortThermique(code, libelle, type);
+  const exportData = ThematiquesExports.inconfortThermique(FilterDataTerritory(type, code, libelle, dbInconfortThermique));
 
   return (
     <div>

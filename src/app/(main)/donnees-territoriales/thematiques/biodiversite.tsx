@@ -22,18 +22,21 @@ const Biodiversite = async (props: { searchParams: SearchParams }) => {
   const qualiteEauxBaignadeParDpmt = await GetQualiteEauxBaignade(code, libelle, type);
 
   return (
-    <div className={styles.container}>
-      <Suspense>
-        <BiodiversiteComp
-          data={theme}
-          carteCommunes={carteCommunes}
-          agricultureBio={dbAgricultureBio!}
-          consommationNAF={dbConsommationNAF}
-          aot40={dbAOT40}
-          etatCoursDeau={dbEtatCoursDeau}
-          qualiteEauxBaignade={qualiteEauxBaignadeParDpmt}
-        />
-      </Suspense>
+    <div>
+      {/* <BiodiversiteExport code={code} libelle={libelle} type={type} etatCoursDeau={dbEtatCoursDeau} /> */}
+      <div className={styles.container}>
+        <Suspense>
+          <BiodiversiteComp
+            data={theme}
+            carteCommunes={carteCommunes}
+            agricultureBio={dbAgricultureBio!}
+            consommationNAF={dbConsommationNAF}
+            aot40={dbAOT40}
+            etatCoursDeau={dbEtatCoursDeau}
+            qualiteEauxBaignade={qualiteEauxBaignadeParDpmt}
+          />
+        </Suspense>
+      </div>
     </div>
   );
 };

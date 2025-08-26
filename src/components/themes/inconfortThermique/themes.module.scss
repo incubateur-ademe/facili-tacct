@@ -83,3 +83,16 @@
         line-height: 1.5rem;
     }
 }
+
+// exports de données
+
+.sourcesExportWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 1rem;
+    p {
+        margin: 0;
+    }
+}
