@@ -37,10 +37,11 @@ export const CopyLinkClipboard = ({
       <Image
         src={ShareIcon}
         alt="Partage de l'url"
-        width={28}
-        height={28}
+        width={24}
+        height={24}
         style={{
           cursor: 'pointer',
+          marginTop: '0.2rem'
         }}
         onClick={handleCopy}
       />
