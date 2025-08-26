@@ -3,6 +3,9 @@ import { PrismaClient as PostgresClient } from '../../../generated/client';
 
 const PrismaPostgres = new PostgresClient();
 
+// Opt out of caching for this API route
+export const dynamic = 'force-dynamic';
+
 interface Stat {
   value: string;
   date: Date;
@@ -41,9 +44,17 @@ export const GET = async (request: NextRequest) => {
   });
 
   const data: StatOutput = {
-    description: `Description de la North Star Metric`,
+    description: `Territoires consultant 3 thématiques au moins 3 fois`,
     stats: filteredData
   };
 
-  return NextResponse.json({ data });
+  const response = NextResponse.json(data);
+  
+  // Set cache control headers to prevent caching
+  response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  response.headers.set('Pragma', 'no-cache');
+  response.headers.set('Expires', '0');
+  response.headers.set('Surrogate-Control', 'no-store');
+
+  return response;
 };
