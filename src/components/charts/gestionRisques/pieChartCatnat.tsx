@@ -1,12 +1,14 @@
 // @ts-nocheck
 'use client';
 
+import useWindowDimensions from '@/hooks/windowDimensions';
 import { ArreteCatNat } from '@/lib/postgres/models';
 import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { Any } from '@/lib/utils/types';
 import { DefaultRawDatum, PieCustomLayerProps, ResponsivePie } from '@nivo/pie';
 import { animated } from '@react-spring/web';
+import styles from './gestionRisquesCharts.module.scss';
 
 const colors: { [key: string]: string } = {
   Inondations: '#009ADC',
@@ -24,6 +26,7 @@ type ArreteCatNatEnriched = ArreteCatNat & {
 
 const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
   const { gestionRisques } = props;
+  const windowDimensions = useWindowDimensions();
   const countTypes = CountOcc(gestionRisques, 'lib_risque_jo');
   const mapGraphData = gestionRisques?.map((el) => {
     return {
@@ -46,27 +49,33 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
     dataWithArc.forEach((datum: { value: number }) => {
       total += datum.value;
     });
+    // responsive font sizing based on window width
+    const mainFontSize = windowDimensions?.width > 1248 ? 32 : windowDimensions?.width > 1024 ? 26 : 18;
+    const subFontSize = Math.max(10, Math.round(mainFontSize / 3));
+    const mainYOffset = -Math.round(mainFontSize / 2);
+    const subYOffset = Math.round(subFontSize / 1.2);
+
     return (
       <>
         <text
           x={centerX}
-          y={centerY - 10}
+          y={centerY + mainYOffset}
           textAnchor="middle"
           dominantBaseline="central"
           style={{
-            fontSize: '36px',
-            fontWeight: 700
+            fontSize: `${mainFontSize}px`,
+            fontWeight: 700,
           }}
         >
           {total}
         </text>
         <text
           x={centerX}
-          y={centerY + 20}
+          y={centerY + subYOffset}
           textAnchor="middle"
           dominantBaseline="central"
           style={{
-            fontSize: '12px',
+            fontSize: `${subFontSize}px`,
             fontWeight: 400
           }}
         >
@@ -107,12 +116,10 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
   };
 
   return (
-    <div
-      style={{ height: '380px', width: '100%', backgroundColor: 'white' }}
-    >
+    <div className={styles.responsivePieContainer}>
       <ResponsivePie
         data={graphData}
-        margin={{ top: 60, right: 10, bottom: 60, left: 10 }}
+        margin={{ top: windowDimensions.width > 1248 ? 60 : 20, right: 10, bottom: windowDimensions.width > 1248 ? 60 : 20, left: 10 }}
         colors={(graphData) => colors[graphData.id]}
         isInteractive={true}
         innerRadius={0.5}
@@ -120,13 +127,13 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
         cornerRadius={3}
         activeOuterRadiusOffset={8}
         borderWidth={1}
+        enableArcLinkLabels={windowDimensions.width > 1248 ? true : false}
         arcLinkLabelComponent={arcLabelsComponent}
         arcLinkLabel={({ id }) => `${id}`}
         arcLinkLabelsSkipAngle={10}
         sortByValue={false}
         layers={[
           'arcs',
-          'arcLabels',
           'arcLinkLabels',
           'legends',
           CenteredMetric
@@ -139,7 +146,7 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
         arcLinkLabelsThickness={2}
         arcLinkLabelsColor={{ from: 'color' }}
         arcLinkLabelsOffset={15}
-        arcLinkLabelsDiagonalLength={20}
+        arcLinkLabelsDiagonalLength={12}
         arcLinkLabelsStraightLength={5}
       // tooltip={({ datum: { id, value } }: PieTooltipProps<DefaultRawDatum>) => (
       //   <div

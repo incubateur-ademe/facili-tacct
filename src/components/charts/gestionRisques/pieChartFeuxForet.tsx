@@ -1,12 +1,14 @@
 // @ts-nocheck
 'use client';
 
+import useWindowDimensions from '@/hooks/windowDimensions';
 import { IncendiesForet } from '@/lib/postgres/models';
 import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { Any } from '@/lib/utils/types';
 import { DefaultRawDatum, PieCustomLayerProps, ResponsivePie } from '@nivo/pie';
 import { animated } from '@react-spring/web';
+import styles from './gestionRisquesCharts.module.scss';
 
 const colors: { [key: string]: string } = {
   Malveillance: '#91D1CC',
@@ -19,6 +21,7 @@ const colors: { [key: string]: string } = {
 
 const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
   const { incendiesForet } = props;
+  const windowDimensions = useWindowDimensions();
   const countTypes = CountOcc(incendiesForet, 'nature');
   countTypes['Inconnue'] = countTypes['null'] ?? 0;
   const causesInconnues = countTypes['null'];
@@ -95,12 +98,10 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
   };
 
   return (
-    <div
-      style={{ height: '400px', minWidth: '450px', backgroundColor: 'white' }}
-    >
+    <div className={styles.responsivePieContainer}>
       <ResponsivePie
         data={graphData}
-        margin={{ top: 60, right: 80, bottom: 60, left: 80 }}
+        margin={{ top: windowDimensions.width > 1248 ? 60 : 20, right: 10, bottom: windowDimensions.width > 1248 ? 60 : 20, left: 10 }}
         colors={(graphData) => colors[graphData.id]}
         isInteractive={true}
         innerRadius={0.5}
@@ -109,7 +110,7 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
         activeOuterRadiusOffset={8}
         borderWidth={1}
         arcLinkLabelComponent={arcLabelsComponent}
-        // arcLinkLabel={({ id }) => `${id}`}
+        enableArcLinkLabels={windowDimensions.width > 1248 ? true : false}
         sortByValue={false}
         layers={['arcs', 'arcLinkLabels', 'legends']} //, CenteredMetric
         borderColor={{
@@ -121,7 +122,7 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
         arcLinkLabelsThickness={2}
         arcLinkLabelsColor={{ from: 'color' }}
         arcLinkLabelsOffset={10}
-        arcLinkLabelsDiagonalLength={16}
+        arcLinkLabelsDiagonalLength={12}
         arcLinkLabelsStraightLength={20}
       />
     </div>

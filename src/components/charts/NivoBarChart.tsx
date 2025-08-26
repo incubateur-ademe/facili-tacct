@@ -44,6 +44,7 @@ type NivoBarChartProps = {
   axisLeftTickFactor?: number;
   groupMode?: 'grouped' | 'stacked' | undefined;
   showLegend?: boolean;
+  isBarLine?: boolean;
 };
 
 export const NivoBarChart = ({
@@ -58,7 +59,8 @@ export const NivoBarChart = ({
   axisBottomLegend,
   axisLeftTickFactor = 1,
   groupMode = 'stacked',
-  showLegend = true
+  showLegend = true,
+  isBarLine = false
 }: NivoBarChartProps) => {
   return (
     <ResponsiveBar
@@ -68,8 +70,8 @@ export const NivoBarChart = ({
       indexBy={indexBy}
       colors={colors}
       margin={
-        showLegend
-          ? { top: 40, right: 80, bottom: 100, left: 80 }
+        isBarLine
+          ? { top: 40, right: 80, bottom: 60, left: 80 }
           : { top: 40, right: 80, bottom: 100, left: 80 }
       }
       groupMode={groupMode}
