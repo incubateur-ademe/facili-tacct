@@ -217,13 +217,13 @@ const Home = () => {
         <NewContainer size="xl">
           <div className={styles.diagnosticWrapper}>
             <div className={styles.diagnosticText}>
-              <H2>Besoin d’être guidé pour évaluer votre diagnostic ?</H2>
-              <Body>
+              <H2 style={{ color: 'white' }}>Besoin d’être guidé pour évaluer votre diagnostic ?</H2>
+              <Body style={{ color: 'white' }}>
                 Votre territoire possède déjà un diagnostic de vulnérabilité
                 climatique ? Exploitez-le ! Évitez de repartir de zéro et gagnez
                 du temps et des ressources en évaluant d'abord le document existant.
               </Body>
-              <BoutonPrimaireClassic
+              <BoutonSecondaireClassic
                 size='lg'
                 link="https://tally.so/r/3Nx98W"
                 text="J'évalue mon diagnostic"
@@ -240,8 +240,8 @@ const Home = () => {
             <div className={styles.ressourcesText}>
               <H2>Découvrez des ressources utiles</H2>
               <Body>
-                Bénéficiez d'articles et de retours d'expériences pour vous 
-                accompagner dans la mise en place de votre démarche d’adaptation 
+                Bénéficiez d'articles et de retours d'expériences pour vous
+                accompagner dans la mise en place de votre démarche d’adaptation
                 au changement climatique.
               </Body>
               <BoutonPrimaireClassic
@@ -265,16 +265,18 @@ const Home = () => {
           <div className={styles.verbatimCardsWrapper}>
             {verbatimCards.map((card, index) => (
               <div key={index} className={styles.verbatimCard}>
-                <Body style={{ color: 'white' }}>
+                <div className={styles.quote}>
                   <Image
                     src={GuillemetIcon}
-                    alt="" 
-                    width={32}
-                    height={32}
-                    style={{ verticalAlign: 'middle', margin: ' 0 1rem 0rem 0' }}
+                    alt=""
+                    width={40}
+                    height={40}
+                    className={styles.guillemetIcon}
                   />
-                  {card.description}
-                </Body>
+                  <Body style={{ color: 'white' }}>
+                    {card.description}
+                  </Body>
+                </div>
                 <Body
                   size='sm'
                   style={{
