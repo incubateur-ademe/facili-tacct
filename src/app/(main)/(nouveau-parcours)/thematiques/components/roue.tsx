@@ -455,8 +455,8 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           .attr("stroke", rectStroke)
           .attr("stroke-width", 1)
           .attr("stroke-dasharray", strokeDasharray)
-          .attr("rx", 15)
-          .attr("ry", 100);
+          .attr("rx", lines.length > 1 ? 22 : 15)
+          .attr("ry", lines.length > 1 ? 22 : 50);
         const textElem = d3.select(this)
           .append("text")
           .attr("text-anchor", "middle")
