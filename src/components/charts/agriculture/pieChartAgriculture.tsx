@@ -5,6 +5,7 @@ import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import ZeroData from '@/assets/images/zero_data_found.png';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import styles from '@/components/themes/gestionRisques/gestionRisques.module.scss';
+import useWindowDimensions from '@/hooks/windowDimensions';
 import { PieChartDataSurfacesAgricoles } from '@/lib/charts/surfacesAgricoles';
 import { ResponsivePie } from '@/lib/nivo/pie';
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
@@ -15,6 +16,7 @@ import { animated } from '@react-spring/web';
 export const PieChartAgriculture = ({ surfacesAgricoles }: { surfacesAgricoles: SurfacesAgricolesModel[] }) => {
   const graphData = PieChartDataSurfacesAgricoles(surfacesAgricoles);
   const sumAllCount = graphData.reduce((sum, item) => sum + (item.count || 0), 0);
+  const windowDimensions = useWindowDimensions();
 
   const arcLabelsComponent = ({ datum, label, style }: Any) => {
     return (
@@ -71,17 +73,11 @@ export const PieChartAgriculture = ({ surfacesAgricoles }: { surfacesAgricoles: 
   };
 
   return (
-    <div
-      style={{
-        height: '380px',
-        minWidth: '450px',
-        backgroundColor: 'white'
-      }}
-    >
+    <div className={styles.responsivePieContainer}>
       {sumAllCount > 0 ?
         <ResponsivePie
           data={graphData}
-          margin={{ top: 60, right: 60, bottom: 60, left: 60 }}
+          margin={{ top: windowDimensions.width > 1248 ? 60 : 20, right: 10, bottom: windowDimensions.width > 1248 ? 60 : 20, left: 10 }}
           sortByValue={true}
           innerRadius={0.4}
           padAngle={0.8}
@@ -99,32 +95,11 @@ export const PieChartAgriculture = ({ surfacesAgricoles }: { surfacesAgricoles: 
             modifiers: [['darker', 0.3]]
           }}
           enableArcLabels={false}
-          // arcLabel={(d) => `${d.value} %`}
+          enableArcLinkLabels={windowDimensions.width > 1248 ? true : false}
           arcLinkLabelComponent={arcLabelsComponent}
           arcLinkLabelsSkipAngle={7}
-
-          // arcLinkLabelsTextColor="#333333"
-          // arcLinkLabelsOffset={10}
           arcLinkLabelsDiagonalLength={32}
           arcLinkLabelsStraightLength={24}
-          // arcLinkLabelsColor={{ from: 'color' }}
-          // legends={[
-          //   {
-          //     anchor: 'bottom-right',
-          //     direction: 'column',
-          //     justify: false,
-          //     translateX: -20,
-          //     translateY: 0,
-          //     itemsSpacing: 0,
-          //     itemWidth: 30,
-          //     itemHeight: 30,
-          //     itemTextColor: '#999',
-          //     itemDirection: 'left-to-right',
-          //     itemOpacity: 1,
-          //     symbolSize: 10,
-          //     symbolShape: 'circle'
-          //   }
-          // ]}
           tooltip={({ datum: { id, value, color } }) => (
             <div className={styles.tooltipEvolutionWrapper}>
               <div className={styles.itemWrapper}>
