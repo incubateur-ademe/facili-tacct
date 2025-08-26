@@ -38,10 +38,10 @@ export const GetAgriculture = async (
           // Pour diminuer le cache, sous-requête en SQL pour récupérer l'epci
           const value = await prisma.$queryRaw`
         SELECT a.*
-        FROM agriculture a
+        FROM databases.agriculture a
         WHERE a.epci = (
           SELECT c.epci
-          FROM collectivites_searchbar c
+          FROM databases.collectivites_searchbar c
           WHERE c.code_geographique = ${code}
           LIMIT 1
         )
@@ -92,9 +92,9 @@ export const GetSurfacesAgricoles = async (
               epci: true
             },
             where: {
-              code_geographique: code,
+              code_geographique: code
             }
-          }); 
+          });
           const value = await prisma.surfaces_agricoles.findMany({
             where: {
               epci: epci?.epci as string

@@ -67,7 +67,7 @@ const PnaccTracc = () => {
           </li>
         </ul>
         <p>
-          ➡️ Un “patch 4°C” est disponible sur Facili-TACCT pour guider les territoires en cours de 
+          ➡️ Un « patch 4°C » est disponible sur Facili-TACCT pour guider les territoires en cours de
           révision de leur PCAET.
         </p>
         <h3>Mesure 25 - la « Mission Adaptation », guichet unique d’ingénierie de l’adaptation à destination des collectivités locales.</h3>
@@ -127,7 +127,7 @@ const PnaccTracc = () => {
         </p>
         <ul>
           <li>
-            via le Programme “Territoires adaptés au climat de demain ” qui accompagne aussi bien la réalisation
+            via le Programme « Territoires adaptés au climat de demain » qui accompagne aussi bien la réalisation
             de stratégie territoriale d’adaptation au changement climatique que des focus thématiques (bâtiment,
             infrastructure, ressource en eau, aménagement et risques naturels) ou de gré à gré hors programme
             selon les besoins spécifiques des collectivités
@@ -178,8 +178,8 @@ const PnaccTracc = () => {
           </li>
           <li>
             Pour le CEREMA, l’adaptation au changement climatique doit sortir de la stricte compétence
-            du chargé de mission “climat” pour devenir l’affaire de toutes et tous et être abordée en
-            transversalité par l’ensemble des services. Seul ce “réflexe adaptation” permettra à la
+            du chargé de mission « climat » pour devenir l’affaire de toutes et tous et être abordée en
+            transversalité par l’ensemble des services. Seul ce « réflexe adaptation » permettra à la
             collectivité de s’assurer que les projets prévus soient compatibles avec les impacts à venir
             du changement climatique sur le territoire.
           </li>
@@ -248,7 +248,7 @@ const PnaccTracc = () => {
                     >
                       100 territoires
                     </Link>
-                    {" "}bénéficiant la Mission adaptation
+                    {" "}bénéficiant de la Mission adaptation
                   </li>
                 </ul>
               </div>

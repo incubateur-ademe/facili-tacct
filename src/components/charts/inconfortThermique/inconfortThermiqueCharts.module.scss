@@ -1,0 +1,45 @@
+.tooltipEvolutionWrapper {
+    font-family: 'Marianne';
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    position: relative;
+    right: 8rem;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 18, 0.16);
+    color: #3a3a3a;
+    p {
+        font-size: 0.75rem;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0;
+    }
+    h3 {
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 20px;
+        margin: 0 0 1rem;
+    }
+    .itemWrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+        .titre {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            .colorSquare {
+                height: 1rem;
+                width: 1rem;
+                border-radius: 2px;
+                align-self: center;
+                margin-right: 0.5rem;
+            }
+        }
+        .value {
+            p {
+                font-weight: 700;
+            }
+        }
+    }
+}

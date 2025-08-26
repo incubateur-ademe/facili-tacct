@@ -1,23 +1,12 @@
-'use client';
 
-import {
-  CommunesIndicateursDto,
-  EtatCoursDeauDto
-} from '@/lib/dto';
+import { CommunesIndicateursDto, EtatCoursDeauDto } from '@/lib/dto';
 import { QualiteSitesBaignade } from '@/lib/postgres/models';
-import { GeoJSON, MapContainer, TileLayer } from '@/lib/react-leaflet';
-import { Any } from '@/lib/utils/types';
-import { Feature } from 'geojson';
-import {
-  FeatureGroup,
-  LatLngBoundsExpression,
-  Layer,
-  LeafletMouseEventHandlerFn,
-  StyleFunction
-} from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+import { mapStyles } from 'carte-facile';
+import { Feature, GeoJsonProperties, Geometry } from 'geojson';
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
-import { useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { BoundsFromCollection } from './components/boundsFromCollection';
 import SitesBaignadeMarkers from './components/sitesBaignadeMarkers';
 import { CoursDeauTooltip } from './components/tooltips';
@@ -27,20 +16,24 @@ export const MapEtatCoursDeau = (props: {
   carteCommunes: CommunesIndicateursDto[];
   qualiteEauxBaignade?: QualiteSitesBaignade[];
 }) => {
-  const { etatCoursDeau, carteCommunes, qualiteEauxBaignade } =
-    props;
+  const { etatCoursDeau, carteCommunes, qualiteEauxBaignade } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const mapRef = useRef(null);
+  const mapContainer = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
+  const popupRef = useRef<maplibregl.Popup | null>(null);
+  const hoveredFeatureRef = useRef<string | null>(null);
 
-  const carteCommunesFiltered = type === "ept"
-    ? carteCommunes.filter(
-      (el) => el.properties.ept === libelle
-    ) : carteCommunes;
+  const carteCommunesFiltered = useMemo(() => (
+    type === "ept"
+      ? carteCommunes.filter(el => el.properties.ept === libelle)
+      : carteCommunes
+  ), [carteCommunes, type, libelle]);
   const enveloppe = BoundsFromCollection(carteCommunesFiltered, type, code);
 
+  // Color logic for cours d'eau
   const getColor = (d: string | null) => {
     if (d === '1') {
       return '#0095C8';
@@ -57,116 +50,267 @@ export const MapEtatCoursDeau = (props: {
     }
   };
 
-  const style: StyleFunction<Any> = (feature) => {
-    const typedFeature = feature as EtatCoursDeauDto;
-    return {
-      fillColor: getColor(typedFeature?.properties.etateco),
-      weight: 3,
-      opacity: 1,
-      color: getColor(typedFeature?.properties.etateco),
-      fillOpacity: 0.95
-    };
-  };
+  // GeoJSON for territory polygons
+  const territoryGeoJson = useMemo(() => ({
+    type: "FeatureCollection" as "FeatureCollection",
+    features: carteCommunesFiltered.map(commune => ({
+      type: "Feature" as "Feature",
+      geometry: commune.geometry as import('geojson').Geometry,
+      properties: commune.properties,
+      id: commune.properties.code_geographique
+    }))
+  }), [carteCommunesFiltered]);
 
-  const territoireStyle: StyleFunction<Any> = (e) => {
-    return {
-      weight: e?.properties.code_geographique === code ? 2 : 0.5,
-      opacity: 0.9,
-      color: '#161616',
-      fillOpacity: 0
-    };
-  };
+  const coursDeauGeoJson = useMemo(() => ({
+    type: "FeatureCollection" as const,
+    features: etatCoursDeau.map((cours, idx) => ({
+      type: "Feature",
+      geometry: cours.geometry,
+      properties: cours.properties,
+      id: idx
+    })) as Feature<Geometry, GeoJsonProperties>[]
+  }), [etatCoursDeau]);
 
-  const mouseOnHandler: LeafletMouseEventHandlerFn = (e) => {
-    const layer = e.target as FeatureGroup<EtatCoursDeauDto['properties']>;
-    //close residual opened tooltip
-    layer.unbindTooltip();
-    layer.closeTooltip();
-    const coursDeau =
-      layer.feature && 'properties' in layer.feature
-        ? layer.feature.properties.name
-        : undefined;
-    layer.setStyle({
-      weight: 7
+  const coursDeauColorExpression = useMemo(() => {
+    const expression: Array<string | Array<string | Array<string>>> = ['case'];
+    etatCoursDeau.forEach((cours, idx) => {
+      const color = getColor(cours.properties.etateco);
+      expression.push(
+        ['==', ['get', 'etateco'], cours.properties.etateco as string],
+        color
+      );
     });
-    layer.bindTooltip(
-      CoursDeauTooltip(coursDeau as string, e.target.options.color),
-      {
-        direction: e.originalEvent.offsetY > 250 ? 'top' : 'bottom',
-        offset: e.originalEvent.offsetX > 400 ? [-75, 0] : [75, 0]
+    expression.push('#9D9C9C');
+    return expression;
+  }, [etatCoursDeau]);
+
+  useEffect(() => {
+    if (!mapContainer.current) return;
+    const map = new maplibregl.Map({
+      container: mapContainer.current,
+      style: mapStyles.desaturated,
+      attributionControl: false,
+    });
+    mapRef.current = map;
+
+    map.on('load', () => {
+      // Fit bounds
+      if (
+        enveloppe &&
+        Array.isArray(enveloppe) &&
+        enveloppe.length > 1 &&
+        Array.isArray(enveloppe[0]) &&
+        enveloppe[0].length === 2
+      ) {
+        const lons = enveloppe.map((coord: number[]) => coord[1]);
+        const lats = enveloppe.map((coord: number[]) => coord[0]);
+        const minLng = Math.min(...lons);
+        const maxLng = Math.max(...lons);
+        const minLat = Math.min(...lats);
+        const maxLat = Math.max(...lats);
+        map.fitBounds(
+          [[minLng, minLat], [maxLng, maxLat]],
+          { padding: 20 },
+        );
       }
-    );
-    layer.openTooltip();
-    layer.bringToFront();
-  };
 
-  //make style after hover disappear
-  const mouseOutHandler: LeafletMouseEventHandlerFn = (e) => {
-    const layer = e.target as FeatureGroup<EtatCoursDeauDto['properties']>;
-    layer.closeTooltip();
-    layer.setStyle({
-      weight: 3,
-      // color: getColor(layer.feature?.properties.etateco),
-      fillOpacity: 0.95
-    });
-  };
+      // Add territory source/layer
+      map.addSource('territory', {
+        type: 'geojson',
+        data: territoryGeoJson,
+        generateId: false
+      });
+      map.addLayer({
+        id: 'territory-fill',
+        type: 'fill',
+        source: 'territory',
+        paint: {
+          'fill-opacity': 0,
+        }
+      });
+      map.addLayer({
+        id: 'territory-stroke',
+        type: 'line',
+        source: 'territory',
+        paint: {
+          'line-color': [
+            'case',
+            ['==', ['get', 'code_geographique'], code],
+            '#161616',
+            '#161616'
+          ],
+          'line-width': [
+            'case',
+            ['==', ['get', 'code_geographique'], code],
+            2,
+            0.5
+          ],
+          'line-opacity': 0.9
+        }
+      });
 
-  const onEachFeature = (feature: Feature<Any>, layer: Layer) => {
-    layer.on({
-      mouseover: mouseOnHandler,
-      mouseout: mouseOutHandler
+      // Add cours d'eau source/layer
+      map.addSource('coursDeau', {
+        type: 'geojson',
+        data: coursDeauGeoJson,
+        generateId: false
+      });
+      map.addLayer({
+        id: 'coursDeau-line',
+        type: 'line',
+        source: 'coursDeau',
+        paint: {
+          'line-color': coursDeauColorExpression as any,
+          'line-width': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
+            7,
+            3
+          ],
+          'line-opacity': 0.95
+        }
+      });
+
+      // Hover and tooltip for cours d'eau
+      map.on('mouseenter', 'coursDeau-line', (e) => {
+        if (e.features && e.features.length > 0) {
+          const feature = e.features[0];
+          const properties = feature.properties;
+          if (hoveredFeatureRef.current) {
+            map.setFeatureState(
+              { source: 'coursDeau', id: hoveredFeatureRef.current },
+              { hover: false }
+            );
+          }
+          const newHoveredFeature = properties.id;
+          hoveredFeatureRef.current = newHoveredFeature;
+          if (newHoveredFeature) {
+            map.setFeatureState(
+              { source: 'coursDeau', id: newHoveredFeature },
+              { hover: true }
+            );
+          }
+          const coursDeauName = properties?.name;
+          const color = getColor(properties?.etateco);
+          const tooltipContent = CoursDeauTooltip(coursDeauName, color);
+          if (popupRef.current) {
+            popupRef.current.remove();
+          }
+          const containerHeight = mapContainer.current?.clientHeight || 500;
+          const mouseY = e.point.y;
+          const mouseX = e.point.x;
+          const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';
+          const offset: [number, number] = (mouseX > 400) ? [-75, 0] : [75, 0];
+          popupRef.current = new maplibregl.Popup({
+            closeButton: false,
+            closeOnClick: false,
+            className: 'coursdeau-tooltip',
+            anchor: placement,
+            offset: offset,
+            maxWidth: 'none'
+          })
+            .setLngLat(e.lngLat)
+            .setHTML(tooltipContent)
+            .addTo(map);
+        }
+      });
+
+      map.on('mouseleave', 'coursDeau-line', () => {
+        if (hoveredFeatureRef.current) {
+          map.setFeatureState(
+            { source: 'coursDeau', id: hoveredFeatureRef.current },
+            { hover: false }
+          );
+        }
+        hoveredFeatureRef.current = null;
+        if (popupRef.current) {
+          popupRef.current.remove();
+          popupRef.current = null;
+        }
+      });
+
+      map.on('mousemove', 'coursDeau-line', (e) => {
+        if (e.features && e.features.length > 0) {
+          const feature = e.features[0];
+          const properties = feature.properties;
+          const newHoveredFeature = properties.id;
+          const containerHeight = mapContainer.current?.clientHeight || 500;
+          const mouseY = e.point.y;
+          const mouseX = e.point.x;
+          const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';
+          const offset: [number, number] = (mouseX > 400) ? [-75, 0] : [75, 0];
+          if (hoveredFeatureRef.current !== newHoveredFeature) {
+            if (hoveredFeatureRef.current) {
+              map.setFeatureState(
+                { source: 'coursDeau', id: hoveredFeatureRef.current },
+                { hover: false }
+              );
+            }
+            hoveredFeatureRef.current = newHoveredFeature;
+            if (newHoveredFeature) {
+              map.setFeatureState(
+                { source: 'coursDeau', id: newHoveredFeature },
+                { hover: true }
+              );
+            }
+            const coursDeauName = properties?.name;
+            const color = getColor(properties?.etateco);
+            const tooltipContent = CoursDeauTooltip(coursDeauName, color);
+            if (popupRef.current) popupRef.current.remove();
+            popupRef.current = new maplibregl.Popup({
+              closeButton: false,
+              closeOnClick: false,
+              className: 'coursdeau-tooltip',
+              anchor: placement,
+              offset: offset,
+              maxWidth: 'none'
+            })
+              .setLngLat(e.lngLat)
+              .setHTML(tooltipContent)
+              .addTo(map);
+          } else if (popupRef.current) {
+            popupRef.current.setLngLat(e.lngLat);
+          }
+        }
+      });
+
+      // Change cursor on hover
+      map.on('mouseenter', 'coursDeau-line', () => {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+      map.on('mouseleave', 'coursDeau-line', () => {
+        map.getCanvas().style.cursor = '';
+      });
+
+      map.addControl(new maplibregl.NavigationControl(), 'top-right');
     });
-  };
+
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+    };
+  }, [territoryGeoJson, coursDeauGeoJson, coursDeauColorExpression, enveloppe, code]);
+
+  useEffect(() => {
+    let map = mapRef.current;
+    if (!map || !mapContainer.current || !map.style) return;
+    setTimeout(() => {
+      map.setPaintProperty(
+        'coursDeau-line',
+        'line-color',
+        coursDeauColorExpression
+      );
+    }, 150);
+  }, [coursDeauColorExpression]);
 
   return (
-    <MapContainer
-      ref={mapRef}
-      style={{ height: '500px', width: '100%', cursor: 'pointer' }}
-      attributionControl={false}
-      zoomControl={false}
-      bounds={enveloppe as LatLngBoundsExpression}
-    >
-      {process.env.NEXT_PUBLIC_ENV === 'preprod' ? (
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-      ) : (
-        <TileLayer
-          attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
-        />
+    <div style={{ position: 'relative' }}>
+      <div ref={mapContainer} style={{ height: '500px', width: '100%', cursor: 'pointer' }} />
+      {qualiteEauxBaignade && (
+        <SitesBaignadeMarkers qualiteEauxBaignade={qualiteEauxBaignade} />
       )}
-      <style>
-        {`
-        .leaflet-interactive {
-          cursor: pointer !important;
-        }
-        .leaflet-tooltip {
-          opacity: 0.95 !important;
-        }
-        .leaflet-tooltip-top:before {
-          content: none !important;
-        }
-        .leaflet-tooltip-bottom:before {
-          content: none !important;
-        }
-      `}
-        <GeoJSON
-          ref={mapRef}
-          data={carteCommunesFiltered as Any}
-          style={territoireStyle}
-        />
-        <GeoJSON
-          ref={mapRef}
-          data={etatCoursDeau as Any}
-          style={style}
-          onEachFeature={onEachFeature}
-        />
-        {qualiteEauxBaignade && (
-          <SitesBaignadeMarkers qualiteEauxBaignade={qualiteEauxBaignade} />
-        )}
-      </style>
-    </MapContainer>
+    </div>
   );
 };

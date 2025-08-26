@@ -5,8 +5,10 @@ import Patch4Img from '@/assets/images/patch4_home.png';
 import RessourcesImg from '@/assets/images/ressources_home.webp';
 import { Loader } from '@/components/loader';
 import OptimalParagraph from '@/components/utils/OptimalParagraph';
+import MiddlePageTrigger from '@/hooks/MiddlePageTrigger';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { homeCards } from '@/lib/homeCards';
+import Notice from '@codegouvfr/react-dsfr/Notice';
 import Image from 'next/image';
 import { lazy, useEffect, useState } from 'react';
 import { Container } from './../../dsfr/layout';
@@ -33,6 +35,33 @@ const Home = () => {
 
   return (
     <div>
+      <Notice
+        className='notice'
+        isClosable={true}
+        onClose={() => setNoticeClosed(true)}
+        title={"Découvrez les nouveautés de l'été !"}
+        description={
+          <>
+            Explorez une page d’accueil entièrement repensée, accédez à notre nouvel indicateur Types de culture (thématique Agriculture) et exportez les données socio-économiques de votre territoire ! Ne manquez pas également nos nouvelles ressources sur les{' '}
+            <a
+              href="/ressources/articles/ilot-chaleur-urbain-erreurs-a-eviter/?utm_source=modalehome&utm_campaign=modale-home-icu"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              îlots de chaleur urbains
+            </a>
+            {' '}et les {" "}
+            <a
+              href="/ressources/articles/stagiaire-diagnostic-vulnerabilite-climat/?utm_source=modalehome&utm_campaign=modale-home-stagiaire"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              avantages et défis de l’arrivée d’un stagiaire sur le diagnostic de vulnérabilité
+            </a>
+            .
+          </>
+        }
+      />
       <div className={styles.homePageTopWrapper}>
         <Container size="xl">
           <div className={styles.titles}>
@@ -47,7 +76,7 @@ const Home = () => {
         window.width ? <CollectiviteSearch />
           : <div
             className={styles.collectiviteWrapper}
-            style={{ height: "218px", top: "360px" }} //REPLACE update top paramètre si la notice est modifiée 415px si pas de notice
+            style={{ height: "218px", top: "461px" }} // update top paramètre si la notice est modifiée (360px si pas de notice)
           >
             <Loader />
           </div>
@@ -98,6 +127,7 @@ const Home = () => {
               Vous avez des défis complexes à relever face au changement climatique et vous vous
               demandez par où commencer ? TACCT est la méthode qu’il vous faut.
             </OptimalParagraph>
+            <MiddlePageTrigger />
             <div className={styles.cardWrapper}>
               {homeCards.map((card, index) => (
                 <HomeCard

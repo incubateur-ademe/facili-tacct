@@ -99,9 +99,9 @@ export const allArticles = [
     Component: IlotChaleurUrbain,
     metadata: {
       title:
-        'Îlot de chaleur urbain : 4 erreurs fréquentes à éviter pour mieux agir sur le terrain',
+        'Îlot de chaleur urbain : 4 idées reçues à déjouer pour mieux agir sur le terrain',
       description:
-        'Îlot de chaleur urbain : 4 erreurs fréquentes à éviter pour mieux comprendre le phénomène, cibler les bons diagnostics et adapter l’action aux enjeux'
+        'Îlot de chaleur urbain : 4 idées reçues à déjouer pour mieux comprendre le phénomène, cibler les bons diagnostics et adapter l’action aux enjeux'
     }
   },
   {
@@ -117,8 +117,7 @@ export const allArticles = [
     slug: 'briser-silos-approche-systemique',
     Component: BriserSilosApprocheSystemique,
     metadata: {
-      title:
-        'Brisez les silos : introduction à l’approche systémique',
+      title: 'Brisez les silos : introduction à l’approche systémique',
       description:
         'Comprendre les interactions au sein de votre système est essentiel pour éviter les maladaptations. L’approche systémique vous accompagne de l’identification jusqu’à la mobilisation.'
     }

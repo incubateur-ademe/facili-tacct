@@ -96,22 +96,9 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
         <AccordionHeader patch4={patch4} />
       </AccordionSummary>
       <AccordionDetails>
-        <h2>Pour en savoir plus :</h2>
-        <p>
-          À partir des données de la TRACC, un calcul d’indice d’intensité est
-          effectué sur la valeur médiane de certains indicateurs de Climadiag Commune,
-          aux 3 échéances 2030, 2050 et 2100.
-        </p>
-        <Image src={patch4Formula} alt="" height={80} />
-        <p>
-          Le cas échéant, les indicateurs saisonniers ont été cumulés pour en faire des indicateurs annuels.
-          Lorsque plusieurs indicateurs sont disponibles pour un même aléa, le niveau d’évolution
-          considéré est la valeur maximale de l’indicateur.
-        </p>
-        <br></br>
         <div className={styles.intensiteTagsWrapper}>
           <h3 style={{ fontSize: '1rem', margin: 0 }}>
-            <b>À chaque niveau d’intensité, ses recommandations.</b>
+            <b>À chaque niveau d’aggravation, ses recommandations.</b>
           </h3>
           {tagIntensite.map((item, index) => (
             <SubAccordionComp
@@ -122,22 +109,47 @@ export const Patch4Accordion = ({ patch4 }: { patch4: Patch4 }) => {
             />
           ))}
           <div className={styles.tagExplication} style={{ padding: '0 1rem' }}>
-            <div className="min-w-[160px]">
-              <TagPatch4>Intensité modérée</TagPatch4>
+            <div className="min-w-[170px]">
+              <TagPatch4>Aggravation modérée</TagPatch4>
             </div>
             <p>Lorsque l’évolution de long terme (2050-2100) est inférieure à la valeur sur la période 2030-2050, il n’y a pas de correctif spécifique à apporter à court terme.
             </p>
           </div>
           <div className={styles.tagExplication} style={{ padding: '0 1rem' }}>
-            <div className="min-w-[160px]">
+            <div className="min-w-[170px]">
               <TagPatch4>Pas d'évolution</TagPatch4>
             </div>
-            <p>En cas de stabilité ou de baisse de l’indicateur entre 2030 et 2100, l’intensité est considérée comme faible.</p>
+            <p>En cas de stabilité ou de baisse de l’indicateur entre 2030 et 2100, considérer qu’il n’y a pas d’évolution.</p>
           </div>
         </div>
         <br></br><br></br>
-        <ExplicationIndices patch4={patch4} />
         <RessourcesPourSadapter patch4={patch4} />
+        <ExplicationIndices patch4={patch4} />
+        <h3 style={{ fontSize: '1rem', margin: 0 }}>
+          <b>Méthode de calcul</b>
+        </h3>
+        <Image src={patch4Formula} alt="" height={80} />
+        <p>
+          Le calcul de l’indice est effectué sur la valeur médiane des indicateurs
+          de Climadiag Commune, aux 3 échéances 2030, 2050 et 2100.
+        </p>
+        <p>
+          Le cas échéant, les indicateurs saisonniers ont été cumulés pour en faire des
+          indicateurs annuels. Lorsque plusieurs indicateurs sont disponibles pour un même
+          aléa, le niveau d’évolution considéré est la valeur maximale de l’indicateur.
+        </p>
+        <p>
+          Retrouvez vos indicateurs climatiques détaillés sur le portail{' '}
+          <a
+            href="https://meteofrance.com/climadiag-commune"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Climadiag Communes
+          </a>
+          {" "}de Météo France.
+        </p>
+        <br></br>
       </AccordionDetails>
     </Accordion>
   );
