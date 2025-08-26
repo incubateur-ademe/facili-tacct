@@ -63,6 +63,7 @@ export const BarLineFeuxForet = (props: {
           axisLeftLegend="Surface en ha"
           axisBottomLegend="Années"
           showLegend={false}
+          isBarLine={true}
         />
       </div>
       <div className="absolute h-[95%] w-full">
