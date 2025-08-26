@@ -64,14 +64,14 @@ export const TypesDeCulture = (props: {
                   {
                     (type === "departement" || type === "pnr") && territoiresPartiellementCouverts && (
                       <>
-                        <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                        <Body style={{ color: "var(--gris-dark)" }}>
                           <br></br>Attention, {territoiresPartiellementCouverts?.length} EPCI{" "}
                           {territoiresPartiellementCouverts?.length === 1 ? "ne fait" : "ne font"} que
                           partiellement partie de votre territoire :
                         </Body>
                         <ul style={{ margin: "0.5rem 0 0 1.5rem" }}>
                           {territoiresPartiellementCouverts?.map((epci, index) => (
-                            <li key={index}><Body weight='bold' style={{ color: "var(--gris-dark)" }}>{epci}</Body></li>
+                            <li key={index}><Body style={{ color: "var(--gris-dark)" }}>{epci}</Body></li>
                           ))}
                         </ul>
                       </>

@@ -131,9 +131,6 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
   const searchParams = useSearchParams();
   const type = searchParams.get('type')!;
   const code = searchParams.get('code')!;
-  const libelle = searchParams.get('libelle')!;
-  // const mapRef = useRef<maplibregl.Map | null>(null);
-  // const mapContainer = useRef<HTMLDivElement>(null);
   const [multipleDepartements, setMultipleDepartements] = useState<string[]>([]);
   // options de filtre pour les départements (plusieurs départements possibles pour un EPCI)
   const departement = type === "epci" ? rga[0]?.libelle_departement : "";
@@ -193,6 +190,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
               axisLeftLegend="Part du territoire (%)"
               groupMode="grouped"
               tooltip={(data) => RgaRepartitionTooltip({ data, type })}
+              bottomTickValues={repartitionRga.map(el => el.alea)}
             />
           </div>
           {

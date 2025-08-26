@@ -98,7 +98,7 @@ export const RetraitGonflementDesArgiles = ({
             }
             <CustomTooltipNouveauParcours title={rgaTooltipText} texte="D’où vient ce chiffre ?" />
           </div>
-          <ReadMoreFade maxHeight={470}>
+          <ReadMoreFade maxHeight={(type === "commune" || type === "epci") ? 470 : 650}>
             <RGAText />
           </ReadMoreFade>
         </div>
@@ -114,7 +114,7 @@ export const RetraitGonflementDesArgiles = ({
                 mapRef={mapRef}
                 mapContainer={mapContainer}
               /> : (
-                <div className={styles.graphWrapper}>
+                <div className={styles.dataNotFoundForGraph}>
                   <DataNotFoundForGraph image={DataNotFound} />
                 </div>
               )
