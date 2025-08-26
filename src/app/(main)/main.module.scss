@@ -206,13 +206,7 @@ $height-notice: 461px;
 
 // Diagnostic bloc
 .diagnosticContainer {
-    background: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 12px,
-        var(--boutons-primaire-2) 12px,
-        var(--boutons-primaire-2) 14px
-    );
+    background-color: var(--principales-vert);
     padding: 1.5rem 0rem;
 }
 
@@ -220,7 +214,7 @@ $height-notice: 461px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: white;
+    background-color: var(--principales-vert);
     .diagnosticText {
         padding: 2rem;
     }
@@ -240,7 +234,13 @@ $height-notice: 461px;
 
 // Ressources bloc
 .ressourcesContainer {
-    background-color: white;
+    background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 12px,
+        var(--boutons-primaire-2) 12px,
+        var(--boutons-primaire-2) 14px
+    );
     padding: 1.5rem 2rem;
 }
 
@@ -252,6 +252,9 @@ $height-notice: 461px;
     gap: 2rem;
     .ressourcesText {
         max-width: 60%;
+            background-color: #ffffff;
+            padding: 1.25rem;
+
     }
     .ressourcesImage {
         width: 40%;
@@ -292,6 +295,15 @@ $height-notice: 461px;
             justify-content: space-between;
             gap: 1rem;
             width: 384px;
+            .quote{
+                color: #ffffff;
+            }
+            .guillemetIcon {
+                float: left;
+                width: 3rem;
+                height: auto;
+                margin: 0.3rem 0.8rem 0 0;
+            }
         }
     }
 }

@@ -147,7 +147,7 @@ export const ArretesCatnat = (props: {
                 setSliderValue={setSliderValue}
                 sliderValue={sliderValue}
               /> : (
-                <div className={styles.graphWrapper}>
+                <div className={styles.dataNotFoundForGraph}>
                   <DataNotFoundForGraph image={DataNotFound} />
                 </div>
               )

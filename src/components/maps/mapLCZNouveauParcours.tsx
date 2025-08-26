@@ -328,7 +328,7 @@ export const MapLCZNouveauParcours = ({
   }, [isLczCovered]);
 
   return (
-  <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative' }}>
       <style jsx global>{`
         .custom-popup .maplibregl-popup-content {
           font-family: 'Marianne' !important;

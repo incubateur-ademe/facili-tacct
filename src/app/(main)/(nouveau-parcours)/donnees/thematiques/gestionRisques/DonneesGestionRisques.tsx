@@ -126,15 +126,8 @@ export const DonneesGestionRisques = ({
           {/* Retrait-gonflement des argiles */}
           <div id="Retrait-gonflement des argiles" className={styles.indicateurWrapper}>
             {(loadingRga || rgaCarteLoading) ? (
-              <div style={{
-                position: 'relative',
-                minHeight: '40dvh',
-                width: windowDimensions.width && windowDimensions.width > 1248 ? 1248 : windowDimensions.width
-              }}
-              >
-                <div className={styles.loaderTextWrapperStyle}>
-                  <LoaderText text="Nous chargeons vos données" />
-                </div>
+              <div className={styles.loaderTextWrapperStyle}>
+                <LoaderText text="Nous chargeons vos données" />
               </div>
             ) : (
               <>

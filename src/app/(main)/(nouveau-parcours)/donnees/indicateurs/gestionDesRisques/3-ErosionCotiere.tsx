@@ -60,18 +60,18 @@ export const ErosionCotiereComp = ({
               </>
               : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={GraphNotFound} /></div>
           }
-          <div className={styles.sourcesExportWrapper} style={{ borderTop: '1px solid var(--gris-medium)', borderBottom: '1px solid var(--gris-medium)' }}>
-            <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : CEREMA
-            </Body>
-            <ExportPngMaplibreButtonNouveauParcours
-              mapRef={mapRef}
-              mapContainer={mapContainer}
-              documentDiv=".erosionCotiereLegendWrapper"
-              fileName={`Erosion_cotiere_${type}_${libelle}`}
-            />
-          </div>
         </div>
+      </div>
+      <div className={styles.sourcesExportWrapper} style={{ marginLeft: '-2rem', borderTop: '1px solid var(--gris-medium)' }}>
+        <Body size='sm' style={{ color: "var(--gris-dark)" }}>
+          Source : CEREMA
+        </Body>
+        <ExportPngMaplibreButtonNouveauParcours
+          mapRef={mapRef}
+          mapContainer={mapContainer}
+          documentDiv=".erosionCotiereLegendWrapper"
+          fileName={`Erosion_cotiere_${type}_${libelle}`}
+        />
       </div>
     </>
   );
