@@ -194,6 +194,9 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
       navControls.forEach(control => {
         (control as HTMLElement).style.display = 'none';
       });
+      // On modifie la taille du logo du cerema
+      const logoCerema = mapContainer.current.querySelector('.maps-module-scss-module__4-8-aW__ceremaLogoBottomRight') as HTMLElement;
+      if (logoCerema) { logoCerema.style.display = 'none' }
       // Ajout du div de la légende et de la source pour le screenshot
       const originalLegendDiv = document.querySelector(documentDiv) as HTMLElement;
       // Cacher le bouton d'export avant la capture
@@ -207,7 +210,7 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
           //Combinaison des deux canvases
           const finalCanvas = document.createElement('canvas');
           const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
-          finalCanvas.width = mapCanvas.width;
+          finalCanvas.width = mapCanvas.width - 16;
           finalCanvas.height = mapCanvas.height + legendCanvas.height;
           ctx.drawImage(mapCanvas, 0, 0);
           ctx.drawImage(legendCanvas, 0, mapCanvas.height);
@@ -260,8 +263,8 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
 
 
 /**
- * Generate a PNG Blob of the map and legend/source, for programmatic export (e.g. ZIP).
- * Returns a Promise<Blob|null>.
+ * Génère un Blob PNG de la carte et de la légende/source, pour un export programmatique (par exemple dans un ZIP).
+ * Retourne une Promise<Blob|null>.
  */
 export async function generateMapPngBlob({
   mapRef,
