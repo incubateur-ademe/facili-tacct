@@ -204,7 +204,7 @@ export const Catnat = (props: {
                         <p style={{ padding: '1em', margin: '0' }}>
                           Source : Base nationale de Gestion ASsistée des Procédures
                           Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
-                          juin 2025.
+                          août 2025.
                         </p>
                       </div>
                     )
