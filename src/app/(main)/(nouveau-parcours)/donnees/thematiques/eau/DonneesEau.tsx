@@ -1,6 +1,5 @@
 "use client";
 import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
-import { RetourHautDePage } from '@/components/RetourHautDePage';
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { CarteCommunes, EtatCoursDeau, RessourcesEau } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
@@ -39,7 +38,6 @@ export const DonneesEau = ({
   }, []);
   return (
     <>
-      <RetourHautDePage />
       <div className={styles.explorerMesDonneesContainer}>
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
           Ce que les données suggèrent sur votre territoire

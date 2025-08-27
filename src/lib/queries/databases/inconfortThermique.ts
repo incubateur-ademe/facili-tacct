@@ -37,10 +37,10 @@ export const GetInconfortThermique = async (
         } else if (type === 'commune') {
           const value = await prisma.$queryRaw`
           SELECT *
-          FROM inconfort_thermique
+          FROM databases.inconfort_thermique
           WHERE epci = (
             SELECT epci
-            FROM inconfort_thermique
+            FROM databases.inconfort_thermique
             WHERE code_geographique = ${code}
             LIMIT 1
           )

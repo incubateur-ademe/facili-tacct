@@ -189,14 +189,17 @@ export const ExportPngMaplibreButtonNouveauParcours = ({
   const handleExportPng = async () => {
     setIsLoading(true);
     if (mapRef.current && mapContainer.current) {
+      console.log("mapContainer.current", mapContainer.current)
       // On cache les contrôles de navigation pour éviter qu'ils n'apparaissent sur le screenshot
       const navControls = mapContainer.current.querySelectorAll('.maplibregl-ctrl-top-right');
       navControls.forEach(control => {
         (control as HTMLElement).style.display = 'none';
       });
       // On modifie la taille du logo du cerema
-      const logoCerema = mapContainer.current.querySelector('.maps-module-scss-module__4-8-aW__ceremaLogoBottomRight') as HTMLElement;
-      if (logoCerema) { logoCerema.style.display = 'none' }
+      const logoCeremaDev = mapContainer.current.querySelector('.maps-module-scss-module__4-8-aW__ceremaLogoBottomRight') as HTMLElement;
+      if (logoCeremaDev) { logoCeremaDev.style.display = 'none' }
+      const logoCeremaPreprod = mapContainer.current.querySelector('.maps_ceremaLogoBottomRight__IZXf3') as HTMLElement;
+      if (logoCeremaPreprod) { logoCeremaPreprod.style.display = 'none' }
       // Ajout du div de la légende et de la source pour le screenshot
       const originalLegendDiv = document.querySelector(documentDiv) as HTMLElement;
       // Cacher le bouton d'export avant la capture

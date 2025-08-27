@@ -3,6 +3,7 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import ZeroData from '@/assets/images/zero_data_found.png';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
+import { Body } from '@/design-system/base/Textes';
 import couleurs from '@/design-system/couleurs';
 import { travailExtDto } from '@/lib/dto';
 import { ResponsivePie } from '@/lib/nivo/pie';
@@ -73,7 +74,7 @@ const arcLabelsComponent = ({ datum, label, style, id }: Any) => {
           );
         })()}</animated.tspan>
         <animated.tspan style={{ fontWeight: 600 }}>
-           : {Round(datum.data.count, 0)}{' '}
+          : {Round(datum.data.count, 0)}{' '}
         </animated.tspan>
       </animated.text>
     </animated.g>
@@ -122,15 +123,21 @@ export const PieChartTravailExt = ({ graphData, travailExterieurTerritoire }: Pr
                     className={styles.colorSquare}
                     style={{ background: color }}
                   />
-                  <p>{id} : </p>
+                  <Body size='sm'>{id} : </Body>
                 </div>
-                <p><b>{Round(data.count, 0)} personnes </b></p>
-                <p>({Round(value, 1)} %)</p>
+                <div className={styles.values}>
+                  <Body size='sm' weight='bold'>{Round(data.count, 0)} personnes </Body>
+                  <Body size='sm'>({Round(value, 1)} %)</Body>
+                </div>
               </div>
             </div>
           )}
         />
-        : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={travailExterieurTerritoire.length === 0 ? DataNotFound : ZeroData} /></div>
+        : (
+          <div className='p-10 flex flex-row justify-center'>
+            <DataNotFoundForGraph image={travailExterieurTerritoire.length === 0 ? DataNotFound : ZeroData} />
+          </div>
+        )
       }
     </div>
   );
