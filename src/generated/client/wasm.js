@@ -510,7 +510,7 @@ exports.Prisma.Ressources_eauScalarFieldEnum = {
   libelle_pnr: 'libelle_pnr'
 };
 
-exports.Prisma.Databases_rgaScalarFieldEnum = {
+exports.Prisma.RgaScalarFieldEnum = {
   index: 'index',
   code_geographique: 'code_geographique',
   libelle_geographique: 'libelle_geographique',
@@ -798,7 +798,7 @@ exports.Prisma.ModelName = {
   patch4c: 'patch4c',
   qualite_sites_baignade: 'qualite_sites_baignade',
   ressources_eau: 'ressources_eau',
-  databases_rga: 'databases_rga',
+  rga: 'rga',
   surfaces_agricoles: 'surfaces_agricoles',
   surfaces_protegees: 'surfaces_protegees',
   clc_territoires: 'clc_territoires',

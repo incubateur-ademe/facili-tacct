@@ -494,7 +494,7 @@ model ressources_eau {
   @@schema("databases")
 }
 
-model databases_rga {
+model rga {
   index                                    BigInt  @id
   code_geographique                        String
   libelle_geographique                     String
