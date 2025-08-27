@@ -1,7 +1,6 @@
 'use client';
 import DiagnoticImage from '@/assets/images/diagnostiquer_impacts.png';
 import { CopyLinkClipboard } from '@/components/CopyLinkClipboard';
-import { RetourHautDePage } from '@/components/RetourHautDePage';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import { handleRedirectionThematique } from '@/hooks/Redirections';
@@ -50,7 +49,6 @@ const DonneesConfortThermique = ({
 
   return (
     <>
-      <RetourHautDePage />
       <div className={styles.explorerMesDonneesContainer}>
         <H1 style={{ color: "var(--principales-vert)", fontSize: '2rem' }}>
           Ce que les données suggèrent sur votre territoire

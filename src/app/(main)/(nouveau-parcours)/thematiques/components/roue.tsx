@@ -2,7 +2,7 @@
 import RessourcesNaturellesTexte from "@/assets/images/ressources_naturelles_texte.svg";
 import { Loader } from "@/components/loader";
 import { HtmlTooltip } from "@/components/utils/HtmlTooltip";
-import { Body } from "@/design-system/base/Textes";
+import { Body, H1 } from "@/design-system/base/Textes";
 import { Any } from "@/lib/utils/types";
 import * as d3 from "d3";
 import { useEffect, useRef, useState } from "react";
@@ -529,9 +529,16 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
               zIndex: 3,
             }}
           >
-            <Body weight="bold">
+            <H1 style={{
+              fontSize: '16px',
+              color: '#23282B',
+              fontWeight: 700,
+              lineHeight: "normal",
+              letterSpacing: "0.4px",
+              margin: 0
+            }}>
               Votre territoire est un système où tout est lié.
-            </Body>
+            </H1>
             <br />
             <Body>
               Explorez les thématiques et découvrez comment elles peuvent être impactées par les aléas climatiques
